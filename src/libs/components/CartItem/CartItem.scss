@@ -6,14 +6,50 @@
   padding: 24px 40px 24px 24px;
   border: 1px solid $elements;
 
+  @include on-mobile {
+    padding: 10px 5px;
+    position: relative;
+    justify-content: space-around;
+  }
+
+  @include on-tablet {
+    justify-content: space-around;
+  }
+
+  @include on-laptop {
+    justify-content: space-around;
+  }
+
   &__button {
     display: block;
+    text-align: center;
 
     &--delete-button {
       width: 16px;
       height: 16px;
       color: $icons;
       margin-right: 24px;
+
+      @include on-mobile {
+        position: absolute;
+        right: 5px;
+        top: 5px;
+        margin: 0;
+      }
+
+      @include on-tablet {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        margin: 0;
+      }
+
+      @include on-laptop {
+        width: 24px;
+        height: 24px;
+        font-size: 16px;
+        margin: 0;
+      }
     }
   }
 
@@ -23,14 +59,52 @@
     height: 80px;
     margin-right: 24px;
     padding: 7px;
+
+    @include on-mobile {
+      width: 50px;
+      height: 50px;
+      padding: 0;
+      margin: 0;
+    }
+
+    @include on-tablet {
+      padding: 0;
+    }
+
+    @include on-laptop {
+      padding: 0;
+    }
   }
 
   &__product-name {
     @include flexbox-center-vertical;
 
+    min-width: 295px;
     width: 295px;
     color: $primary;
     margin-right: 49px;
+
+    @include on-mobile {
+      width: 95px;
+      min-width: 95px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      margin: 0;
+
+      @include small-text;
+
+      font-weight: 400;
+    }
+
+    @include on-tablet {
+      width: 195px;
+      min-width: 195px;
+    }
+
+    @include on-laptop {
+      width: 195px;
+      min-width: 195px;
+    }
   }
 
   &__count-container {
@@ -39,6 +113,11 @@
     max-width: 96px;
     gap: 13px;
     margin-right: 43px;
+
+    @include on-mobile {
+      margin: 0;
+      gap: 10px;
+    }
   }
 
   &__count-button {
@@ -59,6 +138,12 @@
     &:disabled {
       cursor: not-allowed;
     }
+
+    @include on-mobile {
+      width: 22px;
+      height: 22px;
+      padding: 4px;
+    }
   }
 
   &__item-count {
@@ -73,5 +158,9 @@
     display: block;
     min-width: 61px;
     color: $primary;
+
+    @include on-mobile {
+      font-size: 20px;
+    }
   }
 }

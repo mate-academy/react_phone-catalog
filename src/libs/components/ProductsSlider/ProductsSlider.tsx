@@ -3,7 +3,6 @@ import cn from 'classnames';
 import {
   useRef,
   useState,
-  useCallback,
   useMemo,
   useEffect,
 } from 'react';
@@ -41,32 +40,6 @@ export const ProductsSlider:React.FC<Props> = ({
     ? totalCardsCount - (cardProp.cardsPerSlide - 1)
     : totalCardsCount;
 
-  const getSliderProp = useCallback(() => {
-    if (!cardsContainerRef.current) {
-      return null;
-    }
-
-    if (!sliderRef.current) {
-      return null;
-    }
-
-    if (!items.length) {
-      return null;
-    }
-
-    const container = cardsContainerRef.current;
-    const sliderWidth = sliderRef.current.offsetWidth;
-    const itemWidth = container.children[0].getBoundingClientRect().width;
-    const itemsPerSlide = Math.floor(sliderWidth / itemWidth);
-    const containerGap = (sliderWidth - (itemsPerSlide * itemWidth))
-      / (itemsPerSlide - 1) || 0;
-
-    return {
-      cardSize: itemWidth + containerGap,
-      cardsPerSlide: itemsPerSlide,
-    };
-  }, [cardsContainerRef, sliderRef, items]);
-
   const isPrevButtonDisabled = slideId === firstSlideId;
   const isNextButtonDisabled = slideId === lastSlideId;
 
@@ -99,14 +72,52 @@ export const ProductsSlider:React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setCardProp(getSliderProp());
-  }, [getSliderProp]);
+    const getSliderProp = () => {
+      if (!cardsContainerRef.current) {
+        return null;
+      }
+
+      if (!sliderRef.current) {
+        return null;
+      }
+
+      if (!items.length) {
+        return null;
+      }
+
+      const container = cardsContainerRef.current;
+      const sliderWidth = sliderRef.current.offsetWidth;
+      const itemWidth = container.children[0].getBoundingClientRect().width;
+      const itemsPerSlide = Math.floor(sliderWidth / itemWidth);
+      const containerGap = (sliderWidth - (itemsPerSlide * itemWidth))
+        / (itemsPerSlide - 1) || 0;
+
+      return {
+        cardSize: itemWidth + (
+          !Number.isFinite(containerGap) ? 0 : containerGap
+        ),
+        cardsPerSlide: itemsPerSlide,
+      };
+    };
+
+    const updateCardProp = () => {
+      setCardProp(getSliderProp());
+    };
+
+    updateCardProp();
+
+    window.addEventListener('resize', updateCardProp);
+
+    return () => {
+      window.removeEventListener('resize', updateCardProp);
+    };
+  }, [items]);
 
   return (
-    <div
-      className={cn('cards-container', classNames)}
+    <section
+      className={cn('products-slider', classNames)}
     >
-      <div className="cards-container__header">
+      <div className="products-slider__header">
         <SectionHeader
           title={title}
         />
@@ -144,11 +155,11 @@ export const ProductsSlider:React.FC<Props> = ({
       </div>
 
       <div
-        className="cards-container__slider"
+        className="products-slider__slider"
         ref={sliderRef}
       >
         <div
-          className="cards-container__cards"
+          className="products-slider__cards"
           data-cy="cardsContainer"
           ref={cardsContainerRef}
           style={{
@@ -166,6 +177,6 @@ export const ProductsSlider:React.FC<Props> = ({
           }
         </div>
       </div>
-    </div>
+    </section>
   );
 };

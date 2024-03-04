@@ -59,35 +59,33 @@ export const Banner = () => {
         >
           <Icon iconName="arrowLeft" classNames="slider__button-icon" />
         </button>
-        <div
-          className="slider__banner"
-        >
-          <ul
-            className="slider__banner-list"
-            style={
-              {
-                transform: `translateX(${translateX}px)`,
-                transition: 'all 1500ms',
-              }
+
+        <ul
+          className="slider__banner-list"
+          style={
+            {
+              transform: `translateX(${translateX}px)`,
+              transition: 'all 1500ms',
             }
-            ref={containerRef}
-          >
-            {images.map(([key, value]) => (
-              <li
-                className="slider__banner-item"
-                key={key}
-              >
-                <Link to={key} className="slider__banner-link">
-                  <img
-                    src={value}
-                    alt={key}
-                    className="slider__banner-img"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
+          }
+          ref={containerRef}
+        >
+          {images.map(([key, value]) => (
+            <li
+              className="slider__banner-item"
+              key={key}
+            >
+              <Link to={key} className="slider__banner-link">
+                <img
+                  src={value}
+                  alt={key}
+                  className="slider__banner-img"
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
+
         <button
           className="slider__button"
           type="button"

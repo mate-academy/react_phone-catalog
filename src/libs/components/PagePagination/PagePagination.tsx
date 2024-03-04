@@ -2,7 +2,7 @@
 
 import cn from 'classnames';
 import { useCallback } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 import { FilterType } from '../../types';
 import { getSearchWith } from '../../utils';
@@ -49,10 +49,6 @@ export const PagePagination: React.FC<Props> = ({
     setSearchParams(newParams);
   }, [setSearchParams, searchParams]);
 
-  const handleSelectPage = (page: number) => {
-    handleSetParams(String(page));
-  };
-
   const handlePrevClick = () => {
     if (currentPage <= 1) {
       return;
@@ -88,8 +84,12 @@ export const PagePagination: React.FC<Props> = ({
       <ul className="page-pagination__buttons-list">
         {pages.map(page => (
           <li key={page}>
-            <button
-              type="button"
+            <Link
+              to={{
+                search: getSearchWith({
+                  [SearchParamsNames.page]: page || null,
+                }, searchParams),
+              }}
               key={page}
               className={cn(
                 'page-pagination__button',
@@ -99,10 +99,9 @@ export const PagePagination: React.FC<Props> = ({
                 },
               )}
               data-cy="paginationLeft"
-              onClick={() => handleSelectPage(page)}
             >
               {page}
-            </button>
+            </Link>
           </li>
         ))}
       </ul>

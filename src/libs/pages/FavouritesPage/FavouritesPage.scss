@@ -7,9 +7,30 @@
   width: 100%;
   padding-top: 24px;
 
+  @include on-mobile {
+    gap: 14px;
+  }
+
   &__cards {
     display: flex;
     gap: 16px;
     flex-wrap: wrap;
+
+    @include on-small-mobile {
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    @include on-large-mobile {
+      column-gap: 2%;
+    }
+
+    @include on-tablet {
+      column-gap: 2%;
+    }
+
+    @include on-laptop {
+      column-gap: 2%;
+    }
   }
 }

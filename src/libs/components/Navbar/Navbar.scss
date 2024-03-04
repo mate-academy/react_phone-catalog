@@ -6,6 +6,27 @@
   justify-content: space-between;
   height: 100%;
 
+  &__button {
+    display: none;
+
+    @include on-mobile {
+      display: block;
+      height: 100%;
+      padding-inline: 10px;
+      border-right: 1px solid $elements;
+      border-left: 1px solid $elements
+    }
+
+    @include on-tablet {
+      display: block;
+      height: 100%;
+      padding-inline: 10px;
+      border-right: 1px solid $elements;
+      border-left: 1px solid $elements
+    }
+  }
+
+
   &__list {
     @include flexbox-center-vertical;
 
@@ -13,21 +34,81 @@
     padding: 0;
     margin: 0;
     list-style: none;
+
+    @include on-mobile {
+      display: none;
+
+      &--visible {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 100%;
+        gap: 0;
+        align-items: flex-start;
+        padding: 5px 10px;
+        background-color: $white;
+        border: 1px solid $elements;
+        border-top: none;
+        z-index: 1000000;
+      }
+    }
+
+    @include on-tablet {
+      display: none;
+
+      &--visible {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 54px;
+        left: 0;
+        width: 100%;
+        gap: 0;
+        align-items: flex-start;
+        padding: 5px 10px;
+        background-color: $white;
+        border: 1px solid $elements;
+        border-top: none;
+        z-index: 1000000;
+      }
+    }
   }
 
   &__item {
     position: relative;
+
+    @include on-mobile {
+      &--home {
+        display: none;
+      }
+    }
+
+    @include on-tablet {
+      &--home {
+        display: none;
+      }
+    }
   }
 
   &__link{
     @include uppercase-text;
     @include transition;
     @include text-color-on-hover;
-    
+
     display: block;
     color: $secondary;
     text-decoration: none;
     padding: 26px 0;
+
+    @include on-mobile {
+      padding-block: 6px;
+    }
+
+    @include on-tablet {
+      padding-block: 12px;
+    }
 
     &--active {
     color: $primary;
@@ -42,6 +123,14 @@
         width: 100%;
         height: 3px;
         background-color: $primary;
+
+        @include on-mobile {
+          height: 1px;
+        }
+
+        @include on-tablet {
+          height: 2px;
+        }
       }
     }
   }

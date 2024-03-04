@@ -1,11 +1,13 @@
 import { Link } from 'react-router-dom';
-import './CategoryCard.scss';
+
 import { CategoryName } from '../../types/categoryName.enum';
 import { useAppSelector } from '../../app/hooks';
 import {
   getProductCategory,
   getCategoryTitle,
 } from '../../utils';
+
+import './CategoryCard.scss';
 
 type Props = {
   pass: CategoryName,
@@ -37,16 +39,18 @@ export const CategoryCard: React.FC<Props> = ({
         alt={title}
         className="category-card__photo"
       />
-      <h3
-        className="category-card__title"
-      >
-        {title}
-      </h3>
-      <p
-        className="category-card__models-count"
-      >
-        {`${modelsCount} models`}
-      </p>
+      <div className="category-card__text-container">
+        <h3
+          className="category-card__title"
+        >
+          {title}
+        </h3>
+        <p
+          className="category-card__models-count"
+        >
+          {`${modelsCount} models`}
+        </p>
+      </div>
     </Link>
   );
 };

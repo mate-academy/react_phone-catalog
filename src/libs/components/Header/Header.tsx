@@ -1,5 +1,6 @@
 import cn from 'classnames';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useState } from 'react';
 
 import {
   handleSearchBarVisibility,
@@ -20,6 +21,10 @@ type Props = {
 export const Header: React.FC<Props> = ({
   classNames,
 }) => {
+  const [
+    isSearchInputVisibleOnSmallScreen,
+    setIsSearchInputVisibleOnSmallScreen,
+  ] = useState(false);
   const { cartItems } = useAppSelector(state => state.cartItems);
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const location = useLocation();
@@ -37,17 +42,26 @@ export const Header: React.FC<Props> = ({
       </div>
 
       <div className="header__content">
-        {hasSearchBar && <SearchBar className="header__search-bar" />}
+        {hasSearchBar && (
+          <SearchBar
+            classNames="header__search-bar"
+            isInputVisible={isSearchInputVisibleOnSmallScreen}
+            setIsInputVisible={setIsSearchInputVisibleOnSmallScreen}
+          />
+        )}
 
         {!isCartPage && (
           <NavLink
             to="favourites"
-            className={({ isActive }) => (
+            className={
               cn(
                 'header__icon-link',
-                { 'header__link--active': isActive },
+                {
+                  'header__icon-link--on-small-screen':
+                         isSearchInputVisibleOnSmallScreen,
+                },
               )
-            )}
+            }
           >
             <div className="header__icon-container">
               <Icon
@@ -67,12 +81,15 @@ export const Header: React.FC<Props> = ({
 
         <NavLink
           to="cart"
-          className={({ isActive }) => (
+          className={
             cn(
               'header__icon-link',
-              { 'header__link--active': isActive },
+              {
+                'header__icon-link--on-small-screen':
+                    isSearchInputVisibleOnSmallScreen,
+              },
             )
-          )}
+          }
         >
           <div className="header__icon-container">
             <Icon
@@ -86,7 +103,6 @@ export const Header: React.FC<Props> = ({
               </span>
             )}
           </div>
-
         </NavLink>
       </div>
 

@@ -7,9 +7,28 @@
   flex-direction: column;
   width: 272px;
   flex-shrink: 0;
-  height: 507px;
   border: 1px solid $elements;
   padding: 32px 24px 24px;
+
+  @include on-small-mobile {
+    width: 100%;
+    padding-inline: 10px;
+  }
+
+  @include on-large-mobile {
+    width: 49%;
+    padding-inline: 20px;
+  }
+
+  @include on-tablet {
+    width: 32%;
+    padding-inline: 18px;
+  }
+
+  @include on-laptop {
+    width: 32%;
+    padding-inline: 18px;
+  }
 
   &:hover {
     box-shadow: 0 0 15px rgba(33,33,33,.2);
@@ -17,17 +36,27 @@
 
   &__photo-link {
     display: flex;
-    margin-inline: auto;
+    align-self: center;
     width: 208px;
     height: 208px;
     margin-bottom: 24px;
     object-position: center;
     object-fit: contain;
+
+    @include on-mobile {
+      width: 108px;
+      height: 108px;
+    }
+
+    @include on-tablet {
+      width: 158px;
+      height: 158px;
+    }
   }
 
   &__photo {
-    width: 208px;
-    height: 208px;
+    width: 100%;
+    height: 100%;
     align-self: center;
   }
 

@@ -6,15 +6,30 @@
   gap: 24px;
   width: 100%;
 
+  @include on-mobile {
+    gap: 14px;
+  }
+
+  @include on-tablet {
+    gap: 14px;
+  }
+
   &__cards {
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    justify-content: space-between;
 
     @include on-mobile {
-      & {
-        flex-direction: column;
-      }
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include on-laptop {
+      gap: 10px;
     }
   }
 }

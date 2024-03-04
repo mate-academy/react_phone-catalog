@@ -10,47 +10,55 @@
 .main {
   border-bottom: 1px solid $elements;
   min-height: calc(100vh - #{$header-height} - #{$footer-height});
+  position: relative;
 
   &__container {
     @include flexbox-center-vertical;
 
-    padding-top: 40px;
     flex-direction: column;
     max-width: 1136px;
     margin-inline: auto;
     padding-bottom: 80px;
 
-    @include on-small-desktop {
-      & {
-        max-width: 888px;
-        padding-inline: 20px;
-      }
+
+    @include on-mobile {
+      width: 100%;
+      padding: 0 5px 40px;
     }
 
     @include on-tablet {
-      & {
-        max-width: 580px;
-        padding-inline: 10px;
-      }
+      padding-inline: 20px;
     }
 
-    @include on-mobile {
-      & {
-        max-width: 282px;
-        padding-inline: 5px;
-      }
+    @include on-laptop {
+      width: 1024px;
+      padding-inline: 20px;
     }
   }
 
   &__banner {
+    padding-top: 40px;
     margin-bottom: 72px;
+
+    @include on-mobile {
+      padding-top: 20px;
+      margin-bottom: 42px;
+    }
   }
 
   &__hot-prices {
     margin-bottom: 80px;
+
+    @include on-mobile {
+      margin-bottom: 60px;
+    }
   }
 
   &__shop-by-category {
     margin-bottom: 80px;
+
+    @include on-mobile {
+      margin-bottom: 60px;
+    }
   }
 }

@@ -7,6 +7,11 @@
   border-left: 1px solid $elements;
   width: $search-bar-width;
 
+  @include on-mobile {
+    width: auto;
+    border: none;
+  }
+
   &__input {
     @include transition;
 
@@ -27,12 +32,34 @@
       background-color: $hover;
       box-shadow: -1px 0 0 0 $elements;
     }
+
+    &--small-screen {
+      @include on-mobile {
+        display: none;
+      }
+    }
   }
 
   &__button {
     position: absolute;
     right: 0;
     padding-right: 24px;
+
+    &--on-small-screen {
+      display: none;
+    }
+
+    @include on-mobile {
+      padding-right: 14px;
+
+      &--on-big-screen {
+        display: none;
+      }
+
+      &--on-small-screen {
+        display: block;
+      }
+    }
   }
 
   &__icon {

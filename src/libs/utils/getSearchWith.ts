@@ -21,5 +21,5 @@ export const getSearchWith = (
     }
   });
 
-  return newParams;
+  return newParams.toString();
 };

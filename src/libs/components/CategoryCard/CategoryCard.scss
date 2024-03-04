@@ -4,15 +4,43 @@
   display: flex;
   flex-direction: column;
   width: 368px;
-  height: 443px;
   text-decoration: none;
+
+  @include on-mobile {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  @include on-laptop {
+    min-width: 240px;
+  }
 
   &__photo {
     @include transition;
 
-    height: 368px;
     width: 100%;
     margin-bottom: 24px;
+
+    @include on-mobile {
+      width: 120px;
+      margin-bottom: 0;
+    }
+
+    @include on-tablet {
+      width: 200px;
+      margin-bottom: 0;
+    }
   }
 
   &:hover .category-card__photo{
@@ -26,26 +54,19 @@
     line-height: 26px;
     margin-bottom: 4px;
     color: $primary;
+
+    @include on-tablet {
+      font-size: 28px;
+      min-width: auto;
+    }
   }
 
   &__models-count {
     min-width: max-content;
     color: $secondary;
-  }
 
-  @include on-tablet {
-    & {
-      height: 321px;
-
-      &__photo {
-        height: 264px;
-      }
-    }
-  }
-
-  @include on-mobile {
-    & {
-      width: 100%;
+    @include on-tablet {
+      font-size: 16px;
     }
   }
 }

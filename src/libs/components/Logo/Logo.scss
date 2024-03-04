@@ -3,9 +3,18 @@
 .logo {
   @include flexbox-center-vertical;
   @include transition;
-  
+
   text-decoration: none;
   padding: 20px 24px;
+  height: 100%;
+
+  @include on-mobile {
+    padding-inline: 14px;
+  }
+
+  @include on-tablet {
+    padding-inline: 14px;
+  }
 
   &:hover  {
     transform: scale(1.1);

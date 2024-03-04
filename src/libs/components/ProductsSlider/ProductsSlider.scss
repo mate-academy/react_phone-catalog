@@ -1,38 +1,62 @@
 @import '/src/assets/css/styles';
 
-.cards-container {
+.products-slider {
   display: flex;
   flex-direction: column;
   gap: 24px;
   width: 100%;
 
+  @include on-mobile {
+    gap: 14px;
+  }
+
+  @include on-tablet {
+    gap: 14px;
+  }
 
   &__header {
     display: flex;
     justify-content: space-between;
+
+    @include on-mobile {
+      flex-direction: column;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 10px;
+    }
   }
 
   &__slider {
     width: 100%;
     overflow: hidden;
+
+    @include on-small-mobile {
+      width: 80%;
+      margin: 0 auto;
+    }
   }
 
   &__cards {
     display: flex;
     gap: 16px;
     width: 100%;
-  }
 
-  @include on-mobile {
-    & {
-      &__header {
-        flex-direction: column;
-        gap: 14px;
-      }
+    @include on-small-mobile {
+     gap: 0;
+    }
 
-      &__cards {
-        gap: 0;
-      }
+    @include on-large-mobile {
+      gap: 2%;
+    }
+
+    @include on-tablet {
+     gap: 5%;
+    }
+
+    @include on-laptop {
+     gap: 5%;
     }
   }
 }
@@ -42,6 +66,14 @@
 
   gap: 16px;
 
+  @include on-mobile {
+    gap: 10px;
+  }
+
+  @include on-tablet {
+    gap: 10px;
+  }
+
   &__icon {
     @include transition;
 
@@ -50,6 +82,18 @@
     height: 32px;
     padding: 8px;
     border: 1px solid $icons;
+
+    @include on-mobile {
+      width: 24px;
+      height: 24px;
+      padding: 4px;
+    }
+
+    @include on-tablet {
+      width: 24px;
+      height: 24px;
+      padding: 4px;
+    }
 
     & path {
       fill: $primary;

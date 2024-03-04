@@ -23,6 +23,12 @@ import { ReactComponent as Shopping } from '../../../assets/icons/shopping.svg';
 import {
   ReactComponent as ShoppingCounter,
 } from '../../../assets/icons/shopping-counter.svg';
+import {
+  ReactComponent as BurgerMenu,
+} from '../../../assets/icons/burger-menu.svg';
+import {
+  ReactComponent as BurgerMenuHover,
+} from '../../../assets/icons/burger-menu-hover.svg';
 
 type IconName =
 'arrowUp'
@@ -35,7 +41,9 @@ type IconName =
 | 'favourites'
 | 'favouritesCounter'
 | 'shopping'
-| 'shoppingCounter';
+| 'shoppingCounter'
+| 'burgerMenu'
+| 'burgerMenuHover';
 
 const iconNameToIcon: Record<
 IconName,
@@ -52,6 +60,8 @@ React.FC<React.SVGProps<SVGSVGElement>>
   favouritesCounter: FavouritesCounter,
   shopping: Shopping,
   shoppingCounter: ShoppingCounter,
+  burgerMenu: BurgerMenu,
+  burgerMenuHover: BurgerMenuHover,
 };
 
 export { type IconName, iconNameToIcon };

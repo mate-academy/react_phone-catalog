@@ -9,11 +9,34 @@
   border: 1px solid $elements;
   padding: 24px;
 
+  @include on-mobile {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+    padding: 12px;
+  }
+
+  @include on-tablet {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    height: auto;
+  }
+
   &__total-price {
     @include flexbox-center;
     @include h1-text;
 
     color: $primary;
+
+    @include on-mobile {
+      font-size: 22px;
+    }
   }
 
   &__description {
@@ -24,6 +47,14 @@
     padding-bottom: 24px;
     margin-bottom: 24px;
     color: $secondary;
+
+    @include on-mobile {
+      padding-bottom: 10px;
+    }
+
+    @include on-tablet {
+      max-width: 320px;
+    }
   }
 
   &__checkout-button {
@@ -37,6 +68,10 @@
 
     &:active {
       @include button-active;
+    }
+
+    @include on-tablet {
+      max-width: 320px;
     }
   }
 }

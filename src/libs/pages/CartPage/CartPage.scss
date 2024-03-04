@@ -6,22 +6,42 @@
   width: 100%;
   padding-top: 40px;
 
+  @include on-mobile {
+    padding-top: 20px;
+  }
+
   &__back-button {
     margin-bottom: 16px;
   }
 
   &__title {
     margin-bottom: 24px;
+
+    @include on-mobile {
+      margin-bottom: 10px;
+    }
   }
 
   &__main {
     display: flex;
     gap: 16px;
+
+    @include on-mobile {
+    flex-direction: column;
+    }
   }
 
   &__cards {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-mobile {
+      gap: 8px;
+    }
+
+    @include on-tablet {
+      width: 100%;
+    }
   }
 }

@@ -22,7 +22,9 @@
     @include transition;
     @include button-border-on-hover;
 
+    color: $black;
     border: 1px solid $elements;
+    text-decoration: none;
 
     &--active {
       background-color: $primary;
@@ -34,7 +36,7 @@
   &__arrow-button {
     @include flexbox-center;
     @include transition;
-    
+
     padding: 8px;
     border: 1px solid $icons;
     background-color: transparent;

@@ -1,23 +1,46 @@
-import { NavLink } from 'react-router-dom';
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
+import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
+
+import { HEADER_LIST_ITEMS } from '../../constants/headerListItems';
+
+import { Icon } from '../Icon';
 
 import './Navbar.scss';
 
-const headerListItems = ['home', 'phones', 'tablets', 'accessories'];
-
 export const Navbar = () => {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <nav className="nav">
-      <ul className="nav__list">
+      <button
+        type="button"
+        className="nav__button"
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        <Icon
+          iconName={isOpen ? 'burgerMenuHover' : 'burgerMenu'}
+        />
+      </button>
+
+      <ul className={cn(
+        'nav__list',
+        { 'nav__list--visible': isOpen },
+      )}
+      >
         {
-          headerListItems.map(el => (
+          HEADER_LIST_ITEMS.map(el => (
             <li
-              className="nav__item"
+              className={cn(
+                'nav__item',
+                { 'nav__item--home': el === 'home' },
+              )}
               key={el}
             >
               <NavLink
                 to={
-                  el === headerListItems[0]
+                  el === HEADER_LIST_ITEMS[0]
                     ? '/'
                     : `/${el}`
                 }
@@ -27,6 +50,7 @@ export const Navbar = () => {
                     { 'nav__link--active': isActive },
                   )
                 )}
+                onClick={() => setIsOpen(false)}
 
               >
                 {el.toUpperCase()}

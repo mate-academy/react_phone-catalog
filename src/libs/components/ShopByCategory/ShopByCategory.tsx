@@ -5,7 +5,7 @@ import './ShopByCategory.scss';
 
 export const ShopByCategory = () => {
   return (
-    <div className="main__shop-by-category shop-by-category">
+    <section className="main__shop-by-category shop-by-category">
       <SectionHeader title="Shop by category" />
       <div
         className="shop-by-category__cards"
@@ -22,6 +22,6 @@ export const ShopByCategory = () => {
           pass={CategoryName.Accessories}
         />
       </div>
-    </div>
+    </section>
   );
 };
