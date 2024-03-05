@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="header__leftContainer">
-        <Link to="/" className="Logo">
+        <Link to="./" className="Logo">
           <img src="./img/logo.svg" alt="Logo" />
         </Link>
 
@@ -84,34 +84,38 @@ export const Header = () => {
                 className="search__button"
               >
                 <img
-                  src="/img/Close-dark.png"
+                  src="./img/Close-dark.png"
                   alt="Search"
                   className="search__img"
                 />
               </button>
             ) : (
-              <img src="/img/Search.png" alt="Search" className="search__img" />
+              <img
+                src="./img/Search.png"
+                alt="Search"
+                className="search__img"
+              />
             )}
           </div>
         )}
-        <NavLink to="/Favorites" className="category">
+        <NavLink to="./Favorites" className="category">
           <div
             className={classNames({
               active__line: location.pathname === `/${"Favorites"}`,
             })}
           />
-          <img src="/img/heart.png" alt="Favorites" />
+          <img src="./img/heart.png" alt="Favorites" />
           {favouritesPhones.length > 0 && (
             <div className="circle">{favouritesPhones.length}</div>
           )}
         </NavLink>
-        <NavLink to="/Cart" className="category">
+        <NavLink to="./Cart" className="category">
           <div
             className={classNames({
               active__line: location.pathname === `/${"Cart"}`,
             })}
           />
-          <img src="/img/bag.png" alt="Cart" />
+          <img src="./img/bag.png" alt="Cart" />
           {cartPhones.length > 0 && (
             <div className="circle">{cartPhones.length}</div>
           )}

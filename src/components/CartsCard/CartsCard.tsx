@@ -53,7 +53,7 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
             type="button"
             onClick={() => changeCart(phone)}
           >
-            <img src="/img/Close.png" alt="Close" />
+            <img src="./img/Close.png" alt="Close" />
           </button>
 
           <img

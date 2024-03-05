@@ -17,7 +17,7 @@ createRoot(document.getElementById("root") as HTMLElement).render(
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/home" element={<Navigate to="./" />} />
             <Route path="/Phones" element={<PhonesPage />} />
             <Route path="/Phones/:id" element={<ItemCard />} />
             <Route path="/Tablets" element={<div>Work in progres...</div>} />

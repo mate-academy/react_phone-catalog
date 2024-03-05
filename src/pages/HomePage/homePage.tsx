@@ -20,21 +20,21 @@ export const HomePage = () => {
 
   const categoryImg = [
     {
-      img: "/_new/img/category-phones.png",
+      img: "./_new/img/category-phones.png",
       name: "Mobile phones",
       count: `${phones.length}`,
       color: "#D53C51",
       type: "Phones",
     },
     {
-      img: "/_new/img/category-tablets.png",
+      img: "./_new/img/category-tablets.png",
       name: "Tablets",
       count: 24,
       color: "#D53C51",
       type: "Tablets",
     },
     {
-      img: "/_new/img/category-accessories.png",
+      img: "./_new/img/category-accessories.png",
       name: "Accessories",
       count: 100,
       color: "#D53C51",
@@ -71,7 +71,7 @@ export const HomePage = () => {
               )
             }
           >
-            <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
+            <img src="./img/ArrowLeft.png" alt="ArrowLeft" />
           </button>
           <div
             className="Slider__list"
@@ -83,21 +83,21 @@ export const HomePage = () => {
             <Link to="Phones">
               <img
                 className="Slider__img"
-                src="/_new/img/banner-phones.png"
+                src="./_new/img/banner-phones.png"
                 alt="banner-phones"
               />
             </Link>
             <Link to="Tablets">
               <img
                 className="Slider__img"
-                src="/_new/img/banner-tablets.png"
+                src="./_new/img/banner-tablets.png"
                 alt="banner-tablets"
               />
             </Link>
             <Link to="Accessories">
               <img
                 className="Slider__img"
-                src="/_new/img/banner-accessories.png"
+                src="./_new/img/banner-accessories.png"
                 alt="banner-accessories"
               />
             </Link>
@@ -115,7 +115,7 @@ export const HomePage = () => {
               disabled: scrollImgPosition < -imgWidth,
             })}
           >
-            <img src="/img/ArrowRight.png" alt="ArrowRight" />
+            <img src="./img/ArrowRight.png" alt="ArrowRight" />
           </button>
         </div>
 

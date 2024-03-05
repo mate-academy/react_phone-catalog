@@ -76,7 +76,7 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
               disabled: scrollPosition + itemWidth > 0,
             })}
           >
-            <img src="/img/ArrowLeft.png" alt="ArrowLeft" />
+            <img src="./img/ArrowLeft.png" alt="ArrowLeft" />
           </button>
           <button
             type="button"
@@ -93,7 +93,7 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
                 -((phonesToDisplay(type).length - 4) * itemWidth),
             })}
           >
-            <img src="/img/ArrowRight.png" alt="ArrowRight" />
+            <img src="./img/ArrowRight.png" alt="ArrowRight" />
           </button>
         </div>
       </div>

@@ -42,7 +42,7 @@ export const Pagination: React.FC<PaginationTypes> = ({
           aria-disabled={currentPage === 1 ? "true" : "false"}
           onClick={() => onPageChange(currentPage - 1)}
         >
-          <img src="/img/ArrowLeft.png" alt="left" />
+          <img src="./img/ArrowLeft.png" alt="left" />
         </a>
       </li>
 
@@ -80,7 +80,7 @@ export const Pagination: React.FC<PaginationTypes> = ({
           aria-disabled={currentPage === pagesAmount ? "true" : "false"}
           onClick={() => onPageChange(currentPage + 1)}
         >
-          <img src="/img/ArrowRight.png" alt="right" />
+          <img src="./img/ArrowRight.png" alt="right" />
         </a>
       </li>
     </ul>

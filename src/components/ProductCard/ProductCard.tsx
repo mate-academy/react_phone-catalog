@@ -82,12 +82,12 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
           >
             {favouritesPhones.some((item) => item.id === card.id) ? (
               <img
-                src="/img/Red-heart.png"
+                src="./img/Red-heart.png"
                 alt="Heart"
                 className="favourites-img"
               />
             ) : (
-              <img src="/img/heart.png" alt="Heart" />
+              <img src="./img/heart.png" alt="Heart" />
             )}
           </button>
         </div>
