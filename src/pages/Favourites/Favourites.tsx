@@ -29,7 +29,7 @@ export const Favourites = () => {
   return (
     <div className="Favourites">
       <div className="top-link" data-cy="breadCrumbs">
-        <Link to="./">
+        <Link to="/">
           <img src="./img/Home.png" alt="Home" className="top-link__img" />
         </Link>
 

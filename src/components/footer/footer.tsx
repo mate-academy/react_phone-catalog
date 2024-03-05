@@ -5,7 +5,7 @@ export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__leftContainer">
-        <Link to="./">
+        <Link to="/">
           <img src="./img/logo.svg" alt="Logo" />
         </Link>
       </div>

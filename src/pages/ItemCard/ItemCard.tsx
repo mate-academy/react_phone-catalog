@@ -79,11 +79,11 @@ export const ItemCard = () => {
   return (
     <div className="ItemCard">
       <div className="top-link" data-cy="breadCrumbs">
-        <Link to="./">
+        <Link to="/">
           <img src="./img/Home.png" alt="Home" />
         </Link>
         <img src="./img/UpperLink.png" alt="ArrowRight" />
-        <Link to="./Phones">
+        <Link to="/Phones">
           <p>Phones</p>
         </Link>
         <img src="./img/UpperLink.png" alt="ArrowRight" />
@@ -189,12 +189,12 @@ export const ItemCard = () => {
               >
                 {includesFav ? (
                   <img
-                    src="./img/Red-heart.png"
+                    src="/img/Red-heart.png"
                     alt="Heart"
                     className="favourites-img"
                   />
                 ) : (
-                  <img src="./img/heart.png" alt="Heart" />
+                  <img src="/img/heart.png" alt="Heart" />
                 )}
               </button>
             </div>

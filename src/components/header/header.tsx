@@ -31,7 +31,7 @@ export const Header = () => {
   return (
     <header className="header">
       <div className="header__leftContainer">
-        <Link to="./" className="Logo">
+        <Link to="/" className="Logo">
           <img src="./img/logo.svg" alt="Logo" />
         </Link>
 
