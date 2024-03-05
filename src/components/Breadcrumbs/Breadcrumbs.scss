@@ -1,0 +1,50 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &-block {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    text-decoration: none;
+    transition: all $duration;
+
+    &:hover {
+      transform: scale(1.1);
+      text-decoration: underline;
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $gray-secondary;
+    &--link {
+      color: $gray-primary;
+    }
+  }
+}

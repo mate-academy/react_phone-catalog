@@ -1,0 +1,21 @@
+@import '../../utils/mixsin';
+
+.home-page {
+  display: block;
+  margin: 0 auto;
+  &__section:not(:last-child) {
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      margin-bottom: 60px;
+    }
+
+    @include on-descktop {
+      margin-bottom: 80px;
+    }
+
+    &--banner{
+      margin-bottom: 72px;
+    }
+  }
+}

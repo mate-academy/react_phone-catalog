@@ -1,0 +1,73 @@
+@import '../../utils/variables';
+@import '../../utils/mixsin';
+
+.banner-slider {
+  display: flex;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  height: 200px;
+
+  @include on-tablet {
+    height: 300px;
+  }
+
+  @include on-descktop {
+    height: 400px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    width: 32px;
+    height: 100%;
+    flex-shrink: 0;
+  }
+
+  &__images-block {
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+
+  }
+
+  &__image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+
+    &--hidden {
+      display: none;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 80px;
+    height: 24px;
+  }
+
+  &__button-dots {
+    border: 0;
+    background-color: $gray-white;
+    height: 100%;
+    cursor: pointer;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+    background-color: #e2e6e9;
+  }
+
+  &__dot--active {
+    background-color: #313237;
+  }
+}
