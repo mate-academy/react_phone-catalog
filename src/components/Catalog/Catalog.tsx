@@ -64,18 +64,25 @@ export const Catalog: React.FC<Props> = ({
             <Breadcrumbs />
           </section>
         )}
-        {!appliedQuery ? (
+
+        {!!products.length && (
           <section className="page__section">
-            <h1 className="products__title page__title">{pageTitle}</h1>
-            <p className="products__count"> {filtredProducts.length} models</p>
-          </section>
-        ) : (
-          <section className="page__section">
-            <p className="products__count"> {filtredProducts.length} results</p>
+            {!appliedQuery ? (
+              <>
+                <h1 className="products__title page__title">{pageTitle}</h1>
+                <p className="products__count">
+                  {filtredProducts.length} models
+                </p>
+              </>
+            ) : (
+              <p className="products__count">
+                {filtredProducts.length} results
+              </p>
+            )}
           </section>
         )}
 
-        {isNavigation && !appliedQuery && (
+        {isNavigation && !appliedQuery && !!products.length && (
           <section className="page__section">
             <nav className="products__nav">
               <Dropdown

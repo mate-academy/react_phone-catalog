@@ -5,7 +5,8 @@ import { CartContext } from '../CartContext/CartContext';
 import { getSearchWith } from '../../utils/search';
 
 export const Search = () => {
-  const { applyQuery, setAppliedQuery, appliedQuery } = useContext(CartContext);
+  const { applyQuery, setAppliedQuery, appliedQuery, products } =
+    useContext(CartContext);
 
   const [query, setQuery] = useState<string>('');
   const [searchParams, setSearchParams] = useSearchParams();
@@ -46,7 +47,7 @@ export const Search = () => {
     setSearchWith({ queryParams: appliedQuery || null });
   }, [appliedQuery, setSearchWith]);
 
-  return (
+  return products.length ? (
     <div className="search">
       <input
         type="text"
@@ -73,5 +74,5 @@ export const Search = () => {
         </button>
       )}
     </div>
-  );
+  ) : null;
 };

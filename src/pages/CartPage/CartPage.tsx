@@ -8,6 +8,7 @@ import { BASE_URL } from '../../api';
 import { OrderedProduct } from '../../type/OrderedProduct';
 import { Message } from '../../type/Message';
 import { Product } from '../../type/Product';
+import { NoResults } from '../../components/NoResults';
 
 export const CartPage = () => {
   const { orderedProducts, setOrderedProducts, products, setMessage } =
@@ -53,9 +54,11 @@ export const CartPage = () => {
           <Breadcrumbs />
         </section>
 
-        <section className="page__section">
-          <h1 className="page__title">Cart</h1>
-        </section>
+        {!!orderedProducts.length && (
+          <section className="page__section">
+            <h1 className="page__title">Cart</h1>
+          </section>
+        )}
 
         <section className="cart-page__section page__section">
           {orderedProducts.length > 0 ? (
@@ -152,7 +155,7 @@ export const CartPage = () => {
               </div>
             </div>
           ) : (
-            <div>Your cart is empty</div>
+            <NoResults categoryName="Cart" />
           )}
         </section>
       </div>

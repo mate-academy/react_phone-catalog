@@ -54,6 +54,7 @@
     display: flex;
     list-style: none;
     flex-direction: column;
+    justify-content: center;
 
     @include on-tablet {
       flex-direction: row;

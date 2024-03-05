@@ -8,6 +8,7 @@
   border: 1px solid $gray-elements;
   background: $gray-white;
   padding: 32px 24px 24px;
+  transition: all $duration;
 
   &:hover {
     box-shadow: 0 3px 13px 0 #17203142;
@@ -113,6 +114,7 @@
     color: $gray-white;
     text-align: center;
     font-weight: 600;
+    border: 1px solid transparent;
     cursor: pointer;
 
     transition: all $duration;
