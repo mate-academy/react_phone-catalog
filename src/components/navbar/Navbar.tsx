@@ -63,6 +63,12 @@ export const Navbar: React.FC = () => {
     setSearchParams(params);
   }, 1000), [])
 
+  function closeSearch() {
+    params.delete('search');
+    setSearchParams(params);
+    setSearchQuery('');
+  }
+
   return (
     <div className="navbar-total">
       <div className="navbar">
@@ -107,7 +113,7 @@ export const Navbar: React.FC = () => {
 
       <div className="navbar-icons">
 
-        {location.pathname !== '/' && (
+        {(location.pathname !== '/' && location.pathname !== '/cart') && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input
@@ -118,21 +124,31 @@ export const Navbar: React.FC = () => {
               />
             </div>
             <div className="search-align search-align--search">
-              <img src="./img/icons/search.svg" alt="img" />
+              {searchQuery.length > 0 ? (
+                <img
+                  src="./img/icons/closeBlack.svg"
+                  alt="img"
+                  onClick={closeSearch}
+                />
+              ) :
+                (<img src="./img/icons/search.svg" alt="img" />)
+              }
             </div>
           </div>
         )}
 
-        <NavLink to="/favourites" className={linkClassIcons} >
-          <div className="navbar_icon navbar-icons">
-            <img src="./img/icons/icon_1.svg" alt="img" />
-            {state.favourites.length > 0 && (
-              <div className="red-circle-box">
-                <div className="red-circle">{state.favourites.length}</div>
-              </div>
-            )}
-          </div>
-        </NavLink>
+        {location.pathname !== '/cart' &&
+          <NavLink to="/favourites" className={linkClassIcons} >
+            <div className="navbar_icon navbar-icons">
+              <img src="./img/icons/icon_1.svg" alt="img" />
+              {state.favourites.length > 0 && (
+                <div className="red-circle-box">
+                  <div className="red-circle">{state.favourites.length}</div>
+                </div>
+              )}
+            </div>
+          </NavLink>
+        }
 
         <NavLink to="/cart" className={linkClassIcons}>
           <div className="navbar_icon navbar-icons">
