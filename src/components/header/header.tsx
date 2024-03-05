@@ -32,7 +32,7 @@ export const Header = () => {
     <header className="header">
       <div className="header__leftContainer">
         <Link to="/" className="Logo">
-          <img src="/img/logo.svg" alt="Logo" />
+          <img src="./img/logo.svg" alt="Logo" />
         </Link>
 
         <nav className="navigation">
