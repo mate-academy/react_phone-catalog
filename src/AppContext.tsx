@@ -89,7 +89,7 @@ function reducer(state: Data, action: Action) {
 
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
-      const cardData = JSON.parse(localStorage.getItem("cart") || '')
+      const cardData = JSON.parse(localStorage.getItem("cart") || '[]')
 
       return {
         ...state,
@@ -97,7 +97,7 @@ function reducer(state: Data, action: Action) {
       }
     }
     case ACTIONS.DELETE_FROM_CARD: {
-      const cardData = JSON.parse(localStorage.getItem("cart") || '');
+      const cardData = JSON.parse(localStorage.getItem("cart") || '[]');
 
       const copy = [...cardData];
       const indexElement = copy.findIndex(element => element.id === action.payload.id);
@@ -145,7 +145,7 @@ const initialState: State = {
     favourites: [],
     products: [],
     card: [],
-    render:false,
+    render: false,
   },
   dispatch: () => { },
 }

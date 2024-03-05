@@ -5,6 +5,7 @@ import '../ProductPage/product.scss';
 import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import { StateContext } from '../../AppContext';
+import { NavLink } from 'react-router-dom';
 
 export const HomePage = () => {
   const sliderRef = useRef<null | HTMLDivElement>(null);
@@ -85,28 +86,38 @@ export const HomePage = () => {
           <div className="square left mb-24">
             <img src="./img/covers/image6.png" alt="img" style={{ float: "right" }} />
           </div>
-          <div>
-            <div className="big-title">Mobile phones</div>
-            <div className="small-title">{state.products.filter(product => product.type === 'phone').length + ' models'}</div>
-          </div>
+
+          <NavLink to="/phones" className="link">
+            <div>
+              <div className="big-title">
+                Mobile phones</div>
+              <div className="small-title">{state.products.filter(product => product.type === 'phone').length + ' models'}</div>
+            </div>
+          </NavLink>
+
         </div>
         <div>
           <div className="square left mb-24">
             <img src="./img/covers/image5.png" alt="img" style={{ float: "right" }} />
           </div>
+          <NavLink to="/tablets" className="link">
           <div>
             <div className="big-title">Tablets</div>
             <div className="small-title">{state.products.filter(product => product.type === 'tablet').length + ' models'}</div>
           </div>
+          </NavLink>
         </div>
+
         <div>
           <div className="square left mb-24">
             <img src="./img/covers/image7.png" alt="img" style={{ float: "right" }} />
           </div>
+          <NavLink to="/accessories" className="link">
           <div>
             <div className="big-title">Accessories</div>
             <div className="small-title">{state.products.filter(product => product.type === 'accessoire').length + ' models'}</div>
           </div>
+          </NavLink>
         </div>
       </div>
 
