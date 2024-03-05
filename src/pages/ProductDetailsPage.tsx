@@ -21,7 +21,7 @@ import { BackButton } from '../components/BackButton';
 
 import '../styles/ProductDetailsPage.scss';
 import { Product } from '../types/Product';
-import { shuffleArrays } from '../utils/shuffleArrays';
+import { shuffleArrays } from '../helpers/shuffleArrays';
 import { GlobalContext } from '../GlobalContext';
 
 export const ProductDetailsPage: React.FC = () => {

@@ -17,7 +17,6 @@ export const FavCart: React.FC = () => {
     cn('fav-cart__cart-link', { 'fav-cart__cart-link--active': isActive })
   );
 
-
   return (
     <div className="fav-cart">
       <div className="fav-cart__block">
@@ -30,17 +29,17 @@ export const FavCart: React.FC = () => {
           )}
         </NavLink>
 
-
-
-
-
       </div>
 
       <div className="fav-cart__block">
         <NavLink
           to="/cart"
           className={getCartLinkClass}
-        />
+        >
+          {!!cartList.length && (
+            <Counter quantity={cartList.length} />
+          )}
+        </NavLink>
       </div>
     </div>
   );

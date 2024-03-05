@@ -2,8 +2,8 @@
 import React from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from '../utils/searchHelper';
-import { getNumbers } from '../utils/getNumbers';
+import { getSearchWith } from '../helpers/searchHelper';
+import { getNumbers } from '../helpers/getNumbers';
 
 import '../styles/Pagination.scss';
 

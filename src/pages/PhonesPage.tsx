@@ -14,7 +14,7 @@ export const PhonesPage: React.FC = () => {
 
   const [searchParams] = useSearchParams();
 
-  const sort = searchParams.get('sort') || '';
+  const sort = searchParams.get('sort') || 'age';
   const perPage = +(searchParams.get('perPage') || 'All');
   const page = +(searchParams.get('page') || 1);
 
@@ -39,6 +39,8 @@ export const PhonesPage: React.FC = () => {
   });
 
   const finalPhones = sortedPhones.slice(firstItem, lastItem);
+
+  // console.log(phones);
 
   return (
     <main className="phones-page">

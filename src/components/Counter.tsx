@@ -14,4 +14,4 @@ export const Counter: React.FC<Props> = ({ quantity }) => {
       </span>
     </div>
   );
-}
+};

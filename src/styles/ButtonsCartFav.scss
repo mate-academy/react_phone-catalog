@@ -9,12 +9,26 @@
 
   &__cart {
     grid-column: 1 / 2;
+
     background-color: $primary-color;
     color: #fff;
+    border: 1px solid $primary-color;
+
     font-size: 14px;
     font-weight: $medium-font;
     line-height: 21px;
+
     transition: $transition-duration;
+
+    &--active {
+      background-color: #fff;
+      color: #27ae60;
+      border: 1px solid $elements-color;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
+      }
+    }
 
     &:hover {
       box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.26);
@@ -23,9 +37,19 @@
 
   &__favorites {
     grid-column: 2;
-    background: url("../icons/favorites-icon.svg") no-repeat center;
     border: 1px solid $gray-icons-color;
+    background: url("../icons/favorites-icon.svg") no-repeat center;
     transition: $transition-duration;
+
+    &--active {
+      border: 1px solid $gray-icons-color;
+      background: url("../icons/favorites-icon-heart.svg") no-repeat center;
+      transition: $transition-duration;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
 
     &:hover {
       border: 1px solid $primary-color;

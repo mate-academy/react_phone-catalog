@@ -1,7 +1,7 @@
 import React from 'react';
 import '../styles/Dropdowns.scss';
 import { useSearchParams } from 'react-router-dom';
-import { getSearchWith } from '../utils/searchHelper';
+import { getSearchWith } from '../helpers/searchHelper';
 
 const sortTypes
   = [{ age: 'Newest' }, { name: 'Alphabetically' }, { price: 'Cheapest' }];

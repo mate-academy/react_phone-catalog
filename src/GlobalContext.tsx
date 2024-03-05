@@ -4,8 +4,8 @@ import { useLocation } from 'react-router-dom';
 import { Product } from './types/Product';
 import { ContextType } from './types/ContextType';
 import { getProducts } from './utils/api-phones';
-import { useLocalStorage } from './utils/useLocalStorage';
-import { CartItem } from './types/CartItem';
+import { useLocalStorage } from './helpers/useLocalStorage';
+import { CartItemType } from './types/CartItemType';
 
 export const GlobalContext = React.createContext<ContextType>({
   products: [],
@@ -38,7 +38,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
 
   // const [localStorage, setLocalStorage] = useLocalStorage<Product[]>('crd', []);
   const [favList, setFavList] = useLocalStorage<Product[]>('fav', []);
-  const [cartList, setCartList] = useLocalStorage<CartItem[]>('cart', []);
+  const [cartList, setCartList] = useLocalStorage<CartItemType[]>('cart', []);
 
   // console.log(cartList);
 
@@ -52,10 +52,10 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       : setFavList([...favList, product]);
   }
 
-  function addRemoveCartList(item: CartItem): void {
-    cartList.find(cartItem => cartItem.product.id === item.product.id)
-      ? setCartList([...cartList].filter(i => i.product.id !== item.product.id))
-      : setCartList([...cartList, item]);
+  function addRemoveCartList(cartItem: CartItemType): void {
+    cartList.find(item => item.id === cartItem.id)
+      ? setCartList([...cartList].filter(i => i.id !== cartItem.id))
+      : setCartList([...cartList, cartItem]);
   }
 
   function getNewPathname(option: string, index: number): string {
@@ -76,6 +76,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       })
       .finally(() => {
         setIsLoading(false);
+        // setCartList([]);
       });
   }, []);
 
