@@ -18,6 +18,8 @@ export const HomePage = () => {
 
   const [scrollImgPosition, setScrollImgPosition] = useState(0);
 
+  const abc = "https://mate-academy.github.io/react_phone-catalog";
+
   const categoryImg = [
     {
       img: "./_new/img/category-phones.png",
@@ -34,7 +36,8 @@ export const HomePage = () => {
       type: "Tablets",
     },
     {
-      img: "./_new/img/category-accessories.png",
+      img: `${abc}/_new/img/category-accessories.png`,
+      // img: "./_new/img/category-accessories.png",
       name: "Accessories",
       count: 100,
       color: "#D53C51",
