@@ -1,0 +1,80 @@
+@import '../../vars';
+
+.Slider {
+  position: relative;
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__content {
+    overflow: hidden;
+    max-width: 1040px;
+    margin: 0 auto;
+  }
+
+  &__arrow {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 32px;
+    height: 400px;
+    cursor: pointer;
+    user-select: none;
+    border: 1px solid $colorBorderArrow;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.6s;
+    background-color: $colorWhite;
+
+    &:hover {
+      border: 1px solid $colorBlack
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &-left {
+      left: 0;
+    }
+
+    &-right {
+      right: 0;
+    }
+  }
+
+  &__images {
+    object-fit: contain;
+    z-index: -1;
+    display: flex;
+    height: 400px;
+    max-width: 1040px;
+  }
+
+  &__img {
+    object-fit: cover;
+  }
+
+  &__mark {
+    margin: 18px 0 82px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $colorBorder;
+    border: none;
+    cursor: pointer;
+    user-select: none;
+    transition: 0.5s background-color;
+  }
+}
+
+.active-dot {
+  background-color: $colorBlack;
+}

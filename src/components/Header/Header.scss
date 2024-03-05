@@ -1,0 +1,64 @@
+@import "/src/vars";
+
+.Header {
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    max-width: 1440px;
+    margin: 0 auto;
+    box-shadow: 0 1px 0 0 $colorBorder;
+
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+    height: 64px;
+
+    &-logo {
+      padding-left: 24px;
+    }
+
+    &-item {
+      text-decoration: none;
+      color: $colorGray;
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+
+  &__desire {
+    display: flex;
+
+    &-itemBox {
+      display: flex;
+      width: 64px;
+      justify-content: center;
+      box-shadow: -1px 0 0 0 $colorBorder;
+
+    }
+
+    &-item {
+      display: flex;
+    }
+  }
+}
+
+.is-active {
+  position: relative;
+  color: $colorBlack;
+  line-height: 64px;
+
+
+  &::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: $colorBlack;
+  }
+}

@@ -1,0 +1,44 @@
+@import '/src/vars';
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  box-shadow: 0 -1px 0 0 $colorBorder;
+
+  &__content {
+    margin: 0 auto;
+    max-width: 1136px;
+    display: flex;
+    justify-content: space-between;
+    line-height: 96px;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 64px;
+
+    &-item {
+      text-decoration: none;
+      color: $colorGray;
+      font-weight: bold;
+      font-size: 12px;
+    }
+  }
+
+  &__buttonBack {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    &-name {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}
