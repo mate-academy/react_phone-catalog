@@ -6,6 +6,7 @@ import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import { StateContext } from '../../AppContext';
 import { NavLink } from 'react-router-dom';
+import { getHotPriceProducts, getBrandNewProducts } from '../../helpers/utils';
 
 export const HomePage = () => {
   const sliderRef = useRef<null | HTMLDivElement>(null);
@@ -78,7 +79,7 @@ export const HomePage = () => {
 
       </div>
 
-      <PaginationSlider pageName='pageTop' headline='Hot prices' />
+      <PaginationSlider pageName='pageTop' headline='Hot prices' array={getHotPriceProducts(state.products)}/>
 
       <h1 className="home-page-header-text">Shop by category</h1>
       <div className="chunk-container chunk-container-big">
@@ -121,7 +122,7 @@ export const HomePage = () => {
         </div>
       </div>
 
-      <PaginationSlider pageName='pageDown' headline='Brand new models' />
+      <PaginationSlider pageName='pageDown' headline='Brand new models' array={getBrandNewProducts(state.products)}/>
 
     </div>
   );

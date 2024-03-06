@@ -115,3 +115,33 @@ export function getPageHeader(page: string = '') {
 
   return pageHader;
 }
+
+export function getRandomArray(array: Product[]) {
+
+  let currentIndex = array.length, randomIndex;
+
+  while(currentIndex > 0) {
+    randomIndex = Math.floor(Math.random() * array.length);
+    currentIndex--;
+    [array[currentIndex], array[randomIndex]] = [
+      array[randomIndex], array[currentIndex]
+    ];
+  }
+
+  return array;
+}
+
+export function getHotPriceProducts(array: Product[]) {
+  array.filter(elem => elem.discount > 0);
+  return array.sort((a, b) => priceSort(+a.price.slice(1) * (1 - (a.discount / 100)), +b.price.slice(1) * (1 - (b.discount / 100))));
+}
+
+export function getBrandNewProducts(array: Product[]) {
+  return array.filter(elem => elem.discount === 0);
+}
+
+export function priceSort(first: number, second: number ) {
+  const elem1 = +first;
+  const elem2 = +second;
+  return (elem1 < elem2) ? -1 : (elem1 > elem2) ? 1 : 0;
+}

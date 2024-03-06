@@ -1,25 +1,12 @@
 import { useContext } from 'react';
 import { StateContext } from '../../AppContext';
-import './Navigator.scss';
+import './BreadCrumbs.scss';
 
 type Props = {
   path: string,
 };
 
-// function capitalize(path: string) {
-//   const parts = path.split('/');
-//   const newarr = parts.map(part => {
-//     const letter = part.substring(1);
-//     const firstLetter = part.charAt(0);
-//     const result = firstLetter.toLocaleUpperCase() + letter;
-
-//     return result;
-//   });
-
-//   return newarr;
-// }
-
-export const Navigator: React.FC<Props> = ({ path }) => {
+export const BreadCrumbs: React.FC<Props> = ({ path }) => {
   const parts = path.split('/');
   const letter = parts[1].substring(1);
   const firstLetter = parts[1].charAt(0);

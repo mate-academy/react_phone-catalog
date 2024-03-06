@@ -1,30 +1,35 @@
-import { useContext } from 'react';
+// import { useContext } from 'react';
 // import { v4 as uuidv4 } from 'uuid';
 import { useSearchParams } from 'react-router-dom';
 import { ArrowForward, ArrowBack } from './ArrowButtons';
 import { getCurrentItems, useSetCurrentPage } from '../helpers/utils';
-import { newPhoneArray } from '../assets/arrayOfPhones/phonesArray';
 import { ProductItem } from '../components/product/ProductItem';
 import '../pages/ProductPage/product.scss';
 import '../pages/home/homePage.scss';
-import { StateContext } from '../AppContext';
+// import { StateContext } from '../AppContext';
+import { Product } from '../types';
 
 type Props = {
   pageName: string,
   headline?: string,
+  array: Product[],
 };
 
-export const PaginationSlider: React.FC<Props> = ({ pageName, headline }) => {
+export const PaginationSlider: React.FC<Props> = ({
+  pageName, headline, array
+}) => {
   const setPage22 = useSetCurrentPage();
 
   const [searchParams] = useSearchParams();
   const currentPage = searchParams.get(pageName) || '1';
-  const { state } = useContext(StateContext);
+  // const { state } = useContext(StateContext);
 
   const itemsPerpage = 4;
-  const amountOfPages = Math.ceil(newPhoneArray.length / itemsPerpage);
+  const amountOfPages = Math.ceil(array.length / itemsPerpage);
+  // const amountOfPages = Math.ceil(state.products.length / itemsPerpage);
 
-  const currentItems = getCurrentItems(state.products, currentPage);
+  const currentItems = getCurrentItems(array, currentPage);
+  // const currentItems = getCurrentItems(state.products, currentPage);
 
   return (
     <div className="hot-prices-block">

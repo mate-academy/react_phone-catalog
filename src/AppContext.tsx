@@ -4,7 +4,7 @@ import { ACTIONS } from "./helpers/utils";
 import React from "react";
 import { Product } from "./types";
 import axios from "axios";
-import { getAge } from "./helpers/utils";
+import { getAge, priceSort } from "./helpers/utils";
 import { useSearchParams } from "react-router-dom";
 
 type Action = { type: ACTIONS.SET_ITEMS_PER_PAGE, payload: string }
@@ -28,11 +28,11 @@ function alphabetSort(first: string, second: string ) {
   const word2 = second.toLocaleLowerCase();
   return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
 }
-function priceSort(first: string, second: string ) {
-  const word1 = +first.slice(1);
-  const word2 = +second.slice(1);
-  return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
-}
+// function priceSort(first: string, second: string ) {
+//   const elem1 = +first.slice(1);
+//   const elem2 = +second.slice(1);
+//   return (elem1 < elem2) ? -1 : (elem1 > elem2) ? 1 : 0;
+// }
 
 function sortProducts(arrayToSort: Product[]) {
   const [searchParams,] = useSearchParams();
@@ -55,7 +55,7 @@ function sortProducts(arrayToSort: Product[]) {
       break;
     }
     case 'price': {
-      result.sort((a, b) => priceSort(a.price, b.price));
+      result.sort((a, b) => priceSort(+a.price.slice(1), +b.price.slice(1)));
       break;
     }
 

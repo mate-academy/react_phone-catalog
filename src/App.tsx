@@ -5,7 +5,7 @@ import './App.scss';
 import { Navbar } from './components/navbar/Navbar';
 import { Footer } from './components/footer/Footer';
 import { useRef } from 'react';
-import { Navigator } from './components/navigator/Navigator';
+import { BreadCrumbs } from './components/BreadCrumbs/BreadCrumbs';
 
 export const App = () => {
   const refForFooter = useRef<null | HTMLDivElement>(null);
@@ -23,7 +23,7 @@ export const App = () => {
       <div ref={refForFooter} />
       <Navbar />
       <div className='commonPage-container'>
-        {location.pathname !== '/' && <Navigator path={location.pathname} />}
+        {location.pathname !== '/' && <BreadCrumbs path={location.pathname} />}
         <Outlet />
       </div>
       <Footer onClick={show} />

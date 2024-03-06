@@ -9,7 +9,7 @@ import classNames from 'classnames';
 import { ColorCircleElement } from './ColorCircleElement';
 import { CapacityChoiceElement } from './CapacityChoiceElement';
 import { StateContext } from '../../AppContext';
-import { ACTIONS, getFavourite } from '../../helpers/utils';
+import { ACTIONS, getFavourite, getRandomArray } from '../../helpers/utils';
 import { Product } from '../../types';
 import { TechSpecParagraph } from './TechSpecParagraph';
 import { BackButton } from '../BackButton/BackButton';
@@ -305,7 +305,7 @@ export const ProductCard: React.FC = () => {
 
       </div>
 
-      <PaginationSlider pageName="suggested" headline="You may also like" />
+      <PaginationSlider pageName="suggested" headline="You may also like" array={getRandomArray(state.products)}/>
     </div>
   );
 };
