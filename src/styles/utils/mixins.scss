@@ -1,0 +1,13 @@
+@mixin hover($property, $value) {
+  transition: #{$property} $transition-time ease;
+  &:hover {
+    #{$property}: $value;
+  }
+}
+
+@mixin focus($property, $value) {
+  transition: #{$property} $transition-time ease;
+  &:focus {
+    #{$property}: $value;
+  }
+}

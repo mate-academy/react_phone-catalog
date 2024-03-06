@@ -1,0 +1,37 @@
+.pagination {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__links {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.page-link {
+  width: $button-slider-size;
+  height: $button-slider-size;
+  text-decoration: none;
+  color: #000;
+  border: 1px solid #e2e6e9;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include hover(border, (1px solid #313237));
+}
+
+.is-active {
+  background-color: #313237;
+  color: #fff;
+}
+
+.disabled {
+  border-color: #e2e6e9;
+  color: #e2e6e9;
+}

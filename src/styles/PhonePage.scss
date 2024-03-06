@@ -1,0 +1,130 @@
+.phone-page {
+  &__path {
+    margin-top: 24px;
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+
+  &__content {
+    margin-bottom: 80px;
+  }
+
+  &__no-result {
+    margin: 40px 0;
+  }
+}
+
+.page-title {
+
+  &__title {
+    font-size: 32px;
+    letter-spacing: -1%;
+    line-height: 40.9px;
+    color: #313237;
+    margin-bottom: 8px;
+  }
+
+  &__items-count {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: #89939a;
+    margin-bottom: 40px;
+  }
+
+  &__sort-selection {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__sort {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__sort-title {
+    color: #89939a;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15.34px;
+  }
+}
+
+.page-path-icons {
+  display: flex;
+  gap: 8px;
+
+  &__location {
+    font-weight: 600;
+    color: #89939a;
+    font-size: 12px;
+    text-decoration: none;
+
+    &--bold {
+      color: #313237;
+    }
+  }
+
+  &__back {
+    @include hover(color, #313237);
+  }
+}
+
+.dropdown {
+  position: relative;
+  box-sizing: border-box;
+
+  &--big {
+    width: 176px;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
+}
+
+.option {
+  padding: 12px 14px;
+  cursor: pointer;
+
+  @include hover(background-color, #fafbfc);
+  @include hover(color, #313237);
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #fff;
+  color: #89939a;
+  font-weight: 500;
+  font-size: 14px;
+  min-width: 100%;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  margin-top: 4px;
+
+  &.show {
+    display: block;
+  }
+}
+
+.dropbtn {
+  color: #313237;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  border: 1px solid #b4bdc3;
+  outline: none;
+  padding: 10px 12px;
+  min-width: 126px;
+
+    @include focus(border-color, #313237);
+  @include hover(border-color, #89939a);
+}

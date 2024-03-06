@@ -1,0 +1,67 @@
+.banner {
+  width: 1136px;
+  position: relative;
+  overflow: hidden;
+
+  &__photo {
+    width: 1040px;
+    height: 400px;
+    display: none;
+  }
+  
+  &__photos {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 8px;
+    margin-inline: 16px;
+  }
+
+  &__top {
+    position: relative;
+  }
+
+  &__button {
+    position: absolute;
+    height: 100%;
+    background-color: white;
+    border: 1px solid #b4bdc3;
+    width: 32px;
+
+    &--next {
+      right: 0;
+      top: 0;
+    }
+
+    &--prev {
+      left: 0;
+      top: 0;
+    }
+  }
+}
+
+.is-active {
+  display: block;
+}
+
+.indicators {
+  display: flex;
+  gap: 4px;
+  justify-content: center;
+
+  &__indicator {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.indicator {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  background-color: #e2e6e9;
+}
+
+.indicator.is-active {
+  background-color: #313237;
+}

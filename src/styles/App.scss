@@ -1,0 +1,204 @@
+.navbar {
+  display: flex;
+  gap: 64px;
+
+  &__link {
+    letter-spacing: 4%;
+    text-decoration: none;
+    color: $navbar-link-color;
+    line-height: $navbar-link-height;
+    font-size: $navbar-link-size;
+    text-transform: uppercase;
+    font-weight: $font-weight-bold;
+    position: relative;
+    padding: 27px 0;
+    height: 100%;
+  }
+
+  & .active::after {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: #313237;
+  }
+}
+
+.header {
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    padding-left: 24px;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon-block {
+    width: $header-icon-width;
+    height: $header-icon-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &__menu {
+    display: flex;
+    gap: 64px;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+  }
+}
+
+.logo {
+  width: 40px;
+  height: 24px;
+
+  &-img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &-link {
+    display: block;
+  }
+}
+
+.icon {
+  display: block;
+  width: $icon-size;
+  height: $icon-size;
+  background-size: cover;
+
+  &--cart {
+    background-image: url(../../public/icons/Shopping-bag-2x.png);
+    position: relative;
+  }
+
+  &--favorities {
+    background-image: url(../../public/icons/Favourites-2x.png);
+    position: relative;
+  }
+
+  &--button-to-top {
+    background-image: url(../../public/icons/button-to-up-2x.png);
+  }
+
+  &--home {
+    background-image: url(../../public/icons/home-2x.png);
+  }
+
+  &--slider {
+    background-image: url(../../public/icons/slider-arrow-2x.png);
+  }
+
+  &--left {
+    transform: rotate(180deg);
+  }
+
+  &--close {
+    background-image: url(../../public/icons/close-2x.png);
+  }
+
+  &--close-search {
+    background-image: url(../../public/icons/button-close-search-2x.png);
+  }
+  &--search {
+    background-image: url(../../public/icons/search-2x.png);
+  }
+
+  &--down {
+    transform: rotate(90deg);
+  }
+
+  &--up {
+    transform: rotate(-90deg);
+  }
+}
+
+.footer {
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+  height: 96px;
+  margin-top: auto;
+
+  &__logo {
+    padding-left: 152px;
+    margin-right: 382px;
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__menu {
+    display: flex;
+    align-items: center;
+    min-height: 96px;
+  }
+
+  &__button-text {
+    color: $navbar-link-color;
+    line-height: $footer-button-text-height;
+    font-size: $navbar-link-size;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon-block {
+    padding: 8px;
+    border: 1px solid #b4bdc3;
+    width: 32px;
+    box-sizing: border-box;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    padding-right: 152px;
+  }
+
+  &__navbar {
+    margin-right: 302px;
+  }
+}
+
+.App {
+
+  &__content {
+    margin-inline: 152px;
+  }
+}
+
+.count::after {
+  content: attr(data-count);
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  background-color: #eb5757;
+  position: absolute;
+  top: -6px;
+  right: -6.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 9px;
+  line-height: 11.5px;
+}
+
+.main {
+  min-height: 100vh;
+}

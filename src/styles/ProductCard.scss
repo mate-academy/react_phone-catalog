@@ -1,0 +1,138 @@
+.productCard {
+  border: 1px solid #e2e6e9;
+  width: 272px;
+  height: 507px;
+  box-sizing: border-box;
+
+  &__photo {
+    width: $product-cart-photo-size;
+    height: $product-cart-photo-size;
+    padding: 32px 32px 24px;
+  }
+
+  &__title {
+    padding: 0 24px 6.5px;
+    line-height: 21px;
+    font-weight: 500;
+    font-size: 14px;
+    color: $product-cart-color-text-description;
+  }
+
+  &__price-block {
+    display: flex;
+    margin-left: 24px;
+    margin-right: 24px;
+    padding-bottom: 7px;
+    margin-bottom: 16px;
+    gap: 8px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__description {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 16px;
+  }
+
+  &__control {
+    display: flex;
+    gap: 8px;
+    padding-inline: 24px;
+  }
+
+  &__icon-block {
+    width: $product-card-icon-size;
+    height: $product-card-icon-size;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.control-button {
+  border: none;
+  color: white;
+  background-color: #313237;
+  height: 40px;
+  width: 100%;
+
+  &--big {
+    height: 48px;
+    width: 263px;
+  }
+}
+
+.icon-button-favorities {
+  width: $product-card-icon-size;
+  height: $product-card-icon-size;
+  background-image: url(../../public/icons/button-favorities-2x.png);
+  background-size: cover;
+  border: none;
+  background-color: white;
+
+  &--big {
+    width: 48px;
+    height: 48px;
+  }
+
+  &--is-favourite {
+    background-image: url(../../public/icons/Favourites-added-2x.png);
+  }
+
+  @include hover(border, (1px solid #313237));
+}
+
+.card-description {
+  display: flex;
+  flex-direction: column;
+  font-weight: 600;
+  color: #89939a;
+  font-size: 12px;
+  line-height: 15.34px;
+
+  &__description-dir {
+    display: flex;
+    gap: 8px;
+    flex-direction: column;
+  }
+
+  &--details {
+    width: 100%;
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__element {
+    color: $product-cart-color-text-description;
+  }
+}
+
+.price {
+  font-weight: 700;
+  font-size: 22px;
+  position: relative;
+  color: #313237;
+  line-height: 31px;
+
+  &--nodiscount {
+    text-decoration: line-through;
+    color: #89939a;
+    mix-blend-mode: difference;
+    font-size: 22px;
+    font-weight: 500;
+  }
+
+  &--big {
+    font-size: 32px;
+  }
+}
+
+.in-cart {
+  background-color: white;
+  color: #27ae60;
+  border: 1px solid #e2e6e9;
+}

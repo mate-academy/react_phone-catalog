@@ -1,0 +1,33 @@
+.search {
+  width: 327px;
+  height: 100%;
+  box-sizing: border-box;
+  padding-inline: 24px;
+  box-shadow: -1px 0 0 0 #e2e6e9;
+  border: none;
+  border-bottom: 1px solid #e2e6e9;
+
+  &::-webkit-search-cancel-button {
+    display: none;
+  }
+
+  &:hover {
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    background-color: #fafbfc;
+  }
+
+  &:focus {
+    box-shadow: -1px 0 0 0 #e2e6e9;
+    background-color: #fafbfc;
+    outline: none;
+  }
+}
+
+.search-bar {
+  position: relative;
+  &__icons {
+    position: absolute;
+    right: 24px;
+    top: 24px;
+  }
+}

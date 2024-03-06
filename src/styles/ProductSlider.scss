@@ -1,0 +1,45 @@
+.slider {
+  width: 1137px;
+  overflow: hidden;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__photos {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.5s ease;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    margin-top: 5px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+}
+
+.button {
+  width: $button-slider-size;
+  height: $button-slider-size;
+  border: 1px solid #b4bdc3;
+  background-color: white;
+  
+  @include hover(border, (1px solid #313237));
+
+  &--slider--left {
+    rotate: 180deg;
+  }
+}
+
+.slider-buttons {
+  display: flex;
+  gap: 16px;
+}

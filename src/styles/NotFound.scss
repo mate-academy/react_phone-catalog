@@ -1,0 +1,28 @@
+.not-found {
+
+  &__title-image {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__img {
+    width: 400px;
+    height: 400px;
+  }
+  
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+  }
+
+  &__content {
+    margin: 40px 0;
+  }
+
+  &__link {
+    text-decoration: none;
+    color:#313237;
+  }
+}

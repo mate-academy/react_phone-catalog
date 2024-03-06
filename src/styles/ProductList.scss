@@ -1,0 +1,9 @@
+.product-list {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+
+  &__link {
+    text-decoration: none;
+  }
+}
