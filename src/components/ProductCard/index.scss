@@ -1,0 +1,125 @@
+@import '../../styles/main';
+
+.productCard {
+  box-sizing: border-box;
+  width: 272px;
+  height: 507px;
+
+  border: 1px solid $color-elements;
+  padding: 32px 24px 24px;
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include nav-link;
+
+    &__image {
+      width: 208px;
+      height: 208px;
+
+      object-fit: contain;
+      align-self: center;
+
+      transition: transform $effect-duration;
+
+      &:hover {
+        @include hover (transform, scale(1.1));
+      }
+    }
+
+    &__title {
+      height: 42px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    font-display: row;
+    gap: 8px;
+    margin: 6.5px 0;
+
+    &--full {
+      text-decoration: line-through;
+      color: $color-secondary;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $color-elements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-block: 16px;
+
+    &--block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--name {
+      color: $color-secondary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    bottom: 0;
+
+    &__cart {
+      @extend %button;
+
+      box-sizing: border-box;
+      width: 176px;
+      height: 40px;
+
+      background-color: $color-primary;
+      color: white;
+
+      &--active {
+        color: $color-green;
+        border: 1px solid $color-elements;
+        background-color: white;
+      }
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &__favorite {
+      width: 40px;
+      height: 40px;
+      background-color: $color-white;
+      border: 1px solid $color-icons;
+      box-sizing: border-box;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+
+      &--active {
+        border: 1px solid $color-elements;
+      }
+    }
+
+    &__icon {
+      transition: transform $effect-duration;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+}

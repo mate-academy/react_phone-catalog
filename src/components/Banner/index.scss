@@ -1,0 +1,59 @@
+@import '../../styles/main';
+
+.slider {
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__image {
+    display: none;
+    width: 1040px;
+    height: 400px;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &--active {
+        display: block;
+        animation: animation-slow $effect-duration ease-in forwards;
+    }
+
+    &--1 {
+      background-image: url('../../images/slider/phones.png');
+    }
+
+    &--2 {
+      background-image: url('../../images/slider/tablets.png');
+    }
+
+    &--3 {
+      background-image: url('../../images/slider/accessories.png');
+    }
+  }
+
+  &__button {
+    @extend %button;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    margin: 18px auto 0;
+    justify-content: center;
+    gap: 14px;
+
+    &__item {
+      width: 14px;
+      height: 4px;
+      background-color: $color-elements;
+
+      &--active {
+        background-color: $color-primary;
+        animation: animation-slow $effect-duration ease-in forwards;
+      }
+    }
+  }
+};

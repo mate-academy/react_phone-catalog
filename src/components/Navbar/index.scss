@@ -1,0 +1,65 @@
+@import '../../styles/main';
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 64px;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  &__item {
+    &__link {
+      @include nav-link;
+
+      font-family: Montserrat, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: .04em;
+      line-height: 11px;
+      text-transform: uppercase;
+
+      &::after {
+        content: "";
+        height: 3px;
+        width: 100%;
+        top: 39px;
+        left: 0;
+        position: absolute;
+        background-color: $color-primary;
+
+        transition: transform $effect-duration;
+        transform: scale(0);
+        transform-origin: center;
+      }
+
+      &:hover::after {
+        @include hover(transform, scale($scale));
+      }
+
+      &--active {
+        color: $color-primary;
+
+        &::after {
+          content: "";
+          height: 3px;
+          width: 100%;
+          top: 40px;
+          left: 0;
+          position: absolute;
+          background-color: $color-primary;
+          transform: scale($scale);
+        }
+      }
+    }
+  }
+
+
+  &__logo {
+    @include logo;
+  }
+}

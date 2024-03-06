@@ -1,0 +1,45 @@
+@import '../../styles/main';
+
+.smallButton {
+  @extend %small-button;
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &--disabled {
+    border: 1px solid $color-elements;
+    cursor: auto;
+
+    &:hover {
+      border: 1px solid $color-elements;
+    }
+  }
+}
+
+.productsSlider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @extend %h1;
+
+    &__buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    transition: transform $effect-duration;
+  }
+}
