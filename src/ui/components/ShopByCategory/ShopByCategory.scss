@@ -13,8 +13,10 @@
     color: $color-primary;
     cursor: pointer;
 
-    &:not(:last-child) {
-      margin: 0 0 15px;
+    @include media-mobile {
+      &:not(:last-child) {
+        margin: 0 0 15px;
+      }
     }
   }
 

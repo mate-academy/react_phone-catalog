@@ -17,7 +17,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             shop-by-category__image
             shop-by-category__image--bg-sand"
         >
-          <img src={`${API_BASE_MEDIA}/img/category-phones.png`} alt="Phones" />
+          <img src="./img/category-phones.png" alt="Phones" />
         </div>
         <div className="shop-by-category__info">
           <Typography type="title" level="3" className="shop-by-category__name">
@@ -39,10 +39,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             shop-by-category__image
             shop-by-category__image--bg-gray"
         >
-          <img
-            src={`${API_BASE_MEDIA}/img/category-tablets.png`}
-            alt="Tablets"
-          />
+          <img src="./img/category-tablets.png" alt="Tablets" />
         </div>
         <div className="shop-by-category__info">
           <Typography type="title" level="3" className="shop-by-category__name">
@@ -64,10 +61,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             shop-by-category__image
             shop-by-category__image--bg-bordo"
         >
-          <img
-            src={`${API_BASE_MEDIA}/img/category-accessories.png`}
-            alt="Accessories"
-          />
+          <img src="./img/category-accessories.png" alt="Accessories" />
         </div>
         <div className="shop-by-category__info">
           <Typography type="title" level="3" className="shop-by-category__name">
