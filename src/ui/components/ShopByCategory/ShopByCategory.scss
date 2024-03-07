@@ -1,0 +1,84 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.shop-by-category {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0 -8px;
+
+  &__item {
+    padding: 0 8px;
+    flex: 0 1 100%;
+    color: $color-primary;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin: 0 0 15px;
+    }
+  }
+
+  &__image {
+    position: relative;
+    margin: 0 0 14px;
+    max-height: 368px;
+    overflow: hidden;
+
+    &::after {
+      content: "";
+      display: block;
+      padding: 0 0 100%;
+    }
+
+    &--bg-sand {
+      background-color: #fcdbc1;
+    }
+
+    &--bg-gray {
+      background-color: #8d8d92;
+    }
+
+    &--bg-bordo {
+      background-color: #973d5f;
+    }
+
+    img {
+      position: absolute;
+      top: 15%;
+      left: 25%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 0 50%;
+      transition: all $duration-transition ease;
+    }
+
+    @include media-desktop {
+      margin: 0 0 24px;
+
+      &__image {
+        max-height: 168px;
+      }
+    }
+  }
+
+  &__item:hover &__image img {
+    top: 12%;
+    left: 19%;
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__counter {
+    color: $color-secondary;
+  }
+
+  @media (min-width: 460px) {
+
+    &__item {
+      flex: 0 1 33.33%;
+    }
+  }
+}

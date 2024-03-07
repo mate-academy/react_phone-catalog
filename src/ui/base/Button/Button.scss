@@ -8,8 +8,10 @@
   font-weight: 400;
   text-align: center;
 
-  padding: 8px;
-  border: 1px solid $color-elements;
+  padding: 4px;
+  border: 1px;
+  border-style: solid;
+  border-color: $color-elements;
 
   @include hover(border-color, $color-primary);
 
@@ -38,7 +40,7 @@
 
   &:disabled {
     color: $color-elements;
-    border: $color-elements;
+    border-color: $color-elements;
     cursor: not-allowed;
   }
 

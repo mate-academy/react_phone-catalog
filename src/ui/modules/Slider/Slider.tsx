@@ -70,9 +70,7 @@ export const Slider: React.FC<Props> = ({
   const [clonedBefore, setClonedBefore] = useState<React.ReactNode[]>([]);
   const [clonedAfter, setClonedAfter] = useState<React.ReactNode[]>([]);
   const slidesLength = Children.count(children);
-  const [lastSlideIndex, setLastSlideIndex] = useState<number>(
-    Children.count(children) - 1,
-  );
+  const [lastSlideIndex, setLastSlideIndex] = useState<number>(slidesLength - 1);
 
   const [slideWidth, setSlideWidth] = useState<number>(0);
   const [slidesPerSlide, setSlidesPerSlide] = useState<number>(slidesToShow);
@@ -133,6 +131,10 @@ export const Slider: React.FC<Props> = ({
       setLastSlideIndex(slidesLength - 1 + step);
     }
 
+    if (!infinite) {
+      setLastSlideIndex(slidesLength - 1);
+    }
+
     setStep(stepBy > slidesPerSlide ? slidesPerSlide : stepBy);
 
     if (responsive) {
@@ -146,7 +148,7 @@ export const Slider: React.FC<Props> = ({
 
       setBreakpointMax(maxBreak);
     }
-  }, []);
+  }, [children]);
   // #endregion
 
   // #region creating nav dots
@@ -411,7 +413,9 @@ export const Slider: React.FC<Props> = ({
         {navArrows && (
           <SliderButton
             direction="right"
-            disabled={!infinite && activeSlide === 0}
+            disabled={!infinite && (
+              activeSlide >= slidesLength - slidesPerSlide
+            )}
             className={className}
             onClickHandler={nextSlide}
           />

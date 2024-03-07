@@ -19,8 +19,8 @@ type TitleProps = {
 
 type TextProps = {
   level?: never;
-  weight?: '400' | '600' | '700';
-  size?: 'sm' | 'md';
+  weight?: '400' | '500' | '600' | '700';
+  size?: 'sm' | 'md' | 'lg' | 'xl';
 };
 
 type Props = BaseProps & (TitleProps | TextProps);

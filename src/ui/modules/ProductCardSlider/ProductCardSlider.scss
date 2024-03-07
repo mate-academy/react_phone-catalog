@@ -1,0 +1,46 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.product-card-slider {
+  &__title {
+    @extend %font-size-xxl;
+
+    letter-spacing: -0.01em;
+    margin-bottom: to-rem(19);
+  }
+
+  &__item {
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &__track {
+    padding: 5px 0;
+  }
+
+  &__arrow {
+    top: -60px;
+    right: 0;
+    width: 32px;
+    height: 32px;
+    transform: translateY(0);
+
+    &--prev {
+      left: auto;
+      right: 48px;
+    }
+  }
+
+  @include media-mobile {
+    &__title {
+      max-width: 175px;
+      line-height: 1.1;
+    }
+
+    &__arrow {
+      top: -50px;
+    }
+  }
+
+}

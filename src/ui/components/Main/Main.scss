@@ -1,10 +1,12 @@
+@import "../../../styles/functions";
+
 .main {
   position: relative;
   display: flex;
   flex: 1;
 
-  &__container {
-    padding-top: 24px;
-    padding-bottom: 80px;
+  & > &__container {
+    padding-top: to-rem(24);
+    padding-bottom: to-rem(80);
   }
 }

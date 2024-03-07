@@ -13,7 +13,7 @@ type Props = {
 
 export const SliderButton: React.FC<Props> = ({
   direction,
-  onClickHandler = () => {},
+  onClickHandler,
   disabled = false,
   className = '',
 }) => {

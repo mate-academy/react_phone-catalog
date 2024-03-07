@@ -65,3 +65,28 @@
     @include text-typohraphy(14, 21px, 500, 0);
   }
 }
+
+%font-size-sm {
+  font-size: to-rem(12);
+  line-height: to-rem(15);
+}
+
+%font-size-md {
+  font-size: to-rem(14);
+  line-height: to-rem(21);
+}
+
+%font-size-lg {
+  font-size: to-rem(20);
+  line-height: to-rem(26);
+}
+
+%font-size-xl {
+  font-size: to-rem(22);
+  line-height: to-rem(31);
+}
+
+%font-size-xxl {
+  font-size: to-rem(32);
+  line-height: to-rem(41);
+}

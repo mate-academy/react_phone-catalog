@@ -7,19 +7,18 @@
   transition: color $duration-transition ease;
 
   &-1 {
-    font-size: to-rem(32);
-    line-height: to-rem(41);
+    @extend %font-size-xxl;
+
     letter-spacing: -0.01em;
   }
 
   &-2 {
-    font-size: to-rem(22);
-    line-height: to-rem(31);
+    @extend %font-size-xl;
   }
 
   &-3 {
-    font-size: to-rem(20);
-    line-height: to-rem(26);
+    @extend %font-size-lg;
+
     font-weight: 600;
   }
 }
@@ -28,17 +27,27 @@
   transition: color $duration-transition ease;
 
   &-sm {
-    font-size: to-rem(12);
-    line-height: to-rem(15);
+    @extend %font-size-sm;
   }
 
   &-md {
-    font-size: to-rem(14);
-    line-height: to-rem(21);
+    @extend %font-size-md;
+  }
+
+  &-lg {
+    @extend %font-size-lg;
+  }
+
+  &-xl {
+    @extend %font-size-xl;
   }
 
   &-400 {
     font-weight: 400;
+  }
+
+  &-500 {
+    font-weight: 500;
   }
 
   &-600 {

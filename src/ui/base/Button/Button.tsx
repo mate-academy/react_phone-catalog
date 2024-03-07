@@ -11,6 +11,7 @@ type Props = {
   disabled?: boolean;
   className?: string;
   onClickHandler?: () => void;
+  cypressParam?: string;
 };
 
 const MemoButton: React.FC<Props> = ({
@@ -19,6 +20,7 @@ const MemoButton: React.FC<Props> = ({
   borderless = false,
   disabled = false,
   className = '',
+  cypressParam,
   onClickHandler = () => {},
   children,
 }) => {
@@ -34,6 +36,7 @@ const MemoButton: React.FC<Props> = ({
       type="button"
       disabled={disabled}
       onClick={onClickHandler}
+      data-cy={cypressParam}
     >
       {children}
     </button>

@@ -1,1 +1,11 @@
-// no empty
+@import '../../styles/functions';
+
+.home {
+  &__title {
+    margin: 0 0 to-rem(24) 0;
+  }
+
+  &__section:not(:last-child) {
+    margin: 0 0 to-rem(80) 0;
+  }
+}

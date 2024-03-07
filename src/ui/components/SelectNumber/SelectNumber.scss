@@ -1,0 +1,29 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.number-select {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  &__value {
+    @extend %text-buttons;
+
+    width: 20px;
+
+    text-align: center;
+  }
+}

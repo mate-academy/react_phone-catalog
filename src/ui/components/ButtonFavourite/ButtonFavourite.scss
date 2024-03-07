@@ -1,0 +1,30 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.button-fav {
+  flex: 0 0 40px;
+  height: 40px;
+  border: 1px solid $color-elements;
+  transition: all $duration-transition ease;
+  z-index: 10;
+  fill: white;
+  stroke: #333;
+
+  & svg {
+    fill: white;
+  }
+
+  &:hover {
+    border: 1px solid $color-primary;
+  }
+
+  &--added {
+    fill: $color-red;
+    stroke: $color-red;
+
+    svg {
+      fill: $color-red;
+    }
+  }
+}

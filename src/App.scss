@@ -2,6 +2,10 @@
 
 html {
   font-size: 12px;
+
+  @include media-mobile {
+    font-size: 10px;
+  }
 }
 
 .App {

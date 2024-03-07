@@ -7,7 +7,7 @@ type Props = { className?: string };
 
 export const Banner: React.FC<Props> = ({ className = '' }) => {
   return (
-    <section className={clsx('banner', className && className)}>
+    <div className={clsx('banner', className && className)}>
       <Slider
         slidesToShow={1}
         stepBy={1}
@@ -29,6 +29,6 @@ export const Banner: React.FC<Props> = ({ className = '' }) => {
           <img src="./img/banner-accessories.png" alt="Mobile Accessories" />
         </SliderItem>
       </Slider>
-    </section>
+    </div>
   );
 };
