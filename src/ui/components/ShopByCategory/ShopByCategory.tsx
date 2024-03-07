@@ -4,8 +4,6 @@ import { Typography } from '../../base';
 
 import './ShopByCategory.scss';
 
-const API_BASE_MEDIA = process.env.REACT_APP_BASE_URL_MEDIA || '';
-
 type Props = {};
 
 export const ShopByCategory: React.FC<Props> = () => {
