@@ -20,11 +20,36 @@ interface Phones {
   image: string;
 }
 
-type Props = {
-  getPhone: Phones[] | undefined
-};
+// type Props = {
+//   getPhone: Phones[] | undefined
+// };
 
-export const HotPrices: React.FC<Props> = ({ getPhone }) => {
+export const HotPrices = () => {
+  const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
+  const [errorMessage, setErrorMessage] = useState('');
+  // eslint-disable-next-line max-len
+  const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
+        setGetPhone(data);
+      } catch (error) {
+        setErrorMessage('Error during fetch:');
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [translate, setTranslate] = useState(0);
   const lengthHotPrice = 10;
 
@@ -41,7 +66,7 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
   useEffect(() => {
   }, [translate]);
 
-  return (
+  return !errorMessage ? (
     <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
         <div className="hot-prices__header">
@@ -79,7 +104,7 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
         </div>
         <div className="hot-prices__goods">
           <div className="hot-prices__goods__cards" style={{ transform: `translateX(${translate}px)` }}>
-            {!!getPhone && getPhone.map((phone, index) => (index < lengthHotPrice && (
+            {getPhone && getPhone.map((phone, index) => (index < lengthHotPrice && (
               <div className="hot-prices__goods__cards__good-card">
                 <img
                   src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
@@ -148,5 +173,5 @@ export const HotPrices: React.FC<Props> = ({ getPhone }) => {
         </div>
       </div>
     </section>
-  );
+  ) : <div />;
 };

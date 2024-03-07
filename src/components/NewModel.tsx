@@ -20,11 +20,32 @@ interface Phones {
   image: string;
 }
 
-type Props = {
-  getPhone: Phones[] | undefined
-};
+export const NewModel = () => {
+  const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
+  const [errorMessage, setErrorMessage] = useState('');
+  // eslint-disable-next-line max-len
+  const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
-export const NewModel: React.FC<Props> = ({ getPhone }) => {
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
+        setGetPhone(data);
+      } catch (error) {
+        setErrorMessage('Error during fetch:');
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const newPhones = getPhone?.filter((phone) => phone.year === 2019 && phone.capacity === '256GB');
 
   const [translate, setTranslate] = useState(0);
@@ -44,7 +65,7 @@ export const NewModel: React.FC<Props> = ({ getPhone }) => {
 
   }, [translate]);
 
-  return (
+  return !errorMessage ? (
     <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
         <div className="hot-prices__header">
@@ -147,5 +168,5 @@ export const NewModel: React.FC<Props> = ({ getPhone }) => {
         </div>
       </div>
     </section>
-  );
+  ) : <div />;
 };
