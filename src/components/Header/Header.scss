@@ -1,0 +1,47 @@
+@import "../../styles/main.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  background: $white-color;
+  box-shadow: 0 1px 0 0 $elements-color;
+  padding-left: 24px;
+
+  @include for-phones {
+    flex-direction: column;
+    padding-left: 0px;
+  }
+
+  &__left {
+    display: flex;
+    align-self: center;
+    gap: 64px;
+
+    @include for-phones {
+      justify-content: space-around;
+      padding-right: 24px;
+      gap: 10px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    align-items: center;
+    position: relative;
+
+    @include for-phones {
+      width: 65%;
+    }
+  }
+
+  &__finder_container {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    right: 0;
+  }
+
+  &__finder {
+    
+  }
+}
