@@ -16,7 +16,7 @@ type Props = {
 };
 
 export const PaginationSlider: React.FC<Props> = ({
-  pageName, headline, array
+  pageName, headline, array,
 }) => {
   const setPage22 = useSetCurrentPage();
 

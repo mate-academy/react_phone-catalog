@@ -1,6 +1,6 @@
 // eslint-disable
 /* eslint-disable */
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import '../ProductPage/product.scss';
 import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
@@ -16,6 +16,42 @@ export const HomePage = () => {
     { image: './img/icons/Banner2jpg.jpg' },
   ]);
   const { state } = useContext(StateContext);
+  const imgRef = useRef<null | HTMLImageElement>(null);
+  const [slideTrigger, setSlideTrigger] = useState(false);
+  // const click: HTMLElement | null = document.getElementById('buttonToClick');
+  // if (click) {
+  //   setInterval(() => click.click(), 5000);
+  // }
+  // const container = sliderRef.current?.scrollLeft;
+  useEffect(() => {
+   if(sliderRef.current) {
+    if (sliderRef.current?.scrollLeft === 0) {
+      sliderRef.current.scrollLeft +=scrollAmount;
+      setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+    }
+    else {
+      sliderRef.current.scrollLeft -=scrollAmount;
+      setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+    }
+   }
+  }, [slideTrigger])
+
+  function goBack() {
+    if (sliderRef.current) {
+      const container = sliderRef.current;
+
+      container.scrollLeft -= scrollAmount;
+    }
+  }
+
+  function goForward() {
+
+    if (sliderRef.current) {
+      const container = sliderRef.current;
+
+      container.scrollLeft += scrollAmount;
+    }
+  }
 
   return (
     <div className="">
@@ -23,20 +59,8 @@ export const HomePage = () => {
 
         <div
           className="banner-button banner-block"
-          onClick={() => {
-            if (sliderRef.current) {
-              const container = sliderRef.current;
-
-              container.scrollLeft -= scrollAmount;
-            }
-          }}
-          onKeyDown={() => {
-            if (sliderRef.current) {
-              const container = sliderRef.current;
-
-              container.scrollLeft -= scrollAmount;
-            }
-          }}
+          onClick={goBack}
+          onKeyDown={goBack}
           role="button"
           tabIndex={0}
         >
@@ -48,6 +72,7 @@ export const HomePage = () => {
             return (
 
               <img
+                ref={imgRef}
                 className='image'
                 src={banner.image}
                 key={banner.image}
@@ -58,19 +83,10 @@ export const HomePage = () => {
         </div>
 
         <div
+          id="buttonToClick"
           className="banner-button banner-block"
-          onClick={() => {
-            if (sliderRef.current) {
-              const container = sliderRef.current;
-              container.scrollLeft += scrollAmount;
-            }
-          }}
-          onKeyDown={() => {
-            if (sliderRef.current) {
-              const container = sliderRef.current;
-              container.scrollLeft += scrollAmount;
-            }
-          }}
+          onClick={goForward}
+          onKeyDown={goForward}
           role="button"
           tabIndex={0}
         >

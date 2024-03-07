@@ -90,6 +90,7 @@ function reducer(state: Data, action: Action) {
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
       const cardData = JSON.parse(localStorage.getItem("cart") || '[]')
+      console.log(cardData);
 
       return {
         ...state,
@@ -178,7 +179,7 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
       state: {
         ...state,
         products: sortProducts(state.products),
-        card: JSON.parse(localStorage.getItem('cart') as string),
+        card: JSON.parse(localStorage.getItem('cart') || '[]'),
       },
       dispatch,
     }}>
