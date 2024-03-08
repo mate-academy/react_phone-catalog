@@ -17,6 +17,9 @@ export const GlobalContext = React.createContext<ContextType>({
   getNewPathname: () => '',
   addRemoveFavList: () => { },
   addRemoveCartList: () => { },
+  removeCartList: () => { },
+  increaseCartQuantity: () => { },
+  decreaseCartQuantity: () => { },
   favList: [],
   cartList: [],
   isLoading: false,
@@ -58,6 +61,32 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       : setCartList([...cartList, cartItem]);
   }
 
+  function removeCartList(cartItem: CartItemType): void {
+    setCartList([...cartList].filter(i => i.id !== cartItem.id));
+  }
+
+  function increaseCartQuantity(
+    id: string,
+  ) {
+    const currentProduct = [...cartList].find(cart => (cart.id === id));
+
+    if (currentProduct) {
+      currentProduct.quantity += 1;
+      setCartList([...cartList]);
+    }
+  }
+
+  function decreaseCartQuantity(
+    id: string,
+  ) {
+    const currentProduct = [...cartList].find(cart => (cart.id === id));
+
+    if (currentProduct) {
+      currentProduct.quantity -= 1;
+      setCartList([...cartList]);
+    }
+  }
+
   function getNewPathname(option: string, index: number): string {
     const pathnameArr = pathname.split('-');
 
@@ -89,6 +118,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     getNewPathname,
     addRemoveFavList,
     addRemoveCartList,
+    removeCartList,
+    increaseCartQuantity,
+    decreaseCartQuantity,
     favList,
     cartList,
     isLoading,

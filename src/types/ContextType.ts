@@ -14,5 +14,8 @@ export interface ContextType {
   getNewPathname: (option: string, index: number) => string,
   addRemoveFavList: (product: Product) => void,
   addRemoveCartList: (item: CartItemType) => void,
+  removeCartList: (item: CartItemType) => void,
+  increaseCartQuantity: (id: string) => void,
+  decreaseCartQuantity: (id: string) => void,
   isLoading: boolean,
 }

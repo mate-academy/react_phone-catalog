@@ -1,18 +1,22 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 import '../styles/CartItem.scss';
 import { CartItemType } from '../types/CartItemType';
 import { API_URL } from '../utils/api-phones';
+import { GlobalContext } from '../GlobalContext';
 
 interface Props {
   item: CartItemType;
 }
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  // const { cartList } = useContext(GlobalContext);
+  const {
+    removeCartList, increaseCartQuantity, decreaseCartQuantity,
+  } = useContext(GlobalContext);
+
   const { id, product, quantity } = item;
   const price = product.price * quantity;
 
@@ -23,6 +27,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           type="button"
           data-cy="cartDeleteButton"
           className="cart-item__delete-button"
+          onClick={() => removeCartList(item)}
         />
 
         <Link
@@ -49,6 +54,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <button
             type="button"
             className="cart-item__decrease-button"
+            onClick={() => decreaseCartQuantity(id)}
+            disabled={quantity === 1}
           />
 
           <span className="cart-item__quantity">
@@ -58,6 +65,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           <button
             type="button"
             className="cart-item__increase-button"
+            onClick={() => increaseCartQuantity(id)}
           />
         </div>
 

@@ -68,6 +68,12 @@
     &:hover {
       border: 1px solid $secondary-color;
     }
+
+    &:disabled {
+      cursor: auto;
+      background: url('../icons/minus-icon-disabled.svg') no-repeat center;
+      border: 1px solid $elements-color;
+    }
   }
 
   &__increase-button {
@@ -84,7 +90,10 @@
   }
 
   &__quantity {
-    font-style: 14px;
+    display: block;
+    width: 16px;
+    font-size: 14px;
+    text-align: center;
     color: $primary-color;
   }
 
