@@ -30,7 +30,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
    - keep `.module.scss` files together with their components.
 1. Advanced project structure:
    - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, ect. and `shared` folder. with shared content between modules.
-   - inside each module is own `components` folder with the structure described above. And optionaly other files/folders: `hooks`, `constants` and so on.
+   - inside each module is own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants` and so on.
 1. Add the sticky header with a logo, navigation, favorites and cart.
 1. The footer with the link to the Github repo and `Back to top` button.
    - the content should limited to the same width as the page content;
