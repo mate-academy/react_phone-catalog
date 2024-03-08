@@ -46,7 +46,7 @@ Implement Home page at available at `/`.
 
 1. `<h1>Product Catalog</h1>` should be visually hidden.
 1. `PicturesSlider`:
-   - find your own images to peronalize the App;
+   - find your own images to personalize the App;
    - change pictures automatically every 5 seconds;
    - the next buttons should show the first image after the last one;
    - dashes at the botton should allow to choose exact picture.
