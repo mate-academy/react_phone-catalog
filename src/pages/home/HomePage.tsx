@@ -18,11 +18,7 @@ export const HomePage = () => {
   const { state } = useContext(StateContext);
   const imgRef = useRef<null | HTMLImageElement>(null);
   const [slideTrigger, setSlideTrigger] = useState(false);
-  // const click: HTMLElement | null = document.getElementById('buttonToClick');
-  // if (click) {
-  //   setInterval(() => click.click(), 5000);
-  // }
-  // const container = sliderRef.current?.scrollLeft;
+
   useEffect(() => {
    if(sliderRef.current) {
     if (sliderRef.current?.scrollLeft === 0) {
