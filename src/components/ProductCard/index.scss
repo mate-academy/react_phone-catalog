@@ -104,6 +104,7 @@
       justify-content: center;
       align-items: center;
       display: flex;
+      cursor: pointer;
 
       &:hover {
         border: 1px solid $color-primary;

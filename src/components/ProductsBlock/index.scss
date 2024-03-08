@@ -1,0 +1,56 @@
+@import '../../styles/main';
+
+.productsBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  margin-block: 24px 80px;
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &--link {
+      display: flex;
+    }
+
+    &--path {
+      text-transform: capitalize;
+      color: $color-secondary;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--models {
+      color: $color-secondary;
+    }
+
+    &--title {
+      @extend %h1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    &--table {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-gap: 16px;
+    }
+
+    &--sort {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+}

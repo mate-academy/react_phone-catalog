@@ -1,3 +1,7 @@
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: Montserrat, sans-serif;
   font-size: 14px;
@@ -5,7 +9,6 @@ body {
   letter-spacing: 0;
   font-weight: 400;
   box-sizing: border-box;
-  scroll-behavior: smooth;
   color: $color-primary;
   margin: 0;
   padding: 0;
