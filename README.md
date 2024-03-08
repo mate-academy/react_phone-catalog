@@ -16,7 +16,7 @@ Follow the [Work in a team guideline](https://github.com/mate-academy/react_task
 
 ## Code formatting
 
-Install Prettier Extention and use this [VSCode settings](https://mate-academy.github.io/fe-program/tools/vscode/settings.json) to enable format on save.
+Install Prettier Extension and use this [VSCode settings](https://mate-academy.github.io/fe-program/tools/vscode/settings.json) to enable format on save.
 
 ## Data
 
