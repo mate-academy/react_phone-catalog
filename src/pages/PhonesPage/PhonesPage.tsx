@@ -8,11 +8,11 @@ import { ProductsBlock } from '../../components/ProductsBlock/ProductsBlock';
 export const PhonesPage = () => {
   const { products } = useContext(StateStore);
 
-  const phonesProducts = getProductsByCategory(products, 'phones');
+  const phones = getProductsByCategory(products, 'phones');
 
   return (
     <div className="phonesPage">
-      <ProductsBlock title="Mobile phones" products={phonesProducts} />
+      <ProductsBlock title="Mobile phones" products={phones} />
     </div>
   );
 };
