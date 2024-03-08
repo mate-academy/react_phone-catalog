@@ -49,7 +49,7 @@ Implement Home page at available at `/`.
    - find your own images to personalize the App;
    - change pictures automatically every 5 seconds;
    - the next buttons should show the first image after the last one;
-   - dashes at the botton should allow to choose exact picture.
+   - dashes at the bottom should allow to choose exact picture.
 1. `ProductsSlider` for `Hot prices` block:
    - the products with a discount starting from the biggest absolute value;
    - `<` and `>` buttons should scroll products.
