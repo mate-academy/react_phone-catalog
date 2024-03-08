@@ -107,7 +107,7 @@ Use the React Context or Redux to store Items.
 1. Add ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
 1. Total amount and quantity should be calculated automatically.
 1. Show the quantity at the `Cart` icon in the header.
-1. Save the `Cart` to the `localSotrage` on each change and read it on page load.
+1. Save the `Cart` to the `localStorage` on each change and read it on page load.
 1. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you wan't to clear the Cart?`:
    - clear the Cart if the user confirms the order;
    - keep the Cart items and close the confirmation on cancel;
