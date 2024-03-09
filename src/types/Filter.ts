@@ -1,5 +1,3 @@
-import { enumToArrayOfObjects } from '../utils';
-
 export enum PerPage {
   perPage4 = 4,
   perPage8 = 8,
