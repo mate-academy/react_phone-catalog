@@ -1,13 +1,15 @@
 export type Product = {
-  age: number;
   id: string;
-  type: string;
-  imageUrl: string;
+  category: string;
+  phoneId: string;
+  itemId: string;
   name: string;
-  snippet: string;
+  fullPrice: number;
   price: number;
-  discount: number;
   screen: string;
   capacity: string;
+  color: string;
   ram: string;
+  year: number;
+  image: string;
 };

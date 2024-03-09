@@ -1,33 +1,81 @@
-@import '../../vars';
+@import '../../App';
 
-.Slider {
-  position: relative;
-  max-width: 1136px;
-  margin: 0 auto;
+.Banner {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    max-width: 592px;
+    margin: 0 auto 64px;
+  }
+
+  @include onDesktop {
+    max-width: 1136px;
+    margin-bottom: 72px;
+  }
 
   &__content {
     overflow: hidden;
-    max-width: 1040px;
-    margin: 0 auto;
+    margin: 0 -16px 8px;
+
+    @include onTablet {
+      max-width: 490px;
+      margin: 0 0 8px;
+    }
+
+    @include onDesktop {
+      max-width: 1040px;
+    }
+  }
+
+  &__images {
+    display: flex;
+  }
+
+  &__img {
+    max-width: 640px;
+    height: 320px;
+    object-fit: cover;
+
+    @include onTablet {
+      height: 189px;
+    }
+
+    @include onDesktop {
+      max-width: 1040px;
+      height: 400px;
+    }
   }
 
   &__arrow {
+    display: none;
     position: absolute;
-    top: 0;
-    bottom: 0;
-    width: 32px;
-    height: 400px;
     cursor: pointer;
     user-select: none;
     border: 1px solid $colorBorderArrow;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
     transition: all 0.6s;
     background-color: $colorWhite;
 
     &:hover {
-      border: 1px solid $colorBlack
+      border: 1px solid $colorBlack;
+    }
+
+    @include onTablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      bottom: 0;
+      width: 32px;
+      height: 189px;
+    }
+
+    @include onDesktop {
+      height: 400px;
     }
 
     &-img {
@@ -44,20 +92,8 @@
     }
   }
 
-  &__images {
-    object-fit: contain;
-    z-index: -1;
-    display: flex;
-    height: 400px;
-    max-width: 1040px;
-  }
-
-  &__img {
-    object-fit: cover;
-  }
-
   &__mark {
-    margin: 18px 0 82px;
+    padding: 10px 5px;
     width: 100%;
     display: flex;
     justify-content: center;

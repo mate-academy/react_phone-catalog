@@ -5,11 +5,11 @@ import { HomePage } from './components/HomePage';
 import { PhonesPage } from './components/PhonesPage';
 import { TabletsPage } from './components/TabletsPage';
 import { App } from './App';
-import { ProductsProvider } from './store/ProductsContext';
+import { GlobalStateProvider } from './store/ProductsContext';
 
 export const Root = () => (
   <Router>
-    <ProductsProvider>
+    <GlobalStateProvider>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
@@ -19,6 +19,6 @@ export const Root = () => (
           {/* <Route path="*" element={<p>Not found</p>} /> */}
         </Route>
       </Routes>
-    </ProductsProvider>
+    </GlobalStateProvider>
   </Router>
 );

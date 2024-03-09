@@ -1,0 +1,159 @@
+@import '../../App';
+
+.Card {
+  width: 212px;
+  height: 439px;
+  padding: 32px;
+  border: 1px solid $colorBorder;
+
+  @include onTablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+    height: 507px;
+    padding: 24px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__image {
+    margin-bottom: 8px;
+  }
+
+  &__photo {
+    width: 148px;
+    max-height: 129px;
+    object-fit: contain;
+
+    @include onTablet {
+      width: 173px;
+      height: 202px;
+    }
+
+    @include onDesktop {
+      width: 208px;
+      height: 208px;
+      margin: 8px 8px 0;
+    }
+  }
+
+  &__product-name {
+    padding-top: 16px;
+    line-height: 21px;
+    margin-bottom: 8px;
+    color: $colorBlack;
+
+
+    @include onDesktop {
+      margin: 0 0 6px;
+      height: 42px;
+      line-height: 21px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin: 0 0 8px;
+
+    &-item {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    &-current {
+      font-weight: 700;
+      line-height: 31px;
+      color: $colorBlack;
+    }
+
+    &-full {
+      font-weight: 500;
+      line-height: 28px;
+      color: $colorGray;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    flex-shrink: 0;
+    width: 100%;
+    height: 1px;
+    background-color: $colorBorder;
+    margin: 0 0 8px;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin: 0 0 8px;
+    padding: 8px 0;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-text {
+      text-align: left;
+      color: $colorGray;
+    }
+
+    &-value {
+      text-align: right;
+      color: $colorBlack;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    min-height: 40px;
+
+    &-add {
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: $colorWhite;
+      background-color: $colorBlack;
+      transition: 0.3s box-shadow;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+
+    &-favorite {
+      cursor: pointer;
+      min-width: 40px;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorderArrow;
+      transition: 0.3s border-color;
+
+      &:hover {
+        border-color: $colorBlack;
+      }
+
+      &-icon {
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+.selected {
+  border-color: $colorBorder;
+}

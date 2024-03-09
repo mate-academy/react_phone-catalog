@@ -1,48 +1,25 @@
-@import './src/vars';
-
-@font-face {
-  font-family: Mont;
-  src: url("/fonts/Mont-Regular.otf");
-  font-weight: 500;
-}
-
-@font-face {
-  font-family: Mont;
-  src: url("/fonts/Mont-SemiBold.otf");
-  font-weight: 600;
-
-}
-
-@font-face {
-  font-family: Mont;
-  src: url("/fonts/Mont-Bold.otf");
-  font-weight: bold;
-}
-
-iframe {
-  display: none;
-}
-
-* {
-  box-sizing: border-box;
-}
+@import 'utils/vars';
+@import 'utils/mixins';
+@import 'utils/normalize';
+@import 'utils/fonts';
 
 html {
   font-family: Mont, sans-serif;
   font-weight: 500;
   font-size: 14px;
   color: $colorGray;
-  background-color: #fff;
-}
-
-body {
-  margin: 0 auto;
+  background-color: $colorWhite;
 }
 
 .container {
-  margin: 0 auto;
-  max-width: 1136px;
-  display: grid;
-  grid-template-columns: repeat(24, 1fr);
-  column-gap: 16px;
+  margin: 0 16px;
+
+  @include onTablet {
+    margin: 0 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+  }
 }

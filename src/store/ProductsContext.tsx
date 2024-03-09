@@ -1,32 +1,34 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import { getProducts } from '../api';
-import { Product } from '../type/Product';
+import { State } from '../type/State';
+import { Action, reducer } from './reducer';
 
-export const ProductsContext = React.createContext({
-  products: [] as Product[],
-});
+const initialState: State = {
+  products: [],
+  isShowMenu: false,
+};
+
+export const StateContext = React.createContext(initialState);
+export const DispatchContext = React.createContext<React.Dispatch<Action>>(
+  () => {},
+);
 
 type Props = {
   children: React.ReactNode;
 };
 
-export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useState<Product[]>([]);
+export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   useEffect(() => {
-    getProducts().then(setProducts);
+    getProducts().then(productsFromServer => {
+      dispatch({ type: 'getProduts', payload: productsFromServer });
+    });
   }, []);
 
-  const value = useMemo(
-    () => ({
-      products,
-    }),
-    [products],
-  );
-
   return (
-    <ProductsContext.Provider value={value}>
-      {children}
-    </ProductsContext.Provider>
+    <DispatchContext.Provider value={dispatch}>
+      <StateContext.Provider value={state}>{children}</StateContext.Provider>
+    </DispatchContext.Provider>
   );
 };

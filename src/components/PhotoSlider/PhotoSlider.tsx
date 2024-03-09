@@ -1,112 +1,126 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './PhotoSlider.scss';
 
-const DALAY = 1000;
-const WIDTH = 1040;
-
-const slides = [
+const SLIDERS = [
   {
     id: 1,
-    src: '_new/img/banner-phones.png',
+    src: 'images/banner-phones.png',
   },
   {
     id: 2,
-    src: '_new/img/banner-tablets.png',
+    src: 'images/banner-tablets.png',
   },
   {
     id: 3,
-    src: '_new/img/banner-accessories.png',
+    src: 'images/banner-accessories.png',
   },
 ];
 
 export const PhotoSlider: React.FC = () => {
   const [translate, setTranslate] = useState(0);
   const [currentImg, setCurrentImg] = useState(1);
+  const stepRef = useRef<HTMLDivElement>(null);
+
+  const widthScreen = document.documentElement.clientWidth;
+  let step = 0;
+
+  useEffect(() => {
+    setTranslate(0);
+    setCurrentImg(1);
+  }, [widthScreen]);
+
+  if (stepRef.current) {
+    step = stepRef.current.clientWidth;
+  }
 
   useEffect(() => {
     const timerId = window.setInterval(() => {
       switch (translate) {
         case 0:
-          setTranslate(translate - WIDTH);
+          setTranslate(translate - step);
           setCurrentImg(2);
           break;
-
-        case -WIDTH:
-          setTranslate(translate - WIDTH);
+        case -step:
+          setTranslate(translate - step);
           setCurrentImg(3);
           break;
-
         default:
           setCurrentImg(1);
           setTranslate(0);
           break;
       }
-    }, 3000);
+    }, 5000);
 
     return () => {
       window.clearInterval(timerId);
     };
-  }, [translate]);
+  }, [step, translate]);
 
   const handleClickPrev = useCallback(() => {
     if (translate < 0) {
-      setTranslate(translate + WIDTH);
+      setTranslate(translate + step);
       setCurrentImg(currentImg - 1);
     } else if (translate === 0) {
-      setTranslate(-2 * WIDTH);
+      setTranslate(-2 * step);
       setCurrentImg(3);
     }
-  }, [currentImg, translate]);
+  }, [currentImg, translate, step]);
 
   const handleClickNext = useCallback(() => {
-    if (translate > -2 * WIDTH) {
-      setTranslate(translate - WIDTH);
+    if (translate > -2 * step) {
+      setTranslate(translate - step);
       setCurrentImg(currentImg + 1);
-    } else if (translate === -2 * WIDTH) {
+    } else if (translate === -2 * step) {
       setTranslate(0);
       setCurrentImg(1);
     }
-  }, [currentImg, translate]);
+  }, [currentImg, translate, step]);
 
-  const handleClickDots = useCallback((id: number) => {
-    switch (id) {
-      case 1:
-        setTranslate(0);
-        setCurrentImg(1);
-        break;
-      case 2:
-        setTranslate(-WIDTH);
-        setCurrentImg(2);
-        break;
-      case 3:
-        setTranslate(-2 * WIDTH);
-        setCurrentImg(3);
-        break;
+  const handleClickDots = useCallback(
+    (id: number) => {
+      switch (id) {
+        case 1:
+          setTranslate(0);
+          setCurrentImg(1);
+          break;
+        case 2:
+          setTranslate(-step);
+          setCurrentImg(2);
+          break;
+        case 3:
+          setTranslate(-2 * step);
+          setCurrentImg(3);
+          break;
 
-      default:
-        break;
-    }
-  }, []);
+        default:
+          break;
+      }
+    },
+    [step],
+  );
 
   return (
-    <div className="Slider">
-      <div className="Slider__content">
+    <div className="Banner">
+      <div className="Banner__content" ref={stepRef}>
         <div
-          className="Slider__images"
+          className="Banner__images"
           style={{
             transform: `translateX(${translate}px)`,
-            transition: `${DALAY}ms transform`,
+            transition: '1s transform',
           }}
         >
-          {slides.map(slide => (
+          {SLIDERS.map(slide => (
             <div key={slide.id}>
               <img
                 src={slide.src}
-                alt="images"
-                className="Slider__img"
-                width="1040px"
-                height="400px"
+                alt="Banner"
+                className="Banner__img"
+                width={
+                  stepRef.current
+                    ? `${stepRef.current.clientWidth}px`
+                    : `${widthScreen}px`
+                }
               />
             </div>
           ))}
@@ -114,35 +128,35 @@ export const PhotoSlider: React.FC = () => {
 
         <button
           type="button"
-          className="Slider__arrow Slider__arrow-left"
+          className="Banner__arrow Banner__arrow-left"
           onClick={handleClickPrev}
         >
           <img
             src="icons/Arrow_Left_small.svg"
             alt="arrow-left"
-            className="Slider__arrow-img"
+            className="Banner__arrow-img"
           />
         </button>
 
         <button
           type="button"
-          className="Slider__arrow Slider__arrow-right"
+          className="Banner__arrow Banner__arrow-right"
           onClick={handleClickNext}
         >
           <img
             src="icons/Arrow_Right_small.svg"
             alt="arrow-right"
-            className="Slider__arrow-img"
+            className="Banner__arrow-img"
           />
         </button>
       </div>
 
-      <div className="Slider__mark">
-        {slides.map(slide => (
+      <div className="Banner__mark">
+        {SLIDERS.map(slide => (
           <button
             key={slide.id}
             type="button"
-            className={classNames('Slider__dot', {
+            className={classNames('Banner__dot', {
               'active-dot': slide.id === currentImg,
             })}
             aria-label="dot"

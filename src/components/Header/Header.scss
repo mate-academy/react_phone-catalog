@@ -1,31 +1,84 @@
-@import "/src/vars";
+@import '../../App';
 
 .Header {
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $colorBorder;
+  border-top: 1px solid $colorBorder;
 
-  &__content {
+  &__menu {
     display: flex;
-    justify-content: space-between;
-    max-width: 1440px;
-    margin: 0 auto;
-    box-shadow: 0 1px 0 0 $colorBorder;
-
-  }
-
-  &__nav {
-    display: flex;
+    width: 48px;
+    height: 48px;
+    justify-content: center;
     align-items: center;
-    gap: 64px;
-    height: 64px;
+    box-shadow: -1px 0 0 0 $colorBorder;
 
-    &-logo {
-      padding-left: 24px;
+    @include onTablet {
+      display: none;
     }
 
     &-item {
+      padding: 15px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+
+    @include onDesktop {
+      gap: 64px;
+    }
+  }
+
+  &__logo {
+    padding-left: 24px;
+  }
+
+  &__nav {
+    display: none;
+
+    @include onTablet {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+      height: 48px;
+    }
+
+    @include onDesktop {
+      height: 64px;
+      gap: 64px;
+    }
+
+    &-link {
       text-decoration: none;
+      text-transform: uppercase;
       color: $colorGray;
       font-weight: bold;
       font-size: 12px;
+
+      &-active {
+        position: relative;
+        color: $colorBlack;
+        line-height: 48px;
+        padding-top: 2px;
+
+        @include onDesktop {
+          line-height: 64px;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          right: 0;
+          left: 0;
+          bottom: 0;
+          height: 3px;
+          background-color: $colorBlack;
+        }
+      }
     }
   }
 
@@ -33,32 +86,22 @@
     display: flex;
 
     &-itemBox {
-      display: flex;
-      width: 64px;
-      justify-content: center;
-      box-shadow: -1px 0 0 0 $colorBorder;
+      display: none;
 
+      @include onTablet {
+        display: flex;
+        width: 48px;
+        justify-content: center;
+        box-shadow: -1px 0 0 0 $colorBorder;
+      }
+
+      @include onDesktop {
+        width: 64px;
+      }
     }
 
     &-item {
       display: flex;
     }
-  }
-}
-
-.is-active {
-  position: relative;
-  color: $colorBlack;
-  line-height: 64px;
-
-
-  &::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    background-color: $colorBlack;
   }
 }
