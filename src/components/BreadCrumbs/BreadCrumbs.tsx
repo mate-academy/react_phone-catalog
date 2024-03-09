@@ -14,8 +14,6 @@ export const BreadCrumbs: React.FC<Props> = ({ path }) => {
   const { state } = useContext(StateContext);
   const findPhone = state.products.find(elem => elem.id === +parts[2]);
 
-  
-
   return (
     <div className="navigation-block">
       <div className="mr-8 navigator-image">
