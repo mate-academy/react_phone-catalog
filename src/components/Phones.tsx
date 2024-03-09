@@ -113,14 +113,15 @@ export const Phones = () => {
   // }
 
   useEffect(() => {
-    if (prevCartPhonesArr?.includes(cartPhones)) {
-      setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone !== cartPhones));
-      setCartPhones('');
-    } else {
-      setPrevCartPhonesArr(prevCartPhonesArr => (prevCartPhonesArr ? [...prevCartPhonesArr, cartPhones] : [cartPhones]));
-      setCartPhones('');
+    if (cartPhones.trim() !== "") {
+      if (prevCartPhonesArr?.includes(cartPhones)) {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone !== cartPhones));
+      } else {
+        setPrevCartPhonesArr(prevCartPhonesArr => (prevCartPhonesArr ? [...prevCartPhonesArr, cartPhones] : [cartPhones]));
+      }
     }
-  }, [cartPhones]);
+    setCartPhones(''); 
+  }, [cartPhones, prevCartPhonesArr]);
 
   errorMessage;
 

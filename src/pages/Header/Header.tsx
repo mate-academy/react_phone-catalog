@@ -1,10 +1,18 @@
 import { NavLink } from 'react-router-dom';
+import { useEffect } from 'react';
 import Logo from '../../img/logo.svg';
 // import Search from '../../img/Search.svg';
 import Favorite from '../../img/favourites.svg';
 import Basket from '../../img/group.svg';
+import { useAppContext } from '../../components/Context';
 
 export const Header = () => {
+  const { prevCartPhonesArr } = useAppContext();
+
+  useEffect(() => {
+
+  }, [prevCartPhonesArr]);
+
   return (
     <header className="header">
       <NavLink to="/">
@@ -64,6 +72,9 @@ export const Header = () => {
         </NavLink>
       </div>
       <div className="header__link basket">
+        {prevCartPhonesArr && prevCartPhonesArr.length > 0 && (
+          <div className="header__link__pop-up">{prevCartPhonesArr.length}</div>
+        )}
         <NavLink
           to="cart"
           className=""

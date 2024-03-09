@@ -72,7 +72,7 @@ export const ProductPage = () => {
     };
 
     fetchData();
-  }, [ selectedProduct, url]);
+  }, [url]);
 
   useEffect(() => {
     if (gotProduct && gotProduct.images.length > 0) {
