@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { NavLink } from 'react-router-dom';
 import { useAppContext } from './Context';
 
 /* eslint-disable */
@@ -44,7 +45,7 @@ export const ProductPage = () => {
     green: '#a9ded3',
     midnightgreen: '#386a61',
   };
-  const { selectedProduct } = useAppContext();
+  const { selectedProduct, setSelectedProduct } = useAppContext();
   const [gotProduct, setGotProduct] = useState<Product | undefined>();
   const [errorMessage, setErrorMessage] = useState('');
   // eslint-disable-next-line max-len
@@ -52,7 +53,7 @@ export const ProductPage = () => {
   const [colorSelected, setColorSelected] = useState('');
   const [memorySelected, setMemorySelected] = useState('');
   const url = `https://mate-academy.github.io/react_phone-catalog/_new/products/${selectedProduct}.json`;
-
+  
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -71,7 +72,7 @@ export const ProductPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [ selectedProduct, url]);
 
   useEffect(() => {
     if (gotProduct && gotProduct.images.length > 0) {
@@ -80,6 +81,18 @@ export const ProductPage = () => {
       setMemorySelected(gotProduct.capacity);
     }
   }, [gotProduct]);
+
+  const handleChengeColor = (color: any) => {
+    // var newSelectProduct;
+    if (selectedProduct) {
+      const splitString = selectedProduct.split('-');
+      splitString[splitString.length - 1] = color;
+      const newSelectProduct = splitString.join('-');
+      setSelectedProduct(newSelectProduct);
+      console.log(newSelectProduct);
+    }
+  }
+
 
   return (
     <section className="product__wrapper">
@@ -115,16 +128,22 @@ export const ProductPage = () => {
               </h4>
               <ul className="product__main__cards__preview__characteristics__colors">
                 {gotProduct?.colorsAvailable.map((color) => (
-                  <li className={cn(
-                    'product__main__cards__preview__characteristics__colors__circle',
-                    {'product__main__cards__preview__characteristics__colors__circle--active': color === colorSelected}
-                  )}>
+                  <NavLink to={`/phones/${selectedProduct}`}>
+                  <li
+                    key={color}
+                    onClick={() => handleChengeColor(color)}
+                    className={cn(
+                      'product__main__cards__preview__characteristics__colors__circle',
+                      {'product__main__cards__preview__characteristics__colors__circle--active': color === colorSelected}
+                    )}
+                  >
                     <div
                       key={color}
                       className="product__main__cards__preview__characteristics__colors__circle__background"
                       style={{backgroundColor: COLOR_HEX[color]}}
                     />
                   </li>
+                  </NavLink>
                 ))}
               </ul>
               <h4 className="product__main__cards__preview__characteristics__title">

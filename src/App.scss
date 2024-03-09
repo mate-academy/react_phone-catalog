@@ -261,11 +261,6 @@ body {
       border: solid 1px #313237;
     }
 
-
-    &:focus {
-      border: solid 1px #313237;
-    }
-
     &:active {
       background-color: #b4bdc3;
       border: solid 1px #313237;
@@ -552,13 +547,13 @@ body {
             }
 
             &:active {
-              transform: rotateX(40deg)
+              transform: rotateX(40deg);
             }
 
             &--added {
-              color: #27AE60;
+              color: #27ae60;
               background-color: #fff;
-              border: solid 1px #E2E6E9;
+              border: solid 1px #e2e6e9;
               text-align: center;
               font-family: "Mont", sans-serif;
               font-size: 14px;
@@ -574,7 +569,7 @@ body {
               }
 
               &:active {
-                transform: rotateX(40deg)
+                transform: rotateX(40deg);
               }
             }
           }
@@ -674,7 +669,7 @@ body {
     margin: 0 0 24px;
 
     &__title {
-      font-family: "Mont" sans-serif;
+      font-family: "Mont", sans-serif;
       font-weight: 700;
       font-size: 32px;
       line-height: 40.9px;
@@ -684,11 +679,11 @@ body {
     }
 
     &__paragraph {
-      font-family: "Mont" sans-serif;
+      font-family: "Mont", sans-serif;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
-      color: #89939A;
+      color: #89939a;
     }
 
     &__return-home {
@@ -701,7 +696,6 @@ body {
       padding: 10px 20px;
       color: #fff;
       border: none;
-      text-align: center;
       font-family: "Mont", sans-serif;
       font-size: 14px;
       font-style: normal;
@@ -716,7 +710,7 @@ body {
       }
       
       &:active {
-        transform: rotateX(40deg)
+        transform: rotateX(40deg);
       }
     }
 
@@ -736,7 +730,7 @@ body {
           justify-content: center;
           box-sizing: border-box;
           background-color: #fff;
-          border: solid 1px #B4BDC3;
+          border: solid 1px #b4bdc3;
           position: absolute;
           top: 110%;
           width: 100%;
@@ -746,12 +740,11 @@ body {
 
           &__option {
             padding: 0 10%;
-            font-family: "Mont" sans-serif;
+            font-family: "Mont", sans-serif;
             font-weight: 600;
             font-size: 14px;
             line-height: 21px;
             color: #414247;
-
 
             &:hover {
               background-color: #b4bdc3;
@@ -766,7 +759,7 @@ body {
           font-weight: 600;
           font-size: 12px;
           line-height: 15.34px;
-          color: #89939A;
+          color: #89939a;
         }
 
         &__button {
@@ -777,7 +770,7 @@ body {
           width: 128px;
           height: 40px;
           background-color: #fff;
-          border: solid 1px #B4BDC3;
+          border: solid 1px #b4bdc3;
           transition: all 0.3s ease;
 
           &:hover {
@@ -809,7 +802,7 @@ body {
           justify-content: center;
           box-sizing: border-box;
           background-color: #fff;
-          border: solid 1px #B4BDC3;
+          border: solid 1px #b4bdc3;
           position: absolute;
           top: 110%;
           width: 100%;
@@ -819,7 +812,7 @@ body {
 
           &__option {
             padding: 0 10%;
-            font-family: "Mont" sans-serif;
+            font-family: "Mont", sans-serif;
             font-weight: 600;
             font-size: 14px;
             line-height: 21px;
@@ -838,7 +831,7 @@ body {
           font-weight: 600;
           font-size: 12px;
           line-height: 15.34px;
-          color: #89939A;
+          color: #89939a;
         }
 
         &__button {
@@ -849,7 +842,7 @@ body {
           width: 176px;
           height: 40px;
           background-color: #fff;
-          border: solid 1px #B4BDC3;
+          border: solid 1px #b4bdc3;
           cursor: pointer;
           transition: all 0.3s ease;
 
@@ -860,7 +853,6 @@ body {
           &:active {
             opacity: 0.8;
           }
-
 
           &__text {
             font-weight: 600;
@@ -875,16 +867,15 @@ body {
 }
 
 .pagination {
-  display:flex;
+  display: flex;
   justify-content: center;
   gap: 8px;
-
   list-style: none;
 
   &__page-item {
     width: 32px;
     height: 32px;
-    border: 1px solid #E2E6E9;
+    border: 1px solid #e2e6e9;
 
     &__link {
       display: flex;
@@ -897,7 +888,7 @@ body {
       font-size: 14px;
       line-height: 21px;
       background-color: #fff;
-      color: #000000;
+      color: #000;
       text-decoration: none;
 
       &--active {
@@ -936,7 +927,7 @@ body {
           line-height: 30.8px;
           color: #313237;
           padding: 0 0 16px;
-          border-bottom: 1px solid #E2E6E9;
+          border-bottom: 1px solid #e2e6e9;
           margin: 0 0 32px;
         }
 
@@ -954,7 +945,7 @@ body {
               font-weight: 500;
               font-size: 14px;
               line-height: 21px;
-              color: #89939A;
+              color: #89939a;
             }
 
             &__param {
@@ -978,7 +969,7 @@ body {
           line-height: 30.8px;
           color: #313237;
           padding: 0 0 16px;
-          border-bottom: 1px solid #E2E6E9;
+          border-bottom: 1px solid #e2e6e9;
           margin: 0 0 32px;
         }
 
@@ -998,7 +989,7 @@ body {
             font-weight: 500;
             font-size: 14px;
             line-height: 21px;
-            color: #89939A;
+            color: #89939a;
           }
         }
       }
@@ -1037,7 +1028,7 @@ body {
                 font-weight: 600;
                 font-size: 12px;
                 line-height: 15.34px;
-                color: #89939A;
+                color: #89939a;
               }
 
               &__param {
@@ -1077,7 +1068,7 @@ body {
                 }
 
                 &:active {
-                  transform: rotateX(40deg)
+                  transform: rotateX(40deg);
                 }
               }
 
@@ -1119,7 +1110,7 @@ body {
                 font-weight: 500;
                 font-size: 22px;
                 line-height: 28.12px;
-                color: #89939A;
+                color: #89939a;
                 text-decoration: line-through;
               }
             }
@@ -1132,7 +1123,7 @@ body {
             margin: 0 0 32px;
             list-style: none;
             padding: 0;
-            border-bottom: solid 1px #E2E6E9;
+            border-bottom: solid 1px #e2e6e9;
 
             &__li {
               font-family: "Mont", sans-serif;
@@ -1141,7 +1132,7 @@ body {
               line-height: 21px;
               color: #313237;
               padding: 7px 8px 4px;
-              border: 1px solid #B4BDC3;
+              border: 1px solid #b4bdc3;
               margin: 0 0 24px;
 
               &--active {
@@ -1156,23 +1147,22 @@ body {
             font-weight: 600;
             font-size: 12px;
             line-height: 15.34px;
-            color: #89939A;
+            color: #89939a;
           }
 
           &__colors {
             display: flex;
             gap: 8px;
-            margin: 0;
             padding: 0;
             margin: 0 0 24px;
-            border-bottom: solid 1px #E2E6E9;
+            border-bottom: solid 1px #e2e6e9;
 
             &__circle {
               display: flex;
               box-sizing: border-box;
               height: 32px;
               width: 32px;
-              border: 1px solid #E2E6E9;
+              border: 1px solid #e2e6e9;
               border-radius: 50%;
               margin: 0 0 24px;
               
@@ -1185,7 +1175,7 @@ body {
                 height: 100%;
                 width: 100%;
                 border-radius: 50%;
-                border: 2px solid #FFFFFF;
+                border: 2px solid #fff;
               }
             }
           }
@@ -1196,7 +1186,7 @@ body {
           height: 66px;
           object-fit: contain;
           object-position: center;
-          border: 1px solid #E2E6E9;
+          border: 1px solid #e2e6e9;
           transition: all 0.3s ease;
 
           &:hover {
@@ -1219,11 +1209,10 @@ body {
           &__img {
             max-height: 464px;
             max-width: 464px;
-            
           }
         }
       }
-    } 
+    }
   }
 }
 
@@ -1259,12 +1248,10 @@ body {
           &__img {
             width: 80px;
             height: 80px;
-            margin: 0 24px ;
+            margin: 0 24px;
           }
         }
       }
     }
-    
   }
 }
-
