@@ -1,4 +1,5 @@
 import { useContext } from 'react';
+import { NavLink } from 'react-router-dom';
 import { StateContext } from '../../AppContext';
 import './BreadCrumbs.scss';
 
@@ -26,7 +27,7 @@ export const BreadCrumbs: React.FC<Props> = ({ path }) => {
       <div className="mr-8 navigator-image">
         <img src="./img/icons/arrowRight.svg" alt="img" />
       </div>
-      <div className="mr-8 navigator-text">{result}</div>
+      <NavLink className="mr-8 navigator-text" to={parts[1]}>{result}</NavLink>
 
       {findPhone && (
         <>
