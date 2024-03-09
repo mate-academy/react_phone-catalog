@@ -1,0 +1,37 @@
+@import "../../../styles/variables";
+
+.breadcrumb {
+  margin: 0 0 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__item {
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+  }
+
+  .arrow-icon {
+    margin: 0 8px 0 0;
+    fill: $color-elements;
+  }
+
+  &__link {
+    color: $color-primary;
+    text-transform: capitalize;
+    transition: color $duration-transition ease;
+
+    &.active {
+      color: $color-secondary;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
+  }
+}

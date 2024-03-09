@@ -1,0 +1,40 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.products {
+  margin: 24px 0 0;
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: 230px;
+    display: flex;
+    animation: $duration-transition show-item ease-in-out;
+  }
+
+  @include media-tablet {
+
+    &__item {
+      flex-basis: 270px;
+    }
+  }
+
+  & + .pagination {
+    margin: 40px 0 0;
+  }
+}
+
+@keyframes show-item {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

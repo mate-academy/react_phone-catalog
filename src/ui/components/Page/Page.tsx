@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { Main } from '../Main';
+import { Outlet, useLocation } from 'react-router-dom';
 import { Header } from '../Header';
 import { Footer } from '../Footer';
 
@@ -43,7 +42,11 @@ export const Page: React.FC<Props> = () => {
         isShowSearch={isShowHeaderSearch}
         location={location.pathname.replace('/', '')}
       />
-      <Main />
+      <div className="main">
+        <div className="container main__container test">
+          <Outlet />
+        </div>
+      </div>
       <Footer />
     </div>
   );

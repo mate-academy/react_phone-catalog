@@ -1,0 +1,26 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+@import '../../../styles/extends';
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.category {
+
+  &__name {
+    margin: 0 0 8px;
+  }
+
+  &__counter {
+    margin: 0 0 20px;
+  }
+
+  @include media-tablet {
+    &__counter {
+      margin: 0 0 40px;
+    }
+  }
+}

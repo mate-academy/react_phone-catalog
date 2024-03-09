@@ -1,0 +1,31 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.active-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $color-primary;
+  border: 1px solid $color-icons;
+  transition: all $duration-transition ease;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    color: $color-icons;
+    fill: $color-icons;
+    border-color: $color-elements;
+    cursor: not-allowed;
+  }
+
+  &[title]:hover {
+    text-transform: capitalize;
+  }
+
+  & > .icon {
+    transition: all $duration-transition ease;
+  }
+}

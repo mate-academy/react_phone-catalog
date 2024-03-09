@@ -11,6 +11,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
+    align-items: center;
   }
 
   &__list {
@@ -33,6 +34,8 @@
     top: 0;
     right: 5px;
     transform: translateY(-40px);
+    width: 32px;
+    height: 32px;
     transition: all $duration-transition ease;
 
     &-label {

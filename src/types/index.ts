@@ -1,5 +1,5 @@
 import { Colors } from './Color';
-import { PerPage, SortBy } from './Filter';
+import { PerPage, SortBy, SortByOptions, PerPageOptions } from './Filter';
 import { HeaderLinks } from './HeaderLinks';
 import { LocalStorage } from './LocalStorage';
 import { Product, ProductCart } from './Product';
@@ -18,4 +18,6 @@ export {
   type ProductDetail,
   type SpecsPhone,
   type SpecsPhoneSimple,
+  SortByOptions,
+  PerPageOptions,
 };

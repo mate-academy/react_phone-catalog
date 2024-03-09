@@ -1,0 +1,54 @@
+@import "../../../styles/variables";
+@import "../../../styles/mixins";
+@import "../../../styles/extends";
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-elements;
+    transition: all $duration-transition ease;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__link {
+    @extend %text-body;
+
+    padding: 0 12px;
+    color: $color-black;
+  }
+
+  &__item.active {
+    border-color: $color-primary;
+    background-color: $color-primary;
+  }
+
+  &__item.active &__link {
+    color: $color-white;
+  }
+
+  &__control {
+    width: 32px;
+    height: 32px;
+
+    &:disabled {
+      fill: $color-elements;
+      border-color: $color-elements;
+    }
+  }
+}

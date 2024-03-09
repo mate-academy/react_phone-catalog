@@ -9,6 +9,7 @@ type BaseProps = {
   children: React.ReactNode;
   textTransform?: 'capitalize' | 'uppercase' | 'lowercase' | 'none' | null;
   textAlign?: 'center' | 'left' | 'right' | null;
+  cypressParam?: string | null;
 };
 
 type TitleProps = {
@@ -33,6 +34,7 @@ export const Typography: React.FC<Props> = ({
   textTransform = null,
   textAlign = null,
   className = '',
+  cypressParam = null,
   children,
 }) => {
   if (type === 'title') {
@@ -47,6 +49,7 @@ export const Typography: React.FC<Props> = ({
               textAlign && `text-align-${textAlign}`,
               className,
             )}
+            data-cy={cypressParam}
           >
             {children}
           </h1>
@@ -60,6 +63,7 @@ export const Typography: React.FC<Props> = ({
               textTransform && `text-transform-${textTransform}`,
               className,
             )}
+            data-cy={cypressParam}
           >
             {children}
           </h2>
@@ -73,6 +77,7 @@ export const Typography: React.FC<Props> = ({
               textTransform && `text-transform-${textTransform}`,
               className,
             )}
+            data-cy={cypressParam}
           >
             {children}
           </h3>
@@ -89,6 +94,7 @@ export const Typography: React.FC<Props> = ({
         textTransform && `text-transform-${textTransform}`,
         className,
       )}
+      data-cy={cypressParam}
     >
       {children}
     </span>
