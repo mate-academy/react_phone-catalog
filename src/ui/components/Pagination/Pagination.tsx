@@ -39,7 +39,7 @@ export function getEndItemIndexInPage(
   itemsQty: number,
 ) {
   if (perPage === -1) {
-    return itemsQty - 1;
+    return itemsQty;
   }
 
   return Math.min(page * perPage, itemsQty);

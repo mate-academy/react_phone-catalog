@@ -37,7 +37,7 @@ type Props = {
 export const ProductCategory: React.FC<Props> = ({ products, category }) => {
   const [productsToRender, setProductsToRender] = useState<Product[]>(products);
   const [perPageFilterValue, setPerPageFilterValue] = useState<PerPage>(
-    PerPage.perPage4,
+    PerPage.perPage16,
   );
   const [sortByFilterValue, setSortByFilterValue] =
     useState<keyof typeof SortBy>('name');
@@ -140,7 +140,7 @@ export const ProductCategory: React.FC<Props> = ({ products, category }) => {
 
       const lastItemIndex = getEndItemIndexInPage(
         page ? +page : 1,
-        perPageQty ? +perPageQty : -1,
+        perPageQty,
         productsQty,
       );
 
