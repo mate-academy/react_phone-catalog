@@ -1,6 +1,5 @@
 @import '../../styles/main';
 
 .accessoriesPage {
-  width: 100%;
-  margin-block: 24px 80px;
+  @include page-content-margin;
 }

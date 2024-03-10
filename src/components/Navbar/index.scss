@@ -34,7 +34,7 @@
 
         transition: transform $effect-duration;
         transform: scale(0);
-        transform-origin: center;
+        transform-origin: left;
       }
 
       &:hover::after {
@@ -47,9 +47,9 @@
         &::after {
           content: "";
           height: 3px;
-          width: 100%;
+          width: 120%;
           top: 40px;
-          left: 0;
+          left: -10%;
           position: absolute;
           background-color: $color-primary;
           transform: scale($scale);
