@@ -13,11 +13,11 @@ export const FavoritesPage = () => {
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  const products = [...localStorage].filter(
+  const favoriteProducts = [...localStorage].filter(
     product => !!product.addedToFavorites,
   );
 
-  const [filteredProducts] = getFilteredProducts(products, query);
+  const [filteredProducts] = getFilteredProducts(favoriteProducts, query);
 
   return (
     <div className="favoritesPage">
@@ -29,7 +29,11 @@ export const FavoritesPage = () => {
         <p className="favoritesPage__nav__path text">Favourites</p>
       </section>
 
-      {filteredProducts.length ? (
+      {!favoriteProducts.length && (
+        <h1>You have not added any products to your cart</h1>
+      )}
+
+      {!!favoriteProducts.length && !!filteredProducts.length && (
         <>
           <section className="favoritesPage__header">
             <h1>Favourites</h1>
@@ -45,8 +49,10 @@ export const FavoritesPage = () => {
             <ProductsList products={filteredProducts} />
           </section>
         </>
-      ) : (
-        <h1>{`You didn't add any product with '${query}' yet`}</h1>
+      )}
+
+      {!!favoriteProducts.length && !filteredProducts.length && (
+        <h1>No results according to your search</h1>
       )}
     </div>
   );
