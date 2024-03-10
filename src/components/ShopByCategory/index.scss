@@ -1,7 +1,15 @@
 @import '../../styles/main';
 
-.categoriesList {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+.shopByCategory {
+  &__title {
+    @extend %h1;
+
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
 }

@@ -1,1 +1,27 @@
 @import '../../styles/main';
+
+.notFoundPage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include page-content-margin;
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &__link {
+      display: flex;
+    }
+
+    &__path {
+      color: $color-secondary;
+    }
+  }
+
+  &__title {
+    @extend %h1;
+  }
+}

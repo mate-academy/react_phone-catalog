@@ -20,7 +20,8 @@ export const ShopByCategory = () => {
 
   return (
     <section className="shopByCategory">
-      <div className="categoriesList" data-cy="categoryLinksContainer">
+      <h1 className="shopByCategory__title">Shop by category</h1>
+      <div className="shopByCategory__list" data-cy="categoryLinksContainer">
         {categories.map(category => (
           <CategoryCard category={category} key={category.name} />
         ))}

@@ -85,7 +85,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         >
           <img
             src={addedToFavorites ? ICONS.favoriteSelected : ICONS.favorite}
-            alt="Favorites"
+            alt="Favourites"
             className="productCard__buttons__icon"
           />
         </button>

@@ -1,1 +1,40 @@
 @import '../../styles/main';
+
+.favoritesPage {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include page-content-margin;
+
+  &__nav {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+
+    &__link {
+      display: flex;
+    }
+
+    &__path {
+      color: $color-secondary;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 16px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &__counter {
+      color: $color-secondary;
+      font-weight: 500;
+    }
+  }
+}

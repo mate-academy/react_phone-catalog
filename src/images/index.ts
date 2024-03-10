@@ -32,7 +32,7 @@ export const SLIDES = {
 };
 
 export const CATEGORIES = {
-  phones: require('./categories/phones.png').default,
-  tablets: require('./categories/tablets.png').default,
-  accessories: require('./categories/accessories.png').default,
+  phones: require('./categories/phones.svg').default,
+  tablets: require('./categories/tablets.svg').default,
+  accessories: require('./categories/accessories.svg').default,
 };

@@ -40,7 +40,7 @@ export const Header = () => {
 
       case '/favorites':
         setIsQuery(true);
-        setPlaceholder('Search in favorites...');
+        setPlaceholder('Search in favourites...');
         break;
 
       default:
@@ -126,7 +126,7 @@ export const Header = () => {
           <NavLink to="/favorites" className={getLinkLogoClass}>
             <img
               src={ICONS.favorite}
-              alt="Favorites"
+              alt="Favourites"
               className="header__bar-right__icon__logo"
             />
 

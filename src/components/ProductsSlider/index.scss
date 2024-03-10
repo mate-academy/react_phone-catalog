@@ -27,7 +27,9 @@
     flex-direction: row;
     justify-content: space-between;
 
-    @extend %h1;
+    &__title {
+      @extend %h1;
+    }
 
     &__buttons {
       display: flex;
