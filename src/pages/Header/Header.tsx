@@ -8,6 +8,7 @@ import { useAppContext } from '../../components/Context';
 
 export const Header = () => {
   const { prevCartPhonesArr } = useAppContext();
+  const { prevFavoriteArr } = useAppContext();
 
   useEffect(() => {
 
@@ -59,33 +60,33 @@ export const Header = () => {
           />
         </a>
       </label> */}
-      <div className="header__link favorites">
-        <NavLink
-          to="favorite"
-          className=""
-        >
-          <img
-            src={Favorite}
-            className="header__link-icon"
-            alt="Favorite"
-          />
-        </NavLink>
-      </div>
-      <div className="header__link basket">
+      <NavLink
+        to="favorite"
+        className="header__link favorites"
+      >
+        {prevFavoriteArr && prevFavoriteArr.length > 0 && (
+          <div className="header__link__pop-up">{prevFavoriteArr.length}</div>
+        )}
+        <img
+          src={Favorite}
+          className="header__link-icon"
+          alt="Favorite"
+        />
+      </NavLink>
+      <NavLink
+        to="cart"
+        // className="header__link__nav-link"
+        className="header__link basket"
+      >
         {prevCartPhonesArr && prevCartPhonesArr.length > 0 && (
           <div className="header__link__pop-up">{prevCartPhonesArr.length}</div>
         )}
-        <NavLink
-          to="cart"
-          className=""
-        >
-          <img
-            src={Basket}
-            className="header__link-icon"
-            alt=""
-          />
-        </NavLink>
-      </div>
+        <img
+          src={Basket}
+          className="header__link-icon"
+          alt=""
+        />
+      </NavLink>
     </header>
   );
 };

@@ -3,6 +3,8 @@ import { NavLink } from 'react-router-dom';
 import { useAppContext } from './Context';
 import ArrowDown from '../img/arrow-down.svg';
 import ArrowUp from '../img/arrow-up.svg';
+// import FavoriteAdded from '../img/favourites filled.svg';
+import filledFavoriteImage from '../img/favourites-filled.svg';
 import { Pagination } from './Pagination';
 
 // import cn from 'classnames';
@@ -24,17 +26,20 @@ interface Phones {
 }
 
 export const Phones = () => {
+  // const { page, perPage, sortParam } = useParams();
   const { itemsOnPage, setItemsOnPage } = useAppContext();
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
-  const { sortBy, setSortBy } = useAppContext();
+  const { sortParam, setSortParam } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
+  const [favoritePhones, setFavoritePhones] = useState<string>('');
+  const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   const [cartPhones, setCartPhones] = useState<string>('');
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   // const { currentPage, setCurrentPage } = useAppContext();
   const  { visibleElems } = useAppContext();
   const { setCurrentPage } = useAppContext();
 
-  const { getPhone, setGetPhone }= useAppContext();
+  const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -123,11 +128,25 @@ export const Phones = () => {
     setCartPhones(''); 
   }, [cartPhones, prevCartPhonesArr]);
 
+  // const [favoritePhones, setFavoritePhones] = useState<string>('');
+  // const [ prevFavoriteArr, setPrevFavoriteArr ] = useAppContext();
+
+  useEffect(() => {
+    if (favoritePhones.trim() !== "") {
+      if (prevFavoriteArr?.includes(favoritePhones)) {
+        setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));
+      } else {
+        setPrevFavoriteArr(prevFavoriteArr => (prevFavoriteArr ? [...prevFavoriteArr, favoritePhones] : [favoritePhones]));
+      }
+    }
+    setFavoritePhones(''); 
+  }, [favoritePhones, prevFavoriteArr]);
+
   errorMessage;
 
-  const { selectedProduct, setSelectedProduct } = useAppContext();
+  const { setSelectedProduct } = useAppContext();
 
-  console.log(selectedProduct);
+  console.log(prevFavoriteArr);
 
   return (
     <section className="phones__wrapper">
@@ -140,7 +159,7 @@ export const Phones = () => {
             <div className="phones__header__buttons__sort" ref={blockSortRef}>
               <h5 className="phones__header__buttons__sort__title">Sort by</h5>
               <button className="phones__header__buttons__sort__button" onClick={handleChangeSort}>
-                <span className="phones__header__buttons__sort__button__text">{sortBy}</span>
+                <span className="phones__header__buttons__sort__button__text">{sortParam}</span>
                 <img className="phones__header__buttons__sort__button__img" src={changeSort ? ArrowUp : ArrowDown} alt="" />
               </button>
               {changeSort
@@ -149,7 +168,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortBy('Newest'); handleChangeSort();
+                        setSortParam('Newest'); handleChangeSort();
                       }}
                     >
                       Newest
@@ -157,7 +176,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortBy('Alphabetically'); handleChangeSort();
+                        setSortParam('Alphabetically'); handleChangeSort();
                       }}
                     >
                       Alphabetically
@@ -165,7 +184,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortBy('Cheapest'); handleChangeSort();
+                        setSortParam('Cheapest'); handleChangeSort();
                       }}
                     >
                       Cheapest
@@ -289,8 +308,10 @@ export const Phones = () => {
                     <button
                       type="button"
                       className="hot-prices__goods__cards__good-card__buttons__favorite"
+                      style={prevFavoriteArr && prevFavoriteArr.includes(phone.id) ? {backgroundImage: `url(${filledFavoriteImage})`} : undefined}
                       tabIndex={0}
                       aria-label="Previous Image"
+                      onClick={() => setFavoritePhones(phone.id)}
                     />
                   </div>
                 </div>

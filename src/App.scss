@@ -39,7 +39,7 @@ body {
       font-size: 9px;
       line-height: 11.5px;
 
-      z-index: 99;
+      z-index: 1;
       width: 14px;
       height: 14px;
       top: 25%;
@@ -609,6 +609,11 @@ body {
 
             &:hover {
               box-shadow: 5px 3px 3px rgb(80, 79, 79);
+            }
+
+            &:active {
+              background-color: #b4bdc3;
+              box-shadow: none;
             }
           }
         }
@@ -1242,11 +1247,20 @@ body {
   &__wrapper {
     display: flex;
     justify-content: center;
+    flex: 1 1 auto;
   }
 
   &__content {
     width: 1136px;
     margin: 0 0 24px;
+
+    &__title {
+      font-family: "Mont", sans-serif;
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 40.9px;
+      letter-spacing: -1%;
+    }
 
     &__blocks {
       display: flex;

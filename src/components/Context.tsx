@@ -23,6 +23,10 @@ interface Phones {
 }
 
 const AppContext = createContext<{
+  prevFavoriteArr: string[] | undefined;
+  // eslint-disable-next-line max-len
+  setPrevFavoriteArr: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+
   prevCartPhonesArr: string[] | undefined;
   // eslint-disable-next-line max-len
   setPrevCartPhonesArr: React.Dispatch<React.SetStateAction<string[] | undefined>>;
@@ -42,8 +46,8 @@ const AppContext = createContext<{
   firstItem: number;
   lastItem: number;
 
-  sortBy: string;
-  setSortBy: React.Dispatch<React.SetStateAction<string>>;
+  sortParam: string;
+  setSortParam: React.Dispatch<React.SetStateAction<string>>;
 
   getPhone: Phones[] | undefined;
   setGetPhone: React.Dispatch<React.SetStateAction<Phones[] | undefined>>;
@@ -53,13 +57,18 @@ const AppContext = createContext<{
 
 export const AppProvider = ({ children }: AppContextProps) => {
   const [
+    prevFavoriteArr,
+    setPrevFavoriteArr,
+  ] = useState<string[] | undefined>();
+
+  const [
     prevCartPhonesArr,
     setPrevCartPhonesArr,
   ] = useState<string[] | undefined>();
 
   const [selectedProduct, setSelectedProduct] = useState<string>();
   const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
-  const [sortBy, setSortBy] = useState<string>('Newest');
+  const [sortParam, setSortParam] = useState<string>('Newest');
 
   const [currentPage, setCurrentPage] = useState(1);
   const [
@@ -90,6 +99,9 @@ export const AppProvider = ({ children }: AppContextProps) => {
   return (
     <AppContext.Provider value={{
 
+      prevFavoriteArr,
+      setPrevFavoriteArr,
+
       prevCartPhonesArr,
       setPrevCartPhonesArr,
 
@@ -105,8 +117,8 @@ export const AppProvider = ({ children }: AppContextProps) => {
       firstItem,
       lastItem,
 
-      sortBy,
-      setSortBy,
+      sortParam,
+      setSortParam,
 
       getPhone,
       setGetPhone,

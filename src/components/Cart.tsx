@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
-import CloseIcon from '../img/Close.svg';
+import { NavLink } from 'react-router-dom';
 import { useAppContext } from './Context';
+import CloseIcon from '../img/Close.svg';
+import HomeWhite from '../img/Home-white.svg';
 
 /* eslint-disable */
 
@@ -39,6 +41,15 @@ export const Cart = () => {
       <div className="cart__content">
         <h2 className="cart__content__title">Cart</h2>
         <div className="cart__content__blocks">
+          {prevCartPhonesArr === undefined && (
+            <div>
+              <p className="phones__header__paragraph">Your cart is empty.</p>
+              <NavLink to="/" className="phones__header__return-home">
+                Return HOME page
+                <img className="phones__header__return-home__img" src={HomeWhite} alt="building" />
+              </NavLink>
+            </div>
+          )}
           <div className="cart__content__blocks__products">
             {productInCart?.map((item) => (
               <div className="cart__content__blocks__products__device">

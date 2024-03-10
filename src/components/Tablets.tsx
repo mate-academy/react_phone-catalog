@@ -7,7 +7,7 @@ import HomeWhite from '../img/Home-white.svg';
 export const Tablets = () => {
   const { itemsOnPage, setItemsOnPage } = useAppContext();
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
-  const { sortBy, setSortBy } = useAppContext();
+  const { sortParam, setSortParam } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
   const [cartPhones, setCartPhones] = useState<string>('');
   const [
@@ -134,7 +134,7 @@ export const Tablets = () => {
                   onClick={handleChangeSort}
                 >
                   <span className="phones__header__buttons__sort__button__text">
-                    {sortBy}
+                    {sortParam}
                   </span>
                   {/* <img className="phones__header__buttons__sort__button__img"
                   src={changeSort ? ArrowUp : ArrowDown} alt="" /> */}
@@ -148,11 +148,11 @@ export const Tablets = () => {
                         // eslint-disable-next-line
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Newest'); handleChangeSort();
+                          setSortParam('Newest'); handleChangeSort();
                         }}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
-                            setSortBy('Newest'); handleChangeSort();
+                            setSortParam('Newest'); handleChangeSort();
                           }
                         }}
                         role="button"
@@ -164,11 +164,11 @@ export const Tablets = () => {
                         // eslint-disable-next-line
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Alphabetically'); handleChangeSort();
+                          setSortParam('Alphabetically'); handleChangeSort();
                         }}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
-                            setSortBy('Alphabetically'); handleChangeSort();
+                            setSortParam('Alphabetically'); handleChangeSort();
                           }
                         }}
                         role="button"
@@ -180,11 +180,11 @@ export const Tablets = () => {
                         // eslint-disable-next-line
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Cheapest'); handleChangeSort();
+                          setSortParam('Cheapest'); handleChangeSort();
                         }}
                         onKeyDown={(e) => {
                           if (e.key === 'Enter') {
-                            setSortBy('Cheapest'); handleChangeSort();
+                            setSortParam('Cheapest'); handleChangeSort();
                           }
                         }}
                         role="button"

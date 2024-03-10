@@ -23,7 +23,7 @@ interface Phones {
 export const Accessories = () => {
   const { itemsOnPage, setItemsOnPage } = useAppContext();
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
-  const { sortBy, setSortBy } = useAppContext();
+  const { sortParam, setSortParam } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
   const [cartPhones, setCartPhones] = useState<string>('');
   const [prevCartPhonesArr, setPrevCartPhonesArr] = useState< string[] | undefined>();
@@ -130,7 +130,7 @@ export const Accessories = () => {
               <div className="phones__header__buttons__sort" ref={blockSortRef}>
                 <h5 className="phones__header__buttons__sort__title">Sort by</h5>
                 <button className="phones__header__buttons__sort__button" onClick={handleChangeSort}>
-                  <span className="phones__header__buttons__sort__button__text">{sortBy}</span>
+                  <span className="phones__header__buttons__sort__button__text">{sortParam}</span>
                   {/* <img className="phones__header__buttons__sort__button__img" 
                   src={changeSort ? ArrowUp : ArrowDown} alt="" /> */}
                 </button>
@@ -140,7 +140,7 @@ export const Accessories = () => {
                       <span
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Newest'); handleChangeSort();
+                          setSortParam('Newest'); handleChangeSort();
                         }}
                       >
                         Newest
@@ -148,7 +148,7 @@ export const Accessories = () => {
                       <span
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Alphabetically'); handleChangeSort();
+                          setSortParam('Alphabetically'); handleChangeSort();
                         }}
                       >
                         Alphabetically
@@ -156,7 +156,7 @@ export const Accessories = () => {
                       <span
                         className="phones__header__buttons__sort__select__option"
                         onClick={() => {
-                          setSortBy('Cheapest'); handleChangeSort();
+                          setSortParam('Cheapest'); handleChangeSort();
                         }}
                       >
                         Cheapest
