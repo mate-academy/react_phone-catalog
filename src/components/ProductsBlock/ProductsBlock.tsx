@@ -56,14 +56,12 @@ export const ProductsBlock: React.FC<Props> = ({ title, products }) => {
         </Link>
         <img src={ICONS.arrowRightDisabled} alt="Arrow right" />
 
-        <p className="smallText productsBlock__navigation--path">
-          {navigationPath}
-        </p>
+        <p className="productsBlock__navigation--path text">{navigationPath}</p>
       </section>
 
       <section className="productsBlock__description">
         <h1 className="productsBlock__description--title">{title}</h1>
-        <p className="smallText productsBlock__description--models">
+        <p className="productsBlock__description--models text">
           {`${count} models`}
         </p>
       </section>

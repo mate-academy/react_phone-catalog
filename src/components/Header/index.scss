@@ -56,8 +56,9 @@
         background-color: inherit;
         border: none;
         padding: 0;
-        align-self: center;
+
         display: flex;
+        align-self: center;
       }
     }
 
@@ -65,6 +66,8 @@
       display: flex;
       justify-content: center;
       border-left: 1px solid $color-elements;
+
+      position: relative;
 
       &__logo {
         width: 16px;

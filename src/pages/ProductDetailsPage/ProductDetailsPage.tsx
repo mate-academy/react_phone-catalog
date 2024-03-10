@@ -106,13 +106,13 @@ export const ProductDetailsPage = () => {
 
               <Link
                 to={`/${paths[0]}`}
-                className="smallText productDetailsPage__nav__link"
+                className="productDetailsPage__nav__link text"
               >
                 {paths[0]}
               </Link>
               <img src={ICONS.arrowRightDisabled} alt="Arrow right" />
 
-              <p className="smallText productDetailsPage__nav__path">
+              <p className="productDetailsPage__nav__path text">
                 {paths[1].split('-').join(' ')}
               </p>
             </div>
@@ -125,12 +125,7 @@ export const ProductDetailsPage = () => {
               >
                 <img src={ICONS.arrowLeft} alt="Arrow back" />
 
-                <p
-                  className="smallText
-                  productDetailsPage__nav__link__text"
-                >
-                  Back
-                </p>
+                <p className="productDetailsPage__nav__link__text text">Back</p>
               </Link>
             </div>
           </section>
@@ -176,7 +171,7 @@ export const ProductDetailsPage = () => {
 
                   <div className="productDetailsPage__content__info">
                     <section className="productDetailsPage__content__info__colors">
-                      <p className="smallText productDetailsPage__content__info__colors__text">
+                      <p className="productDetailsPage__content__info__colors__text text">
                         Available colors
                       </p>
 
@@ -212,7 +207,7 @@ export const ProductDetailsPage = () => {
 
                     <div className="productDetailsPage__content__info__line" />
                     <section className="productDetailsPage__content__info__capacity">
-                      <p className="smallText productDetailsPage__content__info__capacity__text">
+                      <p className="productDetailsPage__content__info__capacity__text text">
                         Select capacity
                       </p>
 
@@ -301,37 +296,37 @@ export const ProductDetailsPage = () => {
 
                     <section className="productDetailsPage__content__info__details">
                       <div className="productDetailsPage__content__info__details__block">
-                        <p className="smallText productDetailsPage__content__info__details__name">
+                        <p className="productDetailsPage__content__info__details__name text">
                           Screen
                         </p>
-                        <p className="smallText productDetailsPage__content__info__details__value">
+                        <p className="productDetailsPage__content__info__details__value text">
                           {product.screen}
                         </p>
                       </div>
 
                       <div className="productDetailsPage__content__info__details__block">
-                        <p className="smallText productDetailsPage__content__info__details__name">
+                        <p className="productDetailsPage__content__info__details__name text">
                           Resolution
                         </p>
-                        <p className="smallText productDetailsPage__content__info__details__value">
+                        <p className="productDetailsPage__content__info__details__value text">
                           {product.capacity}
                         </p>
                       </div>
 
                       <div className="productDetailsPage__content__info__details__block">
-                        <p className="smallText productDetailsPage__content__info__details__name">
+                        <p className="productDetailsPage__content__info__details__name text">
                           Processor
                         </p>
-                        <p className="smallText productDetailsPage__content__info__details__value">
+                        <p className="productDetailsPage__content__info__details__value text">
                           {product.processor}
                         </p>
                       </div>
 
                       <div className="productDetailsPage__content__info__details__block">
-                        <p className="smallText productDetailsPage__content__info__details__name">
+                        <p className="productDetailsPage__content__info__details__name text">
                           RAM
                         </p>
-                        <p className="smallText productDetailsPage__content__info__details__value">
+                        <p className="productDetailsPage__content__info__details__value text">
                           {product.ram}
                         </p>
                       </div>
@@ -339,7 +334,7 @@ export const ProductDetailsPage = () => {
                   </div>
 
                   <div className="productDetailsPage__content__id">
-                    <p className="smallText productDetailsPage__content__id__text">
+                    <p className="productDetailsPage__content__id__text text">
                       {`ID: ${currentProduct.id}`}
                     </p>
                   </div>
