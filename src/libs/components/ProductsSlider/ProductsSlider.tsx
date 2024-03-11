@@ -121,6 +121,7 @@ export const ProductsSlider:React.FC<Props> = ({
   return (
     <section
       className={cn('products-slider', classNames)}
+      {...swipeHandlers}
     >
       <div className="products-slider__header">
         <SectionHeader
@@ -161,7 +162,6 @@ export const ProductsSlider:React.FC<Props> = ({
 
       <div
         className="products-slider__slider"
-        {...swipeHandlers}
         ref={sliderRef}
       >
         <div
