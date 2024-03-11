@@ -48,18 +48,6 @@
     padding: 8px;
     border: 1px solid $icons;
 
-    @include on-mobile {
-      width: 24px;
-      height: 24px;
-      padding: 4px;
-    }
-
-    @include on-tablet {
-      width: 24px;
-      height: 24px;
-      padding: 4px;
-    }
-
     & path {
       fill: $primary;
     }

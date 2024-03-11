@@ -5,9 +5,13 @@
 
   display: flex;
   flex-direction: column;
-  min-width: 272px;
+  flex: 0 0 272px;
   border: 1px solid $elements;
   padding: 32px 24px 24px;
+
+  @include on-small-mobile {
+    flex: 1 0 100%;
+  }
 
   &:hover {
     box-shadow: 0 0 15px rgba(33,33,33,.2);

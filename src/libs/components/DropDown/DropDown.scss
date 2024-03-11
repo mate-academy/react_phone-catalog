@@ -16,6 +16,7 @@
     position: relative;
     color: $secondary;
     margin-bottom: 4px;
+    min-width: max-content;
   }
 
   &__arrow {
