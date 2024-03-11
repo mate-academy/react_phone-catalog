@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import {
   useMemo, useRef, useState,
 } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 import { BANNER_IMAGES } from '../../constants';
 
@@ -49,9 +50,19 @@ export const Banner = () => {
     });
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNext(),
+    onSwipedRight: () => handlePrev(),
+  });
+
   return (
-    <div className="main__banner banner-container">
-      <div className="banner-container__slider slider">
+    <div
+      className="main__banner banner-container"
+    >
+      <div
+        className="banner-container__slider slider"
+        {...swipeHandlers}
+      >
         <button
           className="slider__button"
           type="button"
