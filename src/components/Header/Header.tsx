@@ -7,6 +7,7 @@ import cn from 'classnames';
 import { Navbar } from '../Navbar/Navbar';
 import { StateStore } from '../../store/StoreContext';
 import { ICONS } from '../../images';
+import { getProductsByCategory } from '../../helpers/getProductsByCategory';
 
 const getLinkLogoClass = ({ isActive }: { isActive: boolean }) =>
   cn('header__bar-right__icon--logo--link', {
@@ -21,26 +22,52 @@ export const Header = () => {
   const [placeholder, setPlaceholder] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const phones = getProductsByCategory(products, 'phones');
+  const tablets = getProductsByCategory(products, 'tablets');
+  const accessories = getProductsByCategory(products, 'accessories');
+  const favorites = products.filter(item => !!item.addedToFavorites);
+  const carts = products.filter(item => !!item.addedToCart);
+
   useEffect(() => {
     switch (pathname) {
       case '/phones':
-        setIsQuery(true);
-        setPlaceholder('Search in phones...');
+        if (phones.length) {
+          setIsQuery(true);
+          setPlaceholder('Search in phones...');
+        } else {
+          setIsQuery(false);
+        }
+
         break;
 
       case '/tablets':
-        setIsQuery(true);
-        setPlaceholder('Search in tablets...');
+        if (tablets.length) {
+          setIsQuery(true);
+          setPlaceholder('Search in tablets...');
+        } else {
+          setIsQuery(false);
+        }
+
         break;
 
       case '/accessories':
-        setIsQuery(true);
-        setPlaceholder('Search in accessories...');
+        if (accessories.length) {
+          setIsQuery(true);
+          setPlaceholder('Search in accessories...');
+        } else {
+          setIsQuery(false);
+        }
+
         break;
 
       case '/favorites':
-        setIsQuery(true);
-        setPlaceholder('Search in favourites...');
+        if (favorites.length) {
+          setIsQuery(true);
+          setPlaceholder('Search in favourites...');
+        } else {
+          setIsQuery(false);
+        }
+
         break;
 
       default:
@@ -50,10 +77,7 @@ export const Header = () => {
 
     setQuery(searchParams.get('query') || '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
-
-  const favorites = products.filter(item => item.addedToFavorites === true);
-  const carts = products.filter(item => item.addedToCart === true);
+  }, [pathname, favorites]);
 
   const debouncedQuery = useMemo(
     () =>

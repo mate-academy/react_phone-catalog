@@ -31,6 +31,12 @@
 
     &__title {
       height: 42px;
+      color: $color-primary;
+      font-weight: 600;
+
+      &:hover {
+        color: $color-secondary;
+      }
     }
   }
 
@@ -43,6 +49,7 @@
     &--full {
       text-decoration: line-through;
       color: $color-secondary;
+      font-weight: 500;
     }
   }
 

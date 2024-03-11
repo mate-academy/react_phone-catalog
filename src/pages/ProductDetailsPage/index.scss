@@ -154,7 +154,7 @@
           }
         }
 
-        &__line {
+        &__divider {
           width: 100%;
           height: 1px;
           background-color: $color-elements;
@@ -286,9 +286,16 @@
           font-display: row;
           gap: 8px;
 
+          @extend %h1;
+
           &--full {
+            align-self: center;
             text-decoration: line-through;
             color: $color-secondary;
+
+            @extend %h2;
+
+            font-weight: 500;
           }
         }
 
@@ -366,7 +373,7 @@
         }
       }
 
-      &__line {
+      &__divider {
         width: 320px;
         height: 1px;
         background-color: $color-elements;

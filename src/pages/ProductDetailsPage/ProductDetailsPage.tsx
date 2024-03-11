@@ -205,7 +205,7 @@ export const ProductDetailsPage = () => {
                       </div>
                     </section>
 
-                    <div className="productDetailsPage__content__info__line" />
+                    <div className="productDetailsPage__content__info__divider" />
                     <section className="productDetailsPage__content__info__capacity">
                       <p className="productDetailsPage__content__info__capacity__text text">
                         Select capacity
@@ -242,7 +242,7 @@ export const ProductDetailsPage = () => {
                       </div>
                     </section>
 
-                    <div className="productDetailsPage__content__info__line" />
+                    <div className="productDetailsPage__content__info__divider" />
 
                     <section className="productDetailsPage__content__info__store">
                       <div className="productDetailsPage__content__info__store__price">
@@ -348,7 +348,7 @@ export const ProductDetailsPage = () => {
                     <div className="productDetailsPage__content__main__description__about__title">
                       <h2>About</h2>
 
-                      <div className="productDetailsPage__content__main__description__line" />
+                      <div className="productDetailsPage__content__main__description__divider" />
                     </div>
                     {product.description.map(detail => {
                       const { title, text } = detail;
@@ -382,78 +382,78 @@ export const ProductDetailsPage = () => {
                     <div className="productDetailsPage__content__main__description__specs__title">
                       <h2>Tech specs</h2>
 
-                      <div className="productDetailsPage__content__main__description__line" />
+                      <div className="productDetailsPage__content__main__description__divider" />
                     </div>
 
                     <div className="productDetailsPage__content__main__description__specs__details">
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Screen
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.screen}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Resolution
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.resolution}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Processor
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.processor}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           RAM
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.ram}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Built in memory
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.capacity}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Camera
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.camera}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Zoom
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.zoom}
                         </p>
                       </div>
 
-                      <div className="productDetailsPage__content__main__description__specs__details__param">
-                        <p className="productDetailsPage__content__main__description__specs__details__param__name">
+                      <div className="productDetailsPage__content__main__description__specs__details__params">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__name">
                           Cell
                         </p>
-                        <p className="productDetailsPage__content__main__description__specs__details__param__value">
+                        <p className="productDetailsPage__content__main__description__specs__details__params__value">
                           {product.cell.join(', ')}
                         </p>
                       </div>
