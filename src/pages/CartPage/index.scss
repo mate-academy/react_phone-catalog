@@ -57,7 +57,6 @@
         align-items: center;
         gap: 24px;
 
-        width: 752px;
         height: 128px;
         box-sizing: border-box;
 
@@ -96,7 +95,6 @@
           flex-direction: row;
           align-items: center;
           margin-inline: 25px 20px;
-          width: 96px;
           justify-content: space-between;
 
           &__counter {
@@ -104,7 +102,13 @@
             margin: 0;
             width: 24px;
             text-align: center;
+
+            margin-inline: 7px;
           }
+        }
+
+        &__price {
+          width: 61px;
         }
       }
 

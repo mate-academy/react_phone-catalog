@@ -67,10 +67,12 @@ export const ProductsBlock: React.FC<Props> = ({ title, products }) => {
       </section>
 
       <section className="productsBlock__content">
-        <div className="productsBlock__content--sort">
-          <SortingDropdown />
-          <PerPageDropdown />
-        </div>
+        {!!filteredProducts.length && (
+          <div className="productsBlock__content--sort">
+            <SortingDropdown />
+            <PerPageDropdown />
+          </div>
+        )}
         <div className="productsBlock__content--table" data-cy="productList">
           <ProductsList products={filteredProducts} />
         </div>

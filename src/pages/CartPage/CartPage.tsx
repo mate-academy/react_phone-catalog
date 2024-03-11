@@ -123,7 +123,7 @@ export const CartPage = () => {
                         </button>
                       </div>
 
-                      <h2>{`$${fullPrice}`}</h2>
+                      <h2 className="cartPage__content__products__item__price">{`$${fullPrice}`}</h2>
                     </li>
                   );
                 })}
