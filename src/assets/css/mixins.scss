@@ -11,18 +11,25 @@
 }
 
 @mixin on-mobile {
+  $header-height: 54px !global;
+
   @media screen and (max-width: ($medium - 1)) {
+
     @content;
   }
 }
 
 @mixin on-large-mobile {
+  $header-height: 54px !global;
+
   @media screen and (min-width: $small) and (max-width: ($medium - 1)) {
     @content;
   }
 }
 
 @mixin on-small-mobile {
+  $header-height: 54px !global;
+
   @media screen and (max-width: ($small - 1)) {
     @content;
   }
@@ -91,4 +98,9 @@
 
 @mixin transition {
   transition: all .3s;
+}
+
+@mixin background-image-centering {
+  background-position: center;
+  background-repeat: no-repeat;
 }

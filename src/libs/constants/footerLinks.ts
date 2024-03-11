@@ -1,4 +1,4 @@
-export const FOOTE_LINKS = {
+export const FOOTER_LINKS = {
   Github: 'https://github.com/IrynaK-a',
   Contacts: 'iconowalowa19@gmail.com',
   Rights: 'https://en.wikipedia.org/wiki/Rights',

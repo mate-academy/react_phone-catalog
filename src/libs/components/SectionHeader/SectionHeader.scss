@@ -7,6 +7,10 @@
 
   &__title-container {
     min-width: max-content;
+
+    @include on-mobile {
+      min-width: auto;
+    }
   }
 
   &__title {
@@ -16,7 +20,7 @@
     color: $primary;
 
     @include on-mobile {
-      font-size: 22px;
+      @include h2-text
     }
   }
 

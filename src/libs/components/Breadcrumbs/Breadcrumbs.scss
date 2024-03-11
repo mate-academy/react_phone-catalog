@@ -2,15 +2,21 @@
 
 .breadcrumbs {
   @include flexbox-center-vertical;
-  
+
   gap: 8px;
+
+  @include on-mobile {
+    gap: 4px;
+  }
 
   &__home {
     @include transition;
+    @include background-image-centering;
 
     width: 16px;
     height: 16px;
     background-image: url(../../../assets/icons/home.svg);
+    background-size: contain;
 
 
     &:hover {
@@ -26,13 +32,18 @@
     text-decoration: none;
 
     &::before {
+      @include background-image-centering;
+
       display: inline-block;
       content: '';
       width: 16px;
       height: 16px;
       background-image: url(../../../assets/icons/arrow-right.svg);
-      background-repeat: no-repeat;
-      padding-right: 8px;
+      margin-right: 8px;
+
+      @include on-mobile {
+        padding-right: 4px;
+      }
     }
 
     &--current {

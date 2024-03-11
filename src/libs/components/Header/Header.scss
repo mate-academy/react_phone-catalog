@@ -7,22 +7,17 @@
   height: $header-height;
   width: 100%;
   padding: 0;
-  border-bottom: 1px solid $elements;
+  border-block: 1px solid $elements;
   background-color: $white;
   z-index: 100;
 
   @include on-mobile {
-    $header-height: 54px;
-
     position: relative;
     height: $header-height;
   }
 
   @include on-tablet {
-    $header-height: 54px;
-
     position: relative;
-    height: $header-height;
   }
 
   &__content {
@@ -56,8 +51,6 @@
     border-left: 1px solid $elements;
 
     @include on-mobile {
-      padding: 14px;
-
       &--on-small-screen {
         display: none;
       }

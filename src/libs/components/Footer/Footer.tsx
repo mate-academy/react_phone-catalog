@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link } from 'react-router-dom';
 
-import { FOOTE_LINKS } from '../../constants';
+import { FOOTER_LINKS } from '../../constants';
 
 import { Logo } from '../Logo';
 import { Icon } from '../Icon/Icon';
@@ -20,7 +20,7 @@ export const Footer = () => {
     <footer className="footer">
       <Logo />
       <ul className="footer__list">
-        {Object.entries(FOOTE_LINKS).map(([key, value]) => (
+        {Object.entries(FOOTER_LINKS).map(([key, value]) => (
           <li
             className="footer__item"
             key={key}

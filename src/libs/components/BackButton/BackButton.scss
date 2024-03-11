@@ -9,13 +9,13 @@
   width: max-content;
 
   &::before {
+    @include background-image-centering;
+
     display: inline-block;
     content: '';
     width: 16px;
     height: 16px;
     margin-right: 4px;
     background-image: url(../../../assets/icons/arrow-left.svg);
-    background-position: center;
-    background-repeat: no-repeat;
   }
 }

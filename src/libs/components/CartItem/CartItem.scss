@@ -7,7 +7,7 @@
   border: 1px solid $elements;
 
   @include on-mobile {
-    padding: 10px 5px;
+    padding: 20px 5px;
     position: relative;
     justify-content: space-around;
   }
@@ -21,33 +21,26 @@
   }
 
   &__button {
-    display: block;
-    text-align: center;
+    @include flexbox-center;
+
+    font-family: inherit;
+    color: $primary;
 
     &--delete-button {
+      font-family: inherit;
       width: 16px;
       height: 16px;
+      font-size: 16px;
       color: $icons;
       margin-right: 24px;
 
       @include on-mobile {
         position: absolute;
-        right: 5px;
-        top: 5px;
-        margin: 0;
-      }
-
-      @include on-tablet {
-        width: 24px;
-        height: 24px;
-        font-size: 16px;
-        margin: 0;
-      }
-
-      @include on-laptop {
-        width: 24px;
-        height: 24px;
-        font-size: 16px;
+        right: 3px;
+        top: 3px;
+        width: 20px;
+        height: 20px;
+        font-size: 18px;
         margin: 0;
       }
     }
@@ -126,22 +119,15 @@
     width: 32px;
     height: 32px;
     padding: 8px;
-    border: 1px solid;
-
-    &--take-button {
-      border-color: $elements;
-    }
-    &--add-button {
-      border-color: $icons;
-    }
+    border: 1px solid $icons;
 
     &:disabled {
       cursor: not-allowed;
+      color: $icons;
+      border-color: $elements
     }
 
     @include on-mobile {
-      width: 22px;
-      height: 22px;
       padding: 4px;
     }
   }
@@ -161,6 +147,7 @@
 
     @include on-mobile {
       font-size: 20px;
+      text-align: center;
     }
   }
 }

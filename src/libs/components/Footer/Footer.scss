@@ -22,25 +22,32 @@
   &__list {
     display: flex;
     gap: 64px;
+    height: 100%;
     list-style: none;
     padding: 0;
 
     @include on-mobile {
       @include flexbox-center;
 
-      flex-direction: column;
-      height: 100%;
-      gap: 0;
+      gap: 10px;
     }
+  }
+
+  &__item {
+    @include flexbox-center;
+
+    height: 100%;
   }
 
   &__link {
     @include uppercase-text;
     @include transition;
     @include text-color-on-hover;
+    @include flexbox-center;
 
     text-decoration: none;
     color: $secondary;
+    height: 100%;
   }
 }
 
@@ -51,11 +58,11 @@
   gap: 16px;
 
   @include on-mobile {
-    padding-right: 14px;
+    padding-inline: 14px;
   }
 
   @include on-tablet {
-    padding-right: 14px;
+    padding-inline: 14px;
   }
 
   &__text {

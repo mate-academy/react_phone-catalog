@@ -37,6 +37,13 @@ export const HomePage = () => {
     dispatch(productsActions.fetchAll());
   }, [dispatch]);
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }, []);
+
   return (
     <>
       {!hasErrorMessage && <Banner />}

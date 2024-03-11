@@ -12,7 +12,7 @@
     @include on-mobile {
       display: block;
       height: 100%;
-      padding-inline: 10px;
+      padding-inline: 16px;
       border-right: 1px solid $elements;
       border-left: 1px solid $elements
     }
@@ -20,7 +20,7 @@
     @include on-tablet {
       display: block;
       height: 100%;
-      padding-inline: 10px;
+      padding-inline: 16px;
       border-right: 1px solid $elements;
       border-left: 1px solid $elements
     }
@@ -37,41 +37,33 @@
 
     @include on-mobile {
       display: none;
-
-      &--visible {
-        display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 54px;
-        left: 0;
-        width: 100%;
-        gap: 0;
-        align-items: flex-start;
-        padding: 5px 10px;
-        background-color: $white;
-        border: 1px solid $elements;
-        border-top: none;
-        z-index: 1000000;
-      }
     }
 
     @include on-tablet {
       display: none;
+    }
 
-      &--visible {
+    &--on-small-screen {
+      display: none;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      position: absolute;
+      top: 54px;
+      left: 0;
+      width: 100%;
+      padding: 10px;
+      background-color: $white;
+      border: 1px solid $elements;
+      border-top: none;
+      z-index: 10000;
+
+      @include on-mobile {
         display: flex;
-        flex-direction: column;
-        position: absolute;
-        top: 54px;
-        left: 0;
-        width: 100%;
-        gap: 0;
-        align-items: flex-start;
-        padding: 5px 10px;
-        background-color: $white;
-        border: 1px solid $elements;
-        border-top: none;
-        z-index: 1000000;
+      }
+
+      @include on-tablet {
+        display: flex;
       }
     }
   }
@@ -103,11 +95,15 @@
     padding: 26px 0;
 
     @include on-mobile {
-      padding-block: 6px;
+      padding-block: 10px;
+      font-size: 16px;
+      line-height: 21px;
     }
 
     @include on-tablet {
       padding-block: 12px;
+      font-size: 16px;
+      line-height: 21px;
     }
 
     &--active {

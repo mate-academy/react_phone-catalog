@@ -6,14 +6,6 @@
   gap: 24px;
   width: 100%;
 
-  @include on-mobile {
-    gap: 14px;
-  }
-
-  @include on-tablet {
-    gap: 14px;
-  }
-
   &__cards {
     display: flex;
     justify-content: space-between;
@@ -29,7 +21,7 @@
     }
 
     @include on-laptop {
-      gap: 10px;
+      gap: 16px;
     }
   }
 }

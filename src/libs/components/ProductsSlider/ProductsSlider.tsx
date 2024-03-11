@@ -3,9 +3,9 @@ import cn from 'classnames';
 import {
   useRef,
   useState,
-  useMemo,
   useEffect,
 } from 'react';
+import { useSwipeable } from 'react-swipeable';
 
 import { ProductCard } from '../ProductCard';
 import { SectionHeader } from '../SectionHeader';
@@ -15,14 +15,16 @@ import { IProduct } from '../../types';
 import './ProductsSlider.scss';
 
 type CardProp = {
-  cardSize: number;
+  cardWidth: number;
   cardsPerSlide: number;
+  sliderWidth: number;
+  containerGap: number;
 } | null;
 
 type Props = {
-  items: IProduct [],
-  title: string,
-  classNames?: string,
+  items: IProduct [];
+  title: string;
+  classNames?: string;
 };
 
 export const ProductsSlider:React.FC<Props> = ({
@@ -32,86 +34,89 @@ export const ProductsSlider:React.FC<Props> = ({
 }) => {
   const totalCardsCount = items.length;
   const firstSlideId = 1;
+  const startOffset = 0;
   const [slideId, setSlideId] = useState(firstSlideId);
-  const [cardProp, setCardProp] = useState<CardProp>(null);
+  const [translateX, setTranslateX] = useState(startOffset);
+  const [sliderProp, setSliderProp] = useState<CardProp>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
   const cardsContainerRef = useRef<HTMLDivElement>(null);
-  const lastSlideId = cardProp
-    ? totalCardsCount - (cardProp.cardsPerSlide - 1)
-    : totalCardsCount;
+  const lastSlideId = totalCardsCount;
+  const gap = sliderProp?.containerGap || 0;
+  const cardSize = (sliderProp?.cardWidth || 0) + gap;
+  const sliderSize = sliderProp?.sliderWidth || 0;
+  const cardsPerSlide = sliderProp?.cardsPerSlide || 0;
+  const cardsContainerWidth = (totalCardsCount * cardSize) - gap;
 
   const isPrevButtonDisabled = slideId === firstSlideId;
   const isNextButtonDisabled = slideId === lastSlideId;
 
-  const translateX = useMemo(() => {
-    if (!cardsContainerRef.current || !cardProp) {
-      return 0;
+  const handlePrevClick = () => {
+    if (slideId - cardsPerSlide === firstSlideId) {
+      setSlideId(firstSlideId);
+      setTranslateX(startOffset);
+
+      return;
     }
 
-    return (-(slideId - 1) * cardProp.cardSize);
-  }, [slideId, cardProp]);
-
-  const handlePrevClick = () => {
-    setSlideId(prev => {
-      if (prev === firstSlideId) {
-        return prev;
-      }
-
-      return prev - 1;
-    });
+    if (slideId > firstSlideId) {
+      setSlideId(prev => prev - 1);
+      setTranslateX(prev => prev + cardSize);
+    }
   };
 
   const handleNextClick = () => {
-    setSlideId(prev => {
-      if (prev === lastSlideId) {
-        return prev;
-      }
+    if (slideId === totalCardsCount - cardsPerSlide) {
+      setSlideId(lastSlideId);
+      setTranslateX(-(cardsContainerWidth - sliderSize));
 
-      return prev + 1;
-    });
+      return;
+    }
+
+    if (slideId < lastSlideId) {
+      setSlideId(prev => prev + 1);
+      setTranslateX(prev => prev - cardSize);
+    }
   };
 
+  const swipeHandlers = useSwipeable({
+    onSwipedLeft: () => handleNextClick(),
+    onSwipedRight: () => handlePrevClick(),
+  });
+
   useEffect(() => {
-    const getSliderProp = () => {
-      if (!cardsContainerRef.current) {
-        return null;
-      }
-
-      if (!sliderRef.current) {
-        return null;
-      }
-
-      if (!items.length) {
-        return null;
+    const onResize = () => {
+      if (!cardsContainerRef.current || !sliderRef.current) {
+        return;
       }
 
       const container = cardsContainerRef.current;
       const sliderWidth = sliderRef.current.offsetWidth;
-      const itemWidth = container.children[0].getBoundingClientRect().width;
-      const itemsPerSlide = Math.floor(sliderWidth / itemWidth);
-      const containerGap = (sliderWidth - (itemsPerSlide * itemWidth))
-        / (itemsPerSlide - 1) || 0;
+      const child1 = container.children[0];
+      const child2 = container.children[1];
+      const child1RightCoord = child1.getBoundingClientRect().right;
+      const child2XCoord = child2.getBoundingClientRect().x;
+      const cardWidth = child1.getBoundingClientRect().width;
+      const containerGap = child2XCoord - child1RightCoord;
+      const visibleCardsOnSlide = Math.floor(sliderWidth / cardWidth);
 
-      return {
-        cardSize: itemWidth + (
-          !Number.isFinite(containerGap) ? 0 : containerGap
-        ),
-        cardsPerSlide: itemsPerSlide,
-      };
+      setSliderProp({
+        cardWidth,
+        cardsPerSlide: visibleCardsOnSlide,
+        sliderWidth,
+        containerGap,
+      });
+      setSlideId(firstSlideId);
+      setTranslateX(startOffset);
     };
 
-    const updateCardProp = () => {
-      setCardProp(getSliderProp());
-    };
+    onResize();
 
-    updateCardProp();
-
-    window.addEventListener('resize', updateCardProp);
+    window.addEventListener('resize', onResize);
 
     return () => {
-      window.removeEventListener('resize', updateCardProp);
+      window.removeEventListener('resize', onResize);
     };
-  }, [items]);
+  }, []);
 
   return (
     <section
@@ -156,16 +161,17 @@ export const ProductsSlider:React.FC<Props> = ({
 
       <div
         className="products-slider__slider"
+        {...swipeHandlers}
         ref={sliderRef}
       >
         <div
           className="products-slider__cards"
           data-cy="cardsContainer"
-          ref={cardsContainerRef}
           style={{
             transform: `translateX(${translateX}px)`,
             transition: 'all 900ms',
           }}
+          ref={cardsContainerRef}
         >
           {
             items.map((el) => (

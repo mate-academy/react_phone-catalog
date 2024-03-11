@@ -36,11 +36,7 @@
     border: 1px solid $icons;
 
     &:active {
-      border-color: $icons
-    }
-
-    &:active .card-buttons__like-icon path{
-      fill: $red;
+      border-color: $icons;
     }
   }
 

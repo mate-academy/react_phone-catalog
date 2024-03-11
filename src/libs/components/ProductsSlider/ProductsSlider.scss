@@ -6,57 +6,22 @@
   gap: 24px;
   width: 100%;
 
-  @include on-mobile {
-    gap: 14px;
-  }
-
-  @include on-tablet {
-    gap: 14px;
-  }
-
   &__header {
     display: flex;
     justify-content: space-between;
-
-    @include on-mobile {
-      flex-direction: column;
-    }
-
-    @include on-tablet {
-      flex-direction: column;
-      gap: 10px;
-    }
   }
 
   &__slider {
     width: 100%;
     overflow: hidden;
-
-    @include on-small-mobile {
-      width: 80%;
-      margin: 0 auto;
-    }
   }
 
   &__cards {
     display: flex;
     gap: 16px;
-    width: 100%;
 
     @include on-small-mobile {
-     gap: 0;
-    }
-
-    @include on-large-mobile {
-      gap: 2%;
-    }
-
-    @include on-tablet {
-     gap: 5%;
-    }
-
-    @include on-laptop {
-     gap: 5%;
+      gap: 0;
     }
   }
 }

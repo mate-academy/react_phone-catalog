@@ -12,25 +12,8 @@
   }
 
   &__cards {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
     gap: 16px;
-    flex-wrap: wrap;
-
-    @include on-small-mobile {
-      flex-direction: column;
-      gap: 10px;
-    }
-
-    @include on-large-mobile {
-      column-gap: 2%;
-    }
-
-    @include on-tablet {
-      column-gap: 2%;
-    }
-
-    @include on-laptop {
-      column-gap: 2%;
-    }
   }
 }

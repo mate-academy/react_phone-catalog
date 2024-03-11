@@ -26,7 +26,7 @@ export const Navbar = () => {
 
       <ul className={cn(
         'nav__list',
-        { 'nav__list--visible': isOpen },
+        { 'nav__list--on-small-screen': isOpen },
       )}
       >
         {

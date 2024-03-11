@@ -20,10 +20,9 @@
     margin-inline: auto;
     padding-bottom: 80px;
 
-
     @include on-mobile {
       width: 100%;
-      padding: 0 5px 40px;
+      padding: 0 10px 70px;
     }
 
     @include on-tablet {
@@ -41,7 +40,7 @@
     margin-bottom: 72px;
 
     @include on-mobile {
-      padding-top: 20px;
+      padding-top: 30px;
       margin-bottom: 42px;
     }
   }

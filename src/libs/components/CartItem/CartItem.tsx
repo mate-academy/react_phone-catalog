@@ -65,7 +65,6 @@ export const CartItem: React.FC<Props> = ({
           className="
           cart-item__button
           cart-item__count-button
-          cart-item__count-button--take-button
           "
           onClick={handleDecreaseQuantity}
           disabled={quantity === 1}
@@ -82,7 +81,6 @@ export const CartItem: React.FC<Props> = ({
           className="
           cart-item__button
           cart-item__count-button
-          cart-item__count-button--add-button
           "
           onClick={handleIncreaseQuantity}
         >

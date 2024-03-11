@@ -1,4 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { useCallback } from 'react';
 
@@ -15,11 +16,13 @@ import { Price } from '../Price';
 import './ProductCard.scss';
 
 type Props = {
+  classNames?: string,
   product: IProduct,
 };
 
 export const ProductCard: React.FC<Props> = ({
   product,
+  classNames,
 }) => {
   const {
     id,
@@ -65,7 +68,9 @@ export const ProductCard: React.FC<Props> = ({
   }, [dispatch, hasInFavourites, product]);
 
   return (
-    <div className="product-card">
+    <div
+      className={cn('product-card', classNames)}
+    >
       <Link
         to={link}
         className="product-card__photo-link"
