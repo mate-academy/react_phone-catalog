@@ -7,3 +7,13 @@
     opacity: 1;
   }
 };
+
+@keyframes animation-loader {
+  from {
+  	transform:rotate(0deg);
+  }
+
+  to {
+  	transform:rotate(360deg);
+  }
+}

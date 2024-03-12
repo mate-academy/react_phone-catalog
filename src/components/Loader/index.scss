@@ -1,3 +1,5 @@
+@import '../../styles/main';
+
 .loader {
   display: flex;
   width: 100%;
@@ -6,11 +8,12 @@
 
   &__content {
     border-radius: 50%;
-    width: 2em;
-    height: 2em;
-    margin: 1em auto;
+    width: 1em;
+    height: 1em;
+    margin: auto;
     border: 0.3em solid #ddd;
     border-left-color: #000;
-    animation: load8 1.2s infinite linear;
+    animation: animation-loader 1.2s infinite linear;
   }
 }
+

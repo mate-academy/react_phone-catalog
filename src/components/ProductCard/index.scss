@@ -22,21 +22,17 @@
       object-fit: contain;
       align-self: center;
 
-      transition: transform $effect-duration;
+      // transition: transform $effect-duration;
 
-      &:hover {
-        @include hover (transform, scale(1.1));
-      }
+      // &:hover {
+      //   @include hover (transform, scale(1.1));
+      // }
     }
 
     &__title {
       height: 42px;
       color: $color-primary;
       font-weight: 600;
-
-      &:hover {
-        color: $color-secondary;
-      }
     }
   }
 
@@ -128,6 +124,15 @@
       &:hover {
         transform: scale(1.1);
       }
+    }
+  }
+
+  &:hover {
+    cursor: pointer;
+
+    .productCard__link__image {
+      transition: transform $effect-duration;
+      transform: scale(1.1);
     }
   }
 }

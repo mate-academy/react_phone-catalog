@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -7,12 +7,15 @@ import { StateStore } from '../../store/StoreContext';
 import { ProductExtended } from '../../types/ProductExtended';
 import { ICONS } from '../../images';
 import { Action } from '../../types/Action';
+import { Loader } from '../Loader/Loader';
 
 type Props = {
   product: ProductExtended;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  const [isCartButtonLoading, setIsCartButtonLoading] = useState(false);
+  const [isFavoriteButtonLoading, setIsFavoriteButtonLoading] = useState(false);
   const { actionHandler } = useContext(StateStore);
   const {
     image,
@@ -28,12 +31,22 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     ram,
   } = product;
 
+  const cartButtonText = addedToCart ? 'Added to cart' : 'Add to cart';
+
   const cartToggleHandler = () => {
+    setIsCartButtonLoading(true);
     actionHandler(product, Action.toggleCart);
+    setTimeout(() => {
+      setIsCartButtonLoading(false);
+    }, 500);
   };
 
   const favoriteToggleHandler = () => {
+    setIsFavoriteButtonLoading(true);
     actionHandler(product, Action.toggleFavorite);
+    setTimeout(() => {
+      setIsFavoriteButtonLoading(false);
+    }, 500);
   };
 
   return (
@@ -72,8 +85,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             'productCard__buttons__cart--active': addedToCart,
           })}
           onClick={cartToggleHandler}
+          disabled={isCartButtonLoading}
         >
-          {addedToCart ? 'Added to cart' : 'Add to cart'}
+          {isCartButtonLoading ? <Loader /> : cartButtonText}
         </button>
         <button
           type="button"
@@ -82,12 +96,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             'productCard__buttons__favorite--active': addedToFavorites,
           })}
           onClick={favoriteToggleHandler}
+          disabled={isFavoriteButtonLoading}
         >
-          <img
-            src={addedToFavorites ? ICONS.favoriteSelected : ICONS.favorite}
-            alt="Favourites"
-            className="productCard__buttons__icon"
-          />
+          {isFavoriteButtonLoading ? (
+            <Loader />
+          ) : (
+            <img
+              src={addedToFavorites ? ICONS.favoriteSelected : ICONS.favorite}
+              alt="Favourites"
+              className="productCard__buttons__icon"
+            />
+          )}
         </button>
       </div>
     </div>
