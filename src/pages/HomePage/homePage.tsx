@@ -21,21 +21,21 @@ export const HomePage = () => {
 
   const categoryImg = [
     {
-      img: `${mainUrl}/_new/img/category-phones.png`,
+      img: `./img/category/category-phones.png`,
       name: "Mobile phones",
       count: `${phones.length}`,
       color: "#D53C51",
       type: "Phones",
     },
     {
-      img: `${mainUrl}/_new/img/category-tablets.png`,
+      img: `./img/category/category-tablets.png`,
       name: "Tablets",
       count: 24,
       color: "#D53C51",
       type: "Tablets",
     },
     {
-      img: `${mainUrl}/_new/img/category-accessories.png`,
+      img: `./img/category/category-accessories.png`,
       // img: "./_new/img/category-accessories.png",
       name: "Accessories",
       count: 100,
