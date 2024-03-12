@@ -5,6 +5,7 @@ import "./HomePage.scss";
 import { useAppSelector } from "../../store";
 import {
   imgWidth,
+  mainUrl,
   scrollPositionLeft,
   scrollPositionRight,
 } from "../../helpers/changePositionItem";
@@ -18,25 +19,23 @@ export const HomePage = () => {
 
   const [scrollImgPosition, setScrollImgPosition] = useState(0);
 
-  const abc = "https://mate-academy.github.io/react_phone-catalog";
-
   const categoryImg = [
     {
-      img: "./_new/img/category-phones.png",
+      img: `${mainUrl}/_new/img/category-phones.png`,
       name: "Mobile phones",
       count: `${phones.length}`,
       color: "#D53C51",
       type: "Phones",
     },
     {
-      img: "./_new/img/category-tablets.png",
+      img: `${mainUrl}/_new/img/category-tablets.png`,
       name: "Tablets",
       count: 24,
       color: "#D53C51",
       type: "Tablets",
     },
     {
-      img: `${abc}/_new/img/category-accessories.png`,
+      img: `${mainUrl}/_new/img/category-accessories.png`,
       // img: "./_new/img/category-accessories.png",
       name: "Accessories",
       count: 100,

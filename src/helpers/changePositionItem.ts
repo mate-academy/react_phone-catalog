@@ -1,3 +1,5 @@
+export const mainUrl = "https://mate-academy.github.io/react_phone-catalog";
+
 export const imgWidth = 1040 + 48;
 
 export const itemWidth = 272 + 16;

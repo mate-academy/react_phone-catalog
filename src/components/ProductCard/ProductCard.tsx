@@ -4,6 +4,7 @@ import { useAppSelector } from "../../store";
 import { TypeCard } from "../../types/TypeCard";
 import "./ProductCard.scss";
 import { useCartPhones, useFavouritesPhones } from "../../helpers/useArrays";
+import { mainUrl } from "../../helpers/changePositionItem";
 
 interface T {
   card: TypeCard;
@@ -24,7 +25,11 @@ export const ProductCard: React.FC<T> = ({ card, newPhone }) => {
   return (
     <div className="card">
       <Link to={`/Phones/${card.phoneId}`} className="card__link">
-        <img src={`./_new/${card.image}`} alt="phone" className="card__img" />
+        <img
+          src={`${mainUrl}/_new/${card.image}`}
+          alt="phone"
+          className="card__img"
+        />
       </Link>
 
       <div className="card__description">
