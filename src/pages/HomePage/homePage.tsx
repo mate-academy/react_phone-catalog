@@ -85,21 +85,21 @@ export const HomePage = () => {
             <Link to="Phones">
               <img
                 className="Slider__img"
-                src="./_new/img/banner-phones.png"
+                src={`${mainUrl}/_new/img/banner-phones.png`}
                 alt="banner-phones"
               />
             </Link>
             <Link to="Tablets">
               <img
                 className="Slider__img"
-                src="./_new/img/banner-tablets.png"
+                src={`${mainUrl}/_new/img/banner-tablets.png`}
                 alt="banner-tablets"
               />
             </Link>
             <Link to="Accessories">
               <img
                 className="Slider__img"
-                src="./_new/img/banner-accessories.png"
+                src={`${mainUrl}/_new/img/banner-accessories.png`}
                 alt="banner-accessories"
               />
             </Link>
