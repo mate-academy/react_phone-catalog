@@ -15,12 +15,14 @@ const getLinkLogoClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const Header = () => {
-  const { products } = useContext(StateStore);
   const { pathname } = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const { products } = useContext(StateStore);
+
   const [query, setQuery] = useState('');
   const [isQuery, setIsQuery] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
-  const [searchParams, setSearchParams] = useSearchParams();
 
   const phones = getProductsByCategory(products, 'phones');
   const tablets = getProductsByCategory(products, 'tablets');
@@ -77,7 +79,7 @@ export const Header = () => {
 
     setQuery(searchParams.get('query') || '');
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname, favorites]);
+  }, [pathname]);
 
   const debouncedQuery = useMemo(
     () =>
