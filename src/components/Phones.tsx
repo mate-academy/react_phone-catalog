@@ -31,9 +31,9 @@ export const Phones = () => {
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
   const { sortParam, setSortParam } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
-  const [favoritePhones, setFavoritePhones] = useState<string>('');
+  const { favoritePhones, setFavoritePhones } = useAppContext();
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
-  const [cartPhones, setCartPhones] = useState<string>('');
+  const { cartPhones, setCartPhones } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   // const { currentPage, setCurrentPage } = useAppContext();
   const  { visibleElems } = useAppContext();
@@ -116,17 +116,22 @@ export const Phones = () => {
   //   cartPhones.push(id);
   //   console.log(cartPhones);
   // }
-
+  const [price, setPrice] = useState<number>(0);
+  
+  
   useEffect(() => {
+    let newProductInCart = { id: cartPhones, count: 1, fullPrice: price };
     if (cartPhones.trim() !== "") {
-      if (prevCartPhonesArr?.includes(cartPhones)) {
-        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone !== cartPhones));
+      if (prevCartPhonesArr?.some(elem => elem.id === cartPhones)) {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone.id !== cartPhones));
       } else {
-        setPrevCartPhonesArr(prevCartPhonesArr => (prevCartPhonesArr ? [...prevCartPhonesArr, cartPhones] : [cartPhones]));
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr ? [...prevCartPhonesArr, newProductInCart] : [newProductInCart]);
       }
     }
-    setCartPhones(''); 
-  }, [cartPhones, prevCartPhonesArr]);
+    setCartPhones('');
+    setPrice(0);
+    console.log(prevCartPhonesArr)
+}, [cartPhones, prevCartPhonesArr]);
 
   // const [favoritePhones, setFavoritePhones] = useState<string>('');
   // const [ prevFavoriteArr, setPrevFavoriteArr ] = useAppContext();
@@ -298,12 +303,12 @@ export const Phones = () => {
 
                     <button
                       type="button"
-                      className={prevCartPhonesArr && prevCartPhonesArr.includes(phone.id) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
+                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.id) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
                       tabIndex={0}
                       aria-label="Previous Image"
-                      onClick={() => setCartPhones(phone.id)}
+                      onClick={() => {setCartPhones(phone.id), setPrice(phone.price)}}
                     >
-                      {prevCartPhonesArr && prevCartPhonesArr.includes(phone.id) ? 'Added to cart' : 'Add to cart'}
+                      {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.id) ? 'Added to cart' : 'Add to cart'}
                     </button>
                     <button
                       type="button"

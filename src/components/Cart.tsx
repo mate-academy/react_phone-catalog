@@ -24,17 +24,62 @@ interface Phones {
 
 export const Cart = () => {
   const { getPhone } = useAppContext();
-  const { prevCartPhonesArr } = useAppContext();
+  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
 
   const [productInCart, setProductInCart] = useState<Phones[] | undefined>();
 
+  const handleDeleteInCart = (deletElem: string) => {
+    if (prevCartPhonesArr && prevCartPhonesArr.find(elem => elem.id.includes(deletElem))) {
+      setPrevCartPhonesArr(prevCartPhonesArr.filter(elem => elem.id !== deletElem))
+    }
+  }
+
   useEffect(() => {
     const result = getPhone?.filter(
-      (phone) => prevCartPhonesArr?.some((item) => phone.id === item),
+      (phone) => prevCartPhonesArr?.some((item) => phone.id === item.id),
     );
 
     setProductInCart(result);
-  }, []);
+
+    if (prevCartPhonesArr) {
+      const sum = prevCartPhonesArr.map(elem => elem.count * elem.fullPrice);
+      const totalCaunt = sum.reduce((total, currentValue) => total + currentValue, 0);
+      setTotalCaunt(totalCaunt);
+  }
+  }, [prevCartPhonesArr]);
+
+  const [totalCaunt, setTotalCaunt] = useState(0);
+
+  const handleCountUp = (id: string) => {
+    
+    const updatedCartPhones = prevCartPhonesArr?.map(elem => {
+        if (elem.id === id) {
+            return { ...elem, count: elem.count + 1 };
+        }
+      
+
+        return elem;
+    });
+    if (updatedCartPhones) {
+        setPrevCartPhonesArr(updatedCartPhones);
+    }
+  }
+
+  const handleCountDown = (id: string) => {
+    
+    const updatedCartPhones = prevCartPhonesArr?.map(elem => {
+        if (elem.id === id) {
+            return { ...elem, count: elem.count - 1 };
+        }
+      
+
+        return elem;
+    });
+    if (updatedCartPhones) {
+        setPrevCartPhonesArr(updatedCartPhones);
+    }
+  }
+
 
   return (
     <section className="cart__wrapper">
@@ -52,8 +97,10 @@ export const Cart = () => {
           )}
           <div className="cart__content__blocks__products">
             {productInCart?.map((item) => (
+              
               <div className="cart__content__blocks__products__device">
                 <img
+                  onClick={() => handleDeleteInCart(item.id)}
                   className="cart__content__blocks__products__device__close"
                   src={CloseIcon}
                   alt="close icon"
@@ -70,15 +117,21 @@ export const Cart = () => {
                 </span>
                 <div>
                   
-                  <button className="cart__content__blocks__products__device__minus"></button>
-                  <span className="cart__content__blocks__products__device__caunt"></span>
-                  <button className="cart__content__blocks__products__device__plus"></button>
+                  <button onClick={() => handleCountDown(item.id)} className="cart__content__blocks__products__device__button">
+                    <span className="cart__content__blocks__products__device__button__minus"></span>
+                  </button>
+                  <span className="cart__content__blocks__products__device__caunt">{prevCartPhonesArr?.find((elem) => (elem.id === item.id))?.count}</span>
+                  <button onClick={() => handleCountUp(item.id)} className="cart__content__blocks__products__device__button">
+                    <span className="cart__content__blocks__products__device__button__plus"></span>
+                  </button>
                 </div>
                 <span className="cart__content__blocks__products__device__price">{`$${item.price}`}</span>
               </div>
             ))}
           </div>
-          <div className="cart__content__blocks__sum-price"></div>
+          <div className="cart__content__blocks__sum-price">
+            <span className="cart__content__blocks__sum-price__title">${totalCaunt}</span>
+          </div>
         </div>
       </div>
     </section>

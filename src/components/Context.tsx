@@ -22,14 +22,29 @@ interface Phones {
   image: string;
 }
 
+interface CartProducts {
+  id: string;
+  count: number;
+  fullPrice: number;
+}
+
 const AppContext = createContext<{
+
+  favoritePhones: string;
+  // eslint-disable-next-line max-len
+  setFavoritePhones: React.Dispatch<React.SetStateAction<string>>;
+
+  cartPhones: string;
+  // eslint-disable-next-line max-len
+  setCartPhones: React.Dispatch<React.SetStateAction<string>>;
+
   prevFavoriteArr: string[] | undefined;
   // eslint-disable-next-line max-len
   setPrevFavoriteArr: React.Dispatch<React.SetStateAction<string[] | undefined>>;
 
-  prevCartPhonesArr: string[] | undefined;
+  prevCartPhonesArr: CartProducts[] | undefined;
   // eslint-disable-next-line max-len
-  setPrevCartPhonesArr: React.Dispatch<React.SetStateAction<string[] | undefined>>;
+  setPrevCartPhonesArr: React.Dispatch<React.SetStateAction<CartProducts[] | undefined>>;
 
   selectedProduct: string | undefined;
   // eslint-disable-next-line max-len
@@ -57,6 +72,16 @@ const AppContext = createContext<{
 
 export const AppProvider = ({ children }: AppContextProps) => {
   const [
+    favoritePhones,
+    setFavoritePhones,
+  ] = useState<string>('');
+
+  const [
+    cartPhones,
+    setCartPhones,
+  ] = useState<string>('');
+
+  const [
     prevFavoriteArr,
     setPrevFavoriteArr,
   ] = useState<string[] | undefined>();
@@ -64,7 +89,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
   const [
     prevCartPhonesArr,
     setPrevCartPhonesArr,
-  ] = useState<string[] | undefined>();
+  ] = useState<CartProducts[] | undefined>();
 
   const [selectedProduct, setSelectedProduct] = useState<string>();
   const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
@@ -98,6 +123,12 @@ export const AppProvider = ({ children }: AppContextProps) => {
 
   return (
     <AppContext.Provider value={{
+
+      favoritePhones,
+      setFavoritePhones,
+
+      cartPhones,
+      setCartPhones,
 
       prevFavoriteArr,
       setPrevFavoriteArr,

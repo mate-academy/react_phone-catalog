@@ -12,50 +12,57 @@ export const Footer = () => {
       </a>
       <nav className="nav nav-footer">
         <ul className="nav__list nav-footer__list">
-          <li className="nav__list__row">
+          <li className="footer__nav__list__row">
             <a
               href="https://github.com/OleksChernikov"
               target="_blank"
-              className="nav__list__row__link"
+              className="footer__nav__list__row__link"
               rel="noreferrer"
             >
               Github
             </a>
           </li>
-          <li>
+          <li className="footer__nav__list__row">
             <a
               href="https://github.com/OleksChernikov"
               target="_blank"
-              className="nav__list__row__link"
+              className="footer__nav__list__row__link"
               rel="noreferrer"
             >
               Contacts
             </a>
           </li>
-          <li>
+          <li className="footer__nav__list__row">
             <a
               href="https://github.com/OleksChernikov"
               target="_blank"
-              className="nav__list__row__link"
+              className="footer__nav__list__row__link"
               rel="noreferrer"
             >
-              rights
+              Rights
             </a>
           </li>
         </ul>
       </nav>
-      <a
-        href=""
+      <div
+        role="button"
+        tabIndex={0}
+        onClick={() => window.scrollTo(0, 0)}
         className="footer__link"
+        onKeyDown={(event) => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            window.scrollTo(0, 0);
+          }
+        }}
       >
         {' '}
         Back to top
         <img
           src={Back}
-          className="footer__link-icon"
+          className="footer__link__icon"
           alt="icon"
         />
-      </a>
+      </div>
     </footer>
   );
 };
