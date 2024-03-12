@@ -1,0 +1,43 @@
+@import '../../GeneralStyles/variables';
+
+.shopByCategory {
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img-wrapper {
+    overflow: hidden;
+  }
+
+  &__img {
+    width: 368px;
+    height: 368px;
+    transition: transform $duration-time;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__title {
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: normal;
+    margin-top: 24px;
+  }
+
+  &__amount {
+    color: $secondary-color;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}
