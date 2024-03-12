@@ -15,6 +15,10 @@
   &__no-result {
     margin: 40px 0;
   }
+  &__list{
+    display: flex;
+    justify-content: center;
+  }
 }
 
 .page-title {

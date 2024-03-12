@@ -97,7 +97,7 @@ export const ProductCart: React.FC<Props> = ({
         >
           {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>
-        <div className="productCard__icon-block">
+        <div className="icon-block">
           <button
             className={cn('icon-button-favorities', {
               'icon-button-favorities--is-favourite': isFavourite,

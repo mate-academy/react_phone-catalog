@@ -1,4 +1,5 @@
 .productCard {
+  position: relative;
   border: 1px solid #e2e6e9;
   width: 272px;
   height: 507px;
@@ -31,21 +32,32 @@
   &__description {
     padding-left: 24px;
     padding-right: 24px;
-    margin-bottom: 16px;
   }
 
   &__control {
+    position: absolute;
     display: flex;
     gap: 8px;
     padding-inline: 24px;
+    bottom: 24px;
+    width: 224px;
   }
+}
 
-  &__icon-block {
-    width: $product-card-icon-size;
-    height: $product-card-icon-size;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.icon-block {
+  width: $product-card-icon-size;
+  height: $product-card-icon-size;
+  border: 1px solid #b4bdc3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  @include hover(border, (1px solid #313237));
+
+  &--big {
+    height: 48px;
+    width: 48px;
   }
 }
 
@@ -54,32 +66,31 @@
   color: white;
   background-color: #313237;
   height: 40px;
-  width: 100%;
+  width: 176px;
+  cursor: pointer;
 
   &--big {
-    height: 48px;
     width: 263px;
+    height: 48px;
+  }
+  &--width {
+    width: 100%;
+    height: 48px;
   }
 }
 
 .icon-button-favorities {
-  width: $product-card-icon-size;
-  height: $product-card-icon-size;
+  width: $icon-size;
+  height: $icon-size;
   background-image: url(../../public/icons/button-favorities-2x.png);
   background-size: cover;
   border: none;
   background-color: white;
-
-  &--big {
-    width: 48px;
-    height: 48px;
-  }
+  cursor: pointer;
 
   &--is-favourite {
     background-image: url(../../public/icons/Favourites-added-2x.png);
   }
-
-  @include hover(border, (1px solid #313237));
 }
 
 .card-description {
@@ -98,7 +109,6 @@
 
   &--details {
     width: 100%;
-    border-top: 1px solid #e2e6e9;
   }
 
   &__description {

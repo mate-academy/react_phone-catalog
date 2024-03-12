@@ -164,23 +164,22 @@ export const ProductsDetailsPage: React.FC<Props> = ({
                   {isAdded ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <div className="product-details__favourites">
-                  <button
-                    className={cn(
-                      'icon-button-favorities icon-button-favorities--big',
-                      {
+                  <div className="icon-block icon-block--big">
+                    <button
+                      className={cn('icon-button-favorities', {
                         'icon-button-favorities--is-favourite': isFavourite,
-                      },
-                    )}
-                    aria-label="icon-favorite"
-                    type="button"
-                    onClick={(e) => handleFavourites(
-                      e,
-                      isFavourite,
-                      productSelected,
-                      favourites,
-                      setFavourites,
-                    )}
-                  />
+                      })}
+                      aria-label="icon-favorite"
+                      type="button"
+                      onClick={(e) => handleFavourites(
+                        e,
+                        isFavourite,
+                        productSelected,
+                        favourites,
+                        setFavourites,
+                      )}
+                    />
+                  </div>
                 </div>
               </div>
 

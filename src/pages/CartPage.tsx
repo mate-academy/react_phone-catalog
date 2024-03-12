@@ -65,7 +65,7 @@ export const CartPage: React.FC<Props> = ({ setCartItems, cartItems }) => {
               )}`}
             </p>
             <button
-              className="control-button cart-page__button"
+              className="control-button control-button--width cart-page__button"
               type="button"
               onClick={handleCheckout}
             >

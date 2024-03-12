@@ -7,8 +7,9 @@
     width: 1040px;
     height: 400px;
     display: none;
+    object-fit: cover;
   }
-  
+
   &__photos {
     position: relative;
     display: flex;
@@ -27,6 +28,7 @@
     background-color: white;
     border: 1px solid #b4bdc3;
     width: 32px;
+    cursor: pointer;
 
     &--next {
       right: 0;

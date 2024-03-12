@@ -168,13 +168,15 @@ export const PhonePage: React.FC<Props> = ({
         <div className="phone-page__content">
           {products.length > 0 ? (
             <>
-              <ProductList
-                products={products}
-                setCartItems={setCartItems}
-                cartItems={cartItems}
-                favourites={favourites}
-                setFavourites={setFavourites}
-              />
+              <div className="phone-page__list">
+                <ProductList
+                  products={products}
+                  setCartItems={setCartItems}
+                  cartItems={cartItems}
+                  favourites={favourites}
+                  setFavourites={setFavourites}
+                />
+              </div>
               {products.length > +itemsOnPage && (
                 <div className="phone-page__pagination">
                   <Pagination total={products.length} />

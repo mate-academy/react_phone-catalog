@@ -3,10 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { NavLink, useSearchParams } from 'react-router-dom';
-import {
-  getProducts,
-  sortProducts,
-} from '../helpers/ProductMethods';
+import { getProducts, sortProducts } from '../helpers/ProductMethods';
 import { Product } from '../types/Product';
 import { ProductList } from '../components/ProductList';
 import { Loader } from '../components/Loader';
@@ -178,13 +175,15 @@ export const AccessoriesPage: React.FC<Props> = ({
         <Loader />
       ) : (
         <div className="phone-page__content">
-          <ProductList
-            setCartItems={setCartItems}
-            products={products}
-            cartItems={cartItems}
-            favourites={favourites}
-            setFavourites={setFavourites}
-          />
+          <div className="phone-page__list">
+            <ProductList
+              setCartItems={setCartItems}
+              products={products}
+              cartItems={cartItems}
+              favourites={favourites}
+              setFavourites={setFavourites}
+            />
+          </div>
 
           {products.length > 0 ? (
             <>

@@ -31,7 +31,8 @@
   height: $button-slider-size;
   border: 1px solid #b4bdc3;
   background-color: white;
-  
+  cursor: pointer;
+
   @include hover(border, (1px solid #313237));
 
   &--slider--left {
