@@ -1,9 +1,9 @@
-import { NavLink } from "react-router-dom";
-import { HOT_PRICE, NEW_MODELS } from "../helpers/SliderTitle";
-import { Product } from "../types/Product";
-import { ProductSlider } from "../components/ProductsSlider";
-import { BannerSlider } from "../components/BannerSlider";
-import { CartItem } from "../types/CartItem";
+import { NavLink } from 'react-router-dom';
+import { HOT_PRICE, NEW_MODELS } from '../helpers/SliderTitle';
+import { Product } from '../types/Product';
+import { ProductSlider } from '../components/ProductsSlider';
+import { BannerSlider } from '../components/BannerSlider';
+import { CartItem } from '../types/CartItem';
 
 type Props = {
   products: Product[];
@@ -23,10 +23,10 @@ export const HomePage: React.FC<Props> = ({
   favourites,
   setFavourites,
 }) => {
-  const tablets = products.filter((product) => product.type === "tablet");
-  const mobiles = products.filter((product) => product.type === "phone");
+  const tablets = products.filter((product) => product.type === 'tablet');
+  const mobiles = products.filter((product) => product.type === 'phone');
   const accessories = products.filter(
-    (product) => product.type === "accessory"
+    (product) => product.type === 'accessory',
   );
 
   return (

@@ -59,7 +59,7 @@ export const getIsAdded = (
   cartItems: CartItem[],
   product: Product | undefined,
 ) => {
-  return cartItems.some((item) => item.product.id === product?.id);
+  return cartItems.some((item) => item.product?.id === product?.id);
 };
 
 export const handleFavourites = (
