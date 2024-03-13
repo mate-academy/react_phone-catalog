@@ -10,6 +10,7 @@ import {
   Phones,
   PhonesSlider,
 } from "../../components/PhonesSlider/PhonesSlider";
+import { mainUrl } from "../../helpers/changePositionItem";
 
 export const ItemCard = () => {
   const dispatch = useAppDispatch();
@@ -109,7 +110,7 @@ export const ItemCard = () => {
               tabIndex={0}
             >
               <img
-                src={`/_new/${image}`}
+                src={`${mainUrl}/_new/${image}`}
                 alt="Phone"
                 className={classNames("ItemCard__img", {
                   active__img: image === selectedImg,
@@ -121,7 +122,7 @@ export const ItemCard = () => {
         </div>
 
         <img
-          src={`/_new/${selectedImg}`}
+          src={`${mainUrl}/_new/${selectedImg}`}
           alt="Phone"
           className="ItemCard__selected-img"
         />

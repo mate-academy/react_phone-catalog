@@ -51,7 +51,7 @@ export const PhonesPage = () => {
       case SortType.Alphabetically:
         return sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
       case SortType.Cheapest:
-        return sortedPhones.sort((a, b) => b.price - a.price);
+        return sortedPhones.sort((a, b) => a.price - b.price);
       default:
         return sortedPhones;
     }
@@ -92,7 +92,7 @@ export const PhonesPage = () => {
         </Link>
 
         <img
-          src="/img/UpperLink.png"
+          src="./img/UpperLink.png"
           alt="ArrowRight"
           className="top-link__img"
         />

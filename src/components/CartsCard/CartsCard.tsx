@@ -1,6 +1,10 @@
-import { Dispatch, SetStateAction, useEffect, useState } from "react";
+import { Dispatch, SetStateAction, useEffect } from "react";
 import { TypeCard } from "../../types/TypeCard";
 import { useCartPhones } from "../../helpers/useArrays";
+import {
+  decreasePhonesCountToSell,
+  increasePhonesCountToSell,
+} from "../../features/cartSlice";
 
 interface T {
   phone: TypeCard;
@@ -8,7 +12,7 @@ interface T {
 }
 
 export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
-  const [count, setCount] = useState(1);
+  // const [count, setCount] = useState(1);
 
   useEffect(() => {
     setSumArray((currentState) => ({
@@ -20,7 +24,8 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
   const changeCount = (key: string) => {
     switch (key) {
       case "-":
-        setCount(count - 1);
+        // setCount(count - 1);
+        decreasePhonesCountToSell(phone.id);
 
         setSumArray((currentState) => ({
           ...currentState,
@@ -29,7 +34,8 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
         break;
 
       case "+":
-        setCount(count + 1);
+        // setCount(count + 1);
+        increasePhonesCountToSell(phone.id);
 
         setSumArray((currentState) => ({
           ...currentState,
@@ -70,15 +76,15 @@ export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
             <button
               type="button"
               onClick={() => changeCount("-")}
-              disabled={count === 1}
+              disabled={phone.countToSell === 1}
             >
               -
             </button>
-            <p>{count}</p>
+            <p>{phone.countToSell}</p>
             <button
               type="button"
               onClick={() => changeCount("+")}
-              disabled={count >= 99}
+              disabled={phone.countToSell >= 99}
             >
               +
             </button>

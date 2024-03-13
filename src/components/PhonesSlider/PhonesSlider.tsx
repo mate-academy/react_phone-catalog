@@ -109,7 +109,7 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
           {phonesToDisplay(type).map((card) => {
             return (
               <li className="cardsContainer__item" key={card.id}>
-                <ProductCard newPhone card={card} />
+                <ProductCard newPhone={type === Phones.Discount} card={card} />
               </li>
             );
           })}

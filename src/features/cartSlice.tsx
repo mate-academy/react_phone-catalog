@@ -13,10 +13,63 @@ export const cart = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    addPhonesInCart: (state, action) => {
+    decreasePhonesCountToSell: (state, action: PayloadAction<string>) => {
+      const index = state.phonesInCart.findIndex(
+        (phone) => phone.id === action.payload,
+      );
+
+      // console.log(index);
+
       return {
         ...state,
-        phonesInCart: [...state.phonesInCart, action.payload],
+        phonesInCart: state.phonesInCart.map((phone) => {
+          if (phone.id === state.phonesInCart[index].id) {
+            // console.log("yes");
+
+            return {
+              ...phone,
+              countToSell: phone.countToSell - 1,
+            };
+          }
+
+          return phone;
+        }),
+      };
+    },
+
+    increasePhonesCountToSell: (state, action: PayloadAction<string>) => {
+      const index = state.phonesInCart.findIndex(
+        (phone) => phone.id === action.payload,
+      );
+
+      // console.log(index);
+
+      return {
+        ...state,
+        phonesInCart: state.phonesInCart.map((phone) => {
+          if (phone.id === state.phonesInCart[index].id) {
+            // console.log("yes");
+
+            return {
+              ...phone,
+              countToSell: phone.countToSell + 1,
+            };
+          }
+
+          return phone;
+        }),
+      };
+    },
+
+    addPhonesInCart: (state, action: PayloadAction<TypeCard>) => {
+      const newPhone = {
+        ...action.payload,
+        countToSell: 2,
+      };
+
+      return {
+        ...state,
+        phonesInCart: [...state.phonesInCart, newPhone],
       };
     },
 
@@ -33,4 +86,9 @@ export const cart = createSlice({
 
 export default cart.reducer;
 
-export const { addPhonesInCart, deletePhonesInCart } = cart.actions;
+export const {
+  decreasePhonesCountToSell,
+  increasePhonesCountToSell,
+  addPhonesInCart,
+  deletePhonesInCart,
+} = cart.actions;
