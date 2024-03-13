@@ -64,7 +64,7 @@ export const ProductsDetailsPage: React.FC<Props> = ({
   const addToCart = (e: React.MouseEvent, selectedProduct: Product) => {
     e.preventDefault();
     const existingItem = cartItems.find(
-      (item) => item.product.id === selectedProduct.id,
+      (item) => item.product?.id === selectedProduct.id,
     );
 
     if (existingItem) {
