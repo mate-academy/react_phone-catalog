@@ -58,11 +58,11 @@ export const CartCard: React.FC<Props> = ({
           onClick={handleDelete}
         />
         <img
-          src={cartItem.product.imageUrl}
+          src={cartItem.product?.imageUrl}
           alt="product"
           className="cart-card__img"
         />
-        <p className="cart-card__name">{cartItem.product.name}</p>
+        <p className="cart-card__name">{cartItem.product?.name}</p>
       </div>
 
       <div className="cart-card__right">
