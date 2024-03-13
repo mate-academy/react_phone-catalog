@@ -1,11 +1,26 @@
 @import '../styles/main';
 
 .productDetailsPage {
-  margin-block: 24px 80px;
+  margin-block: 24px 56px;
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include onTablet {
+    margin-block: 24px 64px;
+  }
+
+  @include onDesktop {
+    margin-block: 24px 80px;
+  }
+  &__container {
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
 
   &__loader {
     display: flex;
@@ -15,7 +30,12 @@
   &__navigation {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 24px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      gap: 40px;
+    }
 
     &--top {
       display: flex;
@@ -53,37 +73,78 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    gap: 32px;
 
-    &__header{
-      @extend %h1;
+    @include onTablet {
+      gap: 40px;
+    }
+
+    &__header {
+      @extend %h2;
+
+      @include onTablet {
+        font-size: 32px;
+        font-weight: 800;
+        text-align: left;
+      }
+
+      @include onDesktop {
+        line-height: 41px;
+        letter-spacing: -1%;
+      }
     }
 
     &__main {
       display: flex;
       flex-direction: column;
-      gap: 80px;
+      gap: 56px;
+
+      @include onTablet {
+        gap: 64px;
+      }
+
+      @include onDesktop {
+        gap: 80px;
+      }
 
       &__info {
         display: flex;
-        flex-direction: row;
+        flex-direction: column;
         gap: 16px;
+
+        @include onTablet {
+          display: flex;
+          flex-direction: row;
+        }
       }
 
       &__description {
         display: flex;
-        flex-direction: row;
-        gap: 64px;
+        flex-direction: column;
+        align-items: center;
+        gap: 56px;
+
+        @include onDesktop {
+          flex-direction: row;
+          align-items: baseline;
+          gap: 64px;
+        }
 
         &--about {
-          width: 560px;
           display: flex;
           flex-direction: column;
+          width: 287px;
           gap: 32px;
 
-          &--title {
-            @extend %h2;
+          @include onTablet {
+            width: 592px;
+          }
 
+          @include onDesktop {
+            width: 560px;
+          }
+
+          &--title {
             display: flex;
             flex-direction: column;
             gap: 16px;
@@ -93,10 +154,6 @@
             display: flex;
             flex-direction: column;
             gap: 16px;
-
-            &--title {
-              @extend %h3;
-            }
 
             &--description {
               display: flex;
@@ -113,10 +170,18 @@
         }
 
         &--specs {
-          width: 512px;
+          width: 288px;
           display: flex;
           flex-direction: column;
           gap: 32px;
+
+          @include onTablet {
+            width: 592px;
+          }
+
+          @include onDesktop {
+            width: 512px;
+          }
 
           &--title {
             @extend %h2;
@@ -157,9 +222,29 @@
     }
 
     &--side-panel {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        gap: 12px;
+      }
+
+      @include onDesktop {
+        gap: 16px;
+      }
+
+    &--mobile {
       display: flex;
-      flex-direction: column;
-      gap: 16px;
+      flex-direction: row;
+      gap: 8px;
+      margin-bottom: 40px;
+
+      @include onTablet {
+        display: none;
+      }
+    }
 
       &--buttons {
         width: 80px;
@@ -179,18 +264,35 @@
       }
 
       &--image {
-        width: 64px;
-        height: 64px;
+        width: 49px;
+        height: 49px;
         object-fit: contain;
+
+        @include onTablet {
+          width: 21px;
+          height: 21px;
+        }
+
+        @include onDesktop {
+          width: 64px;
+          height: 64px;
+        }
       }
     }
 
     &--main {
+      display: flex;
+      justify-content: center;
+
       &--image {
-        width: 464px;
-        height: 464px;
+        height: 288px;
         object-fit: contain;
-        margin-right: 48px;
+
+        @include onDesktop {
+          width: 464px;
+          height: 464px;
+          margin-right: 48px;
+        }
       }
     }
 
@@ -199,10 +301,24 @@
       flex-direction: column;
       gap: 24px;
 
+      @include onTablet {
+        width: 275px;
+      }
+
+      @include onDesktop {
+        width: 100%;
+      }
+
       &__colors {
         display: flex;
         flex-direction: column;
         gap: 8px;
+
+        &--container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
 
         &--text {
           color: $color-secondary;
@@ -282,8 +398,17 @@
         gap: 16px;
 
         &--price {
+          @extend %h2;
+
+          @include onTablet {
+            font-size: 32px;
+            font-weight: 800;
+            line-height:  41px;
+            letter-spacing: -1%;
+          }
+
           display: flex;
-          font-display: row;
+          justify-content: left;
           gap: 8px;
 
           &--full {
@@ -295,6 +420,7 @@
         &--buttons {
           display: flex;
           flex-direction: row;
+          justify-content: center;
           gap: 8px;
           bottom: 0;
 
@@ -371,7 +497,24 @@
     }
 
     &--id {
-      margin-left: 115px;
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+
+      @include onDesktop {
+        margin-left: 145px;
+      }
+
+    &--mobile {
+      display: flex;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
 
       &--text {
         color: $color-icons;

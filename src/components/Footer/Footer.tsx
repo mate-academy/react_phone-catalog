@@ -1,11 +1,16 @@
-import { Link } from 'react-router-dom';
-import { ICONS } from '../../images/icons/icons';
+import { Link, useLocation } from 'react-router-dom';
 import './Footer.scss';
+import { ICONS } from '../../images/icons/icons';
 
 export const Footer = () => {
+  const { pathname } = useLocation();
   const handleScrollToTop = () => {
     window.scrollTo({ top: 0 });
   };
+
+  if (pathname === '/menu') {
+    return null;
+  }
 
   return (
     <footer className="footer">
@@ -32,7 +37,6 @@ export const Footer = () => {
               Github
             </Link>
           </li>
-
           <li className="footer__navigation--item">
             <Link
               to="https://www.linkedin.com/in/mariasnegireva/"
@@ -43,7 +47,6 @@ export const Footer = () => {
               Contacts
             </Link>
           </li>
-
           <li className="footer__navigation--item">
             <Link
               to="https://github.com/MariaSnegireva"
@@ -58,7 +61,7 @@ export const Footer = () => {
       </nav>
 
       <Link
-        to="#/"
+        to={pathname}
         className="footer__back-to-top"
         onClick={handleScrollToTop}
       >

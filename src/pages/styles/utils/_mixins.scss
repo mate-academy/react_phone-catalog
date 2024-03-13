@@ -1,4 +1,17 @@
 /* stylelint-disable */
+
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
 @mixin hover($property, $toValue) {
   transition: #{$property} $effect-duration;
 
@@ -10,10 +23,17 @@
 .container {
   justify-content: center;
   display: flex;
-  width: 1136px;
   margin: 0 auto;
   overflow: hidden;
   min-height: 83vh;
+
+  @include onTablet {
+    width: 592px;
+  }
+
+  @include onDesktop {
+    width: 1136px;
+  }
 }
 
 @mixin listNav {
@@ -35,7 +55,7 @@
 @mixin logo {
   transition: transform $effect-duration;
 
-    &:hover {
-      @include hover(transform, scale(1.1));
-    }
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
 }

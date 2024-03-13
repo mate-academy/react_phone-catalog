@@ -7,6 +7,7 @@ export const ICONS = {
   search: require('./search.svg').default,
   close: require('./close.svg').default,
 
+  menu: require('./menu-icon.svg').default,
   favourites: require('./favourites.svg').default,
   favouritesSelected: require('./favouritesSelected.svg').default,
   cart: require('./cart.svg').default,

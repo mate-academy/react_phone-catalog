@@ -1,50 +1,49 @@
 @import '../../pages/styles/main';
 
 .header {
-  .upperCase {
-      @extend %upperCase;
-    }
-
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  height: 64px;
+  height: 48px;
   border-bottom: 1px solid $color-elements;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  @include onDesktop {
+    position: static;
+    height: 64px;
+  }
 
   &__left-side {
     display: flex;
     flex-direction: row;
-    margin: 20px 0 20px 24px;
+    margin: 14px 16px;
+
+    @include onDesktop {
+      margin: 20px 0 20px 24px;
+    }
 
     &__navigation {
       &--list {
         @include listNav;
+
+        @include onTablet {
+          gap: 32px;
+        }
       }
 
       &--item {
-        &--link {
-          @include linkNav;
+        display: none;
 
-          &::after {
-            content: "";
-            height: 3px;
-            width: 100%;
-            top: 39px;
-            left: 0;
-            position: absolute;
-            background-color: $color-primary;
+        @include onTablet {
+          display: block;
+          &--link {
+            @include linkNav;
 
-            transition: transform $effect-duration;
-            transform: scale(0);
-            transform-origin: center;
-          }
-
-          &:hover::after {
-            @include hover(transform, scale($scale));
-          }
-
-          &--active {
-            color: $color-primary;
+            &:hover {
+              transition: $effect-duration;
+            }
 
             &::after {
               content: "";
@@ -54,7 +53,29 @@
               left: 0;
               position: absolute;
               background-color: $color-primary;
-              transform: scale($scale);
+
+              transition: transform $effect-duration;
+              transform: scale(0);
+              transform-origin: center;
+            }
+
+            &:hover::after {
+              @include hover(transform, scale($scale));
+            }
+
+            &--active {
+              color: $color-primary;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                top: 39px;
+                left: 0;
+                position: absolute;
+                background-color: $color-primary;
+                transform: scale($scale);
+              }
             }
           }
         }
@@ -71,17 +92,21 @@
     flex-direction: row;
 
     &__search {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      width: 327px;
-      box-sizing: border-box;
-      padding-inline: 24px;
-      border-left: 1px solid $color-elements;
+      display: none;
+
+      @include onDesktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 327px;
+        box-sizing: border-box;
+        padding-inline: 24px;
+        border-left: 1px solid $color-elements;
+      }
 
       &--query {
         @extend %search;
-        
+
         height: 100%;
         border: none;
         padding: 0;
@@ -120,34 +145,33 @@
       justify-content: center;
       border-left: 1px solid $color-elements;
 
-      &--logo {
+      &--menu {
         width: 16px;
         height: 16px;
-        padding: 24px;
+        padding: 18px;
 
-        &--link {
-          @include linkNav;
+        &--close {
+          width: 16px;
+          height: 16px;
+          padding: 18px;
+        }
 
-          &::after {
-            content: "";
-            height: 3px;
-            width: 100%;
-            bottom: 0;
-            left: 0;
-            position: absolute;
-            background-color: $color-primary;
+        @include onTablet {
+          display: none;
+        }
+      }
 
-            transition: transform $effect-duration;
-            transform: scale(0);
-            transform-origin: center;
-          }
+      &--logo {
+        display: none;
 
-          &:hover::after {
-            @include hover (transform, scale($scale));
-          }
+        @include onTablet {
+          display: block;
+          width: 16px;
+          height: 16px;
+          padding: 24px;
 
-          &--active {
-            color: $color-primary;
+          &--link {
+            @include linkNav;
 
             &::after {
               content: "";
@@ -157,27 +181,53 @@
               left: 0;
               position: absolute;
               background-color: $color-primary;
-              transform: scale($scale);
+
+              transition: transform $effect-duration;
+              transform: scale(0);
+              transform-origin: center;
+            }
+
+            &:hover::after {
+              @include hover (transform, scale($scale));
+            }
+
+            &--active {
+              color: $color-primary;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                background-color: $color-primary;
+                transform: scale($scale);
+              }
             }
           }
         }
       }
 
       &__counter {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        color: $color-white;
-        width: 14px;
-        height: 14px;
-        background-color: $color-red;
-        border-radius: 50%;
-        font-size: 9px;
-        font-weight: 600;
-        line-height: 11.5px;
-        position: absolute;
-        top: 30%;
-        right: 30%;
+        display: none;
+
+        @include onTablet {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $color-white;
+          width: 14px;
+          height: 14px;
+          background-color: $color-red;
+          border-radius: 50%;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 11.5px;
+          position: absolute;
+          top: 30%;
+          right: 30%;
+        }
       }
     }
   }

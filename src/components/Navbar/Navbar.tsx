@@ -1,12 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
-import classNames from 'classnames';
 import { ICONS } from '../../images/icons/icons';
-
-const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
-  'upperCase header__left-side__navigation--item--link', {
-    'header__left-side__navigation--item--link--active': isActive,
-  },
-);
+import { getLinkClass } from '../../helpers/getLinkClass';
 
 export const Navbar = () => {
   return (

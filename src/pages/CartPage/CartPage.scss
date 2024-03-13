@@ -13,9 +13,31 @@
   flex-direction: column;
   gap: 16px;
   width: 100%;
-  margin-block: 40px 80px;
+  margin-block: 24px 56px;
+
+  @include onTablet {
+    margin-block: 40px 64px;
+  }
+
+  @include onDesktop {
+    margin-block: 40px 80px;
+  }
+
+  &__container {
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
 
   &__navigation {
+    margin-bottom: 24px;
+
+    @include onTablet {
+        margin-bottom: 16px;
+      }
+
     &--link {
       text-transform: capitalize;
       display: flex;
@@ -34,17 +56,32 @@
   &__content {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 32px;
+
+    @include onTablet {
+      gap: 24px;
+    }
 
     &--title{
       @extend %h1;
     }
 
-    &--products {
+    &__container {
       display: flex;
-      flex-direction: row;
-      gap: 16px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
 
+      @include onDesktop {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    &--products {
       &__list {
         display: flex;
         flex-direction: column;
@@ -53,14 +90,46 @@
 
       &__item {
         display: flex;
-        flex-direction: row;
-        padding: 24px 40px 24px 24px;
-        gap: 24px;
-        width: 752px;
-        height: 128px;
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px;
+        gap: 16px;
+        width: 288px;
+        height: 160px;
         border: 1px solid $color-elements;
         box-sizing: border-box;
         align-items: center;
+
+        @include onTablet {
+          display: flex;
+          flex-direction: row;
+          padding: 24px;
+          gap: 24px;
+          width: 592px;
+          height: 128px;
+        }
+
+        @include onDesktop {
+          padding: 24px 40px 24px 24px;
+          width: 752px;
+        }
+
+        &--leftSide {
+          display: flex;
+          flex-direction: row;
+          gap: 8.5px;
+        }
+
+        &--rightSide {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+
+          @include onTablet {
+            width: 96%;
+          }
+        }
 
         &--button {
           display: flex;
@@ -85,17 +154,33 @@
 
         &--name {
           font-weight: 500;
+          width: 128px;
           margin: 0;
-          width: 295px;
+
+          @include onTablet {
+            width: 176px;
+          }
+
+          @include onDesktop {
+            width: 295px;
+          }
+        }
+
+        &__container {
+          display: flex;
+          flex-direction: column;
         }
 
         &--quantity {
           display: flex;
           flex-direction: row;
           align-items: center;
-          margin-inline: 25px 20px;
           width: 96px;
           justify-content: space-between;
+
+          @include onTablet {
+            margin-inline: 25px 20px;
+          }
 
           &--counter {
             font-weight: 500;
@@ -113,12 +198,21 @@
       &__bill {
         display: flex;
         flex-direction: column;
-        width: 368px;
-        height: 206px;
+        width: 238px;
+        height: 140px;
         border: 1px solid $color-elements;
         align-items: center;
         padding: 24px;
         position: relative;
+
+        @include onTablet {
+          width: 542px;
+        }
+
+        @include onDesktop {
+          width: 318px;
+          height: 156px;
+        }
 
         &--counter {
           margin: 0;
@@ -130,7 +224,12 @@
           width: 100%;
           height: 1px;
           background-color: $color-elements;
-          margin-block: 24px;
+          margin-block: 16px;
+
+          @include onDesktop {
+            margin-block: 24px;
+          }
+
         }
 
         &--button {

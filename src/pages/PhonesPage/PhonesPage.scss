@@ -1,4 +1,13 @@
+@import '../styles/main';
+
+
+
 .phonesPage {
-  width: 100%;
-  margin-block: 24px 80px;
+  width: calc(100% - 32px);
+  margin-block: 24px 64px;
+
+  @include onTablet {
+    width: 100%;
+    margin-block: 24px 80px;
+  }
 }

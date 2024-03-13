@@ -21,6 +21,11 @@
   display: flex;
   flex-direction: column;
   gap: 24px;
+  margin-inline: 16px;
+
+  @include onTablet {
+    margin-inline: 0;
+  }
 
   &__top {
     @extend %h1;

@@ -4,16 +4,37 @@
   &__content {
     display: flex;
     flex-direction: row;
-    gap: 16px;
+
+    @include onTablet {
+      gap: 19px;
+    }
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &--images {
+    display: block;
+    width: 100%;
   }
 
   &--image {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    width: 1040px;
-    height: 400px;
+    height: 320px;
     display: none;
+
+    @include onTablet {
+      width: 490px;
+      height: 200px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
 
     &--active {
         display: block;
@@ -35,6 +56,14 @@
 
   &--button {
     @extend %button;
+
+    display: none;
+
+    @include onTablet {
+     display: block;
+    }
+
+
   }
 
   &--list {

@@ -21,10 +21,15 @@
     align-items: center;
     color: $color-primary;
     padding: 12px;
-    width: 176px;
-    height: 40px;
+    width: 162px;
+    height: 59px;
     border: 1px solid $color-icons;
     box-sizing: border-box;
+
+    @include onTablet {
+      width: 176px;
+      height: 40px;
+    }
 
     &:hover {
       border: 1px solid $color-secondary;
@@ -63,7 +68,7 @@
       }
 
       &:focus {
-        background-color: $color-hover_backgorund;
+        background-color: $color-hover-backgorund;
         transform: scale(1.05);
       }
     }

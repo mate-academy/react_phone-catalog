@@ -6,11 +6,18 @@
     }
 
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  padding: 32px 152px;
+  flex-direction: column;
+  gap: 32px;
+  padding: 32px 16px;
   border-top: 1px solid $color-elements;
+
+  @include onTablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0;
+    padding: 32px;
+  }
 
   &--logo {
     @include logo;
@@ -18,7 +25,13 @@
 
   &__navigation {
     &--list {
-      @include listNav;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include onTablet {
+        @include listNav;
+      }
     }
 
     &--item {
@@ -31,11 +44,12 @@
   &__back-to-top {
     display: flex;
     flex-direction: row;
+    justify-content: center;
+    align-items: center;
     gap: 16px;
     color: $color-secondary;
     text-decoration: none;
     white-space: nowrap;
-    align-items: center;
 
     &--text {
       @extend %smallText;

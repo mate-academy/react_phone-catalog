@@ -1,5 +1,4 @@
 import { useContext } from 'react';
-
 import './App.scss';
 import { Outlet } from 'react-router-dom';
 import { StateStore } from './store/StoreContext';
@@ -10,6 +9,7 @@ import { Footer } from './components/Footer/Footer';
 
 export const App = () => {
   const { isError, isLoading } = useContext(StateStore);
+  // const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
     <div className="App">

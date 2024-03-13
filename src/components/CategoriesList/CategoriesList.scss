@@ -2,6 +2,13 @@
 
 .categoriesList {
   display: flex;
-  flex-direction: row;
-  gap: 16px;
+  flex-direction: column;
+  gap: 32px;
+  margin-inline: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 16px;
+      margin-inline: 0;
+    }
 }

@@ -11,8 +11,14 @@
   color: inherit;
 
   &__image {
-    width: 368px;
-    height: 368px;
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      width: 368px;
+      height: 368px;
+    }
+
 
     transition: transform $effect-duration;
 

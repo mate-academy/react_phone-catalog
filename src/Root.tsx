@@ -11,6 +11,7 @@ import { TabletsPage } from './pages/TabletsPage/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { PagesMenu } from './pages/PagesMenu/PagesMenu';
 
 export const Root = () => {
   return (
@@ -35,6 +36,8 @@ export const Root = () => {
               <Route index element={<AccessoriesPage />} />
               <Route path=":productId?" element={<ProductDetailsPage />} />
             </Route>
+
+            <Route path="menu" element={<PagesMenu />} />
 
             <Route path="favourites" element={<FavouritesPage />} />
 

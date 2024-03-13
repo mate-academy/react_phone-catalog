@@ -1,11 +1,21 @@
 @import '../../pages/styles/main';
 
 .productCard {
-  width: 272px;
-  height:507px;
+  width: 337px;
+  height: 498px;
   border: 1px solid $color-elements;
   box-sizing: border-box;
   padding: 32px 24px 24px;
+
+  @include onTablet {
+    width: 288px;
+    height: 506px;
+  }
+
+  @include onDesktop {
+    width: 272px;
+    height: 507px;
+  }
 
   &__link {
     @include linkNav;
@@ -69,6 +79,7 @@
   &__buttons {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     gap: 8px;
     bottom: 0;
 

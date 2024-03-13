@@ -2,18 +2,17 @@ import {
   useContext, useEffect, useMemo, useState,
 } from 'react';
 import debounce from 'lodash.debounce';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import classNames from 'classnames';
+import {
+  NavLink,
+  useLocation,
+  useNavigate,
+  useSearchParams,
+} from 'react-router-dom';
 import { StateStore } from '../../store/StoreContext';
 import { Navbar } from '../Navbar/Navbar';
 import { ICONS } from '../../images/icons/icons';
 import './Header.scss';
-
-const getLinkLogoClass = ({ isActive }: { isActive: boolean }) => classNames(
-  'header__right-side__icon--logo--link', {
-    'header__right-side__icon--logo--link--active': isActive,
-  },
-);
+import { getLinkLogoClass } from '../../helpers/getLinkClass';
 
 export const Header = () => {
   const { products } = useContext(StateStore);
@@ -22,6 +21,28 @@ export const Header = () => {
   const [isQuery, setIsQuery] = useState(false);
   const [placeholder, setPlaceholder] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
+
+  const handleMenuClick = () => {
+    setIsMenuOpen(true);
+    navigate('/menu');
+  };
+
+  const handleMenuClose = () => {
+    setIsMenuOpen(false);
+    navigate('/');
+  };
+
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'Enter') {
+      if (isMenuOpen && pathname === '/menu') {
+        handleMenuClose();
+      } else {
+        handleMenuClick();
+      }
+    }
+  };
 
   useEffect(() => {
     switch (pathname) {
@@ -125,6 +146,37 @@ export const Header = () => {
         )}
 
         <div className="header__right-side__icon">
+          {isMenuOpen && pathname === '/menu'
+            ? (
+              <div
+                className="header__right-side__icon--menu--close"
+                onClick={handleMenuClose}
+                role="button"
+                tabIndex={0}
+                onKeyDown={handleKeyDown}
+              >
+                <img
+                  src={ICONS.close}
+                  alt="Close side menu"
+                  className="pageMenu__bottom__icon--logo"
+                />
+              </div>
+            ) : (
+              <NavLink
+                to="/menu"
+                onClick={handleMenuClick}
+                className={getLinkLogoClass}
+              >
+                <img
+                  src={ICONS.menu}
+                  alt="Side menu"
+                  className="header__right-side__icon--menu"
+                />
+              </NavLink>
+            )}
+        </div>
+
+        <div className="header__right-side__icon">
           <NavLink
             to="/favourites"
             className={getLinkLogoClass}
@@ -142,7 +194,6 @@ export const Header = () => {
                 </div>
               )
             }
-
           </NavLink>
         </div>
 
@@ -164,7 +215,6 @@ export const Header = () => {
                 </div>
               )
             }
-
           </NavLink>
         </div>
       </div>

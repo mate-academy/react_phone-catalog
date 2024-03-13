@@ -3,9 +3,16 @@
 .favouritesPage {
   display: flex;
   flex-direction: column;
-  gap: 40px;
-  margin-block: 24px 80px;
+  gap: 32px;
+  margin-block: 24px 56px;
+  margin-inline: 16px;
   width: 100%;
+
+  @include onTablet {
+    gap: 40px;
+    margin-block: 24px 80px;
+    margin-inline: 0;
+  }
 
   &__navigation {
     display: flex;
@@ -25,7 +32,12 @@
   &__content {
     display: flex;
     flex-flow: row wrap;
+    justify-content: center;
     gap: 16px;
+
+    @include onTablet {
+      justify-content: left;
+    }
   }
 
   &__header {
