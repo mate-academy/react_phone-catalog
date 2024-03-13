@@ -14,7 +14,7 @@ export const CartCard: React.FC<Props> = ({
   cartItems,
 }) => {
   const price =
-    cartItem.product.discount > 0
+    cartItem.product?.discount > 0
       ? getProductPriceWithDiscount(cartItem.product)
       : cartItem.product.price;
 
