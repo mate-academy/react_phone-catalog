@@ -2,12 +2,12 @@ import React, { useContext } from 'react';
 
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
-import '../styles/Options.scss';
 import { ProductDetails } from '../types/ProductDetails';
 import { ButtonsCartFav } from './ButtonsCartFav';
 import { Params } from './Params';
-// import { getNewPathname } from '../utils/getNewPathname';
 import { GlobalContext } from '../GlobalContext';
+
+import '../styles/Options.scss';
 
 interface Props {
   product: ProductDetails

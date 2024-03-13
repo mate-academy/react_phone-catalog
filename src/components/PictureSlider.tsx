@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { API_URL } from '../utils/api-phones';
@@ -26,6 +26,12 @@ export const PictureSlider: React.FC = () => {
   const handleDotsSlide = (dot: string) => {
     setStartIndex(bannerPhotos.indexOf(dot));
   };
+
+  useEffect(() => {
+    setInterval(() => {
+      handleSlideRight();
+    }, 5000);
+  }, []);
 
   return (
     <div className="PictureSlider">
@@ -62,6 +68,7 @@ export const PictureSlider: React.FC = () => {
       <div className="PictureSlider__dots">
         {bannerPhotos.map(dot => (
           <button
+            key={dot}
             type="button"
             className="PictureSlider__dot-button"
             onClick={() => handleDotsSlide(dot)}

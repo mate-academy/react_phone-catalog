@@ -25,7 +25,9 @@ export const Dropdowns: React.FC = () => {
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSearchParams(
-      getSearchWith(searchParams, { perPage: e.target.value }),
+      getSearchWith(searchParams, {
+        perPage: e.target.value,
+      }),
     );
   };
 

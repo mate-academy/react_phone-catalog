@@ -28,11 +28,25 @@ export const Root = () => (
             <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
 
-          <Route path="/tablets" element={<TabletsPage />} />
-          <Route path="/accessories" element={<AccessoriesPage />} />
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
 
-          <Route path="/favorites" element={<FavoritesPage />} />
-          <Route path="/cart" element={<CartPage />} />
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="favorites">
+            <Route index element={<FavoritesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="cart">
+            <Route index element={<CartPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

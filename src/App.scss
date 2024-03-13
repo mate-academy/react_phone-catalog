@@ -52,7 +52,7 @@ select:focus {
   min-height: 100vh;
   max-width: 100vw;
   // justify-content: space-between;
-  // overflow: hidden;
+  overflow: hidden;
 }
 
 .main-content {
@@ -60,6 +60,10 @@ select:focus {
   display: flex;
   flex-grow: 1;
   justify-content: center;
+
+  @include onMobile {
+    // padding: 40px 80px 80px;
+  }
 
   &__container {
     max-width: 1136px;
@@ -75,4 +79,12 @@ select:focus {
       min-width: 300px;
     }
   }
+}
+
+.warning {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: $primary-color,
 }

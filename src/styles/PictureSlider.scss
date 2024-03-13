@@ -2,6 +2,10 @@
 @import "../utils/mixins.scss";
 
 .PictureSlider {
+  @include onMobile {
+    // position: relative;
+  }
+
   &__top {
     display: grid;
     grid-template-columns: 32px 1fr 32px;
@@ -14,6 +18,7 @@
     }
 
     @include onMobile {
+      display: flex;
       height: 200px;
     }
   }
@@ -60,6 +65,10 @@
       border: 1px solid $elements-color;
       cursor: default;
     }
+
+    @include onMobile {
+      display: none;
+    }
   }
 
   &__button-right {
@@ -72,6 +81,10 @@
       background: url(../icons/arrow-right-disabled.svg) no-repeat center;
       border: 1px solid $elements-color;
       cursor: default;
+    }
+
+    @include onMobile {
+      display: none;
     }
   }
 

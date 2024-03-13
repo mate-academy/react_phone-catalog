@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { ProductCard } from './ProductCard';
 import { Product } from '../types/Product';
 
@@ -11,13 +11,19 @@ interface Props {
 }
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
-  const frameSize = 2;
+  const [startIndex, setStartIndex] = useState(0);
+  const [frameSize, setFrameSize] = useState(1);
+  const onMobile = window.innerWidth < 640;
+  const onTablet = window.innerWidth >= 640 && window.innerWidth < 1200;
+  const onDesktop = window.innerWidth >= 1200;
+
+  let itemWidth = onMobile ? 300 : 272;
+  // let frameSize = 1;
+
   const step = frameSize;
-  const itemWidth = 272;
   const gap = 16;
   const infinite = false;
   const animationDuration = 1000;
-  const [startIndex, setStartIndex] = useState(0);
   const lastFrame = products.length - frameSize;
 
   const itemStyle = {
@@ -25,8 +31,29 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     transform: `translateX(-${startIndex * (itemWidth + gap)}px)`,
   };
 
+  window.onresize = () => {
+    setStartIndex(0);
+    itemWidth = onMobile ? 300 : 272;
+
+    if (onMobile && frameSize !== 1) {
+      setFrameSize(1);
+    }
+
+    if (onTablet && frameSize !== 2) {
+      setFrameSize(2);
+    }
+
+    if (onDesktop && frameSize !== 4) {
+      setFrameSize(4);
+    }
+    // console.log(windowWidth.current);
+    // console.log(itemWidth);
+  };
+
   const moveLeft = (stepShift: number) => {
     const isEnoughImages = stepShift - startIndex >= 0;
+
+    // console.log(frameSize);
 
     if (startIndex === 0 && infinite) {
       setStartIndex(lastFrame);
@@ -40,6 +67,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const moveRight = (stepShift: number) => {
     const isEnoughImages = startIndex + stepShift >= lastFrame;
 
+    // console.log(frameSize);
+
     if (startIndex === lastFrame && infinite) {
       setStartIndex(0);
     } else if (isEnoughImages) {
@@ -48,6 +77,22 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       setStartIndex(startIndex + stepShift);
     }
   };
+
+  useEffect(() => {
+    if (onMobile && frameSize !== 1) {
+      setFrameSize(1);
+    }
+
+    if (onTablet && frameSize !== 2) {
+      setFrameSize(2);
+    }
+
+    if (onDesktop && frameSize !== 4) {
+      setFrameSize(4);
+    }
+  }, [onDesktop, onMobile, onTablet, frameSize]);
+
+  // console.log(itemWidth);
 
   return (
     <section className="ProductsSlider">
@@ -79,7 +124,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
           {products.map(product => (
             <li key={product.itemId} style={itemStyle}>
               <ProductCard
-                // key={product.itemId}
                 product={product}
                 data-cy="cardsContainer"
               />

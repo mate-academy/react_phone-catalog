@@ -34,16 +34,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // const [localStorage, setLocalStorage] = useLocalStorage<Product[]>(
-  //   'cards',
-  //   [],
-  // );
-
-  // const [localStorage, setLocalStorage] = useLocalStorage<Product[]>('crd', []);
   const [favList, setFavList] = useLocalStorage<Product[]>('fav', []);
   const [cartList, setCartList] = useLocalStorage<CartItemType[]>('cart', []);
-
-  // console.log(cartList);
 
   const phones = products.filter(item => item.category === 'phones');
   const tablets = products.filter(item => item.category === 'tablets');
@@ -105,7 +97,6 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
       })
       .finally(() => {
         setIsLoading(false);
-        // setCartList([]);
       });
   }, []);
 

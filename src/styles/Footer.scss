@@ -14,7 +14,10 @@
   }
 
   @include onMobile {
-    padding: 0 24px;
+    flex-direction: column;
+    gap: 50px;
+    padding: 24px 24px;
+    height: min-content;
   }
 
   &__nav-block {
@@ -22,6 +25,19 @@
     align-items: center;
     justify-content: space-between;
     gap: 382px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 64px;
+
+    @include onTablet {
+      gap: 25px;
+    }
+
+    @include onMobile {
+      gap: 85px;
+    }
   }
 
   &__link {
@@ -49,6 +65,10 @@
       transition: transform $transition-duration;
       transform: scale(0);
       transform-origin: bottom;
+
+      @include onMobile {
+        display: none;
+      }
     }
 
     &:hover {
@@ -58,11 +78,6 @@
         transform: scale(1);
       }
     }
-  }
-
-  &__list {
-    display: flex;
-    gap: 64px;
   }
 
   &__back-top {

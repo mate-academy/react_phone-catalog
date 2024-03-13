@@ -19,5 +19,9 @@
   &__list {
     display: flex;
     gap: 64px;
+
+    @include onTablet {
+      gap: 32px;
+    }
   }
 }

@@ -12,7 +12,10 @@
   }
 
   @include onMobile {
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    // grid-template-columns: 1fr 1fr;
   }
 }
 
@@ -22,10 +25,6 @@
   &__title {
     font-weight: $medium-font;
     margin-bottom: 4px;
-
-    @include onMobile {
-      font-weight: $bold-font;
-    }
   }
 
   &__select {

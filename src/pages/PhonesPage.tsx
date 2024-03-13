@@ -1,19 +1,22 @@
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { GlobalContext } from '../GlobalContext';
 import { Dropdowns } from '../components/Dropdowns';
 import { ProductsList } from '../components/ProductsList';
 import { Pagination } from '../components/Pagination';
 import { BreadCrumbs } from '../components/BreadCrumbs';
-import { SortValue } from '../types/SortValue';
+// import { SortValue } from '../types/SortValue';
+import { Categories } from '../types/Categories';
 
 import '../styles/PhonesPage.scss';
+import { WarningMessage } from '../types/WarningMessage';
+import { prepareProductList } from '../helpers/prepareProductList';
 
 export const PhonesPage: React.FC = () => {
   const { phones } = useContext(GlobalContext);
 
   const [searchParams] = useSearchParams();
-
+  const query = searchParams.get('query') || '';
   const sort = searchParams.get('sort') || 'age';
   const perPage = +(searchParams.get('perPage') || 'All');
   const page = +(searchParams.get('page') || 1);
@@ -22,46 +25,43 @@ export const PhonesPage: React.FC = () => {
   const firstItem = maxItem - perPage;
   const lastItem = maxItem > phones.length ? phones.length : maxItem;
 
-  const sortedPhones = [...phones].sort((a, b) => {
-    switch (sort) {
-      case SortValue.age:
-        return b.price - a.price;
+  const getVisiblePhones = useCallback(() => (
+    prepareProductList(phones, query, sort)
+  ), [phones, query, sort]);
 
-      case SortValue.price:
-        return a.price - b.price;
+  const visiblePhones = getVisiblePhones();
+  const onPagePhones = visiblePhones.slice(firstItem, lastItem);
 
-      case SortValue.name:
-        return a.name.localeCompare(b.name);
+  if (query && !visiblePhones.length) {
+    return (
+      <main className="phones-page">
+        <BreadCrumbs category={Categories.Phones} />
 
-      default:
-        return 0;
-    }
-  });
-
-  const finalPhones = sortedPhones.slice(firstItem, lastItem);
-
-  // console.log(phones);
+        <h1 className="warning">{WarningMessage.Search}</h1>
+      </main>
+    );
+  }
 
   return (
     <main className="phones-page">
-      <BreadCrumbs category="Phones" />
+      <BreadCrumbs category={Categories.Phones} />
 
       <h2 className="phones-page__title">
         Mobile phones
       </h2>
 
       <p className="phones-page__count">
-        {`${phones.length} ${phones.length === 1 ? 'model' : 'models'}`}
+        {`${visiblePhones.length} ${visiblePhones.length === 1 ? 'model' : 'models'}`}
       </p>
 
       <Dropdowns />
 
       {Number.isNaN(perPage) ? (
-        <ProductsList products={sortedPhones} />
+        <ProductsList products={visiblePhones} />
       ) : (
         <>
-          <ProductsList products={finalPhones} />
-          <Pagination productsCount={phones.length} />
+          <ProductsList products={onPagePhones} />
+          <Pagination productsCount={visiblePhones.length} />
         </>
       )}
     </main>
