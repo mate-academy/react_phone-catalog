@@ -16,7 +16,7 @@ export const CartCard: React.FC<Props> = ({
   const price =
     cartItem.product?.discount > 0
       ? getProductPriceWithDiscount(cartItem.product)
-      : cartItem.product.price;
+      : cartItem.product?.price;
 
   const handleDelete = () => {
     const filteredItems = cartItems.filter((item) => item.id !== cartItem.id);
