@@ -14,16 +14,16 @@
     padding: 27px 0;
     height: 100%;
   }
+}
 
-  & .active::after {
-    position: absolute;
-    content: "";
-    height: 3px;
-    width: 100%;
-    bottom: 0;
-    left: 0;
-    background-color: #313237;
-  }
+.active-link::after {
+  position: absolute;
+  content: "";
+  height: 3px;
+  width: 100%;
+  bottom: 0;
+  left: 0;
+  background-color: #313237;
 }
 
 .header {
@@ -179,7 +179,6 @@
 }
 
 .App {
-
   &__content {
     margin-inline: 152px;
   }

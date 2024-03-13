@@ -68,17 +68,29 @@ export const App = () => {
               <NavLink
                 to="/"
                 className={({ isActive }) => cn('navbar__link',
-                  { active: isActive })}
+                  { 'active-link': isActive })}
               >
                 Home
               </NavLink>
-              <NavLink to="/phones" className="navbar__link">
+              <NavLink
+                to="/phones"
+                className={({ isActive }) => cn('navbar__link',
+                  { 'active-link': isActive })}
+              >
                 Phones
               </NavLink>
-              <NavLink to="/tablets" className="navbar__link">
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) => cn('navbar__link',
+                  { 'active-link': isActive })}
+              >
                 Tablets
               </NavLink>
-              <NavLink to="/accessories" className="navbar__link">
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) => cn('navbar__link',
+                  { 'active-link': isActive })}
+              >
                 Accessories
               </NavLink>
             </nav>
