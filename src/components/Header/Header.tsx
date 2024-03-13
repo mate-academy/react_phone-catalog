@@ -7,18 +7,15 @@ import classNames from 'classnames';
 import { Search } from '../Search';
 import { GeneralContext } from '../../helpers/GeneralContext';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
-  'header__link', 'header__nav-link', 'nav__link', {
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__link', 'header__nav-link', 'nav__link', {
     'is-active': isActive,
-  },
-);
+  });
 
-const getAdditionalLinkClass
-= ({ isActive }: { isActive: boolean }) => classNames(
-  'header__additional-link', {
+const getAdditionalLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__additional-link', {
     'is-active': isActive,
-  },
-);
+  });
 
 export const Header: React.FC = () => {
   const [searchParams] = useSearchParams();
@@ -29,41 +26,26 @@ export const Header: React.FC = () => {
     <header className="header">
       <div className="header__wrapper">
         <nav className="header__nav nav">
-          <NavLink
-            to="/"
-            className="header__nav--logo"
-          >
+          <NavLink to="/" className="header__nav--logo">
             <img
               src={require('../../images/icons/Logo.svg').default}
               alt="Logo"
             />
           </NavLink>
 
-          <NavLink
-            to="/"
-            className={getLinkClass}
-          >
+          <NavLink to="/" className={getLinkClass}>
             Home
           </NavLink>
 
-          <NavLink
-            to="/phones"
-            className={getLinkClass}
-          >
+          <NavLink to="/phones" className={getLinkClass}>
             Phones
           </NavLink>
 
-          <NavLink
-            to="/tablets"
-            className={getLinkClass}
-          >
+          <NavLink to="/tablets" className={getLinkClass}>
             Tablets
           </NavLink>
 
-          <NavLink
-            to="/accessories"
-            className={getLinkClass}
-          >
+          <NavLink to="/accessories" className={getLinkClass}>
             Accessories
           </NavLink>
         </nav>
@@ -74,19 +56,14 @@ export const Header: React.FC = () => {
           {pathname === '/accessories' && <Search />}
           {pathname === '/favourities' && <Search />}
 
-          <NavLink
-            to="/favourities"
-            className={getAdditionalLinkClass}
-          >
+          <NavLink to="/favourities" className={getAdditionalLinkClass}>
             <img
               src={require('../../images/icons/favourities.svg').default}
               alt="Favorite"
             />
 
             {favouritesList.length > 0 && (
-              <div className="header__counter">
-                {favouritesList.length}
-              </div>
+              <div className="header__counter">{favouritesList.length}</div>
             )}
           </NavLink>
 
@@ -103,9 +80,7 @@ export const Header: React.FC = () => {
             />
 
             {cartList.length > 0 && (
-              <div className="header__counter">
-                {cartList.length}
-              </div>
+              <div className="header__counter">{cartList.length}</div>
             )}
           </NavLink>
         </div>

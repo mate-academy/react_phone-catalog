@@ -13,56 +13,28 @@ export const ShopByCategory = () => {
     <section className="shopByCategory">
       <h2 className="title">Shop by category</h2>
 
-      <div
-        className="shopByCategory__wrapper"
-        data-cy="categoryLinksContainer"
-      >
-        <Link
-          className="shopByCategory__link"
-          to="/phones"
-        >
+      <div className="shopByCategory__wrapper" data-cy="categoryLinksContainer">
+        <Link className="shopByCategory__link" to="/phones">
           <div className="shopByCategory__img-wrapper">
-            <img
-              src={phone}
-              alt="Phones"
-              className="shopByCategory__img"
-            />
+            <img src={phone} alt="Phones" className="shopByCategory__img" />
           </div>
 
-          <h3 className="shopByCategory__title">
-            Mobile phones
-          </h3>
+          <h3 className="shopByCategory__title">Mobile phones</h3>
 
-          <span className="shopByCategory__amount">
-            95 models
-          </span>
+          <span className="shopByCategory__amount">95 models</span>
         </Link>
 
-        <Link
-          className="shopByCategory__link"
-          to="/tablets"
-        >
+        <Link className="shopByCategory__link" to="/tablets">
           <div className="shopByCategory__img-wrapper">
-            <img
-              src={tablet}
-              alt="Tablets"
-              className="shopByCategory__img"
-            />
+            <img src={tablet} alt="Tablets" className="shopByCategory__img" />
           </div>
 
-          <h3 className="shopByCategory__title">
-            Tablets
-          </h3>
+          <h3 className="shopByCategory__title">Tablets</h3>
 
-          <span className="shopByCategory__amount">
-            0 models
-          </span>
+          <span className="shopByCategory__amount">0 models</span>
         </Link>
 
-        <Link
-          className="shopByCategory__link"
-          to="/accessories"
-        >
+        <Link className="shopByCategory__link" to="/accessories">
           <div className="shopByCategory__img-wrapper">
             <img
               src={accessories}
@@ -71,13 +43,9 @@ export const ShopByCategory = () => {
             />
           </div>
 
-          <h3 className="shopByCategory__title">
-            Accessories
-          </h3>
+          <h3 className="shopByCategory__title">Accessories</h3>
 
-          <span className="shopByCategory__amount">
-            0 models
-          </span>
+          <span className="shopByCategory__amount">0 models</span>
         </Link>
       </div>
     </section>

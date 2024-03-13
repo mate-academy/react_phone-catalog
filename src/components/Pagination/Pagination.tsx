@@ -6,7 +6,7 @@ import classNames from 'classnames';
 
 type Props = {
   buttonsList: number[];
-  onPageChange: (button:number) => void;
+  onPageChange: (button: number) => void;
   currentPage: number;
   buttonsMax: number;
 };
@@ -43,18 +43,13 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <div
-      className="pagination"
-      data-cy="pagination"
-    >
+    <div className="pagination" data-cy="pagination">
       <button
         data-cy="paginationLeft"
         type="button"
-        className={classNames(
-          'pagination__btn', 'pagination__btn--prew', {
-            'pagination__btn--disabled': currentPage === 1,
-          },
-        )}
+        className={classNames('pagination__btn', 'pagination__btn--prew', {
+          'pagination__btn--disabled': currentPage === 1,
+        })}
         onClick={() => prevLinkCheck(currentPage - 1)}
       >
         <img
@@ -67,11 +62,9 @@ export const Pagination: React.FC<Props> = ({
         <button
           key={button}
           type="button"
-          className={classNames(
-            'pagination__btn', 'pagination__btn--page', {
-              'pagination__btn--active': currentPage === button,
-            },
-          )}
+          className={classNames('pagination__btn', 'pagination__btn--page', {
+            'pagination__btn--active': currentPage === button,
+          })}
           onClick={() => linkCheck(button)}
         >
           {button}
@@ -81,11 +74,9 @@ export const Pagination: React.FC<Props> = ({
       <button
         data-cy="paginationRight"
         type="button"
-        className={classNames(
-          'pagination__btn', 'pagination__btn--next', {
-            'pagination__btn--disabled': currentPage === buttonsMax,
-          },
-        )}
+        className={classNames('pagination__btn', 'pagination__btn--next', {
+          'pagination__btn--disabled': currentPage === buttonsMax,
+        })}
         onClick={() => nextLinkCheck(currentPage + 1)}
       >
         <img

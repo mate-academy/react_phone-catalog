@@ -25,10 +25,7 @@ export const HomePage: React.FC = () => {
       <section className="hotPrices">
         <h1 className="title">Hot prices</h1>
 
-        <ProductsSlider
-          productsList={hotPricesProducts}
-          showOldPrice
-        />
+        <ProductsSlider productsList={hotPricesProducts} showOldPrice />
       </section>
 
       <ShopByCategory />
@@ -36,10 +33,7 @@ export const HomePage: React.FC = () => {
       <section className="brandNewProducts">
         <h1 className="title">Brand new models</h1>
 
-        <ProductsSlider
-          productsList={brandNewProducts}
-          showOldPrice={false}
-        />
+        <ProductsSlider productsList={brandNewProducts} showOldPrice={false} />
       </section>
     </div>
   );

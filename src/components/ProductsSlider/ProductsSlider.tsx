@@ -19,7 +19,7 @@ export const ProductsSlider: React.FC<Props> = ({
   const [position, setPosition] = useState(0);
 
   const isLastPosition = productsList.length - 4;
-  const isDisabledButtonPrev = position === 0;
+  const isDisabledButtonPrev = position === 1;
   const isDisabledButtonNext = position === isLastPosition;
 
   const onButtonNext = () => {
@@ -31,17 +31,17 @@ export const ProductsSlider: React.FC<Props> = ({
   };
 
   const onButtonPrev = () => {
-    if (position - 1 > 0) {
+    if (position - 1 >= 0) {
       setPosition(position - 1);
     } else {
-      setPosition(0);
+      setPosition(1);
     }
   };
 
   return (
     <div className="productsSlider">
       <div className="productsSlider__wrapper">
-        {productsList.map((product) => (
+        {productsList.map(product => (
           <ProductCard
             key={product.id}
             product={product}
@@ -55,7 +55,8 @@ export const ProductsSlider: React.FC<Props> = ({
         <button
           className={classNames(
             'productsSlider__button',
-            'productsSlider__button--prev', {
+            'productsSlider__button--prev',
+            {
               'productsSlider__button--disabled': isDisabledButtonPrev,
             },
           )}
@@ -63,25 +64,27 @@ export const ProductsSlider: React.FC<Props> = ({
           onClick={onButtonPrev}
           disabled={isDisabledButtonPrev}
         >
-          {!isDisabledButtonPrev
-            ? (
-              <img
-                src={require('../../images/icons/slider-arrow-left.svg').default}
-                alt="Prev"
-              />
-            )
-            : (
-              <img
-                src={require('../../images/icons/slider-arrow-left-disabled.svg').default}
-                alt="Prev"
-              />
-            )}
+          {!isDisabledButtonPrev ? (
+            <img
+              src={require('../../images/icons/slider-arrow-left.svg').default}
+              alt="Prev"
+            />
+          ) : (
+            <img
+              src={
+                require('../../images/icons/slider-arrow-left-disabled.svg')
+                  .default
+              }
+              alt="Prev"
+            />
+          )}
         </button>
 
         <button
           className={classNames(
             'productsSlider__button',
-            'productsSlider__button--next', {
+            'productsSlider__button--next',
+            {
               'productsSlider__button--disabled': isDisabledButtonNext,
             },
           )}
@@ -90,19 +93,20 @@ export const ProductsSlider: React.FC<Props> = ({
           onClick={onButtonNext}
           disabled={isDisabledButtonNext}
         >
-          {!isDisabledButtonNext
-            ? (
-              <img
-                src={require('../../images/icons/slider-arrow-right.svg').default}
-                alt="Next"
-              />
-            )
-            : (
-              <img
-                src={require('../../images/icons/slider-arrow-right-disabled.svg').default}
-                alt="Next"
-              />
-            )}
+          {!isDisabledButtonNext ? (
+            <img
+              src={require('../../images/icons/slider-arrow-right.svg').default}
+              alt="Next"
+            />
+          ) : (
+            <img
+              src={
+                require('../../images/icons/slider-arrow-right-disabled.svg')
+                  .default
+              }
+              alt="Next"
+            />
+          )}
         </button>
       </div>
     </div>

@@ -19,12 +19,14 @@ const State: Context = {
 export const GeneralContext = React.createContext<Context>(State);
 
 type Props = {
-  children: React.ReactNode,
+  children: React.ReactNode;
 };
 
 export const GeneralProvider: React.FC<Props> = ({ children }) => {
-  const [favouritesList, setFavouritesList]
-  = useLocalStorage<Product[]>('favourities', []);
+  const [favouritesList, setFavouritesList] = useLocalStorage<Product[]>(
+    'favourities',
+    [],
+  );
   const [cartList, setCartList] = useLocalStorage<CartItemType[]>('cart', []);
   const [isLoading, setIsLoading] = useState(false);
   const [fullListOfProducts, setFullListOfProducts] = useState<Product[]>([]);
@@ -45,8 +47,6 @@ export const GeneralProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <GeneralContext.Provider value={value}>
-      {children}
-    </GeneralContext.Provider>
+    <GeneralContext.Provider value={value}>{children}</GeneralContext.Provider>
   );
 };

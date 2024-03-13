@@ -59,9 +59,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
           className="cartItem__img"
         />
 
-        <span className="cartItem__title">
-          {product.product.name}
-        </span>
+        <span className="cartItem__title">{product.product.name}</span>
       </div>
 
       <div className="cartItem__calculation">
@@ -77,9 +75,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             -
           </button>
 
-          <span className="cartItem__number">
-            {product.quantity}
-          </span>
+          <span className="cartItem__number">{product.quantity}</span>
 
           <button
             type="button"

@@ -7,8 +7,9 @@ import { Checkout } from '../Checkout';
 
 export const Footer: React.FC = () => {
   const [showMessage, setShowMessage] = useState(false);
-  const scrollToTop
-  = (event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
+  const scrollToTop = (
+    event: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>,
+  ) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-expressions
     event.preventDefault;
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
@@ -26,11 +27,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="wrapper footer__container">
-        <Link
-          to="/"
-          className="footer__logo"
-          onClick={e => scrollToTop(e)}
-        >
+        <Link to="/" className="footer__logo" onClick={e => scrollToTop(e)}>
           <img
             src={require('../../images/icons/Logo.svg').default}
             alt="Logo"

@@ -10,9 +10,9 @@ import { GeneralContext } from '../../helpers/GeneralContext';
 import { BASE_URL } from '../../api/api';
 
 type Props = {
-  product: Product,
-  position?: number,
-  showOldPrice: boolean,
+  product: Product;
+  position?: number;
+  showOldPrice: boolean;
 };
 
 const ITEM_WIDTH = 288;
@@ -22,12 +22,8 @@ export const ProductCard: React.FC<Props> = ({
   position,
   showOldPrice,
 }) => {
-  const {
-    favouritesList,
-    setFavouritesList,
-    cartList,
-    setCartList,
-  } = useContext(GeneralContext);
+  const { favouritesList, setFavouritesList, cartList, setCartList } =
+    useContext(GeneralContext);
 
   const isInFavourites = favouritesList.find(item => item.id === product.id);
   const isInCart = cartList.find(item => item.id === +product.id);
@@ -38,8 +34,10 @@ export const ProductCard: React.FC<Props> = ({
     if (index === -1) {
       setFavouritesList([...favouritesList, product]);
     } else {
-      setFavouritesList([...favouritesList.slice(0, index),
-        ...favouritesList.slice(index + 1)]);
+      setFavouritesList([
+        ...favouritesList.slice(0, index),
+        ...favouritesList.slice(index + 1),
+      ]);
     }
   };
 
@@ -61,7 +59,9 @@ export const ProductCard: React.FC<Props> = ({
       data-cy="cardsContainer"
       className="productCard"
       style={{
-        transform: position ? `translateX(${-position * ITEM_WIDTH}px)` : 'none',
+        transform: position
+          ? `translateX(${-position * ITEM_WIDTH}px)`
+          : 'none',
         transition: position ? 'transform 300ms' : 'none',
       }}
     >
@@ -77,9 +77,7 @@ export const ProductCard: React.FC<Props> = ({
           alt={product.name}
         />
 
-        <h2 className="productCard__title">
-          {product.name}
-        </h2>
+        <h2 className="productCard__title">{product.name}</h2>
       </Link>
 
       <div className="productCard__bottom-content">
@@ -102,29 +100,17 @@ export const ProductCard: React.FC<Props> = ({
         <div className="productCard__info">
           <div className="productCard__info-row">
             Screen
-
-            <span className="productCard__info-value">
-              {product.screen}
-            </span>
-
+            <span className="productCard__info-value">{product.screen}</span>
           </div>
 
           <div className="productCard__info-row">
             Capacity
-
-            <span className="productCard__info-value">
-              {product.capacity}
-            </span>
-
+            <span className="productCard__info-value">{product.capacity}</span>
           </div>
 
           <div className="productCard__info-row">
             RAM
-
-            <span className="productCard__info-value">
-              {product.ram}
-            </span>
-
+            <span className="productCard__info-value">{product.ram}</span>
           </div>
         </div>
 
@@ -133,22 +119,22 @@ export const ProductCard: React.FC<Props> = ({
             type="button"
             className={classNames(
               'productCard__addToCart',
-              'productCard__btn', {
+              'productCard__btn',
+              {
                 'productCard__addToCart--added': isInCart,
               },
             )}
             onClick={addToCart}
           >
-            {isInCart
-              ? 'Added to cart'
-              : 'Add to cart'}
+            {isInCart ? 'Added to cart' : 'Add to cart'}
           </button>
 
           <button
             type="button"
             className={classNames(
               'productCard__favorites',
-              'productCard__btn', {
+              'productCard__btn',
+              {
                 'productCard__favorites--remove': isInFavourites,
                 'productCard__favorites--add': !isInFavourites,
               },
@@ -156,21 +142,19 @@ export const ProductCard: React.FC<Props> = ({
             onClick={toggleFavorite}
             data-cy="addToFavorite"
           >
-            {isInFavourites
-              ? (
-                <img
-                  src={require('../../images/icons/favorites-selected.svg')
-                    .default}
-                  alt="remove from favorite"
-                />
-              )
-              : (
-                <img
-                  src={require('../../images/icons/favourities.svg')
-                    .default}
-                  alt="add to favorite"
-                />
-              )}
+            {isInFavourites ? (
+              <img
+                src={
+                  require('../../images/icons/favorites-selected.svg').default
+                }
+                alt="remove from favorite"
+              />
+            ) : (
+              <img
+                src={require('../../images/icons/favourities.svg').default}
+                alt="add to favorite"
+              />
+            )}
           </button>
         </div>
       </div>

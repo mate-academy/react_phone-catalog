@@ -25,14 +25,9 @@ export const CartPage: React.FC = () => {
   return (
     <div className="cartPage">
       <div className="cartPage__header">
-        <Link
-          to="/"
-          className="cartPage__go-back"
-          onClick={() => goBack()}
-        >
+        <Link to="/" className="cartPage__go-back" onClick={() => goBack()}>
           <img
-            src={require('../../images/icons/back-arrow.svg')
-              .default}
+            src={require('../../images/icons/back-arrow.svg').default}
             alt="Arrow"
           />
           <span>Back</span>
@@ -41,47 +36,35 @@ export const CartPage: React.FC = () => {
         <h1 className="title cartPage__title">Cart</h1>
       </div>
 
-      {cartList.length > 0
-        ? (
-          <div className="cartPage__content">
-            <div className="cartPage__itemsList">
-              {cartList.map((product) => (
-                <CartItem
-                  key={product.id}
-                  product={product}
-                />
-              ))}
+      {cartList.length > 0 ? (
+        <div className="cartPage__content">
+          <div className="cartPage__itemsList">
+            {cartList.map(product => (
+              <CartItem key={product.id} product={product} />
+            ))}
+          </div>
+
+          <div className="cartPage__total">
+            <div className="cartPage__tital-price">{`$${totalPrice}`}</div>
+
+            <div className="cartPage__total-number" data-cy="productQauntity">
+              {`Total for ${totalNumber} items`}
             </div>
 
-            <div className="cartPage__total">
-              <div className="cartPage__tital-price">
-                {`$${totalPrice}`}
-              </div>
+            <div className="cartPage__divider" />
 
-              <div
-                className="cartPage__total-number"
-                data-cy="productQauntity"
-              >
-                {`Total for ${totalNumber} items`}
-              </div>
-
-              <div className="cartPage__divider" />
-
-              <button
-                type="button"
-                className="cartPage__checkout"
-                onClick={() => setShowMessage(true)}
-              >
-                Checkout
-              </button>
-            </div>
+            <button
+              type="button"
+              className="cartPage__checkout"
+              onClick={() => setShowMessage(true)}
+            >
+              Checkout
+            </button>
           </div>
-        )
-        : (
-          <div className="emptyMessage">
-            Your cart is empty
-          </div>
-        )}
+        </div>
+      ) : (
+        <div className="emptyMessage">Your cart is empty</div>
+      )}
 
       {showMessage && <Checkout setShowMessage={setShowMessage} />}
     </div>

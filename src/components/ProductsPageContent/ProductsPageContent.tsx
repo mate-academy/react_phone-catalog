@@ -14,9 +14,9 @@ import { GeneralContext } from '../../helpers/GeneralContext';
 import { NoSearchResults } from '../NoSearchResults';
 
 type Props = {
-  type: ProductsType,
-  title: string,
-  itemsList: Product[],
+  type: ProductsType;
+  title: string;
+  itemsList: Product[];
 };
 
 enum SortTypes {
@@ -53,25 +53,28 @@ export const ProductsPageContent: React.FC<Props> = ({
   const filteredList = getItemsList();
 
   function getItemsPerPage() {
-    return filteredList.sort((a: Product, b: Product) => {
-      switch (sortType) {
-        case SortTypes.NAME:
-          return b[sortType].localeCompare(a[sortType]);
+    return filteredList
+      .sort((a: Product, b: Product) => {
+        switch (sortType) {
+          case SortTypes.NAME:
+            return b[sortType].localeCompare(a[sortType]);
 
-        case SortTypes.PRICE:
-          return a[sortType] - b[sortType];
+          case SortTypes.PRICE:
+            return a[sortType] - b[sortType];
 
-        case SortTypes.AGE:
-          return b[sortType] - a[sortType];
+          case SortTypes.AGE:
+            return b[sortType] - a[sortType];
 
-        default:
-          return 0;
-      }
-    })
+          default:
+            return 0;
+        }
+      })
       .filter((item, index) => {
         if (perPage !== 'All') {
-          return index < +currentPage * +perPage
-          && index >= +currentPage * +perPage - +perPage;
+          return (
+            index < +currentPage * +perPage &&
+            index >= +currentPage * +perPage - +perPage
+          );
         }
 
         return item;
@@ -79,19 +82,16 @@ export const ProductsPageContent: React.FC<Props> = ({
   }
 
   const itemsPerPage = getItemsPerPage();
-  const buttonsMax = perPage !== 'All'
-    ? Math.ceil(filteredList.length / +perPage)
-    : 1;
+  const buttonsMax =
+    perPage !== 'All' ? Math.ceil(filteredList.length / +perPage) : 1;
   const buttonsList = [];
 
   for (let i = 1; i <= buttonsMax; i += 1) {
     buttonsList.push(i);
   }
 
-  const showPaginationBtns
-    = !isLoading
-    && filteredList.length > +perPage
-    && buttonsMax > 1;
+  const showPaginationBtns =
+    !isLoading && filteredList.length > +perPage && buttonsMax > 1;
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const setSearchWith = (params: any) => {
@@ -100,7 +100,7 @@ export const ProductsPageContent: React.FC<Props> = ({
     setSearchParams(search);
   };
 
-  const selectSortType = (event:React.ChangeEvent<HTMLSelectElement>) => {
+  const selectSortType = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (perPage !== 'All') {
       setSearchWith({ sort: event.target.value, page: '1' });
     } else {
@@ -108,7 +108,7 @@ export const ProductsPageContent: React.FC<Props> = ({
     }
   };
 
-  const selectChange = (event:React.ChangeEvent<HTMLSelectElement>) => {
+  const selectChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     if (event.target.value !== 'All') {
       setSearchWith({ page: '1', perPage: event.target.value });
     } else {
@@ -132,13 +132,14 @@ export const ProductsPageContent: React.FC<Props> = ({
           </Link>
 
           <img
-            src={require('../../images/icons/slider-arrow-right-disabled.svg').default}
+            src={
+              require('../../images/icons/slider-arrow-right-disabled.svg')
+                .default
+            }
             alt="Arrow"
           />
 
-          <span className="productsPageContent__type">
-            {type}
-          </span>
+          <span className="productsPageContent__type">{type}</span>
         </div>
 
         <h1 className="productsPageContent__title">{title}</h1>
@@ -148,76 +149,65 @@ export const ProductsPageContent: React.FC<Props> = ({
         </h2>
       </div>
 
-      {itemsList.length !== 0
-        ? (
-          <div className="productsPageContent__selects">
-            <div className="productsPageContent__wrapper">
-              <label
-                htmlFor="sortBy"
-                className="productsPageContent__label"
-              >
-                Sort by
-              </label>
-              <select
-                value={sortType}
-                name="sortBy"
-                id="sortBy"
-                className="
+      {itemsList.length !== 0 ? (
+        <div className="productsPageContent__selects">
+          <div className="productsPageContent__wrapper">
+            <label htmlFor="sortBy" className="productsPageContent__label">
+              Sort by
+            </label>
+            <select
+              value={sortType}
+              name="sortBy"
+              id="sortBy"
+              className="
                   productsPageContent__select
                   productsPageContent__select--sortBy
                 "
-                onChange={selectSortType}
-              >
-                <option value={SortTypes.AGE}>Newest</option>
-                <option value={SortTypes.NAME}>Alphabetically</option>
-                <option value={SortTypes.PRICE}>Cheapest</option>
-              </select>
-            </div>
+              onChange={selectSortType}
+            >
+              <option value={SortTypes.AGE}>Newest</option>
+              <option value={SortTypes.NAME}>Alphabetically</option>
+              <option value={SortTypes.PRICE}>Cheapest</option>
+            </select>
+          </div>
 
-            <div className="productsPageContent__wrapper">
-              <label
-                htmlFor="itemsOnPage"
-                className="productsPageContent__label"
-              >
-                Items on page
-              </label>
-              <select
-                value={perPage}
-                name="itemsOnPage"
-                id="itemsOnPage"
-                className="
+          <div className="productsPageContent__wrapper">
+            <label htmlFor="itemsOnPage" className="productsPageContent__label">
+              Items on page
+            </label>
+            <select
+              value={perPage}
+              name="itemsOnPage"
+              id="itemsOnPage"
+              className="
                   productsPageContent__select
                   productsPageContent__select--itemsOnPage
                 "
-                onChange={selectChange}
-              >
-                {options.map(option => (
-                  <option key={option} value={option}>{option}</option>
-                ))}
-              </select>
-            </div>
+              onChange={selectChange}
+            >
+              {options.map(option => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
-        )
-        : (
-          <div className="emptyMessage">
-            This section is empty
-          </div>
-        )}
+        </div>
+      ) : (
+        <div className="emptyMessage">This section is empty</div>
+      )}
 
       {isLoading && <Loader />}
-      {!isLoading && filteredList.length !== 0
-        ? (
-          <ProductsList
-            itemsList={itemsPerPage}
-            type={type}
-          />
-        )
-        : (itemsList.length !== 0 && <NoSearchResults />)}
+      {!isLoading && filteredList.length !== 0 ? (
+        <ProductsList itemsList={itemsPerPage} type={type} />
+      ) : (
+        itemsList.length !== 0 && <NoSearchResults />
+      )}
 
       {showPaginationBtns && (
         <Pagination
           buttonsList={buttonsList}
-          onPageChange={(button) => setCurrentPage(button)}
+          onPageChange={button => setCurrentPage(button)}
           currentPage={+currentPage}
           buttonsMax={buttonsMax}
         />

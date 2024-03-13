@@ -17,15 +17,19 @@ export const ProductDetailsPage: React.FC = () => {
   const { fullListOfProducts } = useContext(GeneralContext);
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [selectedItem, setSelectedItem] = useState<ProductDetailsType | null>(null);
+  const [selectedItem, setSelectedItem] = useState<ProductDetailsType | null>(
+    null,
+  );
   const { itemId } = useParams();
-  const productFromList
-  = fullListOfProducts.find(item => item.itemId === selectedItem?.id);
+  const productFromList = fullListOfProducts.find(
+    item => item.itemId === selectedItem?.id,
+  );
   let category = '';
 
   if (productFromList) {
-    category = productFromList?.category.charAt(0).toUpperCase()
-    + productFromList?.category.slice(1);
+    category =
+      productFromList?.category.charAt(0).toUpperCase() +
+      productFromList?.category.slice(1);
   }
 
   useEffect(() => {
@@ -37,8 +41,10 @@ export const ProductDetailsPage: React.FC = () => {
           const productDetails = await getProductDetails(itemId.slice(1));
 
           setSelectedItem(productDetails);
-          getSimilarProducts(productDetails.color, productDetails.capacity)
-            .then(setSimilarProducts);
+          getSimilarProducts(
+            productDetails.color,
+            productDetails.capacity,
+          ).then(setSimilarProducts);
         }
       } finally {
         setIsLoading(false);
@@ -60,9 +66,10 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       )}
 
-      {selectedItem && (isLoading
-        ? <Loader />
-        : (
+      {selectedItem &&
+        (isLoading ? (
+          <Loader />
+        ) : (
           <>
             <div className="productDetailsPage__header">
               <div
@@ -77,8 +84,10 @@ export const ProductDetailsPage: React.FC = () => {
                 </Link>
 
                 <img
-                  src={require('../../images/icons/slider-arrow-right-disabled.svg')
-                    .default}
+                  src={
+                    require('../../images/icons/slider-arrow-right-disabled.svg')
+                      .default
+                  }
                   alt="Arrow"
                 />
 
@@ -90,8 +99,10 @@ export const ProductDetailsPage: React.FC = () => {
                 </Link>
 
                 <img
-                  src={require('../../images/icons/slider-arrow-right-disabled.svg')
-                    .default}
+                  src={
+                    require('../../images/icons/slider-arrow-right-disabled.svg')
+                      .default
+                  }
                   alt="Arrow"
                 />
 
@@ -107,17 +118,14 @@ export const ProductDetailsPage: React.FC = () => {
                 onClick={() => goBack()}
               >
                 <img
-                  src={require('../../images/icons/back-arrow.svg')
-                    .default}
+                  src={require('../../images/icons/back-arrow.svg').default}
                   alt="Arrow"
                 />
 
                 <span>Back</span>
               </Link>
 
-              <h1 className="productDetailsPage__title">
-                {selectedItem.name}
-              </h1>
+              <h1 className="productDetailsPage__title">{selectedItem.name}</h1>
             </div>
 
             <ProductDetails
@@ -128,10 +136,7 @@ export const ProductDetailsPage: React.FC = () => {
             <section className="productDetailsPage__youMayAlsoLike">
               <h2 className="title">You may also like</h2>
 
-              <ProductsSlider
-                productsList={similarProducts}
-                showOldPrice
-              />
+              <ProductsSlider productsList={similarProducts} showOldPrice />
             </section>
           </>
         ))}

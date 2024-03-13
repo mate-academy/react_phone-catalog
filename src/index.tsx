@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-var-requires */
 /* eslint-disable global-require */
 import { createRoot } from 'react-dom/client';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import { Helmet } from 'react-helmet';
 
 import {

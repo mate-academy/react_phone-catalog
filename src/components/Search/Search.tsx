@@ -39,27 +39,25 @@ export const Search: React.FC = () => {
         className="search__field"
         placeholder={`Search in ${pathname.slice(1)}...`}
       />
-      {!searchValue
-        ? (
+      {!searchValue ? (
+        <img
+          className="search__icon"
+          src={require('../../images/icons/search.svg').default}
+          alt="Search"
+        />
+      ) : (
+        <button
+          className="search__icon search__icon--clear"
+          type="button"
+          data-cy="searchDelete"
+          onClick={handleClearSearchField}
+        >
           <img
-            className="search__icon"
-            src={require('../../images/icons/search.svg').default}
-            alt="Search"
+            src={require('../../images/icons/clear-field.svg').default}
+            alt="Clear"
           />
-        )
-        : (
-          <button
-            className="search__icon search__icon--clear"
-            type="button"
-            data-cy="searchDelete"
-            onClick={handleClearSearchField}
-          >
-            <img
-              src={require('../../images/icons/clear-field.svg').default}
-              alt="Clear"
-            />
-          </button>
-        )}
+        </button>
+      )}
     </div>
   );
 };

@@ -14,21 +14,30 @@ type Props = {
   productFromList: Product | undefined;
 };
 
+type ColorMap = {
+  [colorName: string]: string;
+};
+
+const colorMap: ColorMap = {
+  spacegray: '#1c1e26',
+  midnightgreen: '#3a6351',
+  gold: '#FFD700',
+  silver: '#C0C0C0',
+};
+
 export const ProductDetails: React.FC<Props> = ({
   selectedItem,
   productFromList,
 }) => {
-  const {
-    favouritesList,
-    setFavouritesList,
-    cartList,
-    setCartList,
-  } = useContext(GeneralContext);
+  const { favouritesList, setFavouritesList, cartList, setCartList } =
+    useContext(GeneralContext);
   const [mainPhotoId, setMainPhotoId] = useState(0);
-  const isInFavourites
-  = favouritesList.find(item => item.itemId === selectedItem.id);
-  const isInCart
-  = cartList.find(item => item.product.itemId === selectedItem.id);
+  const isInFavourites = favouritesList.find(
+    item => item.itemId === selectedItem.id,
+  );
+  const isInCart = cartList.find(
+    item => item.product.itemId === selectedItem.id,
+  );
 
   const selectOption = (type: string, value: string) => {
     const productName = selectedItem.id.split('-');
@@ -50,14 +59,17 @@ export const ProductDetails: React.FC<Props> = ({
   };
 
   const toggleFavorite = () => {
-    const index
-    = favouritesList.findIndex(item => item.itemId === selectedItem.id);
+    const index = favouritesList.findIndex(
+      item => item.itemId === selectedItem.id,
+    );
 
     if (index === -1 && productFromList) {
       setFavouritesList([...favouritesList, productFromList]);
     } else {
-      setFavouritesList([...favouritesList.slice(0, index),
-        ...favouritesList.slice(index + 1)]);
+      setFavouritesList([
+        ...favouritesList.slice(0, index),
+        ...favouritesList.slice(index + 1),
+      ]);
     }
   };
 
@@ -89,10 +101,7 @@ export const ProductDetails: React.FC<Props> = ({
               })}
               onClick={() => setMainPhotoId(index)}
             >
-              <img
-                src={`${BASE_URL}/_new/${image}`}
-                alt={selectedItem.name}
-              />
+              <img src={`${BASE_URL}/_new/${image}`} alt={selectedItem.name} />
             </button>
           ))}
         </div>
@@ -108,37 +117,37 @@ export const ProductDetails: React.FC<Props> = ({
       <div className="productDetails__aside">
         <div className="productDetails__options">
           <div>
-            <h3 className="productDetails__optionTitle">
-              Available colors
-            </h3>
+            <h3 className="productDetails__optionTitle">Available colors</h3>
 
             <div className="productDetails__colors">
-              {selectedItem.colorsAvailable.map((color) => (
-                <Link
-                  key={color}
-                  to={{
-                    pathname: `/${productFromList?.category}/:${selectOption('color', color)}`,
-                  }}
-                  className="productDetails__colorWrapper"
-                >
-                  <div
-                    className="productDetails__color"
-                    style={{ backgroundColor: color }}
-                  />
-                </Link>
-              ))}
+              {selectedItem.colorsAvailable.map(colorName => {
+                const colorValue: string = colorMap[colorName] || colorName;
+
+                return (
+                  <Link
+                    key={colorName}
+                    to={{
+                      pathname: `/${productFromList?.category}/:${selectOption('color', colorName)}`,
+                    }}
+                    className="productDetails__colorWrapper"
+                  >
+                    <div
+                      className="productDetails__color"
+                      style={{ backgroundColor: colorValue }}
+                    />
+                  </Link>
+                );
+              })}
             </div>
           </div>
 
           <div className="productDetails__divider" />
 
           <div>
-            <h3 className="productDetails__optionTitle">
-              Select capacity
-            </h3>
+            <h3 className="productDetails__optionTitle">Select capacity</h3>
 
             <div className="productDetails__capacities">
-              {selectedItem.capacityAvailable.map((capacity) => (
+              {selectedItem.capacityAvailable.map(capacity => (
                 <Link
                   to={{
                     pathname: `/${productFromList?.category}/:${selectOption('capacity', capacity.toLowerCase())}`,
@@ -173,22 +182,22 @@ export const ProductDetails: React.FC<Props> = ({
               type="button"
               className={classNames(
                 'productDetails__addToCart',
-                'productDetails__btn', {
+                'productDetails__btn',
+                {
                   'productDetails__addToCart--added': isInCart,
                 },
               )}
               onClick={addToCart}
             >
-              {isInCart
-                ? 'Added to cart'
-                : 'Add to cart'}
+              {isInCart ? 'Added to cart' : 'Add to cart'}
             </button>
 
             <button
               type="button"
               className={classNames(
                 'productDetails__favorites',
-                'productDetails__btn', {
+                'productDetails__btn',
+                {
                   'productDetails__favorites--remove': isInFavourites,
                   'productDetails__favorites--add': !isInFavourites,
                 },
@@ -196,21 +205,19 @@ export const ProductDetails: React.FC<Props> = ({
               onClick={toggleFavorite}
               data-cy="addToFavorite"
             >
-              {isInFavourites
-                ? (
-                  <img
-                    src={require('../../images/icons/favorites-selected.svg')
-                      .default}
-                    alt="remove from favorite"
-                  />
-                )
-                : (
-                  <img
-                    src={require('../../images/icons/favourities.svg')
-                      .default}
-                    alt="add to favorite"
-                  />
-                )}
+              {isInFavourites ? (
+                <img
+                  src={
+                    require('../../images/icons/favorites-selected.svg').default
+                  }
+                  alt="remove from favorite"
+                />
+              ) : (
+                <img
+                  src={require('../../images/icons/favourities.svg').default}
+                  alt="add to favorite"
+                />
+              )}
             </button>
           </div>
 
@@ -238,12 +245,9 @@ export const ProductDetails: React.FC<Props> = ({
 
             <div className="productDetails__characteristic">
               RAM
-              <span className="productDetails__value">
-                {selectedItem.ram}
-              </span>
+              <span className="productDetails__value">{selectedItem.ram}</span>
             </div>
           </div>
-
         </div>
 
         <span className="productDetails__id">
@@ -251,22 +255,18 @@ export const ProductDetails: React.FC<Props> = ({
         </span>
       </div>
 
-      <div
-        className="productDetails__about"
-      >
+      <div className="productDetails__about">
         <h2 className="productDetails__infoTitle">About</h2>
 
         <div className="productDetails__infoDivider" />
 
         <div data-cy="productDescription">
-          {selectedItem.description.map((paragraph) => (
+          {selectedItem.description.map(paragraph => (
             <div key={paragraph.title}>
-              <h3 className="productDetails__subtitle">
-                {paragraph.title}
-              </h3>
+              <h3 className="productDetails__subtitle">{paragraph.title}</h3>
 
               <div className="productDetails__text">
-                {paragraph.text.map((text) => (
+                {paragraph.text.map(text => (
                   <p key={text}>{text}</p>
                 ))}
               </div>
@@ -281,18 +281,18 @@ export const ProductDetails: React.FC<Props> = ({
         <div className="productDetails__infoDivider" />
 
         <div className="productDetails__characteristics">
-          <div className="
+          <div
+            className="
               productDetails__characteristic
               productDetails__infoCharacteristic
           "
           >
             Screen
-            <span className="productDetails__value">
-              {selectedItem.screen}
-            </span>
+            <span className="productDetails__value">{selectedItem.screen}</span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "
@@ -303,7 +303,8 @@ export const ProductDetails: React.FC<Props> = ({
             </span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "
@@ -314,18 +315,18 @@ export const ProductDetails: React.FC<Props> = ({
             </span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "
           >
             RAM
-            <span className="productDetails__value">
-              {selectedItem.ram}
-            </span>
+            <span className="productDetails__value">{selectedItem.ram}</span>
           </div>
 
-          <div className="
+          <div
+            className="
               productDetails__characteristic
               productDetails__infoCharacteristic
           "
@@ -336,29 +337,28 @@ export const ProductDetails: React.FC<Props> = ({
             </span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "
           >
             Camera
-            <span className="productDetails__value">
-              {selectedItem.camera}
-            </span>
+            <span className="productDetails__value">{selectedItem.camera}</span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "
           >
             Zoom
-            <span className="productDetails__value">
-              {selectedItem.zoom}
-            </span>
+            <span className="productDetails__value">{selectedItem.zoom}</span>
           </div>
 
-          <div className="
+          <div
+            className="
             productDetails__characteristic
             productDetails__infoCharacteristic
           "

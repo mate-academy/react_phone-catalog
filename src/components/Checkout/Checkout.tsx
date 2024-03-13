@@ -16,11 +16,7 @@ export const Checkout: React.FC<Props> = ({ setShowMessage }) => {
         We are sorry, but this feature is not implemented yet
       </span>
 
-      <img
-        src={cat}
-        alt="Cat"
-        className="checkout__img"
-      />
+      <img src={cat} alt="Cat" className="checkout__img" />
 
       <button
         type="button"
