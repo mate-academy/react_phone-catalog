@@ -237,7 +237,10 @@ export const App = () => {
               </NavLink>
             </div>
             <nav className="navbar footer__navbar">
-              <NavLink to="/github" className="navbar__link">
+              <NavLink
+                to="https://github.com/yuliiaaaaa"
+                className="navbar__link"
+              >
                 Github
               </NavLink>
               <NavLink to="/contacts" className="navbar__link">

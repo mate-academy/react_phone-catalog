@@ -41,6 +41,7 @@
   &__icon-block {
     width: $header-icon-width;
     height: $header-icon-height;
+    border: 1px solid #e2e6e9;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -132,7 +133,9 @@
 .footer {
   box-shadow: 0 -1px 0 0 #e2e6e9;
   height: 96px;
-  margin-top: auto;
+  position: absolute;
+  width: 100%;
+  bottom: 0;
 
   &__logo {
     padding-left: 152px;
@@ -199,6 +202,12 @@
   line-height: 11.5px;
 }
 
+html {
+  position: relative;
+  min-height: 100%;
+  min-width: 100vw;
+}
+
 .main {
-  min-height: 100vh;
+  padding-bottom: 96px;
 }
