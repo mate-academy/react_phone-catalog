@@ -303,20 +303,20 @@ export const Phones = () => {
 
                     <button
                       type="button"
-                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.id) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
+                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
                       tabIndex={0}
                       aria-label="Previous Image"
-                      onClick={() => {setCartPhones(phone.id), setPrice(phone.price)}}
+                      onClick={() => {setCartPhones(phone.itemId), setPrice(phone.price)}}
                     >
-                      {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.id) ? 'Added to cart' : 'Add to cart'}
+                      {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'Added to cart' : 'Add to cart'}
                     </button>
                     <button
                       type="button"
                       className="hot-prices__goods__cards__good-card__buttons__favorite"
-                      style={prevFavoriteArr && prevFavoriteArr.includes(phone.id) ? {backgroundImage: `url(${filledFavoriteImage})`} : undefined}
+                      style={prevFavoriteArr && prevFavoriteArr.includes(phone.itemId) ? {backgroundImage: `url(${filledFavoriteImage})`} : undefined}
                       tabIndex={0}
                       aria-label="Previous Image"
-                      onClick={() => setFavoritePhones(phone.id)}
+                      onClick={() => setFavoritePhones(phone.itemId)}
                     />
                   </div>
                 </div>

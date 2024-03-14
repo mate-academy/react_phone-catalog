@@ -1,28 +1,22 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
+import { NavLink } from 'react-router-dom';
 import Arrow from '../img/Slider button right.png';
+import { useAppContext } from './Context';
+import filledFavoriteImage from '../img/favourites-filled.svg';
+/* eslint-disable */
 // import heeart from '../img/favourites.svg'
 /* eslint-disable max-len */
 
-interface Phones {
-  id: string;
-  category: string;
-  phoneId: string;
-  itemId: string;
-  name: string;
-  fullPrice: number;
-  price: number;
-  screen: string;
-  capacity: string;
-  color: string;
-  ram: string;
-  year: number;
-  image: string;
-}
-
 export const NewModel = () => {
-  const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
+  const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
+  const { setSelectedProduct } = useAppContext();
+  const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
+  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
+  const { favoritePhones, setFavoritePhones } = useAppContext();
+  const { cartPhones, setCartPhones } = useAppContext();
+  const [price, setPrice] = useState<number>(0);
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
@@ -65,6 +59,30 @@ export const NewModel = () => {
 
   }, [translate]);
 
+  useEffect(() => {
+    if (favoritePhones.trim() !== '') {
+      if (prevFavoriteArr?.includes(favoritePhones)) {
+        setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));
+      } else {
+        setPrevFavoriteArr(prevFavoriteArr => (prevFavoriteArr ? [...prevFavoriteArr, favoritePhones] : [favoritePhones]));
+      }
+    }
+    setFavoritePhones(''); 
+  }, [favoritePhones, prevFavoriteArr]);
+
+  useEffect(() => {
+    const newProductInCart = { id: cartPhones, count: 1, fullPrice: price };
+    if (cartPhones.trim() !== "") {
+      if (prevCartPhonesArr?.some(elem => elem.id === cartPhones)) {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone.id !== cartPhones));
+      } else {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr ? [...prevCartPhonesArr, newProductInCart] : [newProductInCart]);
+      }
+    }
+    setCartPhones('');
+    setPrice(0);
+}, [cartPhones, prevCartPhonesArr]);
+
   return !errorMessage ? (
     <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
@@ -103,17 +121,29 @@ export const NewModel = () => {
         </div>
         <div className="hot-prices__goods">
           <div className="hot-prices__goods__cards" style={{ transform: `translateX(${translate}px)` }}>
-            {!!newPhones && newPhones.map((phone) => (
+          {!!newPhones && newPhones.map((phone) => (
               <div className="hot-prices__goods__cards__good-card">
-                <img
-                  src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
-                  alt=""
-                  className="hot-prices__goods__cards__good-card__img"
-                />
+                {/* <p>{phone.itemId}</p> */}
+                <NavLink
+                  to={`/phones/${phone.itemId}`}
+                  onClick={() => setSelectedProduct(phone.itemId)}
+                >
+                  <img
+                    src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
+                    alt=""
+                    className="hot-prices__goods__cards__good-card__img"
+                  />
+                </NavLink>
+                
                 <div className="hot-prices__goods__cards__good-card__header">
-                  <h4 className="hot-prices__goods__cards__good-card__header__name">
+                  
+                  <NavLink
+                    to={`/phones/${phone.itemId}`}
+                    onClick={() => setSelectedProduct(phone.itemId)}
+                    className="hot-prices__goods__cards__good-card__header__name"
+                  >
                     {phone.name}
-                  </h4>
+                  </NavLink>
                   <div className="hot-prices__goods__cards__good-card__header__prace">
                     <p className="hot-prices__goods__cards__good-card__header__prace__new">
                       {`$${phone.price}`}
@@ -148,17 +178,20 @@ export const NewModel = () => {
                   <div className="hot-prices__goods__cards__good-card__buttons">
                     <button
                       type="button"
-                      className="hot-prices__goods__cards__good-card__buttons__cart"
+                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
                       tabIndex={0}
                       aria-label="Previous Image"
+                      onClick={() => {setCartPhones(phone.itemId), setPrice(phone.price)}}
                     >
-                      Add to cart
+                      {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'Added to cart' : 'Add to cart'}
                     </button>
                     <button
                       type="button"
                       className="hot-prices__goods__cards__good-card__buttons__favorite"
+                      style={prevFavoriteArr && prevFavoriteArr.includes(phone.itemId) ? { backgroundImage: `url(${filledFavoriteImage})` } : undefined}
                       tabIndex={0}
                       aria-label="Previous Image"
+                      onClick={() => setFavoritePhones(phone.itemId)}
                     />
                   </div>
                 </div>

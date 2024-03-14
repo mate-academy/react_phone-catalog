@@ -8,13 +8,15 @@ export const Favorite = () => {
   const { getPhone } = useAppContext();
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   const favoriteProducts = getPhone?.filter(
-    elem => prevFavoriteArr && prevFavoriteArr.includes(elem.id),
+    elem => prevFavoriteArr && prevFavoriteArr.includes(elem.itemId),
   );
   const { setSelectedProduct } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const [price, setPrice] = useState<number>(0);
+
+  console.log(prevFavoriteArr);
 
   useEffect(() => {
     const newProductInCart = { id: cartPhones, count: 1, fullPrice: price };
@@ -134,11 +136,11 @@ export const Favorite = () => {
                   <div className="hot-prices__goods__cards__good-card__buttons">
                     <button
                       type="button"
-                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.id) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
+                      className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
                       tabIndex={0}
                       aria-label="Previous Image"
                       onClick={() => {
-                        setCartPhones(phone.id),
+                        setCartPhones(phone.itemId),
                         setPrice(phone.fullPrice)}}
                     >
                       {prevCartPhonesArr
@@ -150,12 +152,12 @@ export const Favorite = () => {
                       type="button"
                       className="hot-prices__goods__cards__good-card__buttons__favorite"
                       style={prevFavoriteArr
-                        && prevFavoriteArr.includes(phone.id)
+                        && prevFavoriteArr.includes(phone.itemId)
                         ? { backgroundImage: `url(${filledFavoriteImage})` }
                         : undefined}
                       tabIndex={0}
                       aria-label="Previous Image"
-                      onClick={() => setFavoritePhones(phone.id)}
+                      onClick={() => setFavoritePhones(phone.itemId)}
                     />
                   </div>
                 </div>

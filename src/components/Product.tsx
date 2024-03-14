@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from './Context';
+import filledFavoriteImage from '../img/favourites-filled.svg';
 
 /* eslint-disable */
 interface Product {
@@ -48,6 +49,8 @@ export const ProductPage = () => {
   const { selectedProduct, setSelectedProduct } = useAppContext();
   const [gotProduct, setGotProduct] = useState<Product | undefined>();
   const [errorMessage, setErrorMessage] = useState('');
+  const { favoritePhones, setFavoritePhones } = useAppContext();
+  const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   // eslint-disable-next-line max-len
   const [previewSelected, setPreviewSelected] = useState<string | undefined>('');
   const [colorSelected, setColorSelected] = useState('');
@@ -72,6 +75,7 @@ export const ProductPage = () => {
     };
 
     fetchData();
+    window.scrollTo(0, 0)
   }, [url]);
 
   useEffect(() => {
@@ -82,8 +86,8 @@ export const ProductPage = () => {
     }
   }, [gotProduct]);
   const navigate = useNavigate();
+
   const handleChengeColor = (color: any) => {
-    
     if (selectedProduct) {
       const splitString = selectedProduct.split('-');
       splitString[splitString.length - 1] = color;
@@ -93,6 +97,47 @@ export const ProductPage = () => {
       console.log(newSelectProduct);
     }
   }
+
+  const handleChengeCapacity = (capacity: any) => {
+    if (selectedProduct) {
+      const splitString = selectedProduct.split('-');
+      splitString[splitString.length - 2] = capacity.toLowerCase();
+      const newSelectProduct = splitString.join('-');
+      setSelectedProduct(newSelectProduct);
+      navigate(`/phones/${newSelectProduct}`)
+      console.log(newSelectProduct);
+    }
+  }
+
+  const { cartPhones, setCartPhones } = useAppContext();
+  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
+  const [price, setPrice] = useState<number>(0);
+
+  useEffect(() => {
+    let newProductInCart = { id: cartPhones, count: 1, fullPrice: price };
+    if (cartPhones.trim() !== "") {
+      if (prevCartPhonesArr?.some(elem => elem.id === cartPhones)) {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone.id !== cartPhones));
+      } else {
+        setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr ? [...prevCartPhonesArr, newProductInCart] : [newProductInCart]);
+      }
+    }
+    setCartPhones('');
+    setPrice(0);
+    console.log(prevCartPhonesArr)
+}, [cartPhones, prevCartPhonesArr]);
+
+useEffect(() => {
+  if (favoritePhones.trim() !== "") {
+    if (prevFavoriteArr?.includes(favoritePhones)) {
+      setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));
+    } else {
+      setPrevFavoriteArr(prevFavoriteArr => (prevFavoriteArr ? [...prevFavoriteArr, favoritePhones] : [favoritePhones]));
+    }
+  }``
+  setFavoritePhones(''); 
+}, [favoritePhones, prevFavoriteArr]);
+
 
   return (
     <section className="product__wrapper">
@@ -152,6 +197,7 @@ export const ProductPage = () => {
               <ul className="product__main__cards__preview__characteristics__memory">
                 {gotProduct?.capacityAvailable.map((memory) => (
                   <li
+                    onClick={() => handleChengeCapacity(memory)}
                     className={cn(
                       "product__main__cards__preview__characteristics__memory__li",
                       {"product__main__cards__preview__characteristics__memory__li--active": memorySelected === memory}
@@ -167,9 +213,22 @@ export const ProductPage = () => {
                   <span className="product__main__cards__preview__characteristics__card-buy__prices__valid">{`$${gotProduct?.priceDiscount}`}</span>
                   <span className="product__main__cards__preview__characteristics__card-buy__prices__not-valid">{`$${gotProduct?.priceRegular}`}</span>
                 </div>
-                <div className="product__main__cards__preview__characteristics__card-buy__buttons">
-                  <div className="product__main__cards__preview__characteristics__card-buy__buttons__cart">Add to cart</div>
-                  <div className="product__main__cards__preview__characteristics__card-buy__buttons__favorite"/>
+                <div  
+                  className="product__main__cards__preview__characteristics__card-buy__buttons"
+                >
+                  <div
+                    onClick={() => { selectedProduct && setCartPhones(selectedProduct), setPrice(gotProduct?.priceDiscount || 0)}}
+                    className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === selectedProduct)
+                      ? 'product__main__cards__preview__characteristics__card-buy__buttons__cart--added' 
+                      : "product__main__cards__preview__characteristics__card-buy__buttons__cart"}
+                  >
+                    {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === selectedProduct) ? 'Added to cart' : 'Add to cart'}
+                  </div>
+                  <div
+                    className="product__main__cards__preview__characteristics__card-buy__buttons__favorite"
+                    style={prevFavoriteArr && selectedProduct && prevFavoriteArr.includes(selectedProduct) ? {backgroundImage: `url(${filledFavoriteImage})`} : undefined}
+                    onClick={() => {selectedProduct && setFavoritePhones(selectedProduct)}}
+                  />
                 </div>
                 <div className="product__main__cards__preview__characteristics__card-buy__info">
                   <div className="product__main__cards__preview__characteristics__card-buy__info__name">Screen</div>

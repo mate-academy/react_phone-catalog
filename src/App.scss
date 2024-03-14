@@ -205,10 +205,19 @@ body {
   display: flex;
   box-sizing: border-box;
   justify-content: space-between;
+  width: 1136px;
   align-items: center;
-  height: 64px;
-  padding: 0 152px;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  height: 96px;
+  // padding: 0 152px;
+  // box-shadow: 0 1px 0 0 #e2e6e9;
+  
+
+  &__wrapp {
+    display: flex;
+    justify-content: center;
+    border-top: solid 1px #e2e6e9;
+  }
+  
 
   &__nav {
     &__list {
@@ -391,6 +400,7 @@ body {
   
   &__content {
     width: 1136px;
+    margin: 0 0 80px;
   }
   
   &__header {
@@ -661,6 +671,7 @@ body {
 .categories {
   display: flex;
   flex-direction: column;
+  margin: 0 0 80px;
 
   &__wrapper {
     display: flex;
@@ -673,6 +684,7 @@ body {
     gap: 16px;
 
     &__card {
+      text-decoration: none;
 
       &__background-img {
         box-sizing: border-box;
@@ -688,6 +700,24 @@ body {
       &:hover > &__background-img {
         // border: solid 2px black;
         box-shadow: 8px 5px 5px rgb(80, 79, 79);
+      }
+
+      &__information {
+        &__type {
+          color: #313237;
+          font-family: "Mont", sans-serif;
+          font-weight: 600;
+          font-size: 20px;
+          line-height: 25.56px;
+        }
+
+        &__amount {
+          color: #89939a;
+          font-family: "Mont", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+        }
       }
     }
   }
@@ -718,6 +748,7 @@ body {
 
   &__goods {
     width: 100%;
+    margin: 0 0 80px;
 
     &__cards {
       display: flex;
@@ -1112,7 +1143,7 @@ body {
                 display: flex;
                 justify-content: center;
                 align-items: center;
-                border: none;
+                border: 1px solid #313237;
                 cursor: pointer;
                 background-color: #313237;
                 color: #fff;
@@ -1132,6 +1163,33 @@ body {
 
                 &:active {
                   transform: rotateX(40deg);
+                }
+
+                &--added {
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  cursor: pointer;
+                  text-align: center;
+                  font-family: "Mont", sans-serif;
+                  font-size: 14px;
+                  font-style: normal;
+                  font-weight: 600;
+                  line-height: 21px;
+                  height: 40px;
+                  width: 100%;
+                  transition: all 0.3s ease;
+                  color: #27ae60;
+                  background-color: #fff;
+                  border: 1px solid #e2e6e9;
+
+                  &:hover {
+                    box-shadow: 5px 3px 3px rgb(80, 79, 79);
+                  }
+  
+                  &:active {
+                    transform: rotateX(40deg);
+                  }
                 }
               }
 
@@ -1197,6 +1255,7 @@ body {
               padding: 7px 8px 4px;
               border: 1px solid #b4bdc3;
               margin: 0 0 24px;
+              cursor: pointer;
 
               &--active {
                 background: #313237;
@@ -1228,6 +1287,7 @@ body {
               border: 1px solid #e2e6e9;
               border-radius: 50%;
               margin: 0 0 24px;
+              cursor: pointer;
               
               &--active {
                 border: 1px solid #313237;
@@ -1321,11 +1381,52 @@ body {
       gap: 16px;
 
       &__sum-price {
+        box-sizing: border-box;
+        height: 210px;
         width: 368px;
         border: 1px solid #e2e6e9;
+        padding: 24px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
 
         &__title {
           color: #313237;
+          font-family: "Mont", sans-serif;
+          font-weight: 700;
+          font-size: 32px;
+          line-height: 40.9px;
+          letter-spacing: -1%;
+          margin: 0;
+          padding: 0;
+        }
+
+        &__text {
+          color: #89939a;
+          font-family: "Mont", sans-serif;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 21px;
+          margin: 0 0 24px;
+        }
+
+        &__row {
+          height: 1px;
+          width: 100%;
+          background-color: #89939a;
+          margin: 0 0 24px;
+        }
+
+        &__button {
+          background-color: #313237;
+          border: none;
+          width: 100%;
+          padding: 14px;
+          color: #fff;
+          font-family: "Mont", sans-serif;
+          font-weight: 600;
+          font-size: 14px;
+          line-height: 21px;
         }
       }
 
@@ -1340,6 +1441,7 @@ body {
           box-sizing: border-box;
           display: flex;
           align-items: center;
+          gap: 32px;
           width: 752px;
           height: 128px;
           border: 1px solid #e2e6e9;
@@ -1350,12 +1452,44 @@ body {
             border: 1px solid black;
           }
 
+          &__caunt {
+            margin: 0 14px;
+          }
+
+          &__buttons {
+            margin: 0;
+          }
+
           &__button {
             height: 32px;
             width: 32px;
             background-color: #fff;
             border: 1px solid #e2e6e9;
             border-radius: 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+
+            &:hover {
+              border: solid 1px black;
+            }
+
+            &:active {
+              opacity: 0.8;
+              background-color: #dbdada;
+            }
+
+            &--disabled {
+              opacity: 0.6;
+
+              &:hover {
+                border: 1px solid #e2e6e9;
+              }
+
+              &:active {
+                opacity: 0.6;
+                background-color: #fff;
+              }
+            }
 
             &__minus {
               display: block;
@@ -1379,7 +1513,7 @@ body {
           &__img {
             // width: 80px;
             height: 80px;
-            margin: 0 24px;
+            // margin: 0 24px;
             box-sizing: border-box;
             object-fit: cover;
             object-position: center;
@@ -1395,11 +1529,30 @@ body {
               border-radius: 2px;
             }
 
-            
-
             &:active {
               opacity: 0.7;
             }
+          }
+
+          &__name {
+            width: 295px;
+            color: #313237;
+            font-family: "Mont", sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            line-height: 21px;
+          }
+
+          &__block-img {
+            width: 80px;
+          }
+
+          &__price {
+            color: #313237;
+            font-family: "Mont", sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            line-height: 30.8px;
           }
         }
       }
