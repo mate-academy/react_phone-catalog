@@ -42,6 +42,81 @@
   }
 
   &__finder {
-    
+    background-color: inherit;
+    padding: 24px;
+  }
+
+  &__input {
+    display: block;
+    position: relative;
+    padding: 23px 140px 23px 24px;
+    border: none;
+    outline:none;
+
+    @extend %button;
+
+    color: $main-color;
+    line-height: 18px;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    &::placeholder {
+      @extend %body-text;
+
+      color: $icons-color;
+    }
+
+    &:focus {
+      background-color: $bg-and-hover-color;
+    }
+
+    @include hover(background-color, $bg-and-hover-color);
+  }
+
+  &__favourites {
+    position: relative;
+    padding: 24px;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    @include hover(background-color, $bg-and-hover-color);
+
+    &-is-active {
+      &::after {
+        @extend %active-line;
+      }
+    }
+
+    &-img {
+      position: relative;
+    }
+  }
+
+  &__cart {
+    position: relative;
+    padding: 24px;
+    box-shadow: -1px 0 0 0 $elements-color;
+
+    @include hover(background-color, $bg-and-hover-color);
+
+    &-is-active {
+      &::after {
+        @extend %active-line;
+      }
+    }
+
+    &-img {
+      position: relative;
+    }
+  }
+
+  &__img-status {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: 0;
+    right: 0;
+
+    @extend %image-status;
+
+    transform: translate(50%, -50%);
   }
 }

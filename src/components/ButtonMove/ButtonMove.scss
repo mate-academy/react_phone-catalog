@@ -1,0 +1,16 @@
+@import "../../styles/main";
+
+.button {
+  padding: 8px;
+  background-color: $white-color;
+  display: block;
+  cursor: pointer;
+
+  @include border-icons;
+  @include hover(border-color, $main-color);
+
+  &--disabled {
+    @include border-default;
+    @include hover(border-color, $elements-color);
+  }
+}

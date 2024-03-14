@@ -1,0 +1,92 @@
+@import "../../styles/main";
+
+.slider {
+  @include flex-center;
+  max-width: 90%;
+
+  &__button {
+    @include flex-center;
+
+    position: absolute;
+    height: 100%;
+    width: 32px;
+    background-color: $white-color;
+    border: 1px solid $icons-color;
+
+    &--left {
+      right: 0;
+      transform: translateX(48px);
+
+      @include for-phones {
+        height: 9%;
+        top: 102%;
+        right: 47%;
+      }
+    }
+
+    &--right {
+      transform: translateX(-48px);
+
+      @include for-phones {
+        height: 9%;
+        top: 102%;
+        right: 50%;
+      }
+    }
+
+    @include hover(border-color, $main-color);
+  }
+}
+
+.swiper {
+  width: 1040px;
+  height: 400px;
+  display: flex;
+  position: relative;
+
+  .swiper-top > &-wrapper {
+    display: flex;
+  }
+
+  .swiper-slide {
+    transition: all 0.2s ease;
+  }
+
+  .swiper-top > .swiper-wrapper > &-slide:not(.swiper-slide-active) {
+    opacity: 0;
+  }
+
+  &-pagination {
+    @include flex-center;
+    position: absolute;
+    bottom: 0;
+    right: 50%;
+    gap: 14px;
+    height: 24px;
+    width: 80px;
+
+    transform: translate(50%, 32px);
+
+    &-bullet {
+      cursor: pointer;
+      display: block;
+      background-color: $elements-color;
+      height: 4px;
+      width: 10px;
+
+      &-active {
+        background-color: $main-color;
+      }
+    }
+  }
+}
+
+.image-top {
+  width: 1040px;
+  height: 400px;
+  object-fit: cover;
+
+  @include for-phones {
+    object-fit: scale-down;
+  }
+}

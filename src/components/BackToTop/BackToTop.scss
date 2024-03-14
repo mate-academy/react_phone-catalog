@@ -1,0 +1,19 @@
+@import "../../styles/main";
+
+.back-to-top {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  background-color: $white-color;
+
+  &__message {
+    @extend %links;
+  }
+
+  &__button {
+    padding: 8px;
+
+    @include border-icons;
+    @include hover(border-color, $main-color);
+  }
+}

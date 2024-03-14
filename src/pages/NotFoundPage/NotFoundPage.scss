@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.not-found-page {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  &__title {
+    margin-top: 80px;
+  }
+
+  &__icon {
+    width: 230px;
+
+    @include for-phones {
+      width: 150px;
+    }
+  }
+
+  &__link {
+    width: 320px;
+  }
+}
