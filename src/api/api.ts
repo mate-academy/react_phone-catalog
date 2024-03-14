@@ -12,7 +12,7 @@ export async function getProducts(): Promise<Product[]> {
   const response = await fetch(`${API_URL}/products.json`);
   const products = await response.json();
 
-  await delay(200);
+  await delay(1000);
 
   return products;
 }
@@ -21,7 +21,7 @@ export async function getProduct(id: string): Promise<ProductDetails> {
   const response = await fetch(`${API_URL}/products/${id}.json`);
   const product = await response.json();
 
-  await delay(200);
+  await delay(1000);
 
   return product;
 }

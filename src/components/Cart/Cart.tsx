@@ -39,7 +39,7 @@ export const Cart = () => {
             }
           }}
         >
-          <div className="arrow arrow-left--disabled" />
+          <div className="arrow arrow-left" />
           <div className="cartPage__top__back__text">Back</div>
         </div>
         <div className="cartPage__top__title bold">Cart</div>

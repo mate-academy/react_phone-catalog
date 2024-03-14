@@ -1,6 +1,8 @@
 @import "../../style/utils/vars.scss";
 
 .productsPage {
+  min-width: 1136px;
+
   &__search {
     display: flex;
     flex-direction: column;

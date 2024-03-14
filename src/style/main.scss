@@ -202,12 +202,6 @@ html {
   &.productSlider__block--button:disabled {
     background-image: url(../img/ArrowLeftDisabled.svg);
   }
-
-  &--disabled {
-    background-image: url(../img/ArrowLeftDisabled.svg);
-
-    transition: background-image 0.3s ease-in-out;
-  }
 }
 
 .arrow-right {

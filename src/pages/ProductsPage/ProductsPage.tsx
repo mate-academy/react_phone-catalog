@@ -3,14 +3,15 @@ import React, {
   useState,
   useRef,
   useContext,
+  useMemo,
 } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/api';
 import { filteredPhones } from '../../utils/filteredPhones';
 import { Pagination } from '../../components/Pagination/Pagination';
-import { Loader } from '../../components/Loader/Loader';
 import { PhoneCatalogContext } from '../../PhoneCatalogContext';
+import { SmallLoader } from '../../components/SmallLoader/SmallLoader';
 
 type Props = {
   title: string;
@@ -28,58 +29,76 @@ export const ProductsPage: React.FC<Props> = ({ title, navTitle, type }) => {
     setCurrentPage,
     query,
     setQuery,
+    error,
+    setError,
   } = useContext(PhoneCatalogContext);
 
-  const [products, setProducts] = useState<Product[]>([]);
-  const [error, setError] = useState<string>('');
   const [isLoaded, setIsLoaded] = useState(true);
 
-  const [newPhones, setNewPhones] = useState<Product[]>([]);
-  const [queriedPhones, setFilteredPhones] = useState<Product[]>([]);
-  const [pages, setPages] = useState<number>(0);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [queriedProducts, setQueriedProducts] = useState<Product[]>([]);
+
+  const [quantity, setQuantity] = useState<number>(products.length);
 
   const firstIndex = currentPage === 1 ? 0 : itemsPerPage * (currentPage - 1);
   const lastIndex = itemsPerPage * currentPage;
 
   const firstLoad = useRef(true);
   const path = useLocation();
+  const currentURL = window.location.href.split('#')[0];
+
+  const [
+    updateTimeout,
+    setUpdateTimeout,
+  ] = useState<NodeJS.Timeout | null>(null);
+
+  // const newPhones = useMemo(
+  //   () => filteredPhones(products, sort), [sort, itemsPerPage, products, query],
+  // );
 
   useEffect(() => {
-    const filteredPhonesList = filteredPhones(
-      products,
-      sort,
-    );
-
-    setNewPhones(filteredPhonesList);
-  }, [sort, itemsPerPage, products]);
+    setQueriedProducts(filteredPhones(products, sort));
+  }, [products]);
 
   useEffect(() => {
-    const filteredResult = newPhones
-      .filter((phone) => phone.name
-        .toLowerCase()
-        .includes(query.toLowerCase()));
-    const filterTimeout = setTimeout(() => {
-      const filteredResultPerPage = newPhones
-        .filter((phone) => phone.name
-          .toLowerCase()
-          .includes(query.toLowerCase()))
-        .slice(firstIndex, lastIndex);
+    if (updateTimeout) {
+      clearTimeout(updateTimeout);
+    }
 
-      setFilteredPhones(filteredResultPerPage);
-
-      if (query) {
-        const updatedPages = filteredResult.length / itemsPerPage;
-
-        setPages(updatedPages);
-      } else {
-        const updatedPages = newPhones.length / itemsPerPage;
-
-        setPages(updatedPages);
-      }
+    const timeoutId = setTimeout(() => {
+      // Update the queried products based on the new query
+      setQueriedProducts(
+        filteredPhones(products, sort)
+          .filter(phone => phone.name.toLowerCase()
+            .includes(query.toLowerCase())),
+      );
+      setCurrentPage(1);
     }, 500);
 
-    return () => clearTimeout(filterTimeout); // Cleanup on component unmount or when dependencies change
-  }, [newPhones, query, firstIndex, lastIndex, itemsPerPage, products]);
+    setUpdateTimeout(timeoutId);
+
+    return () => {
+      if (updateTimeout) {
+        clearTimeout(updateTimeout);
+      }
+    };
+  }, [query, sort, itemsPerPage, products]);
+
+  const pages = useMemo(() => Math
+    .ceil(queriedProducts.length / itemsPerPage), [
+    itemsPerPage,
+    queriedProducts,
+    query,
+  ]);
+
+  const productsPerPage = useMemo(() => queriedProducts
+    .slice(firstIndex, lastIndex), [
+    firstIndex,
+    queriedProducts,
+    sort,
+    itemsPerPage,
+    query,
+  ]);
 
   useEffect(() => {
     setIsLoaded(true);
@@ -87,20 +106,23 @@ export const ProductsPage: React.FC<Props> = ({ title, navTitle, type }) => {
     getProducts()
       .then((productsFromServer) => {
         setIsLoaded(false);
-        const filteredProducts = productsFromServer
-          .filter(product => product.category === type);
+        const newProducts = productsFromServer.filter(
+          (product) => product.category === type,
+        );
 
-        if (filteredProducts.length === 0) {
+        setQuantity(newProducts.length);
+
+        if (newProducts.length === 0) {
           setError(`No ${type} products available.`);
         } else {
-          setProducts(filteredProducts);
+          setProducts(newProducts);
           setError('');
         }
       })
       .catch(() => {
         setError('There is no connection to the server.');
       });
-  }, [type]);
+  }, []);
 
   useEffect(() => {
     const urlParams = new URLSearchParams(path.search);
@@ -125,7 +147,7 @@ export const ProductsPage: React.FC<Props> = ({ title, navTitle, type }) => {
       queryParams.set('currentPage', String(currentPage));
       queryParams.set('query', query);
 
-      const newUrl = `http://localhost:3000/#/phones?${queryParams.toString()}`;
+      const newUrl = `${currentURL}#${path.pathname}?${queryParams.toString()}`;
 
       window.history.replaceState(null, '', newUrl);
     }
@@ -133,49 +155,30 @@ export const ProductsPage: React.FC<Props> = ({ title, navTitle, type }) => {
     firstLoad.current = false;
   }, [itemsPerPage, sort, currentPage, query]);
 
-  if (isLoaded) {
-    return (
-      <Loader />
-    );
-  }
-
-  if (!error) {
-    return (
-      <div className="productsPage">
-        <div className="productsPage__nav">
-          <Link
-            to="/"
-            className="productsPage__nav__home"
-          />
-          <div className="arrow arrow-right" />
-          <div className="productsPage__nav__title">{navTitle}</div>
-        </div>
-        <div className="productsPage__title bold">{title}</div>
-        <div className="productsPage__subtitle body-text">
-          {
-            query
-              ? `${newPhones.length} ${newPhones.length === 1 ? 'result' : 'results'}`
-              : `${newPhones.length} ${newPhones.length === 1 ? 'model' : 'models'}`
-          }
-        </div>
-        <Pagination
-          setSort={setSort}
-          itemsPerPage={itemsPerPage}
-          setItemsPerPage={setItemsPerPage}
-          newPhones={queriedPhones}
-          pages={Math.ceil(pages)}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-          products={products}
-          sort={sort}
-        />
-      </div>
-    );
-  }
-
   return (
     <div className="productsPage">
-      <div className="productsPage__error bold">{error}</div>
+      <div className="productsPage__nav">
+        <Link to="/" className="productsPage__nav__home" />
+        <div className="arrow arrow-right" />
+        <div className="productsPage__nav__title">{navTitle}</div>
+      </div>
+      <div className="productsPage__title bold">{title}</div>
+      <div className="productsPage__subtitle body-text">
+        {isLoaded ? <SmallLoader /> : `${quantity} ${quantity === 1 ? 'model' : 'models'}`}
+      </div>
+      <Pagination
+        setSort={setSort}
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        productsPerPage={productsPerPage}
+        products={products}
+        pages={Math.ceil(pages)}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        sort={sort}
+        error={error}
+        isLoaded={isLoaded}
+      />
     </div>
   );
 };

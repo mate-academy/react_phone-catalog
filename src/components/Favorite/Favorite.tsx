@@ -1,8 +1,8 @@
 import {
   useContext,
   useEffect,
-  useMemo,
   useRef,
+  useState,
 } from 'react';
 import {
   Link,
@@ -10,17 +10,47 @@ import {
 } from 'react-router-dom';
 import { PhoneCatalogContext } from '../../PhoneCatalogContext';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Product } from '../../types/Product';
 
 export const Favorite = () => {
   const { favorite, query, setQuery } = useContext(PhoneCatalogContext);
 
-  const searchedFavorite = useMemo(() => favorite.filter((phone) => phone.name
-    .toLowerCase()
-    .includes(query.toLowerCase())),
-  [query]);
+  const [searchedFavorite, setSearchedFavorite] = useState<Product[]>([]);
 
   const firstLoad = useRef(true);
   const path = useLocation();
+  const currentURL = window.location.href.split('#')[0];
+
+  const [
+    updateTimeout,
+    setUpdateTimeout,
+  ] = useState<NodeJS.Timeout | null>(null);
+
+  useEffect(() => {
+    setSearchedFavorite(favorite);
+  }, [favorite]);
+
+  useEffect(() => {
+    if (updateTimeout) {
+      clearTimeout(updateTimeout);
+    }
+
+    const timeoutId = setTimeout(() => {
+      const filteredFavorite = favorite
+        .filter((phone) => phone.name
+          .toLowerCase().includes(query.toLowerCase()));
+
+      setSearchedFavorite(filteredFavorite);
+    }, 500);
+
+    setUpdateTimeout(timeoutId);
+
+    return () => {
+      if (updateTimeout) {
+        clearTimeout(updateTimeout);
+      }
+    };
+  }, [favorite, query]);
 
   useEffect(() => {
     if (!firstLoad.current) {
@@ -28,7 +58,7 @@ export const Favorite = () => {
 
       queryParams.set('query', query);
 
-      const newUrl = `http://localhost:3000/#/favorites?${queryParams.toString()}`;
+      const newUrl = `${currentURL}#${path.pathname}?${queryParams.toString()}`;
 
       window.history.replaceState(null, '', newUrl);
     }

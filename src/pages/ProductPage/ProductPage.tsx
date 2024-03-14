@@ -1,7 +1,6 @@
 import React, {
   useContext,
   useEffect,
-  useRef,
   useState,
 } from 'react';
 import {
@@ -54,6 +53,8 @@ export const ProductPage: React.FC = () => {
     return selectedProduct || null;
   };
 
+  const isProductInCart = cart.some((item) => item.phoneId === productId);
+
   useEffect(() => {
     const storedCart = getDataFromLocalStorage('cart');
     const storedFavorite = getDataFromLocalStorage('favorite');
@@ -77,35 +78,24 @@ export const ProductPage: React.FC = () => {
 
   const [isAdded, setIsAdded] = useState(false);
 
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
-
   const addToCart = (p: Product, event: React.MouseEvent) => {
     const cartProduct: CardProduct = { ...p, quantity: 1 };
-    const findItem = cart.find((item) => item.id === p.id);
+    const findItemIndex = cart.findIndex((item) => item.id === p.id);
 
     event.stopPropagation();
 
-    if (findItem) {
-      findItem.quantity += 1;
-      setDataToLocalStorage('cart', cart);
-    }
+    if (findItemIndex !== -1) {
+      const updatedCart = [...cart];
 
-    if (!findItem) {
-      setCart((prev) => [...prev, cartProduct]);
-      setDataToLocalStorage('cart', cart);
-    }
-
-    setIsAdded(true);
-
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    const newTimeout = setTimeout(() => {
+      updatedCart.splice(findItemIndex, 1);
+      setCart(updatedCart);
+      setDataToLocalStorage('cart', updatedCart);
       setIsAdded(false);
-    }, 1000);
-
-    timeoutRef.current = newTimeout;
+    } else {
+      setCart((prev) => [...prev, cartProduct]);
+      setDataToLocalStorage('cart', [...cart, cartProduct]);
+      setIsAdded(true);
+    }
   };
 
   useEffect(() => {
@@ -293,7 +283,7 @@ export const ProductPage: React.FC = () => {
                           {
                             // eslint-disable-next-line
                             productPage__details__specs__capacity__block__button__active:
-                              `${selectedItem.namespaceId}-${item.toLowerCase()}-${selectedItem.color === productId}`,
+                              `${selectedItem.namespaceId}-${item.toLowerCase()}-${selectedItem.color}` === productId,
                           },
                         )}
                         onClick={() => handleCapacityChange(item)}
@@ -321,7 +311,7 @@ export const ProductPage: React.FC = () => {
                       cn('productPage__details__specs__buttons__cart',
                         {
                           productPage__details__specs__buttons__cart__added:
-                            isAdded,
+                            isAdded || isProductInCart,
                         })
                     }
                     onClick={(event) => {

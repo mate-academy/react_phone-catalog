@@ -14,8 +14,19 @@ export const ProductSlider: React.FC<Props> = ({
   name,
   isLoaded,
 }) => {
+  const cardWidth = 288;
+  const cardsToShow = 4;
   const [carousel, setCarousel] = useState(0);
-  const LAST_TRANSLATE = -(288 * (products.length - 4));
+  const remainingCards = Math.max(0, products.length - cardsToShow);
+  const LAST_TRANSLATE = -(cardWidth * remainingCards);
+
+  const handleSpinToLeft = () => {
+    setCarousel(Math.min(carousel + (cardWidth * cardsToShow), 0));
+  };
+
+  const handleSpinToRight = () => {
+    setCarousel(Math.max(carousel - (cardWidth * cardsToShow), LAST_TRANSLATE));
+  };
 
   if (isLoaded) {
     return (
@@ -42,7 +53,7 @@ export const ProductSlider: React.FC<Props> = ({
           <button
             type="button"
             className="productSlider__block--button"
-            onClick={() => setCarousel(carousel + 288)}
+            onClick={() => handleSpinToLeft()}
             disabled={carousel === 0}
           >
             <div
@@ -55,8 +66,8 @@ export const ProductSlider: React.FC<Props> = ({
           <button
             type="button"
             className="productSlider__block--button"
-            onClick={() => setCarousel(carousel - 288)}
-            disabled={carousel <= LAST_TRANSLATE}
+            onClick={() => handleSpinToRight()}
+            disabled={carousel === LAST_TRANSLATE}
           >
             <div
               className="arrow arrow-right"
@@ -70,12 +81,15 @@ export const ProductSlider: React.FC<Props> = ({
       <div className="productSlider__carousel">
         {products.map((product) => {
           return (
-            <ProductCard
-              data-cy="cardsContainer"
+            <div
               key={product.id}
-              product={product}
-              carousel={carousel}
-            />
+            >
+              <ProductCard
+                data-cy="cardsContainer"
+                product={product}
+                carousel={carousel}
+              />
+            </div>
           );
         })}
       </div>

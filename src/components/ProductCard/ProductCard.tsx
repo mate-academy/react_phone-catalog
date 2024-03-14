@@ -1,7 +1,5 @@
 import React, {
   useContext,
-  useEffect,
-  useRef,
   useState,
 } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -27,53 +25,39 @@ export const ProductCard: React.FC<Props> = ({
     addToFavorite,
   } = useContext(PhoneCatalogContext);
 
-  const [isFavorite, setIsFavorite] = useState(favorite
-    .some((favProduct) => favProduct.phoneId === product.phoneId));
-
   const [isAdded, setIsAdded] = useState(false);
-
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const navigate = useNavigate();
 
   const addToCart = (p: Product, event: React.MouseEvent) => {
     const cartProduct: CardProduct = { ...p, quantity: 1 };
-    const findItem = cart.find((item) => item.id === p.id);
+    const findItemIndex = cart.findIndex((item) => item.id === p.id);
 
     event.stopPropagation();
 
-    if (findItem) {
-      findItem.quantity += 1;
-      setDataToLocalStorage('cart', cart);
-    }
+    if (findItemIndex !== -1) {
+      const updatedCart = [...cart];
 
-    if (!findItem) {
-      setCart((prev) => [...prev, cartProduct]);
-      setDataToLocalStorage('cart', cart);
-    }
-
-    setIsAdded(true);
-
-    if (timeoutRef.current) {
-      clearTimeout(timeoutRef.current);
-    }
-
-    const newTimeout = setTimeout(() => {
+      updatedCart.splice(findItemIndex, 1);
+      setCart(updatedCart);
+      setDataToLocalStorage('cart', updatedCart);
       setIsAdded(false);
-    }, 1000);
-
-    timeoutRef.current = newTimeout;
+    } else {
+      setCart((prev) => [...prev, cartProduct]);
+      setDataToLocalStorage('cart', [...cart, cartProduct]);
+      setIsAdded(true);
+    }
   };
+
+  const isProductInCart = cart.some((item) => item.id === product.id);
 
   const handleItemSelect = (itemId: string) => {
     setSelectedId(itemId);
     navigate(`/phones/${itemId}`);
   };
 
-  useEffect(() => {
-    setIsFavorite(favorite
-      .some((favProduct) => favProduct.phoneId === product.phoneId));
-  }, [favorite]);
+  const isProductFavorite = favorite
+    .some((favProduct) => favProduct.phoneId === product.phoneId);
 
   return (
     <div
@@ -140,10 +124,10 @@ export const ProductCard: React.FC<Props> = ({
         <button
           type="button"
           className={cn('productCard__button medium',
-            { productCard__button__added: isAdded })}
+            { productCard__button__added: isAdded || isProductInCart })}
           onClick={(event) => addToCart(product, event)}
         >
-          Add to cart
+          {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>
         <button
           type="button"
@@ -152,8 +136,8 @@ export const ProductCard: React.FC<Props> = ({
         >
           <div className={cn('icon',
             {
-              favoriteSelected: isFavorite,
-              favorite: !isFavorite,
+              favoriteSelected: isProductFavorite,
+              favorite: !isProductFavorite,
             })}
           />
         </button>

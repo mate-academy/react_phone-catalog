@@ -6,9 +6,9 @@ import { PhoneCatalogContext } from '../../PhoneCatalogContext';
 
 export const Header: React.FC = () => {
   const {
-    query,
-    handleQueryChange,
     setQuery,
+    error,
+    query,
   } = useContext(PhoneCatalogContext);
 
   const location = useLocation();
@@ -21,6 +21,10 @@ export const Header: React.FC = () => {
     setTimeout(() => {
       window.location.reload();
     }, 1);
+  };
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(e.target.value);
   };
 
   return (
@@ -78,7 +82,8 @@ export const Header: React.FC = () => {
                   type="text"
                   placeholder={`Search in ${location.pathname.replace(/\//g, '')}...`}
                   value={query}
-                  onChange={handleQueryChange}
+                  onChange={(e) => handleQueryChange(e)}
+                  disabled={Boolean(error)}
                 />
                 <div
                   className="header__aligned-right__search__icon icon search"

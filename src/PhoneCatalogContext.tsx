@@ -1,4 +1,8 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { CardProduct, Product } from './types/Product';
 import {
   getDataFromLocalStorage,
@@ -20,7 +24,6 @@ interface Context {
   addToCart: (p: Product, event: React.MouseEvent) => void;
   isAdded: boolean;
   addToFavorite: (p: Product, event: React.MouseEvent) => void;
-  handleQueryChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
   sort: string;
@@ -29,6 +32,8 @@ interface Context {
   setItemsPerPage: React.Dispatch<React.SetStateAction<number>>;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  error: string;
+  setError: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const ContextValues: Context = {
@@ -41,7 +46,6 @@ const ContextValues: Context = {
   addToCart: () => { },
   isAdded: false,
   addToFavorite: () => { },
-  handleQueryChange: () => { },
   query: '',
   setQuery: () => { },
   sort: '',
@@ -50,6 +54,8 @@ const ContextValues: Context = {
   setItemsPerPage: () => { },
   currentPage: 1,
   setCurrentPage: () => { },
+  error: '',
+  setError: () => { },
 };
 
 export const PhoneCatalogContext = React.createContext<Context>(ContextValues);
@@ -67,6 +73,8 @@ export const PhoneCatalogProvider: React.FC<Props> = ({ children }) => {
   const [sort, setSort] = useState<string>(Action.name);
   const [itemsPerPage, setItemsPerPage] = useState<number>(4);
   const [currentPage, setCurrentPage] = useState<number>(1);
+
+  const [error, setError] = useState<string>('');
 
   const [selectedId, setSelectedId] = useState<string | undefined>(undefined);
 
@@ -128,12 +136,6 @@ export const PhoneCatalogProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const handleQueryChange = (
-    e: React.ChangeEvent<HTMLInputElement>,
-  ) => {
-    setQuery(e.target.value);
-  };
-
   return (
     <PhoneCatalogContext.Provider value={{
       cart,
@@ -145,7 +147,6 @@ export const PhoneCatalogProvider: React.FC<Props> = ({ children }) => {
       addToCart,
       isAdded,
       addToFavorite,
-      handleQueryChange,
       query,
       setQuery,
       sort,
@@ -154,6 +155,8 @@ export const PhoneCatalogProvider: React.FC<Props> = ({ children }) => {
       setItemsPerPage,
       currentPage,
       setCurrentPage,
+      error,
+      setError,
     }}
     >
       {children}
