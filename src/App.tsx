@@ -35,37 +35,32 @@ const getIconLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
 export const App = () => {
   const { pathname } = useLocation();
   const [likedProductsCount, setLikedProductsCount] = useState(0);
+  const [cartProductsCount, setCartProductsCount] = useState(0);
 
   const updateLikedProductsCount = () => {
     const likedProducts = JSON
       .parse(localStorage.getItem('LikedProducts') || '[]');
 
-    console.log('test');
+    const cartProducts = JSON.parse(localStorage.getItem('CartItems') || '[]');
 
     setLikedProductsCount(likedProducts.length);
+    setCartProductsCount(cartProducts.length);
   };
 
-  const localItems = JSON
+  const localFavorite = JSON
     .parse(localStorage.getItem('LikedProducts') || '[]').length;
 
+  const localCart = JSON.parse(localStorage.getItem('CartItems') || '[]');
+
   useEffect(() => {
-    // function updateLikedProductsCount() {
-    //   const likedProducts = JSON
-    //     .parse(localStorage.getItem('LikedProducts') || '[]');
-
-    //   console.log('test');
-
-    //   setLikedProductsCount(likedProducts.length);
-    // }
-
-    console.log('useEffect');
-
     window.addEventListener('storage', updateLikedProductsCount);
+    window.dispatchEvent(new Event('storage'));
 
     return () => {
+      window.dispatchEvent(new Event('storage'));
       window.removeEventListener('storage', updateLikedProductsCount);
     };
-  }, [localItems]);
+  }, [localFavorite, localCart]);
 
   function scrollToTop() {
     window.scrollTo({
@@ -101,22 +96,27 @@ export const App = () => {
           )}
         </div>
         <div className="header__right">
-          <NavLink to="/favourites" className={getIconLinkClass}>
-            <img
-              src={favourites}
-              alt="favourites"
-              className="header__image"
-            />
-            {likedProductsCount > 0 && (
-              <p className="header__likeCounter">{likedProductsCount}</p>
-            )}
-          </NavLink>
+          {pathname !== '/cart' && (
+            <NavLink to="/favourites" className={getIconLinkClass}>
+              <img
+                src={favourites}
+                alt="favourites"
+                className="header__image"
+              />
+              {likedProductsCount > 0 && (
+                <p className="header__likeCounter">{likedProductsCount}</p>
+              )}
+            </NavLink>
+          )}
           <NavLink to="/cart" className={getIconLinkClass}>
             <img
               src={shoppingBag}
               alt="bag"
               className="header__image"
             />
+            {cartProductsCount > 0 && (
+              <p className="header__likeCounter">{cartProductsCount}</p>
+            )}
           </NavLink>
         </div>
       </header>

@@ -33,6 +33,8 @@ export const ProductCard: React.FC<Props> = ({
 
     localStorage.setItem('CartItems', JSON.stringify(cartItems));
     setIsInCart(!isInCart);
+
+    window.dispatchEvent(new Event('storage'));
   };
 
   useEffect(() => {
@@ -71,6 +73,8 @@ export const ProductCard: React.FC<Props> = ({
     }
 
     localStorage.setItem('LikedProducts', JSON.stringify(likedProducts));
+
+    window.dispatchEvent(new Event('storage'));
   };
 
   return (

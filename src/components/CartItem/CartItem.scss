@@ -1,0 +1,81 @@
+.cartItem {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 752px;
+  height: 128px;
+  align-items: center;
+  padding: 0 24px;
+  border: 1px solid #E2E6E9;
+
+  &__closeIcon {
+    width: 16px;
+    height: 16px;
+
+    &:hover {
+      cursor: pointer;
+      filter: invert(100%);
+    }
+  }
+
+  &__phoneImage {
+    width: 66px;
+    height: 66px;
+  }
+
+  &__name {
+    // flex-grow: 1;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: #313237;
+    width: 295px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 96px;
+    height: 32px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E2E6E9;
+    background-color: white;
+    cursor: not-allowed;
+
+    &-active {
+      width: 32px;
+      height: 32px;
+      border: 1px solid #B4BDC3;
+      background-color: white;
+
+      &:hover {
+        border-color: #313237;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__countOfItem {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: black;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: #313237;
+  }
+
+  &__blackImage {
+    filter: invert(100%);
+  }
+}

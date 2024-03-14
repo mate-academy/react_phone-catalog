@@ -1,5 +1,6 @@
 import './Pagination.scss';
-import classNames from 'classnames';
+import cn from 'classnames';
+import { useState } from 'react';
 
 import { Link, useSearchParams } from 'react-router-dom';
 import { getNumbers, getSearchWith } from '../../utils/helper';
@@ -18,12 +19,13 @@ export const Pagination: React.FC<Props> = ({
   totalNumbersOfItems, itemsPerPage,
 }) => {
   const [searchParams] = useSearchParams();
+  const [current, setCurrent] = useState(5);
   const selectedPage = searchParams.get('page') || defaultPage;
   const amountOfPages = Math.ceil(totalNumbersOfItems / itemsPerPage);
   const pages = getNumbers(1, amountOfPages);
 
   const getPageClassName = (number: number) => {
-    return classNames('pagination__page', {
+    return cn('pagination__page', {
       pagination__selectedPage: number === +selectedPage,
     });
   };
@@ -36,6 +38,8 @@ export const Pagination: React.FC<Props> = ({
       case 'prev':
         return getSearchWith(searchParams, { page: (count - 1).toString() });
       case 'next':
+        // setCurrent(count + 1);
+
         return getSearchWith(searchParams, { page: (count + 1).toString() });
 
       default:
@@ -52,7 +56,9 @@ export const Pagination: React.FC<Props> = ({
         to={{
           search: changePage('prev').toString(),
         }}
-        className="pagination__button pagination__button-left"
+        className={cn('pagination__button pagination__button-left', {
+          'pagination__button-invalid': current === 1,
+        })}
       >
         <img
           src={arrow}
@@ -80,7 +86,10 @@ export const Pagination: React.FC<Props> = ({
         to={
           { search: changePage('next').toString() }
         }
-        className="pagination__button pagination__button-right"
+        className={cn('pagination__button pagination__button-right',
+          {
+            'pagination__button-invalid': current === amountOfPages,
+          })}
       >
         <img
           src={blackArrow}

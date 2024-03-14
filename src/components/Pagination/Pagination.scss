@@ -21,6 +21,9 @@
   }
 
   &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
     background-color: white;
     border: 1px solid #B4BDC3;
     width: 32px;
@@ -34,7 +37,11 @@
       margin-left: 16px;
     }
 
-    &:hover {
+    &-invalid {
+      cursor: not-allowed;
+    }
+
+    &:not(.pagination__button-invalid):hover {
       border: 1px solid #313237;
       cursor: pointer;
     }

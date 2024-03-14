@@ -1,0 +1,61 @@
+import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+
+import arrow from '../../images/icons/disable_arrow.png';
+
+import './CartPage.scss';
+import { Product } from '../../types/Product';
+import { CartItem } from '../../components/CartItem/CartItem';
+
+export const CartPage: React.FC = () => {
+  const [cartItems, setCartItems] = useState<Product[]>([]);
+
+  const sum = cartItems
+    .reduce((acc, item) => acc + (item.price * item.quantity), 0);
+  const quantity = cartItems.reduce((acc, item) => acc + item.quantity, 0);
+
+  useEffect(() => {
+    const localCart: Product[] = JSON
+      .parse(localStorage.getItem('CartItems') || '[]');
+
+    setCartItems(localCart);
+  }, [cartItems]);
+
+  return (
+    <div className="cartPage">
+      <div className="cartPage__back">
+        <img
+          src={arrow}
+          alt="arrow"
+          className="cartPage__icons-left"
+        />
+        <Link to="/phones" className="cartPage__currentPage">Back</Link>
+      </div>
+
+      <h1 className="cartPage__title">Cart</h1>
+
+      <div className="cartPage__components">
+
+        <div className="cartPage__items">
+          {cartItems.map(item => (
+            <CartItem key={item.id} cartProduct={item} />
+          ))}
+        </div>
+
+        <div className="cartPage__total">
+          <h1 className="cartPage__totalPrice">{sum}</h1>
+          <div className="cartPage__totalItemsComponent">
+            <p className="cartPage__totalItems">{`Total for ${quantity} items`}</p>
+            <p className="cartPage__line" />
+          </div>
+          <button
+            type="button"
+            className="cartPage__checkoutButton"
+          >
+            Checkout
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};

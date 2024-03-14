@@ -34,9 +34,14 @@
   }
 
   &__likeCounter {
+    display: flex;
     position: absolute;
-    right: 21px;
+    right: 18px;
     top: 20px;
+    height: 14px;
+    width: 14px;
+    justify-content: center;
+    align-items: center;
     background-color: red;
     border-radius: 50%;
     color: white;

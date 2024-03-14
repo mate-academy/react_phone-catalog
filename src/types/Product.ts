@@ -13,4 +13,5 @@ export interface Product {
   year: number,
   image: string,
   isFavorite: boolean,
+  quantity: number,
 }
