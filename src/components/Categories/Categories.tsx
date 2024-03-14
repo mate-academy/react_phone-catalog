@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './Categories.scss';
 import { useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/Product';
 import { getAccessories, getTablets } from '../../api/api';

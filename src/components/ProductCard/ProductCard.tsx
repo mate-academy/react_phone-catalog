@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../api/api';
+import './ProductCard.scss';
 
 type Props = {
   product: Product;

@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import './Category.scss';
 import { Link } from 'react-router-dom';
 import { categoriesPath } from '../../helpers/constants';
 import { getName } from '../../helpers/getName';

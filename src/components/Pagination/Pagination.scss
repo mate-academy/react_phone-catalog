@@ -1,0 +1,41 @@
+@import "../../styles/main";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+
+  &__numbers {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+
+    @extend %body-text;
+    @include border-default;
+    @include hover(border-color, $main-color);
+
+    &--is-active {
+      color: $white-color;
+      background-color: $main-color;
+
+      border: 1px solid $main-color;
+    }
+  }
+}
+
+.button-move {
+  background-color: $white-color;
+  padding: 7px;
+
+  @include border-icons;
+  @include hover(border-color, $main-color);
+
+  &--disabled {
+    @include border-default;
+    @include hover(border-color, $elements-color);
+  }
+}

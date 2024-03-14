@@ -1,3 +1,5 @@
+import './ButtonMove.scss';
+
 type Props = {
   icon: string;
 };

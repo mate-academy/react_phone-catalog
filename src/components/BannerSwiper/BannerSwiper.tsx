@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/img-redundant-alt */
 import React from 'react';
 import classNames from 'classnames';
+import './BannerSwiper.scss';
 import { Link } from 'react-router-dom';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';

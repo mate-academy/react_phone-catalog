@@ -1,5 +1,6 @@
 import { goTop } from '../../helpers/goTop';
 import { ButtonMove } from '../ButtonMove';
+import './ButtonToTop.scss';
 
 export const BackToTop = () => {
   return (

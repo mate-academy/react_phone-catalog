@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import './Footer.scss';
 import { footerLinks } from '../../helpers/constants';
 import { BackToTop } from '../BackToTop';
 import { LinkSocial } from '../LinkSocial';

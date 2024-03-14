@@ -1,5 +1,6 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import './Header.scss';
 import { Logo } from '../Logo/Logo';
 // import { Nav } from '../Nav/Nav';
 

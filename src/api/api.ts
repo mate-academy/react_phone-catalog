@@ -1,3 +1,4 @@
+// eslint-disable-next-line import/no-cycle
 import { client } from '../helpers/fetchProduct';
 import { Product } from '../types/Product';
 import { ProductInfo } from '../types/ProductInfo';

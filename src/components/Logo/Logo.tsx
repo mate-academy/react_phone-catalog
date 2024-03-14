@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { goTop } from '../../helpers/goTop';
+import './Logo.scss';
 
 export const Logo = () => {
   return (

@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import './ProductSlider.scss';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';

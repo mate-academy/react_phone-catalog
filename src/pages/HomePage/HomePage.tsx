@@ -1,12 +1,14 @@
-import { useCallback, useEffect, useMemo } from 'react';
+import React, { useCallback, useEffect, useMemo } from 'react';
+import './HomePage.scss';
 import { getBrandNewProducts, getHotPriceProducts } from '../../api/api';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ProductSlider } from '../../components/ProductSlider';
 import { thunkGetPhones } from '../../features/product/productsSlice';
 import { Categories } from '../../components/Categories';
 import { BannerSwiper } from '../../components/BannerSwiper';
+import { Loader } from '../../components/Loader';
 
-export const HomePage = () => {
+export const HomePage: React.FC = () => {
   const { phones, loading, error } = useAppSelector(state => state.phones);
   const dispatch = useAppDispatch();
 
@@ -30,6 +32,12 @@ export const HomePage = () => {
     <div className="home-page">
       <BannerSwiper />
 
+      {loading && !error && (
+        <div className="home-page__loader">
+          <Loader />
+        </div>
+      )}
+
       {!loading && !error && phones && (
         <section className="hot-prices">
           <ProductSlider title="Hot prices" products={hotPrices} />
@@ -39,6 +47,12 @@ export const HomePage = () => {
       <section className="shop-by-category">
         <Categories />
       </section>
+
+      {loading && !error && (
+        <div className="home-page__loader">
+          <Loader />
+        </div>
+      )}
 
       {!loading && !error && phones && (
         <section className="brand-new-models">
