@@ -87,7 +87,7 @@ to links container.
     - The last part is a plain text all the other ones are links
 
 ### Cart
-1. Implement `CartPage` storing an array of `CartItems`
+1. Implement `CartPage` storing an array of `CartItemTypes`
     - Each item should have `id`, `quantity` and a `product`
 1. `Add to cart` button in `ProductCart` should add a product to the `Cart`
 1. If the product is already in the `Cart` the button should say `Added to cart`
@@ -118,3 +118,7 @@ to links container.
 ### Other tasks
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`
 1. Implement `Phone was not found` state for the `PhoneDetailsPage` if there is no phone with a given `phoneId` on the server
+
+
+
+[DEMO LINK](https://yurii-shkrobut-m.github.io/react_phone-catalog/)
