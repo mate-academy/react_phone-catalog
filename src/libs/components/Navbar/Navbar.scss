@@ -3,34 +3,13 @@
 .nav {
   @include flexbox-center-vertical;
 
-  justify-content: space-between;
   height: 100%;
-
-  &__button {
-    display: none;
-
-    @include on-mobile {
-      display: block;
-      height: 100%;
-      padding-inline: 16px;
-      border-right: 1px solid $elements;
-      border-left: 1px solid $elements
-    }
-
-    @include on-tablet {
-      display: block;
-      height: 100%;
-      padding-inline: 16px;
-      border-right: 1px solid $elements;
-      border-left: 1px solid $elements
-    }
-  }
-
 
   &__list {
     @include flexbox-center-vertical;
 
-    gap: $header-item-gap;
+    height: 100%;
+    gap: 64px;
     padding: 0;
     margin: 0;
     list-style: none;
@@ -40,70 +19,32 @@
     }
 
     @include on-tablet {
-      display: none;
-    }
-
-    &--on-small-screen {
-      display: none;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-      position: absolute;
-      top: 54px;
-      left: 0;
-      width: 100%;
-      padding: 10px;
-      background-color: $white;
-      border: 1px solid $elements;
-      border-top: none;
-      z-index: 10000;
-
-      @include on-mobile {
-        display: flex;
-      }
-
-      @include on-tablet {
-        display: flex;
-      }
+      gap: 32px;
     }
   }
 
   &__item {
     position: relative;
-
-    @include on-mobile {
-      &--home {
-        display: none;
-      }
-    }
-
-    @include on-tablet {
-      &--home {
-        display: none;
-      }
-    }
+    height: 100%;
   }
 
   &__link{
     @include uppercase-text;
-    @include transition;
     @include text-color-on-hover;
 
     display: block;
+    height: 100%;
     color: $secondary;
     text-decoration: none;
     padding: 26px 0;
+    transition: color 0.3s;
 
     @include on-mobile {
       padding-block: 10px;
-      font-size: 16px;
-      line-height: 21px;
     }
 
     @include on-tablet {
-      padding-block: 12px;
-      font-size: 16px;
-      line-height: 21px;
+      padding-block: 18px;
     }
 
     &--active {

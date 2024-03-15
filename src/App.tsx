@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { CategoryName } from './libs/types/categoryName.enum';
+import { ProductCategory } from './libs/types/ProductCategory.enum';
 
 import {
   Root,
@@ -19,15 +19,15 @@ export const App = () => (
   <Routes>
     <Route path="/" element={<Root />}>
       <Route index element={<HomePage />} />
-      <Route path={CategoryName.Phones}>
+      <Route path={ProductCategory.Phones}>
         <Route index element={<ProductsPage title="Mobile phones" />} />
         <Route path=":id" element={<ProductDetailsPage />} />
       </Route>
-      <Route path={CategoryName.Tablets}>
+      <Route path={ProductCategory.Tablets}>
         <Route index element={<ProductsPage />} />
         <Route path=":id" element={<ProductDetailsPage />} />
       </Route>
-      <Route path={CategoryName.Accessories}>
+      <Route path={ProductCategory.Accessories}>
         <Route index element={<ProductsPage />} />
         <Route path=":id" element={<ProductDetailsPage />} />
       </Route>

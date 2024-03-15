@@ -20,7 +20,7 @@
     display: flex;
     gap: 16px;
 
-    @include on-small-mobile {
+    @include on-mobile {
       gap: 0;
     }
   }

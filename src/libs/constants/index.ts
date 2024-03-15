@@ -1,4 +1,4 @@
-export { BANNER_IMAGES } from './bannerImages';
+export { BANNER_IMAGES, BANNER_MOBILE_IMAGES } from './bannerImages';
 export { FILTER_OPTIONS, FILTER_VALUES } from './filterValues';
 export { FOOTER_LINKS } from './footerLinks';
 export { SearchParamsNames } from './searchParamsNames';

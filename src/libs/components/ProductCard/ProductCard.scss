@@ -9,7 +9,7 @@
   border: 1px solid $elements;
   padding: 32px 24px 24px;
 
-  @include on-small-mobile {
+  @include on-mobile {
     flex: 1 0 100%;
   }
 

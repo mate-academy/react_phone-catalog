@@ -1,4 +1,4 @@
-import { CategoryName } from '../../types/categoryName.enum';
+import { ProductCategory } from '../../types';
 import { CategoryCard } from '../CategoryCard';
 import { SectionHeader } from '../SectionHeader';
 import './ShopByCategory.scss';
@@ -12,14 +12,14 @@ export const ShopByCategory = () => {
         data-cy="categoryLinksContainer"
       >
         <CategoryCard
-          pass={CategoryName.Phones}
+          pass={ProductCategory.Phones}
           title="Mobile phones"
         />
         <CategoryCard
-          pass={CategoryName.Tablets}
+          pass={ProductCategory.Tablets}
         />
         <CategoryCard
-          pass={CategoryName.Accessories}
+          pass={ProductCategory.Accessories}
         />
       </div>
     </section>

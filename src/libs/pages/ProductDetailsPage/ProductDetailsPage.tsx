@@ -29,7 +29,7 @@ import './ProductDetailsPage.scss';
 
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
-  const categoryId = pathname.split('/').slice(-1)[0];
+  const productId = pathname.split('/').slice(-1)[0];
   const dispatch = useAppDispatch();
   const {
     productDetails,
@@ -63,10 +63,10 @@ export const ProductDetailsPage = () => {
     }
 
     return {
-      OS: productDetails.android.os,
-      RAM: productDetails.storage.ram,
-      Memory: productDetails.storage.flash,
-      Camera: productDetails.camera.primary,
+      Screen: productDetails.screen,
+      Resolution: productDetails.resolution,
+      Processor: productDetails.processor,
+      RAM: productDetails.ram,
     };
   }, [productDetails]);
 
@@ -76,14 +76,14 @@ export const ProductDetailsPage = () => {
     }
 
     return {
-      Screen: productDetails.display.screenSize,
-      Resolution: productDetails.display.screenResolution,
-      OS: productDetails.android.os,
-      RAM: productDetails.storage.ram,
-      Memory: productDetails.storage.flash,
-      Camera: productDetails.camera.primary,
-      Weight: productDetails.sizeAndWeight.weight,
-      Battery: productDetails.battery.standbyTime,
+      Screen: productDetails.screen,
+      Resolution: productDetails.resolution,
+      Processor: productDetails.processor,
+      RAM: productDetails.ram,
+      Memory: productDetails.capacity,
+      Camera: productDetails.camera,
+      Zoom: productDetails.zoom,
+      Cell: productDetails.cell.join(', '),
     };
   }, [productDetails]);
 
@@ -119,7 +119,7 @@ export const ProductDetailsPage = () => {
     }
 
     if (hasInFavourites) {
-      dispatch(favouritesActions.deleteItem(selectedProduct.id));
+      dispatch(favouritesActions.deleteItem(selectedProduct.itemId));
     } else {
       dispatch(favouritesActions.addItem(selectedProduct));
     }
@@ -140,20 +140,27 @@ export const ProductDetailsPage = () => {
   const hasError = hasProductDetailsError && productDetailsLoaded;
 
   useEffect(() => {
-    dispatch(productDetailsActions.fetchProductDetails(categoryId));
+    const product = allProducts.find(el => el.itemId === productId);
+
+    setSelectedProduct(product || null);
+  }, [allProducts, productId]);
+
+  useEffect(() => {
+    if (!selectedProduct) {
+      return;
+    }
+
+    dispatch(productDetailsActions.fetchProductDetails({
+      id: selectedProduct.itemId,
+      category: selectedProduct.category,
+    }));
     dispatch(suggestedProductsActions.fetchSuggestedProducts());
     dispatch(productsActions.fetchAll());
-  }, [dispatch, categoryId]);
+  }, [dispatch, productId, selectedProduct]);
 
   useEffect(() => {
     setSelectedImage(productDetails?.images[0] || '');
   }, [productDetails]);
-
-  useEffect(() => {
-    const product = allProducts.find(el => el.id === categoryId);
-
-    setSelectedProduct(product || null);
-  }, [allProducts, categoryId]);
 
   useEffect(() => {
     window.scrollTo({
@@ -276,8 +283,8 @@ export const ProductDetailsPage = () => {
                 {selectedProduct && (
                   <div className="product-info__buy">
                     <Price
-                      discount={selectedProduct.discount}
-                      price={selectedProduct.price}
+                      discountPrice={selectedProduct.price}
+                      fullPrice={selectedProduct.fullPrice}
                       priceFontSize={32}
                     />
                     <BuyButtons
@@ -313,12 +320,20 @@ export const ProductDetailsPage = () => {
                 About
               </h2>
 
-              <article className="about-product">
-                <p className="about-product__text">
-                  {productDetails.description}
-                </p>
+              {
+                productDetails.description.map(el => (
+                  <article className="about-product">
+                    <h3 className="about-product__title">
+                      {el.title}
+                    </h3>
 
-              </article>
+                    <p className="about-product__text">
+                      {el.text}
+                    </p>
+
+                  </article>
+                ))
+              }
             </section>
 
             <section className="product-page__specs">

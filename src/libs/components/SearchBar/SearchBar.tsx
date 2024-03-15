@@ -13,15 +13,17 @@ import './SearchBar.scss';
 
 type Props = {
   classNames: string;
-  isInputVisible: boolean;
-  setIsInputVisible?: (value: boolean) => void;
+  isInputExpanded: boolean;
+  onClick?: (value: boolean) => void;
 };
 
 export const SearchBar: React.FC<Props> = ({
   classNames,
-  isInputVisible,
-  setIsInputVisible = () => {},
+  isInputExpanded,
+  onClick = () => {},
 }) => {
+  const formRef = useRef<HTMLFormElement>(null);
+  const buttonRef = useRef<HTMLButtonElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState(
     searchParams.get(SearchParamsNames.query) || '',
@@ -56,10 +58,6 @@ export const SearchBar: React.FC<Props> = ({
     setValue('');
     searchParams.delete(SearchParamsNames.query);
     setSearchParams(searchParams);
-
-    if (isInputVisible) {
-      setIsInputVisible(false);
-    }
   };
 
   const handleButtonClick = () => {
@@ -73,7 +71,9 @@ export const SearchBar: React.FC<Props> = ({
   };
 
   const handleSmallScreenButtonClick = () => {
-    setIsInputVisible(!isInputVisible);
+    if (!value) {
+      onClick(!isInputExpanded);
+    }
 
     handleButtonClick();
   };
@@ -82,10 +82,37 @@ export const SearchBar: React.FC<Props> = ({
     setValue(searchParams.get(SearchParamsNames.query) || '');
   }, [searchParams]);
 
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (!formRef.current) {
+        return;
+      }
+
+      const isCLickOutside = (
+        e.target
+        && e.target instanceof HTMLElement
+        && e.target !== buttonRef.current
+        && !formRef.current.contains(e.target)
+        && isInputExpanded
+      );
+
+      if (isInputExpanded && isCLickOutside) {
+        onClick(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, [onClick, isInputExpanded]);
+
   return (
     <form
       className={cn(classNames, 'search-bar')}
       onSubmit={handleSubmit}
+      ref={formRef}
     >
 
       <input
@@ -93,7 +120,7 @@ export const SearchBar: React.FC<Props> = ({
         value={value}
         className={cn(
           'search-bar__input',
-          { 'search-bar__input--small-screen': !isInputVisible },
+          { 'search-bar__input--small-screen': !isInputExpanded },
         )}
         placeholder={placeholder}
         onChange={handleChange}
@@ -118,6 +145,7 @@ export const SearchBar: React.FC<Props> = ({
         className="search-bar__button
         search-bar__button--on-small-screen"
         onClick={() => handleSmallScreenButtonClick()}
+        ref={buttonRef}
       >
         <Icon
           iconName={!value ? 'search' : 'close'}

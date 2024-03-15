@@ -22,10 +22,18 @@ export const HomePage = () => {
   } = useAppSelector(store => store.products);
 
   const productsWithHotPrice = useMemo(() => {
+    if (!allProducts.length) {
+      return [];
+    }
+
     return getHotPriceProducts(allProducts);
   }, [allProducts]);
 
   const brandNewProducts = useMemo(() => {
+    if (!allProducts.length) {
+      return [];
+    }
+
     return getBrandNewProducts(allProducts);
   }, [allProducts]);
 
@@ -34,15 +42,15 @@ export const HomePage = () => {
   const hasErrorMessage = loaded && hasError;
 
   useEffect(() => {
-    dispatch(productsActions.fetchAll());
-  }, [dispatch]);
-
-  useEffect(() => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
     });
   }, []);
+
+  useEffect(() => {
+    dispatch(productsActions.fetchAll());
+  }, [dispatch]);
 
   return (
     <>
@@ -68,7 +76,11 @@ export const HomePage = () => {
         </>
       )}
 
-      {hasErrorMessage && <ErrorMessage title="Failed to fetch products" />}
+      {hasErrorMessage && (
+        <ErrorMessage
+          title="Failed to fetch products"
+        />
+      )}
     </>
   );
 };

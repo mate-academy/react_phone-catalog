@@ -1,15 +1,16 @@
-import { ProductType } from './productType.type';
+import { ProductCategory } from './ProductCategory.enum';
 
 export interface IProduct {
-  age: number;
-  capacity: string;
-  discount: number;
-  id: string;
-  imageUrl: string;
+  id: number;
+  category: ProductCategory;
+  itemId: string;
   name: string;
+  fullPrice: number;
   price: number;
-  ram: string;
   screen: string;
-  snippet: string;
-  type: ProductType;
+  capacity: string;
+  color: string;
+  ram: string;
+  year: number;
+  image: string;
 }

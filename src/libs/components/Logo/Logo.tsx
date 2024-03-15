@@ -23,7 +23,11 @@ export const Logo: React.FC<Props> = ({
       to="/"
       onClick={handleClick}
     >
-      <img src="img/Logo.svg" alt="Logo" />
+      <img
+        src="img/Logo.png"
+        alt="Logo"
+        className="logo__image"
+      />
     </Link>
   );
 };

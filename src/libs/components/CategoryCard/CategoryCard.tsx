@@ -1,16 +1,15 @@
 import { Link } from 'react-router-dom';
 
-import { CategoryName } from '../../types/categoryName.enum';
+import { ProductCategory } from '../../types';
 import { useAppSelector } from '../../app/hooks';
 import {
-  getProductCategory,
   getCategoryTitle,
 } from '../../utils';
 
 import './CategoryCard.scss';
 
 type Props = {
-  pass: CategoryName,
+  pass: ProductCategory,
   title?: string
 };
 
@@ -20,13 +19,9 @@ export const CategoryCard: React.FC<Props> = ({
 }) => {
   const { allProducts } = useAppSelector(store => store.products);
 
-  const modelsCount = allProducts.filter(
-    product => {
-      const type = getProductCategory(pass);
-
-      return product.type === type;
-    },
-  ).length;
+  const modelsCount = allProducts
+    .filter(product => product.category === pass)
+    .length;
 
   return (
     <Link

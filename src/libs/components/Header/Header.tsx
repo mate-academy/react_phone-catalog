@@ -1,6 +1,7 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
-import { NavLink, useLocation } from 'react-router-dom';
-import { useState } from 'react';
+import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import {
   handleSearchBarVisibility,
@@ -11,6 +12,8 @@ import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
 import { SearchBar } from '../SearchBar';
 import { Icon } from '../Icon/Icon';
+import { MobileNavMenu } from '../MobileNavMenu';
+import { HeaderIconLink } from '../HeaderIconLink';
 
 import './Header.scss';
 
@@ -22,9 +25,10 @@ export const Header: React.FC<Props> = ({
   classNames,
 }) => {
   const [
-    isSearchInputVisibleOnSmallScreen,
-    setIsSearchInputVisibleOnSmallScreen,
+    isSearchInputExpanded,
+    setIsSearchInputExpanded,
   ] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { cartItems } = useAppSelector(state => state.cartItems);
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const location = useLocation();
@@ -34,78 +38,105 @@ export const Header: React.FC<Props> = ({
   const hasItemsInFavourites = !!favouritesItems.length;
   const hasItemsInCart = !!cartItems.length;
 
+  const handleMenuButtonClick = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'scroll';
+    }
+  }, [isMobileMenuOpen]);
+
   return (
-    <header className={cn('header', classNames)}>
-      <div className="header__content">
-        <Logo classNames="header__logo" />
-        {!isCartPage && <Navbar />}
-      </div>
+    <>
+      <header className={cn('header', classNames)}>
+        <div className="header__logo-container">
+          <Logo />
+        </div>
 
-      <div className="header__content">
-        {hasSearchBar && (
-          <SearchBar
-            classNames="header__search-bar"
-            isInputVisible={isSearchInputVisibleOnSmallScreen}
-            setIsInputVisible={setIsSearchInputVisibleOnSmallScreen}
-          />
-        )}
-
-        {!isCartPage && (
-          <NavLink
-            to="favourites"
-            className={
-              cn(
-                'header__icon-link',
-                {
-                  'header__icon-link--on-small-screen':
-                         isSearchInputVisibleOnSmallScreen,
-                },
-              )
-            }
+        <div className="header__nav-content">
+          <div className={cn(
+            'header__nav-menu',
+            {
+              'header__nav-menu--small-screen':
+            isSearchInputExpanded,
+            },
+          )}
           >
-            <div className="header__icon-container">
-              <Icon
-                iconName="favourites"
-                classNames="icon"
-              />
-
-              {hasItemsInFavourites && (
-                <span className="icon__count">
-                  {favouritesItems.length}
-                </span>
-              )}
-            </div>
-
-          </NavLink>
-        )}
-
-        <NavLink
-          to="cart"
-          className={
-            cn(
-              'header__icon-link',
-              {
-                'header__icon-link--on-small-screen':
-                    isSearchInputVisibleOnSmallScreen,
-              },
-            )
-          }
-        >
-          <div className="header__icon-container">
-            <Icon
-              iconName="shopping"
-              classNames="icon"
-            />
-
-            {hasItemsInCart && (
-              <span className="icon__count">
-                {cartItems.length}
-              </span>
+            {!isCartPage && (
+              <Navbar />
             )}
           </div>
-        </NavLink>
-      </div>
 
-    </header>
+          {hasSearchBar && (
+            <SearchBar
+              classNames={cn(
+                'header__search-bar',
+                {
+                  'header__search-bar--small-screen':
+                  isSearchInputExpanded,
+                },
+              )}
+              isInputExpanded={isSearchInputExpanded}
+              onClick={setIsSearchInputExpanded}
+            />
+          )}
+
+          <div className="header__nav-icons">
+            {!isCartPage && (
+              <HeaderIconLink
+                iconName="favourites"
+                linkTo="favourites"
+                hasItemsIn={hasItemsInFavourites}
+                count={favouritesItems.length}
+              />
+            )}
+
+            <HeaderIconLink
+              iconName="shopping"
+              linkTo="cart"
+              hasItemsIn={hasItemsInCart}
+              count={cartItems.length}
+            />
+          </div>
+
+          <button
+            type="button"
+            className="header__mobile-menu-button"
+            onClick={handleMenuButtonClick}
+          >
+            <Icon
+              iconName={isMobileMenuOpen ? 'close' : 'burgerMenu'}
+            />
+          </button>
+        </div>
+
+      </header>
+
+      <div
+        className="header__mobile-menu"
+        style={
+          isMobileMenuOpen ? {
+            transition: 'all 0.8s',
+            transform: 'translateX(0)',
+          }
+            : {
+              transition: 'all 0.8s',
+              transform: 'translateX(100%)',
+            }
+        }
+      >
+        <MobileNavMenu
+          setIsOpen={setIsMobileMenuOpen}
+          cartItemsCount={cartItems.length}
+          favouritesItemsCount={favouritesItems.length}
+          hasItemsInCart={hasItemsInCart}
+          hasItemsInFavourites={hasItemsInFavourites}
+        />
+      </div>
+    </>
   );
 };

@@ -3,22 +3,18 @@ import cn from 'classnames';
 import './Price.scss';
 
 type Props = {
-  discount: number,
-  price: number,
+  discountPrice: number,
+  fullPrice: number,
   classNames?: string,
   priceFontSize?: number,
 };
 
 export const Price: React.FC<Props> = ({
-  discount,
-  price,
+  discountPrice,
+  fullPrice,
   classNames,
   priceFontSize = 22,
 }) => {
-  const discountPrice = discount
-    ? Math.round(price + (price * (discount / 100)))
-    : 0;
-
   return (
     <div
       className={cn(
@@ -32,12 +28,12 @@ export const Price: React.FC<Props> = ({
           fontSize: priceFontSize,
         }}
       >
-        {`$${price}`}
+        {`$${fullPrice}`}
       </p>
 
-      {!!discount && (
+      {!!discountPrice && (
         <p className="price__old-price">
-          {`$${String(discountPrice).slice(0, -1)}9`}
+          {`$${discountPrice}`}
         </p>
       )}
     </div>

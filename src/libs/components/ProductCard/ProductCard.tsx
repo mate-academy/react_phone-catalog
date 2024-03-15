@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { useCallback } from 'react';
 
 import { ICartItem, IProduct } from '../../types';
-import { getCategoryName } from '../../utils';
 import * as cartActions from '../../slices/cartSlice';
 import * as favouritesActions from '../../slices/favouritesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
@@ -25,21 +24,21 @@ export const ProductCard: React.FC<Props> = ({
   classNames,
 }) => {
   const {
-    id,
-    name,
-    type,
-    imageUrl,
-    price,
-    discount,
-    ram,
     capacity,
+    category,
+    fullPrice,
+    id,
+    image,
+    itemId,
+    name,
+    price,
+    ram,
     screen,
   } = product;
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(state => state.cartItems);
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
-  const categoryName = getCategoryName(type);
-  const link = `/${categoryName}/${id}`;
+  const link = `/${category}/${id}`;
 
   const currentCartItem = cartItems.find(item => item.product.id === id);
   const hasInCart = !!currentCartItem;
@@ -61,11 +60,11 @@ export const ProductCard: React.FC<Props> = ({
 
   const handleAddToFavorites = useCallback(() => {
     if (hasInFavourites) {
-      dispatch(favouritesActions.deleteItem(product.id));
+      dispatch(favouritesActions.deleteItem(itemId));
     } else {
       dispatch(favouritesActions.addItem(product));
     }
-  }, [dispatch, hasInFavourites, product]);
+  }, [dispatch, hasInFavourites, product, itemId]);
 
   return (
     <div
@@ -76,7 +75,7 @@ export const ProductCard: React.FC<Props> = ({
         className="product-card__photo-link"
       >
         <img
-          src={`${imageUrl}`}
+          src={`${image}`}
           alt={name}
           className="product-card__photo"
         />
@@ -90,8 +89,8 @@ export const ProductCard: React.FC<Props> = ({
       </Link>
 
       <Price
-        discount={discount}
-        price={price}
+        discountPrice={price}
+        fullPrice={fullPrice}
         classNames="product-card__price"
       />
       <TechSpecs

@@ -2,9 +2,9 @@ import { IProduct } from '../types';
 
 export const getHotPriceProducts = (products: IProduct[]) => {
   const productsWithAbsoluteDiscount = products
-    .filter(product => product.discount > 0)
+    .filter(product => product.price < product.fullPrice)
     .sort((pr1, pr2) => (
-      pr1.price * (pr1.discount / 100) - pr2.price * (pr2.discount / 100)
+      (pr1.fullPrice - pr1.price) - (pr2.fullPrice - pr2.price)
     ));
 
   return productsWithAbsoluteDiscount;

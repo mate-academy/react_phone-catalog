@@ -1,5 +1,11 @@
-export const BANNER_IMAGES = {
-  phones: './img/banners/banner-phones.png',
-  tablets: './img/banners/banner-tablets.png',
-  accessories: './img/banners/banner-accessories.png',
+export const BANNER_IMAGES: Record<string, string> = {
+  phones: './img/banner-phones.png',
+  tablets: './img/banner-tablets.jpg',
+  accessories: './img/banner-accessories.png',
+};
+
+export const BANNER_MOBILE_IMAGES: Record<string, string> = {
+  phones: './img/banner-phones-mobile.png',
+  tablets: './img/banner-tablets.jpg',
+  accessories: './img/banner-accessories.png',
 };

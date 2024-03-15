@@ -50,7 +50,7 @@ export const CartItem: React.FC<Props> = ({
       </button>
 
       <img
-        src={product.imageUrl}
+        src={product.image}
         alt={product.name}
         className="cart-item__product-image"
       />

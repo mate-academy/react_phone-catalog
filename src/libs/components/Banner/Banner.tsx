@@ -6,7 +6,10 @@ import {
 } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
-import { BANNER_IMAGES } from '../../constants';
+import {
+  BANNER_IMAGES,
+  // BANNER_MOBILE_IMAGES
+} from '../../constants';
 
 import { Icon } from '../Icon';
 
@@ -93,6 +96,23 @@ export const Banner = () => {
                     alt={key}
                     className="slider__banner-img"
                   />
+                  {/* <picture
+                    className="slider__banner-img"
+                  >
+                    <source
+                      srcSet={BANNER_MOBILE_IMAGES[key]}
+                      media="(max-width: 639px)"
+                      className="
+                      slider__banner-img
+                      slider__banner-img--mobile
+                      "
+                    />
+                    <img
+                      src={value}
+                      alt={key}
+                      className="slider__banner-img"
+                    />
+                  </picture> */}
                 </Link>
               </li>
             ))}

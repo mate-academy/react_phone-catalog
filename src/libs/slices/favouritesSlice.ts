@@ -26,7 +26,7 @@ const favouritesSlice = createSlice(
       },
       deleteItem: (state, action: PayloadAction<string>) => {
         state.favouritesItems = state.favouritesItems.filter(
-          el => el.id !== action.payload,
+          el => el.itemId !== action.payload,
         );
         saveToLocalSotrage('favouritesItems', state.favouritesItems);
       },

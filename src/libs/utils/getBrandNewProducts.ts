@@ -2,10 +2,18 @@ import { IProduct } from '../types';
 
 export const getBrandNewProducts = (products: IProduct[]) => {
   const productsWithoutDiscount = products
-    .filter(product => !product.discount)
-    .sort((pr1, pr2) => (
-      pr1.price - pr2.price
+    .filter(({ price, fullPrice }) => (
+      !price || price === fullPrice
     ));
 
-  return productsWithoutDiscount;
+  const brandNewProducts = (
+    productsWithoutDiscount.length
+      ? productsWithoutDiscount
+      : [...products]
+  )
+    .sort((pr1, pr2) => (
+      pr2.price - pr1.price
+    ));
+
+  return brandNewProducts;
 };

@@ -4,8 +4,13 @@
   @include flexbox-center-vertical;
 
   height: 100%;
-  border-left: 1px solid $elements;
   width: $search-bar-width;
+  border-left: 1px solid $elements;
+
+  @include on-tablet {
+    width: auto;
+    border: none;
+  }
 
   @include on-mobile {
     width: auto;
@@ -15,7 +20,6 @@
   &__input {
     @include transition;
 
-    width: 100%;
     max-width: 100%;
     height: 100%;
     font-family: Mont, Arial, sans-serif;
@@ -34,6 +38,10 @@
     }
 
     &--small-screen {
+      @include on-tablet {
+        display: none;
+      }
+
       @include on-mobile {
         display: none;
       }
@@ -43,14 +51,27 @@
   &__button {
     position: absolute;
     right: 0;
+    height: 100%;
     padding-right: 24px;
 
     &--on-small-screen {
       display: none;
     }
 
+    @include on-tablet {
+      padding-right: 16px;
+
+      &--on-big-screen {
+        display: none;
+      }
+
+      &--on-small-screen {
+        display: block;
+      }
+    }
+
     @include on-mobile {
-      padding-right: 14px;
+      padding-right: 16px;
 
       &--on-big-screen {
         display: none;

@@ -3,7 +3,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useMemo } from 'react';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { CategoryName, IProduct } from '../../types';
+import { ProductCategory, IProduct } from '../../types';
 import { SORT_VALUES, SearchParamsNames } from '../../constants';
 
 import {
@@ -53,7 +53,7 @@ const getVisibleProducts = (
 
     default:
       visibleProducts.sort((pr1, pr2) => (
-        pr1.age - pr2.age
+        pr1.year - pr2.year
       ));
       break;
   }
@@ -85,13 +85,13 @@ export const ProductsPage: React.FC<Props> = ({
     products: fetchedProducts,
   } = useAppSelector(state => {
     switch (categoryName) {
-      case CategoryName.Tablets:
+      case ProductCategory.Tablets:
         return state.tablets;
 
-      case CategoryName.Phones:
+      case ProductCategory.Phones:
         return state.phones;
 
-      case CategoryName.Accessories:
+      case ProductCategory.Accessories:
       default:
         return state.accessories;
     }
