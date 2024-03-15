@@ -11,6 +11,10 @@ const NAVIGATES = ['github', 'contacts', 'rights'];
 const githubLink = 'https://github.com/yurii-shkrobut-m';
 
 export const Footer: React.FC = () => {
+  const scrollTop = () => {
+    window.scrollTo({ top: 0 });
+  };
+
   return (
     <footer className="footer">
       <Link to="/" className="logo" />
@@ -36,7 +40,11 @@ export const Footer: React.FC = () => {
           Back to top
         </span>
 
-        <a href="#header" className="footer__back-top--link" />
+        <button
+          type="button"
+          className="footer__back-top--link"
+          onClick={scrollTop}
+        />
       </div>
     </footer>
   );
