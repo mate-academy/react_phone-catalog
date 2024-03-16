@@ -54,7 +54,6 @@ export const ItemCard = () => {
   };
 
   const phones = useAppSelector((state) => state.phones.items);
-
   const thisCard = phones.find((phone) => phone.phoneId === id);
 
   const includesCard =
@@ -63,7 +62,6 @@ export const ItemCard = () => {
     thisCard && favouritesPhones.some((item) => item.id === thisCard.id);
 
   const changeCart = useCartPhones();
-
   const changeFavourites = useFavouritesPhones();
 
   if (!selectedPhone) {
@@ -201,7 +199,7 @@ export const ItemCard = () => {
             </div>
           </div>
 
-          <div className="ItemCard__characteristics small-text">
+          <div className="wrapper__characteristics small-text">
             <div className="characteristics">
               <p>Screen</p>
               <p className="characteristics__value">{selectedPhone.screen}</p>
@@ -242,7 +240,7 @@ export const ItemCard = () => {
 
         <article className="description">
           <h2 className="description__Header">Tech specs</h2>
-          <div className="description__characteristics">
+          <div className="wrapper__characteristics">
             <div className="characteristics">
               <p>Screen</p>
               <p className="characteristics__value">{selectedPhone.screen}</p>

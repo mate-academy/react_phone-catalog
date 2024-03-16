@@ -41,7 +41,6 @@
     color: #000;
     text-decoration: none;
     font-weight: 500;
-    font-size: 14px;
 
     display: flex;
     justify-content: center;
@@ -51,7 +50,6 @@
       pointer-events: none;
       opacity: 0.5;
       cursor: not-allowed;
-      /* Измените стиль указателя мыши в соответствии с вашим дизайном */
     }
   }
 }

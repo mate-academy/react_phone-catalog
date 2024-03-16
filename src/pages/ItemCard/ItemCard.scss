@@ -4,6 +4,22 @@
   align-items: center;
   height: 100%;
 
+  .wrapper__characteristics {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    .characteristics {
+      display: flex;
+      justify-content: space-between;
+
+      &__value {
+        color: #313237;
+      }
+    }
+  }
+
   .description {
     width: 559px;
     display: flex;
@@ -24,22 +40,6 @@
       flex-direction: column;
       gap: 16px;
     }
-
-    &__characteristics {
-      margin-top: 32px;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-
-      .characteristics {
-        display: flex;
-        justify-content: space-between;
-
-        &__value {
-          color: #313237;
-        }
-      }
-    }
   }
 
   &__description {
@@ -56,7 +56,6 @@
   }
 
   &__properties {
-    // flex-direction: column;
     display: flex;
     object-fit: contain;
     padding: 40px 0 80px;
@@ -90,9 +89,8 @@
         align-items: center;
         justify-content: center;
         height: 32px;
-        padding: 0 8px 0;
+        padding: 0 8px;
         border: 1px solid #B4BDC3;
-        // cursor: pointer;
 
         &:hover {
           border: 1px solid #313237;
@@ -107,27 +105,10 @@
 
   }
 
-  &__characteristics {
-    margin-top: 32px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    .characteristics {
-      display: flex;
-      justify-content: space-between;
-
-      &__value {
-        color: #313237;
-      }
-    }
-  }
-
   &__button {
     margin-top: 16px;
     display: flex;
     gap: 8px;
-    // justify-content: space-between;
   }
 
   &-button {

@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import "./Pagination.scss";
-// import { useSearchParams } from "react-router-dom";
 
 interface PaginationTypes {
   total: number;
@@ -15,7 +14,6 @@ export const Pagination: React.FC<PaginationTypes> = ({
   currentPage,
   onPageChange,
 }) => {
-  // const [searchParams, setSearchParams] = useSearchParams();
   const pagesAmount = Math.ceil(total / +perPage);
 
   const getNumbers = (from: number, to: number): number[] => {

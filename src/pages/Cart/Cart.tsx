@@ -13,8 +13,6 @@ export const Cart = () => {
     setCart(phonesCart);
   }, [phonesCart]);
 
-  // const [sumArray, setSumArray] = useState<Record<string, number>>({});
-
   return (
     <div className="Cart">
       <ButtonBack />

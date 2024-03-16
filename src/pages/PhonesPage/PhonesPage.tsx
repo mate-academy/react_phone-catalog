@@ -27,8 +27,17 @@ export const PhonesPage = () => {
 
   const [perPage, setPerPage] = useState(searchParams.get("perPage") || "All");
   const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
-  // const [actualPhones, setActualPhones] = useState(phones);
   const [types, setTypes] = useState(sortValue || "Newest");
+
+  useEffect(() => {
+    if (currentPage !== 1) {
+      setSearchParams(
+        getSearchWith(searchParams, { page: currentPage.toString() }),
+      );
+    } else {
+      setSearchParams(getSearchWith(searchParams, { page: null }));
+    }
+  }, [currentPage]);
 
   const getActualPhones = (value: string) => {
     const sortedPhones = [...phones].filter((phone) =>
@@ -50,31 +59,15 @@ export const PhonesPage = () => {
     }
   };
 
-  const actualPhones = getActualPhones(types);
-  // чомусь зникаэ currentPage після оновлення
-
-  useEffect(() => {
-    if (currentPage !== 1) {
-      setSearchParams(
-        getSearchWith(searchParams, { page: currentPage.toString() }),
-      );
-    } else {
-      setSearchParams(getSearchWith(searchParams, { page: null }));
-    }
-  }, [currentPage]);
-
   const options = ["All", "4", "8", "16"];
   const sortType = ["Newest", "Alphabetically", "Cheapest"];
+
+  const actualPhones = getActualPhones(types);
 
   const total = actualPhones.length || phones.length;
   const startItemIndex = (+currentPage - 1) * +perPage;
   const endItemIndex = Math.min(+currentPage * +perPage, total);
   const visibleItems = actualPhones.slice(startItemIndex, endItemIndex);
-
-  // useEffect(() => {
-  //   // setActualPhones(getActualPhones(sortValue || "Newest"));
-  //   // setCurrentPage(1);
-  // }, [phones, queryValue]);
 
   const optionEvent = (event: ChangeEvent<HTMLSelectElement>) => {
     if (
@@ -104,7 +97,6 @@ export const PhonesPage = () => {
           sort: event.target.value,
         }),
       );
-      // setActualPhones(getActualPhones(event.target.value));
     }
 
     setCurrentPage(1);

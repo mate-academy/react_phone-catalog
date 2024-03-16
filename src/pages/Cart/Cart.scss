@@ -2,11 +2,44 @@
   display: grid;
   justify-content: center;
   align-items: center;
-  
+
   .main-container {
     width: 1136px;
     display: flex;
     margin: 24px 0 87px;
+
+    .phones-price {
+      width: 368px;
+      height: 206px;
+      border: 1px solid #E2E6E9;
+
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+
+      & h1 {
+        margin-top: 24px;
+      }
+
+      & p {
+        margin-bottom: 24px;
+      }
+
+      .button__container {
+        padding-top: 24px;
+        margin: 0 24px 24px;
+        border-top: 1px solid #E2E6E9;
+
+        & button {
+          width: 320px;
+          height: 48px;
+          font-weight: 600;
+          background-color: #313237;
+          color: #FFF;
+        }
+      }
+
+    }
 
     .phones__list {
       display: flex;
@@ -73,39 +106,6 @@
           }
         }
       }
-    }
-
-    .phones-price {
-      width: 368px;
-      height: 206px;
-      border: 1px solid #E2E6E9;
-
-      display: flex;
-      align-items: center;
-      flex-direction: column;
-
-      & h1 {
-        margin-top: 24px;
-      }
-
-      & p {
-        margin-bottom: 24px;
-      }
-
-      .button__container {
-        padding-top: 24px;
-        margin: 0 24px 24px;
-        border-top: 1px solid #E2E6E9;
-
-        & button {
-          width: 320px;
-          height: 48px;
-          font-weight: 600;
-          background-color: #313237;
-          color: #FFF;
-        }
-      }
-
     }
   }
 }

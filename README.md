@@ -23,7 +23,7 @@ Store the Cart in the `localStorage`
     - The `Logo` and the `Nav` are aligned left
     - The `Favorites` and the `Cart` are aligned right
 1. Use `NavLink` to highlight current page in `Header`
-1. Add `<footer>`
+1. Add `<Footer>`
     - Footer content is limited to the same width as the page content
     - Add the link to the Github repo
     - (*) Implement `Back to top` button

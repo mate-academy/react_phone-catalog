@@ -20,8 +20,8 @@ describe('App', () => {
       })
   });
 
-  it('should have Github link in the footer', () => {
-    cy.get('footer')
+  it('should have Github link in the Footer', () => {
+    cy.get('Footer')
       .find('a[href*="github.com"]');
   });
 });
