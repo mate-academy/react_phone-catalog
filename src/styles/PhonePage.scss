@@ -15,14 +15,13 @@
   &__no-result {
     margin: 40px 0;
   }
-  &__list{
+  &__list {
     display: flex;
     justify-content: center;
   }
 }
 
 .page-title {
-
   &__title {
     font-size: 32px;
     letter-spacing: -1%;
@@ -82,9 +81,14 @@
 .dropdown {
   position: relative;
   box-sizing: border-box;
+  cursor: pointer;
 
   &--big {
     width: 176px;
+
+    @include onPhone {
+      width: 150px;
+    }
   }
 
   &__icon {
@@ -103,7 +107,6 @@
 }
 
 .dropdown-content {
-  display: none;
   position: absolute;
   background-color: #fff;
   color: #89939a;
@@ -113,9 +116,12 @@
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
   z-index: 1;
   margin-top: 4px;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform $transition-time ease;
 
   &.show {
-    display: block;
+    transform: scaleY(1);
   }
 }
 
@@ -128,7 +134,43 @@
   outline: none;
   padding: 10px 12px;
   min-width: 126px;
+  transition: all $transition-time;
 
-    @include focus(border-color, #313237);
+  @include focus(border-color, #313237);
   @include hover(border-color, #89939a);
+}
+
+.capacity-block {
+  width: 320px;
+  display: flex;
+  gap: 8px;
+  border-bottom: 1px solid #e2e6e9;
+}
+
+.capacity {
+  width: fit-content;
+  padding-inline: 8px;
+  height: 32px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  border: 1px solid #b4bdc3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include hover(
+    box-shadow,
+    (
+      rgba(0, 0, 0, 0.4) 0 2px 4px,
+      rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0 -3px 0 inset
+    )
+  );
+}
+
+.selected-capacity {
+  background: #313237;
+  color: #fff;
 }

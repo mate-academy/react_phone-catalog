@@ -1,5 +1,4 @@
 .not-found {
-
   &__title-image {
     display: flex;
     justify-content: center;
@@ -9,8 +8,13 @@
   &__img {
     width: 400px;
     height: 400px;
+
+    @include onPhone {
+      width: 200px;
+      height: 200px;
+    }
   }
-  
+
   &__info {
     display: flex;
     flex-direction: column;
@@ -23,6 +27,6 @@
 
   &__link {
     text-decoration: none;
-    color:#313237;
+    color: #313237;
   }
 }

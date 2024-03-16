@@ -9,6 +9,8 @@
     width: $product-cart-photo-size;
     height: $product-cart-photo-size;
     padding: 32px 32px 24px;
+
+    @include hover(scale, 1.1);
   }
 
   &__title {
@@ -17,6 +19,7 @@
     font-weight: 500;
     font-size: 14px;
     color: $product-cart-color-text-description;
+    height: 49px;
   }
 
   &__price-block {
@@ -24,7 +27,7 @@
     margin-left: 24px;
     margin-right: 24px;
     padding-bottom: 7px;
-    margin-bottom: 16px;
+    margin-bottom: 6px;
     gap: 8px;
     border-bottom: 1px solid #e2e6e9;
   }
@@ -32,6 +35,7 @@
   &__description {
     padding-left: 24px;
     padding-right: 24px;
+    margin-bottom: 16px;
   }
 
   &__control {
@@ -52,6 +56,7 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
+  cursor: pointer;
 
   @include hover(border, (1px solid #313237));
 
@@ -68,6 +73,15 @@
   height: 40px;
   width: 176px;
   cursor: pointer;
+
+  @include hover(
+    box-shadow,
+    (
+      rgba(0, 0, 0, 0.4) 0 2px 4px,
+      rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
+      rgba(0, 0, 0, 0.2) 0 -3px 0 inset
+    )
+  );
 
   &--big {
     width: 263px;
@@ -87,6 +101,7 @@
   border: none;
   background-color: white;
   cursor: pointer;
+  transition: all $transition-time;
 
   &--is-favourite {
     background-image: url(../../public/icons/Favourites-added-2x.png);

@@ -3,11 +3,27 @@
   position: relative;
   overflow: hidden;
 
+  @include onPhone {
+    width: 300px;
+  }
+
+  @include onTablet {
+    width: auto
+  }
+
   &__photo {
     width: 1040px;
     height: 400px;
     display: none;
     object-fit: cover;
+
+    @include onPhone {
+      width: 300px;
+    }
+
+    @include onTablet {
+      width: auto;
+    }
   }
 
   &__photos {
@@ -29,6 +45,10 @@
     border: 1px solid #b4bdc3;
     width: 32px;
     cursor: pointer;
+
+    @include onPhone {
+      display: none;
+    }
 
     &--next {
       right: 0;

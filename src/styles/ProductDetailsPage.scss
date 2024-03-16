@@ -9,17 +9,31 @@
     border: 1px solid #e2e6e9;
     box-sizing: border-box;
 
+    @include onPhone {
+      width: 50px;
+      height: 50px;
+    }
+
     @include hover(border-color, #313237);
   }
 
   &__main-img {
     width: 464px;
     height: 464px;
+
+    @include onPhone {
+      width: 224px;
+      height: 224px;
+    }
+
+    @include onTablet {
+      width: 324px;
+      height: 324px;
+    }
   }
 }
 
 .product-details {
-
   &__images {
     display: flex;
     gap: 16px;
@@ -45,6 +59,14 @@
     gap: 64px;
     margin-bottom: 80px;
     align-items: center;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+    }
   }
 
   &__title {
@@ -55,6 +77,14 @@
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+    }
   }
 
   &__description {
@@ -96,4 +126,70 @@
     display: flex;
     justify-content: center;
   }
+
+  &__capacity {
+    margin-bottom: 32px;
+    padding-bottom: 24px;
+  }
+
+  &__capacity-title {
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+    padding-bottom: 24px;
+  }
+}
+
+.description-title {
+  color: #89939a;
+  font-weight: 600;
+  font-size: 12px;
+}
+
+.color {
+  width: 24px;
+  height: 24px;
+  border-radius: 50px;
+
+  &--gold {
+    background-color: #fcdbc1;
+  }
+
+  &--green {
+    background: #5f7170;
+  }
+
+  &--black {
+    background: #4c4c4c;
+  }
+
+  &--white {
+    background: #f0f0f0;
+  }
+}
+
+.colors-block {
+  display: flex;
+  gap: 9px;
+  width: 320px;
+  padding-bottom: 24px;
+  border-bottom: 1px solid #e2e6e9;
+
+  &__block {
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+    border: 2px solid #e2e6e9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include hover(border-color, #313237);
+  }
+}
+
+.selected-color {
+  border-color: #313237;
 }

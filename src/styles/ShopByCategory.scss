@@ -1,6 +1,14 @@
 .shop-by-category {
   width: 1137px;
 
+  @include onPhone {
+    width: 272px;
+  }
+
+  @include onTablet {
+    width: auto;
+  }
+
   &__title {
     margin-bottom: 24px;
   }
@@ -9,11 +17,41 @@
     width: $shop-by-category-photo-size;
     height: $shop-by-category-photo-size;
     margin-bottom: 24px;
+
+    @include onPhone {
+      width: 272px;
+      height: 272px;
+    }
+
+    @include onTablet {
+      height: 420px;
+      width: 420px;
+    }
+
+    @include onDesktop {
+      height: 272px;
+      width: 272px;
+    }
+
+    @include hover(scale, 1.05);
   }
 
   &__nav {
     display: flex;
     gap: 16px;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    @include onDesktop {
+      justify-content: center;
+    }
   }
 
   &__link {

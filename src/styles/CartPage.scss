@@ -1,5 +1,4 @@
 .cart-page {
-
   &__back {
     margin-top: 40px;
     margin-bottom: 16px;
@@ -8,6 +7,18 @@
   &__content {
     display: flex;
     gap: 16px;
+
+    @include onPhone {
+      flex-direction: column;
+    }
+
+    @include onTablet {
+      flex-direction: column;
+    }
+
+    @include onDesktop {
+      flex-direction: column;
+    }
   }
 
   &__list {
@@ -15,6 +26,14 @@
     gap: 16px;
     flex-direction: column;
     margin-bottom: 87px;
+
+    @include onPhone {
+      margin: 0;
+    }
+
+    @include onTablet {
+      margin: 0;
+    }
   }
 
   &__title {
@@ -29,6 +48,21 @@
     align-items: center;
     padding: 24px;
     height: fit-content;
+
+    @include onPhone {
+      margin-bottom: 60px;
+      width: auto;
+    }
+
+    @include onTablet {
+      margin-bottom: 60px;
+      width: auto;
+    }
+
+    @include onDesktop {
+      margin-bottom: 60px;
+      width: auto;
+    }
   }
 
   &__total {
@@ -41,7 +75,7 @@
 
   &__button {
     position: relative;
-    
+
     &::before {
       content: "";
       height: 1px;

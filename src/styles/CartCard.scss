@@ -6,6 +6,14 @@
   gap: 49px;
   padding-block: 24px;
 
+  @include onPhone {
+    flex-direction: column;
+  }
+
+  @include onTablet {
+    flex-direction: column;
+  }
+
   &__img {
     width: $product-details-img-size;
     height: $product-details-img-size;
@@ -16,11 +24,24 @@
     justify-content: center;
     align-items: center;
     gap: 24px;
+
+    @include onTablet {
+      gap: 16px;
+      justify-content:stretch;
+    }
   }
 
   &__right {
     display: flex;
     align-items: center;
+
+    @include onPhone {
+      padding-left: 20px;
+    }
+
+    @include onTablet {
+      padding-left: 40px;
+    }
   }
 
   &__name {
@@ -29,6 +50,16 @@
     line-height: 21px;
     color: #313237;
     width: 295px;
+
+    @include onPhone {
+      width: 120px;
+      word-wrap: normal;
+    }
+
+    @include onTablet {
+      width: 150px;
+      word-wrap: normal;
+    }
   }
 
   &__quantity-control {
@@ -51,7 +82,7 @@
     padding-right: 40px;
   }
 
-  &__icon{
-     margin-left: 24px;
+  &__icon {
+    margin-left: 24px;
   }
 }

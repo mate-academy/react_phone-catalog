@@ -13,6 +13,8 @@
     position: relative;
     padding: 27px 0;
     height: 100%;
+
+    @include hover(color, #313237);
   }
 
   .active-link::after {
@@ -28,14 +30,39 @@
 
 .header {
   box-shadow: 0 1px 0 0 #e2e6e9;
+
+  @include onPhone {
+    height: 64px;
+  }
+
+  @include onTablet {
+    height: 64px;
+  }
+
   &__content {
     display: flex;
     justify-content: space-between;
     padding-left: 24px;
+
+    @include onPhone {
+      height: 64px;
+    }
+
+    @include onTablet {
+      height: 64px;
+    }
   }
 
   &__icons {
     display: flex;
+
+    @include onPhone {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
   }
 
   &__icon-block {
@@ -61,6 +88,76 @@
 
   &__right {
     display: flex;
+  }
+
+  &__navbar {
+    @include onPhone {
+      display: none;
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    &--mobile {
+      @include onPhone {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 30px;
+        width: max-content;
+        margin-inline: auto;
+        align-items: center;
+      }
+
+      @include onTablet {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        margin-top: 30px;
+        width: max-content;
+        margin-inline: auto;
+        align-items: center;
+      }
+    }
+  }
+
+  &__burger-menu {
+    display: flex;
+    align-items: center;
+
+    @include onPhone {
+      padding-right: 24px;
+    }
+
+    @include onTablet {
+      padding-right: 24px;
+    }
+  }
+}
+
+.menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  z-index: 100;
+  opacity: 0.9;
+
+  &__icon {
+    position: absolute;
+    right: 25px;
+    top: 15px;
+  }
+
+  &__link {
+    font-size: 22px;
+    font-weight: 600;
+    display: flex;
+    justify-content: center;
+    width: fit-content;
   }
 }
 
@@ -114,6 +211,13 @@
     background-image: url(../../public/icons/close-2x.png);
   }
 
+  &--close-menu {
+    background-image: url(../../public/icons/icon-close.a0ef42ef.svg);
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+  }
+
   &--close-search {
     background-image: url(../../public/icons/button-close-search-2x.png);
   }
@@ -139,7 +243,14 @@
 
   &__logo {
     padding-left: 152px;
-    margin-right: 382px;
+
+    @include onPhone {
+      padding-left: 10px;
+    }
+
+    @include onTablet {
+      padding-left: 50px;
+    }
   }
 
   &__content {
@@ -150,6 +261,7 @@
     display: flex;
     align-items: center;
     min-height: 96px;
+    justify-content: space-between;
   }
 
   &__button-text {
@@ -165,22 +277,50 @@
     border: 1px solid #b4bdc3;
     width: 32px;
     box-sizing: border-box;
+
+    @include hover(border, 1px solid #313237);
   }
 
   &__button {
     display: flex;
     gap: 16px;
     padding-right: 152px;
+
+    @include onPhone {
+      padding-right: 15px;
+      gap: 5px;
+    }
+
+    @include onTablet {
+      padding-right: 25px;
+      gap: 5px;
+    }
   }
 
   &__navbar {
-    margin-right: 302px;
+    @include onPhone {
+      gap: 5px;
+    }
+
+    @include onTablet {
+      gap: 15px;
+    }
   }
 }
 
 .App {
   &__content {
     margin-inline: 152px;
+
+    @include onPhone {
+      position: relative;
+      margin-inline: 35px;
+    }
+
+    @include onTablet {
+      position: relative;
+      margin-inline: 45px;
+    }
   }
 }
 
@@ -204,10 +344,23 @@
 html {
   position: relative;
   min-height: 100%;
-  width: 100vw;
-  overflow-x: hidden;
 }
 
 .main {
   padding-bottom: 96px;
+}
+
+.burger-icon {
+  display: none;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  @include onPhone {
+    display: block;
+  }
+
+  @include onTablet {
+    display: block;
+  }
 }

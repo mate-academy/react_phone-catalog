@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { NavLink, useLocation, useParams } from 'react-router-dom';
@@ -40,6 +41,11 @@ export const ProductsDetailsPage: React.FC<Props> = ({
   const [currentImg, setCurrentImg] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
+  const [selectedCapacity, setSelectedCapacity] = useState('64');
+  const [selectedColor, setSelectedColor] = useState('gold');
+
+  const CAPACITIES = ['64', '256', '512'];
+  const COLORS = ['gold', 'green', 'black', 'white'];
 
   useEffect(() => {
     setIsLoading(true);
@@ -68,8 +74,11 @@ export const ProductsDetailsPage: React.FC<Props> = ({
     );
 
     if (existingItem) {
-      existingItem.quantity += 1;
-      setCartItems([...cartItems]);
+      const updatedItems = cartItems.filter(
+        (item) => item.id !== existingItem.id,
+      );
+
+      setCartItems(updatedItems);
     } else {
       const newItem: CartItem = {
         id: selectedProduct.id,
@@ -79,6 +88,14 @@ export const ProductsDetailsPage: React.FC<Props> = ({
 
       setCartItems([newItem, ...cartItems]);
     }
+  };
+
+  const capacityChange = (capacity: string) => {
+    setSelectedCapacity(capacity);
+  };
+
+  const colorChange = (color: string) => {
+    setSelectedColor(color);
   };
 
   const isAdded = getIsAdded(cartItems, productSelected);
@@ -138,6 +155,44 @@ export const ProductsDetailsPage: React.FC<Props> = ({
             </div>
 
             <div className="product-details__right-side">
+              <div
+                className="description-title
+              product-details__capacity-title"
+              >
+                Available colors
+              </div>
+              <div className="colors-block product-details__colors">
+                {COLORS.map((color) => (
+                  <div
+                    className={cn('colors-block__block', {
+                      'selected-color': selectedColor === color,
+                    })}
+                    onClick={() => colorChange(color)}
+                  >
+                    <div className={`color color--${color}`} />
+                  </div>
+                ))}
+              </div>
+
+              <div
+                className="description-title
+              product-details__capacity-title"
+              >
+                Select capacity
+              </div>
+              <div className="capacity-block product-details__capacity">
+                {CAPACITIES.map((capacity) => (
+                  <div
+                    className={cn('capacity', {
+                      'selected-capacity': selectedCapacity === capacity,
+                    })}
+                    onClick={() => capacityChange(capacity)}
+                  >
+                    {`${capacity} GB`}
+                  </div>
+                ))}
+              </div>
+
               <div className="product-details__price-block">
                 {!!productSelected?.discount && (
                   <div className="price price--big">
@@ -164,20 +219,22 @@ export const ProductsDetailsPage: React.FC<Props> = ({
                   {isAdded ? 'Added to cart' : 'Add to cart'}
                 </button>
                 <div className="product-details__favourites">
-                  <div className="icon-block icon-block--big">
+                  <div
+                    className="icon-block icon-block--big"
+                    onClick={(e) => handleFavourites(
+                      e,
+                      isFavourite,
+                      productSelected,
+                      favourites,
+                      setFavourites,
+                    )}
+                  >
                     <button
                       className={cn('icon-button-favorities', {
                         'icon-button-favorities--is-favourite': isFavourite,
                       })}
                       aria-label="icon-favorite"
                       type="button"
-                      onClick={(e) => handleFavourites(
-                        e,
-                        isFavourite,
-                        productSelected,
-                        favourites,
-                        setFavourites,
-                      )}
                     />
                   </div>
                 </div>

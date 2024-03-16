@@ -7,6 +7,10 @@
   border: none;
   border-bottom: 1px solid #e2e6e9;
 
+  @include onPhone {
+    width: 200px;
+  }
+
   &::-webkit-search-cancel-button {
     display: none;
   }

@@ -2,6 +2,10 @@
   width: 1137px;
   overflow: hidden;
 
+  @include onPhone {
+    width: 280px;
+  }
+
   &__title {
     margin-bottom: 24px;
   }
@@ -43,4 +47,19 @@
 .slider-buttons {
   display: flex;
   gap: 16px;
+}
+
+.productSlide {
+  animation: lide-in-from-right 0.5s ease forwards; /* Ensure animation continues after sliding in */
+}
+
+@keyframes slide-in-from-right {
+  0% {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }

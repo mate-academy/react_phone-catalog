@@ -1,20 +1,18 @@
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-import React, { useEffect, useState } from 'react';
-import cn from 'classnames';
+import React, { useState, useEffect } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
+import { Dropdown } from '../components/Dropdown';
 import {
   getProducts,
   getSortedQuery,
   sortProducts,
 } from '../helpers/ProductMethods';
-import { Product } from '../types/Product';
 import { ProductList } from '../components/ProductList';
 import { Loader } from '../components/Loader';
 import { getSearchWith } from '../helpers/searchHelper';
 import { Pagination } from '../components/Pagination';
 import { NoResults } from './NoResults';
 import { CartItem } from '../types/CartItem';
+import { Product } from '../types/Product';
 
 type Props = {
   setCartItems: (item: CartItem[]) => void;
@@ -35,10 +33,10 @@ export const PhonePage: React.FC<Props> = ({
   const sortBy = searchParams.get('sort') || 'Newest';
   const itemsOnPage = searchParams.get('perPage') || '4';
   const query = searchParams.get('query') || '';
-  const [isOpen, setIsOpen] = useState(false);
-  const [selectedValue, setSelectedValue] = useState(itemsOnPage);
   const [isOpenSorted, setIsOpenSorted] = useState(false);
   const [selectedValueSorted, setSelectedValueSorted] = useState(sortBy);
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedValue, setSelectedValue] = useState(itemsOnPage);
 
   const handleSearch = (value: string) => {
     setSelectedValueSorted(value);
@@ -46,12 +44,12 @@ export const PhonePage: React.FC<Props> = ({
     setSearchParams(getSearchWith(searchParams, { sort: value || null }));
   };
 
-  const toggleDropdown = () => {
-    setIsOpen(!isOpen);
-  };
-
   const toggleDropdownSorted = () => {
     setIsOpenSorted(!isOpenSorted);
+  };
+
+  const toggleDropdown = () => {
+    setIsOpen(!isOpen);
   };
 
   const handlePerPage = (value: string) => {
@@ -92,72 +90,28 @@ export const PhonePage: React.FC<Props> = ({
       <div className="page-title">
         <h1 className="page-title__title">Mobile phones</h1>
         <p className="page-title__items-count">{`${products.length} items`}</p>
+
         <div className="page-title__sort">
           <div className="page-title__sort-selection">
             <p className="page-title__sort-title">Sort by</p>
-
-            <div className="dropdown dropdown--big">
-              <div onClick={toggleDropdownSorted} className="dropbtn">
-                {selectedValueSorted}
-                <div
-                  className={cn('icon icon--slider icon--down dropdown__icon', {
-                    'icon--up': isOpenSorted,
-                  })}
-                />
-              </div>
-              <div
-                id="dropdownContent"
-                className={cn('dropdown-content', { show: isOpenSorted })}
-              >
-                <div onClick={() => handleSearch('Newest')} className="option">
-                  Newest
-                </div>
-                <div
-                  onClick={() => handleSearch('Alphabetically')}
-                  className="option"
-                >
-                  Alphabetically
-                </div>
-                <div
-                  onClick={() => handleSearch('Cheapest')}
-                  className="option"
-                >
-                  Cheapest
-                </div>
-              </div>
-            </div>
+            <Dropdown
+              toggleDropdown={toggleDropdownSorted}
+              selectedValue={selectedValueSorted}
+              handleOptionClick={handleSearch}
+              options={['Newest', 'Alphabetically', 'Cheapest']}
+              isOpen={isOpenSorted}
+            />
           </div>
 
           <div className="page-title__sort-selection">
             <p className="page-title__sort-title">Items on page</p>
-
-            <div className="dropdown">
-              <div onClick={toggleDropdown} className="dropbtn">
-                {selectedValue}
-                <div
-                  className={cn('icon icon--slider icon--down dropdown__icon', {
-                    'icon--up': isOpen,
-                  })}
-                />
-              </div>
-              <div
-                id="dropdownContent"
-                className={cn('dropdown-content', { show: isOpen })}
-              >
-                <div onClick={() => handlePerPage('4')} className="option">
-                  4
-                </div>
-                <div onClick={() => handlePerPage('8')} className="option">
-                  8
-                </div>
-                <div onClick={() => handlePerPage('16')} className="option">
-                  16
-                </div>
-                <div onClick={() => handlePerPage('all')} className="option">
-                  All
-                </div>
-              </div>
-            </div>
+            <Dropdown
+              toggleDropdown={toggleDropdown}
+              selectedValue={selectedValue}
+              handleOptionClick={handlePerPage}
+              options={['4', '8', '16', 'all']}
+              isOpen={isOpen}
+            />
           </div>
         </div>
       </div>

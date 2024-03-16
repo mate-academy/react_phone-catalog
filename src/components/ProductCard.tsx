@@ -1,3 +1,5 @@
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
 import cn from 'classnames';
 import React from 'react';
 import { Product } from '../types/Product';
@@ -33,9 +35,11 @@ export const ProductCart: React.FC<Props> = ({
     );
 
     if (existingItem) {
-      existingItem.quantity += 1;
+      const updatedItems = cartItems.filter(
+        (item) => item.id !== existingItem.id,
+      );
 
-      setCartItems([...cartItems]);
+      setCartItems(updatedItems);
     } else {
       const newItem: CartItem = { id: product.id, quantity: 1, product };
 
@@ -97,7 +101,14 @@ export const ProductCart: React.FC<Props> = ({
         >
           {isAdded ? 'Added to cart' : 'Add to cart'}
         </button>
-        <div className="icon-block">
+        <div
+          className="icon-block"
+          onClick={(e) => handleFavourites(e,
+            isFavourite,
+            product,
+            favourites,
+            setFavourites)}
+        >
           <button
             className={cn('icon-button-favorities', {
               'icon-button-favorities--is-favourite': isFavourite,
@@ -105,13 +116,6 @@ export const ProductCart: React.FC<Props> = ({
             aria-label="icon-favorite"
             type="button"
             data-cy="addToFavorite"
-            onClick={(e) => handleFavourites(
-              e,
-              isFavourite,
-              product,
-              favourites,
-              setFavourites,
-            )}
           />
         </div>
       </div>

@@ -1,10 +1,10 @@
 .favourites {
-  
   &__list {
     display: flex;
     flex-wrap: wrap;
     gap: 40px;
     column-gap: 16px;
     margin-bottom: 80px;
+    justify-content: center;
   }
 }

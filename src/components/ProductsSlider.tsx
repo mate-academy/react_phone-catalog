@@ -76,7 +76,7 @@ export const ProductSlider: React.FC<Props> = ({
       <div
         className="slider__photos"
         style={{
-          transform: `translateX(-${translateX}px)`,
+          transform: `translate(-${translateX}px)`,
         }}
         ref={sliderRef}
       >

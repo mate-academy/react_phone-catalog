@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import React, { useEffect, useState } from 'react';
-import cn from 'classnames';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { getProducts, sortProducts } from '../helpers/ProductMethods';
 import { Product } from '../types/Product';
@@ -11,6 +10,7 @@ import { getSearchWith } from '../helpers/searchHelper';
 import { Pagination } from '../components/Pagination';
 import { NoResults } from './NoResults';
 import { CartItem } from '../types/CartItem';
+import { Dropdown } from '../components/Dropdown';
 
 type Props = {
   setCartItems: (item: CartItem[]) => void;
@@ -90,81 +90,24 @@ export const AccessoriesPage: React.FC<Props> = ({
             <div className="page-title__sort">
               <div className="page-title__sort-selection">
                 <p className="page-title__sort-title">Sort by</p>
-
-                <div className="dropdown dropdown--big">
-                  <div onClick={toggleDropdownSorted} className="dropbtn">
-                    {selectedValueSorted}
-                    <div
-                      className={cn(
-                        'icon icon--slider icon--down dropdown__icon',
-                        {
-                          'icon--up': isOpenSorted,
-                        },
-                      )}
-                    />
-                  </div>
-                  <div
-                    id="dropdownContent"
-                    className={`dropdown-content ${isOpenSorted ? 'show' : ''}`}
-                  >
-                    <div
-                      onClick={() => handleSearch('Newest')}
-                      className="option"
-                    >
-                      Newest
-                    </div>
-                    <div
-                      onClick={() => handleSearch('Alphabetically')}
-                      className="option"
-                    >
-                      Alphabetically
-                    </div>
-                    <div
-                      onClick={() => handleSearch('Cheapest')}
-                      className="option"
-                    >
-                      Cheapest
-                    </div>
-                  </div>
-                </div>
+                <Dropdown
+                  toggleDropdown={toggleDropdownSorted}
+                  selectedValue={selectedValueSorted}
+                  handleOptionClick={handleSearch}
+                  options={['Newest', 'Alphabetically', 'Cheapest']}
+                  isOpen={isOpenSorted}
+                />
               </div>
 
               <div className="page-title__sort-selection">
                 <p className="page-title__sort-title">Items on page</p>
-
-                <div className="dropdown">
-                  <div onClick={toggleDropdown} className="dropbtn">
-                    {selectedValue}
-                    <div
-                      className={cn(
-                        'icon icon--slider icon--down dropdown__icon',
-                        {
-                          'icon--up': isOpen,
-                        },
-                      )}
-                    />
-                  </div>
-                  <div
-                    id="dropdownContent"
-                    className={`dropdown-content ${isOpen ? 'show' : ''}`}
-                  >
-                    <div onClick={() => handlePerPage('4')} className="option">
-                      4
-                    </div>
-                    <div onClick={() => handlePerPage('8')} className="option">
-                      8
-                    </div>
-                    <div onClick={() => handlePerPage('16')} className="option">
-                      16
-                    </div>
-                    <div
-                      onClick={() => handlePerPage('all')}
-                      className="option"
-                    >
-                      All
-                    </div>
-                  </div>
-                </div>
+                <Dropdown
+                  toggleDropdown={toggleDropdown}
+                  selectedValue={selectedValue}
+                  handleOptionClick={handlePerPage}
+                  options={['4', '8', '16', 'all']}
+                  isOpen={isOpen}
+                />
               </div>
             </div>
           </div>
