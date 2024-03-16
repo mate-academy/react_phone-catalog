@@ -18,14 +18,10 @@ export const cart = createSlice({
         (phone) => phone.id === action.payload,
       );
 
-      // console.log(index);
-
       return {
         ...state,
         phonesInCart: state.phonesInCart.map((phone) => {
           if (phone.id === state.phonesInCart[index].id) {
-            // console.log("yes");
-
             return {
               ...phone,
               countToSell: phone.countToSell - 1,
@@ -42,14 +38,10 @@ export const cart = createSlice({
         (phone) => phone.id === action.payload,
       );
 
-      // console.log(index);
-
       return {
         ...state,
         phonesInCart: state.phonesInCart.map((phone) => {
           if (phone.id === state.phonesInCart[index].id) {
-            // console.log("yes");
-
             return {
               ...phone,
               countToSell: phone.countToSell + 1,
@@ -64,7 +56,7 @@ export const cart = createSlice({
     addPhonesInCart: (state, action: PayloadAction<TypeCard>) => {
       const newPhone = {
         ...action.payload,
-        countToSell: 2,
+        countToSell: 1,
       };
 
       return {

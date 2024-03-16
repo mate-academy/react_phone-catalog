@@ -14,7 +14,7 @@ export const Header = () => {
 
   const cartPhones = useAppSelector((state) => state.cartPhones.phonesInCart);
 
-  const headerText = ["", "Phones", "Tablets", "Accessories"];
+  const HeaderText = ["", "Phones", "Tablets", "Accessories"];
 
   const handleInputSearch = (event: React.ChangeEvent<HTMLInputElement>) => {
     const text = event.target.value;
@@ -29,15 +29,15 @@ export const Header = () => {
   };
 
   return (
-    <header className="header">
-      <div className="header__leftContainer">
+    <header className="Header">
+      <div className="Header__leftContainer">
         <Link to="/" className="Logo">
           <img src="./img/logo.svg" alt="Logo" />
         </Link>
 
         <nav className="navigation">
           <ul className="navigation__list">
-            {headerText.map((text) => (
+            {HeaderText.map((text) => (
               <li className="navigation__item" key={text}>
                 <NavLink
                   to={`/${text}`}
@@ -63,7 +63,7 @@ export const Header = () => {
           </ul>
         </nav>
       </div>
-      <div className="header__rightContainer">
+      <div className="Header__rightContainer">
         {(location.pathname.includes("Phones") ||
           location.pathname.includes("Favorites")) && (
           <div className="search">
@@ -117,7 +117,13 @@ export const Header = () => {
           />
           <img src="./img/bag.png" alt="Cart" />
           {cartPhones.length > 0 && (
-            <div className="circle">{cartPhones.length}</div>
+            <div className="circle">
+              {cartPhones.reduce(
+                (accumulator, currentValue) =>
+                  accumulator + currentValue.countToSell,
+                0,
+              )}
+            </div>
           )}
         </NavLink>
       </div>

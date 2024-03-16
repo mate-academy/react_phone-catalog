@@ -20,7 +20,7 @@ export const AccessoriesPage = () => {
         <p>Accessories</p>
       </div>
 
-      <h1 className="Phones-page__header">Accessories</h1>
+      <h1 className="Phones-page__Header">Accessories</h1>
 
       <p>{`${[].length} models`}</p>
 

@@ -1,46 +1,47 @@
-import { Dispatch, SetStateAction, useEffect } from "react";
 import { TypeCard } from "../../types/TypeCard";
 import { useCartPhones } from "../../helpers/useArrays";
 import {
   decreasePhonesCountToSell,
   increasePhonesCountToSell,
 } from "../../features/cartSlice";
+import { useAppDispatch } from "../../store";
 
 interface T {
   phone: TypeCard;
-  setSumArray: Dispatch<SetStateAction<Record<string, number>>>;
+  // setSumArray: Dispatch<SetStateAction<Record<string, number>>>;
 }
 
-export const CartsCard: React.FC<T> = ({ phone, setSumArray }) => {
+export const CartsCard: React.FC<T> = ({ phone }) => {
+  const dispatch = useAppDispatch();
   // const [count, setCount] = useState(1);
 
-  useEffect(() => {
-    setSumArray((currentState) => ({
-      ...currentState,
-      [phone.id]: 1,
-    }));
-  }, []);
+  // useEffect(() => {
+  //   setSumArray((currentState) => ({
+  //     ...currentState,
+  //     [phone.id]: 1,
+  //   }));
+  // }, []);
 
   const changeCount = (key: string) => {
     switch (key) {
       case "-":
         // setCount(count - 1);
-        decreasePhonesCountToSell(phone.id);
+        dispatch(decreasePhonesCountToSell(phone.id));
 
-        setSumArray((currentState) => ({
-          ...currentState,
-          [phone.id]: currentState[phone.id] - 1,
-        }));
+        // setSumArray((currentState) => ({
+        //   ...currentState,
+        //   [phone.id]: currentState[phone.id] - 1,
+        // }));
         break;
 
       case "+":
         // setCount(count + 1);
-        increasePhonesCountToSell(phone.id);
+        dispatch(increasePhonesCountToSell(phone.id));
 
-        setSumArray((currentState) => ({
-          ...currentState,
-          [phone.id]: currentState[phone.id] + 1,
-        }));
+        // setSumArray((currentState) => ({
+        //   ...currentState,
+        //   [phone.id]: currentState[phone.id] + 1,
+        // }));
         break;
       default:
         break;

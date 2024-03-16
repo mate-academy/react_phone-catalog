@@ -42,7 +42,7 @@ export const Favourites = () => {
         <p>Favourites</p>
       </div>
 
-      <h1 className="Favourites__header">Favourites</h1>
+      <h1 className="Favourites__Header">Favourites</h1>
 
       <p>{`${favourites.length} models`}</p>
 

@@ -25,17 +25,10 @@ export const PhonesPage = () => {
   const sortValue: string = searchParams.get("sort") || "";
   const phones = useAppSelector((state) => state.phones.items);
 
-  const [perPage, setPerPage] = useState("All");
-  const [currentPage, setCurrentPage] = useState(1);
-  const [actualPhones, setActualPhones] = useState(phones);
-
-  const options = ["All", "4", "8", "16"];
-  const sortType = ["Newest", "Alphabetically", "Cheapest"];
-
-  const total = actualPhones.length || phones.length;
-  const startItemIndex = (currentPage - 1) * +perPage;
-  const endItemIndex = Math.min(currentPage * +perPage, total);
-  const visibleItems = actualPhones.slice(startItemIndex, endItemIndex);
+  const [perPage, setPerPage] = useState(searchParams.get("perPage") || "All");
+  const [currentPage, setCurrentPage] = useState(searchParams.get("page") || 1);
+  // const [actualPhones, setActualPhones] = useState(phones);
+  const [types, setTypes] = useState(sortValue || "Newest");
 
   const getActualPhones = (value: string) => {
     const sortedPhones = [...phones].filter((phone) =>
@@ -57,18 +50,51 @@ export const PhonesPage = () => {
     }
   };
 
-  useEffect(() => {
-    setActualPhones(getActualPhones(sortValue || "Newest"));
-    setCurrentPage(1);
-  }, [phones, queryValue]);
+  const actualPhones = getActualPhones(types);
+  // чомусь зникаэ currentPage після оновлення
 
-  const [types, setTypes] = useState(sortValue || "Newest");
+  useEffect(() => {
+    if (currentPage !== 1) {
+      setSearchParams(
+        getSearchWith(searchParams, { page: currentPage.toString() }),
+      );
+    } else {
+      setSearchParams(getSearchWith(searchParams, { page: null }));
+    }
+  }, [currentPage]);
+
+  const options = ["All", "4", "8", "16"];
+  const sortType = ["Newest", "Alphabetically", "Cheapest"];
+
+  const total = actualPhones.length || phones.length;
+  const startItemIndex = (+currentPage - 1) * +perPage;
+  const endItemIndex = Math.min(+currentPage * +perPage, total);
+  const visibleItems = actualPhones.slice(startItemIndex, endItemIndex);
+
+  // useEffect(() => {
+  //   // setActualPhones(getActualPhones(sortValue || "Newest"));
+  //   // setCurrentPage(1);
+  // }, [phones, queryValue]);
 
   const optionEvent = (event: ChangeEvent<HTMLSelectElement>) => {
     if (
       Object.values(OptionsType).includes(event.target.value as OptionsType)
     ) {
       setPerPage(event.target.value);
+
+      if (event.target.value !== "All") {
+        setSearchParams(
+          getSearchWith(searchParams, {
+            perPage: event.target.value,
+          }),
+        );
+      } else {
+        setSearchParams(
+          getSearchWith(searchParams, {
+            perPage: null,
+          }),
+        );
+      }
     }
 
     if (Object.values(SortType).includes(event.target.value as SortType)) {
@@ -78,7 +104,7 @@ export const PhonesPage = () => {
           sort: event.target.value,
         }),
       );
-      setActualPhones(getActualPhones(event.target.value));
+      // setActualPhones(getActualPhones(event.target.value));
     }
 
     setCurrentPage(1);
@@ -100,7 +126,7 @@ export const PhonesPage = () => {
         <p>Phones</p>
       </div>
 
-      <h1 className="Phones-page__header">Mobile Phones</h1>
+      <h1 className="Phones-page__Header">Mobile Phones</h1>
 
       <p>{`${actualPhones.length} models`}</p>
 
@@ -156,7 +182,7 @@ export const PhonesPage = () => {
             <Pagination
               total={total}
               perPage={perPage}
-              currentPage={currentPage}
+              currentPage={+currentPage}
               onPageChange={setCurrentPage}
             />
           )}

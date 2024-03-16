@@ -13,7 +13,7 @@ export const Cart = () => {
     setCart(phonesCart);
   }, [phonesCart]);
 
-  const [sumArray, setSumArray] = useState<Record<string, number>>({});
+  // const [sumArray, setSumArray] = useState<Record<string, number>>({});
 
   return (
     <div className="Cart">
@@ -27,7 +27,7 @@ export const Cart = () => {
             <ul className="phones__list">
               {cart.map((phone) => (
                 <CartsCard
-                  setSumArray={setSumArray}
+                  // setSumArray={setSumArray}
                   phone={phone}
                   key={phone.id}
                 />
@@ -37,8 +37,9 @@ export const Cart = () => {
             <div className="phones-price">
               <h1 data-cy="productQauntity">
                 {`$${cart.reduce((accumulator: number, value: TypeCard) => {
-                  return accumulator + value.price * sumArray[value.id];
+                  return accumulator + value.price * value.countToSell;
                 }, 0)}`}
+                {/* sumArray[value.id] */}
               </h1>
               <p>{`Total for ${cart.length} items`}</p>
 

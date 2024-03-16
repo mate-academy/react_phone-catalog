@@ -1,6 +1,6 @@
 import { createRoot } from "react-dom/client";
 import {
-  BrowserRouter,
+  HashRouter,
   // при HashRouter не работает пагинация, но без HashRouter в itemcard не работают иконки
   NavLink,
   Navigate,
@@ -21,7 +21,7 @@ import { AccessoriesPage } from "./pages/AccessoriesPage/Accessories";
 
 createRoot(document.getElementById("root") as HTMLElement).render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <PersistGate loading={null} persistor={persistor}>
         <Routes>
           <Route path="/" element={<App />}>
@@ -46,6 +46,6 @@ createRoot(document.getElementById("root") as HTMLElement).render(
           </Route>
         </Routes>
       </PersistGate>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
 );

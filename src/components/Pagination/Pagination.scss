@@ -3,13 +3,10 @@
   justify-content: center;
   margin-bottom: 80px;
 
-  .active {
-    background-color: #313237;
-
-    a {
-      color: #FFF;
-    }
-  }
+  // .active {
+  //   background-color: #313237;
+  //   color: #FFF;
+  // }
 
   .page__list {
     display: flex;
@@ -19,6 +16,12 @@
   .page__item {
     margin-right: 8px;
     border: 1px solid #E2E6E9;
+    cursor: pointer;
+
+    .active {
+      background-color: #313237;
+      color: #FFF;
+    }
 
     &:hover {
       border: 1px solid #313237
@@ -30,11 +33,15 @@
   }
 
   .page__link {
-    height: 32px;
+    height: 30px;
     width: 32px;
     font-size: 14px;
+    background-color: white;
+    border: none;
     color: #000;
     text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
 
     display: flex;
     justify-content: center;
@@ -43,7 +50,8 @@
     &.disabled {
       pointer-events: none;
       opacity: 0.5;
-      cursor: not-allowed; /* Измените стиль указателя мыши в соответствии с вашим дизайном */
+      cursor: not-allowed;
+      /* Измените стиль указателя мыши в соответствии с вашим дизайном */
     }
   }
 }

@@ -3,28 +3,28 @@ import "./Footer.scss";
 
 export const Footer = () => {
   return (
-    <footer className="footer">
-      <div className="footer__leftContainer">
+    <footer className="Footer">
+      <div className="Footer__leftContainer">
         <Link to="/">
           <img src="./img/logo.svg" alt="Logo" />
         </Link>
       </div>
 
-      <div className="footer__center">
+      <div className="Footer__center">
         <ul>
-          <li className="footer__center-item">
+          <li className="Footer__center-item">
             <Link to="https://github.com/Anmonnn">Github</Link>
           </li>
-          <li className="footer__center-item">
+          <li className="Footer__center-item">
             <Link to="https://github.com/Anmonnn">Contacts</Link>
           </li>
-          <li className="footer__center-item">
+          <li className="Footer__center-item">
             <Link to="https://github.com/Anmonnn">Rights</Link>
           </li>
         </ul>
       </div>
 
-      <div className="footer__rightContainer">
+      <div className="Footer__rightContainer">
         Back to top
         <button
           type="button"

@@ -1,5 +1,6 @@
 import classNames from "classnames";
 import "./Pagination.scss";
+// import { useSearchParams } from "react-router-dom";
 
 interface PaginationTypes {
   total: number;
@@ -14,6 +15,7 @@ export const Pagination: React.FC<PaginationTypes> = ({
   currentPage,
   onPageChange,
 }) => {
+  // const [searchParams, setSearchParams] = useSearchParams();
   const pagesAmount = Math.ceil(total / +perPage);
 
   const getNumbers = (from: number, to: number): number[] => {
@@ -33,35 +35,39 @@ export const Pagination: React.FC<PaginationTypes> = ({
           disabled: currentPage === 1,
         })}
       >
-        <a
+        <button
+          type="button"
           data-cy="paginationLeft"
           className={classNames("page__link", {
             disabled: currentPage === 1,
           })}
-          href="#prev"
           aria-disabled={currentPage === 1 ? "true" : "false"}
           onClick={() => onPageChange(currentPage - 1)}
         >
           <img src="./img/ArrowLeft.png" alt="left" />
-        </a>
+        </button>
       </li>
 
       <div className="page__list">
         {getNumbers(1, pagesAmount).map((page) => (
           <li
-            className={classNames("page__item", {
-              active: page === currentPage,
-            })}
+            // className={classNames("page__item", {
+            //   active: page === currentPage,
+            // })}
+            className="page__item"
             key={page}
           >
-            <a
+            <button
+              type="button"
               data-cy="pageLink"
-              className="page__link"
-              href={`#${page}`}
+              className={classNames("page__link", {
+                active: page === currentPage,
+              })}
+              // className="page__link"
               onClick={() => onPageChange(page)}
             >
               {page}
-            </a>
+            </button>
           </li>
         ))}
       </div>
@@ -71,17 +77,17 @@ export const Pagination: React.FC<PaginationTypes> = ({
           disabled: currentPage === pagesAmount,
         })}
       >
-        <a
+        <button
+          type="button"
           data-cy="paginationRight"
           className={classNames("page__link", {
             disabled: currentPage === pagesAmount,
           })}
-          href="#next"
           aria-disabled={currentPage === pagesAmount ? "true" : "false"}
           onClick={() => onPageChange(currentPage + 1)}
         >
           <img src="./img/ArrowRight.png" alt="right" />
-        </a>
+        </button>
       </li>
     </ul>
   );

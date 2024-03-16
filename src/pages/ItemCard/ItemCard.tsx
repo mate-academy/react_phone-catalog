@@ -229,7 +229,7 @@ export const ItemCard = () => {
 
       <div className="ItemCard__description">
         <div className="description" data-cy="productDescription">
-          <h2 className="description__header">About</h2>
+          <h2 className="description__Header">About</h2>
           {selectedPhone.description.map((text) => (
             <article className="description__article" key={text.title}>
               <h3>{text.title}</h3>
@@ -241,7 +241,7 @@ export const ItemCard = () => {
         </div>
 
         <article className="description">
-          <h2 className="description__header">Tech specs</h2>
+          <h2 className="description__Header">Tech specs</h2>
           <div className="description__characteristics">
             <div className="characteristics">
               <p>Screen</p>
