@@ -30,6 +30,11 @@
       width: 324px;
       height: 324px;
     }
+
+    @include onDesktop {
+      width: 324px;
+      height: 324px;
+    }
   }
 }
 
@@ -67,6 +72,10 @@
     @include onTablet {
       flex-direction: column;
     }
+
+    @include onDesktop {
+      gap: 20px;
+    }
   }
 
   &__title {
@@ -102,6 +111,7 @@
 
   &__description-block {
     padding-top: 25px;
+    border-top: 1px solid #e2e6e9;
   }
 
   &__info {
