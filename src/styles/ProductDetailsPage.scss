@@ -195,6 +195,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
 
     @include hover(border-color, #313237);
   }
