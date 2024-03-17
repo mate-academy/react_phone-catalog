@@ -8,10 +8,18 @@
 
   border: 1px solid $elements-color;
 
+  @include onMobile {
+    display: block;
+  }
+
   &__left-block {
     display: flex;
     align-items: center;
     gap: 24px;
+
+    @include onMobile {
+      margin-bottom: 16px;
+    }
   }
 
   &__delete-button {

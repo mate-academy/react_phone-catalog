@@ -11,6 +11,7 @@ export interface ContextType {
   cartList: CartItemType[],
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>,
   setIsLoading: React.Dispatch<React.SetStateAction<boolean>>,
+  setIsBurgerMenu: React.Dispatch<React.SetStateAction<boolean>>,
   getNewPathname: (option: string, index: number) => string,
   addRemoveFavList: (product: Product) => void,
   addRemoveCartList: (item: CartItemType) => void,
@@ -18,4 +19,5 @@ export interface ContextType {
   increaseCartQuantity: (id: string) => void,
   decreaseCartQuantity: (id: string) => void,
   isLoading: boolean,
+  isBurgerMenu: boolean,
 }

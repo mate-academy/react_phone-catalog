@@ -1,0 +1,16 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.menu {
+  padding: 32px 16px 0;
+  position: fixed;
+  top: $header-height;
+  left: 0;
+  right: 0;
+
+  transform: translateX(0%);
+  transition: transform 0.3s;
+
+  height: calc(100vh - $header-height);
+  overflow: inherit;
+}

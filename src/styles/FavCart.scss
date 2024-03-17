@@ -4,9 +4,21 @@
 .fav-cart {
   display: flex;
 
+  @include onMobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
   &__block {
-    position: relative;
+    // position: relative;
     box-shadow: -1px 0px 0px 0px $elements-color;
+
+    @include onMobile {
+      box-shadow: -1px -1px 0px 0px $elements-color;
+      width: 50%;
+    }
   }
 
   &__fav-link {

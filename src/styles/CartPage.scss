@@ -21,6 +21,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include onMobile {
+      margin-bottom: 32px;
+    }
   }
 
   &__total-block {
@@ -56,7 +60,7 @@
       position: absolute;
       bottom: -25px;
       right: 0;
-      background: $secondary-color;
+      background: $gray-icons-color;
       height: 1px;
       width: 100%;
     }

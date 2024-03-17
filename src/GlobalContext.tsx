@@ -14,6 +14,7 @@ export const GlobalContext = React.createContext<ContextType>({
   accessories: [],
   setProducts: () => { },
   setIsLoading: () => { },
+  setIsBurgerMenu: () => { },
   getNewPathname: () => '',
   addRemoveFavList: () => { },
   addRemoveCartList: () => { },
@@ -23,6 +24,7 @@ export const GlobalContext = React.createContext<ContextType>({
   favList: [],
   cartList: [],
   isLoading: false,
+  isBurgerMenu: false,
 });
 
 type Props = {
@@ -33,6 +35,7 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [isBurgerMenu, setIsBurgerMenu] = useState(false);
 
   const [favList, setFavList] = useLocalStorage<Product[]>('fav', []);
   const [cartList, setCartList] = useLocalStorage<CartItemType[]>('cart', []);
@@ -115,7 +118,9 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     favList,
     cartList,
     isLoading,
+    isBurgerMenu,
     setIsLoading,
+    setIsBurgerMenu,
   };
 
   return (

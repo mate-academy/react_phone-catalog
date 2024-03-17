@@ -7,7 +7,7 @@ import { Counter } from './Counter';
 import { GlobalContext } from '../GlobalContext';
 
 export const FavCart: React.FC = () => {
-  const { favList, cartList } = useContext(GlobalContext);
+  const { favList, cartList, setIsBurgerMenu } = useContext(GlobalContext);
 
   const getFavLinkClass = ({ isActive }: { isActive: boolean }) => (
     cn('fav-cart__fav-link', { 'fav-cart__fav-link--active': isActive })
@@ -23,6 +23,7 @@ export const FavCart: React.FC = () => {
         <NavLink
           to="/favorites"
           className={getFavLinkClass}
+          onClick={() => setIsBurgerMenu(false)}
         >
           {!!favList.length && (
             <Counter quantity={favList.length} />
@@ -35,6 +36,7 @@ export const FavCart: React.FC = () => {
         <NavLink
           to="/cart"
           className={getCartLinkClass}
+          onClick={() => setIsBurgerMenu(false)}
         >
           {!!cartList.length && (
             <Counter quantity={cartList.length} />
