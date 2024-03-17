@@ -70,17 +70,16 @@ $desktopWidth: desktop-slide-width(var(--width));
   }
 
   &__slide {
-    // display: block;
+    box-sizing: border-box;
     display: flex;
     justify-content: center;
     min-width: $mobileWidth;
     height: 439px;
-    box-sizing: border-box;
     border: 1px solid $colorElements;
 
     @include onTablet {
       min-width: $tabletWidth;
-      min-height: 512px;
+      height: 512px;
     }
 
     @include onSmallDesktop {

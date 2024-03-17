@@ -1,0 +1,25 @@
+@import "../../styles/main";
+
+.no-products {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include onTablet {
+    gap: 30px;
+  }
+
+  &__title {
+    @extend %h2;
+    text-align: center;
+  }
+
+  &__image {
+    width: 60%;
+
+    @include onTablet {
+      width: 40%;
+    }
+  }
+}

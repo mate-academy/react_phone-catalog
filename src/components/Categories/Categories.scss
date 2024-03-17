@@ -1,53 +1,45 @@
 @import "../../styles/main";
 
 .categories {
-  &__content {}
-
   &__title {
+    margin-bottom: 24px;
     @extend %h2;
   }
 
   &__list {
-    // display: flex;
-
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
 
     @include onTablet {
-      // flex-direction: row;
-      // gap: 16px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       column-gap: 16px;
     }
   }
 
-  &__item {
-    @include onTablet {
-      // flex-shrink: 1;
-    }
-  }
-
   &__image-container {
-    width: 100%;
     position: relative;
+    margin-bottom: 24px;
+    width: 100%;
     overflow: hidden;
 
     &:before {
       content: "";
       display: block;
-      padding-bottom: 100%; // Задаємо висоту відсотками відносно ширини
+      padding-bottom: 100%;
     }
 
     &--phones {
-      background-color: #6D6474;
-      ;
+      background-color: #6d6474;
     }
 
     &--tablets {
-      background-color: #8D8D92;
+      background-color: #8d8d92;
     }
 
     &--accessories {
-      background-color: #973D5F;
+      background-color: #973d5f;
     }
   }
 
@@ -56,6 +48,31 @@
     top: 0;
     left: 0;
     width: 100%;
-    // height: 100%;
+    height: 100%;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    &--phones {
+      top: 31px;
+      left: 38px;
+    }
+
+    &--tablets {
+      top: 16px;
+      left: 17px;
+    }
+  }
+
+  &__category-title {
+    margin-bottom: 4px;
+    @extend %h4;
+  }
+
+  &__number {
+    @extend %body-text;
+    color: $colorSecondary;
   }
 }

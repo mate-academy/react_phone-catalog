@@ -1,6 +1,7 @@
 [
   {
     "id": "apple-ipad-pro-11-2021-128gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 128GB Space Gray",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -47,6 +48,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 256GB Space Gray",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -93,6 +95,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 512GB Space Gray",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -139,6 +142,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 1TB Space Gray",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -185,6 +189,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 2TB Space Gray",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -231,6 +236,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-128gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 128GB Silver",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -277,6 +283,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-256gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 256GB Silver",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -323,6 +330,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-512gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 512GB Silver",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -369,6 +377,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-1tb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 1TB Silver",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -415,6 +424,7 @@
   },
   {
     "id": "apple-ipad-pro-11-2021-2tb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-pro-11-2021",
     "name": "Apple iPad Pro 11 (2021) 2TB Silver",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB", "2TB"],
@@ -461,6 +471,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-rose-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Rose Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -508,6 +519,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-rose-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Rose Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -555,6 +567,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -602,6 +615,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -649,6 +663,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-green",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Green",
     "capacityAvailable": ["64GB", "256GB"],
@@ -696,6 +711,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-green",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Green",
     "capacityAvailable": ["64GB", "256GB"],
@@ -743,6 +759,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-64gb-sky-blue",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 64GB Sky Blue",
     "capacityAvailable": ["64GB", "256GB"],
@@ -790,6 +807,7 @@
   },
   {
     "id": "apple-ipad-air-4th-gen-256gb-sky-blue",
+    "category": "tablets",
     "namespaceId": "apple-ipad-air-4th-gen",
     "name": "Apple iPad Air (4th Gen) 256GB Sky Blue",
     "capacityAvailable": ["64GB", "256GB"],
@@ -837,6 +855,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 64GB Space Gray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -883,6 +902,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 256GB Space Gray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -929,6 +949,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-starlight",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 256GB Starlight",
     "capacityAvailable": ["64GB", "256GB"],
@@ -975,6 +996,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-starlight",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 64GB Starlight",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1021,6 +1043,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-64gb-pink",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 64GB Pink",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1067,6 +1090,7 @@
   },
   {
     "id": "apple-ipad-mini-6th-gen-256gb-pink",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-6th-gen",
     "name": "Apple iPad Mini (6th Gen) 256GB Pink",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1113,6 +1137,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 128GB Gold",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1160,6 +1185,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 32GB Gold",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1207,6 +1233,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 32GB Silver",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1254,6 +1281,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 128GB Silver",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1301,6 +1329,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-128gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 128GB Space Gray",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1348,6 +1377,7 @@
   },
   {
     "id": "apple-ipad-10-2-2020-32gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-10-2-2020",
     "name": "Apple iPad 10.2 (2020) 32GB Space Gray",
     "capacityAvailable": ["32GB", "128GB"],
@@ -1395,6 +1425,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 256GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1440,6 +1471,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-silver",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 64GB Silver",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1485,6 +1517,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 64GB Space Gray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1530,6 +1563,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-spacegray",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 256GB Space Gray",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1575,6 +1609,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-256gb-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 256GB Gold",
     "capacityAvailable": ["64GB", "256GB"],
@@ -1620,6 +1655,7 @@
   },
   {
     "id": "apple-ipad-mini-5th-gen-64gb-gold",
+    "category": "tablets",
     "namespaceId": "apple-ipad-mini-5th-gen",
     "name": "Apple iPad Mini (5th Gen) 64GB Gold",
     "capacityAvailable": ["64GB", "256GB"],

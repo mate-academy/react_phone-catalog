@@ -1,0 +1,29 @@
+@import "../../styles/main";
+
+.something-went-wrong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+
+  @include onTablet {
+    gap: 40px;
+  }
+
+  &__title {
+    @extend %h2;
+    text-align: center;
+  }
+
+  &__image {
+    width: 50%;
+
+    @include onTablet {
+      width: 30%;
+    }
+  }
+
+  &__button {
+    width: 180px;
+  }
+}

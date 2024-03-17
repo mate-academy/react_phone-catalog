@@ -1,17 +1,36 @@
 @import "../../styles/main";
 
 .not-found-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  justify-content: space-around;
   padding: 24px 0;
 
   @include onTablet {
+    gap: 40px;
     padding: 32px 0;
   }
 
   @include onDesktop {
+    gap: 60px;
     padding: 56px 0;
   }
+
   &__title {
     @extend %h1;
-    text-align: center;
+  }
+
+  &__image {
+    width: 60%;
+
+    @include onTablet {
+      width: 40%;
+    }
+
+    @include onSmallDesktop {
+      width: 30%;
+    }
   }
 }

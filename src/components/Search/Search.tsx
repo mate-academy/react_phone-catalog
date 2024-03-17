@@ -1,26 +1,57 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
+import { useSearchParams } from 'react-router-dom';
+import debounce from 'lodash.debounce';
 import { useMediaQuery } from 'react-responsive';
-import { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import './Search.scss';
 import { SMALL_DESKTOP_WIDTH } from '../../helpers/constants';
 
-export const Search = () => {
+type Props = {
+  place: string;
+};
+
+export const Search: React.FC<Props> = ({ place }) => {
   const isDesktop = useMediaQuery({ minWidth: SMALL_DESKTOP_WIDTH });
-  const [query, setQuery] = useState('');
   const [isSearchVisible, setIsSearchVisible] = useState(false);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+  const [searchQuery, setSearchQuery] = useState(query);
 
   useEffect(() => {
     setIsSearchVisible(isDesktop);
   }, [isDesktop]);
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+  const setSearchWith = (currentQuery: string) => {
+    const params = new URLSearchParams(searchParams);
+    const newQuery = currentQuery.trim();
+
+    if (params.get('perPage')) {
+      params.set('page', '1');
+    }
+
+    if (newQuery) {
+      params.set('query', newQuery);
+    } else {
+      params.delete('query');
+    }
+
+    setSearchParams(params);
+  };
+
+  const applyQuery = useCallback(
+    debounce((newQuery: string) => {
+      setSearchWith(newQuery);
+    }, 1000), [searchParams],
+  );
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchQuery(event.target.value);
+    applyQuery(event.target.value);
   };
 
   const handleInputClose = () => {
-    if (isDesktop) {
-      setQuery('');
-    } else {
+    setSearchQuery('');
+    setSearchWith('');
+    if (!isDesktop) {
       setIsSearchVisible(false);
     }
   };
@@ -33,11 +64,11 @@ export const Search = () => {
             <input
               type="text"
               className="search__input"
-              value={query}
-              placeholder="Search in phones..."
-              onChange={handleInputChange}
+              value={searchQuery}
+              placeholder={`Search in ${place}...`}
+              onChange={handleQueryChange}
             />
-            {(query || !isDesktop) ? (
+            {(searchQuery || !isDesktop) ? (
               <button
                 type="button"
                 className="search__button search__button--close"

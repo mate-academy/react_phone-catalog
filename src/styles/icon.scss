@@ -36,21 +36,40 @@
     background-image: url(../images/icons/menu.svg);
   }
 
+  &--arrow {
+    background-image: url(../images/icons/chevron.svg);
+  }
+
+  &--arrow-disabled-up {
+    background-image: url(../images/icons/chevron-disabled.svg);
+  }
+
+  &--arrow-disabled-down {
+    background-image: url(../images/icons/chevron-disabled.svg);
+    transform: rotate(180deg);
+  }
+
   &--arrow-left {
     background-image: url(../images/icons/chevron.svg);
     transform: rotate(270deg);
+  }
 
-    &-disabled {
-      background-image: url(../images/icons/chevron-disabled.svg);
-    }
+  &--arrow-left-disabled {
+    background-image: url(../images/icons/chevron-disabled.svg);
+    transform: rotate(270deg);
   }
 
   &--arrow-right {
     background-image: url(../images/icons/chevron.svg);
     transform: rotate(90deg);
+  }
 
-    &-disabled {
-      background-image: url(../images/icons/chevron-disabled.svg);
-    }
+  &--arrow-right-disabled {
+    background-image: url(../images/icons/chevron-disabled.svg);
+    transform: rotate(90deg);
+  }
+
+  &--home {
+    background-image: url(../images/icons/home.svg);
   }
 }

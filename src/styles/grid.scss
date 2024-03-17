@@ -1,7 +1,8 @@
 .grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
+  // column-gap: 16px;
+  grid-column-gap: 16px;
 
   @include onTablet {
     grid-template-columns: repeat($columnsTablet, 1fr);

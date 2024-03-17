@@ -23,7 +23,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <Link
       to="/home"
       className="product-card"
-      data-cy="categoryLinksContainer"
+      data-cy="cardsContainer"
     >
       <div className="product-card__content">
         <div className="product-card__image-container">

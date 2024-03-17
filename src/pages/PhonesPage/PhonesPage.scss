@@ -1,0 +1,46 @@
+@import "../../styles/main";
+
+.phones-page {
+  &__content {
+    margin-top: 24px;
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    margin: 24px 0 8px 0;
+    @extend %h1;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__amount {
+    margin-bottom: 32px;
+    @extend %body-text;
+    color: $colorSecondary;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__dropdowns {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+}

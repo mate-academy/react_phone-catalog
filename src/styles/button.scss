@@ -2,8 +2,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  height: 40px;
 
-  @extend %button;
+  @extend %buttons;
   color: $colorWhite;
   background-color: $colorPrimary;
   transition: box-shadow 0.3s;

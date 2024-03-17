@@ -6,15 +6,15 @@ import { Product } from '../../types/Product';
 import { ProductsList } from '../../components/ProductsList';
 import { Dropdown } from '../../components/Dropdown';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../helpers/constants';
-import './PhonesPage.scss';
+import './AccessoriesPage.scss';
 import { prepareProducts } from '../../helpers/prepafeProducts';
 import { Pagination } from '../../components/Pagination';
 import { Loader } from '../../components/Loader';
 import { NoProducts } from '../../components/NoProducts/NoProducts';
 import { SomethingWentWrong } from '../../components/SomethingWentWrong';
 
-export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+export const AccessoriesPage = () => {
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
   const [searchParams] = useSearchParams();
@@ -25,7 +25,8 @@ export const PhonesPage = () => {
     setIsLoading(true);
     getProducts()
       .then((response) => {
-        setPhones(response.filter(product => product.category === 'phones'));
+        setAccessories(response
+          .filter(product => product.category === 'accessories'));
       })
       .catch(() => {
         setIsError(true);
@@ -35,7 +36,7 @@ export const PhonesPage = () => {
       });
   }, []);
 
-  const preparedProducts = prepareProducts(phones, { sort, query });
+  const preparedProducts = prepareProducts(accessories, { sort, query });
 
   const perPage = +(searchParams.get('perPage') || preparedProducts.length);
   const page = +(searchParams.get('page') || '1');
@@ -50,15 +51,15 @@ export const PhonesPage = () => {
     .slice(firstItemIndex - 1, lastItemIndex);
 
   return (
-    <div className="phones-page">
-      <div className="phones-page__content">
+    <div className="accessories-page">
+      <div className="accessories-page__content">
         <Path />
 
-        <h1 className="phones-page__title">
-          Mobile phones
+        <h1 className="accessories-page__title">
+          Accessories
         </h1>
 
-        <p className="phones-page__amount">
+        <p className="accessories-page__amount">
           {preparedProducts.length === 1 ? (
             '1 model'
           ) : (
@@ -72,7 +73,7 @@ export const PhonesPage = () => {
 
         {!!preparedProducts.length && (
           <>
-            <div className="phones-page__dropdowns">
+            <div className="accessories-page__dropdowns">
               <Dropdown
                 title="Sort by"
                 options={SORT_BY}
@@ -86,7 +87,7 @@ export const PhonesPage = () => {
                 defaultValue={ITEMS_PER_PAGE.All}
               />
             </div>
-            <div className="phones-page__list">
+            <div className="accessories-page__list">
               <ProductsList products={currentProducts} />
             </div>
           </>
@@ -97,9 +98,9 @@ export const PhonesPage = () => {
         )}
 
         {preparedProducts.length === 0 && !isLoading && (query ? (
-          <NoProducts products="phones" isQuery={!!query} />
+          <NoProducts products="accessories" isQuery={!!query} />
         ) : (
-          <NoProducts products="phones" />
+          <NoProducts products="accessories" />
         ))}
 
         {isError && (

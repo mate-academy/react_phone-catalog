@@ -2,18 +2,25 @@ import {
   useCallback, useEffect, useRef, useState,
 } from 'react';
 import { useMediaQuery } from 'react-responsive';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import cn from 'classnames';
 import { Navigation } from '../Navigation';
 import './Header.scss';
 import { Search } from '../Search';
 import { ActionLink } from '../ActionLink/ActionLink';
-import { CART, FAVORITES, TABLET_WIDTH } from '../../helpers/constants';
+import {
+  BASE_URL, CART, CATEGORIES, FAVORITES, TABLET_WIDTH,
+} from '../../helpers/constants';
 
 export const Header = () => {
+  const { pathname } = useLocation();
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const isMobile = !useMediaQuery({ minWidth: TABLET_WIDTH });
+
+  const normalizedPath = pathname.slice(1);
+  const isSearchShown = CATEGORIES.includes(normalizedPath)
+  || normalizedPath === 'favorites';
 
   const menuRef = useRef<HTMLElement>(null);
 
@@ -54,7 +61,7 @@ export const Header = () => {
             onClick={isMenuVisible ? handleMenuLinkClick : () => {}}
           >
             <img
-              src="./img/icons/logo.svg"
+              src={`${BASE_URL}/img/icons/logo.svg`}
               alt="LOGO"
               className="header__logo-image"
             />
@@ -62,7 +69,9 @@ export const Header = () => {
 
           {!isMobile && <Navigation />}
           <div className="header__actions">
-            {!isMenuVisible && <Search />}
+            {!isMenuVisible && isSearchShown && (
+              <Search place={normalizedPath} />
+            )}
 
             {!isMobile && (
               <>
