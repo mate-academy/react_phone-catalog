@@ -30,7 +30,7 @@ export const HomePage = () => {
     {
       img: `./img/category/category-tablets.png`,
       name: "Tablets",
-      count: 24,
+      count: 0,
       color: "#D53C51",
       type: "Tablets",
     },
@@ -38,7 +38,7 @@ export const HomePage = () => {
       img: `./img/category/category-accessories.png`,
       // img: "./_new/img/category-accessories.png",
       name: "Accessories",
-      count: 100,
+      count: 0,
       color: "#D53C51",
       type: "Accessories",
     },
@@ -65,6 +65,7 @@ export const HomePage = () => {
             className={classNames("Slider__button", {
               disabled: scrollImgPosition >= 0,
             })}
+            disabled={scrollImgPosition >= 0}
             onClick={() =>
               scrollPositionLeft(
                 setScrollImgPosition,
@@ -116,6 +117,7 @@ export const HomePage = () => {
             className={classNames("Slider__button", {
               disabled: scrollImgPosition < -imgWidth,
             })}
+            disabled={scrollImgPosition < -imgWidth}
           >
             <img src="./img/ArrowRight.png" alt="ArrowRight" />
           </button>

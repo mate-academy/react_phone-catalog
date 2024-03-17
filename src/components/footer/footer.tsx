@@ -1,7 +1,18 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import "./Footer.scss";
+import { useEffect, useState } from "react";
 
 export const Footer = () => {
+  const location = useLocation();
+  const [showButton, setShowButton] = useState(false);
+
+  useEffect(() => {
+    const windowHeight = window.innerHeight;
+    const pageHeight = document.documentElement.scrollHeight;
+
+    setShowButton(windowHeight < pageHeight);
+  }, [location]);
+
   return (
     <footer className="Footer">
       <div className="Footer__leftContainer">
@@ -25,14 +36,22 @@ export const Footer = () => {
       </div>
 
       <div className="Footer__rightContainer">
-        Back to top
-        <button
-          type="button"
-          className="ArrowUp"
-          onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        >
-          <img src="./img/ArrowUp.png" alt="Logo" className="ArrowUp__link" />
-        </button>
+        {showButton && (
+          <>
+            <p>Back to top</p>
+            <button
+              type="button"
+              className="ArrowUp"
+              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+            >
+              <img
+                src="./img/ArrowUp.png"
+                alt="Logo"
+                className="ArrowUp__link"
+              />
+            </button>
+          </>
+        )}
       </div>
     </footer>
   );

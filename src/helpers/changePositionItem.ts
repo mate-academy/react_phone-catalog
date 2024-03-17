@@ -8,8 +8,9 @@ export const scrollPositionRight = (
   callback: (newPosition: number) => void,
   state: number,
   width: number,
+  count = 1,
 ) => {
-  const newPosition = state - width;
+  const newPosition = state - width * count;
 
   callback(newPosition);
 };
@@ -19,8 +20,9 @@ export const scrollPositionLeft = (
   callback: (newPosition: number) => void,
   state: number,
   width: number,
+  count = 1,
 ) => {
-  const newPosition = state + width;
+  const newPosition = state + width * count;
 
   callback(newPosition);
 };

@@ -70,7 +70,12 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
             type="button"
             disabled={scrollPosition + itemWidth > 0}
             onClick={() =>
-              scrollPositionLeft(setScrollPosition, scrollPosition, itemWidth)
+              scrollPositionLeft(
+                setScrollPosition,
+                scrollPosition,
+                itemWidth,
+                4,
+              )
             }
             className={classNames("top-container__button", {
               disabled: scrollPosition + itemWidth > 0,
@@ -81,7 +86,12 @@ export const PhonesSlider = ({ type }: { type: Phones }) => {
           <button
             type="button"
             onClick={() =>
-              scrollPositionRight(setScrollPosition, scrollPosition, itemWidth)
+              scrollPositionRight(
+                setScrollPosition,
+                scrollPosition,
+                itemWidth,
+                4,
+              )
             }
             disabled={
               scrollPosition - itemWidth <

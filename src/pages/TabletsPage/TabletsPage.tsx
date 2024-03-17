@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
 export const TabletsPage = () => {
-  const options = ["All", "4", "8", "16"];
-  const sortType = ["Newest", "Alphabetically", "Cheapest"];
+  // const options = ["All", "4", "8", "16"];
+  // const sortType = ["Newest", "Alphabetically", "Cheapest"];
 
   return (
     <div className="Phones-page">
@@ -24,7 +24,7 @@ export const TabletsPage = () => {
 
       <p>{`${[].length} models`}</p>
 
-      <div className="Options">
+      {/* <div className="Options">
         <div className="Options__sort">
           <label htmlFor="sort-options">Sort by</label>
 
@@ -48,7 +48,7 @@ export const TabletsPage = () => {
             ))}
           </select>
         </div>
-      </div>
+      </div> */}
 
       <div className="Cards__list">Work in progres...</div>
     </div>

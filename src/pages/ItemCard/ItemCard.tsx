@@ -222,7 +222,7 @@ export const ItemCard = () => {
             </div>
           </div>
         </div>
-        <div>{`ID: ${selectedPhone.id}`}</div>
+        <div className="ItemCard__id">{thisCard && `ID: ${thisCard.id}`}</div>
       </div>
 
       <div className="ItemCard__description">
