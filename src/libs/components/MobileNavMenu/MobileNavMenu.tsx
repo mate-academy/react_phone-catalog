@@ -63,6 +63,7 @@ export const MobileNavMenu: React.FC<Props> = ({
           hasItemsIn={hasItemsInFavourites}
           count={favouritesItemsCount}
           onClick={() => setIsOpen(false)}
+          classNames="mobile-menu__icon"
         />
 
         <HeaderIconLink
@@ -71,6 +72,7 @@ export const MobileNavMenu: React.FC<Props> = ({
           hasItemsIn={hasItemsInCart}
           count={cartItemsCount}
           onClick={() => setIsOpen(false)}
+          classNames="mobile-menu__icon"
         />
       </div>
     </div>

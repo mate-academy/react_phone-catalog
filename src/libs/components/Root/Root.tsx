@@ -39,7 +39,7 @@ export const Root = () => {
         </div>
       </main>
 
-      <Footer />
+      <Footer classNames="app__footer" />
     </div>
   );
 };

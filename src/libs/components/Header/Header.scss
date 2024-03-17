@@ -61,14 +61,10 @@
       margin-right: 0;
     }
 
-    &--small-screen {
+    &--tablet {
       @include on-tablet {
         visibility: hidden;
         pointer-events: none;
-      }
-
-      @include on-mobile {
-        display: none;
       }
     }
   }
@@ -96,7 +92,7 @@
       max-width: 224px;
     }
 
-    &--small-screen {
+    &--mobile {
       @include on-mobile {
         right: 0;
         border-left: 1px solid $elements;

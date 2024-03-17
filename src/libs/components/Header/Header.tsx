@@ -7,6 +7,7 @@ import {
   handleSearchBarVisibility,
 } from '../../utils';
 import { useAppSelector } from '../../app/hooks';
+import { BREAKPOINTS } from '../../constants';
 
 import { Logo } from '../Logo';
 import { Navbar } from '../Navbar';
@@ -29,6 +30,7 @@ export const Header: React.FC<Props> = ({
     setIsSearchInputExpanded,
   ] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const { cartItems } = useAppSelector(state => state.cartItems);
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
   const location = useLocation();
@@ -43,12 +45,26 @@ export const Header: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    if (isMobileMenuOpen) {
+    if (isMobileMenuOpen && isMobile) {
       document.body.style.overflow = 'hidden';
     } else {
       document.body.style.overflow = 'scroll';
     }
-  }, [isMobileMenuOpen]);
+  }, [isMobileMenuOpen, isMobile]);
+
+  useEffect(() => {
+    const onResize = () => {
+      setIsMobile(window.innerWidth < BREAKPOINTS.tablet);
+    };
+
+    onResize();
+
+    window.addEventListener('resize', onResize);
+
+    return () => {
+      window.removeEventListener('resize', onResize);
+    };
+  }, []);
 
   return (
     <>
@@ -58,25 +74,27 @@ export const Header: React.FC<Props> = ({
         </div>
 
         <div className="header__nav-content">
-          <div className={cn(
-            'header__nav-menu',
-            {
-              'header__nav-menu--small-screen':
-            isSearchInputExpanded,
-            },
-          )}
-          >
-            {!isCartPage && (
-              <Navbar />
+          {!isMobile && (
+            <div className={cn(
+              'header__nav-menu',
+              {
+                'header__nav-menu--tablet':
+              isSearchInputExpanded,
+              },
             )}
-          </div>
+            >
+              {!isCartPage && (
+                <Navbar />
+              )}
+            </div>
+          )}
 
           {hasSearchBar && (
             <SearchBar
               classNames={cn(
                 'header__search-bar',
                 {
-                  'header__search-bar--small-screen':
+                  'header__search-bar--mobile':
                   isSearchInputExpanded,
                 },
               )}
@@ -116,27 +134,29 @@ export const Header: React.FC<Props> = ({
 
       </header>
 
-      <div
-        className="header__mobile-menu"
-        style={
-          isMobileMenuOpen ? {
-            transition: 'all 0.8s',
-            transform: 'translateX(0)',
-          }
-            : {
+      {isMobile && (
+        <div
+          className="header__mobile-menu"
+          style={
+            isMobileMenuOpen ? {
               transition: 'all 0.8s',
-              transform: 'translateX(100%)',
+              transform: 'translateX(0)',
             }
-        }
-      >
-        <MobileNavMenu
-          setIsOpen={setIsMobileMenuOpen}
-          cartItemsCount={cartItems.length}
-          favouritesItemsCount={favouritesItems.length}
-          hasItemsInCart={hasItemsInCart}
-          hasItemsInFavourites={hasItemsInFavourites}
-        />
-      </div>
+              : {
+                transition: 'all 0.8s',
+                transform: 'translateX(100%)',
+              }
+          }
+        >
+          <MobileNavMenu
+            setIsOpen={setIsMobileMenuOpen}
+            cartItemsCount={cartItems.length}
+            favouritesItemsCount={favouritesItems.length}
+            hasItemsInCart={hasItemsInCart}
+            hasItemsInFavourites={hasItemsInFavourites}
+          />
+        </div>
+      )}
     </>
   );
 };
