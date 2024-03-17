@@ -85,7 +85,6 @@ function reducer(state: Data, action: Action) {
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
       const cardData = JSON.parse(localStorage.getItem("cart") || '[]')
-      // console.log(cardData);
 
       return {
         ...state,
@@ -152,31 +151,19 @@ type Props = {
   children: React.ReactNode;
 }
 
-// const rootUrl = process.env.PUBLIC_URL;
 export const AppContextProvider: React.FC<Props> = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState.state);
 
-  const apiUrl = 'http://localhost:3000/api'
+  const apiUrl = 'https://ro.sms.destiny4you.com/'
 
   const client = axios.create({
     baseURL: apiUrl,
     withCredentials: false,
   })
-  const apiUrl2 = 'https://ro.sms.destiny4you.com/'
-
-  const client2 = axios.create({
-    baseURL: apiUrl2,
-    withCredentials: false,
-  })
 
   useEffect(() => {
-    client.get('customProducts.json').then(resp => {
-      // dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data })
-      console.log(resp.data);
-      
-    })
-    client2.get('test').then(resp => dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data.message }));
+    client.get('test').then(resp => dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data.message }));
   }, [])
 
   return (

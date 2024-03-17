@@ -1,4 +1,3 @@
-// eslint-disable
 /* eslint-disable */
 import { useContext, useEffect, useRef, useState } from 'react';
 import '../ProductPage/product.scss';

@@ -1,4 +1,3 @@
-// eslint-disable
 /* eslint-disable */
 import classNames from "classnames";
 import "./pagination.scss";

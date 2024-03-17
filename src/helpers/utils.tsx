@@ -1,5 +1,3 @@
-// eslint-disable
-// eslint-disable
 /* eslint-disable */
 import { useSearchParams } from "react-router-dom";
 import { Product } from "../types";

@@ -1,4 +1,3 @@
-// eslint-disable
 /* eslint-disable */
 import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';

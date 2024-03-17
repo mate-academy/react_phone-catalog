@@ -1,10 +1,10 @@
 // eslint-disable
-/* eslint-disable */
-import "./footer.scss";
+import './footer.scss';
 
 type Props = {
   onClick: () => void,
-}
+};
+
 export const Footer: React.FC<Props> = ({ onClick }) => {
   return (
     <div className="footer">
@@ -18,16 +18,19 @@ export const Footer: React.FC<Props> = ({ onClick }) => {
         <div className="footer-center-text mr-64">Contacts</div>
         <div className="footer-center-text mr-64">Rights</div>
       </div>
-
-      <div className="footer-arrow-block" onClick={onClick}>
+      <div
+        className="footer-arrow-block"
+        onClick={onClick}
+        onKeyDown={onClick}
+        role="button"
+        tabIndex={0}
+      >
         <div className="footer-arrow-text">Back to top</div>
         <div className="footer-arrow">
           <img src="./img/icons/arrowTop.svg" alt="img" />
         </div>
       </div>
 
-
     </div>
-  )
-}
-
+  );
+};

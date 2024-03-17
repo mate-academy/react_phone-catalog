@@ -66,14 +66,6 @@ export const ProductPage: React.FC = () => {
     setSortValue(e.target.value)
   }
 
-  if (state.products.length > 0) {
-    const disco = state.products.find(elem => elem.discount > 0) || {} as Product;
-    console.log(+state.products[0].price.slice(1) * (1 - (disco.discount / 100)))
-    console.log(disco.discount / 100);
-
-  }
-
-
   return (
     <div>
 
