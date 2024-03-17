@@ -24,11 +24,7 @@ export const Cart = () => {
           <>
             <ul className="phones__list">
               {cart.map((phone) => (
-                <CartsCard
-                  // setSumArray={setSumArray}
-                  phone={phone}
-                  key={phone.id}
-                />
+                <CartsCard phone={phone} key={phone.id} />
               ))}
             </ul>
 
@@ -37,7 +33,6 @@ export const Cart = () => {
                 {`$${cart.reduce((accumulator: number, value: TypeCard) => {
                   return accumulator + value.price * value.countToSell;
                 }, 0)}`}
-                {/* sumArray[value.id] */}
               </h1>
               <p>{`Total for ${cart.length} items`}</p>
 

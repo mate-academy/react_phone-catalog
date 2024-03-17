@@ -36,7 +36,6 @@ export const HomePage = () => {
     },
     {
       img: `./img/category/category-accessories.png`,
-      // img: "./_new/img/category-accessories.png",
       name: "Accessories",
       count: 0,
       color: "#D53C51",

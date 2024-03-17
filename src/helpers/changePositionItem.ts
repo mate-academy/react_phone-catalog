@@ -16,7 +16,6 @@ export const scrollPositionRight = (
 };
 
 export const scrollPositionLeft = (
-  // value: string,
   callback: (newPosition: number) => void,
   state: number,
   width: number,

@@ -48,20 +48,13 @@ export const Pagination: React.FC<PaginationTypes> = ({
 
       <div className="page__list">
         {getNumbers(1, pagesAmount).map((page) => (
-          <li
-            // className={classNames("page__item", {
-            //   active: page === currentPage,
-            // })}
-            className="page__item"
-            key={page}
-          >
+          <li className="page__item" key={page}>
             <button
               type="button"
               data-cy="pageLink"
               className={classNames("page__link", {
                 active: page === currentPage,
               })}
-              // className="page__link"
               onClick={() => onPageChange(page)}
             >
               {page}

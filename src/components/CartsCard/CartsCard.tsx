@@ -8,40 +8,19 @@ import { useAppDispatch } from "../../store";
 
 interface T {
   phone: TypeCard;
-  // setSumArray: Dispatch<SetStateAction<Record<string, number>>>;
 }
 
 export const CartsCard: React.FC<T> = ({ phone }) => {
   const dispatch = useAppDispatch();
-  // const [count, setCount] = useState(1);
-
-  // useEffect(() => {
-  //   setSumArray((currentState) => ({
-  //     ...currentState,
-  //     [phone.id]: 1,
-  //   }));
-  // }, []);
 
   const changeCount = (key: string) => {
     switch (key) {
       case "-":
-        // setCount(count - 1);
         dispatch(decreasePhonesCountToSell(phone.id));
-
-        // setSumArray((currentState) => ({
-        //   ...currentState,
-        //   [phone.id]: currentState[phone.id] - 1,
-        // }));
         break;
 
       case "+":
-        // setCount(count + 1);
         dispatch(increasePhonesCountToSell(phone.id));
-
-        // setSumArray((currentState) => ({
-        //   ...currentState,
-        //   [phone.id]: currentState[phone.id] + 1,
-        // }));
         break;
       default:
         break;

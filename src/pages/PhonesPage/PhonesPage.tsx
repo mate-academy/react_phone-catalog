@@ -69,6 +69,12 @@ export const PhonesPage = () => {
   const endItemIndex = Math.min(+currentPage * +perPage, total);
   const visibleItems = actualPhones.slice(startItemIndex, endItemIndex);
 
+  useEffect(() => {
+    if (total !== 0 && total < +currentPage * 4 - 3) {
+      setCurrentPage(1);
+    }
+  }, [queryValue]);
+
   const optionEvent = (event: ChangeEvent<HTMLSelectElement>) => {
     if (
       Object.values(OptionsType).includes(event.target.value as OptionsType)

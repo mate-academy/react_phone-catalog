@@ -1,12 +1,5 @@
 import { createRoot } from "react-dom/client";
-import {
-  HashRouter,
-  // при HashRouter не работает пагинация, но без HashRouter в itemcard не работают иконки
-  NavLink,
-  Navigate,
-  Route,
-  Routes,
-} from "react-router-dom";
+import { HashRouter, NavLink, Navigate, Route, Routes } from "react-router-dom";
 import { PersistGate } from "redux-persist/integration/react";
 import { Provider } from "react-redux";
 import { App } from "./App";
