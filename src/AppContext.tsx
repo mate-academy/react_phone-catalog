@@ -28,11 +28,6 @@ function alphabetSort(first: string, second: string ) {
   const word2 = second.toLocaleLowerCase();
   return (word1 < word2) ? -1 : (word1 > word2) ? 1 : 0;
 }
-// function priceSort(first: string, second: string ) {
-//   const elem1 = +first.slice(1);
-//   const elem2 = +second.slice(1);
-//   return (elem1 < elem2) ? -1 : (elem1 > elem2) ? 1 : 0;
-// }
 
 function sortProducts(arrayToSort: Product[]) {
   const [searchParams,] = useSearchParams();
@@ -90,7 +85,7 @@ function reducer(state: Data, action: Action) {
 
       localStorage.setItem("cart", JSON.stringify([...oldCardData, action.payload]));
       const cardData = JSON.parse(localStorage.getItem("cart") || '[]')
-      console.log(cardData);
+      // console.log(cardData);
 
       return {
         ...state,
@@ -157,6 +152,7 @@ type Props = {
   children: React.ReactNode;
 }
 
+// const rootUrl = process.env.PUBLIC_URL;
 export const AppContextProvider: React.FC<Props> = ({ children }) => {
 
   const [state, dispatch] = useReducer(reducer, initialState.state);
@@ -167,11 +163,20 @@ export const AppContextProvider: React.FC<Props> = ({ children }) => {
     baseURL: apiUrl,
     withCredentials: false,
   })
+  const apiUrl2 = 'https://ro.sms.destiny4you.com/'
+
+  const client2 = axios.create({
+    baseURL: apiUrl2,
+    withCredentials: false,
+  })
 
   useEffect(() => {
     client.get('customProducts.json').then(resp => {
-      dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data })
+      // dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data })
+      console.log(resp.data);
+      
     })
+    client2.get('test').then(resp => dispatch({ type: ACTIONS.SET_PRODUCTS, payload: resp.data.message }));
   }, [])
 
   return (
