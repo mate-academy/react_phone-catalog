@@ -15,10 +15,12 @@ export const CartPage: React.FC = () => {
   const [isCheckoutMessage, setIsCheckoutMessage] = useState(false);
 
   let total = 0;
+  let totalItems = 0;
 
-  cartList.forEach(cart => total += (
-    cart.quantity * cart.product.price
-  ));
+  cartList.forEach(cart => {
+    total += (cart.quantity * cart.product.price)
+    totalItems += cart.quantity
+  });
 
   function getCheckoutMessage() {
     setIsCheckoutMessage(true);
@@ -59,7 +61,7 @@ export const CartPage: React.FC = () => {
           </span>
 
           <p className="cart-page__total-description">
-            {`Total for ${cartList.length} item${cartList.length > 1 ? 's' : ''}`}
+            {`Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`}
           </p>
 
           <button
