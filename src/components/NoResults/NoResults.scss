@@ -1,0 +1,24 @@
+@import "../../styles/main";
+
+.no-results {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-block: 113px 115px;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__image {
+    width: 350px;
+  }
+
+  &__message {
+    color: $secondary-color;
+  }
+}

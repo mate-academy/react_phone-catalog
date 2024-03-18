@@ -2,3 +2,21 @@ html, body, h1, h2, h3, p, ul, button, input, textarea {
   padding: 0;
   margin: 0;
 }
+
+h1, h2, h3 {
+  font-weight: normal;
+}
+
+ul {
+  list-style-type: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  border: none;
+  cursor: pointer;
+}

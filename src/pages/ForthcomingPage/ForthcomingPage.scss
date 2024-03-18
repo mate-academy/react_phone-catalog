@@ -1,0 +1,21 @@
+@import "../../styles/main";
+
+.forthcoming {
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  &__image {
+    width: 300px;
+
+    @include for-phones {
+      width: 200px;
+      margin-bottom: 50px;
+    }
+  }
+
+  &__link {
+    width: 320px;
+  }
+}

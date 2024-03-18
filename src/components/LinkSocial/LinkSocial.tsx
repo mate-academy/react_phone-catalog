@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import './Link.scss';
+import './LinkSocial.scss';
 
 type Props = {
   link: string;
