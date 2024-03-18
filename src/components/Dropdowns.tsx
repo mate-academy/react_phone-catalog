@@ -27,6 +27,7 @@ export const Dropdowns: React.FC = () => {
     setSearchParams(
       getSearchWith(searchParams, {
         perPage: e.target.value,
+        page: '1',
       }),
     );
   };
