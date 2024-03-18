@@ -15,7 +15,7 @@
   }
 
   &__nav {
-  @include onMobile {
+    @include onMobile {
       display: none;
     }
   }
@@ -25,6 +25,8 @@
   }
 
   &__fav-cart-search {
+    display: flex;
+
     @include onMobile {
       display: none;
     }
@@ -37,7 +39,7 @@
       display: block;
       position: relative;
       box-shadow: -1px 0px 0px 0px $elements-color;
-      }
+    }
   }
 
   &__burger-button {
@@ -54,6 +56,4 @@
       // @include headerLine;
     }
   }
-
-
 }
