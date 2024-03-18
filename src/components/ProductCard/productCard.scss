@@ -1,0 +1,129 @@
+@import '../../utils/variables';
+
+.product-card {
+  min-width: 272px;
+  transition: transform 0.3s ease-in-out;
+  border: 1px solid $border-color;
+  padding: 20px;
+
+  @media (max-width: 1199px) {
+    min-width: 237px;
+  }
+
+  @media (max-width: 639px) {
+    min-width: 212px;
+  }
+
+  &__img-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    height: 208px;
+    object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+
+    @media (max-width: 639px) {
+      height: 180px;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    color: $primary-color;
+    line-height: 21px;
+    margin-bottom: 15px;
+    height: 40px;
+    white-space: pre-line;
+  }
+
+  &__price,
+  &__new-price {
+    font-size: 22px;
+    color: $primary-color;
+    font-weight: 800;
+    padding-bottom: 8px;
+    margin-bottom: 15px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    color: $secondary-color;
+    text-decoration: line-through;
+    padding-left: 10px;
+  }
+
+  &__full-price--isActive {
+    font-size: 22px;
+    color: $primary-color;
+    padding-left: 10px;
+  }
+
+  &__descr {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__descr:not(:last-child) {
+    margin-bottom: 10px;
+  }
+
+
+
+  &__screen,
+  &__capacity,
+  &__ram {
+    font-size: 12px;
+    color: $secondary-color;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__info {
+    font-size: 12px;
+    color: $primary-color;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__btns {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    height: 40px;
+    margin-top: 20px;
+  }
+
+  &__btn-cart {
+    background-color: $primary-color;
+    color: $white-color;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+
+  &__btn-cart--added {
+    background-color: $white-color;
+    color: $green-color;
+    border: 1px solid $border-color;
+  }
+
+  &__btn-favorites {
+    background-color: $white-color;
+    width: 40px;
+    height: 40px;
+
+    img {
+      width: 20px;
+    }
+  }
+}

@@ -1,0 +1,26 @@
+@import '../../utils/variables';
+
+.loader {
+  position: relative;
+  width: 100%;
+  height: calc(100vh - #{$header-height} - #{$footer-height});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__spinner {
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 7px solid $border-color;
+    border-top-color: $secondary-color;
+    animation: spin 1s linear infinite;
+  }
+
+  @keyframes spin {
+    to {
+      transform: rotate(360deg);
+    }
+  }
+}

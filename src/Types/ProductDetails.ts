@@ -1,0 +1,22 @@
+export type ProductDetails = {
+  itemId: string;
+  category: string;
+  id: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: Array<string>;
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: Array<string>;
+  color: string;
+  images: Array<string>;
+  description: Array<{ title: string; text: string[] }>;
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: Array<string>;
+};

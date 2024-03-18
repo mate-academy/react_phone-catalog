@@ -1,0 +1,101 @@
+@import '../../utils/variables';
+@import '../../styles/common';
+
+.banner {
+  padding-top: 70px;
+
+  @media (max-width: 639px) {
+    padding-top: 40px;
+  }
+
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 30px 1040px 30px;
+    justify-content: space-between;
+
+    @media (max-width: 1199px) {
+      grid-template-columns: 30px 490px 30px;
+    }
+
+    @media (max-width: 639px) {
+      grid-template-columns: 1fr;
+      margin: 0 -10px;
+    }
+  }
+
+  &__slider {
+    width: 1040px;
+    height: 400px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 1199px) {
+      width: 490px;
+      height: 189px;
+    }
+
+    @media (max-width: 639px) {
+      width: 100%;
+      height: 320px;
+    }
+  }
+
+  &__item {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 10px;
+    transition: transform 0.5s, opacity 0.5s;
+    opacity: 0;
+    transform: scale(0.8);
+  }
+
+  &__item--active {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__prevBtn,
+  &__nextBtn {
+    height: 100%;
+    outline: none;
+    background-color: unset;
+
+    img {
+      width: 30px;
+      height: 100%;
+    }
+
+    @media (max-width: 639px) {
+      display: none;
+    }
+  }
+
+  &__pag-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+
+  &__pagination {
+    width: 14px;
+    height: 4px;
+    background-color: $border-color;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0 5px;
+  }
+
+  &__pagination--active {
+    background-color: $primary-color;
+  }
+}

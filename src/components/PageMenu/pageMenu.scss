@@ -1,0 +1,91 @@
+@import '../../utils/variables';
+
+.page-menu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 64px);
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    gap: 30px;
+  }
+
+  &__link {
+    color: $secondary-color;
+    text-decoration: none;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+  }
+
+  &__link--active {
+    color: $primary-color;
+    border-bottom: 1px solid $primary-color;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 1px;
+    margin: 0 -10px;
+  }
+
+  &__favorites,
+  &__cart {
+    border: 1px solid $border-color2;
+    width: 50%;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__nav-link {
+    color: $secondary-color;
+    text-decoration: none;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    position: relative;
+
+    &:hover {
+      color: $primary-color;
+    }
+
+    &::after {
+      background-color: $primary-color;
+      content: "";
+      height: 3px;
+      left: 0;
+      position: absolute;
+      top: 39px;
+      transform: scale(0);
+      width: 100%;
+      transition: transform 0.3s;
+    }
+  }
+
+  &__checkedProduct {
+    position: absolute;
+    top: 25%;
+    right: 44%;
+    width: 15px;
+    height: 15px;
+    background-color: #EB5757;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white-color;
+    font-size: 11px;
+    font-weight: 500;
+  }
+}

@@ -1,0 +1,52 @@
+@import '../utils/variables';
+
+.main {
+  margin: 0 auto;
+  padding: 0 20px;
+  max-width: 1200px;
+  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+
+  @media (max-width: 1199px) {
+    max-width: 640px;
+    padding: 0 10px;
+  }
+}
+
+.btn {
+  transition: all 0.3s;
+  background-color: $primary-color;
+  color: $white-color;
+  font-size: 14px;
+  font-weight: 700;
+  height: 40px;
+  cursor: pointer;
+  border: 1px solid $primary-color;
+
+  &:active {
+    transform: scale(0.97);
+  }
+}
+
+.btn-arrows {
+  background-color: $white-color;
+  width: 32px;
+  height: 32px;
+  border: 1px solid $border-color2;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
+.title {
+  color: $primary-color;
+  margin-top: 40px;
+  font-size: 42px;
+  font-weight: 700;
+
+  @media (max-width: 639px) {
+    font-size: 34px;
+  }
+}
