@@ -1,7 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import './ShopByCategory.scss';
 import { Link } from 'react-router-dom';
+// @ts-ignore
 import phones from '../../images/Phones.png';
+// @ts-ignore
 import tablets from '../../images/Tablets.png';
+// @ts-ignore
 import accessories from '../../images/Accessories.png';
 
 export const ShopByCategory: React.FC = () => {

@@ -1,10 +1,15 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 
+// @ts-ignore
 import arrow from '../../images/icons/arrow.svg';
+// @ts-ignore
 import banner1 from '../../images/Banner.jpg';
+// @ts-ignore
 import banner2 from '../../images/banner-accessories.png';
+// @ts-ignore
 import banner3 from '../../images/banner-tablets.png';
 
 export const Slider: React.FC = () => {

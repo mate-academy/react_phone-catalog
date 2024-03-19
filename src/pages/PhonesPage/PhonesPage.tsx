@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import React, { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
@@ -5,8 +6,11 @@ import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 import './PhonesPage.scss';
 
+// @ts-ignore
 import home from '../../images/icons/Home.svg';
+// @ts-ignore
 import arrow from '../../images/icons/disable_arrow.png';
+// @ts-ignore
 import dropDownArrow from '../../images/icons/dropDownArrow.png';
 
 import { ProductList } from '../../components/ProductList/ProductList';

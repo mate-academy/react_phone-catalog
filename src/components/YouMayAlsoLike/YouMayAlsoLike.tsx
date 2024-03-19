@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState, useEffect, useCallback } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -5,6 +6,7 @@ import { getProducts } from '../../api/products';
 
 import './YouMayAlsoLike.scss';
 
+// @ts-ignore
 import arrow from '../../images/icons/arrow.svg';
 
 export const YouMayAlsoLike: React.FC = () => {

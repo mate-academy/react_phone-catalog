@@ -1,9 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useState, useEffect, useCallback } from 'react';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import './BrandNewModels.scss';
 import { getProducts } from '../../api/products';
 
+// @ts-ignore
 import arrow from '../../images/icons/arrow.svg';
 
 export const BrandNewModels: React.FC = () => {

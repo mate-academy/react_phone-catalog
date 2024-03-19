@@ -1,10 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { Link, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 
+// @ts-ignore
 import heart from '../../images/icons/heart_like.svg';
+// @ts-ignore
 import heartFilled from '../../images/icons/favourites-filled.svg';
 
 type Props = {

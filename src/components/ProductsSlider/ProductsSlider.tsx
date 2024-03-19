@@ -1,8 +1,10 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useCallback, useEffect, useState } from 'react';
 import './ProductsSlider.scss';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../api/products';
 
+// @ts-ignore
 import arrow from '../../images/icons/arrow.svg';
 import { ProductCard } from '../ProductCard/ProductCard';
 

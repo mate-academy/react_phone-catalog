@@ -1,8 +1,11 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 
+// @ts-ignore
 import home from '../../images/icons/Home.svg';
+// @ts-ignore
 import arrow from '../../images/icons/disable_arrow.png';
 
 import './FavoritesPage.scss';

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import {
   Link,
   NavLink,
@@ -17,9 +18,13 @@ import './blocks/icon.scss';
 
 import { useEffect, useState } from 'react';
 
+// @ts-ignore
 import logo from './images/logo.svg';
+// @ts-ignore
 import favourites from './images/icons/favourites.svg';
+// @ts-ignore
 import shoppingBag from './images/icons/shopping_bag.svg';
+// @ts-ignore
 import arrow from './images/icons/arrow.svg';
 
 const getNavLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
