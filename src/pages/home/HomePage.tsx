@@ -19,16 +19,20 @@ export const HomePage = () => {
   const [slideTrigger, setSlideTrigger] = useState(false);
 
   useEffect(() => {
-   if(sliderRef.current) {
-    if (sliderRef.current?.scrollLeft === 0) {
-      sliderRef.current.scrollLeft +=scrollAmount;
-      setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+    let timer: any;
+    if (sliderRef.current) {
+      if (sliderRef.current?.scrollLeft === 0) {
+        sliderRef.current.scrollLeft += scrollAmount;
+        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+      }
+      else {
+        sliderRef.current.scrollLeft -= scrollAmount;
+        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+      }
     }
-    else {
-      sliderRef.current.scrollLeft -=scrollAmount;
-      setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+    return () => {
+      clearTimeout(timer);
     }
-   }
   }, [slideTrigger])
 
   function goBack() {
@@ -90,7 +94,7 @@ export const HomePage = () => {
 
       </div>
 
-      <PaginationSlider pageName='pageTop' headline='Hot prices' array={getHotPriceProducts(state.products)}/>
+      <PaginationSlider pageName='pageTop' headline='Hot prices' array={getHotPriceProducts(state.products)} />
 
       <h1 className="home-page-header-text">Shop by category</h1>
       <div className="chunk-container chunk-container-big">
@@ -113,10 +117,10 @@ export const HomePage = () => {
             <img src="./img/covers/image5.png" alt="img" style={{ float: "right" }} />
           </div>
           <NavLink to="/tablets" className="link">
-          <div>
-            <div className="big-title">Tablets</div>
-            <div className="small-title">{state.products.filter(product => product.type === 'tablet').length + ' models'}</div>
-          </div>
+            <div>
+              <div className="big-title">Tablets</div>
+              <div className="small-title">{state.products.filter(product => product.type === 'tablet').length + ' models'}</div>
+            </div>
           </NavLink>
         </div>
 
@@ -125,15 +129,15 @@ export const HomePage = () => {
             <img src="./img/covers/image7.png" alt="img" style={{ float: "right" }} />
           </div>
           <NavLink to="/accessories" className="link">
-          <div>
-            <div className="big-title">Accessories</div>
-            <div className="small-title">{state.products.filter(product => product.type === 'accessoire').length + ' models'}</div>
-          </div>
+            <div>
+              <div className="big-title">Accessories</div>
+              <div className="small-title">{state.products.filter(product => product.type === 'accessoire').length + ' models'}</div>
+            </div>
           </NavLink>
         </div>
       </div>
 
-      <PaginationSlider pageName='pageDown' headline='Brand new models' array={getBrandNewProducts(state.products)}/>
+      <PaginationSlider pageName='pageDown' headline='Brand new models' array={getBrandNewProducts(state.products)} />
 
     </div>
   );
