@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
 import { Colors } from './Color';
 
 export interface DescriptionParagraph {
@@ -26,20 +25,3 @@ export interface ProductDetail {
   zoom: string;
   cell: string[];
 }
-
-export type SpecsPhone = Pick<
-  ProductDetail,
-  | 'screen'
-  | 'resolution'
-  | 'processor'
-  | 'ram'
-  | 'camera'
-  | 'zoom'
-  | 'cell'
-  | 'capacity'
->;
-
-export type SpecsPhoneSimple = Pick<
-  ProductDetail,
-  'screen' | 'resolution' | 'processor' | 'ram' | 'camera'
->;

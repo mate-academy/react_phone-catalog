@@ -4,7 +4,8 @@ import { HeaderLinks } from './HeaderLinks';
 import { LocalStorage } from './LocalStorage';
 import { Product, ProductCart } from './Product';
 import { ProductCategories } from './ProductCategories';
-import { ProductDetail, SpecsPhone, SpecsPhoneSimple } from './ProductDetail';
+import { ProductDetail } from './ProductDetail';
+import { SpecsPhone, SpecsPhoneSimple } from './Specifications';
 
 export {
   Colors,

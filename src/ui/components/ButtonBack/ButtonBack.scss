@@ -1,0 +1,13 @@
+@import "../../styles/variables";
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: $color-secondary;
+  border: none;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

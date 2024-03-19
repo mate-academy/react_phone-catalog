@@ -24,6 +24,8 @@ import { NoProducts } from './NoProducts';
 import { Counter } from './Counter';
 import { Breadcrumb } from './Breadcrumb';
 import { ProductList } from './ProductList';
+import { Specifications } from './Specifications';
+import { ButtonBack } from './ButtonBack';
 
 export {
   Page,
@@ -50,4 +52,6 @@ export {
   Counter,
   Breadcrumb,
   ProductList,
+  Specifications,
+  ButtonBack,
 };

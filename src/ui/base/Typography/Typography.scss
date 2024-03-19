@@ -24,6 +24,7 @@
 }
 
 .typography {
+  display: block;
   transition: color $duration-transition ease;
 
   &-sm {

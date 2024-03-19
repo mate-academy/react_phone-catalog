@@ -1,0 +1,456 @@
+import React, { useContext, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import clsx from 'clsx';
+
+import {
+  getProductById,
+  getProducts,
+  getProductsByCategory,
+  sortNumericField,
+} from '../../utils';
+
+import { ProductContext } from '../../context/ProductsContext';
+import {
+  Product,
+  ProductCart,
+  Colors,
+  ProductCategories,
+  ProductDetail,
+  SpecsPhone,
+  SpecsPhoneSimple,
+} from '../../types';
+
+import { Slider, SliderItem, ProductCardSlider } from '../../ui/modules';
+import {
+  ButtonFavourite,
+  ButtonAdd,
+  ButtonBack,
+  Specifications,
+} from '../../ui/components';
+
+import { Loader, Typography } from '../../ui/base';
+
+import './ProductDetailsPage.scss';
+
+const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL || '';
+
+export const ProductDetailsPage: React.FC = () => {
+  const { itemId } = useParams();
+  const {
+    favouriteItems,
+    addDelProductFavourite,
+    cartItems,
+    addDelProductCart,
+  } = useContext(ProductContext);
+  const [productDetailed, setProductDetailed] = useState<ProductDetail>();
+  const [productCategory, setProductCategory] = useState<ProductCategories>(
+    ProductCategories.all,
+  );
+  const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
+  const [productSpecs, setProductsSpecs] = useState<SpecsPhone>();
+
+  const [productSpecsSimplified, setProductsSpecsSimplified] =
+    useState<SpecsPhoneSimple>();
+
+  const [productsSameCapacity, setProductsSameCapacity] = useState<Product[]>(
+    [],
+  );
+  const [productsSameColor, setProductsSameColor] = useState<Product[]>([]);
+  const [productSameSeries, setProductSameSeries] = useState<Product[]>([]); // i.e iphone 11 pro with all colors and storages
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAddedToFav, setIsAddedToFav] = useState<boolean>(false);
+  const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
+
+  const getGroupKey = (item: Product) => {
+    const productId = item.itemId;
+
+    const simplifiedItem: Omit<Product, 'id'> = Object.keys(item).reduce(
+      (obj: Omit<Product, 'id'>, key) => {
+        if (key !== 'id') {
+          // eslint-disable-next-line no-param-reassign
+          obj[key] = item[key];
+        }
+
+        return obj;
+      },
+      {},
+    );
+
+    const keyGroup = productId
+      .split('-')
+      .filter(
+        key =>
+          !Object.values(simplifiedItem).find(
+            keyVal =>
+              String(keyVal).toLowerCase() === String(key).toLowerCase(),
+          ),
+      )
+      .join('-');
+
+    return keyGroup;
+  };
+
+  const getProductGropBySameStorage = (
+    actualStorage: string,
+    productSeries: Product[],
+  ) => {
+    return productSeries.filter(item => item.capacity === actualStorage);
+  };
+
+  const getProductGropBySameColor = (
+    actualColor: string,
+    productSeries: Product[],
+  ) => {
+    return productSeries.filter(item => item.color === actualColor);
+  };
+
+  const getColorHexByName = (colorName: string): string => {
+    const indexOfKey = Object.keys(Colors).indexOf(colorName);
+
+    return `${Object.values(Colors)[indexOfKey]}`;
+  };
+
+  const handleAddDelFav = () => {
+    const currentItem = async () => {
+      const allItems = await getProductsByCategory(productCategory);
+
+      return allItems.find(item => item.itemId === itemId);
+    };
+
+    setIsLoading(true);
+    currentItem()
+      .then(result => {
+        if (result) {
+          addDelProductFavourite(result);
+          setIsAddedToFav(currentStatus => !currentStatus);
+        }
+      })
+      .catch(e => new Error(e))
+      .finally(() => setIsLoading(false));
+  };
+
+  const handleAddDelCart = () => {
+    const currentItem = async () => {
+      const allItems = await getProductsByCategory(productCategory);
+
+      return allItems.find(item => item.itemId === itemId);
+    };
+
+    setIsLoading(true);
+    currentItem()
+      .then(result => {
+        if (result) {
+          addDelProductCart(result as ProductCart);
+          setIsAddedToCart(currentStatus => !currentStatus);
+        }
+      })
+      .catch(e => new Error(e))
+      .finally(() => setIsLoading(false));
+  };
+
+  useEffect(() => {
+    if (itemId) {
+      const getItems = async () => {
+        const [item, itemsAll] = await Promise.all([
+          getProductById(itemId),
+          getProducts(),
+        ]);
+
+        const group = itemsAll
+          .filter(productItem => getGroupKey(productItem) === item.namespaceId)
+          .sort((item1, item2) =>
+            sortNumericField(item1.capacity, item2.capacity, 'ASC'),
+          )
+          .sort((item1, item2) => item1.color.localeCompare(item2.color));
+
+        const productGroupWithSameStorage = getProductGropBySameStorage(
+          item.capacity,
+          group,
+        );
+
+        const productGroupWithSameColor = getProductGropBySameColor(
+          item.color,
+          group,
+        );
+
+        const productsRelated = [...itemsAll].slice(0, 6).map(productItem => {
+          return {
+            ...productItem,
+            image: `${REACT_APP_BASE_URL}/${productItem.image}`,
+          };
+        });
+
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, max-len
+        const isFavourite =
+          favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars, max-len
+        const isCart =
+          cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
+
+        // setProduct(item);
+        setProductDetailed(item);
+        setProductSameSeries(group);
+        setProductCategory(group[0].category);
+        setProductsSameCapacity(productGroupWithSameStorage);
+        setProductsSameColor(productGroupWithSameColor);
+        setRelatedProducts(productsRelated);
+        setIsAddedToFav(isFavourite);
+        setIsAddedToCart(isCart);
+      };
+
+      setIsLoading(true);
+      getItems()
+        .catch(e => Error(e))
+        .finally(() => setIsLoading(false));
+    }
+
+    return () => setIsLoading(false);
+  }, []);
+
+  useEffect(() => {
+    if (itemId && productSameSeries.length > 0) {
+      const getItem = async () => {
+        const item = await getProductById(itemId);
+
+        const productGroupWithSameStorage = getProductGropBySameStorage(
+          item.capacity,
+          productSameSeries,
+        );
+
+        const productGroupWithSameColor = getProductGropBySameColor(
+          item.color,
+          productSameSeries,
+        );
+
+        const isFavourite =
+          favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
+        const isCart =
+          cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
+
+        setProductDetailed(item);
+        setProductsSameCapacity(productGroupWithSameStorage);
+        setProductsSameColor(productGroupWithSameColor);
+        setIsAddedToFav(isFavourite);
+        setIsAddedToCart(isCart);
+      };
+
+      getItem().catch(e => Error(e));
+    }
+  }, [itemId]);
+
+  useEffect(() => {
+    if (productDetailed) {
+      const specsProduct: SpecsPhone = {
+        screen: productDetailed.screen,
+        resolution: productDetailed.resolution,
+        processor: productDetailed.processor,
+        ram: productDetailed.ram,
+        camera: productDetailed.camera,
+        zoom: productDetailed.zoom,
+        cell: productDetailed.cell,
+        capacity: productDetailed.capacity,
+      };
+
+      // eslint-disable-next-line max-len
+      const specsProductSimple: SpecsPhoneSimple = {
+        screen: productDetailed.screen,
+        resolution: productDetailed.resolution,
+        processor: productDetailed.processor,
+        ram: productDetailed.ram,
+        camera: productDetailed.camera,
+      };
+
+      setProductsSpecs(specsProduct);
+      setProductsSpecsSimplified(specsProductSimple);
+    }
+  }, [productDetailed]);
+
+  return (
+    <>
+      {isLoading && <Loader />}
+
+      {!isLoading && productDetailed && (
+        <div className="product-detail">
+          <div className="product-detail__back">
+            <ButtonBack />
+          </div>
+          <h1 className="product-detail__title">{productDetailed?.name}</h1>
+
+          <section
+            className="
+            product-detail__section
+            product-detail__gallery"
+          >
+            <Slider
+              slidesToShow={1}
+              stepBy={1}
+              duration={300}
+              className="product-detail"
+              thumbs={productDetailed.images}
+              navDots={false}
+              navArrows={false}
+            >
+              {productDetailed.images.map(image => (
+                <SliderItem key={image}>
+                  <img src={`./_new/${image}`} alt={productDetailed.name} />
+                </SliderItem>
+              ))}
+            </Slider>
+          </section>
+
+          <section
+            className="
+            product-detail__section
+            product-detail__description"
+          >
+            <h2 className="product-detail__description-title">About</h2>
+            {productDetailed.description.map(paragraph => (
+              <div key={paragraph.title}>
+                <h3 className="product-detail__text-title">
+                  {paragraph.title}
+                </h3>
+                <p className="product-detail__text">{paragraph.text}</p>
+              </div>
+            ))}
+          </section>
+
+          <section
+            className="
+              product-detail__section
+              product-detail__actions"
+          >
+            <div
+              className="
+              product-detail__actions-column
+              product-detail__actions-column--main"
+            >
+              <div className="product-detail__select">
+                <Typography
+                  type="text"
+                  size="sm"
+                  weight="600"
+                  className="product-detail__select-label"
+                >
+                  Available colors
+                </Typography>
+                <div className="product-detail__select-list product-colors">
+                  {productsSameCapacity.map(item => (
+                    <Link
+                      key={item.itemId}
+                      to={`../${item.itemId}`}
+                      style={{
+                        backgroundColor: getColorHexByName(item.color),
+                      }}
+                      className={clsx(
+                        'product-colors__link',
+                        item.color === productDetailed.color && 'active',
+                      )}
+                      title={item.color}
+                      aria-label={item.color}
+                    />
+                  ))}
+                </div>
+              </div>
+              <div className="product-detail__select">
+                <Typography
+                  type="text"
+                  size="sm"
+                  weight="600"
+                  className="product-detail__select-label"
+                >
+                  Select capacity
+                </Typography>
+                <div className="product-detail__select-list product-capacity">
+                  {productsSameColor.map(item => (
+                    <Link
+                      key={item.itemId}
+                      to={`../${item.itemId}`}
+                      className={clsx(
+                        'product-capacity__link',
+                        item.capacity === productDetailed.capacity && 'active',
+                      )}
+                      title={item.capacity}
+                      aria-label={item.capacity}
+                    >
+                      {item.capacity}
+                    </Link>
+                  ))}
+                </div>
+              </div>
+              <div className="product-detail__prices">
+                <p className="product-detail__price-discount">
+                  {productDetailed.priceDiscount}
+                </p>
+                <p className="product-detail__price-regular">
+                  {productDetailed.priceRegular}
+                </p>
+              </div>
+              <div className="product-detail__buttons">
+                <ButtonAdd isAdded={isAddedToCart} onClick={handleAddDelCart} />
+                <ButtonFavourite
+                  isAdded={isAddedToFav}
+                  onClick={handleAddDelFav}
+                />
+              </div>
+              <div
+                className="
+                  product-detail__specs
+                  product-detail__specs--actions"
+              >
+                <Specifications
+                  type="mini"
+                  productInfo={productDetailed}
+                  keys={['screen', 'resolution', 'processor', 'ram']}
+                />
+              </div>
+            </div>
+            <div
+              className="
+              product-detail__actions-column
+              product-detail__actions-column--secondary
+              "
+            >
+              {`ID: ${productDetailed.id}`}
+            </div>
+          </section>
+
+          <section
+            className="
+            section
+            product-detail__section
+            product-detail__specs"
+          >
+            <h2 className="product-detail__description-title">Tech Specs</h2>
+            <Specifications
+              productInfo={productDetailed}
+              type="full"
+              keys={[
+                'screen',
+                'resolution',
+                'processor',
+                'ram',
+                'capacity',
+                'camera',
+                'zoom',
+                'cell',
+              ]}
+            />
+          </section>
+
+          <section
+            className="
+            product-detail__section
+            product-detail__offers"
+          >
+            {relatedProducts.length > 0 && (
+              <ProductCardSlider
+                title="You may also like"
+                products={relatedProducts}
+              />
+            )}
+          </section>
+        </div>
+      )}
+    </>
+  );
+};

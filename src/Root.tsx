@@ -4,15 +4,16 @@ import {
   Route,
   Navigate,
 } from 'react-router-dom';
+import { ProductCategories } from './types';
+import { HomePage, CategoryPage, ProductDetailsPage } from './pages';
+import { NotFoundPage } from './ui/components';
 import { App } from './App';
-import { HomePage, CategoryPage } from './pages';
 // import { PhonesPage } from './pages/PhonesPage';
 // import { TabletsPage } from './pages/TabletsPage';
 // import { AccessoriesPage } from './pages/AccessoriesPage';
 // import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 // import { CartPage } from './pages/CartPage';
 // import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import { NotFoundPage } from './ui/components';
 
 export const Root = () => (
   <Router>
@@ -21,11 +22,20 @@ export const Root = () => (
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to=".." />} />
         <Route path="phones">
-          <Route index element={<CategoryPage />} />
-          {/* <Route path=":itemId" element={<ProductDetailsPage />} /> */}
+          <Route
+            index
+            element={<CategoryPage category={ProductCategories.phones} />}
+          />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
-        <Route path="tablets" element={<CategoryPage />} />
-        <Route path="accessories" element={<CategoryPage />} />
+        <Route
+          path="tablets"
+          element={<CategoryPage category={ProductCategories.tablets} />}
+        />
+        <Route
+          path="accessories"
+          element={<CategoryPage category={ProductCategories.accessories} />}
+        />
         {/* <Route path="favorites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />

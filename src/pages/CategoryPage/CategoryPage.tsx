@@ -8,11 +8,11 @@ import { Product, ProductCategories } from '../../types';
 import './CategoryPage.scss';
 import { Loader } from '../../ui/base';
 
-type Props = {};
+type Props = {
+  category: ProductCategories;
+};
 
-export const CategoryPage: React.FC<Props> = () => {
-  const { pathname } = useLocation();
-  const category = pathname.slice(1) as ProductCategories;
+export const CategoryPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 

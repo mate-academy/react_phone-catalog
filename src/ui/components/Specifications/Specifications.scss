@@ -1,0 +1,20 @@
+@import "../../../styles/variables";
+
+.specifications {
+  &__row {
+    &:not(:last-child) {
+      margin: 0 0 8px;
+    }
+
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__item {
+
+    &--prop {
+      color: $color-secondary;
+    }
+  }
+}
