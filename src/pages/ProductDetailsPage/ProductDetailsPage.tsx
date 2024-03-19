@@ -47,11 +47,6 @@ export const ProductDetailsPage: React.FC = () => {
     ProductCategories.all,
   );
   const [relatedProducts, setRelatedProducts] = useState<Product[]>([]);
-  const [productSpecs, setProductsSpecs] = useState<SpecsPhone>();
-
-  const [productSpecsSimplified, setProductsSpecsSimplified] =
-    useState<SpecsPhoneSimple>();
-
   const [productsSameCapacity, setProductsSameCapacity] = useState<Product[]>(
     [],
   );
@@ -237,33 +232,6 @@ export const ProductDetailsPage: React.FC = () => {
       getItem().catch(e => Error(e));
     }
   }, [itemId]);
-
-  useEffect(() => {
-    if (productDetailed) {
-      const specsProduct: SpecsPhone = {
-        screen: productDetailed.screen,
-        resolution: productDetailed.resolution,
-        processor: productDetailed.processor,
-        ram: productDetailed.ram,
-        camera: productDetailed.camera,
-        zoom: productDetailed.zoom,
-        cell: productDetailed.cell,
-        capacity: productDetailed.capacity,
-      };
-
-      // eslint-disable-next-line max-len
-      const specsProductSimple: SpecsPhoneSimple = {
-        screen: productDetailed.screen,
-        resolution: productDetailed.resolution,
-        processor: productDetailed.processor,
-        ram: productDetailed.ram,
-        camera: productDetailed.camera,
-      };
-
-      setProductsSpecs(specsProduct);
-      setProductsSpecsSimplified(specsProductSimple);
-    }
-  }, [productDetailed]);
 
   return (
     <>
