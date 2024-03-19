@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import clsx from 'clsx';
@@ -16,8 +17,6 @@ import {
   Colors,
   ProductCategories,
   ProductDetail,
-  SpecsPhone,
-  SpecsPhoneSimple,
 } from '../../types';
 
 import { Slider, SliderItem, ProductCardSlider } from '../../ui/modules';
