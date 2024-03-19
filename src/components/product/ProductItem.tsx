@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom';
 import './productsItem.scss'
 import
-  React, {
+React, {
   useContext,
 } from "react";
 import { StateContext } from '../../AppContext';
@@ -25,7 +25,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
   const deleteAllSimilar = useDeleteAllSimilar();
 
   const addToFavourites = () => {
-    if(!getFavourite(state.favourites, product)) {
+    if (!getFavourite(state.favourites, product)) {
       dispatch({ type: ACTIONS.SET_FAVOUTITES, payload: product });
     } else {
       dispatch({ type: ACTIONS.DELETE_FROM_FAVOURITES, payload: product });
@@ -34,7 +34,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
 
   const addToCart = () => {
     const cardData = localStorage.getItem('cart') || '[{}]';
-    if(!getFavourite(JSON.parse(cardData), product)) {
+    if (!getFavourite(JSON.parse(cardData), product)) {
       dispatch({ type: ACTIONS.ADD_TO_CARD, payload: product });
     } else {
       deleteAllSimilar(product)
@@ -44,10 +44,17 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
   return (
 
     <div className="list-item">
+      <Link
+        to={
+          `${product.type === 'phone' ? '/phones' : '/tablets'}/${product.id}`
+        }
 
-      <div className="list-item-image">
-        <img src={product.picsArray[0]} />
-      </div>
+        className='list-item-title'
+      >
+        <div className="list-item-image">
+          <img src={product.picsArray[0]} />
+        </div>
+      </Link>
 
       <div className="list-item-text">
 

@@ -1,5 +1,6 @@
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import { StateContext } from '../../AppContext';
 import './BreadCrumbs.scss';
 
@@ -15,15 +16,22 @@ export const BreadCrumbs: React.FC<Props> = ({ path }) => {
   const { state } = useContext(StateContext);
   const findPhone = state.products.find(elem => elem.id === +parts[2]);
 
+  const linkClass = (
+    { isActive }: { isActive: boolean },
+  ) => classNames('text-navbar', { 'selected-link': isActive });
+
   return (
     <div className="navigation-block">
-      <div className="mr-8 navigator-image">
-        <img
-          src="./img/icons/Home.svg"
-          className="bottom-range"
-          alt="img"
-        />
-      </div>
+      <NavLink to="/" className={linkClass}>
+        <div className="mr-8 navigator-image">
+          <img
+            src="./img/icons/Home.svg"
+            className="bottom-range"
+            alt="img"
+          />
+        </div>
+      </NavLink>
+
       <div className="mr-8 navigator-image">
         <img src="./img/icons/arrowRight.svg" alt="img" />
       </div>

@@ -69,6 +69,8 @@ export const Navbar: React.FC = () => {
     setSearchQuery('');
   }
 
+  console.log(location.pathname, 'pathname navbr');
+  
   return (
     <div className="navbar-total">
       <div className="navbar">
@@ -113,7 +115,8 @@ export const Navbar: React.FC = () => {
 
       <div className="navbar-icons">
 
-        {(location.pathname !== '/' && location.pathname !== '/cart') && (
+        {(location.pathname !== '/' && location.pathname !== '/cart' 
+          && location.pathname.length <= 12) && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input
