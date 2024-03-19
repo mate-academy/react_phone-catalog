@@ -17,11 +17,13 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
+    width: 100%;
 
     @media (max-width: 639px) {
       margin-top: 21px;
       grid-template-columns: 1fr;
       gap: 20px;
+      width: unset;
     }
   }
 
