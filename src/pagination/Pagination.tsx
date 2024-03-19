@@ -11,7 +11,7 @@ type Props = {
 
 export const Pagination: React.FC<Props> = ({ pages }) => {
   const [searchParams] = useSearchParams();
-  const itemsPerPage = searchParams.get('itemsPerPage') || '4'
+  const itemsPerPage = searchParams.get('itemsPerPage') || '4';
   const amountOfPages = Math.ceil(pages / +itemsPerPage);
   const page = searchParams.get('page') || '1';
   const pageArray: number[] = [];

@@ -23,17 +23,17 @@ export const HomePage = () => {
     if (sliderRef.current) {
       if (sliderRef.current?.scrollLeft === 0) {
         sliderRef.current.scrollLeft += scrollAmount;
-        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
       }
       else {
         sliderRef.current.scrollLeft -= scrollAmount;
-        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000)
+        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
       }
     }
     return () => {
       clearTimeout(timer);
     }
-  }, [slideTrigger])
+  }, [slideTrigger]);
 
   function goBack() {
     if (sliderRef.current) {

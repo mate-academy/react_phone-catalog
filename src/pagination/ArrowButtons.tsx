@@ -2,7 +2,7 @@
 import "./pagination.scss";
 
 type Props = {
-  action: () => void
+  action: () => void,
 }
 
 export const ArrowForward: React.FC<Props> = ({ action }) => {
