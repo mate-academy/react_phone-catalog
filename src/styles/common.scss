@@ -4,11 +4,15 @@
   margin: 0 auto;
   padding: 0 20px;
   max-width: 1200px;
-  min-height: calc(100vh - #{$header-height} - #{$footer-height});
+  min-height: calc(100vh - #{$header-height} - 100px - 20px);
 
   @media (max-width: 1199px) {
     max-width: 640px;
     padding: 0 10px;
+  }
+
+  @media (max-width: 639px) {
+    min-height: calc(100vh - #{$header-height} - 210px - 20px);
   }
 }
 
@@ -38,6 +42,11 @@
   &:hover {
     border: 1px solid $primary-color;
   }
+}
+
+.btn-disabled {
+  pointer-events: none;
+  opacity: 0.5;
 }
 
 .title {

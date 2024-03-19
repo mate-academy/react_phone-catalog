@@ -125,6 +125,7 @@ export const Products: React.FC<ProductsProps> = ({ title, category }) => {
     }
 
     setTotalpage(Math.ceil(sortedProducts.length / +visibleProducts));
+    setCurrentPage(1);
   }, [currentSearch, products, sortProducts, visibleProducts]);
 
   const showPrevPage = () => {
@@ -181,47 +182,58 @@ export const Products: React.FC<ProductsProps> = ({ title, category }) => {
         <Loader />
       ) : (
         <>
-          <ProductList products={sortByVisible()} />
-          {totalPages > 1 && (
-            <div className="product__pagination">
-              <button
-                type="button"
-                className="product__btn btn-arrows"
-                onClick={showPrevPage}
-              >
-                <img
-                  className="product__btn-icon"
-                  src={arrowLeft}
-                  alt="iconLeft"
-                />
-              </button>
-              {Array.from({ length: totalPages }, (_, i) => (
-                <SearchLink params={{ page: (i + 1).toString() }} key={i}>
-                  <button
-                    key={i}
-                    type="button"
-                    className={classNames('product__pagination-btn', {
-                      'product__pagination-btn--active': i + 1 === currentPage,
-                    })}
-                    onClick={showPage(i + 1)}
-                  >
-                    {i + 1}
-                  </button>
-                </SearchLink>
-              ))}
-              <button
-                type="button"
-                className="product__btn btn-arrows"
-                onClick={showNextPage}
-              >
-                <img
-                  className="product__btn-icon"
-                  src={arrowRight}
-                  alt="iconRight"
-                />
-              </button>
-            </div>
+          {sortByVisible().length === 0 && (
+            <p className="product__not-found">No products found</p>
           )}
+          <>
+            <ProductList products={sortByVisible()} />
+
+            {totalPages > 1 && (
+              <div className="product__pagination">
+                <button
+                  type="button"
+                  className={classNames('product__btn btn-arrows', {
+                    'btn-disabled': currentPage === 1,
+                  })}
+                  onClick={showPrevPage}
+                >
+                  <img
+                    className="product__btn-icon"
+                    src={arrowLeft}
+                    alt="iconLeft"
+                  />
+                </button>
+                {Array.from({ length: totalPages }, (_, i) => (
+                  <SearchLink params={{ page: (i + 1).toString() }} key={i}>
+                    <button
+                      key={i}
+                      type="button"
+                      className={classNames('product__pagination-btn', {
+                        'product__pagination-btn--active':
+                          i + 1 === currentPage,
+                      })}
+                      onClick={showPage(i + 1)}
+                    >
+                      {i + 1}
+                    </button>
+                  </SearchLink>
+                ))}
+                <button
+                  type="button"
+                  className={classNames('product__btn btn-arrows', {
+                    'btn-disabled': currentPage === totalPages,
+                  })}
+                  onClick={showNextPage}
+                >
+                  <img
+                    className="product__btn-icon"
+                    src={arrowRight}
+                    alt="iconRight"
+                  />
+                </button>
+              </div>
+            )}
+          </>
         </>
       )}
     </div>

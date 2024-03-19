@@ -4,18 +4,24 @@
 .footer {
   padding: 0 15px;
   border-top: 1px solid $border-color;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @media (max-width: 639px) {
+    height: auto;
+  }
 
   &__wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     align-items: center;
-    height: $footer-height;
 
     @media (max-width: 639px) {
       margin-top: 21px;
       grid-template-columns: 1fr;
       gap: 20px;
-      height: auto;
     }
   }
 
@@ -62,9 +68,8 @@
     }
 
     @media (max-width: 639px) {
-      margin: 0 auto;
-      transform: translateX(100%);
-      margin-bottom: 40px;
+      transform: translateX(500%);
+      margin-bottom: 20px;
     }
 
     &:hover {

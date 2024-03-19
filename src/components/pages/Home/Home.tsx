@@ -46,10 +46,12 @@ export const Home = () => {
 
   return (
     <div className="home">
+      <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+
       <Banner />
 
-      <section className="home__hot-prices">
-        <ProductSlider products={hotProducts} title="Hot Prices" />
+      <section className="home__hot-prices" style={{ marginBottom: '40px' }}>
+        <ProductSlider products={newProducts} title="Brand new models" />
       </section>
 
       <section className="home__categories">
@@ -90,8 +92,8 @@ export const Home = () => {
         </div>
       </section>
 
-      <section className="home__hot-prices" style={{ marginBottom: '40px' }}>
-        <ProductSlider products={newProducts} title="Brand new models" />
+      <section className="home__hot-prices">
+        <ProductSlider products={hotProducts} title="Hot Prices" />
       </section>
     </div>
   );

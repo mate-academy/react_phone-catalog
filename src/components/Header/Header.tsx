@@ -6,13 +6,15 @@ import {
   useSearchParams,
   useNavigate,
 } from 'react-router-dom';
-import favoriteIcon from '../../img/favourites.svg';
-
 import './header.scss';
+
+import favoriteIcon from '../../img/favourites.svg';
+import logoIcon from '../../img/logo.png';
 import cartIcon from '../../img/cart.svg';
 import searchIcon from '../../img/search.png';
 import close from '../../img/close.png';
 import menuImg from '../../img/menu.svg';
+
 import { ProductsContext } from '../ProductsContext/ProductsContext';
 
 export const Header = () => {
@@ -67,7 +69,7 @@ export const Header = () => {
       <div className="header__wrapper">
         <div className="header__left-side">
           <NavLink to="/" className="header__logo">
-            Logo
+            <img src={logoIcon} alt="logoivon" />
           </NavLink>
 
           <nav className="header__nav">

@@ -1,13 +1,17 @@
-import arrowUp from '../../img/arrow_up.svg';
+import { NavLink } from 'react-router-dom';
+
 import './footer.scss';
+
+import arrowUp from '../../img/arrow_up.svg';
+import logoIcon from '../../img/logo.png';
 
 export const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__wrapper">
-        <a href="/" className="footer__logo">
-          Logo
-        </a>
+        <NavLink to="/" className="footer__logo">
+          <img src={logoIcon} alt="logoivon" />
+        </NavLink>
 
         <nav className="footer__nav">
           <a
