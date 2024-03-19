@@ -39,6 +39,7 @@
 
     &-invalid {
       cursor: not-allowed;
+      pointer-events: none;
     }
 
     &:not(.pagination__button-invalid):hover {

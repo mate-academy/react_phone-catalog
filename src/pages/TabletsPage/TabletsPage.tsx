@@ -1,7 +1,9 @@
+import { NoResults } from '../../components/NoResults/NoResults';
+
 export const TabletsPage : React.FC = () => {
   return (
     <div className="tabletPage">
-      <h1>Tablets not found</h1>
+      <NoResults page="tablets" />
     </div>
   );
 };

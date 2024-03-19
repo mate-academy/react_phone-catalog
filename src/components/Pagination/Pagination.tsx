@@ -1,11 +1,13 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 import './Pagination.scss';
 import cn from 'classnames';
-import { useState } from 'react';
 
 import { Link, useSearchParams } from 'react-router-dom';
 import { getNumbers, getSearchWith } from '../../utils/helper';
 
+// @ts-ignore
 import arrow from '../../images/icons/disable_arrow.png';
+// @ts-ignore
 import blackArrow from '../../images/icons/arrow-black.svg';
 
 type Props = {
@@ -19,7 +21,6 @@ export const Pagination: React.FC<Props> = ({
   totalNumbersOfItems, itemsPerPage,
 }) => {
   const [searchParams] = useSearchParams();
-  const [current, setCurrent] = useState(5);
   const selectedPage = searchParams.get('page') || defaultPage;
   const amountOfPages = Math.ceil(totalNumbersOfItems / itemsPerPage);
   const pages = getNumbers(1, amountOfPages);
@@ -36,15 +37,22 @@ export const Pagination: React.FC<Props> = ({
 
     switch (value) {
       case 'prev':
-        return getSearchWith(searchParams, { page: (count - 1).toString() });
+        if (currentPage && currentPage !== '1') {
+          return getSearchWith(searchParams, { page: (count - 1).toString() });
+        }
+
+        break;
       case 'next':
-        // setCurrent(count + 1);
+        if (currentPage && currentPage !== amountOfPages.toString()) {
+          return getSearchWith(searchParams, { page: (count + 1).toString() });
+        }
 
-        return getSearchWith(searchParams, { page: (count + 1).toString() });
-
+        break;
       default:
         return searchParams;
     }
+
+    return '';
   };
 
   return (
@@ -57,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
           search: changePage('prev').toString(),
         }}
         className={cn('pagination__button pagination__button-left', {
-          'pagination__button-invalid': current === 1,
+          'pagination__button-invalid': selectedPage === '1',
         })}
       >
         <img
@@ -88,7 +96,8 @@ export const Pagination: React.FC<Props> = ({
         }
         className={cn('pagination__button pagination__button-right',
           {
-            'pagination__button-invalid': current === amountOfPages,
+            'pagination__button-invalid':
+            selectedPage === amountOfPages.toString(),
           })}
       >
         <img

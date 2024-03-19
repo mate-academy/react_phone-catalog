@@ -2,9 +2,7 @@
   display: flex;
   flex-direction: column;
   margin: 0 auto;
-  // display: grid;
   width: 1136px;
-  // grid-template-columns: repeat(24, 1fr);
   padding: 24px 152px 80px;
   padding: 24px 0 80px;
 
@@ -18,7 +16,6 @@
   }
 
   &__back {
-    // grid-column: 1 / -1;
     display: flex;
     flex-direction: row;
     gap: 4px;
@@ -28,7 +25,6 @@
 
   &__currentPage {
     color: #89939A;
-    font-family: Mont;
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
@@ -36,7 +32,6 @@
   }
 
   &__title {
-    // grid-column: 1 / -1;
     font-weight: 700;
     font-size: 32px;
     line-height: 40.9px;
@@ -46,7 +41,6 @@
   }
 
   &__items {
-    // grid-column: 1 / 16;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -107,10 +101,21 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
-    
 
     &:hover {
       cursor: pointer;
     }
+  }
+
+  &__rightPart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__checkoutError {
+    display: flex;
+    justify-content: center;
+    // place-content: center;
   }
 }

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 import { useEffect, useState } from 'react';
@@ -6,8 +7,11 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import './CartItem.scss';
 
+// @ts-ignore
 import closeIcon from '../../images/icons/close.svg';
+// @ts-ignore
 import minus from '../../images/icons/minus.svg';
+// @ts-ignore
 import plus from '../../images/icons/plus.svg';
 
 type Props = {

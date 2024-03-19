@@ -1,8 +1,5 @@
 .favoritePage {
-  // display: flex;
-  // flex-direction: column;
   margin: 0 auto;
-  // justify-content: space-between;
   padding: 24px 152px 80px;
 
   &__header {
@@ -20,7 +17,6 @@
 
   &__currentPage {
     color: #89939A;
-    font-family: Mont;
     font-size: 12px;
     font-style: normal;
     font-weight: 600;
@@ -29,7 +25,6 @@
 
   &__title {
     color: #313237;
-    font-family: Mont;
     font-size: 32px;
     font-style: normal;
     font-weight: 700;

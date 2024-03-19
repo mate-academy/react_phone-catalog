@@ -1,5 +1,7 @@
+import { NoResults } from '../../components/NoResults/NoResults';
+
 export const AccessoriesPage : React.FC = () => {
   return (
-    <h1>Accessories not found</h1>
+    <NoResults page="accessories" />
   );
 };

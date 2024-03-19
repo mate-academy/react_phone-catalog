@@ -16,7 +16,7 @@ export const FavoritesPage: React.FC = () => {
       .parse(localStorage.getItem('LikedProducts') || '[]');
 
     setFavoriteProducts(likedProducts);
-  }, []);
+  }, [favoriteProducts]);
 
   return (
     <div className="favoritePage">

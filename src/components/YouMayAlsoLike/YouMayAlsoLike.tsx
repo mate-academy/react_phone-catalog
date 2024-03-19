@@ -37,7 +37,7 @@ export const YouMayAlsoLike: React.FC = () => {
 
   useEffect(() => {
     getSuggestedProducts();
-  }, [youMayLike, counter]);
+  }, [youMayLike, counter, getSuggestedProducts]);
 
   return (
     <div

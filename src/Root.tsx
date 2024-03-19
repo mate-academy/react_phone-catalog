@@ -12,6 +12,7 @@ import { ProductDetailsPage }
   from './pages/ProductDetailsPage/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+import { NotFoundPage } from './pages/NoFoundPage/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -26,6 +27,7 @@ export const Root = () => (
         <Route path="accessories" element={<AccessoriesPage />} />
         <Route path="favourites" element={<FavoritesPage />} />
         <Route path="cart" element={<CartPage />} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>
