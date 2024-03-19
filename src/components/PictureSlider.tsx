@@ -73,14 +73,14 @@ export const PictureSlider: React.FC = () => {
             className="PictureSlider__dot-button"
             onClick={() => handleDotsSlide(dot)}
           >
-            <span className={cn('PictureSlider__dot', {
-              'PictureSlider__dot--active':
-                bannerPhotos.indexOf(dot) === startIndex,
-            })}
+            <span
+              className={cn('PictureSlider__dot', {
+                'PictureSlider__dot--active':
+                  bannerPhotos.indexOf(dot) === startIndex,
+              })}
             />
           </button>
         ))}
-
       </div>
     </div>
   );

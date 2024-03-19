@@ -25,9 +25,10 @@ export const PhonesPage: React.FC = () => {
   const firstItem = maxItem - perPage;
   const lastItem = maxItem > phones.length ? phones.length : maxItem;
 
-  const getVisiblePhones = useCallback(() => (
-    prepareProductList(phones, query, sort)
-  ), [phones, query, sort]);
+  const getVisiblePhones = useCallback(
+    () => prepareProductList(phones, query, sort),
+    [phones, query, sort],
+  );
 
   const visiblePhones = getVisiblePhones();
   const onPagePhones = visiblePhones.slice(firstItem, lastItem);
@@ -46,9 +47,7 @@ export const PhonesPage: React.FC = () => {
     <main className="phones-page">
       <BreadCrumbs category={Categories.Phones} />
 
-      <h2 className="phones-page__title">
-        Mobile phones
-      </h2>
+      <h2 className="phones-page__title">Mobile phones</h2>
 
       <p className="phones-page__count">
         {`${visiblePhones.length} ${visiblePhones.length === 1 ? 'model' : 'models'}`}

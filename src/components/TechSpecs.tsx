@@ -5,19 +5,23 @@ import { Params } from './Params';
 import { ProductDetails } from '../types/ProductDetails';
 
 interface Props {
-  product: ProductDetails
+  product: ProductDetails;
 }
 
 const TECH_SPECS_PARAMS = [
-  'Screen', 'Resolution', 'Processor', 'RAM',
-  'Built in memory', 'Camera', 'Zoom', 'Cell',
+  'Screen',
+  'Resolution',
+  'Processor',
+  'RAM',
+  'Built in memory',
+  'Camera',
+  'Zoom',
+  'Cell',
 ];
 
 export const TechSpecs: React.FC<Props> = ({ product }) => (
   <div className="tech-specs">
-    <h3 className="tech-specs__title">
-      Tech specs
-    </h3>
+    <h3 className="tech-specs__title">Tech specs</h3>
 
     <Params product={product} params={TECH_SPECS_PARAMS} />
   </div>

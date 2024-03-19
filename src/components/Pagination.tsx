@@ -73,7 +73,6 @@ export const Pagination: React.FC<Props> = ({ productsCount }) => {
         onClick={() => moveRight(page)}
         disabled={isLastPage}
       />
-
     </div>
   );
 };

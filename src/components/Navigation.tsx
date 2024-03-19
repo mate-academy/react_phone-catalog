@@ -8,18 +8,18 @@ import '../styles/Navigation.scss';
 
 const NAVIGATES = ['home', 'phones', 'tablets', 'accessories'];
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => (
-  cn('nav__link', { 'nav__link--active': isActive })
-);
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  cn('nav__link', { 'nav__link--active': isActive });
 
 export const Navigation: React.FC = () => {
   const { isBurgerMenu, setIsBurgerMenu } = useContext(GlobalContext);
 
   return (
     <nav className="nav">
-      <ul className={cn('nav__list', {
-        'nav__list--burger': isBurgerMenu,
-      })}
+      <ul
+        className={cn('nav__list', {
+          'nav__list--burger': isBurgerMenu,
+        })}
       >
         {NAVIGATES.map(item => (
           <li key={item} className="nav__item">

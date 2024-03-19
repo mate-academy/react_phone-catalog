@@ -9,13 +9,11 @@ import { GlobalContext } from '../GlobalContext';
 export const FavCart: React.FC = () => {
   const { favList, cartList, setIsBurgerMenu } = useContext(GlobalContext);
 
-  const getFavLinkClass = ({ isActive }: { isActive: boolean }) => (
-    cn('fav-cart__fav-link', { 'fav-cart__fav-link--active': isActive })
-  );
+  const getFavLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn('fav-cart__fav-link', { 'fav-cart__fav-link--active': isActive });
 
-  const getCartLinkClass = ({ isActive }: { isActive: boolean }) => (
-    cn('fav-cart__cart-link', { 'fav-cart__cart-link--active': isActive })
-  );
+  const getCartLinkClass = ({ isActive }: { isActive: boolean }) =>
+    cn('fav-cart__cart-link', { 'fav-cart__cart-link--active': isActive });
 
   return (
     <div className="fav-cart">
@@ -25,11 +23,8 @@ export const FavCart: React.FC = () => {
           className={getFavLinkClass}
           onClick={() => setIsBurgerMenu(false)}
         >
-          {!!favList.length && (
-            <Counter quantity={favList.length} />
-          )}
+          {!!favList.length && <Counter quantity={favList.length} />}
         </NavLink>
-
       </div>
 
       <div className="fav-cart__block">
@@ -38,9 +33,7 @@ export const FavCart: React.FC = () => {
           className={getCartLinkClass}
           onClick={() => setIsBurgerMenu(false)}
         >
-          {!!cartList.length && (
-            <Counter quantity={cartList.length} />
-          )}
+          {!!cartList.length && <Counter quantity={cartList.length} />}
         </NavLink>
       </div>
     </div>

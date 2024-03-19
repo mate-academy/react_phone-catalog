@@ -10,7 +10,7 @@ import { GlobalContext } from '../GlobalContext';
 import '../styles/Options.scss';
 
 interface Props {
-  product: ProductDetails
+  product: ProductDetails;
 }
 
 const OPTIONS_PARAMS = ['Screen', 'Resolution', 'Processor', 'RAM'];
@@ -28,19 +28,12 @@ export const Options: React.FC<Props> = ({ product }) => {
     id,
   } = product;
 
-  const currentProduct = products.find(item => (
-    item.itemId === id
-  ));
-
-  // console.log(product);
-  // console.log(currentProduct);
+  const currentProduct = products.find(item => item.itemId === id);
 
   return (
     <section className="options">
       <div className="options__select-block">
-        <p className="options__text">
-          Available colors
-        </p>
+        <p className="options__text">Available colors</p>
 
         <ul className="options__list">
           {colorsAvailable.map(col => (
@@ -58,13 +51,10 @@ export const Options: React.FC<Props> = ({ product }) => {
             </li>
           ))}
         </ul>
-
       </div>
 
       <div className="options__select-block">
-        <p className="options__text">
-          Select capacity
-        </p>
+        <p className="options__text">Select capacity</p>
 
         <ul className="options__list">
           {capacityAvailable.map(cap => {
@@ -89,7 +79,6 @@ export const Options: React.FC<Props> = ({ product }) => {
             );
           })}
         </ul>
-
       </div>
 
       <div className="options__prices">

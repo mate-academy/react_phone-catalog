@@ -44,9 +44,7 @@ export const FavoritesPage: React.FC = () => {
     <main className="favorites-page">
       <BreadCrumbs category={Categories.Favorites} />
 
-      <h1 className="favorites-page__title">
-        Favorites
-      </h1>
+      <h1 className="favorites-page__title">Favorites</h1>
 
       <p className="favorites-page__count">
         {`${visibleFavList.length} ${visibleFavList.length === 1 ? 'model' : 'models'}`}

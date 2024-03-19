@@ -18,9 +18,7 @@ export const Category: React.FC = () => {
 
   return (
     <section className="Category">
-      <h2 className="Category__title">
-        Shop by category
-      </h2>
+      <h2 className="Category__title">Shop by category</h2>
 
       <div className="Category__block">
         {CATEGORY_ITEMS.map(item => {
@@ -43,9 +41,7 @@ export const Category: React.FC = () => {
                 />
               </div>
 
-              <h3 className="Category__items-title">
-                {item}
-              </h3>
+              <h3 className="Category__items-title">{item}</h3>
 
               <span className="Category__count">
                 {`${category[link as keyof typeof category].length} models`}

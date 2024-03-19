@@ -31,9 +31,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           />
         </div>
 
-        <h3 className="product-card__title">
-          {product.name}
-        </h3>
+        <h3 className="product-card__title">{product.name}</h3>
 
         <div className="product-card__prices-container">
           <span className="product-card__price">{`$${product.price}`}</span>
@@ -41,7 +39,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
 
         <Params product={product} params={PRODUCT_CARD_PARAMS} />
-
       </Link>
 
       <ButtonsCartFav product={product} />

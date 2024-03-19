@@ -12,15 +12,15 @@ export const GlobalContext = React.createContext<ContextType>({
   phones: [],
   tablets: [],
   accessories: [],
-  setProducts: () => { },
-  setIsLoading: () => { },
-  setIsBurgerMenu: () => { },
+  setProducts: () => {},
+  setIsLoading: () => {},
+  setIsBurgerMenu: () => {},
   getNewPathname: () => '',
-  addRemoveFavList: () => { },
-  addRemoveCartList: () => { },
-  removeCartList: () => { },
-  increaseCartQuantity: () => { },
-  decreaseCartQuantity: () => { },
+  addRemoveFavList: () => {},
+  addRemoveCartList: () => {},
+  removeCartList: () => {},
+  increaseCartQuantity: () => {},
+  decreaseCartQuantity: () => {},
   favList: [],
   cartList: [],
   isLoading: false,
@@ -60,10 +60,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     setCartList([...cartList].filter(i => i.id !== cartItem.id));
   }
 
-  function increaseCartQuantity(
-    id: string,
-  ) {
-    const currentProduct = [...cartList].find(cart => (cart.id === id));
+  function increaseCartQuantity(id: string) {
+    const currentProduct = [...cartList].find(cart => cart.id === id);
 
     if (currentProduct) {
       currentProduct.quantity += 1;
@@ -71,10 +69,8 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
     }
   }
 
-  function decreaseCartQuantity(
-    id: string,
-  ) {
-    const currentProduct = [...cartList].find(cart => (cart.id === id));
+  function decreaseCartQuantity(id: string) {
+    const currentProduct = [...cartList].find(cart => cart.id === id);
 
     if (currentProduct) {
       currentProduct.quantity -= 1;
@@ -124,8 +120,6 @@ export const GlobalProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <GlobalContext.Provider value={value}>
-      {children}
-    </GlobalContext.Provider>
+    <GlobalContext.Provider value={value}>{children}</GlobalContext.Provider>
   );
 };

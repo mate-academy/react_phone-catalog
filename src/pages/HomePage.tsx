@@ -14,9 +14,9 @@ export const HomePage: React.FC = () => {
     brandNewModels: 'Brand new models',
   };
 
-  const hotPriceProducts = products.sort((product1, product2) => (
-    product1.price - product2.price
-  ));
+  const hotPriceProducts = products.sort(
+    (product1, product2) => product1.price - product2.price,
+  );
 
   const brandNewProducts = [...hotPriceProducts].reverse();
 
@@ -45,7 +45,6 @@ export const HomePage: React.FC = () => {
           title={homePageTitles.brandNewModels}
         />
       </section>
-
     </main>
   );
 };

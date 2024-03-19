@@ -16,17 +16,16 @@ export const Search: React.FC = () => {
 
   // const query = searchParams.get('query') || '';
 
-  const appliedQuery = useCallback(debounce((newQuery: string) => {
-    setSearchParams(getSearchWith(
-      searchParams, { query: newQuery },
-    ));
-  }, 1000), [pathname]);
+  const appliedQuery = useCallback(
+    debounce((newQuery: string) => {
+      setSearchParams(getSearchWith(searchParams, { query: newQuery }));
+    }, 1000),
+    [pathname],
+  );
 
   const handleQueryDelete = () => {
     setInputQuery('');
-    setSearchParams(
-      getSearchWith(searchParams, { query: null }),
-    );
+    setSearchParams(getSearchWith(searchParams, { query: null }));
   };
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -58,7 +57,6 @@ export const Search: React.FC = () => {
       ) : (
         <div className="search__icon-search" />
       )}
-
     </label>
   );
 };

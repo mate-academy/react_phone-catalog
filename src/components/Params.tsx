@@ -7,7 +7,7 @@ import '../styles/Params.scss';
 
 interface Props {
   product: Product | ProductDetails;
-  params: string[]
+  params: string[];
 }
 
 export const Params: React.FC<Props> = ({ product, params }) => {
@@ -16,8 +16,8 @@ export const Params: React.FC<Props> = ({ product, params }) => {
       {params.map(name => {
         const key = name === 'Built in memory' ? 'capacity' : name;
 
-        let value
-          = product[key.toLowerCase() as keyof (Product | ProductDetails)];
+        let value =
+          product[key.toLowerCase() as keyof (Product | ProductDetails)];
 
         if (Array.isArray(value)) {
           value = value.join(', ');
@@ -25,13 +25,9 @@ export const Params: React.FC<Props> = ({ product, params }) => {
 
         return (
           <div className="params__param" key={key}>
-            <span className="params__param-name">
-              {name}
-            </span>
+            <span className="params__param-name">{name}</span>
 
-            <span className="params__param-value">
-              {value}
-            </span>
+            <span className="params__param-value">{value}</span>
           </div>
         );
       })}

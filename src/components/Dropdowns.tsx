@@ -3,8 +3,11 @@ import '../styles/Dropdowns.scss';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../helpers/searchHelper';
 
-const sortTypes
-  = [{ age: 'Newest' }, { name: 'Alphabetically' }, { price: 'Cheapest' }];
+const sortTypes = [
+  { age: 'Newest' },
+  { name: 'Alphabetically' },
+  { price: 'Cheapest' },
+];
 
 const PER_PAGE_COUNTS = ['All', '4', '8', '16'];
 
@@ -35,9 +38,7 @@ export const Dropdowns: React.FC = () => {
   return (
     <section className="dropdowns">
       <div className="dropdown">
-        <p className="dropdown__title">
-          Sort by
-        </p>
+        <p className="dropdown__title">Sort by</p>
 
         <select
           value={sort}
@@ -58,9 +59,7 @@ export const Dropdowns: React.FC = () => {
       </div>
 
       <div className="dropdown">
-        <p className="dropdown__title">
-          Items on page
-        </p>
+        <p className="dropdown__title">Items on page</p>
 
         <select
           value={perPage}
@@ -68,7 +67,9 @@ export const Dropdowns: React.FC = () => {
           onChange={handlePerPageChange}
         >
           {PER_PAGE_COUNTS.map(count => (
-            <option value={count} key={count}>{count}</option>
+            <option value={count} key={count}>
+              {count}
+            </option>
           ))}
         </select>
 

@@ -9,14 +9,13 @@ import { checkIsInList } from '../helpers/checkIsInList';
 import '../styles/ButtonsCartFav.scss';
 
 interface Props {
-  product: Product,
-  height?: number
+  product: Product;
+  height?: number;
 }
 
 export const ButtonsCartFav: React.FC<Props> = ({ product, height }) => {
-  const {
-    cartList, favList, addRemoveFavList, addRemoveCartList,
-  } = useContext(GlobalContext);
+  const { cartList, favList, addRemoveFavList, addRemoveCartList } =
+    useContext(GlobalContext);
 
   const cart = {
     id: product.id,
@@ -34,8 +33,7 @@ export const ButtonsCartFav: React.FC<Props> = ({ product, height }) => {
       <button
         type="button"
         className={cn('buttons-cart-fav__cart', {
-          'buttons-cart-fav__cart--active':
-            checkIsInList(product.id, cartList),
+          'buttons-cart-fav__cart--active': checkIsInList(product.id, cartList),
         })}
         onClick={() => addRemoveCartList(cart)}
       >
@@ -46,8 +44,10 @@ export const ButtonsCartFav: React.FC<Props> = ({ product, height }) => {
         type="button"
         data-cy="addToFavorite"
         className={cn('buttons-cart-fav__favorites', {
-          'buttons-cart-fav__favorites--active':
-            checkIsInList(product.id, favList),
+          'buttons-cart-fav__favorites--active': checkIsInList(
+            product.id,
+            favList,
+          ),
         })}
         onClick={() => addRemoveFavList(product)}
       />

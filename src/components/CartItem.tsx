@@ -13,9 +13,8 @@ interface Props {
 }
 
 export const CartItem: React.FC<Props> = ({ item }) => {
-  const {
-    removeCartList, increaseCartQuantity, decreaseCartQuantity,
-  } = useContext(GlobalContext);
+  const { removeCartList, increaseCartQuantity, decreaseCartQuantity } =
+    useContext(GlobalContext);
 
   const { id, product, quantity } = item;
   const price = product.price * quantity;
@@ -30,10 +29,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           onClick={() => removeCartList(item)}
         />
 
-        <Link
-          to={product.itemId}
-          className="cart-item__link"
-        >
+        <Link to={product.itemId} className="cart-item__link">
           <div className="cart-item__photo-container">
             <img
               className="cart-item__photo"
@@ -42,11 +38,8 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             />
           </div>
 
-          <p className="cart-item__title">
-            {product.name}
-          </p>
+          <p className="cart-item__title">{product.name}</p>
         </Link>
-
       </div>
 
       <div className="cart-item__right-block">
@@ -58,9 +51,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
             disabled={quantity === 1}
           />
 
-          <span className="cart-item__quantity">
-            {quantity}
-          </span>
+          <span className="cart-item__quantity">{quantity}</span>
 
           <button
             type="button"
@@ -69,9 +60,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           />
         </div>
 
-        <span className="cart-item__price">
-          {`$${price}`}
-        </span>
+        <span className="cart-item__price">{`$${price}`}</span>
       </div>
     </li>
   );

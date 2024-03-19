@@ -50,7 +50,6 @@ export const Root = () => (
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>
-
       </Routes>
     </GlobalProvider>
   </Router>

@@ -32,9 +32,7 @@ export const BreadCrumbs: React.FC<Props> = ({ category, productName }) => {
       {productName && (
         <>
           <div className="bread-crumbs__arrow-right" />
-          <p className="bread-crumbs__path">
-            {productName}
-          </p>
+          <p className="bread-crumbs__path">{productName}</p>
         </>
       )}
     </div>

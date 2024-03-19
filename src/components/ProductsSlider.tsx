@@ -6,8 +6,8 @@ import { Product } from '../types/Product';
 import '../styles/ProductsSlider.scss';
 
 interface Props {
-  products: Product[],
-  title: string,
+  products: Product[];
+  title: string;
 }
 
 export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
@@ -18,7 +18,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const onDesktop = window.innerWidth >= 1200;
 
   let itemWidth = onMobile ? 300 : 272;
-  // let frameSize = 1;
 
   const step = frameSize;
   const gap = 16;
@@ -46,14 +45,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     if (onDesktop && frameSize !== 4) {
       setFrameSize(4);
     }
-    // console.log(windowWidth.current);
-    // console.log(itemWidth);
   };
 
   const moveLeft = (stepShift: number) => {
     const isEnoughImages = stepShift - startIndex >= 0;
-
-    // console.log(frameSize);
 
     if (startIndex === 0 && infinite) {
       setStartIndex(lastFrame);
@@ -66,8 +61,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
 
   const moveRight = (stepShift: number) => {
     const isEnoughImages = startIndex + stepShift >= lastFrame;
-
-    // console.log(frameSize);
 
     if (startIndex === lastFrame && infinite) {
       setStartIndex(0);
@@ -92,14 +85,10 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
     }
   }, [onDesktop, onMobile, onTablet, frameSize]);
 
-  // console.log(itemWidth);
-
   return (
     <section className="ProductsSlider">
       <div className="ProductsSlider__top">
-        <h2 className="ProductsSlider__title">
-          {title}
-        </h2>
+        <h2 className="ProductsSlider__title">{title}</h2>
 
         <div className="ProductsSlider__buttons">
           <button
@@ -115,7 +104,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
             onClick={() => moveRight(step)}
             disabled={startIndex === products.length - frameSize}
           />
-
         </div>
       </div>
 
@@ -123,15 +111,11 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
         <ul className="ProductsSlider__list">
           {products.map(product => (
             <li key={product.itemId} style={itemStyle}>
-              <ProductCard
-                product={product}
-                data-cy="cardsContainer"
-              />
+              <ProductCard product={product} data-cy="cardsContainer" />
             </li>
           ))}
         </ul>
       </div>
-
     </section>
   );
 };

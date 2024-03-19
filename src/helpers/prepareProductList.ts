@@ -2,7 +2,9 @@ import { Product } from '../types/Product';
 import { SortValue } from '../types/SortValue';
 
 export const prepareProductList = (
-  products: Product[], query: string, sort?: string,
+  products: Product[],
+  query: string,
+  sort?: string,
 ) => {
   let preparedPhones = [...products];
 
@@ -23,9 +25,9 @@ export const prepareProductList = (
   });
 
   if (query) {
-    preparedPhones = preparedPhones.filter(product => (
-      product.name.toLowerCase().includes(query.toLowerCase())
-    ));
+    preparedPhones = preparedPhones.filter(product =>
+      product.name.toLowerCase().includes(query.toLowerCase()),
+    );
   }
 
   return preparedPhones;

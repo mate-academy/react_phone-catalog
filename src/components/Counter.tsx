@@ -9,9 +9,7 @@ interface Props {
 export const Counter: React.FC<Props> = ({ quantity }) => {
   return (
     <div className="counter">
-      <span className="counter__count">
-        {quantity}
-      </span>
+      <span className="counter__count">{quantity}</span>
     </div>
   );
 };

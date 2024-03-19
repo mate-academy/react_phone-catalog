@@ -13,9 +13,7 @@ export const App: React.FC = () => {
     <div className="app">
       <Header />
 
-      {isBurgerMenu && (
-        <Menu />
-      )}
+      {isBurgerMenu && <Menu />}
 
       {!isBurgerMenu && (
         <>

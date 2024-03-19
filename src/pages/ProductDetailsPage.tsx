@@ -40,7 +40,7 @@ export const ProductDetailsPage: React.FC = () => {
       window.scrollTo(0, 0);
 
       getProductDetails(productId)
-        .then((resolve) => {
+        .then(resolve => {
           setProduct(resolve);
           setShuffledProducts(shuffleArrays(products));
           setSelectedImage(resolve.images[0]);
@@ -64,22 +64,18 @@ export const ProductDetailsPage: React.FC = () => {
   const { images, name, description } = product;
 
   return (
-    <main className={cn('product-details-page', {
-      'product-details-page--is-loading': isLoading,
-    })}
+    <main
+      className={cn('product-details-page', {
+        'product-details-page--is-loading': isLoading,
+      })}
     >
-      <BreadCrumbs
-        category={Categories.Phones}
-        productName={name}
-      />
+      <BreadCrumbs category={Categories.Phones} productName={name} />
 
       <BackButton />
 
       <div className="product-details-page__content">
         <div className="product-details-page__content-top">
-          <h2 className="product-details-page__title">
-            {name}
-          </h2>
+          <h2 className="product-details-page__title"> {name} </h2>
 
           <div className="product-details-page__gallery-selected">
             <img
@@ -123,20 +119,13 @@ export const ProductDetailsPage: React.FC = () => {
             <About description={description} />
           </section>
 
-          <section
-            className="product-details-page__tech-specs"
-          >
+          <section className="product-details-page__tech-specs">
             <TechSpecs product={product} />
           </section>
         </div>
 
-        <ProductsSlider
-          products={shuffledProducts}
-          title={randomSliderTitle}
-        />
-
+        <ProductsSlider products={shuffledProducts} title={randomSliderTitle} />
       </div>
-
     </main>
   );
 };

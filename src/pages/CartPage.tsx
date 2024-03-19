@@ -18,8 +18,8 @@ export const CartPage: React.FC = () => {
   let totalItems = 0;
 
   cartList.forEach(cart => {
-    total += (cart.quantity * cart.product.price)
-    totalItems += cart.quantity
+    total += cart.quantity * cart.product.price;
+    totalItems += cart.quantity;
   });
 
   function getCheckoutMessage() {
@@ -44,9 +44,7 @@ export const CartPage: React.FC = () => {
     <main className="cart-page">
       <BackButton />
 
-      <h1 className="cart-page__title">
-        Cart
-      </h1>
+      <h1 className="cart-page__title">Cart</h1>
 
       <section className="cart-page__content">
         <div className="cart-page__list">
@@ -56,9 +54,7 @@ export const CartPage: React.FC = () => {
         </div>
 
         <div className="cart-page__total-block">
-          <span className="cart-page__total-price">
-            {`$${total}`}
-          </span>
+          <span className="cart-page__total-price">{`$${total}`}</span>
 
           <p className="cart-page__total-description">
             {`Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`}
@@ -79,7 +75,6 @@ export const CartPage: React.FC = () => {
           )}
         </div>
       </section>
-
     </main>
   );
 };

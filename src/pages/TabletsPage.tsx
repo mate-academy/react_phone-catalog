@@ -10,8 +10,7 @@ export const TabletsPage: React.FC = () => {
       <BreadCrumbs category={Categories.Tablets} />
 
       <h1 className="warning">
-        There is no products on this page for now.
-        We are working on it.
+        There is no products on this page for now.We are working on it.
       </h1>
     </>
   );

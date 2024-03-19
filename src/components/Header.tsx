@@ -25,16 +25,11 @@ export const Header: React.FC = () => {
   return (
     <header className="header" id="header">
       <div className="header__left-block">
-        <Link
-          to="/"
-          className="logo"
-          onClick={() => setIsBurgerMenu(false)}
-        />
+        <Link to="/" className="logo" onClick={() => setIsBurgerMenu(false)} />
 
         <div className="header__nav">
           <Navigation />
         </div>
-
       </div>
 
       <div className="header__right-block">
@@ -54,7 +49,6 @@ export const Header: React.FC = () => {
             onClick={() => switchBurgerButton(isBurgerMenu)}
           />
         </div>
-
       </div>
     </header>
   );

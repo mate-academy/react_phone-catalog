@@ -25,6 +25,10 @@
     @include onMobile {
       margin-bottom: 32px;
     }
+
+    @include onTablet {
+      margin-bottom: 32px;
+    }
   }
 
   &__total-block {
