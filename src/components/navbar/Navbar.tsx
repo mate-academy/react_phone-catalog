@@ -39,17 +39,17 @@ export const Navbar: React.FC = () => {
   }
 
   useEffect(() => {
-    params.delete('search');
-    setSearchParams(params);
+    // params.delete('search');
+    // setSearchParams(params);
   }, [])
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
 
-    applySearchDelayedQuery2(e.target.value)
+    applySearchDelayedQuery2(e.target.value);
 
     setSearchQuery(e.target.value);
 
-    setSearchParams(params);
+    // setSearchParams(params);
 
   }
 
@@ -57,7 +57,7 @@ export const Navbar: React.FC = () => {
     if (!search) {
       params.delete('search');
     } else {
-      params.set('search', search)
+      params.set('search', search);
     }
 
     setSearchParams(params);
@@ -115,8 +115,7 @@ export const Navbar: React.FC = () => {
 
       <div className="navbar-icons">
 
-        {(location.pathname !== '/' && location.pathname !== '/cart' 
-          && location.pathname.length <= 12) && (
+        {(location.pathname !== '/' && location.pathname !== '/cart') && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input

@@ -21,6 +21,7 @@ export const HomePage = () => {
   useEffect(() => {
     let timer: any;
     if (sliderRef.current) {
+      
       if (sliderRef.current?.scrollLeft === 0) {
         sliderRef.current.scrollLeft += scrollAmount;
         timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
@@ -29,6 +30,7 @@ export const HomePage = () => {
         sliderRef.current.scrollLeft -= scrollAmount;
         timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
       }
+
     }
     return () => {
       clearTimeout(timer);
