@@ -11,10 +11,18 @@
   letter-spacing: 0.04em;
   text-align: left;
 
-  a{
+  &__link{
+    height: 64px;
+
     text-decoration: none;
     text-transform: uppercase;
     color: $color-secondary;
     outline: none;
+
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
   }
 }

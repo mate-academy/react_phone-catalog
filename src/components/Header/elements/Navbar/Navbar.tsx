@@ -1,24 +1,29 @@
 import { NavLink } from 'react-router-dom';
 import './Navbar.scss';
 import '../../../../styles/utils.scss';
-import { getLinkStyle } from '../../../../helpers/utils/getLinkStyle';
+import classNames from 'classnames';
+
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('navbar__link', {
+    'link-active': isActive,
+  });
 
 export const Navbar = () => {
   return (
     <nav className="navbar">
-      <NavLink to="/" style={getLinkStyle}>
+      <NavLink to="/" className={getLinkClass}>
         Home
       </NavLink>
 
-      <NavLink to="/phones" style={getLinkStyle}>
+      <NavLink to="/phones" className={getLinkClass}>
         Phones
       </NavLink>
 
-      <NavLink to="/tablets" style={getLinkStyle}>
+      <NavLink to="/tablets" className={getLinkClass}>
         Tablets
       </NavLink>
 
-      <NavLink to="/accessories" style={getLinkStyle}>
+      <NavLink to="/accessories" className={getLinkClass}>
         Accesories
       </NavLink>
     </nav>
