@@ -21,4 +21,14 @@ export const swiperImages = [
   require('../assets/banners/banner-acc-ies.png'),
 ];
 
-export const forthcomingPageImage = [require('../assets/others/soon.png')][0];
+export const forthcomingPageImage = [require('../assets/others/tool.gif')][0];
+
+export const wentWrong = [require('../assets/others/error.png')][0];
+
+export const emptyCart = [require('../assets/others/empty-cart.gif')][0];
+
+export const favouritesPageImage = [
+  require('../assets/others/favourite.gif'),
+][0];
+
+export const checkoutPageImage = [require('../assets/others/full-cart.gif')][0];

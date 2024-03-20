@@ -14,7 +14,7 @@
 
   &__left {
     display: flex;
-    align-self: center;
+    align-items: center;
     gap: 64px;
 
     @include for-phones {
@@ -22,6 +22,11 @@
       padding-right: 24px;
       gap: 10px;
     }
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
   }
 
   &__search {

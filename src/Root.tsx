@@ -6,6 +6,10 @@ import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { ForthcomingPage } from './pages/ForthcomingPage';
+import { NotFoundPage } from './pages/NotFoundPage';
+import { CartPage } from './pages/CartPage';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { CheckoutPage } from './pages/CheckoutPage';
 
 export const Root: React.FC = () => {
   return (
@@ -17,6 +21,10 @@ export const Root: React.FC = () => {
           <Route path="/tablets" element={<ForthcomingPage />} />
           <Route path="/accessories" element={<ForthcomingPage />} />
           <Route path="phones/:itemId" element={<ProductDetailsPage />} />
+          <Route path="*" element={<NotFoundPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/checkout" element={<CheckoutPage />} />
         </Route>
       </Routes>
     </Router>

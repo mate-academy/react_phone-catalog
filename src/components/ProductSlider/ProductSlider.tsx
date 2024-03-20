@@ -65,7 +65,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
         <div className="product-slider__buttons">
           <button
             className={classNames('button', {
-              'button-disabled': isLeftButtonDisabled,
+              'button--disabled': isLeftButtonDisabled,
             })}
             type="button"
             aria-label="move-left"
@@ -81,7 +81,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
 
           <button
             className={classNames('button', {
-              'button-disabled': isRightButtonDisabled,
+              'button--disabled': isRightButtonDisabled,
             })}
             type="button"
             aria-label="move-right"
@@ -90,7 +90,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products }) => {
           >
             <div
               className={classNames('icon', 'icon-next', {
-                'icon-next-inactive': isRightButtonDisabled, // icon-next-??inactive??
+                'icon-next-inactive': isRightButtonDisabled,
               })}
             />
           </button>

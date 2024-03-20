@@ -6,8 +6,14 @@
   flex-direction: column;
   gap: 20px;
 
+  &__title {
+    margin-top: 75px;
+  }
+
   &__image {
-    width: 300px;
+    width: 170px;
+    background-color: $secondary-color;
+    border-radius: 50%;
 
     @include for-phones {
       width: 200px;

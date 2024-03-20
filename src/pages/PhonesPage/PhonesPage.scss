@@ -1,0 +1,66 @@
+@import "../../styles/main";
+
+.phones-page {
+  --bottom-margin: 40px;
+
+  padding-bottom: 80px;
+
+  &--loading {
+    @include flex-center;
+
+    height: 100%;
+  }
+
+  &__top {
+    margin-bottom: var(--bottom-margin);
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__models {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+
+  &__filter {
+    margin-bottom: 24px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__content {
+    @include flex-center;
+
+    flex-wrap: wrap;
+    max-width: 1136px;
+    gap: var(--bottom-margin) 16px;
+
+    margin-bottom: var(--bottom-margin);
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__sort-by {
+    width: 176px;
+  }
+
+  &__selector-name {
+    @extend %links;
+
+    margin-bottom: 4px;
+  }
+
+  &__found {
+    color: $secondary-color;
+
+    @extend %body-text;
+
+    margin-block: 24px;
+  }
+}

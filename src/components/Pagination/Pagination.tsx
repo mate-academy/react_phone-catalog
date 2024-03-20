@@ -3,6 +3,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getNumbers } from '../../helpers/getNumbers';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { goTop } from '../../helpers/goTop';
+import './Pagination.scss';
 
 type Props = {
   total: number;

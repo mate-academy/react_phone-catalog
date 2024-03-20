@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
 import './Header.scss';
 import debounce from 'lodash.debounce';
-import { Logo } from '../Logo/Logo';
+import { Logo } from '../Logo';
 import { Nav } from '../Nav';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { categoriesPath, categoriesWithInput } from '../../helpers/constants';
@@ -74,13 +74,13 @@ export const Header = () => {
 
   return (
     <header className="header">
-      <div className="header_left">
+      <div className="header__left">
         <Logo />
 
         {!isCart && <Nav />}
       </div>
 
-      <div className="header_right">
+      <div className="header__right">
         {isFavVisible && isVisible && (
           <div className="header__search">
             <input
@@ -115,8 +115,8 @@ export const Header = () => {
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
-              classNames('header_favourites', {
-                'header_favourites-is-active': isActive,
+              classNames('header__favourites', {
+                'header__favourites-is-active': isActive,
               })
             }
           >

@@ -1,0 +1,79 @@
+@import "../../styles/main";
+
+.select {
+  position: relative;
+
+  &--per-page {
+    max-width: 128px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px 9px;
+    background-color: $white-color;
+
+    @include border-default;
+
+    width: 100%;
+
+    @include hover(border-color, $icons-color);
+
+    &--target {
+      border-color: $main-color;
+
+      @include hover(border-color, $main-color);
+    }
+  }
+
+  &__main-text {
+    @extend %button;
+
+    color: $main-color;
+  }
+
+  &__icon {
+    transition: transform ease 0.3s;
+
+    &--target {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__options {
+    position: absolute;
+    padding-block: 8px;
+    border: 1px solid $elements-color;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    width: 100%;
+    background-color: $white-color;
+
+    opacity: 0;
+    z-index: -1;
+
+    transition: transform ease 0.2s;
+
+    &--is-active {
+      opacity: 100;
+      z-index: 0;
+      transform: translateY(5px);
+    }
+  }
+
+  &__option {
+    @extend %body-text;
+
+    color: $secondary-color;
+    padding: 6px 0 5px 12px;
+    background-color: inherit;
+    width: 100%;;
+    text-align: start;
+
+    transition: all ease 0.3s;
+
+    &:hover {
+      background-color: $bg-and-hover-color;
+      color: $main-color;
+    }
+  }
+}

@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { BASE_URL } from '../../api/api';
 import './ProductCard.scss';
+import { ActionsBlock } from '../ActionsBlock';
 
 type Props = {
   product: Product;
@@ -57,7 +58,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className="product-card__button">
-        {/* <ActionsBlock product={product} paddingFav="11px" /> */}
+        <ActionsBlock product={product} paddingFav="11px" />
       </div>
     </div>
   );

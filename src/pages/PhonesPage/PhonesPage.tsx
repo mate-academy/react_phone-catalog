@@ -1,15 +1,18 @@
 import { useSearchParams } from 'react-router-dom';
 import { useCallback, useEffect } from 'react';
+import './PhonesPage.scss';
 import { sortProducts } from '../../helpers/sortProducts';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import * as pagination from '../../helpers/pagination';
 import { thunkGetPhones } from '../../features/product/productsSlice';
-// import { SortBy } from '../../types/SortBy';
-// import { PerPage } from '../../types/PerPage';
+import { SortBy } from '../../types/SortBy';
+import { PerPage } from '../../types/PerPage';
 import { ProductCard } from '../../components/ProductCard';
 import { Pagination } from '../../components/Pagination';
 import { NoResults } from '../../components/NoResults';
 import { Loader } from '../../components/Loader';
+import { Breadcrumb } from '../../components/Breadcrumb';
+import { Selector } from '../../components/Selector';
 
 export const PhonesPage = () => {
   const [searchParams] = useSearchParams();
@@ -60,10 +63,34 @@ export const PhonesPage = () => {
     <div className="phones-page">
       {!query ? (
         <>
+          <Breadcrumb />
+
           <div className="phones-page__top">
             <h1 className="phones-page__title title">Mobile phones</h1>
 
             <p className="phones-page__models">{`${phones.length} models`}</p>
+          </div>
+
+          <div className="phones-page__filter">
+            <div className="phones-page__sort-by">
+              <p className="phones-page__selector-name">Sort by</p>
+
+              <Selector
+                defaultValue={sortBy}
+                searchParam="sort"
+                values={SortBy}
+              />
+            </div>
+
+            <div className="phones-page__sort-by">
+              <p className="phones-page__selector-name">Items on page</p>
+
+              <Selector
+                defaultValue={perPage}
+                searchParam="perPage"
+                values={PerPage}
+              />
+            </div>
           </div>
 
           <div className="phones-page__content" data-cy="productList">
@@ -84,12 +111,36 @@ export const PhonesPage = () => {
         </>
       ) : (
         <>
+          <Breadcrumb />
+
           <div className="phones-page__top">
             <h1 className="phones-page__title title">Mobile phones</h1>
 
             <p className="phones-page__models">
               {`${phonesWithQuery.length} models from search result`}
             </p>
+          </div>
+
+          <div className="phones-page__filter">
+            <div className="phones-page__sort-by">
+              <p className="phones-page__selector-name">Sort by</p>
+
+              <Selector
+                defaultValue={sortBy}
+                searchParam="sort"
+                values={SortBy}
+              />
+            </div>
+
+            <div className="phones-page__sort-by">
+              <p className="phones-page__selector-name">Items on page</p>
+
+              <Selector
+                defaultValue={perPage}
+                searchParam="perPage"
+                values={PerPage}
+              />
+            </div>
           </div>
 
           <div className="phones-page__content">

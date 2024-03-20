@@ -20,7 +20,7 @@
   }
 
   &-top {
-    background-image: url('../assets/icons/ArrowUpHidden.svg');
+    background-image: url('../assets/icons/ArrowUp.svg');
   }
 
   &-prev {
@@ -32,7 +32,7 @@
   }
 
   &-next {
-    background-image: url('../assets/icons/ArrowRightHidden.svg');
+    background-image: url('../assets/icons/ArrowRight.svg');
   }
 
   &-home {
@@ -40,7 +40,7 @@
   }
 
   &-next-inactive {
-    background-image: url('../assets/icons/ArrowRight.svg');
+    background-image: url('../assets/icons/ArrowRightHidden.svg');
   }
 
   &-search {
@@ -51,7 +51,7 @@
     background-image: url('../assets/icons/Close.svg');
   }
 
-  &-close-main {
+  &-close-hidden {
     background-image: url('../assets/icons/CloseHidden.svg');
 
     @include hover(background-image, url('../assets/icons/Close.svg'));
@@ -65,7 +65,7 @@
     background-image: url('../assets/icons/Minus.svg');
   }
 
-  &-minus-main {
+  &-minus-hidden {
     background-image: url('../assets/icons/MinusHidden.svg');
   }
 
@@ -73,7 +73,7 @@
     background-image: url('../assets/icons/Plus.svg');
   }
 
-  &-plus-main {
+  &-plus-hidden {
     background-image: url('../assets/icons/PlusHidden.svg');
   }
 

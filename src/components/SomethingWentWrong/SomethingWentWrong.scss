@@ -1,0 +1,38 @@
+@import "../../styles/main";
+
+.something-went-wrong {
+  @include flex-center;
+
+  flex-direction: column;
+
+  padding-top: 80px;
+
+  gap: 20px;
+
+  &__image {
+    width: 656px;
+    height: 437px;
+  }
+
+  &__link {
+    width: 320px;
+  }
+
+  &__text-container {
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    @extend %body-text;
+
+    color: $secondary-color;
+  }
+
+  &__button {
+    width: 320px;
+  }
+}

@@ -5,11 +5,15 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { NotFoundPage } from '../NotFoundPage';
 import { getRandomProducts } from '../../api/api';
 import { Loader } from '../../components/Loader';
-import { thunkGetProduct } from '../../features/productInfo/productInfoSlice';
+import { thunkGetPhones } from '../../features/product/productsSlice';
 import {
   removeProduct,
-  thunkGetPhones,
-} from '../../features/product/productsSlice';
+  thunkGetProduct,
+} from '../../features/productInfo/productInfoSlice';
+import { ProductInfo } from '../../components/ProductInfo/ProductInfo';
+import { SomethingWentWrong } from '../../components/SomethingWentWrong';
+import './ProductDetailsPage.scss';
+import { Breadcrumb } from '../../components/Breadcrumb';
 
 export const ProductDetailsPage = () => {
   const navigate = useNavigate();
@@ -69,6 +73,8 @@ export const ProductDetailsPage = () => {
         {!loading && !error && product && (
           <>
             <div className="product-details__nav">
+              <Breadcrumb />
+
               <button
                 className="product-details__back"
                 onClick={goBack}
