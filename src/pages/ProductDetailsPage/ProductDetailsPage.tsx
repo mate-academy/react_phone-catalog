@@ -180,7 +180,7 @@ export const ProductDetailsPage: React.FC = () => {
                           onClick={() => handleSetCurrentImage(image)}
                         >
                           <img
-                            src={`_new/${image}`}
+                            src={`https://mate-academy.github.io/react_phone-catalog/_new/${image}`}
                             alt={image}
                             className="productDetails__image"
                           />
@@ -190,7 +190,7 @@ export const ProductDetailsPage: React.FC = () => {
                   </ul>
                 </div>
                 <img
-                  src={`_new/${currentImage}`}
+                  src={`https://mate-academy.github.io/react_phone-catalog/_new/${currentImage}`}
                   alt={currentImage}
                   className="productDetails__currentImage"
                 />

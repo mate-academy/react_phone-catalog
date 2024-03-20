@@ -67,7 +67,7 @@ export const CartItem: React.FC<Props> = ({ cartProduct }) => {
       <Link to={`/phones/${cartProduct.phoneId}`}>
         <img
           className="cartItem__phoneImage"
-          src={`_new/${cartProduct.image}`}
+          src={`https://mate-academy.github.io/react_phone-catalog/_new/${cartProduct.image}`}
           alt={cartProduct.image}
         />
       </Link>

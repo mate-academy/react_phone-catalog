@@ -61,7 +61,7 @@ export const CartPage: React.FC = () => {
 
             <div className="cartPage__rightPart">
               <div className="cartPage__total">
-                <h1 className="cartPage__totalPrice">{sum}</h1>
+                <h1 className="cartPage__totalPrice">{`$${sum}`}</h1>
                 <div className="cartPage__totalItemsComponent">
                   <p className="cartPage__totalItems">{`Total for ${quantity} items`}</p>
                   <p className="cartPage__line" />
