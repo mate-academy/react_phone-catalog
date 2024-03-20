@@ -1,19 +1,20 @@
 /* eslint-disable @typescript-eslint/indent */
 import { ProductDetail } from './ProductDetail';
 
-export type SpecsPhone = Pick<
-  ProductDetail,
-  | 'screen'
-  | 'resolution'
-  | 'processor'
-  | 'ram'
-  | 'camera'
-  | 'zoom'
-  | 'cell'
-  | 'capacity'
->;
+export const SpecificationsPhone: Array<keyof ProductDetail> = [
+  'screen',
+  'resolution',
+  'processor',
+  'ram',
+  'capacity',
+  'camera',
+  'zoom',
+  'cell',
+];
 
-export type SpecsPhoneSimple = Pick<
-  ProductDetail,
-  'screen' | 'resolution' | 'processor' | 'ram' | 'camera'
->;
+export const SpecificationsPhoneSimplified: Array<keyof ProductDetail> = [
+  'screen',
+  'resolution',
+  'processor',
+  'ram',
+];

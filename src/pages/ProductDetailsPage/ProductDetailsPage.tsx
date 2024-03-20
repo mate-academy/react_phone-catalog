@@ -8,6 +8,7 @@ import {
   getProducts,
   getProductsByCategory,
   sortNumericField,
+  wait,
 } from '../../utils';
 
 import { ProductContext } from '../../context/ProductsContext';
@@ -17,6 +18,8 @@ import {
   Colors,
   ProductCategories,
   ProductDetail,
+  SpecificationsPhone,
+  SpecificationsPhoneSimplified,
 } from '../../types';
 
 import { Slider, SliderItem, ProductCardSlider } from '../../ui/modules';
@@ -30,10 +33,12 @@ import {
 import { Loader, Typography } from '../../ui/base';
 
 import './ProductDetailsPage.scss';
+import { useScrollToTop } from '../../hooks';
 
 const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL || '';
 
 export const ProductDetailsPage: React.FC = () => {
+  const [backToTop] = useScrollToTop();
   const { itemId } = useParams();
   const {
     favouriteItems,
@@ -112,14 +117,17 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     setIsLoading(true);
-    currentItem()
-      .then(result => {
-        if (result) {
-          addDelProductFavourite(result);
-          setIsAddedToFav(currentStatus => !currentStatus);
-        }
+    wait(100)
+      .then(() => {
+        currentItem()
+          .then(result => {
+            if (result) {
+              addDelProductFavourite(result);
+              setIsAddedToFav(currentStatus => !currentStatus);
+            }
+          })
+          .catch(e => new Error(e));
       })
-      .catch(e => new Error(e))
       .finally(() => setIsLoading(false));
   };
 
@@ -131,19 +139,25 @@ export const ProductDetailsPage: React.FC = () => {
     };
 
     setIsLoading(true);
-    currentItem()
-      .then(result => {
-        if (result) {
-          addDelProductCart(result as ProductCart);
-          setIsAddedToCart(currentStatus => !currentStatus);
-        }
+    wait(100)
+      .then(() => {
+        currentItem()
+          .then(result => {
+            if (result) {
+              addDelProductCart(result as ProductCart);
+              setIsAddedToCart(currentStatus => !currentStatus);
+            }
+          })
+          .catch(e => new Error(e));
       })
-      .catch(e => new Error(e))
       .finally(() => setIsLoading(false));
   };
 
   useEffect(() => {
-    if (itemId) {
+    const requiresReloadSeries =
+      productSameSeries.findIndex(item => item.itemId === itemId) === -1;
+
+    if (itemId && requiresReloadSeries) {
       const getItems = async () => {
         const [item, itemsAll] = await Promise.all([
           getProductById(itemId),
@@ -200,15 +214,12 @@ export const ProductDetailsPage: React.FC = () => {
 
       setIsLoading(true);
       getItems()
+        .then(() => backToTop())
         .catch(e => Error(e))
         .finally(() => setIsLoading(false));
     }
 
-    return () => setIsLoading(false);
-  }, []);
-
-  useEffect(() => {
-    if (itemId && productSameSeries.length > 0) {
+    if (itemId && !requiresReloadSeries) {
       const getItem = async () => {
         const item = await getProductById(itemId);
 
@@ -242,13 +253,15 @@ export const ProductDetailsPage: React.FC = () => {
 
       getItem().catch(e => Error(e));
     }
+
+    return () => setIsLoading(false);
   }, [itemId]);
 
   return (
     <>
-      {isLoading && <Loader />}
+      {isLoading && <Loader fullScreen />}
 
-      {!isLoading && productDetailed && (
+      {productDetailed && (
         <div className="product-detail">
           <div className="product-detail__back">
             <ButtonBack />
@@ -397,7 +410,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <Specifications
                   type="mini"
                   productInfo={productDetailed}
-                  keys={['screen', 'resolution', 'processor', 'ram']}
+                  keys={SpecificationsPhoneSimplified}
                 />
               </div>
             </div>
@@ -430,16 +443,7 @@ export const ProductDetailsPage: React.FC = () => {
             <Specifications
               productInfo={productDetailed}
               type="full"
-              keys={[
-                'screen',
-                'resolution',
-                'processor',
-                'ram',
-                'capacity',
-                'camera',
-                'zoom',
-                'cell',
-              ]}
+              keys={SpecificationsPhone}
             />
           </section>
 

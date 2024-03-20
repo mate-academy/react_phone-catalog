@@ -5,7 +5,10 @@ import { LocalStorage } from './LocalStorage';
 import { Product, ProductCart } from './Product';
 import { ProductCategories } from './ProductCategories';
 import { ProductDetail } from './ProductDetail';
-import { SpecsPhone, SpecsPhoneSimple } from './Specifications';
+import {
+  SpecificationsPhone,
+  SpecificationsPhoneSimplified,
+} from './Specifications';
 
 export {
   Colors,
@@ -17,8 +20,8 @@ export {
   type ProductCart,
   ProductCategories,
   type ProductDetail,
-  type SpecsPhone,
-  type SpecsPhoneSimple,
+  SpecificationsPhone,
+  SpecificationsPhoneSimplified,
   SortByOptions,
   PerPageOptions,
 };

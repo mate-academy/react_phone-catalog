@@ -1,16 +1,12 @@
 import { Link } from 'react-router-dom';
 import { Icon, Button, Typography } from '../../base';
 import { Logo } from '../Logo';
+import { useScrollToTop } from '../../../hooks';
 
 import './Footer.scss';
 
 export const Footer: React.FC = () => {
-  const backToTop = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
+  const [backToTop] = useScrollToTop();
 
   return (
     <footer className="footer">

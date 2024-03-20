@@ -1,7 +1,30 @@
 @import './styles/index';
 
+*::-webkit-scrollbar {
+  width: 10px;
+}
+
+*::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background-color: $color-elements;
+}
+
+*::-webkit-scrollbar-track-piece:end {
+  background-color: rgba(0, 0, 0, 0.01);
+  margin: 0 0 3px;
+}
+
+*::-webkit-scrollbar-track-piece:start {
+  background-color: rgba(0, 0, 0, 0.01);
+  margin: 3px 0 0;
+}
+
 html {
   font-size: 12px;
+  scroll-behavior: smooth;
 
   @include media-mobile {
     font-size: 10px;
@@ -17,6 +40,11 @@ html {
     flex-direction: column;
     min-height: 100vh;
   }
+}
+
+.lock {
+  padding: 0 10px 0 0;
+  overflow: hidden;
 }
 
 iframe {
