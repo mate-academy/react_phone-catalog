@@ -39,7 +39,7 @@ export const SliderThumbs: React.FC<Props> = ({
                 activeImage === index && 'active',
               )}
             >
-              <img src={`./_new/${image}`} alt={image} />
+              <img src={image} alt={image} />
             </div>
           ))}
       </div>

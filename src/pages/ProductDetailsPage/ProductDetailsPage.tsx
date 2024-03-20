@@ -150,6 +150,12 @@ export const ProductDetailsPage: React.FC = () => {
           getProducts(),
         ]);
 
+        const imagesFixedUrl = item.images.map(
+          img => `${REACT_APP_BASE_URL}${img}`,
+        );
+
+        item.images = imagesFixedUrl;
+
         const group = itemsAll
           .filter(productItem => getGroupKey(productItem) === item.namespaceId)
           .sort((item1, item2) =>
@@ -206,6 +212,12 @@ export const ProductDetailsPage: React.FC = () => {
       const getItem = async () => {
         const item = await getProductById(itemId);
 
+        const imagesFixedUrl = item.images.map(
+          img => `${REACT_APP_BASE_URL}${img}`,
+        );
+
+        item.images = imagesFixedUrl;
+
         const productGroupWithSameStorage = getProductGropBySameStorage(
           item.capacity,
           productSameSeries,
@@ -241,7 +253,9 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-detail__back">
             <ButtonBack />
           </div>
-          <h1 className="product-detail__title">{productDetailed?.name}</h1>
+          <Typography type="title" level="1" className="product-detail__title">
+            {productDetailed?.name}
+          </Typography>
 
           <section
             className="
@@ -259,7 +273,7 @@ export const ProductDetailsPage: React.FC = () => {
             >
               {productDetailed.images.map(image => (
                 <SliderItem key={image}>
-                  <img src={`./_new/${image}`} alt={productDetailed.name} />
+                  <img src={image} alt={productDetailed.name} />
                 </SliderItem>
               ))}
             </Slider>
@@ -270,13 +284,29 @@ export const ProductDetailsPage: React.FC = () => {
             product-detail__section
             product-detail__description"
           >
-            <h2 className="product-detail__description-title">About</h2>
+            <Typography
+              type="title"
+              level="2"
+              className="product-detail__description-title"
+            >
+              About
+            </Typography>
             {productDetailed.description.map(paragraph => (
               <div key={paragraph.title}>
-                <h3 className="product-detail__text-title">
+                <Typography
+                  type="title"
+                  level="3"
+                  className="product-detail__text-title"
+                >
                   {paragraph.title}
-                </h3>
-                <p className="product-detail__text">{paragraph.text}</p>
+                </Typography>
+                <Typography
+                  type="text"
+                  weight="500"
+                  className="product-detail__text"
+                >
+                  {paragraph.text}
+                </Typography>
               </div>
             ))}
           </section>
@@ -377,7 +407,10 @@ export const ProductDetailsPage: React.FC = () => {
               product-detail__actions-column--secondary
               "
             >
-              {`ID: ${productDetailed.id}`}
+              <Typography
+                type="text"
+                size="sm"
+              >{`ID: ${productDetailed?.id}`}</Typography>
             </div>
           </section>
 
@@ -387,7 +420,13 @@ export const ProductDetailsPage: React.FC = () => {
             product-detail__section
             product-detail__specs"
           >
-            <h2 className="product-detail__description-title">Tech Specs</h2>
+            <Typography
+              type="title"
+              level="2"
+              className="product-detail__description-title"
+            >
+              Tech Specs
+            </Typography>
             <Specifications
               productInfo={productDetailed}
               type="full"
