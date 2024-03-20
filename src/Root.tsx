@@ -12,6 +12,7 @@ import { NoResults } from './pages/NoResults/NoResults';
 import { ProductCard } from './components/product/ProductCard';
 import { FafouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+import TabletPage from './pages/TabletPage';
 
 export const Root = () => (
   <HashRouter>
@@ -24,7 +25,7 @@ export const Root = () => (
             <Route path=":productId?" element={<ProductCard />} />
           </Route>
           <Route path="tablets">
-            <Route index element={<ProductPage />} />
+            <Route index element={<TabletPage />} />
             <Route path=":productId?" element={<ProductCard />} />
           </Route>
           <Route path="favourites" element={<FafouritesPage />} />

@@ -4,9 +4,7 @@ import classNames from 'classnames';
 import './navbar.scss';
 import {
   useCallback,
-  useContext,
-  useEffect,
-  useState
+  useContext, useEffect, useState
 } from 'react';
 import { StateContext } from '../../AppContext';
 import debounce from 'lodash.debounce';
@@ -17,51 +15,63 @@ export const Navbar: React.FC = () => {
 
   const [searchQuery, setSearchQuery] = useState<string>('');
 
-  const linkClass = (
-    { isActive }: { isActive: boolean },
-  ) => classNames('text-navbar', { 'selected-link': isActive });
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('text-navbar', { 'selected-link': isActive });
 
-  const linkClassIcons = (
-    { isActive }: { isActive: boolean },
-  ) => classNames({ 'selected-icons': isActive });
+  const linkClassIcons = ({ isActive }: { isActive: boolean }) =>
+    classNames({ 'selected-icons': isActive });
 
   const location = useLocation();
 
   const { state } = useContext(StateContext);
 
   function customLinkClass(filedName: string) {
-
     return location.pathname.includes(filedName);
   }
 
   function homeLinkClass() {
-    return location.pathname === '/'
+    return location.pathname === '/';
   }
 
   useEffect(() => {
-    // params.delete('search');
-    // setSearchParams(params);
-  }, [])
+    params.delete('search');
+    setSearchParams(params);
+  }, [location.pathname]);
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
+    // e.preventDefault();
 
     applySearchDelayedQuery2(e.target.value);
 
     setSearchQuery(e.target.value);
 
     // setSearchParams(params);
-
   }
 
-  const applySearchDelayedQuery2 = useCallback(debounce((search: string) => {
-    if (!search) {
-      params.delete('search');
-    } else {
-      params.set('search', search);
-    }
+  console.log(location.pathname, location.search,'pathname inside navbar');
 
-    setSearchParams(params);
-  }, 1000), [])
+  const applySearchDelayedQuery2 = useCallback(
+    debounce((search: string) => {
+      if (!search) {
+        params.delete('search');
+      } else {
+        params.set(`search`, search);
+      }
+
+      setSearchParams(params);
+    }, 1000),
+    [location.pathname],
+  );
+
+  // const applySearchDelayedQuery2 = (search: string) => {
+  //   if (!search) {
+  //     params.delete('search');
+  //   } else {
+  //     params.set(`search`, search);
+  //   }
+
+  //   setSearchParams(params);
+  // }
 
   function closeSearch() {
     params.delete('search');
@@ -69,29 +79,32 @@ export const Navbar: React.FC = () => {
     setSearchQuery('');
   }
 
-  console.log(location.pathname, 'pathname navbr');
-  
+  console.log(location.pathname, params, 'pathname navbr');
+
   return (
     <div className="navbar-total">
       <div className="navbar">
-
         <div className="text-navbar--left navbar-box-item">
           <img src="./img/icons/logo2.svg" alt="img" />
         </div>
 
-        {location.pathname !== '/cart' &&
+        {location.pathname !== '/cart' && (
           <>
-            <div className={classNames("navbar-box-item", {
-              "selected-nav": homeLinkClass(),
-            })}>
+            <div
+              className={classNames('navbar-box-item', {
+                'selected-nav': homeLinkClass(),
+              })}
+            >
               <NavLink to="/" className={linkClass}>
                 Home
               </NavLink>
             </div>
 
-            <div className={classNames("navbar-box-item", {
-              "selected-nav": customLinkClass('phones'),
-            })}>
+            <div
+              className={classNames('navbar-box-item', {
+                'selected-nav': customLinkClass('phones'),
+              })}
+            >
               <NavLink to="/phones" className={linkClass}>
                 Phones
               </NavLink>
@@ -109,20 +122,18 @@ export const Navbar: React.FC = () => {
               </NavLink>
             </div>
           </>
-        }
-
+        )}
       </div>
 
       <div className="navbar-icons">
-
-        {(location.pathname !== '/' && location.pathname !== '/cart') && (
+        {location.pathname !== '/' && location.pathname !== '/cart' && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input
                 className="search--input"
                 placeholder={`Search in ${location.pathname.slice(1)}...`}
                 value={searchQuery}
-                onChange={(e) => handleSearch(e)}
+                onChange={e => handleSearch(e)}
               />
             </div>
             <div className="search-align search-align--search">
@@ -132,15 +143,15 @@ export const Navbar: React.FC = () => {
                   alt="img"
                   onClick={closeSearch}
                 />
-              ) :
-                (<img src="./img/icons/search.svg" alt="img" />)
-              }
+              ) : (
+                <img src="./img/icons/search.svg" alt="img" />
+              )}
             </div>
           </div>
         )}
 
-        {location.pathname !== '/cart' &&
-          <NavLink to="/favourites" className={linkClassIcons} >
+        {location.pathname !== '/cart' && (
+          <NavLink to="/favourites" className={linkClassIcons}>
             <div className="navbar_icon navbar-icons">
               <img src="./img/icons/icon_1.svg" alt="img" />
               {state.favourites.length > 0 && (
@@ -150,7 +161,7 @@ export const Navbar: React.FC = () => {
               )}
             </div>
           </NavLink>
-        }
+        )}
 
         <NavLink to="/cart" className={linkClassIcons}>
           <div className="navbar_icon navbar-icons">
@@ -162,7 +173,6 @@ export const Navbar: React.FC = () => {
             )}
           </div>
         </NavLink>
-
       </div>
     </div>
   );

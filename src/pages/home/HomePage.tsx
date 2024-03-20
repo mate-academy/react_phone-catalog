@@ -1,5 +1,7 @@
 /* eslint-disable */
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, 
+  useEffect, 
+  useRef, useState } from 'react';
 import '../ProductPage/product.scss';
 import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';

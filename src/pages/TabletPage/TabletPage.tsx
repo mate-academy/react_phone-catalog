@@ -15,7 +15,7 @@ import { Pagination } from '../../pagination/Pagination';
 import { Product } from '../../types';
 import { NoResults } from '../NoResults/NoResults';
 
-export const ProductPage: React.FC = () => {
+ const TabletPage: React.FC = () => {
   const { state, dispatch } = useContext(StateContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -35,8 +35,8 @@ export const ProductPage: React.FC = () => {
   if (state.products) {
 
     // const fullName = location.pathname;
+    const newName = 'tablet'
     // const newName = fullName.slice(1, fullName.length - 1);
-    const newName = 'phone'
 
     copyOfProducts = [...state.products.filter(product => product.type === newName)];
 
@@ -74,7 +74,7 @@ export const ProductPage: React.FC = () => {
     <div>
 
       <p className="font-header">{getPageHeader(location.pathname)}</p>
-      <div className="font-models-amount">{copyOfProducts.length} models</div>
+      <div className="font-models-amount">{copyOfProducts.length} models its a table page</div>
 
 
       <div className="select-block">
@@ -138,3 +138,5 @@ export const ProductPage: React.FC = () => {
     </div>
   );
 };
+
+export default TabletPage;
