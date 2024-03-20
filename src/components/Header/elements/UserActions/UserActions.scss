@@ -1,0 +1,16 @@
+@import '../../../../styles/utils';
+
+.user-actions {
+  display: flex;
+  flex-direction: row;
+
+  &__icon {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+    height: 64px;
+    border-left: 1px solid $color-elements;
+  }
+}

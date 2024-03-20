@@ -1,0 +1,20 @@
+.header {
+  grid-area: header;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  box-sizing: border-box;
+  width: 100%;
+  border-bottom: 1px solid #E2E6E9;
+
+  &__left {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 64px;
+  }
+}
