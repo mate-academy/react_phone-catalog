@@ -48,7 +48,6 @@ export const SelectNumber: React.FC<Props> = ({
       </span>
       <Button
         type="default"
-        disabled={value === 1}
         className="number-select__button"
         onClickHandler={handleAdd}
       >

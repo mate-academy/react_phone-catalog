@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useParams } from 'react-router-dom';
 import clsx from 'clsx';
 
 import {
@@ -28,6 +28,7 @@ import {
   ButtonAdd,
   ButtonBack,
   Specifications,
+  Breadcrumb,
 } from '../../ui/components';
 
 import { Loader, Typography } from '../../ui/base';
@@ -40,6 +41,7 @@ const REACT_APP_BASE_URL = process.env.REACT_APP_BASE_URL || '';
 export const ProductDetailsPage: React.FC = () => {
   const [backToTop] = useScrollToTop();
   const { itemId } = useParams();
+  const location = useLocation();
   const {
     favouriteItems,
     addDelProductFavourite,
@@ -263,6 +265,7 @@ export const ProductDetailsPage: React.FC = () => {
 
       {productDetailed && (
         <div className="product-detail">
+          <Breadcrumb path={location.pathname} />
           <div className="product-detail__back">
             <ButtonBack />
           </div>

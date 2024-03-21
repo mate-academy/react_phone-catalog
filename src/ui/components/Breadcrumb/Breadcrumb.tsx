@@ -8,16 +8,17 @@ import './Breadcrumb.scss';
 
 type Props = {
   path: string;
+  className?: string;
 };
 
-export const Breadcrumb: React.FC<Props> = ({ path }) => {
+export const Breadcrumb: React.FC<Props> = ({ path, className }) => {
   const currentPath = path.split('/').filter(link => link !== '');
   const activeLink = currentPath[currentPath.length - 1];
 
   return (
-    <ul className="breadcrumb">
+    <ul className={clsx('breadcrumb', className)}>
       <li className="breadcrumb__item">
-        <Link to="../../">
+        <Link to="../../" className="breadcrumb__link">
           <Icon
             id="home"
             width={16}

@@ -20,7 +20,7 @@ export const Page: React.FC<Props> = () => {
         case 'phones':
         case 'tablets':
         case 'accessories':
-        case 'favourites':
+        case 'favorites':
           setIsShowHeaderSearch(true);
           setIsShowHeaderFav(true);
           break;

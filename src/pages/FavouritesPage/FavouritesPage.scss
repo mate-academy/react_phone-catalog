@@ -1,0 +1,43 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+@import "../../styles/extends";
+
+.favourites {
+
+  &__title {
+    margin: 0 0 8px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+
+  &__item {
+    flex-basis: 230px;
+    display: flex;
+  }
+
+  &__counter {
+    margin: 0 0 to-rem(20);
+  }
+
+  @include media-tablet {
+
+    &__counter {
+      margin: 0 0 to-rem(40);
+    }
+
+    &__item {
+      flex-basis: 270px;
+    }
+  }
+
+  @include media-mobile {
+
+    &__list {
+      justify-content: center;
+    }
+  }
+}

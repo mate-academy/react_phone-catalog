@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import clsx from 'clsx';
 import './Loader.scss';
 import { createPortal } from 'react-dom';

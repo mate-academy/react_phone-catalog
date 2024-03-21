@@ -1,17 +1,25 @@
 import React from 'react';
+import clsx from 'clsx';
 import { useNavigate } from 'react-router-dom';
 import { ActiveButton } from '../ActiveButton';
-import { Icon } from '../../base';
+import { Icon, Typography } from '../../base';
 
-type Props = {};
+type Props = {
+  className?: string;
+};
 
-export const ButtonBack: React.FC<Props> = () => {
+export const ButtonBack: React.FC<Props> = ({ className = '' }) => {
   const navigate = useNavigate();
 
   return (
-    <ActiveButton onClickHandler={() => navigate(-1)} className="back-button">
+    <ActiveButton
+      onClickHandler={() => navigate(-1)}
+      className={clsx('back-button', className)}
+    >
       <Icon id="arrow-left" width={16} height={16} className="arrow__icon" />
-      <span>Back</span>
+      <Typography type="text" size="sm" weight="600">
+        Back
+      </Typography>
     </ActiveButton>
   );
 };

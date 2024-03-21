@@ -26,6 +26,7 @@ import { Breadcrumb } from './Breadcrumb';
 import { ProductList } from './ProductList';
 import { Specifications } from './Specifications';
 import { ButtonBack } from './ButtonBack';
+import { Modal } from './Modal';
 
 export {
   Page,
@@ -54,4 +55,5 @@ export {
   ProductList,
   Specifications,
   ButtonBack,
+  Modal,
 };

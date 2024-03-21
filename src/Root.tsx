@@ -5,15 +5,15 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { ProductCategories } from './types';
-import { HomePage, CategoryPage, ProductDetailsPage } from './pages';
+import {
+  HomePage,
+  CategoryPage,
+  ProductDetailsPage,
+  CartPage,
+  FavouritesPage,
+} from './pages';
 import { NotFoundPage } from './ui/components';
 import { App } from './App';
-// import { PhonesPage } from './pages/PhonesPage';
-// import { TabletsPage } from './pages/TabletsPage';
-// import { AccessoriesPage } from './pages/AccessoriesPage';
-// import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
-// import { CartPage } from './pages/CartPage';
-// import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
@@ -36,8 +36,8 @@ export const Root = () => (
           path="accessories"
           element={<CategoryPage category={ProductCategories.accessories} />}
         />
-        {/* <Route path="favorites" element={<FavouritesPage />} />
-        <Route path="cart" element={<CartPage />} /> */}
+        <Route path="favorites" element={<FavouritesPage />} />
+        <Route path="cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

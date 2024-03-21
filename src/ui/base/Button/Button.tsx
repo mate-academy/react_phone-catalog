@@ -9,6 +9,7 @@ type Props = {
   active?: boolean;
   borderless?: boolean;
   disabled?: boolean;
+  fullWidth?: boolean;
   className?: string;
   onClickHandler?: () => void;
   cypressParam?: string;
@@ -19,6 +20,7 @@ const MemoButton: React.FC<Props> = ({
   active = false,
   borderless = false,
   disabled = false,
+  fullWidth = false,
   className = '',
   cypressParam,
   onClickHandler = () => {},
@@ -31,6 +33,7 @@ const MemoButton: React.FC<Props> = ({
         `button-${type}`,
         borderless && 'button-borderless',
         active && 'button.active',
+        fullWidth && 'button-w100',
         className,
       )}
       type="button"
