@@ -1,7 +1,6 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-// const API_URL = '_new';
 export const API_URL =
   'https://mate-academy.github.io/react_phone-catalog/_new';
 
