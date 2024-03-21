@@ -1,0 +1,116 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.cart-item {
+  padding: 24px;
+  display: flex;
+  justify-content: space-between;
+
+  border: 1px solid $elements-color;
+
+  @include onMobile {
+    display: block;
+  }
+
+  &__left-block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+
+    @include onMobile {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__delete-button {
+    width: 16px;
+    height: 16px;
+
+    background: url("../icons/Union.svg") no-repeat center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__photo-container {
+    padding: 7px;
+    display: flex;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__photo {
+    height: 100%
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 500;
+    color: $primary-color;
+  }
+
+  &__right-block {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__quantity-buttons {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__decrease-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-color;
+    transition: $transition-duration;
+
+    background: url('../icons/minus-icon.svg') no-repeat center;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &:disabled {
+      cursor: auto;
+      background: url('../icons/minus-icon-disabled.svg') no-repeat center;
+      border: 1px solid $elements-color;
+    }
+  }
+
+  &__increase-button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $gray-icons-color;
+    transition: $transition-duration;
+
+    background: url('../icons/plus-icon.svg') no-repeat center;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+  }
+
+  &__quantity {
+    display: block;
+    width: 16px;
+    font-size: 14px;
+    text-align: center;
+    color: $primary-color;
+  }
+
+  &__price {
+    width: 80px;
+    color: $primary-color;
+    font-size: 22px;
+    font-weight: $bold-font;
+    line-height: 140%;
+    text-align: right;
+  }
+}

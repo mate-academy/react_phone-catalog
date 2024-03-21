@@ -1,0 +1,19 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.phones-page {
+  &__title {
+    @include h2Text;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 40px;
+
+    @include onMobile {
+      margin-bottom: 32px;
+    }
+  }
+}

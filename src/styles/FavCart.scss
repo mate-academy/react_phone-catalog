@@ -1,0 +1,39 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.fav-cart {
+  display: flex;
+
+  @include onMobile {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  &__block {
+    position: relative;
+    box-shadow: -1px 0px 0px 0px $elements-color;
+
+    @include onMobile {
+      box-shadow: -1px -1px 0px 0px $elements-color;
+      width: 50%;
+    }
+  }
+
+  &__fav-link {
+    display: flex;
+    background: url("../icons/favorites-icon.svg") no-repeat center;
+    padding: calc($header-height / 2) 32px;
+
+    @include headerLine;
+  }
+
+  &__cart-link {
+    display: flex;
+    background: url("../icons/shopping-cart-icon.svg") no-repeat center;
+    padding: calc($header-height / 2) 32px;
+
+    @include headerLine;
+  }
+}

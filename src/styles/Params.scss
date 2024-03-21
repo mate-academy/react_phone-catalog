@@ -1,0 +1,23 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.params {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__param {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__param-name {
+    font-weight: $medium-font;
+  }
+
+  &__param-value {
+    font-weight: $medium-font;
+    color: $primary-color;
+  }
+}

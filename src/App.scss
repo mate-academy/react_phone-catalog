@@ -1,1 +1,90 @@
-// not empty
+@import "./utils/fonts.scss";
+@import "./utils/variables.scss";
+@import "./utils/mixins.scss";
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: $normal-font;
+  line-height: normal;
+  color: $secondary-color;
+
+  scroll-behavior: smooth;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+button {
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+select:focus {
+  outline: none;
+  border-color: transparent;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  max-width: 100vw;
+  // justify-content: space-between;
+  overflow: hidden;
+}
+
+.main-content {
+  padding: 40px 24px 80px;
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+
+  @include onMobile {
+    // padding: 40px 80px 80px;
+  }
+
+  &__container {
+    max-width: 1136px;
+    width: 100%;
+
+    @include onTablet {
+      max-width: 848px;
+      min-width: 592px;
+    }
+
+    @include onMobile {
+      max-width: 591px;
+      min-width: 300px;
+    }
+  }
+}
+
+.warning {
+  margin-top: 50px;
+  text-align: center;
+  font-weight: 700;
+  font-size: 28px;
+  color: $primary-color,
+}

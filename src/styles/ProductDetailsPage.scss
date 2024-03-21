@@ -1,0 +1,145 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.product-details-page {
+  // &__content {}
+
+  &__content-top {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    margin-bottom: 80px;
+
+    @include onTablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include onMobile {
+      margin-bottom: 56px;
+      display: block;
+    }
+  }
+
+  &__title {
+    grid-column: 1/-1;
+    color: $primary-color;
+    font-size: 32px;
+    font-weight: $bold-font;
+    line-height: 41px;
+    margin-bottom: 47px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onMobile {
+      font-size: 22px;
+      line-height: 140%;
+      margin-bottom: 32px;
+    }
+  }
+
+  &__gallery-selected {
+    display: flex;
+    justify-content: center;
+    grid-column: 3/ span 10;
+    grid-row: 2;
+    height: 464px;
+
+    @include onTablet {
+      grid-column: 2/ span 6;
+      height: 350px;
+    }
+
+    @include onMobile {
+      height: 288px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__gallery-list {
+    grid-column: 1/ span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      grid-column: 1/ 2;
+      gap: 8px;
+    }
+
+    @include onMobile {
+      margin-bottom: 40px;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 0;
+    }
+  }
+
+  &__gallery-button {
+    padding: 5px 0;
+    width: 100%;
+    height: 80px;
+    border: solid 1px $elements-color;
+    cursor: pointer;
+
+    &--active {
+      border: solid 1px $primary-color;
+    }
+
+    @include onTablet {
+      height: 55px;
+    }
+
+    @include onMobile {
+      width: 55px;
+      height: 55px;
+    }
+  }
+
+  &__gallery-image {
+    width: fit-content;
+    height: 100%;
+  }
+
+  &__options {
+    grid-column: 14/ span 7;
+
+    @include onTablet {
+      grid-column: 8/ span 5;
+    }
+  }
+
+  &__content-button {
+    @include onDesktop {
+      margin-bottom: 80px;
+      display: grid;
+      grid-template-columns: repeat(24, 1fr);
+      column-gap: 16px;
+    }
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__about {
+    grid-column: 1/ span 12;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onMobile {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__tech-specs {
+    grid-column: 14/ span 11;
+  }
+}

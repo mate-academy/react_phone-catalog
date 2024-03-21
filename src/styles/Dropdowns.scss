@@ -1,0 +1,69 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.dropdowns {
+  display: grid;
+  grid-template-columns: 176px 128px 1fr;
+  column-gap: 16px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    grid-template-columns: 187px 136px 1fr;
+  }
+
+  @include onMobile {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    // grid-template-columns: 1fr 1fr;
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  &__title {
+    font-weight: $medium-font;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    position: relative;
+    display: flex;
+    align-items: center;
+    z-index: 2;
+    padding: 0 12px;
+    width: 100%;
+    height: 40px;
+
+    font-size: 14px;
+    font-weight: $medium-font;
+
+    color: $primary-color;
+    background-color: transparent;
+    border: 1px solid $gray-icons-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+
+    &:focus {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    padding: 8px;
+    background: url(../icons/arrow-down.svg) no-repeat center;
+    position: absolute;
+    top: 55%;
+    right: 5%;
+    z-index: 1;
+
+    &:focus {
+      background: url(../icons/arrow-top.svg) no-repeat center;
+    }
+  }
+}

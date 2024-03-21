@@ -1,0 +1,69 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+$card-gap: 16px;
+$card-width: 272px;
+
+
+.ProductsSlider {
+  width: 100%;
+
+  &__top {
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2Text;
+  }
+
+  &__content {
+    width: $card-width * 4 + $card-gap * 3;
+    overflow: hidden;
+    height: 100%;
+
+    @include onTablet {
+      width: $card-width * 3 + $card-gap * 2;
+    }
+
+    @include onMobile {
+      width: $card-width * 2 + $card-gap;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button-left {
+    padding: 16px;
+    background: url(../icons/arrow-left.svg) no-repeat center;
+    border: 1px solid $gray-icons-color;
+
+    &:disabled {
+      background: url(../icons/arrow-left-disabled.svg) no-repeat center;
+      border: 1px solid $elements-color;
+      cursor: default;
+    }
+  }
+
+  &__button-right {
+    padding: 16px;
+    background: url(../icons/arrow-right.svg) no-repeat center;
+    border: 1px solid $gray-icons-color;
+
+    &:disabled {
+      background: url(../icons/arrow-right-disabled.svg) no-repeat center;
+      border: 1px solid $elements-color;
+      cursor: default;
+    }
+  }
+}

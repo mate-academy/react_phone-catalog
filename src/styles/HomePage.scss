@@ -1,0 +1,17 @@
+@import '../utils/variables.scss';
+
+.home-page__section {
+  margin-bottom: 80px;
+
+  &__title {
+    color: $primary-color;
+    font-size: 32px;
+    font-weight: $bold-font;
+    letter-spacing: -0.32px;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+  }
+}

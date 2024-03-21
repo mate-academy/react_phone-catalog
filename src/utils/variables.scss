@@ -1,0 +1,14 @@
+$normal-font: 500;
+$medium-font: 600;
+$bold-font: 700;
+
+$primary-color: #313237;
+$secondary-color: #89939a;
+$gray-icons-color: #b4bdc3;
+$elements-color: #e2e6e9;
+
+$header-height: 64px;
+$footer-height: 96px;
+$outlet-height: calc(100vh - $header-height + $footer-height);
+
+$transition-duration: 0.5s;

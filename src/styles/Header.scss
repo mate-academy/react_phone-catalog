@@ -1,0 +1,59 @@
+@import "../utils/variables.scss";
+@import "../utils/mixins.scss";
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 24px;
+  box-shadow: 0px 1px 0px 0px $elements-color;
+
+  &__left-block {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 64px;
+  }
+
+  &__nav {
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__right-block {
+    display: flex;
+  }
+
+  &__fav-cart-search {
+    display: flex;
+
+    @include onMobile {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: none;
+
+    @include onMobile {
+      display: block;
+      position: relative;
+      box-shadow: -1px 0px 0px 0px $elements-color;
+    }
+  }
+
+  &__burger-button {
+    display: flex;
+    background: url("../icons/burger-menu-icon.svg") no-repeat center;
+    padding: calc($header-height / 2) 32px;
+    transition: transform 0.5s;
+
+    @include headerLine;
+
+    &--active {
+      background: url("../icons/cross-black-icon.svg") no-repeat center;
+
+      // @include headerLine;
+    }
+  }
+}
