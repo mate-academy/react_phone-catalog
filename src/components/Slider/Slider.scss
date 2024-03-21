@@ -1,7 +1,16 @@
 @import '../../App';
 
 .Slider {
-  margin: 0 0 80px;
+  margin: 0 -16px 80px 0;
+
+  @include on-tablet {
+    margin: 0 -24px 64px 0;
+  }
+
+  @include on-desktop {
+    margin: 0 0 80px;
+  }
+
   &__header {
     display: flex;
     justify-content: space-between;
@@ -46,11 +55,9 @@
     &:hover {
       border-color: $colorBlack;
     }
+
+    &:disabled {
+      border-color: $colorBorder;
+    }
   }
-
-  // &-prev {
-  // }
-
-  // &-next {
-  // }
 }

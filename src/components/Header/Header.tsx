@@ -1,11 +1,26 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
-import { useCallback, useContext } from 'react';
-import { DispatchContext } from '../../store/ProductsContext';
+import { useCallback, useContext, useEffect, useRef } from 'react';
+import {
+  DispatchContext,
+  StateContext,
+  useWindowSize,
+} from '../../store/ProductsContext';
 
 export const Header = () => {
   const dispatch = useContext(DispatchContext);
+  const { favourites } = useContext(StateContext);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const size = useWindowSize();
+
+  useEffect(() => {
+    if (headerRef.current) {
+      const hieght = headerRef.current.getBoundingClientRect().height;
+
+      dispatch({ type: 'hieghtHeader', payload: hieght });
+    }
+  }, [dispatch, size]);
 
   const handleOpenMenu = () => {
     dispatch({ type: 'showMenu', payload: true });
@@ -19,8 +34,16 @@ export const Header = () => {
     [],
   );
 
+  const getDesireLinkClass = useCallback(
+    ({ isActive }: { isActive: boolean }) =>
+      classNames('Header__desire-item', {
+        'Header__desire-item--active': isActive,
+      }),
+    [],
+  );
+
   return (
-    <header className="Header">
+    <header className="Header" ref={headerRef}>
       <div className="Header__content">
         <div className="Header__logo">
           <Link to="/">
@@ -44,20 +67,24 @@ export const Header = () => {
       </div>
 
       <nav className="Header__desire">
-        <div className="Header__desire-itemBox">
-          <a href="#/" className="Header__desire-item">
-            <img src="icons/Favourites.svg" alt="favourites" />
-          </a>
-        </div>
-        <div className="Header__desire-itemBox">
-          <a href="#/" className="Header__desire-item">
-            <img src="icons/Cart.svg" alt="cart" />
-          </a>
-        </div>
+        <NavLink to="/favourites" className={getDesireLinkClass}>
+          <img src="icons/Favourites.svg" alt="favourites" height="16px" />
+          {!!favourites.length && (
+            <div className="Header__desire-amount">{favourites.length}</div>
+          )}
+        </NavLink>
+
+        <a href="#/" className="Header__desire-item">
+          <img src="icons/Cart.svg" alt="cart" height="16px" />
+        </a>
         <div className="Header__menu">
-          <a href="#/" className="Header__menu-item" onClick={handleOpenMenu}>
+          <button
+            type="button"
+            className="Header__menu-item"
+            onClick={handleOpenMenu}
+          >
             <img src="icons/Menu.svg" alt="cart" />
-          </a>
+          </button>
         </div>
       </nav>
     </header>

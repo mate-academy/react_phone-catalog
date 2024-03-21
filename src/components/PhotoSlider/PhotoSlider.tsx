@@ -1,6 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './PhotoSlider.scss';
+import { useWindowSize } from '../../store/ProductsContext';
 
 const SLIDERS = [
   {
@@ -20,19 +21,21 @@ const SLIDERS = [
 export const PhotoSlider: React.FC = () => {
   const [translate, setTranslate] = useState(0);
   const [currentImg, setCurrentImg] = useState(1);
+  const [step, setStep] = useState(0);
   const stepRef = useRef<HTMLDivElement>(null);
 
-  const widthScreen = document.documentElement.clientWidth;
-  let step = 0;
+  const screen = useWindowSize();
 
   useEffect(() => {
+    if (stepRef.current) {
+      const width = Math.round(stepRef.current.getBoundingClientRect().width);
+
+      setStep(width);
+    }
+
     setTranslate(0);
     setCurrentImg(1);
-  }, [widthScreen]);
-
-  if (stepRef.current) {
-    step = stepRef.current.clientWidth;
-  }
+  }, [screen]);
 
   useEffect(() => {
     const timerId = window.setInterval(() => {
@@ -111,17 +114,12 @@ export const PhotoSlider: React.FC = () => {
           }}
         >
           {SLIDERS.map(slide => (
-            <div key={slide.id}>
-              <img
-                src={slide.src}
-                alt="Banner"
-                className="Banner__img"
-                width={
-                  stepRef.current
-                    ? `${stepRef.current.clientWidth}px`
-                    : `${widthScreen}px`
-                }
-              />
+            <div
+              key={slide.id}
+              className="Banner__image"
+              style={{ width: `${step}px` }}
+            >
+              <img src={slide.src} alt="Banner" className="Banner__photo" />
             </div>
           ))}
         </div>

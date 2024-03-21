@@ -1,25 +1,35 @@
 @import '../../App';
 
 .Header {
+  height: var(--height-header-tablet);
+  position: sticky;
+  top: 0;
+  z-index: 1;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 0 0 $colorBorder;
   border-top: 1px solid $colorBorder;
+  background-color: $colorWhite;
+
+  @include on-desktop {
+    height: var(--height-header-desktop);
+  }
 
   &__menu {
     display: flex;
     width: 48px;
-    height: 48px;
     justify-content: center;
     align-items: center;
     box-shadow: -1px 0 0 0 $colorBorder;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
 
     &-item {
       padding: 15px;
+      background-color: $colorWhite;
+      border-color: $colorBorder;
     }
   }
 
@@ -28,7 +38,7 @@
     align-items: center;
     gap: 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 64px;
     }
   }
@@ -40,43 +50,43 @@
   &__nav {
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       align-items: center;
-      gap: 32px;
-      height: 48px;
+      gap: 22px;
     }
 
-    @include onDesktop {
-      height: 64px;
-      gap: 64px;
+    @include on-desktop {
+      gap: 44px;
     }
 
     &-link {
+      padding: 15px 5px;
       text-decoration: none;
       text-transform: uppercase;
       color: $colorGray;
       font-weight: bold;
       font-size: 12px;
 
+      @include on-desktop {
+        padding: 20px 10px;
+      }
+
       &-active {
         position: relative;
         color: $colorBlack;
-        line-height: 48px;
-        padding-top: 2px;
+        line-height: var(--height-header-tablet);
+        padding: 0 5px;
 
-        @include onDesktop {
-          line-height: 64px;
+        @include on-desktop {
+          line-height: var(--height-header-desktop);
+          padding: 0 10px;
         }
 
         &::after {
-          content: '';
-          position: absolute;
-          right: 0;
-          left: 0;
-          bottom: 0;
+          @include after-line;
+
           height: 3px;
-          background-color: $colorBlack;
         }
       }
     }
@@ -85,23 +95,54 @@
   &__desire {
     display: flex;
 
-    &-itemBox {
+    &-item {
+      padding: 0 10px;
+      
+      // display: flex;
+      align-items: center;
+      position: relative;
       display: none;
+      text-decoration: none;
 
-      @include onTablet {
+      @include on-tablet {
         display: flex;
         width: 48px;
         justify-content: center;
         box-shadow: -1px 0 0 0 $colorBorder;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         width: 64px;
+      }
+
+      &--active {
+        line-height: var(--height-header-tablet);
+
+        @include on-desktop {
+          line-height: var(--height-header-desktop);
+        }
+
+        &::after {
+          @include after-line;
+
+          height: 3px;
+        }
       }
     }
 
-    &-item {
-      display: flex;
+    &-amount {
+      position: absolute;
+      left: 24px;
+      bottom: 23px;
+      text-align: center;
+      background-color: $colorRed;
+      border: 1px solid $colorWhite;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      line-height: 14px;
+      border-radius: 50%;
+      color: $colorWhite;
     }
   }
 }

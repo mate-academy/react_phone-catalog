@@ -22,6 +22,14 @@ export const Menu = () => {
     [],
   );
 
+  const getDesireLinkClass = useCallback(
+    ({ isActive }: { isActive: boolean }) =>
+      classNames('Menu__desire-item', {
+        'Menu__desire-item--active': isActive,
+      }),
+    [],
+  );
+
   const handleCloseMenu = () => {
     dispatch({ type: 'showMenu', payload: false });
   };
@@ -39,9 +47,13 @@ export const Menu = () => {
           </Link>
         </div>
         <div className="Menu__close">
-          <a href="#/" className="Menu__close-icon" onClick={handleCloseMenu}>
+          <button
+            type="button"
+            className="Menu__close-icon"
+            onClick={handleCloseMenu}
+          >
             <img src="icons/Close.svg" alt="cart" />
-          </a>
+          </button>
         </div>
       </div>
 
@@ -73,16 +85,16 @@ export const Menu = () => {
       </nav>
 
       <div className="Menu__desire">
-        <div className="Menu__desire-itemBox">
-          <a href="#/" className="Menu__desire-item">
-            <img src="icons/Favourites.svg" alt="favourites" />
-          </a>
-        </div>
-        <div className="Menu__desire-itemBox">
-          <a href="#/" className="Menu__desire-item">
-            <img src="icons/Cart.svg" alt="cart" />
-          </a>
-        </div>
+        <NavLink
+          to="/favourites"
+          className={getDesireLinkClass}
+          onClick={handleCloseMenu}
+        >
+          <img src="icons/Favourites.svg" alt="favourites" />
+        </NavLink>
+        <a href="#/" className="Menu__desire-item">
+          <img src="icons/Cart.svg" alt="cart" />
+        </a>
       </div>
     </div>
   );

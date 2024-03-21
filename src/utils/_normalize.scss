@@ -6,7 +6,9 @@ body,
 h1,
 h2,
 h3,
+h4,
 p,
+a,
 button {
   margin: 0;
   padding: 0;
@@ -18,4 +20,12 @@ img {
 
 * {
   box-sizing: border-box;
+}
+
+button {
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  cursor: pointer;
 }

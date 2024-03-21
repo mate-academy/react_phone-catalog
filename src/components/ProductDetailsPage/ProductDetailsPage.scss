@@ -1,0 +1,391 @@
+@import '../../App';
+
+.Details {
+  &__content {
+    @include page-grid;
+  }
+
+  &__title {
+    grid-column: 1 / -1;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $colorBlack;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__photo {
+    grid-column: 1 / -1;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      grid-column: 2 / span 6;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / span 10;
+    }
+
+    &-img {
+      object-fit: contain;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    &-select {
+      grid-column: 1 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      column-gap: 8px;
+      margin-bottom: 40px;
+
+      @include on-tablet {
+        grid-area: 2 / 1 / 3 / 2;
+        grid-template-columns: repeat(1, 1fr);
+        row-gap: 8px;
+        margin-bottom: 292px;
+      }
+
+      @include on-desktop {
+        grid-area: 2 / 1 / 3 / 3;
+        margin-bottom: 80px;
+      }
+    }
+
+    &-box {
+      grid-column: span 1;
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
+      border: 1px solid $colorBorder;
+
+      &--active {
+        border-color: $colorBlack;
+      }
+
+      @include on-tablet {
+        grid-column: 1 / -1;
+      }
+    }
+
+    &-item {
+      object-fit: contain;
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__card {
+    position: relative;
+    grid-column: 1 / -1;
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+
+    @include on-desktop {
+      right: -192px;
+    }
+  }
+
+  &__text {
+    font-size: 12px;
+    line-height: 15px;
+    margin-bottom: 8px;
+  }
+
+  &__colors {
+    &-link {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 24px;
+    }
+
+    &-circle {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $colorBorder;
+      border-radius: 50%;
+
+      &--active {
+        border-color: $colorBlack;
+      }
+    }
+
+    &-circleInside {
+      border-radius: 50%;
+      background-color: #777;
+      width: 100%;
+      height: 100%;
+      border: 2px solid $colorWhite;
+    }
+  }
+
+  &__line {
+    border: 1px solid $colorBorder;
+    width: 100%;
+    margin-bottom: 24px;
+
+    &--2 {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+
+    &-link {
+      text-decoration: none;
+      padding: 7px 8px 4px;
+      border: 1px solid $colorBorderArrow;
+      line-height: 21px;
+      text-align: center;
+      color: $colorBlack;
+
+      &--active {
+        background-color: $colorBlack;
+        color: $colorWhite;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 22px;
+    margin-bottom: 16px;
+
+    &-current {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      font-weight: 700;
+      color: $colorBlack;
+    }
+
+    &-full {
+      font-weight: 500;
+      line-height: 28px;
+      color: $colorGray;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    min-height: 48px;
+    margin-bottom: 32px;
+
+    &-add {
+      cursor: pointer;
+      width: 100%;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: $colorWhite;
+      background-color: $colorBlack;
+      transition: 0.3s box-shadow;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
+    }
+
+    &-favorite {
+      cursor: pointer;
+      min-width: 48px;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorderArrow;
+      transition: 0.3s border-color;
+
+      &-icon {
+        margin: 0 auto;
+      }
+
+      &:hover {
+        border-color: $colorBlack;
+      }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-text {
+      text-align: left;
+      color: $colorGray;
+    }
+
+    &-value {
+      text-align: right;
+      color: $colorBlack;
+    }
+  }
+}
+
+.About {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-column: span 12;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-text {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25px;
+      color: $colorBlack;
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 31px;
+      }
+    }
+
+    &-line {
+      border: 1px solid $colorBorder;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      font-size: 16px;
+      font-weight: 600;
+      line-height: 20px;
+      color: $colorBlack;
+
+      @include on-tablet {
+        font-size: 20px;
+        line-height: 25px;
+      }
+    }
+
+    &-content {
+      display: flex;
+      flex-direction: column;
+      gap: 21px;
+      line-height: 21px;
+    }
+  }
+}
+
+.Spect {
+  grid-column: 1 / -1;
+  margin-bottom: 56px;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+
+  @include on-tablet {
+    gap: 25px;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-text {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25px;
+      color: $colorBlack;
+
+      @include on-tablet {
+        font-size: 22px;
+        font-weight: 700;
+        line-height: 31px;
+      }
+    }
+
+    &-line {
+      border: 1px solid $colorBorder;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &-text {
+      line-height: 21px;
+    }
+
+    &-value {
+      line-height: 21px;
+      color: $colorBlack;
+    }
+  }
+}

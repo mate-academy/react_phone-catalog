@@ -10,7 +10,7 @@
     text-align: left;
     color: $colorBlack;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 48px;
       line-height: 56px;
     }

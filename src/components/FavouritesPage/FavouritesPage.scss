@@ -1,0 +1,43 @@
+@import '../../App';
+
+.Favourites {
+  margin-bottom: 56px;
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $colorBlack;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    line-height: 21px;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    @include page-grid;
+    
+    gap: 40px 16px;
+    margin-bottom: 24px;
+
+    &-item {
+      grid-column: 1 / -1;
+      justify-self: center;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-big-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+}

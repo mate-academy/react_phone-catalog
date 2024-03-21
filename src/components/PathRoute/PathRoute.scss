@@ -1,0 +1,47 @@
+@import '../../App';
+
+.PathRoute {
+  padding: 24px 0;
+  display: flex;
+  gap: 13px;
+  align-items: center;
+
+  @include on-tablet {
+    padding-bottom: 30px;
+  }
+
+  &__home {
+    padding: 9px 0;
+  }
+
+  &__path {
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    gap: 13px;
+
+    &--shrink {
+      flex-shrink: 0;
+    }
+  }
+
+  &__name {
+    padding: 10px 0;
+    text-decoration: none;
+    text-transform: capitalize;
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: $colorBlack;
+
+    &-box {
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    &--current {
+      color: $colorGray;
+    }
+  }
+}

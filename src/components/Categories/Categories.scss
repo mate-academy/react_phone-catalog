@@ -1,0 +1,81 @@
+@import '../../App';
+
+.Categories {
+  margin-bottom: 80px;
+  &__title {
+    grid-column: 1 / -1;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $colorBlack;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__box {
+    @include page-grid;
+    
+    row-gap: 32px;
+  }
+
+  &__card {
+    grid-column: 1 / -1;
+    text-decoration: none;
+    cursor: pointer;
+
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &-image {
+      position: relative;
+      height: 0;
+      padding-bottom: 100%;
+      margin-bottom: 24px;
+    }
+
+    &-photo {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left top;
+
+      &--phone {
+        background-color: #fde5b5;
+      }
+
+      &--tablet {
+        background-color: #aca3b3;
+      }
+
+      &--accessor {
+        background-color: #ac4249;
+      }
+    }
+
+    &-name {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 26px;
+      margin-bottom: 4px;
+      color: $colorBlack;
+    }
+
+    &-text {
+      line-height: 21px;
+      color: $colorGray;
+    }
+  }
+}

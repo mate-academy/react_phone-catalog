@@ -1,44 +1,70 @@
 @import '../../App';
 
 .Footer {
-  // position: fixed;
-  // bottom: 0;
-  // left: 0;
-  // right: 0;
   box-shadow: 0 -1px 0 0 $colorBorder;
+  padding: 32px 16px;
+
+  @include on-tablet {
+    padding: 32px;
+  }
 
   &__content {
     margin: 0 auto;
     max-width: 1136px;
     display: flex;
-    justify-content: space-between;
-    line-height: 96px;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
   }
 
   &__logo {
-    display: flex;
+    cursor: pointer;
   }
 
   &__nav {
     display: flex;
-    gap: 64px;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
 
     &-item {
+      cursor: pointer;
       text-decoration: none;
       color: $colorGray;
-      font-weight: bold;
+      font-weight: 700;
       font-size: 12px;
+      line-height: 11px;
+      letter-spacing: 0.04em;
     }
   }
 
   &__buttonBack {
     display: flex;
     gap: 16px;
+    height: 32px;
+    justify-content: center;
     align-items: center;
 
     &-name {
       font-size: 12px;
       font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-button {
+      cursor: pointer;
+      outline: none;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorderArrow;
     }
   }
 }

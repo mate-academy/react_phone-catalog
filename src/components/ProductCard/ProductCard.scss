@@ -1,72 +1,40 @@
 @import '../../App';
 
 .Card {
-  width: 212px;
-  height: 439px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 272px;
+  height: 507px;
   padding: 32px;
   border: 1px solid $colorBorder;
 
-  @include onTablet {
-    width: 237px;
-    height: 512px;
-  }
-
-  @include onDesktop {
-    width: 272px;
-    height: 507px;
-    padding: 24px;
-  }
-
-  &__content {
+  &__link {
+    text-decoration: none;
     display: flex;
     flex-direction: column;
-  }
-
-  &__image {
-    margin-bottom: 8px;
+    gap: 8px;
   }
 
   &__photo {
-    width: 148px;
-    max-height: 129px;
+    width: 208px;
+    height: 196px;
     object-fit: contain;
-
-    @include onTablet {
-      width: 173px;
-      height: 202px;
-    }
-
-    @include onDesktop {
-      width: 208px;
-      height: 208px;
-      margin: 8px 8px 0;
-    }
   }
 
   &__product-name {
-    padding-top: 16px;
+    height: 58px;
+    padding: 16px 0 0;
+    overflow: hidden;
     line-height: 21px;
-    margin-bottom: 8px;
     color: $colorBlack;
-
-
-    @include onDesktop {
-      margin: 0 0 6px;
-      height: 42px;
-      line-height: 21px;
-    }
   }
 
   &__price {
     display: flex;
     align-items: center;
     gap: 5px;
-    margin: 0 0 8px;
-
-    &-item {
-      margin: 0;
-      font-size: 22px;
-    }
+    font-size: 22px;
 
     &-current {
       font-weight: 700;
@@ -83,18 +51,13 @@
   }
 
   &__line {
-    flex-shrink: 0;
-    width: 100%;
-    height: 1px;
-    background-color: $colorBorder;
-    margin: 0 0 8px;
+    border: 1px solid $colorBorder;
   }
 
   &__description {
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin: 0 0 8px;
     padding: 8px 0;
 
     &-item {
@@ -154,6 +117,3 @@
   }
 }
 
-.selected {
-  border-color: $colorBorder;
-}

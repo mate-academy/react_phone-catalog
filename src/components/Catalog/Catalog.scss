@@ -1,0 +1,171 @@
+@import '../../App';
+
+.Catalog {
+  margin: 0 0 64px;
+
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $colorBlack;
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    line-height: 21px;
+    margin-bottom: 32px;
+  }
+
+  &__choose {
+    display: flex;
+    justify-content: start;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &-item {
+      width: 100%;
+      max-width: 170px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+
+      &--sort {
+        @include on-tablet {
+          max-width: 187px;
+        }
+
+        @include on-desktop {
+          max-width: 176px;
+        }
+      }
+
+      &--amount {
+        @include on-desktop {
+          max-width: 128px;
+        }
+      }
+    }
+
+    &-label {
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+    }
+
+    &-select {
+      font-family: inherit;
+      font-size: inherit;
+      outline: none;
+      appearance: none;
+      background: url(../../../public/icons/Arrow_down.svg) no-repeat right;
+      background-position-x: calc(100% - 18px);
+      padding-left: 12px;
+      height: 40px;
+      border: 1px solid $colorBorderArrow;
+      font-weight: 600;
+      line-height: 21px;
+      color: $colorBlack;
+    }
+  }
+
+  &__content {
+    @include page-grid;
+
+    gap: 40px 16px;
+    margin-bottom: 24px;
+
+    &-item {
+      grid-column: 1 / -1;
+      justify-self: center;
+
+      @include on-tablet {
+        grid-column: span 6;
+      }
+
+      @include on-big-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+
+  &__page {
+    &-number {
+      display: flex;
+      justify-content: center;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 16px;
+
+      &-item {
+        flex-shrink: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        cursor: pointer;
+        user-select: none;
+        height: 100%;
+        width: 32px;
+        background-color: $colorWhite;
+        border: 1px solid $colorBorderArrow;
+        transition: 0.3s border-color;
+
+        &:hover {
+          border-color: $colorBlack;
+        }
+
+        &:disabled {
+          border-color: $colorBorder;
+        }
+      }
+    }
+
+    &-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+
+      &-item {
+        width: 32px;
+        height: 32px;
+        cursor: pointer;
+        background-color: $colorWhite;
+        border: 1px solid #e2e6e9;
+        font-family: inherit;
+        font-size: inherit;
+        font-weight: 500;
+        line-height: 32px;
+        text-align: center;
+        color: $colorBlack;
+        transition: 0.3s border-color;
+
+        &--active {
+          background-color: $colorBlack;
+          color: $colorWhite;
+        }
+
+        &:hover {
+          border-color: $colorBlack;
+        }
+      }
+    }
+  }
+
+  &__not-elements {
+    width: max-content;
+    height: 40px;
+    line-height: 40px;
+    color: $colorRed;
+    font-size: 20px;
+    background-color: rgb(241, 241, 161);
+    border-radius: 10px;
+    padding: 0 10px;
+  }
+}

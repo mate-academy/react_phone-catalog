@@ -3,48 +3,75 @@
 .Banner {
   margin-bottom: 56px;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     align-items: center;
     flex-direction: column;
     position: relative;
-    max-width: 592px;
+    max-width: 1136px;
     margin: 0 auto 64px;
+    padding: 0 51px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     max-width: 1136px;
     margin-bottom: 72px;
+    padding: 0 48px;
   }
 
   &__content {
     overflow: hidden;
     margin: 0 -16px 8px;
 
-    @include onTablet {
-      max-width: 490px;
+    @include on-tablet {
+      width: 100%;
       margin: 0 0 8px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       max-width: 1040px;
     }
   }
 
   &__images {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(3, calc(100vw - (100vw - 100%)));
+    grid-auto-columns: auto;
+    grid-auto-flow: column;
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1040px);
+    }
   }
 
-  &__img {
-    max-width: 640px;
-    height: 320px;
-    object-fit: cover;
+  &__image {
+    grid-column: span 1;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
 
-    @include onTablet {
-      height: 189px;
+    @include on-tablet {
+      padding-bottom: 40%;
     }
 
-    @include onDesktop {
+    @include on-desktop {
+      height: 400px;
+      padding-bottom: 0;
+    }
+  }
+
+  &__photo {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+    @include on-tablet {
+      max-height: 400px;
+    }
+
+    @include on-desktop {
       max-width: 1040px;
       height: 400px;
     }
@@ -64,17 +91,17 @@
       border: 1px solid $colorBlack;
     }
 
-    @include onTablet {
+    @include on-tablet {
       display: flex;
       justify-content: center;
       align-items: center;
       top: 0;
       bottom: 0;
       width: 32px;
-      height: 189px;
+      height: calc(100% - 32px);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
     }
 

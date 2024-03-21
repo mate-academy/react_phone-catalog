@@ -4,22 +4,31 @@
 @import 'utils/fonts';
 
 html {
+  scroll-behavior: smooth;
   font-family: Mont, sans-serif;
   font-weight: 500;
   font-size: 14px;
   color: $colorGray;
   background-color: $colorWhite;
+
+  --height-header-tablet: 48px;
+  --height-header-desktop: 64px;
 }
 
 .container {
   margin: 0 16px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 0 auto;
     max-width: 1136px;
   }
+}
+
+.App {
+  // position: relative;
+  // min-height: 100vh;
 }
