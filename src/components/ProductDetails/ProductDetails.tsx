@@ -12,6 +12,7 @@ import { ProductsSection } from '../ProductsSection';
 import { getShuffledProducts } from '../../utils/filters';
 
 import './ProductDetails.scss';
+import { API_URL } from '../../utils/api';
 
 type Props = {
   details: DetailsType;
@@ -71,9 +72,9 @@ export const ProductDetails: React.FC<Props> = memo(({ details }) => {
       new Promise(resolve => {
         const img = new Image();
 
-        img.onload = () => resolve(`/_new/${path}`);
+        img.onload = () => resolve(`${API_URL}/${path}`);
         img.onerror = () => resolve(null);
-        img.src = `/_new/${path}`;
+        img.src = `${API_URL}/${path}`;
       });
 
     Promise.all(images.map(checkImage))

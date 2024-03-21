@@ -10,11 +10,12 @@ import './BannerSlider.scss';
 import 'swiper/scss';
 import 'swiper/scss/autoplay';
 import 'swiper/scss/effect-fade';
+import { API_URL } from '../../utils/api';
 
 const photosPaths = [
-  '/_new/img/banner-phones.png',
-  '/_new/img/banner-tablets.png',
-  '/_new/img/banner-accessories.png',
+  `${API_URL}/img/banner-phones.png`,
+  `${API_URL}/img/banner-tablets.png`,
+  `${API_URL}/img/banner-accessories.png`,
 ];
 
 const TRANSITION_SPEED = 600;

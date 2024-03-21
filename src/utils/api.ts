@@ -1,7 +1,9 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-const API_URL = '_new';
+// const API_URL = '_new';
+export const API_URL =
+  'https://mate-academy.github.io/react_phone-catalog/_new';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));

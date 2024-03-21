@@ -7,6 +7,7 @@ import { ActionButtons } from '../ActionButtons';
 import { Specification } from '../Specification';
 
 import './ProductCard.scss';
+import { API_URL } from '../../utils/api';
 
 type Props = {
   product: Product;
@@ -47,7 +48,7 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
         <div className="ProductCard__imgMask">
           <img
             className="ProductCard__image"
-            src={`/_new/${image}`}
+            src={`${API_URL}/${image}`}
             alt={name}
           />
         </div>
