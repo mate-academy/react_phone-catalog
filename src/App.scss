@@ -1,3 +1,8 @@
+@font-face {
+  font-family: Mont;
+  src: url("../public/fonts/Mont-Regular.otf");
+}
+
 iframe {
   display: none;
 }
@@ -6,4 +11,5 @@ iframe {
   display: grid;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
+  font-family: Mont, sans-serif;
 }

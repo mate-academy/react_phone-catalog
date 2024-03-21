@@ -52,6 +52,7 @@ export const PhonesPage: React.FC = () => {
   }
 
   useEffect(() => {
+    searchParams.set('page', '1');
     getProducts()
       .then(productsList => {
         setProducts(productsList);
@@ -60,7 +61,7 @@ export const PhonesPage: React.FC = () => {
       .find(key => SortBy[key as keyof Sort] === sort);
 
     setCurrentOrder(value || 'Newest');
-  }, [sort, perPage]);
+  }, [sort, perPage, searchParams]);
 
   const handleOpenStatus = (value: string) => {
     if (!isOpen) {
