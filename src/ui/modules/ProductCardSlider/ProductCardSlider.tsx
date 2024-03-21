@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React from 'react';
 import clsx from 'clsx';
 import { Typography } from '../../base';
@@ -64,12 +65,12 @@ export const ProductCardSlider: React.FC<Props> = ({
           },
         ]}
       >
-        {isLoadProducts &&
-          skeletonItems.map(item => (
+        {isLoadProducts
+          && skeletonItems.map(item => (
             <SliderItem key={item.id}>{item.item}</SliderItem>
           ))}
-        {!isLoadProducts &&
-          products.map(product => (
+        {!isLoadProducts
+          && products.map(product => (
             <SliderItem key={product.id}>
               <ProductCard
                 id={product.id}

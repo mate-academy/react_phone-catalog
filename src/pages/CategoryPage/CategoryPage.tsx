@@ -1,6 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
 import { ProductCategory } from '../../ui/modules';
 
 import { getProductsByCategory } from '../../utils';
@@ -21,7 +19,7 @@ export const CategoryPage: React.FC<Props> = ({ category }) => {
     getProductsByCategory(category)
       .then(setProducts)
       .finally(() => setIsLoading(false));
-  }, []);
+  }, [category]);
 
   return (
     <div className="category">

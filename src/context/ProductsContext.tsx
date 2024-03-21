@@ -42,8 +42,8 @@ export const ProductContextProvider: React.FC<Props> = ({ children }) => {
     cartItemsLocalStorage,
   );
 
-  const [favouriteItemsLocalStorage, setFavouriteItemsLocalStorage] =
-    useLocalStorage<Product[]>(LocalStorage.favourites, []);
+  const [favouriteItemsLocalStorage, setFavouriteItemsLocalStorage]
+    = useLocalStorage<Product[]>(LocalStorage.favourites, []);
 
   const [favouriteItems, setFavouriteItems] = useState<Product[]>(
     favouriteItemsLocalStorage,

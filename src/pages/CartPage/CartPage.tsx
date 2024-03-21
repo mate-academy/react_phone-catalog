@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../context';
 
@@ -13,8 +14,8 @@ export const CartPage: React.FC<Props> = () => {
   const [isOpenErrorMessage, setIsOpenErrorMessage] = useState<boolean>(false);
   const [totalSum, setTotalSum] = useState<number>(0);
   const [totalItems, setTotaltems] = useState<number>(0);
-  const { cartItems, updateProductCartQty, addDelProductCart } =
-    useContext(ProductContext);
+  const { cartItems, updateProductCartQty, addDelProductCart }
+    = useContext(ProductContext);
 
   const itemsQty = cartItems.length;
 

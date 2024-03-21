@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
@@ -63,9 +64,9 @@ function createPages(pageCurrent: number, pageLast: number) {
     }
 
     if (
-      page !== currentPage &&
-      page !== currentPage - 1 &&
-      page !== currentPage + 1
+      page !== currentPage
+      && page !== currentPage - 1
+      && page !== currentPage + 1
     ) {
       return total;
     }

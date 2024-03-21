@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
@@ -39,8 +40,8 @@ export const ProductCategory: React.FC<Props> = ({ products, category }) => {
   const [perPageFilterValue, setPerPageFilterValue] = useState<PerPage>(
     PerPage.perPage16,
   );
-  const [sortByFilterValue, setSortByFilterValue] =
-    useState<keyof typeof SortBy>('name');
+  const [sortByFilterValue, setSortByFilterValue]
+    = useState<keyof typeof SortBy>('name');
 
   const [isInitialParams, setIsInitialParams] = useState<boolean>(true);
 
@@ -127,8 +128,8 @@ export const ProductCategory: React.FC<Props> = ({ products, category }) => {
 
   useEffect(() => {
     if (!isInitialParams) {
-      const perPageQty =
-        !perPage && perPageFilterValue !== -1
+      const perPageQty
+        = !perPage && perPageFilterValue !== -1
           ? perPageFilterValue
           : +perPage || (-1 as PerPage);
 
@@ -159,8 +160,8 @@ export const ProductCategory: React.FC<Props> = ({ products, category }) => {
 
   useEffect(() => {
     const firstItemIndex = 0;
-    const lastItemIndex =
-      productsQty - 1 > perPageFilterValue
+    const lastItemIndex
+      = productsQty - 1 > perPageFilterValue
         ? perPageFilterValue
         : productsQty - 1;
     const sorted = sortProducts(searchedItems, sortByFilterValue);

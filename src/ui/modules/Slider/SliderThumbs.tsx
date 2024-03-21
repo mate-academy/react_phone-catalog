@@ -26,22 +26,21 @@ export const SliderThumbs: React.FC<Props> = ({
           className && `${className}__thumbs-track`,
         )}
       >
-        {images &&
-          images.map((image, index) => (
-            <div
-              key={image}
-              role="button"
-              onClick={() => changeImage(index)}
-              onKeyDown={() => changeImage(index)}
-              tabIndex={0}
-              className={clsx(
-                'slider__thumbs-item',
-                activeImage === index && 'active',
-              )}
-            >
-              <img src={image} alt={image} />
-            </div>
-          ))}
+        {images.map((image, index) => (
+          <div
+            key={image}
+            role="button"
+            onClick={() => changeImage(index)}
+            onKeyDown={() => changeImage(index)}
+            tabIndex={0}
+            className={clsx(
+              'slider__thumbs-item',
+              activeImage === index && 'active',
+            )}
+          >
+            <img src={image} alt={image} />
+          </div>
+        ))}
       </div>
     </div>
   );

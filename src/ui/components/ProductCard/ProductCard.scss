@@ -4,7 +4,7 @@
 
 .card {
   position: relative;
-  padding: 32px 24px 24px;
+  padding: to-rem(32) to-rem(24) to-rem(24);
   border: 1px solid $color-elements;
   max-width: 272px;
   width: 100%;
@@ -38,7 +38,7 @@
 
   &__image {
     position: relative;
-    margin: 0 auto 24px;
+    margin: 0 auto to-rem(24);
     max-height: 208px;
     min-height: 100px;
 

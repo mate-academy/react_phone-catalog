@@ -243,8 +243,8 @@ export const Slider: React.FC<Props> = ({
       : Math.floor((activeSlide - slidesPerSlide) / slidesPerSlide);
 
     if (
-      infinite &&
-      (activeRangeOfSlide < 0 || activeRangeOfSlide >= slidesLength)
+      infinite
+      && (activeRangeOfSlide < 0 || activeRangeOfSlide >= slidesLength)
     ) {
       setActiveDot(0);
 
@@ -276,8 +276,8 @@ export const Slider: React.FC<Props> = ({
 
   // #region handling of changing active slide and set offset
   useEffect(() => {
-    const isFrameClonedSlide =
-      infinite && (activeSlide > lastSlideIndex || activeSlide < step);
+    const isFrameClonedSlide
+      = infinite && (activeSlide > lastSlideIndex || activeSlide < step);
 
     if (!isFrameClonedSlide) {
       setOffset(activeSlide * slideWidth * -1);

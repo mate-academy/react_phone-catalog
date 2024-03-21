@@ -1,3 +1,5 @@
+/* eslint-disable prettier/prettier */
+/* eslint-disable max-len */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
@@ -156,8 +158,8 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   useEffect(() => {
-    const requiresReloadSeries =
-      productSameSeries.findIndex(item => item.itemId === itemId) === -1;
+    const requiresReloadSeries
+      = productSameSeries.findIndex(item => item.itemId === itemId) === -1;
 
     if (itemId && requiresReloadSeries) {
       const getItems = async () => {
@@ -196,12 +198,11 @@ export const ProductDetailsPage: React.FC = () => {
           };
         });
 
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars, max-len
-        const isFavourite =
-          favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars, max-len
-        const isCart =
-          cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
+        const isFavourite
+          = favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
+
+        const isCart
+          = cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
 
         // setProduct(item);
         setProductDetailed(item);
@@ -241,10 +242,10 @@ export const ProductDetailsPage: React.FC = () => {
           productSameSeries,
         );
 
-        const isFavourite =
-          favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
-        const isCart =
-          cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
+        const isFavourite
+          = favouriteItems.findIndex(favItem => favItem.itemId === itemId) !== -1;
+        const isCart
+          = cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
 
         setProductDetailed(item);
         setProductsSameCapacity(productGroupWithSameStorage);

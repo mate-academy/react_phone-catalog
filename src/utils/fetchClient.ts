@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Product } from '../types/Product';
 import { ProductDetail } from '../types/ProductDetail';
 import { ProductCategories } from '../types/ProductCategories';
@@ -72,9 +73,9 @@ export async function getHotPriceProducts() {
 
     return productsWithImagePath.sort((product1, product2) => {
       return (
-        product2.fullPrice -
-        product2.price -
-        (product1.fullPrice - product1.price)
+        product2.fullPrice
+        - product2.price
+        - (product1.fullPrice - product1.price)
       );
     });
   } catch {
