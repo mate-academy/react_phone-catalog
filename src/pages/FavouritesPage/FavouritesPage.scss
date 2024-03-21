@@ -1,6 +1,7 @@
-@import "../../styles/main";
+@import '../../styles/main';
 
 .favourites {
+
   &__top {
     margin-bottom: 40px;
   }
@@ -20,10 +21,25 @@
   }
 
   &__content {
+    @include for-phones {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      row-gap: 40px;
+    }
+
+    @include tablets {
+      justify-content: flex-start;
+      gap: 16px;
+      row-gap: 40px;
+    }
+
     display: flex;
+    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 16px;
     row-gap: 40px;
+    max-width: 1144px;
 
     margin-bottom: 80px;
   }

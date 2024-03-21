@@ -34,7 +34,7 @@ const Button = ({ type }: { type: string }) => {
 
 export const BannerSwiper: React.FC = () => {
   return (
-    <section className="swiper">
+    <section className="slider">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         spaceBetween={10}

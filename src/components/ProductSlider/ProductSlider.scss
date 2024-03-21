@@ -3,6 +3,7 @@
 .product-slider {
   display: flex;
   flex-direction: column;
+  max-width: 1136px;
 
   &__top {
     display: flex;

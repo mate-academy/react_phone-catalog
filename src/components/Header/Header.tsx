@@ -49,7 +49,7 @@ export const Header = () => {
     [searchParams, setSearchParams],
   );
 
-  const isCart = normalizedPath === 'cart';
+  const isCart = normalizedPath === 'home';
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = e.target.value;
@@ -71,6 +71,17 @@ export const Header = () => {
       dispatch(removeSearch());
     }
   };
+
+  useEffect(
+    () => () => {
+      setQuery('');
+
+      if (!categoriesPath.includes(normalizedPath)) {
+        dispatch(removeSearch());
+      }
+    },
+    [dispatch, pathname],
+  );
 
   return (
     <header className="header">

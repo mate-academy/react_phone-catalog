@@ -1,12 +1,19 @@
 @import "../../styles/main";
 
+@include for-phones {
+  .product-slider__content .product-card:first-child {
+    margin-left: 10px;
+  }
+}
+
 .product-card {
   display: flex;
   flex-direction: column;
-  padding: 32px 24px 24px;
+  padding: 31px 23px 23px;
+  border: 1px $elements-color solid;
 
   &:hover {
-    box-shadow: rgba(14, 30, 37, 0.12) 0px 2px 4px 0px, rgba(14, 30, 37, 0.32) 0px 2px 16px 0px;
+    box-shadow: rgba(14, 30, 37, 0.12) 0 2px 4px 0, rgba(14, 30, 37, 0.32) 0 2px 9px 0;
   }
 
   &__image {

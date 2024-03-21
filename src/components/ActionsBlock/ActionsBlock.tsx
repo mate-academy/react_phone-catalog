@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import classNames from 'classnames';
 import './ActionsBlock.scss';
+import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Product } from '../../types/Product';
 import {

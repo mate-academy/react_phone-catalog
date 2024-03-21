@@ -1,4 +1,4 @@
-@import "../../styles/main.scss";
+@import "../../styles/main";
 
 .header {
   display: flex;
@@ -9,7 +9,7 @@
 
   @include for-phones {
     flex-direction: column;
-    padding-left: 0px;
+    padding-left: 0;
   }
 
   &__left {
@@ -18,7 +18,7 @@
     gap: 64px;
 
     @include for-phones {
-      justify-content: space-around;
+      justify-content: space-between;
       padding-right: 24px;
       gap: 10px;
     }
@@ -39,7 +39,7 @@
     }
   }
 
-  &__finder_container {
+  &__finder-container {
     display: flex;
     align-items: center;
     position: absolute;
