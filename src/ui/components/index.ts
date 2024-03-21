@@ -27,6 +27,7 @@ import { ProductList } from './ProductList';
 import { Specifications } from './Specifications';
 import { ButtonBack } from './ButtonBack';
 import { Modal } from './Modal';
+import { ProductCardSkeleton } from './ProductCardSkeleton';
 
 export {
   Page,
@@ -56,4 +57,5 @@ export {
   Specifications,
   ButtonBack,
   Modal,
+  ProductCardSkeleton,
 };

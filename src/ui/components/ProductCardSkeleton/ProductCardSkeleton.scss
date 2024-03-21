@@ -1,0 +1,16 @@
+@import "../../../styles/index";
+
+.card-skeleton {
+  padding: to-rem(32) to-rem(24) to-rem(24);
+  border: 1px solid $color-elements;
+
+  &__img {
+    margin: 0 auto to-rem(24);
+  }
+
+  &__title,
+  &__price {
+    margin: 0 auto to-rem(28);
+  }
+
+}

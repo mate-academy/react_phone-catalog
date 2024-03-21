@@ -1,12 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Typography } from '../../base';
 
 import './ShopByCategory.scss';
+import { ProductCategories } from '../../../types';
+import { getProductsQtyByCategory } from '../../../utils';
 
 type Props = {};
 
 export const ShopByCategory: React.FC<Props> = () => {
+  const [mobiles, setMobiles] = useState<number>(0);
+  const [tablets, setTablets] = useState<number>(0);
+  const [accessories, setAccessories] = useState<number>(0);
+
+  useEffect(() => {
+    Promise.all([
+      getProductsQtyByCategory(ProductCategories.phones),
+      getProductsQtyByCategory(ProductCategories.tablets),
+      getProductsQtyByCategory(ProductCategories.accessories),
+    ])
+      .then(result => {
+        setMobiles(result[0]);
+        setTablets(result[1]);
+        setAccessories(result[2]);
+      })
+      .catch(() => new Error());
+  }, []);
+
   return (
     <div className="shop-by-category" data-cy="categoryLinksContainer">
       <Link to="phones" className="shop-by-category__item">
@@ -26,7 +46,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             weight="500"
             className="shop-by-category__counter"
           >
-            95 models
+            {mobiles} models
           </Typography>
         </div>
       </Link>
@@ -48,7 +68,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             weight="500"
             className="shop-by-category__counter"
           >
-            24 models
+            {tablets} models
           </Typography>
         </div>
       </Link>
@@ -70,7 +90,7 @@ export const ShopByCategory: React.FC<Props> = () => {
             weight="500"
             className="shop-by-category__counter"
           >
-            100 models
+            {accessories} models
           </Typography>
         </div>
       </Link>

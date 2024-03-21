@@ -119,3 +119,7 @@ export function isItemInArray<T, K extends keyof T>(
 export function capitalize(input: string): string {
   return input.charAt(0).toUpperCase() + input.slice(1);
 }
+
+export function getRandomKey(): string {
+  return Math.random().toString(36).slice(2, 8);
+}

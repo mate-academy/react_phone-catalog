@@ -9,6 +9,7 @@ import {
   addDeleteExistItemFromArray,
   isItemInArray,
   capitalize,
+  getRandomKey,
 } from './utils';
 
 import {
@@ -22,6 +23,7 @@ import {
   getBrandNewProducts,
   getHotPriceProducts,
   getProductsByCategory,
+  getProductsQtyByCategory,
   getProductById,
   wait,
 } from './fetchClient';
@@ -46,4 +48,6 @@ export {
   setSearchWith,
   SearchParams,
   capitalize,
+  getRandomKey,
+  getProductsQtyByCategory,
 };

@@ -110,3 +110,16 @@ export async function getProductById(id: string) {
     throw new Error();
   }
 }
+
+export async function getProductsQtyByCategory(type: ProductCategories) {
+  try {
+    const products = await getProductsByCategory(type);
+    const productsByCategory = products.filter(
+      product => product.category === type,
+    );
+
+    return productsByCategory.length;
+  } catch {
+    return 0;
+  }
+}
