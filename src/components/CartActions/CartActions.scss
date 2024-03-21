@@ -1,0 +1,42 @@
+@import '../../styles-utils/utils';
+
+.CartActions {
+  @include default-flex($direction: column, $gap: 24px, $align: center);
+  @include bg-and-border($borderColor: $elementsAccent);
+
+  padding: 24px;
+
+  &__infoBlock {
+    @include default-flex($direction: column, $align: center);
+  }
+
+  &__totalItems {
+    @include body-text;
+
+    color: $secondaryAccent;
+  }
+
+  &__divider {
+    @include divider;
+
+    align-self: stretch;
+  }
+
+  &__checkoutBtn {
+    @include button-text;
+    @include bg-and-border($borderSize: 0, $bgColor: $primaryAccent);
+
+    align-self: stretch;
+    color: $whiteAccent;
+    padding-top: 14px;
+    padding-bottom: 13px;
+
+    transition: box-shadow $transitionDuration,
+                text-shadow $transitionDuration;
+
+    &:hover {
+      box-shadow: 0 3px 13px $primaryAccent;
+      text-shadow: 0 3px 13px $hoverAndBgAccent;
+    }
+  }
+}

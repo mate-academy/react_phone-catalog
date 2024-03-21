@@ -1,0 +1,29 @@
+@import '../../styles-utils/utils';
+
+.Pagination {
+  @include default-flex($align: center, $justify: center, $gap: 16px);
+
+  &__list {
+    @include default-flex($gap: 8px);
+
+    list-style: none;
+  }
+
+  &__button {
+    @include icons-btn;
+    @include body-text;
+
+    &--active {
+      @include black-active-link;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      border-color: $elementsAccent;
+
+      & .Pagination__chevron {
+        color: $iconsAccent;
+      }
+    }
+  }
+}

@@ -1,0 +1,33 @@
+@import '../../styles-utils/utils';
+
+.ProductsSection {
+  @include default-grid-template;
+
+  align-items: center;
+
+  &__title {
+    grid-column: 1 / -3;
+  }
+
+  &__swiper {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+  }
+
+  &__button {
+    @include icons-btn;
+
+    &--prev {
+      grid-column: -3 / -2;
+    }
+
+    &--next {
+      grid-column: -2 / -1;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      border-color: $elementsAccent;
+    }
+  }
+}

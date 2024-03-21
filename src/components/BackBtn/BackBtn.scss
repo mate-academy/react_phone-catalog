@@ -1,0 +1,30 @@
+@import '../../styles-utils/utils';
+
+.BackBtn {
+  @include default-flex($align: center, $gap: 4px);
+  @include bg-and-border($borderSize: 0);
+
+  text-decoration: none;
+
+  &__name {
+    @include small-text;
+
+    color: $secondaryAccent;
+    transition: color $transitionDuration;
+  }
+
+  &:hover {
+    .BackBtn__name {
+      color: $primaryAccent;
+      text-decoration: underline;
+    }
+  }
+
+  &__chevron {
+    @include default-flex($align: center, $justify: center);
+
+    width: 16px;
+    height: 16px;
+    color: $primaryAccent
+  }
+}

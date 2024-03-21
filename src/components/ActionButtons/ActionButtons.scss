@@ -1,0 +1,43 @@
+@import '../../styles-utils/utils';
+
+.ActionButtons {
+  @include default-flex($gap: 8px);
+
+  &__addToCart {
+    @include button-text;
+    @include bg-and-border($borderSize: 0, $bgColor: $primaryAccent);
+
+    padding: 10px 0 9px;
+    color: $whiteAccent;
+    flex-grow: 2;
+
+    transition: box-shadow $transitionDuration,
+                text-shadow $transitionDuration;
+
+
+    &:hover {
+      box-shadow: 0 3px 13px $primaryAccent;
+      text-shadow: 0 3px 13px $hoverAndBgAccent;
+    }
+
+    &--added {
+      @include bg-and-border($borderColor: $elementsAccent, $bgColor: $whiteAccent);
+
+      color: $greenAccent;
+    }
+  }
+
+  &__addToFav {
+    @include icons-btn;
+    @include default-flex($align: center, $justify: center);
+
+  }
+
+  &__heart {
+    font-size: 15px;
+
+    &--red {
+      color: $redAccent;
+    }
+  }
+}

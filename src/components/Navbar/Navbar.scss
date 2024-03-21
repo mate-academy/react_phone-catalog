@@ -1,0 +1,18 @@
+@import '../../styles-utils/utils';
+
+.Navbar {
+  &__list {
+    @include default-flex($align: center, $gap: 64px);
+
+    list-style: none;
+  }
+
+  &__link {
+    @include uppercase-text;
+    @include nav-link-underline;
+
+    padding-block: 23px;
+    text-decoration: none;
+    color: $primaryAccent;
+  }
+}

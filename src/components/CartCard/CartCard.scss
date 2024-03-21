@@ -1,0 +1,82 @@
+@import '../../styles-utils/utils';
+
+.CartCard {
+  @include bg-and-border($borderColor: $elementsAccent);
+  @include default-grid-template($columns: 16, $gap: 24px);
+
+  align-items: center;
+  padding: 24px 40px 24px 24px;
+
+  &__startBlock {
+    @include default-flex($align: center, $gap: 24px);
+  }
+
+  &__endBlock {
+    @include default-flex($align:center, $gap: 43px);
+  }
+
+  &__icon {
+    color: $iconsAccent;
+    font-size: 12.5px;
+
+    transition: color $transitionDuration;
+  }
+
+  &__deleteBtn {
+    @include bg-and-border($borderSize: 0);
+    @include default-flex($align: center, $justify: center);
+
+    grid-column: 1 / 2;
+
+    width: 16px;
+    height: 16px;
+
+    &:hover .CartCard__icon {
+      color: $primaryAccent;
+    }
+  }
+
+  &__imageBlock {
+    grid-column: 2 / 4;
+
+    height: 80px;
+    width: 80px;
+    padding: 7px;
+  }
+
+  &__image {
+    @include img-full-center;
+  }
+
+  &__name {
+    grid-column: 4 / 12;
+
+    @include body-text;
+
+    width: 295px;
+  }
+
+  &__quantityBlock {
+    grid-column: 12 / 15;
+
+    @include default-flex($align: center, $gap: 14px);
+  }
+
+  &__quantityBtn {
+    @include icons-btn;
+
+    &--disabled {
+      pointer-events: none;
+      color: $iconsAccent;
+      border-color: $elementsAccent;
+    }
+  }
+
+  &__quantityCount {
+    @include body-text;
+  }
+
+  &__price {
+    grid-column: 15 / -1;
+  }
+}

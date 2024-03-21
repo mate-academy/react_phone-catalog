@@ -1,0 +1,115 @@
+@import '../../styles-utils/utils';
+
+.ProductSelection {
+  @include default-flex($direction: column, $gap: 24px);
+
+
+  &__subhead {
+    @include small-text;
+
+    color: $secondaryAccent;
+  }
+
+  &__optionsBlock {
+    @include default-flex($gap: 8px);
+
+    margin-top: 8px;
+  }
+
+  &__colorSelect {
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elementsAccent;
+    border-radius: 50%;
+
+    transition: border-color $transitionDuration;
+
+    &:hover {
+      border-color: $primaryAccent;
+    }
+
+    &--active {
+      border-color: $primaryAccent;
+    }
+  }
+
+  &__color {
+    border: 2px solid $whiteAccent;
+    border-radius: 50%;
+    width: 100%;
+    height: 100%;
+
+    &--spacegray {
+      background-color: #484848;
+    }
+
+    &--midnightgreen {
+      background-color: #004953;
+    }
+
+    &--gold {
+      background-color: #D4AF37;
+    }
+
+    &--silver {
+      background-color: #C0C0C0;
+    }
+
+    &--black {
+      background-color: #000;
+    }
+
+    &--white {
+      background-color: #FFF;
+    }
+
+    &--rosegold {
+      background-color: #B76E79;
+    }
+
+    &--green {
+      background-color: #34C759;
+    }
+
+    &--yellow {
+      background-color: #FFD301;
+    }
+
+    &--purple {
+      background-color: #5856D6;
+    }
+
+    &--red {
+      background-color: #BA0C2F;
+    }
+
+    &--coral {
+      background-color: #FF5048;
+    }
+  }
+
+  &__divider {
+    @include divider;
+  }
+
+  &__capacitySelect {
+    @include body-text;
+    @include bg-and-border($borderColor: $iconsAccent);
+
+    text-decoration: none;
+    color: $primaryAccent;
+
+    padding: 7px 8px 4px;
+
+    transition: border-color $transitionDuration;
+
+    &:hover {
+      border-color: $primaryAccent;
+    }
+
+    &--active {
+      @include black-active-link;
+    }
+  }
+}

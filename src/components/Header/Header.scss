@@ -1,0 +1,63 @@
+@import '../../styles-utils/utils';
+
+.Header {
+  &__container {
+    @include default-flex($align: center, $justify: space-between);
+
+    padding-left: 24px;
+    box-shadow: 0 1px 0 $hoverAndBgAccent;
+  }
+
+  &__startBlock {
+    @include default-flex($align: center, $gap: 64px);
+  }
+
+  &__endBlock {
+    @include default-flex($align: center);
+  }
+
+  &__linkContainer {
+    @include default-flex($align: center);
+  }
+
+  &__linkCounter {
+    @include default-flex($align: center, $justify: center);
+    @include bg-and-border($borderColor: $whiteAccent, $bgColor: $redAccent);
+
+    position: absolute;
+    top: 18px;
+    right: 18px;
+
+    text-align: center;
+
+    height: 14px;
+    width: 14px;
+
+    color: $whiteAccent;
+    border-radius: 50%;
+
+    font-size: 9px;
+    line-height: 11.5px;
+    font-weight: 600;
+  }
+
+  &__link {
+    @include default-flex($align: center, $justify: center);
+    @include nav-link-underline;
+
+    text-decoration: none;
+    padding: 24px;
+    box-shadow: -1px 0 0 $hoverAndBgAccent;
+
+  }
+
+  &__heart {
+    font-size: 16px;
+    color: $primaryAccent;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+  }
+}

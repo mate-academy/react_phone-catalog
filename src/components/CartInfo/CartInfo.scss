@@ -1,0 +1,15 @@
+@import '../../styles-utils/utils';
+
+.CartInfo {
+  @include default-grid-template;
+
+  margin-top: 24px;
+
+  &__cartList {
+    grid-column: span 16;
+  }
+
+  &__cartActions {
+    grid-column: span 8;
+  }
+}

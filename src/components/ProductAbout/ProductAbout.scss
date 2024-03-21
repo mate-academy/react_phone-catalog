@@ -1,0 +1,20 @@
+@import '../../styles-utils/utils';
+
+.ProductAbout {
+  &__divider {
+    @include divider;
+
+    margin-top: 16px;
+  }
+
+  &__article {
+    margin-top: 32px;
+  }
+
+  &__text {
+    @include body-text;
+
+    margin-top: 16px;
+    color: $secondaryAccent;
+  }
+}

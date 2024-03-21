@@ -1,0 +1,7 @@
+@import '../../styles-utils/utils';
+
+.CartList {
+  @include default-flex($direction: column, $gap: 16px);
+
+  list-style: none;
+}

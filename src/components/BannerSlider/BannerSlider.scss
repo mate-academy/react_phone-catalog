@@ -1,0 +1,67 @@
+@import '../../styles-utils/utils';
+
+.BannerSlider {
+  @include default-grid-template;
+
+  &__swiper {
+    overflow: hidden;
+    grid-column: 2 / -2;
+    width: 100%;
+    height: 400px;
+  }
+
+  &__picture {
+    @include img-full-center($fit: cover);
+  }
+
+  &__button {
+    &--next {
+      grid-column: -2 / -1;
+    }
+
+    &--prev {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__pagination {
+    margin-top: 8px;
+    grid-column: 12 / 14;
+
+    @include default-flex($align: center, $justify: center, $gap: 4px);
+  }
+
+  &__paginationBtn {
+    position: relative;
+    width: 24px;
+    height: 24px;
+
+    @include default-flex($align: center, $justify: center);
+
+    background-color: $whiteAccent;
+    cursor: pointer;
+
+    &::after {
+      content: '';
+      position: absolute;
+      width: 14px;
+      height: 4px;
+      transition: background-color $transitionDuration;
+
+      background-color: $elementsAccent;
+    }
+
+    &:hover::after {
+      background-color: $iconsAccent;
+    }
+
+    &--active {
+      &::after {
+        background-color: $primaryAccent;
+      }
+      &:hover::after {
+        background-color: $primaryAccent;
+      }
+    }
+  }
+}

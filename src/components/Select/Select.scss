@@ -1,0 +1,86 @@
+@import '../../styles-utils/utils';
+
+.Select {
+  width: 100%;
+  position: relative;
+
+  &__icon {
+    @include default-flex($align: center, $justify: center);
+
+    color: $iconsAccent;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__select {
+    @include button-text;
+    @include default-flex($align: center, $justify: space-between);
+    @include bg-and-border($borderColor: $iconsAccent);
+
+    width: 100%;
+    text-align: left;
+    padding: 9px 12px 8px;
+
+    transition: border-color $transitionDuration;
+
+    &:hover{
+      border-color: $secondaryAccent;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &--focused {
+      border-color: $primaryAccent;
+
+      &:hover {
+        border-color: $primaryAccent;
+      }
+    }
+  }
+
+  &__options {
+    @include default-flex($direction: column);
+    @include bg-and-border($borderColor: $elementsAccent);
+
+    padding: 7px 1px;
+    box-shadow: 0 2px 15px 0 #0000000D;
+
+    position: absolute;
+    width: 100%;
+    z-index: 1;
+    margin-top: 4px;
+
+    transform: scaleY(1);
+    transform-origin: top center;
+    transition: transform $transitionDuration ease-in-out;
+
+    &--hidden {
+      transform: scaleY(0);
+    }
+  }
+
+  &__option {
+    @include body-text;
+    @include bg-and-border($borderSize: 0);
+
+    color: $secondaryAccent;
+    text-align: left;
+    padding: 6px 0 5px 12px;
+
+    transition: color $transitionDuration;
+
+    &:hover {
+      color: $primaryAccent;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &--selected {
+      color: $primaryAccent;
+    }
+  }
+}

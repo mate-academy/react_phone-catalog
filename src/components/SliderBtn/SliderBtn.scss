@@ -1,0 +1,14 @@
+@import '../../styles-utils/utils';
+
+.SliderBtn {
+  @include icons-btn;
+
+  &--disabled {
+    pointer-events: none;
+    border-color: $elementsAccent;
+  }
+
+  &--BannerSlider {
+    height: 100%;
+  }
+}

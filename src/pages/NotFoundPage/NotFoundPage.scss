@@ -1,0 +1,25 @@
+@import '../../styles-utils/utils';
+
+.NotFoundPage {
+  @include default-flex($align: center, $justify: center, $direction: column, $gap: 24px);
+
+  &__link {
+    @include uppercase-text;
+    @include bg-and-border($borderColor: $elementsAccent);
+
+    text-decoration: none;
+    color: $primaryAccent;
+    padding: 12px;
+    transition: border-color $transitionDuration;
+
+    &:hover {
+      border-color: $primaryAccent;
+    }
+  }
+
+  &__info {
+    @include body-text;
+
+    color: $secondaryAccent;
+  }
+}

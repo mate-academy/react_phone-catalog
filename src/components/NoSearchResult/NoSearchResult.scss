@@ -1,0 +1,16 @@
+@import '../../styles-utils/utils';
+
+.NoSearchResult  {
+  @include default-flex($direction: column, $justify: center, $align: center);
+
+  &__title {
+    margin-top: 40px;
+    font-size: 2rem;
+  }
+
+  &__info {
+    @include body-text;
+
+    color: $secondaryAccent;
+  }
+}

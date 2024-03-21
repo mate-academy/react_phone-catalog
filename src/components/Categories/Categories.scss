@@ -1,0 +1,72 @@
+@import '../../styles-utils/utils';
+
+.Categories {
+  @include default-grid-template;
+
+  &__title {
+    grid-column: 1 / -1;
+  }
+
+  &__card {
+    grid-column: span 8;
+    margin-top: 24px;
+    text-decoration: none;
+    color: $primaryAccent;
+    transition: all $transitionDuration;
+
+    &:hover {
+      box-shadow: 0 4px 8px $hoverAndBgAccent;
+      transform: scale(0.95);
+    }
+  }
+
+  &__imgMask {
+    width: 100%;
+    height: 368px;
+    overflow: hidden;
+
+    &--phones {
+      background-color: #FCDBC1;
+
+      & img {
+        top: 8px;
+        left: 73px;
+        width: 100%;
+      }
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+
+      & img {
+        top: 20px;
+        left: 22px;
+        width: 546px;
+      }
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+
+      & img {
+        top: 46px;
+        left: 22px;
+        width: 700px;
+      }
+    }
+
+    & img {
+      position: relative;
+    }
+  }
+
+  &__subtitle {
+    margin-top: 24px;
+  }
+
+  &__count {
+    @include body-text;
+
+    margin-top: 4px;
+  }
+}

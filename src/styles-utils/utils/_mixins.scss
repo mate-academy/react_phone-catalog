@@ -1,0 +1,127 @@
+@mixin nav-link-underline {
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $primaryAccent;
+    transform: scaleX(0);
+    transition: transform $transitionDuration;
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+  }
+
+  &--active {
+    &::after {
+      transform: scaleX(1);
+    }
+  }
+}
+
+@mixin icons-btn {
+  @include bg-and-border($borderColor: $iconsAccent);
+
+  width: 32px;
+  height: 32px;
+
+  transition: border-color $transitionDuration;
+
+  &:hover {
+    border-color: $primaryAccent;
+  }
+
+  &:active {
+    border-color: $secondaryAccent;
+  }
+}
+
+@mixin uppercase-text {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin small-text {
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin button-text {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin full-price-text {
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28px;
+  letter-spacing: 0;
+
+  color: $secondaryAccent;
+  text-decoration: line-through;
+}
+
+@mixin message-block {
+  @include default-flex($align: center);
+
+  padding: 20px;
+  margin-block: 20px;
+  border-radius: 15px;
+}
+
+@mixin divider {
+  border-top: 1px solid $elementsAccent;
+  border-bottom: 0;
+}
+
+@mixin default-flex($direction: row, $justify: flex-start, $align: stretch, $gap: 0) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justify;
+  align-items: $align;
+  gap: $gap;
+}
+
+@mixin default-grid-template($columns: 24, $gap: 16px) {
+  display: grid;
+  grid-template-columns: repeat($columns, 1fr);
+  column-gap: $gap;
+}
+
+@mixin img-full-center($fit: contain) {
+  width: 100%;
+  height: 100%;
+  object-fit: $fit;
+  object-position: center;
+}
+
+
+@mixin bg-and-border($bgColor: $whiteAccent, $borderColor: black, $borderSize: 1px) {
+  background-color: $bgColor;
+  border: $borderSize solid $borderColor;
+}
+
+@mixin black-active-link {
+  background-color: $primaryAccent;
+  color: $whiteAccent;
+  border-color: $primaryAccent;
+}

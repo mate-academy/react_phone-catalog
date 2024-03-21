@@ -1,0 +1,44 @@
+@import '../../styles-utils/utils';
+
+.UnrealizedFeature {
+  @include default-flex($align: center, $justify: center);
+
+  position: fixed;
+  inset: 0;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.9);
+
+  &__modal {
+    @include default-flex($direction: column, $align: center);
+
+    background-color: $whiteAccent;
+    box-shadow: 4px 8px 10px $secondaryAccent;
+    padding: 24px;
+  }
+
+  &__xmark {
+    font-size: 12.5px;
+    color: $secondaryAccent;
+
+    transition: color $transitionDuration;
+  }
+
+  &__button {
+    @include bg-and-border($borderSize: 0);
+    @include default-flex($align: center, $justify: center);
+
+    width: 16px;
+    height: 16px;
+    align-self: flex-end;
+
+    &:hover .UnrealizedFeature__xmark {
+      color: $primaryAccent;
+    }
+  }
+
+  &__text {
+    @include body-text;
+
+    color: $secondaryAccent;
+  }
+}

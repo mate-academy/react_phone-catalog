@@ -1,0 +1,7 @@
+@import '../../styles-utils/utils';
+
+.ErrorMessage {
+  @include message-block;
+
+  background-color: rgba(255, 0, 0, 0.3);
+}

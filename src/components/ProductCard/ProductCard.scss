@@ -1,0 +1,89 @@
+@import '../../styles-utils/utils';
+
+.ProductCard{
+  border: 1px solid $elementsAccent;
+  padding: 24px 23px;
+
+  &__image {
+    @include img-full-center;
+
+    transition: transform $transitionDuration;
+  }
+
+  &__name {
+    @include body-text;
+
+    margin-top: 24px;
+  }
+
+  &__linkBlock {
+    position: relative;
+    text-decoration: none;
+    color: $primaryAccent;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      box-shadow: 2px -2px 8px 2px $hoverAndBgAccent;
+      transform: scale(1);
+      opacity: 0;
+      transition: transform $transitionDuration,
+                  opacity $transitionDuration;
+    }
+
+    &:hover::before {
+      transform: scaleY(1.05) scaleX(1.1);
+      opacity: 1;
+    }
+
+    &:hover {
+      & .ProductCard__image {
+        transform: scale(1.05);
+      }
+
+      & .ProductCard__name {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__imgMask {
+    width: 208px;
+    height: 208px;
+    margin: 8px 8px 0;
+    padding: 0 8px;
+  }
+
+  &__pricesBlock {
+    @include default-flex($align: center, $gap: 8px);
+
+    width: fit-content;
+
+    margin-top: 6.5px;
+  }
+
+  &__fullPrice {
+    @include full-price-text;
+  }
+
+  &__divider {
+    @include divider;
+
+    margin-top: 6.5px;
+  }
+
+  &__description {
+    @include default-flex($direction:column, $gap: 8px);
+
+    margin-top: 16px;
+  }
+
+  &__endBlock {
+    @include default-flex($direction: column, $gap: 16px);
+  }
+}

@@ -1,0 +1,13 @@
+@import '../../styles-utils/utils';
+
+.ProductActions {
+  @include default-flex($direction: column, $gap: 16px);
+
+  &__prices {
+    @include default-flex($align: center, $gap: 8px);
+  }
+
+  &__fullPrice {
+    @include full-price-text;
+  }
+}

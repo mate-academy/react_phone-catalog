@@ -1,0 +1,12 @@
+@import '../../styles-utils/utils';
+
+.ProductList {
+  @include default-grid-template;
+
+  row-gap: 40px;
+  list-style: none;
+
+  &__item {
+    grid-column: span 6;
+  }
+}

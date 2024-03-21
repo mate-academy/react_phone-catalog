@@ -1,0 +1,16 @@
+@import '../../styles-utils/utils';
+
+.Logo {
+  @include default-flex($align: center);
+
+  text-decoration: none;
+  height: 24px;
+
+  & img {
+    transition: transform $transitionDuration;
+  }
+
+  &:hover img {
+    transform: scale(1.2);
+  }
+}

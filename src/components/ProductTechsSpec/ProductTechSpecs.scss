@@ -1,0 +1,31 @@
+@import '../../styles-utils/utils';
+
+.ProductTechSpecs {
+  &__divider {
+    @include divider;
+
+    margin-top: 16px;
+  }
+
+  &__specsBlock {
+    @include default-flex($direction: column, $gap: 8px);
+
+    margin-top: 25px;
+  }
+
+  &__spec {
+    @include default-flex($justify: space-between);
+  }
+
+  &__name {
+    @include body-text;
+
+    color: $secondaryAccent;
+  }
+
+  &__value {
+    @include body-text;
+
+    color: $primaryAccent;
+  }
+}

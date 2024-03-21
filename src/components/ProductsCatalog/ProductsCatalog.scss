@@ -1,0 +1,62 @@
+@import '../../styles-utils/utils';
+
+.ProductsCatalog {
+  &__count {
+    @include body-text;
+
+    margin-top: 8px;
+    color: $secondaryAccent;
+  }
+
+  &__options {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    column-gap: 16px;
+    margin-top: 40px;
+  }
+
+  &__optionsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &--sortBy {
+      grid-column: span 4;
+    }
+
+    &--itemsOnPage {
+      grid-column: span 3;
+    }
+  }
+
+  &__optionLabel {
+    @include small-text;
+
+    color: $secondaryAccent;
+  }
+
+  &__optionSelect {
+    @include button-text;
+
+    appearance: none;
+    padding: 10px 12px;
+    border-radius: 0;
+    border: 1px solid $iconsAccent;
+
+    &--sortBy {
+      width: 176px;
+    }
+
+    &--perPage {
+      width: 128px;
+    }
+  }
+
+  &__list {
+    margin-top: 24px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}

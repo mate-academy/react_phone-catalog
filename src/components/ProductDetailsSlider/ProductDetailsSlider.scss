@@ -1,0 +1,45 @@
+@import '../../styles-utils/utils';
+
+.ProductDetailsSlider {
+  @include default-grid-template($columns: 12);
+
+  &__swiper {
+    grid-column: 3 / -1;
+
+    overflow: hidden;
+    width: 100%;
+    height: 464px;
+  }
+
+  &__picture {
+    @include img-full-center;
+  }
+
+  &__pagination {
+    @include default-flex($direction: column, $gap: 16px);
+
+    grid-column: 1 / 3;
+  }
+
+  &__paginationButton {
+    width: 100%;
+    height: 80px;
+    border: 1px solid $elementsAccent;
+    padding: 7px;
+    cursor: pointer;
+
+    transition: border-color $transitionDuration;
+
+    &--active {
+      border-color: $primaryAccent;
+    }
+
+    &:hover {
+      border-color: $primaryAccent;
+    }
+  }
+
+  &__paginationImg {
+    @include img-full-center;
+  }
+}

@@ -1,0 +1,60 @@
+@import '../../styles-utils/utils';
+
+.Search {
+  position: relative;
+
+  &__input {
+    padding-right: 40px;
+    padding-left: 20px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height:17.89px;
+    height: 64px;
+    width: 327px;
+    border: 0;
+    box-shadow: -1px 0 0 $hoverAndBgAccent;
+    color: $primaryAccent;
+
+    transition: box-shadow $transitionDuration;
+
+    &:hover {
+      box-shadow: -1px 0 0 $iconsAccent;
+    }
+
+    &:focus {
+      box-shadow: -1px 0 0 $secondaryAccent;
+    }
+
+    &:focus-visible {
+      outline: none;
+    }
+
+    &::placeholder {
+      color: $iconsAccent;
+    }
+  }
+
+  &__icon {
+    @include default-flex($align: center, $justify: center);
+
+    position: absolute;
+    right: 24px;
+    top: 24px;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__button {
+    @include bg-and-border($borderSize: 0);
+    @include default-flex($align: center, $justify: center);
+
+    &--search {
+      cursor: text;
+    }
+  }
+
+  &__xmark {
+    font-size: 12.5px;
+    color: $primaryAccent;
+  }
+}

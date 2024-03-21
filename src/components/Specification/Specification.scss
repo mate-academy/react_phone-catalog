@@ -1,0 +1,15 @@
+@import '../../styles-utils/utils';
+
+.Specification {
+  @include default-flex($align: center, $justify: space-between);
+
+  &__name {
+    @include small-text;
+
+    color: $secondaryAccent;
+  }
+
+  &__value {
+    @include small-text;
+  }
+}

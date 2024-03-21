@@ -1,0 +1,48 @@
+@import '../../styles-utils/utils';
+
+.Breadcrumbs {
+  @include default-flex($align: center, $gap: 8px);
+
+  &__name {
+    @include small-text;
+
+    color: $primaryAccent;
+  }
+
+  &__home {
+    @include default-flex($align: center, $justify: center);
+
+    & .Breadcrumbs__icon {
+      transition: transform $transitionDuration;
+    }
+
+    &:hover .Breadcrumbs__icon {
+      transform: scale(1.1);
+    }
+  }
+
+  &__link {
+    @include default-flex($align: center, $gap: 8px);
+
+    text-decoration: none;
+
+    &--disabled {
+      pointer-events: none;
+      & .Breadcrumbs__name {
+        color: $secondaryAccent;
+      }
+    }
+
+    &:hover {
+      .Breadcrumbs__name {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__chevron {
+    @include default-flex($align: center, $justify: center);
+
+    color: $iconsAccent;
+  }
+}
