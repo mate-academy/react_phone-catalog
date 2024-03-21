@@ -1,11 +1,11 @@
 import { Colors } from './Color';
 
-export interface DescriptionParagraph {
+interface DescriptionParagraph {
   title: string;
   text: string[];
 }
 
-export interface ProductDetail {
+interface ProductDetail {
   id: string;
   namespaceId: string;
   name: string;
@@ -25,3 +25,5 @@ export interface ProductDetail {
   zoom: string;
   cell: string[];
 }
+
+export { type DescriptionParagraph, type ProductDetail };

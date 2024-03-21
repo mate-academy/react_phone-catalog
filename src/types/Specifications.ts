@@ -1,7 +1,6 @@
-/* eslint-disable @typescript-eslint/indent */
-import { ProductDetail } from './ProductDetail';
+import type { ProductDetail } from '.';
 
-export const SpecificationsPhone: Array<keyof ProductDetail> = [
+const SpecificationsPhone: Array<keyof ProductDetail> = [
   'screen',
   'resolution',
   'processor',
@@ -12,9 +11,11 @@ export const SpecificationsPhone: Array<keyof ProductDetail> = [
   'cell',
 ];
 
-export const SpecificationsPhoneSimplified: Array<keyof ProductDetail> = [
+const SpecificationsPhoneSimplified: Array<keyof ProductDetail> = [
   'screen',
   'resolution',
   'processor',
   'ram',
 ];
+
+export { SpecificationsPhone, SpecificationsPhoneSimplified };
