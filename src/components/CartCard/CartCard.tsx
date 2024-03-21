@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import { Cart, CartItem } from '../../utils/Cart';
 
 import './CartCard.scss';
+import { API_URL } from '../../utils/api';
 
 type Props = {
   item: CartItem;
@@ -54,7 +55,11 @@ export const CartCard: React.FC<Props> = memo(({ item }) => {
       </button>
 
       <div className="CartCard__imageBlock">
-        <img className="CartCard__image" src={`/_new/${image}`} alt={name} />
+        <img
+          className="CartCard__image"
+          src={`${API_URL}/${image}`}
+          alt={name}
+        />
       </div>
 
       <p className="CartCard__name">
