@@ -7,9 +7,6 @@ import {
 } from 'react-router-dom';
 import { App } from './components/App/App';
 import { HomePage } from './pages/HomePage';
-// import { PhonesPage } from './pages/PhonesPage';
-// import { TabletsPage } from './pages/TabletsPage';
-// import { AccessoriesPage } from './pages/AccessoriesPage';
 import { FavouritesPage } from './pages/FavouritesPage';
 import { CartPage } from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
