@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../store/ProductsContext';
 
 import './Categories.scss';
+import { API_URL } from '../../utils/api';
 
 export const Categories: React.FC = () => {
   const { products } = useContext(ProductsContext);
@@ -33,7 +34,10 @@ export const Categories: React.FC = () => {
         data-cy="categoryLinksContainer"
       >
         <div className="Categories__imgMask Categories__imgMask--phones">
-          <img src="/_new/img/category-phones.png" alt="Phones Category" />
+          <img
+            src={`${API_URL}/img/category-phones.png`}
+            alt="Phones Category"
+          />
         </div>
         <h3 className="Categories__subtitle">Mobile phones</h3>
         <p className="Categories__count">{phonesCount} models</p>
@@ -45,7 +49,10 @@ export const Categories: React.FC = () => {
         data-cy="categoryLinksContainer"
       >
         <div className="Categories__imgMask Categories__imgMask--tablets">
-          <img src="/_new/img/category-tablets.png" alt="Tablets Category" />
+          <img
+            src={`${API_URL}/img/category-tablets.png`}
+            alt="Tablets Category"
+          />
         </div>
 
         <h3 className="Categories__subtitle">Tablets</h3>
@@ -59,7 +66,7 @@ export const Categories: React.FC = () => {
       >
         <div className="Categories__imgMask Categories__imgMask--accessories">
           <img
-            src="/_new/img/category-accessories.png"
+            src={`${API_URL}/img/category-accessories.png`}
             alt="Accessories Category"
           />
         </div>
