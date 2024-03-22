@@ -1,0 +1,22 @@
+@import '../GeneralStyles/variables';
+@import '../GeneralStyles/mixins';
+
+.nav {
+	margin: 0;
+	display: flex;
+	gap: 64px;
+
+	&__link {
+		position: relative;
+		text-decoration: none;
+		font-weight: 700;
+		text-transform: uppercase;
+		color: $secondary-color;
+		font-size: 12px;
+		line-height: 11px;
+		letter-spacing: 0.48px;
+		transition: all $duration-time;
+
+		@include link-hover;
+	}
+}
