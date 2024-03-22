@@ -5,15 +5,26 @@ import { ActiveButton } from '../ActiveButton';
 import { Icon, Typography } from '../../base';
 
 type Props = {
+  path?: string;
   className?: string;
 };
 
-export const ButtonBack: React.FC<Props> = ({ className = '' }) => {
+export const ButtonBack: React.FC<Props> = ({ path = '', className = '' }) => {
   const navigate = useNavigate();
+
+  const handleClickBackButton = () => {
+    if (path) {
+      navigate(path);
+
+      return;
+    }
+
+    navigate(-1);
+  };
 
   return (
     <ActiveButton
-      onClickHandler={() => navigate(-1)}
+      onClickHandler={handleClickBackButton}
       className={clsx('back-button', className)}
     >
       <Icon id="arrow-left" width={16} height={16} className="arrow__icon" />

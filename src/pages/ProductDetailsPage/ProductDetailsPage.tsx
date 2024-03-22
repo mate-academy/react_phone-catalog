@@ -268,7 +268,7 @@ export const ProductDetailsPage: React.FC = () => {
         <div className="product-detail">
           <Breadcrumb path={location.pathname} />
           <div className="product-detail__back">
-            <ButtonBack />
+            <ButtonBack path='../'/>
           </div>
           <Typography type="title" level="1" className="product-detail__title">
             {productDetailed?.name}
