@@ -1,5 +1,7 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import React from 'react';
 import clsx from 'clsx';
+import { debounce } from 'lodash';
 import { Button, Icon } from '../../base';
 
 import './Slider.scss';
@@ -19,6 +21,8 @@ export const SliderButton: React.FC<Props> = ({
 }) => {
   const type = direction === 'left' ? 'prev' : 'next';
 
+  const handleClickDebounce = debounce(() => onClickHandler(), 300);
+
   return (
     <Button
       type="default"
@@ -26,7 +30,7 @@ export const SliderButton: React.FC<Props> = ({
         className && [`${className}__arrow`, `${className}__arrow--${type}`],
       ])}
       disabled={disabled}
-      onClickHandler={onClickHandler}
+      onClickHandler={handleClickDebounce}
     >
       <Icon
         id={`arrow-${direction}`}
