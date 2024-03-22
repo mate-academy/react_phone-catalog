@@ -1,0 +1,21 @@
+@mixin flex-center {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin small-text {
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+}
+
+@mixin h1-text {
+  color: $color-primary;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40.9px;
+}

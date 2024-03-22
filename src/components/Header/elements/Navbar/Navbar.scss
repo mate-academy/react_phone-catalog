@@ -1,7 +1,7 @@
 @import '../../../../styles/utils';
 
 .navbar {
-  display: flex;
+  @include flex-center;
   justify-content: space-between;
   gap: 64px;
 
@@ -12,17 +12,13 @@
   text-align: left;
 
   &__link{
+    @include flex-center;
+
     height: 64px;
 
     text-decoration: none;
     text-transform: uppercase;
     color: $color-secondary;
     outline: none;
-
-
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
   }
 }

@@ -1,3 +1,7 @@
+@import '../../styles/utils.scss';
 .logo {
-  padding-left: 24px;
+  @include flex-center;
+
+  width: 40px;
+  height: 24px;
 }

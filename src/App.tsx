@@ -8,7 +8,7 @@ export const App = () => (
     <Header />
 
     <main>
-      <div>
+      <div className="container">
         <Outlet />
       </div>
     </main>

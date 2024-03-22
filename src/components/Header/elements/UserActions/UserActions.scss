@@ -5,13 +5,11 @@
   flex-direction: row;
 
   &__icon {
+    @include flex-center;
+    
     width: 64px;
     height: 64px;
     border-left: 1px solid $color-elements;
 
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
   }
 }

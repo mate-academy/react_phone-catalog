@@ -1,20 +1,19 @@
+@import '../../styles/utils.scss';
 .header {
   grid-area: header;
 
-  display: flex;
-  flex-direction: row;
+  @include flex-center;
   justify-content: space-between;
-  align-items: center;
 
-  box-sizing: border-box;
   width: 100%;
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid $color-icons;
 
   &__left {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    @include flex-center;
     gap: 64px;
+  }
+
+  &__logo {
+    margin-left: 24px;
   }
 }
