@@ -56,7 +56,9 @@ export const Categories: React.FC = () => {
       <h1 className="Categories__title">Shop by category</h1>
 
       {categories.map(category => (
-        <CategoriesCard category={category} />
+        <article key={category.path} className="Categories__card">
+          <CategoriesCard category={category} />
+        </article>
       ))}
     </section>
   );

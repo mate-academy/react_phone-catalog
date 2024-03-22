@@ -13,11 +13,7 @@ export const CategoriesCard: React.FC<Props> = memo(({ category }) => {
   const { path, src, alt, title, count } = category;
 
   return (
-    <Link
-      to={path}
-      className="Categories__card CategoriesCard"
-      data-cy="categoryLinksContainer"
-    >
+    <Link to={path} className="CategoriesCard" data-cy="categoryLinksContainer">
       <div
         className={`CategoriesCard__imgMask CategoriesCard__imgMask--${path.slice(1)}`}
       >

@@ -54,22 +54,24 @@ export const ProductCard: React.FC<Props> = memo(({ product }) => {
         </div>
 
         <p className="ProductCard__name">{`${name} (iMT9G2FS/A)`}</p>
-      </Link>
 
-      <div className="ProductCard__pricesBlock">
-        <h2 className="ProductCard__price">${price}</h2>
-        {!!fullPrice && <p className="ProductCard__fullPrice">${fullPrice}</p>}
-      </div>
+        <div className="ProductCard__pricesBlock">
+          <h2 className="ProductCard__price">${price}</h2>
+          {!!fullPrice && (
+            <p className="ProductCard__fullPrice">${fullPrice}</p>
+          )}
+        </div>
 
-      <hr className="ProductCard__divider" />
+        <hr className="ProductCard__divider" />
 
-      <div className="ProductCard__endBlock">
         <div className="ProductCard__description">
           {specifications.map(([key, value]) => (
             <Specification key={key} specification={[key, value]} />
           ))}
         </div>
+      </Link>
 
+      <div className="ProductCard__buttonsBlock">
         <ActionButtons size="40px" productId={itemId} />
       </div>
     </article>

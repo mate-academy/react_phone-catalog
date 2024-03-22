@@ -5,9 +5,9 @@
 
   &__addToCart {
     @include button-text;
-    @include bg-and-border($borderSize: 0, $bgColor: $primaryAccent);
+    @include bg-and-border($borderColor: $primaryAccent, $bgColor: $primaryAccent);
 
-    padding: 10px 0 9px;
+    padding: 9px 0 8px;
     color: $whiteAccent;
     flex-grow: 2;
 
@@ -30,6 +30,10 @@
   &__addToFav {
     @include icons-btn;
     @include default-flex($align: center, $justify: center);
+
+    &--added {
+      border-color: $elementsAccent;
+    }
 
   }
 

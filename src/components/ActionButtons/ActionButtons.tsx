@@ -66,7 +66,9 @@ export const ActionButtons: React.FC<Props> = memo(({ size, productId }) => {
       </button>
       <button
         type="button"
-        className="ActionButtons__addToFav"
+        className={classNames('ActionButtons__addToFav', {
+          'ActionButtons__addToFav--added': isInFav,
+        })}
         aria-label="Add to fav Button"
         style={{ width: size, height: size }}
         onClick={handleAddToFav}

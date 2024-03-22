@@ -15,6 +15,7 @@ export const Footer: React.FC = () => {
           <Link
             to="https://github.com/PodvAx/react_phone-catalog/tree/master"
             className="Footer__link"
+            target="_blank"
           >
             Github
           </Link>
