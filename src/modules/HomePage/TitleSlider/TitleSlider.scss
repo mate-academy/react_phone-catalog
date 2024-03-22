@@ -5,7 +5,7 @@
     margin-bottom: 16px;
     width: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 50px;
     }
   }
