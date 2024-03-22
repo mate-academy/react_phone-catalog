@@ -61,6 +61,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [productsSameColor, setProductsSameColor] = useState<Product[]>([]);
   const [productSameSeries, setProductSameSeries] = useState<Product[]>([]); // i.e iphone 11 pro with all colors and storages
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAddingToFav, setIsAddingToFav] = useState<boolean>(false);
+  const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
   const [isAddedToFav, setIsAddedToFav] = useState<boolean>(false);
   const [isAddedToCart, setIsAddedToCart] = useState<boolean>(false);
 
@@ -120,7 +122,7 @@ export const ProductDetailsPage: React.FC = () => {
       return allItems.find(item => item.itemId === itemId);
     };
 
-    setIsLoading(true);
+    setIsAddingToFav(true);
     wait(100)
       .then(() => {
         currentItem()
@@ -132,7 +134,7 @@ export const ProductDetailsPage: React.FC = () => {
           })
           .catch(e => new Error(e));
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsAddingToFav(false));
   };
 
   const handleAddDelCart = () => {
@@ -142,7 +144,7 @@ export const ProductDetailsPage: React.FC = () => {
       return allItems.find(item => item.itemId === itemId);
     };
 
-    setIsLoading(true);
+    setIsAddingToCart(true);
     wait(100)
       .then(() => {
         currentItem()
@@ -154,7 +156,7 @@ export const ProductDetailsPage: React.FC = () => {
           })
           .catch(e => new Error(e));
       })
-      .finally(() => setIsLoading(false));
+      .finally(() => setIsAddingToCart(false));
   };
 
   useEffect(() => {
@@ -191,7 +193,7 @@ export const ProductDetailsPage: React.FC = () => {
           group,
         );
 
-        const productsRelated = [...itemsAll].slice(0, 6).map(productItem => {
+        const productsRelated = [...itemsAll].map(productItem => {
           return {
             ...productItem,
             image: `${REACT_APP_BASE_URL}/${productItem.image}`,
@@ -204,7 +206,6 @@ export const ProductDetailsPage: React.FC = () => {
         const isCart
           = cartItems.findIndex(cartItem => cartItem.itemId === itemId) !== -1;
 
-        // setProduct(item);
         setProductDetailed(item);
         setProductSameSeries(group);
         setProductCategory(group[0].category);
@@ -400,10 +401,11 @@ export const ProductDetailsPage: React.FC = () => {
                 </p>
               </div>
               <div className="product-detail__buttons">
-                <ButtonAdd isAdded={isAddedToCart} onClick={handleAddDelCart} />
+                <ButtonAdd isAdded={isAddedToCart} onClick={handleAddDelCart} isLoading={isAddingToCart} />
                 <ButtonFavourite
                   isAdded={isAddedToFav}
                   onClick={handleAddDelFav}
+                  isLoading={isAddingToFav}
                 />
               </div>
               <div

@@ -1,11 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
+import { Loader } from '../Loader';
 
 import './Button.scss';
 
 type Props = {
   type: 'primary' | 'default';
   children: React.ReactNode;
+  isLoading?: boolean;
   active?: boolean;
   borderless?: boolean;
   disabled?: boolean;
@@ -17,6 +19,7 @@ type Props = {
 
 const MemoButton: React.FC<Props> = ({
   type,
+  isLoading = false,
   active = false,
   borderless = false,
   disabled = false,
@@ -37,11 +40,12 @@ const MemoButton: React.FC<Props> = ({
         className,
       )}
       type="button"
-      disabled={disabled}
+      disabled={disabled || isLoading}
       onClick={onClickHandler}
       data-cy={cypressParam}
     >
-      {children}
+      {isLoading && <Loader />}
+      {!isLoading && children}
     </button>
   );
 };

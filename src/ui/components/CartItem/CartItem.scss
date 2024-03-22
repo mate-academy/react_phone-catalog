@@ -1,6 +1,4 @@
-@import "../../../styles/variables";
-@import "../../../styles/mixins";
-@import "../../../styles/extends";
+@import "../../../styles/index";
 
 .cart-item {
   position: relative;
@@ -33,16 +31,19 @@
   }
 
   &:hover {
-    border-color: $color-primary;
+    // border-color: $color-primary;
+    box-shadow: $box-shadow-button;
+
   }
 
   &__close {
     grid-area: close;
     padding: 4px;
-    fill: $color-icons;
+    color: $color-icons;
+    transition: color $duration-transition ease;
 
     &:hover {
-      fill: $color-primary;
+      color: $color-primary;
     }
   }
 

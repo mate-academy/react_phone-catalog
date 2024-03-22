@@ -24,10 +24,6 @@ export const Page: React.FC<Props> = () => {
           setIsShowHeaderSearch(true);
           setIsShowHeaderFav(true);
           break;
-        case 'cart':
-          setIsShowHeaderFav(false);
-          setIsShowHeaderSearch(false);
-          break;
         default:
           setIsShowHeaderSearch(false);
           setIsShowHeaderFav(true);

@@ -3,6 +3,7 @@
 @import '../../../styles/extends';
 
 .button {
+  position: relative;
   display: block;
   font-size: to-rem(14);
   line-height: to-rem(21);

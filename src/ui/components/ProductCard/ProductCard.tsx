@@ -1,9 +1,9 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/anchor-has-content */
-import React, { useContext, useEffect, useState } from 'react';
-import clsx from 'clsx';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Loader, Typography } from '../../base';
+import { Typography } from '../../base';
 import { ButtonFavourite } from '../ButtonFavourite';
 import { ButtonAdd } from '../ButtonAdd';
 import { ProductContext } from '../../../context/ProductsContext';
@@ -34,7 +34,9 @@ const MemoProductCard: React.FC<Props> = ({
   onAddToFav,
   ...rest
 }) => {
-  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isAddingToCart, setIsAddingToCart] = useState<boolean>(false);
+  const [isAddingToFavourite, setIsAddingToFavourite]
+    = useState<boolean>(false);
 
   const {
     favouriteItems,
@@ -48,27 +50,22 @@ const MemoProductCard: React.FC<Props> = ({
   const isAddedToFav = isItemInArray(item, favouriteItems, 'id');
 
   const handleAddDelFav = () => {
-    setIsLoading(true);
+    setIsAddingToFavourite(true);
 
-    addDelProductFavourite(item).finally(() => setIsLoading(false));
+    addDelProductFavourite(item).finally(() => setIsAddingToFavourite(false));
   };
 
   const handleAddDelCart = () => {
-    setIsLoading(true);
+    setIsAddingToCart(true);
 
-    addDelProductCart(item as ProductCart).finally(() => setIsLoading(false));
+    addDelProductCart(item as ProductCart).finally(() =>
+      setIsAddingToCart(false),
+    );
   };
-
-  useEffect(() => {
-    return () => setIsLoading(false);
-  }, []);
 
   return (
     <div className="card" data-cy="cardsContainer">
-      {isLoading && <Loader classModifier="card__loader" />}
-      <div
-        className={clsx('card__content', isLoading && 'card__content--loading')}
-      >
+      <div className="card__content">
         <div className="card__image">
           <img src={image} alt={name} />
         </div>
@@ -94,8 +91,16 @@ const MemoProductCard: React.FC<Props> = ({
           </tbody>
         </table>
         <div className="card__controls">
-          <ButtonAdd isAdded={isAddedToCart} onClick={handleAddDelCart} />
-          <ButtonFavourite isAdded={isAddedToFav} onClick={handleAddDelFav} />
+          <ButtonAdd
+            isAdded={isAddedToCart}
+            onClick={handleAddDelCart}
+            isLoading={isAddingToCart}
+          />
+          <ButtonFavourite
+            isAdded={isAddedToFav}
+            onClick={handleAddDelFav}
+            isLoading={isAddingToFavourite}
+          />
         </div>
         <Link
           className="card__link"
