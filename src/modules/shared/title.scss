@@ -1,0 +1,24 @@
+.primary-title {
+  font-family: Mont-Bold, sans-serif;
+  line-height: 41px;
+
+  color: #313237;
+}
+
+.secondary-title {
+  font-size: 22px; // необов'язково
+  font-family: Mont-Bold, sans-serif;
+
+  color: #313237;
+}
+
+.quaternary-title {
+  display: flex;
+
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  line-height: 11px;
+  color: $text-gray-color;
+  text-decoration: none;
+}

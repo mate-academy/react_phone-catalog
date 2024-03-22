@@ -1,0 +1,39 @@
+.header {
+  height: $header-height-mobile;
+
+  position: sticky;
+  top: 0;
+
+  background-color: #fff;
+  z-index: 1;
+
+  &__container {
+    height: 100%;
+  }
+
+  &__navbar {
+    height: 100%;
+
+    display: flex;
+    justify-content: space-between;
+
+    box-shadow: 0 1px 0 #E2E6E9;
+  }
+
+  &__navbar-menu {
+    display: flex;
+  }
+
+  &__logo-link {
+    height: 100%;
+    width: 96px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__logo {
+    height: 22px;
+  }
+}

@@ -1,0 +1,43 @@
+iframe {
+  display: none;
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-Regular;
+  src: url('../public/fonts/Mont-Regular.otf') format('opentype');
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url('../public/fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+.page {
+  scroll-behavior: smooth;
+
+  // font-family: 'Mont-Regular', sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
+
+  // font-family: 'Mont-Bold', sans-serif;
+
+  &__body {
+    margin: 0 auto;
+    padding: 0;
+
+    box-sizing: border-box;
+  }
+
+  &__body * {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    transition: all 0.3s;
+  }
+}

@@ -1,0 +1,27 @@
+.add-block {
+  display: flex;
+  gap: 8px;
+
+  &__add-to-cart {
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    background-color: #313237;
+  }
+
+  &__add-to-fav {
+    padding: 12px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 1px #b4bdc3;
+  }
+}
