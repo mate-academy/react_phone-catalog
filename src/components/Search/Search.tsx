@@ -17,7 +17,6 @@ type Props = {
 export const Search: React.FC<Props> = memo(({ category }) => {
   const [searchQuery, setSearchQuery] = useState('');
   const [prevQuery, setPrevQuery] = useState<string | null>(null);
-
   const inputRef = useRef<HTMLInputElement>(null);
   const timerId = useRef<NodeJS.Timeout | null>(null);
 
@@ -55,6 +54,7 @@ export const Search: React.FC<Props> = memo(({ category }) => {
       }, 1000);
     } else if (normalizedQuery.length === 0) {
       setSearchWith({ query: null });
+      setPrevQuery(null);
     }
 
     return () => {};

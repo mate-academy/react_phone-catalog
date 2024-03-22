@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useEffect, useMemo } from 'react';
+import React, { memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { Select } from '../Select';
@@ -15,6 +15,7 @@ import { SelectOptionType } from '../../types/SelectOtionsType';
 import { Product } from '../../types/Product';
 
 import './ProductsCatalog.scss';
+import { Loader } from '../Loader';
 
 type Props = {
   products: Product[];
@@ -36,6 +37,7 @@ const perPageOptions: SelectOptionType[] = [
 export const ProductsCatalog: React.FC<Props> = memo(({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
+  const [isFiltering, setIsFiltering] = useState(false);
 
   const isFavouritesPage = useMemo(
     () => pathname === '/favourites',
@@ -61,27 +63,30 @@ export const ProductsCatalog: React.FC<Props> = memo(({ products }) => {
     [searchParams, setSearchParams],
   );
 
-  function onFirstRender() {
-    if (isFavouritesPage) {
-      setSearchWith({ perPage: 'all', page: null, sortBy: null });
-    } else {
-      setSearchWith({ page: currentPage, perPage, sortBy });
-    }
-  }
+  const onFirstRender = useCallback(() => {
+    const params: Params = isFavouritesPage
+      ? { perPage: 'all', page: null, sortBy: null }
+      : { page: currentPage, perPage, sortBy };
+
+    setSearchWith(params);
+  }, [currentPage, perPage, sortBy, isFavouritesPage, setSearchWith]);
 
   useEffect(() => {
     onFirstRender();
-  }, []);
+  }, [onFirstRender]);
 
-  const filteredProducts = useMemo(
-    () =>
-      getFilteredProducts({
-        productsToFilter: products,
-        sortBy,
-        searchQuery,
-      }),
-    [products, sortBy, searchQuery],
-  );
+  const filteredProducts = useMemo(() => {
+    if (searchQuery.length) {
+      setIsFiltering(true);
+      setTimeout(() => setIsFiltering(false), 1000);
+    }
+
+    return getFilteredProducts({
+      productsToFilter: products,
+      sortBy,
+      searchQuery,
+    });
+  }, [products, sortBy, searchQuery]);
 
   const slicedProducts = useMemo(() => {
     if (perPage === 'all') {
@@ -121,9 +126,16 @@ export const ProductsCatalog: React.FC<Props> = memo(({ products }) => {
     [setSearchWith],
   );
 
-  const isSearchResult = !!slicedProducts.length;
+  const isSearchResult = useMemo(
+    () => !!slicedProducts.length,
+    [slicedProducts],
+  );
 
-  return isSearchResult ? (
+  if (!isSearchResult && !isFiltering) {
+    return <NoSearchResult />;
+  }
+
+  return !isFiltering && isSearchResult ? (
     <section className="ProductsCatalog">
       <div className="ProductsCatalog__count">
         {!!searchQuery.length && `${filteredProducts.length} results of `}
@@ -182,6 +194,6 @@ export const ProductsCatalog: React.FC<Props> = memo(({ products }) => {
       )}
     </section>
   ) : (
-    <NoSearchResult />
+    <Loader />
   );
 });

@@ -18,6 +18,8 @@
   }
 
   &--active {
+    color: $primaryAccent;
+
     &::after {
       transform: scaleX(1);
     }
