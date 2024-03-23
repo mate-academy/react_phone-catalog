@@ -58,41 +58,7 @@
   &__banner {
     height: 400px;
     width: 1040px;
+    object-fit: cover;
+    object-position: center;
   }
-
-  // &__button {
-  //   background-color: white;
-  //   border: 1px solid #B4BDC3;
-  //   padding: 200px 8px 180px;
-  //   margin-right: 8px;
-  //   cursor: pointer;
-
-  //   &:last-child {
-  //     margin-right: 0;
-  //   }
-
-  //   &:hover {
-  //     border-color: #313237;
-  //     transition: border-color 0.3s;
-  //   }
-  // }
-
-  // &__arrow {
-  //   width: 16px;
-  //   height: 16px;
-
-  //   &--left {
-  //     transform: rotate(-90deg);
-  //   }
-
-  //   &--right {
-  //     transform: rotate(90deg);
-  //   }
-  // }
-
-  // &__banner {
-  //   width: 1040px;
-  //   height: 400px;
-  //   margin-right: 8px;
-  // }
 }

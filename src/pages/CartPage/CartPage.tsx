@@ -23,13 +23,14 @@ export const CartPage: React.FC = () => {
 
     setTimeout(() => {
       setShowMesessage(false);
-      localStorage.removeItem('CartItems');
     }, 1000);
   };
 
   useEffect(() => {
     const localCart: Product[] = JSON
       .parse(localStorage.getItem('CartItems') || '[]');
+
+    window.dispatchEvent(new Event('storage'));
 
     setCartItems(localCart);
   }, [cartItems]);

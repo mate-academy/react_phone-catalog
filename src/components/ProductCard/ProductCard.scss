@@ -14,8 +14,9 @@
   }
 
   &__image {
-    width: 208px;
     height: 208px;
+    object-fit: cover;
+    object-position: center;
   }
 
   &__title {
