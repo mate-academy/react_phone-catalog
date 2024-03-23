@@ -14,7 +14,11 @@ export const Search: React.FC<Props> = ({ place }) => {
   const [isSearchVisible, setIsSearchVisible] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
-  const [searchQuery, setSearchQuery] = useState(query);
+  const [searchQuery, setSearchQuery] = useState('');
+
+  useEffect(() => {
+    setSearchQuery(query);
+  }, [searchParams]);
 
   useEffect(() => {
     setIsSearchVisible(isDesktop);

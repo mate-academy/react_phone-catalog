@@ -1,8 +1,11 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import { Product } from '../../types/Product';
 import './ProductCard.scss';
 import { BASE_URL } from '../../helpers/constants';
+import { FavoritesContext } from '../../contexts/FavoritesContext';
+import { CartContext } from '../../contexts/CartContext';
 
 type Props = {
   product: Product;
@@ -18,6 +21,22 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     capacity,
     ram,
   } = product;
+  const { favorites, addToFavorites } = useContext(FavoritesContext);
+  const { cart, addToCart } = useContext(CartContext);
+  const isFavorite = favorites.some(item => item.id === product.id);
+  const isInCart = cart.some(item => item.id === product.id);
+
+  const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    if (!isInCart) {
+      addToCart(product);
+    }
+  };
+
+  const handleAddToFavorites = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    addToFavorites(product);
+  };
 
   return (
     <Link
@@ -55,16 +74,25 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <div className="product-card__buttons">
           <button
             type="button"
-            className="product-card__primary-button button" // button--selected
+            className={cn('product-card__primary-button button', {
+              'button--selected': isInCart,
+            })}
+            onClick={handleAddToCart}
           >
-            Add to cart
+            {isInCart ? 'Added to cart' : 'Add to cart'}
           </button>
           <button
             type="button"
-            className="product-card__fav-button" // product-card__fav-button--selected
+            className={cn('product-card__fav-button', {
+              'product-card__fav-button--selected': isFavorite,
+            })}
+            onClick={handleAddToFavorites}
           >
-            <div className="icon icon--favorites" />
-            {/* icon--selected-favorites */}
+            <div
+              className={cn('icon icon--favorites', {
+                'icon--selected-favorites': isFavorite,
+              })}
+            />
           </button>
         </div>
       </div>

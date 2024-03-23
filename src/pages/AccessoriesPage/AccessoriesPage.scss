@@ -11,7 +11,7 @@
   }
 
   &__title {
-    margin: 24px 0 8px 0;
+    margin: 24px 0 8px;
     @extend %h1;
 
     @include onTablet {
@@ -36,11 +36,11 @@
     margin-bottom: 24px;
   }
 
-  &__list {
-    margin-bottom: 24px;
+  &__pages {
+    margin-top: 24px;
 
     @include onTablet {
-      margin-bottom: 40px;
+      margin-top: 40px;
     }
   }
 }

@@ -13,6 +13,10 @@
     box-shadow: 0 3px 13px 0 #17203166;
   }
 
+  &--checkout {
+    height: 48px;
+  }
+
   &--selected {
     color: $colorGreen;
     background-color: $colorWhite;

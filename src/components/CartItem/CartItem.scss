@@ -1,0 +1,131 @@
+@import "../../styles/main";
+
+.cart-item {
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    width: 100%;
+    height: 100%;
+    padding: 16px;
+    border: 1px solid $colorElements;
+
+    @include onTablet {
+      flex-direction: row;
+      gap: 24px;
+      padding: 24px;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+    width: 100%;
+
+    @include onTablet {
+      width: max-content;
+      gap: 24px;
+      justify-content: right;
+    }
+  }
+
+  &__delete-icon {
+    @include square(16px);
+    background-image: url(../../images/icons/cross-disabled.svg);
+    background-size: contain;
+    background-position: center;
+    transition: background-image 0.3s;
+
+    &:hover {
+      background-image: url(../../images/icons/cross.svg);
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    @include square(80px);
+  }
+
+  &__image {
+    height: 100%;
+  }
+
+  &__title {
+    flex-grow: 2;
+    @extend %body-text;
+  }
+
+  &__price {
+    @extend %h3;
+
+    @include onTablet {
+      width: 80px;
+      text-align: right;
+    }
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+  }
+
+  &__count-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include square(32px);
+    border: 1px solid $colorIcons;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--disabled {
+      border-color: $colorElements;
+
+      &:hover {
+        border-color: $colorElements;
+      }
+    }
+  }
+
+  &__count-text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    @include square(32px);
+    @extend %body-text;
+  }
+}

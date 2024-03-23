@@ -6,11 +6,13 @@ import './ActionLink.scss';
 type Props = {
   action: 'cart' | 'favorites';
   handleClick?: () => void;
+  amount: number;
 };
 
 export const ActionLink: React.FC<Props> = ({
   action,
   handleClick,
+  amount,
 }) => {
   return (
     <NavLink
@@ -22,9 +24,11 @@ export const ActionLink: React.FC<Props> = ({
     >
       <div className="action-link__content">
         <div className={`icon icon--${action}`}>
-          <div className="action-link__counter">
-            3
-          </div>
+          {!!amount && (
+            <div className="action-link__counter">
+              {amount}
+            </div>
+          )}
         </div>
       </div>
     </NavLink>
@@ -32,5 +36,5 @@ export const ActionLink: React.FC<Props> = ({
 };
 
 ActionLink.defaultProps = {
-  handleClick: () => {},
+  handleClick: () => { },
 };

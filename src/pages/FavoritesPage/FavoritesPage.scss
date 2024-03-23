@@ -1,9 +1,13 @@
 @import "../../styles/main";
 
-.tablets-page {
+.favorites-page {
   &__content {
     margin-top: 24px;
-    margin-bottom: 64px;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
 
     @include onDesktop {
       margin-bottom: 80px;
@@ -26,21 +30,6 @@
 
     @include onTablet {
       margin-bottom: 40px;
-    }
-  }
-
-  &__dropdowns {
-    display: flex;
-    flex-direction: row;
-    gap: 16px;
-    margin-bottom: 24px;
-  }
-
-  &__pages {
-    margin-top: 24px;
-
-    @include onTablet {
-      margin-top: 40px;
     }
   }
 }

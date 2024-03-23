@@ -72,4 +72,16 @@
   &--home {
     background-image: url(../images/icons/home.svg);
   }
+
+  &--plus {
+    background-image: url(../images/icons/plus.svg);
+  }
+
+  &--minus {
+    background-image: url(../images/icons/minus.svg);
+  }
+
+  &--minus-disabled {
+    background-image: url(../images/icons/minus-disabled.svg);
+  }
 }

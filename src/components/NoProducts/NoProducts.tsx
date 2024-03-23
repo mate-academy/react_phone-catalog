@@ -4,7 +4,7 @@ import { Category } from '../../types';
 import './NoProducts.scss';
 
 type Props = {
-  products: Category;
+  products: Category | 'favorites';
   isQuery?: boolean;
 };
 

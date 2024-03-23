@@ -7,7 +7,7 @@ import { ProductsList } from '../../components/ProductsList';
 import { Dropdown } from '../../components/Dropdown';
 import { ITEMS_PER_PAGE, SORT_BY } from '../../helpers/constants';
 import './PhonesPage.scss';
-import { prepareProducts } from '../../helpers/prepafeProducts';
+import { prepareProducts } from '../../helpers/prepareProducts';
 import { Pagination } from '../../components/Pagination';
 import { Loader } from '../../components/Loader';
 import { NoProducts } from '../../components/NoProducts/NoProducts';
@@ -86,14 +86,14 @@ export const PhonesPage = () => {
                 defaultValue={ITEMS_PER_PAGE.All}
               />
             </div>
-            <div className="phones-page__list">
-              <ProductsList products={currentProducts} />
-            </div>
+            <ProductsList products={currentProducts} />
           </>
         )}
 
-        {perPage !== preparedProducts.length && !!preparedProducts.length && (
-          <Pagination total={preparedProducts.length} />
+        {totalPages > 1 && (
+          <div className="phones-page__pages">
+            <Pagination total={preparedProducts.length} />
+          </div>
         )}
 
         {preparedProducts.length === 0 && !isLoading && (query ? (

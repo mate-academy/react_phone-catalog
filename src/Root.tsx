@@ -10,11 +10,24 @@ import { PhonesPage } from './pages/PhonesPage/PhonesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
+import { CartProvider } from './contexts/CartContext';
+import { FavoritesProvider } from './contexts/FavoritesContext';
+import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
 
 export const Root = () => (
   <Router>
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route
+        path="/"
+        element={(
+          <FavoritesProvider>
+            <CartProvider>
+              <App />
+            </CartProvider>
+          </FavoritesProvider>
+        )}
+      >
         <Route index element={<HomePage />} />
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/phones">
@@ -23,9 +36,8 @@ export const Root = () => (
         </Route>
         <Route path="/tablets" element={<TabletsPage />} />
         <Route path="/accessories" element={<AccessoriesPage />} />
-        {/* <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/cart" element={<CartPage />} />
-        <Route path="/checkout" element={<CheckoutPage />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

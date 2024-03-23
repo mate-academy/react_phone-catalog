@@ -1,0 +1,13 @@
+@import "../../styles/main";
+
+.back-button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+
+  &__text {
+    @extend %small-text;
+    color: $colorSecondary;
+  }
+}

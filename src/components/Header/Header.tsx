@@ -1,5 +1,5 @@
 import {
-  useCallback, useEffect, useRef, useState,
+  useCallback, useContext, useEffect, useRef, useState,
 } from 'react';
 import { useMediaQuery } from 'react-responsive';
 import { Link, useLocation } from 'react-router-dom';
@@ -11,9 +11,13 @@ import { ActionLink } from '../ActionLink/ActionLink';
 import {
   BASE_URL, CART, CATEGORIES, FAVORITES, TABLET_WIDTH,
 } from '../../helpers/constants';
+import { FavoritesContext } from '../../contexts/FavoritesContext';
+import { CartContext } from '../../contexts/CartContext';
 
 export const Header = () => {
   const { pathname } = useLocation();
+  const { favorites } = useContext(FavoritesContext);
+  const { cart } = useContext(CartContext);
   const [isMenuVisible, setIsMenuVisible] = useState(false);
 
   const isMobile = !useMediaQuery({ minWidth: TABLET_WIDTH });
@@ -75,8 +79,8 @@ export const Header = () => {
 
             {!isMobile && (
               <>
-                <ActionLink action={FAVORITES} />
-                <ActionLink action={CART} />
+                <ActionLink action={FAVORITES} amount={favorites.length} />
+                <ActionLink action={CART} amount={cart.length} />
               </>
             )}
 
@@ -105,10 +109,12 @@ export const Header = () => {
                 <ActionLink
                   action={FAVORITES}
                   handleClick={handleMenuLinkClick}
+                  amount={favorites.length}
                 />
                 <ActionLink
                   action={CART}
                   handleClick={handleMenuLinkClick}
+                  amount={cart.length}
                 />
               </div>
             </nav>

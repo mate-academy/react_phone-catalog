@@ -98,7 +98,8 @@
   align-items: center;
   justify-content: center;
 
-  box-shadow: -1px 0 0 0 $colorElements;
+  border-left: 1px solid $colorElements;
+  // box-shadow: -1px 0 0 0 $colorElements;
   transform: background-color 0.3s;
 
   &:hover {
