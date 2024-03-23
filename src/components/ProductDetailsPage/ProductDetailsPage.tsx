@@ -1,5 +1,5 @@
 import { Link, useLocation, useParams } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ButtonBack } from '../ButtonBack';
 import { PathRoute } from '../PathRoute';
@@ -7,17 +7,18 @@ import './ProductDetailsPage.scss';
 import { getProductDetails } from '../../services/products';
 import { ProductDetails } from '../../type/ProductDetails';
 import { Slider } from '../Slider';
-import { StateContext } from '../../store/ProductsContext';
+import { DispatchContext, StateContext } from '../../store/ProductsContext';
+import { Loader } from '../Loader';
 
-export const ProductDetailsPage = () => {
-  // const dispatch = useContext(DispatchContext);
-  const { products, favourites } = useContext(StateContext);
+export const ProductDetailsPage: React.FC = () => {
+  const dispatch = useContext(DispatchContext);
+  const { products, favourites, cart } = useContext(StateContext);
   const [details, setDetails] = useState<ProductDetails | null>(null);
 
   const [isFan, setIsFan] = useState(() =>
     favourites.some(fav => fav.itemId === details?.id || ''),
   );
-
+  const [loading, isLoading] = useState(false);
   const { productId } = useParams();
   const { pathname } = useLocation();
   const [currentPhoto, setCurrentPhoto] = useState(0);
@@ -27,20 +28,23 @@ export const ProductDetailsPage = () => {
   const dc = details?.capacity || '';
 
   useEffect(() => {
+    isLoading(true);
+
     if (productId) {
       getProductDetails(productId)
         .then(product => {
           setDetails(product);
+          setIsFan(favourites.some(fav => fav.itemId === product.id));
         })
-        .finally(() => {});
+        .finally(() => isLoading(false));
     }
-  }, [productId]);
+  }, [favourites, productId]);
 
-  function handleChoosePhoto(index: number) {
+  const handleChoosePhoto = useCallback((index: number) => {
     setCurrentPhoto(index);
-  }
+  }, []);
 
-  function sortMaxDiscount() {
+  const sortMaxDiscount = useCallback(() => {
     const result = [...products];
 
     result.sort((a, b) => {
@@ -51,31 +55,40 @@ export const ProductDetailsPage = () => {
     });
 
     return result;
-  }
+  }, [products]);
 
   const maxDiscountProducts = sortMaxDiscount();
 
-  const handleFanClick = () => {
+  const handleFanClick = useCallback(() => {
     if (details) {
       setIsFan(!isFan);
-      // if (!isFan) {
-      //   dispatch({ type: 'addFavourites', payload: details.id });
-      // } else {
-      //   dispatch({ type: 'deleteFavourites', payload: details.id });
-      // }
+      if (!isFan) {
+        dispatch({ type: 'addFavourites', payload: details.id });
+      } else {
+        dispatch({ type: 'deleteFavourites', payload: details.id });
+      }
+    }
+  }, [details, dispatch, isFan]);
+
+  const handleCartClick = () => {
+    if (details) {
+      dispatch({ type: 'addToCart', payload: details.id });
     }
   };
 
-  // console.log('fan', favourites);
-  // console.log('det', details?.id);
-  // console.log(details?.id || '');
-  // console.log('fan', fan);
+  const addedToCart = cart.some(c => c.itemId === details?.id);
+
+  if (loading) {
+    return <Loader />;
+  }
 
   return (
     <div className="Details">
       <PathRoute />
 
-      <ButtonBack />
+      <div className="Details__back">
+        <ButtonBack />
+      </div>
 
       <div className="Details__content">
         <h2 className="Details__title">{details?.name}</h2>
@@ -156,9 +169,20 @@ export const ProductDetailsPage = () => {
             )}
           </div>
           <div className="Details__buttons">
-            <button type="button" className="Details__buttons-add">
-              Add to cart
-            </button>
+            {!addedToCart ? (
+              <button
+                type="button"
+                className="Card__buttons-add"
+                onClick={handleCartClick}
+              >
+                Add to cart
+              </button>
+            ) : (
+              <button type="button" className="Card__buttons-added">
+                Added
+              </button>
+            )}
+
             <button
               type="button"
               className="Details__buttons-favorite"

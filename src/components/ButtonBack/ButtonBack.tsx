@@ -1,7 +1,8 @@
 import { useNavigate } from 'react-router-dom';
+import React from 'react';
 import './ButtonBack.scss';
 
-export const ButtonBack = () => {
+export const ButtonBack: React.FC = () => {
   const navigate = useNavigate();
 
   function handleGoBack() {

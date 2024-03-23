@@ -4,6 +4,7 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
+import React from 'react';
 import './App.scss';
 import { AccessoriesPage } from './components/AccesoriesPage';
 import { HomePage } from './components/HomePage';
@@ -13,8 +14,9 @@ import { App } from './App';
 import { GlobalStateProvider } from './store/ProductsContext';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
 import { FavouritesPage } from './components/FavouritesPage';
+import { CartPage } from './components/CartPage';
 
-export const Root = () => (
+export const Root: React.FC = () => (
   <Router>
     <GlobalStateProvider>
       <Routes>
@@ -30,8 +32,18 @@ export const Root = () => (
             <Route index element={<FavouritesPage />} />
             <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="cart">
+            <Route index element={<CartPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+          <Route path="tablets">
+            <Route index element={<TabletsPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+          <Route path="accessories">
+            <Route index element={<AccessoriesPage />} />
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
           <Route path="*" element={<p>Not found</p>} />
         </Route>
       </Routes>

@@ -1,12 +1,12 @@
 import { Link, NavLink } from 'react-router-dom';
-import { useCallback, useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import './Menu.scss';
 import classNames from 'classnames';
 import { DispatchContext, StateContext } from '../../store/ProductsContext';
 
-export const Menu = () => {
+export const Menu: React.FC = () => {
   const dispatch = useContext(DispatchContext);
-  const { isShowMenu } = useContext(StateContext);
+  const { isShowMenu, favourites, cart } = useContext(StateContext);
 
   if (isShowMenu) {
     document.body.style.overflow = 'hidden';
@@ -91,10 +91,21 @@ export const Menu = () => {
           onClick={handleCloseMenu}
         >
           <img src="icons/Favourites.svg" alt="favourites" />
+          {!!favourites.length && (
+            <div className="Menu__desire-amount">{favourites.length}</div>
+          )}
         </NavLink>
-        <a href="#/" className="Menu__desire-item">
+
+        <NavLink
+          to="/cart"
+          className={getDesireLinkClass}
+          onClick={handleCloseMenu}
+        >
           <img src="icons/Cart.svg" alt="cart" />
-        </a>
+          {!!cart.length && (
+            <div className="Menu__desire-amount">{cart.length}</div>
+          )}
+        </NavLink>
       </div>
     </div>
   );

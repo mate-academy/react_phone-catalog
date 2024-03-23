@@ -1,8 +1,9 @@
 import { Link, useLocation } from 'react-router-dom';
+import React from 'react';
 import './PathRoute.scss';
 import classNames from 'classnames';
 
-export const PathRoute = () => {
+export const PathRoute: React.FC = () => {
   const { pathname } = useLocation();
   const pathFull = pathname.split('/');
   const path = pathFull.slice(1);

@@ -1,5 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react';
-import { debounce } from 'lodash';
+import React, { useEffect, useReducer } from 'react';
 import { getProducts } from '../services/products';
 import { State } from '../type/State';
 import { Action, reducer } from './reducer';
@@ -11,6 +10,7 @@ const initialState: State = {
   hieghtHeader: 0,
   loading: false,
   favourites: [],
+  cart: [],
 };
 
 export const StateContext = React.createContext(initialState);
@@ -24,6 +24,34 @@ type Props = {
 
 export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
+
+  useEffect(() => {
+    const data = localStorage.getItem('favorite');
+
+    if (data === null) {
+      return;
+    }
+
+    try {
+      dispatch({ type: 'getFavourites', payload: JSON.parse(data) });
+    } catch (e) {
+      dispatch({ type: 'getFavourites', payload: [] });
+    }
+  }, []);
+
+  useEffect(() => {
+    const data = localStorage.getItem('cart');
+
+    if (data === null) {
+      return;
+    }
+
+    try {
+      dispatch({ type: 'getCart', payload: JSON.parse(data) });
+    } catch (e) {
+      dispatch({ type: 'getCart', payload: [] });
+    }
+  }, []);
 
   useEffect(() => {
     dispatch({ type: 'isLoading', payload: true });
@@ -42,23 +70,4 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
       <StateContext.Provider value={state}>{children}</StateContext.Provider>
     </DispatchContext.Provider>
   );
-};
-
-export const useWindowSize = () => {
-  const [size, setSize] = useState(window.innerWidth);
-
-  useEffect(() => {
-    const resizeHandler = debounce(() => {
-      setSize(window.innerWidth);
-    }, 300);
-
-    window.addEventListener('resize', resizeHandler);
-
-    return () => {
-      window.removeEventListener('resize', resizeHandler);
-      resizeHandler.cancel();
-    };
-  }, []);
-
-  return size;
 };

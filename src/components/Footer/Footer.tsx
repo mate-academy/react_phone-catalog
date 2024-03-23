@@ -1,8 +1,9 @@
-import { useContext, useEffect, useRef } from 'react';
+import React, { useContext, useEffect, useRef } from 'react';
 import './Footer.scss';
-import { DispatchContext, useWindowSize } from '../../store/ProductsContext';
+import { DispatchContext } from '../../store/ProductsContext';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
-export const Footer = () => {
+export const Footer: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const footerRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();

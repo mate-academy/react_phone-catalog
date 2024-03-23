@@ -1,6 +1,10 @@
 @import '../../App';
 
 .Details {
+  &__back {
+    margin-bottom: 16px;
+  }
+
   &__content {
     @include page-grid;
   }
@@ -206,6 +210,16 @@
     gap: 8px;
     min-height: 48px;
     margin-bottom: 32px;
+
+    // &-added {
+    //   width: 100%;
+    //   font-weight: 600;
+    //   line-height: 21px;
+    //   text-align: center;
+    //   color: #27AE60;
+    //   background-color: $colorWhite;
+    //   border: 1px solid $colorBorder;
+    // }
 
     &-add {
       cursor: pointer;

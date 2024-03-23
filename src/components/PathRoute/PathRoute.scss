@@ -1,18 +1,14 @@
 @import '../../App';
 
 .PathRoute {
-  padding: 24px 0;
   display: flex;
   gap: 13px;
   align-items: center;
+  padding: 24px 0;
 
-  @include on-tablet {
-    padding-bottom: 30px;
-  }
-
-  &__home {
-    padding: 9px 0;
-  }
+    @include on-tablet {
+      padding-bottom: 40px;
+    }
 
   &__path {
     overflow: hidden;

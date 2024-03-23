@@ -1,8 +1,8 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import './Categories.scss';
 import { StateContext } from '../../store/ProductsContext';
 
-export const Categories = () => {
+export const Categories: React.FC = () => {
   const { products } = useContext(StateContext);
 
   const phoneAmount = products.filter(p => p.category === 'phones').length;

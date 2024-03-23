@@ -97,7 +97,7 @@
 
     &-item {
       padding: 0 10px;
-      
+
       // display: flex;
       align-items: center;
       position: relative;
@@ -143,6 +143,11 @@
       line-height: 14px;
       border-radius: 50%;
       color: $colorWhite;
+
+      @include on-desktop {
+        left: 32px;
+        bottom: 29px;
+      }
     }
   }
 }

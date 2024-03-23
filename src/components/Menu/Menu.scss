@@ -56,7 +56,7 @@
 
         &::after {
           @include after-line;
-          
+
           height: 2px;
         }
       }
@@ -82,16 +82,18 @@
     bottom: 0;
     left: 0;
     right: 0;
+    height: 64px;
     border: 1px solid $colorBorder;
 
     &-item {
       position: relative;
-      padding: 24px 50px;
       width: 50%;
       display: flex;
       justify-content: center;
       align-items: center;
       border-left: 1px solid $colorBorder;
+      line-height: 64;
+
 
       &--active {
         &::after {
@@ -100,6 +102,21 @@
           height: 2px;
         }
       }
+    }
+
+    &-amount {
+      position: absolute;
+      left: 50%;
+      bottom: 29px;
+      text-align: center;
+      background-color: $colorRed;
+      border: 1px solid $colorWhite;
+      width: 14px;
+      height: 14px;
+      font-size: 9px;
+      line-height: 14px;
+      border-radius: 50%;
+      color: $colorWhite;
     }
   }
 }

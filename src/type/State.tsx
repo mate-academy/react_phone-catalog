@@ -7,4 +7,5 @@ export interface State {
   hieghtHeader: number;
   loading: boolean;
   favourites: Product[];
+  cart: Product[];
 }

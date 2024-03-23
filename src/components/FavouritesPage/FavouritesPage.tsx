@@ -1,13 +1,11 @@
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { PathRoute } from '../PathRoute';
 import './FavouritesPage.scss';
 import { StateContext } from '../../store/ProductsContext';
 import { ProductCard } from '../ProductCard';
 
-export const FavouritesPage = () => {
+export const FavouritesPage: React.FC = () => {
   const { favourites } = useContext(StateContext);
-
-  // console.log(favourites);
 
   return (
     <div className="Favourites">
@@ -18,7 +16,7 @@ export const FavouritesPage = () => {
       <div className="Favourites__content">
         {favourites.map(product => (
           <div className="Favourites__content-item" key={product.id}>
-            <ProductCard product={product} isFavourite />
+            <ProductCard product={product} />
           </div>
         ))}
       </div>

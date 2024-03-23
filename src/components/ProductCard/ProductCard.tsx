@@ -1,25 +1,32 @@
 import { Link } from 'react-router-dom';
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Product } from '../../type/Product';
 import './ProductCard.scss';
-import { DispatchContext } from '../../store/ProductsContext';
+import { DispatchContext, StateContext } from '../../store/ProductsContext';
 
 type Props = {
   product: Product;
-  isFavourite?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  isFavourite = false,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useContext(DispatchContext);
-  const [isFan, setIsFan] = useState(isFavourite);
+  const { favourites, cart } = useContext(StateContext);
+  const [isFan, setIsFan] = useState(false);
   const screen = product.screen.replace("' ", '” ');
   const capacity = product.capacity.replace('GB', ' GB');
   const ram = product.ram.replace('GB', ' GB');
 
-  const handleFunCclick = () => {
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
+
+  useEffect(() => {
+    localStorage.setItem('favorite', JSON.stringify(favourites));
+
+    setIsFan(favourites.some(fav => fav.itemId === product.itemId));
+  }, [favourites, product.itemId]);
+
+  const handleFanClick = () => {
     if (!isFan) {
       dispatch({ type: 'addFavourites', payload: product.itemId });
     } else {
@@ -28,6 +35,12 @@ export const ProductCard: React.FC<Props> = ({
 
     setIsFan(!isFan);
   };
+
+  const handleCartClick = () => {
+    dispatch({ type: 'addToCart', payload: product.itemId });
+  };
+
+  const addedToCart = cart.some(c => c.itemId === product.itemId);
 
   return (
     <div className="Card" data-cy="cardsContainer">
@@ -60,14 +73,24 @@ export const ProductCard: React.FC<Props> = ({
       </Link>
 
       <div className="Card__buttons">
-        <button type="button" className="Card__buttons-add">
-          Add to cart
-        </button>
+        {!addedToCart ? (
+          <button
+            type="button"
+            className="Card__buttons-add"
+            onClick={handleCartClick}
+          >
+            Add to cart
+          </button>
+        ) : (
+          <button type="button" className="Card__buttons-added">
+            Added
+          </button>
+        )}
 
         <button
           type="button"
           className="Card__buttons-favorite"
-          onClick={handleFunCclick}
+          onClick={handleFanClick}
         >
           <img
             src={isFan ? 'icons/Heart_Like_Red.svg' : 'icons/Heart_Like.svg'}

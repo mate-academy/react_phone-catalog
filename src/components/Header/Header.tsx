@@ -1,16 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import classNames from 'classnames';
-import { useCallback, useContext, useEffect, useRef } from 'react';
-import {
-  DispatchContext,
-  StateContext,
-  useWindowSize,
-} from '../../store/ProductsContext';
+import React, { useCallback, useContext, useEffect, useRef } from 'react';
+import { DispatchContext, StateContext } from '../../store/ProductsContext';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
-export const Header = () => {
+export const Header: React.FC = () => {
   const dispatch = useContext(DispatchContext);
-  const { favourites } = useContext(StateContext);
+  const { favourites, cart } = useContext(StateContext);
   const headerRef = useRef<HTMLDivElement>(null);
   const size = useWindowSize();
 
@@ -74,9 +71,13 @@ export const Header = () => {
           )}
         </NavLink>
 
-        <a href="#/" className="Header__desire-item">
+        <NavLink to="/cart" className={getDesireLinkClass}>
           <img src="icons/Cart.svg" alt="cart" height="16px" />
-        </a>
+          {!!cart.length && (
+            <div className="Header__desire-amount">{cart.length}</div>
+          )}
+        </NavLink>
+
         <div className="Header__menu">
           <button
             type="button"

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import './PhotoSlider.scss';
-import { useWindowSize } from '../../store/ProductsContext';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 const SLIDERS = [
   {
