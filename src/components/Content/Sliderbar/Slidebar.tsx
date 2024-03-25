@@ -53,7 +53,7 @@ export const Sliderbar = () => {
   };
 
   const getClassIndecator = (e: string) =>
-    classNames({ isNotActive: imgUrl !== e });
+    classNames({ [style.isNotActive]: imgUrl !== e });
 
   return (
     <div className={style.slider}>
