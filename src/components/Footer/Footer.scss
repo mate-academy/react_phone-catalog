@@ -24,6 +24,11 @@
 
   &__logo {
     cursor: pointer;
+
+    &-img {
+      width: 89px;
+      height: 32px;
+    }
   }
 
   &__nav {

@@ -1,0 +1,63 @@
+@import '../../App';
+
+.Slider {
+  margin: 0 -16px 80px 0;
+
+  @include on-tablet {
+    margin: 0 -24px 64px 0;
+  }
+
+  @include on-desktop {
+    margin: 0 0 80px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 24px;
+
+    &-name {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      color: $colorBlack;
+    }
+  }
+
+  &__box {
+    overflow: hidden;
+  }
+
+  &__content {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.Buttons {
+  display: flex;
+  gap: 16px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+    height: 32px;
+    width: 32px;
+    background-color: $colorWhite;
+    border: 1px solid $colorBorderArrow;
+    transition: 0.3s border-color;
+
+    &:hover {
+      border-color: $colorBlack;
+    }
+
+    &:disabled {
+      border-color: $colorBorder;
+    }
+  }
+}

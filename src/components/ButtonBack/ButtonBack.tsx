@@ -6,7 +6,7 @@ export const ButtonBack: React.FC = () => {
   const navigate = useNavigate();
 
   function handleGoBack() {
-    navigate(-1);
+    navigate('..');
   }
 
   return (

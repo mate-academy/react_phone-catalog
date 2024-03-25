@@ -3,7 +3,6 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ButtonBack } from '../ButtonBack';
 import './CartPage.scss';
 import { DispatchContext, StateContext } from '../../store/ProductsContext';
-import { Product } from '../../type';
 
 export const CartPage: React.FC = () => {
   const { cart } = useContext(StateContext);
@@ -15,10 +14,6 @@ export const CartPage: React.FC = () => {
       localStorage.setItem('cart', JSON.stringify(cart));
     }
   }, [cart]);
-
-  const getPriceOneProdut = (prod: Product) => {
-    return prod.quantity * prod.price;
-  };
 
   const getTotalPrice = () => {
     let result = 0;
@@ -122,8 +117,8 @@ export const CartPage: React.FC = () => {
                     <img
                       src={
                         prod.quantity === 1
-                          ? '/icons/Minus_light.svg'
-                          : '/icons/Minus.svg'
+                          ? 'icons/Minus_light.svg'
+                          : 'icons/Minus.svg'
                       }
                       alt="Minus"
                     />
@@ -140,12 +135,10 @@ export const CartPage: React.FC = () => {
                       CartPage__content-plus"
                     onClick={() => handleIncreaseAmount(prod.itemId)}
                   >
-                    <img src="/icons/Plus.svg" alt="Plus" />
+                    <img src="icons/Plus.svg" alt="Plus" />
                   </button>
                 </div>
-                <div className="CartPage__content-cost">
-                  {`$${getPriceOneProdut(prod)}`}
-                </div>
+                <div className="CartPage__content-cost">{`$${prod.price}`}</div>
               </div>
             </article>
           ))

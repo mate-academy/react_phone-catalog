@@ -45,6 +45,13 @@
 
   &__logo {
     padding-left: 24px;
+
+    &-img {
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
   }
 
   &__nav {
@@ -97,8 +104,6 @@
 
     &-item {
       padding: 0 10px;
-
-      // display: flex;
       align-items: center;
       position: relative;
       display: none;

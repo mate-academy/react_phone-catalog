@@ -2,6 +2,7 @@ import React, { useContext, useEffect, useRef } from 'react';
 import './Footer.scss';
 import { DispatchContext } from '../../store/ProductsContext';
 import { useWindowSize } from '../../hooks/useWindowSize';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const dispatch = useContext(DispatchContext);
@@ -19,9 +20,9 @@ export const Footer: React.FC = () => {
   return (
     <div className="Footer" ref={footerRef}>
       <div className="Footer__content">
-        <a href="#/" className="Footer__logo">
-          <img src="icons/Logo.svg" alt="logo" />
-        </a>
+        <Link to="/" className="Footer__logo">
+          <img src="icons/Logo.svg" alt="logo" className="Footer__logo-img" />
+        </Link>
 
         <div className="Footer__nav">
           <a

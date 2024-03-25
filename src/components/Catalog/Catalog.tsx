@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { debounce } from 'lodash';
 import './Catalog.scss';
@@ -19,7 +19,6 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
   const [disableNext, setDisableNext] = useState(false);
   const [disablePrev, setDisablePrev] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const location = useLocation();
   const sort = searchParams.get('sort') || '';
   const query = searchParams.get('query') || '';
   const page = +(searchParams.get('page') || 1);
@@ -170,10 +169,8 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
   return (
     <div className="Catalog">
       <PathRoute />
-      <div>{location.search.replaceAll('&', ' &')}</div>
 
       <h1 className="Catalog__title">{title}</h1>
-
       <div className="Catalog__amount">{`${sortedProducts.length} models`}</div>
 
       {!!products.length ? (
@@ -214,22 +211,20 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
               </select>
             </div>
 
-            <div className="Catalog__choose-item">
-              <label htmlFor="search" className="Catalog__choose-label">
-                Search
-              </label>
+            <div className="Catalog__search">
               <input
                 type="text"
                 value={visibleQuery}
+                placeholder="Search"
                 name="Search"
                 id="search"
-                className="Catalog__choose-search"
+                className="Catalog__search-field"
                 onChange={e => handleQueryChange(e)}
               />
               {query && (
                 <button
                   type="button"
-                  className="Catalog__choose-clearSearch"
+                  className="Catalog__search-clearSearch"
                   onClick={handleClearSearch}
                 >
                   <img src="icons/Close.svg" alt="Clear search" />
