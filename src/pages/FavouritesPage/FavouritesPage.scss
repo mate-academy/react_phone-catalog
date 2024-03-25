@@ -1,6 +1,21 @@
 @import '../../styles/main';
 
 .favourites {
+  display: flex;
+  flex-direction: column;
+  max-width: 1139px;
+  min-width: 1139px;
+
+  @include for-phones {
+    min-width: 300px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include tablets {
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
 
   &__top {
     margin-bottom: 40px;
@@ -21,26 +36,21 @@
   }
 
   &__content {
-    @include for-phones {
-      display: flex;
-      flex-direction: column;
-      gap: 16px;
-      row-gap: 40px;
-    }
-
-    @include tablets {
-      justify-content: flex-start;
-      gap: 16px;
-      row-gap: 40px;
-    }
-
     display: flex;
-    justify-content: flex-start;
     flex-wrap: wrap;
     gap: 16px;
     row-gap: 40px;
-    max-width: 1144px;
-
     margin-bottom: 80px;
+
+    @include for-phones {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    @include tablets {
+      max-width: 800px;
+      justify-content: flex-start;
+      align-items: center;
+    }
   }
 }
