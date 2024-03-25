@@ -19,7 +19,11 @@
     padding: 15px;
     min-width: 350px;
     gap: 15px;
+  }
 
+  @include tablets {
+    justify-content: stretch;
+    min-width: 400px;
   }
 
   &__container {

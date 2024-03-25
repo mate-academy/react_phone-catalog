@@ -58,6 +58,14 @@
     border: none;
     outline:none;
 
+    @include tablets {
+      margin-left: 10px;
+    }
+
+    @include for-phones {
+      margin-left: 0;
+    }
+
     @extend %button;
 
     color: $main-color;
