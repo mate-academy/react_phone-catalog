@@ -1,0 +1,36 @@
+.productDetails {
+  width: 1136px;
+  margin: auto;
+  margin-top: 40px;
+
+  &__back {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    display: flex;
+    align-items: center;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    margin-bottom: 40px;
+  }
+
+  &__content {
+    display: flex;
+    margin-bottom: 80px;
+    justify-content: space-between;
+
+    &_colomn1 {
+      width: 48%;
+    }
+
+    &_colomn2 {
+      width: 48%;
+    }
+  }
+}

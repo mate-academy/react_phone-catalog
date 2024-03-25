@@ -1,0 +1,28 @@
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: 1px solid #89939A;
+    margin-inline: 12px;
+    margin-bottom: 80px;
+    cursor: pointer;
+  }
+
+  &__button_page {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: 1px solid #B4BDC3;
+    margin-inline: 4px;
+    cursor: pointer;
+  }
+
+  &__button_active {
+    background-color: #313237;
+    color: white;
+  }
+}

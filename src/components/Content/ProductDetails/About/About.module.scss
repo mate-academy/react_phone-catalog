@@ -1,0 +1,31 @@
+.container {
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #9d9e9e;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 25px;
+  }
+
+  &__about {
+
+    &_title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25.56px;
+      margin-bottom: 16px;
+
+    }
+
+    &_value {
+      color: #9d9e9e;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      margin-bottom: 32px;
+    }
+  }
+}

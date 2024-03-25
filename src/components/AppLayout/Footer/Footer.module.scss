@@ -1,0 +1,49 @@
+.footer {
+  margin: 0 auto;
+  border-top: 1px solid rgba(226, 230, 233, 1);
+
+  &__container {
+    margin: auto;
+    width: 1136px;
+    height: 96px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    width: 293px;
+    text-transform: uppercase;
+  }
+
+  &__menu a {
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    color: rgba(180, 189, 195, 1);
+  }
+
+  &__goTop {
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: rgba(180, 189, 195, 1);
+  }
+
+  &__button_top {
+    margin-left: 15px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba(180, 189, 195, 1);
+    color: rgba(180, 189, 195, 1);
+    background-color: white;
+    cursor: pointer;
+  }
+}

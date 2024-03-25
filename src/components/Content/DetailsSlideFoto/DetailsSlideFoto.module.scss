@@ -1,0 +1,41 @@
+.container {
+  display: flex;
+}
+
+.detailsSlideFoto {
+  width: 80px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+
+  &__button {
+    width: 80px;
+    height: 80px;
+    border: 1px solid #B4BDC3;
+    background-color: white;
+    padding: 5px;
+    margin: 5px;
+  }
+
+  &__button_active {
+    border: 1px solid #000;
+  }
+}
+
+.detailsSlideFoto__prevImg {
+  width: auto;
+  height: 100%;
+}
+
+.selectedPhoto {
+  width: 464px;
+  height: 464px;
+  margin: auto;
+  text-align: center;
+  align-items: center;
+}
+
+.selectedPhoto img {
+  max-width: 100%;
+  max-height: 100%;
+}

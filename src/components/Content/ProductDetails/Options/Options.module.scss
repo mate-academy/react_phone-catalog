@@ -1,0 +1,114 @@
+.options {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    color: #B4BDC3;
+  }
+
+  &__title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: #B4BDC3;
+  }
+
+  &__container {
+    padding-block: 8px 24px;
+    border-bottom: 1px solid #B4BDC3;
+    width: 320px;
+    margin-bottom: 24px;
+  }
+
+  &__colorDiv {
+    margin-inline: 4px;
+    border: 1px solid #E2E6E9;
+    padding: 2px;
+    border-radius: 50%;
+  }
+
+  &__color_actice {
+    border: 1px solid #000;
+  }
+
+  &__itemColor {
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__capacity_div {
+    width: 56px;
+    height: 32px;
+    margin-inline: 4px;
+    background-color: #fff;
+    border: 1px solid #313237;
+  }
+
+  &__capacity_actice {
+    background-color: #313237;
+    color: #fff;
+  }
+
+  &__price {
+    margin-bottom: 16px;
+  }
+
+  &__discoun,
+  &__regular {
+    padding-inline-end: 5px;
+  }
+
+  &__regular {
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28.12px;
+    text-decoration: line-through;
+    color: #9d9e9e;
+  }
+
+  &__discoun {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40.9px;
+    letter-spacing: -0.01em;
+  }
+
+  &__button {
+    display: flex;
+    margin-bottom: 32px;
+  }
+
+  &__button_like {
+    width: 48px;
+    height: 48px;
+    color: #313237;
+    background-color: #fff;
+    font-size: 20px;
+  }
+
+  &__button_by {
+    width: 263px;
+    height: 48px;
+    background-color: #313237;
+    color: #fff;
+    margin-inline-end: 8px;
+  }
+
+  &__specs {
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      width: 320px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15.34px;
+      margin-bottom: 8px;
+    }
+
+    &_title {
+      color: #B4BDC3;
+    }
+  }
+}

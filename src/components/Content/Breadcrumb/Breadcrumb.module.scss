@@ -1,0 +1,22 @@
+.breadcrumb {
+  width: 1136px;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  margin-bottom: 40px;
+
+  &__arrow {
+    color: #89939A;
+    width: 16px;
+    height: 16px;
+    margin-inline: 8px;
+  }
+
+  &__path {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-decoration: none;
+    color: #89939A;
+  }
+}

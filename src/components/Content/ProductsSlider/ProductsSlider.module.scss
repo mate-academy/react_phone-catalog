@@ -1,0 +1,42 @@
+.sliders {
+  box-sizing: border-box;
+  margin-block: 72px 80px;
+  display: flex;
+  justify-content: center;
+  margin-bottom: 80px;
+
+  &__container {
+    width: 1136px;
+  }
+
+  &__title {
+    padding-bottom: 24px;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 1136px;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    background-color: white;
+    color: #B4BDC3;
+    border: 1px solid #B4BDC3;
+    margin-left: 16px;
+    cursor: pointer;
+
+    &:active {
+      border: 1px solid #000;
+      color: #000;
+    }
+  }
+}

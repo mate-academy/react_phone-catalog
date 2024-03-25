@@ -1,0 +1,88 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  background-color: #fff;
+  box-sizing: border-box;
+  border-bottom: 1px solid rgba(226, 230, 233, 1);
+  margin-bottom: 40px;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__brand {
+    display: flex;
+    align-items: center;
+
+    &__logo {
+      display: flex;
+      color: rgba(49, 50, 55, 1);
+      justify-content: center;
+      padding-left: 24px;
+      margin-right: auto;
+    }
+
+    &__menu {
+      margin-left: calc(128px - 32px);
+      display: flex;
+
+      &__item {
+        padding-block: 26px;
+        margin-inline: 32px;
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        color: rgba(137, 147, 154, 1);
+        text-transform: uppercase;
+        text-decoration: none;
+      }
+    }
+  }
+
+  &__rightMenu {
+    display: flex;
+
+    &__item {
+      display: flex;
+      border-left: 1px solid rgba(226, 230, 233, 1);
+      height: 64px;
+      width: 64px;
+      align-items: center;
+      text-align: center;
+      justify-content: center;
+      position: relative;
+
+      &_count {
+        position: absolute;
+        top: 17px;
+        right: 15px;
+        display: flex;
+        z-index: 1;
+        border-radius: 50%;
+        height: 14px;
+        width: 14px;
+        justify-content: center;
+        justify-items: center;
+        background-color: red;
+        font-size: 14px;
+        color: #fff;
+        font-weight: 600;
+      }
+
+      &_icon {
+        font-size: 18px;
+        z-index: 0;
+      }
+    }
+  }
+}
+
+.isActive {
+  color: #313237;
+  align-self: flex-end;
+  border-bottom: 3px solid #313237;
+}
