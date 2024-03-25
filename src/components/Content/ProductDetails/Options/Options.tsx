@@ -2,13 +2,11 @@ import classNames from 'classnames';
 import { FaRegHeart } from 'react-icons/fa';
 import { LuHeartOff } from 'react-icons/lu';
 import { useContext, useEffect, useState } from 'react';
-
 import { Details } from '../../../../type/Details';
 import { getProducts } from '../../../../api';
 import { Products } from '../../../../type/Productes';
 import { ProductContext } from '../../../../context/ProductContext';
 import { hasProdPriceList } from '../../../../utils';
-
 import style from './Options.module.scss';
 
 type Props = {
