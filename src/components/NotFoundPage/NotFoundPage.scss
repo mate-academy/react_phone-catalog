@@ -1,0 +1,17 @@
+@import '../../App';
+
+.NotFoundPage{
+  padding: 50px;
+
+  &__text {
+    font-size: 20px;
+    color: orange;
+    margin-bottom: 30px;
+  }
+
+  &__link {
+    background-color: $colorBorder;
+    text-decoration: none;
+    color: $colorBlack;
+  }
+}

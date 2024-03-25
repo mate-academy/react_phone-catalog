@@ -15,15 +15,16 @@ import { GlobalStateProvider } from './store/ProductsContext';
 import { ProductDetailsPage } from './components/ProductDetailsPage';
 import { FavouritesPage } from './components/FavouritesPage';
 import { CartPage } from './components/CartPage';
+import { NotFoundPage } from './components/NotFoundPage';
 
 export const Root: React.FC = () => (
   <Router>
     <GlobalStateProvider>
       <Routes>
         <Route path="/" element={<App />}>
+          <Route path="*" element={<NotFoundPage />} />
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
-          <Route path=":productId" element={<ProductDetailsPage />} />
           <Route path="phones">
             <Route index element={<PhonesPage />} />
             <Route path=":productId" element={<ProductDetailsPage />} />
@@ -44,7 +45,6 @@ export const Root: React.FC = () => (
             <Route index element={<AccessoriesPage />} />
             <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
-          <Route path="*" element={<p>Not found</p>} />
         </Route>
       </Routes>
     </GlobalStateProvider>

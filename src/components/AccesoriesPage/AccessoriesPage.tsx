@@ -4,11 +4,11 @@ import { Catalog } from '../Catalog';
 
 export const AccessoriesPage: React.FC = () => {
   const { products } = useContext(StateContext);
-  const phones = products.filter(pr => pr.category === 'accessory');
+  const phones = products.filter(pr => pr.category === 'accessories');
 
   return (
-    <div className="PhonesPage">
-      <Catalog products={phones} title="Accessory" />
+    <div className="AccessoriesPage">
+      <Catalog products={phones} title="Accessories" />
     </div>
   );
 };

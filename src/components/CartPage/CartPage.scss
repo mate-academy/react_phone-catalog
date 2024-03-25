@@ -99,12 +99,6 @@
       gap: 16px;
     }
 
-    &-minus {
-      &:disabled {
-        border: 1px solid $colorBorder;
-      }
-    }
-
     &-amount {
       display: flex;
       align-items: center;
@@ -121,6 +115,12 @@
         &:hover {
           border-color: $colorBlack;
         }
+      }
+    }
+
+    &-minus {
+      &:disabled {
+        border: 1px solid $colorBorder;
       }
     }
 

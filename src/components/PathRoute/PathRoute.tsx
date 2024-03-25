@@ -21,7 +21,7 @@ export const PathRoute: React.FC = () => {
   return (
     <div className="PathRoute">
       <Link to="/" className="PathRoute__home">
-        <img src="/icons/Home.svg" alt="To go home page" />
+        <img src="icons/Home.svg" alt="To go home page" />
       </Link>
 
       {path.map((p, i) => (
@@ -32,17 +32,12 @@ export const PathRoute: React.FC = () => {
           key={p}
         >
           <img
-            src="/icons/Vector.svg"
+            src="icons/Vector.svg"
             alt="Vector"
             className="PathRoute__arrow"
           />
-          <div className="PathRoute__name-box">
-            <Link
-              to={getRowLink(i + 1)}
-              className={classNames('PathRoute__name', {
-                'PathRoute__name--current': i === path.length - 1,
-              })}
-            >
+          <div className="PathRoute__name">
+            <Link to={getRowLink(i + 1)} className="PathRoute__name-item">
               {p.split('-').join(' ')}
             </Link>
           </div>

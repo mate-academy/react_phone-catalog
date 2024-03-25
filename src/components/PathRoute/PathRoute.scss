@@ -22,22 +22,23 @@
   }
 
   &__name {
-    padding: 10px 0;
-    text-decoration: none;
-    text-transform: capitalize;
-    font-size: 12px;
-    font-weight: 500;
-    line-height: 15px;
-    color: $colorBlack;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 
-    &-box {
-      overflow: hidden;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-    }
-
-    &--current {
+    &-item {
+      padding: 10px 0;
+      text-decoration: none;
+      text-transform: capitalize;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15px;
       color: $colorGray;
+      transition: color 0.3s;
+
+      &:hover {
+        color: $colorBlack;
+      }
     }
   }
 }

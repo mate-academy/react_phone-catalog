@@ -44,7 +44,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="Card" data-cy="cardsContainer">
-      <Link to={`${product.itemId}`} className="Card__link">
+      <Link
+        to={`/${product.category}/${product.itemId}`}
+        className="Card__link"
+      >
         <img src={product.image} alt={product.name} className="Card__photo" />
         <p className="Card__product-name" title={product.name}>
           {product.name}
@@ -90,6 +93,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button
           type="button"
           className="Card__buttons-favorite"
+          data-cy="addToFavorite"
           onClick={handleFanClick}
         >
           <img

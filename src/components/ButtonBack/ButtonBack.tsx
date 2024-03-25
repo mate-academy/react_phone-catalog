@@ -6,13 +6,18 @@ export const ButtonBack: React.FC = () => {
   const navigate = useNavigate();
 
   function handleGoBack() {
-    navigate('..');
+    navigate(-1);
   }
 
   return (
-    <button type="button" className="ButtonBack" onClick={handleGoBack}>
+    <button
+      type="button"
+      className="ButtonBack"
+      data-cy="backButton"
+      onClick={handleGoBack}
+    >
       <img
-        src="/icons/Arrow_Left_small.svg"
+        src="icons/Arrow_Left_small.svg"
         alt="Button back"
         className="ButtonBack__img"
       />

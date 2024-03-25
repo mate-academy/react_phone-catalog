@@ -137,6 +137,11 @@
       height: 32px;
       border: 1px solid $colorBorder;
       border-radius: 50%;
+      transition: 0.3s border-color;
+
+      &:hover {
+        border-color: $colorBorderArrow;
+      }
 
       &--active {
         border-color: $colorBlack;
@@ -211,15 +216,15 @@
     min-height: 48px;
     margin-bottom: 32px;
 
-    // &-added {
-    //   width: 100%;
-    //   font-weight: 600;
-    //   line-height: 21px;
-    //   text-align: center;
-    //   color: #27AE60;
-    //   background-color: $colorWhite;
-    //   border: 1px solid $colorBorder;
-    // }
+    &-added {
+      width: 100%;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: #27AE60;
+      background-color: $colorWhite;
+      border: 1px solid $colorBorder;
+    }
 
     &-add {
       cursor: pointer;

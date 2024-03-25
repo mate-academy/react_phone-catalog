@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ButtonBack } from '../ButtonBack';
 import './CartPage.scss';
 import { DispatchContext, StateContext } from '../../store/ProductsContext';
@@ -8,6 +8,7 @@ import { Product } from '../../type';
 export const CartPage: React.FC = () => {
   const { cart } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  const [checkoutMessage, setCheckoutMessage] = useState(false);
 
   useEffect(() => {
     if (!!cart.length) {
@@ -55,6 +56,14 @@ export const CartPage: React.FC = () => {
     dispatch({ type: 'deleteFromCart', payload: itemId });
   };
 
+  const handleCheckoutClick = () => {
+    setCheckoutMessage(true);
+
+    setTimeout(() => {
+      setCheckoutMessage(false);
+    }, 5000);
+  };
+
   return (
     <div className="CartPage">
       <div className="CartPage__back">
@@ -69,6 +78,7 @@ export const CartPage: React.FC = () => {
               <div className="CartPage__content-info">
                 <button
                   className="CartPage__content-delete"
+                  data-cy="cartDeleteButton"
                   onClick={() => handleDelFromCart(prod.itemId)}
                 >
                   <svg
@@ -87,7 +97,10 @@ export const CartPage: React.FC = () => {
                     />
                   </svg>
                 </button>
-                <Link to={`${prod.itemId}`} className="CartPage__content-link">
+                <Link
+                  to={`/${prod.category}/${prod.itemId}`}
+                  className="CartPage__content-link"
+                >
                   <img
                     src={prod.image}
                     alt={prod.name}
@@ -115,7 +128,10 @@ export const CartPage: React.FC = () => {
                       alt="Minus"
                     />
                   </button>
-                  <div className="CartPage__content-number">
+                  <div
+                    className="CartPage__content-number"
+                    data-cy="productQauntity"
+                  >
                     {prod.quantity}
                   </div>
                   <button
@@ -134,7 +150,7 @@ export const CartPage: React.FC = () => {
             </article>
           ))
         ) : (
-          <h1>The shopping cart is still empty</h1>
+          <h1>Your cart is empty</h1>
         )}
       </section>
       <section className="CartPage__total">
@@ -144,7 +160,17 @@ export const CartPage: React.FC = () => {
         </div>
 
         <div className="CartPage__total-line"></div>
-        <button className="CartPage__total-button">Checkout</button>
+        <button
+          className="CartPage__total-button"
+          onClick={handleCheckoutClick}
+        >
+          Checkout
+        </button>
+        {checkoutMessage && (
+          <div style={{ color: 'red' }}>
+            We are sorry, but this feature is not implemented yet
+          </div>
+        )}
       </section>
     </div>
   );

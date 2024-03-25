@@ -1,12 +1,14 @@
-import React, { useCallback, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+import { debounce } from 'lodash';
 import './Catalog.scss';
 import { ProductCard } from '../ProductCard';
 import { Amount, Product, Sort } from '../../type';
 import { getSearchWith } from '../../utils/searchWith';
 import { Params } from '../../type/Params';
 import { PathRoute } from '../PathRoute/PathRoute';
+import { NoSearchResults } from '../NoSearchResults';
 
 type Props = {
   products?: Product[];
@@ -16,36 +18,36 @@ type Props = {
 export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
   const [disableNext, setDisableNext] = useState(false);
   const [disablePrev, setDisablePrev] = useState(false);
-
   const [searchParams, setSearchParams] = useSearchParams();
+  const location = useLocation();
   const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
   const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || 0);
+  const [visibleQuery, setVisibleQuery] = useState(query);
+  const [debounceQuery, setDebounceQuery] = useState(query);
 
-  function setSearchWith(params: Params) {
-    const search = getSearchWith(params, searchParams);
+  const setSearchWith = useCallback(
+    (params: Params) => {
+      const search = getSearchWith(params, searchParams);
 
-    setSearchParams(search);
-  }
+      setSearchParams(search);
+    },
+    [searchParams, setSearchParams],
+  );
 
-  const getAmountPages = useCallback(() => {
-    const result = [];
-
-    if (perPage) {
-      const amount = Math.ceil(products.length / +perPage);
-
-      for (let i = 1; i <= amount; i += 1) {
-        result.push(i);
-      }
-    }
-
-    return result;
-  }, [perPage, products.length]);
-
-  const amountPages = getAmountPages();
+  useEffect(() => {
+    setSearchWith({ query: debounceQuery || null });
+  }, [debounceQuery, setSearchWith]);
 
   const getPreparedProducts = useCallback(() => {
     let result = [...products];
+
+    if (debounceQuery) {
+      result = result.filter(r =>
+        r.name.toLowerCase().includes(debounceQuery.toLowerCase()),
+      );
+    }
 
     result.sort((product1, product2) => {
       switch (sort) {
@@ -63,23 +65,41 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
       }
     });
 
-    if (perPage) {
-      const startIndex = page * perPage - perPage;
-      const lastIndex = startIndex + perPage;
+    return result;
+  }, [debounceQuery, products, sort]);
 
-      result = result.slice(startIndex, lastIndex);
+  const sortedProducts = getPreparedProducts();
+
+  const visibleProducts = useMemo(() => {
+    const startIndex = page * perPage - perPage;
+    const lastIndex = startIndex + perPage;
+
+    if (perPage > 0) {
+      return sortedProducts.slice(startIndex, lastIndex);
+    }
+
+    return sortedProducts;
+  }, [page, perPage, sortedProducts]);
+
+  const amountPages = useMemo(() => {
+    const result = [];
+
+    if (perPage) {
+      const amount = Math.ceil(sortedProducts.length / +perPage);
+
+      for (let i = 1; i <= amount; i += 1) {
+        result.push(i);
+      }
     }
 
     return result;
-  }, [page, perPage, products, sort]);
-
-  const visibleProducts = getPreparedProducts();
+  }, [perPage, sortedProducts.length]);
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
     if (e.target.value === Sort.NONE) {
-      setSearchWith({ sort: null });
+      setSearchWith({ sort: null, page: null });
     } else {
-      setSearchWith({ sort: e.target.value });
+      setSearchWith({ sort: e.target.value, page: null });
     }
   };
 
@@ -87,28 +107,32 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
     if (e.target.value === Amount.ALL) {
       setSearchWith({ perPage: null, page: null });
     } else {
-      setSearchWith({ perPage: e.target.value, page: 1 });
+      setSearchWith({ perPage: e.target.value, page: null });
     }
   };
 
-  const handleCurrentPage = (ap: number) => {
-    if (ap !== page) {
-      setSearchWith({ page: ap });
+  const changeQuery = useMemo(() => debounce(setDebounceQuery, 1000), []);
+
+  const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setVisibleQuery(e.target.value);
+    changeQuery(e.target.value);
+    setSearchWith({ page: null });
+  };
+
+  const handleCurrentPage = (number: number) => {
+    if (number !== page) {
+      setSearchWith({ page: number });
       window.scroll(0, 0);
       setDisableNext(false);
       setDisablePrev(false);
     }
 
-    if (ap === 1) {
-      setSearchWith({ page: null });
-    }
-
-    if (Array.isArray(amountPages) && ap === amountPages.length) {
-      setDisableNext(true);
-    }
-
-    if (ap === 1) {
+    if (number === 1) {
       setDisablePrev(true);
+    }
+
+    if (Array.isArray(amountPages) && number === amountPages.length) {
+      setDisableNext(true);
     }
   };
 
@@ -138,121 +162,156 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
     }
   };
 
+  const handleClearSearch = () => {
+    setVisibleQuery('');
+    setDebounceQuery('');
+  };
+
   return (
     <div className="Catalog">
       <PathRoute />
+      <div>{location.search.replaceAll('&', ' &')}</div>
 
       <h1 className="Catalog__title">{title}</h1>
 
-      <div className="Catalog__amount">{`${products.length} models`}</div>
+      <div className="Catalog__amount">{`${sortedProducts.length} models`}</div>
 
-      {products.length > 0 ? (
-        <div className="Catalog__choose">
-          <div className="Catalog__choose-item Catalog__choose-item--sort">
-            <label htmlFor="sortBy" className="Catalog__choose-label">
-              Sort by
-            </label>
-            <select
-              value={sort}
-              name="sortBy"
-              id="sortBy"
-              className="Catalog__choose-select"
-              onChange={e => handleSortChange(e)}
-            >
-              <option value={Sort.NONE}>No sorted</option>
-              <option value={Sort.AGE}>Newest</option>
-              <option value={Sort.NAME}>Alphabetically</option>
-              <option value={Sort.PRICE}>Cheapest</option>
-            </select>
-          </div>
-          <div className="Catalog__choose-item Catalog__choose-item--amount">
-            <label htmlFor="amount" className="Catalog__choose-label">
-              Items on page
-            </label>
-            <select
-              value={perPage}
-              name="amountPages"
-              id="amount"
-              className="Catalog__choose-select"
-              onChange={e => handlePerPageChange(e)}
-            >
-              <option value={Amount.ALL}>all</option>
-              <option value={Amount.FOUR}>4</option>
-              <option value={Amount.EIGHT}>8</option>
-              <option value={Amount.SIXTEEN}>16</option>
-            </select>
-          </div>
-        </div>
-      ) : (
-        <div className="Catalog__not-elements">{`${title} not found`}</div>
-      )}
-
-      <div className="Catalog__content" data-cy="productList">
-        {visibleProducts.map(product => (
-          <div className="Catalog__content-item" key={product.id}>
-            <ProductCard product={product} />
-          </div>
-        ))}
-      </div>
-
-      {Array.isArray(amountPages) && amountPages.length > 1 && (
-        <div className="Catalog__page-number" data-cy="pagination">
-          <div className="Catalog__page-buttons">
-            <button
-              data-cy="paginationLeft"
-              type="button"
-              className="Catalog__page-buttons-item"
-              aria-label="previous"
-              onClick={hadlePrevPage}
-              disabled={disablePrev}
-            >
-              <img
-                src={
-                  disablePrev
-                    ? 'icons/Arrow_left_disable.svg'
-                    : 'icons/Arrow_Left_small.svg'
-                }
-                alt="previous"
-                className="arrow-disabled"
-              />
-            </button>
-
-            <div className="Catalog__page-list">
-              {amountPages.map(ap => (
-                <button
-                  key={ap}
-                  type="button"
-                  className={classNames('Catalog__page-list-item', {
-                    'Catalog__page-list-item--active':
-                      ap === page || (!page && ap === 1),
-                  })}
-                  aria-label="Number page"
-                  onClick={() => handleCurrentPage(ap)}
-                >
-                  {ap}
-                </button>
-              ))}
+      {!!products.length ? (
+        <>
+          <div className="Catalog__choose">
+            <div className="Catalog__choose-item Catalog__choose-item--sort">
+              <label htmlFor="sortBy" className="Catalog__choose-label">
+                Sort by
+              </label>
+              <select
+                value={sort}
+                name="sortBy"
+                id="sortBy"
+                className="Catalog__choose-select"
+                onChange={e => handleSortChange(e)}
+              >
+                <option value={Sort.NONE}>No sorted</option>
+                <option value={Sort.AGE}>Newest</option>
+                <option value={Sort.NAME}>Alphabetically</option>
+                <option value={Sort.PRICE}>Cheapest</option>
+              </select>
+            </div>
+            <div className="Catalog__choose-item Catalog__choose-item--amount">
+              <label htmlFor="amount" className="Catalog__choose-label">
+                Items on page
+              </label>
+              <select
+                value={perPage}
+                name="amountPages"
+                id="amount"
+                className="Catalog__choose-select"
+                onChange={e => handlePerPageChange(e)}
+              >
+                <option value={Amount.ALL}>all</option>
+                <option value={Amount.FOUR}>4</option>
+                <option value={Amount.EIGHT}>8</option>
+                <option value={Amount.SIXTEEN}>16</option>
+              </select>
             </div>
 
-            <button
-              data-cy="paginationRight"
-              type="button"
-              className="Catalog__page-buttons-item"
-              aria-label="next"
-              onClick={hadleNextPage}
-              disabled={disableNext}
-            >
-              <img
-                src={
-                  disableNext
-                    ? 'icons/Arrow_right_disable.svg'
-                    : 'icons/Arrow_Right_small.svg'
-                }
-                alt="next"
+            <div className="Catalog__choose-item">
+              <label htmlFor="search" className="Catalog__choose-label">
+                Search
+              </label>
+              <input
+                type="text"
+                value={visibleQuery}
+                name="Search"
+                id="search"
+                className="Catalog__choose-search"
+                onChange={e => handleQueryChange(e)}
               />
-            </button>
+              {query && (
+                <button
+                  type="button"
+                  className="Catalog__choose-clearSearch"
+                  onClick={handleClearSearch}
+                >
+                  <img src="icons/Close.svg" alt="Clear search" />
+                </button>
+              )}
+            </div>
           </div>
-        </div>
+
+          {!!visibleProducts.length ? (
+            <div className="Catalog__content" data-cy="productList">
+              {visibleProducts.map(product => (
+                <div className="Catalog__content-item" key={product.id}>
+                  <ProductCard product={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <NoSearchResults />
+          )}
+
+          {Array.isArray(amountPages) && amountPages.length > 1 && (
+            <div className="Catalog__page-number" data-cy="pagination">
+              <div className="Catalog__page-buttons">
+                <button
+                  data-cy="paginationLeft"
+                  type="button"
+                  className="Catalog__page-buttons-item"
+                  aria-label="previous"
+                  onClick={hadlePrevPage}
+                  disabled={disablePrev}
+                >
+                  <img
+                    src={
+                      disablePrev
+                        ? 'icons/Arrow_left_disable.svg'
+                        : 'icons/Arrow_Left_small.svg'
+                    }
+                    alt="previous"
+                    className="arrow-disabled"
+                  />
+                </button>
+
+                <div className="Catalog__page-list">
+                  {amountPages.map(number => (
+                    <button
+                      key={number}
+                      type="button"
+                      className={classNames('Catalog__page-list-item', {
+                        'Catalog__page-list-item--active':
+                          number === page || (!page && number === 1),
+                      })}
+                      aria-label="Number page"
+                      onClick={() => handleCurrentPage(number)}
+                    >
+                      {number}
+                    </button>
+                  ))}
+                </div>
+
+                <button
+                  data-cy="paginationRight"
+                  type="button"
+                  className="Catalog__page-buttons-item"
+                  aria-label="next"
+                  onClick={hadleNextPage}
+                  disabled={disableNext}
+                >
+                  <img
+                    src={
+                      disableNext
+                        ? 'icons/Arrow_right_disable.svg'
+                        : 'icons/Arrow_Right_small.svg'
+                    }
+                    alt="next"
+                  />
+                </button>
+              </div>
+            </div>
+          )}
+        </>
+      ) : (
+        <div className="Catalog__not-elements">{`${title} not found`}</div>
       )}
     </div>
   );

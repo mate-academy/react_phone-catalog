@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import { Slider } from '../Slider';
+import { ProductsSlider } from '../ProductsSlider';
 import { PhotoSlider } from '../PhotoSlider';
 import { StateContext } from '../../store/ProductsContext';
 import './HomePage.scss';
@@ -27,11 +27,11 @@ export const HomePage: React.FC = () => {
       <h1 className="HomePage__title">Home Page</h1>
       <PhotoSlider />
 
-      <Slider products={newModels} title="Brand new models" />
+      <ProductsSlider products={newModels} title="Brand new models" />
 
       <Categories />
 
-      <Slider products={hotProducts} title="Hot prices" />
+      <ProductsSlider products={hotProducts} title="Hot prices" />
     </div>
   );
 };
