@@ -1,0 +1,77 @@
+import { useLocation, useSearchParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import cn from 'classnames';
+
+import './Search.scss';
+
+export const Search = () => {
+  const searchPages = ['/phones', '/tablets', '/accessories', '/favorites'];
+  const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
+  const [searchValue, setSearchValue] = useState(query);
+
+  const handleSearchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = e.target;
+
+    setSearchValue(value);
+    const params = new URLSearchParams(searchParams);
+
+    if (value === '') {
+      params.delete('query');
+    } else {
+      params.set('query', value);
+      params.set('page', '1');
+    }
+
+    setSearchParams(params);
+  };
+
+  useEffect(() => {
+    setSearchValue(query);
+  }, [query]);
+
+  return (
+    <div className="search">
+      {searchPages.includes(location.pathname) && (
+        <>
+          <input
+            className="search__input"
+            type="text"
+            placeholder={`Search in ${location.pathname.slice(1)}`}
+            value={searchValue}
+            onChange={handleSearchFilter}
+          />
+
+          <button
+            onClick={() => {
+              setSearchValue('');
+              const params = new URLSearchParams(searchParams);
+
+              params.delete('query');
+              setSearchParams(params);
+            }}
+            className="search__button"
+            type="button"
+            aria-label="search button"
+          >
+            <i
+              className={cn('ico ico-search', {
+                'search__ico--hide': searchValue,
+                search__ico: !searchValue,
+              })}
+            />
+            <i
+              className={cn('ico ico-close', {
+                'search__ico-close--hide': !searchValue,
+                'search__ico-close': searchValue,
+              })}
+              data-cy="searchDelete"
+            />
+          </button>
+        </>
+      )}
+    </div>
+  );
+};

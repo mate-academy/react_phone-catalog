@@ -1,0 +1,100 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.cart-item {
+  padding: 24px;
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 24px;
+
+  @include mobile {
+    gap: 16px;
+  }
+
+  &--image {
+    width: 80px;
+    height: 80px;
+    object-fit: contain;
+    padding: 7px;
+  }
+
+  &--title {
+    @include body-text;
+
+    color: $color-primary;
+    flex: 1;
+  }
+
+  &__quantity-block {
+    display: flex;
+    width: 96px;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__button {
+    &--delete {
+      width: 16px;
+      height: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('../../../public/images/svg/close.svg');
+
+      &:hover {
+        background-image: url('../../../public/images/svg/close-dark.svg');
+      }
+    }
+
+    &--minus {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-elements;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('../../../public/images/svg/minus-dark.svg');
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &--minus:disabled {
+      background-image: url('../../../public/images/svg/minus.svg');
+      cursor: no-drop;
+
+      &:hover {
+        border: 1px solid $color-elements;
+      }
+    }
+
+    &--plus {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $color-elements;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-image: url('../../../public/images/svg/plus-dark.svg');
+
+      &:hover {
+        border: 1px solid $color-primary;
+      }
+    }
+  }
+
+  &--quantity {
+    @include body-text;
+
+    color: $color-primary;
+  }
+
+  &--price {
+    @include h3;
+
+    color: $color-primary;
+    text-align: right;
+    width: 80px;
+  }
+}

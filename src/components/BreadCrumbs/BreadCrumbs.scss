@@ -1,0 +1,26 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.brad-crumbs {
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  &__cat-name {
+    @include small-text;
+
+    color: $color-primary;
+    text-transform: capitalize;
+  }
+
+  &__name {
+    @include small-text;
+
+    color: $color-secondary;
+    flex: 1;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

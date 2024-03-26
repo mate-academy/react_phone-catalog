@@ -1,91 +1,116 @@
 import { useEffect, useState } from 'react';
 import './PhonePage.scss';
 import { useSearchParams } from 'react-router-dom';
-import { Phone } from '../../types/Phone';
-import { getPhones } from '../../helpers/getPhones';
-import { ProductsList } from '../../components/ProductsList/ProductsList';
+import { Product } from '../../types/Product';
+import { ProductsList } from '../../components/ProductsList';
 import { Loader } from '../../components/Loader';
 import { DropDown } from '../../components/DropDown';
 import { perPageVariants, sortByVariants } from '../../constants';
 import { Pagination } from '../../components/Pagination';
-// import { SearchLink } from '../../components/SearchLink';
+import { NoResults } from '../../components/NoResults';
+import { BreadCrumbs } from '../../components/BreadCrumbs';
+import { NoSearchResults } from '../../components/NoSearchResults';
+import { getData } from '../../helpers/getData';
 
 export const PhonePage = () => {
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [displayedPhones, setDisplayedPhones] = useState<Phone[]>([]);
-
-  let sortedPhones = phones;
-
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [displayedPhones, setDisplayedPhones] = useState<Product[]>([]);
+  const [maxLength, setMaxLength] = useState(phones.length);
   const [isLoading, setIsLoading] = useState(false);
   const [searchParams] = useSearchParams();
-
-  const sortBy = searchParams.get('sort');
-  const perPage = searchParams.get('perPage') || sortedPhones.length.toString();
-  const currentPage = searchParams.get('page') || 1;
-
-  if (sortBy === 'age') {
-    sortedPhones = phones.sort((a, b) => a.age - b.age);
-  }
-
-  if (sortBy === 'name') {
-    sortedPhones = phones.sort((a, b) => a.name.localeCompare(b.name));
-  }
-
-  if (sortBy === 'price') {
-    sortedPhones = phones.sort((a, b) => a.price - b.price);
-  }
+  const [noSearchResult, setNoSearchResult] = useState(false);
 
   useEffect(() => {
     setIsLoading(true);
-    getPhones()
+    getData
+      .getProducts('phones')
       .then(data => {
         setPhones(data);
       })
+      .catch(() => {})
       .finally(() => setIsLoading(false));
   }, []);
 
-  useEffect(() => {
-    const newArr = [];
+  const query = searchParams.get('query');
+  const sortBy = searchParams.get('sort') || '';
+  const perPageStr = searchParams.get('perPage') || `${phones.length}`;
+  const perPage = +perPageStr;
+  const currentPage = searchParams.get('page') || 1;
 
-    for (let i = 0; i < sortedPhones.length; i += +perPage) {
-      newArr.push(sortedPhones.slice(i, i + +perPage));
+  useEffect(() => {
+    const paginationBlocks = [];
+    let sortedPhones = [...phones];
+
+    if (sortBy === 'age') {
+      sortedPhones.sort((a, b) => a.year - b.year);
     }
 
-    setDisplayedPhones(newArr[+currentPage - 1] || []);
-  }, [sortBy, perPage, currentPage, sortedPhones]);
+    if (sortBy === 'name') {
+      sortedPhones.sort((a, b) => a.name.localeCompare(b.name));
+    }
+
+    if (sortBy === 'price') {
+      sortedPhones.sort((a, b) => a.price - b.price);
+    }
+
+    if (query) {
+      setNoSearchResult(false);
+      sortedPhones = sortedPhones.filter(el =>
+        el.name.toLowerCase().includes(query.toLowerCase()),
+      );
+      if (sortedPhones.length === 0) {
+        setNoSearchResult(true);
+      }
+    }
+
+    setMaxLength(sortedPhones.length);
+
+    for (let i = 0; i < sortedPhones.length; i += perPage) {
+      paginationBlocks.push(sortedPhones.slice(i, i + perPage));
+    }
+
+    setDisplayedPhones(paginationBlocks[+currentPage - 1] || []);
+  }, [sortBy, perPage, currentPage, query, phones]);
 
   return (
-    <div className="container">
-      <h1 className="title">Mobile phones</h1>
-      <p className="phones-count">{phones.length} models</p>
-      <div className="catalog__settings">
-        <DropDown title="Sort by" dropDownArrayData={sortByVariants} />
-        <DropDown title="Items on page" dropDownArrayData={perPageVariants} />
+    <>
+      {displayedPhones.length === 0 && !noSearchResult ? (
+        <NoResults categoryName="Phones" />
+      ) : (
+        <main className="page">
+          <BreadCrumbs name="Phones" />
+          <div className="page__content">
+            <h1 className="page__title">Mobile phones</h1>
+            <p className="page__count">{maxLength} models</p>
+            {noSearchResult ? (
+              <NoSearchResults />
+            ) : (
+              <div className="page__catalog-settings">
+                <DropDown
+                  title="Sort by"
+                  dropDownArrayData={sortByVariants}
+                  startedValue={sortBy}
+                />
+                <DropDown
+                  title="Items on page"
+                  dropDownArrayData={perPageVariants}
+                  startedValue={perPageStr}
+                />
+              </div>
+            )}
 
-        {/* <SearchLink params={{ perPage: `4`, page: '1' }} className="testLink">
-          4
-        </SearchLink>
-        <SearchLink params={{ perPage: `8`, page: '1' }} className="testLink">
-          8
-        </SearchLink>
-        <SearchLink params={{ perPage: `16`, page: '1' }} className="testLink">
-          16
-        </SearchLink>
-        <SearchLink params={{ perPage: null, page: '1' }} className="testLink">
-          All
-        </SearchLink> */}
-      </div>
-
-      {+perPage < phones.length && (
-        <Pagination
-          total={phones.length}
-          perPage={perPage}
-          currentPage={+currentPage}
-        />
+            {isLoading && <Loader />}
+            {!isLoading && <ProductsList items={displayedPhones} />}
+            {perPage < maxLength && (
+              <Pagination
+                total={maxLength}
+                perPage={perPage}
+                currentPage={+currentPage}
+              />
+            )}
+          </div>
+        </main>
       )}
-
-      {isLoading && <Loader />}
-      {!isLoading && <ProductsList phones={displayedPhones} />}
-    </div>
+    </>
   );
 };

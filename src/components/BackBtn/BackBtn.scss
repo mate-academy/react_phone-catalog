@@ -1,0 +1,25 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.back-btn {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin-block: 40px 16px;
+
+  @include mobile {
+    margin-block: 24px 16px;
+  }
+
+  &--title {
+    @include small-text;
+
+    color: $color-secondary;
+  }
+
+  &:hover {
+    .back-btn--title {
+      color: $color-primary;
+    }
+  }
+}

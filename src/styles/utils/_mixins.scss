@@ -1,0 +1,166 @@
+@mixin mobile {
+  @media (max-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--column), 1fr);
+
+  @include mobile {
+    --column: 4;
+  }
+
+  @include tablet {
+    --column: 12;
+  }
+
+  @include desktop {
+    grid-template-columns: repeat(var(--column), 32px);
+
+    --column: 24;
+  }
+}
+
+@mixin desktop-container {
+  @include desktop {
+    max-width: $container-max-width;
+    margin-inline: auto;
+  }
+}
+
+@mixin upper-case {
+  /* Uppercase */
+  font-family: $mont;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin small-text {
+  /* Small text 12 */
+  font-family: $mont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
+
+@mixin body-text {
+  font-family: $mont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+@mixin grey-secondary-text {
+  color: $color-secondary;
+  font-family: $mont;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin grey-primary-text {
+  color: $color-primary;
+  font-family: $mont;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+@mixin buttons {
+  @include body-text;
+
+  border: 1px solid $color-elements;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid;
+  }
+
+  &--selected {
+    background-color: $color-primary;
+    color: $color-white;
+
+    border: 1px solid $color-primary;
+  }
+
+  &:disabled {
+    border: 1px solid $color-elements;
+    cursor: no-drop;
+  }
+}
+
+@mixin h1 {
+  @include mobile {
+    font-size: 32px;
+    line-height: 41px;
+  }
+
+  color: $color-primary;
+  font-family: $mont;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin h2 {
+  @include mobile {
+    font-size: 22px;
+    line-height: 140%;
+    letter-spacing: 0;
+  }
+
+  color: $color-primary;
+  font-family: $mont;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: 0.01em;
+}
+
+@mixin h3 {
+  font-family: $mont;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+@mixin h4 {
+  color: $color-primary;
+  font-family: $mont;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+}
+
+@mixin old-price {
+  color: $color-secondary;
+  font-family: $mont;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28px;
+  text-decoration-line: line-through;
+}

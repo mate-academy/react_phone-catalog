@@ -1,57 +1,105 @@
+@import '../../styles/main';
+
 .footer {
-  background: rgb(255, 255, 255);
-  height: 96px;
-  margin-inline: auto;
-  border: 1px dashed;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  @include mobile {
+    margin-inline: 16px;
+  }
+
+  @include tablet {
+    margin-inline: 24px;
+  }
+
+  @include desktop {
+    @include desktop-container;
+
+    width: 100%;
+  }
 
   &__container {
     display: flex;
     justify-content: space-between;
-    height: 100%;
+    padding-block: 32px;
+
+    @include mobile {
+      flex-wrap: wrap;
+      gap: 32px;
+    }
   }
 
   &__logo {
-    align-self: center;
-    display: flex;
+    flex-grow: 1;
+    height: 32px;
+
+    &--img {
+      height: 100%;
+    }
   }
+
   &__links {
+    flex-grow: 1;
     display: flex;
-    gap: 64px;
     align-items: center;
+    justify-content: space-between;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include mobile {
+      width: 100%;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
   }
+
   &__link {
-    color: rgb(137, 147, 154);
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.04em;
+    @include upper-case;
+
+    color: $color-secondary;
     cursor: pointer;
-    text-transform: uppercase;
+
+    @include mobile {
+      width: 100%;
+    }
+
+    &:hover {
+      color: $color-primary;
+    }
   }
-  &__topbtn {
-    align-items: center;
+
+  &__back-to-top {
     display: flex;
-    height: fit-content;
-    align-self: center;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: end;
     gap: 16px;
 
-    cursor: pointer;
-    &-label {
-      color: rgb(137, 147, 154);
-      font-size: 12px;
-      font-weight: 700;
-      line-height: 15px;
-      pointer-events: none;
+    @include mobile {
+      width: 100%;
+      justify-content: center;
     }
+
+    &-label {
+      @include small-text;
+
+      color: $color-secondary;
+      cursor: pointer;
+
+      &:hover {
+        color: $color-primary;
+      }
+    }
+
     &-button {
-      pointer-events: none;
-      background-color: transparent;
-      border: 1px solid rgb(180, 189, 196);
+      @include buttons;
+
       width: 32px;
       height: 32px;
       display: flex;
       align-items: center;
       justify-content: center;
+      border: 1px solid $color-icons;
     }
   }
 }

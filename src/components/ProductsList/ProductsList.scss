@@ -1,0 +1,36 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.catalog-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+  padding: 0;
+  margin: 0;
+  justify-content: start;
+
+  &__cell {
+    min-width: 229px;
+    flex: 1;
+    box-sizing: border-box;
+    border: 1px solid $color-elements;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    background: $color-white;
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+
+    @include mobile {
+      max-width: 100%;
+    }
+
+    max-width: calc(25% - 10px);
+
+    &:hover {
+      .catalog-item__img {
+        scale: 1.1;
+        transition: scale linear 0.3s;
+      }
+    }
+  }
+}

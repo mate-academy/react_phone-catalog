@@ -17,11 +17,34 @@ type DropDownElement = {
 type Props = {
   title: string;
   dropDownArrayData: DropDownElement[];
+  startedValue?: string;
 };
 
-export const DropDown: React.FC<Props> = ({ title, dropDownArrayData }) => {
+export const DropDown: React.FC<Props> = ({
+  title,
+  dropDownArrayData,
+  startedValue,
+}) => {
+  let initialDropDownValue = dropDownArrayData[0].title;
+
+  if (startedValue && startedValue !== '0') {
+    initialDropDownValue = startedValue;
+  }
+
+  if (startedValue === 'age') {
+    initialDropDownValue = dropDownArrayData[0].title;
+  }
+
+  if (startedValue === 'name') {
+    initialDropDownValue = dropDownArrayData[1].title;
+  }
+
+  if (startedValue === 'price') {
+    initialDropDownValue = dropDownArrayData[2].title;
+  }
+
   const [isDropDownActive, setIsDropDownActive] = useState(false);
-  const [selectedItem, setSelectedItem] = useState(dropDownArrayData[0].title);
+  const [selectedItem, setSelectedItem] = useState(initialDropDownValue);
 
   const handleBlur = (e: React.FocusEvent<HTMLDivElement, Element>) => {
     if (!e.currentTarget.contains(e.relatedTarget)) {
@@ -58,8 +81,6 @@ export const DropDown: React.FC<Props> = ({ title, dropDownArrayData }) => {
           return (
             <SearchLink
               params={el.params}
-              // params={{ perPage: `4`, page: '1' }}
-              // params={{ perPage: `8`, page: '1' }}
               className="dropdown__item"
               onClick={() => {
                 setIsDropDownActive(false);

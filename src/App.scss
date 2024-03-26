@@ -1,63 +1,24 @@
-@import './styles/ico';
+@import './styles/main';
+
+html {
+  scroll-behavior: smooth;
+}
 
 * {
   box-sizing: border-box;
 }
 
-@font-face {
-  font-family: Mont;
-  src:
-    local('Mont Regular'),
-    local('Mont-Regular'),
-    url('../public/fonts/Mont-Regular.ttf') format('truetype');
-  font-weight: 400;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Mont;
-  src:
-    local('Mont Semi Bold'),
-    local('Mont-Semi-Bold'),
-    url('../public/fonts/Mont-SemiBold.ttf') format('truetype');
-  font-weight: 600;
-  font-style: normal;
-}
-
-@font-face {
-  font-family: Mont;
-  src:
-    local('Mont Bold'),
-    local('Mont-Bold'),
-    url('../public/fonts/Mont-Bold.ttf') format('truetype');
-  font-weight: 700;
-  font-style: normal;
-}
-
 body {
   margin: 0;
   padding: 0;
-  font-family: Mont, "Times New Roman", serif;
 }
 
-ul {
-  padding: 0;
-  list-style: none;
+body > div:nth-child(1) {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
 }
 
-a{
-  color: inherit;
-  text-decoration: none;
-}
-
-.container {
-  max-width: 1136px;
-  margin-inline: auto;
-}
-
-button {
-  padding: 0;
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
+body.menu-show {
+  overflow: hidden;
 }

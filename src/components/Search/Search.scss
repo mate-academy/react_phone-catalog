@@ -1,0 +1,79 @@
+@import '../../styles/main';
+
+.search {
+  position: relative;
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  background: $color-white;
+
+  &__input {
+    width: 327px;
+    padding-left: 24px;
+    color: $color-primary;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 700;
+    border: none;
+    box-shadow: -1px 0 0 0 $color-elements;
+    outline: none;
+
+    @include tablet {
+      display: none;
+    }
+
+    @include mobile {
+      display: none;
+    }
+
+    @include desktop {
+      display: block;
+    }
+
+    &::placeholder {
+      color: $color-icons;
+      font-family: $mont;
+    }
+    &:focus {
+      background: $color-hover-background;
+    }
+  }
+
+  &__button {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: auto;
+
+    @include mobile {
+      display: none;
+    }
+
+    @include tablet {
+      display: none;
+    }
+
+    @include desktop {
+      display: block;
+    }
+  }
+
+  &__ico {
+    margin-right: 24px;
+    pointer-events: none;
+
+    &--hide {
+      display: none !important;
+    }
+
+    &-close {
+      margin-right: 24px;
+      cursor: pointer;
+
+      &--hide {
+        display: none !important;
+      }
+    }
+  }
+}

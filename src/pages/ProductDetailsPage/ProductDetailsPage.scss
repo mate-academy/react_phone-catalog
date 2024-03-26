@@ -1,0 +1,394 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.product {
+  &__title {
+    @include h2;
+
+    @include mobile {
+      margin-bottom: 32px;
+    }
+
+    margin-bottom: 40px;
+  }
+
+  &__details {
+    @include page-grid;
+
+    @include mobile {
+      row-gap: 16px;
+      margin-bottom: 56px;
+    }
+
+    @include tablet {
+      position: relative;
+      row-gap: 64px;
+      margin-bottom: 64px;
+    }
+
+    @include desktop {
+      row-gap: 80px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__images {
+    @include mobile {
+      grid-row: 2;
+      flex-direction: row;
+      grid-column: 1 / -1;
+      margin-bottom: 24px;
+    }
+
+    @include tablet {
+      grid-column: 1 / 2;
+      gap: 8px;
+    }
+
+    @include desktop {
+      grid-column: 1 / 3;
+      gap: 16px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-item {
+      border: 1px solid $color-elements;
+      padding: 3px;
+      width: 80px;
+      height: 80px;
+
+      @include mobile {
+        width: 50px;
+        height: 50px;
+      }
+
+      &.active {
+        border: 1px solid $color-primary;
+      }
+    }
+
+    &-element {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__image {
+    &_container {
+      @include mobile {
+        grid-row: 1;
+        grid-column: 1 / -1;
+        padding: 7px;
+        width: 100%;
+        max-height: 288px;
+      }
+
+      @include tablet {
+        grid-column: 2 / 8;
+        padding: 7px;
+        width: 100%;
+        max-height: 100%;
+      }
+
+      @include desktop {
+        grid-column: 3 / 13;
+        padding: 11px;
+      }
+
+      width: 464px;
+      height: 464px;
+    }
+
+    &_photo {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__params {
+    @include mobile {
+      position: relative;
+      grid-row: 4;
+      grid-column: 1 / -1;
+      top: -30px;
+    }
+
+    @include tablet {
+      grid-column: 8 / 13;
+    }
+
+    @include desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__code {
+    @include mobile {
+      grid-row: 3;
+      grid-column: 3 / -1;
+    }
+
+    @include tablet {
+      position: absolute;
+      right: 0;
+      top: 0;
+      max-width: 176px;
+    }
+
+    @include desktop {
+      grid-column: 21 / 25;
+    }
+
+    @include small-text;
+
+    color: $color-icons;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: right;
+  }
+
+  &__id {
+    @include mobile {
+      max-width: 100%;
+      display: block;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    max-width: 176px;
+  }
+
+  &__about,
+  &__tech {
+    @include mobile {
+      grid-column: 1 / -1;
+      margin-bottom: 56px;
+    }
+
+    @include tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include desktop {
+      grid-column: 1 / 13;
+    }
+
+    &--title {
+      @include h3;
+
+      color: $color-primary;
+      display: block;
+      padding-bottom: 15.5px;
+      margin-bottom: 32.5px;
+      border-bottom: 1px solid $color-elements;
+    }
+
+    &--description {
+      @include body-text;
+
+      color: $color-secondary;
+    }
+  }
+
+  &__tech {
+    @include desktop {
+      grid-column: 14 / 25;
+    }
+  }
+
+  &__specs {
+    &_list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      padding-left: 0;
+    }
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+
+      @include body-text;
+
+      &--title {
+        color: $color-secondary;
+      }
+
+      &--value {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.params {
+  &__block {
+    padding-bottom: 23.5px;
+    border-bottom: 1px solid $color-elements;
+    margin-bottom: 24.5px;
+  }
+
+  &__title {
+    @include small-text;
+
+    color: $color-secondary;
+    margin-bottom: 8px;
+  }
+
+  &__variants {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__variant {
+    width: 32px;
+    height: 32px;
+
+    &_color {
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgb(255, 255, 255);
+      border-radius: 36px;
+
+      &-gold {
+        background: rgb(252, 219, 193);
+      }
+
+      &-green {
+        background: rgb(95, 113, 112);
+      }
+
+      &-black {
+        background: rgb(76, 76, 76);
+      }
+
+      &-white {
+        background: rgb(240, 240, 240);
+      }
+    }
+
+    &_capacity {
+      @include small-text;
+
+      cursor: pointer;
+      height: 32px;
+      border: 1px solid $color-elements;
+      display: flex;
+      align-items: center;
+      padding-inline: 8px;
+      color: $color-primary;
+
+      &-active {
+        background: $color-primary;
+        color: $color-white;
+        border: 1px solid $color-primary;
+      }
+    }
+  }
+
+  &__price-block {
+    @include mobile {
+      margin-top: 8px;
+    }
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__new-price {
+    color: $color-primary;
+
+    @include h2;
+
+    @include mobile {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  &__old-price {
+    font-family: $mont;
+    color: $color-secondary;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+    letter-spacing: 0%;
+    text-decoration-line: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__cart-btn-empty {
+    @include buttons;
+
+    flex: 1;
+    margin-right: 8px;
+    border: none;
+    color: $color-white;
+    background: $color-primary;
+  }
+
+  &__cart-btn {
+    @include buttons;
+
+    flex: 1;
+    border: 1px solid $color-icons;
+    color: $color-green;
+  }
+
+  &__fav-btn {
+    width: 48px;
+    height: 48px;
+    box-sizing: border-box;
+    border: 1px solid $color-icons;
+
+    background-image: url('../../../public/images/svg/fav.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    color: transparent;
+
+    &--active {
+      background-image: url('../../../public/images/svg/fav-red.svg');
+    }
+  }
+
+  &__top-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-left: 0;
+  }
+
+  &__top-spec {
+    display: flex;
+    justify-content: space-between;
+
+    &--title {
+      @include small-text;
+
+      color: $color-secondary;
+    }
+
+    &--value {
+      @include small-text;
+
+      color: $color-primary;
+      text-align: right;
+    }
+  }
+}

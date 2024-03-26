@@ -1,0 +1,117 @@
+@import '../utils/variables';
+
+.ico {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  &-search {
+    background-image: url('../../../public/images/svg/search.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: var(--color-elements);
+
+    &:hover {
+      background-image: url('../../../public/images/svg/search-dark.svg');
+    }
+  }
+
+  &-up {
+    background-image: url('../../../public/images/svg/up-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &--disabled {
+      background-image: url('../../../public/images/svg/up.svg');
+    }
+  }
+
+  &-home {
+    background-image: url('../../../public/images/svg/home.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-right {
+    background-image: url('../../../public/images/svg/right.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-right-dark {
+    background-image: url('../../../public/images/svg/right-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-left {
+    background-image: url('../../../public/images/svg/left.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-left-dark {
+    background-image: url('../../../public/images/svg/left-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-down {
+    background-image: url('../../../public/images/svg/down.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &-close {
+    background-image: url('../../../public/images/svg/close.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../../../public/images/svg/close-dark.svg');
+    }
+  }
+
+  &-close-dark {
+    background-image: url('../../../public/images/svg/close-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../../../public/images/svg/close.svg');
+    }
+  }
+
+  &-menu {
+    background-image: url('../../../public/images/svg/menu-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      background-image: url('../../../public/images/svg/menu.svg');
+    }
+  }
+
+  &-fav {
+    background-image: url('../../../public/images/svg/fav-dark.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: all ease-in-out $effect-duration;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+
+  &-cart {
+    background-image: url('../../../public/images/svg/cart.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+
+    transition: all ease-in-out $effect-duration;
+
+    &:hover {
+      scale: 1.1;
+    }
+  }
+}

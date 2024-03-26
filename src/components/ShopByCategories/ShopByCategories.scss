@@ -1,0 +1,129 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.categories {
+  @include mobile {
+    margin-bottom: 55px;
+  }
+
+  @include mobile {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @include h2;
+
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__links {
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @include tablet {
+      @include page-grid;
+    }
+  }
+
+  &__link {
+    width: 100%;
+    display: block;
+
+    &--phones {
+      @include tablet {
+        grid-column: 1 / 5;
+      }
+
+      @include desktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--tablets {
+      @include tablet {
+        grid-column: 5 / 9;
+      }
+
+      @include desktop {
+        grid-column: 9 / 17;
+      }
+    }
+
+    &--accessories {
+      @include tablet {
+        grid-column: 9 / -1;
+      }
+
+      @include desktop {
+        grid-column: 17 / -1;
+      }
+    }
+
+    &--img {
+      width: 100%;
+      object-fit: contain;
+      margin-bottom: 24px;
+
+      @include tablet {
+        height: 187px;
+      }
+
+      @include desktop {
+        height: 368px;
+      }
+    }
+  }
+
+  &__info {
+    &--phone {
+      @include tablet {
+        grid-column: 1 / 5;
+      }
+
+      @include desktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &--tablets {
+      @include tablet {
+        grid-column: 5 / 9;
+      }
+
+      @include desktop {
+        grid-column: 9 / 17;
+      }
+    }
+
+    &--accessories {
+      @include tablet {
+        grid-column: 9 / -1;
+      }
+
+      @include desktop {
+        grid-column: 17 / -1;
+      }
+    }
+
+    &--title {
+      @include h4;
+
+      text-transform: capitalize;
+      margin-bottom: 4px;
+    }
+
+    &--count {
+      @include body-text;
+
+      color: $color-secondary;
+    }
+  }
+}

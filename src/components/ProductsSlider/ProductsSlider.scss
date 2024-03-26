@@ -1,0 +1,79 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.products-slider {
+  @include mobile {
+    margin-bottom: 56px;
+  }
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include desktop {
+    margin-bottom: 81px;
+  }
+
+  &__top {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+  }
+
+  &__title {
+    @include h2;
+
+    color: $color-primary;
+  }
+
+  &__nav {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &:disabled {
+      cursor: no-drop;
+    }
+
+    &--left {
+      background-image: url('../../../public/images/svg/left-dark.svg');
+    }
+
+    &--left:disabled {
+      background-image: url('../../../public/images/svg/left.svg');
+      border: 1px solid $color-elements;
+    }
+
+    &--right {
+      background-image: url('../../../public/images/svg/right-dark.svg');
+    }
+
+    &--right:disabled {
+      background-image: url('../../../public/images/svg/right.svg');
+      border: 1px solid $color-elements;
+    }
+  }
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    column-gap: 16px;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+  }
+}

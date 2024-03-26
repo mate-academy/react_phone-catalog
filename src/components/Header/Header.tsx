@@ -1,73 +1,79 @@
+import cn from 'classnames';
+import { useContext, useState } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NavItem } from '../NavItem';
+// import { NavItem } from '../NavItem';
 import './Header.scss';
-
-const getNavLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return isActive ? 'nav__link nav__link--active' : 'nav__link';
-};
+import { CartContext } from '../../store/CartContext';
+import { FavContext } from '../../store/FavContext';
+import { Search } from '../Search';
+import { NavList } from '../NavList';
 
 const getActionLinkClass = ({ isActive }: { isActive: boolean }) => {
   return isActive ? 'header__action header__action--active' : 'header__action';
 };
 
 export const Header = () => {
+  const { favQuantity } = useContext(FavContext);
+  const { cartQuantity } = useContext(CartContext);
+
+  const [isBurgerVisible, setIsBurgerVisible] = useState(false);
+
+  const burgerHandler = () => {
+    setIsBurgerVisible(prev => !prev);
+    document.body.classList.toggle('menu-show');
+  };
+
+  const closeMenu = () => {
+    setIsBurgerVisible(false);
+    document.body.classList.remove('menu-show');
+  };
+
   return (
     <header className="header">
-      <nav className="header__nav nav">
-        <NavLink to="./" className="nav__logo">
-          <img
-            className="nav__logo logo"
-            src="../images/logo.svg"
-            alt="logo2"
-          />
-        </NavLink>
-        <ul className="nav__list">
-          <li className="nav__item">
-            <NavLink to="./" className={getNavLinkClass}>
-              Home
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink to="./phones" className={getNavLinkClass}>
-              Phones
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink to="/tablets" className={getNavLinkClass}>
-              Tablets
-            </NavLink>
-          </li>
-          <li className="nav__item">
-            <NavLink to="/accessories" className={getNavLinkClass}>
-              Accessories
-            </NavLink>
-          </li>
-        </ul>
-      </nav>
-      {/* <div className="header__menu menu"> */}
-      {/* <div className="menu__search">
-          <i className="ico ico-search" />
-          <input
-            type="text"
-            className="menu__search_input"
-            placeholder="Search in favourites..."
-          />
-        </div> */}
-      <div className="header__search">
-        <span>search</span>
-      </div>
+      <NavList closeMenu={closeMenu} isBurgerVisible={isBurgerVisible} />
+      <Search />
       <div className="header__actions">
-        <NavLink to="/favorites" className={getActionLinkClass}>
-          <NavItem type="fav" />
-        </NavLink>
-        <NavLink to="/cart" className={getActionLinkClass}>
-          <NavItem type="cart" />
-        </NavLink>
+        <button
+          type="button"
+          aria-label="burger menu open button"
+          className="header__burger"
+          onClick={burgerHandler}
+        >
+          {isBurgerVisible ? (
+            <i className="ico ico-close ico-close-dark" />
+          ) : (
+            <i className="ico ico-menu ico-menu-dark" />
+          )}
+        </button>
+
+        <div
+          className={cn({
+            header__actions_container: !isBurgerVisible,
+            'header__actions_container--active': isBurgerVisible,
+          })}
+        >
+          <NavLink
+            to="/favorites"
+            className={getActionLinkClass}
+            onClick={closeMenu}
+          >
+            <i className="ico ico-fav" />
+            {favQuantity > 0 && (
+              <p className="header__actions--quantity">{favQuantity}</p>
+            )}
+          </NavLink>
+          <NavLink
+            to="/cart"
+            className={getActionLinkClass}
+            onClick={closeMenu}
+          >
+            <i className="ico ico-cart" />
+            {cartQuantity > 0 && (
+              <p className="header__actions--quantity">{cartQuantity}</p>
+            )}
+          </NavLink>
+        </div>
       </div>
-      {/* <a className="menu__button menu__button_fav--active" href="./" />
-        <a className="menu__button menu__button_cart" href="./" />
-        <a className="menu__button menu__button_cart--active" href="./" /> */}
-      {/* </div> */}
     </header>
   );
 };

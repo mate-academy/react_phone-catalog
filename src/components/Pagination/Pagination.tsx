@@ -5,7 +5,7 @@ import { SearchLink } from '../SearchLink';
 
 type Props = {
   total: number;
-  perPage: string;
+  perPage: number;
   currentPage: number;
   // setCurrentPage: (value: number) => void;
 };
@@ -16,7 +16,7 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   // setCurrentPage,
 }) => {
-  const paginationPageCount = Math.ceil(total / +perPage);
+  const paginationPageCount = Math.ceil(total / perPage);
   const paginationPageCountArr = Array.from(
     { length: paginationPageCount },
     (_, i) => i + 1,
@@ -30,8 +30,8 @@ export const Pagination: React.FC<Props> = ({
 
   const itemsArr = [];
 
-  for (let j = 0; j < allItems.length; j += +perPage) {
-    itemsArr.push(allItems.slice(j, j + +perPage));
+  for (let j = 0; j < allItems.length; j += perPage) {
+    itemsArr.push(allItems.slice(j, j + perPage));
   }
 
   function prevLinkHandler() {

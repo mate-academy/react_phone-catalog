@@ -1,0 +1,18 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
+.home-page {
+  &__title {
+    @include mobile {
+      margin-bottom: 24px;
+    }
+
+    @include tablet {
+      margin-bottom: 32px;
+    }
+
+    @include desktop {
+      margin-bottom: 56px;
+    }
+  }
+}

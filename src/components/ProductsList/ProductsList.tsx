@@ -1,17 +1,19 @@
-import { Phone } from '../../types/Phone';
-import { CatalogItem } from '../CatalogItem/CatalogItem';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard/ProductCard';
+import './ProductsList.scss';
 
 type Props = {
-  phones: Phone[];
+  items: Product[];
+  setFavorites?: React.Dispatch<React.SetStateAction<Product[]>>;
 };
 
-export const ProductsList: React.FC<Props> = ({ phones }) => {
+export const ProductsList: React.FC<Props> = ({ items, setFavorites }) => {
   return (
     <ul className="catalog-grid" data-cy="productList">
-      {phones.map(phone => {
+      {items.map(item => {
         return (
-          <li className="catalog-grid__cell" key={phone.id}>
-            <CatalogItem phone={phone} />
+          <li className="catalog-grid__cell" key={item.id}>
+            <ProductCard item={item} setFavorites={setFavorites} />
           </li>
         );
       })}

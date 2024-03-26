@@ -1,18 +1,26 @@
+@import '../../styles/utils/variables';
+@import '../../styles/utils/mixins';
+
 .dropdown {
   position: relative;
+  width: 50%;
 
   &__label {
+    @include small-text;
+
+    color: $color-secondary;
     margin-bottom: 4px;
-    color: rgb(137, 147, 154);
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
   }
+
   &__trigger {
-    width: 176px;
     height: 40px;
-    border: 1px solid rgb(180, 189, 196);
+    border: 1px solid $color-icons;
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
   }
+
   &__button {
     width: 100%;
     height: 100%;
@@ -21,43 +29,44 @@
     align-items: center;
     padding-inline: 12px;
   }
+
   &__title {
-    color: rgb(49, 50, 55);
-    font-size: 14px;
+    @include body-text;
+
     font-weight: 700;
-    line-height: 21px;
+    color: $color-primary;
   }
+
   &__menu {
     position: absolute;
     top: calc(100% + 4px);
-    z-index: 20;
+    z-index: 2;
     left: 0;
-    width: 176px;
+    width: 100%;
     display: none;
     flex-direction: column;
     padding-block: 8px;
-    border: 1px solid rgb(226, 230, 233);
+    border: 1px solid $color-elements;
     box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
-    background: rgb(255, 255, 255);
+    background-color: $color-white;
   }
+
   &__item {
-    padding: 6px 12px 5px;
-    color: rgb(137, 147, 154);
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    text-decoration: none;
+    @include body-text;
+
+    padding: 6px 12px;
+    color: $color-secondary;
 
     &:hover {
-      color: rgb(49, 50, 55);
-      font-size: 14px;
-      font-weight: 600;
-      line-height: 21px;
-      background: rgb(250, 251, 252);
+      color: $color-primary;
+      background: $color-hover-background;
     }
   }
 
   &.is-active {
+    .dropdown__trigger {
+      border: 1px solid $color-primary;
+    }
     .dropdown__menu {
       display: flex;
     }
