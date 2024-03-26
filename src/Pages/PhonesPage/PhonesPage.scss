@@ -1,0 +1,61 @@
+.home {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &__text {
+    color: #89939A;
+
+  }
+}
+
+.phones {
+  align-items: start;
+
+  &__selectors {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}
+
+.selector {
+  display: flex;
+  flex-direction: column;
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+
+    color: #89939A;
+  }
+
+  &__field {
+    height: 40px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    padding: 10px;
+    border: 1px solid #B4BDC3;
+
+    &:focus-visible {
+      outline: none;
+    }
+  }
+
+  &__option {
+    color: #313237;
+  }
+}
+
+.models {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  color: #89939A;
+  margin-bottom: 40px;
+}
