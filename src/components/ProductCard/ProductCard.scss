@@ -1,0 +1,91 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  width: 272px;
+  height: 507px;
+
+  border: 1px solid #E2E6E9;
+  padding: 24px;
+  margin-bottom: 40px;
+
+  &__image {
+    display: block;
+    text-decoration: none;
+  }
+
+  &__photo {
+    width: 200px;
+    height: 208px;
+    margin-bottom: 24px;
+    padding-left: 31px;
+  }
+
+  &__name {
+    display: block;
+    color: #313237;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 6px;
+  }
+
+  &__price {
+    border-bottom: 1px solid #E2E6E9;
+    padding-bottom: 6px;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: #313237;
+    margin-bottom: 16px;
+  }
+
+  &__old-price {
+    font-weight: 500;
+    color: #89939A;
+    padding-left: 8px;
+    text-decoration: line-through;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__desc {
+    line-height: 15px;
+    color: #89939A;
+  }
+
+  &__value {
+    line-height: 15px;
+    color: #313237;
+  }
+}
+
+.control {
+  height: 40px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add-button {
+  width: 176px;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 600;
+  background: #313237;
+  color: #FFFFFF;
+}
+
+.favourite-button {
+  width: 40px;
+  border: 1px solid #B4BDC3;
+  background: none;
+}
