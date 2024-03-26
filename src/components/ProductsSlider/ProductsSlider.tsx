@@ -9,6 +9,8 @@ type Props = {
 };
 
 export const ProductsSlider: FC<Props> = ({ products, sliderTitle }) => {
+  // console.log(sliderTitle, products);
+
   const [activeArrowLeft, setActiveArrowLeft] = useState(false);
   const [activeArrowRight, setActiveArrowRight] = useState(true);
   const slider = useRef<HTMLUListElement>(null);

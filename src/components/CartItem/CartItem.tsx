@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({
         onClick={() => removeCartItemFromLSCart(item)}
       />
       <img
-        src={`../_new/${item.product.image}`}
+        src={item.product.image}
         alt={item.product.name}
         className="cart-item--image"
       />

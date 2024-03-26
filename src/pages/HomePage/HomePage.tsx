@@ -32,12 +32,20 @@ export const HomePage = () => {
           Welcome to Nice Gadgets store!
         </h1>
         <PicturesSlider />
-        <ProductsSlider
-          products={brandNewProducts}
-          sliderTitle="Brand new models"
-        />
+        {brandNewProducts.length > 0 && (
+          <ProductsSlider
+            products={brandNewProducts}
+            sliderTitle="Brand new models"
+          />
+        )}
+
         <ShopByCategories ShopByCatData={ShopByCatData} />
-        <ProductsSlider products={hotPricesProducts} sliderTitle="Hot prices" />
+        {hotPricesProducts.length > 0 && (
+          <ProductsSlider
+            products={hotPricesProducts}
+            sliderTitle="Hot prices"
+          />
+        )}
       </div>
     </main>
   );
