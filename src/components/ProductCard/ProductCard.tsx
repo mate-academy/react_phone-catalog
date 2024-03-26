@@ -60,11 +60,7 @@ export const ProductCard: React.FC<Props> = ({ item, setFavorites }) => {
   return (
     <Link to={`/product/${item.itemId}`} data-cy="cardsContainer">
       <div className="catalog-item__top">
-        <img
-          src={`../_new/${item.image}`}
-          alt={item.name}
-          className="catalog-item__img"
-        />
+        <img src={item.image} alt={item.name} className="catalog-item__img" />
       </div>
 
       <p className="catalog-item--title">{item.name}</p>
