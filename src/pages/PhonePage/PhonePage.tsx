@@ -41,6 +41,8 @@ export const PhonePage = () => {
     const paginationBlocks = [];
     let sortedPhones = [...phones];
 
+    setNoSearchResult(false);
+
     if (sortBy === 'age') {
       sortedPhones.sort((a, b) => a.year - b.year);
     }
@@ -54,7 +56,6 @@ export const PhonePage = () => {
     }
 
     if (query) {
-      setNoSearchResult(false);
       sortedPhones = sortedPhones.filter(el =>
         el.name.toLowerCase().includes(query.toLowerCase()),
       );
