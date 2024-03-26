@@ -1,16 +1,13 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import './search.scss';
 import { MainContext } from '../../context';
 
 export const Search = () => {
   const {
     currentPage,
+    queryValue,
+    setqueryValue,
   } = useContext(MainContext);
-  const [query, setQuery] = useState('');
-
-  const handleSearchRequest = (event:React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value.trim());
-  };
 
   return (
     <form className="header__search">
@@ -20,8 +17,8 @@ export const Search = () => {
         className="header__input"
         placeholder={`Search in ${currentPage.toLowerCase()}...`}
         autoComplete="off"
-        value={query}
-        onChange={handleSearchRequest}
+        value={queryValue}
+        onChange={(event) => setqueryValue(event.target.value)}
       />
       <div className="search__icon icon" />
     </form>

@@ -18,6 +18,7 @@ export const MainContext = React.createContext<{
   itemsOnPage: string;
   cartItems: CartItem[];
   favouritesItems: Product[];
+  queryValue: string;
   setCurrentPage: React.Dispatch<React.SetStateAction<string>>;
   setProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   setPhones: React.Dispatch<React.SetStateAction<Product[]>>;
@@ -27,6 +28,7 @@ export const MainContext = React.createContext<{
   setItemsOnPage: React.Dispatch<React.SetStateAction<string>>;
   setCartItems: React.Dispatch<React.SetStateAction<CartItem[]>>;
   setFavouritesItems: React.Dispatch<React.SetStateAction<Product[]>>
+  setqueryValue: React.Dispatch<React.SetStateAction<string>>;
 }>({
   currentPage: 'Home',
   products: [],
@@ -37,6 +39,7 @@ export const MainContext = React.createContext<{
   itemsOnPage: 'All',
   cartItems: [],
   favouritesItems: [],
+  queryValue: '',
   setCurrentPage: () => { },
   setProducts: () => { },
   setPhones: () => { },
@@ -46,6 +49,7 @@ export const MainContext = React.createContext<{
   setItemsOnPage: () => { },
   setCartItems: () => { },
   setFavouritesItems: () => { },
+  setqueryValue: () => {},
 });
 
 export const MainProvider: React.FC<Props> = ({ children }) => {
@@ -58,6 +62,7 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
   const [itemsOnPage, setItemsOnPage] = useState('All');
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
   const [favouritesItems, setFavouritesItems] = useState<Product[]>([]);
+  const [queryValue, setqueryValue] = useState('');
 
   const getProductsFromServer = async () => {
     try {
@@ -104,6 +109,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setCartItems,
       favouritesItems,
       setFavouritesItems,
+      queryValue,
+      setqueryValue,
     }),
     [
       currentPage,
@@ -124,6 +131,8 @@ export const MainProvider: React.FC<Props> = ({ children }) => {
       setCartItems,
       favouritesItems,
       setFavouritesItems,
+      queryValue,
+      setqueryValue,
     ],
   );
 

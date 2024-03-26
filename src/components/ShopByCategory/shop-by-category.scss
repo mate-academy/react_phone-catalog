@@ -24,6 +24,11 @@
     width: 368px;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: all 0.5s;
+
+    &:hover {
+      transform: scale(105%);
+    }
   }
 
   &__title {

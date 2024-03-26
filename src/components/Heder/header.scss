@@ -30,22 +30,24 @@
   width: 64px;
   height: 64px;
   box-shadow: 0 0 0 0.5px #e2e6e9;
-
-  a:before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
 }
 
 .cart__icon {
+  display: block;
   position: relative;
   height: 16px;
   width: 16px;
   background-image: url("../../assets/img/icons/cart.svg");
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -24px;
+    left: -24px;
+    right: -24px;
+    bottom: -24px;
+  }
 }
 
 .favourites__icon {
@@ -53,6 +55,16 @@
   height: 16px;
   width: 16px;
   background-image: url("../../assets/img/icons/favourites.svg");
+
+  &::before {
+    content: "";
+    position: absolute;
+    display: block;
+    top: -24px;
+    left: -24px;
+    right: -24px;
+    bottom: -24px;
+  }
 }
 
 .items__amount {

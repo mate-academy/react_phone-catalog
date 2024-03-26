@@ -1,9 +1,19 @@
+@import "../../styles/utils/vars";
+
 .header__search {
   position: relative;
-  padding: 0 169px 0 24px;
+  width: 327px;
+  padding-left: 24px;
   display: flex;
   align-items: center;
   box-shadow: 0 0 0 1px #e2e6e9;
+}
+
+.header__input {
+  width: 100%;
+  font-size: 14px;
+  font-weight: 600;
+  color: $gray_primary;
 }
 
 .header__input::placeholder {

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { MainContext } from '../../context';
 import { PathBlock } from '../../components/PathBlock';
 
@@ -12,12 +12,19 @@ export const Favorites = () => {
     currentPage,
     setCurrentPage,
     favouritesItems,
+    queryValue,
   } = useContext(MainContext);
 
   useEffect(() => {
     setCurrentPage('Favourites');
     scrollToTop();
   }, []);
+
+  const filteredProducts = useMemo(() => {
+    return favouritesItems.filter(({ name }) => {
+      return name.toLowerCase().includes(queryValue.toLowerCase());
+    });
+  }, [favouritesItems, queryValue]);
 
   return (
     <div className="favourites__page">
@@ -28,7 +35,7 @@ export const Favorites = () => {
       {favouritesItems.length === 0 && <NotFoundProducts />}
       {favouritesItems.length === 1 && <p className="favourites-items__amount">{`${favouritesItems.length} item`}</p>}
       {favouritesItems.length > 1 && <p className="favourites-items__amount">{`${favouritesItems.length} items`}</p>}
-      <ProductsList products={favouritesItems} />
+      <ProductsList products={filteredProducts} />
     </div>
   );
 };

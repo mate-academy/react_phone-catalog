@@ -6,6 +6,7 @@ import { Slider } from '../../components/Slider';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { ProductsSlider } from '../../components/ProductsSlider';
 import { MainContext } from '../../context';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 export const HomePage = () => {
   const {
@@ -18,6 +19,7 @@ export const HomePage = () => {
 
   useEffect(() => {
     setCurrentPage('Home');
+    scrollToTop();
   }, []);
 
   const getHotPriceProducts = useMemo(() => {

@@ -1,4 +1,4 @@
-import { useContext, useEffect } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { PathBlock } from '../../components/PathBlock';
 import { MainContext } from '../../context';
 import { ProductsList } from '../../components/ProductsList';
@@ -11,12 +11,19 @@ export const Accessories = () => {
     setCurrentPage,
     currentPage,
     accessories,
+    queryValue,
   } = useContext(MainContext);
 
   useEffect(() => {
     setCurrentPage('Accessories');
     scrollToTop();
   }, []);
+
+  const filteredProducts = useMemo(() => {
+    return accessories.filter(({ name }) => {
+      return name.toLowerCase().includes(queryValue.toLowerCase());
+    });
+  }, [accessories, queryValue]);
 
   return (
     <div className="product__page">
@@ -28,7 +35,7 @@ export const Accessories = () => {
         : (
           <>
             <SelectorsBlock />
-            <ProductsList products={accessories} />
+            <ProductsList products={filteredProducts} />
           </>
         )}
 
