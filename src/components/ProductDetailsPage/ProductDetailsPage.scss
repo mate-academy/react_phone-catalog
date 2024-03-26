@@ -72,6 +72,7 @@
       height: 0;
       padding-bottom: 100%;
       border: 1px solid $colorBorder;
+      transition: 0.3s border-color;
 
       &--active {
         border-color: $colorBlack;
@@ -79,6 +80,10 @@
 
       @include on-tablet {
         grid-column: 1 / -1;
+      }
+
+      &:hover {
+        border-color: $colorBlack;
       }
     }
 

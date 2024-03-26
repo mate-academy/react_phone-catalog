@@ -119,7 +119,7 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setVisibleQuery(e.target.value);
-    changeQuery(e.target.value);
+    changeQuery(e.target.value.trim());
     setSearchWith({ page: null });
   };
 
