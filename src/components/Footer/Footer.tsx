@@ -7,7 +7,7 @@ export const Footer = () => {
         <div className="footer__logo">
           <img
             className="footer__logo--img"
-            src="../images/logo.svg"
+            src="images/logo.svg"
             alt="footer logo"
           />
         </div>

@@ -4,8 +4,10 @@ import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 import { ShopByCategoryDataItem } from '../types/ShopByCategoryItem';
 
+const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+
 const getProduct = async (id: string): Promise<Product | undefined> => {
-  const data = await fetch('_new/products.json');
+  const data = await fetch(`${API_URL}/products.json`);
 
   const products: Product[] = await data.json();
   const phone = products.find(product => product.itemId === id);
@@ -14,7 +16,7 @@ const getProduct = async (id: string): Promise<Product | undefined> => {
 };
 
 const getProducts = async (catName: string): Promise<Product[]> => {
-  const data = await fetch('_new/products.json');
+  const data = await fetch(`${API_URL}/products.json`);
 
   const allProducts: Product[] = await data.json();
   const products = allProducts.filter(product => product.category === catName);
@@ -23,14 +25,14 @@ const getProducts = async (catName: string): Promise<Product[]> => {
 };
 
 const getProductDetails = async (id: string): Promise<ProductDetails> => {
-  const data = await fetch(`_new/products/${id}.json`);
+  const data = await fetch(`${API_URL}/products/${id}.json`);
   const product: ProductDetails = await data.json();
 
   return product;
 };
 
 const getSuggestedProducts = async (): Promise<Product[]> => {
-  const data = await fetch('_new/products.json');
+  const data = await fetch(`${API_URL}/products.json`);
   const products: Product[] = await data.json();
 
   const randomProductsSet: Set<Product> = new Set();
@@ -53,7 +55,7 @@ type RespType = {
 };
 
 const getHomePageData = async (): Promise<RespType> => {
-  const data = await fetch('_new/products.json');
+  const data = await fetch(`${API_URL}/products.json`);
   const products: Product[] = await data.json();
 
   const productCount: Record<string, number> = {

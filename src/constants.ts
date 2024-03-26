@@ -2,16 +2,16 @@ export const ProductsSliderLength = 7;
 
 export const picturesSliderData = [
   {
-    imgUrl: './_new/promo/slider2.png',
+    imgUrl: '_new/promo/slider2.png',
     linkUrl: '/phones?query=iphone+15&page=1',
   },
-  { imgUrl: './_new/promo/slider3.png', linkUrl: '/tablets?query=ipad&page=1' },
+  { imgUrl: '_new/promo/slider3.png', linkUrl: '/tablets?query=ipad&page=1' },
   {
-    imgUrl: './_new/promo/slider1.png',
+    imgUrl: '_new/promo/slider1.png',
     linkUrl: '/accessories?query=pods',
   },
-  { imgUrl: './_new/promo/slider4.png', linkUrl: '/phones?query=titanium' },
-  { imgUrl: './_new/promo/slider5.png', linkUrl: '/accessories' },
+  { imgUrl: '_new/promo/slider4.png', linkUrl: '/phones?query=titanium' },
+  { imgUrl: '_new/promo/slider5.png', linkUrl: '/accessories' },
 ];
 
 export const sortByVariants = [
