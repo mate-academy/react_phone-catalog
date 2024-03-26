@@ -44,7 +44,6 @@
 }
 
 @mixin upper-case {
-  /* Uppercase */
   font-family: $mont;
   font-size: 12px;
   font-weight: 800;
@@ -54,7 +53,6 @@
 }
 
 @mixin small-text {
-  /* Small text 12 */
   font-family: $mont;
   font-size: 12px;
   font-weight: 700;
