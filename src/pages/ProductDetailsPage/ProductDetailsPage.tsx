@@ -116,7 +116,7 @@ export const ProductDetailsPage: FC = () => {
                   >
                     <img
                       className="product__images-element"
-                      src={`../_new/${img}`}
+                      src={img}
                       alt={`${product?.name} ${id + 1}`}
                       key={img}
                       onMouseEnter={() => {
@@ -131,7 +131,7 @@ export const ProductDetailsPage: FC = () => {
             <div className="product__image_container">
               <img
                 className="product__image_photo"
-                src={`../_new/${zoomedPhoto}`}
+                src={zoomedPhoto}
                 alt="zoomed product"
               />
             </div>
