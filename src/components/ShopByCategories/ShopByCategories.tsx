@@ -5,6 +5,7 @@ import { ShopByCategoryDataItem } from '../../types/ShopByCategoryItem';
 type Props = {
   ShopByCatData: ShopByCategoryDataItem[];
 };
+
 export const ShopByCategories: React.FC<Props> = ({ ShopByCatData }) => {
   return (
     <div
@@ -19,7 +20,7 @@ export const ShopByCategories: React.FC<Props> = ({ ShopByCatData }) => {
             className={`categories__link categories__link--${el.catName}`}
           >
             <img
-              src={`./_new/img/category-${el.catName}.png`}
+              src={`img/category-${el.catName}.png`}
               alt=""
               className="categories__link--img"
             />
