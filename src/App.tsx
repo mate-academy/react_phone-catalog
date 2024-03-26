@@ -6,6 +6,7 @@ import './App.scss';
 import classNames from 'classnames';
 import { Search } from './components/Search/Search';
 
+
 const getLinkClass = ({ isActive }: { isActive: boolean }) => classNames(
   'navbar__item', {
     'is-active': isActive,
