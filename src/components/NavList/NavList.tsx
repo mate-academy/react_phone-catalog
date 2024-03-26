@@ -15,7 +15,7 @@ export const NavList: React.FC<Props> = ({ closeMenu, isBurgerVisible }) => {
   return (
     <nav className="nav">
       <NavLink to="./" className="nav__logo" onClick={closeMenu}>
-        <img src="/images/logo.svg" alt="Header Logo" />
+        <img src="images/logo.svg" alt="Header Logo" />
       </NavLink>
       <ul
         className={cn('nav__list', {
