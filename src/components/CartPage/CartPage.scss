@@ -65,6 +65,11 @@
       display: flex;
       gap: 16px;
       align-items: center;
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.05);
+      }
     }
 
     &-delete {
@@ -184,6 +189,15 @@
       width: 100%;
       color: $colorWhite;
       background-color: $colorBlack;
+      transition: 0.3s box-shadow;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203142;
+      }
     }
+  }
+
+  &__empty {
+    grid-column: 1 / -1;
   }
 }

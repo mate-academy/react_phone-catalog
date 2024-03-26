@@ -6,6 +6,7 @@ export type Action =
   | { type: 'hieghtFooter'; payload: number }
   | { type: 'hieghtHeader'; payload: number }
   | { type: 'isLoading'; payload: boolean }
+  | { type: 'reload'; payload: boolean }
   | { type: 'getFavourites'; payload: Product[] }
   | { type: 'addFavourites'; payload: string }
   | { type: 'deleteFavourites'; payload: string }
@@ -14,6 +15,7 @@ export type Action =
   | { type: 'deleteFromCart'; payload: string }
   | { type: 'increaseQuantity'; payload: string }
   | { type: 'decreaseQuantity'; payload: string }
+  | { type: 'errorMessage'; payload: string }
   | { type: 'getProduts'; payload: Product[] };
 
 export function reducer(state: State, action: Action): State {
@@ -24,6 +26,12 @@ export function reducer(state: State, action: Action): State {
       return {
         ...state,
         products: newProducts,
+      };
+
+    case 'errorMessage':
+      return {
+        ...state,
+        errorMessage: action.payload,
       };
 
     case 'increaseQuantity':
@@ -118,6 +126,12 @@ export function reducer(state: State, action: Action): State {
       return {
         ...state,
         loading: action.payload,
+      };
+
+    case 'reload':
+      return {
+        ...state,
+        reload: action.payload,
       };
 
     case 'showMenu':

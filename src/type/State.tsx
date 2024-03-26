@@ -8,4 +8,6 @@ export interface State {
   loading: boolean;
   favourites: Product[];
   cart: Product[];
+  errorMessage: string;
+  reload: boolean;
 }

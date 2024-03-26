@@ -26,10 +26,21 @@
       display: none;
     }
 
+
     &-item {
       padding: 15px;
       background-color: $colorWhite;
       border-color: $colorBorder;
+
+      &:hover {
+        img {
+          transform: scale(1.2);
+        }
+      }
+    }
+
+    &-img {
+      transition: 0.3s transform;
     }
   }
 
@@ -50,6 +61,12 @@
       @include on-desktop {
         width: 80px;
         height: 28px;
+      }
+
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.1);
       }
     }
   }
@@ -77,6 +94,12 @@
 
       @include on-desktop {
         padding: 20px 10px;
+      }
+
+      transition: 0.3s color;
+
+      &:hover {
+        color: $colorBlack;
       }
 
       &-active {
@@ -118,6 +141,12 @@
 
       @include on-desktop {
         width: 64px;
+      }
+
+      transition: 0.3s background-color;
+
+      &:hover {
+        background-color: $colorBorder;
       }
 
       &--active {

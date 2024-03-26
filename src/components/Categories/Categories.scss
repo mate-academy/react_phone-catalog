@@ -43,9 +43,15 @@
       padding-bottom: 100%;
       margin-bottom: 24px;
       transition: 0.3s transform;
+    }
 
-      &:hover {
+    &:hover {
+      .Categories__card-image {
         transform: scale(1.05);
+      }
+
+      img {
+        border-radius: 50px;
       }
     }
 
@@ -55,6 +61,7 @@
       height: 100%;
       object-fit: cover;
       object-position: left top;
+      transition: 0.3s border-radius;
 
       &--phone {
         background-color: #fde5b5;

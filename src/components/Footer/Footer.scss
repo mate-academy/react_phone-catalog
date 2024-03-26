@@ -28,7 +28,14 @@
     &-img {
       width: 89px;
       height: 32px;
+      transition: 0.3s transform;
+
+      &:hover {
+        transform: scale(1.1);
+      }
     }
+
+
   }
 
   &__nav {
@@ -49,6 +56,11 @@
       font-size: 12px;
       line-height: 11px;
       letter-spacing: 0.04em;
+      transition: 0.3s color;
+
+      &:hover {
+        color: $colorBlack;
+      }
     }
   }
 
@@ -70,6 +82,12 @@
       outline: none;
       background-color: $colorWhite;
       border: 1px solid $colorBorderArrow;
+
+      transition: 0.3s border-color;
+
+      &:hover {
+        border-color: $colorBlack;
+      }
     }
   }
 }

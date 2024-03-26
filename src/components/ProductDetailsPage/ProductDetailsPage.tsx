@@ -12,14 +12,13 @@ import { Loader } from '../Loader';
 
 export const ProductDetailsPage: React.FC = () => {
   const dispatch = useContext(DispatchContext);
-  const { products, favourites, cart } = useContext(StateContext);
+  const { products, favourites, cart, errorMessage } = useContext(StateContext);
   const [details, setDetails] = useState<ProductDetails | null>(null);
 
   const [isFan, setIsFan] = useState(() =>
     favourites.some(fav => fav.itemId === details?.id),
   );
   const [loading, isLoading] = useState(false);
-  const [message, setMessage] = useState('');
   const { productId } = useParams();
   const { pathname } = useLocation();
   const [currentPhoto, setCurrentPhoto] = useState(0);
@@ -30,18 +29,19 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     isLoading(true);
-    setMessage('');
+    dispatch({ type: 'errorMessage', payload: '' });
 
     if (productId) {
       getProductDetails(productId)
         .then(product => {
           setDetails(product);
-          // setIsFan(favourites.some(fav => fav.itemId === product.id));
         })
-        .catch(() => setMessage('Phone was not found'))
+        .catch(() => {
+          dispatch({ type: 'errorMessage', payload: 'Product was not found' });
+        })
         .finally(() => isLoading(false));
     }
-  }, [favourites, productId]);
+  }, [dispatch, favourites, productId]);
 
   const handleChoosePhoto = useCallback((index: number) => {
     setCurrentPhoto(index);
@@ -63,8 +63,6 @@ export const ProductDetailsPage: React.FC = () => {
   const maxDiscountProducts = sortMaxDiscount();
 
   const handleFanClick = () => {
-    setIsFan(!isFan);
-
     if (details) {
       if (!isFan) {
         dispatch({ type: 'addFavourites', payload: details.id });
@@ -72,6 +70,8 @@ export const ProductDetailsPage: React.FC = () => {
         dispatch({ type: 'deleteFavourites', payload: details.id });
       }
     }
+
+    setIsFan(!isFan);
   };
 
   const handleCartClick = () => {
@@ -94,7 +94,7 @@ export const ProductDetailsPage: React.FC = () => {
         <ButtonBack />
       </div>
 
-      {!message ? (
+      {!errorMessage ? (
         <div className="Details__content">
           <h2 className="Details__title">{details?.name}</h2>
           <div className="Details__photo">
@@ -293,9 +293,7 @@ export const ProductDetailsPage: React.FC = () => {
           </section>
         </div>
       ) : (
-        <h2 style={{ color: 'red', paddingBottom: '50px' }}>
-          Phone was not found
-        </h2>
+        <h2 style={{ color: 'red', paddingBottom: '50px' }}>{errorMessage}</h2>
       )}
 
       <ProductsSlider

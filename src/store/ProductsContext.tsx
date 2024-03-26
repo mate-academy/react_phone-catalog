@@ -11,6 +11,8 @@ const initialState: State = {
   loading: false,
   favourites: [],
   cart: [],
+  errorMessage: '',
+  reload: false,
 };
 
 export const StateContext = React.createContext(initialState);
@@ -55,15 +57,20 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     dispatch({ type: 'isLoading', payload: true });
+    dispatch({ type: 'errorMessage', payload: '' });
+    dispatch({ type: 'reload', payload: false });
 
     getProducts()
       .then(productsFromServer => {
         dispatch({ type: 'getProduts', payload: productsFromServer });
       })
+      .catch(() => {
+        dispatch({ type: 'errorMessage', payload: 'Something went wrong' });
+      })
       .finally(() => {
         dispatch({ type: 'isLoading', payload: false });
       });
-  }, []);
+  }, [state.reload]);
 
   return (
     <DispatchContext.Provider value={dispatch}>

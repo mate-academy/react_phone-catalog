@@ -84,7 +84,7 @@ export const Header: React.FC = () => {
             className="Header__menu-item"
             onClick={handleOpenMenu}
           >
-            <img src="icons/Menu.svg" alt="cart" />
+            <img src="icons/Menu.svg" alt="cart" className="Header__menu-img" />
           </button>
         </div>
       </nav>

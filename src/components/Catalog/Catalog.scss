@@ -209,15 +209,27 @@
       }
     }
   }
+}
 
-  &__not-elements {
-    width: max-content;
-    height: 40px;
-    line-height: 40px;
-    color: $colorRed;
-    font-size: 20px;
-    background-color: rgb(241, 241, 161);
-    border-radius: 10px;
-    padding: 0 10px;
+.Error {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgba(255, 0, 0, 0.3);
+  padding: 10px;
+
+  &__text {
+    color: #f00;
+  }
+
+  &__reload {
+    padding: 5px;
+    border: 1px solid;
+    transition: 0.3s all;
+
+    &:hover {
+      border-color: $colorBlack;
+      color: $colorBlack;
+    }
   }
 }

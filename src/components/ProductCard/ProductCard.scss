@@ -14,12 +14,19 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
+
+    &:hover {
+      img {
+        transform: scale(1.1);
+      }
+    }
   }
 
   &__photo {
     width: 208px;
     height: 196px;
     object-fit: contain;
+    transition: 0.3s transform;
   }
 
   &__product-name {
@@ -116,12 +123,12 @@
       border: 1px solid $colorBorderArrow;
       transition: 0.3s border-color;
 
-      &:hover {
-        border-color: $colorBlack;
-      }
-
       &-icon {
         margin: 0 auto;
+      }
+
+      &:hover {
+        border-color: $colorBlack;
       }
     }
   }

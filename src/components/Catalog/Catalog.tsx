@@ -1,4 +1,10 @@
-import React, { useCallback, useEffect, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { debounce } from 'lodash';
@@ -9,6 +15,7 @@ import { getSearchWith } from '../../utils/searchWith';
 import { Params } from '../../type/Params';
 import { PathRoute } from '../PathRoute/PathRoute';
 import { NoSearchResults } from '../NoSearchResults';
+import { DispatchContext, StateContext } from '../../store/ProductsContext';
 
 type Props = {
   products?: Product[];
@@ -19,12 +26,14 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
   const [disableNext, setDisableNext] = useState(false);
   const [disablePrev, setDisablePrev] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || '';
+  const sort = searchParams.get('sort') || Sort.AGE;
   const query = searchParams.get('query') || '';
   const page = +(searchParams.get('page') || 1);
   const perPage = +(searchParams.get('perPage') || 0);
   const [visibleQuery, setVisibleQuery] = useState(query);
   const [debounceQuery, setDebounceQuery] = useState(query);
+  const { isShowMenu, errorMessage } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
 
   const setSearchWith = useCallback(
     (params: Params) => {
@@ -95,11 +104,7 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
   }, [perPage, sortedProducts.length]);
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    if (e.target.value === Sort.NONE) {
-      setSearchWith({ sort: null, page: null });
-    } else {
-      setSearchWith({ sort: e.target.value, page: null });
-    }
+    setSearchWith({ sort: e.target.value, page: null });
   };
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -173,7 +178,26 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
       <h1 className="Catalog__title">{title}</h1>
       <div className="Catalog__amount">{`${sortedProducts.length} models`}</div>
 
-      {!!products.length ? (
+      {!products.length && !errorMessage && (
+        <h1>{`There are no ${title} yet`}</h1>
+      )}
+
+      {errorMessage && (
+        <div className="Error">
+          <h2 className="Error__text">{errorMessage}</h2>
+          <button
+            type="button"
+            className="Error__reload"
+            onClick={() => {
+              dispatch({ type: 'reload', payload: true });
+            }}
+          >
+            Reload
+          </button>
+        </div>
+      )}
+
+      {!!products.length && (
         <>
           <div className="Catalog__choose">
             <div className="Catalog__choose-item Catalog__choose-item--sort">
@@ -187,7 +211,6 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
                 className="Catalog__choose-select"
                 onChange={e => handleSortChange(e)}
               >
-                <option value={Sort.NONE}>No sorted</option>
                 <option value={Sort.AGE}>Newest</option>
                 <option value={Sort.NAME}>Alphabetically</option>
                 <option value={Sort.PRICE}>Cheapest</option>
@@ -210,27 +233,28 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
                 <option value={Amount.SIXTEEN}>16</option>
               </select>
             </div>
-
-            <div className="Catalog__search">
-              <input
-                type="text"
-                value={visibleQuery}
-                placeholder="Search"
-                name="Search"
-                id="search"
-                className="Catalog__search-field"
-                onChange={e => handleQueryChange(e)}
-              />
-              {query && (
-                <button
-                  type="button"
-                  className="Catalog__search-clearSearch"
-                  onClick={handleClearSearch}
-                >
-                  <img src="icons/Close.svg" alt="Clear search" />
-                </button>
-              )}
-            </div>
+            {!isShowMenu && (
+              <div className="Catalog__search">
+                <input
+                  type="text"
+                  value={visibleQuery}
+                  placeholder="Search"
+                  name="Search"
+                  id="search"
+                  className="Catalog__search-field"
+                  onChange={e => handleQueryChange(e)}
+                />
+                {query && (
+                  <button
+                    type="button"
+                    className="Catalog__search-clearSearch"
+                    onClick={handleClearSearch}
+                  >
+                    <img src="icons/Close.svg" alt="Clear search" />
+                  </button>
+                )}
+              </div>
+            )}
           </div>
 
           {!!visibleProducts.length ? (
@@ -305,8 +329,6 @@ export const Catalog: React.FC<Props> = ({ products = [], title = '' }) => {
             </div>
           )}
         </>
-      ) : (
-        <div className="Catalog__not-elements">{`${title} not found`}</div>
       )}
     </div>
   );
