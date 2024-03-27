@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { FC, useEffect, useState, useContext } from 'react';
 import cn from 'classnames';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { LSCart } from '../../helpers/LSCart';
 import { LSFav } from '../../helpers/LSFav';
 import { Loader } from '../../components/Loader';
@@ -113,6 +113,7 @@ export const ProductDetailsPage: FC = () => {
                     className={cn('product__images-item', {
                       active: img === zoomedPhoto,
                     })}
+                    key={img}
                   >
                     <img
                       className="product__images-element"
@@ -137,29 +138,38 @@ export const ProductDetailsPage: FC = () => {
             </div>
 
             <div className="product__params params">
-              {/* Available colors */}
               <div className="params__block">
                 <div className="params__title">Available colors</div>
                 <div className="params__variants">
-                  <div className="params__variant_color params__variant_color-gold" />
-                  <div className="params__variant_color params__variant_color-green" />
-                  <div className="params__variant_color params__variant_color-black" />
-                  <div className="params__variant_color params__variant_color-white" />
+                  {productDetails.colorsAvailable.map(color => (
+                    <Link
+                      to={`/product/${productDetails.id.split('-').slice(0, -1).join('-')}-${color}`}
+                      className={cn(
+                        `params__variant_color params__variant_color-${color}`,
+                        {
+                          active: color === productDetails.color,
+                        },
+                      )}
+                      key={color}
+                    />
+                  ))}
                 </div>
               </div>
-              {/* Select capacity */}
+
               <div className="params__block">
                 <div className="params__title">Select capacity</div>
                 <div className="params__variants">
-                  <div className="params__variant_capacity params__variant_capacity-active">
-                    64 gb
-                  </div>
-                  <div className="params__variant_capacity params__variant_capacity">
-                    256 gb
-                  </div>
-                  <div className="params__variant_capacity params__variant_capacity">
-                    512 gb
-                  </div>
+                  {productDetails.capacityAvailable.map(el => (
+                    <Link
+                      to={`/product/${productDetails.id.split('-').slice(0, -2).join('-')}-${el.toLocaleLowerCase()}-${productDetails.color}`}
+                      className={cn('params__variant_capacity', {
+                        active: el === productDetails.capacity,
+                      })}
+                      key={el}
+                    >
+                      {el}
+                    </Link>
+                  ))}
                 </div>
               </div>
               <div className="params__price-block">

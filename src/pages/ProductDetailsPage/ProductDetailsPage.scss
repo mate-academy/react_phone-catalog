@@ -255,15 +255,11 @@
       cursor: pointer;
       width: 32px;
       height: 32px;
-      border: 2px solid rgb(255, 255, 255);
+      position: relative;
       border-radius: 36px;
 
       &-gold {
         background: rgb(252, 219, 193);
-      }
-
-      &-green {
-        background: rgb(95, 113, 112);
       }
 
       &-black {
@@ -271,7 +267,51 @@
       }
 
       &-white {
-        background: rgb(240, 240, 240);
+        background: white;
+      }
+
+      &-yellow {
+        background: rgb(236, 233, 15);
+      }
+
+      &-pink {
+        background: #f9f;
+      }
+
+      &-red {
+        background: #f00;
+      }
+
+      &-green {
+        background: #390;
+      }
+
+      &-blue {
+        background: #33f;
+      }
+
+      &-purple {
+        background: #d5d2dd;
+      }
+
+      &::after {
+        content: '';
+        border-radius: 36px;
+        position: absolute;
+        inset: -2px;
+        border: 1px solid $color-elements;
+      }
+
+      &:hover {
+        &::after {
+          border: 1px solid $color-secondary;
+        }
+      }
+
+      &.active {
+        &::after {
+          border: 1px solid $color-primary;
+        }
       }
     }
 
@@ -286,7 +326,7 @@
       padding-inline: 8px;
       color: $color-primary;
 
-      &-active {
+      &.active {
         background: $color-primary;
         color: $color-white;
         border: 1px solid $color-primary;
