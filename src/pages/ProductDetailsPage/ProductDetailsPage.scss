@@ -252,14 +252,13 @@
     height: 32px;
 
     &_color {
-      cursor: pointer;
       width: 32px;
       height: 32px;
       position: relative;
       border-radius: 36px;
 
       &-gold {
-        background: rgb(252, 219, 193);
+        background: #fddbc0;
       }
 
       &-black {
@@ -271,7 +270,7 @@
       }
 
       &-yellow {
-        background: rgb(236, 233, 15);
+        background: #ffe98c;
       }
 
       &-pink {
@@ -292,6 +291,26 @@
 
       &-purple {
         background: #d5d2dd;
+      }
+
+      &-spacegray {
+        background: #535355;
+      }
+
+      &-rosegold {
+        background: rgb(224, 191, 184);
+      }
+
+      &-midnightgreen {
+        background: rgb(0, 73, 83);
+      }
+
+      &-silver {
+        background: #e5e5dd;
+      }
+
+      &-coral {
+        background: #fe6756;
       }
 
       &::after {
@@ -318,7 +337,6 @@
     &_capacity {
       @include small-text;
 
-      cursor: pointer;
       height: 32px;
       border: 1px solid $color-elements;
       display: flex;
