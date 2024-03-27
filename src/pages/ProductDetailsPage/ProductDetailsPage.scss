@@ -195,6 +195,18 @@
 
       color: $color-secondary;
     }
+
+    &--subtitle {
+      @include h4;
+
+      margin-bottom: 16px;
+    }
+
+    &--text {
+      @include body-text;
+
+      margin-bottom: 32px;
+    }
   }
 
   &__tech {

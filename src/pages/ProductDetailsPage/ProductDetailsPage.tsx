@@ -235,7 +235,14 @@ export const ProductDetailsPage: FC = () => {
             <div className="product__about" data-cy="productDescription">
               <span className="product__about--title">About</span>
               <p className="product__about--description">
-                {productDetails.description[0].title}
+                {productDetails.description.map(el => (
+                  <>
+                    <p className="product__about--subtitle">{el.title}</p>
+                    {el.text.map(item => (
+                      <p className="product__about--text">{item}</p>
+                    ))}
+                  </>
+                ))}
               </p>
             </div>
             <div className="product__tech">
