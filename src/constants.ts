@@ -34,10 +34,6 @@ export const perPageVariants = [
     title: 'All',
     params: { perPage: null, page: '1' },
   },
-  // {
-  //   title: '2 test only',
-  //   params: { perPage: '2', page: '1' },
-  // },
   {
     title: '4',
     params: { perPage: '4', page: '1' },

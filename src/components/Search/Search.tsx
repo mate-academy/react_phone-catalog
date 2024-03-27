@@ -1,6 +1,8 @@
 import { useLocation, useSearchParams } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import cn from 'classnames';
+// import { debounce } from 'lodash';
+import debounce from 'lodash.debounce';
 
 import './Search.scss';
 
@@ -12,20 +14,26 @@ export const Search = () => {
 
   const [searchValue, setSearchValue] = useState(query);
 
+  const debouncedQuery = useMemo(
+    () =>
+      debounce(value => {
+        if (!value.trim()) {
+          searchParams.delete('query');
+        } else {
+          searchParams.set('query', value.trim());
+          searchParams.set('page', '1');
+        }
+
+        setSearchParams(searchParams);
+      }, 1000),
+    [searchParams, setSearchParams],
+  );
+
   const handleSearchFilter = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
 
     setSearchValue(value);
-    const params = new URLSearchParams(searchParams);
-
-    if (value === '') {
-      params.delete('query');
-    } else {
-      params.set('query', value);
-      params.set('page', '1');
-    }
-
-    setSearchParams(params);
+    debouncedQuery(value);
   };
 
   useEffect(() => {

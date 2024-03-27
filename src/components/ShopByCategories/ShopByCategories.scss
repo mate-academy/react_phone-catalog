@@ -68,9 +68,16 @@
     }
 
     &--img {
-      width: 100%;
       object-fit: contain;
       margin-bottom: 24px;
+      background-color: #8d8d92;
+      margin-inline: auto;
+      display: block;
+
+      @include mobile {
+        width: 288px;
+        height: 288px;
+      }
 
       @include tablet {
         height: 187px;
@@ -83,6 +90,17 @@
   }
 
   &__info {
+    @include tablet {
+      width: 187px;
+      margin-inline: auto;
+      display: block;
+    }
+
+    @include desktop {
+      margin: 0;
+      width: auto;
+    }
+
     &--phone {
       @include tablet {
         grid-column: 1 / 5;

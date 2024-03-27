@@ -21,7 +21,7 @@ export const ShopByCategories: React.FC<Props> = ({ ShopByCatData }) => {
             key={el.catName}
           >
             <img
-              src={`img/category-${el.catName}.png`}
+              src={`img/${el.catName}.png`}
               alt=""
               className="categories__link--img"
             />
