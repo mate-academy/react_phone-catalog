@@ -8,14 +8,19 @@
   "dependencies": {
     "@cypress/react18": "^2.0.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@reduxjs/toolkit": "^2.2.2",
     "@types/react-transition-group": "^4.4.5",
+    "axios": "^1.6.8",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "swiper": "^11.0.7",
+    "usehooks-ts": "^3.0.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -35,8 +40,10 @@
     "mochawesome-report-generator": "^6.2.0",
     "postcss": "^8.4.12",
     "prettier": "^3.2.5",
+    "prettier-plugin-tailwindcss": "^0.5.13",
     "sass": "^1.72.0",
     "stylelint": "^15.11.0",
+    "tailwindcss": "^3.4.2",
     "typescript": "5.1.6"
   },
   "scripts": {

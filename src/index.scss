@@ -1,0 +1,52 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  h1 {
+    @apply font-mont text-3xl font-bold tracking-[-0.01em] md:text-5xl;
+  }
+
+  h2 {
+    @apply font-mont text-xl font-bold md:text-4xl md:tracking-[-0.01em];
+  }
+
+  h3 {
+    @apply font-mont text-xl font-semibold md:text-2xl md:font-bold;
+  }
+
+  h4 {
+    @apply font-mont text-base font-semibold md:text-xl;
+  }
+
+  button {
+    @apply font-mont text-sm font-semibold;
+  }
+
+  body,
+  p {
+    @apply font-mont text-sm;
+  }
+
+  small {
+    @apply font-mont text-xs font-semibold;
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: 400;
+    src: url(../public/fonts/Mont-Regular.otf);
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: bold;
+    src: url(../public/fonts/Mont-Bold.otf);
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: 600;
+    src: url(../public/fonts/Mont-SemiBold.otf);
+  }
+}
