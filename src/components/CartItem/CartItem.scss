@@ -87,6 +87,8 @@
   &--quantity {
     @include body-text;
 
+    flex: 1;
+    text-align: center;
     color: $color-primary;
   }
 
