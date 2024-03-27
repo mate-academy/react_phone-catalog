@@ -1,0 +1,51 @@
+.pictures-slider {
+  margin-bottom: 66px;
+
+  &__images-wrapper {
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 16px;
+
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__images {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+  }
+
+  &__img {
+    width: 100%;
+
+    &--2, &--3 {
+      object-fit: cover;
+    }
+
+    &--2 {
+      object-position: 40% 0;
+    }
+  }
+
+  &__lines {
+    padding-bottom: 12px;
+
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &__line {
+    height: 4px;
+    width: 14px;
+
+    background-color: #e2e6e9;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+}

@@ -1,8 +1,9 @@
 .new-models {
-  // @include padding-content-inline;
   // padding-left: 16px;
 
   &__title-block {
+    @include padding-content-inline;
+
     margin-bottom: 24px;
     padding-inline: 16px;
     display: grid;
@@ -32,7 +33,6 @@
     margin-bottom: 56px;
 
     display: flex;
-    overflow: hidden;
 
     position: absolute;
   }
