@@ -4,6 +4,7 @@ import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { websiteName } from './helpers/variables';
 import { convertHyphenToSpace } from './helpers/functions';
 import { BurgerMenuAside } from './components/BurgerMenuAside';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const [searchParams] = useSearchParams();
@@ -19,6 +20,8 @@ export const App = () => {
       {searchParams.get('burgerMenu') === 'open' && <BurgerMenuAside />}
 
       <Outlet />
+
+      <Footer />
     </div>
   );
 };
