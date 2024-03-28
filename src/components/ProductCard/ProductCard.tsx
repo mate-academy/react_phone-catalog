@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Product } from '../../type/Product';
 import './ProductCard.scss';
 import { DispatchContext, StateContext } from '../../store/ProductsContext';
@@ -11,10 +11,11 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ product }) => {
   const dispatch = useContext(DispatchContext);
   const { favourites, cart } = useContext(StateContext);
-  const [isFan, setIsFan] = useState(false);
   const screen = product.screen.replace("' ", '” ');
   const capacity = product.capacity.replace('GB', ' GB');
   const ram = product.ram.replace('GB', ' GB');
+
+  const isFan = favourites.some(fav => fav.itemId === product.itemId);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -22,18 +23,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   useEffect(() => {
     localStorage.setItem('favorite', JSON.stringify(favourites));
-
-    setIsFan(favourites.some(fav => fav.itemId === product.itemId));
-  }, [favourites, product.itemId]);
+  }, [favourites]);
 
   const handleFanClick = () => {
-    if (!isFan) {
-      dispatch({ type: 'addFavourites', payload: product.itemId });
-    } else {
-      dispatch({ type: 'deleteFavourites', payload: product.itemId });
-    }
+    const type = isFan ? 'deleteFavourites' : 'addFavourites';
 
-    setIsFan(!isFan);
+    dispatch({ type, payload: product.itemId });
   };
 
   const handleCartClick = () => {

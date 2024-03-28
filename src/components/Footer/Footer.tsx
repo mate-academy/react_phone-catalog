@@ -27,14 +27,26 @@ export const Footer: React.FC = () => {
         <div className="Footer__nav">
           <a
             href="https://github.com/andrii-rykal/react_phone-catalog"
+            target="_blank"
+            rel="noopener noreferrer"
             className="Footer__nav-item"
           >
             GITHUB
           </a>
-          <a href="#/" className="Footer__nav-item">
+          <a
+            href="#/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="Footer__nav-item"
+          >
             CONTACTS
           </a>
-          <a href="#/" className="Footer__nav-item">
+          <a
+            href="#/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="Footer__nav-item"
+          >
             RIGHTS
           </a>
         </div>

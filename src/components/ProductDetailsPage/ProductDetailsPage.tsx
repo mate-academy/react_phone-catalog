@@ -14,10 +14,6 @@ export const ProductDetailsPage: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const { products, favourites, cart, errorMessage } = useContext(StateContext);
   const [details, setDetails] = useState<ProductDetails | null>(null);
-
-  const [isFan, setIsFan] = useState(() =>
-    favourites.some(fav => fav.itemId === details?.id),
-  );
   const [loading, isLoading] = useState(false);
   const { productId } = useParams();
   const { pathname } = useLocation();
@@ -26,6 +22,7 @@ export const ProductDetailsPage: React.FC = () => {
   const capacities = details?.capacityAvailable || [];
   const description = details?.description || [];
   const dc = details?.capacity || '';
+  const isFan = favourites.some(fav => fav.itemId === details?.id);
 
   useEffect(() => {
     isLoading(true);
@@ -41,7 +38,7 @@ export const ProductDetailsPage: React.FC = () => {
         })
         .finally(() => isLoading(false));
     }
-  }, [dispatch, favourites, productId]);
+  }, [dispatch, productId]);
 
   const handleChoosePhoto = useCallback((index: number) => {
     setCurrentPhoto(index);
@@ -64,14 +61,10 @@ export const ProductDetailsPage: React.FC = () => {
 
   const handleFanClick = () => {
     if (details) {
-      if (!isFan) {
-        dispatch({ type: 'addFavourites', payload: details.id });
-      } else {
-        dispatch({ type: 'deleteFavourites', payload: details.id });
-      }
-    }
+      const type = isFan ? 'deleteFavourites' : 'addFavourites';
 
-    setIsFan(!isFan);
+      dispatch({ type, payload: details.id });
+    }
   };
 
   const handleCartClick = () => {
