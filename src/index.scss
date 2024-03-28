@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  body:has(aside) main {
+    @apply hidden;
+  }
+
   html {
     @apply cursor-default;
   }

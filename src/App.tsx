@@ -1,6 +1,6 @@
 import { useDocumentTitle } from 'usehooks-ts';
 import { Header } from './components/Header';
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { Outlet, useLocation, useSearchParams } from 'react-router-dom';
 import { websiteName } from './helpers/variables';
 import { convertHyphenToSpace } from './helpers/functions';
 import { BurgerMenuAside } from './components/BurgerMenuAside';
@@ -17,6 +17,8 @@ export const App = () => {
       <Header />
 
       {searchParams.get('burgerMenu') === 'open' && <BurgerMenuAside />}
+
+      <Outlet />
     </div>
   );
 };
