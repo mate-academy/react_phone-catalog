@@ -3,6 +3,10 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply cursor-default;
+  }
+
   h1 {
     @apply font-mont text-3xl font-bold tracking-[-0.01em] md:text-5xl;
   }
@@ -48,5 +52,11 @@
     font-family: Mont;
     font-weight: 600;
     src: url(../public/fonts/Mont-SemiBold.otf);
+  }
+}
+
+@layer utilities {
+  .uppercase {
+    @apply font-mont font-bold text-xs tracking-wider;
   }
 }

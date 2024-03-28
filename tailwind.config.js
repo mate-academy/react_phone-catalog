@@ -24,6 +24,12 @@ module.exports = {
       mont: ['Mont', 'sans-serif'],
     },
     extend: {
+      cursor: {
+        default: 'url(/src/images/cursor-mouse-mice.svg), default'
+      },
+      height: {
+        5.5: '1.375rem',
+      },
       lineHeight: {
         14: '3.5rem',
       },
