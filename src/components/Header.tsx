@@ -25,8 +25,8 @@ export const Header: React.FC = () => {
 
   return (
     <header
-      className="sticky top-0 flex h-12 border-b-2
-    border-elements lg:h-16"
+      className="sticky top-0 flex min-h-12
+    border-b-2 border-elements lg:min-h-16"
     >
       <nav className="flex w-full">
         <ul className="flex w-full items-center gap-4 lg:gap-6">

@@ -2,14 +2,19 @@ import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
 import favouritesIcon from '../images/icons/favourites.svg';
 import cartIcon from '../images/icons/cart.svg';
+import { Header } from './Header';
 
 export const BurgerMenuAside: React.FC = () => {
   return (
-    <aside className="w-full flex-1">
+    <aside
+      className="fixed inset-0 z-50 flex 
+    min-h-12 flex-col gap-6 bg-white"
+    >
+      <Header />
       <nav className="flex h-full">
         <ul
           className="flex h-full w-full flex-col 
-          items-center justify-between pt-6"
+          items-center justify-between"
         >
           <div className="flex flex-col items-center gap-4">
             {[
