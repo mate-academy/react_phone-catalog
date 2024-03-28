@@ -4,7 +4,7 @@ import { ArrowButton } from './ArrowButton';
 
 export const Footer: React.FC = () => {
   return (
-    <footer className="border-t border-elements">
+    <footer className="border-t border-elements bg-white">
       <nav className="flex items-center justify-center">
         <ul
           className="flex max-w-[theme('screens.lg')] flex-1
