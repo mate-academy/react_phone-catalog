@@ -38,11 +38,13 @@
     gap: 14px;
   }
 
-  &__line {
+  &__button {
     height: 4px;
     width: 14px;
 
+    border: none;
     background-color: #e2e6e9;
+    cursor: pointer;
 
     &--active {
       background-color: #313237;

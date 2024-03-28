@@ -1,24 +1,48 @@
-/* eslint-disable no-console */
 import React, { useEffect, useState } from 'react';
-// import { Picture } from '../../../types/Picture';
+import cn from 'classnames';
+import { Picture } from '../../../types/Picture';
 
 type Props = {
   windowSize: number;
 };
 
-// const imgs: Picture[] = [
-//   { id: 1, url: '/img/pictures-slider/slider-1.png', name: 'slider-1' },
-//   { id: 2, url: '/img/pictures-slider/slider-3.jpg', name: 'slider-3' },
-//   { id: 3, url: '/img/pictures-slider/slider-4.jpg', name: 'slider-4' },
-// ];
+const imgs: Picture[] = [
+  {
+    id: 1,
+    url: '/img/pictures-slider/slider-1.png',
+    name: 'slider-1',
+    alt: 'IPhone 14 Pro',
+  },
+  {
+    id: 2,
+    url: '/img/pictures-slider/slider-3.jpg',
+    name: 'slider-3',
+    alt: 'IPhone 14 Pro',
+  },
+  {
+    id: 3,
+    url: '/img/pictures-slider/slider-4.jpg',
+    name: 'slider-4',
+    alt: 'IPhone 14 Pro',
+  },
+];
 
 export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
   const [position, setPosition] = useState<number>(0);
-  // const [images, setImages] = useState<Picture[]>(imgs);
+
+  const images = imgs.slice();
+
+  // const [positionImages, setPositionImages] = useState<number>(windowSize);
+  // const [positionImages, setPositionImages] = useState<number>(0);
+  // const [pictures, setPictures] = useState<Picture[]>(imgs);
+
+  const selectPicture = (index: number) => {
+    setPosition(index * windowSize);
+  };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (position >= windowSize * 2) {
+      if (position >= windowSize * (images.length - 1)) {
         setPosition(0);
 
         return;
@@ -28,9 +52,24 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [position, windowSize]);
+  }, [images.length, position, windowSize]);
 
-  // console.log(imgs);
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     const copyPictures = pictures.slice();
+  //     const deletedPicture = copyPictures.shift();
+
+  //     if (deletedPicture) {
+  //       copyPictures.push(deletedPicture);
+
+  //       setPictures(copyPictures);
+  //     }
+  //   }, 5000);
+
+  //   return () => clearInterval(interval);
+  // }, [pictures, windowSize]);
+
+  // console.log(lines);
 
   return (
     <div className="pictures-slider">
@@ -39,28 +78,38 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
           className="pictures-slider__images"
           style={{ left: `-${position}px` }}
         >
-          <img
-            src="/img/pictures-slider/slider-1.png"
-            alt="IPhone 14 Pro"
-            className="pictures-slider__img"
-          />
-          <img
-            src="/img/pictures-slider/slider-3.jpg"
-            alt="IPhone 14 Pro"
-            className="pictures-slider__img pictures-slider__img--2"
-          />
-          <img
-            src="/img/pictures-slider/slider-4.jpg"
-            alt="IPhone 14 Pro"
-            className="pictures-slider__img pictures-slider__img--3"
-          />
+          {images.map(img => (
+            <img
+              key={img.id}
+              src={img.url}
+              alt={img.alt}
+              className={`pictures-slider__img pictures-slider__img--${img.id}`}
+            />
+          ))}
+          {/* {pictures.map(img => (
+            <img
+              key={img.id}
+              src={img.url}
+              alt={img.alt}
+              className={`pictures-slider__img pictures-slider__img--${img.id}`}
+            />
+          ))} */}
         </div>
       </div>
 
       <div className="pictures-slider__lines">
-        <span className="pictures-slider__line pictures-slider__line--active" />
-        <span className="pictures-slider__line" />
-        <span className="pictures-slider__line" />
+        {images.map((img, index) => (
+          // eslint-disable-next-line jsx-a11y/control-has-associated-label
+          <button
+            type="button"
+            key={img.id}
+            className={cn('pictures-slider__button', {
+              'pictures-slider__button--active':
+                position === windowSize * index,
+            })}
+            onClick={() => selectPicture(index)}
+          />
+        ))}
       </div>
     </div>
   );
