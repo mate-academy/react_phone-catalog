@@ -33,15 +33,11 @@ body {
 .images-container {
   display: flex;
   max-width: 1040px;
-  // width: fit-content;
   overflow-x: scroll;
   scroll-behavior: smooth;
   transition: scroll 0.3s ease-in-out;
+  width: 100%;
 
-  @media (max-width: 1199px) {
-    width: 100%;
-    // height: auto;
-  }
 }
 
 .chunk-container {
@@ -87,6 +83,10 @@ body {
 
 .chunk-container-big {
   justify-content: space-between;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+  }
 }
 
 .hot-prices-block {
@@ -139,19 +139,12 @@ body {
   background-color: burlywood;
   display: flex;
   justify-content: flex-end;
-  // align-items: end;
 
-  @media (max-width: 1199px) {
-    // width: 80%;
-    // height: auto;
-    // aspect-ratio: 1 / 1;
-  }
 }
 
 .category-img {
   @media (max-width: 1199px) {
-    // width: 187px;
-    // height: 187px;
+
     display: flex;
     justify-content: space-between;
     width: 80%;
@@ -168,7 +161,6 @@ body {
   }
   @media (max-width: 639px) {
     display: flex;
-    // grid-template-columns: 32% 32% 32%;
     flex-direction: column;
   }
 }

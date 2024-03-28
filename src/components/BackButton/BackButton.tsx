@@ -7,7 +7,7 @@ export const BackButton: React.FC = () => {
   return (
     <div
       className="back-button-box mb-16"
-      onClick={() => navigate(-1)}
+      onClick={() => navigate('..')}
       onKeyDown={() => navigate(-1)}
       role="button"
       tabIndex={0}
