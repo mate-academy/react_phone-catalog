@@ -9,7 +9,10 @@ export const Footer: React.FC<Props> = ({ onClick }) => {
   return (
     <div className="footer">
 
-      <div className="text-navbar--left navbar-box-item mp-0">
+      <div
+        className="text-navbar--left navbar-box-item mp-0"
+        style={{ marginLeft: 24 }}
+      >
         <img src="./img/icons/logo2.svg" alt="img" />
       </div>
 
@@ -26,7 +29,10 @@ export const Footer: React.FC<Props> = ({ onClick }) => {
         tabIndex={0}
       >
         <div className="footer-arrow-text">Back to top</div>
-        <div className="footer-arrow">
+        <div
+          className="footer-arrow"
+          style={{ marginRight: 24 }}
+        >
           <img src="./img/icons/arrowTop.svg" alt="img" />
         </div>
       </div>

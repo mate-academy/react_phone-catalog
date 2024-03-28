@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { useSearchParams, NavLink, useLocation } from 'react-router-dom';
+import { useSearchParams, NavLink, useLocation, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import './navbar.scss';
 import {
@@ -25,6 +25,8 @@ export const Navbar: React.FC = () => {
 
   const { state } = useContext(StateContext);
 
+  const { productId } = useParams();
+
   function customLinkClass(filedName: string) {
     return location.pathname.includes(filedName);
   }
@@ -39,13 +41,11 @@ export const Navbar: React.FC = () => {
   }, [location.pathname]);
 
   function handleSearch(e: React.ChangeEvent<HTMLInputElement>) {
-    // e.preventDefault();
 
     applySearchDelayedQuery2(e.target.value);
 
     setSearchQuery(e.target.value);
 
-    // setSearchParams(params);
   }
 
   console.log(location.pathname, location.search,'pathname inside navbar');
@@ -63,16 +63,6 @@ export const Navbar: React.FC = () => {
     [location.pathname],
   );
 
-  // const applySearchDelayedQuery2 = (search: string) => {
-  //   if (!search) {
-  //     params.delete('search');
-  //   } else {
-  //     params.set(`search`, search);
-  //   }
-
-  //   setSearchParams(params);
-  // }
-
   function closeSearch() {
     params.delete('search');
     setSearchParams(params);
@@ -88,6 +78,7 @@ export const Navbar: React.FC = () => {
           <img src="./img/icons/logo2.svg" alt="img" />
         </div>
 
+        <div className="navbar--flex">
         {location.pathname !== '/cart' && (
           <>
             <div
@@ -123,10 +114,12 @@ export const Navbar: React.FC = () => {
             </div>
           </>
         )}
+       </div>
       </div>
 
       <div className="navbar-icons">
-        {location.pathname !== '/' && location.pathname !== '/cart' && (
+        {(location.pathname !== '/' && location.pathname !== '/cart'
+          && !productId) && (
           <div className="navbar_icon navbar_icon--search navbar-icons">
             <div className="search_box search-align search-align--input">
               <input
@@ -173,7 +166,11 @@ export const Navbar: React.FC = () => {
             )}
           </div>
         </NavLink>
+        
       </div>
+      <div className="navbar_icon navbar-icons-small-screen">
+        <img src="./img/icons/burger.svg" alt="img" />
+        </div>
     </div>
   );
 };

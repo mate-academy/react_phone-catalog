@@ -1,17 +1,13 @@
 .commonPage-container {
   padding-top: 24px;
-  padding-left: 148px;
-  padding-right: 148px;
 
-  @media screen and (max-width: 1439px) {
-    padding-left: 48px;
-    padding-right: 48px;
-  }
+  max-width: 1200px;
 
-  @media screen and (max-width: 980px) {
+  @media screen and (max-width: 1200px) {
     padding-left: 10px;
     padding-right: 10px;
   }
+
 }
 
 .bottom-range {
@@ -26,7 +22,10 @@
 .select-block {
   display: flex;
   justify-content: space-between;
-  width: max-content;
+  width: 272px;
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    align-items: center;
+  }
 }
 
 .select-left {
@@ -43,6 +42,9 @@
   height: 40px;
   padding-left: 12px;
   outline: none;
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    max-width: 120px;
+  }
 }
 
 .select-right select {
@@ -51,14 +53,25 @@
   height: 40px;
   padding-left: 12px;
   outline: none;
+
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    max-width: 88px;
+  }
 }
 
 .select-right {
   padding-right: 16px;
   font-family: Mont, serif;
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
   gap: 4px;
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    width: fit-content;
+    // gap: 0;
+    padding-right: 0;
+  }
 }
 
 .select-text {
@@ -90,6 +103,7 @@
   background-size: 16px 16px;
   background-position: calc(100% - 16px);
   cursor: pointer;
+  
 }
 
 .list-container {
@@ -97,19 +111,26 @@
   padding-top: 24px;
 
   display: grid;
+  gap: 16px;
   grid-template-columns: 272px 272px 272px 272px;
   justify-content: space-between;
 
-  // @media screen and (max-width: 1200px) {
-  //   grid-template-columns: 272px 272px 272px;
-  //   justify-content: space-around;
-  // }
+  @media screen and (max-width: 1199px) {
+    grid-template-columns: 272px 272px 272px;
+    justify-content: space-around;
+  }
   @media screen and (max-width: 850px) {
     grid-template-columns: 272px 272px;
     justify-content: space-around;
   }
   @media screen and (max-width: 600px) {
-    grid-template-columns: 272px;
+    overflow: hidden;
+    grid-template-columns: 272px 272px;
+    justify-content: space-around;
+  }
+  @media screen and (min-width: 300px) and (max-width: 600px) {
+    overflow: hidden;
+    grid-template-columns: 272px ;
     justify-content: space-around;
   }
 }

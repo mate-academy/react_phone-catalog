@@ -6,6 +6,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  // height: auto;
 }
 
 .banner-button {
@@ -16,20 +17,56 @@ body {
   display: flex;
   justify-content: center;
   cursor: pointer;
+  &--left {
+    margin-right: 20px;
+  }
+
+  &--right {
+    margin-left: 20px;
+  }
+
+  @media (max-width: 640px) {
+    display: none;
+  }
 }
 
 .images-container {
   display: flex;
-  width: 1040px;
+  max-width: 1040px;
+  // width: fit-content;
   overflow-x: scroll;
   scroll-behavior: smooth;
   transition: scroll 0.3s ease-in-out;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+    // height: auto;
+  }
 }
 
 .chunk-container {
   display: flex;
-  justify-content: left;
+  justify-content: space-between;
   gap: 16px;
+
+  @media screen and (max-width: 1199px) {
+    // display: none;
+    overflow: hidden;
+  }
+}
+
+.image {
+  width: 1040px;
+  height: 400px;
+  background-repeat: no-repeat;
+  @media (max-width: 640px) {
+    // width: 100%;
+    // height: auto;
+    aspect-ratio: 1 / 1;
+  }
+  // background-clip: ;
+  // max-width: 100%;
+  // height: auto;
 }
 
 .big-title {
@@ -83,13 +120,55 @@ body {
 }
 
 .square {
+
   width: 368px;
   height: 368px;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+  }
 }
+
+// .category-box {
+//   width: 700px;
+// }
 
 .left {
   background-color: burlywood;
   display: flex;
   justify-content: flex-end;
-  align-items: end;
+  // align-items: end;
+
+  @media (max-width: 1199px) {
+    // width: 80%;
+    // height: auto;
+    // aspect-ratio: 1 / 1;
+  }
+}
+
+.category-img {
+  @media (max-width: 1199px) {
+    // width: 187px;
+    // height: 187px;
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    height: auto;
+  }
+}
+
+.chunk-container-category {
+  display: flex;
+
+  @media screen and (max-width: 1199px) {
+    display: grid;
+    grid-template-columns: 32% 32% 32%;
+  }
+  @media (max-width: 639px) {
+    display: flex;
+    // grid-template-columns: 32% 32% 32%;
+    flex-direction: column;
+  }
 }

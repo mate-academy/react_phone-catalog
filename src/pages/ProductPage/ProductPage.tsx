@@ -34,9 +34,8 @@ export const ProductPage: React.FC = () => {
 
   if (state.products) {
 
-    // const fullName = location.pathname;
-    // const newName = fullName.slice(1, fullName.length - 1);
-    const newName = 'phone'
+    const fullName = location.pathname;
+    const newName = fullName.slice(1, fullName.length - 1);
 
     copyOfProducts = [...state.products.filter(product => product.type === newName)];
 
@@ -71,9 +70,11 @@ export const ProductPage: React.FC = () => {
   
 
   return (
-    <div>
+    <div >
 
-      <p className="font-header">{getPageHeader(location.pathname)}</p>
+      <div className="list-container">
+        <div>
+        <p className="font-header">{getPageHeader(location.pathname)}</p>
       <div className="font-models-amount">{copyOfProducts.length} models</div>
 
 
@@ -120,6 +121,8 @@ export const ProductPage: React.FC = () => {
           </select>
         </div>
 
+      </div>
+      </div>
       </div>
 
       <div className="list-container" data-cy="productList">

@@ -1,11 +1,12 @@
 .footer {
   height: 96px;
-  // width: 100%;
+  width: 100%;
+  max-width: 1200px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-left: 148px;
-  padding-right: 148px;
+  // padding-left: 148px;
+  // padding-right: 148px;
   border-top: 2px solid #e2e6e9;
 
   @media screen and (max-width: 800px) {
