@@ -29,7 +29,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
     <div className="item-container mb-16">
       <div className="cart-element">
         <div
-          className="ml-24"
+          className=""
           onClick={
             () => deleteAllSimilar(phone)
           }
@@ -43,7 +43,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
           <img src="./img/icons/close.svg" alt="img" />
         </div>
 
-        <div className="ml-30">
+        <div className="">
           {phone
           && (
             <img
@@ -54,11 +54,13 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
           )}
         </div>
 
-        <div className="cart-name ml-30">
+        <div className="cart-name ">
           {phone && phone.name}
         </div>
 
-        <div className="dflex ml-50">
+        <div className="cart-button-box"
+          // style={}
+        >
           <div
             className="cart-square-border"
             onClick={deleteItem}
@@ -84,7 +86,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
             +
           </div>
         </div>
-        <div className="cart-price ml-42" data-cy="productQauntity">
+        <div className="cart-price" data-cy="productQauntity">
           {Number(phone?.price.slice(1))
             * state.card.filter(elem => elem.id === phone.id).length}
         </div>

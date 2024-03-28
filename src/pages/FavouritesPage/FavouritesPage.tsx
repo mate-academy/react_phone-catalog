@@ -7,7 +7,7 @@ export const FafouritesPage: React.FC = () => {
   const { state } = useContext(StateContext);
 
   return (
-    <div className="test">
+    <div className="list-container">
       {state.favourites.map(item => {
         return (
           <ProductItem product={item} />

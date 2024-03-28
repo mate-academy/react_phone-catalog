@@ -17,6 +17,7 @@ export const App = () => {
 
   const location = useLocation();
   const { productId } = useParams();
+  const showBreadCrumbs = location.pathname !== '/' && location.pathname !== '/cart';
   console.log(productId);
   
 
@@ -25,7 +26,7 @@ export const App = () => {
       <div ref={refForFooter} />
       <Navbar />
       <div className='commonPage-container '>
-        {location.pathname !== '/' && <div className={
+        {showBreadCrumbs && <div className={
           productId === undefined ? 'breadcrumbs' : ''
         }><BreadCrumbs path={location.pathname} /></div>}
         <Outlet />
