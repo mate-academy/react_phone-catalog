@@ -1,19 +1,18 @@
-import classNames from 'classnames';
-import { NavLink } from 'react-router-dom';
 import favouritesIcon from '../images/icons/favourites.svg';
 import cartIcon from '../images/icons/cart.svg';
 import { Header } from './Header';
+import { NavItem } from './NavItem';
 
 export const BurgerMenuAside: React.FC = () => {
   return (
     <aside
-      className="fixed inset-0 z-50 flex 
+      className="fixed inset-0 z-50 flex
     min-h-12 flex-col gap-6 bg-white"
     >
       <Header />
       <nav className="flex h-full">
         <ul
-          className="flex h-full w-full flex-col 
+          className="flex h-full w-full flex-col
           items-center justify-between"
         >
           <div className="flex flex-col items-center gap-4">
@@ -24,25 +23,7 @@ export const BurgerMenuAside: React.FC = () => {
               ['Accessories', '/accessories'],
             ].map(([text, path]) => (
               <li className="w-fit" key={path}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    classNames(
-                      `relative flex h-full items-center justify-center
-                      py-2 uppercase transition
-                      after:absolute after:bottom-0 after:h-[3px]
-                      after:w-0 after:bg-primary
-                    after:transition-[width] hover:after:w-full
-                    [&:not(.text-primary)]:text-secondary 
-                    [&:not(.text-primary)]:hover:text-primary`,
-                      {
-                        'text-primary after:w-full': isActive,
-                      },
-                    )
-                  }
-                >
-                  {text}
-                </NavLink>
+                <NavItem path={path}>{text}</NavItem>
               </li>
             ))}
           </div>
@@ -57,21 +38,9 @@ export const BurgerMenuAside: React.FC = () => {
                   justify-center border-r-2 border-t-2 border-elements
                   last:border-r-0"
               >
-                <NavLink
-                  to={src}
-                  className={({ isActive }) =>
-                    classNames(
-                      `relative flex h-full w-full items-center justify-center
-                      after:absolute after:bottom-0 after:h-[3px]
-                      after:w-0 after:bg-primary after:transition-[width] hover:after:w-full`,
-                      {
-                        'after:w-full': isActive,
-                      },
-                    )
-                  }
-                >
+                <NavItem path={src} className="w-full">
                   <img src={srcImg} alt={alt} />
-                </NavLink>
+                </NavItem>
               </li>
             ))}
           </div>

@@ -1,5 +1,4 @@
-import { Link, NavLink, useSearchParams } from 'react-router-dom';
-import logoImg from '../images/logo.svg';
+import { useSearchParams } from 'react-router-dom';
 import burgerMenuIcon from '../images/icons/burger-menu.svg';
 import closeIcon from '../images/icons/close.svg';
 import favouritesIcon from '../images/icons/favourites.svg';
@@ -7,6 +6,8 @@ import cartIcon from '../images/icons/cart.svg';
 import { getSearchWith } from '../helpers/functions';
 import { SearchWithParams } from '../types/main';
 import classNames from 'classnames';
+import { Logo } from './Logo';
+import { NavItem } from './NavItem';
 
 export const Header: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -26,15 +27,13 @@ export const Header: React.FC = () => {
   return (
     <header
       className="sticky top-0 z-40 flex
-    min-h-12 border-b-2 border-elements bg-white lg:min-h-16"
+    min-h-12 w-full border-b-2 border-elements bg-white lg:min-h-16"
     >
       <nav className="flex w-full">
         <ul className="flex w-full items-center gap-4 lg:gap-6">
           <div className="px-4 lg:px-6">
-            <li className="flex h-5.5 w-16 lg:h-7 lg:w-20">
-              <Link to="/">
-                <img src={logoImg} alt="Logo" />
-              </Link>
+            <li>
+              <Logo />
             </li>
           </div>
           <div className="hidden h-full gap-8 md:visible md:flex lg:gap-16">
@@ -45,24 +44,7 @@ export const Header: React.FC = () => {
               ['Accessories', '/accessories'],
             ].map(([text, path]) => (
               <li key={path}>
-                <NavLink
-                  to={path}
-                  className={({ isActive }) =>
-                    classNames(
-                      `relative flex h-full items-center
-                      justify-center uppercase transition
-                      after:absolute after:bottom-0 after:h-[3px]
-                      after:w-0 after:bg-primary
-                    after:transition-[width] hover:after:w-full
-                    [&:not(.text-primary)]:text-secondary [&:not(.text-primary)]:hover:text-primary`,
-                      {
-                        'text-primary after:w-full': isActive,
-                      },
-                    )
-                  }
-                >
-                  {text}
-                </NavLink>
+                <NavItem path={path}>{text}</NavItem>
               </li>
             ))}
           </div>
@@ -97,21 +79,9 @@ export const Header: React.FC = () => {
                     alt={alt}
                   />
                 ) : (
-                  <NavLink
-                    to={src}
-                    className={({ isActive }) =>
-                      classNames(
-                        `relative flex h-full w-full items-center justify-center
-                        after:absolute after:bottom-0 after:h-[3px]
-                        after:w-0 after:bg-primary after:transition-[width] hover:after:w-full`,
-                        {
-                          'after:w-full': isActive,
-                        },
-                      )
-                    }
-                  >
+                  <NavItem path={src} className="w-full">
                     <img src={srcImg} alt={alt} />
-                  </NavLink>
+                  </NavItem>
                 )}
               </li>
             ))}

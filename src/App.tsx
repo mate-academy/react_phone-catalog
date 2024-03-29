@@ -14,7 +14,7 @@ export const App = () => {
   useDocumentTitle(convertHyphenToSpace(lastPathName || '') || websiteName);
 
   return (
-    <div className="flex h-screen w-screen flex-col">
+    <div className="flex h-screen w-screen flex-col overflow-x-hidden">
       <Header />
 
       {searchParams.get('burgerMenu') === 'open' && <BurgerMenuAside />}
