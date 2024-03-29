@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import './pagination.scss';
 import classNames from 'classnames';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 type Props = {
   productsListLenth: number,
@@ -39,7 +40,10 @@ export const Pagination: React.FC<Props> = ({
             { disabled: currentPage === 1 })
         }
         disabled={currentPage === 1}
-        onClick={() => onPageChange(currentPage - 1)}
+        onClick={() => {
+          onPageChange(currentPage - 1);
+          scrollToTop();
+        }}
       />
       <ul className="pagination__buttons">
         {paginationPages.map(page => (
@@ -53,7 +57,10 @@ export const Pagination: React.FC<Props> = ({
             <button
               type="button"
               className="pagination__button"
-              onClick={() => onPageChange(page)}
+              onClick={() => {
+                onPageChange(page);
+                scrollToTop();
+              }}
             >
               {page}
             </button>

@@ -24,6 +24,11 @@
     border: 1px solid $gray_seconary;
     background-position: center;
     background-repeat: no-repeat;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(105%);
+    }
   }
 
   .prev {

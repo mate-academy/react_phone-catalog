@@ -1,5 +1,4 @@
 /* eslint-disable consistent-return */
-/* eslint-disable no-console */
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useContext, useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
@@ -19,6 +18,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   } = useContext(MainContext);
 
   const [currentPage, setCurrentPage] = useState(1);
+
+  const pageChange = (page: number) => {
+    setCurrentPage(page);
+  };
 
   const filteredProducts = useMemo(() => {
     let visibleList = [...products];
@@ -48,12 +51,13 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     const startItem = currentPage * +itemsOnPage - +itemsOnPage;
     const endItem = currentPage * +itemsOnPage;
 
+    if (startItem > visibleList.length
+        || endItem > (visibleList.length + +itemsOnPage)) {
+      setCurrentPage(1);
+    }
+
     return visibleList.slice(startItem, endItem);
   }, [sortType, itemsOnPage, products, currentPage]);
-
-  const pageChange = (page: number) => {
-    setCurrentPage(page);
-  };
 
   return (
     <div className="product-list__wrapper">
