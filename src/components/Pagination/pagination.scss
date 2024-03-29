@@ -26,6 +26,7 @@
     line-height: 21px;
     font-size: 14px;
     border: 1px solid #e2e6e9;
+    transition: all 0.3s;
 
     button:before {
       content: "";
@@ -34,6 +35,10 @@
       left: 0;
       width: 100%;
       height: 100%;
+    }
+
+    &:hover {
+      border-color: $gray_primary;
     }
   }
 }

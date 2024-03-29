@@ -11,4 +11,8 @@
 
 .disabled {
   opacity: 0.5;
+
+  &:hover {
+    border-color: $gray_seconary;
+  }
 }

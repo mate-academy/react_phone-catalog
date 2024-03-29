@@ -26,6 +26,11 @@
     width: 32px;
     height: 32px;
     border: 1px solid $gray_seconary;
+
+    &:hover {
+      border-color: black;
+      background-size: 20px;
+    }
   }
 }
 

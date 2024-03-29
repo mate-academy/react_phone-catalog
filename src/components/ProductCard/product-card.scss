@@ -9,6 +9,11 @@
     width: 272px;
     color: $gray_primary;
     border: 1px solid #e2e6e9;
+    transition: all 0.5s;
+
+    &:hover {
+      border-color: $gray_primary;
+    }
   }
   
   &__image {

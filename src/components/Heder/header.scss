@@ -38,6 +38,7 @@
   height: 16px;
   width: 16px;
   background-image: url("../../assets/img/icons/cart.svg");
+  transition: all 0.3s;
 
   &::before {
     content: "";
@@ -48,6 +49,10 @@
     right: -24px;
     bottom: -24px;
   }
+
+  &:hover {
+    transform: scale(135%);
+  }
 }
 
 .favourites__icon {
@@ -55,6 +60,7 @@
   height: 16px;
   width: 16px;
   background-image: url("../../assets/img/icons/favourites.svg");
+  transition: all 0.3s;
 
   &::before {
     content: "";
@@ -64,6 +70,10 @@
     left: -24px;
     right: -24px;
     bottom: -24px;
+  }
+
+  &:hover {
+    transform: scale(135%);
   }
 }
 

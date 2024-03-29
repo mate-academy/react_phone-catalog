@@ -36,6 +36,7 @@
   position: relative;
   font-size: 12px;
   font-weight: 600;
+  transition: 0.3s;
 
   &::after {
     content: "";
@@ -49,5 +50,10 @@
     background-image: url("../../assets/img/icons/arrow_button.svg");
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &:hover {
+    transform: scale(105%);
+    color: $gray_primary;
   }
 }

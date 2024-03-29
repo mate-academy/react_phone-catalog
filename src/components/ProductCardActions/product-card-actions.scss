@@ -5,11 +5,21 @@
   height: 100%;
   border: 1px solid $gray_seconary;
   background-image: url("../../assets/img/icons/favourites.svg");
+  transition: all 0.5s;
+
+  &:hover {
+    border-color: $gray_primary;
+  }
 }
 
 .add-to-card {
   width: 80%;
   padding: 2px 48px;
+  transition: all 0.5s;
+
+  &:hover {
+    transform: scale(103%);
+  }
 }
 
 .add-to-card.selected {
