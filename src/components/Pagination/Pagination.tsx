@@ -74,7 +74,10 @@ export const Pagination: React.FC<Props> = ({
             { disabled: currentPage === paginationPages.length })
         }
         disabled={currentPage === paginationPages.length}
-        onClick={() => onPageChange(currentPage + 1)}
+        onClick={() => {
+          onPageChange(currentPage + 1);
+          scrollToTop();
+        }}
       />
     </div>
   );
