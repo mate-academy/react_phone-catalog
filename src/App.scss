@@ -93,8 +93,17 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    // justify-content: center;
-    // margin-left: 50;
-    // margin-right: 50;
   }
+}
+
+.mr-24 {
+  margin-right: 24px;
+}
+
+.pl-24 {
+  padding-left: 24px;
+}
+
+.pr-24 {
+  padding-right: 24px;
 }

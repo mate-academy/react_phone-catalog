@@ -1,24 +1,37 @@
 .cart-element {
-  // width: 752px;
-  width: 100%;
-  max-width: 700px;
+  width: 752px;
+  // width: 100%;
+  // max-width: 700px;
   height: 128px;
   box-sizing: border-box;
   border: 1px solid #e2e6e9;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    height: 200px;
+  }
 }
 
 .cart-box {
-  width: 100%;
+  width: 1180px;
+  // width: 100%;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 1199px) {
+    flex-direction: column;
+    width: 100%;
+  }
   // align-items: center;
 }
 
 .summary {
-  // width: 368px;
+  width: 368px;
   height: 206px;
   box-sizing: border-box;
   border: 1px solid #e2e6e9;
@@ -26,6 +39,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+  }
 }
 
 .cart-container {
@@ -34,11 +51,9 @@
   // justify-content: space-between;
 }
 
-.cart-item-container {
-  display: flex;
-  justify-content: space-between;
-  flex-direction: column;
-}
+// .item-container {
+//   padding-right: 24px;
+// }
 
 .cart-image {
   width: 66px;
@@ -46,13 +61,14 @@
 }
 
 .cart-name {
-  // width: 295px;
-  height: 20px;
+  width: max-content;
+  // height: 20px;
   font-family: Mont, serif;
   font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: 21px;
+  // margin-right: 24px;
 }
 
 .cart-square-border {
@@ -89,7 +105,7 @@
   font-style: normal;
   font-weight: 600;
   line-height: 21px;
-  width: 320px;
+  width: 90%;
   height: 42px;
   background-color: black;
   display: flex;
@@ -101,4 +117,18 @@
   display: flex;
   // align-items: center;
   // width: 100%;
+}
+
+.cart-button-box-chunk {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: space-around;
+  padding-left: 24px;
+  @media (max-width: 639px) {
+    justify-content: space-between;
+    width: 80%;
+    max-width: 400px;
+    padding-left: 0;
+  }
 }

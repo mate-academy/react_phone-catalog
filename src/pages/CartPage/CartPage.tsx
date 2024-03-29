@@ -68,7 +68,7 @@ export const CartPage: React.FC = () => {
               {' '}
               items
             </div>
-            <div className="grey-line mb-24" style={{ width: 320 }} />
+            <div className="grey-line mb-24" style={{ width: '90%' }} />
             <div className="summary-button">Checkout</div>
           </div>
 
