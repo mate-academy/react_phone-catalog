@@ -1,0 +1,75 @@
+@import '/src/styles/utils/variables';
+
+.dropdowns {
+  position: relative;
+
+  &__label {
+    color: $c-secondary;
+    margin-bottom: 4px;
+    position: relative;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+  }
+
+  &__select {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid $c-icons;
+    background-color: $c-hover_BG;
+    padding: 10px;
+    height: 40px;
+    width: 100%;
+    outline: none;
+    color: $c-primary;
+    text-transform: capitalize;
+    transition: 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__arrow {
+    transition: transform 0.3s;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__list-option {
+    position: absolute;
+    list-style: none;
+    top: 110%;
+    width: 100%;
+    border: 1px solid $c-icons;
+    background-color: $c-hover_BG;
+    padding: 8px 0;
+  }
+
+  &__option {
+    cursor: pointer;
+    height: 21px;
+    background-color: $c-hover_BG;
+    transition: all 0.3s;
+    padding: 0 12px;
+  }
+
+  &__option a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $c-secondary;
+    width: 100%;
+    height: 100%;
+    text-transform: capitalize;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $c-primary;
+    }
+  }
+}

@@ -1,0 +1,41 @@
+@import '/src/styles/utils/variables';
+
+.product-list {
+  &__container{
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__top-row {
+    margin-top: 25px;
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    margin-bottom: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: $c-secondary;
+  }
+
+  &__dropdowns {
+    display: grid;
+    grid-template-columns: 176px 128px;
+    column-gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    margin-bottom: 40px;
+  }
+
+  &__pagination {
+    margin-bottom: 84px;
+  }
+}

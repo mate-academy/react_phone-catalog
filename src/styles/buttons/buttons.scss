@@ -1,0 +1,109 @@
+.button{
+  &__back{
+    background-color: transparent;
+    border: transparent;
+    color: $c-secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    transition: all 0.3s ease;
+
+    &:hover{
+      color: $c-primary;
+    }
+
+
+    &--box{
+      display: flex;
+      align-items: center;
+      row-gap: 4px;
+    }
+  }
+
+  &__add{
+    max-width: 176px;
+    flex-grow: 1;
+    height: 40px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    transition: all 0.3s;
+
+    &:hover{
+      box-shadow: 0 3px 13px 0 $c-shadow;
+    }
+
+    &--selected{
+      border: 1px solid $c-elements;
+      background-color: $c-white;
+      color: $c-green;
+    }
+  }
+
+  &__like{
+    background-color: transparent;
+    border: 1px solid $c-icons;
+    width: 40px;
+    height: 40px;
+    transition: all 0.3s;
+
+    &:hover{
+      border-color: $c-primary;
+    }
+
+    &--selected{
+      border-color: $c-elements;
+    }
+
+    &--img{
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &__arrow{
+    height: 16px;
+    width: 16px;
+
+    &--left{
+      transform: rotate(180deg);
+    }
+  }
+
+  &__small{
+    height: 32px;
+    width: 32px;
+    background-image: url("../../../public/img/svg/Arrow__right.svg");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    border: 1px solid $c-icons;
+    transition: all 0.3s;
+
+    &--up{
+      transform: rotate(-90deg);
+    }
+
+    &--hiden {
+      visibility: hidden;
+      pointer-events: none;
+    }
+
+    &:hover{
+      border-color: $c-primary;
+    }
+
+    &--disabled{
+      background-image: url("../../../public/img/svg/Arrow__disabled.svg");
+      border-color: $c-elements;
+    }
+
+    &--left{
+      transform: rotate(180deg);
+    }
+  }
+}

@@ -1,0 +1,16 @@
+@import '/src/styles/utils/variables';
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 64px;
+    height: $header-height;
+  }
+}

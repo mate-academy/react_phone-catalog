@@ -1,0 +1,49 @@
+@import '/src/styles/utils/variables';
+
+.shop-by-category {
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+
+  &__title {
+    margin-bottom: 4px;
+    color: $c-primary;
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    text-align: left;
+  }
+
+  &__box-img {
+    width: 368px;
+    height: 368px;
+    box-sizing: border-box;
+    margin-bottom: 24px;
+
+    border: 1px solid transparent;
+
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $c-primary;
+      scale: 1.05;
+      box-shadow: -1px -5px 3px -24px rgba(0,0,0,0.75);
+      overflow: hidden;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+  }
+
+  &__count {
+    color: $c-secondary;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+  }
+}

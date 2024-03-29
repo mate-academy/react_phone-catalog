@@ -1,0 +1,64 @@
+@import '/src/styles/utils/variables';
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border: 1px solid $c-elements;
+  padding: 24px 40px 24px 24px;
+  transition: border 0.3s;
+
+  &:hover {
+    border: 1px solid $c-primary;
+  }
+
+  &__remove {
+    background: transparent;
+    border: none;
+    font-size: 16px;
+    align-items: center;
+    margin-right: 30px;
+  }
+
+  &__img {
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+    margin-right: 30px;
+  }
+
+  &__name {
+    color: $c-primary;
+    flex-grow: 1;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+  }
+
+  &__change-count-btn {
+    font-size: 16px;
+    transition: border 0.3s;
+
+    &--disabled {
+      pointer-events: none;
+      color: $c-icons;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__count {
+    text-align: center;
+    width: 32px;
+  }
+
+  &__total-price-product {
+    flex: 0 0 105px;
+    text-align: right;
+    justify-self: flex-end;
+  }
+}

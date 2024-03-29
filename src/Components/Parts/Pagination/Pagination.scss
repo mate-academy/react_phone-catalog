@@ -1,0 +1,48 @@
+@import '/src/styles/utils/variables';
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  &__list {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    height: 32px;
+    width: 32px;
+    border: 1px solid $c-icons;
+    transition: all 0.3s;
+
+    &--disabled {
+      pointer-events: none;
+      fill: $c-icons;
+    }
+
+    &:hover {
+      border: 1px solid $c-primary;
+    }
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    width: 100%;
+    height: 100%;
+    color: $c-primary;
+    transition: all 0.3s;
+
+    &--active {
+      background-color: $c-primary;
+      color: $c-white;
+    }
+  }
+}

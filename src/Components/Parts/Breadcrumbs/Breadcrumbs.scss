@@ -1,0 +1,44 @@
+@import '/src/styles/utils/variables';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    background-image: url("../../../../public/img/svg/Home.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__link {
+    text-transform: capitalize;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+
+    color: $c-primary;
+    display: flex;
+    gap: 8px;
+
+    &::before {
+      content: "";
+      width: 16px;
+      height: 16px;
+      background-image: url("../../../../public/img/svg/Arrow__right.svg");
+      background-repeat: no-repeat;
+      background-position: center;
+      color: $c-icons;
+      font-weight: 300;
+    }
+
+    &--disabled {
+      pointer-events: none;
+      color: $c-secondary;
+    }
+  }
+}

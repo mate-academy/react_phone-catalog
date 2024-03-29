@@ -1,0 +1,21 @@
+.product-slider{
+  padding: 0 20px 20px;
+  overflow: hidden;
+
+  &__top-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__navigate {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products{
+    display: flex;
+    gap: 16px;
+  }
+}

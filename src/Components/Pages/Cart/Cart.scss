@@ -1,0 +1,88 @@
+@import '/src/styles/utils/variables';
+
+.cart {
+  margin-bottom: 40px;
+
+  &__navigate {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__not-res {
+    text-transform: uppercase;
+    text-align: center;
+    color: $c-secondary;
+  }
+
+  &__content {
+    display: grid;
+    grid-template-columns: 1fr 368px;
+    gap: 16px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total-box {
+    display: flex;
+    flex-direction: column;
+    align-self: start;
+    padding: 24px;
+    border: 1px solid $c-elements;
+    position: relative;
+  }
+
+  &__modal {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid $c-elements;
+    margin-bottom: 24px;
+  }
+
+  &__total-price {
+    color: $c-primary;
+  }
+
+  &__total-count {
+    color: $c-secondary;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 320px;
+    height: 48px;
+    background-color: $c-primary;
+    color: $c-white;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    transition: all 0.5s;
+    text-decoration: none;
+
+    &:hover{
+      border: 1px solid $c-elements;
+      background-color: $c-white;
+      color: $c-green;
+      box-shadow: 0 3px 13px 0 $c-shadow;
+    }
+  }
+}

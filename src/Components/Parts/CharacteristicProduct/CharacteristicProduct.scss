@@ -1,0 +1,36 @@
+@import '/src/styles/utils/variables';
+
+.characteristic-product {
+  display: flex;
+  justify-content: space-between;
+  text-transform: capitalize;
+  width: 100%;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    padding: 0;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    list-style-type: none;
+
+    &--medium {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__key {
+    text-align: left;
+    color: $c-secondary;
+  }
+
+  &__value {
+    text-align: right;
+    color: $c-primary;
+  }
+}
