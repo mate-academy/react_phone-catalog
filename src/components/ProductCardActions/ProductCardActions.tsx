@@ -40,6 +40,10 @@ export const ProductCardActions: React.FC<Props> = ({
     };
 
     if (isAddToCartBtnActive) {
+      setCartItems((prev) => prev.filter(
+        itemCart => itemCart.product !== selectedProduct,
+      ));
+
       return;
     }
 

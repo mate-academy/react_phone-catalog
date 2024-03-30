@@ -1,12 +1,18 @@
 @import "../../styles/utils/vars";
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 15;
+  background-color: $white;
   width: 100%;
   box-shadow: 0 -1px 0 0 #e2e6e9;
 
   &__container {
-    padding-top: 42px;
-    padding-bottom: 42px;
+    padding-top: 20px;
+    padding-bottom: 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;

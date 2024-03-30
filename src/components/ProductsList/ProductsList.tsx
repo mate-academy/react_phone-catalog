@@ -15,12 +15,13 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   const {
     sortType,
     itemsOnPage,
+    currentPage,
   } = useContext(MainContext);
 
-  const [currentPage, setCurrentPage] = useState(1);
+  const [currentPageNum, setCurrentPageNum] = useState(1);
 
   const pageChange = (page: number) => {
-    setCurrentPage(page);
+    setCurrentPageNum(page);
   };
 
   const filteredProducts = useMemo(() => {
@@ -48,16 +49,16 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       return visibleList;
     }
 
-    const startItem = currentPage * +itemsOnPage - +itemsOnPage;
-    const endItem = currentPage * +itemsOnPage;
+    const startItem = currentPageNum * +itemsOnPage - +itemsOnPage;
+    const endItem = currentPageNum * +itemsOnPage;
 
     if (startItem > visibleList.length
         || endItem > (visibleList.length + +itemsOnPage)) {
-      setCurrentPage(1);
+      setCurrentPageNum(1);
     }
 
     return visibleList.slice(startItem, endItem);
-  }, [sortType, itemsOnPage, products, currentPage]);
+  }, [sortType, itemsOnPage, products, currentPageNum]);
 
   return (
     <div className="product-list__wrapper">
@@ -70,11 +71,11 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           </li>
         ))}
       </ul>
-      {itemsOnPage !== 'All' && (
+      {(itemsOnPage !== 'All' && currentPage !== 'Favourites') && (
         <Pagination
           itemsOnPage={itemsOnPage}
           productsListLenth={products.length}
-          currentPage={currentPage}
+          currentPage={currentPageNum}
           onPageChange={pageChange}
         />
       )}
