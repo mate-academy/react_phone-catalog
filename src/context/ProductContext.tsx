@@ -5,6 +5,21 @@ import { getProducts } from '../api';
 import { PriceList } from '../type/PriceList';
 import { useLocaleStorage } from '../hooks/useLocalStorage';
 
+const defaultContextValues = {
+  favourites: [],
+  setFavourites: () => { },
+  selectIdFavorit: -1,
+  setSelectIdFavorit: () => { },
+  selectIdCart: -1,
+  setSelectIdCart: () => { },
+  priceList: [],
+  setPriceList: () => { },
+  visibleProduct: [],
+  setVisibleProduct: () => { },
+  product: [],
+  setProduct: () => { },
+};
+
 export const ProductContext = React.createContext<{
   favourites: Products[];
   setFavourites: (v: Products[]) => void;
@@ -18,20 +33,7 @@ export const ProductContext = React.createContext<{
   setVisibleProduct: (v: Products[]) => void;
   product: Products[];
   setProduct: React.Dispatch<React.SetStateAction<Products[]>>;
-}>({
-  favourites: [],
-  setFavourites: () => { },
-  selectIdFavorit: -1,
-  setSelectIdFavorit: () => { },
-  selectIdCart: -1,
-  setSelectIdCart: () => { },
-  priceList: [],
-  setPriceList: () => { },
-  visibleProduct: [],
-  setVisibleProduct: () => { },
-  product: [],
-  setProduct: () => { },
-});
+}>(defaultContextValues);
 
 type Props = {
   children: React.ReactNode;

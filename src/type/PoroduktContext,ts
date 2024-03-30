@@ -1,0 +1,14 @@
+export type ProductContext = {
+  favourites: [];
+  setFavourites: () => {};
+  selectIdFavorit: -1;
+  setSelectIdFavorit: () => {};
+  selectIdCart: -1;
+  setSelectIdCart: () => {};
+  priceList: [];
+  setPriceList: () => {};
+  visibleProduct: [];
+  setVisibleProduct: () => {};
+  product: [];
+  setProduct: () => {};
+  }
