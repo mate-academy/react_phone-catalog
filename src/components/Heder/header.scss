@@ -51,7 +51,7 @@
   }
 
   &:hover {
-    transform: scale(135%);
+    background-image: url("../../assets/img/icons/cart-red.svg");
   }
 }
 
@@ -73,7 +73,7 @@
   }
 
   &:hover {
-    transform: scale(135%);
+    background-image: url("../../assets/img/icons/favourites-red.svg");
   }
 }
 
