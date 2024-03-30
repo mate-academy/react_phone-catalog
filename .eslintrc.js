@@ -9,5 +9,7 @@ module.exports = {
       assert: "either",
     }],
     'operator-linebreak': 0,
+    'object-curly-spacing': ['error', 'never'],
   },
 };
+

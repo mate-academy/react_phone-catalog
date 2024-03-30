@@ -7,17 +7,17 @@ import { useLocaleStorage } from '../hooks/useLocalStorage';
 
 const defaultContextValues = {
   favourites: [],
-  setFavourites: () => { },
+  setFavourites: () => {},
   selectIdFavorit: -1,
-  setSelectIdFavorit: () => { },
+  setSelectIdFavorit: () => {},
   selectIdCart: -1,
-  setSelectIdCart: () => { },
+  setSelectIdCart: () => {},
   priceList: [],
-  setPriceList: () => { },
+  setPriceList: () => {},
   visibleProduct: [],
-  setVisibleProduct: () => { },
+  setVisibleProduct: () => {},
   product: [],
-  setProduct: () => { },
+  setProduct: () => {},
 };
 
 export const ProductContext = React.createContext<{
