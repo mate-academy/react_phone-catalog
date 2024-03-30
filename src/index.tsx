@@ -1,4 +1,13 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { HashRouter } from 'react-router-dom';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+import { Root } from './Root';
+import { SavedItemsProvoder } from './store/SavedProductsContext';
+
+createRoot(document.getElementById('root') as HTMLElement).render(
+  <SavedItemsProvoder>
+    <HashRouter>
+      <Root />
+    </HashRouter>
+  </SavedItemsProvoder>,
+);

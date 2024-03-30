@@ -1,0 +1,46 @@
+@import "../../utils/utils";
+
+.Breadcrumbs {
+  display: flex;
+  flex-direction: row;
+  width: max-content;
+  height: 18px;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 18px;
+
+  & > * {
+    margin-right: 8px;
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  &__category,
+  &__product-name {
+    color: $color-secondary-gray;
+  }
+
+  &__link--home,
+  &__separator {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+  }
+
+  &__link {
+    color: $color-primary-dark-gray;
+
+    &--home {
+      background-image: url(../../icons/Home.svg);
+    }
+  }
+
+  &__separator {
+    background-image: url(../../icons/arrow-gray-right.svg);
+  }
+}
