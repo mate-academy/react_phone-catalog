@@ -1,0 +1,26 @@
+.productPage {
+  width: 1136px;
+  margin: auto;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+  &__numPhone {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+  }
+  &__cards {
+    width: 1136px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+  }
+
+  &__card {
+    margin-bottom: 40px;
+    width: calc((100% - 48px) / 4);
+  }
+}

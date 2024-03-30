@@ -1,20 +1,19 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getPhones } from '../../api';
 
 import { ProductsList } from '../../components/Content/ProductsList';
-import { Products } from '../../type/Productes';
-
 import { Breadcrumb } from '../../components/Content/Breadcrumb';
+import { ProductContext } from '../../context/ProductContext';
 
 export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Products[]>([]);
+  const { setProduct, visibleProduct } = useContext(ProductContext);
   const [loader, setLoader] = useState(true);
   const pach = ['Phones'];
 
   useEffect(() => {
     getPhones()
       .then(data => {
-        setPhones(data);
+        setProduct(data);
       })
       .finally(() => setLoader(false));
   }, []);
@@ -22,7 +21,11 @@ export const PhonesPage = () => {
   return (
     <>
       <Breadcrumb path={pach} />
-      <ProductsList produkt={phones} loader={loader} title="Mobile phones" />
+      <ProductsList
+        visibleProduct={visibleProduct}
+        loader={loader}
+        title="Mobile phones"
+      />
     </>
   );
 };

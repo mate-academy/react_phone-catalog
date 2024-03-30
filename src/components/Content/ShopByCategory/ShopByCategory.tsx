@@ -20,13 +20,13 @@ export const ShopByCategory = () => {
   }
 
   const phones = produkts.filter(
-    (produkt: Products) => produkt.category === 'phone',
+    (produkt: Products) => produkt.category === 'phones',
   );
   const tablets = produkts.filter(
-    (produkt: Products) => produkt.category === 'tablet',
+    (produkt: Products) => produkt.category === 'tablets',
   );
   const accessories = produkts.filter(
-    (produkt: Products) => produkt.category === 'accessory',
+    (produkt: Products) => produkt.category === 'accessories',
   );
 
   return (

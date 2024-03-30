@@ -1,25 +1,30 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getTablet } from '../../api';
 
 import { ProductsList } from '../../components/Content/ProductsList';
-import { Products } from '../../type/Productes';
 import { Breadcrumb } from '../../components/Content/Breadcrumb';
+import { ProductContext } from '../../context/ProductContext';
 
 export const TabletsPage = () => {
-  const [tablet, setTablet] = useState<Products[]>([]);
   const [loader, setLoader] = useState(true);
+  const { setProduct, visibleProduct } = useContext(ProductContext);
+
   const pach = ['Tablets'];
 
   useEffect(() => {
     getTablet()
-      .then(data => setTablet(data))
+      .then(data => setProduct(data))
       .finally(() => setLoader(false));
   }, []);
 
   return (
     <>
       <Breadcrumb path={pach} />
-      <ProductsList produkt={tablet} loader={loader} title="Tablets" />
+      <ProductsList
+        visibleProduct={visibleProduct}
+        loader={loader}
+        title="Tablets"
+      />
     </>
   );
 };

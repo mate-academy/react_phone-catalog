@@ -36,6 +36,11 @@
     border: 1px solid #B4BDC3;
     margin-block-end: 16px;
 
+    .container_img {
+      width: 80px;
+      height: 80px;
+    }
+
     &_img {
       max-width: 80px;
       max-height: 80px;

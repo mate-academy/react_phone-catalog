@@ -1,6 +1,5 @@
 import classNames from 'classnames';
-import { FaRegHeart } from 'react-icons/fa';
-import { LuHeartOff } from 'react-icons/lu';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { useContext, useEffect, useState } from 'react';
 import { Details } from '../../../../type/Details';
 import { getProducts } from '../../../../api';
@@ -101,9 +100,7 @@ export const Options: React.FC<Props> = ({
           onClick={() => setSelectIdCart(+id)}
           className={style.options__button_by}
         >
-          {!hasProdPriceList(+id, priceList)
-            ? 'Add to cart'
-            : 'The product has been added'}
+          {!hasProdPriceList(+id, priceList) ? 'Add to cart' : 'Added'}
         </button>
         <button
           type="button"
@@ -119,7 +116,9 @@ export const Options: React.FC<Props> = ({
             setSelectIdFavorit(+id);
           }}
         >
-          {(!hasElement() && <FaRegHeart />) || <LuHeartOff />}
+          {(!hasElement() && <FaRegHeart />) || (
+            <FaHeart style={{ color: 'red' }} />
+          )}
         </button>
       </div>
 

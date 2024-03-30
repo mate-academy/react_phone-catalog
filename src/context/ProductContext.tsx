@@ -3,25 +3,34 @@ import React, { useEffect, useMemo, useState } from 'react';
 import { Products } from '../type/Productes';
 import { getProducts } from '../api';
 import { PriceList } from '../type/PriceList';
+import { useLocaleStorage } from '../hooks/useLocalStorage';
 
 export const ProductContext = React.createContext<{
   favourites: Products[];
-  setFavourites: React.Dispatch<React.SetStateAction<Products[]>>;
+  setFavourites: (v: Products[]) => void;
   selectIdFavorit: number;
   setSelectIdFavorit: React.Dispatch<React.SetStateAction<number>>;
   selectIdCart: number;
   setSelectIdCart: React.Dispatch<React.SetStateAction<number>>;
   priceList: PriceList[];
-  setPriceList: React.Dispatch<React.SetStateAction<PriceList[]>>;
+  setPriceList: (v: PriceList[]) => void;
+  visibleProduct: Products[];
+  setVisibleProduct: (v: Products[]) => void;
+  product: Products[];
+  setProduct: React.Dispatch<React.SetStateAction<Products[]>>;
 }>({
   favourites: [],
-  setFavourites: () => {},
+  setFavourites: () => { },
   selectIdFavorit: -1,
-  setSelectIdFavorit: () => {},
+  setSelectIdFavorit: () => { },
   selectIdCart: -1,
-  setSelectIdCart: () => {},
+  setSelectIdCart: () => { },
   priceList: [],
-  setPriceList: () => {},
+  setPriceList: () => { },
+  visibleProduct: [],
+  setVisibleProduct: () => { },
+  product: [],
+  setProduct: () => { },
 });
 
 type Props = {
@@ -29,29 +38,39 @@ type Props = {
 };
 
 export const ProductProvider: React.FC<Props> = ({ children }) => {
-  const [favourites, setFavourites] = useState<Products[]>([]);
-  const [priceList, setPriceList] = useState<PriceList[]>([]);
+  const [favourites, setFavourites] = useLocaleStorage<Products[]>(
+    'favourites',
+    [],
+  );
   const [selectIdFavorit, setSelectIdFavorit] = useState<number>(-1);
+  const [priceList, setPriceList] = useLocaleStorage<PriceList[]>(
+    'priceList',
+    [],
+  );
   const [selectIdCart, setSelectIdCart] = useState<number>(-1);
-  const [prevId, setPrevId] = useState<number>(-1);
+  const [product, setProduct] = useState<Products[]>([]);
+  const [visibleProduct, setVisibleProduct] = useLocaleStorage<Products[]>(
+    'visibleProduct',
+    [],
+  );
 
   useEffect(() => {
     getProducts().then((data: Products[]) => {
+      const hasElement = () => {
+        return (
+          favourites.find(item => item.id === selectIdFavorit) !== undefined
+        );
+      };
+
       const newProduct = data.find(d => d.id === selectIdFavorit);
 
-      if (newProduct) {
-        setFavourites((prevState: Products[]) => [...prevState, newProduct]);
-        setPrevId(selectIdFavorit);
+      if (newProduct && !hasElement()) {
+        setFavourites([...favourites, newProduct]);
 
         return;
       }
 
-      if (selectIdFavorit === -1) {
-        setFavourites((prevState: Products[]) =>
-          prevState.filter(product => product.id !== prevId),
-        );
-        setPrevId(selectIdFavorit);
-      }
+      setFavourites(favourites.filter(p => p.id !== selectIdFavorit));
     });
   }, [selectIdFavorit, setSelectIdFavorit]);
 
@@ -60,10 +79,16 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       const newProduct = data.find(d => d.id === selectIdCart);
 
       if (newProduct) {
-        setPriceList((prevState: PriceList[]) => [
-          ...prevState,
-          { id: +newProduct.id, number: 1 },
-        ]);
+        const newPriceListItem: PriceList = {
+          id: `${newProduct.id}`,
+          category: `${newProduct.category}`,
+          name: `${newProduct.name}`,
+          images: `${newProduct.image}`,
+          number: 1,
+          price: newProduct.price,
+        };
+
+        setPriceList([...priceList, newPriceListItem]);
       }
     });
   }, [selectIdCart]);
@@ -78,6 +103,10 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       setSelectIdCart,
       priceList,
       setPriceList,
+      visibleProduct,
+      setVisibleProduct,
+      product,
+      setProduct,
     };
   }, [
     favourites,
@@ -88,6 +117,10 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     setSelectIdCart,
     priceList,
     setPriceList,
+    visibleProduct,
+    setVisibleProduct,
+    product,
+    setProduct,
   ]);
 
   return (

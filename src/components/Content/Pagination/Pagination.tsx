@@ -8,6 +8,7 @@ type Props = {
   perPage: string;
   page: number;
   setPage: React.Dispatch<React.SetStateAction<number>>;
+  itemsOnPage: string;
 };
 
 export const Pagination: React.FC<Props> = ({
@@ -15,27 +16,32 @@ export const Pagination: React.FC<Props> = ({
   perPage,
   page,
   setPage,
+  itemsOnPage,
 }) => {
   const maxPage = Math.ceil(total / +perPage);
 
-  const pages = () => {
-    const arr: number[] = [];
+  const getPagesRange = () => {
+    const range = 3;
+    const start = Math.max(1, page - range);
+    const end = Math.min(maxPage, page + range);
 
-    for (let i = 1; i <= maxPage; i += 1) {
-      arr.push(i);
-    }
+    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+  };
+
+  const pages = () => {
+    const range = getPagesRange();
 
     return (
       <>
-        {arr.map(pageNum => (
+        {range.map(pageNum => (
           <button
             key={pageNum}
             className={classNames(style.pagination__button_page, {
-              [style.pagination__button_active]: +page === +pageNum,
+              [style.pagination__button_active]: +page === pageNum,
             })}
             type="button"
             aria-label="pagination"
-            onClick={() => setPage(+pageNum)}
+            onClick={() => setPage(pageNum)}
           >
             {pageNum}
           </button>
@@ -52,8 +58,8 @@ export const Pagination: React.FC<Props> = ({
     setPage(prevPage => prevPage - 1);
   };
 
-  return (
-    <div className="pagination" data-cy="pagination">
+  return itemsOnPage !== 'All' ? (
+    <div className={style.pagination} data-cy="pagination">
       <button
         className={style.pagination__button}
         type="button"
@@ -76,5 +82,5 @@ export const Pagination: React.FC<Props> = ({
         <IoIosArrowForward />
       </button>
     </div>
-  );
+  ) : null;
 };

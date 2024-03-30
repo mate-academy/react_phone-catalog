@@ -1,6 +1,8 @@
 .pagination {
   display: flex;
   justify-content: center;
+  width: 100%;
+  margin: auto;
 
   &__button {
     width: 32px;

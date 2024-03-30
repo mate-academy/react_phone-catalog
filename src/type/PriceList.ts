@@ -1,4 +1,8 @@
 export type PriceList = {
-  id: number;
+  id: string;
+  category: string;
+  name: string;
+  images: string;
   number: number;
+  price: number;
 };

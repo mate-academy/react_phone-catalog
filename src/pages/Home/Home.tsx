@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
 
   useEffect(() => {
     const updatedNewPrice = produkts
-      .sort((a, b) => b.fullPrice - a.fullPrice)
+      .sort((a, b) => b.year - a.year)
       .slice(produktsNewIndex[0], produktsNewIndex[1]);
 
     setNewProdukts(updatedNewPrice);

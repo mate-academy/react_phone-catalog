@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { Products } from '../../../type/Productes';
@@ -7,23 +7,29 @@ import { Loader } from '../../Loader';
 import { SortProduct } from '../../../type/type';
 import { Pagination } from '../Pagination';
 import { NoResults } from '../../NoResults';
+import { ProductContext } from '../../../context/ProductContext';
 
 import style from './ProductsList.module.scss';
 
 type Props = {
-  produkt: Products[];
   loader: boolean;
   title: string;
+  visibleProduct: Products[];
 };
 
-export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
+export const ProductsList: React.FC<Props> = ({
+  visibleProduct,
+  loader,
+  title,
+}) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [visiblePhones, setVisiblePhones] = useState<Products[]>([]);
-  const [itemsOnPage, setItemsOnPage] = useState<string>('16');
   const params = new URLSearchParams(searchParams);
   const search = params.get('sort');
+  const itemsPage = params.get('itemsPage');
+  const [itemsOnPage, setItemsOnPage] = useState<string>(itemsPage || '16');
   const [sortBy, setSortBy] = useState(search || SortProduct.None);
   const [page, setPage] = useState(Number(params.get('page')) || 1);
+  const { product, setVisibleProduct } = useContext(ProductContext);
 
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -31,6 +37,8 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
     const newValue = event.target.value;
 
     setItemsOnPage(newValue);
+    params.set('itemsPage', newValue);
+    setSearchParams(params);
   };
 
   const handleSortByChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -44,7 +52,7 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
   };
 
   useEffect(() => {
-    let updatedPhones = [...produkt];
+    let updatedPhones = [...product];
 
     switch (sortBy) {
       case SortProduct.Name:
@@ -67,8 +75,8 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
       updatedPhones = updatedPhones.slice(startIndex, endIndex);
     }
 
-    setVisiblePhones(updatedPhones);
-  }, [produkt, page, itemsOnPage, sortBy]);
+    setVisibleProduct(updatedPhones);
+  }, [product, page, itemsOnPage, sortBy]);
 
   useEffect(() => {
     if (page === 1) {
@@ -84,7 +92,7 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
 
   return (
     <div className={style.productPage}>
-      {produkt.length === 0 && !loader ? (
+      {product.length === 0 && !loader ? (
         <NoResults title={title} />
       ) : (
         <>
@@ -95,7 +103,7 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
               <h1 className={style.productPage__title}>{title}</h1>
               <span
                 className={style.productPage__numPhone}
-              >{`${produkt.length} models`}</span>
+              >{`${product.length} models`}</span>
               <div className={style.productPage__sort}>
                 <div className={style.productPage__select}>
                   <span className={style.productPage__select_title}>
@@ -124,7 +132,7 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
                 </div>
               </div>
               <div className={style.productPage__cards}>
-                {visiblePhones.map((phone: Products) => (
+                {visibleProduct.map((phone: Products) => (
                   <div className={style.productPage__card} key={phone.id}>
                     <Card produkt={phone} />
                   </div>
@@ -132,10 +140,11 @@ export const ProductsList: React.FC<Props> = ({ produkt, loader, title }) => {
               </div>
 
               <Pagination
-                total={produkt.length}
+                total={product.length}
                 perPage={itemsOnPage}
                 page={page}
                 setPage={setPage}
+                itemsOnPage={itemsOnPage}
               />
             </>
           )}

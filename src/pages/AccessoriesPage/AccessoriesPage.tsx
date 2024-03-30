@@ -1,19 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getAccessories } from '../../api';
 
 import { ProductsList } from '../../components/Content/ProductsList';
-import { Products } from '../../type/Productes';
-
 import { Breadcrumb } from '../../components/Content/Breadcrumb';
+import { ProductContext } from '../../context/ProductContext';
 
 export const AccessoriesPage = () => {
-  const [accessories, setAccessories] = useState<Products[]>([]);
   const [loader, setLoader] = useState(true);
   const pach = ['Accessories'];
+  const { setProduct, visibleProduct } = useContext(ProductContext);
 
   useEffect(() => {
     getAccessories()
-      .then(data => setAccessories(data))
+      .then(data => setProduct(data))
       .finally(() => setLoader(false));
   }, []);
 
@@ -21,9 +20,9 @@ export const AccessoriesPage = () => {
     <>
       <Breadcrumb path={pach} />
       <ProductsList
-        produkt={accessories}
+        visibleProduct={visibleProduct}
         loader={loader}
-        title="Accessories "
+        title="Accessories"
       />
     </>
   );

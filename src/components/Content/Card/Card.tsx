@@ -1,7 +1,6 @@
 import { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { FaRegHeart } from 'react-icons/fa';
-import { LuHeartOff } from 'react-icons/lu';
+import { FaRegHeart, FaHeart } from 'react-icons/fa';
 import { ProductContext } from '../../../context/ProductContext';
 import { Products } from '../../../type/Productes';
 
@@ -63,22 +62,16 @@ export const Card: React.FC<Props> = ({ produkt }) => {
           >
             {!hasProdPriceList(+produkt.id, priceList)
               ? 'Add to cart'
-              : 'The product has been added'}
+              : 'Added'}
           </button>
           <button
             type="button"
             className={styles.card__favorit}
-            onClick={() => {
-              if (hasElement()) {
-                setSelectIdFavorit(-1);
-
-                return;
-              }
-
-              setSelectIdFavorit(+produkt.id);
-            }}
+            onClick={() => setSelectIdFavorit(+produkt.id)}
           >
-            {(!hasElement() && <FaRegHeart />) || <LuHeartOff />}
+            {(!hasElement() && <FaRegHeart />) || (
+              <FaHeart style={{ color: 'red' }} />
+            )}
           </button>
         </div>
       </div>

@@ -77,6 +77,17 @@
         font-size: 18px;
         z-index: 0;
       }
+
+      &_search {
+        height: 64px;
+        width: 327px;
+        display: flex;
+        border-left: 1px solid rgba(226, 230, 233, 1);
+        align-items: center;
+        text-align: center;
+        justify-content: center;
+        position: relative;
+      }
     }
   }
 }
