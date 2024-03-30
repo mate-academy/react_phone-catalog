@@ -27,9 +27,14 @@ module.exports = {
       cursor: {
         default: 'url(/src/images/cursor-mouse-mice.svg), default'
       },
+      width: {
+        68: '17rem'
+      },
       height: {
         5.5: '1.375rem',
+        49: '12.25rem',
         100: '25rem',
+        126.5: '31.625rem',
       },
       lineHeight: {
         14: '3.5rem',

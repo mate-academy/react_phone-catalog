@@ -32,7 +32,7 @@ export const Banner: React.FC = () => {
         Welcome to Nice Gadgets store!
       </h1>
       <div className="flex flex-col gap-2">
-        <div className="lg:h-100 flex md:h-48 md:gap-x-5 lg:gap-x-4">
+        <div className="flex md:h-48 md:gap-x-5 lg:h-100 lg:gap-x-4">
           <ArrowButton
             className="hidden h-full md:flex"
             position="left"
@@ -49,13 +49,13 @@ export const Banner: React.FC = () => {
             }}
             modules={[Autoplay, Pagination]}
             onSwiper={setSwiperRef}
-            slidesPerView={1}
+            slidesPerView="auto"
             loop
             className="flex w-full"
             autoplay
           >
             {banner.map(item => (
-              <SwiperSlide key={item}>
+              <SwiperSlide style={{ width: 'auto' }} key={item}>
                 <img
                   src={item}
                   alt="Banner"

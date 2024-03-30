@@ -1,6 +1,6 @@
 import arrowTopIcon from '../images/icons/arrow-top.svg';
 import arrowTopDisabledIcon from '../images/icons/arrow-top-disabled.svg';
-import classNames from 'classnames';
+import { twJoin, twMerge } from 'tailwind-merge';
 
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   position: 'left' | 'top' | 'right' | 'bottom';
@@ -14,24 +14,22 @@ export const ArrowButton: React.FC<Props> = ({
 }) => {
   return (
     <button
-      className={classNames(
+      className={twMerge(
         `flex h-8 w-8 items-center justify-center border
       border-icons transition hover:border-primary`,
-        {
-          'border-elements': rest.disabled,
-          [className]: className,
-        },
+        rest.disabled && 'pointer-events-none border-elements',
+        className,
       )}
       {...rest}
     >
       <img
         src={rest.disabled ? arrowTopDisabledIcon : arrowTopIcon}
         alt="Arrow"
-        className={classNames({
-          'rotate-90': position === 'right',
-          'rotate-180': position === 'bottom',
-          '-rotate-90': position === 'left',
-        })}
+        className={twJoin(
+          position === 'right' && 'rotate-90',
+          position === 'bottom' && 'rotate-180',
+          position === 'left' && '-rotate-90',
+        )}
       />
     </button>
   );

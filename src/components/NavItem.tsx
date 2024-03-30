@@ -1,6 +1,6 @@
-import classNames from 'classnames';
 import React from 'react';
 import { NavLink } from 'react-router-dom';
+import { twMerge } from 'tailwind-merge';
 
 interface Props {
   path: string;
@@ -17,17 +17,15 @@ export const NavItem: React.FC<Props> = ({
     <NavLink
       to={path}
       className={({ isActive }) =>
-        classNames(
+        twMerge(
           `relative flex h-full items-center
-          justify-center uppercase transition
-          after:absolute after:bottom-0 after:h-[3px]
-          after:w-0 after:bg-primary
-        after:transition-[width] hover:after:w-full
-        [&:not(.text-primary)]:text-secondary [&:not(.text-primary)]:hover:text-primary`,
-          {
-            'text-primary after:w-full': isActive,
-            [className]: className,
-          },
+          justify-center uppercase text-secondary
+          transition after:absolute after:bottom-0
+          after:h-[3px] after:w-0
+        after:bg-primary after:transition-[width]
+        hover:text-primary hover:after:w-full`,
+          isActive && 'text-primary after:w-full',
+          className,
         )
       }
     >

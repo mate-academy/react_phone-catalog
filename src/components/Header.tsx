@@ -5,9 +5,9 @@ import favouritesIcon from '../images/icons/favourites.svg';
 import cartIcon from '../images/icons/cart.svg';
 import { getSearchWith } from '../helpers/functions';
 import { SearchWithParams } from '../types/main';
-import classNames from 'classnames';
 import { Logo } from './Logo';
 import { NavItem } from './NavItem';
+import { twJoin } from 'tailwind-merge';
 
 export const Header: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -59,14 +59,12 @@ export const Header: React.FC = () => {
                 onClick={
                   alt === 'Burger menu' ? handleOpenBurgerMenu : undefined
                 }
-                className={classNames(
+                className={twJoin(
                   `flex aspect-square h-full cursor-pointer items-center
                   justify-center border-l-2
                   border-elements`,
-                  {
-                    'md:hidden': alt === 'Burger menu',
-                    'hidden md:flex': alt !== 'Burger menu',
-                  },
+                  alt === 'Burger menu' && 'md:hidden',
+                  alt !== 'Burger menu' && 'hidden md:flex',
                 )}
               >
                 {alt === 'Burger menu' ? (

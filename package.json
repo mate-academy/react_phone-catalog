@@ -20,6 +20,7 @@
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
     "swiper": "^11.0.7",
+    "tailwind-merge": "^2.2.2",
     "usehooks-ts": "^3.0.2"
   },
   "devDependencies": {
