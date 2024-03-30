@@ -6,21 +6,26 @@ import { PaginationSlider } from '../../pagination/PaginationSlider';
 import { StateContext } from '../../AppContext';
 import { NavLink } from 'react-router-dom';
 import { getHotPriceProducts, getBrandNewProducts } from '../../helpers/utils';
+// import MobileNavbar from '../../components/MobileNavbar';
 
 export const HomePage = () => {
   const [sliderImgSize, setSliderImgSize] = useState(0);
   const sliderRef = useRef<null | HTMLDivElement>(null);
   const scrollAmount = 1040;
   const [banners] = useState([
-    [{ image: '/img/icons/Banner.svg' },
-    { image: '/img/icons/Banner2jpg.jpg' }],
-    [{ image: '/img/icons/image16.png' },
-    { image: '/img/icons/image16_2.png' }],
+    [
+      { image: '/img/icons/Banner.svg' },
+      { image: '/img/icons/Banner2jpg.jpg' },
+    ],
+    [
+      { image: '/img/icons/image16.png' },
+      { image: '/img/icons/image16_2.png' },
+    ],
   ]);
   const { state } = useContext(StateContext);
   const [slideTrigger, setSlideTrigger] = useState(false);
   console.log(banners);
-  const w2 = document.getElementById("root")?.offsetWidth || {};
+  const w2 = document.getElementById('root')?.offsetWidth || {};
   useEffect(() => {
     if (w2 !== undefined) {
       console.log(Math.trunc(+w2), 'width');
@@ -34,9 +39,11 @@ export const HomePage = () => {
 
     let timer: any;
     if (sliderRef.current) {
-     
-      console.log(sliderRef.current.offsetWidth, 'sliderRef.current.offsetWidth');
-      
+      console.log(
+        sliderRef.current.offsetWidth,
+        'sliderRef.current.offsetWidth',
+      );
+
       if (sliderRef.current?.scrollLeft === 0) {
         sliderRef.current.scrollLeft += scrollAmount;
         timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
@@ -68,6 +75,7 @@ export const HomePage = () => {
 
   return (
     <div>
+      {/* <MobileNavbar /> */}
       <div className="banner-block">
         <div
           className="banner-button banner-button--left banner-block"
@@ -85,7 +93,6 @@ export const HomePage = () => {
         </div>
 
         <div className="images-container" ref={sliderRef}>
-
           {banners[sliderImgSize].map(banner => {
             return (
               <div>
@@ -137,7 +144,7 @@ export const HomePage = () => {
 
       <h1 className="home-page-header-text">Shop by category</h1>
       <div className="chunk-container-category chunk-container-big category-box">
-        <div >
+        <div>
           <div className="square left mb-24">
             <img
               className="category-img"

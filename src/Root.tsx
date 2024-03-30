@@ -12,6 +12,7 @@ import { NoResults } from './pages/NoResults/NoResults';
 import { ProductCard } from './components/product/ProductCard';
 import { FafouritesPage } from './pages/FavouritesPage/FavouritesPage';
 import { CartPage } from './pages/CartPage/CartPage';
+// import {MobileNavbar} from './components/MobileNavbar/MobileNavbar';
 // import TabletPage from './pages/TabletPage';
 
 export const Root = () => (
@@ -28,6 +29,10 @@ export const Root = () => (
             <Route index element={<ProductPage />} />
             <Route path=":productId?" element={<ProductCard />} />
           </Route>
+          {/* <Route path="accessoires"> */}
+            {/* <Route index element={<MobileNavbar />} /> */}
+            {/* <Route path=":productId?" element={<ProductCard />} /> */}
+          {/* </Route> */}
           <Route path="favourites" element={<FafouritesPage />} />
           <Route path="cart" element={<CartPage />} />
           <Route

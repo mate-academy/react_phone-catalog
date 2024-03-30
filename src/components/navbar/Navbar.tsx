@@ -8,10 +8,12 @@ import {
 } from 'react';
 import { StateContext } from '../../AppContext';
 import debounce from 'lodash.debounce';
+import MobileNavbar from '../MobileNavbar/MobileNavbar'; 
 
 export const Navbar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
 
   const [searchQuery, setSearchQuery] = useState<string>('');
 
@@ -69,7 +71,11 @@ export const Navbar: React.FC = () => {
     setSearchQuery('');
   }
 
-  console.log(location.pathname, params, 'pathname navbr');
+  console.log(location.pathname, params, showMobileMenu,'pathname navbr');
+
+  if (showMobileMenu) {
+    return <MobileNavbar onClick={setShowMobileMenu}/>
+  }
 
   return (
     <div className="navbar-total">
@@ -168,7 +174,9 @@ export const Navbar: React.FC = () => {
         </NavLink>
         
       </div>
-      <div className="navbar_icon navbar-icons-small-screen">
+      <div className="navbar_icon navbar-icons-small-screen"
+        onClick={() => setShowMobileMenu(true)}
+      >
         <img src="./img/icons/burger.svg" alt="img" />
         </div>
     </div>

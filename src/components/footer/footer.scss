@@ -9,11 +9,12 @@
   // padding-right: 148px;
   border-top: 2px solid #e2e6e9;
 
-  @media screen and (max-width: 800px) {
+  @media screen and (max-width: 639px) {
     // justify-content:flex-start;
     // width: fit-content;
-    // flex-direction: column;
+    flex-direction: column;
     display: none;
+    
   }
 }
 
@@ -30,9 +31,11 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  // margin-bottom: 24px;
 }
 
 .footer-arrow-block {
+  margin-top: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
