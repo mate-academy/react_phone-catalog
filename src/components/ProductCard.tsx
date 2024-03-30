@@ -10,8 +10,8 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product, discount = true }) => {
   return (
     <article
-      className="h-126.5 flex w-68 flex-col items-center gap-2 border 
-    border-elements p-8 hover:shadow-[0_2px_16px_0_rgba(0,0,0,0.102)] 
+      className="h-126.5 flex w-68 flex-col items-center gap-2 border
+    border-elements p-8 hover:shadow-[0_2px_16px_0_rgba(0,0,0,0.102)]
       [&>*]:w-full"
     >
       <img

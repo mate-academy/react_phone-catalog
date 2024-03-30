@@ -55,7 +55,7 @@ export const Banner: React.FC = () => {
             autoplay
           >
             {banner.map(item => (
-              <SwiperSlide style={{ width: 'auto' }} key={item}>
+              <SwiperSlide className="w-full" key={item}>
                 <img
                   src={item}
                   alt="Banner"
