@@ -14,7 +14,11 @@ export const ProductCard: React.FC<Props> = ({ product, discount = true }) => {
     border-elements p-8 hover:shadow-[0_2px_16px_0_rgba(0,0,0,0.102)] 
       [&>*]:w-full"
     >
-      <img className="object-contain" src={product.image} alt={product.name} />
+      <img
+        className="max-h-49 object-contain"
+        src={product.image}
+        alt={product.name}
+      />
       <p className="mt-4 flex-1 overflow-hidden text-left">{product.name}</p>
       <div className="flex items-center justify-start gap-2">
         <h3 className="font-bold">${product.price}</h3>
