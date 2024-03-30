@@ -1,5 +1,3 @@
-import './not-found-products.scss';
-
 export const NotFoundProducts = () => {
   return (
     <div className="empty-page">
