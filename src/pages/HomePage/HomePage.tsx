@@ -8,6 +8,8 @@ import { ProductsSlider } from '../../components/ProductsSlider';
 import { MainContext } from '../../context';
 import { scrollToTop } from '../../helpers/scrollToTop';
 
+import './home-page.scss';
+
 export const HomePage = () => {
   const {
     setCurrentPage,
@@ -31,7 +33,7 @@ export const HomePage = () => {
   }, [products]);
 
   return (
-    <>
+    <div className="home__page">
       <Slider />
 
       <div className="product-list__wrapper product-list__wrapper--short">
@@ -53,6 +55,6 @@ export const HomePage = () => {
           products={getNewProducts}
         />
       </div>
-    </>
+    </div>
   );
 };
