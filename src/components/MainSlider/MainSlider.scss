@@ -1,0 +1,51 @@
+@import '../../GeneralStyles/variables';
+
+.main-slider {
+  padding-top: 40px;
+  padding-bottom: 32px;
+
+  &__img {
+    padding-inline: 48px;
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+  }
+
+  .carousel-control-prev,
+  .carousel-control-next {
+    border: 1px solid $icons-color;
+    width: 32px;
+    background-color: #fff;
+    opacity: 0.8;
+    transition: all .5s;
+
+    &:hover {
+      background-color: #e0e0e0;
+      opacity: 1;
+    }
+  }
+
+  .carousel-control-prev-icon {
+    background-image: url("../../images/icons/slider-arrow-left.svg");
+  }
+
+  .carousel-control-next-icon {
+    background-image: url("../../images/icons/slider-arrow-right.svg");
+
+  }
+
+  .carousel-indicators {
+    bottom: -48px;
+
+    button {
+      width: 14px;
+      height: 4px;
+      background-color: $elements-color;
+      margin-inline: 7px;
+    }
+
+    button.active {
+      background-color: $primary-color;
+    }
+  }
+}

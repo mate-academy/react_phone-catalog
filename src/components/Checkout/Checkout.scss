@@ -1,0 +1,36 @@
+@import '../../GeneralStyles/variables';
+
+.checkout {
+  background-color: #fafafb;
+  border: 1px solid $primary-color;
+  box-shadow: 0 0 10px $primary-color;
+  width: 800px;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__text {
+    font-size: 16px;
+    padding-left: 40px;
+  }
+
+  &__img {
+    height: 250px;
+  }
+
+  &__close {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    top: 3px;
+    right: 3px;
+
+    img {
+      width: 25px;
+    }
+  }
+}

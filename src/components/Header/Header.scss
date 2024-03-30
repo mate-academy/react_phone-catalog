@@ -1,0 +1,84 @@
+@import '../../GeneralStyles/variables';
+@import '../../GeneralStyles/mixins';
+
+.header {
+  border-bottom: 1px solid $elements-color;
+  height: 65px;
+
+  &__wrapper {
+    width: 100%;
+    max-width: 1600px;
+    margin: 0 auto;
+    height: 100%;
+    padding-inline: 24px 2px;
+    display: flex;
+    justify-content: space-between;
+    align-self: start;
+  }
+
+  &__nav {
+    .is-active {
+      @include link-active;
+    }
+
+    &--logo {
+      height: 24px;
+      margin-block: auto;
+    }
+  }
+
+  &__link {
+    padding-block: 15px;
+    margin: auto 0;
+  }
+
+  &__additional-links {
+    display: flex;
+
+    .is-active {
+      @include link-active;
+
+      &::after {
+        bottom: -1px;
+      }
+    }
+  }
+
+  &__additional-link {
+    position: relative;
+    box-sizing: content-box;
+    display: inline-block;
+    height: 16px;
+    width: 16px;
+    padding: 23px;
+    border: 1px solid transparent;
+    border-left: 1px solid $elements-color;
+    transition: all $duration-time;
+
+    img {
+      vertical-align: baseline;
+    }
+
+    @include link-hover;
+
+    &::after {
+      bottom: -1px;
+    }
+  }
+
+  &__counter {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    width: 14px;
+    height: 14px;
+    border: 1px solid $white-color;
+    color: $white-color;
+    font-size: 9px;
+    font-weight: 600;
+    background-color: $red-color;
+    border-radius: 100%;
+    text-decoration: none;
+    text-align: center;
+  }
+}
