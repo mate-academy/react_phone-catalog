@@ -24,13 +24,11 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
 
-  // const [searchQuery, setSearchQuery] = useState<string>('');
-
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('text-navbar', { 'selected-link-mob': isActive });
 
   const linkClassIcons = ({ isActive }: { isActive: boolean }) =>
-    classNames({ 'selected-icons-mob': isActive });
+    classNames('centrum', { 'selected-icons-mob ': isActive });
 
   const location = useLocation();
 
@@ -51,11 +49,10 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
 
   return (
     <div className="navbar-total-mob">
-      <div className="logo-box-mob">
+      <div className="logo-box-mob mb-32">
         <div className="ml-24 centrum">
           <img src="./img/icons/logo2.svg" alt="img" />
         </div>
-        {/* <div className="greypillar"/> */}
         <div className="centrum close-button">
           <img
             src="./img/icons/closeBlack.svg"
@@ -64,10 +61,10 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
           />
         </div>
       </div>
-      {/* <div className="greyline" /> */}
-      <div className="navbar-mob">
-        <div className="navbar--flex-mob">
-          {location.pathname !== '/cart' && (
+      <div className="links-icons">
+        <div className="navbar-mob">
+          <div className="navbar--flex-mob">
+            {/* {location.pathname !== '/cart' && ( */}
             <div className="navbar-mob">
               <div
                 className={classNames('navbar-box-item-mob', {
@@ -101,64 +98,44 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
                 </NavLink>
               </div>
             </div>
-          )}
+            {/* )} */}
+          </div>
+        </div>
+
+        <div className="navbar-icons-mob">
+
+          <div className="navbar_icon-mob">
+            <div className="half">
+              <NavLink to="/favourites" className={linkClassIcons}>
+                <img src="./img/icons/icon_1.svg" alt="img" />
+                {state.favourites.length > 0 && (
+                  <div className="red-circle-box-mob">
+                    <div className="red-circle-mob">
+                      {state.favourites.length}
+                    </div>
+                  </div>
+                )}
+              </NavLink>
+            </div>
+          </div>
+
+          <div className="navbar_icon-mob line-between-icons">
+            <div className="half ">
+              <NavLink to="/cart" className={linkClassIcons}>
+                  <img src="./img/icons/icon_2.svg" alt="img" />
+                  {state.card.length > 0 && (
+                    <div className="red-circle-box-mob">
+                      <div className="red-circle-mob">
+                        {state.card.length}
+                      </div>
+                    </div>
+                  )}
+              </NavLink>
+            </div>
+          </div>
+
         </div>
       </div>
-
-      <div className="navbar-icons-mob">
-        {/* {location.pathname !== '/' &&
-          location.pathname !== '/cart' &&
-          !productId && (
-            <div className="navbar_icons-mob navbar_icons-mob--search navbar-icons-mob">
-              <div className="search_box search-align search-align--input">
-                <input
-                  className="search--input"
-                  placeholder={`Search in ${location.pathname.slice(1)}...`}
-                  value={searchQuery}
-                  onChange={e => handleSearch(e)}
-                />
-              </div>
-              <div className="search-align search-align--search">
-                {searchQuery.length > 0 ? (
-                  <img
-                    src="./img/icons/closeBlack.svg"
-                    alt="img"
-                    onClick={closeSearch}
-                  />
-                ) : (
-                  <img src="./img/icons/search.svg" alt="img" />
-                )}
-              </div>
-            </div>
-          )} */}
-
-        {location.pathname !== '/cart' && (
-          <NavLink to="/favourites" className={linkClassIcons}>
-            <div className="navbar_icons-mob navbar-icons-mob">
-              <img src="./img/icons/icon_1.svg" alt="img" />
-              {state.favourites.length > 0 && (
-                <div className="red-circle-box-mob">
-                  <div className="red-circle">{state.favourites.length}</div>
-                </div>
-              )}
-            </div>
-          </NavLink>
-        )}
-
-        <NavLink to="/cart" className={linkClassIcons}>
-          <div className="navbar_icons-mob navbar-icons-mob">
-            <img src="./img/icons/icon_2.svg" alt="img" />
-            {state.card.length > 0 && (
-              <div className="red-circle-box-mob">
-                <div className="red-circle">{state.card.length}</div>
-              </div>
-            )}
-          </div>
-        </NavLink>
-      </div>
-      {/* <div className="navbar_icons-mob navbar-icons-mob-small-screen">
-        <img src="./img/icons/burger.svg" alt="img" />
-        </div> */}
     </div>
   );
 };
