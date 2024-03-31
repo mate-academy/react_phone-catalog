@@ -1,4 +1,5 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
+<<<<<<< HEAD
 
 import { AppLayout } from './components/AppLayout';
 import { Home } from './pages/Home';
@@ -12,6 +13,21 @@ import { CartPage } from './pages/CartPage';
 
 import './App.scss';
 
+=======
+
+import { AppLayout } from './components/AppLayout';
+import { Home } from './pages/Home';
+import { PhonesPage } from './pages/PhonesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { TabletsPage } from './pages/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
+import { NotFoundPage } from './components/NotFoundPage';
+import { Favourites } from './pages/FavouritesPage';
+
+import './App.scss';
+import { CartPage } from './pages/CartPage';
+
+>>>>>>> origin/master
 export const App = () => {
   return (
     <div className="App">
