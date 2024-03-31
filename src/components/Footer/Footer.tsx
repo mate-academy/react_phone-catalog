@@ -26,6 +26,7 @@ export const Footer = () => {
                 <a
                   href="https://github.com/AllaSerhiienko"
                   className="footer__link"
+                  target="blank"
                 >
                   GitHub
                 </a>
