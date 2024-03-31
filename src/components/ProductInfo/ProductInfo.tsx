@@ -44,14 +44,18 @@ export const ProductInfo: React.FC<Props> = ({ productInfo, product }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const { favorites, addToFavorites } = useContext(FavoritesContext);
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart, deleteProduct } = useContext(CartContext);
   const isFavorite = favorites.some(item => item.id === product?.id);
   const isInCart = cart.some(item => item.id === product?.id);
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
-    if (!isInCart && product) {
-      addToCart(product);
+    if (product) {
+      if (!isInCart) {
+        addToCart(product);
+      } else {
+        deleteProduct(product.id);
+      }
     }
   };
 

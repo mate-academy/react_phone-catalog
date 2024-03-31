@@ -26,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     itemId,
   } = product;
   const { favorites, addToFavorites } = useContext(FavoritesContext);
-  const { cart, addToCart } = useContext(CartContext);
+  const { cart, addToCart, deleteProduct } = useContext(CartContext);
   const isFavorite = favorites.some(item => item.id === id);
   const isInCart = cart.some(item => item.id === id);
 
@@ -34,6 +34,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     event.preventDefault();
     if (!isInCart) {
       addToCart(product);
+    } else {
+      deleteProduct(id);
     }
   };
 
