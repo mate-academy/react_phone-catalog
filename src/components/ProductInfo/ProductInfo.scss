@@ -41,6 +41,11 @@
     max-width: 80px;
     border: 1px solid $colorElements;
     padding: 4px;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorSecondary;
+    }
 
     @include onDesktop {
       padding: 6px;
@@ -48,6 +53,7 @@
 
     &--selected {
       border-color: $colorPrimary;
+      pointer-events: none;
     }
   }
 
@@ -95,7 +101,7 @@
     margin-bottom: 24px;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100%;
       height: 1px;
@@ -113,9 +119,15 @@
   &__color-item {
     border: 1px solid $colorElements;
     border-radius: 50%;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorSecondary;
+    }
 
     &--selected {
       border-color: $colorPrimary;
+      pointer-events: none;
     }
   }
 
@@ -137,7 +149,7 @@
     }
 
     &--green {
-      background-color: #E1F8DC;
+      background-color: #e1f8dc;
     }
 
     &--pink {
@@ -149,7 +161,7 @@
     }
 
     &--white {
-      background-color: #F9F6EF;
+      background-color: #f9f6ef;
     }
 
     &--purple {
@@ -193,11 +205,11 @@
     }
 
     &--rosegold {
-      background-color: #E6C7C2;
+      background-color: #e6c7c2;
     }
 
     &--coral {
-      background-color: #EE7762;
+      background-color: #ee7762;
     }
 
     &--skyblue {
@@ -235,7 +247,7 @@
     margin-bottom: 32px;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100%;
       height: 1px;
@@ -253,10 +265,16 @@
   &__capacity-item {
     padding: 0 8px;
     border: 1px solid $colorIcons;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorSecondary;
+    }
 
     &--selected {
       border-color: $colorPrimary;
       background-color: $colorPrimary;
+      pointer-events: none;
     }
   }
 
@@ -302,7 +320,6 @@
 
   &__primary-button {
     flex-grow: 2;
-    // max-width: 300px;
     height: 48px;
   }
 
@@ -361,7 +378,7 @@
     @extend %h3;
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100%;
       height: 1px;
@@ -398,7 +415,7 @@
     }
 
     &::after {
-      content: '';
+      content: "";
       display: block;
       width: 100%;
       height: 1px;
