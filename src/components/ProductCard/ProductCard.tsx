@@ -56,6 +56,12 @@ export const ProductCard: React.FC<Props> = ({
     }
   };
 
+  const deleteItemFromCart = () => {
+    const newCartList = cartList.filter(item => item.id !== +product.id);
+
+    setCartList(newCartList);
+  };
+
   return (
     <div
       data-cy="cardsContainer"
@@ -126,7 +132,7 @@ export const ProductCard: React.FC<Props> = ({
                 'productCard__addToCart--added': isInCart,
               },
             )}
-            onClick={addToCart}
+            onClick={() => (isInCart ? deleteItemFromCart() : addToCart())}
           >
             {isInCart ? 'Added to cart' : 'Add to cart'}
           </button>
