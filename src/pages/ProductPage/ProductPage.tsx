@@ -2,6 +2,7 @@
 import { ProductItem } from '../../components/product/ProductItem';
 import React, {
   useContext,
+  useEffect,
   useState,
 } from "react";
 import { StateContext } from '../../AppContext';
@@ -31,6 +32,10 @@ export const ProductPage: React.FC = () => {
   let currentItems: Product[] = [];
 
   let copyOfProducts: Product[] = [];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [])
 
   if (state.products) {
 

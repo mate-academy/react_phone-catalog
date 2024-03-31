@@ -10,7 +10,7 @@ export const Footer: React.FC<Props> = ({ onClick }) => {
     <div className="footer">
 
       <div
-        className="text-navbar--left navbar-box-item mp-0"
+        className="text-navbar--left navbar-box-item mp-0 mt-24"
         style={{ marginLeft: 24 }}
       >
         <img src="./img/icons/logo2.svg" alt="img" />

@@ -6,6 +6,7 @@ import { NoResults } from '../NoResults/NoResults';
 import { Product } from '../../types';
 import { getUniqueItems } from '../../helpers/utils';
 import { BackButton } from '../../components/BackButton/BackButton';
+import PopUp from '../../components/PopUp';
 
 export const CartPage: React.FC = () => {
   const [cartSummary, setCartSummary] = useState<number>(0);
@@ -13,6 +14,7 @@ export const CartPage: React.FC = () => {
   const [uniqueItems, setUniqueItems] = useState<Array<Product>>();
 
   const uniqueItemsLocal = getUniqueItems(state.card);
+  const [showPopUp, setShowPopUp] = useState(false);
 
   useEffect(() => {
     setUniqueItems(uniqueItemsLocal);
@@ -21,7 +23,7 @@ export const CartPage: React.FC = () => {
   useEffect(() => {
     let totalSumm = 0;
 
-    state.card.map((elem) => {
+    state.card.map(elem => {
       totalSumm += +elem.price.slice(1);
 
       return totalSumm;
@@ -38,15 +40,13 @@ export const CartPage: React.FC = () => {
   };
 
   return (
-    <div className="mb-80 mt-24">
-
+    <div className="mb-80 mt-24 parent">
       <div className="">
         <BackButton />
         <div className="cart-box">
-
           <div>
-            {state.card.length > 0
-              ? uniqueItems?.map(elem => {
+            {state.card.length > 0 ? (
+              uniqueItems?.map(elem => {
                 return (
                   <CartItem
                     summary={addItem}
@@ -56,25 +56,35 @@ export const CartPage: React.FC = () => {
                   />
                 );
               })
-              : <NoResults headline="Your cart is empty" />}
+            ) : (
+              <NoResults headline="Your cart is empty" />
+            )}
           </div>
 
           <div className="summary">
             <div>{cartSummary}</div>
             <div className="mb-24">
               Total for
-              {' '}
               {state.card.length}
               {' '}
               items
             </div>
             <div className="grey-line mb-24" style={{ width: '90%' }} />
-            <div className="summary-button">Checkout</div>
+            <div
+              className="summary-button"
+              onClick={() => setShowPopUp(true)}
+              onKeyDown={() => setShowPopUp(true)}
+              role="button"
+              tabIndex={0}
+            >
+              Checkout
+            </div>
           </div>
-
         </div>
       </div>
-
+      {showPopUp && (
+        <PopUp />
+      )}
     </div>
   );
 };
