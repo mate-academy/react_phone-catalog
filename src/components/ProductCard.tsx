@@ -1,3 +1,4 @@
+import { twMerge } from 'tailwind-merge';
 import { Product } from '../types/products';
 import { Button } from './Button';
 import { FavouritesButton } from './FavouritesButton';
@@ -5,14 +6,22 @@ import { FavouritesButton } from './FavouritesButton';
 interface Props {
   product: Product;
   discount?: boolean;
+  className?: string;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, discount = true }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  discount = true,
+  className = '',
+}) => {
   return (
     <article
-      className="h-126.5 flex w-68 flex-col items-center gap-2 border
-    border-elements p-8 hover:shadow-[0_2px_16px_0_rgba(0,0,0,0.102)]
-      [&>*]:w-full"
+      className={twMerge(
+        `flex h-126.5 w-68 flex-col items-center gap-2 border
+      border-elements p-8 hover:shadow-[0_2px_16px_0_rgba(0,0,0,0.102)]
+        [&>*]:w-full`,
+        className,
+      )}
     >
       <img
         className="max-h-49 object-contain"
@@ -33,7 +42,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount = true }) => {
           <small>{product.screen}</small>
         </div>
         <div className="flex justify-between">
-          <small className="text-secondary">product</small>
+          <small className="text-secondary">Capacity</small>
           <small>{product.capacity}</small>
         </div>
         <div className="flex justify-between">

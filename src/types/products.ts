@@ -1,4 +1,4 @@
-type ProductCategory = 'phones' | 'accessories' | 'tablets';
+export type ProductCategory = 'phones' | 'accessories' | 'tablets';
 
 export interface Product {
   id: number;
