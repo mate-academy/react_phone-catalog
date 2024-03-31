@@ -1,0 +1,21 @@
+@import '../../GeneralStyles/variables';
+
+.notFoundPage {
+  margin-top: 40px;
+
+  &__massage {
+    font-size: 22px;
+    color: $red-color;
+  }
+
+  &__link {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: $primary-color;
+
+    &:hover {
+      color: $secondary-color;
+    }
+  }
+}
