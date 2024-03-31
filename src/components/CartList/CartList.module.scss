@@ -1,0 +1,133 @@
+.title {
+  text-align: center;
+}
+
+.cart {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40.9px;
+  letter-spacing: -0.01em;
+  display: flex;
+  width: 1136px;
+  margin: auto;
+  margin-bottom: 24px;
+}
+
+.img {
+  display: flex;
+  text-align: center;
+  margin: auto;
+}
+
+.cartList {
+  width: 1136px;
+  margin: auto;
+  display: flex;
+  justify-content: space-between;
+
+  &__carts {
+    width: 752px;
+  }
+
+  &__cart {
+    display: flex;
+    align-items: center;
+    height: 128px;
+    border: 1px solid #B4BDC3;
+    margin-block-end: 16px;
+
+    .container_img {
+      width: 80px;
+      height: 80px;
+    }
+
+    &_img {
+      max-width: 80px;
+      max-height: 80px;
+      margin-inline-start: 24px;
+    }
+
+    &_delete {
+      border: none;
+      background-color: white;
+      color: #B4BDC3;
+      margin-inline-start: 24px;
+    }
+
+    &_title {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      margin-inline-start: 24px;
+      width: 295px;
+    }
+
+    &_reduction {
+      margin-inline-start: 49px;
+    }
+
+    &_increase,
+    &_reduction {
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+    }
+
+    &_number {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &_price {
+      margin-inline-start: 43px;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30.8px;
+    }
+  }
+
+  &__price {
+    width: 368px;
+    height: 206px;
+    text-align: center;
+    border: 1px solid #B4BDC3;
+
+    &_title {
+      font-size: 32px;
+      font-weight: 700;
+      line-height: 40.9px;
+      letter-spacing: -0.01em;
+      text-align: center;
+      margin-top: 24px;
+    }
+
+    &_about {
+      display: flex;
+      text-align: center;
+      justify-content: center;
+      align-items: center;
+      margin: auto;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #B4BDC3;
+      color: #B4BDC3;
+      width: 321px;
+      margin-bottom: 24px;
+    }
+
+    &_button {
+      color: #fff;
+      background-color: #313237;
+      width: 320px;
+      height: 48px;
+
+      &:active {
+        color: #313237;
+        background-color: #fff;
+      }
+    }
+  }
+}

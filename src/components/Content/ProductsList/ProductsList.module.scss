@@ -1,0 +1,50 @@
+.productPage {
+  width: 1136px;
+  margin: auto;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__numPhone {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+  }
+
+  &__sort {
+    margin-top: 40px;
+    display: flex;
+  }
+
+  &__select select {
+    cursor: pointer;
+    margin-right: 16px;
+    width: 128px;
+    height: 40px;
+    border: 1px solid rgba(180, 189, 195, 1);
+  }
+
+  &__select_title {
+    display: block;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: rgba(180, 189, 195, 1);
+  }
+
+  &__cards {
+    width: 1136px;
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 16px;
+  }
+
+  &__card {
+    margin-bottom: 40px;
+    width: calc((100% - 48px) / 4);
+  }
+}

@@ -1,0 +1,36 @@
+.container {
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #9d9e9e;
+    width: 100%;
+    display: inline-block;
+    margin-bottom: 25px;
+  }
+
+  &__techSpecs {
+
+    &_item {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+    }
+
+    &_title {
+      color: #9d9e9e;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+
+    &_value {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: right;
+
+    }
+  }
+}

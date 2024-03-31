@@ -1,0 +1,59 @@
+.category {
+  display: flex;
+  justify-content: center;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__img {
+    height: 368px;
+    width: 368px;
+  }
+
+  &__cards {
+    width: 1136px;
+    display: flex;
+    box-sizing: border-box;
+    justify-content: space-between;
+  }
+
+  &__card {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: rgba(137, 147, 154, 1);
+    text-decoration: none;
+
+    &_title {
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25.56px;
+      color: #000;
+    }
+  }
+}
+
+.phones {
+  background: #ffe4cb;
+  background-image: url(../../../../public/img/category-phones.png);
+  background-position: +70px +10px;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.tablets {
+  background: #85868b;
+  background-image: url(../../../../public/img/category-tablets.png);
+  background-position: +20px +20px;
+  background-size: 150%;
+  background-repeat: no-repeat;
+}
+
+.accessories {
+  background: #b03d62;
+  background-image: url(../../../../public//img/category-accessories.png);
+  background-position: +30px +50px;
+  background-size: 190%;
+  background-repeat: no-repeat;
+}

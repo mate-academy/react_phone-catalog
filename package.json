@@ -13,6 +13,8 @@
     "classnames": "^2.3.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-icons": "^5.0.1",
+    "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5"
   },
@@ -20,7 +22,7 @@
     "@cypress/webpack-dev-server": "^1.8.4",
     "@mate-academy/cypress-tools": "^1.0.5",
     "@mate-academy/eslint-config-react-typescript": "^1.0.15",
-    "@mate-academy/scripts": "^1.7.0",
+    "@mate-academy/scripts": "^1.7.3",
     "@mate-academy/students-ts-config": "*",
     "@mate-academy/stylelint-config": "^0.0.12",
     "@types/node": "^16.18.80",

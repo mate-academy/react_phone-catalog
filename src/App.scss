@@ -1,1 +1,17 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+}
+
+@font-face {
+  font-family: 'Mone';
+  src: url('../public/fonts/Mont-SemiBold.otf') format('otf'),
+    url('../public/fonts/Mont-Regular.otf') format('otf'),
+    url('../public/fonts/Mont-Bold.otf') format('otf');
+  font-weight: normal;
+  font-style: normal;
+}
+
+body {
+  font-family: "Mone";
+}
