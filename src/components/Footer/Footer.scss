@@ -9,9 +9,12 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 16px;
+    padding-top: 20px;
 
     @include on-phone {
       height: 56px;
+      flex-direction: column;
     }
   }
 
@@ -34,6 +37,8 @@
 
   @include on-phone {
     font-size: 10px;
+    padding-bottom: 20px;
+
   }
 
   &__label {
