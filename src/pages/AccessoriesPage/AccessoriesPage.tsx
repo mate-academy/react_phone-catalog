@@ -97,11 +97,13 @@ export const AccessoriesPage = () => {
           </div>
         )}
 
-        {preparedProducts.length === 0 && !isLoading && (query ? (
-          <NoProducts products="accessories" isQuery={!!query} />
-        ) : (
-          <NoProducts products="accessories" />
-        ))}
+        {preparedProducts.length === 0 && !isLoading && (
+          <NoProducts
+            title={query
+              ? 'There are no accessories matching the query'
+              : 'There are no accessories matching yet'}
+          />
+        )}
 
         {isError && (
           <SomethingWentWrong />

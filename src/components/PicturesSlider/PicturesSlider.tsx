@@ -5,11 +5,11 @@ import {
 } from 'react';
 import cn from 'classnames';
 import { BASE_URL, CATEGORIES } from '../../helpers/constants';
+import { useSwipe } from '../../helpers/useSwipe';
 
 export const PicturesSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const timerRef = useRef<NodeJS.Timeout | null>(null);
-  const touchStartX = useRef<number | null>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
   const goToNext = useCallback(() => {
@@ -19,33 +19,16 @@ export const PicturesSlider = () => {
     setCurrentIndex(newIndex);
   }, [currentIndex]);
 
-  const goToPrevious = () => {
+  const goToPrevious = useCallback(() => {
     const isFirstSlide = currentIndex === 0;
     const newIndex = isFirstSlide ? CATEGORIES.length - 1 : currentIndex - 1;
 
     setCurrentIndex(newIndex);
-  };
+  }, [currentIndex]);
 
-  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
-    touchStartX.current = event.touches[0].clientX;
-  };
-
-  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
-    if (touchStartX.current === null) {
-      return;
-    }
-
-    const currentX = event.touches[0].clientX;
-    const deltaX = touchStartX.current - currentX;
-
-    if (deltaX > 0) {
-      goToNext();
-    } else if (deltaX < 0) {
-      goToPrevious();
-    }
-
-    touchStartX.current = null;
-  };
+  const { handleTouchStart, handleTouchMove } = useSwipe(
+    goToNext, goToPrevious,
+  );
 
   const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);

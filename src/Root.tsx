@@ -14,6 +14,7 @@ import { CartProvider } from './contexts/CartContext';
 import { FavoritesProvider } from './contexts/FavoritesContext';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => (
   <Router>
@@ -32,10 +33,16 @@ export const Root = () => (
         <Route path="/home" element={<Navigate to="/" />} />
         <Route path="/phones">
           <Route index element={<PhonesPage />} />
-          {/* <Route path=":itemId" element={<ProductDetailsPage />} /> */}
+          <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
-        <Route path="/tablets" element={<TabletsPage />} />
-        <Route path="/accessories" element={<AccessoriesPage />} />
+        <Route path="/tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
+        <Route path="/accessories">
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
         <Route path="/favorites" element={<FavoritesPage />} />
         <Route path="/cart" element={<CartPage />} />
         <Route path="*" element={<NotFoundPage />} />

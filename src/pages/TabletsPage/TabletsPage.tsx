@@ -96,11 +96,13 @@ export const TabletsPage = () => {
           </div>
         )}
 
-        {preparedProducts.length === 0 && !isLoading && (query ? (
-          <NoProducts products="tablets" isQuery={!!query} />
-        ) : (
-          <NoProducts products="tablets" />
-        ))}
+        {preparedProducts.length === 0 && !isLoading && (
+          <NoProducts
+            title={query
+              ? 'There are no tablets matching the query'
+              : 'There are no tablets matching yet'}
+          />
+        )}
 
         {isError && (
           <SomethingWentWrong />

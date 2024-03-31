@@ -1,0 +1,430 @@
+@import "../../styles/main";
+
+.product-info {
+  position: relative;
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      display: grid;
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__images-previews {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      flex-direction: column;
+      margin-bottom: 0;
+    }
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &__image-item {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 80px;
+    border: 1px solid $colorElements;
+    padding: 4px;
+
+    @include onDesktop {
+      padding: 6px;
+    }
+
+    &--selected {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__image-button {
+    position: relative;
+    display: flex;
+    width: 100%;
+    padding-bottom: 100%;
+  }
+
+  &__image-preview {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__image-container {
+    position: relative;
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__main-image {
+    order: -1;
+
+    @include onTablet {
+      order: 0;
+    }
+  }
+
+  &__image {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 24px;
+      background-color: $colorElements;
+    }
+  }
+
+  &__color-list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__color-item {
+    border: 1px solid $colorElements;
+    border-radius: 50%;
+
+    &--selected {
+      border-color: $colorPrimary;
+    }
+  }
+
+  &__control-title {
+    margin-bottom: 8px;
+    @extend %small-text;
+    color: $colorSecondary;
+  }
+
+  &__color-link {
+    box-sizing: border-box;
+    display: block;
+    @include square(30px);
+    border: 2px solid $colorWhite;
+    border-radius: 50%;
+
+    &--black {
+      background-color: #201d24;
+    }
+
+    &--green {
+      background-color: #E1F8DC;
+    }
+
+    &--pink {
+      background-color: #fddcd7;
+    }
+
+    &--yellow {
+      background-color: #fdea8c;
+    }
+
+    &--white {
+      background-color: #F9F6EF;
+    }
+
+    &--purple {
+      background-color: #e5ddea;
+    }
+
+    &--red {
+      background-color: #fb1230;
+    }
+
+    &--gold {
+      background-color: #ffeacf;
+    }
+
+    &--midnight {
+      background-color: #343b43;
+    }
+
+    &--blue {
+      background-color: #276787;
+    }
+
+    &--spaceblack {
+      background-color: #4b4845;
+    }
+
+    &--sierrablue {
+      background-color: #96badc;
+    }
+
+    &--graphite {
+      background-color: #696a6e;
+    }
+
+    &--spacegray {
+      background-color: #535150;
+    }
+
+    &--midnightgreen {
+      background-color: #4e5850;
+    }
+
+    &--rosegold {
+      background-color: #E6C7C2;
+    }
+
+    &--coral {
+      background-color: #EE7762;
+    }
+
+    &--skyblue {
+      background-color: #6ba1c4;
+    }
+
+    &--starlight {
+      background-color: #f0f0dc;
+    }
+
+    &--silver {
+      background-color: #c0c0c0;
+    }
+  }
+
+  &__controls-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__id {
+    @extend %small-text;
+    color: $colorIcons;
+
+    @include onDesktop {
+      position: absolute;
+      right: 0;
+      top: 0;
+    }
+  }
+
+  &__capacities {
+    margin-bottom: 32px;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 24px;
+      background-color: $colorElements;
+    }
+  }
+
+  &__capacity-list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__capacity-item {
+    padding: 0 8px;
+    border: 1px solid $colorIcons;
+
+    &--selected {
+      border-color: $colorPrimary;
+      background-color: $colorPrimary;
+    }
+  }
+
+  &__capacity-link {
+    display: inline-block;
+    @extend %body-text;
+    line-height: 30px;
+
+    &--selected {
+      color: $colorWhite;
+    }
+  }
+
+  &__price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__full-price {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 28px;
+    color: $colorSecondary;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__primary-button {
+    flex-grow: 2;
+    // max-width: 300px;
+    height: 48px;
+  }
+
+  &__fav-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include square(48px);
+    border: 1px solid $colorIcons;
+    transition: border-color 0.3s;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &--selected {
+      border-color: $colorElements;
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__spec-title {
+    @extend %small-text;
+    color: $colorSecondary;
+  }
+
+  &__spec-value {
+    @extend %small-text;
+  }
+
+  &__about {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 0;
+    }
+  }
+
+  &__about-title {
+    margin-bottom: 32px;
+    @extend %h3;
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 16px;
+      background-color: $colorElements;
+    }
+  }
+
+  &__about-item {
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__about-name {
+    margin-bottom: 16px;
+    @extend %h4;
+  }
+
+  &__about-paragraph {
+    @extend %body-text;
+
+    &:not(:last-child) {
+      margin-bottom: 21px;
+    }
+  }
+
+  &__tech-specs-title {
+    margin-bottom: 30px;
+    @extend %h3;
+
+    @include onTablet {
+      margin-bottom: 25px;
+    }
+
+    &::after {
+      content: '';
+      display: block;
+      width: 100%;
+      height: 1px;
+      margin-top: 16px;
+      background-color: $colorElements;
+    }
+  }
+
+  &__tech-spec-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__tech-spec-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__tech-spec-title {
+    @extend %body-text;
+    color: $colorSecondary;
+  }
+
+  &__tech-spec-value {
+    @extend %body-text;
+  }
+}

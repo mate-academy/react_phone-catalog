@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-// export const
 
 import { BASE_URL } from './constants';
 

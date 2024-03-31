@@ -9,7 +9,8 @@
   &__part {
     display: flex;
     flex-direction: row;
-    align-items: end;
+    justify-content: center;
+    align-items: center;
     gap: 8px;
   }
 

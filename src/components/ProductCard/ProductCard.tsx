@@ -6,6 +6,7 @@ import './ProductCard.scss';
 import { BASE_URL } from '../../helpers/constants';
 import { FavoritesContext } from '../../contexts/FavoritesContext';
 import { CartContext } from '../../contexts/CartContext';
+import { formatCapacity } from '../../helpers/formatCapacity';
 
 type Props = {
   product: Product;
@@ -20,11 +21,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     screen,
     capacity,
     ram,
+    id,
+    category,
+    itemId,
   } = product;
   const { favorites, addToFavorites } = useContext(FavoritesContext);
   const { cart, addToCart } = useContext(CartContext);
-  const isFavorite = favorites.some(item => item.id === product.id);
-  const isInCart = cart.some(item => item.id === product.id);
+  const isFavorite = favorites.some(item => item.id === id);
+  const isInCart = cart.some(item => item.id === id);
 
   const handleAddToCart = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
@@ -39,16 +43,17 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <Link
-      to="/home"
-      className="product-card"
-      data-cy="cardsContainer"
-    >
+    <div className="product-card">
       <div className="product-card__content">
-        <div className="product-card__image-container">
-          <img src={`${BASE_URL}${image}`} alt={name} className="product-card__image" />
-        </div>
-        <p className="product-card__title">{name}</p>
+        <Link
+          to={`/${category}/${itemId}`}
+          className="product-card__link"
+        >
+          <div className="product-card__image-container">
+            <img src={`${BASE_URL}${image}`} alt={name} className="product-card__image" />
+          </div>
+          <p className="product-card__title">{name}</p>
+        </Link>
         <div className="product-card__price-container">
           <h3 className="product-card__price">{`$${price}`}</h3>
           {price !== fullPrice && (
@@ -64,11 +69,15 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </li>
           <li className="product-card__spec">
             <p className="product-card__spec-title">Capacity</p>
-            <p className="product-card__spec-value">{capacity}</p>
+            <p className="product-card__spec-value">
+              {formatCapacity(capacity)}
+            </p>
           </li>
           <li className="product-card__spec">
             <p className="product-card__spec-title">RAM</p>
-            <p className="product-card__spec-value">{ram}</p>
+            <p className="product-card__spec-value">
+              {formatCapacity(ram)}
+            </p>
           </li>
         </ul>
         <div className="product-card__buttons">
@@ -96,6 +105,6 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };

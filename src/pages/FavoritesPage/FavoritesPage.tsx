@@ -35,11 +35,13 @@ export const FavoritesPage = () => {
           <ProductsList products={preparedProducts} />
         )}
 
-        {preparedProducts.length === 0 && (query ? (
-          <NoProducts products="favorites" isQuery={!!query} />
-        ) : (
-          <NoProducts products="favorites" />
-        ))}
+        {preparedProducts.length === 0 && (
+          <NoProducts
+            title={query
+              ? 'There are no favorites matching the query'
+              : 'There are no favorites yet'}
+          />
+        )}
       </div>
     </div>
   );

@@ -12,7 +12,6 @@ export const HomePage = () => {
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    // setIsError(false);
     setIsLoading(true);
 
     getProducts()
@@ -79,7 +78,7 @@ export const HomePage = () => {
       {!isError && !isLoading && (
         <section className="home-page__section">
           <ProductsSlider
-            products={brandNewProducts.slice(0, 20)}
+            products={brandNewProducts.slice(0, 30)}
             title="Brand new models"
           />
         </section>
@@ -89,12 +88,14 @@ export const HomePage = () => {
         <Categories amount={productAmount} />
       </section>
 
-      <section className="home-page__section">
-        <ProductsSlider
-          products={hotPriceProducts.slice(0, 20)}
-          title="Hot prices"
-        />
-      </section>
+      {!isError && !isLoading && (
+        <section className="home-page__section">
+          <ProductsSlider
+            products={hotPriceProducts.slice(0, 30)}
+            title="Hot prices"
+          />
+        </section>
+      )}
     </div>
   );
 };

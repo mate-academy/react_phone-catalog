@@ -1,14 +1,12 @@
 import React from 'react';
 import { BASE_URL } from '../../helpers/constants';
-import { Category } from '../../types';
 import './NoProducts.scss';
 
 type Props = {
-  products: Category | 'favorites';
-  isQuery?: boolean;
+  title: string;
 };
 
-export const NoProducts: React.FC<Props> = ({ products, isQuery = false }) => (
+export const NoProducts: React.FC<Props> = ({ title }) => (
   <div className="no-products">
     <img
       src={`${BASE_URL}/img/product-not-found.png`}
@@ -17,15 +15,7 @@ export const NoProducts: React.FC<Props> = ({ products, isQuery = false }) => (
     />
 
     <h2 className="no-products__title">
-      {isQuery ? (
-        `There are no ${products} matching the query`
-      ) : (
-        `There are no ${products} matching yet`
-      )}
+      {title}
     </h2>
   </div>
 );
-
-NoProducts.defaultProps = {
-  isQuery: false,
-};

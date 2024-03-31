@@ -10,4 +10,5 @@ export type Product = {
   capacity: string;
   ram: string;
   color: string;
+  itemId: string;
 };

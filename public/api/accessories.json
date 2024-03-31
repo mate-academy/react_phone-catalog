@@ -92,7 +92,7 @@
     "capacity": "38mm",
     "priceRegular": 199,
     "priceDiscount": 169,
-    "colorsAvailable": ["space gray", "silver", "gold"],
+    "": ["space gray", "silver", "gold"],
     "color": "gold",
     "images": [
       "img/accessories/apple-watch-series-3/gold/00.webp",

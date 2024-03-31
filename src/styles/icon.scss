@@ -1,16 +1,11 @@
 .icon {
-  // position: relative;
-
   display: block;
-  // width: 100%;
-  // padding-bottom: 100%;
   width: 16px;
   height: 16px;
 
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
-  // text-decoration: none;
 
   &--favorites {
     background-image: url(../images/icons/favorites.svg);

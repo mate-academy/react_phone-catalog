@@ -2509,9 +2509,7 @@
     "images": [
       "img/phones/apple-iphone-xr/coral/00.webp",
       "img/phones/apple-iphone-xr/coral/01.webp",
-      "img/phones/apple-iphone-xr/coral/02.webp",
-      "img/phones/apple-iphone-xr/coral/03.webp",
-      "img/phones/apple-iphone-xr/coral/04.webp"
+      "img/phones/apple-iphone-xr/coral/02.webp"
     ],
     "description": [
       {
@@ -2606,8 +2604,7 @@
       "img/phones/apple-iphone-xr/white/00.webp",
       "img/phones/apple-iphone-xr/white/01.webp",
       "img/phones/apple-iphone-xr/white/02.webp",
-      "img/phones/apple-iphone-xr/white/03.webp",
-      "img/phones/apple-iphone-xr/white/04.webp"
+      "img/phones/apple-iphone-xr/white/03.webp"
     ],
     "description": [
       {
@@ -5648,7 +5645,7 @@
     "id": "apple-iphone-14-pro-128gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
-    "name": "Apple iPhone 14 Pro 128GB Space Black",
+    "name": "Apple iPhone 14 Pro 128GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "128GB",
     "priceRegular": 1056,
@@ -5695,7 +5692,7 @@
     "id": "apple-iphone-14-pro-256gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
-    "name": "Apple iPhone 14 Pro 256GB Space Black",
+    "name": "Apple iPhone 14 Pro 256GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "256GB",
     "priceRegular": 1200,
@@ -5742,7 +5739,7 @@
     "id": "apple-iphone-14-pro-512gb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
-    "name": "Apple iPhone 14 Pro 512GB Space Black",
+    "name": "Apple iPhone 14 Pro 512GB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "512GB",
     "priceRegular": 1466,
@@ -5789,7 +5786,7 @@
     "id": "apple-iphone-14-pro-1tb-gold",
     "category": "phones",
     "namespaceId": "apple-iphone-14-pro",
-    "name": "Apple iPhone 14 Pro 1TB Space Black",
+    "name": "Apple iPhone 14 Pro 1TB Gold",
     "capacityAvailable": ["128GB", "256GB", "512GB", "1TB"],
     "capacity": "1TB",
     "priceRegular": 1740,

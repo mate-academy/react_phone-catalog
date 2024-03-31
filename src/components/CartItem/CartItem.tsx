@@ -16,6 +16,8 @@ export const CartItem: React.FC<Props> = ({ product }) => {
     name,
     price,
     id,
+    itemId,
+    category,
   } = product;
 
   const {
@@ -51,7 +53,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             <div className="cart-item__delete-icon" />
           </button>
           <Link
-            to="/"
+            to={`/${category}/${itemId}`}
             className="cart-item__link"
           >
             <div className="cart-item__image-container">

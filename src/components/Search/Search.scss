@@ -7,7 +7,6 @@
     align-items: center;
     height: 100%;
     background-color: $colorWhite;
-    // box-shadow: -1px 0 0 0 $colorElements;
     border-left: 1px solid $colorElements;
 
     transform: background-color 0.3s;
@@ -58,11 +57,9 @@
     width: calc(100% - 144px);
     height: 100%;
 
-    // box-shadow: -1px 0 0 0 $colorElements;
     border-inline: 1px solid $colorElements;
 
     @include onTablet {
-      // left: 96px;
       width: calc(100% - 192px);
     }
 

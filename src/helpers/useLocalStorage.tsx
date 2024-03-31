@@ -21,10 +21,6 @@ export function useLocalStorage<T>(
   });
 
   const save = (newValue: T) => {
-    // const preparedValue = newValue instanceof Function
-    //   ? newValue(value)
-    //   : newValue;
-
     localStorage.setItem(key, JSON.stringify(newValue));
     setValue(newValue);
   };

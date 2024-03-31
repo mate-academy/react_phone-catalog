@@ -1,0 +1,45 @@
+@import "../../styles/main";
+
+.product-details-page {
+  &__content {
+    margin-top: 24px;
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__back {
+    margin-top: 24px;
+
+    @include onTablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    margin: 16px 0 32px;
+    @extend %h2;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__section {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}

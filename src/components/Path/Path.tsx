@@ -1,33 +1,42 @@
 import { Link, useLocation } from 'react-router-dom';
 import './Path.scss';
+import React from 'react';
 
-export const Path = () => {
+type Props = {
+  name?: string;
+};
+
+export const Path: React.FC<Props> = ({ name }) => {
   const { pathname } = useLocation();
-  const pathParts = pathname.split('/').filter(name => name !== '');
+  const path = pathname.slice(1).split('/')[0];
+  const normalizedPath = path[0].toUpperCase() + path.slice(1);
 
   return (
     <div className="path">
       <Link to="/">
         <div className="icon icon--home" />
       </Link>
+      <div className="icon icon--arrow-right-disabled" />
 
-      {pathParts.map((part, index, arr) => (
-        <div className="path__part" key={part}>
+      {name ? (
+        <div className="path__part">
+          <Link to={`/${path}`} className="path__link">
+            {normalizedPath}
+          </Link>
           <div className="icon icon--arrow-right-disabled" />
-
-          {arr.length - 1 === index
-            ? (
-              <p className="path__text">
-                {part[0].toUpperCase() + part.slice(1)}
-              </p>
-            )
-            : (
-              <Link to={`/${part}`} className="path__link">
-                {part[0].toUpperCase() + part.slice(1)}
-              </Link>
-            )}
+          <p className="path__text">
+            {name}
+          </p>
         </div>
-      ))}
+      ) : (
+        <p className="path__text">
+          {normalizedPath}
+        </p>
+      )}
     </div>
   );
+};
+
+Path.defaultProps = {
+  name: '',
 };
