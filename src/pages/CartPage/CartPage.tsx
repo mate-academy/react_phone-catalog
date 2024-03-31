@@ -83,7 +83,7 @@ export const CartPage: React.FC = () => {
         </div>
       </div>
       {showPopUp && (
-        <PopUp />
+        <PopUp closePopUp={setShowPopUp} />
       )}
     </div>
   );

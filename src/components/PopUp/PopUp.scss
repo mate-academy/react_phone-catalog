@@ -3,13 +3,40 @@
 }
 
 .popup-box {
-  color: red;
+  border: 1px solid #89939a;
   position: absolute;
   left: 0;
-  // top: 0;
   width: 100%;
   bottom: 0;
   height: 25vh;
-  background-color: lightgray;
-  opacity: 0.5;
+  background-color: #fff;
+  opacity: 0.95;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+
+  @media (min-width: 1199px) {
+    position: absolute;
+    left: 0;
+    top: 10px;
+  }
+}
+
+.popup-button-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 70%;
+}
+
+.popup-button {
+  width: 30vw;
+  height: 200%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background-color: black;
+  // opacity: 1;
 }
