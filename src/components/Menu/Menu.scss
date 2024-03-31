@@ -1,0 +1,11 @@
+@import "../../utils/utils";
+
+.Menu {
+  background-color: #fff;
+  text-transform: uppercase;
+  z-index: 2;
+
+  &__content {
+    padding: 24px;
+  }
+}
