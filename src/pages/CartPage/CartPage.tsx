@@ -29,7 +29,7 @@ export const CartPage: React.FC = () => {
       return totalSumm;
     });
     setCartSummary(totalSumm);
-  }, [state.card]);
+  }, [state.card, state.render]);
 
   const addItem = (amountItem: number) => {
     setCartSummary(prevState => +prevState + amountItem);
