@@ -1,0 +1,33 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+
+@mixin section-grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns:repeat(4, 1fr);
+  padding: 0 16px;
+  width: 100%;
+  justify-content: center;
+
+  @include on-tablet {
+    grid-template-columns:repeat(12, 1fr);
+    padding: 0 24px;
+  }
+
+  @include on-desktop {
+    grid-template-columns:repeat(24, 32px);
+    padding: 0;
+  }
+}
