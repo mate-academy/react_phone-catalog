@@ -1,5 +1,8 @@
 .button{
+  cursor: pointer;
+
   &__back{
+    cursor: pointer;
     background-color: transparent;
     border: transparent;
     color: $c-secondary;
@@ -23,6 +26,8 @@
 
   &__add{
     cursor: pointer;
+
+    border-style: none;
 
     max-width: 176px;
     flex-grow: 1;

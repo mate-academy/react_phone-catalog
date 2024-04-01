@@ -32,6 +32,13 @@
     padding: 0 0 30px;
     border-bottom: 1px solid $c-elements;
 
+    &-not-ready-text {
+      margin-top: 5px;
+      font-size: 14px;
+      font-weight: 600;
+      text-align: center;
+    }
+
     &-title {
       display: flex;
       gap: 10px;
@@ -100,6 +107,8 @@
     }
 
     &-select {
+      cursor: pointer;
+
       width: 100%;
       border: 1px solid $c-icons;
       padding: 10px 12px;
@@ -114,6 +123,10 @@
         background-image: url('../../../../public/img/svg/Arrow__down.svg');
         background-repeat: no-repeat;
         background-position: center right 10px;
+      }
+
+      &--option {
+        cursor: pointer;
       }
     }
   }
@@ -177,6 +190,10 @@
     display: flex;
     gap: 12px;
     align-items: flex-start;
+
+    &--chek {
+      cursor: pointer;
+    }
   }
 
   &__modal {
@@ -244,12 +261,14 @@
   }
 
   &__button {
+    cursor: pointer;
+
     width: 185px;
     align-self: center;
     margin-bottom: 20px;
     height: 40px;
     background-color: $c-primary;
-    border: 1px solid $c-elements;
+    border: none;
     color: $c-white;
     font-size: 14px;
     font-weight: 600;
@@ -268,7 +287,7 @@
       transition: all 0.5s;
       background-color: $c-white;
       color: $c-secondary;
-      border-color: $c-secondary;
+      border: 1px solid $c-elements;
       box-shadow: none;
     }
   }

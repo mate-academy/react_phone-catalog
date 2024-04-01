@@ -32,11 +32,15 @@ export const Header = () => {
         {isShowSearchInput && <Search />}
 
         <NavLink to="/favourites" className={getLinkClass}>
-          <img src="./img/svg/Heart.svg" alt="heart" />
+          <img
+            src="./img/svg/Heart.svg"
+            alt="heart"
+            className="header__icons"
+          />
           {favCount !== 0 && <span>{favCount}</span>}
         </NavLink>
         <NavLink to="/cart" className={getLinkClass}>
-          <img src="./img/svg/Bag.svg" alt="cart" />
+          <img src="./img/svg/Bag.svg" alt="cart" className="header__icons" />
           {inCartCount !== 0 && <span>{inCartCount}</span>}
         </NavLink>
       </div>

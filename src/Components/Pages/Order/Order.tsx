@@ -80,7 +80,7 @@ export const Order: FC<Props> = ({ products }) => {
             vibes during testing!
           </div>
           <button
-            className="order__button button"
+            className="order__button"
             type="button"
             onClick={handleNavigate}
           >
@@ -201,13 +201,22 @@ export const Order: FC<Props> = ({ products }) => {
                   id="store"
                   className="order__fieldset-select"
                 >
-                  <option value="st1" className="order__fieldset-select-0">
+                  <option
+                    value="st1"
+                    className="order__fieldset-select--option"
+                  >
                     Khreshchatyk St., 11
                   </option>
-                  <option value="st2" className="order__fieldset-select-0">
+                  <option
+                    value="st2"
+                    className="order__fieldset-select--option"
+                  >
                     Polkova St., 61
                   </option>
-                  <option value="st3" className="order__fieldset-select-0">
+                  <option
+                    value="st3"
+                    className="order__fieldset-select--option"
+                  >
                     Chornomorska St., 1
                   </option>
                 </select>
@@ -228,7 +237,7 @@ export const Order: FC<Props> = ({ products }) => {
                     type="checkbox"
                     id="check1"
                     name="check"
-                    className="order__check"
+                    className="order__checkbox--chek"
                     onClick={handleFirstStatement}
                     required
                   />
@@ -250,22 +259,18 @@ export const Order: FC<Props> = ({ products }) => {
                 <div className="order__checkbox">
                   <input
                     type="checkbox"
-                    id="check1"
+                    id="check2"
                     name="check"
-                    className="order__checkbox"
+                    className="order__checkbox--chek"
                     onClick={handleSecondStatement}
                     required
                   />
                   <label
-                    htmlFor="check1"
+                    htmlFor="check2"
                     className="order__fieldset-sText-small-p"
                   >
-                    I acknowledge and accept the{' '}
-                    <span className="order__link-des">Terms of Conditions</span>
-                    , including the{' '}
-                    <span className="order__link-des">
-                      Provisions on Personal Data Processing.
-                    </span>
+                    I acknowledge and accept the Terms of Conditions , including
+                    the Provisions on Personal Data Processing.
                   </label>
                 </div>
               </div>
@@ -297,13 +302,11 @@ export const Order: FC<Props> = ({ products }) => {
               Confirm Order
             </button>
             <p className="order__fieldset-sText-small-p">
-              We`ll email your{' '}
-              <span className="order__link-des">Terms of Conditions</span>
-              and{' '}
-              <span className="order__link-des">
-                Provisions on Personal Data Processing
-              </span>{' '}
-              and payment receipt.
+              We`ll email your Terms of Conditions and Provisions on Personal
+              Data Processing and payment receipt.
+            </p>
+            <p className="order__fieldset-not-ready-text">
+              &#40;This feature is not available at this time !&#41;
             </p>
           </div>
         </div>

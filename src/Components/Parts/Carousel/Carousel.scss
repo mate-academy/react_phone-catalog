@@ -32,6 +32,7 @@
   }
 
   &__button {
+    cursor: pointer;
     border: 1px solid $c-icons;
     background-color: transparent;
     transition: all 0.3s ease;
@@ -58,6 +59,7 @@
   }
 
   &__item-btn {
+    cursor: pointer;
     height: 5px;
     width: 14px;
     border: 1px solid transparent;
