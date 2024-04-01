@@ -141,8 +141,6 @@ export const ProductPage: React.FC = () => {
 
       {itemsPerpage !== 'All' && <Pagination pages={copyOfProducts.length}/>}
 
-
-
     </div>
   );
 };

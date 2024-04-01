@@ -21,8 +21,3 @@ export interface Product {
   zoom: string,
   cell: string,
 }
-
-// export type Order = Array<{
-//   item: Product,
-//   amount: number,
-// }>

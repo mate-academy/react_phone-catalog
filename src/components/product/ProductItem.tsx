@@ -2,7 +2,6 @@
 import classNames from 'classnames';
 import {
   Link,
-  // useLocation,
 } from 'react-router-dom';
 import './productsItem.scss'
 import
@@ -122,7 +121,5 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
       </div>
 
     </div>
-
-
   )
 }

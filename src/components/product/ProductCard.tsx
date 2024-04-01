@@ -104,15 +104,6 @@ export const ProductCard: React.FC = () => {
     <div className="">
       <BackButton />
 
-      {/* <div
-        className="back-button-box mb-16"
-        onClick={() => navigate(-1)}
-      >
-        <div className="back-button-align mr-4" >
-          <img src="./img/icons/arrowBackBlack.svg" alt="img" />
-        </div>
-        <div className="back-button">Back</div>
-      </div> */}
       <div>
         <div className="font-header" ref={topPageRef}>
           {product?.name}
@@ -263,7 +254,6 @@ export const ProductCard: React.FC = () => {
                   </div>
                 </div>
               </div>
-              {/* <div>ID: {product?.id}</div> */}
             </div>
           </div>
         </div>

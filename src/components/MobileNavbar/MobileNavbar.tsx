@@ -3,17 +3,13 @@ import {
   useSearchParams,
   NavLink,
   useLocation,
-  // useParams,
 } from 'react-router-dom';
 import classNames from 'classnames';
 import './MobileNavbar.scss';
 import {
-  // useCallback,
   useContext,
   useEffect,
-  // useState
 } from 'react';
-// import debounce from 'lodash.debounce';
 import { StateContext } from '../../AppContext';
 
 type Props = {
@@ -64,7 +60,6 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
       <div className="links-icons">
         <div className="navbar-mob">
           <div className="navbar--flex-mob">
-            {/* {location.pathname !== '/cart' && ( */}
             <div className="navbar-mob">
               <div
                 className={classNames('navbar-box-item-mob', {
@@ -98,7 +93,6 @@ const MobileNavbar: React.FC<Props> = ({ onClick }) => {
                 </NavLink>
               </div>
             </div>
-            {/* )} */}
           </div>
         </div>
 

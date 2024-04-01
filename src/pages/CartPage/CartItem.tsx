@@ -30,7 +30,7 @@ export const CartItem : React.FC<Props> = ({ summary, reduce, phone }) => {
       <div className="cart-element">
         <div className="cart-button-box-chunk">
           <div
-            className=""
+            className="close"
             onClick={
               () => deleteAllSimilar(phone)
             }

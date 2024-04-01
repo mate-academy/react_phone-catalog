@@ -6,7 +6,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  // height: auto;
 }
 
 .banner-button {
@@ -46,7 +45,6 @@ body {
   gap: 16px;
 
   @media screen and (max-width: 1199px) {
-    // display: none;
     overflow: hidden;
   }
 }
@@ -56,13 +54,8 @@ body {
   height: 400px;
   background-repeat: no-repeat;
   @media (max-width: 640px) {
-    // width: 100%;
-    // height: auto;
     aspect-ratio: 1 / 1;
   }
-  // background-clip: ;
-  // max-width: 100%;
-  // height: auto;
 }
 
 .big-title {
@@ -100,7 +93,6 @@ body {
 
 .home-page-header-text {
   color: var(--gray-primary, #313237);
-  /* H1 */
   font-family: Mont, sans-serif;
   font-size: 32px;
   font-style: normal;
@@ -130,10 +122,6 @@ body {
     aspect-ratio: 1 / 1;
   }
 }
-
-// .category-box {
-//   width: 700px;
-// }
 
 .left {
   background-color: burlywood;

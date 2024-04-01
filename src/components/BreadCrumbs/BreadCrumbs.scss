@@ -1,6 +1,5 @@
 .navigation-block {
   display: flex;
-  // justify-content: center;
   align-items: center;
   width: fit-content;
   color: #89939a;
@@ -36,7 +35,6 @@
   display: grid;
   gap: 16px;
   grid-template-columns: 272px 272px 272px 272px;
-  // justify-content: space-between;
 
   @media screen and (max-width: 1199px) {
     grid-template-columns: 272px 272px 272px;
@@ -47,12 +45,10 @@
     justify-content: space-around;
   }
   @media screen and (max-width: 600px) {
-    // overflow: hidden;
     grid-template-columns: 272px 272px;
     justify-content: space-around;
   }
   @media screen and (min-width: 300px) and (max-width: 600px) {
-    // overflow: hidden;
     grid-template-columns: 272px ;
     justify-content: space-around;
   }

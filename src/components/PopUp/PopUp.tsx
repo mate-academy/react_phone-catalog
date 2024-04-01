@@ -8,13 +8,12 @@ type Props = {
 };
 
 const PopUp: React.FC<Props> = ({ closePopUp }) => {
-
-  const {  dispatch } = useContext(StateContext);
+  const { dispatch } = useContext(StateContext);
 
   function cleanTheCart() {
     localStorage.removeItem('cart');
     closePopUp(false);
-    dispatch({ type: ACTIONS.RENDER_PAGE })
+    dispatch({ type: ACTIONS.RENDER_PAGE });
   }
 
   return (

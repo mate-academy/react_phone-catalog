@@ -6,7 +6,6 @@ import { PaginationSlider } from '../../pagination/PaginationSlider';
 import { StateContext } from '../../AppContext';
 import { NavLink } from 'react-router-dom';
 import { getHotPriceProducts, getBrandNewProducts } from '../../helpers/utils';
-// import MobileNavbar from '../../components/MobileNavbar';
 
 export const HomePage = () => {
   const [sliderImgSize, setSliderImgSize] = useState(0);
@@ -75,7 +74,6 @@ export const HomePage = () => {
 
   return (
     <div>
-      {/* <MobileNavbar /> */}
       <div className="banner-block">
         <div
           className="banner-button banner-button--left banner-block"
