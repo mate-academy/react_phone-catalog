@@ -22,6 +22,8 @@
   }
 
   &__add{
+    cursor: pointer;
+
     max-width: 176px;
     flex-grow: 1;
     height: 40px;
@@ -45,6 +47,8 @@
   }
 
   &__like{
+    cursor: pointer;
+
     background-color: transparent;
     border: 1px solid $c-icons;
     width: 40px;
@@ -66,6 +70,8 @@
   }
 
   &__arrow{
+    cursor: pointer;
+
     height: 16px;
     width: 16px;
 
@@ -75,6 +81,8 @@
   }
 
   &__small{
+    cursor: pointer;
+
     height: 32px;
     width: 32px;
     background-image: url("../../../public/img/svg/Arrow__right.svg");

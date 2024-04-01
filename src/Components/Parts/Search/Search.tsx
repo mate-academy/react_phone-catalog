@@ -24,6 +24,7 @@ const Search: FC = memo(() => {
 
   const handleSearchChange = (ev: ChangeEvent<HTMLInputElement>) => {
     setAppliedQuery(ev.target.value);
+    setSearchParams(getSearchWith(searchParams, { page: '1' }));
   };
 
   return (

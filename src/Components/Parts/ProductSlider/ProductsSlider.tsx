@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { FC, useState } from 'react';
 import classNames from 'classnames';
 import { Product } from '../../../types/Product';
@@ -11,9 +12,8 @@ type Props = {
 };
 
 export const ProductsSlider: FC<Props> = ({ title, products }) => {
-  const visibleCount = 4;
   const [start, setStart] = useState(0);
-  const end = start + visibleCount;
+  const end = start + 4;
   const prevDisabled = start === 0;
   const nextDisabled = start === products.length - 4;
 
