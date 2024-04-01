@@ -1,0 +1,50 @@
+@import '../../styles/main';
+
+.favoritesPage {
+  @include section-grid;
+}
+
+.topContainer {
+  grid-column: 1 / -1;
+}
+
+.title {
+  margin-top: 40px;
+
+  @extend %h1-mobile;
+
+  @include on-tablet {
+    @include h1-tablet;
+  }
+}
+
+.count {
+  @extend %body-text;
+
+  color: var(--color-secondary);
+}
+
+.container {
+  grid-column: 1 / -1;
+  margin-top: 40px;
+
+  @include section-grid;
+
+  padding: 0;
+
+  @include on-tablet {
+    padding: 0;
+  }
+}
+
+.product {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}

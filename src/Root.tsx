@@ -7,6 +7,7 @@ import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
 import { CartPage } from './modules/CartPage';
+import { FavoritesPage } from './modules/FavoritesPage';
 
 export const Root = () => (
   <ThemeProvider>
@@ -18,6 +19,7 @@ export const Root = () => (
             <Route path="/phones" element={<PhonesPage />} />
             <Route path="tablets" element={<TabletsPage />} />
             <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path="favorites" element={<FavoritesPage />} />
             <Route path="cart" element={<CartPage />} />
           </Route>
         </Routes>
