@@ -26,7 +26,7 @@ export const ProductList: FC<Props> = ({ products, title }) => {
   let countProducts = products.length;
   let paginationCount = 0;
   const currentPage = Number(searchParams.get('page')) || 1;
-  const sortedBy = searchParams.get('sortBy') || '';
+  const sortedBy = searchParams.get('sortBy') || 'Choose type';
 
   if (isShowResSearch) {
     countProducts = productsToSearch.length;
@@ -35,6 +35,7 @@ export const ProductList: FC<Props> = ({ products, title }) => {
   }
 
   const perPage = Number(searchParams.get('perPage')) || countProducts;
+  const perPageSort = searchParams.get('perPage') || 'All';
   const lastPage = Math.ceil(countProducts / perPage);
 
   if (isShowResSearch) {
@@ -77,7 +78,7 @@ export const ProductList: FC<Props> = ({ products, title }) => {
               />
               <Dropdowns
                 options={viewPerPage}
-                startValue={`${perPage}`}
+                startValue={`${perPageSort}`}
                 label="Items on page"
                 searchParamsKey="perPage"
               />
