@@ -11,9 +11,11 @@ import {
   getCartIconSrc,
   getFavoritesIconSrc,
 } from '../../servises/iconSrc';
+import { useAppContext } from '../../context/AppContext';
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { theme } = useTheme();
+  const { cart, favorites } = useAppContext();
 
   const toggleIsMenuOpen = () => {
     setIsMenuOpen((prev: boolean) => !prev);
@@ -80,11 +82,11 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <div className={styles.actionIcon}>
               <img src={favoritesIconSrc} alt="Favorites" />
-              {/* {favorites.length > 0 && (
+              {favorites.length > 0 && (
                 <span className={styles.count}>
                   <p className={styles.countText}>{favorites.length}</p>
                 </span>
-              )} */}
+              )}
             </div>
           </NavLink>
           <NavLink
@@ -95,11 +97,11 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <div className={styles.actionIcon}>
               <img src={cartIconSrc} alt="Cart" className={styles.icon} />
-              {/* {cart.length > 0 && (
+              {cart.length > 0 && (
                 <span className={styles.count}>
                   <p className={styles.countText}>{cart.length}</p>
                 </span>
-              )} */}
+              )}
             </div>
           </NavLink>
         </div>
@@ -121,6 +123,8 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
         toggleIsMenuOpen={toggleIsMenuOpen}
         favoritesIconSrc={favoritesIconSrc}
         cartIconSrc={cartIconSrc}
+        favorites={favorites}
+        cart={cart}
       />
     </header>
   );

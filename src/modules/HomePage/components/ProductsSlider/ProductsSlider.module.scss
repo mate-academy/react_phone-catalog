@@ -1,0 +1,81 @@
+@import '../../../../styles/main';
+
+.productsSlider {
+  display: block;
+}
+
+.topContainer {
+  @include section-grid;
+}
+
+.topWrapper {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  @extend %h2-tablet;
+}
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  border-radius: 5%;
+
+  &:hover {
+      border: 1px solid var(--color-primary);
+      background-color: var(--color-hover);
+  }
+}
+
+.isDisabled {
+  cursor: default;
+  opacity: 0.5;
+
+  &:hover {
+    border: 1px solid var(--color-surface);
+  }
+}
+
+.iconNext {
+  transform: rotate(180deg);
+}
+
+.container {
+  @include section-grid;
+
+  justify-content: center;
+  padding-right: 0;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
+}
+
+.mainContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  gap: 16px;
+}
+
+.sliderWrapper {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}
+
