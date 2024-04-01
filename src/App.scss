@@ -1,1 +1,14 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.header, footer {
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

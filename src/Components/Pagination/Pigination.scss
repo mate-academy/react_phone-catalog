@@ -1,0 +1,69 @@
+@import '../../Global.scss';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  gap: 16px;
+  margin-bottom: 40px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $elements-color;
+
+    &.is-active {
+      background-color: $primary-color;
+    }
+
+    &--button {
+      background-color: white;
+      border: 1px solid $icon-color;
+    }
+
+    &--button:disabled {
+      border: 1px solid $elements-color;
+    }
+  }
+
+  &__pages {
+   display: flex;
+   flex-direction: row;
+   gap: 8px;
+  }
+
+  &__link {
+    text-decoration: none;
+    @include body-text14;
+
+    &.is-active {
+      color: white;
+
+    }
+  }
+
+  &__arrey {
+    display: inline-block;
+    padding: 2.5px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+
+    &--prev {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+  
+    &--next {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+}
+
+.productList {
+  margin-bottom: 40px;
+}

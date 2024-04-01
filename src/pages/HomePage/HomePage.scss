@@ -1,0 +1,19 @@
+.homePage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__section:not(:first-child) {
+    margin-bottom: 80px;
+  }
+
+  &__section:first-child {
+    margin-bottom: 72px;
+  } 
+}
+
+
+
+
+
+

@@ -23,6 +23,7 @@
     "@mate-academy/scripts": "^1.7.9",
     "@mate-academy/students-ts-config": "latest",
     "@mate-academy/stylelint-config": "latest",
+    "@types/lodash.debounce": "^4.0.9",
     "@types/node": "^16.18.80",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",

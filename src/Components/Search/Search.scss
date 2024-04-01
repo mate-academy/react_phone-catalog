@@ -1,0 +1,33 @@
+@import '../../Global.scss';
+
+.search {
+  position: relative;
+  width: 327px;
+  height: 64px;
+
+  &__icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 24px;
+    top: 24px;
+  }
+  
+  &__input {
+    width: 327px;
+    height: 64px;
+    text-indent: 24px;
+    border: transparent;
+    box-sizing: border-box;
+    border-left: 1px solid  $elements-color;
+  
+    &::placeholder {
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 17.89px;
+     
+    }
+  }
+}
+

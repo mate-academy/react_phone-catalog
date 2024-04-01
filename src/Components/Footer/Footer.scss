@@ -1,0 +1,57 @@
+@import '../../Global.scss';
+
+.footer {
+  height: 96px;
+  border-top: 1px solid  #E2E6E9;
+  box-sizing: border-box;
+  
+  &__items {
+    display: inline;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-self: center;
+    padding: 40px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+ 
+  &__link {
+    @include Uppercase;
+
+    text-decoration: none;
+    &.is-active {
+      color: #000;
+    }
+  } 
+
+    &__back {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+
+    &__link-back {
+      @include smoll-text;
+    }
+
+    &__logo {
+      display: flex;
+      width: 40px;
+      height: 24px;
+      
+    }
+
+    &__back-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icon-color;
+      background-color: $white;
+    }
+}

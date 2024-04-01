@@ -1,0 +1,116 @@
+@import '../../Global.scss';
+
+.cardsContainer__card {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.card {
+  width: 272px;
+  height: 503px;
+  flex-direction: column;
+  border: 1px solid $elements-color;
+  box-sizing: border-box;
+  text-decoration: none;
+  width: 272px;
+ 
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__item:first-child {
+    border-bottom: $elements-color solid  ;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 208px;
+    height: 208px;
+  }
+
+  &__icon-image {
+    width: 70%;
+    height: 95%;
+  }
+
+  &__theme {
+    margin-bottom: 6.5px;
+    width: 224px;
+    height: 42px;
+    @include body-text14;
+  }
+
+  &__price {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 6.5px;
+
+    &--discPrice {
+      @include H2;
+    }
+
+    &--hotPrices {
+      font-family: Mont;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      letter-spacing: 0em;
+      color: $secondary-color;
+      text-decoration: line-through;
+    }
+
+    &--brandNew {
+      @include H2;
+    }
+  }
+
+  &__char {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &--title {
+      @include smoll-text;
+    }
+
+    &--descr {
+      @include smoll-text;
+      color: $primary-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+    color: $white;
+    background-color: $primary-color;
+  }
+
+  &__favor {
+    display: flex;
+    align-content: center;
+    width: 40px;
+    height: 39px;
+    border: 1px solid $elements-color;
+  }
+}

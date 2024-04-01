@@ -1,0 +1,66 @@
+@import '/src/Global.scss';
+
+.header {
+  height: 64px;
+  display: block;
+  margin-bottom: 40px;
+  padding-left: 24px;
+  border-bottom: 1px solid  $elements-color;
+  box-sizing: border-box;
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__items-right  {
+   display: flex;
+   border-bottom: 1px solid $elements-color;
+  }
+
+  &__items-left {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 66px;
+    height: 63px;
+  }
+
+  &__favor {
+    display: flex;
+    width: 66px;
+    height: 63px;
+    align-content: center;
+    border-left: 1px solid $elements-color;
+    border-right: 1px solid $elements-color;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 64px;
+  }
+ 
+  &__link {
+    @include Uppercase;
+    text-decoration: none;
+
+    &.is-active {
+      color: $primary-color;
+    }
+  } 
+
+  &__logo {
+    display: flex;
+    width: 40px;
+    height: 24px;
+  }
+}

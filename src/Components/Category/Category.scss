@@ -1,0 +1,86 @@
+@import '../../Global.scss';
+
+.category {
+  width: 1136px;
+  height: 508;
+
+  &__title {
+    margin-bottom: 24px;
+    @include H1;
+  }
+
+  &__list {
+    display: flex;
+    gap: 18px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    width: 368px;
+    height: 443px;
+    box-sizing: border-box;
+  }
+
+  &__image-box {
+    position: relative;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    overflow: hidden;
+    
+
+    &--phones {
+      background-color: #FCDBC1;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--acccessories {
+      background-color: #973D5F;
+      ;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    left: 73px;
+    top: 8px;
+    
+    &--phones {
+      width: 386px;
+      height: 457px;
+      left: 73px;
+      top: 8px;
+    }
+
+    &--tablets {
+      width: 386px;
+      height: 457px;
+      left: 22px;
+      top: 27px;
+
+    }
+
+    &--acccessories {
+      width: 180%;
+      height: 100%;
+      left: 37px;
+      top: 50px;
+    }
+  }
+
+  &__link {
+    margin-bottom: 4px;
+    text-decoration: none;
+    
+    @include H3;
+  }
+
+  &__descr {
+    @include body-text14;
+    color: $secondary-color;
+  }
+}

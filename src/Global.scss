@@ -1,0 +1,69 @@
+$primary-color: #313237;
+$secondary-color: #89939A;
+$icon-color: #B4BDC3;
+$elements-color: #E2E6E9;
+$white: #FFFFFF;
+
+  @mixin H1 {
+    font-family: Mont, sans-serif; 
+    font-size: 32px; 
+    font-weight: 700; 
+    line-height: 41px; 
+    letter-spacing: -0.01em;
+    color: $primary-color;
+  }; 
+    
+  @mixin H2 {
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    letter-spacing: 0em;
+    color: $primary-color;
+  };
+    
+  @mixin H3 {
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    letter-spacing: 0em;
+    color: $primary-color;
+  };
+    
+  @mixin Uppercase {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $secondary-color;
+  };
+   
+  @mixin buttons {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    color: $primary-color;
+
+  };
+  
+  @mixin body-text14 {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0em;
+    color: $primary-color;
+  };
+   
+  @mixin smoll-text {
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    text-align: left;
+    color: $secondary-color;
+  };

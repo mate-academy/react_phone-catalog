@@ -1,0 +1,42 @@
+@import '../../Global.scss';
+
+.productPage {
+  &__items {
+    margin-left: 64px;
+  }
+
+  &__headings {
+    margin-bottom: 40px;
+  }
+  &__title {
+    @include H1;
+    margin-bottom: 8px;
+  }
+
+  &__text {
+    @include body-text14;
+  }
+
+  &__selecting {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__select-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px
+
+  }
+
+  &__small-text {
+    @include smoll-text;
+  }
+
+  &__select {
+    width: 176px;
+    height: 40px;
+    border: 1px solid $icon-color;
+  }
+}

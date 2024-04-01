@@ -1,0 +1,75 @@
+@import '../../Global.scss';
+
+.homePageSlider {
+  &__container {
+    display: block;
+    width: 1136px;
+    height: 432px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+
+  &__pic-box {
+    position: relative;
+    width: 1040px;
+    height: 400px;
+  }
+
+  &__img {
+    position: absolute;
+    width:100%;
+    height: 100%;
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $icon-color;
+    background-color: $white;
+  }
+
+  &__arr {
+    display: inline-block;
+    padding: 2.5px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+
+    &--right {  
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+    &--left {  
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $elements-color;
+
+    &.is-active {
+      background-color: $primary-color;
+    }
+  }
+}

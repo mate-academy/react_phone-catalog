@@ -1,0 +1,72 @@
+@import '/src/Global.scss';
+
+.cardsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.slider {
+  width: 1136px;
+  height: 572px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+ 
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 28px;
+  }
+
+  &__title {
+    @include H1;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    align-self: flex-end;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid $elements-color 1px;
+    background-color: $white;
+  }
+
+  &__button:hover {
+    border: solid 1px $primary-color;
+  }
+
+  &__button:disabled {
+    border: solid 1px $elements-color;
+  }
+
+  &__img {
+    display: inline-block;
+    padding: 2.5px;
+    border: solid black;
+    border-width: 0 2px 2px 0;
+
+    &--right {  
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+    &--left {  
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+}
+
+.disabled {
+  border-color: #B4BDC3;
+}
