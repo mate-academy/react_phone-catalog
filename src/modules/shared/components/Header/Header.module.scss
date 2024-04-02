@@ -1,4 +1,4 @@
-@import '../../../../styles/utils.scss';
+@import '../../../../styles/utils';
 
 .header {
   grid-area: header;
@@ -7,6 +7,7 @@
   background-color: $color-white;
 
   @include flex-center;
+
   justify-content: space-between;
 
   width: 100%;
@@ -15,13 +16,14 @@
 
 .headerLeft {
   @include flex-center;
+
   gap: 64px;
 }
 
 .headerLogo {
   width: 128px;
   height: 64px;
-  padding: 0 24px 0 24px;
+  padding: 0 24px;
 }
 
 .linkActive {

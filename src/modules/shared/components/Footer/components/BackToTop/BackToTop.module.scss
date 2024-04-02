@@ -1,7 +1,8 @@
-@import '../../../../../../styles/utils.scss';
+@import '../../../../../../styles/utils';
 
 .backToTopBlock {
   @include flex-center;
+  
   justify-content: space-between;
 
   height: 32px;

@@ -1,7 +1,8 @@
-@import '../../../../../../styles/utils.scss';
+@import '../../../../../../styles/utils';
 
 .navbar {
   @include flex-center;
+  
   justify-content: space-between;
   gap: 64px;
 

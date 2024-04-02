@@ -1,4 +1,4 @@
-@import '../../../../styles/utils.scss';
+@import '../../../../styles/utils';
 
 .footer {
   grid-area: footer;
@@ -14,6 +14,7 @@
 
 .wrapper {
   @include flex-center;
+  
   justify-content: space-between;
   height: 100%;
 }
