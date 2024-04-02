@@ -5,17 +5,67 @@
   align-items: center;
 }
 
-@mixin small-text {
-  color: $color-secondary;
-  font-size: 12px;
-  font-weight: 600;
-  line-height: 15.34px;
-  text-align: right;
+@mixin h1-desktop-tablet {
+  color: $color-primary;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
 }
 
-@mixin h1-text {
+@mixin h2-desktop-tablet {
   color: $color-primary;
   font-size: 32px;
-  font-weight: 700;
-  line-height: 40.9px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
 }
+
+@mixin h3-desktop-tablet {
+  color: $color-primary;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: 0;
+}
+
+@mixin h4-desktop-tablet {
+  color: $color-primary;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 26px;
+  letter-spacing: 0;
+}
+
+@mixin uppercase-desktop-tablet {
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons-desktop-tablet {
+  color: $color-primary;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin body-text-desktop-tablet {
+  color: $color-primary;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text-desktop-tablet {
+  color: $color-secondary;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+

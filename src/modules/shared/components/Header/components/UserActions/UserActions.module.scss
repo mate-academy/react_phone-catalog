@@ -1,0 +1,14 @@
+@import '../../../../../../styles/utils.scss';
+
+.userActions {
+  display: flex;
+  flex-direction: row;
+}
+
+.icon {
+  @include flex-center;
+
+  width: 64px;
+  height: 64px;
+  border-left: 1px solid $color-elements;
+}

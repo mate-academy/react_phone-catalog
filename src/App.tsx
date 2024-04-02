@@ -1,14 +1,14 @@
+import styles from './App.module.scss';
 import { Outlet } from 'react-router-dom';
-import './App.scss';
-import { Header } from './components/Header/Header';
-import { Footer } from './components/Footer/Footer';
+import { Header } from './modules/shared/components/Header';
+import { Footer } from './modules/shared/components/Footer/Footer';
 
 export const App = () => (
-  <div className="App">
+  <div className={styles.App}>
     <Header />
 
     <main>
-      <div className="container">
+      <div className={styles.container}>
         <Outlet />
       </div>
     </main>

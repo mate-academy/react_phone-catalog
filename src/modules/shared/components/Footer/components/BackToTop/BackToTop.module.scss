@@ -1,0 +1,21 @@
+@import '../../../../../../styles/utils.scss';
+
+.backToTopBlock {
+  @include flex-center;
+  justify-content: space-between;
+
+  height: 32px;
+  width: 118px;
+}
+
+.backToTopText {
+  @include uppercase-desktop-tablet;
+}
+
+.backToTopButton {
+  @include flex-center;
+
+  height: 32px;
+  width: 32px;
+  border: 1px solid $color-icons;
+}

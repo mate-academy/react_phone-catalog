@@ -1,0 +1,17 @@
+@import './styles/base.module.scss';
+
+.App {
+  min-height: 100vh;
+
+  display: grid;
+  grid-template-rows: 64px 1fr 96px;
+  grid-template-areas:
+    'header'
+    'main'
+    'footer';
+}
+
+.container {
+  margin: 0 auto;
+  padding: 0 152px;
+}

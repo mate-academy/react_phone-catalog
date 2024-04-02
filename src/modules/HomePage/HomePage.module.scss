@@ -1,0 +1,19 @@
+@import '../../styles/utils.scss';
+
+.homepage {
+  background-color: lightgray;
+}
+
+.section {
+  width: 100%;
+  height: 572px;
+  margin: 50px 0;
+}
+
+.mainTitle {
+  @include h1-desktop-tablet;
+}
+
+.subTitle {
+  @include h2-desktop-tablet;
+}

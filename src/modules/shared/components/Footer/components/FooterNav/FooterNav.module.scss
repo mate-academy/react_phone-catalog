@@ -1,0 +1,20 @@
+@import '../../../../../../styles/utils.scss';
+
+.navbar {
+  @include flex-center;
+  justify-content: space-between;
+  gap: 64px;
+
+  @include uppercase-desktop-tablet;
+}
+
+.navbarLink {
+  @include flex-center;
+
+  height: 64px;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $color-secondary;
+  outline: none;
+}

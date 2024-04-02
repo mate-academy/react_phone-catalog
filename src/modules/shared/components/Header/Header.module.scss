@@ -1,0 +1,40 @@
+@import '../../../../styles/utils.scss';
+
+.header {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  background-color: $color-white;
+
+  @include flex-center;
+  justify-content: space-between;
+
+  width: 100%;
+  border-bottom: 1px solid $color-icons;
+}
+
+.headerLeft {
+  @include flex-center;
+  gap: 64px;
+}
+
+.headerLogo {
+  width: 128px;
+  height: 64px;
+  padding: 0 24px 0 24px;
+}
+
+.linkActive {
+  position: relative;
+  color: $color-primary;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $color-primary;
+  }
+}

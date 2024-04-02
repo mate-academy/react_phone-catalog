@@ -1,0 +1,14 @@
+@import '~normalize.css';
+@import '../styles/utils.scss';
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  color: $color-primary;
+  position: relative;
+}

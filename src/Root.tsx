@@ -5,13 +5,15 @@ import {
   Navigate,
 } from 'react-router-dom';
 import { App } from './App';
-import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { HomePage } from './pages/HomePage/HomePage';
-import { PhonesPage } from './pages/PhonesPage/PhonesPage';
-import { TabletsPage } from './pages/TabletsPage/TabletsPage';
-import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
-import { CartPage } from './pages/CartPage/CartPage';
-import { AccessoriesPage } from './pages/AccesoriesPage/AccessoriesPage';
+import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
+import { HomePage } from './modules/HomePage/HomePage';
+import { PhonesPage } from './modules/PhonesPage/PhonesPage';
+import { TabletsPage } from './modules/TabletsPage/TabletsPage';
+import { FavouritesPage } from './modules/FavouritesPage/FavouritesPage';
+import { CartPage } from './modules/CartPage/CartPage';
+import { AccessoriesPage } from './modules/AccesoriesPage/AccessoriesPage';
+import { ContactsPage } from './modules/ContactsPage/ContactsPage';
+import { RightsPage } from './modules/RightsPage/RightsPage';
 
 export const Root = () => (
   <Router>
@@ -26,6 +28,9 @@ export const Root = () => (
 
         <Route path="favourites" element={<FavouritesPage />} />
         <Route path="cart" element={<CartPage />} />
+
+        <Route path="contacts" element={<ContactsPage />} />
+        <Route path="rights" element={<RightsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
