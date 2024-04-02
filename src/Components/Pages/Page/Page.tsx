@@ -37,7 +37,10 @@ export const Page: FC = () => {
   const [inCart, setInCart] = useLocalStorage('inCart', []);
 
   const favCount = favorites.length;
-  const inCartCount = inCart.length;
+  const inCartCount = inCart.reduce(
+    (acc: number, el: ProductInCart) => acc + el.count,
+    0,
+  );
   const navigate = useNavigate();
 
   const [searchParams] = useSearchParams();

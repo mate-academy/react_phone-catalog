@@ -49,6 +49,7 @@
     border: 1px solid $c-icons;
     background-color: $c-hover_BG;
     padding: 8px 0;
+    z-index: 1;
   }
 
   &__option {

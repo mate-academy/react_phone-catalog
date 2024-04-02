@@ -53,7 +53,8 @@ export const ProductList: FC<Props> = ({ products, title }) => {
       ? currentPage * perPage
       : paginationCount;
 
-  const sortedProducts = sortProducts(products, sortedBy);
+  const baseSortProducts = sortProducts(products, 'newest');
+  const sortedProducts = sortProducts(baseSortProducts, sortedBy);
   const sortedSearchProducts = sortProducts(productsToSearch, sortedBy);
   const visibleProducts = sortedProducts.slice(start, end);
   const visibleSearchProducts = sortedSearchProducts.slice(start, end);
