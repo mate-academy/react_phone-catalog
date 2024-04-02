@@ -1,0 +1,17 @@
+@import '/src/styles/utils/variables';
+
+.results-search {
+  &__count {
+    margin: 24px 0;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: $c-secondary;
+  }
+
+  &__not-found {
+    color: $c-secondary;
+    margin-bottom: 40px;
+  }
+}
