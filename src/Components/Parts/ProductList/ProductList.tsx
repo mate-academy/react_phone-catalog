@@ -10,9 +10,10 @@ import { Dropdowns } from '../Dropdowns/Dropdowns';
 import { ProductItem } from '../ProductItem/ProductItem';
 import { Pagination } from '../Pagination/Pagination';
 import './ProductList.scss';
+import '../../../styles/utils/ResultsSearch.scss';
 
 const optionSort = ['newest', 'hotprice', 'alphabetically'];
-const viewPerPage = ['4', '8', '16', 'all'];
+const viewPerPage = ['4', '8', '16'];
 
 type Props = {
   products: Product[];
@@ -26,7 +27,7 @@ export const ProductList: FC<Props> = ({ products, title }) => {
   let countProducts = products.length;
   let paginationCount = 0;
   const currentPage = Number(searchParams.get('page')) || 1;
-  const sortedBy = searchParams.get('sortBy') || 'Choose type';
+  const sortedBy = searchParams.get('sortBy') || 'Newest';
 
   if (isShowResSearch) {
     countProducts = productsToSearch.length;
@@ -34,8 +35,8 @@ export const ProductList: FC<Props> = ({ products, title }) => {
     countProducts = products.length;
   }
 
-  const perPage = Number(searchParams.get('perPage')) || countProducts;
-  const perPageSort = searchParams.get('perPage') || 'All';
+  const perPage = Number(searchParams.get('perPage')) || 16;
+  const perPageSort = searchParams.get('perPage') || '16';
   const lastPage = Math.ceil(countProducts / perPage);
 
   if (isShowResSearch) {
@@ -64,7 +65,7 @@ export const ProductList: FC<Props> = ({ products, title }) => {
           <Breadcrumbs />
         </div>
         <h1 className="product-list__title title">{title}</h1>
-        <p className="product-list__count">{`${countProducts} models`}</p>
+        <p className="product-list__count">{`${products.length} models`}</p>
         {!products.length ? (
           <NotResults categoryName={pathname.slice(1)} />
         ) : (

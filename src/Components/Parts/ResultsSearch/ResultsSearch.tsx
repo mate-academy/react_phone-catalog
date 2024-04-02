@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Product } from '../../../types/Product';
 import { ProductItem } from '../ProductItem/ProductItem';
-import './ResultsSearch.scss';
 
 type Props = {
   products: Product[];

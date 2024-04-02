@@ -17,6 +17,10 @@ const Search: FC = memo(() => {
     setSearchParams(getSearchWith(searchParams, { query: debounceSearch }));
   }, [debounceSearch]);
 
+  useEffect(() => {
+    setAppliedQuery('');
+  }, [pathname]);
+
   const handleResetValue = () => {
     setAppliedQuery('');
     setSearchParams(getSearchWith(searchParams, { query: null }));

@@ -16,10 +16,12 @@
       color: $c-primary;
     }
 
+    &--text{
+      line-height: 16px;
+    }
 
     &--box{
       display: flex;
-      align-items: center;
       row-gap: 4px;
     }
   }
