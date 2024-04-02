@@ -40,8 +40,8 @@ export const CartItem: FC<Props> = ({ product }) => {
         <div className="cart-item__actions">
           <button
             type="button"
-            className={classNames('button__small button__small--left', {
-              'button__small--disabled': count === 1,
+            className={classNames('button__count button__count--minus', {
+              'button__count--disabled': count === 1,
             })}
             onClick={handleArrowLeft}
             disabled={count === 1}
@@ -49,7 +49,7 @@ export const CartItem: FC<Props> = ({ product }) => {
           <div className="cart-item__count">{count}</div>
           <button
             type="button"
-            className="button__small"
+            className="button__count button__count--plus"
             onClick={handleArrowRight}
           />
         </div>
