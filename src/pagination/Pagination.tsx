@@ -4,6 +4,7 @@ import "./pagination.scss";
 import { useSearchParams } from "react-router-dom";
 import { ArrowForward, ArrowBack } from "./ArrowButtons";
 import { useSetCurrentPage } from "../helpers/utils";
+// import { useEffect } from "react";
 
 type Props = {
   pages: number,

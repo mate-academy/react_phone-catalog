@@ -32,29 +32,28 @@ body {
 .images-container {
   display: flex;
   max-width: 1040px;
-  overflow-x: scroll;
-  scroll-behavior: smooth;
-  transition: scroll 0.3s ease-in-out;
   width: 100%;
+  overflow: hidden;
 
-}
-
-.chunk-container {
-  display: flex;
-  justify-content: space-between;
-  gap: 16px;
-
-  @media screen and (max-width: 1199px) {
-    overflow: hidden;
-  }
 }
 
 .image {
   width: 1040px;
   height: 400px;
-  background-repeat: no-repeat;
+  transition-duration: 500ms;
+
   @media (max-width: 640px) {
     aspect-ratio: 1 / 1;
+  }
+}
+
+.chunk-container {
+  display: flex;
+  // justify-content: space-between;
+  gap: 16px;
+
+  @media screen and (max-width: 1199px) {
+    overflow: hidden;
   }
 }
 
@@ -112,7 +111,6 @@ body {
 }
 
 .square {
-
   width: 368px;
   height: 368px;
 
@@ -127,12 +125,10 @@ body {
   background-color: burlywood;
   display: flex;
   justify-content: flex-end;
-
 }
 
 .category-img {
   @media (max-width: 1199px) {
-
     display: flex;
     justify-content: space-between;
     width: 80%;

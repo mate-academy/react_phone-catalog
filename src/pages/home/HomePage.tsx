@@ -5,73 +5,71 @@ import './homePage.scss';
 import { PaginationSlider } from '../../pagination/PaginationSlider';
 import { StateContext } from '../../AppContext';
 import { NavLink } from 'react-router-dom';
-import { getHotPriceProducts, getBrandNewProducts } from '../../helpers/utils';
+import {
+  getHotPriceProducts,
+  getBrandNewProducts,
+} from '../../helpers/utils';
 
 export const HomePage = () => {
   const [sliderImgSize, setSliderImgSize] = useState(0);
   const sliderRef = useRef<null | HTMLDivElement>(null);
-  const scrollAmount = 1040;
-  const [banners] = useState([
-    [
-      { image: '/img/icons/Banner.svg' },
-      { image: '/img/icons/Banner2jpg.jpg' },
-    ],
-    [
-      { image: '/img/icons/image16.png' },
-      { image: '/img/icons/image16_2.png' },
-    ],
-  ]);
-  const { state } = useContext(StateContext);
-  const [slideTrigger, setSlideTrigger] = useState(false);
-  console.log(banners);
-  const w2 = document.getElementById('root')?.offsetWidth || {};
-  useEffect(() => {
-    if (w2 !== undefined) {
-      console.log(Math.trunc(+w2), 'width');
-    }
 
-    if (sliderRef.current && +w2 <= 639) {
+  const [step, setStep] = useState(0);
+
+  const banners = [
+    [
+      { image: './img/icons/Banner.svg' },
+      { image: './img/icons/Banner2jpg.jpg' },
+    ],
+    [
+      { image: './img/icons/image16.png' },
+      { image: './img/icons/image16_2.png' },
+    ],
+  ];
+
+  const { state } = useContext(StateContext);
+  const [slideTrigger, _setSlideTrigger] = useState(false);
+
+  const screenWidth = document.getElementById('root')?.offsetWidth || {};
+  useEffect(() => {
+
+    if (sliderRef.current && +screenWidth <= 639) {
       setSliderImgSize(1);
     } else {
       setSliderImgSize(0);
     }
 
-    let timer: any;
-    if (sliderRef.current) {
-      console.log(
-        sliderRef.current.offsetWidth,
-        'sliderRef.current.offsetWidth',
-      );
+    const click = document.getElementById('buttonToClick');
 
-      if (sliderRef.current?.scrollLeft === 0) {
-        sliderRef.current.scrollLeft += scrollAmount;
-        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
-      } else {
-        sliderRef.current.scrollLeft -= scrollAmount;
-        timer = setTimeout(() => setSlideTrigger(!slideTrigger), 5000);
-      }
-    }
+    let timer: any;
+
+    timer = setInterval(() => {
+      click?.click();
+    }, 5000)
+
     return () => {
-      clearTimeout(timer);
+      clearInterval(timer);
     };
   }, [slideTrigger, sliderRef.current?.offsetWidth]);
-
+  
   function goBack() {
-    if (sliderRef.current) {
-      const container = sliderRef.current;
+    console.log(step);
+    
+    if (step < 0) {
+      setStep(prev => prev + 100);
 
-      container.scrollLeft -= scrollAmount;
     }
   }
 
   function goForward() {
-    if (sliderRef.current) {
-      const container = sliderRef.current;
-
-      container.scrollLeft += scrollAmount;
+    if (step <= -100) {
+      console.log(sliderRef.current, 'image2');
+      setStep(100);
     }
+    setStep(prev => prev + -100);
   }
-
+  console.log(getHotPriceProducts(state.products).length);
+  
   return (
     <div>
       <div className="banner-block">
@@ -93,26 +91,24 @@ export const HomePage = () => {
         <div className="images-container" ref={sliderRef}>
           {banners[sliderImgSize].map(banner => {
             return (
-              <div>
-                <div
-                  className="image"
-                  key={banner.image}
-                  style={{
-                    backgroundImage: `url(${banner.image})`,
-                    backgroundSize: 'contain',
-                    width: Math.trunc(
-                      sliderRef.current ? +sliderRef.current.offsetWidth : 0,
-                    ),
-                    height: Math.trunc(
-                      sliderRef.current
-                        ? +w2 >= 640
-                          ? +sliderRef.current.offsetWidth / 2.6
-                          : +sliderRef.current.offsetWidth
-                        : 0,
-                    ),
-                  }}
-                />
-              </div>
+              <img
+                className="image"
+                key={banner.image}
+                src={banner.image}
+                style={{
+                  width: Math.trunc(
+                    sliderRef.current ? +sliderRef.current.offsetWidth : 0,
+                  ),
+                  height: Math.trunc(
+                    sliderRef.current
+                      ? +screenWidth >= 640
+                        ? +sliderRef.current.offsetWidth / 2.6
+                        : +sliderRef.current.offsetWidth
+                      : 0,
+                  ),
+                  transform: `translateX(${step}%)`,
+                }}
+              />
             );
           })}
         </div>

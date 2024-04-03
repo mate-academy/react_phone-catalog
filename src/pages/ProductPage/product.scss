@@ -69,6 +69,7 @@
   gap: 4px;
   @media screen and (min-width: 300px) and (max-width: 600px) {
     width: fit-content;
+    // gap: 0;
     padding-right: 0;
   }
 }
@@ -108,27 +109,30 @@
 .list-container {
   width: 100%;
   padding-top: 24px;
-
+  // overflow: hidden;
   display: grid;
-  gap: 16px;
+  // gap: 16px;
   grid-template-columns: 272px 272px 272px 272px;
   justify-content: space-between;
 
   @media screen and (max-width: 1199px) {
     grid-template-columns: 272px 272px 272px;
     justify-content: space-around;
+    // overflow: hidden;
   }
   @media screen and (max-width: 850px) {
     grid-template-columns: 272px 272px;
     justify-content: space-around;
+    // overflow: hidden;
+
   }
   @media screen and (max-width: 600px) {
-    overflow: hidden;
+    // overflow: hidden;
     grid-template-columns: 272px 272px;
     justify-content: space-around;
   }
   @media screen and (min-width: 300px) and (max-width: 600px) {
-    overflow: hidden;
+    // overflow: hidden;
     grid-template-columns: 272px ;
     justify-content: space-around;
   }

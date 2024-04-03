@@ -18,7 +18,6 @@ import { NoResults } from '../NoResults/NoResults';
 
 export const ProductPage: React.FC = () => {
   const { state, dispatch } = useContext(StateContext);
-
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
   const currentPage = searchParams.get('page') || '1';
@@ -59,20 +58,26 @@ export const ProductPage: React.FC = () => {
   }
 
   function changeHandler(e: React.ChangeEvent<HTMLSelectElement>) {
-    dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value })
-    params.set('itemsPerPage', e.target.value);
-    setSearchParams(params);
-  }
+    const pageAmountLocal = Math.ceil(copyOfProducts.length / +e.target.value);
+    const isPageExist = +e.target.value > +itemsPerpage && +currentPage > pageAmountLocal;
 
+    if (isPageExist) {
+      dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value });
+      params.set('itemsPerPage', e.target.value);
+      params.set('page', '1');
+      setSearchParams(params);
+    } else {
+      dispatch({ type: ACTIONS.SET_ITEMS_PER_PAGE, payload: e.target.value });
+      params.set('itemsPerPage', e.target.value);
+      setSearchParams(params);
+    }
+  }
 
   function sortProducts(e: React.ChangeEvent<HTMLSelectElement>) {
     params.set('sort', e.target.value);
     setSearchParams(params);
     setSortValue(e.target.value)
   }
-
-  console.log(location.pathname, 'pathname in product page');
-  
 
   return (
     <div >
