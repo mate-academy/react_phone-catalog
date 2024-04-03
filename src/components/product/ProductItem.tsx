@@ -66,7 +66,7 @@ export const ProductItem: React.FC<Props> = ({ product }) => {
 
               className='list-item-title'
             >
-              {product.name}
+              {product.name.substring(0, product.name.length - 8)}
             </Link>
 
           </p>
