@@ -57,8 +57,7 @@ export const HomePage = () => {
   }, [slideTrigger, sliderRef.current?.offsetWidth]);
   
   function goBack() {
-    console.log(step);
-    
+
     if (step < 0) {
       setStep(prev => prev + 100);
 
@@ -67,12 +66,10 @@ export const HomePage = () => {
 
   function goForward() {
     if (step <= -100) {
-      console.log(sliderRef.current, 'image2');
       setStep(100);
     }
     setStep(prev => prev + -100);
   }
-  console.log(getHotPriceProducts(state.products).length);
   
   return (
     <div>

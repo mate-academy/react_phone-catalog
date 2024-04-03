@@ -51,8 +51,6 @@ export const Navbar: React.FC = () => {
     setSearchQuery(e.target.value);
   }
 
-  console.log(location.pathname, location.search, 'pathname inside navbar');
-
   const applySearchDelayedQuery2 = useCallback(
     debounce((search: string) => {
       if (!search) {
@@ -71,8 +69,6 @@ export const Navbar: React.FC = () => {
     setSearchParams(params);
     setSearchQuery('');
   }
-
-  console.log(location.pathname, params, showMobileMenu, 'pathname navbr');
 
   if (showMobileMenu) {
     return <MobileNavbar onClick={setShowMobileMenu} />;

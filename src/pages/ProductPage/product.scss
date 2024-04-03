@@ -1,13 +1,11 @@
 .commonPage-container {
   padding-top: 24px;
-
   max-width: 1200px;
 
   @media screen and (max-width: 1200px) {
     padding-left: 10px;
     padding-right: 10px;
   }
-
 }
 
 .bottom-range {
@@ -109,30 +107,23 @@
 .list-container {
   width: 100%;
   padding-top: 24px;
-  // overflow: hidden;
   display: grid;
-  // gap: 16px;
   grid-template-columns: 272px 272px 272px 272px;
   justify-content: space-between;
 
   @media screen and (max-width: 1199px) {
     grid-template-columns: 272px 272px 272px;
     justify-content: space-around;
-    // overflow: hidden;
   }
   @media screen and (max-width: 850px) {
     grid-template-columns: 272px 272px;
     justify-content: space-around;
-    // overflow: hidden;
-
   }
   @media screen and (max-width: 600px) {
-    // overflow: hidden;
     grid-template-columns: 272px 272px;
     justify-content: space-around;
   }
   @media screen and (min-width: 300px) and (max-width: 600px) {
-    // overflow: hidden;
     grid-template-columns: 272px ;
     justify-content: space-around;
   }
