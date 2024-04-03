@@ -17,9 +17,7 @@ export const App = () => {
 
   const location = useLocation();
   const { productId } = useParams();
-  const showBreadCrumbs = location.pathname !== '/' && location.pathname !== '/cart';
-  console.log(productId);
-  
+  const showBreadCrumbs = location.pathname !== '/' && location.pathname !== '/cart';  
 
   return (
     <div className="App">
