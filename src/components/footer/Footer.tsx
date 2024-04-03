@@ -1,4 +1,5 @@
 // eslint-disable
+import { NavLink } from 'react-router-dom';
 import './footer.scss';
 import Logo from '../Logo';
 
@@ -11,9 +12,24 @@ export const Footer: React.FC<Props> = ({ onClick }) => {
     <div className="footer">
       <Logo />
       <div className="footer-arrow-block">
-        <div className="footer-center-text mr-64">Github</div>
-        <div className="footer-center-text mr-64">Contacts</div>
-        <div className="footer-center-text mr-64">Rights</div>
+        <NavLink
+          to="https://github.com/mate-academy/react_phone-catalog/pull/361"
+          className="footer-center-text mr-64"
+        >
+          Github
+        </NavLink>
+        <NavLink
+          to="https://github.com/mate-academy/react_phone-catalog/pull/361"
+          className="footer-center-text mr-64"
+        >
+          Contacts
+        </NavLink>
+        <NavLink
+          to="https://github.com/mate-academy/react_phone-catalog/pull/361"
+          className="footer-center-text mr-64"
+        >
+          Rights
+        </NavLink>
       </div>
       <div
         className="footer-arrow-block"
