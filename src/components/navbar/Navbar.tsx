@@ -11,6 +11,7 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { StateContext } from '../../AppContext';
 import debounce from 'lodash.debounce';
 import MobileNavbar from '../MobileNavbar/MobileNavbar';
+import Logo from '../Logo';
 
 export const Navbar: React.FC = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -80,12 +81,7 @@ export const Navbar: React.FC = () => {
   return (
     <div className="navbar-total">
       <div className="navbar">
-        <NavLink to="/">
-          <div className="text-navbar--left navbar-box-item">
-            <img src="./img/icons/logo2.svg" alt="img" />
-          </div>
-        </NavLink>
-
+        <Logo />
         <div className="navbar--flex">
           {location.pathname !== '/cart' && (
             <>

@@ -21,6 +21,10 @@ export const CartPage: React.FC = () => {
   }, [getUniqueItems(state.card).length]);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  useEffect(() => {
     let totalSumm = 0;
 
     state.card.map(elem => {

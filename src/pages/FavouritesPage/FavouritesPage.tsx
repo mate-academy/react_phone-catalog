@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductItem } from '../../components/product/ProductItem';
 import './FavouritesPage.scss';
 import { StateContext } from '../../AppContext';
@@ -6,6 +6,10 @@ import { NoResults } from '../NoResults/NoResults';
 
 export const FafouritesPage: React.FC = () => {
   const { state } = useContext(StateContext);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   if (state.favourites.length === 0) {
     return <NoResults headline="Nothing was found" />;

@@ -1,5 +1,6 @@
 // eslint-disable
 import './footer.scss';
+import Logo from '../Logo';
 
 type Props = {
   onClick: () => void,
@@ -8,14 +9,7 @@ type Props = {
 export const Footer: React.FC<Props> = ({ onClick }) => {
   return (
     <div className="footer">
-
-      <div
-        className="text-navbar--left navbar-box-item mp-0 mt-24"
-        style={{ marginLeft: 24 }}
-      >
-        <img src="./img/icons/logo2.svg" alt="img" />
-      </div>
-
+      <Logo />
       <div className="footer-arrow-block">
         <div className="footer-center-text mr-64">Github</div>
         <div className="footer-center-text mr-64">Contacts</div>

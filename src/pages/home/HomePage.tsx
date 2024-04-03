@@ -27,6 +27,10 @@ export const HomePage = () => {
     ],
   ];
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const { state } = useContext(StateContext);
   const [slideTrigger, _setSlideTrigger] = useState(false);
 

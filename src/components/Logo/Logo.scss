@@ -1,0 +1,28 @@
+.logo {
+  font-family: Mont, serif;
+  color: #89939a;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &--left {
+    margin-left: 24px;
+  }
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  display: flex;
+  align-items: center;
+  margin-right: 64px;
+  height: 100%;
+
+  @media screen and (max-width: 880px) {
+    margin-right: 30px;
+  }
+}
