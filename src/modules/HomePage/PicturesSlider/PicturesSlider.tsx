@@ -1,100 +1,115 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import { Picture } from '../../../types/Picture';
+import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
+import { imgsMobile, imgs } from '../../shared/imgsForDevices';
+import { getImages } from '../../../services/getImages';
 
 type Props = {
   windowSize: number;
 };
 
-const imgs: Picture[] = [
-  {
-    id: 1,
-    url: '/img/pictures-slider/slider-1.png',
-    name: 'slider-1',
-    alt: 'IPhone 14 Pro',
-  },
-  {
-    id: 2,
-    url: '/img/pictures-slider/slider-3.jpg',
-    name: 'slider-3',
-    alt: 'IPhone 14 Pro',
-  },
-  {
-    id: 3,
-    url: '/img/pictures-slider/slider-4.jpg',
-    name: 'slider-4',
-    alt: 'IPhone 14 Pro',
-  },
-];
-
 export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
   const [position, setPosition] = useState<number>(0);
+  const [imgPosition, setImgPosition] = useState<number>(0);
+  const [delay, setDelay] = useState(0.3);
+  const [size, setSize] = useState(windowSize);
+  const [images, setImages] = useState<Picture[]>(getImages(windowSize));
 
-  const images = imgs.slice();
-
-  // const [positionImages, setPositionImages] = useState<number>(windowSize);
-  // const [positionImages, setPositionImages] = useState<number>(0);
-  // const [pictures, setPictures] = useState<Picture[]>(imgs);
+  const imagesRef = useRef<HTMLDivElement>(null);
 
   const selectPicture = (index: number) => {
     setPosition(index * windowSize);
+    setImgPosition(index);
+
+    if (!delay) {
+      setDelay(0.3);
+    }
   };
 
   useEffect(() => {
     const interval = setInterval(() => {
-      if (position >= windowSize * (images.length - 1)) {
+      if (!delay) {
+        setDelay(0.3);
+      }
+
+      if (imgPosition >= images.length - 1) {
         setPosition(0);
+        setImgPosition(0);
 
         return;
       }
 
       setPosition(prevPosition => prevPosition + windowSize);
+      setImgPosition(prevPosition => prevPosition + 1);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length, position, windowSize]);
+  }, [delay, images.length, imgPosition, windowSize]);
 
-  // useEffect(() => {
-  //   const interval = setInterval(() => {
-  //     const copyPictures = pictures.slice();
-  //     const deletedPicture = copyPictures.shift();
+  useEffect(() => {
+    if (size !== windowSize && imgPosition !== 0) {
+      setSize(windowSize);
+      setDelay(0);
+      setPosition(imgPosition * windowSize);
+    }
+  }, [imgPosition, size, windowSize]);
 
-  //     if (deletedPicture) {
-  //       copyPictures.push(deletedPicture);
+  useEffect(() => {
+    if (windowSize <= WIDTH_DEVICES.mobile && images !== imgsMobile) {
+      setImages(imgsMobile);
 
-  //       setPictures(copyPictures);
-  //     }
-  //   }, 5000);
+      return;
+    }
 
-  //   return () => clearInterval(interval);
-  // }, [pictures, windowSize]);
+    if (windowSize > WIDTH_DEVICES.mobile && images !== imgs) {
+      setImages(imgs);
+    }
+  }, [images, windowSize]);
 
-  // console.log(lines);
+  // console.log(heightSlider);
 
   return (
     <div className="pictures-slider">
       <div className="pictures-slider__images-wrapper">
+        <button
+          type="button"
+          className="pictures-slider__move-left"
+          onClick={() => {}}
+        >
+          &lt;
+        </button>
+
         <div
           className="pictures-slider__images"
-          style={{ left: `-${position}px` }}
+          style={{
+            left: `-${position}px`,
+            transition: `${delay}s`,
+          }}
         >
           {images.map(img => (
-            <img
+            <div
+              className="pictures-slider__img-wrapper"
+              ref={imagesRef}
               key={img.id}
-              src={img.url}
-              alt={img.alt}
-              className={`pictures-slider__img pictures-slider__img--${img.id}`}
-            />
+              style={{ width: `${windowSize}px` }}
+            >
+              <img
+                src={img.url}
+                alt={img.alt}
+                className={`pictures-slider__img pictures-slider__img--${img.id}`}
+              />
+            </div>
           ))}
-          {/* {pictures.map(img => (
-            <img
-              key={img.id}
-              src={img.url}
-              alt={img.alt}
-              className={`pictures-slider__img pictures-slider__img--${img.id}`}
-            />
-          ))} */}
         </div>
+
+        <button
+          type="button"
+          className="pictures-slider__move-right"
+          onClick={() => {}}
+        >
+          &gt;
+        </button>
       </div>
 
       <div className="pictures-slider__lines">
@@ -104,8 +119,7 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
             type="button"
             key={img.id}
             className={cn('pictures-slider__button', {
-              'pictures-slider__button--active':
-                position === windowSize * index,
+              'pictures-slider__button--active': imgPosition === index,
             })}
             onClick={() => selectPicture(index)}
           />

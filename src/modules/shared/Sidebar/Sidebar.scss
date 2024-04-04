@@ -18,16 +18,15 @@
   // pointer-events: none;
   // transition: opacity 0.3s, transform 0.3s;
 
-  // &--open {
+  // &:target {
   //   opacity: 1;
   //   transform: translateX(0);
   //   pointer-events: all;
-    // z-index: 1;
-    // background-color: #fff;
+  //   z-index: 1;
+  //   background-color: #fff;
 
   //   box-shadow: 0 1px 0 #E2E6E9;
   // }
-
 
   &__close-link {
     display: flex;

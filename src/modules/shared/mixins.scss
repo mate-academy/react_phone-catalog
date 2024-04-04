@@ -11,10 +11,10 @@
 }
 
 @mixin padding-content-inline {
-  padding-inline: 16px;
+  padding-inline: $padding-inline-for-mobile;
 
   @include on-tablet {
-    padding-inline: 24px;
+    padding-inline: $padding-inline-for-tablet;
   }
 }
 
@@ -23,10 +23,10 @@
 
   display: grid;
 
-  column-gap: 16px;
+  column-gap: $gap-between-columns;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
-    padding-inline: 24px;
+    --columns: 12;
   }
 }
