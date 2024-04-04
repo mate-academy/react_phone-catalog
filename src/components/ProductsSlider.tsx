@@ -1,17 +1,18 @@
 import { Product } from '../types/products';
 import { ArrowButton } from './ArrowButton';
 import SwiperCore from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { ProductCard } from './ProductCard';
 import { Navigation } from 'swiper/modules';
 import { useState } from 'react';
 import { twMerge } from 'tailwind-merge';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLDivElement> {
   title: string;
   slides: Product[];
   discount?: boolean;
   className?: string;
+  swiperProps?: SwiperProps;
 }
 
 export const ProductsSlider: React.FC<Props> = ({
@@ -19,6 +20,8 @@ export const ProductsSlider: React.FC<Props> = ({
   slides,
   discount = true,
   className = '',
+  swiperProps = {},
+  ...rest
 }) => {
   const [slider, setSlider] = useState({
     first: true,
@@ -40,10 +43,8 @@ export const ProductsSlider: React.FC<Props> = ({
 
   return (
     <div
-      className={twMerge(
-        'content-padding flex flex-col gap-6 md:gap-7',
-        className,
-      )}
+      className={twMerge('flex flex-col gap-6 md:gap-7', className)}
+      {...rest}
     >
       <div className="flex justify-between">
         <h2>{title}</h2>
@@ -72,6 +73,7 @@ export const ProductsSlider: React.FC<Props> = ({
         slidesPerView="auto"
         spaceBetween="16px"
         className="flex w-full"
+        {...swiperProps}
       >
         {slides.map(item => (
           <SwiperSlide className="w-auto" key={item.id}>

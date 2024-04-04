@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { NavForm } from '../components/NavForm';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getAmountOfProducts } from '../api/products';
 import { ProductsList } from '../components/ProductsList';
 import { ProductCategory } from '../types/products';
@@ -35,10 +35,10 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
 
   return (
     <main
-      className="content-padding flex w-full flex-col gap-6 
+      className="content-padding flex w-full flex-col gap-6
       pb-16 pt-6 md:gap-10"
     >
-      <NavForm />
+      <Breadcrumbs />
 
       <div className="flex flex-col gap-2">
         <h1>{getTitle(type)}</h1>

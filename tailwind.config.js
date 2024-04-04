@@ -27,11 +27,16 @@ module.exports = {
       cursor: {
         default: 'url(/src/images/cursor-mouse-mice.svg), default'
       },
+      gap: {
+        7.5: '1.875rem',
+      },
       width: {
         68: '17rem'
       },
       height: {
+        0.25: '0.0625rem',
         5.5: '1.375rem',
+        13: '3.25rem',
         49: '12.25rem',
         100: '25rem',
         126.5: '31.625rem',

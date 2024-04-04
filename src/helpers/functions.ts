@@ -134,3 +134,19 @@ export const getPaginationItems = (
     id: Math.random() + index,
   }));
 };
+
+export const getRandomItemsFromArray = <T>(
+  array: Array<T>,
+  amount: number,
+): T[] => {
+  const result = [];
+
+  for (let i = 0; i < amount; i++) {
+    const randomIndex = Math.floor(Math.random() * array.length);
+    const el = array[randomIndex];
+
+    result.push(el);
+  }
+
+  return result;
+};

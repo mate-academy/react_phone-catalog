@@ -3,13 +3,15 @@ import { twMerge } from 'tailwind-merge';
 interface Props extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode;
   className?: string;
-  active?: string;
+  active?: boolean;
+  activeClassName?: string;
 }
 
 export const Button: React.FC<Props> = ({
   children,
-  active = '',
+  active = false,
   className = '',
+  activeClassName = '',
   ...rest
 }) => {
   return (
@@ -17,12 +19,13 @@ export const Button: React.FC<Props> = ({
       className={twMerge(
         `h-10 w-44 bg-primary font-bold
       text-white transition hover:shadow-[0_3px_13px_0_rgba(23,32,49,0.4)]`,
-        active && 'border border-elements bg-none text-green',
+        active && 'border border-elements bg-white text-green',
         className,
+        active && activeClassName,
       )}
       {...rest}
     >
-      {active || children}
+      {children}
     </button>
   );
 };

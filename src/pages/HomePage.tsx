@@ -32,6 +32,7 @@ export const HomePage: React.FC = () => {
       <Banner />
 
       <ProductsSlider
+        className="content-padding"
         discount={false}
         title="Brand new models"
         slides={brandNewModels}
@@ -103,7 +104,11 @@ export const HomePage: React.FC = () => {
         </div>
       </section>
 
-      <ProductsSlider title="Hot prices" slides={hotPriceProducts} />
+      <ProductsSlider
+        className="content-padding"
+        title="Hot prices"
+        slides={hotPriceProducts}
+      />
     </main>
   );
 };

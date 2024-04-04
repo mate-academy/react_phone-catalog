@@ -3,6 +3,7 @@ import { App } from './App';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { HomePage } from './pages/HomePage';
 import { ProductPage } from './pages/ProductPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Router = () => {
   return (
@@ -17,6 +18,9 @@ export const Router = () => {
             path="/accessories"
             element={<ProductPage type="accessories" />}
           />
+          <Route path="/product">
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
           <Route path="*" element={<NotFoundPage />} />
         </Route>
       </Routes>

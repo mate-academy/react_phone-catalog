@@ -1,3 +1,4 @@
+import { getRandomItemsFromArray } from '../helpers/functions';
 import { Product, ProductCategory } from '../types/products';
 import { client } from '../utils/axiosClient';
 import { getAccessories } from './accessories';
@@ -58,8 +59,6 @@ export const getFilteredProducts = (
       }
     });
 
-    window.console.dir(itemsPerPage);
-
     if (itemsPerPage !== 'All') {
       const startIndex = (pageNumber - 1) * itemsPerPage;
       const endIndex = startIndex + itemsPerPage;
@@ -69,4 +68,30 @@ export const getFilteredProducts = (
 
     return filteredProducts;
   });
+};
+
+export const getProductById = (id: string) => {
+  return Promise.any([
+    getAccessories().then(
+      items => items.find(item => item.id === id) || Promise.reject(null),
+    ),
+    getPhones().then(
+      items => items.find(item => item.id === id) || Promise.reject(null),
+    ),
+    getTablets().then(
+      items => items.find(item => item.id === id) || Promise.reject(null),
+    ),
+  ]);
+};
+
+export const getSmallProductById = (id: string) => {
+  return getProducts().then(
+    items => items.find(item => item.itemId === id) || Promise.reject(),
+  );
+};
+
+export const getSuggestedProducts = (amount: number) => {
+  return getProducts().then(products =>
+    getRandomItemsFromArray(products, amount),
+  );
 };

@@ -8,7 +8,7 @@ export interface Phone {
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
-  color: string[];
+  color: string;
   images: string[];
   description: {
     title: string;

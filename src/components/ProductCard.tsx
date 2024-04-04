@@ -2,6 +2,7 @@ import { twMerge } from 'tailwind-merge';
 import { Product } from '../types/products';
 import { Button } from './Button';
 import { FavouritesButton } from './FavouritesButton';
+import { Link } from 'react-router-dom';
 
 interface Props {
   product: Product;
@@ -23,11 +24,16 @@ export const ProductCard: React.FC<Props> = ({
         className,
       )}
     >
-      <img
-        className="max-h-49 object-contain"
-        src={product.image}
-        alt={product.name}
-      />
+      <Link
+        className="flex justify-center transition hover:scale-110"
+        to={`/product/${product.itemId}`}
+      >
+        <img
+          className="max-h-49 object-contain"
+          src={product.image}
+          alt={product.name}
+        />
+      </Link>
       <p className="mt-4 flex-1 overflow-hidden text-left">{product.name}</p>
       <div className="flex items-center justify-start gap-2">
         <h3 className="font-bold">${product.price}</h3>
