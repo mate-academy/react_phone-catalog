@@ -4,10 +4,14 @@ import { Picture } from '../../../types/Picture';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { imgsMobile, imgs } from '../../shared/imgsForDevices';
 import { getImages } from '../../../services/getImages';
+import { PADDINGS } from '../../constants/PADDINGS';
 
 type Props = {
   windowSize: number;
 };
+
+const GAP_BETWEEN_COLUMNS = 16;
+const COLUMNS = 12;
 
 export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
   const [position, setPosition] = useState<number>(0);
@@ -18,8 +22,19 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
 
   const imagesRef = useRef<HTMLDivElement>(null);
 
+  const oneStep =
+    windowSize > WIDTH_DEVICES.mobile
+      ? ((windowSize -
+          PADDINGS.tablet * 2 -
+          GAP_BETWEEN_COLUMNS * (COLUMNS - 1)) /
+          COLUMNS) *
+          10 +
+        GAP_BETWEEN_COLUMNS * 9
+      : windowSize;
+  // const [oneStep, setOneStep] = useState<number>(0);
+
   const selectPicture = (index: number) => {
-    setPosition(index * windowSize);
+    setPosition(index * oneStep);
     setImgPosition(index);
 
     if (!delay) {
@@ -27,47 +42,47 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
     }
   };
 
-  useEffect(() => {
-    const interval = setInterval(() => {
-      if (!delay) {
-        setDelay(0.3);
-      }
+  // useEffect(() => {
+  //   const interval = setInterval(() => {
+  //     if (!delay) {
+  //       setDelay(0.3);
+  //     }
 
-      if (imgPosition >= images.length - 1) {
-        setPosition(0);
-        setImgPosition(0);
+  //     if (imgPosition >= images.length - 1) {
+  //       setPosition(0);
+  //       setImgPosition(0);
 
-        return;
-      }
+  //       return;
+  //     }
 
-      setPosition(prevPosition => prevPosition + windowSize);
-      setImgPosition(prevPosition => prevPosition + 1);
-    }, 5000);
+  //     setPosition(prevPosition => prevPosition + oneStep);
+  //     setImgPosition(prevPosition => prevPosition + 1);
+  //   }, 5000);
 
-    return () => clearInterval(interval);
-  }, [delay, images.length, imgPosition, windowSize]);
+  //   return () => clearInterval(interval);
+  // }, [delay, images.length, imgPosition, windowSize]);
 
   useEffect(() => {
     if (size !== windowSize && imgPosition !== 0) {
       setSize(windowSize);
       setDelay(0);
-      setPosition(imgPosition * windowSize);
+      setPosition(imgPosition * oneStep);
     }
-  }, [imgPosition, size, windowSize]);
+  }, [imgPosition, oneStep, size, windowSize]);
 
   useEffect(() => {
     if (windowSize <= WIDTH_DEVICES.mobile && images !== imgsMobile) {
       setImages(imgsMobile);
-
-      return;
     }
 
     if (windowSize > WIDTH_DEVICES.mobile && images !== imgs) {
       setImages(imgs);
     }
-  }, [images, windowSize]);
+  }, [images, windowSize]); // setting images depending on the width of the devices
 
-  // console.log(heightSlider);
+  // console.log(oneStep);
+  // console.log(windowSize);
+  // console.log(position);
 
   return (
     <div className="pictures-slider">
@@ -92,7 +107,7 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
               className="pictures-slider__img-wrapper"
               ref={imagesRef}
               key={img.id}
-              style={{ width: `${windowSize}px` }}
+              // style={{ width: `${windowSize}px` }}
             >
               <img
                 src={img.url}

@@ -1,9 +1,10 @@
 .pictures-slider {
   margin-bottom: 66px;
 
-  // @include on-tablet { //
-  //   @include page-grid; //
-  // } //
+  @include on-tablet { // ---
+    @include page-grid; // ---
+    @include padding-content-inline; // ---
+  } // ---
 
   &__images-wrapper {
     width: 100%;
@@ -14,19 +15,20 @@
     overflow: hidden;
 
     @include on-tablet {
-      padding-bottom: calc((((100% - 2 * #{$padding-inline-for-tablet} - 11 * #{$gap-between-columns}) / 12) * 10 + #{$gap-between-columns} * 9) / 2.6);
+      // padding-bottom: calc((((100% - 2 * #{$padding-inline-for-tablet} - 11 * #{$gap-between-columns}) / 12) * 10 + #{$gap-between-columns} * 9) / 2.6);
+      padding-bottom: calc(100% / 2.6);
 
-      // grid-column: 2 / 12; //
+      grid-column: 2 / 12; // ---
     }
   }
 
-  &__move-left {
-    left: 24px;
-  }
+  // &__move-left {
+    // left: 24px;
+  // }
 
-  &__move-right {
-    right: 24px;
-  }
+  // &__move-right {
+    // right: 24px;
+  // }
 
   &__move-left,
   &__move-right {
@@ -53,7 +55,7 @@
     }
 
     @include on-tablet {
-      display: flex;
+      // display: flex;
       align-items: center;
       justify-content: center;
     }
@@ -74,15 +76,12 @@
     display: flex;
 
     @include on-tablet {
-      @include page-grid;
-      @include padding-content-inline;
-
-      // width: 100%; //
+      width: max-content;
     }
   }
 
   &__img {
-    width: 100%;
+    width: 100vw;
     height: 100%;
 
     &--2,
@@ -95,9 +94,7 @@
     }
 
     @include on-tablet {
-      grid-column: 2 / 12;
-      height: min-content;
-      object-fit: contain;
+      width: auto;
     }
   }
 
@@ -108,9 +105,9 @@
     justify-content: center;
     gap: 14px;
 
-    // @include on-tablet { //
-    //   grid-column: 6 / 8; //
-    // } //
+    @include on-tablet { // ---
+      grid-column: 6 / 8; // ---
+    } // ---
   }
 
   &__button {
