@@ -10,8 +10,7 @@
 }
 
 .text {
-  @include uppercase-desktop-tablet;
-  @include hover-text($color-primary);
+  @include small-text-desktop-tablet;
 }
 
 .button {

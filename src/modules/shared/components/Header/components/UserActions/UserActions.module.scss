@@ -7,11 +7,33 @@
 
 .icon {
   @include flex-center;
+  position: relative;
 
   width: 64px;
   height: 64px;
   border: 1px solid transparent;
   border-left: 1px solid $color-elements;
 
-  @include hover-icons($color-primary);
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $color-primary;
+    transform: scale(0);
+    transition: transform 0.5s ease-in-out;
+  }
+}
+
+.linkActive {
+    &::after{
+      content: '';
+      transform: scale(1);
+    }
+}
+
+.image {
+  @include hover-scale;
 }

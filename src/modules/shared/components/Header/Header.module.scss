@@ -27,16 +27,10 @@
 }
 
 .linkActive {
-  position: relative;
   color: $color-primary;
 
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    height: 3px;
-    width: 100%;
-    background-color: $color-primary;
-  }
+    &::after{
+      // content: '';
+      transform: scale(1) !important;
+    }
 }

@@ -1,11 +1,10 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './HeaderNav.module.scss';
-import headerStyles from '../../Header.module.scss';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navbarLink, {
-    [headerStyles.linkActive]: isActive,
+    [styles.linkActive]: isActive,
   });
 
 export const HeaderNav = () => {
