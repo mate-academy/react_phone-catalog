@@ -1,15 +1,8 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Popup } from '../Popup';
-import { CatalogContext } from '../Contexts/CatalogContext';
 
 export const Footer: React.FC = () => {
-  const { popup, setPopup } = useContext(CatalogContext);
   const [showBackToTop, setShowBackToTop] = useState(false);
-
-  useEffect(() => {
-    document.body.style.overflow = popup ? 'hidden' : 'auto';
-  }, [popup]);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -50,12 +43,12 @@ export const Footer: React.FC = () => {
             >
               Github
             </a>
-            <div className="footer__link" onClick={() => setPopup('Contacts')}>
+            <Link to="contacts" className="footer__link">
               Contacts
-            </div>
-            <div className="footer__link" onClick={() => setPopup('rights')}>
+            </Link>
+            <Link to="rights" className="footer__link">
               rights
-            </div>
+            </Link>
           </div>
           {showBackToTop ? (
             <div className="footer__back-to-top" onClick={backToTop}>
@@ -80,7 +73,6 @@ export const Footer: React.FC = () => {
           )}
         </div>
       </footer>
-      {!!popup.length && <Popup property={popup} />}
     </>
   );
 };

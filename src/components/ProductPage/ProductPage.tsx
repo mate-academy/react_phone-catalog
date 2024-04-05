@@ -171,7 +171,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
               >
                 <input
                   value={sortBy}
-                  type="text"
+                  type="button"
                   onChange={() => {}}
                   onClick={handlerSelectIsSort}
                   onBlur={() => setTimeout(() => setIsSortList(false), 100)}
@@ -203,7 +203,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
               >
                 <input
                   value={perPage}
-                  type="text"
+                  type="button"
                   onChange={() => {}}
                   onClick={handlerSelectCount}
                   onBlur={() => {

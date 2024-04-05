@@ -10,6 +10,8 @@ import { ProductPage } from './components/ProductPage';
 import { DetailsPage } from './components/DetailsPage';
 import { CartPage } from './components/CartPage';
 import { FavouritesPage } from './components/FavouritesPage';
+import { ContactsPage } from './components/ContactsPage';
+import { RightsPage } from './components/RightsPage';
 
 export const App = () => {
   return (
@@ -36,6 +38,8 @@ export const App = () => {
           <Route path="accessories/:productId?" element={<DetailsPage />} />
           <Route path="/cart" element={<CartPage />} />
           <Route path="/favourites" element={<FavouritesPage />} />
+          <Route path="/contacts" element={<ContactsPage />} />
+          <Route path="/rights" element={<RightsPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
