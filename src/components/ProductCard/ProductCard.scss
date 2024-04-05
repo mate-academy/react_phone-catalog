@@ -1,0 +1,100 @@
+@import '../../style/utils/variables';
+
+.product-card {
+  align-self: center;
+  border: 1px solid $elements;
+  width: 272px;
+  height: 507px;
+  text-align: center;
+  display: grid;
+  align-items: center;
+  grid-template-rows: 32px 1fr 24px 1fr 24px;
+
+  &__imgContainer {
+    grid-row: 2 / 3;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    background-position: center;
+    object-fit: contain;
+  }
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    grid-row: 4 / 5;
+  }
+
+  &__name {
+    &-wrapper {
+      width: 224px;
+      height: 42px;
+      word-wrap: break-word;
+    }
+
+    color: $primary;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+  }
+
+  &__price {
+    font-size: 22px;
+
+    &-wrapper {
+      width: 224px;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        display: block;
+        content: "";
+        height: 1px;
+        width: 100%;
+        bottom: -6.5px;
+        background-color: $elements;
+      }
+    }
+
+    &--original {
+      line-height: 28px;
+    }
+
+    &--current{
+      line-height: 31px;
+    }
+  }
+
+  &__description {
+    padding: 22.5px 0 16px;
+    width: 224px;
+  }
+
+  &__bottom {
+    width: 224px;
+    height: 40px;
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+  }
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+
+    &-image {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}

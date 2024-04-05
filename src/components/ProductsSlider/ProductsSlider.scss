@@ -1,0 +1,89 @@
+@import '../../style/utils/variables';
+@import '../../style/utils/mixins';
+
+.slider {
+  height: 572px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    margin-inline: auto;
+    padding-left: 0;
+  }
+
+  &__container {
+    max-width: 100vw;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @include on-desktop {
+      overflow: visible;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease;
+
+    @include on-desktop {
+      transition: none;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__name {
+    font-family: $mont;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+
+  &__arrows {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-image: url(../../style/icons/Slider-button-Default-right.svg);
+    &--left {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+      background-image: url(../../style/icons/Slider-button-Disabled-right.svg);
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+    width: 272px;
+  }
+}

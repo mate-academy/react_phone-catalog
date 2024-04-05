@@ -1,0 +1,26 @@
+@import '../style/utils/variables';
+
+.not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    list-style: none;
+    text-decoration: none;
+  }
+
+  &__text {
+    font-size: 17px;
+    color: $secondary;
+  }
+
+  &__home {
+    height: 16px;
+    width: 16px;
+  }
+}

@@ -1,0 +1,11 @@
+@import './utils/variables';
+
+.title {
+  font-family: $mont;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $primary;
+}

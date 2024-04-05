@@ -1,0 +1,21 @@
+@import '../style/utils/variables';
+
+.back {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-bottom: 16px;
+
+  &__arrow {
+    transform: rotate(180deg);
+  }
+
+  &__button {
+    font-family: $mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: $secondary;
+  }
+}

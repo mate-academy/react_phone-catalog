@@ -1,0 +1,188 @@
+@import '../../style/utils/variables';
+
+.cart {
+  &__back {
+    margin-top: 40px;
+  }
+
+  &__container {
+    display: flex;
+    gap: 16px;
+    margin-block: 24px 87px;
+  }
+
+  &__summary {
+    box-sizing: border-box;
+    padding: 24px;
+    width: 368px;
+    height: 206px;
+    border: 1px solid $elements;
+  }
+
+  &__button {
+    width: 320px;
+    height: 48px;
+    background-color: $primary;
+    color: $white;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 48px;
+
+  }
+
+  &__price {
+    text-align: center;
+    position: relative;
+    ::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $elements;
+      display: block;
+      bottom: -24px;
+    }
+  }
+
+  &__total {
+    font-family: $mont;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40.9px;
+    letter-spacing: -0.01em;
+    color: $primary;
+
+    &-text {
+      font-family: $mont;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: center;
+      color: $secondary;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__item {
+    width: 752px;
+    height: 128px;
+    border: 1px solid $elements;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    &-delete {
+      width: 16px;
+      height: 16px;
+      margin-left: 24px;
+    }
+
+    &-image {
+      width: 80px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      padding-inline: 24px;
+    }
+
+    &-name {
+      &-wrapper {
+        width: 295px;
+        height: 42px;
+      }
+
+      font-family: $mont;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+      text-align: left;
+    }
+
+    &-panel {
+      display: flex;
+      flex-direction: row;
+      padding-left: 49px;
+      padding-right: 43px;
+      color: $primary;
+    }
+
+    &-operator {
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $icons;
+      color: $primary;
+
+      &--disabled {
+        border: 1px solid $elements;
+      }
+    }
+
+    &-sign {
+      background-position: center;
+      background-repeat: no-repeat;
+      width: 10.67px;
+      height: 1.33px;
+
+      &--minus {
+        background-image: url(../../style/icons/Minus.svg);
+      }
+
+      &--plus {
+        height: 10.67px;
+        background-image: url(../../style/icons/Plus.svg);
+      }
+
+      &--disabled {
+        background-image: url(../../style/icons/Minus--disabled.svg);
+      }
+    }
+
+    &-quantity {
+      width: 32px;
+      height: 32px;
+      line-height: 32px;
+      font-family: $mont;
+      font-size: 14px;
+      font-weight: 500;
+      text-align: center;
+      color: #000;
+    }
+
+    &-price {
+      font-family: $mont;
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 30.8px;
+      text-align: left;
+    }
+  }
+
+  &__checkout-message {
+    padding-top: 16px;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: center;
+    color: $red;
+  }
+
+  &__empty {
+    padding-block: 24px;
+    font-family: $mont;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

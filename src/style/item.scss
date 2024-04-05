@@ -1,0 +1,93 @@
+@import './utils/variables';
+
+.item {
+  &__price {
+    font-family: $mont;
+    text-align: left;
+
+    &-wrapper {
+      display: flex;
+      justify-content: flex-start;
+      gap: 8px;
+      align-items: center;
+    }
+
+    &--current {
+      color: $primary;
+      font-weight: 700;
+    }
+
+    &--original {
+      color: $secondary;
+      font-weight: 500;
+      text-decoration: line-through;
+    }
+  }
+
+  &__description {
+      font-family: $mont;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: space-between;
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+    }
+    &-title {
+      color: $secondary;
+    }
+    &-value {
+      color: $primary;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    border: none;
+    text-align: center;
+    color: $white;
+    background-color: $primary;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    &--active {
+      color: $green;
+      background-color: transparent;
+      border: 1px solid $elements;
+    }
+  }
+
+  &__icon {
+    border: 1px solid $icons;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      border-color: $primary;
+    }
+    &--active {
+      border-color: $elements;
+    }
+
+    &-image {
+      background-image: url(../style/icons/Favourites-Heart-Like.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      &--active {
+        background-image: url(../style/icons/Favourites-Filled-Heart-Like.svg);
+      }
+    }
+  }
+}
