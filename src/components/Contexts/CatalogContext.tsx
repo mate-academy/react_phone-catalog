@@ -9,8 +9,8 @@ type Context = {
   setAside: (flag: boolean) => void;
   closeAsideAndGoTop: (flag: boolean) => void;
   allProducts: Product[];
-  popup: boolean;
-  setPopup: (flag: boolean) => void;
+  popup: string;
+  setPopup: (message: string) => void;
   favourites: Product[];
   addFavourites: (product: Product) => void;
   deleteFromFavourites: (product: Product) => void;
@@ -26,7 +26,7 @@ export const CatalogContext = React.createContext<Context>({
   setAside: () => {},
   closeAsideAndGoTop: () => {},
   allProducts: [],
-  popup: false,
+  popup: '',
   setPopup: () => {},
   favourites: [],
   addFavourites: () => {},
@@ -44,7 +44,7 @@ type Props = {
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [aside, setAside] = useState(false);
-  const [popup, setPopup] = useState(false);
+  const [popup, setPopup] = useState('');
   const [favourites, setFavourites] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartProducts[]>([]);
 

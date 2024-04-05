@@ -2,23 +2,15 @@ import React, { useContext } from 'react';
 import { CatalogContext } from '../Contexts/CatalogContext';
 
 type Props = {
-  text: string;
-  okButton?: boolean;
-  confirmButton?: boolean;
-  cancelButton?: boolean;
+  property: string;
 };
 
-export const Popup: React.FC<Props> = ({
-  text,
-  okButton = false,
-  confirmButton = false,
-  cancelButton = false,
-}) => {
+export const Popup: React.FC<Props> = ({ property }) => {
   const { clearCart, setPopup } = useContext(CatalogContext);
 
   const handlerConfirmClearCart = () => {
     clearCart();
-    setPopup(false);
+    setPopup('');
   };
 
   return (
@@ -26,23 +18,29 @@ export const Popup: React.FC<Props> = ({
       <div className="popup-window">
         <div className="popup-title">
           <p className="popup-underline">Sorry!</p>
-          <p>{text}</p>
+          {property === 'Cart' ? (
+            <p>
+              Checkout is not implemented yet. Do you want to clear the Cart?
+            </p>
+          ) : (
+            <p>This feature is not implemented yet.</p>
+          )}
         </div>
         <div className="popup__block-buttons">
-          {confirmButton && (
-            <button className="popup-button" onClick={handlerConfirmClearCart}>
-              Confirm
-            </button>
-          )}
-
-          {cancelButton && (
-            <button className="popup-button" onClick={() => setPopup(false)}>
-              Cancel
-            </button>
-          )}
-
-          {okButton && (
-            <button className="popup-button" onClick={() => setPopup(false)}>
+          {property === 'Cart' ? (
+            <>
+              <button
+                className="popup-button"
+                onClick={handlerConfirmClearCart}
+              >
+                Confirm
+              </button>
+              <button className="popup-button" onClick={() => setPopup('')}>
+                Cancel
+              </button>
+            </>
+          ) : (
+            <button className="popup-button" onClick={() => setPopup('')}>
               Ok
             </button>
           )}

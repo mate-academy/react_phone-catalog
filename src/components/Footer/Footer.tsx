@@ -33,10 +33,10 @@ export const Footer: React.FC = () => {
             >
               Github
             </a>
-            <div className="footer__link" onClick={() => setPopup(true)}>
+            <div className="footer__link" onClick={() => setPopup('Contacts')}>
               Contacts
             </div>
-            <div className="footer__link" onClick={() => setPopup(true)}>
+            <div className="footer__link" onClick={() => setPopup('rights')}>
               rights
             </div>
           </div>
@@ -51,9 +51,7 @@ export const Footer: React.FC = () => {
           </div>
         </div>
       </footer>
-      {popup && (
-        <Popup text={'This feature is not implemented yet.'} okButton={true} />
-      )}
+      {!!popup.length && <Popup property={popup} />}
     </>
   );
 };

@@ -65,7 +65,7 @@ export const CartPage: React.FC = () => {
                 <button
                   type="button"
                   className="cart__checkout"
-                  onClick={() => setPopup(true)}
+                  onClick={() => setPopup('Cart')}
                 >
                   Checkout
                 </button>
@@ -84,13 +84,7 @@ export const CartPage: React.FC = () => {
         </div>
       </div>
 
-      {popup && (
-        <Popup
-          text={`Checkout is not implemented yet. Do you want to clear the Cart?`}
-          confirmButton={true}
-          cancelButton={true}
-        />
-      )}
+      {!!popup.length && <Popup property={popup} />}
     </>
   );
 };
