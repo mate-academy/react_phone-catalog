@@ -7,12 +7,35 @@ select {
 }
 
 .product-list {
-  @include on-desktop {
-    width: 1136px;
-  }
 
   &__top {
     @include page-grid;
+
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+      width: 1136px;
+      margin-inline: auto;
+    }
+  }
+
+  &__bottom {
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 0;
+      width: 1136px;
+      margin-inline: auto;
+    }
   }
 
   &__title {
@@ -34,18 +57,41 @@ select {
   }
 
   &__input {
+    position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     gap: 4px;
     padding-bottom: 24px;
+    &::after {
+      content: url(../../style/icons/Chevron-Arrow-Right--disabled.svg);
+      position: absolute;
+      display: inline-block;
+      height: 16px;
+      width: 16px;
+      top: 50%;
+      right: 10px;
+      transform: translateY(-50%) rotate(90deg);
+    }
+
+    &--focused::after {
+      transform: translateY(-50%) rotate(270deg);
+    }
 
     &--sort {
       grid-column: 1 / 3;
+
+      @include on-desktop {
+        grid-column: 1 / 5;
+      }
     }
 
     &--perpage {
       grid-column: 3 / 5;
+
+      @include on-desktop {
+        grid-column: 5 / 8;
+      }
     }
   }
 
@@ -57,8 +103,6 @@ select {
     color: $primary;
     background-color: transparent;
     height: 40px;
-
-    // width: 176px;
     padding: 10px 12px;
     border: 1px solid $icons;
     position: relative;
@@ -70,32 +114,6 @@ select {
     &:focus {
       outline: none;
       border-color: $primary;
-    }
-
-    &-container {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-
-      &::after {
-        content: url(../../style/icons/Chevron-Arrow-Right--disabled.svg);
-        position: absolute;
-        display: inline-block;
-        height: 16px;
-        width: 16px;
-        top: 50%;
-
-        // right: 10px;
-        transform: translateY(-50%) rotate(90deg);
-      }
-
-      &--focused::after {
-        transform: translateY(-50%) rotate(270deg);
-      }
-    }
-
-    &--perPage {
-      width: 128px;
     }
   }
 

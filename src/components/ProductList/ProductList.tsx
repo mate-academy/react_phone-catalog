@@ -131,39 +131,42 @@ export const ProductList: React.FC<Props> = ({
           {`${productsFromServer.length} models`}
         </p>
 
-        <div className="product-list__input product-list__input--sort">
+        <div
+          className={cn('product-list__input', 'product-list__input--sort', {
+            'product-list__input--focused': isSelectFocused,
+          })}
+        >
           <label htmlFor="sort" className="product-list__input-label">
             Sort by
           </label>
-          <div
-            className={cn('product-list__select-container', {
-              'product-list__select-container--focused': isSelectFocused,
-            })}
+
+          <select
+            className="product-list__select"
+            name="sort-by"
+            id="sort"
+            onChange={e => {
+              handleSortBy(e.target.value);
+            }}
+            onClick={handleSelectFocus}
+            onBlur={handleSelectBlur}
           >
-            <select
-              className="product-list__select"
-              name="sort-by"
-              id="sort"
-              onChange={e => {
-                handleSortBy(e.target.value);
-              }}
-              onClick={handleSelectFocus}
-              onBlur={handleSelectBlur}
-            >
-              <option className="product-list__option" value="age">
-                Newest
-              </option>
-              <option className="product-list__option" value="name">
-                Alphabetically
-              </option>
-              <option className="product-list__option" value="price">
-                Cheapest
-              </option>
-            </select>
-          </div>
+            <option className="product-list__option" value="age">
+              Newest
+            </option>
+            <option className="product-list__option" value="name">
+              Alphabetically
+            </option>
+            <option className="product-list__option" value="price">
+              Cheapest
+            </option>
+          </select>
         </div>
 
-        <div className="product-list__input product-list__input--perpage">
+        <div
+          className={cn('product-list__input', 'product-list__input--perpage', {
+            'product-list__input--focused': isPerPageFocused,
+          })}
+        >
           <label
             htmlFor="perPageSelector"
             className="product-list__input-label"
@@ -171,70 +174,64 @@ export const ProductList: React.FC<Props> = ({
             Items per page
           </label>
 
-          <div
-            className={cn('product-list__select-container', {
-              'product-list__select-container--focused': isPerPageFocused,
-            })}
+          <select
+            className="product-list__select product-list__select--perPage"
+            data-cy="perPageSelector"
+            id="perPageSelector"
+            value={perPage}
+            onChange={handlePerPageChange}
+            onClick={handlePerPageFocus}
+            onBlur={handleSelectBlur}
           >
-            <select
-              className="product-list__select product-list__select--perPage"
-              data-cy="perPageSelector"
-              id="perPageSelector"
-              value={perPage}
-              onChange={handlePerPageChange}
-              onClick={handlePerPageFocus}
-              onBlur={handleSelectBlur}
-            >
-              {itemsPerPageOptions.map(option => (
-                <option
-                  className="product-list__option"
-                  key={option}
-                  value={option}
-                >
-                  {option}
-                </option>
-              ))}
+            {itemsPerPageOptions.map(option => (
               <option
                 className="product-list__option"
-                value={productsFromServer.length}
+                key={option}
+                value={option}
               >
-                All
+                {option}
               </option>
-            </select>
-          </div>
+            ))}
+            <option
+              className="product-list__option"
+              value={productsFromServer.length}
+            >
+              All
+            </option>
+          </select>
         </div>
       </div>
 
-      {productsLoading && <Loader />}
-
-      {!productsLoading && displayedItems.length > 0 ? (
-        <div
-          data-cy="productList"
-          className="product-list__list"
-          style={addMargin}
-        >
-          {displayedItems.map((product: Product) => (
-            <Link
-              to={`/${product.category}/${product.itemId}`}
-              className="product-list__link"
-              key={product.id}
-            >
-              <ProductCard product={product} key={product.id} />
-            </Link>
-          ))}
-        </div>
-      ) : (
-        <NoSearchResults />
-      )}
-
-      {visibleProducts.length > displayedItems.length && (
-        <Pagination
-          total={productsFromServer.length}
-          perPage={perPage}
-          currentPage={currentPage}
-          onPageChange={handlePageChange}
-        />
-      )}
+      <div className="product-list__bottom">
+        {productsLoading && <Loader />}
+        {!productsLoading && displayedItems.length > 0 ? (
+          <div
+            data-cy="productList"
+            className="product-list__list"
+            style={addMargin}
+          >
+            {displayedItems.map((product: Product) => (
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="product-list__link"
+                key={product.id}
+              >
+                <ProductCard product={product} key={product.id} />
+              </Link>
+            ))}
+          </div>
+        ) : (
+          <NoSearchResults />
+        )}
+        {visibleProducts.length > displayedItems.length && (
+          <Pagination
+            total={productsFromServer.length}
+            perPage={perPage}
+            currentPage={currentPage}
+            onPageChange={handlePageChange}
+          />
+        )}
+      </div>
     </section>
   );
 };
