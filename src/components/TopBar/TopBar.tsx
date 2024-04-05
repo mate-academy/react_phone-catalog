@@ -21,7 +21,7 @@ export const TopBar: React.FC<Props> = ({ nav = false }) => {
   return (
     <div className="top-bar">
       <Link to="" onClick={() => closeAsideAndGoTop(true)}>
-        <img className="top-bar__logo" src="/img/logo.png" alt="logo" />
+        <img className="top-bar__logo" src="img/logo.png" alt="logo" />
       </Link>
 
       <div className="top-bar__wrapper">
@@ -29,13 +29,13 @@ export const TopBar: React.FC<Props> = ({ nav = false }) => {
           {nav ? (
             <img
               className="top-bar__image"
-              src="/img/icons/menu.png"
+              src="img/icons/menu.png"
               alt="aside button"
             />
           ) : (
             <img
               className="top-bar__image"
-              src="/img/icons/close.png"
+              src="img/icons/close.png"
               alt="aside button"
             />
           )}

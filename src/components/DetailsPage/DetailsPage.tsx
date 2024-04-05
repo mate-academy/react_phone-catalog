@@ -243,9 +243,8 @@ export const DetailsPage: React.FC = () => {
                       </p>
                     </div>
                     <div className="details__buttons">
-                      {cart.some(
-                        product => product.product.itemId === detailProduct?.id,
-                      ) ? (
+                      {/* eslint-disable-next-line max-len, prettier/prettier*/}
+                      {cart.some(product => product.product.itemId === detailProduct?.id) ? (
                         <button
                           className="
                           card__addToCart
@@ -266,9 +265,8 @@ export const DetailsPage: React.FC = () => {
                         className="card__addToFavourite  details__button"
                         onClick={handlerAddToFavourites}
                       >
-                        {favourites.some(
-                          product => product.itemId === detailProduct?.id,
-                        ) ? (
+                        {/* eslint-disable-next-line max-len, prettier/prettier */}
+                        {favourites.some(product => product.itemId === detailProduct?.id) ? (
                           <img
                             className="card__heart"
                             src="img/icons/favouritesFilled.png"

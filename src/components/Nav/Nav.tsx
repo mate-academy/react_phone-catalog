@@ -96,7 +96,7 @@ export const Nav: React.FC<Props> = ({
           >
             <img
               className="nav__image"
-              src="/img/icons/favourites.png"
+              src="img/icons/favourites.png"
               alt="favourites"
             />
             {!!favourites.length && (
@@ -120,7 +120,7 @@ export const Nav: React.FC<Props> = ({
             }}
             className="nav__icon"
           >
-            <img className="nav__image" src="/img/icons/cart.png" alt="cart" />
+            <img className="nav__image" src="img/icons/cart.png" alt="cart" />
             {!!cart.length && (
               <div className="nav__count">
                 <p className="nav__count__text">{totalCount}</p>
