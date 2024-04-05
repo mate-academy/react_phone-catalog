@@ -1,0 +1,367 @@
+.details {
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat((12, 1fr));
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    position: relative;
+    grid-template-columns: repeat((24, 1fr));
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      grid-column: span 12;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__main-image {
+    position: relative;
+    width: 100%;
+    margin-bottom: 16px;
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    @include on-tablet {
+      align-self: start;
+      grid-row: 2 / 3;
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__image {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__images {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 8px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      align-self: start;
+      grid-row: 2 / 3;
+      grid-column: 1 / 2;
+      flex-direction: column;
+      row-gap: 8px;
+      justify-content: start;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid $shadow-color;
+    cursor: pointer;
+
+    &--active {
+      border: 1px solid $font-color;
+
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  &__description {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    &--right {
+      @include on-tablet {
+        grid-row: 2 / 3;
+        grid-column: 8 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / 21;
+      }
+    }
+
+    &--bottom {
+      @include on-tablet {
+        grid-row: span 1;
+        grid-column: span 12;
+      }
+
+      @include on-desktop {
+        grid-row: span 1;
+        grid-column: 1 / 13;
+      }
+    }
+
+    &--last {
+      @include on-tablet {
+        grid-row: span 1;
+        grid-column: span 12;
+      }
+
+      @include on-desktop {
+        grid-row: span 1;
+        grid-column: 14 / -1;
+      }
+    }
+  }
+
+  &__description-block {
+    height: 105px;
+    margin-bottom: 32px;
+  }
+
+  &__description-mini-block {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $shadow-color;
+    margin-bottom: 24px;
+
+    &--last {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__description-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__description-title {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: $font-color-grey;
+    margin-bottom: 8px;
+  }
+
+  &__id {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: right;
+    color: $border-color;
+
+    @include on-desktop {
+      position: absolute;
+      right: 0;
+    }
+  }
+
+  &__description-wrapper {
+    display: flex;
+    justify-content: start;
+    column-gap: 8px;
+  }
+
+  &__color-border {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $shadow-color;
+    cursor: pointer;
+
+    @include hover(border-color, $border-color);
+
+    &--active {
+      border: 1px solid $font-color;
+    }
+  }
+
+  &__color {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid #FFFFFF;
+  }
+
+  &__capacity {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 32px;
+    width: auto;
+    padding: 8px;
+    border-radius: 4px;
+    border: 1px solid $shadow-color;
+    cursor: pointer;
+    background-color: transparent;
+    text-decoration: none;
+
+    @include hover(border-color, $border-color);
+
+    &--active {
+      color: #fff;
+      background-color: $font-color;
+    }
+  }
+
+  &__price-wrapper {
+    height: 41px;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-right: 8px;
+
+    &--full {
+      font-size: 22px;
+      font-weight: 500;
+      color: $font-color-grey;
+      line-height: 28.12px;
+
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    gap: 8px;
+    height: 48px;
+  }
+
+  &__description-bottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+  }
+
+  &__description-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__description-name {
+    font-weight: 600;
+    color: $font-color-grey;
+  }
+
+  &__description-value {
+    font-weight: 700;
+  }
+
+  &__small-title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $shadow-color;
+
+    @include on-tablet {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+  }
+
+  &__article {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__article-title {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20.45px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+
+  &__article-text {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $font-color-grey;
+
+    margin-bottom: 24px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__tech-group {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__tech-name {
+    font-weight: 500;
+    color: $font-color-grey;
+  }
+
+  &__tech-value {
+    font-weight: 600;
+  }
+}

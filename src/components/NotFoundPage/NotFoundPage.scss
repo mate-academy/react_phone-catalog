@@ -1,0 +1,31 @@
+.page-not-found {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  row-gap: 32px;
+  padding: 10%;
+  max-height: 70vh;
+
+  &__image {
+    width: 100%;
+    max-width: 320px;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 32px;
+    text-align: center;
+    color: $shadow-color;
+  }
+
+  &__link {
+    font-size: 32px;
+    text-align: center;
+    color: $font-color-grey;
+
+    @include hover(color, $font-color);
+  }
+}

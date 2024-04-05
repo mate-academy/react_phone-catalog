@@ -1,0 +1,76 @@
+.breadcrumbs {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  padding: 24px 16px;
+  margin: auto;
+
+  @include on-tablet {
+    padding: 24px 24px 40px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px 40px;
+  }
+
+  &--back {
+    column-gap: 4px;
+    padding: 24px 16px 16px;
+
+    @include on-tablet {
+      padding: 40px 24px 16px;
+    }
+
+    @include on-desktop {
+      padding: 40px 32px 16px;
+    }
+  }
+
+  &--details {
+    padding-top: 0;
+  }
+
+  &__home {
+    display: flex;
+  }
+
+  &__divider {
+    width: $icon-size;
+    height: $icon-size;
+    background-image: url(../../assets/icons/arrowRightHover.png );
+
+    &--back {
+      background-image: url(../../assets/icons/arrowLeft.png );
+    }
+  }
+
+  &__crumb {
+    height: 16px;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: $font-color-grey;
+
+    &:last-of-type {
+      font-weight: 600;
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    transform: translateY(1.5px);
+    font-size: 12px;
+    line-height: 12px;
+    color: inherit;
+    cursor: pointer;
+
+    @include hover(color, $font-color);
+
+    &-nolink {
+      cursor: auto;
+    }
+  }
+}

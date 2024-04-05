@@ -1,0 +1,154 @@
+.nav {
+  justify-content: space-between;
+
+  &--top-bar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &--aside {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  @include on-tablet {
+    height: auto;
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__list {
+    margin: 24px 16px;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    align-items: center;
+
+    @include on-tablet {
+      margin: 0;
+      flex-direction: row;
+      justify-content: space-between;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    padding-block: 13.5px;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $font-color-grey;
+
+    &--active,
+    &:hover {
+      color: $font-color-aside;
+      border-bottom: 3px solid $font-color-aside;
+    }
+
+    @include on-tablet {
+
+      &--active,
+      &:hover {
+        color: $font-color;
+        border-bottom: 3px solid $font-color;
+      }
+    }
+
+    @include on-desktop {
+      padding-block: 20.5px;
+    }
+
+    &--footer {
+      color: #fff;
+    }
+  }
+
+  &__right {
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      height: 48px;
+    }
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__wrapper {
+    box-sizing: border-box;
+    width: 50%;
+    cursor: pointer;
+    box-shadow: -1px 0px 0px 0px $shadow-color;
+
+    &--bottom {
+      border-top: 1px solid $shadow-color;
+    }
+
+    &--active,
+    &:hover {
+      border-bottom: 3px solid $indicator-color;
+    }
+  }
+
+  &__icon {
+    position: relative;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    padding: 24px;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include on-tablet {
+      padding: 16px;
+    }
+
+    @include on-desktop {
+      padding: 24px;
+
+    }
+
+    @include hover(scale, 1.2);
+
+  }
+
+  &__image {
+    width: $icon-size;
+    height: $icon-size;
+  }
+
+  &__count {
+    width: $count-size;
+    height: $count-size;
+    position: absolute;
+    transform: translateX(7px) translateY(-7px);
+    background-color: $secondary-accent-color;
+    border: 1px solid #FFFFFF;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      font-size: 9px;
+      color: #fff;
+    }
+  }
+}

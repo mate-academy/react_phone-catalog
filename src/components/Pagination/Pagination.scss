@@ -1,0 +1,52 @@
+.pagination {
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  column-gap: 8px;
+  list-style: none;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+    border-radius: 50%;
+    color: $font-color;
+    background-color: $background-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $shadow-color;
+    cursor: pointer;
+
+    &--next {
+      cursor: auto;
+      background-image: url(../../assets/icons/arrowRightHover.png);
+    }
+
+    &--prev {
+      cursor: auto;
+      background-image: url(../../assets/icons/arrowRightHover.png);
+      transform: rotate(180deg);
+    }
+
+    &--active {
+      cursor: pointer;
+      border: 1px solid $border-color;
+      background-image: url(../../assets/icons/arrowRight.png);
+
+      @include hover(border-color, $border-color-hover);
+    }
+
+    &--current {
+      color: #fff;
+      background-color: $font-color;
+    }
+  }
+
+  &__dots {
+    font-size: 24px;
+  }
+}
