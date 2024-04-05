@@ -17,12 +17,12 @@ type Props = {
 
 export const ProductPage: React.FC<Props> = ({ category }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const sort = searchParams.get('sort') || '';
+  const sort = searchParams.get('sort') || 'age';
   const page = searchParams.get('page') || '1';
   const perPage = searchParams.get('perPage') || 'all';
 
   const [allGoods, setAllGoods] = useState<Product[]>([]);
-  const [sortBy, setSortBy] = useState('');
+  const [sortBy, setSortBy] = useState('Newest');
   const [isSortList, setIsSortList] = useState(false);
   const [isCountItem, setIsCountItem] = useState(false);
   const [isLoad, setIsLoad] = useState(false);
