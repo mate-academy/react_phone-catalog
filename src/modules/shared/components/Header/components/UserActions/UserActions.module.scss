@@ -10,5 +10,8 @@
 
   width: 64px;
   height: 64px;
+  border: 1px solid transparent;
   border-left: 1px solid $color-elements;
+
+  @include hover-icons($color-primary);
 }

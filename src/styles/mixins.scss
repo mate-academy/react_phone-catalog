@@ -5,6 +5,22 @@
   align-items: center;
 }
 
+@mixin hover-text($color) {
+  transition: color 0.5s ease;
+
+  &:hover {
+    color: $color;
+  }
+}
+
+@mixin hover-icons($color){
+  transition: border-color 0.5s ease-in-out;
+
+  &:hover {
+    border-color: $color;
+  }
+}
+
 @mixin h1-desktop-tablet {
   color: $color-primary;
   font-size: 48px;

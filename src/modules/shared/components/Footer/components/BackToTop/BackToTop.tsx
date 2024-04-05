@@ -7,8 +7,8 @@ export const BackToTop = () => {
 
   return (
     <div className={style.backToTopBlock}>
-      <span className={style.backToTopText}>Back to top</span>
-      <button type="button" className={style.backToTopButton} onClick={goToTop}>
+      <span className={style.text}>Back to top</span>
+      <button type="button" className={style.button} onClick={goToTop}>
         <img src="/img/icons/arrow-top.svg" alt="arrow-top" />
       </button>
     </div>

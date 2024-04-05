@@ -2,21 +2,24 @@
 
 .backToTopBlock {
   @include flex-center;
-  
+
   justify-content: space-between;
 
   height: 32px;
   width: 118px;
 }
 
-.backToTopText {
+.text {
   @include uppercase-desktop-tablet;
+  @include hover-text($color-primary);
 }
 
-.backToTopButton {
+.button {
   @include flex-center;
 
   height: 32px;
   width: 32px;
   border: 1px solid $color-icons;
+
+  @include hover-icons($color-primary);
 }

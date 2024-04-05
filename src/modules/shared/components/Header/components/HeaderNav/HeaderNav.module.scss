@@ -2,7 +2,7 @@
 
 .navbar {
   @include flex-center;
-  
+
   justify-content: space-between;
   gap: 64px;
 
@@ -22,4 +22,6 @@
   text-transform: uppercase;
   color: $color-secondary;
   outline: none;
+
+  @include hover-text($color-primary);
 }
