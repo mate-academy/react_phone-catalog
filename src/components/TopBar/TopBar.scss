@@ -1,0 +1,61 @@
+.top-bar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 3;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #fff;
+
+  box-shadow: 0px 1px 0px 0px $shadow-color;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: 96px 1fr;
+    column-gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: 128px 1fr;
+    column-gap: 24px;
+  }
+
+  &__logo {
+    width: 64px;
+    display: flex;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      box-sizing: border-box;
+      width: 100%;
+    }
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+
+    @include hover(scale, 1.05);
+  }
+
+  &__wrapper {
+    box-shadow: -1px 0px 0px 0px $shadow-color;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    padding: 16px;
+    cursor: pointer;
+  }
+
+  &__image {
+    width: $icon-size;
+    height: $icon-size;
+  }
+}
