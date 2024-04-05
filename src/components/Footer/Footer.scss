@@ -64,6 +64,11 @@
     display: flex;
     justify-content: center;
     cursor: pointer;
+
+    &--hidden {
+      opacity: 0;
+      cursor: auto;
+    }
   }
 
   &__top-link {

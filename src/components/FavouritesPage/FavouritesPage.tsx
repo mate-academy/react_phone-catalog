@@ -21,13 +21,24 @@ export const FavouritesPage: React.FC = () => {
             <h2 className="goods__title">Favourites</h2>
             <p className="goods__count-items">{`${favourites.length} models`}</p>
           </div>
-          <div className="goods__list">
-            {favourites.map(product => (
-              <div className="goods__item" key={product.id}>
-                <Card model={product} />
-              </div>
-            ))}
-          </div>
+          {!!favourites.length ? (
+            <div className="goods__list">
+              {favourites.map(product => (
+                <div className="goods__item" key={product.id}>
+                  <Card model={product} />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="page-not-found">
+              <h3 className="page-not-found__title">No favourites yet</h3>
+              <img
+                src="img/cart-is-empty.png"
+                alt="empty cart"
+                className="page-not-found__image"
+              />
+            </div>
+          )}
         </div>
       </div>
     </>

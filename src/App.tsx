@@ -13,8 +13,8 @@ import { FavouritesPage } from './components/FavouritesPage';
 
 export const App = () => {
   return (
-    <div className="App page__app">
-      <CatalogProvider>
+    <CatalogProvider>
+      <div className="App page__app">
         <Header />
 
         <Routes>
@@ -39,9 +39,8 @@ export const App = () => {
 
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
-
-        <Footer />
-      </CatalogProvider>
-    </div>
+      </div>
+      <Footer />
+    </CatalogProvider>
   );
 };

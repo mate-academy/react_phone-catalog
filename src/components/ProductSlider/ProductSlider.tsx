@@ -34,15 +34,17 @@ export const ProductSlider: React.FC<Props> = ({ title, models }) => {
     cardWidth = 288;
   }
 
+  const countToMove = Math.floor(Math.min(windowWidth, 1200) / cardWidth);
+
   const handlePrevImage = () => {
     if (startImage > 0) {
-      setStartImage(prevStartImage => prevStartImage - 1);
+      setStartImage(prevStartImage => prevStartImage - countToMove);
     }
   };
 
   const handleNextImage = () => {
     if (startImage !== models.length - Math.floor(windowWidth / cardWidth)) {
-      setStartImage(prevStartImage => prevStartImage + 1);
+      setStartImage(prevStartImage => prevStartImage + countToMove);
     }
   };
 
@@ -69,7 +71,7 @@ export const ProductSlider: React.FC<Props> = ({ title, models }) => {
                 startImage !==
                 models.length - Math.floor(windowWidth / cardWidth),
             })}
-            disabled={startImage === models.length - 1}
+            disabled={startImage > models.length - countToMove}
           ></button>
         </div>
       </div>

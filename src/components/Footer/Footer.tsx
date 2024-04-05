@@ -1,14 +1,31 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Popup } from '../Popup';
 import { CatalogContext } from '../Contexts/CatalogContext';
 
 export const Footer: React.FC = () => {
   const { popup, setPopup } = useContext(CatalogContext);
+  const [showBackToTop, setShowBackToTop] = useState(false);
 
   useEffect(() => {
     document.body.style.overflow = popup ? 'hidden' : 'auto';
   }, [popup]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setShowBackToTop(true);
+      } else {
+        setShowBackToTop(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const backToTop = () => {
     window.scrollTo(0, 0);
@@ -40,15 +57,27 @@ export const Footer: React.FC = () => {
               rights
             </div>
           </div>
-          <div className="footer__back-to-top" onClick={backToTop}>
-            <div className="footer__top-link">
-              <p className="footer__top-text">Back to top</p>
-              <button
-                type="button"
-                className="button button--up button--active"
-              ></button>
+          {showBackToTop ? (
+            <div className="footer__back-to-top" onClick={backToTop}>
+              <div className="footer__top-link">
+                <p className="footer__top-text">Back to top</p>
+                <button
+                  type="button"
+                  className="button button--up button--active"
+                ></button>
+              </div>
             </div>
-          </div>
+          ) : (
+            <div className="footer__back-to-top footer__back-to-top--hidden">
+              <div className="footer__top-link">
+                <p className="footer__top-text">Back to top</p>
+                <button
+                  type="button"
+                  className="button button--up button--active"
+                ></button>
+              </div>
+            </div>
+          )}
         </div>
       </footer>
       {!!popup.length && <Popup property={popup} />}

@@ -16,10 +16,14 @@
   }
 
   &__app {
-    min-height: calc(100vh - $top-bar-height);
+    min-height: calc(100vh - $top-bar-height - $footer-height);
+
+    @include on-tablet {
+      min-height: calc(100vh - $top-bar-height - $footer-height-desktop);
+    }
 
     @include on-desktop {
-      min-height: calc(100vh - $top-bar-height-desktop);
+      min-height: calc(100vh - $top-bar-height-desktop - $footer-height-desktop);
     }
   }
 

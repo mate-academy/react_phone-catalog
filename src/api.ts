@@ -1,7 +1,7 @@
 import { ExtendedProduct } from './types/ExtendedProduct';
 import { Product } from './types/Product';
 
-const API_URL = 'http://localhost:3000/api/products.json';
+const API_URL = 'api/products.json';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
@@ -30,7 +30,7 @@ export async function getProducts(): Promise<Product[]> {
 }
 
 export function getProductById(category: string): Promise<ExtendedProduct[]> {
-  return fetch(`http://localhost:3000/api/${category}.json`).then(response => {
+  return fetch(`api/${category}.json`).then(response => {
     if (!response.ok) {
       throw new Error();
     }
