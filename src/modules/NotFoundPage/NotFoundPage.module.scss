@@ -2,6 +2,7 @@
 
 .notFoundPage {
   @include flex-center;
+  
   flex-direction: column;
   height: 100vh;
 }
