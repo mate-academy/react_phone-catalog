@@ -392,8 +392,8 @@ main {
     gap: 32px;
 
     @include on-tablet {
-      @include pageGrid;
-      
+      @include page-grid;
+
       height: 443px;
     }
 
@@ -477,7 +477,7 @@ main {
     width: 100%;
 
     @include on-tablet {
-      @include pageGrid;
+      @include page-grid;
     }
   }
 
