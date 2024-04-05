@@ -24,9 +24,9 @@ export const DetailsPage: React.FC = () => {
 
   const { state } = useLocation();
   const location = useLocation();
-  const arrayPath = location.pathname.split('/');
-  const backPath = state?.location.pathname
-    ? state?.location.pathname
+  const arrayPath = location?.pathname.split('/');
+  const backPath = state?.location?.pathname
+    ? state?.location?.pathname
     : `/${arrayPath[1]}`;
   const category =
     arrayPath[1]?.slice(0, 1).toUpperCase() + arrayPath[1]?.slice(1);
@@ -114,8 +114,9 @@ export const DetailsPage: React.FC = () => {
           <Link
             to={{
               pathname: backPath,
-              search: state?.search,
+              search: state?.location?.search,
             }}
+            state={state?.location?.state}
             className="breadcrumbs__link"
           >
             Back
@@ -191,6 +192,9 @@ export const DetailsPage: React.FC = () => {
 
                         return (
                           <Link
+                            state={{
+                              location,
+                            }}
                             to={`/${category.toLowerCase()}/${detailProduct?.namespaceId}-${detailProduct?.capacity}-${color.replace(' ', '-')}`}
                             className={classNames('details__color-border', {
                               'details__color-border--active':
@@ -221,6 +225,9 @@ export const DetailsPage: React.FC = () => {
                     <div className="details__description-wrapper">
                       {detailProduct?.capacityAvailable.map(capacity => (
                         <Link
+                          state={{
+                            location,
+                          }}
                           to={`/${category.toLowerCase()}/${detailProduct.namespaceId}-${capacity}-${detailProduct.color.replace(' ', '-')}`}
                           key={capacity}
                           className={classNames('details__capacity', {

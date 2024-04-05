@@ -35,8 +35,9 @@ export const CartPage: React.FC = () => {
           <Link
             to={{
               pathname: backPath,
-              search: state?.search,
+              search: state?.location?.search,
             }}
+            state={state?.location?.state}
             className="breadcrumbs__link"
           >
             Back

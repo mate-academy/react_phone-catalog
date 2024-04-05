@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useContext, useMemo } from 'react';
-import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { CatalogContext } from '../Contexts/CatalogContext';
 
 type Props = {
@@ -15,8 +15,10 @@ export const Nav: React.FC<Props> = ({
   closeAsideAndGoTop = () => {},
 }) => {
   const { favourites, cart } = useContext(CatalogContext);
-  const [searchParams] = useSearchParams();
   const location = useLocation();
+
+  // const [searchParams] = useSearchParams();
+  // const location = useLocation();
 
   const totalCount = useMemo(() => {
     return cart.reduce((sum, currentValue) => sum + currentValue.quantity, 0);
@@ -115,7 +117,6 @@ export const Nav: React.FC<Props> = ({
             onClick={() => closeAsideAndGoTop(true)}
             to="/cart"
             state={{
-              search: searchParams.toString(),
               location,
             }}
             className="nav__icon"

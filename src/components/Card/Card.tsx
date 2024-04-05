@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Product } from '../../types/Product';
 import { CatalogContext } from '../Contexts/CatalogContext';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { getNextId } from '../../hooks/newId';
 
 type Props = {
@@ -10,7 +10,7 @@ type Props = {
 };
 
 export const Card: React.FC<Props> = ({ model, width = '100%' }) => {
-  const [searchParams] = useSearchParams();
+  // const [searchParams] = useSearchParams();
   const context = useContext(CatalogContext);
   const { favourites, addFavourites, deleteFromFavourites } = context;
   const { cart, addCart } = context;
@@ -50,7 +50,6 @@ export const Card: React.FC<Props> = ({ model, width = '100%' }) => {
             <Link
               to={`../${model.category}/${model.itemId}`}
               state={{
-                search: searchParams.toString(),
                 location,
               }}
             >
@@ -65,7 +64,6 @@ export const Card: React.FC<Props> = ({ model, width = '100%' }) => {
             className="card__title"
             to={`../${model.category}/${model.itemId}`}
             state={{
-              search: searchParams.toString(),
               location,
             }}
           >

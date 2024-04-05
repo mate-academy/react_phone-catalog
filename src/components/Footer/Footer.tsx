@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
           <Link to="" className="footer__logo-link">
             <img
               className="footer__logo"
-              src="img/logo.png"
+              src="img/Logo.png"
               alt="Bakerlab logo"
             />
           </Link>
