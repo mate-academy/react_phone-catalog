@@ -1,0 +1,261 @@
+.home-icon {
+  &:hover {
+    @include on-hover-icon;
+  }
+}
+
+.arrow-disabled {
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+
+.arrow {
+  @include flexCenter;
+
+  width: 32px;
+  height: 32px;
+
+  min-width: 32px;
+
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-color: transparent;
+
+  border: 1px solid $icon-color;
+
+  transition: all .3s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    border-color: $primary-color;
+  }
+
+  &:disabled {
+    opacity: .5;
+    border-color: $secondary-color;
+  }
+
+  &--left, &--right {
+    &::after {
+      content: "";
+
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--left {
+    &::after {
+      background-image: url(../../icons/arrows/arrow-left-normal.svg);
+    }
+  }
+
+  &--right {
+    &::after {
+      background-image: url(../../icons/arrows/arrow-right-normal.svg);
+    }
+  }
+}
+
+.empty-page {
+  margin-block: 30px -64px; // to get closer to footer
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+
+  @include on-desktop {
+    margin-bottom: -115px;
+  }
+
+  &--product {
+    margin-top: 25px;
+  }
+
+  &__card {
+    position: relative;
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+
+    @media (max-width: 470px) {
+      width: 100%;
+      max-width: 368px;
+    }
+
+    width: 368px;
+
+    border: 1px solid $element-color;
+  }
+
+  &__title {
+    position: relative;
+    padding-bottom: 16px;
+
+    @include textTypeFull(32px, 41px, 'Mont-regular', $secondary-color);
+    letter-spacing: -0.01em;
+    text-align: center;
+
+    @media (max-width: 470px) {
+      @include textType(22px, 31px);
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: -1px; // because the item is absolute
+      left: 0;
+
+      width: 100%;
+
+      height: 1px;
+      background-color: $element-color;
+    }
+  }
+
+  &__button {
+    @include flexCenter;
+
+    width: 100%;
+    height: 48px;
+
+    background-color: $primary-color;
+    border: 1px solid $element-color;
+
+    color: $white;
+    text-decoration: none;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary-color;
+    }
+  }
+
+  &__img-grid {
+    @include page-grid;
+
+    width: 100%;
+    z-index: -1;
+  }
+
+
+  &__img {
+    grid-column: span 4;
+
+    width: 100%;
+    height: 80vw;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    @include on-tablet {
+      margin-top: -55px;
+
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+
+      grid-column: span 24;
+    }
+
+    &--products, &--favorites {
+      background-image: url(../../../public/img/product-not-found.png);
+    }
+
+    &--cart {
+      background-image: url(../../../public/img/cart-is-empty.png);
+    }
+  }
+}
+
+.see-more-card {
+  position: relative;
+
+  padding: 0 32px 32px 32px;
+  width: 272px;
+  max-height: 530.8px;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+
+  border: 1px solid $element-color;
+  transition: all .3s ease-in-out .1s;
+
+
+  @include on-mobile {
+    width: calc(100vw - 32px); // for better look on smaller phones
+    max-width: 300px;
+
+    align-items: center;
+  }
+
+  &__img-link {
+    margin-inline: -32px;
+  }
+
+  &__img {
+    position: relative;
+    max-height: 310px;
+    max-width: 272px;
+
+    object-fit: contain;
+    padding-bottom: 16px;
+    transition: all .3s ease-in-out .1s;
+
+    @include on-mobile {
+      max-width: 300px;
+    }
+
+    &:hover {
+      border-radius: 20%;
+    }
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0; // because the item is absolute
+      left: 0;
+
+      width: 100%;
+
+      height: 1px;
+      background-color: $element-color;
+    }
+  }
+
+  &__text {
+    @include textTypeFull(22px, 31px, "Mont-regular", $secondary-color);
+    text-align: center;
+  }
+
+  &__link {
+    height: 48px;
+    width: 100%;
+
+    @include flexCenter;
+
+    background-color: $primary-color;
+    color: $white;
+    text-decoration: none;
+
+    border: 1px solid transparent;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      background-color: transparent;
+      color: $primary-color;
+
+      border-color: $element-color;
+    }
+  }
+}

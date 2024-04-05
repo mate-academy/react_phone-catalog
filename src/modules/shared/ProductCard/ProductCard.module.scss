@@ -1,0 +1,189 @@
+.product {
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  width: 272px;
+
+  border: 1px solid $element-color;
+  transition: all .3s ease-in-out .1s;
+
+  @include on-mobile {
+    width: calc(100vw - 32px); // for better look on smaller phones
+    max-width: 300px;
+
+    align-items: center;
+  }
+
+  &:hover {
+    border-color: $icon-color;
+    border-radius: 5%;
+
+    transform: translateY(-1%);
+    box-shadow: 5px 5px 0 $element-color;
+  }
+
+  &__image {
+    height: 196px;
+    width: 208px;
+
+    object-fit: contain;
+    cursor: pointer;
+  }
+
+  &__name-link {
+    text-decoration: none;
+  }
+
+  &__name {
+    margin-block: 16px 0;
+    min-height: 42px;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $primary-color);
+  }
+
+  &__prices {
+    position: relative;
+
+    display: flex;
+    text-decoration: none;
+
+    padding-bottom: 8px;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: -1px; // because the item is absolute
+      left: 0;
+
+      width: 208px;
+
+      height: 1px;
+      background-color: $element-color;
+    }
+  }
+
+  &__price {
+    margin-block: 0;
+
+    @include textTypeFull(22px, 30.8px, "Mont", $primary-color);
+
+    &--discount {
+      margin-left: 8px;
+
+      @include textTypeFull(22px, 28.12px, 'Mont-regular', $secondary-color);
+      text-decoration: line-through;
+      text-decoration-color: white;
+    }
+  }
+
+  &__specs {
+    margin-block: 0;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--name, &--detail {
+      margin-block: 8px;
+
+      @include textTypeFull(12px, 15.34px, 'Mont-semi-bold', $secondary-color);
+    }
+
+    &--detail {
+      color: $primary-color;
+
+      text-align: right;
+    }
+  }
+
+  &__buttons {
+    margin-top: 8px;
+
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart {
+    height: 40px;
+    width: 160px;
+
+    background-color: $primary-color;
+    border: none;
+
+    @include textTypeFull(14px, 21px, 'Mont-semi-bold', $white);
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+
+    &--added {
+      background-color: transparent;
+      border: 1px solid $element-color;
+
+      color: $green;
+
+      &:hover {
+        box-shadow: 0px 3px 13px 0px $white;
+      }
+    }
+  }
+
+  &__favorite {
+    @include flexCenter;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $icon-color;
+    background-color: transparent;
+
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &::after {
+      content: "";
+
+      background-image: url(../../../icons/favorite.svg);
+      background-repeat: no-repeat;
+
+      width: 16px;
+      height: 16px;
+    }
+
+    &--added {
+      &::after {
+        background-image: url(../../../icons/favorite-filled.svg);
+
+        animation: heartAnimation .3s ease-in-out forwards;
+      }
+    }
+  }
+}
+
+@keyframes heartAnimation {
+  0% {
+    transform: scale(.25);
+    opacity: .5;
+  }
+
+  75% {
+    transform: scale(1.25);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}

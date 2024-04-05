@@ -1,0 +1,43 @@
+html {
+  font-family: 'Mont';
+
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+
+  background-color: $bg-color;
+}
+
+body {
+  --padding: 16px;
+
+  padding-inline: var(--padding);
+
+  @include on-tablet {
+    --padding: 24px;
+  }
+
+  @media (min-width: 1440px) {
+    --padding: 152px;
+
+    max-width: 1440px;
+    margin-inline: auto;
+  }
+
+  margin: 0;
+}
+
+main {
+  margin-top: calc(48px + 24px); // header height + title top margin
+
+  @include on-tablet {
+    min-height: 79vh; // so that footer would always remain at the bottom
+  }
+
+  @include on-desktop {
+    min-height: 65vh;
+  }
+}
+
+button {
+  cursor: pointer;
+}

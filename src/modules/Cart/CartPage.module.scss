@@ -1,0 +1,289 @@
+.cart {
+  position: relative;
+
+  @include on-tablet {
+    margin-top: calc(40px + 48px); // margin-top + navbar height
+  }
+
+  @include on-desktop {
+    margin-top: calc(40px + 64px);
+  }
+
+  &__link-back {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 4px;
+
+    cursor: pointer;
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+
+    background-image: url(../../icons/arrows/arrow-left-normal.svg);
+  }
+
+  &__link-text {
+    margin: 0;
+
+    position: relative;
+    top: 1px; // fix later
+
+    @include textTypeFull(12px, 15.34px, "Mont-semi-bold", $secondary-color);
+  }
+
+  &__title {
+    margin-block: 24px 0;
+
+    @include textType(32px, 41px);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      margin-top: 16px;
+
+      @include textType(48px, 56px);
+    }
+  }
+
+  &__cart {
+    margin-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      gap: 16px;
+      flex-direction: row;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    gap: 16px;
+  }
+
+  &__checkout {
+    position: relative;
+
+    border: 1px solid $element-color;
+    padding: 24px;
+
+    width: calc(100vw - 32px);
+
+    @include on-tablet {
+      width: calc(100vw - 48px);
+    }
+
+    @include on-desktop {
+      width: 368px;
+      max-height: 206px;
+    }
+  }
+
+  &__description {
+    padding-bottom: 16px;
+
+    position: relative;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: $element-color;
+    }
+  }
+
+  &__price {
+    margin: 0;
+
+    @include textType(32px, 41px);
+    letter-spacing: -0.01em;
+
+    text-align: center;
+  }
+
+  &__items-count {
+    margin: 0;
+
+    @include textTypeFull(14px, 21px, "Mont-regular", $secondary-color);
+
+    text-align: center;
+  }
+
+  &__button {
+    margin-top: 24px;
+
+    width: 100%;
+    height: 48px;
+
+    background-color: $primary-color;
+    border: none;
+
+    @include textTypeFull(14px, 21px, "Mont-semi-bold", $white);
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+}
+
+.cart-item {
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+
+  padding: 16px;
+
+  width: calc(100vw - 32px);
+  border: 1px solid $element-color;
+
+  @include on-tablet {
+    width: calc(100vw - 48px);
+
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__delete {
+    height: 16px;
+    width: 16px;
+
+    background-image: url(../../icons/close.svg);
+
+    border: none;
+    background-color: transparent;
+    opacity: .5;
+
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+      opacity: 1;
+    }
+  }
+
+  &__link {
+    height: 66px;
+  }
+
+  &__img {
+    height: 66px;
+    width: 66px;
+
+    object-fit: contain;
+
+    &:hover {
+      @include on-hover-icon;
+    }
+  }
+
+  &__title {
+    margin: 0;
+
+    @include textTypeFull(14px, 21px, "Mont-regular", $primary-color);
+
+    @include on-tablet {
+      max-width: 176px;
+    }
+
+    @include on-desktop {
+      min-width: 336px;
+    }
+  }
+
+  &__items {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__counter {
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+    max-width: 96px;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    height: 32px;
+    width: 32px;
+    min-width: 32px;
+
+    border: 1px solid $element-color;
+    transition: all .3s ease-in-out;
+
+    background-color: transparent;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &:disabled {
+      opacity: .5;
+      border-color: $element-color;
+    }
+  }
+
+  &__minus, &__plus {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__minus {
+    background-image: url(../../icons/minus.svg);
+  }
+
+  &__count {
+    margin: 0;
+
+    width: 10px;
+    min-width: 15px;
+    max-width: 15px;
+
+    @include textTypeFull(14px, 21px, "Mont-regular", $primary-color);
+    text-align: center;
+  }
+
+  &__plus {
+    background-image: url(../../icons/plus.svg);
+  }
+
+  &__price {
+    margin: 0;
+
+    @include textType(22px, 30.8px);
+    text-align: right;
+  }
+}

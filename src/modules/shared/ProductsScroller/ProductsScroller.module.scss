@@ -1,0 +1,62 @@
+.scroller {
+  margin-inline: 0 -16px;
+
+  grid-column: span 12;
+  overflow-x: hidden;
+  margin-top: 56px;
+
+  @include on-tablet {
+    margin-inline: 0 -24px;
+
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-inline: 0;
+
+    margin-top: 80px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @include textType(22px, 30.8px);
+    letter-spacing: -0.01em;
+
+    @include on-mobile {
+      max-width: 136px;
+    }
+
+    @include on-tablet {
+      @include textType(32px, 41px);
+    }
+  }
+
+  &__arrows {
+    margin-right: 16px;
+
+    display: flex;
+    gap: 16px;
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+
+    width: calc(100vw - 16px);
+
+    transition: all .5s ease-in-out;
+
+    @include on-tablet {
+      width: calc(100vw - 24px);
+    }
+  }
+}

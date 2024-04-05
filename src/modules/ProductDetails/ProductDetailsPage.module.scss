@@ -1,0 +1,468 @@
+.product-details {
+  margin-top: calc(24px + 48px); // margin-top + navbar height
+
+  @include on-desktop {
+    margin-top: calc(24px + 64px);
+  }
+
+  &__link-back {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__home-link {
+    background-image: url(../../icons/home.svg);
+
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrow-right {
+    background-image: url(../../icons/arrows/arrow-right.svg);
+
+    height: 16px;
+    width: 16px;
+  }
+
+  &__prev-page-link, &__current-page {
+    position: relative;
+    top: 1px;
+
+    @include textTypeFull(12px, 15.34px, 'Mont-regular', $primary-color);
+    transition: all .3s ease-in-out .1s;
+  }
+
+  &__prev-page-link:hover {
+    opacity: .7;
+  }
+
+  &__current-page {
+    color: $secondary-color;
+  }
+
+  &__back {
+    margin-top: 24px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 4px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__arrow-left {
+    background-image: url(../../icons/arrows/arrow-left-normal.svg);
+
+    height: 16px;
+    width: 16px;
+
+    cursor: pointer;
+  }
+
+  &__go-back {
+    position: relative;
+    top: 1px;
+
+    @include textTypeFull(12px, 15.34px, "Mont-semi-bold", $secondary-color);
+    cursor: pointer;
+  }
+
+  &__title {
+    @include textType(22px, 30.8px);
+
+    @include on-tablet {
+      @include textType(32px, 41px);
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+
+    gap: 56px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 64px;
+
+      @include page-grid;
+    }
+  }
+}
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    @include page-grid;
+
+    flex-direction: row;
+  }
+
+  &__img {
+    width: calc(100vw - 32px);
+    object-fit: contain;
+
+    animation: imageAppears .3s ease-in-out forwards;
+
+    @include on-tablet {
+      grid-column: 2 / 8;
+      max-width: 100%;
+
+      height: 45vw; // for better visuals
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 13;
+
+      height: 38vw; // for better visuals
+      max-height: 464px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      order: -1;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__small-image {
+    padding: 7px;
+
+    height: 49px;
+    width: 51.2px;
+
+    object-fit: contain;
+    cursor: pointer;
+
+    border: 1px solid #C4C4C4;
+    transition: all .3s ease-in-out;
+
+    @include on-desktop {
+      height: 80px;
+      width: 80px;
+    }
+
+    &--displayed, &:hover {
+      border-radius: 10%; // for more smooth look
+      border-color: $primary-color;
+    }
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+
+    @include on-mobile {
+      margin-top: 24px; // 40px - 16px from gap
+    }
+
+    grid-column: 8 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__colors {
+    position: relative;
+
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 24px;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: $element-color;
+    }
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text {
+    @include textTypeFull(12px, 15.34px, "Mont-regular", $secondary-color);
+  }
+
+  &__id {
+    @include textTypeFull(12px, 15.34px, "Mont-semi-bold", $icon-color);
+    text-align: right;
+  }
+
+  &__available-colors {
+    display: flex;
+    gap: 9px;
+  }
+
+  &__available-color {
+    height: 32px;
+    width: 32px;
+
+    border: 1px solid $element-color;
+    border-radius: 50%;
+
+    transition: all .3s ease-in-out;
+
+    &--displayed, &:hover {
+      border-color: $primary-color;
+    }
+  }
+
+  &__available-color-filled {
+    height: 30px;
+    width: 30px;
+
+    border: 2px solid $white;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    position: relative;
+
+    margin-top: 24px;
+    padding-bottom: 24px;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: $element-color;
+    }
+  }
+
+  &__available-capacities {
+    display: flex;
+
+    gap: 8px;
+  }
+
+  &__available-capacity {
+    height: 32px;
+
+    padding: 7px 8px 4px ;
+
+    @include textTypeFull(14px, 21px, "Mont-regular", $primary-color);
+    text-align: center;
+
+    border: 1px solid $element-color;
+    transition: all .5s ease-in-out .1s;
+
+    &--displayed, &:hover {
+      background-color: $primary-color;
+
+      color: $white;
+    }
+  }
+
+  &__prices {
+    margin-block: 32px 8px;
+
+    display: flex;
+    align-items: center;
+
+    max-height: 45px; // to prevent it from taking up too much space (approximate)
+  }
+
+  &__price {
+    @include textType(32px, 41px);
+    letter-spacing: -0.01em;
+
+    &--discount {
+      position: relative;
+      left: 8px;
+
+      @include textTypeFull(22px, 28.12px, "Mont-regular", $secondary-color);
+
+      text-decoration: line-through;
+      text-decoration-color: $white;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__cart, &__favorite {
+    @include on-mobile {
+      width: 72vw; // for better visuals on big smartphones
+      height: 15vw;
+    }
+  }
+
+  &__favorite {
+    @include on-mobile {
+      width: 15vw;
+    }
+  }
+
+  &__features {
+    margin-top: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__feature {
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__feature-name, &__feature-text {
+    @include textTypeFull(12px, 15.34px, "Mont-regular", $secondary-color);
+  }
+
+  &__feature-text {
+    color: $primary-color;
+
+    max-width: 50%;
+    text-align: right;
+  }
+}
+
+@keyframes imageAppears {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+.product-about {
+  display: flex;
+  flex-direction: column;
+
+  gap: 32px;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &__section {
+    &-title {
+      margin: 0;
+
+      @include textTypeFull(16px, 20.45px, "Mont-semi-bold", $primary-color);
+      @include on-tablet {
+        @include textType(20px, 25.56px);
+      }
+    }
+
+    &-text {
+      margin-block: 16px 0;
+
+      @include textTypeFull(14px, 21px, "Mont-regular", $secondary-color);
+    }
+  }
+
+}
+
+.product-tech-specs {
+  @include on-desktop {
+    grid-column: 14 / -1;
+  }
+
+  &__specs {
+    margin-top: 30px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+
+    @include on-tablet {
+      margin-top: 25px;
+    }
+  }
+
+  &__spec {
+    display: flex;
+
+    justify-content: space-between;
+    overflow-x: hidden;
+
+    &-title, &-value {
+      margin: 0;
+
+      @include textTypeFull(14px, 21px, "Mont-regular", $secondary-color);
+    }
+
+    &-value {
+      text-align: right;
+      color: $primary-color;
+
+      max-width: 50%;
+    }
+  }
+}
+
+.product-about__title, .product-tech-specs__title {
+  margin: 0;
+
+  position: relative;
+  @include textTypeFull(20px, 25.56px, "Mont-semi-bold", $primary-color);
+  padding-bottom: 16px;
+
+  @include on-tablet {
+    @include textTypeFull(22px, 30.8px, "Mont", $primary-color);
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    height: 1px;
+    width: 100%;
+
+    background-color: $element-color;
+  }
+}

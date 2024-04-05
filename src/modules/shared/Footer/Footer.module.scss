@@ -1,0 +1,112 @@
+.footer {
+  @include cancel-padding;
+
+  margin-top: 64px;
+  padding: 32px 16px;
+
+  width: 100vw;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  box-shadow: 0px -1px 0px 0px #E2E6E9;
+
+  @include on-tablet {
+    padding-inline: 24px;
+
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    height: 96px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+    margin-inline: -152px;
+  }
+
+  &__logo {
+    background-image: url(../../../icons/logo.svg);
+
+    height: 32px;
+    width: 89px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 65px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+
+      width: 192px;
+    }
+
+    @include on-desktop {
+      width: 380px;
+    }
+  }
+
+  &__link {
+    @include textTypeFull(12px, 11px, "Mont", $secondary-color);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    align-self: center;
+  }
+
+  &__text {
+    @include textTypeFull(12px, 15.34px, 'Mont-semi-bold', $secondary-color);
+    cursor: pointer;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__arrow {
+    @include flexCenter;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: transparent;
+    border: 1px solid $icon-color;
+
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &::after {
+      content: "";
+
+      background-image: url(../../../icons/arrows/arrow-right-normal.svg);
+      height: 16px;
+      width: 16px;
+
+      transform: rotate(-90deg);
+      cursor: pointer;
+    }
+  }
+}

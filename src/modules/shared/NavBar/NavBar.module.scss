@@ -1,0 +1,192 @@
+.nav-bar {
+  @include cancel-padding;
+
+  position: fixed;
+  top: 0;
+  left: 16px;
+
+  display: flex;
+  justify-content: space-between;
+  background-color: $bg-color;
+
+  z-index: 500;
+
+  box-shadow: 0 1px 0 0 $element-color;
+  width: 100%;
+
+  @include on-mobile {
+    max-width: 100vw;
+  }
+
+  @include on-tablet {
+    left: 24px;
+  }
+
+  &__left-group {
+    display: flex;
+    align-items: center;
+
+    gap: 16px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    margin-inline: 15px;
+
+    background-image: url(../../../icons/logo.svg);
+    background-size: contain;
+    background-repeat: no-repeat;
+
+
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &__links {
+    display: flex;
+    gap: 32px;
+
+    padding: 0;
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__link {
+    @include textTypeFull(12px, 11px, "Mont", $secondary-color);
+    letter-spacing: 0.04em;
+
+    text-transform: uppercase;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__right-group {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    height: 48px;
+    width: 48px;
+
+    cursor: pointer;
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+
+    border: 1px solid transparent;
+    box-shadow: -1px 0 0 0 $element-color;
+    transition: all .3s ease-in-out .1s;
+
+    &:hover {
+      border-color: $primary-color transparent;
+    }
+  }
+
+  &__favorite {
+    position: relative;
+    background-image: url(../../../icons/favorite.svg);
+
+  }
+
+  &__cart {
+    position: relative;
+    background-image: url(../../../icons/cart.svg);
+  }
+
+  &__icon-text {
+    position: absolute;
+    top: -5px;
+    right: -8px;
+
+    @include flexCenter;
+
+    height: 14px;
+    width: 14px;
+
+    background-color: $red;
+
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    @include textTypeFull(9px, 11.5px, "Mont-semi-bold", $white);
+  }
+
+  &__menu, &__close {
+    @include on-hover-icon;
+  }
+
+  &__menu {
+    background-image: url(../../../icons/menu.svg);
+  }
+
+  &__close {
+    background-image: url(../../../icons/close.svg);
+  }
+}
+
+.selected-link {
+  display: inline;
+
+  position: relative;
+  color: $primary-color;
+
+  &::after {
+    bottom: -10px; // approximate
+
+    @include selected-tab(link-underline);
+
+    @include on-tablet {
+      bottom: -18px; // approximate
+    }
+
+    @include on-desktop {
+      bottom: -26px; // approximate
+    }
+  }
+}
+
+.selected-tab {
+  position: relative;
+
+  &::after {
+    bottom: 0;
+
+    @include selected-tab(link-underline);
+  }
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+}
+
+@keyframes link-underline {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(100%);
+  }
+}
+
+

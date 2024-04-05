@@ -1,0 +1,32 @@
+.not-found-page {
+  margin-top: calc(50px + 64px);
+  animation: slideInOut 3s ease-in-out forwards;
+
+  @include page-grid;
+  justify-items: center;
+
+  &__img {
+    max-width: 100%;
+    grid-column: 2 / 4;
+
+    @include on-tablet {
+      grid-column: 3 / 11;
+    }
+
+    @include on-desktop {
+      grid-column: 5 / 19;
+    }
+  }
+}
+
+@keyframes slideInOut {
+  0%, 100% {
+    opacity: 0;
+    transform: translateY(-100%) rotate(30deg);
+  }
+
+  40%, 60% {
+    opacity: 1;
+    transform: translateY(0) rotate(0);
+  }
+}
