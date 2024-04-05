@@ -8,8 +8,11 @@ import { SearchWithParams } from '../types/main';
 import { Logo } from './Logo';
 import { NavItem } from './NavItem';
 import { twJoin } from 'tailwind-merge';
+import { useReadLocalStorage } from 'usehooks-ts';
 
 export const Header: React.FC = () => {
+  const favourites = useReadLocalStorage<number[]>('favourites');
+  const cart = useReadLocalStorage<number[]>('cart');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setSearchWith = (params: SearchWithParams) => {
@@ -50,10 +53,20 @@ export const Header: React.FC = () => {
           </div>
           <div className="flex h-full w-full justify-end">
             {[
-              ['Burger menu', burgerMenuIcon],
-              ['Favorites menu', favouritesIcon, '/favorites'],
-              ['Cart menu', cartIcon, 'cart'],
-            ].map(([alt, srcImg, src]) => (
+              { alt: 'Burger menu', srcImg: burgerMenuIcon },
+              {
+                alt: 'Favourites menu',
+                srcImg: favouritesIcon,
+                src: '/favourites',
+                storage: favourites,
+              },
+              {
+                alt: 'Cart menu',
+                srcImg: cartIcon,
+                src: '/cart',
+                storage: cart,
+              },
+            ].map(({ alt, srcImg, src, storage }) => (
               <li
                 key={alt}
                 onClick={
@@ -67,7 +80,7 @@ export const Header: React.FC = () => {
                   alt !== 'Burger menu' && 'hidden md:flex',
                 )}
               >
-                {alt === 'Burger menu' ? (
+                {alt === 'Burger menu' || !src ? (
                   <img
                     src={
                       searchParams.get('burgerMenu') === 'open'
@@ -78,6 +91,17 @@ export const Header: React.FC = () => {
                   />
                 ) : (
                   <NavItem path={src} className="w-full">
+                    {!!storage?.length && (
+                      <div
+                        className="absolute flex
+                        h-3.5 -translate-y-1/2 translate-x-1/2 items-center
+                        justify-center rounded-full border-[2px]
+                        border-white bg-red px-0.5 text-[9px]
+                        text-white"
+                      >
+                        {storage?.length}
+                      </div>
+                    )}
                     <img src={srcImg} alt={alt} />
                   </NavItem>
                 )}

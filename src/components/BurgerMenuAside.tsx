@@ -29,8 +29,8 @@ export const BurgerMenuAside: React.FC = () => {
           </div>
           <div className="flex h-16 w-full justify-end">
             {[
-              ['Favorites menu', favouritesIcon, '/favorites'],
-              ['Cart menu', cartIcon, 'cart'],
+              ['Favourites menu', favouritesIcon, '/favourites'],
+              ['Cart menu', cartIcon, '/cart'],
             ].map(([alt, srcImg, src]) => (
               <li
                 key={alt}

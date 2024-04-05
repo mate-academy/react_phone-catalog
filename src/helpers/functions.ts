@@ -150,3 +150,16 @@ export const getRandomItemsFromArray = <T>(
 
   return result;
 };
+
+export const toggleItemInArray = <T>(array: Array<T>, item: T) => {
+  const index = array.indexOf(item);
+  const result = [...array];
+
+  if (index === -1) {
+    result.push(item);
+  } else {
+    result.splice(index, 1);
+  }
+
+  return result;
+};

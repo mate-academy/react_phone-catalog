@@ -20,10 +20,17 @@ import { Product } from '../types/products';
 import { Button } from '../components/Button';
 import { FavouritesButton } from '../components/FavouritesButton';
 import { ProductsSlider } from '../components/ProductsSlider';
+import { useLocalStorage } from 'usehooks-ts';
+import { toggleItemInArray } from '../helpers/functions';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
+  const [favourites, setFavourites] = useLocalStorage<number[]>(
+    'favourites',
+    [],
+  );
+  const [cart, setCart] = useLocalStorage<number[]>('cart', []);
   const [isLoading, setIsLoading] = useState(true);
   const [product, setProduct] = useState<Accessory | Phone | Tablet | null>(
     null,
@@ -176,9 +183,23 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="flex h-12 gap-2">
-              <Button className="h-full w-full">Add to cart</Button>
+              <Button
+                onClick={() =>
+                  setFavourites(c => toggleItemInArray(c, smallProduct.id))
+                }
+                active={favourites.includes(smallProduct.id)}
+                className="h-full w-full"
+              >
+                {favourites.includes(smallProduct.id) ? 'Added' : 'Add to cart'}
+              </Button>
 
-              <FavouritesButton className="h-full w-auto" />
+              <FavouritesButton
+                onClick={() =>
+                  setCart(c => toggleItemInArray(c, smallProduct.id))
+                }
+                active={cart.includes(smallProduct.id)}
+                className="h-full w-auto"
+              />
             </div>
           </div>
 

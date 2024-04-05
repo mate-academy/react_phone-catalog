@@ -3,6 +3,8 @@ import { Product } from '../types/products';
 import { Button } from './Button';
 import { FavouritesButton } from './FavouritesButton';
 import { Link } from 'react-router-dom';
+import { useLocalStorage } from 'usehooks-ts';
+import { toggleItemInArray } from '../helpers/functions';
 
 interface Props {
   product: Product;
@@ -15,6 +17,12 @@ export const ProductCard: React.FC<Props> = ({
   discount = true,
   className = '',
 }) => {
+  const [favourites, setFavourites] = useLocalStorage<number[]>(
+    'favourites',
+    [],
+  );
+  const [cart, setCart] = useLocalStorage<number[]>('cart', []);
+
   return (
     <article
       className={twMerge(
@@ -57,8 +65,18 @@ export const ProductCard: React.FC<Props> = ({
         </div>
       </div>
       <div className="flex gap-2">
-        <Button className="w-full">Add to cart</Button>
-        <FavouritesButton className="h-10 w-10" />
+        <Button
+          onClick={() => setCart(c => toggleItemInArray(c, product.id))}
+          active={cart.includes(product.id)}
+          className="w-full"
+        >
+          {favourites.includes(product.id) ? 'Added' : 'Add to cart'}
+        </Button>
+        <FavouritesButton
+          onClick={() => setFavourites(c => toggleItemInArray(c, product.id))}
+          active={favourites.includes(product.id)}
+          className="h-10 w-10"
+        />
       </div>
     </article>
   );

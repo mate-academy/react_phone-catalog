@@ -95,3 +95,9 @@ export const getSuggestedProducts = (amount: number) => {
     getRandomItemsFromArray(products, amount),
   );
 };
+
+export const getProductsById = (id: number[]) => {
+  return getProducts().then(products =>
+    products.filter(product => id.includes(product.id)),
+  );
+};

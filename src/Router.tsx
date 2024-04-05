@@ -4,6 +4,7 @@ import { NotFoundPage } from './pages/NotFoundPage';
 import { HomePage } from './pages/HomePage';
 import { ProductPage } from './pages/ProductPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 export const Router = () => {
   return (
@@ -18,6 +19,7 @@ export const Router = () => {
             path="/accessories"
             element={<ProductPage type="accessories" />}
           />
+          <Route path="/favourites" element={<FavoritesPage />} />
           <Route path="/product">
             <Route path=":productId" element={<ProductDetailsPage />} />
           </Route>
