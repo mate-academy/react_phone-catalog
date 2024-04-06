@@ -16,7 +16,6 @@ const COLUMNS = 12;
 export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
-  const [delay, setDelay] = useState(0.3);
   const [size, setSize] = useState(windowSize);
   const [images, setImages] = useState<Picture[]>(getImages(windowSize));
 
@@ -31,23 +30,36 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
           10 +
         GAP_BETWEEN_COLUMNS * 9
       : windowSize;
-  // const [oneStep, setOneStep] = useState<number>(0);
 
   const selectPicture = (index: number) => {
     setPosition(index * oneStep);
     setImgPosition(index);
+  };
 
-    if (!delay) {
-      setDelay(0.3);
+  const moveLeft = () => {
+    if (size !== windowSize) {
+      setSize(windowSize);
+    }
+
+    if (imgPosition > 0) {
+      setImgPosition(prevPosition => prevPosition - 1);
+      setPosition(prevPosition => prevPosition - oneStep);
+    }
+  };
+
+  const moveRight = () => {
+    if (size !== windowSize) {
+      setSize(windowSize);
+    }
+
+    if (imgPosition < images.length - 1) {
+      setImgPosition(prevPosition => prevPosition + 1);
+      setPosition(prevPosition => prevPosition + oneStep);
     }
   };
 
   // useEffect(() => {
   //   const interval = setInterval(() => {
-  //     if (!delay) {
-  //       setDelay(0.3);
-  //     }
-
   //     if (imgPosition >= images.length - 1) {
   //       setPosition(0);
   //       setImgPosition(0);
@@ -60,12 +72,11 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
   //   }, 5000);
 
   //   return () => clearInterval(interval);
-  // }, [delay, images.length, imgPosition, windowSize]);
+  // }, [images.length, imgPosition, oneStep, windowSize]);
 
   useEffect(() => {
     if (size !== windowSize && imgPosition !== 0) {
       setSize(windowSize);
-      setDelay(0);
       setPosition(imgPosition * oneStep);
     }
   }, [imgPosition, oneStep, size, windowSize]);
@@ -80,48 +91,50 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
     }
   }, [images, windowSize]); // setting images depending on the width of the devices
 
-  // console.log(oneStep);
   // console.log(windowSize);
   // console.log(position);
 
   return (
     <div className="pictures-slider">
-      <div className="pictures-slider__images-wrapper">
+      <div className="pictures-slider__images-container">
         <button
           type="button"
-          className="pictures-slider__move-left"
-          onClick={() => {}}
+          className={cn('pictures-slider__move-left', {
+            disabled: imgPosition <= 0,
+          })}
+          onClick={moveLeft}
         >
           &lt;
         </button>
 
-        <div
-          className="pictures-slider__images"
-          style={{
-            left: `-${position}px`,
-            transition: `${delay}s`,
-          }}
-        >
-          {images.map(img => (
-            <div
-              className="pictures-slider__img-wrapper"
-              ref={imagesRef}
-              key={img.id}
-              // style={{ width: `${windowSize}px` }}
-            >
-              <img
-                src={img.url}
-                alt={img.alt}
-                className={`pictures-slider__img pictures-slider__img--${img.id}`}
-              />
-            </div>
-          ))}
+        <div className="pictures-slider__images-wrapper">
+          <div
+            className="pictures-slider__images"
+            style={{ left: `-${position}px` }}
+          >
+            {images.map(img => (
+              <div
+                className="pictures-slider__img-wrapper"
+                ref={imagesRef}
+                key={img.id}
+                style={{ width: `${oneStep}px` }}
+              >
+                <img
+                  src={img.url}
+                  alt={img.alt}
+                  className={`pictures-slider__img pictures-slider__img--${img.id}`}
+                />
+              </div>
+            ))}
+          </div>
         </div>
 
         <button
           type="button"
-          className="pictures-slider__move-right"
-          onClick={() => {}}
+          className={cn('pictures-slider__move-right', {
+            disabled: imgPosition >= images.length - 1,
+          })}
+          onClick={moveRight}
         >
           &gt;
         </button>
@@ -129,15 +142,19 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
 
       <div className="pictures-slider__lines">
         {images.map((img, index) => (
-          // eslint-disable-next-line jsx-a11y/control-has-associated-label
           <button
             type="button"
             key={img.id}
-            className={cn('pictures-slider__button', {
-              'pictures-slider__button--active': imgPosition === index,
-            })}
+            className="pictures-slider__button"
             onClick={() => selectPicture(index)}
-          />
+            aria-label={`Slide ${index + 1}`}
+          >
+            <div
+              className={cn('pictures-slider__line', {
+                'pictures-slider__line--active': imgPosition === index,
+              })}
+            />
+          </button>
         ))}
       </div>
     </div>
