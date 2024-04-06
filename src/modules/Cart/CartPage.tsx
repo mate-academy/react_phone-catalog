@@ -11,6 +11,7 @@ export const CartPage = () => {
   const { cart } = useAppSelector(state => state.products);
 
   const [duplicateCart, setDuplicateCart] = useState([...cart]);
+  const [isPaymentMethodShown, setIsPaymentMethodShown] = useState(false);
   const navigate = useNavigate();
 
   /* local storage start */
@@ -129,6 +130,10 @@ export const CartPage = () => {
 
   /* JSX pieces end */
 
+  const handlePaymentMethod = () => {
+    setIsPaymentMethodShown(!isPaymentMethodShown);
+  };
+
   return (
     <section className="cart">
       <div className="cart__link-back" onClick={handleGoBack}>
@@ -166,16 +171,27 @@ export const CartPage = () => {
               ))}
             </div>
 
-            <div className="cart__checkout">
-              <div className="cart__description">
-                <p className="cart__price">${totalPrice}</p>
+            <div className="cart__checkout checkout">
+              {isPaymentMethodShown ? (
+                <div className="checkout__payment-method">
+                  Payment-method logic can be added later on
+                </div>
+              ) : (
+                <div className="checkout__description">
+                  <p className="checkout__price">${totalPrice}</p>
 
-                <p className="cart__items-count">
-                  Total for {duplicateCart?.length}&nbsp;
-                  {duplicateCart?.length === 1 ? 'item' : 'items'}
-                </p>
-              </div>
-              <button className="cart__button">Checkout</button>
+                  <p className="checkout__items-count">
+                    Total for {duplicateCart?.length}&nbsp;
+                    {duplicateCart?.length === 1 ? 'item' : 'items'}
+                  </p>
+                </div>
+              )}
+              <button
+                className="checkout__button"
+                onClick={handlePaymentMethod}
+              >
+                Checkout
+              </button>
             </div>
           </>
         ) : (

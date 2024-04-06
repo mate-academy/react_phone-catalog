@@ -51,19 +51,7 @@
     text-decoration: none;
 
     padding-bottom: 8px;
-
-    &::after {
-      content: "";
-
-      position: absolute;
-      bottom: -1px; // because the item is absolute
-      left: 0;
-
-      width: 208px;
-
-      height: 1px;
-      background-color: $element-color;
-    }
+    border-bottom: 1px solid $element-color;
   }
 
   &__price {
@@ -76,7 +64,7 @@
 
       @include textTypeFull(22px, 28.12px, 'Mont-regular', $secondary-color);
       text-decoration: line-through;
-      text-decoration-color: white;
+      text-decoration-color: $red;
     }
   }
 

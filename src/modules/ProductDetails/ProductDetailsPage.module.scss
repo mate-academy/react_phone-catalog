@@ -199,17 +199,7 @@
     flex-direction: column;
     padding-bottom: 24px;
 
-    &::after {
-      content: "";
-
-      position: absolute;
-      bottom: 0;
-
-      height: 1px;
-      width: 100%;
-
-      background-color: $element-color;
-    }
+    border-bottom: 1px solid $element-color;
   }
 
   &__description {
@@ -258,18 +248,7 @@
 
     margin-top: 24px;
     padding-bottom: 24px;
-
-    &::after {
-      content: "";
-
-      position: absolute;
-      bottom: 0;
-
-      height: 1px;
-      width: 100%;
-
-      background-color: $element-color;
-    }
+    border-bottom: 1px solid $element-color;
   }
 
   &__available-capacities {
@@ -316,7 +295,7 @@
       @include textTypeFull(22px, 28.12px, "Mont-regular", $secondary-color);
 
       text-decoration: line-through;
-      text-decoration-color: $white;
+      text-decoration-color: $red;
     }
   }
 
@@ -453,16 +432,5 @@
     @include textTypeFull(22px, 30.8px, "Mont", $primary-color);
   }
 
-  &::after {
-    content: "";
-
-    position: absolute;
-    bottom: 0;
-    left: 0;
-
-    height: 1px;
-    width: 100%;
-
-    background-color: $element-color;
-  }
+  border-bottom: 1px solid $element-color;
 }

@@ -27,8 +27,7 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
   const viewport = viewportWidth < 1200 ? viewportWidth : viewportWidth * 1.5;
 
   // we find the approximate width of the whole scroller
-  const scrollerWidth =
-    (products.length + 1) * cardWidth + (products.length + 1) * gap;
+  const scrollerWidth = products.length * cardWidth + products.length * gap;
 
   // we find how much of the scroller was already scrolled through
   const viewportMovement = viewport * (Math.abs(transformValue) / 100);
@@ -36,7 +35,7 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
   const cantBeScrolled = viewportMovement >= scrollerWidth;
 
   const handlePhonesScrolling = (side: 'left' | 'right') => {
-    const toTransform = viewportWidth > 640 ? 50 : 85;
+    const toTransform = viewportWidth > 640 ? 55 : 85;
 
     setCurrentTransform(prev => {
       const value = prev.replace('%', '');
@@ -63,7 +62,13 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
   return (
     <article className="scroller">
       <div className="scroller__top">
-        <h2 className="scroller__title">{title}</h2>
+        <h2
+          className={cn('scroller__title', {
+            'scroller__title--double-line': title === 'Brand new models',
+          })}
+        >
+          {title}
+        </h2>
 
         <div className="scroller__arrows">
           <button

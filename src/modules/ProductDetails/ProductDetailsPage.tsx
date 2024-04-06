@@ -81,9 +81,9 @@ export const ProductDetailsPage = () => {
 
   // only for better visuals, can be replaced with actual ID if necessary
   const createPrettyId = (item: Product) => {
-    const createdId = item.id.split('').map(ch => ch.charCodeAt(0));
+    const createdId = (item.mainId * 1234567890).toString();
 
-    return createdId.join('').slice(0, 8);
+    return createdId.slice(0, 8);
   };
 
   /* product logic end */
