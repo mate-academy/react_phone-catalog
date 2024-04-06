@@ -14,12 +14,18 @@
   box-shadow: 0 1px 0 0 $element-color;
   width: 100%;
 
+  height: 48px;
+
   @include on-mobile {
     max-width: 100vw;
   }
 
   @include on-tablet {
     left: 24px;
+  }
+
+  @include on-desktop {
+    height: 64px;
   }
 
   &__left-group {
@@ -51,10 +57,14 @@
   }
 
   &__links {
+    margin: 0;
+    padding: 0;
+
     display: flex;
+    align-items: center;
     gap: 32px;
 
-    padding: 0;
+    height: 100%;
 
     @include on-desktop {
       gap: 64px;
@@ -62,6 +72,8 @@
   }
 
   &__link {
+    margin: 0;
+
     @include textTypeFull(12px, 11px, "Mont", $secondary-color);
     letter-spacing: 0.04em;
 

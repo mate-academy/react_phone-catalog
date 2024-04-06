@@ -11,6 +11,7 @@ body {
   --padding: 16px;
 
   padding-inline: var(--padding);
+  width: 100vw;
 
   @include on-tablet {
     --padding: 24px;

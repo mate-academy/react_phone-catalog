@@ -24,6 +24,9 @@
 
   @include on-desktop {
     margin-top: 80px;
+  }
+
+  @media (min-width: 1440px) {
     margin-inline: -152px;
   }
 
