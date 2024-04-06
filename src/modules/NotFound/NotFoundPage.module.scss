@@ -6,15 +6,26 @@
   justify-items: center;
 
   &__img {
-    max-width: 100%;
+    background-image: url(../../../public/img/page-not-found.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    width: 60vw;
+    height: 60vw;
     grid-column: 2 / 4;
 
     @include on-tablet {
       grid-column: 3 / 11;
+
+      height: 50vw;
+      width: 50vw;
     }
 
     @include on-desktop {
       grid-column: 5 / 19;
+
+      height: 50vw;
+      width: 50vw;
     }
   }
 }

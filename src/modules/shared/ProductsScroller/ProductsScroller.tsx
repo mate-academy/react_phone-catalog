@@ -89,10 +89,8 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
 
         <article className="see-more-card">
           <Link to={`/${category}`} className="see-more-card__img-link">
-            <img
-              src={`/img/categories--${category}.png`}
-              alt="category"
-              className="see-more-card__img"
+            <div
+              className={`see-more-card__img see-more-card__img--${category}`}
             />
           </Link>
 

@@ -28,6 +28,7 @@ body {
 
 main {
   margin-top: calc(48px + 24px); // header height + title top margin
+  min-height: 54vh;
 
   @include on-tablet {
     min-height: 79vh; // so that footer would always remain at the bottom
