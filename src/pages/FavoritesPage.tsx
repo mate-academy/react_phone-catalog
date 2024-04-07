@@ -1,23 +1,17 @@
-import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
 import { ProductsList } from '../components/ProductsList';
 import { useReadLocalStorage } from 'usehooks-ts';
-import { Product } from '../types/products';
 import { getProductsById } from '../api/products';
+import { useQuery } from '@tanstack/react-query';
 
 export const FavoritesPage: React.FC = () => {
-  const [isLoading, setIsLoading] = useState(false);
   const favourites = useReadLocalStorage<number[]>('favourites');
-  const [cards, setCards] = useState<Product[]>([]);
 
-  useEffect(() => {
-    setIsLoading(true);
-
-    getProductsById(favourites || [])
-      .then(setCards)
-      .finally(() => setIsLoading(false));
-  }, [favourites]);
+  const { data = [], isLoading } = useQuery({
+    queryKey: ['favouritesCards'],
+    queryFn: () => getProductsById(favourites || []),
+  });
 
   return (
     <main className="content-padding w-full pb-14 pt-6 md:pb-20">
@@ -29,8 +23,8 @@ export const FavoritesPage: React.FC = () => {
 
       {isLoading ? (
         <Loader />
-      ) : favourites?.length ? (
-        <ProductsList className="mt-8 md:mt-10" cards={cards} />
+      ) : data.length ? (
+        <ProductsList className="mt-8 md:mt-10" cards={data} />
       ) : (
         <h1 className="mt-8 flex justify-center md:mt-10">
           There are no favourites yet

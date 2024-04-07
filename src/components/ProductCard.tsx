@@ -4,7 +4,10 @@ import { Button } from './Button';
 import { FavouritesButton } from './FavouritesButton';
 import { Link } from 'react-router-dom';
 import { useLocalStorage } from 'usehooks-ts';
-import { toggleItemInArray } from '../helpers/functions';
+import {
+  toggleItemInArray,
+  toggleObjectInArrayById,
+} from '../helpers/functions';
 
 interface Props {
   product: Product;
@@ -21,7 +24,9 @@ export const ProductCard: React.FC<Props> = ({
     'favourites',
     [],
   );
-  const [cart, setCart] = useLocalStorage<number[]>('cart', []);
+  const [cart, setCart] = useLocalStorage<Record<'id', unknown>[]>('cart', []);
+
+  const hasCartProduct = !!cart.find(item => item.id === product.id);
 
   return (
     <article
@@ -66,11 +71,11 @@ export const ProductCard: React.FC<Props> = ({
       </div>
       <div className="flex gap-2">
         <Button
-          onClick={() => setCart(c => toggleItemInArray(c, product.id))}
-          active={cart.includes(product.id)}
+          onClick={() => setCart(c => toggleObjectInArrayById(c, product.id))}
+          active={hasCartProduct}
           className="w-full"
         >
-          {favourites.includes(product.id) ? 'Added' : 'Add to cart'}
+          {hasCartProduct ? 'Added' : 'Add to cart'}
         </Button>
         <FavouritesButton
           onClick={() => setFavourites(c => toggleItemInArray(c, product.id))}

@@ -5,27 +5,34 @@ import { HomePage } from './pages/HomePage';
 import { ProductPage } from './pages/ProductPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage';
+import { CartPage } from './pages/CartPage';
+import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 
 export const Router = () => {
+  const queryClient = new QueryClient();
+
   return (
-    <HashRouter>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="/home" element={<Navigate to="/" />} />
-          <Route path="/phones" element={<ProductPage type="phones" />} />
-          <Route path="/tablets" element={<ProductPage type="tablets" />} />
-          <Route
-            path="/accessories"
-            element={<ProductPage type="accessories" />}
-          />
-          <Route path="/favourites" element={<FavoritesPage />} />
-          <Route path="/product">
-            <Route path=":productId" element={<ProductDetailsPage />} />
+    <QueryClientProvider client={queryClient}>
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+            <Route path="/home" element={<Navigate to="/" />} />
+            <Route path="/phones" element={<ProductPage type="phones" />} />
+            <Route path="/tablets" element={<ProductPage type="tablets" />} />
+            <Route
+              path="/accessories"
+              element={<ProductPage type="accessories" />}
+            />
+            <Route path="/favourites" element={<FavoritesPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/product">
+              <Route path=":productId" element={<ProductDetailsPage />} />
+            </Route>
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
-      </Routes>
-    </HashRouter>
+        </Routes>
+      </HashRouter>
+    </QueryClientProvider>
   );
 };

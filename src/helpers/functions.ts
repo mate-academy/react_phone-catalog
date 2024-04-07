@@ -163,3 +163,16 @@ export const toggleItemInArray = <T>(array: Array<T>, item: T) => {
 
   return result;
 };
+
+export const toggleObjectInArrayById = <T>(array: Record<'id', T>[], id: T) => {
+  const index = array.findIndex(item => item.id === id);
+  const result = [...array];
+
+  if (index === -1) {
+    result.push({ id });
+  } else {
+    result.splice(index, 1);
+  }
+
+  return result;
+};
