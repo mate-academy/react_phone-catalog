@@ -1,1 +1,27 @@
-// not empty
+@import 'utils/variables';
+@import 'utils/mixins';
+@import 'utils/reset';
+@import 'utils/fonts';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #fafbfc;
+}
+
+.container {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}

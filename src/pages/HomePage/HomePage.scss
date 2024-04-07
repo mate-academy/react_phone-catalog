@@ -1,0 +1,42 @@
+@import '../../App';
+
+.page {
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 56px;
+  }
+
+  &__title {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.48px;
+    }
+  }
+
+  &__subtitle {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+  }
+}

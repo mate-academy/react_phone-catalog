@@ -1,0 +1,115 @@
+@import '../../App';
+
+.top-bar {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  height: 48px;
+  background: $white-color;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  align-content: center;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__logo {
+    display: flex;
+    margin-inline: 16px;
+
+    @include on-desktop {
+      margin-inline: 24px;
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__links {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      margin-left: 16px;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+      margin-left: 24px;
+    }
+  }
+
+  &__link {
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: $secondary-color;
+    text-decoration: none;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $primary-color;
+    }
+  }
+
+  &__icons {
+    display: none;
+    margin-left: auto;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+}
+
+.icon {
+  display: block;
+  height: 48px;
+  width: 48px;
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+
+  &--favourites {
+    background-image: url('../../../public/img/icons/fav.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &--cart {
+    background-image: url('../../../public/img/icons/cart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &--menu {
+    background-image: url('../../../public/img/icons/menu.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--close {
+    background-image: url('../../../public/img/icons/close.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+}

@@ -1,0 +1,40 @@
+@import '../../App';
+
+.round-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $stroke-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.3s ease;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &--fav {
+    background-image: url('../../../public/img/icons/fav.svg');
+    background-size: 50%;
+
+    &-filled {
+      background-image: url('../../../public/img/icons/fav-filled.svg');
+      background-size: 50%;
+    }
+  }
+
+  &--left {
+    background-image: url('../../../public/img/icons/left.svg');
+    background-size: 50%;
+  }
+
+  &--right {
+    background-image: url('../../../public/img/icons/right.svg');
+    background-size: 50%;
+  }
+
+  &--up {
+    background-image: url(../../../public/img/icons/up.svg);
+    background-size: 50%;
+  }
+}

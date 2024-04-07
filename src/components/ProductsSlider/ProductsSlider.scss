@@ -1,0 +1,35 @@
+@import '../../App';
+
+.products-slider {
+  overflow: hidden;
+
+  &--margin-top {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__container {
+    margin-top: 24px;
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease-out;
+  }
+
+  &__navigate {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+  }
+}

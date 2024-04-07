@@ -1,0 +1,74 @@
+@import '../../App';
+
+.footer {
+  background: $white-color;
+  box-shadow: 0 -1px 0 0 $stroke-color;
+
+  &--margin-top {
+    margin-top: 64px;
+
+    @include on-tablet {
+      margin-top: 80px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+
+    &-image {
+      height: 100%;
+    }
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link-item {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    color: $secondary-color;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}

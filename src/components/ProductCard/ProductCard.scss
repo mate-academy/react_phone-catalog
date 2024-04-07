@@ -1,0 +1,95 @@
+@import '../../App';
+
+.product {
+  &-card {
+    display: flex;
+    width: 272px;
+    height: 506px;
+    padding: 32px;
+    flex-direction: column;
+    align-items: flex-start;
+    flex-shrink: 0;
+    border-radius: 8px;
+    border: 1px solid $stroke-color;
+    background: $white-color;
+
+    &__divider {
+      height: 1px;
+      background-color: $stroke-color;
+      width: 100%;
+      margin-top: 8px;
+    }
+  }
+
+  &-image {
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &-title {
+    margin-top: 24px;
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &-price {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+
+    &--regular {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+
+    &--discount {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &-description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 8px;
+    width: 100%;
+
+    &__field {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__name {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      flex: 1;
+    }
+
+    &__value {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  &-actions {
+    display: flex;
+    width: 100%;
+    margin-top: 16px;
+    gap: 8px;
+  }
+}
