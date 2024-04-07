@@ -1,27 +1,23 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
-import { useEffect, useState } from 'react';
 import { Loader } from '../components/Loader';
 import {
   getProductById,
   getSmallProductById,
   getSuggestedProducts,
 } from '../api/products';
-import { Accessory } from '../types/accessories';
-import { Phone } from '../types/phones';
-import { Tablet } from '../types/tablets';
 import { ErrorNetwork } from '../components/ErrorNetwork';
 import { GoBackButton } from '../components/GoBackButton';
 import { Autoplay, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ColorButton } from '../components/ColorButton';
 import { colorList } from '../utils/colorList';
-import { Product } from '../types/products';
 import { Button } from '../components/Button';
 import { FavouritesButton } from '../components/FavouritesButton';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { useLocalStorage } from 'usehooks-ts';
 import { toggleItemInArray } from '../helpers/functions';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
@@ -31,35 +27,26 @@ export const ProductDetailsPage: React.FC = () => {
     [],
   );
   const [cart, setCart] = useLocalStorage<number[]>('cart', []);
-  const [isLoading, setIsLoading] = useState(true);
-  const [product, setProduct] = useState<Accessory | Phone | Tablet | null>(
-    null,
-  );
-  const [smallProduct, setSmallProduct] = useState<Product | null>(null);
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const fetchSuggestedProducts = () => {
-    getSuggestedProducts(10).then(items =>
-      setSuggestedProducts(c => [...c, ...items]),
-    );
-  };
+  const { data: suggestedProducts, fetchNextPage } = useInfiniteQuery({
+    queryKey: ['suggestedProducts'],
+    queryFn: data => getSuggestedProducts(data.pageParam),
+    initialPageParam: 10,
+    getNextPageParam: () => 10,
+  });
 
-  useEffect(() => {
-    setIsLoading(true);
+  const { isLoading: productLoading, data: product } = useQuery({
+    queryKey: ['productById', productId],
+    queryFn: () => (productId ? getProductById(productId) : undefined),
+  });
 
-    if (productId) {
-      getProductById(productId)
-        .then(res => {
-          setProduct(res);
+  const { isLoading: smallProductLoading, data: smallProduct } = useQuery({
+    queryKey: ['smallProductById', product?.id],
+    queryFn: () => (product?.id ? getSmallProductById(product.id) : undefined),
+    enabled: !!product?.id,
+  });
 
-          return getSmallProductById(res.id);
-        })
-        .then(setSmallProduct)
-        .finally(() => setIsLoading(false));
-
-      fetchSuggestedProducts();
-    }
-  }, [productId]);
+  const isLoading = productLoading || smallProductLoading;
 
   return isLoading ? (
     <main className="flex h-full items-center justify-center">
@@ -282,14 +269,16 @@ export const ProductDetailsPage: React.FC = () => {
         </div>
       </section>
 
-      <ProductsSlider
-        className="mt-14 w-full overflow-hidden md:mt-16"
-        slides={suggestedProducts}
-        title="You may also like"
-        swiperProps={{
-          onReachEnd: fetchSuggestedProducts,
-        }}
-      />
+      {!!suggestedProducts?.pages.length && (
+        <ProductsSlider
+          className="mt-14 w-full overflow-hidden md:mt-16"
+          slides={suggestedProducts.pages.flat()}
+          title="You may also like"
+          swiperProps={{
+            onReachEnd: () => fetchNextPage(),
+          }}
+        />
+      )}
     </main>
   );
 };

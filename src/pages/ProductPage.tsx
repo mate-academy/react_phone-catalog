@@ -1,14 +1,14 @@
-import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getAmountOfProducts, getFilteredProducts } from '../api/products';
 import { ProductsList } from '../components/ProductsList';
-import { Product, ProductCategory } from '../types/products';
+import { ProductCategory } from '../types/products';
 import { useSearchParams } from 'react-router-dom';
 import { DropDownButton } from '../components/DropDownButton';
 import { SearchWithParams } from '../types/main';
 import { getSearchWith } from '../helpers/functions';
 import { Pagination } from '../components/Pagination';
 import { Loader } from '../components/Loader';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 
 interface Props {
   type: ProductCategory;
@@ -29,18 +29,22 @@ const getTitle = (type: ProductCategory) => {
 };
 
 export const ProductPage: React.FC<Props> = ({ type }) => {
-  const [cards, setCards] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
-  const [productsAmount, setProductsAmount] = useState({
-    accessories: 0,
-    phones: 0,
-    tablets: 0,
-  });
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sortBy') || 'Newest';
   const itemsOnPage = searchParams.get('itemsOnPage') || '4';
   const page = searchParams.get('page') || 1;
+
+  const {
+    data: productsAmount = {
+      accessories: 0,
+      phones: 0,
+      tablets: 0,
+    },
+  } = useQuery({
+    queryKey: ['productsAmount'],
+    queryFn: getAmountOfProducts,
+  });
 
   const lastPage = !isNaN(+itemsOnPage)
     ? Math.ceil(productsAmount[type] / +itemsOnPage)
@@ -56,20 +60,17 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
     setSearchWith({ itemsOnPage: option, page: '1' });
   };
 
-  useEffect(() => {
-    getAmountOfProducts().then(setProductsAmount);
-  }, []);
-
-  useEffect(() => {
-    const parsedItemsOnPage =
-      itemsOnPage === 'All' ? 'All' : parseInt(itemsOnPage);
-    const parsedPage = page;
-
-    setIsLoading(true);
-    getFilteredProducts(type, sortBy, parsedItemsOnPage, +parsedPage)
-      .then(setCards)
-      .finally(() => setIsLoading(false));
-  }, [itemsOnPage, page, sortBy, type]);
+  const { isLoading, data: cards = [] } = useQuery({
+    queryKey: ['filteredProducts', type, sortBy, itemsOnPage, page],
+    queryFn: () =>
+      getFilteredProducts(
+        type,
+        sortBy,
+        itemsOnPage === 'All' ? 'All' : parseInt(itemsOnPage),
+        +page,
+      ),
+    placeholderData: keepPreviousData,
+  });
 
   return (
     <main
@@ -111,7 +112,7 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
         ) : (
           <h1 className="text-center">{`There are no ${type} yet`}</h1>
         )}
-        {itemsOnPage !== 'All' && (
+        {itemsOnPage !== 'All' && !!cards.length && (
           <Pagination
             maxLength={7}
             className="flex justify-center"
