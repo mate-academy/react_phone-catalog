@@ -29,7 +29,7 @@ export function useLocalStorage<T>(
 }
 
 export const addedToCart = (cartItems: CartItem[], id: string) => {
-  return cartItems.some(item => item.item.id === id);
+  return cartItems.some(item => item.item.itemId === id);
 };
 
 export const handleAddToCartClick = (
@@ -37,7 +37,7 @@ export const handleAddToCartClick = (
   setCartItems: (cartItems: CartItem[]) => void,
   item: Product,
 ) => {
-  if (!addedToCart(cartItems, item.id)) {
+  if (!addedToCart(cartItems, item.itemId)) {
     setCartItems([
       ...cartItems,
       {

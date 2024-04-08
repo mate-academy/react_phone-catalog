@@ -92,10 +92,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               handleAddToCartClick(cartItems, setCartItems, product);
             }}
             className={cn('item__button', 'product-card__button', {
-              'item__button--active': addedToCart(cartItems, product.id),
+              'item__button--active': addedToCart(cartItems, product.itemId),
             })}
           >
-            {`${addedToCart(cartItems, product.id) ? 'Added to cart' : 'Add to cart'}`}
+            {`${addedToCart(cartItems, product.itemId) ? 'Added to cart' : 'Add to cart'}`}
           </button>
 
           <button
@@ -112,7 +112,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
             className={cn('item__icon', 'product-card__icon', {
               'item__icon--active': addedToFavorites(
                 favoriteProducts,
-                product.id,
+                product.itemId,
               ),
             })}
           >
@@ -121,7 +121,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
               className={cn('item__icon-image', 'product-card__icon-image', {
                 'item__icon-image--active': addedToFavorites(
                   favoriteProducts,
-                  product.id,
+                  product.itemId,
                 ),
               })}
             />

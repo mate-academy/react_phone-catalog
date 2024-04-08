@@ -31,6 +31,14 @@ export const Pagination: React.FC<Props> = ({
     if (currentPage !== 1) {
       onPageChange(currentPage - 1);
     }
+
+    if (currentPage === visiblePageNumbers[0] && currentPage !== 0) {
+      const updatedPageNumbers = [...visiblePageNumbers];
+
+      updatedPageNumbers.unshift(currentPage - 1);
+      updatedPageNumbers.pop();
+      setVisiblePageNumbers(updatedPageNumbers);
+    }
   }, []);
 
   const handleOpenNextPage = () => {

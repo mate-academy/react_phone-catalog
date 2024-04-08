@@ -48,7 +48,7 @@ export const Details: React.FC<Props> = ({
 
   function normalizeProduct(productData: ProductDetails): Product {
     return {
-      id: productData.id,
+      itemId: productData.id,
       name: productData.name,
       fullPrice: productData.priceRegular,
       price: productData.priceDiscount,
