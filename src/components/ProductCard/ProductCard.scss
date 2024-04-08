@@ -3,37 +3,37 @@
 .product-card {
   align-self: center;
   border: 1px solid $elements;
-  height: 507px;
+  padding: 32px;
+  height: 506px;
   text-align: center;
   display: grid;
   align-items: center;
-  grid-template-rows: 32px 1fr 24px 1fr 24px;
+  grid-template-rows: 196px 58px 172px;
 
   &__imgContainer {
-    grid-row: 2 / 3;
+    grid-row: 1 / 2;
     display: flex;
     justify-content: center;
     text-align: center;
   }
 
   &__img {
-    width: 208px;
-    height: 208px;
+    // width: 208px;
+    height: 196px;
     background-position: center;
     object-fit: contain;
   }
 
   &__content{
     display: flex;
+    height: 172px;;
     flex-direction: column;
     align-items: center;
-    grid-row: 4 / 5;
   }
 
   &__name {
     &-wrapper {
-      width: 224px;
-      height: 42px;
+      grid-row: 2 / 3;
       word-wrap: break-word;
     }
 

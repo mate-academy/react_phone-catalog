@@ -1,11 +1,11 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-const BASE_URL = 'http://localhost:3000/api';
+// const BASE_URL = 'http://localhost:3000/api';
 
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
-    const response = await fetch(`${BASE_URL}/products.json`, {
+    const response = await fetch(`./api/products.json`, {
       method: 'GET',
     });
 
@@ -24,7 +24,7 @@ export const getProductDetails = async (
   productCategory: string,
 ): Promise<ProductDetails | null> => {
   try {
-    const response = await fetch(`${BASE_URL}/${productCategory}.json`, {
+    const response = await fetch(`./api/${productCategory}.json`, {
       method: 'GET',
     });
 
@@ -76,27 +76,6 @@ export const getSuggestedProducts = (count: number) => {
     return shuffledProducts.slice(0, count);
   });
 };
-
-// export const getSortedPhones = (sortBy: string) => {
-//   return getPhones().then(phones => {
-//     switch (sortBy) {
-//       case 'age':
-//         return phones.sort((phone1, phone2) => {
-//           return phone1.year - phone2.year;
-//         });
-//       case 'name':
-//         return phones.sort((phone1, phone2) => {
-//           return phone1.name.localeCompare(phone2.name);
-//         });
-//       case 'price':
-//         return phones.sort((phone1, phone2) => {
-//           return phone1.price - phone2.price;
-//         });
-//       default:
-//         return phones;
-//     }
-//   });
-// };
 
 export const includesQuery = (phoneName: string | null, input: string) => {
   return phoneName?.trim().toLowerCase().includes(input.trim().toLowerCase());

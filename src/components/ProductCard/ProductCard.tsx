@@ -28,11 +28,11 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           className="product-card__img"
         />
       </div>
+      <div className="product-card__name-wrapper">
+        <p className="product-card__name">{product.name}</p>
+      </div>
 
       <div className="product-card__content">
-        <div className="product-card__name-wrapper">
-          <p className="product-card__name">{product.name}</p>
-        </div>
         {DISCOUNT > 0 ? (
           <div className="product-card__price-wrapper item__price-wrapper">
             <p

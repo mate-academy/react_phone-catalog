@@ -52,22 +52,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
   const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  // const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsDesktop(window.innerWidth >= 1200);
-  //   };
-
-  //   window.addEventListener('resize', handleResize);
-
-  //   setIsDesktop(window.innerWidth >= 1200);
-
-  //   return () => {
-  //     window.removeEventListener('resize', handleResize);
-  //   };
-  // }, [products.length]);
-
   //#region touch-mouse handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDown(true);
@@ -123,13 +107,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
 
   //#endregion
 
-  // const showVisibleProducts = () => {
-  //   if (isDesktop) {
-  //     return products.slice(startProductIndex, startProductIndex + 4);
-  //   }
-
-  //   return products;
-  // };
   const visibleFourProducts = products.slice(
     startProductIndex,
     startProductIndex + 4,

@@ -169,6 +169,7 @@ select {
     list-style: none;
     text-decoration: none;
     grid-column: 1 / -1;
+    height: 506px;
 
     @include on-tablet {
       grid-column: auto;
