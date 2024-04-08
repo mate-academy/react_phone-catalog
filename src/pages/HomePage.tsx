@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { ProductsSlider } from '../components/ProductsSlider';
@@ -81,9 +81,12 @@ export const HomePage: React.FC = () => {
     return () => clearInterval(interval);
   }, [startBannerIndex]);
 
-  const handleChangeBanner = (index: number) => {
-    return setStartBannerIndex(index);
-  };
+  const handleChangeBanner = useCallback(
+    (index: number) => {
+      setStartBannerIndex(index);
+    },
+    [setStartBannerIndex],
+  );
 
   return (
     <>

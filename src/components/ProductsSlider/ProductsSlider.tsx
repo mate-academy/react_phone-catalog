@@ -33,7 +33,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
     return () => {
       window.removeEventListener('resize', handleResize);
     };
-  }, []);
+  }, [products.length]);
 
   //#region touch-mouse handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -146,15 +146,16 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
         onTouchEnd={handleTouchEnd}
       >
         <div className="slider__cards">
-          {showVisibleProducts().map(product => (
-            <Link
-              to={`/${product.category}/${product.itemId}`}
-              className="slider__link"
-              key={product.id}
-            >
-              <ProductCard product={product} key={product.id} />
-            </Link>
-          ))}
+          {!!showVisibleProducts().length &&
+            showVisibleProducts().map(product => (
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="slider__link"
+                key={product.id}
+              >
+                <ProductCard product={product} key={product.id} />
+              </Link>
+            ))}
         </div>
       </div>
     </>

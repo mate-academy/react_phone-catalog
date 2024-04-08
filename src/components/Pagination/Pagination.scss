@@ -1,5 +1,5 @@
 @import '../../style/utils/variables';
-@import '../../style/utils/mixins.scss';
+@import '../../style/utils/mixins';
 
 .pagination {
   // width: 1136px;
@@ -70,6 +70,7 @@
       gap: 8px;
       justify-content: space-between;
       align-items: center;
+
       @include on-tablet {
         display: none;
       }
@@ -92,12 +93,14 @@
 
   &__sidebutton {
     display: none;
+
     @include on-tablet {
       display: block;
     }
 
     &--mobile {
       display: block;
+      
       @include on-tablet {
         display: none;
       }
