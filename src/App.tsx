@@ -85,7 +85,6 @@ export const App = () => {
   };
 
   const location = useLocation();
-  const path = location.pathname.split('/')[1];
 
   const handleDeleteInput = () => {
     setSearchWith({ query: null });
@@ -132,10 +131,10 @@ export const App = () => {
             location.pathname === '/tablets' ||
             location.pathname === '/accessories' ||
             location.pathname === '/favorites') && (
-            <div className="header__sort">
+            <div className="header__search">
               {!searchActive ? (
                 <img
-                  className="header__sort-icon"
+                  className="header__search-icon"
                   src="./icons/Search.svg"
                   alt="search"
                 />
@@ -155,8 +154,8 @@ export const App = () => {
 
               <input
                 type="search"
-                className="header__sort-input"
-                placeholder={`Search in ${path}...`}
+                className="header__search-input"
+                placeholder={`Search`}
                 value={searchValue}
                 onChange={handleInputChange}
               />

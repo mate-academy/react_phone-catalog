@@ -1,4 +1,5 @@
 @import '../../style/utils/variables';
+@import '../../style/utils/mixins.scss';
 
 .pagination {
   // width: 1136px;
@@ -54,10 +55,25 @@
   }
 
   &__numbers {
-    display: flex;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+
     gap: 8px;
     justify-content: space-between;
     align-items: center;
+
+    &--mobile {
+      display: flex;
+      gap: 8px;
+      justify-content: space-between;
+      align-items: center;
+      @include on-tablet {
+        display: none;
+      }
+    }
   }
 
   &__number {
@@ -71,6 +87,20 @@
 
     &--active {
       color: $white;
+    }
+  }
+
+  &__sidebutton {
+    display: none;
+    @include on-tablet {
+      display: block;
+    }
+
+    &--mobile {
+      display: block;
+      @include on-tablet {
+        display: none;
+      }
     }
   }
 }

@@ -164,22 +164,30 @@ main {
     }
   }
 
-  &__sort {
+  &__search {
     position: relative;
-    width: 327px;
-    padding-left: 24px;
+    width: 100px;
+    padding-left: 10px;
+
+    @include on-tablet {
+      width: 87px;
+    }
+
+    @include on-desktop {
+      width: 327px;
+      padding-left: 20px;
+    }
 
     &-icon {
       position: absolute;
-      right: 24px;
+      right: 20px;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-45%);
     }
 
     &-input {
       outline: none;
       border: none;
-      padding: 0;
       padding: 24px 23px;
       background-color: transparent;
       font-family: $mont;
@@ -197,6 +205,7 @@ main {
         text-align: left;
         color: $icons;
         background-color: $background-color;
+        // text-wrap: wrap;
       }
     }
   }
@@ -207,9 +216,9 @@ main {
       border: none;
       position: absolute;
       cursor: pointer;
-      right: 24px;
+      right: 20px;
       top: 50%;
-      transform: translateY(-50%);
+      transform: translateY(-45%);
     }
 
     &-icon {
