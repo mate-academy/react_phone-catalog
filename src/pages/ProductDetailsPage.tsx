@@ -16,7 +16,10 @@ import { Button } from '../components/Button';
 import { FavouritesButton } from '../components/FavouritesButton';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { useLocalStorage } from 'usehooks-ts';
-import { toggleItemInArray } from '../helpers/functions';
+import {
+  toggleItemInArray,
+  toggleObjectInArrayById,
+} from '../helpers/functions';
 import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 
 export const ProductDetailsPage: React.FC = () => {
@@ -26,7 +29,7 @@ export const ProductDetailsPage: React.FC = () => {
     'favourites',
     [],
   );
-  const [cart, setCart] = useLocalStorage<number[]>('cart', []);
+  const [cart, setCart] = useLocalStorage<Record<'id', unknown>[]>('cart', []);
 
   const { data: suggestedProducts, fetchNextPage } = useInfiniteQuery({
     queryKey: ['suggestedProducts'],
@@ -47,6 +50,8 @@ export const ProductDetailsPage: React.FC = () => {
   });
 
   const isLoading = productLoading || smallProductLoading;
+
+  const hasCartProduct = !!cart.find(item => item.id === smallProduct?.id);
 
   return isLoading ? (
     <main className="flex h-full items-center justify-center">
@@ -172,12 +177,12 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="flex h-12 gap-2">
               <Button
                 onClick={() =>
-                  setCart(c => toggleItemInArray(c, smallProduct.id))
+                  setCart(c => toggleObjectInArrayById(c, smallProduct.id))
                 }
-                active={cart.includes(smallProduct.id)}
+                active={hasCartProduct}
                 className="h-full w-full"
               >
-                {favourites.includes(smallProduct.id) ? 'Added' : 'Add to cart'}
+                {hasCartProduct ? 'Added' : 'Add to cart'}
               </Button>
 
               <FavouritesButton
