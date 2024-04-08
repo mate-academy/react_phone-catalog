@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { Product } from '../../types/Product';
@@ -44,29 +44,29 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
+  // const [statePhones] = useState(somePhones);
+
   const [startProductIndex, setStartProductIndex] = useState(0);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
+  // const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 1200);
 
-  // const [statePhones] = useState(somePhones);
+  // useEffect(() => {
+  //   const handleResize = () => {
+  //     setIsDesktop(window.innerWidth >= 1200);
+  //   };
 
-  useEffect(() => {
-    const handleResize = () => {
-      setIsDesktop(window.innerWidth >= 1200);
-    };
+  //   window.addEventListener('resize', handleResize);
 
-    window.addEventListener('resize', handleResize);
+  //   setIsDesktop(window.innerWidth >= 1200);
 
-    setIsDesktop(window.innerWidth >= 1200);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [products.length]);
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [products.length]);
 
   //#region touch-mouse handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
@@ -123,13 +123,17 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
 
   //#endregion
 
-  const showVisibleProducts = () => {
-    if (isDesktop) {
-      return products.slice(startProductIndex, startProductIndex + 4);
-    }
+  // const showVisibleProducts = () => {
+  //   if (isDesktop) {
+  //     return products.slice(startProductIndex, startProductIndex + 4);
+  //   }
 
-    return products;
-  };
+  //   return products;
+  // };
+  const visibleFourProducts = products.slice(
+    startProductIndex,
+    startProductIndex + 4,
+  );
 
   const goToPrevSet = () => {
     if (startProductIndex > 0) {
@@ -178,17 +182,28 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <div className="slider__cards">
-          {!!showVisibleProducts().length &&
-            showVisibleProducts().map(product => (
-              <Link
-                to={`/${product.category}/${product.itemId}`}
-                className="slider__link"
-                key={product.id}
-              >
-                <ProductCard product={product} key={product.id} />
-              </Link>
-            ))}
+        <div className="slider__cards slider__cards--desktop">
+          {visibleFourProducts.map(product => (
+            <Link
+              to={`/${product.category}/${product.itemId}`}
+              className="slider__link"
+              key={product.id}
+            >
+              <ProductCard product={product} key={product.id} />
+            </Link>
+          ))}
+        </div>
+
+        <div className="slider__cards slider__cards--mobile">
+          {products.map(product => (
+            <Link
+              to={`/${product.category}/${product.itemId}`}
+              className="slider__link"
+              key={product.id}
+            >
+              <ProductCard product={product} key={product.id} />
+            </Link>
+          ))}
         </div>
       </div>
     </>

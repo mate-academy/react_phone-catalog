@@ -33,6 +33,22 @@
     @include on-desktop {
       transition: none;
     }
+
+    &--mobile {
+      display: flex;
+
+      @include on-desktop {
+        display: none;
+      }
+    }
+
+    &--desktop {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+      }
+    }
   }
 
   &__top {
