@@ -1,8 +1,6 @@
 import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 
-// const BASE_URL = 'http://localhost:3000/api';
-
 export const fetchProducts = async (): Promise<Product[]> => {
   try {
     const response = await fetch(`./api/products.json`, {
