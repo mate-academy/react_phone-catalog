@@ -1,0 +1,15 @@
+@import '../../utils-scss/mixins';
+
+.main {
+  padding: 0 16px;
+
+  @include onTablet {
+    padding: 0 24px;
+    min-width: 592px;
+  }
+
+  @include onDesktop {
+    margin: auto;
+    width: 1136px;
+  }
+}

@@ -1,0 +1,20 @@
+@import '../../utils-scss/variables';
+@import '../../utils-scss/font.scss';
+
+.product {
+  margin-bottom: 80px;
+
+  &__title {
+    font-size: 32px;
+    line-height: 40.9px;
+
+    @extend %mont-700;
+  }
+
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+}

@@ -1,0 +1,37 @@
+@font-face {
+  font-family: 'Mont-Bold';
+  src:
+    url('../../public/fonts/Mont-Bold.otf') format("woff2"),
+}
+
+@font-face {
+  font-family: 'Mont-SemiBold';
+  src:
+    url('../../public/fonts/Mont-SemiBold.otf') format("woff2"),
+}
+
+@font-face {
+  font-family: 'Mont-SemiBold';
+  src:
+    url('../../public/fonts/Mont-SemiBold.otf') format("woff2"),
+}
+
+%mont-800 {
+  font-family: Mont-Bold, sans-serif;
+  font-weight: 800;
+}
+
+%mont-700 {
+  font-family: Mont-Bold sans-serif;
+  font-weight: 700;
+}
+
+%mont-600 {
+  font-family: Mont-SemiBold, sans-serif;
+  font-weight: 600;
+}
+
+%mont-500 {
+  font-family: Mont-Regular, sans-serif;
+  font-weight: 500;
+}

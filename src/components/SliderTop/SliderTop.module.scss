@@ -1,0 +1,154 @@
+@import '../../utils-scss/variables';
+@import '../../utils-scss/mixins';
+@import '../../utils-scss/font.scss';
+
+.slider {
+  padding: 40px 0 72px;
+  margin: 0 auto;
+  width: 100%;
+
+  &__title {
+    font-size: 32px;
+    color: $border-button-color-hover;
+    line-height: 41px;
+    margin-bottom: 24px;
+
+    @extend %mont-800;
+
+    @include onTablet {
+      font-size: 48px;
+      line-height: 56px;
+      margin-bottom: 32px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    padding-bottom: 8px;
+    height: auto;
+  }
+
+  &__button {
+    background: initial;
+    border: 1px solid $border-button-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+    display: none;
+
+
+    @include onTablet {
+      display: block;
+      min-width: 32px;
+      height: 189px;
+    }
+
+    @include onDesktop {
+      width: 32px;
+      height: 400px;
+    }
+
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
+  }
+
+  &__back {
+    background-image: url(../../img/headerImg/slider/Vector-left.svg);
+    margin-right: 16px;
+  }
+
+  &__forward {
+    background-image: url(../../img/headerImg/slider/Vector-right.svg);
+    margin-left: 16px;
+  }
+
+  &__img {
+    display: flex;
+    flex-direction: row;
+    height: 400px;
+    overflow: hidden;
+
+    @include onTablet {
+      max-width: 1000px;
+      height: 189px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+
+  &__gallery {
+    display: flex;
+    gap: 10px;
+    transition: all 0.3s;
+    width: 1040px;
+  }
+
+  &__photo {
+    background-image: url(../../../public/img/banner-phones.png);
+
+  }
+
+  &__banner {
+    background-repeat: no-repeat;
+    background-position: center;
+    min-width: 100%;
+    height: 400px;
+
+    @include onTablet {
+      min-width: 100%;
+      height: 189px;
+    }
+
+    @include onDesktop {
+      min-width: 1040px;
+      height: 400px;
+    }
+  }
+
+  &__banner__2 {
+    background-image: url(../../../public/img/banner-accessories.png);
+  }
+
+  &__banner__3 {
+    background-image: url(../../../public/img/banner-tablets.png);
+  }
+
+  &__wraper {
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+
+  }
+
+  &__pointer {
+    width: 24px;
+    height: 24px;
+    background: initial;
+    border: none;
+    cursor: pointer;
+  }
+ 
+  &__indicator {
+    display: block;
+    width: 14px;
+    height: 4px;
+    background-color: $header-text-color;
+    margin: 0 auto;
+  }
+
+  &__active {
+    background-color: $border-button-color-hover;
+    display: block;
+    width: 14px;
+    height: 4px;
+    margin: 0 auto;
+  }
+}

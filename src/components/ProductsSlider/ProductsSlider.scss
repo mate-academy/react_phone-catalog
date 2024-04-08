@@ -1,0 +1,37 @@
+@import '../../utils-scss/variables';
+
+.product {
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: initial;
+    border: 1px solid $border-button-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__arrow {
+    display: block;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 16px;
+    height: 16px;
+    margin: 0 auto;
+
+    &--left {
+      background-image: url(../../img/headerImg/slider/Vector-left.svg);
+    }
+
+    &--right {
+      background-image: url(../../img/headerImg/slider/Vector-right.svg);
+    }
+  }
+}

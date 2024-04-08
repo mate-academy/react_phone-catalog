@@ -1,0 +1,86 @@
+@import '../../utils-scss/variables';
+@import '../../utils-scss/font.scss';
+
+.category {
+  margin-bottom: 80px;
+
+  &__container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 40.9px;
+    color: $border-button-color-hover;
+    margin-bottom: 24px;
+
+    @extend %mont-700;
+  }
+
+  &__mobile {
+    background-color: #FCDBC1;
+
+  }
+
+  &__background {
+    display: block;
+    width: 368px;
+    height: 368px;
+    margin-bottom: 24px;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__tablets {
+    background-color: Gray;
+  }
+
+  &__accessories {
+    background-color: #973D5F;
+  }
+
+  &__img {
+    background-repeat: no-repeat;
+    width: 386px;
+    height: 457px;
+    background-size: cover;
+    position: absolute;
+    left: 74px;
+  }
+
+  &__mobile__img {
+    background-image: url(../../../public/img/category-phones.png);
+
+  }
+
+
+  &__tablets__img {
+    background-image: url(../../../public/img/category-tablets.png);
+  }
+
+  &__accessories__img {
+    background-image: url(../../../public/img/category-accessories.png);
+  }
+
+  &__name {
+    font-size: 20px;
+    color: $border-button-color-hover;
+    margin-bottom: 4px;
+    line-height: 25px;
+
+    @extend %mont-600;
+  }
+
+  &__count {
+    font-size: 14px;
+    color: $color-text-gray;
+    @extend %mont-500;
+  }
+}
