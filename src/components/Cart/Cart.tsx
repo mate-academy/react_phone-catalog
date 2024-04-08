@@ -19,7 +19,11 @@ export const Cart: React.FC = () => {
   const totalPriceForItem = (itemId: number) => {
     const currentItem = cartItems.find(cartItem => cartItem.id === itemId);
 
-    return currentItem!.quantity * currentItem!.item.price;
+    if (currentItem) {
+      return currentItem.quantity * currentItem.item.price;
+    }
+
+    return 0;
   };
 
   const totalPrice = cartItems.reduce((accumulator, cartItem) => {

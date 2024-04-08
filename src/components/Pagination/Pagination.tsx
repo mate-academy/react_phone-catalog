@@ -39,7 +39,7 @@ export const Pagination: React.FC<Props> = ({
       updatedPageNumbers.pop();
       setVisiblePageNumbers(updatedPageNumbers);
     }
-  }, []);
+  }, [currentPage, onPageChange, visiblePageNumbers]);
 
   const handleOpenNextPage = () => {
     if (currentPage !== pageCount) {

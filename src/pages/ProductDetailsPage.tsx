@@ -65,7 +65,7 @@ export const ProductDetailsPage = () => {
     }
 
     getSuggestedProducts(10).then(data => setRandomProducts(data));
-  }, [productId]);
+  }, [productId, productCategory]);
 
   return (
     <>
