@@ -172,9 +172,9 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="flex h-12 gap-2">
               <Button
                 onClick={() =>
-                  setFavourites(c => toggleItemInArray(c, smallProduct.id))
+                  setCart(c => toggleItemInArray(c, smallProduct.id))
                 }
-                active={favourites.includes(smallProduct.id)}
+                active={cart.includes(smallProduct.id)}
                 className="h-full w-full"
               >
                 {favourites.includes(smallProduct.id) ? 'Added' : 'Add to cart'}
@@ -182,9 +182,9 @@ export const ProductDetailsPage: React.FC = () => {
 
               <FavouritesButton
                 onClick={() =>
-                  setCart(c => toggleItemInArray(c, smallProduct.id))
+                  setFavourites(c => toggleItemInArray(c, smallProduct.id))
                 }
-                active={cart.includes(smallProduct.id)}
+                active={favourites.includes(smallProduct.id)}
                 className="h-full w-auto"
               />
             </div>

@@ -94,7 +94,7 @@ export const CartPage: React.FC = () => {
           >
             <div className="flex flex-col items-center justify-center">
               <h2>${totalPrice}</h2>
-              <p>{`Total for ${data.length} items`}</p>
+              <p>{`Total for ${cart.reduce((a, b) => a + (b?.quantity || 1), 0)} items`}</p>
             </div>
 
             <hr className="border-elements" />
