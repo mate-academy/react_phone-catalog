@@ -82,7 +82,7 @@ export const CartPage: React.FC = () => {
         <Loader className="mt-8" />
       ) : data.length ? (
         <div className="mt-8 flex flex-col gap-8 md:mt-4 lg:flex-row lg:gap-4">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-1 flex-col gap-4">
             {data.map(item => (
               <CartItem key={item.id} card={item} />
             ))}

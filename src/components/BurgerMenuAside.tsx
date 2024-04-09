@@ -23,7 +23,9 @@ export const BurgerMenuAside: React.FC = () => {
               ['Accessories', '/accessories'],
             ].map(([text, path]) => (
               <li className="w-fit" key={path}>
-                <NavItem path={path}>{text}</NavItem>
+                <NavItem className="py-2" path={path}>
+                  {text}
+                </NavItem>
               </li>
             ))}
           </div>

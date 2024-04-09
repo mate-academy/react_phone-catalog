@@ -125,7 +125,7 @@ export const ProductDetailsPage: React.FC = () => {
                 <ColorButton
                   onClick={() =>
                     navigate(
-                      `../${product.id.split(product.color).join(color)}`,
+                      `../${product.id.split(product.color.split(' ').join('-')).join(color.split(' ').join('-'))}`,
                     )
                   }
                   key={color}

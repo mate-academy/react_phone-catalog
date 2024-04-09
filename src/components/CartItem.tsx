@@ -56,7 +56,10 @@ export const CartItem: React.FC<Props> = ({ card, className }) => {
         />
         <p>{card.name}</p>
       </div>
-      <div className="flex items-center justify-between md:gap-6">
+      <div
+        className="flex w-full items-center justify-between
+        lg:w-auto lg:justify-normal lg:gap-6"
+      >
         <div className="flex items-center gap-3.5">
           <QuantityButton
             type="Decrease"
@@ -74,7 +77,7 @@ export const CartItem: React.FC<Props> = ({ card, className }) => {
           />
         </div>
 
-        <h3>${storageItemQuantity * card.price}</h3>
+        <h3 className="lg:w-20 lg:text-end">${card.price}</h3>
       </div>
     </article>
   );

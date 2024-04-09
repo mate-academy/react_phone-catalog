@@ -8,6 +8,7 @@ import {
   toggleItemInArray,
   toggleObjectInArrayById,
 } from '../helpers/functions';
+import { useQueryClient } from '@tanstack/react-query';
 
 interface Props {
   product: Product;
@@ -20,6 +21,7 @@ export const ProductCard: React.FC<Props> = ({
   discount = true,
   className = '',
 }) => {
+  const queryClient = useQueryClient();
   const [favourites, setFavourites] = useLocalStorage<number[]>(
     'favourites',
     [],
@@ -27,6 +29,16 @@ export const ProductCard: React.FC<Props> = ({
   const [cart, setCart] = useLocalStorage<Record<'id', unknown>[]>('cart', []);
 
   const hasCartProduct = !!cart.find(item => item.id === product.id);
+
+  const toggleFavouritesButton = () => {
+    setFavourites(c => toggleItemInArray(c, product.id));
+    queryClient.setQueryData(
+      ['favouritesCards'],
+      queryClient
+        .getQueryData<Product[]>(['favouritesCards'])
+        ?.filter(item => item.id !== product.id),
+    );
+  };
 
   return (
     <article
@@ -42,7 +54,7 @@ export const ProductCard: React.FC<Props> = ({
         to={`/product/${product.itemId}`}
       >
         <img
-          className="max-h-49 object-contain"
+          className="h-52 object-contain"
           src={product.image}
           alt={product.name}
         />
@@ -78,7 +90,7 @@ export const ProductCard: React.FC<Props> = ({
           {hasCartProduct ? 'Added' : 'Add to cart'}
         </Button>
         <FavouritesButton
-          onClick={() => setFavourites(c => toggleItemInArray(c, product.id))}
+          onClick={toggleFavouritesButton}
           active={favourites.includes(product.id)}
           className="h-10 w-10"
         />
