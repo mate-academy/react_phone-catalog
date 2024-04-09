@@ -4,6 +4,7 @@
 .slider {
   height: 572px;
   padding-left: 16px;
+  overflow: hidden;
 
   @include on-tablet {
     padding-left: 24px;

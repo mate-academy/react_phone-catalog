@@ -89,7 +89,7 @@ export const HomePage: React.FC = () => {
   );
 
   return (
-    <>
+    <div className="main__home">
       <section className="banner">
         <div className="banner__container">
           <button
@@ -193,6 +193,6 @@ export const HomePage: React.FC = () => {
           unitName="Brand new models"
         />
       </section>
-    </>
+    </div>
   );
 };

@@ -1,6 +1,9 @@
 @import '../../style/utils/variables';
+@import '../../style/utils/mixins';
 
 .details {
+  @include page-paddings;
+
   &__container {
     // width: 1136px;
     display: flex;
@@ -8,15 +11,31 @@
     gap: 80px;
   }
 
+  &__back {
+    padding-left: 16px;
+  }
+
   &__url {
+    padding-inline: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
     &-pathname {
       color: $primary;
     }
 
     &-searchname {
       color: $secondary;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      padding-right: 7px;
     }
   }
+
   &__not-found {
     font-family: $mont;
     font-size: 21px;
@@ -26,36 +45,39 @@
   }
 
   &__top {
-    height: 464px;
-    display: flex;
-    flex-direction: row;
-    gap: 64px;
+    @include page-grid;
   }
 
   &__title {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__images {
-    &-container {
-      display: flex;
-      align-items: center;
-      width: 560px;
-    }
-
-    height: 464px;
+    overflow: hidden;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    gap: 16px;
+    flex-direction: row;
+    gap: 8px;
+    grid-column: 1 / -1;
+
+
+    @include on-tablet {
+      flex-direction: column;
+    }
   }
 
   &__image {
+    grid-column: 1 / -1;
     height: 80px;
-    width: 80px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid $elements;
+    padding-inline: 3px;
     &--active {
       border-color: $primary;
     }
@@ -63,8 +85,8 @@
 
   &__main {
     &-image {
+      grid-column: 1 / -1;
       height: 464px;
-      width: 464px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -72,45 +94,34 @@
 
     &-picture {
       height: 442px;
-      width: 442px;
+      width: 100%;
       background-position: center;
       object-fit: contain;
     }
   }
 
   &__picture {
-    width: 66px;
     height: 66px;
     background-position: center;
     object-fit: contain;
   }
 
-  &__id {
-    margin-left: 51px;
-    font-family: $mont;
-    font-size: 12px;
-    font-weight: 600;
-    line-height: 15px;
-    text-align: left;
-    color: $icons;
+  &__characteristics {
+    grid-column: 1 / -1;
   }
 
   &__bottom {
-    display: flex;
-    flex-direction: row;
-    gap: 64px;
-    justify-content: space-between;
+    @include page-grid;
 
     &-left {
-      width: 560px;
+      grid-column: 1 / -1;
     }
     &-right {
-      width: 512px;
+      grid-column: 1 / -1;
     }
 
     &-name {
       position: relative;
-      width: 512px;
 
       ::after {
         display: block;
@@ -138,8 +149,19 @@
   flex-direction: column;
   gap: 24px;
 
+  &__id {
+    grid-column: -1 / -2;
+    font-family: $mont;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: $icons;
+  }
+
   &__section {
     position: relative;
+    overflow: hidden;
     &:nth-child(2) {
       margin-top: 24px;
     }
@@ -153,6 +175,11 @@
         background-color: $elements;
         bottom: -24px;
       }
+
+    &--flex {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__title {
@@ -167,6 +194,7 @@
 
   &__elements {
     display: flex;
+    justify-content: start;
     gap: 8px;
   }
 
@@ -205,7 +233,7 @@
   }
 
   &__rectangle {
-    width: 56px;
+    width: 63px;
     height: 32px;
     border: 1px solid $icons;
     font-family: $mont;

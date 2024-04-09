@@ -7,45 +7,12 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import './ProductsSlider.scss';
 import '../../style/title.scss';
 
-const somePhones: Product[] = [
-  {
-    id: 1,
-    category: 'phones',
-    itemId: 'apple-iphone-7-32gb-black',
-    name: 'Apple iPhone 7 32GB Black',
-    fullPrice: 400,
-    price: 375,
-    screen: "4.7' IPS",
-    capacity: '32GB',
-    color: 'black',
-    ram: '2GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7/black/00.webp',
-  },
-  {
-    id: 2,
-    category: 'phones',
-    itemId: 'apple-iphone-7-plus-32gb-black',
-    name: 'Apple iPhone 7 Plus 32GB Black',
-    fullPrice: 540,
-    price: 500,
-    screen: "5.5' IPS'",
-    capacity: '32GB',
-    color: 'black',
-    ram: '3GB',
-    year: 2016,
-    image: 'img/phones/apple-iphone-7-plus/black/00.webp',
-  },
-];
-
 type Props = {
   products: Product[];
   unitName: string;
 };
 
 export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
-  const [statePhones] = useState(somePhones);
-
   const [startProductIndex, setStartProductIndex] = useState(0);
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
@@ -172,7 +139,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
         </div>
 
         <div className="slider__cards slider__cards--mobile">
-          {statePhones.map(product => (
+          {products.map(product => (
             <Link
               to={`/${product.category}/${product.itemId}`}
               className="slider__link"

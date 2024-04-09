@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import cn from 'classnames';
 import { CatalogContext } from '../CatalogContext';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -56,66 +56,115 @@ export const Details: React.FC<Props> = ({
     };
   }
 
+  const [offsetX, setOffsetX] = useState<number>(0);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
+
+  const handleTouchStart = (event: React.TouchEvent) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
+
+  const handleTouchMove = (event: React.TouchEvent) => {
+    if (touchStartX === null) {
+      return;
+    }
+
+    const touchMoveX = event.touches[0].clientX;
+    const deltaX = touchMoveX - touchStartX;
+
+    setOffsetX(deltaX);
+  };
+
+  const handleTouchEnd = () => {
+    if (offsetX > 50) {
+      const currentIndex = product.images.indexOf(currentImage);
+      const newIndex =
+        currentIndex === 0 ? product.images.length - 1 : currentIndex - 1;
+
+      setImage(product.images[newIndex]);
+    } else if (offsetX < -50) {
+      const currentIndex = product.images.indexOf(currentImage);
+      const newIndex =
+        currentIndex === product.images.length - 1 ? 0 : currentIndex + 1;
+
+      setImage(product.images[newIndex]);
+    }
+
+    setTouchStartX(null);
+    setOffsetX(0);
+  };
+
   return (
     <div className="details">
       <h1 className="details__title title">{product.name}</h1>
 
       <div className="details__container">
         <div className="details__top">
-          <div className="details__images-container">
-            <div className="details__images">
-              {product.images.map((image, index) => (
-                <button
-                  className={cn('details__image', {
-                    'details__image--active': currentImage === image,
-                  })}
-                  type="button"
-                  onClick={() => handleImageClick(image)}
-                  key={image}
-                >
-                  <img
-                    src={`${image}`}
-                    alt={`item ${index}`}
-                    className="details__picture"
-                  />
-                </button>
-              ))}
-            </div>
-
-            <div className="details__main-image">
-              <img
-                src={`${currentImage}`}
-                alt="product"
-                className="details__main-picture"
-              />
-            </div>
+          <div className="details__main-image">
+            <img
+              src={`${currentImage}`}
+              alt="product"
+              className="details__main-picture"
+            />
           </div>
 
-          <div className="details__info">
-            <div className="characteristics">
-              <div className="characteristics__section">
-                <p className="characteristics__title">Avaliable colors</p>
+          <div
+            className="details__images"
+            onTouchMove={handleTouchMove}
+            onTouchStart={handleTouchStart}
+            onTouchEnd={handleTouchEnd}
+            style={{ transform: `translateX(${offsetX}px)` }}
+          >
+            {product.images.map((image, index) => (
+              <button
+                className={cn('details__image', {
+                  'details__image--active': currentImage === image,
+                })}
+                type="button"
+                onClick={() => handleImageClick(image)}
+                key={image}
+              >
+                <img
+                  src={`${image}`}
+                  alt={`item ${index}`}
+                  className="details__picture"
+                />
+              </button>
+            ))}
+          </div>
 
-                <div className="characteristics__elements">
-                  {product.colorsAvailable.map(color => (
-                    <button
-                      type="button"
-                      onClick={() => handleColorClick(color)}
-                      className={cn('characteristics__circle', {
-                        'characteristics__circle--active':
-                          activeColor === color,
-                      })}
-                      key={color}
-                      aria-label={`Select ${color} color`}
-                    >
-                      <div
-                        className={`
-                      characteristics__color
-                      characteristics__color--${color}`}
-                      />
-                    </button>
-                  ))}
+          <div className="details__characteristics">
+            <div className="characteristics">
+              <div
+                className="
+                  characteristics__section
+                  characteristics__section--flex
+              "
+              >
+                <div>
+                  <p className="characteristics__title">Avaliable colors</p>
+                  <div className="characteristics__elements">
+                    {product.colorsAvailable.map(color => (
+                      <button
+                        type="button"
+                        onClick={() => handleColorClick(color)}
+                        className={cn('characteristics__circle', {
+                          'characteristics__circle--active':
+                            activeColor === color,
+                        })}
+                        key={color}
+                        aria-label={`Select ${color} color`}
+                      >
+                        <div
+                          className={`
+                        characteristics__color
+                        characteristics__color--${color}`}
+                        />
+                      </button>
+                    ))}
+                  </div>
                 </div>
+
+                <div className="characteristics__id">{`ID: ${product.priceRegular}`}</div>
               </div>
 
               <div className="characteristics__section">
@@ -245,8 +294,6 @@ export const Details: React.FC<Props> = ({
               </div>
             </div>
           </div>
-
-          <div className="details__id">{`ID: ${product.priceRegular}`}</div>
         </div>
 
         <div className="details__bottom">

@@ -26,3 +26,15 @@
     --columns: 24;
   }
 }
+
+@mixin page-paddings {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}

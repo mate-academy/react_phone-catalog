@@ -61,7 +61,7 @@ main {
   box-sizing: border-box;
   position: sticky;
   background-color: $background-color;
-  z-index: 2;
+  z-index: 3;
   top: 0;
   height: 64px;
   display: flex;
@@ -275,18 +275,21 @@ main {
 
 .main {
   margin: 0 auto;
-  display: grid;
-  gap: 56px;
-  margin-block: 24px 64px;
 
-  @include on-tablet {
-    gap: 64px;
-    margin-top: 32px;
-  }
+  &__home {
+    display: grid;
+    gap: 56px;
+    margin-block: 24px 64px;
 
-  @include on-desktop {
-    gap: 80px;
-    margin-block: 56px 80px;
+    @include on-tablet {
+      gap: 64px;
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+      margin-block: 56px 80px;
+    }
   }
 }
 
@@ -362,18 +365,17 @@ main {
 .shop {
   height: 1208px;
   max-width: 100vw;
-  padding-inline: 16px;
+
+  @include page-paddings;
 
   @include on-tablet {
     height: 327px;
-    padding-inline: 24px;
   }
 
   @include on-desktop {
     height: 508px;
     width: 1136px;
     margin-inline: auto;
-    padding-inline: 0;
   }
 
   &__image {

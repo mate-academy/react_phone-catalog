@@ -96,7 +96,7 @@ export const ProductDetailsPage = () => {
         </p>
       </div>
 
-      <div className="back">
+      <div className="back details__back">
         <img
           src="./icons/Chevron-Arrow-Right.svg"
           alt="arrow"
@@ -113,9 +113,11 @@ export const ProductDetailsPage = () => {
       </div>
 
       {productDetailsLoading && <Loader />}
+
       {productNotFound && (
         <p className="details__not-found">Phone was not found</p>
       )}
+
       {!productDetailsLoading && !productNotFound && product !== null && (
         <Details
           product={product}
@@ -127,7 +129,7 @@ export const ProductDetailsPage = () => {
           setColor={setActiveColor}
         />
       )}
-      <div className="you-may-like">
+      <div className="details__slider">
         <ProductsSlider
           products={randomProducts}
           unitName="You may also like"
