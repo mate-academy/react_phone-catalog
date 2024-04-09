@@ -61,6 +61,7 @@ export const Details: React.FC<Props> = ({
 
   const handleTouchStart = (event: React.TouchEvent) => {
     setTouchStartX(event.touches[0].clientX);
+    setOffsetX(0);
   };
 
   const handleTouchMove = (event: React.TouchEvent) => {
