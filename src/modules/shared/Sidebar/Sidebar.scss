@@ -29,7 +29,16 @@
   // }
 
   &__close-link {
+    height: $header-height-mobile;
+
     display: flex;
+
+    position: absolute;
+    right: 0;
+    top: -$header-height-mobile;
+
+    z-index: 1;
+    background-color: #fff;
   }
 
   &__nav {
@@ -52,17 +61,13 @@
     height: 64px;
 
     display: flex;
-    justify-content: space-between;
 
-    box-shadow: 0 -1px 0 #E2E6E9;
+    box-shadow: 0 -1px 0 #e2e6e9;
   }
 
-  &__fav {
-    display: flex;
-  }
-
+  &__fav,
   &__cart {
-    display: flex;
+    width: 50%;
   }
 }
 

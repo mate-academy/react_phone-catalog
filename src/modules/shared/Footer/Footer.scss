@@ -1,20 +1,47 @@
 .footer {
+  max-width: 1136px;
+  margin-inline: auto;
+
   &__container {
     padding: 32px 16px;
 
     display: flex;
     flex-direction: column;
     gap: 32px;
+
+    @include on-tablet {
+      padding: 32px;
+
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   &__logo-link {
+    height: 32px;
+
     display: flex;
+  }
+
+  &__logo {
+    height: 100%;
   }
 
   &__nav {
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+
+      align-items: center;
+      gap: 13.5px;
+    }
+
+    @include on-desctop {
+      gap: 107px;
+    }
   }
 
   &__nav-item {

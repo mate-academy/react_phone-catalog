@@ -1,6 +1,4 @@
 .new-models {
-  // padding-left: 16px;
-
   &__title-block {
     @include padding-content-inline;
 
@@ -24,14 +22,21 @@
 
   &__imgs-container {
     height: 439.5px;
+    margin-bottom: 56px;
 
     position: relative;
     overflow: hidden;
+
+    @include on-tablet {
+      height: 512px;
+    }
+
+    @include on-desctop {
+      height: 506px;
+    }
   }
 
   &__imgs {
-    margin-bottom: 56px;
-
     display: flex;
 
     position: absolute;

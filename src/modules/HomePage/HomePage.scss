@@ -1,8 +1,22 @@
 .home-page {
+  @include on-desctop {
+    margin-inline: auto;
+    max-width: fit-content;
+  }
+
   &__greeting {
-    // margin-inline: auto;
-    padding: 24px 16px;
+    padding-block: 24px;
 
     width: fit-content;
+
+    @include padding-content-inline;
+
+    @include on-tablet {
+      padding-block: 32px;
+    }
+
+    @include on-desctop {
+      padding-block: 56px;
+    }
   }
 }

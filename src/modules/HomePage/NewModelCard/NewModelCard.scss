@@ -1,14 +1,6 @@
 .new-model-card {
   padding: 32px;
 
-  // @include on-tablet {
-  //   width: 237px;
-  // }
-
-  // @include on-desctop {
-  //   width: 272px;
-  // }
-
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -20,6 +12,14 @@
   &__img {
     height: 129px;
     margin-inline: auto;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desctop {
+      height: 196px;
+    }
   }
 
   &__title {

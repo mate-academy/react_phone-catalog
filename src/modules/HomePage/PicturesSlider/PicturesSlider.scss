@@ -5,6 +5,10 @@
     @include padding-content-inline;
   }
 
+  @include on-desctop {
+    padding-inline: 0;
+  }
+
   &__images-container {
     margin-bottom: 8px;
 
@@ -26,6 +30,10 @@
 
       border-radius: 5px;
     }
+
+    @include on-desctop {
+      grid-column: 2 / 24;
+    }
   }
 
   &__images {
@@ -39,6 +47,8 @@
 
     @include on-tablet {
       background-color: #000;
+
+      position: relative;
     }
   }
 
@@ -56,11 +66,40 @@
 
     @include on-tablet {
       width: auto;
+
       &--2,
       &--3 {
         margin-left: auto;
       }
     }
+  }
+
+  &__order-link {
+    position: absolute;
+
+    display: none;
+
+    height: 16.3%;
+    width: 19.6%;
+
+    border-radius: 16% / 50%;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      bottom: 14.4%;
+      left: 5.6%;
+    }
+  }
+
+  &__order-img {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 15% / 50%;
   }
 
   &__move-right {

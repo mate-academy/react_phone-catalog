@@ -16,6 +16,10 @@
   @include on-tablet {
     padding-inline: $padding-inline-for-tablet;
   }
+
+  @include on-desctop {
+    padding-inline: 0;
+  }
 }
 
 @mixin page-grid {
@@ -28,5 +32,11 @@
 
   @include on-tablet {
     --columns: 12;
+  }
+
+  @include on-desctop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
   }
 }

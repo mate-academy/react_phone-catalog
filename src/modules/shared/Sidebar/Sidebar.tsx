@@ -6,15 +6,13 @@ import { Link, NavLink } from 'react-router-dom';
 export const Sidebar = () => {
   return (
     <aside className="sidebar" id="#menu">
-      <div className="icon-wrapper icon-wrapper--close">
-        <Link to="/" className="sidebar__close-link">
-          <img
-            src="/img/icons/close.svg"
-            alt="close"
-            className="icon icon--close"
-          />
-        </Link>
-      </div>
+      <Link to="/" className="sidebar__close-link icon-container">
+        <img
+          src="/img/icons/close.svg"
+          alt="close"
+          className="icon icon--close"
+        />
+      </Link>
 
       <div className="sidebar__nav">
         <div className="sidebar__nav-item">
@@ -40,16 +38,20 @@ export const Sidebar = () => {
       </div>
 
       <div className="sidebar__fav-and-cart">
-        <div className="icon-wrapper">
-          <NavLink to="favourites" className="Sidebar__fav">
-            <img src="/img/icons/favourites.svg" alt="favourites" />
-          </NavLink>
-        </div>
-        <div className="icon-wrapper icon-wrapper--right">
-          <NavLink to="shoping-cart" className="Sidebar__cart">
-            <img src="/img/icons/shopping-cart.svg" alt="cart" />
-          </NavLink>
-        </div>
+        <NavLink to="favourites" className="sidebar__fav icon-container">
+          <img
+            src="/img/icons/favourites.svg"
+            alt="favourites"
+            className="icon icon--fav"
+          />
+        </NavLink>
+        <NavLink to="shoping-cart" className="sidebar__cart icon-container">
+          <img
+            src="/img/icons/shopping-cart.svg"
+            alt="cart"
+            className="icon icon--cart"
+          />
+        </NavLink>
       </div>
     </aside>
   );

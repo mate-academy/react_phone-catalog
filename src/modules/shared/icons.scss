@@ -2,30 +2,26 @@
 
 .icon-wrapper {
   height: 100%;
-  width: 50%;
 
   display: flex;
-  justify-content: center;
+  margin-inline-start: auto;
+}
+
+.icon-container {
+  height: 100%;
+  width: $header-height-mobile;
+
+  display: flex;
   align-items: center;
+  justify-content: center;
 
-  &--right {
-    box-shadow: -1px 0 0 #E2E6E9;
+  box-shadow: -1px 0 0 #e2e6e9;
+
+  @include on-desctop {
+    width: $header-height-desctop;
   }
+}
 
-  &--menu {
-    width: $header-height-mobile;
-  }
-
-  &--close {
-    height: $header-height-mobile;
-    width: $header-height-mobile;
-
-    position: absolute;
-
-    top: -$header-height-mobile;
-    right: 0;
-
-    z-index: 1;
-    background-color: #fff;
-  }
+.icon {
+  display: flex;
 }

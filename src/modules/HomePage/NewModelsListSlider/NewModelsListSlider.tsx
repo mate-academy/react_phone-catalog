@@ -4,10 +4,14 @@ import { NewModelCard } from '../NewModelCard';
 import { Phone } from '../../../types';
 import { getPadding } from '../../../services/getPadding';
 import { getWidthCard } from '../../../services/getWidthCard';
+import {
+  COLUMN_SIZE_FOR_DESCTOP,
+  DESCTOP_COLUMNS,
+  GAP_BETWEEN_COLUMNS,
+} from '../../constants/PARAMS_OF_PAGE';
+import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 
 type Props = { windowSize: number };
-
-const GAP = 16;
 
 export const NewModelsListSlider: React.FC<Props> = React.memo(
   ({ windowSize }) => {
@@ -26,15 +30,35 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
     const [position, setPosition] = useState(getPadding(windowSize));
     const [imgPosition, setImgPosition] = useState<number>(0);
 
-    const oneItem = widthCard + GAP;
-    const itemsPerStep = Math.floor(windowSize / oneItem);
+    const windowSizeForDesctop =
+      COLUMN_SIZE_FOR_DESCTOP * DESCTOP_COLUMNS +
+      GAP_BETWEEN_COLUMNS * (DESCTOP_COLUMNS - 1);
+
+    const currentWindowSizeSlider =
+      windowSize < WIDTH_DEVICES.desctop ? windowSize : windowSizeForDesctop;
+
+    const oneItem = widthCard + GAP_BETWEEN_COLUMNS;
+
+    const itemsPerStep =
+      windowSize < WIDTH_DEVICES.desctop
+        ? Math.floor(currentWindowSizeSlider / oneItem)
+        : Math.floor((currentWindowSizeSlider + GAP_BETWEEN_COLUMNS) / oneItem);
+
     const maxPosition = dataLoaded ? newModels.length - itemsPerStep : 0;
-    const boundary = newModels.length * oneItem - GAP + padding - windowSize;
+
+    const boundary =
+      newModels.length * oneItem -
+      GAP_BETWEEN_COLUMNS +
+      padding -
+      currentWindowSizeSlider;
 
     const moveRight = () => {
       if (imgPosition < maxPosition) {
         const newImgPosition = imgPosition + itemsPerStep;
-        const newPosition = newImgPosition * oneItem - GAP;
+        const newPosition =
+          windowSize < WIDTH_DEVICES.desctop
+            ? newImgPosition * oneItem - GAP_BETWEEN_COLUMNS
+            : newImgPosition * oneItem;
 
         setImgPosition(Math.min(newImgPosition, maxPosition));
         setPosition(Math.max(-newPosition, -boundary));
@@ -44,7 +68,10 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
     const moveLeft = () => {
       if (imgPosition > 0) {
         const newImgPosition = imgPosition - itemsPerStep;
-        const newPosition = newImgPosition * oneItem - GAP;
+        const newPosition =
+          windowSize < WIDTH_DEVICES.desctop
+            ? newImgPosition * oneItem - GAP_BETWEEN_COLUMNS
+            : newImgPosition * oneItem;
 
         setImgPosition(Math.max(newImgPosition, 0));
         setPosition(Math.min(-newPosition, padding));
@@ -96,7 +123,7 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
       if (imgPosition > maxPosition) {
         setImgPosition(maxPosition);
 
-        const newPosition = maxPosition * oneItem - GAP;
+        const newPosition = maxPosition * oneItem - GAP_BETWEEN_COLUMNS;
 
         setPosition(Math.max(-newPosition, -boundary));
 
@@ -104,7 +131,10 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
       }
 
       if (dataLoaded && size !== windowSize && imgPosition !== 0) {
-        const newPosition = imgPosition * oneItem - GAP;
+        const newPosition =
+          windowSize < WIDTH_DEVICES.desctop
+            ? imgPosition * oneItem - GAP_BETWEEN_COLUMNS
+            : imgPosition * oneItem;
 
         setPosition(Math.max(-newPosition, -boundary));
         setSize(windowSize);
@@ -159,7 +189,7 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
         <div className="new-models__imgs-container">
           <div
             className="new-models__imgs"
-            style={{ left: `${position}px`, gap: `${GAP}px` }}
+            style={{ left: `${position}px`, gap: `${GAP_BETWEEN_COLUMNS}px` }}
             onTouchStart={handleTouchStart}
             onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
