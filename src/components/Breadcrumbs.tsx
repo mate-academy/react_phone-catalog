@@ -7,14 +7,18 @@ import { convertHyphenToSpace } from '../helpers/functions';
 
 interface Props {
   className?: string;
+  redirection?: (string | undefined)[];
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ className = '' }) => {
+export const Breadcrumbs: React.FC<Props> = ({
+  className = '',
+  redirection = [],
+}) => {
   const location = useLocation();
   const routeArray = location.pathname.split('/').slice(1);
 
   return (
-    <div
+    <nav
       className={twMerge(
         'flex h-4 items-center gap-2 overflow-hidden',
         className,
@@ -29,7 +33,12 @@ export const Breadcrumbs: React.FC<Props> = ({ className = '' }) => {
           <img className="rotate-90" src={arrowDisabledImg} alt="Divider" />
 
           {routeArray.length - 1 !== index ? (
-            <Link to={location.pathname.split(route)[0] + route}>
+            <Link
+              to={
+                redirection[index + 1] ||
+                location.pathname.split(route)[0] + route
+              }
+            >
               <p
                 className="font-semibold text-primary transition
               hover:text-secondary"
@@ -49,6 +58,6 @@ export const Breadcrumbs: React.FC<Props> = ({ className = '' }) => {
           )}
         </React.Fragment>
       ))}
-    </div>
+    </nav>
   );
 };

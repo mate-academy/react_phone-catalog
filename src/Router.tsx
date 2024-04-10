@@ -26,9 +26,10 @@ export const Router = () => {
             />
             <Route path="/favourites" element={<FavoritesPage />} />
             <Route path="/cart" element={<CartPage />} />
-            <Route path="/product">
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
+            <Route
+              path="/product/:productId"
+              element={<ProductDetailsPage />}
+            />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>

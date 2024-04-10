@@ -1,4 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
+import * as cartTypes from '../types/cart';
 import burgerMenuIcon from '../images/icons/burger-menu.svg';
 import closeIcon from '../images/icons/close.svg';
 import favouritesIcon from '../images/icons/favourites.svg';
@@ -12,7 +13,7 @@ import { useReadLocalStorage } from 'usehooks-ts';
 
 export const Header: React.FC = () => {
   const favourites = useReadLocalStorage<number[]>('favourites');
-  const cart = useReadLocalStorage<number[]>('cart');
+  const cart = useReadLocalStorage<cartTypes.CartItem[]>('cart');
   const [searchParams, setSearchParams] = useSearchParams();
 
   const setSearchWith = (params: SearchWithParams) => {
@@ -58,15 +59,15 @@ export const Header: React.FC = () => {
                 alt: 'Favourites menu',
                 srcImg: favouritesIcon,
                 src: '/favourites',
-                storage: favourites,
+                storageCount: favourites?.length,
               },
               {
                 alt: 'Cart menu',
                 srcImg: cartIcon,
                 src: '/cart',
-                storage: cart,
+                storageCount: cart?.reduce((a, b) => a + (b.quantity || 1), 0),
               },
-            ].map(({ alt, srcImg, src, storage }) => (
+            ].map(({ alt, srcImg, src, storageCount }) => (
               <li
                 key={alt}
                 onClick={
@@ -91,7 +92,7 @@ export const Header: React.FC = () => {
                   />
                 ) : (
                   <NavItem path={src} className="w-full">
-                    {!!storage?.length && (
+                    {!!storageCount && (
                       <div
                         className="absolute flex
                         h-3.5 -translate-y-1/2 translate-x-1/2 items-center
@@ -99,7 +100,7 @@ export const Header: React.FC = () => {
                         border-white bg-red px-0.5 text-[9px]
                         text-white"
                       >
-                        {storage?.length}
+                        {storageCount}
                       </div>
                     )}
                     <img src={srcImg} alt={alt} />

@@ -1,10 +1,17 @@
+import { twMerge } from 'tailwind-merge';
 import { ArrowButton } from './ArrowButton';
 import { Logo } from './Logo';
 import { NavItem } from './NavItem';
 
-export const Footer: React.FC = () => {
+interface Props {
+  className?: string;
+}
+
+export const Footer: React.FC<Props> = ({ className }) => {
   return (
-    <footer className="w-full border-t border-elements bg-white">
+    <footer
+      className={twMerge('w-full border-t border-elements bg-white', className)}
+    >
       <nav className="flex items-center justify-center">
         <ul
           className="flex max-w-[theme('screens.lg')] flex-1

@@ -61,7 +61,7 @@ export const ProductDetailsPage: React.FC = () => {
     <ErrorNetwork />
   ) : (
     <main className="content-padding grid w-full pb-14 pt-6">
-      <Breadcrumbs />
+      <Breadcrumbs redirection={[undefined, `/${product.category}`]} />
 
       <GoBackButton className="mt-6 md:mt-10">Back</GoBackButton>
 
