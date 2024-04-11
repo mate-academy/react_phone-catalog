@@ -57,6 +57,14 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
       setImgPosition(prevPosition => prevPosition - 1);
       setPosition(prevPosition => prevPosition - oneStep);
     }
+
+    if (imgPosition === 0) {
+      const newImgPosition = images.length - 1;
+      const newPosition = newImgPosition * oneStep;
+
+      setImgPosition(newImgPosition);
+      setPosition(newPosition);
+    }
   };
 
   const moveRight = () => {
@@ -67,6 +75,11 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
     if (imgPosition < images.length - 1) {
       setImgPosition(prevPosition => prevPosition + 1);
       setPosition(prevPosition => prevPosition + oneStep);
+    }
+
+    if (imgPosition === images.length - 1) {
+      setImgPosition(0);
+      setPosition(0);
     }
   };
 
@@ -103,17 +116,12 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
     }
   }, [images, windowSize]); // setting images depending on the width of the devices
 
-  // console.log(windowSize);
-  // console.log(oneStep);
-
   return (
     <div className="pictures-slider">
       <div className="pictures-slider__images-container">
         <button
           type="button"
-          className={cn('pictures-slider__move-left', {
-            disabled: imgPosition <= 0,
-          })}
+          className="pictures-slider__move-left"
           onClick={moveLeft}
         >
           &lt;
@@ -153,9 +161,7 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
 
         <button
           type="button"
-          className={cn('pictures-slider__move-right', {
-            disabled: imgPosition >= images.length - 1,
-          })}
+          className="pictures-slider__move-right"
           onClick={moveRight}
         >
           &gt;

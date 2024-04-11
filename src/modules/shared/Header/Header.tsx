@@ -13,16 +13,16 @@ export const Header = () => {
         </Link>
 
         <div className="header__nav">
-          <Link to="home" className="header__nav-link quaternary-title">
+          <Link to="home" className="header__nav-link navigation-title">
             home
           </Link>
-          <Link to="phones" className="header__nav-link quaternary-title">
+          <Link to="phones" className="header__nav-link navigation-title">
             phones
           </Link>
-          <Link to="tablets" className="header__nav-link quaternary-title">
+          <Link to="tablets" className="header__nav-link navigation-title">
             tablets
           </Link>
-          <Link to="accessories" className="header__nav-link quaternary-title">
+          <Link to="accessories" className="header__nav-link navigation-title">
             accessories
           </Link>
         </div>

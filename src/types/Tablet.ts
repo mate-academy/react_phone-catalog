@@ -1,3 +1,3 @@
 import { Device } from './Device';
 
-export type Phone = Device;
+export type Tablet = Device;

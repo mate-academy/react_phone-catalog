@@ -1,8 +1,13 @@
 .primary-title {
   font-family: Mont-Bold, sans-serif;
   line-height: 41px;
+  letter-spacing: -1px;
 
   color: #313237;
+
+  @include on-tablet {
+    font-size: 48px;
+  }
 }
 
 .secondary-title {
@@ -10,9 +15,30 @@
   font-family: Mont-Bold, sans-serif;
 
   color: #313237;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1px;
+  }
+}
+
+.tertiary-title {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 20px;
+  line-height: 25.5px;
+
+  color: #313237;
 }
 
 .quaternary-title {
+  font-size: 14px;
+  line-height: 21px;
+
+  color: $text-gray-color;
+}
+
+.navigation-title {
   display: flex;
 
   font-size: 12px;

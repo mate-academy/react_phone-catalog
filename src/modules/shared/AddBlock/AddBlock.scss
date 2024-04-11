@@ -16,6 +16,8 @@
     color: #fff;
     background-color: #313237;
     border-radius: 5px;
+
+    cursor: pointer;
   }
 
   &__add-to-fav {
@@ -23,5 +25,7 @@
 
     border: solid 1px #b4bdc3;
     border-radius: 5px;
+
+    cursor: pointer;
   }
 }

@@ -17,14 +17,14 @@ export const Footer = () => {
             to="https://github.com/IShamkii/react_phone-catalog"
             target="_blank"
             rel="noopener noreferrer"
-            className="footer__nav-item quaternary-title"
+            className="footer__nav-item navigation-title"
           >
             Github
           </Link>
-          <Link to="/" className="footer__nav-item quaternary-title">
+          <Link to="/" className="footer__nav-item navigation-title">
             Contacts
           </Link>
-          <Link to="/" className="footer__nav-item quaternary-title">
+          <Link to="/" className="footer__nav-item navigation-title">
             Rights
           </Link>
         </div>

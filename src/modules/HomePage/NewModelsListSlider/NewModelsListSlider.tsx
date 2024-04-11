@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { NewModelCard } from '../NewModelCard';
-import { Phone } from '../../../types';
 import { getPadding } from '../../../services/getPadding';
 import { getWidthCard } from '../../../services/getWidthCard';
 import {
@@ -10,15 +9,24 @@ import {
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
+import { Loader } from '../../shared/Loader';
+import { Product } from '../../../types/Product';
 
-type Props = { windowSize: number };
+type Props = {
+  windowSize: number;
+  phones: Product[];
+  dataLoaded: boolean;
+};
 
 export const NewModelsListSlider: React.FC<Props> = React.memo(
-  ({ windowSize }) => {
+  ({ windowSize, phones, dataLoaded }) => {
     const phoneModel = 14;
 
-    const [newModels, setNewModels] = useState<Phone[]>([]);
-    const [dataLoaded, setDataLoaded] = useState(false);
+    const newModels = phones.filter(phone =>
+      phone.name.includes(`${phoneModel}`),
+    );
+    // .sort((phone1, phone2) => phone1.fullPrice - phone2.fullPrice);
+
     const [size, setSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -30,6 +38,7 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
     const [position, setPosition] = useState(getPadding(windowSize));
     const [imgPosition, setImgPosition] = useState<number>(0);
 
+    // #region
     const windowSizeForDesctop =
       COLUMN_SIZE_FOR_DESCTOP * DESCTOP_COLUMNS +
       GAP_BETWEEN_COLUMNS * (DESCTOP_COLUMNS - 1);
@@ -51,6 +60,7 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
       GAP_BETWEEN_COLUMNS +
       padding -
       currentWindowSizeSlider;
+    // #endregion
 
     const moveRight = () => {
       if (imgPosition < maxPosition) {
@@ -102,22 +112,6 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
       setTouchStart(null);
       setTouchEnd(null);
     };
-
-    useEffect(() => {
-      setDataLoaded(false);
-
-      fetch('/api/phones.json')
-        .then(response => response.json())
-        .then((data: Phone[]) => {
-          const phones = data.filter(phone =>
-            phone.namespaceId.includes(`${phoneModel}`),
-          );
-
-          setNewModels(phones);
-          setDataLoaded(true);
-        })
-        .catch(() => {});
-    }, []);
 
     useEffect(() => {
       if (imgPosition > maxPosition) {
@@ -187,21 +181,27 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
         </div>
 
         <div className="new-models__imgs-container">
-          <div
-            className="new-models__imgs"
-            style={{ left: `${position}px`, gap: `${GAP_BETWEEN_COLUMNS}px` }}
-            onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
-            onTouchEnd={handleTouchEnd}
-          >
-            {newModels.map(phone => (
-              <NewModelCard
-                phone={phone}
-                key={phone.id}
-                widthCard={widthCard}
-              />
-            ))}
-          </div>
+          {!dataLoaded ? (
+            <div className="new-models__loader">
+              <Loader />
+            </div>
+          ) : (
+            <div
+              className="new-models__imgs"
+              style={{ left: `${position}px`, gap: `${GAP_BETWEEN_COLUMNS}px` }}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+            >
+              {newModels.map(phone => (
+                <NewModelCard
+                  phone={phone}
+                  key={phone.id}
+                  widthCard={widthCard}
+                />
+              ))}
+            </div>
+          )}
         </div>
       </div>
     );

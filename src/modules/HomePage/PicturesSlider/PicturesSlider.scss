@@ -85,6 +85,10 @@
     border-radius: 16% / 50%;
     cursor: pointer;
 
+    :hover {
+      scale: 1.1;
+    }
+
     @include on-tablet {
       display: flex;
       justify-content: center;
@@ -120,12 +124,6 @@
 
     &:hover {
       border: 1px solid #313237;
-    }
-
-    &.disabled {
-      border: 1px solid #e2e6e9;
-      color: #b4bdc3;
-      cursor: default;
     }
 
     @include on-tablet {

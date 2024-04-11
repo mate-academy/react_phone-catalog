@@ -16,22 +16,22 @@ export const Sidebar = () => {
 
       <div className="sidebar__nav">
         <div className="sidebar__nav-item">
-          <NavLink to="/" className="quaternary-title">
+          <NavLink to="/" className="navigation-title">
             Home
           </NavLink>
         </div>
         <div className="sidebar__nav-item">
-          <NavLink to="phones" className="quaternary-title">
+          <NavLink to="phones" className="navigation-title">
             Phones
           </NavLink>
         </div>
         <div className="sidebar__nav-item">
-          <NavLink to="tablets" className="quaternary-title">
+          <NavLink to="tablets" className="navigation-title">
             Tablets
           </NavLink>
         </div>
         <div className="sidebar__nav-item">
-          <NavLink to="accessories" className="quaternary-title">
+          <NavLink to="accessories" className="navigation-title">
             Accessories
           </NavLink>
         </div>

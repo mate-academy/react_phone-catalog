@@ -9,9 +9,19 @@
   border: solid 1px #e2e6e9;
   border-radius: 5px;
 
+  &__img-link {
+    margin-inline: auto;
+
+    display: flex;
+
+    :hover {
+      cursor: pointer;
+      scale: 1.1;
+    }
+  }
+
   &__img {
     height: 129px;
-    margin-inline: auto;
 
     @include on-tablet {
       height: 202px;
@@ -32,6 +42,10 @@
   &__price {
     margin-bottom: 8px;
     position: relative;
+
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    color: #313237;
 
     &::after {
       content: "";
