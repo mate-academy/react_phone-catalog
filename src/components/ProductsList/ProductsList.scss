@@ -1,0 +1,128 @@
+@import '../../App';
+
+.select {
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 32px;
+  }
+
+  &__box {
+    position: relative;
+    border-radius: 8px;
+    border: 1px solid $icons-placeholder-color;
+    padding: 10px 12px;
+    width: 136px;
+    height: 40px;
+
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-overflow: '';
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $secondary-color;
+    }
+  }
+
+  &__icon {
+    position: absolute;
+    right: 12px;
+    top: 33px;
+    pointer-events: none;
+  }
+
+  &__label {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+  }
+}
+
+.products-list {
+  &__sorting {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      justify-content: flex-start;
+    }
+  }
+
+  &__navigation {
+    display: flex;
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  &__title {
+    margin-top: 24px;
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.48px;
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    margin-top: 8px;
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__category {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__home-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__arrow-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/right-gray.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__container {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    grid-gap: 40px 16px;
+    justify-items: center;
+  }
+}

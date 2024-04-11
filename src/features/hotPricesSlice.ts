@@ -1,28 +1,28 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/Product';
-import { getBrandNew } from '../api/api';
+import { getHotPrices } from '../api/api';
 
-export interface BrandNewProductsState {
-  brandNew: Product[];
+export interface HotPricesState {
+  hotPrices: Product[];
   loaded: boolean;
   hasError: boolean;
 }
 
-const initialState: BrandNewProductsState = {
-  brandNew: [],
+const initialState: HotPricesState = {
+  hotPrices: [],
   loaded: true,
   hasError: false,
 };
 
-export const init = createAsyncThunk('brandNew/fetch', async () => {
-  const products = await getBrandNew;
+export const init = createAsyncThunk('hotPrices/fetch', async () => {
+  const products = await getHotPrices;
 
   return products;
 });
 
-const brandNewSlice = createSlice({
-  name: 'brandNew',
+const hotPricesSlice = createSlice({
+  name: 'hotPrices',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -31,7 +31,7 @@ const brandNewSlice = createSlice({
         state.loaded = false;
       })
       .addCase(init.fulfilled, (state, action) => {
-        state.brandNew = action.payload;
+        state.hotPrices = action.payload;
         state.loaded = true;
       })
       .addCase(init.rejected, state => {
@@ -41,4 +41,4 @@ const brandNewSlice = createSlice({
   },
 });
 
-export default brandNewSlice.reducer;
+export default hotPricesSlice.reducer;

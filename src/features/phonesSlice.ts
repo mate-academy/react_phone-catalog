@@ -1,28 +1,28 @@
 /* eslint-disable no-param-reassign */
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { getPhones } from '../api/api';
 import { Product } from '../types/Product';
-import { getBrandNew } from '../api/api';
 
-export interface BrandNewProductsState {
-  brandNew: Product[];
+export interface PhonesState {
+  phones: Product[];
   loaded: boolean;
   hasError: boolean;
 }
 
-const initialState: BrandNewProductsState = {
-  brandNew: [],
+const initialState: PhonesState = {
+  phones: [],
   loaded: true,
   hasError: false,
 };
 
-export const init = createAsyncThunk('brandNew/fetch', async () => {
-  const products = await getBrandNew;
+export const init = createAsyncThunk('phones/fetch', async () => {
+  const phones = await getPhones;
 
-  return products;
+  return phones;
 });
 
-const brandNewSlice = createSlice({
-  name: 'brandNew',
+const phonesSlice = createSlice({
+  name: 'phones',
   initialState,
   reducers: {},
   extraReducers: builder => {
@@ -31,7 +31,7 @@ const brandNewSlice = createSlice({
         state.loaded = false;
       })
       .addCase(init.fulfilled, (state, action) => {
-        state.brandNew = action.payload;
+        state.phones = action.payload;
         state.loaded = true;
       })
       .addCase(init.rejected, state => {
@@ -41,4 +41,4 @@ const brandNewSlice = createSlice({
   },
 });
 
-export default brandNewSlice.reducer;
+export default phonesSlice.reducer;

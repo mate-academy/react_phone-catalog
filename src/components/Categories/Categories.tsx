@@ -1,4 +1,5 @@
 import './Categories.scss';
+import { NavLink } from 'react-router-dom';
 
 export const Categories = () => {
   return (
@@ -7,7 +8,7 @@ export const Categories = () => {
         <h2 className="page__subtitle">Shop by category</h2>
         <ul className="categories__list">
           <li className="categories__item">
-            <a className="categories__link">
+            <NavLink to="/phones" className="categories__link">
               <div
                 className="categories__image-container
                   categories__image-container--phones"
@@ -20,10 +21,10 @@ export const Categories = () => {
               </div>
               <p className="categories__name">Mobile phones</p>
               <p className="categories__quantity">95 models</p>
-            </a>
+            </NavLink>
           </li>
           <li className="categories__item">
-            <a className="categories__link">
+            <NavLink to="/tablets" className="categories__link">
               <div
                 className="categories__image-container
                   categories__image-container--tablets"
@@ -36,10 +37,10 @@ export const Categories = () => {
               </div>
               <p className="categories__name">Tablets</p>
               <p className="categories__quantity">95 models</p>
-            </a>
+            </NavLink>
           </li>
           <li className="categories__item">
-            <a className="categories__link">
+            <NavLink to="/accessories" className="categories__link">
               <div
                 className="categories__image-container
                   categories__image-container--accessories"
@@ -52,7 +53,7 @@ export const Categories = () => {
               </div>
               <p className="categories__name">Accessories</p>
               <p className="categories__quantity">95 models</p>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </div>

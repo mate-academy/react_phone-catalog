@@ -6,9 +6,13 @@ import { Product } from '../../types/Product';
 
 interface ProductsSliderProps {
   products: Product[];
+  title: string;
 }
 
-export const ProductsSlider: React.FC<ProductsSliderProps> = ({ products }) => {
+export const ProductsSlider: React.FC<ProductsSliderProps> = ({
+  products,
+  title,
+}) => {
   const [slideIndex, setSlideIndex] = useState(0);
   const slideWidth = 288;
 
@@ -42,7 +46,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({ products }) => {
   return (
     <div className="products-slider products-slider--margin-top">
       <div className="products-slider__navigate">
-        <h2 className="page__subtitle">Brand new models</h2>
+        <h2 className="page__subtitle">{title}</h2>
         <div className="products-slider__actions">
           <RoundButton buttonType="left" onClick={previousSlide} />
           <RoundButton buttonType="right" onClick={nextSlide} />

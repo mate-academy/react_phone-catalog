@@ -1,33 +1,31 @@
-import { useEffect, useState } from 'react';
+import './HomePage.scss';
+import { useEffect } from 'react';
 import { Categories } from '../../components/Categories';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import './HomePage.scss';
-import { getHotPrices, brandNew } from '../../api/api';
-import { Product } from '../../types/Product';
+import { RootState } from '../../app/store';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { init as brandNewProducts } from '../../features/brandNewSlice';
+import { init as hotPricesProducts } from '../../features/hotPricesSlice';
 
 export const HomePage = () => {
-  const [hotPiceProducts, setHotPiceProducts] = useState<Product[]>([]);
-  const [brandNewProducts, setBrandNewProducts] = useState<Product[]>([]);
+  const dispatch = useAppDispatch();
+  const { brandNew } = useAppSelector((state: RootState) => state.brandNew);
+  const { hotPrices } = useAppSelector((state: RootState) => state.hotPrices);
 
   useEffect(() => {
-    getHotPrices.then(items => {
-      setHotPiceProducts(items);
-    });
-
-    brandNew.then(items => {
-      setBrandNewProducts(items);
-    });
-  }, []);
+    dispatch(brandNewProducts());
+    dispatch(hotPricesProducts());
+  }, [dispatch]);
 
   return (
     <div className="container">
       <div className="page">
         <h1 className="page__title">Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
-        <ProductsSlider products={hotPiceProducts} />
+        <ProductsSlider title="Hot prices" products={hotPrices} />
         <Categories />
-        <ProductsSlider products={brandNewProducts} />
+        <ProductsSlider title="Brand new models" products={brandNew} />
       </div>
     </div>
   );

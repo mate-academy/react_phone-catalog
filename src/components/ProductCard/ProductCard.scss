@@ -3,7 +3,7 @@
 .product {
   &-card {
     display: flex;
-    width: 272px;
+    width: 288px;
     height: 506px;
     padding: 32px;
     flex-direction: column;
@@ -12,6 +12,10 @@
     border-radius: 8px;
     border: 1px solid $stroke-color;
     background: $white-color;
+
+    @include on-tablet {
+      width: 272px;
+    }
 
     &__divider {
       height: 1px;
