@@ -8,8 +8,8 @@ export const Footer = () => {
   return (
     <footer
       className="
-       content fixed inset-x-0 bottom-0 flex flex-col justify-between
-       gap-8 border-t border-elements py-8 md:h-24 md:flex-row
+        inset-x-0 bottom-0 flex flex-col justify-between gap-8 border-t
+        border-elements px-4 py-8 md:h-24 md:flex-row md:justify-around
       "
     >
       <MainLogo className="m-0">
@@ -39,7 +39,7 @@ export const Footer = () => {
       </nav>
 
       <div className="flex items-center justify-center gap-4 md:w-fit">
-        <p>Back to top</p>
+        <p className="text-secondary">Back to top</p>
 
         <SliderButton>
           <img src={arrovButton} alt="Arrov Top" />

@@ -13,9 +13,9 @@ export const App = () => {
 
       {aside && <Aside />}
 
-      <Footer />
-
       <Outlet />
+
+      <Footer />
     </>
   );
 };

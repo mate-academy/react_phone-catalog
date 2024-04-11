@@ -1,3 +1,4 @@
+@import '/node_modules/swiper/swiper';
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,12 +8,13 @@
     @apply cursor-default;
   }
 
-  body {
-    p {
-      @apply font-mont text-sm;
-    }
+  main {
+    @apply flex-1
   }
 
+  body {
+    @apply flex min-h-screen flex-col justify-center;
+  }
   h1 {
     @apply font-mont font-bold text-3xl tracking-[-0.01em]
       md:text-5xl;
@@ -34,6 +36,10 @@
 
   button {
     @apply font-mont font-semibold text-sm;
+  }
+
+  p {
+    @apply font-mont text-sm;
   }
 
   small {
@@ -71,6 +77,10 @@
   }
 
   .content {
-    @apply mx-auto max-w-[theme('screens.lg')] px-4 md:px-6 lg:px-8;
+    @apply mx-auto max-w-[theme('screens.lg')] md:px-6 lg:px-8;
+  }
+
+  .padding-inline-sm {
+    @apply px-4
   }
 }

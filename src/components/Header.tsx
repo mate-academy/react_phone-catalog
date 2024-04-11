@@ -31,7 +31,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   return (
     <header
       className={twMerge(
-        `fixed inset-x-0 top-0 flex h-12
+        `sticky	inset-x-0 top-0 flex h-12
         border-b border-elements bg-white lg:h-16`,
         className,
       )}
