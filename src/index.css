@@ -1,0 +1,76 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply cursor-default;
+  }
+
+  body {
+    p {
+      @apply font-mont text-sm;
+    }
+  }
+
+  h1 {
+    @apply font-mont font-bold text-3xl tracking-[-0.01em]
+      md:text-5xl;
+  }
+
+  h2 {
+    @apply font-mont font-bold text-1.5xl leading-8
+      md:text-4xl md:tracking-[-0.01em];
+  }
+
+  h3 {
+    @apply font-mont font-semibold text-xl
+      md:font-bold md:text-2xl;
+  }
+
+  h4 {
+    @apply font-mont font-semibold text-base md:text-xl;
+  }
+
+  button {
+    @apply font-mont font-semibold text-sm;
+  }
+
+  small {
+    @apply font-mont font-semibold text-xs;
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: bold;
+    src: url(../public/fonts/Mont-Bold.otf);
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: normal;
+    src: url(../public/fonts/Mont-Regular.otf);
+  }
+
+  @font-face {
+    font-family: Mont;
+    font-weight: 600;
+    src: url(../public/fonts/Mont-SemiBold.otf);
+  }
+}
+
+@layer components {
+  .uppercase {
+    @apply font-mont font-bold text-xs tracking-wider;
+  }
+
+  .header-button {
+    @apply hidden w-12 cursor-pointer items-center
+      justify-center border-l	border-elements
+      md:flex lg:w-16;
+  }
+
+  .content {
+    @apply mx-auto max-w-[theme('screens.lg')] px-4 md:px-6 lg:px-8;
+  }
+}
