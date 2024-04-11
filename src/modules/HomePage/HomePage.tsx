@@ -4,6 +4,7 @@ import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
 import { client } from '../../api';
 import { Product } from '../../types/Product';
+import { HotPrices } from './HotPrices';
 
 const PRODUCT_URL = 'products.json';
 
@@ -68,6 +69,8 @@ export const HomePage = () => {
           tablets={tablets.length}
           accessories={accessories.length}
         />
+
+        <HotPrices />
       </div>
     </main>
   );

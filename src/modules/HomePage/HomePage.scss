@@ -1,6 +1,8 @@
 .home-page {
+  margin-bottom: 64px;
+
   @include on-desctop {
-    margin-inline: auto;
+    margin: 0 auto 80px;
     max-width: fit-content;
   }
 
@@ -17,6 +19,20 @@
 
     @include on-desctop {
       padding-block: 56px;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desctop {
+      gap: 80px;
     }
   }
 }

@@ -1,6 +1,4 @@
 .pictures-slider {
-  margin-bottom: 56px;
-
   @include on-tablet {
     @include padding-content-inline;
   }

@@ -3,7 +3,6 @@
     @include padding-content-inline;
 
     margin-bottom: 24px;
-    padding-inline: 16px;
     display: grid;
     column-gap: 16px;
     grid-template-columns: repeat(2, 1fr);
@@ -22,7 +21,6 @@
 
   &__imgs-container {
     height: 439.5px;
-    margin-bottom: 56px;
 
     position: relative;
     overflow: hidden;
