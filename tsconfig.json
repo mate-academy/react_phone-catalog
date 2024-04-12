@@ -3,6 +3,10 @@
   "include": ["src", "types"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "baseUrl": "src",
+    "paths": {
+      "Styles/*": ["styles/*"]
+    }
   }
-}
+  }

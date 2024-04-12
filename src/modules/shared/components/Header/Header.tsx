@@ -1,6 +1,7 @@
 import { Logo } from '../Logo/Logo';
 import { HeaderNav } from './components/HeaderNav/HeaderNav';
 import { UserActions } from './components/UserActions/UserActions';
+// import { Menu } from './components/Menu';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -14,6 +15,10 @@ export const Header = () => {
       <div>
         <UserActions />
       </div>
+      {/*
+      <div>
+        <Menu />
+      </div> */}
     </header>
   );
 };

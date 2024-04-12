@@ -1,4 +1,4 @@
-@import '../../../../../../styles/utils';
+@import 'Styles/utils';
 
 .navbar {
   @include flex-center;
@@ -19,5 +19,5 @@
   color: $color-secondary;
   outline: none;
 
-  @include hover-text($color-primary);
+  @include hover-text($color-white);
 }

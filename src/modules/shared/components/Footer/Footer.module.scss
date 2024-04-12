@@ -1,4 +1,4 @@
-@import '../../../../styles/utils';
+@import 'Styles/utils';
 
 .footer {
   grid-area: footer;
@@ -6,15 +6,25 @@
   border-top: 1px solid $color-elements;
 }
 
-.footerContainer{
+.container {
   margin: 0 auto;
-  padding: 0 152px;
-  height: 100%;
+  padding: 0 32px;
+  display: block;
+  max-width: 1136px;
+
+  @media (max-width: 1199px) {
+    padding: 0 24px;
+    width: 100%;
+  }
+
+  @media (max-width: 639px) {
+    padding: 0 16px;
+  }
 }
 
 .wrapper {
   @include flex-center;
-  
+
   justify-content: space-between;
   height: 100%;
 }

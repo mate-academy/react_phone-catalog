@@ -1,4 +1,4 @@
-@import '../../../../../../styles/utils';
+@import 'Styles/utils';
 
 .backToTopBlock {
   @include flex-center;
@@ -16,9 +16,11 @@
 .button {
   @include flex-center;
 
+  background-color: $color-surface2;
+  border: none;
+
   height: 32px;
   width: 32px;
-  border: 1px solid $color-icons;
 
-  @include hover-icons($color-primary);
+  @include hover-icons($color-icons);
 }

@@ -1,0 +1,73 @@
+@import 'Styles/utils';
+
+.swiper-container {
+  @include flex-center;
+}
+
+.swiper {
+  margin: 0 16px;
+
+  // max-width: 1040px;
+  // height: 400px;
+
+  @media (max-width: 1199px) {
+    width: 100%;
+
+    // height: 189px;
+  }
+
+  @media (max-width: 639px) {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    object-position: center;
+
+    @media (max-width: 639px) {
+      aspect-ratio: 1;
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  @include flex-center;
+
+  position: relative;
+  width: 32px;
+  height: 400px;
+  background-color: $color-surface2;
+
+  @media (max-width: 1199px) {
+    height: 189px;
+  }
+
+  @media (max-width: 639px) {
+    display: none;
+  }
+
+  img {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}
+
+.swiper-pagination-bullet {
+  display: inline-block;
+  width: 14px;
+  height: 4px;
+  background-color: $color-elements;
+  margin: 0 5px;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: $color-white;
+}

@@ -1,14 +1,14 @@
 import { Logo } from '../Logo/Logo';
-import footerStyles from './Footer.module.scss';
+import styles from './Footer.module.scss';
 import { BackToTop } from './components/BackToTop';
 import { FooterNav } from './components/FooterNav/FooterNav';
 
 export const Footer = () => {
   return (
-    <footer className={footerStyles.footer}>
-      <div className={footerStyles.footerContainer}>
-        <div className={footerStyles.wrapper}>
-          <Logo className={footerStyles.footerLogo} />
+    <footer className={styles.footer}>
+      <div className={styles.container}>
+        <div className={styles.wrapper}>
+          <Logo className={styles.footerLogo} />
 
           <FooterNav />
 

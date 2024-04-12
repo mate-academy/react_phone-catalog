@@ -6,7 +6,7 @@
 }
 
 @mixin h1-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 48px;
   font-weight: 800;
   line-height: 56px;
@@ -14,7 +14,7 @@
 }
 
 @mixin h2-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
@@ -22,7 +22,7 @@
 }
 
 @mixin h3-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 22px;
   font-weight: 800;
   line-height: 31px;
@@ -30,7 +30,7 @@
 }
 
 @mixin h4-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 20px;
   font-weight: 700;
   line-height: 26px;
@@ -46,7 +46,7 @@
 }
 
 @mixin buttons-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
@@ -54,7 +54,7 @@
 }
 
 @mixin body-text-desktop-tablet {
-  color: $color-primary;
+  color: $color-white;
   font-size: 14px;
   font-weight: 600;
   line-height: 21px;
@@ -78,10 +78,10 @@
 }
 
 @mixin hover-icons($color){
-  transition: border-color 0.5s ease-in-out;
+  transition: background-color 0.5s ease-in-out;
 
   &:hover {
-    border-color: $color;
+    background-color: $color;
   }
 }
 

@@ -1,36 +1,44 @@
-@import '../../../../styles/utils';
+@import 'Styles/utils';
 
 .header {
   grid-area: header;
   position: sticky;
   top: 0;
-  background-color: $color-white;
 
   @include flex-center;
 
   justify-content: space-between;
 
+  background-color: $color-black;
+  border-bottom: 1px solid $color-elements;
+
   width: 100%;
-  border-bottom: 1px solid $color-icons;
 }
 
 .headerLeft {
   @include flex-center;
 
-  gap: 64px;
+  gap: 24px;
+
+  @media (max-width: 1199px) {
+    gap: 16px;
+  }
+
+  // @media (max-width: 639px) {
+
+  // }
+
 }
 
 .headerLogo {
   width: 128px;
   height: 64px;
-  padding: 0 24px;
 }
 
 .linkActive {
-  color: $color-primary;
+  color: $color-white;
 
-    &::after{
-      // content: '';
-      transform: scale(1) !important;
-    }
+  &::after {
+    transform: scale(1) !important;
+  }
 }

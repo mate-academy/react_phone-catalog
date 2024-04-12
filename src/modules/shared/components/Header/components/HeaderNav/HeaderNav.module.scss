@@ -1,16 +1,25 @@
-@import '../../../../../../styles/utils';
+@import 'Styles/utils';
 
 .navbar {
   @include flex-center;
 
   justify-content: space-between;
-  gap: 64px;
 
   font-size: 12px;
   font-weight: 700;
   line-height: 11px;
   letter-spacing: 0.04em;
   text-align: left;
+
+  gap: 64px;
+
+  @media (max-width: 1199px) {
+    gap: 32px;
+  }
+
+    // @media (max-width: 639px) {
+
+  // }
 }
 
 .navbarLink {
@@ -31,16 +40,16 @@
     bottom: 0;
     height: 3px;
     width: 100%;
-    background-color: $color-primary;
+    background-color: $color-white;
     transform: scale(0);
     transition: transform 0.5s ease-in-out;
   }
 
-  @include hover-text($color-primary);
+  @include hover-text($color-white);
 }
 
   .linkActive {
-    color: $color-primary;
+    color: $color-white;
 
       &::after{
         content: '';

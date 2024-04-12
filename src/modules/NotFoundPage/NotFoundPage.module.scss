@@ -1,8 +1,8 @@
-@import '../../styles/utils';
+@import 'Styles/utils';
 
 .notFoundPage {
   @include flex-center;
-  
+
   flex-direction: column;
   height: 100vh;
 }
