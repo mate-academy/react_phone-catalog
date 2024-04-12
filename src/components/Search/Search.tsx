@@ -3,6 +3,7 @@ import './Search.scss';
 import { useSearchParams } from 'react-router-dom';
 import SearchIcon from '../../images/icons/Search.png';
 import { getSearchWith } from '../../utils/searchHelper';
+import useDebounce from '../../hooks/useDebounce';
 
 type Props = {
   placeholder: string,
@@ -11,11 +12,23 @@ type Props = {
 export const Search: React.FC<Props> = ({ placeholder }) => {
   const [query, setQuery] = useState('');
   const [searchParams, setSearchParams] = useSearchParams();
+  // const [appliedQuery, setAppliedQuery] = useState('');
   // const searchContext = useContext(SearchContext);
+
+  // const applyQuery = useCallback(
+  //   makeDebounce(setAppliedQuery, 1000),
+  //   [],
+  // );
+
+  const debouncedSearch = useDebounce(query, 1000);
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+  };
 
   const getQuery = () => {
     const paramsToUpdate = {
-      query,
+      query: debouncedSearch,
     };
 
     setSearchParams(getSearchWith(searchParams, paramsToUpdate));
@@ -23,7 +36,7 @@ export const Search: React.FC<Props> = ({ placeholder }) => {
 
   useEffect(() => {
     getQuery();
-  }, [query]);
+  }, [debouncedSearch]);
 
   // const getSelectedValue = () => {
   //   if (type === 'items-on-page') {
@@ -45,7 +58,7 @@ export const Search: React.FC<Props> = ({ placeholder }) => {
           placeholder={placeholder}
           className="searchForm__input"
           onChange={
-            (event) => setQuery(event.target.value)
+            handleQueryChange
           }
         />
         <img

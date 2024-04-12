@@ -3,7 +3,9 @@ import classnames from 'classnames';
 import { usePagination, DOTS } from '../../hooks/usePagination';
 import './PaginationSearchParams.scss';
 import ArrowRight from '../../images/icons/arrow_right_small.svg';
+import ArrowRightDisabled from '../../images/icons/Chevron (Arrow Right).png';
 import ArrowLeftDisabled from '../../images/icons/arrow_left_disabled.svg';
+import ArrowLeft from '../../images/icons/arrow_left.svg';
 
 type Props = {
   itemsPerPage: number,
@@ -79,9 +81,9 @@ export const PaginationSearchParams: React.FC<Props> = ({
           />
         ) : (
           <img
-            src={ArrowRight}
+            src={ArrowLeft}
             alt="arrow left"
-            className="pagination__arrow pagination__arrow--left"
+            className="pagination__arrow"
           />
         )}
 
@@ -113,22 +115,22 @@ export const PaginationSearchParams: React.FC<Props> = ({
       })}
       <button
         type="button"
-        className={classnames('pagination__item', {
+        className={classnames('pagination__btn', {
           disabled: currentPage === lastPage,
         })}
         onClick={onNext}
       >
         {disabledRight ? (
           <img
-            src={ArrowLeftDisabled}
+            src={ArrowRightDisabled}
             alt="arrow left"
-            className="pagination__arrow pagination__arrow--left"
+            className="pagination__arrow"
           />
         ) : (
           <img
             src={ArrowRight}
             alt="arrow left"
-            className="pagination__arrow pagination__arrow--right"
+            className="pagination__arrow"
           />
         )}
 

@@ -1,4 +1,5 @@
 import React, {
+  useCallback,
   useEffect,
   useState,
 } from 'react';
@@ -118,21 +119,22 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
   //   setCurrentIndex(newIndex);
   // }, [currentIndex, slides]);
 
-  const nextBtn = () => {
+  const nextBtn = useCallback(() => {
     const isLastSlide = currentIndex === slides.length - 1;
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
 
     setCurrentIndex(newIndex);
-  }
+  }, [currentIndex]);
 
   const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);
   };
 
   useEffect(() => {
-    const timer = setInterval(nextBtn, 2000)
-    return () => clearInterval(timer)
-  }, [nextBtn])
+    const timer = setInterval(nextBtn, 2000);
+
+    return () => clearInterval(timer);
+  }, [nextBtn]);
 
   return (
     <div className="carousel">
@@ -172,7 +174,7 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
         >
           <img
             src={arrowRight}
-            alt="carousel batton img"
+            alt="carousel button img"
             className="carousel__btn__image"
           />
         </button>

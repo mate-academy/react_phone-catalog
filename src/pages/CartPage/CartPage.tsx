@@ -1,111 +1,50 @@
-import './cart.scss';
-import Cros from '../../images/icons/close.png';
-import SmallImg1 from '../../images/productDetails/imageSmall_1.png';
-import SmallImg3 from '../../images/productDetails/imageSmall_3.png';
-import Minus from '../../images/icons/minus.png';
-import Plus from '../../images/icons/plus.png';
+import { useState } from 'react';
+import { CartProductList } from '../../components/CartProductList';
+import './cartPage.scss';
+import { Checkout } from '../../components/Checkout';
+import { BackButton } from '../../components/BackButton';
+import { useAppSelector } from '../../app/hooks';
+import { Modal } from '../../components/Modal/Modal';
 
 export const CartPage = () => {
+  // const { cartProducts } = useContext(CartContext);
+  const [modalActive, setModalActive] = useState(false);
+  const cart = useAppSelector(state => state.cart);
+
   return (
-    <div className="cart">
-      <h1 className="cart__title">Cart</h1>
-      <div className="grid">
-        <div
-          className="cart__productCards
+    <div className="cartPage">
+      <BackButton />
+
+      {cart.cartItems.length === 0 ? (
+        <h1 className="cartPage__title">Your cart is empty</h1>
+      ) : (
+        <>
+          <h1 className="cartPage__title">Cart</h1>
+          <div className="grid">
+            <div className="
+          grid__item
+          grid__item--1-4
           grid__item--desktop-1-16
           grid__item--tablet-1-12"
-        >
-          <div className="cart__productCards__card">
-            <div className="cart__productCards__card__cross">
-              <img
-                src={Cros}
-                alt="product cart"
-                className="cart__productCards__card__crossImg"
-              />
+            >
+              <CartProductList />
             </div>
 
-            <div className="cart__productCards__card__imgContainer">
-              <img
-                src={SmallImg1}
-                alt="product cart"
-                className="cart__productCards__card__img"
-              />
+            <div
+              className="
+            grid__item
+            grid__item--1-4
+            grid__item--desktop-17-24
+            grid__item--tablet-1-12"
+            >
+              <Checkout setActive={setModalActive} />
             </div>
-
-            <p className="cart__productCards__card__name">
-              Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-            </p>
-
-            <div className="cart__productCards__card__btnContainer">
-              <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Minus} alt="product cart" />
-              </div>
-              <p className="cart__productCards__card__btnContainer__number">
-                1
-              </p>
-              <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Plus} alt="product cart" />
-              </div>
-            </div>
-
-            <h2 className="cart__productCards__card__price">
-              $1099
-            </h2>
-
           </div>
-
-          <div className="cart__productCards__card">
-            <div className="cart__productCards__card__cross">
-              <img
-                src={Cros}
-                alt="product cart"
-                className="cart__productCards__card__crossImg"
-              />
-            </div>
-
-            <div className="cart__productCards__card__imgContainer">
-              <img
-                src={SmallImg3}
-                alt="product cart"
-                className="cart__productCards__card__img"
-              />
-            </div>
-
-            <p className="cart__productCards__card__name">
-              Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-            </p>
-
-            <div className="cart__productCards__card__btnContainer">
-              <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Minus} alt="" />
-              </div>
-              <p className="cart__productCards__card__btnContainer__number">
-                1
-              </p>
-              <div className="cart__productCards__card__btnContainer__btn">
-                <img src={Plus} alt="" />
-              </div>
-            </div>
-
-            <h2 className="cart__productCards__card__price">$1099</h2>
-
-          </div>
-        </div>
-
-        <div
-          className="cart__priceContainer
-          grid__item--desktop-17-24
-          grid__item--tablet-1-12"
-        >
-          <h1 className="cart__priceContainer__totalPrice">$3297</h1>
-          <p className="cart__priceContainer__info">Total for 3 items</p>
-
-          <button type="button" className="cart__priceContainer__btn">
-            Checkout
-          </button>
-        </div>
-      </div>
-
+        </>
+      )}
+      <Modal active={modalActive} setActive={setModalActive}>
+        We are sorry, but this feature is not implemented yet
+      </Modal>
     </div>
   );
 };

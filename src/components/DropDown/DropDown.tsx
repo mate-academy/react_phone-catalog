@@ -4,6 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import './DropDown.scss';
 import ArrowDown from '../../images/icons/arrow_down.svg';
 import { getSearchWith } from '../../utils/searchHelper';
+import { useWindowSize } from '../../hooks/useWindowSize';
 
 export type SelectorType = 'sort-by' | 'items-on-page';
 type Props = {
@@ -21,18 +22,12 @@ export const DropDown: React.FC<Props> = ({ type }) => {
   const itemsOnPage = searchParams.get('perPage') || 'All';
   const sort = searchParams.get('sort') || 'All';
 
+  const screenSize = useWindowSize();
+
   const selectOption = (option: string) => {
     if (option !== value) {
       setValue(option);
     }
-
-    // if (type === 'items-on-page') {
-    //   setItemsOnPage(option);
-    // }
-
-    // if (type === 'sort-by') {
-    //   setSortBy(option);
-    // }
   };
 
   const isOptionSelected = (option: string) => {
@@ -54,6 +49,10 @@ export const DropDown: React.FC<Props> = ({ type }) => {
     widthStyle.width = '176px';
   }
 
+  if (screenSize.width >= 320 && screenSize.width <= 639) {
+    widthStyle.width = '136px';
+  }
+
   const dropDownTitle = (type === 'sort-by')
     ? 'Sort by'
     : 'Items on page';
@@ -72,10 +71,7 @@ export const DropDown: React.FC<Props> = ({ type }) => {
     16: '16',
   };
 
-  // const sort = searchParams.get('sort') || '';
-  // const perPage = searchParams.get('perPage');
-
-  const getSelectedValue = () => {
+  useEffect(() => {
     if (type === 'items-on-page') {
       const paramsToUpdate = {
         perPage: value,
@@ -92,69 +88,11 @@ export const DropDown: React.FC<Props> = ({ type }) => {
 
       setSearchParams(getSearchWith(searchParams, paramsToUpdate));
     }
-  };
-
-  useEffect(() => {
-    getSelectedValue();
-  }, [value]);
-
-  // const getSelectedValue = () => {
-  //   if (!sort.length || !perPage.length) {
-  //     setValue('All');
-  //   }
-
-  //   if (type === 'sort-by' && sort.length > 0) {
-  //     const sortOption = Object.entries(sortByList);
-  //     const sortItem = sortOption.filter(item => item[1] === sort)[0][0];
-
-  //     setValue(sortItem);
-  //   }
-
-  //   if (type === 'items-on-page' && perPage.length > 0) {
-  //     const onPageOption = Object.entries(itemsOnPageList);
-  //     const onPageItem = onPageOption.filter(item => item[1] === perPage)[0][0];
-
-  //     setValue(onPageItem);
-  //   }
-  // };
-
-  // const selectorParams = (type === 'sort-by')
-  //   ? sortByList
-  //   : itemsOnPageList;
+  }, [searchParams, setSearchParams, type, value]);
 
   const selectorList = (type === 'sort-by')
     ? Object.keys(sortByList)
     : Object.keys(itemsOnPageList);
-
-  // const getRouteParams = (
-  //   selectorType: string,
-  //   option: string,
-  // ) => {
-  //   const sortByParams = {
-  //     sort: selectorParams[option],
-  //     perPage: searchParams.get('perPage'),
-  //     page: searchParams.get('page'),
-  //   };
-
-  //   const itemsOnPageParams = {
-  //     sort: searchParams.get('sort'),
-  //     perPage: selectorParams[option],
-  //     page: option === 'All' ? null : '1',
-  //   };
-
-  //   return (selectorType === 'sort-by')
-  //     ? sortByParams
-  //     : itemsOnPageParams;
-  // };
-
-  // const handleOptionClick = (option: string) => {
-  //   setValue(option);
-  //   setIsOpen(false);
-  // };
-
-  // useEffect(() => {
-  //   getSelectedValue();
-  // }, []);
 
   return (
     <div className="DropDown">

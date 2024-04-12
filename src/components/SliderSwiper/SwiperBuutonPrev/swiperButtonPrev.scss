@@ -1,0 +1,19 @@
+@import '../../../styles/main.scss';
+
+.swiperButtonPrev {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.5s;
+  border: 1px solid $colorSecondary;
+
+  &--disabled {
+    border: 4px solid #E2E6E9;
+  }
+
+  &:hover {
+    border: 1px solid $colorPrimary;
+  }
+}

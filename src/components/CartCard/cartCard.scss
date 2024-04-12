@@ -1,0 +1,92 @@
+@import '../../styles/main.scss';
+
+.cartProductCard {
+  font-family: Mont, sans-serif;
+    height: 128px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid #E2E6E9;
+    padding: 24px;
+
+    @include phone {
+      height: 160px;
+      padding: 16px;
+      flex-wrap: wrap;
+      gap: 16px;
+      // flex-flow: column;
+    }
+
+    &__cross {
+      margin-right: 34px;
+
+      @include phone {
+        margin-right: 0px;
+      }
+    }
+
+    &__imgContainer {
+      width: 80px;
+      height: 80px;
+      padding: 7px;
+      margin-right: 30px;
+
+      @include phone {
+        margin-right: 0px;
+      }
+    }
+
+    &__img {
+      height: 100%;
+    }
+
+    &__name {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: #313237;
+
+      @include phone {
+        font-weight: 600;
+        width: 130px;
+      }
+    }
+
+    &__btnContainer {
+      width: 96px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: 43px;
+
+      &__btn {
+        width: 32px;
+        height: 32px;
+        border: 1px solid #B4BDC3;
+        padding: 8px;
+
+        &--disabled {
+          width: 32px;
+          height: 32px;
+          border: 1px solid #E2E6E9;
+          padding: 8px;
+        }
+      }
+
+      &__number {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 21px;
+        text-align: center;
+        color: #000000;
+      }
+    }
+
+    &__price {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      color: #0F0F11;
+    }
+}

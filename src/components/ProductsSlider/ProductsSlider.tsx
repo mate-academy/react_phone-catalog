@@ -6,31 +6,30 @@ import ArrowRightDisable from '../../images/icons/Arrow_Right_disabled.svg';
 import ArrowLeftDisabled from '../../images/icons/arrow_left_disabled.svg';
 import ArrowLeft from '../../images/icons/arrow_left.svg';
 import './productsSlider.scss';
-import { Phones } from '../../types/Phones';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Products } from '../../types/Products';
 
 // Third try
 
 type Props = {
-  productsData: Phones[],
+  productsData: Products[],
   title: string,
 };
 
 export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
   const [position, setPosition] = useState(0);
-  const [itemsInSlider, setItemsInSlider] = useState(4);
+  const [itemsInSlider, setItemsInSlider] = useState(1);
   // const [touchPosition, setTouchPosition] = useState<number | null>(null);
 
   const windowWidth = useWindowSize();
 
   const sliderSettings = {
     step: 1,
-    itemWidth: 281,
+    itemWidth: 303,
     itemsOnPage: itemsInSlider,
     animationDuration: 500,
     infinity: false,
   };
-
   const {
     step,
     itemWidth,
@@ -181,7 +180,8 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
         </div>
       </div>
 
-      <div className="productsSlider__body" style={{ maxWidth: `${itemsOnPage * itemWidth}px` }}>
+      <div className="productsSlider__body">
+        {/* style={{ maxWidth: `${itemsOnPage * itemWidth}px` }} */}
         <div
           className="productsSlider__cardContainer"
           style={{
@@ -191,9 +191,8 @@ export const ProductsSlider: React.FC<Props> = ({ productsData, title }) => {
         >
           {productsData.map(product => (
             <ProductCard
-              key={product.id}
+              key={product.itemId}
               productData={product}
-              // priceToken={product.price}
             />
           ))}
         </div>

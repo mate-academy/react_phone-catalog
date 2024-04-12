@@ -1,33 +1,21 @@
 import React from 'react';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Phones } from '../../types/Phones';
+// import { Phones } from '../../types/Phones';
 import './productList.scss';
-import { DropDown } from '../DropDown';
+import { Products } from '../../types/Products';
 
-type Props = {
-  dataPhones: Phones[]
+type ProductListProps = {
+  dataProducts: Products[]
 };
 
-export const ProductList: React.FC<Props> = ({ dataPhones }) => {
-  // const [searchParams] = useSearchParams();
-  // const sort = searchParams.get('sort') || '';
-  // const query = searchParams.get('query') || '';
-
-  // const sortedPhoneList
-  //   = getSortedProducts(dataPhones, sort, query);
-
+export const ProductList: React.FC<ProductListProps> = ({ dataProducts }) => {
   return (
     <div className="productList">
-      <div className="productList__filters">
-        <DropDown type="sort-by" />
-        <DropDown type="items-on-page" />
-      </div>
       <div className="productList__list">
-        {dataPhones.map(phone => (
+        {dataProducts.map(product => (
           <ProductCard
-            key={phone.id}
-            productData={phone}
-            // priceToken={phone.price}
+            key={product.id}
+            productData={product}
           />
         ))}
       </div>

@@ -1,0 +1,167 @@
+@import '../../styles/main.scss';
+
+.burgerMenu {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 70px;
+  left: 0;
+  transform: translateX(-100%);
+  transition: all 0.5s;
+  z-index: 2;
+
+  &--active {
+    transform: translateX(0);
+  }
+
+  &__content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    &__footer {
+      position: absolute;
+      display: flex;
+      bottom: 66px;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      border: 1px solid black;
+    }
+
+    &__footerBtn {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-basis: 50%;
+
+      &--left {
+        border-left: 1px solid black;
+      }
+
+      &--is-active {
+        color: $colorPrimary;
+      }
+
+      // &--is-active::after {
+      //   position: absolute;
+      //   bottom: 0px;
+      //   left: 0;
+      //   right: 0;
+      //   content: "";
+      //   height: 3px;
+      //   background-color: $colorPrimary;
+      //   border-radius: 8px;
+      // }
+    }
+
+    &__footerBtn--is-active::after {
+      position: absolute;
+      bottom: 3px;
+      left: 0;
+      right: 0;
+      content: "";
+      height: 5px;
+      background-color: $colorPrimary;
+      border-radius: 8px;
+    }
+  }
+
+  &__navItem {
+    margin-bottom: 24px;
+  }
+
+  &__navLink {
+    position: relative;
+    // display: flex;
+    width: fit-content;
+    // height: 20px;
+    text-decoration: none;
+    color: $colorSecondary;
+    // align-items: center;
+    @extend %uppercase-text;
+    white-space: nowrap;
+
+    &:hover {
+      color: $colorPrimary;
+    }
+  }
+
+  &__navLink.is-active:after {
+    position: absolute;
+    top: 15px;
+    left: 0;
+    right: 0;
+    content: "";
+    height: 3px;
+    background-color: $colorPrimary;
+    border-radius: 8px;
+  }
+
+  &__footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 64px;
+    border: 1px solid black;
+  }
+}
+
+.burgerMenuButton {
+  width: 48px;
+  height: 55px;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #E2E6E9;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 22px;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+  }
+
+  &__span {
+    content: '';
+    position: absolute;
+    top: 30px;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 15px;
+    width: 20px;
+    background-color: black;
+    height: 2px;
+  }
+
+  &--cross {
+    width: 48px;
+    height: 55px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid #E2E6E9;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;;
+  }
+}

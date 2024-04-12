@@ -7,6 +7,10 @@
   align-items: center;
   gap: 8px;
 
+  @include phone {
+    margin-bottom: 24px;
+  }
+
   &__container {
     display: flex;
     align-items: center;

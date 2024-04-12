@@ -2,44 +2,51 @@
 
 .card {
   box-sizing: border-box;
-  // width: 272px;
-  // height: 507px;
-  padding: 32px 24px 24px 24px;
+  padding: 32px;
   border: 1px solid #E2E6E9;
   font-family: Mont, sans-serif;
   background-color: #fff;
-  // margin-right: 16px;
   display: flex;
   flex-direction: column;
-  flex-basis: 272px;
+  // justify-content: center;
+  // align-items: center;
+  // flex-basis: 272px;
   flex-grow: 0;
   flex-shrink: 0;
+
+  // @include tablet {
+  //   flex-basis: 288px;
+  // }
+
+  // @include phone {
+  //   flex-basis: 288px;
+  // }
 
   &:last-of-type {
     margin-right: 0;
   }
 
   &__imageContainer {
-    // width: 208px;
-    height: 208px;
-    position: relative;
-    // box-sizing: border-box;
-    margin-bottom: 24px;
-    // width: 100%;
-    // max-height: 208px;
-    // overflow: hidden;
+    box-sizing: border-box;
     padding: 0 8px;
     max-width: fit-content;
     align-self: center;
+    height: 196px;
+    margin: 0 auto;
+    margin-bottom: 24px;
+
+    @include phone {
+      height: 130px;
+    }
   }
 
   &__image {
-    // position: absolute;
-    // width: 100%;
-    // height: 100%;
+    // max-height: 208px;
+    width: 100%;
+    height: 100%;
+
     // object-fit: cover;
     // object-position: center;
-    max-height: 208px;
   }
 
   &__item {
@@ -119,6 +126,10 @@
   &__shopContainer {
     display: flex;
     justify-content: space-between;
+
+    @include desktop {
+      gap: 8px;
+    }
   }
 
   &__btn {

@@ -8,6 +8,14 @@
   margin-bottom: 80px;
   transition: all 0.5s;
 
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include phone {
+    margin-bottom: 56px;
+  }
+
   // &:hover .categorys__img {
   //   background-repeat: 20px;
   // }
@@ -82,6 +90,9 @@
         background-color: #D53C51;
       }
 
+      @include phone {
+        height: 288px;
+      }
 
       @include tablet {
         height: 230px;

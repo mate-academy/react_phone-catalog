@@ -1,0 +1,45 @@
+@import '../../styles/main.scss';
+
+.loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    border-radius: 50%;
+    width: 2em;
+    height: 2em;
+    margin: 1em auto;
+    border: 0.2em solid #ddd;
+    border-left-color: $colorSecondary;
+    animation: load8 1.2s infinite linear;
+    position: fixed;
+    top: 50vh;
+    left: 50wh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__logo {
+    position: relative;
+    display: block;
+    height: 18px;
+    width: 18px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

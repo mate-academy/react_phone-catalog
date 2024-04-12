@@ -1,0 +1,17 @@
+@import '../../styles/main.scss';
+
+.backButton{
+  font-family: Mont, sans-serif;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    letter-spacing: 0em;
+    color: $colorSecondary;
+  }
+}

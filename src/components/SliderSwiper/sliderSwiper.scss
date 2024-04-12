@@ -1,0 +1,46 @@
+@import '../../styles/main.scss';
+
+.sliderSwiper {
+  font-family: Mont, sans-serif;
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 80px;
+  
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include phone {
+    margin-bottom: 56px;
+  }
+
+  &__titleContainer {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h1-text;
+    color: $colorPrimary;
+  }
+
+  // &__btnContainer {
+  //   display: flex;
+  //   gap: 16px;
+  // }
+
+  &__btn {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.5s;
+    border: 1px solid $colorSecondary;
+
+    &:hover {
+      border: 1px solid $colorPrimary;
+    }
+  }
+}

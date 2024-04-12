@@ -1,0 +1,24 @@
+@import '../../styles/main.scss';
+
+.NoSearchResults {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    @extend %h1-text;
+  }
+
+  &__imgContainer {
+    // width: 600px;
+    height: 500px;
+    max-width: fit-content;
+    align-self: center;
+    position: relative;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+}

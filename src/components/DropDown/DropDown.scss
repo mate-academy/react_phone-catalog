@@ -20,6 +20,10 @@
     outline: none;
     transition: all 0.5s;
 
+    // @include phone {
+    //   width: 156px;
+    // }
+
     &:focus {
       border: 1px solid $colorPrimary;
     }

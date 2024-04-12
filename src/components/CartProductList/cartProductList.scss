@@ -1,0 +1,12 @@
+@import '../../styles/main.scss';
+
+.cartProductList {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 80px;
+
+  @include tablet {
+    margin-bottom: 32px;
+  }
+}

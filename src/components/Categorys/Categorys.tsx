@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import CategorysImg1 from '../../images/category/category-phones.png';
 import CategorysImg2 from '../../images/category/category-tablets.png';
 import CategorysImg3 from '../../images/category/category-accessories.png';
-import { Phones } from '../../types/Phones';
+import { Products } from '../../types/Products';
 
 type Props = {
-  productsData: Phones[],
+  productsData: Products[],
 };
 
 export const Categorys: React.FC<Props> = ({ productsData }) => {
@@ -30,7 +30,8 @@ export const Categorys: React.FC<Props> = ({ productsData }) => {
         <div
           className="categorys__content
         grid__item
-        grid__item--tablet-1-2
+        grid__item--1-4
+        grid__item--tablet-1-4
         grid__item--desktop-1-8"
         >
           <Link to="/phones">
@@ -47,7 +48,9 @@ export const Categorys: React.FC<Props> = ({ productsData }) => {
 
         <div
           className="categorys__content
-          grid__item--tablet-3-4
+          grid__item
+          grid__item--1-4
+          grid__item--tablet-5-8
           grid__item--desktop-9-16"
         >
           <Link to="/tablets">
@@ -65,7 +68,9 @@ export const Categorys: React.FC<Props> = ({ productsData }) => {
 
         <div
           className="categorys__content
-          grid__item--tablet-5-6
+          grid__item
+          grid__item--1-4
+          grid__item--tablet-9-12
           grid__item--desktop-17-24"
         >
           <Link to="/accessories">

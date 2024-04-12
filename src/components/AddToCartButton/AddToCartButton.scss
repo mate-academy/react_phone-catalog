@@ -1,0 +1,55 @@
+@import '../../styles/main.scss';
+
+.addToCartButton {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  // padding: 10px 48px 10px 48px;
+  height: 40px;
+  width: 160px;
+  background-color: $colorPrimary;
+  @extend %buttons-text;
+  text-align: center;
+  color: #FFFFFF;
+  transition: all 0.5s;
+
+  @include tablet {
+    width: 176px;
+  }
+
+  @include phone {
+    width: 176px;
+  }
+
+  &--productDetailsPage {
+    width: 230px;
+    height: 48px;
+
+    @include tablet {
+      width: 180px;
+      height: 48px;
+    }
+
+    @include desktop {
+      width: 263px;
+      height: 48px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 3px 13px rgba(23, 32, 49, 0.26)
+  }
+
+  // &:active {
+  //   border: 1px solid #E2E6E9;
+  //   color: #27AE60;
+  //   background-color: #fff;
+  // }
+
+  &__inCart {
+    border: 1px solid #E2E6E9;
+    color: #27AE60;
+    background-color: #fff;
+  }
+}

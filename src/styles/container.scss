@@ -1,5 +1,14 @@
 .container {
-  margin: 25px auto;
-  max-width: 1136px;
-  padding: 0 10px;
+  margin: 0 auto;
+  max-width: 1199px;
+  padding: 0 16px;
+  overflow: hidden;
+
+  @include tablet {
+    padding: 0 24px;
+  }
+
+  @include desktop {
+    padding: 0 32px;
+  }
 }

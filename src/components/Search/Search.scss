@@ -1,13 +1,7 @@
 @import '../../styles/main.scss';
-// .search {
-//   background: #FFFFFF;
-//   border: 1px solid black;
-//   box-shadow: -1px 0px 0px #E2E6E9;
-//   width: 327px;
-
-// }
 
 .searchForm {
+  font-family: Mont, sans-serif;
   background: #FFFFFF;
   display: flex;
   justify-content: center;
@@ -16,8 +10,12 @@
   height: 100%;
   width: 327px;
 
-  @include desktop {
-    // border: 1px solid red;
+  @include tablet {
+    width: 150px;
+  }
+
+  @include phone {
+    display: none;
   }
 
   &__label {
@@ -31,6 +29,14 @@
       height: 16px;
       top: 25px;
       right: 26px;
+
+      @include tablet {
+        display: none;
+      }
+    }
+
+    &:focus .img {
+      display: none;
     }
   }
 
@@ -40,10 +46,30 @@
     padding-left: 24px;
     // border: 1px solid #e1e7ed;
     // border-radius: 4px;
-    @extend %placeholder-text;
-    color: #B4BDC4;
-
     outline: none;
+
+    font-family: 'Mont', arial, helvetica, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 18px;
+    letter-spacing: 0;
+    color: $colorPrimary;
+
+    &::placeholder {
+      @extend %placeholder-text;
+      color: #B4BDC4;
+
+      @include tablet {
+        font-weight: 400;
+        font-size: 10px;
+        line-height: 12px;
+        padding-left: 2px;
+      }
+    }
+
+    &:focus::placeholder {
+      opacity: 2;
+    }
 
     &:hover {
       box-shadow: 0 3px 8px rgba(61, 78, 97, 0.2);
@@ -53,6 +79,26 @@
       background: linear-gradient(180deg, #fff 0%, #f6f6f7 100%);
       border: 1px solid #e1e7ed;
       border-radius: 3px;
+    }
+  }
+
+  .searchForm__input:focus+.searchForm__label__img {
+    display: none;
+  }
+
+}
+
+@media screen and (min-width: 640px) and (max-width: 720px) {
+  .searchForm {
+    width: 80px;
+  }
+
+  .searchForm__input {
+    &::placeholder {
+      font-weight: 200;
+      font-size: 5px;
+      line-height: 5px;
+      padding-left: 0px;
     }
   }
 }

@@ -10,7 +10,9 @@ type Props = {
 };
 
 export const ItemsOnPage: React.FC<Props> = ({
-  setItemsPerPage, dataLength }) => {
+  setItemsPerPage,
+  dataLength,
+}) => {
   const options = [
     { value: dataLength, label: 'All' },
     { value: 4, label: '4' },

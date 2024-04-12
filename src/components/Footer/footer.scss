@@ -1,23 +1,51 @@
 @import '../../styles/main.scss';
 
 .footer {
-  // display: flex;
-  // justify-content: space-between;
   font-family: Mont, sans-serif;
   align-items: center;
-  padding: 0 0 0 25px;
   border: 1px solid #E2E6E9;
   height: 96px;
+
+  @include phone {
+    height: 257px;
+    padding-top: 32px;
+    padding-bottom: 32px;
+  }
+
+  &--empty {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+  }
 
   &__container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 96px;
+    height: 100%;
+    margin: 0 auto;
+    max-width: 1199px;
+    padding: 0 16px;
+
+    @include tablet {
+      padding: 0 24px;
+    }
+  
+    @include desktop {
+      padding: 0 32px;
+    }
+
+    @include phone {
+      flex-direction: column;
+      align-items: flex-start;
+      justify-content: flex-start;
+      gap: 30px;
+    }
   }
 
   &__nav-block {
-    display: flex;
+    // display: flex;
   }
 
   &__nav {
@@ -29,12 +57,21 @@
       margin: 0;
       padding: 0;
 
+      @include phone {
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 16px;
+      }
     }
 
     &__item {
       margin-left: 64px;
 
       &:first-child {
+        margin-left: 0;
+      }
+
+      @include phone {
         margin-left: 0;
       }
     }
@@ -56,32 +93,38 @@
     }
   }
 
-  &__btnContainer {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    &__text {
-      @extend %small-text;
-      text-align: right;
-      color: $colorSecondary;
-    }
-
-    &__imgContainer {
-      box-sizing: border-box;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: 1px solid #B4BDC4;
-      transform: rotate(-90deg);
-      transition: all 0.5s;
-      cursor: pointer;
-
-      &:hover {
-        border: 1px solid $colorPrimary;
-      }
+  &__backToTopButton {
+    @include phone {
+      align-self: center;
     }
   }
+
+  // &__btnContainer {
+  //   display: flex;
+  //   align-items: center;
+  //   gap: 16px;
+
+  //   &__text {
+  //     @extend %small-text;
+  //     text-align: right;
+  //     color: $colorSecondary;
+  //   }
+
+  //   &__imgContainer {
+  //     box-sizing: border-box;
+  //     display: flex;
+  //     align-items: center;
+  //     justify-content: center;
+  //     width: 32px;
+  //     height: 32px;
+  //     border: 1px solid #B4BDC4;
+  //     transform: rotate(-90deg);
+  //     transition: all 0.5s;
+  //     cursor: pointer;
+
+  //     &:hover {
+  //       border: 1px solid $colorPrimary;
+  //     }
+  //   }
+  // }
 }

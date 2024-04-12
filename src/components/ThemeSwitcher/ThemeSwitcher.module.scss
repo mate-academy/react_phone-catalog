@@ -1,0 +1,81 @@
+.slider {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+  overflow: hidden;
+  background-color: #e74a42;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 1.4s;
+
+  &:before,
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 5px;
+    left: 5px;
+    width: 40px;
+    height: 40px;
+    background-color: #ffffff;
+    border-radius: 30px;
+  }
+
+  &:before {
+    transition: 0.4s;
+  }
+
+  &:after {
+    transition: 0.5s;
+  }
+}
+
+.wave {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 120px;
+  height: 50px;
+  border-radius: 40px;
+  transition: all 1.4s;
+
+  &:after {
+    content: "";
+    position: absolute;
+    top: 3px;
+    left: 20%;
+    width: 60px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 100%;
+    opacity: 0.4;
+  }
+
+  &:before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    left: 30%;
+    width: 35px;
+    height: 2px;
+    background: #ffffff;
+    border-radius: 100%;
+    opacity: 0.3;
+  }
+}
+
+input:checked+.slider {
+  background-color: transparent;
+
+  &:before,
+  &:after {
+    transform: translateX(70px);
+  }
+}
+
+input:checked~.wave {
+  display: block;
+  background-color: #3398d9;
+}

@@ -1,20 +1,24 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './productCard.scss';
 import { Link } from 'react-router-dom';
-import { Phones } from '../../types/Phones';
+// import { Phones } from '../../types/Phones';
 import { FavoriteButton } from '../FavoriteButton';
+import { AddToCartButton } from '../AddToCartButton/AddToCartButton';
+import { Products } from '../../types/Products';
+import { CategoryContext }
+  from '../ContextProviders/ContextProviders';
 
-type PhoneData = {
-  productData: Phones,
+type ProductData = {
+  productData: Products,
   // priceToken: number,
 };
 
-export const ProductCard: React.FC<PhoneData> = ({
+export const ProductCard: React.FC<ProductData> = ({
   productData,
   // priceToken,
 }) => {
   const {
-    phoneId,
+    itemId,
     name,
     fullPrice,
     price,
@@ -22,14 +26,20 @@ export const ProductCard: React.FC<PhoneData> = ({
     capacity,
     ram,
     image,
+    category,
   } = productData;
+
+  const { setCategoryType } = useContext(CategoryContext);
 
   return (
     <>
       <div className="card">
-        <Link to={`${phoneId}`}>
+        <Link
+          to={`${itemId}`}
+          onClick={() => setCategoryType(category)}
+        >
           <div className="card__imageContainer">
-            <img src={`_new/${image}`} alt="card" className="card__image" />
+            <img src={`${image}`} alt="card" className="card__image" />
           </div>
           <h2 className="card__item">{name}</h2>
 
@@ -63,7 +73,8 @@ export const ProductCard: React.FC<PhoneData> = ({
           </div>
         </Link>
         <div className="card__shopContainer">
-          <button type="button" className="card__btn">Add to cart</button>
+          {/* <button type="button" className="card__btn">Add to cart</button> */}
+          <AddToCartButton cardData={productData} />
 
           {/* <div className="card__favoritesBtn">
           <img
@@ -73,19 +84,6 @@ export const ProductCard: React.FC<PhoneData> = ({
           />
         </div> */}
           <FavoriteButton
-            // id={id}
-            // category={category}
-            // phoneId={phoneId}
-            // itemId={itemId}
-            // name={name}
-            // fullPrice={fullPrice}
-            // price={price}
-            // screen={screen}
-            // capacity={capacity}
-            // color={color}
-            // ram={ram}
-            // year={year}
-            // image={image}
             cardData={productData}
           />
         </div>

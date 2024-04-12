@@ -8,7 +8,7 @@
   @include tablet {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-    column-gap: 12px;
+    column-gap: 16px;
   }
     
   @include desktop {
@@ -18,8 +18,8 @@
   }
 
   &__item {
-    @for $start from 1 through 2 {
-      @for $end from $start through 2 {
+    @for $start from 1 through 4 {
+      @for $end from $start through 4 {
         &--#{$start}-#{$end} {
           grid-column: #{$start} / #{$end + 1};
         }

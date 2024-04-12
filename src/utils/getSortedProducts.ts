@@ -1,7 +1,8 @@
-import { Phones } from '../types/Phones';
+// import { Phones } from '../types/Phones';
+import { Products } from '../types/Products';
 
 export const getSortedProducts = (
-  productData: Phones[],
+  productData: Products[],
   sort: string,
   query?: string,
 ) => {
