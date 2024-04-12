@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import {useContext, useEffect, useState} from 'react';
+import {useSearchParams} from 'react-router-dom';
 
-import { Products } from '../../../type/Productes';
-import { Card } from '../Card';
-import { Loader } from '../../Loader';
-import { SortProduct } from '../../../type/type';
-import { Pagination } from '../Pagination';
-import { NoResults } from '../../NoResults';
-import { ProductContext } from '../../../context/ProductContext';
+import {Products} from '../../../type/Productes';
+import {Card} from '../Card';
+import {Loader} from '../../Loader';
+import {SortProduct} from '../../../type/type';
+import {Pagination} from '../Pagination';
+import {NoResults} from '../../NoResults';
+import {ProductContext} from '../../../context/ProductContext';
 
 import style from './ProductsList.module.scss';
 
@@ -29,7 +29,7 @@ export const ProductsList: React.FC<Props> = ({
   const [itemsOnPage, setItemsOnPage] = useState<string>(itemsPage || '16');
   const [sortBy, setSortBy] = useState(search || SortProduct.None);
   const [page, setPage] = useState(Number(params.get('page')) || 1);
-  const { product, setVisibleProduct } = useContext(ProductContext);
+  const {product, setVisibleProduct} = useContext(ProductContext);
 
   const handleItemsPerPageChange = (
     event: React.ChangeEvent<HTMLSelectElement>,

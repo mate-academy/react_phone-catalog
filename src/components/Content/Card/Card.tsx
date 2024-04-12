@@ -1,10 +1,9 @@
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { ProductContext } from '../../../context/ProductContext';
-import { Products } from '../../../type/Productes';
-
-import { hasProdPriceList } from '../../../utils';
+import {useContext} from 'react';
+import {Link} from 'react-router-dom';
+import {FaRegHeart, FaHeart} from 'react-icons/fa';
+import classNames from 'classnames';
+import {ProductContext} from '../../../context/ProductContext';
+import {Products} from '../../../type/Productes';
 
 import styles from './Card.module.scss';
 
@@ -12,12 +11,32 @@ type Props = {
   produkt: Products;
 };
 
-export const Card: React.FC<Props> = ({ produkt }) => {
-  const { priceList, setSelectIdCart, favourites, setSelectIdFavorit } =
+export const Card: React.FC<Props> = ({produkt}) => {
+  const {priceList, setSelectIdCart, favourites, setProductExists} =
     useContext(ProductContext);
 
-  const hasElement = () => {
-    return favourites.find(item => item.id === produkt.id) !== undefined;
+  const hasElementFavorit = () => {
+    return favourites?.some(item => item?.id === produkt?.id) ?? false;
+  };
+
+  const hasElementCart = () => {
+    return priceList?.some(item => +item?.id === +produkt?.id) ?? false;
+  };
+
+  const handleSelectIdFavorit = (id: number) => {
+    if (hasElementFavorit()) {
+      return setProductExists({hasProdPriceList: true, id});
+    }
+
+    return setProductExists({hasProdPriceList: false, id});
+  };
+
+  const handleClickCart = (productId: string | number) => {
+    if (hasElementCart()) {
+      return setSelectIdCart({hasProdPriceList: true, id: productId});
+    }
+
+    return setSelectIdCart({hasProdPriceList: false, id: productId});
   };
 
   return (
@@ -57,20 +76,20 @@ export const Card: React.FC<Props> = ({ produkt }) => {
         <div className={styles.card__control}>
           <button
             type="button"
-            onClick={() => setSelectIdCart(+produkt.id)}
-            className={styles.card__button}
+            onClick={() => handleClickCart(produkt.id)}
+            className={classNames(styles.card__button, {
+              [styles.card__button_active]: hasElementCart(),
+            })}
           >
-            {!hasProdPriceList(+produkt.id, priceList)
-              ? 'Add to cart'
-              : 'Added'}
+            {!hasElementCart() ? 'Add to cart' : 'Added'}
           </button>
           <button
             type="button"
             className={styles.card__favorit}
-            onClick={() => setSelectIdFavorit(+produkt.id)}
+            onClick={() => handleSelectIdFavorit(+produkt.id)}
           >
-            {(!hasElement() && <FaRegHeart />) || (
-              <FaHeart style={{ color: 'red' }} />
+            {(!hasElementFavorit() && <FaRegHeart />) || (
+              <FaHeart style={{color: 'red'}} />
             )}
           </button>
         </div>

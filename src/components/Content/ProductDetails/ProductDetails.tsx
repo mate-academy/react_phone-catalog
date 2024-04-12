@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import { IoIosArrowBack } from 'react-icons/io';
-import { Link } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {IoIosArrowBack} from 'react-icons/io';
+import {Link} from 'react-router-dom';
 
-import { Details } from '../../../type/Details';
-import { DetailsSlideFoto } from '../DetailsSlideFoto';
-import { TechSpecs } from './TechSpecs';
-import { About } from './About';
-import { Options } from './Options';
-import { getProducts } from '../../../api';
-import { Products } from '../../../type/Productes';
-import { ProductsSlider } from '../ProductsSlider';
+import {Details} from '../../../type/Details';
+import {DetailsSlideFoto} from '../DetailsSlideFoto';
+import {TechSpecs} from './TechSpecs';
+import {About} from './About';
+import {Options} from './Options';
+import {getProducts} from '../../../api';
+import {Products} from '../../../type/Productes';
+import {ProductsSlider} from '../ProductsSlider';
 
 import style from './ProductDetails.module.scss';
 
@@ -18,7 +18,7 @@ type Props = {
   details: Details | undefined;
 };
 
-export const ProductDetails: React.FC<Props> = ({ backUrl, details }) => {
+export const ProductDetails: React.FC<Props> = ({backUrl, details}) => {
   const [selectColor, setSelectColor] = useState<string | null>(null);
   const [selectCapacity, setSelectCapacity] = useState<string | null>(null);
   const [produktsNewIndex, setProduktsNewIndex] = useState<number[]>([0, 4]);

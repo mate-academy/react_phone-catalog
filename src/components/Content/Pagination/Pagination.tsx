@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
 import style from './Pagination.module.scss';
 
@@ -25,7 +25,7 @@ export const Pagination: React.FC<Props> = ({
     const start = Math.max(1, page - range);
     const end = Math.min(maxPage, page + range);
 
-    return Array.from({ length: end - start + 1 }, (_, i) => start + i);
+    return Array.from({length: end - start + 1}, (_, i) => start + i);
   };
 
   const pages = () => {

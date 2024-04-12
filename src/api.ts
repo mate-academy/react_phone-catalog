@@ -1,7 +1,8 @@
-import { Details } from './type/Details';
-import { Products } from './type/Productes';
+import {Details} from './type/Details';
+import {Products} from './type/Productes';
 
-const API_URL = '/react_phone-catalog/api';
+// const API_URL = '/react_phone-catalog/api';
+const API_URL = '/api';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));

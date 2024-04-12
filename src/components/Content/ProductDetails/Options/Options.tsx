@@ -1,11 +1,9 @@
 import classNames from 'classnames';
-import { FaRegHeart, FaHeart } from 'react-icons/fa';
-import { useContext, useEffect, useState } from 'react';
-import { Details } from '../../../../type/Details';
-import { getProducts } from '../../../../api';
-import { Products } from '../../../../type/Productes';
-import { ProductContext } from '../../../../context/ProductContext';
-import { hasProdPriceList } from '../../../../utils';
+import {FaRegHeart, FaHeart} from 'react-icons/fa';
+import {useContext, useEffect, useState} from 'react';
+import {useLocation} from 'react-router-dom';
+import {Details} from '../../../../type/Details';
+import {ProductContext} from '../../../../context/ProductContext';
 import style from './Options.module.scss';
 
 type Props = {
@@ -23,22 +21,61 @@ export const Options: React.FC<Props> = ({
   selectCapacity,
   setSelectCapacity,
 }) => {
+  const {product} = useContext(ProductContext);
   const [id, setId] = useState<string | number>('');
-  const { priceList, favourites, setSelectIdFavorit, setSelectIdCart } =
+  const {priceList, favourites, setProductExists, setSelectIdCart} =
     useContext(ProductContext);
 
-  useEffect(() => {
-    getProducts().then((data: Products[]) => {
-      const product = data.find(d => d.itemId === details.id);
+  const location = useLocation();
+  const {pathname} = location;
 
-      if (product) {
-        setId(product.id);
-      }
-    });
+  useEffect(() => {
+    const hasProduct = product.find(d => d.itemId === details.id);
+
+    if (hasProduct) {
+      setId(hasProduct.id);
+    }
   }, [details.id]);
 
-  const hasElement = () => {
-    return favourites.find(item => item.id === id) !== undefined;
+  const hasElementFavorit = () => {
+    return favourites?.some(item => item?.id === id) ?? false;
+  };
+
+  const hasElementCart = () => {
+    return priceList?.some(item => +item?.id === +id) ?? false;
+  };
+
+  const handleSelectColor = (color: string) => {
+    const pathColor = pathname.replace(selectColor || '', color);
+
+    setSelectColor(color);
+    window.location.replace(`#${pathColor}`);
+  };
+
+  const handleSelectCapacity = (capacity: string) => {
+    const pathCapacity = pathname.replace(
+      selectCapacity?.toLowerCase() || '',
+      capacity,
+    );
+
+    setSelectCapacity(capacity);
+    window.location.replace(`#${pathCapacity}`);
+  };
+
+  const handleClickFavorit = (productId: string | number) => {
+    if (hasElementFavorit()) {
+      return setProductExists({hasProdPriceList: true, id: productId});
+    }
+
+    return setProductExists({hasProdPriceList: false, id: productId});
+  };
+
+  const handleClickCart = (productId: string | number) => {
+    if (hasElementCart()) {
+      return setSelectIdCart({hasProdPriceList: true, id: productId});
+    }
+
+    return setSelectIdCart({hasProdPriceList: false, id: productId});
   };
 
   return (
@@ -52,14 +89,14 @@ export const Options: React.FC<Props> = ({
           <button
             type="button"
             aria-label="color"
-            onClick={() => setSelectColor(color)}
-            key={color}
+            onClick={() => handleSelectColor(color)}
+            key={id}
             className={classNames(style.options__colorDiv, {
               [style.options__color_actice]: color === selectColor,
             })}
           >
             <div
-              style={{ backgroundColor: color }}
+              style={{backgroundColor: color}}
               className={style.options__itemColor}
             />
           </button>
@@ -73,7 +110,7 @@ export const Options: React.FC<Props> = ({
             <button
               type="button"
               aria-label="capacity"
-              onClick={() => setSelectCapacity(capacity)}
+              onClick={() => handleSelectCapacity(capacity)}
               key={capacity}
               className={classNames(style.options__capacity_div, {
                 [style.options__capacity_actice]: capacity === selectCapacity,
@@ -97,27 +134,21 @@ export const Options: React.FC<Props> = ({
       <div className={style.options__button}>
         <button
           type="button"
-          onClick={() => setSelectIdCart(+id)}
-          className={style.options__button_by}
+          onClick={() => handleClickCart(id)}
+          className={classNames(style.options__button_by, {
+            [style.options__button_byActive]: hasElementCart(),
+          })}
         >
-          {!hasProdPriceList(+id, priceList) ? 'Add to cart' : 'Added'}
+          {!hasElementCart() ? 'Add to cart' : 'Added'}
         </button>
         <button
           type="button"
           aria-label="like"
           className={style.options__button_like}
-          onClick={() => {
-            if (hasElement()) {
-              setSelectIdFavorit(-1);
-
-              return;
-            }
-
-            setSelectIdFavorit(+id);
-          }}
+          onClick={() => handleClickFavorit(id)}
         >
-          {(!hasElement() && <FaRegHeart />) || (
-            <FaHeart style={{ color: 'red' }} />
+          {(!hasElementFavorit() && <FaRegHeart />) || (
+            <FaHeart style={{color: 'red'}} />
           )}
         </button>
       </div>

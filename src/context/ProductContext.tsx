@@ -1,16 +1,21 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, {useEffect, useMemo, useState} from 'react';
 
-import { Products } from '../type/Productes';
-import { getProducts } from '../api';
-import { PriceList } from '../type/PriceList';
-import { useLocaleStorage } from '../hooks/useLocalStorage';
+import {Products} from '../type/Productes';
+import {getProducts} from '../api';
+import {PriceList} from '../type/PriceList';
+import {useLocaleStorage} from '../hooks/useLocalStorage';
+
+type productExistsState = {
+  hasProdPriceList: boolean;
+  id: string | number;
+} | null;
 
 const defaultContextValues = {
   favourites: [],
   setFavourites: () => {},
-  selectIdFavorit: -1,
-  setSelectIdFavorit: () => {},
-  selectIdCart: -1,
+  productExists: null,
+  setProductExists: () => {},
+  selectIdCart: null,
   setSelectIdCart: () => {},
   priceList: [],
   setPriceList: () => {},
@@ -23,10 +28,13 @@ const defaultContextValues = {
 export const ProductContext = React.createContext<{
   favourites: Products[];
   setFavourites: (v: Products[]) => void;
-  selectIdFavorit: number;
-  setSelectIdFavorit: React.Dispatch<React.SetStateAction<number>>;
-  selectIdCart: number;
-  setSelectIdCart: React.Dispatch<React.SetStateAction<number>>;
+  productExists: {
+    hasProdPriceList: boolean;
+    id: string | number;
+  } | null;
+  setProductExists: React.Dispatch<React.SetStateAction<productExistsState>>;
+  selectIdCart: productExistsState;
+  setSelectIdCart: React.Dispatch<React.SetStateAction<productExistsState>>;
   priceList: PriceList[];
   setPriceList: (v: PriceList[]) => void;
   visibleProduct: Products[];
@@ -39,17 +47,17 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const ProductProvider: React.FC<Props> = ({ children }) => {
+export const ProductProvider: React.FC<Props> = ({children}) => {
   const [favourites, setFavourites] = useLocaleStorage<Products[]>(
     'favourites',
     [],
   );
-  const [selectIdFavorit, setSelectIdFavorit] = useState<number>(-1);
+  const [productExists, setProductExists] = useState<productExistsState>(null);
   const [priceList, setPriceList] = useLocaleStorage<PriceList[]>(
     'priceList',
     [],
   );
-  const [selectIdCart, setSelectIdCart] = useState<number>(-1);
+  const [selectIdCart, setSelectIdCart] = useState<productExistsState>(null);
   const [product, setProduct] = useState<Products[]>([]);
   const [visibleProduct, setVisibleProduct] = useLocaleStorage<Products[]>(
     'visibleProduct',
@@ -58,27 +66,31 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     getProducts().then((data: Products[]) => {
-      const hasElement = () => {
-        return (
-          favourites.find(item => item.id === selectIdFavorit) !== undefined
-        );
-      };
+      const newProduct = data.find(d => d.id === productExists?.id);
 
-      const newProduct = data.find(d => d.id === selectIdFavorit);
+      if (!newProduct) {
+        return;
+      }
 
-      if (newProduct && !hasElement()) {
+      if (!productExists?.hasProdPriceList) {
         setFavourites([...favourites, newProduct]);
+      }
+
+      if (productExists?.hasProdPriceList) {
+        setFavourites(favourites.filter(p => p.id !== productExists?.id));
+      }
+    });
+  }, [productExists]);
+
+  useEffect(() => {
+    getProducts().then((data: Products[]) => {
+      if (selectIdCart?.hasProdPriceList) {
+        setPriceList(priceList.filter(p => +p.id !== +selectIdCart?.id));
 
         return;
       }
 
-      setFavourites(favourites.filter(p => p.id !== selectIdFavorit));
-    });
-  }, [selectIdFavorit, setSelectIdFavorit]);
-
-  useEffect(() => {
-    getProducts().then((data: Products[]) => {
-      const newProduct = data.find(d => d.id === selectIdCart);
+      const newProduct = data.find(d => d.id === selectIdCart?.id);
 
       if (newProduct) {
         const newPriceListItem: PriceList = {
@@ -99,8 +111,8 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     return {
       favourites,
       setFavourites,
-      selectIdFavorit,
-      setSelectIdFavorit,
+      productExists,
+      setProductExists,
       selectIdCart,
       setSelectIdCart,
       priceList,
@@ -113,8 +125,8 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   }, [
     favourites,
     setFavourites,
-    selectIdFavorit,
-    setSelectIdFavorit,
+    productExists,
+    setProductExists,
     selectIdCart,
     setSelectIdCart,
     priceList,

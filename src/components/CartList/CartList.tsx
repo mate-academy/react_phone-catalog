@@ -1,13 +1,13 @@
-import { FaX } from 'react-icons/fa6';
-import { useContext } from 'react';
+import {FaX} from 'react-icons/fa6';
+import {useContext} from 'react';
 
-import { ProductContext } from '../../context/ProductContext';
+import {ProductContext} from '../../context/ProductContext';
 
 import style from './CartList.module.scss';
-import { PriceList } from '../../type/PriceList';
+import {PriceList} from '../../type/PriceList';
 
 export const CartList: React.FC = () => {
-  const { priceList, setPriceList } = useContext(ProductContext);
+  const {priceList, setPriceList} = useContext(ProductContext);
 
   const price = () =>
     priceList.reduce(
@@ -21,7 +21,7 @@ export const CartList: React.FC = () => {
         return product;
       }
 
-      return { ...product, number: product.number + 1 };
+      return {...product, number: product.number + 1};
     });
 
     setPriceList(newPrice);
@@ -38,7 +38,7 @@ export const CartList: React.FC = () => {
           return null;
         }
 
-        return { ...product, number: product.number - 1 };
+        return {...product, number: product.number - 1};
       })
       .filter(Boolean) as PriceList[];
 
