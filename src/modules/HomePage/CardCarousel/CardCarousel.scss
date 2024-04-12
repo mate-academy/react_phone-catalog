@@ -62,6 +62,12 @@
     }
   }
 
+  .crossed {
+    text-decoration: line-through;
+    color: $text-gray-color;
+    font-family: Mont-SemiBold, sans-serif;
+  }
+
   &__descr {
     padding-block: 8px;
 

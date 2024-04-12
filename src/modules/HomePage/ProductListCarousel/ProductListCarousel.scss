@@ -1,4 +1,4 @@
-.new-models {
+.carousel {
   &__title-block {
     @include padding-content-inline;
 
@@ -48,7 +48,7 @@
   }
 }
 
-.slider-new-models {
+.carousel-buttons {
   display: flex;
   gap: 16px;
 

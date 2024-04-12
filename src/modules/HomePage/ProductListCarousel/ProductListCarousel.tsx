@@ -1,32 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { NewModelCard } from '../NewModelCard';
+import { CardCarousel } from '../CardCarousel';
 import { getPadding } from '../../../services/getPadding';
 import { getWidthCard } from '../../../services/getWidthCard';
+import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
+import { Loader } from '../../shared/Loader';
+import { Product } from '../../../types/Product';
 import {
   COLUMN_SIZE_FOR_DESCTOP,
   DESCTOP_COLUMNS,
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
-import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
-import { Loader } from '../../shared/Loader';
-import { Product } from '../../../types/Product';
 
 type Props = {
+  title: string;
   windowSize: number;
-  phones: Product[];
+  products: Product[];
   dataLoaded: boolean;
+  hotPrice: boolean;
 };
 
-export const NewModelsListSlider: React.FC<Props> = React.memo(
-  ({ windowSize, phones, dataLoaded }) => {
-    const phoneModel = 14;
-
-    const newModels = phones.filter(phone =>
-      phone.name.includes(`${phoneModel}`),
-    );
-    // .sort((phone1, phone2) => phone1.fullPrice - phone2.fullPrice);
-
+export const ProductListCarousel: React.FC<Props> = React.memo(
+  ({ title, windowSize, products, dataLoaded, hotPrice }) => {
     const [size, setSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -53,10 +48,10 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
         ? Math.floor(currentWindowSizeSlider / oneItem)
         : Math.floor((currentWindowSizeSlider + GAP_BETWEEN_COLUMNS) / oneItem);
 
-    const maxPosition = dataLoaded ? newModels.length - itemsPerStep : 0;
+    const maxPosition = dataLoaded ? products.length - itemsPerStep : 0;
 
     const boundary =
-      newModels.length * oneItem -
+      products.length * oneItem -
       GAP_BETWEEN_COLUMNS +
       padding -
       currentWindowSizeSlider;
@@ -151,16 +146,14 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
     ]);
 
     return (
-      <div className="new-models">
-        <div className="new-models__title-block">
-          <h2 className="new-models__title secondary-title">
-            Brand new models
-          </h2>
+      <div className="carousel">
+        <div className="carousel__title-block">
+          <h2 className="carousel__title secondary-title">{title}</h2>
 
-          <div className="new-models__slider-control slider-new-models">
+          <div className="carousel__slider-control carousel-buttons">
             <button
               type="button"
-              className={cn('slider-new-models__move', {
+              className={cn('carousel-buttons__move', {
                 disabled: imgPosition <= 0,
               })}
               onClick={moveLeft}
@@ -170,7 +163,7 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
 
             <button
               type="button"
-              className={cn('slider-new-models__move', {
+              className={cn('carousel-buttons__move', {
                 disabled: imgPosition >= maxPosition,
               })}
               onClick={moveRight}
@@ -180,24 +173,25 @@ export const NewModelsListSlider: React.FC<Props> = React.memo(
           </div>
         </div>
 
-        <div className="new-models__imgs-container">
+        <div className="carousel__imgs-container">
           {!dataLoaded ? (
-            <div className="new-models__loader">
+            <div className="carousel__loader">
               <Loader />
             </div>
           ) : (
             <div
-              className="new-models__imgs"
+              className="carousel__imgs"
               style={{ left: `${position}px`, gap: `${GAP_BETWEEN_COLUMNS}px` }}
               onTouchStart={handleTouchStart}
               onTouchMove={handleTouchMove}
               onTouchEnd={handleTouchEnd}
             >
-              {newModels.map(phone => (
-                <NewModelCard
-                  phone={phone}
-                  key={phone.id}
+              {products.map(product => (
+                <CardCarousel
+                  product={product}
+                  key={product.id}
                   widthCard={widthCard}
+                  hotPrice={hotPrice}
                 />
               ))}
             </div>

@@ -4,13 +4,14 @@ import { AddBlock } from '../../shared/AddBlock';
 import { Product } from '../../../types/Product';
 
 type Props = {
-  phone: Product;
+  product: Product;
   widthCard: number;
+  hotPrice: boolean;
 };
 
-export const NewModelCard: React.FC<Props> = React.memo(
-  ({ phone, widthCard }) => {
-    const { name, image, fullPrice, screen, capacity, ram } = phone;
+export const CardCarousel: React.FC<Props> = React.memo(
+  ({ product, widthCard, hotPrice }) => {
+    const { name, image, fullPrice, price, screen, capacity, ram } = product;
     const modifyScreen = screen
       .split(' ')
       .slice(0, 2)
@@ -25,7 +26,13 @@ export const NewModelCard: React.FC<Props> = React.memo(
 
         <p className="new-model-card__title">{name}</p>
 
-        <p className="new-model-card__price">{`$${fullPrice}`}</p>
+        {hotPrice ? (
+          <p className="new-model-card__price">
+            {`$${fullPrice}`} <span className="crossed">{`$${price}`}</span>
+          </p>
+        ) : (
+          <p className="new-model-card__price">{`$${fullPrice}`}</p>
+        )}
 
         <div className="new-model-card__descr">
           <p className="new-model-card__descr-item">

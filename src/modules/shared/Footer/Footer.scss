@@ -1,8 +1,9 @@
 .footer {
-  max-width: 1136px;
-  margin-inline: auto;
+  box-shadow: 0 -1px 0 #e2e6e9;
 
   &__container {
+    max-width: 1136px;
+    margin-inline: auto;
     padding: 32px 16px;
 
     display: flex;
@@ -14,6 +15,10 @@
 
       flex-direction: row;
       justify-content: space-between;
+    }
+
+    @include on-desctop {
+      padding: 32px 0;
     }
   }
 

@@ -1,12 +1,26 @@
 import { useEffect, useState } from 'react';
-import { NewModelsListSlider } from './NewModelsListSlider';
+import { ProductListCarousel } from './ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
 import { client } from '../../api';
 import { Product } from '../../types/Product';
-import { HotPrices } from './HotPrices';
 
 const PRODUCT_URL = 'products.json';
+
+function maxDifference(products: Product[]) {
+  const result = products
+    .slice()
+    .sort((product1, product2) => {
+      return (
+        product2.fullPrice -
+        product2.price -
+        (product1.fullPrice - product1.price)
+      );
+    })
+    .slice(0, 30);
+
+  return result;
+}
 
 export const HomePage = () => {
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
@@ -18,6 +32,20 @@ export const HomePage = () => {
   const accessories = products.filter(
     product => product.category === 'accessories',
   );
+
+  const newModels = phones.filter(phone =>
+    phone.name.toLowerCase().includes('iphone 14'),
+  );
+
+  const hotPricesPhones = maxDifference(phones);
+  const hotPricesTablets = maxDifference(tablets);
+  const hotPricesAccessories = maxDifference(accessories);
+
+  const unitHotPricesModels = maxDifference([
+    ...hotPricesPhones,
+    ...hotPricesTablets,
+    ...hotPricesAccessories,
+  ]);
 
   useEffect(() => {
     setDataLoaded(false);
@@ -49,6 +77,8 @@ export const HomePage = () => {
     }
   }, [windowSize]); // adaptive window size with scroll line
 
+  // console.log(unitHotPricesModels);
+
   return (
     <main className="home-page">
       <h1 className="home-page__greeting primary-title">
@@ -58,10 +88,12 @@ export const HomePage = () => {
       <div className="home-page__container">
         <PicturesSlider windowSize={windowSize} />
 
-        <NewModelsListSlider
+        <ProductListCarousel
+          title="Brand new models"
           windowSize={windowSize}
-          phones={phones}
+          products={newModels}
           dataLoaded={dataLoaded}
+          hotPrice={false}
         />
 
         <ShopByCategory
@@ -70,7 +102,13 @@ export const HomePage = () => {
           accessories={accessories.length}
         />
 
-        <HotPrices />
+        <ProductListCarousel
+          title="Hot prices"
+          windowSize={windowSize}
+          products={unitHotPricesModels}
+          dataLoaded={dataLoaded}
+          hotPrice
+        />
       </div>
     </main>
   );
