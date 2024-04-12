@@ -1,1 +1,21 @@
-// not empty
+@import './utils/main.scss';
+
+.App {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__container {
+    margin: 0;
+
+    @include onTablet {
+      margin: 0 35px;
+      min-width: 400px;
+    }
+
+    @include onDesktop {
+      margin: 0 50px;
+      max-width: 1199px;
+    }
+  }
+}

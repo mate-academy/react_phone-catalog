@@ -1,0 +1,57 @@
+@import '../../../utils/main.scss';
+
+.category {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__header {
+   @include header;
+   margin-bottom: 25px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    height: 443px;
+    width: 368px;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__mobile {
+    background-color: #FCDBC1;
+  }
+
+  &__tablets {
+    background-color: #8D8D92;
+  }
+
+  &__accessories {
+    background-color: #973D5F;
+  }
+
+  &__name {
+    margin-bottom: 0;
+    @include category-paragraph;
+  }
+
+  &__quantity {
+    @include category-quantity;
+  }
+}

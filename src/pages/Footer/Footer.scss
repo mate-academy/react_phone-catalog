@@ -1,0 +1,55 @@
+@import '../../utils/main.scss';
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  margin: 80px 120px 0;
+  padding: 17px 0;
+  border-top: 1px solid #E2E6E9;
+
+  &__top-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 30px;
+  }
+
+  &__links {
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+    width: 550px;
+  }
+
+  &__github {
+    @include footer;
+  }
+
+  &__contacts {
+    @include footer;
+  }
+
+  &__rights {
+    @include footer;
+  }
+
+  &__back {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    &__link {
+      @include footer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease 0s;
+    }
+
+    &__img {
+      margin-left: 10px;
+      padding: 10px;
+      border: 1px solid $grey-secondary;
+    }
+  }
+}

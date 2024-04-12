@@ -1,0 +1,45 @@
+@import '../../../utils/main.scss';
+
+.hotPrices {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: 50px;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__head {
+   @include header;
+  }
+
+  &__arrays {
+    display: flex;
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+    }
+
+    &__left {
+      margin-right: 10px;
+    }
+
+    &__img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__ribbon {
+    display: flex;
+    justify-content: space-between;
+  }
+}

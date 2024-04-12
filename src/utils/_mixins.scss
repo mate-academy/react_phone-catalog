@@ -1,0 +1,86 @@
+@mixin onTablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin top-menu {
+  display: inline-block;
+  position: relative;
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $grey-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $grey-primary;
+  }
+
+  &:active {
+    color: $grey-primary;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    left: 0;
+    top: 31px;
+    bottom: 0;
+    background-color: transparent;
+    transition: background-color 0.3s;
+
+    &:hover {
+      background-color: $grey-primary;
+    }
+
+    &:active {
+      background-color: $grey-primary;
+    }
+  }
+  @content;
+}
+
+@mixin header {
+  font-family: 'Mont', sans-serif;
+  font-size: 32px;
+  line-height: 40.9px;
+  letter-spacing: -1%;
+  color: $grey-primary;
+}
+
+@mixin category-paragraph {
+  font-family: 'Mont', sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $grey-primary;
+}
+
+@mixin category-quantity {
+  font-family: 'Mont', sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $grey-secondary;
+}
+
+@mixin footer {
+  font-family: 'Mont', sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $grey-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $grey-primary;
+  }
+}
