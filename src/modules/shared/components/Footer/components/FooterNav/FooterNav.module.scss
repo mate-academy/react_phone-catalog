@@ -10,6 +10,7 @@
   @media (max-width: 639px) {
     flex-direction: column;
     align-items: flex-start;
+    gap: 16px;
   }
 }
 
@@ -18,7 +19,7 @@
 
   text-decoration: none;
   text-transform: uppercase;
-  color: $color-secondary;
+  color: $color-white;
   outline: none;
 
   @include hover-text($color-white);

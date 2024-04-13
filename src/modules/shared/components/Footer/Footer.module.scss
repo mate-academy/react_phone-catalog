@@ -13,7 +13,7 @@
   margin: 0 auto;
   padding: 0 32px;
   display: block;
-  max-width: 1136px;
+  width: 1136px;
 
   @media (max-width: 1199px) {
     padding: 0 24px;
@@ -29,7 +29,6 @@
 .wrapper {
   @include flex-center;
 
-  justify-content: space-between;
   height: 100%;
 
   @media (max-width: 639px) {
@@ -39,6 +38,8 @@
     > :last-child {
       align-self: center;
     }
+
+    gap: 32px;
   }
 }
 

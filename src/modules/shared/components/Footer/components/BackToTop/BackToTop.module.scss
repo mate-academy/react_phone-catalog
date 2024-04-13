@@ -8,7 +8,7 @@
 
 .text {
   @include small-text-desktop-tablet;
-  
+
   padding-right: 16px;
 }
 
@@ -17,8 +17,6 @@
 
   background-color: $color-surface2;
   border: none;
-
-
 
   height: 32px;
   width: 32px;
