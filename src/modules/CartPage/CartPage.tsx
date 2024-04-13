@@ -49,32 +49,28 @@ const CartPage: React.FC = () => {
           <h3>Your cart is empty.</h3>
         </div>
       ) : (
-        <>
-          <div className={styles.container}>
-            <div className={styles.cartItems}>
-              {cart.map(cartItem => (
-                <CartItem key={cartItem.product.id} item={cartItem} />
-              ))}
-            </div>
-            <div className={styles.bottomContainer}>
-              <div className={styles.checkout}>
-                <h2 className={styles.totalPrice}>${calculateTotalPrice()}</h2>
-                <p
-                  className={styles.totalItems}
-                >{`Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`}</p>
-
-                <div className={styles.divider}></div>
-
-                <button
-                  className={styles.checkoutButton}
-                  onClick={handleCheckout}
-                >
-                  Checkout
-                </button>
-              </div>
+        <div className={styles.container}>
+          <div className={styles.cartItems}>
+            {cart.map(cartItem => (
+              <CartItem key={cartItem.product.id} item={cartItem} />
+            ))}
+          </div>
+          <div className={styles.bottomContainer}>
+            <div className={styles.checkout}>
+              <h2 className={styles.totalPrice}>${calculateTotalPrice()}</h2>
+              <p
+                className={styles.totalItems}
+              >{`Total for ${totalItems} item${totalItems > 1 ? 's' : ''}`}</p>
+              <div className={styles.divider}></div>
+              <button
+                className={styles.checkoutButton}
+                onClick={handleCheckout}
+              >
+                Checkout
+              </button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

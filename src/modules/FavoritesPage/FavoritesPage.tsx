@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './FavoritesPage.module.scss';
 import { useAppContext } from '../../context/AppContext';
 import { ProductCard } from '../../components/ProductCard';
-import Breadcrumbs from '../../components/Breadcrumbs/Breadcrumbs';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 const FavoritesPage: React.FC = () => {
   const { favorites } = useAppContext();

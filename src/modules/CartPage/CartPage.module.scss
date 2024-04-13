@@ -7,6 +7,7 @@
 .topContainer {
   grid-column: 1 / -1;
   display: flex;
+  width: 100%;
   flex-direction: column;
   justify-content: center;
 }
@@ -44,21 +45,23 @@
 
 .emptyContainer {
   grid-column: 1 / -1;
+  display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  color: var(--color-secondary);
 
   @extend %h3-tablet;
-
-  color: var(--color-secondary);
 }
 
 .container {
-  margin-top: 24px;
   grid-column: 1 / -1;
 
-  @include on-desktop {
-    @include section-grid;
+  @include section-grid;
+
+  padding: 0;
+  margin-top: 24px;
+
+  @include on-tablet {
+    padding: 0;
   }
 }
 

@@ -12,22 +12,37 @@
   }
 }
 
+@mixin middle-screen {
+  @media (min-width: $breakpoint-middle) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline:16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
 
 @mixin section-grid {
   display: grid;
   grid-gap: 16px;
   grid-template-columns:repeat(4, 1fr);
-  padding: 0 16px;
-  width: 100%;
   justify-content: center;
+
+  @include padding-inline;
 
   @include on-tablet {
     grid-template-columns:repeat(12, 1fr);
-    padding: 0 24px;
   }
 
   @include on-desktop {
     grid-template-columns:repeat(24, 32px);
-    padding: 0;
   }
 }

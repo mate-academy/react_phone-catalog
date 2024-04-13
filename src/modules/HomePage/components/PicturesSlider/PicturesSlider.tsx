@@ -3,10 +3,10 @@ import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
 import { PicturesSliderMap } from '../Helpers/PicturesSliderMap';
 import { useTheme } from '../../../../context/ThemeContext';
-
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
 import { getChevronIconSrc } from '../../../../servises/iconSrc';
+import { Link } from 'react-router-dom';
 
 export const PicturesSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -51,15 +51,17 @@ export const PicturesSlider: React.FC = () => {
       </button>
       <div className={styles.container}>
         {PicturesSliderMap.map(({ id, src, title }) => (
-          <img
-            key={id}
-            src={src}
-            alt={`Slide ${title}`}
-            className={classNames(styles.image)}
-            style={{
-              transform: `translateX(-${currentIndex * 100}%)`,
-            }}
-          />
+          <Link to={`/${title}`} key={id} className={classNames(styles.link)}>
+            <img
+              key={id}
+              src={src}
+              alt={`Slide ${title}`}
+              className={classNames(styles.image)}
+              style={{
+                transform: `translateX(-${currentIndex * 100}%)`,
+              }}
+            />
+          </Link>
         ))}
       </div>
       <button

@@ -6,7 +6,7 @@ import { Link, useLocation } from 'react-router-dom';
 
 type Props = {};
 
-const Breadcrumbs: React.FC<Props> = () => {
+export const Breadcrumbs: React.FC<Props> = () => {
   const { theme } = useTheme();
   const { pathname } = useLocation();
 
@@ -43,5 +43,3 @@ const Breadcrumbs: React.FC<Props> = () => {
     </nav>
   );
 };
-
-export default Breadcrumbs;

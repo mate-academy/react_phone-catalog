@@ -19,7 +19,6 @@ export const ProductsSlider: React.FC<Props> = ({
   products,
   title,
   isHotPrice,
-  isHomePage,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCardsCount, setVisibleCardsCount] = useState(3);
@@ -68,59 +67,51 @@ export const ProductsSlider: React.FC<Props> = ({
 
   return (
     <div className={styles.productsSlider} {...handlers}>
-      <div className={styles.topContainer}>
-        <div className={styles.topWrapper}>
-          <h2 className={styles.title}>{title}</h2>
-          <div className={styles.buttons}>
-            <button
-              onClick={handlePrevClick}
-              className={classNames(styles.button, {
-                [styles.isDisabled]: isPrevDisabled,
-              })}
-              disabled={isPrevDisabled}
-            >
-              <img
-                src={chevronIconSrc}
-                alt="chevron left"
-                className={styles.iconPrev}
-              />
-            </button>
+      <div className={styles.topWrapper}>
+        <h2 className={styles.title}>{title}</h2>
+        <div className={styles.buttons}>
+          <button
+            onClick={handlePrevClick}
+            className={classNames(styles.button, {
+              [styles.isDisabled]: isPrevDisabled,
+            })}
+            disabled={isPrevDisabled}
+          >
+            <img
+              src={chevronIconSrc}
+              alt="chevron left"
+              className={styles.iconPrev}
+            />
+          </button>
 
-            <button
-              onClick={handleNextClick}
-              className={classNames(styles.button, {
-                [styles.isDisabled]: isNextDisabled,
-              })}
-              disabled={isNextDisabled}
-            >
-              <img
-                src={chevronIconSrc}
-                alt="chevron right"
-                className={styles.iconNext}
-              />
-            </button>
-          </div>
+          <button
+            onClick={handleNextClick}
+            className={classNames(styles.button, {
+              [styles.isDisabled]: isNextDisabled,
+            })}
+            disabled={isNextDisabled}
+          >
+            <img
+              src={chevronIconSrc}
+              alt="chevron right"
+              className={styles.iconNext}
+            />
+          </button>
         </div>
       </div>
 
       <div className={styles.container}>
-        <div className={styles.mainContainer}>
-          {products.map(product => (
-            <div
-              key={product.id}
-              className={styles.sliderWrapper}
-              style={{
-                transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 16}px))`,
-              }}
-            >
-              <ProductCard
-                product={product}
-                isHotPrice={isHotPrice}
-                isHomePage={isHomePage}
-              />
-            </div>
-          ))}
-        </div>
+        {products.map(product => (
+          <div
+            key={product.id}
+            className={styles.sliderWrapper}
+            style={{
+              transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 16}px))`,
+            }}
+          >
+            <ProductCard product={product} isHotPrice={isHotPrice} />
+          </div>
+        ))}
       </div>
     </div>
   );

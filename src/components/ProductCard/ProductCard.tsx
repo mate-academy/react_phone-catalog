@@ -10,14 +10,9 @@ import { Link } from 'react-router-dom';
 type ProductCardProps = {
   product: Product;
   isHotPrice?: boolean;
-  isHomePage?: boolean;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({
-  product,
-  isHotPrice,
-  isHomePage,
-}) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = product;
   const {
     addToFavorites,
@@ -60,11 +55,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   };
 
   return (
-    <div
-      className={classNames(styles.ProductCard, {
-        [styles.HomePage_Width]: isHomePage,
-      })}
-    >
+    <div className={styles.ProductCard}>
       <Link
         to={`/products/${product.itemId}`}
         className={styles.imageContainer}
@@ -76,13 +67,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
         <div className={styles.title}>{name}</div>
         <div className={styles.price}>
           <div className={styles.existPrice}>${fullPrice}</div>
-          <div
-            className={classNames(styles.hotPrice, {
-              [styles.isHotPrice]: isHotPrice,
-            })}
-          >
-            ${price}
-          </div>
+          <div className={classNames(styles.hotPrice, {})}>${price}</div>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.description}>

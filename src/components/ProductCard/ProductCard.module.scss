@@ -13,14 +13,10 @@
   border: 1px solid var(--color-elements);
   border-radius: 2px;
 
-
   @include on-tablet {
     height: 506px;
   }
 
-}
-
-.HomePage_Width {
   @include on-desktop {
     width: 272px;
   }
@@ -92,12 +88,8 @@
 }
 
 .hotPrice {
-  display: none;
-  color: var(--color-secondary);
-}
-
-.isHotPrice {
   display: flex;
+  color: var(--color-secondary);
 }
 
 .divider {

@@ -1,0 +1,42 @@
+@import '../../styles/main';
+
+.label {
+  display: flex;
+  gap: 8px;
+  width: 100%;
+  flex-direction: column;
+  position: relative;
+  color: var(--color-secondary);
+
+  @extend %small-text;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-right: 1px solid var(--color-secondary);
+    border-top: 1px solid var(--color-secondary);
+    transform: rotate(135deg);
+    bottom: 18px;
+    right: 12px;
+
+  }
+}
+
+.select {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  padding: 0 12px;
+  appearance: none;
+  outline: none;
+  border: 1px solid var(--color-elements);
+  background-color: var(--color-filter-bg);
+  color: var(--color-primary);
+
+  @extend %body-text;
+}

@@ -1,10 +1,6 @@
 @import '../../../../styles/main';
 
 .productsSlider {
-  display: block;
-}
-
-.topContainer {
   @include section-grid;
 }
 
@@ -57,14 +53,12 @@
 }
 
 .container {
-  @include section-grid;
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  gap: 16px;
 
-  justify-content: center;
   padding-right: 0;
-
-  @include on-tablet {
-    padding-right: 0;
-  }
 }
 
 .mainContainer {

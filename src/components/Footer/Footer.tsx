@@ -1,11 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { useTheme } from '../../context/ThemeContext';
-import { getChevronIconSrc, getLogoIconSrs } from '../../servises/iconSrc';
+import { getChevronIconSrc, getLogoIconSrc } from '../../servises/iconSrc';
 
 const Footer: React.FC = () => {
   const { theme } = useTheme();
+
+  const [showBackToTop, setShowBackToTop] = useState(false);
+
+  useEffect(() => {
+    const observer = new MutationObserver(() => {
+      const contentHeight = document.documentElement.scrollHeight;
+      const viewportHeight = window.innerHeight;
+
+      setShowBackToTop(contentHeight > viewportHeight);
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true,
+      attributes: true,
+      characterData: true,
+    });
+
+    return () => observer.disconnect();
+  }, []);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -13,7 +34,7 @@ const Footer: React.FC = () => {
     });
   };
 
-  const logoImgSrc = getLogoIconSrs(theme);
+  const logoImgSrc = getLogoIconSrc(theme);
   const backToTopImgSrc = getChevronIconSrc(theme);
 
   return (
@@ -45,22 +66,24 @@ const Footer: React.FC = () => {
             Rights
           </NavLink>
         </nav>
-        <div className={styles.backToTop}>
-          <p className={styles.backToTopText}>Back to top</p>
-          <button
-            aria-label="Scroll to top"
-            type="button"
-            id="back-to-top"
-            onClick={scrollToTop}
-            className={styles.backToTopButton}
-          >
-            <img
-              src={backToTopImgSrc}
-              alt="back to top"
-              className={styles.backToTopIcon}
-            />
-          </button>
-        </div>
+        {showBackToTop && (
+          <div className={styles.backToTop}>
+            <p className={styles.backToTopText}>Back to top</p>
+            <button
+              aria-label="Scroll to top"
+              type="button"
+              id="back-to-top"
+              onClick={scrollToTop}
+              className={styles.backToTopButton}
+            >
+              <img
+                src={backToTopImgSrc}
+                alt="back to top"
+                className={styles.backToTopIcon}
+              />
+            </button>
+          </div>
+        )}
       </div>
     </footer>
   );

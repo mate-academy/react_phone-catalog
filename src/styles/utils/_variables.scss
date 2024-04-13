@@ -1,4 +1,5 @@
 $breakpoint-tablet: 640px;
+$breakpoint-middle: 768px;
 $breakpoint-desktop: 1200px;
 $with-icons-desktop: 64px;
 $with-icons-tablet: 48px;
@@ -20,6 +21,7 @@ $transition-duration: 0.5s;
   --color-button-hover: #313237;
   --color-white: #fff;
   --color-black: #000;
+  --color-filter-bg:#fff
 }
 
 [data-theme="dark"] {
@@ -36,4 +38,5 @@ $transition-duration: 0.5s;
   --color-red: #EB5757;
   --color-white: #fff;
   --color-black: #000;
+  --color-filter-bg:#323542;
 }

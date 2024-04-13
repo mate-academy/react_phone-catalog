@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import styles from './Categories.module.scss';
 import { Link } from 'react-router-dom';
 import { ShopByCategoryMap } from '../Helpers/ShopByCategoryMap';
-import { getProducts } from '../../../../servises/Products';
+import { getProductsByCategory } from '../../../../servises/Products';
 
 export const Categories: React.FC = () => {
   const [phonesCount, setPhonesCount] = useState(0);
@@ -14,7 +14,7 @@ export const Categories: React.FC = () => {
       const categories = ['phones', 'tablets', 'accessories'];
 
       const productCounts = await Promise.all(
-        categories.map(category => getProducts(category)),
+        categories.map(category => getProductsByCategory(category)),
       );
 
       setPhonesCount(productCounts[0].length);

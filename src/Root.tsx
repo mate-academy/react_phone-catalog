@@ -8,6 +8,8 @@ import { TabletsPage } from './modules/TabletsPage';
 import { AccessoriesPage } from './modules/AccessoriesPage';
 import { CartPage } from './modules/CartPage';
 import { FavoritesPage } from './modules/FavoritesPage';
+import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const Root = () => (
   <ThemeProvider>
@@ -16,11 +18,16 @@ export const Root = () => (
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
-            <Route path="/phones" element={<PhonesPage />} />
+            <Route path="phones" element={<PhonesPage />} />
             <Route path="tablets" element={<TabletsPage />} />
             <Route path="accessories" element={<AccessoriesPage />} />
             <Route path="favorites" element={<FavoritesPage />} />
             <Route path="cart" element={<CartPage />} />
+            <Route
+              path="products/:productId"
+              element={<ProductDetailsPage />}
+            />
+            <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
       </Router>

@@ -1,3 +1,4 @@
+/* eslint-disable import/no-extraneous-dependencies */
 import { NavLink, Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { useTheme } from '../../context/ThemeContext';
@@ -7,11 +8,12 @@ import { OverlayMenu } from './components/OverlayMenu';
 import { ToggleTheme } from './components/ToggleTheme';
 import {
   getMenuIconSrc,
-  getLogoIconSrs,
+  getLogoIconSrc,
   getCartIconSrc,
   getFavoritesIconSrc,
 } from '../../servises/iconSrc';
 import { useAppContext } from '../../context/AppContext';
+import { Search } from '../Search/Search';
 
 const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   const { theme } = useTheme();
@@ -22,7 +24,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
   };
 
   const menuIconSrc = getMenuIconSrc(isMenuOpen, theme);
-  const logoIconSrs = getLogoIconSrs(theme);
+  const logoIconSrs = getLogoIconSrc(theme);
   const cartIconSrc = getCartIconSrc(theme);
   const favoritesIconSrc = getFavoritesIconSrc(theme);
 
@@ -71,8 +73,8 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             Accessories
           </NavLink>
         </nav>
-
         <div className={styles.actions}>
+          <Search />
           <ToggleTheme />
           <NavLink
             to="/favorites"
@@ -108,6 +110,7 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
       </div>
 
       <div className={styles.mobile}>
+        <Search />
         <ToggleTheme />
         <button
           type="button"
