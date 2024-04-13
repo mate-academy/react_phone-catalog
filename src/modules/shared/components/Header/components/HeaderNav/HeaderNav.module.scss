@@ -17,9 +17,9 @@
     gap: 32px;
   }
 
-    // @media (max-width: 639px) {
-
-  // }
+  @media (max-width: 639px) {
+    display: none;
+  }
 }
 
 .navbarLink {

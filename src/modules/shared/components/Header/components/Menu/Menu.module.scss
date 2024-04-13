@@ -1,4 +1,20 @@
-.test {
-  color: red;
+@import 'Styles/utils';
+
+.burger {
+  display: none;
+
+  @media (max-width: 639px) {
+    @include flex-center;
+
+    position: relative;
+    width: 64px;
+    height: 64px;
+    border: 1px solid transparent;
+    border-left: 1px solid $color-elements;
+  }
+}
+
+.image {
+@include hover-scale;
 }
 

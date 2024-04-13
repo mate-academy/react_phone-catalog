@@ -7,6 +7,7 @@
 }
 
 .container {
+  box-sizing: border-box;
   margin: 0 auto;
   padding: 0 32px;
   display: block;
@@ -27,6 +28,10 @@
 
   justify-content: space-between;
   height: 100%;
+}
+
+.section {
+  flex: 1;
 }
 
 .footerLogo {

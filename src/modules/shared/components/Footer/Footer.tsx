@@ -8,11 +8,16 @@ export const Footer = () => {
     <footer className={styles.footer}>
       <div className={styles.container}>
         <div className={styles.wrapper}>
-          <Logo className={styles.footerLogo} />
+          <div className={styles.section}>
+            <Logo className={styles.footerLogo} />
+          </div>
 
-          <FooterNav />
-
-          <BackToTop />
+          <div className={styles.section}>
+            <FooterNav />
+          </div>
+          <div className={styles.section}>
+            <BackToTop />
+          </div>
         </div>
       </div>
     </footer>

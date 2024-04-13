@@ -3,6 +3,10 @@
 .userActions {
   display: flex;
   flex-direction: row;
+
+  @media (max-width: 639px) {
+    display: none;
+  }
 }
 
 .icon {
@@ -28,10 +32,10 @@
 }
 
 .linkActive {
-    &::after{
-      content: '';
-      transform: scale(1);
-    }
+  &::after {
+    content: '';
+    transform: scale(1);
+  }
 }
 
 .image {
