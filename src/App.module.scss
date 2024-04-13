@@ -8,6 +8,6 @@
     'header'
     'main'
     'footer';
-  grid-template-rows: 64px 1fr 96px;
+  grid-template-rows: 64px 1fr auto;
   grid-template-columns: minmax(0, 1fr);
 }

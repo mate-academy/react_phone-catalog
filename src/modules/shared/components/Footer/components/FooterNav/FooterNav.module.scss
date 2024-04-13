@@ -4,15 +4,17 @@
   @include flex-center;
 
   justify-content: space-between;
-  gap: 64px;
 
   @include uppercase-desktop-tablet;
+
+  @media (max-width: 639px) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 
 .navbarLink {
   @include flex-center;
-
-  height: 64px;
 
   text-decoration: none;
   text-transform: uppercase;

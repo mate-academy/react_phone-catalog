@@ -3,14 +3,13 @@
 .backToTopBlock {
   @include flex-center;
 
-  justify-content: space-between;
-
-  height: 32px;
-  width: 118px;
+  justify-content: flex-end;
 }
 
 .text {
   @include small-text-desktop-tablet;
+  
+  padding-right: 16px;
 }
 
 .button {
@@ -18,6 +17,8 @@
 
   background-color: $color-surface2;
   border: none;
+
+
 
   height: 32px;
   width: 32px;
