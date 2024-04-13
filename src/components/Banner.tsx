@@ -1,7 +1,7 @@
 // import { useState } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
-import arrowIcon from '../images/icons/arrov-icon.svg';
+import arrowIcon from '../images/icons/arrow-icon.svg';
 import accessoriesBanner from '../images/banner-accessories.png';
 import phonesBanner from '../images/banner-phones.png';
 import tabletsBanner from '../images/banner-tablets.png';
@@ -10,12 +10,12 @@ const swiperItems = [accessoriesBanner, phonesBanner, tabletsBanner];
 
 export const Banner = () => {
   return (
-    <section className="max-w-6xl	">
-      <div className="gap-4.5 flex flex-col">
+    <div className="max-w-6xl	">
+      <div className="flex flex-col gap-4.5">
         <div className="flex h-80 w-full md:h-48 md:gap-5 lg:h-100 lg:gap-4">
           <button
             id="banner-prew-button"
-            className="hidden w-8 items-center justify-center border
+            className="hidden min-w-8 items-center justify-center border
             border-icons hover:border-secondary md:flex"
           >
             <img src={arrowIcon} alt="Arrow Left" className="-rotate-90" />
@@ -55,7 +55,7 @@ export const Banner = () => {
 
           <button
             id="banner-next-button"
-            className="hidden w-8 items-center justify-center border
+            className="hidden min-w-8 items-center justify-center border
             border-icons hover:border-secondary md:flex"
           >
             <img src={arrowIcon} alt="Arrow Right" className="rotate-90" />
@@ -67,6 +67,6 @@ export const Banner = () => {
           id="banner-navigation"
         />
       </div>
-    </section>
+    </div>
   );
 };

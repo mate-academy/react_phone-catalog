@@ -1,14 +1,14 @@
-import favoritesGoods from '../images/icons/favourites-goods.svg';
+import favouritesGoods from '../images/icons/favourites-goods.svg';
 import shoppingBag from '../images/icons/shopping-bag.svg';
 import closeAside from '../images/icons/close-icon-aside.svg';
 import menuNavigation from '../images/icons/menu-header-icon.svg';
+import mainLogo from '../images/icons/main-logo-desktop.svg';
 import { MainLogo } from './MainLogo';
 import { NavItem } from './NavItem';
 import { twMerge } from 'tailwind-merge';
 import { ButtonHeader } from './ButtonHeader';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParams, getSearchWith } from '../helpers/searchHelper';
-import mainLogo from '../images/icons/main-logo-desktop.svg';
 
 interface Props {
   className?: string;
@@ -31,7 +31,7 @@ export const Header: React.FC<Props> = ({ className }) => {
   return (
     <header
       className={twMerge(
-        `sticky	inset-x-0 top-0 flex h-12
+        `sticky inset-x-0	top-0 z-10 flex h-12
         border-b border-elements bg-white lg:h-16`,
         className,
       )}
@@ -70,7 +70,7 @@ export const Header: React.FC<Props> = ({ className }) => {
           {
             id: 1,
             to: '/',
-            src: favoritesGoods,
+            src: favouritesGoods,
             alt: 'Favorites Goods',
           },
           {

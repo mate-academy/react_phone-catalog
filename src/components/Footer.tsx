@@ -2,7 +2,7 @@ import { MainLogo } from './MainLogo';
 import { NavItem } from './NavItem';
 import { SliderButton } from './SliderButton';
 import mainLogo from '../images/icons/main-logo-desktop.svg';
-import arrovButton from '../images/icons/arrov-icon.svg';
+import arrowButton from '../images/icons/arrow-icon.svg';
 
 export const Footer = () => {
   return (
@@ -42,7 +42,7 @@ export const Footer = () => {
         <p className="text-secondary">Back to top</p>
 
         <SliderButton>
-          <img src={arrovButton} alt="Arrov Top" />
+          <img src={arrowButton} alt="Arrov Top" />
         </SliderButton>
       </div>
     </footer>
