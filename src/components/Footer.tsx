@@ -41,7 +41,11 @@ export const Footer = () => {
       <div className="flex items-center justify-center gap-4 md:w-fit">
         <p className="text-secondary">Back to top</p>
 
-        <SliderButton>
+        <SliderButton
+          onClick={() =>
+            window.scrollTo({ left: 0, top: 0, behavior: 'smooth' })
+          }
+        >
           <img src={arrowButton} alt="Arrov Top" />
         </SliderButton>
       </div>

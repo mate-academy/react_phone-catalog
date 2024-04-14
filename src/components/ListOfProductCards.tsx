@@ -9,7 +9,7 @@ import { useState } from 'react';
 import { Product } from '../types/product';
 import { twMerge } from 'tailwind-merge';
 
-interface Props {
+interface Props extends React.HTMLAttributes<HTMLElement> {
   discount?: boolean;
   className?: string;
   title: string;
@@ -21,6 +21,7 @@ export const ListOfProductCards: React.FC<Props> = ({
   discount = true,
   title,
   products,
+  ...rest
 }) => {
   const [slider, setSlider] = useState({
     first: true,
@@ -43,6 +44,7 @@ export const ListOfProductCards: React.FC<Props> = ({
   return (
     <section
       className={twMerge('padding-inline-sm flex flex-col gap-6', className)}
+      {...rest}
     >
       <div className="flex items-center justify-between">
         <h3 className="padding-inline-sm md:px-0">{title}</h3>

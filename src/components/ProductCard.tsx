@@ -35,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({
 
         <div className="flex gap-2">
           <h4 className="text-1.5xl font-bold">${price}</h4>
-          {!discount && (
+          {discount && (
             <h4 className="text-1.5xl text-secondary line-through">
               ${fullPrice}
             </h4>
