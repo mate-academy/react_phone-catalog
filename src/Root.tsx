@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { ThemeProvider } from './context/ThemeContext';
 import { AppProvider } from './context/AppContext';
@@ -24,7 +24,7 @@ export const Root = () => (
             <Route path="favorites" element={<FavoritesPage />} />
             <Route path="cart" element={<CartPage />} />
             <Route
-              path="products/:productId"
+              path="/products/:productId"
               element={<ProductDetailsPage />}
             />
             <Route path="*" element={<NotFoundPage />} />

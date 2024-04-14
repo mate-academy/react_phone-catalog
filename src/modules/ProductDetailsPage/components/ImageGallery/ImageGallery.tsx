@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import styles from './ImageGallery.module.scss';
 import classNames from 'classnames';
+import { BASE_URL } from '../../../../utils/const';
 
 type ImageGalleryProps = {
   images: string[];
@@ -19,7 +20,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
         {images.map(image => (
           <img
             key={image}
-            src={`/${image}`}
+            src={`${BASE_URL}/${image}`}
             alt={`Thumbnail of ${productName}`}
             className={classNames(styles.thumbnail, {
               [styles.selectedThumbnail]: image === selectedImage,
@@ -31,7 +32,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
 
       <div className={styles.mainImageContainer}>
         <img
-          src={`/${selectedImage}`}
+          src={`${BASE_URL}/${selectedImage}`}
           alt={productName}
           className={styles.mainImage}
         />

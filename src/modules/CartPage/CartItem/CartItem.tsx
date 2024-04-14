@@ -10,6 +10,7 @@ import {
 import { useTheme } from '../../../context/ThemeContext';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
+import { BASE_URL } from '../../../utils/const';
 
 type Props = {
   item: CartItemProps;
@@ -40,7 +41,11 @@ export const CartItem: React.FC<Props> = ({ item }) => {
           />
         </button>
         <Link to={`/products/${itemId}`} className={styles.productImage}>
-          <img src={image} alt={name} className={styles.image} />
+          <img
+            src={`${BASE_URL}/${image}`}
+            alt={name}
+            className={styles.image}
+          />
         </Link>
         <h4>{name}</h4>
       </div>

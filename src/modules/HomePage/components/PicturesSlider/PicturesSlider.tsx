@@ -7,6 +7,7 @@ import { useTheme } from '../../../../context/ThemeContext';
 import { useSwipeable } from 'react-swipeable';
 import { getChevronIconSrc } from '../../../../servises/iconSrc';
 import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../../../utils/const';
 
 export const PicturesSlider: React.FC = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -54,7 +55,7 @@ export const PicturesSlider: React.FC = () => {
           <Link to={`/${title}`} key={id} className={classNames(styles.link)}>
             <img
               key={id}
-              src={src}
+              src={`${BASE_URL}/${src}`}
               alt={`Slide ${title}`}
               className={classNames(styles.image)}
               style={{

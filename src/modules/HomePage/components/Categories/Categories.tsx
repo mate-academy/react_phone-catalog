@@ -3,6 +3,7 @@ import styles from './Categories.module.scss';
 import { Link } from 'react-router-dom';
 import { ShopByCategoryMap } from '../Helpers/ShopByCategoryMap';
 import { getProductsByCategory } from '../../../../servises/Products';
+import { BASE_URL } from '../../../../utils/const';
 
 export const Categories: React.FC = () => {
   const [phonesCount, setPhonesCount] = useState(0);
@@ -32,7 +33,11 @@ export const Categories: React.FC = () => {
       {ShopByCategoryMap.map(({ id, src, title, path }) => (
         <div className={styles.category} key={id}>
           <Link to={path} className={styles.link}>
-            <img src={src} alt={title} className={styles.image} />
+            <img
+              src={`${BASE_URL}/${src}`}
+              alt={title}
+              className={styles.image}
+            />
 
             <h2 className={styles.category__title}>{title}</h2>
 

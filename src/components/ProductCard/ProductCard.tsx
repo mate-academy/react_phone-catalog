@@ -3,6 +3,7 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
 import { Link } from 'react-router-dom';
 import { ActionButtons } from '../ActionButtons';
+import { BASE_URL } from '../../utils/const';
 
 type ProductCardProps = {
   product: Product;
@@ -18,7 +19,11 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         to={`/products/${product.itemId}`}
         className={styles.imageContainer}
       >
-        <img className={styles.image} src={image} alt="image" />
+        <img
+          className={styles.image}
+          src={`${BASE_URL}/${image}`}
+          alt="image"
+        />
       </Link>
 
       <div className={styles.wrapper}>
