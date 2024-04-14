@@ -1,11 +1,8 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { useTheme } from '../../context/ThemeContext';
 import { Product } from '../../types/Product';
-import classNames from 'classnames';
-import { getFavoritesIconSrc } from '../../servises/iconSrc';
-import { useAppContext } from '../../context/AppContext';
 import { Link } from 'react-router-dom';
+import { ActionButtons } from '../ActionButtons';
 
 type ProductCardProps = {
   product: Product;
@@ -14,45 +11,6 @@ type ProductCardProps = {
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { image, name, fullPrice, price, screen, capacity, ram } = product;
-  const {
-    addToFavorites,
-    removeFromFavorites,
-    favorites,
-    cart,
-    addToCart,
-    removeFromCart,
-  } = useAppContext();
-  const { theme } = useTheme();
-
-  const isFavorite = favorites.some(favProduct => favProduct.id === product.id);
-
-  const handleFavoriteClick = () => {
-    if (isFavorite) {
-      removeFromFavorites(product.id);
-    } else {
-      addToFavorites(product);
-    }
-  };
-
-  const isProductInCart = cart.some(
-    cartItem => cartItem.product.id === product.id,
-  );
-
-  const handleCartClick = () => {
-    if (isProductInCart) {
-      removeFromCart(product.id);
-    } else {
-      addToCart(product);
-    }
-  };
-
-  const favoritesIconSrc = () => {
-    if (isFavorite) {
-      return './img/icons/SelectedToFaforitesIcon.svg';
-    }
-
-    return getFavoritesIconSrc(theme);
-  };
 
   return (
     <div className={styles.ProductCard}>
@@ -67,7 +25,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         <div className={styles.title}>{name}</div>
         <div className={styles.price}>
           <div className={styles.existPrice}>${fullPrice}</div>
-          <div className={classNames(styles.hotPrice, {})}>${price}</div>
+          <div className={styles.hotPrice}>${price}</div>
         </div>
         <div className={styles.divider}></div>
         <div className={styles.description}>
@@ -84,23 +42,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
             <p className={styles.descriptionText}>{ram}</p>
           </div>
         </div>
-        <div className={styles.buttons}>
-          <button className={styles.buttonCard} onClick={handleCartClick}>
-            <p className={styles.buttonText}>
-              {isProductInCart ? 'Remove' : 'Add to cart'}
-            </p>
-          </button>
-          <button
-            className={styles.buttonFavorite}
-            onClick={handleFavoriteClick}
-          >
-            <img
-              className={styles.buttonFavoriteIcon}
-              src={favoritesIconSrc()}
-              alt="favorite"
-            />
-          </button>
-        </div>
+        <ActionButtons product={product} />
       </div>
     </div>
   );

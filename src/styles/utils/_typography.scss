@@ -7,6 +7,15 @@
   color: var(--color-primary);
 }
 
+@mixin h2-tablet {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: 0.01em;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
 %h1-tablet {
   font-family: Mont, sans-serif;
   font-size: 48px;
@@ -63,7 +72,7 @@
 
 %body-text {
   font-family: Mont, sans-serif;
-  font-weight: 700;
+  font-weight: 500;
   font-size: 14px;
   line-height: 21px;
   letter-spacing: 0;

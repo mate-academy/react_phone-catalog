@@ -1,4 +1,10 @@
 interface ProductDescription {
+  map(
+    arg0: (
+      desc: { title: string; text: string[] },
+      index: number,
+    ) => import('react/jsx-runtime').JSX.Element,
+  ): import('react').ReactNode;
   title: string;
   text: string[];
 }

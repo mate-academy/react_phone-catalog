@@ -1,16 +1,41 @@
+import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 import { getData } from '../utils/httpClient';
 
-export const getPhoneDetails = async (
+export const getProductDetails = async (
   itemId: string,
-  category: string,
-): Promise<ProductDetails | undefined> => {
-  const products: ProductDetails[] = await getData<ProductDetails[]>(
-    `/api/${category}.json`,
-  );
-  const product: ProductDetails | undefined = products.find(
-    p => p.id === itemId,
-  );
+): Promise<ProductDetails | null> => {
+  const allProducts: Product[] = await getData<Product[]>('/api/products.json');
+  const productMatch = allProducts.find(product => product.itemId === itemId);
 
-  return product;
+  if (productMatch) {
+    const categoryProducts: ProductDetails[] = await getData<ProductDetails[]>(
+      `/api/${productMatch.category}.json`,
+    );
+    const detailedProduct = categoryProducts.find(p => p.id === itemId);
+
+    return detailedProduct ?? null;
+  } else {
+    return null;
+  }
 };
+
+// export const getAllProductDetails = async (
+//   itemId: string,
+//   namespaceId: string,
+// ): Promise<ProductDetails | null> => {
+//   const products: Product[] = await getData<Product[]>('/api/products.json');
+//   const productMatch = products.find(product => product.itemId === itemId);
+
+//   if (productMatch) {
+//     const categoryProducts: ProductDetails[] = await getData<ProductDetails[]>(
+//       `/api/${productMatch.category}.json`,
+//     );
+
+//     const detailedProduct = categoryProducts.filter(
+//       p => p.namespaceId === namespaceId,
+//     );
+
+//     return detailedProduct ?? null;
+//   }
+// };
