@@ -53,6 +53,11 @@
 
           &--link {
             @include linkNav;
+            padding-block: 17px;
+
+            @include onDesktop {
+              padding-block: 24px;
+            }
 
             &:hover {
               transition: $effect-duration;
@@ -62,7 +67,7 @@
               content: "";
               height: 3px;
               width: 100%;
-              top: 26px;
+              top: 43px;
               left: 0;
               position: absolute;
               background-color: $color-primary;
@@ -72,7 +77,7 @@
               transform-origin: center;
 
               @include onDesktop {
-                top: 34px;
+                top: 58px;
               }
             }
 
@@ -87,14 +92,14 @@
                 content: "";
                 height: 3px;
                 width: 100%;
-                top: 26px;
+                top: 43px;
                 left: 0;
                 position: absolute;
                 background-color: $color-primary;
                 transform: scale($scale);
 
                 @include onDesktop {
-                  top: 34px;
+                  top: 58px;
                 }
               }
             }
