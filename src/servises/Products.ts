@@ -12,23 +12,21 @@ export const getProductsByCategory = async (category: string) => {
 };
 
 export const getHotPriceProducts = async () => {
-  const response = await fetch('/api/products.json');
-  const data = await response.json();
+  const response = await getData<Product[]>('/api/products.json');
 
-  return data.sort((a: Product, b: Product) => {
+  return response.sort((a: Product, b: Product) => {
     return b.fullPrice - b.price - (a.fullPrice - a.price);
   });
 };
 
 export const getNewProducts = async () => {
-  const response = await fetch('/api/products.json');
-  const data = await response.json();
-  const latestYear = data.reduce(
+  const response = await getData<Product[]>('/api/products.json');
+  const latestYear = response.reduce(
     (acc: number, product: Product) => Math.max(acc, product.year),
     0,
   );
 
-  return data
+  return response
     .filter((product: Product) => product.year === latestYear)
     .sort((a: Product, b: Product) => b.fullPrice - a.fullPrice);
 };

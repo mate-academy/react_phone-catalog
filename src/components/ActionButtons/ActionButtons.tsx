@@ -4,6 +4,7 @@ import { useTheme } from '../../context/ThemeContext';
 import { Product } from '../../types/Product';
 import { getFavoritesIconSrc } from '../../servises/iconSrc';
 import styles from './ActionButtons.module.scss';
+import { BASE_URL } from '../../utils/const';
 
 type Props = {
   product: Product;
@@ -44,7 +45,7 @@ export const ActionButtons: React.FC<Props> = ({ product }) => {
 
   const favoritesIconSrc = () => {
     if (isFavorite) {
-      return '../img/icons/SelectedToFaforitesIcon.svg';
+      return `${BASE_URL}/img/icons/SelectedToFaforitesIcon.svg`;
     }
 
     return getFavoritesIconSrc(theme);
