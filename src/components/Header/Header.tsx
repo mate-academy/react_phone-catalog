@@ -53,7 +53,9 @@ export const Header = () => {
   }, [pathname, searchParams]);
 
   const favourites = products.filter(item => item.addedToFavourites === true);
-  const carts = products.filter(item => item.addedToCart === true);
+  const carts = products
+    .filter(item => item.addedToCart === true)
+    .reduce((acc, el) => acc + el.quantity, 0);
 
   const debouncedQuery = useMemo(
     () =>
@@ -196,10 +198,8 @@ export const Header = () => {
               className="header__right-side__icon--logo"
             />
 
-            {!!carts.length && (
-              <div className="header__right-side__icon__counter">
-                {carts.length}
-              </div>
+            {carts > 0 && (
+              <div className="header__right-side__icon__counter">{carts}</div>
             )}
           </NavLink>
         </div>

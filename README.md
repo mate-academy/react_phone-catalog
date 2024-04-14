@@ -10,6 +10,8 @@ Implement the catalog with a shopping cart and favorites page according to one o
 
 You may also implement color theme switching!
 
+[DEMO](https://edkido.github.io/react_phone-catalog/)
+
 ## If you work in a team
 
 Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
