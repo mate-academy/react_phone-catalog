@@ -1,0 +1,85 @@
+@import '../../styles/main';
+
+.search {
+  @include on-mobile {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    position: relative;
+  }
+
+  @include on-tablet {
+    grid-column: 1 / 8;
+  }
+
+  &__input {
+    @include on-mobile {
+      width: 100%;
+      height: 40px;
+      padding-inline: 8px;
+      background-color: $hoverBGColor;
+      border: 1px solid $elementsColor;
+      border-radius: 8px;
+    }
+
+    @include on-tablet {
+      padding-inline: 16px;
+    }
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+
+
+    &::placeholder {
+      @include on-mobile {
+        font-family: Mont, serif;
+        font-size: 14px;
+      }
+    }
+
+    @include hover(border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $secondaryColor;
+    }
+
+    &:focus {
+      outline: 0;
+      background-color: $elementsColor;
+      border: 1px solid $secondaryColor;
+
+      & ~ &__button {
+        background-color: $elementsColor;
+      }
+    }
+  }
+
+  &__button {
+    @include on-mobile {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: 12px;
+      right: 10px;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  &__button--loupe {
+    background-image: url('../../images/icons/search.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-color: $whiteColor;
+  }
+
+  &__button--clear {
+    background-image: url('../../images/icons/close.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-color: $whiteColor;
+  }
+}
+

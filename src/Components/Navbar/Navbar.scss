@@ -1,0 +1,57 @@
+@import '../../styles/main';
+
+.navbar {
+  @include on-mobile {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+
+  &__item {
+    @include on-mobile {
+      position: relative;
+      display: flex;
+      text-decoration: none;
+      color: $secondaryColor;
+
+      font-family: Mont-Bold, serif;
+      font-size: 12px;
+      line-height: 48px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+    @include on-desktop {
+      line-height: 64px;
+    }
+
+    @include hover (color, $effectDuration);
+
+    &:hover {
+      color: $primaryColor;
+    }
+  }
+
+
+  &__item-active{
+    color: $primaryColor;
+  }
+
+  &__item-active::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 3px;
+    background-color: $primaryColor;
+  }
+}
+

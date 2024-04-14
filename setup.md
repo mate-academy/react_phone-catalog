@@ -24,7 +24,7 @@ npm install eslint eslint-plugin-react eslint-plugin-react-hooks eslint-import-r
 ```
 After installing ESLint, you need to create a configuration file:
 ```
-npx eslint --init 
+npx eslint --init
 ```
 Then you should have an **eslintrc.json** file in the root. Configure it as follows:
 - Copy from one of your homework projects (don't forget to install required packages starting with `@mate-academy/...`)
@@ -62,7 +62,7 @@ Then you should have an **eslintrc.json** file in the root. Configure it as foll
     "rules": {
         // Customize rules here as per your project's needs
     }
-} 
+}
 ```
 
 ----
@@ -77,7 +77,7 @@ touch .prettierrc
 Add the required configuration (this is a small example; you must check all rules here: https://prettier.io/docs/en/options.html):
 ```
 {
-    "printWidth": 100,   
+    "printWidth": 100,
     "tabWidth": 2,
     "singleQuote": true,
     "semi": true,
@@ -188,14 +188,13 @@ Push your change to main branch.
 
 ----
 
-OR you can use easier and most coomon approach to deploy youir applicaiton. 
+OR you can use easier and most coomon approach to deploy youir applicaiton.
 **There are a couple of similar services for faster auto deploy.**
 - [Vercel](https://vercel.com)
 - [Render](https://render.com/)
 - [Heroku](https://www.heroku.com/)
 
-Just register on one of them and follow the instruction. It's very clear and straight forward. 
-
+Just register on one of them and follow the instruction. It's very clear and straight forward.
 
 
 

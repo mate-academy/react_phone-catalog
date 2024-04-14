@@ -1,0 +1,30 @@
+@import '../../styles/main';
+
+.loader {
+  grid-column: 1 / -1;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    width: 3em;
+    height: 3em;
+    margin: 2em auto;
+    border: 0.2em solid $hoverBGColor;
+    border-left-color: $primaryColor;
+    border-top-color: $primaryColor;
+    border-bottom-color: $primaryColor;
+    border-radius: 50%;
+    animation: load 1s infinite linear;
+  }
+}
+
+@keyframes load {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

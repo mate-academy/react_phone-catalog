@@ -1,0 +1,327 @@
+@import '../../styles/main';
+
+.details-page {
+  min-width: 100%;
+  max-width: 1200px;
+
+  &__containar {
+    @include content-padding-inline;
+    @include page-grid;
+  }
+
+  &__title {
+    @include on-mobile {
+      margin-bottom: 32px;
+      grid-column: 1 / -1;
+    }
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__colors {
+    @include on-mobile {
+      grid-column: 1 / -1;
+      margin-bottom: 24px;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 4;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__title-and-id {
+    display: flex;
+    color: $secondaryColor;
+    justify-content: space-between;
+  }
+
+  &__colors-box {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-title {
+    font-size: 12px;
+  }
+
+  &__color-circle {
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elementsColor;
+    border-radius: 50%;
+    margin-bottom: 25px;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $iconsColor;
+    }
+
+    &--active {
+      border: 1px solid $primaryColor;
+    }
+  }
+
+  &__color {
+    margin: 2px;
+    width: 26px;
+    height: 26px;
+    border-radius: 50%;
+  }
+
+  &__color-line {
+    width: 100%;
+    height: 1px;
+    background-color: $elementsColor;
+  }
+
+  &__memory {
+    @include on-mobile {
+      display: flex;
+      gap: 8px;
+      flex-direction: column;
+      grid-column: 1 / -1;
+      margin-bottom: 32px;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__memory-title {
+    font-size: 12px;
+    color: $secondaryColor;
+  }
+
+  &__memory-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__memory-item {
+    border: 1px solid $iconsColor;
+    border-radius: 4px;
+    padding: 7px 8px 4px;
+    text-decoration: none;
+    color: $primaryColor;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &--active {
+      background-color: $primaryColor;
+      border: 1px solid $primaryColor;
+      color: $whiteColor;
+    }
+  }
+
+  &__memory-line {
+    width: 100%;
+    height: 1px;
+    background-color: $elementsColor;
+  }
+
+  &__price-box {
+    @include on-mobile {
+      display: flex;
+      gap: 8px;
+      grid-column: 1 / -1;
+      margin-bottom: 16px;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 6;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+
+    &--price {
+      font-family: Mont-Bold, serif;
+      font-size: 32px;
+      line-height: 41px;
+    }
+
+    &--full-price {
+      font-family: Mont, serif;
+      font-size: 22px;
+      text-decoration: line-through;
+      color: $secondaryColor;
+      line-height: 41px;
+    }
+  }
+
+  &__button-block {
+    @include on-mobile {
+      grid-column: 1 /-1;
+      display: flex;
+      height: 48px;
+      gap: 8px;
+      margin-bottom: 32px;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 7;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__button-cart {
+    width: calc(100% - 48px);
+  }
+
+  &__button-favorite {
+    width: 48px;
+  }
+
+  &__feature {
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      grid-column: 1 / -1;
+      margin-bottom: 56px;
+    }
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+
+  &__feature-item {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__feature-title {
+    color: $secondaryColor;
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__about-name {
+    @include on-mobile {
+      font-family: Mont-Bold, serif;
+      font-size: 20px;
+      margin-bottom: 16px;
+    }
+
+    @include on-tablet {
+      font-size: 22px;
+    }
+  }
+
+  &__about-line {
+    width: 100%;
+    height: 1px;
+    background-color: $elementsColor;
+    margin-bottom: 32px;
+  }
+
+  &__about-item--title {
+    font-family: Mont-Semibold, serif;
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__about-item--text {
+    color: $secondaryColor;
+    margin-bottom: 32px;
+  }
+
+  &__tech-specs {
+    @include on-mobile {
+      grid-column: 1 /-1;
+      margin-bottom: 56px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__tech-specs-title {
+    @include on-mobile {
+      font-family: Mont-Semibold, serif;
+      font-size: 20px;
+      line-height: 25px;
+      margin-bottom: 16px;
+    }
+  }
+
+  &__tech-specs-line {
+    @include on-mobile {
+      width: 100%;
+      height: 1px;
+      background-color: $elementsColor;
+      margin-bottom: 30px;
+    }
+
+    @include on-tablet {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__tech-specs-items {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__carousel {
+    @include on-mobile {
+      padding-left: $paddingMobile;
+      margin-bottom: 56px;
+      grid-column: 1 / -1;
+      overflow-y: hidden;
+    }
+
+    @include on-tablet {
+      padding-left: $paddingTablet;
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      @include content-padding-inline;
+
+      margin-bottom: 80px;
+    }
+  }
+}

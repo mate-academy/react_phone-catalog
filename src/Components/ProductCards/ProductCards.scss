@@ -1,0 +1,24 @@
+@import '../../styles/main';
+
+.product-cards {
+  @include on-mobile {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+    gap: 40px 16px;
+    margin-bottom: 40px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 860px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

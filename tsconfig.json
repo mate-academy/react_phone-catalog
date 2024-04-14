@@ -2,7 +2,7 @@
   "extends": "@mate-academy/students-ts-config",
   "include": [
     "src"
-  ],
+, "src/context/FavoriteContext.tsx"  ],
   "compilerOptions": {
     "sourceMap": false,
     "types": ["node", "cypress"]

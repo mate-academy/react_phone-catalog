@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.back{
+  @include on-mobile {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__icon-arrow-right {
+    width: 16px;
+    height: 16px;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../images/icons/arrow-left.png")
+  }
+
+  &__return-text {
+    font-size: 12px;
+    color: $secondaryColor;
+    line-height: 12px;
+    margin-top: 2px;
+    text-decoration: none;
+  }
+}

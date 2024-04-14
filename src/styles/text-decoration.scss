@@ -1,0 +1,44 @@
+h1 {
+  @include on-mobile {
+    display: block;
+    margin: 0;
+    font-family: Mont-Bold, serif;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: 0.01em;
+  }
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px
+  }
+};
+
+h2 {
+  display: block;
+  margin: 0;
+  font-family: Mont-Bold, serif;
+  font-size: 22px;
+  line-height: 31px;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px
+  }
+};
+
+h3 {
+  display: block;
+  margin: 0;
+  font-family: Mont-Bold, serif;
+  font-size: 22px;
+  line-height: 26px;
+};
+
+p {
+  display: block;
+  margin: 0;
+  font-family: Mont-SemiBold, serif;
+  font-size: 14px;
+  line-height: 21px;
+};
