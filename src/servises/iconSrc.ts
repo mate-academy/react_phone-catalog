@@ -1,6 +1,6 @@
 import { ThemeType } from '../types/ThemeType';
 
-const ICON_BASE_PATH = '/img/icons';
+const ICON_BASE_PATH = 'BASE_URL/img/icons';
 
 const getIconSrc = (iconName: string, theme: ThemeType): string => {
   const themePath = theme === 'dark' ? `--DarkTheme` : '';
