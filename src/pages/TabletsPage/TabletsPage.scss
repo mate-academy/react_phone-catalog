@@ -1,0 +1,11 @@
+@import '../../styles/main.scss';
+
+.tabletsPage {
+  width: 100%;
+  margin-block: 24px 80px;
+  margin-inline: 16px;
+
+  @include onTablet {
+    margin-inline: 0;
+  }
+}

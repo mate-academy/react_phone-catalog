@@ -1,0 +1,71 @@
+@mixin onTablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin onBigTablet {
+  @media (min-width: $tablet-medium-width) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $effect-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+.container {
+  justify-content: center;
+  display: flex;
+  margin: 0 auto;
+  overflow: hidden;
+  min-height: 83vh;
+
+  @include onTablet {
+    width: 592px;
+  }
+
+  @include onBigTablet {
+    width: 896px;
+  }
+
+  @include onDesktop {
+    width: 1136px;
+  }
+}
+
+@mixin listNav {
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+@mixin linkNav {
+  text-decoration: none;
+  color: $color-secondary;
+  position: relative;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
+
+@mixin logo {
+  width: 80px;
+  height: 28px;
+  transition: transform $effect-duration;
+
+  &:hover {
+    @include hover(transform, scale(1.2));
+  }
+}

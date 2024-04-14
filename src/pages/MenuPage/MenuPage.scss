@@ -1,0 +1,150 @@
+@import '../../styles/main.scss';
+
+.pageMenu {
+  @include onTablet {
+    display: none;
+  }
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+  height: calc(100vh - 49px);
+
+  &__content {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin: 24px 16px;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &--item {
+      &--link {
+        @include linkNav;
+
+        &:hover {
+          transition: $effect-duration;
+        }
+
+        &::after {
+          content: "";
+          height: 3px;
+          width: 100%;
+          top: 39px;
+          left: 0;
+          position: absolute;
+          background-color: $color-primary;
+
+          transition: transform $effect-duration;
+          transform: scale(0);
+          transform-origin: center;
+        }
+
+        &:hover::after {
+          @include hover(transform, scale($scale));
+        }
+
+        &--active {
+          color: $color-primary;
+
+          &::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            top: 39px;
+            left: 0;
+            position: absolute;
+            background-color: $color-primary;
+            transform: scale($scale);
+          }
+        }
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 64px;
+
+    &__icon {
+      display: flex;
+      position: relative;
+      box-sizing: border-box;
+      justify-content: center;
+      width: 100%;
+      padding: 24px;
+      border: 1px solid $color-elements;
+
+      &--logo {
+        width: 16px;
+        height: 16px;
+
+        &--link {
+          text-decoration: none;
+          color: $color-secondary;
+
+          &:hover {
+            color: $color-primary;
+          }
+
+          &::after {
+            content: "";
+            height: 3px;
+            width: 100%;
+            top: 39px;
+            left: 0;
+            position: absolute;
+            background-color: $color-primary;
+
+            transition: transform $effect-duration;
+            transform: scale(0);
+            transform-origin: center;
+          }
+
+          &:hover::after {
+            @include hover(transform, scale($scale));
+          }
+
+          &--active {
+            color: $color-primary;
+
+            &::after {
+              content: "";
+              height: 3px;
+              width: 100%;
+              top: 39px;
+              left: 0;
+              position: absolute;
+              background-color: $color-primary;
+              transform: scale($scale);
+            }
+          }
+        }
+      }
+
+      &__counter {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: white;
+        width: 14px;
+        height: 14px;
+        background-color: $color-red;
+        border-radius: 50%;
+        font-size: 9px;
+        font-weight: 600;
+        line-height: 11.5px;
+        position: absolute;
+        top: 30%;
+        right: 41%;
+      }
+    }
+  }
+}

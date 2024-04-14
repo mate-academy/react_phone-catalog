@@ -1,0 +1,258 @@
+@import '../../styles/main.scss';
+
+.smallText{
+  @extend %smallText;
+}
+
+.button {
+  @extend %button;
+}
+
+.cartPage {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+  margin-block: 24px 56px;
+
+  @include onTablet {
+    margin-block: 40px 64px;
+  }
+
+  @include onDesktop {
+    margin-block: 40px 80px;
+  }
+
+  &__container {
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__navigation {
+    margin-bottom: 24px;
+
+    @include onTablet {
+        margin-bottom: 16px;
+      }
+
+    &--link {
+      text-transform: capitalize;
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      background-color: inherit;
+      border: none;
+      padding: 0;
+
+      &--text {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    &--title{
+      @extend %h1;
+    }
+
+    &__container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 32px;
+
+      @include onDesktop {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 16px;
+      }
+    }
+
+    &--products {
+      &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+      }
+
+      &__item {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 16px;
+        gap: 16px;
+        width: 288px;
+        height: 160px;
+        border: 1px solid $color-elements;
+        box-sizing: border-box;
+        align-items: center;
+
+        @include onTablet {
+          display: flex;
+          flex-direction: row;
+          padding: 24px;
+          gap: 24px;
+          width: 592px;
+          height: 128px;
+        }
+
+        @include onDesktop {
+          padding: 24px 40px 24px 24px;
+          width: 752px;
+        }
+
+        &--leftSide {
+          display: flex;
+          flex-direction: row;
+          gap: 8.5px;
+        }
+
+        &--rightSide {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          width: 100%;
+
+          @include onTablet {
+            width: 96%;
+          }
+        }
+
+        &--button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 0;
+          background-color: inherit;
+          border: none;
+
+          transition: transform $effect-duration;
+
+          &:hover {
+            @include hover(transform, scale(1.05));
+          }
+        }
+
+        &--image {
+          width: 80px;
+          height: 80px;
+          object-fit: contain;
+        }
+
+        &--name {
+          align-self: center;
+          font-weight: 500;
+          width: 128px;
+          margin: 0;
+
+          @include onTablet {
+            width: 176px;
+          }
+
+          @include onDesktop {
+            width: 295px;
+          }
+        }
+
+        &__container {
+          display: flex;
+          flex-direction: column;
+        }
+
+        &--quantity {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          width: 96px;
+          justify-content: space-between;
+
+          @include onTablet {
+            margin-inline: 25px 20px;
+          }
+
+          &--counter {
+            font-weight: 500;
+            margin: 0;
+            width: 24px;
+            text-align: center;
+          }
+        }
+
+        &--totalPrice {
+          width: 61px;
+        }
+      }
+
+      &__bill {
+        display: flex;
+        flex-direction: column;
+        width: 238px;
+        height: 140px;
+        border: 1px solid $color-elements;
+        align-items: center;
+        padding: 24px;
+        position: relative;
+
+        @include onTablet {
+          width: 542px;
+        }
+
+        @include onDesktop {
+          width: 318px;
+          height: 156px;
+        }
+
+        &--counter {
+          margin: 0;
+          font-weight: 500;
+          color: $color-secondary;
+        }
+
+        &--line {
+          width: 100%;
+          height: 1px;
+          background-color: $color-elements;
+          margin-block: 16px;
+
+          @include onDesktop {
+            margin-block: 24px;
+          }
+
+        }
+
+        &--button {
+          background-color: $color-primary;
+          color: $color-white;
+          width: 100%;
+          border: none;
+          height: 48px;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          &:hover {
+            box-shadow: 0 2px 4px $color-primary;
+          }
+        }
+
+        &--message {
+          position: absolute;
+          top: 110%;
+        }
+      }
+    }
+  }
+}

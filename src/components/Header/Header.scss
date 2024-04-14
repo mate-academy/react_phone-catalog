@@ -1,0 +1,266 @@
+@import '../../styles/main';
+
+.header {
+  display: flex;
+  background-color: white;
+  flex-direction: row;
+  justify-content: space-between;
+  height: 48px;
+  border-bottom: 1px solid $color-elements;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+
+  @include onDesktop {
+    position: static;
+    height: 64px;
+  }
+
+  &__left-side {
+    display: flex;
+    flex-direction: row;
+    margin-left: 16px;
+
+    @include onDesktop {
+      margin-left: 24px;
+    }
+
+    &__navigation {
+      &--list {
+        @include listNav;
+        align-items: center;
+        height: 100%;
+
+        @include onTablet {
+          gap: 32px;
+        }
+
+        @include onDesktop {
+          gap: 64px;
+        }
+      }
+
+      &--logo {
+        display: block;
+        @include logo;
+      }
+
+      &--item {
+        display: none;
+
+        @include onTablet {
+          display: block;
+
+          &--link {
+            @include linkNav;
+
+            &:hover {
+              transition: $effect-duration;
+            }
+
+            &::after {
+              content: "";
+              height: 3px;
+              width: 100%;
+              top: 26px;
+              left: 0;
+              position: absolute;
+              background-color: $color-primary;
+
+              transition: transform $effect-duration;
+              transform: scale(0);
+              transform-origin: center;
+
+              @include onDesktop {
+                top: 34px;
+              }
+            }
+
+            &:hover::after {
+              @include hover(transform, scale($scale));
+            }
+
+            &--active {
+              color: $color-primary;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                top: 26px;
+                left: 0;
+                position: absolute;
+                background-color: $color-primary;
+                transform: scale($scale);
+
+                @include onDesktop {
+                  top: 34px;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    flex-direction: row;
+
+    &__search {
+      display: none;
+
+      @include onDesktop {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        width: 327px;
+        box-sizing: border-box;
+        padding-inline: 24px;
+        border-left: 1px solid $color-elements;
+      }
+
+      &--query {
+        @extend %search;
+
+        height: 100%;
+        border: none;
+        padding: 0;
+        color: $color-primary;
+
+        &::placeholder {
+          color: $color-icons;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &--icon {
+        width: 16px;
+        transition: transform $effect-duration;
+        cursor: pointer;
+
+        &:hover {
+          @include hover (transform, scale(1.1));
+        }
+      }
+
+      &--button {
+        background-color: inherit;
+        border: none;
+        padding: 0;
+        align-self: center;
+        display: flex;
+      }
+    }
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-left: 1px solid $color-elements;
+
+      &--menu {
+        width: 16px;
+        height: 16px;
+        display: block;
+        padding-inline: 18px;
+
+        &--close {
+          width: 16px;
+          height: 16px;
+          padding: 18px;
+        }
+
+        @include onTablet {
+          display: none;
+        }
+      }
+
+      &--logo {
+        display: none;
+
+        @include onTablet {
+          display: block;
+          width: 16px;
+          height: 16px;
+          padding-inline: 16px;
+
+          &--link {
+            @include linkNav;
+
+            &::after {
+              content: "";
+              height: 3px;
+              width: 100%;
+              bottom: 0;
+              left: 0;
+              top: 29px;
+              position: absolute;
+              background-color: $color-primary;
+
+              transition: transform $effect-duration;
+              transform: scale(0);
+              transform-origin: center;
+
+              @include onDesktop {
+                top: 37px;
+              }
+            }
+
+            &:hover::after {
+              @include hover (transform, scale($scale));
+            }
+
+            &--active {
+              color: $color-primary;
+
+              &::after {
+                content: "";
+                height: 3px;
+                width: 100%;
+                bottom: 0;
+                left: 0;
+                position: absolute;
+                background-color: $color-primary;
+                transform: scale($scale);
+              }
+            }
+          }
+        }
+
+        @include onDesktop {
+          padding-inline: 24px;
+        }
+      }
+
+      &__counter {
+        display: none;
+
+        @include onTablet {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: $color-white;
+          width: 14px;
+          height: 14px;
+          background-color: $color-red;
+          border-radius: 50%;
+          font-size: 9px;
+          font-weight: 600;
+          line-height: 11.5px;
+          position: absolute;
+          top: -30%;
+          right: 20%;
+        }
+
+        @include onDesktop {
+          right: 30%;
+        }
+      }
+    }
+  }
+}

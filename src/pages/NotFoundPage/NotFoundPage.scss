@@ -1,0 +1,14 @@
+@import '../../styles/main.scss';
+
+.page-not-found {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+
+  &__image {
+    max-width: 50%;
+    height: auto;
+  }
+}

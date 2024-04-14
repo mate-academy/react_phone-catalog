@@ -1,0 +1,28 @@
+@import '../../styles/main.scss';
+
+.categoriesList {
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 32px;
+    margin-inline: 16px;
+    width: auto;
+
+      @include onTablet {
+        flex-direction: row;
+        gap: 16px;
+        margin-inline: 0;
+      }
+  }
+}

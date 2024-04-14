@@ -1,0 +1,47 @@
+@import '../../styles/main.scss';
+
+.smallText {
+  @extend %smallText;
+}
+
+.categoryCard {
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  color: inherit;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    @include onTablet {
+      width: 187px;
+      height: 187px;
+    }
+
+    @include onBigTablet {
+      width: 288px;
+      height: 288px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 368px;
+    }
+
+    transition: transform $effect-duration;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__title {
+    text-transform: capitalize;
+    margin-block: 24px 4px;
+  }
+
+  &__models {
+    color: $color-secondary;
+  }
+}

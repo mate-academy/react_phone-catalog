@@ -1,0 +1,109 @@
+@import '../../styles/main.scss';
+
+.banner {
+  &__title {
+    @extend %h1;
+    margin-bottom: 24px;
+    margin-inline: 16px;
+
+    @include onTablet {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      margin-bottom: 32px;
+      margin-inline: 0;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+
+    @include onTablet {
+      gap: 19px;
+    }
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &--images {
+    display: flex;
+    width: 100%;
+    background-color: $color-light-gray;
+    aspect-ratio: 1/1;
+
+    @include onTablet {
+      aspect-ratio: 7/2.8;
+    }
+  }
+
+  &--image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
+    width: 100%;
+    display: none;
+
+    @include onTablet {
+      background-size: cover;
+    }
+
+    &--active {
+      display: block;
+      animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+
+    &--1 {
+      background-image: url('../../images/iphone14.png');
+
+      @include onDesktop {
+        background-size: 900px;
+      }
+    }
+    &--2 {
+      background-image: url('../../images/ipads.jpeg');
+      background-color: white;
+    }
+    &--3 {
+      background-image: url('../../images/Watch.png');
+      background-position: 50% 46%;
+    }
+  }
+
+  &--button {
+    @extend %button;
+    padding-inline: 7px;
+    display: none;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 14px;
+    margin: 18px auto 0;
+  }
+
+  &--item {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+
+    &--active {
+      background-color: $color-primary;
+      animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+  }
+}

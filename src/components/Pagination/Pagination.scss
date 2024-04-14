@@ -1,0 +1,27 @@
+@import '../../styles/main.scss';
+
+.smallButton {
+  @extend %smallButton;
+}
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white;
+    }
+  }
+}

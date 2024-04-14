@@ -1,0 +1,535 @@
+@import '../../styles/main.scss';
+
+.productDetailsPage {
+  margin-block: 24px 56px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    margin-block: 24px 64px;
+  }
+
+  @include onDesktop {
+    margin-block: 24px 80px;
+  }
+  &__container {
+    margin-inline: 16px;
+
+    @include onTablet {
+      margin-inline: 0;
+    }
+  }
+
+  &__loader {
+    display: flex;
+    margin-top: 56px;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    margin-bottom: 16px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    &--top {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &--icon {
+      display: flex;
+    }
+
+    &--path {
+      text-transform: capitalize;
+      color: $color-secondary;
+    }
+
+    &--link {
+      text-decoration: none;
+      text-transform: capitalize;
+      color: $color-primary;
+      display: flex;
+      flex-direction: row;
+      gap: 4px;
+      width: fit-content;
+      background-color: inherit;
+      border: none;
+      padding: 0;
+
+      &--text {
+        color: $color-secondary;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onTablet {
+      gap: 40px;
+    }
+
+    &__header {
+      @extend %h2;
+
+      @include onTablet {
+        font-size: 32px;
+        font-weight: 800;
+        text-align: left;
+      }
+
+      @include onBigTablet {
+        align-self: center;
+      }
+
+      @include onDesktop {
+        align-self: start;
+        line-height: 41px;
+        letter-spacing: -1%;
+      }
+    }
+
+    &__main {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+
+      @include onTablet {
+        gap: 64px;
+      }
+
+      @include onBigTablet {
+        align-items: center;
+      }
+
+      @include onDesktop {
+        align-items: normal;
+        gap: 80px;
+      }
+
+      &__info {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        @include onTablet {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+
+      &__description {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 56px;
+
+        @include onDesktop {
+          flex-direction: row;
+          align-items: baseline;
+          gap: 64px;
+        }
+
+        &--about {
+          display: flex;
+          flex-direction: column;
+          width: 287px;
+          gap: 32px;
+
+          @include onTablet {
+            width: 592px;
+          }
+
+          @include onDesktop {
+            width: 560px;
+          }
+
+          &--title {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          &--details {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            &--description {
+              display: flex;
+              flex-direction: column;
+              gap: 20px;
+            }
+
+            &--text {
+              color: $color-secondary;
+              font-weight: 500;
+              margin: 0;
+            }
+          }
+        }
+
+        &--specs {
+          width: 288px;
+          display: flex;
+          flex-direction: column;
+          gap: 32px;
+
+          @include onTablet {
+            width: 592px;
+          }
+
+          @include onDesktop {
+            width: 512px;
+          }
+
+          &--title {
+            @extend %h2;
+
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+          }
+
+          &--details {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+
+            &--param {
+              width: 100%;
+              display: flex;
+              justify-content: space-between;
+
+              &--name {
+                color: $color-secondary;
+              }
+
+              &--value {
+                font-weight: 500;
+                margin: 0;
+              }
+            }
+          }
+        }
+
+        &--line {
+          width: 100%;
+          height: 1px;
+          background-color: $color-elements;
+        }
+      }
+    }
+
+    &--side-panel {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+        flex-direction: column;
+        background: white;
+        gap: 12px;
+      }
+
+      @include onDesktop {
+        gap: 16px;
+      }
+
+    &--mobile {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+      margin-bottom: 40px;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+      &--buttons {
+        width: 80px;
+        height: 80px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid $color-elements;
+
+        &:hover {
+          border: 1px solid $color-primary;
+        }
+
+        &--active {
+          border: 1px solid $color-primary;
+        }
+      }
+
+      &--image {
+        width: 49px;
+        height: 49px;
+        object-fit: contain;
+
+        @include onTablet {
+          width: 21px;
+          height: 21px;
+        }
+
+        @include onDesktop {
+          width: 64px;
+          height: 64px;
+        }
+      }
+    }
+
+    &--main {
+      display: flex;
+      justify-content: center;
+
+      &--image {
+        height: 288px;
+        object-fit: contain;
+
+        @include onDesktop {
+          width: 464px;
+          height: 464px;
+          margin-right: 48px;
+        }
+      }
+    }
+
+    &--info {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+
+      @include onTablet {
+        width: 275px;
+      }
+
+      @include onDesktop {
+        width: fit-content;
+      }
+
+      &__colors {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--container {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+        }
+
+        &--text {
+          color: $color-secondary;
+        }
+
+        &--link {
+          padding: 3px;
+          border: 1px solid $color-elements;
+          border-radius: 50%;
+
+          &--active {
+            border: 1px solid $color-primary;
+          }
+
+          &:hover {
+            border: 1px solid $color-primary;
+          }
+        }
+
+        &--color {
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+        }
+
+        &--available {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+      }
+
+      &__capacity {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--text {
+          color: $color-secondary;
+        }
+
+        &--available {
+          display: flex;
+          flex-direction: row;
+          gap: 8px;
+        }
+
+        &--link {
+          text-decoration: none;
+          display: flex;
+          width: 56px;
+          height: 32px;
+          justify-content: center;
+          align-items: center;
+          font-weight: 500;
+          color: $color-primary;
+
+          border: 1px solid $color-icons;
+
+          &--active {
+            border: 1px solid $color-primary;
+            background-color: $color-primary;
+
+            color: $color-white;
+          }
+
+          &:hover {
+            border: 1px solid $color-primary;
+          }
+        }
+      }
+
+      &__store {
+        margin-block: 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+
+        &--price {
+          @extend %h2;
+
+          @include onTablet {
+            font-size: 32px;
+            font-weight: 800;
+            line-height:  41px;
+            letter-spacing: -1%;
+          }
+
+          display: flex;
+          justify-content: left;
+          gap: 8px;
+
+          &--full {
+            text-decoration: line-through;
+            color: $color-secondary;
+          }
+        }
+
+        &--buttons {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          gap: 8px;
+          bottom: 0;
+
+          &--cart {
+            @extend %button;
+
+            width: 263px;
+            height: 48px;
+            background-color: $color-primary;
+            box-sizing: border-box;
+            color: $color-white;
+
+            &--active {
+              color: $color-green;
+              border: 1px solid $color-elements;
+              background-color: inherit;
+            }
+
+            &:hover {
+              border: 1px solid $color-primary;
+              box-shadow: 0 2px 4px $color-primary;
+            }
+          }
+
+          &--favourite {
+            width: 48px;
+            height: 48px;
+            background-color: $color-white;
+            border: 1px solid $color-icons;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            display: flex;
+
+            &:hover {
+              border: 1px solid $color-primary;
+            }
+
+            &--active {
+              border: 1px solid $color-elements;
+            }
+          }
+
+          &--icon {
+            transition: transform $effect-duration;
+
+            &:hover {
+              transform: scale(1.1);
+            }
+          }
+        }
+      }
+
+      &__details {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        &--block {
+          display: flex;
+          justify-content: space-between;
+        }
+
+        &--name {
+          color: $color-secondary;
+        }
+      }
+
+      &__line {
+        width: 320px;
+        height: 1px;
+        background-color: $color-elements;
+      }
+    }
+
+    &--id {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+
+      @include onDesktop {
+        margin-left: auto;
+      }
+
+    &--mobile {
+      display: flex;
+
+      @include onTablet {
+        display: none;
+      }
+    }
+
+      &--text {
+        min-width: fit-content;
+        white-space: normal;
+        color: $color-icons;
+      }
+    }
+  }
+};
