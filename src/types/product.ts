@@ -12,3 +12,36 @@ export interface Product {
   year: number;
   image: string;
 }
+
+export interface DescAccessories {
+  title: string;
+  text: string[];
+}
+
+export interface Device {
+  id: string;
+  category: string;
+  namespaceId: string;
+  name: string;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string;
+  images: string[];
+  description: DescAccessories[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  cell: string[];
+  camera: string;
+  zoom: string;
+}
+
+export type Accessory = Omit<Device, 'camera' | 'zoom'>;
+
+export type TypeProduct = 'phones' | 'tablets' | 'accessories';
+export type TypeSort = 'Newest' | 'Alphabetically' | 'Cheapest';
+export type TypeItemOnPage = 'All' | '4' | '8' | '16';

@@ -2,13 +2,12 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import arrowIcon from '../images/icons/arrow-icon.svg';
-import accessoriesBanner from '../images/banner-accessories.png';
-import phonesBanner from '../images/banner-phones.png';
-import tabletsBanner from '../images/banner-tablets.png';
 
-const swiperItems = [accessoriesBanner, phonesBanner, tabletsBanner];
+interface Props {
+  images: string[] | undefined;
+}
 
-export const Banner = () => {
+export const Banner: React.FC<Props> = ({ images }) => {
   return (
     <div className="max-w-6xl	">
       <div className="flex flex-col gap-4.5">
@@ -42,15 +41,16 @@ export const Banner = () => {
               clickable: true,
             }}
           >
-            {swiperItems.map(item => (
-              <SwiperSlide key={item} className="w-full">
-                <img
-                  src={item}
-                  alt="Banner"
-                  className="block h-full w-full object-cover"
-                />
-              </SwiperSlide>
-            ))}
+            {images &&
+              images.map(item => (
+                <SwiperSlide key={item} className="w-full">
+                  <img
+                    src={item}
+                    alt="Banner"
+                    className="block h-full w-full object-cover"
+                  />
+                </SwiperSlide>
+              ))}
           </Swiper>
 
           <button
