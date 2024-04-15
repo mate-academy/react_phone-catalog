@@ -1,10 +1,11 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import { Navbar } from '../Navbar/Navbar';
 import { Aside } from '../Aside/Aside';
 import { FavoriteContext } from '../../context/FavoriteContext';
 import { CartContext } from '../../context/CartContext';
+import { Search } from '../Search/Search';
 
 import './Header.scss';
 
@@ -12,6 +13,12 @@ export const Header = () => {
   const { favoritesProducts } = useContext(FavoriteContext);
   const { cartProducts } = useContext(CartContext);
   const [isActive, setIsActive] = useState(false);
+  const { pathname } = useLocation();
+
+  const searchField =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
 
   useEffect(() => {
     if (isActive) {
@@ -22,7 +29,9 @@ export const Header = () => {
   }, [isActive]);
 
   const favoritesCount = favoritesProducts.length;
-  const cartCount = cartProducts.length;
+  const cartCount = cartProducts.reduce((total, product) => {
+    return total + (product.quantity || 0);
+  }, 0);
 
   return (
     <>
@@ -36,6 +45,8 @@ export const Header = () => {
         </div>
 
         <div className="header__icon-container">
+          {searchField && <Search />}
+
           <NavLink
             to="/favorites"
             className="header__icon header__icon-favourites icon"

@@ -67,6 +67,7 @@
 
     &--active {
       border: 1px solid $primaryColor;
+      pointer-events: none;
     }
   }
 
@@ -130,6 +131,7 @@
       background-color: $primaryColor;
       border: 1px solid $primaryColor;
       color: $whiteColor;
+      pointer-events: none;
     }
   }
 

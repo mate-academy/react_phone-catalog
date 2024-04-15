@@ -19,7 +19,9 @@ export const AddToCart: React.FC<Props> = ({ product }) => {
     let updatedCard: Product[];
 
     if (cartProducts.some(cartProduct => cartProduct.id === newProduct.id)) {
-      return;
+      updatedCard = cartProducts.filter(
+        cartProduct => cartProduct.id !== newProduct.id,
+      );
     } else {
       const productWithQuantity = { ...newProduct, quantity: 1 };
 
