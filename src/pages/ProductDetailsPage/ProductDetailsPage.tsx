@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import {useEffect, useState} from 'react';
+import {useParams} from 'react-router-dom';
 
-import { ProductDetails } from '../../components/Content/ProductDetails';
-import { Breadcrumb } from '../../components/Content/Breadcrumb';
+import {ProductDetails} from '../../components/Content/ProductDetails';
+import {Breadcrumb} from '../../components/Content/Breadcrumb';
 
-import { Products } from '../../type/Productes';
-import { fetchDetails, getProducts } from '../../api';
-import { Details } from '../../type/Details';
+import {Products} from '../../type/Productes';
+import {fetchDetails, getProducts} from '../../api';
+import {Details} from '../../type/Details';
 
 export const ProductDetailsPage = () => {
-  const { productId } = useParams();
+  const {productId} = useParams();
   const [product, setProdukt] = useState<Products>();
   const [details, setDetails] = useState<Details | undefined>();
 

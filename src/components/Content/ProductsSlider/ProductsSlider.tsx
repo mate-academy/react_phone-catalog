@@ -1,7 +1,7 @@
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
 
-import { Card } from '../Card';
-import { Products } from '../../../type/Productes';
+import {Card} from '../Card';
+import {Products} from '../../../type/Productes';
 
 import style from './ProductsSlider.module.scss';
 

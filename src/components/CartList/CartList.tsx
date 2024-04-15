@@ -64,7 +64,7 @@ export const CartList: React.FC = () => {
           <div className={style.cartList}>
             <div className={style.cartList__carts}>
               {priceList.map(product => (
-                <div className={style.cartList__cart}>
+                <div className={style.cartList__cart} key={product.id}>
                   <button
                     className={style.cartList__cart_delete}
                     type="button"

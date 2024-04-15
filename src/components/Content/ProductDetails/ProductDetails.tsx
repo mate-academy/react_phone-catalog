@@ -25,22 +25,25 @@ export const ProductDetails: React.FC<Props> = ({backUrl, details}) => {
   const [produkts, setProdukts] = useState<Products[]>([]);
 
   useEffect(() => {
-    if (details) {
-      setSelectColor(details.color);
-      setSelectCapacity(details.capacity);
-    }
-  }, [details]);
-
-  useEffect(() => {
     getProducts().then(data => {
-      const updatedNewPrice = data.slice(
+      let updatedNewPrice = data;
+
+      if (updatedNewPrice && details?.id) {
+        setSelectColor(details.color);
+        setSelectCapacity(details.capacity);
+        updatedNewPrice = updatedNewPrice.filter(
+          product => product.itemId !== details?.id,
+        );
+      }
+
+      updatedNewPrice = updatedNewPrice.slice(
         produktsNewIndex[0],
         produktsNewIndex[1],
       );
 
       setProdukts(updatedNewPrice);
     });
-  }, [produktsNewIndex]);
+  }, [produktsNewIndex, details]);
 
   if (!details) {
     return null;
