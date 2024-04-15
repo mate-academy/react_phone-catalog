@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { Categories } from './components/Categories';
-import { ProductsSlider } from './components/ProductsSlider';
 import { getHotPriceProducts, getNewProducts } from '../../servises/Products';
 import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 const HomePage: React.FC = () => {
   const [newProducts, setNewProducts] = useState<Product[]>([]);
@@ -38,20 +38,11 @@ const HomePage: React.FC = () => {
       ) : (
         <>
           <PicturesSlider />
-          <ProductsSlider
-            products={newProducts}
-            title="Brand new models"
-            isHomePage={true}
-          />
+          <ProductsSlider products={newProducts} title="Brand new models" />
           <div className={styles.categoriesContainer}>
             <Categories />
           </div>
-          <ProductsSlider
-            products={hotProducts}
-            title="Hot prices"
-            isHotPrice={true}
-            isHomePage={true}
-          />
+          <ProductsSlider products={hotProducts} title="Hot prices" />
         </>
       )}
     </div>

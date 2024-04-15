@@ -7,7 +7,6 @@ import { BASE_URL } from '../../utils/const';
 
 type ProductCardProps = {
   product: Product;
-  isHotPrice?: boolean;
 };
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {

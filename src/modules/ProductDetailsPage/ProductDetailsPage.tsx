@@ -7,12 +7,13 @@ import { Breadcrumbs } from '../../components/Breadcrumbs/Breadcrumbs';
 import { getChevronIconSrc } from '../../servises/iconSrc';
 import { useTheme } from '../../context/ThemeContext';
 import { Product } from '../../types/Product';
-import { getAllProducts } from '../../servises/Products';
+import { getAllProducts, getSuggestedProducts } from '../../servises/Products';
 import { ImageGallery } from './components/ImageGallery';
 import { TechSpecs } from './components/TechSpecs';
 import { Description } from './components/Description';
 import { MainControls } from './components/MainControls';
 import { Loader } from '../../components/Loader';
+import { ProductsSlider } from '../../components/ProductsSlider';
 
 const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{
@@ -24,6 +25,7 @@ const ProductDetailsPage: React.FC = () => {
   const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
   const [allVariants] = useState<ProductDetails[]>([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { theme } = useTheme();
   const chevronIconSrc = getChevronIconSrc(theme);
@@ -36,6 +38,10 @@ const ProductDetailsPage: React.FC = () => {
         const productMatch = allProducts.find(p => p.itemId === productId);
 
         setProduct(productMatch);
+
+        const cugettedProducts: Product[] = await getSuggestedProducts();
+
+        setSuggestedProducts(cugettedProducts);
 
         if (productId) {
           const detailedProduct = await getProductDetails(productId);
@@ -64,27 +70,30 @@ const ProductDetailsPage: React.FC = () => {
 
   return (
     <div className={styles.productDetailsPage}>
-      <Breadcrumbs product={productDetails} />
-      <button onClick={() => navigate(-1)} className={styles.goBackButton}>
-        <img src={chevronIconSrc} alt="home" className={styles.chevronIcon} />
-        <div className={styles.goBackText}>
-          <p>Back</p>
-        </div>
-      </button>
-      <h2 className={styles.title}>{productDetails.name}</h2>
+      <div className={styles.container}>
+        <Breadcrumbs product={productDetails} />
+        <button onClick={() => navigate(-1)} className={styles.goBackButton}>
+          <img src={chevronIconSrc} alt="home" className={styles.chevronIcon} />
+          <div className={styles.goBackText}>
+            <p>Back</p>
+          </div>
+        </button>
+        <h2 className={styles.title}>{productDetails.name}</h2>
+        <ImageGallery
+          images={productDetails.images}
+          productName={product.name}
+        />
+        <MainControls
+          productDetails={productDetails}
+          setProductDetails={setProductDetails}
+          product={product}
+          allVariants={allVariants}
+        />
+        <Description description={productDetails.description} />
+        <TechSpecs productDetails={productDetails} />
+      </div>
 
-      <ImageGallery images={productDetails.images} productName={product.name} />
-
-      <MainControls
-        productDetails={productDetails}
-        setProductDetails={setProductDetails}
-        product={product}
-        allVariants={allVariants}
-      />
-
-      <Description description={productDetails.description} />
-
-      <TechSpecs productDetails={productDetails} />
+      <ProductsSlider title="You may also like" products={suggestedProducts} />
     </div>
   );
 };

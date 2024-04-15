@@ -1,8 +1,9 @@
 @import '../../../../styles/main';
 
-
 .slider {
   @include section-grid;
+
+  padding-inline: 0;
 }
 
 .container {
@@ -15,6 +16,11 @@
 
   @include on-tablet {
     grid-column: 2 / -2;
+    height: 360px;
+  }
+
+  @include middle-screen {
+    height: 410px;
   }
 
   @include on-desktop {

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './ProductsSlider.module.scss';
-import { Product } from '../../../../types/Product';
-import { ProductCard } from '../../../../components/ProductCard';
-import { getChevronIconSrc } from '../../../../servises/iconSrc';
-import { useTheme } from '../../../../context/ThemeContext';
+import { Product } from '../../types/Product';
+import { ProductCard } from '../ProductCard';
+import { getChevronIconSrc } from '../../servises/iconSrc';
+import { useTheme } from '../../context/ThemeContext';
 // eslint-disable-next-line import/no-extraneous-dependencies
 import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
@@ -11,15 +11,10 @@ import classNames from 'classnames';
 type Props = {
   products: Product[];
   title: string;
-  isHotPrice?: boolean;
   isHomePage?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({
-  products,
-  title,
-  isHotPrice,
-}) => {
+export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCardsCount, setVisibleCardsCount] = useState(3);
   const { theme } = useTheme();
@@ -109,7 +104,7 @@ export const ProductsSlider: React.FC<Props> = ({
               transform: `translateX(calc(-${currentIndex * 100}% - ${currentIndex * 16}px))`,
             }}
           >
-            <ProductCard product={product} isHotPrice={isHotPrice} />
+            <ProductCard product={product} />
           </div>
         ))}
       </div>

@@ -1,7 +1,13 @@
-@import '../../../../styles/main';
+@import '../../styles/main';
 
 .productsSlider {
   @include section-grid;
+
+  padding-right: 0;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
 }
 
 .topWrapper {
@@ -9,6 +15,11 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
+  padding-right: 16px;
+
+  @include on-tablet {
+    padding-right: 16px;
+  }
 }
 
 .title {
@@ -57,8 +68,6 @@
   display: flex;
   overflow: hidden;
   gap: 16px;
-
-  padding-right: 0;
 }
 
 .mainContainer {

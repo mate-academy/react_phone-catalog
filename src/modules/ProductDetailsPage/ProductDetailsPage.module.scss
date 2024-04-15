@@ -1,6 +1,12 @@
 @import '../../styles/main';
 
 .productDetailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.container {
   @include section-grid;
 }
 
@@ -41,3 +47,4 @@
     @include h2-tablet;
   }
 }
+
