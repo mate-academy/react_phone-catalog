@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.navigation {
+  height: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 40px;
+
+  &-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &-title {
+    @extend %small-text;
+
+    text-transform: capitalize;
+    color: $color-white;
+
+    &-active {
+      color: $color-secodary;
+    }
+  }
+}

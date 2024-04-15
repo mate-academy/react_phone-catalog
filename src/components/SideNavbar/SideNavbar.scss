@@ -1,0 +1,116 @@
+@import './../../styles/main';
+
+.disabled {
+  display: none;
+  transform: translateX(-100%);
+  transition: transform 0.5s;
+}
+
+.navbar {
+  transform: translateX(0);
+  z-index: 1;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $page-color;
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__list {
+    width: 100%;
+    height: 156px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &-link {
+    @extend %upper-case;
+
+    color: $color-secodary;
+    padding-block: 25px;
+
+    &-active {
+      color: $color-white;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-white;
+      }
+    }
+  }
+
+  &__footer {
+    position: absolute;
+    height: 64px;
+    bottom: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    border-top: 1px solid $color-gray-elements;
+
+    &-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      position: relative;
+
+      &:last-child {
+        border-left: 1px solid $color-gray-elements;
+      }
+
+      &-fav {
+        background-image: url('./../../img/icons/heart.svg');
+      }
+
+      &-cart {
+        background-image: url('./../../img/icons/cart.svg');
+      }
+
+      &-active {
+        position: relative;
+
+        &::after {
+          position: absolute;
+          content: '';
+          display: block;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+          height: 3px;
+          background-color: $color-white;
+        }
+      }
+    }
+
+    &-counter {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      left: 52%;
+      top: 28%;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 12px;
+      color: $color-white;
+      background-image: url('../../img/icons/counter.svg');
+    }
+  }
+}

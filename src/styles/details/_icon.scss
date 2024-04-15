@@ -1,0 +1,79 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  background-position: 50% 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+
+  &-home {
+    background-image: url('./../../img/icons/home.svg');
+  }
+
+  &-left {
+    background-image: url('./../../img/icons/arrowLeft.svg');
+  }
+  
+  &-left-disabled {
+    background-image: url('./../../img/icons/arrowLeftDisable.svg');
+  }
+
+  &-right {
+    background-image: url('./../../img/icons/arrowRight.svg');
+  }
+
+  &-right-disabled {
+    background-image: url('./../../img/icons/arrowRighrDisabled.svg');
+  }
+
+  &-down {
+    background-image: url('./../../img/icons/arrowDown.svg');
+  }
+
+  &-up {
+    background-image: url('./../../img/icons/arrowUp.svg');
+
+    &-gray {
+      background-image: url('./../../img/icons/arrowUpGray.svg');
+    }
+  }
+
+  &-fav {
+    background-image: url('./../../img/icons/heart.svg');
+  }
+
+  &-cart {
+     background-image: url('./../../img/icons/cart.svg');
+  }
+
+  &-remove {
+    background-image: url('./../../img/icons/remove.svg');
+  }
+
+  &-minus {
+    background-image: url('./../../img//icons/minus.svg');
+
+    &-disabled {
+      background-image: url('./../../img/icons/minusDisabled.svg');
+    }
+  }
+
+  &-plus {
+    background-image: url('./../../img/icons/plus.svg');
+  }
+
+  &-search {
+    background-image: url('./../../img/icons/search.svg');
+  }
+
+  &-menu {
+    background-image: url('../../img/icons/menu.svg');
+  }
+
+  &-close {
+    background-image: url('./../../img/icons/сlose.svg');
+  }
+
+  &-counter {
+    background-image: url('./../../img/icons/counter.svg');
+  }
+}

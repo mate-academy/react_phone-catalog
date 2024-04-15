@@ -1,0 +1,61 @@
+@import '../../styles/main';
+
+.category {
+  grid-column: span 8;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  &-wrapper {
+    width: 100%;
+    height: 368px;
+
+    @include hover(scale, 1.1);
+
+    @include on-tablet {
+      width: 100%;
+      height: 187px;
+    }
+
+    @include on-mobile {
+      width: 100%;
+      height: 288px;
+    }
+  }
+
+  &-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: 100%;
+    height: 100%;
+
+    &-phones {
+      background-image: url('../../img/categories/phones.svg');
+    }
+
+    &-tablets {
+      background-image: url('../../img/categories/tablets.svg');
+    }
+
+    &-acessories {
+      background-image: url('../../img/categories/acessories.svg');
+    }
+  }
+
+  &-info {
+    &__title {
+      @extend %h4;
+
+      color: $color-white;
+    }
+
+    &__amount {
+      @extend %body-text;
+
+      color: $color-secodary;
+    }
+  }
+}

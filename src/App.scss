@@ -1,1 +1,27 @@
-// not empty
+@import './styles/main';
+
+.App {
+  position: relative;
+  min-height: 100vh;
+  overflow-x: hidden;
+
+  &-title {
+    transform: translate(100%);
+  }
+}
+
+.container {
+  width: 1136px;
+  margin-inline: auto;
+  margin: 0 auto;
+  padding-top: 90px;
+
+  @include on-tablet {
+    width: auto;
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    padding-inline: 16px;
+  }
+}

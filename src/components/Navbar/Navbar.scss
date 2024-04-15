@@ -1,0 +1,33 @@
+@import '../../styles/main';
+
+.nav {
+  display: flex;
+  gap: 64px;
+
+  @include on-mobile {
+    display: none;
+  }
+
+  &__link {
+    @extend %upper-case;
+
+    color: $color-secodary;
+    padding-block: 25px;
+
+    &-active {
+      color: $color-white;
+      position: relative;
+
+      &::after {
+        position: absolute;
+        content: '';
+        display: block;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: 3px;
+        background-color: $color-white;
+      }
+    }
+  }
+}
