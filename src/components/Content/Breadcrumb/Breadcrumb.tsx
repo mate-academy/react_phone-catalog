@@ -14,8 +14,8 @@ export const Breadcrumb: React.FC<Props> = ({path}) => {
         <img src="./img/svg/Home.svg" alt="" />
       </Link>
 
-      {path.map((e, index) => (
-        <div key={`${e}-${index}`}>
+      {path.map(e => (
+        <div key={`${e}`}>
           <IoIosArrowForward className={style.breadcrumb__arrow} />
           <Link to={`/${e.toLowerCase()}`} className={style.breadcrumb__path}>
             {e}

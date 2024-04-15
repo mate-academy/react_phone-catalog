@@ -5,7 +5,7 @@ import {getProducts} from '../api';
 import {PriceList} from '../type/PriceList';
 import {useLocaleStorage} from '../hooks/useLocalStorage';
 
-type productExistsState = {
+type ProductExistsState = {
   hasProdPriceList: boolean;
   id: string | number;
 } | null;
@@ -32,9 +32,9 @@ export const ProductContext = React.createContext<{
     hasProdPriceList: boolean;
     id: string | number;
   } | null;
-  setProductExists: React.Dispatch<React.SetStateAction<productExistsState>>;
-  selectIdCart: productExistsState;
-  setSelectIdCart: React.Dispatch<React.SetStateAction<productExistsState>>;
+  setProductExists: React.Dispatch<React.SetStateAction<ProductExistsState>>;
+  selectIdCart: ProductExistsState;
+  setSelectIdCart: React.Dispatch<React.SetStateAction<ProductExistsState>>;
   priceList: PriceList[];
   setPriceList: (v: PriceList[]) => void;
   visibleProduct: Products[];
@@ -52,12 +52,12 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
     'favourites',
     [],
   );
-  const [productExists, setProductExists] = useState<productExistsState>(null);
+  const [productExists, setProductExists] = useState<ProductExistsState>(null);
   const [priceList, setPriceList] = useLocaleStorage<PriceList[]>(
     'priceList',
     [],
   );
-  const [selectIdCart, setSelectIdCart] = useState<productExistsState>(null);
+  const [selectIdCart, setSelectIdCart] = useState<ProductExistsState>(null);
   const [product, setProduct] = useState<Products[]>([]);
   const [visibleProduct, setVisibleProduct] = useLocaleStorage<Products[]>(
     'visibleProduct',
