@@ -21,7 +21,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
           <img
             key={image}
             src={`${BASE_URL}/${image}`}
-            alt={`Thumbnail of ${productName}`}
+            alt={`${productName}`}
             className={classNames(styles.thumbnail, {
               [styles.selectedThumbnail]: image === selectedImage,
             })}
@@ -41,7 +41,7 @@ export const ImageGallery: React.FC<ImageGalleryProps> = ({
         {images.map(image => (
           <img
             key={image}
-            src={`/${image}`}
+            src={`${BASE_URL}/${image}`}
             alt={`Thumbnail of ${productName}`}
             className={styles.thumbnail}
             onClick={() => setSelectedImage(image)}
