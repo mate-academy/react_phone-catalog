@@ -49,13 +49,9 @@
   }
 
   &__link-item {
+    @include uppercase-font;
+
     color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
     text-decoration: none;
   }
 
@@ -65,10 +61,9 @@
     align-items: center;
     gap: 16px;
 
+    @include small-font;
+
     color: $secondary-color;
     text-align: center;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
   }
 }

@@ -17,12 +17,7 @@
     border-radius: 48px;
     border: 1px solid $stroke-color;
 
-    color: $primary-color;
-
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
+    @include body-font;
 
     &:hover {
       border: 1px solid $icons-placeholder-color;

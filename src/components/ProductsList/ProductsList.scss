@@ -17,11 +17,7 @@
     width: 136px;
     height: 40px;
 
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
+    @include body-font;
 
     appearance: none;
     -webkit-appearance: none;
@@ -42,10 +38,9 @@
   }
 
   &__label {
+    @include small-font;
+
     color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 700;
   }
 }
 
@@ -69,28 +64,20 @@
 
   &__title {
     margin-top: 24px;
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 32px;
-    font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.32px;
+
+    @include header-font-l;
 
     @include on-tablet {
-      font-size: 48px;
-      line-height: 56px;
-      letter-spacing: -0.48px;
       margin-top: 40px;
     }
   }
 
   &__quantity {
     margin-top: 8px;
+
+    @include body-font;
+
     color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
   }
 
   &__category {

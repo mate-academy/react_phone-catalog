@@ -75,18 +75,15 @@
 
   &__name {
     margin-top: 24px;
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
+
+    @include header-font-s;
   }
 
   &__quantity {
     margin-top: 4px;
+
+    @include body-font;
+
     color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
   }
 }

@@ -16,14 +16,10 @@
   }
 
   &__link {
-    color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 800;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
+    @include uppercase-font;
+
     text-decoration: none;
+    color: $secondary-color;
     transition: ease 0.3s;
 
     &:hover {

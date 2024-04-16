@@ -8,10 +8,9 @@
   flex: 1 0 0;
   border-radius: 48px;
   text-align: center;
-  font-family: Mont, sans-serif;
-  font-size: 14px;
-  line-height: 21px;
   transition: box-shadow 0.3s ease;
+
+  @include buttons-font;
 
   &--primary {
     background: $accent-color;

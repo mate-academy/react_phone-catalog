@@ -11,30 +11,24 @@
       gap: 64px;
     }
   }
-  &__subtitle {
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 20px;
-    font-weight: 700;
 
-    @include on-tablet {
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 140%;
+  &__summary {
+    @include on-desktop {
+      width: 320px;
     }
   }
+  &__subtitle {
+    @include header-font-s;
+  }
   &__name {
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 140%;
+    @include header-font-m;
+  }
 
-    @include on-tablet {
-      font-size: 32px;
-      line-height: 41px;
-      letter-spacing: -0.32px;
-    }
+  &__product-id {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
   }
 
   &__galery {
@@ -55,6 +49,11 @@
       width: 288px;
       height: 288px;
       object-fit: contain;
+
+      @include on-desktop {
+        width: 464px;
+        height: 464px;
+      }
     }
 
     &--thumbnails {
@@ -76,6 +75,11 @@
       object-fit: contain;
       border: 1px solid $icons-placeholder-color;
 
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+      }
+
       &:hover {
         border: 1px solid $primary-color;
       }
@@ -84,10 +88,12 @@
 
   &__colors {
     margin-top: 40px;
+    display: flex;
+    justify-content: space-between;
 
     &-wrapper {
-      display: flex;
-      justify-content: space-between;
+      /* display: flex;
+      justify-content: space-between; */
 
       p {
         color: $secondary-color;
@@ -148,10 +154,8 @@
       justify-content: center;
       align-items: center;
 
-      color: $primary-color;
-      font-family: Mont, sans-serif;
-      font-size: 14px;
-      font-weight: 600;
+      @include body-font;
+
       line-height: 14px;
 
       cursor: pointer;
@@ -210,10 +214,7 @@
     }
 
     &-value {
-      color: $primary-color;
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
+      @include small-font;
     }
   }
 
@@ -227,19 +228,13 @@
       gap: 32px;
 
       &-title {
-        margin-bottom: 16px;
-        color: $primary-color;
-        font-family: Mont, sans-serif;
-        font-size: 16px;
-        font-weight: 700;
+        @include header-font-xs;
       }
 
       &-text {
+        @include body-font;
+
         color: $secondary-color;
-        font-family: Mont, sans-serif;
-        font-size: 14px;
-        font-weight: 600;
-        line-height: 21px;
       }
     }
   }

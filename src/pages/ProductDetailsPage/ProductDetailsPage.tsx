@@ -95,17 +95,17 @@ export const ProductDetailsPage = () => {
             <div className="product-details__colors">
               <div className="product-details__colors-wrapper">
                 <p>Available colors</p>
-                <p className="product-details__product-id">ID: 802390</p>
+                <div className="product-details__color-selector">
+                  {product?.colorsAvailable.map(color => (
+                    <div
+                      className="product-details__color-select"
+                      key={color}
+                      style={{ backgroundColor: color }}
+                    ></div>
+                  ))}
+                </div>
               </div>
-              <div className="product-details__color-selector">
-                {product?.colorsAvailable.map(color => (
-                  <div
-                    className="product-details__color-select"
-                    key={color}
-                    style={{ backgroundColor: color }}
-                  ></div>
-                ))}
-              </div>
+              <p className="product-details__product-id">ID: 802390</p>
             </div>
             <div className="product-details__divider"></div>
             <div className="product-details__capacity">

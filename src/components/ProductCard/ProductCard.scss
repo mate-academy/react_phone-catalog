@@ -39,11 +39,8 @@
 
   &-title {
     margin-top: 24px;
-    color: $primary-color;
-    font-family: Mont, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
+
+    @include body-font;
   }
 
   &-price {
@@ -81,18 +78,14 @@
     }
 
     &__name {
+      @include small-font;
+
       color: $secondary-color;
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-weight: 600;
       flex: 1;
     }
 
     &__value {
-      color: $primary-color;
-      font-family: Mont, sans-serif;
-      font-size: 12px;
-      font-weight: 700;
+      @include small-font;
     }
   }
 

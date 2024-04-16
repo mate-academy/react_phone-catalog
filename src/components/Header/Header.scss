@@ -46,12 +46,8 @@
   }
 
   &__link {
-    font-family: Mont, sans-serif;
-    font-weight: 800;
-    font-size: 12px;
-    line-height: 11px;
-    letter-spacing: 0.48px;
-    text-transform: uppercase;
+    @include uppercase-font;
+
     color: $secondary-color;
     text-decoration: none;
     transition: color 0.3s ease;
