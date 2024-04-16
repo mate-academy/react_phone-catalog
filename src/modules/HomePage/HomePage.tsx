@@ -24,7 +24,7 @@ export const HomePage = () => {
 
   return (
     <>
-      <h1 className={styles.h1}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.h1}>Product Catalog</h1>
 
       <div className={styles.pageStructure}>
         <BannerSlider />

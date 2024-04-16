@@ -19,15 +19,10 @@
 }
 
 .h1 {
-  padding-top: 24px;
-
-  @include content-padding-inline;
-
-  @include on-tablet {
-    padding-top: 32px;
-  }
-
-  @include on-tablet {
-    padding-top: 56px;
-  }
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+  white-space: nowrap;
 }
