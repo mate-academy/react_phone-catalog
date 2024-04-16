@@ -36,14 +36,18 @@
 .link {
   display: block;
   text-decoration: none;
+  transition: transform $transition-duration ease;
 }
 
 .image {
   object-fit: cover;
   width: 100%;
   margin-bottom: 10px;
-}
 
+  &:hover {
+    transform: scale(1.05);
+  }
+}
 
 .category__title {
   @extend %h4-tablet;
