@@ -26,12 +26,10 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-}
-
-.label {
-  color: var(--color-secondary);
 
   @extend %small-text;
+
+  color: var(--color-secondary);
 }
 
 .buttons {

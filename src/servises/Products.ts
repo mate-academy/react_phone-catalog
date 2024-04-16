@@ -1,4 +1,5 @@
 import { Product } from '../types/Product';
+import { ShuffleArray } from '../utils/ShaffleArray';
 import { getData } from '../utils/httpClient';
 
 export const getAllProducts = async (): Promise<Product[]> => {
@@ -31,21 +32,9 @@ export const getNewProducts = async () => {
     .sort((a: Product, b: Product) => b.fullPrice - a.fullPrice);
 };
 
-const shuffleArray = (array: Product[]) => {
-  const shuffledArray = array.slice();
-
-  for (let i = shuffledArray.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-
-    [shuffledArray[i], shuffledArray[j]] = [shuffledArray[j], shuffledArray[i]];
-  }
-
-  return shuffledArray;
-};
-
 export const getSuggestedProducts = async () => {
   const products = await getData<Product[]>('/api/products.json');
-  const suggestedProducts = shuffleArray(products);
+  const suggestedProducts = ShuffleArray(products);
 
   return suggestedProducts;
 };

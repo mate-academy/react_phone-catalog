@@ -4,25 +4,39 @@ import styles from './MainControls.module.scss';
 import { ProductDetails } from '../../../../types/ProductDetails';
 import { ActionButtons } from '../../../../components/ActionButtons';
 import { Product } from '../../../../types/Product';
+// eslint-disable-next-line max-len
+import { fetchProductByColorAndCapacity } from '../../../../servises/ProductsDetails';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   productDetails: ProductDetails;
   setProductDetails: (productDetails: ProductDetails) => void;
   product: Product;
-  allVariants: ProductDetails[];
 };
 
-export const MainControls: React.FC<Props> = ({
-  productDetails,
-  setProductDetails,
-  product,
-}) => {
+export const MainControls: React.FC<Props> = ({ productDetails, product }) => {
+  const navigate = useNavigate();
+
+  const handleAttributeChange = async (color: string, capacity: string) => {
+    const newProductId = await fetchProductByColorAndCapacity(
+      productDetails.category,
+      productDetails.namespaceId,
+      color,
+      capacity,
+    );
+
+    if (newProductId) {
+      navigate(`/products/${newProductId}`);
+    }
+  };
+
   return (
     <div className={styles.mainControls}>
       <div className={styles.selector}>
         <label className={styles.label} htmlFor="capacity">
           Available colors
         </label>
+
         <div className={styles.buttons}>
           {productDetails.colorsAvailable.map(color => (
             <div
@@ -33,9 +47,11 @@ export const MainControls: React.FC<Props> = ({
             >
               <button
                 value={color}
-                onClick={() => setProductDetails({ ...productDetails, color })}
                 style={{ backgroundColor: color }}
                 className={styles.colorButton}
+                onClick={() =>
+                  handleAttributeChange(color, productDetails.capacity)
+                }
               />
             </div>
           ))}
@@ -48,27 +64,32 @@ export const MainControls: React.FC<Props> = ({
         <label className={styles.label} htmlFor="capacity">
           Select Capacity
         </label>
+
         <div className={styles.buttons}>
           {productDetails.capacityAvailable.map(capacity => (
             <button
               key={capacity}
               value={capacity}
-              onClick={() => setProductDetails({ ...productDetails, capacity })}
               className={classNames(styles.capacityButton, {
                 [styles.active]: productDetails.capacity === capacity,
               })}
+              onClick={() =>
+                handleAttributeChange(productDetails.color, capacity)
+              }
             >
               {capacity}
             </button>
           ))}
         </div>
       </div>
+
       <div className={styles.divider}></div>
 
       <div className={styles.price}>
         <div className={styles.existPrice}>${product.fullPrice}</div>
         <div className={styles.hotPrice}>${product.price}</div>
       </div>
+
       {product && <ActionButtons product={product} />}
 
       <ul className={styles.specsList}>

@@ -24,7 +24,6 @@ const ProductDetailsPage: React.FC = () => {
   );
   const [product, setProduct] = useState<Product>();
   const [isLoading, setIsLoading] = useState(true);
-  const [allVariants] = useState<ProductDetails[]>([]);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const navigate = useNavigate();
   const { theme } = useTheme();
@@ -43,8 +42,11 @@ const ProductDetailsPage: React.FC = () => {
 
         setSuggestedProducts(cugettedProducts);
 
-        if (productId) {
-          const detailedProduct = await getProductDetails(productId);
+        if (productId && productMatch) {
+          const detailedProduct = await getProductDetails(
+            productId,
+            productMatch.category,
+          );
 
           setProductDetails(detailedProduct);
         } else {
@@ -87,7 +89,6 @@ const ProductDetailsPage: React.FC = () => {
           productDetails={productDetails}
           setProductDetails={setProductDetails}
           product={product}
-          allVariants={allVariants}
         />
         <Description description={productDetails.description} />
         <TechSpecs productDetails={productDetails} />

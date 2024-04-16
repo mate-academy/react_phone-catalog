@@ -1,41 +1,32 @@
-import { Product } from '../types/Product';
 import { ProductDetails } from '../types/ProductDetails';
 import { getData } from '../utils/httpClient';
 
 export const getProductDetails = async (
   itemId: string,
+  category = 'products',
 ): Promise<ProductDetails | null> => {
-  const allProducts: Product[] = await getData<Product[]>('/api/products.json');
-  const productMatch = allProducts.find(product => product.itemId === itemId);
+  const categoryProducts: ProductDetails[] = await getData<ProductDetails[]>(
+    `/api/${category}.json`,
+  );
+  const detailedProduct = categoryProducts.find(p => p.id === itemId);
 
-  if (productMatch) {
-    const categoryProducts: ProductDetails[] = await getData<ProductDetails[]>(
-      `/api/${productMatch.category}.json`,
-    );
-    const detailedProduct = categoryProducts.find(p => p.id === itemId);
-
-    return detailedProduct ?? null;
-  } else {
-    return null;
-  }
+  return detailedProduct ?? null;
 };
 
-// export const getAllProductDetails = async (
-//   itemId: string,
-//   namespaceId: string,
-// ): Promise<ProductDetails | null> => {
-//   const products: Product[] = await getData<Product[]>('/api/products.json');
-//   const productMatch = products.find(product => product.itemId === itemId);
+export const fetchProductByColorAndCapacity = async (
+  category: string,
+  namespaceId: string,
+  color: string,
+  capacity: string,
+): Promise<string | undefined> => {
+  const allVariants = await getData<ProductDetails[]>(`/api/${category}.json`);
 
-//   if (productMatch) {
-//     const categoryProducts: ProductDetails[] = await getData<ProductDetails[]>(
-//       `/api/${productMatch.category}.json`,
-//     );
+  const matchedProduct = allVariants.find(
+    p =>
+      p.namespaceId === namespaceId &&
+      p.color === color &&
+      p.capacity === capacity,
+  );
 
-//     const detailedProduct = categoryProducts.filter(
-//       p => p.namespaceId === namespaceId,
-//     );
-
-//     return detailedProduct ?? null;
-//   }
-// };
+  return matchedProduct ? matchedProduct.id : undefined;
+};
