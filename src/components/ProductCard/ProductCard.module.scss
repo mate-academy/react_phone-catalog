@@ -65,6 +65,8 @@
 }
 
 .title {
+  text-decoration: none;
+  
   @extend %body-text;
 
   color: var(--color-primary);

@@ -87,6 +87,17 @@
   }
 }
 
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @include middle-screen {
+    gap: 16px;
+  }
+}
+
 .actions {
   display: flex;
   align-items: center;
@@ -101,6 +112,9 @@
 
   width: $with-icons-tablet;
   height: $height-on-tablet;
+
+  flex-shrink: 0;
+  flex-grow: 0;
 
   box-shadow: -1px 0 0 0 var(--color-elements);
 
@@ -117,6 +131,8 @@
   position: relative;
   width: 28px;
   height: 28px;
+
+
 }
 
 .count {

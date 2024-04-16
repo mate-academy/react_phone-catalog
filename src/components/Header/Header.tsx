@@ -73,44 +73,46 @@ const Header: React.FC<HeaderProps> = ({ isMenuOpen, setIsMenuOpen }) => {
             Accessories
           </NavLink>
         </nav>
-        <div className={styles.actions}>
+
+        <div className={styles.actionsContainer}>
           <Search />
           <ToggleTheme />
-          <NavLink
-            to="/favorites"
-            className={({ isActive }) =>
-              classNames(styles.actionItem, { [styles.isActive]: isActive })
-            }
-          >
-            <div className={styles.actionIcon}>
-              <img src={favoritesIconSrc} alt="Favorites" />
-              {favorites.length > 0 && (
-                <span className={styles.count}>
-                  <p className={styles.countText}>{favorites.length}</p>
-                </span>
-              )}
-            </div>
-          </NavLink>
-          <NavLink
-            to="/cart"
-            className={({ isActive }) =>
-              classNames(styles.actionItem, { [styles.isActive]: isActive })
-            }
-          >
-            <div className={styles.actionIcon}>
-              <img src={cartIconSrc} alt="Cart" className={styles.icon} />
-              {cart.length > 0 && (
-                <span className={styles.count}>
-                  <p className={styles.countText}>{cart.length}</p>
-                </span>
-              )}
-            </div>
-          </NavLink>
+          <div className={styles.actions}>
+            <NavLink
+              to="/favorites"
+              className={({ isActive }) =>
+                classNames(styles.actionItem, { [styles.isActive]: isActive })
+              }
+            >
+              <div className={styles.actionIcon}>
+                <img src={favoritesIconSrc} alt="Favorites" />
+                {favorites.length > 0 && (
+                  <span className={styles.count}>
+                    <p className={styles.countText}>{favorites.length}</p>
+                  </span>
+                )}
+              </div>
+            </NavLink>
+            <NavLink
+              to="/cart"
+              className={({ isActive }) =>
+                classNames(styles.actionItem, { [styles.isActive]: isActive })
+              }
+            >
+              <div className={styles.actionIcon}>
+                <img src={cartIconSrc} alt="Cart" className={styles.icon} />
+                {cart.length > 0 && (
+                  <span className={styles.count}>
+                    <p className={styles.countText}>{cart.length}</p>
+                  </span>
+                )}
+              </div>
+            </NavLink>
+          </div>
         </div>
       </div>
 
       <div className={styles.mobile}>
-        <Search />
         <ToggleTheme />
         <button
           type="button"
