@@ -26,7 +26,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
 
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || ItemsPerPage.Four;
-  const sortType = searchParams.get('sort') || '';
+  const sortType = searchParams.get('sort') || 'age';
   const searchQuery = searchParams.get('query') || '';
 
   const actualPerPage = perPage === 'All' ? products.length : parseInt(perPage);
