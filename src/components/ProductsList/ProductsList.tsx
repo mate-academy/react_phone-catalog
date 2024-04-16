@@ -26,7 +26,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
 
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || ItemsPerPage.Four;
-  const sortType = searchParams.get('sort') || FilterType.age;
+  const sortType = searchParams.get('sort') || 'a';
   const searchQuery = searchParams.get('query') || '';
 
   const actualPerPage = perPage === 'All' ? products.length : parseInt(perPage);
@@ -123,8 +123,8 @@ export const ProductsList: React.FC<ProductsListProps> = ({
                 label="Sort by"
                 onChange={handleSortChange}
                 value={sortType}
-                options={Object.values(FilterType).map(value => ({
-                  value,
+                options={Object.entries(FilterType).map(([key, value]) => ({
+                  value: key,
                   label: value,
                 }))}
               />
