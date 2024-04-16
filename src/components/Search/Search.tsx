@@ -42,6 +42,7 @@ export const Search: React.FC = () => {
   return (
     <div className={classNames(styles.search, { [styles.hidden]: isHidden })}>
       <input
+        id="search"
         type="search"
         value={query}
         onChange={handleSearchChange}

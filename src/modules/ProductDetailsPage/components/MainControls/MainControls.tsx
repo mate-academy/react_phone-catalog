@@ -33,9 +33,7 @@ export const MainControls: React.FC<Props> = ({ productDetails, product }) => {
   return (
     <div className={styles.mainControls}>
       <div className={styles.selector}>
-        <label className={styles.label} htmlFor="capacity">
-          Available colors
-        </label>
+        <p className={styles.label}>Available colors</p>
 
         <div className={styles.buttons}>
           {productDetails.colorsAvailable.map(color => (
@@ -61,9 +59,7 @@ export const MainControls: React.FC<Props> = ({ productDetails, product }) => {
       <div className={styles.divider}></div>
 
       <div className={styles.selector}>
-        <label className={styles.label} htmlFor="capacity">
-          Select Capacity
-        </label>
+        <p className={styles.label}>Select Capacity</p>
 
         <div className={styles.buttons}>
           {productDetails.capacityAvailable.map(capacity => (
