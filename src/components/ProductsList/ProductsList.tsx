@@ -26,7 +26,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
 
   const page = parseInt(searchParams.get('page') || '1');
   const perPage = searchParams.get('perPage') || ItemsPerPage.Four;
-  const sortType = searchParams.get('sort') || 'a';
+  const sortType = searchParams.get('sort') || '';
   const searchQuery = searchParams.get('query') || '';
 
   const actualPerPage = perPage === 'All' ? products.length : parseInt(perPage);
@@ -42,10 +42,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
       try {
         const fetchedProducts = await getProductsByCategory(category);
 
-        const sortedProducts = sortProducts(
-          fetchedProducts,
-          sortType as FilterType,
-        );
+        const sortedProducts = sortProducts(fetchedProducts, sortType);
 
         setProducts(sortedProducts);
       } finally {
