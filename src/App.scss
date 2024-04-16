@@ -1,1 +1,38 @@
-// not empty
+@font-face {
+  font-family: "Mont";
+  font-weight: 500;
+  src: url(./fonts/Mont-Regular.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Mont";
+  font-weight: 600;
+  src: url(./fonts/Mont-SemiBold.otf) format("opentype");
+}
+
+@font-face {
+  font-family: "Mont";
+  font-weight: 700;
+  src: url(./fonts/Mont-Bold.otf) format("opentype");
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mont', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+@import "./Components/HomePage/HomePage.module.scss";
+@import "./Components/ProductCard/ProductCard.scss";
+
+
+
