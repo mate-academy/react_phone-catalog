@@ -1,10 +1,8 @@
+import React from 'react';
 import classNames from 'classnames';
 import styles from './VariableChars.module.scss';
 import { colors } from '../../../../helpers/constArrs';
-import React from 'react';
 import { ProductInfo } from '../../../../types/ProductInfo';
-import { ParamType } from '../../../../types/ParamType';
-import { getNewParams } from '../../../../helpers/gaetNewParams';
 import { useNavigate } from 'react-router-dom';
 
 type Props = {
@@ -12,29 +10,47 @@ type Props = {
   productId: string;
 };
 
-export const VariableChars: React.FC<Props> = ({ product, productId }) => {
-  const navigate = useNavigate();
+export const VariableChars: React.FC<Props> = ({ product }) => {
+  const {
+    category,
+    namespaceId,
+    capacity,
+    color,
+    colorsAvailable,
+    capacityAvailable,
+  } = product;
 
-  const handleGetParam = (newParam: string, type: ParamType) => {
-    navigate(`../${getNewParams(productId, newParam, type)}`);
-  };
+  const navigate = useNavigate();
 
   return (
     <div className={styles.variableCharsWrap}>
       <div className={styles.variableChars}>
         <p>Available colors</p>
-        <div className={styles.colorWrap}>
-          {product.colorsAvailable.map(colorName => (
-            <span
-              key={colorName}
-              className={classNames(styles.color, {
-                [styles.colorActive]: product.color === colorName,
-              })}
-              onClick={() => handleGetParam(colorName, 'color')}
-              style={{ backgroundColor: colors[colorName] }}
-            ></span>
-          ))}
-        </div>
+
+        <ul className={styles.colorWrap}>
+          {colorsAvailable.map(colorName => {
+            const colorVar = colors.find(c => c.name === colorName);
+
+            if (!colorVar) {
+              return null;
+            }
+
+            return (
+              <li
+                key={colorName}
+                className={classNames(styles.color, {
+                  [styles.colorActive]: product.color === colorName,
+                })}
+                style={{ backgroundColor: colorVar.value }}
+                onClick={() =>
+                  navigate(
+                    `/${category}/${namespaceId}-${capacity.toLowerCase()}-${colorName.replace(' ', '-')}`,
+                  )
+                }
+              ></li>
+            );
+          })}
+        </ul>
       </div>
 
       <span className={styles.divider}></span>
@@ -42,15 +58,19 @@ export const VariableChars: React.FC<Props> = ({ product, productId }) => {
       <div className={styles.variableChars}>
         <p>Select capacity</p>
         <ul className={styles.capacityWrap}>
-          {product.capacityAvailable.map(capacity => (
+          {capacityAvailable.map(capacityValue => (
             <li
-              key={capacity}
+              key={capacityValue}
               className={classNames(styles.capacity, {
-                [styles.capacityActive]: product.capacity === capacity,
+                [styles.capacityActive]: capacityValue === capacity,
               })}
-              onClick={() => handleGetParam(capacity, 'capacity')}
+              onClick={() =>
+                navigate(
+                  `/${category}/${namespaceId}-${capacityValue.toLowerCase()}-${color}`,
+                )
+              }
             >
-              {capacity.replace('GB', ' GB')}
+              {capacityValue.replace('GB', ' GB')}
             </li>
           ))}
         </ul>

@@ -48,21 +48,20 @@ export const categories = [
   },
 ];
 
-interface ColorPalette {
-  [key: string]: string;
-}
-
-export const colors: ColorPalette = {
-  white: '#fafafa',
-  black: '#0f0f11',
-  silver: '#e8e8e8',
-  red: '#e61736',
-  green: '#85ccae',
-  yellow: '#fae864',
-  purple: '#c7b5f5',
-  gold: '#edccad',
-  rosegold: '#fcd7d2',
-  spacegray: '#636160',
-  midnightgreen: '#607064',
-  coral: '#fa7878',
-};
+export const colors = [
+  { name: 'white', value: '#fafafa' },
+  { name: 'black', value: '#0f0f11' },
+  { name: 'silver', value: '#e8e8e8' },
+  { name: 'red', value: '#e61736' },
+  { name: 'green', value: '#85ccae' },
+  { name: 'yellow', value: '#fae864' },
+  { name: 'purple', value: '#c7b5f5' },
+  { name: 'gold', value: '#edccad' },
+  { name: 'rose gold', value: '#fcd7d2' },
+  { name: 'rosegold', value: '#fcd7d2' },
+  { name: 'spacegray', value: '#636160' },
+  { name: 'space gray', value: '#636160' },
+  { name: 'midnightgreen', value: '#607064' },
+  { name: 'coral', value: '#fa7878' },
+  { name: 'sky blue', value: '#cce6ff' },
+];
