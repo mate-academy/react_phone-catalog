@@ -83,7 +83,7 @@ const ProductDetailsPage: React.FC = () => {
         <h2 className={styles.title}>{productDetails.name}</h2>
         <ImageGallery
           images={productDetails.images}
-          productName={product.name}
+          productName={productDetails.name}
         />
         <MainControls
           productDetails={productDetails}

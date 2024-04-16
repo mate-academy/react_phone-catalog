@@ -39,15 +39,19 @@ export const TechSpecs: React.FC<TechSpecsProps> = ({ productDetails }) => {
           <span className={styles.specsValue}>{productDetails.capacity}</span>
         </li>
 
-        <li className={styles.specs}>
-          <strong className={styles.specsKey}>Camera</strong>
-          <span className={styles.specsValue}>{productDetails.camera}</span>
-        </li>
+        {productDetails.camera && (
+          <li className={styles.specs}>
+            <strong className={styles.specsKey}>Camera</strong>
+            <span className={styles.specsValue}>{productDetails.camera}</span>
+          </li>
+        )}
 
-        <li className={styles.specs}>
-          <strong className={styles.specsKey}>Zoom</strong>
-          <span className={styles.specsValue}>{productDetails.zoom}</span>
-        </li>
+        {productDetails.zoom && (
+          <li className={styles.specs}>
+            <strong className={styles.specsKey}>Zoom</strong>
+            <span className={styles.specsValue}>{productDetails.zoom}</span>
+          </li>
+        )}
 
         <li className={styles.specs}>
           <strong className={styles.specsKey}>Cell</strong>
