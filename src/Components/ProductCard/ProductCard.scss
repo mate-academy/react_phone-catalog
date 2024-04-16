@@ -2,13 +2,11 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
   margin: 0 16px;
 
   border-radius: 8px;
   border: 1px solid #e2e6e9;
   background: #fff;
-  display: flex;
   justify-content: space-between;
   width: 212px;
   height: 439px;
@@ -106,7 +104,6 @@
       justify-content: space-between;
 
       &--add {
-        background: none;
         border: none;
         padding: 0;
         margin: 0;
@@ -129,7 +126,6 @@
 
       &--like {
         background: none;
-        border: none;
         padding: 0;
         margin: 0;
         width: 40px;
