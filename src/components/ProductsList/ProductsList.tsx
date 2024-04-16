@@ -83,8 +83,13 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   );
 
   const startIndex = (page - 1) * actualPerPage;
-  const filteredProducts = products.filter(product =>
-    product.name.toLowerCase().includes(searchQuery.toLowerCase()),
+  const filteredProducts = products.filter(
+    product =>
+      product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.screen.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.capacity.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.ram.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      product.price.toString().includes(searchQuery),
   );
 
   const selectedProducts = filteredProducts.slice(

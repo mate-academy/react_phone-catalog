@@ -1,28 +1,35 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import styles from './Search.module.scss';
 import classNames from 'classnames';
+import debounce from 'lodash.debounce';
 
 export const Search: React.FC = () => {
   const { pathname } = useLocation();
 
   const [searchParams, setSearchParams] = useSearchParams();
-  const query = searchParams.get('query') || '';
+  const [query, setQuery] = useState(searchParams.get('query') || '');
 
   const updateSearchQuery = (value: string) => {
-    const currentSearchParams = new URLSearchParams(searchParams.toString());
+    const trimmedValue = value.trim();
+    const newQuery = new URLSearchParams(searchParams.toString());
 
-    if (value) {
-      currentSearchParams.set('query', value);
+    if (trimmedValue) {
+      newQuery.set('query', trimmedValue);
     } else {
-      currentSearchParams.delete('query');
+      newQuery.delete('query');
     }
 
-    setSearchParams(currentSearchParams);
+    setSearchParams(newQuery);
   };
 
+  const debouncedUpdateSearchQuery = debounce(updateSearchQuery, 500);
+
   const handleSearchChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    updateSearchQuery(event.target.value);
+    const inputValue = event.target.value;
+
+    debouncedUpdateSearchQuery(inputValue);
+    setQuery(inputValue);
   };
 
   const isHidden =
