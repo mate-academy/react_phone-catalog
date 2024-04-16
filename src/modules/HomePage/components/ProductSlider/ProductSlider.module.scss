@@ -1,0 +1,44 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.productSlider {
+  // @include content-padding-inline;
+  overflow: hidden;
+}
+
+.topWrapepr {
+  display: flex;
+  gap: 72px;
+  justify-content: space-between;
+}
+
+.btnSlider {
+  background-color: transparent;
+  border: 0;
+  padding: 0;
+  height: 32px;
+  cursor: pointer;
+}
+
+.btnSlider[disabled] {
+  cursor: auto;
+}
+
+.btnWrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.productsWrap {
+  @include on-desktop {
+    overflow: hidden;
+  }
+}
+
+.products {
+  display: flex;
+  gap: 16px;
+  padding-top: 24px;
+}
+
+

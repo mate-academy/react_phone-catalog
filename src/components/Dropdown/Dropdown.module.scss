@@ -1,0 +1,67 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.dropdown {
+  position: relative;
+}
+
+.dropdownBtn {
+  box-sizing: border-box;
+  background-color: inherit;
+  border-radius: $elements-border-radius;
+  border: 1px solid $btns-border-color;
+  padding-inline: 12px;
+  height: 40px;
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+}
+
+.itemTitle {
+  font-size: 14px;
+}
+
+.btnArrow {
+  height: 16px;
+}
+
+.dropdownMenu {
+  display: none;
+  margin-top: 4px;
+  background-color: $white;
+  width: 100%;
+  z-index: 1;
+
+  position: absolute;
+  padding-block: 8px;
+
+  box-sizing: border-box;
+  border: 1px solid $elements-border-color;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+}
+
+.dropdown.active .dropdownBtn {
+  border: 1px solid $main-text-color;
+}
+
+.dropdown.active .btnArrow {
+  transform: rotate(180deg);
+}
+
+.dropdown.active .dropdownMenu {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdownItem {
+  line-height: 21px;
+  color: $secondary-text-color;
+  padding: 6px 0 5px 12px;
+
+  &:hover {
+    background-color: $bg-color;
+    color: $main-text-color;
+  }
+}

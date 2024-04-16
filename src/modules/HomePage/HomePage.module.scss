@@ -1,0 +1,33 @@
+@use '../../shared//global/GlobalStyles/utils/mixins' as *;
+
+.pageStructure {
+  display: grid;
+  row-gap: 56px;
+  padding-block: 24px 64px;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    row-gap: 64px;
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+    padding-block: 56px 80px;
+  }
+}
+
+.h1 {
+  padding-top: 24px;
+
+  @include content-padding-inline;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-tablet {
+    padding-top: 56px;
+  }
+}

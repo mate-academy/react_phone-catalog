@@ -1,0 +1,21 @@
+@use './utils/mixins.scss' as *;
+@use './utils/vars.scss' as *;
+@use './utils/fonts.scss' as *;
+@use './utils/typography' as *;
+
+body {
+  scroll-behavior: smooth;
+  background-color: $bg-color;
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  color: $main-text-color;
+
+  // min-height: 100vh;
+
+  min-width:320px;
+
+  margin: 0;
+  padding: 0;
+
+  position: relative;
+}

@@ -1,0 +1,32 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.pageNotFound {
+  @include content-padding-inline;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.h1 {
+  text-align: center;
+}
+
+.btn {
+  width: 200px;
+  margin-inline: auto;
+  margin-block: 20px;
+}
+
+.imgWrap {
+  display: flex;
+  justify-content: center;
+  height: 300px;
+  margin-block: 32px;
+}
+
+.img {
+  max-height: 400px;
+  object-fit: contain;
+}

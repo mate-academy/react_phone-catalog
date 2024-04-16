@@ -1,0 +1,14 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+
+.products {
+  display: grid;
+  gap: 40px 16px;
+  grid-template-columns: repeat(auto-fill, minmax(229px, 1fr));
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}

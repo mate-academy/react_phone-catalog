@@ -1,0 +1,28 @@
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.navbarItem {
+  text-transform: uppercase;
+  font-family: $font-family-bold;
+  color: $secondary-text-color;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-decoration: none;
+  position: relative;
+
+  transition: all 0.3s;
+
+  &:hover {
+    color: $main-text-color;
+  }
+
+  &.active {
+    color: $main-text-color;
+
+    @include navbar-item-after;
+  }
+
+  @include on-desktop {
+    padding-block: 26.5px;
+  }
+}

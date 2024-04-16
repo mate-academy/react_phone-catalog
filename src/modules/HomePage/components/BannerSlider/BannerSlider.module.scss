@@ -1,0 +1,89 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.bannerSlider {
+  overflow: hidden;
+}
+
+.mediumSlider {
+  @include on-tablet {
+    // @include content-padding-inline;
+
+    display: flex;
+    gap: 19px;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.sliderContainer {
+    flex: 1;
+    overflow: hidden;
+  }
+
+.sliderWrapper {
+  display: flex;
+  flex-direction: row;
+
+  height: 320px;
+  width: 100%;
+
+  transition: all 0.3s ease-out;
+
+  @include on-tablet {
+    height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.bannerItem {
+  width: 300%;
+  object-fit: cover;
+  object-position: center;
+
+  @include on-tablet {
+    border-radius: $elements-border-radius;
+  }
+}
+
+.bannerBtnsWrapper {
+  display: flex;
+  gap: 9px;
+  justify-content: center;
+  padding-top: 8px;
+ }
+
+.bannerBtns {
+  border: 0;
+  background-color: $elements-border-color;
+  width: 14px;
+  height: 4px;
+  margin: 10px 5px;
+  cursor: pointer;
+
+  &.active {
+    background-color: $main-text-color;
+  }
+ }
+
+ .arrowBtn {
+    background-color: transparent;
+    border: 1px solid $btns-border-color;
+    border-radius: 48px;
+    padding-block: 87px;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    @include on-desktop {
+      padding: 190px 7px;
+    }
+
+    @include hover (border, 1px solid $main-text-color)
+ }

@@ -1,0 +1,31 @@
+@use '../../shared//global/GlobalStyles/utils/mixins' as *;
+@use '../../shared//global/GlobalStyles/utils/vars' as *;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.paginationNums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+}
+
+.paginationBtn {
+  font-family: $font-family-regular;
+}
+
+.paginationBtnActive {
+  color: $white;
+  background-color: $main-text-color;
+}
