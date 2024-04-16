@@ -1,0 +1,194 @@
+@import '../../styles/main';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: var(--color-background);
+  width: 100%;
+  height: $height-on-tablet;
+  gap: 16px;
+
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+
+  box-shadow: 0 1px 0 0 var(--color-elements);
+
+  @include on-desktop {
+    gap: 24px;
+    height: $height-on-desktop;
+  }
+}
+
+.logoLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}
+
+.logo {
+  width: 64px;
+  height: 22px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.container {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+  }
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+}
+
+.navItem {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-right: 32px;
+  height: $height-on-tablet;
+
+  color: var(--color-secondary);
+
+  @extend %uppercase-text;
+
+  cursor: pointer;
+
+  &:hover {
+    color: var(--color-primary);
+  }
+
+  &:last-child {
+    margin-right: 0;
+  }
+
+  @include on-desktop {
+    margin-right: 64px;
+    height: $height-on-desktop;
+  }
+}
+
+.actionsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @include middle-screen {
+    gap: 16px;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+}
+
+.actionItem {
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  width: $with-icons-tablet;
+  height: $height-on-tablet;
+
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  box-shadow: -1px 0 0 0 var(--color-elements);
+
+  @include on-desktop {
+    width: $with-icons-desktop;
+    height: $height-on-desktop;
+  }
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  width: 28px;
+  height: 28px;
+
+
+}
+
+.count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: 0;
+  left: 14px;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-background);
+  background-color: var(--color-red);
+}
+
+.countText {
+  color: #F1F2F9;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+  text-align: center;
+}
+
+.mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.mobileButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: $height-on-tablet;
+  background-color: transparent;
+  border: none;
+  width: $with-icons-tablet;
+  box-shadow: -1px 0 0 0 var(--color-elements);
+  cursor: pointer;
+}
+
+.isActive {
+  color: var(--color-primary);
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-primary);
+  }
+}

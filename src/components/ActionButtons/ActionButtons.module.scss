@@ -1,0 +1,59 @@
+@import '../../styles/main';
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.buttonCard {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  height: 40px;
+  width: 100%;
+  border: 0;
+  background-color: var(--color-button);
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    box-shadow: 0 3px 13px 0 #17203166;
+    background-color: var(--color-button-hover);
+  }
+}
+
+.buttonText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @extend %body-text;
+
+  color: var(--color-white);
+}
+
+.buttonFavorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}

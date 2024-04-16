@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+}
+
+.chevronSpan {
+  display: block;
+}
+
+.chevronIcon {
+  transform: rotate(180deg);
+  opacity: 0.5;
+}
+
+.label {
+  display: flex;
+  text-align: center;
+  padding-top: 2px;
+  height: 15px;
+  text-decoration: none;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+
+.active {
+  color: var(--color-primary);
+}
