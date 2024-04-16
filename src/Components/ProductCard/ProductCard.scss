@@ -1,0 +1,142 @@
+.product__card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  margin: 0 16px;
+
+  border-radius: 8px;
+  border: 1px solid #e2e6e9;
+  background: #fff;
+  display: flex;
+  justify-content: space-between;
+  width: 212px;
+  height: 439px;
+  padding: 32px;
+  font-family: inherit;
+
+  &--top {
+    position: relative;
+    font-family: inherit;
+    display: flex;
+    flex-direction: column;
+
+    &--name {
+      margin: 24px 0 8px;
+      color: #0f0f11;
+      font-family: inherit;
+      font-size: 14px;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 21px;
+    }
+
+    &--img {
+      width: 148px;
+      height: 129px;
+    }
+
+    &::after {
+      position: absolute;
+      content: '';
+      height: 1px;
+      background-color: #e2e6e9;
+      width: 100%;
+      bottom: -8px;
+      left: 0;
+      right: 0;
+    }
+
+    &--price {
+      color: #0f0f11;
+      font-family: inherit;
+      font-size: 22px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+  }
+
+  &--bottom {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    align-items: center;
+
+    &--properties {
+      width: inherit;
+      display: flex;
+      flex-direction: column;
+      padding: 8px 0;
+      gap: 8px;
+
+      &--specific {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      & p {
+        margin: 0;
+        padding: 0;
+        color: #89939a;
+        font-family: inherit;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+
+      & span {
+        color: #0f0f11;
+        text-align: right;
+        font-family: inherit;
+        font-size: 12px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: normal;
+      }
+    }
+
+    &--actions {
+      // padding-top: 8px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: space-between;
+
+      &--add {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        border-radius: 8px;
+        background: #f86800;
+        display: flex;
+        height: 40px;
+        justify-content: center;
+        align-items: center;
+        flex: 1 0 0;
+
+        color: #fff;
+        text-align: center;
+        font-family: inherit;
+        font-size: 14px;
+        font-style: normal;
+        font-weight: 700;
+        line-height: 21px;
+      }
+
+      &--like {
+        background: none;
+        border: none;
+        padding: 0;
+        margin: 0;
+        width: 40px;
+        height: 40px;
+        border-radius: 48px;
+        border: 1px solid #b4bdc3;
+      }
+    }
+  }
+}
