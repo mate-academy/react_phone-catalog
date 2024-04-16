@@ -1,16 +1,21 @@
 import './PhonesPage.scss';
 import { ProductsList } from '../../components/ProductsList';
-import { init as phonesFetch } from '../../features/phonesSlice';
-import { useEffect } from 'react';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useEffect, useState } from 'react';
+import { Product } from '../../types/Product';
+import { getPhones } from '../../api/api';
 
 export const PhonesPage = () => {
-  const dispatch = useAppDispatch();
-  const { phones } = useAppSelector(state => state.phones);
+  const [phones, setPhones] = useState<Product[]>([]);
 
   useEffect(() => {
-    dispatch(phonesFetch());
-  }, [dispatch]);
+    const fetchPhones = async () => {
+      const phonesFromApi = await getPhones;
+
+      setPhones(phonesFromApi);
+    };
+
+    fetchPhones();
+  }, []);
 
   return (
     <>

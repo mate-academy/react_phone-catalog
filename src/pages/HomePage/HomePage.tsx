@@ -1,22 +1,31 @@
 import './HomePage.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Categories } from '../../components/Categories';
 import { PicturesSlider } from '../../components/PicturesSlider';
 import { ProductsSlider } from '../../components/ProductsSlider';
-import { RootState } from '../../app/store';
-import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { init as brandNewProducts } from '../../features/brandNewSlice';
-import { init as hotPricesProducts } from '../../features/hotPricesSlice';
+import { getBrandNew, getHotPrices } from '../../api/api';
+import { Product } from '../../types/Product';
 
 export const HomePage = () => {
-  const dispatch = useAppDispatch();
-  const { brandNew } = useAppSelector((state: RootState) => state.brandNew);
-  const { hotPrices } = useAppSelector((state: RootState) => state.hotPrices);
+  const [hotPrices, setHotPrices] = useState<Product[]>([]);
+  const [brandNew, setBrandNew] = useState<Product[]>([]);
 
   useEffect(() => {
-    dispatch(brandNewProducts());
-    dispatch(hotPricesProducts());
-  }, [dispatch]);
+    const fetchHotPrices = async () => {
+      const hotPricesProducts = await getHotPrices;
+
+      setHotPrices(hotPricesProducts);
+    };
+
+    const fetchBrandNew = async () => {
+      const brandNewProducts = await getBrandNew;
+
+      setBrandNew(brandNewProducts);
+    };
+
+    fetchHotPrices();
+    fetchBrandNew();
+  }, []);
 
   return (
     <div className="container">

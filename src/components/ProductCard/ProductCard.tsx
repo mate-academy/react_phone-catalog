@@ -1,19 +1,72 @@
+import './ProductCard.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { addToCart, removeFromCart } from '../../features/cartSlice';
+import {
+  addToFavorites,
+  removeFromFavorites,
+} from '../../features/favoritesSlice';
 import { Product } from '../../types/Product';
 import { AddButton } from '../AddButton';
 import { RoundButton } from '../RoundButton';
-import './ProductCard.scss';
+import { findProductByItemId } from '../../api/api';
+import { useEffect, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 interface ProductCardProps {
   product: Product;
 }
 
 export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
-  const { image, name, fullPrice, price, screen, capacity, ram } = product;
+  const {
+    image,
+    name,
+    fullPrice,
+    price,
+    screen,
+    capacity,
+    ram,
+    itemId,
+    category,
+  } = product;
+
+  const [isProductInCart, setIsProductInCart] = useState(false);
+  const [isProductInFavorites, setIsProductInFavorites] = useState(false);
+
+  const dispatch = useAppDispatch();
+  const { cart } = useAppSelector(state => state.cart);
+  const { favorites } = useAppSelector(state => state.favorites);
+
+  const handleCartAction = async () => {
+    const productToCart = await findProductByItemId(itemId, category);
+
+    if (isProductInCart) {
+      dispatch(removeFromCart(productToCart.id));
+    } else {
+      dispatch(addToCart(productToCart));
+    }
+  };
+
+  const handleFavoritesAction = async () => {
+    const productToFavorites = await findProductByItemId(itemId, category);
+
+    if (isProductInFavorites) {
+      dispatch(removeFromFavorites(productToFavorites.id));
+    } else {
+      dispatch(addToFavorites(productToFavorites));
+    }
+  };
+
+  useEffect(() => {
+    setIsProductInCart(cart.some(item => item.id === itemId));
+    setIsProductInFavorites(favorites.some(item => item.id === itemId));
+  }, [cart, favorites]);
 
   return (
     <div className="product-card">
-      <img className="product-image" src={image} alt="Product Image" />
-      <p className="product-title">{name} (MQ023)</p>
+      <NavLink to={`/${category}/${itemId}`}>
+        <img className="product-image" src={image} alt="Product Image" />
+        <p className="product-title">{name} (MQ023)</p>
+      </NavLink>
       <div className="product-price">
         <p className="product-price--regular">${price}</p>
         <p className="product-price--discount">${fullPrice}</p>
@@ -34,8 +87,14 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
         </div>
       </div>
       <div className="product-actions">
-        <AddButton text="Add to cart" />
-        <RoundButton buttonType="fav" onClick={() => {}} />
+        <AddButton
+          text={isProductInCart ? 'Added' : 'Add to cart'}
+          onClick={handleCartAction}
+        />
+        <RoundButton
+          buttonType={isProductInFavorites ? 'fav-filled' : 'fav'}
+          onClick={handleFavoritesAction}
+        />
       </div>
     </div>
   );

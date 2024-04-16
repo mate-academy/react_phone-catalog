@@ -14,8 +14,9 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   products,
   category,
 }) => {
-  const [perPage, setPerPage] = useState(4);
+  const [perPage, setPerPage] = useState(16);
   const [currentPage, setCurrentPage] = useState(1);
+  const [sortBy, setSortBy] = useState('newest');
 
   const start = perPage * (currentPage - 1);
   const end = Math.min(perPage * currentPage, products.length);
@@ -26,10 +27,31 @@ export const ProductsList: React.FC<ProductsListProps> = ({
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
+  const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setSortBy(event.target.value);
+  };
+
   const handlePaginationChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
+
+  const sortProducts = (allProducts: Product[], sortType: string) => {
+    const sorted = [...allProducts];
+
+    switch (sortType) {
+      case 'newest':
+        return sorted.sort((a, b) => b.year - a.year);
+      case 'alphabetically':
+        return sorted.sort((a, b) => a.name.localeCompare(b.name));
+      case 'cheapest':
+        return sorted.sort((a, b) => a.price - b.price);
+      default:
+        return sorted;
+    }
+  };
+
+  const productsToShow = sortProducts(products, sortBy);
 
   return (
     <div className="container">
@@ -39,14 +61,19 @@ export const ProductsList: React.FC<ProductsListProps> = ({
           <div className="products-list__arrow-icon"></div>
           <div className="products-list__category">{category}</div>
         </div>
-        <h1 className="products-list__title">Mobile phones</h1>
+        <h1 className="products-list__title">{category}</h1>
         <p className="products-list__quantity">{products.length} models</p>
         <div className="products-list__sorting">
           <div className="select__container">
             <label htmlFor="sortBy" className="select__label">
               Sort by
             </label>
-            <select className="select__box" name="sortBy" id="sortBy">
+            <select
+              className="select__box"
+              name="sortBy"
+              id="sortBy"
+              onChange={handleSortChange}
+            >
               <option value="newest">Newest</option>
               <option value="alphabetically">Alphabetically</option>
               <option value="cheapest">Cheapest</option>
@@ -77,7 +104,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
           </div>
         </div>
         <div className="products-list__container">
-          {products.slice(start, end).map(product => (
+          {productsToShow.slice(start, end).map(product => (
             <ProductCard key={product.id} product={product} />
           ))}
         </div>

@@ -12,6 +12,7 @@
     border-radius: 8px;
     border: 1px solid $stroke-color;
     background: $white-color;
+    cursor: pointer;
 
     @include on-tablet {
       width: 272px;
@@ -29,6 +30,11 @@
     width: 208px;
     height: 196px;
     object-fit: contain;
+    transition: transform 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.1);
+    }
   }
 
   &-title {

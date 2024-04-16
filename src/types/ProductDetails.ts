@@ -4,7 +4,7 @@ export type Description = {
   text: string[];
 };
 
-export type Phone = {
+export type ProductDetails = {
   id: string;
   category: Category;
   namespaceId: string;
@@ -23,5 +23,5 @@ export type Phone = {
   ram: string;
   camera: string;
   zoom: string;
-  cell: string;
+  cell: string[];
 };

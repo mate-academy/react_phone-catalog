@@ -18,6 +18,9 @@ export const Pagination: React.FC<PaginationProps> = ({
   const totalPages = Math.ceil(total / perPage);
   const pagesArray = getNumbers(1, totalPages);
 
+  const startPage = Math.max(1, currentPage - 1);
+  const endPage = Math.min(totalPages, startPage + 3);
+
   const handleNext = () => {
     if (currentPage < totalPages) {
       onPageChange(currentPage + 1);
@@ -37,9 +40,13 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={handlePrev}
         disabled={currentPage === 1}
       >
-        <img src="./img/icons/left.svg" alt="Previous" />
+        {currentPage === 1 ? (
+          <img src="./img/icons/left-gray.svg" alt="Previous" />
+        ) : (
+          <img src="./img/icons/left.svg" alt="Previous" />
+        )}
       </button>
-      {pagesArray.map(page => (
+      {pagesArray.slice(startPage - 1, endPage).map(page => (
         <button
           className={cn('pagination__btn', {
             'pagination__btn--active': currentPage === page,
@@ -55,7 +62,11 @@ export const Pagination: React.FC<PaginationProps> = ({
         onClick={handleNext}
         disabled={currentPage === totalPages}
       >
-        <img src="./img/icons/right.svg" alt="Next" />
+        {currentPage === totalPages ? (
+          <img src="./img/icons/right-gray.svg" alt="Next" />
+        ) : (
+          <img src="./img/icons/right.svg" alt="Next" />
+        )}
       </button>
     </div>
   );

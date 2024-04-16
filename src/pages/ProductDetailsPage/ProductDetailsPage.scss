@@ -1,0 +1,250 @@
+@import '../../App';
+
+.product-details {
+  &__info {
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+  &__subtitle {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+
+    @include on-tablet {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 140%;
+    }
+  }
+  &__name {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+  }
+
+  &__galery {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      flex-direction: row-reverse;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
+
+    &--main {
+      width: 288px;
+      height: 288px;
+      object-fit: contain;
+    }
+
+    &--thumbnails {
+      display: flex;
+      gap: 8px;
+      margin-top: 16px;
+      justify-content: center;
+
+      @include on-tablet {
+        flex-direction: column;
+        margin: 0;
+      }
+    }
+
+    &--thumbnail {
+      width: 50px;
+      height: 50px;
+      border-radius: 4px;
+      object-fit: contain;
+      border: 1px solid $icons-placeholder-color;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+
+  &__colors {
+    margin-top: 40px;
+
+    &-wrapper {
+      display: flex;
+      justify-content: space-between;
+
+      p {
+        color: $secondary-color;
+        font-family: Mont, sans-serif;
+        font-size: 12px;
+        font-weight: 600;
+      }
+    }
+  }
+
+  &__color-selector {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__color-select {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $icons-placeholder-color;
+
+    &:hover {
+      border: 1px solid $primary-color;
+    }
+  }
+
+  &__divider {
+    margin-top: 24px;
+    height: 1px;
+    width: 100%;
+    background-color: $stroke-color;
+  }
+
+  &__capacity {
+    margin-top: 24px;
+
+    p {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    &-selector {
+      margin-top: 8px;
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    &-select {
+      width: 63px;
+      height: 32px;
+      border-radius: 4px;
+      border: 1px solid $icons-placeholder-color;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 14px;
+
+      cursor: pointer;
+
+      &:hover {
+        border: 1px solid $primary-color;
+      }
+    }
+  }
+
+  &__price {
+    margin-top: 32px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &--regular {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+
+    &--discount {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      text-decoration-line: line-through;
+    }
+  }
+
+  &__buttons {
+    margin-top: 16px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__specs {
+    margin-top: 32px;
+
+    &-field {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    &-name {
+      color: $secondary-color;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    &-value {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+    }
+  }
+
+  &__about {
+    margin-top: 56px;
+
+    &-description {
+      margin-top: 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+
+      &-title {
+        margin-bottom: 16px;
+        color: $primary-color;
+        font-family: Mont, sans-serif;
+        font-size: 16px;
+        font-weight: 700;
+      }
+
+      &-text {
+        color: $secondary-color;
+        font-family: Mont, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
+    }
+  }
+
+  &__tech-spechs {
+    margin-top: 56px;
+  }
+}

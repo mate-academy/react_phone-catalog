@@ -5,6 +5,9 @@ import { HomePage } from './pages/HomePage';
 import { store } from './app/store';
 import { Menu } from './components/Menu';
 import { PhonesPage } from './pages/PhonesPage';
+import { TabletsPage } from './pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const Root = () => {
   return (
@@ -15,6 +18,9 @@ export const Root = () => {
             <Route index element={<HomePage />} />
             <Route path="menu" element={<Menu />} />
             <Route path="phones" element={<PhonesPage />} />
+            <Route path="tablets" element={<TabletsPage />} />
+            <Route path="accessories" element={<AccessoriesPage />} />
+            <Route path="/:category/:itemId" element={<ProductDetailsPage />} />
           </Route>
         </Routes>
       </HashRouter>
