@@ -25,7 +25,7 @@ interface BaseIconProps {
 
 const BaseIcon = ({ type }: BaseIconProps) => {
   const iconClassName = type === 'logo' ? styles.logoIcon : styles.iconImg;
-  const iconSrc = `/img/icons/${type}_icon.svg`;
+  const iconSrc = `img/icons/${type}_icon.svg`;
   // let cursorStyle = {};
 
   // if (!isActive && (type === 'arrowLeft' || type === 'arrowRight')) {

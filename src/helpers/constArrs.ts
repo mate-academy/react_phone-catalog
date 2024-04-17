@@ -39,12 +39,12 @@ export const itemsOnPage = [
 ];
 
 export const categories = [
-  { name: 'Mobile phones', link: 'phones', image: '/img/category-phones.png' },
-  { name: 'Tablets', link: 'tablets', image: '/img/category-tablets.png' },
+  { name: 'Mobile phones', link: 'phones', image: 'img/category-phones.png' },
+  { name: 'Tablets', link: 'tablets', image: 'img/category-tablets.png' },
   {
     name: 'Accessories',
     link: 'accessories',
-    image: '/img/category-accessories.png',
+    image: 'img/category-accessories.png',
   },
 ];
 
