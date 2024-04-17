@@ -1,0 +1,48 @@
+@import '../../utils/main.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grey-secondary;
+    background-color: #fff;
+
+    &--left {
+      margin-right: 10px;
+    }
+
+    &--right {
+      margin-left: 10px;
+    }
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid #E2E6E9;
+    margin-right: 5px;
+  
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+
+  &__link {
+    padding: 7px 12px;
+    text-decoration: none;
+    color: $grey-primary;
+
+    &--is-active {
+      color: #fff;
+      background-color: $grey-primary;
+    }
+  }
+}

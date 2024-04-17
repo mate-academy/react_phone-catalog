@@ -1,0 +1,18 @@
+@import '../../utils/main.scss';
+
+.homePage {
+  display: flex;
+  justify-content: center;
+
+  @include onTablet {
+    margin: 0 30px;
+  }
+
+  &__content {
+    margin: 0 20px;
+
+    @include onTablet {
+      margin: 0 30px;
+    }
+  }
+}
