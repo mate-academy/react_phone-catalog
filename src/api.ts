@@ -1,15 +1,15 @@
 import { getProducts } from './utils/fetchProducts';
 
 export const getPhones = () => {
-  return getProducts(`/phones.json`);
+  return getProducts(`api/phones.json`);
 };
 
 export const getTablets = () => {
-  return getProducts(`/tablets.json`);
+  return getProducts(`api/tablets.json`);
 };
 
 export const getAccessories = () => {
-  return getProducts(`/accessories.json`);
+  return getProducts(`api/accessories.json`);
 };
 
 // export const getProductByColor = ({ color, category }: { color: string; category: string; }) => {
