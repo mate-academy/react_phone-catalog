@@ -11,6 +11,11 @@
 
   &__title {
     padding-bottom: 24px;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40.9px;
+    letter-spacing: -0.01em;
+    text-align: left;
   }
 
   &__cards {
@@ -29,8 +34,8 @@
     height: 32px;
     width: 32px;
     background-color: white;
-    color: #B4BDC3;
-    border: 1px solid #B4BDC3;
+    color: #b4bdc3;
+    border: 1px solid #b4bdc3;
     margin-left: 16px;
     cursor: pointer;
 
