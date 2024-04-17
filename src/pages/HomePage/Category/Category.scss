@@ -1,0 +1,108 @@
+@import '../../../utils/main.scss';
+
+.category {
+  max-width: 1199px;
+  margin: 0 auto;
+
+  &__container {
+    margin: 50px 20px 0;
+
+    @include onTablet {
+      margin: 50px 0 0;
+      display: grid;
+    }
+  }
+
+  &__top {
+    grid-column: 1 / 4;
+  }
+
+  &__header {
+   @include header;
+   margin-bottom: 25px;
+  }
+
+  &__block {
+    grid-column: 1 / 5;
+    height: 363px;
+    justify-content: center;
+    align-items: center;
+
+    @include onTablet {
+      grid-row-start: 2;
+      margin-bottom: 0;
+      height: 262px;
+    }
+
+    @include onDesktop {
+      height: 443px;
+    }
+
+    &--mobile {
+      grid-row-start: 2;
+      margin-bottom: 80px;
+
+      @include onTablet {
+        margin-bottom: 0;
+      }
+    }
+
+    &--tablets {
+      grid-row-start: 3;
+      margin-bottom: 80px;
+
+      @include onTablet {
+        grid-row-start: 2;
+        margin-bottom: 0;
+      }
+  
+    }
+
+    &--accessories {
+      grid-row-start: 4;
+      margin-bottom: 50px;
+
+      @include onTablet {
+        grid-row-start: 2;
+        margin-bottom: 0;
+      }
+    }
+    
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+    margin-bottom: 10px;
+
+    @include onTablet {
+      height: 187px;
+      width: 100%;
+    }
+
+    @include onDesktop {
+      height: 368px;
+    }
+  }
+
+  &__mobile {
+    background-color: #FCDBC1;
+  }
+
+  &__tablets {
+    background-color: #8D8D92;
+  }
+
+  &__accessories {
+    background-color: #973D5F;
+  }
+
+  &__name {
+    margin-bottom: 0;
+    @include category-paragraph;
+  }
+
+  &__quantity {
+    @include category-quantity;
+  }
+}

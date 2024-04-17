@@ -1,0 +1,67 @@
+@import '../../utils/main.scss';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 55px;
+  padding: 17px 0;
+  border-top: 1px solid #E2E6E9;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+
+  &__top-head {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 30px 0 20px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 20px;
+    // width: 550px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
+  }
+
+  &__link {
+    @include footer;
+    margin-bottom: 15px;
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 20px;
+
+    @include onTablet {
+      justify-content: flex-start;
+    }
+
+    &__link {
+      @include footer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: all 0.5s ease 0s;
+    }
+
+    &__img {
+      margin-left: 10px;
+      padding: 10px;
+      border: 1px solid $grey-secondary;
+    }
+  }
+}
