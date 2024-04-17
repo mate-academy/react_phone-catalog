@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable max-len */
 import classNames from 'classnames';
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';

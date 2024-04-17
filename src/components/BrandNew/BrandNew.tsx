@@ -1,5 +1,3 @@
-/* eslint-disable @typescript-eslint/indent */
-/* eslint-disable max-len */
 import { useContext } from 'react';
 import { StateStore } from '../../store/StoreContext';
 import { getBrandNewProducts } from '../../helpers/getBrandNewProducts';

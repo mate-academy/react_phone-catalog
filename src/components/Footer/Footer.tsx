@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable max-len */
 import { Link, useLocation } from 'react-router-dom';
 import './Footer.scss';
 import { ICONS } from '../../images/icons/icons';

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable max-len */
 import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 // eslint-disable-next-line import/extensions

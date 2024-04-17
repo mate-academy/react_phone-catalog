@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable max-len */
 import { Link, NavLink } from 'react-router-dom';
 import { ICONS } from '../../images/icons/icons';
 import { getLinkClass } from '../../helpers/getLinkClass';

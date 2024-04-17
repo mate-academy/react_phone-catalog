@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/indent */
+/* eslint-disable max-len */
 import { useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import { StateStore } from '../../store/StoreContext';
