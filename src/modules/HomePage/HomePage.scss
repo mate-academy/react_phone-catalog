@@ -1,6 +1,10 @@
 .home-page {
   margin-bottom: 64px;
 
+  position: relative;
+
+  overflow: hidden;
+
   @include on-desctop {
     margin: 0 auto 80px;
     max-width: fit-content;
@@ -20,6 +24,17 @@
     @include on-desctop {
       padding-block: 56px;
     }
+  }
+
+  &__sidebar {
+    position: absolute;
+
+    top: 0;
+
+    background-color: $back-ground-color-white;
+    box-shadow: inset 0 1px 0 $border-color-light-gray;
+
+    z-index: 1;
   }
 
   &__container {

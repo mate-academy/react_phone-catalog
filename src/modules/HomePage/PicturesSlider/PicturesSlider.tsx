@@ -17,7 +17,7 @@ type Props = {
   windowSize: number;
 };
 
-export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
+export const PicturesSlider: React.FC<Props> = React.memo(({ windowSize }) => {
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const [size, setSize] = useState(windowSize);
@@ -187,4 +187,4 @@ export const PicturesSlider: React.FC<Props> = ({ windowSize }) => {
       </div>
     </div>
   );
-};
+});

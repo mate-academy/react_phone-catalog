@@ -13,8 +13,8 @@
 
     font-size: 14px;
     font-weight: 700;
-    color: #fff;
-    background-color: #313237;
+    color: $back-ground-color-white;
+    background-color: $text-black-color;
     border-radius: 5px;
 
     cursor: pointer;
@@ -23,7 +23,7 @@
   &__add-to-fav {
     padding: 11px;
 
-    border: solid 1px #b4bdc3;
+    border: solid 1px $border-color-default;
     border-radius: 5px;
 
     cursor: pointer;

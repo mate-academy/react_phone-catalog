@@ -60,19 +60,19 @@
     justify-content: center;
     align-items: center;
 
-    color: #313237;
+    color: $text-black-color;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid #b4bdc3; // default
-    background-color: #fff;
+    border: 1px solid $border-color-default; // default
+    background-color: $back-ground-color-white;
 
     &:hover {
-      border: 1px solid #313237; // hover
+      border: 1px solid $border-color-hover; // hover
     }
 
     &.disabled {
-      border: 1px solid #e2e6e9; // disabled
-      color: #b4bdc3; // disabled
+      border: 1px solid $border-color-light-gray; // disabled
+      color: $text-gray-color; // disabled
       cursor: default;
     }
   }

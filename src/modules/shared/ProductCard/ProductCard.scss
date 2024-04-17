@@ -1,4 +1,4 @@
-.new-model-card {
+.product-card {
   padding: 32px;
 
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: center;
   gap: 8px;
 
-  border: solid 1px #e2e6e9;
+  border: solid 1px $border-color-light-gray;
   border-radius: 5px;
 
   &__img-link {
@@ -45,7 +45,7 @@
 
     font-family: Mont-Bold, sans-serif;
     font-size: 22px;
-    color: #313237;
+    color: $text-black-color;
 
     &::after {
       content: "";
@@ -58,7 +58,7 @@
       bottom: -8px;
       transform-origin: left;
 
-      border-bottom: solid 1px #e2e6e9;
+      border-bottom: solid 1px $border-color-light-gray;
     }
   }
 
@@ -82,12 +82,12 @@
 
     font-size: 12px;
     line-height: 15.5px;
-    color: #89939a;
+    color: $text-gray-color;
     font-family: Mont-Bold, sans-serif;
   }
 }
 
 .bold {
-  color: #313237;
+  color: $text-black-color;
   text-transform: uppercase;
 }

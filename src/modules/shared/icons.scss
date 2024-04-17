@@ -1,6 +1,6 @@
 @import "../../modules/constants/vars";
 
-.icon-wrapper {
+.icons-wrapper {
   height: 100%;
 
   display: flex;
@@ -15,7 +15,12 @@
   align-items: center;
   justify-content: center;
 
-  box-shadow: -1px 0 0 #e2e6e9;
+  box-shadow: -1px 0 0 $border-color-light-gray;
+
+  &--close,
+  &--fav {
+    box-shadow: none;
+  }
 
   @include on-desctop {
     width: $header-height-desctop;

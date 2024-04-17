@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
-import { CardCarousel } from '../CardCarousel';
+import { ProductCard } from '../../shared/ProductCard';
 import { getPadding } from '../../../services/getPadding';
 import { getWidthCard } from '../../../services/getWidthCard';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
@@ -187,7 +187,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
               onTouchEnd={handleTouchEnd}
             >
               {products.map(product => (
-                <CardCarousel
+                <ProductCard
                   product={product}
                   key={product.id}
                   widthCard={widthCard}

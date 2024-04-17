@@ -1,10 +1,24 @@
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+import React, { useContext } from 'react';
+import { SidebarContext } from '../../../store/SidebarContext';
 
-export const Header = () => {
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__nav-link navigation-title', {
+    active: isActive,
+  });
+
+export const Header: React.FC = React.memo(() => {
+  const { isOpenSidebar, setIsOpenSidebar } = useContext(SidebarContext);
+
   return (
-    <header className="header" id="#/">
+    <header className="header">
       <div className="header__container">
-        <Link to="/" className="header__logo-link">
+        <Link
+          to="/"
+          className="header__logo-link"
+          onClick={() => setIsOpenSidebar(false)}
+        >
           <img
             src="/img/logo/logo-mobile.svg"
             alt="logo"
@@ -13,21 +27,24 @@ export const Header = () => {
         </Link>
 
         <div className="header__nav">
-          <Link to="home" className="header__nav-link navigation-title">
-            home
-          </Link>
-          <Link to="phones" className="header__nav-link navigation-title">
-            phones
-          </Link>
-          <Link to="tablets" className="header__nav-link navigation-title">
-            tablets
-          </Link>
-          <Link to="accessories" className="header__nav-link navigation-title">
-            accessories
-          </Link>
+          <NavLink to="/" className={getLinkClass}>
+            Home
+          </NavLink>
+
+          <NavLink to="/phones" className={getLinkClass}>
+            Phones
+          </NavLink>
+
+          <NavLink to="/tablets" className={getLinkClass}>
+            Tablets
+          </NavLink>
+
+          <NavLink to="/accessories" className={getLinkClass}>
+            Accessories
+          </NavLink>
         </div>
 
-        <div className="icon-wrapper">
+        <div className="header__navbar-icons icons-wrapper">
           <Link
             to="favourites"
             className="icon-container header__navbar-favourites"
@@ -50,15 +67,33 @@ export const Header = () => {
             />
           </Link>
 
-          <Link to="menu" className="icon-container header__navbar-menu">
+          <button
+            type="button"
+            className="icon-container header__navbar-menu"
+            onClick={() => setIsOpenSidebar(true)}
+          >
             <img
               src="/img/icons/menu.svg"
               alt="menu"
               className="icon icon--menu"
             />
-          </Link>
+          </button>
+
+          <button
+            type="button"
+            // eslint-disable-next-line max-len
+            className="header__navbar-close icon-container icon-container--close"
+            style={isOpenSidebar ? { right: 0 } : { right: '-49px' }}
+            onClick={() => setIsOpenSidebar(false)}
+          >
+            <img
+              src="/img/icons/close.svg"
+              alt="close"
+              className="icon icon--close"
+            />
+          </button>
         </div>
       </div>
     </header>
   );
-};
+});

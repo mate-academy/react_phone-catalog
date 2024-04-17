@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ProductListCarousel } from './ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
 import { client } from '../../api';
 import { Product } from '../../types/Product';
+import { Sidebar } from '../shared/Sidebar';
+import { SidebarContext } from '../../store/SidebarContext';
+import { WIDTH_DEVICES } from '../constants/WIDTH_DEVICES';
 
 const PRODUCT_URL = 'products.json';
 
@@ -22,7 +25,9 @@ function maxDifference(products: Product[]) {
   return result;
 }
 
-export const HomePage = () => {
+export const HomePage = React.memo(() => {
+  const { isOpenSidebar } = useContext(SidebarContext);
+
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
@@ -57,7 +62,7 @@ export const HomePage = () => {
         setDataLoaded(true);
       })
       .catch(() => {});
-  }, []);
+  }, []); // fetch
 
   useEffect(() => {
     const handleResize = () => {
@@ -77,13 +82,20 @@ export const HomePage = () => {
     }
   }, [windowSize]); // adaptive window size with scroll line
 
-  // console.log(unitHotPricesModels);
-
   return (
     <main className="home-page">
       <h1 className="home-page__greeting primary-title">
         Welcome to Nice Gadgets&nbsp;store!
       </h1>
+
+      {windowSize <= WIDTH_DEVICES.mobile && (
+        <div
+          className="home-page__sidebar"
+          style={isOpenSidebar ? { right: 0 } : { right: '-100vw' }}
+        >
+          <Sidebar />
+        </div>
+      )}
 
       <div className="home-page__container">
         <PicturesSlider windowSize={windowSize} />
@@ -112,4 +124,4 @@ export const HomePage = () => {
       </div>
     </main>
   );
-};
+});

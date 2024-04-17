@@ -1,50 +1,50 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import classNames from 'classnames';
+import React, { useContext } from 'react';
+import { SidebarContext } from '../../../store/SidebarContext';
 
-// const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-//   classNames('navbar-item', { 'has-background-grey-lighter': isActive });
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('sidebar__nav-item navigation-title', { active: isActive });
 
-export const Sidebar = () => {
+export const Sidebar = React.memo(() => {
+  const { setIsOpenSidebar } = useContext(SidebarContext);
+
   return (
-    <aside className="sidebar" id="#menu">
-      <Link to="/" className="sidebar__close-link icon-container">
-        <img
-          src="/img/icons/close.svg"
-          alt="close"
-          className="icon icon--close"
-        />
-      </Link>
-
+    <aside className="sidebar">
       <div className="sidebar__nav">
-        <div className="sidebar__nav-item">
-          <NavLink to="/" className="navigation-title">
-            Home
-          </NavLink>
-        </div>
-        <div className="sidebar__nav-item">
-          <NavLink to="phones" className="navigation-title">
-            Phones
-          </NavLink>
-        </div>
-        <div className="sidebar__nav-item">
-          <NavLink to="tablets" className="navigation-title">
-            Tablets
-          </NavLink>
-        </div>
-        <div className="sidebar__nav-item">
-          <NavLink to="accessories" className="navigation-title">
-            Accessories
-          </NavLink>
-        </div>
+        <NavLink
+          to="/"
+          className={getLinkClass}
+          onClick={() => setIsOpenSidebar(false)}
+        >
+          Home
+        </NavLink>
+
+        <NavLink to="/phones" className={getLinkClass}>
+          Phones
+        </NavLink>
+
+        <NavLink to="/tablets" className={getLinkClass}>
+          Tablets
+        </NavLink>
+
+        <NavLink to="/accessories" className={getLinkClass}>
+          Accessories
+        </NavLink>
       </div>
 
       <div className="sidebar__fav-and-cart">
-        <NavLink to="favourites" className="sidebar__fav icon-container">
+        <NavLink
+          to="favourites"
+          className="sidebar__fav icon-container icon-container--fav"
+        >
           <img
             src="/img/icons/favourites.svg"
             alt="favourites"
             className="icon icon--fav"
           />
         </NavLink>
+
         <NavLink to="shoping-cart" className="sidebar__cart icon-container">
           <img
             src="/img/icons/shopping-cart.svg"
@@ -55,4 +55,4 @@ export const Sidebar = () => {
       </div>
     </aside>
   );
-};
+});

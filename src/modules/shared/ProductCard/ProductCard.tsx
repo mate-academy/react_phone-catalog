@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { AddBlock } from '../../shared/AddBlock';
+import { AddBlock } from '../AddBlock';
 import { Product } from '../../../types/Product';
 
 type Props = {
@@ -9,7 +9,7 @@ type Props = {
   hotPrice: boolean;
 };
 
-export const CardCarousel: React.FC<Props> = React.memo(
+export const ProductCard: React.FC<Props> = React.memo(
   ({ product, widthCard, hotPrice }) => {
     const { name, image, fullPrice, price, screen, capacity, ram } = product;
     const modifyScreen = screen
@@ -19,29 +19,29 @@ export const CardCarousel: React.FC<Props> = React.memo(
       .replace(`'`, `”`);
 
     return (
-      <div className="new-model-card" style={{ width: `${widthCard}px` }}>
-        <Link to="/" className="new-model-card__img-link">
-          <img src={image} alt={`${name}`} className="new-model-card__img" />
+      <div className="product-card" style={{ width: `${widthCard}px` }}>
+        <Link to="/" className="product-card__img-link">
+          <img src={image} alt={`${name}`} className="product-card__img" />
         </Link>
 
-        <p className="new-model-card__title">{name}</p>
+        <p className="product-card__title">{name}</p>
 
         {hotPrice ? (
-          <p className="new-model-card__price">
+          <p className="product-card__price">
             {`$${fullPrice}`} <span className="crossed">{`$${price}`}</span>
           </p>
         ) : (
-          <p className="new-model-card__price">{`$${fullPrice}`}</p>
+          <p className="product-card__price">{`$${fullPrice}`}</p>
         )}
 
-        <div className="new-model-card__descr">
-          <p className="new-model-card__descr-item">
+        <div className="product-card__descr">
+          <p className="product-card__descr-item">
             Screen <span className="bold">{modifyScreen}</span>
           </p>
-          <p className="new-model-card__descr-item">
+          <p className="product-card__descr-item">
             Capacity <span className="bold">{capacity}</span>
           </p>
-          <p className="new-model-card__descr-item">
+          <p className="product-card__descr-item">
             RAM <span className="bold">{ram}</span>
           </p>
         </div>

@@ -4,7 +4,7 @@
   position: sticky;
   top: 0;
 
-  background-color: #fff;
+  background-color: $back-ground-color-white;
   z-index: 1;
 
   @include on-desctop {
@@ -17,7 +17,7 @@
     display: flex;
     gap: 16px;
 
-    box-shadow: 0 1px 0 #e2e6e9;
+    box-shadow: 0 1px 0 $border-color-light-gray;
 
     @include on-desctop {
       gap: 24px;
@@ -40,6 +40,30 @@
   &__nav-link {
     display: flex;
     align-items: center;
+
+    position: relative;
+
+    &.active {
+      color: $text-black-color;
+    }
+
+    &.active::after {
+      content: "";
+
+      height: 3px;
+      width: 100%;
+
+      position: absolute;
+      bottom: 0;
+
+      background-color: $text-black-color;
+      border-radius: 3px;
+    }
+  }
+
+  &__navbar-icons {
+    position: relative;
+    overflow: hidden;
   }
 
   &__navbar-favourites,
@@ -52,9 +76,23 @@
   }
 
   &__navbar-menu {
+    border: none;
+    background-color: $back-ground-color-white;
+
+    box-sizing: content-box;
+    border-left: solid 1px $border-color-light-gray;
+
     @include on-tablet {
       display: none;
     }
+  }
+
+  &__navbar-close {
+    position: absolute;
+
+    z-index: 1;
+    border: none;
+    background-color: $back-ground-color-white;
   }
 
   &__logo-link {

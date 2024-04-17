@@ -3,7 +3,7 @@
   line-height: 41px;
   letter-spacing: -1px;
 
-  color: #313237;
+  color: $text-black-color;
 
   @include on-tablet {
     font-size: 48px;
@@ -14,7 +14,7 @@
   font-size: 22px; // необов'язково
   font-family: Mont-Bold, sans-serif;
 
-  color: #313237;
+  color: $text-black-color;
 
   @include on-tablet {
     font-size: 32px;
@@ -28,7 +28,7 @@
   font-size: 20px;
   line-height: 25.5px;
 
-  color: #313237;
+  color: $text-black-color;
 }
 
 .quaternary-title {
@@ -41,8 +41,8 @@
 .navigation-title {
   display: flex;
 
+  font-family: Mont-Bold, sans-serif;
   font-size: 12px;
-  font-weight: 800;
   text-transform: uppercase;
   line-height: 11px;
   color: $text-gray-color;
