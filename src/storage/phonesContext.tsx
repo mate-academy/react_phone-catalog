@@ -31,6 +31,7 @@ type PhonesContextType = {
   plusCartItem: (v: string) => void,
   minusCartItem: (v: string) => void,
   getProductCount: (v: string) => number,
+  cartTotalCount: number,
 };
 
 export const PhonesContext = React.createContext<PhonesContextType>({
@@ -54,6 +55,7 @@ export const PhonesContext = React.createContext<PhonesContextType>({
   plusCartItem: () => {},
   minusCartItem: () => {},
   getProductCount: () => 0,
+  cartTotalCount: 0,
 });
 
 type Props = {
@@ -167,6 +169,10 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
     return cartItem?.count || 0;
   };
 
+  const cartTotalCount = cartProducts.reduce((acc, product) => {
+    return acc + product.count;
+  }, 0);
+
   return (
     <PhonesContext.Provider
       value={{
@@ -190,6 +196,7 @@ export const PhonesProvider: React.FC<Props> = ({ children }) => {
         plusCartItem,
         minusCartItem,
         getProductCount,
+        cartTotalCount,
       }}
     >
       {children}

@@ -52,6 +52,7 @@ export const Header: React.FC = () => {
   const {
     favoritesIds,
     cartProducts,
+    cartTotalCount,
   } = usePhones();
 
   return (
@@ -126,7 +127,7 @@ export const Header: React.FC = () => {
 
           {!!cartProducts.length && (
             <div className="icon__count">
-              {cartProducts.length}
+              {cartTotalCount}
             </div>
           )}
         </NavLink>

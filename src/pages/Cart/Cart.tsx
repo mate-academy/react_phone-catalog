@@ -34,9 +34,7 @@ export const Cart: React.FC = () => {
     return acc + (getProductCount(product.itemId) * product.price);
   }, 0);
 
-  const totalCount = cartProducts.reduce((acc, product) => {
-    return acc + product.count;
-  }, 0);
+  const { cartTotalCount } = usePhones();
 
   return (
     <section className="cart">
@@ -71,7 +69,7 @@ export const Cart: React.FC = () => {
                   </h2>
 
                   <p className="cart__order-count">
-                    {`Total for ${totalCount} ${totalCount > 1 ? 'items' : 'item'}`}
+                    {`Total for ${cartTotalCount} ${cartTotalCount > 1 ? 'items' : 'item'}`}
                   </p>
 
                   <div className="cart__order-line" />
