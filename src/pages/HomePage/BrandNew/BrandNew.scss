@@ -1,0 +1,68 @@
+@import '../../../utils/main.scss';
+
+.hotPrices {
+  &__container {
+    margin: 0 auto;
+    margin-top: 50px;
+    max-width: 500px;
+  
+    @include onTablet {
+      max-width: 1200px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+  }
+
+  &__head {
+   @include header;
+   max-width: 250px;
+
+   @include onTablet {
+    max-width: none;
+   }
+  }
+
+  &__arrays {
+    display: flex;
+
+    &__button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      background-color: #fff;
+      border: 1px solid $grey-primary;
+      cursor: pointer;
+
+      &:disabled {
+        border: 1px solid $grey-secondary;
+      }
+    }
+
+    &__left {
+      margin-right: 10px;
+    }
+
+    &__img {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 5px;
+    }
+  }
+
+  &__ribbon {
+    display: flex;
+    justify-content: space-between;
+    gap: $card-gap;
+  }
+}

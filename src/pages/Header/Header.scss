@@ -1,0 +1,71 @@
+@import '../../utils/main.scss';
+
+html {
+  margin: 0;
+}
+
+// body {
+//   margin: 0;
+// }
+
+// .page__body {
+//   scroll-behavior: smooth;
+//   margin: 0;
+//   align-items: center;
+// }
+
+.header {
+  display: flex;
+
+  justify-content: space-between;
+  border-bottom: 1px solid #E2E6E9;
+
+  &__block {
+    display: flex;
+  }
+
+  &__top-head {
+    display: flex;
+    align-items: center;
+    margin: 0 30px 0 20px;
+  }
+
+  &__top-heads {
+    align-items: center;
+    padding: 20px;
+  }
+
+  &__home {
+    @include top-menu;
+    margin-right: 50px;
+  }
+
+  &__phones {
+    @include top-menu;
+    margin-right: 50px;
+  }
+
+  &__tablets {
+    @include top-menu;
+    margin-right: 50px;
+  }
+
+  &__accessories {
+    @include top-menu;
+    margin-right: 50px;
+  }
+
+  &__preferies {
+    display: flex;
+  }
+
+  &__favorites {
+    padding: 20px;
+    border-left: 1px solid #E2E6E9;
+    border-right: 1px solid #E2E6E9;
+  }
+
+  &__cart {
+    padding: 20px 20px 0 20px;
+  }
+}
