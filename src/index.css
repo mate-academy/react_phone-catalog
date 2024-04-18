@@ -77,10 +77,6 @@
   }
 
   .content {
-    @apply mx-auto max-w-[theme('screens.lg')] md:px-6 lg:px-8;
-  }
-
-  .padding-inline-sm {
-    @apply px-4
+    @apply mx-auto max-w-[theme('screens.lg')] w-full px-4 md:px-6 lg:px-8;
   }
 }

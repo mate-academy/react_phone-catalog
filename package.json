@@ -9,7 +9,6 @@
     "@cypress/react18": "^2.0.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
     "@tanstack/react-query": "^5.29.0",
-    "aos": "^3.0.0-beta.6",
     "axios": "^1.6.8",
     "howler": "^2.2.4",
     "react": "^18.2.0",

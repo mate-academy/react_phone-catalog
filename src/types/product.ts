@@ -36,11 +36,9 @@ export interface Device {
   processor: string;
   ram: string;
   cell: string[];
-  camera: string;
-  zoom: string;
+  camera?: string;
+  zoom?: string;
 }
-
-export type Accessory = Omit<Device, 'camera' | 'zoom'>;
 
 export type TypeProduct = 'phones' | 'tablets' | 'accessories';
 export type TypeSort = 'Newest' | 'Alphabetically' | 'Cheapest';

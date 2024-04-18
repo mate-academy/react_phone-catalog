@@ -4,6 +4,9 @@ import {
   TypeProduct,
   TypeSort,
 } from '../types/product';
+import { getAccessories } from './accessories';
+import { getPhones } from './phones';
+import { getTablets } from './tablets';
 import { client } from '../utils/axiosClient';
 
 export const getProductCards = () => {
@@ -56,3 +59,39 @@ export const getPreparedProducts = (
     );
   });
 };
+
+export const getAmountOfProducts = async () => {
+  const [accessories, phones, tablets] = await Promise.all([
+    getAccessories(),
+    getPhones(),
+    getTablets(),
+  ]);
+
+  return {
+    phones: phones.length,
+    tablets: tablets.length,
+    accessories: accessories.length,
+  };
+};
+
+export const getProductInfo = (id: string) => {
+  return Promise.any([
+    getAccessories().then(
+      res => res.find(product => product.id === id) || Promise.reject(null),
+    ),
+    getPhones().then(
+      res => res.find(product => product.id === id) || Promise.reject(null),
+    ),
+    getTablets().then(
+      res => res.find(product => product.id === id) || Promise.reject(null),
+    ),
+  ]);
+};
+
+export const getRandomProducts = (amount: number) =>
+  getProductCards().then(res =>
+    Array.from(
+      { length: amount },
+      () => res[Math.floor(Math.random() * res.length)],
+    ),
+  );

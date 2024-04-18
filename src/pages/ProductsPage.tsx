@@ -3,10 +3,9 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { DropdownButton } from '../components/DropdownButton';
 import { SearchParams, getSearchWith } from '../helpers/searchHelper';
 import { Pagination } from '../components/Pagination';
-import { getPreparedProducts } from '../api/products';
+import { getAmountOfProducts, getPreparedProducts } from '../api/products';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { TypeItemOnPage, TypeProduct, TypeSort } from '../types/product';
-import { getAmountOfProducts } from '../api/categoriesLength';
 import { Loader } from '../components/Loader';
 import { ProductCard } from '../components/ProductCard';
 
@@ -76,11 +75,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     amountOfProducts && Math.ceil(amountOfProducts[type] / +itemsOnPage);
 
   return (
-    <main
-      className="
-        content padding-inline-sm flex w-full flex-col gap-8 pt-6 md:gap-10
-      "
-    >
+    <main className="content flex w-full flex-col gap-8 pt-6 md:gap-10">
       <Breadcrumbs />
 
       <div>

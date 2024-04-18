@@ -15,8 +15,17 @@ export const ProductCard: React.FC<Props> = ({
   product,
   discount = true,
 }) => {
-  const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
-    product;
+  const {
+    itemId,
+    name,
+    fullPrice,
+    price,
+    screen,
+    category,
+    capacity,
+    ram,
+    image,
+  } = product;
 
   return (
     <article
@@ -26,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({
         className,
       )}
     >
-      <Link to={`/product/${itemId}`} className="flex justify-center">
+      <Link to={`/${category}/${itemId}`} className="flex justify-center">
         <img
           src={image}
           alt="Phone"
@@ -65,8 +74,8 @@ export const ProductCard: React.FC<Props> = ({
       <div className="flex h-10 gap-2">
         <ButtonCard className="h-full w-full">Add to cart</ButtonCard>
         <ButtonCard
-          className=" flex aspect-square h-full items-center
-              justify-center border border-icons bg-white"
+          className="flex aspect-square h-full items-center
+            justify-center border border-icons bg-white"
         >
           <img src={favoritesGoods} alt="Favorites Good" />
         </ButtonCard>

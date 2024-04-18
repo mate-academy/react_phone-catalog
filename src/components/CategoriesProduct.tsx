@@ -16,7 +16,7 @@ export const CategoriesProduct: React.FC<Props> = ({
 }) => {
   return (
     <section
-      className={twMerge('padding-inline-sm flex flex-col gap-6', className)}
+      className={twMerge('content flex flex-col gap-6', className)}
       {...rest}
     >
       <h3>{title}</h3>

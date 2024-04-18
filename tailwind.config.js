@@ -5,7 +5,7 @@ module.exports = {
     screens: {
       sm: '320px',
       md: '640px',
-      lg: '1236px',
+      lg: '1200px',
     },
     colors: {
       'primary': '#313237',
@@ -32,6 +32,7 @@ module.exports = {
       height: {
         '126.5': '31.625rem',
         '100': '25rem',
+        '13': '3.125rem',
         '5.5': '1.375rem',
         '0.75': '0.1875rem',
       },
@@ -44,6 +45,10 @@ module.exports = {
       width: {
         '68': '17rem',
         '53': '13.25rem',
+      },
+
+      maxWidth: {
+        '116': '29rem',
       },
     },
   },

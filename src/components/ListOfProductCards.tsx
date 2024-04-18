@@ -42,12 +42,9 @@ export const ListOfProductCards: React.FC<Props> = ({
   };
 
   return (
-    <section
-      className={twMerge('padding-inline-sm flex flex-col gap-6', className)}
-      {...rest}
-    >
+    <section className={twMerge('flex flex-col gap-6', className)} {...rest}>
       <div className="flex items-center justify-between">
-        <h3 className="padding-inline-sm md:px-0">{title}</h3>
+        <h3>{title}</h3>
 
         <div className="flex justify-between gap-4">
           <SliderButton id="list-card-prew-button" disabled={slider.first}>

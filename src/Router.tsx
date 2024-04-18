@@ -1,10 +1,10 @@
 import { HashRouter, Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
-import { NotFoundPage } from './components/NotFoundPage';
 import { ProductsPage } from './pages/ProductsPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { InfoProductPage } from './pages/InfoProductPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 const queryClient = new QueryClient();
 
@@ -21,7 +21,7 @@ export const Router = () => (
             path="accessories"
             element={<ProductsPage type="accessories" />}
           />
-          <Route path="product">
+          <Route path=":product">
             <Route path=":productId" element={<InfoProductPage />} />
           </Route>
 
