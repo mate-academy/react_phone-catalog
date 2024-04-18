@@ -3,23 +3,46 @@ import { ProductsList } from '../../components/ProductsList';
 import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { getPhones } from '../../api/api';
+import { Loader } from '../../components/Loader';
+import { AddButton } from '../../components/AddButton';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<boolean>(false);
+
+  const fetchPhones = () => {
+    setIsLoading(true);
+    setError(false);
+    getPhones
+      .then(phonesFromApi => {
+        setPhones(phonesFromApi);
+        setIsLoading(false);
+      })
+      .catch(() => {
+        setError(true);
+        setIsLoading(false);
+      });
+  };
 
   useEffect(() => {
-    const fetchPhones = async () => {
-      const phonesFromApi = await getPhones;
-
-      setPhones(phonesFromApi);
-    };
-
     fetchPhones();
   }, []);
 
   return (
     <>
-      <ProductsList products={phones} category="Phones" />
+      {isLoading ? (
+        <Loader />
+      ) : error ? (
+        <div className="error-container">
+          Something went wrong...
+          <AddButton text="Reload" onClick={fetchPhones} />
+        </div>
+      ) : phones.length === 0 ? (
+        <div>There are no phones yet</div>
+      ) : (
+        <ProductsList products={phones} category="Phones" />
+      )}
     </>
   );
 };

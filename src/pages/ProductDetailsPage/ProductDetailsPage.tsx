@@ -1,7 +1,7 @@
 import { useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
 import { useEffect, useState } from 'react';
-import { findProductByItemId } from '../../api/api';
+import { findProductByItemId, getSuggestedProducts } from '../../api/api';
 import { AddButton } from '../../components/AddButton';
 import { RoundButton } from '../../components/RoundButton';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -11,10 +11,17 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../features/favoritesSlice';
+import { Product } from '../../types/Product';
+import { ProductsSlider } from '../../components/ProductsSlider';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
   const { category, itemId } = useParams();
   const [product, setProduct] = useState<ProductDetails | null>(null);
+
+  const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
+    undefined,
+  );
 
   const [mainImage, setMainImage] = useState<string | null>(null);
 
@@ -24,6 +31,8 @@ export const ProductDetailsPage = () => {
   const dispatch = useAppDispatch();
   const { cart } = useAppSelector(state => state.cart);
   const { favorites } = useAppSelector(state => state.favorites);
+
+  const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
 
   const handleCartAction = () => {
     if (product) {
@@ -68,8 +77,21 @@ export const ProductDetailsPage = () => {
     setIsProductInFavorites(favorites.some(item => item.id === product?.id));
   }, [cart, favorites]);
 
+  useEffect(() => {
+    if (product?.priceDiscount !== undefined) {
+      getSuggestedProducts(product.priceDiscount).then(setSimilarProducts);
+    }
+  }, [product]);
+
+  useEffect(() => {
+    if (product?.capacityAvailable.length) {
+      setSelectedCapacity(product.capacityAvailable[0]);
+    }
+  }, [product]);
+
   return (
     <div className="container">
+      <Breadcrumbs category={product?.category || ''} product={product?.name} />
       <div className="product-details">
         <div className="product-details__name">{product?.name}</div>
         <div className="product-details__info">
@@ -113,7 +135,12 @@ export const ProductDetailsPage = () => {
               <div className="product-details__capacity-selector">
                 {product?.capacityAvailable.map(capacity => (
                   <div
-                    className="product-details__capacity-select"
+                    onClick={() => setSelectedCapacity(capacity)}
+                    className={
+                      capacity === selectedCapacity
+                        ? 'product-details__capacity-select--selected'
+                        : 'product-details__capacity-select'
+                    }
                     key={capacity}
                   >
                     {capacity}
@@ -231,6 +258,8 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
       </div>
+
+      <ProductsSlider title="You may also like" products={similarProducts} />
     </div>
   );
 };

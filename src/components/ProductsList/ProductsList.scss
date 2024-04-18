@@ -56,12 +56,6 @@
     }
   }
 
-  &__navigation {
-    display: flex;
-    gap: 8px;
-    margin-top: 24px;
-  }
-
   &__title {
     margin-top: 24px;
 
@@ -78,31 +72,6 @@
     @include body-font;
 
     color: $secondary-color;
-  }
-
-  &__category {
-    color: $secondary-color;
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    font-weight: 600;
-  }
-
-  &__home-icon {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background-image: url('../../../public/img/icons/home.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
-  &__arrow-icon {
-    display: block;
-    width: 16px;
-    height: 16px;
-    background-image: url('../../../public/img/icons/right-gray.svg');
-    background-repeat: no-repeat;
-    background-position: center;
   }
 
   &__container {

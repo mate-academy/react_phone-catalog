@@ -1,8 +1,8 @@
 @import '../../App';
 
-.error-container {
+.not-found-page {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  gap: 16px;
+  align-items: center;
+  height: 100vh;
 }

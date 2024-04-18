@@ -42,3 +42,13 @@ export async function findProductByItemId(itemId: string, category: string) {
 
   return foundProduct;
 }
+
+export const getSuggestedProducts = (itemPrice: number) => {
+  const similarProducts = getAllProducts().then(products => {
+    return products.filter(
+      product => Math.abs(product.price - itemPrice) / itemPrice <= 0.1,
+    );
+  });
+
+  return similarProducts;
+};

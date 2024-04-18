@@ -24,15 +24,20 @@ export const Footer = () => {
           <img src="./img/logo.svg" alt="Logo" className="footer__logo-image" />
         </Link>
         <div className="footer__links">
-          <a href="#" className="footer__link-item">
+          <Link
+            to="https://github.com/artemvlasiuk/react_phone-catalog"
+            className="footer__link-item"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             Github
-          </a>
-          <a href="#" className="footer__link-item">
+          </Link>
+          <Link to="#" className="footer__link-item">
             Contacts
-          </a>
-          <a href="#" className="footer__link-item">
+          </Link>
+          <Link to="#" className="footer__link-item">
             rights
-          </a>
+          </Link>
         </div>
         <div className="footer__button">
           Back to top

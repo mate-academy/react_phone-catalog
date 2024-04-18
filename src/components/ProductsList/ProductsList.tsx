@@ -1,9 +1,9 @@
-import { NavLink } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import './ProductsList.scss';
 import { useState } from 'react';
 import { Pagination } from '../Pagination';
+import { Breadcrumbs } from '../Breadcrumbs';
 
 type ProductsListProps = {
   products: Product[];
@@ -56,11 +56,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   return (
     <div className="container">
       <div className="products-list">
-        <div className="products-list__navigation">
-          <NavLink to="/" className="products-list__home-icon" />
-          <div className="products-list__arrow-icon"></div>
-          <div className="products-list__category">{category}</div>
-        </div>
+        <Breadcrumbs category={category} />
         <h1 className="products-list__title">{category}</h1>
         <p className="products-list__quantity">{products.length} models</p>
         <div className="products-list__sorting">

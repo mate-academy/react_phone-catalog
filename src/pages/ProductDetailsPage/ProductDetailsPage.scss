@@ -22,6 +22,8 @@
   }
   &__name {
     @include header-font-m;
+
+    margin-top: 16px;
   }
 
   &__product-id {
@@ -162,6 +164,20 @@
 
       &:hover {
         border: 1px solid $primary-color;
+      }
+
+      &--selected {
+        @include body-font;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        line-height: 14px;
+        border-radius: 4px;
+        background: $primary-color;
+        color: white;
+        width: 56px;
+        height: 32px;
       }
     }
   }

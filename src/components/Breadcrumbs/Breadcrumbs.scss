@@ -1,0 +1,41 @@
+@import '../../App';
+
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  margin-top: 24px;
+
+  &__home-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/home.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__arrow-icon {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/right-gray.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__category {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  &__product {
+    color: $secondary-color;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}
