@@ -5,3 +5,60 @@
 @import './utils/reset';
 @import './utils/variables';
 @import './container.scss';
+
+// .dark-theme {
+
+// }
+
+$colorPrimary: #313237;
+$colorSecondary: #89939a;
+$colorIcons: #b4bdc3;
+$colorBackground: #fafbfc;
+
+.light-theme {
+  $colorPrimary: #313237;
+  $colorSecondary: #89939a;
+  $colorIcons: #b4bdc3;
+  $colorBackground: #fafbfc;
+}
+
+.dark-theme {
+  $colorPrimary: #F0F0F0;
+  $colorSecondary: #EAEAEA;
+  $colorIcons: #fff;
+  $colorBackground: #333333;
+}
+
+// $colorPrimary-light: #313237;
+// $colorSecondary-light: #89939a;
+// $colorIcons-light: #b4bdc3;
+// $colorBackground-light: #fafbfc;
+
+// $colorPrimary-dark: #F0F0F0;
+// $colorSecondary-dark: #EAEAEA;
+// $colorIcons-dark: #fff;
+// $colorBackground-dark: #333333;
+
+
+// .light-theme {
+//   $colorPrimary: #{$colorPrimary-light};
+//   $colorSecondary: #{$colorSecondary-light};
+//   $colorIcons: #{$colorIcons-light};
+//   $colorBackground: #{colorBackground-light};
+// }
+
+// .dark-theme {
+//   $colorPrimary: #{$colorPrimary-dark};
+//   $colorSecondary: #{$colorSecondary-dark};
+//   $colorIcons: #{$colorIcons-light};
+//   $colorBackground: #{$colorBackground-dark};
+// }
+
+
+// .light-theme {
+//   @include theme('light');
+// }
+
+// .dark-theme {
+//   @include theme('dark');
+// }

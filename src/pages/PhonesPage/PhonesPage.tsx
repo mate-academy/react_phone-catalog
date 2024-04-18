@@ -13,6 +13,7 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/products/productsSlice';
 import { NoSearchResults } from '../../components/NoSearchResults';
 import { Loader } from '../../components/Loader/Loader';
+import { Footer } from '../../components/Footer/Footer';
 
 export const PhonesPage = () => {
   const [dataPhones, setDataPhones] = useState<Products[]>([]);
@@ -127,32 +128,35 @@ export const PhonesPage = () => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs />
-          <h1 className="phonesPage__title">Mobile phones</h1>
-          <p className="phonesPage__description">{`${countMobilePhones} models`}</p>
-
-          {(sortedPhoneList.length === 0 && query.length > 0) ? (
-            <NoSearchResults />
-          ) : (
-            <>
-              <div className="phonesPage__sortContainer">
-                <DropDown type="sort-by" />
-                <DropDown type="items-on-page" />
-              </div>
-              <ProductList
-                dataProducts={paginatedData}
-              />
-              {itemsOnPage !== 'All' && (
-                <PaginationSearchParams
-                  countDatas={sortedPhoneList.length} // totalCount
-                  itemsPerPage={itemsPerPage} // pageSize
-                  onPageChange={handlePageChange}// onPageChange
-                  currentPage={+currentPage}
+          <div className="container">
+            <Breadcrumbs />
+            <h1 className="phonesPage__title">Mobile phones</h1>
+            <p className="phonesPage__description">{`${countMobilePhones} models`}</p>
+            {(sortedPhoneList.length === 0 && query.length > 0) ? (
+              <NoSearchResults />
+            ) : (
+              <>
+                <div className="phonesPage__sortContainer">
+                  <DropDown type="sort-by" />
+                  <DropDown type="items-on-page" />
+                </div>
+                <ProductList
+                  dataProducts={paginatedData}
                 />
-              )}
-            </>
-          )}
+                {itemsOnPage !== 'All' && (
+                  <PaginationSearchParams
+                    countDatas={sortedPhoneList.length} // totalCount
+                    itemsPerPage={itemsPerPage} // pageSize
+                    onPageChange={handlePageChange}// onPageChange
+                    currentPage={+currentPage}
+                  />
+                )}
+              </>
+            )}
+          </div>
+          <Footer />
         </>
+
       )}
     </>
   );

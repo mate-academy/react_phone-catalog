@@ -16,6 +16,7 @@ import { fetchProductDetails }
 import { SliderSwiper } from '../../components/SliderSwiper/SliderSwiper';
 import { fetchProducts } from '../../features/products/productsSlice';
 import { Loader } from '../../components/Loader/Loader';
+import { Footer } from '../../components/Footer/Footer';
 
 type Params = {
   itemId: string,
@@ -308,27 +309,29 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      <Breadcrumbs />
+
       {status === 'loading' ? (
         <Loader />
       ) : (
         <>
-          <section className="productDetails">
-            <h1 className="productDetails__title">
-              {productDetails?.name}
-            </h1>
-            <div
-              className="productDetails__mainDetails"
-            >
-              <div className="grid">
-                {/* <div
+          <div className="container">
+            <Breadcrumbs />
+            <section className="productDetails">
+              <h1 className="productDetails__title">
+                {productDetails?.name}
+              </h1>
+              <div
+                className="productDetails__mainDetails"
+              >
+                <div className="grid">
+                  {/* <div
                   className="productDetails__mainDetales__productID
                   grid__item--tablet-11-12
                   grid__item--desktop-23-24"
                 >
                   {`ID: ${productDetails?.namespaceId}`}
                 </div> */}
-                {/* <div
+                  {/* <div
                   className="productDetails__mainDetales
                   productDetails__mainDetales__imagesContainer
                   grid__item
@@ -336,421 +339,426 @@ export const ProductDetailsPage: React.FC = () => {
                   grid__item--tablet-1-6
                   grid__item--desktop-1-12"
                 > */}
-                <div
-                  className="productDetails__mainDetales__imageSidebar
+                  <div
+                    className="productDetails__mainDetales__imageSidebar
                     grid__item
                     grid__item--1-4
                     grid__item--tablet-1
                     grid__item--desktop-1-2"
-                >
-                  {productDetails?.images.map(item => (
-                    <button
-                      type="button"
-                      key={item}
-                      className="
+                  >
+                    {productDetails?.images.map(item => (
+                      <button
+                        type="button"
+                        key={item}
+                        className="
                       productDetails__mainDetales__smallImageContainer"
-                      onClick={() => handleImageChange(item)}
-                    >
-                      <img
-                        src={`${item}`}
-                        alt="product small"
-                        className="productDetails__mainDetales__smallImage"
-                      />
-                    </button>
+                        onClick={() => handleImageChange(item)}
+                      >
+                        <img
+                          src={`${item}`}
+                          alt="product small"
+                          className="productDetails__mainDetales__smallImage"
+                        />
+                      </button>
 
-                  ))}
-                </div>
+                    ))}
+                  </div>
 
-                <div
-                  className="productDetails__mainDetales__mainImageContiner
+                  <div
+                    className="productDetails__mainDetales__mainImageContiner
                     grid__item
                     grid__item--1-4
                     grid__item--tablet-2-6
                     grid__item--desktop-4-11"
-                >
-                  <img
-                    className="productDetails__mainDetales__mainImage"
-                    src={bigImageLink || `${productDetails?.images[0]}`}
-                    alt="Main big"
-                  />
-                </div>
-                {/* </div> */}
+                  >
+                    <img
+                      className="productDetails__mainDetales__mainImage"
+                      src={bigImageLink || `${productDetails?.images[0]}`}
+                      alt="Main big"
+                    />
+                  </div>
+                  {/* </div> */}
 
-                <div
-                  className="productDetails__mainDetales__options
+                  <div
+                    className="productDetails__mainDetales__options
                   grid__item
                   grid__item--1-4
                   grid__item--tablet-8-12
                   grid__item--desktop-14-20"
-                >
-                  <div
-                    className="productDetails__mainDetales__colors"
                   >
-                    <div className="
-                    productDetails__mainDetales__colors__titleID"
+                    <div
+                      className="productDetails__mainDetales__colors"
                     >
-                      <p
-                        className="productDetails__mainDetales__colors__title"
+                      <div className="
+                    productDetails__mainDetales__colors__titleID"
                       >
-                        Available colors
-                      </p>
-                      <p className="
+                        <p
+                          className="productDetails__mainDetales__colors__title"
+                        >
+                          Available colors
+                        </p>
+                        <p className="
                       productDetails__mainDetales__productID
                       productDetails__mainDetales__productID--notPhone
                       "
-                      >
-                        {`ID: ${productDetails?.namespaceId}`}
-                      </p>
-                    </div>
-
-                    <div
-                      className="productDetails__mainDetales__colors__container"
-                    >
-                      {productDetails?.colorsAvailable.map(color => (
-
-                        <button
-                          onClick={() => handleColorChange(color)}
-                          type="button"
-                          key={color}
-                          className={classNames(
-                            'productDetails__mainDetales__icon',
-                            {
-                              'productDetails__mainDetales__icon--active':
-                                selectedColor === color,
-                            },
-                          )}
-                          aria-label="Change color"
                         >
-                          <div
-                            className="
+                          {`ID: ${productDetails?.namespaceId}`}
+                        </p>
+                      </div>
+
+                      <div
+                        className="
+                        productDetails__mainDetales__colors__container"
+                      >
+                        {productDetails?.colorsAvailable.map(color => (
+
+                          <button
+                            onClick={() => handleColorChange(color)}
+                            type="button"
+                            key={color}
+                            className={classNames(
+                              'productDetails__mainDetales__icon',
+                              {
+                                'productDetails__mainDetales__icon--active':
+                                  selectedColor === color,
+                              },
+                            )}
+                            aria-label="Change color"
+                          >
+                            <div
+                              className="
                         productDetails__mainDetales__colors__circle
                         "
-                            style={{
-                              backgroundColor: color,
-                            }}
-                          />
-                        </button>
+                              style={{
+                                backgroundColor: color,
+                              }}
+                            />
+                          </button>
 
-                      ))}
+                        ))}
+                      </div>
                     </div>
-                  </div>
 
-                  <div className="productDetails__mainDetales__capacity">
-                    <p
-                      className="productDetails__mainDetales__capacity__title"
-                    >
-                      Select capacity
-                    </p>
+                    <div className="productDetails__mainDetales__capacity">
+                      <p
+                        className="productDetails__mainDetales__capacity__title"
+                      >
+                        Select capacity
+                      </p>
+
+                      <div
+                        className="productDetails__mainDetales__itemContainer"
+                      >
+                        {productDetails?.capacityAvailable.map(capacity => (
+                          <button
+                            onClick={() => handleCapacityChange(capacity)}
+                            type="button"
+                            className={classNames(
+                              'productDetails__mainDetales__capaciItem',
+                              {
+                                'productDetails__mainDetales__capaciItem--active':
+                                  selectedCapacity === capacity,
+                              },
+                            )}
+                            key={capacity}
+                          >
+                            {capacity}
+                          </button>
+                        ))}
+                      </div>
+
+                    </div>
 
                     <div
-                      className="productDetails__mainDetales__itemContainer"
+                      className="productDetails__mainDetales__buyBlock"
                     >
-                      {productDetails?.capacityAvailable.map(capacity => (
-                        <button
-                          onClick={() => handleCapacityChange(capacity)}
-                          type="button"
-                          className={classNames(
-                            'productDetails__mainDetales__capaciItem',
-                            {
-                              'productDetails__mainDetales__capaciItem--active':
-                                selectedCapacity === capacity,
-                            },
-                          )}
-                          key={capacity}
+                      <div
+                        className="productDetails__mainDetales__price"
+                      >
+                        <h2
+                          className="productDetails__mainDetales__price__full"
                         >
-                          {capacity}
-                        </button>
-                      ))}
-                    </div>
-
-                  </div>
-
-                  <div
-                    className="productDetails__mainDetales__buyBlock"
-                  >
-                    <div
-                      className="productDetails__mainDetales__price"
-                    >
-                      <h2
-                        className="productDetails__mainDetales__price__full"
-                      >
-                        {`$${productDetails?.priceRegular}`}
-                      </h2>
-                      <h2
-                        className="productDetails__mainDetales__price__discont"
-                      >
-                        {`$${productDetails?.priceDiscount}`}
-                      </h2>
-                    </div>
-                  </div>
-
-                  <div
-                    className="productDetails__mainDetales__btnContainer"
-                  >
-                    {productToCart && (
-                      <AddToCartButton
-                        cardData={productToCart}
-                      />
-                    )}
-                    {productToCart && (
-                      <FavoriteButton
-                        cardData={productToCart}
-                        style={{ width: '48px', height: '48px' }}
-                      />
-                    )}
-                  </div>
-                  <div
-                    className="productDetails__mainDetales__characteristics"
-                  >
-                    <div
-                      className="productDetails__mainDetales__items"
-                    >
-                      <div
-                        className="productDetails__mainDetales__item"
-                      >
-                        Screen
-                      </div>
-                      <div
-                        className="productDetails__mainDetales__item"
-                      >
-                        Resolution
-                      </div>
-                      <div
-                        className="productDetails__mainDetales__item"
-                      >
-                        Processor
-                      </div>
-                      <div
-                        className="productDetails__mainDetales__item"
-                      >
-                        RAM
+                          {`$${productDetails?.priceRegular}`}
+                        </h2>
+                        <h2
+                          className="
+                          productDetails__mainDetales__price__discont"
+                        >
+                          {`$${productDetails?.priceDiscount}`}
+                        </h2>
                       </div>
                     </div>
 
                     <div
-                      className="productDetails__mainDetales__values"
+                      className="productDetails__mainDetales__btnContainer"
+                    >
+                      {productToCart && (
+                        <AddToCartButton
+                          cardData={productToCart}
+                        />
+                      )}
+                      {productToCart && (
+                        <FavoriteButton
+                          cardData={productToCart}
+                          style={{ width: '48px', height: '48px' }}
+                        />
+                      )}
+                    </div>
+                    <div
+                      className="productDetails__mainDetales__characteristics"
                     >
                       <div
-                        className="productDetails__mainDetales__value"
+                        className="productDetails__mainDetales__items"
                       >
-                        {productDetails?.screen}
+                        <div
+                          className="productDetails__mainDetales__item"
+                        >
+                          Screen
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__item"
+                        >
+                          Resolution
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__item"
+                        >
+                          Processor
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__item"
+                        >
+                          RAM
+                        </div>
                       </div>
+
                       <div
-                        className="productDetails__mainDetales__value"
+                        className="productDetails__mainDetales__values"
                       >
-                        {productDetails?.resolution}
-                      </div>
-                      <div
-                        className="productDetails__mainDetales__value"
-                      >
-                        {productDetails?.processor}
-                      </div>
-                      <div
-                        className="productDetails__mainDetales__value"
-                      >
-                        {productDetails?.ram}
+                        <div
+                          className="productDetails__mainDetales__value"
+                        >
+                          {productDetails?.screen}
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__value"
+                        >
+                          {productDetails?.resolution}
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__value"
+                        >
+                          {productDetails?.processor}
+                        </div>
+                        <div
+                          className="productDetails__mainDetales__value"
+                        >
+                          {productDetails?.ram}
+                        </div>
                       </div>
                     </div>
-                  </div>
 
-                </div>
-                <div
-                  className="productDetails__mainDetales__productID
+                  </div>
+                  <div
+                    className="productDetails__mainDetales__productID
                   productDetails__mainDetales__productID--phone
                   grid__item
                   grid__item--3-4
                   grid__item--tablet-11-12
                   grid__item--desktop-23-24
                   "
-                >
-                  {`ID: ${productDetails?.namespaceId}`}
-                </div>
+                  >
+                    {`ID: ${productDetails?.namespaceId}`}
+                  </div>
 
-                {/* <div className='productDetails__additionalDetails grid__item--desktop-1-20'> */}
-                <div
-                  className="productDetails__additionalDetails__about
+                  {/* <div className='productDetails__additionalDetails grid__item--desktop-1-20'> */}
+                  <div
+                    className="productDetails__additionalDetails__about
                   grid__item
                   grid__item--1-4
                   grid__item--tablet-1-12
                   grid__item--desktop-1-12"
-                >
-                  <h1 className="productDetails__additionalDetails__title">
-                    About
-                  </h1>
-                  {productDetails?.description.map(item => (
-                    <div
-                      className="productDetails__additionalDetails__block"
-                      key={item.title}
-                    >
-                      <h2
-                        className="
+                  >
+                    <h1 className="productDetails__additionalDetails__title">
+                      About
+                    </h1>
+                    {productDetails?.description.map(item => (
+                      <div
+                        className="productDetails__additionalDetails__block"
+                        key={item.title}
+                      >
+                        <h2
+                          className="
                       productDetails__additionalDetails__paragraphName
                       "
-                      >
-                        {item.title}
-                      </h2>
-                      <p
-                        className="productDetails__additionalDetails__paragraph"
-                      >
-                        {item.text}
-                      </p>
-                    </div>
-                  ))}
+                        >
+                          {item.title}
+                        </h2>
+                        <p
+                          className="
+                          productDetails__additionalDetails__paragraph"
+                        >
+                          {item.text}
+                        </p>
+                      </div>
+                    ))}
 
-                </div>
+                  </div>
 
-                <div
-                  className="productDetails__additionalDetails__specs
+                  <div
+                    className="productDetails__additionalDetails__specs
                   grid__item
                   grid__item--1-4
                   grid__item--tablet-1-12
                   grid__item--desktop-14-24"
-                >
-                  <h1
-                    className="productDetails__additionalDetails__specs__title"
                   >
-                    Tech specs
-                  </h1>
-                  <div
-                    className="productDetails__additionalDetails__specs__tech"
-                  >
-                    <div
+                    <h1
                       className="
+                      productDetails__additionalDetails__specs__title"
+                    >
+                      Tech specs
+                    </h1>
+                    <div
+                      className="productDetails__additionalDetails__specs__tech"
+                    >
+                      <div
+                        className="
                       productDetails__additionalDetails__specs__items
                       "
-                    >
-                      <div
-                        className="
+                      >
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Screen
-                      </div>
-                      <div
-                        className="
+                        >
+                          Screen
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Resolution
-                      </div>
-                      <div
-                        className="
+                        >
+                          Resolution
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Processor
-                      </div>
-                      <div
-                        className="
+                        >
+                          Processor
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        RAM
-                      </div>
-                      <div
-                        className="
+                        >
+                          RAM
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Built in memory
-                      </div>
-                      <div
-                        className="
+                        >
+                          Built in memory
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Camera
-                      </div>
-                      <div
-                        className="
+                        >
+                          Camera
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Zoom
-                      </div>
-                      <div
-                        className="
+                        >
+                          Zoom
+                        </div>
+                        <div
+                          className="
                         productDetails__additionalDetails__specs__item
                         "
-                      >
-                        Cell
+                        >
+                          Cell
+                        </div>
                       </div>
-                    </div>
 
-                    <div
-                      className="
+                      <div
+                        className="
                       productDetails__additionalDetails__specs__values
                       "
-                    >
-                      <div
-                        className="
+                      >
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.screen}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.screen}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.resolution}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.resolution}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.processor}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.processor}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.ram}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.ram}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.capacity}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.capacity}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.camera}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.camera}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.zoom}
-                      </div>
-                      <div
-                        className="
+                        >
+                          {productDetails?.zoom}
+                        </div>
+                        <div
+                          className="
                       productDetails__additionalDetails__specs__value
                       "
-                      >
-                        {productDetails?.cell.join(', ')}
+                        >
+                          {productDetails?.cell.join(', ')}
+                        </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
               </div>
+            </section>
 
-            </div>
-          </section>
+            <SliderSwiper
+              title="You may also like"
+              productsData={similarProducts}
+            />
+          </div>
 
-          <SliderSwiper
-            title="You may also like"
-            productsData={similarProducts}
-          />
+          <Footer />
         </>
       )}
 

@@ -14,6 +14,7 @@ import { NoSearchResults }
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/products/productsSlice';
 import { Loader } from '../../components/Loader';
+import { Footer } from '../../components/Footer/Footer';
 
 export const AccessoriesPage = () => {
   const [dataAccessories, setDataAccessories] = useState<Products[]>([]);
@@ -92,31 +93,34 @@ export const AccessoriesPage = () => {
         <Loader />
       ) : (
         <>
-          <Breadcrumbs />
-          <h1 className="accessoriesPage__title">Accessories</h1>
-          <p className="accessoriesPage__description">{`${countAccessories} models`}</p>
-          {(sortedAccessoriesList.length === 0 && query.length > 0) ? (
-            <NoSearchResults />
-          ) : (
-            <>
-              <div className="accessoriesPage__sortContainer">
-                <DropDown type="sort-by" />
-                <DropDown type="items-on-page" />
-              </div>
-              <ProductList
-                dataProducts={paginatedData}
-              />
-
-              {itemsOnPage !== 'All' && (
-                <PaginationSearchParams
-                  countDatas={sortedAccessoriesList.length} // totalCount
-                  itemsPerPage={itemsPerPage} // pageSize
-                  onPageChange={handlePageChange}// onPageChange
-                  currentPage={+currentPage}
+          <div className="container">
+            <Breadcrumbs />
+            <h1 className="accessoriesPage__title">Accessories</h1>
+            <p className="accessoriesPage__description">{`${countAccessories} models`}</p>
+            {(sortedAccessoriesList.length === 0 && query.length > 0) ? (
+              <NoSearchResults />
+            ) : (
+              <>
+                <div className="accessoriesPage__sortContainer">
+                  <DropDown type="sort-by" />
+                  <DropDown type="items-on-page" />
+                </div>
+                <ProductList
+                  dataProducts={paginatedData}
                 />
-              )}
-            </>
-          )}
+
+                {itemsOnPage !== 'All' && (
+                  <PaginationSearchParams
+                    countDatas={sortedAccessoriesList.length} // totalCount
+                    itemsPerPage={itemsPerPage} // pageSize
+                    onPageChange={handlePageChange}// onPageChange
+                    currentPage={+currentPage}
+                  />
+                )}
+              </>
+            )}
+          </div>
+          <Footer />
         </>
       )}
     </>

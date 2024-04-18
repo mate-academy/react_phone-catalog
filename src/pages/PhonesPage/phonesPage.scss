@@ -8,7 +8,7 @@
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-    color: #313237;
+    color: $colorPrimary;
     margin-bottom: 8px;
   }
 
@@ -16,7 +16,7 @@
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
-    color: #89939A;
+    color: $colorSecondary;
     margin-bottom: 40px;
 
     @include phone {

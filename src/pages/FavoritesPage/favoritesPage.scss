@@ -2,6 +2,10 @@
 
 .favoritesPage {
   font-family: Mont, sans-serif;
+  min-height: calc(100vh - 96px);
+  // height: 100vh;
+  // overflow-x: hidden;
+  overflow-y: hidden;
 
   &__title {
     font-weight: 700;

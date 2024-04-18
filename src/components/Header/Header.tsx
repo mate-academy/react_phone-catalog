@@ -11,6 +11,7 @@ import { FavoritesContext } from '../ContextProviders/ContextProviders';
 import { useAppSelector } from '../../app/hooks';
 import { BurgerMenu } from '../BurgerMenu/BurgerMenu';
 import { useWindowSize } from '../../hooks/useWindowSize';
+import { ThemeSwitcher } from '../ThemeSwitcher';
 
 export const Header = () => {
   const location = useLocation();
@@ -31,7 +32,7 @@ export const Header = () => {
   const sliderWidth = useWindowSize();
 
   const shouldShowBurgerMenu
-  = sliderWidth.width >= 320 && sliderWidth.width <= 639;
+    = sliderWidth.width >= 320 && sliderWidth.width <= 639;
 
   useMemo(() => {
     switch (searchCondition) {
@@ -106,20 +107,19 @@ export const Header = () => {
                   ACCESSORIES
                 </p>
               </Link>
-
             </li>
           </ul>
         </nav>
       </div>
 
       <div className="header__icons">
+        <ThemeSwitcher />
         {searchCondition && (
           <Search placeholder={placeholderValue} />
         )}
         {shouldShowBurgerMenu && <BurgerMenu />}
         <Link to="/favorites" className="header__iconsBlock">
           {/* <div className="header__iconsBlock"> */}
-
           <div className="header__iconsFavorites">
             {favorites.length > 0 && (
               <div

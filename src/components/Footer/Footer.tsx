@@ -28,7 +28,7 @@ export const Footer = () => {
   return (
     <div className={classNames(
       'footer',
-      { 'footer--empty': isFooterBottom() },
+      { 'footer--bottom': isFooterBottom() },
     )}
     >
 

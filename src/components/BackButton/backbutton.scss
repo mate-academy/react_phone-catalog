@@ -6,6 +6,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
+  background-color: $colorBackground;
 
   &__name {
     font-size: 12px;
@@ -13,5 +14,6 @@
     line-height: 15px;
     letter-spacing: 0em;
     color: $colorSecondary;
+    background-color: $colorBackground;
   }
 }

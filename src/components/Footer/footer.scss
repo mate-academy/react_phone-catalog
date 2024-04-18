@@ -5,6 +5,7 @@
   align-items: center;
   border: 1px solid #E2E6E9;
   height: 96px;
+  background-color: #fff;
 
   @include phone {
     height: 257px;
@@ -12,8 +13,8 @@
     padding-bottom: 32px;
   }
 
-  &--empty {
-    position: absolute;
+  &--bottom {
+    position: fixed;
     left: 0;
     bottom: 0;
     width: 100vw;

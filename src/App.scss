@@ -1,2 +1,23 @@
 // not empty
 @import './styles/main.scss';
+
+// :root {
+//   color: bisque;
+// }
+
+.App {
+  background-color: $colorBackground;
+}
+
+
+
+// .dark-theme {
+
+// }
+
+// .light-theme {
+//   $colorPrimary: #313237;
+//   $colorSecondary: #89939a;
+//   $colorIcons: #b4bdc3;
+//   $colorBackground: #fafbfc;
+// }

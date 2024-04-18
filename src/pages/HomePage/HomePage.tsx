@@ -9,6 +9,7 @@ import { fetchProducts } from '../../features/products/productsSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { SliderSwiper } from '../../components/SliderSwiper/SliderSwiper';
 import { Loader } from '../../components/Loader';
+import { Footer } from '../../components/Footer';
 
 export const HomePage = () => {
   const slides = [
@@ -102,35 +103,30 @@ export const HomePage = () => {
 
   return (
     <>
-      <Carousel slides={slides} />
+      <div className="container">
+        <Carousel slides={slides} />
 
-      {/* <ProductsSlider
-        title="Hot prices"
-        productsData={hotPriceProducts}
-      /> */}
-      {status === 'loading' ? (
-        <Loader />
-      ) : (
-        <SliderSwiper
-          title="Hot prices"
-          productsData={hotPriceProducts}
+        {status === 'loading' ? (
+          <Loader />
+        ) : (
+          <SliderSwiper
+            title="Hot prices"
+            productsData={hotPriceProducts}
+          />
+        )}
+        <Categorys
+          productsData={products}
         />
-      )}
-      <Categorys
-        productsData={products}
-      />
-      {/* <ProductsSlider
-        title="Brand new models"
-        productsData={newModels}
-      /> */}
-      {status === 'loading' ? (
-        <Loader />
-      ) : (
-        <SliderSwiper
-          title="Hot prices"
-          productsData={newModels}
-        />
-      )}
+        {status === 'loading' ? (
+          <Loader />
+        ) : (
+          <SliderSwiper
+            title="Hot prices"
+            productsData={newModels}
+          />
+        )}
+      </div>
+      <Footer />
     </>
 
   );
