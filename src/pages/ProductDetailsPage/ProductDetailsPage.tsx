@@ -456,7 +456,7 @@ export const ProductDetailsPage: React.FC = () => {
                             className={classNames(
                               'productDetails__mainDetales__capaciItem',
                               {
-                                'productDetails__mainDetales__capaciItem--active':
+                                'productDetails__capaciItem--active':
                                   selectedCapacity === capacity,
                               },
                             )}
