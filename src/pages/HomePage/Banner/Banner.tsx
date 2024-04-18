@@ -5,33 +5,29 @@ import classNames from 'classnames';
 import React from 'react';
 
 export const Banner = () => {
-  const slides = [
-    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
-    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
-    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
-  ];
+  // const slides = [
+  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
+  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
+  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
+  // ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const nextSlide = () => {
-    if(currentIndex !== 2){
-      setCurrentIndex(currentIndex + 1)
-    } 
-    else if (currentIndex === 2){
-      setCurrentIndex(0)
+    if (currentIndex !== 2) {
+      setCurrentIndex(currentIndex + 1);
+    } else if (currentIndex === 2) {
+      setCurrentIndex(0);
     }
-  }
+  };
 
   const prevSlide = () => {
-    if(currentIndex !== 0){
-      setCurrentIndex(currentIndex - 1)
+    if (currentIndex !== 0) {
+      setCurrentIndex(currentIndex - 1);
+    } else if (currentIndex === 0) {
+      setCurrentIndex(2);
     }
-    else if (currentIndex === 0){
-      setCurrentIndex(2)
-    }
-  }
-
-  console.log(currentIndex)
+  };
 
   return (
     <div className="banner grid--tablet grid--desktop">
@@ -55,17 +51,17 @@ export const Banner = () => {
         grid__item--desktop-2-23"
       >
         <div className="banner__slider">
-          <div className='banner__cover'>
-          {slides.map((img, index) => (
-            <img
-              key={img}
-              src={slides[index]}
-              alt={img}
-              className="banner__slider-image"
-              style={{ translate: `${-100 * currentIndex}%`}}
-            />
-            ))}
-        </div>
+          <div className="banner__cover">
+            {/* {slides.map((img, index) => (
+              <img
+                key={img}
+                src={slides[index]}
+                alt={img}
+                className="banner__slider-image"
+                style={{ translate: `${-100 * currentIndex}%` }}
+              />
+            ))} */}
+          </div>
         </div>
       </div>
       <button

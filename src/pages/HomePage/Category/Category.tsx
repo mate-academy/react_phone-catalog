@@ -4,9 +4,8 @@ import React, { useContext } from 'react';
 import { CatalogContext } from '../../CatalogContext';
 
 export const Category = () => {
-  const { phonesCount,
-    tabletsCount,
-    accessoriesCount,} = useContext(CatalogContext);
+  const { phonesCount, tabletsCount, accessoriesCount } =
+    useContext(CatalogContext);
 
   return (
     <div className="category">
@@ -25,7 +24,7 @@ export const Category = () => {
           grid__item--desktop-1-8"
         >
           <img
-            src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-phones.png"
+            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-phones.png"
             alt="Mobile"
             className="category__img category__mobile"
           />
@@ -39,7 +38,7 @@ export const Category = () => {
           grid__item--desktop-9-16"
         >
           <img
-            src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-tablets.png"
+            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-tablets.png"
             alt="Tablets"
             className="category__img category__tablets"
           />
@@ -53,7 +52,7 @@ export const Category = () => {
           grid__item--desktop-17-24"
         >
           <img
-            src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-accessories.png"
+            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-accessories.png"
             alt="Accessories"
             className="category__img category__accessories"
           />

@@ -5,7 +5,7 @@ import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
 import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
-import Vector_light_right from '../../../images/homePage/Vector_light_right.svg';
+import Vec_light_right from '../../../images/homePage/Vec_light_right.svg';
 import './HotPrices.scss';
 import React from 'react';
 
@@ -95,7 +95,7 @@ export const HotPrices = () => {
               <img
                 src={
                   currentPage === lastPage
-                    ? `${Vector_light_right}`
+                    ? `${Vec_light_right}`
                     : `${Arrow_Right}`
                 }
                 className="hotPrices__arrays__img"

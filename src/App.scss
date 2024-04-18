@@ -1,4 +1,4 @@
-@import './utils/main.scss';
+@import './utils/main';
 
 .App {
   display: flex;
@@ -6,7 +6,7 @@
   justify-content: space-between;
   min-height: 100vh;
 
-  @include onTablet {
+  @include on-tablet {
     display: flex;
     justify-content: center;
   }

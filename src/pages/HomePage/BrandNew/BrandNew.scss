@@ -1,4 +1,4 @@
-@import '../../../utils/main.scss';
+@import '../../../utils/main';
 
 .hotPrices {
   &__container {
@@ -6,7 +6,7 @@
     margin-top: 50px;
     max-width: 500px;
   
-    @include onTablet {
+    @include on-tablet {
       max-width: 1200px;
       display: flex;
       flex-direction: column;
@@ -23,9 +23,10 @@
 
   &__head {
    @include header;
+
    max-width: 250px;
 
-   @include onTablet {
+   @include on-tablet {
     max-width: none;
    }
   }

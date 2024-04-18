@@ -1,4 +1,4 @@
-export interface TabAndAccess {
+export interface TabAccess {
   id: string;
   category: string;
   namespaceId: string;

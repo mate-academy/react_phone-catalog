@@ -3,12 +3,12 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { Phone } from '../../types/phone';
-import { sortByItem } from '../../types/sortBy';
+import { SortByItem } from '../../types/sortBy';
 import { CatalogContext } from '../CatalogContext';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './PhonesPage.scss';
 import Home from '../../images/Home.svg';
-import Vector_light_right from '../../images/homePage/Vector_light_right.svg';
+import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
 
 export const PhonesPage = () => {
@@ -40,11 +40,11 @@ export const PhonesPage = () => {
 
   const filteredPhones = () => {
     switch (sortBy) {
-      case sortByItem.Age:
+      case SortByItem.Age:
         return products?.sort((a, b) => (a.year - b.year ? 1 : -1));
-      case sortByItem.Name:
+      case SortByItem.Name:
         return products?.sort((a, b) => a.name.localeCompare(b.name));
-      case sortByItem.Price:
+      case SortByItem.Price:
         return products?.sort((a, b) => a.price - b.price);
       default:
         return products;
@@ -60,7 +60,7 @@ export const PhonesPage = () => {
           <img src={Home} alt="home" className="phonesPage__home" />
         </NavLink>
         <img
-          src={Vector_light_right}
+          src={Vec_light_right}
           alt="Vector_light_right"
           className="phonesPage__arrow-right"
         />

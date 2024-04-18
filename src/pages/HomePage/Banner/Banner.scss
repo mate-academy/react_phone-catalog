@@ -1,15 +1,15 @@
-@import '../../../utils/main.scss';
+@import '../../../utils/main';
 
 .banner {
   max-width: 1199px;
 
   &__title {
     margin: 40px 20px;
-    font-family: 'Mont', sans-serif;
+    font-family: Mont, sans-serif;
     font-size: 32px;
     line-height: 41px;
 
-    @include onTablet {
+    @include on-tablet {
       grid-row: 1;
       margin: 40px 0;
       font-size: 48px;
@@ -20,7 +20,7 @@
   &__box {
     overflow: hidden;
 
-    @include onTablet {
+    @include on-tablet {
       grid-row: 2;
     }
   }
@@ -30,11 +30,11 @@
     height: 320px;
     position: relative;
 
-    @include onTablet {
+    @include on-tablet {
       height: 189px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
     }
   }
@@ -55,11 +55,11 @@
     flex-grow: 0;
     transition: translate 500ms ease-in-out;
 
-    @include onTablet {
+    @include on-tablet {
       height: 189px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
     }
   }
@@ -69,7 +69,7 @@
     background-repeat: no-repeat;
     background-position: center;
 
-    @include onTablet {
+    @include on-tablet {
       grid-row: 2;
       height: 189px;
       width: 25px;
@@ -78,30 +78,30 @@
       cursor: pointer;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 400px;
       width: 35px;
     }
   }
 
   &__left {
-    @include onTablet {
+    @include on-tablet {
       background-image: url('../../../images/homePage/Arrow_Left.svg');
       margin-right: 15px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-right: 25px;
     }
   }
 
   &__right {
-    @include onTablet {
+    @include on-tablet {
       background-image: url('../../../images/homePage/Arrow_Right.svg');
       margin-left: 15px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-left: 25px;
     }
   }

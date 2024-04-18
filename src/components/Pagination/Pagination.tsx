@@ -12,12 +12,12 @@ import React from 'react';
 
 export const Pagination = () => {
   const { products } = useContext(CatalogContext);
+  const [searchParams, setSearchParams] = useSearchParams();
 
   if (products === undefined) {
     return <NotFoundPage />;
   }
 
-  const [searchParams, setSearchParams] = useSearchParams();
   const perPage = searchParams.get('perPage') || '4';
   const currentPage = searchParams.get('page') || '1';
   const itemsPerPage = perPage === 'all' ? products.length : perPage;

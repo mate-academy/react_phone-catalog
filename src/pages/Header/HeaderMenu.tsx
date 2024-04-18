@@ -1,5 +1,5 @@
-import React from "react"
-import { NavLink } from "react-router-dom";
+import React from 'react';
+import { NavLink } from 'react-router-dom';
 import './Header.scss';
 
 export const HeaderMenu: React.FC = () => {
@@ -22,5 +22,5 @@ export const HeaderMenu: React.FC = () => {
         </div>
       </div>
     </nav>
-  )
-}
+  );
+};

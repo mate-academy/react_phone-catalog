@@ -4,7 +4,7 @@ import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
 import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
-import Vector_light_right from '../../../images/homePage/Vector_light_right.svg';
+import Vec_light_right from '../../../images/homePage/Vec_light_right.svg';
 import './BrandNew.scss';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
 import React from 'react';
@@ -68,8 +68,6 @@ export const BrandNew = () => {
     setCurrentPage(updatedPage);
   };
 
-  console.log(error)
-
   return !error ? (
     <div className="hotPrices">
       <div className="hotPrices__container">
@@ -98,7 +96,7 @@ export const BrandNew = () => {
               <img
                 src={
                   currentPage === lastPage
-                    ? `${Vector_light_right}`
+                    ? `${Vec_light_right}`
                     : `${Arrow_Right}`
                 }
                 className="hotPrices__arrays__img"

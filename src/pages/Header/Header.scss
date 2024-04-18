@@ -1,4 +1,4 @@
-@import '../../utils/main.scss';
+@import '../../utils/main';
 
 .header {
   display: flex;
@@ -24,11 +24,11 @@
   &__home {
     @include top-menu;
 
-    @include onTablet {
+    @include on-tablet {
       margin-right: 40px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-right: 60px;
     }
   }
@@ -36,11 +36,11 @@
   &__phones {
     @include top-menu;
 
-    @include onTablet {
+    @include on-tablet {
       margin-right: 40px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-right: 60px;
     }
   }
@@ -48,11 +48,11 @@
   &__tablets {
     @include top-menu;
 
-    @include onTablet {
+    @include on-tablet {
       margin-right: 40px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-right: 60px;
     }
   }
@@ -72,7 +72,7 @@
   }
 
   &__cart {
-    padding: 20px 20px 0 20px;
+    padding: 20px 20px 0;
   }
 
   &__burger {
@@ -80,13 +80,8 @@
     top: 0;
     left: 0;
     right: 0;
-    bottom: 0;
-    // background-color: gray;
     overflow: hidden;
     z-index: 1;
-
-    // transform: translateY(-100%);
-    // transition: transform 0.3s;
 
     &:target {
       transform: translateY(0);

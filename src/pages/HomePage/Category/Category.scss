@@ -1,4 +1,4 @@
-@import '../../../utils/main.scss';
+@import '../../../utils/main';
 
 .category {
   max-width: 1199px;
@@ -7,7 +7,7 @@
   &__container {
     margin: 50px 20px 0;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 50px 0 0;
       display: grid;
     }
@@ -19,6 +19,7 @@
 
   &__header {
    @include header;
+
    margin-bottom: 25px;
   }
 
@@ -28,13 +29,13 @@
     justify-content: center;
     align-items: center;
 
-    @include onTablet {
+    @include on-tablet {
       grid-row-start: 2;
       margin-bottom: 0;
       height: 262px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 443px;
     }
 
@@ -42,7 +43,7 @@
       grid-row-start: 2;
       margin-bottom: 80px;
 
-      @include onTablet {
+      @include on-tablet {
         margin-bottom: 0;
       }
     }
@@ -51,7 +52,7 @@
       grid-row-start: 3;
       margin-bottom: 80px;
 
-      @include onTablet {
+      @include on-tablet {
         grid-row-start: 2;
         margin-bottom: 0;
       }
@@ -62,7 +63,7 @@
       grid-row-start: 4;
       margin-bottom: 50px;
 
-      @include onTablet {
+      @include on-tablet {
         grid-row-start: 2;
         margin-bottom: 0;
       }
@@ -75,12 +76,12 @@
     width: 100%;
     margin-bottom: 10px;
 
-    @include onTablet {
+    @include on-tablet {
       height: 187px;
       width: 100%;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       height: 368px;
     }
   }
@@ -98,8 +99,9 @@
   }
 
   &__name {
-    margin-bottom: 0;
     @include category-paragraph;
+
+    margin-bottom: 0;
   }
 
   &__quantity {

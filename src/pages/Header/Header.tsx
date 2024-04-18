@@ -6,7 +6,6 @@ import Favorites from '../../images/homePage/Favorites.svg';
 import Cart from '../../images/homePage/Cart.svg';
 
 export const Header: React.FC = () => {
-  
   return (
     <header className="header">
       <div className="header__block">
@@ -32,20 +31,13 @@ export const Header: React.FC = () => {
         </ul>
       </div>
 
-      <div className='header__burger'>
-        <a
-          href="#menu"
-          className="header__burger__link"
-          title="menu">
-        </a>
+      <div className="header__burger">
+        <a href="#menu" className="header__burger__link" title="menu"></a>
       </div>
 
-      <div className='header__burger'>
+      <div className="header__burger">
         <div className="header__burger__cross">
-          <a 
-            href="#" 
-            className="header__burger__cross-link">
-          </a>
+          <a href="#" className="header__burger__cross-link"></a>
         </div>
       </div>
 
@@ -54,7 +46,8 @@ export const Header: React.FC = () => {
           <img
             className="header__favorites__img"
             src={Favorites}
-            alt="Favorite" />
+            alt="Favorite"
+          />
         </NavLink>
         <NavLink to="/cart" className="header__cart">
           <img className="header__cart__img" src={Cart} alt="cart" />

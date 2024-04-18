@@ -1,4 +1,4 @@
-@import '../../utils/main.scss';
+@import '../../utils/main';
 
 .footer {
   display: flex;
@@ -8,7 +8,7 @@
   padding: 17px 0;
   border-top: 1px solid #E2E6E9;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
   }
 
@@ -25,7 +25,7 @@
     justify-content: space-around;
     padding: 20px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       width: 550px;
     }
@@ -33,9 +33,10 @@
 
   &__link {
     @include footer;
+
     margin-bottom: 15px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 0;
     }
   }
@@ -46,12 +47,13 @@
     align-items: center;
     margin-right: 20px;
 
-    @include onTablet {
+    @include on-tablet {
       justify-content: flex-start;
     }
 
     &__link {
       @include footer;
+
       display: flex;
       justify-content: center;
       align-items: center;

@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useState } from 'react';
 import { Category } from '../types/category';
 import { Phone } from '../types/phone';
-import { TabAndAccess } from '../types/tablets';
+import { TabAccess } from '../types/tablets';
 import { NotFoundPage } from './NotFoundPage/NotFoundPage';
 
 type CatalogType = {
@@ -9,19 +9,17 @@ type CatalogType = {
   setProducts: React.Dispatch<React.SetStateAction<Phone[] | undefined>>;
   phones: Phone[] | undefined;
   setPhones: React.Dispatch<React.SetStateAction<Phone[] | undefined>>;
-  tablets: TabAndAccess[] | undefined;
-  setTablets: React.Dispatch<React.SetStateAction<TabAndAccess[] | undefined>>;
-  accessories: TabAndAccess[] | undefined;
-  setAccessories: React.Dispatch<
-    React.SetStateAction<TabAndAccess[] | undefined>
-  >;
+  tablets: TabAccess[] | undefined;
+  setTablets: React.Dispatch<React.SetStateAction<TabAccess[] | undefined>>;
+  accessories: TabAccess[] | undefined;
+  setAccessories: React.Dispatch<React.SetStateAction<TabAccess[] | undefined>>;
   loader: boolean;
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
-  phonesCount: string | React.JSX.Element,
-  tabletsCount: string | React.JSX.Element,
-  accessoriesCount: string | React.JSX.Element,
+  phonesCount: string | React.JSX.Element;
+  tabletsCount: string | React.JSX.Element;
+  accessoriesCount: string | React.JSX.Element;
 };
 
 export const CatalogContext = React.createContext<CatalogType>({
@@ -49,8 +47,8 @@ type Props = {
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Phone[] | undefined>();
   const [phones, setPhones] = useState<Phone[] | undefined>();
-  const [tablets, setTablets] = useState<TabAndAccess[] | undefined>();
-  const [accessories, setAccessories] = useState<TabAndAccess[] | undefined>();
+  const [tablets, setTablets] = useState<TabAccess[] | undefined>();
+  const [accessories, setAccessories] = useState<TabAccess[] | undefined>();
   const [loader, setLoader] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
@@ -78,7 +76,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
         const data = await response.json();
 
         setProducts(data);
-      } catch (error) {
+      } catch (er) {
         setError('There are no products yet');
       }
     };
@@ -146,18 +144,22 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   //   fetchData();
   // }, []);
 
-  const getCategoryCount = useCallback((category: Category) => {
-    if (products === undefined) {
-      return <NotFoundPage />;
-    }
+  const getCategoryCount = useCallback(
+    (category: Category) => {
+      if (products === undefined) {
+        return <NotFoundPage />;
+      }
 
-    const countedItems = products
-      .filter(item => item.category === category).length;
+      const countedItems = products.filter(
+        item => item.category === category,
+      ).length;
 
-    return countedItems === 1
-      ? `${countedItems} model`
-      : `${countedItems} models`;
-  }, [products]);
+      return countedItems === 1
+        ? `${countedItems} model`
+        : `${countedItems} models`;
+    },
+    [products],
+  );
 
   const phonesCount = getCategoryCount(Category.Phones);
   const tabletsCount = getCategoryCount(Category.Tablets);
