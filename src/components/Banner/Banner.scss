@@ -1,0 +1,87 @@
+@import '../../pages/styles/main';
+
+.banner {
+  &__content {
+    display: flex;
+    flex-direction: row;
+
+    @include onTablet {
+      gap: 19px;
+    }
+
+    @include onDesktop {
+      gap: 16px;
+    }
+  }
+
+  &--images {
+    display: block;
+    width: 100%;
+  }
+
+  &--image {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 320px;
+    display: none;
+
+    @include onTablet {
+      width: 490px;
+      height: 200px;
+    }
+
+    @include onDesktop {
+      width: 1040px;
+      height: 400px;
+    }
+
+    &--active {
+        display: block;
+        animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+
+    &--1 {
+      background-image: url(../../images/banner-phones.png);
+    }
+
+    &--2 {
+      background-image: url(../../images/banner-tablets.png);
+    }
+
+    &--3 {
+      background-image: url(../../images/banner-accessories.png);
+    }
+  }
+
+  &--button {
+    @extend %button;
+
+    display: none;
+
+    @include onTablet {
+     display: block;
+    }
+
+
+  }
+
+  &--list {
+    display: flex;
+    flex-direction: row;
+    margin: 18px auto 0;
+    justify-content: center;
+    gap: 14px;
+  }
+
+  &--item {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+
+    &--active {
+      background-color: $color-primary;
+      animation: animation-appearing $effect-duration ease-in-out forwards;
+    }
+  }
+};
