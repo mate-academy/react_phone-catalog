@@ -1,3 +1,4 @@
+import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Logo from '../../images/homePage/Logo.svg';
 import Vector_Up from '../../images/homePage/Vector_Up.svg';

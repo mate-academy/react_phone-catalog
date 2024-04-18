@@ -1,19 +1,5 @@
 @import '../../utils/main.scss';
 
-html {
-  margin: 0;
-}
-
-// body {
-//   margin: 0;
-// }
-
-// .page__body {
-//   scroll-behavior: smooth;
-//   margin: 0;
-//   align-items: center;
-// }
-
 .header {
   display: flex;
 
@@ -37,22 +23,42 @@ html {
 
   &__home {
     @include top-menu;
-    margin-right: 50px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      margin-right: 60px;
+    }
   }
 
   &__phones {
     @include top-menu;
-    margin-right: 50px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      margin-right: 60px;
+    }
   }
 
   &__tablets {
     @include top-menu;
-    margin-right: 50px;
+
+    @include onTablet {
+      margin-right: 40px;
+    }
+
+    @include onDesktop {
+      margin-right: 60px;
+    }
   }
 
   &__accessories {
     @include top-menu;
-    margin-right: 50px;
   }
 
   &__preferies {
@@ -68,4 +74,44 @@ html {
   &__cart {
     padding: 20px 20px 0 20px;
   }
+
+  &__burger {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    // background-color: gray;
+    overflow: hidden;
+    z-index: 1;
+
+    // transform: translateY(-100%);
+    // transition: transform 0.3s;
+
+    &:target {
+      transform: translateY(0);
+    }
+
+    &__link {
+    position: absolute;
+    background-image: url(../../../src/images/Burger.svg);
+    height: 9px;
+    width: 14px;
+    top: 0;
+    right: 0;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-size: contain;
+    z-index: 1;
+  }
+  }
+
+  // &__cross {
+  //   position: relative;
+  //   padding: 0 5px 5px 0;
+  //   background-image: url(../../../src/images/Cross.svg);
+  //   background-repeat: no-repeat;
+  //   width: 22px;
+  //   height: 22px;
+  // }
 }

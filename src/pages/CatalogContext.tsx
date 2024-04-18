@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
+import { Category } from '../types/category';
 import { Phone } from '../types/phone';
 import { TabAndAccess } from '../types/tablets';
+import { NotFoundPage } from './NotFoundPage/NotFoundPage';
 
 type CatalogType = {
   products: Phone[] | undefined;
@@ -17,6 +19,9 @@ type CatalogType = {
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
+  phonesCount: string | React.JSX.Element,
+  tabletsCount: string | React.JSX.Element,
+  accessoriesCount: string | React.JSX.Element,
 };
 
 export const CatalogContext = React.createContext<CatalogType>({
@@ -32,6 +37,9 @@ export const CatalogContext = React.createContext<CatalogType>({
   setLoader: () => {},
   error: '',
   setError: () => {},
+  phonesCount: '',
+  tabletsCount: '',
+  accessoriesCount: '',
 });
 
 type Props = {
@@ -49,14 +57,14 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const productsUrl =
     'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
-  const phonesUrl =
-    'https://mate-academy.github.io/react_phone-catalog/api/phones.json';
+  // const phonesUrl =
+  //   'https://mate-academy.github.io/Hanna-Balabukha.github.io/react_phone-catalog/_new/phones.json';
 
-  const tabletsUrl =
-    'https://mate-academy.github.io/react_phone-catalog/_new/tablets.json';
+  // const tabletsUrl =
+  //   'https://mate-academy.github.io/Hanna-Balabukha.github.io/react_phone-catalog/_new/tablets.json';
 
-  const accessoriesUrl =
-    'https://mate-academy.github.io/react_phone-catalog/_new/accessories.json';
+  // const accessoriesUrl =
+  //   'https://mate-academy.github.io/Hanna-Balabukha.github.io/react_phone-catalog/_new/accessories.json';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -71,89 +79,89 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
 
         setProducts(data);
       } catch (error) {
-        setError('There is no products');
+        setError('There are no products yet');
       }
     };
 
     fetchData();
+  }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(phonesUrl);
+
+  //       if (!response.ok) {
+  //         throw new Error('Error');
+  //       }
+
+  //       const data = await response.json();
+
+  //       setPhones(data);
+  //     } catch (error) {
+  //       setError('There are no phones yet');
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(tabletsUrl);
+
+  //       if (!response.ok) {
+  //         throw new Error('Error');
+  //       }
+
+  //       const data = await response.json();
+
+  //       setTablets(data);
+  //     } catch (error) {
+  //       setError('There are no tablets yet');
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await fetch(accessoriesUrl);
+
+  //       if (!response.ok) {
+  //         throw new Error('Error');
+  //       }
+
+  //       const data = await response.json();
+
+  //       setAccessories(data);
+  //     } catch (error) {
+  //       setError('There are no accessories yet');
+  //     }
+  //   };
+
+  //   fetchData();
+  // }, []);
+
+  const getCategoryCount = useCallback((category: Category) => {
+    if (products === undefined) {
+      return <NotFoundPage />;
+    }
+
+    const countedItems = products
+      .filter(item => item.category === category).length;
+
+    return countedItems === 1
+      ? `${countedItems} model`
+      : `${countedItems} models`;
   }, [products]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(phonesUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setPhones(data);
-      } catch (error) {
-        setError('There is no phones');
-      }
-    };
-
-    fetchData();
-  }, [phones]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(tabletsUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setTablets(data);
-      } catch (error) {
-        setError('There is no tablets');
-      }
-    };
-
-    fetchData();
-  }, [tablets]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(accessoriesUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setAccessories(data);
-      } catch (error) {
-        setError('There is no accessories');
-      }
-    };
-
-    fetchData();
-  }, [accessories]);
-
-  // const getCategoryCount = useCallback((category: Category) => {
-  //   if (products === undefined) {
-  //     return <NotFoundPage />;
-  //   }
-
-  //   const countedItems = products
-  //     .filter(item => item.category === category).length;
-
-  //   return countedItems === 1
-  //     ? `${countedItems} model`
-  //     : `${countedItems} models`;
-  // }, [products]);
-
-  // // const phonesCount = getCategoryCount(Category.Phones);
-  // const tabletsCount = getCategoryCount(Category.Tablets);
-  // const accessoriesCount = getCategoryCount(Category.Accessories);
+  const phonesCount = getCategoryCount(Category.Phones);
+  const tabletsCount = getCategoryCount(Category.Tablets);
+  const accessoriesCount = getCategoryCount(Category.Accessories);
 
   const value = {
     products,
@@ -164,6 +172,9 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     setTablets,
     accessories,
     setAccessories,
+    phonesCount,
+    tabletsCount,
+    accessoriesCount,
     loader,
     setLoader,
     error,

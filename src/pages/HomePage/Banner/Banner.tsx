@@ -1,46 +1,37 @@
 import './Banner.scss';
 import '../../../utils/main.scss';
 import { useState } from 'react';
-import { Carousel } from 'react-responsive-carousel';
-import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import classNames from 'classnames';
+import React from 'react';
 
 export const Banner = () => {
   const slides = [
-    {
-      image:
-        'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
-    },
-    {
-      image:
-        'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
-    },
-    {
-      image:
-        'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
-    },
+    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
+    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
+    'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const handlePrev = () => {
-    setCurrentIndex((currentIndex - 1 + slides.length) % slides.length);
-  };
+  const nextSlide = () => {
+    if(currentIndex !== 2){
+      setCurrentIndex(currentIndex + 1)
+    } 
+    else if (currentIndex === 2){
+      setCurrentIndex(0)
+    }
+  }
 
-  const handleNext = () => {
-    setCurrentIndex((currentIndex + 1) % slides.length);
-  };
+  const prevSlide = () => {
+    if(currentIndex !== 0){
+      setCurrentIndex(currentIndex - 1)
+    }
+    else if (currentIndex === 0){
+      setCurrentIndex(2)
+    }
+  }
 
-  const settings = {
-    // infiniteLoop: true,
-    showArrows: false,
-    showStatus: false,
-    showIndicators: false,
-    showThumbs: false,
-    transitionTime: 500,
-    interval: 3000,
-    autoPlay: true,
-  };
+  console.log(currentIndex)
 
   return (
     <div className="banner grid--tablet grid--desktop">
@@ -56,36 +47,33 @@ export const Banner = () => {
         grid__item--tablet-1
         grid__item--desktop-1"
         type="button"
-        onClick={handlePrev}
+        onClick={prevSlide}
       ></button>
       <div
         className="banner__box
         grid__item--tablet-2-11
         grid__item--desktop-2-23"
       >
-        <Carousel
-          className="banner__carousel"
-          {...settings}
-          selectedItem={currentIndex}
-          onChange={index => setCurrentIndex(index)}
-        >
-          {slides.map(slide => (
-            <div key={slide.image}>
-              <img
-                src={slide.image}
-                alt="slide"
-                className="banner__slider-image"
-              />
-            </div>
-          ))}
-        </Carousel>
+        <div className="banner__slider">
+          <div className='banner__cover'>
+          {slides.map((img, index) => (
+            <img
+              key={img}
+              src={slides[index]}
+              alt={img}
+              className="banner__slider-image"
+              style={{ translate: `${-100 * currentIndex}%`}}
+            />
+            ))}
+        </div>
+        </div>
       </div>
       <button
         className="banner__button banner__right
             grid__item--tablet-12
             grid__item--desktop-24"
         type="button"
-        onClick={handleNext}
+        onClick={nextSlide}
       ></button>
 
       <div

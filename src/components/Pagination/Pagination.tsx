@@ -8,6 +8,7 @@ import { getSearchWith } from '../../utils/searchHelpers';
 import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
+import React from 'react';
 
 export const Pagination = () => {
   const { products } = useContext(CatalogContext);

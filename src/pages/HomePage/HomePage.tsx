@@ -1,7 +1,8 @@
 import { Banner } from './Banner/Banner';
-import { HotPrices } from './HotPrices/HotPrices';
 import './HomePage.scss';
 import { Category } from './Category/Category';
+import React from 'react';
+import { HotPrices } from './HotPrices/HotPrices';
 import { BrandNew } from './BrandNew/BrandNew';
 
 export const HomePage = () => {

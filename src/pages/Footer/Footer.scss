@@ -24,10 +24,10 @@
     flex-direction: column;
     justify-content: space-around;
     padding: 20px;
-    // width: 550px;
 
     @include onTablet {
       flex-direction: row;
+      width: 550px;
     }
   }
 

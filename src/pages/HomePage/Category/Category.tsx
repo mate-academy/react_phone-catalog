@@ -1,10 +1,12 @@
 import './Category.scss';
 import '../../../utils/main.scss';
-import { useContext } from 'react';
+import React, { useContext } from 'react';
 import { CatalogContext } from '../../CatalogContext';
 
 export const Category = () => {
-  const { phones, tablets, accessories } = useContext(CatalogContext);
+  const { phonesCount,
+    tabletsCount,
+    accessoriesCount,} = useContext(CatalogContext);
 
   return (
     <div className="category">
@@ -28,7 +30,7 @@ export const Category = () => {
             className="category__img category__mobile"
           />
           <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phones?.length} models</div>
+          <div className="category__quantity">{phonesCount}</div>
         </div>
         <div
           className="category__block
@@ -42,7 +44,7 @@ export const Category = () => {
             className="category__img category__tablets"
           />
           <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tablets?.length} models</div>
+          <div className="category__quantity">{tabletsCount}</div>
         </div>
         <div
           className="category__block
@@ -56,7 +58,7 @@ export const Category = () => {
             className="category__img category__accessories"
           />
           <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessories?.length} models</div>
+          <div className="category__quantity">{accessoriesCount}</div>
         </div>
       </div>
     </div>

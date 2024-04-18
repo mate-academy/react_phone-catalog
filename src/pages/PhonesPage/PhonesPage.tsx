@@ -9,6 +9,7 @@ import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './PhonesPage.scss';
 import Home from '../../images/Home.svg';
 import Vector_light_right from '../../images/homePage/Vector_light_right.svg';
+import React from 'react';
 
 export const PhonesPage = () => {
   const { products } = useContext(CatalogContext);

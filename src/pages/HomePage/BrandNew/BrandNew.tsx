@@ -7,6 +7,7 @@ import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
 import Vector_light_right from '../../../images/homePage/Vector_light_right.svg';
 import './BrandNew.scss';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
+import React from 'react';
 
 export const BrandNew = () => {
   const { products, error } = useContext(CatalogContext);
@@ -67,6 +68,8 @@ export const BrandNew = () => {
     setCurrentPage(updatedPage);
   };
 
+  console.log(error)
+
   return !error ? (
     <div className="hotPrices">
       <div className="hotPrices__container">
@@ -114,6 +117,6 @@ export const BrandNew = () => {
       </div>
     </div>
   ) : (
-    <div></div>
+    <div>{error}</div>
   );
 };
