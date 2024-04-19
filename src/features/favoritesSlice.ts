@@ -8,8 +8,12 @@ export interface FavoritesState {
   totalInFavorites: number;
 }
 
+const initialFavorites = localStorage.getItem('favorites')
+  ? JSON.parse(localStorage.getItem('favorites') as string)
+  : [];
+
 const initialState: FavoritesState = {
-  favorites: [],
+  favorites: initialFavorites,
   totalInFavorites: 0,
 };
 
@@ -25,6 +29,7 @@ const favoritesSlice = createSlice({
       if (itemIndex < 0) {
         state.favorites.push(action.payload);
         state.totalInFavorites += 1;
+        localStorage.setItem('favorites', JSON.stringify(state.favorites));
       }
     },
     removeFromFavorites: (state, action: PayloadAction<Product['itemId']>) => {
@@ -35,6 +40,7 @@ const favoritesSlice = createSlice({
       if (index >= 0) {
         state.favorites.splice(index, 1);
         state.totalInFavorites -= 1;
+        localStorage.setItem('favorites', JSON.stringify(state.favorites));
       }
     },
   },

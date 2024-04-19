@@ -8,8 +8,12 @@ export interface CartState {
   totalInCart: number;
 }
 
+const initialCart = localStorage.getItem('cart')
+  ? JSON.parse(localStorage.getItem('cart') as string)
+  : [];
+
 const initialState: CartState = {
-  cart: [],
+  cart: initialCart,
   totalInCart: 0,
 };
 
@@ -25,6 +29,7 @@ const cartSlice = createSlice({
       if (itemIndex < 0) {
         state.cart.push(action.payload);
         state.totalInCart += 1;
+        localStorage.setItem('cart', JSON.stringify(state.cart));
       }
     },
     removeFromCart: (state, action: PayloadAction<Product['itemId']>) => {
@@ -35,6 +40,7 @@ const cartSlice = createSlice({
       if (index >= 0) {
         state.cart.splice(index, 1);
         state.totalInCart += 1;
+        localStorage.setItem('cart', JSON.stringify(state.cart));
       }
     },
   },
