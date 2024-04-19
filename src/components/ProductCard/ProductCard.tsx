@@ -8,7 +8,6 @@ import {
 import { Product } from '../../types/Product';
 import { AddButton } from '../AddButton';
 import { RoundButton } from '../RoundButton';
-import { findProductByItemId } from '../../api/api';
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
@@ -36,7 +35,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { cart } = useAppSelector(state => state.cart);
   const { favorites } = useAppSelector(state => state.favorites);
 
-  const handleCartAction = async () => {
+  /* const handleCartAction = async () => {
     const productToCart = await findProductByItemId(itemId, category);
 
     if (isProductInCart) {
@@ -44,9 +43,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     } else {
       dispatch(addToCart(productToCart));
     }
-  };
+  }; */
 
-  const handleFavoritesAction = async () => {
+  /* const handleFavoritesAction = async () => {
     const productToFavorites = await findProductByItemId(itemId, category);
 
     if (isProductInFavorites) {
@@ -54,11 +53,27 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
     } else {
       dispatch(addToFavorites(productToFavorites));
     }
+  }; */
+
+  const handleFavoritesAction = () => {
+    if (isProductInFavorites) {
+      dispatch(removeFromFavorites(itemId));
+    } else {
+      dispatch(addToFavorites(product));
+    }
+  };
+
+  const handleCartAction = () => {
+    if (isProductInCart) {
+      dispatch(removeFromCart(itemId));
+    } else {
+      dispatch(addToCart(product));
+    }
   };
 
   useEffect(() => {
-    setIsProductInCart(cart.some(item => item.id === itemId));
-    setIsProductInFavorites(favorites.some(item => item.id === itemId));
+    setIsProductInCart(cart.some(item => item.itemId === itemId));
+    setIsProductInFavorites(favorites.some(item => item.itemId === itemId));
   }, [cart, favorites]);
 
   return (

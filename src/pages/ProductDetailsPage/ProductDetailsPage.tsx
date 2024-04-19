@@ -1,7 +1,11 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
 import { useEffect, useState } from 'react';
-import { findProductByItemId, getSuggestedProducts } from '../../api/api';
+import {
+  findProductByItemId,
+  getAllProducts,
+  getSuggestedProducts,
+} from '../../api/api';
 import { AddButton } from '../../components/AddButton';
 import { RoundButton } from '../../components/RoundButton';
 import { ProductDetails } from '../../types/ProductDetails';
@@ -36,7 +40,7 @@ export const ProductDetailsPage = () => {
 
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
 
-  const handleCartAction = () => {
+  /* const handleCartAction = () => {
     if (product) {
       if (isProductInCart) {
         dispatch(removeFromCart(product.id));
@@ -44,9 +48,24 @@ export const ProductDetailsPage = () => {
         dispatch(addToCart(product));
       }
     }
+  }; */
+
+  const handleCartAction = async () => {
+    if (product) {
+      const allProducts = await getAllProducts();
+      const currentProduct = allProducts.find(p => p.itemId === itemId);
+
+      if (currentProduct) {
+        if (isProductInCart) {
+          dispatch(removeFromCart(currentProduct.itemId));
+        } else {
+          dispatch(addToCart(currentProduct));
+        }
+      }
+    }
   };
 
-  const handleFavoritesAction = () => {
+  /* const handleFavoritesAction = () => {
     if (product) {
       if (isProductInFavorites) {
         dispatch(removeFromFavorites(product.id));
@@ -54,14 +73,29 @@ export const ProductDetailsPage = () => {
         dispatch(addToFavorites(product));
       }
     }
+  }; */
+
+  const handleFavoritesAction = async () => {
+    if (product) {
+      const allProducts = await getAllProducts();
+      const currentProduct = allProducts.find(p => p.itemId === itemId);
+
+      if (currentProduct) {
+        if (isProductInFavorites) {
+          dispatch(removeFromFavorites(currentProduct.itemId));
+        } else {
+          dispatch(addToFavorites(currentProduct));
+        }
+      }
+    }
   };
 
   useEffect(() => {
     const fetchProduct = async () => {
       if (itemId && category) {
-        const curProduct = await findProductByItemId(itemId, category);
+        const currentProduct = await findProductByItemId(itemId, category);
 
-        setProduct(curProduct);
+        setProduct(currentProduct);
       }
     };
 
@@ -69,15 +103,17 @@ export const ProductDetailsPage = () => {
   }, [itemId, category]);
 
   useEffect(() => {
+    if (product) {
+      setIsProductInCart(cart.some(p => p.itemId === itemId));
+      setIsProductInFavorites(favorites.some(p => p.itemId === itemId));
+    }
+  }, [cart, favorites, product, itemId]);
+
+  useEffect(() => {
     if (product && product.images.length > 0) {
       setMainImage(product.images[0]);
     }
   }, [product]);
-
-  useEffect(() => {
-    setIsProductInCart(cart.some(item => item.id === product?.id));
-    setIsProductInFavorites(favorites.some(item => item.id === product?.id));
-  }, [cart, favorites]);
 
   useEffect(() => {
     if (product?.priceDiscount !== undefined) {
