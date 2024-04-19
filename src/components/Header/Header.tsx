@@ -1,8 +1,11 @@
+import { useAppSelector } from '../../app/hooks';
 import './Header.scss';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 
 export const Header = () => {
   const { pathname } = useLocation();
+  const { totalInFavorites } = useAppSelector(state => state.favorites);
+  const { totalInCart } = useAppSelector(state => state.cart);
   const navigate = useNavigate();
 
   const isMenuOpened = pathname === '/menu';
@@ -35,11 +38,16 @@ export const Header = () => {
             </NavLink>
           </nav>
           <nav className="top-bar__icons">
-            <NavLink
-              to="/favorites"
-              className="icon icon--favourites"
-            ></NavLink>
-            <NavLink to="/cart" className="icon icon--cart"></NavLink>
+            <NavLink to="/favorites" className="icon icon--favourites">
+              {totalInFavorites > 0 && (
+                <span className="top-bar__icon-label">{totalInFavorites}</span>
+              )}
+            </NavLink>
+            <NavLink to="/cart" className="icon icon--cart">
+              {totalInCart > 0 && (
+                <span className="top-bar__icon-label">{totalInCart}</span>
+              )}
+            </NavLink>
           </nav>
           <div className="top-bar__menu">
             {isMenuOpened ? (

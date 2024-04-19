@@ -17,4 +17,12 @@
     margin-top: 8px;
     color: $secondary-color;
   }
+
+  &__container {
+    margin-top: 24px;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(272px, 1fr));
+    grid-gap: 40px 16px;
+    justify-items: center;
+  }
 }

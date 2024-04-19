@@ -1,13 +1,16 @@
+/* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 /* import { ProductDetails } from '../types/ProductDetails'; */
 import { Product } from '../types/Product';
 
 export interface FavoritesState {
   favorites: Product[];
+  totalInFavorites: number;
 }
 
 const initialState: FavoritesState = {
   favorites: [],
+  totalInFavorites: 0,
 };
 
 const favoritesSlice = createSlice({
@@ -21,6 +24,7 @@ const favoritesSlice = createSlice({
 
       if (itemIndex < 0) {
         state.favorites.push(action.payload);
+        state.totalInFavorites += 1;
       }
     },
     removeFromFavorites: (state, action: PayloadAction<Product['itemId']>) => {
@@ -30,6 +34,7 @@ const favoritesSlice = createSlice({
 
       if (index >= 0) {
         state.favorites.splice(index, 1);
+        state.totalInFavorites -= 1;
       }
     },
   },

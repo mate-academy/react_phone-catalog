@@ -65,12 +65,32 @@
       display: flex;
     }
   }
+
+  &__icon-label {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 14px;
+    min-height: 14px;
+    background-color: $accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    border: 1px solid $white-color;
+    position: absolute;
+    right: 30%;
+    top: 30%;
+  }
 }
 
 .icon {
   display: block;
   height: 48px;
   width: 48px;
+  text-decoration: none;
+  position: relative;
 
   @include on-desktop {
     height: 64px;

@@ -1,13 +1,16 @@
+/* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 /* import { ProductDetails } from '../types/ProductDetails'; */
 import { Product } from '../types/Product';
 
 export interface CartState {
   cart: Product[];
+  totalInCart: number;
 }
 
 const initialState: CartState = {
   cart: [],
+  totalInCart: 0,
 };
 
 const cartSlice = createSlice({
@@ -21,6 +24,7 @@ const cartSlice = createSlice({
 
       if (itemIndex < 0) {
         state.cart.push(action.payload);
+        state.totalInCart += 1;
       }
     },
     removeFromCart: (state, action: PayloadAction<Product['itemId']>) => {
@@ -30,6 +34,7 @@ const cartSlice = createSlice({
 
       if (index >= 0) {
         state.cart.splice(index, 1);
+        state.totalInCart += 1;
       }
     },
   },
