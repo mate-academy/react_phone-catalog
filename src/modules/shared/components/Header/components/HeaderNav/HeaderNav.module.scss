@@ -22,6 +22,7 @@
 
   position: relative;
   height: 64px;
+  box-sizing: border-box  ;
 
   text-decoration: none;
   text-transform: uppercase;
@@ -30,6 +31,7 @@
 
   @media (max-width: 639px) {
     height: 27px;
+    padding: 8px 0;
   }
 
   &::after {
@@ -42,6 +44,10 @@
     background-color: $color-white;
     transform: scale(0);
     transition: transform 0.5s ease-in-out;
+
+    @media (max-width: 639px) {
+      height: 2px;
+    }
   }
 
   @include hover-text($color-white);
@@ -61,4 +67,7 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+
+    padding: 24px 16px;
+    gap: 16px;
   }

@@ -1,7 +1,4 @@
-export const closeMenuOnClick = (
-  isMenuOpen: boolean,
-  toggleMenu: () => void,
-) => {
+export const closeMenu = (isMenuOpen: boolean, toggleMenu: () => void) => {
   if (isMenuOpen) {
     toggleMenu();
   }

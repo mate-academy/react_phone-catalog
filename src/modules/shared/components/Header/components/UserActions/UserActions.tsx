@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './UserActions.module.scss';
 import { useMenu } from '../Menu/MenuContext';
-import { closeMenuOnClick } from 'modules/shared/helpers/handlers';
+import { closeMenu } from 'modules/shared/helpers/handlers';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.icon, {
@@ -21,7 +21,7 @@ export const UserActions = () => {
       <NavLink
         to="/favourites"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         <img
           className={styles.image}
@@ -33,7 +33,7 @@ export const UserActions = () => {
       <NavLink
         to="/cart"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         <img className={styles.image} src="img/icons/cart.svg" alt="Cart" />
       </NavLink>

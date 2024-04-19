@@ -1,23 +1,29 @@
 @import 'Styles/utils';
 
 .header {
+  box-sizing: border-box;
   grid-area: header;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 1000;
-  box-sizing: border-box;
-
-  @include flex-center;
-
-  justify-content: space-between;
-  background-color: $color-black;
-  border-bottom: 1px solid $color-elements;
 
   @media (max-width: 639px) {
     height: 48px;
   }
+}
+
+.wrapper{
+  @include flex-center;
+
+  height: 100%;
+  box-sizing: border-box;
+
+  justify-content: space-between;
+  background-color: $color-black;
+  border-bottom: 1px solid $color-elements;
+  z-index: 1002;
 }
 
 .headerLeft {
@@ -61,19 +67,20 @@
 
 @media (max-width: 639px) {
   .menuContainer {
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    box-sizing: border-box;
 
-    position: fixed;
-    inset: 48px 0 0;
+    position: absolute;
+    top: 48px;
+    left: 0;
     width: 100%;
     height: calc(100vh - 48px);
-    z-index: 999;
+    z-index: -1;
     background-color: $color-black;
 
-    transform: translateY(-110%);
+    transform: translateY(-100%);
     transition: transform 0.3s ease-in-out;
   }
 }

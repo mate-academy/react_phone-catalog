@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import styles from './HeaderNav.module.scss';
 import { useMenu } from '../Menu/MenuContext';
-import { closeMenuOnClick } from 'modules/shared/helpers/handlers';
+import { closeMenu } from 'modules/shared/helpers/handlers';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.navbarLink, {
@@ -19,7 +19,7 @@ export const HeaderNav = () => {
       <NavLink
         to="/"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Home
       </NavLink>
@@ -27,7 +27,7 @@ export const HeaderNav = () => {
       <NavLink
         to="/phones"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Phones
       </NavLink>
@@ -35,7 +35,7 @@ export const HeaderNav = () => {
       <NavLink
         to="/tablets"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Tablets
       </NavLink>
@@ -43,7 +43,7 @@ export const HeaderNav = () => {
       <NavLink
         to="/accessories"
         className={getLinkClass}
-        onClick={() => closeMenuOnClick(isMenuOpen, toggleMenu)}
+        onClick={() => closeMenu(isMenuOpen, toggleMenu)}
       >
         Accesories
       </NavLink>

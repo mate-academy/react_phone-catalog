@@ -6,15 +6,25 @@ import { useMenu } from './components/Menu/MenuContext';
 import { useMediaQuery } from '@mui/material';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { useEffect } from 'react';
+import { closeMenu } from 'modules/shared/helpers/handlers';
 
 export const Header = () => {
   const isMobile = useMediaQuery('(max-width: 639px)');
-  const { isMenuOpen } = useMenu();
+  const { isMenuOpen, toggleMenu } = useMenu();
+
+  useEffect(() => {
+    if (!isMobile) {
+      closeMenu(isMenuOpen, toggleMenu);
+    }
+  }, [isMenuOpen, isMobile, toggleMenu]);
 
   return isMobile ? (
     <header className={styles.header}>
-      <Logo className={styles.headerLogo} />
-      <Menu />
+      <div className={styles.wrapper}>
+        <Logo className={styles.headerLogo} />
+        <Menu />
+      </div>
 
       <div
         className={classNames(styles.menuContainer, {
@@ -27,11 +37,13 @@ export const Header = () => {
     </header>
   ) : (
     <header className={styles.header}>
-      <div className={styles.headerLeft}>
-        <Logo className={styles.headerLogo} />
-        <HeaderNav />
+      <div className={styles.wrapper}>
+        <div className={styles.headerLeft}>
+          <Logo className={styles.headerLogo} />
+          <HeaderNav />
+        </div>
+        <UserActions />
       </div>
-      <UserActions />
     </header>
   );
 };
