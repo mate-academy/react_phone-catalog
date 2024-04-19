@@ -18,7 +18,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
         <div className="shop-by-category__categories">
           <div className="shop-by-category__item-wrapper">
             <Link
-              to="/"
+              to="/phones"
               className="shop-by-category__item
             shop-by-category__item--mobile-phones"
             >

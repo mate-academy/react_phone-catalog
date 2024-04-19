@@ -2,13 +2,8 @@ import React, { useContext, useEffect, useState } from 'react';
 import { ProductListCarousel } from './ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
-import { client } from '../../api';
 import { Product } from '../../types/Product';
-import { Sidebar } from '../shared/Sidebar';
-import { SidebarContext } from '../../store/SidebarContext';
-import { WIDTH_DEVICES } from '../constants/WIDTH_DEVICES';
-
-const PRODUCT_URL = 'products.json';
+import { ProductContext } from '../../store/ProductContext';
 
 function maxDifference(products: Product[]) {
   const result = products
@@ -26,21 +21,14 @@ function maxDifference(products: Product[]) {
 }
 
 export const HomePage = React.memo(() => {
-  const { isOpenSidebar } = useContext(SidebarContext);
+  const { dataLoaded, phones, tablets, accessories } =
+    useContext(ProductContext);
 
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
-  const [dataLoaded, setDataLoaded] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
 
-  const phones = products.filter(product => product.category === 'phones');
-  const tablets = products.filter(product => product.category === 'tablets');
-  const accessories = products.filter(
-    product => product.category === 'accessories',
-  );
-
-  const newModels = phones.filter(phone =>
-    phone.name.toLowerCase().includes('iphone 14'),
-  );
+  const newModels = phones
+    .filter(phone => phone.name.toLowerCase().includes('iphone 14'))
+    .sort((phone1, phone2) => phone2.fullPrice - phone1.fullPrice);
 
   const hotPricesPhones = maxDifference(phones);
   const hotPricesTablets = maxDifference(tablets);
@@ -51,18 +39,6 @@ export const HomePage = React.memo(() => {
     ...hotPricesTablets,
     ...hotPricesAccessories,
   ]);
-
-  useEffect(() => {
-    setDataLoaded(false);
-
-    client
-      .get<Product[]>(PRODUCT_URL)
-      .then(data => {
-        setProducts(data);
-        setDataLoaded(true);
-      })
-      .catch(() => {});
-  }, []); // fetch
 
   useEffect(() => {
     const handleResize = () => {
@@ -87,15 +63,6 @@ export const HomePage = React.memo(() => {
       <h1 className="home-page__greeting primary-title">
         Welcome to Nice Gadgets&nbsp;store!
       </h1>
-
-      {windowSize <= WIDTH_DEVICES.mobile && (
-        <div
-          className="home-page__sidebar"
-          style={isOpenSidebar ? { right: 0 } : { right: '-100vw' }}
-        >
-          <Sidebar />
-        </div>
-      )}
 
       <div className="home-page__container">
         <PicturesSlider windowSize={windowSize} />

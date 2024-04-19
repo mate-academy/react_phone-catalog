@@ -5,7 +5,7 @@ import { Product } from '../../../types/Product';
 
 type Props = {
   product: Product;
-  widthCard: number;
+  widthCard?: number;
   hotPrice: boolean;
 };
 
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = React.memo(
 
         {hotPrice ? (
           <p className="product-card__price">
-            {`$${fullPrice}`} <span className="crossed">{`$${price}`}</span>
+            {`$${price}`} <span className="crossed">{`$${fullPrice}`}</span>
           </p>
         ) : (
           <p className="product-card__price">{`$${fullPrice}`}</p>

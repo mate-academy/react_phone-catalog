@@ -1,6 +1,7 @@
 @import "./reset";
 @import "./modules/constants/vars";
 @import "./modules/shared/mixins";
+@import "./App";
 @import "./modules/shared/icons";
 @import "./modules/shared/title";
 @import "./modules/shared/Header/Header";
@@ -12,3 +13,6 @@
 @import "./modules/shared/ProductCard/ProductCard";
 @import "./modules/shared/AddBlock/AddBlock";
 @import "./modules/HomePage/ShopByCategoty/ShopByCategory";
+@import "./modules/PhonesPage/PhonesPage";
+@import "./modules/shared/ProductPage/ProductPage";
+@import "./modules/shared/Dropdown/Dropdown";

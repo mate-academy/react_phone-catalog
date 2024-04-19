@@ -63,17 +63,23 @@
     color: $text-black-color;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid $border-color-default; // default
+    border: 1px solid $border-color-default;
     background-color: $back-ground-color-white;
 
     &:hover {
-      border: 1px solid $border-color-hover; // hover
+      border: 1px solid $border-color-hover;
     }
 
     &.disabled {
-      border: 1px solid $border-color-light-gray; // disabled
-      color: $text-gray-color; // disabled
+      border: 1px solid $border-color-light-gray;
+      color: $text-gray-color;
       cursor: default;
+    }
+  }
+
+  &__arrow {
+    &.disabled {
+      fill: $text-gray-color;
     }
   }
 }

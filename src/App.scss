@@ -1,3 +1,18 @@
 .App {
   margin: 0;
+
+  position: relative;
+
+  overflow: hidden;
+
+  &__sidebar {
+    position: absolute;
+
+    top: $header-height-mobile;
+
+    background-color: $back-ground-color-white;
+    box-shadow: inset 0 1px 0 $border-color-light-gray;
+
+    z-index: 1;
+  }
 }

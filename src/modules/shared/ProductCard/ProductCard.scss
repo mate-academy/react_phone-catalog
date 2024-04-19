@@ -1,13 +1,22 @@
 .product-card {
   padding: 32px;
 
+  height: 439.5px;
+
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 8px;
 
   border: solid 1px $border-color-light-gray;
   border-radius: 5px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desctop {
+    height: 506px;
+  }
 
   &__img-link {
     margin-inline: auto;
@@ -21,7 +30,7 @@
   }
 
   &__img {
-    height: 129px;
+    height: 127px;
 
     @include on-tablet {
       height: 202px;
@@ -34,6 +43,7 @@
 
   &__title {
     margin-top: 16px;
+    margin-top: auto;
 
     font-size: 14px;
     font-weight: 600;
