@@ -8,6 +8,7 @@ export const HomePage = () => {
   return (
     <div className={styles.homepage}>
       <div className={styles.section}>
+        <h1 hidden>Product Catalog</h1>
         <h1 className={styles.mainTitle}>Welcome to Nice Gadgets store!</h1>
         <PicturesSlider />
       </div>

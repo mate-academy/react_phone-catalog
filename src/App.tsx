@@ -1,14 +1,18 @@
+/* eslint-disable max-len */
 import styles from './App.module.scss';
 import { Header } from './modules/shared/components/Header';
-// import { Main } from 'modules/shared/components/Main';
+import { Main } from 'modules/shared/components/Main';
 import { Footer } from './modules/shared/components/Footer/Footer';
+import { MenuProvider } from 'modules/shared/components/Header/components/Menu/MenuContext';
 
 export const App = () => (
-  <div className={styles.App}>
-    <Header />
+  <MenuProvider>
+    <div className={styles.App}>
+      <Header />
 
-    {/* <Main /> */}
+      <Main />
 
-    <Footer />
-  </div>
+      <Footer />
+    </div>
+  </MenuProvider>
 );

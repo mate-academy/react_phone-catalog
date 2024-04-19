@@ -2,14 +2,9 @@
 
 .navbar {
   @include flex-center;
+  @include uppercase-desktop-tablet;
 
   justify-content: space-between;
-
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 11px;
-  letter-spacing: 0.04em;
-  text-align: left;
 
   gap: 64px;
 
@@ -32,6 +27,10 @@
   text-transform: uppercase;
   color: $color-secondary;
   outline: none;
+
+  @media (max-width: 639px) {
+    height: 27px;
+  }
 
   &::after {
     content: '';
@@ -57,4 +56,9 @@
       }
   }
 
-
+  .menuOpen {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+  }

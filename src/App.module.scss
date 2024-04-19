@@ -11,3 +11,9 @@
   grid-template-rows: 64px 1fr auto;
   grid-template-columns: minmax(0, 1fr);
 }
+
+@media (max-width: 639px) {
+  .App {
+    grid-template-rows: 48px 1fr auto;
+  }
+}
