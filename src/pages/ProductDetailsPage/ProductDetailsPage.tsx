@@ -1,4 +1,4 @@
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
 import { useEffect, useState } from 'react';
 import { findProductByItemId, getSuggestedProducts } from '../../api/api';
@@ -17,11 +17,13 @@ import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
   const { category, itemId } = useParams();
+  const navigate = useNavigate();
   const [product, setProduct] = useState<ProductDetails | null>(null);
 
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     undefined,
   );
+  const [selectedColor, setSelectedColor] = useState<string | undefined>();
 
   const [mainImage, setMainImage] = useState<string | null>(null);
 
@@ -89,9 +91,21 @@ export const ProductDetailsPage = () => {
     }
   }, [product]);
 
+  useEffect(() => {
+    if (product) {
+      setSelectedColor(product.color);
+    }
+  }, [product]);
+
   return (
     <div className="container">
       <Breadcrumbs category={product?.category || ''} product={product?.name} />
+      <div className="back">
+        <div className="back__arrow"></div>
+        <button className="back__btn" onClick={() => navigate(-1)}>
+          Back
+        </button>
+      </div>
       <div className="product-details">
         <div className="product-details__name">{product?.name}</div>
         <div className="product-details__info">
@@ -120,9 +134,10 @@ export const ProductDetailsPage = () => {
                 <div className="product-details__color-selector">
                   {product?.colorsAvailable.map(color => (
                     <div
-                      className="product-details__color-select"
+                      className={`product-details__color-select ${color === selectedColor ? 'product-details__color-select--selected' : ''}`}
                       key={color}
                       style={{ backgroundColor: color }}
+                      onClick={() => setSelectedColor(color)}
                     ></div>
                   ))}
                 </div>

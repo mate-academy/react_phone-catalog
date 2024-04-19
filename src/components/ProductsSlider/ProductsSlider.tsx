@@ -18,8 +18,7 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
 
   const nextSlide = () => {
     setSlideIndex(prevSlideIndex => {
-      // Обмежуємо slideIndex кількістю слайдів
-      const totalSlides = 6; // Змініть це значення відповідно до кількості ваших слайдів
+      const totalSlides = products.length;
 
       if (prevSlideIndex < totalSlides - 1) {
         return prevSlideIndex + 1;
@@ -48,8 +47,16 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
       <div className="products-slider__navigate">
         <h2 className="page__subtitle">{title}</h2>
         <div className="products-slider__actions">
-          <RoundButton buttonType="left" onClick={previousSlide} />
-          <RoundButton buttonType="right" onClick={nextSlide} />
+          <RoundButton
+            buttonType={slideIndex === 0 ? 'left-disabled' : 'left'}
+            onClick={previousSlide}
+          />
+          <RoundButton
+            buttonType={
+              slideIndex === products.length - 4 ? 'right-disabled' : 'right'
+            }
+            onClick={nextSlide}
+          />
         </div>
       </div>
       <div className="products-slider__container" style={containerStyles}>

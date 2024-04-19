@@ -28,8 +28,18 @@
     background-size: 50%;
   }
 
+  &--left-disabled {
+    background-image: url('../../../public/img/icons/left-gray.svg');
+    background-size: 50%;
+  }
+
   &--right {
     background-image: url('../../../public/img/icons/right.svg');
+    background-size: 50%;
+  }
+
+  &--right-disabled {
+    background-image: url('../../../public/img/icons/right-gray.svg');
     background-size: 50%;
   }
 

@@ -1,5 +1,32 @@
 @import '../../App';
 
+.back {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__btn {
+    @include small-font;
+
+    color: $secondary-color;
+    line-height: 12px;
+  }
+}
+
 .product-details {
   &__info {
     @include on-tablet {
@@ -119,6 +146,10 @@
     border: 1px solid $icons-placeholder-color;
 
     &:hover {
+      border: 1px solid $primary-color;
+    }
+
+    &--selected {
       border: 1px solid $primary-color;
     }
   }

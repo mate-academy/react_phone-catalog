@@ -1,0 +1,20 @@
+@import '../../App';
+
+.favorites {
+  &__title {
+    @include header-font-l;
+
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    @include body-font;
+
+    margin-top: 8px;
+    color: $secondary-color;
+  }
+}
