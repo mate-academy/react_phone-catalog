@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
-
 import style from './Pagination.module.scss';
 
 type Props = {
@@ -58,6 +57,20 @@ export const Pagination: React.FC<Props> = ({
     setPage(prevPage => prevPage - 1);
   };
 
+  const renderDots = () => {
+    return (
+      <button
+        className={style.pagination__button_page}
+        style={{cursor: 'default'}}
+        type="button"
+        aria-label="pagination"
+        disabled
+      >
+        ...
+      </button>
+    );
+  };
+
   return itemsOnPage !== 'All' ? (
     <div className={style.pagination} data-cy="pagination">
       <button
@@ -70,7 +83,9 @@ export const Pagination: React.FC<Props> = ({
       >
         <IoIosArrowBack />
       </button>
+      {page > 1 && renderDots()}
       {pages()}
+      {page < maxPage && renderDots()}
       <button
         className={style.pagination__button}
         type="button"

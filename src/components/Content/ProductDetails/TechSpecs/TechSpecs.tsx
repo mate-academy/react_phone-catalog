@@ -1,12 +1,12 @@
-import { Details } from '../../../../type/Details';
+import {Details} from '../../../../type/Details';
 import style from './TechSpecs.module.scss';
 
 type Props = {
   details: Details;
 };
 
-export const TechSpecs: React.FC<Props> = ({ details }) => {
-  const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
+export const TechSpecs: React.FC<Props> = ({details}) => {
+  const {screen, resolution, processor, ram, capacity, camera, zoom, cell} =
     details;
 
   return (

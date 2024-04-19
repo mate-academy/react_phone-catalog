@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { IoIosArrowBack, IoIosArrowForward } from 'react-icons/io';
-import { IoRemoveOutline } from 'react-icons/io5';
-import { useEffect, useState } from 'react';
+import {IoIosArrowBack, IoIosArrowForward} from 'react-icons/io';
+import {IoRemoveOutline} from 'react-icons/io5';
+import {useEffect, useState} from 'react';
 
 import style from './Slidebar.module.scss';
 
@@ -15,6 +15,7 @@ export const Sliderbar = () => {
   const [imgUrl, setImgUrl] = useState(banner[0]);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [imgIndex, setImgIndex] = useState(0);
+  const [intervalId, setIntervalId] = useState<number | null>(null);
 
   const handlePreviousSlide = () => {
     setIsTransitioning(true);
@@ -25,6 +26,11 @@ export const Sliderbar = () => {
   };
 
   const handleNextSlide = () => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+
     setIsTransitioning(true);
     setTimeout(() => {
       setIsTransitioning(false);
@@ -33,28 +39,45 @@ export const Sliderbar = () => {
   };
 
   const getClassIndecator = (e: string) =>
-    classNames({ [style.isNotActive]: imgUrl !== e });
+    classNames({[style.isNotActive]: imgUrl !== e});
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setIsTransitioning(true);
-      const transitionTimeout = setTimeout(() => {
-        setIsTransitioning(false);
-        setImgIndex(prevIndex => {
-          return (prevIndex + 1) % banner.length;
-        });
-      }, 500);
+    if (!intervalId) {
+      const id = setInterval(() => {
+        setIsTransitioning(true);
+        const transitionTimeout = setTimeout(() => {
+          setIsTransitioning(false);
+          setImgIndex(prevIndex => {
+            return (prevIndex + 1) % banner.length;
+          });
+        }, 500);
 
-      return () => {
-        clearInterval(intervalId);
-        clearTimeout(transitionTimeout);
-      };
-    }, 5000);
-  }, []);
+        setIntervalId(+id);
+
+        return () => {
+          clearInterval(id);
+          clearTimeout(transitionTimeout);
+        };
+      }, 5000);
+    }
+  }, [intervalId]);
 
   useEffect(() => {
     setImgUrl(banner[imgIndex]);
   }, [imgIndex]);
+
+  const handleClickIndecator = (index: number) => {
+    if (intervalId) {
+      clearInterval(intervalId);
+      setIntervalId(null);
+    }
+
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setIsTransitioning(false);
+      setImgIndex(index);
+    }, 500);
+  };
 
   return (
     <div className={style.slider}>
@@ -88,7 +111,11 @@ export const Sliderbar = () => {
       </div>
       <div className={style.slider__indicator}>
         {banner.map((e, index) => (
-          <IoRemoveOutline key={+index} className={getClassIndecator(e)} />
+          <IoRemoveOutline
+            onClick={() => handleClickIndecator(index)}
+            key={+index}
+            className={getClassIndecator(e)}
+          />
         ))}
       </div>
     </div>

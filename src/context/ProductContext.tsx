@@ -53,10 +53,11 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
     [],
   );
   const [productExists, setProductExists] = useState<ProductExistsState>(null);
-  const [priceList, setPriceList] = useLocaleStorage<PriceList[]>(
+  const [priceListLocale, setPriceListLocale] = useLocaleStorage<PriceList[]>(
     'priceList',
     [],
   );
+  const [priceList, setPriceList] = useState<PriceList[]>(priceListLocale);
   const [selectIdCart, setSelectIdCart] = useState<ProductExistsState>(null);
   const [product, setProduct] = useState<Products[]>([]);
   const [visibleProduct, setVisibleProduct] = useLocaleStorage<Products[]>(
@@ -85,7 +86,13 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
   useEffect(() => {
     getProducts().then((data: Products[]) => {
       if (selectIdCart?.hasProdPriceList) {
-        setPriceList(priceList.filter(p => +p.id !== +selectIdCart?.id));
+        setPriceList((prevList: PriceList[]) => {
+          const filteredList = prevList.filter(
+            p => +p.id !== +selectIdCart?.id,
+          );
+
+          return filteredList;
+        });
 
         return;
       }
@@ -102,10 +109,20 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
           price: newProduct.price,
         };
 
-        setPriceList([...priceList, newPriceListItem]);
+        setPriceList(prevList => [...prevList, newPriceListItem]);
       }
     });
   }, [selectIdCart]);
+
+  useEffect(() => {
+    getProducts().then((data: Products[]) => {
+      setProduct(data);
+    });
+  }, []);
+
+  useEffect(() => {
+    setPriceListLocale(priceList);
+  }, [priceList]);
 
   const value = useMemo(() => {
     return {

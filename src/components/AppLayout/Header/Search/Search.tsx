@@ -1,7 +1,7 @@
-import { useContext, useEffect, useState } from 'react';
-import { IoSearch } from 'react-icons/io5';
+import {useContext, useEffect, useState} from 'react';
+import {IoSearch} from 'react-icons/io5';
 
-import { ProductContext } from '../../../../context/ProductContext';
+import {ProductContext} from '../../../../context/ProductContext';
 
 import style from './Search.module.scss';
 
@@ -9,11 +9,10 @@ type Props = {
   category: string;
 };
 
-export const Search: React.FC<Props> = ({ category }) => {
-  // const [product, setProduct] = useState<Products[]>([]);
+export const Search: React.FC<Props> = ({category}) => {
   const [onChange, setOnChange] = useState('');
 
-  const { product, setVisibleProduct } = useContext(ProductContext);
+  const {product, setVisibleProduct} = useContext(ProductContext);
 
   const handleOnChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     let newValue: string = event.target.value;

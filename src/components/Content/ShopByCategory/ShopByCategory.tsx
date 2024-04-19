@@ -1,8 +1,8 @@
-import { Link } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import {Link} from 'react-router-dom';
+import {useEffect, useState} from 'react';
 
-import { getProducts } from '../../../api';
-import { Products } from '../../../type/Productes';
+import {getProducts} from '../../../api';
+import {Products} from '../../../type/Productes';
 
 import style from './ShopByCategory.module.scss';
 

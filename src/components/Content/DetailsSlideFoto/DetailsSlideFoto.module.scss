@@ -11,10 +11,11 @@
   &__button {
     width: 80px;
     height: 80px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     background-color: white;
     padding: 5px;
     margin: 5px;
+    cursor: pointer;
   }
 
   &__button_active {

@@ -1,9 +1,9 @@
-import React, { useEffect, useState } from 'react';
-import { ProductsSlider } from '../../components/Content/ProductsSlider';
-import { ShopByCategory } from '../../components/Content/ShopByCategory';
-import { Sliderbar } from '../../components/Content/Sliderbar';
-import { Products } from '../../type/Productes';
-import { getProducts } from '../../api';
+import React, {useEffect, useState} from 'react';
+import {ProductsSlider} from '../../components/Content/ProductsSlider';
+import {ShopByCategory} from '../../components/Content/ShopByCategory';
+import {Sliderbar} from '../../components/Content/Sliderbar';
+import {Products} from '../../type/Productes';
+import {getProducts} from '../../api';
 
 export const Home: React.FC = () => {
   const [produkts, setProdukts] = useState<Products[]>([]);

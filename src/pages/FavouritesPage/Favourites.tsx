@@ -1,14 +1,14 @@
-import { useContext } from 'react';
+import {useContext} from 'react';
 
-import { ProductContext } from '../../context/ProductContext';
-import { Breadcrumb } from '../../components/Content/Breadcrumb';
-import { Products } from '../../type/Productes';
+import {ProductContext} from '../../context/ProductContext';
+import {Breadcrumb} from '../../components/Content/Breadcrumb';
+import {Products} from '../../type/Productes';
 
 import style from './Favorites.module.scss';
-import { Card } from '../../components/Content/Card';
+import {Card} from '../../components/Content/Card';
 
 export const Favourites = () => {
-  const { favourites } = useContext(ProductContext);
+  const {favourites} = useContext(ProductContext);
   const pach = ['Favourites'];
 
   return (

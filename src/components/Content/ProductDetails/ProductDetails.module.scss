@@ -9,6 +9,10 @@
     line-height: 15px;
     display: flex;
     align-items: center;
+    color: #b4bdc3;
+    &_arrow {
+      color: #000;
+    }
   }
 
   &__title {

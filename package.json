@@ -8,12 +8,15 @@
   "dependencies": {
     "@types/react-icons": "^3.0.0",
     "classnames": "^2.3.2",
+    "lodash": "^4.17.21",
+    "lodash.debounce": "^4.0.8",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^5.0.1",
     "react-router-dom": "^6.22.2",
     "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5"
+    "react-transition-group": "^4.4.5",
+    "uuid": "^9.0.1"
   },
   "devDependencies": {
     "@cypress/react": "^5.12.4",
@@ -27,6 +30,7 @@
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@types/react-transition-group": "^4.4.5",
+    "@types/uuid": "^9.0.8",
     "css-loader": "^6.10.0",
     "cypress": "^9.5.3",
     "eslint": "^7.32.0",

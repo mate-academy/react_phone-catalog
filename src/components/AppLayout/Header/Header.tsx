@@ -1,20 +1,20 @@
 import classNames from 'classnames';
-import React, { useContext, useEffect, useState } from 'react';
-import { FiShoppingBag } from 'react-icons/fi';
-import { FaRegHeart } from 'react-icons/fa';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import React, {useContext, useEffect, useState} from 'react';
+import {FiShoppingBag} from 'react-icons/fi';
+import {FaRegHeart} from 'react-icons/fa';
+import {Link, NavLink, useLocation} from 'react-router-dom';
 
-import { ProductContext } from '../../../context/ProductContext';
-import { Search } from './Search';
+import {ProductContext} from '../../../context/ProductContext';
+import {Search} from './Search';
 
 import style from './Header.module.scss';
 
 export const Header: React.FC = () => {
-  const { priceList, favourites } = useContext(ProductContext);
+  const {priceList, favourites} = useContext(ProductContext);
   const [search, setSearch] = useState(false);
 
   const location = useLocation();
-  const { pathname } = location;
+  const {pathname} = location;
   const category = pathname.slice(1);
 
   useEffect(() => {
@@ -39,12 +39,12 @@ export const Header: React.FC = () => {
     setSearch(false);
   }, [category]);
 
-  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  const getLinkClass = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__brand__menu__item, {
       [style.isActive]: isActive,
     });
 
-  const getLinkClassRight = ({ isActive }: { isActive: boolean }) =>
+  const getLinkClassRight = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__rightMenu__item, {
       [style.isActive]: isActive,
     });

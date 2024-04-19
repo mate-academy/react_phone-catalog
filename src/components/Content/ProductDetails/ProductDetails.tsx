@@ -72,7 +72,7 @@ export const ProductDetails: React.FC<Props> = ({backUrl, details}) => {
   return (
     <div className={style.productDetails}>
       <Link to={`../${backUrl}`} className={style.productDetails__back}>
-        <IoIosArrowBack />
+        <IoIosArrowBack className={`${style.productDetails__back_arrow}`} />
         Back
       </Link>
       <h1 className={style.productDetails__title}>{details?.name}</h1>

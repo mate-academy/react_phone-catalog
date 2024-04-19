@@ -8,8 +8,6 @@
     display: flex;
     max-width: 1136px;
     max-height: 400px;
-
-
   }
 
   &__indicator {
@@ -18,9 +16,10 @@
     justify-content: center;
     font-size: 30px;
     color: #000;
+    cursor: pointer;
 
     .isNotActive {
-      color: #E2E6E9;
+      color: #e2e6e9;
     }
   }
 

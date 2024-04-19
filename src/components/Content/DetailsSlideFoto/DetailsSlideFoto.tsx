@@ -38,7 +38,7 @@ export const DetailsSlideFoto: React.FC<Prons> = ({details}) => {
           >
             <img
               className={styles.detailsSlideFoto__prevImg}
-              src={selectetImg}
+              src={img}
               alt={name}
             />
           </button>

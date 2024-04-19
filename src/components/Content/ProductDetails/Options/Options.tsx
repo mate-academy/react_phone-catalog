@@ -1,3 +1,4 @@
+import {v4 as uuidv4} from 'uuid';
 import classNames from 'classnames';
 import {FaRegHeart, FaHeart} from 'react-icons/fa';
 import {useContext, useEffect, useState} from 'react';
@@ -21,9 +22,8 @@ export const Options: React.FC<Props> = ({
   selectCapacity,
   setSelectCapacity,
 }) => {
-  const {product} = useContext(ProductContext);
   const [id, setId] = useState<string | number>('');
-  const {priceList, favourites, setProductExists, setSelectIdCart} =
+  const {product, priceList, favourites, setProductExists, setSelectIdCart} =
     useContext(ProductContext);
 
   const location = useLocation();
@@ -90,7 +90,7 @@ export const Options: React.FC<Props> = ({
             type="button"
             aria-label="color"
             onClick={() => handleSelectColor(color)}
-            key={id}
+            key={uuidv4()}
             className={classNames(style.options__colorDiv, {
               [style.options__color_actice]: color === selectColor,
             })}
@@ -133,6 +133,7 @@ export const Options: React.FC<Props> = ({
 
       <div className={style.options__button}>
         <button
+          key={uuidv4()}
           type="button"
           onClick={() => handleClickCart(id)}
           className={classNames(style.options__button_by, {
@@ -142,6 +143,7 @@ export const Options: React.FC<Props> = ({
           {!hasElementCart() ? 'Add to cart' : 'Added'}
         </button>
         <button
+          key={uuidv4()}
           type="button"
           aria-label="like"
           className={style.options__button_like}
