@@ -1,15 +1,11 @@
 import { NavItem } from './NavItem';
 import { Header } from './Header';
-import shoppingBag from '../images/icons/shopping-bag.svg';
-import favoritesGoods from '../images/icons/favourites-goods.svg';
-
-export const navItemsFooter = [
-  { id: 1, title: 'github', link: 'github' },
-  { id: 2, title: 'contacts', link: 'contacts' },
-  { id: 3, title: 'rights', link: 'rights' },
-];
+import { useDashboard } from '../hooks/useShoppingDashboard';
+import { Navigation } from '../components/Navigation';
 
 export const Aside = () => {
+  const { dashboardItems } = useDashboard();
+
   return (
     <aside
       className="fixed inset-0 z-10 flex flex-col
@@ -18,44 +14,32 @@ export const Aside = () => {
       <div className="flex flex-col gap-6">
         <Header className="static" />
 
-        <nav className="flex items-center justify-center md:hidden">
-          <ul
-            className="
-              flex h-full flex-col gap-4 md:flex-row md:gap-8 lg:gap-16
-            "
-          >
-            {[
-              { id: 1, title: 'home', link: '/' },
-              { id: 2, title: 'phones', link: 'phones' },
-              { id: 3, title: 'tablets', link: 'tablets' },
-              { id: 4, title: 'accessories', link: 'accessories' },
-            ].map(item => (
-              <li className="flex h-7 justify-center md:h-full" key={item.id}>
-                <NavItem to={item.link}>{item.title}</NavItem>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navigation className="flex items-center justify-center md:hidden" />
       </div>
 
       <div className="flex h-16">
-        <NavItem
-          to="basket"
-          className="flex w-full cursor-pointer
+        {dashboardItems.map(itemBoard => (
+          <NavItem
+            key={itemBoard.id}
+            to={itemBoard.to}
+            className="flex w-full cursor-pointer
             items-center justify-center	border-l
             border-t border-elements"
-        >
-          <img src={shoppingBag} alt="Aside Close" />
-        </NavItem>
-
-        <NavItem
-          to="favourites"
-          className="flex w-full cursor-pointer
-            items-center justify-center	border-l
-            border-t border-elements"
-        >
-          <img src={favoritesGoods} alt="Aside Close" />
-        </NavItem>
+          >
+            <img src={itemBoard.src} alt={itemBoard.alt} className="relative" />
+            {!!itemBoard.count && (
+              <small
+                className="
+                  absolute flex h-4 -translate-y-1/2 translate-x-1/2
+                  items-center justify-center rounded-full border-[2px]
+                  bg-red px-[3px] text-[9px] text-white
+                "
+              >
+                {itemBoard.count}
+              </small>
+            )}
+          </NavItem>
+        ))}
       </div>
     </aside>
   );

@@ -13,17 +13,19 @@ export const getProductCards = () => {
   return client.get<Product[]>('/products.json');
 };
 
-export const getNewProducts = () => {
+export const getNewProducts = (page: number, perPag: number) => {
   return getProductCards().then(res => {
-    return res.sort((p1, p2) => p2.price - p1.price);
+    return res
+      .sort((p1, p2) => p2.price - p1.price)
+      .slice(page * perPag, (page + 1) * perPag);
   });
 };
 
-export const getDiscountProducts = () => {
+export const getDiscountProducts = (page: number, perPag: number) => {
   return getProductCards().then(res => {
-    return res.sort(
-      (p1, p2) => p2.fullPrice - p2.price - (p1.fullPrice - p1.price),
-    );
+    return res
+      .sort((p1, p2) => p2.fullPrice - p2.price - (p1.fullPrice - p1.price))
+      .slice(page * perPag, (page + 1) * perPag);
   });
 };
 

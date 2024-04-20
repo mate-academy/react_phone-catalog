@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { getPaginationItems } from '../helpers/functions';
+import { twMerge } from 'tailwind-merge';
 import { SliderButton } from './SliderButton';
+import { getPaginationItems } from '../helpers/functions';
 import arrowIcon from '../images/icons/arrow-icon.svg';
 import arrowIconDisable from '../images/icons/arrow-icon-disable.svg';
-import { twMerge } from 'tailwind-merge';
 
 export interface Props {
   maxLength: number;
@@ -49,6 +49,7 @@ export const Pagination: React.FC<Props> = ({
           </SliderButton>
         ))}
       </div>
+
       <SliderButton
         className={twMerge(currentPage === lastPage && 'pointer-events-none')}
         onClick={() => setCurrentPage(currentPage + 1)}

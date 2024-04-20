@@ -13,38 +13,36 @@ export const CategoriesProduct: React.FC<Props> = ({
   title,
   categories,
   ...rest
-}) => {
-  return (
-    <section
-      className={twMerge('content flex flex-col gap-6', className)}
-      {...rest}
-    >
-      <h3>{title}</h3>
+}) => (
+  <section
+    className={twMerge('content flex flex-col gap-6', className)}
+    {...rest}
+  >
+    <h3>{title}</h3>
 
-      <div className="flex flex-col gap-8 md:flex-row">
-        {categories.map(category => {
-          const { id, image, imageAlt, link, description, amount } = category;
+    <div className="flex flex-col gap-8 md:flex-row">
+      {categories.map(category => {
+        const { id, image, imageAlt, link, description, amount } = category;
 
-          return (
-            <div key={id} className="flex flex-col gap-6">
-              <Link to={link}>
-                <img
-                  src={image}
-                  alt={imageAlt}
-                  className="
-                    aspect-square w-full duration-500 md:hover:scale-105
-                  "
-                />
-              </Link>
+        return (
+          <div key={id} className="flex flex-col gap-6">
+            <Link to={link}>
+              <img
+                src={image}
+                alt={imageAlt}
+                className="
+                  aspect-square w-full duration-500 md:hover:scale-105
+                "
+              />
+            </Link>
 
-              <div className="flex flex-col gap-1">
-                <h4 className="font-bold">{description}</h4>
-                <p className="text-ellipsis">{amount} models</p>
-              </div>
+            <div className="flex flex-col gap-1">
+              <h4 className="font-bold">{description}</h4>
+              <p className="text-ellipsis">{amount} models</p>
             </div>
-          );
-        })}
-      </div>
-    </section>
-  );
-};
+          </div>
+        );
+      })}
+    </div>
+  </section>
+);

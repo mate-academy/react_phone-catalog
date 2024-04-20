@@ -1,7 +1,7 @@
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import homeIcon from '../images/icons/home-icon.svg';
 import arrowIconDisable from '../images/icons/arrow-icon-disable.svg';
-import React from 'react';
 
 export const Breadcrumbs = () => {
   const { pathname } = useLocation();

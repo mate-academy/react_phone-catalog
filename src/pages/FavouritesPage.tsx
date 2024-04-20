@@ -1,10 +1,10 @@
 import { useQuery } from '@tanstack/react-query';
-import { Breadcrumbs } from '../components/Breadcrumbs';
 import { getProductsById } from '../api/products';
 import { useLocalStorage } from 'usehooks-ts';
-import { Product } from '../types/product';
 import { ProductCard } from '../components/ProductCard';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { Loader } from '../components/Loader';
+import { Product } from '../types/product';
 
 export const FavouritesPage = () => {
   const [favourites] = useLocalStorage<Product['itemId'][]>('favourites', []);

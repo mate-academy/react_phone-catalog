@@ -1,19 +1,20 @@
+import { useEffect, useState } from 'react';
 import SwiperCore from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper, SwiperProps, SwiperSlide } from 'swiper/react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { twMerge } from 'tailwind-merge';
 import { ProductCard } from './ProductCard';
+import { SliderButton } from './SliderButton';
+import { Product } from '../types/product';
 import arrowIcon from '../images/icons/arrow-icon.svg';
 import arrowDisableInon from '../images/icons/arrow-icon-disable.svg';
-import { SliderButton } from './SliderButton';
-import { useState } from 'react';
-import { Product } from '../types/product';
-import { twMerge } from 'tailwind-merge';
 
 interface Props extends React.HTMLAttributes<HTMLElement> {
   discount?: boolean;
   className?: string;
   title: string;
   products: Product[];
+  swiperProps?: SwiperProps;
 }
 
 export const ListOfProductCards: React.FC<Props> = ({
@@ -21,12 +22,14 @@ export const ListOfProductCards: React.FC<Props> = ({
   discount = true,
   title,
   products,
+  swiperProps = {},
   ...rest
 }) => {
   const [slider, setSlider] = useState({
     first: true,
     last: false,
   });
+  const [swiper, setSwiper] = useState<SwiperCore | null>(null);
 
   const handleSlideChange = (item: SwiperCore) => {
     setSlider({
@@ -40,6 +43,10 @@ export const ListOfProductCards: React.FC<Props> = ({
       });
     }
   };
+
+  useEffect(() => {
+    swiper?.update();
+  }, [products, swiper]);
 
   return (
     <section className={twMerge('flex flex-col gap-6', className)} {...rest}>
@@ -68,12 +75,15 @@ export const ListOfProductCards: React.FC<Props> = ({
         className="flex w-full gap-4"
         modules={[Navigation, Pagination, Autoplay]}
         spaceBetween="16px"
-        speed={1000}
+        grabCursor={true}
         slidesPerView="auto"
+        onSwiper={setSwiper}
+        onUpdate={handleSlideChange}
         navigation={{
           prevEl: '#list-card-prew-button',
           nextEl: '#list-card-next-button',
         }}
+        {...swiperProps}
       >
         {products.map(product => (
           <SwiperSlide key={product.id} className="w-auto">

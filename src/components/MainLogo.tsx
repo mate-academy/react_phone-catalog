@@ -6,10 +6,8 @@ interface Props {
   children?: React.ReactNode;
 }
 
-export const MainLogo: React.FC<Props> = ({ className = '', children }) => {
-  return (
-    <NavLink to="/" className={twMerge('mx-4 flex items-center', className)}>
-      {children}
-    </NavLink>
-  );
-};
+export const MainLogo: React.FC<Props> = ({ className = '', children }) => (
+  <NavLink to="/" className={twMerge('mx-4 flex items-center', className)}>
+    {children}
+  </NavLink>
+);

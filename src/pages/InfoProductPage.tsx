@@ -1,21 +1,22 @@
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useQuery } from '@tanstack/react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
-import { Link, useNavigate, useParams } from 'react-router-dom';
-import { Breadcrumbs } from '../components/Breadcrumbs';
-import arrowIcon from '../images/icons/arrow-icon.svg';
-import { ButtonCard } from '../components/ButtonCard';
-import favouriteGoods from '../images/icons/favourites-goods.svg';
-import favouriteActive from '../images/icons/favourites-active.svg';
-import { useQuery } from '@tanstack/react-query';
-import { getProductInfo, getRandomProducts } from '../api/products';
-import { Loader } from '../components/Loader';
+import { useLocalStorage } from 'usehooks-ts';
 import { twMerge } from 'tailwind-merge';
-import { colorList } from '../utils/colorList';
 import { title } from 'process';
 import { ListOfProductCards } from '../components/ListOfProductCards';
+import { Breadcrumbs } from '../components/Breadcrumbs';
+import { ButtonCard } from '../components/ButtonCard';
 import { ColorLink } from '../components/ColorLink';
-import { useLocalStorage } from 'usehooks-ts';
-import { Product } from '../types/product';
+import { Loader } from '../components/Loader';
+import { colorList } from '../sources/colorList';
+import { BasketGoods, Product } from '../types/product';
+import { handleToggleBasket } from '../helpers/functions';
+import { getProductInfo, getRandomProducts } from '../api/products';
+import favouriteActive from '../images/icons/favourites-active.svg';
+import favouriteGoods from '../images/icons/favourites-goods.svg';
+import arrowIcon from '../images/icons/arrow-icon.svg';
 
 export const InfoProductPage = () => {
   const { productId } = useParams();
@@ -24,10 +25,8 @@ export const InfoProductPage = () => {
     'favourites',
     [],
   );
-  const [basket, setBasket] = useLocalStorage<Product['itemId'][]>(
-    'basket',
-    [],
-  );
+
+  const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
 
   const { isLoading: isProductInfo, data: productInfo } = useQuery({
     queryKey: ['productInfo', productId],
@@ -49,14 +48,6 @@ export const InfoProductPage = () => {
     queryKey: ['randomProducts'],
     queryFn: () => getRandomProducts(12),
   });
-
-  const handleToggleBasket = () => {
-    if (productInfo && basket.includes(productInfo.id)) {
-      setBasket(c => c.filter(item => item !== productInfo.id));
-    } else {
-      setBasket(c => [...c, productInfo?.id || '']);
-    }
-  };
 
   const handleToggleFavourites = () => {
     if (productInfo && favourites.includes(productInfo.id)) {
@@ -217,12 +208,14 @@ export const InfoProductPage = () => {
                     <ButtonCard
                       className={twMerge(
                         'h-full w-full',
-                        basket.includes(productInfo.id) &&
+                        basket.some(item => item.id === productInfo.id) &&
                           'border border-elements bg-white text-green',
                       )}
-                      onClick={handleToggleBasket}
+                      onClick={() =>
+                        handleToggleBasket(productInfo.id, basket, setBasket)
+                      }
                     >
-                      {basket.includes(productInfo.id)
+                      {basket.some(item => item.id === productInfo.id)
                         ? 'Selected'
                         : 'Add to cart'}
                     </ButtonCard>

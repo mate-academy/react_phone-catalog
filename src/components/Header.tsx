@@ -1,16 +1,14 @@
-import favouritesGoods from '../images/icons/favourites-goods.svg';
-import shoppingBag from '../images/icons/shopping-bag.svg';
-import closeAside from '../images/icons/close-icon-aside.svg';
-import menuNavigation from '../images/icons/menu-header-icon.svg';
-import mainLogo from '../images/icons/main-logo-desktop.svg';
 import { MainLogo } from './MainLogo';
 import { NavItem } from './NavItem';
 import { twMerge } from 'tailwind-merge';
 import { ButtonHeader } from './ButtonHeader';
 import { useSearchParams } from 'react-router-dom';
+import { Navigation } from '../components/Navigation';
+import { useDashboard } from '../hooks/useShoppingDashboard';
 import { SearchParams, getSearchWith } from '../helpers/searchHelper';
-import { Product } from '../types/product';
-import { useLocalStorage } from 'usehooks-ts';
+import menuNavigation from '../images/icons/menu-header-icon.svg';
+import closeAside from '../images/icons/close-icon-aside.svg';
+import mainLogo from '../images/icons/main-logo-desktop.svg';
 
 interface Props {
   className?: string;
@@ -18,8 +16,8 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { dashboardItems } = useDashboard();
   const aside = searchParams.get('aside') || '';
-  const [favourites] = useLocalStorage<Product['itemId'][]>('favourites', []);
 
   const setSearchWith = (param: SearchParams) => {
     const search = getSearchWith(param, searchParams);
@@ -48,52 +46,20 @@ export const Header: React.FC<Props> = ({ className }) => {
           />
         </MainLogo>
 
-        <nav className={twMerge(`hidden md:flex`, className)}>
-          <ul
-            className="
-              flex h-full flex-col gap-4 md:flex-row md:gap-8 lg:gap-16
-            "
-          >
-            {[
-              { id: 1, title: 'home', link: '/' },
-              { id: 2, title: 'phones', link: 'phones' },
-              { id: 3, title: 'tablets', link: 'tablets' },
-              { id: 4, title: 'accessories', link: 'accessories' },
-            ].map(item => (
-              <li className="flex h-7 justify-center md:h-full" key={item.id}>
-                <NavItem to={item.link}>{item.title}</NavItem>
-              </li>
-            ))}
-          </ul>
-        </nav>
+        <Navigation />
       </div>
 
       <div className="flex">
-        {[
-          {
-            id: 1,
-            to: 'favourites',
-            src: favouritesGoods,
-            alt: 'Favorites Goods',
-            count: favourites.length,
-          },
-          {
-            id: 2,
-            to: 'basket',
-            src: shoppingBag,
-            alt: 'Shopping Bag',
-            count: 3,
-          },
-        ].map(item => (
+        {dashboardItems.map(itemBoard => (
           <NavItem
-            key={item.id}
-            to={item.to}
+            key={itemBoard.id}
+            to={itemBoard.to}
             className="hidden w-12 cursor-pointer
               items-center justify-center	border-l
               border-elements md:flex lg:w-16"
           >
-            <img src={item.src} alt={item.alt} className="relative" />
-            {!!item.count && (
+            <img src={itemBoard.src} alt={itemBoard.alt} className="relative" />
+            {!!itemBoard.count && (
               <small
                 className="
                   absolute flex h-4 -translate-y-1/2 translate-x-1/2
@@ -101,7 +67,7 @@ export const Header: React.FC<Props> = ({ className }) => {
                   bg-red px-[3px] text-[9px] text-white
                 "
               >
-                {item.count}
+                {itemBoard.count}
               </small>
             )}
           </NavItem>

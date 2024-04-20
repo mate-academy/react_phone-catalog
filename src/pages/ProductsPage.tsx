@@ -1,13 +1,13 @@
 import { useSearchParams } from 'react-router-dom';
-import { Breadcrumbs } from '../components/Breadcrumbs';
-import { DropdownButton } from '../components/DropdownButton';
-import { SearchParams, getSearchWith } from '../helpers/searchHelper';
-import { Pagination } from '../components/Pagination';
-import { getAmountOfProducts, getPreparedProducts } from '../api/products';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { TypeItemOnPage, TypeProduct, TypeSort } from '../types/product';
-import { Loader } from '../components/Loader';
+import { SearchParams, getSearchWith } from '../helpers/searchHelper';
+import { getAmountOfProducts, getPreparedProducts } from '../api/products';
+import { DropdownButton } from '../components/DropdownButton';
+import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard';
+import { Pagination } from '../components/Pagination';
+import { Loader } from '../components/Loader';
 
 const test = [
   {

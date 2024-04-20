@@ -1,4 +1,4 @@
-import { BasketGoods, Product } from '../types/product';
+import { BasketGoods } from '../types/product';
 
 export const getPaginationItems = (
   currentPage: number,
@@ -88,13 +88,13 @@ export const getPaginationItems = (
 };
 
 export const handleToggleBasket = (
-  product: Product,
+  productId: string,
   goods: BasketGoods[],
   setGoods: React.Dispatch<React.SetStateAction<BasketGoods[]>>,
 ) => {
-  if (goods.some(item => item.id === product.itemId)) {
-    setGoods(c => c.filter(item => item.id !== product.itemId));
+  if (goods.some(item => item.id === productId)) {
+    setGoods(c => c.filter(item => item.id !== productId));
   } else {
-    setGoods(c => [...c, { id: product.itemId, quantity: 1 }]);
+    setGoods(c => [...c, { id: productId, quantity: 1 }]);
   }
 };

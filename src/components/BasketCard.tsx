@@ -19,31 +19,27 @@ export const BasketCard: React.FC<Props> = ({
   product,
   onChange,
 }) => {
+  const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
+
   const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value.replace(/[^\d]/g, '');
 
     onChange(product.itemId, value >= 100 ? 100 : value);
   };
 
-  const [basketGoods, setBasketGoods] = useLocalStorage<BasketGoods[]>(
-    'basketGoods',
-    [],
-  );
-
   return (
     <article
       className="
-        flex flex-col justify-between gap-4 border border-elements
-        p-4 md:flex-row md:gap-6 md:p-6"
+        flex flex-col justify-between gap-4 border
+        border-elements p-4 md:flex-row md:gap-6 md:p-6
+      "
     >
       <div className="flex items-center gap-4">
         <img
           src={deleteIcon}
           alt="Delete"
           className="cursor-pointer"
-          onClick={() =>
-            handleToggleBasket(product, basketGoods, setBasketGoods)
-          }
+          onClick={() => handleToggleBasket(product.itemId, basket, setBasket)}
         />
 
         <img
@@ -55,7 +51,7 @@ export const BasketCard: React.FC<Props> = ({
         <p className="flex-1">{product.name}</p>
       </div>
 
-      <div className="flex max-w-[200px] items-center justify-between gap-6">
+      <div className="flex items-center justify-between gap-6 md:max-w-[200px]">
         <div className="flex">
           <SliderButton
             onClick={() => onChange(product.itemId, quantity - 1)}
@@ -86,7 +82,7 @@ export const BasketCard: React.FC<Props> = ({
           </SliderButton>
         </div>
 
-        <h4>${product.price}</h4>
+        <h3 className="font-bold">${product.price}</h3>
       </div>
     </article>
   );

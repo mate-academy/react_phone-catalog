@@ -1,8 +1,8 @@
 import { useRef, useState } from 'react';
 import { twMerge } from 'tailwind-merge';
-import arrowIconDisable from '../images/icons/arrow-icon-disable.svg';
 import { useOnClickOutside } from 'usehooks-ts';
 import { Option } from '../types/dropdownButton';
+import arrowIconDisable from '../images/icons/arrow-icon-disable.svg';
 
 interface Props {
   options: Option[];

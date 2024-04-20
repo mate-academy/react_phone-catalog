@@ -1,17 +1,17 @@
-import { Banner } from '../components/Banner';
-import { ListOfProductCards } from '../components/ListOfProductCards';
+import { useInfiniteQuery, useQuery } from '@tanstack/react-query';
 import {
   getAmountOfProducts,
   getDiscountProducts,
   getNewProducts,
 } from '../api/products';
+import { getBanner } from '../api/banner';
+import { Banner } from '../components/Banner';
 import { Loader } from '../components/Loader';
-import { useQuery } from '@tanstack/react-query';
 import { CategoriesProduct } from '../components/CategoriesProduct';
-import categoryAccessories from '../images/banner-img/category-accessories.png';
+import { ListOfProductCards } from '../components/ListOfProductCards';
 import categoryPhones from '../images/banner-img/category-phones.png';
 import categoryTablets from '../images/banner-img/category-tablets.png';
-import { getBanner } from '../api/banner';
+import categoryAccessories from '../images/banner-img/category-accessories.png';
 
 const categories = [
   {
@@ -38,14 +38,38 @@ const categories = [
 ];
 
 export const HomePage = () => {
-  const { isLoading: isNewProducts, data: newProducts } = useQuery({
+  const {
+    isLoading: isNewProducts,
+    fetchNextPage: fetchNextPageNewProducts,
+    data: newProducts,
+  } = useInfiniteQuery({
     queryKey: ['newProducts'],
-    queryFn: getNewProducts,
+    initialPageParam: 0,
+    queryFn: ({ pageParam = 0 }) => getNewProducts(pageParam, 20),
+    getNextPageParam: (lastPage, pages) => {
+      if (!lastPage.length) {
+        return undefined;
+      }
+
+      return pages.length;
+    },
   });
 
-  const { isLoading: isDiscountProducts, data: discountProducts } = useQuery({
+  const {
+    isLoading: isDiscountProducts,
+    fetchNextPage: fetchNextPageDiscountProducts,
+    data: discountProducts,
+  } = useInfiniteQuery({
+    initialPageParam: 0,
     queryKey: ['discountProducts'],
-    queryFn: getDiscountProducts,
+    queryFn: ({ pageParam = 0 }) => getDiscountProducts(pageParam, 20),
+    getNextPageParam: (lastPage, pages) => {
+      if (!lastPage.length) {
+        return undefined;
+      }
+
+      return pages.length;
+    },
   });
 
   const { isLoading: isAmountOfProducts, data: amountOfProducts } = useQuery({
@@ -69,40 +93,47 @@ export const HomePage = () => {
   return (
     <main
       className="
-        flex w-full flex-col items-center gap-14
+        flex w-full flex-col gap-14
         overflow-hidden pb-14 pt-6 md:gap-16
         md:pb-16 md:pt-8 lg:gap-20 lg:pb-20 lg:pt-14
       "
     >
-      {isBanner ? (
-        <Loader />
-      ) : (
-        <section className="md:content flex flex-col gap-6 md:gap-8 lg:gap-14">
-          <h1 className="padding-inline-sm md:px-0">
-            Welcome to Nice Gadgets store!
-          </h1>
+      <h1 className="content">Welcome to Nice Gadgets store!</h1>
 
+      {isBanner ? (
+        <div className="flex justify-center">
+          <Loader />
+        </div>
+      ) : (
+        <section
+          className="
+              md:content flex flex-col gap-6 md:gap-8 lg:gap-14
+            "
+        >
           <Banner images={bannerList} />
         </section>
       )}
 
       {isNewProducts ? (
-        <Loader />
+        <div className="flex justify-center">
+          <Loader />
+        </div>
       ) : (
         newProducts && (
           <ListOfProductCards
+            swiperProps={{ onReachEnd: () => fetchNextPageNewProducts() }}
             className="content"
             discount={false}
-            products={newProducts}
+            products={newProducts.pages.flat()}
             title="Brand new models"
           />
         )
       )}
 
       {isAmountOfProducts ? (
-        <section>
+        <div className="flex justify-center">
           <Loader />
-        </section>
+        </div>
       ) : (
         <CategoriesProduct
           categories={updatedCategories}
@@ -111,12 +142,15 @@ export const HomePage = () => {
       )}
 
       {isDiscountProducts ? (
-        <Loader />
+        <div className="flex justify-center">
+          <Loader />
+        </div>
       ) : (
         discountProducts && (
           <ListOfProductCards
+            swiperProps={{ onReachEnd: () => fetchNextPageDiscountProducts() }}
             className="content"
-            products={discountProducts}
+            products={discountProducts.pages.flat()}
             title="Hot prices"
           />
         )

@@ -1,11 +1,11 @@
 import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { BasketGoods, Product } from '../types/product';
-import { ButtonCard } from './ButtonCard';
 import { useLocalStorage } from 'usehooks-ts';
+import { ButtonCard } from './ButtonCard';
+import { BasketGoods, Product } from '../types/product';
+import { handleToggleBasket } from '../helpers/functions';
 import favouriteGoods from '../images/icons/favourites-goods.svg';
 import favouriteActive from '../images/icons/favourites-active.svg';
-import { handleToggleBasket } from '../helpers/functions';
 
 interface Props {
   discount?: boolean;
@@ -23,10 +23,7 @@ export const ProductCard: React.FC<Props> = ({
     [],
   );
 
-  const [basketGoods, setBasketGoods] = useLocalStorage<BasketGoods[]>(
-    'basketGoods',
-    [],
-  );
+  const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
 
   const {
     itemId,
@@ -96,17 +93,14 @@ export const ProductCard: React.FC<Props> = ({
         <ButtonCard
           className={twMerge(
             'h-full w-full',
-            basketGoods.some(item => item.id === itemId) &&
+            basket.some(item => item.id === itemId) &&
               'border border-elements bg-white text-green',
           )}
-          onClick={() =>
-            handleToggleBasket(product, basketGoods, setBasketGoods)
-          }
+          onClick={() => handleToggleBasket(product.itemId, basket, setBasket)}
         >
-          {basketGoods.some(item => item.id === itemId)
-            ? 'Selected'
-            : 'Add to cart'}
+          {basket.some(item => item.id === itemId) ? 'Selected' : 'Add to cart'}
         </ButtonCard>
+
         <ButtonCard
           className="flex aspect-square h-full items-center
             justify-center border border-icons bg-white"
