@@ -122,13 +122,9 @@ export const CartList: React.FC = () => {
               <span
                 className={style.cartList__price_about}
               >{`Total for ${priceList.length} items`}</span>
-              <button
-                className={style.cartList__price_button}
-                type="button"
-                onClick={() => setPriceList([])}
-              >
+              <Link to="../checkout" className={style.cartList__price_button}>
                 Checkout
-              </button>
+              </Link>
             </div>
           </div>
         </>

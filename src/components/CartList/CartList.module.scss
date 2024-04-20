@@ -129,10 +129,15 @@
 
     &_button {
       color: #fff;
+      display: flex;
+      justify-content: center;
+      margin: auto;
+      align-items: center;
       background-color: #313237;
       width: 320px;
       height: 48px;
       cursor: pointer;
+      text-decoration: none;
 
       &:active {
         color: #313237;

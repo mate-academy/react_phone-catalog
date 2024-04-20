@@ -27,6 +27,14 @@ export const App = () => {
           <Route path="cart" element={<CartPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
           <Route
+            path="/checkout"
+            element={
+              <h1 style={{textAlign: 'center'}}>
+                We have not yet implemented this functionality
+              </h1>
+            }
+          />
+          <Route
             path="accessories/:productId"
             element={<ProductDetailsPage />}
           />
