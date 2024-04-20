@@ -69,17 +69,22 @@ export const HomePage = () => {
   return (
     <main
       className="
-        flex w-full flex-col gap-14 overflow-hidden pb-20
-        pt-6 md:gap-16 md:pt-8 lg:gap-20 lg:pt-14
+        flex w-full flex-col items-center gap-14
+        overflow-hidden pb-14 pt-6 md:gap-16
+        md:pb-16 md:pt-8 lg:gap-20 lg:pb-20 lg:pt-14
       "
     >
-      <section className="md:content flex flex-col gap-6 md:gap-8 lg:gap-14">
-        <h1 className="padding-inline-sm md:px-0">
-          Welcome to Nice Gadgets store!
-        </h1>
+      {isBanner ? (
+        <Loader />
+      ) : (
+        <section className="md:content flex flex-col gap-6 md:gap-8 lg:gap-14">
+          <h1 className="padding-inline-sm md:px-0">
+            Welcome to Nice Gadgets store!
+          </h1>
 
-        {isBanner ? <Loader /> : <Banner images={bannerList} />}
-      </section>
+          <Banner images={bannerList} />
+        </section>
+      )}
 
       {isNewProducts ? (
         <Loader />
@@ -95,7 +100,9 @@ export const HomePage = () => {
       )}
 
       {isAmountOfProducts ? (
-        <Loader />
+        <section>
+          <Loader />
+        </section>
       ) : (
         <CategoriesProduct
           categories={updatedCategories}

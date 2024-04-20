@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 import { twMerge } from 'tailwind-merge';
-import { Product } from '../types/product';
+import { BasketGoods, Product } from '../types/product';
 import { ButtonCard } from './ButtonCard';
-import favoritesGoods from '../images/icons/favourites-goods.svg';
+import { useLocalStorage } from 'usehooks-ts';
+import favouriteGoods from '../images/icons/favourites-goods.svg';
+import favouriteActive from '../images/icons/favourites-active.svg';
+import { handleToggleBasket } from '../helpers/functions';
 
 interface Props {
   discount?: boolean;
@@ -15,6 +18,16 @@ export const ProductCard: React.FC<Props> = ({
   product,
   discount = true,
 }) => {
+  const [favourites, setFavourites] = useLocalStorage<Product['itemId'][]>(
+    'favourites',
+    [],
+  );
+
+  const [basketGoods, setBasketGoods] = useLocalStorage<BasketGoods[]>(
+    'basketGoods',
+    [],
+  );
+
   const {
     itemId,
     name,
@@ -26,6 +39,14 @@ export const ProductCard: React.FC<Props> = ({
     ram,
     image,
   } = product;
+
+  const handleToggleFavourites = () => {
+    if (favourites.includes(itemId)) {
+      setFavourites(favourites.filter(item => item !== itemId));
+    } else {
+      setFavourites([...favourites, itemId]);
+    }
+  };
 
   return (
     <article
@@ -72,12 +93,29 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
 
       <div className="flex h-10 gap-2">
-        <ButtonCard className="h-full w-full">Add to cart</ButtonCard>
+        <ButtonCard
+          className={twMerge(
+            'h-full w-full',
+            basketGoods.some(item => item.id === itemId) &&
+              'border border-elements bg-white text-green',
+          )}
+          onClick={() =>
+            handleToggleBasket(product, basketGoods, setBasketGoods)
+          }
+        >
+          {basketGoods.some(item => item.id === itemId)
+            ? 'Selected'
+            : 'Add to cart'}
+        </ButtonCard>
         <ButtonCard
           className="flex aspect-square h-full items-center
             justify-center border border-icons bg-white"
+          onClick={handleToggleFavourites}
         >
-          <img src={favoritesGoods} alt="Favorites Good" />
+          <img
+            src={favourites.includes(itemId) ? favouriteActive : favouriteGoods}
+            alt="Favorites Good"
+          />
         </ButtonCard>
       </div>
     </article>

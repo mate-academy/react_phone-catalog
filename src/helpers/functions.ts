@@ -1,3 +1,5 @@
+import { BasketGoods, Product } from '../types/product';
+
 export const getPaginationItems = (
   currentPage: number,
   lastPage: number,
@@ -83,4 +85,16 @@ export const getPaginationItems = (
     pageNum,
     id: Math.random() + index,
   }));
+};
+
+export const handleToggleBasket = (
+  product: Product,
+  goods: BasketGoods[],
+  setGoods: React.Dispatch<React.SetStateAction<BasketGoods[]>>,
+) => {
+  if (goods.some(item => item.id === product.itemId)) {
+    setGoods(c => c.filter(item => item.id !== product.itemId));
+  } else {
+    setGoods(c => [...c, { id: product.itemId, quantity: 1 }]);
+  }
 };

@@ -5,6 +5,8 @@ import { ProductsPage } from './pages/ProductsPage';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { InfoProductPage } from './pages/InfoProductPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import { FavouritesPage } from './pages/FavouritesPage';
+import { BasketPage } from './pages/BasketPage';
 
 const queryClient = new QueryClient();
 
@@ -21,9 +23,13 @@ export const Router = () => (
             path="accessories"
             element={<ProductsPage type="accessories" />}
           />
-          <Route path=":product">
-            <Route path=":productId" element={<InfoProductPage />} />
-          </Route>
+          {['/phones', '/tablets', '/accessories'].map((path, index) => (
+            <Route path={path} key={index}>
+              <Route path=":productId" element={<InfoProductPage />} />
+            </Route>
+          ))}
+          <Route path="favourites" element={<FavouritesPage />} />
+          <Route path="basket" element={<BasketPage />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>

@@ -75,7 +75,12 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
     amountOfProducts && Math.ceil(amountOfProducts[type] / +itemsOnPage);
 
   return (
-    <main className="content flex w-full flex-col gap-8 pt-6 md:gap-10">
+    <main
+      className="
+        content flex w-full flex-col gap-8
+        pb-14 pt-6 md:gap-10 md:pb-16 lg:pb-20
+      "
+    >
       <Breadcrumbs />
 
       <div>
@@ -88,7 +93,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
         )}
       </div>
 
-      <div className="flex flex-col gap-6 pb-20">
+      <div className="flex flex-col gap-6">
         <div className="flex gap-2">
           <div className="flex w-full flex-col gap-1 md:max-w-44">
             <small className="font-bold text-secondary">Sort by</small>

@@ -1,10 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../components/Breadcrumbs';
 import arrowIcon from '../images/icons/arrow-icon.svg';
 import { ButtonCard } from '../components/ButtonCard';
-import favoritesGoods from '../images/icons/favourites-goods.svg';
+import favouriteGoods from '../images/icons/favourites-goods.svg';
+import favouriteActive from '../images/icons/favourites-active.svg';
 import { useQuery } from '@tanstack/react-query';
 import { getProductInfo, getRandomProducts } from '../api/products';
 import { Loader } from '../components/Loader';
@@ -13,13 +14,34 @@ import { colorList } from '../utils/colorList';
 import { title } from 'process';
 import { ListOfProductCards } from '../components/ListOfProductCards';
 import { ColorLink } from '../components/ColorLink';
+import { useLocalStorage } from 'usehooks-ts';
+import { Product } from '../types/product';
 
 export const InfoProductPage = () => {
   const { productId } = useParams();
+  const navigate = useNavigate();
+  const [favourites, setFavourites] = useLocalStorage<Product['itemId'][]>(
+    'favourites',
+    [],
+  );
+  const [basket, setBasket] = useLocalStorage<Product['itemId'][]>(
+    'basket',
+    [],
+  );
 
   const { isLoading: isProductInfo, data: productInfo } = useQuery({
     queryKey: ['productInfo', productId],
-    queryFn: () => getProductInfo(productId as string),
+    queryFn: async () => {
+      try {
+        return await getProductInfo(productId as string);
+      } catch (error) {
+        setTimeout(() => {
+          navigate('/404');
+        }, 2000);
+
+        return Promise.reject(error);
+      }
+    },
     enabled: !!productId,
   });
 
@@ -28,8 +50,27 @@ export const InfoProductPage = () => {
     queryFn: () => getRandomProducts(12),
   });
 
+  const handleToggleBasket = () => {
+    if (productInfo && basket.includes(productInfo.id)) {
+      setBasket(c => c.filter(item => item !== productInfo.id));
+    } else {
+      setBasket(c => [...c, productInfo?.id || '']);
+    }
+  };
+
+  const handleToggleFavourites = () => {
+    if (productInfo && favourites.includes(productInfo.id)) {
+      setFavourites(favourites.filter(item => item !== productInfo.id));
+    } else {
+      setFavourites([...favourites, productInfo?.id || '']);
+    }
+  };
+
   return (
-    <main className="content flex w-full flex-col pt-6" key={productId}>
+    <main
+      className="content flex w-full flex-col pb-14 pt-6 md:pb-16 lg:pb-20"
+      key={productId}
+    >
       <Breadcrumbs />
 
       <div className="mt-6 flex items-center gap-1">
@@ -38,9 +79,9 @@ export const InfoProductPage = () => {
           alt="Arrow Back"
           className="h-4 min-w-4 -rotate-90"
         />
-        <Link to="../">
+        <button onClick={() => navigate(-1)}>
           <small className="font-bold text-secondary">Back</small>
-        </Link>
+        </button>
       </div>
 
       {isProductInfo || !productInfo ? (
@@ -173,14 +214,31 @@ export const InfoProductPage = () => {
                   </div>
 
                   <div className="mt-4 flex h-10 gap-2">
-                    <ButtonCard className="h-full w-full">
-                      Add to cart
+                    <ButtonCard
+                      className={twMerge(
+                        'h-full w-full',
+                        basket.includes(productInfo.id) &&
+                          'border border-elements bg-white text-green',
+                      )}
+                      onClick={handleToggleBasket}
+                    >
+                      {basket.includes(productInfo.id)
+                        ? 'Selected'
+                        : 'Add to cart'}
                     </ButtonCard>
                     <ButtonCard
-                      className=" flex aspect-square h-full items-center
-                  justify-center border border-icons bg-white"
+                      className="flex aspect-square h-full items-center
+                        justify-center border border-icons bg-white"
+                      onClick={handleToggleFavourites}
                     >
-                      <img src={favoritesGoods} alt="Favorites Good" />
+                      <img
+                        src={
+                          favourites.includes(productInfo.id)
+                            ? favouriteActive
+                            : favouriteGoods
+                        }
+                        alt="Favorites Good"
+                      />
                     </ButtonCard>
                   </div>
 
@@ -294,7 +352,7 @@ export const InfoProductPage = () => {
           <ListOfProductCards
             title="You may also like"
             products={randomProducts}
-            className="mt-14 pb-20 md:mt-16 lg:mt-20"
+            className="mt-14 md:mt-16 lg:mt-20"
           />
         )
       )}

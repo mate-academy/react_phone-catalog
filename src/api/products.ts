@@ -95,3 +95,9 @@ export const getRandomProducts = (amount: number) =>
       () => res[Math.floor(Math.random() * res.length)],
     ),
   );
+
+export const getProductsById = (productId: string[]) => {
+  return getProductCards().then(res =>
+    res.filter(product => productId.includes(product.itemId)),
+  );
+};

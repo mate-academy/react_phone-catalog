@@ -40,7 +40,7 @@ export const Aside = () => {
 
       <div className="flex h-16">
         <NavItem
-          to="#/f"
+          to="basket"
           className="flex w-full cursor-pointer
             items-center justify-center	border-l
             border-t border-elements"
@@ -49,7 +49,7 @@ export const Aside = () => {
         </NavItem>
 
         <NavItem
-          to="/"
+          to="favourites"
           className="flex w-full cursor-pointer
             items-center justify-center	border-l
             border-t border-elements"

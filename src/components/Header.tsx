@@ -9,6 +9,8 @@ import { twMerge } from 'tailwind-merge';
 import { ButtonHeader } from './ButtonHeader';
 import { useSearchParams } from 'react-router-dom';
 import { SearchParams, getSearchWith } from '../helpers/searchHelper';
+import { Product } from '../types/product';
+import { useLocalStorage } from 'usehooks-ts';
 
 interface Props {
   className?: string;
@@ -17,6 +19,7 @@ interface Props {
 export const Header: React.FC<Props> = ({ className }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const aside = searchParams.get('aside') || '';
+  const [favourites] = useLocalStorage<Product['itemId'][]>('favourites', []);
 
   const setSearchWith = (param: SearchParams) => {
     const search = getSearchWith(param, searchParams);
@@ -69,15 +72,17 @@ export const Header: React.FC<Props> = ({ className }) => {
         {[
           {
             id: 1,
-            to: '/',
+            to: 'favourites',
             src: favouritesGoods,
             alt: 'Favorites Goods',
+            count: favourites.length,
           },
           {
             id: 2,
-            to: '/',
+            to: 'basket',
             src: shoppingBag,
             alt: 'Shopping Bag',
+            count: 3,
           },
         ].map(item => (
           <NavItem
@@ -87,7 +92,18 @@ export const Header: React.FC<Props> = ({ className }) => {
               items-center justify-center	border-l
               border-elements md:flex lg:w-16"
           >
-            <img src={item.src} alt={item.alt} />
+            <img src={item.src} alt={item.alt} className="relative" />
+            {!!item.count && (
+              <small
+                className="
+                  absolute flex h-4 -translate-y-1/2 translate-x-1/2
+                  items-center justify-center rounded-full border-[2px]
+                  bg-red px-[3px] text-[9px] text-white
+                "
+              >
+                {item.count}
+              </small>
+            )}
           </NavItem>
         ))}
 

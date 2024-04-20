@@ -43,3 +43,8 @@ export interface Device {
 export type TypeProduct = 'phones' | 'tablets' | 'accessories';
 export type TypeSort = 'Newest' | 'Alphabetically' | 'Cheapest';
 export type TypeItemOnPage = 'All' | '4' | '8' | '16';
+
+export interface BasketGoods {
+  id: Product['itemId'];
+  quantity: number;
+}
