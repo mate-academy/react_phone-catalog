@@ -5,4 +5,5 @@ export type PriceList = {
   images: string;
   number: number;
   price: number;
+  itemId: string;
 };

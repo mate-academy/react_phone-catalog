@@ -5,22 +5,31 @@
   align-items: center;
   margin-bottom: 40px;
 
+
   &__arrow {
-    padding-top: 4px;
     height: 16px;
     height: 16px;
     margin-inline: 8px;
+  
   }
 
   &__path {
-    font-size: 12px;
+    font-size: 16px;
     font-weight: 600;
     line-height: 15px;
     color: #b4bdc3;
     text-decoration: none;
+  
   }
 
   &__home {
     height: 16px;
+  
+  }
+
+  &__map {
+    display: flex;
+    align-items: center;
+  
   }
 }

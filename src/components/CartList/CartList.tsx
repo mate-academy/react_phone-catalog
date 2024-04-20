@@ -1,6 +1,7 @@
 import {FaX} from 'react-icons/fa6';
 import {useContext} from 'react';
 
+import {Link} from 'react-router-dom';
 import {ProductContext} from '../../context/ProductContext';
 
 import style from './CartList.module.scss';
@@ -74,22 +75,28 @@ export const CartList: React.FC = () => {
                     <FaX />
                   </button>
 
-                  <div className={style.container_img}>
-                    <img
-                      className={style.cartList__cart_img}
-                      src={product.images}
-                      alt={product.id}
-                    />
-                  </div>
+                  <Link
+                    className={style.cartList__link}
+                    to={`../${product.category}/:${product.itemId}`}
+                  >
+                    <div className={style.container_img}>
+                      <img
+                        className={style.cartList__cart_img}
+                        src={product.images}
+                        alt={product.id}
+                      />
+                    </div>
 
-                  <span className={style.cartList__cart_title}>
-                    {product.name}
-                  </span>
+                    <span className={style.cartList__cart_title}>
+                      {product.name}
+                    </span>
+                  </Link>
                   <button
                     className={style.cartList__cart_reduction}
                     type="button"
-                    aria-label="delete"
+                    aria-label="Decrement"
                     onClick={() => handleDecrement(+product.id)}
+                    disabled={product.number === 1}
                   >
                     -
                   </button>
@@ -99,7 +106,7 @@ export const CartList: React.FC = () => {
                   <button
                     className={style.cartList__cart_increase}
                     type="button"
-                    aria-label="delete"
+                    aria-label="Increment"
                     onClick={() => handleIncrement(+product.id)}
                   >
                     +

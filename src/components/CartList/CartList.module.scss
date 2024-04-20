@@ -25,6 +25,13 @@
   display: flex;
   justify-content: space-between;
 
+  &__link {
+    text-decoration: none;
+    color: #313237;
+    display: flex;
+    align-items: center;
+  }
+
   &__carts {
     width: 752px;
   }
@@ -33,7 +40,7 @@
     display: flex;
     align-items: center;
     height: 128px;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     margin-block-end: 16px;
 
     .container_img {
@@ -50,8 +57,9 @@
     &_delete {
       border: none;
       background-color: white;
-      color: #B4BDC3;
+      color: #b4bdc3;
       margin-inline-start: 24px;
+      cursor: pointer;
     }
 
     &_title {
@@ -71,6 +79,7 @@
       width: 32px;
       height: 32px;
       background-color: #fff;
+      cursor: pointer;
     }
 
     &_number {
@@ -94,7 +103,7 @@
     width: 368px;
     height: 206px;
     text-align: center;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
 
     &_title {
       font-size: 32px;
@@ -112,8 +121,8 @@
       align-items: center;
       margin: auto;
       padding-bottom: 24px;
-      border-bottom: 1px solid #B4BDC3;
-      color: #B4BDC3;
+      border-bottom: 1px solid #b4bdc3;
+      color: #b4bdc3;
       width: 321px;
       margin-bottom: 24px;
     }
@@ -123,6 +132,7 @@
       background-color: #313237;
       width: 320px;
       height: 48px;
+      cursor: pointer;
 
       &:active {
         color: #313237;

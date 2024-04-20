@@ -15,7 +15,7 @@ export const Breadcrumb: React.FC<Props> = ({path}) => {
       </Link>
 
       {path.map(e => (
-        <div key={`${e}`}>
+        <div key={`${e}`} className={style.breadcrumb__map}>
           <IoIosArrowForward className={style.breadcrumb__arrow} />
           <Link to={`/${e.toLowerCase()}`} className={style.breadcrumb__path}>
             {e}

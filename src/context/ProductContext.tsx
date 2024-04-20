@@ -107,6 +107,7 @@ export const ProductProvider: React.FC<Props> = ({children}) => {
           images: `${newProduct.image}`,
           number: 1,
           price: newProduct.price,
+          itemId: newProduct.itemId,
         };
 
         setPriceList(prevList => [...prevList, newPriceListItem]);
