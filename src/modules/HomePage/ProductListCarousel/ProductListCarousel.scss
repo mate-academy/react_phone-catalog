@@ -14,6 +14,7 @@
 
   &__slider-control {
     display: flex;
+    gap: 16px;
     align-items: center;
     justify-content: right;
     grid-column: span 1;
@@ -45,41 +46,5 @@
     display: flex;
 
     position: absolute;
-  }
-}
-
-.carousel-buttons {
-  display: flex;
-  gap: 16px;
-
-  &__move {
-    height: 32px;
-    width: 32px;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    color: $text-black-color;
-    cursor: pointer;
-    border-radius: 5px;
-    border: 1px solid $border-color-default;
-    background-color: $back-ground-color-white;
-
-    &:hover {
-      border: 1px solid $border-color-hover;
-    }
-
-    &.disabled {
-      border: 1px solid $border-color-light-gray;
-      color: $text-gray-color;
-      cursor: default;
-    }
-  }
-
-  &__arrow {
-    &.disabled {
-      fill: $text-gray-color;
-    }
   }
 }

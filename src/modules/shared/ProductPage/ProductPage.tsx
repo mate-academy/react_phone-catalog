@@ -3,6 +3,7 @@ import { ProductCard } from '../ProductCard';
 import { Product } from '../../../types/Product';
 import { Dropdown } from '../Dropdown';
 import { Option } from '../../../types/Option';
+import { MoveLeft, MoveNumber, MoveRight } from '../MoveButtons';
 
 type Props = {
   title: string;
@@ -57,7 +58,18 @@ export const ProductPage: React.FC<Props> = React.memo(
           <ProductCard key={phone.id} product={phone} hotPrice={false} />
         ))}
 
-        <div className="product-page__navigation">Navigation</div>
+        <div className="product-page__navigation">
+          <MoveLeft move={() => {}} disabled />
+
+          <div className="product-page__navigation-numbers">
+            <MoveNumber move={() => {}} disabled number={1} />
+            <MoveNumber move={() => {}} disabled number={2} />
+            <MoveNumber move={() => {}} disabled number={3} />
+            <MoveNumber move={() => {}} disabled number={4} />
+          </div>
+
+          <MoveRight move={() => {}} disabled />
+        </div>
       </div>
     );
   },

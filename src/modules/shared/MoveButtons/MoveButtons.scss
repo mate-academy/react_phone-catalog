@@ -1,0 +1,30 @@
+.button {
+  height: 32px;
+  width: 32px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: $text-black-color;
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid $border-color-default;
+  background-color: $back-ground-color-white;
+
+  &:hover {
+    border: 1px solid $border-color-hover;
+  }
+
+  &.disabled {
+    border: 1px solid $border-color-light-gray;
+    color: $text-gray-color;
+    cursor: default;
+  }
+
+  &__action {
+    &.disabled {
+      fill: $text-gray-color;
+    }
+  }
+}

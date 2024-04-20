@@ -13,7 +13,7 @@
 
     color: $text-gray-color;
     font-size: 12px;
-    line-height: 15.3px;
+    line-height: 16px;
   }
 
   &__title {
@@ -28,5 +28,17 @@
     @include page-grid;
 
     margin-bottom: 24px;
+  }
+
+  &__navigation {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+  }
+
+  &__navigation-numbers {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
   }
 }

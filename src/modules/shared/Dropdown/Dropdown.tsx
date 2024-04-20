@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { CSSProperties, useEffect, useState } from 'react';
 import { Option } from '../../../types/Option';
 
 type Props = {
@@ -10,6 +10,10 @@ type Props = {
 export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [select, setSelect] = useState(defaultValue);
+  const [styles, setStyles] = useState<CSSProperties>({
+    overflow: 'hidden',
+    border: 'none',
+  });
 
   const handleSelectItems = (event: React.MouseEvent<HTMLButtonElement>) => {
     // const value = parseInt(event.currentTarget.value, 10);
@@ -19,10 +23,23 @@ export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
     setOpenDropdown(false);
   };
 
-  const styles = {
-    overflow: 'hidden',
-    border: 'none',
-  };
+  useEffect(() => {
+    let timeout: NodeJS.Timeout;
+
+    if (openDropdown) {
+      setTimeout(() => {
+        setStyles({ overflow: 'hidden', border: '1px solid #b4bdc3' });
+      }, 280);
+    }
+
+    if (!openDropdown) {
+      setTimeout(() => {
+        setStyles({ overflow: 'hidden', border: 'none' });
+      }, 280);
+    }
+
+    return () => clearTimeout(timeout);
+  }, [openDropdown]);
 
   return (
     <div className="dropdown">
