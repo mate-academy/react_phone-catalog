@@ -1,0 +1,6 @@
+.card__list-container {
+  display: grid;
+  grid-template-columns: repeat(4, 272px);
+  column-gap: 16px;
+  row-gap: 40px;
+}

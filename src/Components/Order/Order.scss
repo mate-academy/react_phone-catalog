@@ -1,0 +1,46 @@
+.container-order {
+  width: 100%;
+  background: #332d2d;
+  // border: 10px solid blue;
+  border-radius: 25px;
+  margin: 10px;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  flex-direction: column;
+}
+
+.message {
+  color: white;
+  font-size: 24px;
+
+}
+
+.sub-message {
+  color: white;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.order-button {
+  align-self: start;
+  width: 200px;
+  height: 50px;
+  color: white;
+  background-color: inherit;
+  padding: 10px 20px;
+  border: 1px solid lightgray;
+  border-radius: 25px;
+  cursor: pointer;
+  margin-top: 20px; // Add margin to separate the button from the text
+}
+
+.gradient-text {
+  background: linear-gradient(45deg, #99359c, #b294b9f3);
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 50px;
+  font-weight: bold;
+  font-family: Mont, sans-serif;
+}

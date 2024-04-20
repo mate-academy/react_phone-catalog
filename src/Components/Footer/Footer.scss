@@ -1,0 +1,57 @@
+.footer-container {
+  display: flex;
+  justify-content: space-between;
+  border-top:1px solid #3B3E4A ;
+  margin-top: 80px;
+  height: 96px;
+  a {
+    text-decoration: none;
+    color: white;
+  }
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-logo {
+  position: relative;
+}
+
+.footer-link {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 106px;
+}
+
+.footer-back-to-top {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.footer-btn-title {
+  font-family: Mont; /* Font */
+  font-weight: 700; /* Weight */
+  font-size: 12px; /* Size */
+  line-height: 15.34px; /* Line height */
+  text-align: right; /* Align */
+  color: #75767F; /* Gray/Secondary */
+}
+
+.footer-btn {
+  width: 32px;
+  height: 32px;
+  transform: rotate(-90deg);
+  background-color: #323542; /* Gray/Surface 2 */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border: 0;
+}
+
+.footer-btn:hover {
+  background-color: #555; /* Add a dark-grey background on hover */
+}

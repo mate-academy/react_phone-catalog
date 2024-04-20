@@ -1,0 +1,48 @@
+.mt-2 {
+  margin-top: 2px;
+}
+
+.w-11 {
+  width: 100%;
+}
+
+.relative {
+  position: relative;
+}
+
+.carusel-cards {
+  display: flex;
+  gap: 16px;
+}
+
+.carusel-card {
+  flex: none; /* Заборона розтягнення елемента */
+  background-color: #ffffff; /* Білий фон */
+  border-radius: 0.5rem; /* Закруглені кути з радіусом lg */
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Тінь */
+}
+
+.carusel-buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.carusel-button{
+  width: 32px;
+  height: 32px;
+  background-color: #323542; /* Gray/Surface 2 */
+  color: white; /* Text color */
+  cursor: pointer; /* Add a mouse pointer on hover */
+  border: 1px solid #323542;
+
+  &:hover {
+    background: #4A4D58;
+  }
+
+  &:disabled {
+    background-color: inherit;
+  }
+}
+

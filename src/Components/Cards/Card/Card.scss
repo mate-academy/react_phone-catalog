@@ -1,0 +1,117 @@
+:root {
+  --title-color: #F1F2F9;
+}
+
+.container-card {
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5em 1em -0.125em rgba(12, 2, 2, 0.1), 0 0px 0 1px rgba(44, 39, 49, 0.2);
+  color: #75767F;
+  position: relative;
+  display: flex;
+  width: 208px; /* Ширина контейнера картки */
+  height: 506px;
+  flex-direction: column;
+  // margin: 20px 10px; /* Вирівнювання по центру */
+  padding: 32px; /* Відступи всередині контейнера */
+  background-color: rgba(255, 255, 255, 0.008); /* Прозорий фон */
+}
+
+.card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 208px;
+  height: 196px;
+  // width: 100%; /* Ширина картинки */
+}
+
+.img-normaliz {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.product-name {
+  margin-top: 10px;
+  font-family: 'Mont', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  color: var(--title-color); /* Чорний колір тексту */
+  height: 58px;
+}
+
+.product-price {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+
+  &-full{
+    font-family: 'Mont', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    color: var(--title-color); /* Сірий/білий колір тексту */
+    margin-bottom: 8px;
+    margin: 0;
+  }
+
+  &-discount {
+    font-family: 'Mont', sans-serif; /* Встановлюємо шрифт Montserrat */
+    font-weight: 600; /* Встановлюємо жирність шрифта */
+    font-size: 22px; /* Встановлюємо розмір шрифта */
+    line-height: 28.12px; /* Встановлюємо висоту рядка */
+    color: #75767F; /* Встановлюємо колір тексту */
+    text-decoration: line-through;
+  }
+}
+
+.info-container {
+  // display: flex;
+  // flex-direction: column;
+  margin-top: 8px;
+  border-top: 1px solid #ccc; /* Риска зверху контейнера */
+  padding-top: 8px; /* Відступи від верхньої границі */
+}
+
+.info-screen,
+.info-capacity,
+.info-ram {
+  display: flex;
+  justify-content: space-between;
+}
+
+.info-name {
+  margin: 8px 0;
+  width: 100px; /* Ширина імені параметра */
+}
+
+.info-option {
+  margin: 8px 0;
+  // flex: 1; /* Розтягнення опції по ширині контейнера */
+  color: var(--title-color);
+}
+
+.buttons {
+  display: flex;
+  margin-top: 8px; /* Відступи зверху */
+  gap: 8px;
+
+  .button {
+    width: 100%; /* Ширина кнопок */
+    margin-bottom: 8px; /* Відступи між кнопками */
+  }
+
+  .is-add {
+    width: 100%;
+    height: 40px;
+    background-color: #905BFF;
+  }
+
+  .is-favorite {
+    width: 40px;
+    height: 40px;
+    background-color: #F1F2F9;
+  }
+}
