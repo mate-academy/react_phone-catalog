@@ -4,24 +4,21 @@
 }
 
 @font-face {
-  font-family: 'Mont';
-  src: url('../public/fonts/Mont-Regular.otf') format('otf');
-  font-weight: normal;
-  font-style: normal;
+  font-family: Mont;
+  font-weight: 400;
+  src: url(../public/fonts/Mont-Regular.otf);
 }
 
 @font-face {
-  font-family: 'Mont';
-  src: url('../public/fonts/Mont-Bold.otf') format('otf');
+  font-family: Mont;
   font-weight: bold;
-  font-style: normal;
+  src: url(../public/fonts/Mont-Bold.otf);
 }
 
 @font-face {
-  font-family: 'Mont';
-  src: url('../public/fonts/Mont-SemiBold.otf') format('otf');
+  font-family: Mont;
   font-weight: 600;
-  font-style: normal;
+  src: url(../public/fonts/Mont-SemiBold.otf);
 }
 
 body {
