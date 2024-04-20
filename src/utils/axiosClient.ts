@@ -1,7 +1,7 @@
 import axios, { AxiosRequestConfig } from 'axios';
 
 const instance = axios.create({
-  baseURL: '/api',
+  baseURL: 'api',
 });
 
 export const client = {
