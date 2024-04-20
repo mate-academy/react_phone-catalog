@@ -10,7 +10,7 @@ type Props = {
 export const Breadcrumb: React.FC<Props> = ({path}) => {
   return (
     <div className={style.breadcrumb}>
-      <Link to="/home">
+      <Link to="/home" className={style.breadcrumb__home}>
         <img src="./img/svg/Home.svg" alt="" />
       </Link>
 

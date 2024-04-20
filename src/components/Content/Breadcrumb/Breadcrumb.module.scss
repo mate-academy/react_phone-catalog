@@ -6,8 +6,8 @@
   margin-bottom: 40px;
 
   &__arrow {
-    color: #89939A;
-    width: 16px;
+    padding-top: 4px;
+    height: 16px;
     height: 16px;
     margin-inline: 8px;
   }
@@ -16,7 +16,11 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
+    color: #b4bdc3;
     text-decoration: none;
-    color: #89939A;
+  }
+
+  &__home {
+    height: 16px;
   }
 }

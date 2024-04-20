@@ -36,6 +36,7 @@ export const ProductsList: React.FC<Props> = ({
   ) => {
     const newValue = event.target.value;
 
+    setPage(1);
     setItemsOnPage(newValue);
     params.set('itemsPage', newValue);
     setSearchParams(params);

@@ -41,9 +41,8 @@ export const Options: React.FC<Props> = ({
     return favourites?.some(item => item?.id === id) ?? false;
   };
 
-  const hasElementCart = () => {
-    return priceList?.some(item => +item?.id === +id) ?? false;
-  };
+  const hasElementCart = () =>
+    priceList?.some(item => +item?.id === +id) ?? false;
 
   const handleSelectColor = (color: string) => {
     const pathColor = pathname.replace(selectColor || '', color);
