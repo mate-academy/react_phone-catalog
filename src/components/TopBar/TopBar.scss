@@ -1,0 +1,62 @@
+@import '../../styles/imports';
+
+.top-bar {
+  position: relative;
+  background-color: $white-color;
+  transition: all 0.2s $page-navigation-height-duration;
+  box-shadow: 0px 1px 0px 0px $bg-color;
+  z-index: 10;
+
+  &--active {
+    background-color: $bg-color;
+    transition-delay: 0s;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-left: 16px;
+
+    @include on-tablet {
+      justify-content: start;
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      padding-left: 24px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__search-button {
+    transition: all 0.2s;
+    transition-delay: $page-navigation-height-duration;
+
+    &--hidden {
+      transition-delay: 0s;
+      transform: scale(0.8);
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__button {
+    width: $top-bar-height-mobile;
+    height: $top-bar-height-mobile;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-left: 1px solid $bg-color;
+    cursor: pointer;
+
+    @include on-desktop {
+      width: $top-bar-height-desktop;
+      height: $top-bar-height-desktop;
+    }
+  }
+}
+

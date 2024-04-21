@@ -1,0 +1,16 @@
+@import '../../styles/imports';
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-top: 40px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}

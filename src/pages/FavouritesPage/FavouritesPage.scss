@@ -1,0 +1,28 @@
+@import '../../styles/imports';
+
+.favourites-page {
+  padding-top: 24px;
+  @include content-padding-inline;
+
+  &__content {
+    display: grid;
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    color: $secondary-color;
+    font-size: 14px;
+  }
+}

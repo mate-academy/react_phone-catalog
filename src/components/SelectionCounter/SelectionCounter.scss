@@ -1,0 +1,24 @@
+@import '../../styles/imports';
+
+.selection-counter {
+  z-index: 10;
+  background-color: #fff;
+  border-radius: 50%;
+  padding: 1px;
+  width: 14px;
+  height: 14px;
+
+  &__quantity {
+    display: block;
+    background-color: $red-color;
+    font-size: 9px;
+    color: $white-color;
+    width: 12px;
+    height: 12px;
+    line-height: 12px;
+    text-align: center;
+    border-radius: 50%;
+    min-width: fit-content;
+  }
+}
+

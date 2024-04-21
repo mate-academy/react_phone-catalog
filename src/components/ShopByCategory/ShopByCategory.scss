@@ -1,0 +1,35 @@
+@import '../../styles/imports';
+
+.shop-by-category {
+  &__content {
+    @include content-padding-inline;
+    display: grid;
+    gap: 24px;
+
+    & * {
+      grid-column: 1 / -1;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    line-height: 31px;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__categories {
+    @include page-grid;
+    row-gap: 32px;
+  }
+}

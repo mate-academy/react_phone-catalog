@@ -1,0 +1,85 @@
+@import '../../styles/imports';
+
+.banner {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+
+  &__content {
+    @include on-tablet {
+      @include content-padding-inline;
+      @include page-grid;
+    }
+  }
+
+  &__button {
+    height: 100%;
+    border: 1px solid $icon-color;
+    width: 32px;
+    cursor: pointer;
+
+    &--left {
+      justify-self: end;
+    }
+  }
+
+  &__indicators {
+    display: flex;
+    gap: 14px;
+  }
+
+  &__indicator {
+    width: 12px;
+    border-radius: 10px;
+    height: 5px;
+    background-color: $bg-color;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &--active {
+      background-color: $primary-color;
+      width: 20px;
+    }
+  }
+
+  &__wrapper {
+    overflow: hidden;
+    grid-column: 2 / -2;
+  }
+
+
+  &__slider {
+    width: 300%;
+    height: 320px;
+    display: flex;
+    transition: all 0.5s;
+    max-height: 400px;
+
+    @include on-tablet {
+      height: 35vw;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    opacity: 0;
+    transition: all 0.5s;
+
+    &--active {
+      opacity: 1;
+    }
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+}

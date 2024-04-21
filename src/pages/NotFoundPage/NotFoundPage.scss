@@ -1,0 +1,56 @@
+@import '../../styles/imports';
+
+.not-found-page {
+  @include content-padding-inline;
+  padding-top: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  align-items: center;
+
+  &__container {
+    display: grid;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__oops {
+    max-width: 300px;
+    width: 110px;
+
+    @include on-tablet {
+      width: 140px;
+    }
+  }
+
+  &__text {
+    color: #000;
+    font-weight: 700;
+    font-size: 13px;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 17px;
+    }
+  }
+
+  &__illustration {
+    width: 240px;
+
+    @include on-tablet {
+      width: 320px;
+    }
+
+    @include on-desktop {
+      width: 370px;
+    }
+  }
+
+  &__link {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    padding-bottom: 8px;
+    border-bottom: 2px solid #000;
+  }
+}

@@ -1,0 +1,66 @@
+@import '../../styles/imports';
+
+.products-page {
+  padding-top: 24px;
+  @include content-padding-inline;
+
+  &__content {
+    display: grid;
+    gap: 32px;
+  }
+
+  &__links {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--current {
+      color: $secondary-color;
+    }
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__quantity {
+    color: $secondary-color;
+    margin-top: 8px;
+  }
+
+  &__products {
+    display: grid;
+    gap: 24px;
+  }
+
+  &__dropdowns {
+    @include page-grid;
+    align-items: end;
+
+    & :nth-child(1) {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    & :nth-child(2) {
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../styles/imports';
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+
+  &__text {
+    padding-top: 2px;
+    color: $secondary-color;
+    font-size: 12px;
+    font-weight: 600;
+  }
+}

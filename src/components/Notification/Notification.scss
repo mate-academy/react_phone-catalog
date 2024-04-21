@@ -1,0 +1,14 @@
+@import '../../styles/imports';
+
+.notification {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 16px;
+  background-color: #ff6b6b;
+  box-shadow: 0 3px 13px 0 #17203142;
+  color: $white-color;
+  border-radius: 7px;
+}

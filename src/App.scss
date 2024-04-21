@@ -1,1 +1,55 @@
-// not empty
+@import './styles/imports';
+@import './styles/reset';
+@import './styles/blocks/button';
+@import './styles/blocks/title';
+@import './styles/blocks/top-bar-button';
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-SemiBold.otf');
+  font-weight: 600;
+}
+
+@font-face {
+  font-family: 'Mont';
+  src: url('../public/fonts/Mont-Bold.otf');
+  font-weight: 700;
+}
+
+html {
+  font-family: 'Mont';
+  scroll-behavior: smooth;
+  color: $primary-color;
+}
+
+body:has(.menu--active) {
+  overflow: hidden;
+}
+
+.app {
+  &__main {
+    min-height: calc(100vh - #{$top-bar-height-mobile} - #{$footer-height-mobile});
+
+  @include on-tablet {
+    min-height: calc(100vh - #{$top-bar-height-mobile} - #{$footer-height-tablet-desktop});
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - #{$top-bar-height-desktop} - #{$footer-height-tablet-desktop});
+  }
+  }
+
+  &__content {
+    @include max-width;
+    padding-bottom: 64px;
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+}

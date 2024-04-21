@@ -1,0 +1,148 @@
+@import '../../styles/imports';
+
+.page-navigation {
+  overflow-y: scroll;
+  position: absolute;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  height: 0;
+  pointer-events: none;
+  transition: all $page-navigation-height-duration ease;
+  background-color: $bg-color;
+  display: grid;
+  align-content: space-between;
+
+  &--active {
+    transition-delay: 0.1s;
+    height: calc(100vh - #{$top-bar-height-mobile});
+    pointer-events: all;
+
+    @include on-desktop {
+      height: calc(100vh - #{$top-bar-height-desktop});
+    }
+  }
+
+  @include on-tablet {
+    all: unset;
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  &__nav {
+    transform: translateY(-80px);
+    opacity: 0;
+    @include content-padding-inline;
+    transition: all 500ms ease 0.3s;
+
+    &--active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    @media (min-height: 400px) {
+      padding-block: 20vmin;
+    }
+
+    @include on-tablet {
+      all: unset;
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__list {
+    width: fit-content;
+    margin-inline: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    text-align: center;
+  }
+
+  &__link {
+    color: $primary-color;
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    display: block;
+    width: fit-content;
+    margin: 0 auto;
+    padding-bottom: 8px;
+    text-transform: uppercase;
+
+    @include on-tablet {
+      font-size: 12px;
+    }
+
+    @include on-tablet {
+      color: $secondary-color;
+      height: $top-bar-height-mobile;
+
+      // bad centering because of the font
+      line-height: $top-bar-height-mobile + 3px;
+    }
+
+    @include on-desktop {
+      height: $top-bar-height-desktop;
+      line-height: $top-bar-height-desktop + 3px;
+    }
+
+    @include active-link;
+  }
+
+  &__buttons {
+    opacity: 0;
+    display: flex;
+    transition: all 0.2s;
+
+    @include on-tablet {
+      opacity: 1;
+    }
+
+    &--active {
+      transition-delay: 0.5s;
+      opacity: 1;
+    }
+  }
+
+  &__search-container {
+    display: flex;
+    align-items: center;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    gap: 25px;
+    padding-right: 25px;
+  }
+
+  &__search {
+    border: none;
+    font-size: 14px;
+    width: 200px;
+    height: 100%;
+    padding-left: 25px;
+    outline: 0;
+    outline-offset: 0;
+
+    &::placeholder {
+      color: $icon-color;
+    }
+  }
+
+  &__delete-query-button {
+    display: flex;
+    cursor: pointer;
+  }
+}

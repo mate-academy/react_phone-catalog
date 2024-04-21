@@ -1,0 +1,22 @@
+@import '../../styles/imports';
+
+.loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+
+  &__content {
+    height: 40px;
+    width: 40px;
+    border: 7px solid #ddd;
+    border-top-color: $primary-color;
+    border-radius: 50%;
+    animation: loading 1s linear infinite;
+  }
+}
+
+@keyframes loading {
+  0% { transform: rotate(0) }
+  100% { transform: rotate(360deg) }
+}

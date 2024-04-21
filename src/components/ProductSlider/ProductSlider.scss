@@ -1,0 +1,54 @@
+@import '../../styles/imports';
+
+.product-slider {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    @include content-padding-inline;
+    overflow: hidden;
+  }
+
+  &__wrapper {
+    padding-bottom: 15px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icon-color;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &--disabled {
+      border-color: $bg-color;
+      cursor: not-allowed;
+    }
+  }
+
+  &__products {
+    display: flex;
+    transition: transform 600ms;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+}

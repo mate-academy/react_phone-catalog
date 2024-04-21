@@ -1,0 +1,108 @@
+@import '../../styles/imports';
+
+.product-card {
+  width: 272px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 32px 24px 24px;
+  border: 1px solid #E2E6E9;
+  transition: box-shadow 300ms;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203142;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    margin-top: 12px;
+    line-height: 21px;
+    height: 42px;
+  }
+
+  &__img {
+    width: 208px;
+    height: 208px;
+    object-fit: contain;
+    align-self: center;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+
+    &--old {
+      color: $secondary-color;
+      text-decoration: line-through;
+    }
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    margin: 6.5px 0;
+    background-color: $bg-color;
+  }
+
+  &__characteristics {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__characteristic {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &__property {
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    height: $card-buttons-height;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    flex-grow: 1;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    &--active {
+      color: $green-color;
+      background-color: $white-color;
+      border: 1px solid $bg-color;
+    }
+  }
+
+  &__add-to-favourites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: $card-buttons-height;
+    border: 1px solid $icon-color;
+    cursor: pointer;
+  }
+}

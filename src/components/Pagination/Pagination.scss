@@ -1,0 +1,58 @@
+@import '../../styles/imports';
+
+.pagination {
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  margin: 0 auto;
+
+  @include on-tablet {
+    gap: 8px;
+  }
+
+  &__link {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icon-color;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 600;
+    transition: all 0.2s;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &--disabled {
+      border-color: $bg-color;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $bg-color;
+      }
+    }
+
+
+    &--active {
+      background-color: $primary-color;
+      color: $white-color;
+      border-color: $primary-color;
+    }
+
+    &--prev {
+      margin-right: 8px;
+    }
+
+    &--next {
+      margin-left: 8px;
+    }
+  }
+
+  &__skip {
+    display: flex;
+    align-items: end;
+    height: 100%;
+  }
+}
