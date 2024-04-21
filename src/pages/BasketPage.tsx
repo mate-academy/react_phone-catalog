@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom';
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { useLocalStorage } from 'usehooks-ts';
 import { Loader } from '../components/Loader';
 import { BasketCard } from '../components/BasketCard';
@@ -17,10 +17,12 @@ export const BasketPage = () => {
   );
 
   const sumOfQuantity = basket.reduce((acc, item) => acc + item.quantity, 0);
+  const basketIds = basket.map(item => item.id).sort();
 
   const { isLoading: isBasketProducts, data: basketProducts } = useQuery({
-    queryKey: ['basketProducts', basket.length],
-    queryFn: () => getProductsById(basket.map(item => item.id)),
+    queryKey: ['basketProducts', ...basketIds],
+    queryFn: () => getProductsById(basketIds),
+    placeholderData: keepPreviousData,
   });
 
   const totalSumGoods =

@@ -47,7 +47,7 @@ export const getPreparedProducts = (
             return p1.name.localeCompare(p2.name);
 
           case 'Cheapest':
-            return p2.price - p1.price;
+            return p1.price - p2.price;
         }
       });
 

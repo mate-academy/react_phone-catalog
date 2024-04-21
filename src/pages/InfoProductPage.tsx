@@ -1,4 +1,4 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useQuery } from '@tanstack/react-query';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, FreeMode, Navigation, Pagination } from 'swiper/modules';
@@ -11,7 +11,7 @@ import { ButtonCard } from '../components/ButtonCard';
 import { ColorLink } from '../components/ColorLink';
 import { Loader } from '../components/Loader';
 import { colorList } from '../sources/colorList';
-import { BasketGoods, Product } from '../types/product';
+import { BasketGoods, Device, Product } from '../types/product';
 import { handleToggleBasket } from '../helpers/functions';
 import { getProductInfo, getRandomProducts } from '../api/products';
 import favouriteActive from '../images/icons/favourites-active.svg';
@@ -25,10 +25,11 @@ export const InfoProductPage = () => {
     'favourites',
     [],
   );
+  const location = useLocation();
 
   const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
 
-  const { isLoading: isProductInfo, data: productInfo } = useQuery({
+  const { data: productData } = useQuery({
     queryKey: ['productInfo', productId],
     queryFn: async () => {
       try {
@@ -43,6 +44,8 @@ export const InfoProductPage = () => {
     },
     enabled: !!productId,
   });
+
+  const productInfo = productData || (location.state as Device);
 
   const { isLoading: isRandomProducts, data: randomProducts } = useQuery({
     queryKey: ['randomProducts'],
@@ -75,7 +78,7 @@ export const InfoProductPage = () => {
         </button>
       </div>
 
-      {isProductInfo || !productInfo ? (
+      {!productInfo ? (
         <Loader />
       ) : (
         <>
@@ -151,6 +154,7 @@ export const InfoProductPage = () => {
                   <div className="flex gap-2">
                     {productInfo.colorsAvailable.map(color => (
                       <ColorLink
+                        state={productInfo}
                         key={color}
                         color={colorList[color as keyof typeof colorList]}
                         active={productInfo.color === color}
@@ -172,6 +176,7 @@ export const InfoProductPage = () => {
                   <div className="flex gap-2">
                     {productInfo.capacityAvailable.map(item => (
                       <Link
+                        state={productInfo}
                         to={`../${productInfo.id.replace(
                           productInfo.capacity
                             .toLowerCase()

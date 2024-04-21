@@ -4,12 +4,10 @@ import { twMerge } from 'tailwind-merge';
 interface Props extends LinkProps {
   color: string;
   active: boolean;
-  to: string;
 }
 
-export const ColorLink: React.FC<Props> = ({ color, active, to, ...rest }) => (
+export const ColorLink: React.FC<Props> = ({ color, active, ...rest }) => (
   <Link
-    to={to}
     className={twMerge(
       `h-8 w-8 rounded-full border border-icons
      bg-white p-0.5 hover:border-primary
