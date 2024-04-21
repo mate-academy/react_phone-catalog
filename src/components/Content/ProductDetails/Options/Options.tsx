@@ -54,7 +54,7 @@ export const Options: React.FC<Props> = ({
   const handleSelectCapacity = (capacity: string) => {
     const pathCapacity = pathname.replace(
       selectCapacity?.toLowerCase() || '',
-      capacity,
+      capacity.toLowerCase(),
     );
 
     setSelectCapacity(capacity);
@@ -109,7 +109,7 @@ export const Options: React.FC<Props> = ({
             <button
               type="button"
               aria-label="capacity"
-              onClick={() => handleSelectCapacity(capacity)}
+              onClick={() => handleSelectCapacity(capacity.toLowerCase())}
               key={uuidv4()}
               className={classNames(style.options__capacity_div, {
                 [style.options__capacity_actice]: capacity !== selectCapacity,
