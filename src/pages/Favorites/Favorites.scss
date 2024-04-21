@@ -1,6 +1,7 @@
 @import '../../App';
 
 .favorites {
+  /* height: 100vh; */
   &__title {
     @include header-font-l;
 

@@ -1,8 +1,12 @@
 import './CartItem.scss';
 import { RoundButton } from '../../../../components/RoundButton';
 import { Product } from '../../../../types/Product';
-import { useAppDispatch } from '../../../../app/hooks';
-import { removeFromCart } from '../../../../features/cartSlice';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import {
+  removeFromCart,
+  decreaseQuantity,
+  increaseQuantity,
+} from '../../../../features/cartSlice';
 
 interface CartItemProps {
   cartItem: Product;
@@ -11,6 +15,7 @@ interface CartItemProps {
 export const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
   const { name, image, price, itemId } = cartItem;
   const dispatch = useAppDispatch();
+  const quantity = useAppSelector(state => state.cart.quantities[itemId]); // Отримуємо кількість товару
 
   return (
     <div className="cart-item">
@@ -26,9 +31,15 @@ export const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
       </div>
       <div className="cart-item__actions">
         <div className="cart-item__quantity">
-          <RoundButton buttonType="minus" onClick={() => {}} />
-          2
-          <RoundButton buttonType="plus" onClick={() => {}} />
+          <RoundButton
+            buttonType="minus"
+            onClick={() => dispatch(decreaseQuantity(itemId))}
+          />
+          {quantity}
+          <RoundButton
+            buttonType="plus"
+            onClick={() => dispatch(increaseQuantity(itemId))}
+          />
         </div>
         <div className="cart-item__total-price">${price}</div>
       </div>

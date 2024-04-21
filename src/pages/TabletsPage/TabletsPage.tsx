@@ -34,14 +34,14 @@ export const TabletsPage = () => {
       {isLoading ? (
         <Loader />
       ) : error ? (
-        <div className="error-container">
-          Something went wrong...
+        <div className="container">
+          <div className="page__title">Something went wrong...</div>
           <AddButton text="Reload" onClick={fetchTablets} />
         </div>
       ) : tablets.length === 0 ? (
-        <div>There are no phones yet</div>
+        <div className="page__title">There are no phones yet</div>
       ) : (
-        <ProductsList products={tablets} category="Phones" />
+        <ProductsList products={tablets} category="Tablets" />
       )}
     </>
   );

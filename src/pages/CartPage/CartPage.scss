@@ -102,4 +102,20 @@
     background-color: $stroke-color;
     margin-block: 16px;
   }
+
+  &__empty {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    &-message {
+      @include header-font-m;
+    }
+
+    &-img {
+      object-fit: contain;
+      width: 50%;
+      height: 50%;
+    }
+  }
 }

@@ -78,9 +78,9 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
 
   return (
     <div className="product-card">
-      <NavLink to={`/${category}/${itemId}`}>
+      <NavLink to={`/${category}/${itemId}`} style={{ textDecoration: 'none' }}>
         <img className="product-image" src={image} alt="Product Image" />
-        <p className="product-title">{name} (MQ023)</p>
+        <p className="product-title">{name}</p>
       </NavLink>
       <div className="product-price">
         <p className="product-price--regular">${price}</p>
