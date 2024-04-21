@@ -16,7 +16,10 @@ export const BasketPage = () => {
     [],
   );
 
-  const sumOfQuantity = basket.reduce((acc, item) => acc + item.quantity, 0);
+  const sumOfQuantity = basket.reduce(
+    (acc, item) => acc + (item?.quantity || 1),
+    0,
+  );
   const basketIds = basket.map(item => item.id).sort();
 
   const { isLoading: isBasketProducts, data: basketProducts } = useQuery({
@@ -30,7 +33,7 @@ export const BasketPage = () => {
     basket.reduce(
       (acc, item) =>
         acc +
-        item.quantity *
+        (item?.quantity || 1) *
           basketProducts[
             basketProducts?.findIndex(product => product.itemId === item.id) ||
               0
@@ -80,7 +83,7 @@ export const BasketPage = () => {
                       (
                         basket.find(item => item.id === product.itemId) ||
                         basket[0]
-                      ).quantity || 1
+                      )?.quantity || 1
                     }
                     onChange={handleChangeQuantity}
                     key={product.id}

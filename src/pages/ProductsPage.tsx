@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSearchParams } from 'react-router-dom';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { TypeItemOnPage, TypeProduct, TypeSort } from '../types/product';
@@ -8,6 +9,7 @@ import { Breadcrumbs } from '../components/Breadcrumbs';
 import { ProductCard } from '../components/ProductCard';
 import { Pagination } from '../components/Pagination';
 import { Loader } from '../components/Loader';
+import { useEffect } from 'react';
 
 const test = [
   {
@@ -72,7 +74,13 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
   });
 
   const lastPage =
-    amountOfProducts && Math.ceil(amountOfProducts[type] / +itemsOnPage);
+    (amountOfProducts && Math.ceil(amountOfProducts[type] / +itemsOnPage)) || 0;
+
+  useEffect(() => {
+    const currentPage = +page > lastPage || +page <= 0 ? 1 : +page;
+
+    setSearchWith({ page: currentPage.toString() });
+  }, [page, lastPage, searchParams]);
 
   return (
     <main

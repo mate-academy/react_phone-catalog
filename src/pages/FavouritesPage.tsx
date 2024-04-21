@@ -32,7 +32,11 @@ export const FavouritesPage = () => {
         {isFavouriteProducts ? (
           <Loader />
         ) : (
-          <div className="mt-8 flex flex-wrap gap-4 md:mt-10">
+          <div
+            className="
+              mt-8 flex flex-wrap gap-4 md:mt-10
+            "
+          >
             {favouriteProducts?.map(product => (
               <ProductCard key={product.itemId} product={product} />
             ))}
