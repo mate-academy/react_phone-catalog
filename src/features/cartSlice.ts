@@ -6,6 +6,7 @@ import { Product } from '../types/Product';
 export interface CartState {
   cart: Product[];
   totalInCart: number;
+  totalPrice: number;
 }
 
 const initialCart = localStorage.getItem('cart')
@@ -15,6 +16,7 @@ const initialCart = localStorage.getItem('cart')
 const initialState: CartState = {
   cart: initialCart,
   totalInCart: 0,
+  totalPrice: 0,
 };
 
 const cartSlice = createSlice({
@@ -29,17 +31,19 @@ const cartSlice = createSlice({
       if (itemIndex < 0) {
         state.cart.push(action.payload);
         state.totalInCart += 1;
+        state.totalPrice += action.payload.price;
         localStorage.setItem('cart', JSON.stringify(state.cart));
       }
     },
     removeFromCart: (state, action: PayloadAction<Product['itemId']>) => {
-      const index = state.cart.findIndex(
+      const removedItem = state.cart.find(
         item => item.itemId === action.payload,
       );
 
-      if (index >= 0) {
-        state.cart.splice(index, 1);
-        state.totalInCart += 1;
+      if (removedItem) {
+        state.totalPrice -= removedItem.price;
+        state.cart = state.cart.filter(item => item.itemId !== action.payload);
+        state.totalInCart -= 1;
         localStorage.setItem('cart', JSON.stringify(state.cart));
       }
     },
