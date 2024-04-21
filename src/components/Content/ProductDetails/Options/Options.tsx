@@ -110,9 +110,9 @@ export const Options: React.FC<Props> = ({
               type="button"
               aria-label="capacity"
               onClick={() => handleSelectCapacity(capacity)}
-              key={capacity}
+              key={uuidv4()}
               className={classNames(style.options__capacity_div, {
-                [style.options__capacity_actice]: capacity === selectCapacity,
+                [style.options__capacity_actice]: capacity !== selectCapacity,
               })}
             >
               {capacity}

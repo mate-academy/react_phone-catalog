@@ -29,15 +29,15 @@ export const Footer = () => {
           </Link>
           <Link to="/">rights</Link>
         </div>
-        <div className={style.footer__goTop}>
-          Back to top
+        <div>
           <button
             onClick={scrollToTop}
             type="button"
             aria-label="Go to top"
-            className={style.footer__button_top}
+            className={style.footer__goTop}
           >
-            <IoIosArrowUp />
+            Back to top
+            <IoIosArrowUp className={style.footer__button_top} />
           </button>
         </div>
       </div>
