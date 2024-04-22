@@ -1,3 +1,5 @@
+@import './../../utils/mixins.scss';
+
 .sliders {
   box-sizing: border-box;
   margin-block: 72px 80px;
@@ -39,8 +41,9 @@
     margin-left: 16px;
     cursor: pointer;
 
-    &:active {
-      border: 1px solid #000;
+    @include buttonTransitionWhite;
+
+    &:hover {
       color: #000;
     }
   }

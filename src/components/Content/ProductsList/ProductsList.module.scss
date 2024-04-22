@@ -48,3 +48,20 @@
     width: calc((100% - 48px) / 4);
   }
 }
+
+.select {
+  padding: 8px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  background-color: #fff;
+  cursor: pointer;
+
+  &__option {
+    font-size: 16px;
+
+    &:focus {
+      background-color: #ccc;
+    }
+  }
+}

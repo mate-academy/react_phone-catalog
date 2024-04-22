@@ -61,16 +61,30 @@
         top: 17px;
         right: 15px;
         display: flex;
-        z-index: 1;
+        // align-items: center;
+        // text-align: center;
+        z-index: 2;
         border-radius: 50%;
         height: 14px;
         width: 14px;
         justify-content: center;
         justify-items: center;
         background-color: red;
-        font-size: 14px;
+        font-size: 10px;
         color: #fff;
         font-weight: 600;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 17px;
+        width: 17px;
+        top: 17px;
+        right: 15px;
+        border-radius: 50%;
+        background-color: #fff;
+        z-index: 1;
       }
 
       &_icon {

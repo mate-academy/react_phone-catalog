@@ -24,6 +24,11 @@
     line-height: 21px;
     color: rgba(137, 147, 154, 1);
     text-decoration: none;
+    transition: width 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
 
     &_title {
       margin-top: 24px;

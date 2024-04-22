@@ -1,3 +1,5 @@
+@import './../../utils/mixins.scss';
+
 .card {
   &__container {
     box-sizing: border-box;
@@ -5,6 +7,8 @@
     height: 507px;
     border: 1px solid #e2e6e9;
     padding: 24px;
+
+    @include buttonTransitionWhite;
   }
 
   &__img {
@@ -92,11 +96,13 @@
     line-height: 21px;
     text-align: center;
     cursor: pointer;
-
+    @include buttonTransitionBlack;
+    
     &_active {
       color: rgba(49, 50, 55, 1);
       background: #fff;
-      border: 2px solid #b4bdc3;
+      border: 2px solid #89939a;
+      @include buttonTransitionWhite;
     }
   }
 
@@ -110,6 +116,7 @@
     width: 40px;
     height: 40px;
     background-color: #fff;
+    @include buttonTransitionWhite;
   }
 }
 

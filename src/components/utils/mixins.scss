@@ -1,0 +1,28 @@
+@mixin buttonTransitionWhite {
+  transition:
+    background-color 0.4s,
+    box-shadow 0.2s 0.3s;
+
+  &:hover {
+    background-color: #fff;
+    border: 1px solid #89939a;
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px #89939a;
+  }
+}
+
+@mixin buttonTransitionBlack {
+  transition:
+    background-color 0.4s,
+    box-shadow 0.2s 0.3s;
+
+  &:hover {
+    background-color: rgba(49, 50, 55, 1);
+    border: 1px solid rgba(49, 50, 55, 1);
+    box-shadow:
+      0 0 0 2px #fff,
+      0 0 0 4px rgba(49, 50, 55, 1);
+  }
+}
+ 

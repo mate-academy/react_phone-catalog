@@ -61,7 +61,7 @@ export const ProductsList: React.FC<Props> = ({
         updatedPhones.sort((a, b) => a.name.localeCompare(b.name));
         break;
       case SortProduct.Age:
-        updatedPhones.sort((a, b) => a.year - b.year);
+        updatedPhones.sort((a, b) => b.year - a.year);
         break;
       case SortProduct.Price:
         updatedPhones.sort((a, b) => a.price - b.fullPrice);
@@ -111,10 +111,29 @@ export const ProductsList: React.FC<Props> = ({
                   <span className={style.productPage__select_title}>
                     Sort by
                   </span>
-                  <select onChange={handleSortByChange} value={sortBy}>
-                    <option value={SortProduct.Age}>Newest</option>
-                    <option value={SortProduct.Name}>Alphabetically</option>
-                    <option value={SortProduct.Price}>Cheapest</option>
+                  <select
+                    className={style.select}
+                    onChange={handleSortByChange}
+                    value={sortBy}
+                  >
+                    <option
+                      className={style.select__option}
+                      value={SortProduct.Age}
+                    >
+                      Newest
+                    </option>
+                    <option
+                      className={style.select__option}
+                      value={SortProduct.Name}
+                    >
+                      Alphabetically
+                    </option>
+                    <option
+                      className={style.select__option}
+                      value={SortProduct.Price}
+                    >
+                      Cheapest
+                    </option>
                   </select>
                 </div>
                 <div className={style.productPage__select}>
@@ -122,14 +141,23 @@ export const ProductsList: React.FC<Props> = ({
                     Items on page
                   </span>
                   <select
+                    className={style.select}
                     data-cy="perPageSelector"
                     onChange={handleItemsPerPageChange}
                     value={itemsOnPage}
                   >
-                    <option value="All">All</option>
-                    <option value="16">16</option>
-                    <option value="8">8</option>
-                    <option value="4">4</option>
+                    <option className={style.select__option} value="All">
+                      All
+                    </option>
+                    <option className={style.select__option} value="16">
+                      16
+                    </option>
+                    <option className={style.select__option} value="8">
+                      8
+                    </option>
+                    <option className={style.select__option} value="4">
+                      4
+                    </option>
                   </select>
                 </div>
               </div>

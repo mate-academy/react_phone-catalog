@@ -52,6 +52,11 @@ export const CartList: React.FC = () => {
     setPriceList(newPrice);
   };
 
+  const amontOfProducе = priceList.reduce(
+    (acc, product) => acc + product.number,
+    0,
+  );
+
   return (
     <>
       {!priceList.length ? (
@@ -121,7 +126,7 @@ export const CartList: React.FC = () => {
               <h1 className={style.cartList__price_title}>{`$ ${price()}`}</h1>
               <span
                 className={style.cartList__price_about}
-              >{`Total for ${priceList.length} items`}</span>
+              >{`Total for ${amontOfProducе} items`}</span>
               <Link to="../checkout" className={style.cartList__price_button}>
                 Checkout
               </Link>

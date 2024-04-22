@@ -25,17 +25,24 @@ export const Options: React.FC<Props> = ({
   const [id, setId] = useState<string | number>('');
   const {product, priceList, favourites, setProductExists, setSelectIdCart} =
     useContext(ProductContext);
+  const [isProductInfoLoading, setIsProductInfoLoading] = useState(false);
+
+  console.log(isProductInfoLoading);
 
   const location = useLocation();
   const {pathname} = location;
 
   useEffect(() => {
+    setIsProductInfoLoading(true);
+    console.log('Details ID:', details.id);
+    console.log('Product:', product);
     const hasProduct = product.find(d => d.itemId === details.id);
 
     if (hasProduct) {
       setId(hasProduct.id);
+      setIsProductInfoLoading(false);
     }
-  }, [details.id]);
+  }, [details.id, product]);
 
   const hasElementFavorit = () => {
     return favourites?.some(item => item?.id === id) ?? false;
@@ -45,6 +52,10 @@ export const Options: React.FC<Props> = ({
     priceList?.some(item => +item?.id === +id) ?? false;
 
   const handleSelectColor = (color: string) => {
+    if (isProductInfoLoading) {
+      // return;
+    }
+
     const pathColor = pathname.replace(selectColor || '', color);
 
     setSelectColor(color);
@@ -52,6 +63,10 @@ export const Options: React.FC<Props> = ({
   };
 
   const handleSelectCapacity = (capacity: string) => {
+    if (isProductInfoLoading) {
+      return;
+    }
+
     const pathCapacity = pathname.replace(
       selectCapacity?.toLowerCase() || '',
       capacity.toLowerCase(),
@@ -86,12 +101,14 @@ export const Options: React.FC<Props> = ({
       <div className={style.options__container}>
         {details.colorsAvailable.map(color => (
           <button
+            disabled={isProductInfoLoading}
             type="button"
             aria-label="color"
             onClick={() => handleSelectColor(color)}
             key={uuidv4()}
             className={classNames(style.options__colorDiv, {
               [style.options__color_actice]: color === selectColor,
+              [style.options__loader]: isProductInfoLoading,
             })}
           >
             <div
@@ -113,7 +130,9 @@ export const Options: React.FC<Props> = ({
               key={uuidv4()}
               className={classNames(style.options__capacity_div, {
                 [style.options__capacity_actice]: capacity !== selectCapacity,
+                [style.options__loader]: isProductInfoLoading,
               })}
+              disabled={isProductInfoLoading}
             >
               {capacity}
             </button>
