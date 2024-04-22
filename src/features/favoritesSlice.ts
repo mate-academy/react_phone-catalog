@@ -1,6 +1,5 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-/* import { ProductDetails } from '../types/ProductDetails'; */
 import { Product } from '../types/Product';
 
 export interface FavoritesState {

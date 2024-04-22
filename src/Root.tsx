@@ -5,12 +5,12 @@ import { HomePage } from './pages/HomePage';
 import { store } from './app/store';
 import { Menu } from './components/Menu';
 import { PhonesPage } from './pages/PhonesPage';
-import { TabletsPage } from './pages/TabletsPage/TabletsPage';
-import { AccessoriesPage } from './pages/AccessoriesPage/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { AccessoriesPage } from './pages/AccessoriesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { Favorites } from './pages/Favorites';
 import { CartPage } from './pages/CartPage/CartPage';
+import { TabletsPage } from './pages/TabletsPage';
 
 export const Root = () => {
   return (

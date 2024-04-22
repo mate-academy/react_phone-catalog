@@ -1,12 +1,24 @@
 import './CartPage.scss';
 import { useNavigate } from 'react-router-dom';
 import { CartItem } from './components/CartItem';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { AddButton } from '../../components/AddButton';
+import { clearCart } from '../../features/cartSlice';
 
 export const CartPage = () => {
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { cart, totalPrice, totalInCart } = useAppSelector(state => state.cart);
+
+  const handleCheckout = () => {
+    const confirmCheckout = confirm(
+      'Checkout is not implemented yet. Do you want to clear the Cart?',
+    );
+
+    if (confirmCheckout) {
+      dispatch(clearCart());
+    }
+  };
 
   return (
     <div className="container">
@@ -29,7 +41,7 @@ export const CartPage = () => {
               <div className="cart__total-price">{`$${totalPrice}`}</div>
               <div className="cart__total-quantity">{`Total for ${totalInCart} items`}</div>
               <div className="cart__divider"></div>
-              <AddButton text="Checkout" onClick={() => {}} />
+              <AddButton text="Checkout" onClick={handleCheckout} />
             </div>
           </div>
         </>

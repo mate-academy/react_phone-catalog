@@ -35,26 +35,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   const { cart } = useAppSelector(state => state.cart);
   const { favorites } = useAppSelector(state => state.favorites);
 
-  /* const handleCartAction = async () => {
-    const productToCart = await findProductByItemId(itemId, category);
-
-    if (isProductInCart) {
-      dispatch(removeFromCart(productToCart.id));
-    } else {
-      dispatch(addToCart(productToCart));
-    }
-  }; */
-
-  /* const handleFavoritesAction = async () => {
-    const productToFavorites = await findProductByItemId(itemId, category);
-
-    if (isProductInFavorites) {
-      dispatch(removeFromFavorites(productToFavorites.id));
-    } else {
-      dispatch(addToFavorites(productToFavorites));
-    }
-  }; */
-
   const handleFavoritesAction = () => {
     if (isProductInFavorites) {
       dispatch(removeFromFavorites(itemId));

@@ -15,7 +15,7 @@ interface CartItemProps {
 export const CartItem: React.FC<CartItemProps> = ({ cartItem }) => {
   const { name, image, price, itemId } = cartItem;
   const dispatch = useAppDispatch();
-  const quantity = useAppSelector(state => state.cart.quantities[itemId]); // Отримуємо кількість товару
+  const quantity = useAppSelector(state => state.cart.quantities[itemId]);
 
   return (
     <div className="cart-item">

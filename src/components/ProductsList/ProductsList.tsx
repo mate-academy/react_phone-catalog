@@ -1,9 +1,10 @@
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
 import './ProductsList.scss';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Pagination } from '../Pagination';
 import { Breadcrumbs } from '../Breadcrumbs';
+import { useSearchParams } from 'react-router-dom';
 
 type ProductsListProps = {
   products: Product[];
@@ -14,15 +15,26 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   products,
   category,
 }) => {
-  const [perPage, setPerPage] = useState(16);
-  const [currentPage, setCurrentPage] = useState(1);
-  const [sortBy, setSortBy] = useState('newest');
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const initialPage = Number(searchParams.get('page')) || 1;
+  const [currentPage, setCurrentPage] = useState(initialPage);
+
+  const initialPerPage = searchParams.get('perPage') || 'all';
+  const [perPage, setPerPage] = useState(
+    initialPerPage === 'all' ? products.length : Number(initialPerPage),
+  );
+
+  const initialSortBy = searchParams.get('sort') || 'newest';
+  const [sortBy, setSortBy] = useState(initialSortBy);
 
   const start = perPage * (currentPage - 1);
   const end = Math.min(perPage * currentPage, products.length);
 
   const handlePerPageChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setPerPage(+event.target.value);
+    const newPerPage = event.target.value;
+
+    setPerPage(newPerPage === 'all' ? products.length : Number(newPerPage));
     setCurrentPage(1);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
@@ -53,6 +65,20 @@ export const ProductsList: React.FC<ProductsListProps> = ({
 
   const productsToShow = sortProducts(products, sortBy);
 
+  useEffect(() => {
+    const newSearchParams: any = { sort: sortBy };
+
+    if (currentPage !== 1) {
+      newSearchParams.page = currentPage;
+    }
+
+    if (perPage !== products.length) {
+      newSearchParams.perPage = perPage;
+    }
+
+    setSearchParams(newSearchParams);
+  }, [sortBy, currentPage, perPage, setSearchParams]);
+
   return (
     <div className="container">
       <div className="products-list">
@@ -69,6 +95,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
               name="sortBy"
               id="sortBy"
               onChange={handleSortChange}
+              value={sortBy}
             >
               <option value="newest">Newest</option>
               <option value="alphabetically">Alphabetically</option>

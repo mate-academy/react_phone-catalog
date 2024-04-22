@@ -1,5 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
 import './ProductDetailsPage.scss';
+import { useNavigate, useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import {
   findProductByItemId,
@@ -7,7 +7,12 @@ import {
   getSuggestedProducts,
 } from '../../api/api';
 import { AddButton } from '../../components/AddButton';
+import { Loader } from '../../components/Loader';
 import { RoundButton } from '../../components/RoundButton';
+import { ProductsSlider } from '../../components/ProductsSlider';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { NotFoundPage } from '../NotFoundPage';
+import { Product } from '../../types/Product';
 import { ProductDetails } from '../../types/ProductDetails';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addToCart, removeFromCart } from '../../features/cartSlice';
@@ -15,14 +20,12 @@ import {
   addToFavorites,
   removeFromFavorites,
 } from '../../features/favoritesSlice';
-import { Product } from '../../types/Product';
-import { ProductsSlider } from '../../components/ProductsSlider';
-import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 export const ProductDetailsPage = () => {
   const { category, itemId } = useParams();
   const navigate = useNavigate();
   const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const [selectedCapacity, setSelectedCapacity] = useState<string | undefined>(
     undefined,
@@ -40,16 +43,6 @@ export const ProductDetailsPage = () => {
 
   const [similarProducts, setSimilarProducts] = useState<Product[]>([]);
 
-  /* const handleCartAction = () => {
-    if (product) {
-      if (isProductInCart) {
-        dispatch(removeFromCart(product.id));
-      } else {
-        dispatch(addToCart(product));
-      }
-    }
-  }; */
-
   const handleCartAction = async () => {
     if (product) {
       const allProducts = await getAllProducts();
@@ -64,16 +57,6 @@ export const ProductDetailsPage = () => {
       }
     }
   };
-
-  /* const handleFavoritesAction = () => {
-    if (product) {
-      if (isProductInFavorites) {
-        dispatch(removeFromFavorites(product.id));
-      } else {
-        dispatch(addToFavorites(product));
-      }
-    }
-  }; */
 
   const handleFavoritesAction = async () => {
     if (product) {
@@ -92,11 +75,14 @@ export const ProductDetailsPage = () => {
 
   useEffect(() => {
     const fetchProduct = async () => {
+      setIsLoading(true);
       if (itemId && category) {
         const currentProduct = await findProductByItemId(itemId, category);
 
         setProduct(currentProduct);
       }
+
+      setIsLoading(false);
     };
 
     fetchProduct();
@@ -132,6 +118,14 @@ export const ProductDetailsPage = () => {
       setSelectedColor(product.color);
     }
   }, [product]);
+
+  if (isLoading) {
+    return <Loader />;
+  }
+
+  if (!product) {
+    return <NotFoundPage />;
+  }
 
   return (
     <div className="container">

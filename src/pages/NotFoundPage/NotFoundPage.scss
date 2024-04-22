@@ -1,8 +1,13 @@
 @import '../../App';
 
-.not-found-page {
+.not-found {
+  margin-top: 16px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+  justify-content: space-between;
+
+  &__img {
+    object-fit: contain;
+    width: 50%;
+    height: 50%;
+  }
 }

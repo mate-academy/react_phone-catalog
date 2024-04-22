@@ -52,6 +52,14 @@
     text-decoration: none;
     transition: color 0.3s ease;
 
+    @include on-tablet {
+      padding-block: 17px;
+    }
+
+    @include on-desktop {
+      padding-block: 25px;
+    }
+
     &:hover {
       color: $primary-color;
     }
@@ -92,6 +100,17 @@
   text-decoration: none;
   position: relative;
 
+  &--active {
+    &::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      background-color: $primary-color;
+      bottom: 0;
+    }
+  }
+
   @include on-desktop {
     height: 64px;
     width: 64px;
@@ -128,4 +147,8 @@
     background-position: center;
     box-shadow: -1px 0 0 0 #e2e6e9;
   }
+}
+
+.is-active {
+  border-bottom: 3px solid $primary-color;
 }
