@@ -28,7 +28,8 @@ export const ProductsSlider: React.FC<Props> = ({
               onClick={() => handleClick('back')}
               className={style.sliders__button}
             >
-              <IoIosArrowBack />
+              {' '}
+              <IoIosArrowBack />{' '}
             </button>
             <button
               type="button"

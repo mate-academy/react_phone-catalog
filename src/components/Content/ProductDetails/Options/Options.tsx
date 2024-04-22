@@ -26,7 +26,6 @@ export const Options: React.FC<Props> = ({
   const {product, priceList, favourites, setProductExists, setSelectIdCart} =
     useContext(ProductContext);
   const [isProductInfoLoading, setIsProductInfoLoading] = useState(false);
-
   const location = useLocation();
   const {pathname} = location;
 
