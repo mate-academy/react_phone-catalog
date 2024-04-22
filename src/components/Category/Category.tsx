@@ -5,6 +5,7 @@ import './Category.scss';
 import { Categories } from '../../types/Categories';
 import { getProducts } from '../../services/products';
 import { CategoryLink } from '../../types/CategoryLink';
+import { BASE_URL } from '../../helpers/constants';
 
 interface Props {
   category: CategoryLink;
@@ -36,7 +37,7 @@ export const Category: React.FC<Props> = ({
           style={{ backgroundColor: background }}
         >
           <img
-            src={img}
+            src={`${BASE_URL}/${img}`}
             alt={name}
             className={classNames('category__img', {
               'category__img--phones':
