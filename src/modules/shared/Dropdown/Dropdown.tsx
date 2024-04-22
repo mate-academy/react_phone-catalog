@@ -3,11 +3,19 @@ import { Option } from '../../../types/Option';
 
 type Props = {
   title: string;
-  defaultValue: string | number;
+  defaultValue: string;
   options: Option[];
+  setSelectValue: (value: string) => void;
+  resetCurrentPage: () => void;
 };
 
-export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
+export const Dropdown: React.FC<Props> = ({
+  title,
+  options,
+  defaultValue,
+  setSelectValue,
+  resetCurrentPage,
+}) => {
   const [openDropdown, setOpenDropdown] = useState(false);
   const [select, setSelect] = useState(defaultValue);
   const [styles, setStyles] = useState<CSSProperties>({
@@ -16,10 +24,14 @@ export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
   });
 
   const handleSelectItems = (event: React.MouseEvent<HTMLButtonElement>) => {
-    // const value = parseInt(event.currentTarget.value, 10);
     const { value } = event.currentTarget;
 
-    setSelect(value);
+    if (value !== select) {
+      setSelect(value);
+      setSelectValue(value);
+      resetCurrentPage();
+    }
+
     setOpenDropdown(false);
   };
 
@@ -27,9 +39,7 @@ export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
     let timeout: NodeJS.Timeout;
 
     if (openDropdown) {
-      setTimeout(() => {
-        setStyles({ overflow: 'hidden', border: '1px solid #b4bdc3' });
-      }, 280);
+      setStyles({ overflow: 'hidden', border: '1px solid #b4bdc3' });
     }
 
     if (!openDropdown) {
@@ -68,12 +78,12 @@ export const Dropdown: React.FC<Props> = ({ title, options, defaultValue }) => {
             <button
               key={option.value}
               type="button"
-              value={option.label}
+              value={option.value}
               onClick={handleSelectItems}
               className="dropdown__item"
               style={openDropdown ? { height: '32px' } : { height: 0 }}
             >
-              {option.label}
+              {option.value}
             </button>
           ))}
         </div>

@@ -4,6 +4,8 @@
   position: sticky;
   top: 0;
 
+  flex-shrink: 0;
+
   background-color: $back-ground-color-white;
   z-index: 1;
 
@@ -81,6 +83,7 @@
 
     box-sizing: content-box;
     border-left: solid 1px $border-color-light-gray;
+    cursor: pointer;
 
     @include on-tablet {
       display: none;
@@ -93,6 +96,7 @@
     z-index: 1;
     border: none;
     background-color: $back-ground-color-white;
+    cursor: pointer;
   }
 
   &__logo-link {

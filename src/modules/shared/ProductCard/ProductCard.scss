@@ -10,6 +10,10 @@
   border: solid 1px $border-color-light-gray;
   border-radius: 5px;
 
+  &:hover {
+    border: solid 1px $border-color-hover;
+  }
+
   @include on-tablet {
     height: 512px;
   }

@@ -18,6 +18,10 @@
     border-radius: 5px;
 
     cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
   }
 
   &__add-to-fav {

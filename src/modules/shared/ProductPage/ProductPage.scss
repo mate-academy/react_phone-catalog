@@ -1,7 +1,7 @@
 .product-page {
   @include padding-content-inline;
 
-  padding-top: 24px;
+  padding-block: 24px 64px;
 
   &__route {
     height: 16px;
@@ -30,15 +30,16 @@
     margin-bottom: 24px;
   }
 
-  &__navigation {
+  &__product-card-container {
     display: flex;
-    justify-content: center;
-    gap: 16px;
+    flex-direction: column;
+    gap: 40px;
   }
 
-  &__navigation-numbers {
+  &__navigation {
+    margin-top: 24px;
+
     display: flex;
     justify-content: center;
-    gap: 8px;
   }
 }

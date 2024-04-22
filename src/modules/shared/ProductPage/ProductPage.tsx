@@ -1,32 +1,47 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../types/Product';
 import { Dropdown } from '../Dropdown';
 import { Option } from '../../../types/Option';
-import { MoveLeft, MoveNumber, MoveRight } from '../MoveButtons';
+import { getNumbers } from '../../../services/getNumbers';
+import { Pagination } from '../Pagination';
+import { getItemsPerPage } from '../../../services/getItemsPerPage';
 
 type Props = {
   title: string;
   routeTitle: string;
+  dataLoaded: boolean;
   phones: Product[];
+  // perPage: (item: number) => void;
 };
+
+const optionsItemsPerPage: Option[] = [
+  { value: '4' },
+  { value: '8' },
+  { value: '16' },
+  { value: 'All' },
+];
+
+const optionsSortBy: Option[] = [
+  { value: 'Newest' },
+  { value: 'Alphabetically' },
+  { value: 'Cheapest' },
+];
 
 export const ProductPage: React.FC<Props> = React.memo(
   ({ title, routeTitle, phones }) => {
-    const optionsSortBy: Option[] = [
-      { label: 'Newest', value: 'newest' },
-      { label: 'Lowest price', value: 'lowestPrice' },
-      { label: 'Highest price', value: 'highestPrice' },
-    ];
+    const [currentPage, setCurrentPage] = useState(1);
+    const [selectSortBy, setSelectSortBy] = useState(optionsSortBy[0].value);
+    const [itemsPerPage, setItemsPerPage] = useState(
+      optionsItemsPerPage[1].value,
+    );
 
-    const optionsItemsPerPage: Option[] = [
-      { label: '4', value: '4' },
-      { label: '8', value: '8' },
-      { label: '16', value: '16' },
-      { label: '32', value: '32' },
-    ];
+    const productsPerPage = getItemsPerPage(itemsPerPage, phones.length);
 
-    // console.log(curentPage);
+    const items = getNumbers(
+      (currentPage - 1) * productsPerPage + 1,
+      Math.min(currentPage * productsPerPage, phones.length),
+    );
 
     return (
       <div className="product-page">
@@ -35,41 +50,52 @@ export const ProductPage: React.FC<Props> = React.memo(
           <img src="/img/icons/move-right.svg" alt="to" />
           {routeTitle}
         </div>
+
         <div className="product-page__title">
           <h2 className="product-page__main-title secondary-title">{title}</h2>
-          <h4 className="product-page__sub-title quaternary-title">{`${phones.length} models`}</h4>
+          <h4 className="product-page__sub-title quaternary-title">
+            {`${phones.length} models`}
+          </h4>
         </div>
 
         <div className="product-page__dropdown-container">
           <Dropdown
             title="Sort by"
-            defaultValue={optionsSortBy[0].label}
+            defaultValue={selectSortBy}
             options={optionsSortBy}
+            setSelectValue={value => setSelectSortBy(value)}
+            resetCurrentPage={() => setCurrentPage(1)}
           />
 
           <Dropdown
             title="Items per page"
-            defaultValue={optionsItemsPerPage[1].label}
+            defaultValue={itemsPerPage}
             options={optionsItemsPerPage}
+            setSelectValue={value => setItemsPerPage(value)}
+            resetCurrentPage={() => setCurrentPage(1)}
           />
         </div>
 
-        {phones.map(phone => (
-          <ProductCard key={phone.id} product={phone} hotPrice={false} />
-        ))}
-
-        <div className="product-page__navigation">
-          <MoveLeft move={() => {}} disabled />
-
-          <div className="product-page__navigation-numbers">
-            <MoveNumber move={() => {}} disabled number={1} />
-            <MoveNumber move={() => {}} disabled number={2} />
-            <MoveNumber move={() => {}} disabled number={3} />
-            <MoveNumber move={() => {}} disabled number={4} />
-          </div>
-
-          <MoveRight move={() => {}} disabled />
+        <div className="product-page__product-card-container">
+          {items.map(item => (
+            <ProductCard
+              key={item}
+              product={phones[item - 1]}
+              hotPrice={false}
+            />
+          ))}
         </div>
+
+        {items.length !== phones.length && (
+          <div className="product-page__navigation">
+            <Pagination
+              total={phones.length}
+              perPage={productsPerPage}
+              currentPage={currentPage}
+              onPageChange={page => setCurrentPage(page)}
+            />
+          </div>
+        )}
       </div>
     );
   },

@@ -1,0 +1,19 @@
+.pagination {
+  max-width: 288px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__pages {
+    height: $button-size;
+    max-width: calc(#{$button-size} * 5 + 32px);
+
+    display: flex;
+    gap: 8px;
+
+    & * {
+      transition: none;
+    }
+  }
+}

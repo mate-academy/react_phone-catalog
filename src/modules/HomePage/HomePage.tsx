@@ -1,9 +1,16 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, {
+  // useContext,
+  useEffect,
+  useState,
+} from 'react';
 import { ProductListCarousel } from './ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
 import { Product } from '../../types/Product';
-import { ProductContext } from '../../store/ProductContext';
+import { client } from '../../api'; // тимчасово
+// import { ProductContext } from '../../store/ProductContext';
+
+const PRODUCT_URL = 'products.json';
 
 function maxDifference(products: Product[]) {
   const result = products
@@ -21,8 +28,34 @@ function maxDifference(products: Product[]) {
 }
 
 export const HomePage = React.memo(() => {
-  const { dataLoaded, phones, tablets, accessories } =
-    useContext(ProductContext);
+  // const { dataLoaded, phones, tablets, accessories } =
+  //   useContext(ProductContext);
+
+  // #region тимчасово
+  const [dataLoaded, setDataLoaded] = useState(false);
+  const [products, setProducts] = useState<Product[]>([]);
+
+  const phones = products.filter(product => product.category === 'phones');
+  // const phones = products
+  //   .filter(product => product.category === 'phones')
+  //   .slice(0, 50);
+  const tablets = products.filter(product => product.category === 'tablets');
+  const accessories = products.filter(
+    product => product.category === 'accessories',
+  );
+
+  useEffect(() => {
+    setDataLoaded(false);
+
+    client
+      .get<Product[]>(PRODUCT_URL)
+      .then(data => {
+        setProducts(data);
+        setDataLoaded(true);
+      })
+      .catch(() => {});
+  }, []); // fetch
+  // #endregion
 
   const [windowSize, setWindowSize] = useState<number>(window.innerWidth);
 
