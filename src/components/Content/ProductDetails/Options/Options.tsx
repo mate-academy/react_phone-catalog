@@ -34,14 +34,17 @@ export const Options: React.FC<Props> = ({
 
   useEffect(() => {
     setIsProductInfoLoading(true);
-    console.log('Details ID:', details.id);
-    console.log('Product:', product);
     const hasProduct = product.find(d => d.itemId === details.id);
 
-    if (hasProduct) {
-      setId(hasProduct.id);
+    const timeoutId = setTimeout(() => {
+      if (hasProduct) {
+        setId(hasProduct.id);
+      }
+
       setIsProductInfoLoading(false);
-    }
+    }, 1000);
+
+    return () => clearTimeout(timeoutId);
   }, [details.id, product]);
 
   const hasElementFavorit = () => {
