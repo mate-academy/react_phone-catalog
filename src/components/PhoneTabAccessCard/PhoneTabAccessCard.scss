@@ -1,11 +1,14 @@
 @import '../../utils/main';
 
-.card {
+.phone {
+  width: 100%;
+  margin-bottom: 20px;
   padding: 20px;
   border: 1px solid #E2E6E9;
 
   @include on-tablet {
     width: $card-width-tablet;
+    margin-right: 20px;
   }
 
   @include on-desktop {
@@ -20,7 +23,11 @@
   }
 
   &__img {
-    width: 85%;
+    width: 65%;
+
+    @include on-tablet {
+      width: 85%;
+    }
   }
 
   &__name {

@@ -1,4 +1,4 @@
-import { Phone } from '../types/phone';
+import { Product } from '../types/phone';
 // eslint-disable-next-line operator-linebreak
 const API_URL =
   'https://mate-academy.github.io/react_phone-catalog/api/products.json';
@@ -7,7 +7,7 @@ function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
 }
 
-export async function getPhones(): Promise<Phone[]> {
+export async function getPhones(): Promise<Product[]> {
   // keep this delay for testing purpose
   return wait(500)
     .then(() => fetch(API_URL))

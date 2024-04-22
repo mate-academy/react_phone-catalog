@@ -10,28 +10,28 @@ import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
 import React from 'react';
 
-export const Pagination = () => {
-  const { products } = useContext(CatalogContext);
+export const PaginationPhone = () => {
+  const { phones } = useContext(CatalogContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (products === undefined) {
+  if (phones === undefined) {
     return <NotFoundPage />;
   }
 
   const perPage = searchParams.get('perPage') || '4';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? products.length : perPage;
+  const itemsPerPage = perPage === 'all' ? phones.length : perPage;
 
   const total = () => {
     if (perPage === 'all') {
       setSearchParams({
         page: `${1}`.toString(),
-        perPage: `${products.length}`.toString(),
+        perPage: `${phones.length}`.toString(),
       });
 
-      return products.length;
+      return phones.length;
     } else {
-      return Math.ceil(products.length / +itemsPerPage);
+      return Math.ceil(phones.length / +itemsPerPage);
     }
   };
 
@@ -40,6 +40,20 @@ export const Pagination = () => {
   const getTotalNumbersArray = (): number[] => {
     return getNumbers(1, totalPages);
   };
+
+  const numbersToShow = 3;
+
+  const currentPageNum = parseInt(currentPage);
+
+  const min = Math.max(1, currentPageNum - numbersToShow / 2);
+  const max = Math.min(
+    totalPages,
+    currentPageNum +
+      numbersToShow / 2 +
+      Math.max(0, min - currentPageNum + numbersToShow / 2),
+  );
+
+  const numbersToLoad = getTotalNumbersArray().slice(min - 1, max);
 
   const handlePrevPage = () => {
     setSearchParams({
@@ -64,7 +78,7 @@ export const Pagination = () => {
       >
         <img src={Arrow_Left} alt="arrow_left" className="pagination__image" />
       </button>
-      {getTotalNumbersArray().map(page => (
+      {numbersToLoad.map(page => (
         <li
           key={page}
           className={classNames('pagination__item', {

@@ -19,33 +19,17 @@
   letter-spacing: 4%;
   color: $grey-secondary;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all .3s;
 
   &:hover {
     color: $grey-primary;
+    border-bottom: 1px solid $grey-secondary;
   }
 
   &:active {
     color: $grey-primary;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    left: 0;
-    top: 31px;
-    bottom: 0;
-    background-color: transparent;
-    transition: background-color 0.3s;
-
-    &:hover {
-      background-color: $grey-primary;
-    }
-
-    &:active {
-      background-color: $grey-primary;
-    }
+    border-bottom: 1px solid $grey-secondary;
   }
   @content;
 }
@@ -83,4 +67,16 @@
   &:hover {
     color: $grey-primary;
   }
+}
+
+@mixin burger {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  z-index: 1;
 }

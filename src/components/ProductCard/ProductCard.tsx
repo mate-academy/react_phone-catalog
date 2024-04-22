@@ -1,10 +1,10 @@
-import { Phone } from '../../types/phone';
+import { Product } from '../../types/phone';
 import './ProductCard.scss';
 import Favorites from '../../images/homePage/Favorites.svg';
 import React from 'react';
 
 type Props = {
-  phone: Phone;
+  phone: Product;
   brand?: boolean;
 };
 
@@ -13,7 +13,7 @@ export const ProductCard: React.FC<Props> = ({ phone, brand }) => {
     <div className="card" data-cy="cardsContainer">
       <div className="card__url">
         <img
-          src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}
+          src={`https://hanna-balabukha.github.io/react_phone-catalog/${phone.image}`}
           alt={phone.category}
           className="card__img"
         />

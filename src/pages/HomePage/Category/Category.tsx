@@ -2,10 +2,13 @@ import './Category.scss';
 import '../../../utils/main.scss';
 import React, { useContext } from 'react';
 import { CatalogContext } from '../../CatalogContext';
+import { NavLink } from 'react-router-dom';
 
 export const Category = () => {
-  const { phonesCount, tabletsCount, accessoriesCount } =
-    useContext(CatalogContext);
+  const { phones, tablets, accessories } = useContext(CatalogContext);
+
+  const BASE_ULR =
+    'https://mate-academy.github.io/react_phone-catalog/_new/img/';
 
   return (
     <div className="category">
@@ -23,13 +26,15 @@ export const Category = () => {
           grid__item--tablet-1-4
           grid__item--desktop-1-8"
         >
-          <img
-            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-phones.png"
-            alt="Mobile"
-            className="category__img category__mobile"
-          />
+          <NavLink to="/phones">
+            <img
+              src={`${BASE_ULR}category-phones.png`}
+              alt="Mobile"
+              className="category__img category__mobile"
+            />
+          </NavLink>
           <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phonesCount}</div>
+          <div className="category__quantity">{phones?.length} models</div>
         </div>
         <div
           className="category__block
@@ -37,13 +42,15 @@ export const Category = () => {
           grid__item--tablet-5-8
           grid__item--desktop-9-16"
         >
-          <img
-            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-tablets.png"
-            alt="Tablets"
-            className="category__img category__tablets"
-          />
+          <NavLink to="/tablets">
+            <img
+              src={`${BASE_ULR}category-tablets.png`}
+              alt="Tablets"
+              className="category__img category__tablets"
+            />
+          </NavLink>
           <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tabletsCount}</div>
+          <div className="category__quantity">{tablets?.length} models</div>
         </div>
         <div
           className="category__block
@@ -51,13 +58,15 @@ export const Category = () => {
           grid__item--tablet-9-12
           grid__item--desktop-17-24"
         >
-          <img
-            // src="https://mate-academy.github.io/react_phone-catalog/_new/img/category-accessories.png"
-            alt="Accessories"
-            className="category__img category__accessories"
-          />
+          <NavLink to="/accessories">
+            <img
+              src={`${BASE_ULR}category-accessories.png`}
+              alt="Accessories"
+              className="category__img category__accessories"
+            />
+          </NavLink>
           <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessoriesCount}</div>
+          <div className="category__quantity">{accessories?.length} models</div>
         </div>
       </div>
     </div>

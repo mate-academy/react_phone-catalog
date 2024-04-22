@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Phone } from '../../../types/phone';
+import { Product } from '../../../types/phone';
 import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
@@ -107,7 +107,7 @@ export const BrandNew = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {brandPhones?.map((phone: Phone) => (
+            {brandPhones?.map((phone: Product) => (
               <ProductCard phone={phone} key={phone.id} brand={brand} />
             ))}
           </div>

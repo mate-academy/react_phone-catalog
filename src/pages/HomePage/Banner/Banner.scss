@@ -53,7 +53,7 @@
     object-fit: cover;
     flex-shrink: 0;
     flex-grow: 0;
-    transition: translate 500ms ease-in-out;
+    transition: translate 300ms ease-in-out;
 
     @include on-tablet {
       height: 189px;

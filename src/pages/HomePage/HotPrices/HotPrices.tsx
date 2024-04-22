@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
-import { Phone } from '../../../types/phone';
+import { Product } from '../../../types/phone';
 import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
@@ -106,7 +106,7 @@ export const HotPrices = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {visibleItems?.map((phone: Phone) => (
+            {visibleItems?.map((phone: Product) => (
               <ProductCard phone={phone} key={phone.id} />
             ))}
           </div>

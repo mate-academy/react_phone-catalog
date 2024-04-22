@@ -1,17 +1,21 @@
 import './Banner.scss';
 import '../../../utils/main.scss';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
 import React from 'react';
 
 export const Banner = () => {
-  // const slides = [
-  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-phones.png',
-  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-tablets.png',
-  //   'https://mate-academy.github.io/react_phone-catalog/_new/img/banner-accessories.png',
-  // ];
+  const BASE_URL =
+    'https://mate-academy.github.io/react_phone-catalog/_new/img/';
+
+  const slides = [
+    BASE_URL + 'banner-phones.png',
+    BASE_URL + 'banner-tablets.png',
+    BASE_URL + 'banner-accessories.png',
+  ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
+  const timerRef = useRef<NodeJS.Timeout>();
 
   const nextSlide = () => {
     if (currentIndex !== 2) {
@@ -28,6 +32,18 @@ export const Banner = () => {
       setCurrentIndex(2);
     }
   };
+
+  useEffect(() => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+    }
+
+    timerRef.current = setTimeout(() => {
+      nextSlide();
+    }, 5000);
+
+    return () => clearTimeout(timerRef.current);
+  });
 
   return (
     <div className="banner grid--tablet grid--desktop">
@@ -52,7 +68,7 @@ export const Banner = () => {
       >
         <div className="banner__slider">
           <div className="banner__cover">
-            {/* {slides.map((img, index) => (
+            {slides.map((img, index) => (
               <img
                 key={img}
                 src={slides[index]}
@@ -60,7 +76,7 @@ export const Banner = () => {
                 className="banner__slider-image"
                 style={{ translate: `${-100 * currentIndex}%` }}
               />
-            ))} */}
+            ))}
           </div>
         </div>
       </div>
