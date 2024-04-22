@@ -2,6 +2,7 @@
 
 .products-page {
   padding-top: 24px;
+
   @include content-padding-inline;
 
   &__content {
@@ -45,6 +46,7 @@
 
   &__dropdowns {
     @include page-grid;
+
     align-items: end;
 
     & :nth-child(1) {

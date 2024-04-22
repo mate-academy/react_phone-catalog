@@ -104,7 +104,7 @@ export const Banner: React.FC<Props> = ({ images }) => {
                 }}
               >
                 <img
-                  src={`${BANNER_IMAGE_ROOT}${path}`}
+                  src={`${BANNER_IMAGE_ROOT}/${path}`}
                   alt={`${name} banner`}
                   className="banner__img"
                 />

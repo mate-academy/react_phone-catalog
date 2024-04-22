@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Icon } from '../Icon';
 import { IconType } from '../../types/IconTypes';
-import { PRODUCT_IMAGE_ROOT, productCardWidth } from '../../helpers/constants';
+import { BASE_URL, productCardWidth } from '../../helpers/constants';
 import { Specification } from '../../types/Specification';
 import { Specs } from '../Specs';
 import { FavouritesContext } from '../FavouritesContextProvider';
@@ -74,7 +74,7 @@ export const ProductCard: React.FC<Props> = ({
         state={pathname}
         className="product-card__content"
       >
-        <img src={`${PRODUCT_IMAGE_ROOT}${image}`} alt="" className="product-card__img" />
+        <img src={`${BASE_URL}/${image}`} alt="" className="product-card__img" />
 
         <h4 className="product-card__name">
           {name}

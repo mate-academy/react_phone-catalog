@@ -3,6 +3,7 @@
 .shop-by-category {
   &__content {
     @include content-padding-inline;
+
     display: grid;
     gap: 24px;
 
@@ -30,6 +31,7 @@
 
   &__categories {
     @include page-grid;
+
     row-gap: 32px;
   }
 }

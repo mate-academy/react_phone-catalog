@@ -16,7 +16,7 @@ import {
 import { ProductDetails } from '../../types/ProductDetails';
 import { BreadCrumbs } from '../../components/BreadCrumbs';
 import { BackButton } from '../../components/BackButton';
-import { PRODUCT_IMAGE_ROOT } from '../../helpers/constants';
+import { BASE_URL } from '../../helpers/constants';
 import { Icon } from '../../components/Icon';
 import { IconType } from '../../types/IconTypes';
 import { Specification } from '../../types/Specification';
@@ -152,7 +152,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-details-page__wrapper">
             <section className="product-details-page__product">
               <img
-                src={`${PRODUCT_IMAGE_ROOT}${currentImage}`}
+                src={`${BASE_URL}/${currentImage}`}
                 alt="product"
                 className="product-details-page__main-img"
               />
@@ -167,7 +167,7 @@ export const ProductDetailsPage: React.FC = () => {
                       onClick={() => setCurrentImage(image)}
                     >
                       <img
-                        src={`${PRODUCT_IMAGE_ROOT}${image}`}
+                        src={`${BASE_URL}/${image}`}
                         alt=""
                         className={classNames('product-details-page__img', {
                           'product-details-page__img--active': (

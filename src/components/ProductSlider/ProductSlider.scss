@@ -5,7 +5,9 @@
     display: flex;
     flex-direction: column;
     gap: 24px;
+
     @include content-padding-inline;
+
     overflow: hidden;
   }
 

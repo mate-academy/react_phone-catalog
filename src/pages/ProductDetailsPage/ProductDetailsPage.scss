@@ -7,11 +7,13 @@
 
   &--loading-and-message {
     padding-top: 100px;
+
     @include content-padding-inline;
   }
 
   &__content {
     @include content-padding-inline;
+
     padding-top: 24px;
   }
 
@@ -35,6 +37,7 @@
 
   &__wrapper {
     @include page-grid;
+
     row-gap: 56px;
 
     @include on-tablet {
@@ -48,8 +51,9 @@
 
   &__product {
     grid-column: 1 / -1;
-    @include page-grid;
     justify-items: center;
+
+    @include page-grid;
   }
 
   &__main-img {

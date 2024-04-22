@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Icon } from '../Icon';
 import { IconType } from '../../types/IconTypes';
 import { CartItemType } from '../../types/CartItemType';
-import { PRODUCT_IMAGE_ROOT } from '../../helpers/constants';
+import { BASE_URL } from '../../helpers/constants';
 import { Colors } from '../../types/Colors';
 import { CartContext } from '../CartContextProvider';
 
@@ -81,7 +81,7 @@ export const CartItem: React.FC<Props> = ({ cartItem: { item, quantity } }) => {
           className="cart-item__link"
         >
           <img
-            src={`${PRODUCT_IMAGE_ROOT}${item.image}`}
+            src={`${BASE_URL}/${item.image}`}
             alt="product"
             className="cart-item__img"
           />

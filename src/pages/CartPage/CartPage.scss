@@ -18,6 +18,7 @@
     right: 0;
     opacity: 0;
     transition: all 0.5s;
+
     @include content-padding-inline;
 
     &--active {
@@ -41,6 +42,7 @@
 
   &__content {
     @include page-grid;
+
     row-gap: 32px;
   }
 

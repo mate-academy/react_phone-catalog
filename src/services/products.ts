@@ -1,9 +1,10 @@
 import { Product } from '../types/Product';
 import { Categories } from '../types/Categories';
 import { ProductDetails } from '../types/ProductDetails';
+import { BASE_URL } from '../helpers/constants';
 
 export function getProducts(): Promise<Product[]> {
-  return fetch('/_new/products.json')
+  return fetch(`${BASE_URL}/products.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Can not load...');
@@ -79,7 +80,7 @@ export function getProductById(id: string) {
 }
 
 export function getProductDetailsById(id: string): Promise<ProductDetails> {
-  return fetch(`/_new/products/${id}.json`)
+  return fetch(`${BASE_URL}/products/${id}.json`)
     .then(response => {
       if (!response.ok) {
         throw new Error('Can not load...');

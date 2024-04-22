@@ -33,7 +33,9 @@
   &__nav {
     transform: translateY(-80px);
     opacity: 0;
+
     @include content-padding-inline;
+
     transition: all 500ms ease 0.3s;
 
     &--active {
@@ -122,7 +124,7 @@
   &__search-container {
     display: flex;
     align-items: center;
-    box-shadow: -1px 0px 0px 0px #E2E6E9;
+    box-shadow: -1px 0 0 0 #E2E6E9;
     gap: 25px;
     padding-right: 25px;
   }

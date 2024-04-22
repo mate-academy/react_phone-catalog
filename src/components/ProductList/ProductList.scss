@@ -2,6 +2,7 @@
 
 .product-list {
   @include page-grid;
+
   row-gap: 40px;
   margin: 0 auto;
 
