@@ -1,7 +1,5 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
-import { CatalogContext } from '../../pages/CatalogContext';
 import { NotFoundPage } from '../../pages/NotFoundPage/NotFoundPage';
 import { getNumbers } from '../../utils/api';
 import { getSearchWith } from '../../utils/searchHelpers';
@@ -9,29 +7,35 @@ import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
 import React from 'react';
+import { TabAccess } from '../../types/tablets';
 
-export const PaginationPhone = () => {
-  const { phones } = useContext(CatalogContext);
+type Props = {
+  toPagination: TabAccess[];
+}
+
+export const Pagination: React.FC<Props> = ({ toPagination }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (phones === undefined) {
+  if (toPagination === undefined) {
     return <NotFoundPage />;
   }
 
+  console.log(toPagination)
+
   const perPage = searchParams.get('perPage') || '4';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? phones.length : perPage;
+  const itemsPerPage = perPage === 'all' ? toPagination.length : perPage;
 
   const total = () => {
     if (perPage === 'all') {
       setSearchParams({
         page: `${1}`.toString(),
-        perPage: `${phones.length}`.toString(),
+        perPage: `${toPagination.length}`.toString(),
       });
 
-      return phones.length;
+      return toPagination.length;
     } else {
-      return Math.ceil(phones.length / +itemsPerPage);
+      return Math.ceil(toPagination.length / +itemsPerPage);
     }
   };
 

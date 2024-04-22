@@ -1,6 +1,6 @@
 import { ChangeEvent, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import { PaginationPhone } from '../../components/Pagination/PaginationPhone';
+import { Pagination } from '../../components/Pagination/Pagination';
 import { TabAccess } from '../../types/tablets';
 import { SortByItem } from '../../helpers/sortBy';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
@@ -57,6 +57,8 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
   };
 
   const filtered = filteredPhones().slice(firstItemIndex, lastItemIndex);
+
+  const toPagination = filtered;
 
   return (
     <div className="productsPage">
@@ -117,7 +119,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
             ))}
           </ul>
         </div>
-        {showPagination ? null : <PaginationPhone />}
+        {showPagination ? null : <Pagination toPagination={toPagination}/>}
       </div>
     </div>
   );

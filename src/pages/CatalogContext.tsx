@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { Categories } from '../types/categories';
 import { Product } from '../types/phone';
-import { TabAccess } from '../types/tablets';
+// import { TabAccess } from '../types/tablets';
 
 type CatalogType = {
   products: Product[] | undefined;
   setProducts: React.Dispatch<React.SetStateAction<Product[] | undefined>>;
-  phones: TabAccess[];
-  setPhones: React.Dispatch<React.SetStateAction<TabAccess[]>>;
-  tablets: TabAccess[];
-  setTablets: React.Dispatch<React.SetStateAction<TabAccess[]>>;
-  accessories: TabAccess[];
-  setAccessories: React.Dispatch<React.SetStateAction<TabAccess[]>>;
+  // phones: TabAccess[];
+  // setPhones: React.Dispatch<React.SetStateAction<TabAccess[]>>;
+  // tablets: TabAccess[];
+  // setTablets: React.Dispatch<React.SetStateAction<TabAccess[]>>;
+  // accessories: TabAccess[];
+  // setAccessories: React.Dispatch<React.SetStateAction<TabAccess[]>>;
   loader: boolean;
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
@@ -22,12 +22,12 @@ type CatalogType = {
 export const CatalogContext = React.createContext<CatalogType>({
   products: [],
   setProducts: () => {},
-  phones: [],
-  setPhones: () => {},
-  tablets: [],
-  setTablets: () => {},
-  accessories: [],
-  setAccessories: () => {},
+  // phones: [],
+  // setPhones: () => {},
+  // tablets: [],
+  // setTablets: () => {},
+  // accessories: [],
+  // setAccessories: () => {},
   loader: false,
   setLoader: () => {},
   error: '',
@@ -152,18 +152,16 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     },
   ];
 
-  console.log(categories);
-
   const value = {
     products,
     setProducts,
     categories,
-    phones,
-    setPhones,
-    tablets,
-    setTablets,
-    accessories,
-    setAccessories,
+    // phones,
+    // setPhones,
+    // tablets,
+    // setTablets,
+    // accessories,
+    // setAccessories,
     loader,
     setLoader,
     error,
