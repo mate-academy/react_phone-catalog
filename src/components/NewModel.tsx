@@ -60,6 +60,19 @@ export const NewModel = () => {
   }, [translate]);
 
   useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
+
+  useEffect(() => {
     if (favoritePhones.trim() !== '') {
       if (prevFavoriteArr?.includes(favoritePhones)) {
         setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));

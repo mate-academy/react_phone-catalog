@@ -28,12 +28,26 @@ export const Cart = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
 
   const [productInCart, setProductInCart] = useState<Phones[] | undefined>();
-  
+ //
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
+  //
   const handleDeleteInCart = (deletElem: string) => {
     if (prevCartPhonesArr && prevCartPhonesArr.find(elem => elem.id.includes(deletElem))) {
       setPrevCartPhonesArr(prevCartPhonesArr.filter(elem => elem.id !== deletElem))
     }
   }
+  
 
   useEffect(() => {
     const result = getPhone?.filter(
@@ -67,15 +81,13 @@ export const Cart = () => {
   }
 
   const handleCountDown = (id: string) => {
-    
     const updatedCartPhones = prevCartPhonesArr?.map(elem => {
-        if (elem.id === id) {
-            return { ...elem, count: elem.count - 1 };
-        }
-      
-
-        return elem;
+      if (elem.id === id) {
+          return { ...elem, count: elem.count - 1 };
+      }
+      return elem;
     });
+
     if (updatedCartPhones) {
         setPrevCartPhonesArr(updatedCartPhones);
     }

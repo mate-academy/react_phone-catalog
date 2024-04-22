@@ -15,7 +15,7 @@ export const HotPrices = () => {
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
   const [price, setPrice] = useState<number>(0);
-  console.log(prevFavoriteArr)
+  // console.log(prevFavoriteArr)
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
@@ -79,6 +79,18 @@ export const HotPrices = () => {
     setPrice(0);
   }
 
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
 
   return !errorMessage ? (
     <section className="hot-prices__wrapper">

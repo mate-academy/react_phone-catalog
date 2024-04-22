@@ -6,6 +6,8 @@ import ArrowUp from '../img/arrow-up.svg';
 // import FavoriteAdded from '../img/favourites filled.svg';
 import filledFavoriteImage from '../img/favourites-filled.svg';
 import { Pagination } from './Pagination';
+import { getSearchWith } from '../components/until/Helper';
+// import { SearchLink } from '../components/SearchLink';
 
 // import cn from 'classnames';
 /* eslint-disable */
@@ -37,7 +39,7 @@ export const Phones = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   // const { currentPage, setCurrentPage } = useAppContext();
   const  { visibleElems } = useAppContext();
-  const { setCurrentPage } = useAppContext();
+  const { currentPage, setCurrentPage } = useAppContext();
 
   const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
@@ -117,6 +119,19 @@ export const Phones = () => {
   //   console.log(cartPhones);
   // }
   const [price, setPrice] = useState<number>(0);
+
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
   
   
   useEffect(() => {
@@ -147,11 +162,28 @@ export const Phones = () => {
     setFavoritePhones(''); 
   }, [favoritePhones, prevFavoriteArr]);
 
+  useEffect(() => {
+
+  }, [sortParam])
+
   errorMessage;
 
   const { setSelectedProduct } = useAppContext();
 
-  console.log(prevFavoriteArr);
+  console.log(visibleElems);
+
+  const currentParams = new URLSearchParams(window.location.search);
+
+  const paramsToUpdate = {
+    page: `${currentPage}`,
+    perPage: `${itemsOnPage !== 71 ? itemsOnPage : 'all'}`
+  };
+
+  if (itemsOnPage) {
+    const updatedSearch = getSearchWith(currentParams, paramsToUpdate);
+    const newUrl = `${window.location.pathname}?${updatedSearch}`;
+    window.history.pushState({ path: newUrl }, '', newUrl);
+  }
 
   return (
     <section className="phones__wrapper">

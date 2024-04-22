@@ -125,19 +125,31 @@ export const ProductPage = () => {
     setCartPhones('');
     setPrice(0);
     console.log(prevCartPhonesArr)
-}, [cartPhones, prevCartPhonesArr]);
+  }, [cartPhones, prevCartPhonesArr]);
 
-useEffect(() => {
-  if (favoritePhones.trim() !== "") {
-    if (prevFavoriteArr?.includes(favoritePhones)) {
-      setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));
-    } else {
-      setPrevFavoriteArr(prevFavoriteArr => (prevFavoriteArr ? [...prevFavoriteArr, favoritePhones] : [favoritePhones]));
+  useEffect(() => {
+    if (favoritePhones.trim() !== "") {
+      if (prevFavoriteArr?.includes(favoritePhones)) {
+        setPrevFavoriteArr(prevFavoriteArr => prevFavoriteArr?.filter(phone => phone !== favoritePhones));
+      } else {
+        setPrevFavoriteArr(prevFavoriteArr => (prevFavoriteArr ? [...prevFavoriteArr, favoritePhones] : [favoritePhones]));
+      }
+    }``
+    setFavoritePhones(''); 
+  }, [favoritePhones, prevFavoriteArr]);
+
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
     }
-  }``
-  setFavoritePhones(''); 
-}, [favoritePhones, prevFavoriteArr]);
+  }, [prevCartPhonesArr]);
 
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
 
   return (
     <section className="product__wrapper">
