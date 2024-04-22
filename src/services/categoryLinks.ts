@@ -1,10 +1,11 @@
+import { BASE_URL } from '../helpers/constants';
 import { Categories } from '../types/Categories';
 
 export const categoryLinks = [
   {
     name: 'Mobile phones',
     link: '/phones',
-    img: '_new/img/category-phones.png',
+    img: `${BASE_URL}/img/category-phones.png`,
     background: '#fcd9c1',
     type: Categories.phones,
   }, {

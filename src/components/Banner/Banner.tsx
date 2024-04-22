@@ -21,8 +21,8 @@ export const Banner: React.FC<Props> = ({ images }) => {
   const screenSize = useContext(ScreenSizeContext);
   const [visibleImage, setVisibleImage] = useState(0);
   const sliderWidth = 100 * images.length;
-  const [startX, setStartX] = useState(0);
-  const [endX, setEndX] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  // const [endX, setEndX] = useState(0);
 
   const slideToPrev = useCallback(() => {
     if (visibleImage === 0) {
@@ -48,27 +48,20 @@ export const Banner: React.FC<Props> = ({ images }) => {
     timerId.current = window.setTimeout(slideToNext, 5000);
   }, [visibleImage, slideToNext]);
 
-  const handleTouchStart = useCallback(
-    (event: React.TouchEvent<HTMLUListElement>) => {
-      setStartX(event.touches[0].clientX);
-    },
-    [],
-  );
+  const handleTouchStart = (event: React.TouchEvent<HTMLUListElement>) => {
+    setTouchStartX(event.touches[0].clientX);
+  };
 
-  const handleTouchMove = useCallback(
-    (event: React.TouchEvent<HTMLUListElement>) => {
-      setEndX(event.touches[0].clientX);
-    },
-    [],
-  );
+  const handleTouchEnd = (event: React.TouchEvent<HTMLUListElement>) => {
+    const touchEndX = event.changedTouches[0].clientX;
+    const difference = touchEndX - touchStartX;
 
-  const handleTouchEnd = useCallback(() => {
-    if (endX - startX > 50) {
+    if (difference > 50) {
       slideToPrev();
-    } else if (startX - endX > 50) {
+    } else if (difference < -50) {
       slideToNext();
     }
-  }, [startX, endX, slideToNext, slideToPrev]);
+  };
 
   return (
     <section className="banner">
@@ -90,7 +83,7 @@ export const Banner: React.FC<Props> = ({ images }) => {
               width: `${sliderWidth}%`,
             }}
             onTouchStart={handleTouchStart}
-            onTouchMove={handleTouchMove}
+            // onTouchMove={handleTouchMove}
             onTouchEnd={handleTouchEnd}
           >
             {images.map(({ name, path }, index) => (

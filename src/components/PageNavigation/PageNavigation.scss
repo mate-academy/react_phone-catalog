@@ -107,16 +107,21 @@
   }
 
   &__buttons {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
     opacity: 0;
     display: flex;
     transition: all 0.2s;
 
     @include on-tablet {
       opacity: 1;
+      position: relative;
     }
 
     &--active {
-      transition-delay: 0.5s;
+      transition-delay: 0.6s;
       opacity: 1;
     }
   }

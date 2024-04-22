@@ -1,5 +1,11 @@
 import classNames from 'classnames';
-import React, { useCallback, useMemo, useState } from 'react';
+import React, {
+  useCallback,
+  useEffect,
+  useMemo,
+  useRef,
+  useState,
+} from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
 import './Dropdown.scss';
 import { Icon } from '../Icon';
@@ -22,6 +28,7 @@ export const Dropdown: React.FC<Props> = ({
   searchName,
   defaultValue,
 }) => {
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const [isDropdownActive, setIsDropdownActive] = useState(false);
   const [searchParams] = useSearchParams();
   const selectedValue = searchParams.get(searchName);
@@ -36,8 +43,31 @@ export const Dropdown: React.FC<Props> = ({
     [],
   );
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (dropdownRef.current
+           && !dropdownRef.current.contains(event.target as Node)) {
+        setIsDropdownActive(false);
+      }
+    };
+
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && isDropdownActive) {
+        setIsDropdownActive(false);
+      }
+    };
+
+    document.addEventListener('click', handleClickOutside);
+    document.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [isDropdownActive]);
+
   return (
-    <div className="dropdown">
+    <div ref={dropdownRef} className="dropdown">
       {title && (
         <span className="dropdown__name">{title}</span>
       )}
@@ -46,7 +76,6 @@ export const Dropdown: React.FC<Props> = ({
         className="dropdown__trigger"
         type="button"
         onClick={onTriggerClick}
-        onBlur={() => setTimeout(() => setIsDropdownActive(false), 150)}
       >
         {selectedOption?.name || defaultValue}
 
@@ -71,6 +100,7 @@ export const Dropdown: React.FC<Props> = ({
               to={{
                 search: getSearchWith({ [searchName]: value }, searchParams),
               }}
+              onClick={() => setIsDropdownActive(false)}
               className="dropdown__link"
             >
               {name}
