@@ -27,8 +27,6 @@ export const Options: React.FC<Props> = ({
     useContext(ProductContext);
   const [isProductInfoLoading, setIsProductInfoLoading] = useState(false);
 
-  console.log(isProductInfoLoading);
-
   const location = useLocation();
   const {pathname} = location;
 
