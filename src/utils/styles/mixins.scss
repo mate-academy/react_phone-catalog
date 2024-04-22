@@ -1,0 +1,101 @@
+@mixin cancel-padding {
+  --no-padding: -16px;
+
+  margin-inline: var(--no-padding);
+
+  @include on-tablet {
+    --no-padding: -24px;
+  }
+}
+
+
+@mixin selected-tab($animation-name) {
+  content: "";
+
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  height: 3px;
+  background-color: $primary-color;
+
+  transform-origin: center;
+  animation: $animation-name .3s ease-in-out forwards;
+}
+
+@mixin on-hover-icon {
+  animation: icon-hover .3s ease-in-out forwards;
+}
+
+@keyframes icon-hover {
+  0% {
+    transform: scale(1);
+  }
+
+  75% {
+    transform: scale(1.25);
+  }
+
+  100% {
+    transform: scale(1.1);
+  }
+}
+
+@mixin text-type-full($fontSize, $lineHeight, $fontFamily, $color) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  line-height: $lineHeight;
+
+  color: $color;
+
+  text-decoration: none;
+}
+
+@mixin text-type($fontSize, $lineHeight) {
+  font-size: $fontSize;
+  line-height: $lineHeight;
+
+  text-decoration: none;
+}
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+};
+
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+};
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+
+  // might be 32px
+  grid-template-columns: repeat(var(--columns), 1fr);
+  gap: 16px;
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
