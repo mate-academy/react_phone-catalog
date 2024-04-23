@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.button-add {
+  border: none;
+  font-family: Mont, serif;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background-color: $accentColor;
+  color: $whiteColor;
+  border-radius: 8px;
+  font-size: 14px;
+
+  @include hover (box-shadow, $effectDuration);
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+  }
+
+  &__active {
+    background-color: $whiteColor;
+    border: 1px solid $elementsColor;
+    color: $accentColor;
+  }
+}
+

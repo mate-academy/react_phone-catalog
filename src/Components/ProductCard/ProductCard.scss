@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.product-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: $elementsColor 1px solid;
+  box-shadow: 0 2px 15px 0 #0000000d;
+  border-radius: 8px;
+  padding: 24px;
+  background-color: $whiteColor;
+
+  @include hover (border, $effectDuration);
+
+  &:hover {
+    border: 1px solid $secondaryColor;
+  }
+
+  &__img {
+    display: block;
+    height: 196px;
+    width: 100%;
+    object-fit: contain;
+    margin-block: 8px 24px;
+    margin-inline: auto;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__product-name {
+    font-family: Mont, serif;
+    line-height: 21px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__price-box {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 6px;
+
+    &--full-price {
+      font-family: Mont, serif;
+      text-decoration-line: line-through;
+      color: $secondaryColor;
+    }
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $elementsColor;
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__description:last-child {
+    margin-bottom: 16px;
+  }
+
+  &__description--title{
+    color: $secondaryColor;
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__description--value{
+    font-size: 12px;
+    line-height: 15px;
+  }
+
+  &__button-block {
+    display: flex;
+    gap: 8px;
+    height: 40px;
+    justify-content: space-between;
+    margin-top: 16px;
+  }
+
+  &__button-cart {
+    width: calc(100% - 40px);
+    height: 100%;
+  }
+
+  &__button-favorite {
+    width: 40px;
+  }
+}
