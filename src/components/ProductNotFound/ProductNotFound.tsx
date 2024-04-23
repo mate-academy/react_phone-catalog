@@ -1,9 +1,10 @@
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AccentBtn } from '../AccentBtn';
 import styles from './ProductNotFound.module.scss';
 
 export const ProductNotFound = () => {
   const navigate = useNavigate();
+  const { state } = useLocation();
 
   return (
     <div className={styles.pageNotFound}>
@@ -12,7 +13,10 @@ export const ProductNotFound = () => {
       </h2>
 
       <div className={styles.btn}>
-        <AccentBtn text="Back to catalog" onClick={() => navigate(-1)} />
+        <AccentBtn
+          text="Back to catalog"
+          onClick={() => navigate(state?.pathname || '/', { replace: true })}
+        />
       </div>
 
       <div className={styles.imgWrap}>
