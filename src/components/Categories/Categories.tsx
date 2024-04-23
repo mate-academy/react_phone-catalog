@@ -1,7 +1,27 @@
+import { useEffect, useState } from 'react';
 import './Categories.scss';
 import { NavLink } from 'react-router-dom';
+import { getAccessories, getPhones, getTablets } from '../../api/api';
 
 export const Categories = () => {
+  const [phonesQuantity, setPhonesQuantity] = useState(0);
+  const [tabletsQuantity, setTabletsQuantity] = useState(0);
+  const [accessoriesQuantity, setAccessoriesQuantity] = useState(0);
+
+  useEffect(() => {
+    getPhones.then(phones => {
+      setPhonesQuantity(phones.length);
+    });
+
+    getTablets.then(tablets => {
+      setTabletsQuantity(tablets.length);
+    });
+
+    getAccessories.then(accessories => {
+      setAccessoriesQuantity(accessories.length);
+    });
+  }, []);
+
   return (
     <div className="categories categories--margin-top">
       <div className="categories__container">
@@ -20,7 +40,7 @@ export const Categories = () => {
                 />
               </div>
               <p className="categories__name">Mobile phones</p>
-              <p className="categories__quantity">95 models</p>
+              <p className="categories__quantity">{`${phonesQuantity} models`}</p>
             </NavLink>
           </li>
           <li className="categories__item">
@@ -36,7 +56,7 @@ export const Categories = () => {
                 />
               </div>
               <p className="categories__name">Tablets</p>
-              <p className="categories__quantity">95 models</p>
+              <p className="categories__quantity">{`${tabletsQuantity} models`}</p>
             </NavLink>
           </li>
           <li className="categories__item">
@@ -52,7 +72,7 @@ export const Categories = () => {
                 />
               </div>
               <p className="categories__name">Accessories</p>
-              <p className="categories__quantity">95 models</p>
+              <p className="categories__quantity">{`${accessoriesQuantity} models`}</p>
             </NavLink>
           </li>
         </ul>

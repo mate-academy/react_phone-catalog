@@ -49,7 +49,7 @@ const cartSlice = createSlice({
         const quantity = state.quantities[state.cart[index].itemId];
 
         state.totalPrice -= state.cart[index].price * quantity;
-        delete state.quantities[state.cart[index].itemId]; // Видаляємо кількість товару
+        delete state.quantities[state.cart[index].itemId];
         state.cart.splice(index, 1);
         state.totalInCart -= quantity;
         localStorage.setItem('cart', JSON.stringify(state.cart));

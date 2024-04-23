@@ -18,6 +18,13 @@ export const Favorites = () => {
           ))}
         </div>
       </div>
+      {favorites.length === 0 && (
+        <img
+          src="img/product-not-found.png"
+          alt="Empty favorites"
+          className="favorites__empty"
+        />
+      )}
     </div>
   );
 };

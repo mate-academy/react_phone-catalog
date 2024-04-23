@@ -15,7 +15,7 @@
     height: 32px;
     flex-shrink: 0;
     border-radius: 48px;
-    border: 1px solid $stroke-color;
+    border: 1px solid $icons-placeholder-color;
 
     @include body-font;
 
@@ -27,6 +27,11 @@
       border-radius: 48px;
       background: $primary-color;
       color: $white-color;
+    }
+
+    &--disabled {
+      border: 1px solid $stroke-color;
+      pointer-events: none;
     }
   }
 }

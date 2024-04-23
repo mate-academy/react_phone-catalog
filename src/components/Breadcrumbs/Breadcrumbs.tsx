@@ -15,7 +15,10 @@ export const Breadcrumbs: React.FC<BreadcrumbsProps> = ({
       <NavLink to="/" className="breadcrumbs__home-icon" />
       <div className="breadcrumbs__arrow-icon"></div>
       {product ? (
-        <NavLink to={`/${category}`} className="breadcrumbs__category">
+        <NavLink
+          to={`/${category}`}
+          className="breadcrumbs__category breadcrumbs__category-link"
+        >
           {category}
         </NavLink>
       ) : (

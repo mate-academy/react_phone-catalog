@@ -3,11 +3,6 @@ import './Header.scss';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import cn from 'classnames';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  cn('top-bar__link', {
-    'is-active': isActive,
-  });
-
 export const Header = () => {
   const { pathname } = useLocation();
   const { totalInFavorites } = useAppSelector(state => state.favorites);
@@ -30,16 +25,34 @@ export const Header = () => {
             <img src="./img/logo.svg" alt="Logo" />
           </Link>
           <nav className="top-bar__links">
-            <NavLink to="/" className={getLinkClass}>
+            <NavLink
+              to="/"
+              className={cn('top-bar__link', { 'is-active': pathname === '/' })}
+            >
               Home
             </NavLink>
-            <NavLink to="/phones" className={getLinkClass}>
+            <NavLink
+              to="/phones"
+              className={cn('top-bar__link', {
+                'is-active': pathname === '/phones',
+              })}
+            >
               Phones
             </NavLink>
-            <NavLink to="/tablets" className={getLinkClass}>
+            <NavLink
+              to="/tablets"
+              className={cn('top-bar__link', {
+                'is-active': pathname === '/tablets',
+              })}
+            >
               Tablets
             </NavLink>
-            <NavLink to="/accessories" className={getLinkClass}>
+            <NavLink
+              to="/accessories"
+              className={cn('top-bar__link', {
+                'is-active': pathname === '/accessories',
+              })}
+            >
               Accessories
             </NavLink>
           </nav>

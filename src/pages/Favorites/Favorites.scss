@@ -25,4 +25,9 @@
     grid-gap: 40px 16px;
     justify-items: center;
   }
+
+  &__empty {
+    object-fit: contain;
+    width: 50%;
+  }
 }

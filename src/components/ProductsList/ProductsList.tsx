@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import { Pagination } from '../Pagination';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useSearchParams } from 'react-router-dom';
+import { sortProducts } from './utils';
 
 type ProductsListProps = {
   products: Product[];
@@ -46,21 +47,6 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   const handlePaginationChange = (page: number) => {
     setCurrentPage(page);
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
-  };
-
-  const sortProducts = (allProducts: Product[], sortType: string) => {
-    const sorted = [...allProducts];
-
-    switch (sortType) {
-      case 'newest':
-        return sorted.sort((a, b) => b.year - a.year);
-      case 'alphabetically':
-        return sorted.sort((a, b) => a.name.localeCompare(b.name));
-      case 'cheapest':
-        return sorted.sort((a, b) => a.price - b.price);
-      default:
-        return sorted;
-    }
   };
 
   const productsToShow = sortProducts(products, sortBy);

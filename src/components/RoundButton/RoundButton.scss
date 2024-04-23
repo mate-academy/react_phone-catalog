@@ -4,13 +4,18 @@
   border-radius: 50%;
   width: 40px;
   height: 40px;
-  border: 1px solid $stroke-color;
+  border: 1px solid $icons-placeholder-color;
   background-repeat: no-repeat;
   background-position: center;
   transition: border 0.3s ease;
 
   &:hover {
     border: 1px solid $primary-color;
+  }
+
+  &--disabled {
+    border: 1px solid $stroke-color;
+    pointer-events: none;
   }
 
   &--fav {

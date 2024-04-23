@@ -30,6 +30,10 @@
     font-weight: 600;
     text-decoration: none;
     text-transform: capitalize;
+
+    &-link {
+      color: $primary-color;
+    }
   }
 
   &__product {

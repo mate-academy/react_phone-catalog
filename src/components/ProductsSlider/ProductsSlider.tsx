@@ -50,12 +50,14 @@ export const ProductsSlider: React.FC<ProductsSliderProps> = ({
           <RoundButton
             buttonType={slideIndex === 0 ? 'left-disabled' : 'left'}
             onClick={previousSlide}
+            disabled={slideIndex === 0}
           />
           <RoundButton
             buttonType={
               slideIndex === products.length - 4 ? 'right-disabled' : 'right'
             }
             onClick={nextSlide}
+            disabled={slideIndex === products.length - 4}
           />
         </div>
       </div>
