@@ -1,0 +1,119 @@
+@import '../../styles/main';
+
+.cart-item {
+  @include on-mobile {
+    border: 1px solid $elementsColor;
+    background-color: $whiteColor;
+    border-radius: 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $secondaryColor;
+    }
+  }
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__first-block {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+  }
+
+  &__delete-button {
+    border: none;
+    background-color: $whiteColor;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../images/icons/close.png');
+    background-size: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    cursor: pointer;
+    align-items: center;
+  }
+
+  &__img {
+    display: block;
+    height: 66px;
+    width: 66px;
+    object-fit: contain;
+  }
+
+  &__title {
+    text-decoration: none;
+    color: $primaryColor;
+  }
+
+  &__second-block {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      width: 32%;
+    }
+  }
+
+  &__amount-block {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    align-items: center;
+  }
+
+  &__button-minus {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    background-color: $whiteColor;
+    border-radius: 50%;
+    background-image: url('../../images/icons/minus.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    cursor: pointer;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $secondaryColor;
+    }
+  }
+
+  &__button-plus {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    background-color: $whiteColor;
+    border-radius: 50%;
+    background-image: url('../../images/icons/plus.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    cursor: pointer;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $secondaryColor;
+    }
+  }
+
+  &__sum {
+    font-family: Mont-Bold, serif;
+    font-size: 22px;
+    line-height: 30px;
+  }
+}

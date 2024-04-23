@@ -1,0 +1,67 @@
+@import '../../styles/main';
+
+.photo-slider {
+  &__active-photo {
+    @include on-mobile {
+      grid-column: 1 / -1;
+      width: 100%;
+      aspect-ratio: 1;
+      object-fit: contain;
+      margin-bottom: 16px;
+    }
+
+    @include on-tablet {
+      grid-row: 4 / 9;
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__images {
+    @include on-mobile {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 40px;
+      grid-column: 1 / -2;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      grid-column: 1 / 2;
+      grid-row: 4 / 9;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      gap: 16px;
+    }
+  }
+
+  &__image {
+    @include on-mobile {
+      width: 50px;
+      aspect-ratio: 1;
+      object-fit: contain;
+      padding: 4px;
+      border: 1px solid $elementsColor;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &:hover {
+      border: 1px solid $iconsColor;
+    }
+
+    &--active {
+      border: 1px solid $primaryColor;
+    }
+  }
+}
+

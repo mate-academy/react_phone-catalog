@@ -1,0 +1,122 @@
+@import '../../styles/main';
+
+.footer {
+  margin-top: auto;
+  background-color: $whiteColor;
+
+  &__line {
+    border-top: $iconsColor 1px solid;
+    width: 100%;
+    margin-inline: auto;
+  }
+
+  &__container {
+    @include content-padding-inline;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      margin-block: 34px;
+      gap: 34px;
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+
+      width: 100%;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    margin: 0;
+    width: 90px;
+    height: 34px;
+    background-image: url("../../images/icons/logo_phone_catalog.png");
+    background-size: 90px 30px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__logo-arm {
+    width: 12px;
+    height: 16px;
+    background-size: 12px 16px;
+    left: 44px;
+    top: 0;
+  }
+
+  &__contant-block {
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 12px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+
+    }
+  }
+
+  &__link {
+    @include on-mobile {
+      display: block;
+      text-decoration: none;
+      color: $secondaryColor;
+      align-items: center;
+      font-family: Mont-Bold, serif;
+      font-size: 12px;
+      line-height: 12px;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+    }
+
+
+    @include hover (color, $effectDuration);
+
+    &:hover {
+      color: $primaryColor;
+    }
+
+  }
+
+  &__button-top {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+  &__button-top-text {
+    font-size: 12px;
+    color: $secondaryColor;
+    line-height: 32px;
+  }
+
+  &__button-top-link {
+    @include on-mobile {
+      display: block;
+      width: 32px;
+      height: 32px;
+      border: 1px $iconsColor solid;
+      border-radius: 50%;
+      background-color: $whiteColor;
+      background-image: url('../../images/icons/arrow-up.png');
+      background-size: 16px;
+      background-position: center;
+      background-repeat: no-repeat;
+      cursor: pointer;
+    }
+
+    &:hover {
+      border: 1px $primaryColor solid;
+    }
+  }
+}
