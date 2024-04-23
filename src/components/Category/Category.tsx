@@ -22,7 +22,7 @@ export const Category: React.FC<Props> = ({
   },
 }) => {
   const { ref, inView } = useInView({
-    threshold: 1,
+    threshold: 0,
     triggerOnce: true,
   });
   const [quantity, setQuantity] = useState(0);
