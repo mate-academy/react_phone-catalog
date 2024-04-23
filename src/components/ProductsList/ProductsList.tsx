@@ -9,6 +9,7 @@ import { ProductCard } from '../ProductCard';
 import { SortType } from '../../types/SortType';
 import { sortProducts } from '../../helpers/sortProducts';
 import { Pagination } from '../Pagination';
+import { ProductNotFound } from '../ProductNotFound';
 
 type Props = {
   products: ProductInfo[];
@@ -26,37 +27,44 @@ export const ProductsList: React.FC<Props> = ({
   const sort = searchParams.get('sortBy') || SortType.newest;
   const onPage = searchParams.get('onPage') || '16';
   const page = searchParams.get('page') || '1';
+  const query = searchParams.get('query') || '';
 
   const cardWidth = 'auto';
 
   const perPage = onPage === 'all' ? products.length : +onPage;
 
-  // const preparedProducts = onPage === 'all'
-  // ? sortProducts(sort, products)
-  // : sortProducts(sort, products).slice(
-  //     (+page - 1) * perPage,
-  //     +page * perPage,
-  //   );
+  const filteredProducts = products.filter(product =>
+    product.name.toLowerCase().includes(query.toLowerCase()),
+  );
 
-  const preparedProducts = sortProducts(sort, products).slice(
+  const preparedProducts = sortProducts(sort, filteredProducts).slice(
     (+page - 1) * perPage,
     +page * perPage,
   );
 
+  const hasFilteredProducts = filteredProducts.length > 0;
+  const hasPagination =
+    showPagination && hasFilteredProducts && onPage !== 'all';
+
   return (
     <>
-      <section className={styles.products}>
-        {preparedProducts.map(product => (
-          <ProductCard
-            key={product.id}
-            product={product}
-            type={'Hot prices'}
-            cardWidth={cardWidth}
-          />
-        ))}
-      </section>
+      {hasFilteredProducts ? (
+        <section className={styles.products}>
+          {preparedProducts.map(product => (
+            <ProductCard
+              key={product.id}
+              product={product}
+              type={'Hot prices'}
+              cardWidth={cardWidth}
+            />
+          ))}
+        </section>
+      ) : (
+        // Если нет отфильтрованных продуктов, отображаем сообщение об ошибке
+        <ProductNotFound />
+      )}
 
-      {showPagination && onPage !== 'all' && !!products.length && (
+      {hasPagination && (
         <Pagination
           total={products.length}
           perPage={perPage}

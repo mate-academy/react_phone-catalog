@@ -57,6 +57,8 @@
 .productImg {
   max-height: 100%;
   object-fit: contain;
+  margin-inline: auto;
+  display: block;
 
   @include hover(transform, scale(1.01));
 }
@@ -103,6 +105,7 @@
 
 .productInfo {
   display: flex;
+  -webkit-justify-content: space-between;
   justify-content: space-between;
   line-height: 15.34px;
 }

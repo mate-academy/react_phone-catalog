@@ -30,7 +30,6 @@ export const ProductCategories: React.FC<Props> = ({
         {categories.map(category => (
           <Link
             to={category.link}
-            // onClick={scrollToTop}
             key={category.name}
             className={styles.category}
           >

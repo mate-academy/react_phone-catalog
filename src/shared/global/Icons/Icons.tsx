@@ -16,7 +16,8 @@ export type IconType =
   | 'home'
   | 'minus'
   | 'minusDis'
-  | 'plus';
+  | 'plus'
+  | 'search';
 
 interface BaseIconProps {
   type: IconType;
@@ -65,6 +66,7 @@ const HomeIcon = () => <BaseIcon type="home" />;
 const MinusIcon = () => <BaseIcon type="minus" />;
 const MinusDisIcon = () => <BaseIcon type="minusDis" />;
 const PlusIcon = () => <BaseIcon type="plus" />;
+const SearchIcon = () => <BaseIcon type="search" />;
 
 const ArrowRightIcon = () => <BaseIcon type="arrowRight" />;
 const ArrowLeftIcon = () => <BaseIcon type="arrowLeft" />;
@@ -88,4 +90,5 @@ export const icons: { [key in IconType]: JSX.Element } = {
   minus: <MinusIcon />,
   minusDis: <MinusDisIcon />,
   plus: <PlusIcon />,
+  search: <SearchIcon />,
 };

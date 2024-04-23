@@ -7,6 +7,8 @@ export const menuItems = [
   { url: 'accessories', text: 'accessories' },
 ];
 
+export const allowedPaths = ['/phones', '/tablets', '/accessories'];
+
 export const footerLinks = [
   {
     url: 'https://github.com/oshapkun',
@@ -61,7 +63,9 @@ export const colors = [
   { name: 'rosegold', value: '#fcd7d2' },
   { name: 'spacegray', value: '#636160' },
   { name: 'space gray', value: '#636160' },
+  { name: 'graphite', value: '#636160' },
   { name: 'midnightgreen', value: '#607064' },
   { name: 'coral', value: '#fa7878' },
   { name: 'sky blue', value: '#cce6ff' },
+  { name: 'sierrablue', value: '#cce6ff' },
 ];

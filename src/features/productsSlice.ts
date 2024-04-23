@@ -9,6 +9,7 @@ export type ProductsState = {
   accessories: ProductInfo[];
   loading: boolean;
   error: boolean;
+  query: string;
 };
 
 const initialState: ProductsState = {
@@ -17,6 +18,7 @@ const initialState: ProductsState = {
   accessories: [],
   loading: false,
   error: false,
+  query: '',
 };
 
 export const fetchProducts = createAsyncThunk(
@@ -33,7 +35,11 @@ export const fetchProducts = createAsyncThunk(
 const productsSlice = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    setQuery: (state, action) => {
+      state.query = action.payload;
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(fetchProducts.pending, state => {
@@ -52,4 +58,5 @@ const productsSlice = createSlice({
   },
 });
 
+export const { setQuery } = productsSlice.actions;
 export default productsSlice.reducer;

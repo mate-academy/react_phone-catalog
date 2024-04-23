@@ -1,0 +1,30 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+
+.searchBar {
+  display: flex;
+  height: 48px;
+  z-index: 5;
+  position: relative;
+}
+
+.search {
+  box-sizing: border-box;
+  padding: 0;
+  padding-left: 10px;
+  border: none;
+  border-left: 1px solid $elements-border-color;
+  font-family: $font-family-regular;
+
+
+  &:focus {
+    outline: 1px solid $main-text-color;
+  }
+}
+
+.btnClose {
+  width: 16px;
+  align-self: center;
+  cursor: pointer;
+  position: absolute;
+  right: 5px;
+}

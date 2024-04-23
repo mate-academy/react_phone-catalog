@@ -26,8 +26,6 @@ export const ProductSlider: React.FC<Props> = ({
   const cardsToMove = 1;
   const gap = 16;
 
-  const MemoizedProductCard = React.memo(ProductCard);
-
   useEffect(() => {
     const checkWidth = () => {
       const screenWidth = window.innerWidth;
@@ -51,12 +49,6 @@ export const ProductSlider: React.FC<Props> = ({
       window.removeEventListener('resize', checkWidth);
     };
   }, []);
-
-  useEffect(() => {
-    const maxStartIndex = products.length - cardsInView;
-
-    setStartIndex(Math.min(startIndex, maxStartIndex));
-  }, [cardsInView, products, startIndex]);
 
   const handlePrevClick = () => {
     const newStartIndex = startIndex - cardsToMove;
@@ -116,7 +108,7 @@ export const ProductSlider: React.FC<Props> = ({
       <div className={styles.productsWrap}>
         <div className={styles.products} style={carouselListStyles}>
           {products.map(product => (
-            <MemoizedProductCard
+            <ProductCard
               key={product.id}
               product={product}
               type={type}

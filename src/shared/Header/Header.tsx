@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
@@ -6,18 +6,25 @@ import classNames from 'classnames';
 import { AsideMenu } from './components/AsideMenu';
 import { icons } from '../global/Icons';
 import { Navbar } from '../../components/Navbar';
-import { menuItems } from '../../helpers/constArrs';
+import { allowedPaths, menuItems } from '../../helpers/constArrs';
 import { useAppSelector } from '../../app/hook';
+import { SearchBar } from './components/SearchBar';
 
 export const Header = () => {
   const { favourites } = useAppSelector(state => state.favourites);
   const { cartItem } = useAppSelector(state => state.cartItems);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
+  const location = useLocation();
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.iconLink, {
       [styles.active]: isActive,
     });
+
+  const isSearchVisible = () => {
+    return allowedPaths.includes(location.pathname);
+  };
 
   return (
     <header className={styles.header}>
@@ -32,6 +39,8 @@ export const Header = () => {
       </div>
 
       <div className={styles.headerRight}>
+        {isSearchVisible() && <SearchBar />}
+
         <div className={styles.iconTabl}>
           <NavLink
             to="favourites"
@@ -58,7 +67,6 @@ export const Header = () => {
 
         <button
           type="button"
-          aria-label="side-menu"
           onClick={() => setIsMenuOpen(true)}
           className={classNames(styles.iconLink, styles.iconMob)}
         >

@@ -1,13 +1,15 @@
 import styles from './CartPage.module.scss';
 import { BackBtn } from '../../components/BackBtn/BackBtn';
-import { CartItem } from '../../components/CartItem';
+import { CartItem } from './components/CartItem';
 import { AccentBtn } from '../../components/AccentBtn';
 import { useAppSelector } from '../../app/hook';
 import { ErrorEmptyCart } from '../../components/Errors';
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
+import { ModalCart } from './components/ModalCart';
 
 export const CartPage = () => {
   const { cartItem } = useAppSelector(state => state.cartItems);
+  const [showModal, setShowModal] = useState(false);
 
   const totalPrice = useMemo(() => {
     return cartItem.reduce(
@@ -44,11 +46,13 @@ export const CartPage = () => {
             <span className={styles.cartDivider}></span>
 
             <span className={styles.cartBtn}>
-              <AccentBtn text="Checkout" onClick={() => {}} />
+              <AccentBtn text="Checkout" onClick={() => setShowModal(true)} />
             </span>
           </div>
         </div>
       )}
+
+      {showModal && <ModalCart setShowModal={setShowModal} />}
     </div>
   );
 };

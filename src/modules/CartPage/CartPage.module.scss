@@ -2,6 +2,8 @@
 @use '../../shared/global/GlobalStyles/utils/vars' as *;
 
 .cart {
+  position: relative;
+
   @include content-padding-inline;
 
   padding-block: 24px 64px;

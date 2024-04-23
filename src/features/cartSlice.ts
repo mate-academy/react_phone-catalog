@@ -36,6 +36,10 @@ const cartSlice = createSlice({
 
       setLocalStorageData(key, state.cartItem);
     },
+    clearCart: state => {
+      state.cartItem = [];
+      setLocalStorageData(key, []);
+    },
     increase: (state, action) => {
       state.cartItem.forEach(item => {
         if (item.id === action.payload) {
@@ -61,6 +65,6 @@ const cartSlice = createSlice({
   },
 });
 
-export const { addToCart, deleteFromCart, increase, decrease } =
+export const { addToCart, deleteFromCart, clearCart, increase, decrease } =
   cartSlice.actions;
 export default cartSlice.reducer;

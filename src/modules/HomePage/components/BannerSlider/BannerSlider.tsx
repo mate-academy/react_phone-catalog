@@ -12,6 +12,8 @@ import { icons } from '../../../../shared/global/Icons';
 export const BannerSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);
   const [screenSize, setScreenSize] = useState('');
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
 
   const navigate = useNavigate();
 
@@ -61,14 +63,34 @@ export const BannerSlider = () => {
   };
 
   useEffect(() => {
-    setInterval(() => {
+    const intervalId = setTimeout(() => {
       updateIndex(activeIndex + 1);
     }, 5000);
+
+    return () => {
+      clearTimeout(intervalId);
+    };
   }, [activeIndex]);
 
   const getSlidesWrapperStyleTranslateX = () => ({
     transform: `translateX(${-(activeIndex * 100)}%)`,
   });
+
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEndX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX - touchEndX > 50) {
+      updateIndex(activeIndex + 1);
+    } else if (touchEndX - touchStartX > 50) {
+      updateIndex(activeIndex - 1);
+    }
+  };
 
   return (
     <section className={styles.bannerSlider}>
@@ -76,6 +98,9 @@ export const BannerSlider = () => {
         <div
           className={styles.sliderWrapper}
           style={getSlidesWrapperStyleTranslateX()}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
         >
           {bannerImages.slice(0, 3).map(({ src, alt, link }, index) => (
             <img
@@ -102,6 +127,9 @@ export const BannerSlider = () => {
             <div
               className={styles.sliderWrapper}
               style={getSlidesWrapperStyleTranslateX()}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
             >
               {bannerImages
                 .slice(

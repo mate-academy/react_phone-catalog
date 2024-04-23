@@ -1,11 +1,15 @@
 import React from 'react';
 import styles from './CartItem.module.scss';
-import { CartItemType } from '../../types/CartItemType';
-import { icons } from '../../shared/global/Icons';
+import { CartItemType } from '../../../../types/CartItemType';
+import { icons } from '../../../../shared/global/Icons';
 import { Link } from 'react-router-dom';
-import { RoundedArrow } from '../RondedArrowBtn';
-import { useAppDispatch } from '../../app/hook';
-import { decrease, deleteFromCart, increase } from '../../features/cartSlice';
+import { RoundedArrow } from '../../../../components/RondedArrowBtn';
+import { useAppDispatch } from '../../../../app/hook';
+import {
+  decrease,
+  deleteFromCart,
+  increase,
+} from '../../../../features/cartSlice';
 
 type Props = {
   cartItem: CartItemType;
@@ -39,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           className={styles.cartItemImgWrap}
         >
           <img
-            src={`/${product.images[0]}`}
+            src={`${product.images[0]}`}
             alt={product.namespaceId}
             className={styles.cartItemImg}
           />
