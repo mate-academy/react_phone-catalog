@@ -36,6 +36,11 @@ export const TopBar = () => {
     [screenSize, isSearchBarOpen],
   );
 
+  const handleMenuClick = () => {
+    window.scrollTo({ top: 0 });
+    setIsMenuOpen(!isMenuOpen);
+  };
+
   return (
     <div className={classNames('top-bar', {
       'top-bar--active': isMenuOpen && screenSize === ScreenType.isMobile,
@@ -74,7 +79,7 @@ export const TopBar = () => {
                   && screenSize === ScreenType.isMobile,
               })}
               aria-label="open or close menu"
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              onClick={handleMenuClick}
             >
               <Icon iconType={IconType.menu} />
             </button>

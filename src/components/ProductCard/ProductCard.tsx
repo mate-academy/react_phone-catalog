@@ -1,6 +1,7 @@
 import './ProductCard.scss';
 import React, { useCallback, useContext, useMemo } from 'react';
 import classNames from 'classnames';
+import { useInView } from 'react-intersection-observer';
 import { Link, useLocation } from 'react-router-dom';
 import { Product } from '../../types/Product';
 import { Icon } from '../Icon';
@@ -19,6 +20,10 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({
   product,
 }) => {
+  const { ref, inView } = useInView({
+    threshold: 0,
+    triggerOnce: true,
+  });
   const { pathname } = useLocation();
   const { favourites, toggleFavourite } = useContext(FavouritesContext);
 
@@ -65,6 +70,7 @@ export const ProductCard: React.FC<Props> = ({
 
   return (
     <li
+      ref={ref}
       className="product-card"
       data-cy="cardsContainer"
       style={{ width: productCardWidth }}
@@ -74,7 +80,11 @@ export const ProductCard: React.FC<Props> = ({
         state={pathname}
         className="product-card__content"
       >
-        <img src={`${BASE_URL}/${image}`} alt="" className="product-card__img" />
+        {inView ? (
+          <img src={`${BASE_URL}/${image}`} alt="" className="product-card__img" />
+        ) : (
+          <div className="skeleton product-card__skeleton" />
+        )}
 
         <h4 className="product-card__name">
           {name}

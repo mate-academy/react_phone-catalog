@@ -1,5 +1,6 @@
 import './App.scss';
 import { useEffect } from 'react';
+import { useInView } from 'react-intersection-observer';
 import { Outlet, useLocation } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import {
@@ -15,6 +16,9 @@ import { QuerySearchContextProvider } from './components/QuerySearchContext';
 
 export const App = () => {
   const { pathname } = useLocation();
+  const { ref, inView } = useInView({
+    threshold: 0,
+  });
 
   useEffect(() => {
     window.scrollTo({ top: 0 });
@@ -27,7 +31,7 @@ export const App = () => {
           <FavouritesContextProvider>
             <CartContextProvider>
               <div className="app">
-                <header className="header">
+                <header ref={ref} className="header">
                   <TopBar />
                 </header>
 
@@ -36,7 +40,7 @@ export const App = () => {
                     <Outlet />
                   </div>
                 </main>
-                <Footer />
+                <Footer hasScroll={!inView} />
               </div>
             </CartContextProvider>
           </FavouritesContextProvider>

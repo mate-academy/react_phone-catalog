@@ -1,5 +1,6 @@
 import React, {
   useCallback,
+  useContext,
   useEffect,
   useMemo,
   useRef,
@@ -17,6 +18,7 @@ import {
 } from '../../helpers/constants';
 import { Colors } from '../../types/Colors';
 import { Loader } from '../Loader';
+import { ScreenSizeContext, ScreenType } from '../ScreenSizeProvider';
 
 interface Props {
   products: Product[];
@@ -39,6 +41,7 @@ export const ProductSlider: React.FC<Props> = ({
   const maxPosition = useMemo(() => {
     return productsListWidth - productsWrapperWidth;
   }, [productsListWidth, productsWrapperWidth]);
+  const screenSize = useContext(ScreenSizeContext);
 
   const positions = useMemo(() => {
     const result = [
@@ -82,16 +85,25 @@ export const ProductSlider: React.FC<Props> = ({
   });
 
   const moveToPrev = useCallback(() => {
-    if (positionIndex > 0) {
+    if (screenSize === ScreenType.isDesktop) {
+      const newPositionIndex = positionIndex > 3 ? positionIndex - 4 : 0;
+
+      setPositionIndex(newPositionIndex);
+    } else if (positionIndex > 0) {
       setPositionIndex(prevPos => prevPos - 1);
     }
-  }, [positionIndex]);
+  }, [positionIndex, screenSize]);
 
   const moveToNext = useCallback(() => {
-    if (positionIndex < positions.length - 1) {
+    if (screenSize === ScreenType.isDesktop) {
+      const newPositionIndex = positionIndex < positions.length - 4
+        ? positionIndex + 4 : positions.length - 1;
+
+      setPositionIndex(newPositionIndex);
+    } else if (positionIndex < positions.length - 1) {
       setPositionIndex(prevPos => prevPos + 1);
     }
-  }, [positionIndex, positions]);
+  }, [positionIndex, positions, screenSize]);
 
   const handleTouchStart = useCallback(
     (event: React.TouchEvent) => {
