@@ -17,7 +17,7 @@ export const ProductNotFound = () => {
 
       <div className={styles.imgWrap}>
         <img
-          src="/img/product-not-found.png"
+          src="img/product-not-found.png"
           alt="page-not-found"
           className={styles.img}
         />
