@@ -1,4 +1,9 @@
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
   @include cancel-padding;
 
   margin-top: 64px;

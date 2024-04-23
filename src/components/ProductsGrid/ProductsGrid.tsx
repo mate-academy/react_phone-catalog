@@ -1,5 +1,6 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/indent */
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -22,6 +23,14 @@ export const ProductsGrid: React.FC<Props> = ({
 }) => {
   const [searchText, setSearchText] = useState('');
   const [searchParams] = useSearchParams();
+
+  const scrollRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (scrollRef.current) {
+      scrollRef.current.scrollTo(0, 0);
+    }
+  }, [products]);
 
   const handleSearchInputChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -75,14 +84,20 @@ export const ProductsGrid: React.FC<Props> = ({
             product.name.toLowerCase().includes(searchText.toLowerCase()),
           );
 
-    return getPaginated(getSorted()).filter(product =>
+    const sortedProducts = getSorted().filter(product =>
       filteredProducts.includes(product),
     );
+
+    return getPaginated(sortedProducts);
   }, [getPaginated, getSorted, products, searchText]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
+
+  useEffect(() => {
+    setSearchText('');
+  }, [searchParams.get('page')]);
 
   const disableArrows = (way: 'right' | 'left') => {
     return cn(`arrow arrow--${way}`, {
@@ -91,7 +106,7 @@ export const ProductsGrid: React.FC<Props> = ({
   };
 
   return (
-    <section className="products">
+    <section ref={scrollRef} className="products">
       <div className="products__path">
         <Link to="/" className="products__home home-icon" />
 
