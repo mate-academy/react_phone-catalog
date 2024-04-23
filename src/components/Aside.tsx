@@ -2,14 +2,16 @@ import { NavItem } from './NavItem';
 import { Header } from './Header';
 import { useDashboard } from '../hooks/useShoppingDashboard';
 import { Navigation } from '../components/Navigation';
+import { forwardRef } from 'react';
 
-export const Aside = () => {
+export const Aside = forwardRef<HTMLElement>((_, ref) => {
   const { dashboardItems } = useDashboard();
 
   return (
     <aside
       className="fixed inset-0 z-10 flex flex-col
         justify-between bg-white"
+      ref={ref}
     >
       <div className="flex flex-col gap-6">
         <Header className="static" />
@@ -43,4 +45,6 @@ export const Aside = () => {
       </div>
     </aside>
   );
-};
+});
+
+Aside.displayName = 'Aside';

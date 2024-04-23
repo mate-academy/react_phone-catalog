@@ -92,7 +92,7 @@ export const ProductCard: React.FC<Props> = ({
       <div className="flex h-10 gap-2">
         <ButtonCard
           className={twMerge(
-            'h-full w-full',
+            'h-full w-full transition-all duration-300',
             basket.some(item => item.id === itemId) &&
               'border border-elements bg-white text-green',
           )}
