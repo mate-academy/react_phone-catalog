@@ -66,7 +66,6 @@ export const ProductSlider: React.FC<Props> = ({
   );
 
   const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
 
   useEffect(() => {
     const handleWrapperResize = () => {
@@ -111,19 +110,16 @@ export const ProductSlider: React.FC<Props> = ({
     }, [],
   );
 
-  const handleTouchMove = useCallback(
-    (event: React.TouchEvent) => {
-      setTouchEnd(event.touches[0].clientX);
-    }, [],
-  );
+  const handleTouchEnd = useCallback((event: React.TouchEvent) => {
+    const touchEnd = event.changedTouches[0].clientX;
+    const difference = touchEnd - touchStart;
 
-  const handleTouchEnd = useCallback(() => {
-    if (touchEnd - touchStart > 50) {
+    if (difference > 50) {
       moveToPrev();
-    } else if (touchStart - touchEnd > 50) {
+    } else if (difference < -50) {
       moveToNext();
     }
-  }, [touchStart, touchEnd, moveToNext, moveToPrev]);
+  }, [touchStart, moveToNext, moveToPrev]);
 
   const isLeftButtonDisabled = useMemo(
     () => position === positions[0],
@@ -198,7 +194,6 @@ export const ProductSlider: React.FC<Props> = ({
           ref={productsWrapper}
           className="product-slider__wrapper"
           onTouchStart={handleTouchStart}
-          onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
         >
           <ul

@@ -22,7 +22,6 @@ export const Banner: React.FC<Props> = ({ images }) => {
   const [visibleImage, setVisibleImage] = useState(0);
   const sliderWidth = 100 * images.length;
   const [touchStartX, setTouchStartX] = useState(0);
-  // const [endX, setEndX] = useState(0);
 
   const slideToPrev = useCallback(() => {
     if (visibleImage === 0) {
