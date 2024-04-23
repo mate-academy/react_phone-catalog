@@ -89,7 +89,6 @@
         width: 176px;
       }
     }
-
   }
 
   &__option {
@@ -112,12 +111,17 @@
   background-color: $bg-color;
 }
 
-.dropdown-visible {
-  animation: slide-down .5s ease-in-out forwards;
-}
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(0);
+  }
 
-.dropdown-on-focus {
-  border-color: $primary-color;
+  to {
+    opacity: 0;
+    display: none;
+    transform: translateY(-25%);
+  }
 }
 
 @keyframes slide-down {
@@ -135,15 +139,10 @@
   }
 }
 
-@keyframes slide-up {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
+.dropdown-visible {
+  animation: slide-down .5s ease-in-out forwards;
+}
 
-  to {
-    opacity: 0;
-    display: block;
-    transform: translateY(-25%);
-  }
+.dropdown-on-focus {
+  border-color: $primary-color;
 }

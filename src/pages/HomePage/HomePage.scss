@@ -52,7 +52,7 @@
     width: 100vw;
     height: 100vw;
 
-    animation: bannerSlideOut .5s ease-in-out forwards;
+    animation: banner-slide-out .5s ease-in-out forwards;
 
     @include on-tablet {
       margin: 0;
@@ -101,7 +101,7 @@
 
     position: absolute;
     bottom: -18px;
-    left: calc(50% - var(--position)); // to position them all in the center (approximate)
+    left: calc(50% - var(--position));
 
     display: flex;
     gap: 9px;
@@ -225,15 +225,15 @@
     }
 
     &--phones {
-      background-image: url(../../../public/img/category-phones.png);
+      background-image: url(../../../src/img/categories/category--phones.png);
     }
 
     &--tablets {
-      background-image: url(../../../public/img/category-tablets.png);
+      background-image: url(../../../src/img/categories/category--tablets.png);
     }
 
     &--accessories {
-      background-image: url(../../../public/img/category-accessories.png);
+      background-image: url(../../../src/img/categories/category--accessories.png);
     }
   }
 
@@ -272,7 +272,7 @@
 @keyframes banner-slide-in-right {
   from {
     transform: translateX(35%);
-    opacity: .7;
+    opacity: 0;
     visibility: hidden;
   }
 
@@ -286,7 +286,7 @@
 @keyframes banner-slide-in-left {
   from {
     transform: translateX(-35%);
-    opacity: .7;
+    opacity: 0;
     visibility: hidden;
   }
 

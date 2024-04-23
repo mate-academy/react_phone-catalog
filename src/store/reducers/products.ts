@@ -51,9 +51,7 @@ const productsSlice = createSlice({
     },
 
     removeFromCart: (state, action: PayloadAction<string>) => {
-      state.cart = state.cart.filter(
-        favorite => favorite.id !== action.payload,
-      );
+      state.cart = state.cart.filter(cart => cart.id !== action.payload);
     },
   },
 });

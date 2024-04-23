@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useMemo } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 
 import './App.scss';
@@ -11,30 +12,27 @@ import {
   transformToUpperCase,
 } from './utils/helpers/helpers';
 import { actions as viewportActions } from './store/reducers/viewport';
+
 import { Category } from './types/Category';
 import { Product } from './types/Product';
-import { Footer } from './components/Footer';
 import { NavBar } from './components/Navbar';
-
-import { CartPage } from './pages/CartPage';
 import { HomePage } from './pages/HomePage';
-import { NotFoundPage } from './pages/PageNotFound';
-import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { ProductsGrid } from './components/ProductsGrid';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { CartPage } from './pages/CartPage';
+import { NotFoundPage } from './pages/PageNotFound';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const dispatch = useAppDispatch();
-  const { products } = useAppSelector(state => state.products);
+  const { products, favorites, cart } = useAppSelector(state => state.products);
   const categories: Category[] = ['phones', 'tablets', 'accessories'];
 
   /* responsiveness start */
 
-  const setViewportWidth = useCallback(
-    (value: number) => {
-      dispatch(viewportActions.setViewportWidth(value));
-    },
-    [dispatch],
-  );
+  const setViewportWidth = (value: number) => {
+    dispatch(viewportActions.setViewportWidth(value));
+  };
 
   useEffect(() => {
     const handleResize = () => setViewportWidth(window.innerWidth);
@@ -42,7 +40,7 @@ export const App = () => {
     window.addEventListener('resize', handleResize);
 
     return () => window.removeEventListener('resize', handleResize);
-  }, [setViewportWidth]);
+  }, []);
 
   /* responsiveness end */
 
@@ -50,57 +48,38 @@ export const App = () => {
 
   const displayedFavorites = useMemo(() => {
     return handleLocalStorage('favorites');
-  }, []);
+  }, [favorites]);
 
   const displyedCartItems = useMemo(() => {
     return handleLocalStorage('cart');
-  }, []);
+  }, [cart]);
 
   /* local storage end */
 
   /* setter functions start */
 
-  const setProducts = useCallback(
-    (items: Product[]) => {
-      dispatch(productsActions.setProducts(items));
-    },
-    [dispatch],
-  ); // Dependency on dispatch
+  const setProducts = (items: Product[]) => {
+    dispatch(productsActions.setProducts(items));
+  };
 
-  const setLoading = useCallback(
-    (value: boolean) => {
-      dispatch(productsActions.setLoading(value));
-    },
-    [dispatch],
-  );
+  const setLoading = (value: boolean) => {
+    dispatch(productsActions.setLoading(value));
+  };
 
-  const setFavorites = useCallback(
-    (items: Product[]) => {
-      dispatch(productsActions.setFavorites(items));
-    },
-    [dispatch],
-  );
+  const setFavorites = (items: Product[]) => {
+    dispatch(productsActions.setFavorites(items));
+  };
 
-  const setCartItems = useCallback(
-    (items: Product[]) => {
-      dispatch(productsActions.setCartItems(items));
-    },
-    [dispatch],
-  );
+  const setCartItems = (items: Product[]) => {
+    dispatch(productsActions.setCartItems(items));
+  };
 
-  useEffect(
-    () => setFavorites(displayedFavorites),
-    [displayedFavorites, setFavorites],
-  );
-
-  useEffect(
-    () => setCartItems(displyedCartItems),
-    [displyedCartItems, setCartItems],
-  );
+  useEffect(() => setFavorites(displayedFavorites), []);
+  useEffect(() => setCartItems(displyedCartItems), []);
 
   /* setter functions end */
 
-  const fetchProducts = useCallback(async () => {
+  const fetchProducts = async () => {
     setLoading(true);
 
     try {
@@ -110,13 +89,13 @@ export const App = () => {
     } finally {
       setLoading(false);
     }
-  }, [setLoading, setProducts]);
+  };
 
   useEffect(() => {
-    if (!products?.length) {
+    if (!products.length) {
       fetchProducts();
     }
-  }, [fetchProducts, products?.length]);
+  }, []);
 
   return (
     <div className="App">

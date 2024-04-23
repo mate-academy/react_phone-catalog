@@ -25,7 +25,7 @@ export const ProductsGrid: React.FC<Props> = ({
   const perPage = searchParams.get('per-page') || '8';
   const page = searchParams.get('page') || '1';
 
-  const maxPages = Math.ceil(products?.length / +perPage) || 1; // because of the "all" option
+  const maxPages = Math.ceil(products?.length / +perPage) || 1;
 
   const getSorted = useCallback(() => {
     return [...products].sort((first, second) => {

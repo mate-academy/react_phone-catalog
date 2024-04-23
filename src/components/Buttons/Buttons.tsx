@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useMemo } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import cn from 'classnames';
@@ -22,17 +23,17 @@ export const Buttons: React.FC<Props> = ({
   favoritesClasses,
 }) => {
   const dispatch = useAppDispatch();
-  const { cart } = useAppSelector(state => state.products);
+  const { favorites, cart } = useAppSelector(state => state.products);
 
   /* local storage start */
 
   const displayedFavorites = useMemo(() => {
     return handleLocalStorage('favorites');
-  }, []);
+  }, [favorites]);
 
   const displyedCartItems = useMemo(() => {
     return handleLocalStorage('cart');
-  }, []);
+  }, [cart]);
 
   /* local storage end */
 

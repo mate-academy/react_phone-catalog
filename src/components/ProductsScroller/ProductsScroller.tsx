@@ -35,7 +35,7 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
   const cantBeScrolled = viewportMovement >= scrollerWidth;
 
   const handlePhonesScrolling = (side: 'left' | 'right') => {
-    const toTransform = viewportWidth > 640 ? 55 : 85;
+    const toTransform = viewportWidth > 640 ? 76.2 : 85;
 
     setCurrentTransform(prev => {
       const value = prev.replace('%', '');

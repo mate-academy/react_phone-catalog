@@ -154,7 +154,7 @@
 
     &--added {
       &::after {
-        background-image: url(../../icons/favorite.svg);
+        background-image: url(../../icons/favorite-filled.svg);
 
         animation: heart-animation .3s ease-in-out forwards;
       }
