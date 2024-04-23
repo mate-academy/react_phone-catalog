@@ -3,7 +3,6 @@
 
 .productPage {
   @include content-padding-inline;
-
 }
 
 .name {
@@ -16,8 +15,6 @@
 
 .content {
   @include page-grid;
-
-  // display: flex;
 }
 
 

@@ -64,6 +64,8 @@ export const colors = [
   { name: 'spacegray', value: '#636160' },
   { name: 'space gray', value: '#636160' },
   { name: 'graphite', value: '#636160' },
+  { name: 'midnight', value: '#636160' },
+  { name: 'spaceblack', value: '#636160' },
   { name: 'midnightgreen', value: '#607064' },
   { name: 'coral', value: '#fa7878' },
   { name: 'sky blue', value: '#cce6ff' },

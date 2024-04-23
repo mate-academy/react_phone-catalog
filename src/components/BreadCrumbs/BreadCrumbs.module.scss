@@ -21,6 +21,9 @@
 .linkBreadCrumb {
   color: $secondary-text-color;
   line-height: 15.34px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .linkBreadCrumbDis {

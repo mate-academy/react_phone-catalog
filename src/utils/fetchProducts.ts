@@ -1,6 +1,5 @@
 import { ProductInfo } from '../types/ProductInfo';
 
-// export const BASE_URL = '/api';
 export const BASE_URL = 'https://oshapkun.github.io/react_phone-catalog/';
 
 function wait(delay: number) {

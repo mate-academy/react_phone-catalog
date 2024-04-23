@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import styles from './AccessoriesPage.module.scss';
 
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-// import { fetchAccessories } from "../../features/accessoriesSlice";
 import { CatalogHeader } from '../../components/CatalogHeader';
 import { Loader } from '../../components/Loader';
 import { ErrorNoProducts, ErrorSomethingWrong } from '../../components/Errors';

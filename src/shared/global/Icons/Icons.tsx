@@ -27,25 +27,8 @@ interface BaseIconProps {
 const BaseIcon = ({ type }: BaseIconProps) => {
   const iconClassName = type === 'logo' ? styles.logoIcon : styles.iconImg;
   const iconSrc = `img/icons/${type}_icon.svg`;
-  // let cursorStyle = {};
 
-  // if (!isActive && (type === 'arrowLeft' || type === 'arrowRight')) {
-  //   iconSrc = `/img/icons/${type}_disabled_icon.svg`;
-  //   // cursorStyle = { cursor: 'default' };
-  // }
-
-  // const finalIconClassName = isActive
-  //   ? `${iconClassName} ${styles.active}`
-  //   : iconClassName;
-
-  return (
-    <img
-      src={iconSrc}
-      alt={`${type}_icon`}
-      className={iconClassName}
-      // style={cursorStyle}
-    />
-  );
+  return <img src={iconSrc} alt={`${type}_icon`} className={iconClassName} />;
 };
 
 const LogoIcon = () => <BaseIcon type="logo" />;
@@ -53,12 +36,7 @@ const FavIcon = () => <BaseIcon type="favourites" />;
 const CartIcon = () => <BaseIcon type="cart" />;
 const MenuIcon = () => <BaseIcon type="menu" />;
 const CloseIcon = () => <BaseIcon type="close" />;
-// const ArrowLeftIcon = ({ isActive }: { isActive?: boolean }) =>
-//   <BaseIcon type='arrowLeft' isActive={isActive}
-// />;
-// const ArrowRightIcon = ({ isActive }: { isActive?: boolean }) =>
-//   <BaseIcon type='arrowRight' isActive={isActive}
-// />;
+
 const ArrowTopIcon = () => <BaseIcon type="arrowTop" />;
 const ArrowDownIcon = () => <BaseIcon type="arrowDown" />;
 const FavActiveIcon = () => <BaseIcon type="favActive" />;

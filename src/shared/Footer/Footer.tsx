@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 import { Navbar } from '../../components/Navbar';
 import { footerLinks } from '../../helpers/constArrs';
-import { BackToTop } from './components/BackToTop/BackToTop';
+import { BackToTop } from './components/BackToTop';
 
 export const Footer = () => {
   return (

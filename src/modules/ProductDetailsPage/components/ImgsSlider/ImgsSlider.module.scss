@@ -11,8 +11,6 @@
   @include on-tablet{
     flex-direction: row;
     grid-column: span 7;
-
-    // justify-content: space-between;
   }
 
   @include on-desktop {
@@ -29,7 +27,6 @@
     display: none;
   }
 }
-
 
 .imgMainWrap {
   display: none;
@@ -73,7 +70,6 @@
     width: 80px;
     gap: 16px;
   }
-
 }
 
 .imgSmallBorder, .imgSmallBorderActive {
@@ -110,7 +106,6 @@
 
   @include on-desktop {
     height: 78px;
-
   }
 }
 

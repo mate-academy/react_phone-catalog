@@ -1,7 +1,6 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCategories.module.scss';
 import { categories } from '../../../../helpers/constArrs';
-// import { scrollToTop } from '../../../../helpers/scrollToTop';
 import React from 'react';
 import { ProductInfo } from '../../../../types/ProductInfo';
 

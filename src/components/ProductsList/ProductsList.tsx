@@ -1,8 +1,6 @@
 import React from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductsList.module.scss';
-// import { useAppDispatch } from '../../app/hook';
-// import { fetchPhones } from '../../features/phonesSlice';
 
 import { ProductInfo } from '../../types/ProductInfo';
 import { ProductCard } from '../ProductCard';
@@ -21,8 +19,6 @@ export const ProductsList: React.FC<Props> = ({
   showPagination = true,
 }) => {
   const [searchParams] = useSearchParams();
-
-  // const { phones } = useAppSelector(state => state.phones);
 
   const sort = searchParams.get('sortBy') || SortType.newest;
   const onPage = searchParams.get('onPage') || '16';
@@ -60,7 +56,6 @@ export const ProductsList: React.FC<Props> = ({
           ))}
         </section>
       ) : (
-        // Если нет отфильтрованных продуктов, отображаем сообщение об ошибке
         <ProductNotFound />
       )}
 

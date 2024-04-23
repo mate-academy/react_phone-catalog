@@ -1,10 +1,6 @@
 @use '../../../../shared/global/GlobalStyles/utils/vars' as *;
 @use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
 
-// .productCategories {
-//   // @include content-padding-inline;
-// }
-
 .catWrapper {
   display: flex;
   flex-direction: column;

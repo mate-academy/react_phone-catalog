@@ -7,8 +7,6 @@
 
 .mediumSlider {
   @include on-tablet {
-    // @include content-padding-inline;
-
     display: flex;
     gap: 19px;
     align-items: center;

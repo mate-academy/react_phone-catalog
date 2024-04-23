@@ -10,37 +10,40 @@ import { Provider } from 'react-redux';
 import { store } from './app/store';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
 import { PageNotFound } from './modules/PageNotFound';
+import { ThemeProvider } from './shared/global/ThemeProvider/ThemeProvider';
 
 export const Root = () => {
   return (
     <Provider store={store}>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
+      <ThemeProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
 
-            <Route path="phones">
-              <Route index element={<PhonesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
+              <Route path="phones">
+                <Route index element={<PhonesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="tablets">
+                <Route index element={<TabletsPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="accessories">
+                <Route index element={<AccessoriesPage />} />
+                <Route path=":productId" element={<ProductDetailsPage />} />
+              </Route>
+
+              <Route path="favourites" element={<FavouritesPage />} />
+              <Route path="cart" element={<CartPage />} />
+
+              <Route path="*" element={<PageNotFound />} />
             </Route>
-
-            <Route path="tablets">
-              <Route index element={<TabletsPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-
-            <Route path="accessories">
-              <Route index element={<AccessoriesPage />} />
-              <Route path=":productId" element={<ProductDetailsPage />} />
-            </Route>
-
-            <Route path="favourites" element={<FavouritesPage />} />
-            <Route path="cart" element={<CartPage />} />
-
-            <Route path="*" element={<PageNotFound />} />
-          </Route>
-        </Routes>
-      </Router>
+          </Routes>
+        </Router>
+      </ThemeProvider>
     </Provider>
   );
 };
