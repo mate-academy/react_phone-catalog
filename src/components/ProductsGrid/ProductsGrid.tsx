@@ -1,4 +1,5 @@
-import { useCallback, useEffect, useMemo } from 'react';
+/* eslint-disable @typescript-eslint/indent */
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -19,7 +20,15 @@ export const ProductsGrid: React.FC<Props> = ({
   title,
   isFavoritesPage,
 }) => {
+  const [searchText, setSearchText] = useState('');
   const [searchParams] = useSearchParams();
+
+  const handleSearchInputChange = useCallback(
+    (e: React.ChangeEvent<HTMLInputElement>) => {
+      setSearchText(e.target.value);
+    },
+    [],
+  );
 
   const sort = searchParams.get('sort') || 'Newest';
   const perPage = searchParams.get('per-page') || '8';
@@ -59,8 +68,17 @@ export const ProductsGrid: React.FC<Props> = ({
   );
 
   const sorted = useMemo(() => {
-    return getPaginated(getSorted());
-  }, [getPaginated, getSorted]);
+    const filteredProducts =
+      searchText.trim() === ''
+        ? products
+        : products.filter(product =>
+            product.name.toLowerCase().includes(searchText.toLowerCase()),
+          );
+
+    return getPaginated(getSorted()).filter(product =>
+      filteredProducts.includes(product),
+    );
+  }, [getPaginated, getSorted, products, searchText]);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -122,6 +140,17 @@ export const ProductsGrid: React.FC<Props> = ({
             title="Items on page"
             searchValue="per-page"
           />
+
+          <div className="products__search">
+            <p className="products__search__search-name">Find item</p>
+            <input
+              type="text"
+              className="products__search-input"
+              placeholder="Search"
+              value={searchText}
+              onChange={handleSearchInputChange}
+            />
+          </div>
         </div>
       )}
 

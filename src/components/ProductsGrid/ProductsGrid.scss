@@ -57,6 +57,43 @@
     gap: 16px;
   }
 
+  &__search {
+    margin-top: 40px;
+
+    @include on-mobile {
+      margin-top: 30px;
+    }
+
+    gap: 16px;
+
+    &__search-name {
+      margin-block: 0 4px;
+
+      @include text-type-full(12px, 15.34px, 'Mont-semi-bold', $secondary-color);
+    }
+
+    &-input {
+      height: 40px;
+      padding: 0 16px;
+      border: 1px solid $icon-color;
+      font-size: 16px;
+
+      @include text-type-full(14px, 21px, 'Mont-regular', $primary-color);
+
+      cursor: pointer;
+      transition: border-color 0.3s ease;
+
+      &:hover {
+        border-color: $secondary-color;
+      }
+
+      &:focus {
+        border-color: $secondary-color;
+        outline: none;
+      }
+    }
+  }
+
   &__products {
     margin-top: 24px;
     display: grid;

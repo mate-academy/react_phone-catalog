@@ -61,5 +61,9 @@
     @include on-tablet {
       width: calc(100vw - 24px);
     }
+
+    &--no-transition {
+      transition: none;
+    }
   }
 }

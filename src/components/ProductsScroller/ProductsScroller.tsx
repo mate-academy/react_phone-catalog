@@ -3,7 +3,6 @@ import cn from 'classnames';
 
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useAppSelector } from '../../store/hooks';
 import { Link } from 'react-router-dom';
 
 interface Props {
@@ -12,39 +11,38 @@ interface Props {
 }
 
 export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
-  const { viewportWidth } = useAppSelector(state => state.viewport);
-  const [currentTransform, setCurrentTransform] = useState('0');
+  const [currentTransform, setCurrentTransform] = useState('0px');
 
   const hasHotPrice = title === 'Hot Prices';
   const category = products[0]?.category;
 
   const cardWidth = 272;
   const gap = 16;
+  const itemsShowed = 4;
 
-  const transformValue = +currentTransform.replace('%', '');
+  const transformValue = +currentTransform.replace('px', '');
 
   // on big screens the scroller doesn't take up as much space so we need to lower the proportions between viewportWidth and scrollerWidth
-  const viewport = viewportWidth < 1200 ? viewportWidth : viewportWidth * 1.5;
 
   // we find the approximate width of the whole scroller
   const scrollerWidth = products.length * cardWidth + products.length * gap;
 
   // we find how much of the scroller was already scrolled through
-  const viewportMovement = viewport * (Math.abs(transformValue) / 100);
-
-  const cantBeScrolled = viewportMovement >= scrollerWidth;
+  const cantBeScrolled =
+    Math.abs(transformValue) >=
+    scrollerWidth - (itemsShowed - 1) * (cardWidth + gap);
 
   const handlePhonesScrolling = (side: 'left' | 'right') => {
-    const toTransform = viewportWidth > 640 ? 76.2 : 85;
+    const toTransform = cardWidth + gap;
 
     setCurrentTransform(prev => {
-      const value = prev.replace('%', '');
+      const value = prev.replace('px', '');
 
       if (side === 'right') {
-        return (+value - toTransform).toString() + '%';
+        return +value - toTransform + 'px';
       }
 
-      return (+value + toTransform).toString() + '%';
+      return +value + toTransform + 'px'; // Використовуємо maxScroll для обмеження зсуву вліво
     });
   };
 
@@ -55,7 +53,8 @@ export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
 
   const disableArrows = (way: 'right' | 'left') => {
     return cn(`arrow arrow--${way}`, {
-      'arrow-disabled': way === 'right' ? cantBeScrolled : transformValue === 0,
+      'arrow-disabled':
+        way === 'right' ? cantBeScrolled : currentTransform === '0px', // Змінено на currentTransform === '0px'
     });
   };
 
