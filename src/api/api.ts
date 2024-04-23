@@ -2,7 +2,9 @@ import { ProductDetails } from '../types/ProductDetails';
 import { Product } from '../types/Product';
 
 export const getAllProducts = (): Promise<Product[]> => {
-  return fetch('/api/products.json').then(response => response.json());
+  return fetch(
+    'https://artemvlasiuk.github.io/react_phone-catalog/api/products.json',
+  ).then(response => response.json());
 };
 
 export const getHotPrices: Promise<Product[]> = getAllProducts().then(
