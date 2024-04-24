@@ -34,3 +34,30 @@
     }
   }
 }
+
+.reload {
+  width: 100%;
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 10px 20px;
+
+  cursor: pointer;
+  border-radius: 5px;
+  border: 1px solid $border-color-default;
+  color: $text-black-color;
+  font-family: Mont-SemiBold, sans-serif;
+
+  // background-color: rgba(9, 229, 31, 0.466);
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &__icon {
+    height: $button-size;
+    width: $button-size;
+  }
+}

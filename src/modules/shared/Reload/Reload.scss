@@ -1,0 +1,21 @@
+.reload-block {
+  min-width: 320px;
+  margin: auto;
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  @include padding-content-inline;
+
+  &__page-not-found {
+    width: 100%;
+    max-width: 400px;
+    max-height: 400px;
+  }
+
+  &__button {
+    width: 50%;
+    margin-inline: auto;
+  }
+}

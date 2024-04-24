@@ -28,11 +28,19 @@ export const Sidebar = React.memo(() => {
           Phones
         </NavLink>
 
-        <NavLink to="/tablets" className={getLinkClass}>
+        <NavLink
+          to="/tablets"
+          className={getLinkClass}
+          onClick={() => setIsOpenSidebar(false)}
+        >
           Tablets
         </NavLink>
 
-        <NavLink to="/accessories" className={getLinkClass}>
+        <NavLink
+          to="/accessories"
+          className={getLinkClass}
+          onClick={() => setIsOpenSidebar(false)}
+        >
           Accessories
         </NavLink>
       </div>

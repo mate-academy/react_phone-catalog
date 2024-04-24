@@ -1,8 +1,6 @@
 .product-card {
   padding: 32px;
 
-  height: 439.5px;
-
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -14,13 +12,7 @@
     border: solid 1px $border-color-hover;
   }
 
-  @include on-tablet {
-    height: 512px;
-  }
-
-  @include on-desctop {
-    height: 506px;
-  }
+  @include height-product-card;
 
   &__img-link {
     margin-inline: auto;

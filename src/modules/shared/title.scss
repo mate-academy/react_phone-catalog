@@ -47,4 +47,8 @@
   line-height: 11px;
   color: $text-gray-color;
   text-decoration: none;
+
+  &:hover {
+    color: $text-black-color;
+  }
 }

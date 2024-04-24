@@ -40,3 +40,15 @@
     grid-template-columns: repeat(var(--columns), 32px);
   }
 }
+
+@mixin height-product-card {
+  height: 439.5px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desctop {
+    height: 506px;
+  }
+}

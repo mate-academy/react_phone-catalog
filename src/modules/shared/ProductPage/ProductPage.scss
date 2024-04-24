@@ -2,6 +2,11 @@
   @include padding-content-inline;
 
   padding-block: 24px 64px;
+  max-width: 1136px;
+
+  @include on-desctop {
+    margin-inline: auto;
+  }
 
   &__route {
     height: 16px;
@@ -16,6 +21,10 @@
     line-height: 16px;
   }
 
+  &__page-name::first-letter {
+    text-transform: uppercase;
+  }
+
   &__title {
     margin-bottom: 32px;
 
@@ -24,16 +33,62 @@
     gap: 8px;
   }
 
+  &__sub-title {
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $text-gray-color;
+
+    @include on-desctop {
+      font-size: 12px;
+      line-height: 15.3px;
+    }
+  }
+
   &__dropdown-container {
     @include page-grid;
 
     margin-bottom: 24px;
   }
 
+  &__dropdown-sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__dropdown-items {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__loader {
+    @include height-product-card;
+  }
+
   &__product-card-container {
     display: flex;
     flex-direction: column;
-    gap: 40px;
+    row-gap: 40px;
+
+    @include on-tablet {
+      display: grid;
+      column-gap: 16px;
+
+      grid-template-columns: repeat(auto-fill, minmax(220px, 1fr))
+    }
+
+    @include on-desctop {
+      @include page-grid;
+      & > * {
+        grid-column: span 6;
+      }
+    }
   }
 
   &__navigation {

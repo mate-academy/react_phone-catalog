@@ -38,7 +38,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
 
           <div className="shop-by-category__item-wrapper">
             <Link
-              to="/"
+              to="/tablets"
               className="shop-by-category__item
             shop-by-category__item--tablets"
             >
@@ -56,7 +56,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
 
           <div className="shop-by-category__item-wrapper">
             <Link
-              to="/"
+              to="/accessories"
               className="shop-by-category__item
             shop-by-category__item--accessories"
             >

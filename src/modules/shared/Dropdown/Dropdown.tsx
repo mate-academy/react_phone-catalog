@@ -1,4 +1,4 @@
-import React, { CSSProperties, useEffect, useState } from 'react';
+import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { Option } from '../../../types/Option';
 
 type Props = {
@@ -22,6 +22,7 @@ export const Dropdown: React.FC<Props> = ({
     overflow: 'hidden',
     border: 'none',
   });
+  const focus = useRef<HTMLDivElement>(null);
 
   const handleSelectItems = (event: React.MouseEvent<HTMLButtonElement>) => {
     const { value } = event.currentTarget;
@@ -51,8 +52,22 @@ export const Dropdown: React.FC<Props> = ({
     return () => clearTimeout(timeout);
   }, [openDropdown]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (focus.current && !focus.current.contains(event.target as Node)) {
+        setOpenDropdown(false);
+      }
+    };
+
+    document.addEventListener('mouseup', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mouseup', handleClickOutside);
+    };
+  }, []);
+
   return (
-    <div className="dropdown">
+    <div className="dropdown" ref={focus}>
       <span className="dropdown__title">{title}</span>
       <div className="dropdown__items-container">
         <button

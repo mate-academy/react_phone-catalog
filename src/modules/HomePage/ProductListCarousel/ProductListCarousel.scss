@@ -21,25 +21,14 @@
   }
 
   &__imgs-container {
-    height: 439.5px;
-
     position: relative;
     overflow: hidden;
 
-    @include on-tablet {
-      height: 512px;
-    }
-
-    @include on-desctop {
-      height: 506px;
-    }
+    @include height-product-card;
   }
 
   &__loader {
-    height: 100%;
-
-    display: flex;
-    align-items: center;
+    @include height-product-card;
   }
 
   &__imgs {
