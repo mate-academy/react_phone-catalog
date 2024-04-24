@@ -4,9 +4,10 @@
   grid-column: span 8;
   display: flex;
   flex-direction: column;
+  gap: 24px;
 
   @include on-tablet {
-    grid-column: span 4;
+    grid-column: span 4
   }
 
   &-wrapper {
