@@ -26,22 +26,17 @@ export const Options: React.FC<Props> = ({
   const {product, priceList, favourites, setProductExists, setSelectIdCart} =
     useContext(ProductContext);
   const [isProductInfoLoading, setIsProductInfoLoading] = useState(false);
+
   const location = useLocation();
   const {pathname} = location;
 
   useEffect(() => {
-    setIsProductInfoLoading(true);
     const hasProduct = product.find(d => d.itemId === details.id);
 
-    const timeoutId = setTimeout(() => {
-      if (hasProduct) {
-        setId(hasProduct.id);
-      }
-
+    if (hasProduct) {
+      setId(hasProduct.id);
       setIsProductInfoLoading(false);
-    }, 1000);
-
-    return () => clearTimeout(timeoutId);
+    }
   }, [details.id, product]);
 
   const hasElementFavorit = () => {
@@ -52,8 +47,10 @@ export const Options: React.FC<Props> = ({
     priceList?.some(item => +item?.id === +id) ?? false;
 
   const handleSelectColor = (color: string) => {
+    setIsProductInfoLoading(true);
+
     if (isProductInfoLoading) {
-      // return;
+      return;
     }
 
     const pathColor = pathname.replace(selectColor || '', color);
@@ -63,6 +60,8 @@ export const Options: React.FC<Props> = ({
   };
 
   const handleSelectCapacity = (capacity: string) => {
+    setIsProductInfoLoading(true);
+
     if (isProductInfoLoading) {
       return;
     }
@@ -108,7 +107,7 @@ export const Options: React.FC<Props> = ({
             key={uuidv4()}
             className={classNames(style.options__colorDiv, {
               [style.options__color_actice]: color === selectColor,
-              [style.options__loader]: isProductInfoLoading,
+              [style.loader]: isProductInfoLoading,
             })}
           >
             <div
@@ -130,7 +129,7 @@ export const Options: React.FC<Props> = ({
               key={uuidv4()}
               className={classNames(style.options__capacity_div, {
                 [style.options__capacity_actice]: capacity !== selectCapacity,
-                [style.options__loader]: isProductInfoLoading,
+                [style.loader]: isProductInfoLoading,
               })}
               disabled={isProductInfoLoading}
             >
