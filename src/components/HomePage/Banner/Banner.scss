@@ -1,0 +1,68 @@
+@import '../../../stylesUtils/variables';
+@import '../../../stylesUtils/mixin';
+
+.banner {
+  margin-bottom: 80px;
+}
+
+.carousel {
+  @include page-grid;
+
+  &__container {
+    width: 1040px;
+    height: 400px;
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 22;
+    }
+  }
+
+  &__content-media {
+    width: 100%;
+    object-fit: cover;
+  }
+
+  &__all-images {
+    display: flex;
+    height: 400px;
+  }
+
+  &-button {
+    background-color: #fff;
+    border: solid 1px #b4bdc3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+
+    transition-duration: 100ms;
+
+    &:hover {
+      border: solid 1px #313237;
+    }
+
+    &__left,
+    &__right {
+      @include on-tablet {
+        grid-column: span 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 1;
+      }
+    }
+  }
+
+
+
+  &-current-slide {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

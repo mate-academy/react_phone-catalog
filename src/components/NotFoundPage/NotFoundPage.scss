@@ -1,0 +1,9 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+}
+
+.image {
+  max-width: 100%;
+  max-height: calc(100vh - 160px);
+}

@@ -1,1 +1,18 @@
-// not empty
+@import './stylesUtils/variables';
+@import './stylesUtils/mixin.scss';
+@import './stylesUtils/fonts.scss';
+
+iframe {
+  display: none;
+}
+
+body {
+  margin: 0;
+  font-family: "Regular", sans-serif;
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+

@@ -1,0 +1,44 @@
+@import '../../../stylesUtils/variables';
+@import '../../../stylesUtils/mixin';
+
+.shop-by-category {
+  @include page-grid;
+
+  margin-bottom: 80px;
+
+  &__title {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.category {
+  &-card {
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__title {
+    font-family: "Regular";
+    font-size: 20px;
+    line-height: 25.56px;
+
+    margin-top: 24px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  &__amount-models {
+    font-family: "Regular";
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+  }
+}

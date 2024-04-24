@@ -1,0 +1,134 @@
+@import '../../../stylesUtils/variables';
+@import '../../../stylesUtils/mixin';
+
+.new-models {
+  @include page-grid;
+  margin-bottom: 20px;
+  margin-bottom: 80px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+
+    @include page-grid;
+  }
+
+  &__title {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-desktop {
+      grid-column: span 22;
+    }
+  }
+}
+
+.card {
+  grid-column: span 6;
+  padding: 32px;
+  width: 272px;
+  height: 506px;
+  display: grid;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__image {
+    width: 208px;
+    height: 196px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 8px;
+  }
+
+  &__price {
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+  }
+
+  &__characteristics {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: solid 1px #e2e6e9;
+  }
+
+  &__discription {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 40px;
+    column-gap: 8px;
+  }
+}
+
+.discription {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #89939a;
+  }
+
+  &__value {
+    font-family: 'SemiBold';
+    line-height: 15.34px;
+  }
+}
+
+.button {
+  &__add {
+    font-family: 'SemiBold';
+    font-size: 14px;
+    line-height: 21px;
+    text-decoration: none;
+    color: #fff;
+
+    height: 40px;
+    background-color: #313237;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 13px 0px #17203166;
+
+    }
+  }
+
+  &__favourite {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border: solid 1px #b4bdc3;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+}

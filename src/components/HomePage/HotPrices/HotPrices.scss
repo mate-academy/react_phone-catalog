@@ -1,0 +1,138 @@
+@import '../../../stylesUtils/variables';
+@import '../../../stylesUtils/mixin';
+
+.hot-prices {
+  @include page-grid;
+  margin-bottom: 20px;
+  margin-bottom: 80px;
+
+  &__head {
+    display: flex;
+    align-items: center;
+
+    @include page-grid;
+  }
+
+  &__title {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-desktop {
+      grid-column: span 22;
+    }
+  }
+}
+
+.discount {
+  &__new-price {
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+
+  &__old-price {
+    font-family: "Regular";
+    font-size: 22px;
+    line-height: 28.12px;
+
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-weight: 600;
+    text-decoration: line-through;
+    color: #89939a;
+  }
+}
+
+.card {
+  grid-column: span 6;
+  padding: 32px;
+  width: 272px;
+  height: 506px;
+  display: grid;
+  border: 1px solid #e2e6e9;
+  box-sizing: border-box;
+
+  &__image {
+    width: 208px;
+    height: 196px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    margin: 0;
+    display: flex;
+    align-items: flex-end;
+    margin-top: 8px;
+  }
+
+  &__discount {
+    display: flex;
+  }
+
+  &__characteristics {
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: solid 1px #e2e6e9;
+  }
+
+  &__discription {
+    margin-top: 8px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__buttons {
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 40px;
+    column-gap: 8px;
+  }
+}
+
+.button {
+  &__add {
+    height: 40px;
+    text-decoration: none;
+    background-color: #313237;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 16px;
+
+    transition-duration: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      // background-color: #4a4b4d;
+    }
+  }
+
+  &__favourite {
+    display: flex;
+    height: 40px;
+    width: 40px;
+    border: solid 1px #b4bdc3;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+  }
+}
