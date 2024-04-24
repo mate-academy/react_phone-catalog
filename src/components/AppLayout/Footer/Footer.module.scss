@@ -1,3 +1,4 @@
+@import '../../utils/mixins.scss';
 .footer {
   margin: 0 auto;
   border-top: 1px solid rgba(226, 230, 233, 1);
@@ -48,5 +49,6 @@
     color: rgba(180, 189, 195, 1);
     background-color: white;
     cursor: pointer;
+    @include buttonTransitionWhite;
   }
 }

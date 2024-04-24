@@ -1,3 +1,5 @@
+@import '../../../utils/mixins.scss';
+
 .options {
   &__header {
     display: flex;
@@ -89,6 +91,7 @@
     background-color: #fff;
     font-size: 20px;
     cursor: pointer;
+    @include buttonTransitionWhite;
   }
 
   &__button_by {
@@ -98,12 +101,14 @@
     color: #fff;
     margin-inline-end: 8px;
     cursor: pointer;
+    @include buttonTransitionBlack;
   }
 
   &__button_byActive {
     background-color: #fff;
     color: #313237;
     border: 2px solid #b4bdc3;
+    @include buttonTransitionWhite;
   }
 
   &__specs {

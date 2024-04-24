@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .slider {
   box-sizing: border-box;
   display: flex;
@@ -31,11 +33,7 @@
     background-color: #fff;
     color: rgba(180, 189, 195, 1);
     cursor: pointer;
-
-    &:active {
-      border: 1px solid #000;
-      color: #000;
-    }
+    @include buttonTransitionWhite;
   }
 
   &__img {
