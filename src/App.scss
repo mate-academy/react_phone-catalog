@@ -20,8 +20,18 @@ body {
   }
 
   @include on-desktop {
-    max-width: 1136px;
+    width: 1136px;
     margin-inline: auto;
     padding-inline: 0;
   }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
 }

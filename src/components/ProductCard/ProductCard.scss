@@ -47,7 +47,8 @@
     gap: 8px;
     margin-top: 8px;
 
-    &--regular {
+    &--regular,
+    &--discount {
       color: $primary-color;
       font-family: Mont, sans-serif;
       font-size: 22px;
@@ -57,8 +58,6 @@
 
     &--discount {
       color: $secondary-color;
-      font-family: Mont, sans-serif;
-      font-size: 22px;
       font-weight: 500;
       text-decoration-line: line-through;
     }
@@ -76,15 +75,14 @@
       justify-content: space-between;
     }
 
-    &__name {
-      @include small-font;
-
-      color: $secondary-color;
-      flex: 1;
-    }
-
+    &__name,
     &__value {
       @include small-font;
+    }
+
+    &__name {
+      color: $secondary-color;
+      flex: 1;
     }
   }
 

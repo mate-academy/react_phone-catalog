@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import './Categories.scss';
 import { NavLink } from 'react-router-dom';
 import { getAccessories, getPhones, getTablets } from '../../api/api';
+import { BASE_URL } from '../../api/api';
 
 export const Categories = () => {
   const [phonesQuantity, setPhonesQuantity] = useState(0);
@@ -34,7 +35,7 @@ export const Categories = () => {
                   categories__image-container--phones"
               >
                 <img
-                  src="/img/category-phones.webp"
+                  src={`${BASE_URL}/img/category-phones.webp`}
                   alt="Mobile Phones"
                   className="categories__image categories__image--phones"
                 />
@@ -50,8 +51,8 @@ export const Categories = () => {
                   categories__image-container--tablets"
               >
                 <img
-                  src="/img/category-tablets.png"
-                  alt="Mobile Phones"
+                  src={`${BASE_URL}/img/category-tablets.png`}
+                  alt="Tablets"
                   className="categories__image categories__image--tablets"
                 />
               </div>
@@ -66,8 +67,8 @@ export const Categories = () => {
                   categories__image-container--accessories"
               >
                 <img
-                  src="/img/category-accessories.webp"
-                  alt="Mobile Phones"
+                  src={`${BASE_URL}/img/category-accessories.webp`}
+                  alt="Accessories"
                   className="categories__image categories__image--accessories"
                 />
               </div>

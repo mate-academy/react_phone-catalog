@@ -1,10 +1,12 @@
 import { ProductDetails } from '../types/ProductDetails';
 import { Product } from '../types/Product';
 
+export const BASE_URL = 'https://artemvlasiuk.github.io/react_phone-catalog';
+
 export const getAllProducts = (): Promise<Product[]> => {
-  return fetch(
-    'https://artemvlasiuk.github.io/react_phone-catalog/api/products.json',
-  ).then(response => response.json());
+  return fetch(`${BASE_URL}/api/products.json`).then(response =>
+    response.json(),
+  );
 };
 
 export const getHotPrices: Promise<Product[]> = getAllProducts().then(
@@ -35,7 +37,7 @@ export const getAccessories: Promise<Product[]> = getAllProducts().then(
 );
 
 export async function findProductByItemId(itemId: string, category: string) {
-  const url = `/api/${category}.json`;
+  const url = `${BASE_URL}/api/${category}.json`;
   const response = await fetch(url);
   const products = await response.json();
   const foundProduct = products.find(

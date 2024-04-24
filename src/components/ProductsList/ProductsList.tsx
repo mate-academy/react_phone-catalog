@@ -6,6 +6,7 @@ import { Pagination } from '../Pagination';
 import { Breadcrumbs } from '../Breadcrumbs';
 import { useSearchParams } from 'react-router-dom';
 import { sortProducts } from './utils';
+import { BASE_URL } from '../../api/api';
 
 type ProductsListProps = {
   products: Product[];
@@ -26,8 +27,8 @@ export const ProductsList: React.FC<ProductsListProps> = ({
     initialPerPage === 'all' ? products.length : Number(initialPerPage),
   );
 
-  const initialSortBy = searchParams.get('sort') || 'newest';
-  const [sortBy, setSortBy] = useState(initialSortBy);
+  const initialSortBy = searchParams.get('sort');
+  const [sortBy, setSortBy] = useState<string | null>(initialSortBy);
 
   const start = perPage * (currentPage - 1);
   const end = Math.min(perPage * currentPage, products.length);
@@ -49,10 +50,14 @@ export const ProductsList: React.FC<ProductsListProps> = ({
     window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
   };
 
-  const productsToShow = sortProducts(products, sortBy);
+  const productsToShow = sortBy ? sortProducts(products, sortBy) : products;
 
   useEffect(() => {
-    const newSearchParams: any = { sort: sortBy };
+    const newSearchParams: any = {};
+
+    if (sortBy) {
+      newSearchParams.sort = sortBy;
+    }
 
     if (currentPage !== 1) {
       newSearchParams.page = currentPage;
@@ -62,7 +67,7 @@ export const ProductsList: React.FC<ProductsListProps> = ({
       newSearchParams.perPage = perPage;
     }
 
-    setSearchParams(newSearchParams);
+    setSearchParams(newSearchParams, { replace: true });
   }, [sortBy, currentPage, perPage, setSearchParams]);
 
   return (
@@ -81,14 +86,17 @@ export const ProductsList: React.FC<ProductsListProps> = ({
               name="sortBy"
               id="sortBy"
               onChange={handleSortChange}
-              value={sortBy}
+              value={sortBy || undefined}
             >
               <option value="newest">Newest</option>
               <option value="alphabetically">Alphabetically</option>
               <option value="cheapest">Cheapest</option>
             </select>
             <div className="select__icon">
-              <img src="/img/icons/down-gray.svg" alt="Select Icon" />
+              <img
+                src={`${BASE_URL}/img/icons/down-gray.svg`}
+                alt="Select Icon"
+              />
             </div>
           </div>
           <div className="select__container">
@@ -108,7 +116,10 @@ export const ProductsList: React.FC<ProductsListProps> = ({
               <option value={products.length}>All</option>
             </select>
             <div className="select__icon">
-              <img src="/img/icons/down-gray.svg" alt="Select Icon" />
+              <img
+                src={`${BASE_URL}/img/icons/down-gray.svg`}
+                alt="Select Icon"
+              />
             </div>
           </div>
         </div>

@@ -55,16 +55,14 @@
     transition: transform 0.3s;
     cursor: pointer;
 
-    &--phones {
-      top: 25%;
-      left: 15%;
-    }
-    &--tablets {
-      top: 17%;
-      left: 15%;
-    }
+    &--phones,
     &--accessories {
       top: 25%;
+      left: 15%;
+    }
+
+    &--tablets {
+      top: 17%;
       left: 15%;
     }
 

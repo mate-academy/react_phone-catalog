@@ -42,17 +42,15 @@
     height: 16px;
     width: 16px;
     padding: 24px;
+    background-repeat: no-repeat;
+    background-position: center;
 
     &--favourites {
       background-image: url('../../../public/img/icons/fav.svg');
-      background-repeat: no-repeat;
-      background-position: center;
     }
 
     &--cart {
       background-image: url('../../../public/img/icons/cart.svg');
-      background-repeat: no-repeat;
-      background-position: center;
     }
   }
 }

@@ -24,38 +24,42 @@ export const Header = () => {
           <Link to="/" className="top-bar__logo">
             <img src="./img/logo.svg" alt="Logo" />
           </Link>
-          <nav className="top-bar__links">
-            <NavLink
-              to="/"
-              className={cn('top-bar__link', { 'is-active': pathname === '/' })}
-            >
-              Home
-            </NavLink>
-            <NavLink
-              to="/phones"
-              className={cn('top-bar__link', {
-                'is-active': pathname === '/phones',
-              })}
-            >
-              Phones
-            </NavLink>
-            <NavLink
-              to="/tablets"
-              className={cn('top-bar__link', {
-                'is-active': pathname === '/tablets',
-              })}
-            >
-              Tablets
-            </NavLink>
-            <NavLink
-              to="/accessories"
-              className={cn('top-bar__link', {
-                'is-active': pathname === '/accessories',
-              })}
-            >
-              Accessories
-            </NavLink>
-          </nav>
+          <div className="container">
+            <nav className="top-bar__links">
+              <NavLink
+                to="/"
+                className={cn('top-bar__link', {
+                  'is-active': pathname === '/',
+                })}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/phones"
+                className={cn('top-bar__link', {
+                  'is-active': pathname === '/phones',
+                })}
+              >
+                Phones
+              </NavLink>
+              <NavLink
+                to="/tablets"
+                className={cn('top-bar__link', {
+                  'is-active': pathname === '/tablets',
+                })}
+              >
+                Tablets
+              </NavLink>
+              <NavLink
+                to="/accessories"
+                className={cn('top-bar__link', {
+                  'is-active': pathname === '/accessories',
+                })}
+              >
+                Accessories
+              </NavLink>
+            </nav>
+          </div>
           <nav className="top-bar__icons">
             <NavLink
               to="/favorites"

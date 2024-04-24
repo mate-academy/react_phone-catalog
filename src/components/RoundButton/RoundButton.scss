@@ -8,6 +8,7 @@
   background-repeat: no-repeat;
   background-position: center;
   transition: border 0.3s ease;
+  background-size: 50%;
 
   &:hover {
     border: 1px solid $primary-color;
@@ -20,46 +21,37 @@
 
   &--fav {
     background-image: url('../../../public/img/icons/fav.svg');
-    background-size: 50%;
 
     &-filled {
       background-image: url('../../../public/img/icons/fav-filled.svg');
-      background-size: 50%;
     }
   }
 
   &--left {
     background-image: url('../../../public/img/icons/left.svg');
-    background-size: 50%;
   }
 
   &--left-disabled {
     background-image: url('../../../public/img/icons/left-gray.svg');
-    background-size: 50%;
   }
 
   &--right {
     background-image: url('../../../public/img/icons/right.svg');
-    background-size: 50%;
   }
 
   &--right-disabled {
     background-image: url('../../../public/img/icons/right-gray.svg');
-    background-size: 50%;
   }
 
   &--up {
     background-image: url(../../../public/img/icons/up.svg);
-    background-size: 50%;
   }
 
   &--plus {
     background-image: url(../../../public/img/icons/plus.svg);
-    background-size: 50%;
   }
 
   &--minus {
     background-image: url(../../../public/img/icons/minus.svg);
-    background-size: 50%;
   }
 }

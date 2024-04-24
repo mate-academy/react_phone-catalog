@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import './PicturesSlider.scss';
+import { BASE_URL } from '../../api/api';
 
 export const slides = [
-  '/img/slide-1.png',
-  '/img/slide-2.png',
-  '/img/slide-3.png',
+  `${BASE_URL}/img/slide-1.png`,
+  `${BASE_URL}/img/slide-2.png`,
+  `${BASE_URL}/img/slide-3.png`,
 ];
 
 export const PicturesSlider = () => {

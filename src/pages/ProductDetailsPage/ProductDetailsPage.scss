@@ -44,9 +44,11 @@
       width: 320px;
     }
   }
+
   &__subtitle {
     @include header-font-s;
   }
+
   &__name {
     @include header-font-m;
 

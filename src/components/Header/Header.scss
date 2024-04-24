@@ -6,7 +6,7 @@
   top: 0;
   height: 48px;
   background: $white-color;
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  box-shadow: 0 1px 0 0 $stroke-color;
   align-content: center;
 
   @include on-desktop {
@@ -99,6 +99,9 @@
   width: 48px;
   text-decoration: none;
   position: relative;
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -1px 0 0 0 $stroke-color;
 
   &--active {
     &::before {
@@ -118,23 +121,14 @@
 
   &--favourites {
     background-image: url('../../../public/img/icons/fav.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
   }
 
   &--cart {
     background-image: url('../../../public/img/icons/cart.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
   }
 
   &--menu {
     background-image: url('../../../public/img/icons/menu.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
 
     @include on-tablet {
       display: none;
@@ -143,9 +137,6 @@
 
   &--close {
     background-image: url('../../../public/img/icons/close.svg');
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: -1px 0 0 0 #e2e6e9;
   }
 }
 

@@ -10,7 +10,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
     width: 32px;
     height: 32px;
     flex-shrink: 0;
@@ -19,8 +18,10 @@
 
     @include body-font;
 
+    line-height: normal;
+
     &:hover {
-      border: 1px solid $icons-placeholder-color;
+      border: 1px solid $primary-color;
     }
 
     &--active {
