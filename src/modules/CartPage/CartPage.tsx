@@ -11,6 +11,10 @@ export const CartPage = () => {
   const { cartItem } = useAppSelector(state => state.cartItems);
   const [showModal, setShowModal] = useState(false);
 
+  const totalItemsCount = useMemo(() => {
+    return cartItem.reduce((sum, item) => sum + item.quantity, 0);
+  }, [cartItem]);
+
   const totalPrice = useMemo(() => {
     return cartItem.reduce(
       (sum, item) => sum + item.product.priceDiscount * item.quantity,
@@ -40,7 +44,7 @@ export const CartPage = () => {
             <span className={styles.cartTotalPrice}>{`$${totalPrice}`}</span>
 
             <span className={styles.cartTotalText}>
-              Total for {cartItem.length} items
+              Total for {totalItemsCount} items
             </span>
 
             <span className={styles.cartDivider}></span>
