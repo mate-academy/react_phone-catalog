@@ -2,11 +2,10 @@
 @import '../../style/utils/mixins';
 
 .pagination {
-  // width: 1136px;
-  text-align: center;
-
   &__content {
     margin-block: 40px 80px;
+    overflow: hidden;
+    text-align: center;
   }
 
   &__list {
@@ -28,6 +27,22 @@
     &--active {
       background-color: $primary;
       border: none;
+    }
+  }
+
+  &__back-to-first {
+    width: 32px;
+    height: 32px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: 1px solid $icons;
+    &--img {
+      width: 16px;
+      height: 16px;
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
     }
   }
 
@@ -55,26 +70,10 @@
   }
 
   &__numbers {
-    display: none;
-
-    @include on-tablet {
-      display: flex;
-    }
-
+    display: flex;
     gap: 8px;
     justify-content: space-between;
     align-items: center;
-
-    &--mobile {
-      display: flex;
-      gap: 8px;
-      justify-content: space-between;
-      align-items: center;
-
-      @include on-tablet {
-        display: none;
-      }
-    }
   }
 
   &__number {
@@ -92,18 +91,6 @@
   }
 
   &__sidebutton {
-    display: none;
-
-    @include on-tablet {
-      display: block;
-    }
-
-    &--mobile {
-      display: block;
-      
-      @include on-tablet {
-        display: none;
-      }
-    }
+    display: block;
   }
 }

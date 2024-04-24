@@ -96,7 +96,7 @@ export const Details: React.FC<Props> = ({
 
   return (
     <div className="details">
-      <h1 className="details__title title">{product.name}</h1>
+      <h1 className="details__title title-subtitle">{product.name}</h1>
 
       <div className="details__container">
         <div className="details__top">
@@ -298,7 +298,7 @@ export const Details: React.FC<Props> = ({
         </div>
 
         <div className="details__bottom">
-          <div className="details__bottom-left">
+          <div className="details__bottom-about">
             <div className="details__bottom-name">
               <h1 className="details__bottom-title">About</h1>
             </div>
@@ -312,7 +312,7 @@ export const Details: React.FC<Props> = ({
             </section>
           </div>
 
-          <div className="details__bottom-right">
+          <div className="details__bottom-tech">
             <div className="details__bottom-name">
               <h1 className="details__bottom-title">Tech specs</h1>
             </div>

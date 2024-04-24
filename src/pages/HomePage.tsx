@@ -100,13 +100,36 @@ export const HomePage: React.FC = () => {
           />
 
           <div className="banner__images">
-            <div
-              className={cn('banner__image', {
-                'banner__image--first': startBannerIndex === 0,
-                'banner__image--second': startBannerIndex === 1,
-                'banner__image--third': startBannerIndex === 2,
-              })}
-            />
+            <div className="banner__image">
+              {startBannerIndex === 0 && (
+                <>
+                  <img
+                    src="./img/Bannerjpg.jpg"
+                    alt="banner-1"
+                    className="banner__picture banner__picture--first"
+                  />
+                  <img
+                    src="./img/Banner--mobile.jpg"
+                    alt="banner-1"
+                    className="banner__picture banner__picture--first-mobile"
+                  />
+                </>
+              )}
+              {startBannerIndex === 1 && (
+                <img
+                  src="./img/banner-accessories.png"
+                  alt="banner-1"
+                  className="banner__picture"
+                />
+              )}
+              {startBannerIndex === 2 && (
+                <img
+                  src="./img/banner-tablets.png"
+                  alt="banner-1"
+                  className="banner__picture"
+                />
+              )}
+            </div>
           </div>
 
           <button
@@ -147,7 +170,7 @@ export const HomePage: React.FC = () => {
       </section>
 
       <section className="shop">
-        <h1 className="title shop__name">Shop by category</h1>
+        <h1 className="title-subtitle shop__name">Shop by category</h1>
         <div className="shop__container" data-cy="categoryLinksContainer">
           <Link to="/phones" className="shop__category shop__category--phones">
             <img

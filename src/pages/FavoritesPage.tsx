@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { CatalogContext } from '../components/CatalogContext';
 import { Product } from '../types/Product';
 import { ProductCard } from '../components/ProductCard';
+import '../App.scss';
 
 export const FavoritesPage = () => {
   const { favoriteProducts } = useContext(CatalogContext);
@@ -11,34 +12,44 @@ export const FavoritesPage = () => {
   const pathNameUrl = location.pathname.slice(1);
 
   return (
-    <div>
-      <div className="brandcrumbs product-list__url">
-        <Link to="/">
-          <img src="icons/Home.svg" alt="home" className="product-list__home" />
-        </Link>
-        <img
-          src="buttons/Chevron-Arrow-Right--disabled.svg"
-          alt=""
-          className="product-list__url-arrow"
-        />
+    <div className="favorites">
+      <div className="favorites__top">
+        <div className="brandcrumbs product-list__url favorites__url">
+          <Link to="/">
+            <img
+              src="icons/Home.svg"
+              alt="home"
+              className="product-list__home"
+            />
+          </Link>
+          <img
+            src="buttons/Chevron-Arrow-Right--disabled.svg"
+            alt=""
+            className="product-list__url-arrow"
+          />
+          <p
+            className="
+                brandcrumbs__name
+                product-list__url-pathname
+              "
+          >
+            {pathNameUrl}
+          </p>
+        </div>
+        <h1 className="title favorites__title">Favorites</h1>
         <p
           className="
-              brandcrumbs__name
-              product-list__url-pathname
-            "
+            product-list__count
+            product-list__count-content
+            favorites__count"
         >
-          {pathNameUrl}
+          {`${favoriteProducts.length} models`}
         </p>
       </div>
-      <h1 className="title">Favorites</h1>
-
-      <p className="product-list__count product-list__count-content">
-        {`${favoriteProducts.length} models`}
-      </p>
 
       <div
         data-cy="productList"
-        className="product-list__list"
+        className="product-list__items favorites__items"
         style={{ marginBottom: '80px' }}
       >
         {favoriteProducts.map((product: Product) => (

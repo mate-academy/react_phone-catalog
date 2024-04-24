@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import './Pagination.scss';
 import cn from 'classnames';
 
@@ -15,39 +15,88 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const [visiblePageNumbers, setVisiblePageNumbers] = useState([1, 2, 3]);
+  const [visiblePageNumbers, setVisiblePageNumbers] = useState<number[]>([]);
+  const [currentWidth, setCurrentWidth] = useState(window.innerWidth);
 
-  const pageCount = Math.ceil(total / perPage);
-
-  const pageNumbers: number[] = Array.from(
-    { length: pageCount },
+  const tabletPaginationNumbers: number[] = Array.from(
+    { length: 13 },
     (_, i) => i + 1,
   );
 
-  const handleOpenPrevPage = () =>
-    currentPage !== 1 && onPageChange(currentPage - 1);
+  const desktopPaginationNumbers: number[] = Array.from(
+    { length: 23 },
+    (_, i) => i + 1,
+  );
 
-  const handleOpenPrevPageMobile = useCallback(() => {
+  const pageCount = Math.ceil(total / perPage);
+
+  useEffect(() => {
+    const handleResize = () => {
+      setCurrentWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
+  useEffect(() => {
+    let newVisiblePageNumbers: number[] = [];
+
+    if (currentWidth >= 640 && currentWidth < 1200) {
+      if (pageCount >= tabletPaginationNumbers.length) {
+        newVisiblePageNumbers = tabletPaginationNumbers;
+      } else {
+        newVisiblePageNumbers = Array.from(
+          { length: pageCount },
+          (_, i) => i + 1,
+        );
+      }
+    } else if (currentWidth >= 1200) {
+      if (pageCount >= desktopPaginationNumbers.length) {
+        newVisiblePageNumbers = desktopPaginationNumbers;
+      } else {
+        newVisiblePageNumbers = Array.from(
+          { length: pageCount },
+          (_, i) => i + 1,
+        );
+      }
+    } else {
+      newVisiblePageNumbers = [1, 2, 3, 4];
+    }
+
+    setVisiblePageNumbers(newVisiblePageNumbers);
+  }, [currentWidth]);
+
+  const handleOpenFirstPage = useCallback(() => {
+    onPageChange(1);
+
+    const updatedPageNumbers = Array.from(
+      { length: visiblePageNumbers.length },
+      (_, i) => i + 1,
+    );
+
+    setVisiblePageNumbers(updatedPageNumbers);
+  }, [onPageChange, visiblePageNumbers]);
+
+  const handleOpenPrevPage = useCallback(() => {
     if (currentPage !== 1) {
       onPageChange(currentPage - 1);
     }
 
-    if (currentPage === visiblePageNumbers[0] && currentPage !== 0) {
+    if (currentPage === visiblePageNumbers[0] && currentPage !== 1) {
       const updatedPageNumbers = [...visiblePageNumbers];
 
       updatedPageNumbers.unshift(currentPage - 1);
       updatedPageNumbers.pop();
+
       setVisiblePageNumbers(updatedPageNumbers);
     }
   }, [currentPage, onPageChange, visiblePageNumbers]);
 
-  const handleOpenNextPage = () => {
-    if (currentPage !== pageCount) {
-      onPageChange(currentPage + 1);
-    }
-  };
-
-  const handleOpenNextPageMobile = useCallback(() => {
+  const handleOpenNextPage = useCallback(() => {
     if (currentPage !== pageCount) {
       onPageChange(currentPage + 1);
     }
@@ -60,13 +109,32 @@ export const Pagination: React.FC<Props> = ({
 
       updatedPageNumbers.push(currentPage + 1);
       updatedPageNumbers.shift();
+
       setVisiblePageNumbers(updatedPageNumbers);
     }
-  }, [pageCount, visiblePageNumbers, currentPage, onPageChange]);
+  }, [pageCount, currentPage, onPageChange, visiblePageNumbers]);
 
   return (
     <div className="pagination pagination__content">
       <ul className="pagination__list">
+        <li className="pagination__item pagination__sidebutton">
+          <button
+            type="button"
+            data-cy="paginationLeft"
+            className={cn('button pagination__back-to-first', {
+              'pagination__back-to-first--disabled': currentPage === 1,
+            })}
+            onClick={handleOpenFirstPage}
+            aria-disabled={currentPage === 1}
+            aria-label="first"
+          >
+            <img
+              src="./icons/angle-double-small-left.svg"
+              alt="arrow-first"
+              className="button pagination__back-to-first--img"
+            />
+          </button>
+        </li>
         <li className="pagination__item pagination__sidebutton">
           <button
             type="button"
@@ -80,21 +148,8 @@ export const Pagination: React.FC<Props> = ({
           />
         </li>
 
-        <li className="pagination__item pagination__sidebutton--mobile">
-          <button
-            type="button"
-            data-cy="paginationLeft"
-            className={cn('button pagination__link', 'pagination__link--left', {
-              'pagination__link--left--disabled': currentPage === 1,
-            })}
-            onClick={handleOpenPrevPageMobile}
-            aria-disabled={currentPage === 1}
-            aria-label="prev"
-          />
-        </li>
-
         <div className="pagination__numbers">
-          {pageNumbers.map(pageNumber => (
+          {visiblePageNumbers.map(pageNumber => (
             <li
               key={pageNumber}
               className={cn('pagination__item', {
@@ -115,72 +170,6 @@ export const Pagination: React.FC<Props> = ({
           ))}
         </div>
 
-        <div className="pagination__numbers--mobile">
-          {currentPage >= pageCount / 2 && (
-            <>
-              <div
-                className={cn('pagination__item', {
-                  'pagination__item--active': pageCount === currentPage,
-                })}
-              >
-                <button
-                  type="button"
-                  data-cy="pageLink"
-                  className={cn('button pagination__number', {
-                    'pagination__number--active': pageCount === currentPage,
-                  })}
-                  onClick={() => onPageChange(pageCount)}
-                >
-                  {1}
-                </button>
-              </div>
-              <p className="padination__dots">...</p>
-            </>
-          )}
-
-          {visiblePageNumbers.map(visibleNumber => (
-            <li
-              key={visibleNumber}
-              className={cn('pagination__item', {
-                'pagination__item--active': visibleNumber === currentPage,
-              })}
-            >
-              <button
-                type="button"
-                data-cy="pageLink"
-                className={cn('button pagination__number', {
-                  'pagination__number--active': visibleNumber === currentPage,
-                })}
-                onClick={() => onPageChange(visibleNumber)}
-              >
-                {visibleNumber}
-              </button>
-            </li>
-          ))}
-
-          {currentPage < pageCount / 2 && (
-            <>
-              <p className="padination__dots">...</p>
-              <div
-                className={cn('pagination__item', {
-                  'pagination__item--active': pageCount === currentPage,
-                })}
-              >
-                <button
-                  type="button"
-                  data-cy="pageLink"
-                  className={cn('button pagination__number', {
-                    'pagination__number--active': pageCount === currentPage,
-                  })}
-                  onClick={() => onPageChange(pageCount)}
-                >
-                  {pageNumbers[pageNumbers.length - 1]}
-                </button>
-              </div>
-            </>
-          )}
-        </div>
-
         <li className="pagination__item pagination__sidebutton">
           <button
             type="button"
@@ -189,19 +178,6 @@ export const Pagination: React.FC<Props> = ({
               'pagination__link--disabled': currentPage === pageCount,
             })}
             onClick={handleOpenNextPage}
-            aria-disabled={currentPage === pageCount}
-            aria-label="next"
-          />
-        </li>
-
-        <li className="pagination__item pagination__sidebutton--mobile">
-          <button
-            type="button"
-            data-cy="paginationRight"
-            className={cn('button pagination__link', {
-              'pagination__link--disabled': currentPage === pageCount,
-            })}
-            onClick={handleOpenNextPageMobile}
             aria-disabled={currentPage === pageCount}
             aria-label="next"
           />

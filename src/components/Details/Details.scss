@@ -4,15 +4,37 @@
 .details {
   @include page-paddings;
 
+  @include on-desktop {
+    width: 1136px;
+    margin-inline: auto;
+  }
+
   &__container {
-    // width: 1136px;
     display: flex;
     flex-direction: column;
-    gap: 80px;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__arrow-back {
+    cursor: pointer;
   }
 
   &__back {
     padding-left: 16px;
+
+    @include on-desktop {
+      width: 1136px;
+      margin-inline: auto;
+    }
   }
 
   &__url {
@@ -21,6 +43,11 @@
 
     @include on-tablet {
       margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      width: 1136px;
+      margin-inline: auto;
     }
 
     &-pathname {
@@ -67,57 +94,126 @@
 
     @include on-tablet {
       flex-direction: column;
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;;
     }
   }
 
   &__image {
     grid-column: 1 / -1;
-    height: 80px;
+    width: 51.2px;
+    height: 49px;
     display: flex;
     justify-content: center;
     align-items: center;
     border: 1px solid $elements;
     padding-inline: 3px;
+
     &--active {
       border-color: $primary;
+    }
+
+    @include on-tablet {
+      height: 35px;
+    }
+
+    @include on-desktop {
+      height: 80px;
+    }
+  }
+
+  &__picture {
+    width: 42.24px;
+    height: 40.43px;
+    background-position: center;
+    object-fit: contain;
+
+    @include on-tablet {
+      height: 29px;
+    }
+
+    @include on-desktop {
+      height: 66px;
     }
   }
 
   &__main {
     &-image {
       grid-column: 1 / -1;
-      height: 464px;
+      height: 288px;
       display: flex;
       justify-content: center;
       align-items: center;
+      margin-bottom: 16px;
+
+      @include on-tablet {
+        grid-column: 2 / 8;
+        grid-row: 1 / 2;
+        height: 287px;
+      }
+
+      @include on-desktop {
+        grid-column: 3 / 13;
+        height: 464px;
+      }
     }
 
     &-picture {
-      height: 442px;
+      height: 273px;
       width: 100%;
       background-position: center;
       object-fit: contain;
+
+      @include on-desktop {
+        height: 442px;
+      }
     }
   }
 
-  &__picture {
-    height: 66px;
-    background-position: center;
-    object-fit: contain;
-  }
 
   &__characteristics {
     grid-column: 1 / -1;
+    margin-top: 40px;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 1 / 2;
+      height: 435px;
+      margin-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+      height: 464px;
+    }
   }
 
   &__bottom {
     @include page-grid;
 
-    &-left {
+    &-about {
       grid-column: 1 / -1;
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
     }
-    &-right {
+    &-tech {
       grid-column: 1 / -1;
+      margin-block: 56px;
+
+      @include on-tablet {
+        margin-block: 64px;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / -1;
+        margin-block: 0;
+      }
     }
 
     &-name {
@@ -133,6 +229,7 @@
         bottom: -16px;
       }
     }
+
     &-title {
       font-family: $mont;
       font-size: 22px;
@@ -140,6 +237,18 @@
       line-height: 31px;
       text-align: left;
       color: $primary;
+    }
+  }
+
+  &__slider {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
     }
   }
 }
@@ -161,12 +270,11 @@
 
   &__section {
     position: relative;
-    overflow: hidden;
     &:nth-child(2) {
       margin-top: 24px;
     }
 
-    > ::after {
+      &::after {
         display: block;
         content: "";
         position: absolute;
@@ -320,8 +428,4 @@
     font-weight: 500;
     line-height: 21px;
   }
-}
-
-.you-may-like {
-  margin-block: 80px;
 }

@@ -189,17 +189,31 @@ export const App = () => {
             </NavLink>
           </div>
 
-          <button
-            type="button"
-            className="header__burger-button"
-            onClick={toggleBurgerButton}
-          >
-            <img
-              src="./icons/Burger.svg"
-              alt="burger-menu"
-              className="header__burger-icon"
-            />
-          </button>
+          {asideIsOpen ? (
+            <button
+              type="button"
+              className="header__burger-button"
+              onClick={toggleBurgerButton}
+            >
+              <img
+                src="./icons/Close.svg"
+                alt="burger-menu"
+                className="header__burger-icon"
+              />
+            </button>
+          ) : (
+            <button
+              type="button"
+              className="header__burger-button"
+              onClick={toggleBurgerButton}
+            >
+              <img
+                src="./icons/Burger.svg"
+                alt="burger-menu"
+                className="header__burger-icon"
+              />
+            </button>
+          )}
         </div>
       </header>
 
@@ -207,29 +221,49 @@ export const App = () => {
         <aside id="menu" className="burger-menu">
           <li className="nav__list burger-menu__list">
             <ul className="nav__item burger-menu__item">
-              <NavLink to="/" className={getActiveBurgerLinks}>
+              <NavLink
+                to="/"
+                className={getActiveBurgerLinks}
+                onClick={() => setAsideIsOpen(false)}
+              >
                 home
               </NavLink>
             </ul>
             <ul className="nav__item burger-menu__item">
-              <NavLink to="/phones" className={getActiveBurgerLinks}>
+              <NavLink
+                to="/phones"
+                className={getActiveBurgerLinks}
+                onClick={() => setAsideIsOpen(false)}
+              >
                 phones
               </NavLink>
             </ul>
             <ul className="nav__item burger-menu__item">
-              <NavLink to="/tablets" className={getActiveBurgerLinks}>
+              <NavLink
+                to="/tablets"
+                className={getActiveBurgerLinks}
+                onClick={() => setAsideIsOpen(false)}
+              >
                 tablets
               </NavLink>
             </ul>
             <ul className="nav__item burger-menu__item">
-              <NavLink to="/accessories" className={getActiveBurgerLinks}>
+              <NavLink
+                to="/accessories"
+                className={getActiveBurgerLinks}
+                onClick={() => setAsideIsOpen(false)}
+              >
                 accessories
               </NavLink>
             </ul>
           </li>
 
           <div className="burger-menu__icons-wrapper">
-            <NavLink to="/favorites" className={getActiveBurgerIconsLink}>
+            <NavLink
+              to="/favorites"
+              className={getActiveBurgerIconsLink}
+              onClick={() => setAsideIsOpen(false)}
+            >
               <div
                 className="
                   burger-menu__icon-image
@@ -242,7 +276,12 @@ export const App = () => {
                 )}
               </div>
             </NavLink>
-            <NavLink to="/cart" className={getActiveBurgerIconsLink}>
+
+            <NavLink
+              to="/cart"
+              className={getActiveBurgerIconsLink}
+              onClick={() => setAsideIsOpen(false)}
+            >
               <div
                 className="
                   burger-menu__icon-image

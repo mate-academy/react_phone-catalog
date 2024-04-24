@@ -7,7 +7,6 @@ select {
 }
 
 .product-list {
-  
   &__top {
     @include page-grid;
 
@@ -145,7 +144,7 @@ select {
     color: $secondary;
   }
 
-  &__list {
+  &__items {
     display: grid;
     flex-direction: column;
     justify-content: center;
@@ -161,7 +160,6 @@ select {
       width: 1136px;
       grid-template-columns: repeat(4, 272px);
     }
-
   }
 
   &__link {
@@ -174,10 +172,15 @@ select {
     @include on-tablet {
       grid-column: auto;
     }
+
+    &:hover {
+      box-shadow: 0 2px 16px 0 #0000001A;
+    }
   }
 
   &__url {
     grid-column: 1 / -1;
+
     &-pathname {
       color: $secondary;
     }

@@ -1,67 +1,44 @@
 @import '../../style/utils/variables';
+@import '../../style//utils/mixins';
 
 .cart {
+  @include page-grid;
+  @include page-paddings;
+
+  @include on-desktop {
+    margin-inline: auto;
+    width: 1136px;
+  }
+
   &__back {
     margin-top: 40px;
+    grid-column: 1 / -1;
+
+    &-arrow {
+      transform: none;
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    grid-column: 1 / -1;
   }
 
   &__container {
     display: flex;
-    gap: 16px;
-    margin-block: 24px 87px;
-  }
+    flex-direction: column;
+    gap: 32px;
+    margin-block: 32px 56px;
+    grid-column: 1 / -1;
 
-  &__summary {
-    box-sizing: border-box;
-    padding: 24px;
-    width: 368px;
-    height: 206px;
-    border: 1px solid $elements;
-  }
-
-  &__button {
-    width: 320px;
-    height: 48px;
-    background-color: $primary;
-    color: $white;
-    font-family: $mont;
-    font-size: 14px;
-    font-weight: 600;
-    line-height: 21px;
-    text-align: center;
-    margin-top: 48px;
-
-  }
-
-  &__price {
-    text-align: center;
-    position: relative;
-    ::after {
-      position: absolute;
-      content: "";
-      width: 100%;
-      height: 1px;
-      background-color: $elements;
-      display: block;
-      bottom: -24px;
+    @include on-tablet {
+      margin-bottom: 64px;
     }
-  }
 
-  &__total {
-    font-family: $mont;
-    font-size: 32px;
-    font-weight: 700;
-    line-height: 40.9px;
-    letter-spacing: -0.01em;
-    color: $primary;
-
-    &-text {
-      font-family: $mont;
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 21px;
-      text-align: center;
-      color: $secondary;
+    @include on-desktop {
+      flex-direction: row;
+      gap: 16px;
+      justify-content: center;
     }
   }
 
@@ -69,20 +46,59 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include on-desktop {
+      width: 752px;
+    }
   }
 
   &__item {
-    width: 752px;
-    height: 128px;
+    box-sizing: border-box;
+    height: 160px;
     border: 1px solid $elements;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+    gap: 16px;
+    padding-block: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 24px;
+      justify-content: center;
+      height: 128px;
+    }
+
+    &-left {
+      height: 80px;
+      width: 256px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 16px;
+
+      @include on-tablet {
+        gap: 24px;
+      }
+
+      @include on-desktop {
+        width: 480px;
+      }
+    }
+
+    &-right {
+      display: flex;
+      justify-content: space-between;
+      width: 256px;
+
+      @include on-tablet {
+        width: 200px;
+      }
+    }
 
     &-delete {
       width: 16px;
       height: 16px;
-      margin-left: 24px;
     }
 
     &-image {
@@ -90,13 +106,27 @@
       height: 80px;
       display: flex;
       justify-content: center;
-      padding-inline: 24px;
+      align-items: center;
+    }
+
+    &-picture {
+      width: 66px;
+      height: 66px;
     }
 
     &-name {
       &-wrapper {
-        width: 295px;
-        height: 42px;
+        width: 128px;
+        height: 63px;
+
+        @include on-tablet {
+          width: 176px;
+        }
+
+        @include on-desktop {
+          width: 336px;
+          height: auto;
+        }
       }
 
       font-family: $mont;
@@ -109,8 +139,6 @@
     &-panel {
       display: flex;
       flex-direction: row;
-      padding-left: 49px;
-      padding-right: 43px;
       color: $primary;
     }
 
@@ -168,6 +196,70 @@
     }
   }
 
+  &__right {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      width: 368px;
+    }
+  }
+
+  &__summary {
+    box-sizing: border-box;
+    padding: 24px;
+    height: 206px;
+    border: 1px solid $elements;
+  }
+
+  &__button {
+    height: 48px;
+    background-color: $primary;
+    color: $white;
+    font-family: $mont;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    margin-top: 48px;
+    width: 100%;
+  }
+
+  &__price {
+    text-align: center;
+    position: relative;
+    ::after {
+      position: absolute;
+      content: "";
+      width: 100%;
+      height: 1px;
+      background-color: $elements;
+      display: block;
+      bottom: -24px;
+    }
+  }
+
+  &__total {
+    font-family: $mont;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: center;
+
+    color: $primary;
+
+    &-text {
+      font-family: $mont;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      text-align: center;
+      color: $secondary;
+    }
+  }
+
   &__checkout-message {
     padding-top: 16px;
     font-family: $mont;
@@ -181,8 +273,10 @@
   &__empty {
     padding-block: 24px;
     font-family: $mont;
+    color: $secondary;
     font-size: 22px;
     font-weight: 500;
     line-height: 21px;
+    grid-column: 1 / -1;
   }
 }

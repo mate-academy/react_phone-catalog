@@ -8,6 +8,7 @@
 
   @include on-tablet {
     padding-left: 24px;
+    height: 577px;
   }
 
   @include on-desktop {
@@ -16,54 +17,27 @@
     padding-left: 0;
   }
 
-  &__container {
+  &__list {
     max-width: 100vw;
-    overflow: hidden;
-    white-space: nowrap;
-
-    @include on-desktop {
-      overflow: visible;
-    }
-  }
-
-  &__cards {
+    overflow: visible;
     display: flex;
     gap: 16px;
-    transition: transform 0.3s ease;
-
-    @include on-desktop {
-      transition: none;
-    }
-
-    &--mobile {
-      display: flex;
-
-      @include on-desktop {
-        display: none;
-      }
-    }
-
-    &--desktop {
-      display: none;
-
-      @include on-desktop {
-        display: flex;
-      }
-    }
+    transition: transform 1s ease;
+    z-index: 2;
   }
 
   &__top {
     display: flex;
     justify-content: space-between;
     padding-bottom: 24px;
-    padding-inline: 16px;
+    padding-right: 16px;
 
     @include on-tablet {
-      padding-inline: 24px;
+      padding-right: 24px;
     }
 
     @include on-desktop {
-      padding-inline: 0;
+      padding-right: 0;
     }
   }
 

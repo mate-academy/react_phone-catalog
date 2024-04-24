@@ -98,9 +98,10 @@ export const ProductDetailsPage = () => {
 
       <div className="back details__back">
         <img
-          src="./icons/Chevron-Arrow-Right.svg"
+          src="./icons/Chevron-Arrow-Left.svg"
           alt="arrow"
-          className="back__arrow"
+          className="details__arrow-back"
+          onClick={goBack}
         />
         <button
           type="button"
@@ -129,7 +130,7 @@ export const ProductDetailsPage = () => {
           setColor={setActiveColor}
         />
       )}
-      <div className="details__slider">
+      <div className="details__slider slider">
         <ProductsSlider
           products={randomProducts}
           unitName="You may also like"

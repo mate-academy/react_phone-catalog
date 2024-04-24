@@ -207,7 +207,7 @@ export const ProductList: React.FC<Props> = ({
         {!productsLoading && displayedItems.length > 0 ? (
           <div
             data-cy="productList"
-            className="product-list__list"
+            className="product-list__items"
             style={addMargin}
           >
             {displayedItems.map((product: Product) => (
@@ -223,7 +223,8 @@ export const ProductList: React.FC<Props> = ({
         ) : (
           <NoSearchResults />
         )}
-        {visibleProducts.length > displayedItems.length && (
+
+        {!noPagination && (
           <Pagination
             total={productsFromServer.length}
             perPage={perPage}

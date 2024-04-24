@@ -72,9 +72,10 @@ export const Cart: React.FC = () => {
     <div className="cart">
       <div className="back cart__back">
         <img
-          src="./icons/Chevron-Arrow-Right.svg"
+          src="./icons/Chevron-Arrow-Left.svg"
           alt="arrow"
-          className="back__arrow"
+          className="back__arrow cart__back-arrow"
+          onClick={goBack}
         />
         <button
           type="button"
@@ -86,7 +87,7 @@ export const Cart: React.FC = () => {
         </button>
       </div>
 
-      <h1 className="title">Cart</h1>
+      <h1 className="title cart__title">Cart</h1>
 
       {cartItems.length === 0 ? (
         <h2 className="cart__empty">Your cart is empty</h2>
@@ -95,62 +96,65 @@ export const Cart: React.FC = () => {
           <div className="cart__items">
             {cartItems.map(cartItem => (
               <div className="cart__item" key={cartItem.id}>
-                <button
-                  type="button"
-                  onClick={() => handleDeleteFromCartClick(cartItem.id)}
-                  className="cart__item-delete"
-                  data-cy="cartDeleteButton"
-                >
-                  <img src="./icons/Delete.svg" alt="delete" />
-                </button>
-
-                <div className="cart__item-image">
-                  <img
-                    src={`${cartItem.item.image}`}
-                    alt={`product-${cartItem.id}`}
-                  />
-                </div>
-
-                <div className="cart__item-name-wrapper">
-                  <p className="cart__item-name">{cartItem.item.name}</p>
-                </div>
-
-                <div className="cart__item-panel">
+                <div className="cart__item-left">
                   <button
                     type="button"
-                    onClick={() => handleMinus(cartItem.id)}
-                    className={cn('cart__item-operator', {
-                      'cart__item-operator--disabled': itemIsOne(cartItem.id),
-                    })}
-                    aria-label="Decrease quantity"
+                    onClick={() => handleDeleteFromCartClick(cartItem.id)}
+                    className="cart__item-delete"
+                    data-cy="cartDeleteButton"
                   >
-                    <div
-                      className={cn('cart__item-sign cart__item-sign--minus', {
-                        'cart__item-sign--disabled': itemIsOne(cartItem.id),
-                      })}
+                    <img src="./icons/Delete.svg" alt="delete" />
+                  </button>
+                  <div className="cart__item-image">
+                    <img
+                      className="cart__item-picture"
+                      src={`${cartItem.item.image}`}
+                      alt={`product-${cartItem.id}`}
                     />
-                  </button>
-
-                  <div
-                    className="cart__item-quantity"
-                    data-cy="productQauntity"
-                  >
-                    {cartItem.quantity}
                   </div>
-
-                  <button
-                    type="button"
-                    onClick={() => handlePlus(cartItem.id)}
-                    className="cart__item-operator"
-                    aria-label="Increase quantity"
-                  >
-                    <div className="cart__item-sign cart__item-sign--plus" />
-                  </button>
+                  <div className="cart__item-name-wrapper">
+                    <p className="cart__item-name">{cartItem.item.name}</p>
+                  </div>
                 </div>
 
-                <h2 className="cart__item-price">
-                  {`$${totalPriceForItem(cartItem.id)}`}
-                </h2>
+                <div className="cart__item-right">
+                  <div className="cart__item-panel">
+                    <button
+                      type="button"
+                      onClick={() => handleMinus(cartItem.id)}
+                      className={cn('cart__item-operator', {
+                        'cart__item-operator--disabled': itemIsOne(cartItem.id),
+                      })}
+                      aria-label="Decrease quantity"
+                    >
+                      <div
+                        className={cn(
+                          'cart__item-sign cart__item-sign--minus',
+                          {
+                            'cart__item-sign--disabled': itemIsOne(cartItem.id),
+                          },
+                        )}
+                      />
+                    </button>
+                    <div
+                      className="cart__item-quantity"
+                      data-cy="productQauntity"
+                    >
+                      {cartItem.quantity}
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => handlePlus(cartItem.id)}
+                      className="cart__item-operator"
+                      aria-label="Increase quantity"
+                    >
+                      <div className="cart__item-sign cart__item-sign--plus" />
+                    </button>
+                  </div>
+                  <h2 className="cart__item-price">
+                    {`$${totalPriceForItem(cartItem.id)}`}
+                  </h2>
+                </div>
               </div>
             ))}
           </div>
@@ -158,7 +162,7 @@ export const Cart: React.FC = () => {
           <div className="cart__right">
             <div className="cart__summary">
               <div className="cart__price">
-                <h1 className="cart__total">{`$${totalPrice}`}</h1>
+                <h2 className="cart__total">{`$${totalPrice}`}</h2>
                 <p className="cart__total-text">{`Total for ${cartItems.length} items`}</p>
               </div>
               <button

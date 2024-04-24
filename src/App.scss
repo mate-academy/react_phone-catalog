@@ -5,6 +5,12 @@
 @import './style/item';
 @import './style/utils/mixins';
 
+html {
+  &:has(.burger-menu) {
+    overflow-y: hidden;
+  }
+}
+
 body {
   margin: 0;
   background-color: $background-color;
@@ -70,7 +76,6 @@ main {
   line-height: 64px;
   border-bottom: 1px solid $elements;
   border-right: 1px solid $elements;
-  margin-bottom: 20px;
 
   &--left {
     display: flex;
@@ -158,6 +163,7 @@ main {
     text-decoration: none;
     height: 64px;
     width: 64px;
+    border-left: 1px solid $elements;
 
     @include on-tablet {
       display: none;
@@ -196,6 +202,11 @@ main {
       line-height: 18px;
       text-align: left;
       color: $primary;
+      width: 50px;
+
+      @include on-desktop {
+        width: 188.8px;
+      }
 
       ::placeholder {
         font-family: $mont;
@@ -385,6 +396,10 @@ main {
     background-position: center;
     object-fit: cover;
 
+    &:hover{
+      transform: scale(1.05);
+    }
+
     @include on-tablet {
       height: 187px;
     }
@@ -435,9 +450,13 @@ main {
     &-name {
       font-family: $mont;
       font-size: 20px;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 26px;
       text-align: left;
+
+      @include on-tablet {
+        font-weight: 600;
+      }
     }
 
     &-amount {
@@ -527,23 +546,52 @@ main {
 
   &__image {
     height: 320px;
-    background-repeat: no-repeat;
-    background-position: center;
-    object-fit: contain;
-    display: block;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__picture {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+
+    &:hover {
+      transform: none;
+    }
 
     &--first {
-      background-image: url(../public/img/Banner.png);
-    }
-    &--second {
-      background-image: url(../public/img/banner-accessories.png);
-    }
-    &--third {
-      background-image: url(../public/img/banner-tablets.png);
+      display: none;
+
+      @include on-tablet {
+        display: block;
+        object-position: center 0;
+      }
+
+      @include on-desktop {
+        object-position: center center;
+      }
+
+      &-mobile {
+        display: block;
+        height: 100%;
+        width: 100%;
+        object-position: center -15px;
+
+        @include on-tablet {
+          display: none;
+        }
+      }
     }
 
     @include on-tablet {
       height: 189px;
+      object-position: center center;
     }
 
     @include on-desktop {
@@ -585,6 +633,7 @@ main {
     align-items: center;
     gap: 16px;
     margin: 0;
+    padding-top: 24px;
   }
 
   &__item {
@@ -617,7 +666,7 @@ main {
   &__icons-wrapper {
     display: flex;
     position: absolute;
-    bottom: 0;
+    bottom: 64px;
     width: 100%;
   }
 
@@ -661,5 +710,25 @@ main {
       background-color: $red;
       border-radius: 50%;
     }
+  }
+}
+
+.favorites {
+  @include page-grid;
+  @include page-paddings;
+
+
+  @include on-desktop {
+    width: 1136px;
+    margin-inline: auto;
+  }
+
+  &__top {
+    grid-column: 1 / -1;
+  }
+
+  &__items {
+    grid-column: 1 / -1;
+    overflow: hidden;
   }
 }
