@@ -1,7 +1,7 @@
 import { Product } from '../types/product';
 import { ProductDetails } from '../types/productDetails';
 
-export const BASE_URL = '';
+export const BASE_URL = '/react_phone-catalog';
 
 export const getProducts = async (): Promise<Product[]> => {
   const data = await fetch(`${BASE_URL}/api/products.json`);
