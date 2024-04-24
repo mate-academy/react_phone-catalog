@@ -117,7 +117,7 @@
         background-color: $color-surface2;
 
         &-disabled {
-          cursor: none;
+          cursor: not-allowed;
           background-color: $page-color;
           border: 1px solid $color-gray-elements;
         }

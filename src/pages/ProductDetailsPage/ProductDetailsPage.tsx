@@ -3,64 +3,49 @@ import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductDetails } from '../../types/productDetails';
-import { getProductDetails } from '../../utils/getProductDetails';
 import { ProductContext } from '../../context/productContext';
-import { Product } from '../../types/product';
 import { AddToCart } from '../../components/AddToCart';
 import { ProductSlider } from '../../components/ProductsSlider';
 import { Navigation } from '../../components/Navigation';
 import { BackButton } from '../../components/BackButton';
-
-export const getProductById = (products: Product[], productId: string) => {
-  return products.find(product => product.itemId === productId);
-};
+import { getProductDetailsByID } from '../../utils/fetchProducts';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
   const { pathname } = useLocation();
 
-  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<ProductDetails>();
 
   const [selectImage, setSelectImage] = useState('');
 
-  const { products, phonesDetails, tabletsDetails, accessoriesDetails } =
-    useContext(ProductContext);
+  const { products, dispatch } = useContext(ProductContext);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
-    const loadProductDetails = async () => {
-      if (productId) {
-        const cachedProduct = JSON.parse(
-          localStorage.getItem(productId) || '{}',
-        );
+    dispatch({ type: 'isLoading', payload: true });
+    if (productId) {
+      const cachedProduct = JSON.parse(localStorage.getItem(productId) || '{}');
 
-        if (cachedProduct && Object.keys(cachedProduct).length > 0) {
-          setProduct(cachedProduct);
-          setSelectImage(cachedProduct.images[0]);
-        } else {
-          const details = await getProductDetails(
-            productId,
-            products,
-            phonesDetails,
-            tabletsDetails,
-            accessoriesDetails,
-          );
-
-          if (details) {
-            setProduct(details);
-            setSelectImage(details.images[0]);
-            localStorage.setItem(productId, JSON.stringify(details));
-          }
-        }
+      if (cachedProduct && Object.keys(cachedProduct).length > 0) {
+        setProduct(cachedProduct);
+        setSelectImage(cachedProduct.images[0]);
+      } else {
+        getProductDetailsByID(productId, products)
+          .then(data => {
+            if (data) {
+              setProduct(data);
+              setSelectImage(data.images[0]);
+              localStorage.setItem(productId, JSON.stringify(data));
+            }
+          })
+          .catch(() => {})
+          .finally(() => dispatch({ type: 'isLoading', payload: true }));
       }
-    };
-
-    loadProductDetails();
+    }
   }, [productId]);
 
   if (!product || Object.keys(product).length === 0) {
-    // Check if product is null or an empty object
     return <div>Product not found</div>;
   }
 

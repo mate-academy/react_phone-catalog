@@ -3,9 +3,9 @@ import './PicturesSlider.scss';
 import classNames from 'classnames';
 
 const images = [
-  require('../../img/picturesSlider/watch.png'),
-  require('../../img/picturesSlider/iphone.png'),
-  require('../../img/picturesSlider/ipad.png'),
+  { path: 'img/picturesSlider/iphone.png' },
+  { path: 'img/picturesSlider/ipad.png' },
+  { path: 'img/picturesSlider/watch.png' },
 ];
 
 export const PicturesSlider = () => {
@@ -60,9 +60,9 @@ export const PicturesSlider = () => {
             }}
           >
             {images.map(image => (
-              <li className="carousel__slider-item" key={image}>
+              <li className="carousel__slider-item" key={image.path}>
                 <img
-                  src={image}
+                  src={image.path}
                   alt="banner"
                   className="carousel__slider-image"
                 />
@@ -79,7 +79,7 @@ export const PicturesSlider = () => {
       <div className="carousel__dots">
         {images.map((image, index) => (
           <button
-            key={image}
+            key={image.path}
             type="button"
             aria-label="dots"
             onClick={() => setCurrentIndex(index)}

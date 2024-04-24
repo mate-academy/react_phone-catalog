@@ -18,24 +18,22 @@ export const Navigation = () => {
   }
 
   return (
-    <>
-      <div className="navigation">
-        <Link to="/" className="icon icon-home" />
-        {path.map((p, i) => (
-          <li key={p}>
-            <div className="icon icon-right-disabled" />
-            <Link to={getRowLink(i + 1)} className="navigation-link">
-              <p
-                className={classNames('navigation-title', {
-                  'navigation-title-active': i === path.length - 1,
-                })}
-              >
-                {p.split('-').join(' ')}
-              </p>
-            </Link>
-          </li>
-        ))}
-      </div>
-    </>
+    <div className="navigation">
+      <Link to="/" className="icon icon-home" />
+      {path.map((p, i) => (
+        <>
+          <div className="icon icon-right-disabled" />
+          <Link to={getRowLink(i + 1)} className="navigation-link">
+            <p
+              className={classNames('navigation-title', {
+                'navigation-title-active': i === path.length - 1,
+              })}
+            >
+              {p.split('-').join(' ')}
+            </p>
+          </Link>
+        </>
+      ))}
+    </div>
   );
 };

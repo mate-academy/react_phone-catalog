@@ -2,10 +2,10 @@ import React, { useContext } from 'react';
 import './AddToCart.scss';
 import classNames from 'classnames';
 import { CartContext } from '../../context/cartContext';
-import { getProductById } from '../../pages/ProductDetailsPage';
 import { ProductContext } from '../../context/productContext';
 import { FavouritesContext } from '../../context/favouritesContext';
 import { Message } from '../../types/Message';
+import { getProductById } from '../../utils/getProductById';
 
 type Props = {
   productId: string;

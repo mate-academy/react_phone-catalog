@@ -1,21 +1,15 @@
-import React, { useMemo, useReducer } from 'react';
-import productsApi from '../api/products.json';
+import React, { useEffect, useMemo, useReducer } from 'react';
 import { Product } from '../types/product';
-import phonesApi from '../api/phones.json';
-import tabletsApi from '../api/tablets.json';
-import accessoriesApi from '../api/accessories.json';
-import { ProductDetails } from '../types/productDetails';
 import { Message } from '../types/Message';
+import { getProducts } from '../utils/fetchProducts';
 
 type Action =
   | { type: 'isLoading'; payload: boolean }
-  | { type: 'setMessage'; payload: Message };
+  | { type: 'setMessage'; payload: Message }
+  | { type: 'setProducts'; payload: Product[] };
 
 type ContextProps = {
   products: Product[];
-  phonesDetails: ProductDetails[];
-  tabletsDetails: ProductDetails[];
-  accessoriesDetails: ProductDetails[];
   isLoading: boolean;
   message: Message;
   dispatch: React.Dispatch<Action>;
@@ -34,24 +28,24 @@ const reducer = (state: ContextProps, action: Action): ContextProps => {
         ...state,
         isLoading: action.payload,
       };
+
+    case 'setProducts':
+      return {
+        ...state,
+        products: action.payload,
+      };
   }
 };
 
 export const ProductContext = React.createContext<ContextProps>({
   products: [],
-  phonesDetails: [],
-  tabletsDetails: [],
-  accessoriesDetails: [],
   isLoading: false,
   message: Message.none,
   dispatch: () => {},
 });
 
 const initialState: ContextProps = {
-  products: productsApi,
-  phonesDetails: phonesApi,
-  tabletsDetails: tabletsApi,
-  accessoriesDetails: accessoriesApi,
+  products: [],
   isLoading: false,
   message: Message.none,
   dispatch: () => {},
@@ -64,21 +58,24 @@ type Props = {
 export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const {
-    products,
-    message,
-    isLoading,
-    accessoriesDetails,
-    phonesDetails,
-    tabletsDetails,
-  } = state;
+  const { products, message, isLoading } = state;
+
+  useEffect(() => {
+    dispatch({ type: 'isLoading', payload: true });
+
+    getProducts()
+      .then(data =>
+        dispatch({
+          type: 'setProducts',
+          payload: data,
+        }),
+      )
+      .finally(() => dispatch({ type: 'isLoading', payload: false }));
+  }, []);
 
   const value = useMemo(
     () => ({
       products,
-      phonesDetails,
-      tabletsDetails,
-      accessoriesDetails,
       isLoading,
       message,
       dispatch,

@@ -3,10 +3,11 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductDetails } from '../../types/productDetails';
+import { Product } from '../../types/product';
 
 type Props = {
   title: string;
-  goods: ProductDetails[] | Omit<ProductDetails, 'camera' | 'zoom'>[];
+  goods: ProductDetails[] | Product[];
 };
 
 export const Category: React.FC<Props> = ({ title, goods }) => {
@@ -15,7 +16,7 @@ export const Category: React.FC<Props> = ({ title, goods }) => {
       return '#6D6474';
     }
 
-    if (title === 'acessories') {
+    if (title === 'accessories') {
       return '#D53C51';
     }
 
@@ -34,14 +35,12 @@ export const Category: React.FC<Props> = ({ title, goods }) => {
           className={classNames('category-image', {
             'category-image-phones': title === 'phones',
             'category-image-tablets': title === 'tablets',
-            'category-image-acessories': title === 'acessories',
+            'category-image-accessories': title === 'accessories',
           })}
         />
       </div>
       <div className="category-info">
-        <h4 className="category-info__title">
-          {title[0].toUpperCase() + title.slice(1)}
-        </h4>
+        <h4 className="category-info__title">{title}</h4>
         <p className="category-info__amount">{`${goods.length} models`}</p>
       </div>
     </Link>

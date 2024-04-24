@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../context/productContext';
-import { getBrandNewProducts } from '../../utils/api';
+import { getBrandNewProducts } from '../../utils/getProductsForSlider.tsx';
 import { ProductSlider } from '../ProductsSlider';
 
 export const BrandNew = () => {

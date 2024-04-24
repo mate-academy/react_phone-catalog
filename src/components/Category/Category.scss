@@ -40,7 +40,7 @@
       background-image: url('../../img/categories/tablets.svg');
     }
 
-    &-acessories {
+    &-accessories {
       background-image: url('../../img/categories/acessories.svg');
     }
   }
@@ -48,6 +48,8 @@
   &-info {
     &__title {
       @extend %h4;
+
+      text-transform: capitalize;
 
       color: $color-white;
     }
