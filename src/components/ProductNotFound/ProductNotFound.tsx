@@ -15,7 +15,7 @@ export const ProductNotFound = () => {
       <div className={styles.btn}>
         <AccentBtn
           text="Back to catalog"
-          onClick={() => navigate(state?.pathname || '/', { replace: true })}
+          onClick={() => navigate({ search: state?.search })}
         />
       </div>
 

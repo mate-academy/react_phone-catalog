@@ -44,7 +44,7 @@ export const ProductsList: React.FC<Props> = ({
 
   return (
     <>
-      {hasFilteredProducts ? (
+      {hasFilteredProducts && (
         <section className={styles.products}>
           {preparedProducts.map(product => (
             <ProductCard
@@ -55,9 +55,9 @@ export const ProductsList: React.FC<Props> = ({
             />
           ))}
         </section>
-      ) : (
-        <ProductNotFound />
       )}
+
+      {query !== '' && !hasFilteredProducts && <ProductNotFound />}
 
       {hasPagination && (
         <Pagination

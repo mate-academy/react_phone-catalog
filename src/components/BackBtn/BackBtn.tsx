@@ -10,7 +10,7 @@ export const BackBtn = () => {
     <button
       type="button"
       className={styles.backBtn}
-      onClick={() => navigate(state?.pathname || '/', { replace: true })}
+      onClick={() => navigate({ pathname: '..', search: state?.search })}
     >
       <span className={styles.backIcon}>{icons.arrowLeft}</span>
       <span className={styles.backText}> Back</span>
