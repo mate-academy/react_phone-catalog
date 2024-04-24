@@ -58,7 +58,7 @@ export const Phones = () => {
         const data = await response.json();
 
         setGetPhone(data);
-        setItemsOnPage(data.length)
+        // setItemsOnPage(data.length)
       } catch (error) {
         setErrorMessage('Error during fetch:');
       }
@@ -104,6 +104,7 @@ export const Phones = () => {
     } else {
       setChangeItemsOnPage(false);
     }
+    paramsToUpdate()
   };
 
   const handleChangeSort = () => {
@@ -174,7 +175,7 @@ export const Phones = () => {
   useEffect(() => {
     const page = searchParams.get("page");
     const perPage = searchParams.get("perPage");
-    if(page !== null && page && +page !== 0) {
+    if(page !== null && page) {
       setCurrentPage(+page)
     }
 
@@ -251,7 +252,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(4); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
+                        setItemsOnPage(4); handleChangeItems(); setCurrentPage(1);
                       }}
                     >
                       4
@@ -259,7 +260,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(8); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
+                        setItemsOnPage(8); handleChangeItems(); setCurrentPage(1);
                       }}
                     >
                       8
@@ -267,7 +268,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(16); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
+                        setItemsOnPage(16); handleChangeItems(); setCurrentPage(1);
                       }}
                     >
                       16
@@ -275,7 +276,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(getPhone?.length); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
+                        setItemsOnPage(getPhone?.length); handleChangeItems(); setCurrentPage(1);
                       }}
                     >
                       all
