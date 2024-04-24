@@ -84,6 +84,12 @@ export const CartPage = () => {
     return sum + product.priceDiscount * count;
   }, 0);
 
+  const totalItems = duplicateCart.reduce((sum, product) => {
+    const count = itemsCount[product.id] + 1 || 1;
+
+    return sum + count;
+  }, 0);
+
   useEffect(() => {
     setItemsCount(handleLocalStorage('itemsCount')); // Оновлення itemsCount при зміні кошика
     setDuplicateCart([...cart]);
@@ -205,8 +211,8 @@ export const CartPage = () => {
                 <div className="checkout__description">
                   <p className="checkout__price">${totalPrice}</p>
                   <p className="checkout__items-count">
-                    Total for {duplicateCart.length}&nbsp;
-                    {duplicateCart.length === 1 ? 'device' : 'devices'}
+                    Total for {totalItems}&nbsp;
+                    {totalItems === 1 ? 'device' : 'devices'}
                   </p>
                 </div>
               )}

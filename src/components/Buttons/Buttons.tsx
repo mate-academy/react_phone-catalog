@@ -72,15 +72,19 @@ export const Buttons: React.FC<Props> = ({
 
   /* eslint-disable */
   const handleFavorites = (value: Product) => {
-    displayedFavorites.some((favorite: Product) => favorite.id === value.id)
-      ? removeFavorite(value?.id)
-      : addFavorite(value);
+    if (displayedFavorites.some((favorite: Product) => favorite.id === value.id)) {
+      removeFavorite(value.id);
+    } else {
+      addFavorite(value);
+    }
   };
 
   const handleCart = (value: Product) => {
-    displyedCartItems.some((item: Product) => item.id === value.id)
-      ? removeFromCart(value?.id)
-      : addToCart(value);
+    if (isInCart(value)) {
+      removeFromCart(value.id);
+    } else {
+      addToCart(value);
+    }
   };
 
   /* eslint-enable */

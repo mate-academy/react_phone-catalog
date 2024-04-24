@@ -31,14 +31,14 @@ export const Footer = () => {
         </a>
 
         <a className="footer__link footer__link--rights">Rights</a>
+      </div>
 
-        <div className="footer__back-to-top">
-          <div className="footer__text" onClick={scrollToTop}>
-            Back to top
-          </div>
-
-          <button className="footer__arrow" onClick={scrollToTop} />
+      <div className="footer__back-to-top">
+        <div className="footer__text" onClick={scrollToTop}>
+          Back to top
         </div>
+
+        <button className="footer__arrow" onClick={scrollToTop} />
       </div>
     </>
   );

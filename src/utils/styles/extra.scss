@@ -65,6 +65,7 @@
   align-items: center;
 
   width: 100%;
+  height: 100%;
 
   @include on-desktop {
     margin-bottom: -115px;
@@ -129,7 +130,7 @@
   &__img-grid {
     @include page-grid;
 
-    width: 100%;
+    width: 80%;
     z-index: -1;
   }
 
@@ -152,14 +153,14 @@
 
     &--products, &--favorites {
       width: 100%;
-      height: 43vh;
+      height: calc(100vh - 410px);
       background-image: url(../../../public/img/product-not-found.png);
     }
 
     &--cart {
-      margin-left: 1000px;
+      margin-left: 700px ;
       width: 100%;
-      height: 20vh;
+      height: calc(100vh - 500px);
       background-image: url(../../../public/img/cart-is-empty.png);
     }
   }
@@ -252,4 +253,11 @@
       border-color: $element-color;
     }
   }
+}
+
+.footer-fixed {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
 }
