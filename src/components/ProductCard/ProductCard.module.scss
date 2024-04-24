@@ -53,9 +53,17 @@
 
 .productImg {
   max-height: 100%;
-  object-fit: contain;
+  object-fit: cover;
   margin-inline: auto;
   display: block;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
 
   @include hover(transform, scale(1.01));
 }
