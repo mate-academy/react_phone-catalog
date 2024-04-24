@@ -32,7 +32,9 @@ export const availableColors = {
 
 /* eslint-enable */
 
-export const handleLocalStorage = (key: 'favorites' | 'cart') => {
+export const handleLocalStorage = (
+  key: 'favorites' | 'cart' | 'itemsCount' | 'totalPrice',
+) => {
   const fetchedItems = localStorage.getItem(key);
 
   return JSON.parse(fetchedItems as string) || [];

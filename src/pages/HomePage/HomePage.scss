@@ -1,11 +1,11 @@
 .home {
   // some of the sizes are assigned depending on the viewport size to improve the overall look on all devices
   @include on-tablet {
-    margin-top: calc(48px + 32px);
+    margin-block: calc(48px + 32px);
   }
 
   @include on-desktop {
-    margin-top: calc(64px + 56px);
+    margin-block: calc(64px + 56px);
   }
 
   &__title {

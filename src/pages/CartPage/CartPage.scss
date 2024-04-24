@@ -2,7 +2,7 @@
   position: relative;
 
   @include on-tablet {
-    margin-top: calc(40px + 48px); // margin-top + navbar height
+    margin-top: calc(40px + 48px);
   }
 
   @include on-desktop {

@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { actions as productsActions } from '../../store/reducers/products';
 import { handleLocalStorage } from '../../utils/helpers/helpers';
@@ -14,31 +14,52 @@ export const CartPage = () => {
   const [isPaymentMethodShown, setIsPaymentMethodShown] = useState(false);
   const navigate = useNavigate();
 
-  /* local storage start */
-
-  const displyedCartItems = useMemo(() => {
-    return handleLocalStorage('cart');
-  }, []);
-
-  /* local storage end */
+  // Отримання та оновлення значення itemsCount з локального сховища
+  const [itemsCount, setItemsCount] = useState(
+    handleLocalStorage('itemsCount'),
+  );
 
   /* handler functions start */
 
   const removeFromCart = (valueId: string) => {
-    const updated = displyedCartItems.filter(
+    const updated = duplicateCart.filter(
       (item: Product) => item.id !== valueId,
     );
 
+    // Видалення елемента з кошика
     localStorage.setItem('cart', JSON.stringify(updated));
     dispatch(productsActions.removeFromCart(valueId));
+
+    // Оновлення itemsCount у локальному сховищі
+    const updatedCount = { ...itemsCount };
+
+    delete updatedCount[valueId];
+    localStorage.setItem('itemsCount', JSON.stringify(updatedCount));
+    setItemsCount(updatedCount);
   };
 
   const addDuplicate = (duplicate: Product) => {
+    // Додавання дублікату у кошик
+    const updatedCount = {
+      ...itemsCount,
+      [duplicate.id]: (itemsCount[duplicate.id] || 0) + 1,
+    };
+
+    localStorage.setItem('itemsCount', JSON.stringify(updatedCount));
+    setItemsCount(updatedCount);
+
     setDuplicateCart(prev => [...prev, duplicate]);
   };
 
   const removeDuplicate = (valueId: string) => {
     const toRemove = duplicateCart.findIndex(item => item.id === valueId);
+
+    // Видалення дублікату з кошика
+    const updatedCount = { ...itemsCount };
+
+    updatedCount[valueId] = Math.max((itemsCount[valueId] || 0) - 1, 0);
+    localStorage.setItem('itemsCount', JSON.stringify(updatedCount));
+    setItemsCount(updatedCount);
 
     setDuplicateCart(prev => {
       const toReturn = [...prev];
@@ -54,23 +75,30 @@ export const CartPage = () => {
   /* handler functions end */
 
   const getItemCount = (productId: string) => {
-    let count = 0;
-
-    duplicateCart.forEach(item => {
-      if (item.id === productId) {
-        count++;
-      }
-    });
-
-    return count;
+    return itemsCount[productId] + 1 || 1;
   };
 
-  const totalPrice = duplicateCart.reduce(
-    (sum, el) => sum + el.priceDiscount,
-    0,
-  );
+  const totalPrice = duplicateCart.reduce((sum, product) => {
+    const count = itemsCount[product.id] + 1 || 1;
 
-  useEffect(() => setDuplicateCart([...cart]), [cart]);
+    return sum + product.priceDiscount * count;
+  }, 0);
+
+  useEffect(() => {
+    setItemsCount(handleLocalStorage('itemsCount')); // Оновлення itemsCount при зміні кошика
+    setDuplicateCart([...cart]);
+  }, [cart]);
+
+  useEffect(() => {
+    const updatedDuplicateCart = cart.map(product => {
+      const count = itemsCount[product.id] || 1; // Отримати кількість з itemsCount
+      const updatedProduct = { ...product, count }; // Оновити кількість в продукті
+
+      return updatedProduct;
+    });
+
+    setDuplicateCart(updatedDuplicateCart); // Оновити стан duplicateCart
+  }, [cart, itemsCount]);
 
   const getLink = (item: Product) => {
     const category = item.category.toLowerCase();
@@ -138,7 +166,6 @@ export const CartPage = () => {
     <section className="cart">
       <div className="cart__link-back" onClick={handleGoBack}>
         <div className="cart__arrow" />
-
         <p className="cart__link-text">Back</p>
       </div>
 
@@ -155,7 +182,6 @@ export const CartPage = () => {
                       <div className="cart-item__item">
                         {getCartItem(product)}
                       </div>
-
                       <div className="cart-item__items">
                         {getCartItems(product)}
                       </div>
@@ -163,7 +189,6 @@ export const CartPage = () => {
                   ) : (
                     <>
                       {getCartItem(product)}
-
                       {getCartItems(product)}
                     </>
                   )}
@@ -179,10 +204,9 @@ export const CartPage = () => {
               ) : (
                 <div className="checkout__description">
                   <p className="checkout__price">${totalPrice}</p>
-
                   <p className="checkout__items-count">
-                    Total for {duplicateCart?.length}&nbsp;
-                    {duplicateCart?.length === 1 ? 'item' : 'items'}
+                    Total for {duplicateCart.length}&nbsp;
+                    {duplicateCart.length === 1 ? 'device' : 'devices'}
                   </p>
                 </div>
               )}
@@ -200,12 +224,10 @@ export const CartPage = () => {
               <h3 className="empty-page__title">
                 Looks like the cart is asleep
               </h3>
-
               <Link to="/" className="empty-page__button">
                 Wake it up
               </Link>
             </article>
-
             <div className="empty-page__img-grid">
               <div className="empty-page__img empty-page__img--cart" />
             </div>

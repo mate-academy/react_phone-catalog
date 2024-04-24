@@ -107,23 +107,27 @@ export const ProductsGrid: React.FC<Props> = ({
 
   return (
     <section ref={scrollRef} className="products">
-      <div className="products__path">
-        <Link to="/" className="products__home home-icon" />
+      {!products.length ? null : (
+        <div className="products__path">
+          <Link to="/" className="products__home home-icon" />
+          <div className="products__arrow" />
+          <p className="products__current-page">{title}</p>
+        </div>
+      )}
 
-        <div className="products__arrow" />
+      {products.length > 0 && (
+        <>
+          <h2 className="products__title">
+            {title === 'Phones' ? 'Mobile phones' : title}
+          </h2>
 
-        <p className="products__current-page">{title}</p>
-      </div>
+          <p className="products__models-count">
+            {products.length === 1 ? '1 model' : `${products.length} models`}
+          </p>
+        </>
+      )}
 
-      <h2 className="products__title">
-        {title === 'Phones' ? 'Mobile phones' : title}
-      </h2>
-
-      <p className="products__models-count">
-        {products?.length === 1 ? '1 model' : `${products?.length} models`}
-      </p>
-
-      {!products?.length && (
+      {!products.length && (
         <div className="empty-page">
           <article className="empty-page__card">
             <h3 className="empty-page__title">
@@ -141,7 +145,7 @@ export const ProductsGrid: React.FC<Props> = ({
         </div>
       )}
 
-      {!isFavoritesPage && (
+      {products.length > 0 && !isFavoritesPage && (
         <div className="products__dropdowns">
           <Dropdown
             options={['Newest', 'Oldest', 'Expensive', 'Cheap']}
@@ -169,13 +173,15 @@ export const ProductsGrid: React.FC<Props> = ({
         </div>
       )}
 
-      <article className="products__products">
-        {sorted.map(product => (
-          <ProductCard key={product.id} product={product} hasHotPrice />
-        ))}
-      </article>
+      {products.length > 0 && (
+        <article className="products__products">
+          {sorted.map(product => (
+            <ProductCard key={product.id} product={product} hasHotPrice />
+          ))}
+        </article>
+      )}
 
-      {!isFavoritesPage && maxPages !== 1 && (
+      {products.length > 0 && !isFavoritesPage && maxPages !== 1 && (
         <div className="pagination">
           <Link
             className={disableArrows('left')}
