@@ -3,9 +3,9 @@ import { twMerge } from 'tailwind-merge';
 import { useLocalStorage } from 'usehooks-ts';
 import { ButtonCard } from './ButtonCard';
 import { BasketGoods, Product } from '../types/product';
-import { handleToggleBasket } from '../helpers/functions';
 import favouriteGoods from '../images/icons/favourites-goods.svg';
 import favouriteActive from '../images/icons/favourites-active.svg';
+import { useNotification } from '../hooks/useNotification';
 
 interface Props {
   discount?: boolean;
@@ -18,11 +18,11 @@ export const ProductCard: React.FC<Props> = ({
   product,
   discount = true,
 }) => {
+  const { addNotification } = useNotification();
   const [favourites, setFavourites] = useLocalStorage<Product['itemId'][]>(
     'favourites',
     [],
   );
-
   const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
 
   const {
@@ -39,9 +39,21 @@ export const ProductCard: React.FC<Props> = ({
 
   const handleToggleFavourites = () => {
     if (favourites.includes(itemId)) {
+      addNotification('removeFromFavourite');
       setFavourites(favourites.filter(item => item !== itemId));
     } else {
+      addNotification('addToFavourite');
       setFavourites([...favourites, itemId]);
+    }
+  };
+
+  const handleToggleBasket = () => {
+    if (basket.some(item => item.id === product.itemId)) {
+      addNotification('removeFromBasket');
+      setBasket(c => c.filter(item => item.id !== product.itemId));
+    } else {
+      addNotification('addToBasket');
+      setBasket(c => [...c, { id: product.itemId, quantity: 1 }]);
     }
   };
 
@@ -61,7 +73,7 @@ export const ProductCard: React.FC<Props> = ({
         />
       </Link>
 
-      <p className="mt-4 flex-1 overflow-hidden">{name}</p>
+      <p className="mt-4 flex-1 overflow-hidden leading-[1.2]">{name}</p>
 
       <div className="flex gap-2">
         <h4 className="text-1.5xl font-bold">${price}</h4>
@@ -96,7 +108,7 @@ export const ProductCard: React.FC<Props> = ({
             basket.some(item => item.id === itemId) &&
               'border border-elements bg-white text-green',
           )}
-          onClick={() => handleToggleBasket(product.itemId, basket, setBasket)}
+          onClick={handleToggleBasket}
         >
           {basket.some(item => item.id === itemId) ? 'Selected' : 'Add to cart'}
         </ButtonCard>

@@ -12,8 +12,8 @@ import { ColorLink } from '../components/ColorLink';
 import { Loader } from '../components/Loader';
 import { colorList } from '../sources/colorList';
 import { BasketGoods, Device, Product } from '../types/product';
-import { handleToggleBasket } from '../helpers/functions';
 import { getProductInfo, getRandomProducts } from '../api/products';
+import { useNotification } from '../hooks/useNotification';
 import favouriteActive from '../images/icons/favourites-active.svg';
 import favouriteGoods from '../images/icons/favourites-goods.svg';
 import arrowIcon from '../images/icons/arrow-icon.svg';
@@ -26,8 +26,11 @@ export const InfoProductPage = () => {
     [],
   );
   const location = useLocation();
+  const { addNotification } = useNotification();
 
   const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
+
+  const backTo = location.pathname.replace(productId || '', '');
 
   const { data: productData } = useQuery({
     queryKey: ['productInfo', productId],
@@ -54,16 +57,28 @@ export const InfoProductPage = () => {
 
   const handleToggleFavourites = () => {
     if (productInfo && favourites.includes(productInfo.id)) {
+      addNotification('removeFromFavourite');
       setFavourites(favourites.filter(item => item !== productInfo.id));
     } else {
+      addNotification('addToFavourite');
       setFavourites([...favourites, productInfo?.id || '']);
+    }
+  };
+
+  const handleToggleBasket = () => {
+    if (basket.some(item => item.id === productInfo.id)) {
+      addNotification('removeFromBasket');
+      setBasket(c => c.filter(item => item.id !== productInfo.id));
+    } else {
+      addNotification('addToBasket');
+      setBasket(c => [...c, { id: productInfo.id, quantity: 1 }]);
     }
   };
 
   return (
     <main
       className="content flex w-full flex-col pb-14 pt-6 md:pb-16 lg:pb-20"
-      key={productId}
+      key={productData?.id || location.state?.id}
     >
       <Breadcrumbs />
 
@@ -73,7 +88,7 @@ export const InfoProductPage = () => {
           alt="Arrow Back"
           className="h-4 min-w-4 -rotate-90"
         />
-        <button onClick={() => navigate(-1)}>
+        <button onClick={() => navigate(backTo)}>
           <small className="font-bold text-secondary">Back</small>
         </button>
       </div>
@@ -216,9 +231,7 @@ export const InfoProductPage = () => {
                         basket.some(item => item.id === productInfo.id) &&
                           'border border-elements bg-white text-green',
                       )}
-                      onClick={() =>
-                        handleToggleBasket(productInfo.id, basket, setBasket)
-                      }
+                      onClick={handleToggleBasket}
                     >
                       {basket.some(item => item.id === productInfo.id)
                         ? 'Selected'

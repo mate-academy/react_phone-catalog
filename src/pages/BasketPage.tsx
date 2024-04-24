@@ -8,9 +8,11 @@ import { getProductsById } from '../api/products';
 import { BasketGoods, Product } from '../types/product';
 import arrowIcon from '../images/icons/arrow-icon-disable.svg';
 import basketEmpty from '../images/cart-is-empty.png';
+import { useNotification } from '../hooks/useNotification';
 
 export const BasketPage = () => {
   const navigate = useNavigate();
+  const { addNotification } = useNotification();
   const [basket, setBasket, removeBasket] = useLocalStorage<BasketGoods[]>(
     'basketGoods',
     [],
@@ -45,6 +47,11 @@ export const BasketPage = () => {
     setBasket(c => {
       return c.map(item => (item.id === id ? { ...item, quantity } : item));
     });
+  };
+
+  const handleCheckout = () => {
+    addNotification('clearAllBasket');
+    removeBasket();
   };
 
   return (
@@ -106,7 +113,7 @@ export const BasketPage = () => {
 
               <ButtonCard
                 className="mt-8 h-12 w-full md:mt-[48px]"
-                onClick={() => removeBasket()}
+                onClick={handleCheckout}
               >
                 Checkout
               </ButtonCard>

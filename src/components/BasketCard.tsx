@@ -6,7 +6,7 @@ import minusActiveIcon from '../images/icons/minus-active.svg';
 import deleteIcon from '../images/icons/close-disable.svg';
 import { BasketGoods, Product } from '../types/product';
 import { useLocalStorage } from 'usehooks-ts';
-import { handleToggleBasket } from '../helpers/functions';
+import { useNotification } from '../hooks/useNotification';
 
 interface Props {
   quantity: number;
@@ -20,12 +20,25 @@ export const BasketCard: React.FC<Props> = ({
   onChange,
 }) => {
   const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
+  const { addNotification } = useNotification();
 
   const handleChangeField = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = +e.target.value.replace(/[^\d]/g, '');
 
     onChange(product.itemId, value >= 100 ? 100 : value);
   };
+
+  const handleToggleBasket = () => {
+    if (basket.some(item => item.id === product.itemId)) {
+      addNotification('removeFromBasket');
+      setBasket(c => c.filter(item => item.id !== product.itemId));
+    } else {
+      addNotification('addToBasket');
+      setBasket(c => [...c, { id: product.itemId, quantity: 1 }]);
+    }
+  };
+
+  const totalSumOneProduct = quantity * product.price;
 
   return (
     <article
@@ -39,7 +52,7 @@ export const BasketCard: React.FC<Props> = ({
           src={deleteIcon}
           alt="Delete"
           className="cursor-pointer"
-          onClick={() => handleToggleBasket(product.itemId, basket, setBasket)}
+          onClick={handleToggleBasket}
         />
 
         <img
@@ -82,7 +95,7 @@ export const BasketCard: React.FC<Props> = ({
           </SliderButton>
         </div>
 
-        <h3 className="font-bold">${product.price}</h3>
+        <h3 className="font-bold md:w-24">${totalSumOneProduct}</h3>
       </div>
     </article>
   );

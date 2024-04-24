@@ -6,6 +6,7 @@ import { Footer } from './components/Footer';
 import { Howl } from 'howler';
 import greetingFirst from '../src/sounds/greeting.mp3';
 import { CSSTransition } from 'react-transition-group';
+import { Notifications } from './components/Notifications';
 
 export const App = () => {
   const [searchParams] = useSearchParams();
@@ -45,6 +46,8 @@ export const App = () => {
       >
         <Aside ref={nodeRef} />
       </CSSTransition>
+
+      <Notifications />
 
       <Outlet />
 

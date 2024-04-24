@@ -1,4 +1,4 @@
-import { useQuery } from '@tanstack/react-query';
+import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { getProductsById } from '../api/products';
 import { useLocalStorage } from 'usehooks-ts';
 import { ProductCard } from '../components/ProductCard';
@@ -12,6 +12,7 @@ export const FavouritesPage = () => {
   const { isLoading: isFavouriteProducts, data: favouriteProducts } = useQuery({
     queryKey: ['favouriteProducts', favourites.length],
     queryFn: () => getProductsById(favourites),
+    placeholderData: keepPreviousData,
   });
 
   return (
