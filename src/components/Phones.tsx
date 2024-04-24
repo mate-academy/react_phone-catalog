@@ -1,12 +1,12 @@
 import { useEffect, useRef, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useParams, useSearchParams } from 'react-router-dom';
 import { useAppContext } from './Context';
 import ArrowDown from '../img/arrow-down.svg';
 import ArrowUp from '../img/arrow-up.svg';
 // import FavoriteAdded from '../img/favourites filled.svg';
 import filledFavoriteImage from '../img/favourites-filled.svg';
 import { Pagination } from './Pagination';
-import { getSearchWith } from '../components/until/Helper';
+// import { getSearchWith } from './until/Helper';
 // import { SearchLink } from '../components/SearchLink';
 
 // import cn from 'classnames';
@@ -37,9 +37,9 @@ export const Phones = () => {
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
-  // const { currentPage, setCurrentPage } = useAppContext();
-  const  { visibleElems } = useAppContext();
   const { currentPage, setCurrentPage } = useAppContext();
+  const  { visibleElems } = useAppContext();
+  // const { currentPage, setCurrentPage } = useAppContext();
 
   const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
@@ -145,7 +145,6 @@ export const Phones = () => {
     }
     setCartPhones('');
     setPrice(0);
-    console.log(prevCartPhonesArr)
 }, [cartPhones, prevCartPhonesArr]);
 
   // const [favoritePhones, setFavoritePhones] = useState<string>('');
@@ -170,20 +169,36 @@ export const Phones = () => {
 
   const { setSelectedProduct } = useAppContext();
 
-  console.log(visibleElems);
+  const { page, perPage } = useParams(); 
+  const [searchParams, setSearchParams] = useSearchParams();
+  // const currentParams = new URLSearchParams(window.location.search);
 
-  const currentParams = new URLSearchParams(window.location.search);
+  useEffect(() => {
+    // const page = searchParams.get("page");
+    // const perPage = searchParams.get("perPage");
+    if(page !== null && page) {
+      setCurrentPage(+page)
+    }
 
-  const paramsToUpdate = {
-    page: `${currentPage}`,
-    perPage: `${itemsOnPage !== 71 ? itemsOnPage : 'all'}`
-  };
+    if(perPage !== null && perPage) {
+      setItemsOnPage(+perPage)
+    }
 
-  if (itemsOnPage) {
-    const updatedSearch = getSearchWith(currentParams, paramsToUpdate);
-    const newUrl = `${window.location.pathname}?${updatedSearch}`;
-    window.history.pushState({ path: newUrl }, '', newUrl);
-  }
+  },[page, perPage])
+
+  useEffect(()=> {
+    const paramsToUpdate = () => {
+      const page = `${currentPage}`;
+      const perPage = `${itemsOnPage}`;
+
+      if (currentPage && itemsOnPage) {
+        setSearchParams({page, perPage})
+      }
+    };
+    paramsToUpdate()
+  }, [currentPage, itemsOnPage])
+
+  console.log(searchParams, currentPage, itemsOnPage);
 
   return (
     <section className="phones__wrapper">
