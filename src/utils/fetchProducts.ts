@@ -1,10 +1,9 @@
 import { Product } from '../types/product';
 import { ProductDetails } from '../types/productDetails';
 
-export const BASE_URL = '/react_phone-catalog';
 
 export const getProducts = async (): Promise<Product[]> => {
-  const data = await fetch(`${BASE_URL}/api/products.json`);
+  const data = await fetch('./api/products.json');
 
   const products: Product[] = await data.json();
 
@@ -28,7 +27,7 @@ export const getProductDetailsByID = async (
   const productCategory = products.find(
     product => product.itemId === id,
   )?.category;
-  const data = await fetch(`${BASE_URL}/api/${productCategory}.json`);
+  const data = await fetch(`./api/${productCategory}.json`);
 
   const categoryDetails: ProductDetails[] = await data.json();
   const productData = categoryDetails.find(item => item.id === id);
