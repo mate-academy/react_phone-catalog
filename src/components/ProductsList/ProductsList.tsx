@@ -31,6 +31,7 @@ export const ProductsList: React.FC<Props> = ({
       page = '1';
 
       const newSearchParams = getSearchWith(searchParams, { query, page });
+
       setSearchParams(newSearchParams);
     }
   }, [query, searchParams, setSearchParams]);
@@ -50,7 +51,8 @@ export const ProductsList: React.FC<Props> = ({
   const preparedProducts = sortedProducts.slice(startIndex, endIndex);
 
   const hasFilteredProducts = filteredProducts.length > 0;
-  const hasPagination = showPagination && hasFilteredProducts && onPage !== 'all';
+  const hasPagination =
+    showPagination && hasFilteredProducts && onPage !== 'all';
 
   return (
     <>

@@ -30,6 +30,7 @@ export const Header = () => {
   useEffect(() => {
     if (cartItem) {
       const count = cartItem.reduce((total, item) => total + item.quantity, 0);
+
       setCartItemCount(count);
     }
   }, [cartItem]);

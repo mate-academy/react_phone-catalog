@@ -27,6 +27,7 @@ export const Pagination: React.FC<Props> = ({
     const newSearchParams = getSearchWith(searchParams, {
       page: nextPage.toString(),
     });
+
     setSearchParams(newSearchParams);
     scrollToTop();
   };
