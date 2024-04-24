@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styles from './ProductsList.module.scss';
 
@@ -8,6 +8,7 @@ import { SortType } from '../../types/SortType';
 import { sortProducts } from '../../helpers/sortProducts';
 import { Pagination } from '../Pagination';
 import { ProductNotFound } from '../ProductNotFound';
+import { getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   products: ProductInfo[];
@@ -18,12 +19,21 @@ export const ProductsList: React.FC<Props> = ({
   products,
   showPagination = true,
 }) => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   const sort = searchParams.get('sortBy') || SortType.newest;
   const onPage = searchParams.get('onPage') || '16';
-  const page = searchParams.get('page') || '1';
   const query = searchParams.get('query') || '';
+  let page = searchParams.get('page') || '1';
+
+  useEffect(() => {
+    if (query !== '') {
+      page = '1';
+
+      const newSearchParams = getSearchWith(searchParams, { query, page });
+      setSearchParams(newSearchParams);
+    }
+  }, [query, searchParams, setSearchParams]);
 
   const cardWidth = 'auto';
 
@@ -33,14 +43,14 @@ export const ProductsList: React.FC<Props> = ({
     product.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  const preparedProducts = sortProducts(sort, filteredProducts).slice(
-    (+page - 1) * perPage,
-    +page * perPage,
-  );
+  const sortedProducts = sortProducts(sort, filteredProducts);
+
+  const startIndex = (+page - 1) * perPage;
+  const endIndex = Math.min(startIndex + perPage, sortedProducts.length);
+  const preparedProducts = sortedProducts.slice(startIndex, endIndex);
 
   const hasFilteredProducts = filteredProducts.length > 0;
-  const hasPagination =
-    showPagination && hasFilteredProducts && onPage !== 'all';
+  const hasPagination = showPagination && hasFilteredProducts && onPage !== 'all';
 
   return (
     <>
@@ -61,7 +71,7 @@ export const ProductsList: React.FC<Props> = ({
 
       {hasPagination && (
         <Pagination
-          total={products.length}
+          total={filteredProducts.length}
           perPage={perPage}
           currentPage={+page}
         />

@@ -19,14 +19,34 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-items: end;
   gap: 8px;
 }
 
 .paginationBtn {
   font-family: $font-family-regular;
+  border: 1px solid $elements-border-color;
+  color: $main-text-color;
+  text-align: center;
+}
+
+.paginationNum {
+  color: $main-text-color;
+}
+
+.paginationNumActive {
+  color: $white;
 }
 
 .paginationBtnActive {
-  color: $white;
   background-color: $main-text-color;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.paginationBreak {
+  font-size: 15px;
+  color: $main-text-color;
 }
