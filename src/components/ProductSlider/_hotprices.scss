@@ -1,0 +1,13 @@
+.hot {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+  }
+}

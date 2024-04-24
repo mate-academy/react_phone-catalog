@@ -1,0 +1,42 @@
+@import "./other/reset";
+@import "./other/fonts.scss";
+@import "./other/mixins.scss";
+@import "./other/vars.scss";
+@import "./other/components";
+@import "./other/container";
+
+
+
+
+// COMPONENTS SCSS
+
+@import "../components/Nav/nav";
+@import "../components/Header/header";
+@import "../components/PicturesSlider/PicturesSlider.scss";
+@import "../components/Buttons/button";
+@import "../components/ProductCard/product-card";
+@import "../components/ProductsList/productslist";
+@import "../components/HotPrices/hotprices";
+@import "../components/Footer/footer";
+@import "../components/Logo/logo";
+@import "../components/Footer/components/NavFooter/navfooter";
+@import "../components/Footer/components/FooterLogo/footer-logo";
+@import "../components/NavMain/nav-main";
+@import "../components/Ul-List/list-ul";
+
+
+// PAGES SCSS
+@import "../pages/HomePage/homepage";
+@import "../pages/PhonePage/phones-page";
+@import "../pages/ProductDetailsPage/product-details-page";
+@import "../pages/NotFoundPage/notfoundpage";
+@import "../pages/FavouritesPage/favourites";
+@import "../pages/CartPage/cart-page";
+
+
+html {
+  font-family: 'Mont', sans-serif;
+  font-weight: 500;
+  box-sizing: border-box;
+  background-color: #FFFFFF;
+}

@@ -1,0 +1,78 @@
+.product {
+  &__card {
+    display: flex;
+    flex-direction: column;
+  
+    border: 1px solid #E2E6E9;
+    border-radius: 8px;
+    padding: 32px;
+    transition: 0.3s all ease-in;
+    max-width: calc(287px - 66px);
+
+    @include onTable {
+      max-width: calc(272px - 66px);
+    }
+
+    &:hover {
+      box-shadow: 0px 2px 16px 0px #0000001A;
+    }
+
+    &-img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      transition: 0.3s all ease-in;
+
+      aspect-ratio: 10 / 9;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+
+      @include onTable {
+        aspect-ratio: 10 / 9;
+      }
+    }
+
+    &-title {
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 600;
+      color: $elipse-color;
+
+      margin-top: 24px;
+    }
+
+    &-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      height: 40px;
+
+      margin-top: 8px;
+    }
+
+    &-price {
+      font-family: "Mont", sans-serif;
+      margin-top: 8px;
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      color: $elipse-color;
+    }
+
+    &-border {
+      height: 1px;
+      width: 100%;
+      background-color: $elements-color;
+  
+      margin-top: 8px;
+    }
+
+    &-list {
+      margin-top: 8px;
+    }
+  }
+}

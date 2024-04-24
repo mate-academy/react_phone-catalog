@@ -1,0 +1,55 @@
+.favourites {
+  display: flex;
+  flex-direction: column;
+
+  padding: 24px 0 56px;
+
+  @include onTable {
+    padding: 24px 0 64px;
+  }
+
+  @include onDesktop {
+    padding: 24px 0 80px;
+  }
+
+  &__container { 
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    @include onTable {
+      margin-top: 40px;
+    }
+  }
+
+  &__item {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $secondary-color;
+
+    margin-top: 8px;
+  }
+
+  &__block {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 40px;
+
+    overflow: hidden;
+    width: 100%;
+
+    @include onTable {
+      margin-top: 40px;
+      gap: 16px;
+    }
+
+    @include onDesktop {
+    }
+  }
+}

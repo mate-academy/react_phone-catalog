@@ -1,0 +1,95 @@
+.pictures {
+  position: relative;
+  height: 30vw;
+  overflow: hidden;
+
+  margin-top: 24px;
+
+  @include onTableDo {
+    height: 320px;
+    margin: 32px -16px;
+  }
+
+  @include onTable {
+    display: flex;
+    gap: 19px;
+
+    margin-top: 56px;
+  }
+
+  @include onDesktop {
+    height: 28vw;
+    gap: 16px;
+  }
+
+  &__button {
+    display: none;
+    width: 32px;
+    background-color: #FFF;
+    border: 1px solid $icons-color;
+    border-radius: 48px;
+
+    transition: .5s all ease;
+
+    &:active {
+      transform: scale(70%);
+    }
+
+    @include onTable {
+      display: block;
+    }
+
+    &--icon {
+      width: 16px;
+      height: 16px;
+
+      padding: 0 8px;
+    }
+  }
+
+  &__block {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+  }
+
+  &__container {
+    display: flex;
+    transition: transform 0.5s ease;
+  }
+  
+  &__link {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    height: 100%;
+    min-width: 100%;
+  }
+
+  &__img {
+    height: 100%;
+    width: 100%;
+
+    object-fit: cover;
+    object-position: center;
+
+    aspect-ratio: 16 / 9;
+  }
+
+  &__elipse {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 4px;
+
+    margin: 8px 0;
+  }
+
+  &__svg {
+    width: 24px;
+    height: 24px;
+    transition: 0.3s all linear;
+  }
+}

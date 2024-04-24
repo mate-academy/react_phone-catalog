@@ -1,0 +1,86 @@
+.list {
+  &__title {
+    font-weight: 700;
+    color: $primary-color;
+
+    &-link {
+      margin-top: 24px;
+    }
+  }
+
+  &__count {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $secondary-color;
+    margin-top: 4px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    margin-top: 24px;
+
+    @include onTable {
+      flex-direction: row;
+    }
+  }
+
+  &__item {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 8px;
+    background-size: cover;
+    transition: 0.3s all ease-in-out;
+
+
+    &--phones {
+      background-image: url(../../../public/img/category-phones.webp);
+      background-size: 110%;
+      background-repeat: no-repeat;
+      background-position: -240% -40%;
+
+      background-color: #6d6474;
+
+      &:hover {
+        background-size: 113%;
+      }
+    }
+
+    &--tablets {
+      background-image: url(../../../public/img/category-tablets.webp);
+      background-repeat: no-repeat;
+      background-size: 110%;
+      background-position: -200% -70%;
+
+      background-color: #8d8d92;
+
+      &:hover {
+        background-size: 113%;
+      }
+    }
+
+    &--accessories {
+      background-image: url(../../../public/img/category-accessories.png);
+      background-repeat: no-repeat;
+      background-size: 200%;
+      background-position: -20% 100%;
+
+      background-color: #973d5f;
+
+      &:hover {
+        background-size: 210%;
+      }
+    }
+  }
+}

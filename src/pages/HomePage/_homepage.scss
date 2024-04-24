@@ -1,0 +1,15 @@
+.main {
+  padding: 24px 0 64px;
+
+  @include onTable {
+    padding: 32px 0 64px;
+  }
+
+  @include onTable {
+    padding: 56px 0 80px;
+  }
+
+  &__title {
+    text-align: start;
+  }
+}
