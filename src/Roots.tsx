@@ -17,7 +17,7 @@ import { Cart } from './components/Cart';
 import { Favorite } from './components/Favorite';
 
 export const Roots = () => (
-  
+
   <Router>
     <AppProvider>
       <Routes>

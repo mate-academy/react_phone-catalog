@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { NavLink, useParams, useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { useAppContext } from './Context';
 import ArrowDown from '../img/arrow-down.svg';
 import ArrowUp from '../img/arrow-up.svg';
@@ -169,36 +169,31 @@ export const Phones = () => {
 
   const { setSelectedProduct } = useAppContext();
 
-  const { page, perPage } = useParams(); 
   const [searchParams, setSearchParams] = useSearchParams();
   // const currentParams = new URLSearchParams(window.location.search);
-
   useEffect(() => {
-    // const page = searchParams.get("page");
-    // const perPage = searchParams.get("perPage");
-    if(page !== null && page) {
+    const page = searchParams.get("page");
+    const perPage = searchParams.get("perPage");
+    if(page !== null && page && +page !== 0) {
       setCurrentPage(+page)
     }
 
     if(perPage !== null && perPage) {
       setItemsOnPage(+perPage)
     }
+    console.log('working')
+  },[])
 
-  },[page, perPage])
+  const paramsToUpdate = () => {
+    const page = `${currentPage}`;
+    const perPage = `${itemsOnPage}`;
 
-  useEffect(()=> {
-    const paramsToUpdate = () => {
-      const page = `${currentPage}`;
-      const perPage = `${itemsOnPage}`;
+    if (currentPage && itemsOnPage) {
+      setSearchParams({page, perPage})
+    }
+  };
 
-      if (currentPage && itemsOnPage) {
-        setSearchParams({page, perPage})
-      }
-    };
-    paramsToUpdate()
-  }, [currentPage, itemsOnPage])
-
-  console.log(searchParams, currentPage, itemsOnPage);
+  console.log(currentPage, itemsOnPage);
 
   return (
     <section className="phones__wrapper">
@@ -256,7 +251,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(4); handleChangeItems(); setCurrentPage(1);
+                        setItemsOnPage(4); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
                       }}
                     >
                       4
@@ -264,7 +259,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(8); handleChangeItems(); setCurrentPage(1);
+                        setItemsOnPage(8); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
                       }}
                     >
                       8
@@ -272,7 +267,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(16); handleChangeItems(); setCurrentPage(1);
+                        setItemsOnPage(16); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
                       }}
                     >
                       16
@@ -280,7 +275,7 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        setItemsOnPage(getPhone?.length); handleChangeItems(); setCurrentPage(1);
+                        setItemsOnPage(getPhone?.length); handleChangeItems(); setCurrentPage(1); paramsToUpdate()
                       }}
                     >
                       all

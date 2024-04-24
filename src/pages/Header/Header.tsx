@@ -14,10 +14,9 @@ export const Header = () => {
 
   }, [prevCartPhonesArr]);
 
-
   return (
     <header className="header">
-      <NavLink to='/' end>
+      <NavLink to="/" end>
         <img src={Logo} className="header__logo" alt="logo" />
       </NavLink>
       <nav className="nav">
