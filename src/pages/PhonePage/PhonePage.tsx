@@ -3,7 +3,7 @@ import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
-import './ProductsPage.scss';
+import './PhonePage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
@@ -38,19 +38,23 @@ export const PhonePage = () => {
     fetchData();
   }, [phoneUrl]);
 
+  console.log(categories)
+
   const [sortBy, setSortBy] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
+
+  const phoneItems = categories[0].items;
   
-  if (categories === undefined) {
+  if (phoneItems === undefined) {
     return <NotFoundPage />;
   }
 
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? categories[0].items.length : perPage;
+  const itemsPerPage = perPage === 'all' ? phoneItems.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, categories[0].items.length);
+  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, phoneItems.length);
 
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
@@ -99,7 +103,7 @@ export const PhonePage = () => {
           {/* <div className="productsPage__phones">{title}</div> */}
         </div>
         {/* <h1 className="productsPage__header">{itemToUpperCase(title)}</h1> */}
-        <div className="productsPage__models">{`${categories[0].items.length} models`}</div>
+        <div className="productsPage__models">{`${phoneItems.length} models`}</div>
 
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
@@ -144,7 +148,7 @@ export const PhonePage = () => {
           </ul>
         </div>
         {showPagination 
-          ? <Pagination products={categories[0].items} />
+          ? <Pagination products={phoneItems} />
           : null
         }
       </div>

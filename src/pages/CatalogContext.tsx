@@ -80,8 +80,6 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     },
   ];
 
-  console.log(categories[0].items)
-
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 640px)').matches,
   );

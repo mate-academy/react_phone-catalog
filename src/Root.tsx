@@ -4,7 +4,7 @@ import { App } from './App';
 import { CatalogProvider } from './pages/CatalogContext';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
-import { PhonePage } from './pages/ProductsPage/ProductsPage';
+import { PhonePage } from './pages/PhonePage/PhonePage';
 // import { ProductDetails } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => {
@@ -14,10 +14,18 @@ export const Root = () => {
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
-              <Route path={`/phone`}> 
-                  <Route index element={<PhonePage/> }/> 
-                {/* <Route path=":productId" element={<ProductDetails />} />  */}
-              </Route>
+            <Route path={'/phones'}> 
+                <Route index element={<PhonePage/> }/> 
+              {/* <Route path=":productId" element={<ProductDetails />} />  */}
+            </Route>
+            <Route path={`/tablets`}> 
+                {/* <Route index element={<TabletsPage/> }/>  */}
+              {/* <Route path=":productId" element={<ProductDetails />} />  */}
+            </Route>
+            <Route path={`/accessories`}> 
+                {/* <Route index element={<AccessoriesPage/> }/>  */}
+              {/* <Route path=":productId" element={<ProductDetails />} />  */}
+            </Route>
           <Route path="/favorites"></Route>
           <Route path="/cart"></Route>
           <Route path="*" element={<NotFoundPage />} />
