@@ -37,7 +37,11 @@ export const ProductCard: React.FC<Props> = ({
     image,
   } = product;
 
-  const handleToggleFavourites = () => {
+  const handleToggleFavourites = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
+
     if (favourites.includes(itemId)) {
       addNotification('removeFromFavourite');
       setFavourites(favourites.filter(item => item !== itemId));
@@ -47,7 +51,11 @@ export const ProductCard: React.FC<Props> = ({
     }
   };
 
-  const handleToggleBasket = () => {
+  const handleToggleBasket = (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    e.preventDefault();
+
     if (basket.some(item => item.id === product.itemId)) {
       addNotification('removeFromBasket');
       setBasket(c => c.filter(item => item.id !== product.itemId));
@@ -58,72 +66,76 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <article
-      className={twMerge(
-        `flex h-126.5 w-68 flex-col gap-2 border border-elements p-8
+    <Link to={`/${category}/${itemId}`} className="flex justify-center">
+      <article
+        className={twMerge(
+          `flex h-126.5 w-68 flex-col gap-2 border border-elements p-8
         duration-300 hover:shadow-[0_3px_10px_rgb(0,0,0,0.2)] [&>*]:w-full`,
-        className,
-      )}
-    >
-      <Link to={`/${category}/${itemId}`} className="flex justify-center">
+          className,
+        )}
+      >
         <img
           src={image}
           alt="Phone"
           className="h-48 object-contain duration-500 hover:scale-105"
         />
-      </Link>
 
-      <p className="mt-4 flex-1 overflow-hidden leading-[1.2]">{name}</p>
+        <p className="mt-4 flex-1 overflow-hidden leading-[1.2]">{name}</p>
 
-      <div className="flex gap-2">
-        <h4 className="text-1.5xl font-bold">${price}</h4>
-        {discount && (
-          <h4 className="text-1.5xl text-secondary line-through">
-            ${fullPrice}
-          </h4>
-        )}
-      </div>
-
-      <hr className="h-px border-elements" />
-
-      <ul className="flex flex-col gap-2 font-semibold">
-        <li className="flex justify-between">
-          <span className="text-secondary">Screen</span>
-          <span>{screen}</span>
-        </li>
-        <li className="flex justify-between">
-          <span className="text-secondary">Capacity</span>
-          <span>{capacity}</span>
-        </li>
-        <li className="flex justify-between">
-          <span className="text-secondary">RAM</span>
-          <span>{ram}</span>
-        </li>
-      </ul>
-
-      <div className="flex h-10 gap-2">
-        <ButtonCard
-          className={twMerge(
-            'h-full w-full transition-all duration-300',
-            basket.some(item => item.id === itemId) &&
-              'border border-elements bg-white text-green',
+        <div className="flex gap-2">
+          <h4 className="text-1.5xl font-bold">${price}</h4>
+          {discount && (
+            <h4 className="text-1.5xl text-secondary line-through">
+              ${fullPrice}
+            </h4>
           )}
-          onClick={handleToggleBasket}
-        >
-          {basket.some(item => item.id === itemId) ? 'Selected' : 'Add to cart'}
-        </ButtonCard>
+        </div>
 
-        <ButtonCard
-          className="flex aspect-square h-full items-center
+        <hr className="h-px border-elements" />
+
+        <ul className="flex flex-col gap-2 font-semibold">
+          <li className="flex justify-between">
+            <span className="text-secondary">Screen</span>
+            <span>{screen}</span>
+          </li>
+          <li className="flex justify-between">
+            <span className="text-secondary">Capacity</span>
+            <span>{capacity}</span>
+          </li>
+          <li className="flex justify-between">
+            <span className="text-secondary">RAM</span>
+            <span>{ram}</span>
+          </li>
+        </ul>
+
+        <div className="flex h-10 gap-2">
+          <ButtonCard
+            className={twMerge(
+              'h-full w-full transition-all duration-300',
+              basket.some(item => item.id === itemId) &&
+                'border border-elements bg-white text-green',
+            )}
+            onClick={e => handleToggleBasket(e)}
+          >
+            {basket.some(item => item.id === itemId)
+              ? 'Remove from cart'
+              : 'Add to cart'}
+          </ButtonCard>
+
+          <ButtonCard
+            className="flex aspect-square h-full items-center
             justify-center border border-icons bg-white"
-          onClick={handleToggleFavourites}
-        >
-          <img
-            src={favourites.includes(itemId) ? favouriteActive : favouriteGoods}
-            alt="Favorites Good"
-          />
-        </ButtonCard>
-      </div>
-    </article>
+            onClick={e => handleToggleFavourites(e)}
+          >
+            <img
+              src={
+                favourites.includes(itemId) ? favouriteActive : favouriteGoods
+              }
+              alt="Favorites Good"
+            />
+          </ButtonCard>
+        </div>
+      </article>
+    </Link>
   );
 };

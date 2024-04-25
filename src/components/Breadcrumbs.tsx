@@ -28,7 +28,7 @@ export const Breadcrumbs = () => {
 
       <img src={arrowIconDisable} alt="Arrow Disable" className="rotate-90" />
 
-      <small className="text-secondary first-letter:uppercase">
+      <small className="pt-1 text-secondary first-letter:uppercase">
         {pathnameArr.slice(-1).join('').replaceAll('-', ' ')}
       </small>
     </div>

@@ -55,33 +55,32 @@ export const BasketPage = () => {
   };
 
   return (
-    <main className="content pb-14 pt-6 md:pb-16 lg:pb-20">
-      <section>
-        <div className="mt-6 flex items-center gap-1 md:mt-10">
-          <img
-            src={arrowIcon}
-            alt="Arrow Back"
-            className="h-4 min-w-4 -rotate-90"
-          />
-          <button onClick={() => navigate(-1)}>
-            <small className="font-bold text-secondary">Back</small>
-          </button>
-        </div>
+    <main className="content flex flex-col pb-14 pt-6 md:pb-16 lg:pb-20">
+      <div className="mt-6 flex items-center gap-1 md:mt-10">
+        <img
+          src={arrowIcon}
+          alt="Arrow Back"
+          className="h-4 min-w-4 -rotate-90"
+        />
+        <button onClick={() => navigate(-1)}>
+          <small className="font-bold text-secondary">Back</small>
+        </button>
+      </div>
 
-        <h1 className="mt-6 md:mt-4">Cart</h1>
+      <h1 className="mt-6 md:mt-4">Cart</h1>
 
-        {!basketProducts?.length && (
-          <img
-            src={basketEmpty}
-            alt="Basket Empty"
-            className="h-screen w-full object-contain"
-          />
-        )}
+      {!basketProducts?.length && (
+        <div
+          className="flex-1 bg-contain bg-center bg-no-repeat"
+          style={{ backgroundImage: `url(${basketEmpty})` }}
+        />
+      )}
 
-        <div className="mt-8 grid-cols-12 gap-4 lg:grid">
-          {isBasketProducts ? (
-            <Loader />
-          ) : (
+      {isBasketProducts ? (
+        <Loader />
+      ) : (
+        !!basketProducts?.length && (
+          <div className="mt-8 grid-cols-12 gap-4 lg:grid">
             <div className="flex flex-col gap-4 lg:col-span-8">
               {basketProducts?.map(product => {
                 return (
@@ -99,14 +98,12 @@ export const BasketPage = () => {
                 );
               })}
             </div>
-          )}
 
-          {!!basketProducts?.length && (
             <div
               className="
-                  sticky top-[20%] mt-8 flex h-fit flex-col items-center
-                  border border-elements p-6 lg:col-[9_/_-1] lg:mt-0
-                "
+                    sticky top-[20%] mt-8 flex h-fit flex-col items-center
+                    border border-elements p-6 lg:col-[9_/_-1] lg:mt-0
+                  "
             >
               <h2 className="font-bold">{`$${totalSumGoods}`}</h2>
               <p className="text-secondary">{`Total for ${sumOfQuantity} items`}</p>
@@ -118,9 +115,9 @@ export const BasketPage = () => {
                 Checkout
               </ButtonCard>
             </div>
-          )}
-        </div>
-      </section>
+          </div>
+        )
+      )}
     </main>
   );
 };

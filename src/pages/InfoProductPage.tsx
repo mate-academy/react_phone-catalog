@@ -128,8 +128,8 @@ export const InfoProductPage = () => {
                     clickable: true,
                     renderBullet: (index, className) =>
                       `<span class="h-full md:h-auto overflow-hidden aspect-square md:w-full ${className}">
-                      <img class="h-full w-full object-contain" src="${productInfo.images[index]}"/>
-                    </span>`,
+                        <img class="h-full w-full object-contain" src="${productInfo.images[index]}"/>
+                      </span>`,
                   }}
                 >
                   {productInfo.images.map(image => (
@@ -234,7 +234,7 @@ export const InfoProductPage = () => {
                       onClick={handleToggleBasket}
                     >
                       {basket.some(item => item.id === productInfo.id)
-                        ? 'Selected'
+                        ? 'Remove from cart'
                         : 'Add to cart'}
                     </ButtonCard>
                     <ButtonCard
