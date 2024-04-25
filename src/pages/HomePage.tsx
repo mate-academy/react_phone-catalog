@@ -89,133 +89,139 @@ export const HomePage: React.FC = () => {
   );
 
   return (
-    <div className="main__home">
-      <section className="banner">
-        <div className="banner__container">
-          <button
-            type="button"
-            className="banner__arrow banner__arrow--left"
-            onClick={goLeft}
-            aria-label="previous"
-          />
+    <>
+      <h1 className="main__title title">Welcome to Nice Gadgets store!</h1>
+      <div className="main__home">
+        <section className="banner">
+          <div className="banner__container">
+            <button
+              type="button"
+              className="banner__arrow banner__arrow--left"
+              onClick={goLeft}
+              aria-label="previous"
+            />
 
-          <div className="banner__images">
-            <div className="banner__image">
-              {startBannerIndex === 0 && (
-                <>
+            <div className="banner__images">
+              <div className="banner__image">
+                {startBannerIndex === 0 && (
+                  <>
+                    <img
+                      src="./img/Bannerjpg.jpg"
+                      alt="banner-1"
+                      className="banner__picture banner__picture--first"
+                    />
+                    <img
+                      src="./img/Banner--mobile.jpg"
+                      alt="banner-1"
+                      className="banner__picture banner__picture--first-mobile"
+                    />
+                  </>
+                )}
+                {startBannerIndex === 1 && (
                   <img
-                    src="./img/Bannerjpg.jpg"
+                    src="./img/banner-accessories.png"
                     alt="banner-1"
-                    className="banner__picture banner__picture--first"
+                    className="banner__picture"
                   />
+                )}
+                {startBannerIndex === 2 && (
                   <img
-                    src="./img/Banner--mobile.jpg"
+                    src="./img/banner-tablets.png"
                     alt="banner-1"
-                    className="banner__picture banner__picture--first-mobile"
+                    className="banner__picture"
                   />
-                </>
-              )}
-              {startBannerIndex === 1 && (
-                <img
-                  src="./img/banner-accessories.png"
-                  alt="banner-1"
-                  className="banner__picture"
-                />
-              )}
-              {startBannerIndex === 2 && (
-                <img
-                  src="./img/banner-tablets.png"
-                  alt="banner-1"
-                  className="banner__picture"
-                />
-              )}
+                )}
+              </div>
             </div>
+
+            <button
+              type="button"
+              className="banner__arrow banner__arrow--right"
+              onClick={goRight}
+              aria-label="previous"
+            />
           </div>
 
-          <button
-            type="button"
-            className="banner__arrow banner__arrow--right"
-            onClick={goRight}
-            aria-label="previous"
-          />
-        </div>
-
-        <div className="banner__lines">
-          <button
-            type="button"
-            onClick={() => handleChangeBanner(0)}
-            className={cn('banner__line', {
-              'banner__line--active': startBannerIndex === 0,
-            })}
-          />
-          <button
-            type="button"
-            onClick={() => handleChangeBanner(1)}
-            className={cn('banner__line', {
-              'banner__line--active': startBannerIndex === 1,
-            })}
-          />
-          <button
-            type="button"
-            onClick={() => handleChangeBanner(2)}
-            className={cn('banner__line', {
-              'banner__line--active': startBannerIndex === 2,
-            })}
-          />
-        </div>
-      </section>
-
-      <section className="slider">
-        <ProductsSlider products={hotPricesProducts} unitName="Hot Prices" />
-      </section>
-
-      <section className="shop">
-        <h1 className="title-subtitle shop__name">Shop by category</h1>
-        <div className="shop__container" data-cy="categoryLinksContainer">
-          <Link to="/phones" className="shop__category shop__category--phones">
-            <img
-              src="./img/Phones.png"
-              alt="Mobile-category-img"
-              className="shop__image"
+          <div className="banner__lines">
+            <button
+              type="button"
+              onClick={() => handleChangeBanner(0)}
+              className={cn('banner__line', {
+                'banner__line--active': startBannerIndex === 0,
+              })}
             />
-            <h3 className="shop__category-name">Mobile phones</h3>
-            <p className="shop__category-amount">{`${amount('phones')} models`}</p>
-          </Link>
-
-          <Link
-            to="/tablets"
-            className="shop__category shop__category--tablets"
-          >
-            <img
-              src="./img/Tablets.png"
-              alt="Mobile-category-img"
-              className="shop__image"
+            <button
+              type="button"
+              onClick={() => handleChangeBanner(1)}
+              className={cn('banner__line', {
+                'banner__line--active': startBannerIndex === 1,
+              })}
             />
-            <h3 className="shop__category-name">Tablets</h3>
-            <p className="shop__category-amount">{`${amount('tablets')} models`}</p>
-          </Link>
-
-          <Link
-            to="/accessories"
-            className="shop__category shop__category--accessories"
-          >
-            <img
-              src="./img/Accessories.png"
-              alt="Mobile-category-img"
-              className="shop__image"
+            <button
+              type="button"
+              onClick={() => handleChangeBanner(2)}
+              className={cn('banner__line', {
+                'banner__line--active': startBannerIndex === 2,
+              })}
             />
-            <h3 className="shop__category-name">Accessories</h3>
-            <p className="shop__category-amount">{`${amount('accessories')} models`}</p>
-          </Link>
-        </div>
-      </section>
+          </div>
+        </section>
 
-      <section className="slider">
-        <ProductsSlider
-          products={brandNewProducts}
-          unitName="Brand new models"
-        />
-      </section>
-    </div>
+        <section className="slider">
+          <ProductsSlider products={hotPricesProducts} unitName="Hot Prices" />
+        </section>
+
+        <section className="shop">
+          <h2 className="title-subtitle shop__name">Shop by category</h2>
+          <div className="shop__container" data-cy="categoryLinksContainer">
+            <Link
+              to="/phones"
+              className="shop__category shop__category--phones"
+            >
+              <img
+                src="./img/Phones.png"
+                alt="Mobile-category-img"
+                className="shop__image"
+              />
+              <h3 className="shop__category-name">Mobile phones</h3>
+              <p className="shop__category-amount">{`${amount('phones')} models`}</p>
+            </Link>
+
+            <Link
+              to="/tablets"
+              className="shop__category shop__category--tablets"
+            >
+              <img
+                src="./img/Tablets.png"
+                alt="Mobile-category-img"
+                className="shop__image"
+              />
+              <h3 className="shop__category-name">Tablets</h3>
+              <p className="shop__category-amount">{`${amount('tablets')} models`}</p>
+            </Link>
+
+            <Link
+              to="/accessories"
+              className="shop__category shop__category--accessories"
+            >
+              <img
+                src="./img/Accessories.png"
+                alt="Mobile-category-img"
+                className="shop__image"
+              />
+              <h3 className="shop__category-name">Accessories</h3>
+              <p className="shop__category-amount">{`${amount('accessories')} models`}</p>
+            </Link>
+          </div>
+        </section>
+
+        <section className="slider">
+          <ProductsSlider
+            products={brandNewProducts}
+            unitName="Brand new models"
+          />
+        </section>
+      </div>
+    </>
   );
 };

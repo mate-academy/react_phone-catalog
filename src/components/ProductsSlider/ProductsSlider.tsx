@@ -155,7 +155,7 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
   return (
     <>
       <div className="slider__top">
-        <h1 className="title-subtitle slider__name">{unitName}</h1>
+        <h2 className="title-subtitle slider__name">{unitName}</h2>
 
         <div className="slider__arrows">
           <button

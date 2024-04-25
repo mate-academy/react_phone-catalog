@@ -94,6 +94,7 @@ export const App = () => {
 
   return (
     <div className="App">
+      <h1 style={{ display: 'none' }}>Product Catalog</h1>
       <header className="header" id="backToTop">
         <div className="header--left">
           <Link to="/" className="header__logo">

@@ -287,6 +287,22 @@ main {
 .main {
   margin: 0 auto;
 
+  &__title {
+    margin-top: 24px;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      margin-top: 32px;
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+      margin-inline: auto;
+      width: 1136px;
+    }
+  }
+
   &__home {
     display: grid;
     gap: 56px;
