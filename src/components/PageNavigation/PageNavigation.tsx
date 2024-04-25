@@ -1,5 +1,6 @@
 import './PageNavigation.scss';
 import {
+  useCallback,
   useContext,
   useMemo,
 } from 'react';
@@ -25,7 +26,7 @@ function getLinkClass({ isActive }: { isActive: boolean }) {
 
 export const PageNavigation = () => {
   const { pathname } = useLocation();
-  const [isMenuOpen] = useContext(MenuContext);
+  const [isMenuOpen, setIsMenuOpen] = useContext(MenuContext);
   const screenSize = useContext(ScreenSizeContext);
   const {
     isProductPage,
@@ -52,6 +53,12 @@ export const PageNavigation = () => {
       && screenSize === ScreenType.isTablet && !isSearchBarOpen;
   }, [isProductPage, screenSize, isSearchBarOpen]);
 
+  const handleMenuLinkClick = useCallback(() => {
+    if (isMenuOpen) {
+      setIsMenuOpen(false);
+    }
+  }, [isMenuOpen, setIsMenuOpen]);
+
   return (
     <div className={classNames('page-navigation', {
       'page-navigation--active': isMenuOpen
@@ -68,6 +75,7 @@ export const PageNavigation = () => {
             <li key={name} className="page-navigation__item">
               <NavLink
                 to={link}
+                onClick={handleMenuLinkClick}
                 className={getLinkClass}
               >
                 {name}
