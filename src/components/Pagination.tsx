@@ -1,5 +1,7 @@
 // import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { 
+  // NavLink,
+  useSearchParams } from 'react-router-dom';
 import { useAppContext } from './Context';
 
 export const Pagination = () => {
@@ -30,6 +32,12 @@ export const Pagination = () => {
       setCurrentPage(currentPage - 1);
     }
   };
+  const [searchParams, setSearchParams] = useSearchParams();
+  searchParams // щоб не було помилки
+  const changePage = (page: number) => {
+    // const perPage = searchParams.get("perPage");
+    setSearchParams({page: `${page}`, perPage: `${itemsOnPage}`})
+  }
 
   return pageNumber.length > 1 ? (
     <>
@@ -49,13 +57,16 @@ export const Pagination = () => {
 
         {pageNumber.map(number => (
           <li className="pagination__page-item" key={number}>
-            <NavLink
+            {/* <NavLink  */}
+          <div
+              key={number}
               className={`pagination__page-item__link ${currentPage === number && 'pagination__page-item__link--active'}`}
-              to={`#${number}`}
-              onClick={() => setCurrentPage(number)}
-            >
+              
+              onClick={() => changePage(number)}
+              >
               {number}
-            </NavLink>
+            </div>
+            {/* </NavLink> */}
           </li>
         ))}
 
