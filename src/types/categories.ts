@@ -1,6 +1,6 @@
-import { TabAccess } from "./tablets";
+import { Product } from "./product";
 
 export interface Categories {
   type: string;
-  items: TabAccess[];
+  items: Product[];
 }

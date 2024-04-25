@@ -1,11 +1,31 @@
 import './Category.scss';
 import '../../../utils/main.scss';
-import React, { useContext } from 'react';
+import React, { useCallback, useContext } from 'react';
 import { CatalogContext } from '../../CatalogContext';
 import { NavLink } from 'react-router-dom';
+import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
+import { Category } from '../../../types/category';
 
-export const Category = () => {
-  const { phones, tablets, accessories } = useContext(CatalogContext);
+export const CategoryItems = () => {
+  const { products } = useContext(CatalogContext);
+
+  const getCategoryCount = useCallback((category: Category) => {
+    if (products === undefined) {
+      return <NotFoundPage />;
+    }
+
+    const countedItems = products.filter(item => item.category === category).length;
+
+    return countedItems === 1
+      ? `${countedItems} model`
+      : `${countedItems} models`;
+    },
+    [products],
+  );
+
+  const phonesCount = getCategoryCount(Category.Phones);
+  const tabletsCount = getCategoryCount(Category.Tablets);
+  const accessoriesCount = getCategoryCount(Category.Accessories);
 
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
@@ -34,7 +54,7 @@ export const Category = () => {
             />
           </NavLink>
           <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phones?.length} models</div>
+          <div className="category__quantity">{phonesCount}</div>
         </div>
         <div
           className="category__block
@@ -50,7 +70,7 @@ export const Category = () => {
             />
           </NavLink>
           <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tablets?.length} models</div>
+          <div className="category__quantity">{tabletsCount}</div>
         </div>
         <div
           className="category__block
@@ -66,7 +86,7 @@ export const Category = () => {
             />
           </NavLink>
           <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessories?.length} models</div>
+          <div className="category__quantity">{accessoriesCount}</div>
         </div>
       </div>
     </div>

@@ -1,0 +1,361 @@
+@import '../../utils/main';
+
+.details {
+  margin: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__center {
+    max-width: 1199px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  &__homeImg {
+    margin-right: 10px;
+  }
+
+  &__arrow-right {
+    margin-right: 10px;
+  }
+
+  &__paths {
+    margin-right: 10px;
+    font-family: Mont, sans-serif;
+    font-size: 12px;
+    cursor: pointer;
+  }
+
+  &__nameCurrent {
+    @include bread;
+  }
+
+  &__buttonBack {
+      padding-top: 50px;
+
+    &__click {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      background-color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__img {
+      grid-row: 2;
+      margin-right: 10px;
+    }
+
+    &__name {
+      @include bread;
+    }
+  }
+
+  &__product {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    width: auto;
+    min-width: 270px;
+    padding-top: 20px;
+
+    @include on-tablet {
+      width: auto;
+      display: grid;
+    }
+
+    &__name {
+      display: flex;
+      @include header-phone;
+      margin-bottom: 40px;
+
+      @include on-tablet {
+        display: grid;
+        @include header;
+      }
+    }
+
+    &__mainImg {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 15px;
+
+      @include on-tablet {
+        display: grid;
+        margin-bottom: 0;
+        align-self: start;
+      }
+    }
+
+    &__img {
+      width: 100%;
+      max-width: 320px;
+      height: 274px;
+
+      @include on-tablet {
+        width: auto;
+        height: 287px;
+      }
+      
+      @include on-desktop {
+        height: 464px;
+      }
+    }
+
+    &__selectImg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 10px;
+
+      @include on-tablet {
+        display: grid;
+        align-self: start;
+        grid-row: 2;
+        margin-bottom: 0;
+      }
+    }
+
+    &__image {
+      width: 35px;
+      height: 35px;
+      margin-bottom: 20px;
+      margin-right: 8px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 10px;
+        margin-right: 0;
+      }
+    }
+
+    &__capacityContainer {
+      grid-row: 2;
+    }
+
+    &__priceContainer {
+      grid-row: 2;
+    }
+
+    &__itemHead {
+      @include bread;
+    }
+
+    &__colorsVariants {
+      display: flex;
+      padding-left: 0;
+      text-decoration: none;
+      list-style-type: none;
+    }
+
+    &__colorOption {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      border-radius: 50px;
+      cursor: pointer;
+    }
+
+    &__capacityVariants {
+      display: flex;
+      padding-left: 0;
+      text-decoration: none;
+      list-style-type: none;
+    }
+
+    &__capacityOption {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 60px;
+      height: 32px;
+      margin-right: 3px;
+      margin-bottom: 5px;
+      @include category-quantity;
+      color: $grey-primary;
+      border: 1px solid $border-capacity;
+      cursor: pointer;
+    }
+
+    &__line {
+      width: 100%;
+      height: 1px;
+      margin-bottom: 16px;
+      background-color: $border;
+    }
+
+    &__priceBlock {
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+    }
+
+    &__price {
+      @include header;
+      margin-right: 5px;
+      font-weight: 800;
+    }
+
+    &__priceDiscount {
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: $grey-secondary;
+    }
+
+    &__buttonContainer {
+      display: flex;
+      width: 100%;
+      margin-bottom: 20px;
+      padding-top: 20px;
+    }
+
+    &__buttonAdd {
+      margin-right: 5px;
+      width: 100%;
+      height: 48px;
+      background-color: $grey-primary;
+      color: #fff;
+      border: none;
+      cursor: pointer;
+    }
+
+    &__buttonFavorite {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 48px;
+      width: 48px;
+      background-color: #fff;
+      border-radius: 0;
+      border: 1px solid $border-capacity;
+    }
+  }
+
+  &__description {
+    &__name {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 7px;
+    }
+    &__item {
+      @include bread;
+      font-weight: 600;
+    }
+
+    &__models {
+      @include bread;
+      color: $grey-primary;
+      font-weight: 600;
+    }
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: baseline;
+    padding-top: 50px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      padding-top: 70px;
+      flex-direction: row;
+    }
+
+    &__descript {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items:baseline;
+      width: 100%;
+      padding-top: 50px;
+
+      @include on-desktop {
+        width: 50%;
+        padding-top: 0;
+      }
+
+      &--about {
+        margin-right: 30px;
+
+        @include on-tablet {
+          margin-bottom: 30px;
+        }
+
+        @include on-desktop {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    &__head {
+      margin-bottom: 30px;
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30px;
+    }
+
+    &__line {
+      width: 100%;
+      height: 1px;
+      margin-bottom: 16px;
+      background-color: $border;
+    }
+
+    &__aboutMain {
+      @include category-paragraph;
+      margin-top: 0;
+      font-weight: 700;
+    }
+
+    &__paragraph {
+      @include category-quantity;
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 10px;
+    }
+
+    &__name {
+      @include category-quantity;
+      font-weight: 500;
+    }
+
+    &__model {
+      @include category-quantity;
+      color: $grey-primary;
+      font-weight: 500;
+    }
+  }
+
+  &__like {
+    margin: 0 20px;
+
+    &__container {
+      margin: 0 auto;
+    }
+  }
+}

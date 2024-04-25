@@ -3,14 +3,17 @@ export interface TabAccess {
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvaliable: [];
+  capacityAvailable: [];
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvaliable: [];
+  colorsAvailable: [];
   color: string;
-  images: [];
-  description: [];
+  images: string[];
+  description: {
+    title: string;
+    text: string[];
+  }[];
   screen: string;
   resolution: string;
   processor: string;

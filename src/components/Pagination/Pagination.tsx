@@ -7,35 +7,33 @@ import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
 import React from 'react';
-import { TabAccess } from '../../types/tablets';
+import { Product } from '../../types/product';
 
 type Props = {
-  toPagination: TabAccess[];
+  products: Product[];
 }
 
-export const Pagination: React.FC<Props> = ({ toPagination }) => {
+export const Pagination: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  if (toPagination === undefined) {
+  if (products === undefined) {
     return <NotFoundPage />;
   }
 
-  console.log(toPagination)
-
   const perPage = searchParams.get('perPage') || '4';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? toPagination.length : perPage;
+  const itemsPerPage = perPage === 'all' ? products.length : perPage;
 
   const total = () => {
     if (perPage === 'all') {
       setSearchParams({
         page: `${1}`.toString(),
-        perPage: `${toPagination.length}`.toString(),
+        perPage: `${products.length}`.toString(),
       });
 
-      return toPagination.length;
+      return products.length;
     } else {
-      return Math.ceil(toPagination.length / +itemsPerPage);
+      return Math.ceil(products.length / +itemsPerPage);
     }
   };
 

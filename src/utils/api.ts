@@ -1,4 +1,4 @@
-import { Product } from '../types/phone';
+import { Product } from '../types/product';
 // eslint-disable-next-line operator-linebreak
 const API_URL =
   'https://mate-academy.github.io/react_phone-catalog/api/products.json';

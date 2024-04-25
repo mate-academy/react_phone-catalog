@@ -37,9 +37,7 @@
   }
 
   &__phones {
-    font-family: Mont, sans-serif;
-    font-size: 12px;
-    color: $grey-secondary;
+    @include bread;
   }
   
   &__header {

@@ -1,17 +1,17 @@
 import { ChangeEvent, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
-import { TabAccess } from '../../types/tablets';
 import { SortByItem } from '../../helpers/sortBy';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './ProductsPage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
-import { PhoneTabAccessCard } from '../../components/PhoneTabAccessCard/PhoneTabAccessCard';
+import { Product } from '../../types/product';
+import { ProductCard } from '../../components/ProductCard/ProductCard';
 
 type Props = {
-  products: TabAccess[];
+  products: Product[];
   title: string;
 }
 export const ProductsPage: React.FC<Props> = ({ products, title }) => {
@@ -30,8 +30,6 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
   const lastItemIndex = Math.min(+currentPage * +itemsPerPage, products.length);
 
-  const showPagination = parseInt(perPage) >= products.length;
-
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
   };
@@ -45,20 +43,24 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
 
   const filteredPhones = () => {
     switch (sortBy) {
-      // case SortByItem.Age:
-      //   return phones?.sort((a, b) => (a.year - b.year ? 1 : -1));
+      case SortByItem.Age:
+        return products?.sort((a, b) => (a.year - b.year ? 1 : -1));
       case SortByItem.Name:
         return products?.sort((a, b) => a.name.localeCompare(b.name));
       case SortByItem.Price:
-        return products?.sort((a, b) => a.priceRegular - b.priceDiscount);
+        return products?.sort((a, b) => a.fullPrice - b.price);
       default:
         return products;
     }
   };
 
+  const itemToUpperCase = (item: string) => {
+    return item.charAt(0).toUpperCase() + item.slice(1);
+  }
+
   const filtered = filteredPhones().slice(firstItemIndex, lastItemIndex);
 
-  const toPagination = filtered;
+  const showPagination = filtered.length < products.length;
 
   return (
     <div className="productsPage">
@@ -74,7 +76,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
           />
           <div className="productsPage__phones">{title}</div>
         </div>
-        <h1 className="productsPage__header">{title}</h1>
+        <h1 className="productsPage__header">{itemToUpperCase(title)}</h1>
         <div className="productsPage__models">{`${products.length} models`}</div>
 
         <div className="productsPage__selectParams">
@@ -108,18 +110,21 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
 
         <div className="productsPage__container">
           <ul className="productsPage__list">
-            {filtered?.map((item: TabAccess) => (
+            {filtered?.map((product: Product) => (
               <NavLink
-                key={item.id}
-                to={{  pathname: `${pathname}/${item.id}`}}
+                key={product.id}
+                to={{ pathname: `${pathname}/${product.id}`}}
                 className="productsPage__link"
               >
-                <PhoneTabAccessCard item={item} />
+                <ProductCard product={product} />
               </NavLink>
             ))}
           </ul>
         </div>
-        {showPagination ? null : <Pagination toPagination={toPagination}/>}
+        {showPagination 
+          ? <Pagination products={products} />
+          : null
+        }
       </div>
     </div>
   );

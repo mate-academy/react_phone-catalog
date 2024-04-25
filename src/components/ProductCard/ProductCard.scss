@@ -3,6 +3,7 @@
 .card {
   padding: 20px;
   border: 1px solid #E2E6E9;
+  width: $card-width-mobile;
 
   @include on-tablet {
     width: $card-width-tablet;
@@ -20,7 +21,15 @@
   }
 
   &__img {
-    width: 85%;
+    width: 150px;
+
+    @include on-tablet {
+      width: 165px;
+    }
+
+    @include on-desktop {
+      width: 224px;
+    }
   }
 
   &__name {

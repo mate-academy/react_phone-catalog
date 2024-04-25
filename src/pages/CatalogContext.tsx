@@ -1,38 +1,34 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Categories } from '../types/categories';
-import { Product } from '../types/phone';
-// import { TabAccess } from '../types/tablets';
+import { Category } from '../types/category';
+import { Product } from '../types/product';
 
 type CatalogType = {
   products: Product[] | undefined;
   setProducts: React.Dispatch<React.SetStateAction<Product[] | undefined>>;
-  // phones: TabAccess[];
-  // setPhones: React.Dispatch<React.SetStateAction<TabAccess[]>>;
-  // tablets: TabAccess[];
-  // setTablets: React.Dispatch<React.SetStateAction<TabAccess[]>>;
-  // accessories: TabAccess[];
-  // setAccessories: React.Dispatch<React.SetStateAction<TabAccess[]>>;
   loader: boolean;
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
   categories: Categories[];
+  elOnPage: number;
+  currentPage: number;
+  handleNextPage: () => void;
+  handlePreviousPage: () => void;
 };
 
 export const CatalogContext = React.createContext<CatalogType>({
   products: [],
   setProducts: () => {},
-  // phones: [],
-  // setPhones: () => {},
-  // tablets: [],
-  // setTablets: () => {},
-  // accessories: [],
-  // setAccessories: () => {},
   loader: false,
   setLoader: () => {},
   error: '',
   setError: () => {},
   categories: [],
+  elOnPage: 0,
+  currentPage: 1,
+  handleNextPage: () => {},
+  handlePreviousPage: () => {},
 });
 
 type Props = {
@@ -41,21 +37,14 @@ type Props = {
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[] | undefined>();
-  const [phones, setPhones] = useState([]);
-  const [tablets, setTablets] = useState([]);
-  const [accessories, setAccessories] = useState([]);
+  const [elOnPage, setElOnPage] = useState(4);
+  const [currentPage, setCurrentPage] = useState(1);
   const [loader, setLoader] = useState<boolean>(false);
   const [error, setError] = useState<string>('');
 
   const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 
   const productsUrl = BASE_URL + 'products.json';
-
-  const phonesUrl = BASE_URL + 'phones.json';
-
-  const tabletsUrl = BASE_URL + 'tablets.json';
-
-  const accessoriesUrl = BASE_URL + 'accessories.json';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -77,65 +66,15 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     fetchData();
   }, [productsUrl]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(phonesUrl);
+  const getCategoryCount = useCallback((category: Category) => {
+    const countedItems = products?.filter(item => item.category === category).length;
 
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setPhones(data);
-      } catch (err) {
-        setError('There are no phones yet');
-      }
-    };
-
-    fetchData();
-  }, [phonesUrl]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(tabletsUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setTablets(data);
-      } catch (er) {
-        setError('There are no tablets yet');
-      }
-    };
-
-    fetchData();
-  }, [tabletsUrl]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(accessoriesUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        setAccessories(data);
-      } catch (e) {
-        setError('There are no accessories yet');
-      }
-    };
-
-    fetchData();
-  }, [accessoriesUrl]);
+    return countedItems;
+  }, [products]);
+  
+  const phones = getCategoryCount(Category.Phones);
+  const tablets = getCategoryCount(Category.Tablets);
+  const accessories = getCategoryCount(Category.Accessories);
 
   const categories = [
     {
@@ -152,16 +91,50 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     },
   ];
 
+  console.log(products)
+
+  const [matches, setMatches] = useState(
+    window.matchMedia('(min-width: 640px)').matches,
+  );
+
+  useEffect(() => {
+    window
+      .matchMedia('(min-width: 640px)')
+      .addEventListener('change', e => setMatches(e.matches));
+  }, []);
+
+  useEffect(() => {
+    const countQuantity = () => {
+      if (!matches) {
+        setElOnPage(2);
+      } else {
+        setElOnPage(4);
+      }
+    };
+
+    countQuantity()
+  }, [matches])
+  
+  const handleNextPage = () => {
+    const updatedPage = currentPage + 1;
+
+    setCurrentPage(updatedPage);
+  };
+
+  const handlePreviousPage = () => {
+    const updatedPage = currentPage - 1;
+
+    setCurrentPage(updatedPage);
+  };
+
   const value = {
     products,
     setProducts,
     categories,
-    // phones,
-    // setPhones,
-    // tablets,
-    // setTablets,
-    // accessories,
-    // setAccessories,
+    elOnPage,
+    currentPage,
+    handleNextPage,
+    handlePreviousPage,
     loader,
     setLoader,
     error,
@@ -171,27 +144,4 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   return (
     <CatalogContext.Provider value={value}>{children}</CatalogContext.Provider>
   );
-
-
-
-    // const getCategoryCount = useCallback(
-  //   (category: Category) => {
-  //     if (products === undefined) {
-  //       return <NotFoundPage />;
-  //     }
-
-  //     const countedItems = products.filter(
-  //       item => item.category === category,
-  //     ).length;
-
-  //     return countedItems === 1
-  //       ? `${countedItems} model`
-  //       : `${countedItems} models`;
-  //   },
-  //   [products],
-  // );
-
-  // const phonesCount = getCategoryCount(Category.Phones);
-  // const tabletsCount = getCategoryCount(Category.Tablets);
-  // const accessoriesCount = getCategoryCount(Category.Accessories);
 };

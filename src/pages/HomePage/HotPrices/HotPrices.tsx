@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { ProductCard } from '../../../components/ProductCard/ProductCard';
-import { Product } from '../../../types/phone';
+import { Product } from '../../../types/product';
 import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
@@ -8,64 +8,28 @@ import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
 import Vec_light_right from '../../../images/homePage/Vec_light_right.svg';
 import './HotPrices.scss';
 import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
+import { last, sliceToShow } from '../../../helpers/sliceToShow';
 
 export const HotPrices = () => {
-  const { products, error } = useContext(CatalogContext);
+  const { 
+    products, 
+    elOnPage,
+    currentPage,
+    handlePreviousPage, 
+    handleNextPage, 
+    error } = useContext(CatalogContext);
 
-  const [matches, setMatches] = useState(
-    window.matchMedia('(min-width: 640px)').matches,
-  );
-
-  useEffect(() => {
-    window
-      .matchMedia('(min-width: 640px)')
-      .addEventListener('change', e => setMatches(e.matches));
-  }, []);
-
-  const countQuantity = () => {
-    if (!matches) {
-      return 2;
-    } else {
-      return 4;
-    }
-  };
-
-  const itemsOnPage = countQuantity();
-
-  const [currentPage, setCurrentPage] = useState(1);
+  if (!products) {
+    return <NotFoundPage/>;
+  }
 
   const sortedById = products?.sort((a, b) => (+a.id > +b.id ? 1 : -1));
 
-  const visibleElements = () => {
-    const firstPageIndex = (currentPage - 1) * itemsOnPage;
-    const lastPageIndex = firstPageIndex + itemsOnPage;
+  const visibleItems = sliceToShow(sortedById, currentPage, elOnPage);
 
-    return sortedById?.slice(firstPageIndex, lastPageIndex);
-  };
-
-  const visibleItems = visibleElements();
-
-  const last = () => {
-    if (products?.length === undefined) {
-      return 0;
-    } else {
-      return Math.ceil(products?.length / itemsOnPage);
-    }
-  };
-
-  const lastPage = last();
-
-  const handleNextPage = () => {
-    const updatedPage = currentPage + 1;
-
-    setCurrentPage(updatedPage);
-  };
-
-  const handlePreviousPage = () => {
-    const updatedPage = currentPage - 1;
-
-    setCurrentPage(updatedPage);
-  };
+  const lastPage = last(sortedById, elOnPage);
 
   return !error ? (
     <div className="hotPrices">
@@ -106,9 +70,16 @@ export const HotPrices = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {visibleItems?.map((phone: Product) => (
-              <ProductCard phone={phone} key={phone.id} />
-            ))}
+            {visibleItems.map((item: Product) => (
+              <NavLink
+                key={item.id}
+                to={`${item.category}/${item.itemId}`}
+                className="productsPage__link"
+              >
+              <ProductCard product={item} key={item.id} />
+              </NavLink>
+            ))
+            }
           </div>
         </div>
       </div>

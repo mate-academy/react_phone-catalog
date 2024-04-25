@@ -37,8 +37,17 @@
 @mixin header {
   font-family: Mont, sans-serif;
   font-size: 32px;
+  font-weight: 800;
   line-height: 40.9px;
   letter-spacing: -1%;
+  color: $grey-primary;
+}
+
+@mixin header-phone {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
   color: $grey-primary;
 }
 
@@ -79,4 +88,10 @@
   background-position: right;
   background-size: contain;
   z-index: 1;
+}
+
+@mixin bread {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  color: $grey-secondary;
 }
