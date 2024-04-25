@@ -1,4 +1,5 @@
-const BASE_URL = './api/';
+// const BASE_URL = './api/';
+const BASE_URL = 'https://ishamkii.github.io/react-phone_catalog/api/';
 
 // const DEFAULT_HEADERS = {
 //   'Content-Type': 'application/json; charset=utf-8',
