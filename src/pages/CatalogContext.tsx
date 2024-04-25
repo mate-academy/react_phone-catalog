@@ -1,6 +1,5 @@
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Categories } from '../types/categories';
-import { Category } from '../types/category';
 import { Product } from '../types/product';
 
 type CatalogType = {
@@ -66,32 +65,22 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     fetchData();
   }, [productsUrl]);
 
-  const getCategoryCount = useCallback((category: Category) => {
-    const countedItems = products?.filter(item => item.category === category).length;
-
-    return countedItems;
-  }, [products]);
-  
-  const phones = getCategoryCount(Category.Phones);
-  const tablets = getCategoryCount(Category.Tablets);
-  const accessories = getCategoryCount(Category.Accessories);
-
-  const categories = [
+  const categories: Categories[] = [
     {
       type: 'phones',
-      items: phones,
+      items: [],
     },
     {
       type: 'tablets',
-      items: tablets,
+      items: [],
     },
     {
       type: 'accessories',
-      items: accessories,
+      items: [],
     },
   ];
 
-  console.log(products)
+  console.log(categories[0].items)
 
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 640px)').matches,

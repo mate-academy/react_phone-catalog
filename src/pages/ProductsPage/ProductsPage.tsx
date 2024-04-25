@@ -1,4 +1,4 @@
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useContext, useEffect, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
@@ -9,26 +9,48 @@ import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
 import { Product } from '../../types/product';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
+import { CatalogContext } from '../CatalogContext';
 
-type Props = {
-  products: Product[];
-  title: string;
-}
-export const ProductsPage: React.FC<Props> = ({ products, title }) => {
+export const PhonePage = () => {
+  const { categories, setError } = useContext(CatalogContext);
+
+  const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
+
+  const phoneUrl = BASE_URL + 'phones.json';
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(phoneUrl);
+
+        if (!response.ok) {
+          throw new Error('Error');
+        }
+
+        const data = await response.json();
+
+        categories[0].items = data;
+      } catch (er) {
+        setError('There are no products yet');
+      }
+    };
+
+    fetchData();
+  }, [phoneUrl]);
 
   const [sortBy, setSortBy] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
   
-  if (products === undefined) {
+  if (categories === undefined) {
     return <NotFoundPage />;
   }
 
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? products.length : perPage;
+  const itemsPerPage = perPage === 'all' ? categories[0].items.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, products.length);
+  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, categories[0].items.length);
 
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
@@ -41,7 +63,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
     });
   };
 
-  function filteredPhones(items: Product[]) {
+  function filteredProducts(items: Product[]) {
     switch (sortBy) {
       case SortByItem.Age:
         return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
@@ -58,9 +80,9 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
   }
 
-  const filtered = filteredPhones(products).slice(firstItemIndex, lastItemIndex);
+  const filtered = filteredProducts(categories[0].items).slice(firstItemIndex, lastItemIndex);
 
-  const showPagination = filtered.length < products.length;
+  const showPagination = filtered.length < categories[0].items.length;
 
   return (
     <div className="productsPage">
@@ -74,10 +96,10 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
             alt="Vector_light_right"
             className="productsPage__arrow-right"
           />
-          <div className="productsPage__phones">{title}</div>
+          {/* <div className="productsPage__phones">{title}</div> */}
         </div>
-        <h1 className="productsPage__header">{itemToUpperCase(title)}</h1>
-        <div className="productsPage__models">{`${products.length} models`}</div>
+        {/* <h1 className="productsPage__header">{itemToUpperCase(title)}</h1> */}
+        <div className="productsPage__models">{`${categories[0].items.length} models`}</div>
 
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
@@ -122,7 +144,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
           </ul>
         </div>
         {showPagination 
-          ? <Pagination products={products} />
+          ? <Pagination products={categories[0].items} />
           : null
         }
       </div>
