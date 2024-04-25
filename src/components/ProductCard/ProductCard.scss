@@ -36,7 +36,7 @@
 
     @include on-desktop {
       width: auto;
-      margin-bottom: 16px;
+      margin-bottom: 8px;
     }
   }
 
@@ -58,6 +58,7 @@
   &__name {
     &-wrapper {
       height: 58px;
+      width: 100%;
     }
 
     color: $primary;
