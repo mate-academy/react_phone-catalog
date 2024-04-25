@@ -36,9 +36,6 @@ export const HomePage = React.memo(() => {
   const [products, setProducts] = useState<Product[]>([]);
 
   const phones = products.filter(product => product.category === 'phones');
-  // const phones = products
-  //   .filter(product => product.category === 'phones')
-  //   .slice(0, 50);
   const tablets = products.filter(product => product.category === 'tablets');
   const accessories = products.filter(
     product => product.category === 'accessories',

@@ -1,11 +1,11 @@
 // const BASE_URL = './api/';
-const BASE_URL = 'https://ishamkii.github.io/react_phone-catalog/api/';
+export const BASE_URL = 'https://ishamkii.github.io/react_phone-catalog/api/';
 
 // const DEFAULT_HEADERS = {
 //   'Content-Type': 'application/json; charset=utf-8',
 // };
 
-const handleResponse = (response: Response) => {
+export const handleResponse = (response: Response) => {
   if (!response.ok) {
     throw new Error(`${response.status} ${response.statusText}`);
   }

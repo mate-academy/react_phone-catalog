@@ -8,6 +8,7 @@ import { SidebarProvider } from './store/SidebarContext';
 import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
 import { CategotyPage } from './modules/CategotyPage';
+// import { Reload } from './modules/shared/Reload';
 // import { ProductProvider } from './store/ProductContext';
 
 export const Root = () => (
@@ -30,6 +31,10 @@ export const Root = () => (
             path="accessories"
             element={<CategotyPage title="Accessories" />}
           />
+          {/* <Route
+            path="*"
+            element={<Reload imgOfError="page-not-found.png" />}
+          /> */}
         </Route>
       </Routes>
       {/* </ProductProvider> */}
