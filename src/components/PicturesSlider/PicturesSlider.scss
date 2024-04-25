@@ -29,6 +29,10 @@
       border-radius: 48px;
       border: 1px solid $icons-placeholder-color;
       flex-shrink: 0;
+
+      &:hover {
+        border: 1px solid $secondary-color;
+      }
     }
   }
 
