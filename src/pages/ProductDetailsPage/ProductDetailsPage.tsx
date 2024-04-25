@@ -21,8 +21,8 @@ export const ProductDetails = () => {
   const [choosenCapasity, setChoosenCapasity] = useState('');
   const [choosenColor, setChoosenColor] = useState('');
   const [currentImage, setCurrentImage] = useState<string>('');
-  const [errorMessage, setErrorMessage] = useState('';)
-  const BASE_URL = 'https://github.com/mate-academy/react_phone-catalog/tree/master/public/api';
+  const [errorMessage, setErrorMessage] = useState('');
+  const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api';
 
   const url = BASE_URL + `/${paths[0]}/` + `${productId}.json`;
 

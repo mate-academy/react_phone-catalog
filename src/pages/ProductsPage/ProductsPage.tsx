@@ -41,16 +41,16 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
     });
   };
 
-  const filteredPhones = () => {
+  function filteredPhones(items: Product[]) {
     switch (sortBy) {
       case SortByItem.Age:
-        return products?.sort((a, b) => (a.year - b.year ? 1 : -1));
+        return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
       case SortByItem.Name:
-        return products?.sort((a, b) => a.name.localeCompare(b.name));
+        return items?.sort((a, b) => a.name.localeCompare(b.name));
       case SortByItem.Price:
-        return products?.sort((a, b) => a.fullPrice - b.price);
+        return items?.sort((a, b) => a.fullPrice - b.price);
       default:
-        return products;
+        return items;
     }
   };
 
@@ -58,7 +58,7 @@ export const ProductsPage: React.FC<Props> = ({ products, title }) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
   }
 
-  const filtered = filteredPhones().slice(firstItemIndex, lastItemIndex);
+  const filtered = filteredPhones(products).slice(firstItemIndex, lastItemIndex);
 
   const showPagination = filtered.length < products.length;
 
