@@ -35,12 +35,13 @@
   height: 32px;
 }
 
-.color,  .colorActive {
+.color, .colorActive {
   width: 32px;
   height: 32px;
   border-radius: 50%;
   border: 1px solid $elements-border-color;
   position: relative;
+  cursor: pointer;
 
   @include hover (border, 1px solid $btns-border-color)
 }
@@ -71,6 +72,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .capacityActive  {

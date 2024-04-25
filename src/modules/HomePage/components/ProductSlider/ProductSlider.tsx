@@ -5,20 +5,17 @@ import { ProductCard } from '../../../../components/ProductCard';
 import { ProductInfo } from '../../../../types/ProductInfo';
 import { RoundedArrow } from '../../../../components/RondedArrowBtn';
 import { ProductCardType } from '../../../../types/ProductCardType';
-import { Loader } from '../../../../components/Loader';
 
 type Props = {
   title: string;
   products: ProductInfo[];
   type: ProductCardType;
-  loading: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   title,
   products,
   type,
-  loading,
 }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(212);
@@ -102,8 +99,6 @@ export const ProductSlider: React.FC<Props> = ({
           </button>
         </div>
       </div>
-
-      {loading && <Loader />}
 
       <div className={styles.productsWrap}>
         <div className={styles.products} style={carouselListStyles}>

@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import styles from './ProductDetailsPage.module.scss';
-import { BackBtn } from '../../components/BackBtn/BackBtn';
 import { useParams } from 'react-router-dom';
+import styles from './ProductDetailsPage.module.scss';
+import classNames from 'classnames';
+import { BackBtn } from '../../components/BackBtn/BackBtn';
 import { ProductInfo } from '../../types/ProductInfo';
 import { fetchProducts } from '../../features/productsSlice';
 import { Loader } from '../../components/Loader';
@@ -11,7 +12,6 @@ import { VariableChars } from './components/VariableChars';
 import { ProductAction } from './components/ProductAction';
 import { TechCharsShort } from './components/TechCharsShort';
 import { TechCharsFull } from './components/TechCharsFull';
-import classNames from 'classnames';
 import { getRandomProducts } from '../../helpers/getRandomProducts';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 
@@ -40,11 +40,11 @@ export const ProductDetailsPage = () => {
     <div className={styles.productPage}>
       <BackBtn />
 
-      {loading && <Loader />}
-
       <h2 className={styles.name}>
         {!loading && error ? 'Product was not found' : selectedProduct?.name}
       </h2>
+
+      {loading && <Loader />}
 
       {!loading && !error && selectedProduct && (
         <div className={styles.content}>
@@ -96,7 +96,6 @@ export const ProductDetailsPage = () => {
                 ...tablets,
                 ...accessories,
               ])}
-              loading={loading}
             />
           </div>
         </div>

@@ -11,7 +11,7 @@ import { fetchProducts } from '../../features/productsSlice';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
-  const { phones, tablets, accessories, loading } = useAppSelector(
+  const { phones, tablets, accessories } = useAppSelector(
     state => state.products,
   );
 
@@ -33,7 +33,6 @@ export const HomePage = () => {
           title={`Brand new \n models`}
           products={newModels}
           type="Brand new models"
-          loading={loading}
         />
 
         <ProductCategories
@@ -46,7 +45,6 @@ export const HomePage = () => {
           title={'Hot prices'}
           products={hotPrice}
           type="Hot prices"
-          loading={loading}
         />
       </div>
     </>
