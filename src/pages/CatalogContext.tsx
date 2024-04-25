@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useMemo, useState } from 'react';
 import { Categories } from '../types/categories';
+import { Category } from '../types/category';
 import { Product } from '../types/product';
 
 type CatalogType = {
@@ -9,7 +10,7 @@ type CatalogType = {
   setLoader: React.Dispatch<React.SetStateAction<boolean>>;
   error: string;
   setError: React.Dispatch<React.SetStateAction<string>>;
-  categories: Categories[];
+  prodCategories: Categories[];
   elOnPage: number;
   currentPage: number;
   handleNextPage: () => void;
@@ -23,7 +24,7 @@ export const CatalogContext = React.createContext<CatalogType>({
   setLoader: () => {},
   error: '',
   setError: () => {},
-  categories: [],
+  prodCategories: [],
   elOnPage: 0,
   currentPage: 1,
   handleNextPage: () => {},
@@ -36,6 +37,9 @@ type Props = {
 
 export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[] | undefined>();
+  // const [phones, setPhones] = useState<TabAccessPhone[]>();
+  // const [tablets, setTablets] = useState<TabAccessPhone[]>();
+  // const [accessories, setAccessories] = useState<TabAccessPhone[]>();
   const [elOnPage, setElOnPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
   const [loader, setLoader] = useState<boolean>(false);
@@ -44,6 +48,9 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 
   const productsUrl = BASE_URL + 'products.json';
+  // const phoneUrl = BASE_URL + 'phones.json';
+  // const tabletsUrl = BASE_URL + 'tablets.json';
+  // const accessoriesUrl = BASE_URL + 'accessories.json';
 
   useEffect(() => {
     const fetchData = async () => {
@@ -65,20 +72,33 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
     fetchData();
   }, [productsUrl]);
 
-  const categories: Categories[] = [
+  const getCategory = useCallback((category: Category) => {
+    const items = products?.filter((item) => item.category === category);
+
+    return items;
+  }, [products]);
+
+  const phones = getCategory(Category.Phones);
+  const tablets = getCategory(Category.Tablets);
+  const accessories = getCategory(Category.Accessories);
+
+  const prodCategories = useMemo(() => ([
     {
       type: 'phones',
-      items: [],
+      items: phones,
     },
     {
       type: 'tablets',
-      items: [],
+      items: tablets,
     },
     {
       type: 'accessories',
-      items: [],
+      items: accessories,
     },
-  ];
+  ]), [phones, tablets, accessories]);
+
+  console.log(phones)
+
 
   const [matches, setMatches] = useState(
     window.matchMedia('(min-width: 640px)').matches,
@@ -117,7 +137,7 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   const value = {
     products,
     setProducts,
-    categories,
+    prodCategories,
     elOnPage,
     currentPage,
     handleNextPage,

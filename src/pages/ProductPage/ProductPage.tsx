@@ -1,60 +1,35 @@
-import { ChangeEvent, useContext, useEffect, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
-import './PhonePage.scss';
+import './ProductPage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
-import { Product } from '../../types/product';
 import { ProductCard } from '../../components/ProductCard/ProductCard';
-import { CatalogContext } from '../CatalogContext';
+import { Product } from '../../types/product';
 
-export const PhonePage = () => {
-  const { categories, setError } = useContext(CatalogContext);
+type Props = {
+  products: Product[];
+  title: string;
+}
 
-  const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
-
-  const phoneUrl = BASE_URL + 'phones.json';
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch(phoneUrl);
-
-        if (!response.ok) {
-          throw new Error('Error');
-        }
-
-        const data = await response.json();
-
-        categories[0].items = data;
-      } catch (er) {
-        setError('There are no products yet');
-      }
-    };
-
-    fetchData();
-  }, [phoneUrl]);
-
-  console.log(categories)
+export const ProductPage: React.FC<Props> = ({ products, title}) => {
 
   const [sortBy, setSortBy] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
-
-  const phoneItems = categories[0].items;
   
-  if (phoneItems === undefined) {
+  if (products === undefined) {
     return <NotFoundPage />;
   }
 
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? phoneItems.length : perPage;
+  const itemsPerPage = perPage === 'all' ? products.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, phoneItems.length);
+  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, products.length);
 
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
@@ -84,9 +59,9 @@ export const PhonePage = () => {
     return item.charAt(0).toUpperCase() + item.slice(1);
   }
 
-  const filtered = filteredProducts(categories[0].items).slice(firstItemIndex, lastItemIndex);
+  const filtered = filteredProducts(products).slice(firstItemIndex, lastItemIndex);
 
-  const showPagination = filtered.length < categories[0].items.length;
+  const showPagination = filtered.length < products.length;
 
   return (
     <div className="productsPage">
@@ -100,10 +75,10 @@ export const PhonePage = () => {
             alt="Vector_light_right"
             className="productsPage__arrow-right"
           />
-          {/* <div className="productsPage__phones">{title}</div> */}
+          <div className="productsPage__phones">{title}</div>
         </div>
-        {/* <h1 className="productsPage__header">{itemToUpperCase(title)}</h1> */}
-        <div className="productsPage__models">{`${phoneItems.length} models`}</div>
+        <h1 className="productsPage__header">{itemToUpperCase(title)}</h1>
+        <div className="productsPage__models">{`${products.length} models`}</div>
 
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
@@ -136,19 +111,21 @@ export const PhonePage = () => {
 
         <div className="productsPage__container">
           <ul className="productsPage__list">
-            {filtered?.map((product: Product) => (
-              <NavLink
-                key={product.id}
-                to={{ pathname: `${pathname}/${product.id}`}}
-                className="productsPage__link"
-              >
-                <ProductCard product={product} />
-              </NavLink>
-            ))}
+            {filtered?.map((product: Product) => {
+              return (
+                <NavLink
+                  key={product.id}
+                  to={{ pathname: `${pathname}/${product.id}`}}
+                  className="productsPage__link"
+                >
+                  <ProductCard product={product} />
+                </NavLink>
+              )
+            })}
           </ul>
         </div>
         {showPagination 
-          ? <Pagination products={phoneItems} />
+          ? <Pagination products={products} />
           : null
         }
       </div>

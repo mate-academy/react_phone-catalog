@@ -8,9 +8,10 @@ import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
 import React from 'react';
 import { Product } from '../../types/product';
+import { TabAccessPhone } from '../../types/tabAccessPhones';
 
 type Props = {
-  products: Product[];
+  products: Product[] | TabAccessPhone[];
 }
 
 export const Pagination: React.FC<Props> = ({ products }) => {
