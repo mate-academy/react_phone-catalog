@@ -12,11 +12,7 @@ type Props = {
   type: ProductCardType;
 };
 
-export const ProductSlider: React.FC<Props> = ({
-  title,
-  products,
-  type,
-}) => {
+export const ProductSlider: React.FC<Props> = ({ title, products, type }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(212);
   const [cardsInView, setCardsinView] = useState(1);
