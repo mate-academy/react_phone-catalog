@@ -7,7 +7,7 @@ import { useContext } from 'react';
 import { Header } from './modules/shared/Header';
 import { Footer } from './modules/shared/Footer/Footer';
 import { SidebarContext } from './store/SidebarContext';
-import { Sidebar } from './modules/shared/Sidebar';
+import { Sidebar } from './modules/Sidebar';
 
 export const App = () => {
   const { isOpenSidebar } = useContext(SidebarContext);

@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import { SidebarContext } from '../../../store/SidebarContext';
+import { SidebarContext } from '../../store/SidebarContext';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('sidebar__nav-item navigation-title', { active: isActive });

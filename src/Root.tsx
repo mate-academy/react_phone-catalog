@@ -7,9 +7,7 @@ import {
 import { SidebarProvider } from './store/SidebarContext';
 import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
-import { PhonesPage } from './modules/PhonesPage';
-import { TabletsPage } from './modules/TabletsPage';
-import { AccessoriesPage } from './modules/AccessoriesPage';
+import { CategotyPage } from './modules/CategotyPage';
 // import { ProductProvider } from './store/ProductContext';
 
 export const Root = () => (
@@ -21,9 +19,17 @@ export const Root = () => (
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
 
-          <Route path="phones" element={<PhonesPage />} />
-          <Route path="tablets" element={<TabletsPage />} />
-          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route
+            path="phones"
+            element={<CategotyPage title="Mobile phones" />}
+          />
+
+          <Route path="tablets" element={<CategotyPage title="Tablets" />} />
+
+          <Route
+            path="accessories"
+            element={<CategotyPage title="Accessories" />}
+          />
         </Route>
       </Routes>
       {/* </ProductProvider> */}
