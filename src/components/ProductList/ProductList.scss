@@ -148,9 +148,9 @@ select {
     display: grid;
     flex-direction: column;
     justify-content: center;
-    gap: 40px;
-    column-gap: 16px;
     grid-template-columns: repeat(4, 1fr);
+    grid-column-gap: 16px;
+    grid-row-gap: 40px;
 
     @include on-tablet {
       grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
