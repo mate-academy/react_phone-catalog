@@ -3,7 +3,7 @@ import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Picture } from '../../../types/Picture';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
-import { imgsMobile, imgs } from '../../shared/imgsForDevices';
+import { imgsMobile, imgs } from '../../../services/imgsForDevices';
 import { getImages } from '../../../services/getImages';
 import { PADDINGS } from '../../constants/PADDINGS';
 import {
@@ -12,6 +12,7 @@ import {
   GAP_BETWEEN_COLUMNS,
   TABLET_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
+import { getSliderImages } from '../../../services/getSliderImages';
 
 type Props = {
   windowSize: number;
@@ -149,7 +150,7 @@ export const PicturesSlider: React.FC<Props> = React.memo(({ windowSize }) => {
                   className={`pictures-slider__order-link pictures-slider__order-link--${img.id}`}
                 >
                   <img
-                    src="/img/pictures-slider/order-now.png"
+                    src={getSliderImages().tabletOrderNow}
                     alt="order now"
                     className={`pictures-slider__order-img pictures-slider__order-img--${img.id}`}
                   />

@@ -1,21 +1,22 @@
-import { Picture } from '../../types/Picture';
+import { getSliderImages } from './getSliderImages';
+import { Picture } from '../types/Picture';
 
 export const imgsMobile: Picture[] = [
   {
     id: 1,
-    url: 'img/pictures-slider/slider-1.png',
+    url: `${getSliderImages().mobileImage1}`,
     name: 'slider-1',
     alt: 'IPhone 14 Pro',
   },
   {
     id: 2,
-    url: 'img/pictures-slider/slider-3.jpg',
+    url: `${getSliderImages().mobileImage2}`,
     name: 'slider-3',
     alt: 'IPhone 14 Pro',
   },
   {
     id: 3,
-    url: 'img/pictures-slider/slider-4.jpg',
+    url: `${getSliderImages().mobileImage3}`,
     name: 'slider-4',
     alt: 'IPhone 14 Pro',
   },
@@ -24,19 +25,19 @@ export const imgsMobile: Picture[] = [
 export const imgs: Picture[] = [
   {
     id: 1,
-    url: 'img/pictures-slider/slider-11.png',
+    url: `${getSliderImages().tabletImage1}`,
     name: 'slider-1',
     alt: 'IPhone 14 Pro',
   },
   {
     id: 2,
-    url: 'img/pictures-slider/slider-2.jpg',
+    url: `${getSliderImages().tabletImage2}`,
     name: 'slider-3',
     alt: 'IPhone 14 Pro',
   },
   {
     id: 3,
-    url: 'img/pictures-slider/slider-6.png',
+    url: `${getSliderImages().tabletImage3}`,
     name: 'slider-4',
     alt: 'IPhone 14 Pro',
   },
