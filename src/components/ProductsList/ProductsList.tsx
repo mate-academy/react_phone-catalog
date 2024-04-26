@@ -4,7 +4,7 @@ import './ProductsList.scss';
 import { useEffect, useState } from 'react';
 import { Pagination } from '../Pagination';
 import { Breadcrumbs } from '../Breadcrumbs';
-import { useSearchParams } from 'react-router-dom';
+import { URLSearchParamsInit, useSearchParams } from 'react-router-dom';
 import { sortProducts } from './utils';
 import { BASE_URL } from '../../api/api';
 
@@ -53,22 +53,22 @@ export const ProductsList: React.FC<ProductsListProps> = ({
   const productsToShow = sortBy ? sortProducts(products, sortBy) : products;
 
   useEffect(() => {
-    const newSearchParams: any = {};
+    const newSearchParams: URLSearchParamsInit = {};
 
     if (sortBy) {
       newSearchParams.sort = sortBy;
     }
 
     if (currentPage !== 1) {
-      newSearchParams.page = currentPage;
+      newSearchParams.page = currentPage.toString();
     }
 
     if (perPage !== products.length) {
-      newSearchParams.perPage = perPage;
+      newSearchParams.perPage = perPage.toString();
     }
 
     setSearchParams(newSearchParams, { replace: true });
-  }, [sortBy, currentPage, perPage, setSearchParams]);
+  }, [sortBy, currentPage, perPage, setSearchParams, products.length]);
 
   return (
     <div className="container">

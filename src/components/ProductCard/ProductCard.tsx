@@ -54,7 +54,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({ product }) => {
   useEffect(() => {
     setIsProductInCart(cart.some(item => item.itemId === itemId));
     setIsProductInFavorites(favorites.some(item => item.itemId === itemId));
-  }, [cart, favorites]);
+  }, [cart, favorites, itemId]);
 
   return (
     <div className="product-card">
