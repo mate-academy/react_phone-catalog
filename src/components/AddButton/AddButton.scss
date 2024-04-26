@@ -1,0 +1,31 @@
+@import '../../App';
+
+.button {
+  display: flex;
+  height: 40px;
+  width: 100%;
+  padding: 14px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 48px;
+  text-align: center;
+  transition: box-shadow 0.3s ease;
+
+  @include buttons-font;
+
+  &--primary {
+    background: $accent-color;
+    color: $white-color;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+    }
+  }
+
+  &--secondary {
+    border: 1px solid $stroke-color;
+    background: $white-color;
+    color: $accent-color;
+  }
+}

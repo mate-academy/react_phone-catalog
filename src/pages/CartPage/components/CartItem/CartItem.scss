@@ -1,0 +1,97 @@
+@import '../../../../App';
+
+.cart-item {
+  padding: 16px;
+  border-radius: 16px;
+  border: 1px solid $stroke-color;
+  background: $white-color;
+  display: flex;
+  width: 288px;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    width: 592px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    width: 752px;
+  }
+
+  &__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: stretch;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__delete-btn {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url(../../../../../public/img/icons/close.svg);
+  }
+
+  &__img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+
+    img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  }
+
+  &__name {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    align-self: stretch;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 13px;
+
+    color: #000;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__total-price {
+    color: $primary-color;
+    font-family: Mont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}

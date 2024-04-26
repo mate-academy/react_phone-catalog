@@ -1,0 +1,121 @@
+@import '../../App';
+
+.back {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/icons/left.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__btn {
+    @include small-font;
+
+    color: $secondary-color;
+    line-height: 12px;
+  }
+}
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: center;
+
+  @include on-desktop {
+    flex-direction: row;
+    gap: 16px;
+    align-items: flex-start;
+  }
+  &__title {
+    margin-top: 24px;
+
+    @include header-font-l;
+
+    @include on-tablet {
+      margin-top: 16px;
+    }
+  }
+
+  &__list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-desktop {
+      margin: 0;
+    }
+  }
+
+  &__total {
+    display: flex;
+    width: 288px;
+    padding: 24px;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 16px;
+    border: 1px solid $stroke-color;
+
+    @include on-tablet {
+      width: 592px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+    }
+
+    &-price {
+      color: $primary-color;
+      font-family: Mont, sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+    }
+
+    &-quantity {
+      color: $secondary-color;
+      text-align: center;
+      font-family: Mont, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $stroke-color;
+    margin-block: 16px;
+  }
+
+  &__empty {
+    margin-top: 16px;
+    display: flex;
+    justify-content: space-between;
+
+    &-message {
+      @include header-font-m;
+    }
+
+    &-img {
+      object-fit: contain;
+      width: 50%;
+      height: 50%;
+    }
+  }
+}

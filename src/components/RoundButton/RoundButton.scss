@@ -1,0 +1,57 @@
+@import '../../App';
+
+.round-button {
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  border: 1px solid $icons-placeholder-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  transition: border 0.3s ease;
+  background-size: 50%;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+
+  &--disabled {
+    border: 1px solid $stroke-color;
+    pointer-events: none;
+  }
+
+  &--fav {
+    background-image: url('../../../public/img/icons/fav.svg');
+
+    &-filled {
+      background-image: url('../../../public/img/icons/fav-filled.svg');
+    }
+  }
+
+  &--left {
+    background-image: url('../../../public/img/icons/left.svg');
+  }
+
+  &--left-disabled {
+    background-image: url('../../../public/img/icons/left-gray.svg');
+  }
+
+  &--right {
+    background-image: url('../../../public/img/icons/right.svg');
+  }
+
+  &--right-disabled {
+    background-image: url('../../../public/img/icons/right-gray.svg');
+  }
+
+  &--up {
+    background-image: url(../../../public/img/icons/up.svg);
+  }
+
+  &--plus {
+    background-image: url(../../../public/img/icons/plus.svg);
+  }
+
+  &--minus {
+    background-image: url(../../../public/img/icons/minus.svg);
+  }
+}
