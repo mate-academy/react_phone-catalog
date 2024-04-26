@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getCategoryImgs } from '../../../services/getCategotyImgs';
 
 type Props = {
   phones: number;
@@ -23,7 +24,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--mobile-phones"
             >
               <img
-                src="/img/category-phones-1.png"
+                src={getCategoryImgs().phones}
                 alt="mobile phones"
                 className="shop-by-category__item-img
               shop-by-category__item-img--phone"
@@ -43,7 +44,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--tablets"
             >
               <img
-                src="/img/category-tablets.png"
+                src={getCategoryImgs().tablets}
                 alt="tablets"
                 className="shop-by-category__item-img
               shop-by-category__item-img--tablets"
@@ -61,7 +62,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--accessories"
             >
               <img
-                src="/img/category-accessories.png"
+                src={getCategoryImgs().accessories}
                 alt="accessories"
                 className="shop-by-category__item-img
               shop-by-category__item-img--accessories"
