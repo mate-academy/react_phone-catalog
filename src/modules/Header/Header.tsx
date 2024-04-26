@@ -9,6 +9,7 @@ import {
   IconMenu,
   IconShoppingCart,
 } from '../shared/IconsSVG';
+import { getLogo } from '../../services/getLogo';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('header__nav-link navigation-title', {
@@ -26,11 +27,7 @@ export const Header: React.FC = React.memo(() => {
           className="header__logo-link"
           onClick={() => setIsOpenSidebar(false)}
         >
-          <img
-            src="/img/logo/logo-mobile.svg"
-            alt="logo"
-            className="header__logo logo"
-          />
+          <img src={getLogo().logo} alt="logo" className="header__logo logo" />
         </Link>
 
         <div className="header__nav">

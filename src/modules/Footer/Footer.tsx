@@ -1,17 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { MoveLeft } from '../shared/MoveButtons';
+import { getLogo } from '../../services/getLogo';
 
 export const Footer = React.memo(() => {
   return (
     <div className="footer">
       <div className="footer__container">
         <Link to="/" className="footer__logo-link">
-          <img
-            src="/img/logo/logo-mobile.svg"
-            alt="logo"
-            className="footer__logo"
-          />
+          <img src={getLogo().logo} alt="logo" className="footer__logo" />
         </Link>
 
         <div className="footer__nav">
