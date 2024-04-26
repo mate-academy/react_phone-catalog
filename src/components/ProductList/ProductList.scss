@@ -44,7 +44,7 @@ select {
   &__count {
     font-family: $mont;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 600;
     line-height: 21px;
     text-align: left;
     color: $secondary;
@@ -97,7 +97,7 @@ select {
   &__select {
     font-family: $mont;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 21px;
     color: $primary;
     background-color: transparent;
@@ -138,7 +138,7 @@ select {
   &__input-label {
     font-family: $mont;
     font-size: 12px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 15px;
     text-align: left;
     color: $secondary;
@@ -167,10 +167,11 @@ select {
     list-style: none;
     text-decoration: none;
     grid-column: 1 / -1;
-    height: 506px;
+    height: 440px;
 
     @include on-tablet {
       grid-column: auto;
+      height: 506px;
     }
 
     &:hover {

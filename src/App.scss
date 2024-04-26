@@ -55,6 +55,10 @@ img {
   }
 }
 
+.App {
+  position: relative;
+}
+
 .body {
   margin: 0;
 }
@@ -74,8 +78,8 @@ main {
   justify-content: space-between;
   align-items: center;
   line-height: 64px;
-  border-bottom: 1px solid $elements;
-  border-right: 1px solid $elements;
+  box-shadow: 0px 1px 0px 0px #E2E6E9;
+
 
   &--left {
     display: flex;
@@ -263,8 +267,9 @@ main {
     text-decoration: none;
     cursor: pointer;
     font-family: $mont;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 12px;
+    letter-spacing: 0.04em;
     color: $secondary;
     text-transform: uppercase;
     position: relative;
@@ -321,13 +326,19 @@ main {
 }
 
 .footer {
-  border-top: 1px solid $secondary;
   padding-left: 16px;
   padding-block: 32px;
+  position: absolute;
+  background-color: $white;
+  left: 0;
+  right: 0;
+  bottom: -321px;
+  box-shadow: 0 -1px 0 0 $elements;
 
   @include on-tablet {
     padding-inline: 24px;
     padding-block: 0;
+    bottom: -176px;
   }
 
   @include on-desktop {
@@ -374,7 +385,7 @@ main {
 
     &-text {
       font-family: $mont;
-      font-weight: 600;
+      font-weight: 700;
       font-size: 12px;
       color: $secondary;
     }

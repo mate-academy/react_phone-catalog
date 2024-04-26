@@ -163,20 +163,18 @@ export const App = () => {
             </div>
           )}
           <div className="header__icons-wrapper">
-            {location.pathname !== '/cart' && (
-              <NavLink to="/favorites" className={getActiveIconsLink}>
-                <img
-                  src="./icons/Favourites-Heart-Like.svg"
-                  alt="favorites"
-                  className="header__icon-image"
-                />
-                {favoriteProducts.length > 0 && (
-                  <div className="header__icon-circle">
-                    {favoriteProducts.length}
-                  </div>
-                )}
-              </NavLink>
-            )}
+            <NavLink to="/favorites" className={getActiveIconsLink}>
+              <img
+                src="./icons/Favourites-Heart-Like.svg"
+                alt="favorites"
+                className="header__icon-image"
+              />
+              {favoriteProducts.length > 0 && (
+                <div className="header__icon-circle">
+                  {favoriteProducts.length}
+                </div>
+              )}
+            </NavLink>
 
             <NavLink to="/cart" className={getActiveIconsLink}>
               <img

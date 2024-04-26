@@ -30,6 +30,10 @@ export const Cart: React.FC = () => {
     return accumulator + cartItem.item.price * cartItem.quantity;
   }, 0);
 
+  const totalItemsQuantity = cartItems.reduce((accumulator, cartItem) => {
+    return accumulator + cartItem.quantity;
+  }, 0);
+
   const handleDeleteFromCartClick = (itemId: number) => {
     const updatedCartItems = cartItems.filter(
       cartItem => cartItem.id !== itemId,
@@ -163,7 +167,7 @@ export const Cart: React.FC = () => {
             <div className="cart__summary">
               <div className="cart__price">
                 <h2 className="cart__total">{`$${totalPrice}`}</h2>
-                <p className="cart__total-text">{`Total for ${cartItems.length} items`}</p>
+                <p className="cart__total-text">{`Total for ${totalItemsQuantity} items`}</p>
               </div>
               <button
                 onClick={() => setCheckoutClicked(true)}

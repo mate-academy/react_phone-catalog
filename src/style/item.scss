@@ -14,12 +14,12 @@
 
     &--current {
       color: $primary;
-      font-weight: 700;
+      font-weight: 800;
     }
 
     &--original {
       color: $secondary;
-      font-weight: 500;
+      font-weight: 600;
       text-decoration: line-through;
     }
   }
@@ -27,7 +27,7 @@
   &__description {
       font-family: $mont;
       font-size: 12px;
-      font-weight: 600;
+      font-weight: 700;
       line-height: 15px;
       display: flex;
       flex-direction: column;
@@ -59,7 +59,7 @@
     background-color: $primary;
     font-family: $mont;
     font-size: 14px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 21px;
 
     &--active {
