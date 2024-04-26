@@ -30,8 +30,6 @@ export const InfoProductPage = () => {
 
   const [basket, setBasket] = useLocalStorage<BasketGoods[]>('basketGoods', []);
 
-  const backTo = location.pathname.replace(productId || '', '');
-
   const { data: productData } = useQuery({
     queryKey: ['productInfo', productId],
     queryFn: async () => {
@@ -88,7 +86,7 @@ export const InfoProductPage = () => {
           alt="Arrow Back"
           className="h-4 min-w-4 -rotate-90"
         />
-        <button onClick={() => navigate(backTo)}>
+        <button onClick={() => navigate(-1)}>
           <small className="font-bold text-secondary">Back</small>
         </button>
       </div>
@@ -169,6 +167,7 @@ export const InfoProductPage = () => {
                   <div className="flex gap-2">
                     {productInfo.colorsAvailable.map(color => (
                       <ColorLink
+                        replace
                         state={productInfo}
                         key={color}
                         color={colorList[color as keyof typeof colorList]}
@@ -191,6 +190,7 @@ export const InfoProductPage = () => {
                   <div className="flex gap-2">
                     {productInfo.capacityAvailable.map(item => (
                       <Link
+                        replace
                         state={productInfo}
                         to={`../${productInfo.id.replace(
                           productInfo.capacity

@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { keepPreviousData, useQuery } from '@tanstack/react-query';
 import { TypeItemOnPage, TypeProduct, TypeSort } from '../types/product';
 import { SearchParams, getSearchWith } from '../helpers/searchHelper';
@@ -51,10 +51,14 @@ interface Props {
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
   const [searchParams, setSearchParams] = useSearchParams();
+  const { pathname } = useLocation();
   const sortBy = (searchParams.get('sortBy') || 'Newest') as TypeSort;
   const itemsOnPage = (searchParams.get('itemsOnPage') ||
     'All') as TypeItemOnPage;
   const page = searchParams.get('page') || '1';
+
+  const title = pathname.replace(/[^a-zA-Z]+/g, '');
+  const capitalizeTitle = title.charAt(0).toUpperCase() + title.slice(1);
 
   const setSearchWith = (params: SearchParams) => {
     const search = getSearchWith(params, searchParams);
@@ -92,7 +96,7 @@ export const ProductsPage: React.FC<Props> = ({ type }) => {
       <Breadcrumbs />
 
       <div>
-        <h1>Mobile phones</h1>
+        <h1>{capitalizeTitle}</h1>
 
         {amountOfProducts && (
           <p className="font-semibold text-secondary">
