@@ -3,13 +3,15 @@ import { Link } from 'react-router-dom';
 import { getCategoryImgs } from '../../../services/getCategotyImgs';
 
 type Props = {
-  phones: number;
-  tablets: number;
-  accessories: number;
+  amountPhones: number;
+  amountTablets: number;
+  amountAccessories: number;
 };
 
 export const ShopByCategory: React.FC<Props> = React.memo(
-  ({ phones, tablets, accessories }) => {
+  ({ amountPhones, amountTablets, amountAccessories }) => {
+    const { phones, tablets, accessories } = getCategoryImgs();
+
     return (
       <div className="shop-by-category">
         <h2 className="shop-by-category__title secondary-title">
@@ -24,7 +26,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--mobile-phones"
             >
               <img
-                src={getCategoryImgs().phones}
+                src={phones}
                 alt="mobile phones"
                 className="shop-by-category__item-img
               shop-by-category__item-img--phone"
@@ -34,7 +36,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             <h3 className="shop-by-category__name tertiary-title">
               Mobile phones
             </h3>
-            <h4 className="quaternary-title">{`${phones} models`}</h4>
+            <h4 className="quaternary-title">{`${amountPhones} models`}</h4>
           </div>
 
           <div className="shop-by-category__item-wrapper">
@@ -44,7 +46,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--tablets"
             >
               <img
-                src={getCategoryImgs().tablets}
+                src={tablets}
                 alt="tablets"
                 className="shop-by-category__item-img
               shop-by-category__item-img--tablets"
@@ -52,7 +54,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             </Link>
 
             <h3 className="shop-by-category__name tertiary-title">Tablets</h3>
-            <h4 className="quaternary-title">{`${tablets} models`}</h4>
+            <h4 className="quaternary-title">{`${amountTablets} models`}</h4>
           </div>
 
           <div className="shop-by-category__item-wrapper">
@@ -62,7 +64,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--accessories"
             >
               <img
-                src={getCategoryImgs().accessories}
+                src={accessories}
                 alt="accessories"
                 className="shop-by-category__item-img
               shop-by-category__item-img--accessories"
@@ -72,7 +74,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             <h3 className="shop-by-category__name tertiary-title">
               Accessories
             </h3>
-            <h4 className="quaternary-title">{`${accessories} models`}</h4>
+            <h4 className="quaternary-title">{`${amountAccessories} models`}</h4>
           </div>
         </div>
       </div>

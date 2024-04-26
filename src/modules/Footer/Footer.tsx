@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MoveLeft } from '../shared/MoveButtons';
 import { getLogo } from '../../services/getLogo';
+import { SidebarContext } from '../../store/SidebarContext';
 
 export const Footer = React.memo(() => {
+  const { isOpenSidebar } = useContext(SidebarContext);
+  const { logo } = getLogo();
+
   return (
-    <div className="footer">
+    <div className="footer" style={isOpenSidebar ? { display: 'none' } : {}}>
       <div className="footer__container">
         <Link to="/" className="footer__logo-link">
-          <img src={getLogo().logo} alt="logo" className="footer__logo" />
+          <img src={logo} alt="logo" className="footer__logo" />
         </Link>
 
         <div className="footer__nav">
@@ -20,9 +24,11 @@ export const Footer = React.memo(() => {
           >
             Github
           </Link>
+
           <Link to="/" className="footer__nav-item navigation-title">
             Contacts
           </Link>
+
           <Link to="/" className="footer__nav-item navigation-title">
             Rights
           </Link>

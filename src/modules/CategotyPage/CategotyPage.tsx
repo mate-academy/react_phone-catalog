@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductCard } from '../shared/ProductCard';
 import { Dropdown } from '../shared/Dropdown';
 import { Pagination } from '../shared/Pagination';
@@ -65,9 +65,15 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   ) : (
     <div className="category-page">
       <div className="category-page__route">
-        <IconHome />
+        <Link to="/">
+          <IconHome />
+        </Link>
+
         <IconRight />
-        <span className="category-page__page-name">{typeOfProduct}</span>
+
+        <Link to="." className="category-page__page-name">
+          <span>{typeOfProduct}</span>
+        </Link>
       </div>
 
       <div className="category-page__title">

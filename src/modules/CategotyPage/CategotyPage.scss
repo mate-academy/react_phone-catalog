@@ -21,6 +21,11 @@
     line-height: 16px;
   }
 
+  &__page-name {
+    text-decoration: none;
+    color: $text-gray-color;
+  }
+
   &__page-name::first-letter {
     text-transform: uppercase;
   }

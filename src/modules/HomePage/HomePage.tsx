@@ -105,9 +105,9 @@ export const HomePage = React.memo(() => {
         />
 
         <ShopByCategory
-          phones={phones.length}
-          tablets={tablets.length}
-          accessories={accessories.length}
+          amountPhones={phones.length}
+          amountTablets={tablets.length}
+          amountAccessories={accessories.length}
         />
 
         <ProductListCarousel
