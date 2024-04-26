@@ -291,6 +291,15 @@ main {
 
 .main {
   margin: 0 auto;
+  min-height: calc(100vh - $headerHeightMobile - $footerHeightMobile);
+
+  @include on-tablet {
+    min-height: calc(100vh - $headerHeightMobile - $footerHeight);
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - $headerHeight - $footerHeight);
+  }
 
   &__title {
     margin-top: 24px;
