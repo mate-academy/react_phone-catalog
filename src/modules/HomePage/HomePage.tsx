@@ -8,9 +8,8 @@ import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategoty';
 import { Product } from '../../types/Product';
 import { client } from '../../api'; // тимчасово
+import { PRODUCT_URL } from "../constants/URL's/URL's";
 // import { ProductContext } from '../../store/ProductContext';
-
-const PRODUCT_URL = 'products.json';
 
 function maxDifference(products: Product[]) {
   const result = products

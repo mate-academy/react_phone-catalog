@@ -1,5 +1,6 @@
 // const BASE_URL = './api/';
-export const BASE_URL = 'https://ishamkii.github.io/react_phone-catalog/api/';
+
+import { BASE_URL } from "./modules/constants/URL's/URL's";
 
 // const DEFAULT_HEADERS = {
 //   'Content-Type': 'application/json; charset=utf-8',

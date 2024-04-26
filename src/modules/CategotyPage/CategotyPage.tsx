@@ -18,7 +18,7 @@ type Props = {
   title: string;
 };
 
-const PRODUCT_URL = 'products.json';
+const PRODUCT_URL = 'api/products.json';
 
 export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   const { pathname } = useLocation();
