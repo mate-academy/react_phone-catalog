@@ -37,6 +37,14 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   );
 
   useEffect(() => {
+    if (products.length && products[0].category !== typeOfProduct) {
+      setSelectSortBy(optionsSortBy[0].value);
+      setItemsPerPage(optionsItemsPerPage[1].value);
+      setCurrentPage(1);
+    }
+  }, [products, typeOfProduct]);
+
+  useEffect(() => {
     setDataLoaded(false);
     setError(false);
 
