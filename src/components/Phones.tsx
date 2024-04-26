@@ -31,7 +31,9 @@ export const Phones = () => {
   // const { page, perPage, sortParam } = useParams();
   const { itemsOnPage, setItemsOnPage } = useAppContext();
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
-  const { sortParam, setSortParam } = useAppContext();
+  const { sortParam, 
+    // setSortParam 
+  } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
@@ -57,8 +59,16 @@ export const Phones = () => {
 
         const data = await response.json();
 
-        setGetPhone(data);
-        // setItemsOnPage(data.length)
+        const sortedPhones = [...data];
+        sortedPhones.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
+        setGetPhone(sortedPhones);
+
+        // setGetPhone(data);
+        setItemsOnPage(data.length)
+        const perPage = searchParams.get("perPage");
+        if (!perPage || perPage === null) {
+          setItemsOnPage(data.length)
+        }
       } catch (error) {
         setErrorMessage('Error during fetch:');
       }
@@ -67,6 +77,8 @@ export const Phones = () => {
     fetchData();
   }, []);
 
+  
+console.log(sortParam)
   const blockItemsRef = useRef<HTMLDivElement>(null);
   const blockSortRef = useRef<HTMLDivElement>(null);
 
@@ -106,6 +118,28 @@ export const Phones = () => {
     }
     // paramsToUpdate()
   };
+
+  const handleSort = (sotr: string) => {
+    handleChangeSort()
+    if(getPhone) {
+      const sortedPhones = [...getPhone];
+
+      if (sotr === "Newest") {
+        // sortedPhones.sort((phoneA, phoneB) => phoneA.year - phoneB.year)
+        sortedPhones.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
+      }
+
+      if (sotr === "Alphabetically") {
+        sortedPhones.sort((phoneA, phoneB) => phoneA.name.localeCompare(phoneB.name))
+      }
+
+      if (sotr === "Cheapest") {
+        sortedPhones.sort((phoneA, phoneB) => phoneA.price - phoneB.price)
+      }
+
+      setGetPhone(sortedPhones)
+    }
+  }
 
   const handleChangeSort = () => {
     if (!changeSort) {
@@ -162,10 +196,6 @@ export const Phones = () => {
     setFavoritePhones(''); 
   }, [favoritePhones, prevFavoriteArr]);
 
-  useEffect(() => {
-
-  }, [sortParam])
-
   errorMessage;
 
   const { setSelectedProduct } = useAppContext();
@@ -184,6 +214,8 @@ export const Phones = () => {
     }
     console.log('working')
   },[searchParams])
+
+
 
   // const paramsToUpdate = () => {
   //   const page = `${currentPage}`;
@@ -220,7 +252,9 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortParam('Newest'); handleChangeSort();
+                        // setSortParam('Newest');
+                        //  handleChangeSort();
+                        handleSort('Newest')
                       }}
                     >
                       Newest
@@ -228,7 +262,9 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortParam('Alphabetically'); handleChangeSort();
+                        // setSortParam('Alphabetically');
+                        //  handleChangeSort();
+                        handleSort('Alphabetically');
                       }}
                     >
                       Alphabetically
@@ -236,7 +272,9 @@ export const Phones = () => {
                     <span
                       className="phones__header__buttons__sort__select__option"
                       onClick={() => {
-                        setSortParam('Cheapest'); handleChangeSort();
+                        // setSortParam('Cheapest');
+                        //  handleChangeSort();
+                        handleSort('Cheapest');
                       }}
                     >
                       Cheapest
