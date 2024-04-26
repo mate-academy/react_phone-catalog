@@ -4,10 +4,10 @@
 @import "./App";
 @import "./modules/shared/icons";
 @import "./modules/shared/title";
-@import "./modules/shared/Header/Header";
+@import "./modules/Header/Header";
 @import "./modules/Sidebar/Sidebar";
 @import "./modules/shared/MoveButtons/MoveButtons";
-@import "./modules/shared/Footer/Footer";
+@import "./modules/Footer/Footer";
 @import "./modules/HomePage/HomePage";
 @import "./modules/HomePage/PicturesSlider/PicturesSlider";
 @import "./modules/HomePage/ProductListCarousel/ProductListCarousel";
@@ -18,3 +18,5 @@
 @import "./modules/shared/Dropdown/Dropdown";
 @import "./modules/shared/Pagination/Pagination";
 @import "./modules/shared/Reload/Reload";
+
+// @import "./modules/shared/IconsSVG/IconsSVG";

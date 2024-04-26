@@ -1,5 +1,6 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { Option } from '../../../types/Option';
+import { IconDown, IconUp } from '../IconsSVG';
 
 type Props = {
   title: string;
@@ -79,11 +80,11 @@ export const Dropdown: React.FC<Props> = ({
 
           {openDropdown ? (
             <div className="dropdown__move">
-              <img src="/img/icons/arrow-up.svg" alt="close" />
+              <IconUp />
             </div>
           ) : (
             <div className="dropdown__move">
-              <img src="/img/icons/arrow-down.svg" alt="open" />
+              <IconDown />
             </div>
           )}
         </button>

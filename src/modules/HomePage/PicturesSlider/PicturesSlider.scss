@@ -28,18 +28,17 @@
     color: $text-black-color;
     cursor: pointer;
     border-radius: 5px;
-    border: 1px solid $border-color-default;
     background-color: $back-ground-color-white;
-
-    &:hover {
-      border: 1px solid $border-color-hover;
-    }
 
     @include on-tablet {
       display: flex;
       align-items: center;
-      justify-content: center;
     }
+  }
+
+  &__move-left > :first-child,
+  &__move-right > :first-child {
+    height: 100%;
   }
 
   &__images-wrapper {

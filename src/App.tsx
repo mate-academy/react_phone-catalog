@@ -4,8 +4,8 @@ import {
 } from 'react-router-dom';
 import './main.scss';
 import { useContext } from 'react';
-import { Header } from './modules/shared/Header';
-import { Footer } from './modules/shared/Footer/Footer';
+import { Header } from './modules/Header';
+import { Footer } from './modules/Footer/Footer';
 import { SidebarContext } from './store/SidebarContext';
 import { Sidebar } from './modules/Sidebar';
 

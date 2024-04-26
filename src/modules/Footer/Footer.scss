@@ -71,8 +71,8 @@
       color: $text-gray-color;
     }
 
-    &-link {
-      display: flex;
+    &-button {
+      transform: rotate(90deg);
     }
   }
 }

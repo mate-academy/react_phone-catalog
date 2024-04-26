@@ -2,6 +2,7 @@ import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { SidebarContext } from '../../store/SidebarContext';
+import { IconFavourites, IconShoppingCart } from '../shared/IconsSVG';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('sidebar__nav-item navigation-title', { active: isActive });
@@ -50,19 +51,11 @@ export const Sidebar = React.memo(() => {
           to="favourites"
           className="sidebar__fav icon-container icon-container--fav"
         >
-          <img
-            src="/img/icons/favourites.svg"
-            alt="favourites"
-            className="icon icon--fav"
-          />
+          <IconFavourites />
         </NavLink>
 
         <NavLink to="shoping-cart" className="sidebar__cart icon-container">
-          <img
-            src="/img/icons/shopping-cart.svg"
-            alt="cart"
-            className="icon icon--cart"
-          />
+          <IconShoppingCart />
         </NavLink>
       </div>
     </aside>

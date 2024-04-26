@@ -13,6 +13,7 @@ import {
 import { getSortProducts } from '../../services/getSortProducts';
 import { Loader } from '../shared/Loader';
 import { Reload } from '../shared/Reload';
+import { IconHome, IconRight } from '../shared/IconsSVG';
 
 type Props = {
   title: string;
@@ -64,8 +65,8 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   ) : (
     <div className="category-page">
       <div className="category-page__route">
-        <img src="/img/icons/home.svg" alt="home" />
-        <img src="/img/icons/move-right.svg" alt="to" />
+        <IconHome />
+        <IconRight />
         <span className="category-page__page-name">{typeOfProduct}</span>
       </div>
 

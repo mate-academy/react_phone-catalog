@@ -1,7 +1,14 @@
+/* eslint-disable jsx-a11y/control-has-associated-label */
 import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
-import { SidebarContext } from '../../../store/SidebarContext';
+import { SidebarContext } from '../../store/SidebarContext';
+import {
+  IconClose,
+  IconFavourites,
+  IconMenu,
+  IconShoppingCart,
+} from '../shared/IconsSVG';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('header__nav-link navigation-title', {
@@ -49,22 +56,14 @@ export const Header: React.FC = React.memo(() => {
             to="favourites"
             className="icon-container header__navbar-favourites"
           >
-            <img
-              src="/img/icons/favourites.svg"
-              alt="favourites"
-              className="icon icon-favourites"
-            />
+            <IconFavourites />
           </Link>
 
           <Link
             to="shopping-cart"
             className="icon-container header__navbar-shopping-cart"
           >
-            <img
-              src="/img/icons/shopping-cart.svg"
-              alt="shoping cart"
-              className="icon icon--shopping-cart"
-            />
+            <IconShoppingCart />
           </Link>
 
           <button
@@ -72,11 +71,7 @@ export const Header: React.FC = React.memo(() => {
             className="icon-container header__navbar-menu"
             onClick={() => setIsOpenSidebar(true)}
           >
-            <img
-              src="/img/icons/menu.svg"
-              alt="menu"
-              className="icon icon--menu"
-            />
+            <IconMenu />
           </button>
 
           <button
@@ -86,11 +81,7 @@ export const Header: React.FC = React.memo(() => {
             style={isOpenSidebar ? { right: 0 } : { right: '-49px' }}
             onClick={() => setIsOpenSidebar(false)}
           >
-            <img
-              src="/img/icons/close.svg"
-              alt="close"
-              className="icon icon--close"
-            />
+            <IconClose />
           </button>
         </div>
       </div>

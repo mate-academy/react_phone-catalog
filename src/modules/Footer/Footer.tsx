@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { MoveLeft } from '../shared/MoveButtons';
 
 export const Footer = React.memo(() => {
   return (
@@ -32,9 +33,9 @@ export const Footer = React.memo(() => {
 
         <div className="footer__back-to-top">
           <p className="footer__back-to-top-title">Back to top</p>
-          <a href="#/" className="footer__back-to-top-link">
-            <img src="/img/icons/back-to-top.svg" alt="back to top" />
-          </a>
+          <div className="footer__back-to-top-button">
+            <MoveLeft move={() => {}} />
+          </div>
         </div>
       </div>
     </div>
