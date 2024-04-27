@@ -56,13 +56,18 @@
   &__dropdowns {
     display: flex;
     gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column;
+      margin-top: 12px;
+    }
   }
 
   &__search {
     margin-top: 40px;
 
     @include on-mobile {
-      margin-top: 30px;
+      margin-top: 0;
     }
 
     gap: 16px;
@@ -74,6 +79,7 @@
     }
 
     &-input {
+      max-width: 196px;
       height: 40px;
       padding: 0 16px;
       border: 1px solid $icon-color;
@@ -91,6 +97,10 @@
       &:focus {
         border-color: $secondary-color;
         outline: none;
+      }
+
+      &::placeholder {
+        color: #000;
       }
     }
   }

@@ -127,7 +127,7 @@
     @include flex-center;
 
     width: 32px;
-    height: inherit; // 189px
+    height: 400px; // 189px
 
     border: 1px solid $icon-color;
     background-color: transparent;
@@ -301,13 +301,11 @@
   from {
     transform: translateX(0);
     opacity: 1;
-    visibility: visible;
   }
 
   to {
     transform: translateX(35%);
     opacity: 0;
-    visibility: hidden;
   }
 }
 
@@ -315,12 +313,10 @@
   from {
     transform: translateX(0);
     opacity: 1;
-    visibility: visible;
   }
 
   to {
     transform: translateX(-35%);
     opacity: 0;
-    visibility: hidden;
   }
 }

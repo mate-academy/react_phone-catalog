@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Link } from 'react-router-dom';
+import { useAppSelector } from '../../store/hooks';
 
 interface Props {
   products: Product[];
@@ -11,14 +12,33 @@ interface Props {
 }
 
 export const ProductsScroller: React.FC<Props> = ({ products, title }) => {
+  const { viewportWidth } = useAppSelector(state => state.viewport);
   const [currentTransform, setCurrentTransform] = useState('0px');
 
   const hasHotPrice = title === 'Hot Prices';
   const category = products[0]?.category;
 
   const cardWidth = 272;
-  const gap = 16;
-  const itemsShowed = 4;
+  const gap = viewportWidth < 450 ? 120 : 16;
+  let itemsShowed;
+
+  switch (true) {
+    case viewportWidth < 576:
+      itemsShowed = 1;
+      break;
+
+    case viewportWidth >= 576 && viewportWidth < 768:
+      itemsShowed = 2;
+      break;
+
+    case viewportWidth >= 768 && viewportWidth < 1200:
+      itemsShowed = 3;
+      break;
+
+    default:
+      itemsShowed = 4;
+      break;
+  }
 
   const transformValue = +currentTransform.replace('px', '');
 

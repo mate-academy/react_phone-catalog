@@ -65,6 +65,14 @@
 }
 
 @mixin on-mobile {
+  @media (max-width: 340px) {
+    @content;
+  }
+
+  @media (max-width: 450px) {
+    @content;
+  }
+
   @media (max-width: 639px) {
     @content;
   }

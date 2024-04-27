@@ -53,8 +53,16 @@
   &__products {
     display: flex;
     gap: 16px;
+    width: 100%;
 
-    width: calc(100vw - 16px);
+    @media (max-width: 450px) {
+      margin-left: 40px;
+      gap: 120px;
+    }
+
+    @media (max-width: 340px) {
+      margin-left: 10px;
+    }
 
     transition: all .5s ease-in-out;
 

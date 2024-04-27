@@ -5,6 +5,10 @@
     @include on-tablet {
       margin-top: 40px;
     }
+
+    @include on-mobile {
+      margin-top: 0;
+    }
   }
 
   &__dropdown-name {
@@ -18,6 +22,11 @@
     padding-left: 12px;
 
     width: 136px;
+
+    @include on-mobile {
+      width: 196px;
+    }
+
     height: 40px;
 
     background-color: transparent;
@@ -29,7 +38,7 @@
     cursor: pointer;
     transition: all .3s ease-in-out;
 
-    z-index: 11; // I chose number 11 so that other elements wouldn't overlap it by mistake
+    z-index: 2;
 
     &:hover {
       border-color: $secondary-color;
@@ -72,6 +81,10 @@
 
     width: 136px;
 
+    @include on-mobile {
+      width: 196px;
+    }
+
     list-style: none;
     border: 1px solid $element-color;
     pointer-events: none;
@@ -81,6 +94,8 @@
     animation: slide-up .5s ease-in-out forwards;
 
     &--long {
+      z-index: 3;
+
       @include on-tablet {
         width: 187px;
       }

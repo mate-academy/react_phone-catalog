@@ -214,6 +214,7 @@
   }
 
   &__price {
+    min-width: 62px;
     margin: 0;
 
     @include text-type(22px, 30.8px);

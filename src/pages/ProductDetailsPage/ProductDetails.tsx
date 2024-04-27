@@ -27,7 +27,7 @@ export const ProductDetailsPage = () => {
     return location.pathname.slice(1, lastIndex);
   };
 
-  const goBack = () => navigate(-1);
+  const goBack = () => navigate('..');
 
   /* product logic start */
 
