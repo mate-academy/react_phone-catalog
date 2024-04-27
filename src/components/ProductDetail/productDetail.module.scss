@@ -1,0 +1,10 @@
+.arrow {
+  width: 16px;
+  height: 16px;
+  color: #89939A;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: translateX(5px);
+  }
+}

@@ -1,0 +1,209 @@
+.mobilePhones {
+display: flex;
+flex-direction: column;
+max-width: 1200px;
+margin-inline: auto;
+}
+
+.homeLinkContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+  color: #0F0F11;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  color: #89939A;
+}
+
+.phones {
+  color:  #89939A;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+
+  &:hover {
+    color: #0F0F11;
+  }
+}
+
+.titleAndMpdels {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.phoneTitle {
+  color: #0F0F11;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+}
+
+.models {
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.filters {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-top: 40px;
+  gap: 16px;
+}
+
+.selectAndSortBy {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+}
+
+.selectDescription {
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.selectAndItemsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  position: relative;
+}
+
+.customSelectSortBy {
+  position: relative;
+  width: 176px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #B4BDC3;
+  color: #B4BDC3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+
+  &:hover {
+    border-radius: 8px;
+    border: 1px solid #89939A;
+  }
+}
+
+.customSelectItems {
+  width: 128px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #B4BDC3;
+  color: #B4BDC3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+
+  &:hover {
+    border-radius: 8px;
+    border: 1px solid #89939A;
+  }
+}
+
+.selectFocuced {
+    border-radius: 8px;
+    border: 1px solid #0F0F11;
+}
+
+.selectItem {
+  color: #0F0F11;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+.selectIconActive {
+  transform: rotate(180deg);
+}
+
+.selectDrobdownItem {
+  position: absolute;
+  top: 102%;
+  left: 0;
+  width: 128px;
+  height: auto;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  background: #FFF;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.selectDrobdownSortBy {
+  position: absolute;
+  top: 105%;
+  left: 0;
+  width: 176px;
+  height: 144px;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  background: #FFF;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+.drobdownItem {
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  width: auto;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+
+  &:hover {
+    color: #0F0F11;
+    border-radius: 8px;
+    background: #FAFBFC;
+  }
+}
+
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 24px 0;
+
+}
+
+.loaderContainer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1200px;
+}
+
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  row-gap: 40px;
+}
+

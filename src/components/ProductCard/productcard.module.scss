@@ -1,0 +1,155 @@
+.cardProductSection {
+  box-sizing: border-box;
+  display: flex;
+  width: 268px;
+  height: 526px;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  background: #FFF;
+  margin-right: 16px;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.productImages {
+  object-fit: contain;
+  width: 208px;
+  height: 196px;
+  margin-bottom: 34px;
+
+  &:hover {
+    transform: scale(1.1);
+    transform: rotate3d(180deg);
+  }
+}
+
+.productTitles {
+  height: 42px;
+  color: #0F0F11;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  margin-bottom: 8px;
+}
+
+.productPrices {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 8px;
+}
+
+.priceNow {
+  color: #0F0F11;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+.priceOld {
+  color: #89939A;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: normal;
+  text-decoration-line: strikethrough;
+}
+
+.line {
+  background: #E2E6E9;
+  width: 208px;
+  height: 1px;
+  border: 1px;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.techSpecs {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 13px;
+}
+
+.techSpectName {
+  display: flex;
+  flex-direction: column;
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+  gap: 8px;
+}
+
+.techSpecsSpecs {
+  width: 156px;
+  display: flex;
+  flex-direction: column;
+  color: #0F0F11;
+  text-align: right;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  justify-content: flex-end;
+  text-wrap: nowrap;
+  gap: 8px;
+}
+
+.cardButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.addCard {
+  display: flex;
+  height: 40px;
+  width: 160px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #216CFF;
+  outline: transparent;
+  border: none;
+  color: #FFF;
+
+  &:hover {
+    border-radius: 8px;
+    background: #216CFF;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+}
+
+.like {
+  outline: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  background: #FAFBFC;
+  border: 1px solid #B4BDC3;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.heardIcon {
+  padding-top: 3px;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+

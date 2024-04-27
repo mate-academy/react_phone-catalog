@@ -1,0 +1,85 @@
+.sectionGoods {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin: 80px 0;
+}
+
+.tittleAndButtons {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  max-width: 1200px;
+}
+
+.goodsTitle {
+  color: #0F0F11;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+}
+
+.productsCard {
+  padding: 15px 0;
+  max-width: 1200px;
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: hidden;
+  margin: 0;
+}
+
+.buttonsContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.buttonLeft {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  transform: rotate(-90deg);
+  border: 1px solid #B4BDC3;
+  background: #FAFBFC;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.buttonArrowLeft {
+  width: 16px;
+  height: 16px;
+}
+
+.buttonRight {
+  margin-left: 16px;
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  border-radius: 48px;
+  border: 1px solid #B4BDC3;
+  transform: rotate(90deg);
+  background: #FAFBFC;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.buttonArrowRight {
+  width: 16px;
+  height: 16px;
+}
+
+.loaderContainer{
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 1150px;
+}

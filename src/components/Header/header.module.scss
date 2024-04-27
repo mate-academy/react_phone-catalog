@@ -1,0 +1,60 @@
+.headerContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  width: 1440px;
+  align-items: center;
+  gap: 24px;
+  background: #FFF;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+  justify-content: flex-start;
+}
+
+.headerLogo {
+  padding-left: 24px;
+  width: 80px;
+  height: 28px;
+}
+
+.menuLogo {
+  display: none;
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.buttonsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-left: auto;
+}
+
+.headerButtons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  flex-shrink: 0;
+  background: #FFF;
+  box-shadow: -1px 0 0 0 #E2E6E9;
+  color: #FFF;
+}
+
+.headerButtonIcon {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+  color: #0F0F11;
+
+  &:hover {
+    transform: scale(1.3);
+  }
+}
+
