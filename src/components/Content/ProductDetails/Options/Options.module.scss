@@ -92,6 +92,9 @@
     font-size: 20px;
     cursor: pointer;
     @include buttonTransitionWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 
   &__button_by {

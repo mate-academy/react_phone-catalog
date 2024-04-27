@@ -96,7 +96,7 @@ export const Options: React.FC<Props> = ({
     <div className={style.options}>
       <div className={style.options__header}>
         <span className={style.options__title}>Available colors</span>
-        <span className={style.options__id}>{id}</span>
+        <span className={style.options__id}>{`ID: ${id}`}</span>
       </div>
       <div className={style.options__container}>
         {details.colorsAvailable.map(color => (

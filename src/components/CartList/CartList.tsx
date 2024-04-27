@@ -1,11 +1,12 @@
 import {FaX} from 'react-icons/fa6';
 import {useContext} from 'react';
-
+import classNames from 'classnames';
 import {Link} from 'react-router-dom';
+
 import {ProductContext} from '../../context/ProductContext';
+import {PriceList} from '../../type/PriceList';
 
 import style from './CartList.module.scss';
-import {PriceList} from '../../type/PriceList';
 
 export const CartList: React.FC = () => {
   const {priceList, setPriceList} = useContext(ProductContext);
@@ -97,7 +98,10 @@ export const CartList: React.FC = () => {
                     </span>
                   </Link>
                   <button
-                    className={style.cartList__cart_reduction}
+                    className={classNames([style.cartList__cart_reduction], {
+                      [style.cartList__cart_reduction_isNotActive]:
+                        product.number === 1,
+                    })}
                     type="button"
                     aria-label="Decrement"
                     onClick={() => handleDecrement(+product.id)}

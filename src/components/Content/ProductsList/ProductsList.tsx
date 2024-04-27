@@ -116,6 +116,7 @@ export const ProductsList: React.FC<Props> = ({
                     onChange={handleSortByChange}
                     value={sortBy}
                   >
+                    <option className={style.select__option}>Default</option>
                     <option
                       className={style.select__option}
                       value={SortProduct.Age}
