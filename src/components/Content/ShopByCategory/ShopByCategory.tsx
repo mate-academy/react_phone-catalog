@@ -34,10 +34,12 @@ export const ShopByCategory = () => {
       <div className={style.category__container}>
         <h3 className={style.category__title}>Shop by category</h3>
         <div className={style.category__cards} data-cy="categoryLinksContainer">
-          <Link to="/phones" className={style.category__card}>
-            <div className={`${style.category__img} ${style.phones}`} />
-            <h3 className={style.category__card_title}>Mobile phones</h3>
-            <span>{`${phones.length} models`}</span>
+          <Link to="/phones">
+            <div className={style.category__card}>
+              <div className={`${style.category__img} ${style.phones}`} />
+              <h3 className={style.category__card_title}>Mobile phones</h3>
+              <span>{`${phones.length} models`}</span>
+            </div>
           </Link>
           <Link to="/tablets" className={style.category__card}>
             <div className={`${style.category__img} ${style.tablets}`} />

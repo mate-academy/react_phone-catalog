@@ -19,15 +19,21 @@
   }
 
   &__card {
+    // transition: width 1s ease;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
     color: rgba(137, 147, 154, 1);
     text-decoration: none;
-    transition: width 0.3s ease;
+    display: inline-block;
+
+    transition:
+      transform 1s ease,
+      color 1s ease;
 
     &:hover {
       transform: scale(1.05);
+      color: red;
     }
 
     &_title {
