@@ -1,0 +1,63 @@
+@import '../../../shared/utils-scss/variables';
+@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/mixins';
+
+
+
+.product {
+  margin-bottom: 80px;
+
+  &__title {
+    font-size: 32px;
+    line-height: 40.9px;
+
+    @extend %mont-700;
+  }
+
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+
+  // &__phone {
+  //   width: 270px;
+  //   height: 505px;
+  //   border: 1px solid $color-gray;
+  //   transition: all 0.3s;
+  // }
+  &__phone {
+    width: 212px;
+    height: 439px;
+
+
+    @include onTablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include onDesktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+
+  &__cart {
+    display: flex;
+    gap: 16px;
+    transition: all 0.8s;
+  }
+}
+
+.region {
+  overflow: hidden;
+}
+
+
+  // &__phone {
+  //   width: 270px;
+  //   height: 505px;
+  //   border: 1px solid $color-gray;
+  //   transition: all 0.3s;
+  // }

@@ -1,0 +1,56 @@
+@import '../../../shared/utils-scss/mixins';
+@import '../../../shared/utils-scss/variables';
+@import '../../../shared/utils-scss/font.scss';
+.product {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %mont-700;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 40.9px;
+    line-height: 30px;
+    font-size: 22px;
+    width: 136px;
+
+    @include onTablet {
+      font-size: 32px;
+      line-height: 41px;
+      width: auto;
+    }
+  }
+
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 24px;
+  }
+
+  &__cart {
+    display: flex;
+    gap: 16px;
+    transition: all 0.8s;
+    padding-bottom: 1px;
+  }
+
+  &__phone {
+    width: 212px;
+    height: 439px;
+
+
+    @include onTablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include onDesktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}
+
+.region {
+  overflow: hidden;
+}

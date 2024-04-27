@@ -1,5 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer, {ProductsState} from '../features/HotPricesSlice';
+import productReducer, { ProductsState } from '../features/ProductSlice';
 interface Store {
   product: ProductsState,
 }

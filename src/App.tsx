@@ -1,14 +1,19 @@
-import './App.scss';
-import { Footer } from './components/Footer/Footer';
-import { Header } from './components/Header/Header';
-import { HomePage } from './components/HomePage/HomePage';
+import { Outlet } from "react-router-dom";
+import { useAppDispatch } from "./modules/shared/hooks/hooks";
+import { useEffect } from "react";
+import * as productAction from './features/ProductSlice';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    
-    <HomePage />
-    {false && (<Footer />)}
-    
-  </div>
-);
+
+export const App = () => {
+  const dispatch = useAppDispatch()
+
+  useEffect(() => {
+    dispatch(productAction.fetchProduct())
+  },[]);
+
+  return (
+    <div className="App">
+      <Outlet />
+    </div>
+  );
+}

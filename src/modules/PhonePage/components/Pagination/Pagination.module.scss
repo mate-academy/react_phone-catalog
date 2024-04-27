@@ -1,0 +1,20 @@
+@import '../../../shared/utils-scss/variables';
+.pagination {
+  display: flex;
+}
+
+.arrow {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $border-button-color;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__left {
+    background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
+  }
+
+  &__right {
+    background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
+  }
+}

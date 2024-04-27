@@ -1,5 +1,5 @@
 export type Products = {
-  age: number;
+  year: number;
   type: string;
   id: string;
   imageUrl: string;
@@ -12,4 +12,5 @@ export type Products = {
   ram: string;
   image: string;
   fullPrice: number;
+  category: string;
 };

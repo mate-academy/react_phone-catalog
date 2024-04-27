@@ -1,7 +1,7 @@
-import { Products } from "../types/Product";
+import { Products } from '../types/Product';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = '/react_phone-catalog/api';
+const BASE_URL = './api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -21,7 +21,6 @@ function request<T>(
     options.body = JSON.stringify(data);
     options.headers = {
       'Content-Type': 'application/json; charset=UTF-8',
-      'mode': 'no-cors',
     };
   }
 
@@ -40,5 +39,5 @@ export const client = {
 };
 
 export const getProduct = () => {
-  return client.get<Products[]>('/products.json');
-}
+  return client.get<Products[]>('products.json');
+};
