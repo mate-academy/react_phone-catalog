@@ -1,15 +1,11 @@
 @import '../../../shared/utils-scss/mixins';
 
 .product {
-
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   column-gap: 32px;
-  grid-column-gap: 16px;
-  grid-gap: 32px;
-  grid-row-gap: 40px;
+  grid-gap: 16px;
   margin: 0 auto 24px;
-
 
   @include onTablet {
     margin: 0 auto 40px;
@@ -18,7 +14,6 @@
 
   @include onDesktop {
     grid-template-columns: repeat(24, 1fr);
-
   }
 
   &__page {

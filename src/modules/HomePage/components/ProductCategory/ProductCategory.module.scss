@@ -1,6 +1,7 @@
 @import '../../../shared/utils-scss/mixins';
 @import '../../../shared/utils-scss/variables';
-@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/font';
+
 .category {
   margin-bottom: 80px;
 
@@ -9,6 +10,7 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+
     @include onTablet {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -27,6 +29,7 @@
 
   &__title {
     @extend %mont-700;
+
     font-weight: 800;
     font-size: 22px;
     line-height: 30px;
@@ -37,7 +40,6 @@
       font-size: 32px;
       line-height: 40.9px;
     }
-
   }
 
   &__mobile {
@@ -80,17 +82,14 @@
 
   &__img {
     background-repeat: no-repeat;
-    width: 386px;
     height: 457px;
     background-size: cover;
     position: absolute;
     top: 40px;
     left: 49px;
     width: 100%;
-      height: auto;
-      aspect-ratio: 1 / 1;
+    aspect-ratio: 1 / 1;
  
-
     @include onTablet {
       width: 100%;
       height: auto;
@@ -100,31 +99,29 @@
 
   &__mobile__img {
     background-image: url(../../../../../public/img/category-phones.webp);
-
   }
-
 
   &__tablets__img {
     background-image: url(../../../../../public/img/category-tablets.webp);
-
   }
 
   &__accessories__img {
     background-image: url(../../../../../public/img/category-accessories.png);
-
   }
 
   &__name {
+    @extend %mont-600;
+
     font-size: 20px;
     color: $border-button-color-hover;
     margin-bottom: 4px;
     line-height: 25px;
-    @extend %mont-600;
   }
 
   &__count {
+    @extend %mont-500;
+
     font-size: 14px;
     color: $color-text-gray;
-    @extend %mont-500;
   }
 }

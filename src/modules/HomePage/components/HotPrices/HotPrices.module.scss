@@ -1,5 +1,5 @@
 @import '../../../shared/utils-scss/variables';
-@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/font';
 @import '../../../shared/utils-scss/mixins';
 
 
@@ -21,12 +21,6 @@
     padding-bottom: 24px;
   }
 
-  // &__phone {
-  //   width: 270px;
-  //   height: 505px;
-  //   border: 1px solid $color-gray;
-  //   transition: all 0.3s;
-  // }
   &__phone {
     width: 212px;
     height: 439px;
@@ -53,11 +47,3 @@
 .region {
   overflow: hidden;
 }
-
-
-  // &__phone {
-  //   width: 270px;
-  //   height: 505px;
-  //   border: 1px solid $color-gray;
-  //   transition: all 0.3s;
-  // }

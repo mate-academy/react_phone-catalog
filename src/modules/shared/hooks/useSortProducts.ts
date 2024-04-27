@@ -3,13 +3,12 @@ import { useLocation } from 'react-router-dom';
 import useFilterProducts from './useFilterProducts';
 
 const useSortProductststs = () => {
-  const { search, pathname } = useLocation();
+  const { search } = useLocation();
   const { filterProduct } = useFilterProducts();
   const sortProducts = useMemo(() => {
     if (!search.includes('sort')) {
       return filterProduct;
     }
-
 
     const divideSearch = search
       .split('&')
@@ -29,7 +28,7 @@ const useSortProductststs = () => {
       default:
         return filterProduct;
     }
-  }, [search, filterProduct, pathname]);
+  }, [search, filterProduct]);
 
   return { sortProducts };
 };

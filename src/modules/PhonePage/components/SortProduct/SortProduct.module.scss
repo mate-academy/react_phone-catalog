@@ -1,5 +1,5 @@
 @import '../../../shared/utils-scss/variables';
-@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/font';
 @import '../../../shared/utils-scss/mixins';
 
 .phones__page {
@@ -25,6 +25,7 @@
 
   &__plase {
     @extend %mont-600;
+
     font-size: 12px;
     line-height: 15px;
     color: $border-button-color;
@@ -41,6 +42,7 @@
 
   &__title {
     @extend %mont-800;
+
     color: $border-button-color-hover;
     font-size: 32px;
     line-height: 41px;
@@ -54,6 +56,7 @@
 
   &__items {
     @extend %mont-600;
+
     line-height: 21px;
     font-size: 14px;
     color: $border-button-color;
@@ -72,8 +75,9 @@
 
 .search {
   &__product {
-    display: block;
     @extend %mont-700;
+
+    display: block;
     font-size: 12px;
     line-height: 15px;
     color: $border-button-color;
@@ -87,6 +91,7 @@
 
   &__by {
     @extend %mont-600;
+
     font-size: 14px;
     width: 100%;
     height: 40px;
@@ -125,17 +130,14 @@
     background-repeat: no-repeat;
     background-position: center;
     background-image:url(../../../shared/headerImg/slider/Vector-left.svg);
-
   }
 
   &__down {
     transform: rotate(90deg);
-
   }
 
   &__up {
     transform: rotate(-90deg);
-
   }
 
   &__list {
@@ -169,20 +171,15 @@
   &__name {
     background-color: inherit;
     border: none;
-    @extend  %mont-500;
     font-size: 14px;
     line-height: 21px;
     color: $color-text-gray;
     cursor: pointer;
 
+    @extend  %mont-500;
+
     &:hover {
       color: $border-button-color-hover;
     }
-  }
-}
-
-.product {
-  &__list {
-
   }
 }

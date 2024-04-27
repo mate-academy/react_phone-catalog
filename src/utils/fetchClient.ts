@@ -1,7 +1,7 @@
 import { Products } from '../types/Product';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = './api/';
+const BASE_URL = 'https://mukutiuk.github.io/react_phone-catalog/api';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -34,6 +34,7 @@ function request<T>(
       return response.json();
     });
 }
+
 export const client = {
   get: <T>(url: string) => request<T>(url),
 };

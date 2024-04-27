@@ -1,4 +1,4 @@
-import { useMemo} from 'react';
+import { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
 
 enum Location {
@@ -8,7 +8,6 @@ enum Location {
 }
 
 const usePageLocation = () => {
-
   const { pathname } = useLocation();
 
   const pageLocation = useMemo(() => {
@@ -26,7 +25,7 @@ const usePageLocation = () => {
     }
   }, [pathname]);
 
-  return {pageLocation};
+  return { pageLocation };
 };
 
 export default usePageLocation;

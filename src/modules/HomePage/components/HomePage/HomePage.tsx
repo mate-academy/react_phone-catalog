@@ -1,6 +1,6 @@
 import styles from './HomePage.module.scss';
-import { BrandNew } from "../BrandNew/BrandNew";
-import { ProductCategory } from "../ProductCategory/ProductCategory";
+import { BrandNew } from '../BrandNew/BrandNew';
+import { ProductCategory } from '../ProductCategory/ProductCategory';
 import { SliderTop } from '../SliderTop/SliderTop';
 import { HotPrices } from '../HotPrices/HotPrices';
 

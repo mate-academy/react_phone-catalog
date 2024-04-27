@@ -13,14 +13,14 @@ export const BrandNew = () => {
   const sliderRight = () => {
     if (sliderWidht === 0) {
       setSliderWidht(272 + 16);
-      setCountProduct(2)
+      setCountProduct(2);
     } else {
       if (countProduct <= hotPrice.length) {
-        setSliderWidht((carentValue) => carentValue + 272 + 16);
+        setSliderWidht(carentValue => carentValue + 272 + 16);
         setCountProduct(carentValue => carentValue + 1);
       }
     }
-  }
+  };
 
   // const r = document.querySelector('#phoneWidth')
   // const n = r.offsetWidth;
@@ -29,7 +29,7 @@ export const BrandNew = () => {
 
   const sliderLeft = () => {
     if (sliderWidht >= 100) {
-      setSliderWidht((carentValue) => carentValue - (272 + 16));
+      setSliderWidht(carentValue => carentValue - (272 + 16));
 
       setCountProduct(carentValue => carentValue - 1);
     }
@@ -38,40 +38,27 @@ export const BrandNew = () => {
       setCountProduct(0);
       setSliderWidht(0);
     }
-  }
+  };
+
   return (
     <div className={style.product}>
-    <div className={style.product__wraper}>
-      <h1 className={style.product__title}>
-        Brand new models
-      </h1>
-      <ProductsSlider
-        sliderLeft={sliderLeft}
-        sliderRight={sliderRight}
-      />
-    </div>
+      <div className={style.product__wraper}>
+        <h1 className={style.product__title}>Brand new models</h1>
+        <ProductsSlider sliderLeft={sliderLeft} sliderRight={sliderRight} />
+      </div>
 
-    <div
-      className={style.region}
-      data-cy="cardsContainer"
-    >
-      <div
-        className={style.product__cart}
-        style={{transform: `translateX(-${sliderWidht}px)`}}
-      >
-      {product.map(phone => (
+      <div className={style.region} data-cy="cardsContainer">
         <div
-          key={phone.id}
-          className={style.product__phone}
+          className={style.product__cart}
+          style={{ transform: `translateX(-${sliderWidht}px)` }}
         >
-          <ProductCard
-            phone={phone}
-          />
+          {product.map(phone => (
+            <div key={phone.id} className={style.product__phone}>
+              <ProductCard phone={phone} />
+            </div>
+          ))}
         </div>
-      ))}
       </div>
     </div>
-
-  </div>
-  )
-}
+  );
+};

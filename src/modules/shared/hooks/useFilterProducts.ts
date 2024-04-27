@@ -1,26 +1,28 @@
-import { useMemo} from 'react';
+import { useMemo } from 'react';
 import { useAppSelector } from './hooks';
 import { useLocation } from 'react-router-dom';
 
 const useFilterProducts = () => {
-  const { pathname, search } = useLocation();
+  const { pathname } = useLocation();
 
-const { products, phones, tablets, accessories} = useAppSelector(state => state.product);
+  const { products, phones, tablets, accessories } = useAppSelector(
+    state => state.product,
+  );
   const filterProduct = useMemo(() => {
-    switch(pathname) {
-      case '/phones' :
+    switch (pathname) {
+      case '/phones':
         return phones;
 
-      case '/tablets' :
+      case '/tablets':
         return tablets;
 
-      case '/accessories' :
-      return accessories;
+      case '/accessories':
+        return accessories;
 
       default:
         return products;
     }
-  }, [pathname, products, search]);
+  }, [pathname, products, phones, tablets, accessories]);
 
   return { filterProduct };
 };

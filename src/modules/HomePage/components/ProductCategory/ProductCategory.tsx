@@ -3,7 +3,9 @@ import { useAppSelector } from '../../../shared/hooks/hooks';
 import styles from './ProductCategory.module.scss';
 
 export const ProductCategory = () => {
-  const { phones, tablets, accessories } = useAppSelector(state => state.product);
+  const { phones, tablets, accessories } = useAppSelector(
+    state => state.product,
+  );
 
   return (
     <div className={styles.category}>
@@ -41,7 +43,9 @@ export const ProductCategory = () => {
             ></div>
           </Link>
           <h3 className={styles.category__name}>Tablets</h3>
-          <span className={styles.category__count}>{`${tablets.length} models`} </span>
+          <span className={styles.category__count}>
+            {`${tablets.length} models`}{' '}
+          </span>
         </div>
         <div className={styles.category__content}>
           <Link
@@ -55,7 +59,9 @@ export const ProductCategory = () => {
             ></div>
           </Link>
           <h3 className={styles.category__name}>Accessories</h3>
-          <span className={styles.category__count}>{`${accessories.length} models`}</span>
+          <span
+            className={styles.category__count}
+          >{`${accessories.length} models`}</span>
         </div>
       </div>
     </div>

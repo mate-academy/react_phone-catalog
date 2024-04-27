@@ -80,7 +80,7 @@ export const SliderTop = () => {
         >
           <span
             className={classNames(style.slider__indicator, {
-              [style.slider__active] : sliderWidht === AdjustmentImg.Second
+              [style.slider__active]: sliderWidht === AdjustmentImg.Second,
             })}
           ></span>
         </button>

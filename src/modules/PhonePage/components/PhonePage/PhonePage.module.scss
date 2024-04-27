@@ -1,14 +1,10 @@
 @import '../../../shared/utils-scss/mixins';
 
 .container {
-  padding-top: 25px;
-  padding: 24px 16px 0;
-
+  padding: 25px 16px 0;
   margin: 0 auto 64px;
 
-
   @include onTablet {
-    // width: 590px;
     padding: 24px 24px 0;
   }
 
