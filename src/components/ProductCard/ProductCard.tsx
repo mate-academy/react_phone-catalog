@@ -37,40 +37,40 @@ export const ProductCard: React.FC<Props> = ({ product, type, cardWidth }) => {
 
   return (
     <div className={styles.productCard} style={cardStyles}>
-      <div className={styles.productImgContainer}>
-        <Link to={`/${category}/${id}`}>
+      <Link to={`/${category}/${id}`} className={styles.productCardLink}>
+        <div className={styles.productImgContainer}>
           <img
             src={images[0]}
             alt={namespaceId}
             className={styles.productImg}
           />
-        </Link>
-      </div>
-
-      <p className={styles.productName}>{name}</p>
-      {type === 'Hot prices' ? (
-        <div className={styles.productPriceWrap}>
-          <p className={styles.productPrice}>{`$${priceDiscount}`}</p>
-          <p className={cn(styles.productPriceDisc, styles.productPrice)}>
-            {`$${priceRegular}`}
-          </p>
         </div>
-      ) : (
-        <p className={styles.productPrice}>{`$${priceRegular}`}</p>
-      )}
-      <div className={styles.divider}></div>
-      <div className={cn(styles.productInfo, styles.paddingTop)}>
-        <p className={styles.productTechChar}>Screen</p>
-        <p className={styles.productTechValue}>{screen.slice(0, 17)}</p>
-      </div>
-      <div className={styles.productInfo}>
-        <p className={styles.productTechChar}>Capacity</p>
-        <p className={styles.productTechValue}>{capacity}</p>
-      </div>
-      <div className={cn(styles.productInfo, styles.paddingBottom)}>
-        <p className={styles.productTechChar}>RAM</p>
-        <p className={styles.productTechValue}>{ram}</p>
-      </div>
+
+        <p className={styles.productName}>{name}</p>
+        {type === 'Hot prices' ? (
+          <div className={styles.productPriceWrap}>
+            <p className={styles.productPrice}>{`$${priceDiscount}`}</p>
+            <p className={cn(styles.productPriceDisc, styles.productPrice)}>
+              {`$${priceRegular}`}
+            </p>
+          </div>
+        ) : (
+          <p className={styles.productPrice}>{`$${priceRegular}`}</p>
+        )}
+        <div className={styles.divider}></div>
+        <div className={cn(styles.productInfo, styles.paddingTop)}>
+          <p className={styles.productTechChar}>Screen</p>
+          <p className={styles.productTechValue}>{screen.slice(0, 17)}</p>
+        </div>
+        <div className={styles.productInfo}>
+          <p className={styles.productTechChar}>Capacity</p>
+          <p className={styles.productTechValue}>{capacity}</p>
+        </div>
+        <div className={cn(styles.productInfo, styles.paddingBottom)}>
+          <p className={styles.productTechChar}>RAM</p>
+          <p className={styles.productTechValue}>{ram}</p>
+        </div>
+      </Link>
 
       <ActionBlock product={product} />
     </div>

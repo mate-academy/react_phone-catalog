@@ -1,11 +1,9 @@
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../../app/hook';
-import { useParams } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import styles from './ProductDetailsPage.module.scss';
 import classNames from 'classnames';
 import { BackBtn } from '../../components/BackBtn/BackBtn';
-import { ProductInfo } from '../../types/ProductInfo';
-import { fetchProducts } from '../../features/productsSlice';
 import { Loader } from '../../components/Loader';
 import { ImgsSlider } from './components/ImgsSlider';
 import { VariableChars } from './components/VariableChars';
@@ -14,27 +12,44 @@ import { TechCharsShort } from './components/TechCharsShort';
 import { TechCharsFull } from './components/TechCharsFull';
 import { getRandomProducts } from '../../helpers/getRandomProducts';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
+import { fetchProductById } from '../../features/productInfoSlice';
+import { ProductCategory } from '../../types/ProductCategory';
 
 export const ProductDetailsPage = () => {
   const { productId = '' } = useParams();
+  const location = useLocation();
   const dispatch = useAppDispatch();
   const { phones, tablets, accessories, loading, error } = useAppSelector(
     state => state.products,
   );
+  const { selectedProduct } = useAppSelector(state => state.selectedProduct);
 
-  useEffect(() => {
-    dispatch(fetchProducts());
-  }, [dispatch]);
+  const getProductCategory = (pathname: string): ProductCategory => {
+    const parts = pathname.split('/');
 
-  const getProduct = (itemId: string, products: ProductInfo[]) => {
-    return products.find(product => product.id === itemId);
+    const categorySegment = parts.find(
+      part => part === 'phones' || part === 'tablets' || part === 'accessories',
+    );
+
+    switch (categorySegment) {
+      case 'phones':
+        return ProductCategory.PHONES;
+      case 'tablets':
+        return ProductCategory.TABLETS;
+      case 'accessories':
+        return ProductCategory.ACCESSORIES;
+      default:
+        return ProductCategory.PHONES;
+    }
   };
 
-  const selectedProduct = getProduct(productId, [
-    ...phones,
-    ...tablets,
-    ...accessories,
-  ]);
+  useEffect(() => {
+    if (productId) {
+      const category = getProductCategory(location.pathname);
+
+      dispatch(fetchProductById({ productId, category }));
+    }
+  }, [dispatch, productId, location.pathname]);
 
   return (
     <div className={styles.productPage}>

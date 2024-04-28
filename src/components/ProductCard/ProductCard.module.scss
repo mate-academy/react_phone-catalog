@@ -15,10 +15,6 @@
   height: 439px;
   padding: 31px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-
   transition: all 0.3s;
 
   grid-column: auto;
@@ -34,6 +30,13 @@
   &:hover{
     box-shadow: 0 2px 4px 0 rgba(131, 137, 139, 0.12), 0 2px 16px 0 rgba(107, 127, 135, 0.32);
   }
+}
+
+.productCardLink {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .productImgContainer {

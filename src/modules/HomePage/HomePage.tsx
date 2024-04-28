@@ -7,7 +7,7 @@ import { ProductSlider } from './components/ProductSlider';
 import { ProductCategories } from './components/ProductCategories';
 import { getNewModels } from '../../helpers/getNewModels';
 import { getHotPrices } from '../../helpers/getHotPrices';
-import { fetchProducts } from '../../features/productsSlice';
+import { fetchAllProducts } from '../../features/productsSlice';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
@@ -16,7 +16,7 @@ export const HomePage = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchAllProducts());
   }, [dispatch]);
 
   const newModels = getNewModels(phones);

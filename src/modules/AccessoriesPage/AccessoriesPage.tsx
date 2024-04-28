@@ -7,6 +7,7 @@ import { Loader } from '../../components/Loader';
 import { ErrorNoProducts, ErrorSomethingWrong } from '../../components/Errors';
 import { ProductsList } from '../../components/ProductsList';
 import { fetchProducts } from '../../features/productsSlice';
+import { ProductCategory } from '../../types/ProductCategory';
 
 export const AccessoriesPage = () => {
   const dispatch = useAppDispatch();
@@ -15,7 +16,7 @@ export const AccessoriesPage = () => {
   );
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(ProductCategory.ACCESSORIES));
   }, [dispatch]);
 
   return (

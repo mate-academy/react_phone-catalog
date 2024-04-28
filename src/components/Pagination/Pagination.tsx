@@ -42,7 +42,7 @@ export const Pagination: React.FC<Props> = ({
         pageCount={totalPages}
         pageRangeDisplayed={3}
         marginPagesDisplayed={1}
-        initialPage={currentPage - 1}
+        forcePage={currentPage - 1}
         previousLabel={
           <RoundedArrow icon={icons.arrowLeftDis} disabled={firstPage} />
         }

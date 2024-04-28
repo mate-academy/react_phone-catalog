@@ -7,13 +7,14 @@ import { useEffect } from 'react';
 import { Loader } from '../../components/Loader';
 import { ErrorNoProducts, ErrorSomethingWrong } from '../../components/Errors';
 import { fetchProducts } from '../../features/productsSlice';
+import { ProductCategory } from '../../types/ProductCategory';
 
 export const PhonesPage = () => {
   const dispatch = useAppDispatch();
   const { phones, loading, error } = useAppSelector(state => state.products);
 
   useEffect(() => {
-    dispatch(fetchProducts());
+    dispatch(fetchProducts(ProductCategory.PHONES));
   }, [dispatch]);
 
   return (
