@@ -11,6 +11,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ item, type }) => {
+  // eslint-disable-next-line no-console
   console.log(type);
 
   // let productPath = '';
