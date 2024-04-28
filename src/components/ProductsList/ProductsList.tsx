@@ -24,7 +24,7 @@ export const ProductsList: React.FC<Props> = ({
   const sort = searchParams.get('sortBy') || SortType.newest;
   const onPage = searchParams.get('onPage') || '16';
   const query = searchParams.get('query') || '';
-  let page = searchParams.get('page') || '1';
+  let page = searchParams.get('page') || '1'; // eslint-disable-line react-hooks/exhaustive-deps
 
   useEffect(() => {
     if (query !== '') {
@@ -34,7 +34,7 @@ export const ProductsList: React.FC<Props> = ({
 
       setSearchParams(newSearchParams);
     }
-  }, [query, searchParams, setSearchParams]);
+  }, [query, searchParams]);
 
   const cardWidth = 'auto';
 
