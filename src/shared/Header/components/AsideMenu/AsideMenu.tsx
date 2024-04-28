@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { icons } from '../../../global/Icons';
 
@@ -7,6 +7,7 @@ import stylesHeader from '../../Header.module.scss';
 import classNames from 'classnames';
 import { Navbar } from '../../../../components/Navbar';
 import { menuItems } from '../../../../helpers/constArrs';
+import { useAppSelector } from '../../../../app/hook';
 
 type Props = {
   isMenuOpen: boolean;
@@ -20,6 +21,17 @@ const getBottomLinkClass = ({ isActive }: { isActive: boolean }) =>
 
 export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const location = useLocation();
+  const { favourites } = useAppSelector(state => state.favourites);
+  const { cartItem } = useAppSelector(state => state.cartItems);
+  const [cartItemCount, setCartItemCount] = useState(0);
+
+  useEffect(() => {
+    if (cartItem) {
+      const count = cartItem.reduce((total, item) => total + item.quantity, 0);
+
+      setCartItemCount(count);
+    }
+  }, [cartItem]);
 
   return (
     <aside className={classNames(styles.menu, { [styles.shown]: isMenuOpen })}>
@@ -68,6 +80,14 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           )}
         >
           {icons.favourites}
+
+          {favourites.length > 0 && (
+            <span
+              className={classNames(stylesHeader.favCount, styles.favCount)}
+            >
+              {favourites.length}
+            </span>
+          )}
         </NavLink>
 
         <NavLink
@@ -81,6 +101,14 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           )}
         >
           {icons.cart}
+
+          {cartItem.length > 0 && (
+            <span
+              className={classNames(stylesHeader.favCount, styles.favCount)}
+            >
+              {cartItemCount}
+            </span>
+          )}
         </NavLink>
       </div>
     </aside>
