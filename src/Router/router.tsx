@@ -38,12 +38,12 @@ export const Root = () => {
           /> */}
 
           <Route
-            path="/details/phones"
+            path="/details"
             element={
               <ProductDetails type={ProductType.phones} title="Phone Details" />
             }
           />
-          <Route
+          {/* <Route
             path="/details/tablets"
             element={
               <ProductDetails
@@ -60,7 +60,7 @@ export const Root = () => {
                 title="Accessory Details"
               />
             }
-          />
+          /> */}
           <Route path="/people">
             {/* <Route index element={<Phones />} /> */}
           </Route>

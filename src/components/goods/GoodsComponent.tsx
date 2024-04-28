@@ -20,7 +20,7 @@ export const Goods: React.FC<Props> = ({ title, phones }) => {
   const swiperRef = useRef<Swiper | null>(null);
 
   const type =
-    ProductType.accessories || ProductType.phones || ProductType.tablets;
+    ProductType.accessories && ProductType.phones && ProductType.tablets;
 
   return (
     <>

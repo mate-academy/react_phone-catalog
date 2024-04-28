@@ -1,11 +1,13 @@
-import React, { useEffect } from 'react';
+/* eslint-disable @typescript-eslint/indent */
+import React, { useEffect, useState } from 'react';
 import styles from './productDetail.module.scss';
 import { Header } from '../Header/header';
 import { Footer } from '../Footer/footer';
 import { NavLink } from 'react-router-dom';
-import { useAppDispatch } from '../../Hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { loadProductsDetail } from '../../feachers/tabletSlice';
 import { ProductType } from '../../services/enums';
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 type Props = {
   type: ProductType;
@@ -13,12 +15,14 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = ({ type }) => {
-  // const detail = useAppSelector(state => state.detail.detail);
+  const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const details = useAppSelector(state => state.detail.detail);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     dispatch(loadProductsDetail(type));
-  }, [dispatch, type]);
+  }, []);
 
   // console.log(type, detail);
 
@@ -115,7 +119,49 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
         <h1 className={styles.detailTitle}>
           Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
         </h1>
-        <div className={styles.detailsImageContainer}></div>
+        <div className={styles.productDetailsAndSviper}>
+          <div className={styles.swiperContainer}>
+            <Swiper
+              className={styles.swiperDetails}
+              spaceBetween={10}
+              navigation={true}
+              slidesPerView={1}
+              loop={true}
+              // grabCursor={true}
+              onSlideChange={swiper => setCurrentSlideIndex(swiper.activeIndex)}
+              autoplay={{
+                delay: 5000,
+              }}
+            >
+              {details &&
+                details.map((detail, index) => (
+                  <SwiperSlide className={styles.slide} key={index}>
+                    {detail.images &&
+                      detail.images.map((imageUrl, imgIndex) => (
+                        <img
+                          key={imgIndex}
+                          src={imageUrl}
+                          alt="Phone"
+                          className={styles.smallImage}
+                          onClick={() => setCurrentImageIndex(imgIndex)}
+                        />
+                      ))}
+                  </SwiperSlide>
+                ))}
+            </Swiper>
+            <div className={styles.bigImageContainer}>
+              {details &&
+                details[currentSlideIndex] &&
+                details[currentSlideIndex].images && (
+                  <img
+                    src={details[currentSlideIndex].images[currentImageIndex]}
+                    alt="Big Phone"
+                    className={styles.bigImage}
+                  />
+                )}
+            </div>
+          </div>
+        </div>
       </section>
       <Footer />
     </>

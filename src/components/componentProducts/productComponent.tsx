@@ -23,7 +23,7 @@ export const Products: React.FC<Props> = ({ type, title }) => {
 
   useEffect(() => {
     dispatch(loadProducts(type));
-  }, [dispatch, type]);
+  }, []);
 
   return (
     <>

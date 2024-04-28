@@ -1,9 +1,9 @@
-import React from 'react';
 import styles from './productcard.module.scss';
 import heardBuron from './productCard-logo/Favourites.png';
 import { Product } from '../../services/productType';
 import { NavLink } from 'react-router-dom';
 import { ProductType } from '../../services/enums';
+import React from 'react';
 
 type Props = {
   item: Product;
@@ -11,26 +11,29 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ item, type }) => {
-  let productPath = '';
+  console.log(type);
 
-  switch (type) {
-    case ProductType.phones:
-      productPath = '/phones';
-      break;
-    case ProductType.tablets:
-      productPath = '/tablets';
-      break;
-    case ProductType.accessories:
-      productPath = '/accessories';
-      break;
-    default:
-      productPath = '/';
-  }
+  // let productPath = '';
+
+  // switch (type) {
+  //   case ProductType.phones:
+  //     productPath = '/phones';
+  //     break;
+  //   case ProductType.tablets:
+  //     productPath = '/tablets';
+  //     break;
+  //   case ProductType.accessories:
+  //     productPath = '/accessories';
+  //     break;
+  //   default:
+  //     productPath = '/';
+  // }
 
   return (
     <>
       <section className={styles.cardProductSection}>
-        <NavLink to={`${productPath}/${item.id}`}>
+        <NavLink to={`/details`}>
+          {/* {${productPath}/${item.id}} */}
           <img
             className={styles.productImages}
             src={item.image}

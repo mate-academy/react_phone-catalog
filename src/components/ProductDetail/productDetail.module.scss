@@ -1,3 +1,8 @@
+.sectionProductDetail {
+  margin-inline: 152px;
+  max-width: 1200px;
+}
+
 .arrow {
   width: 16px;
   height: 16px;
@@ -7,4 +12,42 @@
   &:hover {
     transform: translateX(5px);
   }
+}
+
+.swiperContainer {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  max-width: 600px;
+}
+
+.swiperDetails {
+  display: flex;
+  flex-direction: row;
+  margin: 0;
+  gap: 17px;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+}
+
+.smallImage {
+  width: 66px;
+  height: 66px;
+  margin-bottom: 17px;
+  object-fit: contain;
+}
+
+.bigImageContainer {
+  flex: 0 0 auto;
+  width: 80%;
+}
+
+.bigImage {
+  object-fit: contain;
+  width: 442px;
+  height: 442px;
+  padding-right: 140px;
 }
