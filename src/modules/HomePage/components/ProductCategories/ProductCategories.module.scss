@@ -1,0 +1,64 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.catWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-top: 24px;
+
+  @include on-tablet {
+    @include page-grid;
+  }
+}
+
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  color: inherit;
+  cursor: pointer;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.categoryImgWrap {
+  overflow: hidden;
+  border-radius: $elements-border-radius;
+  height: 288px;
+
+  @include on-tablet {
+    height: 187px;
+  }
+
+  @include on-desktop {
+    // border-radius: 0;
+    height: 368px;
+   }
+}
+
+.categoryImg {
+  width: 100%;
+
+  @include hover (transform, scale(1.05))
+}
+
+.catTextWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.cattH5 {
+  color: $secondary-text-color;
+
+  @include on-desktop {
+    font-weight: 500;
+  }
+}

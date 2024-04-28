@@ -1,0 +1,87 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.variableCharsWrap {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-top: 40px;
+
+  grid-column: span 4;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+}
+
+.variableChars {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+}
+
+.variableChars > p {
+  color: $secondary-text-color;
+}
+
+.colorWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.colorLink {
+  width: 32px;
+  height: 32px;
+}
+
+.color, .colorActive {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $elements-border-color;
+  position: relative;
+  cursor: pointer;
+
+  @include hover (border, 1px solid $btns-border-color)
+}
+
+.colorActive {
+  border: 1px solid $main-text-color;
+}
+
+.color::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid $white;
+}
+
+.capacityWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.capacity, .capacityActive {
+  width: 56px;
+  height: 32px;
+  border: 1px solid $elements-border-color;
+  border-radius: 4px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.capacityActive  {
+  background-color: $main-text-color;
+  color: $white;
+}
+
+.divider {
+  width: 100%;
+  height: 1px;
+  background-color: $elements-border-color;
+}
