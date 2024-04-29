@@ -37,15 +37,15 @@
   }
 
   &__img {
-    display: inline-block;
+    display: flex;
+    justify-content: center;
+    margin: auto;
     width: 1040px;
     height: 400px;
     padding-inline: 15px;
   }
 
   &__img img {
-    display: block;
-    margin: 0 auto;
     max-width: 100%;
     max-height: 100%;
   }
@@ -59,4 +59,8 @@
 .transitioning_in {
   opacity: 1;
   transition: opacity 1s ease;
+}
+
+.transitioning_none {
+  display: none;
 }

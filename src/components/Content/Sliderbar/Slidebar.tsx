@@ -91,14 +91,18 @@ export const Sliderbar = () => {
           <IoIosArrowBack />
         </button>
         <div className={style.slider__img}>
-          <img
-            className={classNames({
-              [style.transitioning]: isTransitioning,
-              [style.transitioning_in]: !isTransitioning,
-            })}
-            src={imgUrl}
-            alt="Baner Imeges"
-          />
+          {banner.map((img, i) => (
+            <img
+              className={classNames({
+                [style.transitioning_none]: i !== imgIndex,
+                [style.transitioning]: isTransitioning,
+                [style.transitioning_in]: !isTransitioning,
+              })}
+              src={img}
+              key={img}
+              alt="Baner Imeges"
+            />
+          ))}
         </div>
         <button
           onClick={handleNextSlide}

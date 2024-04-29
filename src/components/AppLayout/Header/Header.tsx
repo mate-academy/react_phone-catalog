@@ -84,18 +84,42 @@ export const Header: React.FC = () => {
             <NavLink to="./favourites" className={getLinkClassRight}>
               <FaRegHeart className={style.navbar__rightMenu__item_icon} />
               {favourites.length !== 0 && (
-                <span className={style.navbar__rightMenu__item_count}>
-                  {favourites.length}
-                </span>
+                <div
+                  className={classNames({
+                    [style.navbar__rightMenu__item_container]:
+                      favourites.length,
+                  })}
+                >
+                  <span
+                    className={classNames({
+                      [style.navbar__rightMenu__item_container_count]:
+                        favourites.length,
+                    })}
+                  >
+                    {favourites.length}
+                  </span>
+                </div>
               )}
             </NavLink>
 
             <NavLink to="./cart" className={getLinkClassRight}>
               <FiShoppingBag className={style.navbar__rightMenu__item_icon} />
               {priceList.length !== 0 && (
-                <span className={style.navbar__rightMenu__item_count}>
-                  {priceList.length}
-                </span>
+                <div
+                  className={classNames({
+                    [style.navbar__rightMenu__item_container]:
+                      favourites.length,
+                  })}
+                >
+                  <span
+                    className={classNames({
+                      [style.navbar__rightMenu__item_container_count]:
+                        favourites.length,
+                    })}
+                  >
+                    {priceList.length}
+                  </span>
+                </div>
               )}
             </NavLink>
           </div>
