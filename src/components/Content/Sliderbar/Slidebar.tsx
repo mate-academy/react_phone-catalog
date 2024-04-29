@@ -33,9 +33,11 @@ export const Sliderbar = () => {
 
     setIsTransitioning(true);
     setTimeout(() => {
-      setIsTransitioning(false);
       setImgIndex(prevIndex => (prevIndex + 1) % banner.length);
-    }, 500);
+      setTimeout(() => {
+        setIsTransitioning(false);
+      }, 300);
+    }, 600);
   };
 
   const getClassIndecator = (e: string) =>
@@ -44,19 +46,11 @@ export const Sliderbar = () => {
   useEffect(() => {
     if (!intervalId) {
       const id = setInterval(() => {
-        setIsTransitioning(true);
-        const transitionTimeout = setTimeout(() => {
-          setIsTransitioning(false);
-          setImgIndex(prevIndex => {
-            return (prevIndex + 1) % banner.length;
-          });
-        }, 500);
-
         setIntervalId(+id);
+        handleNextSlide();
 
         return () => {
           clearInterval(id);
-          clearTimeout(transitionTimeout);
         };
       }, 5000);
     }

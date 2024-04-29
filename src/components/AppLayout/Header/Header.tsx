@@ -107,14 +107,13 @@ export const Header: React.FC = () => {
               {priceList.length !== 0 && (
                 <div
                   className={classNames({
-                    [style.navbar__rightMenu__item_container]:
-                      favourites.length,
+                    [style.navbar__rightMenu__item_container]: priceList.length,
                   })}
                 >
                   <span
                     className={classNames({
                       [style.navbar__rightMenu__item_container_count]:
-                        favourites.length,
+                        priceList.length,
                     })}
                   >
                     {priceList.length}
