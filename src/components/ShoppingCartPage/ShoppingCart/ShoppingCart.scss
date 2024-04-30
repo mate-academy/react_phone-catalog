@@ -1,0 +1,85 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.ShoppingCart {
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 16px;
+  width: 100%;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    flex-shrink: 2;
+    gap: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 109px;
+    }
+  }
+
+  &__button-remove {
+    background-color: transparent;
+    min-width: 9.33px;
+    min-height: 9.33px;
+    cursor: pointer;
+
+    @include hover(
+      background-image,
+      url(../../../styles/utils/icons/Close.svg)
+    );
+  }
+
+  &__image {
+    min-width: 80px;
+    height: 80px;
+    object-fit: contain;
+  }
+
+  &__title {
+    display: flex;
+  }
+
+  &__counter {
+    &--buttons {
+      display: flex;
+      flex-direction: row;
+      gap: 14px;
+      align-items: center;
+    }
+    &--button {
+      background-color: transparent;
+      cursor: pointer;
+
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      border: 1px solid;
+      border-radius: 48px;
+    }
+  }
+
+  &__price {
+    width: 63px;
+  }
+}

@@ -1,1 +1,50 @@
-// not empty
+@import './styles/utils/mixins';
+@import './styles/utils/vars';
+@import './styles/utils/extends';
+@import './styles/utils/icon';
+@import './styles/utils/resets';
+@import './styles/utils/typography';
+@import './styles/utils/buttons';
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.App {
+  // background-color: $color-hoverBG;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  transition: all 0.3s;
+
+  &.light {
+    background-color: $color-hoverBG;
+
+    @import './components/themes/light';
+  }
+
+  &.dark {
+    background-color: $color-black-dark;
+
+    @import './components/themes/dark';
+  }
+}
+
+.main {
+  &__content {
+    display: grid;
+
+    row-gap: 56px;
+    padding-block: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+      padding-block: 64px;
+    }
+
+    @include on-desktop {
+      row-gap: 80px;
+      padding-block: 80px;
+    }
+  }
+}

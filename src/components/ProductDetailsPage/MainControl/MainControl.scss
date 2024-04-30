@@ -1,0 +1,158 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.Main-Control {
+  &__bottom {
+    width: 100%;
+    gap: 0;
+    padding: 0;
+    border: none;
+
+    .productCard__price-block {
+      margin-bottom: 16px;
+    }
+
+    .productCard__buttons {
+      margin-bottom: 32px;
+    }
+
+    .productCard__specs {
+      border: none;
+    }
+  }
+}
+
+.select-capacity {
+  box-sizing: border-box;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  &__block {
+    display: flex;
+    flex-flow: row wrap;
+    gap: 8px;
+
+    &--button {
+      display: flex;
+      align-items: center;
+      height: 32px;
+      padding: 0 8px;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid;
+    }
+  }
+}
+
+.colors {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  margin-bottom: 24px;
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    &--flex {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &--colors {
+      box-sizing: border-box;
+      width: 32px;
+      height: 32px;
+      border-radius: 36px;
+      z-index: 222;
+      border: 1px solid;
+      position: relative;
+      cursor: pointer;
+
+      &--color {
+        border-radius: 36px;
+        position: absolute;
+        inset: 0;
+        border: 2px solid;
+      }
+    }
+  }
+}
+
+.midnight {
+  background-color: #011635;
+}
+
+.yellow {
+  background-color: #ffe889;
+}
+
+.purple {
+  background-color: #bfb6ee;
+}
+
+.spaceblack {
+  background-color: #333334;
+}
+
+.gold {
+  background-color: #ffe9cd;
+}
+
+.graphite {
+  background-color: #535358;
+}
+
+.white {
+  background-color: #fff;
+}
+
+.black {
+  background-color: #2b2727;
+}
+
+.red {
+  background-color: #e63c3c;
+}
+
+.blue {
+  background-color: #205d7a;
+}
+
+.sierrablue {
+  background-color: #7fbcdd;
+}
+
+.pink {
+  background-color: #faded7;
+}
+
+.green {
+  background-color: #bbe7d4;
+}
+
+.midnightgreen {
+  background-color: #566159;
+}
+
+.silver {
+  background-color: #eceae4;
+}
+
+.spacegray {
+  background-color: #595755;
+}
+
+.coral {
+  background-color: #ff6452;
+}
+
+.rosegold {
+  background-color: #f2cac3;
+}

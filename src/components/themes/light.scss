@@ -1,0 +1,449 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.footer {
+  background-color: $color-white;
+  box-shadow: 0 -1px 0 0 $color-elements;
+
+  &__list {
+    &--link {
+      @include hover(color, $color-primary);
+    }
+  }
+
+  &__button {
+    background-color: inherit;
+    color: $color-secondary;
+
+    @include hover(color, $color-primary);
+
+    &--top {
+      @include hover(border-color, $color-primary);
+    }
+  }
+}
+
+.footer__button:hover {
+  .footer__button--top {
+    border-color: $color-primary;
+  }
+}
+
+.homePage {
+  background-color: $color-hoverBG;
+}
+
+.ShopByCategory {
+  &__title {
+    color: $color-primary;
+  }
+
+  &__block {
+    &--title {
+      color: $color-primary;
+    }
+
+    &--models {
+      color: $color-secondary;
+    }
+  }
+}
+
+.block {
+  &__phones {
+    background-color: $color-category-phones;
+  }
+  &__tablets {
+    background-color: $color-category-tablets;
+  }
+  &__accessories {
+    background-color: $color-category-accessories;
+  }
+}
+
+.navbar__mobile {
+  background-color: $color-white;
+
+  &--menu {
+    box-shadow: 0 1px 0 0 $color-elements;
+  }
+
+  &--buttons {
+    box-shadow: 0 -1px 0 0 $color-elements;
+  }
+}
+
+.navbar {
+  background-color: $color-white;
+  box-shadow: 0 1px 0 0 $color-elements;
+
+  &__menu {
+    &--link {
+      &::after {
+        background-color: $color-primary;
+      }
+
+      &:hover::after {
+        color: $color-primary;
+      }
+
+      @include hover(color, $color-primary);
+    }
+  }
+
+  &__button {
+    box-shadow: -1px 0 0 0 $color-elements;
+    background-color: $color-white;
+  }
+}
+
+.active {
+  color: $color-primary;
+  &::after {
+    background-color: $color-primary;
+  }
+}
+
+.counter {
+  color: $color-white;
+  background-color: $color-accent;
+  border-color: $color-white;
+}
+
+.search {
+  color: $color-secondary;
+
+  @include hover(color, $color-primary);
+  &::placeholder {
+    color: $color-secondary;
+  }
+
+  &:focus::placeholder {
+    color: $color-primary;
+  }
+  &:hover::placeholder {
+    color: $color-primary;
+  }
+
+  &:focus {
+    color: $color-primary;
+  }
+}
+
+.productCard {
+  background-color: $color-white;
+
+  border-color: $color-elements;
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__price-block {
+    &--fullprice {
+      color: $color-secondary;
+
+      &::after {
+        background-color: $color-secondary;
+      }
+    }
+  }
+
+  &__specs {
+    border-top: 1px solid $color-elements;
+
+    &--spec {
+      &--text {
+        &-1 {
+          color: $color-secondary;
+        }
+        &-2 {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+.DetailsPage {
+  &__specs {
+    &-block {
+      &--text-block {
+        &--text {
+          color: $color-secondary;
+        }
+
+        &--text-2 {
+          color: $color-primary;
+        }
+      }
+    }
+  }
+}
+
+.line {
+  background-color: $color-elements;
+}
+
+.Main-Control {
+  &__bottom {
+    background-color: $color-hoverBG;
+  }
+}
+
+.select-capacity {
+  &__title {
+    color: $color-secondary;
+  }
+  &__block {
+    &--button {
+      color: $color-primary;
+      background-color: $color-hoverBG;
+      border-color: $color-icons;
+
+      @include hover(border-color, $color-primary);
+
+      &--active {
+        color: $color-white;
+        background-color: $color-primary;
+        border-color: $color-primary;
+      }
+    }
+  }
+}
+
+.colors {
+  &__id {
+    color: $color-icons;
+  }
+
+  &__block {
+    &--title {
+      color: $color-secondary;
+    }
+
+    &--colors {
+      border-color: $color-elements;
+
+      @include hover(border-color, $color-icons);
+
+      &--active {
+        border-color: $color-primary;
+
+        @include hover(border-color, $color-primary);
+      }
+
+      &--color {
+        border-color: $color-white;
+      }
+    }
+  }
+}
+
+.ProductsPage {
+  &__models-length {
+    color: $color-secondary;
+  }
+}
+
+.pagination {
+  &__item {
+    border-color: $color-elements;
+    background-color: $color-hoverBG;
+
+    @include hover(border-color, $color-primary);
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+      border-color: $color-primary;
+    }
+
+    &--prev {
+      border-color: $color-icons;
+    }
+
+    &--next {
+      border-color: $color-icons;
+    }
+  }
+}
+
+.disabled {
+  border-color: $color-elements;
+}
+
+.shoppingCart {
+  &__total {
+    border-color: $color-elements;
+    &--line {
+      background-color: $color-elements;
+    }
+  }
+}
+
+.modal {
+  background-color: #a5a5a556;
+  &__window {
+    background-color: $color-hoverBG;
+    border-color: $color-icons;
+    box-shadow: 0 33px 30px 0 #17203166;
+  }
+
+  &__buttons {
+    &--cancel {
+      background-color: $color-red;
+    }
+
+    &--confirm {
+      background-color: $color-green;
+    }
+  }
+}
+
+.ShoppingCart {
+  background-color: $color-white;
+  border-color: $color-elements;
+
+  &__button-remove {
+    background-color: transparent;
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__counter {
+    &--button {
+      border-color: $color-icons;
+
+      @include hover(border-color, $color-primary);
+    }
+  }
+}
+
+.button--disabled {
+  border-color: $color-elements;
+}
+
+.secondSlider {
+  &__block {
+    border-color: $color-border-img;
+
+    @include hover(border-color, $color-primary);
+  }
+
+  .slick-current {
+    .secondSlider__block {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.banner__slider {
+  .slick-prev,
+  .slick-next {
+    border-color: $color-icons;
+    background-color: $color-white;
+
+    @include hover(border-color, $color-primary);
+  }
+
+  .slick-dots {
+    li {
+      button {
+        &::before {
+          background-color: $color-elements;
+        }
+      }
+
+      &.slick-active {
+        button {
+          &::before {
+            background-color: $color-primary;
+          }
+        }
+      }
+    }
+  }
+}
+
+.custom-select {
+  border-color: $color-icons;
+  background-color: $color-white;
+
+  @include hover(border-color, $color-secondary);
+
+  &--open {
+    border-color: $color-primary;
+
+    @include hover(border-color, $color-primary);
+  }
+
+  &__options {
+    background-color: $color-white;
+    &--open {
+      border-color: $color-elements;
+    }
+  }
+
+  &__option {
+    color: $color-secondary;
+
+    @include hover(color, $color-primary);
+    @include hover(background-color, $color-hoverBG);
+  }
+}
+
+.path {
+  &__current-link {
+    color: $color-secondary;
+  }
+
+  &__current-name {
+    color: $color-secondary;
+  }
+
+  &__back {
+    background-color: transparent;
+    &--text {
+      color: $color-secondary;
+    }
+
+    &:hover {
+      .path__back--text {
+        color: $color-primary;
+      }
+    }
+  }
+}
+
+.color-primary {
+  color: $color-primary;
+}
+
+.button-primary {
+  color: $color-white;
+  background-color: $color-accent;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &--selected {
+    color: $color-accent;
+    background-color: $color-white;
+    border-color: $color-elements;
+  }
+}
+
+.button-favourite {
+  border-color: $color-icons;
+  background-color: $color-white;
+
+  @include hover(border-color, $color-primary);
+}
+
+.button-slider {
+  border-color: $color-icons;
+  background-color: $color-white;
+
+  @include hover(border-color, $color-primary);
+}

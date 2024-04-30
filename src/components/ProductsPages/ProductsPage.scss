@@ -1,0 +1,56 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.ProductsPage {
+  width: 100%;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__models-length {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__selectors {
+    @include page-grid;
+
+    width: 100%;
+
+    &--sort-by {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--items-on-page {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      width: 100%;
+      grid-column: span 2;
+
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+
+    &--selector-items-on-page {
+      width: 100%;
+    }
+  }
+
+  .modal__buttons--confirm {
+    border-radius: 48px;
+  }
+}
