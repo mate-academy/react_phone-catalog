@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import './ShoppingCartPage.scss';
 import { PathBlock } from '../utils/Path';
@@ -32,6 +32,10 @@ export const ShoppingCartPage: React.FC = () => {
     handleClearCart();
     setShowModal(false);
   };
+
+  useEffect(() => {
+    document.title = 'Cart';
+  }, []);
 
   return (
     <div className="container">

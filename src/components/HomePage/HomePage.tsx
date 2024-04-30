@@ -15,6 +15,7 @@ export const HomePage: React.FC = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
+    document.title = 'Home';
     setIsLoading(true);
 
     getProducts()

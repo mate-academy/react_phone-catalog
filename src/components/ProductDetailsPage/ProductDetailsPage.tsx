@@ -57,6 +57,10 @@ export const ProductDetailsPage: React.FC = () => {
     }
   }, [itemId]);
 
+  useEffect(() => {
+    document.title = product?.name || 'Product details';
+  }, [product]);
+
   if (!isProductFound) {
     return <h1 style={{ marginTop: '20px' }}>{t('not found')}</h1>;
   }

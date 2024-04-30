@@ -22,6 +22,8 @@ export const ProductsPage: React.FC = () => {
   const [isEmptyProduct, setIsEmptyProducts] = useState(false);
 
   useEffect(() => {
+    document.title = category || 'Products';
+
     setIsLoading(true);
     setIsLoadingError(false);
     setIsEmptyProducts(false);

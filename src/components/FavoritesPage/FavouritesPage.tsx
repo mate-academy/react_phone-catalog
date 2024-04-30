@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { PathBlock } from '../utils/Path';
 import './FavouritesPage.scss';
 import { useDeviceContext } from '../DeviceContext/DeviceContext';
@@ -8,6 +8,10 @@ import { useTranslation } from 'react-i18next';
 export const FavouritesPage: React.FC = () => {
   const { favourites } = useDeviceContext();
   const { t } = useTranslation();
+
+  useEffect(() => {
+    document.title = 'Favourites';
+  }, []);
 
   return (
     <div className="container">
