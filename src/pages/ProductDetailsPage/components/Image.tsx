@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import cn from 'classnames';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
@@ -6,10 +6,18 @@ const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     'details__img--img-active': isActive,
   });
 
-const Image: React.FC = () => {
-  const [currentImage, setCurrentImage] = useState(
-    './img/phones/apple-iphone-11-pro/gold/00.webp',
-  );
+type Props = {
+  src: string[];
+};
+
+const Image: React.FC<Props> = ({ src }) => {
+  const [currentImage, setCurrentImage] = useState<string | null>(null);
+
+  useEffect(() => {
+    if (src && src.length > 0) {
+      setCurrentImage(src[0]);
+    }
+  }, [src]);
 
   const changeImage = (newImage: string) => {
     setCurrentImage(newImage);
@@ -17,68 +25,24 @@ const Image: React.FC = () => {
 
   return (
     <>
-      <img src={currentImage} alt="apple" className="details__img" />
+      {currentImage && (
+        <img src={currentImage} alt="apple" className="details__img" />
+      )}
 
       <div className="details__block">
-        <img
-          src="./img/phones/apple-iphone-11-pro/gold/01.webp"
-          alt="apple"
-          className={getLinkClass({
-            isActive:
-              currentImage === './img/phones/apple-iphone-11-pro/gold/01.webp',
-          })}
-          onClick={() =>
-            changeImage('./img/phones/apple-iphone-11-pro/gold/01.webp')
-          }
-        />
-
-        <img
-          src="./img/phones/apple-iphone-11-pro/gold/02.webp"
-          alt="apple"
-          className={getLinkClass({
-            isActive:
-              currentImage === './img/phones/apple-iphone-11-pro/gold/02.webp',
-          })}
-          onClick={() =>
-            changeImage('./img/phones/apple-iphone-11-pro/gold/02.webp')
-          }
-        />
-
-        <img
-          src="./img/phones/apple-iphone-11-pro/gold/02.webp"
-          alt="apple"
-          className={getLinkClass({
-            isActive:
-              currentImage === './img/phones/apple-iphone-11-pro/gold/02.webp',
-          })}
-          onClick={() =>
-            changeImage('./img/phones/apple-iphone-11-pro/gold/02.webp')
-          }
-        />
-
-        <img
-          src="./img/phones/apple-iphone-11-pro/gold/00.webp"
-          alt="apple"
-          className={getLinkClass({
-            isActive:
-              currentImage === './img/phones/apple-iphone-11-pro/gold/00.webp',
-          })}
-          onClick={() =>
-            changeImage('./img/phones/apple-iphone-11-pro/gold/00.webp')
-          }
-        />
-
-        <img
-          src="./img/phones/apple-iphone-11-pro/gold/00.webp"
-          alt="apple"
-          className={getLinkClass({
-            isActive:
-              currentImage === './img/phones/apple-iphone-11-pro/gold/00.webp',
-          })}
-          onClick={() =>
-            changeImage('./img/phones/apple-iphone-11-pro/gold/00.webp')
-          }
-        />
+        {src.map((image, index) => {
+          return (
+            <img
+              key={index}
+              src={image}
+              alt="apple"
+              className={getLinkClass({
+                isActive: currentImage === image,
+              })}
+              onClick={() => changeImage(image)}
+            />
+          );
+        })}
       </div>
     </>
   );

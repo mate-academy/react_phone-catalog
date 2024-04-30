@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useEffect, useState } from 'react';
 import PicturesSlider from '../../components/PicturesSlider/PicturesSlider';
 import ProductsList from '../../components/ProductsList/ProductsList';
-import HotPrices from '../../components/ProductSlider/HotPrices';
+import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import { Picture } from '../../types/Picture';
 import { Product } from '../../types/Product';
 import { getHotProduct, getNewProduct } from '../../helpers/helpers';
@@ -44,15 +45,17 @@ const HomePage: React.FC = () => {
   return (
     <main className="main">
       <div className="container">
-        <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+        {isLoading && (
+          <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+        )}
 
         <PicturesSlider picture={picture} />
 
-        <HotPrices title={`Brand new models`} product={newProduct} />
+        <ProductSlider title={`Brand new models`} product={newProduct} />
 
         <ProductsList />
 
-        <HotPrices title={`Hot prices`} product={hotProduct} />
+        <ProductSlider title={`Hot prices`} product={hotProduct} />
       </div>
     </main>
   );

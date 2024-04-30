@@ -4,15 +4,17 @@ import {
   ButtonCartActive,
   ButtonCartDelete,
   ButtonCartDisabled,
-  ButtonsAddToCart,
+  ButtonsCheckout,
 } from '../../components/Buttons/Button';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 const CartPage: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
     <div className="container">
       <section className="cart">
-        <Link to="/back" className="cart__back">
+        <Link to="/back" className="cart__back" onClick={() => navigate(-1)}>
           <ArrowLeft />
           Back
         </Link>
@@ -24,14 +26,10 @@ const CartPage: React.FC = () => {
             <div className="cart__product-top">
               <ButtonCartDelete />
 
-              <img
-                src="./img/phones/apple-iphone-11-pro/gold/00.webp"
-                alt="iphone"
-                className="cart__product-img"
-              />
+              <img src="./" alt="phone" className="cart__product-img" />
 
               <span className="cart__product-title">
-                Apple iPhone 14 Pro 128GB Silver (MQ023)
+                Aplle androind 2013 xpssace
               </span>
             </div>
 
@@ -42,7 +40,7 @@ const CartPage: React.FC = () => {
                 <ButtonCartActive />
               </div>
 
-              <div className="cart__product-price">$999</div>
+              <div className="cart__product-price">$438948</div>
             </div>
           </div>
 
@@ -52,7 +50,7 @@ const CartPage: React.FC = () => {
 
             <span className="cart__total-border"></span>
 
-            <ButtonsAddToCart title={`Checkout`} size={`large`} />
+            <ButtonsCheckout />
           </div>
         </div>
       </section>

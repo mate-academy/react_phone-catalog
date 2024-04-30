@@ -5,6 +5,8 @@ import useLocalStorage from '../hooks/useLocalStorage';
 type ProductContextType = {
   favourites: Product[];
   setFavourites: (product: Product[]) => void;
+  cart: Product[];
+  setCart: (product: Product[]) => void;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -18,12 +20,15 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
     'favourites',
     [],
   );
+  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
 
   return (
     <ProductContext.Provider
       value={{
         favourites,
         setFavourites,
+        cart,
+        setCart,
       }}
     >
       {children}

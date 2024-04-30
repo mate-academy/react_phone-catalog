@@ -56,6 +56,10 @@
 
   &__button {
     transform: rotate(271deg);
-    border-color: $icons-color;;
+    border-color: $icons-color;
+
+    &-svg path {
+      fill: $elipse-color
+    }
   }
 }

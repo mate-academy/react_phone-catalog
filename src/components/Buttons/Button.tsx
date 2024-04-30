@@ -1,17 +1,54 @@
 /* eslint-disable react/no-unknown-property */
 /* eslint-disable max-len */
 import React from 'react';
+import { useProduct } from '../../store/Store';
+import { Product } from '../../types/Product';
 
 type PropsButtonsAddToCart = {
   title: string;
   size: 'small' | 'large';
+  product: Product;
+};
+
+type PropsFavourites = {
+  product: Product;
+};
+
+export const ButtonsDisabled: React.FC = () => {
+  return (
+    <button className="button">
+      <svg
+        width="32"
+        height="32"
+        viewBox="0 0 32 32"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+        className="button__disabled"
+      >
+        <rect
+          x="0.5"
+          y="0.5"
+          width="31"
+          height="31"
+          rx="15.5"
+          stroke="#E2E6E9"
+        />
+        <path
+          fill-rule="evenodd"
+          clip-rule="evenodd"
+          d="M13.5288 11.5286C13.7891 11.2683 14.2112 11.2683 14.4716 11.5286L18.4716 15.5286C18.7319 15.789 18.7319 16.2111 18.4716 16.4714L14.4716 20.4714C14.2112 20.7318 13.7891 20.7318 13.5288 20.4714C13.2684 20.2111 13.2684 19.789 13.5288 19.5286L17.0574 16L13.5288 12.4714C13.2684 12.2111 13.2684 11.789 13.5288 11.5286Z"
+          fill="#B4BDC4"
+        />
+      </svg>
+    </button>
+  );
 };
 
 export const ButtonsLeft: React.FC = () => {
   return (
-    <button className="button button--disabled">
+    <button className="button">
       <svg
-        className="button__svg button__svg--disabled"
+        className="button__svg"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -31,9 +68,9 @@ export const ButtonsLeft: React.FC = () => {
 
 export const ButtonsRight: React.FC = () => {
   return (
-    <button className="button button--default">
+    <button className="button">
       <svg
-        className="button__svg button__svg--default"
+        className="button__svg"
         width="16"
         height="16"
         viewBox="0 0 16 16"
@@ -44,7 +81,7 @@ export const ButtonsRight: React.FC = () => {
           fill-rule="evenodd"
           clip-rule="evenodd"
           d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z"
-          fill="#E2E6E9"
+          fill="#0F0F11"
         />
       </svg>
     </button>
@@ -76,41 +113,126 @@ export const RotatedButton: React.FC = () => {
 export const ButtonsAddToCart: React.FC<PropsButtonsAddToCart> = ({
   title,
   size = 'small',
+  product,
 }) => {
+  const { cart, setCart } = useProduct();
+
   const buttonClass =
     size === 'large' ? 'button__cart--large' : 'button__cart--small';
 
-  return <button className={`button__cart ${buttonClass}`}>{title}</button>;
+  const isCart = cart.some(item => item.id === product.id);
+
+  const handleAddToCart = (currentProduct: Product) => {
+    let newProduct: Product[];
+
+    if (cart.some(item => item.id === currentProduct.id)) {
+      newProduct = cart.filter(prevCart => prevCart.id !== currentProduct.id);
+    } else {
+      newProduct = [currentProduct, ...cart];
+    }
+
+    setCart(newProduct);
+  };
+
+  return (
+    <>
+      {isCart ? (
+        <button
+          className={`button__cart ${buttonClass} ${isCart ? 'button__cart-active' : ''}`}
+          onClick={() => handleAddToCart(product)}
+        >
+          Added to card
+        </button>
+      ) : (
+        <button
+          className={`button__cart ${buttonClass}`}
+          onClick={() => handleAddToCart(product)}
+        >
+          {title}
+        </button>
+      )}
+    </>
+  );
 };
 
-export const ButtonsFavourites: React.FC = () => {
+export const ButtonsFavourites: React.FC<PropsFavourites> = ({ product }) => {
+  const { favourites, setFavourites } = useProduct();
+
+  const isFavourites = favourites.some(item => item.id === product.id);
+
+  const handleAddToFavourites = (currentProduct: Product) => {
+    let newProduct: Product[];
+
+    if (favourites.some(item => item.id === currentProduct.id)) {
+      newProduct = favourites.filter(
+        prevFavourites => prevFavourites.id !== currentProduct.id,
+      );
+    } else {
+      newProduct = [currentProduct, ...favourites];
+    }
+
+    setFavourites(newProduct);
+  };
+
   return (
-    <button className="button__favourites">
-      <svg
-        className="button__favourites-svg"
-        width="40"
-        height="40"
-        viewBox="0 0 40 40"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="0.5"
-          y="0.5"
-          width="39"
-          height="39"
-          rx="19.5"
-          stroke="#B4BDC4"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M21.6285 13.6314C22.1584 13.4118 22.7264 13.2988 23.3 13.2988C23.8737 13.2988 24.4416 13.4118 24.9716 13.6314C25.5015 13.8509 25.983 14.1728 26.3885 14.5785C26.7941 14.9839 27.1158 15.4653 27.3353 15.9951C27.5549 16.5251 27.6679 17.093 27.6679 17.6667C27.6679 18.2403 27.5549 18.8083 27.3353 19.3382C27.1158 19.8681 26.794 20.3495 26.3884 20.755C26.3883 20.755 26.3884 20.7549 26.3884 20.755L20.495 26.6483C20.2217 26.9217 19.7784 26.9217 19.5051 26.6483L13.6117 20.755C12.7927 19.9359 12.3325 18.825 12.3325 17.6667C12.3325 16.5083 12.7927 15.3974 13.6117 14.5784C14.4308 13.7593 15.5417 13.2991 16.7 13.2991C17.8584 13.2991 18.9693 13.7593 19.7884 14.5784L20 14.79L20.2116 14.5785C20.2116 14.5785 20.2117 14.5784 20.2116 14.5785C20.6171 14.1728 21.0986 13.8509 21.6285 13.6314ZM25.3983 15.5682C25.1228 15.2926 24.7957 15.0739 24.4357 14.9247C24.0756 14.7756 23.6898 14.6988 23.3 14.6988C22.9103 14.6988 22.5245 14.7756 22.1644 14.9247C21.8044 15.0739 21.4773 15.2926 21.2018 15.5682L20.495 16.275C20.2217 16.5483 19.7784 16.5483 19.5051 16.275L18.7984 15.5683C18.2419 15.0118 17.4871 14.6991 16.7 14.6991C15.913 14.6991 15.1582 15.0118 14.6017 15.5683C14.0452 16.1248 13.7325 16.8796 13.7325 17.6667C13.7325 18.4537 14.0452 19.2085 14.6017 19.765L20 25.1634L25.3984 19.765C25.674 19.4895 25.8928 19.1623 26.042 18.8023C26.1911 18.4423 26.2679 18.0564 26.2679 17.6667C26.2679 17.277 26.1911 16.8911 26.042 16.531C25.8928 16.171 25.6739 15.8437 25.3983 15.5682Z"
-          fill="#0F0F11"
-        />
-      </svg>
+    <button
+      className="button__favourites"
+      onClick={() => handleAddToFavourites(product)}
+    >
+      {isFavourites ? (
+        <svg
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.5"
+            y="0.5"
+            width="39"
+            height="39"
+            rx="19.5"
+            stroke="#E2E6E9"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M23.3 13.2988C22.7264 13.2988 22.1584 13.4118 21.6285 13.6314C21.0986 13.8509 20.6171 14.1728 20.2116 14.5785L20 14.7901L19.7884 14.5784C18.9693 13.7593 17.8584 13.2991 16.7 13.2991C15.5417 13.2991 14.4308 13.7593 13.6117 14.5784C12.7927 15.3974 12.3325 16.5083 12.3325 17.6667C12.3325 18.825 12.7927 19.9359 13.6117 20.755L19.5051 26.6483C19.7784 26.9217 20.2217 26.9217 20.495 26.6483L26.3884 20.755C26.794 20.3495 27.1158 19.8681 27.3353 19.3382C27.5549 18.8083 27.6679 18.2403 27.6679 17.6667C27.6679 17.0931 27.5549 16.5251 27.3353 15.9951C27.1158 15.4653 26.7941 14.9839 26.3885 14.5785C25.983 14.1728 25.5015 13.8509 24.9716 13.6314C24.4416 13.4118 23.8737 13.2988 23.3 13.2988Z"
+            fill="#F4BA47"
+          />
+        </svg>
+      ) : (
+        <svg
+          className="button__favourites-svg"
+          width="40"
+          height="40"
+          viewBox="0 0 40 40"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <rect
+            x="0.5"
+            y="0.5"
+            width="39"
+            height="39"
+            rx="19.5"
+            stroke="#B4BDC4"
+          />
+          <path
+            fill-rule="evenodd"
+            clip-rule="evenodd"
+            d="M21.6285 13.6314C22.1584 13.4118 22.7264 13.2988 23.3 13.2988C23.8737 13.2988 24.4416 13.4118 24.9716 13.6314C25.5015 13.8509 25.983 14.1728 26.3885 14.5785C26.7941 14.9839 27.1158 15.4653 27.3353 15.9951C27.5549 16.5251 27.6679 17.093 27.6679 17.6667C27.6679 18.2403 27.5549 18.8083 27.3353 19.3382C27.1158 19.8681 26.794 20.3495 26.3884 20.755C26.3883 20.755 26.3884 20.7549 26.3884 20.755L20.495 26.6483C20.2217 26.9217 19.7784 26.9217 19.5051 26.6483L13.6117 20.755C12.7927 19.9359 12.3325 18.825 12.3325 17.6667C12.3325 16.5083 12.7927 15.3974 13.6117 14.5784C14.4308 13.7593 15.5417 13.2991 16.7 13.2991C17.8584 13.2991 18.9693 13.7593 19.7884 14.5784L20 14.79L20.2116 14.5785C20.2116 14.5785 20.2117 14.5784 20.2116 14.5785C20.6171 14.1728 21.0986 13.8509 21.6285 13.6314ZM25.3983 15.5682C25.1228 15.2926 24.7957 15.0739 24.4357 14.9247C24.0756 14.7756 23.6898 14.6988 23.3 14.6988C22.9103 14.6988 22.5245 14.7756 22.1644 14.9247C21.8044 15.0739 21.4773 15.2926 21.2018 15.5682L20.495 16.275C20.2217 16.5483 19.7784 16.5483 19.5051 16.275L18.7984 15.5683C18.2419 15.0118 17.4871 14.6991 16.7 14.6991C15.913 14.6991 15.1582 15.0118 14.6017 15.5683C14.0452 16.1248 13.7325 16.8796 13.7325 17.6667C13.7325 18.4537 14.0452 19.2085 14.6017 19.765L20 25.1634L25.3984 19.765C25.674 19.4895 25.8928 19.1623 26.042 18.8023C26.1911 18.4423 26.2679 18.0564 26.2679 17.6667C26.2679 17.277 26.1911 16.8911 26.042 16.531C25.8928 16.171 25.6739 15.8437 25.3983 15.5682Z"
+            fill="#0F0F11"
+          />
+        </svg>
+      )}
     </button>
   );
+};
+
+export const ButtonsCheckout: React.FC = () => {
+  return <button className="button__cart button__cart--large">Checkout</button>;
 };
 
 export const ArrowRight: React.FC = () => {

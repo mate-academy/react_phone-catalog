@@ -160,9 +160,6 @@
       font-weight: 600;
       line-height: 15.34px;
       color: $secondary-color;
-
-      @include onTable {
-      }
     }
 
     &-div {
@@ -175,7 +172,7 @@
         border: 1px solid #B4BDC3;
       }
 
-      &:active {
+      &-active {
         border-color: $elipse-color;
       }
     }
@@ -183,7 +180,6 @@
     &-btn {
       width: 30px;
       height: 30px;
-      background-color: #FCDBC1;
       border-radius: 50%;
       border: 2px solid #FFFFFF;
     }
@@ -219,10 +215,15 @@
       border: 1px solid #B4BDC3;
       border-radius: 4px;
 
-      &:active {
+      &-active {
         background-color: $elipse-color;
         color: #fff;
       }
+    }
+
+    &-block {
+      display: flex;
+      gap: 8px;
     }
 
     &-label {

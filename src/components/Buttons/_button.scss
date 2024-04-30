@@ -13,8 +13,8 @@
     border-color: $elipse-color;
   }
 
-  &--disabled {
-    border-color: $elements-color;
+  &__disabled {
+    transform: rotate(180deg);
   }
 
   &__svg {
@@ -22,14 +22,6 @@
     align-items: center;
     justify-content: center;
     padding: 8px;
-
-    &--default path {
-      fill: $elipse-color;
-    }
-  
-    &--disabled {
-      fill: $icons-color;
-    }
   }
 
   &__cart {
@@ -46,7 +38,7 @@
       box-shadow: 0px 3px 13px 0px #17203166;
     }
 
-    &:active {
+    &-active {
       background-color: transparent;
       border: 1px solid #E2E6E9;
       color: $buttons-card;

@@ -1,15 +1,23 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
 
-export const App: React.FC = () => (
-  <div className="App">
-    <Header />
+export const App: React.FC = () => {
+  const [isOpen, setIsOpen] = useState(true);
 
-    <Outlet />
+  return (
+    <div className="App">
+      <Header setIsOpen={setIsOpen} isOpen={isOpen} />
 
-    <Footer />
-  </div>
-);
+      {isOpen && (
+        <>
+          <Outlet />
+
+          <Footer />
+        </>
+      )}
+    </div>
+  );
+};

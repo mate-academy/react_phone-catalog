@@ -1,51 +1,138 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import cn from 'classnames';
 import NavMain from '../../components/NavMain/NavMain';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import {
   ArrowLeft,
   ButtonsAddToCart,
   ButtonsFavourites,
 } from '../../components/Buttons/Button';
 import { ButtonCapcity } from './components/ButtonCapacity';
-import HotPrices from '../../components/ProductSlider/HotPrices';
+import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import Image from './components/Image';
+import { ProductDetails } from '../../types/ProductDetails';
+import {
+  getAllProudct,
+  getColorAndCapacity,
+  getProductDetails,
+  getSuggestedProducts,
+} from '../../helpers/helpers';
+import { Product } from '../../types/Product';
+import { uniqId } from '../../helpers/uniqId';
+import { colorMap } from '../../utils/coloMap';
 
 const ProductDetailsPage: React.FC = () => {
+  const { productId } = useParams();
+
+  const [details, setDetails] = useState<ProductDetails | null>(null);
+  const [product, setProduct] = useState<Product>();
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  const navigate = useNavigate();
+
+  const handleChange = async (color: string, capacity: string) => {
+    if (!details || !details.category || !details.namespaceId) {
+      return;
+    }
+
+    const newProduct = await getColorAndCapacity(
+      details?.category,
+      details?.namespaceId,
+      color,
+      capacity,
+    );
+
+    if (newProduct) {
+      navigate(`/products/${newProduct}`);
+    }
+  };
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const allProducts = await getAllProudct();
+        const productFind = allProducts.find(item => item.itemId === productId);
+
+        setProduct(productFind);
+
+        const interestProduct: Product[] = await getSuggestedProducts();
+
+        setSuggestedProducts(interestProduct);
+
+        if (productId && productFind) {
+          const detailsFind = await getProductDetails(
+            productId,
+            productFind?.category,
+          );
+
+          setDetails(detailsFind);
+        } else {
+          setDetails(null);
+        }
+      } finally {
+      }
+    };
+
+    if (productId) {
+      fetchData();
+    }
+  }, [productId]);
+
+  if (!details || !product) {
+    return <div>No product found or failed to load product details.</div>;
+  }
+
   return (
     <div className="details container">
-      <NavMain />
+      <NavMain
+        category={
+          details?.category
+            ? details.category.charAt(0).toUpperCase() +
+              details.category.slice(1)
+            : ''
+        }
+      />
 
       <Link to="/phones" className="details__back">
         <ArrowLeft />
         Back
       </Link>
 
-      <h2 className="details__title">
-        Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-      </h2>
+      <h2 className="details__title">{details?.name}</h2>
 
-      <Image />
+      <Image src={details?.images || []} />
 
       <div className="details__temp">
         <div className="details__temp-color">
           <label htmlFor="avia-color" className="details__color-label">
             Available colors
             <div className="details__color" id="avia-color">
-              <div className="details__color-div">
-                <button className="details__color-btn"></button>
-              </div>
+              {details?.colorsAvailable.map(color => {
+                if (colorMap.hasOwnProperty(color)) {
+                  const colorValue = colorMap[color];
 
-              <div className="details__color-div">
-                <button className="details__color-btn"></button>
-              </div>
-
-              <div className="details__color-div">
-                <button className="details__color-btn"></button>
-              </div>
+                  return (
+                    <div
+                      className={cn('details__color-div', {
+                        'details__color-div-active': details.color === color,
+                      })}
+                      key={color}
+                    >
+                      <button
+                        className="details__color-btn"
+                        style={{ backgroundColor: colorValue }}
+                        onClick={() => handleChange(color, details.capacity)}
+                      ></button>
+                    </div>
+                  );
+                } else {
+                  return null;
+                }
+              })}
             </div>
           </label>
 
-          <div className="details__id">{`ID: 43235342`}</div>
+          <div className="details__id">{`ID: ${uniqId(details?.id || '')}`}</div>
         </div>
 
         <div className="details__border"></div>
@@ -56,41 +143,57 @@ const ProductDetailsPage: React.FC = () => {
             className="details__capacity-label"
           >
             <span>Select capacity</span>
-            <ButtonCapcity />
+
+            <div className="details__capacity-block">
+              {details?.capacityAvailable.map(capacity => {
+                return (
+                  <ButtonCapcity
+                    capacity={capacity}
+                    key={capacity}
+                    currentCapcity={details.capacity}
+                    onClick={() => handleChange(details.color, capacity)}
+                  />
+                );
+              })}
+            </div>
           </label>
         </div>
 
         <div className="details__border"></div>
 
         <div className="details__price">
-          <strong>$799</strong>
-          <span className="details__price-span">$1999</span>
+          <strong>{`$${details?.priceDiscount}`}</strong>
+          <span className="details__price-span">{`$${details?.priceRegular}`}</span>
         </div>
 
         <div className="details__add">
-          <ButtonsAddToCart title={`Add to cart`} size={`small`} />
-          <ButtonsFavourites />
+          <ButtonsAddToCart
+            title={`Add to cart`}
+            size={`small`}
+            product={product}
+          />
+          <ButtonsFavourites product={product} />
         </div>
 
         <ul className="details__list ul">
           <li className="details__item ul__item">
             Screen
-            <span className="ul__item-span">6.5” OLED</span>
+            <span className="ul__item-span">{details?.screen}</span>
           </li>
 
           <li className="details__item ul__item">
             Resolution
-            <span className="ul__item-span">2688x1242</span>
+            <span className="ul__item-span">{details?.resolution}</span>
           </li>
 
           <li className="details__item ul__item">
             Processor
-            <span className="ul__item-span">Apple A12 Bionic</span>
+            <span className="ul__item-span">{details?.processor}</span>
           </li>
 
           <li className="details__item ul__item">
             RAM
-            <span className="ul__item-span">3 GB</span>
+            <span className="ul__item-span">{details?.ram}</span>
           </li>
         </ul>
       </div>
@@ -187,7 +290,7 @@ const ProductDetailsPage: React.FC = () => {
         </li>
       </ul>
 
-      <HotPrices title={`You may also like`} />
+      <ProductSlider title={`You may also like`} product={suggestedProducts} />
     </div>
   );
 };

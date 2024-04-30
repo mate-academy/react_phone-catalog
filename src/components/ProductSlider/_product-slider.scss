@@ -1,0 +1,22 @@
+.hot {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 16px;
+    overflow: hidden;
+  }
+}
