@@ -149,8 +149,8 @@ select {
     flex-direction: column;
     justify-content: center;
     grid-template-columns: repeat(4, 1fr);
-    grid-column-gap: 16px;
-    grid-row-gap: 40px;
+    gap: 16px;
+    row-gap: 40px;
 
     @include on-tablet {
       grid-template-columns: repeat(auto-fill, minmax(229px, 288px));
@@ -171,7 +171,7 @@ select {
 
     @include on-tablet {
       grid-column: auto;
-      height: 506px;
+      height: 512px;
     }
 
     &:hover {

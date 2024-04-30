@@ -19,7 +19,6 @@
 
   &__list {
     max-width: 100vw;
-    overflow: scroll;
     display: flex;
     gap: 16px;
     transition: transform 1s ease;
@@ -44,15 +43,6 @@
       padding-right: 0;
     }
   }
-
-  // &__name {
-  //   font-family: $mont;
-  //   font-size: 32px;
-  //   font-weight: 700;
-  //   line-height: 41px;
-  //   letter-spacing: -0.01em;
-  //   text-align: left;
-  // }
 
   &__arrows {
     display: flex;
