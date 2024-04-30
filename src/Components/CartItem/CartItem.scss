@@ -1,0 +1,66 @@
+@import '../../styles';
+
+.cart-item {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 16px;
+  border: 1px solid $colorElements;
+  border-radius: 16px;
+  background-color: $colorWhite;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    width: 100%;
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__image {
+    height: 100%;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__title {
+    flex-grow: 2;
+    @extend %body-text;
+  }
+
+  &__bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__count {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__count-text {
+    @extend %body-text;
+  }
+
+  &__price {
+    @extend %h3;
+  }
+}

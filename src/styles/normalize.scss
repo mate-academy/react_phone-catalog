@@ -1,0 +1,60 @@
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: Mont, Arial, sans-serif;
+  color: $colorPrimary;
+
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: $colorHover;
+}
+
+html,
+body,
+h1,
+h2,
+h3,
+h4,
+ul,
+li,
+p,
+button,
+input {
+  margin: 0;
+  padding: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-weight: normal;
+}
+
+button {
+  font: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  color: inherit;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  display: inline-flex;
+  text-decoration: none;
+  color: inherit;
+}
+
+[disabled] {
+  opacity: .6;
+  cursor: default;
+}

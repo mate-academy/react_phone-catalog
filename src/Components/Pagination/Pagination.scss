@@ -1,0 +1,14 @@
+@import '../../styles';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+}
