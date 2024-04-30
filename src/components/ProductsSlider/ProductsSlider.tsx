@@ -195,11 +195,11 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
           onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
             handleMouseDown(e)
           }
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
           onMouseMove={(e: React.MouseEvent<HTMLDivElement>) =>
             handleMouseMove(e)
           }
+          onMouseLeave={handleMouseLeave}
+          onMouseUp={handleMouseUp}
           ref={sliderRef}
         >
           {products.map(product => (
