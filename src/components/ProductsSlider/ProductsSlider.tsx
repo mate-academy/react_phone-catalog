@@ -76,49 +76,52 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
   const [isDown, setIsDown] = useState(false);
   const [startX, setStartX] = useState(0);
   const [scrollLeft, setScrollLeft] = useState(0);
-  const [mouseMoved, setMouseMoved] = useState(0);
 
   const sliderRef = useRef<HTMLDivElement>(null);
 
-  //#region mouse handlers
-  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
-    setIsDown(true);
-    setStartX(e.clientX - (sliderRef.current?.offsetLeft || 0));
-    setScrollLeft(sliderRef.current?.scrollLeft || 0);
-    setMouseMoved(0);
-  };
-
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-    if (!isDown || !sliderRef.current) {
-      return;
-    }
-
-    const currentMousePosition =
-      e.clientX - (sliderRef.current?.offsetLeft || 0);
-
-    setMouseMoved(currentMousePosition - startX);
-  };
-
-  const handleMouseLeave = () => {
-    setIsDown(false);
-  };
-
-  const handleMouseUp = () => {
-    setIsDown(false);
-  };
+  // #region mouse handlers
 
   useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (!isDown || !sliderRef.current) {
+        return;
+      }
+
+      const x = e.clientX - sliderRef.current.getBoundingClientRect().left;
+      const walk = (x - startX) * 2;
+
+      sliderRef.current.scrollLeft = scrollLeft - walk;
+    };
+
+    const handleMouseUp = () => {
+      setIsDown(false);
+    };
+
     if (sliderRef.current) {
-      sliderRef.current.scrollLeft = scrollLeft - mouseMoved;
+      sliderRef.current.addEventListener('mousemove', handleMouseMove);
+      sliderRef.current.addEventListener('mouseup', handleMouseUp);
     }
-  }, [scrollLeft, mouseMoved]);
+
+    return () => {
+      if (sliderRef.current) {
+        sliderRef.current.removeEventListener('mousemove', handleMouseMove);
+        sliderRef.current.removeEventListener('mouseup', handleMouseUp);
+      }
+    };
+  }, [isDown, startX, scrollLeft]);
+
+  const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
+    setIsDown(true);
+    setStartX(e.clientX - sliderRef.current!.getBoundingClientRect().left);
+    setScrollLeft(sliderRef.current!.scrollLeft);
+  };
 
   const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     const touch = e.touches[0];
 
     setIsDown(true);
-    setStartX(touch.clientX - (sliderRef.current?.offsetLeft || 0));
-    setScrollLeft(sliderRef.current?.scrollLeft || 0);
+    setStartX(touch.clientX - sliderRef.current!.getBoundingClientRect().left);
+    setScrollLeft(sliderRef.current!.scrollLeft);
   };
 
   const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -126,18 +129,12 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
       return;
     }
 
-    e.preventDefault();
     const touch = e.touches[0];
-    const x = touch.clientX - (sliderRef.current.offsetLeft || 0);
+    const x = touch.clientX - sliderRef.current.getBoundingClientRect().left;
     const walk = (x - startX) * 2;
 
     sliderRef.current.scrollLeft = scrollLeft - walk;
   };
-
-  const handleTouchEnd = () => {
-    setIsDown(false);
-  };
-
   //#endregion
 
   const goPrev = () => {
@@ -193,14 +190,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
           }}
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
-          onTouchEnd={handleTouchEnd}
           onMouseDown={(e: React.MouseEvent<HTMLDivElement>) =>
             handleMouseDown(e)
-          }
-          onMouseLeave={handleMouseLeave}
-          onMouseUp={handleMouseUp}
-          onMouseMove={(e: React.MouseEvent<HTMLDivElement>) =>
-            handleMouseMove(e)
           }
           ref={sliderRef}
         >

@@ -19,11 +19,15 @@
 
   &__list {
     max-width: 100vw;
-    overflow: visible;
+    overflow: scroll;
     display: flex;
     gap: 16px;
     transition: transform 1s ease;
     z-index: 2;
+
+    @include on-desktop {
+      overflow: visible;
+    }
   }
 
   &__top {
