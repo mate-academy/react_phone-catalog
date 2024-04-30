@@ -65,8 +65,13 @@
   &__items {
     display: flex;
     flex-direction: column;
+    flex-grow: 2;
     gap: 16px;
     margin-bottom: 32px;
+
+    @include onDesktop {
+      max-width: 752px;
+    }
   }
 
   &__info {
