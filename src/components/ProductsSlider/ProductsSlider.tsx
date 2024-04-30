@@ -83,7 +83,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
   // #region mouse handlers
   const handleMouseDown = (e: React.MouseEvent<HTMLDivElement>) => {
     setIsDown(true);
-    setStartX(e.clientX - (sliderRef.current?.offsetLeft || 0));
+
+    setStartX(e.clientX);
     setScrollLeft(sliderRef.current?.scrollLeft || 0);
     setMouseMoved(0);
   };
