@@ -25,7 +25,7 @@ export const HeaderSlider: React.FC = () => {
           <div className="slider-slide">
             <div className="slide-image">
               <img
-                src="../../../../public/img/bannerIphoneMobile.png"
+                src="img/bannerIphoneMobile.png"
                 className="slide-image--img"
                 alt="iPhone 14 Pro"
               />
@@ -34,7 +34,7 @@ export const HeaderSlider: React.FC = () => {
           <div className="slider-slide">
             <div className="slide-image">
               <img
-                src="../../../../public/img/bannerTabletMobile.png"
+                src="img/bannerTabletMobile.png"
                 className="slide-image--img"
                 alt="iPad Pro 11"
               />
@@ -43,7 +43,7 @@ export const HeaderSlider: React.FC = () => {
           <div className="slider-slide">
             <div className="slide-image">
               <img
-                src="../../../../public/img/bannerWatchMobile.png"
+                src="img/bannerWatchMobile.png"
                 className="slide-image--img"
                 alt="Apple Watch Ultra"
               />
@@ -56,26 +56,17 @@ export const HeaderSlider: React.FC = () => {
         <Slider {...sliderSettings} arrows>
           <div className="slider-slide">
             <div className="slide-image">
-              <img
-                src="../../../../public/img/bannerIphoneDesktop.png"
-                alt="iPhone 14 Pro"
-              />
+              <img src="img/bannerIphoneDesktop.png" alt="iPhone 14 Pro" />
             </div>
           </div>
           <div className="slider-slide">
             <div className="slide-image">
-              <img
-                src="../../../../public/img/bannerTabletDesktop.png"
-                alt="iPad Pro 11"
-              />
+              <img src="img/bannerTabletDesktop.png" alt="iPad Pro 11" />
             </div>
           </div>
           <div className="slider-slide">
             <div className="slide-image">
-              <img
-                src="../../../../public/img/bannerWatchDesktop.png"
-                alt="Apple Watch Ultra"
-              />
+              <img src="img/bannerWatchDesktop.png" alt="Apple Watch Ultra" />
             </div>
           </div>
         </Slider>

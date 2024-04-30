@@ -1,4 +1,4 @@
-const BASE_URL = '/api/';
+const BASE_URL = 'api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
