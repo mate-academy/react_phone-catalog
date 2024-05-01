@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
+// import Swiper from 'swiper';
 import cn from 'classnames';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard/ProductCard';
@@ -17,6 +18,14 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
 
   const [isTablet, setIsTablet] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
+
+  // useEffect(() => {
+  //   const swiper = new Swiper('.slider__list');
+
+  //   return () => {
+  //     swiper.destroy(true, true);
+  //   };
+  // }, []);
 
   useEffect(() => {
     const handleResize = () => {

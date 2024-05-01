@@ -46,9 +46,13 @@
   }
 
   &__arrows {
-    display: flex;
+    display: none;
     justify-content: space-between;
     gap: 16px;
+
+    @include on-desktop {
+      display: flex;
+    }
   }
 
   &__arrow {
