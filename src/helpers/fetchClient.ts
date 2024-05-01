@@ -1,4 +1,4 @@
-const BASE_URL = 'https://natalia-maryshko.github.io/react_phone-catalog/api/';
+const BASE_URL = 'https://natalia-maryshko.github.io/react_phone-catalog/api';
 
 // a promise resolved after a given delay
 function wait(delay: number) {
