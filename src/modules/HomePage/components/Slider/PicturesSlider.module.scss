@@ -1,41 +1,7 @@
 @import 'Styles/utils';
 
-.swiper-container {
-  @include flex-center;
-}
-
-.swiper {
-  margin: 0 16px;
-
-  // max-width: 1040px;
-  // height: 400px;
-
-  @media (max-width: 1199px) {
-    width: 100%;
-
-    // height: 189px;
-  }
-
-  @media (max-width: 639px) {
-    margin: 0;
-    padding: 0;
-    width: 100%;
-  }
-
-  img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    object-position: center;
-
-    @media (max-width: 639px) {
-      aspect-ratio: 1;
-    }
-  }
-}
-
-.swiper-button-prev,
-.swiper-button-next {
+.swiperButtonPrev,
+.swiperButtonNext {
   @include flex-center;
 
   position: relative;
@@ -53,21 +19,84 @@
 
   img {
     position: absolute;
+    top: 50%;
     width: 16px;
     height: 16px;
-    top: 50%;
     transform: translateY(-50%);
   }
 }
 
-.swiper-pagination-bullet {
-  display: inline-block;
-  width: 14px;
-  height: 4px;
-  background-color: $color-elements;
-  margin: 0 5px;
+.container {
+  @include flex-center;
+
+  position: relative;
+  align-items: flex-start;
+  width: 100%;
+  height: 432px;
+
+  @media (max-width: 1199px) {
+    height: 221px;
+  }
+
+  .swiper {
+    margin: 0 16px;
+    width: 100%;
+    height: 400px;
+
+    @media (max-width: 1199px) {
+      height: 189px;
+    }
+
+    @media (max-width: 639px) {
+      margin: 0;
+      padding: 0;
+      width: 100%;
+      height: 189px;
+      aspect-ratio: 1; // ???
+    }
+
+    .swiperSlide {
+      @include flex-center;
+
+      width: 100%;
+      height: 100%;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        object-position: center;
+
+        @media (max-width: 639px) {
+          aspect-ratio: 1; // ???
+        }
+      }
+    }
+  }
+
+  .swiperPagination{
+    bottom: 0;
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 24px;
+    z-index: 10;
+  }
+
+  .swiperPaginationBullet {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 14px;
+    height: 4px;
+    margin: 0 5px;
+    background-color: $color-elements;
+  }
+
+  .swiperPaginationBulletActive {
+    background-color: $color-white;
+  }
 }
 
-.swiper-pagination-bullet-active {
-  background-color: $color-white;
-}
