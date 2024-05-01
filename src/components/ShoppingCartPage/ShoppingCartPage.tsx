@@ -7,7 +7,7 @@ import { ShoppingCart } from './ShoppingCart/ShoppingCart';
 import { useTranslation } from 'react-i18next';
 
 export const ShoppingCartPage: React.FC = () => {
-  const { shoppingCart, handleClearCart } = useDeviceContext();
+  const { shoppingCart, handleClearCart, cartLength } = useDeviceContext();
   const [showModal, setShowModal] = useState(false);
   const { t } = useTranslation();
   const totalPrice = () => {
@@ -56,7 +56,7 @@ export const ShoppingCartPage: React.FC = () => {
               <div className="shoppingCart__total--text-block">
                 <h2 className="shoppingCart__total--price">{`$${totalPrice()}`}</h2>
                 <p className="shoppingCart__total--items body-text">
-                  {t('p.total', { length: shoppingCart.length })}
+                  {t('p.total', { length: cartLength() })}
                 </p>
               </div>
               <div className="shoppingCart__total--line"></div>

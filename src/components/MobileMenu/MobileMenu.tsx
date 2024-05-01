@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export const MobileMenu: React.FC = () => {
   const { isMenuOpen, setIsMenuOpen } = useMenuContext();
-  const { shoppingCart, favourites } = useDeviceContext();
+  const { shoppingCart, favourites, cartLength } = useDeviceContext();
   const { t } = useTranslation();
 
   const handleMenuClose = () => {
@@ -94,26 +94,28 @@ export const MobileMenu: React.FC = () => {
         </NavLink>
       </div>
       <div className="navbar__mobile--buttons">
-        <div
+        <Link
+          to="/favourites"
           className="navbar__button navbar__mobile--button"
           onClick={handleMenuClose}
         >
-          <Link to="/favourites" className="icon icon--favourites">
+          <div className="icon icon--favourites">
             {!!favourites.length && (
               <div className="counter body-text">{favourites.length}</div>
             )}
-          </Link>
-        </div>
-        <div
+          </div>
+        </Link>
+        <Link
+          to="/cart"
           className="navbar__button navbar__mobile--button"
           onClick={handleMenuClose}
         >
-          <Link to="/cart" className="icon icon--cart">
+          <div className="icon icon--cart">
             {!!shoppingCart.length && (
-              <div className="counter body-text">{shoppingCart.length}</div>
+              <div className="counter body-text">{cartLength()}</div>
             )}
-          </Link>
-        </div>
+          </div>
+        </Link>
       </div>
     </div>
   );

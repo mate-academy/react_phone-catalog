@@ -1,6 +1,33 @@
 @import '../../styles/utils/vars';
 @import '../../styles/utils/mixins';
 
+.button-primary {
+  color: $color-white;
+  background-color: $color-accent;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &--selected {
+    color: $color-accent;
+    background-color: $color-white;
+    border-color: $color-elements;
+  }
+}
+
+.button-favourite {
+  border-color: $color-icons;
+  background-color: $color-white;
+
+  @include hover(border-color, $color-primary);
+}
+
+.button-slider {
+  border-color: $color-icons;
+  background-color: $color-white;
+
+  @include hover(border-color, $color-primary);
+}
+
 .footer {
   background-color: $color-white;
   box-shadow: 0 -1px 0 0 $color-elements;
@@ -419,31 +446,4 @@
 
 .color-primary {
   color: $color-primary;
-}
-
-.button-primary {
-  color: $color-white;
-  background-color: $color-accent;
-
-  @include hover(box-shadow, 0 3px 13px 0 #17203166);
-
-  &--selected {
-    color: $color-accent;
-    background-color: $color-white;
-    border-color: $color-elements;
-  }
-}
-
-.button-favourite {
-  border-color: $color-icons;
-  background-color: $color-white;
-
-  @include hover(border-color, $color-primary);
-}
-
-.button-slider {
-  border-color: $color-icons;
-  background-color: $color-white;
-
-  @include hover(border-color, $color-primary);
 }

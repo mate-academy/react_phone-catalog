@@ -42,9 +42,6 @@ export const ShoppingCart: React.FC<Props> = ({ shopCart }) => {
                 'ShoppingCart__counter--button',
                 'ShoppingCart__counter--button--plus',
                 'icon icon--plus',
-                {
-                  'icon--plus--disabled button--disabled': count === 9,
-                },
               )}
               onClick={() => handleIncrement(shopCart)}
             ></button>

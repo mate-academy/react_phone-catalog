@@ -33,7 +33,7 @@ const setLanguage = () => {
 
 export const Navbar: React.FC = () => {
   const { setIsMenuOpen } = useMenuContext();
-  const { shoppingCart, favourites } = useDeviceContext();
+  const { shoppingCart, favourites, cartLength } = useDeviceContext();
   const { toggleTheme, theme } = useThemeContext();
 
   const [searchParams, setSearchParams] = useSearchParams();
@@ -196,7 +196,7 @@ export const Navbar: React.FC = () => {
           >
             <div className="icon icon--cart">
               {!!shoppingCart.length && (
-                <div className="counter">{shoppingCart.length}</div>
+                <div className="counter">{cartLength()}</div>
               )}
             </div>
           </Link>
@@ -226,7 +226,7 @@ export const Navbar: React.FC = () => {
               >
                 <div className="icon icon--cart">
                   {!!shoppingCart.length && (
-                    <div className="counter">{shoppingCart.length}</div>
+                    <div className="counter">{cartLength()}</div>
                   )}
                 </div>
               </Link>

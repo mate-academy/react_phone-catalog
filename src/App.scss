@@ -6,12 +6,12 @@
 @import './styles/utils/typography';
 @import './styles/utils/buttons';
 
-body.menu-open {
+.menu-open {
   overflow: hidden;
+  height: 100vh;
 }
 
 .App {
-  // background-color: $color-hoverBG;
   display: flex;
   flex-direction: column;
   min-height: 100vh;

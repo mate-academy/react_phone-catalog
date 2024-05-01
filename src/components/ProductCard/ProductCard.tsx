@@ -27,6 +27,7 @@ export const ProductCard: React.FC<Props> = ({
     addProductToCart,
     addProductToFavourites,
     removeProductFromFavourites,
+    removeProductFromCart,
   } = useDeviceContext();
   const location = useLocation();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
@@ -88,12 +89,14 @@ export const ProductCard: React.FC<Props> = ({
     };
 
     if (shoppingCart.find(cart => cart.id === newCartProduct.id)) {
-      setIsAddedToCart(true);
+      removeProductFromCart(id);
+      setIsAddedToCart(false);
 
       return;
     }
 
     addProductToCart(newCartProduct);
+    setIsAddedToCart(true);
   };
 
   const handleAddDeviceToFavourites = (newDevice: Device) => {

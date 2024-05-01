@@ -71,7 +71,7 @@ export const DeviceProvider: React.FC<Props> = ({ children }) => {
 
   const handleIncrement = (item: CartProps) => {
     const updatedCart = shoppingCart.map(cartItem => {
-      if (cartItem.id === item.id && cartItem.count < 9) {
+      if (cartItem.id === item.id) {
         return {
           ...cartItem,
           count: cartItem.count + 1,
@@ -103,6 +103,16 @@ export const DeviceProvider: React.FC<Props> = ({ children }) => {
     setShoppingCart([]);
   };
 
+  const cartLength = () => {
+    let total = 0;
+
+    shoppingCart.forEach(item => {
+      total += item.count;
+    });
+
+    return total;
+  };
+
   return (
     <DeviceContext.Provider
       value={{
@@ -115,6 +125,7 @@ export const DeviceProvider: React.FC<Props> = ({ children }) => {
         handleIncrement,
         handleDecrement,
         handleClearCart,
+        cartLength,
       }}
     >
       {children}
