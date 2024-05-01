@@ -98,6 +98,9 @@ export const ProductDetailsPage = () => {
 
   const suggestedProducts = getSuggestedProducts();
 
+  const normalizedColor =
+    product.color.length > 1 ? product.color.replace(' ', '-') : color;
+
   return (
     <div className="product">
       <Navigation />
@@ -124,11 +127,18 @@ export const ProductDetailsPage = () => {
             <p className="product__top-right-text">Available colors</p>
             <div className="product__top-right-list">
               {colorsAvailable.map(color => (
+                /* eslint-disable @typescript-eslint/indent */
                 <Link
                   to={
-                    product ? pathname.replace(product.color, color) : pathname
+                    product
+                      ? pathname.replace(
+                          normalizedColor,
+                          color.replace(' ', '-'),
+                        )
+                      : pathname
                   }
                   key={color}
+                  /* eslint-enable @typescript-eslint/indent */
                 >
                   <div
                     className={classNames('product__top-right-circle', {

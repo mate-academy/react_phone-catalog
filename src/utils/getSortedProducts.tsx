@@ -29,7 +29,7 @@ export const getSortedProducts = (
         return b[sortFilter].localeCompare(a[sortFilter]);
 
       case SortType.PRICE:
-        return b[sortFilter] - a[sortFilter];
+        return a[sortFilter] - b[sortFilter];
 
       default:
         return 0;

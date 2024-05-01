@@ -7,6 +7,7 @@ import { CartItem } from '../../types/cartItem';
 import classNames from 'classnames';
 import { ProductContext } from '../../context/productContext';
 import { Message } from '../../types/Message';
+import { BASE_URL } from '../../utils/fetchProducts';
 
 export const CartPage = () => {
   const { cartList, cartDispatch } = useContext(CartContext);
@@ -68,7 +69,7 @@ export const CartPage = () => {
                     <img
                       className="cart_item-photo-img"
                       alt={product.name}
-                      src={`../../${product.image}`}
+                      src={`${BASE_URL}${product.image}`}
                     />
                   </div>
                   <p className="cart_item-name">{product.name}</p>

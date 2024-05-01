@@ -10,7 +10,7 @@ import { CartPage } from './pages/CartPage';
 
 export const Root = () => {
   return (
-    <HashRouter >
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
