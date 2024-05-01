@@ -1,4 +1,4 @@
-const BASE_URL = '/api';
+const BASE_URL = 'api/';
 
 // a promise resolved after a given delay
 function wait(delay: number) {
