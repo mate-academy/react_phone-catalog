@@ -1,0 +1,77 @@
+@import '../../styles/index';
+
+.dropdown {
+  &__trigger {
+    margin-bottom: 4px;
+  }
+
+  &__label {
+    color: $secondary-gray;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    width: 136px;
+    padding: 0 12px;
+    color: $primary-gray;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    border: 1px solid $icons-gray;
+
+    @include on-tablet {
+      width: 176px;
+    }
+
+    &:hover {
+      border-color: $secondary-gray;
+    }
+
+    &--active {
+      border-color: $primary-gray;
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-image: url(../../images/icons/ButtonDown.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform 0.3s;
+
+    &--active {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 8px 12px;
+    width: 176px;
+    border: 1px solid $elements-gray;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  }
+
+  &__item {
+    height: 32px;
+    color: $secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    text-decoration: none;
+
+    &:hover {
+      color: $primary-gray;
+    }
+  }
+}

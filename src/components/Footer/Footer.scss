@@ -1,0 +1,58 @@
+@import '../../styles/index';
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements-gray;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 0;
+    box-sizing: border-box;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 0;
+      height: 96px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    align-self: center;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $secondary-gray;
+  }
+
+  &__icon {
+    height: 32px;
+    width: 32px;
+    border: 1px solid $icons-gray;
+
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+}

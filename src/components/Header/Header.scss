@@ -1,0 +1,149 @@
+@import '../../styles/index';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-sizing: border-box;
+  box-shadow: 0 1px 0 0 $elements-gray;
+  margin-bottom: 1px;
+
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    box-sizing: border-box;
+    height: 48px;
+    padding-left: 16px;
+
+    @include on-desktop {
+      height: 64px;
+      padding-left: 24px;
+    }
+  }
+
+  &__right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__icon {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    height: 100%;
+    border: 1px solid $elements-gray;
+
+    @include on-desktop {
+      width: 64px;
+    }
+
+    &--phone {
+      @include on-tablet {
+        display: none;
+      }
+    }
+
+    &--tablet {
+      display: none;
+
+      @include on-tablet {
+        display: flex;
+      }
+    }
+  }
+
+  &__icon-img {
+    height: 16px;
+    width: 16px;
+    padding: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: transform .4s;
+    border: none;
+
+    &:hover {
+      @include on-desktop {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__count {
+    position: absolute;
+    left: 49%;
+    bottom: 52%;
+    display: block;
+    height: 14px;
+    width: 14px;
+    color: #fff;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    text-align: center;
+    background-color: $red;
+    border-radius: 50%;
+    border: 1px solid #fff;
+    box-sizing: border-box;
+  }
+
+  &__label {
+    display: none;
+    height: 100%;
+    width: 327px;
+    padding-inline: 24px;
+    border: 1px solid $elements-gray;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    border: none;
+    padding: 0;
+    outline: none;
+    color: $primary-gray;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 18px;
+
+    &::placeholder {
+      color: $icons-gray;
+    }
+  }
+}
