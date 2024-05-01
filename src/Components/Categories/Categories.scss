@@ -1,0 +1,95 @@
+@import "../../styles";
+
+.categories {
+  margin-bottom: 80px;
+
+  &__title {
+    @extend %h2;
+
+    margin-bottom: 24px;
+  }
+
+  &__list {
+    @include onTablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+
+    @include onTablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__image-container {
+    position: relative;
+    display: block;
+    width: 100%;
+    max-height: 288px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    border-radius: 8px;
+
+    &--phones {
+      background-color: #6D6474;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--accessories {
+      background-color: #973D5F;
+
+      img {
+        transform: scale(90%) rotate(40deg) translate(30%, -10%);
+      }
+    }
+
+    @include onTablet {
+      max-height: 200px;
+    }
+
+    @include onDesktop {
+      max-height: 370px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    overflow: hidden;
+
+    transform: translate(10%, 10%);
+    transition: all $duration ease-in-out;
+
+    &:hover {
+      margin-top: -15px;
+      margin-left: -5px;
+    }
+  }
+
+  &__items-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__items-title {
+    @extend %h3;
+  }
+
+  &__items-count {
+    color: $colorSecondary;
+  }
+}

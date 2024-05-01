@@ -1,1 +1,15 @@
-// not empty
+@import "./styles/index";
+
+iframe {
+  display: none;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &--with-menu {
+    overflow: hidden;
+  }
+}

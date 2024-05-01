@@ -1,0 +1,16 @@
+@import '../../styles';
+
+.link-back {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  @extend %small-text;
+  color: $colorSecondary;
+  margin-bottom: 16px;
+
+  &:hover {
+    color: $colorPrimary;
+  }
+}

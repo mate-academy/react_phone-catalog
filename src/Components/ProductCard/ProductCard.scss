@@ -1,0 +1,101 @@
+@import "../../styles";
+
+.product-card {
+  display: inline;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    padding: 32px;
+  
+    border-radius: 8px;
+    border: 1px solid $colorElements;
+    background-color: $colorWhite;
+    overflow: hidden;
+  
+    transition: all $duration linear;
+  
+    &:hover {
+      box-shadow: 0 2px 15px 0 #0000001A;
+    }
+  }
+
+  &__image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 2;
+    width: 100%;
+    overflow: hidden;
+
+    margin-bottom: 24px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+
+    object-fit: contain;
+    overflow: hidden;
+  }
+
+  &__title {
+    display: flex;
+    align-items: center;
+    height: 42px;
+    font-size: 14px;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
+
+  &__price-container {
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    border-bottom: 1px solid $colorElements;
+  }
+
+  &__price {
+    @extend %h3;
+  }
+
+  &__fullprice {
+    color: $colorSecondary;
+    font-weight: 600;
+    text-decoration: line-through;
+  }
+
+  &__desc {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__desc-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @extend %small-text;
+    font-weight: 700;
+  }
+
+  &__desc-title {
+    color: $colorSecondary;
+  }
+
+  &__desc-value {
+    text-align: right;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

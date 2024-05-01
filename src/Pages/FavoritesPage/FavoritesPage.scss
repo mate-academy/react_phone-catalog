@@ -1,0 +1,30 @@
+@import '../../styles';
+
+.favorites {
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @extend %h1;
+    margin-bottom: 8px;
+  }
+
+  &__count {
+    @extend %body-text;
+    color: $colorSecondary;
+
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+}

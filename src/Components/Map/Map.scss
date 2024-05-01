@@ -1,0 +1,32 @@
+@import '../../styles';
+
+.map {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+
+  &__part {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    @extend %small-text;
+    color: $colorPrimary;
+  }
+
+  &__text {
+    @extend %small-text;
+    color: $colorSecondary;
+    line-height: 15px;
+  }
+}

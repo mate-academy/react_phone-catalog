@@ -1,0 +1,17 @@
+@import '../../styles';
+
+.product-page {
+  margin-top: 24px;
+
+  &__section-details {
+    margin-bottom: 56px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      margin-bottom: 80px;
+    }
+  }
+}
