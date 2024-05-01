@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { Button } from '../Button';
 import './Pagination.scss';
 import { useSearchParams } from 'react-router-dom';
 import { ItemsOnPage } from '../../Types/SortMethod';
 import { SearchLink } from '../SearchLink';
 import { scrollToTop } from '../../helpers/scrollToTop';
+import classNames from 'classnames';
 
 type Props = {
   total: number;
@@ -58,31 +58,52 @@ export const Pagination: React.FC<Props> = ({ total }) => {
 
   return (
     <div className="pagination">
-      <Button icon="arrow" onClick={scrollToTop} disabled={isFirstPage}>
-        <SearchLink params={{ page: `${currentPage - 1}` }}>
-          <i className="icon icon--arrow-left"></i>
-        </SearchLink>
-      </Button>
+      <SearchLink
+        params={{ page: `${currentPage - 1}` }}
+        onClick={scrollToTop}
+        className={classNames('pagination__button pagination__button-arrow', {
+          'pagination__button--disabled': isFirstPage,
+        })}
+      >
+        <i
+          className={classNames('icon icon--arrow-left', {
+            'icon--arrow-left--disabled': isFirstPage,
+          })}
+        ></i>
+      </SearchLink>
 
       <ul className="pagination__list">
         {visiblePages.map(page => (
           <li key={page}>
-            <Button
-              icon="number"
+            <SearchLink
+              params={{ page: `${page}` }}
               onClick={scrollToTop}
-              selected={page === currentPage}
+              className={classNames(
+                'pagination__button pagination__button-number',
+                {
+                  'pagination__button-number--selected': page === currentPage,
+                },
+              )}
             >
-              <SearchLink params={{ page: `${page}` }}>{page}</SearchLink>
-            </Button>
+              {page}
+            </SearchLink>
           </li>
         ))}
       </ul>
 
-      <Button icon="arrow" onClick={scrollToTop} disabled={isLastPage}>
-        <SearchLink params={{ page: `${currentPage + 1}` }}>
-          <i className="icon icon--arrow-right"></i>
-        </SearchLink>
-      </Button>
+      <SearchLink
+        params={{ page: `${currentPage + 1}` }}
+        onClick={scrollToTop}
+        className={classNames('pagination__button pagination__button-arrow', {
+          'pagination__button--disabled': isLastPage,
+        })}
+      >
+        <i
+          className={classNames('icon icon--arrow-right', {
+            'icon--arrow-right--disabled': isLastPage,
+          })}
+        ></i>
+      </SearchLink>
     </div>
   );
 };

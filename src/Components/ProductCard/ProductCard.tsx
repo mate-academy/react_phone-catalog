@@ -63,7 +63,7 @@ export const ProductCard: React.FC<Props> = ({ product, transform }) => {
           />
         </Link>
 
-        <Link to={`${category}/${itemId}`} className="product-card__title">
+        <Link to={`/${category}/${itemId}`} className="product-card__title">
           {name}
         </Link>
 

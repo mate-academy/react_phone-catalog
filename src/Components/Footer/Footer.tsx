@@ -4,8 +4,8 @@ import './Footer.scss';
 
 enum Links {
   GitHub = 'https://github.com/Sireus',
-  Contacts = '/',
-  Rights = '/',
+  Contacts = './',
+  Rights = './',
 }
 
 export const Footer = () => {

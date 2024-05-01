@@ -11,4 +11,32 @@
     align-items: center;
     gap: 8px;
   }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @extend %buttons;
+
+    width: 32px;
+    height: 32px;
+    border: 1px solid $colorElements;
+    border-radius: 50%;
+  
+    &-arrow {
+      border-color: $colorIcons;
+    }
+
+    &-number--selected {
+      color: $colorWhite;
+      background-color: $colorPrimary;
+    }
+
+    &--disabled {
+      border-color: $colorElements;
+      cursor: default;
+      pointer-events: none;
+    }
+  }
 }

@@ -3,7 +3,8 @@ import { Product } from '../Types/Product';
 import { ProductDetails } from '../Types/ProductDetails';
 import { client } from '../helpers/fetchClient';
 
-export const LOCAL_URL = 'https://sireus.github.io/react_phone-catalog/';
+// export const LOCAL_URL = 'https://sireus.github.io/react_phone-catalog/';
+export const LOCAL_URL = './';
 
 export const getProducts = () => {
   return client.get<Product[]>('api/products.json');

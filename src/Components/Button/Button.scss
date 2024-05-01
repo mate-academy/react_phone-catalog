@@ -46,28 +46,4 @@
       border-color: $colorElements;
     }
   }
-
-  &__item {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    width: 32px;
-    height: 32px;
-    border: 1px solid $colorElements;
-    border-radius: 50%;
-  
-    &-arrow {
-      border-color: $colorIcons;
-    }
-
-    &-number {
-      &--selected {
-        color: $colorWhite;
-        background-color: $colorPrimary;
-      }
-    }
-  }
-
-
 }

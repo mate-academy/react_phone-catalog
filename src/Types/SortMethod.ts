@@ -1,7 +1,7 @@
 export enum SortMethod {
   age = 'Newest',
   name = 'Name',
-  price = 'Cheapset',
+  price = 'Cheapest',
 }
 
 export enum ItemsOnPage {
