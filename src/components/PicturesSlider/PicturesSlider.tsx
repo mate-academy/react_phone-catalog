@@ -1,17 +1,28 @@
 import { useEffect, useRef, useState } from 'react';
 import './PicturesSlider.scss';
 import classNames from 'classnames';
-
-const images = [
-  { path: 'img/picturesSlider/iphone.png' },
-  { path: 'img/picturesSlider/ipad.png' },
-  { path: 'img/picturesSlider/watch.png' },
-];
+import { Link } from 'react-router-dom';
+import { BASE_URL } from '../../utils/fetchProducts';
 
 export const PicturesSlider = () => {
+  const categories = [
+    {
+      category: 'phones',
+      image: 'img/picturesSlider/iphone.png',
+    },
+    {
+      category: 'tablets',
+      image: 'img/picturesSlider/ipad.png',
+    },
+    {
+      category: 'accessories',
+      image: 'img/picturesSlider/watch.png',
+    },
+  ];
+
   const [currentIndex, setCurrentIndex] = useState(0);
   const [frameSize, setFrameSize] = useState(0);
-  const lastIndex = images.length - 1;
+  const lastIndex = categories.length - 1;
   const transformValue = frameSize * currentIndex;
   const banner = useRef<HTMLDivElement>(null);
 
@@ -59,12 +70,14 @@ export const PicturesSlider = () => {
               transform: `translateX(${-transformValue}px)`,
             }}
           >
-            {images.map(image => (
-              <li className="carousel__slider-item" key={image.path}>
-                <img
-                  src={image.path}
-                  alt="banner"
-                  className="carousel__slider-image"
+            {categories.map(item => (
+              <li className="carousel__slider-item" key={item.category}>
+                <Link
+                  to={`./${item.category}`}
+                  style={{
+                    backgroundImage: `url(${BASE_URL}${item.image})`,
+                  }}
+                  className="carousel__slider-link"
                 />
               </li>
             ))}
@@ -77,9 +90,9 @@ export const PicturesSlider = () => {
       </div>
 
       <div className="carousel__dots">
-        {images.map((image, index) => (
+        {categories.map((category, index) => (
           <button
-            key={image.path}
+            key={category.category}
             type="button"
             aria-label="dots"
             onClick={() => setCurrentIndex(index)}

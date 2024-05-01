@@ -3,6 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Product } from '../../types/product';
 import { AddToCart } from '../AddToCart';
+import { BASE_URL } from '../../utils/fetchProducts';
 
 type Props = {
   product: Product;
@@ -15,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="card" data-qa="card" key={id}>
       <Link to={`/${category}/${product.itemId}`}>
-        <img className="card__img" alt={name} src={`../../${image}`} />
+        <img className="card__img" alt={name} src={`${BASE_URL}${image}`} />
         <p className="card__name">{name}</p>
       </Link>
 
