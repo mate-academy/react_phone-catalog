@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter, Routes, Route } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
@@ -10,7 +10,7 @@ import { CartPage } from './pages/CartPage';
 
 export const Root = () => {
   return (
-    <Router>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
@@ -41,6 +41,6 @@ export const Root = () => {
           <Route path="*" element={<h1 className="title">Page not found</h1>} />
         </Route>
       </Routes>
-    </Router>
+    </HashRouter>
   );
 };
