@@ -8,7 +8,7 @@ import { AddToCart } from '../../components/AddToCart';
 import { ProductSlider } from '../../components/ProductsSlider';
 import { Navigation } from '../../components/Navigation';
 import { BackButton } from '../../components/BackButton';
-import { getProductDetailsByID } from '../../utils/fetchProducts';
+import { BASE_URL, getProductDetailsByID } from '../../utils/fetchProducts';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -111,12 +111,12 @@ export const ProductDetailsPage = () => {
               <img
                 key={image}
                 className="product__images-image"
-                src={`../../${image}`}
+                src={`${BASE_URL}${image}`}
                 onClick={() => setSelectImage(image)}
               />
             ))}
           </div>
-          <img src={`../../${selectImage}`} className="product__img" />
+          <img src={`${BASE_URL}${selectImage}`} className="product__img" />
         </div>
 
         <div className="product__top-right">

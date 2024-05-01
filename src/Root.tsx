@@ -9,8 +9,9 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { CartPage } from './pages/CartPage';
 
 export const Root = () => {
+  const basename = process.env.PUBLIC_URL || '/';
   return (
-    <HashRouter>
+    <HashRouter basename={basename}>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
