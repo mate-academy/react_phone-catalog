@@ -1,0 +1,65 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.custom-select {
+  position: relative;
+  height: 40px;
+  box-sizing: border-box;
+  border: 1px solid;
+  border-radius: 8px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+
+  &__selected {
+    height: 100%;
+    width: 100%;
+
+    align-items: center;
+    display: flex;
+    cursor: pointer;
+    position: relative;
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: 16px;
+      right: 0;
+
+      background-image: url(../../../styles/utils/icons/arrow.svg);
+      width: 5.33px;
+      height: 9.33px;
+      transition: transform 0.3s;
+      transform: rotate(-90deg);
+    }
+
+    &.open::after {
+      transform: rotate(90deg);
+    }
+  }
+
+  &__options {
+    margin-top: 4px;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+
+    z-index: 1;
+    border-radius: 8px;
+
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+
+    &--open {
+      max-height: 300px;
+      border: 1px solid;
+    }
+  }
+
+  &__option {
+    padding: 8px 12px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+}

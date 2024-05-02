@@ -1,0 +1,65 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.ShopByCategory {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__categories {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__block {
+    width: 100%;
+    overflow: hidden;
+
+    &--img-block {
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      position: relative;
+      overflow: hidden;
+      border-radius: 8px;
+      margin-bottom: 24px;
+
+      &--img {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: 40px;
+        left: 49px;
+
+        @include hover(top, 0);
+      }
+    }
+
+    &--title {
+      margin-bottom: 4px;
+    }
+  }
+}
+
+.img {
+  &__phones {
+    background-image: url(../../../../public/img/categoryPhones.png);
+  }
+
+  &__tablets {
+    background-image: url(../../../../public/img/categoryTablets.png);
+  }
+
+  &__accessories {
+    background-image: url(../../../../public/img/categoryAccessories.png);
+  }
+}

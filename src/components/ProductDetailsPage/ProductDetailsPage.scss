@@ -1,0 +1,330 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.DetailsPage {
+  &__top {
+    @include on-tablet {
+      @include page-grid;
+    }
+
+    &--slider {
+      margin-bottom: 40px;
+
+      @include on-tablet {
+        grid-column: 1 / 8;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 13;
+      }
+    }
+
+    &--main-control {
+      @include on-tablet {
+        grid-column: 8 / 13;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / 21;
+      }
+    }
+  }
+
+  &__bottom {
+    @include page-grid;
+
+    row-gap: 56px;
+    padding-block: 56px;
+
+    @include on-tablet {
+      row-gap: 64px;
+      padding-block: 64px;
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+
+    &--title {
+      margin-bottom: 16px;
+    }
+
+    &--desc {
+      display: flex;
+      gap: 16px;
+      flex-direction: column;
+
+      &--flex {
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+    }
+  }
+
+  &__specs {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / 25;
+    }
+
+    &--title {
+      margin-bottom: 16px;
+    }
+
+    &-block {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+
+      &--text-block {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  &__slider {
+    grid-column: 1 / -1;
+    overflow: hidden;
+  }
+}
+
+.line {
+  height: 1px;
+  width: 100%;
+  margin-bottom: 24px;
+
+  &--mb32 {
+    margin-bottom: 32px;
+  }
+
+  &--mb30 {
+    margin-bottom: 30px;
+  }
+}
+
+.page-skeleton {
+  margin-top: 60px;
+  overflow: hidden;
+  display: grid;
+  box-sizing: border-box;
+  grid-template-columns: 1fr 2fr;
+  gap: 32px;
+
+  @media (max-width: 640px) {
+    grid-template-columns: 1fr;
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row-reverse;
+    }
+  }
+
+  &__image {
+    width: 280px;
+    height: 250px;
+
+    @include on-tablet {
+      width: 200px;
+      height: 200px;
+    }
+
+    @include on-desktop {
+      width: 400px;
+      height: 400px;
+    }
+  }
+
+  &__image-thumbnails {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__image-thumbnail {
+    width: 80px;
+    height: 80px;
+  }
+
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    overflow: hidden;
+  }
+
+  &__title {
+    width: 60%;
+    height: 32px;
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color {
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity-option {
+    width: 60px;
+    height: 24px;
+  }
+
+  &__price {
+    width: 120px;
+    height: 32px;
+  }
+
+  &__button {
+    width: 180px;
+    height: 40px;
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    overflow: hidden;
+
+    &-title {
+      width: 120px;
+      height: 16px;
+    }
+
+    &-value {
+      width: 180px;
+      height: 16px;
+    }
+  }
+
+  &__about {
+    &-title {
+      width: 120px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+
+    &-description {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      width: 260px;
+
+      &-text {
+        width: 100%;
+        height: 16px;
+      }
+    }
+  }
+
+  &__tech-specs {
+    overflow: hidden;
+
+    &-title {
+      width: 120px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+
+    &-table {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    &-cell {
+      width: 180px;
+      height: 16px;
+    }
+  }
+
+  &__related-products {
+    // overflow: hidden;
+    width: 200px;
+    &-title {
+      width: 200px;
+      height: 24px;
+      margin-bottom: 16px;
+    }
+
+    &-product {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 16px;
+    }
+
+    &-product-image {
+      width: 80px;
+      height: 80px;
+    }
+
+    &-product-details {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-product-title {
+      width: 180px;
+      height: 16px;
+    }
+
+    &-product-price {
+      width: 120px;
+      height: 16px;
+    }
+  }
+}
+
+.skeleton {
+  background-color: #f0f0f0;
+  animation: pulse 1s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

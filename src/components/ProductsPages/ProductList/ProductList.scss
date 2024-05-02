@@ -1,0 +1,95 @@
+@import '../../../styles/utils/mixins';
+@import 'css-skeletons';
+
+.product-list-enter {
+  opacity: 0;
+}
+
+.product-list-enter-active {
+  opacity: 1;
+  transition: opacity 0.3s;
+}
+
+.product-list-exit {
+  opacity: 1;
+}
+
+.product-list-exit-active {
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.ProductsList {
+  &__cards {
+    padding: 24px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+
+    @include on-tablet {
+      width: 100%;
+
+      @include page-grid;
+    }
+  }
+
+  &__card {
+    display: flex;
+    width: 100%;
+
+    @include on-tablet {
+      width: 100%;
+
+      grid-column: span 6;
+    }
+
+    @media (min-width: 900px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      width: 100%;
+      grid-column: span 6;
+    }
+  }
+}
+
+.my-class {
+  --lines: 3;
+  --c-bg: #faecf6;
+  --c-p: 30px;
+  --bg: #eeb6e0;
+  --shine: #f5c3da;
+}
+
+.loading__block {
+  padding: 24px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  @include on-tablet {
+    width: 100%;
+
+    @include page-grid;
+  }
+
+  .card-skeleton {
+    display: flex;
+    width: 100%;
+
+    @include on-tablet {
+      width: 100%;
+      grid-column: span 6;
+    }
+
+    @media (min-width: 900px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      width: 100%;
+      grid-column: span 6;
+    }
+  }
+}

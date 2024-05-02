@@ -1,0 +1,21 @@
+@import '../../styles/utils/mixins';
+
+.FavouritesPage {
+  .path {
+    @include on-tablet {
+      padding: 24px 0 40px;
+    }
+  }
+
+  .ProductsList__cards {
+    padding: 0;
+  }
+
+  &__items {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}

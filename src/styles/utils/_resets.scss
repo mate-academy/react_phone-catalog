@@ -1,0 +1,27 @@
+body,
+input,
+a,
+textarea,
+button,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  text-decoration: none;
+  resize: none;
+  
+
+  &:focus {
+    outline: none;
+  }
+} 
