@@ -4,7 +4,7 @@ import { Footer } from './components/Footer';
 import { NavBar } from './components/NavBar';
 
 export const App = () => (
-  <div className="App">
+  <div className="app">
     <NavBar />
     <Outlet />
     <Footer />

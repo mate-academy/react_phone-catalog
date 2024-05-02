@@ -1,9 +1,9 @@
 .not-found {
-  display: flex;
-  justify-content: center;
+  height: calc(100vh - 48px);
+  background-image: url(../../../public/img/page-not-found.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
-.image {
-  max-width: 100%;
-  max-height: calc(100vh - 160px);
-}
+

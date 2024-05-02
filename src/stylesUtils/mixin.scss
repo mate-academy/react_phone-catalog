@@ -1,3 +1,5 @@
+@import './variables.scss';
+
 @mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
@@ -29,11 +31,9 @@
 
   display: grid;
   column-gap: 16px;
-  column-width: 32px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
-    // column-width: 32px;
     --columns: 12;
   }
 

@@ -1,68 +1,98 @@
-.footer {
-  display: flex;
-  height: 96px;
-  box-shadow: 0px -1px 0px 0px #e2e6e9;
-  align-items: center;
-  padding: 0 152px;
-  justify-content: space-between;
+@import '../../stylesUtils/variables';
+@import '../../stylesUtils/mixin.scss';
 
-  &_logo {
+$main-navbar-color: #89939A;
+$active-navbar-color: #000;
+$box-shadow-color: #e2e6e9;
+
+.footer {
+  box-shadow: 0px -1px 0px 0px $box-shadow-color;
+
+  &__container {
+    display: grid;
+    padding: 32px 16px;
+    gap: 32px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      height: 96px;
+      padding: 0 32px;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      @include content-padding-inline;
+    }
+  }
+
+  &__logo-link {
     height: 32px;
+  }
+}
+
+.contacts {
+  &__items {
+    list-style-type: none;
+    display: grid;
+    margin: 0;
+    padding: 0;
+    gap: 16px;
+
+    @include on-tablet {
+      display: flex;
+      justify-content: space-between;
+    }
   }
 
   &__link {
+    display: block;
     font-family: 'Bold';
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
     text-decoration: none;
-    color: #89939a;
+    color: $main-navbar-color;
     text-transform: uppercase;
 
-    transition-duration: 100ms;
+    transition-duration: 150ms;
 
     &:hover {
-      color: #000;
+      color: $active-navbar-color;
     }
   }
-}
-
-.contacts {
-  display: flex;
-  justify-content: space-between;
-  width: 378px;
 }
 
 .on-top {
   display: flex;
-  align-items: center;
+  justify-content: center;
 
-  &__text {
+  @include on-tablet {
+    justify-content: flex-end;
+  }
+
+  &__link {
+    text-decoration: none;
     font-family: "SemiBold";
     font-size: 12px;
     line-height: 15.34px;
-    color: #89939a;
-  }
+    color: $main-navbar-color;
 
-  &__button {
     display: flex;
     align-items: center;
-    justify-content: center;
-    background-color: #fff;
-    border-radius: none;
-    height: 32px;
-    width: 32px;
-    border: solid 1px #B4BDC3;
-    margin-left: 16px;
-
-    transition-duration: 100ms;
 
     &:hover {
-      border: solid 1px #000;
+      color: $active-navbar-color;
     }
   }
-}
 
-.icon-up {
-  rotate: 90deg;
+  &__image {
+    background-image: url(../../../public/img/icons-image/button-up-arrow.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 32px;
+    width: 32px;
+    display: flex;
+  }
 }

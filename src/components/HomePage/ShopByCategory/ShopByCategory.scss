@@ -4,6 +4,7 @@
 .shop-by-category {
   @include page-grid;
 
+  row-gap: 32px;
   margin-bottom: 80px;
 
   &__title {
@@ -16,12 +17,18 @@
 
 .category {
   &-card {
+    grid-column: span 4;
+
     @include on-tablet {
       grid-column: span 4;
     }
 
     @include on-desktop {
       grid-column: span 8;
+    }
+
+    &__photo {
+      width: 100%;
     }
   }
 

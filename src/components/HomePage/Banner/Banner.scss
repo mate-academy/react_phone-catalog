@@ -6,48 +6,78 @@
 }
 
 .carousel {
-  @include page-grid;
+  @include on-tablet {
+    @include page-grid;
+  }
 
   &__container {
-    width: 1040px;
-    height: 400px;
+    margin-left: -16px;
+    margin-right: -16px;
+    height: 100vw;
     overflow: hidden;
+    position: relative;
 
     @include on-tablet {
-      grid-column: span 12;
+      margin: 0;
+      grid-column: 2 / -2;
+      height: calc(80vw / 2.6);
     }
 
     @include on-desktop {
-      grid-column: span 22;
+      height: 400px;
     }
   }
 
   &__content-media {
-    width: 100%;
+    position: absolute;
+    width: 100vw;
+    height: 100vw;
     object-fit: cover;
-  }
+    opacity: 0;
 
-  &__all-images {
-    display: flex;
-    height: 400px;
+    transition-duration: 300ms;
+
+    @include on-tablet {
+      height: calc(80vw / 2.6);
+      width: 80vw;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      width: 1040px;
+    }
   }
 
   &-button {
-    background-color: #fff;
-    border: solid 1px #b4bdc3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
+    display: none;
 
-    transition-duration: 100ms;
+    @include on-tablet {
+      background-color: transparent;
+      border: none;
+      display: flex;
+      background-position: center;
+      background-repeat: no-repeat;
 
-    &:hover {
-      border: solid 1px #313237;
+      transition-duration: 100ms;
+
+      &:hover {
+        background-color: #e7e7e777;
+      }
     }
 
-    &__left,
+    &__left {
+      background-image: url(../../../../public/img/icons-image/button-left-arrow.svg);
+      @include on-tablet {
+        grid-column: span 1;
+      }
+
+      @include on-desktop {
+        grid-column: span 1;
+      }
+    }
+
     &__right {
+      background-image: url(../../../../public/img/icons-image/button-right-arrow.svg);
       @include on-tablet {
         grid-column: span 1;
       }
@@ -65,4 +95,8 @@
     align-items: center;
     justify-content: center;
   }
+}
+
+.active-slide {
+  opacity: 1;
 }
