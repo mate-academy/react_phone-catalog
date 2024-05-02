@@ -8,11 +8,11 @@
 
   gap: 64px;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-breakpoint) {
     gap: 32px;
   }
 
-  @media (max-width: 639px) {
+  @media (max-width: $mobile-breakpoint) {
     display: none;
   }
 }
@@ -29,7 +29,7 @@
   color: $color-secondary;
   outline: none;
 
-  @media (max-width: 639px) {
+  @media (max-width: $mobile-breakpoint) {
     height: 27px;
     padding: 8px 0;
   }
@@ -45,7 +45,7 @@
     transform: scale(0);
     transition: transform 0.5s ease-in-out;
 
-    @media (max-width: 639px) {
+    @media (max-width: $mobile-breakpoint) {
       height: 2px;
     }
   }

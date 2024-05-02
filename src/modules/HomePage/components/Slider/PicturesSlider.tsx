@@ -33,13 +33,19 @@ export const PicturesSlider = () => {
         }}
       >
         <SwiperSlide className={styles.swiperSlide}>
-          <img src="img/banner/banner-phones.jpg" alt="phone" />
+          <a href="/phones">
+            <img src="img/banner/banner-phones.jpg" alt="phone" />
+          </a>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
-          <img src="img/banner/banner-accessories.jpg" alt="accessories" />
+          <a href="/accessories">
+            <img src="img/banner/banner-accessories.jpg" alt="accessories" />
+          </a>
         </SwiperSlide>
         <SwiperSlide className={styles.swiperSlide}>
-          <img src="img/banner/banner-tablets.jpg" alt="tablet" />
+          <a href="/tablets">
+            <img src="img/banner/banner-tablets.jpg" alt="tablet" />
+          </a>
         </SwiperSlide>
       </Swiper>
 

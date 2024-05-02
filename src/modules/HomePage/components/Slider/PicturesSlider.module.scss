@@ -1,41 +1,51 @@
 @import 'Styles/utils';
 
-.swiperButtonPrev,
-.swiperButtonNext {
-  @include flex-center;
-
-  position: relative;
-  width: 32px;
-  height: 400px;
-  background-color: $color-surface2;
-
-  @media (max-width: 1199px) {
-    height: 189px;
-  }
-
-  @media (max-width: 639px) {
-    display: none;
-  }
-
-  img {
-    position: absolute;
-    top: 50%;
-    width: 16px;
-    height: 16px;
-    transform: translateY(-50%);
-  }
-}
-
 .container {
   @include flex-center;
+
+  box-sizing: border-box;
 
   position: relative;
   align-items: flex-start;
   width: 100%;
   height: 432px;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-breakpoint) {
+    padding: 0 24px;
     height: 221px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    display: block;
+    padding: 0;
+    width: 100%;
+    height: calc(100vw + 32px);
+  }
+
+  .swiperButtonPrev,
+  .swiperButtonNext {
+    @include flex-center;
+
+    position: relative;
+    width: 32px;
+    height: 400px;
+    background-color: $color-surface2;
+
+    @media (max-width: $tablet-breakpoint) {
+      height: 189px;
+    }
+
+    @media (max-width: $mobile-breakpoint) {
+      display: none;
+    }
+
+    img {
+      position: absolute;
+      top: 50%;
+      width: 16px;
+      height: 16px;
+      transform: translateY(-50%);
+    }
   }
 
   .swiper {
@@ -43,43 +53,49 @@
     width: 100%;
     height: 400px;
 
-    @media (max-width: 1199px) {
+    @media (max-width: $tablet-breakpoint) {
       height: 189px;
     }
 
-    @media (max-width: 639px) {
-      margin: 0;
-      padding: 0;
-      width: 100%;
-      height: 189px;
-      aspect-ratio: 1; // ???
+    @media (max-width: $mobile-breakpoint) {
+      margin: 0 0 8px;
+      height: 0;
+      padding-bottom: 100%;
+      overflow: hidden;
     }
 
     .swiperSlide {
       @include flex-center;
 
-      width: 100%;
-      height: 100%;
+      @media (max-width: $mobile-breakpoint) {
+        position: relative;
+        height: 0;
+        margin: 0;
+        padding-bottom: 100%;
+        overflow: hidden;
+      }
 
       img {
+        position: absolute;
         width: 100%;
         height: 100%;
+        top: 0;
+        left: 0;
+        max-width: 100%;
         object-fit: cover;
         object-position: center;
-
-        @media (max-width: 639px) {
-          aspect-ratio: 1; // ???
-        }
       }
     }
   }
 
-  .swiperPagination{
-    bottom: 0;
+  .swiperPagination {
     position: absolute;
+    bottom: 0;
+
     display: flex;
     justify-content: center;
     align-items: center;
+
     width: 100%;
     height: 24px;
     z-index: 10;
@@ -99,4 +115,3 @@
     background-color: $color-white;
   }
 }
-

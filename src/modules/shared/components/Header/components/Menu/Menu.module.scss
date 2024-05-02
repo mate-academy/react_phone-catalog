@@ -4,7 +4,7 @@
   display: none;
   z-index: 1001;
 
-  @media (max-width: 639px) {
+  @media (max-width: $mobile-breakpoint) {
     @include flex-center;
 
     position: relative;

@@ -10,7 +10,7 @@
   height: 64px;
   z-index: 1000;
 
-  @media (max-width: 639px) {
+  @media (max-width: $mobile-breakpoint) {
     height: 48px;
   }
 }
@@ -32,7 +32,7 @@
 
   gap: 24px;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-breakpoint) {
     gap: 16px;
   }
 }
@@ -42,7 +42,7 @@
   height: 64px;
   z-index: 1001;
 
-  @media (max-width: 1199px) {
+  @media (max-width: $tablet-breakpoint) {
     width: 96px;
     height: 48px;
   }
@@ -51,7 +51,7 @@
     width: 80px;
     height: 28px;
 
-    @media (max-width: 1199px) {
+    @media (max-width: $tablet-breakpoint) {
       width: 64px;
       height: 22px;
     }
@@ -66,7 +66,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@media (max-width: $mobile-breakpoint) {
   .menuContainer {
     box-sizing: border-box;
     display: flex;
