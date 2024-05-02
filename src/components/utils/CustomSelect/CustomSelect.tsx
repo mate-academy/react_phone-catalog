@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './CustomSelect.scss';
 import classNames from 'classnames';
+import { useTranslation } from 'react-i18next';
 
 interface Option {
   value: string;
@@ -9,7 +10,7 @@ interface Option {
 
 interface Props {
   options: Option[];
-  value?: string;
+  value: string;
   onChange: (value: string) => void;
   className?: string;
 }
@@ -22,6 +23,7 @@ export const CustomSelect: React.FC<Props> = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const { t } = useTranslation();
 
   const toggleDropdown = () => {
     setIsOpen(!isOpen);
@@ -49,6 +51,8 @@ export const CustomSelect: React.FC<Props> = ({
     };
   }, []);
 
+  const optionsWithoutValue = options.filter(option => option.value !== value);
+
   return (
     <div
       className={classNames(`custom-select button ${className}`, {
@@ -62,20 +66,20 @@ export const CustomSelect: React.FC<Props> = ({
         })}
         onClick={toggleDropdown}
       >
-        {value}
+        {t(value)}
       </div>
       <div
         className={classNames('custom-select__options body-text', {
           'custom-select__options--open': isOpen,
         })}
       >
-        {options.map(option => (
+        {optionsWithoutValue.map(option => (
           <div
             key={option.value}
             className="custom-select__option"
             onClick={() => handleOptionClick(option)}
           >
-            {option.label}
+            {t(option.label)}
           </div>
         ))}
       </div>

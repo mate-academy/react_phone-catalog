@@ -51,13 +51,22 @@ export const ProductsPage: React.FC = () => {
   }
 
   const optionsSortBy = [
-    { value: t('Newest'), label: t('Newest') },
-    { value: t('Alphabetically'), label: t('Alphabetically') },
-    { value: t('Price: Low to High'), label: t('Price: Low to High') },
-    { value: t('Price: High to Low'), label: t('Price: High to Low') },
-    { value: t('RAM'), label: t('RAM') },
-    { value: t('Color'), label: t('Color') },
+    { value: 'Newest', label: 'Newest' },
+    { value: 'Alphabetically', label: 'Alphabetically' },
+    { value: 'Price: Low to High', label: 'Price: Low to High' },
+    { value: 'Price: High to Low', label: 'Price: High to Low' },
+    { value: 'RAM', label: 'RAM' },
+    { value: 'Color', label: 'Color' },
   ];
+
+  // const optionsSortBy = [
+  //   { value: t('Newest'), label: t('Newest') },
+  //   { value: t('Alphabetically'), label: t('Alphabetically') },
+  //   { value: t('Price: Low to High'), label: t('Price: Low to High') },
+  //   { value: t('Price: High to Low'), label: t('Price: High to Low') },
+  //   { value: t('RAM'), label: t('RAM') },
+  //   { value: t('Color'), label: t('Color') },
+  // ];
 
   const optionsItemOnPage = [
     { value: '4', label: '4' },
@@ -159,7 +168,7 @@ export const ProductsPage: React.FC = () => {
           </div>
         ) : !filteredProducts.length && !!products.length ? (
           <h4 style={{ marginTop: '20px' }}>
-            {t(`h4.empty.${category}`, { count: 1 })}
+            z{t(`h4.empty.${category}`, { count: 1 })}
           </h4>
         ) : (
           <div className="ProductsPage__cards">
