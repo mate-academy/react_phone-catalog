@@ -27,24 +27,36 @@ export const Root = () => {
             element={<Products type={ProductType.tablets} title="Tablets" />}
           />
           <Route
-            path="/accecories"
+            path="/accessories"
             element={
               <Products type={ProductType.accessories} title="Accessories" />
             }
           />
-          {/* <Route
-            path="/details"
-            element={<ProductDetails type={ProductType.phones} title={''} />}
-          /> */}
+          <Route
+            path="/phones/details/"
+            element={<ProductDetails title={''} />}
+          />
 
           <Route
-            path="/details"
+            path="/tablets/details/"
+            element={<ProductDetails title={''} />}
+          />
+
+          <Route
+            path="/accessories/details/"
+            element={<ProductDetails title={''} />}
+          />
+
+          <Route path="/details" element={<ProductDetails title={''} />} />
+
+          {/* <Route
+            path="/details/:id"
             element={
               <ProductDetails type={ProductType.phones} title="Phone Details" />
             }
           />
-          {/* <Route
-            path="/details/tablets"
+          <Route
+            path="/details/:id"
             element={
               <ProductDetails
                 type={ProductType.tablets}
@@ -53,7 +65,7 @@ export const Root = () => {
             }
           />
           <Route
-            path="/details/accessories"
+            path="/details/:id"
             element={
               <ProductDetails
                 type={ProductType.accessories}
@@ -61,9 +73,6 @@ export const Root = () => {
               />
             }
           /> */}
-          <Route path="/people">
-            {/* <Route index element={<Phones />} /> */}
-          </Route>
           {/* <Route path="*" element={<NotFoundPage />} /> */}
         </Routes>
       </HashRouter>

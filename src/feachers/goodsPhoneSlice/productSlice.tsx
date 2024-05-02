@@ -6,11 +6,12 @@ import {
 } from '@reduxjs/toolkit';
 import { ProductType } from '../../services/enums';
 import { Product } from '../../services/productType';
+import { ProductDetailes } from '../../services/ProductDetailType';
 
 export const loadProducts = createAsyncThunk(
   'products/loadProducs',
   async (type: ProductType) => {
-    await new Promise(resolve => setTimeout(resolve, 3000));
+    // await new Promise(resolve => setTimeout(resolve, 3000));
     const response = await fetch('/api/products.json');
     const data = await response.json();
 
@@ -20,13 +21,37 @@ export const loadProducts = createAsyncThunk(
   },
 );
 
+export const loadProductsDetail = createAsyncThunk(
+  'products/loadProductsDetails',
+  async (type: ProductType) => {
+    // await new Promise(resolve => setTimeout(resolve, 3000));
+
+    let apiUrl = '';
+
+    if (type === 'phones') {
+      apiUrl = '/api/phones.json';
+    } else if (type === 'tablets') {
+      apiUrl = '/api/tablets.json';
+    } else if (type === 'accessories') {
+      apiUrl = '/api/accessories.json';
+    }
+
+    const response = await fetch(apiUrl);
+    const data = await response.json();
+
+    return data;
+  },
+);
+
 export interface ProductState {
   products: Product[];
+  productsDetails: ProductDetailes[];
   isLoading: boolean;
   isError: boolean;
 }
 
 const initialState: ProductState = {
+  productsDetails: [],
   products: [],
   isLoading: false,
   isError: false,
@@ -47,6 +72,17 @@ export const productSlice = createSlice({
         state.products = action.payload;
       })
       .addCase(loadProducts.rejected, state => {
+        state.isLoading = false;
+        state.isError = true;
+      })
+      .addCase(loadProductsDetail.pending, state => {
+        state.isLoading = true;
+      })
+      .addCase(loadProductsDetail.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.productsDetails = action.payload;
+      })
+      .addCase(loadProductsDetail.rejected, state => {
         state.isLoading = false;
         state.isError = true;
       });

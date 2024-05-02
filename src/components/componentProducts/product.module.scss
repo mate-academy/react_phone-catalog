@@ -101,6 +101,7 @@ margin-inline: auto;
   &:hover {
     border-radius: 8px;
     border: 1px solid #89939A;
+    cursor: pointer;
   }
 }
 
@@ -118,6 +119,7 @@ margin-inline: auto;
   &:hover {
     border-radius: 8px;
     border: 1px solid #89939A;
+    cursor: pointer;
   }
 }
 
@@ -156,7 +158,7 @@ margin-inline: auto;
   top: 105%;
   left: 0;
   width: 176px;
-  height: 144px;
+  height: auto;
   border-radius: 8px;
   border: 1px solid #E2E6E9;
   background: #FFF;
@@ -180,6 +182,7 @@ margin-inline: auto;
     color: #0F0F11;
     border-radius: 8px;
     background: #FAFBFC;
+    cursor: pointer;
   }
 }
 
@@ -188,7 +191,7 @@ margin-inline: auto;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin: 24px 0;
+  margin: 40px 0;
 
 }
 
@@ -205,5 +208,9 @@ margin-inline: auto;
   flex-wrap: wrap;
   justify-content: space-between;
   row-gap: 40px;
+}
+
+.pangination {
+  margin: 40px 0;
 }
 

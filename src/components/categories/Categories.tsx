@@ -23,19 +23,19 @@ export const Categories: React.FC = () => {
             <NavLink to={'/phones'}>
               <span className={styles.qantity}>Mobile phones</span>
             </NavLink>
-            <span className={styles.models}>95 models</span>
+            <span className={styles.models}>124 models</span>
           </div>
           <div className={styles.tablets}>
             <NavLink to={'/tablets'}>
               <span className={styles.qantity}>Tablets</span>
             </NavLink>
-            <span className={styles.models}>24 models</span>
+            <span className={styles.models}>36 models</span>
           </div>
           <div className={styles.accessories}>
             <NavLink to={''}>
               <span className={styles.qantity}>Accessories</span>
             </NavLink>
-            <span className={styles.models}>100 models</span>
+            <span className={styles.models}>34 models</span>
           </div>
         </div>
       </section>

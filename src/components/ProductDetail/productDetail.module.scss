@@ -3,22 +3,86 @@
   max-width: 1200px;
 }
 
+.homeLinkContainer {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  margin-top: 25px;
+}
+
+.product {
+  display: flex;
+  color: #0F0F11;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 1px;
+}
+
+.productName {
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 600;
+}
+
 .arrow {
   width: 16px;
   height: 16px;
   color: #89939A;
   transition: transform 0.3s ease;
+}
+
+.linkBack {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.arrowBack {
+  transform: rotate(180deg);
+}
+
+.back {
+  display: flex;
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 1px;
 
   &:hover {
-    transform: translateX(5px);
+    color: #0F0F11;
   }
 }
 
-.swiperContainer {
-  margin: 0;
+.detailTitle {
+  display: flex;
+  color: #0F0F11;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  margin-top: 15px;
+}
+
+.productDetailsAndSviper {
+  gap: 84px;
+  position: relative;
   display: flex;
   flex-direction: row;
-  max-width: 600px;
+  align-items: center;
+  max-width: 1200px;
+  margin-top: 40px;
+}
+
+.swiperContainer {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  max-width: 538px;
+  max-height: fit-content;
 }
 
 .swiperDetails {
@@ -34,10 +98,16 @@
 }
 
 .smallImage {
-  width: 66px;
-  height: 66px;
+  width: 75px;
+  height: 75px;
   margin-bottom: 17px;
   object-fit: contain;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
 }
 
 .bigImageContainer {
@@ -47,7 +117,290 @@
 
 .bigImage {
   object-fit: contain;
-  width: 442px;
-  height: 442px;
-  padding-right: 140px;
+  width: 464px;
+  height: 464px;
+  padding-right: 110px;
+  margin-bottom: 10px;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.containerColorsAndSpects {
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  gap: 24px;
+}
+
+.colors {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.namesDetailsProduct {
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.colorsList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.buttonColor {
+  width: 32px;
+  height: 32px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  border: 1px solid #E2E6E9;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid #B4BDC3;
+    transform: scale(-1.2);
+  }
+}
+
+.buttonColor.active {
+  border: 1px solid #0F0F11;
+}
+
+.line {
+  background: #E2E6E9;
+  width: auto;
+  height: 1px;
+  border: 1px;
+  gap: 8px;
+}
+
+.capacityDetails {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.capacityList {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.capacity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 63px;
+  height: 32px;
+  flex-shrink: 0;
+  color: #0F0F11;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  border-radius: 4px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+
+
+.capacity.active {
+  color: #FFF;
+  border-radius: 4px;
+  background: #0F0F11;
+}
+
+.priceAndAdd {
+  display: flex;
+  flex-direction: column;
+}
+
+.prices {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  align-items: center;
+}
+
+.priceCurrent {
+  color: #0F0F11;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+}
+
+.priceOld {
+  color: #89939A;
+  font-size: 22px;
+  font-weight: 500;
+  text-decoration-line: strikethrough;
+}
+
+.buttonsContainer {
+  margin-top: 16px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.addButton {
+  display: flex;
+  width: 263px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  background: #216CFF;
+  outline: transparent;
+  border: none;
+  color: #FFF;
+
+  &:hover {
+    border-radius: 8px;
+    background: #216CFF;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+}
+
+.likeButton {
+  outline: transparent;
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  background: #FAFBFC;
+  border: 1px solid #B4BDC3;
+
+  &:hover {
+    border-radius: 48px;
+    border: 1px solid #0F0F11;
+  }
+}
+
+.like {
+  margin-top: 4px;
+  width: 16px;
+  height: 16px;
+
+  &:hover {
+    transform: scale(1.2);
+  }
+}
+
+.productSpects {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.spectsContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.name {
+  color: #89939A;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.spects {
+  color: #0F0F11;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.prodId {
+  right: 0;
+  top: 0;
+  position: absolute;
+  color: #B4BDC3;
+  text-align: right;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.aboutProductContainer {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+  max-width: 1200px;
+}
+
+.aboutProduct {
+  display: flex;
+  flex-direction: column;
+  max-width: 559px;
+}
+
+.title {
+  margin-bottom: 16px;
+  color: #0F0F11;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 140%;
+}
+
+.titleDeccriptions {
+  margin-top: 32px;
+  color: #0F0F11;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.description {
+  margin-top: 16px;
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.techSpectBlock {
+  display: flex;
+  flex-direction: column;
+  width: 511px;
+}
+
+.containerSpect {
+  margin-top: 25px;
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.spectsNames {
+  gap: 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.spectsSpect {
+  gap: 6px;
+  display: flex;
+  flex-direction: column;
+  color: #0F0F11;
+  text-align: right;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.recommendations {
+  margin-top: 80px;
 }

@@ -3,28 +3,71 @@ import React, { useEffect, useState } from 'react';
 import styles from './productDetail.module.scss';
 import { Header } from '../Header/header';
 import { Footer } from '../Footer/footer';
-import { NavLink } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
-import { loadProductsDetail } from '../../feachers/tabletSlice';
-import { ProductType } from '../../services/enums';
+import { NavLink, useSearchParams } from 'react-router-dom';
+import { useAppSelector } from '../../Hooks/hooks';
+// import { loadProductsDetail } from '../../feachers/detailSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Goods } from '../goods/GoodsComponent';
+import heardBuron from './logo/Favourites.png';
+import { ProductDetailes } from '../../services/ProductDetailType';
+// import useHistory from 'react-router-dom';
 
 type Props = {
-  type: ProductType;
   title: string;
 };
 
-export const ProductDetails: React.FC<Props> = ({ type }) => {
+export const ProductDetails: React.FC<Props> = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
-  const [currentImageIndex, setCurrentImageIndex] = useState(0);
-  const details = useAppSelector(state => state.detail.detail);
-  const dispatch = useAppDispatch();
+  const [, setCurrentImageIndex] = useState(0);
+  // const details = useAppSelector(state => state.detail.detail);
+  const recommendationsProduct = useAppSelector(state => state.phones.products);
+  const [params] = useSearchParams();
+
+  const id = params.get('id');
+  const productDetails = useAppSelector(state => state.phones.productsDetails);
+  const [product, setProduct] = useState<ProductDetailes | null>(null);
 
   useEffect(() => {
-    dispatch(loadProductsDetail(type));
-  }, []);
+    setProduct(productDetails.find(item => item.id === id) || null);
+  }, [id, productDetails]);
+
+  const handlerProductColor = (color: string) => {
+    if (product?.color === color) {
+      return;
+    }
+
+    const foundProduct = productDetails.find(
+      item => item.color === color && item.namespaceId === product?.namespaceId,
+    );
+
+    setProduct(foundProduct || null);
+  };
+
+  const handlerSelectCapacity = (capacity: string) => {
+    const currentColor = product?.color;
+    const foundProduct = productDetails.find(
+      item =>
+        item.capacity === capacity &&
+        item.namespaceId === product?.namespaceId &&
+        item.color === currentColor,
+    );
+
+    setProduct(foundProduct || null);
+  };
+
+  // useEffect(() => {
+  //   const loadedProduct = productDetails.find(item => item.id === id) || null;
+
+  //   setProduct(loadedProduct);
+  // }, [id, productDetails]);
 
   // console.log(type, detail);
+
+  // const history = useHistory();
+
+  // const goBack = () => {
+  //   history.goBack();
+  // };
 
   return (
     <>
@@ -73,7 +116,7 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
             />
           </svg>
           <NavLink to={'/phones'}>
-            <span className={styles.phones}>Phones</span>
+            <span className={styles.product}>{product?.category}</span>
           </NavLink>
           <svg
             className={styles.arrow}
@@ -91,13 +134,11 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
               fill="#0F0F11"
             />
           </svg>
-          <span className={styles.productName}>
-            Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-          </span>
+          <span className={styles.productName}>{product?.name}</span>
         </div>
         <div className={styles.linkBack}>
           <svg
-            className={styles.arrow}
+            className={styles.arrowBack}
             xmlns="http://www.w3.org/2000/svg"
             width="16"
             height="16"
@@ -116,9 +157,7 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
             <span className={styles.back}>Back</span>
           </NavLink>
         </div>
-        <h1 className={styles.detailTitle}>
-          Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)
-        </h1>
+        <h1 className={styles.detailTitle}>{product?.name}</h1>
         <div className={styles.productDetailsAndSviper}>
           <div className={styles.swiperContainer}>
             <Swiper
@@ -126,41 +165,190 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
               spaceBetween={10}
               navigation={true}
               slidesPerView={1}
-              loop={true}
+              // loop={true}
               // grabCursor={true}
               onSlideChange={swiper => setCurrentSlideIndex(swiper.activeIndex)}
               autoplay={{
                 delay: 5000,
               }}
             >
-              {details &&
-                details.map((detail, index) => (
+              {product &&
+                product.images.map((_detail, index) => (
                   <SwiperSlide className={styles.slide} key={index}>
-                    {detail.images &&
-                      detail.images.map((imageUrl, imgIndex) => (
+                    {product?.images &&
+                      product.images.map((imageUrl, imgIndex) => (
                         <img
                           key={imgIndex}
                           src={imageUrl}
                           alt="Phone"
                           className={styles.smallImage}
-                          onClick={() => setCurrentImageIndex(imgIndex)}
+                          onClick={() => {
+                            setCurrentSlideIndex(imgIndex);
+                            setCurrentImageIndex(index);
+                          }}
                         />
                       ))}
                   </SwiperSlide>
                 ))}
             </Swiper>
             <div className={styles.bigImageContainer}>
-              {details &&
-                details[currentSlideIndex] &&
-                details[currentSlideIndex].images && (
-                  <img
-                    src={details[currentSlideIndex].images[currentImageIndex]}
-                    alt="Big Phone"
-                    className={styles.bigImage}
-                  />
-                )}
+              {product && product.images[currentSlideIndex] && (
+                <img
+                  src={product.images[currentSlideIndex]}
+                  alt="Big Phone"
+                  className={styles.bigImage}
+                />
+              )}
             </div>
           </div>
+
+          <div className={styles.containerColorsAndSpects}>
+            <div className={styles.colors}>
+              <div className={styles.colorsWrapper}>
+                <p className={styles.namesDetailsProduct}>Available colors</p>
+              </div>
+              <ul className={styles.colorsList}>
+                {product?.colorsAvailable.map((color, index) => (
+                  <div
+                    onClick={() => handlerProductColor(color)}
+                    className={
+                      product.color === color
+                        ? `${styles.buttonColor} ${styles.active}`
+                        : `${styles.buttonColor}`
+                    }
+                    style={{ backgroundColor: color }}
+                    key={index}
+                  />
+                ))}
+
+                {/* <div className={styles.buttonColor} />
+                <div className={styles.buttonColor} />
+                <div className={styles.buttonColor} /> */}
+              </ul>
+            </div>
+
+            <span className={styles.line}></span>
+
+            <div className={styles.capacityDetails}>
+              <p className={styles.namesDetailsProduct}>Select capacity</p>
+              <ul className={styles.capacityList}>
+                {product?.capacityAvailable.map(capacity => (
+                  <div
+                    onClick={() => handlerSelectCapacity(capacity)}
+                    className={
+                      product.capacity === capacity
+                        ? `${styles.capacity} ${styles.active}`
+                        : styles.capacity
+                    }
+                    key={capacity}
+                  >
+                    {capacity}
+                  </div>
+                ))}
+              </ul>
+            </div>
+
+            <span className={styles.line}></span>
+
+            <div className={styles.priceAndAdd}>
+              <div className={styles.prices}>
+                <span className={styles.priceCurrent}>
+                  {product?.priceDiscount}
+                </span>
+                <span className={styles.priceOld}>{product?.priceRegular}</span>
+              </div>
+              <div className={styles.buttonsContainer}>
+                <button className={styles.addButton}>Add to cart</button>
+                <button className={styles.likeButton}>
+                  <img className={styles.like} src={heardBuron}></img>
+                </button>
+              </div>
+            </div>
+
+            <div className={styles.productSpects}>
+              <div className={styles.spectsContainer}>
+                <span className={styles.name}>Screen</span>
+                <span className={styles.name}>Resolution</span>
+                <span className={styles.name}>Processor</span>
+                <span className={styles.name}>RAM</span>
+              </div>
+              <div className={styles.spectsContainer}>
+                <span className={styles.spects}>{product?.screen}</span>
+                <span className={styles.spects}>{product?.resolution}</span>
+                <span className={styles.spects}>{product?.namespaceId}</span>
+                <span className={styles.spects}>{product?.ram}</span>
+              </div>
+            </div>
+          </div>
+
+          <span className={styles.prodId}>{`ID: ${product?.id}`}</span>
+        </div>
+        <div className={styles.aboutProductContainer}>
+          <div className={styles.aboutProduct}>
+            <h2 className={styles.title}>About</h2>
+            <span className={styles.line}></span>
+            {product?.description.map(item => (
+              <>
+                <h3 className={styles.titleDeccriptions} key={item.title}>
+                  {item.title}
+                </h3>
+                <p className={styles.description}>{item.text}</p>
+              </>
+            ))}
+
+            {/* <h3 className={styles.titleDeccriptions}>Camera</h3>
+            <p className={styles.description}>
+              Meet the first triple‑camera system to combine cutting‑edge
+              technology with the legendary simplicity of iPhone. Capture up to
+              four times more scene. Get beautiful images in drastically lower
+              light. Shoot the highest‑quality video in a smartphone — then edit
+              with the same tools you love for photos. You’ve never shot with
+              anything like it.
+            </p>
+            <h3 className={styles.titleDeccriptions}>
+              Shoot it. Flip it. Zoom it. Crop it. Cut it. Light it. Tweak it.
+              Love it.
+            </h3>
+            <p className={styles.description}>
+              iPhone 11 Pro lets you capture videos that are beautifully true to
+              life, with greater detail and smoother motion. Epic processing
+              power means it can shoot 4K video with extended dynamic range and
+              cinematic video stabilization — all at 60 fps. You get more
+              creative control, too, with four times more scene and powerful new
+              editing tools to play with.
+            </p> */}
+          </div>
+
+          <div className={styles.techSpectBlock}>
+            <h2 className={styles.title}>Tech specs</h2>
+            <span className={styles.line}></span>
+            <div className={styles.containerSpect}>
+              <div className={styles.spectsNames}>
+                <span className={styles.name}>Screen</span>
+                <span className={styles.name}>Resolution</span>
+                <span className={styles.name}>Processor</span>
+                <span className={styles.name}>RAM</span>
+                <span className={styles.name}>Built in memory</span>
+                <span className={styles.name}>Camera</span>
+                <span className={styles.name}>Zoom</span>
+                <span className={styles.name}>Cell</span>
+              </div>
+              <div className={styles.spectsSpect}>
+                <span className={styles.spects}>{product?.screen}</span>
+                <span className={styles.spects}>{product?.resolution}</span>
+                <span className={styles.spects}>{product?.processor}</span>
+                <span className={styles.spects}>{product?.ram}</span>
+                <span className={styles.spects}>{product?.capacity}</span>
+                <span className={styles.spects}>{product?.camera}</span>
+                <span className={styles.spects}>{product?.zoom}</span>
+                <span className={styles.spects}>{product?.cell}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.recommendations}>
+          <Goods title="You may also like" phones={recommendationsProduct} />
         </div>
       </section>
       <Footer />

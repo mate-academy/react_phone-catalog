@@ -14,32 +14,31 @@ export const ProductCard: React.FC<Props> = ({ item, type }) => {
   // eslint-disable-next-line no-console
   console.log(type);
 
-  // let productPath = '';
+  let productPath = '';
 
-  // switch (type) {
-  //   case ProductType.phones:
-  //     productPath = '/phones';
-  //     break;
-  //   case ProductType.tablets:
-  //     productPath = '/tablets';
-  //     break;
-  //   case ProductType.accessories:
-  //     productPath = '/accessories';
-  //     break;
-  //   default:
-  //     productPath = '/';
-  // }
+  switch (type) {
+    case ProductType.phones:
+      productPath = '/phones/details';
+      break;
+    case ProductType.tablets:
+      productPath = '/tablets/details';
+      break;
+    case ProductType.accessories:
+      productPath = '/accessories/details';
+      break;
+    default:
+      productPath = '/';
+  }
 
   return (
     <>
       <section className={styles.cardProductSection}>
-        <NavLink to={`/details`}>
-          {/* {${productPath}/${item.id}} */}
+        <NavLink to={{ pathname: productPath, search: `?id=${item.itemId}` }}>
           <img
             className={styles.productImages}
             src={item.image}
             alt="Product"
-          ></img>
+          />
         </NavLink>
         <h3 className={styles.productTitles}>{item.name}</h3>
         <div className={styles.productPrices}>

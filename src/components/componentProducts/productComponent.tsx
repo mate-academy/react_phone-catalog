@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import styles from './product.module.scss';
 import 'bulma/css/bulma.min.css';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/header';
 import { Footer } from '../Footer/footer';
-import { Pangination } from '../Pangination/Pangination';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../services/enums';
-import { loadProducts } from '../../feachers/goodsPhoneSlice/productSlice';
+import {
+  loadProducts,
+  loadProductsDetail,
+} from '../../feachers/goodsPhoneSlice/productSlice';
 import Loader from '../loader/spiner';
+import { Pagination } from '../Pangination/Pangination';
+import { Sort, getSortedProducts } from '../../functions/sorted';
+// import { loadProductsDetail } from '../../feachers/detailSlice';
 
 type Props = {
   type: ProductType;
@@ -17,13 +22,74 @@ type Props = {
 };
 
 export const Products: React.FC<Props> = ({ type, title }) => {
+  const [perPage, setPerPage] = useState(16);
+  const [sorted, setSorted] = useState<Sort>(Sort.newest);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+  const [totalItems, setTotalItems] = useState(0);
+  const [isDropdown, setIsDrobdown] = useState(false);
+  const [isDropdownSorted, setIsDrobdownSorted] = useState(false);
   const products = useAppSelector(state => state.phones.products);
   const load = useAppSelector(state => state.phones.isLoading);
   const dispatch = useAppDispatch();
 
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const [visibleProducts, setVisibleProducts] = useState(
+    getSortedProducts(products, sorted),
+  );
+
+  //Pangination
+  const itemsToPrint = () => {
+    const startIndex = (currentPage - 1) * perPage;
+    const endIndex = Math.min(startIndex + perPage, totalItems);
+
+    return visibleProducts.slice(startIndex, endIndex);
+  };
+
+  const handleChangePage = (page: number) => {
+    setCurrentPage(page);
+
+    setSearchParams(`page ${page}`);
+  };
+
+  useEffect(() => {
+    setTotalPages(Math.ceil(visibleProducts.length / perPage));
+    setTotalItems(visibleProducts.length);
+  }, [visibleProducts, perPage]);
+
+  // end-pangination
+
+  // const handlePerPageChange = (newPerPage: number) => {
+  //   setPerPage(newPerPage);
+  // };
+
   useEffect(() => {
     dispatch(loadProducts(type));
-  }, []);
+    dispatch(loadProductsDetail(type));
+  }, [type]);
+
+  const drobdownHandler = () => {
+    setIsDrobdown(prev => !prev);
+  };
+
+  const sortDrobdownHandler = () => {
+    setIsDrobdownSorted(prev => !prev);
+  };
+
+  useEffect(() => {
+    setVisibleProducts(getSortedProducts(products, sorted));
+  }, [sorted, products]);
+
+  const handlerSortedProduct = (sort: Sort) => {
+    setSorted(sort);
+  };
+
+  useEffect(() => {
+    searchParams.set('sort', sorted);
+    searchParams.set('items', String(perPage));
+    setSearchParams(searchParams);
+  }, [searchParams]);
 
   return (
     <>
@@ -77,14 +143,17 @@ export const Products: React.FC<Props> = ({ type, title }) => {
         </div>
         <div className={styles.titleAndMpdels}>
           <h1 className={styles.phoneTitle}>{title}</h1>
-          <span className={styles.models}>95 models</span>
+          <span className={styles.models}>{products.length} models</span>
         </div>
         <div className={styles.filters}>
           <div className={styles.selectAndSortBy}>
             <span className={styles.selectDescription}>Sort by</span>
             <div className={styles.selectAndItemsPage}>
-              <div className={styles.customSelectSortBy}>
-                <span className={styles.selectItem}>Newest</span>
+              <div
+                className={styles.customSelectSortBy}
+                onClick={sortDrobdownHandler}
+              >
+                <span className={styles.selectItem}>{sorted}</span>
                 <svg
                   className={styles.selectIcon}
                   xmlns="http://www.w3.org/2000/svg"
@@ -101,13 +170,27 @@ export const Products: React.FC<Props> = ({ type, title }) => {
                     fill="#B4BDC4"
                   />
                 </svg>
-                {false && (
+                {isDropdownSorted && (
                   <div className={styles.selectDrobdownSortBy}>
-                    <span className={styles.drobdownItem}>Alphabetically</span>
-                    <span className={styles.drobdownItem}>Age</span>
-                    <span className={styles.drobdownItem}>Title</span>
-                    <span className={styles.drobdownItem}>Price</span>
-                    <span className={styles.drobdownItem}>All</span>
+                    {[Sort.alphabet, Sort.cheapest, Sort.newest].map(sort => (
+                      // eslint-disable-next-line react/jsx-key
+                      <NavLink
+                        to={{
+                          pathname: '',
+                          search: `?sort=${sort}`,
+                        }}
+                      >
+                        <span
+                          className={styles.drobdownItem}
+                          key={sort}
+                          onClick={() => {
+                            handlerSortedProduct(sort);
+                          }}
+                        >
+                          {sort}
+                        </span>
+                      </NavLink>
+                    ))}
                   </div>
                 )}
               </div>
@@ -115,8 +198,10 @@ export const Products: React.FC<Props> = ({ type, title }) => {
           </div>
           <div className={styles.selectAndItemsPage}>
             <span className={styles.selectDescription}>Items on page</span>
-            <div className={styles.customSelectItems}>
-              <span className={styles.selectItem}>16</span>
+            <div className={styles.customSelectItems} onClick={drobdownHandler}>
+              <span className={styles.selectItem}>
+                {perPage === products.length ? 'All' : perPage}
+              </span>
               <svg
                 className={styles.selectIcon}
                 xmlns="http://www.w3.org/2000/svg"
@@ -133,12 +218,31 @@ export const Products: React.FC<Props> = ({ type, title }) => {
                   fill="#B4BDC4"
                 />
               </svg>
-              {false && (
+              {isDropdown && (
                 <div className={styles.selectDrobdownItem}>
-                  <span className={styles.drobdownItem}>4</span>
-                  <span className={styles.drobdownItem}>8</span>
-                  <span className={styles.drobdownItem}>16</span>
-                  <span className={styles.drobdownItem}>All</span>
+                  {[4, 8, 16].map(value => (
+                    // eslint-disable-next-line react/jsx-key
+                    <NavLink
+                      to={{
+                        pathname: '',
+                        search: `?items=${value}`,
+                      }}
+                    >
+                      <span
+                        key={value}
+                        className={styles.drobdownItem}
+                        onClick={() => setPerPage(value)}
+                      >
+                        {value}
+                      </span>
+                    </NavLink>
+                  ))}
+                  <span
+                    className={styles.drobdownItem}
+                    onClick={() => setPerPage(products.length)}
+                  >
+                    All
+                  </span>
                 </div>
               )}
             </div>
@@ -147,14 +251,20 @@ export const Products: React.FC<Props> = ({ type, title }) => {
         <div className={styles.products}>
           <div className={styles.loaderContainer}>{load && <Loader />}</div>
           <div className={styles.productGrid}>
-            {products.map(item => (
+            {itemsToPrint().map(item => (
               <div key={item.id}>
                 {!load && <ProductCard item={item} type={type} />}{' '}
               </div>
             ))}
           </div>
         </div>
-        <Pangination />
+        <div className={styles.pangination}>
+          <Pagination
+            totalPages={totalPages}
+            currentPage={currentPage}
+            onPageChange={handleChangePage}
+          />
+        </div>
       </section>
       <Footer />
     </>
