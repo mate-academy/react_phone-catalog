@@ -1,0 +1,73 @@
+.favorites {
+  display: flex;
+  flex-direction: column;
+  max-width: 1200px;
+  margin-inline: auto;
+}
+
+.homeLinkContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 24px;
+  align-items: center;
+}
+
+.home {
+  width: 16px;
+  height: 16px;
+  color: #0F0F11;
+}
+
+.arrow {
+  width: 16px;
+  height: 16px;
+  color: #89939A;
+}
+
+.link {
+  color:  #89939A;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+
+  &:hover {
+    color: #0F0F11;
+  }
+}
+
+.titleAndItems {
+  display: flex;
+  flex-direction: column;
+  margin-top: 40px;
+  gap: 8px;
+}
+
+.favoritesTitle {
+  color: #0F0F11;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+}
+
+.items {
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 40px 0;
+}
+
+.productGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 21.2px;
+}

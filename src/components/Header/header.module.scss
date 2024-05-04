@@ -2,6 +2,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: #FFF;
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
 
 .header {
@@ -19,6 +23,7 @@
   padding-left: 24px;
   width: 80px;
   height: 28px;
+  background: #FFF;
 }
 
 .menuLogo {
@@ -26,9 +31,11 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
+  background: #FFF;
 }
 
 .buttonsContainer {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: flex-end;
@@ -36,6 +43,7 @@
 }
 
 .headerButtons {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,15 +55,60 @@
   color: #FFF;
 }
 
+.navLinks {
+  background: #FFF;
+}
+
+.favoriteCounts {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 48%;
+  right: 0%;
+  top: 26%;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+  color: #FFF;
+  text-align: center;
+  font-size: 9px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  background-color: #F447AF;
+  border-radius: 50%;
+}
+
 .headerButtonIcon {
   box-sizing: border-box;
   width: 16px;
   height: 16px;
   flex-shrink: 0;
   color: #0F0F11;
-
-  &:hover {
-    transform: scale(1.3);
-  }
+  background: #FFF;
+  overflow: hidden;
 }
+
+.isActive {
+  text-decoration: none;
+  color: #0F0F11;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+
+  &::after {
+    content: '';
+    color: #0F0F11;
+    position: absolute;
+    bottom: 0;
+    width: 64px;
+    height: 4px;
+    background-color: #0F0F11;
+    border-radius: 2px;
+  }
+};
 

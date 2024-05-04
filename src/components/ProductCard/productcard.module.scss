@@ -58,7 +58,7 @@
   font-size: 22px;
   font-weight: 500;
   line-height: normal;
-  text-decoration-line: strikethrough;
+  text-decoration: line-through
 }
 
 .line {
@@ -127,6 +127,28 @@
   }
 }
 
+.addedCart {
+  display: flex;
+  height: 40px;
+  width: 160px;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 0;
+  border-radius: 8px;
+  border: 1px solid #E2E6E9;
+  color: #216CFF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  outline: transparent;
+  background-color: #FFF;
+
+  &:hover {
+   border-color: #216CFF;
+  }
+}
+
 .like {
   outline: transparent;
   width: 40px;
@@ -151,5 +173,6 @@
     transform: scale(1.2);
   }
 }
+
 
 

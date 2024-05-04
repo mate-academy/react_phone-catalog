@@ -10,6 +10,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Goods } from '../goods/GoodsComponent';
 import heardBuron from './logo/Favourites.png';
 import { ProductDetailes } from '../../services/ProductDetailType';
+import { colors } from '../../services/colors';
 // import useHistory from 'react-router-dom';
 
 type Props = {
@@ -26,10 +27,25 @@ export const ProductDetails: React.FC<Props> = () => {
   const id = params.get('id');
   const productDetails = useAppSelector(state => state.phones.productsDetails);
   const [product, setProduct] = useState<ProductDetailes | null>(null);
+  // const location = useLocation();
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     setProduct(productDetails.find(item => item.id === id) || null);
   }, [id, productDetails]);
+
+  // useEffect(() => {
+  //   const storedId = localStorage.getItem('productId');
+  //   const initialId = id || storedId;
+
+  //   setProduct(productDetails.find(item => item.id === initialId) || null);
+  // }, [id, productDetails]);
+
+  // useEffect(() => {
+  //   if (id) {
+  //     localStorage.setItem('productId', id);
+  //   }
+  // }, [id]);
 
   const handlerProductColor = (color: string) => {
     if (product?.color === color) {
@@ -54,6 +70,13 @@ export const ProductDetails: React.FC<Props> = () => {
 
     setProduct(foundProduct || null);
   };
+
+  useEffect(() => {
+    searchParams.set('capacity', product?.capacity || '');
+    searchParams.set('id', String(id));
+    searchParams.set('color', String(product?.color));
+    setSearchParams(searchParams);
+  }, [searchParams, product?.capacity]);
 
   // useEffect(() => {
   //   const loadedProduct = productDetails.find(item => item.id === id) || null;
@@ -212,11 +235,11 @@ export const ProductDetails: React.FC<Props> = () => {
                   <div
                     onClick={() => handlerProductColor(color)}
                     className={
-                      product.color === color
+                      product.color === colors[color]
                         ? `${styles.buttonColor} ${styles.active}`
                         : `${styles.buttonColor}`
                     }
-                    style={{ backgroundColor: color }}
+                    style={{ backgroundColor: colors[color] }}
                     key={index}
                   />
                 ))}
@@ -232,15 +255,15 @@ export const ProductDetails: React.FC<Props> = () => {
             <div className={styles.capacityDetails}>
               <p className={styles.namesDetailsProduct}>Select capacity</p>
               <ul className={styles.capacityList}>
-                {product?.capacityAvailable.map(capacity => (
+                {product?.capacityAvailable.map((capacity, index) => (
                   <div
+                    key={index}
                     onClick={() => handlerSelectCapacity(capacity)}
                     className={
                       product.capacity === capacity
                         ? `${styles.capacity} ${styles.active}`
                         : styles.capacity
                     }
-                    key={capacity}
                   >
                     {capacity}
                   </div>
@@ -281,7 +304,7 @@ export const ProductDetails: React.FC<Props> = () => {
             </div>
           </div>
 
-          <span className={styles.prodId}>{`ID: ${product?.id}`}</span>
+          <span className={styles.prodId}>{`ID: ${product?.namespaceId}`}</span>
         </div>
         <div className={styles.aboutProductContainer}>
           <div className={styles.aboutProduct}>

@@ -4,11 +4,13 @@
   align-items: center;
   gap: 64px;
   align-self: stretch;
-  margin-left: 24px;
+  padding-left: 34px;
+  background: #FFF;
 }
 
 .navigation__li {
   list-style: none;
+  background: #FFF;
 
   &:hover {
     color: #0F0F11
@@ -25,6 +27,8 @@
   line-height: 11px;
   letter-spacing: 0.48px;
   text-transform: uppercase;
+  background: #FFF;
+
 
   // &:hover::after {
   //   content: '';
@@ -55,8 +59,8 @@
     left: 0;
     bottom: -24px;
     width: 100%;
-    height: 3px;
+    height: 4px;
     background-color: #0F0F11;
-    border-radius: 20%;
+    border-radius: 2px;
   }
 };

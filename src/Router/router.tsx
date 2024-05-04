@@ -8,6 +8,9 @@ import store from '../store/store';
 import { ProductType } from '../services/enums';
 // eslint-disable-next-line max-len
 import { ProductDetails } from '../components/ProductDetail/ComponentProductDetail';
+import { Favorites } from '../components/Favorites/FavoritesComponent';
+import { Cart } from '../components/Cart/Cart';
+import { NotFoundPage } from '../components/notFoundPage/ComponentNotFound';
 
 export const Root = () => {
   return (
@@ -32,6 +35,35 @@ export const Root = () => {
               <Products type={ProductType.accessories} title="Accessories" />
             }
           />
+
+          <Route
+            path="/favorites"
+            element={
+              <Favorites
+                title={'Favorites'}
+                type={[
+                  ProductType.accessories,
+                  ProductType.phones,
+                  ProductType.tablets,
+                ]}
+              />
+            }
+          />
+
+          <Route
+            path="/cart"
+            element={
+              <Cart
+                title={'Cart'}
+                type={[
+                  ProductType.accessories,
+                  ProductType.phones,
+                  ProductType.tablets,
+                ]}
+              />
+            }
+          />
+
           <Route
             path="/phones/details/"
             element={<ProductDetails title={''} />}
@@ -73,7 +105,7 @@ export const Root = () => {
               />
             }
           /> */}
-          {/* <Route path="*" element={<NotFoundPage />} /> */}
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </HashRouter>
     </Provider>

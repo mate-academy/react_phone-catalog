@@ -1,8 +1,8 @@
 import React, { useRef, useState } from 'react';
 import styles from './banner.module.scss';
 import Banner from './Banner-img/Banner.png';
-import Banner2 from './Banner-img/banner-phones.png';
-import Banner3 from './Banner-img/banner-accessories.png';
+import Banner2 from './Banner-img/slide1.png';
+import Banner3 from './Banner-img/banner3.jpeg';
 import sliderButton from './Banner-img/sliderButton.png';
 import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
@@ -29,7 +29,7 @@ export const Baner: React.FC = () => {
 
   setInterval(() => {
     nextSlide();
-  }, 5000);
+  }, 8000);
 
   return (
     <>

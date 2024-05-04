@@ -14,7 +14,7 @@ import {
 import Loader from '../loader/spiner';
 import { Pagination } from '../Pangination/Pangination';
 import { Sort, getSortedProducts } from '../../functions/sorted';
-// import { loadProductsDetail } from '../../feachers/detailSlice';
+import { useLocalStorage } from '../../local/localStorege';
 
 type Props = {
   type: ProductType;
@@ -35,7 +35,8 @@ export const Products: React.FC<Props> = ({ type, title }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const [visibleProducts, setVisibleProducts] = useState(
+  const [visibleProducts, setVisibleProducts] = useLocalStorage(
+    'visibleProducts',
     getSortedProducts(products, sorted),
   );
 
@@ -57,7 +58,6 @@ export const Products: React.FC<Props> = ({ type, title }) => {
     setTotalPages(Math.ceil(visibleProducts.length / perPage));
     setTotalItems(visibleProducts.length);
   }, [visibleProducts, perPage]);
-
   // end-pangination
 
   // const handlePerPageChange = (newPerPage: number) => {
@@ -172,25 +172,26 @@ export const Products: React.FC<Props> = ({ type, title }) => {
                 </svg>
                 {isDropdownSorted && (
                   <div className={styles.selectDrobdownSortBy}>
-                    {[Sort.alphabet, Sort.cheapest, Sort.newest].map(sort => (
-                      // eslint-disable-next-line react/jsx-key
-                      <NavLink
-                        to={{
-                          pathname: '',
-                          search: `?sort=${sort}`,
-                        }}
-                      >
-                        <span
-                          className={styles.drobdownItem}
-                          key={sort}
-                          onClick={() => {
-                            handlerSortedProduct(sort);
+                    {[Sort.alphabet, Sort.cheapest, Sort.newest].map(
+                      (sort, index) => (
+                        <NavLink
+                          key={index}
+                          to={{
+                            pathname: '',
+                            search: `?sort=${sort}`,
                           }}
                         >
-                          {sort}
-                        </span>
-                      </NavLink>
-                    ))}
+                          <span
+                            className={styles.drobdownItem}
+                            onClick={() => {
+                              handlerSortedProduct(sort);
+                            }}
+                          >
+                            {sort}
+                          </span>
+                        </NavLink>
+                      ),
+                    )}
                   </div>
                 )}
               </div>

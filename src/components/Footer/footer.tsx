@@ -33,13 +33,15 @@ export const Footer: React.FC = () => {
         </ul>
         <div className={styles.toTopContainer}>
           {/* <p className={styles.footerText}>Back to top</p> */}
-          <button className={styles.footerButton}>
-            <img
-              className={styles.buttonIcon}
-              src={sliderButton}
-              alt="Catalog Logo"
-            ></img>
-          </button>
+          <a className={styles.topButtonLink} href={'/'}>
+            <button className={styles.footerButton}>
+              <img
+                className={styles.buttonIcon}
+                src={sliderButton}
+                alt="Catalog Logo"
+              ></img>
+            </button>
+          </a>
         </div>
       </footer>
     </section>

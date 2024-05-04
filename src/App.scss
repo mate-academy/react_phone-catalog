@@ -3,6 +3,11 @@
   font-family: Mont, sans-serif;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 .app {
   background: #FAFBFC;
+  position: relative;
 }

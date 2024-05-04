@@ -14,7 +14,7 @@ export const Categories: React.FC = () => {
           <NavLink to={'/tablets'} className={styles.mobileLink}>
             <div className={styles.tabletPictures}></div>
           </NavLink>
-          <NavLink to={''} className={styles.mobileLink}>
+          <NavLink to={'/accessories'} className={styles.mobileLink}>
             <div className={styles.accesoriesPictures}></div>
           </NavLink>
         </div>

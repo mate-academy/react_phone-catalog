@@ -1,5 +1,5 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 
 type Props = {
   totalPages: number;
@@ -12,6 +12,8 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const location = useLocation();
+
   const generatePageNumbers = () => {
     const pageNumbers = [];
 
@@ -69,7 +71,7 @@ export const Pagination: React.FC<Props> = ({
               {typeof pageNumber === 'number' ? (
                 <NavLink
                   to={{
-                    pathname: '/products',
+                    pathname: location.pathname,
                     search: `?page=${pageNumber}`,
                   }}
                   className={
