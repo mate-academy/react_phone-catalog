@@ -35,11 +35,9 @@ export const Roots = () => (
           />
           <Route path="phones">
             <Route index element={<Phones />} />
-            <Route path=":param" element={<Phones />} />
             <Route path=":productId" element={<ProductPage />} />
           </Route>
-          {/* <Route path="phones" element={<Phones />} />
-          <Route path="/phones/:itemId" element={<ProductPage />} /> */}
+          <Route path="phones/:productId" element={<ProductPage />} />
           <Route path="tablets" element={<Tablets />} />
           <Route path="accessories" element={<Accessories />} />
           <Route path="cart" element={<Cart />} />

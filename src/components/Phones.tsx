@@ -6,6 +6,7 @@ import ArrowUp from '../img/arrow-up.svg';
 // import FavoriteAdded from '../img/favourites filled.svg';
 import filledFavoriteImage from '../img/favourites-filled.svg';
 import { Pagination } from './Pagination';
+// import { set } from 'cypress/types/lodash';
 // import { getSearchWith } from './until/Helper';
 // import { SearchLink } from '../components/SearchLink';
 
@@ -30,21 +31,24 @@ interface Phones {
 export const Phones = () => {
   // const { page, perPage, sortParam } = useParams();
   const { itemsOnPage, setItemsOnPage } = useAppContext();
-  const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
-  const { sortParam, 
-    // setSortParam 
-  } = useAppContext();
+  const { sortParam, setSortParam } = useAppContext();
   const [changeSort, setChangeSort] = useState<boolean>(false);
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { currentPage, setCurrentPage } = useAppContext();
-  const  { visibleElems } = useAppContext();
-  // const { currentPage, setCurrentPage } = useAppContext();
-
   const { getPhone, setGetPhone } = useAppContext();
+  const  { visibleElems } = useAppContext();
+  const { setSelectedProduct } = useAppContext();
+  const { setSortedPhones } = useAppContext();
+  
+  const [searchParams, setSearchParams] = useSearchParams();
+
   const [errorMessage, setErrorMessage] = useState('');
+  const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
+  const [price, setPrice] = useState<number>(0);
+
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
@@ -59,11 +63,11 @@ export const Phones = () => {
 
         const data = await response.json();
 
-        const sortedPhones = [...data];
-        sortedPhones.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
-        setGetPhone(sortedPhones);
+        const sorted = [...data];
+        sorted.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
+        setSortedPhones(sorted);
 
-        // setGetPhone(data);
+        setGetPhone(data);
         setItemsOnPage(data.length)
         const perPage = searchParams.get("perPage");
         if (!perPage || perPage === null) {
@@ -77,8 +81,6 @@ export const Phones = () => {
     fetchData();
   }, []);
 
-  
-console.log(sortParam)
   const blockItemsRef = useRef<HTMLDivElement>(null);
   const blockSortRef = useRef<HTMLDivElement>(null);
 
@@ -116,29 +118,25 @@ console.log(sortParam)
     } else {
       setChangeItemsOnPage(false);
     }
-    // paramsToUpdate()
   };
 
   const handleSort = (sotr: string) => {
     handleChangeSort()
-    if(getPhone) {
-      const sortedPhones = [...getPhone];
+      const params = new URLSearchParams(searchParams);
 
       if (sotr === "Newest") {
-        // sortedPhones.sort((phoneA, phoneB) => phoneA.year - phoneB.year)
-        sortedPhones.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
+        params.set('sortBy', sotr);
       }
 
       if (sotr === "Alphabetically") {
-        sortedPhones.sort((phoneA, phoneB) => phoneA.name.localeCompare(phoneB.name))
+        params.set('sortBy', sotr);
       }
 
       if (sotr === "Cheapest") {
-        sortedPhones.sort((phoneA, phoneB) => phoneA.price - phoneB.price)
+        params.set('sortBy', sotr);
       }
-
-      setGetPhone(sortedPhones)
-    }
+      setSearchParams(params)
+      setSortParam(sotr)
   }
 
   const handleChangeSort = () => {
@@ -148,12 +146,6 @@ console.log(sortParam)
       setChangeSort(false);
     }
   };
-
-  // const handleCart = (id:string) => {
-  //   cartPhones.push(id);
-  //   console.log(cartPhones);
-  // }
-  const [price, setPrice] = useState<number>(0);
 
   useEffect(() => {
     if(prevCartPhonesArr) {
@@ -182,9 +174,6 @@ console.log(sortParam)
     setPrice(0);
 }, [cartPhones, prevCartPhonesArr]);
 
-  // const [favoritePhones, setFavoritePhones] = useState<string>('');
-  // const [ prevFavoriteArr, setPrevFavoriteArr ] = useAppContext();
-
   useEffect(() => {
     if (favoritePhones.trim() !== "") {
       if (prevFavoriteArr?.includes(favoritePhones)) {
@@ -198,10 +187,6 @@ console.log(sortParam)
 
   errorMessage;
 
-  const { setSelectedProduct } = useAppContext();
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  // const currentParams = new URLSearchParams(window.location.search);
   useEffect(() => {
     const page = searchParams.get("page");
     const perPage = searchParams.get("perPage");
@@ -215,19 +200,39 @@ console.log(sortParam)
     console.log('working')
   },[searchParams])
 
+  useEffect(() => {
+    if (getPhone) {
+      let sortedPhones = [...getPhone];
+      const sortBy = searchParams.get("sortBy");
 
+      if (!sortBy || sortBy === null && sortParam){
+        setSortParam("Newest")
+      } 
 
-  // const paramsToUpdate = () => {
-  //   const page = `${currentPage}`;
-  //   const perPage = `${itemsOnPage}`;
+      if(sortBy) {
+        setSortParam(sortBy)
+      }
+        if (sortBy === "Newest") {
+          sortedPhones = sortedPhones.sort((phoneA, phoneB) => phoneB.year - phoneA.year);
+        }
+    
+        if (sortBy === "Alphabetically") {
+          sortedPhones = sortedPhones.sort((phoneA, phoneB) => phoneA.name.localeCompare(phoneB.name))
+        }
 
-  //   if (currentPage && itemsOnPage) {
-  //     setSearchParams({page, perPage})
-  //   }
-  // };
+        if (sortBy === "Cheapest") {
+          sortedPhones = sortedPhones.sort((phoneA, phoneB) => phoneA.price - phoneB.price)
+        }
+        setSortedPhones(sortedPhones)
+    }
+  }, [searchParams])
 
   const change = (param: number) => {
-    setSearchParams({page: `1`, perPage: `${param}`})
+    const params = new URLSearchParams(searchParams);
+    params.set("page", `1`);
+    params.set("perPage", `${param}`);
+
+    setSearchParams(params);
   }
 
   console.log(currentPage, itemsOnPage);

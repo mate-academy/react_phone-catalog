@@ -24,24 +24,49 @@ interface Phones {
 }
 
 export const Cart = () => {
-  const { getPhone } = useAppContext();
+  // const { getPhone } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
 
   const [productInCart, setProductInCart] = useState<Phones[] | undefined>();
+
+  const [totalCaunt, setTotalCaunt] = useState(0);
+  const { setSelectedProduct } = useAppContext();
  //
-  useEffect(() => {
-    if(prevCartPhonesArr) {
-      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
-    }
-  }, [prevCartPhonesArr]);
+  // useEffect(() => {
+  //   if(prevCartPhonesArr) {
+  //     localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+  //   }
+  // }, [prevCartPhonesArr]);
+
+  // useEffect(() => {
+    
+  // }, []);
+  //
+  const { getPhone, setGetPhone } = useAppContext();
+  const [errorMessage, setErrorMessage] = useState('');
+  errorMessage;
+  const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
   useEffect(() => {
-    const savedValue = localStorage.getItem('savedCartName');
-    if (savedValue) {
-      setPrevCartPhonesArr(JSON.parse(savedValue));
-    }
+    const fetchData = async () => {
+      try {
+        const response = await fetch(url);
+
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+
+        setGetPhone(data);
+      } catch (error) {
+        setErrorMessage('Error during fetch:');
+      }
+    };
+
+    fetchData();
   }, []);
-  //
+
   const handleDeleteInCart = (deletElem: string) => {
     if (prevCartPhonesArr && prevCartPhonesArr.find(elem => elem.id.includes(deletElem))) {
       setPrevCartPhonesArr(prevCartPhonesArr.filter(elem => elem.id !== deletElem))
@@ -61,9 +86,9 @@ export const Cart = () => {
       const totalCaunt = sum.reduce((total, currentValue) => total + currentValue, 0);
       setTotalCaunt(totalCaunt);
   }
-  }, [prevCartPhonesArr]);
+  }, [prevCartPhonesArr, getPhone]);
 
-  const [totalCaunt, setTotalCaunt] = useState(0);
+  
 
   const handleCountUp = (id: string) => {
     
@@ -92,14 +117,16 @@ export const Cart = () => {
         setPrevCartPhonesArr(updatedCartPhones);
     }
   }
-  const { setSelectedProduct } = useAppContext();
+  
+
+  console.log(productInCart);
 
   return (
     <section className="cart__wrapper">
       <div className="cart__content">
         <h2 className="cart__content__title">Cart</h2>
         <div className="cart__content__blocks">
-          {!prevCartPhonesArr || prevCartPhonesArr.length === 0 ? (
+          {!prevCartPhonesArr  ? (
             <div>
               <p className="phones__header__paragraph">Your cart is empty</p>
               <NavLink to="/" className="phones__header__return-home">

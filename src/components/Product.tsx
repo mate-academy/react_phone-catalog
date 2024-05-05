@@ -151,6 +151,19 @@ export const ProductPage = () => {
     }
   }, []);
 
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
+
   return (
     <section className="product__wrapper">
       <div className="product__content">

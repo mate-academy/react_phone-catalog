@@ -67,6 +67,8 @@ const AppContext = createContext<{
   getPhone: Phones[] | undefined;
   setGetPhone: React.Dispatch<React.SetStateAction<Phones[] | undefined>>;
   visibleElems: Phones[] | undefined;
+  sortedPhones: Phones[] | undefined;
+  setSortedPhones: React.Dispatch<React.SetStateAction<Phones[] | undefined>>;
 
 } | undefined>(undefined);
 
@@ -93,6 +95,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
 
   const [selectedProduct, setSelectedProduct] = useState<string>();
   const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
+  const [sortedPhones, setSortedPhones] = useState<Phones[] | undefined>();
   const [sortParam, setSortParam] = useState<string>('Newest');
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -113,7 +116,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
       const firstPageIndex = (currentPage - 1) * itemsOnPage;
       const lastPageIndex = firstPageIndex + itemsOnPage;
 
-      return getPhone?.slice(firstPageIndex, lastPageIndex);
+      return sortedPhones?.slice(firstPageIndex, lastPageIndex);
     }
 
     return [];
@@ -154,6 +157,9 @@ export const AppProvider = ({ children }: AppContextProps) => {
       getPhone,
       setGetPhone,
       visibleElems,
+
+      sortedPhones,
+      setSortedPhones,
     }}
     >
       {children}

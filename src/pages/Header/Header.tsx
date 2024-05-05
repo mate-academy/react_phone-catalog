@@ -1,5 +1,9 @@
 import { NavLink } from 'react-router-dom';
-import { useEffect } from 'react';
+import {
+  useEffect,
+  useState,
+} from 'react';
+import cn from 'classnames';
 import Logo from '../../img/logo.svg';
 // import Search from '../../img/Search.svg';
 import Favorite from '../../img/favourites.svg';
@@ -7,12 +11,48 @@ import Basket from '../../img/group.svg';
 import { useAppContext } from '../../components/Context';
 
 export const Header = () => {
-  const { prevCartPhonesArr } = useAppContext();
+  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { prevFavoriteArr } = useAppContext();
+  const [urlState, setUrlState] = useState<string>();
 
   useEffect(() => {
 
   }, [prevCartPhonesArr]);
+
+  useEffect(() => {
+    if (!urlState) {
+      const currentURL = window.location.href;
+      const substrings = currentURL.split('/');
+
+      if (substrings.includes('phones')) {
+        setUrlState('phones');
+      }
+
+      if (substrings.includes('tablets')) {
+        setUrlState('tablets');
+      }
+
+      if (substrings.includes('accessories')) {
+        setUrlState('accessories');
+      }
+      // eslint-disable-next-line max-len
+      if (!substrings.includes('accessories') && !substrings.includes('tablets') && !substrings.includes('phones')) {
+        setUrlState('home');
+      }
+    }
+  }, []);
+
+  useEffect(() => {
+    const savedValue = localStorage.getItem('savedCartName');
+
+    if (savedValue) {
+      setPrevCartPhonesArr(JSON.parse(savedValue));
+    }
+  }, []);
+
+  const handleClick = (page: string) => {
+    setUrlState(page);
+  };
 
   return (
     <header className="header">
@@ -21,22 +61,50 @@ export const Header = () => {
       </NavLink>
       <nav className="nav">
         <ul className="nav__list">
-          <NavLink to="/" className="nav__list__link">
+          <NavLink
+            to="/"
+            className={cn(
+              'nav__list__link',
+              { underline: urlState?.includes('home') },
+            )}
+            onClick={() => handleClick('home')}
+          >
             <li className="nav__list__link__text">
               Home
             </li>
           </NavLink>
-          <NavLink to="phones" className="nav__list__link">
+          <NavLink
+            to="phones"
+            className={cn(
+              'nav__list__link',
+              { underline: urlState?.includes('phones') },
+            )}
+            onClick={() => handleClick('phones')}
+          >
             <li className="nav__list__link__text">
               Phones
             </li>
           </NavLink>
-          <NavLink to="tablets" className="nav__list__link">
+          <NavLink
+            to="tablets"
+            className={cn(
+              'nav__list__link',
+              { underline: urlState?.includes('tablets') },
+            )}
+            onClick={() => handleClick('tablets')}
+          >
             <li className="nav__list__link__text">
               Tablets
             </li>
           </NavLink>
-          <NavLink to="accessories" className="nav__list__link">
+          <NavLink
+            to="accessories"
+            className={cn(
+              'nav__list__link',
+              { underline: urlState?.includes('accessories') },
+            )}
+            onClick={() => handleClick('accessories')}
+          >
             <li className="nav__list__link__text">
               Accessories
             </li>
