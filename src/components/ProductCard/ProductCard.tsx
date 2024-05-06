@@ -1,11 +1,12 @@
 import styles from './productcard.module.scss';
-import heardBuron from './productCard-logo/Favourites.png';
-import heardBuronActive from './productCard-logo/favoriteActive.png';
+// import heardBuron from './productCard-logo/Favourites.png';
+// import heardBuronActive from './productCard-logo/favoriteActive.png';
 import { Product } from '../../services/productType';
 import { NavLink } from 'react-router-dom';
 import { ProductType } from '../../services/enums';
-import React, { useEffect, useState } from 'react';
-import { useLocalStorage } from '../../local/localStorege';
+import React from 'react';
+// import { useLocalStorage } from '../../local/localStorege';
+import { ButtonsAddandFavorits } from './ButtonAdd';
 
 type Props = {
   item: Product;
@@ -13,22 +14,22 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ item, type }) => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
-  const [isFavorite, setIsFavorite] = useState(false);
-  const [isCart, setIsCart] = useState(false);
+  // const [favorites] = useLocalStorage<Product[]>('favorites', []);
+  // const [cart] = useLocalStorage<Product[]>('cart', []);
+  // const [isFavorite, setIsFavorite] = useState(false);
+  // const [isCart, setIsCart] = useState(false);
 
-  useEffect(() => {
-    const isItemInFavorites = favorites.some(favItem => favItem.id === item.id);
+  // useEffect(() => {
+  //   const isItemInFavorites = favorites.some(favItem => favItem.id === item.id);
 
-    setIsFavorite(isItemInFavorites);
-  }, [favorites, item]);
+  //   setIsFavorite(isItemInFavorites);
+  // }, [favorites, item]);
 
-  useEffect(() => {
-    const isItemInCart = cart.some(carItem => carItem.id === item.id);
+  // useEffect(() => {
+  //   const isItemInCart = cart.some(carItem => carItem.id === item.id);
 
-    setIsCart(isItemInCart);
-  }, [cart, item]);
+  //   setIsCart(isItemInCart);
+  // }, [cart, item]);
 
   let productPath = '';
 
@@ -46,31 +47,31 @@ export const ProductCard: React.FC<Props> = ({ item, type }) => {
       productPath = '/';
   }
 
-  const handlerAddFavorites = () => {
-    if (isFavorite) {
-      const updatedFavorites = favorites.filter(
-        favItem => favItem.id !== item.id,
-      );
+  // const handlerAddFavorites = () => {
+  //   if (isFavorite) {
+  //     const updatedFavorites = favorites.filter(
+  //       favItem => favItem.id !== item.id,
+  //     );
 
-      setFavorites(updatedFavorites);
-    } else {
-      const updatedFavorites = [item, ...favorites];
+  //     setFavorites(updatedFavorites);
+  //   } else {
+  //     const updatedFavorites = [item, ...favorites];
 
-      setFavorites(updatedFavorites);
-    }
-  };
+  //     setFavorites(updatedFavorites);
+  //   }
+  // };
 
-  const handlerAddProduct = () => {
-    if (isCart) {
-      const updatedCart = cart.filter(carItem => carItem.id !== item.id);
+  // const handlerAddProduct = () => {
+  //   if (isCart) {
+  //     const updatedCart = cart.filter(carItem => carItem.id !== item.id);
 
-      setCart(updatedCart);
-    } else {
-      const updatedCart = [item, ...cart];
+  //     setCart(updatedCart);
+  //   } else {
+  //     const updatedCart = [item, ...cart];
 
-      setCart(updatedCart);
-    }
-  };
+  //     setCart(updatedCart);
+  //   }
+  // };
 
   return (
     <>
@@ -100,29 +101,7 @@ export const ProductCard: React.FC<Props> = ({ item, type }) => {
             <span className={styles.ramSpecs}>{item.ram}</span>
           </div>
         </div>
-        <div className={styles.cardButtons}>
-          <button
-            className={!isCart ? `${styles.addCard}` : `${styles.addedCart}`}
-            onClick={handlerAddProduct}
-          >
-            {!isCart ? 'Add to cart' : 'Added'}
-          </button>
-          <button className={styles.like} onClick={handlerAddFavorites}>
-            {!isFavorite ? (
-              <img
-                className={styles.heardIcon}
-                src={heardBuron}
-                alt="Favorite"
-              ></img>
-            ) : (
-              <img
-                className={styles.heardIcon}
-                src={heardBuronActive}
-                alt="Favorite"
-              ></img>
-            )}
-          </button>
-        </div>
+        <ButtonsAddandFavorits item={item} />
       </section>
     </>
   );

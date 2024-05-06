@@ -1,7 +1,9 @@
 .appBody {
-  margin-inline: 152px;
+  margin-inline: auto;
   max-width: 1200px;
+  padding-inline: 34px;
   scroll-behavior: smooth;
+  flex: 1;
 }
 
 .mainTitles {
@@ -11,14 +13,34 @@
   font-weight: 800;
   line-height: 56px;
   letter-spacing: -0.48px;
-  width: 1136px;
+  width: 100%; /* Змінено ширину на 100% */
+  max-width: 1136px; /* Змінено на максимальну ширину контейнера */
 }
 
-.loaderContainer{
+.loaderContainer {
   margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1200px;
+  width: 100%; /* Змінено ширину на 100% */
+  max-width: 1200px; /* Змінено на максимальну ширину контейнера */
 }
 
+// @media (min-width: 640px) {
+//   .appBody {
+//     margin-inline: 24px; /* Встановлено відступи 24px для ширини від 640px до 1999px */
+//   }
+// }
+
+// @media (min-width: 1200px) {
+//   .appBody {
+//     max-width: 1400px; /* Збільшено максимальну ширину контейнера на ширину 1400px для ширини від 1200px і більше */
+//     margin-inline: 152px; /* Встановлено відступи 152px для ширини від 1200px і більше */
+//   }
+// }
+
+// @media (max-width: 639px) {
+//   .appBody {
+//     margin-inline: 16px; /* Встановлено відступи 16px для ширини від 320px до 639px */
+//   }
+// }

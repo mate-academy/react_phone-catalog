@@ -11,4 +11,5 @@ export type Phones = {
   fullPrice: number;
   itemId: string;
   year: number;
+  counter: number;
 };

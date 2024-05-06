@@ -7,7 +7,24 @@ html {
   scroll-behavior: smooth;
 }
 
-.app {
-  background: #FAFBFC;
-  position: relative;
+.wraper {
+  display: flex;
+  max-width: 1400px;
+  flex-direction: column;
+  margin: 0 auto;
 }
+
+// .app {
+//   background: #FAFBFC;
+//   position: relative;
+//   display: flex;
+//   flex-direction: column;
+//   max-width: 1200px;
+// }
+
+// .mainContainer {
+//   max-width: 1400px;
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+// }

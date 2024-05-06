@@ -1,8 +1,10 @@
 .mobilePhones {
-display: flex;
-flex-direction: column;
-max-width: 1200px;
-margin-inline: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  max-width: 1200px;
+  margin-inline: auto;
+  height: 100%;
 }
 
 .homeLinkContainer {
@@ -203,13 +205,67 @@ margin-inline: auto;
 }
 
 .productGrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 21.2px;
+  @media (min-width: 1200px) {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 21.2px;
+  }
 }
+
+// flex-wrap: wrap;
 
 .pangination {
   margin: 40px 0;
 }
+
+@media (min-width: 640px) {
+  .mobilePhones {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 24px;
+  }
+
+  .phoneTitle {
+    max-width: 592px;
+    color: #0F0F11;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+
+  .productGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 21.2px;
+  }
+}
+
+@media (min-width: 1400px) {
+  .mobilePhones {
+    display: flex;
+    flex-direction: column;
+    max-width: 1200px;
+    margin-inline: auto;
+  }
+
+  .productGrid {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 894px) {
+  .productGrid {
+    justify-content: center;
+  }
+
+  .products {
+    padding-inline: auto;
+  }
+}
+
+
 

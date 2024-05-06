@@ -1,8 +1,18 @@
+.cartWrapper {
+  display: flex;
+  flex-direction: column;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 .cart {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
+  height: 100%;
   margin-inline: auto;
+  flex: 1;
+  min-height: 700px;
 }
 
 .linkBack {

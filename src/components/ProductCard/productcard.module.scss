@@ -11,6 +11,7 @@
   border: 1px solid #E2E6E9;
   background: #FFF;
   margin-right: 16px;
+  overflow-x: hidden;
 
   &:hover {
     transform: scale(1.03);
@@ -22,6 +23,7 @@
   width: 208px;
   height: 196px;
   margin-bottom: 34px;
+  flex-shrink: 0;
 
   &:hover {
     transform: scale(1.1);

@@ -11,4 +11,5 @@ export interface Product {
   screen: string;
   ram: string;
   year: number;
+  counter: number;
 }

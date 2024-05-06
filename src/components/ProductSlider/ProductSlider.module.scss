@@ -1,8 +1,13 @@
+.sliderWraper {
+  max-width: 1400px;
+}
+
 .sectionGoods {
   display: flex;
   flex-direction: column;
   gap: 16px;
   margin: 80px 0;
+  // padding-inline: 15px;
 }
 
 .tittleAndButtons {
@@ -82,4 +87,33 @@
   justify-content: center;
   align-items: center;
   width: 1150px;
+}
+
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .sliderWraper {
+    width: 640px;
+  }
+
+  .productsCard {
+    padding: 15px 0;
+    width: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+  .swiperSlide {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+
+  .swiperSlide, .swiper-wrapper {
+    overflow-x: hidden;
+    // margin-inline: 0 auto;
+    flex-shrink: 0;
+  }
 }

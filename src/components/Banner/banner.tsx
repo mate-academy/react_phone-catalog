@@ -33,64 +33,68 @@ export const Baner: React.FC = () => {
 
   return (
     <>
-      <section className={styles.sectionBanner}>
-        <button className={styles.bannerButtons} onClick={prevSlide}>
-          <img
-            className={styles.sliderArrowLeft}
-            src={sliderButton}
-            alt="Previous"
-          />
-        </button>
-        <div className={styles.bannerContent}>
-          <ReactSwiper
-            className={styles.bannerImg}
-            spaceBetween={50}
-            slidesPerView={1}
-            speed={800}
-            loop={true}
-            onSwiper={swiper => {
-              swiperRef.current = swiper;
-            }}
-            onSlideChange={handleSlideChange}
-          >
-            {banners.map((banner, index) => (
-              <SwiperSlide key={index} className="swiper-w">
-                <img
-                  src={banner}
-                  alt={`Banner ${index + 1}`}
-                  className={styles.bannerImg}
+      <div className={styles.bannerWraper}>
+        <section className={styles.sectionBanner}>
+          <button className={styles.bannerButtons} onClick={prevSlide}>
+            <img
+              className={styles.sliderArrowLeft}
+              src={sliderButton}
+              alt="Previous"
+            />
+          </button>
+          <div className={styles.bannerContent}>
+            <ReactSwiper
+              className={styles.bannerImgSwiper}
+              spaceBetween={10}
+              slidesPerView={1}
+              speed={800}
+              loop={true}
+              onSwiper={swiper => {
+                swiperRef.current = swiper;
+              }}
+              onSlideChange={handleSlideChange}
+            >
+              {banners.map((banner, index) => (
+                <SwiperSlide key={index} className={styles.swiperSlide}>
+                  <img
+                    src={banner}
+                    alt={`Banner ${index + 1}`}
+                    className={styles.bannerImg}
+                  />
+                </SwiperSlide>
+              ))}
+            </ReactSwiper>
+            <svg
+              className={styles.bannerDotters}
+              xmlns="http://www.w3.org/2000/svg"
+              width="80"
+              height="24"
+              viewBox="0 0 80 24"
+              fill="none"
+            >
+              {banners.map((_banner, index) => (
+                <rect
+                  key={index}
+                  x={5 + index * 28}
+                  y="10"
+                  width="14"
+                  height="4"
+                  fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
                 />
-              </SwiperSlide>
-            ))}
-          </ReactSwiper>
-          <svg
-            className={styles.bannerDotters}
-            xmlns="http://www.w3.org/2000/svg"
-            width="80"
-            height="24"
-            viewBox="0 0 80 24"
-            fill="none"
-          >
-            {banners.map((_banner, index) => (
-              <rect
-                key={index}
-                x={5 + index * 28}
-                y="10"
-                width="14"
-                height="4"
-                fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
-              />
-            ))}
-          </svg>
-        </div>
-        <button className={styles.bannerButtons} onClick={nextSlide}>
-          <img
-            className={styles.sliderArrowRight}
-            src={sliderButton}
-            alt="Next"
-          />
-        </button>
-      </section>
+              ))}
+            </svg>
+          </div>
+          <button className={styles.bannerButtons} onClick={nextSlide}>
+            <img
+              className={styles.sliderArrowRight}
+              src={sliderButton}
+              alt="Next"
+            />
+          </button>
+        </section>
+      </div>
     </>
   );
 };
+
+export default Baner;

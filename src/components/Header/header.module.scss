@@ -1,5 +1,4 @@
 .headerContainer {
-  display: flex;
   justify-content: space-between;
   align-items: center;
   background: #FFF;
@@ -9,9 +8,10 @@
 }
 
 .header {
+  box-sizing: content-box;
   display: flex;
   flex-direction: row;
-  width: 1440px;
+  width: auto;
   align-items: center;
   gap: 24px;
   background: #FFF;
@@ -110,5 +110,74 @@
     background-color: #0F0F11;
     border-radius: 2px;
   }
-};
+}
+
+@media (min-width: 640px) and (max-width: 1200px) {
+  .header {
+    display: flex;
+    height: 48px;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .headerLogo {
+    padding-left: 24px;
+    width: 64px;
+    height: 22px;
+    background: #FFF;
+  }
+
+  .headerButtons {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48;
+    height: 48px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: -1px 0 0 0 #E2E6E9;
+    color: #FFF;
+  }
+
+  .isActive {
+    text-decoration: none;
+    color: #0F0F11;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    &::after {
+      content: '';
+      color: #0F0F11;
+      position: absolute;
+      bottom: 0;
+      width: 64px;
+      height: 4px;
+      background-color: #0F0F11;
+      border-radius: 2px;
+    }
+  }
+}
+
+// @media (min-width: 1200px) {
+//   .appBody {
+//     max-width: 1400px; /* Збільшено максимальну ширину контейнера на ширину 1400px для ширини від 1200px і більше */
+//     margin-inline: 152px; /* Встановлено відступи 152px для ширини від 1200px і більше */
+//   }
+// }
+
+// @media (max-width: 639px) {
+//   .appBody {
+//     margin-inline: 16px; /* Встановлено відступи 16px для ширини від 320px до 639px */
+//   }
+// }
+
 

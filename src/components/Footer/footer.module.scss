@@ -1,8 +1,7 @@
 .footerSection {
   display: flex;
-  max-width: 1440px;
-  position: sticky;
-  top: 0%;
+  height: 100%;
+  flex: 1 1 auto;
 }
 
 .footer {
@@ -14,6 +13,7 @@
   align-items: center;
   background: #FFF;
   box-shadow: 0 -1px 0 0 #E2E6E9;
+
 }
 
 .footerLogo {
@@ -119,4 +119,15 @@
   transition: opacity 0.5s, visibility 0.5s;
   padding-left: 3px;
   transform: rotate(90deg);
+}
+
+@media (min-width: 640px) {
+  .footer {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    background: #FFF;
+    box-shadow: 0 -1px 0 0 #E2E6E9;
+  }
 }
