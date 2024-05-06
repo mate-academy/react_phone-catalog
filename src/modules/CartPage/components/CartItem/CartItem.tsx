@@ -43,7 +43,7 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           className={styles.cartItemImgWrap}
         >
           <img
-            src={`${product.images[0]}`}
+            src={product.images?.[0] || 'default-image-url.jpg'} // Provide a fallback image URL
             alt={product.namespaceId}
             className={styles.cartItemImg}
           />

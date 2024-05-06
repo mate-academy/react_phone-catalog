@@ -16,7 +16,7 @@ export const ProductSlider: React.FC<Props> = ({ title, products, type }) => {
   const [startIndex, setStartIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(212);
   const [cardsInView, setCardsinView] = useState(1);
-  const cardsToMove = 1;
+  const cardsToMove = 4;
   const gap = 16;
 
   useEffect(() => {

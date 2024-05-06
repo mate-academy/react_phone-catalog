@@ -6,7 +6,10 @@ type Props = {
 };
 
 export const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const theme = useAppSelector((state: { themeSwitcher: { currentTheme: any; }; }) => state.themeSwitcher.currentTheme);
+  const theme = useAppSelector(
+    (state: { themeSwitcher: { currentTheme: any } }) =>
+      state.themeSwitcher.currentTheme,
+  );
 
   return <div className={`theme-${theme}`}>{children}</div>;
 };
