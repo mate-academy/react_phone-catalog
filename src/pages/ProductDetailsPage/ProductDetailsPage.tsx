@@ -20,6 +20,7 @@ import {
 import { Product } from '../../types/Product';
 import { uniqId } from '../../helpers/uniqId';
 import { colorMap } from '../../utils/coloMap';
+import Loader from '../../components/Loader/Loader';
 
 const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams();
@@ -27,6 +28,7 @@ const ProductDetailsPage: React.FC = () => {
   const [details, setDetails] = useState<ProductDetails | null>(null);
   const [product, setProduct] = useState<Product>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -49,6 +51,7 @@ const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
+      setIsLoading(true);
       try {
         const allProducts = await getAllProudct();
         const productFind = allProducts.find(item => item.itemId === productId);
@@ -69,7 +72,10 @@ const ProductDetailsPage: React.FC = () => {
         } else {
           setDetails(null);
         }
+
+        setIsLoading(false);
       } finally {
+        setIsLoading(false);
       }
     };
 
@@ -78,8 +84,12 @@ const ProductDetailsPage: React.FC = () => {
     }
   }, [productId]);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   if (!details || !product) {
-    return <div>No product found or failed to load product details.</div>;
+    return <div>Product was not found</div>;
   }
 
   return (

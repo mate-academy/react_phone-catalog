@@ -1,7 +1,7 @@
 @import "./other/reset";
-@import "./other/fonts.scss";
-@import "./other/mixins.scss";
-@import "./other/vars.scss";
+@import "./other/fonts";
+@import "./other/mixins";
+@import "./other/vars";
 @import "./other/components";
 @import "./other/container";
 
@@ -12,7 +12,7 @@
 
 @import "../components/Nav/nav";
 @import "../components/Header/header";
-@import "../components/PicturesSlider/PicturesSlider.scss";
+@import "../components/PicturesSlider/PicturesSlider";
 @import "../components/Buttons/button";
 @import "../components/ProductCard/product-card";
 @import "../components/ProductsList/productslist";
@@ -24,6 +24,9 @@
 @import "../components/NavMain/nav-main";
 @import "../components/Ul-List/list-ul";
 @import "../components/ProductPage/product-page";
+@import "../components/NavMobile/nav-mobile";
+@import "../components/loader/loader";
+@import "../components/Pagination/pagination";
 
 
 // PAGES SCSS
@@ -36,8 +39,8 @@
 
 
 html {
-  font-family: 'Mont', sans-serif;
+  font-family: "Mont", sans-serif;
   font-weight: 500;
   box-sizing: border-box;
-  background-color: #FFFFFF;
+  background-color: #FFF;
 }

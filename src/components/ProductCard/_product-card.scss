@@ -9,11 +9,11 @@
     border-radius: 8px;
     padding: 32px;
     transition: 0.3s all ease-in;
-    min-width: 287px;
+    min-width: 212px;
     max-width: 287px;
 
     @include onTable {
-      width: 272px;
+      min-width: 237px;
       height: 506px;
     }
 

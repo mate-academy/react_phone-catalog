@@ -11,6 +11,7 @@ export interface Product {
   ram: RAM;
   year: number;
   image: string;
+  quantity?: number;
 }
 
 export enum Capacity {

@@ -14,78 +14,9 @@ type PropsFavourites = {
   product: Product;
 };
 
-export const ButtonsDisabled: React.FC = () => {
-  return (
-    <button className="button">
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="button__disabled"
-      >
-        <rect
-          x="0.5"
-          y="0.5"
-          width="31"
-          height="31"
-          rx="15.5"
-          stroke="#E2E6E9"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M13.5288 11.5286C13.7891 11.2683 14.2112 11.2683 14.4716 11.5286L18.4716 15.5286C18.7319 15.789 18.7319 16.2111 18.4716 16.4714L14.4716 20.4714C14.2112 20.7318 13.7891 20.7318 13.5288 20.4714C13.2684 20.2111 13.2684 19.789 13.5288 19.5286L17.0574 16L13.5288 12.4714C13.2684 12.2111 13.2684 11.789 13.5288 11.5286Z"
-          fill="#B4BDC4"
-        />
-      </svg>
-    </button>
-  );
-};
-
-export const ButtonsLeft: React.FC = () => {
-  return (
-    <button className="button">
-      <svg
-        className="button__svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M10.4712 3.52864C10.2109 3.26829 9.78878 3.26829 9.52843 3.52864L5.52843 7.52864C5.26808 7.78899 5.26808 8.2111 5.52843 8.47145L9.52843 12.4714C9.78878 12.7318 10.2109 12.7318 10.4712 12.4714C10.7316 12.2111 10.7316 11.789 10.4712 11.5286L6.94265 8.00004L10.4712 4.47145C10.7316 4.2111 10.7316 3.78899 10.4712 3.52864Z"
-          fill="#B4BDC4"
-        />
-      </svg>
-    </button>
-  );
-};
-
-export const ButtonsRight: React.FC = () => {
-  return (
-    <button className="button">
-      <svg
-        className="button__svg"
-        width="16"
-        height="16"
-        viewBox="0 0 16 16"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M5.52876 3.52861C5.78911 3.26826 6.21122 3.26826 6.47157 3.52861L10.4716 7.52861C10.7319 7.78896 10.7319 8.21107 10.4716 8.47141L6.47157 12.4714C6.21122 12.7318 5.78911 12.7318 5.52876 12.4714C5.26841 12.2111 5.26841 11.789 5.52876 11.5286L9.05735 8.00001L5.52876 4.47141C5.26841 4.21107 5.26841 3.78896 5.52876 3.52861Z"
-          fill="#0F0F11"
-        />
-      </svg>
-    </button>
-  );
+type PropsButtonDeleteCart = {
+  handleDeleteCart: (product: Product) => void;
+  product: Product;
 };
 
 export const RotatedButton: React.FC = () => {
@@ -115,24 +46,12 @@ export const ButtonsAddToCart: React.FC<PropsButtonsAddToCart> = ({
   size = 'small',
   product,
 }) => {
-  const { cart, setCart } = useProduct();
+  const { cart, handleAddToCart } = useProduct();
 
   const buttonClass =
     size === 'large' ? 'button__cart--large' : 'button__cart--small';
 
   const isCart = cart.some(item => item.id === product.id);
-
-  const handleAddToCart = (currentProduct: Product) => {
-    let newProduct: Product[];
-
-    if (cart.some(item => item.id === currentProduct.id)) {
-      newProduct = cart.filter(prevCart => prevCart.id !== currentProduct.id);
-    } else {
-      newProduct = [currentProduct, ...cart];
-    }
-
-    setCart(newProduct);
-  };
 
   return (
     <>
@@ -231,10 +150,6 @@ export const ButtonsFavourites: React.FC<PropsFavourites> = ({ product }) => {
   );
 };
 
-export const ButtonsCheckout: React.FC = () => {
-  return <button className="button__cart button__cart--large">Checkout</button>;
-};
-
 export const ArrowRight: React.FC = () => {
   return (
     <svg
@@ -274,67 +189,15 @@ export const ArrowLeft: React.FC = () => {
   );
 };
 
-export const ButtonCartDisabled: React.FC = () => {
+export const ButtonCartDelete: React.FC<PropsButtonDeleteCart> = ({
+  handleDeleteCart,
+  product,
+}) => {
   return (
-    <button className="cart__button cart__button-disabled">
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="0.5"
-          y="0.5"
-          width="31"
-          height="31"
-          rx="15.5"
-          stroke="#E2E6E9"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M10.666 16C10.666 15.6318 10.9645 15.3333 11.3327 15.3333H20.666C21.0342 15.3333 21.3327 15.6318 21.3327 16C21.3327 16.3682 21.0342 16.6666 20.666 16.6666H11.3327C10.9645 16.6666 10.666 16.3682 10.666 16Z"
-          fill="#B4BDC4"
-        />
-      </svg>
-    </button>
-  );
-};
-
-export const ButtonCartActive: React.FC = () => {
-  return (
-    <button className="cart__button cart__button-active">
-      <svg
-        width="32"
-        height="32"
-        viewBox="0 0 32 32"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <rect
-          x="0.5"
-          y="0.5"
-          width="31"
-          height="31"
-          rx="15.5"
-          stroke="#B4BDC4"
-        />
-        <path
-          fill-rule="evenodd"
-          clip-rule="evenodd"
-          d="M16.666 11.3334C16.666 10.9652 16.3675 10.6667 15.9993 10.6667C15.6312 10.6667 15.3327 10.9652 15.3327 11.3334V15.3334H11.3327C10.9645 15.3334 10.666 15.6318 10.666 16C10.666 16.3682 10.9645 16.6667 11.3327 16.6667H15.3327V20.6667C15.3327 21.0349 15.6312 21.3334 15.9993 21.3334C16.3675 21.3334 16.666 21.0349 16.666 20.6667V16.6667H20.666C21.0342 16.6667 21.3327 16.3682 21.3327 16C21.3327 15.6318 21.0342 15.3334 20.666 15.3334H16.666V11.3334Z"
-          fill="#0F0F11"
-        />
-      </svg>
-    </button>
-  );
-};
-
-export const ButtonCartDelete: React.FC = () => {
-  return (
-    <button className="cart__button cart__button-delete">
+    <button
+      className="cart__button cart__button-delete"
+      onClick={() => handleDeleteCart(product)}
+    >
       <svg
         width="16"
         height="16"
@@ -351,72 +214,5 @@ export const ButtonCartDelete: React.FC = () => {
         />
       </svg>
     </button>
-  );
-};
-
-export const ButtonPaginationLeft: React.FC = () => {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect
-        x="-0.5"
-        y="0.5"
-        width="31"
-        height="31"
-        rx="15.5"
-        transform="matrix(-1 0 0 1 31 0)"
-        stroke="#B4BDC4"
-      />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M18.4717 11.5288C18.2114 11.2684 17.7893 11.2684 17.5289 11.5288L13.5289 15.5288C13.2686 15.7891 13.2686 16.2112 13.5289 16.4716L17.5289 20.4716C17.7893 20.7319 18.2114 20.7319 18.4717 20.4716C18.7321 20.2112 18.7321 19.7891 18.4717 19.5288L14.9431 16.0002L18.4717 12.4716C18.7321 12.2112 18.7321 11.7891 18.4717 11.5288Z"
-        fill="#0F0F11"
-      />
-    </svg>
-  );
-};
-
-export const ButtonPaginationRight: React.FC = () => {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#B4BDC4" />
-      <path
-        fill-rule="evenodd"
-        clip-rule="evenodd"
-        d="M13.5283 11.5288C13.7886 11.2684 14.2107 11.2684 14.4711 11.5288L18.4711 15.5288C18.7314 15.7891 18.7314 16.2112 18.4711 16.4716L14.4711 20.4716C14.2107 20.7319 13.7886 20.7319 13.5283 20.4716C13.2679 20.2112 13.2679 19.7891 13.5283 19.5288L17.0569 16.0002L13.5283 12.4716C13.2679 12.2112 13.2679 11.7891 13.5283 11.5288Z"
-        fill="#0F0F11"
-      />
-    </svg>
-  );
-};
-
-export const ButtonPaginationCount: React.FC = () => {
-  return (
-    <svg
-      width="32"
-      height="32"
-      viewBox="0 0 32 32"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-      className="phones__button-count"
-    >
-      <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#E2E6E9" />
-      <path
-        d="M14.5326 11.69V12.754H16.3246V21H17.4586V11.69H14.5326Z"
-        fill="#0F0F11"
-      />
-    </svg>
   );
 };

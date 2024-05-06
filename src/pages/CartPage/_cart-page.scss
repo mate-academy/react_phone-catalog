@@ -8,6 +8,10 @@
 
   padding: 24px 0 56px;
 
+  @include onDesktop {
+    padding: 40px 0 80px;
+  }
+
   &__main {
     @include grid;
 
@@ -20,6 +24,21 @@
       flex-direction: row;
       gap: 16px;
     }
+
+    &-subtitle {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__block {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    grid-column: 1 / -1;
+
+    @include onDesktop {
+      grid-column: 1 / 17;
+    }
   }
 
   &__back {
@@ -30,7 +49,11 @@
     color: $secondary-color;
     font-size: 12px;
     font-weight: 700;
-    line-height: 15.34px;
+    line-height: 16px;
+
+    &-span {
+      margin-top: 2px;
+    }
   }
 
   &__title {
@@ -46,6 +69,7 @@
     flex-direction: column;
     justify-content: space-between;
     gap: 16px;
+    box-sizing: border-box;
 
     border: 1px solid $elements-color;
     border-radius: 16px;
@@ -61,6 +85,7 @@
 
     @include onDesktop {
       grid-column: 1 / 17;
+      max-height: 128px;
     }
 
     &-title {
@@ -142,6 +167,7 @@
     @include onDesktop {
       grid-column: 17 / -1;
       margin: 0;
+      max-height: 206px;
     }
 
     &-price {
@@ -180,6 +206,44 @@
     &-active {
       &:hover rect {
         stroke: $elipse-color;
+      }
+    }
+  }
+
+  &__modal {
+    border: 1px solid $icons-color;
+    border-radius: 15px;
+    grid-column: 1 / -1;
+
+    &-content {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+      gap: 30px;
+
+      padding: 15px;
+    }
+
+    &-buttons {
+      display: flex;
+      gap: 15px;
+    }
+
+    &-button {
+      padding: 15px;
+      background: none;
+      border-radius: 15px;
+      border: 1px solid $elipse-color;
+      transition: .3s all ease-in-out;
+
+      &:first-child:hover {
+        background: $buttons-card;
+        color: #fff;
+      }
+
+      &:last-child:hover {
+        background: $c-red;
+        color: #fff;
       }
     }
   }

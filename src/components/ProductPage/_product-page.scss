@@ -123,10 +123,6 @@
   }
 
   &__pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
     margin-top: 26px;
 
     grid-column: 1 / -1;
@@ -137,6 +133,10 @@
 
     @include onDesktop {
       grid-column: 10 / 16;
+    }
+
+    &__list {
+      
     }
   }
 }

@@ -1,0 +1,45 @@
+.pagination {
+  &__list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 8px;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $secondary-color;
+    border-radius: 50%;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    background: none;
+
+    padding: 6px;
+
+    &:hover:not([disabled]) {
+      border-color: $elipse-color;
+    }
+
+    &:disabled {
+      border-color: $icons-color;
+    }
+
+    &:disabled path {
+      fill: $icons-color;
+    }
+  }
+}
+
+.activeCount {
+  background: $elipse-color;
+  color: #fff;
+}

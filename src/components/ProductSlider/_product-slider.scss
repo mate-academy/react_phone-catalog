@@ -1,4 +1,5 @@
 .hot {
+  overflow: hidden;
   &__top {
     display: flex;
     justify-content: space-between;
@@ -7,16 +8,48 @@
     margin-bottom: 24px;
   }
 
-  &__button {
+  &__block {
     display: flex;
     gap: 16px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+
+    &:hover svg rect {
+      stroke: $elipse-color;
+    }
+
+    &:disabled svg rect {
+      stroke: #B4BDC3;
+    }
+    &:disabled svg path {
+      fill: #B4BDC3;
+    }
+
+    &-svg {
+      width: 100%;
+      height: 100%;
+
+      &--left {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   &__list {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     gap: 16px;
-    overflow: hidden;
+
+    transition: transform .3s ease;
+  }
+
+  &__div {
+    transition: .3s all ease-in-out;
   }
 }

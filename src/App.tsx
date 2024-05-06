@@ -1,23 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.scss';
 import Header from './components/Header/Header';
 import Footer from './components/Footer/Footer';
+import NavMobile from './components/NavMobile/NavMobile';
+import { useProduct } from './store/Store';
 
 export const App: React.FC = () => {
-  const [isOpen, setIsOpen] = useState(true);
+  const { isOpen } = useProduct();
+
+  if (isOpen) {
+    document.body.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+  }
 
   return (
     <div className="App">
-      <Header setIsOpen={setIsOpen} isOpen={isOpen} />
+      <Header />
+      <NavMobile />
 
-      {isOpen && (
-        <>
-          <Outlet />
+      <Outlet />
 
-          <Footer />
-        </>
-      )}
+      <Footer />
     </div>
   );
 };

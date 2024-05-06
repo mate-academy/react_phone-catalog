@@ -6,6 +6,7 @@ import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import { Picture } from '../../types/Picture';
 import { Product } from '../../types/Product';
 import { getHotProduct, getNewProduct } from '../../helpers/helpers';
+import Loader from '../../components/Loader/Loader';
 
 const picture: Picture[] = [
   {
@@ -28,7 +29,7 @@ const picture: Picture[] = [
 const HomePage: React.FC = () => {
   const [newProduct, setNewProduct] = useState<Product[]>([]);
   const [hotProduct, setHotProduct] = useState<Product[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     getHotProduct()
@@ -45,17 +46,21 @@ const HomePage: React.FC = () => {
   return (
     <main className="main">
       <div className="container">
-        {isLoading && (
-          <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <h1 className="main__title">Welcome to Nice Gadgets store!</h1>
+
+            <PicturesSlider picture={picture} />
+
+            <ProductSlider title={`Brand new models`} product={newProduct} />
+
+            <ProductsList />
+
+            <ProductSlider title={`Hot prices`} product={hotProduct} />
+          </>
         )}
-
-        <PicturesSlider picture={picture} />
-
-        <ProductSlider title={`Brand new models`} product={newProduct} />
-
-        <ProductsList />
-
-        <ProductSlider title={`Hot prices`} product={hotProduct} />
       </div>
     </main>
   );

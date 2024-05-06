@@ -1,4 +1,4 @@
-import React, { createContext, useContext } from 'react';
+import React, { createContext, useContext, useEffect, useState } from 'react';
 import { Product } from '../types/Product';
 import useLocalStorage from '../hooks/useLocalStorage';
 
@@ -7,6 +7,13 @@ type ProductContextType = {
   setFavourites: (product: Product[]) => void;
   cart: Product[];
   setCart: (product: Product[]) => void;
+  isOpen: boolean;
+  setIsOpen: (bool: boolean) => void;
+  handleClose: () => void;
+  handleAddToCart: (prod: Product) => void;
+  handleDeleteCart: (prod: Product) => void;
+  handleCheckout: () => void;
+  totalCount: number;
 };
 
 const ProductContext = createContext<ProductContextType | undefined>(undefined);
@@ -21,6 +28,52 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
     [],
   );
   const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const totalCount = cart.reduce(
+    (total, item) => total + (item.quantity || 1),
+    0,
+  );
+
+  const handleAddToCart = (currentProduct: Product) => {
+    let newProduct: Product[];
+
+    if (cart.some(item => item.id === currentProduct.id)) {
+      newProduct = cart.filter(prevCart => prevCart.id !== currentProduct.id);
+    } else {
+      newProduct = [currentProduct, ...cart];
+    }
+
+    setCart(newProduct);
+  };
+
+  const handleDeleteCart = (product: Product) => {
+    const newCart = cart.filter(item => item.id !== product.id);
+
+    setCart(newCart);
+  };
+
+  const handleCheckout = () => {
+    setCart([]);
+  };
+
+  const handleClose = () => {
+    setIsOpen(false);
+  };
+
+  useEffect(() => {
+    const handleResize = () => {
+      const isTablet = window.matchMedia('(min-width: 640px)').matches;
+
+      if (isTablet) {
+        setIsOpen(false);
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => window.removeEventListener('resize', handleResize);
+  }, [isOpen]);
 
   return (
     <ProductContext.Provider
@@ -29,6 +82,13 @@ const StoreProvider: React.FC<Props> = ({ children }) => {
         setFavourites,
         cart,
         setCart,
+        isOpen,
+        setIsOpen,
+        handleClose,
+        handleAddToCart,
+        handleDeleteCart,
+        handleCheckout,
+        totalCount,
       }}
     >
       {children}

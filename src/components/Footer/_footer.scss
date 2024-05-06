@@ -2,7 +2,6 @@
   margin-top: auto;
   box-shadow: 0px -1px 0px 0px #E2E6E9;
 
-
   &__content {
     display: flex;
     justify-content: space-between;
@@ -13,9 +12,9 @@
 
     margin: 0 auto;
 
-    
     @include onTable {
       flex-direction: row;
+      align-items: center;
     }
   }
 

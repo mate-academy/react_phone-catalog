@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import NavMain from '../../components/NavMain/NavMain';
-import {
-  ButtonPaginationCount,
-  ButtonPaginationLeft,
-  ButtonPaginationRight,
-} from '../../components/Buttons/Button';
 import ProductCard from '../../components/ProductCard/ProductCard';
 import { Product } from '../../types/Product';
+import Pagination from '../Pagination/Pagination';
+import { useSearchParams } from 'react-router-dom';
+import { PerPage } from '../../types/PerPage';
 
 type Props = {
   product: Product[];
@@ -16,10 +14,56 @@ type Props = {
 
 const ProductPage: React.FC<Props> = ({ product, title }) => {
   const [sortBy, setSort] = useState('Newest');
+  const [searchParams, setSearchParams] = useSearchParams();
 
-  const handleChangeSort = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setSort(event.target.value);
-  };
+  const page = parseInt(searchParams.get('page') || '1');
+  const perPage = searchParams.get('perPage') || PerPage.Four;
+  const total = product.length;
+
+  const currentPerPage = perPage === 'all' ? product.length : parseInt(perPage);
+
+  const handlePerPage = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setSearchParams({
+        perPage: event.target.value,
+        page: '1',
+        sort: sortBy,
+      });
+    },
+    [setSearchParams, sortBy],
+  );
+
+  const handlePageChange = useCallback(
+    (newPage: number) => {
+      setSearchParams({
+        page: String(newPage),
+        perPage,
+      });
+    },
+    [setSearchParams, perPage],
+  );
+
+  const startIndex = (page - 1) * currentPerPage;
+
+  const selectedProducts = product.slice(
+    startIndex,
+    startIndex + currentPerPage,
+  );
+
+  const handleChangeSort = useCallback(
+    (event: React.ChangeEvent<HTMLSelectElement>) => {
+      setSearchParams(prevSearchParams => {
+        const newParams = new URLSearchParams(prevSearchParams);
+
+        newParams.set('sort', event.target.value);
+        newParams.set('page', '1');
+
+        return newParams;
+      });
+      setSort(event.target.value);
+    },
+    [setSearchParams],
+  );
 
   const sortProducts = (products: Product[]) => {
     switch (sortBy) {
@@ -34,7 +78,7 @@ const ProductPage: React.FC<Props> = ({ product, title }) => {
     }
   };
 
-  const sortedProducts = sortProducts(product);
+  const sortedProducts = sortProducts(selectedProducts);
 
   return (
     <div className="container">
@@ -74,7 +118,12 @@ const ProductPage: React.FC<Props> = ({ product, title }) => {
           className="phones__label phones__label-items"
         >
           Items on page
-          <select value="Newest" className="phones__select" id="countProduct">
+          <select
+            value={perPage}
+            onChange={handlePerPage}
+            className="phones__select"
+            id="countProduct"
+          >
             <option className="phones__option" value="4">
               4
             </option>
@@ -99,15 +148,12 @@ const ProductPage: React.FC<Props> = ({ product, title }) => {
           ))}
         </div>
 
-        <div className="phones__pagination">
-          <ButtonPaginationLeft />
-
-          <ButtonPaginationCount />
-          <ButtonPaginationCount />
-          <ButtonPaginationCount />
-
-          <ButtonPaginationRight />
-        </div>
+        <Pagination
+          total={total}
+          perPage={currentPerPage}
+          currentPage={page}
+          onPageChange={handlePageChange}
+        />
       </div>
     </div>
   );
