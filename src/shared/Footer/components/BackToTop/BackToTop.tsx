@@ -9,7 +9,7 @@ export const BackToTop = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.pageYOffset > 300) {
+      if (window.scrollY > 300) {
         setShow(true);
       } else {
         setShow(false);
@@ -17,13 +17,20 @@ export const BackToTop = () => {
     };
 
     window.addEventListener('scroll', handleScroll);
+
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  if (!show) return null;
+  if (!show) {
+    return null;
+  }
 
   return (
-    <button className={styles.toTopBtn} onClick={scrollToTop} aria-label="Back to top">
+    <button
+      className={styles.toTopBtn}
+      onClick={scrollToTop}
+      aria-label="Back to top"
+    >
       <p>Back to top</p>
       <RoundedArrow icon={icons.arrowTop} />
     </button>
