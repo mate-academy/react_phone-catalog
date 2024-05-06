@@ -11,17 +11,17 @@ export const allowedPaths = ['/phones', '/tablets', '/accessories'];
 
 export const footerLinks = [
   {
-    url: 'https://github.com/oshapkun',
+    url: 'https://github.com/KhomichYehor',
     text: 'Github',
     openInNewTab: true,
   },
   {
-    url: 'https://t.me/sestra_creatyva',
+    url: 'https://t.me/eeehoum',
     text: 'Contacts',
     openInNewTab: true,
   },
   {
-    url: 'https://github.com/oshapkun',
+    url: 'https://github.com/KhomichYehor',
     text: 'Rights',
     openInNewTab: true,
   },
