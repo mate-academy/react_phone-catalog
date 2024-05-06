@@ -1,6 +1,8 @@
+import { ProductType } from './enums';
+
 export interface Product {
   id: number;
-  category: string;
+  category: ProductType;
   itemId: string;
   name: string;
   capacity: string;

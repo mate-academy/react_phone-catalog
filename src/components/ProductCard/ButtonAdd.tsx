@@ -3,17 +3,29 @@ import heardBuron from './productCard-logo/Favourites.png';
 import heardBuronActive from './productCard-logo/favoriteActive.png';
 import { Product } from '../../services/productType';
 import React, { useEffect, useState } from 'react';
-import { useLocalStorage } from '../../local/localStorege';
+// import { useLocalStorage } from '../../local/localStorege';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
+import { addToCart, addToFavorites } from '../../feachers/detailSlice';
 
 type Props = {
   item: Product;
 };
 
 export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
-  const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
+  // const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
+  // const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
   const [isFavorite, setIsFavorite] = useState(false);
   const [isCart, setIsCart] = useState(false);
+
+  const cart = useAppSelector(state => state.cartAndFavorits.cart);
+  const favorites = useAppSelector(state => state.cartAndFavorits.favorites);
+  const dispatch = useAppDispatch();
+
+  // eslint-disable-next-line no-console
+  console.log(favorites);
+
+  // eslint-disable-next-line no-console
+  console.log(item);
 
   useEffect(() => {
     const isItemInFavorites = favorites.some(favItem => favItem.id === item.id);
@@ -28,23 +40,26 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
   }, [cart, item]);
 
   const handlerAddFavorites = () => {
-    setFavorites(prevFavorites => {
-      if (isFavorite) {
-        return prevFavorites.filter(favItem => favItem.id !== item.id);
-      } else {
-        return [...prevFavorites, item];
-      }
-    });
+    // setFavorites(prevFavorites => {
+    //   if (isFavorite) {
+    //     return prevFavorites.filter(favItem => favItem.id !== item.id);
+    //   } else {
+    //     return [...prevFavorites, item];
+    //   }
+    // });
+    dispatch(addToFavorites(item));
   };
 
   const handlerAddProduct = () => {
-    setCart(prevCart => {
-      if (isCart) {
-        return prevCart.filter(carItem => carItem.id !== item.id);
-      } else {
-        return [...prevCart, item];
-      }
-    });
+    // setCart(prevCart => {
+    //   if (isCart) {
+    //     return prevCart.filter(carItem => carItem.id !== item.id);
+    //   } else {
+    //     return [...prevCart, item];
+    //   }
+    // });
+
+    dispatch(addToCart(item));
   };
 
   return (

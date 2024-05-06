@@ -7,7 +7,6 @@
   flex-direction: column;
   gap: 16px;
   margin: 80px 0;
-  // padding-inline: 15px;
 }
 
 .tittleAndButtons {
@@ -97,7 +96,6 @@
 
   .productsCard {
     padding: 15px 0;
-    width: auto;
     display: flex;
     flex-wrap: nowrap;
     margin: 0;
@@ -113,7 +111,6 @@
 
   .swiperSlide, .swiper-wrapper {
     overflow-x: hidden;
-    // margin-inline: 0 auto;
     flex-shrink: 0;
   }
 }

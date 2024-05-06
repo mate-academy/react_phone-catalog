@@ -2,17 +2,18 @@ import React, { useRef } from 'react';
 import styles from './ProductSlider.module.scss';
 import sliderButton from './icons/sliderButton.png';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { Phones } from '../../services/Phone';
+// import { Phones } from '../../services/Phone';
 // import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
 import Loader from '../loader/spiner';
 import { useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../services/enums';
+import { Product } from '../../services/productType';
 
 type Props = {
   title: string;
-  phones: Phones[];
+  phones: Product[];
 };
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
@@ -60,9 +61,22 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
           ) : (
             <ReactSwiper
               className={styles.productsCard}
-              spaceBetween={10}
-              slidesPerView={4}
+              spaceBetween={1}
+              slidesPerView={'auto'}
               speed={900}
+              // breakpoints={{
+              //   640: {
+              //     slidesPerView: 2,
+              //   },
+
+              //   1200: {
+              //     slidesPerView: 4,
+              //   },
+
+              //   720: {
+              //     slidesPerView: 3,
+              //   },
+              // }}
               mousewheel={true}
               // loop={true}
               onSwiper={swiper => {
@@ -73,7 +87,7 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
                 phones.map(item => (
                   <SwiperSlide
                     key={item.id}
-                    style={{ marginRight: '16px' }}
+                    style={{ marginRight: '16px', width: 'auto' }}
                     className={styles.swiperSlide}
                   >
                     <ProductCard item={item} type={type} />

@@ -7,8 +7,10 @@ import { Header } from '../Header/header';
 import { Footer } from '../Footer/footer';
 // import Loader from '../loader/spiner';
 import { ProductType } from '../../services/enums';
-import { useLocalStorage } from '../../local/localStorege';
+// import { useLocalStorage } from '../../local/localStorege';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { useAppSelector } from '../../Hooks/hooks';
+import { Product } from '../../services/productType';
 
 type Props = {
   type: ProductType[];
@@ -16,12 +18,16 @@ type Props = {
 };
 
 export const Favorites: React.FC<Props> = ({ title }) => {
-  const [data] = useLocalStorage('favorites', []);
-  const [favoriteProduct, setFavoriteProduct] = useState([]);
+  // const [data] = useLocalStorage('favorites', []);
+  const favorites = useAppSelector(state => state.cartAndFavorits.favorites);
+  const [favoriteProduct, setFavoriteProduct] = useState<Product[]>([]);
+
+  // eslint-disable-next-line no-console
+  console.log(favoriteProduct);
 
   useEffect(() => {
-    setFavoriteProduct(data);
-  }, [data, favoriteProduct]);
+    setFavoriteProduct(favorites);
+  }, [favoriteProduct, favorites]);
 
   return (
     <>
@@ -83,7 +89,7 @@ export const Favorites: React.FC<Props> = ({ title }) => {
             {favoriteProduct.map((item, index) => (
               <div key={index}>
                 {' '}
-                <ProductCard item={item} type={item} />{' '}
+                <ProductCard item={item} type={item.category} />{' '}
               </div>
             ))}
           </div>
