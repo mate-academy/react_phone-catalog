@@ -4,7 +4,7 @@ import { Message } from '../types/Message';
 import { getProducts } from '../utils/fetchProducts';
 
 type Action =
-  | { type: 'isLoading'; payload: boolean }
+  | { type: 'setLoading'; payload: boolean }
   | { type: 'setMessage'; payload: Message }
   | { type: 'setProducts'; payload: Product[] };
 
@@ -23,7 +23,7 @@ const reducer = (state: ContextProps, action: Action): ContextProps => {
         message: action.payload,
       };
 
-    case 'isLoading':
+    case 'setLoading':
       return {
         ...state,
         isLoading: action.payload,
@@ -61,7 +61,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const { products, message, isLoading } = state;
 
   useEffect(() => {
-    dispatch({ type: 'isLoading', payload: true });
+    dispatch({ type: 'setLoading', payload: true });
 
     getProducts()
       .then(data =>
@@ -70,7 +70,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
           payload: data,
         }),
       )
-      .finally(() => dispatch({ type: 'isLoading', payload: false }));
+      .finally(() => dispatch({ type: 'setLoading', payload: false }));
   }, []);
 
   const value = useMemo(

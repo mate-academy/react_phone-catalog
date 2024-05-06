@@ -1,7 +1,7 @@
 type Param = string | number;
 
 export type Params = {
-  [key: string]: Param | null | Param[];
+  [key: string]: Param | Param[];
 };
 
 export const getSearchWith = (
@@ -11,7 +11,7 @@ export const getSearchWith = (
   const newParams = new URLSearchParams(currentParams.toString());
 
   Object.entries(paramsToUpdate).forEach(([key, value]) => {
-    if (value === null) {
+    if (value?.toString().length === 0) {
       newParams.delete(key);
     } else if (Array.isArray(value)) {
       newParams.delete(key);
