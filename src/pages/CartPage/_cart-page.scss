@@ -199,8 +199,16 @@
     background-color: transparent;
     transition: .3s all ease-in-out;
 
-    &:hover {
-      transform: scale(1.1);
+    &-minus:not([disabled]) path {
+      fill: $elipse-color;
+    }
+
+    &:hover:not([disabled]) {
+      transform: scale(1.05);
+    }
+
+    &-span {
+      width: 18px;
     }
 
     &-active {

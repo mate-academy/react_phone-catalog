@@ -95,6 +95,7 @@ const CartPage: React.FC = () => {
                             <button
                               className="cart__button cart__button-minus"
                               onClick={() => handleDecreaseQuantity(itemId)}
+                              disabled={item.quantity === 1}
                             >
                               <svg
                                 width="32"
@@ -120,7 +121,9 @@ const CartPage: React.FC = () => {
                               </svg>
                             </button>
 
-                            <span>{quantity || 1}</span>
+                            <span className="cart__button-span">
+                              {quantity || 1}
+                            </span>
 
                             <button
                               className="cart__button cart__button-plus"

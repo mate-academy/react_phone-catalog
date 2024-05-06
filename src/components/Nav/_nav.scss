@@ -37,6 +37,10 @@
 
     transition: .3s color ease;
     box-sizing: border-box;
+
+    &:hover {
+      color: $icons-color;
+    }
   }
 }
 
