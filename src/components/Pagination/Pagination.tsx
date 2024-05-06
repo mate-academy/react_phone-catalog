@@ -1,90 +1,66 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
-/* eslint-disable global-require */
 import React from 'react';
-
+import { useSearchParams } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
 import classNames from 'classnames';
-import './Pagination.scss';
+import styles from './Pagination.module.scss';
+import stylesRoundedBtn from '../RoundedArrowBtn/RoundedArrowBtn.module.scss';
+import { getSearchWith } from '../../helpers/searchHelper';
+import { RoundedArrow } from '../RoundedArrowBtn';
+import { icons } from '../../shared/global/Icons';
+import { scrollToTop } from '../../helpers/scrollToTop';
 
 type Props = {
-  buttonsList: number[];
-  onPageChange: (button: number) => void;
+  total: number;
+  perPage: number;
   currentPage: number;
-  buttonsMax: number;
 };
 
 export const Pagination: React.FC<Props> = ({
-  buttonsList,
-  onPageChange,
+  total,
+  perPage,
   currentPage,
-  buttonsMax,
 }) => {
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handlePageChange = ({ selected }: { selected: number }) => {
+    const nextPage = selected + 1;
+    const newSearchParams = getSearchWith(searchParams, {
+      page: nextPage.toString(),
+    });
+
+    setSearchParams(newSearchParams);
+    scrollToTop();
   };
 
-  const prevLinkCheck = (prevLink: number) => {
-    if (prevLink + 1 !== 1) {
-      onPageChange(prevLink);
-      scrollToTop();
-    }
-  };
-
-  const linkCheck = (button: number) => {
-    if (button !== currentPage) {
-      onPageChange(button);
-      scrollToTop();
-    }
-  };
-
-  const nextLinkCheck = (nextLink: number) => {
-    if (nextLink - 1 !== buttonsMax) {
-      onPageChange(nextLink);
-      scrollToTop();
-    }
-  };
+  const totalPages = Math.ceil(total / perPage);
+  const firstPage = currentPage === 1;
+  const lastPage = currentPage === totalPages;
 
   return (
-    <div className="pagination" data-cy="pagination">
-      <button
-        data-cy="paginationLeft"
-        type="button"
-        className={classNames('pagination__btn', 'pagination__btn--prew', {
-          'pagination__btn--disabled': currentPage === 1,
-        })}
-        onClick={() => prevLinkCheck(currentPage - 1)}
-      >
-        <img
-          src={require('../../images/icons/slider-arrow-left.svg').default}
-          alt="Prev"
-        />
-      </button>
-
-      {buttonsList.map(button => (
-        <button
-          key={button}
-          type="button"
-          className={classNames('pagination__btn', 'pagination__btn--page', {
-            'pagination__btn--active': currentPage === button,
-          })}
-          onClick={() => linkCheck(button)}
-        >
-          {button}
-        </button>
-      ))}
-
-      <button
-        data-cy="paginationRight"
-        type="button"
-        className={classNames('pagination__btn', 'pagination__btn--next', {
-          'pagination__btn--disabled': currentPage === buttonsMax,
-        })}
-        onClick={() => nextLinkCheck(currentPage + 1)}
-      >
-        <img
-          src={require('../../images/icons/slider-arrow-right.svg').default}
-          alt="Next"
-        />
-      </button>
+    <div className={styles.pagination}>
+      <ReactPaginate
+        pageCount={totalPages}
+        pageRangeDisplayed={3}
+        marginPagesDisplayed={1}
+        forcePage={currentPage - 1}
+        previousLabel={
+          <RoundedArrow icon={icons.arrowLeftDis} disabled={firstPage} />
+        }
+        nextLabel={
+          <RoundedArrow icon={icons.arrowRightDis} disabled={lastPage} />
+        }
+        breakLabel={'...'}
+        breakLinkClassName={styles.paginationBreak}
+        containerClassName={styles.paginationNums}
+        pageClassName={classNames(
+          stylesRoundedBtn.arrowBtn,
+          styles.paginationBtn,
+        )}
+        activeClassName={styles.paginationBtnActive}
+        pageLinkClassName={styles.paginationNum}
+        activeLinkClassName={styles.paginationNumActive}
+        onPageChange={handlePageChange}
+      />
     </div>
   );
 };

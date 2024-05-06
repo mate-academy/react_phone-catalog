@@ -1,14 +1,12 @@
-type Params = {
-  [key: string]: string | null;
-};
+export type SearchParams = { [key: string]: string | null };
 
-export const getSearchWith = (
-  params: Params,
-  search?: string | URLSearchParams,
-) => {
-  const newParams = new URLSearchParams(search);
+export function getSearchWith(
+  currentParams: URLSearchParams,
+  paramsToUpdate: SearchParams,
+): string {
+  const newParams = new URLSearchParams(currentParams.toString());
 
-  Object.entries(params).forEach(([key, value]) => {
+  Object.entries(paramsToUpdate).forEach(([key, value]) => {
     if (value === null) {
       newParams.delete(key);
     } else {
@@ -17,4 +15,4 @@ export const getSearchWith = (
   });
 
   return newParams.toString();
-};
+}

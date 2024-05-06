@@ -1,0 +1,23 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.backBtn {
+  border: none;
+  padding: 0;
+  background-color: inherit;
+
+  display: flex;
+  gap: 4px;
+
+  align-items: center;
+  cursor: pointer;
+}
+
+.backIcon {
+  height: 16px;
+}
+
+.backText {
+  color: $secondary-text-color;
+  line-height: 15.34px;
+}

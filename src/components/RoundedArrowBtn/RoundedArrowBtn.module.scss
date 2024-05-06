@@ -1,0 +1,32 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.arrowBtn {
+  background-color: transparent;
+  border: 1px solid $btns-border-color;
+  border-radius: 50%;
+  display: block;
+  width:32px;
+  height: 32px;
+  padding: 7px;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  transition: all 0.3s;
+}
+
+.arrowBtn:hover {
+  border: 1px solid $main-text-color;
+}
+
+.disabled {
+  background-color: transparent;
+  border: 1px solid $btns-border-color;
+  border-radius: 50%;
+  display: block;
+  width:32px;
+  height: 32px;
+  padding: 7px;
+  box-sizing: border-box;
+  cursor: default;
+}

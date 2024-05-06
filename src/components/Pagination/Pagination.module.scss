@@ -1,0 +1,68 @@
+@use '../../shared//global/GlobalStyles/utils/mixins' as *;
+@use '../../shared//global/GlobalStyles/utils/vars' as *;
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+}
+
+.paginationNums {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: end;
+  gap: 8px;
+}
+
+.paginationBtn {
+  font-family: $font-family-regular;
+  border: 1px solid $elements-border-color;
+  color: $main-text-color;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.paginationBtnActive {
+  background-color: $main-text-color;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+.paginationNum {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  color: $main-text-color;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  left: 0;
+}
+
+.paginationNumActive {
+  color: $white;
+
+  &:hover {
+    color: $white;
+  }
+}
+
+
+
+.paginationBreak {
+  font-size: 15px;
+  color: $main-text-color;
+}
