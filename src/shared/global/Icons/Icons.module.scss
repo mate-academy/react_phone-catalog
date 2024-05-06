@@ -1,0 +1,17 @@
+@use '../GlobalStyles/utils/mixins' as *;
+
+.logoIcon {
+  width: 64px;
+  height: 21px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+  }
+}
+
+.iconImg {
+  display: flex;
+  width: 16px;
+  height: 16px;
+}
