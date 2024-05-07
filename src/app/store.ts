@@ -1,6 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
 import cartReducer from '../features/cart/cartSlice';
 import productsReducer from '../features/products/productsSlice';
+// eslint-disable-next-line max-len
 import productDetailsReducer from '../features/productDetails/productDetailsSlice';
 
 export const store = configureStore({
