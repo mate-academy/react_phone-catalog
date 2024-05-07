@@ -92,7 +92,7 @@ export const getPreparedProducts = (products: Product[], params: any) => {
     return preparedProducts.sort((a, b) => {
       switch (params.sort) {
         case 'age':
-          return (a.year ?? 0) - (b.year ?? 0);
+          return (b.year ?? 0) - (a.year ?? 0);
         case 'name':
           return a.name.localeCompare(b.name);
         case 'price':
@@ -103,5 +103,5 @@ export const getPreparedProducts = (products: Product[], params: any) => {
     });
   }
 
-  return preparedProducts;
+  return preparedProducts.sort((a, b) => (b.year ?? 0) - (a.year ?? 0));
 };

@@ -2,12 +2,19 @@ import React, { useMemo, useState } from 'react';
 import { CartItem } from '../types/CartItem';
 import { useLocalStorage } from '../helper/Cart';
 import { Product } from '../types/Product';
+import { ProductDetails } from '../types/ProductDetails';
 
 export type ContextType = {
   cartItems: CartItem[];
   setCartItems: (value: CartItem[]) => void;
   favoriteProducts: Product[];
   setFavoriteProducts: (value: Product[]) => void;
+  product: ProductDetails | null;
+  setProduct: (value: ProductDetails) => void;
+  productNotFound: boolean;
+  setProductNotFound: (value: boolean) => void;
+  productDetailsLoading: boolean;
+  setProductDetailsLoading: (value: boolean) => void;
 };
 
 export const CatalogContext = React.createContext<ContextType>({
@@ -15,6 +22,12 @@ export const CatalogContext = React.createContext<ContextType>({
   setCartItems: () => {},
   favoriteProducts: [],
   setFavoriteProducts: () => {},
+  product: null,
+  setProduct: () => {},
+  productNotFound: false,
+  setProductNotFound: () => {},
+  productDetailsLoading: false,
+  setProductDetailsLoading: () => {},
 });
 
 export type Props = {
@@ -28,6 +41,9 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
   );
 
   const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  const [product, setProduct] = useState<ProductDetails | null>(null);
+  const [productNotFound, setProductNotFound] = useState(false);
+  const [productDetailsLoading, setProductDetailsLoading] = useState(false);
 
   const values = useMemo(
     () => ({
@@ -35,8 +51,25 @@ export const CatalogProvider: React.FC<Props> = ({ children }) => {
       setCartItems,
       favoriteProducts,
       setFavoriteProducts,
+      product,
+      setProduct,
+      productNotFound,
+      setProductNotFound,
+      productDetailsLoading,
+      setProductDetailsLoading,
     }),
-    [cartItems, setCartItems, favoriteProducts, setFavoriteProducts],
+    [
+      cartItems,
+      setCartItems,
+      favoriteProducts,
+      setFavoriteProducts,
+      product,
+      setProduct,
+      productNotFound,
+      setProductNotFound,
+      productDetailsLoading,
+      setProductDetailsLoading,
+    ],
   );
 
   return (

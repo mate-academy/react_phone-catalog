@@ -1,25 +1,16 @@
-import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import {
-  getProductDetails,
-  getSuggestedProducts,
-} from '../helper/fetchProducts';
-import { ProductDetails } from '../types/ProductDetails';
-import { Loader } from '../components/Loader';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { getSuggestedProducts } from '../helper/fetchProducts';
 import { ProductsSlider } from '../components/ProductsSlider';
 import { Product } from '../types/Product';
 import { Details } from '../components/Details';
 import '../App.scss';
+import { CatalogContext } from '../components/CatalogContext';
 
 export const ProductDetailsPage = () => {
-  const [product, setProduct] = useState<ProductDetails | null>(null);
-  const [productDetailsLoading, setProductDetailsLoading] = useState(false);
-  const { productId } = useParams<{ productId?: string }>();
-  const [currentImage, setCurrentImage] = useState('');
-  const [activeColor, setActiveColor] = useState('');
-  const [activeCapacity, setActiveCapacity] = useState('');
   const [randomProducts, setRandomProducts] = useState<Product[]>([]);
-  const [productNotFound, setProductNotFound] = useState(false);
+
+  const { product } = useContext(CatalogContext);
 
   const location = useLocation();
   const productCategory = location.pathname.slice(
@@ -34,38 +25,8 @@ export const ProductDetailsPage = () => {
   };
 
   useEffect(() => {
-    setProductNotFound(false);
-    if (productId) {
-      setProductDetailsLoading(true);
-      getProductDetails(productId, productCategory)
-        .then(productData => {
-          if (productData !== null) {
-            setProduct(productData);
-            setCurrentImage(
-              productData.images.length > 0 ? productData.images[0] : '',
-            );
-            setActiveColor(
-              productData.colorsAvailable.length > 0
-                ? productData.colorsAvailable[0]
-                : '',
-            );
-            setActiveCapacity(
-              productData.capacityAvailable.length > 0
-                ? productData.capacityAvailable[0]
-                : '',
-            );
-          } else {
-            setProductNotFound(true);
-          }
-        })
-        .catch()
-        .finally(() => {
-          setProductDetailsLoading(false);
-        });
-    }
-
     getSuggestedProducts(10).then(data => setRandomProducts(data));
-  }, [productId, productCategory]);
+  }, []);
 
   return (
     <>
@@ -113,23 +74,8 @@ export const ProductDetailsPage = () => {
         </button>
       </div>
 
-      {productDetailsLoading && <Loader />}
+      <Details />
 
-      {productNotFound && (
-        <p className="details__not-found">Phone was not found</p>
-      )}
-
-      {!productDetailsLoading && !productNotFound && product !== null && (
-        <Details
-          product={product}
-          currentImage={currentImage}
-          activeCapacity={activeCapacity}
-          activeColor={activeColor}
-          setImage={setCurrentImage}
-          setCapacity={setActiveCapacity}
-          setColor={setActiveColor}
-        />
-      )}
       <div className="details__slider slider">
         <ProductsSlider
           products={randomProducts}

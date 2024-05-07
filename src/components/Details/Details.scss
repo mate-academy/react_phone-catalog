@@ -66,9 +66,17 @@
   &__not-found {
     font-family: $mont;
     font-size: 21px;
-    font-weight: 600;
+    font-weight: 700;
     line-height: 15px;
     color: $primary;
+    margin-bottom: 100px;
+
+    @include page-paddings;
+
+    @include on-desktop {
+      margin-inline: auto;
+      width: 1136px;
+    }
   }
 
   &__top {
@@ -333,7 +341,11 @@
     border: 2px solid $white;
     box-sizing: border-box;
 
-    @each $color, $value in (black, $black), (white, $white), (red, $red), (gray-green, $gray-green), (purple, $purple), (yellow, $yellow), (spacegray, $spacegray), (gold, $gold), (silver, $silver) {
+    @each $color, $value in (black, $black), (midnight, $midnight), (spaceblack, $spaceblack),
+    (sierrablue, $sierrablue), (white, $white), (red, $red), (gray-green, $gray-green),
+    (green, $green), (purple, $purple), (yellow, $yellow), (spacegray, $spacegray), ("rose-gold", $rosegold), (gold, $gold),
+     (silver, $silver), (graphite, $graphit), (midnightgreen, $midnightgreen), (blue, $blue),
+     (pink, $pink), {
       &--#{$color} {
         background-color: $value;
       }

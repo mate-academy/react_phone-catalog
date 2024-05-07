@@ -81,6 +81,18 @@ export const Pagination: React.FC<Props> = ({
     setVisiblePageNumbers(updatedPageNumbers);
   }, [onPageChange, visiblePageNumbers]);
 
+  const handleOpenLastPage = useCallback(() => {
+    onPageChange(pageCount);
+    const firstElement = pageCount - visiblePageNumbers.length + 1;
+
+    const updatedPageNumbers = Array.from(
+      { length: visiblePageNumbers.length },
+      (_, i) => firstElement + i,
+    );
+
+    setVisiblePageNumbers(updatedPageNumbers);
+  }, [onPageChange, visiblePageNumbers, pageCount]);
+
   const handleOpenPrevPage = useCallback(() => {
     if (currentPage !== 1) {
       onPageChange(currentPage - 1);
@@ -129,7 +141,7 @@ export const Pagination: React.FC<Props> = ({
             aria-label="first"
           >
             <img
-              src="./icons/angle-double-small-left.svg"
+              src="./icons/icons8-double-left-16-light.png"
               alt="arrow-first"
               className="button pagination__back-to-first--img"
             />
@@ -181,6 +193,25 @@ export const Pagination: React.FC<Props> = ({
             aria-disabled={currentPage === pageCount}
             aria-label="next"
           />
+        </li>
+
+        <li className="pagination__item pagination__sidebutton">
+          <button
+            type="button"
+            data-cy="paginationRight"
+            className={cn('button pagination__back-to-first', {
+              'pagination__back-to-first--disabled': currentPage === pageCount,
+            })}
+            onClick={handleOpenLastPage}
+            aria-disabled={currentPage === pageCount}
+            aria-label="last"
+          >
+            <img
+              src="./icons/icons8-double-right-16.png"
+              alt="arrow-first"
+              className="button pagination__back-to-first--img"
+            />
+          </button>
         </li>
       </ul>
     </div>
