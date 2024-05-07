@@ -1,0 +1,33 @@
+@import '../../styles/main';
+
+.phonesPage {
+  font-family: Mont-Bold, sans-serif;
+  &__title {
+    @extend %page-names;
+
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    margin-bottom: 40px;
+
+    @include phone {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__sortContainer {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    @include phone {
+      justify-content: space-between;
+    }
+  }
+}

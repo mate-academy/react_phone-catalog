@@ -1,0 +1,87 @@
+@import '../../styles/main';
+
+.carousel {
+  box-sizing: border-box;
+  width: 100%;
+
+  margin: 0 auto;
+  margin-bottom: 72px;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include phone {
+    margin-bottom: 56px;
+  }
+
+  &__slider {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 18px;
+    height: 400px;
+
+    @include phone {
+      height: 200px;
+    }
+
+    @include tablet {
+      height: 189px;
+    }
+
+    @include desktop {
+      height: 400px;
+    }
+  }
+
+  &__containerOverflow {
+    overflow: hidden;
+    height: 100%;
+    width: 1080px;
+  }
+
+  &__imageContainer {
+    display: flex;
+    height: 100%;
+    transition: transform ease-out 0.5s;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: cover;
+  }
+
+  &__btn {
+    width: 32px;
+    border: 1px solid #B4BDC4;
+    border-radius: 48px;
+    transition: all 0.5s;
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+  }
+
+  &__dotsContainer {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__dots {
+    width: 14px;
+    height: 4px;
+    background-color: #E2E6E9;
+    margin-left: 14px;
+    cursor: pointer;
+  }
+
+  &__dotsActive {
+    width: 14px;
+    height: 4px;
+    margin-left: 14px;
+    cursor: pointer;
+    background-color: #313237;
+  }
+}

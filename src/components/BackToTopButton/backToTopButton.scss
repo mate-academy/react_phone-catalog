@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.backToTopButton {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  &__text {
+    font-family: Mont, arial, helvetica, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15px;
+    text-align: right;
+    color: $color-secondary;
+  }
+
+  &__imgContainer {
+    width: 32px;
+    height: 32px;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #B4BDC4;
+    border-radius: 48px;
+    transform: rotate(-90deg);
+    transition: all 0.5s;
+    cursor: pointer;
+    background-color: #fff;
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+  }
+}

@@ -1,0 +1,15 @@
+@import '../../styles/main';
+
+.cartPage {
+  font-family: Mont, sans-serif;
+  min-height: calc(100vh - 96px);
+  overflow-y: hidden;
+
+  &__title {
+    @extend %page-names;
+
+    color: var(--color-primary);
+
+    margin-bottom: 24px;
+  }
+}
