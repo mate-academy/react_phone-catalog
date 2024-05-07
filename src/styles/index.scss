@@ -1,0 +1,8 @@
+@import './reset';
+@import './variables';
+@import './fonts';
+
+body {
+  font-family: Mont, Helvetica, sans-serif;
+  color: var(--primary);
+}
