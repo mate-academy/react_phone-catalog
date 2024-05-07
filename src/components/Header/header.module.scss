@@ -55,6 +55,10 @@
   color: #FFF;
 }
 
+.headerButtonsMenu {
+  display: none;
+}
+
 .navLinks {
   background: #FFF;
 }
@@ -164,6 +168,47 @@
       background-color: #0F0F11;
       border-radius: 2px;
     }
+  }
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .header {
+    display: flex;
+    height: 48px;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    justify-content: space-between;
+  }
+
+  .headerButtons {
+    display: none;
+  }
+
+  .headerButtonsMenu {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48;
+    height: 48px;
+    flex-shrink: 0;
+    background: #FFF;
+    box-shadow: -1px 0 0 0 #E2E6E9;
+    color: #FFF;
+  }
+
+  .headerButtonMenuIcon {
+    box-sizing: border-box;
+    width: 16px;
+    height: 16px;
+    flex-shrink: 0;
+    color: #0F0F11;
+    background: #FFF;
+    overflow: hidden;
   }
 }
 

@@ -4,13 +4,20 @@ import styles from './productDetail.module.scss';
 import { Header } from '../Header/header';
 import { Footer } from '../Footer/footer';
 import { NavLink, useSearchParams } from 'react-router-dom';
-import { useAppSelector } from '../../Hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 // import { loadProductsDetail } from '../../feachers/detailSlice';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 import heardBuron from './logo/Favourites.png';
 import { ProductDetailes } from '../../services/ProductDetailType';
 import { colors } from '../../services/colors';
+import heardBuronActive from './logo/favoriteActive.png';
+import {
+  addFavorite,
+  addToCart,
+  removeFavorite,
+  removeFromCart,
+} from '../../feachers/detailSlice';
 // import { ButtonsAddandFavorits } from '../ProductCard/ButtonAdd';
 // import useHistory from 'react-router-dom';
 
@@ -19,17 +26,32 @@ type Props = {
 };
 
 export const ProductDetails: React.FC<Props> = () => {
+  // const [isCart, setIsCart] = useState(false);
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [, setCurrentImageIndex] = useState(0);
   // const details = useAppSelector(state => state.detail.detail);
   const recommendationsProduct = useAppSelector(state => state.phones.products);
   const [params] = useSearchParams();
+  const dispatch = useAppDispatch();
 
   const id = params.get('id');
   const productDetails = useAppSelector(state => state.phones?.productsDetails);
   const [product, setProduct] = useState<ProductDetailes | null>(null);
   // const location = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
+  const findProduct = useAppSelector(state => state.phones.products);
+
+  const isCart = useAppSelector(state =>
+    state.cartAndFavorits.cart.some(
+      car => car.name === product?.name && car.isCart,
+    ),
+  );
+
+  const isFavorite = useAppSelector(state =>
+    state.cartAndFavorits.favorites.some(
+      fav => fav.name === product?.name && fav.isFavorite,
+    ),
+  );
 
   useEffect(() => {
     setProduct(productDetails.find(item => item.id === id) || null);
@@ -73,9 +95,9 @@ export const ProductDetails: React.FC<Props> = () => {
   };
 
   useEffect(() => {
-    searchParams.set('capacity', product?.capacity || '');
+    // searchParams.set('capacity', product?.capacity || '');
     searchParams.set('id', String(id));
-    searchParams.set('color', String(product?.color));
+    // searchParams.set('color', String(product?.color));
     setSearchParams(searchParams);
   }, [searchParams, product?.capacity]);
 
@@ -92,6 +114,29 @@ export const ProductDetails: React.FC<Props> = () => {
   // const goBack = () => {
   //   history.goBack();
   // };
+  const handlerAddProduct = () => {
+    const foundProduct = findProduct.find(item => item.name === product?.name);
+
+    if (isCart) {
+      dispatch(removeFromCart(foundProduct));
+    } else {
+      if (foundProduct) {
+        dispatch(addToCart(foundProduct));
+      }
+    }
+  };
+
+  const handlerFavoritsAdd = () => {
+    const foundProduct = findProduct.find(item => item.name === product?.name);
+
+    if (isFavorite) {
+      dispatch(removeFavorite(foundProduct));
+    } else {
+      if (foundProduct) {
+        dispatch(addFavorite(foundProduct));
+      }
+    }
+  };
 
   return (
     <>
@@ -291,9 +336,31 @@ export const ProductDetails: React.FC<Props> = () => {
                 </div>
                 <div className={styles.buttonsContainer}>
                   {/* {product && <ButtonsAddandFavorits item={product} />} */}
-                  <button className={styles.addButton}>Add to cart</button>
-                  <button className={styles.likeButton}>
-                    <img className={styles.like} src={heardBuron}></img>
+                  <button
+                    className={
+                      !isCart ? `${styles.addButton}` : `${styles.addedCart}`
+                    }
+                    onClick={() => handlerAddProduct()}
+                  >
+                    {!isCart ? 'Add to cart' : 'Added to cart'}
+                  </button>
+                  <button
+                    className={styles.likeButton}
+                    onClick={() => handlerFavoritsAdd()}
+                  >
+                    {!isFavorite ? (
+                      <img
+                        className={styles.like}
+                        src={heardBuron}
+                        alt="Favorite"
+                      ></img>
+                    ) : (
+                      <img
+                        className={styles.like}
+                        src={heardBuronActive}
+                        alt="Favorite"
+                      ></img>
+                    )}
                   </button>
                 </div>
               </div>

@@ -14,4 +14,6 @@ export interface Product {
   ram: string;
   year: number;
   counter: number;
+  isFavorite: boolean;
+  isCart: boolean;
 }

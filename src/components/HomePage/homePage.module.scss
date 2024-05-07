@@ -1,5 +1,12 @@
+.homeWrapper {
+  display: flex;
+  max-width: 1400px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .appBody {
-  margin-inline: auto;
+  // margin-inline: auto;
   max-width: 1200px;
   padding-inline: 34px;
   scroll-behavior: smooth;
@@ -24,6 +31,25 @@
   align-items: center;
   width: 100%; /* Змінено ширину на 100% */
   max-width: 1200px; /* Змінено на максимальну ширину контейнера */
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .mainTitles {
+    display: flex;
+    text-wrap: wrap;
+    color: #0F0F11;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
+
+  .appBody {
+    max-width: 1200px;
+    padding-inline: 34px;
+    scroll-behavior: smooth;
+    flex: 1;
+  }
 }
 
 // @media (min-width: 640px) {

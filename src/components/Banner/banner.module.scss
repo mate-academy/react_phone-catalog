@@ -43,7 +43,7 @@
 }
 
 .bannerImgSwiper {
-  max-width: 1075px;
+  max-width: 1038px;
 }
 
 .bannerContent {
@@ -68,12 +68,12 @@
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .bannerWraper {
-    // max-width: 592px;
+    max-width: 592px;
     max-height: auto;
   }
 
   .bannerImgSwiper {
-    max-width: 640px;
+    max-width: 592px;
   }
 
   .sectionBanner {
@@ -84,5 +84,21 @@
   .bannerImg {
     width: 100%;
     height: 221px;
+  }
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .bannerWraper {
+    max-width: 320px;
+    max-height: auto;
+  }
+
+  .bannerImgSwiper {
+    max-width: 320px;
+    max-height: auto;
+  }
+
+  .bannerButtons {
+    display: none;
   }
 }

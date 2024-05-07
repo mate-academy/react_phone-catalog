@@ -165,6 +165,7 @@
 }
 
 .colorsList {
+  flex-flow: wrap;
   display: flex;
   flex-direction: row;
   gap: 8px;
@@ -288,6 +289,27 @@
     border-radius: 8px;
     background: #216CFF;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+}
+
+.addedCart {
+  display: flex;
+  width: 263px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  outline: transparent;
+  border: 1px solid #E2E6E9;
+  color: #216CFF;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  background-color: #FFF;
+
+  &:hover {
+   border-color: #216CFF;
   }
 }
 
@@ -498,6 +520,7 @@
   }
 
   .capacityList {
+    flex-flow: wrap;
     display: flex;
     flex-direction: row;
     gap: 8px;
@@ -534,6 +557,17 @@
     &:hover {
       border-radius: 48px;
       border: 1px solid #0F0F11;
+    }
+  }
+
+  .heardIcon {
+    padding-top: 5px;
+    width: 16px;
+    height: 16px;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
 

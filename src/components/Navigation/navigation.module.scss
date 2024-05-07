@@ -88,4 +88,20 @@
       border-radius: 2px;
     }
   }
+
+  .navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 34px;
+    align-self: stretch;
+    padding-left: 34px;
+    background: #FFF;
+  }
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .navigation {
+    display: none;
+  }
 }

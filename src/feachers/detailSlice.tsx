@@ -1,20 +1,19 @@
 // /* eslint-disable no-param-reassign */
-import { createAction, createSlice } from '@reduxjs/toolkit';
+import { createSlice } from '@reduxjs/toolkit';
 import { Product } from '../services/productType';
-
-export const addToFavorites = createAction<Product>('favorites/add');
-export const removeFromFavorites = createAction<Product>('favorites/remove');
-export const addToCart = createAction<Product>('cart/add');
-export const removeFromCart = createAction<Product>('cart/remove');
 
 export interface FavoritesAndCardState {
   favorites: Product[];
   cart: Product[];
+  isFavorites: boolean;
+  isCart: boolean;
 }
 
 const initialState: FavoritesAndCardState = {
   favorites: [],
   cart: [],
+  isFavorites: false,
+  isCart: false,
 };
 
 export const favoritesAndCardSlice = createSlice({
@@ -22,40 +21,46 @@ export const favoritesAndCardSlice = createSlice({
   initialState,
   reducers: {
     addFavorite: (state, action) => {
-      const item = action.payload;
-      const isAlreadyFavorite = state.favorites.some(
-        favItem => favItem.id === item.id,
-      );
+      const itemId = action.payload.id;
+      const itemIndex = state.favorites.findIndex(item => item.id === itemId);
 
-      if (!isAlreadyFavorite) {
-        state.favorites.push(item);
+      if (itemIndex === -1) {
+        state.favorites.push({ ...action.payload, isFavorite: true });
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        state.favorites[itemIndex].isFavorite = true;
       }
     },
     removeFavorite: (state, action) => {
-      const itemToRemove = action.payload;
+      const itemId = action.payload.id;
+      const itemIndex = state.favorites.findIndex(item => item.id === itemId);
 
-      // eslint-disable-next-line no-param-reassign
-      state.favorites = state.favorites.filter(
-        item => item.id !== itemToRemove.id,
-      );
+      if (itemIndex !== -1) {
+        state.favorites.splice(itemIndex, 1);
+      }
     },
     addToCart: (state, action) => {
-      const item = action.payload;
-      const isAlreadyInCart = state.cart.some(
-        cartItem => cartItem.id === item.id,
-      );
+      const itemId = action.payload.id;
+      const itemIndex = state.cart.findIndex(item => item.id === itemId);
 
-      if (!isAlreadyInCart) {
-        state.cart.push(item);
+      if (itemIndex === -1) {
+        state.cart.push({ ...action.payload, isCart: true });
+      } else {
+        // eslint-disable-next-line no-param-reassign
+        state.cart[itemIndex].isCart = true;
       }
     },
     removeFromCart: (state, action) => {
-      const itemToRemove = action.payload;
+      const itemId = action.payload.id;
+      const itemIndex = state.cart.findIndex(item => item.id === itemId);
 
-      // eslint-disable-next-line no-param-reassign
-      state.cart = state.cart.filter(item => item.id !== itemToRemove.id);
+      if (itemIndex !== -1) {
+        state.cart.splice(itemIndex, 1);
+      }
     },
   },
 });
+export const { addFavorite, removeFavorite, addToCart, removeFromCart } =
+  favoritesAndCardSlice.actions;
 
 export default favoritesAndCardSlice.reducer;

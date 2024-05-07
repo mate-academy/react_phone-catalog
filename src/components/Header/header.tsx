@@ -6,15 +6,19 @@ import FavoritesHeard from './header.logo/Favourites (Heart Like).png';
 import shops from './header.logo/Shopping bag (Cart).png';
 import { Navigation } from '../Navigation/Navigation';
 import { NavLink } from 'react-router-dom';
-import { useLocalStorage } from '../../local/localStorege';
+// import { useLocalStorage } from '../../local/localStorege';
+import { useAppSelector } from '../../Hooks/hooks';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) => {
   return [styles.navigation__links, isActive ? styles.isActive : ''].join(' ');
 };
 
 export const Header: React.FC = () => {
-  const [items] = useLocalStorage('favorites', []);
-  const [cart] = useLocalStorage('cart', []);
+  // const [items] = useLocalStorage('favorites', []);
+  // const [cart] = useLocalStorage('cart', []);
+
+  const items = useAppSelector(state => state.cartAndFavorits.favorites);
+  const cart = useAppSelector(state => state.cartAndFavorits.cart);
 
   return (
     <>
@@ -51,9 +55,18 @@ export const Header: React.FC = () => {
                 />
               </div>
             </NavLink>
+            <NavLink to={''} className={styles.headerButtonsMenu}>
+              <div className={styles.headerButtonsMenu}>
+                <img
+                  className={styles.headerButtonMenuIcon}
+                  src={menuLogo}
+                  alt="Menu"
+                />
+              </div>
+            </NavLink>
           </div>
 
-          <img className={styles.menuLogo} src={menuLogo} alt="Menu Logo" />
+          {/* <img className={styles.menuLogo} src={menuLogo} alt="Menu Logo" /> */}
         </header>
       </section>
     </>

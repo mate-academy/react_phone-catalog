@@ -91,7 +91,33 @@
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .sliderWraper {
-    width: 640px;
+    width: 685px;
+  }
+
+  .productsCard {
+    padding: 15px 0;
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0;
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+  .swiperSlide {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+
+
+  .swiperSlide, .swiper-wrapper {
+    overflow-x: hidden;
+    flex-shrink: 0;
+  }
+}
+
+@media (min-width:320px) and (max-width: 639px) {
+  .sliderWraper {
+    width: 320px;
   }
 
   .productsCard {

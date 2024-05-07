@@ -24,13 +24,15 @@ export const HomePage: React.FC = () => {
 
   return (
     <>
-      <section className={styles.appBody}>
-        <h1 className={styles.mainTitles}>Welcome to Nice Gadgets store!</h1>
-        <Baner />
-        <ProductSlider title="Brand new models" phones={newModels} />
-        <Categories />
-        <ProductSlider title="Hot prices" phones={hotPrices} />
-      </section>
+      <div className={styles.homeWrapper}>
+        <section className={styles.appBody}>
+          <h1 className={styles.mainTitles}>Welcome to Nice Gadgets store!</h1>
+          <Baner />
+          <ProductSlider title="Brand new models" phones={newModels} />
+          <Categories />
+          <ProductSlider title="Hot prices" phones={hotPrices} />
+        </section>
+      </div>
     </>
   );
 };

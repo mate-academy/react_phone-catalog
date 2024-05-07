@@ -131,3 +131,87 @@
     box-shadow: 0 -1px 0 0 #E2E6E9;
   }
 }
+
+@media (min-width:320px) and (max-width: 639px) {
+  .footer {
+    display: flex;
+    padding: 32px 16px;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .footerList {
+    justify-content: start;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+    align-self: stretch;
+  }
+
+  .footerLogo {
+    display: flex;
+    align-items: flex-start;
+    justify-content: start;
+    width: 89px;
+    height: 32px;
+  }
+
+  .footerItems {
+    margin: 0;
+
+    &:hover {
+      transform: scale(1.2);
+      color: #0F0F11;
+    }
+  }
+
+  .footerSection {
+    display: flex;
+    justify-content: start;
+  }
+
+  .footerButton {
+    margin-left: 200px;
+    width: 32px;
+    height: 32px;
+    transform: rotate(-90deg);
+    border-radius: 48px;
+    border: 1px solid #B4BDC3;
+    background: #FAFBFC;
+
+    &::before {
+      white-space: nowrap;
+      justify-content: left;
+      content: 'Back to top';
+      position: absolute;
+      bottom: 300%;
+      left: 0;
+      right: 0;
+      transform: rotate(90deg);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.5s, visibility 0.5s;
+      cursor: pointer;
+      color: #89939A;
+      text-align: right;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: normal;
+    }
+
+    &:hover::before {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    &:hover {
+      border-radius: 48px;
+      border: 1px solid #0F0F11;
+    }
+  }
+
+}

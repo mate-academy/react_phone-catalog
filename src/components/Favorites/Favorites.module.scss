@@ -1,9 +1,20 @@
+.favoritesWrapper {
+  display: flex;
+  max-width: 1200px;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
 .favorites {
   display: flex;
   flex-direction: column;
   max-width: 1200px;
-  margin-inline: auto;
   min-height: 700px;
+}
+
+.empyFavoritesImg {
+  max-width: 1200px;
+  height: 600px;
 }
 
 .homeLinkContainer {
@@ -69,6 +80,33 @@
 .productGrid {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: left;
   gap: 21.2px;
 }
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .favorites {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding-inline: 24px;
+    min-height: 700px;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .productGrid {
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 21.2px;
+  }
+}
+
+
