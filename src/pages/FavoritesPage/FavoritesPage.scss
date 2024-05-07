@@ -1,0 +1,29 @@
+@import '../../styles/index';
+
+.favorites {
+  flex: 1;
+  padding: 24px 0 80px;
+
+  &__breadcrambs {
+    margin-bottom: 40px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__items-count {
+    color: $secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin-bottom: 40px;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+  }
+}

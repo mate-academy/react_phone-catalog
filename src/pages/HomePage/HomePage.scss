@@ -1,0 +1,11 @@
+@import '../../styles/index';
+
+.home {
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 80px;
+    margin: 56px 0 80px;
+    width: 100%;
+  }
+}

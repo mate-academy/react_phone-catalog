@@ -1,0 +1,98 @@
+@import "./index";
+
+.product {
+  flex: 1;
+  padding: 24px 0 80px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__amount {
+    margin-bottom: 32px;
+    color: $secondary-gray;
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+
+    @include on-tablet {
+       margin-bottom: 40px;
+    }
+  }
+
+  &__sorting {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    color: $secondary-gray;
+    font-size: 12px;
+    font-weight: 600;
+  }
+
+  &__select {
+    height: 40px;
+    padding: 0 12px;
+    color: $primary-gray;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    border: 1px solid $icons-gray;
+    background-image: url(../images/icons/ButtonDown.png);
+    background-position: right 10px center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+
+    outline: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+
+    &::-ms-expand {
+      display: none
+    }
+
+    &:hover {
+      border: 1px solid $secondary-gray;
+    }
+  }
+
+  &__option {
+    display: block;
+    height: 32px;
+
+    color: $secondary-gray;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    &:hover {
+      border: #fff;
+      color: $primary-gray;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 21px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+  }
+}
