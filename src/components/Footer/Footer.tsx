@@ -1,8 +1,22 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Footer.scss';
 import '../../styles/main.scss';
+import { useMemo } from 'react';
 
 export const Footer = () => {
+
+  function isScrollable() {
+      const bodyScrollable =
+        document.body.scrollHeight > document.body.clientHeight;
+      const htmlScrollable =
+        document.documentElement.scrollHeight >
+        document.documentElement.clientHeight;
+
+      return bodyScrollable || htmlScrollable;
+  };
+
+  const hasScroll = useMemo(() => isScrollable(), []);
+
   return (
     <div className="footer">
       <div className="footer__content">
@@ -26,15 +40,13 @@ export const Footer = () => {
         </nav>
 
         <div className="footer__back">
-          <div className="footer__back-button">
-            <div
-              className="footer__back-button-text"
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            >
-              Back to top
-            </div>
+          {hasScroll ? ( <div
+            className="footer__back-button"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div className="footer__back-button-text">Back to top</div>
             <div className="footer__back-button-icon" />
-          </div>
+          </div>) : (<></>)}
         </div>
       </div>
     </div>

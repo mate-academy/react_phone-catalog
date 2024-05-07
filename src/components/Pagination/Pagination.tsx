@@ -14,7 +14,7 @@ export const Pagination: React.FC<Props> = ({
   setPage,
 }) => {
   const firstBlock = 0;
-  const lastBlock = pages / 4;
+  const lastBlock = pages / 4 - 1;
 
   const pagesArray = Array.from({ length: pages }, (_, index) =>
     (1 + index).toString(),
@@ -26,6 +26,12 @@ export const Pagination: React.FC<Props> = ({
   const isFirstBlock = currentBlock === firstBlock;
   const isLastBlock = currentBlock === lastBlock;
 
+  const blockFirstPage = currentBlock * 4 + 1;
+  const blockLastPage = (currentBlock + 1) * 4;
+
+  const isBlockFirstPage = +currentPage === blockFirstPage;
+  const isBlockLastPage = +currentPage === blockLastPage;
+
   const slider = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
 
@@ -33,21 +39,27 @@ export const Pagination: React.FC<Props> = ({
     if (slider.current) {
       setSliderWidth(slider.current.offsetWidth);
     }
-  }, [currentBlock]);
+  }, [currentPage]);
 
   const transform = isFirstBlock
     ? 0
     : sliderWidth * currentBlock + 8 * currentBlock;
 
   const onLeftMove = () => {
-    if (!isFirstBlock) {
-      setCurrentBlock(currentBlock - 1);
+    if (currentPage !== '1') {
+      setPage((+currentPage - 1).toString());
+      if (+currentPage <= blockFirstPage) {
+        setCurrentBlock(currentBlock - 1);
+      }
     }
   };
 
   const onRightMove = () => {
-    if (!isLastBlock) {
-      setCurrentBlock(currentBlock + 1);
+    if (!(isBlockLastPage && isLastBlock)) {
+      setPage((+currentPage + 1).toString());
+      if (+currentPage >= blockLastPage) {
+        setCurrentBlock(currentBlock + 1);
+      }
     }
   };
 
@@ -56,7 +68,7 @@ export const Pagination: React.FC<Props> = ({
       <button className="pagination__left-slide" onClick={onLeftMove}>
         <div
           className={
-            isFirstBlock ? 'icon icon-left-disabled' : 'icon icon-left'
+            (isFirstBlock && isBlockFirstPage) ? 'icon icon-left-disabled' : 'icon icon-left'
           }
         />
       </button>
@@ -87,7 +99,7 @@ export const Pagination: React.FC<Props> = ({
       <button className="pagination__right-slide" onClick={onRightMove}>
         <div
           className={
-            isLastBlock ? 'icon icon-right-disabled' : 'icon icon-right'
+            (isLastBlock && isBlockLastPage) ? 'icon icon-right-disabled' : 'icon icon-right'
           }
         />
       </button>

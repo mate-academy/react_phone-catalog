@@ -56,6 +56,7 @@ export const Products: React.FC<Props> = ({ title, products }) => {
     setSearchWith({
       page: v,
     });
+    window.scroll(0, 0);
   };
 
   const sortedProducts = getSortedProducts(products, searchParams);
