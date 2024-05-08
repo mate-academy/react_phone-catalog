@@ -3,10 +3,12 @@ import {IoIosArrowUp} from 'react-icons/io';
 import {Link} from 'react-router-dom';
 
 import {useEffect, useState} from 'react';
+import classNames from 'classnames';
 import style from './Footer.module.scss';
 
 export const Footer = () => {
   const [showButton, setShowButton] = useState(false);
+  const [footerMenu, setFooterMenu] = useState(false);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -40,13 +42,23 @@ export const Footer = () => {
           </Link>
         </div>
         <div className={style.footer__menu}>
-          <Link target="_blank" to="https://github.com/MykhailoLoniak">
+          <Link
+            className={style.footer__button}
+            target="_blank"
+            to="https://github.com/MykhailoLoniak"
+          >
             Github
           </Link>
-          <Link target="_blank" to="https://t.me/MykhailoLoniak">
+          <Link
+            className={style.footer__button}
+            target="_blank"
+            to="https://t.me/MykhailoLoniak"
+          >
             Contacts
           </Link>
-          <Link to="/">rights</Link>
+          <Link className={style.footer__button} to="/">
+            rights
+          </Link>
         </div>
         <div>
           {showButton && (
@@ -54,13 +66,48 @@ export const Footer = () => {
               onClick={scrollToTop}
               type="button"
               aria-label="Go to top"
-              className={style.footer__goTop}
+              className={classNames(style.footer__goTop, style.footer__button)}
             >
               Back to top
               <IoIosArrowUp className={style.footer__button_top} />
             </button>
           )}
         </div>
+      </div>
+      <div className={style.footer__mobi}>
+        <Link
+          className={style.footer__mobi__button}
+          target="_blank"
+          to="https://github.com/MykhailoLoniak"
+          onClick={() => setFooterMenu(!footerMenu)}
+        >
+          Github
+        </Link>
+        <Link
+          className={style.footer__mobi__button}
+          target="_blank"
+          to="https://t.me/MykhailoLoniak"
+          onClick={() => setFooterMenu(!footerMenu)}
+        >
+          Contacts
+        </Link>
+        <Link
+          className={style.footer__mobi__button}
+          to="/"
+          onClick={() => setFooterMenu(!footerMenu)}
+        >
+          rights
+        </Link>
+        {showButton && (
+          <button
+            onClick={scrollToTop}
+            type="button"
+            aria-label="Go to top"
+            className={classNames(style.footer__goTop, style.footer__button)}
+          >
+            <IoIosArrowUp className={style.footer__button_top} />
+          </button>
+        )}
       </div>
     </div>
   );

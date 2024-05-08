@@ -1,13 +1,131 @@
+@import '../../utils/mixins.scss';
+
+.navbar_mobi {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 999;
+  display: block;
+  background-color: #fff;
+
+  &__top {
+    display: flex;
+    margin: 15px 10px;
+    justify-content: space-between;
+    margin-bottom: 15px;
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__close {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 10px;
+    height: 10px;
+
+    &_icon {
+      font-size: 20px;
+    }
+  }
+
+  &__menu {
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    display: flex;
+    width: 10px;
+    height: 10px;
+    height: 100vh;
+  }
+
+  &__button {
+    border: none;
+    background-color: #fff;
+  }
+
+  &__icon {
+    box-sizing: border-box;
+    display: inline-block;
+    height: 10px;
+    width: 10px;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    position: relative;
+    margin-right: 15px;
+  }
+
+  &__container {
+    position: absolute;
+    top: -8px;
+    right: -15px;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    z-index: 1;
+
+    &_count {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      z-index: 2;
+      border-radius: 50%;
+      height: 14px;
+      width: 14px;
+      justify-content: center;
+      justify-items: center;
+      background-color: red;
+      font-size: 10px;
+      color: #fff;
+      font-weight: 600;
+    }
+  }
+
+  &__link {
+    text-transform: uppercase;
+    text-decoration: none;
+    display: block;
+    padding-block: 26px;
+    margin-inline: 32px;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: rgba(137, 147, 154, 1);
+  }
+
+  @include onTablet {
+    display: none;
+  }
+
+  @include onPc {
+    display: none;
+  }
+}
+
 .navbar {
   position: fixed;
   top: 0;
-  width: 100%;
+  width: 100vw;
   z-index: 999;
   background-color: #fff;
   box-sizing: border-box;
   border-bottom: 1px solid rgba(226, 230, 233, 1);
   margin-bottom: 40px;
+  display: inline-block;
 
+  @media (max-width: 850px) {
+    display: none;
+  }
   &__container {
     display: flex;
     justify-content: space-between;
@@ -23,6 +141,8 @@
       justify-content: center;
       padding-left: 24px;
       margin-right: auto;
+
+      @include buttonTransitionZoom;
     }
 
     &__menu {
@@ -39,6 +159,8 @@
         color: rgba(137, 147, 154, 1);
         text-transform: uppercase;
         text-decoration: none;
+
+        @include buttonTransitionText;
       }
     }
   }
@@ -47,6 +169,7 @@
     display: flex;
 
     &__item {
+      box-sizing: border-box;
       display: flex;
       border-left: 1px solid rgba(226, 230, 233, 1);
       height: 64px;
@@ -58,21 +181,15 @@
 
       &_container {
         position: absolute;
-        // margin: auto;
         top: 17px;
         right: 15px;
         height: 18px;
         width: 18px;
         border-radius: 50%;
-        background-color: #ffffff;
         z-index: 1;
-        // padding: 2px;
 
         &_count {
           position: absolute;
-          // margin: auto;
-          // top: 17px;
-          // right: 15px;
           top: 50%;
           left: 50%;
           transform: translate(-50%, -50%);
@@ -100,11 +217,19 @@
         height: 64px;
         width: 327px;
         display: flex;
-        border-left: 1px solid rgba(226, 230, 233, 1);
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
         align-items: center;
         text-align: center;
         justify-content: center;
         position: relative;
+
+        @media (max-width: 1140px) {
+          width: 150px;
+        }
+
+        @media (max-width: 935px) {
+          width: 60px;
+        }
       }
     }
   }
@@ -114,4 +239,9 @@
   color: #313237;
   align-self: flex-end;
   border-bottom: 3px solid #313237;
+}
+
+.navbar__rightMenu__item:hover,
+.navbar__rightMenu__item:hover .navbar__rightMenu__item_icon {
+  color: #c0c0c0;
 }

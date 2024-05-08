@@ -1,9 +1,10 @@
-  .container {
-    width: 1136px;
-    margin: auto;
-    text-align: center;
-  }
+.container {
+  max-width: 100vw;
+  margin: auto;
+  text-align: center;
+}
 
-  .img {
-    height: 70vh;
-  }
+.img {
+  height: auto;
+  width: 70vw;
+}

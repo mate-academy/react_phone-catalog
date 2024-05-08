@@ -2,7 +2,6 @@ import {useEffect, useState} from 'react';
 import {useParams} from 'react-router-dom';
 
 import {ProductDetails} from '../../components/Content/ProductDetails';
-import {Breadcrumb} from '../../components/Content/Breadcrumb';
 
 import {Products} from '../../type/Productes';
 import {fetchDetails, getProducts} from '../../api';
@@ -51,8 +50,7 @@ export const ProductDetailsPage = () => {
 
   return (
     <>
-      <Breadcrumb path={path} />
-      <ProductDetails backUrl={backUrl} details={details} />
+      <ProductDetails backUrl={backUrl} details={details} path={path} />
     </>
   );
 };

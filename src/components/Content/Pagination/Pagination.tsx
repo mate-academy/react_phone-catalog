@@ -60,8 +60,7 @@ export const Pagination: React.FC<Props> = ({
   const renderDots = () => {
     return (
       <button
-        className={style.pagination__button_page}
-        style={{cursor: 'default'}}
+        className={style.pagination__button_page_disabled}
         type="button"
         aria-label="pagination"
         disabled

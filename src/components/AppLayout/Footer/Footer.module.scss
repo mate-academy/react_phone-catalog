@@ -1,15 +1,49 @@
 @import '../../utils/mixins.scss';
+
 .footer {
   margin: 0 auto;
   border-top: 1px solid rgba(226, 230, 233, 1);
 
+  &__mobi {
+    display: flex;
+    justify-content: space-around;
+
+    &__button {
+      color: black;
+      padding: 5px;
+      text-transform: uppercase;
+      text-decoration: none;
+      align-items: center;
+      display: flex;
+      color: rgba(137, 147, 154, 1);
+    }
+
+    @include onTablet {
+      display: none;
+    }
+
+    @include onPc {
+      display: none;
+    }
+  }
+
+  &__logo {
+    margin-left: 15px;
+
+    @include buttonTransitionZoom;
+  }
+
   &__container {
     margin: auto;
-    width: 1136px;
+    width: 100vw;
     height: 96px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+
+    @media (max-width: 850px) {
+      display: none;
+    }
   }
 
   &__menu {
@@ -26,7 +60,7 @@
     line-height: 11px;
     letter-spacing: 0.04em;
     text-align: left;
-    color: rgba(180, 189, 195, 1);
+    color: rgba(137, 147, 154, 1);
   }
 
   &__goTop {
@@ -35,7 +69,7 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
-    color: rgba(180, 189, 195, 1);
+    color: rgba(137, 147, 154, 1);
     border: none;
     background-color: #fff;
     cursor: pointer;
@@ -49,6 +83,11 @@
     color: rgba(180, 189, 195, 1);
     background-color: white;
     cursor: pointer;
+
     @include buttonTransitionWhite;
+  }
+
+  &__button {
+    @include buttonTransitionTextFooter;
   }
 }

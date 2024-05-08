@@ -1,16 +1,12 @@
 .breadcrumb {
-  width: 1136px;
-  margin: auto;
   display: flex;
   align-items: center;
   margin-bottom: 40px;
-
 
   &__arrow {
     height: 16px;
     height: 16px;
     margin-inline: 8px;
-  
   }
 
   &__path {
@@ -19,17 +15,14 @@
     line-height: 15px;
     color: #b4bdc3;
     text-decoration: none;
-  
   }
 
   &__home {
     height: 16px;
-  
   }
 
   &__map {
     display: flex;
     align-items: center;
-  
   }
 }

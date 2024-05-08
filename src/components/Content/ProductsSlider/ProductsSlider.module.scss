@@ -21,10 +21,19 @@
   }
 
   &__cards {
+    flex-direction: column;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+    align-items: center;
     flex-wrap: wrap;
-    width: 1136px;
+    width: 100%;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
   }
 
   &__header {

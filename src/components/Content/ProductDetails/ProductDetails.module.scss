@@ -1,5 +1,5 @@
 .productDetails {
-  width: 1136px;
+  max-width: 1136px;
   margin: auto;
   margin-top: 40px;
 
@@ -36,6 +36,19 @@
 
     &_colomn2 {
       width: 48%;
+    }
+
+    @media (max-width: 850px) {
+      display: block;
+      justify-content: center;
+
+      &_colomn1 {
+        width: 100%;
+      }
+
+      &_colomn2 {
+        width: 100%;
+      }
     }
   }
 }

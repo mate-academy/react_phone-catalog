@@ -27,3 +27,8 @@
     cursor: pointer;
   }
 }
+
+.search:hover,
+.search:hover .search__icon {
+  color: #c0c0c0;
+}

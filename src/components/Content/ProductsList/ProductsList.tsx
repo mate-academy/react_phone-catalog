@@ -10,17 +10,20 @@ import {NoResults} from '../../NoResults';
 import {ProductContext} from '../../../context/ProductContext';
 
 import style from './ProductsList.module.scss';
+import {Breadcrumb} from '../Breadcrumb';
 
 type Props = {
   loader: boolean;
   title: string;
   visibleProduct: Products[];
+  path: string[];
 };
 
 export const ProductsList: React.FC<Props> = ({
   visibleProduct,
   loader,
   title,
+  path,
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
@@ -101,7 +104,8 @@ export const ProductsList: React.FC<Props> = ({
           {loader ? (
             <Loader />
           ) : (
-            <>
+            <div className={style.productPage__container}>
+              <Breadcrumb path={path} />
               <h1 className={style.productPage__title}>{title}</h1>
               <span
                 className={style.productPage__numPhone}
@@ -177,7 +181,7 @@ export const ProductsList: React.FC<Props> = ({
                 setPage={setPage}
                 itemsOnPage={itemsOnPage}
               />
-            </>
+            </div>
           )}
         </>
       )}

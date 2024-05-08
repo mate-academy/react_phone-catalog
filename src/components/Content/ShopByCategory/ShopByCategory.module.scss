@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .category {
   display: flex;
   justify-content: center;
@@ -12,14 +14,18 @@
   }
 
   &__cards {
-    width: 1136px;
     display: flex;
     box-sizing: border-box;
-    justify-content: space-between;
+    flex-direction: column;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
   }
 
   &__card {
-    // transition: width 1s ease;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;

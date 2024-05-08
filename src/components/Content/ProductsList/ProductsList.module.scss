@@ -1,9 +1,21 @@
+@import '../../utils/mixins.scss';
+
 .productPage {
-  width: 1136px;
+  width: 100%;
   margin: auto;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
 
   &__title {
     margin-bottom: 8px;
+    text-align: left;
   }
 
   &__numPhone {
@@ -16,6 +28,7 @@
   &__sort {
     margin-top: 40px;
     display: flex;
+    justify-content: flex-start;
   }
 
   &__select select {
@@ -36,16 +49,18 @@
   }
 
   &__cards {
-    width: 1136px;
-    margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1136px;
+    justify-content: center;
     grid-gap: 16px;
+    margin-top: 24px;
   }
 
   &__card {
+    flex: 0 1 calc((100% - 48px) / 4);
+    gap: 8px;
     margin-bottom: 40px;
-    width: calc((100% - 48px) / 4);
   }
 }
 

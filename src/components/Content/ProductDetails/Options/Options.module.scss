@@ -28,6 +28,8 @@
     padding: 2px;
     border-radius: 50%;
     cursor: pointer;
+
+    @include buttonTransitionWhite;
   }
 
   &__color_actice {
@@ -47,11 +49,15 @@
     background-color: #fff;
     border: 1px solid #313237;
     cursor: pointer;
+
+    @include buttonTransitionWhite;
   }
 
   &__capacity_actice {
     background-color: #313237;
     color: #fff;
+
+    @include buttonTransitionBlack;
   }
 
   &__price {
@@ -91,10 +97,11 @@
     background-color: #fff;
     font-size: 20px;
     cursor: pointer;
-    @include buttonTransitionWhite;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include buttonTransitionWhite;
   }
 
   &__button_by {
@@ -111,6 +118,7 @@
     background-color: #fff;
     color: #313237;
     border: 2px solid #b4bdc3;
+
     @include buttonTransitionWhite;
   }
 
@@ -133,4 +141,22 @@
 
 .loader {
   cursor: wait;
+}
+
+@media (max-width: 850px) {
+  .options__tablet {
+    display: flex;
+    justify-content: space-around;
+  }
+}
+
+@media (max-width: 650px) {
+  .options__tablet {
+    display: block;
+  }
+  .options__tablet_block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }

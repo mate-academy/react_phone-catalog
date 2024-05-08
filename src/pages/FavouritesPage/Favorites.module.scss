@@ -1,5 +1,4 @@
 .productPage {
-  width: 1136px;
   margin: auto;
 
   &__title {
@@ -12,15 +11,18 @@
     color: rgba(137, 147, 154, 1);
   }
   &__cards {
-    width: 1136px;
     margin-top: 24px;
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 1136px;
+    margin: auto;
     grid-gap: 16px;
+    justify-content: center;
   }
 
   &__card {
+    flex: 0 1 calc((100% - 48px) / 4);
+    gap: 8px;
     margin-bottom: 40px;
-    width: calc((100% - 48px) / 4);
   }
 }

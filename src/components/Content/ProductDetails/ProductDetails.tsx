@@ -12,13 +12,15 @@ import {Products} from '../../../type/Productes';
 import {ProductsSlider} from '../ProductsSlider';
 
 import style from './ProductDetails.module.scss';
+import {Breadcrumb} from '../Breadcrumb';
 
 type Props = {
   backUrl: string;
   details: Details | undefined;
+  path: string[];
 };
 
-export const ProductDetails: React.FC<Props> = ({backUrl, details}) => {
+export const ProductDetails: React.FC<Props> = ({backUrl, details, path}) => {
   const [selectColor, setSelectColor] = useState<string | null>(null);
   const [selectCapacity, setSelectCapacity] = useState<string | null>(null);
   const [produktsNewIndex, setProduktsNewIndex] = useState<number[]>([0, 4]);
@@ -71,6 +73,7 @@ export const ProductDetails: React.FC<Props> = ({backUrl, details}) => {
 
   return (
     <div className={style.productDetails}>
+      <Breadcrumb path={path} />
       <Link to={`../${backUrl}`} className={style.productDetails__back}>
         <IoIosArrowBack className={`${style.productDetails__back_arrow}`} />
         Back

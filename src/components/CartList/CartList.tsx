@@ -1,4 +1,3 @@
-import {FaX} from 'react-icons/fa6';
 import {useContext} from 'react';
 import classNames from 'classnames';
 import {Link} from 'react-router-dom';
@@ -78,7 +77,7 @@ export const CartList: React.FC = () => {
                     aria-label="delete"
                     onClick={() => handleDelete(+product.id)}
                   >
-                    <FaX />
+                    X{' '}
                   </button>
 
                   <Link

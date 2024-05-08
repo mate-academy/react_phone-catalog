@@ -39,13 +39,12 @@
   &__img {
     display: flex;
     justify-content: center;
-    margin: auto;
-    width: 1040px;
-    height: 400px;
-    padding-inline: 15px;
+    width: 90%;
+    height: auto;
   }
 
   &__img img {
+    object-fit: cover;
     max-width: 100%;
     max-height: 100%;
   }

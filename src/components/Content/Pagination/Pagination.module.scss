@@ -1,3 +1,5 @@
+@import '../../utils/mixins.scss';
+
 .pagination {
   display: flex;
   justify-content: center;
@@ -8,23 +10,43 @@
     width: 32px;
     height: 32px;
     background-color: white;
-    border: 1px solid #89939A;
+    border: 1px solid #89939a;
     margin-inline: 12px;
     margin-bottom: 80px;
     cursor: pointer;
+    display: flex;
+    align-items: center;
+    
+    @include buttonTransitionWhite;
+
   }
 
   &__button_page {
     width: 32px;
     height: 32px;
     background-color: white;
-    border: 1px solid #B4BDC3;
+    border: 1px solid #b4bdc3;
     margin-inline: 4px;
     cursor: pointer;
+
+    @include buttonTransitionWhite;
   }
 
   &__button_active {
     background-color: #313237;
     color: white;
+
+    @include buttonTransitionBlack;
   }
+}
+
+.pagination__button_page_disabled {
+  cursor: default;
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #e2e2e2;
+  color: #e2e2e2;
+  margin-inline: 12px;
+  margin-bottom: 80px;
 }
