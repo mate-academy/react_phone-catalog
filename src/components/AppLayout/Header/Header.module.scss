@@ -1,19 +1,20 @@
 @import '../../utils/mixins.scss';
 
 .navbar_mobi {
+  box-sizing: border-box;
   display: flex;
   justify-items: center;
   align-items: center;
   position: fixed;
   top: 0;
-  width: 100vw;
+  min-width: 100vw;
   z-index: 999;
   display: block;
   background-color: #fff;
 
   &__top {
     display: flex;
-    margin: 15px 10px;
+    padding: 15px 10px;
     justify-content: space-between;
     margin-bottom: 15px;
   }
@@ -59,7 +60,7 @@
     text-align: center;
     justify-content: center;
     position: relative;
-    margin-right: 15px;
+    padding-right: 15px;
   }
 
   &__container {
@@ -115,10 +116,10 @@
 .navbar {
   position: fixed;
   top: 0;
-  width: 100vw;
+  box-sizing: border-box;
+  width: 100%;
   z-index: 999;
   background-color: #fff;
-  box-sizing: border-box;
   border-bottom: 1px solid rgba(226, 230, 233, 1);
   margin-bottom: 40px;
   display: inline-block;
@@ -136,6 +137,7 @@
     align-items: center;
 
     &__logo {
+      box-sizing: border-box;
       display: flex;
       color: rgba(49, 50, 55, 1);
       justify-content: center;
@@ -146,7 +148,7 @@
     }
 
     &__menu {
-      margin-left: calc(128px - 32px);
+      padding-left: calc(128px - 32px);
       display: flex;
 
       &__item {

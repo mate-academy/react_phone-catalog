@@ -1,7 +1,8 @@
 @import '../../utils/mixins.scss';
 
 .footer {
-  margin: 0 auto;
+  max-width: 100vw;
+  margin: auto;
   border-top: 1px solid rgba(226, 230, 233, 1);
 
   &__mobi {
@@ -35,7 +36,7 @@
 
   &__container {
     margin: auto;
-    width: 100vw;
+    width: 100%;
     height: 96px;
     display: flex;
     justify-content: space-between;
