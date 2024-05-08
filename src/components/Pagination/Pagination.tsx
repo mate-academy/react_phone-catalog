@@ -68,7 +68,7 @@ export const Pagination: React.FC<Props> = ({
     }
 
     setVisiblePageNumbers(newVisiblePageNumbers);
-  }, [currentWidth]);
+  }, [currentWidth, pageCount]);
 
   const handleOpenFirstPage = useCallback(() => {
     onPageChange(1);
@@ -140,11 +140,19 @@ export const Pagination: React.FC<Props> = ({
             aria-disabled={currentPage === 1}
             aria-label="first"
           >
-            <img
-              src="./icons/icons8-double-left-16-light.png"
-              alt="arrow-first"
-              className="button pagination__back-to-first--img"
-            />
+            {currentPage === 1 ? (
+              <img
+                src="./icons/icons8-double-left-16-disabled.png"
+                alt="arrow-first"
+                className="button pagination__back-to-first--img"
+              />
+            ) : (
+              <img
+                src="./icons/icons8-double-left-16-active.png"
+                alt="arrow-first"
+                className="button pagination__back-to-first--img"
+              />
+            )}
           </button>
         </li>
         <li className="pagination__item pagination__sidebutton">
@@ -206,11 +214,19 @@ export const Pagination: React.FC<Props> = ({
             aria-disabled={currentPage === pageCount}
             aria-label="last"
           >
-            <img
-              src="./icons/icons8-double-right-16.png"
-              alt="arrow-first"
-              className="button pagination__back-to-first--img"
-            />
+            {currentPage === pageCount ? (
+              <img
+                src="./icons/icons8-double-right-16-disabled.png"
+                alt="arrow-first"
+                className="button pagination__back-to-first--img"
+              />
+            ) : (
+              <img
+                src="./icons/icons8-double-right-16-active.png"
+                alt="arrow-first"
+                className="button pagination__back-to-first--img"
+              />
+            )}
           </button>
         </li>
       </ul>

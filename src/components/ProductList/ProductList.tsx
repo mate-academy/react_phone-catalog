@@ -226,7 +226,7 @@ export const ProductList: React.FC<Props> = ({
 
         {!noPagination && (
           <Pagination
-            total={productsFromServer.length}
+            total={visibleProducts.length}
             perPage={perPage}
             currentPage={currentPage}
             onPageChange={handlePageChange}
