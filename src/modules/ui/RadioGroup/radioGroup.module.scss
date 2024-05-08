@@ -1,0 +1,43 @@
+@import 'src/styles/mixins';
+
+.radioButton {
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+  background: var(--accent-secondary);
+
+  &__tag {
+    height: 32px;
+    width: 32px;
+    display: block;
+    border-radius: inherit;
+    box-shadow:
+      inset 0 0 0 1px var(--elements),
+      inset 0 0 0 3px var(--white);
+
+    transition: box-shadow var(--transition-specs, 1s);
+
+    @include hover {
+      cursor: pointer;
+      box-shadow:
+        inset 0 0 0 1px var(--icons),
+        inset 0 0 0 3px var(--white);
+    }
+  }
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &__input:checked ~ &__tag {
+    box-shadow:
+      inset 0 0 0 1px var(--primary),
+      inset 0 0 0 3px var(--white);
+  }
+}

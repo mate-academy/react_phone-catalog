@@ -22,7 +22,7 @@ export const ButtonOuter: FC<Props> = ({
   return (
     <button
       {...props}
-      className={cn(classes.button, className, VARIANT[variant])}
+      className={cn(classes.button, VARIANT[variant], className)}
     />
   );
 };

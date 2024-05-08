@@ -1,6 +1,6 @@
 import { Icon as ActualIcon } from './Icon';
-import { IconCounter } from './IconCounter';
-import { IconWrapper } from './IconWrapper';
+import { IconCounter as Wrapper } from './IconCounter';
+import { IconWrapper as Counter } from './IconWrapper';
 
 /**
  * @description Wrapper is required only when used with Counter
@@ -11,6 +11,6 @@ import { IconWrapper } from './IconWrapper';
  * </Icon.Wrapper>
  */
 export const Icon = Object.assign(ActualIcon, {
-  Wrapper: IconWrapper,
-  Counter: IconCounter,
+  Wrapper,
+  Counter,
 });

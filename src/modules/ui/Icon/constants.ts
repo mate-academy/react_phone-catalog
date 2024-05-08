@@ -1,6 +1,6 @@
 import { Variant } from './types';
 
-export const VARINAT: Record<Variant, string> = {
+export const PATH: Record<Variant, string> = {
   'arrow-down': '#Chevron (Arrow Down)',
   'arrow-up': '#Chevron (Arrow Up)',
   'arrow-right': '#Chevron (Arrow Right)',
