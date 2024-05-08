@@ -202,28 +202,44 @@ export const Header: React.FC = () => {
         >
           <NavLink
             to="/"
-            className={style.navbar_mobi__link}
+            className={({isActive}) =>
+              classNames(style.navbar_mobi__link, {
+                [style.isActive]: isActive,
+              })
+            }
             onClick={() => setMobileMenu(false)}
           >
             home
           </NavLink>
           <NavLink
             to="phones"
-            className={style.navbar_mobi__link}
+            className={({isActive}) =>
+              classNames(style.navbar_mobi__link, {
+                [style.isActive]: isActive,
+              })
+            }
             onClick={() => setMobileMenu(false)}
           >
             Phones
           </NavLink>
           <NavLink
             to="tablets"
-            className={style.navbar_mobi__link}
+            className={({isActive}) =>
+              classNames(style.navbar_mobi__link, {
+                [style.isActive]: isActive,
+              })
+            }
             onClick={() => setMobileMenu(false)}
           >
             tablets
           </NavLink>
           <NavLink
             to="accessories"
-            className={style.navbar_mobi__link}
+            className={({isActive}) =>
+              classNames(style.navbar_mobi__link, {
+                [style.isActive]: isActive,
+              })
+            }
             onClick={() => setMobileMenu(false)}
           >
             accessories

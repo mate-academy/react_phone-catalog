@@ -49,9 +49,11 @@
   &__button {
     border: none;
     background-color: #fff;
+    padding-inline-start: 15px;
   }
 
   &__icon {
+    padding-inline-start: 15px;
     box-sizing: border-box;
     display: inline-block;
     height: 10px;
@@ -66,7 +68,7 @@
   &__container {
     position: absolute;
     top: -8px;
-    right: -15px;
+    right: -12px;
     height: 18px;
     width: 18px;
     border-radius: 50%;
