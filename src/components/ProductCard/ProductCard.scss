@@ -7,6 +7,12 @@
   box-sizing: border-box;
   padding: 32px;
 
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
   &__img {
     display: block;
     width: 208px;
@@ -37,7 +43,6 @@
     align-items: center;
     font-weight: 800;
     font-size: 22px;
-    padding-bottom: 8px;
 
     &-price {
       color: $color-white;
@@ -56,9 +61,7 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
     padding: 8px 0;
-    margin-bottom: 8px;
     border-top: 1px solid $color-gray-elements;
 
     font-size: 12px;

@@ -3,6 +3,12 @@
 .products {
   margin-bottom: 80px;
 
+  &-empty {
+    @extend %h2;
+
+    color: $color-secodary;
+  }
+
   @include on-tablet {
     padding-top: 50px;
     margin-bottom: 64px;

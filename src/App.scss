@@ -15,13 +15,16 @@
   margin-inline: auto;
   margin: 0 auto;
   padding-top: 90px;
+  padding-bottom: 80px;
 
   @include on-tablet {
     width: auto;
     padding-inline: 24px;
+    padding-bottom: 64px;
   }
 
   @include on-mobile {
     padding-inline: 16px;
+    padding-bottom: 56px;
   }
 }

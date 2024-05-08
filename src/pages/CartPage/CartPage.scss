@@ -7,6 +7,12 @@
     margin-bottom: 32px;
   }
 
+  &-empty {
+    @extend %h2;
+
+    color: $color-secodary;
+  }
+
   &__content {
     @include page-grid;
 

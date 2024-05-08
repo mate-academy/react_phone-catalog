@@ -101,15 +101,19 @@ export const Products: React.FC<Props> = ({ title, products }) => {
         )}
       </div>
 
-      <div className="products__catalog">
-        <ul className="products__catalog-list">
-          {visibleProducts.map(product => (
-            <li className="products__catalog-item" key={product.id}>
-              <ProductCard product={product} />
-            </li>
-          ))}
-        </ul>
-      </div>
+      {products.length > 0 ? (
+        <div className="products__catalog">
+          <ul className="products__catalog-list">
+            {visibleProducts.map(product => (
+              <li className="products__catalog-item" key={product.id}>
+                <ProductCard product={product} />
+              </li>
+            ))}
+          </ul>
+        </div>
+      ) : (
+        <h2 className="products-empty">There are no favorites yet</h2>
+      )}
 
       {perPage !== 'all' && (
         <Pagination

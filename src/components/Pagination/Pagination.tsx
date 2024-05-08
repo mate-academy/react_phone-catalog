@@ -68,7 +68,9 @@ export const Pagination: React.FC<Props> = ({
       <button className="pagination__left-slide" onClick={onLeftMove}>
         <div
           className={
-            (isFirstBlock && isBlockFirstPage) ? 'icon icon-left-disabled' : 'icon icon-left'
+            isFirstBlock && isBlockFirstPage
+              ? 'icon icon-left-disabled'
+              : 'icon icon-left'
           }
         />
       </button>
@@ -99,7 +101,9 @@ export const Pagination: React.FC<Props> = ({
       <button className="pagination__right-slide" onClick={onRightMove}>
         <div
           className={
-            (isLastBlock && isBlockLastPage) ? 'icon icon-right-disabled' : 'icon icon-right'
+            isLastBlock && isBlockLastPage
+              ? 'icon icon-right-disabled'
+              : 'icon icon-right'
           }
         />
       </button>

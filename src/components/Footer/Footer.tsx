@@ -1,21 +1,28 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Footer.scss';
 import '../../styles/main.scss';
-import { useMemo } from 'react';
+import { useEffect, useState } from 'react';
 
 export const Footer = () => {
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
 
-  function isScrollable() {
-      const bodyScrollable =
-        document.body.scrollHeight > document.body.clientHeight;
-      const htmlScrollable =
-        document.documentElement.scrollHeight >
-        document.documentElement.clientHeight;
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY || document.documentElement.scrollTop;
 
-      return bodyScrollable || htmlScrollable;
-  };
+      if (scrollTop > 0) {
+        setIsScrolling(true);
+      } else {
+        setIsScrolling(false);
+      }
+    };
 
-  const hasScroll = useMemo(() => isScrollable(), []);
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <div className="footer">
@@ -28,26 +35,31 @@ export const Footer = () => {
           <NavLink
             to="https://github.com/katya-sn/react_phone-catalog"
             className="footer__nav-link"
+            target="_blank"
           >
             GITHUB
           </NavLink>
-          <NavLink to="contacts" className="footer__nav-link">
+          <NavLink to="contacts" className="footer__nav-link" target="_blank">
             CONTACTS
           </NavLink>
-          <NavLink to="rights" className="footer__nav-link">
+          <NavLink to="rights" className="footer__nav-link" target="_blank">
             RIGHTS
           </NavLink>
         </nav>
 
-        <div className="footer__back">
-          {hasScroll ? ( <div
-            className="footer__back-button"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <div className="footer__back-button-text">Back to top</div>
-            <div className="footer__back-button-icon" />
-          </div>) : (<></>)}
-        </div>
+        {isScrolling ? (
+          <div className="footer__back">
+            <div
+              className="footer__back-button"
+              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            >
+              <div className="footer__back-button-text">Back to top</div>
+              <div className="footer__back-button-icon" />
+            </div>
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
