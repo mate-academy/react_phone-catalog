@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useLayoutEffect, useState } from 'react';
 import cn from 'classnames';
 import './App.scss';
 import {
@@ -26,6 +26,7 @@ export const App = () => {
   const [searchActive, setSearchActive] = useState(false);
   const [searchValue, setSearchValue] = useState('');
   const [asideIsOpen, setAsideIsOpen] = useState(false);
+  const [backToTopIsVisible, setBackToTopIsVisible] = useState(false);
 
   const { cartItems, favoriteProducts } = useContext(CatalogContext);
 
@@ -59,6 +60,24 @@ export const App = () => {
       'burger__icon--isActive': isActive,
     });
   };
+
+  useLayoutEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 100) {
+        setBackToTopIsVisible(true);
+      } else {
+        setBackToTopIsVisible(false);
+      }
+    };
+
+    handleScroll();
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -330,15 +349,17 @@ export const App = () => {
             </li>
           </nav>
 
-          <div className="footer__back">
-            <p className="footer__back-text">Back to top</p>
-            <button
-              type="button"
-              className="footer__back-link"
-              aria-label="Back to top"
-              onClick={scrollToTop}
-            />
-          </div>
+          {backToTopIsVisible && (
+            <div className="footer__back">
+              <p className="footer__back-text">Back to top</p>
+              <button
+                type="button"
+                className="footer__back-link"
+                aria-label="Back to top"
+                onClick={scrollToTop}
+              />
+            </div>
+          )}
         </div>
       </footer>
     </div>

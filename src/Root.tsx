@@ -21,6 +21,7 @@ export const Root = () => {
       <Router>
         <Routes>
           <Route element={<App />}>
+            <Route path="*" element={<PageNotFound />} />
             <Route path="home" element={<Navigate to="/" replace />} />
             <Route index element={<HomePage />} />
             <Route path="phones">
@@ -38,7 +39,6 @@ export const Root = () => {
             <Route path="cart" element={<CartPage />} />
             <Route path="favorites" element={<FavoritesPage />} />
           </Route>
-          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Router>
     </CatalogProvider>

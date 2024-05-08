@@ -73,12 +73,17 @@ main {
   background-color: $background-color;
   z-index: 3;
   top: 0;
-  height: 64px;
+  height: 48px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  line-height: 64px;
+  line-height: 48px;
   box-shadow: 0 1px 0 0 #e2e6e9;
+
+  @include on-desktop {
+    height: 64px;
+    line-height: 64px;
+  }
 
 
   &--left {
