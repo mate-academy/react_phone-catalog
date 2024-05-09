@@ -1,7 +1,8 @@
 import { Phone } from '../types/phones';
 import { Product } from '../types/products';
 
-const BASE_URL = 'http://localhost:3000/api';
+// const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = 'https://ogerenko.github.io/react_phone-catalog';
 // http://localhost:3000/api/products.json
 
 function wait(delay: number): Promise<void> {
