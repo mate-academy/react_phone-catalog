@@ -1,11 +1,21 @@
+import { Link } from 'react-router-dom';
 import { useSwipe } from '../../../units/useSwipe';
 import './Banner.scss';
 import { useState } from 'react';
 
 const slides = [
-  './img/banner-images/banner-phones.png',
-  './img/banner-images/banner-tablets.png',
-  './img/banner-images/banner-accessories.png',
+  {
+    image: './img/banner-images/banner-phones.png',
+    link: '/phones',
+  },
+  {
+    image: './img/banner-images/banner-tablets.png',
+    link: '/tablets',
+  },
+  {
+    image: './img/banner-images/banner-accessories.png',
+    link: '/accessories',
+  },
 ];
 
 export const Banner = () => {
@@ -24,41 +34,6 @@ export const Banner = () => {
   };
 
   const elementRef = useSwipe(handleMoveSlidesLeft, handleMoveSlidesRight);
-  // useSwipe(handleMoveSlidesLeft, handleMoveSlidesRight);
-  // useEffect(() => {
-  //   let startX: number | undefined;
-
-  //   const handleSwipe = (event: TouchEvent) => {
-  //     if (startX === undefined) {
-  //       return;
-  //     }
-
-  //     const threshold = 100;
-  //     const deltaX = event.changedTouches[0].clientX - startX;
-
-  //     if (deltaX > threshold) {
-  //       handleMoveSlidesLeft();
-  //     } else if (deltaX < -threshold) {
-  //       handleMoveSlidesRight();
-  //     }
-  //   };
-
-  //   const touchStartHandler = (event: TouchEvent) => {
-  //     startX = event.touches[0].clientX;
-  //   };
-
-  //   const touchEndHandler = (event: TouchEvent) => {
-  //     handleSwipe(event);
-  //   };
-
-  //   document.addEventListener('touchstart', touchStartHandler);
-  //   document.addEventListener('touchend', touchEndHandler);
-
-  //   return () => {
-  //     document.removeEventListener('touchstart', touchStartHandler);
-  //     document.removeEventListener('touchend', touchEndHandler);
-  //   };
-  // }, [currentSlideIndex]);
 
   return (
     <div className="banner">
@@ -70,13 +45,14 @@ export const Banner = () => {
 
         <div className="carousel__container" ref={elementRef}>
           {slides.map((slide, index) => (
-            <img
-              key={slide}
-              className={`carousel__content-media ${
-                index === currentSlideIndex ? 'active-slide' : ''
-              }`}
-              src={slide}
-            />
+            <Link to={slide.link} key={slide.image}>
+              <img
+                className={`carousel__content-media ${
+                  index === currentSlideIndex ? 'active-slide' : ''
+                }`}
+                src={slide.image}
+              />
+            </Link>
           ))}
         </div>
 

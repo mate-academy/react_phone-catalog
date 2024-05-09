@@ -32,10 +32,16 @@
     }
   }
 
+  &__link {
+    text-decoration: none;
+  }
+
   &__title {
     font-family: "Regular";
     font-size: 20px;
     line-height: 25.56px;
+    color: #313237;
+
 
     margin-top: 24px;
     font-weight: 600;

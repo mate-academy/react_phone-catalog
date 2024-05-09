@@ -8,6 +8,8 @@ import {
 import { HomePage } from './components/HomePage/HomePage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
 import { NavBarMobile } from './components/NavBar/NavBarMobile';
+import { MobilePhones } from './components/MobilePhonesPage/MobilePhones';
+import { PhonePage } from './components/MobilePhonesPage/Phone';
 // import { NavBarMobile } from './components/NavBar/NavBarMobile/NavBarMobile';
 
 export const Root = () => (
@@ -17,6 +19,11 @@ export const Root = () => (
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
         <Route path="menu" element={<NavBarMobile />} />
+        <Route path="phones" element={<MobilePhones />}>
+          <Route path=":phoneId" element={<PhonePage />} />
+        </Route>
+        {/* temporary !!!!!!!!!!!!1 */}
+        {/* <Route path="tablets" element={<Phone />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

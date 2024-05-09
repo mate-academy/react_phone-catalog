@@ -19,7 +19,7 @@ export const HomePage = () => {
   }, []);
 
   return (
-    <div className="container">
+    <>
       <h1 className="title">Welcome to Nice Gadgets store!</h1>
 
       <Banner />
@@ -29,6 +29,6 @@ export const HomePage = () => {
       <ShopByCategory />
 
       <HotPrices salesProducts={getBiggestSaleProduct(products)} />
-    </div>
+    </>
   );
 };

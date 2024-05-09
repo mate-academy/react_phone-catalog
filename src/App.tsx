@@ -6,7 +6,9 @@ import { NavBar } from './components/NavBar';
 export const App = () => (
   <div className="app">
     <NavBar />
-    <Outlet />
+    <div className="container">
+      <Outlet />
+    </div>
     <Footer />
   </div>
 );

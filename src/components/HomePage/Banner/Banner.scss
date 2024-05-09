@@ -29,6 +29,8 @@
   }
 
   &__content-media {
+    display: none;
+    // display: none;
     position: absolute;
     width: 100vw;
     height: 100vw;
@@ -98,5 +100,7 @@
 }
 
 .active-slide {
+  display: flex;
+  // display: flex;
   opacity: 1;
 }

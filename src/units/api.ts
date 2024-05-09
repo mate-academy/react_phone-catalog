@@ -1,3 +1,4 @@
+import { Phone } from '../types/phones';
 import { Product } from '../types/products';
 
 const BASE_URL = 'http://localhost:3000/api';
@@ -18,3 +19,5 @@ function get<T>(url: string): Promise<T> {
 }
 
 export const getProducts = () => get<Product[]>('/products');
+
+export const getPhones = () => get<Phone[]>('/phones');

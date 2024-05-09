@@ -1,0 +1,349 @@
+@import '../../../stylesUtils/variables.scss';
+@import '../../../stylesUtils/mixin.scss';
+
+.icon-arrow-back {
+  background-image: url(../../../../public/img/icons-image/button-left-arrow.svg);
+}
+
+.mobile-phones {
+  &__phone-name {
+    margin: 0;
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+    text-align: left;
+    color: #313237;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main-content {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__secondary-content {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+
+  &__about {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__tech-specs {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 15 / -1;
+    }
+  }
+
+  &__detailed-card {
+    @include on-tablet {
+      display: grid;
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+  }
+}
+
+// .about {
+//   &__title {
+//     font-family: "SemiBold";
+//     font-size: 20px;
+//     line-height: 25.56px;
+//   }
+// }
+
+.gallery {
+  display: grid;
+  gap: 16px;
+  margin-top: 32px;
+  margin-bottom: 40px;
+
+  &__main-photo-container {
+    height: calc(100vw - 32px);
+
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      display: grid;
+      grid-column: 2 / 8;
+      grid-row: 1;
+
+      width: 44.84vw;
+      height: 44.84vw;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__main-photo {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+    overflow: hidden;
+  }
+
+  &__photos-previews {
+    height: 50px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: grid;
+      width: auto;
+
+      grid-column: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      width: 80px;
+    }
+  }
+
+  &__photo {
+    width: 50px;
+    object-fit: contain;
+    box-sizing: border-box;
+    border: 1px solid #e2e6e9;
+
+    @include on-tablet {
+      width: 100%;
+      height: 6.26vw;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.05;
+    }
+
+    &-selected {
+      border: 1px solid #313237;
+    }
+  }
+}
+
+.detailed-card {
+  &__available-color {
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 24px;
+  }
+
+  &__select-capacity {
+    border-bottom: 1px solid #e2e6e9;
+    margin-bottom: 32px;
+  }
+}
+
+.available-color {
+  &__text {
+    font-family: 'Regular';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: #89939a;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    padding-inline: 2.5px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid #e2e6e9;
+    box-sizing: border-box;
+
+    transition-duration: 150ms;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.85;
+      border: 1px solid #313237;
+    }
+
+    &-color {
+      height: 26px;
+      width: 26px;
+      border-radius: 50%;
+    }
+
+    &-selected {
+      border: 1px solid #313237;
+    }
+  }
+}
+
+.select-capacity {
+  &__text {
+    font-family: 'Regular';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: #89939a;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    height: 32px;
+
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    background-color: #fff;
+    border: 1px solid #b4bdc3;
+    box-sizing: border-box;
+
+    transition-duration: 150ms;
+
+    &:hover {
+      border: 1px solid #313237;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    &-selected {
+      border: 1px solid #313237;
+      background-color: #313237;
+      color: #fff;
+    }
+  }
+}
+
+.phone-price {
+  display: flex;
+  margin-bottom: 16px;
+
+  &__new-price {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    margin-right: 8px;
+  }
+
+  &__old-price {
+    font-family: 'Regular';
+    font-size: 22px;
+    line-height: 28.12px;
+
+    display: flex;
+    align-items: center;
+    margin-top: 8px;
+    font-weight: 600;
+    text-decoration: line-through;
+    color: #89939a;
+  }
+}
+
+.phone__characteristics {
+  margin-top: 32px;
+}
+
+.theme {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 16px;
+    line-height: 20.45px;
+    text-align: left;
+    color: #313237;
+  }
+
+  &__text {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: #89939a;
+  }
+}
+
+.about {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 20px;
+    line-height: 25.56px;
+    text-align: left;
+    color: #313237;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__theme {
+    margin-top: 32px;
+  }
+}
+
+.tech-specs {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 20px;
+    line-height: 25.56px;
+    text-align: left;
+    color: #313237;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__info {
+    margin-top: 30px;
+  }
+
+  &__tech-specs {
+    margin-bottom: 56px;
+  }
+}

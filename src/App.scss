@@ -1,6 +1,7 @@
 @import './stylesUtils/variables';
 @import './stylesUtils/mixin.scss';
 @import './stylesUtils/fonts.scss';
+@import './stylesUtils/customSelect.scss';
 
 iframe {
   display: none;
@@ -19,6 +20,80 @@ body {
   @include content-padding-inline;
 }
 
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  // background-image: url(../public/img/icons-image/button-down-arrow-disabled.svg); /* замените на путь к вашей иконке стрелки */
+  background-image: url(../public/img/icons-image/button-down-arrow-disabled.svg); /* замените на путь к вашей иконке стрелки */
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+
+  &:focus {
+    background-image: url(../public/img/icons-image/button-up-arrow-disabled.svg); /* замените на путь к вашей иконке стрелки для состояния фокуса */
+  }
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+  /* Стилизация крестика для браузеров на базе WebKit (Chrome, Safari) */
+  appearance: none; /* Отключаем стандартный внешний вид кнопки */
+  width: 16px; /* Задаем ширину крестика */
+  height: 16px; /* Задаем высоту крестика */
+  background-image: url(../public/img/icons-image/button-close.svg); /* Задаем изображение крестика */
+  background-repeat: no-repeat; /* Запрещаем повтор изображения */
+  background-position: center; /* Устанавливаем позицию крестика по центру */
+  cursor: pointer; /* Добавляем указатель при наведении на крестик */
+}
+
+/* Дополнительные стили для крестика, если необходимо */
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  display: none; /* Скрываем дополнительные элементы поиска */
+}
+
+// /* Стилизация выпадающего списка */
+// select {
+//   /* Убираем стандартные стили браузера */
+//   appearance: none;
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   /* Добавляем кастомные стили */
+//   padding: 8px 30px 8px 10px; /* Отступы вокруг текста в списке */
+//   border: 1px solid #ccc; /* Граница списка */
+//   border-radius: 4px; /* Скругление углов */
+//   background-color: #ffffff; /* Цвет фона */
+//   // background-image: url('путь_к_вашему_изображению_стрелки.png'); /* Изображение стрелки */
+//   background-repeat: no-repeat; /* Запрещаем повтор изображения */
+//   background-position: right center; /* Позиция стрелки справа по центру */
+//   cursor: pointer; /* Указатель при наведении */
+// }
+
+// /* Опции выпадающего списка */
+// select option {
+//   padding: 8px; /* Отступы вокруг текста опции */
+//   transition: background-color 0.3s; /* Анимация изменения цвета */
+// }
+
+// /* Стили при наведении на опцию */
+// select option:hover {
+//   background-color: #f0f0f0; /* Изменяем цвет фона при наведении */
+// }
+
+// /* Стили при наведении на список */
+// select:hover {
+//   border-color: #999; /* Изменяем цвет границы при наведении */
+// }
+
+// /* Стили для выпадающего списка */
+// select:hover {
+//   border-color: #999; /* Изменяем цвет границы при наведении */
+// }
+
+// /* Опции выпадающего списка */
+// select option:hover {
+//   background-color: #f0f0f0; /* Изменяем цвет фона при наведении на опцию */
+// }
 
 
 

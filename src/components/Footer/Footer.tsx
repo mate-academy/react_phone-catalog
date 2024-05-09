@@ -33,7 +33,10 @@ export const Footer = () => {
         </div>
 
         <div className="on-top">
-          <a className="on-top__link" href="#">
+          <a
+            className="on-top__link"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
             <div className="on-top__text">Back to top</div>
             <span className="on-top__image"></span>
           </a>
