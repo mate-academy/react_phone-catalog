@@ -140,7 +140,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48;
+    width: 48px;
     height: 48px;
     flex-shrink: 0;
     background: #FFF;
@@ -189,16 +189,14 @@
   }
 
   .headerButtonsMenu {
+    width: 48px;
+    height: 48px;
     position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 48;
-    height: 48px;
     flex-shrink: 0;
-    background: #FFF;
     box-shadow: -1px 0 0 0 #E2E6E9;
-    color: #FFF;
   }
 
   .headerButtonMenuIcon {
@@ -209,6 +207,10 @@
     color: #0F0F11;
     background: #FFF;
     overflow: hidden;
+  }
+
+  .isActive {
+    display: none;
   }
 }
 

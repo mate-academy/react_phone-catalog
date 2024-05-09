@@ -47,6 +47,7 @@
 }
 
 .bannerContent {
+  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -89,12 +90,28 @@
 
 @media (min-width:320px) and (max-width: 639px) {
   .bannerWraper {
-    max-width: 320px;
+    max-width: 300px;
     max-height: auto;
   }
 
   .bannerImgSwiper {
-    max-width: 320px;
+    max-width: 300px;
+    max-height: auto;
+  }
+
+  .bannerButtons {
+    display: none;
+  }
+}
+
+@media (min-width:300px) and (max-width: 340px) {
+  .bannerWraper {
+    max-width: 250px;
+    max-height: auto;
+  }
+
+  .bannerImgSwiper {
+    max-width: 250px;
     max-height: auto;
   }
 

@@ -58,6 +58,11 @@ export const ProductDetails: React.FC<Props> = () => {
   }, [id, productDetails]);
 
   // useEffect(() => {
+  //   dispatch(loadProducts(type));
+  //   dispatch(loadProductsDetail(type));
+  // }, [type]);
+
+  // useEffect(() => {
   //   const storedId = localStorage.getItem('productId');
   //   const initialId = id || storedId;
 
@@ -69,6 +74,10 @@ export const ProductDetails: React.FC<Props> = () => {
   //     localStorage.setItem('productId', id);
   //   }
   // }, [id]);
+
+  //   ?id=123&category=phones
+  // const products = await fetchProducts(category)
+  // products.find(pr => pr.id === id)
 
   const handlerProductColor = (color: string) => {
     if (product?.color === color) {

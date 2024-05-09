@@ -267,5 +267,31 @@
   }
 }
 
+@media (min-width:320px) and (max-width: 639px) {
+  .mobilePhones {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 16px;
+  }
+
+  .phoneTitle {
+    max-width: 592px;
+    color: #0F0F11;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
+
+  .productGrid {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 21.2px;
+  }
+}
+
+
 
 

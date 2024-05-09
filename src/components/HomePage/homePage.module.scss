@@ -6,7 +6,7 @@
 }
 
 .appBody {
-  // margin-inline: auto;
+  margin-inline: auto;
   max-width: 1200px;
   padding-inline: 34px;
   scroll-behavior: smooth;
@@ -45,6 +45,7 @@
   }
 
   .appBody {
+    margin-inline: 0;
     max-width: 1200px;
     padding-inline: 34px;
     scroll-behavior: smooth;

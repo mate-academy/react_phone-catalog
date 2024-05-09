@@ -122,78 +122,83 @@ export const Cart: React.FC<Props> = ({ title }) => {
                   <div className={styles.products} key={item.id}>
                     {/* <div className={styles.loaderContainer}>{<Loader />}</div> */}
                     <div className={styles.productsCart}>
-                      <svg
-                        onClick={() => dispatch(removeFromCart(item))}
-                        className={styles.buttonDelete}
-                        xmlns="http://www.w3.org/2000/svg"
-                        width="16"
-                        height="16"
-                        viewBox="0 0 16 16"
-                        fill="none"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          clipRule="evenodd"
-                          // eslint-disable-next-line max-len
-                          d="M12.4711 4.47132C12.7314 4.21097 12.7314 3.78886 12.4711 3.52851C12.2107 3.26816 11.7886 3.26816 11.5283 3.52851L7.99967 7.05711L4.47108 3.52851C4.21073 3.26816 3.78862 3.26816 3.52827 3.52851C3.26792 3.78886 3.26792 4.21097 3.52827 4.47132L7.05687 7.99992L3.52827 11.5285C3.26792 11.7889 3.26792 12.211 3.52827 12.4713C3.78862 12.7317 4.21073 12.7317 4.47108 12.4713L7.99967 8.94273L11.5283 12.4713C11.7886 12.7317 12.2107 12.7317 12.4711 12.4713C12.7314 12.211 12.7314 11.7889 12.4711 11.5285L8.94248 7.99992L12.4711 4.47132Z"
-                          fill="#B4BDC4"
-                        />
-                      </svg>
-                      {/* <button className={styles.buttonDelete}></button> */}
-                      <img
-                        className={styles.productImg}
-                        alt="product"
-                        src={item.image}
-                      ></img>
-                      <p className={styles.productName}>{item.name}</p>
-                      <div className={styles.productCounterContainer}>
-                        <button
-                          className={styles.counterButton}
-                          onClick={() => handleCountMinus(item.id)}
+                      <div className={styles.productNameImgDelete}>
+                        <svg
+                          onClick={() => dispatch(removeFromCart(item))}
+                          className={styles.buttonDelete}
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16"
+                          height="16"
+                          viewBox="0 0 16 16"
+                          fill="none"
                         >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              // eslint-disable-next-line max-len
-                              d="M2.66699 7.99992C2.66699 7.63173 2.96547 7.33325 3.33366 7.33325H12.667C13.0352 7.33325 13.3337 7.63173 13.3337 7.99992C13.3337 8.36811 13.0352 8.66659 12.667 8.66659H3.33366C2.96547 8.66659 2.66699 8.36811 2.66699 7.99992Z"
-                              fill="#0F0F11"
-                            />
-                          </svg>
-                        </button>
-                        <span className={styles.counterItems}>
-                          {item.counter}
-                        </span>
-                        <button
-                          className={styles.counterButton}
-                          onClick={() => handleCountPlus(item.id)}
-                        >
-                          <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="16"
-                            height="16"
-                            viewBox="0 0 16 16"
-                            fill="none"
-                          >
-                            <path
-                              fillRule="evenodd"
-                              clipRule="evenodd"
-                              // eslint-disable-next-line max-len
-                              d="M8.66699 3.33341C8.66699 2.96522 8.36852 2.66675 8.00033 2.66675C7.63214 2.66675 7.33366 2.96522 7.33366 3.33341V7.33342H3.33366C2.96547 7.33342 2.66699 7.63189 2.66699 8.00008C2.66699 8.36827 2.96547 8.66675 3.33366 8.66675H7.33366V12.6667C7.33366 13.0349 7.63214 13.3334 8.00033 13.3334C8.36852 13.3334 8.66699 13.0349 8.66699 12.6667V8.66675H12.667C13.0352 8.66675 13.3337 8.36827 13.3337 8.00008C13.3337 7.63189 13.0352 7.33342 12.667 7.33342H8.66699V3.33341Z"
-                              fill="#0F0F11"
-                            />
-                          </svg>
-                        </button>
+                          <path
+                            fillRule="evenodd"
+                            clipRule="evenodd"
+                            // eslint-disable-next-line max-len
+                            d="M12.4711 4.47132C12.7314 4.21097 12.7314 3.78886 12.4711 3.52851C12.2107 3.26816 11.7886 3.26816 11.5283 3.52851L7.99967 7.05711L4.47108 3.52851C4.21073 3.26816 3.78862 3.26816 3.52827 3.52851C3.26792 3.78886 3.26792 4.21097 3.52827 4.47132L7.05687 7.99992L3.52827 11.5285C3.26792 11.7889 3.26792 12.211 3.52827 12.4713C3.78862 12.7317 4.21073 12.7317 4.47108 12.4713L7.99967 8.94273L11.5283 12.4713C11.7886 12.7317 12.2107 12.7317 12.4711 12.4713C12.7314 12.211 12.7314 11.7889 12.4711 11.5285L8.94248 7.99992L12.4711 4.47132Z"
+                            fill="#B4BDC4"
+                          />
+                        </svg>
+                        {/* <button className={styles.buttonDelete}></button> */}
+                        <img
+                          className={styles.productImg}
+                          alt="product"
+                          src={item.image}
+                        ></img>
+                        <p className={styles.productName}>{item.name}</p>
                       </div>
-                      <span
-                        className={styles.productPrice}
-                      >{`$${item.price}`}</span>
+                      <div className={styles.counterAndPriceContainer}>
+                        <div className={styles.productCounterContainer}>
+                          <button
+                            className={styles.counterButton}
+                            onClick={() => handleCountMinus(item.id)}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                // eslint-disable-next-line max-len
+                                d="M2.66699 7.99992C2.66699 7.63173 2.96547 7.33325 3.33366 7.33325H12.667C13.0352 7.33325 13.3337 7.63173 13.3337 7.99992C13.3337 8.36811 13.0352 8.66659 12.667 8.66659H3.33366C2.96547 8.66659 2.66699 8.36811 2.66699 7.99992Z"
+                                fill="#0F0F11"
+                              />
+                            </svg>
+                          </button>
+                          <span className={styles.counterItems}>
+                            {item.counter}
+                          </span>
+                          <button
+                            className={styles.counterButton}
+                            onClick={() => handleCountPlus(item.id)}
+                          >
+                            <svg
+                              xmlns="http://www.w3.org/2000/svg"
+                              width="16"
+                              height="16"
+                              viewBox="0 0 16 16"
+                              fill="none"
+                            >
+                              <path
+                                fillRule="evenodd"
+                                clipRule="evenodd"
+                                // eslint-disable-next-line max-len
+                                d="M8.66699 3.33341C8.66699 2.96522 8.36852 2.66675 8.00033 2.66675C7.63214 2.66675 7.33366 2.96522 7.33366 3.33341V7.33342H3.33366C2.96547 7.33342 2.66699 7.63189 2.66699 8.00008C2.66699 8.36827 2.96547 8.66675 3.33366 8.66675H7.33366V12.6667C7.33366 13.0349 7.63214 13.3334 8.00033 13.3334C8.36852 13.3334 8.66699 13.0349 8.66699 12.6667V8.66675H12.667C13.0352 8.66675 13.3337 8.36827 13.3337 8.00008C13.3337 7.63189 13.0352 7.33342 12.667 7.33342H8.66699V3.33341Z"
+                                fill="#0F0F11"
+                              />
+                            </svg>
+                          </button>
+                        </div>
+
+                        <span
+                          className={styles.productPrice}
+                        >{`$${item.price}`}</span>
+                      </div>
                     </div>
                   </div>
                 ))}

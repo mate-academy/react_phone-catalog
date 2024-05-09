@@ -109,4 +109,29 @@
   }
 }
 
+@media (min-width:320px) and (max-width: 639px) {
+  .favorites {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    padding-inline: 16px;
+    min-height: 700px;
+  }
+
+  .products {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 40px 0;
+  }
+
+  .productGrid {
+    margin-inline: auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 21.2px;
+  }
+}
+
 
