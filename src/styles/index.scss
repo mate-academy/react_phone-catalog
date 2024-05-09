@@ -6,3 +6,18 @@ body {
   font-family: Mont, Helvetica, sans-serif;
   color: var(--primary);
 }
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--primary);
+}
+
+// temp
+.content {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  margin: 100px;
+  gap: 50px;
+}

@@ -1,0 +1,60 @@
+@import 'src/styles/mixins';
+
+.footer {
+  background: var(--white);
+  box-shadow: 0 -1px 0 var(--elements);
+
+  &__container {
+    display: grid;
+    gap: 32px;
+    padding-block: 32px;
+
+    @include on-tablet {
+      gap: 0;
+      grid-template-columns: repeat(3, 1fr);
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: block;
+    height: 32px;
+    width: 90px;
+    transition: filter var(--transition-specs);
+
+    @include hover {
+      filter: grayscale(0.5);
+    }
+
+    @include on-tablet {
+      justify-self: start;
+    }
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    place-self: auto center;
+
+    @include on-tablet {
+      justify-self: end;
+    }
+  }
+
+  &__backToTopTextLink {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color var(--transition-specs);
+
+    @include hover {
+      color: var(--primary);
+    }
+  }
+}

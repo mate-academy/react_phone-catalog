@@ -1,0 +1,13 @@
+@import 'src/styles/mixins';
+
+.menuItem {
+  &__link {
+    color: var(--secondary);
+    text-decoration: none;
+    transition: color var(--transition-specs);
+
+    @include hover {
+      color: var(--primary);
+    }
+  }
+}
