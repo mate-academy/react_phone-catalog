@@ -128,8 +128,13 @@ main {
     justify-content: center;
     text-decoration: none;
     border-left: 1px solid $elements;
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
 
     &--isActive {
       &::after {
@@ -170,12 +175,17 @@ main {
     align-items: center;
     justify-content: center;
     text-decoration: none;
-    height: 64px;
-    width: 64px;
+    height: 48px;
+    width: 48px;
     border-left: 1px solid $elements;
 
     @include on-tablet {
       display: none;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
     }
   }
 
@@ -278,6 +288,10 @@ main {
     color: $secondary;
     text-transform: uppercase;
     position: relative;
+    transition-duration: 0.3s;
+    &:hover{
+      transform: scale(1.1);
+    }
 
     &--isActive {
       color: $primary;
@@ -406,11 +420,16 @@ main {
   }
 
   &__back-link {
-    display: inline-block;
     background-image: url(./style/icons/Slider-button-Default-right.svg);
     height: 32px;
     width: 32px;
+    background-position: center;
     transform: rotate(270deg);
+    border: 1px solid $elements;
+    transition-duration: 0.3s;
+    &:hover {
+      border-color: $primary;
+    }
   }
 }
 
@@ -563,6 +582,10 @@ main {
       background-repeat: no-repeat;
       background-position: center;
       border: 1px solid $icons;
+      transition-duration: 0.3s;
+      &:hover {
+        border-color: $primary;
+      }
 
       &--left {
         transform: rotate(180deg);

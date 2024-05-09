@@ -19,14 +19,6 @@ export const ProductsSlider: React.FC<Props> = ({ products, unitName }) => {
   const [isTablet, setIsTablet] = useState(false);
   const [isDesktop, setIsDesktop] = useState(false);
 
-  // useEffect(() => {
-  //   const swiper = new Swiper('.slider__list');
-
-  //   return () => {
-  //     swiper.destroy(true, true);
-  //   };
-  // }, []);
-
   useEffect(() => {
     const handleResize = () => {
       if (window.innerWidth >= 640 && window.innerWidth < 1200) {

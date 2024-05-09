@@ -60,6 +60,13 @@
     height: 32px;
     background-position: center;
     background-image: url(../../style/icons/Slider-button-Default-right.svg);
+    border: 1px solid $icons;
+    transition-duration: 0.3s;
+    &:hover {
+      border-color: $primary;
+    }
+
+
     &--left {
       transform: rotate(180deg);
     }
@@ -67,6 +74,9 @@
     &--disabled {
       border: 1px solid $elements;
       background-image: url(../../style/icons/Slider-button-Disabled-right.svg);
+      &:hover {
+        border-color: $elements;
+      }
     }
   }
 
