@@ -1,0 +1,88 @@
+@import '../../style/utils/variables';
+@import '../../style/utils/mixins';
+
+.slider {
+  height: 526px;
+  padding-left: 16px;
+  overflow: hidden;
+
+  @include on-tablet {
+    padding-left: 24px;
+    height: 577px;
+  }
+
+  @include on-desktop {
+    width: 1136px;
+    margin-inline: auto;
+    padding-left: 0;
+  }
+
+  &__list {
+    max-width: 100vw;
+    overflow: hidden;
+    display: flex;
+    gap: 16px;
+    transition: transform 1s ease;
+    z-index: 2;
+
+    @include on-desktop {
+      overflow: visible;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 24px;
+    padding-right: 16px;
+
+    @include on-tablet {
+      padding-right: 24px;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
+
+  &__arrows {
+    display: none;
+    justify-content: space-between;
+    gap: 16px;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__arrow {
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    background-image: url(../../style/icons/Slider-button-Default-right.svg);
+    border: 1px solid $icons;
+    transition-duration: 0.3s;
+    &:hover {
+      border-color: $primary;
+    }
+
+
+    &--left {
+      transform: rotate(180deg);
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+      background-image: url(../../style/icons/Slider-button-Disabled-right.svg);
+      &:hover {
+        border-color: $elements;
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    list-style: none;
+    display: inline-block;
+  }
+}
