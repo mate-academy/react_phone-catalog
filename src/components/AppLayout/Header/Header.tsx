@@ -15,6 +15,7 @@ export const Header: React.FC = () => {
   const {priceList, favourites} = useContext(ProductContext);
   const [search, setSearch] = useState(false);
   const [mobileMenu, setMobileMenu] = useState(false);
+  const [open, setOpen] = useState(false);
 
   const location = useLocation();
   const {pathname} = location;
@@ -45,14 +46,20 @@ export const Header: React.FC = () => {
   const getLinkClass = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__brand__menu__item, {
       [style.isActive]: isActive,
+      [style.open]: open,
     });
 
   const getLinkClassRight = ({isActive}: {isActive: boolean}) =>
     classNames(style.navbar__rightMenu__item, {
       [style.isActive]: isActive,
+      [style.open]: open,
     });
 
   const countPriceList = priceList.reduce((acc, e) => acc + e.number, 0);
+
+  useEffect(() => {
+    setTimeout(() => setOpen(false), 100);
+  }, [open]);
 
   return (
     <>
@@ -188,9 +195,19 @@ export const Header: React.FC = () => {
               onClick={() => setMobileMenu(!mobileMenu)}
             >
               {mobileMenu ? (
-                <IoCloseSharp className={style.navbar_mobi__close_icon} />
+                <IoCloseSharp
+                  className={classNames(style.navbar_mobi__close_icon, {
+                    [style.open]: open,
+                  })}
+                  onClick={() => setOpen(true)}
+                />
               ) : (
-                <RxHamburgerMenu className={style.navbar_mobi__close_icon} />
+                <RxHamburgerMenu
+                  className={classNames(style.navbar_mobi__menu_icon, {
+                    [style.open]: open,
+                  })}
+                  onClick={() => setOpen(true)}
+                />
               )}
             </button>
           </div>
@@ -205,6 +222,7 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
+                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -216,6 +234,7 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
+                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -227,6 +246,7 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
+                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}
@@ -238,6 +258,7 @@ export const Header: React.FC = () => {
             className={({isActive}) =>
               classNames(style.navbar_mobi__link, {
                 [style.isActive]: isActive,
+                [style.open]: open,
               })
             }
             onClick={() => setMobileMenu(false)}

@@ -33,6 +33,12 @@
 
     &_icon {
       font-size: 20px;
+      transition: transform 0.3s ease;
+      transform: rotate(0deg);
+
+      &.open {
+        transform: rotate(180deg);
+      }
     }
   }
 
@@ -44,6 +50,16 @@
     width: 10px;
     height: 10px;
     height: 100vh;
+
+    &_icon {
+      transition: transform 0.3s ease;
+      transform: rotate(0deg);
+      font-size: 20px;
+
+      &.open {
+        transform: rotate(180deg);
+      }
+    }
   }
 
   &__button {
@@ -99,11 +115,18 @@
     display: block;
     padding-block: 26px;
     margin-inline: 32px;
-    font-size: 12px;
     font-weight: 700;
     line-height: 11px;
     letter-spacing: 0.04em;
     color: rgba(137, 147, 154, 1);
+    transition: all 0.5s ease;
+    // transition: font-size 0.9s ease;
+    transform: rotate(0deg);
+    font-size: 12px;
+
+    &.open {
+      font-size: 0px;
+    }
   }
 
   @include onTablet {
