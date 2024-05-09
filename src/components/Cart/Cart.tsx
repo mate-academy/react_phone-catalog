@@ -1,4 +1,4 @@
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import cn from 'classnames';
 import './Cart.scss';
@@ -109,16 +109,22 @@ export const Cart: React.FC = () => {
                   >
                     <img src="./icons/Delete.svg" alt="delete" />
                   </button>
-                  <div className="cart__item-image">
-                    <img
-                      className="cart__item-picture"
-                      src={`${cartItem.item.image}`}
-                      alt={`product-${cartItem.id}`}
-                    />
-                  </div>
-                  <div className="cart__item-name-wrapper">
-                    <p className="cart__item-name">{cartItem.item.name}</p>
-                  </div>
+
+                  <Link
+                    to={`/${cartItem.item.category}/${cartItem.item.itemId}`}
+                    className="cart__item-link"
+                  >
+                    <div className="cart__item-image">
+                      <img
+                        className="cart__item-picture"
+                        src={`${cartItem.item.image}`}
+                        alt={`product-${cartItem.id}`}
+                      />
+                    </div>
+                    <div className="cart__item-name-wrapper">
+                      <p className="cart__item-name">{cartItem.item.name}</p>
+                    </div>
+                  </Link>
                 </div>
 
                 <div className="cart__item-right">
