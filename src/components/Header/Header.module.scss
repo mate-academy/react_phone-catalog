@@ -1,0 +1,27 @@
+.nav {
+  display: grid;
+
+  grid-template-columns: 60px 60px 60px 60px;
+  grid-template-rows: 48px;
+  column-gap: 16px;
+
+  justify-content: center;
+  align-items: center;
+
+  border-bottom: 1px solid #e2e6e9;
+
+  &__item {
+    grid-row: 1 / 2;
+  }
+
+  &__burger {
+    grid-column: 4 / 5;
+    justify-self: end;
+
+    height: 16px;
+    padding: 16px;
+    margin-right: -17px;
+
+    border: 1px solid #e2e6e9;
+  }
+}
