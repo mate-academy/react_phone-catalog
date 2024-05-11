@@ -45,3 +45,11 @@
 @mixin transition($prop: all) {
   transition: $prop $duration linear;
 }
+
+@mixin hover($property, $toValue) {
+  transition: $property 0.3s;
+  &:hover {
+    cursor: pointer;
+    #{$property}: $toValue;
+  }
+}

@@ -1,0 +1,21 @@
+@import '../../styles/utils';
+
+.nav__buttons {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.nav__button {
+  height: 48px;
+  width: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+}
