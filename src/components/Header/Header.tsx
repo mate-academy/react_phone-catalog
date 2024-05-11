@@ -1,6 +1,6 @@
 import { Logo } from '../Logo';
 import { Navigation } from '../Navigation/Navigation';
-import { NavSearch } from '../NavSearch/NavSearch';
+// import { NavSearch } from '../NavSearch/NavSearch';
 import { NavButtons } from '../NavButtons/NavButtons';
 import './Header.scss';
 
@@ -9,7 +9,7 @@ export const Header = () => {
     <header className="header">
       <Logo className="header__logo" />
       <Navigation />
-      <NavSearch />
+      {/* <NavSearch /> */}
       <NavButtons />
     </header>
   );

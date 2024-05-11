@@ -10,7 +10,7 @@ type Props = {
 
 export const Navigation: React.FC<Props> = ({ className }) => {
   return (
-    <nav className={`nav ${className}`}>
+    <nav className={className ? `nav ${className}` : 'nav'}>
       <ul className="nav__list">
         {Object.entries(NavBarLinks).map(([key, value]) => (
           <li className="nav__item" key={key}>

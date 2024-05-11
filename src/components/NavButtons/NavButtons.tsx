@@ -1,16 +1,11 @@
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './NavButtons.scss';
+// import { Toggler } from '../Elements/Toggler/Toggler';
 
 export const NavButtons = () => {
-  const [theme, toggleTheme] = useState('light');
-
   return (
     <div className="nav__buttons">
-      <button
-        onClick={() => toggleTheme('dark')}
-        className={`toggler ${theme}`}
-      ></button>
+      {/* <Toggler /> */}
       <Link
         to={{
           pathname: '/favourites',
@@ -34,7 +29,7 @@ export const NavButtons = () => {
         </div>
       </Link>
 
-      <button className="nav__button icon icon--menu" onClick={() => {}} />
+      {/* <button className="nav__button icon icon--menu" onClick={() => {}} /> */}
     </div>
   );
 };

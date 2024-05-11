@@ -1,5 +1,9 @@
 @import '../../styles/utils';
 
+.header * {
+  box-sizing: border-box;
+}
+
 .header {
   display: flex;
   align-items: center;

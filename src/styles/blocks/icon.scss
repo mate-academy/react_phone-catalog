@@ -3,7 +3,7 @@
   width: 16px;
   height: 16px;
 
-  background-size: contain;
+  background-size: auto;
   background-position: center;
   background-repeat: no-repeat;
 
@@ -41,7 +41,7 @@
   }
 
   &--favourite {
-    background-color: red;
+    position: relative;
     background-image: url('../../../public/icons/Favourites.svg');
 
     &-selected {
@@ -71,5 +71,14 @@
     &-disabled {
       background-image: url('../../../public/icons/Minus-disabled.svg');
     }
+  }
+
+  &--menu {
+    background-image: url('../../../public/icons/Menu.svg');
+  }
+
+  &--cart {
+    position: relative;
+    background-image: url('../../../public/icons/Cart.svg');
   }
 }
