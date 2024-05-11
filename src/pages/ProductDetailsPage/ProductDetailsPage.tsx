@@ -114,19 +114,24 @@ export const ProductDetailsPage = () => {
       ) : (
         <>
           <div className="product__top">
-            <div className="product__top-left">
-              <div className="product__images">
+            {/* <div className="product__top-left"> */}
+            <div className="product__top-images">
                 {images.map(image => (
-                  <img
-                    key={image}
-                    className="product__images-image"
-                    src={`${BASE_URL}${image}`}
-                    onClick={() => setSelectImage(image)}
-                  />
-                ))}
-              </div>
-              <img src={`${BASE_URL}${selectImage}`} className="product__img" />
+                     <img
+                  key={image}
+                  className="product__top-images-element"
+                  src={`${BASE_URL}${image}`}
+                  onClick={() => setSelectImage(image)}
+                />
+              ))}
             </div>
+            <div className="product__top-image-container">
+              <img
+                src={`${BASE_URL}${selectImage}`}
+                className="product__top-image-photo"
+              />
+            </div>
+            {/* </div> */}
 
             <div className="product__top-right">
               <div className="product__top-right-item">
@@ -144,21 +149,11 @@ export const ProductDetailsPage = () => {
                           : pathname
                       }
                       key={color}
+                      className={classNames('product__top-right-circle', `product__top-right-circle-${color}`, {
+                        active : color === product.color,
+                      })}
                       /* eslint-enable @typescript-eslint/indent */
                     >
-                      <div
-                        className={classNames('product__top-right-circle', {
-                          'product__top-right-circle-active':
-                            color === product.color,
-                        })}
-                      >
-                        <div
-                          className="product__top-right-circle-inside"
-                          style={{
-                            backgroundColor: color,
-                          }}
-                        />
-                      </div>
                     </Link>
                   ))}
                 </div>

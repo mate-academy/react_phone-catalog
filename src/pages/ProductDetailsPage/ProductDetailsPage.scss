@@ -13,27 +13,70 @@
 
     margin-bottom: 80px;
 
-    &-left {
-      grid-column: span 12;
+    &-images {
       display: flex;
-      flex-direction: row;
+      grid-column: span 2;
       gap: 16px;
+      flex-direction: column;
 
       @include on-tablet {
-        grid-column: span 7;
+        grid-column: span 1;
+      }
+  
+      @include on-mobile {
+        flex-direction: row;
+        gap: 8px;
+        grid-row: 2;
+        grid-column: 1/-1;
+        margin-bottom: 40px;
+      }
+
+      &-element {
+        object-fit: contain;
+        width: 100%;
+        aspect-ratio: 1 / 1;
+        border: 1px solid $color-gray-elements;
+        padding: 3px;
+
+        @include on-mobile {
+          height: 50px;
+          width: 50px;
+        }
+      }
+    }
+  
+    &-image-container {
+      grid-column: 3/13;
+      padding: 11px;
+      width: 100%;
+      max-height: 100%;
+  
+      @include on-tablet {
+        padding: 6.8px;
+        grid-column: 2/8;
       }
 
       @include on-mobile {
-        grid-column: span 4;
-        flex-direction: column-reverse;
-        margin-bottom: 40px;
+        grid-column: 1/-1;
+        grid-row: 1;
       }
+    }
+
+    &-image-photo {
+      cursor: pointer;
+      width: 100%; /* Задаємо ширину фото на 100% від контейнера */
+      aspect-ratio: 1 / 1;
+      object-fit: contain;
     }
 
     &-right {
       grid-column: 14/21;
       display: flex;
       flex-direction: column;
+
+      @include on-tablet {
+        grid-column: 8/-1;
+      }
 
       @include on-mobile {
         grid-column: span 4;
@@ -61,18 +104,100 @@
         width: 32px;
         height: 32px;
         border-radius: 36px;
-        border: 1px solid $color-gray-elements;
+        position: relative;
 
-        &-active {
-          border: 1px solid $color-white;
-        }
+          &-gold {
+            background: #d4c9b1;
+          }
+    
+          &-black {
+            background: #4C4C4C;
+          }
+    
+          &-white {
+            background: white;
+          }
+    
+          &-yellow {
+            background: #ffe98c;
+          }
+    
+          &-pink {
+            background: #f9f;
+          }
+    
+          &-red {
+            background: #fb1230;
+          }
+    
+          &-green {
+            background: #5BC236;
+          }
+    
+          &-blue {
+            background: #a9bacc;
+          }
+    
+          &-purple {
+            background: #b388ff;
+          }
+    
+          &-spacegray {
+            background: #535355;
+          }
+    
+          &-rosegold {
+            background: #e0bfb8;
+          }
+    
+          &-midnightgreen {
+            background: #004953;
+          }
+    
+          &-silver {
+            background:  #F1F2ED;
+          }
+    
+          &-coral {
+            background: #fe6756;
+          }
 
-        &-inside {
-          width: 30px;
-          height: 30px;
-          border-radius: 36px;
-          border: 2px solid $page-color;
-        }
+          &-graphite {
+            background: #969696;
+          }
+
+          &-sierrablue {
+            background: #BFDAF7;
+          }
+
+          &-spaceblack {
+            background: #4b4845;
+          }
+
+          &-midnight {
+            background: #343b43;
+          }
+
+          &::after {
+            border-radius: 36px;
+            content: '';
+            border: 1px solid $color-gray-elements;
+            inset: -3px;
+            position: absolute;
+          }
+
+          &:hover {
+            &::after {
+              border: 1px solid $color-secodary;
+            }
+          }
+    
+  
+          &.active {
+            &::after {
+              border: 1px solid $color-white;
+            }
+          }      
       }
 
       &-capacity {
@@ -124,33 +249,6 @@
       line-height: 28.12px;
       text-decoration: line-through;
     }
-  }
-
-  &__images {
-    display: flex;
-    flex-direction: column;
-    gap: 16px; 
-
-    @include on-mobile {
-      flex-direction: row;
-    }
-
-    &-image {
-      cursor: pointer;
-      display: block;
-      width: 80px;
-      height: 80px; 
-      object-fit: contain;
-      border: 1px solid $color-gray-elements;
-    }
-  }
-
-  &__img {
-    cursor: pointer;
-    width: 464px;
-    height: 464px;
-    object-fit: contain;
-    align-self: center;
   }
 
   &__line {
