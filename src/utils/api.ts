@@ -1,8 +1,8 @@
 import { ProductExtended } from '../types/productExtended';
 import { Product } from '../types/products';
 
-const BASE_URL = 'http://localhost:3000/api';
-// const BASE_URL = 'https://ogerenko.github.io/react_phone-catalog/api';
+// const BASE_URL = 'http://localhost:3000/api';
+const BASE_URL = 'https://ogerenko.github.io/react_phone-catalog/api';
 // http://localhost:3000/api/products.json
 
 function wait(delay: number): Promise<void> {
