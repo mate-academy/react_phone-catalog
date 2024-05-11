@@ -1,0 +1,126 @@
+@import '../../utils/stylesUtils/mixin.scss';
+@import '../../utils/stylesUtils/variables.scss';
+
+.card {
+  padding: 28px;
+  width: $card-width;
+  display: grid;
+  border: 1px solid $regular-gray-color;
+  box-sizing: border-box;
+
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &__image {
+    width: 100%;
+    height: 180px;
+    object-fit: contain;
+  }
+
+  &__title {
+    margin-top: 24px;
+
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    color: $main-text-color;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    padding-block: 8px;
+    border-bottom: solid 1px $regular-gray-color;
+  }
+
+  &__specifications {
+    padding-block: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__buttons {
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 40px;
+    column-gap: 8px;
+  }
+}
+
+
+.button {
+  &--add-to-card {
+    font-family: 'SemiBold';
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+    background-color: $main-text-color;
+    border: none;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+
+  &--add-to-favourite {
+    border: solid 1px $dark-gray-color;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url(../../../public/img/icons-image/heart_empty.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $main-text-color;
+    }
+  }
+}
+
+.price { //new
+  &--new {
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+
+    color: $main-text-color;
+  }
+
+  &--old {
+    font-family: 'Regular';
+    font-size: 20px;
+    line-height: 28.12px;
+    text-decoration: line-through;
+
+    color: $secondary-text-color;
+  }
+}
+
+.specification {
+  display: flex;
+  // gap: 8px;
+  justify-content: space-between;
+
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #89939a;
+  }
+
+  &__value {
+    font-family: 'SemiBold';
+    font-size: 12px;
+    line-height: 15.34px;
+  }
+}

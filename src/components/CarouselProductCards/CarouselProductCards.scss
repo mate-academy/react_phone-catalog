@@ -1,0 +1,88 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.carousel-product-cards {
+  margin-bottom: 80px;
+
+  &__head {
+    padding-bottom: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__window {
+    margin-right: -16px;
+    height: auto;
+    overflow: hidden;
+  }
+
+  &__all-cards {
+    display: flex;
+    gap: 16px;
+    transition-duration: $middle-duration;
+  }
+}
+
+.head {
+  &__title {
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+
+    color: $main-text-color;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
+    border: 1px solid $dark-gray-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: inherit;
+
+    transition-duration: $short-duration;
+
+    &--left {
+      background-image: url(../../../public/img/icons-image/button-left-arrow.svg);
+
+      &--disabled {
+        border: 1px solid $regular-gray-color;
+        background-image: url(../../../public/img/icons-image/button-left-arrow-disabled.svg);
+      }
+    }
+
+    &--right {
+      background-image: url(../../../public/img/icons-image/button-right-arrow.svg);
+
+      &--disabled {
+        border: 1px solid $regular-gray-color;
+        background-image: url(../../../public/img/icons-image/button-right-arrow-disabled.svg);
+      }
+    }
+  }
+}
+
+.head__button:not(.head__button--left--disabled):not(.head__button--right--disabled):hover {
+  border: 1px solid $main-text-color;
+  cursor: pointer;
+}

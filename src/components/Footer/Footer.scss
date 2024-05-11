@@ -1,12 +1,8 @@
-@import '../../stylesUtils/variables';
-@import '../../stylesUtils/mixin.scss';
-
-$main-navbar-color: #89939A;
-$active-navbar-color: #000;
-$box-shadow-color: #e2e6e9;
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
 
 .footer {
-  box-shadow: 0px -1px 0px 0px $box-shadow-color;
+  box-shadow: 0px -1px 0px 0px $regular-gray-color;
 
   &__container {
     display: grid;
@@ -14,7 +10,6 @@ $box-shadow-color: #e2e6e9;
     gap: 32px;
 
     @include on-tablet {
-      display: grid;
       grid-template-columns: repeat(3, 1fr);
       height: 96px;
       padding: 0 32px;
@@ -26,40 +21,30 @@ $box-shadow-color: #e2e6e9;
       @include content-padding-inline;
     }
   }
-
-  &__logo-link {
-    height: 32px;
-  }
 }
 
 .contacts {
-  &__items {
-    list-style-type: none;
-    display: grid;
-    margin: 0;
-    padding: 0;
-    gap: 16px;
+  display: grid;
+  gap: 16px;
 
-    @include on-tablet {
-      display: flex;
-      justify-content: space-between;
-    }
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
   }
 
   &__link {
-    display: block;
     font-family: 'Bold';
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
     text-decoration: none;
-    color: $main-navbar-color;
     text-transform: uppercase;
+    color: $secondary-text-color;
 
-    transition-duration: 150ms;
+    transition-duration: $short-duration;
 
     &:hover {
-      color: $active-navbar-color;
+      color: $main-text-color;
     }
   }
 }
@@ -72,27 +57,26 @@ $box-shadow-color: #e2e6e9;
     justify-content: flex-end;
   }
 
-  &__link {
-    text-decoration: none;
+  &__text {
     font-family: "SemiBold";
     font-size: 12px;
     line-height: 15.34px;
-    color: $main-navbar-color;
+    color: $secondary-text-color;
 
     display: flex;
     align-items: center;
 
     &:hover {
-      color: $active-navbar-color;
+      cursor: pointer;
+      color: $main-text-color;
     }
   }
 
-  &__image {
+  &__icon {
     background-image: url(../../../public/img/icons-image/button-up-arrow.svg);
     background-position: center;
     background-repeat: no-repeat;
     height: 32px;
     width: 32px;
-    display: flex;
   }
 }

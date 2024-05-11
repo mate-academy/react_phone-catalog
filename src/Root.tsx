@@ -5,12 +5,10 @@ import {
   Routes,
   Navigate,
 } from 'react-router-dom';
-import { HomePage } from './components/HomePage/HomePage';
+import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './components/NotFoundPage/NotFoundPage';
-import { NavBarMobile } from './components/NavBar/NavBarMobile';
-import { MobilePhones } from './components/MobilePhonesPage/MobilePhones';
-import { PhonePage } from './components/MobilePhonesPage/Phone';
-// import { NavBarMobile } from './components/NavBar/NavBarMobile/NavBarMobile';
+import { ProductsPage } from './pages/ProductsPage/ProductsPage';
+import { DetailProductPage } from './pages/DetailProductPage';
 
 export const Root = () => (
   <Router>
@@ -18,12 +16,19 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
-        <Route path="menu" element={<NavBarMobile />} />
-        <Route path="phones" element={<MobilePhones />}>
-          <Route path=":phoneId" element={<PhonePage />} />
+        <Route path="phones">
+          <Route index element={<ProductsPage type={'phones'} />} />
+          <Route path=":phoneId" element={<DetailProductPage />} />
         </Route>
-        {/* temporary !!!!!!!!!!!!1 */}
-        {/* <Route path="tablets" element={<Phone />} /> */}
+        <Route path="tablets" element={<ProductsPage type={'tablets'} />}>
+          <Route path=":phoneId" element={<DetailProductPage />} />
+        </Route>
+        <Route
+          path="accessories"
+          element={<ProductsPage type={'accessories'} />}
+        >
+          <Route path=":phoneId" element={<DetailProductPage />} />
+        </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

@@ -1,45 +1,44 @@
-// import './Footer.module.scss';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { scrollOnTop } from '../../utils';
 
 export const Footer = () => {
+  // const footerLinkItems = ['github', 'contacts', 'portfolio'];
+
   return (
     <footer className="footer">
       <div className="footer__container">
-        <Link to="/" className="footer__logo-link">
-          <img src="./img/logo/logo-nice-gadgets.svg" alt="logo" />
+        <Link to="/" className="logo-link">
+          <img
+            src="./img/logo/logo-nice-gadgets.svg"
+            alt="logo"
+            onClick={() => scrollOnTop()}
+          />
         </Link>
 
         <div className="contacts">
-          <ul className="contacts__items">
-            <li className="contacts__item">
-              <Link className="contacts__link" to="/github">
-                GitHub
-              </Link>
-            </li>
-
-            <li className="contacts__item">
-              <Link className="contacts__link" to="/contacts">
-                Contacts
-              </Link>
-            </li>
-
-            <li className="contacts__item">
-              <Link className="contacts__link" to="/rights">
-                Rights
-              </Link>
-            </li>
-          </ul>
+          <Link
+            to="https://github.com/ogerenko"
+            className="contacts__link"
+            target="_blank"
+          >
+            Github
+          </Link>
+          <Link to={`/contacts`} className="contacts__link">
+            Contacts
+          </Link>
+          <Link
+            to="https://github.com/ogerenko"
+            className="contacts__link"
+            target="_blank"
+          >
+            Portfolio
+          </Link>
         </div>
 
-        <div className="on-top">
-          <a
-            className="on-top__link"
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-          >
-            <div className="on-top__text">Back to top</div>
-            <span className="on-top__image"></span>
-          </a>
+        <div className="on-top" onClick={() => scrollOnTop()}>
+          <div className="on-top__text">Back to top</div>
+          <span className="on-top__icon" />
         </div>
       </div>
     </footer>

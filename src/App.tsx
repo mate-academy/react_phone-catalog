@@ -1,14 +1,16 @@
-import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { NavBar } from './components/NavBar';
 
 export const App = () => (
-  <div className="app">
+  <>
     <NavBar />
-    <div className="container">
+
+    <div className="main-container">
       <Outlet />
     </div>
+
     <Footer />
-  </div>
+  </>
 );
