@@ -28,7 +28,7 @@ const VARIANT: Record<Variant, string> = {
 };
 
 export const Text: FC<Props> = ({
-  element = 'p',
+  element = 'span',
   variant = 'regular',
   className: extraClassName,
   children,
