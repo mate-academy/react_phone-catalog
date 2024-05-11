@@ -1,11 +1,23 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { Tabs } from '../../../../types/Tabs';
 import './PicturesSlider.scss';
+import classNames from 'classnames';
 
 export const PicturesSlider = () => {
   const [activeTab, setActiveTab] = useState<Tabs>(1);
   const iconSrc = './icons/slider-icon.svg';
   const activeIconSrc = './icons/slider-icon-active.svg';
+
+  // const slidePictures: string[] = [
+  //   './img/banner-mobile-new-iphone.jpeg',
+  //   './img/banner-iphone-15.png',
+  //   './img/banner-ipad.png',
+  // ];
+
+  const bannerClass = useMemo(
+    () => classNames('banner', `banner--${activeTab}`),
+    [activeTab],
+  );
 
   useEffect(() => {
     setInterval(() => {
@@ -17,7 +29,7 @@ export const PicturesSlider = () => {
 
   return (
     <div className="slider">
-      <img src="./img/new-phone.png" />
+      <div className={bannerClass}></div>
 
       <div className="tabs slider__tabs">
         <span className="tabs__container">

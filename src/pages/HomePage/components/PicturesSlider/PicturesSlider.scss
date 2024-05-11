@@ -1,3 +1,20 @@
+.banner {
+  height: 320px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &--1 {
+    background-image: url('../../../../../public/img/banner-mobile-new-iphone.jpeg');
+  }
+  &--2 {
+    background-image: url('../../../../../public/img/banner-iphone-15.png');
+  }
+  &--3 {
+    background-image: url('../../../../../public/img/banner-ipad.png');
+  }
+}
+
 .tabs {
   display: flex;
   justify-content: center;
