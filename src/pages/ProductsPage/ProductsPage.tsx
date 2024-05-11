@@ -27,7 +27,6 @@ type Props = {
 };
 
 export const ProductsPage: React.FC<Props> = ({ type }) => {
-
   const [phones, setPhones] = useState<Product[]>([]);
   const [visiblePhones, setVisiblePhones] = useState<Product[]>([]);
   const [query, setQuery] = useState('');
