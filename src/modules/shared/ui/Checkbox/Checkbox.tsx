@@ -10,6 +10,7 @@ export const Checkbox: FC<Props> = ({
   className,
   children,
   id,
+  title,
   ...props
 }) => {
   return (
@@ -17,6 +18,7 @@ export const Checkbox: FC<Props> = ({
       style={style}
       className={cn(classes.checkbox, className)}
       htmlFor={id}
+      title={title}
     >
       <input
         {...props}
