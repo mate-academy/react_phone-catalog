@@ -7,17 +7,19 @@ import { Text } from '../ui/Text';
 import { Button } from '../ui/Button';
 import { Checkbox } from '../ui/Checkbox';
 import { Icon } from '../ui/Icon';
+import { Product } from '../../../types';
+
+type RequiredProductFields =
+  | 'image'
+  | 'name'
+  | 'price'
+  | 'fullPrice'
+  | 'screen'
+  | 'capacity'
+  | 'ram';
 
 type Props = Omit<ComponentProps<'article'>, 'children'> & {
-  product: {
-    image: string;
-    name: string;
-    price: number;
-    fullPrice?: number | null;
-    screen: string;
-    capacity: string;
-    ram: string;
-  };
+  product: Pick<Product, RequiredProductFields>;
   to: To;
   isFavourite: boolean;
   handleFavouriteClick: () => void;
@@ -49,10 +51,10 @@ export const ProductCard: FC<Props> = ({
       </Link>
       <div className={classes.card__prices}>
         <Text variant="heading-3" className={classes.card__regularPrice}>
-          {price}
+          ${price}
         </Text>
         {isCheaper && (
-          <span className={classes.card__fullPrice}>{fullPrice}</span>
+          <span className={classes.card__fullPrice}>${fullPrice}</span>
         )}
       </div>
       <ul className={classes.card__specs}>

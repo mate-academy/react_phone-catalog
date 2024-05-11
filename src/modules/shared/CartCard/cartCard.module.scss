@@ -1,0 +1,85 @@
+@import 'src/styles/mixins';
+
+.card {
+  max-width: 752px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+  gap: 16px;
+
+  background: var(--white);
+  border: 1px solid var(--elements);
+  border-radius: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: inherit;
+
+    &_first {
+      align-self: start;
+    }
+  }
+
+  &__removeButton {
+    width: 16px;
+    height: 16px;
+    border: 0;
+    background: transparent;
+    color: var(--icons);
+    transition: color var(--transition-specs);
+
+    @include hover {
+      cursor: pointer;
+      color: inherit;
+    }
+  }
+
+  &__imgLink {
+    display: block;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__img {
+    object-fit: contain;
+    width: 100%;
+    height: 100%;
+    transition: transform var(--transition-specs);
+
+    @include hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__nameLink {
+    color: inherit;
+    text-decoration: none;
+    transition: color var(--transition-specs);
+
+    @include hover {
+      color: var(--secondary);
+    }
+  }
+
+  &__controlls {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 96px;
+  }
+
+  &__price {
+    display: block;
+    width: 80px;
+    text-align: right;
+  }
+}
