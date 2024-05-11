@@ -1,18 +1,14 @@
-import classNames from 'classnames';
-import styles from '../Header/Header.module.scss';
+import './Header.scss';
 import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
-    <nav className={classNames(styles.nav)}>
-      <Link to="/" className={classNames(styles.nav__item)}>
+    <nav className="nav">
+      <Link to="/" className="nav__item">
         <img src="./icons/logo.svg" alt="logo" />
       </Link>
 
-      <Link
-        to="#menu"
-        className={classNames(styles.nav__item, styles.nav__burger)}
-      >
+      <Link to="#menu" className="nav__item nav__burger">
         <img src="./icons/burger.svg" alt="Open menu button" />
       </Link>
     </nav>

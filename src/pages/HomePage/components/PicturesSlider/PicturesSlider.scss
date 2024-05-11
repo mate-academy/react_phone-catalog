@@ -1,0 +1,15 @@
+.tabs {
+  display: flex;
+  justify-content: center;
+  height: 24px;
+
+  &__container {
+    vertical-align: center;
+  }
+
+  &__button {
+    height: 4px;
+    width: 14px;
+    padding: 10px 5px;
+  }
+}
