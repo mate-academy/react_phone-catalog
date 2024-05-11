@@ -1,1 +1,11 @@
-// not empty
+@import './styles/main';
+
+html {
+  font-family: Mont, Arial, sans-serif;
+  color: $color-primary;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+}

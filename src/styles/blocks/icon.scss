@@ -1,0 +1,74 @@
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--arrow-up {
+    background-image: url('../../../public/icons/Arrow.svg');
+
+    &-disabled {
+      background-image: url('../../../public/icons/Arrow-disabled.svg');
+    }
+  }
+
+  &--arrow-down {
+    background-image: url('../../../public/icons/Arrow.svg');
+    transform: rotate(180deg);
+  }
+
+  &--arrow-left {
+    background-image: url('../../../public/icons/Arrow.svg');
+    transform: rotate(270deg);
+
+    &-disabled {
+      background-image: url('../../../public/icons/Arrow-disabled.svg');
+      transform: rotate(270deg);
+    }
+  }
+
+  &--arrow-right {
+    background-image: url('../../../public/icons/Arrow.svg');
+    transform: rotate(90deg);
+
+    &-disabled {
+      background-image: url('../../../public/icons/Arrow-disabled.svg');
+      transform: rotate(90deg);
+    }
+  }
+
+  &--favourite {
+    background-image: url('../../../public/icons/Favourites.svg');
+
+    &-selected {
+      background-image: url('../../../public/icons/Favourites-filled.svg');
+    }
+  }
+
+  &--home {
+    background-image: url('../../../public/icons/Home.svg');
+  }
+
+  &--close {
+    background-image: url('../../../public/icons/Close.svg');
+
+    &-disabled {
+      background-image: url('../../../public/icons/Close-disabled.svg');
+    }
+  }
+
+  &--plus {
+    background-image: url('../../../public/icons/Plus.svg');
+  }
+
+  &--minus {
+    background-image: url('../../../public/icons/Minus.svg');
+
+    &-disabled {
+      background-image: url('../../../public/icons/Minus-disabled.svg');
+    }
+  }
+}

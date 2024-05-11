@@ -1,0 +1,8 @@
+.container {
+  @include content-padding-inline;
+
+  min-width: $mobile-width;
+  box-sizing: border-box;
+  width: 100%;
+  background-color: inherit;
+}
