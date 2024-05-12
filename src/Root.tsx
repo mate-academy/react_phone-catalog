@@ -19,6 +19,7 @@ import CartPage from './pages/CartPage/CartPage';
 import { Product } from './types/Product';
 import { getAllProudct } from './helpers/helpers';
 import StoreProvider from './store/Store';
+import Contacts from './pages/Contacts/Contacts';
 
 const ScrollToTop = () => {
   const { pathname } = useLocation();
@@ -80,6 +81,7 @@ const Root: React.FC = () => {
             />
             <Route path="favourites" element={<FavouritesPage />} />
             <Route path="cart" element={<CartPage />} />
+            <Route path="contacts" element={<Contacts />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
         </Routes>
