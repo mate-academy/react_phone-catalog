@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
+import classNames from 'classnames';
 import { Tabs } from '../../../../types/Tabs';
 import './PicturesSlider.scss';
-import classNames from 'classnames';
 
 export const PicturesSlider = () => {
   const [activeTab, setActiveTab] = useState<Tabs>(1);

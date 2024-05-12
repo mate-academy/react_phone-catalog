@@ -1,5 +1,6 @@
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
+import './utils/_reset.scss';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Header } from './components/Header';
 

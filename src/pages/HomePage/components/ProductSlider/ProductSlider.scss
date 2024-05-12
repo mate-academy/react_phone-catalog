@@ -1,0 +1,47 @@
+@use '../../../../utils/mixins' as *;
+@use '../../../../utils/variables' as *;
+
+.product-slider {
+  @include grid;
+
+  row-gap: 24px;
+  padding-top: 32px;
+
+  &__top {
+    grid-column: 1 / 5;
+  }
+
+  &__cards {
+    grid-column: 1 / 5;
+  }
+}
+
+.slider-top {
+  @include grid;
+
+  justify-items: end;
+
+  &__title {
+    // grid-column-start: 1;
+    grid-column: span 2;
+
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: $color-primary;
+  }
+  &__nav {
+    display: flex;
+    gap: 16px;
+    grid-column: -3 / -1;
+  }
+}
+
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #b4bdc3;
+}

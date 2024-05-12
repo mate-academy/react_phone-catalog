@@ -1,0 +1,19 @@
+@use '../utils/variables' as *;
+
+.title {
+  font-family: $font-family;
+  text-align: left;
+
+  &--1 {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}

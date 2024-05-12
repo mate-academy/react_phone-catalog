@@ -1,14 +1,10 @@
+@use '../../utils/mixins' as *;
+@use '../../utils/variables' as *;
+
 .nav {
-  display: grid;
+  @include grid;
 
-  grid-template-columns: 60px 60px 60px 60px;
-  grid-template-rows: 48px;
-  column-gap: 16px;
-
-  justify-content: center;
-  align-items: center;
-
-  border-bottom: 1px solid #e2e6e9;
+  border-bottom: 1px solid $color-elements;
 
   &__item {
     grid-row: 1 / 2;
@@ -22,6 +18,6 @@
     padding: 16px;
     margin-right: -17px;
 
-    border: 1px solid #e2e6e9;
+    border: 1px solid $color-elements;
   }
 }
