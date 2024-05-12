@@ -6,12 +6,9 @@
 
   row-gap: 24px;
   padding-top: 32px;
+  overflow: hidden;
 
   &__top {
-    grid-column: 1 / 5;
-  }
-
-  &__cards {
     grid-column: 1 / 5;
   }
 }
@@ -44,4 +41,10 @@
   height: 32px;
   background-color: transparent;
   border: 1px solid #b4bdc3;
+}
+
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
 }
