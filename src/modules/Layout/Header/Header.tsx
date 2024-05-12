@@ -8,14 +8,12 @@ import { CartLink } from './components/CartLink';
 import { FavouritesLink } from './components/FavouritesLink';
 import { MenuList } from './components/MenuList';
 import { useHeader } from './hooks/useHeader';
-import { MenuItem } from './types';
+import { menuItems } from './variables';
 import classes from './header.module.scss';
 
-type Props = {
-  menuItems: MenuItem[];
-};
+type Props = {};
 
-export const Header: FC<Props> = ({ menuItems }) => {
+export const Header: FC<Props> = () => {
   const [isMenuOpen, toggleIsMenuOpen] = useHeader();
 
   return (
@@ -23,7 +21,9 @@ export const Header: FC<Props> = ({ menuItems }) => {
       <Link to={'/'} className={classes.header__logo}>
         <img className={classes.header__logoImg} src={Logo} alt="LOGO" />
       </Link>
+
       <nav
+        onClick={() => toggleIsMenuOpen(false)}
         className={cn(classes.header__nav, {
           [classes.header__nav_open]: isMenuOpen,
         })}
@@ -49,6 +49,7 @@ export const Header: FC<Props> = ({ menuItems }) => {
           />
         </div>
       </nav>
+
       <button
         title="menu"
         className={classes.header__burgerMenu}

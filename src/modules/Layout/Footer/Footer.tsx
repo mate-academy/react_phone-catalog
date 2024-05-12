@@ -7,14 +7,12 @@ import { Icon } from '../../shared/ui/Icon';
 import { RoundButton } from '../../shared/ui/RoundButton';
 import { Text } from '../../shared/ui/Text';
 import { FooterMenuList } from './components/FooterMenuList';
-import { MenuItem } from './types';
+import { menuItems } from './variables';
 import classes from './footer.module.scss';
 
-type Props = {
-  menuItems: MenuItem[];
-};
+type Props = {};
 
-export const Footer: FC<Props> = ({ menuItems }) => {
+export const Footer: FC<Props> = () => {
   return (
     <footer className={classes.footer}>
       <Container className={classes.footer__container}>

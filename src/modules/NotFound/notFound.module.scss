@@ -1,0 +1,30 @@
+@import 'src/styles/mixins';
+
+.page {
+  padding-bottom: 300px;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('../../../public/img/page-not-found.png');
+    background-position: center;
+    background-size: contain;
+    background-repeat: no-repeat;
+    z-index: -1;
+    opacity: 0.1;
+  }
+
+  &__title {
+    margin-top: 24px;
+    text-align: center;
+
+    @include on-tablet {
+      margin-top: 32px;
+    }
+
+    @include on-desktop {
+      margin-top: 56px;
+    }
+  }
+}

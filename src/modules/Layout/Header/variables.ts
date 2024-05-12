@@ -3,16 +3,20 @@ import { MenuItem } from './types';
 
 const MENU_ITEMS: Omit<MenuItem, 'key'>[] = [
   {
-    text: 'Github',
+    text: 'Home',
     to: '/',
   },
   {
-    text: 'Contacts',
-    to: '/',
+    text: 'Phones',
+    to: '/phones',
   },
   {
-    text: 'Rights',
-    to: '/',
+    text: 'Tablets',
+    to: '/tablets',
+  },
+  {
+    text: 'Accessories',
+    to: '/accessories',
   },
 ];
 
