@@ -1,0 +1,144 @@
+.header {
+  z-index: 100;
+  height: 48px;
+
+  background-color: #fff;
+
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-items: center;
+  box-shadow: 0 1px 0 0 #E2E6E9;
+
+  transition: top 0.3s ease;
+
+  @include onTable {
+    gap: 16px;
+  }
+
+  @include onDesktop {
+    gap: 24px;
+  }
+
+  @include onDesktop {
+    height: 65px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    height: 100%;
+    width: 100%;
+
+    @include onTable {
+      width: max-content;
+    }
+  }
+
+  &__open {
+    @include onTable {
+      display: none;
+    }
+
+    @include onDesktop {
+      display: none;
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: 100%;
+
+    box-shadow: -1px 0 0 0 #E2E6E9;
+
+    display: none;
+    height: 45px;
+
+    &:nth-child(-n+2) {
+      @include onTable {
+        display: list-item;
+      }
+    }
+
+    &--open {
+      display: block;
+
+      @include onTable {
+        display: none;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    margin-left: auto;
+  }
+
+  &__link {
+    display: inline-block;
+    box-sizing: border-box;
+    height: 100%;
+    box-shadow: -1px 0px 0px 0px #E2E6E9;
+
+    &-isOpen {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      width: 100%;
+      box-shadow: none;
+    }
+
+    &-img {
+      width: 16px;
+      height: 16px;
+
+      padding: 16px;
+
+      @include onDesktop {
+        padding: 24px;
+      }
+    }
+
+    &-button {
+      background-color: transparent;
+    }
+  }
+
+  &__item {
+    height: 100%;
+  }
+
+  &__counter {
+    position: absolute;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 11.5px;
+
+    text-align: center;
+
+    width: 12px;
+    height: 12px;
+
+    border-radius: 50%;
+    background-color: $buttons-card;
+    color: #fff;
+
+    left: 60%;
+    top: 40%;
+
+    transform: translate(-50%, -50%);
+  }
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
