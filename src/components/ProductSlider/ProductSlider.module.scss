@@ -25,9 +25,13 @@
   letter-spacing: -0.32px;
 }
 
+.swiper {
+  width: 100%;
+}
+
 .productsCard {
   padding: 15px 0;
-  max-width: 1200px;
+  width: 100%;
   display: flex;
   flex-wrap: nowrap;
   overflow-x: hidden;
@@ -94,6 +98,7 @@
     width: 685px;
   }
 
+
   .productsCard {
     padding: 15px 0;
     display: flex;
@@ -117,7 +122,8 @@
 
 @media (min-width:320px) and (max-width: 639px) {
   .sliderWraper {
-    width: 320px;
+    margin-inline: auto;
+    width: 270px;
   }
 
   .productsCard {

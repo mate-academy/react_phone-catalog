@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styles from './banner.module.scss';
-import Banner from './Banner-img/Banner.png';
-import Banner2 from './Banner-img/slide1.png';
-import Banner3 from './Banner-img/banner3.jpeg';
-import sliderButton from './Banner-img/sliderButton.png';
+import Banner from './Pictures/banner1.jpeg';
+import Banner2 from './Pictures/slide1.png';
+import Banner3 from './Pictures/banner3.jpeg';
+import sliderButton from './Pictures/sliderButton.png';
 import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
@@ -80,6 +80,10 @@ export const Baner: React.FC = () => {
                   width="14"
                   height="4"
                   fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
+                  onClick={() => {
+                    setActiveSlideIndex(index);
+                    swiperRef.current?.slideTo(index);
+                  }}
                 />
               ))}
             </svg>

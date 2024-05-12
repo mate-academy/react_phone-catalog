@@ -1,11 +1,8 @@
 import styles from './productcard.module.scss';
-// import heardBuron from './productCard-logo/Favourites.png';
-// import heardBuronActive from './productCard-logo/favoriteActive.png';
 import { Product } from '../../services/productType';
 import { NavLink } from 'react-router-dom';
 import { ProductType } from '../../services/enums';
 import React from 'react';
-// import { useLocalStorage } from '../../local/localStorege';
 import { ButtonsAddandFavorits } from './ButtonAdd';
 
 type Props = {
@@ -13,70 +10,11 @@ type Props = {
   type: ProductType;
 };
 
-export const ProductCard: React.FC<Props> = ({ item, type }) => {
-  // const [favorites] = useLocalStorage<Product[]>('favorites', []);
-  // const [cart] = useLocalStorage<Product[]>('cart', []);
-  // const [isFavorite, setIsFavorite] = useState(false);
-  // const [isCart, setIsCart] = useState(false);
-
-  // useEffect(() => {
-  //   const isItemInFavorites = favorites.some(favItem => favItem.id === item.id);
-
-  //   setIsFavorite(isItemInFavorites);
-  // }, [favorites, item]);
-
-  // useEffect(() => {
-  //   const isItemInCart = cart.some(carItem => carItem.id === item.id);
-
-  //   setIsCart(isItemInCart);
-  // }, [cart, item]);
-
-  let productPath = '';
-
-  switch (type) {
-    case ProductType.phones:
-      productPath = '/phones/details';
-      break;
-    case ProductType.tablets:
-      productPath = '/tablets/details';
-      break;
-    case ProductType.accessories:
-      productPath = '/accessories/details';
-      break;
-    default:
-      productPath = '/';
-  }
-
-  // const handlerAddFavorites = () => {
-  //   if (isFavorite) {
-  //     const updatedFavorites = favorites.filter(
-  //       favItem => favItem.id !== item.id,
-  //     );
-
-  //     setFavorites(updatedFavorites);
-  //   } else {
-  //     const updatedFavorites = [item, ...favorites];
-
-  //     setFavorites(updatedFavorites);
-  //   }
-  // };
-
-  // const handlerAddProduct = () => {
-  //   if (isCart) {
-  //     const updatedCart = cart.filter(carItem => carItem.id !== item.id);
-
-  //     setCart(updatedCart);
-  //   } else {
-  //     const updatedCart = [item, ...cart];
-
-  //     setCart(updatedCart);
-  //   }
-  // };
-
+export const ProductCard: React.FC<Props> = ({ item }) => {
   return (
     <>
       <section className={styles.cardProductSection}>
-        <NavLink to={{ pathname: productPath, search: `?id=${item.itemId}` }}>
+        <NavLink to={`/${item.category}/${item.itemId}`}>
           <img
             className={styles.productImages}
             src={item.image}

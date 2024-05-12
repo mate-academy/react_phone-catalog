@@ -20,7 +20,6 @@
 }
 
 .categoriesContainer {
-  width: 1200px;
   position: relative;
   display: flex;
   flex-direction: row;
@@ -33,7 +32,7 @@
   width: 368px;
   height: 368px;
   border-radius: 8px;
-  background: url(./categoriesPictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
+  background: url(./Pictures//phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
   transition: opacity 0.3s ease;
 
   &:hover {
@@ -46,7 +45,7 @@
   width: 368px;
   height: 368px;
   border-radius: 8px;
-  background: url(./categoriesPictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
+  background: url(./Pictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
   transition: opacity 0.3s ease;
 
   &:hover {
@@ -60,7 +59,7 @@
   width: 368px;
   height: 368px;
   border-radius: 8px;
-  background: url(./categoriesPictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
+  background: url(./Pictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
   transition: opacity 0.3s ease;
 
   &:hover {
@@ -116,7 +115,7 @@
     width: 187px;
     height: 187px;
     border-radius: 8px;
-    background: url(./categoriesPictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
+    background: url(./Pictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -129,7 +128,7 @@
     width: 187px;
     height: 187px;
     border-radius: 8px;
-    background: url(./categoriesPictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
+    background: url(./Pictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -142,7 +141,7 @@
     width: 187px;
     height: 187px;
     border-radius: 8px;
-    background: url(./categoriesPictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
+    background: url(./Pictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -170,7 +169,7 @@
   }
 
   .categoriesContainer {
-    // width: 1200px;
+    margin: 0 auto;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -182,7 +181,7 @@
     width: 258px;
     height: 258px;
     border-radius: 8px;
-    background: url(./categoriesPictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
+    background: url(./Pictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -195,7 +194,7 @@
     width: 258px;
     height: 258px;
     border-radius: 8px;
-    background: url(./categoriesPictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
+    background: url(./Pictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {
@@ -208,7 +207,7 @@
     width: 258px;
     height: 258px;
     border-radius: 8px;
-    background: url(./categoriesPictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
+    background: url(./Pictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
     transition: opacity 0.3s ease;
 
     &:hover {

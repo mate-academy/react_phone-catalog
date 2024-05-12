@@ -4,14 +4,13 @@ import {
   createSelector,
   createSlice,
 } from '@reduxjs/toolkit';
-import { ProductType } from '../../services/enums';
-import { Product } from '../../services/productType';
-import { ProductDetailes } from '../../services/ProductDetailType';
+import { ProductType } from '../services/enums';
+import { ProductDetailes } from '../services/ProductDetailType';
+import { Product } from '../services/productType';
 
 export const loadProducts = createAsyncThunk(
   'products/loadProducs',
   async (type: ProductType) => {
-    // await new Promise(resolve => setTimeout(resolve, 3000));
     const response = await fetch('/api/products.json');
     const data = await response.json();
 
@@ -24,8 +23,6 @@ export const loadProducts = createAsyncThunk(
 export const loadProductsDetail = createAsyncThunk(
   'products/loadProductsDetails',
   async (type: ProductType) => {
-    // await new Promise(resolve => setTimeout(resolve, 3000));
-
     let apiUrl = '';
 
     if (type === 'phones') {

@@ -1,12 +1,10 @@
 import React, { useRef } from 'react';
 import styles from './ProductSlider.module.scss';
-import sliderButton from './icons/sliderButton.png';
+import sliderButton from './Pictures/sliderButton.png';
 import { ProductCard } from '../ProductCard/ProductCard';
-// import { Phones } from '../../services/Phone';
-// import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
-import Loader from '../loader/spiner';
+import Loader from '../Loader/Spiner';
 import { useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../services/enums';
 import { Product } from '../../services/productType';
@@ -64,21 +62,7 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
               spaceBetween={1}
               slidesPerView={'auto'}
               speed={900}
-              // breakpoints={{
-              //   640: {
-              //     slidesPerView: 2,
-              //   },
-
-              //   1200: {
-              //     slidesPerView: 4,
-              //   },
-
-              //   720: {
-              //     slidesPerView: 3,
-              //   },
-              // }}
               mousewheel={true}
-              // loop={true}
               onSwiper={swiper => {
                 swiperRef.current = swiper;
               }}

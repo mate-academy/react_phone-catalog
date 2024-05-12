@@ -1,9 +1,8 @@
 import styles from './productcard.module.scss';
-import heardBuron from './productCard-logo/Favourites.png';
-import heardBuronActive from './productCard-logo/favoriteActive.png';
+import heardBuron from './Pictures/Favourites.png';
+import heardBuronActive from './Pictures/favoriteActive.png';
 import { Product } from '../../services/productType';
 import React from 'react';
-// import { useLocalStorage } from '../../local/localStorege';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import {
   addFavorite,
@@ -17,16 +16,6 @@ type Props = {
 };
 
 export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
-  // const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
-  // const [cart, setCart] = useLocalStorage<Product[]>('cart', []);
-  // const [isFavorite, setIsFavorite] = useState(false);
-  // const [isCart, setIsCart] = useState(false);
-
-  // const isCart = useAppSelector(state => state.cartAndFavorits.isCart);
-  // const isFavorite = useAppSelector(state => state.cartAndFavorits.isCart);
-
-  const cart = useAppSelector(state => state.cartAndFavorits.cart);
-  const favorites = useAppSelector(state => state.cartAndFavorits.favorites);
   const isCart = useAppSelector(state =>
     state.cartAndFavorits.cart.some(
       product => product.id === item.id && product.isCart,
@@ -40,24 +29,6 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
   );
 
   const dispatch = useAppDispatch();
-
-  // eslint-disable-next-line no-console
-  console.log(favorites);
-
-  // eslint-disable-next-line no-console
-  console.log(cart);
-
-  // useEffect(() => {
-  //   const isItemInFavorites = favorites.some(favItem => favItem.id === item.id);
-
-  //   // setIsFavorite(isItemInFavorites);
-  // }, [favorites, item]);
-
-  // useEffect(() => {
-  //   const isItemInCart = cart.some(carItem => carItem.id === item.id);
-
-  //   setIsCart(isItemInCart);
-  // }, [cart, item]);
 
   const handlerAddFavorites = () => {
     if (isFavorite) {

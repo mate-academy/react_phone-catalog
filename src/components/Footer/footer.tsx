@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
-import catalogLogo from './footer-logo/header-logo.png';
-import sliderButton from './footer-logo/sliderButton.png';
+import catalogLogo from './Pictures/header-logo.png';
+import sliderButton from './Pictures/sliderButton.png';
 
 export const Footer: React.FC = () => {
   return (
@@ -32,7 +32,6 @@ export const Footer: React.FC = () => {
           </li>
         </ul>
         <div className={styles.toTopContainer}>
-          {/* <p className={styles.footerText}>Back to top</p> */}
           <a className={styles.topButtonLink} href="#">
             <button className={styles.footerButton}>
               <img

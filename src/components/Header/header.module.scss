@@ -17,13 +17,32 @@
   background: #FFF;
   box-shadow: 0 1px 0 0 #E2E6E9;
   justify-content: flex-start;
+
+  &darkMode {
+    box-sizing: content-box;
+    display: flex;
+    flex-direction: row;
+    width: auto;
+    align-items: center;
+    gap: 24px;
+    box-shadow: 0 1px 0 0 #E2E6E9;
+    justify-content: flex-start;
+    background-color: #0F1121;
+  }
+}
+
+.darkModeContainer {
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 .headerLogo {
   padding-left: 24px;
   width: 80px;
   height: 28px;
-  background: #FFF;
 }
 
 .menuLogo {
@@ -31,7 +50,6 @@
   width: 16px;
   height: 16px;
   flex-shrink: 0;
-  background: #FFF;
 }
 
 .buttonsContainer {
@@ -50,17 +68,25 @@
   width: 64px;
   height: 64px;
   flex-shrink: 0;
-  background: #FFF;
   box-shadow: -1px 0 0 0 #E2E6E9;
   color: #FFF;
+
+  &darkMode {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 64px;
+    height: 64px;
+    flex-shrink: 0;
+    background-color: #0F1121;
+    box-shadow: -1px 0 0 0 #E2E6E9;
+    color: #FFF;
+  }
 }
 
 .headerButtonsMenu {
   display: none;
-}
-
-.navLinks {
-  background: #FFF;
 }
 
 .favoriteCounts {
@@ -90,7 +116,6 @@
   height: 16px;
   flex-shrink: 0;
   color: #0F0F11;
-  background: #FFF;
   overflow: hidden;
 }
 
@@ -213,18 +238,5 @@
     display: none;
   }
 }
-
-// @media (min-width: 1200px) {
-//   .appBody {
-//     max-width: 1400px; /* Збільшено максимальну ширину контейнера на ширину 1400px для ширини від 1200px і більше */
-//     margin-inline: 152px; /* Встановлено відступи 152px для ширини від 1200px і більше */
-//   }
-// }
-
-// @media (max-width: 639px) {
-//   .appBody {
-//     margin-inline: 16px; /* Встановлено відступи 16px для ширини від 320px до 639px */
-//   }
-// }
 
 

@@ -1,3 +1,11 @@
+.background {
+  background: #FAFBFC;
+
+  &darkMode {
+    background: #0F1121;
+  }
+}
+
 .homeWrapper {
   display: flex;
   max-width: 1400px;
@@ -20,8 +28,19 @@
   font-weight: 800;
   line-height: 56px;
   letter-spacing: -0.48px;
-  width: 100%; /* Змінено ширину на 100% */
-  max-width: 1136px; /* Змінено на максимальну ширину контейнера */
+  width: 100%;
+  max-width: 1136px;
+
+  &darkMode {
+    color: #F1F2F9;
+    margin-top: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    width: 100%;
+    max-width: 1136px;
+  }
 }
 
 .loaderContainer {
@@ -29,8 +48,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%; /* Змінено ширину на 100% */
-  max-width: 1200px; /* Змінено на максимальну ширину контейнера */
+  width: 100%;
+  max-width: 1200px;
 }
 
 @media (min-width:320px) and (max-width: 639px) {
@@ -42,32 +61,24 @@
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.32px;
+    margin-inline: auto;
   }
 
+  .homeWrapper {
+    display: flex;
+    max-width: 1400px;
+    flex-direction: column;
+    margin: 0 auto;
+    justify-content: center;
+    align-items: center;
+  }
+
+
   .appBody {
-    margin-inline: 0;
+    margin-inline: auto;
     max-width: 1200px;
-    padding-inline: 34px;
+    padding-inline: 16px;
     scroll-behavior: smooth;
     flex: 1;
   }
 }
-
-// @media (min-width: 640px) {
-//   .appBody {
-//     margin-inline: 24px; /* Встановлено відступи 24px для ширини від 640px до 1999px */
-//   }
-// }
-
-// @media (min-width: 1200px) {
-//   .appBody {
-//     max-width: 1400px; /* Збільшено максимальну ширину контейнера на ширину 1400px для ширини від 1200px і більше */
-//     margin-inline: 152px; /* Встановлено відступи 152px для ширини від 1200px і більше */
-//   }
-// }
-
-// @media (max-width: 639px) {
-//   .appBody {
-//     margin-inline: 16px; /* Встановлено відступи 16px для ширини від 320px до 639px */
-//   }
-// }

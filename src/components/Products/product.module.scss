@@ -1,3 +1,7 @@
+.background {
+  background: #FAFBFC;
+}
+
 .mobilePhones {
   display: flex;
   justify-content: center;
@@ -197,11 +201,11 @@
 }
 
 .loaderContainer{
-  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 1200px;
+  width: 100%;
+  height: 100vh;
 }
 
 .productGrid {
@@ -212,8 +216,6 @@
     gap: 21.2px;
   }
 }
-
-// flex-wrap: wrap;
 
 .pangination {
   margin: 40px 0;

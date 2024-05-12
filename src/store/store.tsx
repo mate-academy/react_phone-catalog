@@ -1,6 +1,4 @@
 import { configureStore, combineReducers } from '@reduxjs/toolkit';
-import productSlice from '../feachers/goodsPhoneSlice/productSlice';
-// import { favoritesAndCardSlice } from '../feachers/favoritesAndCardSlice.ts';
 import {
   persistStore,
   persistReducer,
@@ -13,10 +11,13 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import { favoritesAndCardSlice } from '../feachers/detailSlice';
+import productSlice from '../feachers/productSlice';
+import { themeSlice } from '../feachers/themeModeSlice';
 
 const rootReducer = combineReducers({
   phones: productSlice,
   cartAndFavorits: favoritesAndCardSlice.reducer,
+  theme: themeSlice.reducer,
 });
 
 const persistConfig = {

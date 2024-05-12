@@ -1,8 +1,8 @@
 import React from 'react';
-import { Header } from '../Header/header';
-import { Footer } from '../Footer/footer';
+import { Header } from '../Header/Header';
+import { Footer } from '../Footer/Footer';
 import styles from './notFound.module.scss';
-import image from './images/page-not-found.png';
+import image from './Pictures/page-not-found.png';
 import { NavLink } from 'react-router-dom';
 
 export const NotFoundPage = () => {
