@@ -1,4 +1,5 @@
-@import './../../../Mixin/mixin';
+@import './../../../utils/style/mixin';
+@import './../../../utils/style/variables';
 
 .cart {
   width: 28px;
@@ -8,9 +9,8 @@
     position: absolute;
     width: 28px;
     height: 28px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+    @include center-element;
 
     &--counter{
       height: 14px;

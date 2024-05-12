@@ -1,12 +1,13 @@
-@import './../../Mixin/mixin';
+@import './../../utils/style/mixin';
+@import './../../utils/style/variables';
 
 .burger {
+
   &__logo{
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: 100%;
     width: 48px;
+    
+    @include center-element
   }
 
   &__container {
