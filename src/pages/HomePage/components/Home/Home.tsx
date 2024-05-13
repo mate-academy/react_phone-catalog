@@ -29,6 +29,10 @@ export const Home: React.FC = () => {
           <Categories />
         </div>
       </section>
+
+      <section className="main__section">
+        <ProductSlider hasDiscount={true} />
+      </section>
     </main>
   );
 };

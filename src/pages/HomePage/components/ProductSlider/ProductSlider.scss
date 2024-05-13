@@ -15,12 +15,11 @@
 }
 
 .slider-top {
-  @include grid;
-
-  justify-items: end;
+  display: flex;
+  justify-content: space-between;
 
   &__title {
-    grid-column: span 2;
+    width: 136px;
 
     font-family: $font-family;
     font-size: 22px;

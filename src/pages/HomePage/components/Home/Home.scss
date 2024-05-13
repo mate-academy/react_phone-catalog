@@ -47,7 +47,8 @@
 }
 
 .category-section {
-  @include grid();
+  @include grid;
+
   row-gap: 24px;
 
   &__title {

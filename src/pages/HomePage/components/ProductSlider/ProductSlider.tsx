@@ -5,7 +5,11 @@ import { ProductCategories } from '../../../../types/ProductCategories';
 import { getProductsByCategory } from '../../../../helpers/getProducts';
 import './ProductSlider.scss';
 
-export const ProductSlider: React.FC = () => {
+type Props = {
+  hasDiscount?: boolean;
+};
+
+export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
@@ -14,16 +18,30 @@ export const ProductSlider: React.FC = () => {
 
   useEffect(() => {
     getProductsByCategory(ProductCategories.Products).then(
-      (productsFromApi: Product[]) =>
-        setProducts(productsFromApi.reverse().slice(0, 8)),
+      (productsFromApi: Product[]) => {
+        let finalProducts = productsFromApi.reverse().slice(0, 8);
+
+        if (hasDiscount) {
+          finalProducts = finalProducts.map((product: Product) => {
+            return {
+              ...product,
+              oldPrice: Math.ceil(product.price * 1.2),
+            };
+          });
+        }
+
+        setProducts(finalProducts);
+      },
     );
-  }, []);
+  }, [hasDiscount]);
 
   return (
     products.length > 0 && (
       <div className="product-slider">
         <div className="slider-top product-slider__top">
-          <h2 className="slider-top__title">Brand new models</h2>
+          <h2 className="slider-top__title">
+            {hasDiscount ? 'Hot prices' : 'Brand new models'}
+          </h2>
           <nav className="slider-top__nav">
             <button
               className="arrow-button"
@@ -49,10 +67,10 @@ export const ProductSlider: React.FC = () => {
         </div>
         <div className="cards product-slider__cards">
           <span className="cards__container">
-            <ProductCard product={currentProduct} />
+            <ProductCard hasDiscount={hasDiscount} product={currentProduct} />
           </span>
           <span className="cards__container">
-            <ProductCard product={nextProduct} />
+            <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
           </span>
         </div>
       </div>

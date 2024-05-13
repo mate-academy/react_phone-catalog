@@ -24,13 +24,29 @@
     margin: 0;
   }
 
+  &__price-wrapper {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
   &__price {
     font-family: $font-family;
     font-size: 22px;
     font-weight: 800;
     line-height: 30.8px;
 
-    align-self: flex-start;
+    &--old {
+      font-family: $font-family;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 28.12px;
+      text-align: left;
+
+      color: $color-secondary;
+
+      text-decoration: line-through;
+    }
   }
 
   &__image {

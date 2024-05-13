@@ -3,9 +3,13 @@ import './ProductCard.scss';
 
 type Props = {
   product: Product;
+  hasDiscount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({
+  product,
+  hasDiscount = false,
+}) => {
   const { name, price, screen, capacity, ram, image } = product;
 
   const wishlistIconPath = './icons/heart-black.svg';
@@ -14,7 +18,14 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <article className="product">
       <img src={image} className="product__image" alt="Image of the product" />
       <h3 className="product__name">{name}</h3>
-      <p className="product__price">${price}</p>
+      <div className="product__price-wrapper">
+        <p className="product__price">${price}</p>
+        {hasDiscount && (
+          <p className="product__price product__price--old">
+            ${product.oldPrice}
+          </p>
+        )}
+      </div>
 
       <div className="details product__details">
         <div className="detail details__detail">
