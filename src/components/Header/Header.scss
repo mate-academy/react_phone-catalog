@@ -50,6 +50,18 @@
     }
   }
 
+  &__nav-link {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
   &__left-side {
     display: flex;
     justify-content: center;

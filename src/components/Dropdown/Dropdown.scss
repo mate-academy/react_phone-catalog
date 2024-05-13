@@ -23,6 +23,7 @@
     font-weight: 600;
     line-height: 21px;
     border: 1px solid $icons-gray;
+    cursor: pointer;
 
     @include on-tablet {
       width: 176px;

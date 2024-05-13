@@ -22,6 +22,7 @@
   &__nav {
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 16px;
 
     @include on-tablet {
@@ -32,6 +33,12 @@
     @include on-desktop {
       gap: 106px;
     }
+  }
+
+  &__nav-link {
+   @include on-tablet {
+    padding: 40px 0;
+   }
   }
 
   &__back-to-top {

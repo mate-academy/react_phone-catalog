@@ -22,13 +22,14 @@
       &::after {
         content: '';
         display: block;
-        position: relative;
-        top: 17px;
+        position: absolute;
+        top: 45px;
         height: 3px;
+        width: 100%;
         background-color: $primary-gray;
 
         @include on-desktop {
-          top: 25px;
+          top: 61px;
         }
       }
     }

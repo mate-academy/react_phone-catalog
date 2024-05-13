@@ -12,6 +12,8 @@ export const Header = () => {
   const [query, setQuery] = useState(searchParams.get('query') || '');
   const location = useLocation();
 
+  const itemsCount = cartProducts.reduce((acc, curr) => acc + curr.quantity, 0);
+
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('header__nav-link nav__link', {
       'nav__link--is-active': isActive,
@@ -93,7 +95,7 @@ export const Header = () => {
           <Link to="/cart" className="header__icon header__icon--tablet">
             <div className="header__icon-img icon--cart">
               {cartProducts.length > 0 && (
-                <span className="header__count">{cartProducts.length}</span>
+                <span className="header__count">{itemsCount}</span>
               )}
             </div>
           </Link>
