@@ -7,12 +7,14 @@ import {
 import { ProductType } from '../services/enums';
 import { ProductDetailes } from '../services/ProductDetailType';
 import { Product } from '../services/productType';
+import { getProducts } from '../api';
 
 export const loadProducts = createAsyncThunk(
   'products/loadProducs',
   async (type: ProductType) => {
-    const response = await fetch('/api/products.json');
-    const data = await response.json();
+    // const response = await fetch('/react_phone-catalog/api/products.json');
+    // const data = await response.json();
+    const data = await getProducts('/products.json');
 
     return data.filter(
       (phone: { category: string }) => phone.category === type,
@@ -26,15 +28,16 @@ export const loadProductsDetail = createAsyncThunk(
     let apiUrl = '';
 
     if (type === 'phones') {
-      apiUrl = '/api/phones.json';
+      apiUrl = '/phones.json';
     } else if (type === 'tablets') {
-      apiUrl = '/api/tablets.json';
+      apiUrl = '/tablets.json';
     } else if (type === 'accessories') {
-      apiUrl = '/api/accessories.json';
+      apiUrl = '/accessories.json';
     }
 
-    const response = await fetch(apiUrl);
-    const data = await response.json();
+    // const response = await fetch(apiUrl);
+    // const data = await response.json();
+    const data = await getProducts(apiUrl);
 
     return data;
   },

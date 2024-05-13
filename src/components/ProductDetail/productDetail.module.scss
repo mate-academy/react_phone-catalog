@@ -255,6 +255,7 @@
 
 .capacityList {
   display: flex;
+  flex-flow: row wrap;
   flex-direction: row;
   gap: 8px;
 }
@@ -686,6 +687,20 @@
     &:hover {
       border-radius: 48px;
       border: 1px solid #0F0F11;
+    }
+  }
+
+  .likeButtonDark {
+    outline: transparent;
+    width: 48px;
+    height: auto;
+    border-radius: 48px;
+    background: #323542;
+    border: 1px solid transparent;
+
+    &:hover {
+      border-radius: 48px;
+      background: #4A4D58;
     }
   }
 

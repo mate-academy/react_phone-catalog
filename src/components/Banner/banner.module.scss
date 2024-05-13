@@ -1,5 +1,5 @@
 .bannerWraper {
-  max-width: 1136px;
+  width: 90%;
   max-height: auto;
 }
 
@@ -74,10 +74,17 @@
   align-items: center;
 }
 
+.bannerImg, .bannerImgSwiper {
+  width: 100%;
+  height: auto;
+  flex-shrink: 0;
+  border-radius: 8px;
+}
+
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .bannerWraper {
-    width: 592px;
+    width: 90%;
     max-height: auto;
   }
 
@@ -109,15 +116,51 @@
 }
 }
 
+@media (min-width: 640px) and (max-width: 750px) {
+  .bannerWraper {
+    width: 90%;
+    max-height: auto;
+  }
+
+  .bannerImg, .bannerImgSwiper {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  .sectionBanner {
+    display: flex;
+    margin-top: 56px;
+  }
+
+  .bannerImg {
+    width: 100%;
+    height: 221px;
+  }
+
+
+.bannerContent {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 16px;
+}
+}
+
 @media (min-width:320px) and (max-width: 639px) {
   .bannerWraper {
+    width: 90%;
     max-height: auto;
   }
 
   .bannerImgSwiper {
-    padding: -32px 0;
-    max-width: 290px;
-    max-height: auto;
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
   }
 
   .bannerImg, .bannerImgSwiper {

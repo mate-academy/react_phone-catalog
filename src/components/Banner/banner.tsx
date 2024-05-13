@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './banner.module.scss';
 import Banner from './Pictures/banner1.jpeg';
 import Banner2 from './Pictures/slide1.png';
@@ -17,6 +17,8 @@ export const Baner: React.FC = () => {
   const swiperRef = useRef<Swiper | null>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
 
+  const intervalRef = useRef<NodeJS.Timeout | null>(null);
+
   const nextSlide = () => {
     swiperRef.current?.slideNext();
   };
@@ -31,15 +33,27 @@ export const Baner: React.FC = () => {
     }
   };
 
-  setInterval(() => {
-    nextSlide();
-  }, 8000);
+  const startInterval = () => {
+    intervalRef.current = setInterval(() => {
+      nextSlide();
+    }, 5000);
+  };
+
+  useEffect(() => {
+    startInterval();
+
+    return () => {
+      if (intervalRef.current) {
+        clearInterval(intervalRef.current);
+      }
+    };
+  }, []);
 
   const getButtonColor = (index: number, activeIndex: number) => {
     if (index === activeIndex) {
-      return theme === Theme.dark ? '#F1F2F9' : '#000'; // Визначаємо колір для активної кнопки
+      return theme === Theme.dark ? '#F1F2F9' : '#000';
     } else {
-      return theme === Theme.dark ? '#3B3E4A' : '#F1F2F9'; // Визначаємо колір для неактивної кнопки
+      return theme === Theme.dark ? '#3B3E4A' : '#F1F2F9';
     }
   };
 
@@ -99,7 +113,6 @@ export const Baner: React.FC = () => {
                   width="14"
                   height="4"
                   fill={getButtonColor(index, activeSlideIndex)}
-                  // fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
                   onClick={() => {
                     setActiveSlideIndex(index);
                     swiperRef.current?.slideTo(index);

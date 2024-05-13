@@ -7,10 +7,6 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../services/enums';
-// import {
-//   loadProducts,
-//   loadProductsDetail,
-// } from '../../feachers/goodsPhoneSlice/productSlice';
 import Loader from '../Loader/Spiner';
 import { Pagination } from '../Pangination/Pangination';
 import { Sort, getSortedProducts } from '../../functions/sorted';

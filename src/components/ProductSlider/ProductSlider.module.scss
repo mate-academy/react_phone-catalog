@@ -133,9 +133,14 @@
 
 
 @media (min-width: 640px) and (max-width: 1199px) {
-  .sliderWraper {
-   max-width: 685px;
+
+  .swiper {
+    width: 100%;
   }
+
+  // .sliderWraper {
+  //  max-width: 685px;
+  // }
 
   .sectionGoods {
     width: 100%;
@@ -159,12 +164,36 @@
     overflow-x: hidden;
     flex-shrink: 0;
   }
+}
 
+@media (min-width: 640px) and (max-width: 750px) {
+  .sliderWraper {
+    max-width: 600px;
+   }
 
-  .swiperSlide, .swiper-wrapper {
-    overflow-x: hidden;
-    flex-shrink: 0;
-  }
+   .sectionGoods {
+    padding-left: 22px;
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 16px;
+     margin: 80px 0;
+   }
+
+   .productsCard {
+     width: 100%;
+     padding: 15px 0;
+     display: flex;
+     flex-wrap: nowrap;
+     margin: 0;
+     overflow-x: hidden;
+     flex-shrink: 0;
+   }
+
+   .swiperSlide {
+     overflow-x: hidden;
+     flex-shrink: 0;
+   }
 }
 
 @media (min-width:320px) and (max-width: 639px) {

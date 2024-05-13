@@ -312,7 +312,11 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
                     </div>
                     <ul className={styles.colorsList}>
                       {product?.colorsAvailable.map(color => (
-                        <NavLink key={color} to={`/${type}/${product.id}`}>
+                        <NavLink
+                          replace
+                          key={color}
+                          to={`/${type}/${product.id}`}
+                        >
                           <div
                             className={
                               product.color === colors[color]

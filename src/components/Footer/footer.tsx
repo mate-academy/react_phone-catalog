@@ -23,12 +23,14 @@ export const Footer: React.FC = () => {
         <ul className={styles.footerList}>
           <li className={styles.footerItems}>
             <a
-              href="#"
+              href="https://github.com/Ihor-Prodan"
+              target="_blank"
               className={
                 theme === Theme.light
                   ? styles.footerLink
                   : styles.footerLinkDark
               }
+              rel="noreferrer"
             >
               Github
             </a>
