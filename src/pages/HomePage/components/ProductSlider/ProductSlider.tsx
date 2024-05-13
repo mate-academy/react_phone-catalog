@@ -45,23 +45,39 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
           <nav className="slider-top__nav">
             <button
               className="arrow-button"
+              disabled={activeSlide === 0}
               onClick={() =>
                 setActiveSlide((currentSlide: number) => {
                   return currentSlide > 0 ? currentSlide - 1 : 7;
                 })
               }
             >
-              <img src="./icons/arrow-left.svg" alt="left arrow icon" />
+              <img
+                src={
+                  activeSlide === 0
+                    ? './icons/arrow-left-disabled.svg'
+                    : './icons/arrow-left.svg'
+                }
+                alt="left arrow icon"
+              />
             </button>
             <button
               className="arrow-button"
+              disabled={activeSlide === 7}
               onClick={() =>
                 setActiveSlide((currentSlide: number) => {
                   return currentSlide < 7 ? currentSlide + 1 : 0;
                 })
               }
             >
-              <img src="./icons/arrow-right.svg" alt="right arrow icon" />
+              <img
+                src={
+                  activeSlide === 7
+                    ? './icons/arrow-right-disabled.svg'
+                    : './icons/arrow-right.svg'
+                }
+                alt="right arrow icon"
+              />
             </button>
           </nav>
         </div>
@@ -69,9 +85,11 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
           <span className="cards__container">
             <ProductCard hasDiscount={hasDiscount} product={currentProduct} />
           </span>
-          <span className="cards__container">
-            <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
-          </span>
+          {activeSlide < 7 && (
+            <span className="cards__container">
+              <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
+            </span>
+          )}
         </div>
       </div>
     )

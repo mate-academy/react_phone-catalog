@@ -40,6 +40,10 @@
   height: 32px;
   background-color: transparent;
   border: 1px solid #b4bdc3;
+
+  &--disabled {
+    border: 1px solid $color-elements;
+  }
 }
 
 .cards {
