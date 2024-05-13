@@ -125,8 +125,11 @@
     height: 50px;
     width: 50px;
     display: flex;
+    justify-content: center;
+    align-items: center;
     cursor: pointer;
     border: 1px solid #C4C4C4;
+    padding: 0;
 
     @include on-tablet {
       width: 35px;
@@ -151,7 +154,6 @@
     object-fit: contain;
     height: 40px;
     width: 40px;
-    align-self: center;
 
     @include on-tablet {
       width: 28px;
