@@ -9,15 +9,29 @@ import { Pagination } from '../../components/Pagination/Pagination';
 import { NavPages } from '../../components/NavPages/NavPages';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
+import { useAppSelector } from '../../app/hooks';
 
-interface Props {
-  products: Product[],
-  title: string
-}
-
-export const Phones: React.FC<Props> = ({ products, title }) => {
+export const Phones: React.FC = () => {
   const [page, setPage] = useState(1);
   const searchParams = new URLSearchParams(useLocation().search);
+  let { products } = useAppSelector(state => state.phones);
+  let title = 'Mobile phones';
+
+  switch (useLocation().pathname) {
+    case '/phones':
+      products = products.filter(product => product.type === 'phone');
+      break;
+    case '/tablets':
+      title = 'Tablets';
+      products = products.filter(product => product.type === 'tablet');
+      break;
+    case '/accessories':
+      title = 'Accessories';
+      products = products.filter(product => product.type === 'accessory');
+      break;
+    default:
+      break;
+  }
 
   const navigate = useNavigate();
   const sortItems = searchParams.get('sortItems') || '';

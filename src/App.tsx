@@ -1,93 +1,52 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './App.scss';
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
-import { getAllDevice } from './api/api';
-import { Product } from './type';
 import { Phones } from './pages/Phones/Phones';
 import { Cart } from './pages/Cart/Cart';
 import { Favourites } from './pages/Favourites/Favourites';
 import { Basket } from './pages/Basket/Basket';
+import { phonesAsync } from './features/phonesSlice/phonesSlice';
+import { useAppDispatch } from './app/hooks';
 
 const App: React.FC = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  const fetchProducts = async () => {
-    try {
-      let productsFromServer = await getAllDevice();
-
-      productsFromServer = productsFromServer.map((product: Product) => ({
-        ...product,
-        newPrice: product.price - ((product.price / 100) * product.discount),
-      }));
-
-      setProducts(productsFromServer);
-    } catch {
-      Promise.reject(new Error('error'));
-    }
-  };
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
-    fetchProducts();
+    dispatch(phonesAsync());
   }, []);
 
   return (
     <div className="wrapper">
       <Routes>
-        <Route path="/" element={<HomePage products={products} />} />
+        <Route path="/" element={<HomePage />} />
         <Route
           path="/phones"
-          element={(
-            <Phones
-              products={products
-                .filter(product => product.type === 'phone')}
-              title="Mobile phones"
-            />
-          )}
+          element={(<Phones />)}
         />
         <Route
           path="/phones/*"
-          element={(
-            <Cart products={products
-              .filter(product => product.type === 'phone')}
-            />
-          )}
+          element={(<Cart />)}
         />
         <Route
           path="/tablets"
-          element={(
-            <Phones
-              products={products
-                .filter(product => product.type === 'tablet')}
-              title="Tablets"
-            />
-          )}
+          element={(<Phones />)}
         />
         <Route
           path="/tablets/*"
-          element={(
-            <Cart products={products
-              .filter(product => product.type === 'tablet')}
-            />
-          )}
+          element={(<Cart />)}
         />
         <Route
           path="/accessories/"
-          element={(
-            <Phones
-              products={products
-                .filter(product => product.type === 'accessory')}
-              title="Accessories"
-            />
-          )}
+          element={(<Phones />)}
         />
         <Route
           path="/accessories/*"
-          element={<Cart products={[]} />}
+          element={<Cart />}
         />
         <Route
           path="/favourites"
-          element={<Favourites products={products} />}
+          element={<Favourites />}
         />
         <Route
           path="/cart"

@@ -2,13 +2,11 @@ import React from 'react';
 import '../../../container.scss';
 import './Category.scss';
 import { NavLink } from 'react-router-dom';
-import { Product } from '../../../type';
+import { useAppSelector } from '../../../app/hooks';
 
-interface Props {
-  products: Product[],
-}
+export const Category: React.FC = () => {
+  const { products } = useAppSelector(state => state.phones);
 
-export const Category: React.FC<Props> = ({ products }) => {
   return (
     <div className="category">
       <h2 className="category__title">Shop by category</h2>

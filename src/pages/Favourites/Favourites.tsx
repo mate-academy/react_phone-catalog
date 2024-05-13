@@ -1,20 +1,17 @@
 import React, { useMemo } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Product } from '../../type';
 import '../../container.scss';
 import { NavPages } from '../../components/NavPages/NavPages';
 import { PricesPhone } from '../../helpers/PricesPhone/PricesPhone';
 import './Favourites.scss';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
+import { useAppSelector } from '../../app/hooks';
 
-type Props = {
-  products: Product[]
-};
-
-export const Favourites: React.FC<Props> = ({ products }) => {
+export const Favourites: React.FC = () => {
   const searchParams = new URLSearchParams(useLocation().search);
   const searchInput = searchParams.get('searchInput') || '';
+  const { products } = useAppSelector(state => state.phones);
   let visibleProducts = useMemo(() => {
     return products.filter(product => {
       const favourites = localStorage

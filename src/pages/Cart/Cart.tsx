@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { getDevice } from '../../api/api';
-import { Device, Product } from '../../type';
+import { Device } from '../../type';
 import '../../container.scss';
 import '../../styles/styles.scss';
 import './Cart.scss';
@@ -14,16 +14,14 @@ import { FavouritesButton } from
 import { Back } from '../../components/Back/Back';
 import { Header } from '../../components/Header/Header';
 import { Footer } from '../../components/Footer/Footer';
+import { useAppSelector } from '../../app/hooks';
 
-interface Props {
-  products: Product[]
-}
-
-export const Cart: React.FC<Props> = ({ products }) => {
+export const Cart: React.FC = () => {
   const params = useParams()['*'] || '';
   const [productInf, setProductInf] = useState<Device>();
   const location = useLocation();
   const pathname = location.pathname.split('/');
+  const { products } = useAppSelector(state => state.phones);
   const productCart = products.find(product => product.id === pathname[2]);
   const [imageCart, setImage] = useState(productCart?.imageUrl);
 
@@ -156,7 +154,7 @@ export const Cart: React.FC<Props> = ({ products }) => {
               </div>
             </div>
           </div>
-          <SliderProducts products={products} title="You may also like" />
+          <SliderProducts title="You may also like" />
         </div>
       </main>
       <Footer />

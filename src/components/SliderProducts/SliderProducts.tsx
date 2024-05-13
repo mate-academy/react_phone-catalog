@@ -1,16 +1,25 @@
 import React, { useState } from 'react';
 import classNames from 'classnames/bind';
-import { Product } from '../../type';
 import { PricesPhone } from '../../helpers/PricesPhone/PricesPhone';
 import './SliderProducts.scss';
+import { useAppSelector } from '../../app/hooks';
 
-interface Props {
-  title: string,
-  products: Product[],
-}
+interface Props {title: string}
 
-export const SliderProducts: React.FC<Props> = ({ title, products }) => {
+export const SliderProducts: React.FC<Props> = ({ title }) => {
   const [firstElem, setFirstElem] = useState(0);
+  let { products } = useAppSelector(state => state.phones);
+
+  switch (title) {
+    case 'Hot prices':
+      products = products.filter(product => product.discount !== 0);
+      break;
+    case 'Brand new models':
+      products = products.filter(product => product.age <= 6);
+      break;
+    default:
+      break;
+  }
 
   return (
     <section className="slider">
