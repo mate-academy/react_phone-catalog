@@ -8,12 +8,6 @@ export const PicturesSlider = () => {
   const iconSrc = './icons/slider-icon.svg';
   const activeIconSrc = './icons/slider-icon-active.svg';
 
-  // const slidePictures: string[] = [
-  //   './img/banner-mobile-new-iphone.jpeg',
-  //   './img/banner-iphone-15.png',
-  //   './img/banner-ipad.png',
-  // ];
-
   const bannerClass = useMemo(
     () => classNames('banner', `banner--${activeTab}`),
     [activeTab],

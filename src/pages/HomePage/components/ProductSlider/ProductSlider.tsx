@@ -1,4 +1,3 @@
-// import newPhonesFromApi from '../../../../../public/api/phones.json';
 import { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../../types/Product';
@@ -19,11 +18,6 @@ export const ProductSlider: React.FC = () => {
         setProducts(productsFromApi.reverse().slice(0, 8)),
     );
   }, []);
-
-  // // eslint-disable-next-line no-console
-  // console.log(products[0]);
-
-  // const parsedPhones: Product[] = JSON.parse(newPhones);
 
   return (
     products.length > 0 && (

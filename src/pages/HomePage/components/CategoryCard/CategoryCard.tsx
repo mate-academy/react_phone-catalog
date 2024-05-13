@@ -1,4 +1,3 @@
-// import { CategoryImage } from '../CategoryImage/CategoryImage';
 import './CategoryCard.scss';
 
 type Props = {
