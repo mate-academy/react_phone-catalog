@@ -1,0 +1,14 @@
+.category-image {
+  background-color: #8d8d92;
+  overflow: hidden;
+  padding-top: 20px;
+  padding-left: 20px;
+  width: 100%;
+  height: 100%;
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

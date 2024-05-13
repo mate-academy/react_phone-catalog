@@ -4,8 +4,9 @@
 .product-slider {
   @include grid;
 
+  grid-template-rows: 62px;
+
   row-gap: 24px;
-  padding-top: 32px;
   overflow: hidden;
 
   &__top {

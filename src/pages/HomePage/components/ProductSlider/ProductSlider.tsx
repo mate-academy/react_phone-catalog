@@ -2,7 +2,8 @@
 import { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../../types/Product';
-import { getProducts } from '../../../../helpers/getProducts';
+import { ProductCategories } from '../../../../types/ProductCategories';
+import { getProductsByCategory } from '../../../../helpers/getProducts';
 import './ProductSlider.scss';
 
 export const ProductSlider: React.FC = () => {
@@ -13,8 +14,9 @@ export const ProductSlider: React.FC = () => {
   const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
 
   useEffect(() => {
-    getProducts().then((productsFromApi: Product[]) =>
-      setProducts(productsFromApi.reverse().slice(0, 8)),
+    getProductsByCategory(ProductCategories.Products).then(
+      (productsFromApi: Product[]) =>
+        setProducts(productsFromApi.reverse().slice(0, 8)),
     );
   }, []);
 
@@ -25,7 +27,7 @@ export const ProductSlider: React.FC = () => {
 
   return (
     products.length > 0 && (
-      <section className="product-slider">
+      <div className="product-slider">
         <div className="slider-top product-slider__top">
           <h2 className="slider-top__title">Brand new models</h2>
           <nav className="slider-top__nav">
@@ -59,7 +61,7 @@ export const ProductSlider: React.FC = () => {
             <ProductCard product={nextProduct} />
           </span>
         </div>
-      </section>
+      </div>
     )
   );
 };

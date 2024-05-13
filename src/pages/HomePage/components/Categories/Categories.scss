@@ -1,0 +1,13 @@
+@use '../../../../utils/mixins' as *;
+@use '../../../../utils/variables' as *;
+
+.categories {
+  @include grid;
+
+  grid-template-rows: 363px;
+  row-gap: 32px;
+
+  &__category-wrapper {
+    grid-column: 1 / 5;
+  }
+}
