@@ -13,4 +13,5 @@ export type Products = {
   image: string;
   fullPrice: number;
   category: string;
+  itemId: string;
 };

@@ -6,7 +6,7 @@
   &__location {
     display: flex;
     gap: 8px;
-    align-items: end;
+    align-items: flex-end;
     margin-bottom: 24px;
 
     @include onTablet {
@@ -29,10 +29,11 @@
     font-size: 12px;
     line-height: 15px;
     color: $border-button-color;
-    align-items: end;
+    align-items: flex-end;
   }
 
   &__home__img {
+    // eslint-disable-next-line 
     height: 16px;
     width: 16px;
     background-image: url('../../../shared/img/Home.svg');

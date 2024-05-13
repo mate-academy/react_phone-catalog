@@ -5,32 +5,26 @@ import { ProductCard } from '../ProductCard';
 import { ProductsSlider } from '../ProductsSlider/ProductsSlider';
 
 export const BrandNew = () => {
-  const { products: hotPrice } = useAppSelector(state => state.product);
   const [sliderWidht, setSliderWidht] = useState(0);
   const [countProduct, setCountProduct] = useState(0);
-  const { products: product } = useAppSelector(state => state.product);
-  // const chosenSort = true;
+  const { phones } = useAppSelector(state => state.product);
+  const widthContent = document.getElementById('phone')?.offsetWidth;
+
   const sliderRight = () => {
-    if (sliderWidht === 0) {
-      setSliderWidht(272 + 16);
+    if (sliderWidht === 0 && widthContent) {
+      setSliderWidht(widthContent + 16);
       setCountProduct(2);
     } else {
-      if (countProduct <= hotPrice.length) {
-        setSliderWidht(carentValue => carentValue + 272 + 16);
+      if (countProduct <= phones.length && widthContent) {
+        setSliderWidht(carentValue => carentValue + widthContent + 16);
         setCountProduct(carentValue => carentValue + 1);
       }
     }
   };
 
-  // const r = document.querySelector('#phoneWidth')
-  // const n = r.offsetWidth;
-
-  // console.log(n)
-
   const sliderLeft = () => {
-    if (sliderWidht >= 100) {
-      setSliderWidht(carentValue => carentValue - (272 + 16));
-
+    if (sliderWidht >= 100 && widthContent) {
+      setSliderWidht(carentValue => carentValue - (widthContent + 16));
       setCountProduct(carentValue => carentValue - 1);
     }
 
@@ -52,8 +46,8 @@ export const BrandNew = () => {
           className={style.product__cart}
           style={{ transform: `translateX(-${sliderWidht}px)` }}
         >
-          {product.map(phone => (
-            <div key={phone.id} className={style.product__phone}>
+          {phones.map(phone => (
+            <div key={phone.id} className={style.product__phone} id="phone">
               <ProductCard phone={phone} />
             </div>
           ))}

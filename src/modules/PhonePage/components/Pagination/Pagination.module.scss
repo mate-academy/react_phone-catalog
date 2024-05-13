@@ -2,14 +2,29 @@
 
 .pagination {
   display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__container {
+    display: flex;
+    // width: 248px;
+    overflow: hidden;
+
+  }
 }
 
 .arrow {
-  width: 32px;
+  min-width: 32px;
   height: 32px;
   border: 1px solid $border-button-color;
   background-repeat: no-repeat;
   background-position: center;
+  cursor: pointer;
+  background-color: inherit;
+
+  &:hover {
+    border-color: $border-button-color-hover;
+  }
 
   &__left {
     background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
@@ -18,4 +33,42 @@
   &__right {
     background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
   }
+}
+
+.nav {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  width: 152px;
+  transition: all 0.3s;
+
+
+  &__item {
+    list-style: none;
+    min-width: 32px;
+    height: 32px;
+    border: 1px solid $color-gray;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $border-button-color-hover;
+    }
+  }
+
+  &__link {
+    color: #000;
+    border: none;
+    background-color: inherit;
+  }
+}
+
+.is__active {
+  background-color: $border-button-color-hover;
+}
+
+.button__disablet {
+  border-color: $color-gray;
 }

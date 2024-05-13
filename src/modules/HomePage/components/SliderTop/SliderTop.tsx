@@ -10,18 +10,21 @@ enum AdjustmentImg {
 
 export const SliderTop = () => {
   const [sliderWidht, setSliderWidht] = useState(0);
+  const widthImg = document.getElementById('widthImgId')?.offsetWidth;
 
   const nextSlider = () => {
     if (sliderWidht === 2100) {
       setSliderWidht(0);
     } else {
-      setSliderWidht(carentValue => carentValue + 1040 + 10);
+      if (widthImg) {
+        setSliderWidht(carentValue => carentValue + widthImg);
+      }
     }
   };
 
   const backSlider = () => {
-    if (sliderWidht > 0) {
-      setSliderWidht(carentValue => carentValue - 1040 - 10);
+    if (sliderWidht > 0 && widthImg) {
+      setSliderWidht(carentValue => carentValue - widthImg);
     }
   };
 
@@ -41,6 +44,7 @@ export const SliderTop = () => {
             className={style.slider__gallery}
           >
             <div
+              id="widthImgId"
               className={`${style.slider__photo}
                 ${style.slider__banner}`}
             ></div>

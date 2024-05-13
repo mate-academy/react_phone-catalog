@@ -14,6 +14,7 @@ import { NotFoundPage } from './modules/HomePage/components/NotFoundPage/NotFoun
 import { TabletsPage } from './modules/TabletsPage/components/TabletsPage';
 // eslint-disable-next-line max-len
 import { AccessoriesPage } from './modules/AccessoriesPage/AccessoriesPage/components/AccessoriesPage';
+import { ProductDetailsPage } from './modules/shared/ProductDetailsPage';
 
 export const Root = () => (
   <HashRouter>
@@ -25,6 +26,18 @@ export const Root = () => (
           <Route path="phones" element={<PhonePage />} />
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
+
+          <Route path="/phones">
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="/tablets">
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
+
+          <Route path="/accessories">
+            <Route path=":productId" element={<ProductDetailsPage />} />
+          </Route>
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />

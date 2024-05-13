@@ -14,8 +14,7 @@ const usePagination = () => {
     const dividePage = search
       .split('&')
       .filter(item => item.includes('perPage'))[0]
-      .slice(9);
-
+      .split('=')[1];
     const arryOnPage = [];
 
     for (let i = 0; i < Math.ceil(sortProducts.length / +dividePage); i++) {

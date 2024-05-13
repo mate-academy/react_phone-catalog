@@ -1,7 +1,8 @@
 import { Products } from '../types/Product';
+import { ProductDetails } from '../types/ProductDetails';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'https://mukutiuk.github.io/react_phone-catalog/api';
+const BASE_URL = 'https://mukutiuk.github.io/react_phone-catalog/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -41,4 +42,16 @@ export const client = {
 
 export const getProduct = () => {
   return client.get<Products[]>('products.json');
+};
+
+export const getPhoneDetails = () => {
+  return client.get<ProductDetails[]>(`phones.json`);
+};
+
+export const getTabletsDetails = () => {
+  return client.get<ProductDetails[]>(`tablets.json`);
+};
+
+export const getAccessoriesDetails = () => {
+  return client.get<ProductDetails[]>(`accessories.json`);
 };

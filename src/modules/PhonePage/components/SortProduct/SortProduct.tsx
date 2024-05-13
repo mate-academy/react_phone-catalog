@@ -12,10 +12,8 @@ export const SortProduct: React.FC<Props> = () => {
 
   const { pageLocation } = usePageLocation();
   const { filterProduct } = useFilterProducts();
-
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
-
   const chooseSort = (value: string) => {
     switch (value) {
       case 'Newest':
@@ -47,8 +45,10 @@ export const SortProduct: React.FC<Props> = () => {
 
     if (e.currentTarget.innerText === 'All') {
       params.delete('perPage');
+      params.delete('page');
     } else {
       params.set('perPage', e.currentTarget.innerText);
+      params.set('page', '1');
     }
 
     setSearchParams(params);
@@ -102,7 +102,7 @@ export const SortProduct: React.FC<Props> = () => {
         </div>
 
         <div className={styles.search__product}>
-          <span className={styles.search__product}>SItems on page</span>
+          <span className={styles.search__product}>Items on page</span>
           <button
             className={styles.search__by}
             onBlur={() => setIsOpenButtonPage(false)}

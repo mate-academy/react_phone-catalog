@@ -1,7 +1,7 @@
 import { configureStore } from '@reduxjs/toolkit';
-import productReducer, { ProductsState } from '../features/ProductSlice';
+import productReducer, { ProductState } from '../features/ProductSlice';
 interface Store {
-  product: ProductsState;
+  product: ProductState;
 }
 export const store = configureStore<Store>({
   reducer: {

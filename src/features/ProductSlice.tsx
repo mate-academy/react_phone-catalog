@@ -1,34 +1,79 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { Products } from '../types/Product';
-import { getProduct } from '../utils/fetchClient';
+import {
+  getAccessoriesDetails,
+  getPhoneDetails,
+  getProduct,
+  getTabletsDetails,
+} from '../utils/fetchClient';
+import { ProductDetails } from '../types/ProductDetails';
 
-export interface ProductsState {
+export interface ProductState {
   products: Products[];
   phones: Products[];
   tablets: Products[];
   accessories: Products[];
+  deteils: ProductDetails[];
+  productDetails: ProductDetails | null;
+  loading: boolean;
+  error: boolean;
 }
 
 export const fetchProduct = createAsyncThunk('product/fetch', () => {
   return getProduct();
 });
 
-const initialState: ProductsState = {
+export const fetchDetailsPhone = createAsyncThunk('phone/details', () => {
+  return getPhoneDetails();
+});
+
+export const fetchDetailsTablet = createAsyncThunk('tablets/details', () => {
+  return getTabletsDetails();
+});
+
+export const fetchDetailsAccessories = createAsyncThunk(
+  'accessories/details',
+  () => {
+    return getAccessoriesDetails();
+  },
+);
+
+const initialState: ProductState = {
   products: [],
   phones: [],
   tablets: [],
   accessories: [],
+  deteils: [],
+  productDetails: null,
+  loading: false,
+  error: false,
 };
 
-export const hotPricesState = createSlice({
+export const ProductsState = createSlice({
   name: 'products',
   initialState,
-  reducers: {},
+  reducers: {
+    productDetails: (state, action) => {
+      return {
+        ...state,
+        productDetails: action.payload,
+      };
+    },
+  },
 
   extraReducers: builder => {
+    builder.addCase(fetchProduct.pending, state => {
+      return {
+        ...state,
+        loading: true,
+        error: false,
+      };
+    });
+
     builder.addCase(fetchProduct.fulfilled, (state, action) => {
       return {
         ...state,
+        loading: false,
         products: action.payload,
         phones: action.payload.filter(phone => phone.category === 'phones'),
         tablets: action.payload.filter(tablet => tablet.category === 'tablets'),
@@ -37,7 +82,51 @@ export const hotPricesState = createSlice({
         ),
       };
     });
+
+    builder.addCase(fetchProduct.rejected, state => {
+      return {
+        ...state,
+        loading: false,
+        error: true,
+      };
+    });
+
+    builder.addCase(fetchDetailsPhone.fulfilled, (state, action) => {
+      return {
+        ...state,
+        deteils: action.payload,
+      };
+    });
+
+    builder.addCase(fetchDetailsTablet.fulfilled, (state, action) => {
+      return {
+        ...state,
+        deteils: action.payload,
+      };
+    });
+
+    builder.addCase(fetchDetailsAccessories.pending, state => {
+      return {
+        ...state,
+        error: false,
+      };
+    });
+
+    builder.addCase(fetchDetailsAccessories.fulfilled, (state, action) => {
+      return {
+        ...state,
+        deteils: action.payload,
+      };
+    });
+
+    builder.addCase(fetchDetailsAccessories.rejected, state => {
+      return {
+        ...state,
+        error: true,
+      };
+    });
   },
 });
 
-export default hotPricesState.reducer;
+export default ProductsState.reducer;
+export const { productDetails } = ProductsState.actions;

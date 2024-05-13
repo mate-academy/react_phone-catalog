@@ -1,15 +1,84 @@
+import { useSearchParams } from 'react-router-dom';
+import usePagination from '../../../shared/hooks/usePagination';
 import styles from './Pagination.module.scss';
+import classNames from 'classnames';
+import { useMemo } from 'react';
 
 export const Pagination = () => {
+  const { createPageProducts } = usePagination();
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page') || 0;
+
+  const handlChangPage = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', e.currentTarget.innerText);
+    setSearchParams(params);
+  };
+
+  const nextPage = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', (+page + 1).toString());
+    setSearchParams(params);
+  };
+
+  const previousPege = () => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('page', (+page - 1).toString());
+    setSearchParams(params);
+  };
+
+  const turnPagination = useMemo(() => {
+    if (+page % 2 !== 0) {
+      return;
+    }
+
+    if (+page >= createPageProducts.length - 1) {
+      return;
+    }
+
+    return +page * 40 - 80;
+  }, [page]);
+
+  const stateButtonLeft = +page === 1;
+  const stateButtonRight = +page === createPageProducts.length;
+
   return (
     <div className={styles.pagination}>
-      <div className={`${styles.arrow} ${styles.arrow__left}`}></div>
-      <ul>
-        <li>
-          <a href=""></a>
-        </li>
-      </ul>
-      <div className={`${styles.arrow} ${styles.arrow__right}`}></div>
+      <button
+        disabled={stateButtonLeft}
+        className={classNames(`${styles.arrow} ${styles.arrow__left}`, {
+          [styles.button__disablet]: stateButtonLeft,
+        })}
+        onClick={previousPege}
+      ></button>
+      <div className={styles.pagination__container}>
+        <ul
+          className={styles.nav}
+          style={{ transform: `translateX(-${turnPagination}px)` }}
+        >
+          {createPageProducts.map((_, index) => (
+            <li
+              key={index}
+              className={classNames(styles.nav__item, {
+                [styles.is__active]: +page === index + 1,
+              })}
+              onClick={handlChangPage}
+            >
+              <button className={styles.nav__link}>{index + 1}</button>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <button
+        disabled={stateButtonRight}
+        className={classNames(`${styles.arrow} ${styles.arrow__right}`, {
+          [styles.button__disablet]: stateButtonRight,
+        })}
+        onClick={nextPage}
+      ></button>
     </div>
   );
 };
