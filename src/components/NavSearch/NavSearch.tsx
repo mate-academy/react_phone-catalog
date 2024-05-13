@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './NavSearch.scss';
 
 export const NavSearch = () => {
   const [query, setQueary] = useState('');
@@ -11,7 +12,7 @@ export const NavSearch = () => {
       type="search"
       className="search"
       value={query}
-      placeholder={'Search'}
+      placeholder={'Search...'}
       onChange={handleSearch}
     />
   );

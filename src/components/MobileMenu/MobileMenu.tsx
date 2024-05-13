@@ -1,15 +1,25 @@
+import React from 'react';
 import { PurchaseNavButtons } from '../Elements/PurchaseNavButtons';
 import { Logo } from '../Logo';
 import { Navigation } from '../Navigation/Navigation';
 import './MobileMenu.scss';
+import classNames from 'classnames';
 
-export const MobileMenu = () => {
+type Props = {
+  isOpen: boolean;
+  handleClose: () => void;
+};
+
+export const MobileMenu: React.FC<Props> = ({ isOpen, handleClose }) => {
   return (
-    // <aside className="menu menu--open">
-    <aside className="menu">
+    <aside
+      className={classNames('menu', {
+        'menu--open': isOpen,
+      })}
+    >
       <div className="menu__top">
         <Logo />
-        <button className="button-square" onClick={() => {}}>
+        <button className="button-square" onClick={handleClose}>
           <div className="icon icon--close"></div>
         </button>
       </div>

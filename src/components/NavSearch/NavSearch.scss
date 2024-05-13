@@ -1,0 +1,18 @@
+@import '../../styles/utils';
+
+.search {
+  font-family: Mont, sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  border: none;
+  border-bottom: 1px solid $color-secondary;
+
+  @include on-desktop {
+    width: 200px;
+  }
+
+  &::placeholder {
+    color: $color-icons;
+    transition: color 0.3s ease-in-out;
+  }
+}

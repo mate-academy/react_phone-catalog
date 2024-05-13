@@ -34,12 +34,12 @@
   border: none;
   background-color: inherit;
   height: 48px;
-  width: 48px;
+  min-width: 48px;
   cursor: pointer;
 
   @include on-desktop {
     height: 64px;
-    width: 64px;
+    min-width: 64px;
   }
 
   &--mobile {

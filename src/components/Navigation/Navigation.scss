@@ -66,3 +66,10 @@
     }
   }
 }
+
+.active {
+  color: $color-primary;
+  &::after {
+    transform: scale(1);
+  }
+}

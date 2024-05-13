@@ -14,7 +14,7 @@ export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
           pathname: '/favourites',
         }}
         // state={{ from: location.pathname }}
-        className="purchases__button"
+        className="button-square"
       >
         <div className="icon icon--favourite">
           <div className="counter">{1}</div>
@@ -25,7 +25,7 @@ export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
           pathname: '/cart',
         }}
         // state={{ from: location.pathname }}
-        className="purchases__button"
+        className="button-square"
       >
         <div className="icon icon--cart">
           <div className="counter">{1}</div>

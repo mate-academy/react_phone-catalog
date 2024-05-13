@@ -1,25 +1,16 @@
 @import '../../../styles/utils';
 
 .purchases {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
+  display: none;
+  grid-template-columns: 1fr 1fr;
   box-shadow: 0 -1px 0 0 $color-element;
 
-  &__button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
-    box-shadow: -1px 0 0 0 $color-element;
-    height: 48px;
-    min-width: 48px;
-    cursor: pointer;
+  @include on-tablet {
+    display: grid;
+  }
 
-    @include on-desktop {
-      height: 64px;
-      min-width: 64px;
-    }
+  &--mobile {
+    display: grid;
   }
 }
 
