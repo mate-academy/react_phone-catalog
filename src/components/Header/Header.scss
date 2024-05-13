@@ -7,8 +7,28 @@
 .header {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   box-shadow: 0 1px 0 0 $color-element;
-  padding-left: 16px;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
 }
 
 // .header {

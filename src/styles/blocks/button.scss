@@ -26,6 +26,29 @@
   }
 }
 
+.button-square {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 $color-element;
+  border: none;
+  background-color: inherit;
+  height: 48px;
+  width: 48px;
+  cursor: pointer;
+
+  @include on-desktop {
+    height: 64px;
+    width: 64px;
+  }
+
+  &--mobile {
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
 // .button-slider {
 //   width: 32px;
 //   height: 32px;
