@@ -1,0 +1,100 @@
+@import "../styles/utils/variables";
+
+.icon {
+  display: block;
+  background-position: center;
+  background-repeat: no-repeat;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  &--favourites {
+    background-image: url(../images/icons/Favourites.svg);
+  }
+
+  &--favourites-active {
+    background-image: url(../images/icons/ActiveFavourite.svg);
+  }
+
+  &--search {
+    background-image: url(../images/icons/Search.svg);
+  }
+
+  &--cart {
+    background-image: url(../images/icons/Cart.svg);
+  }
+
+  &--up {
+    background-image: url(../images/icons/ButtonUp.svg);
+  }
+
+  &--left {
+    background-image: url(../images/icons/ButtonLeft.svg);
+    padding: 8px;
+    border: 1px solid $icons-gray;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  &--disabled-left {
+    cursor: default;
+    border: 1px solid $elements-gray;
+    background-image: url(../images/icons/DisabledLeft.svg);
+  }
+
+  &--right {
+    background-image: url(../images/icons/ButtonRight.svg);
+    padding: 8px;
+    border: 1px solid $icons-gray;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  &--disabled-right {
+    cursor: default;
+    border: 1px solid $elements-gray;
+    background-image: url(../images/icons/DisabledRight.svg);
+  }
+
+  &--home {
+    background-image: url(../images/icons/Home.svg);
+  }
+
+  &--close {
+    background-image: url(../images/icons/Close.svg);
+  }
+
+  &--minus {
+    border: 1px solid $elements-gray;
+    background-image: url(../images/icons/Minus.svg);
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  &--disabled-minus {
+    cursor: default;
+    border: 1px solid $elements-gray;
+
+    &:hover {
+      border-color: $elements-gray;
+    }
+  }
+
+  &--plus {
+    border: 1px solid $elements-gray;
+    background-image: url(../images/icons/Plus.svg);
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+  }
+
+  &--menu {
+    background-image: url(../images/icons/Menu.svg);
+  }
+}

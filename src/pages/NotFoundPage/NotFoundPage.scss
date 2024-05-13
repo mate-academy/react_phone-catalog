@@ -1,0 +1,42 @@
+@import '../../styles/index';
+
+.not-found {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-top: 80px;
+
+  &__message {
+    color: $primary-gray;
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+  }
+
+  &__text {
+    color: $secondary-gray;
+    font-size: 20px;
+    font-weight: 600;
+    text-align: center;
+  }
+
+  &__link {
+    color: #ee9191;
+    text-decoration: none;
+    padding: 5px;
+
+    &:hover {
+      color: $red;
+    }
+  }
+
+  &__image {
+    width: 300px;
+
+    @include on-tablet {
+      width: 400px;
+    }
+  }
+}

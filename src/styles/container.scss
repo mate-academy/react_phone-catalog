@@ -1,0 +1,19 @@
+@import '../styles/utils/mixins';
+
+.container {
+  margin: 0 auto;
+  padding-inline: 16px;
+  min-width: 320px;
+  box-sizing: border-box;
+  overflow: hidden;
+
+  @include on-tablet {
+    min-width: 640px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    width: 1200px;
+    padding-inline: 32px;
+  }
+}
