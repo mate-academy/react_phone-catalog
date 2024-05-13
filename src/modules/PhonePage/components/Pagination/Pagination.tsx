@@ -40,7 +40,7 @@ export const Pagination = () => {
     }
 
     return +page * 40 - 80;
-  }, [page]);
+  }, [page, createPageProducts]);
 
   const stateButtonLeft = +page === 1;
   const stateButtonRight = +page === createPageProducts.length;

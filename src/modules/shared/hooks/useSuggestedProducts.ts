@@ -21,7 +21,7 @@ const useSuggestedProducts = () => {
     }
 
     return product;
-  }, []);
+  }, [products]);
 
   return { getSuggestedProducts };
 };

@@ -74,8 +74,6 @@ export const ProductDetails = () => {
     const id = changeId(capasity);
     const newProduct = deteils.find(product => product.id === id);
 
-    console.log(newProduct);
-
     dispath(actionProduct.productDetails(newProduct));
   };
 
@@ -87,13 +85,10 @@ export const ProductDetails = () => {
           <div className={styles.product__main}>
             <div className={styles.product__slider}>
               {productDetails?.images.map((img, index) => (
-                <a onClick={(e) => choosePhoto(e, index)}
-                  href=""
-                  key={index}
-                >
+                <a onClick={e => choosePhoto(e, index)} href="" key={index}>
                   <img
                     className={classNames(styles.product__img, {
-                      [styles.product__img__active] : borderImg === index
+                      [styles.product__img__active]: borderImg === index,
                     })}
                     src={img}
                     alt="img"
@@ -103,37 +98,38 @@ export const ProductDetails = () => {
             </div>
 
             <div className={styles.product__content}>
-              <div
-                className={styles.product__container__img}
-              >
+              <div className={styles.product__container__img}>
                 <div
                   className={styles.product__translate}
-                  style={{transform: `translateX(-${widthSlider}px)`}}
+                  style={{ transform: `translateX(-${widthSlider}px)` }}
                 >
                   {productDetails?.images.map(item => (
                     <img
                       key={item}
-                      id='widthPicture'
+                      id="widthPicture"
                       className={styles.product__picture}
                       src={item}
-                      alt="Phone" />
+                      alt="Phone"
+                    />
                   ))}
                 </div>
               </div>
             </div>
-            </div>
-            <div className={styles.product__choose}>
+          </div>
+          <div className={styles.product__choose}>
             <div className={styles.product__position}>
-              <span className={styles.product__text_available}>Available colors</span>
+              <span className={styles.product__text_available}>
+                Available colors
+              </span>
               <span className={styles.product__text_available}>ID: 802390</span>
             </div>
             <div className={styles.product__available}>
               {productDetails?.colorsAvailable.map((item, index) => (
                 <a
-                  onClick={(e) => changeProductByColor(item, e, index)}
+                  onClick={e => changeProductByColor(item, e, index)}
                   href=""
                   key={item}
-                  style={{backgroundColor: `${item}`}}
+                  style={{ backgroundColor: `${item}` }}
                   className={classNames(styles.product__color, {
                     [styles.product__color__active]: indexColor === index,
                   })}
