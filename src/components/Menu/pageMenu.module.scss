@@ -5,6 +5,15 @@
   height: 95vh;
   justify-content: space-between;
   background: #FAFBFC;
+
+  &Dark {
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    height: 95vh;
+    justify-content: space-between;
+    background: #0F1121;
+  }
 }
 
 .nav {
@@ -53,11 +62,48 @@
   }
 }
 
+.navigation__linksDark {
+  position: relative;
+  text-align: center;
+  color: #F1F2F9;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.48px;
+  text-transform: uppercase;
+  text-decoration: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    top: 20px;
+    left: 60%;
+    width: 0;
+    height: 2px;
+    background-color: #F1F2F9;
+    transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
 .buttonsContainer {
   border: 1px solid #E2E6E9;
   max-width: 639px;
   display: flex;
   flex-direction: row;
+
+  &Dark {
+    border: 1px solid #313237;
+    max-width: 639px;
+    display: flex;
+    flex-direction: row;
+  }
 }
 
 .buttonsLink {
@@ -83,6 +129,29 @@
   }
 }
 
+.buttonsLinkDark {
+  position: relative;
+  width: 100%;
+  display: flex;
+  background: #FFF;
+  box-shadow: -1px 0 0 0 #323542;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background-color: #FFF;
+  }
+
+  &:hover::after {
+    width: 100%;
+    left: 0;
+  }
+}
+
 .menuButtons {
   position: relative;
   width: 160px;
@@ -93,6 +162,19 @@
   flex: 1 0 0;
   box-shadow: -1px 0 0 0 #E2E6E9;
   background: #FFF;
+
+  &Dark {
+    position: relative;
+    width: 160px;
+    display: flex;
+    padding: 24px;
+    justify-content: center;
+    align-items: center;
+    flex: 1 0 0;
+    border: transparent;
+    box-shadow: -1px 0 0 0 #323542;
+    background: #0F1121;
+  }
 }
 
 .pageButtonIcon {

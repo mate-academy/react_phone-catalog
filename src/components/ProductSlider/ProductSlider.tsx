@@ -1,6 +1,7 @@
 import React, { useRef } from 'react';
 import styles from './ProductSlider.module.scss';
 import sliderButton from './Pictures/sliderButton.png';
+import sliderButtonDark from './Pictures/sliderButtonDark.png';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
@@ -8,6 +9,7 @@ import Loader from '../Loader/Spiner';
 import { useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../services/enums';
 import { Product } from '../../services/productType';
+import { Theme } from '../../services/theme';
 
 type Props = {
   title: string;
@@ -16,6 +18,7 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
   const load = useAppSelector(state => state.phones.isLoading);
+  const theme = useAppSelector(state => state.theme.theme);
   const swiperRef = useRef<Swiper | null>(null);
 
   const type =
@@ -26,27 +29,43 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
       <div className={styles.sliderWraper}>
         <section className={styles.sectionGoods}>
           <div className={styles.tittleAndButtons}>
-            <h2 className={styles.goodsTitle}>{title}</h2>
+            <h2
+              className={
+                theme === Theme.light
+                  ? styles.goodsTitle
+                  : styles.goodsTitleDark
+              }
+            >
+              {title}
+            </h2>
             <div className={styles.buttonsContainer}>
               <button
-                className={styles.buttonLeft}
+                className={
+                  theme === Theme.light
+                    ? styles.buttonLeft
+                    : styles.buttonLeftDark
+                }
                 aria-label="Previous"
                 onClick={() => swiperRef.current?.slidePrev()}
               >
                 <img
                   className={styles.buttonArrowLeft}
-                  src={sliderButton}
+                  src={theme === Theme.light ? sliderButton : sliderButtonDark}
                   alt="Previous"
                 ></img>
               </button>
               <button
-                className={styles.buttonRight}
+                className={
+                  theme === Theme.light
+                    ? styles.buttonRight
+                    : styles.buttonRightDark
+                }
                 aria-label="Next"
                 onClick={() => swiperRef.current?.slideNext()}
               >
                 <img
                   className={styles.buttonArrowRight}
-                  src={sliderButton}
+                  src={theme === Theme.light ? sliderButton : sliderButtonDark}
                   alt="Next"
                 ></img>
               </button>

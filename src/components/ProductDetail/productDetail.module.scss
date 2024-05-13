@@ -1,9 +1,16 @@
+.background {
+  background: #FAFBFC;
+
+  &Dark {
+    background: #0F1121;
+  }
+}
+
 .productDetailWrapper {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-inline: auto;
-  background: #FAFBFC;
 }
 
 .sectionProductDetail {
@@ -28,12 +35,27 @@
   font-weight: 700;
   line-height: normal;
   margin-bottom: 1px;
+
+  &Dark {
+    display: flex;
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: normal;
+    margin-bottom: 1px;
+  }
 }
 
 .productName {
   color: #89939A;
   font-size: 12px;
   font-weight: 600;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
 .arrow {
@@ -62,6 +84,14 @@
   font-weight: 700;
   margin-bottom: 1px;
 
+  &Dark {
+    display: flex;
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 700;
+    margin-bottom: 1px;
+  }
+
   &:hover {
     color: #0F0F11;
   }
@@ -76,6 +106,18 @@
   line-height: 41px;
   letter-spacing: -0.32px;
   margin-top: 15px;
+
+  &Dark {
+    text-wrap: wrap;
+    display: flex;
+    color: #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    margin-top: 15px;
+
+  }
 }
 
 .productDetailsAndSviper {
@@ -164,6 +206,12 @@
   color: #89939A;
   font-size: 12px;
   font-weight: 600;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 12px;
+    font-weight: 600;
+  }
 }
 
 .colorsList {
@@ -233,12 +281,40 @@
   }
 }
 
+.capacityDark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 63px;
+  height: 32px;
+  flex-shrink: 0;
+  color: #F1F2F9;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  border-radius: 4px;
+  border: 1px solid #B4BDC3;
+  cursor: pointer;
+  transition: opacity 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
+}
+
 
 
 .capacity.active {
   color: #FFF;
   border-radius: 4px;
   background: #0F0F11;
+}
+
+.capacityDark.active {
+  color: #0F0F11;
+  border-radius: 4px;
+  background: #F1F2F9;
 }
 
 .priceAndAdd {
@@ -259,6 +335,14 @@
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.32px;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
 }
 
 .priceOld {
@@ -329,6 +413,20 @@
   }
 }
 
+.likeButtonDark {
+  outline: transparent;
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  background: #323542;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-radius: 48px;
+    background: #4A4D58;
+  }
+}
+
 .like {
   margin-top: 4px;
   width: 16px;
@@ -362,6 +460,13 @@
   text-align: right;
   font-size: 12px;
   font-weight: 700;
+
+  &Dark {
+    color: #FAFBFC;
+    text-align: right;
+    font-size: 12px;
+    font-weight: 700;
+  }
 }
 
 .prodId {
@@ -395,6 +500,14 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
+
+  &Dark {
+    margin-bottom: 16px;
+    color: #FAFBFC;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
 }
 
 .titleDeccriptions {
@@ -402,6 +515,13 @@
   color: #0F0F11;
   font-size: 20px;
   font-weight: 700;
+
+  &Dark {
+    margin-top: 32px;
+    color: #FAFBFC;
+    font-size: 20px;
+    font-weight: 700;
+  }
 }
 
 .description {

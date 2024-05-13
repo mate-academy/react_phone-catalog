@@ -24,12 +24,18 @@ export const HomePage: React.FC = () => {
   return (
     <>
       <div
-        className={Theme.light ? styles.background : styles.backgrounddarkMode}
+        className={
+          theme === Theme.light ? styles.background : styles.backgrounddarkMode
+        }
       >
         <div className={styles.homeWrapper}>
           <section className={styles.appBody}>
             <h1
-              className={!theme ? styles.mainTitles : styles.mainTitlesdarkMode}
+              className={
+                theme === Theme.light
+                  ? styles.mainTitles
+                  : styles.mainTitlesdarkMode
+              }
             >
               Welcome to Nice Gadgets store!
             </h1>

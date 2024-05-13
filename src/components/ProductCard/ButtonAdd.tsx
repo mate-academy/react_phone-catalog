@@ -1,6 +1,7 @@
 import styles from './productcard.module.scss';
 import heardBuron from './Pictures/Favourites.png';
 import heardBuronActive from './Pictures/favoriteActive.png';
+import heardBuronDark from './Pictures/favoritesDark.png';
 import { Product } from '../../services/productType';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
@@ -10,12 +11,14 @@ import {
   removeFavorite,
   removeFromCart,
 } from '../../feachers/detailSlice';
+import { Theme } from '../../services/theme';
 
 type Props = {
   item: Product;
 };
 
 export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
+  const theme = useAppSelector(state => state.theme.theme);
   const isCart = useAppSelector(state =>
     state.cartAndFavorits.cart.some(
       product => product.id === item.id && product.isCart,
@@ -55,11 +58,14 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
         >
           {!isCart ? 'Add to cart' : 'Added to cart'}
         </button>
-        <button className={styles.like} onClick={handlerAddFavorites}>
+        <button
+          className={theme === Theme.light ? styles.like : styles.likeDark}
+          onClick={handlerAddFavorites}
+        >
           {!isFavorite ? (
             <img
               className={styles.heardIcon}
-              src={heardBuron}
+              src={theme === Theme.light ? heardBuron : heardBuronDark}
               alt="Favorite"
             ></img>
           ) : (

@@ -1,13 +1,25 @@
 import React from 'react';
 import styles from './categories.module.scss';
 import { NavLink } from 'react-router-dom';
+import { useAppSelector } from '../../Hooks/hooks';
+import { Theme } from '../../services/theme';
 
 export const Categories: React.FC = () => {
+  const theme = useAppSelector(state => state.theme.theme);
+
   return (
     <>
       <div className={styles.categoriesWrapper}></div>
       <section className={styles.categoriesSections}>
-        <h2 className={styles.categoriesTitle}>Shop by category</h2>
+        <h2
+          className={
+            theme === Theme.light
+              ? styles.categoriesTitle
+              : styles.categoriesTitleDark
+          }
+        >
+          Shop by category
+        </h2>
         <div className={styles.categoriesContainer}>
           <div className={styles.categoriesProductContainer}>
             <NavLink to={'/phones'} className={styles.mobileLink}>

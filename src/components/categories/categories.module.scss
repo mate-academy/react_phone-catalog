@@ -11,12 +11,21 @@
 }
 
 .categoriesTitle {
-  color:  #0F0F11;
+  color: #0F0F11;
   font-size: 32px;
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.32px;
   margin-bottom: 24px;
+
+  &Dark {
+    color:  #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+  }
 }
 
 .categoriesContainer {

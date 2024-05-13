@@ -1,5 +1,9 @@
 .background {
   background: #FAFBFC;
+
+  &Dark {
+    background: #0F1121;
+  }
 }
 
 .mobilePhones {
@@ -42,6 +46,17 @@
   }
 }
 
+.phonesDark {
+  color:  #89939A;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: normal;
+
+  &:hover {
+    color: #F1F2F9;
+  }
+}
+
 .titleAndMpdels {
   display: flex;
   flex-direction: column;
@@ -55,6 +70,14 @@
   font-weight: 800;
   line-height: 56px;
   letter-spacing: -0.48px;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+  }
 }
 
 .models {
@@ -111,6 +134,26 @@
   }
 }
 
+.customSelectSortByDark {
+  position: relative;
+  width: 176px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #B4BDC3;
+  color: #F1F2F9;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: #323542;
+
+  &:hover {
+    border-radius: 8px;
+    border: 1px solid #89939A;
+    cursor: pointer;
+  }
+}
+
 .customSelectItems {
   width: 128px;
   height: 40px;
@@ -129,6 +172,25 @@
   }
 }
 
+.customSelectItemsDark {
+  width: 128px;
+  height: 40px;
+  border-radius: 8px;
+  border: 1px solid #B4BDC3;
+  color: #B4BDC3;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 12px;
+  background: #323542;
+
+  &:hover {
+    border-radius: 8px;
+    border: 1px solid #89939A;
+    cursor: pointer;
+  }
+}
+
 .selectFocuced {
     border-radius: 8px;
     border: 1px solid #0F0F11;
@@ -139,6 +201,13 @@
   font-size: 14px;
   font-weight: 700;
   line-height: 21px;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+  }
 }
 
 .selectIconActive {
@@ -157,6 +226,20 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+
+  &Dark {
+    position: absolute;
+    top: 102%;
+    left: 0;
+    width: 128px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #3B3E4A;
+    background: #0F1121;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .selectDrobdownSortBy {
@@ -171,6 +254,20 @@
   box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
   display: flex;
   flex-direction: column;
+
+  &Dark {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 176px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #3B3E4A;
+    background: #0F1121;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .drobdownItem {
@@ -285,6 +382,101 @@
     line-height: 56px;
     letter-spacing: -0.48px;
   }
+
+  .selectDrobdownSortBy {
+    position: absolute;
+    top: 105%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #E2E6E9;
+    background: #FFF;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+
+    &Dark {
+      position: absolute;
+      top: 105%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #3B3E4A;
+      background: #0F1121;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .selectDrobdownItem {
+    position: absolute;
+    top: 102%;
+    left: 0;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #E2E6E9;
+    background: #FFF;
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+    display: flex;
+    flex-direction: column;
+
+    &Dark {
+      position: absolute;
+      top: 102%;
+      left: 0;
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+      border: 1px solid #3B3E4A;
+      background: #0F1121;
+      box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  .customSelectItems {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #B4BDC3;
+    color: #B4BDC3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+
+    &:hover {
+      border-radius: 8px;
+      border: 1px solid #89939A;
+      cursor: pointer;
+    }
+  }
+
+  .customSelectItemsDark {
+    width: 100%;
+    height: 40px;
+    border-radius: 8px;
+    border: 1px solid #B4BDC3;
+    color: #B4BDC3;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 12px;
+    background: #323542;
+
+    &:hover {
+      border-radius: 8px;
+      border: 1px solid #89939A;
+      cursor: pointer;
+    }
+  }
+
+
 
   .productGrid {
     display: flex;

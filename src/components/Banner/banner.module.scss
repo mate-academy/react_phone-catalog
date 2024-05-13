@@ -19,6 +19,19 @@
   &:hover {
     border: 1px solid  #0F0F11;
   }
+
+  &Dark {
+    width: 32px;
+    flex-shrink: 0;
+    border-radius: 48px;
+    border: 1px solid transparent;
+    background: #323542;
+
+    &:hover {
+      border: 1px solid  #0F0F11;
+      background: #4A4D58;
+    }
+  }
 }
 
 .sliderArrowLeft {
@@ -64,12 +77,15 @@
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .bannerWraper {
-    max-width: 592px;
+    width: 592px;
     max-height: auto;
   }
 
-  .bannerImgSwiper {
-    max-width: 592px;
+  .bannerImg, .bannerImgSwiper {
+    width: 100%;
+    height: auto;
+    flex-shrink: 0;
+    border-radius: 8px;
   }
 
   .sectionBanner {
@@ -99,7 +115,8 @@
   }
 
   .bannerImgSwiper {
-    max-width: 300px;
+    padding: -32px 0;
+    max-width: 290px;
     max-height: auto;
   }
 
@@ -112,6 +129,10 @@
 
   .bannerButtons {
     display: none;
+
+    &Dark {
+      display: none;
+    }
   }
 }
 
@@ -137,5 +158,9 @@
 
   .bannerButtons {
     display: none;
+
+    &Dark {
+      display: none;
+    }
   }
 }

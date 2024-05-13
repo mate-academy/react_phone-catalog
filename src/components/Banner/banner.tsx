@@ -4,11 +4,15 @@ import Banner from './Pictures/banner1.jpeg';
 import Banner2 from './Pictures/slide1.png';
 import Banner3 from './Pictures/banner3.jpeg';
 import sliderButton from './Pictures/sliderButton.png';
+import sliderButtonDark from './Pictures/sliderButtonDark.png';
 import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
+import { useAppSelector } from '../../Hooks/hooks';
+import { Theme } from '../../services/theme';
 
 export const Baner: React.FC = () => {
+  const theme = useAppSelector(state => state.theme.theme);
   const banners = [Banner, Banner2, Banner3];
   const swiperRef = useRef<Swiper | null>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
@@ -31,14 +35,29 @@ export const Baner: React.FC = () => {
     nextSlide();
   }, 8000);
 
+  const getButtonColor = (index: number, activeIndex: number) => {
+    if (index === activeIndex) {
+      return theme === Theme.dark ? '#F1F2F9' : '#000'; // Визначаємо колір для активної кнопки
+    } else {
+      return theme === Theme.dark ? '#3B3E4A' : '#F1F2F9'; // Визначаємо колір для неактивної кнопки
+    }
+  };
+
   return (
     <>
       <div className={styles.bannerWraper}>
         <section className={styles.sectionBanner}>
-          <button className={styles.bannerButtons} onClick={prevSlide}>
+          <button
+            className={
+              theme === Theme.light
+                ? styles.bannerButtons
+                : styles.bannerButtonsDark
+            }
+            onClick={prevSlide}
+          >
             <img
               className={styles.sliderArrowLeft}
-              src={sliderButton}
+              src={theme === Theme.light ? sliderButton : sliderButtonDark}
               alt="Previous"
             />
           </button>
@@ -79,7 +98,8 @@ export const Baner: React.FC = () => {
                   y="10"
                   width="14"
                   height="4"
-                  fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
+                  fill={getButtonColor(index, activeSlideIndex)}
+                  // fill={index === activeSlideIndex ? '#000' : '#E2E6E9'}
                   onClick={() => {
                     setActiveSlideIndex(index);
                     swiperRef.current?.slideTo(index);
@@ -88,10 +108,17 @@ export const Baner: React.FC = () => {
               ))}
             </svg>
           </div>
-          <button className={styles.bannerButtons} onClick={nextSlide}>
+          <button
+            className={
+              theme === Theme.light
+                ? styles.bannerButtons
+                : styles.bannerButtonsDark
+            }
+            onClick={nextSlide}
+          >
             <img
               className={styles.sliderArrowRight}
-              src={sliderButton}
+              src={theme === Theme.light ? sliderButton : sliderButtonDark}
               alt="Next"
             />
           </button>

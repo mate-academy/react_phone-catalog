@@ -3,6 +3,7 @@
 }
 
 .sectionGoods {
+  width: 100%;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -23,6 +24,14 @@
   font-weight: 800;
   line-height: 41px;
   letter-spacing: -0.32px;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+  }
 }
 
 .swiper {
@@ -58,6 +67,20 @@
   }
 }
 
+.buttonLeftDark {
+  width: 32px;
+  height: 32px;
+  border-radius: 48px;
+  transform: rotate(-90deg);
+  border: 1px solid #0F0F11;
+  background: #323542;
+
+  &:hover {
+    background: #4A4D58;
+    border-radius: 48px;
+  }
+}
+
 .buttonArrowLeft {
   width: 16px;
   height: 16px;
@@ -79,6 +102,22 @@
   }
 }
 
+.buttonRightDark {
+  margin-left: 16px;
+  width: 32px;
+  height: 32px;
+  padding-top: 2px;
+  border-radius: 48px;
+  border: 1px solid #0F0F11;
+  transform: rotate(90deg);
+  background: #323542;
+
+  &:hover {
+    background: #4A4D58;
+    border-radius: 48px;
+  }
+}
+
 .buttonArrowRight {
   width: 16px;
   height: 16px;
@@ -95,11 +134,19 @@
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .sliderWraper {
-    width: 685px;
+   max-width: 685px;
   }
 
+  .sectionGoods {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 80px 0;
+  }
 
   .productsCard {
+    width: 100%;
     padding: 15px 0;
     display: flex;
     flex-wrap: nowrap;

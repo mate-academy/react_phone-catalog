@@ -2,22 +2,41 @@ import React from 'react';
 import styles from './pageMenu.module.scss';
 import { NavLink } from 'react-router-dom';
 import FavoritesHeardIcon from './Pictures/Favourites (Heart Like).png';
+import FavoritesDark from './Pictures/favoritesDark.png';
 import shopsIcon from './Pictures/Shopping bag (Cart).png';
+import shopsIconDark from './Pictures/shopDark.png';
 import { useAppSelector } from '../../Hooks/hooks';
 import { Header } from '../Header/Header';
+import { Theme } from '../../services/theme';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return [styles.navigation__links, isActive ? styles.isActive : ''].join(' ');
-};
+// const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+//   return [styles.navigation__links, isActive ? styles.isActive : ''].join(' ');
+// };
 
 export const PageMenu: React.FC = () => {
   const items = useAppSelector(state => state.cartAndFavorits.favorites);
   const cart = useAppSelector(state => state.cartAndFavorits.cart);
+  const theme = useAppSelector(state => state.theme.theme);
+
+  const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+    return [
+      isActive ? styles.isActive : '',
+      theme === Theme.light
+        ? styles.navigation__links
+        : styles.navigation__linksDark,
+    ].join(' ');
+  };
 
   return (
     <>
       <Header />
-      <section className={styles.PageMenuSection}>
+      <section
+        className={
+          theme === Theme.light
+            ? styles.PageMenuSection
+            : styles.PageMenuSectionDark
+        }
+      >
         <div className={styles.pageMenuNav}>
           <nav className={styles.nav}>
             <ul className={styles.navigation}>
@@ -56,27 +75,59 @@ export const PageMenu: React.FC = () => {
             </ul>
           </nav>
         </div>
-        <div className={styles.buttonsContainer}>
-          <NavLink to={'/favorites'} className={styles.buttonsLink}>
-            <div className={styles.menuButtons}>
+        <div
+          className={
+            theme === Theme.light
+              ? styles.buttonsContainer
+              : styles.buttonsContainerDark
+          }
+        >
+          <NavLink
+            to={'/favorites'}
+            className={
+              theme === Theme.light
+                ? styles.buttonsLink
+                : styles.buttonsLinkDark
+            }
+          >
+            <div
+              className={
+                theme === Theme.light
+                  ? styles.menuButtons
+                  : styles.menuButtonsDark
+              }
+            >
               {items.length > 0 && (
                 <div className={styles.favoriteCounts}>{items.length}</div>
               )}
               <img
                 className={styles.pageButtonIcon}
-                src={FavoritesHeardIcon}
+                src={theme === Theme.light ? FavoritesHeardIcon : FavoritesDark}
                 alt="Favorites"
               />
             </div>
           </NavLink>
-          <NavLink to={'/cart'} className={styles.buttonsLink}>
-            <div className={styles.menuButtons}>
+          <NavLink
+            to={'/cart'}
+            className={
+              theme === Theme.light
+                ? styles.buttonsLink
+                : styles.buttonsLinkDark
+            }
+          >
+            <div
+              className={
+                theme === Theme.light
+                  ? styles.menuButtons
+                  : styles.menuButtonsDark
+              }
+            >
               {cart.length > 0 && (
                 <div className={styles.favoriteCounts}>{cart.length}</div>
               )}
               <img
                 className={styles.pageButtonIcon}
-                src={shopsIcon}
+                src={theme === Theme.light ? shopsIcon : shopsIconDark}
                 alt="Shopping"
               />
             </div>

@@ -10,7 +10,26 @@
   border-radius: 8px;
   border: 1px solid #E2E6E9;
   background: #FFF;
-  margin-right: 16px;
+  margin: 16px 16px 16px 0;
+  overflow-x: hidden;
+
+  &:hover {
+    transform: scale(1.03);
+  }
+}
+
+.cardProductSectionDark {
+  box-sizing: border-box;
+  display: flex;
+  width: 268px;
+  height: 526px;
+  padding: 32px;
+  flex-direction: column;
+  align-items: flex-start;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #161827;
+  margin: 16px 16px 16px 0;
   overflow-x: hidden;
 
   &:hover {
@@ -38,6 +57,15 @@
   font-weight: 600;
   line-height: 21px;
   margin-bottom: 8px;
+
+  &Dark {
+    height: 42px;
+    color: #F1F2F9;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    margin-bottom: 8px;
+  }
 }
 
 .productPrices {
@@ -53,6 +81,13 @@
   font-size: 22px;
   font-weight: 800;
   line-height: 140%;
+
+  &Dark {
+    color: #F1F2F9;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 140%;
+  }
 }
 
 .priceOld {
@@ -60,7 +95,15 @@
   font-size: 22px;
   font-weight: 500;
   line-height: normal;
-  text-decoration: line-through
+  text-decoration: line-through;
+
+  &Dark {
+    color: #75767F;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration: line-through;
+  }
 }
 
 .line {
@@ -88,6 +131,16 @@
   font-weight: 600;
   line-height: normal;
   gap: 8px;
+
+  &Dark {
+    color: #75767F;
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    gap: 8px;
+  }
 }
 
 .techSpecsSpecs {
@@ -103,6 +156,21 @@
   justify-content: flex-end;
   text-wrap: nowrap;
   gap: 8px;
+
+  &Dark {
+    color: #F1F2F9;
+    width: 156px;
+    display: flex;
+    flex-direction: column;
+    text-align: right;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+    justify-content: flex-end;
+    text-wrap: nowrap;
+    gap: 8px;
+  }
 }
 
 .cardButtons {
@@ -162,6 +230,20 @@
   &:hover {
     border-radius: 48px;
     border: 1px solid #0F0F11;
+  }
+}
+
+.likeDark {
+  outline: transparent;
+  width: 40px;
+  height: 40px;
+  border-radius: 48px;
+  background: #323542;
+  border: 1px solid transparent;
+
+  &:hover {
+    border-radius: 48px;
+    background: #4A4D58;
   }
 }
 

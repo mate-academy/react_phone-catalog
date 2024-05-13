@@ -1,17 +1,38 @@
 import React from 'react';
 import styles from './navigation.module.scss';
 import { NavLink } from 'react-router-dom';
-
-const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-  return [styles.navigation__links, isActive ? styles.isActive : ''].join(' ');
-};
+import { useAppSelector } from '../../Hooks/hooks';
+import { Theme } from '../../services/theme';
 
 export const Navigation: React.FC = () => {
+  const theme = useAppSelector(state => state.theme.theme);
+
+  const getLinkClass = ({ isActive }: { isActive: boolean }) => {
+    return [
+      styles.navigation__links,
+      isActive
+        ? theme === Theme.light
+          ? styles.isActive
+          : styles.navigationlinksDark__isActive
+        : '',
+    ].join(' ');
+  };
+
   return (
-    <section className={styles.navigation}>
+    <section
+      className={
+        theme === Theme.light ? styles.navigation : styles.navigationDark
+      }
+    >
       <nav className={styles.nav}>
         <ul className={styles.navigation}>
-          <li className={styles.navigation__li}>
+          <li
+            className={
+              theme === Theme.light
+                ? styles.navigationli
+                : styles.navigationliDark
+            }
+          >
             <NavLink
               to={{ pathname: '/', search: '' }}
               className={getLinkClass}
@@ -19,7 +40,13 @@ export const Navigation: React.FC = () => {
               Home
             </NavLink>
           </li>
-          <li className={styles.navigation__li}>
+          <li
+            className={
+              theme === Theme.light
+                ? styles.navigationli
+                : styles.navigationliDark
+            }
+          >
             <NavLink
               to={{ pathname: '/phones', search: '' }}
               className={getLinkClass}
@@ -27,7 +54,13 @@ export const Navigation: React.FC = () => {
               Phones
             </NavLink>
           </li>
-          <li className={styles.navigation__li}>
+          <li
+            className={
+              theme === Theme.light
+                ? styles.navigationli
+                : styles.navigationliDark
+            }
+          >
             <NavLink
               to={{ pathname: '/tablets', search: '' }}
               className={getLinkClass}
@@ -35,7 +68,13 @@ export const Navigation: React.FC = () => {
               Tablets
             </NavLink>
           </li>
-          <li className={styles.navigation__li}>
+          <li
+            className={
+              theme === Theme.light
+                ? styles.navigationli
+                : styles.navigationliDark
+            }
+          >
             <NavLink
               to={{ pathname: '/accessories', search: '' }}
               className={getLinkClass}
