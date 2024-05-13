@@ -45,3 +45,32 @@
     grid-column: 1 / 5;
   }
 }
+
+.category-section {
+  @include grid();
+  row-gap: 24px;
+
+  &__title {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+
+    grid-column: 1 / 5;
+
+    color: $color-primary;
+  }
+
+  &__content {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+
+    grid-column: 1 / 5;
+
+    color: $color-primary;
+  }
+}

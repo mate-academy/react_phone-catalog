@@ -22,10 +22,10 @@ export const Home: React.FC = () => {
         <ProductSlider />
       </section>
 
-      <section className="section main__section">
-        <h2 className="section__title">Shop by category</h2>
+      <section className="category-section main__section">
+        <h2 className="category-section__title">Shop by category</h2>
 
-        <div className="section__content">
+        <div className="category-section__content">
           <Categories />
         </div>
       </section>
