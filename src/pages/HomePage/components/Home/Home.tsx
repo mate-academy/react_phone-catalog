@@ -9,7 +9,7 @@ export const Home: React.FC = () => {
     <main className="main">
       <section className="section main__section">
         <div className="title-container">
-          <h1 className="title title--1 section__title title-container__title">
+          <h1 className="title title--1 title-container__title">
             Welcome to Nice Gadgets store!
           </h1>
         </div>
