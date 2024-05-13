@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { Product } from '../../../../types/Product';
 import { ProductCategories } from '../../../../types/ProductCategories';
-import { getProductsByCategory } from '../../../../helpers/getProducts';
 import './ProductSlider.scss';
 import '../../../../styles/main.scss';
+import { getProducts } from '../../../../helpers/getProducts';
 
 type Props = {
   hasDiscount?: boolean;
@@ -18,7 +18,7 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
   const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
 
   useEffect(() => {
-    getProductsByCategory(ProductCategories.Products).then(
+    getProducts(ProductCategories.Products).then(
       (productsFromApi: Product[]) => {
         let finalProducts = productsFromApi.reverse().slice(0, 8);
 
