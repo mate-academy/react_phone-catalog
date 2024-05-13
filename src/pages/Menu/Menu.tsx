@@ -6,6 +6,8 @@ import './Menu.scss';
 export const Menu = () => {
   const { favorites, cartProducts } = useContext(GlobalContext);
 
+  const itemsCount = cartProducts.reduce((acc, curr) => acc + curr.quantity, 0);
+
   return (
     <div className="menu">
       <div className="menu__content">
@@ -34,7 +36,7 @@ export const Menu = () => {
           <NavLink to="/cart" className="header__icon menu__icon">
             <div className="header__icon-img icon--cart">
               {cartProducts.length > 0 && (
-                <span className="header__count">{cartProducts.length}</span>
+                <span className="header__count">{itemsCount}</span>
               )}
             </div>
           </NavLink>
