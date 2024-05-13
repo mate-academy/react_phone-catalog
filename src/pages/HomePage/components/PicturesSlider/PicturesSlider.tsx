@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Tabs } from '../../../../types/Tabs';
 import './PicturesSlider.scss';
@@ -8,10 +8,7 @@ export const PicturesSlider = () => {
   const iconSrc = './icons/slider-icon.svg';
   const activeIconSrc = './icons/slider-icon-active.svg';
 
-  const bannerClass = useMemo(
-    () => classNames('banner', `banner--${activeTab}`),
-    [activeTab],
-  );
+  const bannerClass = classNames('banner', `banner--${activeTab}`);
 
   useEffect(() => {
     setInterval(() => {
