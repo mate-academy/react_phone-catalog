@@ -17,3 +17,17 @@
   flex-direction: column;
   gap: 24px;
 }
+
+.arrow-button {
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  border: 1px solid #b4bdc3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--disabled {
+    border: 1px solid $color-elements;
+  }
+}

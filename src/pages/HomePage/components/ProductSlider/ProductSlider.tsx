@@ -4,6 +4,7 @@ import { Product } from '../../../../types/Product';
 import { ProductCategories } from '../../../../types/ProductCategories';
 import { getProductsByCategory } from '../../../../helpers/getProducts';
 import './ProductSlider.scss';
+import '../../../../styles/main.scss';
 
 type Props = {
   hasDiscount?: boolean;

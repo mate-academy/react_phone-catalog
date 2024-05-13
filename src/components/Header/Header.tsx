@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Header: React.FC = () => {
   return (
-    <nav className="nav">
+    <nav id="header" className="nav">
       <Link to="/" className="nav__item">
         <img src="./icons/logo.svg" alt="logo" />
       </Link>

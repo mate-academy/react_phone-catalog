@@ -1,0 +1,58 @@
+@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
+
+.footer {
+  @include grid;
+
+  row-gap: 32px;
+
+  margin-top: 64px;
+  padding: 32px 0;
+  border-top: 1px solid $color-elements;
+
+  &__logo {
+    grid-column: 1 / 5;
+    height: 33px;
+  }
+  &__nav {
+    grid-column: 1 / 5;
+  }
+  &__top-link {
+    grid-column: 1 / 5;
+  }
+}
+
+.footer-nav {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
+
+  &__item {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    color: $color-secondary;
+    text-decoration: none;
+  }
+}
+
+.top-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+
+  color: $color-secondary;
+  text-decoration: none;
+}
