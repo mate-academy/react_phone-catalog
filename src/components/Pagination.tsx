@@ -48,6 +48,8 @@ export const Pagination = () => {
     setSearchParams({ page: `${page}`, perPage: `${itemsOnPage}` });
   };
 
+  // console.log(currentPage, itemsOnPage,totalPageCount)
+
   return pageNumber.length > 1 ? (
     <>
       <ul className="pagination">

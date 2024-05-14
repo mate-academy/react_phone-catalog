@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { NavLink, useSearchParams } from 'react-router-dom';
+import { ClockLoader } from 'react-spinners';
 import { useAppContext } from './Context';
 import ArrowDown from '../img/arrow-down.svg';
 import ArrowUp from '../img/arrow-up.svg';
@@ -37,17 +38,19 @@ export const Phones = () => {
   const { prevFavoriteArr, setPrevFavoriteArr } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
-  const { currentPage, setCurrentPage } = useAppContext();
+  const { setCurrentPage } = useAppContext();
   const { getPhone, setGetPhone } = useAppContext();
   const  { visibleElems } = useAppContext();
   const { setSelectedProduct } = useAppContext();
   const { setSortedPhones } = useAppContext();
-  
+  const { query } = useAppContext();
+  // const { query, setQuery } = useAppContext();
   const [searchParams, setSearchParams] = useSearchParams();
 
   const [errorMessage, setErrorMessage] = useState('');
   const [changeItemsOnPage, setChangeItemsOnPage] = useState<boolean>(false);
   const [price, setPrice] = useState<number>(0);
+  const [loading, setLoading] = useState<boolean>(false);
 
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -55,6 +58,7 @@ export const Phones = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -69,12 +73,14 @@ export const Phones = () => {
 
         setGetPhone(data);
         setItemsOnPage(data.length)
+        setLoading(false);
         const perPage = searchParams.get("perPage");
         if (!perPage || perPage === null) {
           setItemsOnPage(data.length)
         }
       } catch (error) {
         setErrorMessage('Error during fetch:');
+        setLoading(false);
       }
     };
 
@@ -197,7 +203,6 @@ export const Phones = () => {
     if(perPage !== null && perPage) {
       setItemsOnPage(+perPage)
     }
-    console.log('working')
   },[searchParams])
 
   useEffect(() => {
@@ -235,16 +240,28 @@ export const Phones = () => {
     setSearchParams(params);
   }
 
-  console.log(currentPage, itemsOnPage);
+  // useEffect(() => {
+  //   const getPhones = getPhone?.filter(phone => phone.name.includes(query))
+
+  //   console.log(getPhones)
+  // }, [query])
 
   return (
+    <>
     <section className="phones__wrapper">
       <div className="phones__content">
+        {loading && (
+          <div className="clockLoader__wrapper">
+            <ClockLoader size={40} loading={loading} className="clockLoader__content"/>
+          </div>
+        )}
+        {!loading && (
+        <>
         <div className="phones__header">
           <h3 className="phones__header__title">Mobile phones</h3>
           <p className="phones__header__paragraph">{`${getPhone?.length} models`}</p>
 
-          <div className="phones__header__buttons">
+          {!query && <div className="phones__header__buttons">
             <div className="phones__header__buttons__sort" ref={blockSortRef}>
               <h5 className="phones__header__buttons__sort__title">Sort by</h5>
               <button className="phones__header__buttons__sort__button" onClick={handleChangeSort}>
@@ -331,7 +348,7 @@ export const Phones = () => {
                   </div>
                 )}
             </div>
-          </div>
+          </div>}
         </div>
         <div className="phones__goods">
           <div className="phones__goods__cards">
@@ -414,8 +431,13 @@ export const Phones = () => {
             ))}
           </div>
         </div>
-        <Pagination />
+        </>
+        )}
+        {!query &&
+          <Pagination /> 
+        }
       </div>
     </section>
+    </>
   );
 };

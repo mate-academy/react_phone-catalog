@@ -2,11 +2,13 @@ import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import './App.scss';
 import { Header } from './pages/Header/Header';
+import { PageUrl } from './components/PageUrl';
 
 const App = () => {
   return (
     <div className="App">
       <Header />
+      <PageUrl />
       <Outlet />
       <Footer />
     </div>

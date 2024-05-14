@@ -56,7 +56,7 @@ export const ProductPage = () => {
   const [colorSelected, setColorSelected] = useState('');
   const [memorySelected, setMemorySelected] = useState('');
   const url = `https://mate-academy.github.io/react_phone-catalog/_new/products/${selectedProduct}.json`;
-  
+
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -94,7 +94,6 @@ export const ProductPage = () => {
       const newSelectProduct = splitString.join('-');
       setSelectedProduct(newSelectProduct);
       navigate(`/phones/${newSelectProduct}`)
-      console.log(newSelectProduct);
     }
   }
 
@@ -105,7 +104,6 @@ export const ProductPage = () => {
       const newSelectProduct = splitString.join('-');
       setSelectedProduct(newSelectProduct);
       navigate(`/phones/${newSelectProduct}`)
-      console.log(newSelectProduct);
     }
   }
 
@@ -124,7 +122,6 @@ export const ProductPage = () => {
     }
     setCartPhones('');
     setPrice(0);
-    console.log(prevCartPhonesArr)
   }, [cartPhones, prevCartPhonesArr]);
 
   useEffect(() => {

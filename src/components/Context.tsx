@@ -64,6 +64,15 @@ const AppContext = createContext<{
   sortParam: string;
   setSortParam: React.Dispatch<React.SetStateAction<string>>;
 
+  query: string;
+  setQuery: React.Dispatch<React.SetStateAction<string>>;
+
+  price: number
+  setPrice: React.Dispatch<React.SetStateAction<number>>;
+
+  urlState: string | undefined;
+  setUrlState: React.Dispatch<React.SetStateAction<string | undefined>>;
+
   getPhone: Phones[] | undefined;
   setGetPhone: React.Dispatch<React.SetStateAction<Phones[] | undefined>>;
   visibleElems: Phones[] | undefined;
@@ -97,6 +106,9 @@ export const AppProvider = ({ children }: AppContextProps) => {
   const [getPhone, setGetPhone] = useState<Phones[] | undefined>();
   const [sortedPhones, setSortedPhones] = useState<Phones[] | undefined>();
   const [sortParam, setSortParam] = useState<string>('Newest');
+  const [urlState, setUrlState] = useState<string>();
+  const [price, setPrice] = useState<number>(0);
+  const [query, setQuery] = useState<string>('');
 
   const [currentPage, setCurrentPage] = useState(1);
   const [
@@ -115,14 +127,23 @@ export const AppProvider = ({ children }: AppContextProps) => {
     if (itemsOnPage !== undefined) {
       const firstPageIndex = (currentPage - 1) * itemsOnPage;
       const lastPageIndex = firstPageIndex + itemsOnPage;
+      const finishPhones = sortedPhones;
 
-      return sortedPhones?.slice(firstPageIndex, lastPageIndex);
+      if (query) {
+        return finishPhones?.filter(phone => phone.name.includes(query));
+      }
+
+      return finishPhones?.slice(firstPageIndex, lastPageIndex);
     }
 
     return [];
   };
 
   const visibleElems = visibleElements();
+
+  // useEffect(() => {
+  //   visibleElements()
+  // }, [query])
 
   return (
     <AppContext.Provider value={{
@@ -148,15 +169,24 @@ export const AppProvider = ({ children }: AppContextProps) => {
       currentPage,
       setCurrentPage,
 
+      price,
+      setPrice,
+
       firstItem,
       lastItem,
 
       sortParam,
       setSortParam,
 
+      urlState,
+      setUrlState,
+
       getPhone,
       setGetPhone,
       visibleElems,
+
+      query,
+      setQuery,
 
       sortedPhones,
       setSortedPhones,

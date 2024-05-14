@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import cn from 'classnames';
 import { NavLink } from 'react-router-dom';
+import { ClockLoader } from 'react-spinners';
 import Arrow from '../img/Slider button right.png';
 import { useAppContext } from './Context';
 import filledFavoriteImage from '../img/favourites-filled.svg';
@@ -16,13 +17,15 @@ export const NewModel = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
-  const [price, setPrice] = useState<number>(0);
+  const { price, setPrice } = useAppContext();
+  const [loading, setLoading] = useState<boolean>(false);
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -32,8 +35,10 @@ export const NewModel = () => {
         const data = await response.json();
 
         setGetPhone(data);
+        setLoading(false);
       } catch (error) {
         setErrorMessage('Error during fetch:');
+        setLoading(false);
       }
     };
 
@@ -97,7 +102,14 @@ export const NewModel = () => {
 }, [cartPhones, prevCartPhonesArr]);
 
   return !errorMessage ? (
-    <section className="hot-prices__wrapper">
+    <>
+    {loading && (
+      <div className="clockLoader__wrapper">
+        <ClockLoader size={40} loading={loading} className="clockLoader__content"/>
+      </div>
+    )}
+    {!loading &&
+      <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
         <div className="hot-prices__header">
           <h3 className="hot-prices__header__title">Brand new models</h3>
@@ -213,6 +225,7 @@ export const NewModel = () => {
           </div>
         </div>
       </div>
-    </section>
+    </section>}
+    </>
   ) : <div />;
 };

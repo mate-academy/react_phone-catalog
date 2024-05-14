@@ -126,7 +126,7 @@ export const Cart = () => {
       <div className="cart__content">
         <h2 className="cart__content__title">Cart</h2>
         <div className="cart__content__blocks">
-          {!prevCartPhonesArr  ? (
+          {prevCartPhonesArr && prevCartPhonesArr.length <= 0 ? (
             <div>
               <p className="phones__header__paragraph">Your cart is empty</p>
               <NavLink to="/" className="phones__header__return-home">

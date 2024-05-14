@@ -6,6 +6,8 @@ import Arrow from '../img/Slider button right.png';
 /* eslint-disable */
 import { useAppContext } from './Context';
 
+import { ClockLoader } from 'react-spinners';
+
 export const HotPrices = () => {
   const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
@@ -14,7 +16,8 @@ export const HotPrices = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const { cartPhones, setCartPhones } = useAppContext();
-  const [price, setPrice] = useState<number>(0);
+  const { price, setPrice } = useAppContext();
+  const [loading, setLoading] = useState<boolean>(false);
   // console.log(prevFavoriteArr)
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -22,6 +25,7 @@ export const HotPrices = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
+        setLoading(true);
         const response = await fetch(url);
 
         if (!response.ok) {
@@ -31,8 +35,10 @@ export const HotPrices = () => {
         const data = await response.json();
 
         setGetPhone(data);
+        setLoading(false);
       } catch (error) {
         setErrorMessage('Error during fetch:');
+        setLoading(false);
       }
     };
 
@@ -93,6 +99,13 @@ export const HotPrices = () => {
   }, []);
 
   return !errorMessage ? (
+    <>
+    {loading && (
+      <div className="clockLoader__wrapper">
+        <ClockLoader size={40} loading={loading} className="clockLoader__content"/>
+      </div>
+    )}
+    {!loading && 
     <section className="hot-prices__wrapper">
       <div className="hot-prices__content">
         <div className="hot-prices__header">
@@ -191,7 +204,7 @@ export const HotPrices = () => {
                       className={prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'hot-prices__goods__cards__good-card__buttons__cart--added' : 'hot-prices__goods__cards__good-card__buttons__cart'}
                       tabIndex={0}
                       aria-label="Previous Image"
-                      onClick={() => {hanleChangeCartProducts(), setCartPhones(phone.itemId), setPrice(phone.price)}}
+                      onClick={() => { setCartPhones(phone.itemId), setPrice(phone.price), hanleChangeCartProducts}}
                     >
                       {prevCartPhonesArr && prevCartPhonesArr.some(elem => elem.id === phone.itemId) ? 'Added to cart' : 'Add to cart'}
                     </button>
@@ -210,6 +223,7 @@ export const HotPrices = () => {
           </div>
         </div>
       </div>
-    </section>
-  ) : <div />;
+    </section>}
+    </>
+  ) : <span>{errorMessage}</span>;
 };
