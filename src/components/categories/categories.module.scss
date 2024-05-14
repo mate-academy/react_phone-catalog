@@ -37,6 +37,7 @@
 }
 
 .mobilePhoneImg {
+  object-fit: cover;
   display: flex;
   width: 100%;
   height: auto;
@@ -51,6 +52,7 @@
 }
 
 .tabletImg {
+  object-fit: cover;
   width: 100%;
   height: auto;
   border-radius: 8px;
@@ -64,6 +66,7 @@
 }
 
 .accesoriesImg {
+  object-fit: cover;
   display: flex;
   width: 100%;
   height: auto;

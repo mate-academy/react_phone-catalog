@@ -1,4 +1,6 @@
-const BASE_URL = '/react_phone-catalog/api/';
+const BASE_URL = '/api/';
+
+// /react_phone-catalog
 
 export async function getProducts(url: string) {
   const response = await fetch(BASE_URL + url);
