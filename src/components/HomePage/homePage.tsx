@@ -5,17 +5,21 @@ import React, { useEffect } from 'react';
 import { ProductType } from '../../Helpers/enumProductType';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 import Baner from '../Banner/Banner';
-import { loadProducts, selectPhones } from '../../Reducers/productSlice';
+import { loadProducts } from '../../Reducers/productSlice';
 import { Theme } from '../../Helpers/theme';
 
 export const HomePage: React.FC = () => {
-  const phonesState = useAppSelector(selectPhones);
   const theme = useAppSelector(state => state.theme.theme);
   const dispatch = useAppDispatch();
+  const phonesSlider = useAppSelector(state => state.phones.products);
 
-  const phones = phonesState;
-  const newModels = phones.filter(phone => phone.year === 2022);
-  const hotPrices = phones.filter(phone => phone.price < phone.fullPrice);
+  const newModels = phonesSlider.filter(
+    item => item.year === 2022 && item.category === ProductType.phones,
+  );
+
+  const hotPrices = phonesSlider.filter(
+    item => item.price < item.fullPrice && item.category === ProductType.phones,
+  );
 
   useEffect(() => {
     dispatch(loadProducts(ProductType.phones));
