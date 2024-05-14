@@ -24,7 +24,7 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
   useEffect(() => {
     const interval = setInterval(() => {
       nextSlide();
-    }, 5000);
+    }, 3000);
 
     return () => clearInterval(interval);
   });
@@ -32,19 +32,29 @@ const Slider: React.FC<SliderProps> = ({ slides }) => {
   return (
     <div className="slider">
       <button
-        className="slider__control slider__control--left"
+        className="slider__control slider__control--prev"
         onClick={prevSlide}
       ></button>
 
-      <div className="slider__image">
-        <img
-          src={slides[currentSlide].imageUrl}
-          alt={`Slide ${currentSlide}`}
-        />
+      <div className="slider__container">
+        {slides.map((slide, i) => (
+          <img
+            key={slide.id}
+            src={slide.imageUrl}
+            alt={`Slide ${slide.id}`}
+            className={`slider__image ${
+              i === currentSlide
+                ? 'active'
+                : i === (currentSlide + 1) % slides.length
+                  ? 'next'
+                  : 'prev'
+            }`}
+          />
+        ))}
       </div>
 
       <button
-        className="slider__control slider__control--right"
+        className="slider__control slider__control--next"
         onClick={nextSlide}
       ></button>
 
