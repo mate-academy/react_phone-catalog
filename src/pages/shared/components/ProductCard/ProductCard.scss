@@ -8,8 +8,6 @@
   gap: 8px;
 
   box-sizing: border-box;
-  width: 212px;
-  height: 439px;
 
   padding: 31px;
 
@@ -52,7 +50,7 @@
   }
 
   &__image {
-    object-fit: cover;
+    object-fit: contain;
     height: 130px;
     width: 148px;
   }

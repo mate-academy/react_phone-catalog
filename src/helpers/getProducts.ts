@@ -1,4 +1,4 @@
-import { Product } from '../types/Product';
+import { Product } from '../types/ProductCard';
 import { ProductCategories } from '../types/ProductCategories';
 
 const BASE_URL = 'https://olafchuszno.github.io/react_phone-catalog';

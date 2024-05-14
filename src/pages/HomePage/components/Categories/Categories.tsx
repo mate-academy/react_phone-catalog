@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { CategoryCard } from '../CategoryCard';
 import { getProducts } from '../../../../helpers/getProducts';
 import { ProductCategories } from '../../../../types/ProductCategories';
-import { Product } from '../../../../types/Product';
+import { Product } from '../../../../types/ProductCard';
 import './Categories.scss';
 
 export const Categories: React.FC = () => {

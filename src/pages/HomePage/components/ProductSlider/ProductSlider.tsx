@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { ProductCard } from '../ProductCard';
-import { Product } from '../../../../types/Product';
+import { ProductCard } from '../../../shared/components/ProductCard';
+import { Product } from '../../../../types/ProductCard';
 import { ProductCategories } from '../../../../types/ProductCategories';
 import './ProductSlider.scss';
 import '../../../../styles/main.scss';
