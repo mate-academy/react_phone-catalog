@@ -1,0 +1,113 @@
+@use '../../styles/vars.scss' as vars;
+@use '../../styles/mixins.scss' as mixins;
+
+.product {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+
+  border: 1px solid vars.$gray-elements;
+  padding: 32px;
+
+  min-width: 212px;
+  height: 439px;
+
+  @include mixins.onTablet {
+    background-color: red;
+  }
+
+  &--img {
+    padding: 0;
+    width: auto;
+    height: 40%;
+
+    &-link {
+      padding: 0;
+      width: auto;
+      height: 100%;
+    }
+  }
+
+  &--name {
+    font-size: 14px;
+    margin-top: 16px;
+  }
+
+  &--price {
+    width: 100%;
+    padding: 8px 0;
+    margin-bottom: 8px;
+    font-weight: bold;
+    align-self: start;
+    font-size: 22px;
+    line-height: 1.4em;
+    border-bottom: 1px solid vars.$gray-elements;
+
+    & > * {
+      display: inline;
+    }
+
+    & :nth-child(2) {
+      color: vars.$grey-secondary;
+      font-weight: normal;
+      text-decoration: line-through;
+      text-decoration-thickness: 1px;
+      margin-left: 8px;
+    }
+  }
+
+  &--details {
+    font-size: 12px;
+    line-height: 1.3em;
+    font-weight: 600;
+    width: 100%;
+
+    &-name {
+      color: vars.$grey-secondary;
+      text-align: left;
+      width: fit-content;
+      padding-top: 8px;
+    }
+
+    &-value {
+      text-align: right;
+    }
+  }
+
+  &--buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+    height: 40px;
+    width: 100%;
+    margin-top: 16px;
+  }
+}
+
+.button {
+  background-color: none;
+
+  &--black {
+    background-color: vars.$black;
+    padding: 9px;
+    // font-size: 14px;
+    color: vars.$white;
+    width: 100%;
+    border: none;
+  }
+
+  &--white {
+    height: 40px;
+    width: 40px;
+    box-sizing: border-box;
+    padding: 12px;
+    background-color: vars.$white;
+    border: 1px solid vars.$grey-icons;
+
+    &:hover {
+      border: 1px solid vars.$gray-primary;
+    }
+  }
+}

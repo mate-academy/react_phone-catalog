@@ -1,0 +1,120 @@
+@use '../../../../styles/vars.scss' as vars;
+@use '../../../../styles/mixins.scss' as mixins;
+
+.nav {
+  display: flex;
+
+  &__list {
+    padding-inline: 16px;
+  }
+
+  &--item {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    position: relative;
+
+    &::after {
+      content: '';
+      display: block;
+      background-color: vars.$black;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover {
+      & > * {
+        color: vars.$black;
+      }
+      &::after {
+        transform: scale(1);
+      }
+    }
+  }
+
+  &--link {
+    text-decoration: none;
+    justify-content: center;
+
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: vars.$grey-secondary;
+    margin: auto 0;
+
+    transition: color 0.3s;
+  }
+
+  &__icons {
+    display: flex;
+  }
+
+  &__icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    border-left: solid 1px vars.$grey-hover;
+    padding: 16px;
+
+    &::after {
+      content: '';
+      display: block;
+      background-color: vars.$black;
+      height: 3px;
+      width: 100%;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+
+      transition: transform 0.3s;
+      transform: scale(0);
+    }
+
+    &:hover {
+      &::after {
+        transform: scale(1);
+      }
+    }
+
+    &--hide {
+            @include mixins.onTablet {
+              display: none;
+            }
+          }
+  }
+}
+
+.icon {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  height: 16px;
+  width: 16px;
+  margin: auto 0;
+
+  &--menu {
+    background-image: url('../../../../../public/img/icons/menu.png');
+
+    @include mixins.onTablet {
+      display: none;
+    }
+  }
+
+  &--fav {
+    background-image: url('../../../../../public/img/icons/favourites.png');
+  }
+  &--cart {
+    background-image: url('../../../../../public/img/icons/shopping-bag.png');
+  }
+
+  &--close {
+    background-image: url('../../../../../public/img/icons/close.png');
+  }
+}

@@ -1,0 +1,51 @@
+@import '../../../../styles/vars.scss';
+
+.slider {
+  &__header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: row;
+    width: 100vw;
+    overflow: hidden;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 40px;
+    width: 40px;
+    margin-left: 16px;
+    background-color: #fff;
+    border: 1px solid $grey-icons;
+    & :first-child {
+      display: block;
+      margin: 0 auto;
+
+      & :first-child {
+        fill: $black;
+      }
+    }
+
+    &:first-child {
+      transform: rotate(180deg);
+    }
+
+    &:hover {
+      border: 1px solid $black;
+    }
+
+    &:disabled {
+      border: 1px solid $grey-icons;
+      cursor: none;
+      & :first-child :first-child{
+        fill: $grey-icons;
+      }
+    }
+  }
+}

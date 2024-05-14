@@ -1,0 +1,42 @@
+@use '../../styles/vars.scss' as vars;
+@use '../../styles/mixins.scss' as mixins;
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 100vw;
+  box-sizing: border-box;
+  border-bottom: solid 1px vars.$grey-hover;
+
+  @include mixins.onTablet {
+    justify-content: stretch;
+  }
+
+  &__logo {
+    padding: 13px 16px;
+    &--img {
+      height: 22px;
+      width: 64px;
+      transition: transform 0.3s;
+
+      &:hover {
+        transform: scale(1.2);
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include mixins.onTablet {
+      display: flex;
+      justify-content: space-between;
+      flex-grow: 1;
+    }
+
+    &__list {
+      gap: 32px;
+    }
+  }
+}
