@@ -269,7 +269,12 @@ export const Cart: React.FC<Props> = ({ title }) => {
                         {`$${cartProduct.reduce((totalPrice, item) => totalPrice + item.price * item.counter, 0)}`}
                       </span>
                       <p className={styles.totalItems}>
-                        Total for {cartProduct.length} items
+                        Total for{' '}
+                        {cartProduct.reduce(
+                          (totalItems, item) => totalItems + item.counter,
+                          0,
+                        )}{' '}
+                        items
                       </p>
                       <span className={styles.line}></span>
                       <button
