@@ -24,12 +24,12 @@ export const Footer: React.FC = () => {
         </a>
       </nav>
 
-      <Link to="#header" className="top-link footer__top-link">
-        Back to top
-        <button className="arrow-button">
+      <div className="top-link">
+        <p className="top-link__text footer__top-link">Back to top</p>
+        <button onClick={() => window.scroll(0, 0)} className="arrow-button">
           <img className="arrow-button__image" src="./icons/arrow-top.svg" />
         </button>
-      </Link>
+      </div>
     </footer>
   );
 };
