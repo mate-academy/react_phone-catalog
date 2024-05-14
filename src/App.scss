@@ -7,11 +7,16 @@ html, body {
   height: 100%;
 }
 
+/* stylelint-disable selector-max-id, declaration-no-important */
+#root {
+  height: 100%;
+}
+
 html {
   scroll-behavior: smooth;
 }
 
-.app {
- min-height: 100%;
+.App {
+ height: 100%;
 }
 

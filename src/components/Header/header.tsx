@@ -22,6 +22,9 @@ export const Header: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);
   const items = useAppSelector(state => state.cartAndFavorits.favorites);
   const cart = useAppSelector(state => state.cartAndFavorits.cart);
+  const counter = cart.reduce((accum, curentValue) => {
+    return accum + curentValue.counter;
+  }, 0);
 
   const [iconClose, setIconClose] = useState(false);
 
@@ -130,7 +133,7 @@ export const Header: React.FC = () => {
                     : styles.headerButtonsdarkMode
                 }
               >
-                {cart.length > 0 && (
+                {counter > 0 && (
                   <div
                     className={
                       theme === Theme.light
@@ -138,7 +141,7 @@ export const Header: React.FC = () => {
                         : styles.favoriteCountsdarkMode
                     }
                   >
-                    {cart.length}
+                    {counter}
                   </div>
                 )}
                 <img

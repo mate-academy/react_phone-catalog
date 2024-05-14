@@ -162,7 +162,9 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                     : deleteButtonDark
                                 }
                                 className={styles.buttonDelete}
-                                onClick={() => dispatch(removeFromCart(item))}
+                                onClick={() =>
+                                  dispatch(removeFromCart(item.product))
+                                }
                               ></img>
                               <NavLink
                                 to={`/${item.product.category}/${item.product.itemId}`}
