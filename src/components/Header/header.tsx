@@ -1,7 +1,8 @@
+/* eslint-disable max-len */
 import React, { useEffect, useState } from 'react';
 import styles from './header.module.scss';
 import catalogLogo from './Pictures/header-logo.png';
-import catalogLogoDark from './Pictures/lodoDark.png';
+import catalogLogoDark from './Pictures/logoNiceDark.png';
 import menuLogo from './Pictures/burger-menu.png';
 import menuLogoDark from './Pictures/Menu.png';
 import FavoritesHeard from './Pictures/Favourites (Heart Like).png';
@@ -73,7 +74,7 @@ export const Header: React.FC = () => {
             theme === Theme.light ? styles.header : styles.headerdarkMode
           }
         >
-          <NavLink to={'/'}>
+          <NavLink className={styles.logoNav} to={'/'}>
             <img
               className={styles.headerLogo}
               src={theme === Theme.light ? catalogLogo : catalogLogoDark}

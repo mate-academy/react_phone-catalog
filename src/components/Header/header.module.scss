@@ -43,6 +43,14 @@
   padding-left: 24px;
   width: 80px;
   height: 28px;
+  background-size: cover;
+}
+
+.logoNav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
 }
 
 .menuLogo {
@@ -218,6 +226,7 @@
   }
 
   .headerLogo {
+    margin-top: 5px;
     width: 64px;
     height: 22px;
     padding: 0 24px;

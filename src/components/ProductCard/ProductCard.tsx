@@ -45,12 +45,12 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
             className={
               theme === Theme.light ? styles.priceNow : styles.priceNowDark
             }
-          >{`$${item.fullPrice}`}</span>
+          >{`$${item.price}`}</span>
           <span
             className={
               theme === Theme.light ? styles.priceOld : styles.priceOldDark
             }
-          >{`$${item.price}`}</span>
+          >{`$${item.fullPrice}`}</span>
         </div>
         <span className={styles.line}></span>
         <div className={styles.techSpecs}>

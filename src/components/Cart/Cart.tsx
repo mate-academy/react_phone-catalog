@@ -244,7 +244,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                     ? styles.productPrice
                                     : styles.productPriceDark
                                 }
-                              >{`$${item.price}`}</span>
+                              >{`$${item.price * item.counter}`}</span>
                             </div>
                           </div>
                         </div>

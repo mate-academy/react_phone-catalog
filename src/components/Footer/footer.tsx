@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './footer.module.scss';
 import catalogLogo from './Pictures/header-logo.png';
-import catalogLogoDark from './Pictures/lodoDark.png';
+import catalogLogoDark from './Pictures/logoNiceDark.png';
 import sliderButton from './Pictures/sliderButton.png';
 import sliderButtonDark from './Pictures/sliderButtonDark.png';
 import { useAppSelector } from '../../Hooks/hooks';

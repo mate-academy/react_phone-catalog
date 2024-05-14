@@ -140,6 +140,41 @@
     }
   }
 
+  .navigationlinksDark {
+    position: relative;
+    text-decoration: none;
+    color: #F1F2F9;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+
+    &__isActive {
+      text-decoration: none;
+      color: #F1F2F9;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.48px;
+      text-transform: uppercase;
+
+       &::after {
+        content: '';
+        color: #F1F2F9;
+        position: absolute;
+        left: 0;
+        bottom: -17px;
+        width: 100%;
+        height: 4px;
+        background-color: #F1F2F9;
+        border-radius: 2px;
+      }
+    }
+  }
+
   .navigation {
     display: flex;
     flex-direction: row;
