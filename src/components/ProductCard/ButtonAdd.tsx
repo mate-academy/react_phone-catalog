@@ -20,9 +20,12 @@ type Props = {
 export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
   const theme = useAppSelector(state => state.theme.theme);
   const isCart = useAppSelector(state =>
-    state.cartAndFavorits.cart.some(
-      product => product.id === item.id && product.isCart,
-    ),
+    state.cartAndFavorits.cart.some(cartItem => {
+      // console.log(item);
+      // console.log(cartItem);
+
+      return cartItem.product.id === item.id && cartItem.product.isCart;
+    }),
   );
 
   const isFavorite = useAppSelector(state =>

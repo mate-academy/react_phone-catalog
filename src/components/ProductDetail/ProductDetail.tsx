@@ -41,7 +41,8 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
   const recommendationsProduct = useAppSelector(state => state.phones.products);
   const isCart = useAppSelector(state =>
     state.cartAndFavorits.cart.some(
-      car => car.name === product?.name && car.isCart,
+      cartItem =>
+        cartItem.product.name === product?.name && cartItem.product.isCart,
     ),
   );
 

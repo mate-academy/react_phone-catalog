@@ -5,9 +5,13 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ProductType } from '../../Helpers/enumProductType';
-import { Product } from '../../types/productType';
+// import { Product } from '../../types/productType';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
-import { removeFromCart } from '../../Reducers/fauvoritsAndCartSlice';
+import {
+  CartProduct,
+  addProductCount,
+  removeFromCart,
+} from '../../Reducers/fauvoritsAndCartSlice';
 import cartIsEmptyImage from './pictures/cart-is-empty.png';
 import deleteButton from './pictures/Close.png';
 import deleteButtonDark from './pictures/closeDark.png';
@@ -20,45 +24,56 @@ type Props = {
 };
 
 export const Cart: React.FC<Props> = ({ title }) => {
-  const [cartProduct, setCartProduct] = useState<Product[]>([]);
+  const [cartProduct, setCartProduct] = useState<CartProduct[]>([]);
   const data = useAppSelector(state => state.cartAndFavorits.cart);
   const theme = useAppSelector(state => state.theme.theme);
   const load = useAppSelector(state => state.phones.isLoading);
 
+  // console.log(cartProduct);
+  // console.log(cartProduct);
+
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
-  const initialCartProduct: Product[] = data.map(item => ({
-    ...item,
-    counter: 1,
-  }));
+  // const initialCartProduct: Product[] = data.map(item => ({
+  //   ...item,
+  //   counter: 1,
+  // }));
 
   useEffect(() => {
-    setCartProduct(initialCartProduct);
+    setCartProduct(data);
   }, [data]);
 
-  const handleCountMinus = (id: number) => {
-    setCartProduct(prevProducts => {
-      return prevProducts.map(product => {
-        if (product.id === id) {
-          return { ...product, counter: Math.max(product.counter - 1, 1) };
-        }
+  // const handleCountMinus = (id: number) => {
+  //   setCartProduct(prevProducts => {
+  //     return prevProducts.map(product => {
+  //       if (product.id === id) {
+  //         return { ...product, counter: Math.max(product.counter - 1, 1) };
+  //       }
 
-        return product;
-      });
-    });
+  //       return product;
+  //     });
+  //   });
+  // };
+
+  // const handleCountPlus = (id: number) => {
+  //   setCartProduct(prevProducts => {
+  //     return prevProducts.map(product => {
+  //       if (product.id === id) {
+  //         return { ...product, counter: product.counter + 1 };
+  //       }
+
+  //       return product;
+  //     });
+  //   });
+  // };
+
+  const handleCountMinus = (id: number) => {
+    dispatch(addProductCount({ id, increment: -1 }));
   };
 
   const handleCountPlus = (id: number) => {
-    setCartProduct(prevProducts => {
-      return prevProducts.map(product => {
-        if (product.id === id) {
-          return { ...product, counter: product.counter + 1 };
-        }
-
-        return product;
-      });
-    });
+    dispatch(addProductCount({ id, increment: +1 }));
   };
 
   return (
@@ -131,7 +146,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                   ) : (
                     <div className={styles.productCartProducts}>
                       {cartProduct.map(item => (
-                        <div className={styles.products} key={item.id}>
+                        <div className={styles.products} key={item.product.id}>
                           <div
                             className={
                               theme === Theme.light
@@ -149,14 +164,18 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                 className={styles.buttonDelete}
                                 onClick={() => dispatch(removeFromCart(item))}
                               ></img>
-                              <NavLink to={`/${item.category}/${item.itemId}`}>
+                              <NavLink
+                                to={`/${item.product.category}/${item.product.itemId}`}
+                              >
                                 <img
                                   className={styles.productImg}
                                   alt="product"
-                                  src={item.image}
+                                  src={item.product.image}
                                 ></img>
                               </NavLink>
-                              <NavLink to={`/${item.category}/${item.itemId}`}>
+                              <NavLink
+                                to={`/${item.product.category}/${item.product.itemId}`}
+                              >
                                 <p
                                   className={
                                     theme === Theme.light
@@ -164,7 +183,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                       : styles.productNameDark
                                   }
                                 >
-                                  {item.name}
+                                  {item.product.name}
                                 </p>
                               </NavLink>
                             </div>
@@ -177,7 +196,9 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                       ? styles.counterButton
                                       : styles.counterButtonDark
                                   }
-                                  onClick={() => handleCountMinus(item.id)}
+                                  onClick={() =>
+                                    handleCountMinus(item.product.id)
+                                  }
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -214,7 +235,9 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                       ? styles.counterButton
                                       : styles.counterButtonDark
                                   }
-                                  onClick={() => handleCountPlus(item.id)}
+                                  onClick={() =>
+                                    handleCountPlus(item.product.id)
+                                  }
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -244,7 +267,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                     ? styles.productPrice
                                     : styles.productPriceDark
                                 }
-                              >{`$${item.price * item.counter}`}</span>
+                              >{`$${item.product.price * item.counter}`}</span>
                             </div>
                           </div>
                         </div>
@@ -266,7 +289,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                             : styles.allPriceDark
                         }
                       >
-                        {`$${cartProduct.reduce((totalPrice, item) => totalPrice + item.price * item.counter, 0)}`}
+                        {`$${cartProduct.reduce((totalPrice, item) => totalPrice + item.product.price * item.counter, 0)}`}
                       </span>
                       <p className={styles.totalItems}>
                         Total for{' '}

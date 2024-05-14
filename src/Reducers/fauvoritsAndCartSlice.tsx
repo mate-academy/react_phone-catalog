@@ -2,9 +2,14 @@
 import { createSlice } from '@reduxjs/toolkit';
 import { Product } from '../types/productType';
 
+export interface CartProduct {
+  product: Product;
+  counter: number;
+}
+
 export interface FavoritesAndCardState {
   favorites: Product[];
-  cart: Product[];
+  cart: CartProduct[];
   isFavorites: boolean;
   isCart: boolean;
 }
@@ -41,18 +46,39 @@ export const favoritesAndCardSlice = createSlice({
     },
     addToCart: (state, action) => {
       const itemId = action.payload.id;
-      const itemIndex = state.cart.findIndex(item => item.id === itemId);
+      const itemIndex = state.cart.findIndex(
+        item => item.product.id === itemId,
+      );
 
       if (itemIndex === -1) {
-        state.cart.push({ ...action.payload, isCart: true });
+        state.cart.push({
+          product: { ...action.payload, isCart: true },
+          counter: 1,
+        });
       } else {
         // eslint-disable-next-line no-param-reassign
-        state.cart[itemIndex].isCart = true;
+        state.cart[itemIndex].product.isCart = true;
+      }
+    },
+    addProductCount: (state, action) => {
+      const { id, increment } = action.payload;
+      const itemIndex = state.cart.findIndex(item => item.product.id === id);
+
+      if (itemIndex !== -1) {
+        // eslint-disable-next-line no-param-reassign
+        state.cart[itemIndex].counter += increment;
+        // eslint-disable-next-line no-param-reassign
+        state.cart[itemIndex].counter = Math.max(
+          state.cart[itemIndex].counter,
+          1,
+        );
       }
     },
     removeFromCart: (state, action) => {
       const itemId = action.payload.id;
-      const itemIndex = state.cart.findIndex(item => item.id === itemId);
+      const itemIndex = state.cart.findIndex(
+        item => item.product.id === itemId,
+      );
 
       if (itemIndex !== -1) {
         state.cart.splice(itemIndex, 1);
@@ -60,7 +86,12 @@ export const favoritesAndCardSlice = createSlice({
     },
   },
 });
-export const { addFavorite, removeFavorite, addToCart, removeFromCart } =
-  favoritesAndCardSlice.actions;
+export const {
+  addFavorite,
+  removeFavorite,
+  addToCart,
+  removeFromCart,
+  addProductCount,
+} = favoritesAndCardSlice.actions;
 
 export default favoritesAndCardSlice.reducer;
