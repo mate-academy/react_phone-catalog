@@ -1,0 +1,103 @@
+@import '../../styles/utils';
+
+.slider {
+  @include page-grid;
+
+  row-gap: 8px;
+  grid-template-rows: 1fr 24px;
+
+  &__image {
+    display: flex;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 320px;
+      background-color: $color-primary;
+      border-radius: $border-radius;
+      object-fit: cover;
+      transition: transform 0.5s ease-in-out;
+
+      @include on-tablet {
+        height: 100%;
+        aspect-ratio: 8/3;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+  }
+
+  &__control {
+    display: none;
+    border: 1px solid $color-element;
+    border-radius: 48px;
+    justify-content: space-between;
+    width: 32px;
+    z-index: 1;
+    justify-self: center;
+    cursor: pointer;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    &::before {
+      width: 100%;
+      height: 100%;
+      display: block;
+      content: '';
+      background-repeat: no-repeat;
+      background-position: center;
+      background-image: url('../../../public/icons/Arrow.svg');
+    }
+
+    &:hover {
+      border: 1px solid $color-primary;
+    }
+
+    &--left {
+      grid-column: 1 / 2;
+
+      &::before {
+        transform: rotate(270deg);
+      }
+    }
+
+    &--right {
+      grid-column: -2 span 1;
+
+      &::before {
+        transform: rotate(90deg);
+      }
+    }
+  }
+
+  &__track {
+    grid-column: 1 / -1;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__indicator {
+    margin: 10px 5px;
+    width: 14px;
+    height: 4px;
+    background-color: $color-element;
+    transition: background-color 0.3s;
+    cursor: pointer;
+
+    &--active {
+      background-color: $color-primary;
+    }
+  }
+}
