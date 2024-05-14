@@ -31,6 +31,7 @@ export const Categories: React.FC = () => {
           title="Mobile phones"
           photoSrc="./img/category-phones.jpeg"
           modelsAmount={phoneModelsAmount}
+          linkSrc="/phones"
         />
       </div>
       <div className="categories__category-wrapper">
@@ -38,6 +39,7 @@ export const Categories: React.FC = () => {
           title="Tablets"
           photoSrc="./img/category-tablets.jpeg"
           modelsAmount={tabletModelsAmount}
+          linkSrc="/tablets"
         />
       </div>
       <div className="categories__category-wrapper">
@@ -45,6 +47,7 @@ export const Categories: React.FC = () => {
           title="Accessories"
           photoSrc="./img/category-accessories.jpeg"
           modelsAmount={accessoryModelsAmount}
+          linkSrc="/accessories"
         />
       </div>
     </div>

@@ -5,8 +5,9 @@
   flex-direction: column;
   gap: 24px;
 
-  // &__image-wrapper {
-  // }
+  &__link {
+    text-decoration: none;
+  }
 
   &__image {
     width: 288px;
