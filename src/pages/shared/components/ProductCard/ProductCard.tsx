@@ -10,7 +10,12 @@ export const ProductCard: React.FC<Props> = ({
   product,
   hasDiscount = false,
 }) => {
-  const { name, price, screen, capacity, ram, image } = product;
+  const { name, price, screen, capacity, ram } = product;
+
+  const image =
+    'images' in product && Array.isArray(product.images)
+      ? product.images[0]
+      : product.image;
 
   const wishlistIconPath = './icons/heart-black.svg';
 
@@ -26,6 +31,8 @@ export const ProductCard: React.FC<Props> = ({
           </p>
         )}
       </div>
+
+      <hr className="product__divider" />
 
       <div className="details product__details">
         <div className="detail details__detail">

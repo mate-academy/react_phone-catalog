@@ -11,7 +11,7 @@
   width: 212px;
   height: 439px;
 
-  padding: 32px;
+  padding: 31px;
 
   border: 1px solid $color-elements;
 
@@ -21,6 +21,7 @@
     font-weight: 600;
     line-height: 21px;
     text-align: left;
+    padding-top: 16px;
     margin: 0;
   }
 
@@ -51,7 +52,17 @@
   }
 
   &__image {
+    object-fit: cover;
+    height: 130px;
     width: 148px;
+  }
+
+  &__divider {
+    margin: 0;
+    padding: 0;
+    border: none;
+    border-top: 1px solid $color-elements;
+    width: 100%;
   }
 
   &__details {
@@ -62,7 +73,9 @@
 .details {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
   gap: 8px;
+  height: 77px;
 }
 
 .detail {
@@ -89,10 +102,11 @@
 }
 
 .buttons {
+  width: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  width: 100%;
+  gap: 8px;
 
   &__cart {
     font-family: $font-family;
@@ -100,6 +114,9 @@
     font-weight: 700;
     line-height: 21px;
     text-align: center;
+    box-sizing: border-box;
+
+    flex-grow: 1;
 
     padding: 9.5px;
     border: none;
