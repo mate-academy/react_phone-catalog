@@ -23,15 +23,13 @@ html {
 
 body {
   height: 100vh;
-  padding: 0;
-  margin: 0;
   position: relative;
-  
 }
 
-ul,li,a {
+ul,li,a,button,body{
   padding: 0;
   margin: 0;
+  border: none;
   text-decoration: none;
   list-style: none;
 }

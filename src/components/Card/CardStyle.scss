@@ -1,0 +1,114 @@
+@import 'src/utils/style/mixin';
+@import 'src/utils/style/variables';
+
+.card {
+  box-sizing: border-box;
+  min-width: 212px;
+  max-width: 272px;
+  width: 100%;
+  padding: 32px;
+  border: 1px solid $grey-white;
+  border-radius: 8px;
+
+  &__line {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__parameters--wrapper {
+    align-self: flex-end;
+  }
+
+  &__title {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    height: 100%;
+  }
+
+  &__image {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    &--main {
+      font-size: 22px;
+      line-height: 30.8px;
+    }
+
+    &--discount {
+      font-family: Mont-Regular, sans-serif;
+      color: $Secondary;
+    }
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__parameters {
+    margin-bottom: 8px;
+
+    & > :nth-child(n) {
+      display: flex;
+      justify-content: space-between;
+       margin-bottom: 8px;
+    }
+
+    &--title ,&--sub-title {
+      font-family: Mont-semibold, sans-serif;
+      font-size: 12px;
+      line-height: 15.34px;
+    }
+
+    &--title {
+      color: $Secondary;
+    }
+  }
+
+  &__buttons {
+    gap: 8px;
+    display: grid;
+    grid-template: 1fr/ 0.80fr 0.20fr;
+
+    &--add {
+      height: 40px;
+      border-radius: 8px;
+      background-color: #216CFF;
+      font-family: Mont-Regular, sans-serif;
+      color: white;
+      font-size: 14px;
+      line-height: 21px;
+
+      @include center-element;
+
+      & :hover {
+        transition: box-shadow ease 0.5s;
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+    }
+
+    &--like {
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid $Secondary;
+
+      @include center-element;
+
+      
+    }
+  }
+}
+

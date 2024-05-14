@@ -1,9 +1,5 @@
 import React, { useState } from 'react';
 import './BurgerMenuStyles.scss';
-import burger from './../../img/Icons/burger.png';
-import logo from './../../img/Icons/Logo.png';
-import cart from './../../img/Icons/Cart.png';
-import favourite from './../../img/Icons/favourite.png';
 
 const BurgerMenu = () => {
   const [activeBurger, setActiveBurger] = useState(false);
@@ -17,14 +13,18 @@ const BurgerMenu = () => {
       <nav className="burger">
         <div className="burger__wrapper">
           <div className="burger__logo" onClick={() => handleClick(true)}>
-            <img src={burger} alt="logo" className="burger__logo--image" />
+            <img
+              src="icons/burger.png"
+              alt="logo"
+              className="burger__logo--image"
+            />
           </div>
           {activeBurger && (
             <div className="burger__container">
               <div className="burger__header">
                 <div className="burger__header--logo">
                   <img
-                    src={logo}
+                    src="./../../../public/img/Icons/Logo.png"
                     alt="logo"
                     className="burger__header--logo-img"
                   />
@@ -57,10 +57,16 @@ const BurgerMenu = () => {
               </nav>
               <div className="burger__footer">
                 <div className="burger__favourite">
-                  <img src={favourite} alt="favorite" />
+                  <img
+                    src="./../../../public/img/Icons/favourite.png"
+                    alt="favorite"
+                  />
                 </div>
                 <div className="burger__cart">
-                  <img src={cart} alt="cart" />
+                  <img
+                    src="./../../../public/img/Icons/cart.png.png"
+                    alt="cart"
+                  />
                 </div>
               </div>
             </div>

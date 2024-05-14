@@ -1,14 +1,12 @@
 import React from 'react';
 import './Footer.scss';
-import logo from './../../img/Icons/Logo.png';
-import arrowUp from './../../img/Icons/arrow-up-black.png';
 
 const Footer = () => {
   return (
     <footer className="footer">
       <div className="footer__wrapper">
         <div className="footer__logo">
-          <img src={logo} alt="logo" />
+          <img src="icons/Logo.png" alt="logo" />
         </div>
         <nav className="footer__menu">
           <ul className="footer__menu--wrapper">
@@ -26,7 +24,11 @@ const Footer = () => {
         <div className="footer__toTop">
           <div className="footer__toTop--title">Back to top</div>
           <div className="footer__toTop--button">
-            <img src={arrowUp} alt="arrowUp" className="footer__toTop--logo" />
+            <img
+              src="icons/arrow-up-black.png"
+              alt="arrowUp"
+              className="footer__toTop--logo"
+            />
           </div>
         </div>
       </div>

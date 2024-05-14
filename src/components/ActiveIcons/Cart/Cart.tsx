@@ -1,5 +1,4 @@
 import React from 'react';
-import cart from './../../../img/Icons/Cart.png';
 import './CartStyle.scss';
 
 const Cart = () => {
@@ -8,7 +7,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="cart__icon">
-        <img src={cart} alt="cart" className="cart__icon--img" />
+        <img src="icons/Cart.png" alt="cart" className="cart__icon--img" />
         <div className="cart__icon--counter">{number}</div>
       </div>
     </div>
