@@ -23,12 +23,16 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
         let finalProducts = productsFromApi.reverse().slice(0, 8);
 
         if (hasDiscount) {
-          finalProducts = finalProducts.map((product: Product) => {
-            return {
-              ...product,
-              oldPrice: Math.ceil(product.price * 1.2),
-            };
-          });
+          // Sort from biggest discount to smallest (in $)
+          finalProducts = finalProducts.sort(
+            (a: Product, b: Product) =>
+              b.fullPrice - b.price - (a.fullPrice - a.price),
+          );
+        } else {
+          // Sort from most expensive product
+          finalProducts = finalProducts.sort(
+            (a: Product, b: Product) => b.price - a.price,
+          );
         }
 
         setProducts(finalProducts);

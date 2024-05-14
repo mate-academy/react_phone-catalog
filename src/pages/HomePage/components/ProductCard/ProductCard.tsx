@@ -22,7 +22,7 @@ export const ProductCard: React.FC<Props> = ({
         <p className="product__price">${price}</p>
         {hasDiscount && (
           <p className="product__price product__price--old">
-            ${product.oldPrice}
+            ${product.fullPrice}
           </p>
         )}
       </div>
