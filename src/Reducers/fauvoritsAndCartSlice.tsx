@@ -1,6 +1,6 @@
 // /* eslint-disable no-param-reassign */
 import { createSlice } from '@reduxjs/toolkit';
-import { Product } from '../services/productType';
+import { Product } from '../types/productType';
 
 export interface FavoritesAndCardState {
   favorites: Product[];

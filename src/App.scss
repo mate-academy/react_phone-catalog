@@ -3,31 +3,17 @@
   font-family: Mont, sans-serif;
 }
 
+html, body, .root {
+  height: 100%;
+}
+
+
+
 html {
   scroll-behavior: smooth;
 }
 
-// .wraper {
-//   display: flex;
-//   max-width: 1400px;
-//   flex-direction: column;
-//   justify-content: center;
-//   justify-items: center;
-//   align-items: center;
-//   margin: 0 auto;
-// }
+.app {
+ min-height: 100%;
+}
 
-// .app {
-//   background: #FAFBFC;
-//   position: relative;
-//   display: flex;
-//   flex-direction: column;
-//   max-width: 1200px;
-// }
-
-// .mainContainer {
-//   max-width: 1400px;
-//   display: flex;
-//   justify-content: center;
-//   align-items: center;
-// }

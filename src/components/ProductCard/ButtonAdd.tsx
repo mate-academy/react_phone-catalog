@@ -2,7 +2,7 @@ import styles from './productcard.module.scss';
 import heardBuron from './Pictures/Favourites.png';
 import heardBuronActive from './Pictures/favoriteActive.png';
 import heardBuronDark from './Pictures/favoritesDark.png';
-import { Product } from '../../services/productType';
+import { Product } from '../../types/productType';
 import React from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import {
@@ -10,8 +10,8 @@ import {
   addToCart,
   removeFavorite,
   removeFromCart,
-} from '../../feachers/detailSlice';
-import { Theme } from '../../services/theme';
+} from '../../Reducers/fauvoritsAndCartSlice';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   item: Product;

@@ -6,13 +6,13 @@ import { NavLink, useSearchParams } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
-import { ProductType } from '../../services/enums';
+import { ProductType } from '../../Helpers/enumProductType';
 import Loader from '../Loader/Spiner';
 import { Pagination } from '../Pangination/Pangination';
 import { Sort, getSortedProducts } from '../../functions/sorted';
 import { useLocalStorage } from '../../local/localStorege';
-import { loadProducts, loadProductsDetail } from '../../feachers/productSlice';
-import { Theme } from '../../services/theme';
+import { loadProducts, loadProductsDetail } from '../../Reducers/productSlice';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   type: ProductType;

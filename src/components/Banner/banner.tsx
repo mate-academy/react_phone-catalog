@@ -9,7 +9,7 @@ import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Theme } from '../../services/theme';
+import { Theme } from '../../Helpers/theme';
 
 export const Baner: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);

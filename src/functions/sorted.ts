@@ -1,4 +1,4 @@
-import { Product } from '../services/productType';
+import { Product } from '../types/productType';
 
 export enum Sort {
   alphabet = 'Alphabetically',

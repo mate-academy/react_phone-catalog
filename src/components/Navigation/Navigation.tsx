@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './navigation.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Theme } from '../../services/theme';
+import { Theme } from '../../Helpers/theme';
 
 export const Navigation: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);

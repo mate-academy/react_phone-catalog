@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { Theme } from '../services/theme';
+import { Theme } from '../Helpers/theme';
 
 export interface ThemeState {
   theme: Theme;

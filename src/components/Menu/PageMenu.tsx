@@ -7,11 +7,7 @@ import shopsIcon from './Pictures/Shopping bag (Cart).png';
 import shopsIconDark from './Pictures/shopDark.png';
 import { useAppSelector } from '../../Hooks/hooks';
 import { Header } from '../Header/Header';
-import { Theme } from '../../services/theme';
-
-// const getLinkClass = ({ isActive }: { isActive: boolean }) => {
-//   return [styles.navigation__links, isActive ? styles.isActive : ''].join(' ');
-// };
+import { Theme } from '../../Helpers/theme';
 
 export const PageMenu: React.FC = () => {
   const items = useAppSelector(state => state.cartAndFavorits.favorites);

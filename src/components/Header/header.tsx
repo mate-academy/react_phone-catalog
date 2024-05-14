@@ -14,8 +14,8 @@ import { Navigation } from '../Navigation/Navigation';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { DarkModeSwitch } from 'react-toggle-dark-mode';
-import { toggleTheme } from '../../feachers/themeModeSlice';
-import { Theme } from '../../services/theme';
+import { toggleTheme } from '../../Reducers/themeModeSlice';
+import { Theme } from '../../Helpers/theme';
 
 export const Header: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);

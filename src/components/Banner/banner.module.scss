@@ -1,5 +1,5 @@
 .bannerWraper {
-  width: 90%;
+  max-width: 1200px;
   max-height: auto;
 }
 
@@ -60,12 +60,11 @@
 }
 
 .bannerContent {
-  width: 100%;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin: 0 16px;
+  margin: 0 10px;
 }
 
 .bannerDotters {
@@ -102,7 +101,7 @@
 
   .bannerImg {
     width: 100%;
-    height: 221px;
+    height: auto;
   }
 
 
@@ -146,7 +145,6 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-left: 16px;
 }
 }
 
@@ -168,6 +166,15 @@
     height: 201px;
     flex-shrink: 0;
     border-radius: 8px;
+  }
+
+  .bannerContent {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
   }
 
   .bannerButtons {

@@ -10,9 +10,9 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-import { favoritesAndCardSlice } from '../feachers/detailSlice';
-import productSlice from '../feachers/productSlice';
-import { themeSlice } from '../feachers/themeModeSlice';
+import { favoritesAndCardSlice } from '../Reducers/fauvoritsAndCartSlice';
+import productSlice from '../Reducers/productSlice';
+import { themeSlice } from '../Reducers/themeModeSlice';
 
 const rootReducer = combineReducers({
   phones: productSlice,

@@ -7,9 +7,9 @@ import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
 import Loader from '../Loader/Spiner';
 import { useAppSelector } from '../../Hooks/hooks';
-import { ProductType } from '../../services/enums';
-import { Product } from '../../services/productType';
-import { Theme } from '../../services/theme';
+import { ProductType } from '../../Helpers/enumProductType';
+import { Product } from '../../types/productType';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   title: string;

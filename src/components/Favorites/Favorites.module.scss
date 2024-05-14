@@ -1,3 +1,19 @@
+.containerFavorits {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  background: #FAFBFC;
+
+  &Dark {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: 100%;
+    background: #0F1121;
+  }
+}
+
 .background {
   background: #FAFBFC;
 
@@ -21,8 +37,8 @@
 }
 
 .empyFavoritesImg {
-  max-width: 1200px;
-  height: 600px;
+  max-width: 100%;
+  height: auto;
 }
 
 .homeLinkContainer {

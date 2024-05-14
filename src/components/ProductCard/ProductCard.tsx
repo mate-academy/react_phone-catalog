@@ -1,11 +1,11 @@
 import styles from './productcard.module.scss';
-import { Product } from '../../services/productType';
+import { Product } from '../../types/productType';
 import { NavLink } from 'react-router-dom';
-import { ProductType } from '../../services/enums';
+import { ProductType } from '../../Helpers/enumProductType';
 import React from 'react';
 import { ButtonsAddandFavorits } from './ButtonAdd';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Theme } from '../../services/theme';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   item: Product;

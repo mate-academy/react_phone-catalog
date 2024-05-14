@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './categories.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/hooks';
-import { Theme } from '../../services/theme';
+import { Theme } from '../../Helpers/theme';
 import phones from './Pictures/phone.png';
 import tablets from './Pictures/tablets.png';
 import accesories from './Pictures/accesories.png';

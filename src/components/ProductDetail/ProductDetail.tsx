@@ -9,20 +9,20 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 import heardBuron from './Pictures/Favourites.png';
 import heardBuronDark from './Pictures/favoritesDark.png';
-import { ProductDetailes } from '../../services/ProductDetailType';
-import { colors } from '../../services/colors';
+import { ProductDetailes } from '../../types/ProductDetailType';
+import { colors } from '../../Helpers/colors';
 import heardBuronActive from './Pictures/favoriteActive.png';
 import {
   addFavorite,
   addToCart,
   removeFavorite,
   removeFromCart,
-} from '../../feachers/detailSlice';
+} from '../../Reducers/fauvoritsAndCartSlice';
 // eslint-disable-next-line max-len
-import { ProductType } from '../../services/enums';
+import { ProductType } from '../../Helpers/enumProductType';
 import Loader from '../Loader/Spiner';
-import { loadProductsDetail } from '../../feachers/productSlice';
-import { Theme } from '../../services/theme';
+import { loadProductsDetail } from '../../Reducers/productSlice';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   title: string;

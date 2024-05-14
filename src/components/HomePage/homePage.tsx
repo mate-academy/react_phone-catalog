@@ -2,11 +2,11 @@ import styles from './homePage.module.scss';
 import { Categories } from '../Categories/Categories';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import React, { useEffect } from 'react';
-import { ProductType } from '../../services/enums';
+import { ProductType } from '../../Helpers/enumProductType';
 import { ProductSlider } from '../ProductSlider/ProductSlider';
 import Baner from '../Banner/Banner';
-import { loadProducts, selectPhones } from '../../feachers/productSlice';
-import { Theme } from '../../services/theme';
+import { loadProducts, selectPhones } from '../../Reducers/productSlice';
+import { Theme } from '../../Helpers/theme';
 
 export const HomePage: React.FC = () => {
   const phonesState = useAppSelector(selectPhones);
@@ -39,10 +39,16 @@ export const HomePage: React.FC = () => {
             >
               Welcome to Nice Gadgets store!
             </h1>
-            <Baner />
-            <ProductSlider title="Brand new models" phones={newModels} />
+            <div className={styles.bannerContainer}>
+              <Baner />
+            </div>
+            <div className={styles.poductSliderContainer}>
+              <ProductSlider title="Brand new models" phones={newModels} />
+            </div>
             <Categories />
-            <ProductSlider title="Hot prices" phones={hotPrices} />
+            <div className={styles.poductSliderContainer}>
+              <ProductSlider title="Hot prices" phones={hotPrices} />
+            </div>
           </section>
         </div>
       </div>

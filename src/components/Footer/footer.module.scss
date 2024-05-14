@@ -1,7 +1,5 @@
 .footerSection {
   display: flex;
-  height: 100%;
-  flex: 1 1 auto;
 }
 
 .footer {
@@ -16,7 +14,7 @@
 
   &Dark {
     display: flex;
-    width: 1440px;
+    width: 100%;
     height: 96px;
     padding: 32px 152px;
     justify-content: space-between;

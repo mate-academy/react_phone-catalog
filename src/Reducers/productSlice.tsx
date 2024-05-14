@@ -4,16 +4,14 @@ import {
   createSelector,
   createSlice,
 } from '@reduxjs/toolkit';
-import { ProductType } from '../services/enums';
-import { ProductDetailes } from '../services/ProductDetailType';
-import { Product } from '../services/productType';
+import { ProductType } from '../Helpers/enumProductType';
+import { ProductDetailes } from '../types/ProductDetailType';
+import { Product } from '../types/productType';
 import { getProducts } from '../api';
 
 export const loadProducts = createAsyncThunk(
   'products/loadProducs',
   async (type: ProductType) => {
-    // const response = await fetch('/react_phone-catalog/api/products.json');
-    // const data = await response.json();
     const data = await getProducts('/products.json');
 
     return data.filter(
@@ -35,8 +33,6 @@ export const loadProductsDetail = createAsyncThunk(
       apiUrl = '/accessories.json';
     }
 
-    // const response = await fetch(apiUrl);
-    // const data = await response.json();
     const data = await getProducts(apiUrl);
 
     return data;
