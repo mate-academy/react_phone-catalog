@@ -6,7 +6,7 @@ import { getProducts } from '../../../helpers/getProducts';
 import { getPageTitle } from '../../../helpers/getPageTitle';
 import { Pagination } from '../Pagination';
 import { Sort } from '../../../types/Sort';
-import { Filter } from '../Filter/Filter';
+import { Filter, Pages } from '../Filter/Filter';
 import './ProductPage.scss';
 
 type Props = {
@@ -16,7 +16,7 @@ type Props = {
 export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sort, setSort] = useState<Sort>(Sort.Newest);
-  const [itemsOnPage, setItemsOnPage] = useState<'all' | 4 | 8 | 16>('all');
+  const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
 
   const pageTitle = getPageTitle(category);
 
@@ -76,42 +76,15 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
       <div className="filters product-page__filters">
         <div className="filters__item">
-          <Filter sort={sort} setSort={setSort} />
+          <Filter title="Sort by" sort={sort} setSort={setSort} />
         </div>
 
         <div className="filters__item">
-          <p className="filters__name">Items on page</p>
-          <button className="filters__filter"></button>
-          <div className="dropdown">
-            <button
-              className="dropdown__option"
-              onClick={() => setItemsOnPage('all')}
-              value={'all'}
-            >
-              all
-            </button>
-            <button
-              className="dropdown__option"
-              onClick={() => setItemsOnPage(4)}
-              value={4}
-            >
-              4
-            </button>
-            <button
-              className="dropdown__option"
-              onClick={() => setItemsOnPage(8)}
-              value={8}
-            >
-              8
-            </button>
-            <button
-              className="dropdown__option"
-              onClick={() => setItemsOnPage(16)}
-              value={16}
-            >
-              16
-            </button>
-          </div>
+          <Filter
+            title="Items on page"
+            itemsOnPage={itemsOnPage}
+            setItemsOnPage={setItemsOnPage}
+          />
         </div>
       </div>
 

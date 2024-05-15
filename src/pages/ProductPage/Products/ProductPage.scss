@@ -73,30 +73,4 @@
     flex-direction: column;
     gap: 4px;
   }
-
-  &__name {
-    font-family: $font-family;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15.34px;
-    text-align: left;
-    color: $color-secondary;
-  }
-
-  &__filter {
-    border: 1px solid $color-icons-placeholders;
-
-    font-family: $font-family;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    text-align: left;
-
-    padding: 10px 0 10px 12px;
-
-    appearance: none;
-    background-image: url(../../../../public/icons/arrow-down-disabled.svg);
-    background-repeat: no-repeat;
-    background-position: right 12px center;
-  }
 }
