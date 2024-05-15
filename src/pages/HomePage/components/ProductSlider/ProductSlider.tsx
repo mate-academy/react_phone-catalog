@@ -18,27 +18,28 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
   const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
 
   useEffect(() => {
-    getProducts(ProductCategories.Products).then(
-      (productsFromApi: Product[]) => {
-        let finalProducts = productsFromApi.reverse().slice(0, 8);
+    getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
+      let finalProducts = productsFromApi.reverse().slice(0, 8);
 
-        if (hasDiscount) {
-          // Sort from biggest discount to smallest (in $)
-          finalProducts = finalProducts.sort(
-            (a: Product, b: Product) =>
-              b.fullPrice - b.price - (a.fullPrice - a.price),
-          );
-        } else {
-          // Sort from most expensive product
-          finalProducts = finalProducts.sort(
-            (a: Product, b: Product) => b.price - a.price,
-          );
-        }
+      if (hasDiscount) {
+        // Sort from biggest discount to smallest (in $)
+        finalProducts = finalProducts.sort(
+          (a: Product, b: Product) =>
+            b.fullPrice - b.price - (a.fullPrice - a.price),
+        );
+      } else {
+        // Sort from most expensive product
+        finalProducts = finalProducts.sort(
+          (a: Product, b: Product) => b.price - a.price,
+        );
+      }
 
-        setProducts(finalProducts);
-      },
-    );
+      setProducts(finalProducts);
+    });
   }, [hasDiscount]);
+
+  // eslint-disable-next-line no-console
+  console.log(products);
 
   return (
     products.length > 0 && (

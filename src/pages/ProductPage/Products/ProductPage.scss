@@ -3,8 +3,8 @@
 
 .product-page {
   @include grid;
-  grid-template-rows: auto auto;
 
+  grid-template-rows: auto auto;
   row-gap: 24px;
 
   &__top {
