@@ -1,5 +1,5 @@
 export type Product = {
-  id: string;
+  id: number;
   category: 'phones' | 'tablets' | 'accessories';
   name: string;
   image: string;
