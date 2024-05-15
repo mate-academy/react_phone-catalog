@@ -1,4 +1,5 @@
 @import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
 
 .navbar__mobile-menu {
   position: fixed;
@@ -7,7 +8,13 @@
   right: 0;
   z-index: 1;
 
+  transition: transform;
   transition-duration: $middle-duration;
+  // transition-delay: $middle-duration ;
+
+  @include on-tablet {
+    display: none;
+  }
 }
 
 .mobile-menu {

@@ -3,8 +3,6 @@ import './Footer.scss';
 import { scrollOnTop } from '../../utils';
 
 export const Footer = () => {
-  // const footerLinkItems = ['github', 'contacts', 'portfolio'];
-
   return (
     <footer className="footer">
       <div className="footer__container">

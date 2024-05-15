@@ -6,13 +6,17 @@ import { StoreContext } from '../../context/StoreContext';
 
 type Props = {
   transition: number;
+  // isVisible: boolean;
   setTransition: (transition: number) => void;
+  // setIsVisible: (value: boolean) => void;
   navBarLinkItems: string[];
 };
 
 export const NavBarMobile: React.FC<Props> = ({
   transition,
+  // isVisible,
   setTransition,
+  // setIsVisible,
   navBarLinkItems,
 }) => {
   const { pathname } = useLocation();
@@ -20,12 +24,22 @@ export const NavBarMobile: React.FC<Props> = ({
 
   useEffect(() => {
     setTransition(100);
+    // setIsVisible(false);
+    // }, [pathname, setIsVisible, setTransition]);
   }, [pathname, setTransition]);
 
   return (
     <div
       className="mobile-menu navbar__mobile-menu"
-      style={{ transform: `translateY(-${transition}%)` }}
+      // style={{ transform: `translateY(-${transition}%)` }}
+      style={{
+        transform: `translateY(-${transition}%)`,
+        // display: transition === 100 ? 'none' : 'grid',
+      }}
+      // style={{
+      //   display: isVisible ? 'flex' : 'none',
+      //   transform: `translateY(-${transition}%)`,
+      // }}
     >
       <div className="mobile-menu__topbar">
         <Link to="/" className="topbar__logo-link">
@@ -38,6 +52,7 @@ export const NavBarMobile: React.FC<Props> = ({
 
         <div
           className="navbar-button button__close"
+          // onClick={() => setIsVisible(false)}
           onClick={() => setTransition(100)}
         />
       </div>
