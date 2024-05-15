@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { SetStateAction, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { Tabs } from '../../../../types/Tabs';
 import './PicturesSlider.scss';
@@ -18,32 +18,22 @@ export const PicturesSlider = () => {
     }, 2000);
   }, []);
 
+  const slideList = [1, 2, 3];
+
   return (
     <div className="slider">
       <div className={bannerClass}></div>
 
       <div className="tabs slider__tabs">
-        <span className="tabs__container">
-          <img
-            className="tabs__button"
-            src={activeTab === 1 ? activeIconSrc : iconSrc}
-            onClick={() => setActiveTab(1)}
-          />
-        </span>
-        <span className="tabs__container">
-          <img
-            className="tabs__button"
-            src={activeTab === 2 ? activeIconSrc : iconSrc}
-            onClick={() => setActiveTab(2)}
-          />
-        </span>
-        <span className="tabs__container">
-          <img
-            className="tabs__button"
-            src={activeTab === 3 ? activeIconSrc : iconSrc}
-            onClick={() => setActiveTab(3)}
-          />
-        </span>
+        {slideList.map((slide: number) => (
+          <span key={slide} className="tabs__container">
+            <img
+              className="tabs__button"
+              src={activeTab === slide ? activeIconSrc : iconSrc}
+              onClick={() => setActiveTab(slide as SetStateAction<Tabs>)}
+            />
+          </span>
+        ))}
       </div>
     </div>
   );
