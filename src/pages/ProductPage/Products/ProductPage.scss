@@ -3,8 +3,19 @@
 
 .product-page {
   @include grid;
+  grid-template-rows: auto auto;
 
   row-gap: 24px;
+
+  &__top {
+    grid-column: 1 / 5;
+
+    padding-top: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 
   &__main-info {
     grid-column: 1 / 5;

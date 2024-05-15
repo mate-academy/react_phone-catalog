@@ -54,47 +54,46 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   // Depending on the URL, get and set in state proper products
 
   return (
-    <section className="product-page">
-      <nav className="product-page-nav">
-        <img
-          className="product-page-nav__home"
-          src="./icons/home.svg"
-          alt="home icon"
-        />
-        <img
-          className="product-page-nav__next"
-          src="./icons/arrow-right-disabled.svg"
-          alt="right arrow image"
-        />
-        <p className="product-page-nav__category">{category}</p>
-      </nav>
-
-      <div className="product-page__main-info">
-        <h1 className="product-page__title">{pageTitle}</h1>
-        <p className="product-page__models-count">95 models</p>
-      </div>
-
-      <div className="filters product-page__filters">
-        <div className="filters__item">
-          <Filter title="Sort by" sort={sort} setSort={setSort} />
-        </div>
-
-        <div className="filters__item">
-          <Filter
-            title="Items on page"
-            itemsOnPage={itemsOnPage}
-            setItemsOnPage={setItemsOnPage}
+    <main className="product-page">
+      <section className="product-page__top">
+        <nav className="product-page-nav">
+          <img
+            className="product-page-nav__home"
+            src="./icons/home.svg"
+            alt="home icon"
           />
+          <img
+            className="product-page-nav__next"
+            src="./icons/arrow-right-disabled.svg"
+            alt="right arrow image"
+          />
+          <p className="product-page-nav__category">{category}</p>
+        </nav>
+        <div className="product-page__main-info">
+          <h1 className="product-page__title">{pageTitle}</h1>
+          <p className="product-page__models-count">95 models</p>
         </div>
-      </div>
+        <div className="filters product-page__filters">
+          <div className="filters__item">
+            <Filter title="Sort by" sort={sort} setSort={setSort} />
+          </div>
+          <div className="filters__item">
+            <Filter
+              title="Items on page"
+              itemsOnPage={itemsOnPage}
+              setItemsOnPage={setItemsOnPage}
+            />
+          </div>
+        </div>
+      </section>
 
-      <div className="product-page__products-wrapper">
+      <section className="product-page__products-wrapper">
         <ProductsList products={products} />
-      </div>
+      </section>
 
       <Pagination pages={2} />
 
       {itemsOnPage}
-    </section>
+    </main>
   );
 };
