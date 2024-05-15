@@ -1,3 +1,12 @@
+@use '../../../utils/variables';
+
 .pagination {
   color: black;
+
+  &__page {
+    &--active {
+      color: $color-white;
+      background-color: $color-primary;
+    }
+  }
 }

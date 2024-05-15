@@ -17,6 +17,28 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sort, setSort] = useState<Sort>(Sort.Newest);
   const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [displayedProducts, setDisplayedProducts] =
+    useState<Product[]>(products);
+
+  // 4 or 8 or 16 or all
+  const itemsShowed = itemsOnPage === Pages.all ? products.length : itemsOnPage;
+
+  // page 1
+  // display 1 - 4
+  // page 2
+  // display 5 - 8
+
+  useEffect(() => {
+    // Choose currently displayed products
+    const currentProducts = products.slice(
+      (currentPage - 1) * itemsShowed + 1,
+      currentPage * itemsShowed + 1,
+    );
+
+    setDisplayedProducts(currentProducts);
+  }, [currentPage, itemsShowed, products]);
+
   const pageTitle = getPageTitle(category);
 
   useEffect(() => {
@@ -93,10 +115,14 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       </section>
 
       <section className="product-page__products-wrapper">
-        <ProductsList products={products} />
+        <ProductsList products={displayedProducts} />
       </section>
 
-      <Pagination pages={2} />
+      <Pagination
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+        pages={2}
+      />
 
       {itemsOnPage}
     </main>
