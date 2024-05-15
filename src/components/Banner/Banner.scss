@@ -29,7 +29,7 @@
       margin: 0;
       grid-column: 2 / -2;
       width: auto;
-      height: calc(80vw / 2.6); // !!!
+      height: calc(80vw / 2.6);
     }
 
     @include on-desktop {

@@ -8,7 +8,7 @@ export const BasketPage = () => {
   const { pathname } = useLocation();
   const { basketProducts, setBasketProducts } = useContext(StoreContext);
 
-  const [isModalVisible, setIsMobileVisible] = useState(false);
+  const [isModalVisible, setIsModalVisible] = useState(false);
 
   const handleDeleteFromBasket = (productId: string) => {
     const newProducts = basketProducts.filter(bp => bp.itemId !== productId);
@@ -60,6 +60,11 @@ export const BasketPage = () => {
     }, 0);
 
     return result;
+  };
+
+  const handleClearBasket = () => {
+    setBasketProducts([]);
+    setIsModalVisible(false);
   };
 
   return (
@@ -128,7 +133,7 @@ export const BasketPage = () => {
             </div>
             <button
               className="total-order__button-buy"
-              onClick={() => setIsMobileVisible(true)}
+              onClick={() => setIsModalVisible(true)}
             >
               Buy
             </button>
@@ -144,7 +149,7 @@ export const BasketPage = () => {
           <div className="modal-content__button-close-container">
             <div
               className="modal-content__button-close"
-              onClick={() => setIsMobileVisible(false)}
+              onClick={() => setIsModalVisible(false)}
             />
           </div>
           <div className="modal-content__message">
@@ -153,7 +158,12 @@ export const BasketPage = () => {
           </div>
 
           <div className="modal-content__button-container">
-            <button className="modal-content__button">Clear Basket</button>
+            <button
+              className="modal-content__button"
+              onClick={handleClearBasket}
+            >
+              Clear Basket
+            </button>
           </div>
         </div>
       </div>

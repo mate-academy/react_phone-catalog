@@ -2,17 +2,12 @@ import './HomePage.scss';
 import { Banner } from '../../components/Banner/Banner';
 import { CarouselProductCards } from '../../components/CarouselProductCards';
 import { ShopByCategory } from '../../components/ShopByCategory';
-import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
-import { getProducts } from '../../utils/api';
+import { useContext } from 'react';
 import { getBiggestSaleProducts, getNewestYearProducts } from '../../utils';
+import { StoreContext } from '../../context/StoreContext';
 
 export const HomePage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
+  const { allProducts } = useContext(StoreContext);
 
   return (
     <div className="home-page">
@@ -25,15 +20,15 @@ export const HomePage = () => {
       <CarouselProductCards
         title={'Brand new models'}
         isDiscount={false}
-        products={getNewestYearProducts(products)}
+        products={getNewestYearProducts(allProducts)}
       />
 
-      <ShopByCategory products={products} />
+      <ShopByCategory products={allProducts} />
 
       <CarouselProductCards
         title={'Hot prices'}
         isDiscount
-        products={getBiggestSaleProducts(products)}
+        products={getBiggestSaleProducts(allProducts)}
       />
     </div>
   );

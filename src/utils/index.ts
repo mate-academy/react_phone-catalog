@@ -123,6 +123,10 @@ export const correctColor = (nameColor: string) => {
       return '#7dd3c5';
     case 'blue':
       return '#277592';
+    case 'graphite':
+      return '#5a5c5e';
+    case 'sierrablue':
+      return '#97b7d8';
 
     default:
       return nameColor;

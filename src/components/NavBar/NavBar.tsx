@@ -8,15 +8,8 @@ import { StoreContext } from '../../context/StoreContext';
 const navBarLinkItems = ['home', 'phones', 'tablets', 'accessories'];
 
 export const NavBar = () => {
-  const [mobileNavBarTransition, setMobileNavBarTransition] = useState(100);
-  // const [isVisibleMobileNavBar, setIsVisibleMobileNavBar] = useState(false);
   const { favouriteProducts, basketProducts } = useContext(StoreContext);
-
-  // const handleMobileNavBar = () => {
-  //   setMobileNavBarTransition(0);
-
-  //   setIsVisibleMobileNavBar(true);
-  // };
+  const [mobileNavBarTransition, setMobileNavBarTransition] = useState(100);
 
   return (
     <>
@@ -83,26 +76,14 @@ export const NavBar = () => {
         <div
           className="navbar-button button__mobile-menu"
           onClick={() => setMobileNavBarTransition(0)}
-          // onClick={handleMobileNavBar}
         />
       </nav>
 
       <NavBarMobile
         transition={mobileNavBarTransition}
-        // isVisible={isVisibleMobileNavBar}
         setTransition={setMobileNavBarTransition}
-        // setIsVisible={setIsVisibleMobileNavBar}
         navBarLinkItems={navBarLinkItems}
       />
-      {/* {isVisibleMobileNavBar && (
-        <NavBarMobile
-          transition={mobileNavBarTransition}
-          // isVisible={isVisibleMobileNavBar}
-          setTransition={setMobileNavBarTransition}
-          // setIsVisible={setIsVisibleMobileNavBar}
-          navBarLinkItems={navBarLinkItems}
-        />
-      )} */}
     </>
   );
 };

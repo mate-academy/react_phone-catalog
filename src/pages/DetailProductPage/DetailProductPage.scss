@@ -353,6 +353,12 @@
       cursor: pointer;
       box-shadow: 0px 3px 13px 0px #17203166;
     }
+
+    &--active {
+      border: 1px solid $regular-gray-color;
+      color: #27AE60;
+      background-color: white;
+    }
   }
 
   &__button--favourite {
@@ -368,6 +374,11 @@
     &:hover {
       cursor: pointer;
       border: 1px solid $main-text-color;
+    }
+
+    &--active {
+      border: 1px solid $regular-gray-color;
+      background-image: url(../../../public/img/icons-image/heart_red.svg);
     }
   }
 }

@@ -1,6 +1,6 @@
 import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import './DetailProductPage.scss';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getDetailProducts, getProducts } from '../../utils/api';
 import classNames from 'classnames';
 import { Product } from '../../types/Product';
@@ -8,13 +8,20 @@ import { capitalize, correctColor, scrollOnTop } from '../../utils';
 import { ProductExtended } from '../../types/ProductExtended';
 import { CarouselProductCards } from '../../components/CarouselProductCards';
 import { useSwipe } from '../../hooks/useSwipe';
-// import { ProductNotFound } from '../../components/ProductNotFound';
-import { Loader } from '../../components/Loader';
+import { ProductNotFound } from '../../components/ProductNotFound';
+import { StoreContext } from '../../context/StoreContext';
 
 export const DetailProductPage = () => {
   const { productId } = useParams();
   const navigate = useNavigate();
   const { state, pathname } = useLocation();
+  const {
+    basketProducts,
+    setBasketProducts,
+    favouriteProducts,
+    setFavouriteProducts,
+    allProducts,
+  } = useContext(StoreContext);
 
   const [currentProduct, setCurrentProduct] = useState<ProductExtended | null>(
     null,
@@ -27,6 +34,18 @@ export const DetailProductPage = () => {
   const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
 
   const currentCategory = pathname.split('/')[1];
+
+  const isFavourite = () => {
+    const favorutriteIds = favouriteProducts.map(fp => fp.itemId);
+
+    return favorutriteIds.includes(productId ? productId : '');
+  };
+
+  const isInBasket = () => {
+    const basketIds = basketProducts.map(bp => bp.itemId);
+
+    return basketIds.includes(productId ? productId : '');
+  };
 
   useEffect(() => {
     scrollOnTop();
@@ -81,6 +100,45 @@ export const DetailProductPage = () => {
     }
   };
 
+  const handleAddToBasket = () => {
+    const currentProductShort = allProducts.find(p => p.itemId === productId);
+
+    if (!currentProductShort) {
+      return;
+    }
+
+    const productWithAmount = {
+      ...currentProductShort,
+      amount: 1,
+    };
+
+    if (isInBasket()) {
+      const newProducts = basketProducts.filter(bp => bp.itemId !== productId);
+
+      setBasketProducts(newProducts);
+    } else {
+      setBasketProducts([...basketProducts, productWithAmount]);
+    }
+  };
+
+  const handleAddToFavourite = () => {
+    const currentProductShort = allProducts.find(p => p.itemId === productId);
+
+    if (!currentProductShort) {
+      return;
+    }
+
+    if (isFavourite()) {
+      const newProducts = favouriteProducts.filter(
+        fp => fp.itemId !== productId,
+      );
+
+      setFavouriteProducts(newProducts);
+    } else {
+      setFavouriteProducts([...favouriteProducts, currentProductShort]);
+    }
+  };
+
   const handleMoveSlidesLeft = () => {
     setSelectedPhotoIndex(prevIndex =>
       prevIndex === 0 ? productImages.length - 1 : prevIndex - 1,
@@ -96,8 +154,7 @@ export const DetailProductPage = () => {
   const elementRef = useSwipe(handleMoveSlidesLeft, handleMoveSlidesRight);
 
   return !currentProduct ? (
-    // <ProductNotFound />
-    <Loader />
+    <ProductNotFound />
   ) : (
     <>
       <div className="history-path">
@@ -204,8 +261,20 @@ export const DetailProductPage = () => {
             </div>
 
             <div className="to-order__buttons">
-              <button className="buttons__button--add">Add to card</button>
-              <button className="buttons__button--favourite" />
+              <button
+                className={classNames('buttons__button--add', {
+                  'buttons__button--add--active': isInBasket(),
+                })}
+                onClick={handleAddToBasket}
+              >
+                Add to card
+              </button>
+              <button
+                className={classNames('buttons__button--favourite', {
+                  'buttons__button--favourite--active': isFavourite(),
+                })}
+                onClick={handleAddToFavourite}
+              />
             </div>
           </div>
 

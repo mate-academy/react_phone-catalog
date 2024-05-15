@@ -8,9 +8,7 @@
   right: 0;
   z-index: 1;
 
-  transition: transform;
   transition-duration: $middle-duration;
-  // transition-delay: $middle-duration ;
 
   @include on-tablet {
     display: none;
