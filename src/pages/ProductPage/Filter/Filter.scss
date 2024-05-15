@@ -1,0 +1,65 @@
+@use '../../../utils/mixins' as *;
+@use '../../../utils/variables' as *;
+
+.filter {
+  position: relative;
+
+  &__name {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+    color: $color-secondary;
+  }
+
+  &__filter {
+    width: 100%;
+
+    background-color: $color-white;
+    border: 1px solid $color-icons-placeholders;
+
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+
+    padding: 10px 0 10px 12px;
+
+    appearance: none;
+    background-image: url(../../../../public/icons/arrow-down-disabled.svg);
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 4px);
+  }
+}
+
+.dropdown {
+  padding: 7px 0;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+
+  &__option {
+    width: 100%;
+    background-color: $color-white;
+
+    border: none;
+
+    font-family: $font-family;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+
+    padding: 10px 0 10px 12px;
+
+    &--active {
+      background-color: $color-elements;
+    }
+  }
+}

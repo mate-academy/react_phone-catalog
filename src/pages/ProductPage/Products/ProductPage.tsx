@@ -4,17 +4,14 @@ import { Product } from '../../../types/ProductCard';
 import { ProductCategories } from '../../../types/ProductCategories';
 import { getProducts } from '../../../helpers/getProducts';
 import { getPageTitle } from '../../../helpers/getPageTitle';
+import { Pagination } from '../Pagination';
+import { Sort } from '../../../types/Sort';
+import { Filter } from '../Filter/Filter';
 import './ProductPage.scss';
 
 type Props = {
   category: ProductCategories;
 };
-
-export enum Sort {
-  Newest = 'newest',
-  Alphabetically = 'alphabetically',
-  Cheapest = 'cheapest',
-}
 
 export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -79,81 +76,50 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
       <div className="filters product-page__filters">
         <div className="filters__item">
-          <p className="filters__name">Sort by</p>
-          <select className="filters__filter">
-            {/* <option
-              className="filters__option"
-              onClick={() => setSort(Sort.Newest)}
-              value={Sort.Newest}
-              defaultChecked={true}
-            ></option> */}
-            <option
-              className="filters__option"
-              onClick={() => setSort(Sort.Newest)}
-              value={Sort.Newest}
-            >
-              Newest
-            </option>
-            <option
-              className="filters__option"
-              onClick={() => setSort(Sort.Alphabetically)}
-              value={Sort.Alphabetically}
-            >
-              Alphabetically
-            </option>
-            <option
-              className="filters__option"
-              onClick={() => setSort(Sort.Cheapest)}
-              value={Sort.Cheapest}
-            >
-              Cheapest
-            </option>
-          </select>
+          <Filter sort={sort} setSort={setSort} />
         </div>
+
         <div className="filters__item">
           <p className="filters__name">Items on page</p>
-          <select className="filters__filter">
-            {/* <option
-              className="filters__option"
-              onClick={() => setSort(Sort.Newest)}
-              value={Sort.Newest}
-              defaultChecked={true}
-            ></option> */}
-            <option
-              className="filters__option"
+          <button className="filters__filter"></button>
+          <div className="dropdown">
+            <button
+              className="dropdown__option"
               onClick={() => setItemsOnPage('all')}
               value={'all'}
             >
               all
-            </option>
-            <option
-              className="filters__option"
+            </button>
+            <button
+              className="dropdown__option"
               onClick={() => setItemsOnPage(4)}
               value={4}
             >
               4
-            </option>
-            <option
-              className="filters__option"
+            </button>
+            <button
+              className="dropdown__option"
               onClick={() => setItemsOnPage(8)}
               value={8}
             >
               8
-            </option>
-            <option
-              className="filters__option"
+            </button>
+            <button
+              className="dropdown__option"
               onClick={() => setItemsOnPage(16)}
               value={16}
             >
               16
-            </option>
-          </select>
+            </button>
+          </div>
         </div>
       </div>
 
       <div className="product-page__products-wrapper">
         <ProductsList products={products} />
       </div>
+
+      <Pagination pages={2} />
 
       {itemsOnPage}
     </section>
