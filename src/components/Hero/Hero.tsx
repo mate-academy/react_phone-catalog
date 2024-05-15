@@ -11,7 +11,7 @@ export const Hero = () => {
     <div className="container">
       <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
       <div className="home__slider">
-        <Slider slides={slides} />
+        <Slider slides={slides} settings={{ autoplay: true }} />
       </div>
     </div>
   );

@@ -28,8 +28,11 @@
     width: 100%;
     height: 100%;
     background-color: $color-primary;
-    transform: translateX(100%);
-    transition: transform 0.5s ease-in-out;
+    opacity: 0;
+    transition:
+      opacity 0.5s ease-in-out,
+      transform 0.5s ease-in-out; // Added transition for transform
+
     object-fit: cover;
     z-index: -1;
 
@@ -38,19 +41,18 @@
     }
 
     &.active {
+      opacity: 1;
+      z-index: 1;
       transform: translateX(0%);
-      z-index: 2;
     }
 
-    // &.next {
-    //   transform: translateX(100%);
-    //   // z-index: -1;
-    // }
+    &.next {
+      transform: translateX(100%);
+    }
 
-    // &.prev {
-    //   transform: translateX(-100%);
-    //   // z-index: -1;
-    // }
+    &.prev {
+      transform: translateX(-100%);
+    }
   }
 
   &__control {
@@ -119,15 +121,3 @@
     }
   }
 }
-
-// .active {
-//   transform: translateX(0%);
-//   z-index: 1;
-// }
-// .next {
-//   transform: translateX(100%);
-// }
-// .prev {
-//   transform: translateX(-100%);
-//   // transition: transform 1s ease-in-out;
-// }
