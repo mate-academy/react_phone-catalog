@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
 import { ProductsList } from '../ProductsList';
 import { Product } from '../../../types/ProductCard';
-import { ProductCategories } from '../../../types/ProductCategories';
+import { Pagination } from '../Pagination';
 import { getProducts } from '../../../helpers/getProducts';
 import { getPageTitle } from '../../../helpers/getPageTitle';
-import { Pagination } from '../Pagination';
 import { Sort } from '../../../types/Sort';
 import { Filter, Pages } from '../Filter/Filter';
+import { ProductCategories } from '../../../types/ProductCategories';
 import './ProductPage.scss';
 
 type Props = {
@@ -21,23 +21,19 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
 
-  // 4 or 8 or 16 or all
-  const itemsShowed = itemsOnPage === Pages.all ? products.length : itemsOnPage;
-
-  // page 1
-  // display 1 - 4
-  // page 2
-  // display 5 - 8
-
   useEffect(() => {
-    // Choose currently displayed products
-    const currentProducts = products.slice(
-      (currentPage - 1) * itemsShowed + 1,
-      currentPage * itemsShowed + 1,
-    );
+    let currentProducts = products;
+
+    if (itemsOnPage !== Pages.all) {
+      // Choose currently displayed products
+      currentProducts = products.slice(
+        (currentPage - 1) * itemsOnPage + 1,
+        currentPage * itemsOnPage + 1,
+      );
+    }
 
     setDisplayedProducts(currentProducts);
-  }, [currentPage, itemsShowed, products]);
+  }, [currentPage, itemsOnPage, products]);
 
   const pageTitle = getPageTitle(category);
 

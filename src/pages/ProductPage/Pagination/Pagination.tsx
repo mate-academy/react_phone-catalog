@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import './Pagination.scss';
 
 type Props = {
   pages: number;
@@ -12,6 +13,9 @@ export const Pagination: React.FC<Props> = ({
   setCurrentPage,
 }) => {
   const pageNumbers: number[] = [];
+
+  // eslint-disable-next-line no-console
+  console.log('entered');
 
   for (let i = 1; i <= pages; i++) {
     pageNumbers.push(i);
