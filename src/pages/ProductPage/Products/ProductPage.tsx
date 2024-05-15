@@ -17,11 +17,16 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [sort, setSort] = useState<Sort>(Sort.Newest);
   const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
-
   const pageTitle = getPageTitle(category);
 
   useEffect(() => {
-    getProducts(category).then(setProducts);
+    getProducts(category).then((productsFromApi: Product[]) => {
+      {
+        setProducts(
+          productsFromApi.sort((a: Product, b: Product) => b.year - a.year),
+        );
+      }
+    });
   }, [category]);
 
   useEffect(() => {
