@@ -1,73 +1,67 @@
-import { Link, useNavigate, useParams } from 'react-router-dom';
-// import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation, useNavigate, useParams } from 'react-router-dom';
 import './DetailProductPage.scss';
 import { useEffect, useState } from 'react';
-// import { Phone } from '../../types/phones';
-import { getPhones, getProducts } from '../../utils/api';
+import { getDetailProducts, getProducts } from '../../utils/api';
 import classNames from 'classnames';
+import { Product } from '../../types/Product';
+import { capitalize, correctColor, scrollOnTop } from '../../utils';
+import { ProductExtended } from '../../types/ProductExtended';
+import { CarouselProductCards } from '../../components/CarouselProductCards';
 import { useSwipe } from '../../hooks/useSwipe';
-import { Product } from '../../types/products';
-import { scrollOnTop } from '../../utils';
-import { ProductExtended } from '../../types/productExtended';
-
-const CARD_WIDTH_WITH_GAP = 288;
-
-const correctColor = (nameColor: string) => {
-  switch (nameColor) {
-    case 'spacegray':
-      return '#4C4C4C';
-    case 'midnightgreen':
-      return '#5F7170';
-    case 'gold':
-      return '#FCDBC1';
-    case 'purple':
-      return '#d2adef';
-    case 'midnight':
-      return '#4a4a4b';
-    case 'rosegold':
-      return '#cc8f98';
-    case 'green':
-      return '#7dd3c5';
-    case 'blue':
-      return '#277592';
-
-    default:
-      return nameColor;
-  }
-};
+// import { ProductNotFound } from '../../components/ProductNotFound';
+import { Loader } from '../../components/Loader';
 
 export const DetailProductPage = () => {
-  const { phoneId } = useParams();
+  const { productId } = useParams();
   const navigate = useNavigate();
+  const { state, pathname } = useLocation();
 
-  const [currentPhone, setCurrentPhone] = useState<ProductExtended | null>(
+  const [currentProduct, setCurrentProduct] = useState<ProductExtended | null>(
     null,
   );
-  const [selectedPhoto, setSelectedPhoto] = useState<string | null>(null);
+
+  const [productImages, setProductImages] = useState<string[]>([]);
+  const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
+  const [recommendedProducts, setRecommendedProducts] = useState<Product[]>([]);
+
+  const currentCategory = pathname.split('/')[1];
 
   useEffect(() => {
     scrollOnTop();
-  }, [phoneId]);
+  }, [productId]);
 
   useEffect(() => {
-    getPhones().then(result => {
-      const phone = result.find(p => p.id === phoneId);
+    getDetailProducts(currentCategory).then(result => {
+      const product = result.find(p => p.id === productId);
 
-      setCurrentPhone(phone || null);
-      if (phone) {
-        setSelectedPhoto(phone.images[0]);
-        setSelectedColor(phone.color);
-        setSelectedCapacity(phone.capacity);
+      setCurrentProduct(product || null);
+      if (product) {
+        setProductImages(product.images);
+        setSelectedColor(product.color);
+        setSelectedCapacity(product.capacity);
       }
     });
-  }, [phoneId]);
+  }, [productId, currentCategory]);
 
-  // ===================
+  useEffect(() => {
+    const lowPointPrice = (currentProduct?.priceRegular || 1000) - 300;
+    const highPointPrice = (currentProduct?.priceRegular || 1000) + 300;
+
+    getProducts()
+      .then(result =>
+        result
+          .filter(p => p.price < highPointPrice && p.price > lowPointPrice)
+          .filter(p => p.category === currentCategory)
+          .slice(0, 10),
+      )
+      .then(setRecommendedProducts);
+  }, [currentProduct, currentCategory]);
+
   const handleChangePhoneColor = (currentColor: string) => {
-    if (phoneId) {
-      const path = phoneId.split('-');
+    if (productId) {
+      const path = pathname.split('-');
 
       path[path.length - 1] = currentColor;
 
@@ -78,103 +72,105 @@ export const DetailProductPage = () => {
   };
 
   const handleChangePhoneCapacity = (currentCapacity: string) => {
-    if (phoneId) {
-      const path = phoneId.split('-');
+    if (productId) {
+      const path = pathname.split('-');
 
       path[path.length - 2] = currentCapacity.toLowerCase();
 
       navigate(path.join('-'));
     }
   };
-  // ===================
 
-  const [recommendedPhones, setRecommendedPhones] = useState<Product[]>([]);
-  const [transition, setTransition] = useState(0);
-
-  useEffect(() => {
-    const lowPointPrice = (currentPhone?.priceRegular || 1000) - 100;
-    const highPointPrice = (currentPhone?.priceRegular || 1000) + 100;
-
-    getProducts()
-      .then(phones =>
-        phones
-          .filter(p => p.price < highPointPrice && p.price > lowPointPrice)
-          .slice(0, 10),
-      )
-      .then(setRecommendedPhones);
-  }, [currentPhone]);
-
-  const handleSlideLeft = () => {
-    setTransition(prev => prev - CARD_WIDTH_WITH_GAP);
+  const handleMoveSlidesLeft = () => {
+    setSelectedPhotoIndex(prevIndex =>
+      prevIndex === 0 ? productImages.length - 1 : prevIndex - 1,
+    );
   };
 
-  const handleSlideRight = () => {
-    setTransition(prev => prev + CARD_WIDTH_WITH_GAP);
+  const handleMoveSlidesRight = () => {
+    setSelectedPhotoIndex(prevIndex =>
+      prevIndex === productImages.length - 1 ? 0 : prevIndex + 1,
+    );
   };
 
-  const elementRef = useSwipe(handleSlideLeft, handleSlideRight);
+  const elementRef = useSwipe(handleMoveSlidesLeft, handleMoveSlidesRight);
 
-  // console.log("hello");
-
-  return (
+  return !currentProduct ? (
+    // <ProductNotFound />
+    <Loader />
+  ) : (
     <>
       <div className="history-path">
         <Link to="/">
-          <div className="icon icon-home" />
+          <div className="history-path__icon history-path__icon--home" />
         </Link>
-        <div className="icon icon-arrow" />
-        <Link to="/phones" className="current-page-name">
-          Phones
+        <div className="history-path__icon history-path__icon--arrow" />
+        <Link to={`/${currentCategory}`} className="history-path__page-name">
+          {capitalize(currentCategory)}
         </Link>
-        <div className="icon icon-arrow" />
-        <Link to={`/phones/${currentPhone?.id}`} className="current-page-name">
-          {currentPhone?.name}
+        <div className="history-path__icon history-path__icon--arrow" />
+        <Link
+          className="history-path__page-name"
+          to={`/${currentCategory}/${currentProduct?.id}`}
+        >
+          {currentProduct?.name}
         </Link>
       </div>
 
-      <div className="history-path history-path__back">
-        <div className="icon icon-arrow-back" />
-        <Link to="/phones" className="current-page-name">
+      <div className="history-path">
+        <div className="history-path__icon history-path__icon--arrow--back" />
+        <Link
+          to={state ? `${state.pathname}?${state.search}` : '..'}
+          className="history-path__page-name"
+        >
           Back
         </Link>
       </div>
 
-      <h1 className="mobile-phones__phone-name">{currentPhone?.name}</h1>
-      <div className="mobile-phones__main-content">
-        <div className="gallery__main-photo-container">
-          <img
-            className="gallery__main-photo"
-            src={selectedPhoto || currentPhone?.images[0]}
-          />
+      <h1 className="product__title">{currentProduct?.name}</h1>
+
+      <div className="product__main-content">
+        <div className="main-content__gallery" ref={elementRef}>
+          <div className="gallery__title-photo">
+            {productImages.map((image, index) => (
+              <img
+                className={classNames('title-photo', {
+                  'title-photo--selected': index === selectedPhotoIndex,
+                })}
+                key={image}
+                src={image}
+              />
+            ))}
+          </div>
+
+          <div className="gallery__photos-list">
+            {productImages.map((image, index) => (
+              <img
+                className={classNames('photos-list__photo', {
+                  'photos-list__photo--selected': index === selectedPhotoIndex,
+                })}
+                src={image}
+                key={image}
+                onClick={() => setSelectedPhotoIndex(index)}
+              />
+            ))}
+          </div>
         </div>
 
-        <div className="gallery__photos-previews">
-          {currentPhone?.images.map((image, index) => (
-            <img
-              className={classNames('gallery__photo', {
-                'gallery__photo-selected': image === selectedPhoto,
-              })}
-              src={image}
-              key={index + 1}
-              onClick={() => setSelectedPhoto(image)}
-            />
-          ))}
-        </div>
-
-        <div className="mobile-phones__detailed-card detailed-card">
-          <div className="detailed-card__available-color">
+        <div className="main-content__detail-card detail-card">
+          <div className="detail-card__available-color">
             <div className="available-color__text">Available colors</div>
-            <div className="available-color__buttons">
-              {currentPhone?.colorsAvailable.map(color => (
+            <div className="available-color__color-buttons">
+              {currentProduct?.colorsAvailable.map(color => (
                 <button
                   key={color}
-                  className={classNames('available-color__button', {
-                    'available-color__button-selected': selectedColor === color,
+                  className={classNames('color-buttons__button', {
+                    'color-buttons__button--selected': selectedColor === color,
                   })}
                   onClick={() => handleChangePhoneColor(color)}
                 >
                   <div
-                    className="available-color__button-color"
+                    className="button__internal-color"
                     style={{ backgroundColor: correctColor(color) }}
                   />
                 </button>
@@ -182,14 +178,15 @@ export const DetailProductPage = () => {
             </div>
           </div>
 
-          <div className="detailed-card__select-capacity">
+          <div className="detail-card__select-capacity">
             <div className="select-capacity__text">Select capacity</div>
+
             <div className="select-capacity__buttons">
-              {currentPhone?.capacityAvailable.map(cap => (
+              {currentProduct?.capacityAvailable.map(cap => (
                 <button
                   key={cap}
                   className={classNames('select-capacity__button', {
-                    'select-capacity__button-selected':
+                    'select-capacity__button--selected':
                       selectedCapacity === cap,
                   })}
                   onClick={() => handleChangePhoneCapacity(cap)}
@@ -200,52 +197,54 @@ export const DetailProductPage = () => {
             </div>
           </div>
 
-          <div className="detailed-card__to-order">
-            <div className="phone-price">
-              <div className="phone-price__new-price">{`$${currentPhone?.priceDiscount}`}</div>
-              <div className="phone-price__old-price">{`$${currentPhone?.priceRegular}`}</div>
+          <div className="detail-card__to-order">
+            <div className="to-order__price">
+              <div className="price__new">{`$${currentProduct?.priceDiscount}`}</div>
+              <div className="price__old">{`$${currentProduct?.priceRegular}`}</div>
             </div>
 
-            <div className="card__buttons">
-              <button className="button__add">Add to card</button>
-              <button className="card-button__favourite">
-                <img src="./img/icons-image/heart_empty.svg" alt="" />
-              </button>
+            <div className="to-order__buttons">
+              <button className="buttons__button--add">Add to card</button>
+              <button className="buttons__button--favourite" />
+            </div>
+          </div>
+
+          <div className="detail-card__characteristic">
+            <div className="characteristic">
+              <span className="characteristic__title">Screen</span>
+              <span className="characteristic__value">
+                {currentProduct?.screen}
+              </span>
             </div>
 
-            <div className="phone__characteristics">
-              <div className="card__discription">
-                <span className="discription__title">Screen</span>
-                <span className="description__value">
-                  {currentPhone?.screen}
-                </span>
-              </div>
+            <div className="characteristic">
+              <span className="characteristic__title">Resolution</span>
+              <span className="characteristic__value">
+                {currentProduct?.resolution}
+              </span>
+            </div>
 
-              <div className="card__discription">
-                <span className="discription__title">Resolution</span>
-                <span className="description__value">
-                  {currentPhone?.resolution}
-                </span>
-              </div>
-              <div className="card__discription">
-                <span className="discription__title">Processor</span>
-                <span className="description__value">
-                  {currentPhone?.processor}
-                </span>
-              </div>
-              <div className="card__discription">
-                <span className="discription__title">RAM</span>
-                <span className="description__value">{currentPhone?.ram}</span>
-              </div>
+            <div className="characteristic">
+              <span className="characteristic__title">Processor</span>
+              <span className="characteristic__value">
+                {currentProduct?.processor}
+              </span>
+            </div>
+
+            <div className="characteristic">
+              <span className="characteristic__title">RAM</span>
+              <span className="characteristic__value">
+                {currentProduct?.ram}
+              </span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="mobile-phones__secondary-content">
-        <div className="mobile-phones__about">
+      <div className="product__secondary-content">
+        <div className="secondary-content__about">
           <div className="about__title">About</div>
-          {currentPhone?.description.map(theme => (
+          {currentProduct?.description.map(theme => (
             <div key={theme.title} className="about__theme">
               <div className="theme__title">{theme.title}</div>
               <div className="theme__text">
@@ -259,150 +258,80 @@ export const DetailProductPage = () => {
           ))}
         </div>
 
-        <div className="mobile-phones__tech-specs">
+        <div className="secondary-content__tech-specs">
           <div className="tech-specs__title">Tech specs</div>
-          <div className="tech-specs__info">
-            <div className="card__discription">
-              <span className="discription__title">Screen</span>
-              <span className="description__value">{currentPhone?.screen}</span>
-            </div>
-
-            <div className="card__discription">
-              <span className="discription__title">Resolution</span>
-              <span className="description__value">
-                {currentPhone?.resolution}
+          <div className="tech-specs__characteristic">
+            <div className="characteristic">
+              <span className="characteristic__title">Screen</span>
+              <span className="characteristic__value">
+                {currentProduct?.screen}
               </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">Processor</span>
-              <span className="description__value">
-                {currentPhone?.processor}
+            <div className="characteristic">
+              <span className="characteristic__title">Resolution</span>
+              <span className="characteristic__value">
+                {currentProduct?.resolution}
               </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">RAM</span>
-              <span className="description__value">{currentPhone?.ram}</span>
-            </div>
-
-            <div className="card__discription">
-              <span className="discription__title">Built in memory</span>
-              <span className="description__value">
-                {currentPhone?.capacity}
+            <div className="characteristic">
+              <span className="characteristic__title">Processor</span>
+              <span className="characteristic__value">
+                {currentProduct?.processor}
               </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">Camera</span>
-              <span className="description__value">{currentPhone?.camera}</span>
+            <div className="characteristic">
+              <span className="characteristic__title">RAM</span>
+              <span className="characteristic__value">
+                {currentProduct?.ram}
+              </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">Screen</span>
-              <span className="description__value">{currentPhone?.screen}</span>
+            <div className="characteristic">
+              <span className="characteristic__title">Capacity</span>
+              <span className="characteristic__value">
+                {currentProduct?.capacity}
+              </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">Zoom</span>
-              <span className="description__value">{currentPhone?.zoom}</span>
+            <div className="characteristic">
+              <span className="characteristic__title">Camera</span>
+              <span className="characteristic__value">
+                {currentProduct?.camera}
+              </span>
             </div>
 
-            <div className="card__discription">
-              <span className="discription__title">Cell</span>
-              <span className="description__value">
-                {currentPhone?.cell.join(', ')}
+            <div className="characteristic">
+              <span className="characteristic__title">Screen</span>
+              <span className="characteristic__value">
+                {currentProduct?.screen}
+              </span>
+            </div>
+
+            <div className="characteristic">
+              <span className="characteristic__title">Zoom</span>
+              <span className="characteristic__value">
+                {currentProduct?.zoom}
+              </span>
+            </div>
+
+            <div className="characteristic">
+              <span className="characteristic__title">Cell</span>
+              <span className="characteristic__value">
+                {currentProduct?.cell.join(', ')}
               </span>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="new-models">
-        <div className="new-models__head">
-          <h2 className="new-models__title">You may also like</h2>
-          <div className="new-models__head-buttons">
-            <button
-              className={classNames(
-                'new-models__button-left new-models__button',
-                { 'disabled-button__left': transition === 0 },
-              )}
-              disabled={transition === 0}
-              onClick={handleSlideLeft}
-            />
-            <button
-              className={classNames(
-                'new-models__button-right new-models__button',
-                {
-                  'disabled-button__right':
-                    transition ===
-                    CARD_WIDTH_WITH_GAP * recommendedPhones.length -
-                      CARD_WIDTH_WITH_GAP * 2,
-                },
-              )}
-              disabled={
-                transition ===
-                CARD_WIDTH_WITH_GAP * recommendedPhones.length -
-                  CARD_WIDTH_WITH_GAP * 2
-              }
-              onClick={handleSlideRight}
-            />
-          </div>
-        </div>
-
-        <div className="new-models__window" ref={elementRef}>
-          <div
-            className="new-models__carousel"
-            style={{
-              width: `${recommendedPhones.length * CARD_WIDTH_WITH_GAP}px`,
-              transform: `translateX(-${transition}px)`,
-            }}
-          >
-            {recommendedPhones.map(phone => {
-              const { itemId, image, name, price, screen, capacity, ram } =
-                phone;
-
-              return (
-                <Link
-                  to={`/phones/${itemId}`}
-                  key={itemId}
-                  className="card-link"
-                >
-                  <div className="card" key={itemId}>
-                    <img className="card__image" src={image} alt={itemId} />
-
-                    <div className="card__title">{name}</div>
-
-                    <div className="card__price">{`$${price}`}</div>
-
-                    <div className="card__characteristics">
-                      <div className="card__discription">
-                        <span className="discription__title">Screen</span>
-                        <span className="description__value">{screen}</span>
-                      </div>
-                      <div className="card__discription">
-                        <span className="discription__title">Capacity</span>
-                        <span className="description__value">{capacity}</span>
-                      </div>
-                      <div className="card__discription">
-                        <span className="discription__title">RAM</span>
-                        <span className="description__value">{ram}</span>
-                      </div>
-                    </div>
-
-                    <div className="card__buttons">
-                      <button className="button__add">Add to card</button>
-                      <button className="card-button__favourite">
-                        <img src="./img/icons-image/heart_empty.svg" alt="" />
-                      </button>
-                    </div>
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </div>
+      <CarouselProductCards
+        title={'You may also like'}
+        products={recommendedProducts}
+        isDiscount
+      />
     </>
   );
 };

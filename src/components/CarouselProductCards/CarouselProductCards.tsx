@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import './CarouselProductCards.scss';
-import { Product } from '../../types/products';
+import { Product } from '../../types/Product';
 import classNames from 'classnames';
 import { useSwipe } from '../../hooks/useSwipe';
 import { ProductCard } from '../ProductCard/ProductCard';
+import { Loader } from '../Loader';
 
-const CARD_WIDTH_WITH_GAP = 251;
+const CARD_WIDTH_WITH_GAP = 288;
 
 type Props = {
   title: string;
@@ -42,7 +43,9 @@ export const CarouselProductCards: React.FC<Props> = ({
 
   const elementRef = useSwipe(handleSlideLeft, handleSlideRight);
 
-  return (
+  return !!!products.length ? (
+    <Loader />
+  ) : (
     <div className="carousel-product-cards">
       <div className="carousel-product-cards__head">
         <div className="head__title">{title}</div>

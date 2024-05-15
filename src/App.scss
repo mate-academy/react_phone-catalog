@@ -2,9 +2,6 @@
 @import './utils/stylesUtils/variables';
 @import './utils/stylesUtils/fonts.scss';
 
-// temporary
-@import './utils/stylesUtils/customSelect.scss';
-
 iframe {
   display: none;
 }
@@ -20,16 +17,3 @@ body {
 .main-container {
   @include content-padding-inline;
 }
-
-input[type="search"]::-webkit-search-cancel-button {
-  appearance: none; /* Отключаем стандартный внешний вид кнопки */
-  width: 16px; /* Задаем ширину крестика */
-  height: 16px; /* Задаем высоту крестика */
-  background-image: url(../public/img/icons-image/button-close.svg); /* Задаем изображение крестика */
-  background-repeat: no-repeat; /* Запрещаем повтор изображения */
-  background-position: center; /* Устанавливаем позицию крестика по центру */
-  cursor: pointer; /* Добавляем указатель при наведении на крестик */
-}
-
-
-

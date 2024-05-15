@@ -1,5 +1,5 @@
-import { CategoryCard } from '../types/categoryCard';
-import { Product } from '../types/products';
+import { CategoryCard } from '../types/CategoryCard';
+import { Product } from '../types/Product';
 
 export const scrollOnTop = (point = 0) =>
   window.scrollTo({ top: point, behavior: 'smooth' });
@@ -99,4 +99,32 @@ export const getCategoriesCards = (allProducts: Product[]): CategoryCard[] => {
     amount: getProductsByCategoryName(category).length,
     image: getImagesByCategory(category),
   }));
+};
+
+export const capitalize = (str: string) => {
+  return str.charAt(0).toUpperCase() + str.slice(1);
+};
+
+export const correctColor = (nameColor: string) => {
+  switch (nameColor) {
+    case 'spacegray':
+      return '#4C4C4C';
+    case 'midnightgreen':
+      return '#5F7170';
+    case 'gold':
+      return '#FCDBC1';
+    case 'purple':
+      return '#d2adef';
+    case 'midnight':
+      return '#4a4a4b';
+    case 'rosegold':
+      return '#cc8f98';
+    case 'green':
+      return '#7dd3c5';
+    case 'blue':
+      return '#277592';
+
+    default:
+      return nameColor;
+  }
 };

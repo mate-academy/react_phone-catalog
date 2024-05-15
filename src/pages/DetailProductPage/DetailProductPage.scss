@@ -1,18 +1,59 @@
 @import '../../utils/stylesUtils/variables.scss';
 @import '../../utils/stylesUtils/mixin.scss';
 
-.icon-arrow-back {
-  background-image: url(../../../public/img/icons-image/button-left-arrow.svg);
+.history-path {
+  display: flex;
+  gap: 8px;
+  margin-block: 24px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom 1px center;
+
+    &--home {
+      background-image: url(../../../public/img/icons-image/icon-home.svg);
+
+      transition-duration: $short-duration;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+
+    &--arrow {
+      background-image: url(../../../public/img/icons-image/button-right-arrow-disabled.svg);
+
+      &--back {
+        background-image: url(../../../public/img/icons-image/button-left-arrow-disabled.svg);
+      }
+    }
+  }
+
+  &__page-name {
+    display: block;
+    text-decoration: none;
+
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+
+    &:hover {
+      color: $main-text-color;
+      scale: 1.05;
+    }
+  }
 }
 
-.mobile-phones {
-  &__phone-name {
+.product {
+  &__title {
     margin: 0;
     font-family: 'Bold';
     font-size: 22px;
     line-height: 30.8px;
     text-align: left;
-    color: #313237;
+    color: $main-text-color;
 
     margin-bottom: 32px;
 
@@ -36,78 +77,64 @@
       @include page-grid;
     }
   }
+}
 
-  &__about {
-    margin-block: 56px;
+.main-content {
+  &__gallery {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      height: auto;
+      width: auto;
+      grid-column: 1 / 8;
+    }
 
     @include on-desktop {
       grid-column: 1 / 13;
     }
   }
 
-  &__tech-specs {
-    margin-block: 56px;
-
-    @include on-desktop {
-      grid-column: 15 / -1;
-    }
-  }
-
-  &__detailed-card {
+  &__detail-card {
     @include on-tablet {
-      display: grid;
       grid-column: 8 / -1;
     }
 
     @include on-desktop {
-      grid-column: 14 / 21;
+      grid-column: 15 / 21;
     }
   }
 }
 
 .gallery {
-  display: grid;
-  gap: 16px;
-  margin-top: 32px;
-  margin-bottom: 40px;
-
-  &__main-photo-container {
-    height: calc(100vw - 32px); //!!!
-
-    margin-bottom: 16px;
+  &__title-photo {
+    position: relative;
+    height: calc(100vw - ($content-padding-phone * 2));
+    overflow: hidden;
 
     @include on-tablet {
-      display: grid;
+      height: 44vw; // on my way the best solution
+      width: auto;
       grid-column: 2 / 8;
       grid-row: 1;
-
-      // width: 44.84vw; //!!!
-      width: auto;
-      // height: 44.84vw; //!!!
     }
 
     @include on-desktop {
-      grid-column: 3 / 13;
+      width: 464px;
+      height: 464px;
 
-      width: 464px; //!!!
-      height: 464px; // !!!
+      grid-column: 3 / 13;
     }
   }
 
-  &__main-photo {
-    // height: 100%;
-    width: 100%;
-    object-fit: contain;
-    overflow: hidden;
-  }
-
-  &__photos-previews {
+  &__photos-list {
     height: 50px;
     display: flex;
     gap: 8px;
     justify-content: center;
 
-    margin-bottom: 40px;
+    // margin-bottom: 40px;
 
     @include on-tablet {
       display: grid;
@@ -121,16 +148,32 @@
       width: 80px;
     }
   }
+}
 
+.title-photo {
+  position: absolute;
+  opacity: 0;
+
+  &--selected {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.photos-list {
   &__photo {
     width: 50px;
     object-fit: contain;
     box-sizing: border-box;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $regular-gray-color;
+
+    transition-duration: $short-duration;
 
     @include on-tablet {
       width: 100%;
-      height: 6.26vw;
+      height: 6.26vw; // solution to handle size on bigger tablets
     }
 
     @include on-desktop {
@@ -143,21 +186,30 @@
       scale: 1.05;
     }
 
-    &-selected {
-      border: 1px solid #313237;
+    &--selected {
+      border: 1px solid $main-text-color;
     }
   }
 }
 
-.detailed-card {
+.detail-card {
   &__available-color {
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $regular-gray-color;
     margin-bottom: 24px;
   }
 
   &__select-capacity {
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $regular-gray-color;
     margin-bottom: 32px;
+  }
+
+  &__to-order {
+    margin-block: 32px;
+  }
+
+  &__characteristic {
+    display: grid;
+    gap: 8px;
   }
 }
 
@@ -167,23 +219,24 @@
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
-    text-align: left;
-    color: #89939a;
+    color: $secondary-text-color;
   }
 
-  &__buttons {
+  &__color-buttons {
     display: flex;
     gap: 8px;
     margin-top: 8px;
     margin-bottom: 24px;
   }
+}
 
+.color-buttons {
   &__button {
-    padding-inline: 2.5px;
+    padding: 2px;
     height: 32px;
     width: 32px;
     border-radius: 50%;
-    border: 1px solid #e2e6e9;
+    border: 1px solid $regular-gray-color;
     box-sizing: border-box;
 
     transition-duration: 150ms;
@@ -191,19 +244,19 @@
     &:hover {
       cursor: pointer;
       opacity: 0.85;
-      border: 1px solid #313237;
+      border: 1px solid $main-text-color;
     }
 
-    &-color {
-      height: 26px;
-      width: 26px;
-      border-radius: 50%;
-    }
-
-    &-selected {
-      border: 1px solid #313237;
+    &--selected {
+      border: 1px solid $main-text-color;
     }
   }
+}
+
+.button__internal-color {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
 }
 
 .select-capacity {
@@ -224,82 +277,135 @@
   }
 
   &__button {
-    height: 32px;
-
     font-family: 'Regular';
     font-size: 14px;
     line-height: 21px;
     text-align: center;
 
-    background-color: #fff;
-    border: 1px solid #b4bdc3;
+    height: 32px;
+    background-color: inherit;
+    border: 1px solid $dark-gray-color;
     box-sizing: border-box;
 
     transition-duration: 150ms;
 
     &:hover {
-      border: 1px solid #313237;
+      border: 1px solid $main-text-color;
       box-sizing: border-box;
       cursor: pointer;
     }
 
-    &-selected {
-      border: 1px solid #313237;
-      background-color: #313237;
-      color: #fff;
+    &--selected {
+      border: 1px solid $main-text-color;
+      background-color: $main-text-color;
+      color: white;
     }
   }
 }
 
-.phone-price {
-  display: flex;
-  margin-bottom: 16px;
+.to-order {
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
 
-  &__new-price {
+  &__buttons {
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 40px;
+    column-gap: 8px;
+  }
+}
+
+.price {
+  &__new {
     font-family: 'Bold';
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
-
-    display: flex;
-    align-items: center;
-    margin-top: 8px;
-    margin-right: 8px;
   }
 
-  &__old-price {
+  &__old {
     font-family: 'Regular';
     font-size: 22px;
     line-height: 28.12px;
 
     display: flex;
     align-items: center;
-    margin-top: 8px;
-    font-weight: 600;
     text-decoration: line-through;
-    color: #89939a;
+    color: $secondary-text-color;
   }
 }
 
-.phone__characteristics {
-  margin-top: 32px;
-}
-
-.theme {
-  &__title {
+.buttons {
+  &__button--add {
     font-family: 'SemiBold';
-    font-size: 16px;
-    line-height: 20.45px;
-    text-align: left;
-    color: #313237;
-  }
-
-  &__text {
-    font-family: 'Regular';
     font-size: 14px;
     line-height: 21px;
-    text-align: left;
-    color: #89939a;
+    color: white;
+    background-color: $main-text-color;
+    border: none;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+
+  &__button--favourite {
+    border: solid 1px $dark-gray-color;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url(../../../public/img/icons-image/heart_empty.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $main-text-color;
+    }
+  }
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+  }
+
+  &__value {
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $main-text-color;
+  }
+}
+
+.secondary-content {
+  &__about {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__tech-specs {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 15 / -1;
+    }
   }
 }
 
@@ -320,23 +426,38 @@
   }
 }
 
+.theme {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 16px;
+    line-height: 20.45px;
+    text-align: left;
+    color: #313237;
+  }
+
+  &__text {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: #89939a;
+  }
+}
+
 .tech-specs {
   &__title {
     font-family: 'SemiBold';
     font-size: 20px;
     line-height: 25.56px;
-    text-align: left;
-    color: #313237;
+    color: $main-text-color;
 
     padding-bottom: 16px;
-    border-bottom: 1px solid #e2e6e9;
+    border-bottom: 1px solid $regular-gray-color;
   }
 
-  &__info {
-    margin-top: 30px;
-  }
-
-  &__tech-specs {
-    margin-bottom: 56px;
+  &__characteristic {
+    display: grid;
+    gap: 8px;
+    padding-top: 25px;
   }
 }

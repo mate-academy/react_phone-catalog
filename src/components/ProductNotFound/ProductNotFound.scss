@@ -1,0 +1,25 @@
+.product__not-found {
+  position: relative;
+}
+
+.not-found {
+  &__title {
+    position: absolute;
+    // left: 50%;
+    top: 25%;
+    right: 0;
+
+    font-family: "SemiBold";
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__image {
+    height: calc(100vh - 48px);
+    background-image: url(../../../public/img/product-not-found.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}

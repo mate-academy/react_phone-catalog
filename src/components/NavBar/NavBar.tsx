@@ -1,13 +1,15 @@
 import { Link, NavLink } from 'react-router-dom';
 import './NavBar.scss';
 import classNames from 'classnames';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { NavBarMobile } from '../NavBarMobile';
+import { StoreContext } from '../../context/StoreContext';
 
 const navBarLinkItems = ['home', 'phones', 'tablets', 'accessories'];
 
 export const NavBar = () => {
   const [mobileNavBarTransition, setMobileNavBarTransition] = useState(100);
+  const { favouriteProducts, basketProducts } = useContext(StoreContext);
 
   return (
     <>
@@ -39,12 +41,35 @@ export const NavBar = () => {
           </ul>
 
           <div className="navbar__buttons">
-            <Link to="/favourite" className="navbar-button button__favourite">
-              <span className="counter counter-favourite">18</span>
-            </Link>
-            <Link to="/basket" className="navbar-button button__basket">
-              <span className="counter counter-basket">99</span>
-            </Link>
+            <NavLink
+              to="/favourites"
+              className={({ isActive }) =>
+                classNames('navbar-button button__favourite', {
+                  'active-navlink': isActive,
+                })
+              }
+            >
+              {!!favouriteProducts.length && (
+                <span className="counter counter-favourite">
+                  {favouriteProducts.length}
+                </span>
+              )}
+            </NavLink>
+
+            <NavLink
+              to="/basket"
+              className={({ isActive }) =>
+                classNames('navbar-button button__basket', {
+                  'active-navlink': isActive,
+                })
+              }
+            >
+              {!!basketProducts.length && (
+                <span className="counter counter-basket">
+                  {basketProducts.length}
+                </span>
+              )}
+            </NavLink>
           </div>
         </div>
 

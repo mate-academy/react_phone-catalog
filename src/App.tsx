@@ -2,15 +2,18 @@ import './App.scss';
 import { Outlet } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { NavBar } from './components/NavBar';
+import { StoreProvider } from './context/StoreContext';
 
 export const App = () => (
   <>
-    <NavBar />
+    <StoreProvider>
+      <NavBar />
 
-    <div className="main-container">
-      <Outlet />
-    </div>
+      <div className="main-container">
+        <Outlet />
+      </div>
 
-    <Footer />
+      <Footer />
+    </StoreProvider>
   </>
 );

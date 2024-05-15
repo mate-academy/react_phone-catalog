@@ -1,4 +1,5 @@
-import { Product } from '../types/products';
+import { SortByOption } from '../components/FilterForms';
+import { Product } from '../types/Product';
 
 export function getPrepearedProducts(
   products: Product[],
@@ -8,33 +9,36 @@ export function getPrepearedProducts(
 
   let preperedProducts = [...defaultSorting];
 
-  const sortParam = searchParams.get('sortBy') || null;
-  const orderParam = searchParams.get('order') || null;
+  const sortByParam = searchParams.get('sortBy') || null;
 
   const queryParam = searchParams.get('query') || '';
 
-  if (sortParam) {
-    switch (sortParam) {
-      case 'price':
+  if (sortByParam) {
+    switch (sortByParam) {
+      case SortByOption.SmallerPrice:
         preperedProducts = preperedProducts.sort(
           (p1, p2) => p1.price - p2.price,
         );
         break;
-      case 'new':
-        preperedProducts = preperedProducts.sort((p1, p2) => p2.year - p1.year);
+
+      case SortByOption.OldFirst:
+        preperedProducts = preperedProducts.sort((p1, p2) => p1.year - p2.year);
         break;
+
+      case SortByOption.BiggerPrice:
+        preperedProducts = preperedProducts.sort(
+          (p1, p2) => p2.price - p1.price,
+        );
+        break;
+
       default:
         return preperedProducts;
     }
   }
 
-  if (orderParam === 'desc') {
-    preperedProducts.reverse();
-  }
-
   if (queryParam) {
     preperedProducts = preperedProducts.filter(product =>
-      product.name.toLowerCase().includes(queryParam.toLowerCase()),
+      product.name.toLowerCase().includes(queryParam.toLowerCase().trim()),
     );
   }
 

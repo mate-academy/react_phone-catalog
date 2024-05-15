@@ -1,9 +1,8 @@
-import { ProductExtended } from '../types/productExtended';
-import { Product } from '../types/products';
+import { ProductExtended } from '../types/ProductExtended';
+import { Product } from '../types/Product';
 
-// const BASE_URL = 'http://localhost:3000/api';
-const BASE_URL = 'https://ogerenko.github.io/react_phone-catalog/api';
-// http://localhost:3000/api/products.json
+const BASE_URL = 'http://localhost:3000/api';
+// const BASE_URL = 'https://ogerenko.github.io/react_phone-catalog/api';
 
 function wait(delay: number): Promise<void> {
   return new Promise(resolve => {
@@ -21,6 +20,5 @@ function get<T>(url: string): Promise<T> {
 
 export const getProducts = () => get<Product[]>('/products');
 
-export const getPhones = () => get<ProductExtended[]>('/phones');
-export const getTablets = () => get<ProductExtended[]>('/tablets');
-export const getAccessories = () => get<ProductExtended[]>('/accessories');
+export const getDetailProducts = (category: string) =>
+  get<ProductExtended[]>(`/${category}`);

@@ -3,7 +3,7 @@ import { Banner } from '../../components/Banner/Banner';
 import { CarouselProductCards } from '../../components/CarouselProductCards';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { useEffect, useState } from 'react';
-import { Product } from '../../types/products';
+import { Product } from '../../types/Product';
 import { getProducts } from '../../utils/api';
 import { getBiggestSaleProducts, getNewestYearProducts } from '../../utils';
 
