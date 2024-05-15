@@ -1,15 +1,14 @@
 @import '../../styles/utils';
 
 .productCard {
-  box-sizing: border-box;
+  width: 212px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   gap: 8px;
-  width: 212px;
   padding: 32px;
-  border: 1px solid;
-  border-radius: 8px;
+  border: 1px solid $color-element;
+  border-radius: $border-radius;
 
   @include on-tablet {
     width: 237px;
@@ -19,8 +18,9 @@
     width: 272px;
   }
 
-  a {
-    cursor: pointer;
+  & a {
+    display: flex;
+    flex-direction: column;
   }
 
   &__img {
@@ -64,12 +64,19 @@
   }
 
   &__specs {
-    padding-top: 8px;
-    margin-bottom: 8px;
+    padding-block: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
     &--spec {
       display: flex;
       justify-content: space-between;
       gap: 8px;
+
+      &--text-1 {
+        color: $color-secondary;
+      }
     }
   }
 

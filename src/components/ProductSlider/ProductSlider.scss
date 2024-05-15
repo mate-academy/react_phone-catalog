@@ -1,0 +1,51 @@
+@import '../../styles/utils';
+
+.product-slider {
+  @include page-grid;
+
+  row-gap: 24px;
+
+  &__top {
+    grid-column: 1 / -1;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 21px;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    background-color: $color-element;
+
+    &:hover {
+      background-color: $color-white;
+    }
+  }
+
+  &__carousel {
+    overflow: hidden;
+    align-self: center;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    transition: transform 0.5s ease;
+  }
+}

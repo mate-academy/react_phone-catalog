@@ -1,34 +1,26 @@
-import React, { useState, useEffect } from 'react';
-// import './Carousel.scss';
+import React, { useState } from 'react';
+import './ProductSlider.scss';
 import { Product } from '../../types/Product';
 import { SliderSettings } from '../../types/SliderSettings';
 import { ProductCard } from '../ProductCard';
 
 type Props = {
-  items: Product[];
+  elements: Product[];
   settings: SliderSettings;
   title: string; // corrected to lowercase "string"
 };
 
-const ProductSlider: React.FC<Props> = ({ items, settings, title }) => {
-  const { visibleSlides, step, animationDuration, infinite } = settings;
-
-  // Calculate item width based on the number of visible slides
-  const itemWidth = 100 / visibleSlides;
-
+const ProductSlider: React.FC<Props> = ({ elements, settings, title }) => {
+  const { itemWidth, gap, frameSize, step, animationDuration, infinite } =
+    settings;
   const [position, setPosition] = useState(0);
-  const lastPosition = -(items.length - visibleSlides);
+  const lastPosition = -(elements.length - frameSize);
   const nextDisabled = position === lastPosition && !infinite;
   const prevDisabled = position === 0 && !infinite;
 
-  // Calculate frame size based on the number of visible slides
-  const frameSize =
-    items.length <= visibleSlides ? items.length : visibleSlides;
-
   const listStyles = {
-    transform: `translateX(${position * itemWidth}%)`, // Updated to percentage
+    transform: `translateX(${position * (itemWidth + gap)}px)`,
     transition: `transform ${animationDuration}ms`,
-    width: `${frameSize * itemWidth}%`, // Updated width calculation
   };
 
   const handlePrev = () => {
@@ -44,13 +36,6 @@ const ProductSlider: React.FC<Props> = ({ items, settings, title }) => {
 
     setPosition(newPosition);
   };
-
-  useEffect(() => {
-    // Ensure position stays within bounds when items change
-    if (position < lastPosition) {
-      setPosition(lastPosition);
-    }
-  }, [items, lastPosition, position]);
 
   return (
     <div className="product-slider">
@@ -74,11 +59,14 @@ const ProductSlider: React.FC<Props> = ({ items, settings, title }) => {
           </button>
         </div>
       </div>
-      <div className="product-slider__carousel">
+      <div
+        className="product-slider__carousel"
+        style={{ width: `${(itemWidth + gap) * frameSize}px` }}
+      >
         <ul className="product-slider__list" style={listStyles}>
-          {items.map(item => (
-            <li key={item.id} style={{ width: `${itemWidth}%` }}>
-              <ProductCard product={item} />
+          {elements.map(slide => (
+            <li key={slide.id}>
+              <ProductCard product={slide} />
             </li>
           ))}
         </ul>

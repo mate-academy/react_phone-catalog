@@ -1,5 +1,7 @@
 export type SliderSettings = {
-  visibleSlides: number;
+  itemWidth: number;
+  gap: number;
+  frameSize: number;
   step: number;
   animationDuration: number;
   infinite: boolean;

@@ -1,4 +1,5 @@
 import Slider from '../Slider/Slider';
+import './Hero.scss';
 
 export const Hero = () => {
   const slides = [
@@ -8,8 +9,8 @@ export const Hero = () => {
   ];
 
   return (
-    <div className="container">
-      <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+    <div className="hero">
+      <h1 className="hero__title">Welcome to Nice Gadgets store!</h1>
       <div className="home__slider">
         <Slider slides={slides} settings={{ autoplay: true }} />
       </div>

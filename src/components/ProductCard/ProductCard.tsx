@@ -119,6 +119,7 @@ export const ProductCard: React.FC<Props> = ({
             <img src={`${product.image}`} className="productCard__img" alt="" />
             <p className="productCard__title body-text">{product.name}</p>
           </Link>
+
           <div className="productCard__price-block">
             <h3 className="productCard__price-block--price">{`$${product.price}`}</h3>
             {discount && (

@@ -1,3 +1,9 @@
+.buttons {
+  border: none;
+  background-color: $color-accent;
+  color: $color-white;
+}
+
 .button-primary {
   width: 100%;
   height: 40px;
@@ -11,11 +17,13 @@
 }
 
 .button-favourite {
+  background-color: inherit;
   display: flex;
   flex-shrink: 0;
   width: 40px;
   height: 40px;
   border: 1px solid;
+  border-radius: 50%;
   background-repeat: no-repeat;
   background-position: center;
   background-image: url(../../../public/icons/Favourites.svg);
