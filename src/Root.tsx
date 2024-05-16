@@ -7,12 +7,24 @@ import {
 import { App } from './App';
 import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
+import { Products } from './pages/Products';
 
 export const Root = () => (
   <Router>
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
+
+        <Route path="phones">
+          <Route index element={<Products />} />
+        </Route>
+        <Route path="tablets">
+          <Route index element={<Products />} />
+        </Route>
+        <Route path="accessories">
+          <Route index element={<Products />} />
+        </Route>
+
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>
