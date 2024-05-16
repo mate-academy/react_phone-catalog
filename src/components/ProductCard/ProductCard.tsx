@@ -21,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({
   device,
 }) => {
   const {
-    shoppingCart,
+    cart,
     favourites,
     addProductToCart,
     addProductToFavourites,
@@ -40,9 +40,7 @@ export const ProductCard: React.FC<Props> = ({
 
   useEffect(() => {
     if (
-      shoppingCart.find(
-        cart => cart.id === product?.itemId || cart.id === device?.id,
-      )
+      cart.find(item => item.id === product?.itemId || item.id === device?.id)
     ) {
       setIsAddedToCart(true);
     }
@@ -53,7 +51,7 @@ export const ProductCard: React.FC<Props> = ({
     ) {
       setIsAddedToFavourites(true);
     }
-  }, [shoppingCart, favourites, device?.id, product?.id, product?.itemId]);
+  }, [cart, favourites, device?.id, product?.id, product?.itemId]);
 
   if (!product && !device) {
     return null;
@@ -87,7 +85,7 @@ export const ProductCard: React.FC<Props> = ({
       count: 1,
     };
 
-    if (shoppingCart.find(cart => cart.id === newCartProduct.id)) {
+    if (cart.find(item => item.id === newCartProduct.id)) {
       removeProductFromCart(id);
       setIsAddedToCart(false);
 

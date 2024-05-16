@@ -1,5 +1,21 @@
 @import './styles/main';
 
+main {
+  @include content-padding-inline;
+
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
 html {
   font-family: Mont, Arial, sans-serif;
   color: $color-primary;

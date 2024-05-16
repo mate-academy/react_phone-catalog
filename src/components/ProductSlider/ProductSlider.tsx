@@ -8,9 +8,15 @@ type Props = {
   elements: Product[];
   settings: SliderSettings;
   title: string;
+  isDiscount?: boolean;
 };
 
-const ProductSlider: React.FC<Props> = ({ elements, settings, title }) => {
+const ProductSlider: React.FC<Props> = ({
+  elements,
+  settings,
+  title,
+  isDiscount,
+}) => {
   const {
     itemWidth,
     gap,
@@ -87,7 +93,7 @@ const ProductSlider: React.FC<Props> = ({ elements, settings, title }) => {
         <ul className="product-slider__list" style={listStyles}>
           {elements.map(element => (
             <li key={element.id}>
-              <ProductCard product={element} />
+              <ProductCard product={element} discount={isDiscount} />
             </li>
           ))}
         </ul>

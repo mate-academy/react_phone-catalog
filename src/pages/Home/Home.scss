@@ -1,47 +1,31 @@
 @import '../../styles/utils';
 
-main {
-  @include content-padding-inline;
+//   margin-top: 24px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
+//   @include onDesktop {
+//     margin-top: 56px;
+//   }
 
-  @include on-tablet {
-    gap: 64px;
-  }
+//   &__title {
+//     @extend %h2;
+//     margin-bottom: 24px;
 
-  @include on-desktop {
-    gap: 80px;
-  }
+//     @include on-tablet {
+//       margin-bottom: 32px;
+//       font-size: 48px;
+//       line-height: 56px;
+//       letter-spacing: -0.01em;
+//     }
 
-  //   margin-top: 24px;
+//     @include onDesktop {
+//       margin-bottom: 56px;
+//     }
+//   }
 
-  //   @include onDesktop {
-  //     margin-top: 56px;
-  //   }
+//   &__banner {
+//     margin-bottom: 64px;
 
-  //   &__title {
-  //     @extend %h2;
-  //     margin-bottom: 24px;
-
-  //     @include on-tablet {
-  //       margin-bottom: 32px;
-  //       font-size: 48px;
-  //       line-height: 56px;
-  //       letter-spacing: -0.01em;
-  //     }
-
-  //     @include onDesktop {
-  //       margin-bottom: 56px;
-  //     }
-  //   }
-
-  //   &__banner {
-  //     margin-bottom: 64px;
-
-  //     @include onDesktop {
-  //       margin-bottom: 80px;
-  //     }
-  //   }
-}
+//     @include onDesktop {
+//       margin-bottom: 80px;
+//     }
+//   }

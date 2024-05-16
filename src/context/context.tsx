@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { InitialContext } from '../types/Context';
 import { Product } from '../types/Product';
 import { CartItem } from '../types/CartItem';
+import { getProducts } from '../services/api';
 
 type Props = {
   children: React.ReactNode;
@@ -20,15 +21,17 @@ export const useAppContext = (): InitialContext => {
 };
 
 export const ContextProvider: React.FC<Props> = ({ children }) => {
-  const [shoppingCart, setShoppingCart] = useState<CartItem[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
+  const [cart, setCart] = useState<CartItem[]>([]);
   const [favourites, setFavourites] = useState<Product[]>([]);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     const storedCart = localStorage.getItem('cart');
     const storedFavourites = localStorage.getItem('favourites');
 
     if (storedCart && storedCart !== 'undefined') {
-      setShoppingCart(JSON.parse(storedCart));
+      setCart(JSON.parse(storedCart));
     }
 
     if (storedFavourites && storedFavourites !== 'undefined') {
@@ -37,15 +40,15 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   }, []);
 
   useEffect(() => {
-    localStorage.setItem('cart', JSON.stringify(shoppingCart));
-  }, [shoppingCart]);
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]);
 
   useEffect(() => {
     localStorage.setItem('favourites', JSON.stringify(favourites));
   }, [favourites]);
 
   const addProductToCart = (newCartProduct: CartItem) => {
-    setShoppingCart([...shoppingCart, newCartProduct]);
+    setCart([...cart, newCartProduct]);
   };
 
   const addProductToFavourites = (product: Product) => {
@@ -53,7 +56,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   const removeProductFromCart = (id: string) => {
-    setShoppingCart(shoppingCart.filter(product => product.id !== id));
+    setCart(cart.filter(product => product.id !== id));
   };
 
   const removeProductFromFavourites = (id: number) => {
@@ -61,7 +64,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   const handleIncrement = (item: CartItem) => {
-    const updatedCart = shoppingCart.map(cartItem => {
+    const updatedCart = cart.map(cartItem => {
       if (cartItem.id === item.id) {
         return {
           ...cartItem,
@@ -72,11 +75,11 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       return cartItem;
     });
 
-    setShoppingCart(updatedCart);
+    setCart(updatedCart);
   };
 
   const handleDecrement = (item: CartItem) => {
-    const updatedCart = shoppingCart.map(cartItem => {
+    const updatedCart = cart.map(cartItem => {
       if (cartItem.id === item.id && cartItem.count > 1) {
         return {
           ...cartItem,
@@ -87,28 +90,44 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
       return cartItem;
     });
 
-    setShoppingCart(updatedCart);
+    setCart(updatedCart);
   };
 
   const handleClearCart = () => {
-    setShoppingCart([]);
+    setCart([]);
   };
 
   const cartLength = () => {
     let total = 0;
 
-    shoppingCart.forEach(item => {
+    cart.forEach(item => {
       total += item.count;
     });
 
     return total;
   };
 
+  useEffect(() => {
+    getProducts()
+      .then(setProducts)
+      .catch(error => {
+        setIsError(true);
+        throw error;
+      });
+    // .finally(() => {
+    //   setTimeout(() => {
+    //     setIsError(false);
+    //   }, 3000);
+    // });
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
-        shoppingCart,
+        products,
+        cart,
         favourites,
+        isError,
         addProductToCart,
         addProductToFavourites,
         removeProductFromCart,

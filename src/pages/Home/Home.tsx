@@ -2,12 +2,12 @@ import { useEffect, useState } from 'react';
 import './Home.scss';
 import { Hero } from '../../components/Hero';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
-import { Product } from '../../types/Product';
-import { getProducts } from '../../services/api';
 import { Categories } from '../../components/Categories';
+import { useAppContext } from '../../context/context';
+import { getHotProducts, getLatestProducts } from '../../utils/utils';
 
 export const Home = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products } = useAppContext();
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
@@ -37,10 +37,6 @@ export const Home = () => {
     step = 4;
   }
 
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
-
   const sliderSettings = {
     itemWidth,
     frameSize,
@@ -49,19 +45,20 @@ export const Home = () => {
   };
 
   return (
-    <main className="home">
+    <>
       <Hero />
       <ProductSlider
         title={'Brand new models'}
-        elements={products}
+        elements={getLatestProducts(products)}
         settings={sliderSettings}
       />
       <Categories />
       <ProductSlider
         title={'Hot prices'}
-        elements={products}
+        isDiscount
+        elements={getHotProducts(products)}
         settings={sliderSettings}
       />
-    </main>
+    </>
   );
 };
