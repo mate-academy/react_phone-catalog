@@ -8,6 +8,7 @@
   gap: 8px;
 
   box-sizing: border-box;
+  height: 440px;
 
   padding: 31px;
 
@@ -21,6 +22,13 @@
     text-align: left;
     padding-top: 16px;
     margin: 0;
+    align-self: flex-start;
+
+    box-sizing: border-box;
+    height: 58px;
+
+    display: flex;
+    align-items: flex-start;
   }
 
   &__price-wrapper {
