@@ -1,0 +1,29 @@
+.card {
+  padding: 31px;
+  background: var(--white);
+  border: 1px solid var(--elements);
+  border-radius: 8px;
+
+  &__img {
+    width: 100%;
+    height: 196px;
+  }
+
+  &__name {
+    margin-top: 24px;
+    height: 21px;
+  }
+  &__price {
+    height: 31px;
+    margin-top: 8px;
+  }
+
+  &__specs {
+    margin-top: 24px;
+    height: 61px;
+  }
+  &__footer {
+    margin-top: 16px;
+    height: 40px;
+  }
+}

@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { ComponentProps, FC } from 'react';
 import cn from 'classnames';
 
 import { Container } from '../../../shared/Container';
@@ -9,9 +9,9 @@ import { HeroCarouselSlide } from './HeroCarouselSlide';
 import { SLIDES } from './variables';
 import classes from './heroCarousel.module.scss';
 
-type Props = {};
+type Props = ComponentProps<'div'>;
 
-export const HeroCarousel: FC<Props> = ({}) => {
+export const HeroCarousel: FC<Props> = ({ className, ...props }) => {
   const {
     createSelectByIndex,
     selectNext,
@@ -21,7 +21,7 @@ export const HeroCarousel: FC<Props> = ({}) => {
   } = useCarousel();
 
   return (
-    <Container.Grid className={classes.carousel}>
+    <Container.Grid {...props} className={cn(classes.carousel, className)}>
       <RoundButton onClick={selectPrev} className={classes.carousel__button}>
         <Icon variant="arrow-left" />
       </RoundButton>

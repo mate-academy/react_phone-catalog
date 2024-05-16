@@ -13,18 +13,30 @@ import classes from './footer.module.scss';
 type Props = {};
 
 export const Footer: FC<Props> = () => {
+  const scrollToTop: React.MouseEventHandler<HTMLAnchorElement> = e => {
+    e.preventDefault();
+
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <footer className={classes.footer}>
       <Container className={classes.footer__container}>
         <Link to={'/'} className={classes.footer__logo}>
           <img className={classes.footer__img} src={Logo} alt="Nice Gadgets" />
         </Link>
+
         <FooterMenuList items={menuItems} />
+
         <div className={classes.footer__backToTop}>
-          <Link to={'#top'} className={classes.footer__backToTopTextLink}>
+          <Link
+            onClick={scrollToTop}
+            to={''}
+            className={classes.footer__backToTopTextLink}
+          >
             <Text variant="small">Back to top</Text>
           </Link>
-          <Link to={'#top'}>
+          <Link onClick={scrollToTop} to={''}>
             <RoundButton>
               <Icon variant="arrow-up" />
             </RoundButton>

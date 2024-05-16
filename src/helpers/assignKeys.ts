@@ -1,4 +1,4 @@
-type AssignKeys = <T extends Record<string, any>>(
+type AssignKeys = <T extends Record<string, unknown>>(
   arr: T[],
 ) => (T & { key: number })[];
 

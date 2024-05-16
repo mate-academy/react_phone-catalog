@@ -12,3 +12,5 @@ export type Product = {
   year: number;
   image: string;
 };
+
+export type ProductId = Product['id'];

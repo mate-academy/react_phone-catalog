@@ -1,99 +1,45 @@
 import React, { ComponentProps, FC } from 'react';
-import { Link, To } from 'react-router-dom';
 
-import classes from './productCard.module.scss';
-import cn from 'classnames';
-import { Text } from '../ui/Text';
-import { Button } from '../ui/Button';
-import { Checkbox } from '../ui/Checkbox';
-import { Icon } from '../ui/Icon';
 import { Product } from '../../../types';
+import { selectInCart, useCart } from '../../../app/features/cart';
+import {
+  selectFavourites,
+  useFavourites,
+} from '../../../app/features/favourites';
+import { ProductCard as GenericProductCard } from '../ui/ProductCard';
 
-type RequiredProductFields =
-  | 'image'
-  | 'name'
-  | 'price'
-  | 'fullPrice'
-  | 'screen'
-  | 'capacity'
-  | 'ram';
-
-type Props = Omit<ComponentProps<'article'>, 'children'> & {
-  product: Pick<Product, RequiredProductFields>;
-  to: To;
-  isFavourite: boolean;
-  handleFavouriteClick: () => void;
-  isInCart: boolean;
-  handleAddToCart: () => void;
+type Props = ComponentProps<'article'> & {
+  product: Product;
+  showFullPrice?: boolean;
 };
 
 export const ProductCard: FC<Props> = ({
-  product: { capacity, fullPrice, image, name, price, ram, screen },
-  isFavourite,
-  handleFavouriteClick,
-  handleAddToCart,
-  isInCart,
-  to,
-  className,
+  product,
+  showFullPrice = false,
   ...props
 }) => {
-  const isCheaper = price < Number(fullPrice);
+  const [favourites, { toggle }] = useFavourites(selectFavourites);
+  const [inCart, { addToCart }] = useCart(selectInCart);
+  const isFavourite = favourites.includes(product.id);
+  const isInCart = Boolean(inCart[product.id]);
 
   return (
-    <article {...props} className={cn(classes.card, className)}>
-      <Link to={to} className={classes.card__imgLink}>
-        <img src={image} alt={name} className={classes.card__img} />
-      </Link>
-      <Link to={to} className={classes.card__nameLink}>
-        <Text element="h3" className={classes.card__name}>
-          {name}
-        </Text>
-      </Link>
-      <div className={classes.card__prices}>
-        <Text variant="heading-3" className={classes.card__regularPrice}>
-          ${price}
-        </Text>
-        {isCheaper && (
-          <span className={classes.card__fullPrice}>${fullPrice}</span>
-        )}
-      </div>
-      <ul className={classes.card__specs}>
-        <li className={classes.card__spec}>
-          <Text className={classes.card__specTitle} variant="small">
-            Screen
-          </Text>
-          <span className={classes.card__specValue}>{screen}</span>
-        </li>
-        <li className={classes.card__spec}>
-          <Text className={classes.card__specTitle} variant="small">
-            Capacity
-          </Text>
-          <span className={classes.card__specValue}>{capacity}</span>
-        </li>
-        <li className={classes.card__spec}>
-          <Text className={classes.card__specTitle} variant="small">
-            RAM
-          </Text>
-          <span className={classes.card__specValue}>{ram}</span>
-        </li>
-      </ul>
-      <div className={classes.card__buttons}>
-        <Button
-          onClick={handleAddToCart}
-          variant={isInCart ? 'inversed' : 'regular'}
-          className={classes.card__addToCartButton}
-        >
-          {isInCart ? 'Added' : 'Add to cart'}
-        </Button>
-        <Checkbox
-          title={isFavourite ? 'Remove from favourites' : 'Add to favourites'}
-          className={classes.card__addToCartFavourites}
-          checked={isFavourite}
-          onChange={handleFavouriteClick}
-        >
-          <Icon variant={isFavourite ? 'heart-fill' : 'heart'} />
-        </Checkbox>
-      </div>
-    </article>
+    <GenericProductCard
+      {...props}
+      product={product}
+      to={`/${product.category}/${product.itemId}`}
+      name={<GenericProductCard.Name />}
+      image={<GenericProductCard.Image />}
+      specs={<GenericProductCard.Specs />}
+      price={<GenericProductCard.Price isOnSale={showFullPrice} />}
+      actions={
+        <GenericProductCard.Actions
+          handleFavouriteClick={toggle}
+          isFavourite={isFavourite}
+          handleAddToCart={addToCart}
+          isInCart={isInCart}
+        />
+      }
+    />
   );
 };
