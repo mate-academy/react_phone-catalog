@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { InitialContext } from '../../types/Context';
-import { Product } from '../../types/Product';
-import { CartItem } from '../../types/CartItem';
+import { InitialContext } from '../types/Context';
+import { Product } from '../types/Product';
+import { CartItem } from '../types/CartItem';
 
 type Props = {
   children: React.ReactNode;

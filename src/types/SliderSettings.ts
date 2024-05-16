@@ -4,5 +4,6 @@ export type SliderSettings = {
   frameSize: number;
   step: number;
   animationDuration: number;
-  infinite: boolean;
+  infinite?: boolean;
+  autoplay?: boolean;
 };

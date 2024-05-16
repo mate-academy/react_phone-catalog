@@ -5,7 +5,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { FullProductData } from '../../types/FullProductData';
 import classNames from 'classnames';
 import { getProducts } from '../../services/api';
-import { useAppContext } from '../context/context';
+import { useAppContext } from '../../context/context';
 
 type Props = {
   product?: Product;

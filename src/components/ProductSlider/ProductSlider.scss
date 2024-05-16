@@ -1,12 +1,11 @@
 @import '../../styles/utils';
 
 .product-slider {
-  @include page-grid;
-
-  row-gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 
   &__top {
-    grid-column: 1 / -1;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -30,16 +29,23 @@
     height: 32px;
     border: 1px solid $color-icons;
     border-radius: 50%;
-    background-color: $color-element;
+    background-color: inherit;
+    cursor: pointer;
 
     &:hover {
-      background-color: $color-white;
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border-color: $color-element;
+      opacity: 0.5;
+      cursor: auto;
     }
   }
 
   &__carousel {
     overflow: hidden;
-    align-self: center;
+    margin-inline: auto;
   }
 
   &__list {

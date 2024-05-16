@@ -7,15 +7,38 @@ import { getProducts } from '../../services/api';
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
-  // const [isLoading, setIsLoading] = useState(false);
+  const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
   useEffect(() => {
-    // setIsLoading(true);
-    getProducts().then(setProducts);
-    // .finally(() => setIsLoading(false));
+    const handleResize = () => {
+      setScreenWidth(window.innerWidth);
+    };
+
+    window.addEventListener('resize', handleResize);
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
   }, []);
 
-  // console.log(products);
+  let itemWidth = 212;
+  let frameSize = 2;
+  const gap = 16;
+  let step = 2;
+
+  if (screenWidth >= 640 && screenWidth < 1200) {
+    itemWidth = 237;
+    frameSize = 3;
+    step = 3;
+  } else if (screenWidth >= 1200) {
+    itemWidth = 272;
+    frameSize = 4;
+    step = 4;
+  }
+
+  useEffect(() => {
+    getProducts().then(setProducts);
+  }, []);
 
   return (
     <main className="home">
@@ -24,12 +47,11 @@ export const Home = () => {
         title={'Brand new models'}
         elements={products}
         settings={{
-          itemWidth: 272,
-          frameSize: 4,
-          gap: 16,
-          step: 2,
+          itemWidth,
+          frameSize,
+          gap,
+          step,
           animationDuration: 1000,
-          infinite: false,
         }}
       />
     </main>
