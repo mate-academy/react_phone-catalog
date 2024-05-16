@@ -10,6 +10,7 @@ body,
 h1,
 h2,
 h3,
+h4,
 p,
 ul,
 li {
@@ -35,4 +36,16 @@ a {
 
 body * {
   box-sizing: border-box;
+}
+
+body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.small-text {
+  font-size: 12px;
 }

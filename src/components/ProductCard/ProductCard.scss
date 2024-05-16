@@ -42,40 +42,48 @@
     }
   }
 
-  &__price-block {
+  &__price-container {
     align-self: flex-start;
     display: flex;
     align-items: center;
     gap: 8px;
+  }
 
-    &--fullprice {
-      position: relative;
-      font-size: 22px;
+  &__full-price {
+    position: relative;
+    font-size: 22px;
 
-      &::after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        left: 0;
-        width: 100%;
-        height: 1px;
-      }
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
     }
   }
 
   &__specs {
+    border-top: 1px solid $color-element;
     padding-block: 8px;
     display: flex;
     flex-direction: column;
     gap: 8px;
+  }
 
-    &--spec {
-      display: flex;
-      justify-content: space-between;
-      gap: 8px;
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
 
-      &--text-1 {
-        color: $color-secondary;
+    &-text {
+      color: $color-secondary;
+      line-height: 1.25;
+      font-size: 12px;
+
+      &-2 {
+        font-weight: 700;
+        color: $color-primary;
       }
     }
   }

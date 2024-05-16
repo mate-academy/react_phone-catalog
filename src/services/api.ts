@@ -12,3 +12,7 @@ export const getProduct = (category: Category, id: string) => {
     .get<FullProductData[]>(`${category}.json`)
     .then(items => items.find(item => item.id === id));
 };
+
+export const getCategoryProducts = (category: Category) => {
+  return client.get<FullProductData[]>(`${category}.json`);
+};

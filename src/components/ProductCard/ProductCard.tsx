@@ -120,10 +120,10 @@ export const ProductCard: React.FC<Props> = ({
             <p className="productCard__title body-text">{product.name}</p>
           </Link>
 
-          <div className="productCard__price-block">
-            <h3 className="productCard__price-block--price">{`$${product.price}`}</h3>
+          <div className="productCard__price-container">
+            <h3 className="productCard__price">{`$${product.price}`}</h3>
             {discount && (
-              <h3 className="productCard__price-block--fullprice body-text">{`$${product.fullPrice}`}</h3>
+              <h3 className="productCard__full-price">{`$${product.fullPrice}`}</h3>
             )}
           </div>
 
@@ -133,11 +133,9 @@ export const ProductCard: React.FC<Props> = ({
               { title: 'Capacity', value: product.capacity },
               { title: 'RAM', value: product.ram },
             ].map((spec, index) => (
-              <div className="productCard__specs--spec" key={index}>
-                <p className="productCard__specs--spec--text-1 small-text">
-                  {spec.title}
-                </p>
-                <p className="productCard__specs--spec--text-2 small-text">
+              <div className="productCard__spec" key={index}>
+                <p className="productCard__spec-text">{spec.title}</p>
+                <p className="productCard__spec-text productCard__spec-text-2">
                   {spec.value}
                 </p>
               </div>

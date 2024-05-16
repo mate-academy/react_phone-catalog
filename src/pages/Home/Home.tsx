@@ -4,6 +4,7 @@ import { Hero } from '../../components/Hero';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import { Product } from '../../types/Product';
 import { getProducts } from '../../services/api';
+import { Categories } from '../../components/Categories';
 
 export const Home = () => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -54,6 +55,7 @@ export const Home = () => {
           animationDuration: 1000,
         }}
       />
+      <Categories />
     </main>
   );
 };

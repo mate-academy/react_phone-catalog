@@ -1,0 +1,83 @@
+@import '../../styles/utils';
+
+.categories {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    width: 100%;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+
+    &-img-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: $border-radius;
+      margin-bottom: 20px;
+    }
+
+    &-img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-repeat: no-repeat;
+      top: 40px;
+      left: 49px;
+
+      @include hover(top, 0);
+    }
+
+    &-title {
+      text-transform: capitalize;
+    }
+
+    &-models {
+      color: $color-secondary;
+    }
+  }
+}
+
+.img {
+  &__phones {
+    background-image: url(../../../public/img/category-phones.png);
+  }
+
+  &__tablets {
+    background-image: url(../../../public/img/category-tablets.png);
+  }
+
+  &__accessories {
+    background-image: url(../../../public/img/category-accessories.png);
+  }
+}
+
+.block {
+  &__phones {
+    background-color: #6d6474;
+  }
+  &__tablets {
+    background-color: #8d8d92;
+  }
+  &__accessories {
+    background-color: #973d5f;
+  }
+}
