@@ -44,7 +44,7 @@ export const Pagination: React.FC<Props> = ({
   }, [currentPage, pagesList, visiblePages]);
 
   return (
-    <div className="pagination">
+    <ul className="pagination">
       <button
         className={classNames('pagination__arrow', 'arrow-left', {
           'arrow-left--active': currentPage > 1,
@@ -66,36 +66,39 @@ export const Pagination: React.FC<Props> = ({
       </button>
 
       {visiblePages.map((page: number) => (
-        <button
-          className={classNames('pagination__page', {
-            'pagination__page--active': currentPage === page,
-          })}
-          onClick={() => setCurrentPage(page)}
-          key={page}
-        >
-          {page}
-        </button>
+        <li key={page}>
+          <button
+            className={classNames('pagination__page', {
+              'pagination__page--active': currentPage === page,
+            })}
+            onClick={() => setCurrentPage(page)}
+          >
+            {page}
+          </button>
+        </li>
       ))}
 
-      <button
-        className={classNames('pagination__arrow', {
-          'pagination__arrow--active': currentPage < pagesTotal,
-        })}
-        onClick={() => {
-          if (currentPage < pagesTotal) {
-            setCurrentPage((page: number) => page + 1);
-          }
-        }}
-      >
-        <img
-          src={
-            currentPage < pagesTotal
-              ? './icons/arrow-right.svg'
-              : './icons/arrow-right-disabled.svg'
-          }
-          alt="right arrow icon"
-        />
-      </button>
-    </div>
+      <li>
+        <button
+          className={classNames('pagination__arrow', {
+            'pagination__arrow--active': currentPage < pagesTotal,
+          })}
+          onClick={() => {
+            if (currentPage < pagesTotal) {
+              setCurrentPage((page: number) => page + 1);
+            }
+          }}
+        >
+          <img
+            src={
+              currentPage < pagesTotal
+                ? './icons/arrow-right.svg'
+                : './icons/arrow-right-disabled.svg'
+            }
+            alt="right arrow icon"
+          />
+        </button>
+      </li>
+    </ul>
   );
 };
