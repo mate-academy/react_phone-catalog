@@ -1,0 +1,74 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: 1px solid $dark-gray-color;
+    box-sizing: border-box;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $main-text-color;
+    }
+
+    &--prev {
+      margin-right: 8px;
+      background-image: url(../../../public/img/icons-image/button-left-arrow.svg);
+
+      &--disabled {
+        background-image: url(../../../public/img/icons-image/button-left-arrow-disabled.svg);
+        border: 1px solid $regular-gray-color;
+
+        &:hover {
+          cursor: auto;
+          border: 1px solid $regular-gray-color;
+        }
+      }
+    }
+
+    &--next {
+      margin-left: 8px;
+      background-image: url(../../../public/img/icons-image/button-right-arrow.svg);
+
+      &--disabled {
+        background-image: url(../../../public/img/icons-image/button-right-arrow-disabled.svg);
+        border: 1px solid $regular-gray-color;
+
+        &:hover {
+          cursor: auto;
+          border: 1px solid $regular-gray-color;
+        }
+      }
+    }
+  }
+
+  &__darks {
+    display: flex;
+    align-items: end;
+  }
+
+  &__active {
+    background-color: $main-text-color;
+    color: white;
+    border: none;
+  }
+}

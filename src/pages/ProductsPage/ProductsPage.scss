@@ -1,0 +1,78 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.full-height-container {
+  height: 90vh;
+  margin-top: 200px;
+}
+
+.history-path {
+  display: flex;
+  gap: 8px;
+  margin-block: 24px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom 1px center;
+
+    &--home {
+      background-image: url(../../../public/img/icons-image/icon-home.svg);
+
+      transition-duration: $short-duration;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+
+    &--arrow {
+      background-image: url(../../../public/img/icons-image/button-right-arrow-disabled.svg);
+    }
+  }
+
+  &__page-name {
+    display: block;
+    text-decoration: none;
+
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+
+    &:hover {
+      color: $main-text-color;
+      scale: 1.05;
+    }
+  }
+}
+
+.products-title {
+  margin: 0;
+  margin-bottom: 8px;
+
+  font-family: 'Bold';
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $main-text-color;
+}
+
+.products-amount {
+  font-family: 'Regular';
+  font-size: 14px;
+  line-height: 21px;
+  color: $secondary-text-color;
+  margin-bottom: 32px;
+}
+
+.products-cards {
+  @include card-grid;
+
+  padding-top: 24px;
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}

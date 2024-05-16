@@ -1,0 +1,66 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.navbar__mobile-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+
+  transition-duration: $middle-duration;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  height: 100vh;
+  background-color: white;
+
+  &__topbar {
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0px 1px 0px 0px $regular-gray-color;
+  }
+
+  &__item {
+    display: flex;
+    margin: 8px 0;
+    justify-content: center;
+    height: 100%;
+  }
+
+  &__items {
+    padding: 0;
+    margin-top: 24px;
+    display: grid;
+    gap: 16px;
+    align-items: center;
+  }
+}
+
+.button__close {
+  display: flex;
+  height: 48px;
+  width: 48px;
+  background-image: url(../../../public/img/icons-image/button-close.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  box-shadow: -1px 0px 0px 0px #e2e6e9;
+}
+
+.topbar {
+  &__logo-link {
+    padding-left: 16px;
+  }
+
+  &__logo-image {
+    display: block;
+    height: 22px;
+    width: 64px;
+  }
+}

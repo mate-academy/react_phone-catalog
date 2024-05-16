@@ -1,0 +1,474 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.history-path {
+  display: flex;
+  gap: 8px;
+  margin-block: 24px;
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: bottom 1px center;
+
+    &--home {
+      background-image: url(../../../public/img/icons-image/icon-home.svg);
+
+      transition-duration: $short-duration;
+      &:hover {
+        scale: 1.05;
+      }
+    }
+
+    &--arrow {
+      background-image: url(../../../public/img/icons-image/button-right-arrow-disabled.svg);
+
+      &--back {
+        background-image: url(../../../public/img/icons-image/button-left-arrow-disabled.svg);
+      }
+    }
+  }
+
+  &__page-name {
+    display: block;
+    text-decoration: none;
+
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+
+    &:hover {
+      color: $main-text-color;
+      scale: 1.05;
+    }
+  }
+}
+
+.product {
+  &__title {
+    margin: 0;
+    font-family: 'Bold';
+    font-size: 22px;
+    line-height: 30.8px;
+    text-align: left;
+    color: $main-text-color;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main-content {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__secondary-content {
+    @include on-desktop {
+      @include page-grid;
+    }
+  }
+}
+
+.main-content {
+  &__gallery {
+    display: grid;
+    gap: 16px;
+    width: 100%;
+
+    @include on-tablet {
+      height: auto;
+      width: auto;
+      grid-column: 1 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__detail-card {
+    @include on-tablet {
+      grid-column: 8 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 15 / 21;
+    }
+  }
+}
+
+.gallery {
+  &__title-photo {
+    position: relative;
+    height: calc(100vw - ($content-padding-phone * 2));
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 44vw; // on my way the best solution
+      width: auto;
+      grid-column: 2 / 8;
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+
+      grid-column: 3 / 13;
+    }
+  }
+
+  &__photos-list {
+    height: 50px;
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+
+    // margin-bottom: 40px;
+
+    @include on-tablet {
+      display: grid;
+      width: auto;
+
+      grid-column: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      width: 80px;
+    }
+  }
+}
+
+.title-photo {
+  position: absolute;
+  opacity: 0;
+
+  &--selected {
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.photos-list {
+  &__photo {
+    width: 50px;
+    object-fit: contain;
+    box-sizing: border-box;
+    border: 1px solid $regular-gray-color;
+
+    transition-duration: $short-duration;
+
+    @include on-tablet {
+      width: 100%;
+      height: 6.26vw; // solution to handle size on bigger tablets
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &:hover {
+      cursor: pointer;
+      scale: 1.05;
+    }
+
+    &--selected {
+      border: 1px solid $main-text-color;
+    }
+  }
+}
+
+.detail-card {
+  &__available-color {
+    border-bottom: 1px solid $regular-gray-color;
+    margin-bottom: 24px;
+  }
+
+  &__select-capacity {
+    border-bottom: 1px solid $regular-gray-color;
+    margin-bottom: 32px;
+  }
+
+  &__to-order {
+    margin-block: 32px;
+  }
+
+  &__characteristic {
+    display: grid;
+    gap: 8px;
+  }
+}
+
+.available-color {
+  &__text {
+    font-family: 'Regular';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+  }
+
+  &__color-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+}
+
+.color-buttons {
+  &__button {
+    padding: 2px;
+    height: 32px;
+    width: 32px;
+    border-radius: 50%;
+    border: 1px solid $regular-gray-color;
+    box-sizing: border-box;
+
+    transition-duration: 150ms;
+
+    &:hover {
+      cursor: pointer;
+      opacity: 0.85;
+      border: 1px solid $main-text-color;
+    }
+
+    &--selected {
+      border: 1px solid $main-text-color;
+    }
+  }
+}
+
+.button__internal-color {
+  height: 26px;
+  width: 26px;
+  border-radius: 50%;
+}
+
+.select-capacity {
+  &__text {
+    font-family: 'Regular';
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    color: #89939a;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    text-align: center;
+
+    height: 32px;
+    background-color: inherit;
+    border: 1px solid $dark-gray-color;
+    box-sizing: border-box;
+
+    transition-duration: 150ms;
+
+    &:hover {
+      border: 1px solid $main-text-color;
+      box-sizing: border-box;
+      cursor: pointer;
+    }
+
+    &--selected {
+      border: 1px solid $main-text-color;
+      background-color: $main-text-color;
+      color: white;
+    }
+  }
+}
+
+.to-order {
+  &__price {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    height: 40px;
+    display: grid;
+    grid-template-columns: auto 40px;
+    column-gap: 8px;
+  }
+}
+
+.price {
+  &__new {
+    font-family: 'Bold';
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+
+  &__old {
+    font-family: 'Regular';
+    font-size: 22px;
+    line-height: 28.12px;
+
+    display: flex;
+    align-items: center;
+    text-decoration: line-through;
+    color: $secondary-text-color;
+  }
+}
+
+.buttons {
+  &__button--add {
+    font-family: 'SemiBold';
+    font-size: 14px;
+    line-height: 21px;
+    color: white;
+    background-color: $main-text-color;
+    border: none;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+
+    &--active {
+      border: 1px solid $regular-gray-color;
+      color: #27ae60;
+      background-color: white;
+    }
+  }
+
+  &__button--favourite {
+    border: solid 1px $dark-gray-color;
+    box-sizing: border-box;
+    background-color: white;
+    background-image: url(../../../public/img/icons-image/heart_empty.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition-duration: $short-duration;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $main-text-color;
+    }
+
+    &--active {
+      border: 1px solid $regular-gray-color;
+      background-image: url(../../../public/img/icons-image/heart_red.svg);
+    }
+  }
+}
+
+.characteristic {
+  display: flex;
+  justify-content: space-between;
+
+  &__title {
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $secondary-text-color;
+  }
+
+  &__value {
+    font-family: 'Regular';
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $main-text-color;
+  }
+}
+
+.secondary-content {
+  &__about {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__tech-specs {
+    margin-block: 56px;
+
+    @include on-desktop {
+      grid-column: 15 / -1;
+    }
+  }
+}
+
+.about {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 20px;
+    line-height: 25.56px;
+    text-align: left;
+    color: #313237;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__theme {
+    margin-top: 32px;
+  }
+}
+
+.theme {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 16px;
+    line-height: 20.45px;
+    text-align: left;
+    color: #313237;
+  }
+
+  &__text {
+    font-family: 'Regular';
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: #89939a;
+  }
+}
+
+.tech-specs {
+  &__title {
+    font-family: 'SemiBold';
+    font-size: 20px;
+    line-height: 25.56px;
+    color: $main-text-color;
+
+    padding-bottom: 16px;
+    border-bottom: 1px solid $regular-gray-color;
+  }
+
+  &__characteristic {
+    display: grid;
+    gap: 8px;
+    padding-top: 25px;
+  }
+}

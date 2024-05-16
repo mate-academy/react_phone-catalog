@@ -1,0 +1,179 @@
+@import '../../utils/stylesUtils/variables.scss';
+@import '../../utils/stylesUtils/mixin.scss';
+
+.navbar {
+  display: flex;
+  height: 48px;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0px 1px 0px 0px $regular-gray-color;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__logo {
+    padding-inline: 16px;
+    align-items: center;
+    justify-content: center;
+
+    @include on-tablet {
+      padding-left: 24px;
+      padding-right: 32px;
+    }
+
+    @include on-desktop {
+      padding-right: 16px;
+    }
+
+    &-image {
+      display: block;
+      height: 22px;
+      width: 64px;
+
+      @include on-desktop {
+        height: 28px;
+        width: 80px;
+      }
+    }
+  }
+
+  &__links {
+    display: none;
+  }
+
+  &__buttons {
+    display: flex;
+    height: 100%;
+  }
+
+  &-button {
+    display: flex;
+    width: 48px;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    box-shadow: -1px 0px 0px 0px $regular-gray-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 35%;
+
+    text-decoration: none;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+  }
+}
+
+.links {
+  @include on-tablet {
+    display: flex;
+    height: 100%;
+    justify-content: space-between;
+    flex-grow: 1;
+  }
+
+  &__items {
+    @include on-tablet {
+      display: flex;
+      margin: 0;
+      padding: 0;
+      gap: 32px;
+      list-style: none;
+
+      @include on-desktop {
+        @include content-padding-inline;
+        gap: 64px;
+        width: calc(100vw - 370px);
+      }
+    }
+  }
+
+  &__item-link {
+    font-family: 'Bold';
+    text-transform: uppercase;
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: $secondary-text-color;
+
+    display: flex;
+    height: 100%;
+    align-items: center;
+
+    &:hover {
+      color: $main-text-color;
+    }
+  }
+}
+
+.active-navlink {
+  height: 100%;
+  position: relative;
+  color: $main-text-color;
+  box-sizing: border-box;
+  border-bottom: solid 3px $main-text-color;
+}
+
+.button {
+  &__mobile-menu {
+    background-image: url(../../../public/img/icons-image/burger-menu.svg);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__favourite {
+    position: relative;
+    background-image: url(../../../public/img/icons-image/heart_empty.svg);
+  }
+
+  &__basket {
+    position: relative;
+    background-image: url(../../../public/img/icons-image/shop_bag.svg);
+  }
+}
+
+.counter {
+  height: 14px;
+  width: 14px;
+  background-color: $red-color;
+  color: white;
+  font-family: "Regular";
+  font-size: 9px;
+  line-height: 11.5px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: 1px solid white;
+  box-sizing: border-box;
+  border-radius: 50%;
+
+  @include on-desktop{
+    height: 18px;
+    width: 18px;
+    font-size: 11px;
+  }
+}
+
+.counter-favourite {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+}
+
+.counter-basket {
+  position: absolute;
+  top: 20%;
+  right: 20%;
+
+}
