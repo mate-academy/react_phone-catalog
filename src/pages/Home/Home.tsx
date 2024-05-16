@@ -41,21 +41,27 @@ export const Home = () => {
     getProducts().then(setProducts);
   }, []);
 
+  const sliderSettings = {
+    itemWidth,
+    frameSize,
+    gap,
+    step,
+  };
+
   return (
     <main className="home">
       <Hero />
       <ProductSlider
         title={'Brand new models'}
         elements={products}
-        settings={{
-          itemWidth,
-          frameSize,
-          gap,
-          step,
-          animationDuration: 1000,
-        }}
+        settings={sliderSettings}
       />
       <Categories />
+      <ProductSlider
+        title={'Hot prices'}
+        elements={products}
+        settings={sliderSettings}
+      />
     </main>
   );
 };

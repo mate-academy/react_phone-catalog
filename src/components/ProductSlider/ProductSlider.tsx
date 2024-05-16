@@ -15,10 +15,10 @@ const ProductSlider: React.FC<Props> = ({ elements, settings, title }) => {
     itemWidth,
     gap,
     frameSize,
-    step,
-    animationDuration,
-    autoplay,
-    infinite,
+    step = 1,
+    animationDuration = 1000,
+    autoplay = false,
+    infinite = false,
   } = settings;
   const [position, setPosition] = useState(0);
   const lastPosition = -(elements.length - frameSize);
