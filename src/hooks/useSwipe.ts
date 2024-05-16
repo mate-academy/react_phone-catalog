@@ -38,7 +38,9 @@ export const useSwipe = (
 
     const element = elementRef.current;
 
-    element.addEventListener('touchstart', touchStartHandler);
+    element.addEventListener('touchstart', touchStartHandler, {
+      passive: true,
+    });
     element.addEventListener('touchend', touchEndHandler);
 
     return () => {

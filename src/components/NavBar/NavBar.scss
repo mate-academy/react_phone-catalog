@@ -1,16 +1,12 @@
 @import '../../utils/stylesUtils/variables.scss';
 @import '../../utils/stylesUtils/mixin.scss';
 
-$main-navbar-color: #89939a;
-$active-navbar-color: #000;
-$box-shadow-color: #e2e6e9;
-
 .navbar {
   display: flex;
   height: 48px;
   align-items: center;
   justify-content: space-between;
-  box-shadow: 0px 1px 0px 0px $box-shadow-color;
+  box-shadow: 0px 1px 0px 0px $regular-gray-color;
 
   @include on-desktop {
     height: 64px;
@@ -57,7 +53,7 @@ $box-shadow-color: #e2e6e9;
     height: 100%;
     align-items: center;
     justify-content: center;
-    box-shadow: -1px 0px 0px 0px $box-shadow-color;
+    box-shadow: -1px 0px 0px 0px $regular-gray-color;
     background-repeat: no-repeat;
     background-position: center;
     background-size: 35%;
@@ -105,14 +101,14 @@ $box-shadow-color: #e2e6e9;
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
-    color: $main-navbar-color;
+    color: $secondary-text-color;
 
     display: flex;
     height: 100%;
     align-items: center;
 
     &:hover {
-      color: $active-navbar-color;
+      color: $main-text-color;
     }
   }
 }
@@ -120,9 +116,9 @@ $box-shadow-color: #e2e6e9;
 .active-navlink {
   height: 100%;
   position: relative;
-  color: $active-navbar-color;
+  color: $main-text-color;
   box-sizing: border-box;
-  border-bottom: solid 3px $active-navbar-color;
+  border-bottom: solid 3px $main-text-color;
 }
 
 .button {

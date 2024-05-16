@@ -1,6 +1,11 @@
 @import '../../utils/stylesUtils/variables.scss';
 @import '../../utils/stylesUtils/mixin.scss';
 
+.full-height-container {
+  height: 90vh;
+  margin-top: 200px;
+}
+
 .history-path {
   display: flex;
   gap: 8px;

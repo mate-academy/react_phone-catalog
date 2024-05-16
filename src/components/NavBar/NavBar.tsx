@@ -39,44 +39,44 @@ export const NavBar = () => {
               </li>
             ))}
           </ul>
-
-          <div className="navbar__buttons">
-            <NavLink
-              to="/favourites"
-              className={({ isActive }) =>
-                classNames('navbar-button button__favourite', {
-                  'active-navlink': isActive,
-                })
-              }
-            >
-              {!!favouriteProducts.length && (
-                <span className="counter counter-favourite">
-                  {favouriteProducts.length}
-                </span>
-              )}
-            </NavLink>
-
-            <NavLink
-              to="/basket"
-              className={({ isActive }) =>
-                classNames('navbar-button button__basket', {
-                  'active-navlink': isActive,
-                })
-              }
-            >
-              {!!basketProducts.length && (
-                <span className="counter counter-basket">
-                  {basketProducts.length}
-                </span>
-              )}
-            </NavLink>
-          </div>
         </div>
 
-        <div
-          className="navbar-button button__mobile-menu"
-          onClick={() => setMobileNavBarTransition(0)}
-        />
+        <div className="navbar__buttons">
+          <NavLink
+            to="/favourites"
+            className={({ isActive }) =>
+              classNames('navbar-button button__favourite', {
+                'active-navlink': isActive,
+              })
+            }
+          >
+            {!!favouriteProducts.length && (
+              <span className="counter counter-favourite">
+                {favouriteProducts.length}
+              </span>
+            )}
+          </NavLink>
+
+          <NavLink
+            to="/basket"
+            className={({ isActive }) =>
+              classNames('navbar-button button__basket', {
+                'active-navlink': isActive,
+              })
+            }
+          >
+            {!!basketProducts.length && (
+              <span className="counter counter-basket">
+                {basketProducts.length}
+              </span>
+            )}
+          </NavLink>
+
+          <div
+            className="navbar-button button__mobile-menu"
+            onClick={() => setMobileNavBarTransition(0)}
+          />
+        </div>
       </nav>
 
       <NavBarMobile

@@ -1,21 +1,17 @@
-.product__not-found {
-  position: relative;
-}
+@import '../../utils/stylesUtils/variables.scss';
 
 .not-found {
   &__title {
-    position: absolute;
-    top: 15%;
-    right: 0;
+    margin: 0;
 
-    font-family: "SemiBold";
+    font-family: 'Bold';
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em;
+    color: $main-text-color;
   }
-
   &__image {
-    height: calc(100vh - 48px);
+    height: 80vh;
     background-image: url(../../../public/img/product-not-found.png);
     background-position: center;
     background-repeat: no-repeat;

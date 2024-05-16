@@ -1,6 +1,25 @@
 @import '../../utils/stylesUtils/variables.scss';
 @import '../../utils/stylesUtils/mixin.scss';
 
+.something-went-wrong {
+  height: 400px;
+  background-image: url(../../../public/img/something-went-wrong.png);
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__title {
+    padding-top: 10px;
+    padding-left: 10px;
+    font-family: 'SemiBold';
+    font-size: 24px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $secondary-text-color;
+  }
+}
+
 .carousel-product-cards {
   margin-bottom: 80px;
 
@@ -82,7 +101,9 @@
   }
 }
 
-.head__button:not(.head__button--left--disabled):not(.head__button--right--disabled):hover {
+.head__button:not(.head__button--left--disabled):not(
+    .head__button--right--disabled
+  ):hover {
   border: 1px solid $main-text-color;
   cursor: pointer;
 }

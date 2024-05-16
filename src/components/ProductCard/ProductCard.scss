@@ -77,7 +77,7 @@
 
     &--active {
       border: 1px solid $regular-gray-color;
-      color: #27AE60;
+      color: $green-color;
       background-color: white;
     }
   }
@@ -131,12 +131,13 @@
     font-family: 'SemiBold';
     font-size: 12px;
     line-height: 15.34px;
-    color: #89939a;
+    color: $secondary-text-color;
   }
 
   &__value {
     font-family: 'SemiBold';
     font-size: 12px;
     line-height: 15.34px;
+    color: $main-text-color;
   }
 }

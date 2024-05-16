@@ -16,7 +16,6 @@
 }
 
 .mobile-menu {
-  box-sizing: border-box;
   height: 100vh;
   background-color: white;
 
@@ -25,15 +24,7 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    box-shadow: 0px 1px 0px 0px #e2e6e9;
-  }
-
-  &__links {
-    height: calc(100vh - 48px);
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-
+    box-shadow: 0px 1px 0px 0px $regular-gray-color;
   }
 
   &__item {
@@ -49,19 +40,6 @@
     display: grid;
     gap: 16px;
     align-items: center;
-  }
-
-  &__buttons {
-    display: flex;
-    box-shadow: 0 -1px 0 0 #E2E6E9;
-  }
-
-  &-button {
-    height: 64px;
-    width: 100%;
-    background-repeat: no-repeat;
-    background-position: center;
-    box-shadow: -1px 0 0 0 #E2E6E9;
   }
 }
 
@@ -85,17 +63,4 @@
     height: 22px;
     width: 64px;
   }
-}
-
-.counter-favourite--mobile {
-  position: absolute;
-  top: 25%;
-  right: 44%;
-}
-
-.counter-basket--mobile {
-  position: absolute;
-  top: 25%;
-  right: 44%;
-
 }

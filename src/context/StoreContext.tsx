@@ -10,6 +10,8 @@ type PropsContext = {
   setBasketProducts: (products: ProductBasket[]) => void;
   allProducts: Product[];
   setAllProducts: (products: Product[]) => void;
+  isErrorOfLoading: boolean;
+  setIsErrorOfLoading: (value: boolean) => void;
 };
 
 export const StoreContext = React.createContext<PropsContext>({
@@ -19,6 +21,8 @@ export const StoreContext = React.createContext<PropsContext>({
   setBasketProducts: () => {},
   allProducts: [],
   setAllProducts: () => {},
+  isErrorOfLoading: false,
+  setIsErrorOfLoading: () => {},
 });
 
 type Props = {
@@ -36,9 +40,20 @@ export const StoreProvider: React.FC<Props> = ({ children }) => {
   );
 
   const [allProducts, setAllProducts] = useState<Product[]>([]);
+  const [isErrorOfLoading, setIsErrorOfLoading] = useState(false);
 
   useEffect(() => {
-    getProducts().then(setAllProducts);
+    getProducts()
+      .then(setAllProducts)
+      .catch(error => {
+        setIsErrorOfLoading(true);
+        throw error;
+      });
+    // .finally(() => {
+    //   setTimeout(() => {
+    //     setIsErrorOfLoading(false);
+    //   }, 3000);
+    // });
   }, []);
 
   const valueStore = useMemo(
@@ -49,6 +64,8 @@ export const StoreProvider: React.FC<Props> = ({ children }) => {
       setBasketProducts,
       allProducts,
       setAllProducts,
+      isErrorOfLoading,
+      setIsErrorOfLoading,
     }),
     [
       favouriteProducts,
@@ -57,6 +74,8 @@ export const StoreProvider: React.FC<Props> = ({ children }) => {
       setBasketProducts,
       allProducts,
       setAllProducts,
+      isErrorOfLoading,
+      setIsErrorOfLoading,
     ],
   );
 

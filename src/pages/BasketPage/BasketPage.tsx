@@ -128,7 +128,7 @@ export const BasketPage = () => {
 
           <div className="basket__total-order">
             <div className="total-order__price">
-              <div className="price__value">{totalPrice()}</div>
+              <div className="price__value">{`$${totalPrice()}`}</div>
               <div className="price__discription">{`Total for ${totalItems()} items`}</div>
             </div>
             <button
