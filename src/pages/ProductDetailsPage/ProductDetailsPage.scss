@@ -1,3 +1,100 @@
+@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
+
 .product-details {
-  color: black;
+  padding-top: 24px;
+
+  @include grid;
+
+  grid-template-rows: auto auto;
+  justify-items: start;
+  overflow: hidden;
+
+  // overflow-wrap: break-word;
+
+  &__top {
+    grid-column: 1 / 5;
+  }
+}
+
+.breadcrumbs {
+  @include grid;
+
+  grid-template-rows: auto auto;
+  gap: 25px;
+
+  &__wrapper {
+    grid-column: 1 / 5;
+
+    display: flex;
+    align-items: flex-end;
+    gap: 6px;
+    height: 16px;
+  }
+
+  &__next {
+    width: 5.33px;
+    height: 9.33px;
+
+    padding: 3.33px 5.33px;
+  }
+
+  &__category {
+    height: 15px;
+
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+
+    text-decoration: none;
+    color: $color-primary;
+  }
+
+  &__product-name {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-align: left;
+    color: $color-secondary;
+    overflow-wrap: break-word;
+    width: 162px;
+    align-self: center;
+  }
+
+  .back-link {
+    grid-column: 1 / 2;
+    justify-self: start;
+
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-start;
+    gap: 4px;
+
+    padding: 0;
+    height: 16px;
+
+    background-color: transparent;
+    border: none;
+
+    &__image-wrapper {
+      height: 16px;
+      width: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__text {
+      height: 15px;
+      font-family: $font-family;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      text-align: left;
+
+      color: $color-secondary;
+    }
+  }
 }
