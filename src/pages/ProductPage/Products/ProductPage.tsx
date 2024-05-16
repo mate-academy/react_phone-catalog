@@ -83,8 +83,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     }
   }, [sort]);
 
-  // Depending on the URL, get and set in state proper products
-
   return (
     <main className="product-page">
       <section className="product-page__top">

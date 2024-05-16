@@ -38,9 +38,6 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
     });
   }, [hasDiscount]);
 
-  // eslint-disable-next-line no-console
-  console.log(products);
-
   return (
     products.length > 0 && (
       <div className="product-slider">

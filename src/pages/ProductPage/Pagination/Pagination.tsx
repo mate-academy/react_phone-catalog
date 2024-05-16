@@ -25,9 +25,6 @@ export const Pagination: React.FC<Props> = ({
       pages.push(i);
     }
 
-    // eslint-disable-next-line no-console
-    console.log('change pagesList');
-
     setPagesList(pages);
   }, [pagesTotal]);
 
