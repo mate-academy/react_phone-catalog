@@ -8,6 +8,8 @@ import { Sort } from '../../../types/Sort';
 import { Filter, Pages } from '../Filter/Filter';
 import { ProductCategories } from '../../../types/ProductCategories';
 import './ProductPage.scss';
+import { useSearchParams } from 'react-router-dom';
+import { FilterOption } from '../../../types/FilterOption';
 
 type Props = {
   category: ProductCategories;
@@ -15,12 +17,35 @@ type Props = {
 
 export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [sort, setSort] = useState<Sort>(Sort.Newest);
-  const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
   const [pagesTotal, setPagesTotal] = useState(1);
+
+  // Filter states
+  const [sort, setSort] = useState<Sort>(Sort.Newest);
+  const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    searchParams.set(FilterOption.Sort, Sort.Newest);
+    searchParams.set(FilterOption.Items, Pages.all);
+    setSearchParams(searchParams);
+  }, []);
+
+  useEffect(() => {
+    if (searchParams.has(FilterOption.Sort)) {
+      setSort(searchParams.get(FilterOption.Sort) as Sort);
+    } else {
+      setSort(Sort.Newest);
+    }
+
+    if (searchParams.has(FilterOption.Items)) {
+      setItemsOnPage(searchParams.get(FilterOption.Items) as Pages);
+    } else {
+      setItemsOnPage(Pages.all);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     let currentProducts = products;
@@ -105,13 +130,23 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         </div>
         <div className="filters product-page__filters">
           <div className="filters__item">
-            <Filter title="Sort by" sort={sort} setSort={setSort} />
+            <Filter
+              option={FilterOption.Sort}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+              title="Sort by"
+              // sort={sort}
+              // setSort={setSort}
+            />
           </div>
           <div className="filters__item">
             <Filter
+              option={FilterOption.Items}
               title="Items on page"
-              itemsOnPage={itemsOnPage}
-              setItemsOnPage={setItemsOnPage}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+              // itemsOnPage={itemsOnPage}
+              // setItemsOnPage={setItemsOnPage}
             />
           </div>
         </div>
