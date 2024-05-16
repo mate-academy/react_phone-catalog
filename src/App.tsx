@@ -6,6 +6,7 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductPage } from './pages/ProductPage/Products/ProductPage';
 import { ProductCategories } from './types/ProductCategories';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const App = () => (
   <>
@@ -29,6 +30,8 @@ export const App = () => (
         index
         element={<ProductPage category={ProductCategories.Accessories} />}
       />
+
+      <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>
