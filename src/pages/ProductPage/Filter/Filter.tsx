@@ -69,35 +69,6 @@ export const Filter: React.FC<Props> = ({
                 {filterOption}
               </button>
             ))}
-            {/* <button
-              className={cn('dropdown__option', {
-                'dropdown__option--active': filter === filterOptions[0],
-              })}
-              onMouseDown={() => {
-                setFilter(filterOptions[0] as FilterSetter);
-              }}
-              value={filterOptions[0]}
-            >
-              {filterOptions[0]}
-            </button>
-            <button
-              className={cn('dropdown__option', {
-                'dropdown__option--active': filter === filterOptions[1],
-              })}
-              onMouseDown={() => setFilter(filterOptions[1] as FilterSetter)}
-              value={filterOptions[1]}
-            >
-              {filterOptions[1]}
-            </button>
-            <button
-              className={cn('dropdown__option', {
-                'dropdown__option--active': filter === filterOptions[2],
-              })}
-              onMouseDown={() => setFilter(filterOptions[2] as FilterSetter)}
-              value={filterOptions[2]}
-            >
-              {filterOptions[2]}
-            </button> */}
           </div>
         )}
       </div>

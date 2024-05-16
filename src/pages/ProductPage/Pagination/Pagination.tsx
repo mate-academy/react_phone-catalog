@@ -1,29 +1,71 @@
 import classNames from 'classnames';
 import './Pagination.scss';
+import { useEffect, useState } from 'react';
 
 type Props = {
-  pages: number;
+  pagesTotal: number;
   currentPage: number;
   setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const Pagination: React.FC<Props> = ({
-  pages,
+  pagesTotal,
   currentPage,
   setCurrentPage,
 }) => {
-  const pageNumbers: number[] = [];
+  const [pagesList, setPagesList] = useState<number[]>([]);
+  const [visiblePages, setVisiblePages] = useState<number[]>(
+    pagesList.slice(0, 4),
+  );
 
-  // eslint-disable-next-line no-console
-  console.log('entered');
+  useEffect(() => {
+    const pages = [];
 
-  for (let i = 1; i <= pages; i++) {
-    pageNumbers.push(i);
-  }
+    for (let i = 1; i <= pagesTotal; i++) {
+      pages.push(i);
+    }
+
+    // eslint-disable-next-line no-console
+    console.log('change pagesList');
+
+    setPagesList(pages);
+  }, [pagesTotal]);
+
+  useEffect(() => {
+    // Change visible pages every time pagesList changes
+    setVisiblePages(pagesList.slice(0, 4));
+    setCurrentPage(1);
+  }, [pagesList, setCurrentPage]);
+
+  useEffect(() => {
+    if (!visiblePages.includes(currentPage)) {
+      setVisiblePages(pagesList.slice(currentPage - 1, currentPage + 3));
+    }
+  }, [currentPage, pagesList, visiblePages]);
 
   return (
     <div className="pagination">
-      {pageNumbers.map((page: number) => (
+      <button
+        className={classNames('pagination__arrow', 'arrow-left', {
+          'arrow-left--active': currentPage > 1,
+        })}
+        onClick={() => {
+          if (currentPage > 1) {
+            setCurrentPage((page: number) => page - 1);
+          }
+        }}
+      >
+        <img
+          src={
+            currentPage > 1
+              ? './icons/arrow-left.svg'
+              : './icons/arrow-left-disabled.svg'
+          }
+          alt="right arrow icon"
+        />
+      </button>
+
+      {visiblePages.map((page: number) => (
         <button
           className={classNames('pagination__page', {
             'pagination__page--active': currentPage === page,
@@ -34,6 +76,26 @@ export const Pagination: React.FC<Props> = ({
           {page}
         </button>
       ))}
+
+      <button
+        className={classNames('pagination__arrow', {
+          'pagination__arrow--active': currentPage < pagesTotal,
+        })}
+        onClick={() => {
+          if (currentPage < pagesTotal) {
+            setCurrentPage((page: number) => page + 1);
+          }
+        }}
+      >
+        <img
+          src={
+            currentPage < pagesTotal
+              ? './icons/arrow-right.svg'
+              : './icons/arrow-right-disabled.svg'
+          }
+          alt="right arrow icon"
+        />
+      </button>
     </div>
   );
 };

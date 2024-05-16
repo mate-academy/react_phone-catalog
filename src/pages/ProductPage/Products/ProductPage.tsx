@@ -20,6 +20,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
+  const [pagesTotal, setPagesTotal] = useState(1);
 
   useEffect(() => {
     let currentProducts = products;
@@ -34,6 +35,14 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
     setDisplayedProducts(currentProducts);
   }, [currentPage, itemsOnPage, products]);
+
+  useEffect(() => {
+    if (itemsOnPage === Pages.all) {
+      setPagesTotal(1);
+    } else {
+      setPagesTotal(Math.ceil(products.length / itemsOnPage));
+    }
+  }, [itemsOnPage, products.length]);
 
   const pageTitle = getPageTitle(category);
 
@@ -117,10 +126,8 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       <Pagination
         currentPage={currentPage}
         setCurrentPage={setCurrentPage}
-        pages={2}
+        pagesTotal={pagesTotal}
       />
-
-      {itemsOnPage}
     </main>
   );
 };

@@ -1,9 +1,23 @@
 @use '../../../utils/variables' as *;
 
 .pagination {
+  justify-self: center;
+  grid-column: 1 / 5;
   color: black;
   display: flex;
   gap: 8px;
+
+  &__arrow {
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+    background-color: $color-white;
+    border: 1px solid $color-elements;
+
+    &--active {
+      border: 1px solid $color-icons-placeholders;
+    }
+  }
 
   &__page {
     font-family: $font-family;
@@ -12,12 +26,15 @@
     line-height: 21px;
     text-align: center;
 
+    box-sizing: border-box;
     height: 32px;
     width: 32px;
     border: 1px solid $color-elements;
+    background-color: $color-white;
 
     &--active {
       color: $color-white;
+      border: none;
       background-color: $color-primary;
     }
   }
