@@ -14,7 +14,7 @@
 
   border: 1px solid $color-elements;
 
-  &__name {
+  &__name-wrapper {
     font-family: $font-family;
     font-size: 14px;
     font-weight: 600;
@@ -22,13 +22,16 @@
     text-align: left;
     padding-top: 16px;
     margin: 0;
-    align-self: flex-start;
+    color: $color-primary;
+    text-decoration: none;
+  }
+
+  &__name {
+    display: flex;
+    align-items: center;
 
     box-sizing: border-box;
     height: 58px;
-
-    display: flex;
-    align-items: flex-start;
   }
 
   &__price-wrapper {
