@@ -31,6 +31,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     searchParams.set(FilterOption.Sort, Sort.Newest);
     searchParams.set(FilterOption.Items, Pages.all);
     setSearchParams(searchParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
