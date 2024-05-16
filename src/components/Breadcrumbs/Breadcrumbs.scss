@@ -1,1 +1,35 @@
 @import '../../styles/utils';
+
+.breadcrumbs {
+  padding-block: 24px 40px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 1.15;
+    align-self: flex-end;
+    color: $color-primary;
+    text-transform: capitalize;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:last-child .breadcrumbs__link {
+      color: $color-secondary;
+    }
+
+    & .breadcrumbs__link:hover {
+      transition: all 0.3s ease-in-out;
+      color: $colort-secondary-accent;
+      transform: scale(1.05);
+    }
+  }
+}

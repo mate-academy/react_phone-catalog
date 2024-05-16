@@ -29,11 +29,11 @@
     }
   }
 
-  &--arrow-right {
+  &__arrow-right {
     background-image: url('../../../public/icons/Arrow.svg');
     transform: rotate(90deg);
 
-    &-disabled {
+    &--disabled {
       background-image: url('../../../public/icons/Arrow-disabled.svg');
       transform: rotate(90deg);
     }

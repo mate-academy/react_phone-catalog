@@ -17,12 +17,15 @@ export const Root = () => (
 
         <Route path="phones">
           <Route index element={<Products />} />
+          <Route path=":productId" element={<Products />} />
         </Route>
         <Route path="tablets">
           <Route index element={<Products />} />
+          <Route path=":productId" element={<Products />} />
         </Route>
         <Route path="accessories">
           <Route index element={<Products />} />
+          <Route path=":productId" element={<Products />} />
         </Route>
 
         <Route path="*" element={<NotFound />} />
