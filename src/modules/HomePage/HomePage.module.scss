@@ -1,0 +1,52 @@
+@import '../../utils/mixins';
+
+.mainDark {
+  background-color: $darkThemeBG;
+}
+
+.container {
+  @include padding-inline;
+  @include grid;
+}
+
+.h1-title {
+  grid-column: 1/-1;
+  margin-top: 24px;
+  margin-bottom: 0;
+
+  @include h1-title;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    margin-top: 55px;
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.homePageContent {
+  @include padding-inline;
+
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+  margin-top: 56px;
+  margin-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    margin-top: 80px;
+    margin-bottom: 80px;
+  }
+}

@@ -1,0 +1,77 @@
+@import '../../utils/mixins';
+
+.mainDark {
+  background-color: $darkThemeBG;
+}
+
+.container {
+  @include grid;
+  @include padding-inline;
+}
+
+.heading {
+  grid-column: 1/-1;
+  margin-top: 24px;
+
+  &__title {
+    font-family: $boldFont, sans-serif;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+    color: $grayPrimaryColor;
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+}
+
+.goBack {
+  margin-top: 24px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  align-self: center;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &__arrow {
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 6px;
+
+    &Dark {
+      background-size: contain;
+    }
+  }
+
+  &__link {
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 16px;
+    text-align: left;
+    color: $graySecondaryColor;
+    align-content: center;
+    cursor: pointer;
+    transition: $transitionTime;
+
+    &:hover {
+      color: $grayPrimaryColor;
+    }
+
+    &Dark {
+      color: $darkThemeWhite;
+
+      &:hover {
+        color: $toCartButtonBG;
+      }
+    }
+  }
+}

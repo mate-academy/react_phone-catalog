@@ -1,0 +1,31 @@
+@import '../../../utils/mixins';
+
+.container {
+  display: flex;
+  width: 85vw;
+  height: 85vh;
+  align-items: center;
+  justify-content: center;
+  grid-column: 1/-1;
+}
+
+.reloadButton {
+  display: inline-flex;
+  box-sizing: border-box;
+  width: 280px;
+  height: 60px;
+  border: 2px gold solid;
+  background-color: $grayPrimaryColor;
+  color: $whiteColor;
+  font-size: 24px;
+  font-family: $boldFont, sans-serif;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover {
+    color: $grayPrimaryColor;
+    background-color: gold;
+    border: 2px $grayPrimaryColor solid;;
+  }
+}

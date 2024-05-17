@@ -1,1 +1,37 @@
-// not empty
+@import './utils/mixins';
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+  background-color: $bgColor;
+}
+
+body {
+  min-height: 100vh;
+}
+
+main {
+  box-sizing: border-box;
+  transition: $transitionTime;
+  min-height: calc(100vh - 48px - 257px);
+
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    min-height: calc(100vh - 48px - 96px);
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 64px - 96px);
+    padding-bottom: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+}
