@@ -113,14 +113,25 @@
 
 @media (min-width:639px) and (max-width: 1199px) {
   .mainTitles {
-    display: flex;
-    text-wrap: wrap;
+    margin-top: 56px;
     color: #0F0F11;
-    font-size: 32px;
+    font-size: 48px;
     font-weight: 800;
-    line-height: 41px;
-    letter-spacing: -0.32px;
-    margin-inline: auto;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    width: 100%;
+    max-width: 1136px;
+
+  &darkMode {
+    color: #F1F2F9;
+    margin-top: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    width: 100%;
+    max-width: 1136px;
+  }
   }
 
   .homeWrapper {

@@ -143,9 +143,10 @@
 }
 
 .productsCart {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 752px;
   padding: 24px;
   align-items: center;
@@ -160,9 +161,10 @@
 }
 
 .productsCartDark {
+  position: relative;
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: flex-start;
   width: 752px;
   padding: 24px;
   align-items: center;
@@ -200,6 +202,7 @@
 }
 
 .productName {
+  text-wrap: wrap;
   display: flex;
   color: #0F0F11;
   font-size: 14px;
@@ -208,6 +211,7 @@
   line-height: 21px;
 
   &Dark {
+    text-wrap: wrap;
     display: flex;
     color: #E2E6E9;
     font-size: 14px;
@@ -218,11 +222,23 @@
 }
 
 .productCounterContainer {
+  margin-left: 80px;
+  position: relative;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   gap: 13px;
+
+  &Dark {
+    margin-left: 80px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 13px;
+  }
 }
 
 .counterItems {
@@ -270,6 +286,8 @@
 }
 
 .productPrice {
+  position: absolute;
+  right: 4%;
   color: #0F0F11;
   text-align: right;
   font-size: 22px;
@@ -278,6 +296,8 @@
   line-height: 140%;
 
   &Dark {
+    right: 4%;
+    position: absolute;
     color: #F1F2F9;
     text-align: right;
     font-size: 22px;
@@ -408,10 +428,30 @@
     margin-bottom: 40px;
   }
 
-  .productsCart {
+  .productCounterContainer {
+    margin-right: 85px;
+    position: relative;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
+    gap: 13px;
+
+    &Dark {
+      margin-right: 85px;
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 13px;
+    }
+  }
+
+  .productsCart {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     width: 592px;
     padding: 24px;
     align-items: center;
@@ -429,7 +469,7 @@
 .productsCartDark {
    display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 592px;
     padding: 24px;
     align-items: center;
@@ -474,7 +514,7 @@
     padding-inline: 16px;
     display: flex;
     flex-direction: column;
-    max-width: 1200px;
+    width: 100%;
     height: 100%;
     margin-inline: auto;
     flex: 1;
@@ -502,7 +542,7 @@
   .productsCart {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: flex-start;
     width: 100%;
     padding: 24px;
     align-items: center;
@@ -566,10 +606,101 @@
   }
 
   .counterAndPriceContainer {
+    margin-right: 100px;
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     gap: 96px;
   }
+
+  .productPrice {
+  position: absolute;
+  right: 4%;
+  bottom: 14%;
+  color: #0F0F11;
+  text-align: right;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 800;
+  line-height: 140%;
+
+  &Dark {
+    right: 4%;
+    bottom: 14%;
+    position: absolute;
+    color: #F1F2F9;
+    text-align: right;
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: 140%;
+  }
+}
+
+.productCounterContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  gap: 13px;
+
+  &Dark {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    gap: 13px;
+  }
+}
+
+.buttonCheckout {
+  display: flex;
+  width: 320px;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #216CFF;
+  outline: transparent;
+  border: none;
+  color: #FFF;
+
+  &:hover {
+    border-radius: 8px;
+    background: #216CFF;
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+}
+
+.buttonCheckoutDark {
+  display: flex;
+  width: 80%;
+  height: 48px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #216CFF;
+  outline: transparent;
+  border: none;
+  color: #FFF;
+
+  &:hover {
+    border-radius: 8px;
+    box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
+  }
+}
+
+.line {
+  background: #E2E6E9;
+  width: 80%;
+  height: 1px;
+  border: 1px;
+  gap: 8px;
+  margin-bottom: 24px;
+}
 }

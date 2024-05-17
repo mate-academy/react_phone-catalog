@@ -26,42 +26,42 @@ export const Categories: React.FC = () => {
         <div className={styles.categoriesContainer}>
           <div className={styles.categoriesProductContainer}>
             <NavLink to={'/phones'} className={styles.mobileLink}>
-              <div className={styles.mobilePhonePictures}>
-                <img
-                  src={phones}
-                  className={styles.mobilePhoneImg}
-                  alt="phones"
-                ></img>
-              </div>
-              <span className={styles.models}>124 models</span>
+              <img
+                src={phones}
+                className={styles.mobilePhoneImg}
+                alt="phones"
+              ></img>
+            </NavLink>
+            <span className={styles.models}>124 models</span>
+            <NavLink to={'/phones'} className={styles.mobileLink}>
               <span className={styles.qantity}>Mobile phones</span>
             </NavLink>
           </div>
 
           <div className={styles.categoriesProductContainer}>
             <NavLink to={'/tablets'} className={styles.mobileLink}>
-              <div className={styles.tabletPictures}>
-                <img
-                  src={tablets}
-                  className={styles.tabletImg}
-                  alt="tablets"
-                ></img>
-              </div>
-              <span className={styles.models}>36 models</span>
+              <img
+                src={tablets}
+                className={styles.tabletImg}
+                alt="tablets"
+              ></img>
+            </NavLink>
+            <span className={styles.models}>36 models</span>
+            <NavLink to={'/tablets'} className={styles.mobileLink}>
               <span className={styles.qantity}>Tablets</span>
             </NavLink>
           </div>
 
           <div className={styles.categoriesProductContainer}>
             <NavLink to={'/accessories'} className={styles.mobileLink}>
-              <div className={styles.accesoriesPictures}>
-                <img
-                  src={accesories}
-                  className={styles.accesoriesImg}
-                  alt="accesories"
-                ></img>
-              </div>
-              <span className={styles.models}>34 models</span>
+              <img
+                src={accesories}
+                className={styles.accesoriesImg}
+                alt="accesories"
+              ></img>
+            </NavLink>
+            <span className={styles.models}>34 models</span>
+            <NavLink to={'/accessories'} className={styles.mobileLink}>
               <span className={styles.qantity}>Accessories</span>
             </NavLink>
           </div>

@@ -5,7 +5,6 @@ import { NavLink, useNavigate } from 'react-router-dom';
 import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ProductType } from '../../Helpers/enumProductType';
-// import { Product } from '../../types/productType';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import {
   CartProduct,
@@ -29,44 +28,12 @@ export const Cart: React.FC<Props> = ({ title }) => {
   const theme = useAppSelector(state => state.theme.theme);
   const load = useAppSelector(state => state.phones.isLoading);
 
-  // console.log(cartProduct);
-  // console.log(cartProduct);
-
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-
-  // const initialCartProduct: Product[] = data.map(item => ({
-  //   ...item,
-  //   counter: 1,
-  // }));
 
   useEffect(() => {
     setCartProduct(data);
   }, [data]);
-
-  // const handleCountMinus = (id: number) => {
-  //   setCartProduct(prevProducts => {
-  //     return prevProducts.map(product => {
-  //       if (product.id === id) {
-  //         return { ...product, counter: Math.max(product.counter - 1, 1) };
-  //       }
-
-  //       return product;
-  //     });
-  //   });
-  // };
-
-  // const handleCountPlus = (id: number) => {
-  //   setCartProduct(prevProducts => {
-  //     return prevProducts.map(product => {
-  //       if (product.id === id) {
-  //         return { ...product, counter: product.counter + 1 };
-  //       }
-
-  //       return product;
-  //     });
-  //   });
-  // };
 
   const handleCountMinus = (id: number) => {
     dispatch(addProductCount({ id, increment: -1 }));
@@ -190,7 +157,13 @@ export const Cart: React.FC<Props> = ({ title }) => {
                               </NavLink>
                             </div>
                             <div className={styles.counterAndPriceContainer}>
-                              <div className={styles.productCounterContainer}>
+                              <div
+                                className={
+                                  theme === Theme.light
+                                    ? styles.productCounterContainer
+                                    : styles.productCounterContainerDark
+                                }
+                              >
                                 <button
                                   disabled={item.counter === 1}
                                   className={
@@ -262,15 +235,14 @@ export const Cart: React.FC<Props> = ({ title }) => {
                                   </svg>
                                 </button>
                               </div>
-
-                              <span
-                                className={
-                                  theme === Theme.light
-                                    ? styles.productPrice
-                                    : styles.productPriceDark
-                                }
-                              >{`$${item.product.price * item.counter}`}</span>
                             </div>
+                            <span
+                              className={
+                                theme === Theme.light
+                                  ? styles.productPrice
+                                  : styles.productPriceDark
+                              }
+                            >{`$${item.product.price * item.counter}`}</span>
                           </div>
                         </div>
                       ))}
