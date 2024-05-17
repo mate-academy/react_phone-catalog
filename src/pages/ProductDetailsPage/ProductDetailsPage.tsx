@@ -7,6 +7,7 @@ import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { Link, useParams } from 'react-router-dom';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
+import classNames from 'classnames';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -14,6 +15,15 @@ export const ProductDetailsPage: React.FC = () => {
   );
   const [displayedProduct, setDisplayedProduct] =
     useState<DetailedProduct | null>(null);
+  const [activeImage, setActiveImage] = useState<string>(
+    displayedProduct?.images[0] ?? '',
+  );
+
+  useEffect(() => {
+    if (!!displayedProduct) {
+      setActiveImage(displayedProduct.images[0]);
+    }
+  }, [displayedProduct]);
 
   const { productId } = useParams();
 
@@ -114,7 +124,7 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="product-images product-content__images">
               <img
                 className="product-images__main-image"
-                src={displayedProduct.images[0]}
+                src={'./' + activeImage}
                 alt="Product image"
               />
 
@@ -122,9 +132,12 @@ export const ProductDetailsPage: React.FC = () => {
                 {images.map((image: string) => (
                   <li key={image} className="images-list__element">
                     <img
-                      className="images-list__image"
+                      className={classNames('images-list__image', {
+                        'images-list__image--active': image === activeImage,
+                      })}
                       src={'./' + image}
                       alt="product image"
+                      onClick={() => setActiveImage(image)}
                     />
                   </li>
                 ))}
