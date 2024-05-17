@@ -38,6 +38,7 @@ export const SortingSettings = () => {
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set(key, value.toString());
+    newParams.set('page', '1');
 
     setSearchParams(newParams);
   };

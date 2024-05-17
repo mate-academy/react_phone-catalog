@@ -37,7 +37,7 @@ export const HomePage = () => {
 
   return (
     <main className={isDarkTheme ? styles.mainDark : ''}>
-      <section className={styles.homePage}>
+      <section className={styles.container}>
         {isLoading && <Loader />}
 
         {!isLoading && (

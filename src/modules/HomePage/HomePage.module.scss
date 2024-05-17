@@ -5,6 +5,9 @@
 }
 
 .container {
+  box-sizing: border-box;
+  height: fit-content;
+
   @include padding-inline;
   @include grid;
 }
