@@ -1,13 +1,16 @@
 import { useEffect, useState } from 'react';
-import './ProductDetailsPage.scss';
-import { getAllProducts } from '../../helpers/getAllProducts';
-import { DetailedProduct } from '../../types/DetailedProduct';
+import { Link, useParams } from 'react-router-dom';
+import classNames from 'classnames';
+import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { Product } from '../../types/ProductCard';
+import { DetailedProduct } from '../../types/DetailedProduct';
 import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
-import { Link, useParams } from 'react-router-dom';
-import { ProductSlider } from '../HomePage/components/ProductSlider';
-import classNames from 'classnames';
+import { getAllProducts } from '../../helpers/getAllProducts';
+import './ProductDetailsPage.scss';
+import '../../styles/main.scss';
+import { productColors } from '../../helpers/colors';
+import { Color } from '../../types/Color';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -49,6 +52,8 @@ export const ProductDetailsPage: React.FC = () => {
           );
         },
       );
+
+      // Get the colors
     }
   }, [foundProduct, productId]);
 
@@ -58,14 +63,14 @@ export const ProductDetailsPage: React.FC = () => {
 
   const {
     category,
-    id,
+    // id,
     // namespaceId,
     name,
     // capacityAvailable,
     // capacity,
     // priceRegular,
     // priceDiscount,
-    // colorsAvailable,
+    colorsAvailable,
     // color,
     images,
     // description,
@@ -147,25 +152,40 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="options product-content__options">
               <div className="colors options__colors">
                 <div className="colors__text-wrapper">
-                  <p className="colors__text small-text">Available colors</p>
-                  <p className="colors__text small-text">ID: {id}</p>
+                  <p className="colors__available small-text">
+                    Available colors
+                  </p>
+                  <p className="colors__id small-text">
+                    ID: {foundProduct?.id}
+                  </p>
                 </div>
                 <ul className="colors-list colors__colors-list">
-                  <li className="colors-list__item">
-                    <Link to="/">
-                      <img src="" alt="" />
-                    </Link>
-                  </li>
+                  {colorsAvailable.map((color: string) => (
+                    <li key={color} className="colors-list__item">
+                      <Link
+                        to="/"
+                        className="colors-list__color"
+                        style={{
+                          backgroundColor:
+                            color in productColors
+                              ? productColors[color as Color]
+                              : 'gray',
+                        }}
+                      >
+                        {/* {color} */}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
 
                 <hr className="options__divider" />
               </div>
-              <div className="capacities options__capacity">
-                <p className="colors__text small-text">Select capacity</p>
+              <div className="capacities options__capacities">
+                <p className="capacities__text small-text">Select capacity</p>
 
-                <ul className="capacity-list">
-                  <li className="capacity-list__item">
-                    <Link className="capacity-list__capacity-link" to="/">
+                <ul className="capacities__list">
+                  <li className="capacities__item">
+                    <Link className="capacities__link" to="/">
                       64 GB
                     </Link>
                   </li>
