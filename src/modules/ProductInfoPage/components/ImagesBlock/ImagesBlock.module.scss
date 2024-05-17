@@ -23,7 +23,7 @@
   display: flex;
   justify-content: center;
   justify-self: center;
-  width: 100%;
+  width: fit-content;
   max-width: 288px;
 
   @include on-tablet {
@@ -37,11 +37,10 @@
   }
 
   &__image {
-    width: min-content;
+    display: inline-block;
     height: 288px;
 
     @include on-desktop {
-      max-width: 464px;
       height: 464px;
     }
   }

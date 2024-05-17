@@ -46,6 +46,7 @@ export const Menu: React.FC<Props> = ({ isMenuActive, setIsMenuActive }) => {
         isMenuActive ? '' : styles.inactive,
         isDarkTheme ? styles.menuDark : '',
       )}
+      id="menu"
     >
       <nav className={styles.navigation}>
         <ul className={styles.navList}>

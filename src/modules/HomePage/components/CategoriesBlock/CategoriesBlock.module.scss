@@ -42,8 +42,8 @@
   text-decoration: none;
 
   &__image {
-    height: min-content;
     width: 100%;
+    height: calc(width);
   }
 
   &__title {

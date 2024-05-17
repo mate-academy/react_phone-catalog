@@ -35,9 +35,16 @@ export const ProductCard: React.FC<Props> = ({
     <article
       className={classNames(styles.card, isDarkTheme ? styles.cardDark : '')}
     >
-      <Link to={`/product/${itemId}`} className={styles.imgLink}>
-        <img className={styles.cardImage} alt="Product Image" src={image} />
-      </Link>
+      <div className={styles.card__imgContainer}>
+        <Link to={`/product/${itemId}`} className={styles.imgLink}>
+          <img
+            className={styles.cardImage}
+            alt="Product Image"
+            src={image}
+            onClick={() => window.scrollTo(0, 0)}
+          />
+        </Link>
+      </div>
 
       <Link to={`/product/${itemId}`} className={classNames(styles.card__link)}>
         <span

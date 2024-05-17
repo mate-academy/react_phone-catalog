@@ -27,15 +27,13 @@
     box-shadow: 0 3px 24px 0 #0000001A;
   }
 
-  &Image {
-    width: min-content;
+  .imgContainer {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    justify-self: center;
+    width: fit-content;
     height: 129px;
-    align-self: center;
-    transition: $transitionTime;
-
-    &:hover {
-      transform: scale(1.1);
-    }
 
     @include on-tablet {
       height: 181px;
@@ -43,6 +41,25 @@
 
     @include on-desktop {
       height: 196px;
+    }
+  }
+
+  &Image {
+    display: inline-block;
+    align-self: center;
+    transition: $transitionTime;
+    height: 129px;
+
+    @include on-tablet {
+      height: 181px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
     }
   }
 
