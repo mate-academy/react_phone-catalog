@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { getPreparedProducts } from '../../helpers/getPreparedProducts';
 import { ProductList } from '../../components/ProductList';
 import { Filters } from '../../components/Filters';
+import { Pagination } from '../../components/Pagination';
 
 type Props = {
   category: Category;
@@ -21,7 +22,7 @@ export const Products: React.FC<Props> = ({ category }) => {
   const sort = searchParams.get('sort');
   const query = searchParams.get('query');
   const onPage = searchParams.get('onPage');
-  const page = searchParams.get('page');
+  const page = searchParams.get('page') || '1';
 
   const preparedProducts = getPreparedProducts(categoryProducts, {
     sort,
@@ -42,6 +43,8 @@ export const Products: React.FC<Props> = ({ category }) => {
       <Filters />
 
       <ProductList products={preparedProducts} />
+
+      <Pagination products={categoryProducts} />
     </div>
   );
 };

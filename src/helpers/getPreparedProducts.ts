@@ -12,17 +12,13 @@ export const getPreparedProducts = (
     sort: string | null;
     query: string | null;
     onPage: string | null;
-    page: string | null;
+    page: string;
   },
 ) => {
   let preparedProducts = [...products];
 
-  if (query) {
-    const normalizedQuery = query.toLocaleLowerCase();
-
-    preparedProducts = preparedProducts.filter(item => {
-      return item.name.toLocaleLowerCase().includes(normalizedQuery);
-    });
+  if (!sort) {
+    preparedProducts = preparedProducts.sort((a, b) => b.year - a.year);
   }
 
   if (sort) {
@@ -41,10 +37,27 @@ export const getPreparedProducts = (
   }
 
   if (onPage && page) {
-    preparedProducts = preparedProducts.slice(
-      (+page - 1) * +onPage,
-      +page * +onPage,
-    );
+    const itemsPerPage = parseInt(onPage, 10);
+    const currentPage = parseInt(page, 10);
+
+    if (!isNaN(itemsPerPage) && !isNaN(currentPage)) {
+      preparedProducts = preparedProducts.slice(
+        (currentPage - 1) * itemsPerPage,
+        currentPage * itemsPerPage,
+      );
+    }
+  }
+
+  if (query) {
+    const normalizedQuery = query.toLocaleLowerCase();
+
+    preparedProducts = preparedProducts.filter(item => {
+      return item.name.toLocaleLowerCase().includes(normalizedQuery);
+    });
+  }
+
+  if (!onPage) {
+    preparedProducts = preparedProducts.slice(0, 8);
   }
 
   return preparedProducts;

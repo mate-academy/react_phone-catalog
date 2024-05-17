@@ -3,67 +3,34 @@ import './Filters.scss';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { SortOptions } from '../../types/SortOptions';
+import { SearchParams, getSearchWith } from '../../helpers/searchHelper';
 
 const OnPageOption = ['4', '8', '16', 'All'];
 
 export const Filters = () => {
-  const [sortByDropdownActive, setSortByDropdownActive] = useState(false);
-  const [onPageDropdownActive, setOnPageDropdownActive] = useState(false);
+  const [sortOpen, setSortOpen] = useState(false);
+  const [itemsPerPageOpen, setItemsPerPageOpens] = useState(false);
 
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const onPageParam = searchParams.get('onPage') || OnPageOption[0];
-  const sortByParam = searchParams.get('sort') || null;
-  const queryParam = searchParams.get('query') || '';
+  const onPage = searchParams.get('onPage') || 0;
+  const sort = searchParams.get('sort') || '';
+  const query = searchParams.get('query') || '';
 
-  const hasParams = !searchParams.keys().next().done;
+  function setSearchWith(params: SearchParams) {
+    setSearchParams(getSearchWith(searchParams, params));
+  }
 
-  const handleDeleteSearchParams = () => {
-    const params = new URLSearchParams();
-
-    setSearchParams(params);
-  };
-
-  const handleSortByChange = (value: SortOptions) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('sort', value);
-    params.set('page', '1');
-
-    setSearchParams(params);
+  const handleSortChange = (value: string) => {
+    setSearchWith({ sort: value || null, page: '1' });
   };
 
   const handleOnPageChange = (value: string) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('onPage', value);
-    params.set('page', '1');
-
-    setSearchParams(params);
+    setSearchWith({ onPage: value || null, page: '1' });
   };
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams);
-
-    if (event.target.value.trim() === '') {
-      params.delete('query');
-    } else {
-      params.set('query', event.target.value);
-    }
-
-    setSearchParams(params);
-  };
-
-  const handleInputOnBlur = () => {
-    const params = new URLSearchParams(searchParams);
-
-    if (queryParam.trim() === '') {
-      params.delete('query');
-    } else {
-      params.set('query', queryParam.trim());
-    }
-
-    setSearchParams(params);
+    setSearchWith({ query: event.target.value || null });
   };
 
   return (
@@ -73,59 +40,57 @@ export const Filters = () => {
 
         <button
           className="select-form__select"
-          onClick={() => setSortByDropdownActive(prev => !prev)}
-          onBlur={() => setTimeout(() => setSortByDropdownActive(false), 400)}
+          onClick={() => setSortOpen(prev => !prev)}
+          onBlur={() => setTimeout(() => setSortOpen(false), 300)}
         >
-          <div className="select__text">{sortByParam ?? 'All'}</div>
+          <div className="select__text">{sort ? sort : 'Default'}</div>
           <div
             className={classNames('select__icon', {
-              'select__icon--active': sortByDropdownActive,
+              'select__icon--active': sortOpen,
             })}
           />
         </button>
 
         <div
           className={classNames('select-form__dropdown', {
-            'select-form__dropdown--active': sortByDropdownActive,
+            'select-form__dropdown--active': sortOpen,
           })}
         >
           <div className="dropdown">
-            {Object.entries(SortOptions).map(([key, value]) => (
-              <div
-                key={key}
-                className="dropdown__item"
-                onClick={() => handleSortByChange(value)}
-              >
-                {value}
-              </div>
-            ))}
+            {Object.entries(SortOptions).map(([key, value]) => {
+              return (
+                <div
+                  key={key}
+                  className="dropdown__item"
+                  onClick={() => handleSortChange(value)}
+                >
+                  {key}
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>
 
       <div className="filter-form__on-page select-form">
-        {hasParams && (
-          <button className="skip-filters" onClick={handleDeleteSearchParams} />
-        )}
-
         <div className="select-form__label">On page</div>
 
         <button
           className="select-form__select"
-          onClick={() => setOnPageDropdownActive(prev => !prev)}
-          onBlur={() => setTimeout(() => setOnPageDropdownActive(false), 400)}
+          onClick={() => setItemsPerPageOpens(prev => !prev)}
+          onBlur={() => setTimeout(() => setItemsPerPageOpens(false), 300)}
         >
-          <div className="select__text">{onPageParam}</div>
+          <div className="select__text">{onPage ? onPage : 'Default'}</div>
           <div
             className={classNames('select__icon', {
-              'select__icon--active': onPageDropdownActive,
+              'select__icon--active': itemsPerPageOpen,
             })}
           />
         </button>
 
         <div
           className={classNames('select-form__dropdown', {
-            'select-form__dropdown--active': onPageDropdownActive,
+            'select-form__dropdown--active': itemsPerPageOpen,
           })}
         >
           <div className="dropdown">
@@ -146,9 +111,8 @@ export const Filters = () => {
         className="filter-form__search input-form"
         type="search"
         placeholder="search"
-        value={queryParam}
+        value={query}
         onChange={handleQueryChange}
-        onBlur={handleInputOnBlur}
       />
     </div>
   );
