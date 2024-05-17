@@ -82,7 +82,7 @@ const ProductSlider: React.FC<Props> = ({
             onClick={handleNext}
             disabled={nextDisabled}
           >
-            <i className="icon icon--arrow-right"></i>
+            <i className="icon icon__arrow-right"></i>
           </button>
         </div>
       </div>

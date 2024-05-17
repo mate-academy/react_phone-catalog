@@ -8,6 +8,7 @@ import { App } from './App';
 import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
+import { Category } from './types/Category';
 
 export const Root = () => (
   <Router>
@@ -16,17 +17,20 @@ export const Root = () => (
         <Route index element={<Home />} />
 
         <Route path="phones">
-          <Route index element={<Products />} />
-          <Route path=":productId" element={<Products />} />
+          <Route index element={<Products category={Category.Phones} />} />
+          <Route
+            path=":productId"
+            element={<Products category={Category.Phones} />}
+          />
         </Route>
-        <Route path="tablets">
+        {/* <Route path="tablets">
           <Route index element={<Products />} />
           <Route path=":productId" element={<Products />} />
         </Route>
         <Route path="accessories">
           <Route index element={<Products />} />
           <Route path=":productId" element={<Products />} />
-        </Route>
+        </Route> */}
 
         <Route path="*" element={<NotFound />} />
       </Route>
