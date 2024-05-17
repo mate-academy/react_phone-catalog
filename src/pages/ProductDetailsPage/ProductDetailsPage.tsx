@@ -57,7 +57,7 @@ export const ProductDetailsPage: React.FC = () => {
     // priceDiscount,
     // colorsAvailable,
     // color,
-    // images,
+    images,
     // description,
   } = displayedProduct;
 
@@ -109,7 +109,7 @@ export const ProductDetailsPage: React.FC = () => {
           </section>
 
           <section className="product-content product-details__product-content">
-            <h2 className="title--2">{name}</h2>
+            <h2 className="product-content__name title--2">{name}</h2>
 
             <div className="product-images product-content__images">
               <img
@@ -118,12 +118,20 @@ export const ProductDetailsPage: React.FC = () => {
                 alt="Product image"
               />
 
-              <div className="images-list">
-                <img className="images-list__image" src="" alt="" />
-              </div>
+              <ul className="images-list product-images__images-list">
+                {images.map((image: string) => (
+                  <li key={image} className="images-list__element">
+                    <img
+                      className="images-list__image"
+                      src={'./' + image}
+                      alt="product image"
+                    />
+                  </li>
+                ))}
+              </ul>
             </div>
 
-            <div className="options">
+            <div className="options product-content__options">
               <div className="colors options__colors">
                 <div className="colors__text-wrapper">
                   <p className="colors__text small-text">Available colors</p>
@@ -154,7 +162,7 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="purchase">
+            <div className="purchase product-content__purchase">
               <div className="prices">
                 <h2 className="title--1"></h2>
               </div>
@@ -170,7 +178,7 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
             </div>
 
-            <div className="main-info">
+            <div className="main-info product-content__main-info">
               <div className="main-info__pair">
                 <p className="main-info__label">Screen</p>
                 <p className="main-info__value">6.5” OLED</p>

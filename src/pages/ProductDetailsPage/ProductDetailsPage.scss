@@ -100,4 +100,62 @@
 
 .product-content {
   @include grid;
+
+  grid-template-rows: auto;
+  row-gap: 32px;
+
+  &__name {
+    grid-column: 1 / 5;
+  }
+
+  &__images {
+    grid-column: 1 / 5;
+  }
+  &__options {
+    grid-column: 1 / 5;
+  }
+  &__purchase {
+    grid-column: 1 / 5;
+  }
+  &__main-info {
+    grid-column: 1 / 5;
+  }
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &__main-image {
+    width: 288px;
+    height: 288px;
+    object-fit: contain;
+  }
+
+  // &__images-list {
+  // }
+}
+
+.images-list {
+  display: flex;
+  align-self: center;
+  gap: 8px;
+
+  // &__element {
+  // }
+  &__image {
+    box-sizing: border-box;
+    width: 49px;
+    height: 49px;
+    padding: 4.5px;
+
+    border: 1px solid $color-elements;
+    object-fit: contain;
+
+    &--active {
+      border-color: $color-primary;
+    }
+  }
 }
