@@ -51,17 +51,17 @@ export const HomePage = () => {
               >
                 Welcome to Nice Gadgets store!
               </h1>
-            </div>
 
-            <Slider />
-            <div className={styles.homePageContent}>
-              <BrandNewBlock productsList={productsList} />
-              <CategoriesBlock
-                phonesQuantity={phonesQuantity}
-                tabletsQuantity={tabletsQuantity}
-                accessoriesQuantity={accessoriesQuantity}
-              />
-              <HotPricesBlock productsList={productsList} />
+              <Slider />
+              <div className={styles.homePageContent}>
+                <BrandNewBlock productsList={productsList} />
+                <CategoriesBlock
+                  phonesQuantity={phonesQuantity}
+                  tabletsQuantity={tabletsQuantity}
+                  accessoriesQuantity={accessoriesQuantity}
+                />
+                <HotPricesBlock productsList={productsList} />
+              </div>
             </div>
           </>
         )}
