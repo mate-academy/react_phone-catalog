@@ -1,0 +1,175 @@
+@import '../../styles/utils';
+
+.skip-filters {
+  position: absolute;
+  right: 0;
+  top: -32px;
+  height: 32px;
+  width: 32px;
+  border: none;
+  background-image: url(../../../public/icons/Close.svg);
+  background-repeat: no-repeat;
+  background-position: right;
+  background-color: inherit;
+
+  // transition-duration: $short-duration;
+
+  &:hover {
+    background-size: 55%;
+    cursor: pointer;
+  }
+}
+
+.filter-form {
+  @include page-grid;
+
+  row-gap: 16px;
+  position: relative;
+
+  &__sort-by {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__on-page {
+    position: relative;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__search {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 8;
+    }
+  }
+}
+
+.select-form {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $color-secondary;
+  }
+
+  &__select {
+    height: 40px;
+    border: 1px solid $color-icons;
+    padding: 10px;
+    background: inherit;
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-secondary;
+    }
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__dropdown {
+    display: none;
+    border-radius: $border-radius;
+    position: absolute;
+    background-color: $color-white;
+    border: 1px solid $color-element;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 65px;
+
+    // box-shadow: -2px 2px 10px 0px $color-element;
+
+    &--active {
+      display: flex;
+    }
+  }
+}
+
+.select {
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../../public/icons/Arrow.svg);
+    transform: rotate(180deg);
+
+    &--active {
+      background-image: url(../../../public/icons/Arrow-disabled.svg);
+    }
+  }
+}
+
+.dropdown {
+  width: 100%;
+  margin-block: 8px;
+
+  &__item {
+    height: 32px;
+    padding-inline: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $color-secondary;
+
+    &:hover {
+      background-color: $color-green;
+      cursor: pointer;
+      color: $color-primary;
+    }
+  }
+}
+
+.input-form {
+  height: 40px;
+  border: 1px solid $color-icons;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: $border-radius;
+  font-size: 14px;
+  line-height: 21px;
+  color: #313237;
+
+  &:hover {
+    border: 1px solid $color-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-primary;
+  }
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../public/icons/Close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+}
