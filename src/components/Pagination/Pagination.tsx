@@ -7,12 +7,11 @@ import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import './Pagination.scss';
 import React from 'react';
-import { Product } from '../../types/product';
 import { TabAccessPhone } from '../../types/tabAccessPhones';
 
 type Props = {
-  products: Product[] | TabAccessPhone[];
-}
+  products: TabAccessPhone[];
+};
 
 export const Pagination: React.FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();

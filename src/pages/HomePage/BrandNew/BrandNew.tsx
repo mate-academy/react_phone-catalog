@@ -13,18 +13,22 @@ import { last, sliceToShow } from '../../../helpers/sliceToShow';
 import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
 
 export const BrandNew = () => {
-  const { products, 
-    elOnPage, 
+  const {
+    products,
+    elOnPage,
     currentPage,
-    handlePreviousPage, 
-    handleNextPage, 
-    error } = useContext(CatalogContext);
+    handlePreviousPage,
+    handleNextPage,
+    error,
+  } = useContext(CatalogContext);
 
   if (!products) {
-    return <NotFoundPage/>;
+    return <NotFoundPage />;
   }
 
-  const sortedBrand = products.sort((a, b) => (b.fullPrice > a.fullPrice ? 1 : -1));
+  const sortedBrand = products.sort((a, b) =>
+    b.fullPrice > a.fullPrice ? 1 : -1,
+  );
 
   const getSortProducts = sliceToShow(sortedBrand, currentPage, elOnPage);
 
@@ -75,10 +79,9 @@ export const BrandNew = () => {
                 to={`${item.category}/${item.itemId}`}
                 className="productsPage__link"
               >
-              <ProductCard product={item} key={item.id} />
+                <ProductCard product={item} key={item.id} />
               </NavLink>
-            ))
-            }
+            ))}
           </div>
         </div>
       </div>

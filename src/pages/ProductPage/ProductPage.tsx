@@ -1,35 +1,70 @@
 import { ChangeEvent, useState } from 'react';
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
-import { Pagination } from '../../components/Pagination/Pagination';
-import { SortByItem } from '../../helpers/sortBy';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
 import './ProductPage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import React from 'react';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
-import { Product } from '../../types/product';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchProducts } from '../../features/productssSlice';
+import { Category } from '../../types/category';
+import { ProductList } from '../ProductList/ProductList';
+import { TabAccessPhone } from '../../types/tabAccessPhones';
+import { useEffect } from 'react';
 
-type Props = {
-  products: Product[];
+interface Props {
   title: string;
 }
 
-export const ProductPage: React.FC<Props> = ({ products, title}) => {
+export const ProductPage: React.FC<Props> = ({ title }) => {
+  const dispatch = useAppDispatch();
+
+  const products = () => {
+    let prodItems;
+
+    switch (title) {
+      case 'phones':
+        const { phones } = useAppSelector(state => state.products);
+
+        dispatch(fetchProducts(Category.PHONES));
+
+        return (prodItems = phones);
+      case 'tablets':
+        const { tablets } = useAppSelector(state => state.products);
+
+        dispatch(fetchProducts(Category.TABLETS));
+
+        return (prodItems = tablets);
+      case 'accessories':
+        const { accessories } = useAppSelector(state => state.products);
+
+        dispatch(fetchProducts(Category.ACCESSORIES));
+
+        return (prodItems = accessories);
+      default:
+        break;
+    }
+
+    return prodItems;
+  };
+
+  const prod = products();
+
+  useEffect(() => {
+    dispatch(fetchProducts(Category.PHONES));
+  }, [dispatch]);
+
+  console.log(prod);
+
+  const productItems = useEffect(() => {
+    prod ? prod : <NotFoundPage />;
+  }, [prod]);
 
   const [sortBy, setSortBy] = useState<string>();
   const [searchParams, setSearchParams] = useSearchParams();
-  const { pathname } = useLocation();
-  
-  if (products === undefined) {
-    return <NotFoundPage />;
-  }
 
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
-  const itemsPerPage = perPage === 'all' ? products.length : perPage;
-  const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min(+currentPage * +itemsPerPage, products.length);
 
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
     setSortBy(event.target.value);
@@ -42,26 +77,9 @@ export const ProductPage: React.FC<Props> = ({ products, title}) => {
     });
   };
 
-  function filteredProducts(items: Product[]) {
-    switch (sortBy) {
-      case SortByItem.Age:
-        return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
-      case SortByItem.Name:
-        return items?.sort((a, b) => a.name.localeCompare(b.name));
-      case SortByItem.Price:
-        return items?.sort((a, b) => a.fullPrice - b.price);
-      default:
-        return items;
-    }
-  };
-
   const itemToUpperCase = (item: string) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
-  }
-
-  const filtered = filteredProducts(products).slice(firstItemIndex, lastItemIndex);
-
-  const showPagination = filtered.length < products.length;
+  };
 
   return (
     <div className="productsPage">
@@ -78,7 +96,7 @@ export const ProductPage: React.FC<Props> = ({ products, title}) => {
           <div className="productsPage__phones">{title}</div>
         </div>
         <h1 className="productsPage__header">{itemToUpperCase(title)}</h1>
-        <div className="productsPage__models">{`${products.length} models`}</div>
+        <div className="productsPage__models">{`${productItems.length} models`}</div>
 
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
@@ -110,24 +128,8 @@ export const ProductPage: React.FC<Props> = ({ products, title}) => {
         </div>
 
         <div className="productsPage__container">
-          <ul className="productsPage__list">
-            {filtered?.map((product: Product) => {
-              return (
-                <NavLink
-                  key={product.id}
-                  to={{ pathname: `${pathname}/${product.id}`}}
-                  className="productsPage__link"
-                >
-                  <ProductCard product={product} />
-                </NavLink>
-              )
-            })}
-          </ul>
+          <ProductList productItems={productItems} />
         </div>
-        {showPagination 
-          ? <Pagination products={products} />
-          : null
-        }
       </div>
     </div>
   );

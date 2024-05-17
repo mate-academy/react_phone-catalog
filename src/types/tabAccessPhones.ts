@@ -3,11 +3,11 @@ export interface TabAccessPhone {
   category: string;
   namespaceId: string;
   name: string;
-  capacityAvailable: [];
+  capacityAvailable: string[];
   capacity: string;
   priceRegular: number;
   priceDiscount: number;
-  colorsAvailable: [];
+  colorsAvailable: string[];
   color: string;
   images: string[];
   description: {
@@ -18,7 +18,7 @@ export interface TabAccessPhone {
   resolution: string;
   processor: string;
   ram: string;
-  camera?: string;
-  zoom?: string;
-  cell: [];
+  camera: string;
+  zoom: string;
+  cell: string[];
 }
