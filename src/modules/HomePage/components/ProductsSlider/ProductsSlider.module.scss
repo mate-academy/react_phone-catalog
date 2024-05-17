@@ -1,0 +1,110 @@
+@import 'Styles/utils';
+
+.container {
+  @include flex-center;
+
+  flex-direction: column;
+
+  box-sizing: border-box;
+
+  // width: 100%;
+  max-width: 1136px;
+}
+
+.topWrapper {
+  @include flex-center;
+  
+  box-sizing: border-box;
+  justify-content: space-between;
+  width: 100%;
+
+  @media (max-width: $tablet-breakpoint) {
+    padding: 0 24px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    padding: 0 16px;
+   }
+}
+
+.navButtons {
+  display: flex;
+  gap: 16px;
+}
+
+.sliderButtonPrev {
+  transform: rotate(180deg);
+}
+
+.sliderButtonPrev,
+.sliderButtonNext {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-surface2;
+  border: none;
+  height: 32px;
+  width: 32px;
+  background-image: url('~/public/img/icons/arrow-forward.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background-color 0.5s ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    background-color: $color-icons;
+  }
+}
+
+.lockedButton, .lockedButton:hover {
+  pointer-events: none;
+  background-image: url('~/public/img/icons/arrow-forward-disabled.svg');
+  background-color: $color-surface1;
+  border: 1px solid $color-elements;
+}
+
+.title {
+  @include h2-desktop-tablet;
+
+  margin: 0 0 24px;
+
+  @media (max-width: $mobile-breakpoint) {
+    margin: 0 0 16px;
+
+  }
+}
+
+.swiper {
+  display: flex;
+  flex-direction: row;
+  width: 1136px;
+
+  @media (max-width: $tablet-breakpoint) {
+    margin-left: 24px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    margin-left: 16px;
+  }
+}
+
+.swiperSlide {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 272px;
+  height: 506px;
+
+  @media (max-width: $tablet-breakpoint) {
+    width: 237px;
+    height: 512px;
+  }
+
+  @media (max-width: $mobile-breakpoint) {
+    width: 212px;
+    height: 439px;
+  }
+}

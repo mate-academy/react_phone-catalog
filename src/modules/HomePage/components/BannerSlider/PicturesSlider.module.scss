@@ -30,6 +30,7 @@
     width: 32px;
     height: 400px;
     background-color: $color-surface2;
+    cursor: pointer;
 
     @media (max-width: $tablet-breakpoint) {
       height: 189px;
@@ -109,6 +110,7 @@
     height: 4px;
     margin: 0 5px;
     background-color: $color-elements;
+    cursor: pointer;
   }
 
   .swiperPaginationBulletActive {
