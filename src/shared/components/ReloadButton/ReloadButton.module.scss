@@ -1,9 +1,11 @@
 @import '../../../utils/mixins';
 
 .container {
+  position: fixed;
+  top: 0;
   display: flex;
-  width: 85vw;
-  height: 85vh;
+  width: 100vw;
+  height: 100vh;
   align-items: center;
   justify-content: center;
   grid-column: 1/-1;
