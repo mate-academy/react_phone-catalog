@@ -163,11 +163,17 @@
 .options {
   display: flex;
   flex-direction: column;
+  gap: 24px;
 
   // &__colors {
   // }
-  // &__divider {
-  // }
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    border: none;
+  }
+
   // &__capacities {
   // }
 }
@@ -188,6 +194,7 @@
   &__id {
     color: $color-icons-placeholders;
   }
+
   // &__colors-list {
   // }
 }
@@ -219,13 +226,36 @@
   }
 }
 
-// .capacities {
-//   &__text {
-//   }
-//   &__list {
-//   }
-//   &__item {
-//   }
-//   &__-link {
-//   }
-// }
+.capacities {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__text {
+    color: $color-secondary;
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+  }
+
+  // &__item {
+  // }
+
+  &__link {
+    color: $color-primary;
+    text-decoration: none;
+
+    padding: 7px 8px;
+    border: 1px solid $color-icons-placeholders;
+
+    &--active {
+      background-color: $color-primary;
+      color: $color-white;
+
+      border: none;
+      padding: 8px 9px;
+    }
+  }
+}

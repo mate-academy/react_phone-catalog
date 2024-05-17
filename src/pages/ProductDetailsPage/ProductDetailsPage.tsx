@@ -11,6 +11,8 @@ import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
 import { productColors } from '../../helpers/colors';
 import { Color } from '../../types/Color';
+import { getNewCapacityUrl } from '../../helpers/getNewCapacityUrl';
+import { getNewColorUrl } from '../../helpers/getNewColorUrl';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -66,8 +68,8 @@ export const ProductDetailsPage: React.FC = () => {
     // id,
     // namespaceId,
     name,
-    // capacityAvailable,
-    // capacity,
+    capacityAvailable,
+    capacity,
     // priceRegular,
     // priceDiscount,
     colorsAvailable,
@@ -163,7 +165,7 @@ export const ProductDetailsPage: React.FC = () => {
                   {colorsAvailable.map((color: string) => (
                     <li key={color} className="colors-list__item">
                       <Link
-                        to="/"
+                        to={getNewColorUrl(displayedProduct.id, color)}
                         className="colors-list__color"
                         style={{
                           backgroundColor:
@@ -171,28 +173,39 @@ export const ProductDetailsPage: React.FC = () => {
                               ? productColors[color as Color]
                               : 'gray',
                         }}
-                      >
-                        {/* {color} */}
-                      </Link>
+                      ></Link>
                     </li>
                   ))}
                 </ul>
-
-                <hr className="options__divider" />
               </div>
+
+              <hr className="options__divider" />
+
               <div className="capacities options__capacities">
                 <p className="capacities__text small-text">Select capacity</p>
 
                 <ul className="capacities__list">
-                  <li className="capacities__item">
-                    <Link className="capacities__link" to="/">
-                      64 GB
-                    </Link>
-                  </li>
+                  {capacityAvailable.map((mappedCapacity: string) => (
+                    <li key={mappedCapacity} className="capacities__item">
+                      <Link
+                        className={classNames('capacities__link', 'body-text', {
+                          'capacities__link--active':
+                            capacity === mappedCapacity,
+                        })}
+                        // Change the capacity to the chosen capacity
+                        to={getNewCapacityUrl(
+                          displayedProduct.id,
+                          mappedCapacity,
+                        )}
+                      >
+                        {mappedCapacity}
+                      </Link>
+                    </li>
+                  ))}
                 </ul>
-
-                <hr className="options__divider" />
               </div>
+
+              <hr className="options__divider" />
             </div>
 
             <div className="purchase product-content__purchase">
