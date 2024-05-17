@@ -6,6 +6,7 @@ import { Product } from '../../types/ProductCard';
 import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { Link, useParams } from 'react-router-dom';
+import { ProductSlider } from '../HomePage/components/ProductSlider';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -47,7 +48,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   const {
     category,
-    // id,
+    id,
     // namespaceId,
     name,
     // capacityAvailable,
@@ -106,9 +107,110 @@ export const ProductDetailsPage: React.FC = () => {
               </button>
             </nav>
           </section>
-          <section>
-            {/* product name: {displayedProduct.name}
-            product priceRegular: {displayedProduct.priceRegular} */}
+
+          <section className="product-content product-details__product-content">
+            <h2 className="title--2">{name}</h2>
+
+            <div className="product-images product-content__images">
+              <img
+                className="product-images__main-image"
+                src={displayedProduct.images[0]}
+                alt="Product image"
+              />
+
+              <div className="images-list">
+                <img className="images-list__image" src="" alt="" />
+              </div>
+            </div>
+
+            <div className="options">
+              <div className="colors options__colors">
+                <div className="colors__text-wrapper">
+                  <p className="colors__text small-text">Available colors</p>
+                  <p className="colors__text small-text">ID: {id}</p>
+                </div>
+                <ul className="colors-list colors__colors-list">
+                  <li className="colors-list__item">
+                    <Link to="/">
+                      <img src="" alt="" />
+                    </Link>
+                  </li>
+                </ul>
+
+                <hr className="options__divider" />
+              </div>
+              <div className="capacities options__capacity">
+                <p className="colors__text small-text">Select capacity</p>
+
+                <ul className="capacity-list">
+                  <li className="capacity-list__item">
+                    <Link className="capacity-list__capacity-link" to="/">
+                      64 GB
+                    </Link>
+                  </li>
+                </ul>
+
+                <hr className="options__divider" />
+              </div>
+            </div>
+
+            <div className="purchase">
+              <div className="prices">
+                <h2 className="title--1"></h2>
+              </div>
+
+              <div className="buttons">
+                <button className="buttons__cart">Add to cart</button>
+                <button className="buttons__wishlist">
+                  <img
+                    src="./icons/heart-icon.svg"
+                    alt="Add to wishlist heart icon"
+                  />
+                </button>
+              </div>
+            </div>
+
+            <div className="main-info">
+              <div className="main-info__pair">
+                <p className="main-info__label">Screen</p>
+                <p className="main-info__value">6.5” OLED</p>
+              </div>
+            </div>
+          </section>
+          <section className="product-descriptions">
+            <h3>About</h3>
+
+            <hr />
+
+            <div className="product-descriptions__element">
+              <h4 className="product-descriptions__title">
+                And then there was Pro
+              </h4>
+
+              <p className="product-descriptions__info body-text-14">
+                A transformative triple-camera system that adds tons of
+                capability without complexity. An unprecedented leap in battery
+                life. And a mind-blowing chip that doubles down on machine
+                learning and pushes the boundaries of what a smartphone can do.
+                Welcome to the first iPhone powerful enough to be called Pro.
+              </p>
+            </div>
+          </section>
+
+          <section className="text-specs">
+            <h3 className="text-specs__title title--3"></h3>
+
+            <hr />
+
+            <div className="main-info text-specs__info`">
+              <div className="main-info__pair">
+                <p className="main-info__label">Screen</p>
+                <p className="main-info__value">6.5” OLED</p>
+              </div>
+            </div>
+          </section>
+          <section className="product-details__products-slider">
+            <ProductSlider hasRandomProducts={true} hasDiscount={true} />
           </section>
         </main>
       )}

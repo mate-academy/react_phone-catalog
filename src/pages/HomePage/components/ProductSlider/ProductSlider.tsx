@@ -5,12 +5,17 @@ import { ProductCategories } from '../../../../types/ProductCategories';
 import './ProductSlider.scss';
 import '../../../../styles/main.scss';
 import { getProducts } from '../../../../helpers/getProducts';
+import { filterRandomProducts } from '../../../../helpers/filterRandomProducts';
 
 type Props = {
   hasDiscount?: boolean;
+  hasRandomProducts?: boolean;
 };
 
-export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
+export const ProductSlider: React.FC<Props> = ({
+  hasDiscount = false,
+  hasRandomProducts = false,
+}) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
@@ -19,7 +24,14 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
 
   useEffect(() => {
     getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
-      let finalProducts = productsFromApi.reverse().slice(0, 8);
+      let finalProducts: Product[] = [];
+
+      if (hasRandomProducts) {
+        // Assign random products
+        finalProducts = filterRandomProducts(productsFromApi);
+      } else {
+        finalProducts = productsFromApi.reverse().slice(0, 8);
+      }
 
       if (hasDiscount) {
         // Sort from biggest discount to smallest (in $)
@@ -36,7 +48,7 @@ export const ProductSlider: React.FC<Props> = ({ hasDiscount = false }) => {
 
       setProducts(finalProducts);
     });
-  }, [hasDiscount]);
+  }, [hasDiscount, hasRandomProducts]);
 
   return (
     products.length > 0 && (

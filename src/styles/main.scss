@@ -5,11 +5,49 @@
   text-align: left;
 
   &--1 {
+    // Mobile
+    font-family: $font-family;
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
     letter-spacing: -0.01em;
+    text-align: left;
   }
+
+  &--2 {
+    // Mobile
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+
+  &--3 {
+    // Mobile
+    font-family: $font-family;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    text-align: left;
+  }
+  &--4 {
+    // Mobile
+    font-family: $font-family;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20.45px;
+    text-align: left;
+  }
+}
+
+.small-text {
+  // styleName: Small text 12;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
 }
 
 .section {

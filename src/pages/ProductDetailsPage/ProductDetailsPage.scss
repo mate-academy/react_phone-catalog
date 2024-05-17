@@ -2,12 +2,11 @@
 @use '../../utils/mixins' as *;
 
 .product-details {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
   padding-top: 24px;
-
-  @include grid;
-
-  grid-template-rows: auto auto;
-  justify-items: start;
   overflow: hidden;
 
   // overflow-wrap: break-word;
@@ -21,7 +20,7 @@
   @include grid;
 
   grid-template-rows: auto auto;
-  gap: 25px;
+  row-gap: 25px;
 
   &__wrapper {
     grid-column: 1 / 5;
@@ -97,4 +96,8 @@
       color: $color-secondary;
     }
   }
+}
+
+.product-content {
+  @include grid;
 }

@@ -1,12 +1,13 @@
 import { Route, Routes } from 'react-router-dom';
-import './App.scss';
-import './utils/_reset.scss';
 import { HomePage } from './pages/HomePage/HomePage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductPage } from './pages/ProductPage/Products/ProductPage';
 import { ProductCategories } from './types/ProductCategories';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import './App.scss';
+import './styles/main.scss';
+import './utils/_reset.scss';
 
 export const App = () => (
   <>
