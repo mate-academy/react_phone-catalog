@@ -1,0 +1,28 @@
+.route {
+  height: 16px;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__category {
+    color: $text-gray-color;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  &__device {
+    color: $text-gray-color;
+    font-size: 12px;
+    line-height: 16px;
+  }
+}
+
+.black {
+  color: $text-black-color;
+}

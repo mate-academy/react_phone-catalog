@@ -1,6 +1,6 @@
 @import "./reset";
-@import "./modules/constants/vars";
 @import "./modules/shared/mixins";
+@import "./modules/constants/vars";
 @import "./App";
 @import "./modules/shared/icons";
 @import "./modules/shared/title";
@@ -10,7 +10,7 @@
 @import "./modules/Footer/Footer";
 @import "./modules/HomePage/HomePage";
 @import "./modules/HomePage/PicturesSlider/PicturesSlider";
-@import "./modules/HomePage/ProductListCarousel/ProductListCarousel";
+@import "./modules/shared/ProductListCarousel/ProductListCarousel";
 @import "./modules/shared/ProductCard/ProductCard";
 @import "./modules/shared/AddBlock/AddBlock";
 @import "./modules/HomePage/ShopByCategoty/ShopByCategory";
@@ -18,5 +18,11 @@
 @import "./modules/shared/Dropdown/Dropdown";
 @import "./modules/shared/Pagination/Pagination";
 @import "./modules/shared/Reload/Reload";
+@import "./modules/ProductPage/ProductPage";
+@import "./modules/ProductPage/AvaliableContainer/AvaliableContainer";
+@import "./modules/shared/Price/Price";
+@import "./modules/shared/SpecsList/SpecsList";
+@import "./modules/ProductPage/DescriptionList/DescriptionList";
+@import "./modules/shared/Route/Route";
 
 // @import "./modules/shared/IconsSVG/IconsSVG";

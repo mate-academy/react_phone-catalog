@@ -2,17 +2,17 @@
   min-height: 100vh;
   margin: 0;
 
-  display: flex;
-  flex-direction: column;
+  &__container {
+    display: flex;
+    flex-direction: column;
 
-  position: relative;
+    position: relative;
 
-  overflow: hidden;
+    overflow: hidden;
+  }
 
   &__sidebar {
     position: absolute;
-
-    top: $header-height-mobile;
 
     background-color: $back-ground-color-white;
     box-shadow: inset 0 1px 0 $border-color-light-gray;

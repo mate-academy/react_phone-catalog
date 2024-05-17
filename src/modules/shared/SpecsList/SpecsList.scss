@@ -1,0 +1,19 @@
+.spec-item {
+  display: flex;
+  justify-content: space-between;
+
+  font-size: 12px;
+  line-height: 15.3px;
+
+  & :first-child {
+    color: $text-gray-color;
+
+    &::first-letter {
+      text-transform: uppercase;
+    }
+  }
+
+  & :last-child {
+    color: $text-black-color;
+  }
+}

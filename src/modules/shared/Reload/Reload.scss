@@ -1,12 +1,21 @@
 .reload-block {
+  --footer-height: 257px;
+
   min-width: 320px;
   margin: auto;
+
+  min-height: calc(100vh - #{$header-height} - var(--footer-height));
 
   display: flex;
   flex-direction: column;
   gap: 20px;
+  justify-content: center;
 
   @include padding-content-inline;
+
+  @include on-tablet {
+    --footer-height: 96px;
+  }
 
   &__page-not-found {
     width: 100%;

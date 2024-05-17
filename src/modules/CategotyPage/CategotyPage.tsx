@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { ProductCard } from '../shared/ProductCard';
 import { Dropdown } from '../shared/Dropdown';
 import { Pagination } from '../shared/Pagination';
@@ -13,17 +13,17 @@ import {
 import { getSortProducts } from '../../services/getSortProducts';
 import { Loader } from '../shared/Loader';
 import { Reload } from '../shared/Reload';
-import { IconHome, IconRight } from '../shared/IconsSVG';
+import { Route } from '../shared/Route';
+import { PRODUCT_URL } from "../constants/URL's/URL's";
+// import { IconHome, IconRight } from '../shared/IconsSVG';
 
 type Props = {
   title: string;
 };
 
-const PRODUCT_URL = 'api/products.json';
-
 export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   const { pathname } = useLocation();
-  const typeOfProduct = pathname.slice(1);
+  const category = pathname.slice(1);
 
   const [dataLoaded, setDataLoaded] = useState(false);
   const [error, setError] = useState(false);
@@ -37,12 +37,12 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
   );
 
   useEffect(() => {
-    if (products.length && products[0].category !== typeOfProduct) {
+    if (products.length && products[0].category !== category) {
       setSelectSortBy(optionsSortBy[0].value);
       setItemsPerPage(optionsItemsPerPage[1].value);
       setCurrentPage(1);
     }
-  }, [products, typeOfProduct]);
+  }, [products, category]);
 
   useEffect(() => {
     setDataLoaded(false);
@@ -52,7 +52,7 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
       .get<Product[]>(PRODUCT_URL)
       .then(data => {
         const getProducts = data.filter(
-          product => product.category === typeOfProduct,
+          product => product.category === category,
         );
 
         const perPage = getItemsPerPage(itemsPerPage, getProducts.length);
@@ -66,22 +66,14 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
         setDataLoaded(true);
       })
       .catch(() => setError(true));
-  }, [currentPage, itemsPerPage, selectSortBy, typeOfProduct]);
+  }, [currentPage, itemsPerPage, selectSortBy, category]);
 
   return error ? (
     <Reload imgOfError="page-not-found.png" />
   ) : (
     <div className="category-page">
       <div className="category-page__route">
-        <Link to="/">
-          <IconHome />
-        </Link>
-
-        <IconRight />
-
-        <Link to="." className="category-page__page-name">
-          <span>{typeOfProduct}</span>
-        </Link>
+        <Route category={category} />
       </div>
 
       <div className="category-page__title">
@@ -123,7 +115,7 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
                 <ProductCard
                   key={product.id}
                   product={product}
-                  hotPrice={false}
+                  discount={false}
                 />
               ))}
             </div>
@@ -140,7 +132,7 @@ export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
             )}
           </div>
         ) : (
-          <div className="category-page__loader">
+          <div className="loader">
             <Loader />
           </div>
         )}

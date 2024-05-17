@@ -1,5 +1,5 @@
 .sidebar {
-  height: calc(100vh - #{$header-height-mobile});
+  height: calc(100vh - #{$header-height});
   width: 100vw;
 
   display: flex;

@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Picture } from '../../../types/Picture';
@@ -14,16 +14,17 @@ import {
 } from '../../constants/PARAMS_OF_PAGE';
 import { getSliderImages } from '../../../services/getSliderImages';
 import { MoveLeft, MoveRight } from '../../shared/MoveButtons';
+import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
-type Props = {
-  windowSize: number;
-};
-
-export const PicturesSlider: React.FC<Props> = React.memo(({ windowSize }) => {
+export const PicturesSlider: React.FC = React.memo(() => {
+  const { windowSize } = useContext(WindowWidthContext);
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const [size, setSize] = useState(windowSize);
   const [images, setImages] = useState<Picture[]>(getImages(windowSize));
+
+  const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
+  const [touchEnd, setTouchEnd] = useState<{ x: number } | null>(null);
 
   const imagesRef = useRef<HTMLDivElement>(null);
 
@@ -85,6 +86,31 @@ export const PicturesSlider: React.FC<Props> = React.memo(({ windowSize }) => {
     }
   };
 
+  const handleTouchStart = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchStart({ x: event.touches[0].clientX });
+  };
+
+  const handleTouchMove = (event: React.TouchEvent<HTMLDivElement>) => {
+    setTouchEnd({ x: event.touches[0].clientX });
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart && touchEnd) {
+      const deltaX = touchEnd.x - touchStart.x;
+
+      if (Math.abs(deltaX) > 50) {
+        if (deltaX > 0) {
+          moveLeft();
+        } else {
+          moveRight();
+        }
+      }
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (imgPosition >= images.length - 1) {
@@ -125,7 +151,12 @@ export const PicturesSlider: React.FC<Props> = React.memo(({ windowSize }) => {
           <MoveLeft move={moveLeft} />
         </div>
 
-        <div className="pictures-slider__images-wrapper">
+        <div
+          className="pictures-slider__images-wrapper"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           <div
             className="pictures-slider__images"
             style={{ left: `-${position}px` }}

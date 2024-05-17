@@ -1,28 +1,29 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import React, { useEffect, useState } from 'react';
-import { ProductCard } from '../../shared/ProductCard';
+import React, { useContext, useEffect, useState } from 'react';
+import { ProductCard } from '../ProductCard';
 import { getPadding } from '../../../services/getPadding';
 import { getWidthCard } from '../../../services/getWidthCard';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
-import { Loader } from '../../shared/Loader';
+import { Loader } from '../Loader';
 import { Product } from '../../../types/Product';
 import {
   COLUMN_SIZE_FOR_DESCTOP,
   DESCTOP_COLUMNS,
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
-import { MoveLeft, MoveRight } from '../../shared/MoveButtons';
+import { MoveLeft, MoveRight } from '../MoveButtons';
+import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
 type Props = {
   title: string;
-  windowSize: number;
   products: Product[];
   dataLoaded: boolean;
-  hotPrice: boolean;
+  discount: boolean;
 };
 
 export const ProductListCarousel: React.FC<Props> = React.memo(
-  ({ title, windowSize, products, dataLoaded, hotPrice }) => {
+  ({ title, products, dataLoaded, discount }) => {
+    const { windowSize } = useContext(WindowWidthContext);
     const [size, setSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -175,7 +176,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
                   key={product.id}
                   product={product}
                   widthCard={widthCard}
-                  hotPrice={hotPrice}
+                  discount={discount}
                 />
               ))}
             </div>

@@ -9,7 +9,7 @@
 
 .icon-container {
   height: 100%;
-  width: $header-height-mobile;
+  width: $header-height;
 
   display: flex;
   align-items: center;
@@ -20,10 +20,6 @@
   &--close,
   &--fav {
     box-shadow: none;
-  }
-
-  @include on-desctop {
-    width: $header-height-desctop;
   }
 }
 

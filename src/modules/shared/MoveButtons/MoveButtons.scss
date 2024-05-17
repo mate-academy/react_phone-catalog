@@ -28,6 +28,21 @@
     color: #fff;
   }
 
+  &.back {
+    height: 26px;
+    width: 66px;
+
+    display: flex;
+    gap: 4px;
+    justify-content: left;
+    align-items: center;
+
+    border: none;
+    color: $text-gray-color;
+    font-size: 12px;
+    line-height: 100%;
+  }
+
   &__action {
     &.disabled {
       fill: $text-gray-color;

@@ -24,11 +24,19 @@
 }
 
 .tertiary-title {
-  font-family: Mont-Bold, sans-serif;
+  // font-family: Mont-Bold, sans-serif;
+  font-family: Mont-SemiBold, sans-serif;
   font-size: 20px;
   line-height: 25.5px;
 
   color: $text-black-color;
+
+  @include on-tablet {
+    font-family: Mont-Bold, sans-serif;
+
+    font-size: 22px;
+    line-height: 30.8px;
+  }
 }
 
 .quaternary-title {

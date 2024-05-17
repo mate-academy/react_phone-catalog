@@ -1,3 +1,275 @@
 .product-page {
-  @include padding-content-inline;
+  padding-block: 24px 56px;
+
+  max-width: 1136px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desctop {
+    margin-inline: auto;
+  }
+
+  & > :not(:last-child) {
+    @include padding-content-inline;
+  }
+
+  &__route {
+    margin-bottom: 40px;
+  }
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__container {
+    @include on-tablet {
+      @include page-grid;
+
+      grid-template-areas:
+        "ti ti ti ti ti ti ti ti ti ti ti ti"
+        "prev mi mi mi mi mi mi c1 c1 c1 c1 c1"
+        "prev mi mi mi mi mi mi c2 c2 c2 c2 c2"
+        "prev mi mi mi mi mi mi pri pri pri pri pri"
+        "prev mi mi mi mi mi mi ab ab ab ab ab"
+        "prev mi mi mi mi mi mi ts1 ts1 ts1 ts1 ts1"
+        "de de de de de de de de de de de de"
+        "ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2";
+    }
+
+    @include on-desctop {
+      grid-template-areas:
+        "ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti"
+        "prev prev mi mi mi mi mi mi mi mi mi mi . c1 c1 c1 c1 c1 c1 c1 . . . ."
+        "prev prev mi mi mi mi mi mi mi mi mi mi . c2 c2 c2 c2 c2 c2 c2 . . . ."
+        "prev prev mi mi mi mi mi mi mi mi mi mi . pri pri pri pri pri pri pri . . . ."
+        "prev prev mi mi mi mi mi mi mi mi mi mi . ab ab ab ab ab ab ab . . . ."
+        "prev prev mi mi mi mi mi mi mi mi mi mi . ts1 ts1 ts1 ts1 ts1 ts1 ts1 . . . ."
+        "prev prev mi mi mi mi mi mi mi mi mi mi . . . . . . . . . . . ."
+        "de de de de de de de de de de de de . ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2";
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+    margin-bottom: 40px;
+
+      grid-area: ti;
+    }
+  }
+
+  &__main-img-wrapper {
+    width: 100%;
+    padding-bottom: 100%;
+    margin-bottom: 16px;
+
+    position: relative;
+
+    @include on-tablet {
+      height: fit-content;
+      margin-bottom: 0;
+
+      grid-area: mi;
+    }
+
+    @include on-desctop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__main-img {
+    height: 100%;
+
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  &__preview {
+    height: 49px;
+    margin-bottom: 32px;
+
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      height: fit-content;
+      margin-bottom: 0;
+
+      flex-direction: column;
+      grid-area: prev;
+    }
+
+    @include on-desctop {
+      margin-bottom: 80px;
+
+      gap: 16px;
+    }
+  }
+
+  &__img-wrapper {
+    height: 100%;
+    aspect-ratio: 1 / 1;
+
+    position: relative;
+
+    border: 1px solid $border-color-light-gray;
+  }
+
+  &__img {
+    height: 90%;
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__avaliable-container {
+    margin-bottom: 24px;
+
+    &--1 {
+      @include on-tablet {
+        grid-area: c1;
+      }
+    }
+
+    &--2 {
+      @include on-tablet {
+        grid-area: c2;
+      }
+    }
+  }
+
+  &__avaliable-title {
+    margin-bottom: 8px;
+
+    display: flex;
+    justify-content: space-between;
+
+    font-size: 12px;
+    color: $text-gray-color;
+
+    @include on-desctop {
+      position: relative;
+
+      & :nth-child(2) {
+        position: absolute;
+        right: calc((-32px * 4) + (-16px * 4));
+      }
+    }
+  }
+
+  &__price {
+    margin-block: 8px 16px;
+
+    display: flex;
+    gap: 8px;
+
+    letter-spacing: -1px;
+    line-height: 41px;
+
+    & :first-child {
+      font-size: 32px;
+    }
+
+    @include on-tablet {
+      grid-area: pri;
+    }
+
+  }
+
+  &__add-block {
+    @include on-tablet {
+      grid-area: ab;
+    }
+  }
+
+  &__tech-specs {
+    margin-block: 32px 56px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &--1 {
+      @include on-tablet {
+        margin-bottom: 64px;
+
+        grid-area: ts1;
+      }
+
+      @include on-desctop {
+        margin-bottom: auto; // maby not
+      }
+    }
+
+    &--2 {
+      @include on-tablet {
+        margin-block: 0 64px;
+
+        grid-area: ts2;
+      }
+    }
+  }
+
+  &__description {
+    margin-bottom: 56px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+
+      grid-area: de;
+    }
+  }
+
+  &__description-title {
+    padding-bottom: 16px;
+
+    position: relative;
+
+    &::after {
+      content: "";
+
+      width: 100%;
+      height: 1px;
+
+      position: absolute;
+      bottom: 0;
+      left: 0;
+
+      background-color: $border-color-light-gray;
+    }
+  }
+}
+
+.loader {
+  --padding-top: 24px;
+  --padding-bottom: 64px;
+  --route-height: 16px;
+  --title-height: 41px;
+  --margin-bottom-route: 24px;
+  --margin-bottom-title: 24px;
+  --footer-height: 257px;
+  --gap: 8px;
+  --general-height:
+  calc(
+    #{$header-height} + var(--route-height) + var(--title-height) + var(--margin-bottom-route) + var(--margin-bottom-title) + var(--footer-height) + var(--padding-top) + var(--padding-bottom) + var(--gap));
+
+  min-height: calc(100vh - var(--general-height));
+
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    --footer-height: 96px;
+    --margin-bottom-route: 40px;
+  }
 }

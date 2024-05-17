@@ -1,5 +1,3 @@
-$header-height-mobile: 48px;
-$header-height-desctop: 64px;
 $text-gray-color: #89939a;
 $text-black-color: #313237;
 $border-color-default: #b4bdc3;
@@ -12,3 +10,8 @@ $gap-between-columns: 16px;
 $padding-inline-for-mobile: 16px;
 $padding-inline-for-tablet: 24px;
 $button-size: 32px;
+$header-height: 48px;
+
+@include on-desctop {
+  $header-height: 64px;
+}

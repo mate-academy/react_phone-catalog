@@ -1,0 +1,19 @@
+.description {
+  &__title {
+    margin-bottom: 16px;
+
+    color: $text-black-color;
+    font-size: 16px;
+    line-height: 20.5px;
+  }
+
+  &__item-container {
+    color: $text-gray-color;
+    font-size: 14px;
+    line-height: 21px;
+
+    & :not(:last-child) {
+      margin-bottom: 14px;
+    }
+  }
+}

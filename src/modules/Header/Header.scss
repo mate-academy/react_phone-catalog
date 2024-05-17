@@ -1,5 +1,5 @@
 .header {
-  height: $header-height-mobile;
+  height: $header-height;
 
   position: sticky;
   top: 0;
@@ -8,10 +8,6 @@
 
   background-color: $back-ground-color-white;
   z-index: 1;
-
-  @include on-desctop {
-    height: $header-height-desctop;
-  }
 
   &__container {
     height: 100%;

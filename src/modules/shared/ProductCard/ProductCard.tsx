@@ -1,49 +1,109 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { AddBlock } from '../AddBlock';
 import { Product } from '../../../types/Product';
+import { Price } from '../Price';
+import { SpecsList } from '../SpecsList';
 
 type Props = {
   product: Product;
   widthCard?: number;
-  hotPrice: boolean;
+  discount: boolean;
 };
 
+// function getURLLink(pathname: string, category: string, itemId: string) {
+//   if (pathname.includes(category)) {
+//     return itemId;
+//   }
+
+//   return `${category}/${itemId}`;
+// }
+
+// function getURLLink1(
+//   pathname: string,
+//   category: string,
+//   itemId: string,
+//   navigate: ReturnType<typeof useNavigate>,
+// ) {
+//   const splitPathname = pathname.split('/').slice(1);
+
+//   if (splitPathname.length === 1 && splitPathname[0] === category) {
+//     return itemId;
+//   }
+
+//   if (splitPathname.length === 2) {
+//     navigate(`${category}/${itemId}`);
+
+//     return '';
+//   }
+
+//   return `${category}/${itemId}`;
+// }
+
 export const ProductCard: React.FC<Props> = React.memo(
-  ({ product, widthCard, hotPrice }) => {
-    const { name, image, fullPrice, price, screen, capacity, ram } = product;
-    const modifyScreen = screen
-      .split(' ')
-      .slice(0, 2)
-      .join(' ')
-      .replace(`'`, `”`);
+  ({ product, widthCard, discount }) => {
+    const {
+      name,
+      image,
+      fullPrice,
+      price,
+      screen,
+      capacity,
+      ram,
+      itemId,
+      category,
+    } = product;
+
+    const { pathname } = useLocation();
+    const isCategory = pathname.includes(category);
+    const navigate = useNavigate();
+
+    const specs = { screen, capacity, ram };
+
+    const navigateTo = () => {
+      if (isCategory) {
+        navigate(itemId, { state: { discount } });
+      } else {
+        navigate(`${category}/${itemId}`, { state: { discount } });
+      }
+    };
 
     return (
       <div className="product-card" style={{ width: `${widthCard}px` }}>
-        <Link to="/" className="product-card__img-link">
+        {/* <Link
+          to={getURLLink(pathname, category, itemId)}
+          className="product-card__img-link"
+        >
           <img src={image} alt={`${name}`} className="product-card__img" />
-        </Link>
+        </Link> */}
+        <button
+          type="button"
+          onClick={navigateTo}
+          className="product-card__img-link"
+          // style={isCategory ? { width: '100%', height: 'auto' } : {}}
+        >
+          <img
+            src={image}
+            alt={`${name}`}
+            className="product-card__img"
+            style={category === 'accessories' ? { maxHeight: '90%' } : {}}
+          />
+        </button>
 
         <p className="product-card__title">{name}</p>
 
-        {hotPrice ? (
-          <p className="product-card__price">
-            {`$${price}`} <span className="crossed">{`$${fullPrice}`}</span>
-          </p>
-        ) : (
-          <p className="product-card__price">{`$${fullPrice}`}</p>
-        )}
+        <div className="product-card__price">
+          <Price
+            discount={discount}
+            priceDiscount={price}
+            fullPrice={fullPrice}
+          />
+        </div>
 
         <div className="product-card__descr">
-          <p className="product-card__descr-item">
-            Screen <span className="bold">{modifyScreen}</span>
-          </p>
-          <p className="product-card__descr-item">
-            Capacity <span className="bold">{capacity}</span>
-          </p>
-          <p className="product-card__descr-item">
-            RAM <span className="bold">{ram}</span>
-          </p>
+          {Object.entries(specs).map(prop => (
+            <SpecsList prop={prop} key={prop[0]} />
+          ))}
         </div>
 
         <AddBlock />
