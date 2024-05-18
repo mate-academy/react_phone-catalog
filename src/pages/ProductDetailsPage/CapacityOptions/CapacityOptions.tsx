@@ -23,7 +23,7 @@ export const CapacityOptions: React.FC<Props> = ({
         {capacityAvailable.map((mappedCapacity: string) => (
           <li key={mappedCapacity} className="capacities__item">
             <Link
-              className={cn('capacities__link', 'body-text', {
+              className={cn('capacities__link', 'body-text--14', {
                 'capacities__link--active': capacity === mappedCapacity,
               })}
               // Change the capacity to the chosen capacity

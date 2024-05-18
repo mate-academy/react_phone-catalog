@@ -1,3 +1,5 @@
+import { DescriptionPair } from './DescriptionPair';
+
 export type DetailedProduct = {
   id: string;
   category: string;
@@ -10,20 +12,7 @@ export type DetailedProduct = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: [
-    {
-      title: string;
-      text: string[];
-    },
-    {
-      title: string;
-      text: string[];
-    },
-    {
-      title: string;
-      text: string[];
-    },
-  ];
+  description: DescriptionPair[];
   screen: string;
   resolution: string;
   processor: string;

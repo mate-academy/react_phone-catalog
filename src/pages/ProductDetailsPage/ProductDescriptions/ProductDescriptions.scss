@@ -1,0 +1,35 @@
+@use '../../../utils/variables' as *;
+
+// .product-descriptions {
+//   &__title {
+//   }
+
+//   &__list {
+//   }
+// }
+
+.descriptions-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  // &__element {
+  // }
+}
+
+.description-pair {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  // &__title {
+  // }
+  &__info-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  &__info {
+    color: $color-secondary;
+  }
+}

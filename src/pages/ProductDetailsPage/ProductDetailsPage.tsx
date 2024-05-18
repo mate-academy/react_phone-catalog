@@ -12,6 +12,7 @@ import { getAllProducts } from '../../helpers/getAllProducts';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
+import { ProductDescriptions } from './ProductDescriptions';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -74,7 +75,7 @@ export const ProductDetailsPage: React.FC = () => {
     colorsAvailable,
     // color,
     images,
-    // description,
+    description,
   } = displayedProduct;
 
   const productInfo = ['screen', 'resolution', 'processor', 'ram'];
@@ -213,25 +214,8 @@ export const ProductDetailsPage: React.FC = () => {
               ))}
             </div>
           </section>
-          <section className="product-descriptions">
-            <h3 className="product-descriptions__title title--3">About</h3>
 
-            <hr />
-
-            <div className="product-descriptions__element">
-              <h4 className="product-descriptions__title">
-                And then there was Pro
-              </h4>
-
-              <p className="product-descriptions__info body-text-14">
-                A transformative triple-camera system that adds tons of
-                capability without complexity. An unprecedented leap in battery
-                life. And a mind-blowing chip that doubles down on machine
-                learning and pushes the boundaries of what a smartphone can do.
-                Welcome to the first iPhone powerful enough to be called Pro.
-              </p>
-            </div>
-          </section>
+          <ProductDescriptions descriptions={description} />
 
           <section className="text-specs">
             <h3 className="text-specs__title title--3"></h3>
