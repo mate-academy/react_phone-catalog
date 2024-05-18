@@ -2,17 +2,15 @@ import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
+import { ColorOptions } from './ColorOptions';
 import { Product } from '../../types/ProductCard';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { getAllProducts } from '../../helpers/getAllProducts';
+import { getNewCapacityUrl } from '../../helpers/getNewCapacityUrl';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
-import { productColors } from '../../helpers/colors';
-import { Color } from '../../types/Color';
-import { getNewCapacityUrl } from '../../helpers/getNewCapacityUrl';
-import { getNewColorUrl } from '../../helpers/getNewColorUrl';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -161,22 +159,12 @@ export const ProductDetailsPage: React.FC = () => {
                     ID: {foundProduct?.id}
                   </p>
                 </div>
-                <ul className="colors-list colors__colors-list">
-                  {colorsAvailable.map((color: string) => (
-                    <li key={color} className="colors-list__item">
-                      <Link
-                        to={getNewColorUrl(displayedProduct.id, color)}
-                        className="colors-list__color"
-                        style={{
-                          backgroundColor:
-                            color in productColors
-                              ? productColors[color as Color]
-                              : 'gray',
-                        }}
-                      ></Link>
-                    </li>
-                  ))}
-                </ul>
+                <div className="colors__colors-list">
+                  <ColorOptions
+                    displayedProduct={displayedProduct}
+                    colorsAvailable={colorsAvailable}
+                  />
+                </div>
               </div>
 
               <hr className="options__divider" />

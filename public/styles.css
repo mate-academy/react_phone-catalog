@@ -1,3 +1,7 @@
+:root {
+  scroll-behavior: smooth;
+}
+
 .page-content {
   margin: 0;
   display: flex;
