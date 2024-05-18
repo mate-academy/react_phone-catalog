@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'classnames';
 import './Pagination.scss';
 import { useEffect, useState } from 'react';
 
@@ -43,7 +43,7 @@ export const Pagination: React.FC<Props> = ({
   return (
     <ul className="pagination">
       <button
-        className={classNames('pagination__arrow', 'arrow-left', {
+        className={cn('pagination__arrow', 'arrow-left', {
           'arrow-left--active': currentPage > 1,
         })}
         onClick={() => {
@@ -65,7 +65,7 @@ export const Pagination: React.FC<Props> = ({
       {visiblePages.map((page: number) => (
         <li key={page}>
           <button
-            className={classNames('pagination__page', {
+            className={cn('pagination__page', {
               'pagination__page--active': currentPage === page,
             })}
             onClick={() => setCurrentPage(page)}
@@ -77,7 +77,7 @@ export const Pagination: React.FC<Props> = ({
 
       <li>
         <button
-          className={classNames('pagination__arrow', {
+          className={cn('pagination__arrow', {
             'pagination__arrow--active': currentPage < pagesTotal,
           })}
           onClick={() => {

@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from 'react';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { Tabs } from '../../../../types/Tabs';
 import './PicturesSlider.scss';
 
@@ -8,7 +8,7 @@ export const PicturesSlider = () => {
   const iconSrc = './icons/slider-icon.svg';
   const activeIconSrc = './icons/slider-icon-active.svg';
 
-  const bannerClass = classNames('banner', `banner--${activeTab}`);
+  const bannerClass = cn('banner', `banner--${activeTab}`);
 
   useEffect(() => {
     setInterval(() => {

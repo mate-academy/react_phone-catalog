@@ -1,4 +1,4 @@
-import classNames from 'classnames';
+import cn from 'cn';
 import { Link } from 'react-router-dom';
 import { getNewCapacityUrl } from '../../../helpers/getNewCapacityUrl';
 import { DetailedProduct } from '../../../types/DetailedProduct';
@@ -23,7 +23,7 @@ export const CapacityOptions: React.FC<Props> = ({
         {capacityAvailable.map((mappedCapacity: string) => (
           <li key={mappedCapacity} className="capacities__item">
             <Link
-              className={classNames('capacities__link', 'body-text', {
+              className={cn('capacities__link', 'body-text', {
                 'capacities__link--active': capacity === mappedCapacity,
               })}
               // Change the capacity to the chosen capacity

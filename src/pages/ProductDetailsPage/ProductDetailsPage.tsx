@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import classNames from 'classnames';
+import cn from 'classnames';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
 import { CapacityOptions } from './CapacityOptions';
@@ -137,7 +137,7 @@ export const ProductDetailsPage: React.FC = () => {
                 {images.map((image: string) => (
                   <li key={image} className="images-list__element">
                     <img
-                      className={classNames('images-list__image', {
+                      className={cn('images-list__image', {
                         'images-list__image--active': image === activeImage,
                       })}
                       src={'./' + image}
