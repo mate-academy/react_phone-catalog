@@ -1,12 +1,24 @@
 @import '/src/Global.scss';
+@import '../Shared/blocks.scss';
 
 .header {
+  width: 100%;
   height: 64px;
-  display: block;
-  margin-bottom: 40px;
-  padding-left: 24px;
-  border-bottom: 1px solid  $elements-color;
+  margin-bottom: 56px;
+  border-bottom: 1px solid  var(--elements-color);
   box-sizing: border-box;
+  padding-left: 24px;
+
+  @include onPhone {
+    display: flex;
+    height: 48px;
+    margin-bottom: 24px;
+  }
+
+  @include onTablet {
+    padding-left: 16px;
+    margin-bottom: 32px;
+  }
 
   &__items {
     display: flex;
@@ -17,50 +29,119 @@
 
   &__items-right  {
    display: flex;
-   border-bottom: 1px solid $elements-color;
+   border-bottom: 1px solid var(--elements-color);
+
+   @include onPhone {
+    display: none
+  }
   }
 
   &__items-left {
-    display: flex;
-    gap: 64px;
-  }
-
-  &__cart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 66px;
-    height: 63px;
-  }
-
-  &__favor {
-    display: flex;
-    width: 66px;
-    height: 63px;
-    align-content: center;
-    border-left: 1px solid $elements-color;
-    border-right: 1px solid $elements-color;
+    display:  flex;
+    gap: 48px;
+    @include onTablet {
+      gap: 16px;
+    }
   }
 
   &__links {
-    display: flex;
-    justify-content: center;
+    display: inline-flex;
     align-items: center;
     gap: 64px;
+
+    @include onTablet {
+      gap: 32px;
+    }
+
+    @include onPhone {
+      display: none
+    }
   }
  
   &__link {
     @include Uppercase;
     text-decoration: none;
+    position: relative;
 
     &.is-active {
-      color: $primary-color;
+      color: var(--primary-color);
     }
-  } 
+
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -18.5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      color: var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
 
   &__logo {
     display: flex;
-    width: 40px;
-    height: 24px;
+    align-items: center;
+
+    @include onTablet {
+      height: 30px;
+    }
+  }
+
+  &__icon {
+    width: 80px;
+    height: 27px;
+
+    @include onTablet {
+      width: 64px;
+      height: 21px;
+    }
+  }
+
+  &__cart {
+    width: 66px;
+    height: 63px;
+
+    @include onPhone {
+      display: none
+    }
+  }
+  
+
+  &__favor {
+    width: 66px;
+    height: 63px;
+    border-left: 1px solid var(--elements-color);
+    border-right: 1px solid var(--elements-color);
+
+    @include onPhone {
+      display: none
+    }
+  }
+
+  &__amount-box {
+    top: 18px;
+    left: 34px;
+  }
+
+  &__menu {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 0px;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--elements-color);
+
+    visibility: hidden;
+
+    @include onPhone {
+      visibility: visible;
+    }
   }
 }
+
+
+

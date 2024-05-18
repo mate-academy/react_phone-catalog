@@ -20,7 +20,7 @@ export function filterProducts(products: Product[], value: string | null) {
     case value === 'price':
       return sortedProducts.sort((prodA, prodB) => prodA.price - prodB.price);
     case value === 'age':
-      return sortedProducts.sort((prodA, prodB) => prodA.year - prodB.year);
+      return sortedProducts.sort((prodA, prodB) => prodB.year - prodA.year);
     case value === 'name':
       return sortedProducts.sort((prodA, prodB) =>
         prodA.name.toLowerCase().localeCompare(prodB.name.toLowerCase()),

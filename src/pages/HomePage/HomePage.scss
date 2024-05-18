@@ -1,15 +1,18 @@
+@import '../../Global.scss';
+
 .homePage {
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 80px;
 
-  &__section:not(:first-child) {
-    margin-bottom: 80px;
+  @include onTablet {
+    gap: 64px;
   }
-
-  &__section:first-child {
-    margin-bottom: 72px;
-  } 
+ 
+  @include onPhone {
+    gap: 56px;
+  }
 }
 
 

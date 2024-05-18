@@ -5,7 +5,12 @@ import { useContext } from 'react';
 import { ProductContext } from '../../helper/ProductContext';
 
 export const Category = () => {
-  const { phones, tablets, accessories } = useContext(ProductContext);
+  const { product } = useContext(ProductContext);
+  const phones = product.filter(prod => prod.category === 'phones').length;
+  const tablets = product.filter(prod => prod.category === 'tablets').length;
+  const accessories = product.filter(
+    prod => prod.category === 'accessories',
+  ).length;
 
   return (
     <div className="category">
@@ -16,7 +21,7 @@ export const Category = () => {
           <div className="category__image-box category__image-box--phones">
             <img
               className="category__img category__img--phones"
-              src="_new/img/category-phones.png"
+              src="img/category-phones.png"
             />
           </div>
 
@@ -28,14 +33,14 @@ export const Category = () => {
           >
             Mobile Phones
           </NavLink>
-          <p className="category__descr">{`${phones.length} models`}</p>
+          <p className="category__descr">{`${phones} models`}</p>
         </div>
 
         <div className="category__tablets category__item">
           <div className="category__image-box category__image-box--tablets">
             <img
               className="category__img category__img--tablets"
-              src="_new\img\category-tablets.png"
+              src="img\category-tablets.png"
             />
           </div>
 
@@ -47,7 +52,7 @@ export const Category = () => {
           >
             Tablets
           </NavLink>
-          <p className="category__descr">{`${tablets.length} models`}</p>
+          <p className="category__descr">{`${tablets} models`}</p>
         </div>
 
         <div className="category__acccessories category__item">
@@ -57,7 +62,7 @@ export const Category = () => {
           >
             <img
               className="category__img category__img--acccessories "
-              src="_new\img\category-accessories.png"
+              src="img\category-accessories.png"
             />
           </div>
 
@@ -69,7 +74,7 @@ export const Category = () => {
           >
             Accessories
           </NavLink>
-          <p className="category__descr">{`${accessories.length} models`}</p>
+          <p className="category__descr">{`${accessories} models`}</p>
         </div>
       </div>
     </div>

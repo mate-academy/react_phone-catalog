@@ -1,33 +1,50 @@
 @import '../../Global.scss';
 
 .category {
-  width: 1136px;
-  height: 508;
-
   &__title {
     margin-bottom: 24px;
     @include H1;
+
+    @include onPhone {
+      font-size: 22px;
+      line-height: 31px;
+    }
   }
 
   &__list {
     display: flex;
     gap: 18px;
+
+    @include onPhone {
+      flex-direction: column;
+      justify-content: center;
+    }
   }
 
   &__item {
     display: flex;
     flex-direction: column;
-    width: 368px;
-    height: 443px;
     box-sizing: border-box;
   }
 
   &__image-box {
+    --item-size: 368px;
+    width: var(--item-size);
+    height: var(--item-size);
     position: relative;
-    width: 368px;
-    height: 368px;
     margin-bottom: 24px;
     overflow: hidden;
+
+
+  @include onTablet {
+    width: calc(var(--item-size) / 2.1); 
+    height: calc(var(--item-size) / 2.5); 
+  }
+
+  @include onPhone {
+    width: 288px; 
+    height: 288px; 
+  }
     
 
     &--phones {
@@ -46,8 +63,6 @@
 
   &__img {
     position: absolute;
-    left: 73px;
-    top: 8px;
     
     &--phones {
       width: 386px;
@@ -81,6 +96,6 @@
 
   &__descr {
     @include body-text14;
-    color: $secondary-color;
+    color: var(--secondary-color);
   }
 }

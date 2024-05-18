@@ -1,5 +1,9 @@
 @import '/src/Global.scss';
 
+
+  $width-slider: 1136px;
+
+
 .cardsContainer {
   display: flex;
   flex-direction: row;
@@ -7,13 +11,20 @@
 }
 
 .slider {
-  width: 1136px;
+  width: $width-slider;
   height: 572px;
   display: flex;
   flex-direction: column;
   overflow: hidden;
  
+  @include onTablet {
+    width: 560px; 
+  }
 
+  @include onPhone {
+    width: 272px;
+  }
+ 
   &__items {
     display: flex;
     flex-direction: row;
@@ -23,6 +34,11 @@
 
   &__title {
     @include H1;
+    
+    @include onPhone {
+      font-size: 22px;
+      line-height: 31px;
+    }
   }
 
   &__buttons {
@@ -38,16 +54,16 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid $elements-color 1px;
-    background-color: $white;
+    border: solid var(--elements-color) 1px;
+    background-color: var(--white);
   }
 
   &__button:hover {
-    border: solid 1px $primary-color;
+    border: solid 1px var(--primary-color);
   }
 
   &__button:disabled {
-    border: solid 1px $elements-color;
+    border: solid 1px var(--elements-color);
   }
 
   &__img {
@@ -68,5 +84,5 @@
 }
 
 .disabled {
-  border-color: #B4BDC3;
+  border-color: var(--icon-color);
 }

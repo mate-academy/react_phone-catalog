@@ -1,17 +1,19 @@
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../../Components/Loader/Loader';
 import { Pagination } from '../../Components/Pagination/Pagination';
-import { getAccessories } from '../../helper/api';
+import { getProduct } from '../../helper/api';
 import { getSearchWith } from '../../helper/searchHelper';
 import { useContext, useEffect, useState } from 'react';
 import '../ProductPages/Pages.scss';
 import { ProductContext } from '../../helper/ProductContext';
+import { NoResults } from '../../Components/NoResults/NoResults';
+import { Breadcrumbs } from '../../Components/Breadcrumbs/Breadcrumbs';
 
 export const AccessoriesPage = () => {
-  const { accessAmount, setAccessAmount, accessories, setAccessories } =
-    useContext(ProductContext);
+  const { product, setProduct, setAppliedQuery } = useContext(ProductContext);
   const [loading, setLoading] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [accessAmount, setAccessAmount] = useState(0);
   const sort = searchParams.get('sort') || 'age';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
@@ -50,20 +52,35 @@ export const AccessoriesPage = () => {
 
   useEffect(() => {
     setLoading(true);
-    getAccessories()
-      .then(setAccessories)
+    const params = new URLSearchParams(searchParams);
+
+    params.set('sort', 'age');
+    params.set('page', '2');
+    params.set('perPage', '8');
+    params.set('query', 'value');
+    setSearchParams(params);
+
+    getProduct('accessories')
+      .then(response => {
+        setProduct(response);
+      })
       .finally(() => {
         setLoading(false);
       });
+
+    return () => {
+      setAppliedQuery('');
+    };
   }, []);
 
   return loading ? (
     <Loader />
-  ) : (
+  ) : !!product.length ? (
     <div className="productPage">
       <div className="productPage__items">
+        <Breadcrumbs device="accessories" />
         <div className="productPage__headings">
-          <h1 className="productPage__title">Accessories</h1>
+          <h1 className="productPage__h1">Accessories</h1>
           <p className="productPage__text">{`${accessAmount} models`}</p>
         </div>
 
@@ -109,7 +126,7 @@ export const AccessoriesPage = () => {
               defaultValue={8}
             >
               {option.map(opt => (
-                <option value={opt} key={opt}>
+                <option className="productPage__option" value={opt} key={opt}>
                   {opt}
                 </option>
               ))}
@@ -118,17 +135,21 @@ export const AccessoriesPage = () => {
         </div>
       </div>
 
-      <Pagination
-        onChangeProducts={newAccessories => {
-          setAccessAmount(newAccessories);
-        }}
-        products={accessories}
-        sort={sort}
-        perPage={perPage}
-        currentPage={currentPage}
-        onClickPage={onClickPage}
-        onArrowClick={onArrowClick}
-      />
+      <div className="productPage__pagination">
+        <Pagination
+          onChangeProducts={newAccessories => {
+            setAccessAmount(newAccessories);
+          }}
+          products={product}
+          sort={sort}
+          perPage={perPage}
+          currentPage={currentPage}
+          onClickPage={onClickPage}
+          onArrowClick={onArrowClick}
+        />
+      </div>
     </div>
+  ) : (
+    <NoResults />
   );
 };

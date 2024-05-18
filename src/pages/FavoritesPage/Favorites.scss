@@ -1,0 +1,27 @@
+@import '../../Global.scss';
+
+.favoritesPage {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__amount {
+    @include body-text14;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+  }
+
+  &__h1 {
+    @include H1;
+    margin-bottom: 8px;
+  }
+
+  &__empty {
+    @include H1;
+  }
+}

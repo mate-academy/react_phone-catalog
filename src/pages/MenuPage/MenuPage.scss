@@ -1,0 +1,58 @@
+@import '../../Global.scss';
+@import '../../Components/Shared/blocks.scss';
+
+
+.menuPage {
+  height: 568px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  overflow: hidden;
+
+  @include onPhone {
+    overflow:visible;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 16px;
+    margin-bottom: 276px;
+  }
+
+  &__link {
+    @include Uppercase;
+    text-decoration: none;
+    position: relative;
+
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -18.5px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      color: var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
+
+  &__menu-items {
+    width: 100%;
+    height: 64px;
+    display: flex;
+    flex-direction: row;
+  }
+  
+  &__favor {
+    width: 50%;
+    border: 1px solid var(--elements-color);
+  }
+  
+  &__amount-box {
+    top: 28%;
+    right: 40%;
+  }
+}

@@ -1,0 +1,94 @@
+@import '../../Global.scss';
+
+.cardPage {
+  margin-bottom: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include onPhone {
+    margin-bottom: 56px;
+  }
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  &__container {
+     display: flex;
+     flex-direction: column;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__h1 {
+    @include H1;
+    margin-bottom: 32px;
+  }
+
+  &__h2 {
+    @include H2;
+  }
+
+  &__card {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__checkout {
+    box-sizing: border-box;
+    width: 368px;
+    height: 206px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: 1px solid var(--elements-color);
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    @include onPhone {
+      width: 288px;
+    }
+  }
+
+  &__price {
+    @include H2;
+  }
+
+  &__amount {
+    width: 100%;
+    @include body-text14;
+    text-align: center;
+    color: var(--secondary-color);
+    padding-bottom: 25px;
+    border-bottom: 1px solid var(--elements-color);
+    margin-bottom: 24px;
+  }
+
+  &__button {
+    width: 100%;
+    height: 48px;
+    @include buttons;
+  }
+
+  
+}

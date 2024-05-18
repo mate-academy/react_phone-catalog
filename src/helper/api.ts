@@ -1,25 +1,21 @@
 import { Product } from './Product';
 import { ProductDeteils } from './ProductDeteils';
 
-const BASE_API_URL =
-  'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
-
-function wait(delay: number) {
-  return new Promise(resolve => setTimeout(resolve, delay));
-}
+const BASE_API_URL = 'api/products.json';
 
 export async function getProducts(): Promise<Product[]> {
-  return wait(500)
-    .then(() => fetch(BASE_API_URL))
-    .then(response => response.json());
+  return fetch(BASE_API_URL).then(response => response.json());
 }
 
-export async function getProductsDetails(id: string): Promise<ProductDeteils> {
-  const API_PROD_DETAILS = `https://mate-academy.github.io/react_phone-catalog/_new/products/${id}.json`;
+export async function getSuggestedProducts(
+  category: string,
+  id: string,
+): Promise<ProductDeteils> {
+  const API_PROD_DETAILS = `api/${category}.json`;
+  const product = fetch(API_PROD_DETAILS).then(response => response.json());
+  const productDeteils = await product;
 
-  return wait(500)
-    .then(() => fetch(API_PROD_DETAILS))
-    .then(response => response.json());
+  return productDeteils.find((prod: { id: string }) => prod.id === id);
 }
 
 export async function getHotPriceProducts(): Promise<Product[]> {
@@ -33,22 +29,10 @@ export async function getHotPriceProducts(): Promise<Product[]> {
   });
 }
 
-export async function getPhones(): Promise<Product[]> {
+export async function getProduct(category: string): Promise<Product[]> {
   const product = await getProducts();
 
-  return product.filter(prod => prod.category === 'phones');
-}
-
-export async function getTablets(): Promise<Product[]> {
-  const product = await getProducts();
-
-  return product.filter(prod => prod.category === 'tablets');
-}
-
-export async function getAccessories(): Promise<Product[]> {
-  const product = await getProducts();
-
-  return product.filter(prod => prod.category === 'accessories');
+  return product.filter(prod => prod.category === category);
 }
 
 export async function getBrandNewProducts(): Promise<Product[]> {
@@ -60,7 +44,7 @@ export async function getBrandNewProducts(): Promise<Product[]> {
 export async function getNewest(): Promise<Product[]> {
   const product = await getProducts();
 
-  return product.sort((prodA, prodB) => prodA.year - prodB.year);
+  return product.sort((prodA, prodB) => prodB.year - prodA.year);
 }
 
 export async function getByName(): Promise<Product[]> {

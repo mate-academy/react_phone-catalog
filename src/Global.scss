@@ -3,6 +3,17 @@ $secondary-color: #89939A;
 $icon-color: #B4BDC3;
 $elements-color: #E2E6E9;
 $white: #FFFFFF;
+$button-color: #313237;
+
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --icon-color: #{$icon-color};
+  --elements-color: #{$elements-color};
+  --white: #{$white};
+  --button-color: #{$button-color};
+  --card-color: white;
+}
 
   @mixin H1 {
     font-family: Mont, sans-serif; 
@@ -10,7 +21,7 @@ $white: #FFFFFF;
     font-weight: 700; 
     line-height: 41px; 
     letter-spacing: -0.01em;
-    color: $primary-color;
+    color: var(--primary-color);
   }; 
     
   @mixin H2 {
@@ -19,7 +30,7 @@ $white: #FFFFFF;
     font-weight: 700;
     line-height: 31px;
     letter-spacing: 0em;
-    color: $primary-color;
+    color: var(--primary-color);
   };
     
   @mixin H3 {
@@ -28,7 +39,7 @@ $white: #FFFFFF;
     font-weight: 600;
     line-height: 26px;
     letter-spacing: 0em;
-    color: $primary-color;
+    color: var(--primary-color);
   };
     
   @mixin Uppercase {
@@ -37,7 +48,7 @@ $white: #FFFFFF;
     font-weight: 700;
     line-height: 11px;
     letter-spacing: 0.04em;
-    color: $secondary-color;
+    color: var(--secondary-color);
   };
    
   @mixin buttons {
@@ -45,8 +56,8 @@ $white: #FFFFFF;
     font-size: 14px;
     line-height: 21px;
     letter-spacing: 0;
-    color: $primary-color;
-
+    background-color: var(--button-color);
+    color: white;
   };
   
   @mixin body-text14 {
@@ -55,7 +66,7 @@ $white: #FFFFFF;
     font-weight: 500;
     line-height: 21px;
     letter-spacing: 0em;
-    color: $primary-color;
+    color: var(--primary-color);
   };
    
   @mixin smoll-text {
@@ -65,5 +76,24 @@ $white: #FFFFFF;
     line-height: 15px;
     letter-spacing: 0em;
     text-align: left;
-    color: $secondary-color;
+    color: var(--secondary-color);
   };
+
+
+  @mixin onDesktop {
+    @media(min-width: 1200px) {
+      @content
+    }
+  };
+
+  @mixin onTablet {
+    @media(max-width: 1199px) {
+      @content
+    }
+  };
+
+  @mixin onPhone {
+    @media(max-width: 539px) {
+      @content
+    }
+  }

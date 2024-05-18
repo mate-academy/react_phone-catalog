@@ -2,9 +2,37 @@
 
 .homePageSlider {
   &__container {
-    display: block;
-    width: 1136px;
-    height: 432px;
+    @include onPhone {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__h1 {
+    @include H1;
+    display: none;
+
+    &--desktop {
+      @include onDesktop {
+        display: block;
+        margin-bottom: 56px;
+      }
+    }
+
+    &--tablet {
+      @include onTablet {
+        margin-bottom: 32px;
+        display: block;
+      }
+
+      @include onPhone {
+        display: block;
+        margin-bottom: 24px;
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
   }
 
   &__items {
@@ -17,17 +45,32 @@
     margin-bottom: 8px;
   }
 
-
   &__pic-box {
     position: relative;
-    width: 1040px;
-    height: 400px;
+    --width-picbox: 1040px;
+    --height-picbox: 400px;
+    width: var(--width-picbox);
+    height: var(--height-picbox);
+
+    @include onTablet {
+      width: calc(var(--width-picbox) / 2.2);
+      height: calc(var(--height-picbox) / 2);
+    }
+
+    @include onPhone {
+      width: 320px;
+      height: 320px;
+    }
   }
 
   &__img {
     position: absolute;
     width:100%;
     height: 100%;
+
+    @include onPhone {
+      width: fit-content;
+    }
   }
 
   &__button {
@@ -36,14 +79,22 @@
     height: 400px;
     justify-content: center;
     align-items: center;
-    border: 1px solid $icon-color;
-    background-color: $white;
+    border: 1px solid var(--icon-color);
+    background-color: var(--white);
+    
+    @include onTablet {
+      height: 189px;
+    }
+
+    @include onPhone {
+      display: none;
+    }
   }
 
   &__arr {
     display: inline-block;
     padding: 2.5px;
-    border: solid black;
+    border: solid var(--primary-color);
     border-width: 0 2px 2px 0;
 
     &--right {  
@@ -66,10 +117,10 @@
   &__dot {
     width: 14px;
     height: 4px;
-    background-color: $elements-color;
+    background-color: var(--elements-color);
 
     &.is-active {
-      background-color: $primary-color;
+      background-color: var(--primary-color);
     }
   }
 }

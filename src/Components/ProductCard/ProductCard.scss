@@ -1,5 +1,8 @@
 @import '../../Global.scss';
 
+$card-width: 272px;
+
+
 .cardsContainer__card {
   display: flex;
   justify-content: end;
@@ -7,13 +10,17 @@
 }
 
 .card {
-  width: 272px;
+  width: $card-width;
   height: 503px;
+  display: flex;
   flex-direction: column;
-  border: 1px solid $elements-color;
+  border: 1px solid var(--elements-color);
   box-sizing: border-box;
-  text-decoration: none;
-  width: 272px;
+  background-color: var(--card-color);
+
+  &__link {
+    text-decoration: none;
+  }
  
   &__list {
     padding: 24px;
@@ -29,7 +36,7 @@
   }
 
   &__item:first-child {
-    border-bottom: $elements-color solid  ;
+    border-bottom: var(--elements-color) solid  ;
   }
 
   &__icon {
@@ -41,7 +48,6 @@
   }
 
   &__icon-image {
-    width: 70%;
     height: 95%;
   }
 
@@ -62,13 +68,13 @@
       @include H2;
     }
 
-    &--hotPrices {
-      font-family: Mont;
+    &--hotPrices, &--alsoLike {
+      font-family: Mont, sans-serif;
       font-size: 22px;
       font-weight: 500;
       line-height: 28px;
       letter-spacing: 0em;
-      color: $secondary-color;
+      color: var(--secondary-color);
       text-decoration: line-through;
     }
 
@@ -89,7 +95,7 @@
 
     &--descr {
       @include smoll-text;
-      color: $primary-color;
+      color: var(--primary-color);
     }
   }
 
@@ -102,15 +108,22 @@
   &__button {
     width: 176px;
     height: 40px;
-    color: $white;
-    background-color: $primary-color;
+    @include buttons;
   }
 
   &__favor {
     display: flex;
+    flex-wrap: wrap;
     align-content: center;
+    justify-content: center;
     width: 40px;
     height: 39px;
-    border: 1px solid $elements-color;
+    border: 1px solid var(--elements-color);
+    background-color: var(--icon-color);
+  }
+
+  &__favor-icon {
+    width: 15px;
+    height: 14px;
   }
 }

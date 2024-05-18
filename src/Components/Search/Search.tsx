@@ -2,10 +2,13 @@ import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../helper/ProductContext';
 import './Search.scss';
 import debounce from 'lodash.debounce';
+import { useLocation } from 'react-router-dom';
 
 export const Search = () => {
   const { setAppliedQuery } = useContext(ProductContext);
   const [query, setQuery] = useState('');
+  const { pathname } = useLocation();
+  const [prevAdress, setPrevAdress] = useState('');
 
   const applyQuery = useCallback(debounce(setAppliedQuery, 1000), []);
 
@@ -15,12 +18,15 @@ export const Search = () => {
     setQuery(newQuery);
     applyQuery(newQuery);
   };
-  
+
   useEffect(() => {
-    return () => {
-      applyQuery('');
-    };
-  }, [applyQuery]);
+    setPrevAdress(pathname);
+    if (prevAdress !== pathname) {
+      setQuery('');
+    } else {
+      setPrevAdress('');
+    }
+  }, [pathname]);
 
   return (
     <div className="search">

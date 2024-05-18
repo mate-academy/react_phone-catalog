@@ -1,0 +1,36 @@
+@import '../../Global.scss';
+
+.breadcrumbs {
+  &__url {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    font-family: Mont sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: var(--secondary-color);
+  }
+  
+  &__vector {
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    color: var(--icon-color);
+  }
+  
+  &__url-icon {
+    color: var(--primary-color);
+  }
+  
+  &__segment {
+    color: var(--primary-color);
+    text-decoration: none;
+  }
+  
+  &__phoneId {
+    color: var(--secondary-color);
+  }
+}
+

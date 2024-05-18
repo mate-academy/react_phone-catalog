@@ -2,21 +2,37 @@
 
 .footer {
   height: 96px;
-  border-top: 1px solid  #E2E6E9;
+  border-top: 1px solid  var(--white);
   box-sizing: border-box;
   
   &__items {
-    display: inline;
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    align-self: center;
+    align-items: center;
     padding: 40px;
+
+    @include onPhone {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 32px;
+    }
   }
 
   &__links {
     display: flex;
-    gap: 64px;
+    gap: 107px;
+    align-items: center;
+
+    @include onTablet {
+      gap: 14px
+    }
+
+    @include onPhone {
+      align-items: flex-start;
+      flex-direction: column;
+      gap: 16px;
+    }
   }
  
   &__link {
@@ -24,34 +40,40 @@
 
     text-decoration: none;
     &.is-active {
-      color: #000;
+      color: var(--primary-color);
     }
   } 
 
-    &__back {
-      display: flex;
-      gap: 8px;
-      align-items: center;
+  &__back {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    justify-content: center;
+
+    @include onPhone {
+      width: 100%;
     }
 
-    &__link-back {
-      @include smoll-text;
-    }
+  }
 
-    &__logo {
-      display: flex;
-      width: 40px;
-      height: 24px;
-      
-    }
+  &__link-back {
+    @include smoll-text;
+    text-decoration: none;
+  }
 
-    &__back-button {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 32px;
-      height: 32px;
-      border: 1px solid $icon-color;
-      background-color: $white;
-    }
+  &__logo {
+    display: flex;
+    width: 80px;
+    height: 30px;
+  }
+
+  &__back-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icon-color);
+    background-color: var(--white);
+  }
 }

@@ -8,6 +8,9 @@ import { TabletsPage } from './pages/ProductPages/TabletsPage';
 import { AccessoriesPage } from './pages/ProductPages/AccessoriesPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { CartPage } from './pages/CartPage/CartPage';
+import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
+import { MenuPage } from './pages/MenuPage/MenuPage';
 
 export const Root = () => (
   <ProductProvider>
@@ -18,7 +21,6 @@ export const Root = () => (
           <Route path="/phones" element={<PhonePage />}>
             <Route index element={<PhonePage />} />
             <Route path=":page" element={<PhonePage />} />
-            {/* <Route path=":productId"  element={<ProductDetailsPage />} /> */}
           </Route>
           <Route path="/tablets/:page?" element={<TabletsPage />}>
             <Route index element={<TabletsPage />} />
@@ -29,6 +31,9 @@ export const Root = () => (
             <Route path=":page" element={<TabletsPage />} />
           </Route>
           <Route path="/product/:productId" element={<ProductDetailsPage />} />
+          <Route path="/cart" element={<CartPage />} />
+          <Route path="/favorites" element={<FavoritesPage />} />
+          <Route path="/menu" element={<MenuPage />} />
           <Route path="*" element={<NoResults />} />
         </Route>
       </Routes>

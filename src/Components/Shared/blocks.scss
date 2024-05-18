@@ -1,0 +1,28 @@
+.favor {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  flex-wrap: wrap;
+
+  .favor__amount-box {
+    width: 14px;
+    height: 14px;
+    position: absolute;
+   
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: red;
+    border-radius: 50%;
+  }
+  
+  .favor__amount {
+      font-family: Mont;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 11.5px;
+      text-align: center;
+      color: #FFFFFF;
+    }
+}

@@ -1,14 +1,69 @@
+@import "/src/Global.scss";
+
 * {
   margin: 0;
   padding: 0;
+}
+
+.HTML, body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
 }
 
 .header, footer {
   width: 100%;
 }
 
-.main {
+img:hover {
+  transform: scale(1.1); 
+  transition: transform 0.3s ease; 
+}
+
+button {
+  appearance: none; 
+  background-color: transparent;
+  border: none; 
+  padding: 0;
+  margin: 0; 
+  font-family: inherit; 
+  font-size: inherit; 
+  cursor: pointer;
+  outline: none; 
+}
+
+
+footer {
+ position: absolute;
+ bottom: auto;
+}
+
+.with-menu {
+  overflow: hidden;
+}
+
+main {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  padding-left: 152px;
+  padding-right: 152px;
+  margin-bottom: 80px;
+
+  @include onDesktop {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include onTablet {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 64px;
+  }
+
+  @include onPhone {
+    margin-bottom: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

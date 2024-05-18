@@ -2,7 +2,7 @@ export interface Product {
   year: number;
   id: string;
   category: string;
-  phoneId: string;
+  itemId: string;
   image: string;
   name: string;
   snippet: string;
@@ -12,4 +12,5 @@ export interface Product {
   capacity: string;
   ram: string;
   color: string;
+  quantity: number;
 }

@@ -2,7 +2,12 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { filterByQuery, filterProducts } from '../../helper/Filters';
 import { Product } from '../../helper/Product';
 import { ProductList } from '../ProductList/ProductList';
-import { getAmountPage, getList, getNumbers } from '../../helper/utils';
+import {
+  getAmountPage,
+  getList,
+  getNewPages,
+  getNumbers,
+} from '../../helper/utils';
 import './Pigination.scss';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helper/searchHelper';
@@ -31,6 +36,7 @@ export const Pagination: React.FC<Props> = ({
   const [searchParams, setSearchParams] = useSearchParams();
   const { appliedQuery } = useContext(ProductContext);
   const [prevQuery, setPrevQuery] = useState('');
+  const [neededPages, setNeededPages] = useState<number[]>([1, 2, 3, 4]);
 
   const pageHandler = (event: React.MouseEvent<HTMLAnchorElement>) => {
     onClickPage(event.currentTarget.innerText);
@@ -50,7 +56,7 @@ export const Pagination: React.FC<Props> = ({
     setPrevQuery(appliedQuery);
 
     return filterByQuery(products, appliedQuery);
-  }, [appliedQuery, prevQuery, products, searchParams, setSearchParams]);
+  }, [appliedQuery, products]);
 
   const total = filteredByQuery.length;
   const amountPages = getAmountPage(perPage, total);
@@ -68,6 +74,10 @@ export const Pagination: React.FC<Props> = ({
   const getNext = () => {
     if (+currentPage < amountPages) {
       onArrowClick(+currentPage + 1);
+
+      const newPages = getNewPages(+currentPage, pages);
+
+      setNeededPages(newPages);
     }
   };
 
@@ -75,11 +85,18 @@ export const Pagination: React.FC<Props> = ({
     if (+currentPage > pages[0]) {
       onArrowClick(+currentPage - 1);
     }
+
+    const newPages = getNewPages(+currentPage, pages);
+
+    setNeededPages(newPages);
   };
 
   useEffect(() => {
+    const newPages = getNewPages(+currentPage, pages);
+
+    setNeededPages(newPages);
     onChangeProducts(filteredProducts.length);
-  }, [filteredProducts, onChangeProducts]);
+  }, [filteredProducts, onChangeProducts, neededPages, currentPage, pages]);
 
   return (
     <>
@@ -108,7 +125,7 @@ export const Pagination: React.FC<Props> = ({
           </button>
 
           <div className="pagination__pages">
-            {pages.map(page => (
+            {neededPages.map(page => (
               <li
                 className={classNames('pagination__item', {
                   'is-active': page === +currentPage,
