@@ -1,4 +1,4 @@
-import cn from 'cn';
+import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { getNewCapacityUrl } from '../../../helpers/getNewCapacityUrl';
 import { DetailedProduct } from '../../../types/DetailedProduct';

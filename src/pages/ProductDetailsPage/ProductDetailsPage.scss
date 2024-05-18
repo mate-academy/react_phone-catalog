@@ -258,14 +258,29 @@
   // }
 }
 
-// .main-info {
-// &__pair {
+.main-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 
-// }
-// &__label {
+  &__pair {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
-// }
-// &__value {
+  &__label {
+    color: $color-secondary;
+    text-transform: capitalize;
+  }
 
-// }
-// }
+  &__value {
+    font-family: $font-family;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: right;
+
+    color: $color-primary;
+  }
+}

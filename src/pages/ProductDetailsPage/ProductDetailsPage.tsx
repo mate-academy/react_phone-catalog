@@ -11,6 +11,7 @@ import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { getAllProducts } from '../../helpers/getAllProducts';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
+import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -75,6 +76,8 @@ export const ProductDetailsPage: React.FC = () => {
     images,
     // description,
   } = displayedProduct;
+
+  const productInfo = ['screen', 'resolution', 'processor', 'ram'];
 
   return (
     <>
@@ -200,14 +203,18 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
 
             <div className="main-info product-content__main-info">
-              <div className="main-info__pair">
-                <p className="main-info__label">Screen</p>
-                <p className="main-info__value">6.5” OLED</p>
-              </div>
+              {productInfo.map((info: string) => (
+                <div key={info} className="main-info__pair">
+                  <p className="main-info__label small-text">{info}</p>
+                  <p className="main-info__value">
+                    {displayedProduct[info as DetailedProductKeys] as string}
+                  </p>
+                </div>
+              ))}
             </div>
           </section>
           <section className="product-descriptions">
-            <h3>About</h3>
+            <h3 className="product-descriptions__title title--3">About</h3>
 
             <hr />
 
