@@ -172,6 +172,8 @@
     height: 1px;
     background-color: $color-elements;
     border: none;
+
+    margin: 0;
   }
 
   // &__capacities {
@@ -199,36 +201,71 @@
   // }
 }
 
-.capacities {
+.purchase {
   display: flex;
   flex-direction: column;
+  gap: 16px;
+
+  // &__prices {
+  // }
+  // &__add-buttons {
+  // }
+}
+
+.prices {
+  display: flex;
+  align-items: center;
   gap: 8px;
 
-  &__text {
-    color: $color-secondary;
-  }
+  // &__regular {
 
-  &__list {
-    display: flex;
-    gap: 8px;
-  }
-
-  // &__item {
   // }
-
-  &__link {
-    color: $color-primary;
-    text-decoration: none;
-
-    padding: 7px 8px;
-    border: 1px solid $color-icons-placeholders;
-
-    &--active {
-      background-color: $color-primary;
-      color: $color-white;
-
-      border: none;
-      padding: 8px 9px;
-    }
+  &__discount {
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28.12px;
+    text-align: left;
+    color: $color-secondary;
+    text-decoration: line-through;
   }
 }
+
+.add-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__cart {
+    background-color: $color-primary;
+    color: $color-white;
+    height: 48px;
+
+    border: none;
+    flex-grow: 1;
+  }
+
+  // &__wishlist {
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+
+  // box-sizing: border-box;
+  // width: 48px;
+  // height: 48px;
+
+  // border: 1px solid $color-icons-placeholders;
+  // background-color: transparent;
+  // }
+}
+
+// .main-info {
+// &__pair {
+
+// }
+// &__label {
+
+// }
+// &__value {
+
+// }
+// }

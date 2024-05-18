@@ -3,12 +3,12 @@ import { Link, useParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
+import { CapacityOptions } from './CapacityOptions';
 import { Product } from '../../types/ProductCard';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { getAllProducts } from '../../helpers/getAllProducts';
-import { getNewCapacityUrl } from '../../helpers/getNewCapacityUrl';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
 
@@ -68,8 +68,8 @@ export const ProductDetailsPage: React.FC = () => {
     name,
     capacityAvailable,
     capacity,
-    // priceRegular,
-    // priceDiscount,
+    priceRegular,
+    priceDiscount,
     colorsAvailable,
     // color,
     images,
@@ -169,43 +169,30 @@ export const ProductDetailsPage: React.FC = () => {
 
               <hr className="options__divider" />
 
-              <div className="capacities options__capacities">
-                <p className="capacities__text small-text">Select capacity</p>
-
-                <ul className="capacities__list">
-                  {capacityAvailable.map((mappedCapacity: string) => (
-                    <li key={mappedCapacity} className="capacities__item">
-                      <Link
-                        className={classNames('capacities__link', 'body-text', {
-                          'capacities__link--active':
-                            capacity === mappedCapacity,
-                        })}
-                        // Change the capacity to the chosen capacity
-                        to={getNewCapacityUrl(
-                          displayedProduct.id,
-                          mappedCapacity,
-                        )}
-                      >
-                        {mappedCapacity}
-                      </Link>
-                    </li>
-                  ))}
-                </ul>
+              <div className="options__capacities">
+                <CapacityOptions
+                  displayedProduct={displayedProduct}
+                  capacity={capacity}
+                  capacityAvailable={capacityAvailable}
+                />
               </div>
 
               <hr className="options__divider" />
             </div>
 
             <div className="purchase product-content__purchase">
-              <div className="prices">
-                <h2 className="title--1"></h2>
+              <div className="prices purchase__prices">
+                <h2 className="prices__regular title--1">${priceDiscount}</h2>
+                <p className="prices__discount">${priceRegular}</p>
               </div>
 
-              <div className="buttons">
-                <button className="buttons__cart">Add to cart</button>
-                <button className="buttons__wishlist">
+              <div className="add-buttons purchase__add-buttons">
+                <button className="add-buttons__cart default-button-text">
+                  Add to cart
+                </button>
+                <button className="add-buttons__wishlist default-button">
                   <img
-                    src="./icons/heart-icon.svg"
+                    src="./icons/heart-black.svg"
                     alt="Add to wishlist heart icon"
                   />
                 </button>

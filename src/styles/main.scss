@@ -65,11 +65,40 @@
   gap: 24px;
 }
 
+.default-button-text {
+  // styleName: Buttons - Text Only;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+.default-button {
+  // styleName: Buttons;
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+
+  width: 48px;
+  height: 48px;
+  background-color: transparent;
+  border: 1px solid $color-icons-placeholders;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &--disabled {
+    border: 1px solid $color-elements;
+  }
+}
+
 .arrow-button {
   width: 32px;
   height: 32px;
   background-color: transparent;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $color-icons-placeholders;
   display: flex;
   justify-content: center;
   align-items: center;
