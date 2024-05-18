@@ -1,0 +1,131 @@
+@import '../global/GlobalStyles/utils/mixins';
+@import '../global/GlobalStyles/utils/vars';
+
+.header {
+  display: flex;
+  box-sizing: border-box;
+  width: 100%;
+  align-items: center;
+  background-color: $white;
+  justify-content: space-between;
+
+  box-shadow: 0 1px 0 0 $elements-border-color;
+
+  position: sticky;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 3;
+}
+
+.headerLeft {
+  display: flex;
+  gap: 16px;
+
+  @include on-desktop {
+    gap: 24px;
+  }
+}
+
+.headerRight {
+  display: flex;
+  align-items:center;
+}
+
+.logoLink {
+  display: flex;
+  padding: 13px 16px;
+  max-width: 100%;
+  height: auto;
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+}
+
+.navbar {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navLinks {
+  padding-block: 18.5px;
+}
+
+.iconLink {
+  box-sizing: border-box;
+  display: flex;
+  max-width: 100%;
+  height: auto;
+  padding: 16px;
+  border: 0;
+  border-left: 1px solid $elements-border-color;
+  background-color: $white;
+  cursor: pointer;
+
+  position: relative;
+
+  @include on-desktop {
+    padding: 24px;
+  }
+
+  &.active {
+    @include navbar-item-after;
+  }
+}
+
+.iconMob {
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.iconTabl {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.favCount {
+  background-color: $secondary-accent-color;
+  color: $white;
+  width: 14px;
+  height: 14px;
+  border: 1px solid $white;
+  border-radius: 50%;
+  font-size: 9px;
+  line-height: 11.5px;
+  font-family: $font-family-semibold;
+  box-sizing: border-box;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  animation: pulse 1s ease;
+
+  @include on-desktop {
+    top: 18px;
+    right: 15px;
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
