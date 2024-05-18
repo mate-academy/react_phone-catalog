@@ -58,7 +58,8 @@ export const Filter: React.FC<Props> = ({
               key={filterOption}
               className={cn('dropdown__option', {
                 'dropdown__option--active':
-                  searchParams.get(option) === filterOption,
+                  searchParams.get(option.toString()) ===
+                  filterOption.toString(),
               })}
               onMouseDown={() => {
                 searchParams.set(option, filterOption.toString());
