@@ -24,6 +24,38 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
   const type =
     ProductType.accessories && ProductType.phones && ProductType.tablets;
 
+  const getSlidesPerGroup = () => {
+    const width = window.innerWidth;
+
+    if (width >= 1024) {
+      return 4;
+    } else if (width >= 755) {
+      return 3;
+    } else if (width >= 640) {
+      return 2;
+    } else {
+      return 1;
+    }
+  };
+
+  const slideNext = () => {
+    if (swiperRef.current) {
+      const slidesPerGroup = getSlidesPerGroup();
+      const currentIndex = swiperRef.current.activeIndex;
+
+      swiperRef.current.slideTo(currentIndex + slidesPerGroup);
+    }
+  };
+
+  const slidePrev = () => {
+    if (swiperRef.current) {
+      const slidesPerGroup = getSlidesPerGroup();
+      const currentIndex = swiperRef.current.activeIndex;
+
+      swiperRef.current.slideTo(currentIndex - slidesPerGroup);
+    }
+  };
+
   return (
     <>
       <div className={styles.sliderWraper}>
@@ -40,13 +72,14 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
             </h2>
             <div className={styles.buttonsContainer}>
               <button
+                disabled={swiperRef.current?.isBeginning || false}
                 className={
                   theme === Theme.light
                     ? styles.buttonLeft
                     : styles.buttonLeftDark
                 }
                 aria-label="Previous"
-                onClick={() => swiperRef.current?.slidePrev()}
+                onClick={() => slidePrev()}
               >
                 <img
                   className={styles.buttonArrowLeft}
@@ -55,13 +88,14 @@ export const ProductSlider: React.FC<Props> = ({ title, phones }) => {
                 ></img>
               </button>
               <button
+                disabled={swiperRef.current?.isEnd || false}
                 className={
                   theme === Theme.light
                     ? styles.buttonRight
                     : styles.buttonRightDark
                 }
                 aria-label="Next"
-                onClick={() => swiperRef.current?.slideNext()}
+                onClick={() => slideNext()}
               >
                 <img
                   className={styles.buttonArrowRight}

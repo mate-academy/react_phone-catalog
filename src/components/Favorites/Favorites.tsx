@@ -9,6 +9,7 @@ import { ProductCard } from '../ProductCard/ProductCard';
 import { useAppSelector } from '../../Hooks/hooks';
 import { Product } from '../../types/productType';
 import favoritsIsEmptyImage from './pictures/product-not-found.png';
+// import favoritsIsEmptyImageDark from './pictures/no-favourites_shot.png';
 import { Theme } from '../../Helpers/theme';
 
 type Props = {
@@ -114,8 +115,8 @@ export const Favorites: React.FC<Props> = ({ title }) => {
                   {!favoriteProduct.length ? (
                     <picture className={styles.empyFavoritesImg}>
                       <img
-                        src={favoritsIsEmptyImage}
-                        alt="Empty Favorites"
+                        src={theme === Theme.light ? favoritsIsEmptyImage : ''}
+                        alt={theme === Theme.light ? 'Empty Favorites' : ''}
                         className={styles.empyFavoritesImg}
                       />
                     </picture>

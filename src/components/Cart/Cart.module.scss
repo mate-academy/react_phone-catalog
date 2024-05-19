@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  align-items: stretch;
   min-height: 100%;
   background: #FAFBFC;
 
@@ -12,7 +13,6 @@
     min-height: 100%;
     background: #0F1121;
   }
-
 }
 
 .background {
@@ -22,6 +22,30 @@
   &Dark {
     height: 100%;
     background: #0F1121;
+  }
+}
+
+.modal {
+  text-align: center;
+  margin-top: 56px;
+  color: #0F0F11;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.48px;
+  width: 100%;
+  max-width: 1136px;
+
+  &darkMode {
+    text-align: center;
+    color: #F1F2F9;
+    margin-top: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    width: 100%;
+    max-width: 1136px;
   }
 }
 
@@ -40,9 +64,19 @@
   min-height: 700px;
 }
 
+.imgEmpy {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 1200px;
+}
+
 .empyCartImg {
-  width: 100vw;
-  height: auto;
+  box-sizing: border-box;
+  max-width: 100%;
+  max-height: 400px;
+  object-fit: cover;
+  flex-grow: 1;
 }
 
 .linkBack {
@@ -129,6 +163,7 @@
 }
 
 .productNameImgDelete {
+  grid-column: 1 / 4;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -136,6 +171,7 @@
 }
 
 .counterAndPriceContainer {
+  grid-column: 5;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -144,7 +180,8 @@
 
 .productsCart {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   flex-direction: row;
   justify-content: flex-start;
   width: 752px;
@@ -161,8 +198,9 @@
 }
 
 .productsCartDark {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
   position: relative;
-  display: flex;
   flex-direction: row;
   justify-content: flex-start;
   width: 752px;
@@ -179,6 +217,7 @@
 }
 
 .buttonDelete {
+  grid-column: 1;
   display: flex;
   width: 16px;
   height: 16px;
@@ -410,6 +449,7 @@
   }
 }
 
+
 @media (min-width: 640px) and (max-width: 1199px) {
   .cart {
     display: flex;
@@ -467,7 +507,7 @@
 
 
 .productsCartDark {
-   display: flex;
+    display: flex;
     flex-direction: row;
     justify-content: flex-start;
     width: 592px;
@@ -599,6 +639,7 @@
   }
 
   .productNameImgDelete {
+    width: 100%;
     display: flex;
     flex-direction: row;
     align-items: center;

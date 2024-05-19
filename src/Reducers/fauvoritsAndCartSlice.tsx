@@ -84,6 +84,10 @@ export const favoritesAndCardSlice = createSlice({
         state.cart.splice(itemIndex, 1);
       }
     },
+    clearCart: (state: FavoritesAndCardState) => {
+      // eslint-disable-next-line no-param-reassign
+      state.cart = [];
+    },
   },
 });
 export const {
@@ -92,6 +96,7 @@ export const {
   addToCart,
   removeFromCart,
   addProductCount,
+  clearCart,
 } = favoritesAndCardSlice.actions;
 
 export default favoritesAndCardSlice.reducer;

@@ -99,13 +99,6 @@
   font-size: 20px;
   font-weight: 700;
   line-height: normal;
-  animation: color-change 3s infinite;
-
-  @keyframes color-change {
-    0% { color: red; }
-    50% { color: blue; }
-    100% { color: green; }
-  }
 }
 
 .models {

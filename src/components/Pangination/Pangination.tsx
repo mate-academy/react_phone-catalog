@@ -1,5 +1,7 @@
 import React from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
+import { useAppSelector } from '../../Hooks/hooks';
+import { Theme } from '../../Helpers/theme';
 
 type Props = {
   totalPages: number;
@@ -12,6 +14,7 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
+  const theme = useAppSelector(state => state.theme.theme);
   const location = useLocation();
 
   const generatePageNumbers = () => {
@@ -42,6 +45,8 @@ export const Pagination: React.FC<Props> = ({
     return pageNumbers;
   };
 
+  const buttonClass = theme === Theme.dark ? 'has-text-white' : '';
+
   return (
     <>
       <nav
@@ -58,7 +63,7 @@ export const Pagination: React.FC<Props> = ({
         </button>
 
         <button
-          className="pagination-next"
+          className="pagination-previous"
           onClick={() => onPageChange(currentPage + 1)}
           disabled={currentPage === totalPages}
         >
@@ -76,8 +81,8 @@ export const Pagination: React.FC<Props> = ({
                   }}
                   className={
                     pageNumber === currentPage
-                      ? 'pagination-link is-current'
-                      : 'pagination-link'
+                      ? `pagination-link is-current ${buttonClass}`
+                      : `pagination-link ${buttonClass}`
                   }
                   aria-label={`Goto page ${pageNumber}`}
                   onClick={() => onPageChange(pageNumber)}
