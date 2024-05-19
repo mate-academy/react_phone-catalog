@@ -12,6 +12,7 @@ import {
   removeFromCart,
 } from '../../Reducers/fauvoritsAndCartSlice';
 import { Theme } from '../../Helpers/theme';
+import classNames from 'classnames';
 
 type Props = {
   item: Product;
@@ -49,13 +50,16 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
     }
   };
 
+  const buttonClass = classNames({
+    [styles.addCard]: !isCart,
+    [styles.addedCart]: isCart,
+    [styles.addCardDark]: theme === Theme.dark,
+  });
+
   return (
     <>
       <div className={styles.cardButtons}>
-        <button
-          className={!isCart ? `${styles.addCard}` : `${styles.addedCart}`}
-          onClick={handlerAddProduct}
-        >
+        <button className={buttonClass} onClick={handlerAddProduct}>
           {!isCart ? 'Add to cart' : 'Added to cart'}
         </button>
         <button

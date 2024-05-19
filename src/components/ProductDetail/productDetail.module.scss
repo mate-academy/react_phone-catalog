@@ -7,6 +7,7 @@
 }
 
 .productDetailWrapper {
+  max-width: 1136px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -14,7 +15,6 @@
 }
 
 .sectionProductDetail {
-  margin-inline: 152px;
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -277,7 +277,7 @@
   transition: opacity 0.3s ease;
 
   &:hover {
-    transform: scale(1.02);
+    transform: scale(1.06);
     opacity: 0.7;
   }
 }
@@ -376,6 +376,24 @@
     border-radius: 8px;
     background: #216CFF;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+  }
+
+  &Dark {
+    display: flex;
+    width: 263px;
+    height: 48px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    background: #216CFF;
+    outline: transparent;
+    border: none;
+    color: #FFF;
+
+    &:hover {
+      border-radius: 8px;
+      box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
+    }
   }
 }
 

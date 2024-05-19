@@ -195,6 +195,14 @@
     background: #216CFF;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
   }
+
+  &Dark {
+  
+    &:hover {
+      border-radius: 8px;
+      box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
+    }
+  }
 }
 
 .addedCart {

@@ -23,6 +23,7 @@ import { ProductType } from '../../Helpers/enumProductType';
 import Loader from '../Loader/Spiner';
 import { loadProductsDetail } from '../../Reducers/productSlice';
 import { Theme } from '../../Helpers/theme';
+import classNames from 'classnames';
 
 type Props = {
   title: string;
@@ -120,6 +121,12 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
       }
     }
   };
+
+  const buttonClass = classNames({
+    [styles.addButton]: !isCart,
+    [styles.addedCart]: isCart,
+    [styles.addButtonDark]: theme === Theme.dark,
+  });
 
   return (
     <>
@@ -381,11 +388,7 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
                     </div>
                     <div className={styles.buttonsContainer}>
                       <button
-                        className={
-                          !isCart
-                            ? `${styles.addButton}`
-                            : `${styles.addedCart}`
-                        }
+                        className={buttonClass}
                         onClick={() => handlerAddProduct()}
                       >
                         {!isCart ? 'Add to cart' : 'Added to cart'}
