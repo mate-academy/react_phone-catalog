@@ -1,0 +1,88 @@
+@import '../../styles/utils';
+
+.dropdown {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+
+  &__label {
+    font-size: 12px;
+    line-height: 15.34px;
+    color: $color-secondary;
+  }
+
+  &__button {
+    min-width: 128px;
+    height: 40px;
+    border: 1px solid $color-icons;
+    padding: 10px;
+    background: inherit;
+    border-radius: $border-radius;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-secondary;
+    }
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
+  }
+
+  &__text {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-primary;
+  }
+
+  &__icon {
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-image: url(../../../public/icons/Arrow.svg);
+    transform: rotate(180deg);
+
+    &--active {
+      background-image: url(../../../public/icons/Arrow-disabled.svg);
+    }
+  }
+
+  &__menu {
+    padding-block: 8px;
+    display: none;
+    border-radius: $border-radius;
+    position: absolute;
+    background-color: $color-white;
+    border: 1px solid $color-element;
+    box-sizing: border-box;
+    width: 100%;
+    margin-top: 65px;
+    flex-direction: column;
+
+    &--active {
+      display: flex;
+    }
+  }
+
+  &__item {
+    height: 32px;
+    padding-inline: 12px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    line-height: 21px;
+    text-align: left;
+    color: $color-secondary;
+    text-transform: capitalize;
+
+    &:hover {
+      background-color: $color-hoverBG;
+      cursor: pointer;
+      color: $color-primary;
+    }
+  }
+}

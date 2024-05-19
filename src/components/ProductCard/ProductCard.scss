@@ -1,6 +1,6 @@
 @import '../../styles/utils';
 
-.productCard {
+.product {
   width: 212px;
   display: flex;
   flex-direction: column;
@@ -75,7 +75,7 @@
       line-height: 1.25;
       font-size: 12px;
 
-      &-2 {
+      &--2 {
         font-weight: 700;
         color: $color-primary;
       }

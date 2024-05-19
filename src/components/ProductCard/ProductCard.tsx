@@ -4,7 +4,6 @@ import { Product } from '../../types/Product';
 import { Link, useLocation } from 'react-router-dom';
 import { FullProductData } from '../../types/FullProductData';
 import classNames from 'classnames';
-import { getProducts } from '../../services/api';
 import { useAppContext } from '../../context/context';
 
 type Props = {
@@ -21,22 +20,18 @@ export const ProductCard: React.FC<Props> = ({
   device,
 }) => {
   const {
+    products,
     cart,
     favourites,
     addProductToCart,
     addProductToFavourites,
-    removeProductFromFavourites,
     removeProductFromCart,
+    removeProductFromFavourites,
   } = useAppContext();
 
   const location = useLocation();
   const [isAddedToCart, setIsAddedToCart] = useState(false);
   const [isAddedToFavourites, setIsAddedToFavourites] = useState(false);
-  const [products, setProducts] = useState<Product[]>([]);
-
-  useEffect(() => {
-    getProducts().then(setProducts);
-  }, []);
 
   useEffect(() => {
     if (
@@ -105,7 +100,7 @@ export const ProductCard: React.FC<Props> = ({
   };
 
   return (
-    <div className={`productCard ${className}`}>
+    <div className={`product ${className}`}>
       {product && (
         <>
           <Link
@@ -114,35 +109,35 @@ export const ProductCard: React.FC<Props> = ({
             }}
             state={{ from: location.pathname }}
           >
-            <img src={`${product.image}`} className="productCard__img" alt="" />
-            <p className="productCard__title body-text">{product.name}</p>
+            <img src={`${product.image}`} className="product__img" alt="" />
+            <p className="product__title">{product.name}</p>
           </Link>
 
-          <div className="productCard__price-container">
-            <h3 className="productCard__price">{`$${product.price}`}</h3>
+          <div className="product__price-container">
+            <h3 className="product__price">{`$${product.price}`}</h3>
             {discount && (
-              <h3 className="productCard__full-price">{`$${product.fullPrice}`}</h3>
+              <h3 className="product__full-price">{`$${product.fullPrice}`}</h3>
             )}
           </div>
 
-          <div className="productCard__specs">
+          <div className="product__specs">
             {[
               { title: 'Screen', value: product.screen },
               { title: 'Capacity', value: product.capacity },
               { title: 'RAM', value: product.ram },
             ].map((spec, index) => (
-              <div className="productCard__spec" key={index}>
-                <p className="productCard__spec-text">{spec.title}</p>
-                <p className="productCard__spec-text productCard__spec-text-2">
+              <div className="product__spec" key={index}>
+                <p className="product__spec-text">{spec.title}</p>
+                <p className="product__spec-text product__spec-text--2">
                   {spec.value}
                 </p>
               </div>
             ))}
           </div>
-          <div className="productCard__buttons">
+          <div className="product__buttons">
             <button
-              className={classNames('button-primary buttons', {
-                'button-primary--selected': isAddedToCart,
+              className={classNames('buttons', {
+                'buttons--selected': isAddedToCart,
               })}
               onClick={() =>
                 handleAddToCart(
@@ -167,15 +162,15 @@ export const ProductCard: React.FC<Props> = ({
       )}
       {device && (
         <>
-          <div className="productCard__price-block">
-            <h3 className="productCard__price-block--price">{`$${device.priceDiscount}$`}</h3>
-            <h3 className="productCard__price-block--fullprice body-text">{`$${device.priceRegular}`}</h3>
+          <div className="product__price-container">
+            <h3 className="product__price">{`$${device.priceDiscount}$`}</h3>
+            <h3 className="product__full-price">{`$${device.priceRegular}`}</h3>
           </div>
 
-          <div className="productCard__buttons">
+          <div className="product__buttons">
             <button
-              className={classNames('button-primary buttons', {
-                'button-primary--selected': isAddedToCart,
+              className={classNames('buttons', {
+                'buttons--selected': isAddedToCart,
               })}
               onClick={() =>
                 handleAddToCart(
@@ -197,20 +192,16 @@ export const ProductCard: React.FC<Props> = ({
             ></button>
           </div>
 
-          <div className="productCard__specs">
+          <div className="product__specs">
             {[
               { title: 'Screen', value: device.screen },
               { title: 'Capacity', value: device.capacity },
               { title: 'Processor', value: device.processor },
               { title: 'RAM', value: device.ram },
             ].map((spec, index) => (
-              <div className="productCard__specs--spec" key={index}>
-                <p className="productCard__specs--spec--text-1 small-text">
-                  {spec.title}
-                </p>
-                <p className="productCard__specs--spec--text-2 small-text">
-                  {spec.value}
-                </p>
+              <div className="product__spec" key={index}>
+                <p className="product__spec-text">{spec.title}</p>
+                <p className="product__spec-text--2">{spec.value}</p>
               </div>
             ))}
           </div>

@@ -1,5 +1,5 @@
 import { Product } from '../types/Product';
-import { SortOptions } from '../types/SortOptions';
+import { SortOptions } from '../types/SearchParamsOptions';
 
 export const getPreparedProducts = (
   products: Product[],

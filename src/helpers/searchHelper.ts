@@ -1,4 +1,4 @@
-export type SearchParams = {
+export type SearchParamsType = {
   [key: string]: string | string[] | null;
 };
 
@@ -8,7 +8,7 @@ export type SearchParams = {
  */
 export function getSearchWith(
   currentParams: URLSearchParams,
-  paramsToUpdate: SearchParams, // it's our custom type
+  paramsToUpdate: SearchParamsType, // it's our custom type
 ): string {
   // copy currentParams by creating new object from a string
   const newParams = new URLSearchParams(currentParams.toString());

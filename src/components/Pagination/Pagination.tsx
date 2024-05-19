@@ -4,7 +4,7 @@ import { Product } from '../../types/Product';
 import React from 'react';
 import { adaptivePaginationPages, scrollToTop } from '../../utils/utils';
 import classNames from 'classnames';
-import { SearchParams, getSearchWith } from '../../helpers/searchHelper';
+import { SearchParamsType, getSearchWith } from '../../helpers/searchHelper';
 
 type Props = {
   products: Product[];
@@ -16,7 +16,7 @@ export const Pagination: React.FC<Props> = ({ products }) => {
   const pageParam = searchParams.get('page') || 1;
   const onPage = searchParams.get('onPage') || 8;
 
-  function setSearchWith(params: SearchParams) {
+  function setSearchWith(params: SearchParamsType) {
     setSearchParams(getSearchWith(searchParams, params));
   }
 
