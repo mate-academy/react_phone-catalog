@@ -1,0 +1,49 @@
+@use '../../../utils/mixins' as *;
+@use '../../../utils/variables' as *;
+
+.tech-specs {
+  @include grid;
+
+  row-gap: 30px;
+
+  &__top {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__divider {
+    grid-column: 1 / 5;
+    width: 100%;
+    background-color: $color-elements;
+  }
+
+  &__info-pairs {
+    grid-column: 1 / 5;
+  }
+}
+
+.info-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__pair {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__label {
+    color: $color-secondary;
+  }
+  &__value {
+    color: $color-primary;
+    max-width: 150px;
+    text-align: right;
+  }
+}

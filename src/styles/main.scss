@@ -1,5 +1,9 @@
 @use '../utils/variables' as *;
 
+:root {
+  color: $color-primary;
+}
+
 .title {
   font-family: $font-family;
   text-align: left;
@@ -106,4 +110,15 @@
   &--disabled {
     border: 1px solid $color-elements;
   }
+}
+
+.divider {
+  grid-column: 1 / 5;
+
+  width: 100%;
+  height: 1px;
+  background-color: $color-elements;
+  border: none;
+
+  margin: 0;
 }

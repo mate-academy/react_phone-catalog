@@ -13,6 +13,7 @@ import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import { ProductDescriptions } from './ProductDescriptions';
+import { TechSpecs } from './TechSpecs';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -217,18 +218,8 @@ export const ProductDetailsPage: React.FC = () => {
 
           <ProductDescriptions descriptions={description} />
 
-          <section className="text-specs">
-            <h3 className="text-specs__title title--3"></h3>
+          <TechSpecs product={displayedProduct} />
 
-            <hr />
-
-            <div className="main-info text-specs__info`">
-              <div className="main-info__pair">
-                <p className="main-info__label">Screen</p>
-                <p className="main-info__value">6.5” OLED</p>
-              </div>
-            </div>
-          </section>
           <section className="product-details__products-slider">
             <ProductSlider hasRandomProducts={true} hasDiscount={true} />
           </section>
