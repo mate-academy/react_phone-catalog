@@ -9,6 +9,7 @@ import { NotFound } from './pages/NotFound';
 import { Home } from './pages/Home';
 import { Products } from './pages/Products';
 import { Category } from './types/Category';
+import { FavouritePage } from './pages/Favourites';
 
 export const Root = () => (
   <Router>
@@ -37,6 +38,8 @@ export const Root = () => (
             element={<Products category={Category.Accessories} />}
           />
         </Route>
+
+        <Route path="favourites" element={<FavouritePage />} />
 
         <Route path="*" element={<NotFound />} />
       </Route>

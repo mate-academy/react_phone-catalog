@@ -1,0 +1,33 @@
+@import '../../styles/utils';
+
+.favourites {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-desktop {
+    gap: 40px;
+  }
+
+  &--empty {
+    background-image: url(../../../public/img/cart-is-empty.png);
+    height: 50vh;
+    width: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $color-primary;
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}

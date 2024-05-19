@@ -23,8 +23,10 @@ export const Header = () => {
       <div className="header__left">
         <Logo />
         <Navigation />
-        {isProductsPage && <NavSearch />}
       </div>
+
+      {isProductsPage && <NavSearch />}
+
       <div className="header__right">
         <Toggler />
         <PurchaseNavButtons className="header__buttons" />
