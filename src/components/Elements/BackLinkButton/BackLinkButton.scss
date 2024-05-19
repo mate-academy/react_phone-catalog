@@ -1,0 +1,15 @@
+@import '../../../styles/utils';
+
+.link-back {
+  width: fit-content;
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  color: $color-secondary;
+  font-size: 12px;
+  line-height: 1.15;
+
+  &:hover {
+    color: $color-primary;
+  }
+}

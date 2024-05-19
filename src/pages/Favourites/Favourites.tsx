@@ -15,7 +15,7 @@ export const FavouritePage = () => {
         <div className="favourites__amount">{`${favourites.length} models`}</div>
       </div>
 
-      {!!!favourites.length ? (
+      {!favourites.length ? (
         <div className="favourites--empty" />
       ) : (
         <ProductList products={favourites} />

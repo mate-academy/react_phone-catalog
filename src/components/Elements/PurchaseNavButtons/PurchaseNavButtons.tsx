@@ -1,36 +1,48 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import './PurchaseNavButtons.scss';
+import { useAppContext } from '../../../context/context';
+
+import classNames from 'classnames';
 
 type Props = {
   className?: string;
 };
 
 export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
+  const { favourites, cart } = useAppContext();
+
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames('button-square', {
+      active: isActive,
+    });
+
   return (
     <div className={className ? `purchases ${className}` : 'purchases'}>
-      <Link
+      <NavLink
         to={{
           pathname: '/favourites',
         }}
         // state={{ from: location.pathname }}
-        className="button-square"
+        className={getLinkClass}
       >
         <div className="icon icon--favourite">
-          <div className="counter">{1}</div>
+          {favourites.length > 0 && (
+            <div className="counter">{favourites.length}</div>
+          )}
         </div>
-      </Link>
-      <Link
+      </NavLink>
+      <NavLink
         to={{
           pathname: '/cart',
         }}
         // state={{ from: location.pathname }}
-        className="button-square"
+        className={getLinkClass}
       >
         <div className="icon icon--cart">
-          <div className="counter">{1}</div>
+          {cart.length > 0 && <div className="counter">{cart.length}</div>}
         </div>
-      </Link>
+      </NavLink>
     </div>
   );
 };
