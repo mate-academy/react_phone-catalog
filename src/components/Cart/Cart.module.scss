@@ -209,6 +209,7 @@
   border-radius: 16px;
   border: 1px solid #E2E6E9;
   background: #FFF;
+  transition: transform 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.01);
@@ -228,6 +229,7 @@
   border-radius: 16px;
   border: 1px solid #E2E6E9;
   background: #161827;
+  transition: transform 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.01);
@@ -239,6 +241,7 @@
   display: flex;
   width: 16px;
   height: 16px;
+  transition: transform 0.5s ease-in-out;
 
   &:hover {
      cursor: pointer;
@@ -252,6 +255,7 @@
   width: 66px;
   height: 66px;
   flex-shrink: 0;
+  transition: transform 0.4s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
@@ -517,6 +521,7 @@
     border-radius: 16px;
     border: 1px solid #E2E6E9;
     background: #FFF;
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
       transform: scale(1.01);
@@ -535,6 +540,7 @@
     border-radius: 16px;
     border: 1px solid #E2E6E9;
     background: #161827;
+    transition: transform 0.5s ease-in-out;
 
   &:hover {
     transform: scale(1.01);
@@ -608,6 +614,7 @@
     border-radius: 16px;
     border: 1px solid #E2E6E9;
     background: #FFF;
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
       transform: scale(1.01);
@@ -625,6 +632,7 @@
     border-radius: 16px;
     border: 1px solid #E2E6E9;
     background: #161827;
+    transition: transform 0.5s ease-in-out;
 
     &:hover {
       transform: scale(1.01);

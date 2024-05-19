@@ -12,6 +12,7 @@
   background: #FFF;
   margin: 16px 16px 16px 0;
   overflow-x: hidden;
+  transition: transform 0.6s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
@@ -31,6 +32,7 @@
   background: #161827;
   margin: 16px 16px 16px 0;
   overflow-x: hidden;
+  transition: transform 0.6s ease-in-out;
 
   &:hover {
     transform: scale(1.03);
@@ -43,6 +45,7 @@
   height: 196px;
   margin-bottom: 34px;
   flex-shrink: 0;
+  transition: transform 0.6s ease-in-out;
 
   &:hover {
     transform: scale(1.1);
@@ -197,7 +200,7 @@
   }
 
   &Dark {
-  
+
     &:hover {
       border-radius: 8px;
       box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
@@ -227,6 +230,13 @@
   }
 }
 
+.heardIcon {
+  padding-top: 3px;
+  width: 16px;
+  height: 16px;
+  transition: transform 0.6s ease;
+}
+
 .like {
   outline: transparent;
   width: 40px;
@@ -238,6 +248,10 @@
   &:hover {
     border-radius: 48px;
     border: 1px solid #0F0F11;
+
+    .heardIcon {
+      transform: scale(1.2);
+    }
   }
 }
 
@@ -252,19 +266,13 @@
   &:hover {
     border-radius: 48px;
     background: #4A4D58;
+
+    .heardIcon {
+      transform: scale(1.2);
+    }
   }
 }
 
-.heardIcon {
-  padding-top: 3px;
-  width: 16px;
-  height: 16px;
-  transition: transform 0.2s ease;
-
-  &:hover {
-    transform: scale(1.2);
-  }
-}
 
 
 

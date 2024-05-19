@@ -40,6 +40,7 @@
 
 .footerItems {
   margin: auto;
+  transition: transform 0.4s ease-in-out;
 
   &:hover {
     transform: scale(1.2);
@@ -181,11 +182,11 @@
 
 
 .footerButton:hover .buttonIcon {
-  transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.7s, visibility 0.7s;
 }
 
 .footerButtonDark:hover .buttonIcon {
-  transition: opacity 0.5s, visibility 0.5s;
+  transition: opacity 0.7s, visibility 0.7s;
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {
