@@ -1,20 +1,34 @@
 @use '../../../utils/variables' as *;
+@use '../../../utils/mixins' as *;
 
-// .product-descriptions {
-//   &__title {
-//   }
+.product-descriptions {
+  @include grid;
 
-//   &__list {
-//   }
-// }
+  row-gap: 32px;
 
-.descriptions-list {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  &__top {
+    grid-column: 1 / 5;
 
-  // &__element {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  // &__title {
   // }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $color-elements;
+    border: none;
+
+    margin: 0;
+  }
+
+  &__description-pair {
+    grid-column: 1 / 5;
+  }
 }
 
 .description-pair {
