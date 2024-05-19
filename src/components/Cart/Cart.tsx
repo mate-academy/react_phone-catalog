@@ -27,6 +27,7 @@ type Props = {
 export const Cart: React.FC<Props> = ({ title }) => {
   const [cartProduct, setCartProduct] = useState<CartProduct[]>([]);
   const [modal, setModal] = useState(false);
+  const [countdown, setCountdown] = useState(5);
 
   const data = useAppSelector(state => state.cartAndFavorits.cart);
   const theme = useAppSelector(state => state.theme.theme);
@@ -38,6 +39,18 @@ export const Cart: React.FC<Props> = ({ title }) => {
   useEffect(() => {
     setCartProduct(data);
   }, [data]);
+
+  useEffect(() => {
+    if (modal && countdown > 0) {
+      const timer = setTimeout(() => setCountdown(countdown - 1), 1000);
+
+      return () => clearTimeout(timer);
+    } else if (modal && countdown === 0) {
+      navigate('/');
+    }
+
+    return () => {};
+  }, [modal, countdown, navigate]);
 
   const handleCountMinus = (id: number) => {
     dispatch(addProductCount({ id, increment: -1 }));
@@ -110,15 +123,26 @@ export const Cart: React.FC<Props> = ({ title }) => {
                   </h1>
                 </div>
                 {modal ? (
-                  <h2
-                    className={
-                      theme === Theme.light
-                        ? styles.modal
-                        : styles.modaldarkMode
-                    }
-                  >
-                    Thank you for your purchase!
-                  </h2>
+                  <>
+                    <h2
+                      className={
+                        theme === Theme.light
+                          ? styles.modal
+                          : styles.modaldarkMode
+                      }
+                    >
+                      Thank you for your purchase!
+                    </h2>
+                    <p
+                      className={
+                        theme === Theme.light
+                          ? styles.redirect
+                          : styles.redirectdarkMode
+                      }
+                    >
+                      Redirecting to home in {countdown} seconds...
+                    </p>
+                  </>
                 ) : (
                   <div className={styles.productCartContainer}>
                     {load && <Loader />}
