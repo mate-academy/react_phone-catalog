@@ -8,6 +8,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import './App.scss';
 import './styles/main.scss';
 import './utils/_reset.scss';
+import { CartPage } from './pages/CartPage/components/CartPage';
 
 export const App = () => (
   <>
@@ -18,21 +19,20 @@ export const App = () => (
 
       <Route
         path="/phones"
-        index
         element={<ProductPage category={ProductCategories.Phones} />}
       />
       <Route
         path="/tablets"
-        index
         element={<ProductPage category={ProductCategories.Tablets} />}
       />
       <Route
         path="/accessories"
-        index
         element={<ProductPage category={ProductCategories.Accessories} />}
       />
 
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
+
+      <Route path="/cart" element={<CartPage />} />
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>
