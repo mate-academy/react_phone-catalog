@@ -31,7 +31,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 2. Advanced project structure:
    - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
    - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
+3. Add the sticky header with a logo, navigation, fav orites, and cart.
 4. The footer with the link to the GitHub repo and `Back to top` button.
    - The content should be limited to the same width as the page content;
    - `Back to top` button should scroll to the top smoothly;
@@ -58,7 +58,7 @@ Implement Home page at available at `/`.
 
 ## Product pages
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+? There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 
 1. Each page loads the data of the required `type`.
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
