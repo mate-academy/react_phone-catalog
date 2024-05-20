@@ -11,7 +11,7 @@
   background-color: $whiteColor;
   z-index: 2;
   max-height: calc(100vh - 48px);
-  height: -webkit-fill-available;
+  height: fill-available;
   justify-content: space-between;
   align-items: center;
   transition: $transitionTime;
