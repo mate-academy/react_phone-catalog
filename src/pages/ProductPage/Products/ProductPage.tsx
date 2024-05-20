@@ -40,14 +40,26 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   // }, []);
 
   useEffect(() => {
+    // If there is sort in the params
     if (searchParams.has(FilterOption.Sort)) {
+      // Set sort state in the component
       setSort(searchParams.get(FilterOption.Sort) as Sort);
+
+      if (searchParams.get(FilterOption.Sort) === Sort.Newest) {
+        searchParams.delete(FilterOption.Sort);
+        setSearchParams(searchParams);
+      }
     } else {
       setSort(Sort.Newest);
     }
 
     if (searchParams.has(FilterOption.Items)) {
       setItemsOnPage(searchParams.get(FilterOption.Items) as Pages);
+
+      if (searchParams.get(FilterOption.Items) === Pages.all) {
+        searchParams.delete(FilterOption.Items);
+        setSearchParams(searchParams);
+      }
     } else {
       setItemsOnPage(Pages.all);
     }
@@ -56,6 +68,11 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
     if (page) {
       setCurrentPage(+page);
+
+      if (+page === 1) {
+        searchParams.delete('page');
+        setSearchParams(searchParams);
+      }
     } else {
       setCurrentPage(1);
     }
@@ -65,7 +82,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     // } else {
     //   set();
     // }
-  }, [searchParams]);
+  }, [searchParams, setSearchParams]);
 
   useEffect(() => {
     let currentProducts = products;
