@@ -3,6 +3,15 @@
   box-sizing: border-box;
 }
 
+@font-face {
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype'),
+    url('../public/fonts/Mont-Regular.otf') format('opentype'),
+    url('../public/fonts/Mont-SemiBold.otf') format('opentype');
+
+  font-family:  Mont;
+}
+
 body {
   margin: 0;
+  font-family: Mont, sans-serif;
 }

@@ -10,13 +10,6 @@
   }
 }
 
-@font-face {
-  font-family: 'Mont';
-  src: url('../../../public/fonts/Mont-Bold.otf') format('opentype'),
-       url('../../../public/fonts/Mont-Regular.otf') format('opentype'),
-       url('../../../public/fonts/Mont-SemiBold.otf') format('opentype');
-}
-
 .header {
   width: 100%;
   box-shadow: 0 1px 0 #E2E6E9;
@@ -69,7 +62,7 @@
       height: 48px;
     }
 
-    @include on-desktop() {
+    @include on-desktop {
       width: 64px;
       height: 64px;
     }
@@ -126,7 +119,6 @@
 
     &Item {
       text-transform: uppercase;
-      font-family: 'Mont', sans-serif;
       height: 27px;
       padding-block: 8px;
       font-size: 12px;
@@ -149,20 +141,20 @@
   position: absolute;
   top: 49px;
   left: 0;
-  background-color: #FFFFFF;
+  background-color: #FFF;
   height: calc(100vh - 48px);
   padding-top: 32px;
   width: 100vw;
-  transform: translatex(100%);
+  transform: translateX(100%);
 
-  animation: slideDown 0.7s ease forwards;
+  animation: downslide 0.7s ease forwards;
 }
 
-@keyframes slideDown {
+@keyframes downslide {
   from {
-    transform: translatex(100%);
+    transform: translateX(100%);
   }
   to {
-    transform: translatex(0);
+    transform: translateX(0);
   }
 }
