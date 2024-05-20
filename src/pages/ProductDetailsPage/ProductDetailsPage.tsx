@@ -110,7 +110,7 @@ export const ProductDetailsPage: React.FC = () => {
                   <p className="breadcrumbs__product-name">{name}</p>
                 </div>
                 <button
-                  onClick={history.back}
+                  onClick={() => history.back()}
                   className="back-link breadcrumbs__back-link"
                 >
                   <div className="back-link__image-wrapper">
