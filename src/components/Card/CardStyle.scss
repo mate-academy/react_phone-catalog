@@ -79,11 +79,13 @@
   }
 
   &__buttons {
+    justify-content: space-between;
     gap: 8px;
     display: grid;
     grid-template: 1fr/ 0.80fr 0.20fr;
 
     &--add {
+      min-width: 100px;
       height: 40px;
       border-radius: 8px;
       background-color: #216CFF;
@@ -101,13 +103,14 @@
     }
 
     &--like {
+      width: 40px;
+      height: 40px;
       border-radius: 50%;
       background-color: white;
       border: 1px solid $Secondary;
 
       @include center-element;
 
-      
     }
   }
 }

@@ -9,6 +9,10 @@
     "types": ["node", "cypress"],
     "noImplicitAny": false,
     "ignoreDeprecations": "5.0",
-    "suppressImplicitAnyIndexErrors": true
+    "suppressImplicitAnyIndexErrors": true,
+    "baseUrl": "./",
+    "paths": {
+      "api/*": ["public/api/*"]
+    }
   }
 }
