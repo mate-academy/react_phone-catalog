@@ -1,22 +1,38 @@
 import cn from 'classnames';
 import './Pagination.scss';
 import { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   pagesTotal: number;
-  currentPage: number;
-  setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
+  // currentPage: number;
+  // setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
 export const Pagination: React.FC<Props> = ({
   pagesTotal,
-  currentPage,
-  setCurrentPage,
+  // currentPage,
+  // setCurrentPage,
 }) => {
+  const [currentPage, setCurrentPage] = useState(1);
+
   const [pagesList, setPagesList] = useState<number[]>([]);
   const [visiblePages, setVisiblePages] = useState<number[]>(
     pagesList.slice(0, 4),
   );
+
+  // - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
+  //  - Hide pagination elements if they do not make sense;
+
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  useEffect(() => {
+    const page = searchParams.get('page');
+
+    if (page !== null) {
+      setCurrentPage(+page);
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const pages = [];
@@ -47,8 +63,11 @@ export const Pagination: React.FC<Props> = ({
           'arrow-left--active': currentPage > 1,
         })}
         onClick={() => {
-          if (currentPage > 1) {
-            setCurrentPage((page: number) => page - 1);
+          const page = searchParams.get('page');
+
+          if (page && +page > 1) {
+            searchParams.set('page', (+page - 1).toString());
+            setSearchParams(searchParams);
           }
         }}
       >
@@ -68,7 +87,10 @@ export const Pagination: React.FC<Props> = ({
             className={cn('pagination__page', {
               'pagination__page--active': currentPage === page,
             })}
-            onClick={() => setCurrentPage(page)}
+            onClick={() => {
+              searchParams.set('page', page.toString());
+              setSearchParams(searchParams);
+            }}
           >
             {page}
           </button>
@@ -81,8 +103,11 @@ export const Pagination: React.FC<Props> = ({
             'pagination__arrow--active': currentPage < pagesTotal,
           })}
           onClick={() => {
-            if (currentPage < pagesTotal) {
-              setCurrentPage((page: number) => page + 1);
+            const page = searchParams.get('page');
+
+            if (page && +page > 1) {
+              searchParams.set('page', (+page + 1).toString());
+              setSearchParams(searchParams);
             }
           }}
         >

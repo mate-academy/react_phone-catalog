@@ -28,9 +28,12 @@ export const Filter: React.FC<Props> = ({
   const [isDropdownVisible, setIsDropdownVisible] = useState(false);
 
   const filterOptions =
-    title === 'Sort by'
+    option === FilterOption.Sort
       ? [Sort.Newest, Sort.Alphabetically, Sort.Cheapest]
       : [Pages.all, Pages.four, Pages.eight, Pages.sixteen];
+
+  const initialDropdownButtonText: string =
+    option === FilterOption.Sort ? 'newest' : 'all';
 
   const dropdownButtonText: string =
     option === FilterOption.Sort
@@ -48,7 +51,7 @@ export const Filter: React.FC<Props> = ({
         }}
         onBlur={() => setIsDropdownVisible(false)}
       >
-        {dropdownButtonText}
+        {dropdownButtonText ? dropdownButtonText : initialDropdownButtonText}
       </button>
 
       {isDropdownVisible && (
@@ -57,9 +60,10 @@ export const Filter: React.FC<Props> = ({
             <button
               key={filterOption}
               className={cn('dropdown__option', {
-                'dropdown__option--active':
-                  searchParams.get(option.toString()) ===
-                  filterOption.toString(),
+                'dropdown__option--active': searchParams.get(option.toString())
+                  ? searchParams.get(option.toString()) ===
+                    filterOption.toString()
+                  : initialDropdownButtonText === filterOption.toString(),
               })}
               onMouseDown={() => {
                 searchParams.set(option, filterOption.toString());

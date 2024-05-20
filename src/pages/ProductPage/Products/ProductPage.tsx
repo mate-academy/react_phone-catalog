@@ -17,22 +17,27 @@ type Props = {
 
 export const ProductPage: React.FC<Props> = ({ category }) => {
   const [products, setProducts] = useState<Product[]>([]);
-  const [currentPage, setCurrentPage] = useState(1);
+
   const [displayedProducts, setDisplayedProducts] =
     useState<Product[]>(products);
+  const [currentPage, setCurrentPage] = useState(1);
   const [pagesTotal, setPagesTotal] = useState(1);
+
+  // - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
+  //  - Hide pagination elements if they do not make sense;
 
   // Filter states
   const [sort, setSort] = useState<Sort>(Sort.Newest);
   const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
   const [searchParams, setSearchParams] = useSearchParams();
 
-  useEffect(() => {
-    searchParams.set(FilterOption.Sort, Sort.Newest);
-    searchParams.set(FilterOption.Items, Pages.all);
-    setSearchParams(searchParams);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  // useEffect(() => {
+  //   searchParams.set(FilterOption.Sort, Sort.Newest);
+  //   searchParams.set('page', '1');
+  //   searchParams.set(FilterOption.Items, Pages.all);
+  //   setSearchParams(searchParams);
+  //   // eslint-disable-next-line react-hooks/exhaustive-deps
+  // }, []);
 
   useEffect(() => {
     if (searchParams.has(FilterOption.Sort)) {
@@ -46,6 +51,20 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     } else {
       setItemsOnPage(Pages.all);
     }
+
+    const page = searchParams.get('page');
+
+    if (page) {
+      setCurrentPage(+page);
+    } else {
+      setCurrentPage(1);
+    }
+
+    // if (searchParams.has('perPage')) {
+    //   set();
+    // } else {
+    //   set();
+    // }
   }, [searchParams]);
 
   useEffect(() => {
@@ -136,8 +155,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
               searchParams={searchParams}
               setSearchParams={setSearchParams}
               title="Sort by"
-              // sort={sort}
-              // setSort={setSort}
             />
           </div>
           <div className="filters__item">
@@ -146,8 +163,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
               title="Items on page"
               searchParams={searchParams}
               setSearchParams={setSearchParams}
-              // itemsOnPage={itemsOnPage}
-              // setItemsOnPage={setItemsOnPage}
             />
           </div>
         </div>
@@ -158,8 +173,8 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
       </section>
 
       <Pagination
-        currentPage={currentPage}
-        setCurrentPage={setCurrentPage}
+        // currentPage={currentPage}
+        // setCurrentPage={setCurrentPage}
         pagesTotal={pagesTotal}
       />
     </main>
