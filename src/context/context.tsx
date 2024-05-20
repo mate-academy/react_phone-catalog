@@ -97,16 +97,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     setCart([]);
   };
 
-  const cartLength = () => {
-    let total = 0;
-
-    cart.forEach(item => {
-      total += item.count;
-    });
-
-    return total;
-  };
-
   useEffect(() => {
     getProducts()
       .then(setProducts)
@@ -135,7 +125,6 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
         handleIncrement,
         handleDecrement,
         handleClearCart,
-        cartLength,
       }}
     >
       {children}

@@ -1,0 +1,50 @@
+@import '../../../../styles/utils';
+
+.modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+  background-color: #a5a5a556;
+
+  &__window {
+    background-color: $color-white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    border-radius: 20px;
+    border: 1px solid $color-element;
+    width: 280px;
+    box-shadow: 0 20px 20px $color-icons;
+
+    @include on-tablet {
+      width: 460px;
+    }
+
+    @include on-desktop {
+      width: 550px;
+    }
+  }
+
+  &__text {
+    font-size: 18px;
+    align-self: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    height: 40px;
+
+    &--cancel {
+      background-color: $color-secondary-accent;
+    }
+
+    &--confirm {
+      background-color: $color-green;
+    }
+  }
+}

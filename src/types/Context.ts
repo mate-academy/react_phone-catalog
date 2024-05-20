@@ -13,5 +13,4 @@ export type InitialContext = {
   handleIncrement: (item: CartItem) => void;
   handleDecrement: (item: CartItem) => void;
   handleClearCart: () => void;
-  cartLength: () => number;
 };
