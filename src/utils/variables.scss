@@ -1,0 +1,47 @@
+@font-face {
+  font-family: Mont-Regular;
+  src: url(../styles/fonts/Mont-Regular.ttf);
+}
+
+@font-face {
+  font-family: Mont-Bold;
+  src: url(../styles/fonts/Mont-Bold.ttf);
+}
+
+@font-face {
+  font-family: Mont-SemiBold;
+  src: url(../styles/fonts/Mont-SemiBold.ttf);
+}
+
+$tabletWidth: 640px;
+$desktopWidth: 1200px;
+$desktopWideWidth: 1440px;
+$regularFont: 'Mont-Regular';
+$semiBoldFont: 'Mont-SemiBold';
+$boldFont: 'Mont-Bold';
+$border: solid 1px #e2e6e9;
+$grayPrimaryColor: #313237;
+$graySecondaryColor: #89939a;
+$grayIconsButtons: #b4bdc3;
+$whiteColor: #fff;
+$transitionTime: 300ms;
+$bgColor: $whiteColor;
+$grayBGColor: #f2f1f2;
+$counterColor: #eb5757;
+$selectedColor: #27ae60;
+
+// Dark Theme //
+$darkThemeWhite: #f1f2f9;
+$darkThemeBG: #0f1121;
+$darkThemeSecondaryGray: #75767f;
+$darkThemeGrayBorder: 1px solid #323542;
+$toCartButtonBG: #905bff;
+$toCartButtonHover: #a378ff;
+$toCartButtonSelected: #323542;
+$pageButtonBG: #161827;
+$pageButtonHover: #3b3e4a;
+$pageButtonSelected: #905bff;
+$arrowButtonBG: #323542;
+$arrowButtonHover: #4a4d58;
+$favoriteBG: #323542;
+$favoriteHover: #4d4d58;

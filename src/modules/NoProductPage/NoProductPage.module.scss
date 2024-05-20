@@ -1,0 +1,43 @@
+@import '../../utils/mixins';
+
+.mainDark {
+  background-color: $darkThemeBG;
+}
+
+.container {
+  @include grid;
+  @include padding-inline;
+}
+
+.title {
+  @include h1-title;
+
+  height: fit-content;
+  margin-top: 24px;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.message {
+  font-family: $boldFont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: $grayPrimaryColor;
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.content {
+  grid-column: 1/-1;
+}

@@ -1,0 +1,151 @@
+@import '../../../../utils/mixins';
+
+.menu {
+  position: fixed;
+  top: 49px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  width: 100vw;
+  background-color: $whiteColor;
+  z-index: 2;
+  max-height: calc(100vh - 48px);
+  height: fill-available;
+  justify-content: space-between;
+  align-items: center;
+  transition: $transitionTime;
+
+  &__icons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  &__icon {
+    width: 50%;
+    height: 64px;
+    background-repeat: no-repeat;
+    background-position: center;
+    border: $border;
+    position: relative;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &Dark {
+    background-color: $darkThemeBG;
+  }
+}
+
+.navigation {
+  width: 100%;
+  margin-inline: 16px;
+}
+
+.navList {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  gap: 16px;
+  justify-content: center;
+  align-items: center;
+
+  &__link {
+    font-family: $boldFont;
+    font-size: 12px;
+    line-height: 11px;
+    color: $graySecondaryColor;
+    text-decoration: none;
+    transition: $transitionTime;
+    position: relative;
+
+    &:hover {
+      color: $grayPrimaryColor;
+    }
+
+    &::after {
+      box-sizing: border-box;
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      border-bottom: 3px solid $grayPrimaryColor;
+      width: 0;
+      content: '';
+    }
+
+    &:hover::after {
+      transition: $transitionTime;
+      width: 100%;
+    }
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+
+      &:hover {
+        color: $darkThemeWhite;
+      }
+
+      &::after {
+        border-bottom: 3px solid $darkThemeWhite;
+      }
+    }
+  }
+}
+
+.activeNavLink,
+.activeNavLinkButton {
+  color: $grayPrimaryColor;
+  position: relative;
+
+  &::after {
+    transition: $transitionTime;
+    box-sizing: border-box;
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    border-bottom: 3px solid $grayPrimaryColor;
+    width: 100%;
+    content: '';
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+
+    &::after{
+      border-bottom: 3px solid $darkThemeWhite;
+    }
+  }
+}
+
+.activeNavLinkButton {
+  &::after {
+    bottom: 0;
+  }
+}
+
+.counter {
+  position: absolute;
+  display: flex;
+  width: 14px;
+  height: 14px;
+  justify-content: center;
+  align-items: center;
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+  text-align: center;
+  color: $whiteColor;
+  border-radius: 50%;
+  background-color: $counterColor;
+  left: 50%;
+  top: 25%;
+}
+
+.inactive {
+  transition: $transitionTime;
+  top: -150%;
+}

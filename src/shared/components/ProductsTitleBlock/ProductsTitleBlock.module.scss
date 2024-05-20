@@ -1,0 +1,40 @@
+@import '../../../utils/mixins';
+
+.titleBlock {
+  margin-top: 25px;
+  grid-column: 1/-1;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+
+.title {
+  @include h1-title;
+
+  margin-top: 24px;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.quantityInfo {
+  font-family: $regularFont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $graySecondaryColor;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}

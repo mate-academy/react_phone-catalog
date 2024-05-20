@@ -1,0 +1,104 @@
+@import '../../../utils/mixins';
+
+.pages {
+  grid-column: 1/-1;
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+
+  @media (max-width: 510px){
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    box-sizing: border-box;
+    display: block;
+    width: 32px;
+    height: 32px;
+    border: solid 1px $grayIconsButtons;
+    transition: border $transitionTime;
+    cursor: pointer;
+    background-repeat: no-repeat;
+    background-position: center;
+    align-content: center;
+    text-align:  center;
+    font-family: $semiBoldFont, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $graySecondaryColor;
+
+    @media (max-width: 510px){
+      width: 24px;
+      height: 24px;
+    }
+
+    &:hover {
+      border: solid 1px $grayPrimaryColor;
+      color: $grayPrimaryColor;
+    }
+
+    &Dark {
+      background-color: $pageButtonBG;
+      border: none;
+      transition: $transitionTime;
+      color: $darkThemeWhite;
+
+      &:hover {
+        color: $darkThemeWhite;
+        border: none;
+        background-color: $pageButtonHover;
+      }
+    }
+  }
+}
+
+.disabled {
+  cursor: auto;
+
+  &:hover {
+    border: solid 1px $grayIconsButtons;
+  }
+
+  &Dark {
+    border: $darkThemeGrayBorder;
+    background-color: $darkThemeBG;
+
+    &:hover {
+      border: $darkThemeGrayBorder;
+      background-color: $darkThemeBG;
+    }
+  }
+}
+
+.dots {
+  width: 32px;
+  height: 32px;
+  display: block;
+  background-size: 24px;
+  background-position: 4px 16px;
+  background-repeat: no-repeat;
+
+  @media (max-width: 510px){
+    background-position: 4px 12px;
+    transform: scale(0.8);
+  }
+}
+
+.currentPage {
+  background-color: $grayPrimaryColor;
+  color: $whiteColor;
+
+  &:hover {
+    color: $whiteColor;
+  }
+}
