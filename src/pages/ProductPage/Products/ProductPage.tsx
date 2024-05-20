@@ -145,6 +145,10 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     }
   }, [sort]);
 
+  if (displayedProducts.length === 0) {
+    return <h1>There are no {category} yet</h1>;
+  }
+
   return (
     <main className="product-page">
       <section className="product-page__top">
