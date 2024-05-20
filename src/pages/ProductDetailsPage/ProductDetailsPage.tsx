@@ -14,6 +14,7 @@ import '../../styles/main.scss';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import { ProductDescriptions } from './ProductDescriptions';
 import { TechSpecs } from './TechSpecs';
+import { BackLink } from '../shared/components/BackLink';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -109,19 +110,9 @@ export const ProductDetailsPage: React.FC = () => {
                   />
                   <p className="breadcrumbs__product-name">{name}</p>
                 </div>
-                <button
-                  onClick={() => history.back()}
-                  className="back-link breadcrumbs__back-link"
-                >
-                  <div className="back-link__image-wrapper">
-                    <img
-                      className="back-link__image breadcrumbs__back-link"
-                      src="./icons/arrow-left.svg"
-                      alt="left arrow icon"
-                    />
-                  </div>
-                  <p className="back-link__text">Back</p>
-                </button>
+                <div className="breadcrumbs__back-link">
+                  <BackLink />
+                </div>
               </nav>
 
               <h2 className="product-content__name title--2">{name}</h2>
