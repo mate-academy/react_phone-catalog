@@ -13,14 +13,14 @@ import {
   TABLET_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
 import { getSliderImages } from '../../../services/getSliderImages';
-import { MoveLeft, MoveRight } from '../../shared/MoveButtons';
+import { MoveLeft, MoveRight } from '../../shared/Buttons/MoveButtons';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
 export const PicturesSlider: React.FC = React.memo(() => {
   const { windowSize } = useContext(WindowWidthContext);
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
-  const [size, setSize] = useState(windowSize);
+  const [currentSize, setCurrentSize] = useState(windowSize);
   const [images, setImages] = useState<Picture[]>(getImages(windowSize));
 
   const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -52,8 +52,8 @@ export const PicturesSlider: React.FC = React.memo(() => {
   };
 
   const moveLeft = () => {
-    if (size !== windowSize) {
-      setSize(windowSize);
+    if (currentSize !== windowSize) {
+      setCurrentSize(windowSize);
     }
 
     if (imgPosition > 0) {
@@ -71,8 +71,8 @@ export const PicturesSlider: React.FC = React.memo(() => {
   };
 
   const moveRight = () => {
-    if (size !== windowSize) {
-      setSize(windowSize);
+    if (currentSize !== windowSize) {
+      setCurrentSize(windowSize);
     }
 
     if (imgPosition < images.length - 1) {
@@ -128,11 +128,11 @@ export const PicturesSlider: React.FC = React.memo(() => {
   }, [images.length, imgPosition, oneStep, windowSize]);
 
   useEffect(() => {
-    if (size !== windowSize && imgPosition !== 0) {
-      setSize(windowSize);
+    if (currentSize !== windowSize && imgPosition !== 0) {
+      setCurrentSize(windowSize);
       setPosition(imgPosition * oneStep);
     }
-  }, [imgPosition, oneStep, size, windowSize]);
+  }, [imgPosition, oneStep, currentSize, windowSize]);
 
   useEffect(() => {
     if (windowSize <= WIDTH_DEVICES.mobile && images !== imgsMobile) {

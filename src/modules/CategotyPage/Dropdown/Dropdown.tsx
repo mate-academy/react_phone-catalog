@@ -1,6 +1,6 @@
 import React, { CSSProperties, useEffect, useRef, useState } from 'react';
 import { Option } from '../../../types/Option';
-import { IconDown, IconUp } from '../IconsSVG';
+import { IconDown, IconUp } from '../../shared/IconsSVG';
 
 type Props = {
   title: string;

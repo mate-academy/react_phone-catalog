@@ -48,13 +48,13 @@ export const Sidebar = React.memo(() => {
 
       <div className="sidebar__fav-and-cart">
         <NavLink
-          to="favourites"
+          to="/favourites"
           className="sidebar__fav icon-container icon-container--fav"
         >
           <IconFavourites />
         </NavLink>
 
-        <NavLink to="shoping-cart" className="sidebar__cart icon-container">
+        <NavLink to="/shoping-cart" className="sidebar__cart icon-container">
           <IconShoppingCart />
         </NavLink>
       </div>

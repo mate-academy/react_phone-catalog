@@ -1,9 +1,12 @@
-import React from 'react';
+// /* eslint-disable @typescript-eslint/no-unused-vars */
+import React, { useContext } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { AddBlock } from '../AddBlock';
+import { AddBlock } from '../Buttons/AddBlock';
 import { Product } from '../../../types/Product';
 import { Price } from '../Price';
 import { SpecsList } from '../SpecsList';
+import { WindowWidthContext } from '../../../store/WindowWidthContext';
+import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 
 type Props = {
   product: Product;
@@ -54,11 +57,16 @@ export const ProductCard: React.FC<Props> = React.memo(
       category,
     } = product;
 
+    const { windowSize } = useContext(WindowWidthContext);
+
     const { pathname } = useLocation();
     const isCategory = pathname.includes(category);
+
     const navigate = useNavigate();
 
     const specs = { screen, capacity, ram };
+
+    const widthImg = windowSize * 0.396875;
 
     const navigateTo = () => {
       if (isCategory) {
@@ -68,8 +76,29 @@ export const ProductCard: React.FC<Props> = React.memo(
       }
     };
 
+    function getHeightImg() {
+      if (windowSize <= WIDTH_DEVICES.mobile && isCategory) {
+        return { height: `${widthImg}px`, marginBottom: '32px' };
+      }
+
+      if (windowSize > WIDTH_DEVICES.mobile && category === 'accessories') {
+        return { maxHeight: '90%' };
+      }
+
+      return {};
+    }
+
+    function getHeightCard() {
+      if (windowSize <= WIDTH_DEVICES.mobile && isCategory) {
+        return { width: `${widthCard}px`, height: 'auto' };
+      }
+
+      return { width: `${widthCard}px` };
+    }
+
     return (
-      <div className="product-card" style={{ width: `${widthCard}px` }}>
+      // <div className="product-card" style={{ width: `${widthCard}px` }}>
+      <div className="product-card" style={getHeightCard()}>
         {/* <Link
           to={getURLLink(pathname, category, itemId)}
           className="product-card__img-link"
@@ -80,13 +109,12 @@ export const ProductCard: React.FC<Props> = React.memo(
           type="button"
           onClick={navigateTo}
           className="product-card__img-link"
-          // style={isCategory ? { width: '100%', height: 'auto' } : {}}
         >
           <img
             src={image}
             alt={`${name}`}
             className="product-card__img"
-            style={category === 'accessories' ? { maxHeight: '90%' } : {}}
+            style={getHeightImg()}
           />
         </button>
 

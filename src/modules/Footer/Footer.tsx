@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { MoveLeft } from '../shared/MoveButtons';
+import { MoveLeft } from '../shared/Buttons/MoveButtons';
 import { getLogo } from '../../services/getLogo';
 import { SidebarContext } from '../../store/SidebarContext';
 

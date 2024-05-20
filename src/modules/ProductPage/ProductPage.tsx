@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
-import { AddBlock } from '../shared/AddBlock';
+import { AddBlock } from '../shared/Buttons/AddBlock';
 import { AvaliableContainer } from './AvaliableContainer';
 import { Price } from '../shared/Price';
 import { SpecsList } from '../shared/SpecsList';
@@ -12,7 +12,7 @@ import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { Product } from '../../types/Product';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { getRandomNumbers } from '../../services/getRandomNumbers';
-import { BackButton } from '../shared/MoveButtons';
+import { BackButton } from '../shared/Buttons/MoveButtons';
 import { Route } from '../shared/Route';
 import { Loader } from '../shared/Loader';
 

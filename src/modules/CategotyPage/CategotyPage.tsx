@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { ProductCard } from '../shared/ProductCard';
-import { Dropdown } from '../shared/Dropdown';
-import { Pagination } from '../shared/Pagination';
+import { Dropdown } from './Dropdown';
 import { getItemsPerPage } from '../../services/getItemsPerPage';
 import { client } from '../../api';
 import { Product } from '../../types/Product';
@@ -15,7 +14,7 @@ import { Loader } from '../shared/Loader';
 import { Reload } from '../shared/Reload';
 import { Route } from '../shared/Route';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
-// import { IconHome, IconRight } from '../shared/IconsSVG';
+import { Pagination } from './Pagination';
 
 type Props = {
   title: string;

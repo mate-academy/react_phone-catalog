@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React from 'react';
-import { ReloadButton } from '../MoveButtons';
+import { ReloadButton } from '../Buttons/MoveButtons';
 
 type Props = {
   imgOfError: string;

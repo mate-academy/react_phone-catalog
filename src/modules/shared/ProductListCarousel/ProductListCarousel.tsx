@@ -11,7 +11,7 @@ import {
   DESCTOP_COLUMNS,
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
-import { MoveLeft, MoveRight } from '../MoveButtons';
+import { MoveLeft, MoveRight } from '../Buttons/MoveButtons';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
 type Props = {
@@ -24,7 +24,7 @@ type Props = {
 export const ProductListCarousel: React.FC<Props> = React.memo(
   ({ title, products, dataLoaded, discount }) => {
     const { windowSize } = useContext(WindowWidthContext);
-    const [size, setSize] = useState<number>(windowSize);
+    const [currentSize, setCurrentSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
     const [touchEnd, setTouchEnd] = useState<{ x: number } | null>(null);
@@ -121,19 +121,19 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
         return;
       }
 
-      if (dataLoaded && size !== windowSize && imgPosition !== 0) {
+      if (dataLoaded && currentSize !== windowSize && imgPosition !== 0) {
         const newPosition =
           windowSize < WIDTH_DEVICES.desctop
             ? imgPosition * oneItem - GAP_BETWEEN_COLUMNS
             : imgPosition * oneItem;
 
         setPosition(Math.max(-newPosition, -boundary));
-        setSize(windowSize);
+        setCurrentSize(windowSize);
       }
 
       if (dataLoaded && position !== padding && imgPosition === 0) {
         setPosition(padding);
-        setSize(windowSize);
+        setCurrentSize(windowSize);
       }
     }, [
       boundary,
@@ -143,7 +143,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
       oneItem,
       padding,
       position,
-      size,
+      currentSize,
       windowSize,
     ]);
 

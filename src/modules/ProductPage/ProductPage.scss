@@ -260,8 +260,7 @@
   --footer-height: 257px;
   --gap: 8px;
   --general-height:
-  calc(
-    #{$header-height} + var(--route-height) + var(--title-height) + var(--margin-bottom-route) + var(--margin-bottom-title) + var(--footer-height) + var(--padding-top) + var(--padding-bottom) + var(--gap));
+    calc(#{$header-height} + var(--route-height) + var(--title-height) + var(--margin-bottom-route) + var(--margin-bottom-title) + var(--footer-height) + var(--padding-top) + var(--padding-bottom) + var(--gap));
 
   min-height: calc(100vh - var(--general-height));
 

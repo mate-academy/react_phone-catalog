@@ -1,7 +1,7 @@
 import React from 'react';
-import { MoveLeft, MoveNumber, MoveRight } from '../MoveButtons';
 import { getNumbers } from '../../../services/getNumbers';
 import { getActivePage } from '../../../services/getActivePage';
+import { MoveLeft, MoveNumber, MoveRight } from '../../shared/Buttons/MoveButtons';
 
 type Props = {
   total: number;

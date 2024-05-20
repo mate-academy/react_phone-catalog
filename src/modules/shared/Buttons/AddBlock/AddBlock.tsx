@@ -1,4 +1,4 @@
-import { IconFavourites } from '../IconsSVG';
+import { IconFavourites } from '../../IconsSVG';
 
 export const AddBlock = () => {
   return (

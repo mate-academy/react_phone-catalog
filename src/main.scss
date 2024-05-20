@@ -6,17 +6,17 @@
 @import "./modules/shared/title";
 @import "./modules/Header/Header";
 @import "./modules/Sidebar/Sidebar";
-@import "./modules/shared/MoveButtons/MoveButtons";
+@import "./modules/shared/Buttons/MoveButtons/MoveButtons";
 @import "./modules/Footer/Footer";
 @import "./modules/HomePage/HomePage";
 @import "./modules/HomePage/PicturesSlider/PicturesSlider";
 @import "./modules/shared/ProductListCarousel/ProductListCarousel";
 @import "./modules/shared/ProductCard/ProductCard";
-@import "./modules/shared/AddBlock/AddBlock";
+@import "./modules/shared/Buttons/AddBlock/AddBlock";
 @import "./modules/HomePage/ShopByCategoty/ShopByCategory";
 @import "./modules/CategotyPage/CategotyPage";
-@import "./modules/shared/Dropdown/Dropdown";
-@import "./modules/shared/Pagination/Pagination";
+@import "./modules/CategotyPage/Dropdown/Dropdown";
+@import "./modules/CategotyPage/Pagination/Pagination";
 @import "./modules/shared/Reload/Reload";
 @import "./modules/ProductPage/ProductPage";
 @import "./modules/ProductPage/AvaliableContainer/AvaliableContainer";
@@ -24,5 +24,3 @@
 @import "./modules/shared/SpecsList/SpecsList";
 @import "./modules/ProductPage/DescriptionList/DescriptionList";
 @import "./modules/shared/Route/Route";
-
-// @import "./modules/shared/IconsSVG/IconsSVG";
