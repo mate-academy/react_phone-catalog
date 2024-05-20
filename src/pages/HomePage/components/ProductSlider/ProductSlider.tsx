@@ -8,11 +8,13 @@ import { getProducts } from '../../../../helpers/getProducts';
 import { filterRandomProducts } from '../../../../helpers/getSuggestedProducts';
 
 type Props = {
+  title: string;
   hasDiscount?: boolean;
   hasRandomProducts?: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
+  title,
   hasDiscount = false,
   hasRandomProducts = false,
 }) => {
@@ -55,7 +57,8 @@ export const ProductSlider: React.FC<Props> = ({
       <div className="product-slider">
         <div className="slider-top product-slider__top">
           <h2 className="slider-top__title">
-            {hasDiscount ? 'Hot prices' : 'Brand new models'}
+            {title}
+            {/* {hasDiscount ? 'Hot prices' : 'Brand new models'} */}
           </h2>
           <nav className="slider-top__nav">
             <button

@@ -221,7 +221,11 @@ export const ProductDetailsPage: React.FC = () => {
           <TechSpecs product={displayedProduct} />
 
           <section className="product-details__products-slider">
-            <ProductSlider hasRandomProducts={true} hasDiscount={true} />
+            <ProductSlider
+              title="You may also like"
+              hasRandomProducts={true}
+              hasDiscount={true}
+            />
           </section>
         </main>
       )}
