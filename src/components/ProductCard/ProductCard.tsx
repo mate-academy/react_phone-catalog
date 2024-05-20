@@ -105,7 +105,7 @@ export const ProductCard: React.FC<Props> = ({
         <>
           <Link
             to={{
-              pathname: `${product.category}/${product.itemId}`,
+              pathname: `${product.itemId}`,
             }}
             state={{ from: location.pathname }}
           >

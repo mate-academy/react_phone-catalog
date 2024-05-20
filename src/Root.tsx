@@ -11,6 +11,7 @@ import { Products } from './pages/Products';
 import { Category } from './types/Category';
 import { FavouritePage } from './pages/Favourites';
 import { CartPage } from './pages/Cart';
+import { ProductDetails } from './pages/ProductDetails';
 
 export const Root = () => (
   <Router>
@@ -20,24 +21,15 @@ export const Root = () => (
 
         <Route path="phones">
           <Route index element={<Products category={Category.Phones} />} />
-          <Route
-            path=":productId"
-            element={<Products category={Category.Phones} />}
-          />
+          <Route path=":productId" element={<ProductDetails />} />
         </Route>
         <Route path="tablets">
           <Route index element={<Products category={Category.Tablets} />} />
-          <Route
-            path=":productId"
-            element={<Products category={Category.Tablets} />}
-          />
+          <Route path=":productId" element={<ProductDetails />} />
         </Route>
         <Route path="accessories">
           <Route index element={<Products category={Category.Accessories} />} />
-          <Route
-            path=":productId"
-            element={<Products category={Category.Accessories} />}
-          />
+          <Route path=":productId" element={<ProductDetails />} />
         </Route>
 
         <Route path="favourites" element={<FavouritePage />} />
