@@ -53,12 +53,8 @@ export const ProductsCarousel: React.FC<Props> = ({
     (is475pxWidth && startIndex === products.length - 2) ||
     startIndex === products.length - 1;
 
-  if (isDesktopWidth && startIndex > products.length - 4) {
-    setStartIndex(products.length - 4);
-  } else if (is800pxWidth && startIndex > products.length - 3) {
-    setStartIndex(products.length - 3);
-  } else if (is475pxWidth && startIndex > products.length - 2) {
-    setStartIndex(products.length - 2);
+  if (startIndex > products.length - step) {
+    setStartIndex(products.length - step);
   }
 
   const handleCardsSliding = (direction: string) => {
@@ -66,6 +62,8 @@ export const ProductsCarousel: React.FC<Props> = ({
       case 'left':
         if (!startIndex) {
           return;
+        } else if (startIndex - step < 0) {
+          setStartIndex(0);
         } else {
           setStartIndex(startIndex - step);
         }
