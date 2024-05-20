@@ -223,22 +223,35 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  z-index: 3;
+  z-index: 2;
   background-color: $graySecondaryColor;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  opacity: 0.8;
 
   &__container {
     box-sizing: border-box;
-    width: fit-content;
-    height: fit-content;
+    width: 280px;
+    height: max-content;
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 32px;
     background-color: $grayPrimaryColor;
     border: 2px solid $counterColor;
+    opacity: 1;
+    z-index: 3;
+    position: fixed;
+    left: calc(50% - 140px);
+    top: calc(50% - 176px);
+
+    @media (min-width: 360px) {
+      width: 320px;
+      left: calc(50% - 160px);
+    }
+
+    @media (min-width: 440px) {
+      width: 410px;
+      left: calc(50% - 205px);
+    }
   }
 
   &__message {

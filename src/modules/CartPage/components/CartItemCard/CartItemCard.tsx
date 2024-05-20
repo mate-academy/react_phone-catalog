@@ -46,7 +46,11 @@ export const CartItemCard: React.FC<Props> = ({ product }) => {
         break;
 
       case 'plus':
-        changeQuantity(quantity + 1);
+        if (quantity >= 99) {
+          return;
+        } else {
+          changeQuantity(quantity + 1);
+        }
     }
   };
 

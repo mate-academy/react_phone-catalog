@@ -169,7 +169,8 @@ export const CartPage = () => {
         )}
 
         {isCheckingOut && (
-          <div className={styles.confirmWarning}>
+          <>
+            <div className={styles.confirmWarning}></div>
             <div className={styles.confirmWarning__container}>
               <div className={styles.confirmWarning__message}>
                 <p>Checkout is not implemented yet.</p>
@@ -197,7 +198,7 @@ export const CartPage = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </>
         )}
       </section>
     </main>

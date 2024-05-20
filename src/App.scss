@@ -5,6 +5,10 @@
   padding: 0;
 }
 
+*:hover {
+  transition: $transitionTime;
+}
+
 html {
   overflow-x: hidden;
   scroll-behavior: smooth;

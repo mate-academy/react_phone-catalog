@@ -31,13 +31,20 @@ export const ProductsCarousel: React.FC<Props> = ({
   const is800pxWidth = useMediaQuery({ query: '(min-width: 800px' });
 
   let stepWidth = 228; /* Card Width + 16px gap */
+  let step = 1;
 
   if (isDesktopWidth) {
     stepWidth = 288;
+    step = 4;
   } else if (isTabletWidth) {
     stepWidth = 253;
+    step = 3;
+  } else if (is475pxWidth) {
+    stepWidth = 228;
+    step = 2;
   } else {
     stepWidth = 228;
+    step = 1;
   }
 
   const endOfList =
@@ -60,7 +67,7 @@ export const ProductsCarousel: React.FC<Props> = ({
         if (!startIndex) {
           return;
         } else {
-          setStartIndex(startIndex - 1);
+          setStartIndex(startIndex - step);
         }
 
         break;
@@ -69,7 +76,7 @@ export const ProductsCarousel: React.FC<Props> = ({
         if (endOfList) {
           return;
         } else {
-          setStartIndex(startIndex + 1);
+          setStartIndex(startIndex + step);
         }
 
         break;
@@ -158,7 +165,9 @@ export const ProductsCarousel: React.FC<Props> = ({
       <div className={styles.containerBottom}>
         <div
           className={styles.productsCarousel}
-          style={{ transform: `translateX(-${startIndex * stepWidth}px)` }}
+          style={{
+            transform: `translateX(-${startIndex * stepWidth}px)`,
+          }}
           onTouchStart={onTouchStart}
           onTouchMove={onTouchMove}
           onTouchEnd={onTouchEnd}
