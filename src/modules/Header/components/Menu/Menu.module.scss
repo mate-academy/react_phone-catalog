@@ -10,7 +10,8 @@
   width: 100vw;
   background-color: $whiteColor;
   z-index: 2;
-  height: calc(100vh - 48px);
+  max-height: calc(100vh - 48px);
+  height: -webkit-fill-available;
   justify-content: space-between;
   align-items: center;
   transition: $transitionTime;

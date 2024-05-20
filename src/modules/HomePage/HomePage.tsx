@@ -37,35 +37,33 @@ export const HomePage = () => {
 
   return (
     <main className={isDarkTheme ? styles.mainDark : ''}>
-      <section className={styles.container}>
-        {isLoading && <Loader />}
+      {isLoading && <Loader />}
 
-        {!isLoading && (
-          <>
-            <div className={styles.container}>
-              <h1
-                className={classNames(
-                  styles.h1Title,
-                  isDarkTheme ? styles.h1TitleDark : '',
-                )}
-              >
-                Welcome to Nice Gadgets store!
-              </h1>
+      {!isLoading && (
+        <>
+          <div className={styles.container}>
+            <h1
+              className={classNames(
+                styles.h1Title,
+                isDarkTheme ? styles.h1TitleDark : '',
+              )}
+            >
+              Welcome to Nice Gadgets store!
+            </h1>
 
-              <Slider />
-              <div className={styles.homePageContent}>
-                <BrandNewBlock productsList={productsList} />
-                <CategoriesBlock
-                  phonesQuantity={phonesQuantity}
-                  tabletsQuantity={tabletsQuantity}
-                  accessoriesQuantity={accessoriesQuantity}
-                />
-                <HotPricesBlock productsList={productsList} />
-              </div>
+            <Slider />
+            <div className={styles.homePageContent}>
+              <BrandNewBlock productsList={productsList} />
+              <CategoriesBlock
+                phonesQuantity={phonesQuantity}
+                tabletsQuantity={tabletsQuantity}
+                accessoriesQuantity={accessoriesQuantity}
+              />
+              <HotPricesBlock productsList={productsList} />
             </div>
-          </>
-        )}
-      </section>
+          </div>
+        </>
+      )}
     </main>
   );
 };

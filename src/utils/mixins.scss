@@ -50,11 +50,7 @@
   }
 
   @include on-desktop {
-    padding-inline: 32px;
-  }
-
-  @include on-desktop-wide {
-    padding-inline: 24px;
+    padding-inline: 0;
   }
 }
 
