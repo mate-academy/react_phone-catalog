@@ -137,7 +137,7 @@ export const Cart: React.FC<Props> = ({ title }) => {
                       className={
                         theme === Theme.light
                           ? styles.redirect
-                          : styles.redirectdarkMode
+                          : styles.redirectDark
                       }
                     >
                       Redirecting to home in {countdown} seconds...

@@ -391,7 +391,7 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
                         className={buttonClass}
                         onClick={() => handlerAddProduct()}
                       >
-                        {!isCart ? 'Add to cart' : 'Added to cart'}
+                        {!isCart ? 'Add to cart' : 'Remove from cart'}
                       </button>
                       <button
                         className={

@@ -60,7 +60,7 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
     <>
       <div className={styles.cardButtons}>
         <button className={buttonClass} onClick={handlerAddProduct}>
-          {!isCart ? 'Add to cart' : 'Added to cart'}
+          {!isCart ? 'Add to cart' : 'Remove from cart'}
         </button>
         <button
           className={theme === Theme.light ? styles.like : styles.likeDark}

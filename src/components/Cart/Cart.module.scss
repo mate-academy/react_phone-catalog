@@ -15,16 +15,6 @@
   }
 }
 
-.background {
-  height: calc(100vh - (64px + 96px));
-  background: #FAFBFC;
-
-  &Dark {
-    height: calc(100vh - (64px + 96px));
-    background: #0F1121;
-  }
-}
-
 .modal {
   text-align: center;
   margin-top: 56px;
@@ -83,6 +73,7 @@
 }
 
 .imgEmpy {
+  box-sizing: border-box;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -102,7 +93,7 @@
   align-items: center;
   flex-direction: row;
   gap: 8px;
-  margin-top: 40px;
+  margin-top: 20px;
 
   &:hover {
     cursor: pointer;
