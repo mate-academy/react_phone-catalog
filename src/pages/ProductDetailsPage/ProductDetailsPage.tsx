@@ -85,51 +85,47 @@ export const ProductDetailsPage: React.FC = () => {
     <>
       {displayedProduct && (
         <main className="product-details">
-          <section className="product-details__top ">
-            <nav className="breadcrumbs">
-              <div className="breadcrumbs__wrapper">
-                <img
-                  className="breadcrumbs__home"
-                  src="./icons/home.svg"
-                  alt="home icon"
-                />
-                <img
-                  className="breadcrumbs__next"
-                  src="./icons/arrow-right-disabled.svg"
-                  alt="right arrow image"
-                />
-                <Link to={`/${category}`} className="breadcrumbs__category">
-                  {category.charAt(0).toUpperCase() + category.slice(1)}
-                </Link>
-
-                <img
-                  className="breadcrumbs__next"
-                  src="./icons/arrow-right-disabled.svg"
-                  alt="right arrow image"
-                />
-
-                <p className="breadcrumbs__product-name">{name}</p>
-              </div>
-
-              <button
-                onClick={history.back}
-                className="back-link breadcrumbs__back-link"
-              >
-                <div className="back-link__image-wrapper">
-                  <img
-                    className="back-link__image breadcrumbs__back-link"
-                    src="./icons/arrow-left.svg"
-                    alt="left arrow icon"
-                  />
-                </div>
-
-                <p className="back-link__text">Back</p>
-              </button>
-            </nav>
-          </section>
-
           <section className="product-content product-details__product-content">
-            <h2 className="product-content__name title--2">{name}</h2>
+            <div className="product-content__top">
+              <nav className="breadcrumbs product-content__breadcrumbs">
+                <div className="breadcrumbs__wrapper">
+                  <img
+                    className="breadcrumbs__home"
+                    src="./icons/home.svg"
+                    alt="home icon"
+                  />
+                  <img
+                    className="breadcrumbs__next"
+                    src="./icons/arrow-right-disabled.svg"
+                    alt="right arrow image"
+                  />
+                  <Link to={`/${category}`} className="breadcrumbs__category">
+                    {category.charAt(0).toUpperCase() + category.slice(1)}
+                  </Link>
+                  <img
+                    className="breadcrumbs__next"
+                    src="./icons/arrow-right-disabled.svg"
+                    alt="right arrow image"
+                  />
+                  <p className="breadcrumbs__product-name">{name}</p>
+                </div>
+                <button
+                  onClick={history.back}
+                  className="back-link breadcrumbs__back-link"
+                >
+                  <div className="back-link__image-wrapper">
+                    <img
+                      className="back-link__image breadcrumbs__back-link"
+                      src="./icons/arrow-left.svg"
+                      alt="left arrow icon"
+                    />
+                  </div>
+                  <p className="back-link__text">Back</p>
+                </button>
+              </nav>
+
+              <h2 className="product-content__name title--2">{name}</h2>
+            </div>
 
             <div className="product-images product-content__images">
               <img

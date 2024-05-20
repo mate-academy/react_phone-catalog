@@ -56,10 +56,7 @@ export const ProductSlider: React.FC<Props> = ({
     products.length > 0 && (
       <div className="product-slider">
         <div className="slider-top product-slider__top">
-          <h2 className="slider-top__title">
-            {title}
-            {/* {hasDiscount ? 'Hot prices' : 'Brand new models'} */}
-          </h2>
+          <h2 className="slider-top__title">{title}</h2>
           <nav className="slider-top__nav">
             <button
               className="arrow-button"

@@ -4,19 +4,21 @@
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 56px;
 
   padding-top: 24px;
   overflow: hidden;
 
   // overflow-wrap: break-word;
 
-  &__top {
-    grid-column: 1 / 5;
-  }
+  // &__top {
+  //   grid-column: 1 / 5;
+  // }
 }
 
 .breadcrumbs {
+  grid-column: 1 / 5;
+
   @include grid;
 
   grid-template-rows: auto auto;
@@ -104,6 +106,13 @@
   grid-template-rows: auto;
   row-gap: 32px;
 
+  &__top {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
   &__name {
     grid-column: 1 / 5;
   }
@@ -113,6 +122,8 @@
   }
   &__options {
     grid-column: 1 / 5;
+
+    padding-top: 8px;
   }
   &__purchase {
     grid-column: 1 / 5;
