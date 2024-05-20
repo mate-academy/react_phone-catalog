@@ -29,7 +29,11 @@ export const SuggestedProducts: React.FC<Props> = ({ product }) => {
   const { id, category } = product;
   const [isLoading, setIsloading] = useState(true);
   const [products, setProducts] = useState<Product[]>([]);
-  const suggestedProducts = prepareSuggestedProducts(products);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  if (!suggestedProducts.length && !!products.length) {
+    setSuggestedProducts(prepareSuggestedProducts(products));
+  }
 
   useEffect(() => {
     setIsloading(true);
