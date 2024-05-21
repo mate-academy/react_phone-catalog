@@ -105,6 +105,10 @@ body {
     height: 100%;
     box-shadow: -1px 0 #e2e6e9;
 
+    @media (max-width: 740px) {
+      display: none;
+    }
+
     &__input {
       border: none;
       color: #b4bdc3;
