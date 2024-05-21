@@ -21,6 +21,7 @@ export const useAppContext = (): InitialContext => {
 };
 
 export const ContextProvider: React.FC<Props> = ({ children }) => {
+  const [isLoading, setIsLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [cart, setCart] = useState<CartItem[]>([]);
   const [favourites, setFavourites] = useState<Product[]>([]);
@@ -98,22 +99,27 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   useEffect(() => {
-    getProducts()
-      .then(setProducts)
-      .catch(error => {
+    const fetchProducts = async () => {
+      setIsLoading(true);
+      try {
+        const res = await getProducts();
+
+        setProducts(res);
+      } catch (error) {
         setIsError(true);
-        throw error;
-      });
-    // .finally(() => {
-    //   setTimeout(() => {
-    //     setIsError(false);
-    //   }, 3000);
-    // });
+        // console.error('Failed to fetch products:', error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    fetchProducts();
   }, []);
 
   return (
     <AppContext.Provider
       value={{
+        isLoading,
         products,
         cart,
         favourites,

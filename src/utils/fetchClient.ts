@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-export const BASE_URL = 'api/';
+export const BASE_URL = './api/';
 
 // a promise resolved after a given delay
 function wait(delay: number) {

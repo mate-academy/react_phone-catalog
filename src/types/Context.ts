@@ -2,6 +2,7 @@ import { CartItem } from './CartItem';
 import { Product } from './Product';
 
 export type InitialContext = {
+  isLoading: boolean;
   products: Product[];
   cart: CartItem[];
   favourites: Product[];

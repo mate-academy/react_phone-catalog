@@ -33,7 +33,7 @@ export const Categories: React.FC = () => {
         {Object.values(Category).map(category => (
           <Link
             key={category}
-            to={`/products/${category.toLowerCase()}`}
+            to={`${category.toLowerCase()}`}
             className="categories__item"
           >
             <div

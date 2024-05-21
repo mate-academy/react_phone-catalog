@@ -7,10 +7,15 @@ export const getProducts = () => {
   return client.get<Product[]>('products.json');
 };
 
+// export const getProduct = (category: string, id: string) => {
+//   return client
+//     .get<FullProductData[]>(`${category}.json`)
+//     .then(items => items.find(item => item.id === id));
+// };
 export const getProduct = (category: Category, id: string) => {
   return client
     .get<FullProductData[]>(`${category}.json`)
-    .then(items => items.find(item => item.id === id));
+    .then(items => items.find(item => item.id === id) || null);
 };
 
 export const getCategoryProducts = (category: Category) => {
