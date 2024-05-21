@@ -1111,12 +1111,29 @@ body {
   &__main {
     width: 100%;
 
+    @media (max-width: 1150px) {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    
+
     &__info {
       display: flex;
       gap: 64px;
 
+      @media (max-width: 1150px) {
+        flex-direction: column-reverse;
+        align-items: center;
+      }
+
       &__specs {
         width: 512px;
+
+        @media (max-width: 900px) {
+          width: 300px;
+        }
 
         &__title {
           font-family: "Mont", sans-serif;
@@ -1127,6 +1144,10 @@ body {
           padding: 0 0 16px;
           border-bottom: 1px solid #e2e6e9;
           margin: 0 0 32px;
+
+          @media (max-width: 450px) {
+            text-align: center;
+          }
         }
 
         &__card {
@@ -1137,6 +1158,10 @@ body {
           &__row {
             display: flex;
             justify-content: space-between;
+
+            @media (max-width: 900px) {
+              flex-direction: column;
+            }
 
             &__name {
               font-family: "Mont", sans-serif;
@@ -1159,6 +1184,11 @@ body {
       
       &__about {
         width: 560px;
+
+        @media (max-width: 580px) {
+          width: auto;
+          margin: 0 10px;
+        }
 
         &__title {
           font-family: "Mont", sans-serif;
@@ -1205,14 +1235,37 @@ body {
     &__cards {
       display: flex;
       margin: 0 0 80px;
-      
+
+      @media (max-width: 900px) {
+        flex-direction: column;
+        align-items: center;
+      }
+
       &__preview {
         display: flex;
         flex-direction: column;
         gap: 16px;
 
+        @media (max-width: 900px) {
+          flex-direction: row;
+          justify-content: center;
+          margin: 0 0 20px;
+        }
+
+        @media (max-width: 410px) {
+          gap: 5px;
+        }
+
         &__characteristics {
           width: 320px;
+          display: flex;
+          flex-direction: column;
+          
+
+          @media (max-width: 900px) {
+            flex-direction: column;
+            // align-items: center;
+          }
 
           &__card-buy {
 
@@ -1350,6 +1403,10 @@ body {
             padding: 0;
             border-bottom: solid 1px #e2e6e9;
 
+            @media (max-width: 900px) {
+              justify-content: center;
+            }
+
             &__li {
               font-family: "Mont", sans-serif;
               font-weight: 500;
@@ -1374,6 +1431,10 @@ body {
             font-size: 12px;
             line-height: 15.34px;
             color: #89939a;
+
+            @media (max-width: 900px) {
+              text-align: center;
+            }
           }
 
           &__colors {
@@ -1382,6 +1443,10 @@ body {
             padding: 0;
             margin: 0 0 24px;
             border-bottom: solid 1px #e2e6e9;
+
+            @media (max-width: 900px) {
+              justify-content: center;
+            }
 
             &__circle {
               display: flex;
@@ -1427,15 +1492,24 @@ body {
 
         &__selected {
           display: flex;
-          justify-content: center;
-          align-items: center;
-          height: 464px;
           width: 464px;
+          height: auto;
           margin: 0 0 0 16px;
 
+          @media (max-width: 900px) {
+            margin: 0;
+            width: 100%;
+            height: auto;
+            justify-content: center;
+            align-items: center;
+          }
+
           &__img {
+            width: 100%;
             max-height: 464px;
             max-width: 464px;
+            height: auto;
+            object-fit: contain;
           }
         }
       }
@@ -1763,6 +1837,7 @@ body {
       display: flex;
       align-items: center;
       gap: 8px;
+      margin: 0 0 20px;
 
       &__text {
 
