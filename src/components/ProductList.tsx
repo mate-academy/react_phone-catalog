@@ -259,7 +259,15 @@ export const ProductList = () => {
         <>
         <div className="phones__header">
           <h3 className="phones__header__title">Mobile phones</h3>
-          <p className="phones__header__paragraph">{`${getPhone?.length} models`}</p>
+          {!query ? (
+            <p className="phones__header__paragraph">
+              {`${getPhone?.length} models`}
+            </p>
+          ): 
+            <p className="phones__header__paragraph">
+              {`Search result - ${visibleElems?.length}`}
+            </p>
+          }
 
           {!query && <div className="phones__header__buttons">
             <div className="phones__header__buttons__sort" ref={blockSortRef}>

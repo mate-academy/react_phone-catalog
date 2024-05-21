@@ -19,14 +19,13 @@ export const MenuBurger = () => {
             <img src={Logo} className="header__logo" alt="logo" />
           </NavLink>
           <nav className="nav" data-cy="categoryLinksContainer" />
-          <div
+          <button
             className={cn(
               'header__link',
               'basket',
               'display-none',
             )}
-            role="button"
-            tabIndex={0}
+            type="button"
             onClick={() => setIsMenuBurger(!isMenuBurger)}
           >
             <img
@@ -34,7 +33,7 @@ export const MenuBurger = () => {
               className="header__link-icon"
               alt=""
             />
-          </div>
+          </button>
         </header>
         <ul className="burger-menu__list">
           <li className="burger-menu__list__line">

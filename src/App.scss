@@ -1,5 +1,5 @@
 .App {
-  max-width: 1440px;
+  // max-width: 1440px;
   margin: 0 auto;
   font-family: inherit;
   display: flex;
@@ -33,6 +33,8 @@ body {
     height: 100%;
     display: flex;
     align-items: center;
+    border: none;
+    background: white;
 
     &__pop-up {
       display: flex;
@@ -94,6 +96,7 @@ body {
       transition: all 0.5s ease;
       display: inline-block;
       animation: scaleAnimation 2s ease-in-out infinite;
+      // animation: none;
     }
   }
 
@@ -111,7 +114,15 @@ body {
 
     &__input {
       border: none;
-      color: #b4bdc3;
+      color: black;
+
+      &::placeholder {
+        color: #b4bdc3;
+      }
+
+      &:focus {
+        outline: none;
+      }
     }
   }
 
@@ -837,8 +848,10 @@ body {
   }
 
   &__goods {
+    display: flex;
     width: 100%;
     margin: 0 0 80px;
+    justify-content: center;
     
 
     &__cards {
@@ -847,7 +860,22 @@ body {
       flex-wrap: wrap;
       gap: 16px;
       row-gap: 24px;
-      justify-content: center;
+
+      @media (max-width: 1200px) {
+        width: calc(284px * 4);
+      }
+
+      @media (max-width: 1199px) {
+        width: calc(283px * 3);
+      }
+
+      @media (max-width: 850px) {
+        width: calc(280px * 2);
+      }
+
+      @media (max-width: 566px) {
+        width: 272px;
+      }
     }
   }
 
@@ -863,6 +891,7 @@ body {
       justify-content: center;
       flex-direction: column;
       align-items: center;
+      margin: 0 0 20px;
     }
 
     &__title {

@@ -8,6 +8,7 @@ import Favorite from '../../img/favourites.svg';
 import Basket from '../../img/group.svg';
 import MenuBurger from '../../img/Menu-burger.svg'
 import { useAppContext } from '../../components/Context';
+import Close from '../../img/Close-black.svg';
 
 export const Header = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
@@ -95,6 +96,12 @@ export const Header = () => {
     }
   }, [query])
 
+  const handleCleanSearch = () => {
+    if (query) {
+      setQuery('');
+    }
+  };
+
   return (
     <>
     <header className="header">
@@ -162,16 +169,16 @@ export const Header = () => {
           className="header__search__input"
           onChange={handleChangeQuery}
         />
-        <a
-          href="#"
+        <button
           className="header__link"
+          onClick={handleCleanSearch}
         >
           <img
-            src={Search}
-            className="header__link-icon"
+            src={!query ? Search : Close}
+            className="header__link-icon-search"
             alt="Search"
           />
-        </a>
+        </button>
       </label>)}
       <NavLink
         to="favorite"
