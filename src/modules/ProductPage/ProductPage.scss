@@ -118,6 +118,9 @@
     position: relative;
 
     border: 1px solid $border-color-light-gray;
+    border-radius: 5px;
+    background-color: inherit;
+    cursor: pointer;
   }
 
   &__img-wrapper.is-active {

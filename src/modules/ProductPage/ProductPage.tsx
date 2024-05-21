@@ -6,7 +6,6 @@ import cn from 'classnames';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
 import { AddBlock } from '../shared/Buttons/AddBlock';
-import { AvaliableContainer } from './AvaliableContainer';
 import { Price } from '../shared/Price';
 import { SpecsList } from '../shared/SpecsList';
 import { DescriptionList } from './DescriptionList';
@@ -17,6 +16,7 @@ import { getRandomNumbers } from '../../services/getRandomNumbers';
 import { BackButton } from '../shared/Buttons/MoveButtons';
 import { Route } from '../shared/Route';
 import { Loader } from '../shared/Loader';
+import { AvaliableItems } from './AvaliableItems';
 // #endregion import
 
 type Props = {
@@ -32,8 +32,12 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
+  const { discount } = state;
+
   const [device, setDevice] = useState<Device>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  const [activeImg, setActiveImg] = useState('');
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
@@ -61,6 +65,7 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
             cell,
           } = getDevice;
 
+          setActiveImg(getDevice.images[0]);
           setShortSpecs({ screen, resolution, processor, ram });
           setFullSpecs({
             screen,
@@ -97,6 +102,28 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
       .catch(() => {});
   }, []);
 
+  const handleActiveImg = (params: string) => {
+    setActiveImg(params);
+  };
+
+  const handleColor = (params: string) => {
+    if (device) {
+      navigate(
+        `../${device.namespaceId}-${device.capacity.toLowerCase()}-${params}`,
+        { state: { discount } },
+      );
+    }
+  };
+
+  const handleCapasity = (params: string) => {
+    if (device) {
+      navigate(
+        `../${device.namespaceId}-${params.toLowerCase()}-${device.color}`,
+        { state: { discount } },
+      );
+    }
+  };
+
   return (
     <div className="product-page">
       <div className="product-page__route">
@@ -121,25 +148,27 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
             <div className="product-page__main-img-wrapper">
               <img
                 className="product-page__main-img"
-                src={device.images[0]}
+                src={activeImg}
                 alt={device.namespaceId}
               />
             </div>
 
             <div className="product-page__preview">
               {device.images.map(img => (
-                <div
+                <button
+                  type="button"
                   className={cn('product-page__img-wrapper', {
-                    // 'is-active': true,
+                    'is-active': img === activeImg,
                   })}
                   key={img}
+                  onClick={() => handleActiveImg(img)}
                 >
                   <img
                     src={img}
                     alt={device.name}
                     className="product-page__img"
                   />
-                </div>
+                </button>
               ))}
             </div>
 
@@ -148,22 +177,29 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
                 <span>Avaliable colors</span>
                 <span>ID: 496827</span>
               </div>
-              <AvaliableContainer property={device.colorsAvailable} colors />
+              <AvaliableItems
+                property={device.colorsAvailable}
+                colors
+                selectedItem={device.color}
+                select={item => handleColor(item)}
+              />
             </div>
 
             <div className="product-page__avaliable-container product-page__avaliable-container--2">
               <div className="product-page__avaliable-title">
                 Selest capacity
               </div>
-              <AvaliableContainer
+              <AvaliableItems
                 property={device.capacityAvailable}
                 colors={false}
+                selectedItem={device.capacity}
+                select={item => handleCapasity(item)}
               />
             </div>
 
             <div className="product-page__price">
               <Price
-                discount={state.discount}
+                discount={discount}
                 priceDiscount={device.priceDiscount}
                 fullPrice={device.priceRegular}
               />

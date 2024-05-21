@@ -30,12 +30,6 @@ export const WindowWidthProvider: React.FC<Props> = ({ children }) => {
     };
   }, []); // listener window size
 
-  // useEffect(() => {
-  //   if (windowSize !== document.documentElement.clientWidth) {
-  //     setWindowSize(document.documentElement.clientWidth);
-  //   }
-  // }, [windowSize]); // adaptive window size with scroll line
-
   const value = useMemo(() => ({ windowSize, setWindowSize }), [windowSize]);
 
   return (

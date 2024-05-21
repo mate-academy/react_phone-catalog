@@ -5,18 +5,23 @@ import { COLORS_PHONES } from '../../constants/COLORS_PHONES';
 type Props = {
   property: string[];
   colors: boolean;
+  selectedItem: string;
+  select: (params: string) => void;
 };
 
-export const AvaliableContainer: React.FC<Props> = React.memo(
-  ({ property, colors }) => {
+export const AvaliableItems: React.FC<Props> = React.memo(
+  ({ property, colors, selectedItem, select }) => {
     return (
       <div className="container">
         {property.map(item => (
-          <div
+          <button
+            type="button"
             key={item}
             className={cn('container__item-wrapper', {
               'container__item-wrapper--color': colors,
+              'is-active': selectedItem === item,
             })}
+            onClick={() => select(item)}
           >
             <div
               className={cn('container__item', {
@@ -26,7 +31,7 @@ export const AvaliableContainer: React.FC<Props> = React.memo(
             >
               {!colors && item}
             </div>
-          </div>
+          </button>
         ))}
       </div>
     );

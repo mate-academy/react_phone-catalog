@@ -61,6 +61,7 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     const { pathname } = useLocation();
     const isCategory = pathname.includes(category);
+    const isItemId = pathname.split('/').slice(2)[0];
 
     const navigate = useNavigate();
 
@@ -77,7 +78,7 @@ export const ProductCard: React.FC<Props> = React.memo(
     };
 
     function getHeightImg() {
-      if (windowSize <= WIDTH_DEVICES.mobile && isCategory) {
+      if (windowSize <= WIDTH_DEVICES.mobile && isCategory && !isItemId) {
         return { height: `${widthImg}px`, marginBottom: '32px' };
       }
 
