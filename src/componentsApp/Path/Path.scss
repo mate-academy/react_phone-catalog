@@ -1,0 +1,58 @@
+@import '/src/styles/variable.scss';
+
+.ItemCard__path {
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+
+  & :nth-child(-n + 4) {
+    margin-right: 8px;
+  }
+
+  &__icon-home {
+    background-image: url('/assets/img/Home.png');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    width: 16px;
+    height: 16px;
+
+    &.dark {
+      background-image: url('/assets/img/Home-Dark.svg');
+    }
+  }
+
+  &__chevron {
+    background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-disable.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: rotate(180deg);
+
+    width: 16px;
+    height: 16px;
+
+    &__back {
+      transform: rotate(360deg);
+      margin-right: 8px;
+    }
+  }
+
+  &__text {
+    color: $color-nav-text;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    text-align: left;
+    text-decoration: none;
+
+    &.dark {
+      &:hover {
+        color: $white;
+      }
+    }
+  
+    &:hover {
+      color: $color-dark;
+    }
+  }
+}

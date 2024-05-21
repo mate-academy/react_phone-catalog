@@ -1,0 +1,264 @@
+@import '/src/styles/variable.scss';
+
+.Slider {
+  display: flex;
+  justify-content: center;
+  position: relative;
+
+  &__minimap {
+    display: flex;
+    position: absolute;
+    bottom: -15px;
+
+    & :nth-child(-n + 2) {
+      margin-right: 10px;
+    }
+
+    &__button {
+      background-color: $border-color;
+      border: $border-color 1px solid;
+      width: 13px;
+      height: 3px;
+
+      &:hover {
+        border: $color-dark 1px solid;
+      }
+
+      &.is-active {
+        background-color: $color-dark;
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Slider {
+    display: flex;
+    justify-content: center;
+
+    &__img {
+      margin-left: 10px;
+      width: 1040px;
+      height: 400px;
+
+      &__1 {
+        background-image: url('/assets/img/Apple-iPhone-15-promo-banner-buy-now-scaled.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &__2 {
+        background-image: url('/assets/img/color2-banner-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      &__3 {
+        background-image: url('/assets/img/color1-banner3-Desktop.png-Photoroom-Photoroom.png-Photoroom\ \(1\)-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-position-y: -20px;
+        background-size: cover;
+      }
+    }
+
+    &__button {
+      background-color: #fff;
+      margin: 0;
+      width: 32px;
+      outline: 0;
+      border: 0;
+      height: 400px;
+
+      &:hover {
+        border-color: $color-dark;
+      }
+
+      &--left {
+        border: $border-color 1px solid;
+        position: absolute;
+        left: 0;
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotate(180deg);
+
+        &.dark {
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+          border-color: $dark-gray;
+          transform: rotate(180deg);
+
+          &:hover {
+            border-color: $white;
+          }
+        }
+      }
+
+      &--right {
+        border: $border-color 1px solid;
+        position: absolute;
+        right: -49px;
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &.dark {
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+          border-color: $dark-gray;
+
+          &:hover {
+            border-color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  .button-on-phone-next {
+    display: none;
+  }
+
+  .button-on-phone-prev {
+    display: none;
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .Slider {
+    position: relative;
+
+    .button-on-phone-next {
+      display: none;
+    }
+
+    .button-on-phone-prev {
+      display: none;
+    }
+
+    &__img {
+      margin: 0;
+      width: 490px;
+      height: 189px;
+
+      &__1 {
+        background-image: url('/assets/img/Apple-iPhone-15-promo-banner-buy-now-scaled.jpg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &__2 {
+        background-image: url('/assets/img/color2-banner-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+      }
+
+      &__3 {
+        background-image: url('/assets/img/color1-banner3-Desktop.png-Photoroom-Photoroom.png-Photoroom\ \(1\)-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-position-y: -20px;
+        background-size: cover;
+      }
+    }
+
+    &__button {
+      background-color: #fff;
+      margin: 0;
+      width: 32px;
+      outline: 0;
+      border: 0;
+      height: 189px;
+
+      &:hover {
+        border-color: $color-dark;
+      }
+
+      &.dark {
+        border-color: $dark-gray;
+
+        &:hover {
+          border-color: #fff;
+        }
+      }
+
+      &--left {
+        border: $border-color 1px solid;
+        position: absolute;
+        left: 0;
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotate(180deg);
+
+        &.dark {
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.png');
+          transform: rotate(180deg);
+        }
+      }
+
+      &--right {
+        border: $border-color 1px solid;
+        position: absolute;
+        right: 0;
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+        background-position: center;
+        background-repeat: no-repeat;
+
+        &.dark {
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.png');
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .Slider {
+    &__img {
+      margin: 0;
+      width: 320px;
+      height: 320px;
+
+      &__1 {
+        background-image: url('/assets/img/Apple-iPhone-15-promo-banner-buy-now-scaled.jpg');
+        background-repeat: no-repeat;
+        background-position-x: -320px;
+        background-size: cover;
+      }
+
+      &__2 {
+        background-image: url('/assets/img/color2-banner-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &__3 {
+        background-image: url('/assets/img/color1-banner3-Desktop.png-Photoroom-Photoroom.png-Photoroom\ \(1\)-Photoroom.png-Photoroom.png');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      &__button-on-phone-next {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        right: 0;
+        z-index: 11;
+      }
+
+      &__button-on-phone-prev {
+        position: absolute;
+        width: 50%;
+        height: 100%;
+        left: 0;
+        z-index: 11;
+      }
+    }
+
+    &__button {
+      display: none;
+    }
+  }
+}

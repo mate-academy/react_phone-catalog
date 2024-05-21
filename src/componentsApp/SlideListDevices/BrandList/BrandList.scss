@@ -1,0 +1,124 @@
+@import '/src/styles/variable.scss';
+
+.BrandList {
+  box-sizing: border-box;
+  overflow-x: hidden;
+  padding: 3px;
+  padding-bottom: 5px;
+
+  .BrindList__loader {
+    display: flex;
+    height: 400px;
+    align-items: center;
+  }
+
+  &__slide-buttons {
+    display: flex;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__slide-button {
+    width: 40px;
+    height: 40px;
+    border: $border-color 1px solid;
+
+    &:hover {
+      border-color: $color-dark;
+    }
+
+    &.dark {
+      &.disable {
+        background-color: $dark-main;
+      }
+
+      &:hover {
+        border-color: #fff;
+      }
+    }
+
+    &--left {
+      background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+      background-position: center;
+      background-repeat: no-repeat;
+      transform: rotate(180deg);
+
+      margin-right: 16px;
+      background-color: $white;
+
+      &.dark {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+        transform: rotate(180deg);
+
+        background-color: $dark-gray;
+        border-color: $dark-gray;
+      }
+
+      &.disable {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-disable.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: rotate(360deg);
+      }
+    }
+
+    &--right {
+      background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+      background-position: center;
+      background-repeat: no-repeat;
+
+      background-color: $white;
+
+      &.dark {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+        background-color: $dark-gray;
+        border-color: $dark-gray;
+      }
+
+      &.disable {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-disable.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        transform: rotate(180deg);
+
+        background: none;
+      }
+    }
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: left;
+  }
+
+  &__items {
+    display: flex;
+    margin-top: 24px;
+
+    & > .BrandItem {
+      margin-right: 16px;
+    }
+
+    &__prevMargin {
+      transition: all 0.3s;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .BrandList__title {
+    color: $color-dark;
+
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+}

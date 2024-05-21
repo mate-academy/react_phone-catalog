@@ -1,0 +1,429 @@
+@import '/src/styles/variable.scss';
+
+.Catalog {
+  &__no-items {
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 100px;
+    width: 100%;
+    border-radius: 2%;
+    border: $border-color 1px solid;
+    margin-bottom: 24px;
+
+    box-shadow: 3px -3px 13px 0px #17203166;
+
+    &--nonCatalog {
+      width: 100%;
+    }
+  }
+
+  &__items {
+    position: relative;
+    display: grid;
+    grid-row-gap: 40px;
+    column-gap: 16px;
+    place-items: center;
+    justify-content: center;
+
+    margin-bottom: 40px;
+
+    &__empty-img {
+      width: 250px;
+      height: 250px;
+    }
+  }
+
+  .BrandItem {
+    margin: 0;
+  }
+
+  &__pagin {
+    display: flex;
+    justify-content: center;
+
+    &__button {
+      margin-bottom: 4px;
+      background: none;
+
+      &:hover {
+        border: $color-dark 1px solid;
+      }
+
+      &.is-active {
+        background-color: $color-dark;
+        color: #fff;
+      }
+    }
+
+    &__pages {
+      display: flex;
+      justify-content: center;
+      margin-left: 8px;
+
+      & :not(:last-child) {
+        margin-bottom: 4px;
+      }
+
+      &__center {
+        & :not(:last-child) {
+          margin-right: 8px;
+          margin-bottom: 4px;
+        }
+      }
+    }
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      outline: 0;
+      border: $border-color 1px solid;
+      background-color: $white;
+
+
+      &.dark {
+        color: $white;
+        border: 0;
+        background-color: $light-gray;
+
+        &.is-active {
+          background-color: $pink;
+        }
+
+        &:hover {
+          background-color: $dark-gray;
+        }
+      }
+
+      &--prev {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-disable.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &.dark {
+          background-color: $dark-gray;
+
+          &:hover {
+            border-color: $white;
+            background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+            transform: rotate(180deg);
+          }
+        }
+
+        &:hover {
+          border: $color-dark 1px solid;
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+          transform: rotate(180deg);
+        }
+      }
+
+      &--next {
+        background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-disable.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        transform: rotate(180deg);
+        margin-left: 8px;
+
+        &.dark {
+          background-color: $dark-gray;
+
+          &:hover {
+            border-color: $white;
+            background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
+          }
+        }
+
+        &:hover {
+          border: $color-dark 1px solid;
+          background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
+          transform: rotate(360deg);
+        }
+      }
+    }
+  }
+
+  &__title {
+    margin-top: 40px;
+    margin-bottom: 8px;
+
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+
+    &.dark {
+      color: $white;
+    }
+  }
+
+  &__count {
+    color: $color-nav-text;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+
+    margin-bottom: 40px;
+  }
+
+  &__filters {
+    display: flex;
+    margin-bottom: 24px;
+
+    &__title {
+      color: $color-nav-text;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+      text-align: left;
+
+      margin-bottom: 4px;
+    }
+
+    &__dropdown {
+      box-sizing: border-box;
+      height: 40px;
+      border: $border-color 1px solid;
+      display: flex;
+
+      padding-left: 12px;
+      align-items: center;
+
+      &.dark {
+        border-color: $dark-gray;
+        background-color: $dark-gray;
+        color: $white;
+
+        &:hover {
+          border-color: $white;
+        }
+      }
+
+      &:hover {
+        border-color: $color-dark;
+      }
+
+      &__dropdown-is-active {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        margin-top: 8px;
+        box-sizing: border-box;
+        padding: 12px;
+        border: $border-color 1px solid;
+
+        &.dark {
+          border-color: $dark-gray;
+          background-color: $dark-gray;
+          color: $white;
+        }
+
+        & :not(:last-child) {
+          margin-bottom: 16px;
+        }
+
+        &__link {
+          display: block;
+          text-decoration: none;
+          color: $color-nav-text;
+
+          &.dark {
+            &:hover {
+              color: $white;
+            }
+
+            &.is-active {
+              color: $white;
+            }
+          }
+
+          &:hover {
+            color: $color-dark;
+          }
+
+          &.is-active {
+            color: $color-dark;
+          }
+        }
+      }
+
+      &__sort-by {
+        margin-right: 8px;
+        background: url('/assets/img/Chevron\ \(Arrow\ Up\).png') no-repeat;
+        background-position-y: center;
+
+        &.is-active {
+          background: url('/assets/img/Chevron\ \(Arrow\ Down\).png') no-repeat;
+          background-position-y: center;
+        }
+      }
+
+      &--per-page {
+        margin-right: 8px;
+        background: url('/assets/img/Chevron\ \(Arrow\ Up\).png') no-repeat;
+        background-position-y: center;
+
+        &.is-active {
+          background: url('/assets/img/Chevron\ \(Arrow\ Down\).png') no-repeat;
+          background-position-y: center;
+        }
+      }
+
+      &--search {
+        background: url('/assets/img/Search.png') no-repeat;
+        background-position-y: center;
+        width: 400px;
+        background-position-x: 8px;
+
+        box-sizing: border-box;
+        padding-left: 32px;
+        outline: 0;
+
+        &.dark {
+          background-image: url('/assets/img/Search-DARK.svg');
+        }
+
+        &:focus {
+          border-color: $color-dark;
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 1200px) {
+  .Catalog {
+    &__items {
+      grid-template-columns: repeat(4, 272px);
+    }
+
+    &__pagin {
+      display: flex;
+      justify-content: center;
+
+      &__pages {
+        max-width: 800px;
+      }
+    }
+
+    &__filters {
+      display: flex;
+
+      &__dropdown {
+        &__sort-by {
+          width: 187px;
+          background-position-x: 160px;
+
+          &.is-active {
+            background-position-x: 160px;
+          }
+        }
+
+        &__dropdown-is-active {
+          width: 187px;
+        }
+
+        &--per-page {
+          background-position-x: 100px;
+          width: 128px;
+
+          &.is-active {
+            background-position-x: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .Catalog {
+    &__items {
+      grid-template-columns: repeat(3, 237px);
+    }
+
+    &__pagin {
+      display: flex;
+      justify-content: center;
+
+      &__pages {
+        max-width: 600px;
+      }
+    }
+
+    &__filters {
+      display: flex;
+
+      &__dropdown {
+        &__sort-by {
+          width: 187px;
+          background-position-x: 160px;
+
+          &.is-active {
+            background-position-x: 160px;
+          }
+        }
+
+        &__dropdown-is-active {
+          width: 187px;
+        }
+
+        &--per-page {
+          background-position-x: 100px;
+          width: 128px;
+
+          &.is-active {
+            background-position-x: 100px;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .Catalog {
+    margin-bottom: 100px;
+    &__items {
+      grid-template-columns: repeat(1, 287px);
+    }
+
+    &__pagin {
+      display: flex;
+      justify-content: center;
+
+      &__pages {
+        max-width: 400px;
+      }
+    }
+
+    &__filters {
+      display: block;
+
+      &__dropdown {
+        &__sort-by {
+          background-position-x: 110px;
+          width: 136px;
+
+          &.is-active {
+            background-position-x: 110px;
+          }
+        }
+
+        &__dropdown-is-active {
+          width: 136px;
+        }
+
+        &--per-page {
+          background-position-x: 110px;
+          width: 136px;
+
+          &.is-active {
+            background-position-x: 110px;
+          }
+        }
+      }
+    }
+  }
+}

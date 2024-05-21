@@ -1,0 +1,20 @@
+$border-color: #E2E6E9;
+$color-dark: #313237;
+$color-nav-text: #89939A;
+$color-green: #27AE60;
+$dark-gray: #323542;
+$light-gray: #161827;
+$pink: #905BFF;
+$white: #fff;
+$dark-main: #0F1121;
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin hoverShadowDark {
+  box-shadow: 3px -3px 13px 0px $dark-gray;
+}

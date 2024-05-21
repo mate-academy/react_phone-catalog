@@ -1,0 +1,143 @@
+@import '/src/styles/variable.scss';
+
+.HomePage {
+  display: grid;
+  justify-content: center;
+
+  &__title {
+    display: flex;
+    grid-row-start: 3;
+    grid-column-end: 4;
+  }
+
+  &__slider {
+    grid-row-start: 5;
+    grid-row-end: 6;
+  }
+
+  &__brandNew {
+    grid-row-start: 7;
+    grid-row-end: 8;
+  }
+
+  &__category {
+    grid-row-start: 9;
+    grid-row-end: 10;
+  }
+
+  &__hotPrice {
+    grid-row-start: 11;
+    grid-row-end: 12;
+  }
+}
+
+@media (min-width: 1200px) {
+  .HomePage {
+    &__title {
+      color: $color-dark;
+      font-family: 'Mont', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      text-align: left;
+
+      grid-column-start: 1;
+      grid-column-end: 24;
+    }
+
+    &__slider {
+      grid-column-start: 1;
+      grid-column-end: 24;
+    }
+
+    &__brandNew {
+      grid-column-start: 1;
+      grid-column-end: 25;
+    }
+
+    &__category {
+      grid-column-start: 1;
+      grid-column-end: 25;
+    }
+
+    &__hotPrice {
+      grid-column-start: 1;
+      grid-column-end: 25;
+    }
+  }
+}
+
+@media (min-width: 699px) and (max-width: 1199px) {
+  .HomePage {
+    &__title {
+      color: $color-dark;
+      font-family: 'Mont', sans-serif;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      text-align: left;
+
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+
+    &__slider {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+
+    &__brandNew {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+
+    &__category {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+
+    &__hotPrice {
+      grid-column-start: 1;
+      grid-column-end: 13;
+    }
+  }
+}
+
+@media (min-width: 320px) and (max-width: 698px) {
+  .HomePage {
+    &__title {
+      color: $color-dark;
+      font-family: 'Mont', sans-serif;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+
+    &__slider {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+
+    &__brandNew {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+
+    &__category {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+
+    &__hotPrice {
+      grid-column-start: 1;
+      grid-column-end: 5;
+    }
+  }
+}

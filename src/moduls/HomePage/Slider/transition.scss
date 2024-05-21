@@ -1,0 +1,17 @@
+.slide-enter {
+  opacity: 0; /* Set initial opacity to 0 for the entering slide */
+}
+
+.slide-enter-active {
+  opacity: 1; /* Gradually increase opacity to 1 for the entering slide */
+  transition: opacity 500ms ease-in-out; /* Apply smooth transition for opacity */
+}
+
+.slide-exit {
+  opacity: 1; /* Set initial opacity to 1 for the exiting slide */
+}
+
+.slide-exit-active {
+  opacity: 0; /* Immediately decrease opacity to 0 for the exiting slide */
+  transition: opacity 0ms; /* No transition needed for the exiting slide */
+}
