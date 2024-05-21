@@ -1,1 +1,10 @@
 @import '../../styles/utils';
+
+.product-details {
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding-bottom: 16px;
+  }
+}

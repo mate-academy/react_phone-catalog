@@ -3,9 +3,9 @@ import './ProductInfo.scss';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
 import { FullProductData } from '../../types/FullProductData';
-import { useAppContext } from '../../context/context';
 import { Product } from '../../types/Product';
 import { ProductPhotos } from '../ProductPhotos/ProductPhotos';
+import { useAppContext } from '../../store/store';
 
 type Props = {
   productInfo: FullProductData;
@@ -36,15 +36,15 @@ export const ProductInfo: React.FC<Props> = ({ productInfo, product }) => {
   } = productInfo;
 
   const {
-    favourites,
-    cart,
-    addProductToFavourites,
-    addProductToCart,
-    removeProductFromCart,
+    state: { favourites, cart },
+    methods: {
+      addProductToFavourites,
+      addProductToCart,
+      removeProductFromCart,
+    },
   } = useAppContext();
 
   const isFavourite = favourites.some(item => item.itemId === id);
-  // const isInCart = cart.some(item => item.itemId === id);
   const isInCart = cart.some(item => item.id === id);
 
   const handleAddToCart = () => {
@@ -53,11 +53,11 @@ export const ProductInfo: React.FC<Props> = ({ productInfo, product }) => {
         image: product.image,
         name: product.name,
         price: product.price,
-        id: String(product.id),
+        id,
         count: 1,
       });
     } else {
-      removeProductFromCart(String(product.id));
+      removeProductFromCart(id);
     }
   };
 

@@ -19,38 +19,36 @@ export const ProductDetails: React.FC = () => {
     state: { products, selectedProduct: product },
     methods: { setSelectedProduct },
   } = useAppContext();
+
   const sliderSettings = useSliderSettings();
 
   const currentCategory = pathname.split('/')[1];
   const selectedProduct = products.find(item => item.itemId === product?.id);
 
+  // console.log(product);
   useEffect(() => {
-    // console.log(product);
     setSelectedProduct(currentCategory as Category, productId);
-  }, [currentCategory, productId]);
+  }, []);
 
   return (
     <>
-      {productId}
-      {currentCategory}
-
       {product && (
         <div className="product-details">
-          <Breadcrumbs />
-          <BackLinkButton />
+          <div className="product-details__links">
+            <Breadcrumbs />
+            <BackLinkButton />
+          </div>
 
           <ProductInfo
             product={selectedProduct as Product}
             productInfo={product}
           />
 
-          {products && (
-            <ProductSlider
-              title={'You may also like'}
-              elements={getHotProducts(products)}
-              settings={sliderSettings}
-            />
-          )}
+          <ProductSlider
+            title={'You may also like'}
+            elements={getHotProducts(products)}
+            settings={sliderSettings}
+          />
         </div>
       )}
     </>
