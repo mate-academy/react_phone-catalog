@@ -1,20 +1,21 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import cn from 'classnames';
+import { CartContext } from '../../context/AppContext';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
 import { CapacityOptions } from './CapacityOptions';
+import { ProductDescriptions } from './ProductDescriptions';
+import { TechSpecs } from './TechSpecs';
+import { BackLink } from '../shared/components/BackLink';
 import { Product } from '../../types/ProductCard';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { ProductCategories } from '../../types/ProductCategories';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { getAllProducts } from '../../helpers/getAllProducts';
+import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
-import { DetailedProductKeys } from '../../types/DetailedProductKeys';
-import { ProductDescriptions } from './ProductDescriptions';
-import { TechSpecs } from './TechSpecs';
-import { BackLink } from '../shared/components/BackLink';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -25,6 +26,8 @@ export const ProductDetailsPage: React.FC = () => {
   const [activeImage, setActiveImage] = useState<string>(
     displayedProduct?.images[0] ?? '',
   );
+
+  const { addToCart } = useContext(CartContext);
 
   useEffect(() => {
     if (!!displayedProduct) {
@@ -179,7 +182,14 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
 
               <div className="add-buttons purchase__add-buttons">
-                <button className="add-buttons__cart default-button-text">
+                <button
+                  className="add-buttons__cart default-button-text"
+                  onClick={() => {
+                    if (foundProduct) {
+                      addToCart(foundProduct);
+                    }
+                  }}
+                >
                   Add to cart
                 </button>
                 <button className="add-buttons__wishlist default-button">

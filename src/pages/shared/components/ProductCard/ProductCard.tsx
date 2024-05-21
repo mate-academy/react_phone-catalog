@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../types/ProductCard';
 import './ProductCard.scss';
+import { useContext } from 'react';
+import { CartContext } from '../../../../context/AppContext';
 
 type Props = {
   product: Product;
@@ -11,6 +13,8 @@ export const ProductCard: React.FC<Props> = ({
   product,
   hasDiscount = false,
 }) => {
+  const { addToCart } = useContext(CartContext);
+
   const { name, price, screen, capacity, ram } = product;
 
   const image =
@@ -62,7 +66,14 @@ export const ProductCard: React.FC<Props> = ({
       </div>
 
       <div className="buttons">
-        <button className="buttons__cart">Add to cart</button>
+        <button
+          className="buttons__cart"
+          onClick={() => {
+            addToCart(product);
+          }}
+        >
+          Add to cart
+        </button>
         <button className="wishlist-button buttons__wishlist">
           <img
             className="wishlist-button__icon"
