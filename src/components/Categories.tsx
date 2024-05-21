@@ -53,7 +53,6 @@ export const Categories = () => {
           ))}
         </div>
       </div>
-
     </section>
   );
 };

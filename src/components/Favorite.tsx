@@ -16,8 +16,6 @@ export const Favorite = () => {
   const { favoritePhones, setFavoritePhones } = useAppContext();
   const [price, setPrice] = useState<number>(0);
 
-  console.log(prevFavoriteArr);
-
   useEffect(() => {
     const newProductInCart = { id: cartPhones, count: 1, fullPrice: price };
 

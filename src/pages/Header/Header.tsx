@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { NavLink, useSearchParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import cn from 'classnames';
@@ -5,6 +6,7 @@ import Logo from '../../img/logo.svg';
 import Search from '../../img/Search.svg';
 import Favorite from '../../img/favourites.svg';
 import Basket from '../../img/group.svg';
+import MenuBurger from '../../img/Menu-burger.svg'
 import { useAppContext } from '../../components/Context';
 
 export const Header = () => {
@@ -14,8 +16,15 @@ export const Header = () => {
   const { setSelectedProduct } = useAppContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const { query, setQuery } = useAppContext();
+  const { isMenuBurger, setIsMenuBurger } = useAppContext();
 
-  // const {setCurrentPage, setItemsOnPage} = useAppContext();
+  const styles = {
+    overflow: isMenuBurger ? 'hidden' : 'auto',
+  };
+
+  useEffect(() => {
+    document.body.style.overflow = styles.overflow;
+  }, [isMenuBurger]);
 
   useEffect(() => {
 
@@ -69,7 +78,7 @@ export const Header = () => {
   const handleChangeQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newText = event.target.value;
     const isWhitespace = newText.trim() === '';
-
+  
     if (!isWhitespace || newText === '') {
       setQuery(newText);
     }
@@ -80,20 +89,19 @@ export const Header = () => {
 
     if (query) {
       params.set('query', query);
-      setSearchParams(params);
+      setSearchParams(params)
     } else {
-      setSearchParams('');
-      // setCurrentPage(1);
-      // setItemsOnPage(71);
+      setSearchParams('')
     }
-  }, [query]);
+  }, [query])
 
   return (
+    <>
     <header className="header">
-      <NavLink to="/" end>
+      <NavLink to="/" data-cy="categoryLinksContainer" end>
         <img src={Logo} className="header__logo" alt="logo" />
       </NavLink>
-      <nav className="nav">
+      <nav className="nav" data-cy="categoryLinksContainer">
         <ul className="nav__list">
           <NavLink
             to="/"
@@ -145,32 +153,31 @@ export const Header = () => {
           </NavLink>
         </ul>
       </nav>
-      {(urlState === 'phones' || urlState === 'tablets' || urlState === 'accessories' || urlState === 'favorite') && (
-        <label className="header__search">
-          <input
-            type="text"
-            value={query}
-            placeholder="Search in phones..."
-            className="header__search__input"
-            onChange={handleChangeQuery}
+      {(urlState === 'phones' || urlState === 'tablets' || urlState === 'accessories' || urlState === "favorite") && (
+      <label className="header__search">
+        <input
+          type="text"
+          value={query}
+          placeholder="Search in phones..."
+          className="header__search__input"
+          onChange={handleChangeQuery}
+        />
+        <a
+          href="#"
+          className="header__link"
+        >
+          <img
+            src={Search}
+            className="header__link-icon"
+            alt="Search"
           />
-          <a
-            href="#"
-            className="header__link"
-          >
-            <img
-              src={Search}
-              className="header__link-icon"
-              alt="Search"
-            />
-          </a>
-        </label>
-      )}
+        </a>
+      </label>)}
       <NavLink
         to="favorite"
         className={cn(
-          'header__link',
-          ' favorites ',
+          "header__link",
+          " favorites ",
           { header__link__after: urlState?.includes('favorite') },
         )}
         onClick={() => handleClick('favorite')}
@@ -188,8 +195,8 @@ export const Header = () => {
         to="cart"
         // className="header__link__nav-link"
         className={cn(
-          'header__link',
-          'basket',
+          "header__link",
+          "basket",
           { header__link__after: urlState?.includes('cart') },
         )}
         onClick={() => handleClick('cart')}
@@ -203,6 +210,21 @@ export const Header = () => {
           alt=""
         />
       </NavLink>
+      <div
+        className={cn(
+          "header__link",
+          "basket",
+          "display-none"
+        )}
+        onClick={() => setIsMenuBurger(!isMenuBurger)}
+      >
+        <img
+          src={MenuBurger}
+          className="header__link-icon"
+          alt=""
+        />
+      </div>
     </header>
+    </>
   );
 };

@@ -6,6 +6,7 @@
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
+  overflow: hidden;
 }
 
 html {
@@ -16,6 +17,7 @@ body {
   font-family: "Mont", sans-serif;
   margin: 0;
   padding: 0;
+  overflow: auto; // за умови прибирать
 }
 
 .header {
@@ -80,19 +82,19 @@ body {
       }
     }
 
+    &__link-icon {
+      margin: 0 auto;
+      display: block;
+      width: 24px;
+      height: 16px;
+      position: relative;
+    }
+
     &:hover > &-icon {
       transition: all 0.5s ease;
-      display: inline-block; 
+      display: inline-block;
       animation: scaleAnimation 2s ease-in-out infinite;
     }
-  }
-
-  &__link-icon {
-    margin: 0 auto;
-    display: block;
-    width: 24px;
-    height: 16px;
-    position: relative;
   }
 
   &__search {
@@ -114,6 +116,10 @@ body {
     margin: 0 64px 0 20px;
     width: 40px;
     height: 20px;
+
+    @media (max-width: 790px) {
+      margin: 0 20px;
+    }
   }
 }
 
@@ -159,12 +165,16 @@ body {
   &__list {
     box-sizing: border-box;
     height: 100%;
-    display: flex;
+    display: none;
     list-style-type: none;
     align-items: center;
     padding: 0;
     margin: 0;
     gap: 5%;
+
+    @media (min-width: 580px) {
+      display: flex;
+    }
 
     &__link {
       height: 100%;
@@ -308,6 +318,10 @@ body {
 .nav-footer {
   width: 294px;
 
+  @media (max-width: 464px) {
+    width: 20px;
+  }
+
   &__list {
     gap: 64px;
   }
@@ -324,12 +338,13 @@ body {
   gap: 16px;
 
   &__button {
-    height: 400px;
     width: 32px;
     border: solid 1px #b4bdc3;
     background-color: #fff;
-    transition: all 0.5s ease-out;
+    transition: all 0.2s ease-out;
     cursor: pointer;
+    height: calc(33.33vw);
+    max-height: 400px;
 
     &:hover {
       border: solid 1px #313237;
@@ -348,7 +363,6 @@ body {
       background-position: 50%;
       background-image: url(../src/img/Arrow.svg);
       background-repeat: no-repeat;
-      
     }
 
     &-right {
@@ -363,8 +377,10 @@ body {
     padding: 0;
     display: flex;
     position: relative;
-    width: 1040px;
-    height: 400px;
+    width: 100%;
+    max-width: 1040px;
+    height: calc(33.33vw);
+    max-height: 400px;
     box-sizing: border-box;
     overflow: hidden;
 
@@ -372,6 +388,7 @@ body {
       position: absolute;
       box-sizing: border-box;
       top: 0;
+      width: 100%;
     }
 
     &__img {
@@ -379,9 +396,30 @@ body {
       object-fit: cover;
       object-position: center;
       width: 100%;
+      height: 100%;
       opacity: 1;
       transition: all 0.8s ease;
     }
+  }
+}
+
+@media (max-width: 1200px) {
+  .bunner__button {
+    height: calc(33.33vw * 0.8);
+  }
+
+  .bunner__main {
+    height: calc(33.33vw * 0.8);
+  }
+}
+
+@media (max-width: 800px) {
+  .bunner__button {
+    height: calc(33.33vw * 0.6);
+  }
+
+  .bunner__main {
+    height: calc(33.33vw * 0.6);
   }
 }
 
@@ -410,7 +448,7 @@ body {
   }
   
   &__content {
-    width: 1136px;
+    max-width: 1136px;
     margin: 0 0 80px;
   }
   
@@ -473,6 +511,19 @@ body {
   &__goods {
     overflow: hidden;
     height: 100%;
+    width: 100%;
+
+    @media (min-width: 870px) and (max-width: 1150px) {
+      width: calc(284px * 3);
+    }
+
+    @media (max-width: 870px) {
+      width: calc(284px * 2);
+    }
+
+    @media (max-width: 580px) {
+      width: 284px;
+    }
 
     &__cards {
       width: 100%;
@@ -694,6 +745,10 @@ body {
     justify-content: space-between;
     gap: 16px;
 
+    @media (max-width: 580px) {
+      flex-direction: column;
+    }
+    
     &__card {
       text-decoration: none;
 
@@ -706,6 +761,26 @@ body {
         cursor: pointer;
         height: 368px;
         width: 368px;
+
+        @media (max-width: 1200px) {
+          height: 368px;
+          width: 368px;
+        }
+
+        @media (max-width: 1150px) {
+          height: 280px;
+          width: 280px;
+        }
+
+        @media (max-width: 870px) {
+          height: 180px;
+          width: 180px;
+        }
+
+        @media (max-width: 580px) {
+          height: 280px;
+          width: 280px;
+        }
       }
 
       &:hover > &__background-img {
@@ -760,6 +835,7 @@ body {
   &__goods {
     width: 100%;
     margin: 0 0 80px;
+    
 
     &__cards {
       display: flex;
@@ -767,11 +843,23 @@ body {
       flex-wrap: wrap;
       gap: 16px;
       row-gap: 24px;
+      justify-content: center;
     }
   }
 
   &__header {
     margin: 0 0 24px;
+    
+    @media (max-width: 1100px) {
+      margin: 0 0 24px 24px;
+    }
+
+    @media (max-width: 845px) {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+    }
 
     &__title {
       font-family: "Mont", sans-serif;
@@ -1386,11 +1474,22 @@ body {
       font-size: 32px;
       line-height: 40.9px;
       letter-spacing: -1%;
+
+      @media (max-width: 1200px) {
+        display: none;
+      }
     }
 
     &__blocks {
       display: flex;
       gap: 16px;
+      flex-direction: column;
+      align-items: center;
+
+      @media (min-width: 1200px) {
+        flex-direction: row;
+        align-items: start;
+      }
 
       &__sum-price {
         box-sizing: border-box;
@@ -1446,19 +1545,24 @@ body {
         display: flex;
         flex-direction: column;
         gap: 16px;
-        width: 752px;
+        // width: 752px;
+        margin: 0 10px;
         animation: fadeIn 0.5s forwards;
 
         &__device {
           box-sizing: border-box;
           display: flex;
+          flex-wrap: wrap;
           align-items: center;
+          justify-content: center;
           gap: 32px;
-          width: 752px;
-          height: 128px;
           border: 1px solid #e2e6e9;
-          padding: 40px 40px 40px 24px;
+          padding: 20px 20px 20px 24px;
           transition: all 0.3s ease;
+
+          @media (max-width: 800px) {
+            flex-direction: column;
+          }
 
           &:hover {
             border: 1px solid black;
@@ -1547,7 +1651,7 @@ body {
           }
 
           &__name {
-            width: 295px;
+            // width: 295px;
             color: #313237;
             font-family: "Mont", sans-serif;
             font-weight: 500;
@@ -1556,7 +1660,7 @@ body {
           }
 
           &__block-img {
-            width: 80px;
+            // width: 80px;
           }
 
           &__price {
@@ -1573,7 +1677,6 @@ body {
 }
 
 .favorites {
-
   box-shadow: -1px 0 0 0 #e2e6e9;
 
   &__wrapper {
@@ -1585,6 +1688,15 @@ body {
   &__content {
     width: 1136px;
     margin: 0 0 24px;
+
+    @media (max-width: 1100px) {
+      margin: 0 0 24px 24px;
+    }
+
+    @media (max-width: 845px) {
+      width: 240px;
+      margin: 0 0 24px 24px;
+    }
 
     &__products {
       width: 100%;
@@ -1607,9 +1719,7 @@ body {
   }
 }
 
-
 .page-url {
-
   &__wrapper {
     display: flex;
     justify-content: center;
@@ -1620,6 +1730,15 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin: 0 0 40px;
+
+    @media (max-width: 1100px) {
+      margin: 0 0 20px 24px;
+    }
+
+    @media (max-width: 845px) {
+      align-items: center;
+    }
 
     &__link {
       display: flex;
@@ -1640,7 +1759,6 @@ body {
       display: flex;
       align-items: center;
       gap: 8px;
-      margin: 0 0 40px;
 
       &__text {
 
@@ -1691,5 +1809,55 @@ body {
   &__content {
     color: #89939a;
     width: 1136px;
+  }
+}
+
+.display-none {
+  display: none;
+  @media (max-width: 580px) {
+    display: flex;
+  }
+
+}
+
+.burger-menu {
+  
+
+  &__wrapper {
+    // display: flex;
+    // flex: 1 1 auto;
+
+    transform: translateX(-2000px);
+    opacity: 0;
+    pointer-events: all;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #fff;
+    height: 100vh;
+    z-index: 0;
+
+    &--active {
+      transform: translateX(0);
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+
+  &__list {
+    list-style: none;
+
+    &__line {
+      font-family: "Mont", sans-serif;
+      font-size: 20px;
+      font-weight: 800;
+      line-height: 22px;
+      letter-spacing: 0.04em;
+      text-align: left;
+      text-transform: uppercase;
+      color: hsl(205, 8%, 57%);
+    }
   }
 }

@@ -96,7 +96,6 @@ export const Cart = () => {
         if (elem.id === id) {
             return { ...elem, count: elem.count + 1 };
         }
-      
 
         return elem;
     });
@@ -117,9 +116,6 @@ export const Cart = () => {
         setPrevCartPhonesArr(updatedCartPhones);
     }
   }
-  
-
-  console.log(productInCart);
 
   return (
     <section className="cart__wrapper">

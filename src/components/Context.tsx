@@ -67,7 +67,10 @@ const AppContext = createContext<{
   query: string;
   setQuery: React.Dispatch<React.SetStateAction<string>>;
 
-  price: number
+  isMenuBurger: boolean;
+  setIsMenuBurger: React.Dispatch<React.SetStateAction<boolean>>;
+
+  price: number;
   setPrice: React.Dispatch<React.SetStateAction<number>>;
 
   urlState: string | undefined;
@@ -109,6 +112,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
   const [urlState, setUrlState] = useState<string>();
   const [price, setPrice] = useState<number>(0);
   const [query, setQuery] = useState<string>('');
+  const [isMenuBurger, setIsMenuBurger] = useState<boolean>(false);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [
@@ -177,6 +181,9 @@ export const AppProvider = ({ children }: AppContextProps) => {
 
       sortParam,
       setSortParam,
+
+      isMenuBurger,
+      setIsMenuBurger,
 
       urlState,
       setUrlState,

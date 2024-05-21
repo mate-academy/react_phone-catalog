@@ -8,7 +8,7 @@ import { Bunner } from './components/Bunner';
 import { HotPrices } from './components/HotPrices';
 import { Categories } from './components/Categories';
 import { NewModel } from './components/NewModel';
-import { Phones } from './components/Phones';
+import { ProductList } from './components/ProductList';
 import { AppProvider } from './components/Context';
 import { Tablets } from './components/Tablets';
 import { Accessories } from './components/Accessories';
@@ -34,7 +34,7 @@ export const Roots = () => (
             )}
           />
           <Route path="phones">
-            <Route index element={<Phones />} />
+            <Route index element={<ProductList />} />
             <Route path=":productId" element={<ProductPage />} />
           </Route>
           <Route path="phones/:productId" element={<ProductPage />} />

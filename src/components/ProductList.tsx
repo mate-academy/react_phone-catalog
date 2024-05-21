@@ -13,7 +13,7 @@ import { Pagination } from './Pagination';
 
 // import cn from 'classnames';
 /* eslint-disable */
-interface Phones {
+interface ProductList {
   id: string;
   category: string;
   phoneId: string;
@@ -29,7 +29,7 @@ interface Phones {
   image: string;
 }
 
-export const Phones = () => {
+export const ProductList = () => {
   // const { page, perPage, sortParam } = useParams();
   const { itemsOnPage, setItemsOnPage } = useAppContext();
   const { sortParam, setSortParam } = useAppContext();
@@ -248,7 +248,7 @@ export const Phones = () => {
 
   return (
     <>
-    <section className="phones__wrapper">
+    <section className="phones__wrapper" data-cy="productList">
       <div className="phones__content">
         {loading && (
           <div className="clockLoader__wrapper">

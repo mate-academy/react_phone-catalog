@@ -18,7 +18,6 @@ export const HotPrices = () => {
   const { cartPhones, setCartPhones } = useAppContext();
   const { price, setPrice } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
-  // console.log(prevFavoriteArr)
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 

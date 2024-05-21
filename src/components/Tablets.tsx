@@ -97,7 +97,6 @@ export const Tablets = () => {
 
   // const handleCart = (id:string) => {
   //   cartPhones.push(id);
-  //   console.log(cartPhones);
   // }
 
   useEffect(() => {

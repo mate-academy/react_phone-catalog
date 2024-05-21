@@ -40,8 +40,6 @@ export const Bunner = () => {
   //   }
   // }
 
-  // console.log(time)
-
   return (
     <div className="wrap-bunner">
       <div className="bunner">

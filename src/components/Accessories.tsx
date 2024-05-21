@@ -102,11 +102,6 @@ export const Accessories = () => {
     }
   };
 
-  // const handleCart = (id:string) => {
-  //   cartPhones.push(id);
-  //   console.log(cartPhones);
-  // }
-
   useEffect(() => {
     if (prevCartPhonesArr?.includes(cartPhones)) {
       setPrevCartPhonesArr(prevCartPhonesArr => prevCartPhonesArr?.filter(phone => phone !== cartPhones));
