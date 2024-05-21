@@ -1,0 +1,19 @@
+@import './../utils/vars';
+
+.swiper-pagination-bullet {
+  width: 14px;
+  height: 4px;
+  background-color: $elements;
+  border-radius: unset;
+  opacity: 1;
+  transition: all 0.3s ease-in-out;
+  &.swiper-pagination-bullet-active {
+    background-color: $primary;
+  }
+  &:hover {
+    background-color: $primary;
+  }
+}
+.swiper.swiper-initialized {
+  min-width: 0;
+}

@@ -1,1 +1,23 @@
 // not empty
+@import './styles/utils/fonts';
+@import './styles/utils/typography';
+@import './styles/utils/reset';
+@import './styles/utils/vars';
+
+body {
+  font-family: Mont, sans-serif;
+}
+
+.main {
+  padding-top: 70px;
+  @include on-desktop {
+    padding-top: 95px;
+  }
+}
+
+.container {
+  max-width: $max-width-content;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+}

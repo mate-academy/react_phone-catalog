@@ -1,0 +1,41 @@
+@import './../../../../styles/utils/vars';
+@import './../../../../styles/utils/mixins';
+
+.checkout_information {
+  &__wrapper {
+    border: 1px solid $elements;
+    padding: 24px;
+    text-align: center;
+  }
+  &__btn {
+    background-color: $primary;
+    min-height: 48px;
+    padding: 5px 7px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $white;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+  }
+  &__total {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $secondary;
+  }
+  &__box {
+    border-bottom: 1px solid $elements;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+  }
+  &__price {
+    margin-bottom: 5px;
+  }
+
+  @include on-desktop {
+    grid-area: 1 / 17 / 2 / 25;
+  }
+}

@@ -1,0 +1,51 @@
+@font-face {
+  font-family: Mont;
+  src:
+    local('Mont Bold'),
+    local('Mont-Bold'),
+    url('./../../fonts/Mont-Bold.woff2') format('woff2'),
+    url('./../../fonts/Mont-Bold.woff') format('woff'),
+    url('./../../fonts/Mont-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    local('Mont SemiBold'),
+    local('Mont-SemiBold'),
+    url('./../../fonts/Mont-SemiBold.woff2') format('woff2'),
+    url('./../../fonts/Mont-SemiBold.woff') format('woff'),
+    url('./../../fonts/Mont-SemiBold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    local('Mont Regular'),
+    local('Mont-Regular'),
+    url('./../../fonts/Mont-Regular.woff2') format('woff2'),
+    url('./../../fonts/Mont-Regular.woff') format('woff'),
+    url('./../../fonts/Mont-Regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    local('Mont Black'),
+    local('Mont-Black'),
+    url('./../../fonts/Mont-Black.woff2') format('woff2'),
+    url('./../../fonts/Mont-Black.woff') format('woff'),
+    url('./../../fonts/Mont-Black.ttf') format('truetype');
+  font-weight: 900;
+  font-style: normal;
+  font-display: swap;
+}

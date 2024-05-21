@@ -1,24 +1,21 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { Gadget } from '../../types/Gadget';
+// import { Gadget } from '../../types/Gadget';
+import { Product } from '../../utils/types/Product';
 
 const favoritesSlice = createSlice({
   name: 'favorites',
-  initialState: [] as Gadget[],
+  initialState: [] as Product[],
   reducers: {
     toggleFavorite: (state, action) => {
       const currentGadgetId = state.findIndex(
-        gadget => gadget.id === action.payload.id,
+        product => product.id === action.payload.id,
       );
 
-      if (currentGadgetId) {
+      if (currentGadgetId === -1) {
+        state.push(action.payload);
+      } else {
         state.splice(currentGadgetId, 1);
-
-        return state;
       }
-
-      state.push(action.payload);
-
-      return state;
     },
   },
 });

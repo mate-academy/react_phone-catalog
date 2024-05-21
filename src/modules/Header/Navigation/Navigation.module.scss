@@ -1,0 +1,67 @@
+@import './../../../styles/utils/vars';
+@import './../../../styles/utils/mixins';
+
+.navigation {
+  padding-inline: 20px;
+  padding-bottom: 20px;
+
+  @include on-tablet {
+    padding-inline: 15px;
+    padding-bottom: 0;
+  }
+
+  @include on-desktop {
+    padding-inline: 25px;
+  }
+
+  &__list {
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+    }
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+  &__item {
+    text-align: center;
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    & + & {
+      margin-top: 15px;
+
+      @include on-tablet {
+        margin-top: 0;
+      }
+    }
+  }
+  &__link {
+    text-transform: uppercase;
+    color: $secondary;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+
+    @include on-tablet {
+      padding-block: 13px;
+      display: block;
+    }
+
+    @include on-desktop {
+      padding-block: 22px;
+    }
+
+    &.navigation__link_active {
+      color: $primary;
+      padding-bottom: 4px;
+      border-bottom: 2px solid $primary;
+
+      @include on-tablet {
+        padding-bottom: unset;
+      }
+    }
+  }
+}

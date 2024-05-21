@@ -1,0 +1,19 @@
+@import './../../styles/utils/vars';
+
+.productsSlider {
+  padding: 50px 0;
+  &__title {
+    margin-bottom: 20px;
+  }
+  &__buttons {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-bottom: 28px;
+  }
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+  }
+}

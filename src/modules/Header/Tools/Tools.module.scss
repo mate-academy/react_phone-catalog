@@ -1,0 +1,31 @@
+@import './../../../styles/utils/mixins';
+
+.header {
+  &__tools_wrapper {
+    display: flex;
+    border-top: 1px solid #e2e6e9;
+    @include on-tablet {
+      border-top: unset;
+      height: 100%;
+    }
+  }
+  &__tools__button {
+    flex: 0 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    &:last-child {
+      border-left: 1px solid #e2e6e9;
+    }
+    @include on-tablet {
+      flex: 1 1 auto;
+      height: auto;
+      width: 48px;
+      border-left: 1px solid #e2e6e9;
+    }
+    @include on-desktop {
+      width: 64px;
+    }
+  }
+}
