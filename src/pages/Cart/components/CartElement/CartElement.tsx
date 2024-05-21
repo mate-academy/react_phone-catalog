@@ -2,7 +2,7 @@ import React from 'react';
 import './CartElement.scss';
 import classNames from 'classnames';
 import { CartItem } from '../../../../types/CartItem';
-import { useAppContext } from '../../../../context/context';
+import { useAppContext } from '../../../../store/store';
 
 type Props = {
   data: CartItem;
@@ -10,8 +10,9 @@ type Props = {
 
 export const CartElement: React.FC<Props> = ({ data }) => {
   const { id, image, name, price, count } = data;
-  const { removeProductFromCart, handleIncrement, handleDecrement } =
-    useAppContext();
+  const {
+    methods: { removeProductFromCart, handleIncrement, handleDecrement },
+  } = useAppContext();
 
   return (
     <div className="cart-item">

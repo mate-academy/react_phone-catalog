@@ -26,6 +26,7 @@ const init: InitialContext = {
   state: initialState,
   methods: {
     setProducts: () => new Promise(() => {}),
+    setSelectedProduct: () => new Promise(() => {}),
     setCart: () => {},
     setFavourites: () => {},
     setError: () => {},

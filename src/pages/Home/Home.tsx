@@ -2,12 +2,14 @@ import './Home.scss';
 import { Hero } from '../../components/Hero';
 import ProductSlider from '../../components/ProductSlider/ProductSlider';
 import { Categories } from '../../components/Categories';
-import { useAppContext } from '../../context/context';
 import { getHotProducts, getLatestProducts } from '../../utils/utils';
 import useSliderSettings from '../../hooks/useSliderSettings';
+import { useAppContext } from '../../store/store';
 
 export const Home = () => {
-  const { products } = useAppContext();
+  const {
+    state: { products },
+  } = useAppContext();
   const sliderSettings = useSliderSettings();
 
   return (

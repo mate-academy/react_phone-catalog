@@ -1,12 +1,16 @@
 import './Cart.scss';
-import { useAppContext } from '../../context/context';
+
 import { BackLinkButton } from '../../components/Elements/BackLinkButton';
 import { useMemo, useState } from 'react';
 import { CartElement } from './components/CartElement';
 import { CartModal } from './components/CartModal';
+import { useAppContext } from '../../store/store';
 
 export const CartPage = () => {
-  const { cart, handleClearCart } = useAppContext();
+  const {
+    state: { cart },
+    methods: { handleClearCart },
+  } = useAppContext();
   const [showModal, setShowModal] = useState(false);
 
   const totalAmount = useMemo(() => {

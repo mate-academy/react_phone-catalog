@@ -1,10 +1,13 @@
 import './Favourites.scss';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
-import { useAppContext } from '../../context/context';
+
 import { ProductList } from '../../components/ProductList';
+import { useAppContext } from '../../store/store';
 
 export const FavouritePage = () => {
-  const { favourites } = useAppContext();
+  const {
+    state: { favourites },
+  } = useAppContext();
 
   return (
     <div className="favourites">

@@ -2,19 +2,22 @@ import React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './Products.scss';
 import { Category } from '../../types/Category';
-import { useAppContext } from '../../context/context';
+
 import { useSearchParams } from 'react-router-dom';
 import { getPreparedProducts } from '../../helpers/getPreparedProducts';
 import { ProductList } from '../../components/ProductList';
 import { Filters } from '../../components/Filters';
 import { Pagination } from '../../components/Pagination';
+import { useAppContext } from '../../store/store';
 
 type Props = {
   category: Category;
 };
 
 export const Products: React.FC<Props> = ({ category }) => {
-  const { products } = useAppContext();
+  const {
+    state: { products },
+  } = useAppContext();
   const [searchParams] = useSearchParams();
 
   const categoryProducts = products.filter(item => item.category === category);

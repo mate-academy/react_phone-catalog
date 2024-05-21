@@ -4,7 +4,7 @@ import { Product } from '../../types/Product';
 import { Link, useLocation } from 'react-router-dom';
 import { FullProductData } from '../../types/FullProductData';
 import classNames from 'classnames';
-import { useAppContext } from '../../context/context';
+import { useAppContext } from '../../store/store';
 
 type Props = {
   product?: Product;
@@ -20,13 +20,13 @@ export const ProductCard: React.FC<Props> = ({
   device,
 }) => {
   const {
-    products,
-    cart,
-    favourites,
-    addProductToCart,
-    addProductToFavourites,
-    removeProductFromCart,
-    removeProductFromFavourites,
+    state: { products, cart, favourites },
+    methods: {
+      addProductToCart,
+      addProductToFavourites,
+      removeProductFromCart,
+      removeProductFromFavourites,
+    },
   } = useAppContext();
 
   const location = useLocation();

@@ -1,16 +1,18 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import './PurchaseNavButtons.scss';
-import { useAppContext } from '../../../context/context';
 
 import classNames from 'classnames';
+import { useAppContext } from '../../../store/store';
 
 type Props = {
   className?: string;
 };
 
 export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
-  const { favourites, cart } = useAppContext();
+  const {
+    state: { favourites, cart },
+  } = useAppContext();
 
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames('button-square', {
