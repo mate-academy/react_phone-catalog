@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
+// #region import
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
+import cn from 'classnames';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
 import { AddBlock } from '../shared/Buttons/AddBlock';
@@ -15,6 +17,7 @@ import { getRandomNumbers } from '../../services/getRandomNumbers';
 import { BackButton } from '../shared/Buttons/MoveButtons';
 import { Route } from '../shared/Route';
 import { Loader } from '../shared/Loader';
+// #endregion import
 
 type Props = {
   category: string;
@@ -30,13 +33,13 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
   const navigate = useNavigate();
 
   const [device, setDevice] = useState<Device>();
-  const [products, setProducts] = useState<Product[]>([]);
+  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
   const [dataLoadedDevice, setDataLoadedDevice] = useState(false);
-  const [dataLoadedProduct, setDataLoadedProduct] = useState(false);
+  const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   useEffect(() => {
     setDataLoadedDevice(false);
@@ -80,16 +83,16 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
   }, [category, itemId]);
 
   useEffect(() => {
-    setDataLoadedProduct(false);
+    setLoadedSuggestedProduct(false);
 
     client
       .get<Product[]>(PRODUCT_URL)
       .then(data => {
         const randomNumbers = getRandomNumbers(0, 194, 30);
-        const randomProducts = randomNumbers.map(index => data[index]);
+        const randomsuggestedProducts = randomNumbers.map(index => data[index]);
 
-        setProducts(randomProducts);
-        setDataLoadedProduct(true);
+        setSuggestedProducts(randomsuggestedProducts);
+        setLoadedSuggestedProduct(true);
       })
       .catch(() => {});
   }, []);
@@ -125,8 +128,17 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
 
             <div className="product-page__preview">
               {device.images.map(img => (
-                <div className="product-page__img-wrapper" key={img}>
-                  <img src={img} alt="" className="product-page__img" />
+                <div
+                  className={cn('product-page__img-wrapper', {
+                    // 'is-active': true,
+                  })}
+                  key={img}
+                >
+                  <img
+                    src={img}
+                    alt={device.name}
+                    className="product-page__img"
+                  />
                 </div>
               ))}
             </div>
@@ -188,11 +200,11 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
         )
       )}
 
-      {dataLoadedProduct && (
+      {loadedSuggestedProduct && (
         <ProductListCarousel
           title="You may also like"
-          products={products}
-          dataLoaded={dataLoadedProduct}
+          products={suggestedProducts}
+          dataLoaded={loadedSuggestedProduct}
           discount={false}
         />
       )}

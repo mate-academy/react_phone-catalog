@@ -8,6 +8,7 @@
   }
 
   @include on-desctop {
+    width: 1136px;
     margin-inline: auto;
   }
 
@@ -117,6 +118,10 @@
     position: relative;
 
     border: 1px solid $border-color-light-gray;
+  }
+
+  &__img-wrapper.is-active {
+    border: 1px solid $border-color-hover;
   }
 
   &__img {

@@ -13,6 +13,7 @@ import {
 } from '../../constants/PARAMS_OF_PAGE';
 import { MoveLeft, MoveRight } from '../Buttons/MoveButtons';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
+import { getWidtScrollbar } from '../../../services/getWidtScrollbar';
 
 type Props = {
   title: string;
@@ -24,6 +25,7 @@ type Props = {
 export const ProductListCarousel: React.FC<Props> = React.memo(
   ({ title, products, dataLoaded, discount }) => {
     const { windowSize } = useContext(WindowWidthContext);
+    const widthScrollbar = getWidtScrollbar();
     const [currentSize, setCurrentSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -56,7 +58,8 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
       products.length * oneItem -
       GAP_BETWEEN_COLUMNS +
       padding -
-      currentWindowSizeSlider;
+      currentWindowSizeSlider +
+      widthScrollbar;
     // #endregion
 
     const moveRight = () => {
