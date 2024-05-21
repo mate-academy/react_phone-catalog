@@ -27,6 +27,7 @@ const init: InitialContext = {
   methods: {
     setProducts: () => new Promise(() => {}),
     setSelectedProduct: () => new Promise(() => {}),
+    removeSelectedProduct: () => {},
     setCart: () => {},
     setFavourites: () => {},
     setError: () => {},
@@ -113,6 +114,10 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     dispatch({ type: 'removeProductFromFavourites', payload: id });
   };
 
+  const removeSelectedProduct = () => {
+    dispatch({ type: 'removeSelectedProduct' });
+  };
+
   const handleIncrement = (item: CartItem) => {
     dispatch({ type: 'incrementCartItem', payload: item.id });
   };
@@ -161,6 +166,7 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
     addProductToFavourites,
     removeProductFromCart,
     removeProductFromFavourites,
+    removeSelectedProduct,
     handleIncrement,
     handleDecrement,
     handleClearCart,

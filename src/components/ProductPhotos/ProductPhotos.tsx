@@ -32,11 +32,8 @@ export const ProductPhotos: React.FC<Props> = ({ images }) => {
   useEffect(() => {
     setMainPhoto(images[0]);
     setTransform(0);
+    // eslint-disable-next-line
   }, [productId]);
-  // useEffect(() => {
-  //   setMainPhoto(images[0]);
-  //   setTransform(0);
-  // }, [productId]);
 
   return (
     <div

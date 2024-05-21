@@ -11,46 +11,45 @@ import useSliderSettings from '../../hooks/useSliderSettings';
 import { useParams } from 'react-router-dom';
 import { Category } from '../../types/Category';
 import { useAppContext } from '../../store/store';
+import { ProductDetailsSkeleton } from './components/PageSkeleton';
 
 export const ProductDetails: React.FC = () => {
   const { productId = '' } = useParams();
   const { pathname } = useLocation();
   const {
-    state: { products, selectedProduct: product },
-    methods: { setSelectedProduct },
+    state: { isLoading, products, selectedProduct: product },
+    methods: { setSelectedProduct, removeSelectedProduct },
   } = useAppContext();
 
   const sliderSettings = useSliderSettings();
 
-  const currentCategory = pathname.split('/')[1];
+  const category = pathname.split('/')[1];
   const selectedProduct = products.find(item => item.itemId === product?.id);
 
-  // console.log(product);
   useEffect(() => {
-    setSelectedProduct(currentCategory as Category, productId);
-  }, []);
+    setSelectedProduct(category as Category, productId);
 
-  return (
-    <>
-      {product && (
-        <div className="product-details">
-          <div className="product-details__links">
-            <Breadcrumbs />
-            <BackLinkButton />
-          </div>
+    return () => removeSelectedProduct();
 
-          <ProductInfo
-            product={selectedProduct as Product}
-            productInfo={product}
-          />
+    // eslint-disable-next-line
+  }, [category, productId, setSelectedProduct]);
 
-          <ProductSlider
-            title={'You may also like'}
-            elements={getHotProducts(products)}
-            settings={sliderSettings}
-          />
-        </div>
-      )}
-    </>
+  return !isLoading && product ? (
+    <div className="product-details">
+      <div className="product-details__links">
+        <Breadcrumbs />
+        <BackLinkButton />
+      </div>
+
+      <ProductInfo product={selectedProduct as Product} productInfo={product} />
+
+      <ProductSlider
+        title={'You may also like'}
+        elements={getHotProducts(products)}
+        settings={sliderSettings}
+      />
+    </div>
+  ) : (
+    <ProductDetailsSkeleton />
   );
 };

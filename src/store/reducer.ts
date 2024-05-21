@@ -54,6 +54,11 @@ export const appReducer = (state: State, action: Action): State => {
           product => product.id !== action.payload,
         ),
       };
+    case 'removeSelectedProduct':
+      return {
+        ...state,
+        selectedProduct: null,
+      };
     case 'incrementCartItem':
       return {
         ...state,

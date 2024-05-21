@@ -2,20 +2,21 @@ import React from 'react';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import './Products.scss';
 
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { getPreparedProducts } from '../../helpers/getPreparedProducts';
 import { ProductList } from '../../components/ProductList';
 import { Filters } from '../../components/Filters';
 import { Pagination } from '../../components/Pagination';
 import { useAppContext } from '../../store/store';
+// import { ProductCardSkeleton } from '../../components/ProductCard';
+import Loader from '../../components/Loader/Loader';
 
 export const Products: React.FC = () => {
   const {
-    state: { products },
+    state: { isLoading, products },
   } = useAppContext();
+  const { category } = useParams();
   const [searchParams] = useSearchParams();
-  const { pathname } = useLocation();
-  const category = pathname.split('/')[1];
 
   const categoryProducts = products.filter(item => item.category === category);
 
@@ -42,7 +43,16 @@ export const Products: React.FC = () => {
 
       <Filters />
 
-      <ProductList products={preparedProducts} />
+      {/* {isLoading && (
+        <div className="loading">
+          {Array.from({ length: 4 }, (_, index) => (
+            <ProductCardSkeleton key={index} />
+          ))}
+        </div>
+      )} */}
+
+      {isLoading && <Loader />}
+      {!isLoading && <ProductList products={preparedProducts} />}
 
       <Pagination products={categoryProducts} />
     </div>

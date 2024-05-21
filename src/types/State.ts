@@ -23,6 +23,7 @@ export type Action =
   | { type: 'addProductToFavourites'; payload: Product }
   | { type: 'removeProductFromCart'; payload: string }
   | { type: 'removeProductFromFavourites'; payload: number }
+  | { type: 'removeSelectedProduct' }
   | { type: 'incrementCartItem'; payload: string }
   | { type: 'decrementCartItem'; payload: string }
   | { type: 'clearCart' };

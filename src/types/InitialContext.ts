@@ -16,6 +16,7 @@ export interface InitialContext {
     addProductToFavourites: (product: Product) => void;
     removeProductFromCart: (id: string) => void;
     removeProductFromFavourites: (id: number) => void;
+    removeSelectedProduct: () => void;
     handleIncrement: (item: CartItem) => void;
     handleDecrement: (item: CartItem) => void;
     handleClearCart: () => void;
