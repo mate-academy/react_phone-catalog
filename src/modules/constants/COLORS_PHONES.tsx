@@ -15,4 +15,5 @@ export const COLORS_PHONES: ColorPhones = {
   rosegold: '#e6bbb5',
   black: '#181a1e',
   gold: '#eacab0',
+  skyblue: '#b9cbd9',
 };
