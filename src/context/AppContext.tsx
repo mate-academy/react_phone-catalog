@@ -1,4 +1,4 @@
-import { createContext, useCallback, useState } from 'react';
+import { createContext, useCallback, useEffect, useState } from 'react';
 import { Product } from '../types/ProductCard';
 import { CartProducts } from '../types/CartProducts';
 
@@ -23,7 +23,16 @@ export const CartContext = createContext<CartContextType>({
 export const AppContext: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [cartProducts, setCartProducts] = useState<CartProducts>({});
+  const cartFromLocalStorage = localStorage.getItem('cart');
+
+  const [cartProducts, setCartProducts] = useState<CartProducts>(
+    cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : {},
+  );
+
+  useEffect(() => {
+    // Save the cart in localStorage
+    localStorage.setItem('cart', JSON.stringify(cartProducts));
+  }, [cartProducts]);
 
   const clearCart = () => {
     setCartProducts({});
