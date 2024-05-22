@@ -374,8 +374,10 @@
   outline: transparent;
   border: none;
   color: #FFF;
+  cursor: pointer;
 
   &:hover {
+    transform: scale(1.01);
     border-radius: 8px;
     background: #216CFF;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
@@ -392,6 +394,7 @@
     outline: transparent;
     border: none;
     color: #FFF;
+    cursor: pointer;
 
     &:hover {
       border-radius: 8px;
@@ -415,9 +418,12 @@
   font-weight: 700;
   line-height: 21px;
   background-color: #FFF;
+  cursor: pointer;
 
   &:hover {
     border-color: #216CFF;
+    box-shadow: 0 3px 13px 0 rgba(11, 44, 105, 0.4);
+    transform: scale(1.01);
   }
 }
 
@@ -436,8 +442,11 @@
   background: #FAFBFC;
   border: 1px solid #B4BDC3;
   transition: transform 0.5s ease-in-out;
+  cursor: pointer;
 
   &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
     border-radius: 48px;
     border: 1px solid #0F0F11;
 
@@ -456,10 +465,12 @@
   background: #323542;
   border: 1px solid transparent;
   transition: transform 0.5s ease-in-out;
+  cursor: pointer;
 
   &:hover {
     border-radius: 48px;
     background: #4A4D58;
+    box-shadow: 0 3px 13px 0 rgba(11, 44, 105, 0.4);
 
     .like {
       transform: scale(1.2);

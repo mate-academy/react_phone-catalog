@@ -192,11 +192,13 @@
   outline: transparent;
   border: none;
   color: #FFF;
+  cursor: pointer;
 
   &:hover {
     border-radius: 8px;
     background: #216CFF;
     box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.40);
+    transform: scale(1.01);
   }
 
   &Dark {
@@ -224,9 +226,12 @@
   line-height: 21px;
   outline: transparent;
   background-color: #FFF;
+  cursor: pointer;
 
   &:hover {
    border-color: #216CFF;
+   box-shadow: 0 3px 13px 0 rgba(11, 44, 105, 0.4);
+   transform: scale(1.01);
   }
 }
 
@@ -244,8 +249,11 @@
   border-radius: 48px;
   background: #FAFBFC;
   border: 1px solid #B4BDC3;
+  cursor: pointer;
 
   &:hover {
+    transform: scale(1.1);
+    box-shadow: 0 3px 13px 0 rgba(11, 44, 105, 0.4);
     border-radius: 48px;
     border: 1px solid #0F0F11;
 
@@ -262,8 +270,10 @@
   border-radius: 48px;
   background: #323542;
   border: 1px solid transparent;
+  cursor: pointer;
 
   &:hover {
+    box-shadow: 0 3px 13px 0 rgba(24, 78, 180, 0.4);
     border-radius: 48px;
     background: #4A4D58;
 
