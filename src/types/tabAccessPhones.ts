@@ -1,4 +1,4 @@
-export interface TabAccessPhone {
+export type TabAccessPhone = {
   id: string;
   category: string;
   namespaceId: string;

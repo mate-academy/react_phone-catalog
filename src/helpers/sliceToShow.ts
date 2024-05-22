@@ -1,7 +1,7 @@
-import { Product } from "../types/product";
+import { TabAccessPhone } from "../types/tabAccessPhones";
 
 export const sliceToShow = (
-    sorted: Product[], 
+    sorted: TabAccessPhone[], 
     currentPage: number, itemsOnPage: number) => {
   const firstPageIndex = (currentPage - 1) * itemsOnPage;
   const lastPageIndex = firstPageIndex + itemsOnPage;
@@ -9,7 +9,7 @@ export const sliceToShow = (
   return sorted.slice(firstPageIndex, lastPageIndex);
 };
 
-export const last = (sorted: Product[], itemsOnPage: number) => {
+export const last = (sorted: TabAccessPhone[], itemsOnPage: number) => {
   if (sorted.length === undefined) {
     return 0;
   } else {

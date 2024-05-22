@@ -1,7 +1,8 @@
 import { TabAccessPhone } from '../types/tabAccessPhones';
+const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
 
 export function getProduct(Url: string) {
-  return fetch(Url).then(response => {
+  return fetch(BASE_URL + Url).then(response => {
     if (!response.ok) {
       throw new Error('Network response was not ok');
     }
@@ -52,5 +53,5 @@ export const client = {
 };
 
 export const getProductDetails = (phoneId: string) => {
-  return client.get<TabAccessPhone>(`/phones/${phoneId}.json`);
+  return client.get<TabAccessPhone>(`${BASE_URL}${phoneId}.json`);
 };

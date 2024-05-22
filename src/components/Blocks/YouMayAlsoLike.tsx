@@ -1,19 +1,19 @@
-import React from "react";
-import { useContext } from 'react';
-import { Product } from '../../types/product';
+import { useContext, useEffect } from 'react';
 import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../images/homePage/Arrow_Right.svg';
 import Vector_light_left from '../../images/homePage/Vector_light_left.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import './YouMayAlsoLike.scss';
-import { ProductCard } from '../../components/ProductCard/ProductCard';
 import { CatalogContext } from "../../pages/CatalogContext";
-import { NotFoundPage } from "../../pages/NotFoundPage/NotFoundPage";
 import { Link, useLocation } from "react-router-dom";
 import { last, sliceToShow } from "../../helpers/sliceToShow";
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { fetchAllProducts } from '../../features/productssSlice';
+import { PhoneTablAccessCard } from '../PhoneTablAccessCard/PhoneTablAccessCard';
+import { TabAccessPhone } from '../../types/tabAccessPhones';
 
 export const YouMayAlsoLike = () => {
-  const { products,
+  const { 
     elOnPage,
     currentPage,
     handlePreviousPage, 
@@ -23,11 +23,17 @@ export const YouMayAlsoLike = () => {
 
   const paths = pathname.split('/').filter((path) => path);
 
-  if (!products) {
-    return <NotFoundPage/>;
-  }
+  const dispatch = useAppDispatch();
 
-  const shuffle = products.sort(() => Math.round(Math.random() * 100) - 50);
+  const { phones, tablets, accessories } = useAppSelector(state => state.products);
+
+  useEffect(() => {
+    dispatch(fetchAllProducts())
+  }, [dispatch]) 
+
+  const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
+
+   const shuffle = allProducts.sort(() => Math.round(Math.random() * 100) - 50);
 
   const getSortProducts = sliceToShow(shuffle, currentPage, elOnPage);;
 
@@ -72,13 +78,13 @@ export const YouMayAlsoLike = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {getSortProducts.map((item: Product) => (
+            {getSortProducts.map((item: TabAccessPhone) => (
               <Link
                 key={item.id}
-                to={{pathname: `/${paths[0]}/${item.itemId}`}}
+                to={{pathname: `/${paths[0]}/${item.id}`}}
                 className="productsPage__link"
               >
-                <ProductCard product={item} key={item.id} />
+                <PhoneTablAccessCard product={item} key={item.id} />
               </Link>
             ))}
           </div>

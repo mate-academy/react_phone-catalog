@@ -1,12 +1,14 @@
 import React from "react";
+import './PhoneTablAccessCard.scss';
 import { TabAccessPhone } from "../../types/tabAccessPhones";
 import Favorites from '../../images/homePage/Favorites.svg';
 
 type Props = {
   product: TabAccessPhone;
+  brand?: boolean;
 };
 
-export const PhoneTablAccessCard: React.FC<Props> = ({ product }) => {
+export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   return (
     <div className="card" data-cy="cardsContainer">
       <div className="card__url">
@@ -20,10 +22,16 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product }) => {
         <div className="card__header">
           <div className="card__name">{product.name}</div>
           <div className="card__price">
-            <div className="card__price__discount">${product.priceDiscount}</div>
-            <div className="card__price__no-discount">
-              ${product.priceRegular}
-            </div>
+            {brand
+              ? <div className="card__price__no-discount card__price__no-discount--brand">
+                  ${product.priceRegular}
+                </div>
+              : <><div className="card__price__discount">${product.priceDiscount}</div>
+                  <div className="card__price__no-discount card__price__no-discount--hot">
+                    ${product.priceRegular}
+                  </div>
+                </>
+            }
           </div>
         </div>
         <div className="card__line"></div>

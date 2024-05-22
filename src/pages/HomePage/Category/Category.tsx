@@ -1,31 +1,18 @@
 import './Category.scss';
 import '../../../utils/main.scss';
-import React, { useCallback, useContext } from 'react';
-import { CatalogContext } from '../../CatalogContext';
+import { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
-import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
-import { Category } from '../../../types/category';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchAllProducts } from '../../../features/productssSlice';
 
 export const CategoryItems = () => {
-  const { products } = useContext(CatalogContext);
+  const dispatch = useAppDispatch();
 
-  const getCategoryCount = useCallback((category: Category) => {
-    if (products === undefined) {
-      return <NotFoundPage />;
-    }
+  const { phones, tablets, accessories } = useAppSelector(state => state.products);
 
-    const countedItems = products.filter(item => item.category === category).length;
-
-    return countedItems === 1
-      ? `${countedItems} model`
-      : `${countedItems} models`;
-    },
-    [products],
-  );
-
-  const phonesCount = getCategoryCount(Category.Phones);
-  const tabletsCount = getCategoryCount(Category.Tablets);
-  const accessoriesCount = getCategoryCount(Category.Accessories);
+  useEffect(() => {
+    dispatch(fetchAllProducts())
+  }, [dispatch]) 
 
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';
@@ -54,7 +41,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Mobile phones</p>
-          <div className="category__quantity">{phonesCount}</div>
+          <div className="category__quantity">{phones.length}</div>
         </div>
         <div
           className="category__block
@@ -70,7 +57,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Tablets</p>
-          <div className="category__quantity">{tabletsCount}</div>
+          <div className="category__quantity">{tablets.length}</div>
         </div>
         <div
           className="category__block
@@ -86,7 +73,7 @@ export const CategoryItems = () => {
             />
           </NavLink>
           <p className="category__name">Accessories</p>
-          <div className="category__quantity">{accessoriesCount}</div>
+          <div className="category__quantity">{accessories.length}</div>
         </div>
       </div>
     </div>

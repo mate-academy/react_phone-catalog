@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { getProduct } from '../helpers/fetchData';
 import { Category } from '../types/category';
+import { TabAccessPhone } from '../types/tabAccessPhones';
 
-export type TabAccessPhone = {
+export type AllProducts = {
   phones: TabAccessPhone[];
   tablets: TabAccessPhone[];
   accessories: TabAccessPhone[];
@@ -11,7 +12,7 @@ export type TabAccessPhone = {
   query: string;
 };
 
-const initialState: TabAccessPhone = {
+const initialState: AllProducts = {
   phones: [],
   tablets: [],
   accessories: [],
@@ -20,19 +21,16 @@ const initialState: TabAccessPhone = {
   query: '',
 };
 
-const BASE_URL = 'https://hanna-balabukha.github.io/react_phone-catalog/api/';
-
-const productsUrl = BASE_URL + 'products.json';
-const phonesUrl = BASE_URL + 'phones.json';
-const tabletsUrl = BASE_URL + 'tablets.json';
-const accessoriesUrl = BASE_URL + 'accessories.json';
+const phonesUrl = 'phones.json';
+const tabletsUrl = 'tablets.json';
+const accessoriesUrl = 'accessories.json';
 
 export const fetchAllProducts = createAsyncThunk(
   'products/fetchAllProducts',
   async () => {
-    const phones = await getProduct(productsUrl);
-    const tablets = await getProduct(productsUrl);
-    const accessories = await getProduct(productsUrl);
+    const phones = await getProduct(phonesUrl);
+    const tablets = await getProduct(tabletsUrl);
+    const accessories = await getProduct(accessoriesUrl);
 
     return { phones, tablets, accessories };
   },

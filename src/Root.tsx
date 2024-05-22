@@ -5,38 +5,56 @@ import { CatalogProvider } from './pages/CatalogContext';
 import { HomePage } from './pages/HomePage/HomePage';
 import { NotFoundPage } from './pages/NotFoundPage/NotFoundPage';
 import { ProductPage } from './pages/ProductPage/ProductPage';
-import { ProductDetails } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { store } from './app/store';
+import { Category } from './types/category';
+import { ProductDetails } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => {
-  const prodCategories = ['phones', 'tablets', 'accessories'];
+  
+  const prodCategories = [ 
+    {
+      route: 'phones',
+      category: Category.PHONES,
+    }, 
+    {
+      route: 'tablets',
+      category: Category.TABLETS,
+    }, 
+    {
+      route: 'accessories',
+      category: Category.ACCESSORIES,
+    }
+  ];
 
   return (
-    <Provider store={store}>
-      <CatalogProvider>
-        <Router>
-          <Routes>
-            <Route path="/" element={<App />}>
-              <Route index element={<HomePage />} />
-              {prodCategories.map((category, index) => {
+  <Provider store={store}>
+    <CatalogProvider>
+      <Router>
+        <Routes>
+          <Route path="/" element={<App />}>
+            <Route index element={<HomePage />} />
+              {prodCategories.map(({route, category}) => {
                 return (
-                  <Route path={`/${category}`} key={category}>
-                    <Route index element={<ProductPage title={category} />} />
-                    <Route
-                    }/> 
-                      element={<ProductDetails index={index} />}
-                    />
+                  <Route path={`/${route}`} key={route}> 
+                  <Route index element={
+                    <ProductPage 
+                      title={route}
+                      category={category}
+                      /> 
+                  }/> 
+                    <Route path=":productId" element={
+                    <ProductDetails />} /> 
                   </Route>
-                );
-              })
-              })}
-              <Route path="/favorites"></Route>
-              <Route path="/cart"></Route>
-              <Route path="*" element={<NotFoundPage />} />
-            </Route>
-          </Routes>
-        </Router>
-      </CatalogProvider>
-    </Provider>
-  );
+                  )
+                })
+              }
+            <Route path="/favorites"></Route>
+            <Route path="/cart"></Route>
+            <Route path="*" element={<NotFoundPage />} />
+          </Route>
+        </Routes>
+      </Router>
+    </CatalogProvider>
+  </Provider>
+  )
 };

@@ -1,33 +1,39 @@
-import { useContext } from 'react';
-import { ProductCard } from '../../../components/ProductCard/ProductCard';
-import { Product } from '../../../types/product';
+import { useContext, useEffect } from 'react';
 import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
 import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
 import Vec_light_right from '../../../images/homePage/Vec_light_right.svg';
 import './BrandNew.scss';
-import React from 'react';
 import { NavLink } from 'react-router-dom';
 import { last, sliceToShow } from '../../../helpers/sliceToShow';
-import { NotFoundPage } from '../../NotFoundPage/NotFoundPage';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
+import { fetchAllProducts } from '../../../features/productssSlice';
+import { PhoneTablAccessCard } from '../../../components/PhoneTablAccessCard/PhoneTablAccessCard';
+import { TabAccessPhone } from '../../../types/tabAccessPhones';
 
 export const BrandNew = () => {
   const {
-    products,
     elOnPage,
     currentPage,
     handlePreviousPage,
     handleNextPage,
-    error,
   } = useContext(CatalogContext);
 
-  if (!products) {
-    return <NotFoundPage />;
-  }
+  const brand = true;
 
-  const sortedBrand = products.sort((a, b) =>
-    b.fullPrice > a.fullPrice ? 1 : -1,
+  const dispatch = useAppDispatch();
+
+  const { phones, tablets, accessories, error } = useAppSelector(state => state.products);
+
+  useEffect(() => {
+    dispatch(fetchAllProducts())
+  }, [dispatch]) 
+
+  const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
+
+  const sortedBrand = allProducts.sort((a, b) =>
+    b.priceRegular > a.priceRegular ? 1 : -1,
   );
 
   const getSortProducts = sliceToShow(sortedBrand, currentPage, elOnPage);
@@ -73,13 +79,17 @@ export const BrandNew = () => {
         </div>
         <div className="hotPrices__cards">
           <div className="hotPrices__ribbon">
-            {getSortProducts.map((item: Product) => (
+            {getSortProducts.map((item: TabAccessPhone) => (
               <NavLink
                 key={item.id}
-                to={`${item.category}/${item.itemId}`}
+                to={`${item.category}/${item.id}`}
                 className="productsPage__link"
               >
-                <ProductCard product={item} key={item.id} />
+                <PhoneTablAccessCard 
+                  product={item} 
+                  key={item.id}
+                  brand={brand}
+                />
               </NavLink>
             ))}
           </div>
