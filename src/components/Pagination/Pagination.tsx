@@ -1,43 +1,40 @@
-import { useSearchParams } from 'react-router-dom';
 import './Pagination.scss';
-import { Product } from '../../types/Product';
 import React from 'react';
 import { adaptivePaginationPages, scrollToTop } from '../../utils/utils';
 import classNames from 'classnames';
-import { SearchParamsType, getSearchWith } from '../../helpers/searchHelper';
+import { SearchParamsType } from '../../helpers/searchHelper';
 
 type Props = {
-  products: Product[];
+  total: number;
+  onPage: number;
+  currentPage: number;
+  onPageChange: (params: SearchParamsType) => void;
 };
 
-export const Pagination: React.FC<Props> = ({ products }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  const pageParam = searchParams.get('page') || 1;
-  const onPage = searchParams.get('onPage') || 8;
-
-  function setSearchWith(params: SearchParamsType) {
-    setSearchParams(getSearchWith(searchParams, params));
-  }
-
+export const Pagination: React.FC<Props> = ({
+  total,
+  onPage,
+  currentPage,
+  onPageChange,
+}) => {
   const amountOfPages = () => {
-    const result = Math.ceil(products.length / +onPage || 0);
+    const result = Math.ceil(total / +onPage || 0);
 
     return Array.from({ length: result }, (_, index) => index + 1);
   };
 
   const handlePrev = () => {
-    setSearchWith({ page: (+pageParam - 1).toString() });
+    onPageChange({ page: (currentPage - 1).toString() });
     scrollToTop();
   };
 
   const handleNext = () => {
-    setSearchWith({ page: (+pageParam + 1).toString() });
+    onPageChange({ page: (currentPage + 1).toString() });
     scrollToTop();
   };
 
-  const handlePageChange = (currentPage: number) => {
-    setSearchWith({ page: currentPage.toString() });
+  const handlePageChange = (page: string) => {
+    onPageChange({ page });
     scrollToTop();
   };
 
@@ -47,21 +44,21 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         <button
           className={classNames('pagination__button pagination__button--prev', {
             'pagination__button--prev--disabled':
-              +pageParam === amountOfPages()[0],
+              currentPage === amountOfPages()[0],
           })}
-          disabled={+pageParam === amountOfPages()[0]}
+          disabled={currentPage === amountOfPages()[0]}
           onClick={handlePrev}
         />
 
-        {adaptivePaginationPages(amountOfPages(), +pageParam).map(
+        {adaptivePaginationPages(amountOfPages(), currentPage).map(
           (page, index) =>
             page !== '...' ? (
               <button
                 className={classNames('pagination__button', {
-                  pagination__active: +pageParam === page,
+                  pagination__active: currentPage === page,
                 })}
                 key={page}
-                onClick={() => handlePageChange(+page)}
+                onClick={() => handlePageChange(page.toString())}
               >
                 {page}
               </button>
@@ -73,10 +70,10 @@ export const Pagination: React.FC<Props> = ({ products }) => {
         )}
 
         <button
-          disabled={+pageParam === amountOfPages()[amountOfPages().length - 1]}
+          disabled={currentPage === amountOfPages()[amountOfPages().length - 1]}
           className={classNames('pagination__button pagination__button--next', {
             'pagination__button--next--disabled':
-              +pageParam === amountOfPages()[amountOfPages().length - 1],
+              currentPage === amountOfPages()[amountOfPages().length - 1],
           })}
           onClick={handleNext}
         />

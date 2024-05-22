@@ -1,36 +1,39 @@
 import { Product } from '../types/Product';
 import { SortOptions } from '../types/SearchParamsOptions';
 
+interface PrepareProductsParams {
+  category: string | undefined;
+  sort: string | null;
+  query: string | null;
+  onPage: string;
+  currentPage: number;
+}
+
 export const getPreparedProducts = (
   products: Product[],
-  {
-    sort,
-    query,
-    onPage,
-    page,
-  }: {
-    sort: string | null;
-    query: string | null;
-    onPage: string | null;
-    page: string;
-  },
+  { category, sort, query, onPage, currentPage }: PrepareProductsParams,
 ) => {
-  let preparedProducts = [...products];
+  let filteredProducts = products;
 
-  if (!sort) {
-    preparedProducts = preparedProducts.sort((a, b) => b.year - a.year);
+  // Filter by category
+  if (category) {
+    filteredProducts = filteredProducts.filter(
+      item => item.category === category,
+    );
   }
 
+  // Filter by query
   if (query) {
-    const normalizedQuery = query.toLocaleLowerCase();
+    const normalizedQuery = query.toLowerCase();
 
-    preparedProducts = preparedProducts.filter(item => {
-      return item.name.toLocaleLowerCase().includes(normalizedQuery);
-    });
+    filteredProducts = filteredProducts.filter(item =>
+      item.name.toLowerCase().includes(normalizedQuery),
+    );
   }
 
+  // Sort the products
   if (sort) {
-    preparedProducts.sort((a, b) => {
+    filteredProducts.sort((a, b) => {
       switch (sort) {
         case SortOptions.Newest:
           return b.year - a.year;
@@ -42,23 +45,16 @@ export const getPreparedProducts = (
           return 0;
       }
     });
+  } else {
+    filteredProducts = filteredProducts.sort((a, b) => b.year - a.year);
   }
 
-  if (onPage && page) {
-    const itemsPerPage = parseInt(onPage, 10);
-    const currentPage = parseInt(page, 10);
+  // Pagination
+  const total = filteredProducts.length;
+  const itemsPerPage = onPage === 'All' ? total : +onPage;
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const endIndex = Math.min(currentPage * itemsPerPage, total);
+  const visibleItems = filteredProducts.slice(startIndex, endIndex);
 
-    if (!isNaN(itemsPerPage) && !isNaN(currentPage)) {
-      preparedProducts = preparedProducts.slice(
-        (currentPage - 1) * itemsPerPage,
-        currentPage * itemsPerPage,
-      );
-    }
-  }
-
-  if (!onPage) {
-    preparedProducts = preparedProducts.slice(0, 8);
-  }
-
-  return preparedProducts;
+  return { total, itemsPerPage, visibleItems };
 };
