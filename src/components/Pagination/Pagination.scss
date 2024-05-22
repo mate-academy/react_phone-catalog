@@ -2,15 +2,16 @@
 
 .pagination {
   margin: 0 auto;
-  width: 248px;
   height: 32px;
+  width: auto;
   display: flex;
   flex-direction: row;
   gap: 16px;
-  justify-content: space-between;
+  justify-content: center;
+  margin-top: 40px;
 
-  @include on-tablet {
-    margin-bottom: 64px;
+  @include on-mobile {
+    margin-top: 24px;
   }
 
   &__left-slide,
@@ -28,9 +29,12 @@
   &__slider {
     height: 100%;
     overflow: hidden;
-    width: 4 * 32px + 8px * 3;
+    width: auto;
+    display: flex;
+    gap: 8px;
 
     &-list {
+      width: auto;
       display: flex;
       flex-direction: row;
       gap: 8px;
@@ -54,6 +58,11 @@
       &-active {
         background-color: $color-accent;
       }
+    }
+
+    &-dots {
+      color: $color-white;
+      font-size: 15px;
     }
   }
 

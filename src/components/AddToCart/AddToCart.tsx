@@ -33,6 +33,18 @@ export const AddToCart: React.FC<Props> = ({ productId, typeOfPage }) => {
     }
   };
 
+  const removeFromCart = () => {
+    if (product) {
+      const cartItemToRemove = {
+        ...product,
+        quantity: 0,
+      };
+
+      cartDispatch({ type: 'REMOVE_FROM_CART', payload: cartItemToRemove });
+      dispatch({ type: 'setMessage', payload: Message.removeFromCart });
+    }
+  };
+
   const { favourites, setFavourites } = useContext(FavouritesContext);
 
   const isFav = favourites.some(item => item.itemId === productId);
@@ -58,8 +70,7 @@ export const AddToCart: React.FC<Props> = ({ productId, typeOfPage }) => {
           'add-bttns-cart_is-added': isInCart,
           'add-bttns-cart-details': typeOfPage === 'productDetails',
         })}
-        onClick={addToCart}
-        disabled={isInCart}
+        onClick={isInCart ? removeFromCart : addToCart}
       >
         {isInCart ? 'Added' : 'Add to cart'}
       </button>

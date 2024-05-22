@@ -1,5 +1,5 @@
 import './Products.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ProductCard } from '../ProductCard';
@@ -32,7 +32,7 @@ export const Products: React.FC<Props> = ({ title, products }) => {
     (searchParams.get('sort') as SortParamKeys) || SortType.AGE;
   const perPage = (searchParams.get('perPage') as PerPageKeys) || 'all';
 
-  const numberOfPages = Math.ceil(products.length / +perPage);
+  const numberOfPages = Math.round(products.length / +perPage);
 
   const setSearchWith = (params: any) => {
     const search = getSearchWith(searchParams, params);
@@ -58,6 +58,10 @@ export const Products: React.FC<Props> = ({ title, products }) => {
     });
     window.scroll(0, 0);
   };
+
+  useEffect(() => {
+    handlePageChange('1');
+  }, [perPage, sortFilter])
 
   const sortedProducts = getSortedProducts(products, searchParams);
 

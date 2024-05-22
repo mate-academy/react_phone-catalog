@@ -36,8 +36,6 @@
       background-color: $color-surface2;
 
       @include hover(background-color, $color-surface2);
-
-      cursor: not-allowed;
     }
 
     &-details {

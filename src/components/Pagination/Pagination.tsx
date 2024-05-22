@@ -21,29 +21,27 @@ export const Pagination: React.FC<Props> = ({
   );
 
   const [currentBlock, setCurrentBlock] = useState(firstBlock);
-  const [sliderWidth, setSliderWidth] = useState(0);
 
   const isFirstBlock = currentBlock === firstBlock;
   const isLastBlock = currentBlock === lastBlock;
 
-  const blockFirstPage = currentBlock * 4 + 1;
+  const blockFirstPage = currentBlock * 4 + 2;
   const blockLastPage = (currentBlock + 1) * 4;
 
   const isBlockFirstPage = +currentPage === blockFirstPage;
   const isBlockLastPage = +currentPage === blockLastPage;
 
-  const slider = useRef<HTMLDivElement>(null);
   const list = useRef<HTMLUListElement>(null);
 
   useEffect(() => {
-    if (slider.current) {
-      setSliderWidth(slider.current.offsetWidth);
+    if (currentPage === '1') {
+      setCurrentBlock(firstBlock);
+    }
+
+    if (currentPage === pages.toString()) {
+      setCurrentBlock(lastBlock);
     }
   }, [currentPage]);
-
-  const transform = isFirstBlock
-    ? 0
-    : sliderWidth * currentBlock + 8 * currentBlock;
 
   const onLeftMove = () => {
     if (currentPage !== '1') {
@@ -75,27 +73,50 @@ export const Pagination: React.FC<Props> = ({
         />
       </button>
 
-      <div className="pagination__slider" ref={slider}>
-        <ul
-          className="pagination__slider-list"
-          ref={list}
-          style={{
-            transform: `translateX(-${transform}px)`,
-          }}
-        >
-          {pagesArray.map(pageNum => (
-            <li className="pagination__slider-item" key={pageNum}>
+      <div className="pagination__slider">
+        <li className="pagination__slider-item" key={1}>
+          <button
+            className={classNames('pagination__slider-num', {
+              'pagination__slider-num-active': currentPage === '1',
+            })}
+            onClick={() => setPage('1')}
+          >
+            {1}
+          </button>
+        </li>
+        {currentBlock !== 0 && <p className="pagination__slider-dots">...</p>}
+        <ul className="pagination__slider-list" ref={list}>
+          {pagesArray
+            .slice(blockFirstPage - 1, blockLastPage + 1)
+            .map(pageNum => (
+              <li className="pagination__slider-item" key={pageNum}>
+                <button
+                  className={classNames('pagination__slider-num', {
+                    'pagination__slider-num-active': currentPage === pageNum,
+                  })}
+                  onClick={() => setPage(pageNum)}
+                >
+                  {pageNum}
+                </button>
+              </li>
+            ))}
+        </ul>
+        {currentBlock !== lastBlock && (
+          <>
+            <p className="pagination__slider-dots">...</p>
+            <li className="pagination__slider-item" key={pages}>
               <button
                 className={classNames('pagination__slider-num', {
-                  'pagination__slider-num-active': currentPage === pageNum,
+                  'pagination__slider-num-active':
+                    currentPage === pages.toString(),
                 })}
-                onClick={() => setPage(pageNum)}
+                onClick={() => setPage(pages.toString())}
               >
-                {pageNum}
+                {pages}
               </button>
             </li>
-          ))}
-        </ul>
+          </>
+        )}
       </div>
 
       <button className="pagination__right-slide" onClick={onRightMove}>

@@ -32,7 +32,7 @@ export const Navigation = () => {
               {p.split('-').join(' ')}
             </p>
           </Link>
-        </>
+          </>
       ))}
     </div>
   );

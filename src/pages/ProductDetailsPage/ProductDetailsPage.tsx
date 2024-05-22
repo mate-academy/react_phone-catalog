@@ -116,8 +116,8 @@ export const ProductDetailsPage = () => {
           <div className="product__top">
             {/* <div className="product__top-left"> */}
             <div className="product__top-images">
-                {images.map(image => (
-                     <img
+              {images.map(image => (
+                <img
                   key={image}
                   className="product__top-images-element"
                   src={`${BASE_URL}${image}`}
@@ -149,12 +149,15 @@ export const ProductDetailsPage = () => {
                           : pathname
                       }
                       key={color}
-                      className={classNames('product__top-right-circle', `product__top-right-circle-${color}`, {
-                        active : color === product.color,
-                      })}
+                      className={classNames(
+                        'product__top-right-circle',
+                        `product__top-right-circle-${color}`,
+                        {
+                          active: color === product.color,
+                        },
+                      )}
                       /* eslint-enable @typescript-eslint/indent */
-                    >
-                    </Link>
+                    ></Link>
                   ))}
                 </div>
               </div>

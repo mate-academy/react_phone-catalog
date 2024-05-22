@@ -67,7 +67,7 @@ export const PicturesSlider = () => {
           <ul
             className="carousel__slider-list"
             style={{
-              transform: `translateX(${-transformValue}px)`,
+              transform: `translateX(${-transformValue}px)`
             }}
           >
             {categories.map(item => (
