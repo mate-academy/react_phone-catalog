@@ -10,6 +10,7 @@ import { Pagination } from '../../components/Pagination';
 import { useAppContext } from '../../store/store';
 // import { ProductCardSkeleton } from '../../components/ProductCard';
 import Loader from '../../components/Loader/Loader';
+import { ProductNotFound } from '../../components/ProductNotFound';
 
 export const Products: React.FC = () => {
   const {
@@ -43,18 +44,11 @@ export const Products: React.FC = () => {
 
       <Filters />
 
-      {/* {isLoading && (
-        <div className="loading">
-          {Array.from({ length: 4 }, (_, index) => (
-            <ProductCardSkeleton key={index} />
-          ))}
-        </div>
-      )} */}
-
       {isLoading && <Loader />}
       {!isLoading && <ProductList products={preparedProducts} />}
+      {!preparedProducts.length && <ProductNotFound />}
 
-      <Pagination products={categoryProducts} />
+      {!!preparedProducts.length && <Pagination products={categoryProducts} />}
     </div>
   );
 };
