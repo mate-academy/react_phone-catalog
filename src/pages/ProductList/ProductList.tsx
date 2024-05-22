@@ -25,20 +25,15 @@ export const ProductList: React.FC<Props> = ({ products, sortBy }) => {
   const currentPage = searchParams.get('page') || '1';
   const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min(
-    +currentPage * +itemsPerPage,
-    products.length,
-  );
+  const lastItemIndex = Math.min((+currentPage) * (+itemsPerPage), choosenItems.length);
 
   useEffect(() => {
-    if (products) {
+    if (products.length) {
       setChoosenItems(products)
     }
   }, [products])
 
   function filteredProducts(items: TabAccessPhone[]) {
-    console.log(sortBy)
-
     switch (sortBy) {
       // case SortByItem.Age:
       //   return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
@@ -53,7 +48,8 @@ export const ProductList: React.FC<Props> = ({ products, sortBy }) => {
 
   const toBeFiltered = filteredProducts(choosenItems);
 
-  const filtered = toBeFiltered.slice(firstItemIndex, lastItemIndex,);
+  const filtered = toBeFiltered.slice(firstItemIndex, lastItemIndex);
+
   const showPagination = filtered.length < choosenItems.length;
 
   return (
