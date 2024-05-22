@@ -62,22 +62,15 @@ export const AppContext: React.FC<{ children: React.ReactNode }> = ({
     [cartProducts],
   );
 
-  const addFirstToCart = (product: Product) => {
-    setCartProducts((currentCart: CartProducts) => ({
-      ...currentCart,
-      [product.id]: {
-        product: product,
-        quantity: 1,
-      },
-    }));
-  };
-
   const addToCart = (product: Product) => {
-    // If exists, increment the quantity
-    if (product.id in cartProducts) {
-      incrementProductInCart(product.id);
-    } else {
-      addFirstToCart(product);
+    if (!(product.id in cartProducts)) {
+      setCartProducts((currentCart: CartProducts) => ({
+        ...currentCart,
+        [product.id]: {
+          product: product,
+          quantity: 1,
+        },
+      }));
     }
   };
 
