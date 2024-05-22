@@ -24,6 +24,15 @@ export const CartPage: React.FC = () => {
     setProducts(newProducts);
   }, [cartProducts]);
 
+  const totalAmount = products.reduce(
+    (sum, currentCartProduct: CartProduct) => {
+      return (
+        sum + currentCartProduct.product.price * currentCartProduct.quantity
+      );
+    },
+    0,
+  );
+
   return (
     <main className="cart-page">
       <section className="cart-page__top">
@@ -44,15 +53,19 @@ export const CartPage: React.FC = () => {
               );
             })}
           </section>
-          <section className="cart-page__total">
-            Total:
-            {/* TODO ----- PUT NEW CART-TOTAL COMPONENT */}
-            {products.reduce((sum, currentCartProduct: CartProduct) => {
-              return (
-                sum +
-                currentCartProduct.product.price * currentCartProduct.quantity
-              );
-            }, 0)}
+          <section className="cart-total cart-page__total">
+            <div className="cart-total__top">
+              <h2 className="cart-total__amount">${totalAmount}</h2>
+              <p className="cart-total__item-count body-text--14">
+                Total for 3 items
+              </p>
+            </div>
+
+            <hr className="cart-total__divider" />
+
+            <button className="cart-total__checkout button-dark">
+              Checkout
+            </button>
           </section>
         </>
       )}

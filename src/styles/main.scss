@@ -98,6 +98,29 @@
   }
 }
 
+.button-dark {
+  font-family: $font-family;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+
+  width: 48px;
+  height: 48px;
+  background-color: $color-primary;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  color: $color-white;
+
+  &:hover {
+    border: 1px solid $color-icons-placeholders;
+    background-color: $color-white;
+    color: $color-primary;
+  }
+}
+
 .arrow-button {
   width: 32px;
   height: 32px;
