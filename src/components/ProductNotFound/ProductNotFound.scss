@@ -18,6 +18,11 @@
     gap: 16px;
     align-items: center;
     padding-inline: 10px;
+    border-radius: $border-radius;
+    cursor: pointer;
+    background-color: $color-icons;
+    border: none;
+    color: $color-white;
 
     &-icon {
       font-weight: 800;

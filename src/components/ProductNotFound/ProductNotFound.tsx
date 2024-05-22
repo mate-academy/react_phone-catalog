@@ -19,7 +19,7 @@ export const ProductNotFound = () => {
       </div>
 
       <button
-        className="product-not-found__button buttons"
+        className="product-not-found__button"
         onClick={() => navigate({ search: state?.search })}
       >
         <i className="product-not-found__button-icon">&lt;</i>
