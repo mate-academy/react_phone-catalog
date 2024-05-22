@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useRef } from 'react';
 import { CartContext } from '../../../../context/AppContext';
 
 import { Product } from '../../../../types/ProductCard';
@@ -19,19 +19,28 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
   const { name, price, image } = product;
 
-  // const image =
-  //   'images' in product && Array.isArray(product.images)
-  //     ? product.images[0]
-  //     : product.image;
-
-  // const wishlistIconPath = './icons/heart-black.svg';
+  const cartItemArticle = useRef<HTMLElement>(null);
 
   return (
-    <article className="cart-item">
+    <article ref={cartItemArticle} className="cart-item">
       <div className="cart-item-main cart-item__main-info">
         <button
           className="cart-item-main__remove-button"
-          onClick={() => removeFromCart(product.id)}
+          onClick={() => {
+            setTimeout(() => removeFromCart(product.id), 750);
+
+            cartItemArticle.current?.animate(
+              [
+                { transform: 'translateX(0)' },
+                { transform: 'translateX(200%)' },
+              ],
+              {
+                duration: 1000,
+                iterations: 1,
+                easing: 'cubic-bezier(.46,-0.27,.46,1)',
+              },
+            );
+          }}
         >
           <img src="./icons/close.svg" alt="close icon" />
         </button>
