@@ -3,6 +3,7 @@ import { Product } from '../../../../types/ProductCard';
 import './ProductCard.scss';
 import { useContext } from 'react';
 import { CartContext } from '../../../../context/AppContext';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -13,7 +14,7 @@ export const ProductCard: React.FC<Props> = ({
   product,
   hasDiscount = false,
 }) => {
-  const { addToCart } = useContext(CartContext);
+  const { cartProducts, addToCart } = useContext(CartContext);
 
   const { name, price, screen, capacity, ram } = product;
 
@@ -23,6 +24,8 @@ export const ProductCard: React.FC<Props> = ({
       : product.image;
 
   const wishlistIconPath = './icons/heart-black.svg';
+
+  const isProductInCart = product.id in cartProducts;
 
   return (
     <article className="product">
@@ -67,12 +70,15 @@ export const ProductCard: React.FC<Props> = ({
 
       <div className="buttons">
         <button
-          className="buttons__cart"
+          className={classNames('buttons__cart', {
+            'buttons__cart--added': isProductInCart,
+          })}
           onClick={() => {
             addToCart(product);
           }}
+          disabled={isProductInCart}
         >
-          Add to cart
+          {isProductInCart ? 'In cart' : 'Add to cart'}
         </button>
         <button className="wishlist-button buttons__wishlist">
           <img

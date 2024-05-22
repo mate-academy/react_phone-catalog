@@ -126,12 +126,18 @@
     box-sizing: border-box;
 
     flex-grow: 1;
-
-    padding: 9.5px;
     border: none;
+
+    height: 40px;
 
     color: #fff;
     background-color: $color-primary;
+
+    &--added {
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid $color-elements;
+    }
   }
 }
 
