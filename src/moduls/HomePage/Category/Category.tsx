@@ -6,9 +6,10 @@ import tablets from '../../../assets/img/tablets-tamlets.png';
 import acsess from '../../../assets/img/acsessor - desktop.png';
 import { StateContext } from '../../../context/ContextReducer';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 
 export const Category: React.FC = () => {
-  const { Tablets, Accessories, phones } = useContext(StateContext);
+  const { Tablets, Accessories, phones, darkThem } = useContext(StateContext);
 
   return (
     <div className="Category">
@@ -29,7 +30,9 @@ export const Category: React.FC = () => {
             </div>
           </Link>
 
-          <h3 className="Category__imgs__img__title">Mobile phones</h3>
+          <h3 className={cn('Category__imgs__img__title', { dark: darkThem })}>
+            Mobile phones
+          </h3>
 
           <p className="Category__imgs__img__count">{`${phones.length} model`}</p>
         </div>
@@ -45,7 +48,9 @@ export const Category: React.FC = () => {
             </div>
           </Link>
 
-          <h3 className="Category__imgs__img__title">Tablets</h3>
+          <h3 className={cn('Category__imgs__img__title', { dark: darkThem })}>
+            Tablets
+          </h3>
 
           <p className="Category__imgs__img__count">{`${Tablets.length} model`}</p>
         </div>
@@ -61,7 +66,9 @@ export const Category: React.FC = () => {
             </div>
           </Link>
 
-          <h3 className="Category__imgs__img__title">Accessories</h3>
+          <h3 className={cn('Category__imgs__img__title', { dark: darkThem })}>
+            Accessories
+          </h3>
 
           <p className="Category__imgs__img__count">{`${Accessories.length} model`}</p>
         </div>

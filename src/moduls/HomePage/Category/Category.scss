@@ -21,9 +21,6 @@
       &__link {
         display: flex;
         margin-bottom: 24px;
-
-        &__hover {
-        }
       }
 
       &__title {
@@ -34,6 +31,10 @@
         color: $color-dark;
 
         margin-bottom: 4px;
+
+        &.dark{
+          color: $white;
+        }
       }
 
       &__count {
