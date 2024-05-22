@@ -8,8 +8,9 @@ import '../../../../styles/main.scss';
 
 export const CartPage: React.FC = () => {
   const [products, setProducts] = useState<CartProduct[]>([]);
+  const [isShowingModal, setIsShowingModal] = useState<boolean>(false);
 
-  const { cartProducts } = useContext(CartContext);
+  const { cartProducts, clearCart } = useContext(CartContext);
 
   useEffect(() => {
     const newProducts: CartProduct[] = [];
@@ -71,10 +72,44 @@ export const CartPage: React.FC = () => {
 
             <hr className="cart-total__divider" />
 
-            <button className="cart-total__checkout button-dark">
+            <button
+              className="cart-total__checkout button-dark"
+              onClick={() => {
+                setIsShowingModal(true);
+              }}
+            >
               Checkout
             </button>
           </section>
+
+          {isShowingModal && (
+            <dialog className="dialog">
+              <p className="dialog__text body-text--14">
+                Checkout is not implemented yet. <br /> Do you want to clear the
+                Cart?
+              </p>
+
+              <div className="dialog__buttons">
+                <button
+                  className="dialog__button default-button-text"
+                  onClick={() => {
+                    clearCart();
+                    setIsShowingModal(false);
+                  }}
+                >
+                  Clear the cart?
+                </button>
+                <button
+                  className="dialog__button default-button-text"
+                  onClick={() => {
+                    setIsShowingModal(false);
+                  }}
+                >
+                  Cancel
+                </button>
+              </div>
+            </dialog>
+          )}
         </>
       )}
     </main>

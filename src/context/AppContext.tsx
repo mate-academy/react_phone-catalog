@@ -8,6 +8,7 @@ export type CartContextType = {
   incrementProductInCart: (productId: Product['id']) => void;
   decrementProductInCart: (productId: Product['id']) => void;
   removeFromCart: (productId: Product['id']) => void;
+  clearCart: () => void;
 };
 
 export const CartContext = createContext<CartContextType>({
@@ -16,12 +17,17 @@ export const CartContext = createContext<CartContextType>({
   incrementProductInCart: () => {},
   decrementProductInCart: () => {},
   removeFromCart: () => {},
+  clearCart: () => {},
 });
 
 export const AppContext: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
   const [cartProducts, setCartProducts] = useState<CartProducts>({});
+
+  const clearCart = () => {
+    setCartProducts({});
+  };
 
   const removeFromCart = (productId: Product['id']) => {
     // If exists, remove it from the cart
@@ -82,6 +88,7 @@ export const AppContext: React.FC<{ children: React.ReactNode }> = ({
         incrementProductInCart,
         decrementProductInCart,
         removeFromCart,
+        clearCart,
       }}
     >
       {children}
