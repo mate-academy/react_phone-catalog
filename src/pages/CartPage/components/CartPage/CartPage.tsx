@@ -97,7 +97,7 @@ export const CartPage: React.FC = () => {
                     setIsShowingModal(false);
                   }}
                 >
-                  Clear the cart?
+                  Clear the cart
                 </button>
                 <button
                   className="dialog__button default-button-text"
