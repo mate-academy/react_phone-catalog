@@ -21,26 +21,25 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
 
   const cartItemArticle = useRef<HTMLElement>(null);
 
+  const handleRemoveCartItem = () => {
+    setTimeout(() => removeFromCart(product.id), 750);
+
+    cartItemArticle.current?.animate(
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(200%)' }],
+      {
+        duration: 1000,
+        iterations: 1,
+        easing: 'cubic-bezier(.46,-0.27,.46,1)',
+      },
+    );
+  };
+
   return (
     <article ref={cartItemArticle} className="cart-item">
       <div className="cart-item-main cart-item__main-info">
         <button
           className="cart-item-main__remove-button"
-          onClick={() => {
-            setTimeout(() => removeFromCart(product.id), 750);
-
-            cartItemArticle.current?.animate(
-              [
-                { transform: 'translateX(0)' },
-                { transform: 'translateX(200%)' },
-              ],
-              {
-                duration: 1000,
-                iterations: 1,
-                easing: 'cubic-bezier(.46,-0.27,.46,1)',
-              },
-            );
-          }}
+          onClick={handleRemoveCartItem}
         >
           <img src="./icons/close.svg" alt="close icon" />
         </button>
