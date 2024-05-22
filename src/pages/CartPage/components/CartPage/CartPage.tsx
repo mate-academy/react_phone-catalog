@@ -1,56 +1,54 @@
 import { useContext, useEffect, useState } from 'react';
-import { ProductCard } from '../../../shared/components/ProductCard';
 import { CartContext } from '../../../../context/AppContext';
-import { CartItem } from '../../../../types/CartItem';
+import { CartItem } from '../CartItem';
+import { BackLink } from '../../../shared/components/BackLink';
 import './CartPage.scss';
+import { CartProduct } from '../../../../types/CartProduct';
 
 export const CartPage: React.FC = () => {
-  const [cartItems, setCartItems] = useState<CartItem[]>([]);
+  const [products, setProducts] = useState<CartProduct[]>([]);
 
-  const {
-    cartProducts,
-    incrementProductInCart,
-    decrementProductInCart,
-    removeFromCart,
-  } = useContext(CartContext);
+  const { cartProducts } = useContext(CartContext);
 
   useEffect(() => {
-    const products: CartItem[] = [];
+    const newProducts: CartProduct[] = [];
 
     for (const key in cartProducts) {
-      products.push({
+      newProducts.push({
         product: cartProducts[key].product,
         quantity: cartProducts[key].quantity,
       });
     }
 
-    setCartItems(products);
+    setProducts(newProducts);
   }, [cartProducts]);
 
   return (
-    !!cartItems.length && (
-      <div>
-        <h1>CartPage</h1>
-        <div>
-          {cartItems.map((item: CartItem) => {
+    <div>
+      <section>
+        <BackLink />
+        <h1>Cart</h1>
+      </section>
+
+      {!!products.length && (
+        <section>
+          {products.map((item: CartProduct) => {
             return (
               <div style={{ display: 'flex' }} key={item.product.id}>
-                <ProductCard product={item.product} />
-
-                <button onClick={() => decrementProductInCart(item.product)}>
-                  -
-                </button>
-                <p>Amount: {item.quantity}</p>
-                <button onClick={() => incrementProductInCart(item.product)}>
-                  +
-                </button>
-
-                <button onClick={() => removeFromCart(item.product)}>X</button>
+                <CartItem product={item.product} quantity={item.quantity} />
               </div>
             );
           })}
-        </div>
-      </div>
-    )
+          <hr />
+          Total:{' '}
+          {products.reduce((sum, currentCartProduct: CartProduct) => {
+            return (
+              sum +
+              currentCartProduct.product.price * currentCartProduct.quantity
+            );
+          }, 0)}
+        </section>
+      )}
+    </div>
   );
 };
