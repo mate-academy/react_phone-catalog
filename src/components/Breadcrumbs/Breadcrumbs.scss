@@ -6,13 +6,12 @@
   &__list {
     display: flex;
     align-items: center;
-    gap: 8px;
   }
 
   &__link {
     font-size: 12px;
-    line-height: 1.15;
-    align-self: flex-end;
+    line-height: 1.25;
+    align-self: center;
     color: $color-primary;
     text-transform: capitalize;
   }
@@ -20,7 +19,6 @@
   &__item {
     display: flex;
     align-items: center;
-    gap: 8px;
 
     &:last-child .breadcrumbs__link {
       color: $color-secondary;

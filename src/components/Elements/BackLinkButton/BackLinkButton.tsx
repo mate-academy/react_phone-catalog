@@ -1,11 +1,17 @@
 import './BackLinkButton.scss';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 export const BackLinkButton = () => {
+  const navigate = useNavigate();
+
+  const handleBackClick = () => {
+    navigate(-1);
+  };
+
   return (
-    <Link to={`../`} className="link-back">
+    <button onClick={handleBackClick} className="link-back">
       <i className="icon icon--arrow-left"></i>
       Back
-    </Link>
+    </button>
   );
 };
