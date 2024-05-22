@@ -27,6 +27,10 @@
   &__total {
     grid-column: 1 / 5;
   }
+
+  &__empty {
+    grid-column: 1 / 5;
+  }
 }
 
 .cart-total {

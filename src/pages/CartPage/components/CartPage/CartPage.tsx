@@ -33,6 +33,13 @@ export const CartPage: React.FC = () => {
     0,
   );
 
+  const totalItemsQuantity = products.reduce(
+    (sum, currentCartProduct: CartProduct) => {
+      return sum + currentCartProduct.quantity;
+    },
+    0,
+  );
+
   return (
     <main className="cart-page">
       <section className="cart-page__top">
@@ -41,7 +48,7 @@ export const CartPage: React.FC = () => {
       </section>
 
       {!products.length ? (
-        <p>Your cart is empty</p>
+        <p className="cart-page__empty body-text--14">Your cart is empty</p>
       ) : (
         <>
           <section className="cart-page__items">
@@ -57,7 +64,8 @@ export const CartPage: React.FC = () => {
             <div className="cart-total__top">
               <h2 className="cart-total__amount">${totalAmount}</h2>
               <p className="cart-total__item-count body-text--14">
-                Total for 3 items
+                Total for {totalItemsQuantity} item
+                {totalItemsQuantity !== 1 ? 's' : ''}
               </p>
             </div>
 
