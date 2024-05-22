@@ -10,7 +10,6 @@ export const Filters = () => {
 
   const onPage = searchParams.get('onPage') || 0;
   const sort = searchParams.get('sort') || '';
-  const query = searchParams.get('query') || '';
 
   function setSearchWith(params: SearchParamsType) {
     setSearchParams(getSearchWith(searchParams, params));
@@ -22,10 +21,6 @@ export const Filters = () => {
 
   const handleOnPageChange = (value: string) => {
     setSearchWith({ onPage: value || null, page: '1' });
-  };
-
-  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchWith({ query: event.target.value || null });
   };
 
   return (
@@ -43,14 +38,6 @@ export const Filters = () => {
         selected={onPage}
         options={Object.values(OnPageOptions)}
         onChange={handleOnPageChange}
-      />
-
-      <input
-        className="filters__search search"
-        type="search"
-        placeholder="search"
-        value={query}
-        onChange={handleQueryChange}
       />
     </div>
   );

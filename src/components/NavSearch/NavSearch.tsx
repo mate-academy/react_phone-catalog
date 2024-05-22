@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './NavSearch.scss';
+import { useSearchParams } from 'react-router-dom';
+import { SearchParamsType, getSearchWith } from '../../helpers/searchHelper';
 
-export const NavSearch = () => {
-  const [query, setQueary] = useState('');
-  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setQueary(e.target.value);
+type Props = {
+  className?: string;
+};
+
+export const NavSearch: React.FC<Props> = ({ className }) => {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const query = searchParams.get('query') || '';
+
+  function setSearchWith(params: SearchParamsType) {
+    setSearchParams(getSearchWith(searchParams, params));
+  }
+
+  const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchWith({ query: event.target.value || null });
   };
 
   return (
     <input
       type="search"
-      className="search"
+      className={`search ${className}`}
       value={query}
       placeholder={'Search...'}
-      onChange={handleSearch}
+      onChange={handleQueryChange}
     />
   );
 };
