@@ -3,6 +3,7 @@ import './ProductSlider.scss';
 import { Product } from '../../types/Product';
 import { SliderSettings } from '../../types/SliderSettings';
 import { ProductCard } from '../ProductCard';
+import useTouchSlider from '../../hooks/useTouchSlider';
 
 type Props = {
   elements: Product[];
@@ -64,8 +65,22 @@ const ProductSlider: React.FC<Props> = ({
     };
   });
 
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchSlider({
+    onPrevSlide: handlePrev,
+    onNextSlide: handleNext,
+  });
+
   return (
-    <div className="product-slider">
+    <div
+      className="product-slider"
+      onTouchStart={handleTouchStart}
+      onTouchMove={handleTouchMove}
+      onTouchEnd={handleTouchEnd}
+      onMouseDown={handleTouchStart}
+      onMouseMove={handleTouchMove}
+      onMouseUp={handleTouchEnd}
+      onMouseLeave={handleTouchEnd}
+    >
       <div className="product-slider__top">
         {title && <h2 className="product-slider__title">{title}</h2>}
 

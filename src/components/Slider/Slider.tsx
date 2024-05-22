@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Slider.scss';
+import useTouchSlider from '../../hooks/useTouchSlider';
 
 interface Slide {
   id: number;
@@ -14,7 +15,6 @@ interface SliderProps {
 const Slider: React.FC<SliderProps> = ({ slides, settings }) => {
   const { autoplay } = settings;
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [startX, setStartX] = useState<number | null>(null);
 
   const prevSlide = () => {
     setCurrentSlide(prev => (prev === 0 ? slides.length - 1 : prev - 1));
@@ -34,36 +34,10 @@ const Slider: React.FC<SliderProps> = ({ slides, settings }) => {
     }
   });
 
-  const handleTouchStart = (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
-  ) => {
-    e.preventDefault(); // Prevent default drag-and-drop behavior
-    setStartX('touches' in e ? e.touches[0].clientX : e.clientX);
-  };
-
-  const handleTouchMove = (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
-  ) => {
-    if (startX === null) {
-      return;
-    }
-
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX;
-    const deltaX = clientX - startX;
-    const threshold = 50;
-
-    if (deltaX > threshold) {
-      prevSlide();
-      setStartX(null);
-    } else if (deltaX < -threshold) {
-      nextSlide();
-      setStartX(null);
-    }
-  };
-
-  const handleTouchEnd = () => {
-    setStartX(null);
-  };
+  const { handleTouchStart, handleTouchMove, handleTouchEnd } = useTouchSlider({
+    onPrevSlide: prevSlide,
+    onNextSlide: nextSlide,
+  });
 
   return (
     <div
