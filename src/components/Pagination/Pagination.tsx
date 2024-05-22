@@ -17,7 +17,7 @@ export const Pagination: React.FC<Props> = ({
   currentPage,
   onPageChange,
 }) => {
-  const amountOfPages = () => {
+  const pages = () => {
     const result = Math.ceil(total / +onPage || 0);
 
     return Array.from({ length: result }, (_, index) => index + 1);
@@ -39,41 +39,39 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    amountOfPages().length > 1 && (
+    pages().length > 1 && (
       <div className="pagination">
         <button
           className={classNames('pagination__button pagination__button--prev', {
-            'pagination__button--prev--disabled':
-              currentPage === amountOfPages()[0],
+            'pagination__button--prev--disabled': currentPage === pages()[0],
           })}
-          disabled={currentPage === amountOfPages()[0]}
+          disabled={currentPage === pages()[0]}
           onClick={handlePrev}
         />
 
-        {adaptivePaginationPages(amountOfPages(), currentPage).map(
-          (page, index) =>
-            page !== '...' ? (
-              <button
-                className={classNames('pagination__button', {
-                  pagination__active: currentPage === page,
-                })}
-                key={page}
-                onClick={() => handlePageChange(page.toString())}
-              >
-                {page}
-              </button>
-            ) : (
-              <div className="pagination__dots" key={`${page}${index}`}>
-                {page}
-              </div>
-            ),
+        {adaptivePaginationPages(pages(), currentPage).map((page, index) =>
+          page !== '...' ? (
+            <button
+              className={classNames('pagination__button', {
+                pagination__active: currentPage === page,
+              })}
+              key={page}
+              onClick={() => handlePageChange(page.toString())}
+            >
+              {page}
+            </button>
+          ) : (
+            <div className="pagination__dots" key={`${page}${index}`}>
+              {page}
+            </div>
+          ),
         )}
 
         <button
-          disabled={currentPage === amountOfPages()[amountOfPages().length - 1]}
+          disabled={currentPage === pages()[pages().length - 1]}
           className={classNames('pagination__button pagination__button--next', {
             'pagination__button--next--disabled':
-              currentPage === amountOfPages()[amountOfPages().length - 1],
+              currentPage === pages()[pages().length - 1],
           })}
           onClick={handleNext}
         />
