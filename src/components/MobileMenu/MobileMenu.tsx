@@ -24,7 +24,7 @@ export const MobileMenu: React.FC<Props> = ({ isOpen, handleClose }) => {
         </button>
       </div>
       <Navigation className="menu__nav" handleClick={handleClose} />
-      <PurchaseNavButtons className="menu__buttons" />
+      <PurchaseNavButtons className="menu__buttons" handleClick={handleClose} />
     </aside>
   );
 };

@@ -7,9 +7,13 @@ import { useAppContext } from '../../../store/store';
 
 type Props = {
   className?: string;
+  handleClick?: () => void;
 };
 
-export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
+export const PurchaseNavButtons: React.FC<Props> = ({
+  className,
+  handleClick,
+}) => {
   const {
     state: { favourites, cart },
   } = useAppContext();
@@ -27,6 +31,7 @@ export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
         }}
         // state={{ from: location.pathname }}
         className={getLinkClass}
+        onClick={handleClick}
       >
         <div className="icon icon--favourite">
           {favourites.length > 0 && (
@@ -40,6 +45,7 @@ export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
         }}
         // state={{ from: location.pathname }}
         className={getLinkClass}
+        onClick={handleClick}
       >
         <div className="icon icon--cart">
           {cart.length > 0 && (

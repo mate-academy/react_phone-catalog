@@ -8,7 +8,6 @@ import { ProductList } from '../../components/ProductList';
 import { Filters } from '../../components/Filters';
 import { Pagination } from '../../components/Pagination';
 import { useAppContext } from '../../store/store';
-// import { ProductCardSkeleton } from '../../components/ProductCard';
 import Loader from '../../components/Loader/Loader';
 import { ProductNotFound } from '../../components/ProductNotFound';
 
