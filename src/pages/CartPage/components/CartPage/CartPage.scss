@@ -76,6 +76,10 @@
   align-items: center;
   gap: 16px;
 
+  position: fixed;
+  top: 40vh;
+  left: 1vw;
+
   &__text {
     text-align: center;
   }
