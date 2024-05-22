@@ -113,7 +113,7 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
         { state: { discount } },
       );
     }
-  };
+  }; // check
 
   const handleCapasity = (params: string) => {
     if (device) {

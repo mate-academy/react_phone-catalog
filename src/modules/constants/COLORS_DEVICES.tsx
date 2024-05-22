@@ -1,6 +1,6 @@
-import { ColorPhones } from '../../types/ColorsPhones';
+import { ColorsDevices } from '../../types/ColorsDevices';
 
-export const COLORS_PHONES: ColorPhones = {
+export const COLORS_DEVICES: ColorsDevices = {
   spacegray: '#43413f',
   midnightgreen: '#58625a',
   midnight: '#1d242d',

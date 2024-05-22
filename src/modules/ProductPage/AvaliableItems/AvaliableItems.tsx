@@ -1,6 +1,6 @@
 import React from 'react';
 import cn from 'classnames';
-import { COLORS_PHONES } from '../../constants/COLORS_PHONES';
+import { COLORS_DEVICES } from '../../constants/COLORS_DEVICES';
 
 type Props = {
   property: string[];
@@ -27,7 +27,7 @@ export const AvaliableItems: React.FC<Props> = React.memo(
               className={cn('container__item', {
                 'container__item--color': colors,
               })}
-              style={colors ? { background: COLORS_PHONES[item] || item } : {}}
+              style={colors ? { background: COLORS_DEVICES[item] || item } : {}}
             >
               {!colors && item}
             </div>
