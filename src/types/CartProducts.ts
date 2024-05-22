@@ -1,5 +1,5 @@
-import { CartItem } from './CartItem';
+import { CartProduct } from './CartProduct';
 
 export type CartProducts = {
-  [productId: string]: CartItem;
+  [productId: string]: CartProduct;
 };
