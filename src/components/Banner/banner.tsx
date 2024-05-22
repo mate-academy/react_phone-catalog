@@ -8,8 +8,8 @@ import sliderButtonDark from './Pictures/sliderButtonDark.png';
 import 'swiper/css';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
-import { useAppSelector } from '../../Hooks/hooks';
 import { Theme } from '../../Helpers/theme';
+import { useAppSelector } from '../../Hooks/hooks';
 
 export const Baner: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);

@@ -2,10 +2,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.scss';
 import 'bulma/css/bulma.min.css';
 import { NavLink, useNavigate } from 'react-router-dom';
-import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ProductType } from '../../Helpers/enumProductType';
-import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import {
   CartProduct,
   addProductCount,
@@ -17,7 +15,9 @@ import cartIsEmptyImageDark from './pictures/empyCartDark.png';
 import deleteButton from './pictures/Close.png';
 import deleteButtonDark from './pictures/closeDark.png';
 import { Theme } from '../../Helpers/theme';
-import Loader from '../Loader/Spiner';
+import Loader from '../Loader/Loader';
+import { Header } from '../Header/Header';
+import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 
 type Props = {
   type: ProductType[];
@@ -352,3 +352,5 @@ export const Cart: React.FC<Props> = ({ title }) => {
     </>
   );
 };
+
+export default React.memo(Cart);

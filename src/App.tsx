@@ -6,7 +6,7 @@ import './App.scss';
 import store, { persister } from './store/store';
 import { HomePage } from './components/HomePage/HomePage';
 import { PersistGate } from 'redux-persist/integration/react';
-import Loader from './components/Loader/Spiner';
+import Loader from './components/Loader/Loader';
 import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 

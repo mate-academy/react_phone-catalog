@@ -6,11 +6,11 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { ProductType } from '../../Helpers/enumProductType';
 import { ProductCard } from '../ProductCard/ProductCard';
-import { useAppSelector } from '../../Hooks/hooks';
 import { Product } from '../../types/productType';
 import favoritsIsEmptyImage from './pictures/product-not-found.png';
 // import favoritsIsEmptyImageDark from './pictures/no-favourites_shot.png';
 import { Theme } from '../../Helpers/theme';
+import { useAppSelector } from '../../Hooks/hooks';
 
 type Props = {
   type: ProductType[];
@@ -141,3 +141,5 @@ export const Favorites: React.FC<Props> = ({ title }) => {
     </>
   );
 };
+
+export default React.memo(Favorites);

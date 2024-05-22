@@ -20,7 +20,7 @@ import {
 } from '../../Reducers/fauvoritsAndCartSlice';
 // eslint-disable-next-line max-len
 import { ProductType } from '../../Helpers/enumProductType';
-import Loader from '../Loader/Spiner';
+import Loader from '../Loader/Loader';
 import { loadProductsDetail } from '../../Reducers/productSlice';
 import { Theme } from '../../Helpers/theme';
 import classNames from 'classnames';

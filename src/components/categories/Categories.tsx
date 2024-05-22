@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './categories.module.scss';
 import { NavLink } from 'react-router-dom';
-import { useAppSelector } from '../../Hooks/hooks';
 import { Theme } from '../../Helpers/theme';
 import phones from './Pictures/phone.png';
 import tablets from './Pictures/tablets.png';
 import accesories from './Pictures/accesories.png';
+import { useAppSelector } from '../../Hooks/hooks';
 
 export const Categories: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);
@@ -70,3 +70,5 @@ export const Categories: React.FC = () => {
     </>
   );
 };
+
+export default React.memo(Categories);

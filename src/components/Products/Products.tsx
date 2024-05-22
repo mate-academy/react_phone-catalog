@@ -7,10 +7,10 @@ import { Header } from '../Header/Header';
 import { Footer } from '../Footer/Footer';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../Helpers/enumProductType';
-import Loader from '../Loader/Spiner';
+import Loader from '../Loader/Loader';
 import { Pagination } from '../Pangination/Pangination';
-import { Sort, getSortedProducts } from '../../functions/sorted';
-import { useLocalStorage } from '../../local/localStorege';
+import { Sort, getSortedProducts } from '../../Function/sorted';
+import { useLocalStorage } from '../../Local/localStorege';
 import { loadProducts, loadProductsDetail } from '../../Reducers/productSlice';
 import { Theme } from '../../Helpers/theme';
 

@@ -5,7 +5,7 @@ import sliderButtonDark from './Pictures/sliderButtonDark.png';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Swiper as ReactSwiper, SwiperSlide } from 'swiper/react';
 import Swiper from 'swiper';
-import Loader from '../Loader/Spiner';
+import Loader from '../Loader/Loader';
 import { useAppSelector } from '../../Hooks/hooks';
 import { ProductType } from '../../Helpers/enumProductType';
 import { Product } from '../../types/productType';

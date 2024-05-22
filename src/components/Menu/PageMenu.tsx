@@ -5,10 +5,10 @@ import FavoritesHeardIcon from './Pictures/Favourites (Heart Like).png';
 import FavoritesDark from './Pictures/favoritesDark.png';
 import shopsIcon from './Pictures/Shopping bag (Cart).png';
 import shopsIconDark from './Pictures/shopDark.png';
-import { useAppSelector } from '../../Hooks/hooks';
 import { Header } from '../Header/Header';
 import { Theme } from '../../Helpers/theme';
 import { motion } from 'framer-motion';
+import { useAppSelector } from '../../Hooks/hooks';
 
 export const PageMenu: React.FC = () => {
   const items = useAppSelector(state => state.cartAndFavorits.favorites);
