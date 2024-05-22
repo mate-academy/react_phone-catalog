@@ -140,14 +140,16 @@
   width: 40px;
   height: 40px;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   background-color: transparent;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $color-icons-placeholders;
 
-  &__heart {
-    background-image: url(../../../../../public/icons/heart-black.svg);
+  background-image: url(../../../../../public/icons/heart-black.svg);
 
-    &:hover {
-      background-image: url(../../../../../public/icons/heart-red.svg);
-    }
+  &:hover {
+    border: 1px solid $color-primary;
   }
 }
