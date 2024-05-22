@@ -22,12 +22,12 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   const cartItemArticle = useRef<HTMLElement>(null);
 
   const handleRemoveCartItem = () => {
-    setTimeout(() => removeFromCart(product.id), 750);
+    setTimeout(() => removeFromCart(product.id), 500);
 
     cartItemArticle.current?.animate(
-      [{ transform: 'translateX(0)' }, { transform: 'translateX(200%)' }],
+      [{ transform: 'translateX(0)' }, { transform: 'translateX(100vw)' }],
       {
-        duration: 1000,
+        duration: 600,
         iterations: 1,
         easing: 'cubic-bezier(.46,-0.27,.46,1)',
       },
