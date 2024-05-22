@@ -21,6 +21,14 @@ export const getPreparedProducts = (
     preparedProducts = preparedProducts.sort((a, b) => b.year - a.year);
   }
 
+  if (query) {
+    const normalizedQuery = query.toLocaleLowerCase();
+
+    preparedProducts = preparedProducts.filter(item => {
+      return item.name.toLocaleLowerCase().includes(normalizedQuery);
+    });
+  }
+
   if (sort) {
     preparedProducts.sort((a, b) => {
       switch (sort) {
@@ -46,14 +54,6 @@ export const getPreparedProducts = (
         currentPage * itemsPerPage,
       );
     }
-  }
-
-  if (query) {
-    const normalizedQuery = query.toLocaleLowerCase();
-
-    preparedProducts = preparedProducts.filter(item => {
-      return item.name.toLocaleLowerCase().includes(normalizedQuery);
-    });
   }
 
   if (!onPage) {

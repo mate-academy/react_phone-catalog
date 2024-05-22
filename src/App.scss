@@ -1,7 +1,13 @@
 @import './styles/main';
 
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
 main {
-  @include content-padding-inline;
+  overflow: hidden;
 
   display: flex;
   flex-direction: column;
@@ -14,6 +20,8 @@ main {
   @include on-desktop {
     gap: 80px;
   }
+
+  margin-bottom: auto;
 }
 
 html {
@@ -65,4 +73,8 @@ body-text {
 
 .small-text {
   font-size: 12px;
+}
+
+.container {
+  @include content-padding-inline;
 }

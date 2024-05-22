@@ -42,7 +42,11 @@ export const PurchaseNavButtons: React.FC<Props> = ({ className }) => {
         className={getLinkClass}
       >
         <div className="icon icon--cart">
-          {cart.length > 0 && <div className="counter">{cart.length}</div>}
+          {cart.length > 0 && (
+            <div className="counter">
+              {cart.reduce((sum, item) => sum + item.count, 0)}
+            </div>
+          )}
         </div>
       </NavLink>
     </div>
