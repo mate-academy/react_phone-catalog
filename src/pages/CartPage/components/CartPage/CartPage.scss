@@ -1,5 +1,26 @@
 @use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
 
-h1 {
-  color: $color-primary;
+.cart-page {
+  @include grid;
+
+  grid-template-rows: auto;
+  row-gap: 32px;
+
+  padding-top: 24px;
+
+  &__top {
+    grid-column: 1 / 5;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__items {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
 }
