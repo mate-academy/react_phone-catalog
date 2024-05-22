@@ -1,5 +1,72 @@
 @use '../../../../utils/variables' as *;
 
-h1 {
-  color: $color-primary;
+.cart-item {
+  padding: 16px;
+
+  // LATER for desktop() - padding: 24px
+
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid $color-elements;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  // &__main-info {
+  // }
+  // &__details {}
+}
+
+.cart-item-main {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  // OR ----- justify-content: space-between;
+
+  &__remove-button {
+    background: none;
+    border: none;
+  }
+
+  // &__image-link {
+  // }
+
+  &__image {
+    max-height: 80px;
+  }
+  &__name-link {
+    text-decoration: none;
+  }
+  &__name {
+    color: $color-primary;
+  }
+}
+
+.cart-item-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+  }
+  &__price {
+    // styleName: Desktop & Tablet/H3;
+    font-family: $font-family;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+
+    // text-align: left;
+    color: $color-black;
+  }
+
+  &__button {
+    height: 32px;
+    width: 32px;
+  }
 }

@@ -6,6 +6,7 @@ import { Product } from '../../../../types/ProductCard';
 
 import './CartItem.scss';
 import '../../../../styles/main.scss';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -13,12 +14,8 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product, quantity }) => {
-  const {
-    addToCart,
-    removeFromCart,
-    incrementProductInCart,
-    decrementProductInCart,
-  } = useContext(CartContext);
+  const { removeFromCart, incrementProductInCart, decrementProductInCart } =
+    useContext(CartContext);
 
   const { name, price, image } = product;
 
@@ -27,59 +24,70 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
   //     ? product.images[0]
   //     : product.image;
 
-  const wishlistIconPath = './icons/heart-black.svg';
+  // const wishlistIconPath = './icons/heart-black.svg';
 
   return (
     <article className="cart-item">
-      <button onClick={() => removeFromCart(product.id)}>
-        <img src="./icons/close.svg" alt="close icon" />
-      </button>
-      <button onClick={() => decrementProductInCart(product.id)}>
-        <img
-          src="./icons/minus-active.svg"
-          alt="minus icon - decrement quantity of product in the cart"
-        />
-      </button>
-      {quantity}
-      <button onClick={() => incrementProductInCart(product.id)}>
-        <img
-          src="./icons/plus-active.svg"
-          alt="plus icon - increment quantity of product in the cart"
-        />
-      </button>
-      <Link
-        to={`/product/${product.itemId}`}
-        className="product__image-wrapper"
-      >
-        <img
-          src={image}
-          className="product__image"
-          alt="Image of the product"
-        />
-      </Link>
-      <Link to={`/product/${product.itemId}`} className="product__name-wrapper">
-        <h3 className="product__name">{name}</h3>
-      </Link>
-      <p className="product__price">${price}</p>
-
-      <hr className="product__divider" />
-
-      <div className="buttons">
+      <div className="cart-item-main cart-item__main-info">
         <button
-          className="buttons__cart"
-          onClick={() => {
-            addToCart(product);
-          }}
+          className="cart-item-main__remove-button"
+          onClick={() => removeFromCart(product.id)}
         >
-          Add to cart
+          <img src="./icons/close.svg" alt="close icon" />
         </button>
-        <button className="wishlist-button buttons__wishlist">
+
+        <Link
+          to={`/product/${product.itemId}`}
+          className="cart-item-main__image-link"
+        >
           <img
-            className="wishlist-button__icon"
-            src={wishlistIconPath}
-            alt="Heart icon image, adds the product to wishlist when clicked"
+            src={image}
+            className="cart-item-main__image"
+            alt="Image of the product"
           />
-        </button>
+        </Link>
+
+        <Link
+          to={`/product/${product.itemId}`}
+          className="cart-item-main__name-link"
+        >
+          <h3 className="cart-item-main__name body-text--14">{name}</h3>
+        </Link>
+      </div>
+
+      <div className="cart-item-details cart-item__details">
+        <div className="cart-item-details__quantity">
+          <button
+            className={classNames(
+              'cart-item-details__button',
+              'default-button',
+              {
+                'default-button--disabled': quantity < 2,
+              },
+            )}
+            disabled={quantity < 2}
+            onClick={() => decrementProductInCart(product.id)}
+          >
+            <img
+              src="./icons/minus-disabled.svg"
+              alt="minus icon - decrement quantity of product in the cart"
+            />
+          </button>
+
+          <h3 className="body-text--14">{quantity}</h3>
+
+          <button
+            className="default-button cart-item-details__button"
+            onClick={() => incrementProductInCart(product.id)}
+          >
+            <img
+              src="./icons/plus-active.svg"
+              alt="plus icon - increment quantity of product in the cart"
+            />
+          </button>
+        </div>
+
+        <p className="cart-item-details__price">${price}</p>
       </div>
     </article>
   );
