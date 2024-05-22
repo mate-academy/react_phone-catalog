@@ -1,27 +1,38 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { COLORS_DEVICES } from '../../constants/COLORS_DEVICES';
+import { Device } from '../../../types/Device';
 
 type Props = {
-  property: string[];
+  device: Device;
   colors: boolean;
-  selectedItem: string;
-  select: (params: string) => void;
+  discount: boolean;
 };
 
 export const AvaliableItems: React.FC<Props> = React.memo(
-  ({ property, colors, selectedItem, select }) => {
+  ({ device, colors, discount }) => {
+    const { capacityAvailable, colorsAvailable, capacity, color, namespaceId } =
+      device;
+
+    const property = colors ? colorsAvailable : capacityAvailable;
+    const selectedItem = colors ? color : capacity;
+
     return (
       <div className="container">
         {property.map(item => (
-          <button
-            type="button"
+          <Link
+            to={
+              colors
+                ? `../${namespaceId}-${capacity.toLowerCase()}-${item}`
+                : `../${namespaceId}-${item.toLowerCase()}-${color}`
+            }
+            state={discount}
             key={item}
             className={cn('container__item-wrapper', {
               'container__item-wrapper--color': colors,
               'is-active': selectedItem === item,
             })}
-            onClick={() => select(item)}
           >
             <div
               className={cn('container__item', {
@@ -31,7 +42,7 @@ export const AvaliableItems: React.FC<Props> = React.memo(
             >
               {!colors && item}
             </div>
-          </button>
+          </Link>
         ))}
       </div>
     );

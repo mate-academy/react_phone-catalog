@@ -1,6 +1,6 @@
 // /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { AddBlock } from '../Buttons/AddBlock';
 import { Product } from '../../../types/Product';
 import { Price } from '../Price';
@@ -13,35 +13,6 @@ type Props = {
   widthCard?: number;
   discount: boolean;
 };
-
-// function getURLLink(pathname: string, category: string, itemId: string) {
-//   if (pathname.includes(category)) {
-//     return itemId;
-//   }
-
-//   return `${category}/${itemId}`;
-// }
-
-// function getURLLink1(
-//   pathname: string,
-//   category: string,
-//   itemId: string,
-//   navigate: ReturnType<typeof useNavigate>,
-// ) {
-//   const splitPathname = pathname.split('/').slice(1);
-
-//   if (splitPathname.length === 1 && splitPathname[0] === category) {
-//     return itemId;
-//   }
-
-//   if (splitPathname.length === 2) {
-//     navigate(`${category}/${itemId}`);
-
-//     return '';
-//   }
-
-//   return `${category}/${itemId}`;
-// }
 
 export const ProductCard: React.FC<Props> = React.memo(
   ({ product, widthCard, discount }) => {
@@ -63,19 +34,11 @@ export const ProductCard: React.FC<Props> = React.memo(
     const isCategory = pathname.includes(category);
     const isItemId = pathname.split('/').slice(2)[0];
 
-    const navigate = useNavigate();
-
     const specs = { screen, capacity, ram };
 
     const widthImg = windowSize * 0.396875;
 
-    const navigateTo = () => {
-      if (isCategory) {
-        navigate(itemId, { state: { discount } });
-      } else {
-        navigate(`${category}/${itemId}`, { state: { discount } });
-      }
-    };
+    const link = isCategory ? `${itemId}` : `${category}/${itemId}`;
 
     function getHeightImg() {
       if (windowSize <= WIDTH_DEVICES.mobile && isCategory && !isItemId) {
@@ -98,26 +61,15 @@ export const ProductCard: React.FC<Props> = React.memo(
     }
 
     return (
-      // <div className="product-card" style={{ width: `${widthCard}px` }}>
       <div className="product-card" style={getHeightCard()}>
-        {/* <Link
-          to={getURLLink(pathname, category, itemId)}
-          className="product-card__img-link"
-        >
-          <img src={image} alt={`${name}`} className="product-card__img" />
-        </Link> */}
-        <button
-          type="button"
-          onClick={navigateTo}
-          className="product-card__img-link"
-        >
+        <Link to={link} state={discount} className="product-card__link">
           <img
             src={image}
-            alt={`${name}`}
+            alt={name}
             className="product-card__img"
             style={getHeightImg()}
           />
-        </button>
+        </Link>
 
         <p className="product-card__title">{name}</p>
 

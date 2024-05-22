@@ -26,8 +26,10 @@
 
     border: 1px solid $border-color-light-gray;
     border-radius: 5px;
-    background-color: inherit;
     cursor: pointer;
+
+    text-decoration: none;
+    color: $text-black-color;
 
     &--color {
       width: $button-size;

@@ -32,8 +32,6 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
   const { state } = useLocation();
   const navigate = useNavigate();
 
-  const { discount } = state;
-
   const [device, setDevice] = useState<Device>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
@@ -106,24 +104,6 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
     setActiveImg(params);
   };
 
-  const handleColor = (params: string) => {
-    if (device) {
-      navigate(
-        `../${device.namespaceId}-${device.capacity.toLowerCase()}-${params}`,
-        { state: { discount } },
-      );
-    }
-  };
-
-  const handleCapasity = (params: string) => {
-    if (device) {
-      navigate(
-        `../${device.namespaceId}-${params.toLowerCase()}-${device.color}`,
-        { state: { discount } },
-      );
-    }
-  };
-
   return (
     <div className="product-page">
       <div className="product-page__route">
@@ -177,29 +157,19 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
                 <span>Avaliable colors</span>
                 <span>ID: 496827</span>
               </div>
-              <AvaliableItems
-                property={device.colorsAvailable}
-                colors
-                selectedItem={device.color}
-                select={item => handleColor(item)}
-              />
+              <AvaliableItems device={device} colors discount={state} />
             </div>
 
             <div className="product-page__avaliable-container product-page__avaliable-container--2">
               <div className="product-page__avaliable-title">
                 Selest capacity
               </div>
-              <AvaliableItems
-                property={device.capacityAvailable}
-                colors={false}
-                selectedItem={device.capacity}
-                select={item => handleCapasity(item)}
-              />
+              <AvaliableItems device={device} colors={false} discount={state} />
             </div>
 
             <div className="product-page__price">
               <Price
-                discount={discount}
+                discount={state}
                 priceDiscount={device.priceDiscount}
                 fullPrice={device.priceRegular}
               />

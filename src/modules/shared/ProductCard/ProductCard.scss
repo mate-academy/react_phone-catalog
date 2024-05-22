@@ -14,14 +14,11 @@
 
   @include height-product-card;
 
-  &__img-link {
+  &__link {
     margin-inline: auto;
 
     display: flex;
     align-items: center;
-
-    background-color: inherit;
-    border: none;
 
     :hover {
       cursor: pointer;
