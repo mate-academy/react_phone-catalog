@@ -54,7 +54,7 @@ export const BrandItem: React.FC<Props> = ({ device, discount }) => {
       >
         <img
           className="BrandItem__img"
-          src={`../${images[0]}`}
+          src={`./${images[0]}`}
           alt="device-img"
         />
 
