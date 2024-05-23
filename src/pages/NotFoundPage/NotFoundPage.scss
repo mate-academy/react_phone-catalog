@@ -1,0 +1,28 @@
+@use '../../utils/variables' as *;
+@use '../../utils/mixins' as *;
+
+.not-found {
+  @include grid;
+
+  row-gap: 12px;
+
+  &__links {
+    grid-column: 1 / 5;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+
+  &__home {
+    align-self: center;
+  }
+
+  &__arrow {
+    align-self: normal;
+  }
+
+  &__text {
+    grid-column: 1 / 5;
+  }
+}

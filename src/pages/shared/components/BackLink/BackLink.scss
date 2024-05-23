@@ -31,6 +31,9 @@
     line-height: 15.34px;
     text-align: left;
 
+    display: flex;
+    align-items: flex-start;
+
     color: $color-secondary;
   }
 }

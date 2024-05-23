@@ -10,6 +10,7 @@ import './utils/_reset.scss';
 import './App.scss';
 import './styles/main.scss';
 import { FavoritesPage } from './pages/FavoritesPage/components/FavoritesPage';
+import { NotFoundPage } from './pages/NotFoundPage';
 
 export const App = () => (
   <>
@@ -37,7 +38,7 @@ export const App = () => (
 
       <Route path="/favorites" element={<FavoritesPage />} />
 
-      <Route path="*" element={<p>Page not found</p>} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
 
     <Footer />
