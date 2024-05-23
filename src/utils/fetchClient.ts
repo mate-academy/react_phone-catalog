@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = '/api';
+const BASE_URL = '/react_phone-catalog/api';
 
 // returns a promise resolved after a given delay
 function wait(delay: number) {

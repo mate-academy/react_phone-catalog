@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 /* eslint-disable max-len */
 import React, { useContext, useEffect, useState } from 'react';
 import { BrandItem } from '../../ItemDevice/itemDevice';
@@ -13,11 +14,7 @@ import { Phone } from '../../../types/phone';
 import { Tablet } from '../../../types/tablets';
 
 interface Props {
-  devicesForRender:
-  | Phone[]
-  | Tablet[]
-  | Accessorie[]
-  | (Phone | Tablet | Accessorie)[];
+  devicesForRender: | Phone[] | Tablet[] | Accessorie[] | (Phone | Tablet | Accessorie)[];
   title: string;
 }
 

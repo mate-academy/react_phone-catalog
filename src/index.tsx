@@ -10,6 +10,7 @@ import { TabletsCatalog } from './moduls/TabletsCatalog/Tablets';
 import { AccessoriesCatalog } from './moduls/AccessoriesCatalog/Accessories';
 import { Favorites } from './moduls/Favourites/Favorites';
 import { Cart } from './moduls/Cart/Cart';
+import { PageNotFound } from './componentsApp/PageNotFound/PageNotFound';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
@@ -37,6 +38,8 @@ createRoot(document.getElementById('root') as HTMLElement).render(
           <Route path="favorites" element={<Favorites />} />
 
           <Route path="card" element={<Cart />} />
+
+          <Route path="#" element={<PageNotFound />} />
         </Route>
 
         <Route path="/sidebar" element={<Sidebar />} />

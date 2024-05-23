@@ -9,9 +9,10 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablets';
 import { Accessorie } from '../../types/accessories';
-import { Loader } from '../../componentsApp/Loader/Loader';
+// import { Loader } from '../../componentsApp/Loader/Loader';
 import { getRandomNumber } from '../../utils/randomDevice';
 import { BrandList } from '../../componentsApp/SlideListDevices/BrandList/BrandList';
+import { PageNotFound } from '../../componentsApp/PageNotFound/PageNotFound';
 
 export const ItemCard: React.FC = () => {
   const {
@@ -218,11 +219,7 @@ export const ItemCard: React.FC = () => {
   };
 
   if (!itemDevice) {
-    return (
-      <div className="ItemCard__loader">
-        <Loader />
-      </div>
-    );
+    return <PageNotFound />;
   }
 
   return (
