@@ -1,6 +1,14 @@
 @use '../../utils/mixins' as *;
 @use '../../utils/variables' as *;
 
+.header {
+  position: sticky;
+  top: 0;
+  left: 0;
+
+  background-color: $color-white;
+}
+
 .header-nav {
   @include grid;
 
