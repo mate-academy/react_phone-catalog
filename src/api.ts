@@ -1,5 +1,3 @@
-// const BASE_URL = './api/';
-
 import { BASE_URL } from "./modules/constants/URL's/URL's";
 
 // const DEFAULT_HEADERS = {
@@ -47,4 +45,11 @@ export const client = {
   // delete<T>(url: string): Promise<T> {
   //   return fetch(BASE_URL + url, { method: 'DELETE' }).then(handleResponse);
   // },
+};
+
+export const clientImg = {
+  get<T>(url: string): Promise<T> {
+    return wait(500).then(() => fetch(BASE_URL + url).then(handleResponse));
+    // return fetch(BASE_URL + url).then(handleResponse);
+  },
 };

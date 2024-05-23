@@ -6,6 +6,7 @@ import {
   MoveNumber,
   MoveRight,
 } from '../../shared/Buttons/MoveButtons';
+import { scrollToTop } from '../../../services/scrollToTop';
 
 type Props = {
   total: number;
@@ -24,12 +25,14 @@ export const Pagination: React.FC<Props> = React.memo(
     const prevPage = () => {
       if (currentPage > 1) {
         onPageChange(currentPage - 1);
+        scrollToTop(false);
       }
     };
 
     const nextPage = () => {
       if (currentPage < countPages) {
         onPageChange(currentPage + 1);
+        scrollToTop(false);
       }
     };
 
@@ -50,6 +53,11 @@ export const Pagination: React.FC<Props> = React.memo(
       getLastItem() || lastItem,
     );
 
+    const pageChange = (page: number) => {
+      onPageChange(page);
+      scrollToTop(false);
+    };
+
     return (
       <div className="pagination">
         <MoveLeft move={prevPage} disabled={currentPage === 1} />
@@ -58,7 +66,7 @@ export const Pagination: React.FC<Props> = React.memo(
           {pages.map((page, i) => (
             <MoveNumber
               key={page}
-              move={() => onPageChange(page)}
+              move={() => pageChange(page)}
               active={i === getActivePage(currentPage, countPages)}
               number={page}
             />

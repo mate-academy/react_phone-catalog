@@ -1,4 +1,3 @@
-// /* eslint-disable @typescript-eslint/no-unused-vars */
 import React, { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { AddBlock } from '../Buttons/AddBlock';
@@ -38,7 +37,21 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     const widthImg = windowSize * 0.396875;
 
-    const link = isCategory ? `${itemId}` : `${category}/${itemId}`;
+    const linkTo = () => {
+      const path = pathname.split('/').slice(1);
+      const homePage = path.length === 1 && !path[0];
+      const categotyPage = path.length === 1 && !!path[0];
+
+      if (homePage) {
+        return `${category}/${itemId}`;
+      }
+
+      if (categotyPage) {
+        return `${itemId}`;
+      }
+
+      return `../../${category}/${itemId}`;
+    };
 
     function getHeightImg() {
       if (windowSize <= WIDTH_DEVICES.mobile && isCategory && !isItemId) {
@@ -62,7 +75,7 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     return (
       <div className="product-card" style={getHeightCard()}>
-        <Link to={link} state={discount} className="product-card__link">
+        <Link to={linkTo()} state={discount} className="product-card__link">
           <img
             src={image}
             alt={name}

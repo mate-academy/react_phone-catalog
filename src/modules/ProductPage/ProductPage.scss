@@ -30,11 +30,11 @@
 
       grid-template-areas:
         "ti ti ti ti ti ti ti ti ti ti ti ti"
-        "prev mi mi mi mi mi mi c1 c1 c1 c1 c1"
-        "prev mi mi mi mi mi mi c2 c2 c2 c2 c2"
-        "prev mi mi mi mi mi mi pri pri pri pri pri"
-        "prev mi mi mi mi mi mi ab ab ab ab ab"
-        "prev mi mi mi mi mi mi ts1 ts1 ts1 ts1 ts1"
+        "pr pr pr pr pr pr pr c1 c1 c1 c1 c1"
+        "pr pr pr pr pr pr pr c2 c2 c2 c2 c2"
+        "pr pr pr pr pr pr pr pri pri pri pri pri"
+        "pr pr pr pr pr pr pr ab ab ab ab ab"
+        "pr pr pr pr pr pr pr ts1 ts1 ts1 ts1 ts1"
         "de de de de de de de de de de de de"
         "ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2";
     }
@@ -42,12 +42,11 @@
     @include on-desctop {
       grid-template-areas:
         "ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti ti"
-        "prev prev mi mi mi mi mi mi mi mi mi mi . c1 c1 c1 c1 c1 c1 c1 . . . ."
-        "prev prev mi mi mi mi mi mi mi mi mi mi . c2 c2 c2 c2 c2 c2 c2 . . . ."
-        "prev prev mi mi mi mi mi mi mi mi mi mi . pri pri pri pri pri pri pri . . . ."
-        "prev prev mi mi mi mi mi mi mi mi mi mi . ab ab ab ab ab ab ab . . . ."
-        "prev prev mi mi mi mi mi mi mi mi mi mi . ts1 ts1 ts1 ts1 ts1 ts1 ts1 . . . ."
-        "prev prev mi mi mi mi mi mi mi mi mi mi . . . . . . . . . . . ."
+        "pr pr pr pr pr pr pr pr pr pr pr pr . c1 c1 c1 c1 c1 c1 c1 . . . ."
+        "pr pr pr pr pr pr pr pr pr pr pr pr . c2 c2 c2 c2 c2 c2 c2 . . . ."
+        "pr pr pr pr pr pr pr pr pr pr pr pr . pri pri pri pri pri pri pri . . . ."
+        "pr pr pr pr pr pr pr pr pr pr pr pr . ab ab ab ab ab ab ab . . . ."
+        "pr pr pr pr pr pr pr pr pr pr pr pr . ts1 ts1 ts1 ts1 ts1 ts1 ts1 . . . ."
         "de de de de de de de de de de de de . ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2 ts2";
     }
   }
@@ -62,78 +61,14 @@
     }
   }
 
-  &__main-img-wrapper {
-    width: 100%;
-    padding-bottom: 100%;
-    margin-bottom: 16px;
-
-    position: relative;
+  &__image-preview {
+    margin-bottom: 40px;
 
     @include on-tablet {
-      height: fit-content;
       margin-bottom: 0;
 
-      grid-area: mi;
+      grid-area: pr;
     }
-
-    @include on-desctop {
-      margin-bottom: 80px;
-    }
-  }
-
-  &__main-img {
-    height: 100%;
-
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  &__preview {
-    height: 49px;
-    margin-bottom: 32px;
-
-    display: flex;
-    gap: 8px;
-
-    @include on-tablet {
-      height: fit-content;
-      margin-bottom: 0;
-
-      flex-direction: column;
-      grid-area: prev;
-    }
-
-    @include on-desctop {
-      margin-bottom: 80px;
-
-      gap: 16px;
-    }
-  }
-
-  &__img-wrapper {
-    height: 100%;
-    aspect-ratio: 1 / 1;
-
-    position: relative;
-
-    border: 1px solid $border-color-light-gray;
-    border-radius: 5px;
-    background-color: inherit;
-    cursor: pointer;
-  }
-
-  &__img-wrapper.is-active {
-    border: 1px solid $border-color-hover;
-  }
-
-  &__img {
-    height: 90%;
-
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
   }
 
   &__avaliable-container {
@@ -211,7 +146,7 @@
       }
 
       @include on-desctop {
-        margin-bottom: auto; // maby not
+        margin-bottom: 109px;
       }
     }
 
@@ -236,6 +171,10 @@
 
       grid-area: de;
     }
+
+    // @include on-desctop {
+    //   margin-top: 80px;
+    // }
   }
 
   &__description-title {

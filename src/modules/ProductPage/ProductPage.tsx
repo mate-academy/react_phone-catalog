@@ -1,8 +1,6 @@
-/* eslint-disable max-len */
 // #region import
 import React, { useEffect, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
-import cn from 'classnames';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
 import { AddBlock } from '../shared/Buttons/AddBlock';
@@ -17,34 +15,34 @@ import { BackButton } from '../shared/Buttons/MoveButtons';
 import { Route } from '../shared/Route';
 import { Loader } from '../shared/Loader';
 import { AvaliableItems } from './AvaliableItems';
+import { ImagePreview } from './ImagePreview';
 // #endregion import
-
-type Props = {
-  category: string;
-};
 
 type Specs = {
   [key: string]: string | string[];
 };
 
-export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
+export const ProductPage: React.FC = React.memo(() => {
   const { itemId } = useParams();
-  const { state } = useLocation();
+  const { state, pathname } = useLocation();
   const navigate = useNavigate();
+
+  const category = pathname.split('/')[1];
 
   const [device, setDevice] = useState<Device>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const [activeImg, setActiveImg] = useState('');
+  const [namespaceId, setNamespaceId] = useState('');
+  // const namespaceId = itemId?.split('-').slice(0, 3).join('-');
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
-  const [dataLoadedDevice, setDataLoadedDevice] = useState(false);
+  const [loadedDevice, setLoadedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   useEffect(() => {
-    setDataLoadedDevice(false);
+    setLoadedDevice(false);
 
     client
       .get<Device[]>(`api/${category}.json`)
@@ -63,7 +61,6 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
             cell,
           } = getDevice;
 
-          setActiveImg(getDevice.images[0]);
           setShortSpecs({ screen, resolution, processor, ram });
           setFullSpecs({
             screen,
@@ -77,12 +74,17 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
           });
         }
 
+        if (namespaceId !== getDevice?.namespaceId && getDevice) {
+          setNamespaceId(getDevice.namespaceId);
+        }
+
         setDevice(getDevice);
-        setDataLoadedDevice(true);
+        setLoadedDevice(true);
       })
       .catch(() => {
         // console.log('error');
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, itemId]);
 
   useEffect(() => {
@@ -100,10 +102,6 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
       .catch(() => {});
   }, []);
 
-  const handleActiveImg = (params: string) => {
-    setActiveImg(params);
-  };
-
   return (
     <div className="product-page">
       <div className="product-page__route">
@@ -114,45 +112,26 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
         <BackButton move={() => navigate(-1)} />
       </div>
 
-      {!dataLoadedDevice ? (
+      {!namespaceId ? (
         <div className="loader">
           <Loader />
         </div>
       ) : (
+        !!namespaceId &&
         device && (
           <div className="product-page__container">
             <h1 className="product-page__title secondary-title">
               {device.name}
             </h1>
 
-            <div className="product-page__main-img-wrapper">
-              <img
-                className="product-page__main-img"
-                src={activeImg}
-                alt={device.namespaceId}
-              />
+            <div className="product-page__image-preview">
+              {loadedDevice ? <ImagePreview device={device} /> : <Loader />}
             </div>
 
-            <div className="product-page__preview">
-              {device.images.map(img => (
-                <button
-                  type="button"
-                  className={cn('product-page__img-wrapper', {
-                    'is-active': img === activeImg,
-                  })}
-                  key={img}
-                  onClick={() => handleActiveImg(img)}
-                >
-                  <img
-                    src={img}
-                    alt={device.name}
-                    className="product-page__img"
-                  />
-                </button>
-              ))}
-            </div>
-
-            <div className="product-page__avaliable-container product-page__avaliable-container--1">
+            <div
+              className="product-page__avaliable-container
+                product-page__avaliable-container--1"
+            >
               <div className="product-page__avaliable-title">
                 <span>Avaliable colors</span>
                 <span>ID: 496827</span>
@@ -160,7 +139,10 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
               <AvaliableItems device={device} colors discount={state} />
             </div>
 
-            <div className="product-page__avaliable-container product-page__avaliable-container--2">
+            <div
+              className="product-page__avaliable-container
+                product-page__avaliable-container--2"
+            >
               <div className="product-page__avaliable-title">
                 Selest capacity
               </div>
@@ -179,7 +161,10 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
               <AddBlock />
             </div>
 
-            <div className="product-page__tech-specs product-page__tech-specs--1">
+            <div
+              className="product-page__tech-specs
+                product-page__tech-specs--1"
+            >
               {shortSpecs &&
                 Object.entries(shortSpecs).map(prop => (
                   <SpecsList prop={prop} key={prop[0]} />
@@ -193,7 +178,10 @@ export const ProductPage: React.FC<Props> = React.memo(({ category }) => {
               <DescriptionList description={device.description} />
             </div>
 
-            <div className="product-page__tech-specs product-page__tech-specs--2">
+            <div
+              className="product-page__tech-specs
+                product-page__tech-specs--2"
+            >
               <h3 className="product-page__description-title tertiary-title">
                 Tech specs
               </h3>

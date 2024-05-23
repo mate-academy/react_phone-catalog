@@ -20,7 +20,7 @@ type Props = {
   title: string;
 };
 
-export const CategotyPage: React.FC<Props> = React.memo(({ title }) => {
+export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const { pathname } = useLocation();
   const category = pathname.slice(1);
 

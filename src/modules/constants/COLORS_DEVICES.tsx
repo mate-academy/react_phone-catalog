@@ -8,7 +8,7 @@ export const COLORS_DEVICES: ColorsDevices = {
   spaceblack: '#3b3937',
   sierrablue: '#8a9bb1',
   graphite: '#51504b',
-  white: '#f9f5f2',
+  white: '#f1f1f1',
   blue: '#205d7a',
   green: '#a1d4be',
   coral: '#f85c48',
@@ -16,4 +16,5 @@ export const COLORS_DEVICES: ColorsDevices = {
   black: '#181a1e',
   gold: '#eacab0',
   skyblue: '#b9cbd9',
+  starlight: '#dbd4c9',
 };

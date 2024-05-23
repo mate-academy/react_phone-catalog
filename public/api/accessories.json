@@ -849,7 +849,7 @@
     "priceRegular": 399,
     "priceDiscount": 299,
     "colorsAvailable": ["silver", "gold", "spacegray"],
-    "color": "space-gray",
+    "color": "spacegray",
     "images": [
       "img/accessories/apple-watch-series-5/space-gray/00.webp",
       "img/accessories/apple-watch-series-5/space-gray/01.webp",
@@ -891,7 +891,7 @@
     "priceRegular": 429,
     "priceDiscount": 399,
     "colorsAvailable": ["spacegray", "silver", "gold"],
-    "color": "space-gray",
+    "color": "spacegray",
     "images": [
       "img/accessories/apple-watch-series-5/space-gray/00.webp",
       "img/accessories/apple-watch-series-5/space-gray/01.webp",
@@ -1101,7 +1101,7 @@
     "priceRegular": 399,
     "priceDiscount": 349,
     "colorsAvailable": ["silver", "gold", "spacegray"],
-    "color": "space-gray",
+    "color": "spacegray",
     "images": [
       "img/accessories/apple-watch-series-4/space-gray/00.webp",
       "img/accessories/apple-watch-series-4/space-gray/01.webp",
@@ -1143,7 +1143,7 @@
     "priceRegular": 429,
     "priceDiscount": 379,
     "colorsAvailable": ["silver", "gold", "spacegray"],
-    "color": "space-gray",
+    "color": "spacegray",
     "images": [
       "img/accessories/apple-watch-series-4/space-gray/00.webp",
       "img/accessories/apple-watch-series-4/space-gray/01.webp",

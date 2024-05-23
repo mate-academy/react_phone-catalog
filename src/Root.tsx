@@ -7,7 +7,7 @@ import {
 import { SidebarProvider } from './store/SidebarContext';
 import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
-import { CategotyPage } from './modules/CategotyPage';
+import { CategoryPage } from './modules/CategoryPage';
 import { ProductPage } from './modules/ProductPage';
 import { WindowWidthProvider } from './store/WindowWidthContext';
 import { Reload } from './modules/shared/Reload';
@@ -25,27 +25,18 @@ export const Root = () => (
             {/* <Route path=":itemId" element={<ProductPage category="phones" />} /> */}
 
             <Route path="phones">
-              <Route index element={<CategotyPage title="Mobile phones" />} />
-              <Route
-                path=":itemId"
-                element={<ProductPage category="phones" />}
-              />
+              <Route index element={<CategoryPage title="Mobile phones" />} />
+              <Route path=":itemId" element={<ProductPage />} />
             </Route>
 
             <Route path="tablets">
-              <Route index element={<CategotyPage title="Tablets" />} />
-              <Route
-                path=":itemId"
-                element={<ProductPage category="tablets" />}
-              />
+              <Route index element={<CategoryPage title="Tablets" />} />
+              <Route path=":itemId" element={<ProductPage />} />
             </Route>
 
             <Route path="accessories">
-              <Route index element={<CategotyPage title="Accessories" />} />
-              <Route
-                path=":itemId"
-                element={<ProductPage category="accessories" />}
-              />
+              <Route index element={<CategoryPage title="Accessories" />} />
+              <Route path=":itemId" element={<ProductPage />} />
             </Route>
 
             <Route

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
-import { ShopByCategory } from './ShopByCategoty';
+import { ShopByCategory } from './ShopByCategory';
 import { Product } from '../../types/Product';
 import { client } from '../../api'; // тимчасово
 import { PRODUCT_URL } from "../constants/URL's/URL's";

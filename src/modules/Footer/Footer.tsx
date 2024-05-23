@@ -1,8 +1,9 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { MoveLeft } from '../shared/Buttons/MoveButtons';
+import { MoveLeft as MoveUp } from '../shared/Buttons/MoveButtons';
 import { getLogo } from '../../services/getLogo';
 import { SidebarContext } from '../../store/SidebarContext';
+import { scrollToTop } from '../../services/scrollToTop';
 
 export const Footer = React.memo(() => {
   const { isOpenSidebar } = useContext(SidebarContext);
@@ -37,7 +38,7 @@ export const Footer = React.memo(() => {
         <div className="footer__back-to-top">
           <p className="footer__back-to-top-title">Back to top</p>
           <div className="footer__back-to-top-button">
-            <MoveLeft move={() => {}} />
+            <MoveUp move={() => scrollToTop(true)} />
           </div>
         </div>
       </div>
