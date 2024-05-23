@@ -76,7 +76,7 @@ export const CartItem: React.FC<Props> = ({ device }) => {
         ></button>
 
         <div className="CartItem__top__img">
-          <img className="CartItem__img" src={images[0]} alt="img" />
+          <img className="CartItem__img" src={`https://olehmarushchak.github.io/react_phone-catalog/${images[0]}`} alt="img" />
         </div>
 
         <div className="CartItem__top__name">{name}</div>

@@ -268,7 +268,7 @@ export const ItemCard: React.FC = () => {
                   })}
                 >
                   <img
-                    src={`../${img}`}
+                    src={`https://olehmarushchak.github.io/react_phone-catalog/${img}`}
                     alt={img}
                     className="ItemCard__main__photos__side-photos__photo__img"
                   />

@@ -13,8 +13,6 @@ import { getSearchWith } from '../../utils/searchHelper';
 import React from 'react';
 import { filterDevice } from '../../utils/filterDevice';
 import { BrandItem } from '../ItemDevice/itemDevice';
-import empty from '../../assets/img/cart-is-empty.png';
-import productNotFound from '../../assets/img/product-not-found.png';
 
 interface Props {
   devices: Phone[] | Tablet[] | Accessorie[] | (Phone | Tablet | Accessorie)[];
@@ -297,7 +295,7 @@ export const Catalog: React.FC<Props> = ({
             <div className="Catalog__no-items">
               <img
                 className="Catalog__items__empty-img"
-                src={productNotFound}
+                src="https://olehmarushchak.github.io/react_phone-catalog/static/media/product-not-found.8214da88616b09290166.png"
                 alt="empty"
               />
             </div>
@@ -305,7 +303,7 @@ export const Catalog: React.FC<Props> = ({
             <div className="Catalog__no-items Catalog__no-items--nonCatalog">
               <img
                 className="Catalog__items__empty-img"
-                src={empty}
+                src="https://olehmarushchak.github.io/react_phone-catalog/static/media/cart-is-empty.86ebaf664449a2f61e5e.png"
                 alt="empty"
               />
             </div>
