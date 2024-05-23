@@ -39,7 +39,7 @@
   position: relative;
   text-decoration: none;
   text-transform: uppercase;
-  font-family: Mont;
+  font-family: Mont, Helvetica, sans-serif;
   font-weight: 800;
   font-size: 12px;
   letter-spacing: 0.04em;
@@ -111,7 +111,7 @@
   background-image: url('../../../../../public/img/icons/menu.svg');
 }
 
-@include onMobile {
+@include on-mobile {
   .header {
     height: $header-height-mobile;
   }
@@ -133,7 +133,7 @@
   }
 }
 
-@include onTablet {
+@include on-tablet {
   .header {
     height: $header-height-mobile;
   }

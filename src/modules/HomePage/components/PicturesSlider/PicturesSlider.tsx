@@ -12,8 +12,6 @@ export const PicturesSlider = () => {
     useState(TRANSITION_DURATION);
   const [isButtonLocked, setIsButtonLocked] = useState(false);
 
-  // console.log(offset);
-
   useEffect(() => {
     if (transitionDuration === 0) {
       setTimeout(() => {
@@ -41,12 +39,12 @@ export const PicturesSlider = () => {
   }, [offset]);
 
   const handleRightBtn = () => {
-    if (isButtonLocked) {
-      return;
-    }
+    // if (isButtonLocked) {
+    //   return;
+    // }
 
-    setIsButtonLocked(true);
-    setTimeout(() => setIsButtonLocked(false), BUTTON_LOCK_DURATION);
+    // setIsButtonLocked(true);
+    // setTimeout(() => setIsButtonLocked(false), BUTTON_LOCK_DURATION);
     setOffset(currentOffset => {
       const newOffset = currentOffset - IMAGE_WIDTH;
 
@@ -97,7 +95,6 @@ export const PicturesSlider = () => {
       <button
         className={`${styles.btn}, ${styles.btnRight}`}
         onClick={handleRightBtn}
-        disabled={isButtonLocked}
       ></button>
     </div>
   );
