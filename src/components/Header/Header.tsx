@@ -93,7 +93,7 @@ export const Header: React.FC = () => {
           {/* 64px height of top flex-grow: 1 */}
           <div className="menu-bottom menu__bottom">
             <Link
-              to={'/whishlist'}
+              to={'/favorites'}
               className="menu-bottom__wishlist menu-bottom__button"
               onClick={handleCloseMenu}
             >

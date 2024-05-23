@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import { HomePage } from './pages/HomePage/HomePage';
 import { CartPage } from './pages/CartPage/components/CartPage';
-import { ProductPage } from './pages/ProductPage/Products/ProductPage';
+import { ProductPage } from './pages/ProductPage/ProductPage/ProductPage';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductCategories } from './types/ProductCategories';
@@ -9,6 +9,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import './utils/_reset.scss';
 import './App.scss';
 import './styles/main.scss';
+import { FavoritesPage } from './pages/FavoritesPage/components/FavoritesPage';
 
 export const App = () => (
   <>
@@ -33,6 +34,8 @@ export const App = () => (
       <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
       <Route path="/cart" element={<CartPage />} />
+
+      <Route path="/favorites" element={<FavoritesPage />} />
 
       <Route path="*" element={<p>Page not found</p>} />
     </Routes>

@@ -4,6 +4,7 @@ import './ProductCard.scss';
 import { useContext } from 'react';
 import { CartContext } from '../../../../context/AppContext';
 import classNames from 'classnames';
+import { FavoritesContext } from '../../../../context/FavoritesContext';
 
 type Props = {
   product: Product;
@@ -16,6 +17,9 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const { cartProducts, addToCart } = useContext(CartContext);
 
+  const { favoriteProducts, setFavoriteProducts } =
+    useContext(FavoritesContext);
+
   const { name, price, screen, capacity, ram } = product;
 
   const image =
@@ -23,9 +27,28 @@ export const ProductCard: React.FC<Props> = ({
       ? product.images[0]
       : product.image;
 
-  const wishlistIconPath = './icons/heart-black.svg';
+  const favoriteIconPath = favoriteProducts.some(
+    (prod: Product) => prod.id === product.id,
+  )
+    ? './icons/heart-red.svg'
+    : './icons/heart-black.svg';
 
   const isProductInCart = product.id in cartProducts;
+
+  const handleAddToFavorites = (newFavoriteProduct: Product) => {
+    if (favoriteProducts.some((prod: Product) => prod.id === product.id)) {
+      setFavoriteProducts((currentFavorites: Product[]) => {
+        return currentFavorites.filter(
+          (prod: Product) => prod.id !== newFavoriteProduct.id,
+        );
+      });
+    } else {
+      setFavoriteProducts((currentFavorites: Product[]) => [
+        ...currentFavorites,
+        newFavoriteProduct,
+      ]);
+    }
+  };
 
   return (
     <article className="product">
@@ -80,11 +103,14 @@ export const ProductCard: React.FC<Props> = ({
         >
           {isProductInCart ? 'In cart' : 'Add to cart'}
         </button>
-        <button className="wishlist-button buttons__wishlist">
+        <button
+          onClick={() => handleAddToFavorites(product)}
+          className="favorite-button buttons__favorite"
+        >
           <img
-            className="wishlist-button__icon"
-            src={wishlistIconPath}
-            alt="Heart icon image, adds the product to wishlist when clicked"
+            className="favorite-button__icon"
+            src={favoriteIconPath}
+            alt="Heart icon image"
           />
         </button>
       </div>
