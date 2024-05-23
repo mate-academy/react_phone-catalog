@@ -95,6 +95,7 @@ export const ProductCard: React.FC<Props> = ({
           pathname: path,
         }}
         state={{ from: location.pathname }}
+        className="product__link"
       >
         <img src={`${product.image}`} className="product__img" alt="" />
         <p className="product__title">{product.name}</p>

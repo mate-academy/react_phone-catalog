@@ -2,9 +2,9 @@
 
 .product {
   width: 212px;
+  height: 440px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   gap: 8px;
   padding: 32px;
   border: 1px solid $color-element;
@@ -12,20 +12,22 @@
 
   @include on-tablet {
     width: 237px;
+    height: 506px;
   }
 
   @include on-desktop {
     width: 272px;
   }
 
-  & a {
+  &__link {
     display: flex;
     flex-direction: column;
+    height: 100%;
   }
 
   &__img {
     width: 100%;
-    height: 196px;
+    max-height: 196px;
     object-fit: contain;
     align-self: center;
 
@@ -34,7 +36,6 @@
 
   &__title {
     padding-top: 16px;
-    max-width: 173px;
     height: 63px;
 
     @include on-tablet {

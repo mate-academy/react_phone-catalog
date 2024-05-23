@@ -13,10 +13,9 @@ export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
 
-  const isProductsPage =
-    location.pathname.includes('phones') ||
-    location.pathname.includes('tablets') ||
-    location.pathname.includes('accessories');
+  const isProductsPage = ['phones', 'tablets', 'accessories'].some(path =>
+    location.pathname.endsWith(path),
+  );
 
   return (
     <header className="header">
