@@ -5,24 +5,15 @@ import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   pagesTotal: number;
-  // currentPage: number;
-  // setCurrentPage: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const Pagination: React.FC<Props> = ({
-  pagesTotal,
-  // currentPage,
-  // setCurrentPage,
-}) => {
+export const Pagination: React.FC<Props> = ({ pagesTotal }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [pagesList, setPagesList] = useState<number[]>([]);
   const [visiblePages, setVisiblePages] = useState<number[]>(
     pagesList.slice(0, 4),
   );
-
-  // - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-  //  - Hide pagination elements if they do not make sense;
 
   const [searchParams, setSearchParams] = useSearchParams();
 

@@ -7,18 +7,6 @@ type Props = {
   product: DetailedProduct;
 };
 
-// type WantedSpecs = {
-//   screen: string;
-//   resolution: string;
-//   processor: string;
-//   ram: string;
-//   camera: string;
-//   zoom: string;
-//   cell: string;
-// };
-
-// type WantedSpecsKeys = keyof WantedSpecs;
-
 export const TechSpecs: React.FC<Props> = ({ product }) => {
   // Wanted specs
   const wantedSpecs = [
@@ -30,15 +18,6 @@ export const TechSpecs: React.FC<Props> = ({ product }) => {
     'zoom',
     'cell',
   ];
-
-  // Get the specs needed
-  // for (const key in wantedSpecs) {
-  //   if (key in product) {
-  //     wantedSpecs[key as WantedSpecsKeys] = product[
-  //       key as DetailedProductKeys
-  //     ] as string;
-  //   }
-  // }
 
   return (
     <section className="tech-specs">

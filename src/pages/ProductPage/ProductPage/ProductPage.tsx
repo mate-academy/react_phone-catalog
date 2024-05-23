@@ -24,21 +24,12 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pagesTotal, setPagesTotal] = useState(1);
 
-  // - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-  //  - Hide pagination elements if they do not make sense;
+  const [areProductsLoading, setAreProductsLoading] = useState<boolean>(true);
 
   // Filter states
   const [sort, setSort] = useState<Sort>(Sort.Newest);
   const [itemsOnPage, setItemsOnPage] = useState<Pages>(Pages.all);
   const [searchParams, setSearchParams] = useSearchParams();
-
-  // useEffect(() => {
-  //   searchParams.set(FilterOption.Sort, Sort.Newest);
-  //   searchParams.set('page', '1');
-  //   searchParams.set(FilterOption.Items, Pages.all);
-  //   setSearchParams(searchParams);
-  //   // eslint-disable-next-line react-hooks/exhaustive-deps
-  // }, []);
 
   useEffect(() => {
     // If there is sort in the params
@@ -77,12 +68,6 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     } else {
       setCurrentPage(1);
     }
-
-    // if (searchParams.has('perPage')) {
-    //   set();
-    // } else {
-    //   set();
-    // }
   }, [searchParams, setSearchParams]);
 
   useEffect(() => {
@@ -97,6 +82,11 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     }
 
     setDisplayedProducts(currentProducts);
+
+    // Timeout is to remove a short 'no products' message (few ms)
+    setTimeout(() => {
+      setAreProductsLoading(false);
+    }, 50);
   }, [currentPage, itemsOnPage, products]);
 
   useEffect(() => {
@@ -146,6 +136,14 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     }
   }, [sort]);
 
+  if (!!areProductsLoading) {
+    return;
+  }
+
+  const modelsCounterText =
+    `${displayedProducts.length} model` +
+    (displayedProducts.length > 1 ? 's' : '');
+
   if (displayedProducts.length === 0) {
     return <h1>There are no {category} yet</h1>;
   }
@@ -164,7 +162,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         </nav>
         <div className="product-page__main-info">
           <h1 className="product-page__title">{pageTitle}</h1>
-          <p className="product-page__models-count">95 models</p>
+          <p className="product-page__models-count">{modelsCounterText}</p>
         </div>
         <div className="filters product-page__filters">
           <div className="filters__item">
@@ -190,11 +188,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         <ProductsList products={displayedProducts} />
       </section>
 
-      <Pagination
-        // currentPage={currentPage}
-        // setCurrentPage={setCurrentPage}
-        pagesTotal={pagesTotal}
-      />
+      <Pagination pagesTotal={pagesTotal} />
     </main>
   );
 };
