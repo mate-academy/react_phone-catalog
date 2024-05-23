@@ -63,7 +63,7 @@ export const Products: React.FC<Props> = ({ type, title }) => {
   useEffect(() => {
     dispatch(loadProducts(type));
     dispatch(loadProductsDetail(type));
-  }, [type]);
+  }, [type, dispatch]);
 
   const drobdownHandler = () => {
     setIsDrobdown(prev => !prev);
@@ -85,7 +85,7 @@ export const Products: React.FC<Props> = ({ type, title }) => {
     searchParams.set('sort', sorted);
     searchParams.set('items', String(perPage));
     setSearchParams(searchParams);
-  }, [searchParams]);
+  }, [sorted, perPage, setSearchParams]);
 
   return (
     <>
@@ -338,3 +338,5 @@ export const Products: React.FC<Props> = ({ type, title }) => {
     </>
   );
 };
+
+export default React.memo(Products);

@@ -24,7 +24,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     dispatch(loadProducts(ProductType.phones));
-  }, []);
+  }, [dispatch]);
 
   const animationVariants = {
     initial: { opacity: 0, x: -100 },
@@ -76,3 +76,5 @@ export const HomePage: React.FC = () => {
     </>
   );
 };
+
+export default React.memo(HomePage);

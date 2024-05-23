@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import styles from './Cart.module.scss';
 import 'bulma/css/bulma.min.css';
 import { NavLink, useNavigate } from 'react-router-dom';
@@ -52,18 +52,24 @@ export const Cart: React.FC<Props> = ({ title }) => {
     return () => {};
   }, [modal, countdown, navigate]);
 
-  const handleCountMinus = (id: number) => {
-    dispatch(addProductCount({ id, increment: -1 }));
-  };
+  const handleCountMinus = useCallback(
+    (id: number) => {
+      dispatch(addProductCount({ id, increment: -1 }));
+    },
+    [dispatch],
+  );
 
-  const handleCountPlus = (id: number) => {
-    dispatch(addProductCount({ id, increment: +1 }));
-  };
+  const handleCountPlus = useCallback(
+    (id: number) => {
+      dispatch(addProductCount({ id, increment: +1 }));
+    },
+    [dispatch],
+  );
 
-  const handleModal = () => {
+  const handleModal = useCallback(() => {
     setModal(true);
     dispatch(clearCart());
-  };
+  }, [dispatch]);
 
   return (
     <>

@@ -3,7 +3,7 @@ import heardBuron from './Pictures/Favourites.png';
 import heardBuronActive from './Pictures/favoriteActive.png';
 import heardBuronDark from './Pictures/favoritesDark.png';
 import { Product } from '../../types/productType';
-import React from 'react';
+import React, { useCallback } from 'react';
 import { useAppDispatch, useAppSelector } from '../../Hooks/hooks';
 import {
   addFavorite,
@@ -34,21 +34,21 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
 
   const dispatch = useAppDispatch();
 
-  const handlerAddFavorites = () => {
+  const handlerAddFavorites = useCallback(() => {
     if (isFavorite) {
       dispatch(removeFavorite(item));
     } else {
       dispatch(addFavorite(item));
     }
-  };
+  }, [dispatch, isFavorite, item]);
 
-  const handlerAddProduct = () => {
+  const handlerAddProduct = useCallback(() => {
     if (isCart) {
       dispatch(removeFromCart(item));
     } else {
       dispatch(addToCart(item));
     }
-  };
+  }, [dispatch, isCart, item]);
 
   const buttonClass = classNames({
     [styles.addCard]: !isCart,
@@ -70,13 +70,13 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
             <img
               className={styles.heardIcon}
               src={theme === Theme.light ? heardBuron : heardBuronDark}
-              alt="Favorite"
+              alt="Favourites"
             ></img>
           ) : (
             <img
               className={styles.heardIcon}
               src={heardBuronActive}
-              alt="Favorite"
+              alt="Favourites"
             ></img>
           )}
         </button>
@@ -84,3 +84,5 @@ export const ButtonsAddandFavorits: React.FC<Props> = ({ item }) => {
     </>
   );
 };
+
+export default React.memo(ButtonsAddandFavorits);

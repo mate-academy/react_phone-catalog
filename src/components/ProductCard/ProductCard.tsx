@@ -82,3 +82,5 @@ export const ProductCard: React.FC<Props> = ({ item }) => {
     </>
   );
 };
+
+export default React.memo(ProductCard);

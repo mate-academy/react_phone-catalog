@@ -47,7 +47,7 @@
   line-height: 56px;
   letter-spacing: -0.48px;
 
-  &darkMode {
+  &Dark {
     color: #F1F2F9;
     text-align: center;
     font-size: 28px;
@@ -435,6 +435,7 @@
   outline: transparent;
   border: none;
   color: #FFF;
+  cursor: pointer;
 
   &:hover {
     border-radius: 8px;
@@ -726,6 +727,7 @@
   outline: transparent;
   border: none;
   color: #FFF;
+  cursor: pointer;
 
   &:hover {
     border-radius: 8px;
@@ -748,17 +750,59 @@
   color: #FFF;
 
   &:hover {
-    border-radius: 8px;
-    box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
+      border-radius: 8px;
+      box-shadow: 0 3px 13px 0 rgba(175, 192, 223, 0.4);
+    }
   }
-}
 
-.line {
-  background: #E2E6E9;
-  width: 80%;
-  height: 1px;
-  border: 1px;
-  gap: 8px;
-  margin-bottom: 24px;
-}
+  .line {
+    background: #E2E6E9;
+    width: 80%;
+    height: 1px;
+    border: 1px;
+    gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  .modal {
+    text-align: center;
+    margin-top: 56px;
+    color: #0F0F11;
+    font-size: 28px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+    width: 100%;
+    max-width: 1136px;
+
+    &darkMode {
+      text-align: center;
+      color: #F1F2F9;
+      margin-top: 56px;
+      font-size: 28px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.48px;
+      width: 100%;
+      max-width: 1136px;
+    }
+  }
+
+  .redirect {
+    text-align: center;
+    color: #0F0F11;
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.48px;
+
+    &Dark {
+      color: #F1F2F9;
+      text-align: center;
+      font-size: 18px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.48px;
+    }
+  }
 }

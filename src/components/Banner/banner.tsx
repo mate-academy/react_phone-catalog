@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import styles from './banner.module.scss';
 import Banner from './Pictures/banner1.jpeg';
 import Banner2 from './Pictures/slide1.png';
@@ -14,7 +14,7 @@ import Loader from '../Loader/Loader';
 
 export const Baner: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);
-  const banners = [Banner, Banner2, Banner3];
+  const banners = useMemo(() => [Banner, Banner2, Banner3], []);
   const swiperRef = useRef<Swiper | null>(null);
   const [activeSlideIndex, setActiveSlideIndex] = useState(0);
   const [imagesLoaded, setImagesLoaded] = useState(false);
@@ -79,7 +79,12 @@ export const Baner: React.FC = () => {
   };
 
   if (!imagesLoaded) {
-    return <Loader />;
+    return (
+      <div className={styles.loaderContainer}>
+        {' '}
+        <Loader />
+      </div>
+    );
   }
 
   return (

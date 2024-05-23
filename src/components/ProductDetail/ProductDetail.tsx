@@ -21,7 +21,7 @@ import {
 // eslint-disable-next-line max-len
 import { ProductType } from '../../Helpers/enumProductType';
 import Loader from '../Loader/Loader';
-import { loadProductsDetail } from '../../Reducers/productSlice';
+import { loadProducts, loadProductsDetail } from '../../Reducers/productSlice';
 import { Theme } from '../../Helpers/theme';
 import classNames from 'classnames';
 
@@ -64,47 +64,49 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     dispatch(loadProductsDetail(type));
+    dispatch(loadProducts(type));
   }, [type]);
 
-  const handlerProductColor = (
-    color: string,
-    event: React.MouseEvent<HTMLDivElement>,
-  ) => {
-    if (product?.color === color) {
-      return;
-    }
+  const handlerProductColor = React.useCallback(
+    (color: string, event: React.MouseEvent<HTMLDivElement>) => {
+      if (product?.color === color) {
+        return;
+      }
 
-    const foundProduct = productDetails.find(
-      item => item.color === color && item.namespaceId === product?.namespaceId,
-    );
+      const foundProduct = productDetails.find(
+        item =>
+          item.color === color && item.namespaceId === product?.namespaceId,
+      );
 
-    setProduct(foundProduct || null);
-    event.stopPropagation();
-  };
+      setProduct(foundProduct || null);
+      event.stopPropagation();
+    },
+    [product, productDetails],
+  );
 
-  const handlerSelectCapacity = (
-    capacity: string,
-    event: React.MouseEvent<HTMLDivElement>,
-  ) => {
-    const currentColor = product?.color;
-    const foundProduct = productDetails.find(
-      item =>
-        item.capacity === capacity &&
-        item.namespaceId === product?.namespaceId &&
-        item.color === currentColor,
-    );
+  const handlerSelectCapacity = React.useCallback(
+    (capacity: string, event: React.MouseEvent<HTMLDivElement>) => {
+      const currentColor = product?.color;
+      const foundProduct = productDetails.find(
+        item =>
+          item.capacity === capacity &&
+          item.namespaceId === product?.namespaceId &&
+          item.color === currentColor,
+      );
 
-    setProduct(foundProduct || null);
-    event.stopPropagation();
-  };
+      setProduct(foundProduct || null);
+      event.stopPropagation();
+    },
+    [product, productDetails],
+  );
 
   const handlerAddProduct = () => {
     const foundProduct = findProduct.find(item => item.name === product?.name);
 
-    if (isCart) {
-      dispatch(removeFromCart(foundProduct));
-    } else {
-      if (foundProduct) {
+    if (foundProduct && foundProduct.id) {
+      if (isCart) {
+        dispatch(removeFromCart(foundProduct));
+      } else {
         dispatch(addToCart(foundProduct));
       }
     }
@@ -113,10 +115,10 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
   const handlerFavoritsAdd = () => {
     const foundProduct = findProduct.find(item => item.name === product?.name);
 
-    if (isFavorite) {
-      dispatch(removeFavorite(foundProduct));
-    } else {
-      if (foundProduct) {
+    if (foundProduct && foundProduct.id) {
+      if (isFavorite) {
+        dispatch(removeFavorite(foundProduct));
+      } else {
         dispatch(addFavorite(foundProduct));
       }
     }
@@ -610,3 +612,5 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
     </>
   );
 };
+
+export default React.memo(ProductDetails);

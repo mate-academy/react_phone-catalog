@@ -9,6 +9,15 @@
   width: 100%;
 }
 
+.loaderContainer {
+  padding-top: 60px;
+  display: flex;
+  width: 100%;
+  height: auto;
+  justify-content: center;
+  align-items: center;
+}
+
 .bannerButtons {
   width: 32px;
   flex-shrink: 0;

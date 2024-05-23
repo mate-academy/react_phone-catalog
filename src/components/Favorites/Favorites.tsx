@@ -8,7 +8,6 @@ import { ProductType } from '../../Helpers/enumProductType';
 import { ProductCard } from '../ProductCard/ProductCard';
 import { Product } from '../../types/productType';
 import favoritsIsEmptyImage from './pictures/product-not-found.png';
-// import favoritsIsEmptyImageDark from './pictures/no-favourites_shot.png';
 import { Theme } from '../../Helpers/theme';
 import { useAppSelector } from '../../Hooks/hooks';
 
