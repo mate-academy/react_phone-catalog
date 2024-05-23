@@ -12,15 +12,23 @@ import { Loader } from '../../Loader/Loader';
 import { Accessorie } from '../../../types/accessories';
 import { Phone } from '../../../types/phone';
 import { Tablet } from '../../../types/tablets';
+import { SlideTitle } from '../../../types/enumSlideDevices';
 
 interface Props {
-  devicesForRender: | Phone[] | Tablet[] | Accessorie[] | (Phone | Tablet | Accessorie)[];
+  devicesForRender:
+  | Phone[] | Tablet[] | Accessorie[] | (Phone | Tablet | Accessorie)[];
   title: string;
+  slideCount: number;
+  discount: boolean;
 }
 
-export const BrandList: React.FC<Props> = ({ devicesForRender, title }) => {
-  const { phones, slidePhoneMargin, sizeScreenMargin, darkThem } =
-    useContext(StateContext);
+export const BrandList: React.FC<Props> = ({
+  devicesForRender,
+  title,
+  slideCount,
+  discount,
+}) => {
+  const { phones, sizeScreenMargin, darkThem } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const [windowSize, setWindowSize] = useState({
     width: window.innerWidth,
@@ -54,9 +62,35 @@ export const BrandList: React.FC<Props> = ({ devicesForRender, title }) => {
     };
   }, [windowSize]);
 
-  const marginForSliding = !slidePhoneMargin
+  const marginForSliding = !slideCount
     ? 0
-    : (sizeScreenMargin + 16) * slidePhoneMargin;
+    : (sizeScreenMargin + 16) * slideCount;
+
+  const handlePrevSlide = () => {
+    switch (title) {
+      case SlideTitle.brand:
+        return dispatch({ type: 'prevSlidePhone' });
+
+      case SlideTitle.hot:
+        return dispatch({ type: 'prevSlideHot' });
+
+      case SlideTitle.aloLike:
+        return dispatch({ type: 'prevSlideLike' });
+    }
+  };
+
+  const handleNextSlide = () => {
+    switch (title) {
+      case SlideTitle.brand:
+        return dispatch({ type: 'nextSlidePhone' });
+
+      case SlideTitle.hot:
+        return dispatch({ type: 'nextSlideHot' });
+
+      case SlideTitle.aloLike:
+        return dispatch({ type: 'nextSlideLike' });
+    }
+  };
 
   return (
     <div className="BrandList">
@@ -65,22 +99,20 @@ export const BrandList: React.FC<Props> = ({ devicesForRender, title }) => {
 
         <div className="BrandList__slide-buttons">
           <button
-            disabled={!slidePhoneMargin}
-            onClick={() => {
-              dispatch({ type: 'prevSlidePhone' });
-            }}
+            disabled={!slideCount}
+            onClick={handlePrevSlide}
             className={cn(
               'BrandList__slide-button BrandList__slide-button--left',
-              { disable: !slidePhoneMargin, dark: darkThem },
+              { disable: !slideCount, dark: darkThem },
             )}
           ></button>
 
           <button
-            disabled={+slidePhoneMargin === 40}
-            onClick={() => dispatch({ type: 'nextSlidePhone' })}
+            disabled={+slideCount === 40}
+            onClick={handleNextSlide}
             className={cn(
               'BrandList__slide-button BrandList__slide-button--right',
-              { disable: +slidePhoneMargin === 40, dark: darkThem },
+              { disable: +slideCount === 40, dark: darkThem },
             )}
           ></button>
         </div>
@@ -99,7 +131,7 @@ export const BrandList: React.FC<Props> = ({ devicesForRender, title }) => {
             ></div>
 
             {devicesForRender.map(phone => (
-              <BrandItem key={phone.id} device={phone} discount={false} />
+              <BrandItem key={phone.id} device={phone} discount={discount} />
             ))}
           </div>
         </>

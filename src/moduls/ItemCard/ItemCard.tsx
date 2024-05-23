@@ -13,6 +13,7 @@ import { Accessorie } from '../../types/accessories';
 import { getRandomNumber } from '../../utils/randomDevice';
 import { BrandList } from '../../componentsApp/SlideListDevices/BrandList/BrandList';
 import { PageNotFound } from '../../componentsApp/PageNotFound/PageNotFound';
+import { SlideTitle } from '../../types/enumSlideDevices';
 
 export const ItemCard: React.FC = () => {
   const {
@@ -23,6 +24,7 @@ export const ItemCard: React.FC = () => {
     favoritesDevice,
     mainItemPhoto,
     darkThem,
+    slideAlsoLikeMargin,
   } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const { pathname } = useLocation();
@@ -255,11 +257,13 @@ export const ItemCard: React.FC = () => {
                   onClick={() => {
                     dispatch({
                       type: 'setMainItemPhoto',
-                      payload: `../${img}`,
+                      payload: `https://olehmarushchak.github.io/react_phone-catalog/${img}`,
                     });
                   }}
                   className={cn('ItemCard__main__photos__side-photos__photo', {
-                    'is-active': mainItemPhoto === `../${img}`,
+                    'is-active':
+                      mainItemPhoto ===
+                      `https://olehmarushchak.github.io/react_phone-catalog/${img}`,
                     dark: darkThem,
                   })}
                 >
@@ -569,7 +573,12 @@ export const ItemCard: React.FC = () => {
         </div>
 
         <div className="ItemCard__Also-like">
-          <BrandList devicesForRender={filteredMapPhone} title="Also like" />
+          <BrandList
+            devicesForRender={filteredMapPhone}
+            title={SlideTitle.aloLike}
+            slideCount={slideAlsoLikeMargin}
+            discount={true}
+          />
         </div>
       </div>
     </div>

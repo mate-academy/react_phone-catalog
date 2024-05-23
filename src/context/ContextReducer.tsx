@@ -41,10 +41,12 @@ export type Action =
   | { type: 'deleteCartItem'; payload: string }
   | { type: 'setCheckout' }
   | { type: 'resetCartItems' }
-  | { type: 'switchThem' };
+  | { type: 'switchThem' }
+  | { type: 'switchSlideInfinity'; payload: boolean };
 
 export interface State {
   sliderImg: number;
+  slideInfinity: boolean;
   phones: Phone[];
   slidePhoneMargin: number;
   slideHotPricesMargin: number;
@@ -319,11 +321,18 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         darkThem: state.darkThem ? false : true,
       };
+
+    case 'switchSlideInfinity':
+      return {
+        ...state,
+        slideInfinity: action.payload,
+      };
   }
 };
 
 const initialState: State = {
   sliderImg: 1,
+  slideInfinity: true,
   phones: [],
   slidePhoneMargin: 0,
   slideHotPricesMargin: 0,

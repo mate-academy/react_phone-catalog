@@ -7,9 +7,11 @@ import { Slider } from '../Slider/Slider';
 import { Category } from '../Category/Category';
 import { BrandList } from '../../../componentsApp/SlideListDevices/BrandList/BrandList';
 import { StateContext } from '../../../context/ContextReducer';
+import { SlideTitle } from '../../../types/enumSlideDevices';
 
 export const HomePage: React.FC = () => {
-  const { phones } = useContext(StateContext);
+  const { phones, slidePhoneMargin, slideHotPricesMargin } =
+    useContext(StateContext);
 
   const newModel = phones.filter(
     phone => phone.id.includes('iphone-14') || phone.id.includes('iphone-13'),
@@ -30,7 +32,12 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className="HomePage__brandNew">
-        <BrandList devicesForRender={newModel} title="Brand new model" />
+        <BrandList
+          devicesForRender={newModel}
+          title={SlideTitle.brand}
+          slideCount={slidePhoneMargin}
+          discount={false}
+        />
       </div>
 
       <div className="HomePage__category">
@@ -38,7 +45,12 @@ export const HomePage: React.FC = () => {
       </div>
 
       <div className="HomePage__hotPrice">
-        <BrandList devicesForRender={hotPriceModel} title="Hot prices" />
+        <BrandList
+          devicesForRender={hotPriceModel}
+          title={SlideTitle.hot}
+          slideCount={slideHotPricesMargin}
+          discount={true}
+        />
       </div>
     </main>
   );

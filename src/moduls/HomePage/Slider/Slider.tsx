@@ -7,19 +7,38 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { DispatchContext, StateContext } from '../../../context/ContextReducer';
 
 export const Slider: React.FC = () => {
-  const { sliderImg, darkThem } = useContext(StateContext);
+  const { sliderImg, darkThem, slideInfinity } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
-    setTimeout(() => {
-      dispatch({ type: 'nextSlide' });
-    }, 5000);
-  }, []);
+    //defualt on
+
+    if (slideInfinity) {
+      setTimeout(() => {
+        dispatch({ type: 'nextSlide' });
+      }, 5000);
+    }
+  }, [sliderImg]);
+
+  const handleNextSlideClick = () => {
+    dispatch({ type: 'switchSlideInfinity', payload: false });
+    dispatch({ type: 'nextSlide' });
+  };
+
+  const handlePrevSlideClick = () => {
+    dispatch({ type: 'switchSlideInfinity', payload: false });
+    dispatch({ type: 'prevSlide' });
+  };
+
+  const handleSwipeImgClick = (n: number) => {
+    dispatch({ type: 'switchSlideInfinity', payload: true });
+    dispatch({ type: 'swipeImg', numberImg: n });
+  };
 
   return (
     <div className="Slider Outlet">
       <button
-        onClick={() => dispatch({ type: 'prevSlide' })}
+        onClick={handlePrevSlideClick}
         className={cn('Slider__button Slider__button--left', {
           dark: darkThem,
         })}
@@ -27,11 +46,11 @@ export const Slider: React.FC = () => {
 
       <div className="Slider__img">
         <div
-          onClick={() => dispatch({ type: 'prevSlide' })}
+          onClick={handlePrevSlideClick}
           className="Slider__img__button-on-phone-prev"
         ></div>
         <div
-          onClick={() => dispatch({ type: 'nextSlide' })}
+          onClick={handleNextSlideClick}
           className="Slider__img__button-on-phone-next"
         ></div>
 
@@ -53,7 +72,7 @@ export const Slider: React.FC = () => {
       </div>
 
       <button
-        onClick={() => dispatch({ type: 'nextSlide' })}
+        onClick={handleNextSlideClick}
         className={cn('Slider__button Slider__button--right', {
           dark: darkThem,
         })}
@@ -61,19 +80,19 @@ export const Slider: React.FC = () => {
 
       <div className="Slider__minimap">
         <a
-          onClick={() => dispatch({ type: 'swipeImg', numberImg: 1 })}
+          onClick={() => handleSwipeImgClick(1)}
           className={cn('Slider__minimap__button', {
             'is-active': sliderImg === 1,
           })}
         ></a>
         <a
-          onClick={() => dispatch({ type: 'swipeImg', numberImg: 2 })}
+          onClick={() => handleSwipeImgClick(2)}
           className={cn('Slider__minimap__button', {
             'is-active': sliderImg === 2,
           })}
         ></a>
         <a
-          onClick={() => dispatch({ type: 'swipeImg', numberImg: 3 })}
+          onClick={() => handleSwipeImgClick(3)}
           className={cn('Slider__minimap__button', {
             'is-active': sliderImg === 3,
           })}
