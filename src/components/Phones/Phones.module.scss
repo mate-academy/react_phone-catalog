@@ -1,0 +1,12 @@
+@import "../../styles/mixins";
+
+.grid {
+  @include pageGrid;
+}
+
+.children {
+  // display: grid;
+  grid-column: span 6;
+  list-style: none;
+  padding-bottom: 40px;
+}
