@@ -115,6 +115,12 @@ export const Tablets = () => {
     }
   }, [cartPhones]);
 
+  const { setUrlState } = useAppContext();
+
+  const clearUrl = () => {
+    setUrlState("home");
+  };
+
   return (
     <section className="phones__wrapper">
       <div className="phones__content">
@@ -258,7 +264,7 @@ export const Tablets = () => {
             <p className="phones__header__paragraph">
               Tablets NOT found
             </p>
-            <NavLink to="/" className="phones__header__return-home">
+            <NavLink to="/" className="phones__header__return-home" onClick={clearUrl}>
               Return HOME page
               <img className="phones__header__return-home__img" src={HomeWhite} alt="building" />
             </NavLink>

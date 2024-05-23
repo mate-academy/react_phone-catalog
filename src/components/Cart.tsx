@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { useAppContext } from './Context';
 import CloseIcon from '../img/Close.svg';
 import HomeWhite from '../img/Home-white.svg';
+import { ClimbingBoxLoader } from 'react-spinners';
 
 /* eslint-disable */
 
@@ -24,27 +25,20 @@ interface Phones {
 }
 
 export const Cart = () => {
-  // const { getPhone } = useAppContext();
-  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
-
   const [productInCart, setProductInCart] = useState<Phones[] | undefined>();
-
   const [totalCaunt, setTotalCaunt] = useState(0);
+  const [isCheckout, setIsCheckout] = useState<boolean>(false);
   const { setSelectedProduct } = useAppContext();
- //
-  // useEffect(() => {
-  //   if(prevCartPhonesArr) {
-  //     localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
-  //   }
-  // }, [prevCartPhonesArr]);
+  const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
+  
+  useEffect(() => {
+    if(prevCartPhonesArr) {
+      localStorage.setItem('savedCartName',  JSON.stringify(prevCartPhonesArr));
+    }
+  }, [prevCartPhonesArr]);
 
-  // useEffect(() => {
-    
-  // }, []);
-  //
   const { getPhone, setGetPhone } = useAppContext();
   const [errorMessage, setErrorMessage] = useState('');
-  errorMessage;
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
 
   useEffect(() => {
@@ -53,7 +47,7 @@ export const Cart = () => {
         const response = await fetch(url);
 
         if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.statusText}`);
+          throw new Error(`Network response was not ok: ${response.statusText, errorMessage}`);
         }
 
         const data = await response.json();
@@ -131,7 +125,7 @@ export const Cart = () => {
               </NavLink>
             </div>
           ) : (
-            <>
+            <div className="cart__content__blocks__wrapp-products">
               <div className="cart__content__blocks__products">
                 {productInCart?.map((item) => (
                   
@@ -188,14 +182,23 @@ export const Cart = () => {
                   ${totalCaunt}
                 </span>
                 <span className="cart__content__blocks__sum-price__text">
-                  Total for {productInCart?.length} items
+                  Total for {prevCartPhonesArr?.reduce((total, item) => total + item.count, 0)} items
                 </span>
                 <div className="cart__content__blocks__sum-price__row"></div>
-                <button className="cart__content__blocks__sum-price__button">
+                <button 
+                  className="cart__content__blocks__sum-price__button"
+                  onClick={() => setIsCheckout(!isCheckout)}
+                >
                   Checkout
                 </button>
               </div>
-            </>
+              {isCheckout && (
+                <div className="checkout">
+                  <ClimbingBoxLoader />
+                  <span>Sorry, but this feature is not yet available</span>
+                </div>
+              )}
+            </div>
           )}
         </div>
       </div>

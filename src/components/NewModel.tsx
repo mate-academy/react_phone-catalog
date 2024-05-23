@@ -99,7 +99,13 @@ export const NewModel = () => {
     }
     setCartPhones('');
     setPrice(0);
-}, [cartPhones, prevCartPhonesArr]);
+  }, [cartPhones, prevCartPhonesArr]);
+
+  const { setUrlState } = useAppContext();
+
+  const handlePhones = () => {
+    setUrlState("phones");
+  };
 
   return !errorMessage ? (
     <>
@@ -151,7 +157,7 @@ export const NewModel = () => {
                 {/* <p>{phone.itemId}</p> */}
                 <NavLink
                   to={`/phones/${phone.itemId}`}
-                  onClick={() => setSelectedProduct(phone.itemId)}
+                  onClick={() => {setSelectedProduct(phone.itemId), handlePhones()}}
                 >
                   <img
                     src={`https://mate-academy.github.io/react_phone-catalog/_new/${phone.image}`}

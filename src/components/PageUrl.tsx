@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useAppContext } from './Context';
 import homeImg from '../img/home.svg';
@@ -10,13 +10,6 @@ export const PageUrl = () => {
   const { urlState, setUrlState } = useAppContext();
   const [allUrl, setAllUrl] = useState<string[] | undefined>();
   const { selectedProduct, setSelectedProduct } = useAppContext();
-
-  useEffect(() => {
-    const currentURL = window.location.href;
-    const substrings = currentURL.split('/');
-
-    setAllUrl(substrings);
-  }, [urlState, selectedProduct]);
 
   const clearUrl = () => {
     setUrlState(undefined);
@@ -30,6 +23,21 @@ export const PageUrl = () => {
     history.back();
     setSelectedProduct('');
   };
+
+  const location = useLocation();
+
+  useEffect(() => {
+    const currentURL = location.pathname;
+    const substrings = currentURL.split('/').filter(Boolean);
+
+    setAllUrl(substrings);
+
+    if (currentURL === '/') {
+      setUrlState('home');
+    } else {
+      setUrlState(substrings[0] || 'home');
+    }
+  }, [location, setUrlState]);
 
   return (urlState && urlState !== 'home' && urlState !== 'cart'
     ? (

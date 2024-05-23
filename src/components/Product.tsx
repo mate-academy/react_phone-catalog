@@ -276,8 +276,8 @@ export const ProductPage = () => {
               <h3 className="product__main__info__about__title">
                 About
               </h3>
-              {gotProduct?.description.map((item) => (
-                <div className="product__main__info__about__block">
+              {gotProduct?.description.map((item, index) => (
+                <div className="product__main__info__about__block" key={index}>
                   <h3 className="product__main__info__about__block__title">{item.title}</h3>
                   {item.text.map((paragraph) => (
                     <p className="product__main__info__about__block__paragraph">{paragraph}</p>

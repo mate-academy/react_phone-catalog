@@ -134,7 +134,7 @@ export const AppProvider = ({ children }: AppContextProps) => {
       const finishPhones = sortedPhones;
 
       if (query) {
-        return finishPhones?.filter(phone => phone.name.includes(query));
+        return finishPhones?.filter(phone => phone.name.toLowerCase().includes(query));
       }
 
       return finishPhones?.slice(firstPageIndex, lastPageIndex);
@@ -144,10 +144,6 @@ export const AppProvider = ({ children }: AppContextProps) => {
   };
 
   const visibleElems = visibleElements();
-
-  // useEffect(() => {
-  //   visibleElements()
-  // }, [query])
 
   return (
     <AppContext.Provider value={{

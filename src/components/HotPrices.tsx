@@ -97,6 +97,12 @@ export const HotPrices = () => {
     }
   }, []);
 
+  // const { setUrlState } = useAppContext();
+
+  // const handlePhones = () => {
+  //   setUrlState("phones");
+  // };
+
   return !errorMessage ? (
     <>
     {loading && (

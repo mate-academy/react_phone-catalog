@@ -81,7 +81,7 @@ export const Header = () => {
     const isWhitespace = newText.trim() === '';
   
     if (!isWhitespace || newText === '') {
-      setQuery(newText);
+      setQuery(newText.toLowerCase());
     }
   };
 
@@ -209,7 +209,7 @@ export const Header = () => {
         onClick={() => handleClick('cart')}
       >
         {prevCartPhonesArr && prevCartPhonesArr.length > 0 && (
-          <div className="header__link__pop-up">{prevCartPhonesArr.length}</div>
+          <div className="header__link__pop-up">{prevCartPhonesArr?.reduce((total, item) => total + item.count, 0)}</div>
         )}
         <img
           src={Basket}

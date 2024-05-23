@@ -200,8 +200,12 @@ export const ProductList = () => {
       setCurrentPage(+page)
     }
 
-    if(perPage !== null && perPage) {
+    if(perPage !== null && perPage !== 'all') {
       setItemsOnPage(+perPage)
+    }
+
+    if(perPage === 'all') {
+      setItemsOnPage(getPhone?.length)
     }
   },[searchParams])
 
@@ -232,19 +236,13 @@ export const ProductList = () => {
     }
   }, [searchParams])
 
-  const change = (param: number) => {
+  const change = (param: number | undefined) => {
     const params = new URLSearchParams(searchParams);
     params.set("page", `1`);
-    params.set("perPage", `${param}`);
+    params.set("perPage", `${param === getPhone?.length ? "all" : param}`);
 
     setSearchParams(params);
   }
-
-  // useEffect(() => {
-  //   const getPhones = getPhone?.filter(phone => phone.name.includes(query))
-
-  //   console.log(getPhones)
-  // }, [query])
 
   return (
     <>
@@ -348,7 +346,7 @@ export const ProductList = () => {
                     <span
                       className="phones__header__buttons__amount__select__option"
                       onClick={() => {
-                        handleChangeItems(); setCurrentPage(1);
+                        handleChangeItems(); setCurrentPage(1); change(getPhone?.length);
                       }}
                     >
                       all

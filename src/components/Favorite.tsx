@@ -59,6 +59,12 @@ export const Favorite = () => {
     setFavoritePhones('');
   }, [favoritePhones, prevFavoriteArr]);
 
+  const { setUrlState } = useAppContext();
+
+  const clearUrl = () => {
+    setUrlState("home");
+  };
+
   return (
     <section className="favorites__wrapper">
       <div className="favorites__content">
@@ -68,7 +74,7 @@ export const Favorite = () => {
             <h3 className="favorites__content__without__title">
               No favourites yet
             </h3>
-            <NavLink to="/" className="phones__header__return-home">
+            <NavLink to="/" className="phones__header__return-home" onClick={clearUrl}>
               Return HOME page
               <img
                 className="phones__header__return-home__img"

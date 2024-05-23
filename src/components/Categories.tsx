@@ -1,6 +1,10 @@
 import { NavLink } from 'react-router-dom';
+import { useAppContext } from './Context';
 
 export const Categories = () => {
+
+  const { setUrlState } = useAppContext();
+  const { setSelectedProduct } = useAppContext()
   const typesOfGoods = [
     {
       type: 'Mobile phones',
@@ -25,6 +29,11 @@ export const Categories = () => {
     },
   ];
 
+  const handleClick = (page: string) => {
+    setUrlState(page);
+    setSelectedProduct('');
+  };
+
   return (
     <section className="categories__wrapper">
       <div className="categories">
@@ -33,7 +42,11 @@ export const Categories = () => {
         </h2>
         <div className="categories__type">
           {typesOfGoods.map((good) => (
-            <NavLink to={good.link} className="categories__type__card">
+            <NavLink 
+              to={good.link}
+              className="categories__type__card"
+              onClick={() => handleClick(good.link)}
+            >
               <div
                 className="categories__type__card__background-img"
                 style={{
