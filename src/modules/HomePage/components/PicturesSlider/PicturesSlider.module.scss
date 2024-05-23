@@ -1,0 +1,70 @@
+@import '../../../shared/variables';
+
+$slider-image-width: 1040px;
+$slider-image-num: 5;
+
+.picturesSlider {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 32px);
+  column-gap: 16px;
+  height: 400px;
+}
+
+.window {
+  overflow: hidden;
+  grid-column: 2 / -2;
+  height: 100%;
+}
+
+.imgContainer {
+  display: flex;
+  height: 100%;
+  width: $slider-image-width * $slider-image-num;
+  
+  transition: translate;
+  transition-property: transform;
+  transition-timing-function: ease-in-out;
+}
+
+.btnLeft {
+  height: 100%;;
+  grid-column: 1 / 2;
+}
+
+.btnRight {
+  height: 100%;
+  grid-column: -2 / -1;
+}
+
+.sliderImg {
+  height: 100%;
+  width: $slider-image-width;
+}
+
+.sliderImg1 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../public/img/banner-accessories.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.sliderImg2 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../public/img/banner-phones.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.sliderImg3 {
+  width: 100%;
+  height: 100%;
+  background-image: url(../../../../../public/img/banner-tablets.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
