@@ -19,6 +19,7 @@
   }
 
   &__items {
+    border: 0;
     position: relative;
     display: grid;
     grid-row-gap: 40px;
@@ -31,6 +32,15 @@
     &__empty-img {
       width: 250px;
       height: 250px;
+
+      &--not-found-product {
+        border: 0;
+        background: url('/assets/img/product-not-found.png') no-repeat;
+        background-size: cover;
+
+        width: 300px;
+        height: 250px;
+      }
     }
   }
 

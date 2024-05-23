@@ -72,12 +72,34 @@
           width: 368px;
           height: 368px;
 
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 400px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 400px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 400px;
+            }
+          }
+
           .hidden {
             top: 0;
             position: absolute;
             width: 368px;
             height: 368px;
             overflow-x: hidden;
+
+
           }
 
           &__hover {
@@ -152,6 +174,26 @@
           display: flex;
           width: 187px;
           height: 187px;
+
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 200px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 200px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 200px;
+            }
+          }
 
           .hidden {
             position: absolute;
@@ -228,6 +270,26 @@
         &__link {
           width: 288px;
           height: 288px;
+
+          &__banner {
+            width: 100%;
+            height: 100%;
+
+            &--phone {
+              background: url('/assets/img/Phones\ -desktop.png');
+              background-size: 300px;
+            }
+
+            &--tablets {
+              background: url('/assets/img/tablets-tamlets.png');
+              background-size: 300px;
+            }
+
+            &--accessories {
+              background: url('/assets/img/accsosu.png');
+              background-size: 300px;
+            }
+          }
 
           .hidden {
             position: absolute;

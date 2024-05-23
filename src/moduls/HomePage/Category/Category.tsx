@@ -22,8 +22,8 @@ export const Category: React.FC = () => {
             className="Category__imgs__img__link Category__imgs__img__link--phone"
           >
             <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/Phones-desktop.464b59621d37fd37fbe8.png"
-              alt="phone"
+              className="Category__imgs__img__link__banner Category__imgs__img__link__banner--phone"
+              // src="https://olehmarushchak.github.io/react_phone-catalog/static/media/Phones-desktop.464b59621d37fd37fbe8.png"
             />
 
             <div className="hidden">
@@ -42,10 +42,7 @@ export const Category: React.FC = () => {
 
         <div className="Category__imgs__img">
           <Link to="/Tablets" className="Category__imgs__img__link">
-            <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/tablets-tamlets.ed3dd9df51129690126b.png"
-              alt="tablets"
-            />
+            <img className="Category__imgs__img__link__banner Category__imgs__img__link__banner--tablets" />
 
             <div className="hidden">
               <div className="Category__imgs__img__link__hover">
@@ -63,10 +60,7 @@ export const Category: React.FC = () => {
 
         <div className="Category__imgs__img">
           <Link to="/Accessories" className="Category__imgs__img__link">
-            <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/acsessor-desktop.b914f4124f0dab3439fb.png"
-              alt="accesories"
-            />
+            <img className="Category__imgs__img__link__banner Category__imgs__img__link__banner--accessories" />
 
             <div className="hidden">
               <div className="Category__imgs__img__link__hover">
