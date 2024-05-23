@@ -5,7 +5,7 @@ import { Footer } from './components/Footer';
 
 export const App = () => {
   return (
-    <div className="App">
+    <div className="App dark">
       <Header />
 
       <main className="container">
