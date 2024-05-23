@@ -1,10 +1,20 @@
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './Header.scss';
 import '../../styles/main.scss';
 
 export const Header: React.FC = () => {
   const [isMenuVisible, setIsMenuVisible] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (isMenuVisible) {
+      (document.querySelector('body') as HTMLBodyElement).style.overflow =
+        'hidden';
+    } else {
+      (document.querySelector('body') as HTMLBodyElement).style.overflow =
+        'scroll';
+    }
+  }, [isMenuVisible]);
 
   return (
     <>
