@@ -19,48 +19,30 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         <Route path="/react_phone-catalog" element={<App />}>
           <Route index element={<HomePage />} />
 
-          <Route path="react_phone-catalog:productId" element={<ItemCard />} />
+          <Route path=":productId" element={<ItemCard />} />
 
-          <Route
-            path="react_phone-catalog/phones/:productId"
-            element={<ItemCard />}
-          />
+          <Route path="/phones/:productId" element={<ItemCard />} />
 
-          <Route
-            path="react_phone-catalog/tablets/:productId"
-            element={<ItemCard />}
-          />
+          <Route path="/tablets/:productId" element={<ItemCard />} />
 
-          <Route
-            path="react_phone-catalog/accessories/:productId"
-            element={<ItemCard />}
-          />
+          <Route path="/accessories/:productId" element={<ItemCard />} />
 
-          <Route
-            path="react_phone-catalog/favorites/:productId"
-            element={<ItemCard />}
-          />
+          <Route path="/favorites/:productId" element={<ItemCard />} />
 
-          <Route path="react_phone-catalog/phones" element={<PhoneCatalog />} />
+          <Route path="phones" element={<PhoneCatalog />} />
 
-          <Route
-            path="react_phone-catalog/tablets"
-            element={<TabletsCatalog />}
-          />
+          <Route path="tablets" element={<TabletsCatalog />} />
 
-          <Route
-            path="react_phone-catalog/accessories"
-            element={<AccessoriesCatalog />}
-          />
+          <Route path="accessories" element={<AccessoriesCatalog />} />
 
-          <Route path="react_phone-catalog/favorites" element={<Favorites />} />
+          <Route path="favorites" element={<Favorites />} />
 
-          <Route path="react_phone-catalog/card" element={<Cart />} />
+          <Route path="card" element={<Cart />} />
 
           <Route path="#" element={<PageNotFound />} />
         </Route>
 
-        <Route path="react_phone-catalog/sidebar" element={<Sidebar />} />
+        <Route path="/sidebar" element={<Sidebar />} />
       </Routes>
     </GlobalProvider>
   </Router>,
