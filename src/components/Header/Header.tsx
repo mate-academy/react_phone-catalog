@@ -16,6 +16,10 @@ export const Header: React.FC = () => {
     }
   }, [isMenuVisible]);
 
+  const handleCloseMenu = () => {
+    setIsMenuVisible(false);
+  };
+
   return (
     <>
       <header id="header">
@@ -38,11 +42,15 @@ export const Header: React.FC = () => {
           <div className="menu-top menu__top">
             <div className="menu-top__strip-wrapper">
               <nav className="menu-top-strip menu-top__strip">
-                <Link className="menu-top-strip__logo" to="/">
+                <Link
+                  className="menu-top-strip__logo"
+                  to="/"
+                  onClick={handleCloseMenu}
+                >
                   <img src="./icons/logo.svg" alt="nice gadgets logo" />
                 </Link>
                 <button
-                  onClick={() => setIsMenuVisible(false)}
+                  onClick={handleCloseMenu}
                   className="menu-top-strip__close"
                 >
                   <img src="./icons/close-16.svg" alt="close icon" />
@@ -51,16 +59,32 @@ export const Header: React.FC = () => {
             </div>
 
             <nav className="menu-category-nav menu-top__nav">
-              <Link className="menu-category-nav__link" to="/">
+              <Link
+                className="menu-category-nav__link"
+                to="/"
+                onClick={handleCloseMenu}
+              >
                 Home
               </Link>
-              <Link className="menu-category-nav__link" to="/phones">
+              <Link
+                className="menu-category-nav__link"
+                to="/phones"
+                onClick={handleCloseMenu}
+              >
                 Phones
               </Link>
-              <Link className="menu-category-nav__link" to="tablets">
+              <Link
+                className="menu-category-nav__link"
+                to="tablets"
+                onClick={handleCloseMenu}
+              >
                 Tablets
               </Link>
-              <Link className="menu-category-nav__link" to="accessories">
+              <Link
+                className="menu-category-nav__link"
+                to="accessories"
+                onClick={handleCloseMenu}
+              >
                 Accessories
               </Link>
             </nav>
@@ -68,10 +92,16 @@ export const Header: React.FC = () => {
 
           {/* 64px height of top flex-grow: 1 */}
           <div className="menu-bottom menu__bottom">
-            <button className="menu-bottom__wishlist menu-bottom__button">
+            <button
+              className="menu-bottom__wishlist menu-bottom__button"
+              onClick={handleCloseMenu}
+            >
               <img src="./icons/heart-black.svg" alt="heart icon" />
             </button>
-            <button className="menu-bottom__cart menu-bottom__button">
+            <button
+              className="menu-bottom__cart menu-bottom__button"
+              onClick={handleCloseMenu}
+            >
               <img src="./icons/cart.svg" alt="cart icon" />
             </button>
           </div>
