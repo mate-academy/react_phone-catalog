@@ -5,6 +5,7 @@ import { CartContext } from '../../context/AppContext';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
 import { CapacityOptions } from './CapacityOptions';
+import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 import { ProductDescriptions } from './ProductDescriptions';
 import { TechSpecs } from './TechSpecs';
 import { BackLink } from '../shared/components/BackLink';
@@ -16,7 +17,6 @@ import { getAllProducts } from '../../helpers/getAllProducts';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
-import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -26,6 +26,9 @@ export const ProductDetailsPage: React.FC = () => {
     useState<DetailedProduct | null>(null);
   const [activeImage, setActiveImage] = useState<string>(
     displayedProduct?.images[0] ?? '',
+  );
+  const [isLoadingProduct, setIsLoadingProduct] = useState<boolean | null>(
+    null,
   );
 
   const { addToCart } = useContext(CartContext);
@@ -48,6 +51,8 @@ export const ProductDetailsPage: React.FC = () => {
 
   // Get product from the Api
   useEffect(() => {
+    setIsLoadingProduct(true);
+
     // Find the product in a certain category
     if (foundProduct) {
       GetDetailedProducts(foundProduct.category as ProductCategories).then(
@@ -60,26 +65,32 @@ export const ProductDetailsPage: React.FC = () => {
           );
         },
       );
-
-      // Get the colors
     }
+
+    setIsLoadingProduct(false);
   }, [foundProduct, productId]);
 
+  if (isLoadingProduct === false && !displayedProduct) {
+    return (
+      <p className="product-not-found body-text--14">
+        Product doesn&apos;t exist{' '}
+        <HomeLink className="product-not-found__home" />
+      </p>
+    );
+  }
+
   if (!displayedProduct) {
-    return <p>Product doesn&apos;t exist</p>;
+    return;
   }
 
   const {
     category,
-    // id,
-    // namespaceId,
     name,
     capacityAvailable,
     capacity,
     priceRegular,
     priceDiscount,
     colorsAvailable,
-    // color,
     images,
     description,
   } = displayedProduct;
@@ -88,7 +99,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   return (
     <>
-      {displayedProduct && (
+      {!isLoadingProduct && displayedProduct && (
         <main className="product-details">
           <section className="product-content product-details__product-content">
             <div className="product-content__top">

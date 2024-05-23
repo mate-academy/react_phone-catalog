@@ -8,12 +8,6 @@
 
   padding-top: 24px;
   overflow: hidden;
-
-  // overflow-wrap: break-word;
-
-  // &__top {
-  //   grid-column: 1 / 5;
-  // }
 }
 
 .breadcrumbs {
@@ -219,19 +213,6 @@
     border: none;
     flex-grow: 1;
   }
-
-  // &__wishlist {
-  // display: flex;
-  // justify-content: center;
-  // align-items: center;
-
-  // box-sizing: border-box;
-  // width: 48px;
-  // height: 48px;
-
-  // border: 1px solid $color-icons-placeholders;
-  // background-color: transparent;
-  // }
 }
 
 .main-info {
@@ -259,4 +240,17 @@
 
     color: $color-primary;
   }
+}
+
+.product-not-found {
+  display: flex;
+  align-items: unset;
+  justify-items: center;
+
+  gap: 8px;
+
+  padding: 60px 0 0 24px;
+  margin: 0 auto;
+
+  text-align: center;
 }
