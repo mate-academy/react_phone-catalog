@@ -91,7 +91,7 @@
   flex-direction: column;
   align-items: center;
 
-  gap: 32px;
+  gap: 12px;
 
   &__link {
     // styleName: Uppercase;
@@ -102,9 +102,18 @@
     letter-spacing: 0.04em;
     text-align: left;
 
+    padding: 6px;
+    border-bottom: 2px solid transparent;
+
     color: $color-secondary;
     text-transform: uppercase;
     text-decoration: none;
+
+    &:hover {
+      color: $color-primary;
+
+      border-color: $color-primary;
+    }
   }
 }
 
