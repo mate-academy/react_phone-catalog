@@ -1,15 +1,12 @@
-// import { BackLink } from '../shared/components/BackLink';
+import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 import './NotFoundPage.scss';
 
 export const NotFoundPage: React.FC = () => {
   return (
     <main className="not-found">
       <div className="not-found__links">
-        <img
-          className="not-found__home"
-          src="./icons/home.svg"
-          alt="home icon"
-        />
+        <HomeLink className="not-found__home" />
+
         <img
           className="not-found__arrow"
           src="icons/arrow-right-disabled-16.svg"

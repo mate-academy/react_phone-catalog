@@ -16,6 +16,7 @@ import { getAllProducts } from '../../helpers/getAllProducts';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
+import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -93,11 +94,8 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="product-content__top">
               <nav className="breadcrumbs product-content__breadcrumbs">
                 <div className="breadcrumbs__wrapper">
-                  <img
-                    className="breadcrumbs__home"
-                    src="./icons/home.svg"
-                    alt="home icon"
-                  />
+                  <HomeLink className="breadcrumbs__home" />
+
                   <img
                     className="breadcrumbs__next"
                     src="./icons/arrow-right-disabled.svg"

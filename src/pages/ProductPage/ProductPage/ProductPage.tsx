@@ -10,6 +10,7 @@ import { ProductCategories } from '../../../types/ProductCategories';
 import './ProductPage.scss';
 import { useSearchParams } from 'react-router-dom';
 import { FilterOption } from '../../../types/FilterOption';
+import { HomeLink } from '../../shared/components/HomeLink/HomeLink';
 
 type Props = {
   category: ProductCategories;
@@ -153,11 +154,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
     <main className="product-page">
       <section className="product-page__top">
         <nav className="product-page-nav">
-          <img
-            className="product-page-nav__home"
-            src="./icons/home.svg"
-            alt="home icon"
-          />
+          <HomeLink className="product-page-nav__home" />
           <img
             className="product-page-nav__next"
             src="./icons/arrow-right-disabled.svg"

@@ -6,11 +6,11 @@ import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { ProductCategories } from './types/ProductCategories';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
-import './utils/_reset.scss';
-import './App.scss';
-import './styles/main.scss';
 import { FavoritesPage } from './pages/FavoritesPage/components/FavoritesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
+import './styles/main.scss';
+import './App.scss';
+import './utils/_reset.scss';
 
 export const App = () => (
   <>

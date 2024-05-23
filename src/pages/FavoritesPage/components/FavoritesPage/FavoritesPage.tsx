@@ -2,6 +2,7 @@ import { useContext } from 'react';
 import { ProductsList } from '../../../ProductPage/ProductsList';
 import { FavoritesContext } from '../../../../context/FavoritesContext';
 import './FavoritesPage.scss';
+import { HomeLink } from '../../../shared/components/HomeLink/HomeLink';
 
 export const FavoritesPage: React.FC = () => {
   const { favoriteProducts } = useContext(FavoritesContext);
@@ -14,11 +15,8 @@ export const FavoritesPage: React.FC = () => {
     <main className="product-page">
       <section className="product-page__top">
         <nav className="product-page-nav">
-          <img
-            className="product-page-nav__home"
-            src="./icons/home.svg"
-            alt="home icon"
-          />
+          <HomeLink className="product-page-nav__home" />
+
           <img
             className="product-page-nav__next"
             src="./icons/arrow-right-disabled.svg"
