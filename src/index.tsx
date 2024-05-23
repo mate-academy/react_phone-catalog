@@ -16,7 +16,7 @@ createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
     <GlobalProvider>
       <Routes>
-        <Route path="/react_phone-catalog" element={<App />}>
+        <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
 
           <Route path=":productId" element={<ItemCard />} />
