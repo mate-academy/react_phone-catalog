@@ -1,6 +1,9 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
 import './Category.scss';
+import phone from '../../../assets/img/Phones -desktop.png';
+import tablets from '../../../assets/img/tablets-tamlets.png';
+import acsess from '../../../assets/img/acsessor - desktop.png';
 import { StateContext } from '../../../context/ContextReducer';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
@@ -18,10 +21,7 @@ export const Category: React.FC = () => {
             to="/Phones"
             className="Category__imgs__img__link Category__imgs__img__link--phone"
           >
-            <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/Phones -desktop.464b59621d37fd37fbe8.png"
-              alt="phone"
-            />
+            <img src={phone} alt="phone" />
 
             <div className="hidden">
               <div className="Category__imgs__img__link__hover">
@@ -39,10 +39,7 @@ export const Category: React.FC = () => {
 
         <div className="Category__imgs__img">
           <Link to="/Tablets" className="Category__imgs__img__link">
-            <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/tablets-tamlets.ed3dd9df51129690126b.png"
-              alt="tablets"
-            />
+            <img src={tablets} alt="tablets" />
 
             <div className="hidden">
               <div className="Category__imgs__img__link__hover">
@@ -60,10 +57,7 @@ export const Category: React.FC = () => {
 
         <div className="Category__imgs__img">
           <Link to="/Accessories" className="Category__imgs__img__link">
-            <img
-              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/acsessor - desktop.b914f4124f0dab3439fb.png"
-              alt="accesories"
-            />
+            <img src={acsess} alt="accesories" />
 
             <div className="hidden">
               <div className="Category__imgs__img__link__hover">

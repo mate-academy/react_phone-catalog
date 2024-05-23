@@ -1,7 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
 import './Footer.scss';
-import logoWhite from '../../assets/img/Logo.svg';
 import logoDark from '../../assets/img/Logo-White.png';
 import { StateContext } from '../../context/ContextReducer';
 
@@ -10,6 +9,8 @@ import cn from 'classnames';
 export const Footer: React.FC = () => {
   const { darkThem } = useContext(StateContext);
 
+  const logoWhite =
+    'https://olehmarushchak.github.io/react_phone-catalog/static/media/Logo.1f9dda44b9bba4aadcc081345bdf963c.svg';
   const logo = darkThem ? logoDark : logoWhite;
 
   return (

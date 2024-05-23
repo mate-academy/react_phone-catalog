@@ -1,9 +1,9 @@
+/* eslint-disable max-len */
 import React, { useContext, useEffect } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import cn from 'classnames';
 
-import logoWhite from '../../assets/img/Logo.svg';
 import logoDark from '../../assets/img/Logo-White.png';
 
 import { Ellipse } from '../Ellipse/Ellipse';
@@ -23,15 +23,14 @@ export const Header: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const { pathname } = useLocation();
 
+  const logoWhite =
+    'https://olehmarushchak.github.io/react_phone-catalog/static/media/Logo.1f9dda44b9bba4aadcc081345bdf963c.svg';
+
   const logo = darkThem ? logoDark : logoWhite;
 
   const DARK_BACKGROUND = '#0F1121';
 
   const DARK_GRAY = '#323542';
-
-  // const PINK = '#905BFF';
-
-  // const LIGHT_GRAY = '#161827';
 
   const LIGHT_BACKGROUND = '#fff';
 
