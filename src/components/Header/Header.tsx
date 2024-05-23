@@ -92,18 +92,20 @@ export const Header: React.FC = () => {
 
           {/* 64px height of top flex-grow: 1 */}
           <div className="menu-bottom menu__bottom">
-            <button
+            <Link
+              to={'/whishlist'}
               className="menu-bottom__wishlist menu-bottom__button"
               onClick={handleCloseMenu}
             >
               <img src="./icons/heart-black.svg" alt="heart icon" />
-            </button>
-            <button
+            </Link>
+            <Link
+              to={'/cart'}
               className="menu-bottom__cart menu-bottom__button"
               onClick={handleCloseMenu}
             >
               <img src="./icons/cart.svg" alt="cart icon" />
-            </button>
+            </Link>
           </div>
         </section>
       )}
