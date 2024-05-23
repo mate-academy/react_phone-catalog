@@ -24,45 +24,6 @@ main {
   margin-bottom: auto;
 }
 
-html {
-  font-family: Mont, Arial, sans-serif;
-  color: $color-primary;
-  scroll-behavior: smooth;
-}
-
-body,
-h1,
-h2,
-h3,
-h4,
-p,
-ul,
-li {
-  margin: 0;
-  padding: 0;
-}
-
-ul,
-li {
-  list-style: none;
-}
-
-a {
-  display: flex;
-  cursor: pointer;
-  border: none;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  resize: none;
-  text-decoration: none;
-  color: $color-primary;
-}
-
-body * {
-  box-sizing: border-box;
-}
-
 body-text {
   font-family: Mont, sans-serif;
   font-size: 14px;
