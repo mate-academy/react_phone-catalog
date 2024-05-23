@@ -14,11 +14,21 @@
     grid-column: 4 / 5;
     justify-self: end;
 
-    height: 16px;
-    padding: 16px;
-    margin-right: -17px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
-    border: 1px solid $color-elements;
+    box-sizing: border-box;
+    height: 48px;
+    width: 48px;
+
+    margin-right: -17px;
+    padding: 0;
+
+    border: none;
+    border-left: 1px solid $color-elements;
+    border-right: 1px solid $color-elements;
+    background-color: transparent;
   }
 }
 
@@ -75,13 +85,18 @@
 
     display: flex;
     align-items: center;
+    justify-content: center;
 
+    box-sizing: border-box;
     height: 48px;
+    width: 48px;
 
-    padding: 0 0 0 16px;
+    margin-right: -17px;
+    padding: 0;
 
     border: none;
     border-left: 1px solid $color-elements;
+    border-right: 1px solid $color-elements;
     background-color: transparent;
   }
 }

@@ -49,6 +49,7 @@ export const Header: React.FC = () => {
                 >
                   <img src="./icons/logo.svg" alt="nice gadgets logo" />
                 </Link>
+
                 <button
                   onClick={handleCloseMenu}
                   className="menu-top-strip__close"
