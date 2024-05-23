@@ -1,2 +1,2 @@
 export const BASE_URL
-  = 'https://mate-academy.github.io/react_phone-catalog/_new/';
+  = 'https://fallenmad.github.io/react_phone-catalog/api';
