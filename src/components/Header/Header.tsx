@@ -2,7 +2,7 @@ import { Logo } from '../Logo';
 import { Navigation } from '../Navigation/Navigation';
 import { NavSearch } from '../NavSearch/NavSearch';
 import './Header.scss';
-// import { Toggler } from '../Elements/Toggler/Toggler';
+import { Toggler } from '../Elements/Toggler/Toggler';
 import { PurchaseNavButtons } from '../Elements/PurchaseNavButtons';
 import { HamburgerMenu } from '../Elements/MenuButton';
 import { useState } from 'react';
@@ -27,7 +27,7 @@ export const Header = () => {
       {isProductsPage && <NavSearch />}
 
       <div className="header__right">
-        {/* <Toggler /> */}
+        <Toggler />
         <PurchaseNavButtons className="header__buttons" />
         <HamburgerMenu handleOpen={() => setIsMenuOpen(true)} />
       </div>
