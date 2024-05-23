@@ -1,1 +1,8 @@
 @use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
+
+.product-page {
+  &__favorites {
+    grid-column: 1 / 5;
+  }
+}

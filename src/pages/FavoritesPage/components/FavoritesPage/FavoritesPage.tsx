@@ -28,7 +28,7 @@ export const FavoritesPage: React.FC = () => {
         </div>
       </section>
 
-      <section className="favorites__products-wrapper">
+      <section className="favorites-products product-page__favorites">
         <ProductsList products={favoriteProducts} />
       </section>
     </main>
