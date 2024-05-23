@@ -1,9 +1,9 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
 import './Category.scss';
-import phone from 'https://olehmarushchak.github.io/react_phone-catalog/assets/img/Phones -desktop.png';
-import tablets from 'https://olehmarushchak.github.io/react_phone-catalog/assets/img/tablets-tamlets.png';
-import acsess from 'https://olehmarushchak.github.io/react_phone-catalog/assets/img/acsessor - desktop.png';
+import phone from '../../../assets/img/Phones -desktop.png';
+import tablets from '../../../assets/img/tablets-tamlets.png';
+import acsess from '../../../assets/img/acsessor - desktop.png';
 import { StateContext } from '../../../context/ContextReducer';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';

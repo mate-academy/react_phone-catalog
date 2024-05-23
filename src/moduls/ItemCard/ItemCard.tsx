@@ -71,7 +71,7 @@ export const ItemCard: React.FC = () => {
     if (itemDevice && itemDevice.images && itemDevice.images.length > 0) {
       dispatch({
         type: 'setMainItemPhoto',
-        payload: `../${itemDevice.images[0]}`,
+        payload: `https://olehmarushchak.github.io/react_phone-catalog/${itemDevice.images[0]}`,
       });
     }
   }, [itemDevice, dispatch]);
