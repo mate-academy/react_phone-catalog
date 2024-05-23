@@ -1,4 +1,4 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { Product } from '../types/ProductCard';
 
 type FavoritesContextType = {
@@ -17,6 +17,18 @@ type Props = {
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
   const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const favoritesFromStorage = localStorage.getItem('favoriteProducts');
+
+    if (favoritesFromStorage) {
+      setFavoriteProducts(JSON.parse(favoritesFromStorage));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
+  }, [favoriteProducts]);
 
   return (
     <FavoritesContext.Provider
