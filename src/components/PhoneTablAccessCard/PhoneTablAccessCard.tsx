@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import './PhoneTablAccessCard.scss';
 import { TabAccessPhone } from "../../types/tabAccessPhones";
 import Favorites from '../../images/homePage/Favorites.svg';
+import redHeart from '../../images/homePage/redHeart.svg';
+import { useAppDispatch } from "../../app/hooks";
+import { actions } from "../../features/favSlice";
 
 type Props = {
   product: TabAccessPhone;
@@ -9,6 +12,23 @@ type Props = {
 };
 
 export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
+  const dispatch = useAppDispatch();
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleFavClick = (product: TabAccessPhone) => {
+
+    if (clicked === false) {
+      setClicked(true);
+      dispatch(actions.addProduct(product));
+    }
+
+    if (clicked === true) {
+    setClicked(false);
+    dispatch(actions.removeProduct(product));
+    }
+  }
+  
   return (
     <div className="card" data-cy="cardsContainer">
       <div className="card__url">
@@ -51,9 +71,11 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
         </div>
         <div className="card__buttons">
           <button className="card__buttons__add">Add to cart</button>
-          <button className="card__buttons__favorite">
+          <button className="card__buttons__favorite"
+            onClick={() => handleFavClick(product)}
+          >
             <img
-              src={Favorites}
+              src={clicked === true ? redHeart : Favorites}
               alt="favorites"
               className="card__buttons__heart"
             />

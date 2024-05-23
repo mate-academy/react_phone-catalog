@@ -8,6 +8,7 @@ import { ProductPage } from './pages/ProductPage/ProductPage';
 import { store } from './app/store';
 import { Category } from './types/category';
 import { ProductDetails } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 
 export const Root = () => {
   
@@ -48,7 +49,7 @@ export const Root = () => {
                   )
                 })
               }
-            <Route path="/favorites"></Route>
+            <Route path="/favourites" element={<FavouritesPage />} />
             <Route path="/cart"></Route>
             <Route path="*" element={<NotFoundPage />} />
           </Route>

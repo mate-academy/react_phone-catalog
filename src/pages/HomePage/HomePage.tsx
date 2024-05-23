@@ -1,7 +1,6 @@
 import { Banner } from './Banner/Banner';
 import './HomePage.scss';
 import { CategoryItems } from './Category/Category';
-import React from 'react';
 import { HotPrices } from './HotPrices/HotPrices';
 import { BrandNew } from './BrandNew/BrandNew';
 

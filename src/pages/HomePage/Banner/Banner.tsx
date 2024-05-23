@@ -2,7 +2,6 @@ import './Banner.scss';
 import '../../../utils/main.scss';
 import { useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import React from 'react';
 
 export const Banner = () => {
   const BASE_URL =

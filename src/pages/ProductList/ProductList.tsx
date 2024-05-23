@@ -11,16 +11,17 @@ import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 
 interface Props {
   products: TabAccessPhone[];
-  sortBy: SortByItem | undefined;
+  sortBy?: SortByItem | undefined;
 }
 
-export const ProductList: React.FC<Props> = ({ products, sortBy }) => {
+export const ProductList: React.FC<Props> = ({ products }) => {
   const { loading } = useAppSelector(state => state.products);
 
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
   const [choosenItems, setChoosenItems] = useLocalStorage<TabAccessPhone[] | []>('products', []);
 
+  const sort = searchParams.get('sortBy') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
   const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
@@ -34,7 +35,7 @@ export const ProductList: React.FC<Props> = ({ products, sortBy }) => {
   }, [products])
 
   function filteredProducts(items: TabAccessPhone[]) {
-    switch (sortBy) {
+    switch (sort) {
       // case SortByItem.Age:
       //   return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
       case SortByItem.Name:
@@ -49,6 +50,10 @@ export const ProductList: React.FC<Props> = ({ products, sortBy }) => {
   const toBeFiltered = filteredProducts(choosenItems);
 
   const filtered = toBeFiltered.slice(firstItemIndex, lastItemIndex);
+
+  console.log('sort', sort)
+  console.log('toBeFiltered', toBeFiltered)
+  console.log('filtered', filtered)
 
   const showPagination = filtered.length < choosenItems.length;
 

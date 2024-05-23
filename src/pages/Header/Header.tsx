@@ -79,7 +79,7 @@ export const Header: React.FC = () => {
       >
         <div className="header__preferies__link">
           <NavLink
-            to="/favorites"
+            to="/favourites"
             className="header__heart header__heart--favorites"
           >
             <img

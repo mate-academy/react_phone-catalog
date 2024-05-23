@@ -1,5 +1,5 @@
-import { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { NavLink, useSearchParams } from 'react-router-dom';
+import { ChangeEvent, useEffect, useMemo } from 'react';
+import { Link, NavLink, useSearchParams } from 'react-router-dom';
 import './ProductPage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
@@ -8,7 +8,8 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Category } from '../../types/category';
 import { ProductList } from '../ProductList/ProductList';
 import { fetchProducts } from '../../features/productssSlice';
-import { SortByItem } from '../../helpers/sortBy';
+import classNames from 'classnames';
+import { getSearchWith } from '../../utils/searchHelpers';
 
 interface Props {
   title: string;
@@ -38,22 +39,39 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     }    
   }, [dispatch, category]) 
 
-  const [sortBy, setSortBy] = useState<SortByItem>();
+  const sortParams = ['', 'Newest', 'Alphabetically', 'Cheapest'];
+
   const [searchParams, setSearchParams] = useSearchParams();
 
+  const sorted = searchParams.get('sortBy') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
 
   const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(event.target.value as SortByItem);
-  };
+    setSearchParams({
+      page: currentPage,
+      perPage: perPage,
+      sortBy: event.target.value,
+    })
+  }
 
   const handlePerPage = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({
       page: currentPage,
       perPage: event.target.value,
+      sort: sorted,
     });
   };
+
+  const currentValue = useMemo(
+    () => searchParams.get(sorted) || sortParams[0],
+    [searchParams, sorted, sortParams],
+  );
+
+  const selectedItem = useMemo(
+    () => sortParams.find(item => item === currentValue) || sortParams[0],
+    [sortParams, currentValue],
+  );
 
   const itemToUpperCase = (item: string) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
@@ -79,17 +97,32 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
             <div className="productsPage__choose">Sort by</div>
-            <select
-              value={sortBy}
+            <select 
+              value={sorted}
               onChange={toBeSortedBy}
               className="productsPage__selectSort"
             >
-              <option></option>
-              <option className="productsPage__option">Newest</option>
-              <option className="productsPage__option">Alphabetically</option>
-              <option className="productsPage__option">Cheapest </option>
-            </select>
-          </div>
+              {sortParams.map((param, index) => {
+                return (
+                  <option key={index}>
+                    <Link
+                      to={{
+                        search: getSearchWith(searchParams, {
+                          sortBy: param,
+                          page: currentPage,
+                          perPage: perPage,
+                        }),
+                      }}
+                      className={classNames('productsPage__option', {
+                        'productsPage__option--main': param === selectedItem})}
+                    >
+                      {param}
+                    </Link>
+                  </option>
+                )
+              })}
+              </select>
+           </div>
           <div className="productsPage__itemsOnPage">
             <div className="productsPage__choose">Items on page</div>
             <select
@@ -106,7 +139,7 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
         </div>
 
         <div className="productsPage__container">
-          <ProductList products={visibleItems} sortBy={sortBy}/>
+          <ProductList products={visibleItems} />
         </div>
       </div>
     </div>
