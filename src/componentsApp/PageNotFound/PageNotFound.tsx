@@ -1,12 +1,14 @@
 /* eslint-disable max-len */
 import './PageNotFound.scss';
+// import empty from '../../../public/img/page-not-found.png';
+// "https://olehmarushchak.github.io/react_phone-catalog/static/media/public/img/page-not-found.png"
 
 export const PageNotFound: React.FC = () => {
   return (
     <div className="PageNotFound">
       <div className="PageNotFound__center">
         <img
-          src="https://olehmarushchak.github.io/react_phone-catalog/static/media/product-not-found.8214da88616b09290166.png"
+          src="../../../public/img/page-not-found.png"
           alt="page not found"
         />
       </div>

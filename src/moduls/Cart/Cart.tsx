@@ -4,7 +4,6 @@ import { CartList } from './CartList/CartList';
 import { DispatchContext, StateContext } from '../../context/ContextReducer';
 
 import './Cart.scss';
-import empty from '../../assets/img/cart-is-empty.png';
 import { Checkout } from './CartCheckout/background/background';
 import { CheckoutBord } from './CartCheckout/bord/bord';
 import { useNavigate } from 'react-router-dom';
@@ -81,7 +80,7 @@ export const Cart: React.FC = () => {
           <div className="Catalog__no-items Catalog__no-items--nonCatalog">
             <img
               className="Catalog__items__empty-img"
-              src={empty}
+              src="https://olehmarushchak.github.io/react_phone-catalog/static/media/cart-is-empty.86ebaf664449a2f61e5e.png"
               alt="empty"
             />
           </div>
