@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
+import { ClimbingBoxLoader } from 'react-spinners';
 import { useAppContext } from './Context';
 import CloseIcon from '../img/Close.svg';
 import HomeWhite from '../img/Home-white.svg';
-import { ClimbingBoxLoader } from 'react-spinners';
 
 /* eslint-disable */
 
@@ -125,7 +125,7 @@ export const Cart = () => {
               </NavLink>
             </div>
           ) : (
-            <div className="cart__content__blocks__wrapp-products">
+            <>
               <div className="cart__content__blocks__products">
                 {productInCart?.map((item) => (
                   
@@ -177,28 +177,30 @@ export const Cart = () => {
                   </div>
                 ))}
               </div>
-              <div className="cart__content__blocks__sum-price">
-                <span className="cart__content__blocks__sum-price__title">
-                  ${totalCaunt}
-                </span>
-                <span className="cart__content__blocks__sum-price__text">
-                  Total for {prevCartPhonesArr?.reduce((total, item) => total + item.count, 0)} items
-                </span>
-                <div className="cart__content__blocks__sum-price__row"></div>
-                <button 
-                  className="cart__content__blocks__sum-price__button"
-                  onClick={() => setIsCheckout(!isCheckout)}
-                >
-                  Checkout
-                </button>
-              </div>
-              {isCheckout && (
+              <div className="cart__content__blocks__wrapp-products">
+                <div className="cart__content__blocks__sum-price">
+                  <span className="cart__content__blocks__sum-price__title">
+                    ${totalCaunt}
+                  </span>
+                  <span className="cart__content__blocks__sum-price__text">
+                    Total for {prevCartPhonesArr?.reduce((total, item) => total + item.count, 0)} items
+                  </span>
+                  <div className="cart__content__blocks__sum-price__row"></div>
+                  <button 
+                    className="cart__content__blocks__sum-price__button"
+                    onClick={() => setIsCheckout(!isCheckout)}
+                  >
+                    Checkout
+                  </button>
+                </div>
+                {isCheckout && (
                 <div className="checkout">
                   <ClimbingBoxLoader />
                   <span>Sorry, but this feature is not yet available</span>
                 </div>
               )}
-            </div>
+              </div>
+            </>
           )}
         </div>
       </div>

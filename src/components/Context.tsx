@@ -134,7 +134,9 @@ export const AppProvider = ({ children }: AppContextProps) => {
       const finishPhones = sortedPhones;
 
       if (query) {
-        return finishPhones?.filter(phone => phone.name.toLowerCase().includes(query));
+        return finishPhones?.filter(
+          phone => phone.name.toLowerCase().includes(query),
+        );
       }
 
       return finishPhones?.slice(firstPageIndex, lastPageIndex);
