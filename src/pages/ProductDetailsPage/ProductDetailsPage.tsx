@@ -90,10 +90,10 @@ export const ProductDetails = () => {
   const [clicked, setClicked] = useState(false);
 
   const handleFavClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>, 
-    prod: TabAccessPhone
-    ) => {
-      event.preventDefault();
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    prod: TabAccessPhone,
+  ) => {
+    event.preventDefault();
 
     if (clicked === false) {
       // event.stopPropagation();
@@ -238,8 +238,9 @@ export const ProductDetails = () => {
                   <button className="details__product__buttonAdd">
                     Add to cart
                   </button>
-                  <button className="details__product__buttonFavorite"
-                    onClick={(event) => handleFavClick(event, product)}
+                  <button
+                    className="details__product__buttonFavorite"
+                    onClick={event => handleFavClick(event, product)}
                   >
                     <img
                       src={clicked === true ? redHeart : Favorites}

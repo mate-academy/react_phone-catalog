@@ -14,17 +14,15 @@ type Props = {
 export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   const dispatch = useAppDispatch();
 
-  const { favProducts } = useAppSelector(
-    state => state.favourites,
-  );
+  const { favProducts } = useAppSelector(state => state.favourites);
 
   const [clicked, setClicked] = useState(false);
 
   const handleFavClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>, 
-    prod: TabAccessPhone
-    ) => {
-      event.preventDefault();
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    prod: TabAccessPhone,
+  ) => {
+    event.preventDefault();
 
     if (clicked === false) {
       dispatch(actions.addProduct(prod));
@@ -35,7 +33,8 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
       dispatch(actions.removeProduct(prod));
       setClicked(false);
     }
-    console.log(favProducts)
+
+    console.log(favProducts);
   };
 
   return (
@@ -92,7 +91,7 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
           <button className="card__buttons__add">Add to cart</button>
           <button
             className="card__buttons__favorite"
-            onClick={(event) => handleFavClick(event, product)}
+            onClick={event => handleFavClick(event, product)}
           >
             <img
               src={clicked === true ? redHeart : Favorites}
