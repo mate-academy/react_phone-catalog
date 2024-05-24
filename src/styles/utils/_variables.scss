@@ -1,0 +1,40 @@
+$breakpoint-tablet: 640px;
+$breakpoint-middle: 768px;
+$breakpoint-desktop: 1200px;
+$with-icons-desktop: 64px;
+$with-icons-tablet: 48px;
+$height-on-desktop: 64px;
+$height-on-tablet: 48px;
+$transition-duration: 0.5s;
+
+:root {
+  --color-background: #fff;
+  --color-surface: #B4BDC3;
+  --color-primary: #313237;
+  --color-secondary: #89939A;
+  --color-icons: #fff;
+  --color-elements: #E2E6E9;
+  --color-hover: #FAFBFC;
+  --color-red: #EB5757;
+  --color-button: #313237;
+  --color-button-hover: #313237;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-filter-bg:#fff
+}
+
+[data-theme="dark"] {
+  --color-background: #0F1121;
+  --color-surface: #323542;
+  --color-primary: #F1F2F9;
+  --color-secondary: #75767F;
+  --color-icons: #4A4D58;
+  --color-elements: #313237;
+  --color-hover: #89939A;
+  --color-button: #905BFF;
+  --color-button-hover: #A378FF;
+  --color-red: #EB5757;
+  --color-white: #fff;
+  --color-black: #000;
+  --color-filter-bg:#323542;
+}
