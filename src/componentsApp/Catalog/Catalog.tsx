@@ -295,8 +295,8 @@ export const Catalog: React.FC<Props> = ({
             <div className="Catalog__no-items">
               <img
                 className="Catalog__items__empty-img Catalog__items__empty-img--not-found-product"
-                // src="https://olehmarushchak.github.io/react_phone-catalog/static/media/product-not-found.8214da88616b09290166.png"
-                // alt="empty"
+                src="https://raw.githubusercontent.com/olehmarushchak/react_phone-catalog/develop/src/assets/img/product-not-found.png"
+                alt="empty"
               />
             </div>
           ) : (
