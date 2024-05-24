@@ -1,0 +1,53 @@
+@import '../../styles/main';
+
+.Header {
+  background-color: lightgreen;
+
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  border-bottom: 1px solid $elements-color;
+
+  &__left {
+    display: flex;
+    gap: 16px;
+
+    @include on-desctop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    padding: 13px 16px;
+
+    @include on-desctop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  // &__favorites, &__cart, &__nav {
+  //   display: none;
+
+  //   @include onTablet {
+  //     display: flex;
+  //   }
+  // }
+
+  // &__favorites, &__cart {
+  //   width: 48px;
+
+  //   @include onDesktop {
+  //     width: 64px;
+  //   }
+  // }
+
+  // &__favorites {
+  //   border-left: 1px solid $surface2-color;
+  //   border-right: 1px solid $surface2-color;
+  // }
+}

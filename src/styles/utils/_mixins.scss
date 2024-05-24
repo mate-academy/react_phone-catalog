@@ -27,3 +27,67 @@
   }
 }
 
+@mixin hover-scale {
+  transition: transform $transition-durration;
+
+  &:hover {
+    transform: scale(1.1);
+    transition-duration: $transition-durration;
+  }
+}
+
+@mixin screen-properties($property, $def, $onTablet, $onDesktop) {
+  #{$property}: #{$def};
+
+  @include on-tablet {
+    #{$property}: #{$onTablet};
+  }
+
+  @include on-desctop {
+    #{$property}: #{$onDesktop};
+  }
+}
+
+// @mixin active {
+//   position: relative;
+
+//   color: $white-color;
+
+//   &::after {
+//     content: '';
+
+//     position: absolute;
+//     bottom: 0px;
+
+//     height: 2px;
+//     width: 100%;
+
+//     background-color: $white-color;
+//   }
+// }
+
+// @mixin buttonBase {
+//   @include flexCenter;
+
+//   height: 32px;
+//   min-width: 32px;
+
+//   @extend %body-text;
+
+//   transition-duration: $transition-durration;
+//   border: 1px solid $icons-color;
+//   cursor: pointer;
+
+//   &:hover:not(:disabled) {
+//     border-color: $primary-color;
+//     box-shadow: 0px 3px 13px 0px #17203142;
+//     cursor: pointer;
+//   }
+
+//   &--active {
+//     color: $white-color;
+//     background-color: $primary-color;
+//     border: 1px solid $primary-color;
+//   }
+// }
+
