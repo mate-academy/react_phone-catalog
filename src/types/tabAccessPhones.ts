@@ -21,4 +21,4 @@ export type TabAccessPhone = {
   camera: string;
   zoom: string;
   cell: string[];
-}
+};

@@ -11,51 +11,48 @@ import { ProductDetails } from './pages/ProductDetailsPage/ProductDetailsPage';
 import { FavouritesPage } from './pages/FavouritesPage/FavouritesPage';
 
 export const Root = () => {
-  
-  const prodCategories = [ 
+  const prodCategories = [
     {
       route: 'phones',
       category: Category.PHONES,
-    }, 
+    },
     {
       route: 'tablets',
       category: Category.TABLETS,
-    }, 
+    },
     {
       route: 'accessories',
       category: Category.ACCESSORIES,
-    }
+    },
   ];
 
   return (
-  <Provider store={store}>
-    <CatalogProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-              {prodCategories.map(({route, category}) => {
+    <Provider store={store}>
+      <CatalogProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              {prodCategories.map(({ route, category }) => {
                 return (
-                  <Route path={`/${route}`} key={route}> 
-                  <Route index element={
-                    <ProductPage 
-                      title={route}
-                      category={category}
-                      /> 
-                  }/> 
-                    <Route path=":productId" element={
-                    <ProductDetails />} /> 
+                  <Route path={`/${route}`} key={route}>
+                    <Route
+                      index
+                      element={
+                        <ProductPage title={route} category={category} />
+                      }
+                    />
+                    <Route path=":productId" element={<ProductDetails />} />
                   </Route>
-                  )
-                })
-              }
-            <Route path="/favourites" element={<FavouritesPage />} />
-            <Route path="/cart"></Route>
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Router>
-    </CatalogProvider>
-  </Provider>
-  )
+                );
+              })}
+              <Route path="/favourites" element={<FavouritesPage />} />
+              <Route path="/cart"></Route>
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Router>
+      </CatalogProvider>
+    </Provider>
+  );
 };

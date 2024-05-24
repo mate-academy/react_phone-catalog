@@ -10,6 +10,7 @@ import { ProductList } from '../ProductList/ProductList';
 import { fetchProducts } from '../../features/productssSlice';
 import classNames from 'classnames';
 import { getSearchWith } from '../../utils/searchHelpers';
+import { SortByItem } from '../../helpers/sortBy';
 
 interface Props {
   title: string;
@@ -25,25 +26,27 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     if (category === Category.PHONES) {
       return products.phones;
     }
+
     if (category === Category.TABLETS) {
       return products.tablets;
-    } 
+    }
 
     return products.accessories;
-
-  }, [category]);
+  }, [category, products.accessories, products.tablets, products.phones]);
 
   useEffect(() => {
     if (category) {
-      dispatch(fetchProducts(category))
-    }    
-  }, [dispatch, category]) 
-
-  const sortParams = ['', 'Newest', 'Alphabetically', 'Cheapest'];
+      dispatch(fetchProducts(category));
+    }
+  }, [dispatch, category]);
 
   const [searchParams, setSearchParams] = useSearchParams();
+  const sortParams = useMemo(
+    () => ['None', 'Newest', 'Alphabetically', 'Cheapest'],
+    [],
+  );
 
-  const sorted = searchParams.get('sortBy') || '';
+  const sortBy = searchParams.get('sortBy') || SortByItem.None;
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
 
@@ -51,21 +54,21 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     setSearchParams({
       page: currentPage,
       perPage: perPage,
-      sortBy: event.target.value,
-    })
-  }
+      sortBy: event.target.value as SortByItem,
+    });
+  };
 
   const handlePerPage = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({
       page: currentPage,
       perPage: event.target.value,
-      sort: sorted,
+      sortBy: sortBy,
     });
   };
 
   const currentValue = useMemo(
-    () => searchParams.get(sorted) || sortParams[0],
-    [searchParams, sorted, sortParams],
+    () => searchParams.get(sortBy) || sortParams[0],
+    [searchParams, sortBy, sortParams],
   );
 
   const selectedItem = useMemo(
@@ -97,8 +100,8 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
         <div className="productsPage__selectParams">
           <div className="productsPage__sortBy">
             <div className="productsPage__choose">Sort by</div>
-            <select 
-              value={sorted}
+            <select
+              value={sortBy}
               onChange={toBeSortedBy}
               className="productsPage__selectSort"
             >
@@ -114,15 +117,16 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
                         }),
                       }}
                       className={classNames('productsPage__option', {
-                        'productsPage__option--main': param === selectedItem})}
+                        'productsPage__option--main': param === selectedItem,
+                      })}
                     >
                       {param}
                     </Link>
                   </option>
-                )
+                );
               })}
-              </select>
-           </div>
+            </select>
+          </div>
           <div className="productsPage__itemsOnPage">
             <div className="productsPage__choose">Items on page</div>
             <select

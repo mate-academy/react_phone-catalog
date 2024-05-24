@@ -64,34 +64,48 @@ const productsSlice = createSlice({
   initialState,
   reducers: {
     setQuery: (state, action) => {
-      state.query = action.payload;
+      const currentState = state;
+
+      currentState.query = action.payload;
     },
   },
   extraReducers: builder => {
     builder
       .addCase(fetchAllProducts.pending, state => {
-        state.loading = true;
+        const currentState = state;
+
+        currentState.loading = true;
       })
       .addCase(fetchAllProducts.fulfilled, (state, action) => {
-        state.loading = false;
-        state.phones = action.payload.phones;
-        state.tablets = action.payload.tablets;
-        state.accessories = action.payload.accessories;
+        const currentState = state;
+
+        currentState.loading = false;
+        currentState.phones = action.payload.phones;
+        currentState.tablets = action.payload.tablets;
+        currentState.accessories = action.payload.accessories;
       })
       .addCase(fetchAllProducts.rejected, state => {
-        state.loading = false;
-        state.error = true;
+        const currentState = state;
+
+        currentState.loading = false;
+        currentState.error = true;
       })
       .addCase(fetchProducts.pending, state => {
-        state.loading = true;
+        const currentState = state;
+
+        currentState.loading = true;
       })
       .addCase(fetchProducts.fulfilled, (state, action) => {
-        state.loading = false;
-        state[action.meta.arg] = action.payload;
+        const currentState = state;
+
+        currentState.loading = false;
+        currentState[action.meta.arg] = action.payload;
       })
       .addCase(fetchProducts.rejected, state => {
-        state.loading = false;
-        state.error = true;
+        const currentState = state;
+
+        currentState.loading = false;
+        currentState.error = true;
       });
   },
 });

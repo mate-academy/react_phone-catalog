@@ -1,8 +1,10 @@
-import { TabAccessPhone } from "../types/tabAccessPhones";
+import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export const sliceToShow = (
-    sorted: TabAccessPhone[], 
-    currentPage: number, itemsOnPage: number) => {
+  sorted: TabAccessPhone[],
+  currentPage: number,
+  itemsOnPage: number,
+) => {
   const firstPageIndex = (currentPage - 1) * itemsOnPage;
   const lastPageIndex = firstPageIndex + itemsOnPage;
 

@@ -1,15 +1,15 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TabAccessPhone } from '../types/tabAccessPhones';
 
-export type favProductsInfo = {
+export type FavProductsInfo = {
   favProducts: TabAccessPhone[];
 };
 
-const initialState: favProductsInfo = {
+const initialState: FavProductsInfo = {
   favProducts: [],
 };
 
-const favSlice = createSlice({
+const FavSlice = createSlice({
   name: 'favProducts',
   initialState,
   reducers: {
@@ -22,10 +22,12 @@ const favSlice = createSlice({
     removeProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      currentState.favProducts = currentState.favProducts.filter(prod => prod !== action.payload);
-    }
+      currentState.favProducts = currentState.favProducts.filter(
+        prod => prod !== action.payload,
+      );
+    },
   },
 });
 
-export const { actions } = favSlice;
-export default favSlice.reducer;
+export const { actions } = FavSlice;
+export default FavSlice.reducer;

@@ -4,10 +4,9 @@ import Vector_Up from '../../images/homePage/Vector_Up.svg';
 import './Footer.scss';
 
 export const Footer = () => {
-  
   const handleScrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: 'smooth'})
-  }
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   return (
     <footer className="footer">
@@ -17,7 +16,10 @@ export const Footer = () => {
         </NavLink>
       </div>
       <div className="footer__links">
-        <NavLink to="https://Hanna-Balabukha.github.io/react_phone-catalog/" className="footer__link">
+        <NavLink
+          to="https://Hanna-Balabukha.github.io/react_phone-catalog/"
+          className="footer__link"
+        >
           GITHUB
         </NavLink>
         <NavLink to="/" className="footer__link">
@@ -28,10 +30,7 @@ export const Footer = () => {
         </NavLink>
       </div>
       <div className="footer__back">
-        <button 
-          className="footer__back__button"
-          onClick={handleScrollToTop}
-          >
+        <button className="footer__back__button" onClick={handleScrollToTop}>
           Back to top
           <img src={Vector_Up} className="footer__back__img" />
         </button>

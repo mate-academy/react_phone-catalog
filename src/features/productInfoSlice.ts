@@ -27,7 +27,10 @@ const productInfoSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
-    setProductInfo: (state, action: PayloadAction<TabAccessPhone | undefined>) => {
+    setProductInfo: (
+      state,
+      action: PayloadAction<TabAccessPhone | undefined>,
+    ) => {
       const currentState = state;
 
       currentState.product = action.payload;
@@ -35,6 +38,7 @@ const productInfoSlice = createSlice({
   },
 });
 
-export const selectedInfoProduct = (state: RootState) => state.selectedProduct.product;
+export const selectedInfoProduct = (state: RootState) =>
+  state.selectedProduct.product;
 export const { setProductInfo } = productInfoSlice.actions;
 export default productInfoSlice.reducer;

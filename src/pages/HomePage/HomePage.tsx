@@ -5,7 +5,6 @@ import { HotPrices } from './HotPrices/HotPrices';
 import { BrandNew } from './BrandNew/BrandNew';
 
 export const HomePage = () => {
-
   return (
     <>
       <div className="homePage">

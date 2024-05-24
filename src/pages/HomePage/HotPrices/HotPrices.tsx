@@ -13,22 +13,20 @@ import { TabAccessPhone } from '../../../types/tabAccessPhones';
 import { PhoneTablAccessCard } from '../../../components/PhoneTablAccessCard/PhoneTablAccessCard';
 
 export const HotPrices = () => {
-  const { 
-    elOnPage,
-    currentPage,
-    handlePreviousPage, 
-    handleNextPage, 
-  } = useContext(CatalogContext);
+  const { elOnPage, currentPage, handlePreviousPage, handleNextPage } =
+    useContext(CatalogContext);
 
-    const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
 
-    const { phones, tablets, accessories, error } = useAppSelector(state => state.products);
-  
-    useEffect(() => {
-      dispatch(fetchAllProducts())
-    }, [dispatch]) 
-  
-    const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
+  const { phones, tablets, accessories, error } = useAppSelector(
+    state => state.products,
+  );
+
+  useEffect(() => {
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
+
+  const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
 
   const sortedById = allProducts?.sort((a, b) => (+a.id > +b.id ? 1 : -1));
 
@@ -81,10 +79,9 @@ export const HotPrices = () => {
                 to={`${item.category}/${item.id}`}
                 className="productsPage__link"
               >
-              <PhoneTablAccessCard product={item} key={item.id} />
+                <PhoneTablAccessCard product={item} key={item.id} />
               </NavLink>
-            ))
-            }
+            ))}
           </div>
         </div>
       </div>

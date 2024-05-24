@@ -1,10 +1,10 @@
-import React, { useState } from "react";
+import React, { useState } from 'react';
 import './PhoneTablAccessCard.scss';
-import { TabAccessPhone } from "../../types/tabAccessPhones";
+import { TabAccessPhone } from '../../types/tabAccessPhones';
 import Favorites from '../../images/homePage/Favorites.svg';
 import redHeart from '../../images/homePage/redHeart.svg';
-import { useAppDispatch } from "../../app/hooks";
-import { actions } from "../../features/favSlice";
+import { useAppDispatch } from '../../app/hooks';
+import { actions } from '../../features/favSlice';
 
 type Props = {
   product: TabAccessPhone;
@@ -16,19 +16,25 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
 
   const [clicked, setClicked] = useState(false);
 
-  const handleFavClick = (product: TabAccessPhone) => {
+  const handleFavClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>, 
+    prod: TabAccessPhone
+    ) => {
+      event.preventDefault();
 
     if (clicked === false) {
+      // event.stopPropagation();
       setClicked(true);
-      dispatch(actions.addProduct(product));
+      dispatch(actions.addProduct(prod));
     }
 
     if (clicked === true) {
-    setClicked(false);
-    dispatch(actions.removeProduct(product));
+      // event.stopPropagation();
+      setClicked(false);
+      dispatch(actions.removeProduct(prod));
     }
-  }
-  
+  };
+
   return (
     <div className="card" data-cy="cardsContainer">
       <div className="card__url">
@@ -42,16 +48,26 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
         <div className="card__header">
           <div className="card__name">{product.name}</div>
           <div className="card__price">
-            {brand
-              ? <div className="card__price__no-discount card__price__no-discount--brand">
+            {brand ? (
+              <div
+                className="card__price__no-discount 
+                card__price__no-discount--brand"
+              >
+                ${product.priceRegular}
+              </div>
+            ) : (
+              <>
+                <div className="card__price__discount">
+                  ${product.priceDiscount}
+                </div>
+                <div
+                  className="card__price__no-discount 
+                  card__price__no-discount--hot"
+                >
                   ${product.priceRegular}
                 </div>
-              : <><div className="card__price__discount">${product.priceDiscount}</div>
-                  <div className="card__price__no-discount card__price__no-discount--hot">
-                    ${product.priceRegular}
-                  </div>
-                </>
-            }
+              </>
+            )}
           </div>
         </div>
         <div className="card__line"></div>
@@ -71,8 +87,9 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
         </div>
         <div className="card__buttons">
           <button className="card__buttons__add">Add to cart</button>
-          <button className="card__buttons__favorite"
-            onClick={() => handleFavClick(product)}
+          <button
+            className="card__buttons__favorite"
+            onClick={(event) => handleFavClick(event, product)}
           >
             <img
               src={clicked === true ? redHeart : Favorites}

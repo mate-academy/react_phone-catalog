@@ -1,4 +1,4 @@
-export const PRODUCTS_COLORS: { [color:string]: string } = {
+export const PRODUCTS_COLORS: { [color: string]: string } = {
   black: '#4C4C4C',
   rosegold: '#FED0C6',
   gold: '#FCDBC1',

@@ -8,11 +8,13 @@ import { fetchAllProducts } from '../../../features/productssSlice';
 export const CategoryItems = () => {
   const dispatch = useAppDispatch();
 
-  const { phones, tablets, accessories } = useAppSelector(state => state.products);
+  const { phones, tablets, accessories } = useAppSelector(
+    state => state.products,
+  );
 
   useEffect(() => {
-    dispatch(fetchAllProducts())
-  }, [dispatch]) 
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   const BASE_ULR =
     'https://mate-academy.github.io/react_phone-catalog/_new/img/';

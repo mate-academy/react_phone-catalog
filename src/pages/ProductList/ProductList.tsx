@@ -11,7 +11,7 @@ import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 
 interface Props {
   products: TabAccessPhone[];
-  sortBy?: SortByItem | undefined;
+  sorted?: SortByItem | undefined;
 }
 
 export const ProductList: React.FC<Props> = ({ products }) => {
@@ -19,41 +19,44 @@ export const ProductList: React.FC<Props> = ({ products }) => {
 
   const [searchParams] = useSearchParams();
   const { pathname } = useLocation();
-  const [choosenItems, setChoosenItems] = useLocalStorage<TabAccessPhone[] | []>('products', []);
+  const [choosenItems, setChoosenItems] = useLocalStorage<
+    TabAccessPhone[] | []
+  >('products', []);
 
-  const sort = searchParams.get('sortBy') || '';
+  const sortBy = searchParams.get('sortBy');
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
   const itemsPerPage = perPage === 'all' ? choosenItems.length : perPage;
   const firstItemIndex = (+currentPage - 1) * +itemsPerPage;
-  const lastItemIndex = Math.min((+currentPage) * (+itemsPerPage), choosenItems.length);
+  const lastItemIndex = Math.min(
+    +currentPage * +itemsPerPage,
+    choosenItems.length,
+  );
 
   useEffect(() => {
     if (products.length) {
-      setChoosenItems(products)
+      setChoosenItems(products);
     }
-  }, [products])
+  }, [products, setChoosenItems]);
 
   function filteredProducts(items: TabAccessPhone[]) {
-    switch (sort) {
+    const tempItems = [...items];
+
+    switch (sortBy) {
       // case SortByItem.Age:
       //   return items?.sort((a, b) => (a.year - b.year ? 1 : -1));
       case SortByItem.Name:
-        return items.sort((a, b) => a.name.localeCompare(b.name));
+        return tempItems.sort((a, b) => a.name.localeCompare(b.name));
       case SortByItem.Price:
-        return items.sort((a, b) => a.priceDiscount - b.priceDiscount);
+        return tempItems.sort((a, b) => a.priceDiscount - b.priceDiscount);
       default:
-        return items;
+        return tempItems;
     }
   }
 
   const toBeFiltered = filteredProducts(choosenItems);
 
   const filtered = toBeFiltered.slice(firstItemIndex, lastItemIndex);
-
-  console.log('sort', sort)
-  console.log('toBeFiltered', toBeFiltered)
-  console.log('filtered', filtered)
 
   const showPagination = filtered.length < choosenItems.length;
 
@@ -70,7 +73,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
                 to={{ pathname: `${pathname}/${product.id}` }}
                 className="productsPage__link"
               >
-                <PhoneTablAccessCard product={product} key={product.id}/>
+                <PhoneTablAccessCard product={product} key={product.id} />
               </NavLink>
             );
           })

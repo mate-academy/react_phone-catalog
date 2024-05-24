@@ -13,22 +13,20 @@ import { PhoneTablAccessCard } from '../../../components/PhoneTablAccessCard/Pho
 import { TabAccessPhone } from '../../../types/tabAccessPhones';
 
 export const BrandNew = () => {
-  const {
-    elOnPage,
-    currentPage,
-    handlePreviousPage,
-    handleNextPage,
-  } = useContext(CatalogContext);
+  const { elOnPage, currentPage, handlePreviousPage, handleNextPage } =
+    useContext(CatalogContext);
 
   const brand = true;
 
   const dispatch = useAppDispatch();
 
-  const { phones, tablets, accessories, error } = useAppSelector(state => state.products);
+  const { phones, tablets, accessories, error } = useAppSelector(
+    state => state.products,
+  );
 
   useEffect(() => {
-    dispatch(fetchAllProducts())
-  }, [dispatch]) 
+    dispatch(fetchAllProducts());
+  }, [dispatch]);
 
   const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
 
@@ -85,8 +83,8 @@ export const BrandNew = () => {
                 to={`${item.category}/${item.id}`}
                 className="productsPage__link"
               >
-                <PhoneTablAccessCard 
-                  product={item} 
+                <PhoneTablAccessCard
+                  product={item}
                   key={item.id}
                   brand={brand}
                 />
