@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Header.module.scss';
 
-const Header: React.FC = () => (
+export const Header: React.FC = () => (
   <header className={styles.header}>
     <div className={styles['header__container--1']}>
       <img
@@ -38,5 +38,3 @@ const Header: React.FC = () => (
     </div>
   </header>
 );
-
-export default Header;
