@@ -2,7 +2,7 @@ import { Cart } from '../Cart';
 import { Favorites } from '../Favorites';
 import { Logo } from '../Logo';
 import { Nav } from '../Nav';
-// import { NavMobile } from '../NavMobile';
+import { NavMobile } from '../NavMobile';
 
 import classes from './Header.module.scss';
 
@@ -26,8 +26,7 @@ export const Header = () => {
         <div className={classes.Header__cart}>
           <Cart />
         </div>
-        {/* <NavMobile /> */}
-        NavMobile
+        <NavMobile />
       </div>
     </header>
   );

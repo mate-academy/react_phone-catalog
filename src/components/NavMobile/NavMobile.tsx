@@ -1,71 +1,73 @@
-// /* eslint-disable import/no-extraneous-dependencies */
-// import Hamburger from 'hamburger-react';
-// import './NavMobile.scss';
-// import { useClickAway } from 'react-use';
-// import { useRef, useState } from 'react';
-// import { motion } from 'framer-motion';
-// import { NavLink } from 'react-router-dom';
-// import classNames from 'classnames';
-// import { Favorites } from '../Favorites';
-// import { Cart } from '../Cart';
-// import { Logo } from '../Logo';
-// import { PAGES } from '../../helpers/constants';
+/* eslint-disable import/no-extraneous-dependencies */
+import { useRef, useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
-// export const NavMobile = () => {
-//   const [isOpen, setOpen] = useState(false);
-//   const ref = useRef(null);
+import Hamburger from 'hamburger-react';
+import { useClickAway } from 'react-use';
+import { motion } from 'framer-motion';
+import classNames from 'classnames';
 
-//   useClickAway(ref, () => setOpen(false));
+import { Favorites } from '../Favorites';
+import { Cart } from '../Cart';
+import { Logo } from '../Logo';
+import { PAGES } from '../../constants/pages';
 
-//   const activeClass = ({ isActive }: { isActive: boolean }) => {
-//     return classNames(
-//       'NavMobile__item',
-//       { 'NavMobile__item--active': isActive },
-//     );
-//   };
+import classes from './NavMobile.module.scss';
 
-//   return (
-//     <>
-//       <div className="NavMobile">
-//         <Hamburger toggled={isOpen} size={10} toggle={setOpen} />
-//       </div>
+export const NavMobile = () => {
+  const [isOpen, setOpen] = useState(false);
+  const ref = useRef(null);
 
-//       {isOpen && (
-//         <motion.aside
-//           className="NavMobile__menu"
-//           initial={{ opacity: 0 }}
-//           animate={{ opacity: 1 }}
-//           exit={{ opacity: 0 }}
-//           transition={{ duration: 0.7 }}
-//         >
-//           <div className="NavMobile__top">
-//             <Logo onClick={() => setOpen(false)} />
-//             <div className="NavMobile__menu-button">
-//               <Hamburger toggled={isOpen} size={10} toggle={setOpen} />
-//             </div>
-//           </div>
+  useClickAway(ref, () => setOpen(false));
 
-//           <div className="NavMobile__navigation">
-//             {PAGES.map(page => (
-//               <NavLink
-//                 to={`/${page === 'home' ? '' : page}`}
-//                 key={page}
-//                 className={activeClass}
-//                 onClick={() => setOpen(false)}
-//               >
-//                 {page}
-//               </NavLink>
-//             ))}
-//           </div>
+  const activeClass = ({ isActive }: { isActive: boolean }) => {
+    return classNames([classes.NavMobile__item], {
+      [classes.active]: isActive,
+    });
+  };
 
-//           <div className="NavMobile__bottom">
-//             <div className="NavMobile__favorites">
-//               <Favorites onClick={() => setOpen(false)} />
-//             </div>
-//             <Cart onClick={() => setOpen(false)} />
-//           </div>
-//         </motion.aside>
-//       )}
-//     </>
-//   );
-// };
+  return (
+    <>
+      <div className={classes.NavMobile}>
+        <Hamburger toggled={isOpen} size={10} toggle={setOpen} />
+      </div>
+
+      {isOpen && (
+        <motion.aside
+          className={classes.NavMobile__menu}
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 0.7 }}
+        >
+          <div className={classes.NavMobile__top}>
+            <Logo onClick={() => setOpen(false)} />
+            <div className={classes['NavMobile__menu-button']}>
+              <Hamburger toggled={isOpen} size={10} toggle={setOpen} />
+            </div>
+          </div>
+
+          <div className={classes.NavMobile__navigation}>
+            {PAGES.map(page => (
+              <NavLink
+                to={`/${page === 'home' ? '' : page}`}
+                key={page}
+                className={activeClass}
+                onClick={() => setOpen(false)}
+              >
+                {page}
+              </NavLink>
+            ))}
+          </div>
+
+          <div className={classes.NavMobile__bottom}>
+            <div className={classes.NavMobile__favorites}>
+              <Favorites onClick={() => setOpen(false)} />
+            </div>
+            <Cart onClick={() => setOpen(false)} />
+          </div>
+        </motion.aside>
+      )}
+    </>
+  );
+};
