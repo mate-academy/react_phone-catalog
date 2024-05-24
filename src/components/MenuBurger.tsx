@@ -19,7 +19,7 @@ export const MenuBurger = () => {
   return (
     <section
       className={cn('burger-menu__wrapper')}
-      style={isMenuBurger ? { transform: 'translateX(0)' } : undefined}
+      style={isMenuBurger ? { transform: 'translateX(0)', opacity: '1' } : undefined}
     >
       <div className="burger-menu__content">
         <header className="header">

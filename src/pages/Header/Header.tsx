@@ -160,7 +160,7 @@ export const Header = () => {
           </NavLink>
         </ul>
       </nav>
-      {(urlState === 'phones' || urlState === 'tablets' || urlState === 'accessories' || urlState === "favorite") && (
+      {(urlState === 'phones') && (
       <label className="header__search">
         <input
           type="text"

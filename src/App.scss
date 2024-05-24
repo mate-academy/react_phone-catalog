@@ -832,7 +832,8 @@ body {
 @keyframes slideDown {
   0% {
     transform: translateY(-20%);
-    opacity: 0.5;
+    opacity: 0.3;
+    border: none;
   }
   100% {
     transform: translateY(0);
@@ -1646,7 +1647,7 @@ body {
 
         &__button {
           background-color: #313237;
-          border: none;
+          border: solid 1px #fff;
           width: 100%;
           padding: 14px;
           color: #fff;
@@ -1654,13 +1655,25 @@ body {
           font-weight: 600;
           font-size: 14px;
           line-height: 21px;
+          cursor: pointer;
+          transition: all 0.3s ease;
+
+          &:hover {
+            background-color: #fff;
+            border: solid 1px #313237;
+            color: #313237;
+          }
+
+          &:active {
+            opacity: 0.5;
+          }
         }
       }
 
       &__wrapp-products {
         display: flex;
-          flex-direction: column;
-          align-items: center;
+        flex-direction: column;
+        align-items: center;
       }
 
       &__products {
@@ -1922,7 +1935,6 @@ body {
 }
 
 .clockLoader {
-
   &__wrapper {
     height: 200px;
     display: flex;
@@ -1946,7 +1958,7 @@ body {
 .burger-menu {
   &__wrapper {
     transform: translateX(-1800px);
-    opacity: 1;
+    opacity: 0;
     pointer-events: all;
     overflow: hidden;
     position: fixed;
@@ -1995,4 +2007,10 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
+  border: solid 1px #e2e6e9;
+  min-width: 368px;
+  padding: 24px;
+  transition: all 0.3s ease;
+  animation: slideDown 0.5s ease;
 }
