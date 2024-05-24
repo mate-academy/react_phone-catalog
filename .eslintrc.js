@@ -1,7 +1,34 @@
 module.exports = {
+  env: {
+    browser: true,
+    es2021: true,
+  },
   extends: [
-    '@mate-academy/eslint-config-react-typescript',
-    'plugin:cypress/recommended',
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react/recommended',
+    'prettier'
   ],
-  rules: {},
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 12,
+    project: './tsconfig.json',
+    sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
+  },
+  settings: {
+    'import/extensions': ['.js', '.jsx', '.ts', '.tsx'],
+    'import/parsers': {
+      '@typescript-eslint/parser': ['.ts', '.tsx'],
+    },
+    'import/resolver': {
+      typescript: {},
+    },
+  },
+  plugins: ['react', 'react-hooks', '@typescript-eslint', 'prettier'],
+  rules: {
+    // Customize rules here as per your project's needs
+  },
 };

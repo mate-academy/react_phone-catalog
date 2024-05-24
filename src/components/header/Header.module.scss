@@ -1,0 +1,25 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+
+  &__container--1,
+  &__container--2 {
+    display: flex;
+    align-items: center;
+  }
+
+  &__nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+
+    &__element {
+      margin-left: 15px;
+    }
+  }
+
+  &__fav,
+  &__cart {
+    margin-left: 10px;
+  }
+}

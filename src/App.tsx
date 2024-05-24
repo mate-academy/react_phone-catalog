@@ -1,7 +1,11 @@
+import React from 'react';
 import './App.scss';
+import { Header } from './components/header';
 
-export const App = () => (
+export const App: React.FC = () => (
   <div className="App">
-    <h1>Product Catalog</h1>
+    <Header />
+
+    <h1>Product Catalog mja</h1>
   </div>
 );
