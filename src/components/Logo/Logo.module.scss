@@ -14,29 +14,29 @@
   background-position: center;
   background-size: contain;
 
-  // @include hoverScale;
+  @include hover-scale;
 
-  // &__img {
-  //   position: relative;
-  //   top: -15%;
-  //   right: -5%;
-  //   width: 9px;
-  //   height: 12px;
+  &__img {
+    position: relative;
+    top: -15%;
+    right: -5%;
+    width: 9px;
+    height: 12px;
 
-  //   transition: all .5s ease-in-out;
-  // }
+    transition: all .5s ease-in-out;
+  }
 
-  // @include onDesktop {
-  //   width: 80px;
-  //   height: 26px;
+  @include on-desctop {
+    width: 80px;
+    height: 26px;
 
-  //   &__img {
-  //     width: 11px;
-  //     height: 15px;
-  //   }
-  // }
+    &__img {
+      width: 11px;
+      height: 15px;
+    }
+  }
 }
 
-// .Logo:hover.Logo>img {
-//   transform: scale(1.2) rotate(360deg);
-// }
+.Logo:hover.Logo>img {
+  transform: scale(1.2) rotate(360deg);
+}

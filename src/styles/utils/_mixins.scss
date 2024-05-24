@@ -48,26 +48,25 @@
   }
 }
 
-// @mixin active {
-//   position: relative;
+@mixin active {
+  position: relative;
 
-//   color: $white-color;
+  color: $white-color;
 
-//   &::after {
-//     content: '';
+  &::after {
+    content: '';
 
-//     position: absolute;
-//     bottom: 0px;
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
 
-//     height: 2px;
-//     width: 100%;
-
-//     background-color: $white-color;
-//   }
-// }
+    background-color: $white-color;
+  }
+}
 
 // @mixin buttonBase {
-//   @include flexCenter;
+//   @include flex-center;
 
 //   height: 32px;
 //   min-width: 32px;

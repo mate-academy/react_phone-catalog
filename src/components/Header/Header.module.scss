@@ -1,8 +1,6 @@
 @import '../../styles/main';
 
 .Header {
-  background-color: lightgreen;
-
   display: flex;
   justify-content: space-between;
   gap: 16px;
@@ -30,24 +28,24 @@
     display: flex;
   }
 
-  // &__favorites, &__cart, &__nav {
-  //   display: none;
+  &__favorites, &__cart, &__nav {
+    display: none;
 
-  //   @include onTablet {
-  //     display: flex;
-  //   }
-  // }
+    @include on-tablet {
+      display: flex;
+    }
+  }
 
-  // &__favorites, &__cart {
-  //   width: 48px;
+  &__favorites, &__cart {
+    width: 48px;
 
-  //   @include onDesktop {
-  //     width: 64px;
-  //   }
-  // }
+    @include on-desctop {
+      width: 64px;
+    }
+  }
 
-  // &__favorites {
-  //   border-left: 1px solid $surface2-color;
-  //   border-right: 1px solid $surface2-color;
-  // }
+  &__favorites {
+    border-left: 1px solid $elements-color;
+    border-right: 1px solid $elements-color;
+  }
 }

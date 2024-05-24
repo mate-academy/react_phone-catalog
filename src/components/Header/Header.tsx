@@ -1,7 +1,7 @@
-// import { Cart } from '../Cart';
-// import { Favorites } from '../Favorites';
+import { Cart } from '../Cart';
+import { Favorites } from '../Favorites';
 import { Logo } from '../Logo';
-// import { Nav } from '../Nav';
+import { Nav } from '../Nav';
 // import { NavMobile } from '../NavMobile';
 
 import classes from './Header.module.scss';
@@ -15,19 +15,16 @@ export const Header = () => {
         </div>
 
         <div className={classes.Header__nav}>
-          {/* <Nav /> */}
-          Nav
+          <Nav />
         </div>
       </div>
 
       <div className={classes.Header__right}>
         <div className={classes.Header__favorites}>
-          {/* <Favorites /> */}
-          Favorites
+          <Favorites />
         </div>
         <div className={classes.Header__cart}>
-          {/* <Cart /> */}
-          Cart
+          <Cart />
         </div>
         {/* <NavMobile /> */}
         NavMobile
