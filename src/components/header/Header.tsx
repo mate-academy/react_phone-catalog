@@ -3,7 +3,7 @@ import styles from './Header.module.scss';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>
-    <div className={styles['header__container--1']}>
+    <div className= {styles['header__container--1']}>
       <img
         src=".\img\svg\Nice Gadgets_logo.svg"
         className="logo"
