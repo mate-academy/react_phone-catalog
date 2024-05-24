@@ -1,0 +1,44 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+}
+
+main {
+  display: block;
+}
+
+a {
+  background-color: transparent;
+  color: initial;
+  text-decoration: none;
+}
+
+img {
+  border-style: none;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+  font-size: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  border: none;
+  background-color: inherit;
+}
+
+input {
+  outline: none;
+  border: none;
+}
+
+[hidden] {
+  display: none;
+}

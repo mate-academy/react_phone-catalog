@@ -1,0 +1,18 @@
+@import "./utils/reset";
+@import "./utils/normalize";
+@import "./utils/vars";
+@import "./utils/styleshieet";
+@import "./utils/typography";
+@import "./utils/mixins";
+
+iframe {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+}

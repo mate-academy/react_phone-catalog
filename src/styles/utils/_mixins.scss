@@ -1,0 +1,29 @@
+@import './vars';
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-durration;
+
+  &:hover {
+    #{$property}: $toValue;
+    transition-duration: $transition-durration;
+  }
+}
+
