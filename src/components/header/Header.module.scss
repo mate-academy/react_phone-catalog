@@ -1,10 +1,11 @@
 .header {
   display: flex;
-  color: red;
+  justify-content: space-between;
 
   &__container--1,
   &__container--2 {
     display: flex;
+    align-items: center;
   }
 
   &__nav__list {
@@ -13,7 +14,7 @@
     padding: 0;
 
     &__element {
-      margin-right: 15px;
+      margin-left: 15px;
     }
   }
 

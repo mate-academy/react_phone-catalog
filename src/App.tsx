@@ -6,6 +6,6 @@ export const App: React.FC = () => (
   <div className="App">
     <Header />
 
-    <h1>Product Catalog lubie dzem</h1>
+    <h1>Product Catalog</h1>
   </div>
 );

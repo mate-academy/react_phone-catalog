@@ -12,10 +12,10 @@ export const Header: React.FC = () => (
 
       <nav>
         <ul className={styles.header__nav__list}>
-          <li className={styles.header__nav__element}>Home</li>
-          <li className={styles.header__nav__element}>Phones</li>
-          <li className={styles.header__nav__element}>Tablets</li>
-          <li className={styles.header__nav__element}>Accessories</li>
+          <li className={styles.header__nav__list__element}>Home</li>
+          <li className={styles.header__nav__list__element}>Phones</li>
+          <li className={styles.header__nav__list__element}>Tablets</li>
+          <li className={styles.header__nav__list__element}>Accessories</li>
         </ul>
       </nav>
     </div>
