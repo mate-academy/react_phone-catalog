@@ -303,7 +303,7 @@ export const Catalog: React.FC<Props> = ({
             <div className="Catalog__no-items Catalog__no-items--nonCatalog">
               <img
                 className="Catalog__items__empty-img"
-                src="https://olehmarushchak.github.io/react_phone-catalog/static/media/cart-is-empty.86ebaf664449a2f61e5e.png"
+                src="https://raw.githubusercontent.com/olehmarushchak/react_phone-catalog/develop/src/assets/img/cart-is-empty.png"
                 alt="empty"
               />
             </div>

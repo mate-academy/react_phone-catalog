@@ -8,7 +8,7 @@ export const PageNotFound: React.FC = () => {
     <div className="PageNotFound">
       <div className="PageNotFound__center">
         <img
-          src="../../../public/img/page-not-found.png"
+          src="https://raw.githubusercontent.com/olehmarushchak/react_phone-catalog/develop/src/assets/img/page-not-found.png"
           alt="page not found"
         />
       </div>
