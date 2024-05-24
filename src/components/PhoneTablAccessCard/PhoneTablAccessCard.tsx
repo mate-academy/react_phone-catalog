@@ -3,7 +3,7 @@ import './PhoneTablAccessCard.scss';
 import { TabAccessPhone } from '../../types/tabAccessPhones';
 import Favorites from '../../images/homePage/Favorites.svg';
 import redHeart from '../../images/homePage/redHeart.svg';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions } from '../../features/favSlice';
 
 type Props = {
@@ -14,6 +14,10 @@ type Props = {
 export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   const dispatch = useAppDispatch();
 
+  const { favProducts } = useAppSelector(
+    state => state.favourites,
+  );
+
   const [clicked, setClicked] = useState(false);
 
   const handleFavClick = (
@@ -23,16 +27,15 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
       event.preventDefault();
 
     if (clicked === false) {
-      // event.stopPropagation();
-      setClicked(true);
       dispatch(actions.addProduct(prod));
+      setClicked(true);
     }
 
     if (clicked === true) {
-      // event.stopPropagation();
-      setClicked(false);
       dispatch(actions.removeProduct(prod));
+      setClicked(false);
     }
+    console.log(favProducts)
   };
 
   return (

@@ -16,14 +16,20 @@ const FavSlice = createSlice({
     addProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      currentState.favProducts.push(action.payload);
+      const findSame = currentState.favProducts.find((prod) => prod.id === action.payload.id);
+      
+      if (!findSame) {
+        currentState.favProducts.push(action.payload);
+      } else {
+        currentState
+      }
     },
 
     removeProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
       currentState.favProducts = currentState.favProducts.filter(
-        prod => prod !== action.payload,
+        prod => prod.id !== action.payload.id,
       );
     },
   },

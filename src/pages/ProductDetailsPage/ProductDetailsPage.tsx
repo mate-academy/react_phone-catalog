@@ -4,6 +4,7 @@ import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
 import Arrow_Left from '../../images/homePage/Arrow_Left.svg';
 import Favorites from '../../images/homePage/Favorites.svg';
+import redHeart from '../../images/homePage/redHeart.svg';
 import { PRODUCTS_COLORS } from '../../utils/colors';
 import './ProductDetailsPage.scss';
 import { YouMayAlsoLike } from '../../components/Blocks/YouMayAlsoLike';
@@ -15,6 +16,7 @@ import {
 } from '../../features/productInfoSlice';
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
+import { actions } from '../../features/favSlice';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -35,8 +37,6 @@ export const ProductDetails = () => {
   const itemColor = x[x.length - 1];
   const itemCapacity = x[x.length - 2];
 
-  const [choosenCapasity, setChoosenCapasity] = useState<string>(itemCapacity);
-  const [choosenColor, setChoosenColor] = useState<string>(itemColor);
   const [currentImage, setCurrentImage] = useState<string>('');
   const [imageError, setImageError] = useState('');
 
@@ -56,14 +56,6 @@ export const ProductDetails = () => {
   if (!product) {
     return <NotFoundPage />;
   }
-
-  const handleCapacity = (capacity: string) => {
-    setChoosenCapasity(capacity);
-  };
-
-  const handleColor = (color: string) => {
-    setChoosenColor(color);
-  };
 
   const handleCurrentImg = (image: string) => {
     setCurrentImage(image);
@@ -88,6 +80,31 @@ export const ProductDetails = () => {
       setCurrentImage(product.images[0]);
     } else {
       setCurrentImage(product.images[index + 1]);
+    }
+  };
+
+  const capacityModify = (item: string) => {
+    return item.toLocaleLowerCase();
+  };
+
+  const [clicked, setClicked] = useState(false);
+
+  const handleFavClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>, 
+    prod: TabAccessPhone
+    ) => {
+      event.preventDefault();
+
+    if (clicked === false) {
+      // event.stopPropagation();
+      setClicked(true);
+      dispatch(actions.addProduct(prod));
+    }
+
+    if (clicked === true) {
+      // event.stopPropagation();
+      setClicked(false);
+      dispatch(actions.removeProduct(prod));
     }
   };
 
@@ -179,7 +196,7 @@ export const ProductDetails = () => {
                   {product?.colorsAvailable.map((color: string, index) => {
                     return (
                       <Link
-                        to={`/${paths[0]}/${product.namespaceId}-${product.capacity}-${color}`}
+                        to={`/${paths[0]}/${product.namespaceId}-${itemCapacity}-${color}`}
                         key={index}
                         style={{ backgroundColor: PRODUCTS_COLORS[color] }}
                         className="details__product__colorOption"
@@ -197,7 +214,7 @@ export const ProductDetails = () => {
                   {product?.capacityAvailable.map((capacity: string, index) => {
                     return (
                       <Link
-                        to={`/${paths[0]}/${product.namespaceId}-${capacity}-${product.color}`}
+                        to={`/${paths[0]}/${product.namespaceId}-${capacityModify(capacity)}-${itemColor}`}
                         key={index}
                         className="details__product__capacityOption"
                       >
@@ -221,9 +238,11 @@ export const ProductDetails = () => {
                   <button className="details__product__buttonAdd">
                     Add to cart
                   </button>
-                  <button className="details__product__buttonFavorite">
+                  <button className="details__product__buttonFavorite"
+                    onClick={(event) => handleFavClick(event, product)}
+                  >
                     <img
-                      src={Favorites}
+                      src={clicked === true ? redHeart : Favorites}
                       alt="favorites"
                       className="details__product__buttonImg"
                     />
