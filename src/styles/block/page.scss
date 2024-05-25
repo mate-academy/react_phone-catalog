@@ -1,0 +1,19 @@
+html {
+  --background-color: #ffffff;
+  --text-color: #313237;
+  --text-nav-color: #89939a;
+  --border-color: #b4bdc3;
+
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.dark-theme {
+  --background-color: #161827;
+  --text-color: #f1f2f9;
+  --text-nav-color: #75767f;
+  --border-color: #323542;
+  background-color: var(--background-color);
+}

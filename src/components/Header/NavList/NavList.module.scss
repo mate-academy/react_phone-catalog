@@ -1,0 +1,28 @@
+@use '../../../styles/block/utils/variables.scss' as *;
+
+.nav {
+  &__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+  }
+
+  &__item:not(:last-child) {
+    padding-inline-end: 64px;
+  }
+
+  &__link {
+    text-decoration: none;
+    text-transform: uppercase;
+    color: $text-nav-color;
+    &:hover {
+      color: $text-color;
+    }
+  }
+}
+
+@media (max-width: 1199px) {
+  .nav__item:not(:last-child) {
+    padding-inline-end: 32px;
+  }
+}

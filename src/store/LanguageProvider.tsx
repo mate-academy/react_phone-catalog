@@ -1,20 +1,10 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import i18next from 'i18next';
+import { ContextLangType } from '../types/ContextType/ContextLangType';
+import { Props } from '../types/ContextType/Props';
 
-type Props = {
-  children: React.ReactNode;
-};
-
-type ContextType = {
-  currentLanguage: string;
-  setCurrentLanguage: (v: string) => void;
-  changeLanguage: (v: string) => void;
-  t: typeof i18next.t;
-  language: string;
-};
-
-export const CreateContext = React.createContext<ContextType>({
+export const LanguageContext = React.createContext<ContextLangType>({
   currentLanguage: '',
   setCurrentLanguage: () => {},
   changeLanguage: () => {},
@@ -22,7 +12,7 @@ export const CreateContext = React.createContext<ContextType>({
   language: '',
 });
 
-export const ContextProvider: React.FC<Props> = ({ children }) => {
+export const LanguageProvider: React.FC<Props> = ({ children }) => {
   const {
     t,
     i18n: { changeLanguage, language },
@@ -39,8 +29,8 @@ export const ContextProvider: React.FC<Props> = ({ children }) => {
   };
 
   return (
-    <CreateContext.Provider value={projectTools}>
+    <LanguageContext.Provider value={projectTools}>
       {children}
-    </CreateContext.Provider>
+    </LanguageContext.Provider>
   );
 };
