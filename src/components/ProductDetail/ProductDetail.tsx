@@ -145,7 +145,7 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
     { name: 'Built in memory', value: product?.capacity },
     { name: 'Camera', value: product?.camera },
     { name: 'Zoom', value: product?.zoom },
-    { name: 'Cell', value: product?.cell },
+    { name: 'Cell', value: product?.cell.join(' ') },
   ].filter(spec => spec.value);
 
   return (
