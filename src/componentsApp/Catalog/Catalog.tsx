@@ -138,147 +138,140 @@ export const Catalog: React.FC<Props> = ({
 
       {!nonCatalog && (
         <div className="Catalog__filters">
-          <div className="Catalog__filters__sort-by">
-            <p className="Catalog__filters__title">Sort by</p>
-
-            <div
-              onClick={() => handleSortLink()}
-              className={cn(
-                'Catalog__filters__dropdown Catalog__filters__dropdown__sort-by',
-                { 'is-active': sortByDropdown, dark: darkThem },
-              )}
-            >
-              {!searchParams.get('sort') ? 'Select' : searchParams.get('sort')}
-            </div>
-
-            {sortByDropdown && (
+          <div className="Catalog__filters__center">
+            <div className="Catalog__filters__sort-by">
+              <p className="Catalog__filters__title">Sort by</p>
               <div
+                onClick={() => handleSortLink()}
                 className={cn(
-                  'Catalog__filters__dropdown__dropdown-is-active',
-                  { dark: darkThem },
+                  'Catalog__filters__dropdown Catalog__filters__dropdown__sort-by',
+                  { 'is-active': sortByDropdown, dark: darkThem },
                 )}
               >
-                <a
-                  onClick={() => handleSortLink(ParamsSortBy.one)}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    {
-                      'is-active':
-                        searchParams.get('sort') === ParamsSortBy.one,
-                      dark: darkThem,
-                    },
-                  )}
-                >
-                  Newest
-                </a>
-
-                <a
-                  onClick={() => handleSortLink(ParamsSortBy.two)}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    {
-                      'is-active':
-                        searchParams.get('sort') === ParamsSortBy.two,
-                      dark: darkThem,
-                    },
-                  )}
-                >
-                  Alphabetically
-                </a>
-
-                <a
-                  onClick={() => handleSortLink(ParamsSortBy.three)}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    {
-                      'is-active':
-                        searchParams.get('sort') === ParamsSortBy.three,
-                      dark: darkThem,
-                    },
-                  )}
-                >
-                  Cheapest
-                </a>
+                {!searchParams.get('sort')
+                  ? 'Select'
+                  : searchParams.get('sort')}
               </div>
-            )}
-          </div>
-
-          <div className="Catalog__filters__items-on-page">
-            <p className="Catalog__filters__title">Items on page</p>
-
-            <div
-              onClick={() => handlePerPageLink()}
-              className={cn(
-                'Catalog__filters__dropdown Catalog__filters__dropdown--per-page',
-                { 'is-active': perPageDropdown, dark: darkThem },
+              {sortByDropdown && (
+                <div
+                  className={cn(
+                    'Catalog__filters__dropdown__dropdown-is-active',
+                    { dark: darkThem },
+                  )}
+                >
+                  <a
+                    onClick={() => handleSortLink(ParamsSortBy.one)}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      {
+                        'is-active':
+                          searchParams.get('sort') === ParamsSortBy.one,
+                        dark: darkThem,
+                      },
+                    )}
+                  >
+                    Newest
+                  </a>
+                  <a
+                    onClick={() => handleSortLink(ParamsSortBy.two)}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      {
+                        'is-active':
+                          searchParams.get('sort') === ParamsSortBy.two,
+                        dark: darkThem,
+                      },
+                    )}
+                  >
+                    Alphabetically
+                  </a>
+                  <a
+                    onClick={() => handleSortLink(ParamsSortBy.three)}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      {
+                        'is-active':
+                          searchParams.get('sort') === ParamsSortBy.three,
+                        dark: darkThem,
+                      },
+                    )}
+                  >
+                    Cheapest
+                  </a>
+                </div>
               )}
-            >
-              {searchParams.get('perPage')
-                ? searchParams.get('perPage')
-                : 'Select'}
             </div>
-
-            {perPageDropdown && (
+            <div className="Catalog__filters__items-on-page">
+              <p className="Catalog__filters__title">Items on page</p>
               <div
+                onClick={() => handlePerPageLink()}
                 className={cn(
-                  'Catalog__filters__dropdown__dropdown-is-active',
-                  { dark: darkThem },
+                  'Catalog__filters__dropdown Catalog__filters__dropdown--per-page',
+                  { 'is-active': perPageDropdown, dark: darkThem },
                 )}
               >
-                <a
-                  onClick={() => handlePerPageLink('4')}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    { 'is-active': perPage === '4', dark: darkThem },
-                  )}
-                >
-                  4
-                </a>
-
-                <a
-                  onClick={() => handlePerPageLink('8')}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    { 'is-active': perPage === '8', dark: darkThem },
-                  )}
-                >
-                  8
-                </a>
-
-                <a
-                  onClick={() => handlePerPageLink('16')}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    { 'is-active': perPage === '16', dark: darkThem },
-                  )}
-                >
-                  16
-                </a>
-
-                <a
-                  onClick={() => handlePerPageLink('all')}
-                  className={cn(
-                    'Catalog__filters__dropdown__dropdown-is-active__link',
-                    { 'is-active': perPage === 'all', dark: darkThem },
-                  )}
-                >
-                  all
-                </a>
+                {searchParams.get('perPage')
+                  ? searchParams.get('perPage')
+                  : 'Select'}
               </div>
-            )}
-          </div>
-
-          <div className="Catalog__filters__query">
-            <p className="Catalog__filters__title">Search</p>
-
-            <input
-              value={searchParams.get('query')?.toString()}
-              onChange={event => handleQueryInput(event.target.value)}
-              className={cn(
-                'Catalog__filters__dropdown Catalog__filters__dropdown--search',
-                { dark: darkThem },
+              {perPageDropdown && (
+                <div
+                  className={cn(
+                    'Catalog__filters__dropdown__dropdown-is-active',
+                    { dark: darkThem },
+                  )}
+                >
+                  <a
+                    onClick={() => handlePerPageLink('4')}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      { 'is-active': perPage === '4', dark: darkThem },
+                    )}
+                  >
+                    4
+                  </a>
+                  <a
+                    onClick={() => handlePerPageLink('8')}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      { 'is-active': perPage === '8', dark: darkThem },
+                    )}
+                  >
+                    8
+                  </a>
+                  <a
+                    onClick={() => handlePerPageLink('16')}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      { 'is-active': perPage === '16', dark: darkThem },
+                    )}
+                  >
+                    16
+                  </a>
+                  <a
+                    onClick={() => handlePerPageLink('all')}
+                    className={cn(
+                      'Catalog__filters__dropdown__dropdown-is-active__link',
+                      { 'is-active': perPage === 'all', dark: darkThem },
+                    )}
+                  >
+                    all
+                  </a>
+                </div>
               )}
-            ></input>
+            </div>
+
+            <div className="Catalog__filters__query">
+              <p className="Catalog__filters__title">Search</p>
+              <input
+                value={searchParams.get('query')?.toString()}
+                onChange={event => handleQueryInput(event.target.value)}
+                className={cn(
+                  'Catalog__filters__dropdown Catalog__filters__dropdown--search',
+                  { dark: darkThem },
+                )}
+              ></input>
+            </div>
           </div>
         </div>
       )}
@@ -325,24 +318,26 @@ export const Catalog: React.FC<Props> = ({
 
           <div className="Catalog__pagin__pages">
             <div className="Catalog__pagin__pages__center">
-              {(paginPages ?? []).map(d => (
-                <a key={d} href="#top">
-                  <button
-                    onClick={() =>
-                      setSearchParams(
-                        getSearchWith(searchParams, { paginPage: `${d}` }),
-                      )
-                    }
-                    key={d}
-                    className={cn('Catalog__pagin__button', {
-                      'is-active': paginPage === d.toString(),
-                      dark: darkThem,
-                    })}
-                  >
-                    {d}
-                  </button>
-                </a>
-              ))}
+              <div className="Catalog__pagin__pages__center--turn-on-center">
+                {(paginPages ?? []).map(d => (
+                  <a key={d} href="#top">
+                    <button
+                      onClick={() =>
+                        setSearchParams(
+                          getSearchWith(searchParams, { paginPage: `${d}` }),
+                        )
+                      }
+                      key={d}
+                      className={cn('Catalog__pagin__button', {
+                        'is-active': paginPage === d.toString(),
+                        dark: darkThem,
+                      })}
+                    >
+                      {d}
+                    </button>
+                  </a>
+                ))}
+              </div>
             </div>
           </div>
 

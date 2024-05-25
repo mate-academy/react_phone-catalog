@@ -5,21 +5,23 @@ import logoDark from '../../assets/img/Logo-White.png';
 import { StateContext } from '../../context/ContextReducer';
 
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
   const { darkThem } = useContext(StateContext);
 
   const logoWhite =
     'https://olehmarushchak.github.io/react_phone-catalog/static/media/Logo.1f9dda44b9bba4aadcc081345bdf963c.svg';
+
   const logo = darkThem ? logoDark : logoWhite;
 
   return (
     <footer className={cn('Footer', { dark: darkThem })}>
       <div className="Footer__items">
         <div className="Footer__items__logo">
-          <a href="/">
+          <Link to="/">
             <img src={logo} className="Navbar__logo" alt="logo" />
-          </a>
+          </Link>
         </div>
 
         <div className="Footer__items__info">

@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useContext, useEffect } from 'react';
-import { NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import cn from 'classnames';
 
@@ -126,9 +126,9 @@ export const Header: React.FC = () => {
 
   return (
     <div className={cn('Navbar', { dark: darkThem })}>
-      <a href="/">
+      <Link to="/">
         <img src={logo} className="Navbar__logo" alt="logo" />
-      </a>
+      </Link>
 
       <div className="enter-nav">
         <div className="enter-nav__links">

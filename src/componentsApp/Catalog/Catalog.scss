@@ -1,6 +1,7 @@
 @import '/src/styles/variable.scss';
 
 .Catalog {
+  padding: 0 20px;
   &__no-items {
     display: flex;
     justify-content: center;
@@ -67,14 +68,14 @@
       justify-content: center;
       margin-left: 8px;
 
-      & :not(:last-child) {
-        margin-bottom: 4px;
-      }
-
       &__center {
-        & :not(:last-child) {
-          margin-right: 8px;
-          margin-bottom: 4px;
+        display: flex;
+        justify-content: center;
+
+        &--turn-on-center {
+          & :not(:last-child) {
+            margin-right: 8px;
+          }
         }
       }
     }
@@ -85,7 +86,6 @@
       outline: 0;
       border: $border-color 1px solid;
       background-color: $white;
-
 
       &.dark {
         color: $white;
@@ -176,6 +176,10 @@
   &__filters {
     display: flex;
     margin-bottom: 24px;
+
+    &__center {
+      display: flex;
+    }
 
     &__title {
       color: $color-nav-text;
@@ -389,10 +393,30 @@
 }
 
 @media (min-width: 320px) and (max-width: 698px) {
+  .Catalog__items__empty-img--not-found-product {
+    width: 200px;
+    height: 100px;
+  }
+
   .Catalog {
+    width: 212px;
     margin-bottom: 100px;
+
+    &__title {
+      font-size: 38px;
+    }
+
     &__items {
       grid-template-columns: repeat(1, 287px);
+
+      &__empty-img {
+        width: 170px;
+        height: 170px;
+      }
+    }
+
+    &__no-items {
+      width: 212px;
     }
 
     &__pagin {
@@ -405,7 +429,15 @@
     }
 
     &__filters {
-      display: block;
+      display: flex;
+      justify-content: center;
+
+      &__center {
+        display: block;
+      }
+
+      &__query {
+      }
 
       &__dropdown {
         &__sort-by {
@@ -428,6 +460,10 @@
           &.is-active {
             background-position-x: 110px;
           }
+        }
+
+        &--search {
+          width: 212px;
         }
       }
     }

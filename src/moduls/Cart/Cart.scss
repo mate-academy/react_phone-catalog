@@ -7,8 +7,7 @@ $heightTotalForDesktop: 206px;
   display: flex;
   justify-content: center;
   margin-top: 200px;
-
-  margin-bottom: 370px;
+  padding-bottom: 400px;
 
   &__title {
     color: $color-dark;
@@ -124,7 +123,7 @@ $heightTotalForDesktop: 206px;
 
 @media (min-width: 320px) and (max-width: 698px) {
   .Cart {
-    margin-bottom: 350px;
+    padding-bottom: 350px;
 
     &__center {
       display: block;

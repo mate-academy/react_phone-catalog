@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { CartList } from './CartList/CartList';
 import { DispatchContext, StateContext } from '../../context/ContextReducer';
 
@@ -8,23 +8,27 @@ import { Checkout } from './CartCheckout/background/background';
 import { CheckoutBord } from './CartCheckout/bord/bord';
 import { useNavigate } from 'react-router-dom';
 import cn from 'classnames';
+import { uniqueProducts } from '../../utils/uniqueProducts';
 
 export const Cart: React.FC = () => {
-  const { cartPhone, allPrices, totalCartItem, checkoutWindow, darkThem } =
-    useContext(StateContext);
+  const { cartPhone, checkoutWindow, darkThem } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
   const navigate = useNavigate();
 
-  useEffect(() => {
-    return () => {
-      dispatch({ type: 'resetPrices' });
-      dispatch({ type: 'resetTotalCartItem' });
-    };
-  }, []);
+  // useEffect(() => {
+  //   return () => {
+  //     dispatch({ type: 'resetPrices' });
+  //     dispatch({ type: 'resetTotalCartItem' });
+  //   };
+  // }, []);
 
   const handleClickCheckout = () => {
     dispatch({ type: 'setCheckout' });
   };
+
+  const uniqueRender = uniqueProducts(cartPhone);
+
+  const totalPrice = cartPhone.reduce((a, b) => b.priceDiscount + a, 0);
 
   return (
     <div className="Cart">
@@ -53,19 +57,19 @@ export const Cart: React.FC = () => {
           <div className={cn('Cart__title', { dark: darkThem })}>Cart</div>
         </div>
 
-        {cartPhone.length ? (
+        {uniqueRender.length ? (
           <>
             <div className="Cart__items">
-              <CartList devices={cartPhone} />
+              <CartList devices={uniqueRender} />
             </div>
 
             <div className={cn('Cart__total', { dark: darkThem })}>
               <div className="Cart__total__center">
-                <p className="Cart__total__price">{`$${allPrices}`}</p>
+                <p className="Cart__total__price">{`$${totalPrice}`}</p>
 
                 <p
                   className={cn('Cart__total__items', { dark: darkThem })}
-                >{`Total for ${totalCartItem} items`}</p>
+                >{`Total for ${cartPhone.length} items`}</p>
 
                 <button
                   onClick={handleClickCheckout}

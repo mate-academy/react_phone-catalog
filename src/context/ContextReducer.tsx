@@ -32,17 +32,13 @@ export type Action =
   | { type: 'setSortByDropdown'; delete?: string }
   | { type: 'setPerPageDropdown'; delete?: string }
   | { type: 'setPaginPage'; payload: number[] }
-  | { type: 'addPrices'; payload: number }
-  | { type: 'decrementPrice'; payload: number }
-  | { type: 'resetPrices' }
-  | { type: 'incrementCartItem' }
-  | { type: 'decrementCartItem'; payload?: number }
-  | { type: 'resetTotalCartItem' }
   | { type: 'deleteCartItem'; payload: string }
   | { type: 'setCheckout' }
   | { type: 'resetCartItems' }
   | { type: 'switchThem' }
-  | { type: 'switchSlideInfinity'; payload: boolean };
+  | { type: 'switchSlideInfinity'; payload: boolean }
+  | { type: 'addItemCart'; payload: Phone | Tablet | Accessorie }
+  | { type: 'removeProductById'; payload: string };
 
 export interface State {
   sliderImg: number;
@@ -63,8 +59,6 @@ export interface State {
   perPageDropdown: boolean;
   paginPages: number[];
   product: Product[];
-  allPrices: number;
-  totalCartItem: number;
   checkoutWindow: boolean;
 
   darkThem: boolean;
@@ -95,50 +89,6 @@ const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         cartPhone: state.cartPhone.filter(d => d.id !== action.payload),
-      };
-
-    case 'addPrices':
-      return {
-        ...state,
-        allPrices: state.allPrices + action.payload,
-      };
-
-    case 'decrementPrice':
-      return {
-        ...state,
-        allPrices: state.allPrices - action.payload,
-      };
-
-    case 'decrementCartItem':
-      const minus = action.payload ? action.payload : 1;
-
-      return {
-        ...state,
-        totalCartItem: state.totalCartItem - minus,
-      };
-
-    case 'incrementCartItem':
-      return {
-        ...state,
-        totalCartItem: state.totalCartItem + 1,
-      };
-
-    case 'resetTotalCartItem':
-      return {
-        ...state,
-        totalCartItem: 0,
-      };
-
-    case 'resetPrices':
-      return {
-        ...state,
-        allPrices: 0,
-      };
-
-    case 'resetPrices':
-      return {
-        ...state,
-        allPrices: 0,
       };
 
     case 'nextSlidePhone':
@@ -327,6 +277,26 @@ const reducer = (state: State, action: Action): State => {
         ...state,
         slideInfinity: action.payload,
       };
+
+    case 'addItemCart':
+      return {
+        ...state,
+        cartPhone: [...state.cartPhone, action.payload],
+      };
+
+    case 'removeProductById':
+      const index = state.cartPhone.findIndex(
+        product => product.id === action.payload,
+      );
+
+      const newCart = state.cartPhone
+        .slice(0, index)
+        .concat(state.cartPhone.slice(index + 1));
+
+      return {
+        ...state,
+        cartPhone: newCart,
+      };
   }
 };
 
@@ -349,8 +319,6 @@ const initialState: State = {
   perPageDropdown: false,
   paginPages: [],
   product: [],
-  allPrices: 0,
-  totalCartItem: 0,
   checkoutWindow: false,
 
   darkThem: false,
