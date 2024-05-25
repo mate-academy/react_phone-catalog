@@ -1,0 +1,24 @@
+.header {
+  display: flex;
+  color: red;
+
+  &__container--1,
+  &__container--2 {
+    display: flex;
+  }
+
+  &__nav__list {
+    display: flex;
+    list-style: none;
+    padding: 0;
+
+    &__element {
+      margin-right: 15px;
+    }
+  }
+
+  &__fav,
+  &__cart {
+    margin-left: 10px;
+  }
+}
