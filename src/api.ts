@@ -1,4 +1,4 @@
-const BASE_URL = '/api/';
+const BASE_URL = '/react_phone-catalog/api/';
 
 // /react_phone-catalog
 

@@ -130,6 +130,24 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
     [styles.addButtonDark]: theme === Theme.dark,
   });
 
+  const spects = [
+    { name: 'Screen', value: product?.screen },
+    { name: 'Resolution', value: product?.resolution },
+    { name: 'Processor', value: product?.namespaceId },
+    { name: 'RAM', value: product?.ram },
+  ];
+
+  const specifications = [
+    { name: 'Screen', value: product?.screen },
+    { name: 'Resolution', value: product?.resolution },
+    { name: 'Processor', value: product?.processor },
+    { name: 'RAM', value: product?.ram },
+    { name: 'Built in memory', value: product?.capacity },
+    { name: 'Camera', value: product?.camera },
+    { name: 'Zoom', value: product?.zoom },
+    { name: 'Cell', value: product?.cell },
+  ].filter(spec => spec.value);
+
   return (
     <>
       <Header />
@@ -424,51 +442,21 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
                     </div>
                   </div>
 
-                  <div className={styles.productSpects}>
-                    <div className={styles.spectsContainer}>
-                      <span className={styles.name}>Screen</span>
-                      <span className={styles.name}>Resolution</span>
-                      <span className={styles.name}>Processor</span>
-                      <span className={styles.name}>RAM</span>
-                    </div>
-                    <div className={styles.spectsContainer}>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.screen}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.resolution}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.namespaceId}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.ram}
-                      </span>
-                    </div>
+                  <div className={styles.productSpectsContainer}>
+                    {spects.map((spect, index) => (
+                      <div key={index} className={styles.spectItem}>
+                        <span className={styles.name}>{spect.name}</span>
+                        <span
+                          className={
+                            theme === Theme.light
+                              ? styles.spects
+                              : styles.spectsDark
+                          }
+                        >
+                          {spect.value}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>
@@ -508,91 +496,21 @@ export const ProductDetails: React.FC<Props> = ({ type }) => {
                     Tech specs
                   </h2>
                   <span className={styles.line}></span>
-                  <div className={styles.containerSpect}>
-                    <div className={styles.spectsNames}>
-                      <span className={styles.name}>Screen</span>
-                      <span className={styles.name}>Resolution</span>
-                      <span className={styles.name}>Processor</span>
-                      <span className={styles.name}>RAM</span>
-                      <span className={styles.name}>Built in memory</span>
-                      <span className={styles.name}>Camera</span>
-                      <span className={styles.name}>Zoom</span>
-                      <span className={styles.name}>Cell</span>
-                    </div>
-                    <div className={styles.spectsSpect}>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.screen}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.resolution}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.processor}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.ram}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.capacity}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.camera}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.zoom}
-                      </span>
-                      <span
-                        className={
-                          theme === Theme.light
-                            ? styles.spects
-                            : styles.spectsDark
-                        }
-                      >
-                        {product?.cell}
-                      </span>
-                    </div>
+                  <div className={styles.containerSpecifications}>
+                    {specifications.map((spec, index) => (
+                      <div key={index} className={styles.specificationItem}>
+                        <span className={styles.specName}>{spec.name}</span>
+                        <span
+                          className={
+                            theme === Theme.light
+                              ? styles.spectsSpect
+                              : styles.spectsSpectDark
+                          }
+                        >
+                          {spec.value}
+                        </span>
+                      </div>
+                    ))}
                   </div>
                 </div>
               </div>

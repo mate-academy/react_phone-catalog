@@ -4,6 +4,13 @@ import { NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../Hooks/hooks';
 import { Theme } from '../../Helpers/theme';
 
+const navItems = [
+  { path: '/', label: 'Home' },
+  { path: '/phones', label: 'Phones' },
+  { path: '/tablets', label: 'Tablets' },
+  { path: '/accessories', label: 'Accessories' },
+];
+
 export const Navigation: React.FC = () => {
   const theme = useAppSelector(state => state.theme.theme);
 
@@ -26,62 +33,23 @@ export const Navigation: React.FC = () => {
     >
       <nav className={styles.nav}>
         <ul className={styles.navigation}>
-          <li
-            className={
-              theme === Theme.light
-                ? styles.navigationli
-                : styles.navigationliDark
-            }
-          >
-            <NavLink
-              to={{ pathname: '/', search: '' }}
-              className={getLinkClass}
+          {navItems.map(item => (
+            <li
+              key={item.path}
+              className={
+                theme === Theme.light
+                  ? styles.navigationli
+                  : styles.navigationliDark
+              }
             >
-              Home
-            </NavLink>
-          </li>
-          <li
-            className={
-              theme === Theme.light
-                ? styles.navigationli
-                : styles.navigationliDark
-            }
-          >
-            <NavLink
-              to={{ pathname: '/phones', search: '' }}
-              className={getLinkClass}
-            >
-              Phones
-            </NavLink>
-          </li>
-          <li
-            className={
-              theme === Theme.light
-                ? styles.navigationli
-                : styles.navigationliDark
-            }
-          >
-            <NavLink
-              to={{ pathname: '/tablets', search: '' }}
-              className={getLinkClass}
-            >
-              Tablets
-            </NavLink>
-          </li>
-          <li
-            className={
-              theme === Theme.light
-                ? styles.navigationli
-                : styles.navigationliDark
-            }
-          >
-            <NavLink
-              to={{ pathname: '/accessories', search: '' }}
-              className={getLinkClass}
-            >
-              Accessories
-            </NavLink>
-          </li>
+              <NavLink
+                to={{ pathname: item.path, search: '' }}
+                className={getLinkClass}
+              >
+                {item.label}
+              </NavLink>
+            </li>
+          ))}
         </ul>
       </nav>
     </section>
