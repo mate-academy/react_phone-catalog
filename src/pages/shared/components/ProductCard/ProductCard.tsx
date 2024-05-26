@@ -15,7 +15,7 @@ export const ProductCard: React.FC<Props> = ({
   product,
   hasDiscount = false,
 }) => {
-  const { cartProducts, addToCart } = useContext(CartContext);
+  const { cartProducts, addToCart, removeFromCart } = useContext(CartContext);
 
   const { favoriteProducts, setFavoriteProducts } =
     useContext(FavoritesContext);
@@ -97,9 +97,12 @@ export const ProductCard: React.FC<Props> = ({
             'buttons__cart--added': isProductInCart,
           })}
           onClick={() => {
-            addToCart(product);
+            if (!isProductInCart) {
+              addToCart(product);
+            } else {
+              removeFromCart(product.id);
+            }
           }}
-          disabled={isProductInCart}
         >
           {isProductInCart ? 'In cart' : 'Add to cart'}
         </button>
