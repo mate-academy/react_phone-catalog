@@ -17,6 +17,7 @@ import { getAllProducts } from '../../helpers/getAllProducts';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
+import { FavoritesContext } from '../../context/FavoritesContext';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -31,7 +32,9 @@ export const ProductDetailsPage: React.FC = () => {
     null,
   );
 
-  const { addToCart } = useContext(CartContext);
+  // Context
+  const { cartProducts, addToCart, removeFromCart } = useContext(CartContext);
+  const { favoriteProducts, addToFavorites } = useContext(FavoritesContext);
 
   useEffect(() => {
     if (!!displayedProduct) {
@@ -96,6 +99,18 @@ export const ProductDetailsPage: React.FC = () => {
   } = displayedProduct;
 
   const productInfo = ['screen', 'resolution', 'processor', 'ram'];
+
+  const isProductInCart = foundProduct
+    ? foundProduct.id in cartProducts
+    : false;
+
+  const cartButtonText = isProductInCart ? 'In cart' : 'Add to cart';
+
+  const favoriteIconPath = favoriteProducts.some(
+    (prod: Product) => prod.id === foundProduct?.id,
+  )
+    ? './icons/heart-red.svg'
+    : './icons/heart-black.svg';
 
   return (
     <>
@@ -192,18 +207,31 @@ export const ProductDetailsPage: React.FC = () => {
 
               <div className="add-buttons purchase__add-buttons">
                 <button
-                  className="add-buttons__cart default-button-text"
+                  className={cn('add-buttons__cart', 'default-button-text', {
+                    'add-buttons__cart--added': isProductInCart,
+                  })}
                   onClick={() => {
                     if (foundProduct) {
-                      addToCart(foundProduct);
+                      if (!isProductInCart) {
+                        addToCart(foundProduct);
+                      } else {
+                        removeFromCart(foundProduct.id);
+                      }
                     }
                   }}
                 >
-                  Add to cart
+                  {cartButtonText}
                 </button>
-                <button className="add-buttons__wishlist default-button">
+                <button
+                  className="add-buttons__favorite default-button"
+                  onClick={() => {
+                    if (foundProduct) {
+                      addToFavorites(foundProduct);
+                    }
+                  }}
+                >
                   <img
-                    src="./icons/heart-black.svg"
+                    src={favoriteIconPath}
                     alt="Add to wishlist heart icon"
                   />
                 </button>
