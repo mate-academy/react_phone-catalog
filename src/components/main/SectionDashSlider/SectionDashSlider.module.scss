@@ -1,0 +1,49 @@
+.slider {
+  overflow: hidden;
+  width: 320px;
+
+
+  &__title {
+    color: #313237;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+
+  }
+
+  &__container {
+    display: flex;
+    width: 320px;
+    height: 352px;
+    margin: auto;
+  }
+
+  &__pic {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__pic--1 {}
+
+  &__pic--2 {}
+
+  &__pic--3 {}
+
+  &__pic--4 {}
+
+  &__pic--5 {}
+
+  &__dash {
+    display: none;
+  }
+
+  &__dash-1 {}
+
+  &__dash-2 {}
+
+  &__dash-3 {}
+
+  &__dash-4 {}
+
+  &__dash-5 {}
+}

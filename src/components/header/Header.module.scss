@@ -1,24 +1,47 @@
 .header {
   display: flex;
-  color: red;
+  align-items: center;
+  justify-content: space-between;
+  width: 100vw;
 
   &__container--1,
   &__container--2 {
     display: flex;
+    height: 48px;
   }
 
-  &__nav__list {
-    display: flex;
-    list-style: none;
-    padding: 0;
+  &__nav {
+    display: none;
 
-    &__element {
-      margin-right: 15px;
+    &__nav__list {
+      display: flex;
+      list-style: none;
+      padding: 0;
+
+      &__element {
+        margin-right: 15px;
+        font-family: 'Montserrat', sans-serif;
+        color: #89939A;
+        font-weight: 800;
+        line-height: 64px;
+        letter-spacing: 2px;
+      }
     }
   }
 
   &__fav,
   &__cart {
-    margin-left: 10px;
+    display: none;
+    width: 64px;
+  }
+
+  &__burger {
+    display: flex;
+    width: 48px;
+    align-items: center;
+
+    &__img {
+      margin: auto;
+    }
   }
 }
