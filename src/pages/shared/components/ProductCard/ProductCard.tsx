@@ -17,8 +17,7 @@ export const ProductCard: React.FC<Props> = ({
 }) => {
   const { cartProducts, addToCart, removeFromCart } = useContext(CartContext);
 
-  const { favoriteProducts, setFavoriteProducts } =
-    useContext(FavoritesContext);
+  const { favoriteProducts, addToFavorites } = useContext(FavoritesContext);
 
   const { name, price, screen, capacity, ram } = product;
 
@@ -34,21 +33,6 @@ export const ProductCard: React.FC<Props> = ({
     : './icons/heart-black.svg';
 
   const isProductInCart = product.id in cartProducts;
-
-  const handleAddToFavorites = (newFavoriteProduct: Product) => {
-    if (favoriteProducts.some((prod: Product) => prod.id === product.id)) {
-      setFavoriteProducts((currentFavorites: Product[]) => {
-        return currentFavorites.filter(
-          (prod: Product) => prod.id !== newFavoriteProduct.id,
-        );
-      });
-    } else {
-      setFavoriteProducts((currentFavorites: Product[]) => [
-        ...currentFavorites,
-        newFavoriteProduct,
-      ]);
-    }
-  };
 
   return (
     <article className="product">
@@ -107,7 +91,7 @@ export const ProductCard: React.FC<Props> = ({
           {isProductInCart ? 'In cart' : 'Add to cart'}
         </button>
         <button
-          onClick={() => handleAddToFavorites(product)}
+          onClick={() => addToFavorites(product)}
           className="favorite-button buttons__favorite"
         >
           <img
