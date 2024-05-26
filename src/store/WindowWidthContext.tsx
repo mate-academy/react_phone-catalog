@@ -19,7 +19,6 @@ export const WindowWidthProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     const handleResize = () => {
-      // setWindowSize(document.documentElement.clientWidth);
       setWindowSize(window.innerWidth);
     };
 

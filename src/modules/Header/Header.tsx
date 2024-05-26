@@ -73,8 +73,8 @@ export const Header: React.FC = React.memo(() => {
 
           <button
             type="button"
-            // eslint-disable-next-line max-len
-            className="header__navbar-close icon-container icon-container--close"
+            className="header__navbar-close
+              icon-container icon-container--close"
             style={isOpenSidebar ? { right: 0 } : { right: '-49px' }}
             onClick={() => setIsOpenSidebar(false)}
           >

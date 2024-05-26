@@ -62,11 +62,7 @@
   }
 
   &__image-preview {
-    margin-bottom: 40px;
-
     @include on-tablet {
-      margin-bottom: 0;
-
       grid-area: pr;
     }
   }
@@ -75,7 +71,11 @@
     margin-bottom: 24px;
 
     &--1 {
+      margin-top: 40px;
+
       @include on-tablet {
+        margin-top: 0;
+
         grid-area: c1;
       }
     }
@@ -171,10 +171,6 @@
 
       grid-area: de;
     }
-
-    // @include on-desctop {
-    //   margin-top: 80px;
-    // }
   }
 
   &__description-title {

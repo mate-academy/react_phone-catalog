@@ -1,5 +1,5 @@
-// #region import
-import React, { useEffect, useState } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
@@ -16,7 +16,7 @@ import { Route } from '../shared/Route';
 import { Loader } from '../shared/Loader';
 import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
-// #endregion import
+import { getSimilarDevices } from '../../services/getSimilarDevice';
 
 type Specs = {
   [key: string]: string | string[];
@@ -28,18 +28,20 @@ export const ProductPage: React.FC = React.memo(() => {
   const navigate = useNavigate();
 
   const category = pathname.split('/')[1];
+  const nameDevice = pathname.split('/')[2].split('-').slice(0, -2).join('-');
 
   const [device, setDevice] = useState<Device>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const [namespaceId, setNamespaceId] = useState('');
-  // const namespaceId = itemId?.split('-').slice(0, 3).join('-');
+  const [namespaceId, setNamespaceId] = useState(nameDevice);
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
   const [loadedDevice, setLoadedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
+
+  const heightPreview = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setLoadedDevice(false);
@@ -84,7 +86,6 @@ export const ProductPage: React.FC = React.memo(() => {
       .catch(() => {
         // console.log('error');
       });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [category, itemId]);
 
   useEffect(() => {
@@ -93,14 +94,21 @@ export const ProductPage: React.FC = React.memo(() => {
     client
       .get<Product[]>(PRODUCT_URL)
       .then(data => {
-        const randomNumbers = getRandomNumbers(0, 194, 30);
-        const randomsuggestedProducts = randomNumbers.map(index => data[index]);
+        const idxSmlrDvcs: number[] = [];
 
-        setSuggestedProducts(randomsuggestedProducts);
+        data.forEach((product, i) => {
+          getSimilarDevices(product, namespaceId, idxSmlrDvcs, i);
+        });
+
+        const randomNumbers = getRandomNumbers(0, data.length, 30, idxSmlrDvcs);
+
+        const randomSuggestedProducts = randomNumbers.map(index => data[index]);
+
+        setSuggestedProducts(randomSuggestedProducts);
         setLoadedSuggestedProduct(true);
       })
       .catch(() => {});
-  }, []);
+  }, [nameDevice]);
 
   return (
     <div className="product-page">
@@ -112,19 +120,32 @@ export const ProductPage: React.FC = React.memo(() => {
         <BackButton move={() => navigate(-1)} />
       </div>
 
-      {!namespaceId ? (
+      {!loadedSuggestedProduct ? (
         <div className="loader">
           <Loader />
         </div>
       ) : (
         !!namespaceId &&
         device && (
-          <div className="product-page__container">
+          <div
+            className="product-page__container"
+            style={
+              !namespaceId ? { transition: 'all 0.3s' } : { transition: 'none' }
+            }
+          >
             <h1 className="product-page__title secondary-title">
               {device.name}
             </h1>
 
-            <div className="product-page__image-preview">
+            <div
+              className="product-page__image-preview"
+              ref={heightPreview}
+              style={
+                !loadedDevice
+                  ? { height: `${heightPreview.current?.clientHeight}px` }
+                  : {}
+              }
+            >
               {loadedDevice ? <ImagePreview device={device} /> : <Loader />}
             </div>
 

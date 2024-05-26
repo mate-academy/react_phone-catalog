@@ -6,6 +6,7 @@ import { Price } from '../Price';
 import { SpecsList } from '../SpecsList';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
+import { scrollToTop } from '../../../services/scrollToTop';
 
 type Props = {
   product: Product;
@@ -40,13 +41,13 @@ export const ProductCard: React.FC<Props> = React.memo(
     const linkTo = () => {
       const path = pathname.split('/').slice(1);
       const homePage = path.length === 1 && !path[0];
-      const categotyPage = path.length === 1 && !!path[0];
+      const categoryPage = path.length === 1 && !!path[0];
 
       if (homePage) {
         return `${category}/${itemId}`;
       }
 
-      if (categotyPage) {
+      if (categoryPage) {
         return `${itemId}`;
       }
 
@@ -75,7 +76,12 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     return (
       <div className="product-card" style={getHeightCard()}>
-        <Link to={linkTo()} state={discount} className="product-card__link">
+        <Link
+          to={linkTo()}
+          onClick={() => scrollToTop(true)}
+          state={discount}
+          className="product-card__link"
+        >
           <img
             src={image}
             alt={name}
