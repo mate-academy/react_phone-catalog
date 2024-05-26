@@ -1,11 +1,13 @@
 import { Gadget } from '../../../utils/types/Gadget';
 import { api } from '../api';
 
-export const extendedApiAccessorize = api.injectEndpoints({
+export const extendedApiPhones = api.injectEndpoints({
   endpoints: build => ({
-    getAccessories: build.query<Gadget[], void>({
+    getPhones: build.query<Gadget[], void>({
       query: () => 'phones.json',
     }),
   }),
   overrideExisting: false,
 });
+
+export const { useGetPhonesQuery } = extendedApiPhones;

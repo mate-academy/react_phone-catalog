@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { toggleFavorite } from '../../features/favorites/favoritesSlice';
 import { addToCart } from '../../features/cart/cartSlise';
+import { scrollTop } from '../../helpers/helpers';
 
 type Props = {
   product: Product;
@@ -14,12 +15,22 @@ type Props = {
 };
 
 export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
-  const { image, name, price, fullPrice, screen, capacity, ram, id, itemId } =
-    product;
+  const {
+    image,
+    name,
+    price,
+    fullPrice,
+    screen,
+    capacity,
+    ram,
+    id,
+    itemId,
+    category,
+  } = product;
 
   const dispatch = useAppDispatch();
 
-  const favoritesItems = useAppSelector(state => state.favorites);
+  const favoritesItems: Product[] = useAppSelector(state => state.favorites);
 
   const cartItems = useAppSelector(state => state.cart.items);
 
@@ -30,10 +41,13 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
   return (
     <article className={styles.card}>
       <div className={styles.card__wrapper}>
-        <Link to={itemId} className={styles.card__wrapper}>
+        <Link
+          to={`../${category}/${itemId}`}
+          onClick={scrollTop}
+          className={styles.card__wrapper}
+        >
           <div className={styles.card__image}>
             <img
-              // eslint-disable-next-line max-len
               src={image}
               alt="Card Image"
               className={styles.card__picture}
@@ -70,7 +84,7 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
           ) : (
             <button
               className={styles.card__buttons_card}
-              onClick={() => dispatch(addToCart(product))}
+              onClick={() => dispatch(addToCart({ quantity: 1, ...product }))}
             >
               Add to cart
             </button>

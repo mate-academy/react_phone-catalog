@@ -12,6 +12,10 @@
   }
 }
 .breadCrumb {
+  color: $secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
   a {
     color: $secondary;
     font-size: 12px;

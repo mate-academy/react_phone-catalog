@@ -1,6 +1,10 @@
 @import './../../../styles/utils/mixins';
 
 .Products {
+  padding-bottom: 24px;
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
   &__wrapper {
     display: grid;
     grid-template-columns: 1fr;

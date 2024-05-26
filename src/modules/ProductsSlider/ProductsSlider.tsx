@@ -5,7 +5,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 
 import { ShopCard } from '../ShopCard';
-import React from 'react';
+import React, { useRef } from 'react';
 import { Product } from '../../utils/types/Product';
 import styles from './ProductsSlider.module.scss';
 
@@ -20,18 +20,23 @@ export const ProductsSlider: React.FC<Props> = ({
   isDiscount,
   title,
 }) => {
+  const navigationPrevRef = useRef(null);
+  const navigationNextRef = useRef(null);
+
   return (
-    <div className={styles.productsSlider}>
+    <section className={styles.productsSlider}>
       <div className="container">
         <h2 className={styles.productsSlider__title}>{title}</h2>
         <div className={styles.productsSlider__buttons}>
           <button
+            ref={navigationPrevRef}
             className={
               (styles.productsSlider__button_prev,
               styles.productsSlider__button)
             }
           ></button>
           <button
+            ref={navigationNextRef}
             className={`
               ${styles.productsSlider__button}
               productsSlider__button_next
@@ -44,8 +49,8 @@ export const ProductsSlider: React.FC<Props> = ({
             slidesPerView={4}
             spaceBetween={16}
             navigation={{
-              nextEl: '.productsSlider__button_next',
-              prevEl: '.slider__button--prev',
+              nextEl: navigationNextRef.current,
+              prevEl: navigationPrevRef.current,
             }}
           >
             {products?.map(product => (
@@ -63,6 +68,6 @@ export const ProductsSlider: React.FC<Props> = ({
           </Swiper>
         </div>
       </div>
-    </div>
+    </section>
   );
 };

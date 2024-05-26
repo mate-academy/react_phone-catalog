@@ -5,14 +5,18 @@ import plus from './../../../../../images/icons/plus.svg';
 import React from 'react';
 import { Product } from '../../../../../utils/types/Product';
 import { useAppDispatch } from '../../../../../hooks/hooks';
-import { removeFromCart } from '../../../../../features/cart/cartSlise';
+import {
+  handleAddQuantity,
+  removeFromCart,
+  handleMinusQuantity,
+} from '../../../../../features/cart/cartSlise';
 
 type Props = {
   product: Product;
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { image, name, price } = product;
+  const { image, name, price, quantity, id } = product;
 
   const dispatch = useAppDispatch();
 
@@ -37,11 +41,17 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <p className={styles.cartItem__title}>{name}</p>
         <div className={styles.cartItem__counter}>
           <div className={styles.cartItem__count_wrapper}>
-            <button className={styles.cartItem__decrease}>
+            <button
+              className={styles.cartItem__decrease}
+              onClick={() => dispatch(handleMinusQuantity(id))}
+            >
               <img src={minus_fulfilled} alt="Minus icon" />
             </button>
-            <p className={styles.cartItem__count}>10</p>
-            <button className={styles.cartItem__increase}>
+            <p className={styles.cartItem__count}>{quantity}</p>
+            <button
+              className={styles.cartItem__increase}
+              onClick={() => dispatch(handleAddQuantity(id))}
+            >
               <img src={plus} alt="Plus icon" />
             </button>
           </div>

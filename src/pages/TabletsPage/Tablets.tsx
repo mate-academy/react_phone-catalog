@@ -4,11 +4,11 @@ import { useGetDataQuery } from '../../store/api/api';
 export const Tablets = () => {
   const { data } = useGetDataQuery();
 
-  const phonesData = data?.filter(product => product.category === 'tablets');
+  const tabletsData = data?.filter(product => product.category === 'tablets');
 
   return (
     <div>
-      <ProductsList data={phonesData} title="Tablets" />
+      <ProductsList data={tabletsData} title="Tablets" />
     </div>
   );
 };

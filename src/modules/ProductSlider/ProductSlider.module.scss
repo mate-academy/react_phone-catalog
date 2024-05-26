@@ -1,0 +1,79 @@
+@import './../../styles/utils/mixins';
+
+.product-slider {
+  min-width: 0;
+  flex: 0 0 100%;
+
+  @include on-tablet {
+    flex: 0 0 52%;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    @include on-tablet {
+      flex-direction: row-reverse;
+    }
+  }
+}
+.swiper__main {
+  min-width: 0;
+  @include on-tablet {
+    flex: 0 1 92%;
+  }
+}
+
+.swiper__wrapper__thumbs {
+  min-width: 0;
+  margin-bottom: 30px;
+}
+
+.swiper__main_picture img {
+  max-height: 340px;
+  object-fit: contain;
+  width: 100%;
+  @include on-tablet {
+    max-height: 287px;
+  }
+  @include on-desktop {
+    max-height: 464px;
+  }
+}
+
+.swiper__thumb {
+  min-width: 0;
+}
+.swiper__wrapper__thumbs {
+  img {
+    height: 40px;
+    object-fit: cover;
+
+    @include on-tablet {
+      height: 80px;
+    }
+  }
+  @include on-tablet {
+    flex: 0 0 15%;
+  }
+}
+.swiper__wrapper__small_thumb {
+  height: auto;
+}
+.swiper__thumb {
+  .swiper-wrapper {
+    justify-content: center;
+  }
+}
+.swiper__wrapper__small_thumb {
+  border: 1px solid #c4c4c4;
+  padding: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include on-tablet {
+    padding: 8px 4px;
+  }
+}
+.swiper__thumbs {
+  max-width: 27%;
+}

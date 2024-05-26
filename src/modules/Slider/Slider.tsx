@@ -14,9 +14,13 @@ import prevArrow from './../../images/icons/prev_icon.svg';
 import nextArrow from './../../images/icons/next_icon.svg';
 import { useWindowDimensions } from '../../hooks/hooks';
 import { TABLET_SIZE } from '../../consts/consts';
+import { useRef } from 'react';
 
 export const Slider = () => {
   const { width } = useWindowDimensions();
+  const prevSliderBtn = useRef(null);
+  const nextSliderBtn = useRef(null);
+  const sliderPagination = useRef(null);
 
   return (
     <section className={style.slider}>
@@ -26,7 +30,7 @@ export const Slider = () => {
       <div className={style.slider__container}>
         <div className={style.slider__wrapper}>
           {width > TABLET_SIZE ? (
-            <button className={`${style.slider__button} slider__button--prev`}>
+            <button ref={prevSliderBtn} className={style.slider__button}>
               <img src={prevArrow} alt="Previous arrow" />
             </button>
           ) : (
@@ -43,10 +47,10 @@ export const Slider = () => {
             loop={true}
             slidesPerView={1}
             navigation={{
-              nextEl: '.slider__button--next',
-              prevEl: '.slider__button--prev',
+              nextEl: nextSliderBtn.current,
+              prevEl: prevSliderBtn.current,
             }}
-            pagination={{ clickable: true, el: '.slider__pagination' }}
+            pagination={{ clickable: true, el: sliderPagination.current }}
           >
             <SwiperSlide className={style.slide}>
               <img src={bannerAccessories} alt="Banner accessories" />
@@ -59,14 +63,17 @@ export const Slider = () => {
             </SwiperSlide>
           </Swiper>
           {width > TABLET_SIZE ? (
-            <button className={`${style.slider__button} slider__button--next`}>
+            <button ref={nextSliderBtn} className={style.slider__button}>
               <img src={nextArrow} alt="Next arrow" />
             </button>
           ) : (
             ''
           )}
         </div>
-        <div className={`${style.slider__pagination} slider__pagination`}></div>
+        <div
+          ref={sliderPagination}
+          className={`${style.slider__pagination} slider__pagination`}
+        ></div>
       </div>
     </section>
   );

@@ -1,10 +1,11 @@
-// import React, { useState, useEffect } from 'react';
-
 import classNames from 'classnames';
 import { useEffect, useMemo, useState } from 'react';
 import styles from './Pagination.module.scss';
 import { useSearchParams } from 'react-router-dom';
 import { SortVariants } from '../../../utils/enums/sortVariants';
+import leftArrow from './../../../images/icons/chevron-left.svg';
+import rightArrow from './../../../images/icons/pagination-right.svg';
+import { scrollTop } from '../../../helpers/helpers';
 
 type Props = {
   pages: number;
@@ -25,7 +26,10 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
   );
 
   useEffect(() => {
-    setCurrentButton(1);
+    const pageParam = searchParams.get('page');
+
+    setCurrentButton(pageParam ? +pageParam : 1);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PER_PAGE, SORT_BY]);
 
   const params = new URLSearchParams(searchParams);
@@ -41,12 +45,14 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
   }, [pages]);
 
   const increasePage = () => {
+    scrollTop();
     setCurrentButton(next =>
       (next as number) >= numberOfPages.length ? next : (next as number) + 1,
     );
   };
 
   const decreasePage = () => {
+    scrollTop();
     setCurrentButton(prev =>
       (prev as number) <= 1 ? prev : (prev as number) - 1,
     );
@@ -57,13 +63,18 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
   );
 
   useEffect(() => {
-    let tempNumberOfPages: (number | string)[] = [...arrOfCurrButtons];
+    let tempNumberOfPages = [...arrOfCurrButtons];
 
     const dotsInitial = '...';
     const dotsLeft = '... ';
     const dotsRight = ' ...';
 
-    if ((currentButton as number) >= 1 && (currentButton as number) <= 3) {
+    if (numberOfPages.length < 6) {
+      tempNumberOfPages = numberOfPages;
+    } else if (
+      (currentButton as number) >= 1 &&
+      (currentButton as number) <= 3
+    ) {
       tempNumberOfPages = [1, 2, 3, 4, dotsInitial, numberOfPages.length];
     } else if (currentButton === 4) {
       const sliced = numberOfPages.slice(0, 5);
@@ -105,14 +116,13 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
     }
 
     setArrOfCurrButtons(tempNumberOfPages);
-
     setCurrentPage(currentButton as number);
-
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentButton, pages]);
 
   const handlerChangePagination = (page: number | string) => {
     setCurrentButton(page);
+    scrollTop();
   };
 
   useEffect(() => {
@@ -123,26 +133,41 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
   }, [currentButton]);
 
   return (
-    <div className="pagination">
-      <ul className="pagination__list">
-        <li>
-          <button onClick={decreasePage}>Decrease</button>
+    <div className={styles.pagination}>
+      <ul className={styles.pagination__list}>
+        <li className={(styles.pagination__prev, styles.pagination__controls)}>
+          <button
+            disabled={currentButton === 1}
+            className={styles.pagination__navigation}
+            onClick={decreasePage}
+          >
+            <img src={leftArrow} alt="Left arrow" />
+          </button>
         </li>
         {arrOfCurrButtons.map((page, index) => (
-          <li className="pagination__item" key={index}>
+          <li className={styles.pagination__item} key={index}>
             <button
               onClick={() => handlerChangePagination(page)}
-              className={classNames({
-                [styles.pagination__btn_current]:
-                  String(page) === String(currentButton),
-              })}
+              className={classNames(
+                {
+                  [styles.pagination__btn_current]:
+                    String(page) === String(currentButton),
+                },
+                styles.pagination__button,
+              )}
             >
               {page}
             </button>
           </li>
         ))}
-        <li>
-          <button onClick={increasePage}>Increase</button>
+        <li className={(styles.pagination__next, styles.pagination__controls)}>
+          <button
+            disabled={currentButton === pages}
+            className={styles.pagination__navigation}
+            onClick={increasePage}
+          >
+            <img src={rightArrow} alt="Right arrow" />
+          </button>
         </li>
       </ul>
     </div>
