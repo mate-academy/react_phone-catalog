@@ -1,5 +1,12 @@
 import styled from 'styled-components';
 
+const HomePageStyled = styled.div`
+  @media (min-width: 1200px) {
+    max-width: 1136px;
+    margin-inline: auto;
+  }
+`;
+
 const TitleStyled = styled.h2`
   font-weight: 800;
   font-size: 32px;
@@ -16,9 +23,10 @@ const TitleStyled = styled.h2`
   }
 
   @media (min-width: 1200px) {
-    margin: 56px 32px;
+    padding: 56px 32px;
+    margin: 0;
     width: 100%;
   }
 `;
 
-export { TitleStyled };
+export { TitleStyled, HomePageStyled };

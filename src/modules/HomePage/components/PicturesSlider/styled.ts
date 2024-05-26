@@ -18,7 +18,7 @@ const PicturesSliderStyled = styled.div`
   }
 
   @media (min-width: 1200px) {
-    padding-inline: 32px;
+    padding-inline: 0;
   }
 `;
 
@@ -29,10 +29,6 @@ const MainContentStyled = styled.div`
     display: flex;
     gap: 16px;
     height: 100%;
-  }
-
-  @media (min-width: 1200px) {
-    padding-inline: 19px;
   }
 `;
 
