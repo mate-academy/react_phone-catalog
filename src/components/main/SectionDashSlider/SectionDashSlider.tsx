@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import styles from './SectionDashSlider.module.scss';
 
 export const SectionDashSlider: React.FC = () => {
@@ -6,6 +6,17 @@ export const SectionDashSlider: React.FC = () => {
   const totalPictureNumber = 5;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
+  const timeoutId = useRef<number>();
+
+  useEffect(() => {
+    timeoutId.current = window.setTimeout(() => {
+      setActive(prevState => (prevState + 1) % totalPictureNumber);
+    }, 5000);
+
+    return () => {
+      clearTimeout(timeoutId.current);
+    };
+  }, [active, totalPictureNumber]);
 
   const handlerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startTouch.current = e.touches[0].clientX;
@@ -27,7 +38,6 @@ export const SectionDashSlider: React.FC = () => {
     }
   };
 
-  console.log(active);
   return (
     <section className={styles['slider']}>
       <h1 className={styles['slider__title']}>
@@ -38,7 +48,6 @@ export const SectionDashSlider: React.FC = () => {
         onTouchEnd={handlerTouchEnd}
         onTouchMove={handlerTouchMove}
         className={styles['slider__container']}
-        // style={{transform: `translateX()`}}
         style={{
           transform: `translateX(-${active * 100}%)`,
           transition: 'transform 0.5s ease-in-out',
