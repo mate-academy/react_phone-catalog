@@ -1,20 +1,16 @@
 import classNames from 'classnames';
-import { useAppDispatch, useAppSelector } from '../hooks/hooks';
+import { useAppSelector } from '../hooks/hooks';
 import styles from './ProductDetails.module.scss';
 import { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import * as actionProduct from '../../../features/ProductSlice';
+import { Link } from 'react-router-dom';
 
 export const ProductDetails = () => {
   const [borderImg, setBorderImg] = useState(0);
-  const [indexColor, setIndexColor] = useState(0);
+  const [indexColor] = useState(0);
   const [widthSlider, setWidthSlider] = useState(0);
   const widthPicture = document.getElementById('widthPicture')?.offsetWidth;
-  const { pathname } = useLocation();
-  const findIdProduct = pathname.split('/')[2];
-  const dispath = useAppDispatch();
 
-  const { productDetails, deteils } = useAppSelector(state => state.product);
+  const { productDetails } = useAppSelector(state => state.product);
   const choosePhoto = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     index: number,
@@ -28,53 +24,12 @@ export const ProductDetails = () => {
     setBorderImg(index);
   };
 
-  const changeProductByColor = (
-    color: string,
-    e: React.MouseEvent<HTMLAnchorElement>,
-    index: number,
-  ) => {
-    e.preventDefault();
-    setIndexColor(index);
-    setWidthSlider(0);
-
-    const replaceColor = findIdProduct.split('-');
-
-    replaceColor.pop();
-    replaceColor.push(color);
-    const param = replaceColor.join('-');
-
-    const newProduct = deteils.find(product => product.id === param);
-
-    dispath(actionProduct.productDetails(newProduct));
+  const changeProductByColor = (color: string) => {
+    return `/${productDetails?.category}/${productDetails?.namespaceId}-${productDetails?.capacity.toLowerCase()}-${color.replaceAll(' ', '-')}`;
   };
 
-  const changeId = (value: string) => {
-    const location = pathname.split('/')[1];
-    const id = productDetails?.id.split('-');
-
-    if (location === 'phones') {
-      id?.splice(3, 1, value.toLowerCase());
-    } else if (location === 'tablets') {
-      id?.splice(5, 1, value.toLowerCase());
-    } else if (location === 'accessories') {
-      id?.splice(4, 1, value.toLowerCase());
-    }
-
-    const newId = id?.join('-');
-
-    return newId;
-  };
-
-  const findProdutByCapacity = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    capasity: string,
-  ) => {
-    e.preventDefault();
-
-    const id = changeId(capasity);
-    const newProduct = deteils.find(product => product.id === id);
-
-    dispath(actionProduct.productDetails(newProduct));
+  const findProdutByCapacity = (capacity: string) => {
+    return `/${productDetails?.category}/${productDetails?.namespaceId}-${capacity.toLowerCase()}-${productDetails?.color.replaceAll(' ', '-')}`;
   };
 
   return (
@@ -125,9 +80,8 @@ export const ProductDetails = () => {
             </div>
             <div className={styles.product__available}>
               {productDetails?.colorsAvailable.map((item, index) => (
-                <a
-                  onClick={e => changeProductByColor(item, e, index)}
-                  href=""
+                <Link
+                  to={{ pathname: `${changeProductByColor(item)}` }}
                   key={item}
                   style={{ backgroundColor: `${item}` }}
                   className={classNames(styles.product__color, {
@@ -150,13 +104,12 @@ export const ProductDetails = () => {
                       productDetails.capacity === item,
                   })}
                 >
-                  <a
+                  <Link
                     className={styles.product__capacity}
-                    href=""
-                    onClick={e => findProdutByCapacity(e, item)}
+                    to={{ pathname: findProdutByCapacity(item) }}
                   >
                     {item}
-                  </a>
+                  </Link>
                 </div>
               ))}
             </div>

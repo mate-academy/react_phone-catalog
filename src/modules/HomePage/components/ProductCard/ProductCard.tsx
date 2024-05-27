@@ -1,43 +1,58 @@
-// import { getBrandNewProducts, getHotPriceProducts } from "../../../../api/sortProduct";
-// import { useAppSelector } from "../../../../app/hooks"
 import styles from './ProductCard.module.scss';
 import { Products } from '../../../../types/Product';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
-
+import { Link, useSearchParams } from 'react-router-dom';
+import * as actionProduct from '../../../../features/DetailsSlice';
+import { useAppDispatch, useAppSelector } from '../../../shared/hooks/hooks';
 type Props = {
   phone: Products;
+  isDiscount: boolean;
 };
-export const ProductCard: React.FC<Props> = ({ phone }) => {
+
+export const ProductCard: React.FC<Props> = ({ phone, isDiscount }) => {
   const [searchParams] = useSearchParams();
-  const { pathname } = useLocation();
-  // const sortProduct = chosenSort
-  //   ? getBrandNewProducts(product)
-  //   : getHotPriceProducts(product)
-  // console.log(product)
-  // console.log(sortProduct)
+  const dispath = useAppDispatch();
+  const {
+    capacity,
+    category,
+    ram,
+    screen,
+    image,
+    itemId,
+    price,
+    name,
+    fullPrice,
+    id,
+  } = phone;
 
-  // const { deteils } = useAppSelector(state => state.product);
-  // console.log(deteils.find(i => i.id === "apple-iphone-13-mini-128gb-white"))
-  // const handleProductDetails = (id: string) => {
+  const { favorite, cartItem } = useAppSelector(state => state.selectedProduct);
 
-  // }
+  const addProductCart = () => {
+    dispath(actionProduct.addCart(phone));
+  };
+
+  const addProductFavorite = () => {
+    dispath(actionProduct.addFavorite(phone));
+  };
+
+  const isFavorite = favorite.find(item => item.itemId === itemId);
+  const isCart = cartItem.find(item => item.id === +id);
 
   return (
     <div className={styles.phone__container} id="phoneWidth">
       <div className={styles.phone__wraper}>
         <Link
           to={{
-            pathname: `${pathname}/${phone.itemId}`,
+            pathname: `/${category}/${itemId}`,
             search: searchParams.toString(),
           }}
         >
-          <img className={styles.phone__img} src={phone.image} alt="Img" />
+          <img className={styles.phone__img} src={image} alt="Img" />
         </Link>
-        <p className={styles.phone__title}>{phone.name}</p>
+        <p className={styles.phone__title}>{name}</p>
         <div className={`${styles.phone__price} ${styles.container}`}>
-          <h2 className={styles.phone__price}>{`$${phone.price}`}</h2>
-          {true && (
-            <h2 className={styles.phone__discount}>{`$${phone.fullPrice}`}</h2>
+          <h2 className={styles.phone__price}>{`$${price}`}</h2>
+          {isDiscount && (
+            <h2 className={styles.phone__discount}>{`$${fullPrice}`}</h2>
           )}
         </div>
         <span className={styles.phone__line}></span>
@@ -46,14 +61,14 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             <p className={styles.phone__part}>Screen</p>
 
             <p className={`${styles.phone__part} ${styles.phone__value}`}>
-              {phone.screen}
+              {screen}
             </p>
           </div>
           <div className={styles.phone__descriptin}>
             <p className={styles.phone__part}>Capacity</p>
 
             <p className={`${styles.phone__part} ${styles.phone__value}`}>
-              {phone.capacity}
+              {capacity}
             </p>
           </div>
 
@@ -61,15 +76,35 @@ export const ProductCard: React.FC<Props> = ({ phone }) => {
             <p className={styles.phone__part}>RAM</p>
 
             <p className={`${styles.phone__part} ${styles.phone__value}`}>
-              {phone.ram}
+              {ram}
             </p>
           </div>
         </div>
         <div className={styles.phone__send}>
-          <button className={styles.phone__button}>Add to cart</button>
-
-          <div className={styles.phone__like}>
-            <a className={styles.phone__favorit} href=""></a>
+          {isCart
+            ? <button
+              className={`${styles.phone__button} ${styles.is__add}`}
+              onClick={addProductCart}
+            >
+              Added
+            </button>
+            : <button
+              className={styles.phone__button}
+              onClick={addProductCart}
+            >
+                Add to cart
+            </button>
+          }
+          <div
+            onClick={addProductFavorite}
+            className={styles.phone__like}
+          >
+            {isFavorite
+              ? <button
+                className={`${styles.phone__favorit} ${styles.phone__favorit__choose}`}
+              />
+              : <button className={`${styles.phone__favorit}`} />
+            }
           </div>
         </div>
       </div>

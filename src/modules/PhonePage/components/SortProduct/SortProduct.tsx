@@ -4,17 +4,15 @@ import { useState } from 'react';
 import usePageLocation from '../../../shared/hooks/usePageLocation';
 import useFilterProducts from '../../../shared/hooks/useFilterProducts';
 
-type Props = {};
-export const SortProduct: React.FC<Props> = () => {
+export const SortProduct: React.FC = () => {
   const [isOpenButtonSort, setIsOpenButtonSort] = useState(false);
   const [isOpenButtonPage, setIsOpenButtonPage] = useState(false);
   const [searchParams, setSearchParams] = useSearchParams();
-
   const { pageLocation } = usePageLocation();
   const { filterProduct } = useFilterProducts();
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
-  const chooseSort = (value: string) => {
+  const chooseSort = (value: string | null) => {
     switch (value) {
       case 'Newest':
         return 'age';
@@ -34,10 +32,11 @@ export const SortProduct: React.FC<Props> = () => {
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
   ) => {
     const params = new URLSearchParams(searchParams);
-    const sortByProduct = chooseSort(e.currentTarget.innerText);
+    const sortByProduct = chooseSort(e.currentTarget.textContent);
 
     params.set('sort', sortByProduct);
     setSearchParams(params);
+    setIsOpenButtonSort(prev => !prev);
   };
 
   const getPerpage = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
@@ -52,6 +51,7 @@ export const SortProduct: React.FC<Props> = () => {
     }
 
     setSearchParams(params);
+    setIsOpenButtonPage(false);
   };
 
   return (
@@ -66,11 +66,17 @@ export const SortProduct: React.FC<Props> = () => {
         {`${filterProduct.length} models`}
       </div>
       <div className={styles.phones__page__search}>
-        <div className={styles.search__product}>
+        <div
+          className={styles.search__product}
+          onBlur={e => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setIsOpenButtonSort(false);
+            }
+          }}
+        >
           <span className={styles.search__product}>Sort by</span>
           <button
             className={styles.search__by}
-            onBlur={() => setIsOpenButtonSort(false)}
             onClick={() => setIsOpenButtonSort(prev => !prev)}
           >
             {sort ? sort : 'Choose option'}
@@ -85,12 +91,10 @@ export const SortProduct: React.FC<Props> = () => {
           </button>
           <ul
             className={styles.search__list}
-            style={{ opacity: `${isOpenButtonSort ? 1 : 0}` }}
+            style={{ display: `${isOpenButtonSort ? 'block' : 'none'}` }}
           >
             <li className={styles.search__item} onClick={handleFilterProduct}>
-              <button value="age" className={styles.search__name}>
-                Newest
-              </button>
+              <button className={styles.search__name}>Newest</button>
             </li>
             <li className={styles.search__item} onClick={handleFilterProduct}>
               <button className={styles.search__name}>Alphabetically</button>
@@ -101,11 +105,17 @@ export const SortProduct: React.FC<Props> = () => {
           </ul>
         </div>
 
-        <div className={styles.search__product}>
+        <div
+          className={styles.search__product}
+          onBlur={e => {
+            if (!e.currentTarget.contains(e.relatedTarget)) {
+              setIsOpenButtonPage(false);
+            }
+          }}
+        >
           <span className={styles.search__product}>Items on page</span>
           <button
             className={styles.search__by}
-            onBlur={() => setIsOpenButtonPage(false)}
             onClick={() => setIsOpenButtonPage(prev => !prev)}
           >
             {perPage ? perPage : 'All'}
@@ -120,7 +130,7 @@ export const SortProduct: React.FC<Props> = () => {
 
           <ul
             className={styles.search__list}
-            style={{ opacity: `${isOpenButtonPage ? 1 : 0}` }}
+            style={{ display: `${isOpenButtonPage ? 'block' : 'none'}` }}
           >
             <li className={styles.search__item} onClick={getPerpage}>
               <button className={styles.search__name}>All</button>

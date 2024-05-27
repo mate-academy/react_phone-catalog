@@ -1,6 +1,6 @@
-@import '../../../shared/utils-scss/mixins';
-@import '../../../shared/utils-scss/variables';
-@import '../../../shared/utils-scss/font';
+@import '../shared/utils-scss/mixins';
+@import '../shared/utils-scss/variables';
+@import '../shared/utils-scss/font';
 
 .footer {
   border: 1px solid $color-gray;
@@ -48,7 +48,7 @@
       content: "";
       top: -50%;
       right: -48px;
-      background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
+      background-image: url(../shared/headerImg/slider/Vector-left.svg);
       background-repeat: no-repeat;
       width: 32px;
       height: 32px;
@@ -71,7 +71,6 @@
       color: $border-button-color-hover;
       &::after {
         border: 1px solid $border-button-color-hover;
-
       }
     }
 

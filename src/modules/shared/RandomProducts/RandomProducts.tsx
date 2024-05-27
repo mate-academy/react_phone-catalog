@@ -56,7 +56,7 @@ export const RandomProducts = () => {
               className={styles.product__phone}
               key={phone.id}
             >
-              <ProductCard phone={phone} />
+              <ProductCard phone={phone} isDiscount={true} />
             </div>
           ))}
         </div>

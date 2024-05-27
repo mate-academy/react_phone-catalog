@@ -33,7 +33,6 @@
   }
 
   &__home__img {
-    // eslint-disable-next-line 
     height: 16px;
     width: 16px;
     background-image: url('../../../shared/img/Home.svg');
@@ -171,11 +170,14 @@
 
   &__name {
     background-color: inherit;
+    width: 100%;
     border: none;
     font-size: 14px;
     line-height: 21px;
     color: $color-text-gray;
     cursor: pointer;
+    text-align: start;
+
 
     @extend  %mont-500;
 
@@ -184,3 +186,4 @@
     }
   }
 }
+

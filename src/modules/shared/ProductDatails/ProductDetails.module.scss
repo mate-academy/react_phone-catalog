@@ -43,9 +43,7 @@
 
     @include onDesktop {
       grid-column: 1 / 13;
-      
     }
-    
   }
 
   &__picture {
@@ -68,7 +66,7 @@
     gap: 8px;
 
     @include onTablet {
-    flex-direction: column;
+      flex-direction: column;
     }
   }
 
@@ -280,7 +278,6 @@
     height: 16px;
   }
 
-
   &__descriptin {
     display: flex;
     justify-content: space-between;
@@ -327,7 +324,6 @@
 .specs {
   @include onDesktop {
     grid-column: 14 / 25;
-    
   }
 
   &__title {

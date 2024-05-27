@@ -5,6 +5,7 @@ enum Location {
   Phones = '/phones',
   Tablets = '/tablets',
   Accessories = '/accessories',
+  Favorites = '/favorite',
 }
 
 const usePageLocation = () => {
@@ -20,6 +21,9 @@ const usePageLocation = () => {
 
       case Location.Accessories:
         return 'Accessories';
+
+      case Location.Favorites:
+        return 'Favourites';
       default:
         return '';
     }

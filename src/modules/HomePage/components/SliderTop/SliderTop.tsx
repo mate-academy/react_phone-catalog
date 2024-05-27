@@ -1,26 +1,31 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import style from './SliderTop.module.scss';
 import classNames from 'classnames';
 
-enum AdjustmentImg {
-  First = 0,
-  Second = 1050,
-  Third = 2100,
-}
-
 export const SliderTop = () => {
   const [sliderWidht, setSliderWidht] = useState(0);
-  const widthImg = document.getElementById('widthImgId')?.offsetWidth;
+  const [widthImg, setWidthImg] = useState(0);
+  const divBlock = useRef<HTMLDivElement>(null);
 
-  const nextSlider = () => {
-    if (sliderWidht === 2100) {
+  useEffect(() => {
+    if (divBlock.current) {
+      setWidthImg(divBlock.current.clientWidth);
+    }
+  }, []);
+
+  const nextSlider = useCallback(() => {
+    if (sliderWidht >= widthImg * 2) {
       setSliderWidht(0);
     } else {
-      if (widthImg) {
-        setSliderWidht(carentValue => carentValue + widthImg);
-      }
+      setSliderWidht(carentValue => carentValue + widthImg);
     }
-  };
+  }, [widthImg, sliderWidht]);
+
+  useEffect(() => {
+    const interval = setInterval(() => nextSlider(), 5000);
+
+    return () => clearInterval(interval);
+  }, [sliderWidht, widthImg, nextSlider]);
 
   const backSlider = () => {
     if (sliderWidht > 0 && widthImg) {
@@ -44,6 +49,7 @@ export const SliderTop = () => {
             className={style.slider__gallery}
           >
             <div
+              ref={divBlock}
               id="widthImgId"
               className={`${style.slider__photo}
                 ${style.slider__banner}`}
@@ -68,34 +74,34 @@ export const SliderTop = () => {
 
       <div className={style.slider__wraper}>
         <button
-          onClick={() => setSliderWidht(AdjustmentImg.First)}
+          onClick={() => setSliderWidht(0)}
           className={style.slider__pointer}
         >
           <span
             className={classNames(`${style.slider__indicator}`, {
-              [style.slider__active]: sliderWidht === AdjustmentImg.First,
+              [style.slider__active]: sliderWidht === 0,
             })}
           ></span>
         </button>
 
         <button
-          onClick={() => setSliderWidht(AdjustmentImg.Second)}
+          onClick={() => setSliderWidht(widthImg)}
           className={style.slider__pointer}
         >
           <span
             className={classNames(style.slider__indicator, {
-              [style.slider__active]: sliderWidht === AdjustmentImg.Second,
+              [style.slider__active]: sliderWidht === widthImg,
             })}
           ></span>
         </button>
 
         <button
-          onClick={() => setSliderWidht(AdjustmentImg.Third)}
+          onClick={() => setSliderWidht(widthImg * 2)}
           className={style.slider__pointer}
         >
           <span
             className={classNames(style.slider__indicator, {
-              [style.slider__active]: sliderWidht === AdjustmentImg.Third,
+              [style.slider__active]: sliderWidht === widthImg * 2,
             })}
           ></span>
         </button>

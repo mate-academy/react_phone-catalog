@@ -5,6 +5,7 @@ import useFilterProducts from './useFilterProducts';
 const useSortProductststs = () => {
   const { search } = useLocation();
   const { filterProduct } = useFilterProducts();
+
   const sortProducts = useMemo(() => {
     if (!search.includes('sort')) {
       return filterProduct;

@@ -3,19 +3,20 @@ import { useAppSelector } from '../../../shared/hooks/hooks';
 import styles from '../HotPrices/HotPrices.module.scss';
 import { ProductsSlider } from '../ProductsSlider/ProductsSlider';
 import { ProductCard } from '../ProductCard';
+import { getHotPriceProducts } from '../../../../api/sortProduct';
 
 export const HotPrices = () => {
   const [sliderWidht, setSliderWidht] = useState(0);
   const [countProduct, setCountProduct] = useState(0);
   const { phones } = useAppSelector(state => state.product);
   const widthContent = document.getElementById('phone')?.offsetWidth;
-
+  const product = getHotPriceProducts(phones).splice(0, 20);
   const sliderRight = () => {
     if (sliderWidht === 0 && widthContent) {
       setSliderWidht(widthContent + 16);
       setCountProduct(2);
     } else {
-      if (countProduct <= phones.length && widthContent) {
+      if (countProduct <= product.length - 1 && widthContent) {
         setSliderWidht(carentValue => carentValue + widthContent + 16);
         setCountProduct(carentValue => carentValue + 1);
       }
@@ -47,9 +48,9 @@ export const HotPrices = () => {
           className={styles.product__cart}
           style={{ transform: `translateX(-${sliderWidht}px)` }}
         >
-          {phones.map(phone => (
+          {product.map(phone => (
             <div className={styles.product__phone} key={phone.id}>
-              <ProductCard phone={phone} />
+              <ProductCard phone={phone} isDiscount={true} />
             </div>
           ))}
         </div>

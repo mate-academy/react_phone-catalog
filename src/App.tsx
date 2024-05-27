@@ -11,7 +11,7 @@ export const App = () => {
   }, [dispatch]);
 
   return (
-    <div className="App">
+    <div className="App" id="nuv">
       <Outlet />
     </div>
   );

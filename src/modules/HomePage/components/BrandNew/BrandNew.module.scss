@@ -44,7 +44,7 @@
     }
 
     @include onDesktop {
-      width: 272px;
+      min-width: 272px;
       height: 506px;
     }
   }

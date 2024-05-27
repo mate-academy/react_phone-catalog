@@ -22,7 +22,11 @@ export const Footer = () => {
 
         <ul className={styles.nav}>
           <li className={styles.nav__item}>
-            <a href="" className={styles.nav__link}>
+            <a
+              href="https://github.com/mukutiuk"
+              className={styles.nav__link}
+              target='blanc'
+            >
               GITHUB
             </a>
           </li>

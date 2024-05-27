@@ -1,0 +1,148 @@
+@import '../shared/utils-scss/variables';
+@import '../shared/utils-scss/font';
+@import '../shared/utils-scss/mixins';
+
+.favorite {
+  padding: 25px 16px 0;
+  margin: 0 auto 64px;
+
+  @include onTablet {
+    padding: 24px 24px 0;
+  }
+
+  @include onDesktop {
+    padding: 24px 0 0;
+    width: 1136px;
+    margin: 0 auto 24px
+  }
+
+  &__location {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    background-image: url(../shared/headerImg/slider/Vector-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__plase {
+    @extend %mont-600;
+
+    font-size: 12px;
+    line-height: 15px;
+    color: $border-button-color;
+    align-items: flex-end;
+  }
+
+  &__home__img {
+    height: 16px;
+    width: 16px;
+    background-image: url('../shared/img/Home.svg');
+    background-repeat: no-repeat;
+    display: block;
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    color: $border-button-color-hover;
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 8px;
+
+    @include onTablet {
+      line-height: 56px;
+      font-size: 48px;
+    }
+  }
+
+  &__items {
+    @extend %mont-600;
+
+    line-height: 21px;
+    font-size: 14px;
+    color: $border-button-color;
+    margin-bottom: 32px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+}
+
+.product {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 32px;
+  grid-gap: 16px;
+  margin: 0 auto 24px;
+
+  @include onTablet {
+    margin: 0 auto 40px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+
+  &__page {
+    width: 100%;
+    grid-column: span 4;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
+  }
+}
+
+.page {
+  height: calc(100vh - 280px - 264px);
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  text-align: center;
+
+  @include onTablet {
+    height: calc(100vh - 320px - 95px);
+  }
+
+  @include onDesktop {
+    height: calc(100vh - 296px - 95px);
+  }
+ 
+  &__img {
+    width: 80%;
+    object-fit: contain;
+
+    @include onTablet {
+      width: auto;
+      height: 80%;
+    }
+  
+    @include onDesktop {
+      width: auto;
+      height: 100%;
+    }
+  }
+}

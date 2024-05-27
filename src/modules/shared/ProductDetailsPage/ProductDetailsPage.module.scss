@@ -1,8 +1,6 @@
-
 @import '../../shared/utils-scss/mixins';
 @import '../../shared/utils-scss/font';
 @import '../../shared/utils-scss/variables';
-
 
 .details {
   padding: 25px 16px 0;
@@ -17,7 +15,6 @@
     width: 1136px;
     margin: 0 auto 24px
   }
-  
 }
 
 .location {
@@ -48,7 +45,6 @@
 
     &__left {
       background-image: url(../../shared/headerImg/slider/Vector-left.svg);
-
     }
 
 
@@ -83,7 +79,6 @@
     font-size: 12px;
     line-height: 15px;
     color: $color-text-gray;
-
   }
 
   &__back {
@@ -109,7 +104,6 @@
   }
 }
 
-
 .about {
   margin-bottom: 56px;
 
@@ -128,12 +122,10 @@
 
     @include onTablet {
       grid-column: 1 / 6;
-
     }
 
     @include onDesktop {
       grid-column: 1 / 13;
-      
     }
   }
 

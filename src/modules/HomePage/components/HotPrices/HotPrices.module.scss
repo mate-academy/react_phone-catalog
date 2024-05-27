@@ -2,8 +2,6 @@
 @import '../../../shared/utils-scss/font';
 @import '../../../shared/utils-scss/mixins';
 
-
-
 .product {
   margin-bottom: 80px;
 
@@ -25,14 +23,13 @@
     width: 212px;
     height: 439px;
 
-
     @include onTablet {
       width: 237px;
       height: 512px;
     }
 
     @include onDesktop {
-      width: 272px;
+      min-width: 272px;
       height: 506px;
     }
   }

@@ -1,6 +1,6 @@
 @import '../../../shared/utils-scss/mixins';
 @import '../../../shared/utils-scss/variables';
-@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/font';
 
 .slider {
   padding: 40px 0 72px;
@@ -40,7 +40,6 @@
     cursor: pointer;
     display: none;
 
-
     @include onTablet {
       display: block;
       min-width: 32px;
@@ -59,13 +58,11 @@
 
   &__back {
     background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
-
     margin-right: 16px;
   }
 
   &__forward {
     background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
-
     margin-left: 16px;
   }
 
@@ -88,14 +85,12 @@
 
   &__gallery {
     display: flex;
-    gap: 10px;
     transition: all 0.3s;
     width: 1040px;
   }
 
   &__photo {
     background-image: url(../../../../../public/img/banner-phones.png);
-
   }
 
   &__banner {
@@ -118,19 +113,16 @@
 
   &__banner__2 {
     background-image: url(../../../../../public/img/category-accessories.png);
-
   }
 
   &__banner__3 {
     background-image: url(../../../../../public/img/banner-tablets.png);
-
   }
 
   &__wraper {
     display: flex;
     gap: 4px;
     justify-content: center;
-
   }
 
   &__pointer {

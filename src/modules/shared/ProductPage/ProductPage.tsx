@@ -1,10 +1,10 @@
-import { ProductsList } from '../ProductsList';
-import { SortProduct } from '../SortProduct/SortProduct';
-import styles from './PhonePage.module.scss';
-import { Pagination } from '../Pagination';
+import { ProductsList } from '../../PhonePage/components/ProductsList';
+import { SortProduct } from '../../PhonePage/components/SortProduct/SortProduct';
+import styles from './ProductPage.module.scss';
+import { Pagination } from '../../PhonePage/components/Pagination';
 import { useLocation } from 'react-router-dom';
 
-export const PhonePage = () => {
+export const ProductPage = () => {
   const { search } = useLocation();
   const findPage = search.split('&').find(item => item.includes('page'));
 

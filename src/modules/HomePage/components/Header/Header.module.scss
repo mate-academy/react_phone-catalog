@@ -1,13 +1,16 @@
 @import '../../../shared/utils-scss/variables';
 @import '../../../shared/utils-scss/mixins';
-@import '../../../shared/utils-scss/font.scss';
+@import '../../../shared/utils-scss/font';
 
 .nav {
-  display: none;
-  gap: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
 
   @include onTablet {
-    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
     gap: 32px;
   }
 
@@ -21,23 +24,16 @@
 
     &:hover {
       color: $border-button-color-hover;
-
-      // &::after {
-      //   content: '';
-      //   position: absolute;
-      //   left: 0;
-      //   right: 0;
-      //   top: 35px;
-      //   height: 3px;
-      //   width: 100%;
-      //   background-color: $border-button-color-hover;
-      // }
     }
   }
 
   &__item {
     text-decoration: none;
     list-style: none;
+    height: 27px;
+    display: flex;
+    align-items: center;
+    width: min-content;
   }
 
   &__img {
@@ -59,28 +55,29 @@
       height: 28px;
     }
   }
-
 }
 
 .is__active {
-        &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 35px;
-        height: 3px;
-        width: 100%;
-        background-color: $border-button-color-hover;
-      }
-  // content: '';
-  // position: absolute;
-  // left: 0;
-  // right: 0;
-  // top: 35px;
-  // height: 3px;
-  // width: 100%;
-  // background-color: $border-button-color-hover;
+  color: $border-button-color-hover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -8px;
+    right: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $border-button-color-hover;
+
+    @include onTablet {
+      bottom: -16px;
+    }
+
+    @include onDesktop {
+      bottom: -24px;
+    }
+  }
 }
 
 .header {
@@ -91,11 +88,9 @@
   align-items: center;
   padding-left: 24px;
 
-
   @include onTablet {
     border: 1px solid $border-button-color;
     display: flex;
-    justify-content: space-between;
     align-items: center;
     padding-left: 24px;
   }
@@ -104,8 +99,72 @@
     height: 64px;
   }
 
+  &__active {
+    transform: translateX(100%);
+
+    @include onTablet {
+      transform: translateX(0);
+    }
+  }
+
+  &__nav {
+    display:flex;
+    padding-top: 24px;
+    position: fixed;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    top: 48px;
+    right: 0;
+    bottom: 0;
+    background-color: $color-white;
+    z-index: 2;
+  
+    @include onTablet {
+      padding: 0;
+      flex-direction: row;
+      position: relative;
+      top: 0;
+      right: 0;
+      background-color: inherit;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+  }
+
   &__favorit {
     background-image: url(../../../shared/headerImg/Favourit.svg);
+    position: relative;
+  }
+
+  &__count {
+    @extend %mont-700;
+
+    font-size: 9px;
+    line-height: 11px;
+    color: #fff;
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    background-color: #EB5757;
+    border-radius: 50%;
+    text-align: center;
+    border: 1px solid #fff;
+    border-color: #fff;
+    bottom: 50%;
+    left: 50%;
+
+    @include onTablet {
+      top: 10px;
+      right: 10px;
+    }
+
+    @include onDesktop {
+      top: 18px;
+      right: 18px;
+    }
   }
 
   &__cart {
@@ -117,16 +176,22 @@
     background-position: 50%;
     width: 15px;
     height: 13px;
+    position: relative;
   }
 
   &__wraper {
-    width: 48px;
-    height: 48px;
+    width: 50%;
+    height: 64px;
     display: flex;
     justify-content: center;
     align-items: center;
     cursor: pointer;
     border: 1px solid $border-button-color;
+
+    @include onTablet {
+      width: 48px;
+      height: 48px;
+    }
 
     @include onDesktop {
       width: 66px;
@@ -142,18 +207,19 @@
     display: flex;
     gap: 32px;
     align-items: center;
+    width: 100%;
 
     @include onDesktop {
-    gap: 48px;
+      gap: 48px;
     }
   }
 
   &__icon {
-    display: none;
+    display: flex;
+    width: 100%;
 
     @include onTablet {
-      display: flex;
-
+      width: min-content;
     }
   }
 
@@ -174,7 +240,32 @@
     width: 16px;
     height: 16px;
     background-image: url(../../../shared/headerImg/Menu.svg);
-
+    border: none;
+    background-color: inherit;
     background-repeat: no-repeat;
+  }
+
+  &__menu__close{
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../shared/headerImg/Closeclose.svg);
+    border: none;
+    background-color: inherit;
+    background-repeat: no-repeat;
+  }
+}
+
+.is__active__button {
+  color: $border-button-color-hover;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    height: 3px;
+    width: 100%;
+    background-color: $border-button-color-hover;
   }
 }

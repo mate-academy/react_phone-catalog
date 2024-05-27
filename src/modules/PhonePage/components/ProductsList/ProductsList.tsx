@@ -23,14 +23,16 @@ export const ProductsList = () => {
   return (
     <>
       {loading && <Loader />}
-      {error && <h1>{`${pageLocation} Accessories page`}</h1>}
-      <div className={styles.product}>
-        {createPageProducts[+numberPage]?.map(phone => (
-          <div key={phone.id} className={styles.product__page}>
-            <ProductCard phone={phone} />
-          </div>
-        ))}
-      </div>
+      {error && <h1>{`There are no ${pageLocation.toLowerCase()} yet`}</h1>}
+      {!error && (
+        <div className={styles.product}>
+          {createPageProducts[+numberPage]?.map(phone => (
+            <div key={phone.id} className={styles.product__page}>
+              <ProductCard phone={phone} isDiscount={true} />
+            </div>
+          ))}
+        </div>
+      )}
     </>
   );
 };
