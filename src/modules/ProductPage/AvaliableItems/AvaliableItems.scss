@@ -31,6 +31,10 @@
     text-decoration: none;
     color: $text-black-color;
 
+    &:hover {
+      border-color: $border-color-default;
+    }
+
     &--color {
       width: $button-size;
       padding: 2px;
@@ -42,6 +46,7 @@
   &__item-wrapper.is-active {
     color: #fff;
     background-color: $border-color-hover;
+    border: none;
   }
 
   &__item-wrapper--color.is-active {

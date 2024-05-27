@@ -15,10 +15,10 @@
   align-items: center;
   justify-content: center;
 
-  box-shadow: -1px 0 0 $border-color-light-gray;
+  box-sizing: content-box;
+  border-left: solid 1px $border-color-light-gray;
 
-  &--close,
-  &--fav {
+  &--close {
     box-shadow: none;
   }
 }

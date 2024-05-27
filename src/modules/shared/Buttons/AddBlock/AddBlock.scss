@@ -31,5 +31,10 @@
     border-radius: 5px;
 
     cursor: pointer;
+
+    &:hover {
+      // border: solid 1px $border-color-hover;
+      border-color: $border-color-hover;
+    }
   }
 }

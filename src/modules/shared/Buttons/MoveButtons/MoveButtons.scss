@@ -13,11 +13,11 @@
   background-color: $back-ground-color-white;
 
   &:hover {
-    border: 1px solid $border-color-hover;
+    border-color: $border-color-hover;
   }
 
   &.disabled {
-    border: 1px solid $border-color-light-gray;
+    border-color: $border-color-light-gray;
     color: $text-gray-color;
     cursor: default;
   }
@@ -41,6 +41,10 @@
     color: $text-gray-color;
     font-size: 12px;
     line-height: 100%;
+
+    &:hover {
+      color: $text-black-color;
+    }
   }
 
   &__action {
