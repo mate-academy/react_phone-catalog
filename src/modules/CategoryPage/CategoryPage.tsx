@@ -15,6 +15,7 @@ import { Reload } from '../shared/Reload';
 import { Route } from '../shared/Route';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { Pagination } from './Pagination';
+import { scrollToTop } from '../../services/scrollToTop';
 
 type Props = {
   title: string;
@@ -63,6 +64,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
           getProducts.sort(getSortProducts(selectSortBy)).slice(start - 1, end),
         );
         setDataLoaded(true);
+        scrollToTop(false);
       })
       .catch(() => setError(true));
   }, [currentPage, itemsPerPage, selectSortBy, category]);
