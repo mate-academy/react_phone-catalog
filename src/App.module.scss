@@ -25,13 +25,6 @@
   &__content {
     flex: 1;
 
-    width: 100%;
-    max-width: $max-content-width;
-    margin: 0 auto;
-    padding-inline: 16px;
-
-    @include on-tablet {
-      padding-inline: 24px;
-    }
+    @include container;
   }
 }

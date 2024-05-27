@@ -1,24 +1,27 @@
 @import '../../styles/main';
 
 .NavMobile {
-  position: relative;
-
   @include flex-center;
 
-  border-left: 1px solid $elements-color;
+  background-color: $black-color;
 
   @include on-tablet {
     display: none;
+  }
+
+  &::before {
+    @include vertical-line;
   }
 
   &__menu {
     position: fixed;
     inset: 0;
 
-    z-index: 10;
-
     display: flex;
     flex-direction: column;
+
+    z-index: 100;
+    overflow-y: auto;
 
     background-color: $black-color;
   }
@@ -29,13 +32,10 @@
     align-items: center;
 
     padding-left: 16px;
-    margin-bottom: 24px;
     height: 49px;
-
-    border-bottom: 1px solid $surface2-color;
   }
 
-  &__menu-button {
+  &__btn-top {
     border-left: 1px solid $surface2-color;
   }
 
@@ -46,8 +46,10 @@
     flex-direction: column;
     align-items: center;
     gap: 16px;
+    padding-top: 24px;
 
     color: $white-color;
+    border-top: 1px solid $surface2-color;
   }
 
   &__item {
@@ -66,7 +68,7 @@
   &__bottom {
     height: 49px;
     display: flex;
-    border-top: 1px solid $surface2-color;
+    border: 1px solid $surface2-color;
   }
 
   &__favorites {

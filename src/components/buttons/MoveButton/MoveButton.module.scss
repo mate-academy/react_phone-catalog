@@ -1,0 +1,24 @@
+@import '../../../styles/main';
+
+.MoveButton {
+  height: 32px;
+  width: 32px;
+
+  @include flex-center;
+
+  background-color: $surface2-color;
+  cursor: pointer;
+
+  &--big {
+    height: 100%;
+  }
+
+  &:hover {
+    background-color: $icons-color;
+  }
+
+  &:disabled {
+    border: 1px solid $surface2-color;
+    background-color: inherit;
+  }
+}

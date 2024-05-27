@@ -1,0 +1,55 @@
+@import '../../styles/main';
+
+.Footer {
+  border: 1px solid $surface2-color;
+  max-width: 1440px;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include container;
+
+    padding-top: 32px;
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+
+    @include on-desctop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    color: $white-color;
+
+    @extend %text-uppercase;
+    @include hover(color, $accent-color);
+  }
+
+  &__back-top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    color: $secondary-color;
+
+    @extend %text-small;
+  }
+}

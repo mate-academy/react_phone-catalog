@@ -1,9 +1,10 @@
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
-
 import { useEffect } from 'react';
-// import { Footer } from './components/Footer';
-import { Header } from './components/Header';
+
 import { GlobalProvider } from './GlobalContext';
+
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
 
 import classes from './App.module.scss';
 
@@ -28,8 +29,7 @@ export const App = () => {
           <div className={classes.App__content}>
             <Outlet />
           </div>
-          {/* <Footer /> */}
-          Footer
+          <Footer />
         </div>
       </div>
     </GlobalProvider>

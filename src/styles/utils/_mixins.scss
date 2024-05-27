@@ -6,6 +6,17 @@
   align-items: center;
 }
 
+@mixin container {
+    width: 100%;
+    max-width: $max-content-width;
+    margin: 0 auto;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+}
+
 @mixin on-tablet {
   @media (min-width: $breakpoint-tablet) {
     @content;
@@ -63,6 +74,13 @@
 
     background-color: $white-color;
   }
+}
+
+@mixin vertical-line {
+  content: '';
+  width: 1px;
+  height: 100%;
+  background-color: $surface2-color;
 }
 
 // @mixin buttonBase {

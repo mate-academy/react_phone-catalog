@@ -5,7 +5,8 @@
   justify-content: space-between;
   gap: 16px;
 
-  border-bottom: 1px solid $elements-color;
+  background-color: $black-color;
+  border: 1px solid $surface2-color;
 
   &__left {
     display: flex;
@@ -44,8 +45,7 @@
     }
   }
 
-  &__favorites {
-    border-left: 1px solid $elements-color;
-    border-right: 1px solid $elements-color;
+  &__favorites::before, &__cart::before  {
+    @include vertical-line;
   }
 }

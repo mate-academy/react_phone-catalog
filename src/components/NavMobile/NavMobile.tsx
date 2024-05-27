@@ -42,7 +42,7 @@ export const NavMobile = () => {
         >
           <div className={classes.NavMobile__top}>
             <Logo onClick={() => setOpen(false)} />
-            <div className={classes['NavMobile__menu-button']}>
+            <div className={classes['NavMobile__btn-top']}>
               <Hamburger toggled={isOpen} size={10} toggle={setOpen} />
             </div>
           </div>
