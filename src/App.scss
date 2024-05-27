@@ -252,6 +252,10 @@ body {
     display: flex;
     justify-content: center;
     border-top: solid 1px #e2e6e9;
+
+    @media (max-width: 1200px) {
+      padding: 0 20px;
+    }
   }
   
 
@@ -281,7 +285,6 @@ body {
   &__link {
     box-sizing: border-box;
     height: 50%;
-    padding: 20px 10px;
     display: flex;
     align-items: center;
     text-decoration: none;
@@ -350,6 +353,10 @@ body {
 
 .wrap-bunner {
   margin-bottom: 72px;
+  
+  @media (max-width: 1200px) {
+    padding: 0 20px;
+  }
 }
 
 .bunner {
@@ -476,6 +483,7 @@ body {
   &__header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
     &__buttons {
       display: flex;
@@ -535,15 +543,15 @@ body {
     width: 100%;
 
     @media (min-width: 870px) and (max-width: 1150px) {
-      width: calc(284px * 3);
+      width: calc(283px * 3);
     }
 
     @media (max-width: 870px) {
-      width: calc(284px * 2);
+      width: calc(283px * 2);
     }
 
     @media (max-width: 580px) {
-      width: 284px;
+      width: 272px;
     }
 
     &__cards {
