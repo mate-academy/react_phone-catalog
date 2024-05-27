@@ -1,0 +1,13 @@
+.productCard {
+  min-width: 212px;
+  border: 1px solid #E2E6E9;
+  margin-right: 16px;
+  font-size: 14px;
+
+  &__picture {
+    margin: auto;
+    width: 129px;
+    height: 148px;
+
+  }
+}

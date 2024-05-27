@@ -23,8 +23,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   } = product;
   return (
     <>
-      <p>{id}</p>
-      <p>{fullPrice}</p>
+      <div className={styles['productCard']}>
+      <img className={styles['productCard__picture']} src={`./${product.image}`} />
+        <p>product name: {name}</p>
+      </div>
     </>
   );
 };
