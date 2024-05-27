@@ -81,30 +81,26 @@ export const ProductCard: React.FC<Props> = ({ phone, isDiscount }) => {
           </div>
         </div>
         <div className={styles.phone__send}>
-          {isCart
-            ? <button
+          {isCart ? (
+            <button
               className={`${styles.phone__button} ${styles.is__add}`}
               onClick={addProductCart}
             >
               Added
             </button>
-            : <button
-              className={styles.phone__button}
-              onClick={addProductCart}
-            >
-                Add to cart
+          ) : (
+            <button className={styles.phone__button} onClick={addProductCart}>
+              Add to cart
             </button>
-          }
-          <div
-            onClick={addProductFavorite}
-            className={styles.phone__like}
-          >
-            {isFavorite
-              ? <button
+          )}
+          <div onClick={addProductFavorite} className={styles.phone__like}>
+            {isFavorite ? (
+              <button
                 className={`${styles.phone__favorit} ${styles.phone__favorit__choose}`}
               />
-              : <button className={`${styles.phone__favorit}`} />
-            }
+            ) : (
+              <button className={`${styles.phone__favorit}`} />
+            )}
           </div>
         </div>
       </div>
