@@ -57,7 +57,7 @@ export const PageUrl = () => {
                   <span className="page-url__content__string__text">{urlState}</span>
                   <img src={arrowRight} alt="arrow-right" />
                 </NavLink>
-                <span className="page-url__content__string__text-id">{selectedProduct}</span>
+                <span className="page-url__content__string__text-id">{selectedProduct.split("-").join(" ")}</span>
               </>
             ) : (
               <span className="page-url__content__string__text-id">{urlState}</span>

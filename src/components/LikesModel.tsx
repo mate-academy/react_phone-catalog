@@ -19,10 +19,9 @@ export const LikesModel = () => {
   const { cartPhones, setCartPhones } = useAppContext();
   const { price, setPrice } = useAppContext();
   const [loading, setLoading] = useState<boolean>(false);
-  // const [selectedPrice, setSelectedPrice] = useState();
   const [minPrice, setMinPrice] = useState(0);
   const [maxPrice, setMaxPrice] = useState(0);
-  const priceRange = 0.2; // 20% відхилення від ціни
+  const priceRange = 0.3;
 
   // eslint-disable-next-line max-len
   const url = 'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
@@ -42,7 +41,6 @@ export const LikesModel = () => {
         setGetPhone(data);
         setLoading(false);
         const selectedPhone = data?.find((phone: Phones) => phone.phoneId === selectedProduct);
-        // setSelectedPrice(selectedPhone.price);
         setMinPrice(selectedPhone.price * (1 - priceRange));
         setMaxPrice(selectedPhone.price * (1 + priceRange));
       } catch (error) {
@@ -56,15 +54,17 @@ export const LikesModel = () => {
 
   const newPhones = getPhone?.filter((phone) => phone.price >= minPrice && phone.price <= maxPrice);
   const [translate, setTranslate] = useState(0);
-  const lengthHotPrice = 10;
+  const lengthHotPrice = newPhones?.length || 0;
 
   const handleHotPriceGo = (side:string) => {
-    if (side === 'left' && translate !== 0) {
-      setTranslate(translate + 288);
-    }
-
-    if (side === 'right' && translate !== -((lengthHotPrice - 4) * 288)) {
-      setTranslate(translate - 288);
+    if (lengthHotPrice) {
+      if (side === 'left' && translate !== 0) {
+        setTranslate(translate + 288);
+      }
+  
+      if (side === 'right' && translate !== -((lengthHotPrice - 4) * 288)) {
+        setTranslate(translate - 288);
+      }
     }
   };
 
@@ -127,36 +127,38 @@ export const LikesModel = () => {
       <div className="hot-prices__content">
         <div className="hot-prices__header">
           <h3 className="hot-prices__header__title">You may also like</h3>
-          <div className="hot-prices__header__buttons">
-            <button
-              type="button"
-              className={cn(
-                'hot-prices__header__buttons__button',
-                { 'hot-prices__header__buttons__button__disabled': translate === 0 },
-              )}
-              onClick={() => handleHotPriceGo('left')}
-            >
-              <img
-                className="hot-prices__header__buttons__button__img--left"
-                src={Arrow}
-                alt="arrow left"
-              />
-            </button>
-            <button
-              type="button"
-              className={cn(
-                'hot-prices__header__buttons__button',
-                { 'hot-prices__header__buttons__button__disabled': translate === -((lengthHotPrice - 4) * 288) },
-              )}
-              onClick={() => handleHotPriceGo('right')}
-            >
-              <img
-                className="hot-prices__header__buttons__button__img--right"
-                src={Arrow}
-                alt="arrow right"
-              />
-            </button>
-          </div>
+          {newPhones && newPhones.length > 4 && 
+            <div className="hot-prices__header__buttons">
+              <button
+                type="button"
+                className={cn(
+                  'hot-prices__header__buttons__button',
+                  { 'hot-prices__header__buttons__button__disabled': translate === 0 },
+                )}
+                onClick={() => handleHotPriceGo('left')}
+              >
+                <img
+                  className="hot-prices__header__buttons__button__img--left"
+                  src={Arrow}
+                  alt="arrow left"
+                />
+              </button>
+              <button
+                type="button"
+                className={cn(
+                  'hot-prices__header__buttons__button',
+                  { 'hot-prices__header__buttons__button__disabled': translate === -((lengthHotPrice - 4) * 288) },
+                )}
+                onClick={() => handleHotPriceGo('right')}
+              >
+                <img
+                  className="hot-prices__header__buttons__button__img--right"
+                  src={Arrow}
+                  alt="arrow right"
+                />
+              </button>
+            </div>
+          }
         </div>
         <div className="hot-prices__goods">
           <div className="hot-prices__goods__cards" style={{ transform: `translateX(${translate}px)` }}>

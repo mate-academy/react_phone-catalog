@@ -12,7 +12,9 @@ export const Footer = () => {
 
   useEffect(() => {
     const checkVerticalScroll = () => {
+      // eslint-disable-next-line max-len
       const hasScroll = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+
       setHasVerticalScroll(hasScroll);
     };
 
@@ -72,7 +74,7 @@ export const Footer = () => {
           tabIndex={0}
           onClick={() => window.scrollTo(0, 0)}
           className="footer__link"
-          style={ !hasVerticalScroll ? { display: 'none'} : {} }
+          style={!hasVerticalScroll ? { display: 'none' } : {}}
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               window.scrollTo(0, 0);

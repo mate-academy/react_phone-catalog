@@ -14,7 +14,7 @@ export const Header = () => {
   const { prevCartPhonesArr, setPrevCartPhonesArr } = useAppContext();
   const { prevFavoriteArr } = useAppContext();
   const { urlState, setUrlState } = useAppContext();
-  const { setSelectedProduct } = useAppContext();
+  const { selectedProduct, setSelectedProduct } = useAppContext();
   const [searchParams, setSearchParams] = useSearchParams();
   const { query, setQuery } = useAppContext();
   const { isMenuBurger, setIsMenuBurger } = useAppContext();
@@ -160,7 +160,7 @@ export const Header = () => {
           </NavLink>
         </ul>
       </nav>
-      {(urlState === 'phones') && (
+      {(urlState === 'phones' && !selectedProduct) && (
       <label className="header__search">
         <input
           type="text"
