@@ -1,4 +1,5 @@
 // import React from 'react';
+import { useEffect, useState } from 'react';
 import Logo from '../img/logo.svg';
 import Back from '../img/Slider button right.png';
 import { useAppContext } from './Context';
@@ -6,11 +7,25 @@ import { useAppContext } from './Context';
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 export const Footer = () => {
-  const { urlState} = useAppContext();
-  const { prevFavoriteArr } = useAppContext();
-  const { prevCartPhonesArr } = useAppContext();
+  const { urlState } = useAppContext();
+  const [hasVerticalScroll, setHasVerticalScroll] = useState(false);
 
-  const expression = (prevCartPhonesArr && prevCartPhonesArr.length < 3 && urlState === "cart") || (prevFavoriteArr && prevFavoriteArr.length < 5 && urlState === "favorite")
+  useEffect(() => {
+    const checkVerticalScroll = () => {
+      const hasScroll = document.documentElement.scrollHeight > document.documentElement.clientHeight;
+      setHasVerticalScroll(hasScroll);
+    };
+
+    checkVerticalScroll();
+
+    window.addEventListener('resize', checkVerticalScroll);
+    window.addEventListener('scroll', checkVerticalScroll);
+
+    return () => {
+      window.removeEventListener('resize', checkVerticalScroll);
+      window.removeEventListener('scroll', checkVerticalScroll);
+    };
+  }, [urlState]);
 
   return (
     <div className="footer__wrapp">
@@ -57,7 +72,7 @@ export const Footer = () => {
           tabIndex={0}
           onClick={() => window.scrollTo(0, 0)}
           className="footer__link"
-          style={ expression ? { display: 'none'} : {} }
+          style={ !hasVerticalScroll ? { display: 'none'} : {} }
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               window.scrollTo(0, 0);
