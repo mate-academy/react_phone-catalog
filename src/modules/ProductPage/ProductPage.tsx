@@ -33,18 +33,21 @@ export const ProductPage: React.FC = React.memo(() => {
   const [device, setDevice] = useState<Device>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
-  const [namespaceId, setNamespaceId] = useState(nameDevice);
-
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
   const [loadedDevice, setLoadedDevice] = useState(false);
+  const [updatedDevice, setUpdatedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   const heightPreview = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setLoadedDevice(false);
+    if (!device || device.namespaceId !== nameDevice) {
+      setLoadedDevice(false);
+    }
+
+    setUpdatedDevice(false);
 
     client
       .get<Device[]>(`api/${category}.json`)
@@ -76,17 +79,14 @@ export const ProductPage: React.FC = React.memo(() => {
           });
         }
 
-        if (namespaceId !== getDevice?.namespaceId && getDevice) {
-          setNamespaceId(getDevice.namespaceId);
-        }
-
         setDevice(getDevice);
         setLoadedDevice(true);
+        setUpdatedDevice(true);
       })
       .catch(() => {
         // console.log('error');
       });
-  }, [category, itemId]);
+  }, [category, itemId, nameDevice]);
 
   useEffect(() => {
     setLoadedSuggestedProduct(false);
@@ -97,7 +97,7 @@ export const ProductPage: React.FC = React.memo(() => {
         const idxSmlrDvcs: number[] = [];
 
         data.forEach((product, i) => {
-          getSimilarDevices(product, namespaceId, idxSmlrDvcs, i);
+          getSimilarDevices(product, nameDevice, idxSmlrDvcs, i);
         });
 
         const randomNumbers = getRandomNumbers(0, data.length, 30, idxSmlrDvcs);
@@ -120,99 +120,92 @@ export const ProductPage: React.FC = React.memo(() => {
         <BackButton move={() => navigate(-1)} />
       </div>
 
-      {!loadedSuggestedProduct ? (
+      {loadedDevice && device ? (
+        <div
+          className="product-page__container"
+          style={
+            loadedDevice ? { transition: 'none' } : { transition: 'all 0.3s' }
+          }
+        >
+          <h1 className="product-page__title secondary-title">{device.name}</h1>
+
+          <div
+            className="product-page__image-preview"
+            ref={heightPreview}
+            style={
+              updatedDevice
+                ? {}
+                : { height: `${heightPreview.current?.clientHeight}px` }
+            }
+          >
+            {updatedDevice ? <ImagePreview device={device} /> : <Loader />}
+          </div>
+
+          <div
+            className="product-page__avaliable-container
+                product-page__avaliable-container--1"
+          >
+            <div className="product-page__avaliable-title">
+              <span>Avaliable colors</span>
+              <span>ID: 496827</span>
+            </div>
+            <AvaliableItems device={device} colors discount={state} />
+          </div>
+
+          <div
+            className="product-page__avaliable-container
+                product-page__avaliable-container--2"
+          >
+            <div className="product-page__avaliable-title">Selest capacity</div>
+            <AvaliableItems device={device} colors={false} discount={state} />
+          </div>
+
+          <div className="product-page__price">
+            <Price
+              discount={state}
+              priceDiscount={device.priceDiscount}
+              fullPrice={device.priceRegular}
+            />
+          </div>
+
+          <div className="product-page__add-block">
+            <AddBlock />
+          </div>
+
+          <div
+            className="product-page__tech-specs
+                product-page__tech-specs--1"
+          >
+            {shortSpecs &&
+              Object.entries(shortSpecs).map(prop => (
+                <SpecsList prop={prop} key={prop[0]} />
+              ))}
+          </div>
+
+          <div className="product-page__description">
+            <h3 className="product-page__description-title tertiary-title">
+              About
+            </h3>
+            <DescriptionList description={device.description} />
+          </div>
+
+          <div
+            className="product-page__tech-specs
+                product-page__tech-specs--2"
+          >
+            <h3 className="product-page__description-title tertiary-title">
+              Tech specs
+            </h3>
+            {fullSpecs &&
+              Object.entries(fullSpecs).map(
+                prop => prop[1] && <SpecsList prop={prop} key={prop[0]} />,
+              )}
+          </div>
+        </div>
+      ) : (
         <div className="loader">
           <Loader />
         </div>
-      ) : (
-        !!namespaceId &&
-        device && (
-          <div
-            className="product-page__container"
-            style={
-              !namespaceId ? { transition: 'all 0.3s' } : { transition: 'none' }
-            }
-          >
-            <h1 className="product-page__title secondary-title">
-              {device.name}
-            </h1>
-
-            <div
-              className="product-page__image-preview"
-              ref={heightPreview}
-              style={
-                !loadedDevice
-                  ? { height: `${heightPreview.current?.clientHeight}px` }
-                  : {}
-              }
-            >
-              {loadedDevice ? <ImagePreview device={device} /> : <Loader />}
-            </div>
-
-            <div
-              className="product-page__avaliable-container
-                product-page__avaliable-container--1"
-            >
-              <div className="product-page__avaliable-title">
-                <span>Avaliable colors</span>
-                <span>ID: 496827</span>
-              </div>
-              <AvaliableItems device={device} colors discount={state} />
-            </div>
-
-            <div
-              className="product-page__avaliable-container
-                product-page__avaliable-container--2"
-            >
-              <div className="product-page__avaliable-title">
-                Selest capacity
-              </div>
-              <AvaliableItems device={device} colors={false} discount={state} />
-            </div>
-
-            <div className="product-page__price">
-              <Price
-                discount={state}
-                priceDiscount={device.priceDiscount}
-                fullPrice={device.priceRegular}
-              />
-            </div>
-
-            <div className="product-page__add-block">
-              <AddBlock />
-            </div>
-
-            <div
-              className="product-page__tech-specs
-                product-page__tech-specs--1"
-            >
-              {shortSpecs &&
-                Object.entries(shortSpecs).map(prop => (
-                  <SpecsList prop={prop} key={prop[0]} />
-                ))}
-            </div>
-
-            <div className="product-page__description">
-              <h3 className="product-page__description-title tertiary-title">
-                About
-              </h3>
-              <DescriptionList description={device.description} />
-            </div>
-
-            <div
-              className="product-page__tech-specs
-                product-page__tech-specs--2"
-            >
-              <h3 className="product-page__description-title tertiary-title">
-                Tech specs
-              </h3>
-              {fullSpecs &&
-                Object.entries(fullSpecs).map(
-                  prop => prop[1] && <SpecsList prop={prop} key={prop[0]} />,
-                )}
-            </div>
-          </div>
-        )
       )}
 
       {loadedSuggestedProduct && (

@@ -59,10 +59,6 @@ export const ProductCard: React.FC<Props> = React.memo(
         return { height: `${widthImg}px`, marginBottom: '32px' };
       }
 
-      if (windowSize > WIDTH_DEVICES.mobile && category === 'accessories') {
-        return { maxHeight: '90%' };
-      }
-
       return {};
     }
 
@@ -78,7 +74,7 @@ export const ProductCard: React.FC<Props> = React.memo(
       <div className="product-card" style={getHeightCard()}>
         <Link
           to={linkTo()}
-          onClick={() => scrollToTop(true)}
+          onClick={() => scrollToTop(false)}
           state={discount}
           className="product-card__link"
         >
