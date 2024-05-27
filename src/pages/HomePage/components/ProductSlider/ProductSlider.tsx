@@ -22,7 +22,8 @@ export const ProductSlider: React.FC<Props> = ({
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
   const currentProduct = products[activeSlide];
-  const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
+  const nextProduct = activeSlide < 6 ? products[activeSlide + 1] : products[0];
+  const lastProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
 
   useEffect(() => {
     getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
@@ -100,9 +101,14 @@ export const ProductSlider: React.FC<Props> = ({
           <span className="cards__container">
             <ProductCard hasDiscount={hasDiscount} product={currentProduct} />
           </span>
-          {activeSlide < 7 && (
+          {activeSlide < 6 && (
             <span className="cards__container">
               <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
+            </span>
+          )}
+          {activeSlide < 7 && (
+            <span className="cards__container">
+              <ProductCard hasDiscount={hasDiscount} product={lastProduct} />
             </span>
           )}
         </div>

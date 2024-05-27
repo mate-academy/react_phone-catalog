@@ -1,19 +1,6 @@
 @use '../../../../utils/mixins' as *;
 @use '../../../../utils/variables' as *;
 
-.main {
-  margin: 0;
-  width: 100%;
-
-  display: flex;
-  flex-direction: column;
-  gap: 56px;
-
-  &__section {
-    width: 100%;
-  }
-}
-
 .section {
   width: 100%;
 

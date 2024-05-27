@@ -13,7 +13,7 @@
 @mixin grid() {
   display: grid;
 
-  grid-template-columns: repeat(4, 60px);
+  grid-template-columns: repeat(4, 1fr);
   grid-template-rows: 48px;
   column-gap: 16px;
 
