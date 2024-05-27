@@ -152,28 +152,30 @@ export const Cart = () => {
                     >
                       {item.name}
                     </span>
-                    <div className="cart__content__blocks__products__device__buttons">
-                      <button
-                        onClick={() => handleCountDown(item.itemId)}
-                        className={cn(
-                          "cart__content__blocks__products__device__button",
-                          {"cart__content__blocks__products__device__button--disabled": prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count === 1}
-                        )}
-                        disabled={prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count === 1}
-                      >
-                        <span className={cn(
-                          "cart__content__blocks__products__device__button__minus",
-                          // {"cart__content__blocks__products__device__button__minus--disabled": prevCartPhonesArr?.find((elem) => (elem.id === item.id))?.count === 0}
-                        )} />
-                      </button>
-                      <span className="cart__content__blocks__products__device__caunt">{prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count}</span>
-                      <button onClick={() => handleCountUp(item.itemId)} className="cart__content__blocks__products__device__button">
-                        <span className="cart__content__blocks__products__device__button__plus" />
-                      </button>
+                    <div className="cart__content__blocks__products__device__wrap-buttons-price">
+                      <div className="cart__content__blocks__products__device__buttons">
+                        <button
+                          onClick={() => handleCountDown(item.itemId)}
+                          className={cn(
+                            "cart__content__blocks__products__device__button",
+                            {"cart__content__blocks__products__device__button--disabled": prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count === 1}
+                          )}
+                          disabled={prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count === 1}
+                        >
+                          <span className={cn(
+                            "cart__content__blocks__products__device__button__minus",
+                            // {"cart__content__blocks__products__device__button__minus--disabled": prevCartPhonesArr?.find((elem) => (elem.id === item.id))?.count === 0}
+                          )} />
+                        </button>
+                        <span className="cart__content__blocks__products__device__caunt">{prevCartPhonesArr?.find((elem) => (elem.id === item.itemId))?.count}</span>
+                        <button onClick={() => handleCountUp(item.itemId)} className="cart__content__blocks__products__device__button">
+                          <span className="cart__content__blocks__products__device__button__plus" />
+                        </button>
+                      </div>
+                      <span className="cart__content__blocks__products__device__price">
+                        {`$${item.price}`}
+                      </span>
                     </div>
-                    <span className="cart__content__blocks__products__device__price">
-                      {`$${item.price}`}
-                    </span>
                   </div>
                 ))}
               </div>

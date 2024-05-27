@@ -1,10 +1,17 @@
 // import React from 'react';
 import Logo from '../img/logo.svg';
 import Back from '../img/Slider button right.png';
+import { useAppContext } from './Context';
 
 /* eslint-disable jsx-a11y/anchor-is-valid */
 
 export const Footer = () => {
+  const { urlState} = useAppContext();
+  const { prevFavoriteArr } = useAppContext();
+  const { prevCartPhonesArr } = useAppContext();
+
+  const expression = (prevCartPhonesArr && prevCartPhonesArr.length < 3 && urlState === "cart") || (prevFavoriteArr && prevFavoriteArr.length < 5 && urlState === "favorite")
+
   return (
     <div className="footer__wrapp">
       <footer className="footer">
@@ -50,6 +57,7 @@ export const Footer = () => {
           tabIndex={0}
           onClick={() => window.scrollTo(0, 0)}
           className="footer__link"
+          style={ expression ? { display: 'none'} : {} }
           onKeyDown={(event) => {
             if (event.key === 'Enter' || event.key === ' ') {
               window.scrollTo(0, 0);

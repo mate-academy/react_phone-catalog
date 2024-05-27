@@ -6,7 +6,7 @@ interface AppContextProps {
   children: ReactNode;
 }
 
-interface Phones {
+export interface Phones {
   id: string;
   category: string;
   phoneId: string;

@@ -3,6 +3,7 @@ import cn from 'classnames';
 import { useNavigate } from 'react-router-dom';
 import { useAppContext } from './Context';
 import filledFavoriteImage from '../img/favourites-filled.svg';
+import { LikesModel } from './LikesModel';
 
 /* eslint-disable */
 interface Product {
@@ -331,6 +332,7 @@ export const ProductPage = () => {
             </section>
           </div>
         </div>
+        <LikesModel />
       </div>
     </section>
   );
