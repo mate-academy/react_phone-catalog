@@ -2,7 +2,7 @@
 @import './../../utils/style/variables';
 
 .header {
-  height: 48px;
+  min-height: 48px;
   display: flex;
   justify-content: space-between;
   box-shadow: 0 1px 0 0 #E2E6E9;
@@ -84,7 +84,7 @@
 
 @media(min-width:1200px) {
   .header {
-    height: 64px;
+    min-height: 64px;
 
     &__logo {
       margin-left: 24px;
