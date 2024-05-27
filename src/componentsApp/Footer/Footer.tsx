@@ -1,7 +1,8 @@
 /* eslint-disable max-len */
 import React, { useContext } from 'react';
 import './Footer.scss';
-import logoDark from '../../assets/img/Logo-White.png';
+import logoDark from '../../assets/img/Logo-White.svg';
+
 import { StateContext } from '../../context/ContextReducer';
 
 import cn from 'classnames';

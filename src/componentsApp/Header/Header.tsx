@@ -4,7 +4,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import './Header.scss';
 import cn from 'classnames';
 
-import logoDark from '../../assets/img/Logo-White.png';
+import logoDark from '../../assets/img/Logo-White.svg';
 
 import { Ellipse } from '../Ellipse/Ellipse';
 import { DispatchContext, StateContext } from '../../context/ContextReducer';

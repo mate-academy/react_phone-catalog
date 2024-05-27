@@ -323,7 +323,7 @@ export const Catalog: React.FC<Props> = ({
         </>
       )}
 
-      {!nonCatalog && (
+      {perPage !== 'all' && !nonCatalog && (
         <div className="Catalog__pagin">
           <a>
             <button
