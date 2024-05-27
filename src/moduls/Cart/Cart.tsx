@@ -15,13 +15,6 @@ export const Cart: React.FC = () => {
   const dispatch = useContext(DispatchContext);
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   return () => {
-  //     dispatch({ type: 'resetPrices' });
-  //     dispatch({ type: 'resetTotalCartItem' });
-  //   };
-  // }, []);
-
   const handleClickCheckout = () => {
     dispatch({ type: 'setCheckout' });
   };

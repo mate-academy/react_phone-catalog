@@ -82,6 +82,7 @@
         background-repeat: no-repeat;
         background-position: center;
         transform: rotate(180deg);
+        cursor: pointer;
 
         &.dark {
           background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');
@@ -101,6 +102,7 @@
         background-image: url('/assets/img/Chevron\ \(Arrow\ Right\).svg');
         background-position: center;
         background-repeat: no-repeat;
+        cursor: pointer;
 
         &.dark {
           background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');

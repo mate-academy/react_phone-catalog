@@ -101,6 +101,7 @@
 
         &--decrement {
           background: url('/assets/img/Minus.svg') no-repeat center;
+          cursor: pointer;
 
           &.dark {
             background: url('/assets/img/Minus-DARK.svg') no-repeat center;
@@ -120,7 +121,8 @@
 
         &--increment {
           background: url('/assets/img/Plus.svg') no-repeat center;
-
+          cursor: pointer;
+    
           &.dark {
             background: url('/assets/img/Plus-DARK.svg') no-repeat center;
             background-color: $dark-gray;

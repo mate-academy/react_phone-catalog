@@ -19,6 +19,8 @@
   bottom: 32px;
   width: 40px;
 
+  cursor: pointer;
+
   &:hover {
     border-color: $color-dark !important;
   }
@@ -107,6 +109,8 @@
 }
 
 .BrandItem__bottom__buttons--AddItem {
+  cursor: pointer;
+
   &.is-active {
     border: $border-color 1px solid;
     background-color: #fff;
@@ -175,9 +179,10 @@
     &__bottom {
       border-top: $border-color 1px solid;
       height: 77px;
-      width: 208px;
+      width: 205px;
 
       margin-bottom: 16px;
+      padding-top: 16px;
 
       &.dark {
         color: $white;
@@ -226,7 +231,6 @@
       }
 
       &__Screen {
-        margin-top: 16px;
         margin-bottom: 8px;
 
         display: flex;
@@ -314,7 +318,7 @@
       height: 77px;
       width: 173px;
 
-      margin-bottom: 16px;
+      padding-top: 8px;
 
       &__buttons {
         justify-content: space-between;
@@ -365,7 +369,6 @@
       }
 
       &__Screen {
-        margin-top: 16px;
         margin-bottom: 8px;
 
         display: flex;
@@ -454,7 +457,7 @@
       height: 77px;
       width: 146px;
 
-      margin-bottom: 16px;
+      padding-top: 8px;
 
       &.dark {
         color: $white;
@@ -516,7 +519,6 @@
       }
 
       &__Screen {
-        margin-top: 16px;
         margin-bottom: 8px;
 
         display: flex;

@@ -481,11 +481,16 @@ export const ItemCard: React.FC = () => {
           </div>
 
           <div className="ItemCard__text__tech-specs">
-            <h2 className="ItemCard__text__about__title">Tech specs</h2>
+            <h2
+              className={cn('ItemCard__text__about__title', { dark: darkThem })}
+            >
+              Tech specs
+            </h2>
 
             <div className="ItemCard__main__info__card__params">
               <div className="BrandItem__bottom__Screen">
                 <p className="BrandItem__bottom__title">Screen</p>
+
                 <p
                   className={cn('BrandItem__bottom__param', { dark: darkThem })}
                 >

@@ -1,7 +1,7 @@
 import { createRoot } from 'react-dom/client';
 import { App } from './App';
 import { GlobalProvider } from './context/ContextReducer';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
+import { Route, HashRouter as Router, Routes } from 'react-router-dom';
 import { Sidebar } from './componentsApp/SideBar/Sidebar';
 import { HomePage } from './moduls/HomePage/HomePage/HomePage';
 import { ItemCard } from './moduls/ItemCard/ItemCard';

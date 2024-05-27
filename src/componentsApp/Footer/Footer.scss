@@ -92,6 +92,7 @@ body {
       display: flex;
       justify-content: center;
       align-items: center;
+      cursor: pointer;
 
       &__button {
         margin: 0;
@@ -104,7 +105,7 @@ body {
           background-repeat: no-repeat;
           background-position: center;
           transform: rotate(-90deg);
-          border-color: $dark-gray;
+          border: $dark-gray 1px solid;
 
           &:hover {
             background-image: url('/assets/img/Chevron\ \(Arrow\ Right\)-DARK.svg');

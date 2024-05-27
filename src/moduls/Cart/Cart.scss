@@ -7,7 +7,9 @@ $heightTotalForDesktop: 206px;
   display: flex;
   justify-content: center;
   margin-top: 200px;
-  padding-bottom: 400px;
+  height: fit-content;
+  overflow: hidden !important;
+  padding-bottom: 65vh;
 
   &__title {
     color: $color-dark;
@@ -25,6 +27,7 @@ $heightTotalForDesktop: 206px;
   &__center {
     position: relative;
     display: flex;
+    height: fit-content;
 
     &__back {
       display: block;
@@ -97,6 +100,7 @@ $heightTotalForDesktop: 206px;
       height: 48px;
       background-color: $color-dark;
       color: #fff;
+      cursor: pointer;
 
       &.dark{
         background-color: $pink;

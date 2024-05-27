@@ -1,18 +1,18 @@
 /* eslint-disable max-len */
+import React, { useContext, useEffect, useMemo, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { Accessorie } from '../../types/accessories';
 import { Phone } from '../../types/phone';
 import { Tablet } from '../../types/tablets';
 import { Path } from '../Path/Path';
 import './Catalog.scss';
-import { useContext, useEffect, useState } from 'react';
 import { DispatchContext, StateContext } from '../../context/ContextReducer';
 import cn from 'classnames';
 import { ParamsSortBy } from '../../types/params';
 import { getSearchWith } from '../../utils/searchHelper';
-import React from 'react';
 import { filterDevice } from '../../utils/filterDevice';
 import { BrandItem } from '../ItemDevice/itemDevice';
+import { debounce } from '../../utils/debounce';
 
 interface Props {
   devices: Phone[] | Tablet[] | Accessorie[] | (Phone | Tablet | Accessorie)[];
@@ -35,7 +35,9 @@ export const Catalog: React.FC<Props> = ({
     darkThem,
   } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+
   const [searchParams, setSearchParams] = useSearchParams();
+  const [query, setQuery] = useState('');
 
   const [sortDevices, setSortDevices] =
     useState<(Phone | Tablet | Accessorie)[]>(devices);
@@ -52,6 +54,9 @@ export const Catalog: React.FC<Props> = ({
     searchParams.get('perPage') === 'all'
       ? sortDevices
       : filteredAndSortDevices;
+
+  const favorites =
+    titleCatalog === 'Favorites' ? favoritesDevice : renderDevices;
 
   useEffect(() => {
     const sortDevice = filterDevice(devices, searchParams, product).filter(
@@ -94,13 +99,23 @@ export const Catalog: React.FC<Props> = ({
     dispatch({ type: 'setSortByDropdown', delete: 'close' });
   };
 
+  const debouncedSetSearchParams = useMemo(
+    () =>
+      debounce(newParams => {
+        setSearchParams(newParams);
+      }, 500),
+    [setSearchParams],
+  );
+
   const handleQueryInput = (p: string) => {
-    setSearchParams(
-      getSearchWith(searchParams, {
-        query: p ? p : null,
-        paginPage: !searchParams.get('query') ? '1' : null,
-      }),
-    );
+    setQuery(p);
+
+    const newParams = getSearchWith(searchParams, {
+      query: p ? p : null,
+      paginPage: !searchParams.get('query') ? '1' : null,
+    });
+
+    debouncedSetSearchParams(newParams);
 
     dispatch({ type: 'setSortByDropdown', delete: 'close' });
     dispatch({ type: 'setPerPageDropdown', delete: 'close' });
@@ -152,6 +167,7 @@ export const Catalog: React.FC<Props> = ({
                   ? 'Select'
                   : searchParams.get('sort')}
               </div>
+
               {sortByDropdown && (
                 <div
                   className={cn(
@@ -172,6 +188,7 @@ export const Catalog: React.FC<Props> = ({
                   >
                     Newest
                   </a>
+
                   <a
                     onClick={() => handleSortLink(ParamsSortBy.two)}
                     className={cn(
@@ -185,6 +202,7 @@ export const Catalog: React.FC<Props> = ({
                   >
                     Alphabetically
                   </a>
+
                   <a
                     onClick={() => handleSortLink(ParamsSortBy.three)}
                     className={cn(
@@ -201,6 +219,7 @@ export const Catalog: React.FC<Props> = ({
                 </div>
               )}
             </div>
+
             <div className="Catalog__filters__items-on-page">
               <p className="Catalog__filters__title">Items on page</p>
               <div
@@ -264,13 +283,13 @@ export const Catalog: React.FC<Props> = ({
             <div className="Catalog__filters__query">
               <p className="Catalog__filters__title">Search</p>
               <input
-                value={searchParams.get('query')?.toString()}
+                value={query}
                 onChange={event => handleQueryInput(event.target.value)}
                 className={cn(
                   'Catalog__filters__dropdown Catalog__filters__dropdown--search',
                   { dark: darkThem },
                 )}
-              ></input>
+              />
             </div>
           </div>
         </div>
@@ -278,7 +297,7 @@ export const Catalog: React.FC<Props> = ({
 
       {renderDevices.length ? (
         <div className="Catalog__items">
-          {renderDevices.map(d => (
+          {favorites.map(d => (
             <BrandItem discount={true} device={d} key={d.id} />
           ))}
         </div>
@@ -306,27 +325,27 @@ export const Catalog: React.FC<Props> = ({
 
       {!nonCatalog && (
         <div className="Catalog__pagin">
-          <a href="#top">
+          <a>
             <button
               onClick={prevPage}
               className={cn(
                 'Catalog__pagin__button Catalog__pagin__button--prev',
                 { dark: darkThem },
               )}
-            ></button>
+            />
           </a>
 
           <div className="Catalog__pagin__pages">
             <div className="Catalog__pagin__pages__center">
               <div className="Catalog__pagin__pages__center--turn-on-center">
                 {(paginPages ?? []).map(d => (
-                  <a key={d} href="#top">
+                  <a key={d}>
                     <button
-                      onClick={() =>
+                      onClick={() => {
                         setSearchParams(
                           getSearchWith(searchParams, { paginPage: `${d}` }),
-                        )
-                      }
+                        );
+                      }}
                       key={d}
                       className={cn('Catalog__pagin__button', {
                         'is-active': paginPage === d.toString(),
@@ -341,14 +360,14 @@ export const Catalog: React.FC<Props> = ({
             </div>
           </div>
 
-          <a href="#top">
+          <a>
             <button
               onClick={nextPage}
               className={cn(
                 'Catalog__pagin__button Catalog__pagin__button--next',
                 { dark: darkThem },
               )}
-            ></button>
+            />
           </a>
         </div>
       )}

@@ -73,13 +73,15 @@ export const BrandItem: React.FC<Props> = ({ device, discount }) => {
       <div className={cn('BrandItem__bottom', { dark: darkThem })}>
         <div className="BrandItem__bottom__Screen">
           <p className="BrandItem__bottom__title">Screen</p>
+
           <p className={cn('BrandItem__bottom__param', { dark: darkThem })}>
             {screen}
           </p>
         </div>
 
-        <div className="BrandItem__bottom__Capacity">
+        <div className="BrandItem__bottom__Screen">
           <p className="BrandItem__bottom__title">Capacity</p>
+
           <p className={cn('BrandItem__bottom__param', { dark: darkThem })}>
             {capacity}
           </p>
@@ -87,6 +89,7 @@ export const BrandItem: React.FC<Props> = ({ device, discount }) => {
 
         <div className="BrandItem__bottom__RAM">
           <p className="BrandItem__bottom__title">RAM</p>
+
           <p className={cn('BrandItem__bottom__param', { dark: darkThem })}>
             {ram}
           </p>

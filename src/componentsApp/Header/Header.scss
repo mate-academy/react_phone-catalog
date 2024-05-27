@@ -91,6 +91,7 @@ body {
         background-size: 80px;
         left: -48px;
         z-index: -1;
+        cursor: pointer;
 
         &.dark {
           background-image: url('/assets/img/sun.png');
