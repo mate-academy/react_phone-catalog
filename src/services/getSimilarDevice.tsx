@@ -6,17 +6,9 @@ export function getSimilarDevices(
   indexSimilarDevices: number[],
   i: number,
 ) {
-  if (product.itemId.includes('pro') && !namespaceId.includes('pro')) {
-    return false;
-  }
+  const name = product.itemId.split('-').slice(0, -2).join('-');
 
-  const slicedItemIdProduct =
-    product.itemId
-      .split('-')
-      .slice(0, namespaceId.split('-').length)
-      .join('-') === namespaceId;
-
-  if (slicedItemIdProduct) {
+  if (name === namespaceId) {
     indexSimilarDevices.push(i);
 
     return true;
@@ -24,23 +16,3 @@ export function getSimilarDevices(
 
   return false;
 }
-
-// data.forEach((product, i) => {
-//   if (product.itemId.includes('pro') && !namespaceId.includes('pro')) {
-//     return false;
-//   }
-
-//   const slicedItemIdProduct =
-//     product.itemId
-//       .split('-')
-//       .slice(0, namespaceId.split('-').length)
-//       .join('-') === namespaceId;
-
-//   if (slicedItemIdProduct) {
-//     indexSimilarDevices.push(i);
-
-//     return true;
-//   }
-
-//   return false;
-// });
