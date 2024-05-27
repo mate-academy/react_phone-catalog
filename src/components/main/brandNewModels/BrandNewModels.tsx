@@ -30,7 +30,9 @@ export const BrandNewModels: React.FC = () => {
         {[...products]
           .sort((a, b) => b.fullPrice - a.fullPrice)
           .map((product: Product) => {
-            return <ProductCard key={product.id} product={product} />;
+            return <ProductCard key={product.id}
+            //  product={product}
+              />;
           })}
       </div>
     </>
