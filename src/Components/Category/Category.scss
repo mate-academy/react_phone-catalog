@@ -3,6 +3,7 @@
 .category {
   &__title {
     margin-bottom: 24px;
+
     @include H1;
 
     @include onPhone {
@@ -28,6 +29,7 @@
   }
 
   &__image-box {
+
     --item-size: 368px;
     width: var(--item-size);
     height: var(--item-size);
@@ -96,6 +98,7 @@
 
   &__descr {
     @include body-text14;
+
     color: var(--secondary-color);
   }
 }

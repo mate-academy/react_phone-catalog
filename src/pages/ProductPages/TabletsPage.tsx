@@ -8,6 +8,7 @@ import '../../pages/ProductPages/Pages.scss';
 import { ProductContext } from '../../helper/ProductContext';
 import { NoResults } from '../../Components/NoResults/NoResults';
 import { Breadcrumbs } from '../../Components/Breadcrumbs/Breadcrumbs';
+import { CustomSelect } from '../../Components/CustomSelect/CustomSelect';
 
 export const TabletsPage = () => {
   const { product, setProduct, setAppliedQuery } = useContext(ProductContext);
@@ -37,14 +38,14 @@ export const TabletsPage = () => {
     }
   };
 
-  const selectHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.currentTarget.value;
+  const selectHandler = (value: string) => {
+    const selectedValue = value;
 
     setSearchWith({ sort: selectedValue });
   };
 
-  const selectPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.currentTarget.value;
+  const selectPerPage = (value: string) => {
+    const selectedValue = value;
 
     if (selectedValue) {
       setSearchWith({ perPage: selectedValue });
@@ -95,22 +96,16 @@ export const TabletsPage = () => {
                 >
                   Sort by
                 </label>
-                <select
-                  className="productPage__select"
-                  onChange={selectHandler}
-                  defaultValue="Newest"
-                  id="ProductPageSelector"
-                >
-                  <option className="ProductPage__option" value="age">
-                    Newest
-                  </option>
-                  <option className="ProductPage__option" value="name">
-                    Alphabetically
-                  </option>
-                  <option className="ProductPage__option" value="price">
-                    Cheapest
-                  </option>
-                </select>
+
+                <CustomSelect
+                  options={[
+                    { label: 'Newest', value: 'age' },
+                    { label: 'Alphabetically', value: 'name' },
+                    { label: 'Cheapest', value: 'price' },
+                  ]}
+                  defoultValue={'Newest'}
+                  selectHandler={selectHandler}
+                />
               </div>
 
               <div
@@ -124,23 +119,11 @@ export const TabletsPage = () => {
                   items on page
                 </label>
 
-                <select
-                  className="productPage__select"
-                  data-cy="pagination"
-                  id="productPagePagination"
-                  onChange={selectPerPage}
-                  defaultValue={8}
-                >
-                  {option.map(opt => (
-                    <option
-                      className="productPage__option"
-                      value={opt}
-                      key={opt}
-                    >
-                      {opt}
-                    </option>
-                  ))}
-                </select>
+                <CustomSelect
+                  optionsPerPage={option}
+                  defoultValuePerPage={'8'}
+                  selectPerPage={selectPerPage}
+                />
               </div>
             </div>
           </div>

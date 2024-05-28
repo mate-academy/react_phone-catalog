@@ -87,4 +87,8 @@ $colors-width: 50px;
       background-color: $white;
     }
   }
+
+  &__button:hover {
+    box-shadow: 0px 3px 13px 0px var(--hover-card);
+  }
 }

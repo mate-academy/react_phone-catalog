@@ -14,6 +14,7 @@ export const ProductDetailsPage = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [loader, setLoader] = useState(false);
+  const [activeBox, setActiveBox] = useState('');
 
   const {
     setCard,
@@ -127,10 +128,17 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="details__card">
+        <div className="details__id">ID: {neededProduct?.id}</div>
         <div className="details__images">
           <div className="details__smallImagesBox">
             {modImages?.map(image => (
-              <div className="details__smallBox details__box" key={image}>
+              <div
+                className={classNames('details__smallBox details__box', {
+                  active: image === activeBox,
+                })}
+                key={image}
+                onClick={() => setActiveBox(image)}
+              >
                 <img
                   src={image}
                   alt=""
@@ -149,8 +157,8 @@ export const ProductDetailsPage = () => {
           </div>
         </div>
 
-        <div className="details__features-id">
-          <div className="details__featuresBox">
+        <div className="details__featuresBox">
+          <div className="details__col-id">
             <div className="details__colors">
               <div className="details__small-title">Available colors</div>
               <div className="details__colors-box">
@@ -172,92 +180,92 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-            <div className="details__capacity">
-              <div className="details__small-title">Select capacity</div>
-              <div className="details__capacity-box">
-                {capacityAvailable?.map(capac => (
-                  <button
-                    className={classNames('details__capacity-button', {
-                      'is-active': capac === details.capacity,
-                    })}
-                    key={capac}
-                    onClick={() => handleCapacity(capac)}
-                  >
-                    {capac}
-                  </button>
-                ))}
-              </div>
-            </div>
+          </div>
 
-            <div className="details__price">
-              <div className=" details__price details__price--discount">{`$${priceDiscount}`}</div>
-              <div className=" details__price details__price--regular">{`$${priceRegular}`}</div>
-            </div>
-            <div className="details__buttons">
-              {sameCard ? (
-                <button className="details__button">Added to cart</button>
-              ) : (
+          <div className="details__capacity">
+            <div className="details__small-title">Select capacity</div>
+            <div className="details__capacity-box">
+              {capacityAvailable?.map(capac => (
                 <button
-                  className="details__button"
-                  onClick={() => {
-                    if (neededProduct) {
-                      handleAddButton(card, neededProduct, setCard, sameCard);
-                    }
-                  }}
+                  className={classNames('details__capacity-button', {
+                    'is-active': capac === details.capacity,
+                  })}
+                  key={capac}
+                  onClick={() => handleCapacity(capac)}
                 >
-                  Add to cart
+                  {capac}
                 </button>
-              )}
+              ))}
+            </div>
+          </div>
 
-              <div
-                className="details__favorite"
+          <div className="details__price">
+            <div className=" details__price details__price--discount">{`$${priceDiscount}`}</div>
+            <div className=" details__price details__price--regular">{`$${priceRegular}`}</div>
+          </div>
+          <div className="details__buttons">
+            {sameCard ? (
+              <button className="details__button added">Added to cart</button>
+            ) : (
+              <button
+                className="details__button"
                 onClick={() => {
                   if (neededProduct) {
-                    handleFavorites(
-                      favorites,
-                      neededProduct,
-                      setFavorites,
-                      sameFavorites,
-                    );
+                    handleAddButton(card, neededProduct, setCard, sameCard);
                   }
                 }}
               >
-                {sameFavorites ? (
-                  <img
-                    src="./img/RedHurt.png"
-                    alt="favourites"
-                    className="card__favor-icon"
-                  />
-                ) : (
-                  <img
-                    src="./img/WhiteHurt.png"
-                    alt="favourites"
-                    className="card__favor-icon"
-                  />
-                )}
-              </div>
-            </div>
+                Add to cart
+              </button>
+            )}
 
-            <div className="details__inform">
-              <div className="details__inform-item">
-                <p className="details__small-tex">Screen:</p>
-                <p className="details__char">{screen}</p>
-              </div>
-              <div className="details__inform-item">
-                <p className="details__small-tex">Resolution: </p>
-                <p className="details__char">{resolution}</p>
-              </div>
-              <div className="details__inform-item">
-                <p className="details__small-tex">Processor: </p>
-                <p className="details__char">{processor}</p>
-              </div>
-              <div className="details__inform-item">
-                <p className="details__small-tex">RAM: </p>
-                <p className="details__char">{ram}</p>
-              </div>
+            <div
+              className="details__favorite"
+              onClick={() => {
+                if (neededProduct) {
+                  handleFavorites(
+                    favorites,
+                    neededProduct,
+                    setFavorites,
+                    sameFavorites,
+                  );
+                }
+              }}
+            >
+              {sameFavorites ? (
+                <img
+                  src="./img/RedHurt.png"
+                  alt="favourites"
+                  className="card__favor-icon"
+                />
+              ) : (
+                <img
+                  src="./img/WhiteHurt.png"
+                  alt="favourites"
+                  className="card__favor-icon"
+                />
+              )}
             </div>
           </div>
-          <div className="details__id">ID: {neededProduct?.id}</div>
+
+          <div className="details__inform">
+            <div className="details__inform-item">
+              <p className="details__small-tex">Screen:</p>
+              <p className="details__char">{screen}</p>
+            </div>
+            <div className="details__inform-item">
+              <p className="details__small-tex">Resolution: </p>
+              <p className="details__char">{resolution}</p>
+            </div>
+            <div className="details__inform-item">
+              <p className="details__small-tex">Processor: </p>
+              <p className="details__char">{processor}</p>
+            </div>
+            <div className="details__inform-item">
+              <p className="details__small-tex">RAM: </p>
+              <p className="details__char">{ram}</p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="details__description">

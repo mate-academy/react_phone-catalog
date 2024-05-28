@@ -8,6 +8,8 @@ import '../../pages/ProductPages/Pages.scss';
 import { ProductContext } from '../../helper/ProductContext';
 import { NoResults } from '../../Components/NoResults/NoResults';
 import { Breadcrumbs } from '../../Components/Breadcrumbs/Breadcrumbs';
+import { CustomSelect } from '../../Components/CustomSelect/CustomSelect';
+import '../../Components/CustomSelect/CustomSelect.scss';
 
 export const PhonePage = () => {
   const [loading, setLoading] = useState(false);
@@ -37,14 +39,14 @@ export const PhonePage = () => {
     }
   };
 
-  const selectHandler = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.currentTarget.value;
+  const selectHandler = (value: string) => {
+    const selectedValue = value;
 
     setSearchWith({ sort: selectedValue });
   };
 
-  const selectPerPage = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const selectedValue = event.currentTarget.value;
+  const selectPerPage = (value: string) => {
+    const selectedValue = value;
 
     if (selectedValue) {
       setSearchWith({ perPage: selectedValue, page: 1 });
@@ -78,59 +80,47 @@ export const PhonePage = () => {
     <Loader />
   ) : !!product.length ? (
     <div className="productPage">
-      <Breadcrumbs device="phones" />
-      <div className="productPage__headings">
-        <h1 className="productPage__h1">Mobile phones</h1>
-        <p className="productPage__text">{`${phonesAmount} models`}</p>
-      </div>
-
-      <div className="productPage__selecting">
-        <div className="productPage__select-container">
-          <label
-            className="productPage__small-text"
-            htmlFor="ProductPageSelector"
-          >
-            Sort by
-          </label>
-          <select
-            className="productPage__select"
-            onChange={selectHandler}
-            defaultValue="Newest"
-            id="ProductPageSelector"
-          >
-            <option className="productPage__option" value="age">
-              Newest
-            </option>
-            <option className="productPage__option" value="name">
-              Alphabetically
-            </option>
-            <option className="productPage__option" value="price">
-              Cheapest
-            </option>
-          </select>
+      <div className="productPage__items">
+        <Breadcrumbs device="phones" />
+        <div className="productPage__headings">
+          <h1 className="productPage__h1">Mobile phones</h1>
+          <p className="productPage__text">{`${phonesAmount} models`}</p>
         </div>
 
-        <div className="productPage__select-container" data-cy="pagination">
-          <label
-            className="productPage__small-text"
-            htmlFor="productPagePagination"
-          >
-            items on page
-          </label>
+        <div className="productPage__selecting">
+          <div className="productPage__select-container">
+            <label
+              className="productPage__small-text"
+              htmlFor="ProductPageSelector"
+            >
+              Sort by
+            </label>
 
-          <select
-            className="productPage__select"
-            data-cy="pagination"
-            id="productPagePagination"
-            onChange={selectPerPage}
-            defaultValue={8}
-          >
-            {option.map(opt => (
-              <option className="productPage__option" value={opt} key={opt}>
-                {opt}
-              </option>
-            ))}
-          </select>
+            <CustomSelect
+              options={[
+                { label: 'Newest', value: 'age' },
+                { label: 'Alphabetically', value: 'name' },
+                { label: 'Cheapest', value: 'price' },
+              ]}
+              defoultValue={'Newest'}
+              selectHandler={selectHandler}
+            />
+          </div>
+
+          <div className="productPage__select-container" data-cy="pagination">
+            <label
+              className="productPage__small-text"
+              htmlFor="productPagePagination"
+            >
+              items on page
+            </label>
+
+            <CustomSelect
+              optionsPerPage={option}
+              defoultValuePerPage={'8'}
+              selectPerPage={selectPerPage}
+            />
+          </div>
         </div>
       </div>
 

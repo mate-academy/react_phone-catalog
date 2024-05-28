@@ -10,6 +10,7 @@
   }
 
   &__h1 {
+
     @include H1;
     display: none;
 
@@ -47,8 +48,10 @@
 
   &__pic-box {
     position: relative;
+
     --width-picbox: 1040px;
     --height-picbox: 400px;
+    
     width: var(--width-picbox);
     height: var(--height-picbox);
 
@@ -89,6 +92,10 @@
     @include onPhone {
       display: none;
     }
+  }
+
+  &__button:hover {
+    border: 1px solid var(--primary-color);
   }
 
   &__arr {

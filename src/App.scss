@@ -67,3 +67,156 @@ main {
     padding-right: 16px;
   }
 }
+
+
+$primary-color: #313237;
+$secondary-color: #89939A;
+$icon-color: #B4BDC3;
+$elements-color: #E2E6E9;
+$white: #FFF;
+$button-color: #313237;
+
+@font-face {
+  font-family: 'MontBold';
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontRegular';
+  src: url('../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontSemiBold';
+  src: url('../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MontRegular', sans-serif;
+}
+
+h1 {
+  font-family: 'MontBold', sans-serif;
+}
+
+h2 {
+  font-family: 'MontSemiBold', sans-serif;
+}
+
+:root {
+  --primary-color: #{$primary-color};
+  --secondary-color: #{$secondary-color};
+  --icon-color: #{$icon-color};
+  --elements-color: #{$elements-color};
+  --white: #{$white};
+  --button-color: #{$button-color};
+  --card-color: white;
+  --hover-card: #17203166;
+  --product-list-width: 1136px;
+  --card-width: 272px;
+  --gap: 16px;
+}
+
+  @mixin H1 {
+    font-family: 'MontBold', sans-serif; 
+    font-size: 32px; 
+    font-weight: 700; 
+    line-height: 41px; 
+    letter-spacing: -0.01em;
+    color: var(--primary-color);
+  }; 
+    
+  @mixin H2 {
+    font-family: 'MontBold', sans-serif;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: var(--primary-color);
+  };
+    
+  @mixin H3 {
+    font-family: 'MontSemiBold', sans-serif;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    color: var(--primary-color);
+  };
+    
+  @mixin Uppercase {
+    font-family: 'MontBold', sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: var(--secondary-color);
+  };
+   
+  @mixin buttons {
+    line-height: 21px;
+    font-family: 'MontRegular', sans-serif ;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: var(--button-color);
+    color: white;
+  };
+  
+  @mixin body-text14 {
+    font-family: 'MontRegular', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: var(--primary-color);
+  };
+   
+  @mixin smoll-text {
+    font-family: 'MontRegular', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: var(--secondary-color);
+  };
+
+
+  @mixin onDesktop {
+    @media(min-width: 1200px) {
+      @content
+    }
+  };
+
+  @mixin onTablet {
+    @media(max-width: 1199px) {
+      @content
+    }
+  };
+
+  @mixin onPhone {
+    @media(max-width: 539px) {
+      @content
+    }
+  };
+
+  @mixin sizing-items {
+    width: var(--product-list-width);
+
+    @media (min-width: 916px) and (max-width: 1199px) {
+      width: calc(var(--card-width) * 3 + var(--gap) * 2);
+    }
+  
+    @media (min-width: 608px) and (max-width: 916px)  {
+      width: calc(var(--card-width) * 2 + var(--gap));
+    }
+  
+    @media (max-width: 607px)  {
+      width: calc(var(--card-width));
+    }
+  }
+
+
+

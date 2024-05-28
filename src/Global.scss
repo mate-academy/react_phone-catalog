@@ -2,8 +2,41 @@ $primary-color: #313237;
 $secondary-color: #89939A;
 $icon-color: #B4BDC3;
 $elements-color: #E2E6E9;
-$white: #FFFFFF;
+$white: #FFF;
 $button-color: #313237;
+
+@font-face {
+  font-family: 'MontBold';
+  src: url('../public/fonts/Mont-Bold.otf') format('opentype');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontRegular';
+  src: url('../public/fonts/Mont-Regular.otf') format('opentype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'MontSemiBold';
+  src: url('../public/fonts/Mont-SemiBold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+body {
+  font-family: 'MontRegular', sans-serif;
+}
+
+h1 {
+  font-family: 'MontBold', sans-serif;
+}
+
+h2 {
+  font-family: 'MontSemiBold', sans-serif;
+}
 
 :root {
   --primary-color: #{$primary-color};
@@ -13,10 +46,14 @@ $button-color: #313237;
   --white: #{$white};
   --button-color: #{$button-color};
   --card-color: white;
+  --hover-card: #17203166;
+  --product-list-width: 1136px;
+  --card-width: 272px;
+  --gap: 16px;
 }
 
   @mixin H1 {
-    font-family: Mont, sans-serif; 
+    font-family: 'MontBold', sans-serif; 
     font-size: 32px; 
     font-weight: 700; 
     line-height: 41px; 
@@ -25,56 +62,52 @@ $button-color: #313237;
   }; 
     
   @mixin H2 {
-    font-family: Mont, sans-serif;
+    font-family: 'MontBold', sans-serif;
     font-size: 22px;
     font-weight: 700;
     line-height: 31px;
-    letter-spacing: 0em;
     color: var(--primary-color);
   };
     
   @mixin H3 {
-    font-family: Mont, sans-serif;
+    font-family: 'MontSemiBold', sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 26px;
-    letter-spacing: 0em;
     color: var(--primary-color);
   };
     
   @mixin Uppercase {
-    font-family: Mont, sans-serif;
+    font-family: 'MontBold', sans-serif;
     font-size: 12px;
-    font-weight: 700;
+    font-weight: 800;
     line-height: 11px;
     letter-spacing: 0.04em;
     color: var(--secondary-color);
   };
    
   @mixin buttons {
-    font-family: Mont, sans-serif;
+    line-height: 21px;
+    font-family: 'MontRegular', sans-serif ;
     font-size: 14px;
     line-height: 21px;
-    letter-spacing: 0;
     background-color: var(--button-color);
     color: white;
   };
   
   @mixin body-text14 {
-    font-family: Mont, sans-serif;
+    font-family: 'MontRegular', sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
-    letter-spacing: 0em;
     color: var(--primary-color);
   };
    
   @mixin smoll-text {
-    font-family: Mont, sans-serif;
+    font-family: 'MontRegular', sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
-    letter-spacing: 0em;
     text-align: left;
     color: var(--secondary-color);
   };
@@ -95,5 +128,21 @@ $button-color: #313237;
   @mixin onPhone {
     @media(max-width: 539px) {
       @content
+    }
+  };
+
+  @mixin sizing-items {
+     width: var(--product-list-width);
+
+    @media (min-width: 916px) and (max-width: 1199px) {
+      width: calc(var(--card-width) * 3 + var(--gap) * 2);
+    }
+  
+    @media (min-width: 608px) and (max-width: 916px)  {
+      width: calc(var(--card-width) * 2 + var(--gap));
+    }
+  
+    @media (max-width: 607px)  {
+      width: calc(var(--card-width));
     }
   }

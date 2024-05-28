@@ -18,7 +18,7 @@
 
     &.is-active {
       background-color: var(--button-color);
-    }
+    }    
 
     &--button {
       background-color: var(--white);;
@@ -30,6 +30,10 @@
     }
   }
 
+  &__item:hover {
+    box-shadow: 0px 3px 13px 0px var(--hover-card);
+  }
+
   &__pages {
    display: flex;
    flex-direction: row;
@@ -38,6 +42,7 @@
 
   &__link {
     text-decoration: none;
+    
     @include body-text14;
 
     &.is-active {

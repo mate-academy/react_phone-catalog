@@ -1,13 +1,15 @@
 @import '../../Global.scss';
 
 .favoritesPage {
-  width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
 
   &__items {
     display: flex;
     flex-direction: column;
+    
+    @include sizing-items;
   }
 
   &__amount {
@@ -18,6 +20,7 @@
 
   &__h1 {
     @include H1;
+    
     margin-bottom: 8px;
   }
 

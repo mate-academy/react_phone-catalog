@@ -50,6 +50,7 @@ export const CartItem = () => {
           <button
             className="cardItem__plusminus"
             onClick={() => subQuantity(c)}
+            disabled={c.quantity <= 1}
           >
             -
           </button>

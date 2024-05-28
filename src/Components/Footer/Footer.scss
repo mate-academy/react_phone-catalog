@@ -2,7 +2,7 @@
 
 .footer {
   height: 96px;
-  border-top: 1px solid  var(--white);
+ border-top: 1px solid var(--elements-color);
   box-sizing: border-box;
   
   &__items {
@@ -44,6 +44,10 @@
     }
   } 
 
+  &__link:hover {
+    color: var(--primary-color);
+  }
+
   &__back {
     display: flex;
     gap: 8px;
@@ -58,7 +62,12 @@
 
   &__link-back {
     @include smoll-text;
+    
     text-decoration: none;
+  }
+
+  &__link-back:hover { 
+    color: var(--primary-color);
   }
 
   &__logo {
@@ -75,5 +84,9 @@
     height: 32px;
     border: 1px solid var(--icon-color);
     background-color: var(--white);
+  }
+
+  &__back-button:hover { 
+    border: 1px solid var(--primary-color);
   }
 }

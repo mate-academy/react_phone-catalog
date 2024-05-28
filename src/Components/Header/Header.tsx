@@ -13,7 +13,7 @@ export const Header = () => {
     pathname === '/tablets' ||
     pathname === '/accessories';
 
-  const { card, favorites } = useContext(ProductContext);
+  const { card, favorites, amounCard } = useContext(ProductContext);
   const isRightPath = pathname === '/menu';
 
   return (
@@ -66,15 +66,29 @@ export const Header = () => {
         <div className="header__items-right">
           {productPages && <Search />}
 
-          <Link to="favorites" className="header__favor favor">
+          <NavLink
+            to="favorites"
+            className={({ isActive }) =>
+              classNames('header__favor favor', {
+                'is-active': isActive,
+              })
+            }
+          >
             <img src="img/WhiteHurt.png" alt="favorites" className="invert" />
             {!!favorites.length && (
               <div className="header__amount-box favor__amount-box">
                 <div className="favor__amount">{favorites.length}</div>
               </div>
             )}
-          </Link>
-          <Link to="cart" className="header__cart favor">
+          </NavLink>
+          <NavLink
+            to="cart"
+            className={({ isActive }) =>
+              classNames('header__cart favor', {
+                'is-active': isActive,
+              })
+            }
+          >
             <img
               src="img/ShoppingBag(Cart).png"
               alt="cart"
@@ -82,10 +96,10 @@ export const Header = () => {
             />
             {!!card.length && (
               <div className="header__amount-box favor__amount-box">
-                <div className="favor__amount">{card.length}</div>
+                <div className="favor__amount">{amounCard}</div>
               </div>
             )}
-          </Link>
+          </NavLink>
         </div>
 
         {!isRightPath ? (

@@ -17,6 +17,8 @@ interface Props {
   setCategory: (category: string) => void;
   appliedQuery: string;
   dataImg: { url: string }[];
+  amounCard: number;
+  setAmountCard: (value: number) => void;
 }
 
 export const ProductContext = React.createContext<Props>({
@@ -58,6 +60,8 @@ export const ProductContext = React.createContext<Props>({
   dataImg: [],
   appliedQuery: '',
   setAppliedQuery: () => {},
+  amounCard: 0,
+  setAmountCard: () => {},
 });
 
 type Prop = {
@@ -97,6 +101,7 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
 
   const [favorites, setFavorites] = useLocalStorage<Product[]>('favorites', []);
   const [category, setCategory] = useState('');
+  const [amounCard, setAmountCard] = useState(0);
 
   const dataImg = [
     { url: 'img/apple-2024-2.jpg' },
@@ -119,6 +124,8 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
       setAppliedQuery,
       category,
       setCategory,
+      amounCard,
+      setAmountCard,
     }),
     [
       product,
@@ -131,6 +138,8 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
       dataImg,
       appliedQuery,
       category,
+      amounCard,
+      setAmountCard,
     ],
   );
 

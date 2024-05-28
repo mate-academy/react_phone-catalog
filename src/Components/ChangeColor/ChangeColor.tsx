@@ -13,6 +13,7 @@ export const ChangeColor = () => {
     document.documentElement.style.setProperty('--button-color', '#313237');
     document.documentElement.style.setProperty('--white', '#FFFFFF');
     document.documentElement.style.setProperty('--card-color', '#FFFFFF');
+    document.documentElement.style.setProperty('--hover-card', '#17203166');
     document.body.style.backgroundColor = '#FFFFFF';
 
     document.querySelectorAll('.invert').forEach(img => {
@@ -32,6 +33,7 @@ export const ChangeColor = () => {
     document.documentElement.style.setProperty('--button-color', '#905BFF');
     document.documentElement.style.setProperty('--white', '#323542');
     document.documentElement.style.setProperty('--card-color', '#161827');
+    document.documentElement.style.setProperty('--hover-card', '#A378FF');
     document.body.style.backgroundColor = '#0F1121';
 
     document.querySelectorAll('.invert').forEach(img => {

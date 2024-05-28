@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../helper/Product';
 import './ProductCard.scss';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductContext } from '../../helper/ProductContext';
 import { handleAddButton, handleFavorites } from '../../helper/handlers';
 
@@ -13,10 +13,14 @@ interface Props {
 export const ProductCard = ({ product, sectionType }: Props) => {
   const { image, fullPrice, capacity, screen, ram, name, price, itemId } =
     product;
-  const { card, favorites, setFavorites, setCard, setCategory } =
+  const { card, favorites, setFavorites, setCard, setCategory, setAmountCard } =
     useContext(ProductContext);
   const sameFavorites = favorites.some(c => c.id === product.id);
   const sameCard = card.some(c => c.id === product.id);
+
+  useEffect(() => {
+    setAmountCard(card.length);
+  }, [card.length, setAmountCard]);
 
   return (
     <div className="cardsContainer__card card">
@@ -74,13 +78,13 @@ export const ProductCard = ({ product, sectionType }: Props) => {
         <div className="card__item">
           <div className="card__buttons">
             {sameCard ? (
-              <button className="card__button">Added to cart</button>
+              <button className="card__button added">Added to cart</button>
             ) : (
               <button
                 className="card__button"
-                onClick={() =>
-                  handleAddButton(card, product, setCard, sameCard)
-                }
+                onClick={() => {
+                  handleAddButton(card, product, setCard, sameCard);
+                }}
               >
                 Add to cart
               </button>

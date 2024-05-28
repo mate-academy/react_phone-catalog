@@ -1,22 +1,10 @@
 @import '../../Global.scss';
 
-:root {
-  --smollbox-size: 80px;
-  --smolbox-tablet: calc(var(--smollbox-size) / 2.2);
-  --bigbox-size: 464px;
-  --bigbox-tablet: calc(var(--bigbox-size) / 2.5);
-  --gap: 16px;
-  --gap-tablet: calc(var(--gap) / 2);
-  --gap-phone: calc(var(--gap) / 4);
-  --button-size: 263px;
-  --button-tablet: calc(var(--button-size) / 1.4);
-}
-
 .details {
   display: flex;
   flex-direction: column;
   align-items: center;
-
+  
   &__items {
     width: 100%;
     display: flex;
@@ -25,9 +13,12 @@
   }
 
   &__card {
+    width: 100%;
+    position: relative;
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
+    justify-content: start;
 
     @include onTablet {
       gap: 17px;
@@ -43,6 +34,7 @@
 
   &__h1 {
     margin-bottom: 40px;
+
     @include H1;
 
     @include onPhone {
@@ -54,6 +46,7 @@
 
   &__h2 {
     @include H2;
+
     margin-bottom: 32px;
     padding-bottom: 16px;
     border-bottom: 1px solid var(--elements-color);
@@ -61,11 +54,13 @@
 
   &__h3 {
     @include H3;
+
     margin-bottom: 16px;
   }
 
   &__small-title {
     @include smoll-text;
+
     margin-bottom: 8px;
   }
 
@@ -74,9 +69,78 @@
     flex-direction: column;
   }
 
-  &__features-id {
-    display: inline-flex;
-    justify-content: space-between;
+  &__images {
+    display: flex;
+    gap: 16px;
+
+    @include onPhone {
+      position: relative;
+      flex-direction: column;
+    }
+
+      @include onPhone {
+        flex-direction: column-reverse;
+      }
+  }
+
+  &__smallImagesBox {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 8px;
+    }
+
+    @include onPhone {
+      flex-direction: row;
+    }
+  }
+
+  &__box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--elements-color);
+
+    &.active {
+      border: 1px solid var(--primary-color);
+    }
+  } 
+
+  &__smallBox {
+    width: 80px;
+    height: 80px;
+
+    @include onTablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include onPhone {
+       width: 50px;
+      height: 50px;
+    }
+  }
+
+  &__smallBox:hover {
+    box-shadow: 0px 3px 13px 0px var(--hover-card);
+  }
+
+  &__image {
+    height: 95%;
+  }
+
+  &__bigBox {
+    width: 464px;
+    height: 464px;
+    display: flex;
+    place-content: center;;
+
+    @include onTablet {
+      width: 288px;
+      height: 288px;
+    }
   }
 
    &__colors-box {
@@ -96,6 +160,10 @@
     border-radius: 50%;
     border: 1px solid var(--elements-color);
     padding: 1px;
+  }
+
+  &__color-frame:hover {
+    border: 1px solid $icon-color;
   }
 
   &__color {
@@ -135,6 +203,27 @@
   &__is-active {
     border: 1px solid var(--primary-color);
   }
+  
+
+  &__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 176px;
+    height: 15px;
+    display: flex;
+    justify-content: end;
+
+    @include smoll-text;
+
+    @include onTablet {
+      width: 85px;
+    }
+
+    @include onPhone {
+      top: 400px;
+    }
+  }
 
    &__capacity {
     display: flex;
@@ -147,6 +236,7 @@
    &__capacity-box {
     display: flex;
     gap: 8px;
+    flex-wrap: wrap;
    }
 
    &__capacity-button {
@@ -162,6 +252,10 @@
     }
   }
 
+  &__capacity-button:hover {
+    box-shadow: 0px 3px 13px 0px var(--hover-card);
+  }
+
   &__price {
     display: inline-flex;
     align-items: center;
@@ -169,11 +263,10 @@
     margin-bottom: 16px;
 
     &--discount {
-      font-family: Mont sans-serif;
+      font-family: "Mont sans-serif";
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
-      letter-spacing: -0.01em;
       color: var(--primary-color);
     }
 
@@ -193,15 +286,29 @@
   }
 
   &__button {
-    width: var(--button-size);
+    width: 264px;
     height: 48px;
     margin-bottom: 32px;
     @include buttons;
 
     @include onTablet {
-      width: var(--button-tablet);
+      width: 180px;
+    }
+
+    @include onPhone {
+      width: 231px;
+    }
+
+    &.added {
+      background-color: var(--white);
+      color: var(--primary-color);
+      border: 1px solid var(--elements-color);
     }
   }
+
+  &__button:hover {
+    box-shadow: 0px 3px 13px 0px var(--hover-card);
+}
 
   &__favorite {
     display: flex;
@@ -210,6 +317,10 @@
     width: 48px;
     height: 48px;
     border: 1px solid var(--icon-color);
+  }
+
+  &__favorite:hover {
+    border: 1px solid var(--primary-color);
   }
 
   &__inform {
@@ -236,18 +347,6 @@
     margin-bottom: 32px;
   }
 
-  &__id {
-    width: 176px;
-    height: 15px;
-    display: flex;
-    justify-content: end;
-
-    @include smoll-text;
-
-    @include onTablet {
-      width: 85px;
-    }
-  }
 
   &__description {
     display: inline-flex;
@@ -270,6 +369,7 @@
   }
 
   &__text {
+
     @include body-text14;
     color: var(--secondary-color);
   }
@@ -286,70 +386,14 @@
     @include smoll-text;
   }
 
+  &__back-link:hover {
+    color: var(--primary-color);
+  }
+
   &__arrey {
     color: var(--primary-color);
     width: 5.33px;
     height: 9.33px;
-  }
-
-  &__images {
-    display: flex;
-    gap: 16px;
-
-    @include onPhone {
-      position: relative;
-      flex-direction: column;
-    }
-
-      @include onPhone {
-        flex-direction: column-reverse;
-      }
-  }
-
-  &__smallImagesBox {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap);
-
-    @include onTablet {
-      gap: var(--gap-tablet);
-    }
-
-    @include onPhone {
-      gap: var(--gap-phone);
-      flex-direction: row;
-    }
-  }
-
-  &__box {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid var(--elements-color);
-  } 
-
-  &__smallBox {
-    width: var(--smollbox-size);
-    height: var(--smollbox-size);
-
-    @include onTablet {
-      width: var(--smolbox-tablet);
-      height: var(--smolbox-tablet);
-    }
-  }
-
-  &__image {
-    height: 95%;
-  }
-
-  &__bigBox {
-    width: var(--bigbox-size);
-    height: var(--bigbox-size);
-
-    @include onTablet {
-      width: var(--bigbox-tablet);
-      height: var(--bigbox-tablet);
-    }
   }
 
   &__tech-specs {
@@ -363,11 +407,13 @@
 
   &__tech-name {
     @include body-text14;
+
     color: var(--secondary-color);
   }
 
   &__tech-char {
     @include body-text14;
+    
     color: var(--primary-color);
   }
 

@@ -9,9 +9,11 @@ export const FavoritesPage = () => {
 
   return favorites.length ? (
     <div className="favoritesPage">
-      <Breadcrumbs device="favorites" />
-      <h1 className="favoritesPage__h1">Favorites</h1>
-      <div className="favoritesPage__amount">{`${favorites.length} items`}</div>
+      <div className="favoritesPage__items">
+        <Breadcrumbs device="favorites" />
+        <h1 className="favoritesPage__h1">Favorites</h1>
+        <div className="favoritesPage__amount">{`${favorites.length} items`}</div>
+      </div>
 
       <div className="productList" data-cy="productList">
         <ProductList products={favorites} />

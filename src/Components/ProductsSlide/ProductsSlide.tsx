@@ -20,15 +20,15 @@ export const ProductsSlide: React.FC<Props> = ({ sectionType }) => {
     cardWidth && sliderWidth && product.length * cardWidth - sliderWidth;
 
   const scrollRight = () => {
-    const newPosition = scrollPosition - sliderWidth;
+    const newPosition = scrollPosition - (sliderWidth + 16);
 
-    setScrollPosition(newPosition + 8);
+    setScrollPosition(newPosition);
   };
 
   const scrollLeft = () => {
-    const newPosition = scrollPosition + sliderWidth;
+    const newPosition = scrollPosition + (sliderWidth + 16);
 
-    setScrollPosition(newPosition + 16);
+    setScrollPosition(newPosition);
   };
 
   useEffect(() => {

@@ -1,16 +1,17 @@
 import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import { CartItem } from '../../Components/CardItem/CardItem';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ProductContext } from '../../helper/ProductContext';
 
 export const CartPage = () => {
-  const { card, setCard } = useContext(ProductContext);
+  const { card, setCard, setAmountCard } = useContext(ProductContext);
   const totalPrice = card.map(el => {
     return el.quantity * el.price;
   });
 
   const sum = totalPrice.reduce((value, curValue) => value + curValue, 0);
+  const amountItems = card.reduce((acc, c) => c.quantity + acc, 0);
 
   const handleCheckout = () => {
     const result = confirm(
@@ -23,6 +24,12 @@ export const CartPage = () => {
       return;
     }
   };
+
+  useEffect(() => {
+    const finalAmount = amountItems !== 0 ? amountItems : card.length;
+
+    setAmountCard(finalAmount);
+  }, [amountItems, card.length, setAmountCard]);
 
   return !card.length ? (
     <div className="cardPage__h1">Your cart is empty</div>
@@ -44,7 +51,7 @@ export const CartPage = () => {
 
             <div className="cardPage__checkout">
               <div className="cardPage__price">{`$${sum}`}</div>
-              <p className="cardPage__amount">{`Total for ${card.length} items`}</p>
+              <p className="cardPage__amount">{`Total for ${amountItems} items`}</p>
               <button className="cardPage__button" onClick={handleCheckout}>
                 Checkout
               </button>

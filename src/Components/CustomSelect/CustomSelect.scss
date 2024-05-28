@@ -1,0 +1,80 @@
+@import '../../Global.scss';
+
+.customSelect {
+  position: relative;
+
+  &__select {
+    position: relative;
+    box-sizing: border-box;
+    width: 176px;
+    height: 40px;
+    border: 1px solid var(--icon-color);
+    background-color: var(--white);
+    margin-bottom: 4px;
+    padding-left: 12px;
+    color: $primary-color;
+    cursor: pointer;
+  
+    @include onPhone {
+      width: 128px;
+    }
+
+    @media (max-width: 607px)  {
+      width: 128px;
+    }
+  }
+
+  &__select::placeholder {
+    color: var(--primary-color);
+    font-family: 'MontBold', sans-serif;
+  }
+
+  &__select:focus {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__select:hover {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__select option:hover {
+    color: var(--icon-color);
+  }
+
+  &__img-box {
+   position: absolute;
+   top: 12px;
+   right: 5px;
+  }
+
+  &__dropdown-option:hover {
+    background-color: #FAFBFC;
+    color: $primary-color;
+  }
+
+
+  &__dropdown-menu {
+    position: absolute;
+    border: 1px solid $icon-color;
+    cursor: pointer;
+    box-shadow: 0px 2px 15px 0px #0000000D;
+
+  }
+
+  &__dropdown-option {
+    box-sizing: border-box;
+    width: 174px;
+    height: 32px;
+    display: flex;
+    align-items: center; 
+    @include body-text14;
+    color: $icon-color;
+    background-color: var(--white);
+    padding-left: 12px;
+
+    &.highlighted {
+      background-color: #FAFBFC;
+      color: $primary-color;
+    }
+  }
+}
