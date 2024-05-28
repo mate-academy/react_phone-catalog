@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { Products } from '../types/Product';
 
 export interface CartDetails {
@@ -21,9 +22,9 @@ export const chooseProduct = createSlice({
   name: 'selectedProduct',
   initialState,
   reducers: {
-    addCart: (state, action) => {
+    addCart: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.cartItem.findIndex(item => item.id === itemId);
+      const itemIndex = state.cartItem.findIndex((item: CartDetails) => item.id === +itemId);
 
       if (itemIndex === -1) {
         return {
@@ -36,13 +37,13 @@ export const chooseProduct = createSlice({
       } else {
         return {
           ...state,
-          cartItem: state.cartItem.filter(item => item.id !== itemId),
+          cartItem: state.cartItem.filter(item => item.id !== +itemId),
         };
       }
     },
 
-    addCountProduct: (state, action) => {
-      state.cartItem.forEach(item => {
+    addCountProduct: (state: { cartItem: CartDetails[]; }, action: PayloadAction<number>) => {
+      state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
           const tempItem = item;
 
@@ -51,15 +52,15 @@ export const chooseProduct = createSlice({
       });
     },
 
-    clearCart: state => {
+    clearCart: (state: SelectedProduct) => {
       return {
         ...state,
         cartItem: [],
       };
     },
 
-    minusCountProduct: (state, action) => {
-      state.cartItem.forEach(item => {
+    minusCountProduct: (state: { cartItem: CartDetails[]; }, action: PayloadAction<number>) => {
+      state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
           const tempItem = item;
 
@@ -68,16 +69,16 @@ export const chooseProduct = createSlice({
       });
     },
 
-    deleteCart: (state, action) => {
+    deleteCart: (state: SelectedProduct, action: PayloadAction<number>) => {
       return {
         ...state,
-        cartItem: state.cartItem.filter(item => item.id !== action.payload),
+        cartItem: state.cartItem.filter((item: CartDetails) => item.id !== action.payload),
       };
     },
 
-    addFavorite: (state, action) => {
+    addFavorite: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.favorite.findIndex(item => item.id === itemId);
+      const itemIndex = state.favorite.findIndex((item: Products) => item.id === itemId);
 
       if (itemIndex === -1) {
         return {
@@ -87,7 +88,7 @@ export const chooseProduct = createSlice({
       } else {
         return {
           ...state,
-          favorite: state.favorite.filter(item => item.id !== itemId),
+          favorite: state.favorite.filter((item: Products) => item.id !== itemId),
         };
       }
     },

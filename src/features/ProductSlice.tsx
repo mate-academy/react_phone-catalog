@@ -1,4 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import type { PayloadAction } from '@reduxjs/toolkit';
 import { Products } from '../types/Product';
 import {
   getAccessoriesDetails,
@@ -53,7 +54,7 @@ export const ProductsState = createSlice({
   name: 'products',
   initialState,
   reducers: {
-    productDetails: (state, action) => {
+    productDetails: (state: ProductState, action: PayloadAction<ProductDetails>) => {
       return {
         ...state,
         productDetails: action.payload,
@@ -75,7 +76,7 @@ export const ProductsState = createSlice({
         ...state,
         loading: false,
         products: action.payload,
-        phones: action.payload.filter(phone => phone.category === 'phones'),
+        phones: action.payload.filter((phone: Products) => phone.category === 'phones'),
         tablets: action.payload.filter(tablet => tablet.category === 'tablets'),
         accessories: action.payload.filter(
           accessori => accessori.category === 'accessories',

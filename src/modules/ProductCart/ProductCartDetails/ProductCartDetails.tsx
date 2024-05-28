@@ -13,6 +13,20 @@ export const ProductCartDetails = () => {
     0,
   );
 
+  const scrollFix = () => {
+    const menu = document.getElementById('menu');
+
+    if (isModal && menu) {
+      menu.style.overflow = 'scroll';
+    } else {
+      if (menu) {
+        menu.style.overflow = 'hidden';
+      }
+    }
+
+    setIsModal(!isModal);
+  };
+
   const deleteProduct = (id: number) => {
     dispatch(actionCart.deleteCart(id));
   };
@@ -26,15 +40,17 @@ export const ProductCartDetails = () => {
   };
 
   const clearProductCart = () => {
-    dispatch(actionCart.clearCart());
+    dispatch(actionCart.clearCart({}));
+    
     setIsModal(false);
+    scrollFix();
   };
 
   return (
     <div className={styles.cart__container}>
       <div className={styles.cart__product}>
         <div className={styles.product}>
-          {cartItem?.map(product => (
+          {cartItem?.map((product: CartDetails) => (
             <div
               key={product.product.itemId}
               className={styles.product__wraper}
@@ -88,7 +104,10 @@ export const ProductCartDetails = () => {
 
         <button
           className={styles.cart__button}
-          onClick={() => setIsModal(true)}
+          onClick={() => {
+            setIsModal(true);
+            scrollFix();
+          } }
         >
           Checkout
         </button>
@@ -101,7 +120,10 @@ export const ProductCartDetails = () => {
           <div className={styles.modal__container}>
             <button
               className={styles.cart__button}
-              onClick={() => setIsModal(false)}
+              onClick={() => {
+                setIsModal(false);
+                scrollFix();
+              }}
             >
               cancel
             </button>

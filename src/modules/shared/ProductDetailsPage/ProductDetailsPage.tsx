@@ -35,7 +35,10 @@ export const ProductDetailsPage = () => {
   useEffect(() => {
     const findProduct = deteils.find(product => product.id === findIdProduct);
 
-    dispath(actionProduct.productDetails(findProduct));
+    if (findProduct) {
+      dispath(actionProduct.productDetails(findProduct));
+    }
+
   }, [dispath, findIdProduct, deteils]);
 
   const goBack = () => {
