@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 import { getNewColorUrl } from '../../../helpers/getNewColorUrl';
-import { productColors } from '../../../helpers/colors';
+import { theme } from '../../../helpers/colors';
 import { Color } from '../../../types/Color';
 import { DetailedProduct } from '../../../types/DetailedProduct';
 import './ColorOptions.scss';
@@ -11,6 +11,8 @@ export const ColorOptions: React.FC<Props> = ({
   colorsAvailable,
   displayedProduct,
 }) => {
+  const productColors = theme.colors;
+
   return (
     <ul className="colors-list">
       {colorsAvailable.map((color: string) => (
