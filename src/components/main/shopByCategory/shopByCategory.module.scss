@@ -1,0 +1,47 @@
+.shop_by_category {
+  align-self: center;
+  width: 288px;
+
+  &__title {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 20px;
+    color: #313237;
+  }
+
+  &__section {
+
+    &__picture {
+      height: 230px;
+
+      &--phones {
+        background-color: violet;
+      }
+
+      &--tablets {
+        background-color: greenyellow;
+      }
+
+      &--accessories {
+        background-color: chocolate;
+      }
+    }
+
+
+
+    &__title {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 700;
+      line-height: 25px;
+      font-size: 20px;
+      color: #313237;
+    }
+
+    &__paragraph {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 600;
+      font-size: 14px; line-height:  21px;
+      color: #89939A;
+    }
+  }
+}

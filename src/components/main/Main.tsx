@@ -1,15 +1,18 @@
 import React from 'react';
-// import styles from './Main.module.scss';
+import styles from './Main.module.scss';
 import { SectionDashSlider } from './sectionDashSlider';
-import { BrandNewModels } from './brandNewModels';
+import { Slider } from './slider';
+import { ShopByCategory } from './shopByCategory/shopByCategory';
 
 export const Main: React.FC = () => {
   return (
-    <React.Fragment>
+    <div className={styles['main']}>
       {/* context */}
       <SectionDashSlider />
-      <BrandNewModels />
+      <Slider title={'Brand new models'}/>
+      <ShopByCategory />
+      <Slider title={'Hot prices'} discount={true} />
       {/* context */}
-    </React.Fragment>
+    </div>
   );
 };
