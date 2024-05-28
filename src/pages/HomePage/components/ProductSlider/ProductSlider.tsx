@@ -10,14 +10,12 @@ import { filterRandomProducts } from '../../../../helpers/filterRandomProducts';
 type Props = {
   title: string;
   hasDiscount?: boolean;
-  hasRandomProducts?: boolean;
   hasNewestProducts?: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   title,
   hasDiscount = false,
-  hasRandomProducts = false,
   hasNewestProducts = false,
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
@@ -31,18 +29,16 @@ export const ProductSlider: React.FC<Props> = ({
     getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
       let finalProducts: Product[] = [];
 
-      if (hasRandomProducts) {
-        // Assign random products
-        finalProducts = filterRandomProducts(productsFromApi);
-      }
+      // Assign random products by default
+      finalProducts = filterRandomProducts(productsFromApi);
 
       if (hasNewestProducts) {
         // finalProducts = filterRandomProducts(productsFromApi.slice(0, 50));
         finalProducts = productsFromApi
           .sort((prod1: Product, prod2: Product) => prod2.year - prod1.year)
+          .slice(0, 20)
+          .sort((prod1: Product, prod2: Product) => prod2.price - prod1.price)
           .slice(0, 8);
-      } else {
-        finalProducts = productsFromApi.reverse().slice(0, 8);
       }
 
       if (hasDiscount) {
@@ -51,16 +47,11 @@ export const ProductSlider: React.FC<Props> = ({
           (a: Product, b: Product) =>
             b.fullPrice - b.price - (a.fullPrice - a.price),
         );
-      } else {
-        // Sort from most expensive product
-        finalProducts = finalProducts.sort(
-          (a: Product, b: Product) => b.price - a.price,
-        );
       }
 
       setProducts(finalProducts);
     });
-  }, [hasDiscount, hasNewestProducts, hasRandomProducts]);
+  }, [hasDiscount, hasNewestProducts]);
 
   return (
     products.length > 0 && (
