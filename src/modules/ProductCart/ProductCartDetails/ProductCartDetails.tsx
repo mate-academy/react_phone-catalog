@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from '../../shared/hooks/hooks';
 import styles from './ProductCartDetails.module.scss';
 import * as actionCart from '../../../features/DetailsSlice';
 import { useState } from 'react';
+
 export const ProductCartDetails = () => {
   const { cartItem } = useAppSelector(state => state.selectedProduct);
   const [isModal, setIsModal] = useState(false);
@@ -41,7 +42,7 @@ export const ProductCartDetails = () => {
 
   const clearProductCart = () => {
     dispatch(actionCart.clearCart({}));
-    
+
     setIsModal(false);
     scrollFix();
   };
@@ -107,7 +108,7 @@ export const ProductCartDetails = () => {
           onClick={() => {
             setIsModal(true);
             scrollFix();
-          } }
+          }}
         >
           Checkout
         </button>

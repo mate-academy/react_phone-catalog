@@ -38,7 +38,6 @@ export const ProductDetailsPage = () => {
     if (findProduct) {
       dispath(actionProduct.productDetails(findProduct));
     }
-
   }, [dispath, findIdProduct, deteils]);
 
   const goBack = () => {

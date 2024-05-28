@@ -24,7 +24,9 @@ export const chooseProduct = createSlice({
   reducers: {
     addCart: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.cartItem.findIndex((item: CartDetails) => item.id === +itemId);
+      const itemIndex = state.cartItem.findIndex(
+        (item: CartDetails) => item.id === +itemId,
+      );
 
       if (itemIndex === -1) {
         return {
@@ -42,7 +44,10 @@ export const chooseProduct = createSlice({
       }
     },
 
-    addCountProduct: (state: { cartItem: CartDetails[]; }, action: PayloadAction<number>) => {
+    addCountProduct: (
+      state: { cartItem: CartDetails[] },
+      action: PayloadAction<number>,
+    ) => {
       state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
           const tempItem = item;
@@ -59,7 +64,10 @@ export const chooseProduct = createSlice({
       };
     },
 
-    minusCountProduct: (state: { cartItem: CartDetails[]; }, action: PayloadAction<number>) => {
+    minusCountProduct: (
+      state: { cartItem: CartDetails[] },
+      action: PayloadAction<number>,
+    ) => {
       state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
           const tempItem = item;
@@ -72,13 +80,17 @@ export const chooseProduct = createSlice({
     deleteCart: (state: SelectedProduct, action: PayloadAction<number>) => {
       return {
         ...state,
-        cartItem: state.cartItem.filter((item: CartDetails) => item.id !== action.payload),
+        cartItem: state.cartItem.filter(
+          (item: CartDetails) => item.id !== action.payload,
+        ),
       };
     },
 
     addFavorite: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.favorite.findIndex((item: Products) => item.id === itemId);
+      const itemIndex = state.favorite.findIndex(
+        (item: Products) => item.id === itemId,
+      );
 
       if (itemIndex === -1) {
         return {
@@ -88,7 +100,9 @@ export const chooseProduct = createSlice({
       } else {
         return {
           ...state,
-          favorite: state.favorite.filter((item: Products) => item.id !== itemId),
+          favorite: state.favorite.filter(
+            (item: Products) => item.id !== itemId,
+          ),
         };
       }
     },

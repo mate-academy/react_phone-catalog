@@ -35,7 +35,7 @@ export const ProductCard: React.FC<Props> = ({ phone, isDiscount }) => {
   };
 
   const isFavorite = favorite.find((item: Products) => item.itemId === itemId);
-  const isCart = cartItem.find((item) => item.id === +id);
+  const isCart = cartItem.find(item => item.id === +id);
 
   return (
     <div className={styles.phone__container} id="phoneWidth">

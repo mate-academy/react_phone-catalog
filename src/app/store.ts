@@ -13,11 +13,6 @@ import {
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 
-// interface Store {
-//   product: ProductState;
-//   selectedProduct: SelectedProduct,
-// }
-
 const rootReducer = combineReducers({
   product: productReducer,
   selectedProduct: productSelectReducer,
