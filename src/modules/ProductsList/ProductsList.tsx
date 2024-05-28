@@ -20,6 +20,10 @@ export const ProductsList: React.FC<Props> = ({ data, title }) => {
 
   const [urlParams] = useSearchParams(location.search);
 
+  const query = urlParams.get(SortVariants.query) || '';
+
+  console.log(`Query -> ${query}`);
+
   const initialPage = +(urlParams.get('page') ?? 1);
 
   const [currentPage, setCurrentPage] = useState<number>(initialPage);
@@ -27,23 +31,39 @@ export const ProductsList: React.FC<Props> = ({ data, title }) => {
   const PHONES_PER_PAGE_PARAMS =
     urlParams.get(SortVariants.perPage) || PerPage.Four;
 
-  const DATA_LENGTH = data?.length;
-
-  const getDataSorted = (initialData: Product[]): Product[] => {
-    const copyData = [...initialData];
+  const getDataSorted = (
+    initialData: Product[],
+    queryText: string,
+  ): Product[] => {
+    let copyData = [...initialData];
 
     const getSortParams = urlParams.get(SortVariants.sortBy);
 
     switch (getSortParams) {
       case SortBy.Cheapest:
-        return copyData.sort((a, b) => a.price - b.price);
+        copyData = copyData.sort((a, b) => a.price - b.price);
+        break;
       case SortBy.Alphabetically:
-        return copyData.sort((a, b) => a.name.localeCompare(b.name));
+        copyData = copyData.sort((a, b) => a.name.localeCompare(b.name));
+        break;
       default:
-        return copyData.sort((a, b) => b.year - a.year);
+        copyData = copyData.sort((a, b) => b.year - a.year);
     }
+
+    if (queryText) {
+      const trimmedQuery = queryText.trim().toLowerCase();
+
+      copyData = copyData.filter(item =>
+        item.name.trim().toLowerCase().includes(trimmedQuery),
+      );
+    }
+
+    return copyData;
   };
 
+  const preparedData = getDataSorted(data || [], query || '');
+
+  const DATA_LENGTH = preparedData?.length;
   const detectPhonesPerPage = (pageData: PerPage): number => {
     switch (pageData) {
       case PerPage.All:
@@ -52,8 +72,6 @@ export const ProductsList: React.FC<Props> = ({ data, title }) => {
         return pageData;
     }
   };
-
-  const preparedData = getDataSorted(data || []);
 
   const PHONES_PER_PAGE: number = detectPhonesPerPage(
     PHONES_PER_PAGE_PARAMS as number,

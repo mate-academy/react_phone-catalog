@@ -6,8 +6,9 @@ import { Error } from './pages/ErrorPage/Error';
 // import { Tablets } from './pages/TabletsPage/Tablets';
 // import { Accessories } from './pages/AccessoriesPage/AccessoriesPage';
 import { CartPage } from './pages/CartPage';
-import { Product } from './pages/ProductDetailsPage/Product';
-import { ProductSingle } from './pages/ProductPage/Product';
+import { Product } from './pages/Product/Product';
+import { Catalog } from './pages/CatalogPage/Catalog';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 export const root = createHashRouter([
   {
@@ -21,11 +22,15 @@ export const root = createHashRouter([
       },
       {
         path: 'phones',
-        element: <ProductSingle />,
+        element: <Catalog />,
+      },
+      {
+        path: 'favorites',
+        element: <FavoritesPage />,
       },
       {
         path: 'tablets',
-        element: <ProductSingle />,
+        element: <Catalog />,
         // children: [
         //   {
         //     path: ':productId',
@@ -47,7 +52,7 @@ export const root = createHashRouter([
       },
       {
         path: 'accessories',
-        element: <ProductSingle />,
+        element: <Catalog />,
       },
       {
         path: 'cart',

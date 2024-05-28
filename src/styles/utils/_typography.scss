@@ -18,6 +18,7 @@ h2 {
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0;
+  color: $primary;
 
   @include on-tablet {
     font-size: 32px;

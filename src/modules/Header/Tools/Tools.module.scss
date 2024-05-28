@@ -1,13 +1,36 @@
 @import './../../../styles/utils/mixins';
+@import './../../../styles/utils/vars';
 
 .header {
+  &__tools_tool {
+    position: relative;
+    img {
+      display: block;
+    }
+  }
   &__tools_wrapper {
     display: flex;
-    border-top: 1px solid #e2e6e9;
+    border-top: 1px solid $elements;
     @include on-tablet {
       border-top: unset;
       height: 100%;
     }
+  }
+  &__tools_count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    display: block;
+    width: 14px;
+    height: 14px;
+    background-color: $red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    border-radius: 50%;
+    color: $white;
+    border: 2px solid $white;
   }
   &__tools__button {
     flex: 0 1 50%;
@@ -16,16 +39,55 @@
     align-items: center;
     height: 64px;
     &:last-child {
-      border-left: 1px solid #e2e6e9;
+      border-left: 1px solid $elements;
     }
     @include on-tablet {
       flex: 1 1 auto;
       height: auto;
       width: 48px;
-      border-left: 1px solid #e2e6e9;
+      border-left: 1px solid $elements;
     }
     @include on-desktop {
       width: 64px;
     }
+  }
+  &__tools__button_active {
+    border-bottom: 3px solid $primary;
+  }
+}
+
+.header__tools__toggle_search {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-left: 1px solid $elements;
+  cursor: pointer;
+  @include on-tablet {
+    flex: 1 1 auto;
+    height: auto;
+    width: 48px;
+    border-left: 1px solid $elements;
+  }
+  @include on-desktop {
+    width: 64px;
+  }
+  img {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+.header__tools_search {
+  width: 0px;
+  display: flex;
+  transition: width 0.3s ease-in-out;
+  align-items: center;
+  &_open {
+    width: 128px;
+  }
+  input {
+    width: 100%;
   }
 }

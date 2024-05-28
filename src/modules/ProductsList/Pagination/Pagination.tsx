@@ -21,6 +21,8 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
 
   const SORT_BY = searchParams.get(SortVariants.sortBy);
 
+  const QUERY = searchParams.get(SortVariants.query);
+
   const [currentButton, setCurrentButton] = useState<number | string>(
     initialPage,
   );
@@ -30,7 +32,7 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
 
     setCurrentButton(pageParam ? +pageParam : 1);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [PER_PAGE, SORT_BY]);
+  }, [PER_PAGE, SORT_BY, QUERY]);
 
   const params = new URLSearchParams(searchParams);
 

@@ -4,11 +4,21 @@
 @import './styles/utils/reset';
 @import './styles/utils/vars';
 
+html,
+body {
+  height: 100%;
+}
+
 body {
   font-family: Mont, sans-serif;
 }
-
+#root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
 .main {
+  flex: 1 1 auto;
   padding-top: 70px;
   @include on-desktop {
     padding-top: 95px;

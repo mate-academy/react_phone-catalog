@@ -4,7 +4,7 @@ import minus_fulfilled from './../../../../../images/icons/minus_fulfilled.svg';
 import plus from './../../../../../images/icons/plus.svg';
 import React from 'react';
 import { Product } from '../../../../../utils/types/Product';
-import { useAppDispatch } from '../../../../../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../../../../../hooks/hooks';
 import {
   handleAddQuantity,
   removeFromCart,
@@ -18,7 +18,11 @@ type Props = {
 export const CartItem: React.FC<Props> = ({ product }) => {
   const { image, name, price, quantity, id } = product;
 
+  const disableElem = useAppSelector(state => state.cart.items);
+
   const dispatch = useAppDispatch();
+
+  const findElem = disableElem.find(elem => elem.id === id)?.quantity;
 
   return (
     <div className={styles.cartItem}>
@@ -42,6 +46,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
         <div className={styles.cartItem__counter}>
           <div className={styles.cartItem__count_wrapper}>
             <button
+              disabled={(findElem as number) <= 1}
               className={styles.cartItem__decrease}
               onClick={() => dispatch(handleMinusQuantity(id))}
             >

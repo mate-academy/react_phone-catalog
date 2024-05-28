@@ -69,6 +69,11 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
+    &[disabled] {
+      cursor: default;
+      background-color: $elements;
+      opacity: 0.3;
+    }
   }
   &__picture {
     max-height: 66px;

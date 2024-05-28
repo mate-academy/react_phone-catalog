@@ -1,10 +1,13 @@
 // import { useEffect, useState } from 'react';
 
+import { TABLET_SIZE } from '../../consts/consts';
+import { useWindowDimensions } from '../../hooks/hooks';
 import { PerPage } from '../../utils/enums/perPage';
 import { SortBy } from '../../utils/enums/sortBy';
 import { SortVariants } from '../../utils/enums/sortVariants';
 import { DropDown } from './DropDown/DropDown';
 import styles from './Filter.module.scss';
+import { Search } from './Search';
 
 export const Filter = () => {
   const SORT_BY: SortBy[] = [
@@ -18,6 +21,7 @@ export const Filter = () => {
     PerPage.Sixteen,
     PerPage.All,
   ];
+  const { width } = useWindowDimensions();
 
   return (
     <section className={styles.filter}>
@@ -33,6 +37,9 @@ export const Filter = () => {
           label={'Items on page'}
         />
       </div>
+      {width < TABLET_SIZE && (
+        <Search queryParams={SortVariants.query} label={'Search'} />
+      )}
     </section>
   );
 };

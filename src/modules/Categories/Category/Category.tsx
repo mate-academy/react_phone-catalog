@@ -2,6 +2,7 @@ import React from 'react';
 import { ICategory } from '../../../utils/interfaces/ICategory';
 import styles from './Category.module.scss';
 import { Link } from 'react-router-dom';
+import ContentLoader from 'react-content-loader';
 
 type Props = {
   category: ICategory;
@@ -22,7 +23,16 @@ export const Category: React.FC<Props> = ({ category }) => {
         </div>
         <h3 className={styles.category__title}>{name}</h3>
         {isLoading ? (
-          <p>Loading...</p>
+          <ContentLoader
+            speed={2}
+            width={340}
+            height={84}
+            viewBox="0 0 340 84"
+            backgroundColor="#f3f3f3"
+            foregroundColor="#ecebeb"
+          >
+            <rect x="1" y="-33" rx="3" ry="3" width="594" height="47" />
+          </ContentLoader>
         ) : (
           <p className={styles.category__count}>{`${counts} models`}</p>
         )}

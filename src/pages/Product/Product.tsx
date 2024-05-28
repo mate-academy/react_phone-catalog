@@ -10,12 +10,14 @@ import { ProductDetails } from '../../modules/ProductDetails';
 import { useGetDataQuery } from '../../store/api/api';
 import { getSuggestedProducts } from '../../helpers/helpers';
 import { ProductsSlider } from '../../modules/ProductsSlider';
-import { Category } from './../../utils/types/Categories';
+import { Category } from '../../utils/types/Categories';
 // eslint-disable-next-line max-len
 import { useGetAccessoriesQuery } from '../../store/api/extendedApi/accessorize';
 import { useGetPhonesQuery } from '../../store/api/extendedApi/phone';
 import { Accessorize } from '../../utils/types/Accessorize';
 import { Product as ProductItem } from '../../utils/types/Product';
+import styles from './Product.module.scss';
+import { Loader } from '../../modules/Loader';
 // import { useLocation } from 'react-router-dom';
 
 export const Product = () => {
@@ -53,13 +55,14 @@ export const Product = () => {
   const suggestedProducts = getSuggestedProducts(productsData || [], 12);
 
   return (
-    <div>
-      <BreadCrumbs title="Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)" />
-      <section className="backLink">
+    <>
+      {product?.name && <BreadCrumbs title={product?.name} />}
+      <div className={styles.backLink}>
         <Container>
           <BackLink />
         </Container>
-      </section>
+      </div>
+      {!currentGadget && !product && <Loader />}
       {currentGadget && product && (
         <ProductDetails currentGadget={currentGadget} product={product} />
       )}
@@ -68,6 +71,6 @@ export const Product = () => {
         isDiscount={true}
         title="You may also like"
       />
-    </div>
+    </>
   );
 };

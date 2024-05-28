@@ -1,0 +1,21 @@
+@import './../../../styles/utils/vars';
+@import './../../../styles/utils/mixins';
+
+.Search_input {
+  border: 1px solid $elements;
+  padding: 6px 10px;
+  font-size: 14px;
+  color: $primary;
+  font-weight: 700;
+  width: 100%;
+}
+.Search_label {
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.5;
+  color: $secondary;
+  margin-bottom: 4px;
+}
+.search {
+  margin-top: 20px;
+}

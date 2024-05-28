@@ -3,8 +3,9 @@ import { ProductsList } from '../../modules/ProductsList';
 // eslint-disable-next-line max-len
 import { Category } from '../../utils/types/Categories';
 import { useGetDataQuery } from '../../store/api/api';
+import { Loader } from '../../modules/Loader';
 
-export const ProductSingle = () => {
+export const Catalog = () => {
   const { pathname } = useLocation();
 
   const currentCategory = pathname.startsWith('/')
@@ -13,13 +14,20 @@ export const ProductSingle = () => {
 
   const { data } = useGetDataQuery();
 
+  const getTitleForCategory =
+    currentCategory.charAt(0).toUpperCase() + currentCategory.slice(1);
+
   const phonesData = data?.filter(
     product => product.category === currentCategory,
   );
 
   return (
     <div>
-      <ProductsList data={phonesData} title="Mobile phones" />
+      {phonesData ? (
+        <ProductsList data={phonesData} title={getTitleForCategory} />
+      ) : (
+        <Loader />
+      )}
     </div>
   );
 };

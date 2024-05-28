@@ -1,0 +1,8 @@
+@import './../../styles/utils/mixins';
+
+.backLink {
+  padding: 15px 0;
+  @include on-tablet {
+    padding-bottom: 25px 0;
+  }
+}

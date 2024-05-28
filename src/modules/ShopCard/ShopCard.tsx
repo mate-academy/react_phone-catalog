@@ -1,13 +1,15 @@
 import styles from './ShopCard.module.scss';
 import heart from './../../images/icons/heart.svg';
 import fillHeart from './../../images/icons/heart_filled.svg';
-import React from 'react';
+import React, { useState } from 'react';
 import { Product } from '../../utils/types/Product';
 import { Link } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../hooks/hooks';
 import { toggleFavorite } from '../../features/favorites/favoritesSlice';
 import { addToCart } from '../../features/cart/cartSlise';
 import { scrollTop } from '../../helpers/helpers';
+import ContentLoader from 'react-content-loader';
+import classNames from 'classnames';
 
 type Props = {
   product: Product;
@@ -38,9 +40,48 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
 
   const isAdded = cartItems.find(item => item.id === id);
 
+  const [isImageLoading, setIsImageLoading] = useState(true);
+
   return (
     <article className={styles.card}>
-      <div className={styles.card__wrapper}>
+      {isImageLoading && (
+        <div className={styles.card__wrapper} style={{ display: 'none' }}>
+          <div className={styles.card__image}>
+            <img
+              src={image}
+              alt="Card Image"
+              onLoad={() => setIsImageLoading(false)}
+              className={styles.card__picture}
+            />
+          </div>
+        </div>
+      )}
+      {isImageLoading && (
+        <ContentLoader
+          speed={2}
+          viewBox="0 0 360 214"
+          backgroundColor="#f3f3f3"
+          foregroundColor="#ecebeb"
+        >
+          <rect x="89" y="56" rx="3" ry="3" width="179" height="197" />
+          <rect x="42" y="291" rx="0" ry="0" width="273" height="50" />
+          <rect x="200" y="322" rx="0" ry="0" width="17" height="3" />
+          <rect x="40" y="358" rx="0" ry="0" width="80" height="32" />
+          <rect x="41" y="420" rx="0" ry="0" width="56" height="18" />
+          <rect x="244" y="418" rx="0" ry="0" width="72" height="20" />
+          <rect x="40" y="449" rx="0" ry="0" width="77" height="18" />
+          <rect x="264" y="448" rx="0" ry="0" width="49" height="15" />
+          <rect x="39" y="478" rx="0" ry="0" width="39" height="16" />
+          <rect x="280" y="477" rx="0" ry="0" width="32" height="15" />
+          <rect x="39" y="507" rx="0" ry="0" width="211" height="54" />
+          <rect x="257" y="507" rx="0" ry="0" width="56" height="52" />
+        </ContentLoader>
+      )}
+      <div
+        className={classNames(styles.card__wrapper, {
+          [styles.card__wrapper_hide]: isImageLoading,
+        })}
+      >
         <Link
           to={`../${category}/${itemId}`}
           onClick={scrollTop}
@@ -50,6 +91,7 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
             <img
               src={image}
               alt="Card Image"
+              onLoad={() => setIsImageLoading(false)}
               className={styles.card__picture}
             />
           </div>

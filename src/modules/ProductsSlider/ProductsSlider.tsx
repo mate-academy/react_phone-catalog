@@ -8,6 +8,7 @@ import { ShopCard } from '../ShopCard';
 import React, { useRef } from 'react';
 import { Product } from '../../utils/types/Product';
 import styles from './ProductsSlider.module.scss';
+import { NavigationOptions } from 'swiper/types';
 
 type Props = {
   products: Product[] | undefined;
@@ -46,11 +47,37 @@ export const ProductsSlider: React.FC<Props> = ({
         <div className={styles.productsSlider__wrapper}>
           <Swiper
             modules={[Navigation]}
-            slidesPerView={4}
+            slidesPerView={1}
             spaceBetween={16}
             navigation={{
               nextEl: navigationNextRef.current,
               prevEl: navigationPrevRef.current,
+            }}
+            onInit={swiper => {
+              const navigation = swiper.params.navigation as
+                | NavigationOptions
+                | undefined;
+
+              if (navigation) {
+                navigation.prevEl = navigationPrevRef.current;
+                navigation.nextEl = navigationNextRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
+              }
+            }}
+            breakpoints={{
+              440: {
+                slidesPerView: 1.5,
+                spaceBetween: 4,
+              },
+              640: {
+                slidesPerView: 2.5,
+                spaceBetween: 8,
+              },
+              1200: {
+                slidesPerView: 4,
+                spaceBetween: 16,
+              },
             }}
           >
             {products?.map(product => (

@@ -52,3 +52,10 @@
     object-fit: cover;
   }
 }
+
+.slider__button {
+  display: none;
+  @include on-tablet {
+    display: flex;
+  }
+}
