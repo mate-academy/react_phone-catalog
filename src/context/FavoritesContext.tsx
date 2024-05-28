@@ -1,9 +1,11 @@
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useEffect } from 'react';
 import { Product } from '../types/ProductCard';
+import { Favorites } from '../types/Favorites';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type FavoritesContextType = {
-  favoriteProducts: Product[];
-  setFavoriteProducts: React.Dispatch<React.SetStateAction<Product[]>>;
+  favoriteProducts: Favorites;
+  setFavoriteProducts: React.Dispatch<React.SetStateAction<Favorites>>;
   addToFavorites: (newFavoriteProduct: Product) => void;
 };
 
@@ -18,15 +20,18 @@ type Props = {
 };
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
-  const [favoriteProducts, setFavoriteProducts] = useState<Product[]>([]);
+  const [favoriteProducts, setFavoriteProducts] = useLocalStorage(
+    'favoriteProducts',
+    [] as Favorites,
+  );
 
-  useEffect(() => {
-    const favoritesFromStorage = localStorage.getItem('favoriteProducts');
+  // useEffect(() => {
+  //   const favoritesFromStorage = localStorage.getItem('favoriteProducts');
 
-    if (favoritesFromStorage) {
-      setFavoriteProducts(JSON.parse(favoritesFromStorage));
-    }
-  }, []);
+  //   if (favoritesFromStorage) {
+  //     setFavoriteProducts(JSON.parse(favoritesFromStorage));
+  //   }
+  // }, []);
 
   useEffect(() => {
     localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
@@ -38,13 +43,13 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
         (prod: Product) => prod.id === newFavoriteProduct.id,
       )
     ) {
-      setFavoriteProducts((currentFavorites: Product[]) => {
+      setFavoriteProducts((currentFavorites: Favorites) => {
         return currentFavorites.filter(
           (prod: Product) => prod.id !== newFavoriteProduct.id,
         );
       });
     } else {
-      setFavoriteProducts((currentFavorites: Product[]) => [
+      setFavoriteProducts((currentFavorites: Favorites) => [
         ...currentFavorites,
         newFavoriteProduct,
       ]);

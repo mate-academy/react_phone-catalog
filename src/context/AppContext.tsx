@@ -1,6 +1,7 @@
-import { createContext, useCallback, useEffect, useState } from 'react';
+import { createContext, useCallback, useEffect } from 'react';
 import { Product } from '../types/ProductCard';
 import { CartProducts } from '../types/CartProducts';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export type CartContextType = {
   cartProducts: CartProducts;
@@ -23,10 +24,9 @@ export const CartContext = createContext<CartContextType>({
 export const AppContext: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const cartFromLocalStorage = localStorage.getItem('cart');
-
-  const [cartProducts, setCartProducts] = useState<CartProducts>(
-    cartFromLocalStorage ? JSON.parse(cartFromLocalStorage) : {},
+  const [cartProducts, setCartProducts] = useLocalStorage(
+    'cart',
+    {} as CartProducts,
   );
 
   useEffect(() => {
@@ -51,15 +51,18 @@ export const AppContext: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
-  const incrementProductInCart = useCallback((productId: Product['id']) => {
-    setCartProducts(currentCart => ({
-      ...currentCart,
-      [productId]: {
-        ...currentCart[productId],
-        quantity: currentCart[productId].quantity + 1,
-      },
-    }));
-  }, []);
+  const incrementProductInCart = useCallback(
+    (productId: Product['id']) => {
+      setCartProducts((currentCart: CartProducts) => ({
+        ...currentCart,
+        [productId]: {
+          ...currentCart[productId],
+          quantity: currentCart[productId].quantity + 1,
+        },
+      }));
+    },
+    [setCartProducts],
+  );
 
   // Perform only if current quantity is above 1
   const decrementProductInCart = useCallback(
@@ -74,7 +77,7 @@ export const AppContext: React.FC<{ children: React.ReactNode }> = ({
         }));
       }
     },
-    [cartProducts],
+    [cartProducts, setCartProducts],
   );
 
   const addToCart = (product: Product) => {
