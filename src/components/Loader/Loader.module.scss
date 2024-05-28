@@ -11,8 +11,8 @@
     width: 2em;
     height: 2em;
     margin: 1em auto;
-    border: 0.3em solid $elements-color;
-    border-left-color: $primary-color;
+    border: 0.3em solid $white-color;
+    border-left-color: $accent-color-hover;
     animation: load8 1.2s infinite linear;
   }
 }
@@ -26,3 +26,5 @@
     transform: rotate(360deg);
   }
 }
+
+

@@ -3,13 +3,9 @@
 .Card {
   display: flex;
   flex-direction: column;
-  align-items: center;
   gap: 8px;
 
   padding: 32px;
-  width: 272px;
-  height: 506px;
-
   color: $white-color;
   background-color: $surface1-color;
 
@@ -17,10 +13,15 @@
 
   @include hover(border-color, $accent-color);
 
-  &__img {
-    height: 200px;
+  &__img-container {
+    display: flex;
+    justify-content: center;
 
     @include hover-scale;
+
+    & > img {
+      height: 200px;
+    }
   }
 
   &__main-information {
@@ -54,24 +55,20 @@
 
   &__full-price {
     position: relative;
-
     font-size: 22px;
     font-weight: 600;
     line-height: 28px;
 
-
-    & > p:first-child {
+    &>p:first-child {
       color: $secondary-color;
     }
 
-    & > p:last-child {
+    &>p:last-child {
       position: absolute;
       top: 50%;
       transform: translateY(-50%);
-
       color: $surface1-color;
       background-color: $secondary-color;
-
       line-height: 8%;
       overflow: hidden;
     }
@@ -81,7 +78,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-
     width: 100%;
 
     @extend %text-small;
@@ -102,4 +98,3 @@
     width: 100%;
   }
 }
-

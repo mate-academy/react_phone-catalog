@@ -39,6 +39,7 @@ export const ProductsSlider: React.FC<Props> = ({ items, title }) => {
           </SwiperSlide>
         ))}
       </Swiper>
+      <h2 className={classes.ProductsSlider__title}>{title}</h2>
     </section>
   );
 };

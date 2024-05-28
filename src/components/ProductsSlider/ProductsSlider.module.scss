@@ -12,6 +12,16 @@
 
   &__container {
     position: static;
+    display: flex;
+    background-color: lightgreen;
+  }
+
+  &__slide {
+    flex: 1;
+    display: flex;
+    background-color: limegreen;
+    width: 100%;
+    height: 100%;
   }
 
   & div[class*="swiper-button-prev"] {
@@ -26,6 +36,7 @@
 
   & div[class*="swiper-button-next"] {
     background-image: url('../../../public/img/icons/Chevron-Right.svg');
+    right: 0;
 
     &[tabindex="-1"] {
       background-image: url('../../../public/img/icons/Chevron-Right-disabled.svg');
@@ -35,7 +46,7 @@
   & div[class*="swiper-button-prev"],
   & div[class*="swiper-button-next"] {
     position: absolute;
-    top: 32px;
+    top: 4px;
 
     width: 32px;
     height: 32px;

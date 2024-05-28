@@ -2,12 +2,12 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import { Product } from '../../types/Product';
-import { addSpaceInText } from '../../shared/workWithString';
 
 import { AddButton } from '../buttons/AddButton';
 import { FavoriteButton } from '../buttons/FavoriteButton';
 
 import classes from './Card.module.scss';
+import { addSpaceInText } from '../../shared/workWithString';
 
 type Props = {
   product: Product;
@@ -28,7 +28,11 @@ export const Card: React.FC<Props> = ({ product }) => {
 
   return (
     <article className={classes.Card} data-cy="cardsContainer">
-      <Link to={`/${category}/${itemId}`} title="More details">
+      <Link
+        to={`/${category}/${itemId}`}
+        title="More details"
+        className={classes['Card__img-container']}
+      >
         <img className={classes.Card__img} src={image} alt={name} />
       </Link>
 

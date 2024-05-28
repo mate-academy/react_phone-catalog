@@ -1,0 +1,13 @@
+@import '../../../../styles/main';
+
+.NoResults {
+  flex-direction: column;
+  gap: 20px;
+  margin-top: 40px;
+
+  @include flex-center;
+
+  &__title {
+    @extend %h1;
+  }
+}

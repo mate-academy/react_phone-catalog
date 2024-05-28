@@ -1,0 +1,10 @@
+@import '../../../../styles/main';
+
+.ProductsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+  align-content: center;
+
+  width: 100%;
+}

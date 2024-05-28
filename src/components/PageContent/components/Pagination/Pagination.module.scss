@@ -1,0 +1,18 @@
+@import '../../../../styles/main';
+
+.Pagination {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  width: 100%;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    @include button-base;
+  }
+}
