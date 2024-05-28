@@ -1,7 +1,18 @@
 @import '../../../shared/variables';
+@import '../../../shared/mixins';
 
 $slider-image-width: 1040px;
-$slider-image-num: 5;
+$slider-image-width-tablet: 490px;
+$slider-image-width-mobile: 320px;
+$slider-image-num: 3;
+
+.slider {
+  grid-column: 1 / -1;
+  padding-top: 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
 
 .picturesSlider {
   grid-column: 1 / -1;
@@ -28,14 +39,31 @@ $slider-image-num: 5;
   transition-timing-function: ease-in-out;
 }
 
+.btn {
+  border: 1px solid $icons-color;
+  color: transparent;
+  background-color: transparent;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-color;
+  }
+}
+
 .btnLeft {
   height: 100%;
   grid-column: 1 / 2;
+  background-image: url(../../../../../public/img/icons/chevron-arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .btnRight {
   height: 100%;
   grid-column: -2 / -1;
+  background-image: url(../../../../../public/img/icons/chevron-arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
 }
 
 .sliderImg {
@@ -68,4 +96,72 @@ $slider-image-num: 5;
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+}
+
+.dashesPanel {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 8px;
+  height: 24px;
+  width: 80px;
+}
+
+.dashes {
+  width: 14px;
+  height: 4px;
+  border: none;
+  color: transparent;
+  background-color: $elements-color;
+  cursor: pointer;
+}
+
+.activeDash {
+  background-color: $primary-color;
+}
+
+@include on-tablet {
+  .slider {
+    padding-top: 32px;
+  }
+
+  .picturesSlider {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+    column-gap: 16px;
+    height: 189px;
+  }
+
+  .imgContainer {
+    width: $slider-image-width-tablet * $slider-image-num;
+  }
+
+  .sliderImg {
+    width: $slider-image-width-tablet;
+  } 
+}
+
+@include on-mobile {
+  .slider {
+    padding-top: 24px;
+  }
+
+  .picturesSlider {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+    column-gap: 16px;
+    height: 320px;
+  }
+
+  .window {
+    overflow: hidden;
+    grid-column: 1 / -1;
+    height: 100%;
+  }
+
+  .imgContainer {
+    width: $slider-image-width-mobile * $slider-image-num;
+  }
+
+  .sliderImg {
+    width: $slider-image-width-mobile;
+  } 
 }

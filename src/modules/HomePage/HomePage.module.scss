@@ -1,12 +1,45 @@
 @import '../../modules/shared/variables';
+@import '../shared/fonts';
+@import '../shared/mixins';
 
 .homePage {
-  align-self:  center;
+  align-self: center;
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat($grid-columns, 32px);
 }
 
-.productCatalog {
-  visibility: hidden;
+.welcomeTitle {
+  grid-column: 1 / -1;
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  padding-top: 56px;
+}
+
+@include on-tablet {
+  .homePage {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+  }
+
+  .welcomeTitle {
+    grid-column: 1 / 10;
+    padding-top: 32px;
+  }
+}
+
+@include on-mobile {
+  .homePage {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+  }
+
+  .welcomeTitle {
+    grid-column: 1 / -1;
+    font-size: 32px;
+    line-height: 41px;
+    padding-top: 24px;
+  }
 }
