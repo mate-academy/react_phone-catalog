@@ -5,25 +5,27 @@ import { ProductCategories } from '../../../../types/ProductCategories';
 import './ProductSlider.scss';
 import '../../../../styles/main.scss';
 import { getProducts } from '../../../../helpers/getProducts';
-import { filterRandomProducts } from '../../../../helpers/getSuggestedProducts';
+import { filterRandomProducts } from '../../../../helpers/filterRandomProducts';
 
 type Props = {
   title: string;
   hasDiscount?: boolean;
   hasRandomProducts?: boolean;
+  hasNewestProducts?: boolean;
 };
 
 export const ProductSlider: React.FC<Props> = ({
   title,
   hasDiscount = false,
   hasRandomProducts = false,
+  hasNewestProducts = false,
 }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
   const currentProduct = products[activeSlide];
-  const nextProduct = activeSlide < 6 ? products[activeSlide + 1] : products[0];
-  const lastProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
+  const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
+  const lastProduct = activeSlide < 6 ? products[activeSlide + 2] : products[0];
 
   useEffect(() => {
     getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
@@ -32,6 +34,13 @@ export const ProductSlider: React.FC<Props> = ({
       if (hasRandomProducts) {
         // Assign random products
         finalProducts = filterRandomProducts(productsFromApi);
+      }
+
+      if (hasNewestProducts) {
+        // finalProducts = filterRandomProducts(productsFromApi.slice(0, 50));
+        finalProducts = productsFromApi
+          .sort((prod1: Product, prod2: Product) => prod2.year - prod1.year)
+          .slice(0, 8);
       } else {
         finalProducts = productsFromApi.reverse().slice(0, 8);
       }
@@ -51,7 +60,7 @@ export const ProductSlider: React.FC<Props> = ({
 
       setProducts(finalProducts);
     });
-  }, [hasDiscount, hasRandomProducts]);
+  }, [hasDiscount, hasNewestProducts, hasRandomProducts]);
 
   return (
     products.length > 0 && (

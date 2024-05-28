@@ -19,7 +19,7 @@ export const Home: React.FC = () => {
       </section>
 
       <section className="main__section">
-        <ProductSlider title="Brand new models" />
+        <ProductSlider hasNewestProducts={true} title="Brand new models" />
       </section>
 
       <section className="category-section main__section">
