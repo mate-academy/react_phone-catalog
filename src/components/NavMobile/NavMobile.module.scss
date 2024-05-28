@@ -16,13 +16,8 @@
   &__menu {
     position: fixed;
     inset: 0;
-
     display: flex;
     flex-direction: column;
-
-    z-index: 100;
-    overflow-y: auto;
-
     background-color: $black-color;
   }
 

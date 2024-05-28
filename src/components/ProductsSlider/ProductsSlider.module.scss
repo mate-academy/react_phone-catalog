@@ -1,0 +1,60 @@
+
+@import '../../styles/main';
+
+.ProductsSlider {
+  position: relative;
+
+  &__title {
+    margin-bottom: 24px;
+
+    @extend %h2;
+  }
+
+  &__container {
+    position: static;
+  }
+
+  & div[class*="swiper-button-prev"] {
+    background-image: url('../../../public/img/icons/Chevron-Left.svg');
+    left: auto;
+    right: 48px;
+
+    &[tabindex="-1"] {
+      background-image: url('../../../public/img/icons/Chevron-Left-disabled.svg');
+    }
+  }
+
+  & div[class*="swiper-button-next"] {
+    background-image: url('../../../public/img/icons/Chevron-Right.svg');
+
+    &[tabindex="-1"] {
+      background-image: url('../../../public/img/icons/Chevron-Right-disabled.svg');
+    }
+  }
+
+  & div[class*="swiper-button-prev"],
+  & div[class*="swiper-button-next"] {
+    position: absolute;
+    top: 32px;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: $surface2-color;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &:hover:not([tabindex="-1"]) {
+      background-color: $icons-color;
+    }
+
+    &::after {
+      display: none;
+    }
+
+    &[tabindex="-1"] {
+      border: 1px solid $elements-color;
+      background-color: $black-color;
+    }
+  }
+}

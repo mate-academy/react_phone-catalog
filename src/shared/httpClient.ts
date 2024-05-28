@@ -3,8 +3,10 @@ import { Categories } from '../types/Categories';
 import { Product } from '../types/Product';
 import { ProductsDetails } from '../types/ProductsDetails';
 
-const BASE_API_URL =
-  'https://github.com/oksanatytanych/react_phone-catalog/blob/master/public/api/';
+// const BASE_API_URL =
+//   'https://raw.githubusercontent.com/oksanatytanych/react_phone-catalog/master/public/';
+
+const BASE_API_URL = '/api/';
 
 const handleResponse = (response: Response) => {
   if (!response.ok) {

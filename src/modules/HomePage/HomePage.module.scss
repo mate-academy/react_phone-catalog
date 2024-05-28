@@ -1,5 +1,25 @@
 @import '../../styles/main';
 
 .HomePage {
-  background-color: lightcoral;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-bottom: 64px;
+
+  @include screen-properties(padding-top, 24px, 32px, 56px);
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    @include screen-properties(gap, 24px, 32px, 56px);
+  }
+
+  &__title {
+    @extend %h1;
+  }
 }

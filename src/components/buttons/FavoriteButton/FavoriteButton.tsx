@@ -1,13 +1,13 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext } from 'react';
-
 import classNames from 'classnames';
-import './FavoriteButton.scss';
 
 import { Product } from '../../../types/Product';
 import { GlobalContext } from '../../../GlobalContext';
 import { Icon } from '../../Icon';
 import { IconList } from '../../Icon/styles/IconList';
+
+import classes from './FavoriteButton.module.scss';
 
 type Props = {
   product: Product;
@@ -22,8 +22,8 @@ export const FavoriteButton: React.FC<Props> = ({ product }) => {
 
   return (
     <button
-      className={classNames('FavoriteButton', {
-        'FavoriteButton--isFavorite': isFavorite,
+      className={classNames(classes.FavoriteButton, {
+        [classes['FavoriteButton--isFavorite']]: isFavorite,
       })}
       type="button"
       onClick={checkFavoriteList}

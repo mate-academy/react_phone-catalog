@@ -1,0 +1,39 @@
+@import '../../styles/main';
+
+.Breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__link {
+    color: $white-color;
+
+    @extend %text-small;
+    @include hover(color, $accent-color);
+
+    &:last-child {
+      color: $secondary-color;
+
+      @include hover(color, $accent-color);
+    }
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+    background-image: (url('../../../public/img/icons/Chevron-Right.svg'));
+  }
+
+}
+
+.BreadcrumbsHome {
+  width: 16px;
+  height: 16px;
+  background-image: url('../../../public/img/icons/Home.svg');
+}
