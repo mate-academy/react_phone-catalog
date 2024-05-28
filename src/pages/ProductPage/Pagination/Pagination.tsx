@@ -1,7 +1,7 @@
-import cn from 'classnames';
-import './Pagination.scss';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import cn from 'classnames';
+import './Pagination.scss';
 
 type Props = {
   pagesTotal: number;
