@@ -1,4 +1,4 @@
-import { createContext, useEffect } from 'react';
+import { createContext } from 'react';
 import { Product } from '../types/ProductCard';
 import { Favorites } from '../types/Favorites';
 import { useLocalStorage } from '../hooks/useLocalStorage';
@@ -24,18 +24,6 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
     'favoriteProducts',
     [] as Favorites,
   );
-
-  // useEffect(() => {
-  //   const favoritesFromStorage = localStorage.getItem('favoriteProducts');
-
-  //   if (favoritesFromStorage) {
-  //     setFavoriteProducts(JSON.parse(favoritesFromStorage));
-  //   }
-  // }, []);
-
-  useEffect(() => {
-    localStorage.setItem('favoriteProducts', JSON.stringify(favoriteProducts));
-  }, [favoriteProducts]);
 
   const addToFavorites = (newFavoriteProduct: Product) => {
     if (
