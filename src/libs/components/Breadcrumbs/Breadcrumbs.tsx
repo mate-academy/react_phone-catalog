@@ -4,7 +4,7 @@ import cn from 'classnames';
 import './Breadcrumbs.scss';
 
 type Props = {
-  classNames?: string,
+  classNames?: string;
 };
 
 export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
@@ -14,38 +14,36 @@ export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
   return (
     <div className={cn('breadcrumbs', classNames)}>
       <Link
-        to="/"
-        className="breadcrumbs__home"
+        to='/'
+        className='breadcrumbs__home'
       />
-      {
-        pathes.map((path, i) => {
-          if (i === pathes.length - 1) {
-            return (
-              <p
-                key={path}
-                className="
+      {pathes.map((path, i) => {
+        if (i === pathes.length - 1) {
+          return (
+            <p
+              key={path}
+              className='
                 breadcrumbs__link
                 breadcrumbs__link--current
-              "
-              >
-                {`${path[0].toUpperCase()}${path.slice(1)}`}
-              </p>
-            );
-          }
-
-          return (
-            <Link
-              to="/phones"
-              key={path}
-              className="
-                breadcrumbs__link
-              "
+              '
             >
               {`${path[0].toUpperCase()}${path.slice(1)}`}
-            </Link>
+            </p>
           );
-        })
-      }
+        }
+
+        return (
+          <Link
+            to='/phones'
+            key={path}
+            className='
+                breadcrumbs__link
+              '
+          >
+            {`${path[0].toUpperCase()}${path.slice(1)}`}
+          </Link>
+        );
+      })}
     </div>
   );
 };

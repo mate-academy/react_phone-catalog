@@ -20,25 +20,23 @@ type Props = {
 export const SearchBar: React.FC<Props> = ({
   classNames,
   isInputExpanded,
-  onClick = () => {},
+  onClick = () => {}
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState(
-    searchParams.get(SearchParamsNames.query) || '',
+    searchParams.get(SearchParamsNames.query) || ''
   );
   const inputRef = useRef<HTMLInputElement>(null);
   const { pathname } = useLocation();
 
   const placeholder = `Search in ${pathname.split('/')[1]}`;
 
-  const handleSetParams = (
-    paramValue: string,
-  ) => {
+  const handleSetParams = (paramValue: string) => {
     const newParams = getSearchWith(
       { [SearchParamsNames.query]: paramValue || null },
-      searchParams,
+      searchParams
     );
 
     setSearchParams(newParams);
@@ -88,13 +86,12 @@ export const SearchBar: React.FC<Props> = ({
         return;
       }
 
-      const isCLickOutside = (
-        e.target
-        && e.target instanceof HTMLElement
-        && e.target !== buttonRef.current
-        && !formRef.current.contains(e.target)
-        && isInputExpanded
-      );
+      const isCLickOutside =
+        e.target &&
+        e.target instanceof HTMLElement &&
+        e.target !== buttonRef.current &&
+        !formRef.current.contains(e.target) &&
+        isInputExpanded;
 
       if (isInputExpanded && isCLickOutside) {
         onClick(false);
@@ -114,42 +111,40 @@ export const SearchBar: React.FC<Props> = ({
       onSubmit={handleSubmit}
       ref={formRef}
     >
-
       <input
-        type="text"
+        type='text'
         value={value}
-        className={cn(
-          'search-bar__input',
-          { 'search-bar__input--small-screen': !isInputExpanded },
-        )}
+        className={cn('search-bar__input', {
+          'search-bar__input--small-screen': !isInputExpanded
+        })}
         placeholder={placeholder}
         onChange={handleChange}
         ref={inputRef}
       />
 
       <button
-        type="button"
-        className="search-bar__button
-        search-bar__button--on-big-screen"
+        type='button'
+        className='search-bar__button
+        search-bar__button--on-big-screen'
         onClick={() => handleButtonClick()}
       >
         <Icon
           iconName={!value ? 'search' : 'close'}
-          classNames="search-bar__icon"
+          classNames='search-bar__icon'
           data-cy={value && 'searchDelete'}
         />
       </button>
 
       <button
-        type="button"
-        className="search-bar__button
-        search-bar__button--on-small-screen"
+        type='button'
+        className='search-bar__button
+        search-bar__button--on-small-screen'
         onClick={() => handleSmallScreenButtonClick()}
         ref={buttonRef}
       >
         <Icon
           iconName={!value ? 'search' : 'close'}
-          classNames="search-bar__icon"
+          classNames='search-bar__icon'
           data-cy={value && 'searchDelete'}
         />
       </button>

@@ -5,11 +5,11 @@ import { Icon } from '../Icon';
 import './DropDown.scss';
 
 type DropProps<T> = {
-  label: string,
+  label: string;
   value: T;
-  setValue: (value: T) => void
-  options: { value: T, label: string }[],
-  width: number,
+  setValue: (value: T) => void;
+  options: { value: T; label: string }[];
+  width: number;
 };
 
 export const DropDown = <T extends string>({
@@ -17,16 +17,13 @@ export const DropDown = <T extends string>({
   value,
   setValue,
   options,
-  width,
+  width
 }: DropProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
   const currentValueTitle = getKeyByValue(options, value);
 
-  const handleSelectValue = (selectedValue: {
-    value: T;
-    label: string;
-  }) => {
+  const handleSelectValue = (selectedValue: { value: T; label: string }) => {
     setValue(selectedValue.value as T);
     setIsOpen(false);
   };
@@ -37,10 +34,11 @@ export const DropDown = <T extends string>({
 
   useEffect(() => {
     const handleClickOutside = (e: MouseEvent) => {
-      const isCLickOutside = !(selectRef.current
-        && e.target
-        && e.target instanceof HTMLElement
-        && (selectRef.current.contains(e.target))
+      const isCLickOutside = !(
+        selectRef.current &&
+        e.target &&
+        e.target instanceof HTMLElement &&
+        selectRef.current.contains(e.target)
       );
 
       if (isCLickOutside && selectRef.current) {
@@ -57,34 +55,30 @@ export const DropDown = <T extends string>({
 
   return (
     <div
-      className="dropdown"
+      className='dropdown'
       style={{
-        width: `${width}px`,
+        width: `${width}px`
       }}
     >
-      <label
-        className="dropdown__label"
-      >
-        <span className="dropdown__label-text">
-          {label}
-        </span>
+      <label className='dropdown__label'>
+        <span className='dropdown__label-text'>{label}</span>
 
         <div
-          className="dropdown__select"
-          role="presentation"
+          className='dropdown__select'
+          role='presentation'
           onClick={() => hadnleOnSelectClick()}
           ref={selectRef}
         >
           <span>{currentValueTitle}</span>
 
           {isOpen && (
-            <ul className="dropdown__option-list">
-              {options.map((option) => (
+            <ul className='dropdown__option-list'>
+              {options.map(option => (
                 <li
                   value={option.value}
                   key={option.value}
-                  className="dropdown__option-item"
-                  role="presentation"
+                  className='dropdown__option-item'
+                  role='presentation'
                   onClick={() => handleSelectValue(option)}
                 >
                   {option.label}
@@ -96,7 +90,7 @@ export const DropDown = <T extends string>({
 
         <Icon
           iconName={isOpen ? 'arrowUp' : 'arrowDown'}
-          classNames="dropdown__arrow"
+          classNames='dropdown__arrow'
         />
       </label>
     </div>

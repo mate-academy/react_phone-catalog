@@ -1,5 +1,3 @@
 export const NoSearchResults = () => {
-  return (
-    <h1>No Results found</h1>
-  );
+  return <h1>No Results found</h1>;
 };

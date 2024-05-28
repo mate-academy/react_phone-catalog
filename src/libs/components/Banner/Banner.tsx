@@ -1,13 +1,11 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
-import {
-  useMemo, useRef, useState,
-} from 'react';
+import { useMemo, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 import {
-  BANNER_IMAGES,
+  BANNER_IMAGES
   // BANNER_MOBILE_IMAGES
 } from '../../constants';
 
@@ -29,8 +27,9 @@ export const Banner = () => {
       return 0;
     }
 
-    return (-(slideId - 1)
-    * (containerRef.current as HTMLUListElement).offsetWidth);
+    return (
+      -(slideId - 1) * (containerRef.current as HTMLUListElement).offsetWidth
+    );
   }, [slideId]);
 
   const handleNext = () => {
@@ -39,7 +38,7 @@ export const Banner = () => {
         return firstSlideId;
       }
 
-      return (prev + 1);
+      return prev + 1;
     });
   };
 
@@ -49,52 +48,54 @@ export const Banner = () => {
         return lastSlideId;
       }
 
-      return (prev - 1);
+      return prev - 1;
     });
   };
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handlePrev(),
+    onSwipedRight: () => handlePrev()
   });
 
   return (
-    <div
-      className="main__banner banner-container"
-    >
+    <div className='main__banner banner-container'>
       <div
-        className="banner-container__slider slider"
+        className='banner-container__slider slider'
         {...swipeHandlers}
       >
         <button
-          className="slider__button"
-          type="button"
+          className='slider__button'
+          type='button'
           onClick={handlePrev}
         >
-          <Icon iconName="arrowLeft" classNames="slider__button-icon" />
+          <Icon
+            iconName='arrowLeft'
+            classNames='slider__button-icon'
+          />
         </button>
 
-        <div className="slider__banner-container">
+        <div className='slider__banner-container'>
           <ul
-            className="slider__banner-list"
-            style={
-              {
-                transform: `translateX(${translateX}px)`,
-                transition: 'all 1500ms',
-              }
-            }
+            className='slider__banner-list'
+            style={{
+              transform: `translateX(${translateX}px)`,
+              transition: 'all 1500ms'
+            }}
             ref={containerRef}
           >
             {images.map(([key, value]) => (
               <li
-                className="slider__banner-item"
+                className='slider__banner-item'
                 key={key}
               >
-                <Link to={key} className="slider__banner-link">
+                <Link
+                  to={key}
+                  className='slider__banner-link'
+                >
                   <img
                     src={value}
                     alt={key}
-                    className="slider__banner-img"
+                    className='slider__banner-img'
                   />
                   {/* <picture
                     className="slider__banner-img"
@@ -120,22 +121,24 @@ export const Banner = () => {
         </div>
 
         <button
-          className="slider__button"
-          type="button"
+          className='slider__button'
+          type='button'
           onClick={handleNext}
         >
-          <Icon iconName="arrowRight" classNames="slider__button-icon" />
+          <Icon
+            iconName='arrowRight'
+            classNames='slider__button-icon'
+          />
         </button>
       </div>
-      <div className="banner-container__pagination pagination">
+      <div className='banner-container__pagination pagination'>
         {images.map((item, index) => (
           <button
-            type="button"
+            type='button'
             key={item[0]}
-            className={cn(
-              'pagination__part',
-              { 'pagination__part--active': index + 1 === slideId },
-            )}
+            className={cn('pagination__part', {
+              'pagination__part--active': index + 1 === slideId
+            })}
             onClick={() => setSlideId(index + 1)}
           />
         ))}

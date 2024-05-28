@@ -9,7 +9,7 @@ import {
   SectionHeader,
   ProductCard,
   NoResults,
-  NoSearchResults,
+  NoSearchResults
 } from '../../components';
 
 import './FavouritesPage.scss';
@@ -20,42 +20,44 @@ export const FavouritesPage = () => {
   const favouritesItemsCount = favouritesItems.length;
   const searchQuery = searchParams.get(SearchParamsNames.query) || '';
 
-  const visibleItems = useMemo(() => (
-    searchQuery
-      ? favouritesItems.filter(item => (
-        item.name.toLowerCase().includes(searchQuery.toLowerCase())
-      ))
-      : favouritesItems
-  ), [favouritesItems, searchQuery]);
+  const visibleItems = useMemo(
+    () =>
+      searchQuery
+        ? favouritesItems.filter(item =>
+            item.name.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : favouritesItems,
+    [favouritesItems, searchQuery]
+  );
   const visibleItemsCount = visibleItems.length;
 
   return (
-    <div className="favourites">
+    <div className='favourites'>
       <Breadcrumbs />
       <SectionHeader
-        title="Favourites"
+        title='Favourites'
         subtitle={
           favouritesItemsCount
             ? `${visibleItemsCount} ${searchQuery ? 'results' : 'items'}`
             : undefined
         }
       />
-      { !!favouritesItems.length && (
-        visibleItems.length
-          ? (
-            <div className="favourites__cards">
-              {
-                visibleItems.map(item => (
-                  <ProductCard product={item} key={item.id} />
-                ))
-              }
-            </div>
-          )
-          : <NoSearchResults />
-      )}
+      {!!favouritesItems.length &&
+        (visibleItems.length ? (
+          <div className='favourites__cards'>
+            {visibleItems.map(item => (
+              <ProductCard
+                product={item}
+                key={item.id}
+              />
+            ))}
+          </div>
+        ) : (
+          <NoSearchResults />
+        ))}
 
-      { !favouritesItems.length && (
-        <NoResults title="Your favourites list is empty" />
+      {!favouritesItems.length && (
+        <NoResults title='Your favourites list is empty' />
       )}
     </div>
   );

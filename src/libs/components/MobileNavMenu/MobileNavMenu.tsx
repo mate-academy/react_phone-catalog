@@ -22,57 +22,48 @@ export const MobileNavMenu: React.FC<Props> = ({
   hasItemsInFavourites,
   favouritesItemsCount,
   hasItemsInCart,
-  cartItemsCount,
+  cartItemsCount
 }) => {
   return (
-    <div
-      className={cn('mobile-menu', classNames)}
-    >
-      <ul className="mobile-menu__nav-list">
-        {
-          HEADER_LIST_ITEMS.map(el => (
-            <li
-              className="mobile-menu__nav-item"
-              key={el}
+    <div className={cn('mobile-menu', classNames)}>
+      <ul className='mobile-menu__nav-list'>
+        {HEADER_LIST_ITEMS.map(el => (
+          <li
+            className='mobile-menu__nav-item'
+            key={el}
+          >
+            <NavLink
+              to={el === HEADER_LIST_ITEMS[0] ? '/' : `/${el}`}
+              className={({ isActive }) =>
+                cn('mobile-menu__nav-link', {
+                  'mobile-menu__nav-link--active': isActive
+                })
+              }
+              onClick={() => setIsOpen(false)}
             >
-              <NavLink
-                to={
-                  el === HEADER_LIST_ITEMS[0]
-                    ? '/'
-                    : `/${el}`
-                }
-                className={({ isActive }) => (
-                  cn(
-                    'mobile-menu__nav-link',
-                    { 'mobile-menu__nav-link--active': isActive },
-                  )
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {el.toUpperCase()}
-              </NavLink>
-            </li>
-          ))
-        }
+              {el.toUpperCase()}
+            </NavLink>
+          </li>
+        ))}
       </ul>
 
-      <div className="mobile-menu__nav-buttons">
+      <div className='mobile-menu__nav-buttons'>
         <HeaderIconLink
-          iconName="favourites"
-          linkTo="favourites"
+          iconName='favourites'
+          linkTo='favourites'
           hasItemsIn={hasItemsInFavourites}
           count={favouritesItemsCount}
           onClick={() => setIsOpen(false)}
-          classNames="mobile-menu__icon"
+          classNames='mobile-menu__icon'
         />
 
         <HeaderIconLink
-          iconName="shopping"
-          linkTo="cart"
+          iconName='shopping'
+          linkTo='cart'
           hasItemsIn={hasItemsInCart}
           count={cartItemsCount}
           onClick={() => setIsOpen(false)}
-          classNames="mobile-menu__icon"
+          classNames='mobile-menu__icon'
         />
       </div>
     </div>

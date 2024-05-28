@@ -4,7 +4,7 @@ import cn from 'classnames';
 import './BackButton.scss';
 
 type Props = {
-  classNames?: string,
+  classNames?: string;
 };
 
 export const BackButton: React.FC<Props> = ({ classNames }) => {
@@ -16,9 +16,9 @@ export const BackButton: React.FC<Props> = ({ classNames }) => {
 
   return (
     <button
-      type="button"
+      type='button'
       className={cn('back-button', classNames)}
-      data-cy="backButton"
+      data-cy='backButton'
       onClick={handleClick}
     >
       Back

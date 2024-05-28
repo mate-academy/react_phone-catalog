@@ -6,55 +6,46 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ProductCategory, IProduct } from '../../types';
 import { SORT_VALUES, SearchParamsNames } from '../../constants';
 
-import {
-  getCategoryTitle,
-  fetchCategoryProducts,
-} from '../../utils';
+import { getCategoryTitle, fetchCategoryProducts } from '../../utils';
 
 import {
   SectionHeader,
-  PagePagination,
+  Pagination,
   PageFilter,
   Breadcrumbs,
   ProductCard,
   NoResults,
   Loader,
   NoSearchResults,
-  ErrorMessage,
+  ErrorMessage
 } from '../../components';
 
 import './ProductsPage.scss';
 
 type Props = {
-  classNames?: string,
-  title?: string
+  classNames?: string;
+  title?: string;
 };
 
 const getVisibleProducts = (
   products: IProduct[],
   sortValue: string,
   filterValue: string,
-  page: number,
+  page: number
 ): IProduct[] => {
   const visibleProducts = [...products];
 
   switch (sortValue) {
     case SORT_VALUES.Alphabetically:
-      visibleProducts.sort((pr1, pr2) => (
-        pr1.name.localeCompare(pr2.name)
-      ));
+      visibleProducts.sort((pr1, pr2) => pr1.name.localeCompare(pr2.name));
       break;
 
     case SORT_VALUES.Cheapest:
-      visibleProducts.sort((pr1, pr2) => (
-        pr1.price - pr2.price
-      ));
+      visibleProducts.sort((pr1, pr2) => pr1.price - pr2.price);
       break;
 
     default:
-      visibleProducts.sort((pr1, pr2) => (
-        pr1.year - pr2.year
-      ));
+      visibleProducts.sort((pr1, pr2) => pr1.year - pr2.year);
       break;
   }
 
@@ -64,25 +55,21 @@ const getVisibleProducts = (
     }
 
     default: {
-      const index = ((page - 1) * (+filterValue));
+      const index = (page - 1) * +filterValue;
 
-      return visibleProducts.slice(
-        index, +filterValue + index,
-      );
+      return visibleProducts.slice(index, +filterValue + index);
     }
   }
 };
 
-export const ProductsPage: React.FC<Props> = ({
-  title,
-}) => {
+export const ProductsPage: React.FC<Props> = ({ title }) => {
   const location = useLocation();
   const categoryName = location.pathname.slice(1);
   const dispatch = useAppDispatch();
   const {
     hasError,
     loaded,
-    products: fetchedProducts,
+    products: fetchedProducts
   } = useAppSelector(state => {
     switch (categoryName) {
       case ProductCategory.Tablets:
@@ -103,27 +90,31 @@ export const ProductsPage: React.FC<Props> = ({
   const searchQuery = searchParams.get(SearchParamsNames.query) || '';
   const currentPage = +(searchParams.get(SearchParamsNames.page) || 1);
 
-  const categoryTitle = useMemo(() => (
-    title || getCategoryTitle(categoryName)
-  ), [categoryName, title]);
+  const categoryTitle = useMemo(
+    () => title || getCategoryTitle(categoryName),
+    [categoryName, title]
+  );
 
-  const filteredProductsBySearchQuery = useMemo(() => (
-    searchQuery
-      ? fetchedProducts
-        .filter(product => (
-          product.name.toLowerCase().includes(searchQuery.toLowerCase())
-        ))
-      : fetchedProducts
-  ), [fetchedProducts, searchQuery]);
+  const filteredProductsBySearchQuery = useMemo(
+    () =>
+      searchQuery
+        ? fetchedProducts.filter(product =>
+            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+          )
+        : fetchedProducts,
+    [fetchedProducts, searchQuery]
+  );
 
-  const visibleProducts = useMemo(() => (
-    getVisibleProducts(
-      filteredProductsBySearchQuery,
-      sortBy,
-      filterBy,
-      currentPage,
-    )
-  ), [currentPage, filterBy, sortBy, filteredProductsBySearchQuery]);
+  const visibleProducts = useMemo(
+    () =>
+      getVisibleProducts(
+        filteredProductsBySearchQuery,
+        sortBy,
+        filterBy,
+        currentPage
+      ),
+    [currentPage, filterBy, sortBy, filteredProductsBySearchQuery]
+  );
 
   const fetchedProductsCount = fetchedProducts.length;
   const filteredProductsCount = filteredProductsBySearchQuery.length;
@@ -139,66 +130,57 @@ export const ProductsPage: React.FC<Props> = ({
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   });
 
   return (
-    <div className="products-page">
-      <Breadcrumbs classNames="products-page__breadcrumbs" />
+    <div className='products-page'>
+      <Breadcrumbs classNames='products-page__breadcrumbs' />
 
       {hasLoader && <Loader />}
 
-      {
-        hasFetchedProducts
-          && (
+      {hasFetchedProducts && (
+        <>
+          <div className='products-page__title'>
+            <SectionHeader
+              title={categoryTitle}
+              subtitle={`${filteredProductsCount} ${searchQuery ? 'results' : 'models'}`}
+            />
+          </div>
+
+          {filteredProductsCount ? (
             <>
-              <div className="products-page__title">
-                <SectionHeader
-                  title={categoryTitle}
-                  subtitle={
-                    `${filteredProductsCount} ${searchQuery ? 'results' : 'models'}`
-                  }
-                />
+              <PageFilter
+                sortValue={sortBy}
+                filterValue={filterBy}
+              />
+
+              <div
+                className='products-page__cards'
+                data-cy='productList'
+              >
+                {visibleProducts.map(product => (
+                  <ProductCard
+                    product={product}
+                    key={product.id}
+                  />
+                ))}
               </div>
 
-              {
-                filteredProductsCount
-                  ? (
-                    <>
-                      <PageFilter
-                        sortValue={sortBy}
-                        filterValue={filterBy}
-                      />
-
-                      <div
-                        className="products-page__cards"
-                        data-cy="productList"
-                      >
-                        { visibleProducts.map(product => (
-                          <ProductCard
-                            product={product}
-                            key={product.id}
-                          />
-                        ))}
-                      </div>
-
-                      {((
-                        filteredProductsCount > +filterBy) && filterBy !== 'all'
-                      ) && (
-                        <PagePagination
-                          productsCount={filteredProductsCount}
-                          currentPage={currentPage}
-                          filterValue={filterBy}
-                        />
-                      )}
-                    </>
-                  )
-                  : <NoSearchResults />
-              }
+              {filteredProductsCount > +filterBy && filterBy !== 'all' && (
+                <Pagination
+                  productsCount={filteredProductsCount}
+                  currentPage={currentPage}
+                  filterValue={filterBy}
+                />
+              )}
             </>
-          )
-      }
+          ) : (
+            <NoSearchResults />
+          )}
+        </>
+      )}
 
       {hasNoFetchedProducts && (
         <NoResults
@@ -207,8 +189,11 @@ export const ProductsPage: React.FC<Props> = ({
         />
       )}
 
-      {hasErrorMessage && <ErrorMessage title={`Failed to fetch ${categoryTitle.toLowerCase()} `} />}
-
+      {hasErrorMessage && (
+        <ErrorMessage
+          title={`Failed to fetch ${categoryTitle.toLowerCase()} `}
+        />
+      )}
     </div>
   );
 };

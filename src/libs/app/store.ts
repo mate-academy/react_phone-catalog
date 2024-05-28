@@ -17,8 +17,8 @@ export const store = configureStore({
     productDetails: productDetailsReducer,
     suggestedProducts: suggestedProductsReducer,
     cartItems: cartReducer,
-    favouritesItems: favouritesReducer,
-  },
+    favouritesItems: favouritesReducer
+  }
 });
 
 export type RootState = ReturnType<typeof store.getState>;

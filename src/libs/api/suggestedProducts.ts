@@ -12,7 +12,9 @@ export const getSuggestedProducts = async () => {
     currentIndex -= 1;
 
     [products[currentIndex], products[randomIndex]] = [
-      products[randomIndex], products[currentIndex]];
+      products[randomIndex],
+      products[currentIndex]
+    ];
   }
 
   return products;

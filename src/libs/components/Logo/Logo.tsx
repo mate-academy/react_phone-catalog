@@ -7,26 +7,24 @@ type Props = {
   classNames?: string;
 };
 
-export const Logo: React.FC<Props> = ({
-  classNames,
-}) => {
+export const Logo: React.FC<Props> = ({ classNames }) => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
+      behavior: 'smooth'
     });
   };
 
   return (
     <Link
       className={cn('logo', classNames)}
-      to="/"
+      to='/'
       onClick={handleClick}
     >
       <img
-        src="img/Logo.png"
-        alt="Logo"
-        className="logo__image"
+        src='img/Logo.png'
+        alt='Logo'
+        className='logo__image'
       />
     </Link>
   );

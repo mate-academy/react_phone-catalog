@@ -2,7 +2,7 @@ import { LocalStorageKeys } from '../types';
 
 export const saveToLocalSotrage = (
   name: LocalStorageKeys,
-  payload: unknown,
+  payload: unknown
 ) => {
   localStorage.setItem(name, JSON.stringify(payload));
 };

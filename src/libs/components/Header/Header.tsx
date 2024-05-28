@@ -3,9 +3,7 @@ import cn from 'classnames';
 import { useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
-import {
-  handleSearchBarVisibility,
-} from '../../utils';
+import { handleSearchBarVisibility } from '../../utils';
 import { useAppSelector } from '../../app/hooks';
 import { BREAKPOINTS } from '../../constants';
 
@@ -22,13 +20,8 @@ type Props = {
   classNames?: string;
 };
 
-export const Header: React.FC<Props> = ({
-  classNames,
-}) => {
-  const [
-    isSearchInputExpanded,
-    setIsSearchInputExpanded,
-  ] = useState(false);
+export const Header: React.FC<Props> = ({ classNames }) => {
+  const [isSearchInputExpanded, setIsSearchInputExpanded] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const { cartItems } = useAppSelector(state => state.cartItems);
@@ -69,83 +62,72 @@ export const Header: React.FC<Props> = ({
   return (
     <>
       <header className={cn('header', classNames)}>
-        <div className="header__logo-container">
+        <div className='header__logo-container'>
           <Logo />
         </div>
 
-        <div className="header__nav-content">
+        <div className='header__nav-content'>
           {!isMobile && (
-            <div className={cn(
-              'header__nav-menu',
-              {
-                'header__nav-menu--tablet':
-              isSearchInputExpanded,
-              },
-            )}
+            <div
+              className={cn('header__nav-menu', {
+                'header__nav-menu--tablet': isSearchInputExpanded
+              })}
             >
-              {!isCartPage && (
-                <Navbar />
-              )}
+              {!isCartPage && <Navbar />}
             </div>
           )}
 
           {hasSearchBar && (
             <SearchBar
-              classNames={cn(
-                'header__search-bar',
-                {
-                  'header__search-bar--mobile':
-                  isSearchInputExpanded,
-                },
-              )}
+              classNames={cn('header__search-bar', {
+                'header__search-bar--mobile': isSearchInputExpanded
+              })}
               isInputExpanded={isSearchInputExpanded}
               onClick={setIsSearchInputExpanded}
             />
           )}
 
-          <div className="header__nav-icons">
+          <div className='header__nav-icons'>
             {!isCartPage && (
               <HeaderIconLink
-                iconName="favourites"
-                linkTo="favourites"
+                iconName='favourites'
+                linkTo='favourites'
                 hasItemsIn={hasItemsInFavourites}
                 count={favouritesItems.length}
               />
             )}
 
             <HeaderIconLink
-              iconName="shopping"
-              linkTo="cart"
+              iconName='shopping'
+              linkTo='cart'
               hasItemsIn={hasItemsInCart}
               count={cartItems.length}
             />
           </div>
 
           <button
-            type="button"
-            className="header__mobile-menu-button"
+            type='button'
+            className='header__mobile-menu-button'
             onClick={handleMenuButtonClick}
           >
-            <Icon
-              iconName={isMobileMenuOpen ? 'close' : 'burgerMenu'}
-            />
+            <Icon iconName={isMobileMenuOpen ? 'close' : 'burgerMenu'} />
           </button>
         </div>
-
       </header>
 
       {isMobile && (
         <div
-          className="header__mobile-menu"
+          className='header__mobile-menu'
           style={
-            isMobileMenuOpen ? {
-              transition: 'all 0.8s',
-              transform: 'translateX(0)',
-            }
+            isMobileMenuOpen
+              ? {
+                  transition: 'all 0.8s',
+                  transform: 'translateX(0)'
+                }
               : {
-                transition: 'all 0.8s',
-                transform: 'translateX(100%)',
-              }
+                  transition: 'all 0.8s',
+                  transform: 'translateX(100%)'
+                }
           }
         >
           <MobileNavMenu

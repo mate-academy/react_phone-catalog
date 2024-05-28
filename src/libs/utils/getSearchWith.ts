@@ -5,7 +5,7 @@ type Params = {
 
 export const getSearchWith = (
   params: Params,
-  search?: string | URLSearchParams,
+  search?: string | URLSearchParams
 ) => {
   const newParams = new URLSearchParams(search);
   const paramsArray = Object.entries(params);

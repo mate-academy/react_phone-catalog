@@ -3,9 +3,11 @@ import { client } from '../utils/fetchClient';
 
 export const getProductDetails = async (
   productId: string,
-  categoryName: ProductCategory,
+  categoryName: ProductCategory
 ) => {
-  const response = await client.get<IProductDetails[]>(`/api/products/${categoryName}.json`);
+  const response = await client.get<IProductDetails[]>(
+    `/api/products/${categoryName}.json`
+  );
 
   return response.find(product => product.id === productId);
 };

@@ -5,3 +5,4 @@ export { fetchCategoryProducts } from './fetchCategoryProducts';
 export { getKeyByValue } from './getKeyByValue';
 export { getSearchWith } from './getSearchWith';
 export { getFromLocalSotrage, saveToLocalSotrage } from './useLocalSotrage';
+export { createPaginationArray } from './createPaginationArray';

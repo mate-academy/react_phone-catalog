@@ -20,47 +20,39 @@ export const BuyButtons: React.FC<Props> = ({
   add,
   isAddButtonSelected = false,
   like,
-  isFavoriteButtonSelected = false,
+  isFavoriteButtonSelected = false
 }) => {
   return (
     <div
-      className={cn(
-        'card-buttons',
-        classNames,
-      )}
+      className={cn('card-buttons', classNames)}
       style={{
-        height: containerHeight,
+        height: containerHeight
       }}
     >
       <button
-        type="button"
-        className={cn(
-          'card-buttons__add',
-          {
-            'card-buttons__add--selected': isAddButtonSelected,
-          },
-        )}
+        type='button'
+        className={cn('card-buttons__add', {
+          'card-buttons__add--selected': isAddButtonSelected
+        })}
         onClick={add}
       >
         {isAddButtonSelected ? 'Added to cart' : 'Add to cart'}
       </button>
 
       <button
-        type="button"
-        className="card-buttons__like"
+        type='button'
+        className='card-buttons__like'
         style={{
-          width: containerHeight,
+          width: containerHeight
         }}
-        data-cy="addToFavorite"
+        data-cy='addToFavorite'
         onClick={like}
       >
         <Icon
           iconName={
-            isFavoriteButtonSelected
-              ? 'favouritesCounter'
-              : 'favourites'
+            isFavoriteButtonSelected ? 'favouritesCounter' : 'favourites'
           }
-          classNames="card-buttons__like-icon"
+          classNames='card-buttons__like-icon'
         />
       </button>
     </div>

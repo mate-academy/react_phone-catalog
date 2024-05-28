@@ -12,5 +12,4 @@ const Root = () => (
   </Provider>
 );
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<Root />);
+createRoot(document.getElementById('root') as HTMLElement).render(<Root />);

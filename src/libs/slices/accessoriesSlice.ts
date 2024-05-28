@@ -4,15 +4,15 @@ import { IProduct } from '../types';
 import { getAccessories } from '../api/accessories';
 
 export interface IAccessoriesState {
-  loaded: boolean,
-  hasError: boolean,
-  products: IProduct[],
+  loaded: boolean;
+  hasError: boolean;
+  products: IProduct[];
 }
 
 const initialState: IAccessoriesState = {
   loaded: false,
   hasError: false,
-  products: [],
+  products: []
 };
 
 export const fetchAccessories = createAsyncThunk(
@@ -21,30 +21,28 @@ export const fetchAccessories = createAsyncThunk(
     const phones = await getAccessories();
 
     return phones;
-  },
+  }
 );
-const accessoriesSlice = createSlice(
-  {
-    name: 'accessories',
-    initialState,
-    reducers: {},
-    extraReducers: (builder) => {
-      builder
-        .addCase(fetchAccessories.fulfilled, (state, { payload }) => {
-          state.loaded = true;
-          state.hasError = false;
-          state.products = payload;
-        })
-        .addCase(fetchAccessories.pending, (state) => {
-          state.loaded = false;
-          state.hasError = false;
-        })
-        .addCase(fetchAccessories.rejected, (state) => {
-          state.loaded = true;
-          state.hasError = true;
-        });
-    },
-  },
-);
+const accessoriesSlice = createSlice({
+  name: 'accessories',
+  initialState,
+  reducers: {},
+  extraReducers: builder => {
+    builder
+      .addCase(fetchAccessories.fulfilled, (state, { payload }) => {
+        state.loaded = true;
+        state.hasError = false;
+        state.products = payload;
+      })
+      .addCase(fetchAccessories.pending, state => {
+        state.loaded = false;
+        state.hasError = false;
+      })
+      .addCase(fetchAccessories.rejected, state => {
+        state.loaded = true;
+        state.hasError = true;
+      });
+  }
+});
 
 export default accessoriesSlice.reducer;

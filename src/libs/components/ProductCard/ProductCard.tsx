@@ -15,14 +15,11 @@ import { Price } from '../Price';
 import './ProductCard.scss';
 
 type Props = {
-  classNames?: string,
-  product: IProduct,
+  classNames?: string;
+  product: IProduct;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  product,
-  classNames,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
   const {
     capacity,
     category,
@@ -33,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({
     name,
     price,
     ram,
-    screen,
+    screen
   } = product;
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(state => state.cartItems);
@@ -51,7 +48,7 @@ export const ProductCard: React.FC<Props> = ({
       const cartItem: ICartItem = {
         id: String(new Date().valueOf()),
         quantity: 1,
-        product,
+        product
       };
 
       dispatch(cartActions.addItem(cartItem));
@@ -67,23 +64,21 @@ export const ProductCard: React.FC<Props> = ({
   }, [dispatch, hasInFavourites, product, itemId]);
 
   return (
-    <div
-      className={cn('product-card', classNames)}
-    >
+    <div className={cn('product-card', classNames)}>
       <Link
         to={link}
-        className="product-card__photo-link"
+        className='product-card__photo-link'
       >
         <img
           src={`${image}`}
           alt={name}
-          className="product-card__photo"
+          className='product-card__photo'
         />
       </Link>
 
       <Link
         to={link}
-        className="product-card__title"
+        className='product-card__title'
       >
         {name}
       </Link>
@@ -91,21 +86,19 @@ export const ProductCard: React.FC<Props> = ({
       <Price
         discountPrice={price}
         fullPrice={fullPrice}
-        classNames="product-card__price"
+        classNames='product-card__price'
       />
       <TechSpecs
-        classNames="product-card__details"
+        classNames='product-card__details'
         hasBorder
-        specs={
-          {
-            screen,
-            capacity,
-            ram,
-          }
-        }
+        specs={{
+          screen,
+          capacity,
+          ram
+        }}
       />
       <BuyButtons
-        classNames="product-card__buttons"
+        classNames='product-card__buttons'
         add={handleAddToCart}
         isAddButtonSelected={hasInCart}
         like={handleAddToFavorites}

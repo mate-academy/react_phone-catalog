@@ -1,13 +1,11 @@
 type Props = {
-  title: string,
+  title: string;
 };
-export const ErrorMessage:React.FC<Props> = ({
-  title,
-}) => {
+export const ErrorMessage: React.FC<Props> = ({ title }) => {
   return (
     <h1
       style={{
-        paddingTop: '24px',
+        paddingTop: '24px'
       }}
     >
       {title}

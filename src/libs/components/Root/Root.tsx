@@ -30,16 +30,16 @@ export const Root = () => {
   }, [dispatch]);
 
   return (
-    <div className="app">
-      <Header classNames="app__header" />
+    <div className='app'>
+      <Header classNames='app__header' />
 
-      <main className="main">
-        <div className="main__container">
+      <main className='main'>
+        <div className='main__container'>
           <Outlet />
         </div>
       </main>
 
-      <Footer classNames="app__footer" />
+      <Footer classNames='app__footer' />
     </div>
   );
 };
