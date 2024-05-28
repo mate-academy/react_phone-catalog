@@ -1,4 +1,5 @@
 import './App.scss';
+import { Footer } from './components/footer';
 import { Header } from './components/header';
 import { Main } from './components/main';
 
@@ -7,5 +8,6 @@ export const App = () => (
     <Header />
     <h1 className="app__title">Product Catalog</h1>
     <Main />
+    <Footer />
   </div>
 );

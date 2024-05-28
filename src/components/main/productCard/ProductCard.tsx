@@ -10,17 +10,11 @@ interface Props {
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const {
     capacity,
-    // category,
-    // color,
     fullPrice,
-    // id,
-    // image,
-    // itemId,
     name,
     price,
     ram,
     screen,
-    // year,
   } = product;
   return (
     <div className={styles['productCard']}>
