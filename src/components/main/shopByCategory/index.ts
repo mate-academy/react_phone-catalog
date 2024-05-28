@@ -1,1 +1,1 @@
-export { shopByCategory } from './shopByCategory';
+export { ShopByCategory } from './shopByCategory';
