@@ -1,0 +1,36 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    margin-bottom: 10px;
+
+    &__img {
+      width: 100%;
+      transition: opacity 1s ease;
+    }
+  }
+
+  &__thumbnail {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  overflow: hidden;
+
+    &__img {
+      max-width: 300px;
+      transition: opacity 1s ease;
+
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.5;
+      }
+    }
+  }
+}
+
+.fade-out {
+  opacity: 0;
+}

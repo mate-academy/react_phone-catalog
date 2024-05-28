@@ -1,0 +1,149 @@
+.footer {
+  background-color: $accent-color;
+  gap: 16px;
+  margin-top: 100px;
+
+  &__content {
+    height: 500px;
+
+    @include mobile {
+      height: 430px;
+    }
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding-block: 54px;
+  }
+
+  &__about-me {
+    &__title {
+      font-family: $g-font;
+      font-weight: 500;
+
+      @include mobile {
+        font-size: 24px;
+      }
+
+      font-size: 28px;
+
+      @include mobile {
+        margin-bottom: 30px;
+      }
+
+      @include tablet {
+        margin-bottom: 15px;
+      }
+
+      color: #000;
+
+      @include mobile {
+        text-align: center;
+      }
+    }
+
+    &__list {
+      display: flex;
+
+      @include tablet {
+        gap: 16px;
+      }
+
+      @include mobile {
+        justify-content: center;
+        gap: 15px;
+      }
+    }
+
+    &__item {
+      display: flex;
+    }
+
+    &__link {
+      display: flex;
+      transition: transform 0.5s ease;
+
+      &:hover {
+        transform: scale(1.04);
+      }
+    }
+
+    &__img {
+      width: 44px;
+    }
+  }
+
+  &__accepted-pay {
+    display: flex;
+    justify-content: space-between;
+
+    @include mobile {
+      flex-direction: column;
+
+      @include mobile {
+        gap: 30px;
+      }
+
+      @include tablet {
+        gap: 15px;
+      }
+    }
+
+    margin-top: 60px;
+    padding-top: 15px;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: black;
+      box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.3);
+      transform: translateY(-50%);
+    }
+
+    &-text {
+      font-family: $g-font;
+
+      @include mobile {
+        font-size: 14px;
+      }
+
+      font-size: 18px;
+      color: #000;
+    }
+
+    &__list {
+      display: flex;
+
+      @include tablet {
+        gap: 50px;
+      }
+
+      @include mobile {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      &__img {
+        width: 44px;
+      }
+    }
+  }
+
+  &__copyright {
+    background-color: #0b0b0b;
+
+    padding: 10px 0;
+
+    &__text {
+      font-family: $g-font;
+      font-size: 13px;
+      color: #fff;
+    }
+  }
+}

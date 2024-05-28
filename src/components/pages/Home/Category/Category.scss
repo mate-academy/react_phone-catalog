@@ -1,0 +1,54 @@
+.category {
+  display: flex;
+  flex-direction: column;
+
+  &__img {
+    display: block;
+
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    object-position: bottom;
+    
+    border-radius: 20px;
+    transition: transform ease-in-out 0.3s;
+
+    &:hover {
+      transform: scale(1.01);
+    }
+
+    @include mobile {
+      max-width: 488px;
+      width: 100%;
+      max-height: 488px;
+      height: 100%;
+    }
+  }
+
+  &__title {
+    font-family: $g-font;
+    color: #000;
+    text-transform: uppercase;
+
+    font-size: 16px;
+
+    @include tablet {
+      font-size: 20px;
+    }
+
+    font-weight: 500;
+    margin: 24px 0 8px;
+  }
+
+  &__info {
+    font-family: $g-font;
+
+    font-size: 12px;
+
+    @include tablet {
+      font-size: 14px;
+    }
+
+    font-weight: 400;
+    color: #89939a;
+  }
+}

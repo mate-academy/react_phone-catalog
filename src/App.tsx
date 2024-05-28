@@ -1,7 +1,62 @@
-import './App.scss';
+import React, {useEffect} from "react";
+import {Outlet} from "react-router-dom";
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+import {Header} from "./components/Header/Header";
+import {Footer} from "./components/Footer/Footer";
+
+import {actions as productsActions} from "./features/productsSlice";
+import {actions as categoriesActions} from "./features/categoriesSlice";
+import {useAppDispatch} from "./app/hooks";
+
+export const App: React.FC = () => {
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    const fetchCategories = async () => {
+      try {
+        const response = await fetch("/api/categories.json");
+        const localCategories = await response.json();
+
+        dispatch(categoriesActions.setCategories(localCategories));
+      } catch (error) {
+        return;
+      }
+    };
+
+    const fetchPhones = async () => {
+      try {
+        const response = await fetch("/api/phones.json");
+        const localPhones = await response.json();
+
+        dispatch(productsActions.setPhones(localPhones));
+      } catch (error) {
+        return;
+      }
+    };
+
+    const fetchTablets = async () => {
+      try {
+        const response = await fetch("/api/tablets.json");
+        const localTablets = await response.json();
+
+        dispatch(productsActions.setTablets(localTablets));
+      } catch (error) {
+        return;
+      }
+    };
+
+    fetchCategories();
+    fetchPhones();
+    fetchTablets();
+  });
+
+  return (
+    <div className="page_wrapper">
+      <Header />
+      <main className="main">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};

@@ -1,0 +1,22 @@
+.product-page {
+  &__cards {
+    &__list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));;
+      gap: 20px 20px;
+      width: 100%;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__counter {
+    font-size: 14px;
+    font-family: $g-font;
+    font-weight: 500;
+    color: #89939A
+  }
+}

@@ -1,0 +1,92 @@
+.card {
+  font-family: $g-font;
+
+  display: grid;
+  row-gap: 10px;
+
+  &__link {
+    text-decoration: none;
+    display: flex;
+    height: 100%;
+  }
+
+  padding: 32px;
+  box-sizing: border-box;
+
+  transition: box-shadow ease 0.5s;
+
+  &:hover {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  &__img {
+    display: block;
+
+    min-height: 149px;
+    max-height: 269px;
+    max-width: 201px;
+  }
+
+  &__title {
+    color: #000;
+    text-transform: uppercase;
+    font-size: 15px;
+
+    @include tablet {
+      font-size: 16px;
+    }
+
+    font-weight: 500;
+
+    line-height: 24px;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+    padding-block: 8px;
+    border-top: 1px solid #e2e6e9;
+
+    &__props,
+    &__values {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__prop,
+    &__val {
+      font-family: $g-font;
+      font-size: 12px;
+      font-weight: 400;
+    }
+
+    &__prop {
+      color: #89939a;
+    }
+
+    &__val {
+      color: #000;
+      text-align: end;
+      font-weight: 500;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &__price {
+      font-family: $g-font;
+      font-size: 20px;
+
+      @include tablet {
+        font-size: 23px;
+      }
+
+      font-weight: 400;
+      color: #000;
+    }
+  }
+}
