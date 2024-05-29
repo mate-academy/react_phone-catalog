@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import cn from 'classnames';
 import { CartContext } from '../../context/AppContext';
@@ -25,20 +25,84 @@ export const ProductDetailsPage: React.FC = () => {
   );
   const [displayedProduct, setDisplayedProduct] =
     useState<DetailedProduct | null>(null);
-  const [activeImage, setActiveImage] = useState<string>(
-    displayedProduct?.images[0] ?? '',
-  );
   const [isLoadingProduct, setIsLoadingProduct] = useState<boolean | null>(
     null,
   );
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
 
   // Context
   const { cartProducts, addToCart, removeFromCart } = useContext(CartContext);
   const { favoriteProducts, addToFavorites } = useContext(FavoritesContext);
 
+  const moveToNextSlide = useCallback(() => {
+    if (!!displayedProduct) {
+      setCurrentImageIndex((currentIndex: number) => {
+        return currentIndex === displayedProduct.images.length - 1
+          ? 0
+          : currentIndex + 1;
+      });
+    }
+  }, [displayedProduct]);
+
+  const moveToPreviousSlide = useCallback(() => {
+    if (!!displayedProduct) {
+      setCurrentImageIndex((currentIndex: number) => {
+        return currentIndex === 0
+          ? displayedProduct.images.length - 1
+          : currentIndex - 1;
+      });
+    }
+  }, [displayedProduct]);
+
+  const pictureElement = useRef<HTMLImageElement>(null);
+
+  useEffect(() => {
+    const pictureElementCopy = pictureElement;
+
+    let touchstartX = 0;
+    let touchendX = 0;
+
+    function checkDirection() {
+      if (touchendX < touchstartX) {
+        moveToNextSlide();
+      }
+
+      if (touchendX > touchstartX) {
+        moveToPreviousSlide();
+      }
+    }
+
+    const handleTouchStart = (e: TouchEvent) => {
+      touchstartX = e.changedTouches[0].screenX;
+    };
+
+    pictureElementCopy.current?.addEventListener(
+      'touchstart',
+      handleTouchStart,
+    );
+
+    const handleTouchEnd = (e: TouchEvent) => {
+      touchendX = e.changedTouches[0].screenX;
+      checkDirection();
+    };
+
+    pictureElementCopy.current?.addEventListener('touchend', handleTouchEnd);
+
+    return () => {
+      pictureElementCopy.current?.removeEventListener(
+        'touchstart',
+        handleTouchStart,
+      );
+      pictureElementCopy.current?.removeEventListener(
+        'touchend',
+        handleTouchEnd,
+      );
+    };
+  }, [moveToNextSlide, moveToPreviousSlide]);
+
   useEffect(() => {
     if (!!displayedProduct) {
-      setActiveImage(displayedProduct.images[0]);
+      setCurrentImageIndex(0);
     }
   }, [displayedProduct]);
 
@@ -98,6 +162,8 @@ export const ProductDetailsPage: React.FC = () => {
     description,
   } = displayedProduct;
 
+  const productImages = Array.from(Array(images.length).keys());
+
   const productInfo = ['screen', 'resolution', 'processor', 'ram'];
 
   const isProductInCart = foundProduct
@@ -148,20 +214,22 @@ export const ProductDetailsPage: React.FC = () => {
             <div className="product-images product-content__images">
               <img
                 className="product-images__main-image"
-                src={'./' + activeImage}
+                ref={pictureElement}
+                src={'./' + images[currentImageIndex]}
                 alt="Product image"
               />
 
               <ul className="images-list product-images__images-list">
-                {images.map((image: string) => (
-                  <li key={image} className="images-list__element">
+                {productImages.map((imageIndex: number) => (
+                  <li key={imageIndex} className="images-list__element">
                     <img
                       className={cn('images-list__image', {
-                        'images-list__image--active': image === activeImage,
+                        'images-list__image--active':
+                          imageIndex === currentImageIndex,
                       })}
-                      src={'./' + image}
+                      src={'./' + images[imageIndex]}
                       alt="product image"
-                      onClick={() => setActiveImage(image)}
+                      onClick={() => setCurrentImageIndex(imageIndex)}
                     />
                   </li>
                 ))}
