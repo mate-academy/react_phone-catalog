@@ -43,7 +43,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <main className="cart-page">
-      <section className="cart-page__top section">
+      <section className="cart-page__top section--full-width">
         <BackLink />
         <h1 className="cart-page__title title--1">Cart</h1>
       </section>
@@ -52,7 +52,7 @@ export const CartPage: React.FC = () => {
         <p className="cart-page__empty body-text--14">Your cart is empty</p>
       ) : (
         <>
-          <section className="cart-page__items section">
+          <section className="cart-page__items section--full-width">
             {products.map((item: CartProduct) => {
               return (
                 <div style={{ display: 'flex' }} key={item.product.id}>
@@ -61,25 +61,25 @@ export const CartPage: React.FC = () => {
               );
             })}
           </section>
-          <section className="cart-total cart-page__total">
-            <div className="cart-total__top">
-              <h2 className="cart-total__amount">${totalAmount}</h2>
-              <p className="cart-total__item-count body-text--14">
-                Total for {totalItemsQuantity} item
-                {totalItemsQuantity !== 1 ? 's' : ''}
-              </p>
+          <section className="cart-page__total section--full-width">
+            <div className="cart-total">
+              <div className="cart-total__top">
+                <h2 className="cart-total__amount">${totalAmount}</h2>
+                <p className="cart-total__item-count body-text--14">
+                  Total for {totalItemsQuantity} item
+                  {totalItemsQuantity !== 1 ? 's' : ''}
+                </p>
+              </div>
+              <hr className="cart-total__divider" />
+              <button
+                className="cart-total__checkout button-dark"
+                onClick={() => {
+                  setIsShowingModal(true);
+                }}
+              >
+                Checkout
+              </button>
             </div>
-
-            <hr className="cart-total__divider" />
-
-            <button
-              className="cart-total__checkout button-dark"
-              onClick={() => {
-                setIsShowingModal(true);
-              }}
-            >
-              Checkout
-            </button>
           </section>
 
           {isShowingModal && (
