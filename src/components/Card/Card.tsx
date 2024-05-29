@@ -44,7 +44,7 @@ export const Card: React.FC<Props> = ({product}) => {
   const setSelectedProduct = useCallback(() => {
     dispatch(selectedProductActions.addProduct(product));
   }, []);
-
+  
   return (
     <Link
       className="card__link"

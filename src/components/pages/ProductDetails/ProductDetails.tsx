@@ -10,7 +10,7 @@ import {AboutProduct} from "./AboutProduct/AboutProduct";
 import {colorExtractor} from "../../../services/colorExtractor";
 import {capacityExtractor} from "../../../services/capacityExtractor";
 import {useMediaQuery} from "react-responsive";
-import {Banner} from "../Home/Banner/Banner";
+import {Slicer} from "../Home/Slicer/Slicer";
 import {imagesExtractor} from "../../../services/imagesExtractor";
 
 export const ProductDetails: React.FC = () => {
@@ -60,7 +60,7 @@ export const ProductDetails: React.FC = () => {
 
         <div className="content__top">
           <div className="content__top__left">
-            {isMobile ? <Banner pictures={productPictures} /> : <Gallery />}
+            {isMobile ? <Slicer pictures={productPictures} /> : <Gallery />}
           </div>
 
           <div className="content__top__right">

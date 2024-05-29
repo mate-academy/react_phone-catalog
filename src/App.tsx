@@ -5,24 +5,12 @@ import {Header} from "./components/Header/Header";
 import {Footer} from "./components/Footer/Footer";
 
 import {actions as productsActions} from "./features/productsSlice";
-import {actions as categoriesActions} from "./features/categoriesSlice";
 import {useAppDispatch} from "./app/hooks";
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const fetchCategories = async () => {
-      try {
-        const response = await fetch("/api/categories.json");
-        const localCategories = await response.json();
-
-        dispatch(categoriesActions.setCategories(localCategories));
-      } catch (error) {
-        return;
-      }
-    };
-
     const fetchPhones = async () => {
       try {
         const response = await fetch("/api/phones.json");
@@ -45,7 +33,6 @@ export const App: React.FC = () => {
       }
     };
 
-    fetchCategories();
     fetchPhones();
     fetchTablets();
   });

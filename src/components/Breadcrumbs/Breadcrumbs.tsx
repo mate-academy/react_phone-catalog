@@ -28,7 +28,7 @@ export const Breadcrumbs: React.FC = () => {
   return (
     <div className="breadcrumbs__wrapper">
       <Link className="breadcrumbs__link" to="/">
-        <img src={"/img/icons/home.svg"} />
+        <img src="../img/icons/home.svg" />
       </Link>
 
       {formatedPath.map((segment, index) => {
@@ -41,7 +41,7 @@ export const Breadcrumbs: React.FC = () => {
             <span className="breadcrumbs__segment">
               <img
                 className="breadcrumbs__img"
-                src={"/img/banner/icons/arrow.svg"}
+                src="../img/promo/icons/arrow.svg"
               />
             </span>
             {isLast ? (

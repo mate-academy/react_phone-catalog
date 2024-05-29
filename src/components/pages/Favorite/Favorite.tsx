@@ -19,7 +19,7 @@ export const Favorite: React.FC = () => {
     <div className="container">
       <div className="page__nav">
         <NavLink to="" onClick={handleGoBack} className="page__nav-link">
-          <img src={"/img/icons/arrow.svg"} alt="" />
+          <img src="../../../img/icons/arrow.svg" alt="" />
           Back
         </NavLink>
       </div>

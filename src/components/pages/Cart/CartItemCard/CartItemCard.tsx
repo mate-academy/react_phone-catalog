@@ -55,7 +55,7 @@ export const CartItemCard: React.FC<Props> = ({product}) => {
                 className="cart__card__table__remove-btn"
                 onClick={() => handleRemove()}
               >
-                <img src="img/icons/trash.svg" alt="" />
+                <img src="../img/icons/trash.svg" alt="" />
               </button>
             </td>
 
@@ -67,7 +67,7 @@ export const CartItemCard: React.FC<Props> = ({product}) => {
                   onClick={() => handleDecQuantity()}
                   disabled={quantity === 1}
                 >
-                  <img width={16} src="img/icons/minus.svg" alt="minus" />
+                  <img width={16} src="../img/icons/minus.svg" alt="minus" />
                 </button>
 
                 <input type="number" value={quantity} />
@@ -76,7 +76,7 @@ export const CartItemCard: React.FC<Props> = ({product}) => {
                   className="cart__card__table__inc"
                   onClick={() => handleIncQuantity()}
                 >
-                  <img width={16} src="img/icons/plus.svg" alt="plus" />
+                  <img width={16} src="../img/icons/plus.svg" alt="plus" />
                 </button>
               </div>
 

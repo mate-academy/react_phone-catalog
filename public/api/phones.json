@@ -14,8 +14,8 @@
       "1TB": 1699
     },
     "image": {
-      "titanium": "/img/card/15_pro/ti.jpeg",
-      "blue": "/img/card/15_pro/tb.webp"
+      "titanium": "../../img/card/15_pro/ti.jpeg",
+      "blue": "../../img/card/card/15_pro/tb.webp"
     },
     "color": "titanium",
     "colorsAvailable": ["titanium", "blue"],
@@ -26,16 +26,16 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "titanium": [
-        "/img/gallery/15_pro/titan/t-1.webp",
-        "/img/gallery/15_pro/titan/t-2.webp",
-        "/img/gallery/15_pro/titan/t-3.webp",
-        "/img/gallery/15_pro/titan/t-4.webp"
+        "../../../../img/gallery/15_pro/titan/t-1.webp",
+        "../../../../img/gallery/15_pro/titan/t-2.webp",
+        "../../../../img/gallery/15_pro/titan/t-3.webp",
+        "../../../../img/gallery/15_pro/titan/t-4.webp"
       ],
       "blue": [
-        "/img/gallery/15_pro/blue/tb-1.webp",
-        "/img/gallery/15_pro/blue/tb-2.webp",
-        "/img/gallery/15_pro/blue/tb-3.webp",
-        "/img/gallery/15_pro/blue/tb-4.webp"
+        "../../../../img/gallery/15_pro/blue/tb-1.webp",
+        "../../../../img/gallery/15_pro/blue/tb-2.webp",
+        "../../../../img/gallery/15_pro/blue/tb-3.webp",
+        "../../../../img/gallery/15_pro/blue/tb-4.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -80,7 +80,7 @@
       "1TB": 1699
     },
     "image": {
-      "pink": "/img/card/15/1.jpeg"
+      "pink": "../../img/card/15/1.jpeg"
     },
     "color": "pink",
     "colorsAvailable": ["pink"],
@@ -90,9 +90,9 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "pink": [
-        "/img/gallery/15/pink/p1.webp",
-        "/img/gallery/15/pink/p2.webp",
-        "/img/gallery/15/pink/p3.webp"
+        "../../../../img/gallery/15/pink/p1.webp",
+        "../../../../img/gallery/15/pink/p2.webp",
+        "../../../../img/gallery/15/pink/p3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -137,7 +137,7 @@
       "1TB": 1699
     },
     "image": {
-      "purple": "/img/card/14/p.webp"
+      "purple": "../../img/card/14/p.webp"
     },
     "color": "purple",
     "colorsAvailable": ["purple"],
@@ -147,9 +147,9 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "purple": [
-        "/img/gallery/14/purp-1.webp",
-        "/img/gallery/14/purp-2.webp",
-        "/img/gallery/14/purp-3.webp"
+        "../../../../img/gallery/14/purp-1.webp",
+        "../../../../img/gallery/14/purp-2.webp",
+        "../../../../img/gallery/14/purp-3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -194,8 +194,8 @@
       "1TB": 1299
     },
     "image": {
-      "black": "/img/card/se/b.webp",
-      "white": "/img/card/se/w.webp"
+      "black": "../../img/card/se/b.webp",
+      "white": "../../img/card/se/w.webp"
     },
     "color": "black",
     "hex": {
@@ -206,14 +206,14 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "black": [
-        "/img/gallery/se/black/b1.webp",
-        "/img/gallery/se/black/b2.webp",
-        "/img/gallery/se/black/b3.webp"
+        "../../../../img/gallery/se/black/b1.webp",
+        "../../../../img/gallery/se/black/b2.webp",
+        "../../../../img/gallery/se/black/b3.webp"
       ],
       "white": [
-        "/img/gallery/se/white/w1.webp",
-        "/img/gallery/se/white/w2.webp",
-        "/img/gallery/se/white/w3.webp"
+        "../../../../img/gallery/se/white/w1.webp",
+        "../../../../img/gallery/se/white/w2.webp",
+        "../../../../img/gallery/se/white/w3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -258,8 +258,8 @@
       "1TB": 1299
     },
     "image": {
-      "green": "/img/card/13/g.png",
-      "red": "/img/card/13/r.png"
+      "green": "../../img/card/13/g.png",
+      "red": "../../img/card/13/r.png"
     },
     "color": "green",
     "hex": {
@@ -270,14 +270,14 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "green": [
-        "/img/gallery/green/g-1.webp",
-        "/img/gallery/green/g-2.webp",
-        "/img/gallery/green/g-3.webp"
+        "../../../../img/gallery/green/g-1.webp",
+        "../../../../img/gallery/green/g-2.webp",
+        "../../../../img/gallery/green/g-3.webp"
       ],
       "red": [
-        "/img/gallery/red/r-1.webp",
-        "/img/gallery/red/r-2.webp",
-        "/img/gallery/red/r-3.webp"
+        "../../../../img/gallery/red/r-1.webp",
+        "../../../../img/gallery/red/r-2.webp",
+        "../../../../img/gallery/red/r-3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -322,8 +322,8 @@
       "1TB": 1699
     },
     "image": {
-      "titanium": "/img/card/15_pro/ti.jpeg",
-      "blue": "/img/card/15_pro/tb.webp"
+      "titanium": "../../img/card/15_pro/ti.jpeg",
+      "blue": "../../img/card/15_pro/tb.webp"
     },
     "color": "titanium",
     "colorsAvailable": ["titanium", "blue"],
@@ -334,16 +334,16 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "titanium": [
-        "/img/gallery/15_pro/titan/t-1.webp",
-        "/img/gallery/15_pro/titan/t-2.webp",
-        "/img/gallery/15_pro/titan/t-3.webp",
-        "/img/gallery/15_pro/titan/t-4.webp"
+        "../../../../img/gallery/15_pro/titan/t-1.webp",
+        "../../../../img/gallery/15_pro/titan/t-2.webp",
+        "../../../../img/gallery/15_pro/titan/t-3.webp",
+        "../../../../img/gallery/15_pro/titan/t-4.webp"
       ],
       "blue": [
-        "/img/gallery/15_pro/blue/tb-1.webp",
-        "/img/gallery/15_pro/blue/tb-2.webp",
-        "/img/gallery/15_pro/blue/tb-3.webp",
-        "/img/gallery/15_pro/blue/tb-4.webp"
+        "../../../../img/gallery/15_pro/blue/tb-1.webp",
+        "../../../../img/gallery/15_pro/blue/tb-2.webp",
+        "../../../../img/gallery/15_pro/blue/tb-3.webp",
+        "../../../../img/gallery/15_pro/blue/tb-4.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -388,7 +388,7 @@
       "1TB": 1699
     },
     "image": {
-      "pink": "/img/card/15/1.jpeg"
+      "pink": "../../img/card/15/1.jpeg"
     },
     "color": "pink",
     "colorsAvailable": ["pink"],
@@ -398,9 +398,9 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "pink": [
-        "/img/gallery/15/pink/p1.webp",
-        "/img/gallery/15/pink/p2.webp",
-        "/img/gallery/15/pink/p3.webp"
+        "../../../../img/gallery/15/pink/p1.webp",
+        "../../../../img/gallery/15/pink/p2.webp",
+        "../../../../img/gallery/15/pink/p3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -445,7 +445,7 @@
       "1TB": 1699
     },
     "image": {
-      "purple": "/img/card/14/p.webp"
+      "purple": "../../img/card/14/p.webp"
     },
     "color": "purple",
     "colorsAvailable": ["purple"],
@@ -455,9 +455,9 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "purple": [
-        "/img/gallery/14/purp-1.webp",
-        "/img/gallery/14/purp-2.webp",
-        "/img/gallery/14/purp-3.webp"
+        "../../../../img/gallery/14/purp-1.webp",
+        "../../../../img/gallery/14/purp-2.webp",
+        "../../../../img/gallery/14/purp-3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -502,8 +502,8 @@
       "1TB": 1299
     },
     "image": {
-      "black": "/img/card/se/b.webp",
-      "white": "/img/card/se/w.webp"
+      "black": "../../img/card/se/b.webp",
+      "white": "../../img/card/se/w.webp"
     },
     "color": "black",
     "hex": {
@@ -514,14 +514,14 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "black": [
-        "/img/gallery/se/black/b1.webp",
-        "/img/gallery/se/black/b2.webp",
-        "/img/gallery/se/black/b3.webp"
+        "../../../../img/gallery/se/black/b1.webp",
+        "../../../../img/gallery/se/black/b2.webp",
+        "../../../../img/gallery/se/black/b3.webp"
       ],
       "white": [
-        "/img/gallery/se/white/w1.webp",
-        "/img/gallery/se/white/w2.webp",
-        "/img/gallery/se/white/w3.webp"
+        "../../../../img/gallery/se/white/w1.webp",
+        "../../../../img/gallery/se/white/w2.webp",
+        "../../../../img/gallery/se/white/w3.webp"
       ]
     },
     "resolution": "2532x1170",
@@ -566,8 +566,8 @@
       "1TB": 1299
     },
     "image": {
-      "green": "/img/card/13/g.png",
-      "red": "/img/card/13/r.png"
+      "green": "../../img/card/13/g.png",
+      "red": "../../img/card/13/r.png"
     },
     "color": "green",
     "hex": {
@@ -578,14 +578,14 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "green": [
-        "/img/gallery/green/g-1.webp",
-        "/img/gallery/green/g-2.webp",
-        "/img/gallery/green/g-3.webp"
+        "../../../../img/gallery/green/g-1.webp",
+        "../../../../img/gallery/green/g-2.webp",
+        "../../../../img/gallery/green/g-3.webp"
       ],
       "red": [
-        "/img/gallery/red/r-1.webp",
-        "/img/gallery/red/r-2.webp",
-        "/img/gallery/red/r-3.webp"
+        "../../../../img/gallery/red/r-1.webp",
+        "../../../../img/gallery/red/r-2.webp",
+        "../../../../img/gallery/red/r-3.webp"
       ]
     },
     "resolution": "2532x1170",

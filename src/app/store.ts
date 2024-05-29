@@ -1,8 +1,6 @@
 import {configureStore} from "@reduxjs/toolkit";
 
 import {reducer as productsReducer} from "../features/productsSlice";
-import {reducer as bannersReducer} from "../features/bannersSlice";
-import {reducer as categoriesReducer} from "../features/categoriesSlice";
 import {reducer as cartReducer} from "../features/cartSlice";
 import {reducer as favoriteReducer} from "../features/favoriteSlice";
 import {reducer as selectedProductReducer} from "../features/selectedProductSlice";
@@ -50,9 +48,7 @@ const persistedState = loadState();
 
 export const store = configureStore({
   reducer: {
-    banners: bannersReducer,
     products: productsReducer,
-    categories: categoriesReducer,
     cart: cartReducer,
     favorite: favoriteReducer,
     selectedProduct: selectedProductReducer,

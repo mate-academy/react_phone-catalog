@@ -46,19 +46,21 @@ export const Cart: React.FC = () => {
       <div className="cart__content">
         {!products.length ? (
           <div className="cart__content__empty">
-            <p className="cart__content__empty-text">
-              The art of minimalism in your cart has reached its apogee
-              <br />
-              <span className="cart__content__emptytext-custom">
-                Maybe we should disturb this calm a bit?
-              </span>
-            </p>
+
 
             <img
               className="cart__content__empty-img"
               src={"/img/cart/cart.png"}
               alt=""
             />
+
+<p className="cart__content__empty-text">
+              The art of minimalism in your cart has reached its apogee
+              <br />
+              <span className="cart__content__emptytext-custom">
+                Maybe we should disturb this calm a bit?
+              </span>
+            </p>
 
             <Link to="/" className="custom__link-btn">
               Continue Shoping

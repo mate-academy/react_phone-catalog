@@ -14,8 +14,8 @@
       "1TB": 1299
     },
     "image": {
-      "blue": "/img/card/ipad/b.webp",
-      "yellow": "/img/card/ipad/y.webp"
+      "blue": "../../img/card/ipad/b.webp",
+      "yellow": "../../img/card/ipad/y.webp"
     },
     "color": "blue",
     "colorsAvailable": ["blue", "yellow"],
@@ -26,14 +26,14 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "blue": [
-        "/img/gallery/ipad/blue/b1.jpeg",
-        "/img/gallery/ipad/blue/b2.jpeg",
-        "/img/gallery/ipad/blue/b3.jpeg"
+        "../../../../img/gallery/ipad/blue/b1.jpeg",
+        "../../../../img/gallery/ipad/blue/b2.jpeg",
+        "../../../../img/gallery/ipad/blue/b3.jpeg"
       ],
       "yellow": [
-        "/img/gallery/ipad/yellow/y1.jpeg",
-        "/img/gallery/ipad/yellow/y2.jpeg",
-        "/img/gallery/ipad/yellow/y3.jpeg"
+        "../../../../img/gallery/ipad/yellow/y1.jpeg",
+        "../../../../img/gallery/ipad/yellow/y2.jpeg",
+        "../../../../img/gallery/ipad/yellow/y3.jpeg"
       ]
     },
     "resolution": "2532x1170",
@@ -78,7 +78,7 @@
       "1TB": 1299
     },
     "image": {
-      "pink": "/img/card/ipad_mini/m1.webp"
+      "pink": "../../img/card/ipad_mini/m1.webp"
     },
     "color": "pink",
     "colorsAvailable": ["pink"],
@@ -88,9 +88,9 @@
     "capacityAvailable": ["256GB", "512GB", "1TB"],
     "images": {
       "pink": [
-        "/img/gallery/ipad_mini/m1.jpeg",
-        "/img/gallery/ipad_mini/m2.jpeg",
-        "/img/gallery/ipad_mini/m3.jpeg"
+        "../../../../img/gallery/ipad_mini/m1.jpeg",
+        "../../../../img/gallery/ipad_mini/m2.jpeg",
+        "../../../../img/gallery/ipad_mini/m3.jpeg"
       ]
     },
     "resolution": "2532x1170",
