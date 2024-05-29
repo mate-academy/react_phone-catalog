@@ -101,12 +101,12 @@ export const ProductSlider: React.FC<Props> = ({
           <span className="cards__container">
             <ProductCard hasDiscount={hasDiscount} product={currentProduct} />
           </span>
-          {activeSlide < 6 && (
+          {activeSlide < 7 && (
             <span className="cards__container">
               <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
             </span>
           )}
-          {activeSlide < 7 && (
+          {activeSlide < 6 && (
             <span className="cards__container">
               <ProductCard hasDiscount={hasDiscount} product={lastProduct} />
             </span>

@@ -13,10 +13,24 @@
   gap: 56px;
 
   box-sizing: border-box;
-  padding: 0 16px;
+
+  overflow: hidden;
 
   &__section {
     width: 100%;
+  }
+}
+
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  padding: 0 16px;
+  box-sizing: border-box;
+
+  &--full-width {
+    padding: 0;
   }
 }
 
@@ -77,12 +91,6 @@
   font-weight: 600;
   line-height: 15.34px;
   text-align: left;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
 }
 
 .default-button-text {

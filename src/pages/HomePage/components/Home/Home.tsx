@@ -18,11 +18,11 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="main__section">
+      <section className="main__section section section--full-width">
         <ProductSlider hasNewestProducts={true} title="Brand new models" />
       </section>
 
-      <section className="category-section main__section">
+      <section className="category-section main__section section">
         <h2 className="category-section__title">Shop by category</h2>
 
         <div className="category-section__content">
@@ -30,7 +30,7 @@ export const Home: React.FC = () => {
         </div>
       </section>
 
-      <section className="main__section">
+      <section className="main__section section section--full-width">
         <ProductSlider title="Hot prices" hasDiscount={true} />
       </section>
     </main>

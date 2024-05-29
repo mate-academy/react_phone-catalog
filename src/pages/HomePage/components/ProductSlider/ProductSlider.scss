@@ -15,15 +15,18 @@
   row-gap: 24px;
   overflow: hidden;
 
-  &__top {
-    grid-column: 1 / 5;
-  }
+  // &__top {
+  //   grid-column: 1 / 5;
+  // }
 }
 
 .slider-top {
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  box-sizing: border-box;
+  padding: 0 16px;
 
   &__title {
     // width: 136px;
@@ -58,4 +61,10 @@
   display: flex;
   flex-wrap: nowrap;
   gap: 16px;
+
+  padding: 0 0 0 16px;
+
+  &__container {
+    width: 212px;
+  }
 }
