@@ -7,6 +7,7 @@
   left: 0;
 
   background-color: $color-white;
+  z-index: 10;
 }
 
 .header-nav {
@@ -143,6 +144,8 @@
     color: $color-secondary;
     text-transform: uppercase;
     text-decoration: none;
+
+    transition: all 0.5s;
 
     &:hover {
       color: $color-primary;
