@@ -30,8 +30,6 @@ export const PicturesSlider = () => {
 
   const slideList = [1, 2, 3];
 
-  // ---------------
-
   const slider = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
