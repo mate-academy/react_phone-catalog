@@ -1,5 +1,6 @@
 import { Navigation, A11y } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useEffect, useRef, useState } from 'react';
 
 import { Card } from '../Card';
 import { Product } from '../../types/Product';
@@ -19,27 +20,40 @@ export const ProductsSlider: React.FC<Props> = ({ items, title }) => {
     1136: { slidesPerView: 4 },
   };
 
+  const elementRef = useRef<HTMLDivElement | null>(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (elementRef.current) {
+      setHeight(elementRef.current.offsetHeight);
+    }
+  }, []);
+
   return (
     <section className={classes.ProductsSlider}>
       <h2 className={classes.ProductsSlider__title}>{title}</h2>
-
-      <Swiper
-        className={classes.ProductsSlider__container}
-        modules={[Navigation, A11y]}
-        spaceBetween={16}
-        slidesPerView={1}
-        breakpoints={swiperBreakpoints}
-        navigation
-        pagination={{ clickable: true }}
-        scrollbar={{ draggable: true }}
-      >
-        {items.map(item => (
-          <SwiperSlide key={+item.id} className={classes.ProductsSlider__slide}>
-            <Card product={item} />
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <h2 className={classes.ProductsSlider__title}>{title}</h2>
+      <div ref={elementRef}>
+        <Swiper
+          className={classes.ProductsSlider__container}
+          modules={[Navigation, A11y]}
+          spaceBetween={16}
+          slidesPerView={1}
+          breakpoints={swiperBreakpoints}
+          navigation
+          pagination={{ clickable: true }}
+          scrollbar={{ draggable: true }}
+        >
+          {items.map(item => (
+            <SwiperSlide
+              key={+item.id}
+              className={classes.ProductsSlider__slide}
+              style={{ height: height ? height : 'min-content' }}
+            >
+              <Card product={item} />
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </section>
   );
 };
