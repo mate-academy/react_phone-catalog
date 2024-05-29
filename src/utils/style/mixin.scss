@@ -11,3 +11,24 @@
   justify-content: center;
   align-items: center;
 }
+
+@mixin body-text {
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-family: Mont-Regular,sans-serif;
+}
+
+@mixin button-text {
+  font-family: Mont-Semibold ,sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: Mont-Semibold,sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}

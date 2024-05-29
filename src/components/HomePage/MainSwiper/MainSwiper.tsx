@@ -35,8 +35,8 @@ const MainSwiper = () => {
         modules={[Pagination, Navigation, Autoplay]}
         className="mySwiper"
         autoplay={{
-          delay: 3000, // Delay between slides in milliseconds (3000ms = 3s)
-          disableOnInteraction: false, // Continue autoplay after user interactions
+          delay: 3000,
+          disableOnInteraction: false,
         }}
         loop={true}
       >

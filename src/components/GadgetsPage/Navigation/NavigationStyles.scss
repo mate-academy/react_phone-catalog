@@ -1,0 +1,66 @@
+@import 'src/utils/style/mixin';
+@import 'src/utils/style/variables';
+
+.navigation {
+  height: 32px;
+
+  &__buttons {
+    display: flex;
+    height: 100%;
+    gap: 16px;
+    margin-top: 40px;
+    justify-content: center;
+  }
+
+  &__prev-button {
+    border: 1px solid $Icons;
+    
+    & > img {
+      transform: rotateZ(-90deg);
+    }
+  }
+
+  &__main-buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__page {
+    border: 1px solid $Elements;
+    
+    &--active {
+      background-color: black;
+      color: white;
+
+    }
+  }
+
+  &__next-button {
+    border: 1px solid $Icons;
+
+    & > img {
+      transform: rotateZ(90deg);
+    }
+  }
+
+  &__next-button, &__prev-button, &__page{
+    border-radius: 50%;
+    width: 32px;
+    height: 100%;
+    background-color: transparent;
+   
+
+    @include center-element;
+
+    &:hover {
+      border: 1px solid black;
+      transition: border ease 0.5s;
+    }
+  }
+}
+
+.page--active {
+  background-color: black;
+  color: white;
+  
+}
