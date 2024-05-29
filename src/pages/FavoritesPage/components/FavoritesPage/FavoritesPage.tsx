@@ -13,7 +13,7 @@ export const FavoritesPage: React.FC = () => {
 
   return (
     <main className="product-page">
-      <section className="product-page__top">
+      <section className="product-page__top section">
         <nav className="product-page-nav">
           <HomeLink className="product-page-nav__home" />
 
@@ -33,7 +33,7 @@ export const FavoritesPage: React.FC = () => {
       {!favoriteProducts.length ? (
         <p className="body-text--14 product-page__empty">No favorites yet.</p>
       ) : (
-        <section className="favorites-products product-page__favorites">
+        <section className="favorites-products product-page__favorites section">
           <ProductsList products={favoriteProducts} />
         </section>
       )}

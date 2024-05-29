@@ -43,7 +43,7 @@ export const CartPage: React.FC = () => {
 
   return (
     <main className="cart-page">
-      <section className="cart-page__top">
+      <section className="cart-page__top section">
         <BackLink />
         <h1 className="cart-page__title title--1">Cart</h1>
       </section>
@@ -52,7 +52,7 @@ export const CartPage: React.FC = () => {
         <p className="cart-page__empty body-text--14">Your cart is empty</p>
       ) : (
         <>
-          <section className="cart-page__items">
+          <section className="cart-page__items section">
             {products.map((item: CartProduct) => {
               return (
                 <div style={{ display: 'flex' }} key={item.product.id}>

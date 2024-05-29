@@ -150,7 +150,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
 
   return (
     <main className="product-page">
-      <section className="product-page__top">
+      <section className="product-page__top section">
         <nav className="product-page-nav">
           <HomeLink className="product-page-nav__home" />
           <img
@@ -184,7 +184,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         </div>
       </section>
 
-      <section className="product-page__products-wrapper">
+      <section className="product-page__products-wrapper section">
         <ProductsList products={displayedProducts} />
       </section>
 

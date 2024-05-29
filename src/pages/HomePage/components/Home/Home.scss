@@ -1,6 +1,12 @@
 @use '../../../../utils/mixins' as *;
 @use '../../../../utils/variables' as *;
 
+.main {
+  &__section {
+    padding-top: 24px;
+  }
+}
+
 .section {
   width: 100%;
 
@@ -8,7 +14,7 @@
   flex-direction: column;
   gap: 24px;
 
-  padding-top: 24px;
+  // padding-top: 24px;
 
   &__title {
     font-family: $font-family;
