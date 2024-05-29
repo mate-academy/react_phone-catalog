@@ -1,19 +1,28 @@
 html {
-  --background-color: #ffffff;
+  --background-color: #fff;
   --text-color: #313237;
   --text-nav-color: #89939a;
   --border-color: #b4bdc3;
+  --button-color: #ffffff;
+  --button-slider-color: #e2e6e9;
+  --button-active-slider-color: #313237;
 
   font-family: Mont;
   font-size: 12px;
   font-weight: 800;
+  color: $text-color;
   margin: 0;
 }
 
-.dark-theme {
+.page {
+  --button-active-slider-color: #F1F2F9;
   --background-color: #161827;
   --text-color: #f1f2f9;
   --text-nav-color: #75767f;
   --border-color: #323542;
+  --button-color: #323542;
+  --button-slider-color: #3b3e4a;
   background-color: var(--background-color);
+
+  color: $text-color;
 }

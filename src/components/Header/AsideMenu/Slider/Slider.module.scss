@@ -1,0 +1,30 @@
+.slider {
+  width: 1040px;
+  height: 400px;
+  box-sizing: border-box;
+  // overflow-x: hidden;
+  display: flex;
+  justify-content: center;
+
+  &__container {
+    display: flex;
+  }
+
+  &__image {
+    width: 1040px;
+    height: 400px;
+  }
+}
+
+@media (max-width: 639px) {
+  .slider {
+    width: 592px;
+    height: 221px;
+
+    &__image {
+      margin-inline: 11px;
+      width: 490px;
+      height: 189px;
+    }
+  }
+}

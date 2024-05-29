@@ -1,0 +1,195 @@
+@use '../../styles/block/utils/variables.scss' as *;
+
+.header {
+  height: 100vh;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-sizing: border-box;
+    line-height: 11px;
+
+    height: 64px;
+    border-bottom: 1px solid $border-color;
+  }
+
+  &__leftNav {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__logo {
+    margin-left: 24px;
+    height: 28px;
+    width: 80px;
+  }
+
+  &__link {
+    display: flex;
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__actionsImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__actionsLink {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 64px;
+    width: 64px;
+    border-left: 1px solid $border-color;
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__buttonWrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 63px;
+    width: 64px;
+    border-left: 1px solid $border-color;
+  }
+
+  &__bottom {
+    margin: 0 auto;
+    max-width: 1136px;
+  }
+
+  &__bottomTitle {
+    line-height: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    margin: 56px 0 56px;
+  }
+
+  &__bottomSlider {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    width: 100%;
+    height: 432px;
+    // border: 1px solid black;
+  }
+
+  &__arrowButton {
+    height: 400px;
+    width: 40px;
+    background-color: $button-color;
+    z-index: 3;
+    border: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  &__arrowIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__containerButton {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: end;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &__smallButton {
+    height: 4px;
+    width: 14px;
+    border-radius: 0;
+    background-color: $button-slider-color;
+    border: none;
+    position: relative;
+  }
+
+  &__smallButton:not(:last-child) {
+    margin-right: 9px;
+  }
+
+  &__smallButton:before {
+    position: absolute;
+    content: '';
+    top: -15px;
+    left: -5px;
+    right: -5px;
+    bottom: -15px;
+    cursor: pointer;
+  }
+
+  &__activeButton {
+    background-color: $button-active-slider-color;
+  }
+}
+
+@media (max-width: 1199px) {
+  .header {
+    &__top {
+      height: 48px;
+    }
+
+    &__leftNav {
+      gap: 16px;
+    }
+
+    &__logo {
+      margin-left: 16px;
+      height: 22px;
+      width: 64px;
+    }
+    &__actionsLink {
+      height: 48px;
+      width: 48px;
+    }
+
+    &__bottomTitle {
+      margin: 32px 24px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .header {
+    &__actions__link {
+      height: 48px;
+      width: 48px;
+    }
+
+    &__bottom {
+      margin: 0 auto;
+      max-width: 592px;
+    }
+
+    &__bottomTitle {
+      line-height: 41px;
+      letter-spacing: -1%;
+      font-size: 32px;
+      margin: 24px 16px;
+    }
+
+    &__bottomSlider {
+
+      width: 100%;
+      height: 221px;
+    }
+
+    &__arrowButton {
+      height: 189px;
+      width: 32px;
+    }
+  }
+}

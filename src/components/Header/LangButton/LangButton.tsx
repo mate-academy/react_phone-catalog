@@ -1,8 +1,10 @@
-import { useContext } from 'react';
+import { ButtonHTMLAttributes, useContext } from 'react';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import style from './LangButton.module.scss';
 
-export const LangButton = () => {
+type Props = ButtonHTMLAttributes<HTMLButtonElement>;
+
+export const LangButton: React.FC<Props> = () => {
   const { setCurrentLanguage, changeLanguage, language, currentLanguage } =
     useContext(LanguageContext);
 
@@ -14,14 +16,12 @@ export const LangButton = () => {
   };
 
   return (
-    <div className={style.language}>
-      <button
-        type="button"
-        onClick={handleChangeLanguage}
-        className={style.language__button}
-      >
-        {language.toUpperCase()}
-      </button>
-    </div>
+    <button
+      type="button"
+      onClick={handleChangeLanguage}
+      className={style.language__button}
+    >
+      {language.toUpperCase()}
+    </button>
   );
 };

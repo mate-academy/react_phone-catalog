@@ -1,30 +1,16 @@
 import React, { createContext, useState } from 'react';
 import { Props } from '../types/ContextType/Props';
 
-enum Theme {
-  dark = 'dark-theme',
-  light = 'light-theme',
-}
-
 const ThemeContext = createContext({
-  theme: Theme.light,
+  theme: false,
   toggleTheme: () => {},
 });
 
 const ThemeProvider: React.FC<Props> = ({ children }) => {
-  const [theme, setTheme] = useState(Theme.light);
+  const [theme, setTheme] = useState(false);
 
   const toggleTheme = () => {
-    setTheme(prevTheme => {
-      switch (prevTheme) {
-        case Theme.light:
-          return Theme.dark;
-        case Theme.dark:
-          return Theme.light;
-        default:
-          return Theme.light;
-      }
-    });
+    setTheme(prevTheme => !prevTheme);
   };
 
   return (

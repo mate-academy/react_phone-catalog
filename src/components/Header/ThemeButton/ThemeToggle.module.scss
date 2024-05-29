@@ -1,40 +1,44 @@
 @use '../../../styles/block/utils/variables.scss' as *;
 
-.theme__slider {
-  background-color: $text-color;
-  position: absolute;
-  cursor: pointer;
-  inset: 0;
-  border: 1px solid $border-color;
-  border-radius: 50px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  &:before {
-    position: absolute;
-    content: '';
-    height: 100%;
-    width: 50%;
-    background-color: $background-color;
-    border-radius: inherit;
-    box-shadow: 0 0 20px $text-color;
-  }
-}
-
 .theme {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-sizing: border-box;
-  height: 64px;
-  width: 64px;
-  border-left: 1px solid $border-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
   &__switch {
+    width: 30px;
     position: relative;
     display: inline-block;
-    width: 30px;
+
     &__input {
       opacity: 0;
       width: 0;
       height: 0;
+    }
+  }
+
+  &__slider {
+    background-color: $text-color;
+    position: absolute;
+    cursor: pointer;
+    inset: 0;
+    border: 1px solid $border-color;
+    border-radius: 50px;
+    transition: all 0.4s cubic-bezier(0.17, 0.88, 0.32, 1.27);
+
+    &:before {
+      position: absolute;
+      content: '';
+      height: 100%;
+      width: 50%;
+      background-color: $background-color;
+      border-radius: inherit;
+      box-shadow: 0 0 20px $text-color;
     }
   }
 }
@@ -47,15 +51,4 @@
 .theme__input:checked + .theme__slider:before {
   background-color: $background-color;
   transform: translateX(100%);
-}
-
-@media (max-width: 1199px) {
-  .theme {
-
-    height: 48px;
-    width: 48px;
-    &__switch {
-      width: 22,5 px;
-    }
-  }
 }

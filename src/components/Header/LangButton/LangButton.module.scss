@@ -1,28 +1,15 @@
 @use '../../../styles/block/utils/variables.scss' as *;
 
-.language {
+.language__button {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 64px;
-  height: 64px;
-  border-left: 1px solid $border-color;
-  &__button {
-    color: $text-color;
-    font-weight: 700;
-    font-size: 14px;
-    background-color: $background-color;
-    border: none;
-    cursor: pointer;
-  }
-}
-
-@media (max-width: 1199px) {
-  .language {
-    width: 48px;
-    height: 48px;
-    &__button {
-      font-size: 12px;
-    }
-  }
+  height: 100%;
+  width: 100%;
+  color: $text-color;
+  font-weight: 700;
+  background-color: $background-color;
+  border: none;
+  cursor: pointer;
+  box-sizing: border-box;
 }
