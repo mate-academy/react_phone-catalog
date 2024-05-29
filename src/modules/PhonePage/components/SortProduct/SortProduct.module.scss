@@ -190,14 +190,19 @@
     border: 1px solid $border-button-color;
     padding: 10px;
     margin-bottom: 20px;
+    height: 40px;
+    width: 100%;
 
     &:focus {
       border-color: $border-button-color-hover
     }
 
+    @include onTablet {
+      width: 187px;
+    }
+
     @include onDesktop {
       width: 176px;
-      height: 40px;
     }
 
   }

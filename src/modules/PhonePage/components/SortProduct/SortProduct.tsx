@@ -58,6 +58,7 @@ export const SortProduct: React.FC = () => {
 
   const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
+
     params.set('query', e.target.value);
 
     if (e.target.value.trim() === '') {
@@ -65,7 +66,7 @@ export const SortProduct: React.FC = () => {
     }
 
     setSearchParams(params);
-  }
+  };
 
   return (
     <div className={styles.phones__page}>

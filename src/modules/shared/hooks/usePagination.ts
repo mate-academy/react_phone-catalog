@@ -29,21 +29,21 @@ const usePagination = () => {
       return arryOnPage;
     }
 
-  // const findPage = search
-  // .split('&')
-  // .filter(item => item.includes('page'))[0]
-  // .split('=')[1];
+    // const findPage = search
+    // .split('&')
+    // .filter(item => item.includes('page'))[0]
+    // .split('=')[1];
 
     // console.log(findPage)
 
-  // const findSearch = search
-  //   .split('&')
-  //   .filter(item => item.includes('query'))[0]
-  //   .split('=')[1]
-  //   .split('+').join(' ')
-  // console.log(findSearch.split('+').join(' '));
+    // const findSearch = search
+    //   .split('&')
+    //   .filter(item => item.includes('query'))[0]
+    //   .split('=')[1]
+    //   .split('+').join(' ')
+    // console.log(findSearch.split('+').join(' '));
 
-// console.log(findSearch)
+    // console.log(findSearch)
 
     return arryOnPage;
   }, [sortProducts, search]);

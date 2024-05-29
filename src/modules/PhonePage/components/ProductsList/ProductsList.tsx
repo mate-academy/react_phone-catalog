@@ -17,13 +17,15 @@ export const ProductsList = () => {
       {serchProduct.length === 0 && (
         <h1 className={styles.product__title}>
           {`There are no ${pageLocation.toLowerCase()} products matching the query`}
-        </h1>)}
+        </h1>
+      )}
       {!error && (
         <div className={styles.product}>
-        {serchProduct.map(phone => (
-          <div key={phone.id} className={styles.product__page}>
-            <ProductCard phone={phone} isDiscount={true} />
-          </div>))}
+          {serchProduct.map(phone => (
+            <div key={phone.id} className={styles.product__page}>
+              <ProductCard phone={phone} isDiscount={true} />
+            </div>
+          ))}
         </div>
       )}
     </>
