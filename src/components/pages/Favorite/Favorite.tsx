@@ -19,7 +19,7 @@ export const Favorite: React.FC = () => {
     <div className="container">
       <div className="page__nav">
         <NavLink to="" onClick={handleGoBack} className="page__nav-link">
-          <img src="../../../img/icons/arrow.svg" alt="" />
+          <img src="./img/icons/arrow.svg" alt="" />
           Back
         </NavLink>
       </div>
@@ -35,15 +35,15 @@ export const Favorite: React.FC = () => {
       <div className="favorite__content">
         {!favorites.length ? (
           <div className="favorite__content__empty">
+            <img
+              className="favorite__content__empty-img"
+              src={"./img/favorite/favorite.png"}
+              alt=""
+            />
+
             <p className="favorite__content__empty-text">
               Your favorites are as empty as my bank account after payday.
             </p>
-
-            <img
-              className="favorite__content__empty-img"
-              src={"/img/favorite/favorite.png"}
-              alt=""
-            />
 
             <Link to="/" className="custom__link-btn">
               Continue Shoping

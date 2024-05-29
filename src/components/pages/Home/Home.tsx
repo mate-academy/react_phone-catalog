@@ -27,17 +27,17 @@ const categories: CategoryType[] = [
   {
     id: "phones",
     title: "Mobile phones",
-    image: "../../img/category/1.jpeg",
+    image: "./img/category/1.jpeg",
   },
   {
     id: "tablets",
     title: "Tablets",
-    image: "../../img/category/2.jpeg",
+    image: "./img/category/2.jpeg",
   },
   {
     id: "accessories",
     title: "Accessories",
-    image: "../../img/category/3.jpeg",
+    image: "./img/category/3.jpeg",
   },
 ];
 

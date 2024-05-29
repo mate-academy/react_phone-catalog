@@ -13,7 +13,7 @@ export const App: React.FC = () => {
   useEffect(() => {
     const fetchPhones = async () => {
       try {
-        const response = await fetch("/api/phones.json");
+        const response = await fetch("./api/phones.json");
         const localPhones = await response.json();
 
         dispatch(productsActions.setPhones(localPhones));
@@ -24,7 +24,7 @@ export const App: React.FC = () => {
 
     const fetchTablets = async () => {
       try {
-        const response = await fetch("/api/tablets.json");
+        const response = await fetch("./api/tablets.json");
         const localTablets = await response.json();
 
         dispatch(productsActions.setTablets(localTablets));

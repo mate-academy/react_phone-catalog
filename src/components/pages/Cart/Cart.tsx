@@ -30,7 +30,7 @@ export const Cart: React.FC = () => {
     <div className="container">
       <div className="page__nav">
         <NavLink to="" onClick={handleGoBack} className="page__nav-link">
-          <img src={"/img/icons/arrow.svg"} alt="arrow" />
+          <img src={"./img/icons/arrow.svg"} alt="arrow" />
           Back
         </NavLink>
       </div>
@@ -50,7 +50,7 @@ export const Cart: React.FC = () => {
 
             <img
               className="cart__content__empty-img"
-              src={"/img/cart/cart.png"}
+              src={"./img/cart/cart.png"}
               alt=""
             />
 

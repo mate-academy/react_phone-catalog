@@ -47,7 +47,7 @@ export const FavButton: React.FC<Props> = ({
 
       setTimeout(() => {
         if (favImgRef.current && !isFavorited) {
-          favImgRef.current.src = "/img/card/icons/fav_like.svg";
+          favImgRef.current.src = "./img/card/icons/fav_like.svg";
           favImgRef.current.style.opacity = "1";
         }
       }, 200);
@@ -61,7 +61,7 @@ export const FavButton: React.FC<Props> = ({
 
     setTimeout(() => {
       if (favImgRef.current && !isFavorited) {
-        favImgRef.current.src = "/img/card/icons/fav.svg";
+        favImgRef.current.src = "./img/card/icons/fav.svg";
         favImgRef.current.style.opacity = "1";
       }
     }, 200);
@@ -105,8 +105,8 @@ export const FavButton: React.FC<Props> = ({
         className="card__bottom__fav__img"
         src={
           isFavorited
-            ? "/img/card/icons/fav_like.svg"
-            : "/img/card/icons/fav.svg"
+            ? "./img/card/icons/fav_like.svg"
+            : "./img/card/icons/fav.svg"
         }
         alt="heart"
       />
