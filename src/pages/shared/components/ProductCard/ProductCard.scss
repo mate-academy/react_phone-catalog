@@ -126,17 +126,32 @@
     box-sizing: border-box;
 
     flex-grow: 1;
-    border: none;
 
     height: 40px;
 
+    border: 1px solid transparent;
+
     color: #fff;
     background-color: $color-primary;
+
+    &:hover {
+      cursor: pointer;
+      color: $color-green;
+      background-color: $color-white;
+      border: 1px solid $color-elements;
+    }
 
     &--added {
       color: $color-green;
       background-color: $color-white;
       border: 1px solid $color-elements;
+    }
+  }
+
+  &__favorite {
+    &:hover {
+      cursor: pointer;
+      border-color: $color-primary;
     }
   }
 }
