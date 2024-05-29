@@ -19,7 +19,7 @@ export const Footer: React.FC = () => {
                   >
                     <img
                       className="footer__about-me__img"
-                      src={"../../img/footer/insta.png"}
+                      src={"./img/footer/insta.png"}
                       alt="instagram"
                     />
                   </a>
@@ -32,7 +32,7 @@ export const Footer: React.FC = () => {
                   >
                     <img
                       className="footer__about-me__img"
-                      src="../../img/footer/gmaill.png"
+                      src="./img/footer/gmaill.png"
                       alt="gmail"
                     />
                   </a>
@@ -46,7 +46,7 @@ export const Footer: React.FC = () => {
                   >
                     <img
                       className="footer__about-me__img"
-                      src="../../img/footer/github.png"
+                      src="./img/footer/github.png"
                       alt="github"
                     />
                   </a>
@@ -60,7 +60,7 @@ export const Footer: React.FC = () => {
                   >
                     <img
                       className="footer__about-me__img"
-                      src="../../img/footer/linked.png"
+                      src="./img/footer/linked.png"
                       alt="gmail"
                     />
                   </a>
@@ -77,7 +77,7 @@ export const Footer: React.FC = () => {
                 <li className="footer__accepted-pay__list__item">
                   <img
                     className="footer__accepted-pay__list__img"
-                    src={"../../img/footer/app.png"}
+                    src={"./img/footer/app.png"}
                     alt="apple pay"
                   />
                 </li>
@@ -85,7 +85,7 @@ export const Footer: React.FC = () => {
                 <li className="footer__accepted-pay__list__item">
                   <img
                     className="footer__accepted-pay__list__img"
-                    src="../../img/footer/master.png"
+                    src="./img/footer/master.png"
                     alt="mastercard"
                   />
                 </li>
@@ -93,7 +93,7 @@ export const Footer: React.FC = () => {
                 <li className="footer__accepted-pay__list__item">
                   <img
                     className="footer__accepted-pay__list__img"
-                    src="../../img/footer/visa.png"
+                    src="./img/footer/visa.png"
                     alt="visa"
                   />
                 </li>
@@ -101,7 +101,7 @@ export const Footer: React.FC = () => {
                 <li className="footer__accepted-pay__list__item">
                   <img
                     className="footer__accepted-pay__list__img"
-                    src="../../img/footer/pal.png"
+                    src="./img/footer/pal.png"
                     alt="paypal"
                   />
                 </li>

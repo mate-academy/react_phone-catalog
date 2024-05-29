@@ -15,11 +15,11 @@ const MAX_CARD_WIDTH = 265;
 const GAP = 13;
 
 const sliceImg = [
-  "../../img/promo/1.webp",
-  "../../img/promo/1.jpg",
-  "../../img/promo/2.jpeg",
-  "../../img/promo/4.jpeg",
-  "../../img/promo/5.jpeg",
+  "./img/promo/1.webp",
+  "./img/promo/1.jpg",
+  "./img/promo/2.jpeg",
+  "./img/promo/4.jpeg",
+  "./img/promo/5.jpeg",
 ];
 
 
@@ -98,14 +98,14 @@ export const Home: React.FC = () => {
               className="cards__buttons__prev"
               onClick={() => handlePrev()}
             >
-              <img src={"../../img/promo/icons/arrow-left.svg"} alt="arrow-left" />
+              <img src={"./img/promo/icons/arrow-left.svg"} alt="arrow-left" />
             </button>
 
             <button
               className="cards__buttons__next"
               onClick={() => handleNext()}
             >
-              <img src={"../../img/promo/icons/arrow.svg"} alt="arrow-right" />
+              <img src={"./img/promo/icons/arrow.svg"} alt="arrow-right" />
             </button>
           </div>
 

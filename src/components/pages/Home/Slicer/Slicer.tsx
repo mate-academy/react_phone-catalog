@@ -65,7 +65,7 @@ export const Slicer: React.FC<Props> = ({pictures}) => {
           "
         onClick={handlePrev}
       >
-        <img src="../../../img/promo/icons/arrow-left.svg" alt="arrow-left" />
+        <img src="./img/promo/icons/arrow-left.svg" alt="arrow-left" />
       </button>
 
       <button
@@ -75,7 +75,7 @@ export const Slicer: React.FC<Props> = ({pictures}) => {
           "
         onClick={handleNext}
       >
-        <img src="../../../img/promo/icons/arrow.svg" alt="arrow-right" />
+        <img src="./img/promo/icons/arrow.svg" alt="arrow-right" />
       </button>
 
       <div className="banner__dotnav">
@@ -89,8 +89,8 @@ export const Slicer: React.FC<Props> = ({pictures}) => {
                 <img
                   src={
                     isActiveIndex === i
-                      ? "../../../img/promo/icons/dotnav/dot-active.svg"
-                      : "../../../img/promo/icons/dotnav/dot.svg"
+                      ? "./img/promo/icons/dotnav/dot-active.svg"
+                      : "./img/promo/icons/dotnav/dot.svg"
                   }
                   alt="dot"
                 />
