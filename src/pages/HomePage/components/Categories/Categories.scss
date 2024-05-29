@@ -4,7 +4,7 @@
 .categories {
   @include grid;
 
-  grid-template-rows: 363px;
+  grid-template-rows: auto;
   row-gap: 32px;
 
   &__category-wrapper {
