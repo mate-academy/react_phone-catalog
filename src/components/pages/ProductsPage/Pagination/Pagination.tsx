@@ -62,7 +62,7 @@ export const Pagination: React.FC<Props> = ({total}) => {
   return (
     <ul className="pagi">
       <li className="pagi__prev-link" onClick={() => handlePagePrev()}>
-        <img className="pagi__img" src="/img/icons/arrow.svg" alt="arrow" />
+        <img className="pagi__img" src="./img/icons/arrow.svg" alt="arrow" />
       </li>
 
       {Array.from({length: totalPagiPages}, (_, i) => i + 1).map(page => (
@@ -80,7 +80,7 @@ export const Pagination: React.FC<Props> = ({total}) => {
       <li className="pagi__next-link" onClick={() => handlePageNext()}>
         <img
           className="pagi__img"
-          src="/img/icons/arrow-right.svg"
+          src="./img/icons/arrow-right.svg"
           alt="arrow"
         />
       </li>
