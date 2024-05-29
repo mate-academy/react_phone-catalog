@@ -1,4 +1,5 @@
 import { ProductsList } from '../../PhonePage/components/ProductsList';
+// eslint-disable-next-line max-len
 import { SortProduct } from '../../PhonePage/components/SortProduct/SortProduct';
 import styles from './ProductPage.module.scss';
 import { Pagination } from '../../PhonePage/components/Pagination';

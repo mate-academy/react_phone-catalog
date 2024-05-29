@@ -1,11 +1,9 @@
-// import { App } from './App';
 import { Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Footer } from './modules/Footer';
 import { HomePage } from './modules/HomePage/components/HomePage';
 import { Header } from './modules/HomePage/components/Header';
 import { ProductPage } from './modules/shared/ProductPage/ProductPage';
-// import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { HashRouter } from 'react-router-dom';
 import { App } from './App';

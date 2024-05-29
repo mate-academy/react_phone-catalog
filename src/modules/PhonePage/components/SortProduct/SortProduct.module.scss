@@ -178,12 +178,27 @@
     cursor: pointer;
     text-align: start;
 
-
-    @extend  %mont-500;
+    @extend %mont-500;
 
     &:hover {
       color: $border-button-color-hover;
     }
   }
-}
 
+  &__query {
+    background-color: inherit;
+    border: 1px solid $border-button-color;
+    padding: 10px;
+    margin-bottom: 20px;
+
+    &:focus {
+      border-color: $border-button-color-hover
+    }
+
+    @include onDesktop {
+      width: 176px;
+      height: 40px;
+    }
+
+  }
+}

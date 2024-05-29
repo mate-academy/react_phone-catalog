@@ -41,7 +41,7 @@ export const ProductCartDetails = () => {
   };
 
   const clearProductCart = () => {
-    dispatch(actionCart.clearCart({}));
+    dispatch(actionCart.clearCart());
 
     setIsModal(false);
     scrollFix();

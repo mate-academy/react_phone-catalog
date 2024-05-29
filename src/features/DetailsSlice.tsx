@@ -24,16 +24,18 @@ export const chooseProduct = createSlice({
   reducers: {
     addCart: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.cartItem.findIndex(
-        (item: CartDetails) => item.id === +itemId,
-      );
+      const itemIndex = state.cartItem.findIndex(item => item.id === +itemId);
 
       if (itemIndex === -1) {
         return {
           ...state,
           cartItem: [
             ...state.cartItem,
-            { product: action.payload, id: action.payload.id, quantity: 1 },
+            {
+              product: action.payload,
+              id: action.payload.id,
+              quantity: 1,
+            } as unknown as CartDetails,
           ],
         };
       } else {
@@ -88,9 +90,7 @@ export const chooseProduct = createSlice({
 
     addFavorite: (state: SelectedProduct, action: PayloadAction<Products>) => {
       const itemId = action.payload.id;
-      const itemIndex = state.favorite.findIndex(
-        (item: Products) => item.id === itemId,
-      );
+      const itemIndex = state.favorite.findIndex(item => item.id === itemId);
 
       if (itemIndex === -1) {
         return {

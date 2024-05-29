@@ -25,7 +25,7 @@ export const Footer = () => {
             <a
               href="https://github.com/mukutiuk"
               className={styles.nav__link}
-              target='blanc'
+              target="blanc"
             >
               GITHUB
             </a>
