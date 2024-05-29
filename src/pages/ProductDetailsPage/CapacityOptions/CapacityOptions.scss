@@ -24,6 +24,13 @@
     padding: 7px 8px;
     border: 1px solid $color-icons-placeholders;
 
+    &:hover {
+      background-color: $color-primary;
+      color: $color-white;
+
+      border: none;
+      padding: 8px 9px;
+    }
     &--active {
       background-color: $color-primary;
       color: $color-white;

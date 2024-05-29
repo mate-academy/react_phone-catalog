@@ -6,6 +6,7 @@ import './ProductSlider.scss';
 import '../../../../styles/main.scss';
 import { getProducts } from '../../../../helpers/getProducts';
 import { filterRandomProducts } from '../../../../helpers/filterRandomProducts';
+import classNames from 'classnames';
 
 type Props = {
   title: string;
@@ -60,7 +61,9 @@ export const ProductSlider: React.FC<Props> = ({
           <h2 className="slider-top__title">{title}</h2>
           <nav className="slider-top__nav">
             <button
-              className="arrow-button"
+              className={classNames('arrow-button', {
+                'arrow-button--active': activeSlide !== 0,
+              })}
               disabled={activeSlide === 0}
               onClick={() =>
                 setActiveSlide((currentSlide: number) => {
@@ -78,7 +81,9 @@ export const ProductSlider: React.FC<Props> = ({
               />
             </button>
             <button
-              className="arrow-button"
+              className={classNames('arrow-button', {
+                'arrow-button--active': activeSlide !== 7,
+              })}
               disabled={activeSlide === 7}
               onClick={() =>
                 setActiveSlide((currentSlide: number) => {

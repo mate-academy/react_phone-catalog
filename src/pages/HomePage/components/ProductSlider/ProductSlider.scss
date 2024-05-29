@@ -50,10 +50,14 @@
   width: 32px;
   height: 32px;
   background-color: transparent;
-  border: 1px solid #b4bdc3;
+  border: 1px solid $color-elements;
 
-  &--disabled {
-    border: 1px solid $color-elements;
+  &--active {
+    border: 1px solid $color-icons-placeholders;
+
+    &:hover {
+      border-color: $color-primary;
+    }
   }
 }
 
