@@ -93,6 +93,7 @@ export const Pagination: React.FC<Props> = ({ pagesTotal }) => {
           className={cn('pagination__arrow', {
             'pagination__arrow--active': currentPage < pagesTotal,
           })}
+          disabled={currentPage === pagesTotal}
           onClick={() => {
             const page = searchParams.get('page');
 
