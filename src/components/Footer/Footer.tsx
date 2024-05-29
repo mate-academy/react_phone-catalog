@@ -26,7 +26,10 @@ export const Footer: React.FC = () => {
 
       <div className="top-link">
         <p className="top-link__text footer__top-link">Back to top</p>
-        <button onClick={() => window.scroll(0, 0)} className="arrow-button">
+        <button
+          onClick={() => window.scroll(0, 0)}
+          className="top-link__button arrow-button"
+        >
           <img className="arrow-button__image" src="./icons/arrow-top.svg" />
         </button>
       </div>

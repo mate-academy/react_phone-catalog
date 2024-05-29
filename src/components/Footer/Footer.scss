@@ -61,4 +61,13 @@
     color: $color-secondary;
     text-decoration: none;
   }
+
+  &__button {
+    transition: all 1s ease-in-out;
+
+    &:hover {
+      transform: translateY(-10px);
+      transition: all 1s ease-in-out;
+    }
+  }
 }
