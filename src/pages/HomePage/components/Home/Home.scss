@@ -7,6 +7,19 @@
   }
 }
 
+.main-section {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    padding: 0 16px;
+  }
+
+  // &__slider {
+  // }
+}
+
 .section {
   width: 100%;
 

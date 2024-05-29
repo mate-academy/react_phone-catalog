@@ -7,13 +7,13 @@ import '../../../../styles/main.scss';
 export const Home: React.FC = () => {
   return (
     <main className="main">
-      <section className="section main__section">
-        <div className="title-container">
+      <section className="main-section main__section">
+        <div className="title-container main-section__title">
           <h1 className="title title--1 title-container__title">
             Welcome to Nice Gadgets store!
           </h1>
         </div>
-        <div className="section__content">
+        <div className="main-section__slider">
           <PicturesSlider />
         </div>
       </section>
