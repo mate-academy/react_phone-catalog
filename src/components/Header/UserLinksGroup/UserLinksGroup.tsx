@@ -27,7 +27,7 @@ export const UserLinksGroup: React.FC = () => {
       >
         <div className="user-links-group__content-wrapp">
           <img
-            src={`/img/header/fav.svg`}
+            src={`./img/header/fav.svg`}
             alt="liked"
             className="header__fav-img"
           />
@@ -52,7 +52,7 @@ export const UserLinksGroup: React.FC = () => {
       >
         <div className="user-links-group__content-wrapp">
           <img
-            src={`/img/header/cart.svg`}
+            src={`./img/header/cart.svg`}
             alt="cart"
             className="header__cart-img"
           />

@@ -30,7 +30,7 @@ export const Header: React.FC = () => {
             onClick={() => setIsOpen(false)}
           >
             <img
-              src={`/img/header/Orange_logo.svg`}
+              src={`./img/header/Orange_logo.svg`}
               alt="NG_logo"
               className="header__logo-img"
             />
@@ -49,7 +49,7 @@ export const Header: React.FC = () => {
             >
               <img
                 className="header__burger-img"
-                src={`/img/header/burger.svg`}
+                src={`./img/header/burger.svg`}
                 alt=""
               />
             </span>
@@ -62,7 +62,7 @@ export const Header: React.FC = () => {
             >
               <img
                 className="header__cross-img"
-                src={`/img/header/cross.svg`}
+                src={`./img/header/cross.svg`}
                 alt=""
               />
             </span>
