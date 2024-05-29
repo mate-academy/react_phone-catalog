@@ -66,5 +66,15 @@
   &__button {
     height: 32px;
     width: 32px;
+
+    border: 1px solid $color-elements;
+
+    &--active {
+      border-color: $color-icons-placeholders;
+
+      &:hover {
+        border-color: $color-primary;
+      }
+    }
   }
 }

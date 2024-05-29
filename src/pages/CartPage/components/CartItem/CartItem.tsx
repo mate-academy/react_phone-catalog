@@ -29,10 +29,13 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
       {
         duration: 600,
         iterations: 1,
-        easing: 'cubic-bezier(.46,-0.27,.46,1)',
+        easing: 'cubic-bezier(.34,-0.31,.3,-0.41)',
       },
     );
   };
+
+  const minusIconSrc =
+    quantity > 1 ? './icons/minus-active.svg' : './icons/minus-disabled.svg';
 
   return (
     <article ref={cartItemArticle} className="cart-item">
@@ -70,14 +73,14 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
               'cart-item-details__button',
               'default-button',
               {
-                'default-button--disabled': quantity < 2,
+                'cart-item-details__button--active': quantity > 1,
               },
             )}
             disabled={quantity < 2}
             onClick={() => decrementProductInCart(product.id)}
           >
             <img
-              src="./icons/minus-disabled.svg"
+              src={minusIconSrc}
               alt="minus icon - decrement quantity of product in the cart"
             />
           </button>
@@ -85,7 +88,11 @@ export const CartItem: React.FC<Props> = ({ product, quantity }) => {
           <h3 className="body-text--14">{quantity}</h3>
 
           <button
-            className="default-button cart-item-details__button"
+            className={classNames(
+              'default-button',
+              'cart-item-details__button',
+              'cart-item-details__button--active',
+            )}
             onClick={() => incrementProductInCart(product.id)}
           >
             <img
