@@ -44,7 +44,7 @@ export const ScrollButton: React.FC = () => {
     <>
       {isVissible && (
         <button className="scroll__button" onClick={scrollToTop}>
-          <img src={"/img/footer/up.png"} alt="" />
+          <img src={"./img/footer/up.png"} alt="" />
         </button>
       )}
     </>
