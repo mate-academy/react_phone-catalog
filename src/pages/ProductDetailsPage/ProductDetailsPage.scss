@@ -27,6 +27,12 @@
     height: 16px;
   }
 
+  &__home {
+    display: flex;
+    position: relative;
+    bottom: 1.3px;
+  }
+
   &__next {
     width: 5.33px;
     height: 9.33px;
@@ -54,8 +60,10 @@
     text-align: left;
     color: $color-secondary;
     overflow-wrap: break-word;
-    width: 162px;
     align-self: center;
+
+    position: relative;
+    top: 1px;
   }
 }
 
@@ -64,6 +72,8 @@
 
   grid-template-rows: auto;
   row-gap: 32px;
+
+  padding-top: 0;
 
   &__top {
     grid-column: 1 / 5;

@@ -8,6 +8,7 @@ import { CapacityOptions } from './CapacityOptions';
 import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 import { ProductDescriptions } from './ProductDescriptions';
 import { TechSpecs } from './TechSpecs';
+import { FavoritesContext } from '../../context/FavoritesContext';
 import { BackLink } from '../shared/components/BackLink';
 import { Product } from '../../types/ProductCard';
 import { DetailedProduct } from '../../types/DetailedProduct';
@@ -17,7 +18,6 @@ import { getAllProducts } from '../../helpers/getAllProducts';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
-import { FavoritesContext } from '../../context/FavoritesContext';
 
 export const ProductDetailsPage: React.FC = () => {
   const [foundProduct, setFoundProduct] = useState<Product | undefined>(
@@ -116,7 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
     <>
       {!isLoadingProduct && displayedProduct && (
         <main className="product-details">
-          <section className="product-content product-details__product-content">
+          <section className="product-content section">
             <div className="product-content__top">
               <nav className="breadcrumbs product-content__breadcrumbs">
                 <div className="breadcrumbs__wrapper">

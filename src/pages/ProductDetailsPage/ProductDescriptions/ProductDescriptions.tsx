@@ -8,7 +8,7 @@ type Props = {
 
 export const ProductDescriptions: React.FC<Props> = ({ descriptions }) => {
   return (
-    <section className="product-descriptions">
+    <section className="product-descriptions section">
       <div className="product-descriptions__top">
         <h3 className="product-descriptions__title title--3">About</h3>
 
