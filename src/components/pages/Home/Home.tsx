@@ -111,10 +111,10 @@ export const Home: React.FC = () => {
 
           <ul className="cards__list">
             {phones.map(phone => {
-
+              const {id} = phone;
               return (
                 <li
-                  key={`phone-${nanoid()}`}
+                  key={`phone-${id}`}
                   className="cards__item"
                   style={{
                     transform: `translateX(-${calcTranslateX()}px)`,
