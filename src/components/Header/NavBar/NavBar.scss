@@ -64,10 +64,13 @@
 
   &-custom {
     color: #000;
+
+    &::after {
+      width: 100%;
+    }
   }
 
   &::after {
     width: 100%;
   }
 }
-
