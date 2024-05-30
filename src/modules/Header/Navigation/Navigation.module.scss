@@ -80,9 +80,11 @@
     &.navigation__link_active {
       color: $primary;
       padding-bottom: 4px;
+      border-bottom: 2px solid $primary;
 
       @include on-tablet {
         padding-bottom: unset;
+        border-bottom: unset;
         &::after {
           width: 100%;
         }

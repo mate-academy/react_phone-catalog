@@ -87,12 +87,11 @@ export const ProductsList: React.FC<Props> = ({ data, title }) => {
     <section>
       {AMOUNT_OF_PAGES ? (
         <>
-          <Container>
-            <BreadCrumbs title={title} />
-            <h5>{DATA_LENGTH} models</h5>
+          <BreadCrumbs title={title} />
+          <h5>{DATA_LENGTH} models</h5>
 
-            <Filter />
-          </Container>
+          <Filter />
+
           <Products data={CURRENT_PAGE} />
 
           <div
