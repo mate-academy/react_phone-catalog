@@ -59,12 +59,10 @@ export const AddButton: React.FC<Props> = ({
     setIsInCart(
       products.some(
         item =>
-          item.id === product?.id ||
-          item.color === color ||
-          item.capacity === capacity,
+          item.id === product?.id
       ),
     );
-  }, [products, dispatch, product, color, capacity, handleAddToCart]);
+  }, [products, product, color, capacity]);
 
   if (!product) return null;
 
