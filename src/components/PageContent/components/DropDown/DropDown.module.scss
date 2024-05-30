@@ -5,6 +5,7 @@
   flex-direction: column;
   gap: 4px;
   width: 176px;
+  z-index: 2;
 
   &__title {
     color: $secondary-color;

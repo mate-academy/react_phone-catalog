@@ -1,13 +1,27 @@
 @import '../../../../styles/main';
 
 .NoResults {
+  flex: 1;
   flex-direction: column;
   gap: 20px;
-  margin-top: 40px;
 
   @include flex-center;
 
   &__title {
+    margin-top: 40px;
+
     @extend %h1;
+  }
+
+  &__img {
+    height: 40vh;
+  }
+
+  &__button {
+    width: 100%;
+  
+    @include on-tablet {
+      width: 320px;
+    }
   }
 }

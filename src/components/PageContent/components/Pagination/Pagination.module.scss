@@ -12,7 +12,52 @@
     gap: 8px;
   }
 
+  &__dots {
+    height: 32px;
+    min-width: 32px;
+
+    @include flex-center;
+    @extend %text-body;
+  }
+
   &__button {
-    @include button-base;
+    height: 32px;
+    min-width: 32px;
+
+    @include flex-center;
+    @extend %text-body;
+
+    cursor: pointer;
+    transition-duration: $transition-durration;
+
+    &--move {
+      background-color: $surface2-color;
+
+      &:hover {
+        background-color: $icons-color;
+      }
+
+      &:disabled {
+        border: 1px solid $surface2-color;
+        background-color: $black-color;
+      }
+    }
+
+    &--page {
+      color: $white-color;
+      background-color: $surface1-color;
+
+      &:hover {
+        background-color: $elements-color;
+      }
+
+      &--active {
+        background-color: $accent-color;
+
+        &:hover {
+          background-color: $accent-color-hover;
+        }
+      }
+    }
   }
 }

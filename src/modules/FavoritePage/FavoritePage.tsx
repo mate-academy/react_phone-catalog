@@ -1,5 +1,11 @@
-import classes from './FavoritePage.module.scss';
+import { useContext } from 'react';
+import { GlobalContext } from '../../GlobalContext';
+import { PageContent } from '../../components/PageContent';
 
 export const FavoritePage = () => {
-  return <div className={classes.FavoritePage}>FavoritePage FavoritePage</div>;
+  const { favourites } = useContext(GlobalContext);
+
+  return (
+    <PageContent products={favourites} title="Favourites" dropdown={false} />
+  );
 };

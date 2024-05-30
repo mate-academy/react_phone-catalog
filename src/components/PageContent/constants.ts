@@ -10,3 +10,5 @@ export const FILTER_BY = [
   { name: '16', key: '16' },
   { name: 'All', key: 'all' },
 ];
+
+export const DOTS = '...';

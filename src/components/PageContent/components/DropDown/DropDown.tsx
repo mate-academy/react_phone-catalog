@@ -43,8 +43,6 @@ export const DropDown: React.FC<Props> = ({
     setSelectedOption(celectedItem);
   }, [init, options]);
 
-  const handleOpen = () => setOpen(!open);
-
   const handleSelectOption = (item: Sort) => {
     setSelectedOption(item);
     setOpen(false);
@@ -61,7 +59,7 @@ export const DropDown: React.FC<Props> = ({
           className={classNames(classes.DropDown__select, {
             [classes['DropDown__select--open']]: open,
           })}
-          onClick={handleOpen}
+          onClick={() => setOpen(!open)}
         >
           {selectedOption?.name}
         </button>

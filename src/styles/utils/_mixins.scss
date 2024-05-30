@@ -82,28 +82,3 @@
   height: 100%;
   background-color: $surface2-color;
 }
-
-@mixin button-base {
-  @include flex-center;
-
-  height: 32px;
-  min-width: 32px;
-
-  @extend %text-body;
-
-  transition-duration: $transition-durration;
-  border: 1px solid $icons-color;
-  cursor: pointer;
-
-  &:hover:not(:disabled) {
-    border-color: $black-color;
-
-    cursor: pointer;
-  }
-
-  &--active {
-    color: $white-color;
-    background-color: $black-color;
-    border: 1px solid $black-color;
-  }
-}

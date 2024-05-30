@@ -1,69 +1,90 @@
-import React from 'react';
 import classNames from 'classnames';
-import { getNumbers } from '../../helpers/getPaginationNumbers';
+import { DOTS } from '../../constants';
 import classes from './Pagination.module.scss';
 
 export type Props = {
-  perPage: number;
-  length: number;
-  page: number;
+  range: (string | number)[];
+  currentPage: number;
   changePage: (value: number) => void;
 };
 
 export const Pagination: React.FC<Props> = ({
-  perPage,
-  length,
-  page,
+  range,
+  currentPage,
   changePage,
 }) => {
-  const paginationNumbers = getNumbers(1, Math.ceil(length / perPage));
+  const lastPage = range[range.length - 1];
+  const generateKey = (i: number) => `${i}_${new Date().getTime()}`;
 
-  if (paginationNumbers.length < 2) {
-    return null;
-  }
+  const handleSetPage = (page: string | number) => {
+    if (typeof page === 'string') {
+      return;
+    }
+
+    changePage(page);
+  };
 
   return (
-    <div className={classes.Pagination}>
+    <div className={classes.Pagination} data-cy="pagination">
       <button
         type="button"
-        className={classes.Pagination__button}
-        disabled={page === 1}
-        onClick={() => changePage(page - 1)}
+        className={classNames(
+          classes.Pagination__button,
+          classes['Pagination__button--move'],
+        )}
+        disabled={currentPage === 1}
+        onClick={() => changePage(currentPage - 1)}
         data-cy="paginationLeft"
       >
         <img
-          src={`img/icons/Chevron-Left${page !== 1 ? '-black' : ''}.svg`}
+          src={`img/icons/Chevron-Left${currentPage === 1 ? '-disabled' : ''}.svg`}
           alt="Prev"
         />
       </button>
 
       <div className={classes.Pagination__pages}>
-        {paginationNumbers.map(pageNumber => (
-          <button
-            key={pageNumber}
-            type="button"
-            className={classNames(classes.Pagination__button, {
-              [classes['Pagination__button--active']]: pageNumber === page,
-            })}
-            onClick={() => changePage(pageNumber)}
-          >
-            {pageNumber}
-          </button>
-        ))}
+        {range.map((item, i) => {
+          return item === DOTS ? (
+            <div
+              key={generateKey(i)}
+              className={classNames(classes.Pagination__dots)}
+            >
+              &#8230;
+            </div>
+          ) : (
+            <button
+              key={item}
+              type="button"
+              className={classNames(
+                classes.Pagination__button,
+                classes['Pagination__button--page'],
+                {
+                  [classes['Pagination__button--page--active']]:
+                    item === currentPage,
+                },
+              )}
+              onClick={() => handleSetPage(item)}
+            >
+              {item}
+            </button>
+          );
+        })}
       </div>
 
       <button
         type="button"
-        className={classes.Pagination__button}
-        disabled={page === paginationNumbers.length}
-        onClick={() => changePage(page + 1)}
+        className={classNames(
+          classes.Pagination__button,
+          classes['Pagination__button--move'],
+        )}
+        disabled={currentPage === lastPage}
+        onClick={() => changePage(currentPage + 1)}
         data-cy="paginationRight"
       >
-        {page === paginationNumbers.length ? (
-          <img src="img/icons/Chevron-Right.svg" alt="Next" />
-        ) : (
-          <img src="img/icons/Chevron-Right-black.svg" alt="Next" />
-        )}
+        <img
+          src={`img/icons/Chevron-Right${currentPage === lastPage ? '-disabled' : ''}.svg`}
+          alt="Prev"
+        />
       </button>
     </div>
   );

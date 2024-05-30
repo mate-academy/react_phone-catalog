@@ -1,4 +1,4 @@
-import React, { useContext, useMemo } from 'react';
+import React, { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import { GlobalContext } from '../../GlobalContext';
@@ -15,19 +15,41 @@ import { Loader } from '../Loader/Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
 
 import classes from './PageContent.module.scss';
+import { getPagination } from './helpers/getPagination';
 
 type Props = {
   products: Product[];
   title: string;
+  dropdown?: boolean;
 };
 
-export const PageContent: React.FC<Props> = ({ products, title }) => {
+export const PageContent: React.FC<Props> = ({
+  products,
+  title,
+  dropdown = true,
+}) => {
   const { isLoading } = useContext(GlobalContext);
   const [searchParams, setSearchParams] = useSearchParams();
 
   const sortBy = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
   const currentPage = searchParams.get('page') || '';
+
+  const elementRef = useRef<HTMLDivElement | null>(null);
+  const [range, setRange] = useState<(string | number)[]>([]);
+
+  useEffect(() => {
+    if (!elementRef.current) {
+      return;
+    }
+
+    const width = elementRef.current.offsetWidth;
+    const length = perPage ? Math.ceil(products.length / +perPage) : null;
+
+    const currentRange = getPagination(length, width, +currentPage);
+
+    setRange(currentRange);
+  }, [products, currentPage, perPage]);
 
   const handleSortByChange = (value: string) => {
     const params = new URLSearchParams(searchParams);
@@ -69,51 +91,59 @@ export const PageContent: React.FC<Props> = ({ products, title }) => {
     const list = sortFunction(products, sortBy);
 
     const pageNumber = Number(currentPage) ? +currentPage : 1;
-    const pageSize = Number(perPage) ? +perPage : products.length;
+    const width = Number(perPage) ? +perPage : products.length;
 
-    return list.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+    return list.slice((pageNumber - 1) * width, pageNumber * width);
   }, [products, perPage, currentPage, sortBy]);
 
   return (
-    <div className={classes.PageContent}>
+    <div className={classes.PageContent} ref={elementRef}>
       <Breadcrumbs />
 
       {!products.length && !isLoading ? (
         <NoResults product={title} />
       ) : (
         <>
-          <h2>{title}</h2>
+          <h1>{title}</h1>
           <p className={classes.PageContent__quantity}>
             {`${products.length} model${products.length === 1 ? '' : 's'}`}
           </p>
-          <div className={classes['PageContent__dropdown-wrapper']}>
-            <DropDown
-              title="Sort by"
-              options={SORT_BY}
-              init="price"
-              changeParams={handleSortByChange}
-            />
-            <DropDown
-              title="Items on page"
-              options={FILTER_BY}
-              init="16"
-              changeParams={handlePerPageChange}
-            />
-          </div>
+
+          {dropdown && (
+            <div className={classes['PageContent__dropdown-wrapper']}>
+              <DropDown
+                title="Sort by"
+                options={SORT_BY}
+                init="name"
+                changeParams={handleSortByChange}
+              />
+              <DropDown
+                title="Items on page"
+                options={FILTER_BY}
+                init="all"
+                changeParams={handlePerPageChange}
+              />
+            </div>
+          )}
         </>
       )}
 
-      {isLoading ? <Loader /> : <ProductsList products={preparedList} />}
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <>
+          <ProductsList products={preparedList} />
 
-      {products && (
-        <div className={classes.PageContent__pagination}>
-          <Pagination
-            perPage={Number(perPage) ? +perPage : products.length}
-            length={products.length}
-            page={+currentPage}
-            changePage={handlePageChange}
-          />
-        </div>
+          {range && range?.length > 1 && (
+            <div className={classes.PageContent__pagination}>
+              <Pagination
+                range={range}
+                currentPage={+currentPage}
+                changePage={handlePageChange}
+              />
+            </div>
+          )}
+        </>
       )}
     </div>
   );
