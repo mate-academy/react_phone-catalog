@@ -50,14 +50,14 @@ export const Slider = () => {
               prevEl: prevSliderBtn.current,
             }}
             pagination={{ clickable: true, el: sliderPagination.current }}
-            onInit={swiper => {
+            onAfterInit={swiper => {
               const navigation = swiper.params.navigation as
                 | NavigationOptions
                 | undefined;
 
               if (navigation) {
-                navigation.prevEl = prevSliderBtn.current;
                 navigation.nextEl = nextSliderBtn.current;
+                navigation.prevEl = prevSliderBtn.current;
               }
 
               const pagination = swiper.params.pagination as
@@ -74,8 +74,6 @@ export const Slider = () => {
               swiper.pagination.init();
 
               swiper.pagination.update();
-            }}
-            onAfterInit={swiper => {
               swiper.pagination.init();
               swiper.pagination.update();
             }}
