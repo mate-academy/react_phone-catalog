@@ -72,7 +72,7 @@ export const PicturesSlider = () => {
   useEffect(() => {
     const intervalId = setInterval(() => {
       handleRightBtn();
-    }, 2000);
+    }, 5000);
 
     return () => {
       clearInterval(intervalId);
