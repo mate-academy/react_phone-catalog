@@ -71,10 +71,8 @@ export const PicturesSlider = () => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      if (autoScrollActive) {
-        handleRightBtn();
-      }
-    }, 5000);
+      handleRightBtn();
+    }, 2000);
 
     return () => {
       clearInterval(intervalId);
@@ -85,6 +83,10 @@ export const PicturesSlider = () => {
     setOffset(position);
     setAutoScrollActive(false);
   };
+
+  useEffect(() => {
+    setAutoScrollActive(true);
+  }, [offset]);
 
   return (
     <div className={styles.slider}>
