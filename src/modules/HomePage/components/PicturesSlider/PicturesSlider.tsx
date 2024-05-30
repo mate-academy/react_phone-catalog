@@ -1,6 +1,7 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import styles from './PicturesSlider.module.scss';
+import { useSwipeable } from 'react-swipeable';
 
 const IMAGE_WIDTH_DESKTOP = 1040;
 const IMAGE_WIDTH_TABLET = 490;
@@ -9,13 +10,8 @@ const IMAGE_NUM = 3;
 
 export const PicturesSlider = () => {
   const [offset, setOffset] = useState(0);
-  const [isActive, setIsActive] = useState(0);
-  const [imageWidth, setImageWidth] = useState(IMAGE_WIDTH_DESKTOP);
+  const [imageWidth, setImageWidth] = useState(0);
   const [autoScrollActive, setAutoScrollActive] = useState(true);
-
-  const touchStartX = useRef(0);
-  const touchEndX = useRef(0);
-  // После свайпа не работают кнопки право-лево
 
   useEffect(() => {
     const handleResize = () => {
@@ -40,16 +36,12 @@ export const PicturesSlider = () => {
     if (offset < -imageWidth * (IMAGE_NUM - 1)) {
       setTimeout(() => {
         setOffset(0);
-        setIsActive(0);
       }, 0);
     }
-  }, [imageWidth, offset]);
 
-  useEffect(() => {
     if (offset > 0) {
       setTimeout(() => {
         setOffset(-imageWidth * (IMAGE_NUM - 1));
-        setIsActive(-imageWidth * (IMAGE_NUM - 1));
       }, 0);
     }
   }, [imageWidth, offset]);
@@ -58,8 +50,6 @@ export const PicturesSlider = () => {
     setAutoScrollActive(false);
     setOffset(currentOffset => {
       const newOffset = currentOffset - imageWidth;
-
-      setIsActive(newOffset);
 
       return newOffset;
     });
@@ -70,11 +60,14 @@ export const PicturesSlider = () => {
     setOffset(currentOffset => {
       const newOffset = currentOffset + imageWidth;
 
-      setIsActive(newOffset);
-
       return newOffset;
     });
   }, [imageWidth]);
+
+  const handlerSwipes = useSwipeable({
+    onSwipedLeft: () => handleRightBtn(),
+    onSwipedRight: () => handleLeftBtn(),
+  });
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -90,44 +83,12 @@ export const PicturesSlider = () => {
 
   const handleDash = (position: number) => {
     setOffset(position);
-    setIsActive(position);
     setAutoScrollActive(false);
   };
 
-  const handleTouchStart = useCallback(
-    (e: React.TouchEvent<HTMLDivElement>) => {
-      touchStartX.current = e.touches[0].clientX;
-      setAutoScrollActive(false);
-    },
-    [],
-  );
-
-  const handleTouchMove = useCallback((e: React.TouchEvent<HTMLDivElement>) => {
-    touchEndX.current = e.touches[0].clientX;
-  }, []);
-
-  const handleTouchEnd = useCallback(() => {
-    const deltaX = touchEndX.current - touchStartX.current;
-
-    if (deltaX > 50) {
-      handleLeftBtn();
-    } else if (deltaX < -50) {
-      handleRightBtn();
-    }
-  }, [handleLeftBtn, handleRightBtn]);
-
-  useEffect(() => {
-    setAutoScrollActive(true);
-  }, [offset]);
-
   return (
     <div className={styles.slider}>
-      <div
-        className={styles.picturesSlider}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-      >
+      <div className={styles.picturesSlider} {...handlerSwipes}>
         {imageWidth !== 320 && (
           <button
             className={`${styles.btn} ${styles.btnLeft}`}
@@ -158,19 +119,19 @@ export const PicturesSlider = () => {
       <div className={styles.dashesPanel}>
         <button
           className={classNames(styles.dashes, {
-            [styles.activeDash]: isActive === 0,
+            [styles.activeDash]: offset === 0,
           })}
           onClick={() => handleDash(0)}
         ></button>
         <button
           className={classNames(styles.dashes, {
-            [styles.activeDash]: isActive === -imageWidth * 1,
+            [styles.activeDash]: offset === -imageWidth * 1,
           })}
           onClick={() => handleDash(-imageWidth)}
         ></button>
         <button
           className={classNames(styles.dashes, {
-            [styles.activeDash]: isActive === -imageWidth * 2,
+            [styles.activeDash]: offset === -imageWidth * 2,
           })}
           onClick={() => handleDash(-imageWidth * 2)}
         ></button>
