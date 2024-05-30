@@ -61,6 +61,7 @@ export const Header: React.FC = () => {
               >
                 Home
               </Link>
+
               <Link
                 className="menu-category-nav__link"
                 to="/phones"
@@ -68,6 +69,7 @@ export const Header: React.FC = () => {
               >
                 Phones
               </Link>
+
               <Link
                 className="menu-category-nav__link"
                 to="tablets"
@@ -75,6 +77,7 @@ export const Header: React.FC = () => {
               >
                 Tablets
               </Link>
+
               <Link
                 className="menu-category-nav__link"
                 to="accessories"

@@ -12,35 +12,33 @@ import './styles/main.scss';
 import './App.scss';
 import './utils/_reset.scss';
 
-export const App = () => (
-  <>
-    <Header />
+export const App = () => {
+  const { Phones, Tablets, Accessories } = ProductCategories;
 
-    <Routes>
-      <Route path="/" index element={<HomePage />} />
+  return (
+    <>
+      <Header />
 
-      <Route
-        path="/phones"
-        element={<ProductPage category={ProductCategories.Phones} />}
-      />
-      <Route
-        path="/tablets"
-        element={<ProductPage category={ProductCategories.Tablets} />}
-      />
-      <Route
-        path="/accessories"
-        element={<ProductPage category={ProductCategories.Accessories} />}
-      />
+      <Routes>
+        <Route path="/" index element={<HomePage />} />
 
-      <Route path="/product/:productId" element={<ProductDetailsPage />} />
+        <Route path="/phones" element={<ProductPage category={Phones} />} />
+        <Route path="/tablets" element={<ProductPage category={Tablets} />} />
+        <Route
+          path="/accessories"
+          element={<ProductPage category={Accessories} />}
+        />
 
-      <Route path="/cart" element={<CartPage />} />
+        <Route path="/product/:productId" element={<ProductDetailsPage />} />
 
-      <Route path="/favorites" element={<FavoritesPage />} />
+        <Route path="/cart" element={<CartPage />} />
 
-      <Route path="*" element={<NotFoundPage />} />
-    </Routes>
+        <Route path="/favorites" element={<FavoritesPage />} />
 
-    <Footer />
-  </>
-);
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+
+      <Footer />
+    </>
+  );
+};

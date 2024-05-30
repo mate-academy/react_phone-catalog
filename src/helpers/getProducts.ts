@@ -1,10 +1,11 @@
 import { Product } from '../types/ProductCard';
 import { ProductCategories } from '../types/ProductCategories';
 
-const BASE_URL =
-  location.hostname === 'localhost'
-    ? ''
-    : 'https://olafchuszno.github.io/react_phone-catalog';
+let BASE_URL = '';
+
+if (location.hostname !== 'localhost') {
+  BASE_URL = 'https://olafchuszno.github.io/react_phone-catalog';
+}
 
 export const getProducts: (
   category: ProductCategories,
