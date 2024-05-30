@@ -13,7 +13,7 @@ import style from './Slider.module.scss';
 import prevArrow from './../../images/icons/prev_icon.svg';
 import nextArrow from './../../images/icons/next_icon.svg';
 import { useRef } from 'react';
-import { NavigationOptions, PaginationOptions } from 'swiper/types';
+// import { NavigationOptions, PaginationOptions } from 'swiper/types';
 
 export const Slider = () => {
   const swiperRef = useRef(null);
@@ -34,8 +34,6 @@ export const Slider = () => {
 
           <Swiper
             ref={swiperRef}
-            observeParents={true}
-            observer={true}
             modules={[Navigation, Pagination, EffectFade, Autoplay]}
             effect="fade"
             autoplay={{
@@ -45,36 +43,11 @@ export const Slider = () => {
             speed={1000}
             loop={true}
             slidesPerView={1}
-            onInit={swiper => {
-              const navigation = swiper.params.navigation as
-                | NavigationOptions
-                | undefined;
-
-              if (navigation) {
-                navigation.prevEl = prevSliderBtn.current;
-                navigation.nextEl = nextSliderBtn.current;
-              }
-
-              const pagination = swiper.params.pagination as
-                | PaginationOptions
-                | undefined;
-
-              if (pagination) {
-                pagination.el = sliderPagination.current;
-                pagination.clickable = true;
-              }
-
-              swiper.navigation.init();
-
-              swiper.navigation.update();
-              swiper.pagination.init();
-
-              swiper.pagination.update();
+            navigation={{
+              nextEl: nextSliderBtn.current,
+              prevEl: prevSliderBtn.current,
             }}
-            onAfterInit={swiper => {
-              swiper.pagination.init();
-              swiper.pagination.update();
-            }}
+            pagination={{ clickable: true, el: sliderPagination.current }}
           >
             <SwiperSlide className={style.slide}>
               <img
