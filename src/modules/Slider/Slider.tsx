@@ -45,11 +45,6 @@ export const Slider = () => {
             speed={1000}
             loop={true}
             slidesPerView={1}
-            navigation={{
-              nextEl: nextSliderBtn.current,
-              prevEl: prevSliderBtn.current,
-            }}
-            pagination={{ clickable: true, el: sliderPagination.current }}
             onInit={swiper => {
               const navigation = swiper.params.navigation as
                 | NavigationOptions
@@ -66,6 +61,7 @@ export const Slider = () => {
 
               if (pagination) {
                 pagination.el = sliderPagination.current;
+                pagination.clickable = true;
               }
 
               swiper.navigation.init();
