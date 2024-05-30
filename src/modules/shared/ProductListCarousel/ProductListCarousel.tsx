@@ -11,7 +11,7 @@ import {
   DESCTOP_COLUMNS,
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
-import { MoveLeft, MoveRight } from '../Buttons/MoveButtons';
+import { MoveButton } from '../Buttons/MoveButtons';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 import { getWidtScrollbar } from '../../../services/getWidtScrollbar';
 
@@ -155,9 +155,12 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
         <div className="carousel__title-block">
           <h2 className="carousel__title secondary-title">{title}</h2>
 
-          <div className="carousel__slider-control carousel-buttons">
-            <MoveLeft move={moveLeft} disabled={imgPosition <= 0} />
-            <MoveRight move={moveRight} disabled={imgPosition >= maxPosition} />
+          <div className="carousel__slider-control">
+            <MoveButton move={moveLeft} disabled={imgPosition <= 0} />
+            <MoveButton
+              move={moveRight}
+              disabled={imgPosition >= maxPosition}
+            />
           </div>
         </div>
 

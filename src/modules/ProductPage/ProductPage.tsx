@@ -169,7 +169,7 @@ export const ProductPage: React.FC = React.memo(() => {
           </div>
 
           <div className="product-page__add-block">
-            <AddBlock />
+            <AddBlock itemId={device.id} />
           </div>
 
           <div

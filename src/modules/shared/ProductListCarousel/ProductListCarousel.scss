@@ -18,6 +18,10 @@
     align-items: center;
     justify-content: right;
     grid-column: span 1;
+
+    & > :last-child {
+      rotate: 180deg;
+    }
   }
 
   &__imgs-container {

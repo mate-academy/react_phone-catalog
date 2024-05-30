@@ -13,7 +13,7 @@ import {
   TABLET_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
 import { getSliderImages } from '../../../services/getSliderImages';
-import { MoveLeft, MoveRight } from '../../shared/Buttons/MoveButtons';
+import { MoveButton } from '../../shared/Buttons/MoveButtons';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
 export const PicturesSlider: React.FC = React.memo(() => {
@@ -148,7 +148,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
     <div className="pictures-slider">
       <div className="pictures-slider__images-container">
         <div className="pictures-slider__move-left">
-          <MoveLeft move={moveLeft} />
+          <MoveButton move={moveLeft} />
         </div>
 
         <div
@@ -189,7 +189,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
         </div>
 
         <div className="pictures-slider__move-right">
-          <MoveRight move={moveRight} />
+          <MoveButton move={moveRight} />
         </div>
       </div>
 

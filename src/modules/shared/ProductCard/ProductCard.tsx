@@ -102,7 +102,7 @@ export const ProductCard: React.FC<Props> = React.memo(
           ))}
         </div>
 
-        <AddBlock />
+        <AddBlock itemId={itemId} />
       </div>
     );
   },

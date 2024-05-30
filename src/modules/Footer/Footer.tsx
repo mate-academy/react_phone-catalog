@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
-import { MoveLeft as MoveUp } from '../shared/Buttons/MoveButtons';
+import { MoveButton as MoveUp } from '../shared/Buttons/MoveButtons';
 import { getLogo } from '../../services/getLogo';
 import { SidebarContext } from '../../store/SidebarContext';
 import { scrollToTop } from '../../services/scrollToTop';

@@ -1,0 +1,165 @@
+.shopping-item {
+  padding: 16px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  border: solid 1px $border-color-light-gray;
+  border-radius: 5px;
+
+  &__main-row {
+    height: 80px;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__delete {
+    display: flex;
+
+    border: none;
+    background-color: inherit;
+
+    cursor: pointer;
+
+    &:hover {
+      scale: 1.5;
+    }
+  }
+
+  &__img-wrapper {
+    height: 100%;
+
+    aspect-ratio: 1 / 1;
+
+    position: relative;
+  }
+
+  &__img {
+    height: 82.5%;
+
+    position: absolute;
+
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__name {
+    font-size: 14px;
+  }
+
+  &__count-and-price {
+    display: flex;
+
+    justify-content: space-between;
+  }
+
+  &__change-count {
+    width: 96px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    & > :not(:nth-child(2)) {
+      font-size: 20px;
+    }
+
+    // & > :first-child {
+    //   position: relative;
+
+    //   &::before {
+    //     content: "";
+
+    //     width: 10.67px;
+    //     height: 1.33px;
+
+    //     background-color: $border-color-hover;
+    //   }
+    // }
+
+    // & > :last-child {
+    //   position: relative;
+
+    //   &::before {
+    //     content: "";
+
+    //     width: 10.67px;
+    //     height: 1.33px;
+
+    //     background-color: $border-color-hover;
+    //   }
+
+    //   &::after {
+    //     content: "";
+
+    //     height: 10.67px;
+    //     width: 1.33px;
+
+    //     position: absolute;
+
+    //     background-color: $border-color-hover;
+    //   }
+    // }
+  }
+
+  &__decrease {
+    & > :first-child {
+      position: relative;
+
+      &::before {
+        content: "";
+
+        width: 10.67px;
+        height: 1.33px;
+
+        background-color: $border-color-hover;
+      }
+    }
+  }
+
+  &__adding {
+    & > :first-child {
+      position: relative;
+
+      &::before {
+        content: "";
+
+        width: 10.67px;
+        height: 1.33px;
+
+        background-color: $border-color-hover;
+      }
+
+      &::after {
+        content: "";
+
+        height: 10.67px;
+        width: 1.33px;
+
+        position: absolute;
+
+        background-color: $border-color-hover;
+      }
+    }
+  }
+
+  &__decrease.disabled {
+    & > :first-child {
+      border-color: $border-color-light-gray;
+      cursor: default;
+
+      &::before {
+        background-color: $border-color-light-gray;
+      }
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-family: Mont-Bold, sans-serif;
+  }
+}

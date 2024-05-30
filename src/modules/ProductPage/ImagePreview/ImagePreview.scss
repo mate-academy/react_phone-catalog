@@ -70,6 +70,10 @@
     border-radius: 5px;
     background-color: inherit;
     cursor: pointer;
+
+    &:hover {
+      border-color: $border-color-default;
+    }
   }
 
   &__img-wrapper.is-active {

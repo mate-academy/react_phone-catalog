@@ -16,4 +16,8 @@
       transition: none;
     }
   }
+
+  & > :last-child {
+    rotate: 180deg;
+  }
 }

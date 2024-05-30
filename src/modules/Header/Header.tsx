@@ -11,8 +11,13 @@ import {
 } from '../shared/IconsSVG';
 import { getLogo } from '../../services/getLogo';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('header__nav-link navigation-title', {
+    active: isActive,
+  });
+
+const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
+  classNames('icon-container header__navbar-shopping-cart', {
     active: isActive,
   });
 
@@ -31,37 +36,31 @@ export const Header: React.FC = React.memo(() => {
         </Link>
 
         <div className="header__nav">
-          <NavLink to="/" className={getLinkClass}>
+          <NavLink to="/" className={getLinkClassCategory}>
             Home
           </NavLink>
 
-          <NavLink to="/phones" className={getLinkClass}>
+          <NavLink to="phones" className={getLinkClassCategory}>
             Phones
           </NavLink>
 
-          <NavLink to="/tablets" className={getLinkClass}>
+          <NavLink to="tablets" className={getLinkClassCategory}>
             Tablets
           </NavLink>
 
-          <NavLink to="/accessories" className={getLinkClass}>
+          <NavLink to="accessories" className={getLinkClassCategory}>
             Accessories
           </NavLink>
         </div>
 
         <div className="header__navbar-icons icons-wrapper">
-          <Link
-            to="favourites"
-            className="icon-container header__navbar-favourites"
-          >
+          <NavLink to="favourites" className={getLinkClassCart}>
             <IconFavourites />
-          </Link>
+          </NavLink>
 
-          <Link
-            to="shopping-cart"
-            className="icon-container header__navbar-shopping-cart"
-          >
+          <NavLink to="shopping-cart" className={getLinkClassCart}>
             <IconShoppingCart />
-          </Link>
+          </NavLink>
 
           <button
             type="button"

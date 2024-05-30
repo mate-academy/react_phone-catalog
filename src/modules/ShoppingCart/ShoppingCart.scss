@@ -1,0 +1,103 @@
+.shopping-cart {
+  // min-height: calc(100vh - );
+
+  padding-block: 24px 56px;
+
+  @include padding-content-inline;
+
+  &__back {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__items-container {
+    margin-bottom: 32px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    border: solid 1px $border-color-light-gray;
+    border-radius: 5px;
+  }
+
+  &__price {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1px;
+    color: $text-black-color;
+  }
+
+  &__total-items {
+    color: $text-gray-color;
+    font-size: 14px;
+  }
+
+  &__checkout {
+    height: 48px;
+    width: 100%;
+
+    margin-top: 32px;
+
+    position: relative;
+
+    border: none;
+    border-radius: 5px;
+    background-color: $text-black-color;
+    color: #fff;
+    font-size: 14px;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+
+      position: absolute;
+      top: -16px;
+      left: 0;
+
+      height: 1px;
+      width: 100%;
+
+      background-color: $border-color-light-gray;
+    }
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+  }
+}
+
+// .loader {
+//   --padding-top: 24px;
+//   --padding-bottom: 64px;
+//   --route-height: 16px;
+//   --title-height: 41px;
+//   --margin-bottom-route: 24px;
+//   --margin-bottom-title: 24px;
+//   --footer-height: 257px;
+//   --gap: 8px;
+//   --general-height:
+//     calc(#{$header-height} + var(--route-height) + var(--title-height) + var(--margin-bottom-route) + var(--margin-bottom-title) + var(--footer-height) + var(--padding-top) + var(--padding-bottom) + var(--gap));
+
+//   min-height: calc(100vh - var(--general-height));
+
+//   display: flex;
+//   align-items: center;
+
+//   @include on-tablet {
+//     --footer-height: 96px;
+//     --margin-bottom-route: 40px;
+//   }
+// }

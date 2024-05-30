@@ -1,11 +1,7 @@
 import React from 'react';
 import { getNumbers } from '../../../services/getNumbers';
 import { getActivePage } from '../../../services/getActivePage';
-import {
-  MoveLeft,
-  MoveNumber,
-  MoveRight,
-} from '../../shared/Buttons/MoveButtons';
+import { MoveButton, NumberOrSymbol } from '../../shared/Buttons/MoveButtons';
 
 type Props = {
   total: number;
@@ -56,11 +52,11 @@ export const Pagination: React.FC<Props> = React.memo(
 
     return (
       <div className="pagination">
-        <MoveLeft move={prevPage} disabled={currentPage === 1} />
+        <MoveButton move={prevPage} disabled={currentPage === 1} />
 
         <div className="pagination__pages">
           {pages.map((page, i) => (
-            <MoveNumber
+            <NumberOrSymbol
               key={page}
               move={() => pageChange(page)}
               active={i === getActivePage(currentPage, countPages)}
@@ -69,7 +65,7 @@ export const Pagination: React.FC<Props> = React.memo(
           ))}
         </div>
 
-        <MoveRight move={nextPage} disabled={currentPage === countPages} />
+        <MoveButton move={nextPage} disabled={currentPage === countPages} />
       </div>
     );
   },
