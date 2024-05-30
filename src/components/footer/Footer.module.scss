@@ -1,3 +1,46 @@
-.m {
-  color: rgb(0, 255, 76);
+.footer {
+  transition: all 0.6s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__logo {
+    height: 30px;
+    width: 289px;
+    margin-bottom: 1px;
+    // background-image: url(../../../public/img/svg/Nice_Gadgets_logo.svg);
+    // background-size: contain;
+    // background-repeat: no-repeat;
+
+    &__img {
+      height: fit-content;
+
+    }
+
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+
+    &__item {}
+  }
+
+  &__back {
+    display: flex;
+    height: 32px;
+
+    &__paragraph {
+      margin-right: 16px;
+    }
+
+    &__link {
+      width: 32px;
+      background-image: url(../../../public/img/svg/arrow_up.svg);
+      background-position: center;
+      background-repeat: no-repeat;
+      border: 1px solid #B4BDC3;
+    }
+  }
+
 }

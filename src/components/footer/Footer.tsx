@@ -2,7 +2,24 @@ import React from 'react';
 import styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
+
   return (
-    <p className={styles['footer']}>eee</p>
+    <div className={styles['footer']}>
+      <p className={styles['footer__logo']} >
+        <img className={styles['footer__logo__img']} src="./img/svg/Nice_Gadgets_logo.svg" alt="logo" />
+      </p>
+
+      <div className={styles['footer__links']}>
+        <a className={styles['footer__links__item']} href="#git">Github</a>
+        <a className={styles['footer__links__item']} href="#con">Contacts</a>
+        <a className={styles['footer__links__item']} href="#rights">rights</a>
+      </div>
+
+      <div className={styles['footer__back']}>
+        <p className={styles['footer__back__paragraph']}>Back to top</p>
+        <a className={styles['footer__back__link']} href="#header">
+        </a>
+      </div>
+    </div>
   );
 };

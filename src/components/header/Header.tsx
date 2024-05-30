@@ -3,9 +3,9 @@ import styles from './Header.module.scss';
 
 export const Header: React.FC = () => {
   return (
-    <header className={styles.header}>
+    <header className={styles.header} id='header'>
       <div className={styles[`header__container--1`]}>
-        <img src=".\img\svg\Nice Gadgets_logo.svg" className="logo" />
+        <img src=".\img\svg\header_Logo.svg" className="logo" />
 
         <nav className={styles['header__nav']}>
           <ul className={styles[`header__nav__list`]}>

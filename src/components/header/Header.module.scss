@@ -3,6 +3,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
+  transition: all 0.6s ease-in-out;
 
   &__container--1,
   &__container--2 {
