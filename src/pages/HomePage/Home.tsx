@@ -25,13 +25,14 @@ export const Home = () => {
   return (
     <React.Fragment>
       <Slider />
-      <Categories />
 
       <ProductsSlider
         products={getHighestPrice}
         isDiscount={false}
         title="Brand new models"
       />
+
+      <Categories />
 
       <ProductsSlider
         products={getHighestDiscounts}

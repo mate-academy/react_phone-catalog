@@ -3,6 +3,7 @@
 
 .pagination {
   padding-bottom: 64px;
+
   @include on-desktop {
     padding-bottom: 80px;
   }
@@ -19,6 +20,7 @@
   &__item {
     width: 25px;
     height: 25px;
+
     @include on-tablet {
       width: 32px;
       height: 32px;
@@ -47,6 +49,7 @@
     transition: all 0.3s ease-in-out;
     width: 25px;
     height: 25px;
+
     @include on-tablet {
       width: 32px;
       height: 32px;

@@ -8,11 +8,13 @@
     display: flex;
     flex-direction: column;
     gap: 15px;
+
     @include on-desktop {
       flex: 0 1 57%;
       gap: 10px;
     }
   }
+
   @include on-desktop {
     display: flex;
     justify-content: space-between;
@@ -93,6 +95,7 @@
   &__sale_price {
     color: $secondary;
     font-weight: 500;
+    font-size: 32px;
     text-decoration: line-through;
   }
   &__price_wrapper {
@@ -161,9 +164,6 @@
   &__new_price {
     font-size: 32px;
   }
-  &__sale_price {
-    font-size: 32px;
-  }
   &_id {
     text-align: right;
   }
@@ -186,10 +186,12 @@
     }
   }
 }
+
 .product_options__capacity_active {
   background-color: $primary;
   color: $white;
 }
+
 .product-options__addToCart_success {
   border: 1px solid $elements;
   color: $green;

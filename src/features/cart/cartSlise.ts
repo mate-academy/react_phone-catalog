@@ -9,6 +9,10 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
+    clearCart: state => {
+      // eslint-disable-next-line no-param-reassign
+      state.items = [];
+    },
     addToCart: (state, action) => {
       state.items.push(action.payload);
     },
@@ -45,4 +49,5 @@ export const {
   removeFromCart,
   handleAddQuantity,
   handleMinusQuantity,
+  clearCart,
 } = cartSlice.actions;

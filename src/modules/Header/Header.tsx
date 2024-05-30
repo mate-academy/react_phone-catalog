@@ -20,7 +20,7 @@ export const Header = () => {
       <div className={styles.header__wrapper}>
         <Logo />
 
-        <HeaderTools isOpen={isOpen} />
+        <HeaderTools isOpen={isOpen} setIsOpen={setIsOpen} />
         {width < TABLET_SIZE && (
           <Burger handleOpenMenu={handleOpenMenu} isOpen={isOpen} />
         )}

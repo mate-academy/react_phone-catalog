@@ -11,15 +11,21 @@ body {
 
 body {
   font-family: Mont, sans-serif;
+  &.body_lock {
+    overflow: hidden;
+  }
 }
-#root {
+
+.root {
   min-height: 100%;
   display: flex;
   flex-direction: column;
 }
+
 .main {
   flex: 1 1 auto;
   padding-top: 70px;
+
   @include on-desktop {
     padding-top: 95px;
   }
@@ -33,8 +39,8 @@ body {
 }
 
 :root {
+  --swiper-theme-color: #313237 !important;
   --color-silver: #f0f0f0;
-  --color-spacegray: #2e2c2a;
   --color-sierrablue: #afcde5;
   --color-gold: #f8eddd;
   --color-graphite: #696763;

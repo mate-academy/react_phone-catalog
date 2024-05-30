@@ -5,11 +5,13 @@
     display: grid;
     grid-template-columns: repeat(1, 1fr);
     gap: 32px;
+    padding-bottom: 55px;
+
     @include on-desktop {
       grid-template-columns: repeat(24, 1fr);
     }
   }
-  padding-bottom: 55px;
+
   @include on-desktop {
     padding-bottom: 80px;
   }

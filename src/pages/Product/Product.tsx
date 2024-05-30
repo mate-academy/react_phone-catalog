@@ -18,14 +18,19 @@ import { Accessorize } from '../../utils/types/Accessorize';
 import { Product as ProductItem } from '../../utils/types/Product';
 import styles from './Product.module.scss';
 import { Loader } from '../../modules/Loader';
-// import { useLocation } from 'react-router-dom';
+import notFound from './../../images/placeholders/product-not-found.png';
 
 export const Product = () => {
   const { productId, category } = useParams();
-  const { data: tabletsData } = useGetTabletsQuery();
-  const { data: productsData } = useGetDataQuery();
-  const { data: accessoriesData } = useGetAccessoriesQuery();
-  const { data: phonesData } = useGetPhonesQuery();
+
+  const { data: tabletsData, isLoading: tabletsLoading } = useGetTabletsQuery();
+
+  const { data: productsData, isLoading: productsLoading } = useGetDataQuery();
+
+  const { data: accessoriesData, isLoading: accessoriesLoading } =
+    useGetAccessoriesQuery();
+
+  const { data: phonesData, isLoading: phonesLoading } = useGetPhonesQuery();
 
   const detectCategory = (type: Category) => {
     switch (type) {
@@ -53,19 +58,30 @@ export const Product = () => {
   );
 
   const suggestedProducts = getSuggestedProducts(productsData || [], 12);
+  const loadingData =
+    tabletsLoading && productsLoading && accessoriesLoading && phonesLoading;
 
   return (
     <>
-      {product?.name && <BreadCrumbs title={product?.name} />}
-      <div className={styles.backLink}>
-        <Container>
+      <Container>
+        {product?.name && <BreadCrumbs title={product?.name} />}
+        <div className={styles.backLink}>
           <BackLink />
-        </Container>
-      </div>
-      {!currentGadget && !product && <Loader />}
-      {currentGadget && product && (
+        </div>
+      </Container>
+      {loadingData && <Loader />}
+      {!loadingData && currentGadget && product && (
         <ProductDetails currentGadget={currentGadget} product={product} />
       )}
+      {!loadingData && !currentGadget && !product && (
+        <Container>
+          <h2>Sorry, the product was not found</h2>
+          <div className={styles.notFoundProduct}>
+            <img src={notFound} alt="Not found image" />
+          </div>
+        </Container>
+      )}
+
       <ProductsSlider
         products={suggestedProducts}
         isDiscount={true}

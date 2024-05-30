@@ -8,6 +8,9 @@
   flex-direction: column;
   height: 100%;
   transition: all 0.3s ease-in-out;
+  svg {
+    height: 100%;
+  }
   &:hover {
     box-shadow: 0 2px 16px 0 #0000001a;
   }
@@ -62,6 +65,7 @@
     flex-direction: column;
     gap: 11px;
     height: 100%;
+    opacity: 1;
     &_hide {
       display: none;
     }

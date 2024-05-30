@@ -34,11 +34,8 @@ export const ProductSlider: React.FC<Props> = ({ images }) => {
           >
             {images.map(image => (
               <SwiperSlide key={image}>
-                <img
-                  // eslint-disable-next-line max-len
-                  src={image}
-                  alt=""
-                />
+                <img src={image} alt="Gallery image" loading="lazy" />
+                <div className="swiper-lazy-preloader"></div>
               </SwiperSlide>
             ))}
           </Swiper>
@@ -73,11 +70,8 @@ export const ProductSlider: React.FC<Props> = ({ images }) => {
                 key={image}
                 className={`${styles.swiper__wrapper__small_thumb} swiper__thumbs`}
               >
-                <img
-                  // eslint-disable-next-line max-len
-                  src={image}
-                  alt=""
-                />
+                <img src={image} alt="Gallery image" loading="lazy" />
+                <div className="swiper-lazy-preloader"></div>
               </SwiperSlide>
             ))}
           </Swiper>

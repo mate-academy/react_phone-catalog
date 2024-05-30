@@ -9,9 +9,11 @@
   justify-content: center;
   box-shadow: -1px 0 0 0 $elements;
 }
+
 .header__lines {
   display: block;
   position: relative;
+
   @extend %burger-styles;
 
   &::after {
@@ -19,6 +21,7 @@
     position: absolute;
     top: -5px;
     transition: all 0.3s ease-in-out;
+
     @extend %burger-styles;
   }
   &::before {
@@ -26,6 +29,7 @@
     position: absolute;
     bottom: -5px;
     transition: all 0.3s ease-in-out;
+
     @extend %burger-styles;
   }
   &.header__lines_open {

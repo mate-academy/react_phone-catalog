@@ -24,7 +24,7 @@ export const Filter = () => {
   const { width } = useWindowDimensions();
 
   return (
-    <section className={styles.filter}>
+    <div className={styles.filter}>
       <div className={styles.filter__wrapper}>
         <DropDown
           sortFields={SORT_BY}
@@ -40,6 +40,6 @@ export const Filter = () => {
       {width < TABLET_SIZE && (
         <Search queryParams={SortVariants.query} label={'Search'} />
       )}
-    </section>
+    </div>
   );
 };

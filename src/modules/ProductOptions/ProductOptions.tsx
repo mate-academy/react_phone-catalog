@@ -90,7 +90,7 @@ export const ProductOptions: React.FC<Props> = ({ currentGadget, product }) => {
           <div className={styles['product-options__capacities']}>
             {capacityAvailable.map(capacityItem => (
               <Link
-                to={`../${category}/${namespaceId}-${capacityItem.toLowerCase()}-${currentColor}`}
+                to={`../${category}/${namespaceId}-${capacityItem.toLowerCase()}-${currentColor.replace(/ /g, '-')}`}
                 key={capacityItem}
                 className={classNames(
                   styles['product-options__capacity-item'],

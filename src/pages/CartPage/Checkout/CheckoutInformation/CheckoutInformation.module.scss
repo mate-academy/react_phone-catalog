@@ -19,6 +19,11 @@
     font-size: 14px;
     font-weight: 700;
     line-height: 1.5;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease-in-out;
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
   }
   &__total {
     font-size: 14px;

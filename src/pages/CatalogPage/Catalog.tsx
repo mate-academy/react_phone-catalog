@@ -4,6 +4,7 @@ import { ProductsList } from '../../modules/ProductsList';
 import { Category } from '../../utils/types/Categories';
 import { useGetDataQuery } from '../../store/api/api';
 import { Loader } from '../../modules/Loader';
+import { Container } from '../../modules/Container';
 
 export const Catalog = () => {
   const { pathname } = useLocation();
@@ -23,11 +24,13 @@ export const Catalog = () => {
 
   return (
     <div>
-      {phonesData ? (
-        <ProductsList data={phonesData} title={getTitleForCategory} />
-      ) : (
-        <Loader />
-      )}
+      <Container>
+        {phonesData ? (
+          <ProductsList data={phonesData} title={getTitleForCategory} />
+        ) : (
+          <Loader />
+        )}
+      </Container>
     </div>
   );
 };

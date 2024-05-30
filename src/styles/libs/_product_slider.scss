@@ -3,15 +3,13 @@
 .swiper-thumbs {
   .swiper-wrapper {
     justify-content: center;
-  }
-}
-.swiper__thumbs.swiper-slide-thumb-active {
-  border: 1px solid #313237;
-}
-.swiper-thumbs {
-  .swiper-wrapper {
+
     @include on-tablet {
       min-width: 0;
     }
   }
+}
+
+.swiper__thumbs.swiper-slide-thumb-active {
+  border: 1px solid #313237;
 }

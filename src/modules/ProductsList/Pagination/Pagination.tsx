@@ -6,6 +6,7 @@ import { SortVariants } from '../../../utils/enums/sortVariants';
 import leftArrow from './../../../images/icons/chevron-left.svg';
 import rightArrow from './../../../images/icons/pagination-right.svg';
 import { scrollTop } from '../../../helpers/helpers';
+import { Container } from '../../Container';
 
 type Props = {
   pages: number;
@@ -31,6 +32,7 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
     const pageParam = searchParams.get('page');
 
     setCurrentButton(pageParam ? +pageParam : 1);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [PER_PAGE, SORT_BY, QUERY]);
 
@@ -119,6 +121,7 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
 
     setArrOfCurrButtons(tempNumberOfPages);
     setCurrentPage(currentButton as number);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentButton, pages]);
 
@@ -131,47 +134,54 @@ export const Pagination: React.FC<Props> = ({ pages, setCurrentPage }) => {
     params.set('page', String(currentButton));
 
     setSearchParams(params);
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentButton]);
 
   return (
-    <div className={styles.pagination}>
-      <ul className={styles.pagination__list}>
-        <li className={(styles.pagination__prev, styles.pagination__controls)}>
-          <button
-            disabled={currentButton === 1}
-            className={styles.pagination__navigation}
-            onClick={decreasePage}
+    <section className={styles.pagination}>
+      <Container>
+        <ul className={styles.pagination__list}>
+          <li
+            className={(styles.pagination__prev, styles.pagination__controls)}
           >
-            <img src={leftArrow} alt="Left arrow" />
-          </button>
-        </li>
-        {arrOfCurrButtons.map((page, index) => (
-          <li className={styles.pagination__item} key={index}>
             <button
-              onClick={() => handlerChangePagination(page)}
-              className={classNames(
-                {
-                  [styles.pagination__btn_current]:
-                    String(page) === String(currentButton),
-                },
-                styles.pagination__button,
-              )}
+              disabled={currentButton === 1}
+              className={styles.pagination__navigation}
+              onClick={decreasePage}
             >
-              {page}
+              <img src={leftArrow} alt="Left arrow" />
             </button>
           </li>
-        ))}
-        <li className={(styles.pagination__next, styles.pagination__controls)}>
-          <button
-            disabled={currentButton === pages}
-            className={styles.pagination__navigation}
-            onClick={increasePage}
+          {arrOfCurrButtons.map((page, index) => (
+            <li className={styles.pagination__item} key={index}>
+              <button
+                onClick={() => handlerChangePagination(page)}
+                className={classNames(
+                  {
+                    [styles.pagination__btn_current]:
+                      String(page) === String(currentButton),
+                  },
+                  styles.pagination__button,
+                )}
+              >
+                {page}
+              </button>
+            </li>
+          ))}
+          <li
+            className={(styles.pagination__next, styles.pagination__controls)}
           >
-            <img src={rightArrow} alt="Right arrow" />
-          </button>
-        </li>
-      </ul>
-    </div>
+            <button
+              disabled={currentButton === pages}
+              className={styles.pagination__navigation}
+              onClick={increasePage}
+            >
+              <img src={rightArrow} alt="Right arrow" />
+            </button>
+          </li>
+        </ul>
+      </Container>
+    </section>
   );
 };

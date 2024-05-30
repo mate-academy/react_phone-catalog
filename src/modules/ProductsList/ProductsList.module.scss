@@ -5,13 +5,19 @@
     display: grid;
     grid-template-columns: 1fr;
     row-gap: 20px;
+
     @include on-tablet {
       grid-template-columns: repeat(2, 1fr);
       gap: 40px 16px;
     }
+
     @include on-desktop {
       grid-template-columns: repeat(4, 1fr);
       gap: 40px 16px;
     }
   }
+}
+
+.pagination_hide {
+  display: none;
 }

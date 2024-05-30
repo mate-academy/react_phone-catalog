@@ -31,7 +31,9 @@
     width: 100%;
     font-weight: 500;
     transition: color 0.3s ease-in-out;
+    font-size: 14px;
     &:hover {
+      background-color: $hover;
       color: $primary;
     }
   }
@@ -59,6 +61,7 @@
     }
   }
 }
+
 .dropdownActive {
   color: $primary;
 }

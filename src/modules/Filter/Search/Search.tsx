@@ -16,6 +16,7 @@ export const Search: React.FC<Props> = ({ label, queryParams }) => {
 
   const [value, setValue] = useState(query);
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const applyQuery = useCallback(debounce(setAppliedQuery, 1000), []);
 
   const handleQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -34,6 +35,7 @@ export const Search: React.FC<Props> = ({ label, queryParams }) => {
 
     searchParams.set('page', '1');
     setSearchParams(searchParams);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [appliedQuery, applyQuery]);
 
   return (

@@ -1,14 +1,17 @@
-import { useAppSelector } from '../../../../hooks/hooks';
+import React from 'react';
 import { CartItem } from './CartItem/CartItem';
 import styles from './CartItems.module.scss';
+import { Product } from '../../../../utils/types/Product';
 
-export const CartItems = () => {
-  const products = useAppSelector(state => state.cart);
+type Props = {
+  products: Product[];
+};
 
+export const CartItems: React.FC<Props> = ({ products }) => {
   return (
     <div className={styles.cartItems}>
       <div className={styles.cartItems__wrapper}>
-        {products.items.map(product => (
+        {products.map(product => (
           <CartItem key={product.id} product={product} />
         ))}
       </div>

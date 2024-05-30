@@ -11,6 +11,7 @@
   &__tools_wrapper {
     display: flex;
     border-top: 1px solid $elements;
+
     @include on-tablet {
       border-top: unset;
       height: 100%;
@@ -20,7 +21,6 @@
     position: absolute;
     top: -6px;
     right: -6px;
-    display: block;
     width: 14px;
     height: 14px;
     background-color: $red;
@@ -41,53 +41,49 @@
     &:last-child {
       border-left: 1px solid $elements;
     }
+
     @include on-tablet {
       flex: 1 1 auto;
       height: auto;
       width: 48px;
       border-left: 1px solid $elements;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        height: 3px;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+        background-color: $primary;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+          right: 0;
+        }
+      }
     }
+
     @include on-desktop {
       width: 64px;
     }
   }
   &__tools__button_active {
-    border-bottom: 3px solid $primary;
-  }
-}
+    position: relative;
 
-.header__tools__toggle_search {
-  width: 64px;
-  height: 64px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-left: 1px solid $elements;
-  cursor: pointer;
-  @include on-tablet {
-    flex: 1 1 auto;
-    height: auto;
-    width: 48px;
-    border-left: 1px solid $elements;
-  }
-  @include on-desktop {
-    width: 64px;
-  }
-  img {
-    width: 16px;
-    height: 16px;
-  }
-}
-
-.header__tools_search {
-  width: 0px;
-  display: flex;
-  transition: width 0.3s ease-in-out;
-  align-items: center;
-  &_open {
-    width: 128px;
-  }
-  input {
-    width: 100%;
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary;
+    }
   }
 }

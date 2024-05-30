@@ -9,6 +9,8 @@ import React, { useRef } from 'react';
 import { Product } from '../../utils/types/Product';
 import styles from './ProductsSlider.module.scss';
 import { NavigationOptions } from 'swiper/types';
+import arrow_right from './../../images/icons/arrow_right_filled.svg';
+import arrow_left from './../../images/icons/arrow_left_filled.svg';
 
 type Props = {
   products: Product[] | undefined;
@@ -27,22 +29,28 @@ export const ProductsSlider: React.FC<Props> = ({
   return (
     <section className={styles.productsSlider}>
       <div className="container">
-        <h2 className={styles.productsSlider__title}>{title}</h2>
-        <div className={styles.productsSlider__buttons}>
-          <button
-            ref={navigationPrevRef}
-            className={
-              (styles.productsSlider__button_prev,
-              styles.productsSlider__button)
-            }
-          ></button>
-          <button
-            ref={navigationNextRef}
-            className={`
+        <div className={styles.productsSlider__inner}>
+          <h2 className={styles.productsSlider__title}>{title}</h2>
+          <div className={styles.productsSlider__buttons}>
+            <button
+              ref={navigationPrevRef}
+              className={
+                (styles.productsSlider__button_prev,
+                styles.productsSlider__button)
+              }
+            >
+              <img src={arrow_left} alt="Arrow left" />
+            </button>
+            <button
+              ref={navigationNextRef}
+              className={`
               ${styles.productsSlider__button}
               productsSlider__button_next
             `}
-          ></button>
+            >
+              <img src={arrow_right} alt="Arrow right" />
+            </button>
+          </div>
         </div>
         <div className={styles.productsSlider__wrapper}>
           <Swiper

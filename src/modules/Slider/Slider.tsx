@@ -6,9 +6,9 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import 'swiper/css/effect-fade';
 import './../../styles/libs/_swiper.scss';
-import bannerAccessories from './../../images/banner/banner-accessories.png';
-import bannerPhones from './../../images/banner/banner-phones.png';
-import bannerTablets from './../../images/banner/banner-tablets.png';
+import bannerAccessories from './../../images/banner/dark_banner_3.jpg';
+import bannerPhones from './../../images/banner/dark_banner_5.jpg';
+import bannerTablets from './../../images/banner/dark_banner_6.jpg';
 import style from './Slider.module.scss';
 import prevArrow from './../../images/icons/prev_icon.svg';
 import nextArrow from './../../images/icons/next_icon.svg';
@@ -69,17 +69,32 @@ export const Slider = () => {
               }
 
               swiper.navigation.init();
+
               swiper.navigation.update();
+              swiper.pagination.init();
+
+              swiper.pagination.update();
+            }}
+            onAfterInit={swiper => {
+              swiper.pagination.init();
+              swiper.pagination.update();
             }}
           >
             <SwiperSlide className={style.slide}>
-              <img src={bannerAccessories} alt="Banner accessories" />
+              <img
+                src={bannerAccessories}
+                alt="Banner accessories"
+                loading="lazy"
+              />
+              <div className="swiper-lazy-preloader"></div>
             </SwiperSlide>
             <SwiperSlide className={style.slide}>
-              <img src={bannerPhones} alt="Banner phones" />
+              <img src={bannerPhones} alt="Banner phones" loading="lazy" />
+              <div className="swiper-lazy-preloader"></div>
             </SwiperSlide>
             <SwiperSlide className={style.slide}>
-              <img src={bannerTablets} alt="Banner tablets" />
+              <img src={bannerTablets} alt="Banner tablets" loading="lazy" />
+              <div className="swiper-lazy-preloader"></div>
             </SwiperSlide>
           </Swiper>
 

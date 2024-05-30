@@ -58,8 +58,7 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
       )}
       {isImageLoading && (
         <ContentLoader
-          speed={2}
-          viewBox="0 0 360 214"
+          viewBox="0 0 340 570"
           backgroundColor="#f3f3f3"
           foregroundColor="#ecebeb"
         >
@@ -122,7 +121,7 @@ export const ShopCard: React.FC<Props> = ({ product, isDiscount }) => {
         </div>
         <div className={styles.card__buttons}>
           {isAdded ? (
-            <div className={styles.card__success_added}>Added</div>
+            <div className={styles.card__success_added}>Added to cart</div>
           ) : (
             <button
               className={styles.card__buttons_card}

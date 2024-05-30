@@ -25,6 +25,10 @@ export const root = createHashRouter([
         element: <Catalog />,
       },
       {
+        path: '*',
+        element: <Error />,
+      },
+      {
         path: 'favorites',
         element: <FavoritesPage />,
       },

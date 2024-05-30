@@ -1,19 +1,42 @@
 @import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
 
 .productsSlider {
   padding: 50px 0;
-  &__title {
-    margin-bottom: 20px;
+  &__button {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons;
+    &:hover {
+      border: 1px solid $primary;
+    }
+    &[disabled] {
+      cursor: default;
+      background-color: $elements;
+      opacity: 0.3;
+      border: 1px solid $icons;
+    }
   }
   &__buttons {
     display: flex;
     justify-content: flex-end;
     gap: 16px;
-    margin-bottom: 28px;
   }
-  &__button {
-    width: 32px;
-    height: 32px;
-    border: 1px solid $icons;
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+  &__title {
+    max-width: 150px;
+
+    @include on-tablet {
+      max-width: 100%;
+    }
   }
 }
