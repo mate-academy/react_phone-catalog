@@ -91,6 +91,7 @@
 }
 
 .menu:target {
+  z-index: 1;
   opacity: 1;
   pointer-events: all;
 }

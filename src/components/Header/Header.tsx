@@ -5,7 +5,7 @@ import { LogoCart } from '../Logo/LogoCart';
 import { NavList } from './NavList/NavList';
 import { LogoFavorites } from '../Logo/LogoFavorites';
 import style from './Header.module.scss';
-import { useContext, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logo/LogoBurger';
 import { LanguageContext } from '../../store/LanguageProvider';
@@ -15,23 +15,39 @@ import { Slider } from './AsideMenu/Slider/Slider';
 import classNames from 'classnames';
 
 export const Header = () => {
-  const { isLaptop } = useContext(BreakPointsContext);
+  const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
   const [count, setCount] = useState(0);
-  // const [direction, setDirection] = useState(false);
-  // let timer: any = null;
+  const [direction, setDirection] = useState(false);
+  const timer = useRef<NodeJS.Timer>();
 
   function handleNext() {
+    clearTimeout(timer.current);
     if (count < 2) {
       setCount(prevCount => prevCount + 1);
     }
   }
 
   function handlePrev() {
+    clearTimeout(timer.current);
+
     if (count > 0) {
       setCount(prevCount => prevCount - 1);
     }
   }
+
+  timer.current = setTimeout(() => {
+    if (direction) {
+      setCount(prevCount => prevCount + 1);
+    }
+
+    if (count <= 1) {
+      setDirection(true);
+    } else if (count === 2) {
+      setDirection(false);
+      setCount(0);
+    }
+  }, 600000);
 
   return (
     <header className={style.header}>
@@ -71,13 +87,15 @@ export const Header = () => {
           <h1 className={style.header__title}>{t('welcome')}</h1>
 
           <div className={style.header__slider}>
-            <button
-              className={style.header__sliderButton}
-              onClick={handlePrev}
-              disabled={count === 0}
-            >
-              <ArrowLeft className={style.header__arrowIcon} />
-            </button>
+            {!isMobile && (
+              <button
+                className={style.header__sliderButton}
+                onClick={handlePrev}
+                disabled={count === 0}
+              >
+                <ArrowLeft className={style.header__arrowIcon} />
+              </button>
+            )}
             <Slider count={count} />
             <div className={style.header__containerSmallBtn}>
               {[0, 1, 2].map(item => (
@@ -90,13 +108,15 @@ export const Header = () => {
                 ></span>
               ))}
             </div>
-            <button
-              className={style.header__sliderButton}
-              onClick={handleNext}
-              disabled={count === 2}
-            >
-              <ArrowRight className={style.header__arrowIcon} />
-            </button>
+            {!isMobile && (
+              <button
+                className={style.header__sliderButton}
+                onClick={handleNext}
+                disabled={count === 2}
+              >
+                <ArrowRight className={style.header__arrowIcon} />
+              </button>
+            )}
           </div>
         </div>
       </div>

@@ -5,8 +5,7 @@
   width: 1040px;
   box-sizing: border-box;
   overflow-x: hidden;
-  padding-bottom: 18px;
-  margin-inline:15px;
+  margin-inline: 15px;
 
   &__container {
     display: flex;
@@ -23,15 +22,14 @@
   }
 }
 
-// @media (max-width: 639px) {
-//   .slider {
-//     width: 592px;
-//     height: 221px;
-
-//     &__image {
-//       width: 490px;
-//       height: 189px;
-//       padding-inline: 15px;
-//     }
-//   }
-// }
+@media (max-width: 639px) {
+  .slider {
+    margin: 0;
+    &__image {
+      width: 100%;
+      height: 100vw;
+      object-fit: cover;
+      object-position: 88%;
+    }
+  }
+}

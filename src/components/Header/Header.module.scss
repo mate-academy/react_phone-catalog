@@ -63,12 +63,14 @@
   }
 
   &__bottom {
+    max-width: 1200px;
     margin: 0 auto;
-    max-width: 1136px;
   }
 
   &__content {
     margin-inline: 16px;
+    max-width: 1136px;
+    margin: 0 auto;
   }
 
   &__title {
@@ -82,7 +84,8 @@
     display: flex;
     position: relative;
     justify-content: space-between;
-    max-width: 1136px;    // до цього розміру ніколи не розширюється...
+    margin: 0 auto;
+    max-height: 432px;
   }
 
   &__sliderButton {
@@ -104,8 +107,7 @@
     justify-content: center;
     left: 0;
     right: 0;
-    bottom: 0;
-
+    bottom: -20px;
   }
 
   &__smallButton {
@@ -159,25 +161,12 @@
     }
 
     &__title {
-      // width: 592px;
-      margin: 32px auto;
+      margin: 48px auto;
     }
 
     &__content {
       margin-inline: 24px;
     }
-
-    // &__bottomSlider {
-
-    // //   width: 592px;
-    //   height: 221px;
-    // //   margin: 0 auto;
-    // }
-
-    // &__arrowButton {
-    //   height: 189px;
-    //   width: 32px;
-    // }
   }
 }
 
@@ -190,9 +179,17 @@
 
     &__title {
       line-height: 41px;
+      margin: 24px 16px;
       letter-spacing: -1%;
       font-size: 32px;
-      margin: 24px 16px;
+    }
+
+    &__bottom {
+      max-width: 100%;
+    }
+
+    &__content {
+      margin: 0;
     }
   }
 }
