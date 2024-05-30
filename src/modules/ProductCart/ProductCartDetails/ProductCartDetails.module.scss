@@ -7,11 +7,11 @@
   margin: 0 auto 64px;
   z-index: 1;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px 24px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 0 0;
     width: 1136px;
     margin: 0 auto 24px
@@ -51,13 +51,13 @@
     align-items: center;
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 24px;
     }
   }
 
   &__container {
-    @include onDesktop {
+    @include on-desktop {
       display: grid;
       grid-template-columns: repeat(24, 1fr);
       gap: 16px;
@@ -65,7 +65,7 @@
   }
 
   &__product {
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / 17;
     }
   }
@@ -76,7 +76,7 @@
     padding: 24px;
     height: min-content;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 17 / 25;
     }
   }
@@ -98,7 +98,7 @@
     display: block;
     margin-bottom: 16px;
 
-    @include onDesktop {
+    @include on-desktop {
       margin-bottom: 25px;
     }
   }
@@ -133,7 +133,7 @@
   gap: 16px;
   margin-bottom: 32px;
 
-  @include onDesktop {
+  @include on-desktop {
     margin: 0;
   }
 
@@ -161,7 +161,7 @@
     width: 100%;
     justify-content: space-between;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 24px;
       width: min-content;
     }
@@ -182,7 +182,7 @@
     align-items: center;
     padding: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       height: 128px;
       gap: 24px;
@@ -199,7 +199,7 @@
     color: $border-button-color-hover;
     line-height: 21px;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 336px;
     }
   }
@@ -265,7 +265,7 @@
   transform: translate(-50%, -50%);
   border: 1px solid $color-gray;
 
-  @include onTablet {
+  @include on-tablet {
     width: 60%;
   }
 
@@ -275,7 +275,7 @@
     color: $border-button-color-hover;
     font-size: 18px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 24px;
     }
   }

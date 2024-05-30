@@ -1,4 +1,3 @@
-import { CartDetails } from '../../../features/DetailsSlice';
 import { useAppDispatch, useAppSelector } from '../../shared/hooks/hooks';
 import styles from './ProductCartDetails.module.scss';
 import * as actionCart from '../../../features/DetailsSlice';
@@ -9,10 +8,11 @@ export const ProductCartDetails = () => {
   const [isModal, setIsModal] = useState(false);
   const dispatch = useAppDispatch();
   const fullPrice = cartItem.reduce(
-    (acc: number, item: CartDetails) =>
-      acc + item.product?.price * item.quantity,
+    (acc, item) => acc + item.product?.price * item.quantity,
     0,
   );
+
+  const fullItem = cartItem.reduce((acc, item) => acc + item.quantity, 0);
 
   const scrollFix = () => {
     const menu = document.getElementById('menu');
@@ -28,15 +28,15 @@ export const ProductCartDetails = () => {
     setIsModal(!isModal);
   };
 
-  const deleteProduct = (id: number) => {
+  const deleteProduct = (id: string) => {
     dispatch(actionCart.deleteCart(id));
   };
 
-  const addProductCount = (id: number) => {
+  const addProductCount = (id: string) => {
     dispatch(actionCart.addCountProduct(id));
   };
 
-  const minusProductCount = (id: number) => {
+  const minusProductCount = (id: string) => {
     dispatch(actionCart.minusCountProduct(id));
   };
 
@@ -51,7 +51,7 @@ export const ProductCartDetails = () => {
     <div className={styles.cart__container}>
       <div className={styles.cart__product}>
         <div className={styles.product}>
-          {cartItem?.map((product: CartDetails) => (
+          {cartItem?.map(product => (
             <div
               key={product.product.itemId}
               className={styles.product__wraper}
@@ -67,7 +67,6 @@ export const ProductCartDetails = () => {
                   alt="img"
                 />
                 <h3 className={styles.product__name}>
-                  {' '}
                   {product?.product.name}
                 </h3>
               </div>
@@ -98,7 +97,7 @@ export const ProductCartDetails = () => {
       <div className={styles.cart__wraper}>
         <h2 className={styles.cart__total}>{`$${fullPrice}`}</h2>
         <span className={styles.cart__item}>
-          {`Total for ${cartItem.length} items`}
+          {`Total for ${fullItem} items`}
         </span>
 
         <div className={styles.cart__line}></div>

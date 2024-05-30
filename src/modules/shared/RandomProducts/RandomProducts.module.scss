@@ -24,12 +24,12 @@
     width: 212px;
     height: 439px;
 
-    @include onTablet {
+    @include on-tablet {
       width: 237px;
       height: 512px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 272px;
       height: 506px;
     }

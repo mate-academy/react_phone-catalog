@@ -1,16 +1,21 @@
 import classNames from 'classnames';
-import { useAppSelector } from '../hooks/hooks';
+import { useAppDispatch, useAppSelector } from '../hooks/hooks';
 import styles from './ProductDetails.module.scss';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import * as actionProduct from '../../../features/DetailsSlice';
 export const ProductDetails = () => {
   const [borderImg, setBorderImg] = useState(0);
   const [indexColor] = useState(0);
   const [widthSlider, setWidthSlider] = useState(0);
   const widthPicture = document.getElementById('widthPicture')?.offsetWidth;
+  const { productDetails, products } = useAppSelector(state => state.product);
+  const { cartItem, favorite } = useAppSelector(state => state.selectedProduct);
+  const dispath = useAppDispatch();
+  const isCart = cartItem.find(item => item.id === productDetails?.id);
 
-  const { productDetails } = useAppSelector(state => state.product);
+  const isFavorite = favorite.find(item => item.itemId === productDetails?.id);
+
   const choosePhoto = (
     e: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
     index: number,
@@ -30,6 +35,24 @@ export const ProductDetails = () => {
 
   const findProdutByCapacity = (capacity: string) => {
     return `/${productDetails?.category}/${productDetails?.namespaceId}-${capacity.toLowerCase()}-${productDetails?.color.replaceAll(' ', '-')}`;
+  };
+
+  const addProductCart = () => {
+    if (productDetails) {
+      const id = products.find(item => item.itemId === productDetails.id);
+
+      if (id) {
+        dispath(actionProduct.addCart(id));
+      }
+    }
+  };
+
+  const addProductFavorite = () => {
+    const id = products.find(item => item.itemId === productDetails?.id);
+
+    if (id) {
+      dispath(actionProduct.addFavorite(id));
+    }
   };
 
   return (
@@ -126,10 +149,32 @@ export const ProductDetails = () => {
             </div>
 
             <div className={styles.product__send}>
-              <button className={styles.product__button}>Add to cart</button>
-
-              <div className={styles.product__like}>
-                <a className={styles.product__favorit} href=""></a>
+              {isCart ? (
+                <button
+                  className={`${styles.product__button} ${styles.is__add}`}
+                  onClick={addProductCart}
+                >
+                  Added
+                </button>
+              ) : (
+                <button
+                  className={styles.product__button}
+                  onClick={addProductCart}
+                >
+                  Add to cart
+                </button>
+              )}
+              <div
+                onClick={addProductFavorite}
+                className={styles.product__like}
+              >
+                {isFavorite ? (
+                  <button
+                    className={`${styles.product__favorit} ${styles.product__favorit__choose}`}
+                  />
+                ) : (
+                  <button className={`${styles.product__favorit}`} />
+                )}
               </div>
             </div>
 

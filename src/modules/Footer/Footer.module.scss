@@ -7,7 +7,7 @@
   display: flex;
   padding: 32px 16px;
 
-  @include onTablet {
+  @include on-tablet {
     height: 95px;
     padding: 0;
   }
@@ -20,14 +20,14 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       align-items:center;
       flex-direction: row;
       gap: 0;
       padding: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       padding: 0;
     }
   }
@@ -62,7 +62,7 @@
         border: 9px solid $border-button-color-hover;
       }
 
-      @include onTablet {
+      @include on-tablet {
         margin-right: 48px;
       }
     }
@@ -74,7 +74,7 @@
       }
     }
 
-    @include onTablet {
+    @include on-tablet {
       padding-right: 48px;
     }
   }
@@ -100,14 +100,14 @@
   flex-direction: column;
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 0;
     width: 192px;
     justify-content: space-between;
     flex-direction: row;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: 378px;
   }
 
@@ -120,7 +120,7 @@
     position: relative;
     font-weight: 800;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 

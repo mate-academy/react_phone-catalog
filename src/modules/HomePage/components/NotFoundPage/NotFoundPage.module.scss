@@ -8,11 +8,11 @@
   width: 100%;
   text-align: center;
 
-  @include onTablet {
+  @include on-tablet {
     height: calc(100vh - 51px - 95px);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: calc(100vh - 64px - 95px);
   }
  
@@ -20,12 +20,12 @@
     width: 80%;
     object-fit: contain;
 
-    @include onTablet {
+    @include on-tablet {
       width: auto;
       height: 80%;
     }
   
-    @include onDesktop {
+    @include on-desktop {
       width: auto;
       height: 100%;
     }

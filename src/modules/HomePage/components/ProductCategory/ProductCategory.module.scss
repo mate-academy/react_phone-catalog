@@ -11,7 +11,7 @@
     align-items: center;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       grid-gap: 32px;
@@ -20,8 +20,9 @@
       column-gap: 16px;
     }
   }
+
   &__content__tablets {
-    @include onTablet {
+    @include on-tablet {
       grid-column: 2 / 3;
       width: 100%;
     }
@@ -36,7 +37,7 @@
     color: $border-button-color-hover;
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 32px;
       line-height: 40.9px;
     }
@@ -56,13 +57,13 @@
     cursor: pointer;
     transition: all 0.3s;
 
-    @include onTablet {
+    @include on-tablet {
       width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 368px;
       height: 368px;
     }
@@ -90,7 +91,7 @@
     width: 100%;
     aspect-ratio: 1 / 1;
  
-    @include onTablet {
+    @include on-tablet {
       width: 100%;
       height: auto;
       aspect-ratio: 1 / 1;

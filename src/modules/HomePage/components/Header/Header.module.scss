@@ -8,7 +8,7 @@
   align-items: center;
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     justify-content: flex-start;
     gap: 32px;
@@ -50,9 +50,98 @@
     width: 64px;
     height: 22px;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 80px;
       height: 28px;
+    }
+  }
+
+  &__button {
+    height: 48px;
+    width: 48px;
+    background-color: inherit;
+    background-image: url(../../../shared/headerImg/search.svg);
+    background-repeat: no-repeat;
+    background-size: 22px;
+    background-position: center;
+    border: 1px solid $border-button-color;
+    cursor: pointer;
+
+    @include on-tablet {
+      width: 48px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 64px;
+      height: 64px;
+    }
+  }
+
+  &__small {
+    display: block;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__query {
+    // display: none;
+    background-color: inherit;
+    border: 1px solid $border-button-color;
+    padding: 10px;
+    height: 48px;
+    width: 100px;
+    border-right: none;
+
+    &:focus {
+      border-color: $border-button-color-hover
+    }
+
+    @include on-tablet {
+      display: block;
+      width: 150px;
+      height: 48px;
+    }
+
+    @include on-desktop {
+      width: 200px;
+      height: 64px;
+    }
+
+    &__smol {
+      display: block;
+
+      @include on-tablet {
+        display: none;
+      }
+    }
+  }
+
+  &__close {
+    height: 12px;
+    width: 12px;
+    border: none;
+    background-color: inherit;
+    background-image: url(../../../shared/headerImg/Closeclose.svg);
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    cursor: pointer;
+  }
+
+  &__wraper {
+    display: flex;
+    align-items: center;
+
+
+    &__small {
+      display: flex;
+      align-items: center;
+
+      @include on-tablet {
+        display: none;
+      }
     }
   }
 }
@@ -70,11 +159,11 @@
     width: 100%;
     background-color: $border-button-color-hover;
 
-    @include onTablet {
+    @include on-tablet {
       bottom: -16px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       bottom: -24px;
     }
   }
@@ -88,21 +177,21 @@
   align-items: center;
   padding-left: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     border: 1px solid $border-button-color;
     display: flex;
     align-items: center;
     padding-left: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: 64px;
   }
 
   &__active {
     transform: translateX(100%);
 
-    @include onTablet {
+    @include on-tablet {
       transform: translateX(0);
     }
   }
@@ -121,7 +210,7 @@
     background-color: $color-white;
     z-index: 2;
   
-    @include onTablet {
+    @include on-tablet {
       padding: 0;
       flex-direction: row;
       position: relative;
@@ -156,12 +245,12 @@
     bottom: 50%;
     left: 50%;
 
-    @include onTablet {
+    @include on-tablet {
       top: 10px;
       right: 10px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       top: 18px;
       right: 18px;
     }
@@ -188,12 +277,12 @@
     cursor: pointer;
     border: 1px solid $border-button-color;
 
-    @include onTablet {
+    @include on-tablet {
       width: 48px;
       height: 48px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 66px;
       height: 64px;
     }
@@ -209,7 +298,7 @@
     align-items: center;
     width: 100%;
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 48px;
     }
   }
@@ -218,7 +307,7 @@
     display: flex;
     width: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       width: min-content;
     }
   }
@@ -231,7 +320,7 @@
     align-items: center;
     justify-content: center;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
   }

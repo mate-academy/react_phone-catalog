@@ -29,7 +29,6 @@ export const ProductCart = () => {
           Back
         </a>
       </div>
-      <span className={styles.location__arrow__product}></span>
       <h1 className={styles.cart__title}>Cart</h1>
       {cartItem.length ? (
         <ProductCartDetails />

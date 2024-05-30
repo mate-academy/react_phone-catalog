@@ -15,13 +15,13 @@
 
     @extend %mont-800;
 
-    @include onTablet {
+    @include on-tablet {
       font-size: 48px;
       line-height: 56px;
       margin-bottom: 32px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       margin-bottom: 56px;
     }
   }
@@ -40,13 +40,13 @@
     cursor: pointer;
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
       min-width: 32px;
       height: 189px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 32px;
       height: 400px;
     }
@@ -72,12 +72,12 @@
     height: 400px;
     overflow: hidden;
 
-    @include onTablet {
+    @include on-tablet {
       max-width: 1000px;
       height: 189px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 1040px;
       height: 400px;
     }
@@ -100,12 +100,12 @@
     min-width: 100%;
     height: 400px;
 
-    @include onTablet {
+    @include on-tablet {
       min-width: 100%;
       height: 189px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       min-width: 1040px;
       height: 400px;
     }

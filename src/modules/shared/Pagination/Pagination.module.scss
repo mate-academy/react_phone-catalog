@@ -1,4 +1,4 @@
-@import '../../../shared/utils-scss/variables';
+@import '../utils-scss/variables';
 
 .pagination {
   display: flex;
@@ -25,11 +25,11 @@
   }
 
   &__left {
-    background-image: url(../../../shared/headerImg/slider/Vector-left.svg);
+    background-image: url(..//headerImg/slider/Vector-left.svg);
   }
 
   &__right {
-    background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
+    background-image: url(..//headerImg/slider/Vector-right.svg);
   }
 }
 
@@ -56,7 +56,7 @@
   }
 
   &__link {
-    color: #000;
+    color: $color-white;
     border: none;
     background-color: inherit;
   }

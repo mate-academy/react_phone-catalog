@@ -6,11 +6,11 @@
   padding: 25px 16px 0;
   margin: 0 auto 64px;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px 24px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 0 0;
     width: 1136px;
     margin: 0 auto 24px
@@ -50,25 +50,25 @@
     align-items: center;
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 24px;
     }
   }
 }
 
 .page {
-  height: calc(100vh - 265px - 264px);
+  height: calc(100vh - 300px - 264px);
   display: flex;
   justify-content: center;
 
   width: 100%;
   text-align: center;
 
-  @include onTablet {
+  @include on-tablet {
     height: calc(100vh - 267px - 95px);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: calc(100vh - 240px - 95px);
   }
  
@@ -76,12 +76,12 @@
     width: 80%;
     object-fit: contain;
 
-    @include onTablet {
+    @include on-tablet {
       width: auto;
       height: 80%;
     }
   
-    @include onDesktop {
+    @include on-desktop {
       width: auto;
       height: 100%;
     }

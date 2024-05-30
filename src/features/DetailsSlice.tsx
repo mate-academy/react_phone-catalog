@@ -4,7 +4,7 @@ import { Products } from '../types/Product';
 
 export interface CartDetails {
   product: Products;
-  id: number;
+  id: string;
   quantity: number;
 }
 
@@ -23,8 +23,8 @@ export const chooseProduct = createSlice({
   initialState,
   reducers: {
     addCart: (state: SelectedProduct, action: PayloadAction<Products>) => {
-      const itemId = action.payload.id;
-      const itemIndex = state.cartItem.findIndex(item => item.id === +itemId);
+      const itemId = action.payload.itemId;
+      const itemIndex = state.cartItem.findIndex(item => item.id === itemId);
 
       if (itemIndex === -1) {
         return {
@@ -33,7 +33,7 @@ export const chooseProduct = createSlice({
             ...state.cartItem,
             {
               product: action.payload,
-              id: action.payload.id,
+              id: action.payload.itemId,
               quantity: 1,
             } as unknown as CartDetails,
           ],
@@ -41,14 +41,14 @@ export const chooseProduct = createSlice({
       } else {
         return {
           ...state,
-          cartItem: state.cartItem.filter(item => item.id !== +itemId),
+          cartItem: state.cartItem.filter(item => item.id !== itemId),
         };
       }
     },
 
     addCountProduct: (
       state: { cartItem: CartDetails[] },
-      action: PayloadAction<number>,
+      action: PayloadAction<string>,
     ) => {
       state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
@@ -68,7 +68,7 @@ export const chooseProduct = createSlice({
 
     minusCountProduct: (
       state: { cartItem: CartDetails[] },
-      action: PayloadAction<number>,
+      action: PayloadAction<string>,
     ) => {
       state.cartItem.forEach((item: CartDetails) => {
         if (item.id === action.payload) {
@@ -79,7 +79,7 @@ export const chooseProduct = createSlice({
       });
     },
 
-    deleteCart: (state: SelectedProduct, action: PayloadAction<number>) => {
+    deleteCart: (state: SelectedProduct, action: PayloadAction<string>) => {
       return {
         ...state,
         cartItem: state.cartItem.filter(

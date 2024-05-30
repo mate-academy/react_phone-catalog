@@ -1,8 +1,8 @@
 import { useSearchParams } from 'react-router-dom';
-import usePagination from '../../../shared/hooks/usePagination';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { useMemo } from 'react';
+import usePagination from '../hooks/usePagination';
 
 export const Pagination = () => {
   const { createPageProducts } = usePagination();

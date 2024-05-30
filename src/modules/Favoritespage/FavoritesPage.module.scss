@@ -6,11 +6,11 @@
   padding: 25px 16px 0;
   margin: 0 auto 64px;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px 24px 0;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 0 0;
     width: 1136px;
     margin: 0 auto 24px
@@ -22,7 +22,7 @@
     align-items: flex-end;
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }
@@ -61,7 +61,7 @@
     line-height: 41px;
     margin-bottom: 8px;
 
-    @include onTablet {
+    @include on-tablet {
       line-height: 56px;
       font-size: 48px;
     }
@@ -75,7 +75,7 @@
     color: $border-button-color;
     margin-bottom: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }
@@ -88,12 +88,12 @@
   grid-gap: 16px;
   margin: 0 auto 24px;
 
-  @include onTablet {
+  @include on-tablet {
     margin: 0 auto 40px;
     grid-template-columns: repeat(12, 1fr);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-template-columns: repeat(24, 1fr);
   }
 
@@ -101,7 +101,7 @@
     width: 100%;
     grid-column: span 4;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 6;
     }
 
@@ -109,7 +109,7 @@
       grid-column: span 4;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 6;
     }
   }
@@ -123,11 +123,11 @@
   width: 100%;
   text-align: center;
 
-  @include onTablet {
+  @include on-tablet {
     height: calc(100vh - 320px - 95px);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: calc(100vh - 296px - 95px);
   }
  
@@ -135,12 +135,12 @@
     width: 80%;
     object-fit: contain;
 
-    @include onTablet {
+    @include on-tablet {
       width: auto;
       height: 80%;
     }
   
-    @include onDesktop {
+    @include on-desktop {
       width: auto;
       height: 100%;
     }

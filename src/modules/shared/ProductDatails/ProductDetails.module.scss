@@ -5,11 +5,7 @@
 .product {
   margin-bottom: 56px;
 
-  @include onTablet {
-    margin-bottom: 64px;
-  }
-
-  @include onTablet {
+  @include on-tablet {
     margin-bottom: 80px;
   }
 
@@ -21,7 +17,7 @@
     color: $border-button-color-hover;
     margin-bottom: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 40px;
       font-size: 32px;
     }
@@ -34,14 +30,14 @@
     align-items: center;
     margin-bottom: 40px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       grid-column: 1 / 6;
       align-items: start;
       margin: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / 13;
     }
   }
@@ -51,7 +47,7 @@
     height: 287px;
     object-fit: contain;
 
-    @include onDesktop {
+    @include on-desktop {
       min-width: 468px;
       min-height: 468px;
     }
@@ -65,7 +61,7 @@
     display: flex;
     gap: 8px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: column;
     }
   }
@@ -76,12 +72,12 @@
     object-fit: contain;
     border: 1px solid $color-gray;
 
-    @include onTablet {
+    @include on-tablet {
       width: 37px;
       height: 37px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 80px;
       height: 80px;
     }
@@ -99,12 +95,12 @@
     display: flex;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       display: grid;
       grid-template-columns: repeat(12, 1fr);
     }
 
-    @include onDesktop {
+    @include on-desktop {
       display: grid;
       gap: 16px;
       grid-template-columns: repeat(24, 1fr);
@@ -115,7 +111,7 @@
       height: 287px;
       overflow: hidden;
 
-      @include onDesktop {
+      @include on-desktop {
         min-width: 468px;
         min-height: 468px;
       }
@@ -125,11 +121,11 @@
   &__choose {
     width: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 8 / 12;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 14/ 24;
     }
   }
@@ -176,7 +172,7 @@
     text-decoration: none;
     font-size: 14px;
     line-height: 21px;
-    color: $border-button-color-hover;
+    color: $color-white;
   }
 
   &__capacity__position {
@@ -191,7 +187,7 @@
       border-color: $border-button-color-hover;
     }
 
-    @include onDesktop{
+    @include on-desktop{
       width: 64px;
       height: 32px;
     }
@@ -239,12 +235,12 @@
       box-shadow: 0 3px 13px 0;
     }
 
-    @include onTablet {
+    @include on-tablet {
       width: 180px;
       flex-grow: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 263px;
     }
   }
@@ -276,6 +272,12 @@
     background-position: center;
     width: 16px;
     height: 16px;
+    border: none;
+    background-color: inherit;
+
+    &__choose {
+      background-image:url(../../shared/img/Union.svg);
+    }
   }
 
   &__descriptin {
@@ -289,11 +291,11 @@
     gap: 8px;
     margin-bottom: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       width: 237px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       width: 320px;
     }
   }
@@ -314,7 +316,7 @@
   &__wraper {
     display: block;
 
-    @include onDesktop {
+    @include on-desktop {
       display: grid;
       grid-template-columns: repeat(24, 1fr,);
     }
@@ -322,7 +324,7 @@
 }
 
 .specs {
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 14 / 25;
   }
 
@@ -338,7 +340,7 @@
   &__margin {
     margin-bottom: 30px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 25px;
     }
   }
@@ -361,11 +363,11 @@
 .about {
   margin-bottom: 56px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-bottom: 64px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 1 / 13;
     margin-bottom: 80px;
   }
@@ -374,11 +376,11 @@
     width: 100%;
     border: 1px solid $color-gray;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / 6;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / 13;
     }
   }
@@ -392,7 +394,7 @@
     color: $border-button-color-hover;
     margin-bottom: 16px;
 
-    @include onTablet {
+    @include on-tablet {
       font-weight: 800;
     }
   }
@@ -416,5 +418,14 @@
     font-size: 14px;
     line-height: 21px;
     color: $header-text-color;
+  }
+}
+
+.is__add {
+  color: #27ae60;
+  background-color: $color-gray;
+
+  &:hover {
+    border-color: $border-button-color-hover;
   }
 }

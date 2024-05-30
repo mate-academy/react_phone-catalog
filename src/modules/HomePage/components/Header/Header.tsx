@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import style from './Header.module.scss';
 import * as productAction from '../../../../features/ProductSlice';
 import { useAppDispatch, useAppSelector } from '../../../shared/hooks/hooks';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 
 export const Header: React.FC = ({}) => {
@@ -10,6 +10,13 @@ export const Header: React.FC = ({}) => {
   const { pathname } = useLocation();
   const [isOpenMenu, setIsOpenMenu] = useState(true);
   const { favorite, cartItem } = useAppSelector(state => state.selectedProduct);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [isSearch, setIsSearch] = useState(false);
+  const isSearchInUrl = pathname.includes(
+    'phones' || 'tablets' || 'accessories',
+  );
+
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
     dispatch(productAction.fetchProduct());
@@ -51,6 +58,18 @@ export const Header: React.FC = ({}) => {
     setIsOpenMenu(!isOpenMenu);
   };
 
+  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const params = new URLSearchParams(searchParams);
+
+    params.set('query', e.target.value);
+
+    if (e.target.value.trim() === '') {
+      params.delete('query');
+    }
+
+    setSearchParams(params);
+  };
+
   return (
     <header className={style.header}>
       <div className={style.header__container}>
@@ -64,6 +83,7 @@ export const Header: React.FC = ({}) => {
           </Link>
         </div>
         <nav
+          // style={{display: isSearch ? 'none' : 'block'}}
           className={classNames(style.header__nav, {
             [style.header__active]: isOpenMenu,
           })}
@@ -84,13 +104,40 @@ export const Header: React.FC = ({}) => {
                 TABLETS
               </NavLink>
             </li>
-            <li className={style.nav__item}>
-              <NavLink to="/accessories" className={getLinkClass}>
-                ACCESSORIES
-              </NavLink>
-            </li>
+            {!isSearch && (
+              <li className={style.nav__item}>
+                <NavLink to="/accessories" className={getLinkClass}>
+                  ACCESSORIES
+                </NavLink>
+              </li>
+            )}
           </ul>
           <div className={style.header__icon}>
+            {isSearchInUrl && (
+              <>
+                {!isSearch && (
+                  <button
+                    onClick={() => setIsSearch(true)}
+                    className={`${style.nav__button} ${style.nav__button__small}`}
+                  />
+                )}
+                {isSearch && (
+                  <div className={style.nav__wraper}>
+                    <input
+                      onChange={handleQuery}
+                      placeholder="Search.."
+                      value={query}
+                      className={style.nav__query}
+                      type="text"
+                    />
+                    <button
+                      onClick={() => setIsSearch(false)}
+                      className={style.nav__close}
+                    />
+                  </div>
+                )}
+              </>
+            )}
             {favorite.length > 0 ? (
               <NavLink className={getLinkClassButtonFavorite} to="/favorite">
                 <span className={style.header__count}>{favorite.length}</span>
@@ -112,6 +159,32 @@ export const Header: React.FC = ({}) => {
           </div>
         </nav>
       </div>
+      {isSearchInUrl && (
+        <>
+          {!isSearch && (
+            <button
+              onClick={() => setIsSearch(true)}
+              className={`${style.nav__button} ${style.nav__small}`}
+            />
+          )}
+          {isSearch && (
+            <div className={style.nav__wraper__small}>
+              <input
+                onChange={handleQuery}
+                placeholder="Search.."
+                value={query}
+                className={style.nav__query}
+                type="text"
+              />
+              <button
+                onClick={() => setIsSearch(false)}
+                className={style.nav__close}
+              />
+            </div>
+          )}
+        </>
+      )}
+
       <div className={style.header__menu}>
         {isOpenMenu ? (
           <button onClick={scrollFix} className={style.header__menu__img} />

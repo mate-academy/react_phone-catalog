@@ -12,7 +12,6 @@ export const SortProduct: React.FC = () => {
   const { filterProduct } = useFilterProducts();
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
-  const query = searchParams.get('query') || '';
 
   const chooseSort = (value: string | null) => {
     switch (value) {
@@ -54,18 +53,6 @@ export const SortProduct: React.FC = () => {
 
     setSearchParams(params);
     setIsOpenButtonPage(false);
-  };
-
-  const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const params = new URLSearchParams(searchParams);
-
-    params.set('query', e.target.value);
-
-    if (e.target.value.trim() === '') {
-      params.delete('query');
-    }
-
-    setSearchParams(params);
   };
 
   return (
@@ -161,13 +148,6 @@ export const SortProduct: React.FC = () => {
           </ul>
         </div>
       </div>
-      <input
-        onChange={handleQuery}
-        placeholder="Search"
-        value={query}
-        className={styles.search__query}
-        type="text"
-      />
     </div>
   );
 };
