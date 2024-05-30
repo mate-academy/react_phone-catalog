@@ -11,9 +11,9 @@ type BreakPointsContextType = {
 };
 
 export const BreakPointsContext = React.createContext<BreakPointsContextType>({
+  isMobile: false,
   isLaptop: false,
   isDesktop: false,
-  isMobile: false,
 });
 
 export const BreakPointsProvider: React.FC<Props> = ({ children }) => {
@@ -26,7 +26,7 @@ export const BreakPointsProvider: React.FC<Props> = ({ children }) => {
   });
 
   const isDesktop = useMediaQuery({
-    query: '(max-width: 1200px)',
+    query: '(max-width: 1199px)',
   });
 
   const queryTools = {

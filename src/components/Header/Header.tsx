@@ -46,10 +46,10 @@ export const Header = () => {
         <div className={style.header__actions}>
           {!isLaptop ? (
             <>
-              <div className={style.header__buttonWrapper}>
+              <div className={style.header__topBtn}>
                 <LangButton />
               </div>
-              <div className={style.header__buttonWrapper}>
+              <div className={style.header__topBtn}>
                 <ThemeButton />
               </div>
               <a href="#" className={style.header__actionsLink}>
@@ -67,35 +67,37 @@ export const Header = () => {
         </div>
       </div>
       <div className={style.header__bottom}>
-        <h1 className={style.header__bottomTitle}>{t('welcome')}</h1>
+        <div className={style.header__content}>
+          <h1 className={style.header__title}>{t('welcome')}</h1>
 
-        <div className={style.header__bottomSlider}>
-          <button
-            className={style.header__arrowButton}
-            onClick={handlePrev}
-            disabled={count === 0}
-          >
-            <ArrowLeft className={style.header__arrowIcon} />
-          </button>
-          <Slider count={count} />
-          <div className={style.header__containerButton}>
-            {[0, 1, 2].map(item => (
-              <span
-                key={item}
-                onClick={() => setCount(item)}
-                className={classNames(style.header__smallButton, {
-                  [style.header__activeButton]: count === item,
-                })}
-              ></span>
-            ))}
+          <div className={style.header__slider}>
+            <button
+              className={style.header__sliderButton}
+              onClick={handlePrev}
+              disabled={count === 0}
+            >
+              <ArrowLeft className={style.header__arrowIcon} />
+            </button>
+            <Slider count={count} />
+            <div className={style.header__containerSmallBtn}>
+              {[0, 1, 2].map(item => (
+                <span
+                  key={item}
+                  onClick={() => setCount(item)}
+                  className={classNames(style.header__smallButton, {
+                    [style.header__activeButton]: count === item,
+                  })}
+                ></span>
+              ))}
+            </div>
+            <button
+              className={style.header__sliderButton}
+              onClick={handleNext}
+              disabled={count === 2}
+            >
+              <ArrowRight className={style.header__arrowIcon} />
+            </button>
           </div>
-          <button
-            className={style.header__arrowButton}
-            onClick={handleNext}
-            disabled={count === 2}
-          >
-            <ArrowRight className={style.header__arrowIcon} />
-          </button>
         </div>
       </div>
     </header>
