@@ -4,12 +4,12 @@
 @import '../../animations';
 
 .footer {
+  // Margin for scrolling testing
+  margin-top: 800px;
   display: flex;
   justify-content: space-around;
-  position: absolute;
   width: 100%;
   height: 96px;
-  bottom: 0;
   box-shadow: 0 -1px 0 $elements-color;
 }
 

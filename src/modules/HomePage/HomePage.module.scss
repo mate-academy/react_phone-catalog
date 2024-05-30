@@ -7,6 +7,7 @@
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat($grid-columns, 32px);
+  overflow-y: auto;
 }
 
 .welcomeTitle {
