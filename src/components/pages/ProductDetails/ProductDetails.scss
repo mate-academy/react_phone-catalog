@@ -1,0 +1,43 @@
+.product-details {
+  &__title {
+    @include mobile {
+      margin-block: 42px;
+    }
+
+    margin-block: 56px;
+  }
+}
+
+.content {
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+
+    @include mobile {
+      row-gap: 55px;
+    }
+
+    @include tablet {
+      row-gap: 60px;
+    }
+
+    margin-bottom: 95px;
+
+    &__left {
+        grid-column: 1 / 13;
+    
+      @include desktop {
+        grid-column: 1 / 9;
+      }
+    }
+
+    &__right {
+        grid-column: 1 / 13;
+
+      @include desktop {
+        grid-column: 10 / 13;
+      }
+    }
+  }
+}
+

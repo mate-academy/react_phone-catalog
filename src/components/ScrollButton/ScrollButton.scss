@@ -1,0 +1,28 @@
+.scroll__button {
+  position: fixed;
+  border: none;
+
+  bottom: 480px;
+  right: 80px;
+
+  @include mobile {
+    bottom: 545px;
+    right: 20px;
+  }
+
+  background-color: transparent;
+  max-height: 60px;
+  padding: 12px 16px;
+
+
+  opacity: 0.3;
+  transition: opacity ease 1s;
+
+  &:hover {
+    opacity: 1;
+  }
+
+  & img {
+    max-width: 36px;
+  }
+}

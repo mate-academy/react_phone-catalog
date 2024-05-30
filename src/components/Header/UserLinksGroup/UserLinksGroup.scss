@@ -1,0 +1,57 @@
+.user-links-group {
+  &__content-wrapp {
+    position: relative;
+  }
+
+  & img {
+    display: block;
+    transition: transform ease-in-out 0.2s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+
+    @include mobile {
+      padding-block: 30px;
+    }
+  }
+
+  &__q-indicator {
+    position: absolute;
+    top: 0;
+
+    @include mobile {
+      top: 30px;
+    }
+
+    right: 0;
+    transform: translate(50%, -50%);
+
+    background-color: #476df4;
+    border-radius: 50%;
+    width: 15px;
+    height: 15px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: $g-font;
+    color: #fff;
+    font-size: 10px;
+  }
+
+  &__custom-links {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+
+    @include mobile {
+      border: 1px solid #e2e6e9;
+    }
+
+    &:hover {
+      background-color: #f86800;
+    }
+  }
+}
