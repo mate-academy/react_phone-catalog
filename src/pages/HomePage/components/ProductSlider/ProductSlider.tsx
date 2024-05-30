@@ -54,6 +54,16 @@ export const ProductSlider: React.FC<Props> = ({
     });
   }, [hasDiscount, hasNewestProducts]);
 
+  const moveToPreviousCard = () =>
+    setActiveSlide((currentSlide: number) => {
+      return currentSlide > 0 ? currentSlide - 1 : 7;
+    });
+
+  const moveToNextCard = () =>
+    setActiveSlide((currentSlide: number) => {
+      return currentSlide > 0 ? currentSlide - 1 : 7;
+    });
+
   return (
     products.length > 0 && (
       <div className="product-slider">
@@ -65,11 +75,7 @@ export const ProductSlider: React.FC<Props> = ({
                 'arrow-button--active': activeSlide !== 0,
               })}
               disabled={activeSlide === 0}
-              onClick={() =>
-                setActiveSlide((currentSlide: number) => {
-                  return currentSlide > 0 ? currentSlide - 1 : 7;
-                })
-              }
+              onClick={moveToPreviousCard}
             >
               <img
                 src={
@@ -85,11 +91,7 @@ export const ProductSlider: React.FC<Props> = ({
                 'arrow-button--active': activeSlide !== 7,
               })}
               disabled={activeSlide === 7}
-              onClick={() =>
-                setActiveSlide((currentSlide: number) => {
-                  return currentSlide < 7 ? currentSlide + 1 : 0;
-                })
-              }
+              onClick={moveToNextCard}
             >
               <img
                 src={
