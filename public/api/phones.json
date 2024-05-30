@@ -15,7 +15,7 @@
     },
     "image": {
       "titanium": "./img/card/15_pro/ti.jpeg",
-      "blue": "./img/card/card/15_pro/tb.webp"
+      "blue": "./img/card/15_pro/tb.webp"
     },
     "color": "titanium",
     "colorsAvailable": ["titanium", "blue"],

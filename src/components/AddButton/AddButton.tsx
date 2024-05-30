@@ -62,7 +62,7 @@ export const AddButton: React.FC<Props> = ({
           item.id === product?.id
       ),
     );
-  }, [products, product, color, capacity]);
+  }, [products,product, color, capacity]);
 
   if (!product) return null;
 
