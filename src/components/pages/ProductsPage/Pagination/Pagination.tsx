@@ -60,30 +60,32 @@ export const Pagination: React.FC<Props> = ({total}) => {
   };
 
   return (
-    <ul className="pagi">
-      <li className="pagi__prev-link" onClick={() => handlePagePrev()}>
-        <img className="pagi__img" src="./img/icons/arrow.svg" alt="arrow" />
-      </li>
-
-      {Array.from({length: totalPagiPages}, (_, i) => i + 1).map(page => (
-        <li
-          className={classNames("pagi__link", {
-            "pagi__link-active": page === currPage,
-          })}
-          key={page}
-          onClick={() => handlePageChange(page)}
-        >
-          {page}
+    <>
+      {totalPagiPages > 1 && <ul className="pagi">
+        <li className="pagi__prev-link" onClick={() => handlePagePrev()}>
+          <img className="pagi__img" src="./img/icons/arrow.svg" alt="arrow" />
         </li>
-      ))}
 
-      <li className="pagi__next-link" onClick={() => handlePageNext()}>
-        <img
-          className="pagi__img"
-          src="./img/icons/arrow-right.svg"
-          alt="arrow"
-        />
-      </li>
-    </ul>
+        {Array.from({length: totalPagiPages}, (_, i) => i + 1).map(page => (
+          <li
+            className={classNames("pagi__link", {
+              "pagi__link-active": page === currPage,
+            })}
+            key={page}
+            onClick={() => handlePageChange(page)}
+          >
+            {page}
+          </li>
+        ))}
+
+        <li className="pagi__next-link" onClick={() => handlePageNext()}>
+          <img
+            className="pagi__img"
+            src="./img/icons/arrow-right.svg"
+            alt="arrow"
+          />
+        </li>
+      </ul>}
+    </>
   );
 };

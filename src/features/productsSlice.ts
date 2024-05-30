@@ -5,11 +5,13 @@ import {Product} from "../types/Product";
 type ProductsState = {
   phones: Product[];
   tablets: Product[];
+  acessories: Product[];
 };
 
 const initialState: ProductsState = {
   phones: [],
   tablets: [],
+  acessories: [],
 };
 
 export const productsSlice: Slice<ProductsState> = createSlice({

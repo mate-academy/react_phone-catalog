@@ -48,6 +48,7 @@
 .add__button {
   border: none;
   background-color: #f86800;
+  box-shadow: inset 4px 4px 19px rgba(0, 0, 0, 0.01);
   padding: 10px 40px;
   max-height: 38px;
   min-height: 38px;
@@ -59,9 +60,23 @@
   font-family: $g-font;
   color: #fff;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 600;
 
   &:hover {
-    background-color: #ff8046;
+    opacity: 0.8;
+  }
+}
+
+.in-cart {
+  border : 1px solid #e2e6e9;
+  background-color: #fff;
+  color: #476df4;
+  opacity: 1;
+  transition: background-color 0.4s ease-in-out, opacity 0.4s ease-in-out;
+
+  &:hover {
+    background-color: #476df4;
+    opacity: 0.8;
+    color: #fff;
   }
 }

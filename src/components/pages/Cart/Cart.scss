@@ -163,9 +163,10 @@
 
       border: none;
       background-color: #f86800;
+      transition: all ease-in-out 0.3s;
 
       &:hover {
-        background-color: #ff8046;
+        opacity: 0.8;
       }
     }
   }
@@ -190,8 +191,9 @@
   font-weight: 500;
 
   background-color: #f86800;
+  transition: all ease-in-out 0.3s;
 
   &:hover {
-    background-color: #ff8046;
+    opacity: 0.8;
   }
 }

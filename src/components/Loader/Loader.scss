@@ -26,6 +26,10 @@
   animation: blink 0.7s infinite ease-in-out;
 }
 
+.loader-custom span {
+  background-color: #000;
+}
+
 .loader span:nth-child(1) {
   animation-delay: 0s;
 }

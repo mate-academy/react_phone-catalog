@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
-import {useAppDispatch} from "../../app/hooks";
+import {useAppDispatch, useAppSelector} from "../../app/hooks";
 
 import {actions as cartActions} from "../../features/cartSlice";
 
@@ -22,8 +22,10 @@ export const AddButton: React.FC<Props> = ({
   capacity,
   price,
 }) => {
-  const [isAdding, setIsAdding] = React.useState(false);
+  const [isAdding, setIsAdding] = useState(false);
+  const [isInCart, setIsInCart] = useState(false);
 
+  const products = useAppSelector(state => state.cart.products);
   const dispatch = useAppDispatch();
 
   const handleAddToCart = (
@@ -53,15 +55,34 @@ export const AddButton: React.FC<Props> = ({
     }, 500);
   };
 
+  useEffect(() => {
+    setIsInCart(
+      products.some(
+        item =>
+          item.id === product?.id ||
+          item.color === color ||
+          item.capacity === capacity,
+      ),
+    );
+  }, [products, dispatch, product, color, capacity, handleAddToCart]);
+
   if (!product) return null;
 
   return (
     <button
-      className="add__button"
+      className={classNames("add__button", {
+        "in-cart": isInCart,})}
       onClick={e => handleAddToCart(e, product)}
       disabled={isAdding}
     >
-      <div className={isAdding ? "hide-out" : "show-in"}>Add to Bag</div>
+      <div
+        className={classNames({
+          "hide-out": isAdding,
+          "show-in": !isAdding,
+        })}
+      >
+        {isInCart ? "+ Add More" : "Add to Bag"}
+      </div>
 
       {isAdding && (
         <div
@@ -70,7 +91,7 @@ export const AddButton: React.FC<Props> = ({
             "hide-out": !isAdding,
           })}
         >
-          <Loader />
+          <Loader value={isInCart} />
         </div>
       )}
     </button>

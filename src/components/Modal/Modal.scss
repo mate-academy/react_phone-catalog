@@ -1,0 +1,119 @@
+.modal {
+  font-family: $g-font;
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 2000;
+    background-color: rgba(0, 0, 0, 0.5);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    visibility: hidden;
+    opacity: 0;
+
+    transition:
+      opacity 0.5s ease,
+      visibility 0.5s ease;
+
+    &__is-show {
+      visibility: visible;
+      opacity: 1;
+    }
+  }
+
+  &__content {
+    position: relative;
+    z-index: 2002;
+    padding-inline: 40px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include mobile {
+      padding-bottom: 30px;
+      flex-direction: column;
+      max-width: 300px;
+    }
+    @include tablet {
+      max-width: 600px;
+      flex-direction: row;
+    }
+    @include desktop {
+      max-width: 1024px;
+    }
+
+    transform: scale(0.7);
+    transition: transform 0.5s ease;
+
+    &__is-open {
+      transform: scale(1);
+    }
+  }
+
+  &__text {
+    text-align: center;
+    @include tablet {
+      font-size: 24px;
+    }
+    @include desktop {
+      font-size: 36px;
+    }
+    color: #787878;
+
+    & strong {
+      color: #000;
+    }
+
+    & span {
+      color: #f44747;
+    }
+  }
+
+  &__img {
+    @include tablet {
+      max-width: 300px;
+    }
+
+    @include desktop {
+      max-width: 500px;
+    }
+    aspect-ratio: 1/1;
+    object-fit: cover;
+  }
+
+  &__btn {
+    position: absolute;
+    top: 25px;
+    right: 25px;
+
+    border: none;
+
+    background-color: transparent;
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.09);
+    }
+
+    &-img {
+      @include mobile {
+        width: 20px;
+      }
+
+      @include tablet {
+        width: 25px;
+      }
+    }
+  }
+}

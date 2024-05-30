@@ -37,12 +37,12 @@ export const Favorite: React.FC = () => {
           <div className="favorite__content__empty">
             <img
               className="favorite__content__empty-img"
-              src={"./img/favorite/favorite.png"}
+              src={"./img/favorite/favorite.svg"}
               alt=""
             />
 
             <p className="favorite__content__empty-text">
-              Your favorites are as empty as my bank account after payday.
+              Your favorites are as empty as my bank account after payday
             </p>
 
             <Link to="/" className="custom__link-btn">

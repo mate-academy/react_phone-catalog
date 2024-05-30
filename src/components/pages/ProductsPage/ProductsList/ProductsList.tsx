@@ -10,7 +10,7 @@ import {Product} from "../../../../types/Product";
 
 export const ProductsList: React.FC = () => {
   const {pathname} = useLocation();
-  const {phones, tablets} = useAppSelector(state => state.products);
+  const {phones, tablets, acessories} = useAppSelector(state => state.products);
 
   const [seartchParams] = useSearchParams();
   const size = Number(seartchParams.get("size")) || 8;
@@ -46,6 +46,9 @@ export const ProductsList: React.FC = () => {
 
       case "/tablets":
         return tablets.length;
+
+      case "/acessories":
+        return acessories.length;
 
       default:
         return 0;

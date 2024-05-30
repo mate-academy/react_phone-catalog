@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Link, NavLink, useNavigate} from "react-router-dom";
 
 import {useAppSelector} from "../../../app/hooks";
 
 import {CartItemCard} from "../../pages/Cart/CartItemCard/CartItemCard";
 import {nanoid} from "nanoid";
+import { Modal } from "../../Modal/Modal";
 
 export const Cart: React.FC = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const products = useAppSelector(state => state.cart.products);
 
   const totalPrice = products.reduce(
@@ -26,6 +29,8 @@ export const Cart: React.FC = () => {
     navigate(-1);
   };
 
+  const openModal = () => setIsModalOpen(true);
+
   return (
     <div className="container">
       <div className="page__nav">
@@ -34,6 +39,7 @@ export const Cart: React.FC = () => {
           Back
         </NavLink>
       </div>
+
       <h1
         className="
         title
@@ -46,15 +52,13 @@ export const Cart: React.FC = () => {
       <div className="cart__content">
         {!products.length ? (
           <div className="cart__content__empty">
-
-
             <img
               className="cart__content__empty-img"
-              src={"./img/cart/cart.png"}
+              src={"./img/cart/cart.svg"}
               alt=""
             />
 
-<p className="cart__content__empty-text">
+            <p className="cart__content__empty-text">
               The art of minimalism in your cart has reached its apogee
               <br />
               <span className="cart__content__emptytext-custom">
@@ -88,11 +92,18 @@ export const Cart: React.FC = () => {
                 </p>
               </div>
 
-              <button className="cart__content__total-btn">Checkout</button>
+                <button
+                  className="cart__content__total-btn"
+                  onClick={() => openModal()}
+                >
+                  Checkout
+                </button>
             </div>
           </div>
         )}
       </div>
+
+      <Modal isOpen={isModalOpen} setIsOpen={setIsModalOpen}/>
     </div>
   );
 };

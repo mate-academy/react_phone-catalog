@@ -37,8 +37,9 @@
         max-width: 340px;
         width: 100%;
       }
+      
+      max-width: 700px;
 
-      max-width: 600px;
     }
   }
 
@@ -47,7 +48,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(285px, 1fr));
       gap: 20px 20px;
-      
+
       width: 100%;
     }
 
@@ -82,7 +83,7 @@
       flex-direction: column;
       align-items: center;
       width: 100%;
-      
+
       border-bottom: #e2e6e9 1px solid;
 
       margin-bottom: 24px;
@@ -118,8 +119,8 @@
       &:hover {
         background-color: #ff8046;
       }
-      
-      @include mobile { 
+
+      @include mobile {
         padding-block: 14px;
         width: 100%;
       }
