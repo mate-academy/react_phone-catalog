@@ -8,9 +8,11 @@ import { LogoFavorites } from '../../Logo/LogoFavorites';
 import { LogoCart } from '../../Logo/LogoCart';
 import { LogoClose } from '../../Logo/LogoClose';
 import data from '../../../data/NavList.json';
+import { StateContext } from '../../../store/StateProvider';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
+  const { setOpenBurger } = useContext(StateContext);
 
   return (
     <aside className={style.menu} id="menu">
@@ -18,7 +20,11 @@ export const AsideMenu = () => {
         <a href="#">
           <Logo className={style.menu__topLogo} />
         </a>
-        <a href="#" className={style.menu__topLink}>
+        <a
+          href="#"
+          className={style.menu__topLink}
+          onClick={() => setOpenBurger(false)}
+        >
           <LogoClose className={style.menu__icons} />
         </a>
       </div>

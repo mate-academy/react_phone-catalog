@@ -5,13 +5,16 @@ import { LanguageProvider } from './store/LanguageProvider';
 import { ThemeProvider } from './store/ThemeProvider';
 import './styles/main.scss';
 import { BreakPointsProvider } from './store/BreakPointsProvider';
+import { StateProvider } from './store/StateProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <BreakPointsProvider>
-    <ThemeProvider>
-      <LanguageProvider>
-        <App />
-      </LanguageProvider>
-    </ThemeProvider>
-  </BreakPointsProvider>,
+  <StateProvider>
+    <BreakPointsProvider>
+      <ThemeProvider>
+        <LanguageProvider>
+          <App />
+        </LanguageProvider>
+      </ThemeProvider>
+    </BreakPointsProvider>
+  </StateProvider>,
 );

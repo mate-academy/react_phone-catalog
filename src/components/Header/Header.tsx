@@ -13,6 +13,7 @@ import { ArrowLeft } from '../Logo/ArrowLeft';
 import { ArrowRight } from '../Logo/ArrowRight';
 import { Slider } from './AsideMenu/Slider/Slider';
 import classNames from 'classnames';
+import { StateContext } from '../../store/StateProvider';
 
 export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
@@ -20,6 +21,7 @@ export const Header = () => {
   const [count, setCount] = useState(0);
   const [direction, setDirection] = useState(false);
   const timer = useRef<NodeJS.Timer>();
+  const { openBurger, setOpenBurger } = useContext(StateContext);
 
   function handleNext() {
     clearTimeout(timer.current);
@@ -76,50 +78,56 @@ export const Header = () => {
               </a>
             </>
           ) : (
-            <a href="#menu" className={style.header__actionsLink}>
+            <a
+              href="#menu"
+              className={style.header__actionsLink}
+              onClick={() => setOpenBurger(true)}
+            >
               <LogoBurger className={style.header__actionsImg} />
             </a>
           )}
         </div>
       </div>
-      <div className={style.header__bottom}>
-        <div className={style.header__content}>
-          <h1 className={style.header__title}>{t('welcome')}</h1>
+      {!openBurger && (
+        <div className={style.header__bottom}>
+          <div className={style.header__content}>
+            <h1 className={style.header__title}>{t('welcome')}</h1>
 
-          <div className={style.header__slider}>
-            {!isMobile && (
-              <button
-                className={style.header__sliderButton}
-                onClick={handlePrev}
-                disabled={count === 0}
-              >
-                <ArrowLeft className={style.header__arrowIcon} />
-              </button>
-            )}
-            <Slider count={count} />
-            <div className={style.header__containerSmallBtn}>
-              {[0, 1, 2].map(item => (
-                <span
-                  key={item}
-                  onClick={() => setCount(item)}
-                  className={classNames(style.header__smallButton, {
-                    [style.header__activeButton]: count === item,
-                  })}
-                ></span>
-              ))}
+            <div className={style.header__slider}>
+              {!isMobile && (
+                <button
+                  className={style.header__sliderButton}
+                  onClick={handlePrev}
+                  disabled={count === 0}
+                >
+                  <ArrowLeft className={style.header__arrowIcon} />
+                </button>
+              )}
+              <Slider count={count} />
+              <div className={style.header__containerSmallBtn}>
+                {[0, 1, 2].map(item => (
+                  <span
+                    key={item}
+                    onClick={() => setCount(item)}
+                    className={classNames(style.header__smallButton, {
+                      [style.header__activeButton]: count === item,
+                    })}
+                  ></span>
+                ))}
+              </div>
+              {!isMobile && (
+                <button
+                  className={style.header__sliderButton}
+                  onClick={handleNext}
+                  disabled={count === 2}
+                >
+                  <ArrowRight className={style.header__arrowIcon} />
+                </button>
+              )}
             </div>
-            {!isMobile && (
-              <button
-                className={style.header__sliderButton}
-                onClick={handleNext}
-                disabled={count === 2}
-              >
-                <ArrowRight className={style.header__arrowIcon} />
-              </button>
-            )}
           </div>
         </div>
-      </div>
+      )}
     </header>
   );
 };

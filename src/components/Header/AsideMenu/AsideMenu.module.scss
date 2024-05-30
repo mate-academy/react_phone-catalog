@@ -8,6 +8,7 @@
   opacity: 0;
   background-color: $background-color;
   pointer-events: none;
+  font-size: 18px;
 
   &__top {
     display: flex;
@@ -47,7 +48,7 @@
   &__listItem {
     padding: 8px 0;
     margin-bottom: 16px;
-    line-height: 11px;
+    line-height: 16px;
   }
 
   &__listLink {
@@ -94,4 +95,21 @@
   z-index: 1;
   opacity: 1;
   pointer-events: all;
+}
+
+@media (max-width: 1199px) {
+  .menu {
+    &__listLink {
+      font-size: 18px;
+    }
+  }
+}
+
+@media (max-width: 639px) {
+  .menu {
+    &__listLink {
+      font-size: 12px;
+      line-height: 11px;
+    }
+  }
 }
