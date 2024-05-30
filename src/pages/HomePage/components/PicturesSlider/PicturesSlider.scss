@@ -12,6 +12,8 @@
   background-repeat: no-repeat;
   background-position: center;
 
+  transition: all 0.5s linear;
+
   &--1 {
     background-image: url('../../../../../public/img/banner-accessories.png');
   }
