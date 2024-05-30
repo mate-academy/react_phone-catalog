@@ -58,6 +58,8 @@ export const Slider = () => {
               if (navigation) {
                 navigation.nextEl = nextSliderBtn.current;
                 navigation.prevEl = prevSliderBtn.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }
 
               const pagination = swiper.params.pagination as
@@ -66,16 +68,9 @@ export const Slider = () => {
 
               if (pagination) {
                 pagination.el = sliderPagination.current;
+                swiper.pagination.update();
+                swiper.pagination.init();
               }
-
-              swiper.navigation.init();
-
-              swiper.navigation.update();
-              swiper.pagination.init();
-
-              swiper.pagination.update();
-              swiper.pagination.init();
-              swiper.pagination.update();
             }}
           >
             <SwiperSlide className={style.slide}>
