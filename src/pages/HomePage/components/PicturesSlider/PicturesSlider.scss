@@ -1,65 +1,136 @@
 @use '../../../../utils/variables' as *;
 @use '../../../../utils/mixins' as *;
 
-.slider {
-  width: 100%;
-  height: 100%;
-
-  display: block;
-
-  @include for-tablet {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-
-    padding: $side-padding-24;
-    box-sizing: border-box;
-  }
-}
-
-.arrows-slider-container {
-  display: flex;
-  justify-content: center;
-  gap: 9px;
-}
-
-.banner {
-  height: 100vw;
-  width: 100vw;
-  background-size: contain;
-  background-repeat: no-repeat;
-  background-position: center;
-
-  transition: all 0.5s linear;
-
-  &--1 {
-    background-image: url('../../../../../public/img/banner-accessories.png');
-  }
-  &--2 {
-    background-image: url('../../../../../public/img/banner-iphone-15.png');
-  }
-  &--3 {
-    background-image: url('../../../../../public/img/banner-ipad.png');
-  }
+.banner-container img {
+  object-fit: contain;
+  object-position: center center;
+  height: 189px;
 
   @include for-tablet {
+    width: 100%;
     height: 189px;
+    max-height: 400px;
+    object-position: center center;
+    object-fit: contain;
+  }
+}
+
+.banner-container {
+  // for desktop put max-width
+  position: relative;
+
+  height: 189px;
+
+  @include for-tablet {
+    margin: 0 auto;
+    height: auto;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+    margin-bottom: 64px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    object-fit: contain;
+
+    object-position: center center;
+  }
+
+  .slick-slider {
+    height: 189px;
+    position: static;
+
+    @include for-tablet {
+      height: 189px;
+      width: calc(100% - 102px);
+      margin: 0 auto;
+    }
+  }
+
+  .slick-dots {
+    height: 24px;
+
+    bottom: -21px;
+
+    @include for-tablet {
+      bottom: 10px;
+      left: 0;
+      bottom: 4px;
+    }
+  }
+
+  .slick-dots li button::before {
+    display: none;
+  }
+
+  .slick-dots li button {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    margin: 10px 5px;
+    padding: 0;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: $color-primary;
+  }
+
+  .slick-arrow {
+    display: none !important;
+
+    @include for-tablet {
+      display: block !important;
+      height: calc(100% - 38px);
+      width: 32px;
+      box-sizing: border-box;
+      border: 1px solid $color-icons-placeholders;
+      top: 0;
+      transform: translate(0, 0);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+
+  .slick-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     width: 100%;
   }
-}
 
-.tabs {
-  display: flex;
-  justify-content: center;
-  height: 24px;
+  .slick-next {
+    @include for-tablet {
+      right: 0;
+      background-image: url('../../../../../public/icons/arrow-right-16.svg');
 
-  &__container {
-    vertical-align: center;
+      &:hover {
+        background-image: url('../../../../../public/icons/arrow-right-16.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
   }
 
-  &__button {
-    height: 4px;
-    width: 14px;
-    padding: 10px 5px;
+  .slick-prev {
+    @include for-tablet {
+      left: 0;
+      background-image: url('../../../../../public/icons/arrow-left.svg');
+
+      &:hover {
+        background-image: url('../../../../../public/icons/arrow-left.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
   }
 }

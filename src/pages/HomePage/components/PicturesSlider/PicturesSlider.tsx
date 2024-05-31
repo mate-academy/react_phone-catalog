@@ -1,103 +1,52 @@
-import { SetStateAction, useEffect, useRef, useState } from 'react';
-import cn from 'classnames';
-import { Tabs } from '../../../../types/Tabs';
+import Slider from 'react-slick';
+import { Link } from 'react-router-dom';
 import './PicturesSlider.scss';
 
+// Import css files for the carousel
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
+
 export const PicturesSlider = () => {
-  const [activeTab, setActiveTab] = useState<Tabs>(1);
-  const iconSrc = './icons/slider-icon.svg';
-  const activeIconSrc = './icons/slider-icon-active.svg';
+  const imageArray = [
+    {
+      image: './img/banner-accessories.png',
+      path: '/accessories',
+    },
+    {
+      image: './img/banner-iphone-15.png',
+      path: '/phones',
+    },
+    {
+      image: './img/banner-ipad.png',
+      path: '/tablets',
+    },
+  ];
 
-  const bannerClass = cn('banner', `banner--${activeTab}`);
-
-  const moveToNextSlide = () => {
-    setActiveTab((currentTab: Tabs) => {
-      return currentTab === 3 ? 1 : ((currentTab + 1) as Tabs);
-    });
+  const sliderSettings = {
+    dots: true,
+    infinite: true,
+    speed: 800,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    autoplay: true,
+    autoplaySpeed: 3000,
   };
-
-  const moveToPreviousSlide = () => {
-    setActiveTab((currentTab: Tabs) => {
-      return currentTab === 1 ? 3 : ((currentTab - 1) as Tabs);
-    });
-  };
-
-  // const isTabletWidth = true;
-
-  const isMobileWidth = false;
-
-  useEffect(() => {
-    setInterval(() => {
-      moveToNextSlide();
-    }, 2000);
-  }, []);
-
-  const slideList = [1, 2, 3];
-
-  const slider = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const sliderCopy = slider;
-
-    let touchstartX = 0;
-    let touchendX = 0;
-
-    function checkDirection() {
-      if (touchendX < touchstartX) {
-        moveToNextSlide();
-      }
-
-      if (touchendX > touchstartX) {
-        moveToPreviousSlide();
-      }
-    }
-
-    const handle1 = (e: TouchEvent) => {
-      touchstartX = e.changedTouches[0].screenX;
-    };
-
-    slider.current?.addEventListener('touchstart', handle1);
-
-    const handle2 = (e: TouchEvent) => {
-      touchendX = e.changedTouches[0].screenX;
-      checkDirection();
-    };
-
-    slider.current?.addEventListener('touchend', handle2);
-
-    return () => {
-      sliderCopy.current?.removeEventListener('touchstart', handle1);
-      sliderCopy.current?.removeEventListener('touchend', handle2);
-    };
-  }, []);
 
   return (
-    <div className="slider">
-      {isMobileWidth ? (
-        <div ref={slider} className={bannerClass}></div>
-      ) : (
-        <div className="arrows-slider-container">
-          <button>
-            <img src="./icons/arrow-left.svg" alt="left arrow icon" />
-          </button>
-          <div ref={slider} className={bannerClass}></div>
-          <button>
-            <img src="./icons/arrow-right.svg" alt="right arrow icon" />
-          </button>
-        </div>
-      )}
-
-      <div className="tabs slider__tabs">
-        {slideList.map((slide: number) => (
-          <span key={slide} className="tabs__container">
-            <img
-              className="tabs__button"
-              src={activeTab === slide ? activeIconSrc : iconSrc}
-              onClick={() => setActiveTab(slide as SetStateAction<Tabs>)}
-            />
-          </span>
+    <div className="banner-container">
+      <Slider {...sliderSettings}>
+        {imageArray.map(bannerPair => (
+          <div key={bannerPair.path} className="image-container">
+            <Link to={bannerPair.path}>
+              <img
+                src={bannerPair.image}
+                alt="image"
+                className="banner-container__image"
+              />
+            </Link>
+          </div>
         ))}
-      </div>
+      </Slider>
     </div>
   );
 };
