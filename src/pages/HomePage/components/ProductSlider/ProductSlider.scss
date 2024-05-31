@@ -26,7 +26,11 @@
   justify-content: space-between;
 
   box-sizing: border-box;
-  padding: 0 16px;
+  padding: $side-padding-16;
+
+  @include for-tablet {
+    padding: $side-padding-24;
+  }
 
   &__title {
     // width: 136px;
@@ -68,7 +72,11 @@
 
   padding: 0 0 0 16px;
 
-  &__container {
-    width: 212px;
+  @include for-tablet {
+    padding: 0 0 0 24px;
   }
+
+  // &__container {
+  //   width: 212px;
+  // }
 }

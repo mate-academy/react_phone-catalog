@@ -1,13 +1,12 @@
 @use '../../../../utils/variables' as *;
 
 .category {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 24px;
-
   &__link {
     text-decoration: none;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
   }
 
   &__image {

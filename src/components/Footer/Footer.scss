@@ -10,9 +10,17 @@
   padding: 32px 16px;
   border-top: 1px solid $color-elements;
 
+  @include for-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
   &__logo {
     grid-column: 1 / 5;
-    height: 33px;
+    height: 32.25px;
+
+    display: flex;
   }
   &__nav {
     grid-column: 1 / 5;
@@ -26,7 +34,14 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 16px;
+  gap: $gap-small;
+
+  @include for-tablet {
+    flex-direction: row;
+    align-items: center;
+
+    height: 32px;
+  }
 
   &__item {
     font-family: $font-family;
@@ -46,7 +61,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: $gap-small;
 
   &__text {
     font-family: $font-family;

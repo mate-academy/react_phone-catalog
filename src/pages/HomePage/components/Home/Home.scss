@@ -4,6 +4,10 @@
 .main {
   &__section {
     padding-top: 24px;
+
+    @include for-tablet {
+      padding-top: 32px;
+    }
   }
 }
 
@@ -13,11 +17,16 @@
   gap: 24px;
 
   &__title {
-    padding: 0 16px;
+    padding: $side-padding-16;
+
+    @include for-tablet {
+      padding: $side-padding-24;
+    }
   }
 
-  // &__slider {
-  // }
+  @include for-tablet {
+    gap: 32px;
+  }
 }
 
 .section {
@@ -45,39 +54,26 @@
 .title-container {
   @include grid;
 
-  grid-template-rows: 82px;
+  grid-template-rows: auto;
 
   &__title {
     grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 10;
+    }
   }
 }
 
 .category-section {
-  @include grid;
-
-  row-gap: 24px;
+  display: flex;
+  gap: $gap-medium;
 
   &__title {
-    font-family: $font-family;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
-    text-align: left;
-
-    grid-column: 1 / 5;
-
-    color: $color-primary;
+    grid-column: 1 / 13;
   }
 
   &__content {
-    font-family: $font-family;
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
-    text-align: left;
-
-    grid-column: 1 / 5;
-
-    color: $color-primary;
+    width: 100%;
   }
 }

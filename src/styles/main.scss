@@ -1,4 +1,5 @@
 @use '../utils/variables' as *;
+@use '../utils/mixins' as *;
 
 :root {
   color: $color-primary;
@@ -26,7 +27,7 @@
   // flex-direction: column;
   // gap: 24px;
 
-  padding: 0 16px;
+  padding: $side-padding-16;
   box-sizing: border-box;
 
   &--full-width {
@@ -36,6 +37,7 @@
 
 .title {
   font-family: $font-family;
+  color: $color-primary;
   text-align: left;
 
   &--1 {
@@ -46,6 +48,16 @@
     line-height: 41px;
     letter-spacing: -0.01em;
     text-align: left;
+
+    @include for-tablet {
+      // styleName: Desktop & Tablet/H1;
+      font-family: $font-family;
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
   }
 
   &--2 {
@@ -55,6 +67,16 @@
     font-weight: 800;
     line-height: 30.8px;
     text-align: left;
+
+    @include for-tablet {
+      // styleName: Desktop & Tablet/H2;
+      font-family: $font-family;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+    }
   }
 
   &--3 {
@@ -65,6 +87,7 @@
     line-height: 25.56px;
     text-align: left;
   }
+
   &--4 {
     // Mobile
     font-family: $font-family;
@@ -73,6 +96,16 @@
     line-height: 20.45px;
     text-align: left;
   }
+}
+
+.uppercase {
+  // styleName: Uppercase;
+  font-family: $font-family;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
 }
 
 .body-text--14 {

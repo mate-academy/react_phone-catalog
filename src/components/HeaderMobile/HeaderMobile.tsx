@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
 import useOpenMenu from '../../hooks/useOpenMenu';
-import './Header.scss';
+import './HeaderMobile.scss';
 import '../../styles/main.scss';
 
-export const Header: React.FC = () => {
+export const HeaderMobile: React.FC = () => {
   const [isMenuOpen, hideMenu, showMenu] = useOpenMenu();
 
   useEffect(() => {

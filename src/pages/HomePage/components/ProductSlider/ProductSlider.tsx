@@ -1,12 +1,12 @@
 import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { ProductCard } from '../../../shared/components/ProductCard';
 import { Product } from '../../../../types/ProductCard';
 import { ProductCategories } from '../../../../types/ProductCategories';
-import './ProductSlider.scss';
-import '../../../../styles/main.scss';
 import { getProducts } from '../../../../helpers/getProducts';
 import { filterRandomProducts } from '../../../../helpers/filterRandomProducts';
-import classNames from 'classnames';
+import './ProductSlider.scss';
+import '../../../../styles/main.scss';
 
 type Props = {
   title: string;
@@ -23,8 +23,12 @@ export const ProductSlider: React.FC<Props> = ({
   const [activeSlide, setActiveSlide] = useState<number>(0);
 
   const currentProduct = products[activeSlide];
-  const nextProduct = activeSlide < 7 ? products[activeSlide + 1] : products[0];
-  const lastProduct = activeSlide < 6 ? products[activeSlide + 2] : products[0];
+  const secondProduct =
+    activeSlide < 7 ? products[activeSlide + 1] : products[0];
+  const thirdProduct =
+    activeSlide < 6 ? products[activeSlide + 2] : products[0];
+  const fourthProduct =
+    activeSlide < 5 ? products[activeSlide + 3] : products[0];
 
   useEffect(() => {
     getProducts(ProductCategories.Phones).then((productsFromApi: Product[]) => {
@@ -110,12 +114,17 @@ export const ProductSlider: React.FC<Props> = ({
           </span>
           {activeSlide < 7 && (
             <span className="cards__container">
-              <ProductCard hasDiscount={hasDiscount} product={nextProduct} />
+              <ProductCard hasDiscount={hasDiscount} product={secondProduct} />
             </span>
           )}
           {activeSlide < 6 && (
             <span className="cards__container">
-              <ProductCard hasDiscount={hasDiscount} product={lastProduct} />
+              <ProductCard hasDiscount={hasDiscount} product={thirdProduct} />
+            </span>
+          )}
+          {activeSlide < 5 && (
+            <span className="cards__container">
+              <ProductCard hasDiscount={hasDiscount} product={fourthProduct} />
             </span>
           )}
         </div>

@@ -1,3 +1,4 @@
+@use './mixins' as *;
 @import './fonts';
 
 $font-family: Mont, Helvetica, sans-serif;
@@ -10,3 +11,7 @@ $color-black: #000;
 $color-white: #fff;
 $color-green: #27ae60;
 $color-red: #eb5757;
+$gap-small: 16px;
+$gap-medium: 24px;
+$side-padding-16: 0 16px;
+$side-padding-24: 0 24px;

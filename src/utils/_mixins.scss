@@ -19,4 +19,20 @@
 
   justify-content: center;
   align-items: center;
+
+  @include for-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+}
+
+@mixin for-tablet() {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin for-desktop() {
+  @media (min-width: 1200px) {
+    @content;
+  }
 }

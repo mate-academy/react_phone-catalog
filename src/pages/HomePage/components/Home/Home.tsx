@@ -13,6 +13,7 @@ export const Home: React.FC = () => {
             Welcome to Nice Gadgets store!
           </h1>
         </div>
+
         <div className="main-section__slider">
           <PicturesSlider />
         </div>
@@ -23,7 +24,9 @@ export const Home: React.FC = () => {
       </section>
 
       <section className="category-section main__section section">
-        <h2 className="category-section__title">Shop by category</h2>
+        <h2 className="category-section__title title title--2">
+          Shop by category
+        </h2>
 
         <div className="category-section__content">
           <Categories />

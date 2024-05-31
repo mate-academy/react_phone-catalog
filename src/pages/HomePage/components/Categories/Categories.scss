@@ -9,5 +9,9 @@
 
   &__category-wrapper {
     grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: span 4;
+    }
   }
 }

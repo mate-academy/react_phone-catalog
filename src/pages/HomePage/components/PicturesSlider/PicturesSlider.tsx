@@ -22,6 +22,10 @@ export const PicturesSlider = () => {
     });
   };
 
+  // const isTabletWidth = true;
+
+  const isMobileWidth = false;
+
   useEffect(() => {
     setInterval(() => {
       moveToNextSlide();
@@ -69,7 +73,19 @@ export const PicturesSlider = () => {
 
   return (
     <div className="slider">
-      <div ref={slider} className={bannerClass}></div>
+      {isMobileWidth ? (
+        <div ref={slider} className={bannerClass}></div>
+      ) : (
+        <div className="arrows-slider-container">
+          <button>
+            <img src="./icons/arrow-left.svg" alt="left arrow icon" />
+          </button>
+          <div ref={slider} className={bannerClass}></div>
+          <button>
+            <img src="./icons/arrow-right.svg" alt="right arrow icon" />
+          </button>
+        </div>
+      )}
 
       <div className="tabs slider__tabs">
         {slideList.map((slide: number) => (
