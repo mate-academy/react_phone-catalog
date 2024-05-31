@@ -1,8 +1,8 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .homePageSlider {
   &__container {
-    @include onPhone {
+    @include phone-style {
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -10,24 +10,24 @@
   }
 
   &__h1 {
+    @include h1-style;
 
-    @include H1;
     display: none;
 
     &--desktop {
-      @include onDesktop {
+      @include desktop-style {
         display: block;
         margin-bottom: 56px;
       }
     }
 
     &--tablet {
-      @include onTablet {
+      @include tablet-style {
         margin-bottom: 32px;
         display: block;
       }
 
-      @include onPhone {
+      @include phone-style {
         display: block;
         margin-bottom: 24px;
         font-size: 32px;
@@ -55,12 +55,12 @@
     width: var(--width-picbox);
     height: var(--height-picbox);
 
-    @include onTablet {
+    @include tablet-style {
       width: calc(var(--width-picbox) / 2.2);
       height: calc(var(--height-picbox) / 2);
     }
 
-    @include onPhone {
+    @include phone-style {
       width: 320px;
       height: 320px;
     }
@@ -70,8 +70,9 @@
     position: absolute;
     width:100%;
     height: 100%;
+    z-index: 10;
 
-    @include onPhone {
+    @include phone-style {
       width: fit-content;
     }
   }
@@ -85,11 +86,11 @@
     border: 1px solid var(--icon-color);
     background-color: var(--white);
     
-    @include onTablet {
+    @include tablet-style {
       height: 189px;
     }
 
-    @include onPhone {
+    @include phone-style {
       display: none;
     }
   }

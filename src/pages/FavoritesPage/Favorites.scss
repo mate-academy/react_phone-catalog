@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .favoritesPage {
   display: flex;
@@ -14,17 +14,18 @@
 
   &__amount {
     @include body-text14;
+
     color: var(--secondary-color);
     margin-bottom: 40px;
   }
 
   &__h1 {
-    @include H1;
+    @include h1-style;
     
     margin-bottom: 8px;
   }
 
   &__empty {
-    @include H1;
+    @include h1-style;
   }
 }

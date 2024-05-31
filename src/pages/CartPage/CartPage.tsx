@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom';
 import './CartPage.scss';
 import { CartItem } from '../../Components/CardItem/CardItem';
 import { useContext, useEffect } from 'react';
@@ -9,6 +8,10 @@ export const CartPage = () => {
   const totalPrice = card.map(el => {
     return el.quantity * el.price;
   });
+
+  const goBack = () => {
+    window.history.back();
+  };
 
   const sum = totalPrice.reduce((value, curValue) => value + curValue, 0);
   const amountItems = card.reduce((acc, c) => c.quantity + acc, 0);
@@ -36,12 +39,11 @@ export const CartPage = () => {
   ) : (
     <div className="cardPage">
       <div className="cardPage__container">
-        <div className="cardPage__back details__back">
-          <Link to="/phones" className="details__back-link">
-            <img className="details__arrey" src="img/Vector (Stroke).png" />
-            <p>Back</p>
-          </Link>
-        </div>
+        <button className="cardPage__back" onClick={goBack}>
+          <img className="cardPage__arrey" src="img/Vector(Stroke)Back.png" />
+          <p>Back</p>
+        </button>
+
         <h1 className="cardPage__h1">Cart</h1>
         <div className="cardPage__items">
           <div className="cardPage__items">

@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useSearchParams } from 'react-router-dom';
 import { Loader } from '../../Components/Loader/Loader';
 import { Pagination } from '../../Components/Pagination/Pagination';

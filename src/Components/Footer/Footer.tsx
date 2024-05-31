@@ -23,6 +23,7 @@ export const Footer = () => {
       <nav className="footer__links">
         <NavLink
           to="/contact"
+          target="_blank"
           className={({ isActive }) =>
             classNames('footer__link', { 'is-active': isActive })
           }
@@ -31,6 +32,7 @@ export const Footer = () => {
         </NavLink>
         <NavLink
           to="https://github.com/zvir91/react_phone-catalog"
+          target="_blank"
           className={({ isActive }) =>
             classNames('footer__link', { 'is-active': isActive })
           }
@@ -42,6 +44,7 @@ export const Footer = () => {
           className={({ isActive }) =>
             classNames('footer__link', { 'is-active': isActive })
           }
+          target="_blank"
         >
           Rights
         </NavLink>

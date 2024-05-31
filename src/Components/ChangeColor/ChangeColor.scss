@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 $width: 130px;
 $box-width: 100px;
@@ -16,7 +16,7 @@ $colors-width: 50px;
   justify-content: space-between;
 
   
-  @include onPhone {
+  @include phone-style {
     width: calc($width / 1.4);
     top: 64px;
   } 
@@ -32,7 +32,7 @@ $colors-width: 50px;
     background-color: var(--white);
     visibility: hidden;
 
-    @include onPhone {
+    @include phone-style {
       width: calc($box-width / 1.4);
       height: 30;
     } 
@@ -48,7 +48,7 @@ $colors-width: 50px;
     display: flex;
     justify-content: space-between;
 
-    @include onPhone {
+    @include phone-style {
       width: $colors-width / 1.4;
     }
   }
@@ -61,7 +61,7 @@ $colors-width: 50px;
   &__title {
     @include smoll-text;
 
-    @include onPhone {
+    @include phone-style {
       font-size: 10px;
       line-height: 10px;
     }
@@ -74,7 +74,7 @@ $colors-width: 50px;
     font-size: 10px;
     border: 1px solid var(--primary-color);
 
-    @include onPhone {
+    @include phone-style {
       width: calc($buttons-width / 1.4);
       height: calc($buttons-width / 1.4);
     }
@@ -89,6 +89,6 @@ $colors-width: 50px;
   }
 
   &__button:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
   }
 }

@@ -1,12 +1,12 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .category {
   &__title {
     margin-bottom: 24px;
 
-    @include H1;
+    @include h1-style;
 
-    @include onPhone {
+    @include phone-style {
       font-size: 22px;
       line-height: 31px;
     }
@@ -16,7 +16,7 @@
     display: flex;
     gap: 18px;
 
-    @include onPhone {
+    @include phone-style {
       flex-direction: column;
       justify-content: center;
     }
@@ -29,8 +29,8 @@
   }
 
   &__image-box {
-
     --item-size: 368px;
+  
     width: var(--item-size);
     height: var(--item-size);
     position: relative;
@@ -38,12 +38,12 @@
     overflow: hidden;
 
 
-  @include onTablet {
+  @include tablet-style {
     width: calc(var(--item-size) / 2.1); 
     height: calc(var(--item-size) / 2.5); 
   }
 
-  @include onPhone {
+  @include phone-style {
     width: 288px; 
     height: 288px; 
   }
@@ -93,7 +93,7 @@
     margin-bottom: 4px;
     text-decoration: none;
     
-    @include H3;
+    @include h3-style;
   }
 
   &__descr {

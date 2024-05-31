@@ -16,7 +16,6 @@ interface Props {
   category: string;
   setCategory: (category: string) => void;
   appliedQuery: string;
-  dataImg: { url: string }[];
   amounCard: number;
   setAmountCard: (value: number) => void;
 }
@@ -57,7 +56,6 @@ export const ProductContext = React.createContext<Props>({
   setFavorites: () => {},
   category: '',
   setCategory: () => {},
-  dataImg: [],
   appliedQuery: '',
   setAppliedQuery: () => {},
   amounCard: 0,
@@ -103,12 +101,6 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
   const [category, setCategory] = useState('');
   const [amounCard, setAmountCard] = useState(0);
 
-  const dataImg = [
-    { url: 'img/apple-2024-2.jpg' },
-    { url: 'img/ipads-f.avif' },
-    { url: 'img/intro-1697914594.jpg' },
-  ];
-
   const value = useMemo(
     () => ({
       product,
@@ -119,7 +111,6 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
       setCard,
       details,
       setDetails,
-      dataImg,
       appliedQuery,
       setAppliedQuery,
       category,
@@ -135,7 +126,6 @@ export const ProductProvider: React.FC<Prop> = ({ children }) => {
       setCard,
       details,
       setDetails,
-      dataImg,
       appliedQuery,
       category,
       amounCard,

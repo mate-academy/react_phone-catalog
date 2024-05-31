@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import { getSuggestedProducts } from '../../helper/api';
@@ -117,10 +118,10 @@ export const ProductDetailsPage = () => {
   ) : details ? (
     <div className="details">
       <div className="details__items">
-        <Breadcrumbs phoneId={newId} device={whatCategoryIs} />
+        <Breadcrumbs device={whatCategoryIs} phoneName={name} />
         <div className="details__back">
           <button className="details__back-link" onClick={goBack}>
-            <img className="details__arrey" src="img/Vector (Stroke).png" />
+            <img className="details__arrey" src="img/Vector(Stroke)Back.png" />
             <p>Back</p>
           </button>
         </div>
@@ -128,7 +129,6 @@ export const ProductDetailsPage = () => {
       </div>
 
       <div className="details__card">
-        <div className="details__id">ID: {neededProduct?.id}</div>
         <div className="details__images">
           <div className="details__smallImagesBox">
             {modImages?.map(image => (
@@ -158,7 +158,7 @@ export const ProductDetailsPage = () => {
         </div>
 
         <div className="details__featuresBox">
-          <div className="details__col-id">
+          <div className="details__features">
             <div className="details__colors">
               <div className="details__small-title">Available colors</div>
               <div className="details__colors-box">
@@ -180,92 +180,94 @@ export const ProductDetailsPage = () => {
                 ))}
               </div>
             </div>
-          </div>
 
-          <div className="details__capacity">
-            <div className="details__small-title">Select capacity</div>
-            <div className="details__capacity-box">
-              {capacityAvailable?.map(capac => (
-                <button
-                  className={classNames('details__capacity-button', {
-                    'is-active': capac === details.capacity,
-                  })}
-                  key={capac}
-                  onClick={() => handleCapacity(capac)}
-                >
-                  {capac}
-                </button>
-              ))}
+            <div className="details__capacity">
+              <div className="details__small-title">Select capacity</div>
+              <div className="details__capacity-box">
+                {capacityAvailable?.map(capac => (
+                  <button
+                    className={classNames('details__capacity-button', {
+                      'is-active': capac === details.capacity,
+                    })}
+                    key={capac}
+                    onClick={() => handleCapacity(capac)}
+                  >
+                    {capac}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="details__price">
-            <div className=" details__price details__price--discount">{`$${priceDiscount}`}</div>
-            <div className=" details__price details__price--regular">{`$${priceRegular}`}</div>
-          </div>
-          <div className="details__buttons">
-            {sameCard ? (
-              <button className="details__button added">Added to cart</button>
-            ) : (
-              <button
-                className="details__button"
+            <div className="details__price">
+              <div className=" details__price details__price--discount">{`$${priceDiscount}`}</div>
+              <div className=" details__price details__price--regular">{`$${priceRegular}`}</div>
+            </div>
+            <div className="details__buttons">
+              {sameCard ? (
+                <button className="details__button added">Added to cart</button>
+              ) : (
+                <button
+                  className="details__button"
+                  onClick={() => {
+                    if (neededProduct) {
+                      handleAddButton(card, neededProduct, setCard, sameCard);
+                    }
+                  }}
+                >
+                  Add to cart
+                </button>
+              )}
+
+              <div
+                className="details__favorite"
                 onClick={() => {
                   if (neededProduct) {
-                    handleAddButton(card, neededProduct, setCard, sameCard);
+                    handleFavorites(
+                      favorites,
+                      neededProduct,
+                      setFavorites,
+                      sameFavorites,
+                    );
                   }
                 }}
               >
-                Add to cart
-              </button>
-            )}
+                {sameFavorites ? (
+                  <img
+                    src="./img/RedHurt.png"
+                    alt="favourites"
+                    className="card__favor-icon"
+                  />
+                ) : (
+                  <img
+                    src="./img/WhiteHurt.png"
+                    alt="favourites"
+                    className="card__favor-icon"
+                  />
+                )}
+              </div>
+            </div>
 
-            <div
-              className="details__favorite"
-              onClick={() => {
-                if (neededProduct) {
-                  handleFavorites(
-                    favorites,
-                    neededProduct,
-                    setFavorites,
-                    sameFavorites,
-                  );
-                }
-              }}
-            >
-              {sameFavorites ? (
-                <img
-                  src="./img/RedHurt.png"
-                  alt="favourites"
-                  className="card__favor-icon"
-                />
-              ) : (
-                <img
-                  src="./img/WhiteHurt.png"
-                  alt="favourites"
-                  className="card__favor-icon"
-                />
-              )}
+            <div className="details__inform">
+              <div className="details__inform-item">
+                <p className="details__small-tex">Screen:</p>
+                <p className="details__char">{screen}</p>
+              </div>
+              <div className="details__inform-item">
+                <p className="details__small-tex">Resolution: </p>
+                <p className="details__char">{resolution}</p>
+              </div>
+              <div className="details__inform-item">
+                <p className="details__small-tex">Processor: </p>
+                <p className="details__char">{processor}</p>
+              </div>
+              <div className="details__inform-item">
+                <p className="details__small-tex">RAM: </p>
+                <p className="details__char">{ram}</p>
+              </div>
             </div>
           </div>
 
-          <div className="details__inform">
-            <div className="details__inform-item">
-              <p className="details__small-tex">Screen:</p>
-              <p className="details__char">{screen}</p>
-            </div>
-            <div className="details__inform-item">
-              <p className="details__small-tex">Resolution: </p>
-              <p className="details__char">{resolution}</p>
-            </div>
-            <div className="details__inform-item">
-              <p className="details__small-tex">Processor: </p>
-              <p className="details__char">{processor}</p>
-            </div>
-            <div className="details__inform-item">
-              <p className="details__small-tex">RAM: </p>
-              <p className="details__char">{ram}</p>
-            </div>
-          </div>
+          <div className="details__id">ID: {neededProduct?.id}</div>
         </div>
       </div>
       <div className="details__description">

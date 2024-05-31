@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useCallback, useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../helper/ProductContext';
 import './Search.scss';

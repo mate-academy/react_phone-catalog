@@ -6,36 +6,36 @@ $white: #FFF;
 $button-color: #313237;
 
 @font-face {
-  font-family: 'MontBold';
+  font-family: MontBold;
   src: url('../public/fonts/Mont-Bold.otf') format('opentype');
   font-weight: 800;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'MontRegular';
+  font-family: MontRegular;
   src: url('../public/fonts/Mont-Regular.otf') format('opentype');
   font-weight: 600;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'MontSemiBold';
+  font-family: MontSemiBold;
   src: url('../public/fonts/Mont-SemiBold.otf') format('opentype');
   font-weight: 700;
   font-style: normal;
 }
 
 body {
-  font-family: 'MontRegular', sans-serif;
+  font-family: MontRegular, sans-serif;
 }
 
 h1 {
-  font-family: 'MontBold', sans-serif;
+  font-family: MontBold, sans-serif;
 }
 
 h2 {
-  font-family: 'MontSemiBold', sans-serif;
+  font-family: MontSemiBold, sans-serif;
 }
 
 :root {
@@ -52,8 +52,8 @@ h2 {
   --gap: 16px;
 }
 
-  @mixin H1 {
-    font-family: 'MontBold', sans-serif; 
+  @mixin h1-style {
+    font-family: MontBold, sans-serif; 
     font-size: 32px; 
     font-weight: 700; 
     line-height: 41px; 
@@ -61,24 +61,24 @@ h2 {
     color: var(--primary-color);
   }; 
     
-  @mixin H2 {
-    font-family: 'MontBold', sans-serif;
+  @mixin h2-style {
+    font-family: MontBold, sans-serif;
     font-size: 22px;
     font-weight: 700;
     line-height: 31px;
     color: var(--primary-color);
   };
     
-  @mixin H3 {
-    font-family: 'MontSemiBold', sans-serif;
+  @mixin h3-style {
+    font-family: MontSemiBold, sans-serif;
     font-size: 20px;
     font-weight: 600;
     line-height: 26px;
     color: var(--primary-color);
   };
     
-  @mixin Uppercase {
-    font-family: 'MontBold', sans-serif;
+  @mixin uppercase-style {
+    font-family: MontBold, sans-serif;
     font-size: 12px;
     font-weight: 800;
     line-height: 11px;
@@ -88,15 +88,14 @@ h2 {
    
   @mixin buttons {
     line-height: 21px;
-    font-family: 'MontRegular', sans-serif ;
+    font-family: MontRegular, sans-serif ;
     font-size: 14px;
-    line-height: 21px;
     background-color: var(--button-color);
     color: white;
   };
   
   @mixin body-text14 {
-    font-family: 'MontRegular', sans-serif;
+    font-family: MontRegular, sans-serif;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -104,7 +103,7 @@ h2 {
   };
    
   @mixin smoll-text {
-    font-family: 'MontRegular', sans-serif;
+    font-family: MontRegular, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15px;
@@ -113,19 +112,19 @@ h2 {
   };
 
 
-  @mixin onDesktop {
+  @mixin desktop-style {
     @media(min-width: 1200px) {
       @content
     }
   };
 
-  @mixin onTablet {
+  @mixin tablet-style {
     @media(max-width: 1199px) {
       @content
     }
   };
 
-  @mixin onPhone {
+  @mixin phone-style {
     @media(max-width: 539px) {
       @content
     }

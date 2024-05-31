@@ -2,11 +2,16 @@ import { Link } from 'react-router-dom';
 import './Breadcrumbs.scss';
 
 interface Props {
-  phoneId?: string;
+  // phoneId?: string;
   device: string;
+  phoneName?: string;
 }
 
-export const Breadcrumbs: React.FC<Props> = ({ phoneId, device }) => {
+export const Breadcrumbs: React.FC<Props> = ({
+  // phoneId,
+  device,
+  phoneName,
+}) => {
   const capitalisedStr = device.charAt(0).toUpperCase() + device.slice(1);
 
   return (
@@ -23,13 +28,13 @@ export const Breadcrumbs: React.FC<Props> = ({ phoneId, device }) => {
         {capitalisedStr}
       </Link>
 
-      {phoneId && (
+      {phoneName && (
         <div className="breadcrumbs__vector">
           <img src="img/Chevron(ArrowRight).png" alt="vector" />
         </div>
       )}
 
-      <p className="breadcrumbs__phoneId">{phoneId}</p>
+      <p className="breadcrumbs__phoneId">{phoneName}</p>
     </div>
   );
 };

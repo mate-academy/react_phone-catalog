@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .customSelect {
   position: relative;
@@ -15,7 +15,7 @@
     color: $primary-color;
     cursor: pointer;
   
-    @include onPhone {
+    @include phone-style {
       width: 128px;
     }
 
@@ -26,7 +26,7 @@
 
   &__select::placeholder {
     color: var(--primary-color);
-    font-family: 'MontBold', sans-serif;
+    font-family: MontBold, sans-serif;
   }
 
   &__select:focus {
@@ -47,17 +47,11 @@
    right: 5px;
   }
 
-  &__dropdown-option:hover {
-    background-color: #FAFBFC;
-    color: $primary-color;
-  }
-
-
   &__dropdown-menu {
     position: absolute;
     border: 1px solid $icon-color;
     cursor: pointer;
-    box-shadow: 0px 2px 15px 0px #0000000D;
+    box-shadow: 0 2px 15px 0 #0000000D;
 
   }
 
@@ -67,7 +61,9 @@
     height: 32px;
     display: flex;
     align-items: center; 
+
     @include body-text14;
+
     color: $icon-color;
     background-color: var(--white);
     padding-left: 12px;
@@ -77,4 +73,10 @@
       color: $primary-color;
     }
   }
+
+  &__dropdown-option:hover {
+    background-color: #FAFBFC;
+    color: $primary-color;
+  }
+
 }

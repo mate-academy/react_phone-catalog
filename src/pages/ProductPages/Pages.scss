@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .productPage {
   display: flex;
@@ -13,10 +13,11 @@
     margin-bottom: 40px;
   }
   &__h1 {
-    @include H1;
+    @include h1-style;
+
     margin-bottom: 8px;
 
-    @include onPhone {
+    @include phone-style {
       font-size: 22px;
       line-height: 31px;
     }
@@ -24,6 +25,7 @@
 
   &__text {
     @include body-text14;
+
     color: $secondary-color;
   }
 

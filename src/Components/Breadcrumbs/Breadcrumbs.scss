@@ -1,11 +1,11 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .breadcrumbs {
   &__url {
     display: flex;
     gap: 8px;
     margin-bottom: 40px;
-    font-family: 'Mont' sans-serif;
+    font-family: MontSemiBold, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;

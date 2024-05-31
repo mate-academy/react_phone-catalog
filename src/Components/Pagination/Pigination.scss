@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .pagination {
   display: flex;
@@ -22,7 +22,7 @@
 
     &--button {
       background-color: var(--white);;
-      border: 1px solid var(--$icon-color);
+      border: 1px solid var(--icon-color);
     }
 
     &--button:disabled {
@@ -31,7 +31,7 @@
   }
 
   &__item:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
   }
 
   &__pages {

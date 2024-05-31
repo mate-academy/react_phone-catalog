@@ -1,5 +1,5 @@
-@import '/src/Global.scss';
-@import '../Shared/blocks.scss';
+@import '/src/Global';
+@import '../Shared/blocks';
 
 .header {
   width: 100%;
@@ -9,13 +9,13 @@
   box-sizing: border-box;
   padding-left: 24px;
 
-  @include onPhone {
+  @include phone-style {
     display: flex;
     height: 48px;
     margin-bottom: 24px;
   }
 
-  @include onTablet {
+  @include tablet-style {
     padding-left: 16px;
     margin-bottom: 32px;
   }
@@ -31,7 +31,7 @@
    display: flex;
    border-bottom: 1px solid var(--elements-color);
 
-   @include onPhone {
+   @include phone-style {
     display: none
   }
   }
@@ -40,7 +40,7 @@
     display:  flex;
     gap: 48px;
 
-    @include onTablet {
+    @include tablet-style {
       gap: 16px;
     }
   }
@@ -50,17 +50,17 @@
     align-items: center;
     gap: 64px;
 
-    @include onTablet {
+    @include tablet-style {
       gap: 32px;
     }
 
-    @include onPhone {
+    @include phone-style {
       display: none
     }
   }
  
   &__link {
-    @include Uppercase;
+    @include uppercase-style;
 
     position: relative;
     text-decoration: none;
@@ -89,7 +89,7 @@
     display: flex;
     align-items: center;
 
-    @include onTablet {
+    @include tablet-style {
       height: 30px;
     }
   }
@@ -98,7 +98,7 @@
     width: 80px;
     height: 27px;
 
-    @include onTablet {
+    @include tablet-style {
       width: 64px;
       height: 21px;
     }
@@ -108,7 +108,7 @@
     width: 66px;
     height: 63px;
 
-    @include onPhone {
+    @include phone-style {
       display: none
     }
   }
@@ -120,7 +120,7 @@
     border-left: 1px solid var(--elements-color);
     border-right: 1px solid var(--elements-color);
 
-    @include onPhone {
+    @include phone-style {
       display: none
     }
   }
@@ -134,7 +134,7 @@
     width: 48px;
     height: 48px;
     position: absolute;
-    right: 0px;
+    right: 0;
     top: 0;
     display: flex;
     align-items: center;
@@ -143,7 +143,7 @@
 
     visibility: hidden;
 
-    @include onPhone {
+    @include phone-style {
       visibility: visible;
     }
   }

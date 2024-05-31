@@ -1,5 +1,5 @@
-@import '../../Global.scss';
-@import '../../Components/Shared/blocks.scss';
+@import '../../Global';
+@import '../../Components/Shared/blocks';
 
 
 .menuPage {
@@ -10,7 +10,7 @@
 
   overflow: hidden;
 
-  @include onPhone {
+  @include phone-style {
     overflow:visible;
   }
 
@@ -24,7 +24,8 @@
   }
 
   &__link {
-    @include Uppercase;
+    @include uppercase-style;
+
     text-align: center;
     
     text-decoration: none;

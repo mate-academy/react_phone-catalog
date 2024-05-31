@@ -1,4 +1,4 @@
-@import '/src/Global.scss';
+@import '/src/Global';
 
 
   $width-slider: 1136px;
@@ -17,11 +17,11 @@
   flex-direction: column;
   overflow: hidden;
  
-  @include onTablet {
+  @include tablet-style {
     width: 560px; 
   }
 
-  @include onPhone {
+  @include phone-style {
     width: 272px;
   }
  
@@ -33,9 +33,9 @@
   }
 
   &__title {
-    @include H1;
+    @include h1-style;
     
-    @include onPhone {
+    @include phone-style {
       font-size: 22px;
       line-height: 31px;
     }

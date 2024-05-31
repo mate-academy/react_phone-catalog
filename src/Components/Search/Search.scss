@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 :root {
   --width: 327px;
@@ -10,11 +10,11 @@
   width: var(--width);
   height: 64px;
 
-  @include onPhone {
+  @include phone-style {
     display: none; 
   }
 
-  @include onTablet {
+  @include tablet-style {
     width: calc( var(--width) / 3);
   }
 
@@ -26,7 +26,7 @@
     top: 24px;
 
     
-    @include onTablet {
+    @include tablet-style {
       right: 5px;
     }
   }
@@ -41,17 +41,17 @@
     background-color: var(--white);
     color: var(--primary-color);
 
-    @include onTablet {
+    @include tablet-style {
       width: calc(var(--width) / 3) ;
     }
   
     &::placeholder {
-      font-family: 'MontSemiBold', sans-serif;
+      font-family: MontSemiBold, sans-serif;
       font-size: 14px;
       font-weight: 600;
       line-height: 17.89px;
 
-      @include onTablet {
+      @include tablet-style {
         opacity: 0;
       }
     }

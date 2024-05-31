@@ -1,11 +1,15 @@
 import cn from 'classnames';
-import { useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../../helper/ProductContext';
+import { useEffect, useState } from 'react';
 import './HomePageSlider.scss';
 
 export const HomePageSlider = () => {
-  const { dataImg } = useContext(ProductContext);
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  const dataImg = [
+    { url: 'img/apple-2024-2.jpg' },
+    { url: 'img/ipads-f.avif' },
+    { url: 'img/intro-1697914594.jpg' },
+  ];
 
   function scrollLeft() {
     setCurrentIndex(prevIndex =>

@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .homePage {
   display: flex;
@@ -6,11 +6,11 @@
   align-items: center;
   gap: 80px;
 
-  @include onTablet {
+  @include tablet-style {
     gap: 64px;
   }
  
-  @include onPhone {
+  @include phone-style {
     gap: 56px;
   }
 }

@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .cardPage {
   margin-bottom: 80px;
@@ -7,11 +7,11 @@
   justify-content: center;
   align-items: center;
 
-  @include onPhone {
+  @include phone-style {
     margin-bottom: 56px;
   }
 
-  @include onTablet {
+  @include tablet-style {
     margin-bottom: 64px;
   }
 
@@ -25,23 +25,32 @@
     flex-direction: row;
     gap: 16px;
 
-    @include onTablet {
+    @include tablet-style {
       flex-direction: column;
     }
   }
 
   &__back {
+    display: flex;
+    gap: 9px;
+    place-items: center;
     margin-bottom: 16px;
+    font-family: MontRegular, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-align: left;
+    color: var(--secondary-color);
   }
 
   &__h1 {
-    @include H1;
+    @include h1-style;
 
     margin-bottom: 32px;
   }
 
   &__h2 {
-    @include H2;
+    @include h2-style;
   }
 
   &__card {
@@ -62,22 +71,24 @@
 
     border: 1px solid var(--elements-color);
 
-    @include onTablet {
+    @include tablet-style {
       width: 100%;
     }
 
-    @include onPhone {
+    @include phone-style {
       width: 288px;
     }
   }
 
   &__price {
-    @include H2;
+    @include h2-style;
   }
 
   &__amount {
     width: 100%;
+
     @include body-text14;
+
     text-align: center;
     color: var(--secondary-color);
     padding-bottom: 25px;
@@ -93,6 +104,6 @@
   }
 
   &__button:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
   }
 }

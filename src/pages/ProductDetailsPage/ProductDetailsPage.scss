@@ -1,4 +1,4 @@
-@import '../../Global.scss';
+@import '../../Global';
 
 .details {
   display: flex;
@@ -6,26 +6,29 @@
   align-items: center;
   
   &__items {
-    width: 100%;
+    width: 1136px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
+
+    @include tablet-style {
+      width: 100%;
+    }
   }
 
   &__card {
     width: 100%;
-    position: relative;
     display: flex;
     gap: 64px;
     margin-bottom: 80px;
-    justify-content: start;
+    justify-content: center;
 
-    @include onTablet {
+    @include tablet-style {
       gap: 17px;
       margin-bottom: 64px;
     }
 
-    @include onPhone {
+    @include phone-style {
       flex-direction: column;
       align-items: center;
       gap: 40px;
@@ -35,9 +38,9 @@
   &__h1 {
     margin-bottom: 40px;
 
-    @include H1;
+    @include h1-style;
 
-    @include onPhone {
+    @include phone-style {
       font-size: 22px;
       line-height: 31px;
       margin-bottom: 32px;
@@ -45,7 +48,7 @@
   }
 
   &__h2 {
-    @include H2;
+    @include h2-style;
 
     margin-bottom: 32px;
     padding-bottom: 16px;
@@ -53,7 +56,7 @@
   }
 
   &__h3 {
-    @include H3;
+    @include h3-style;
 
     margin-bottom: 16px;
   }
@@ -65,20 +68,32 @@
   }
 
   &__featuresBox {
+    width: 512px;
     display: flex;
-    flex-direction: column;
+    position: relative;
+    gap: 16px;
+
+    @include tablet-style {
+      width: 100%;
+    }
+    
   }
 
   &__images {
+    width: 560px;
     display: flex;
     gap: 16px;
 
-    @include onPhone {
+    @include tablet-style {
+      width: 100%;
+    }
+
+    @include phone-style {
       position: relative;
       flex-direction: column;
     }
 
-      @include onPhone {
+      @include phone-style {
         flex-direction: column-reverse;
       }
   }
@@ -88,11 +103,11 @@
     flex-direction: column;
     gap: 16px;
 
-    @include onTablet {
+    @include tablet-style {
       gap: 8px;
     }
 
-    @include onPhone {
+    @include phone-style {
       flex-direction: row;
     }
   }
@@ -112,19 +127,19 @@
     width: 80px;
     height: 80px;
 
-    @include onTablet {
+    @include tablet-style {
       width: 35px;
       height: 35px;
     }
 
-    @include onPhone {
+    @include phone-style {
        width: 50px;
       height: 50px;
     }
   }
 
   &__smallBox:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
   }
 
   &__image {
@@ -137,7 +152,7 @@
     display: flex;
     place-content: center;;
 
-    @include onTablet {
+    @include tablet-style {
       width: 288px;
       height: 288px;
     }
@@ -203,12 +218,8 @@
   &__is-active {
     border: 1px solid var(--primary-color);
   }
-  
 
   &__id {
-    position: absolute;
-    top: 0;
-    right: 0;
     width: 176px;
     height: 15px;
     display: flex;
@@ -216,12 +227,11 @@
 
     @include smoll-text;
 
-    @include onTablet {
+    @include tablet-style {
       width: 85px;
-    }
-
-    @include onPhone {
-      top: 400px;
+      position: absolute;
+      top: 0;
+      right: 0;
     }
   }
 
@@ -244,6 +254,7 @@
     height: 32px;
     background-color: var(--white);
     border: 1px solid var(--icon-color);
+
     @include body-text14;
 
     &.is-active {
@@ -253,7 +264,7 @@
   }
 
   &__capacity-button:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
   }
 
   &__price {
@@ -263,7 +274,7 @@
     margin-bottom: 16px;
 
     &--discount {
-      font-family: "Mont sans-serif";
+      font-family: MontBold, sans-serif;
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
@@ -271,7 +282,7 @@
     }
 
     &--regular {
-      font-family: Mont;
+      font-family: MontRegular, sans-serif;
       font-size: 22px;
       font-weight: 500;
       line-height: 28.12px;
@@ -289,13 +300,14 @@
     width: 264px;
     height: 48px;
     margin-bottom: 32px;
+
     @include buttons;
 
-    @include onTablet {
+    @include tablet-style {
       width: 180px;
     }
 
-    @include onPhone {
+    @include phone-style {
       width: 231px;
     }
 
@@ -307,7 +319,7 @@
   }
 
   &__button:hover {
-    box-shadow: 0px 3px 13px 0px var(--hover-card);
+    box-shadow: 0 3px 13px 0 var(--hover-card);
 }
 
   &__favorite {
@@ -332,11 +344,12 @@
   &__inform-item {
     display: inline-flex;
     justify-content: space-between;
+
     @include smoll-text;
   }
 
   &__char {
-    font-family: Mont;
+    font-family: MontSemiBold, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 15.34px;
@@ -353,24 +366,28 @@
     gap: 64px;
     margin-bottom: 80px;
 
-    @include onTablet {
+    @include tablet-style {
       flex-direction: column;
        margin-bottom: 64px; 
     }
 
-    @include onPhone {
+    @include phone-style {
       flex-direction: column;
       gap: 56px; 
     }
   }
 
   &__about {
-    width: 100%;
+    width: 560px;
+
+    @include tablet-style {
+      width: 100%;
+    }
   }
 
   &__text {
-
     @include body-text14;
+
     color: var(--secondary-color);
   }
 
@@ -381,8 +398,9 @@
   &__back-link {
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 9px;
     text-decoration: none;
+    
     @include smoll-text;
   }
 
@@ -390,14 +408,12 @@
     color: var(--primary-color);
   }
 
-  &__arrey {
-    color: var(--primary-color);
-    width: 5.33px;
-    height: 9.33px;
-  }
-
   &__tech-specs {
-   width: 100%;
+   width: 512px;
+
+   @include tablet-style {
+    width: 100%;
+  }
   }
 
   &__tech-item {

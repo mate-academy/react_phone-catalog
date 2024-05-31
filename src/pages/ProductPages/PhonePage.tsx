@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useContext, useEffect, useState } from 'react';
 import { Loader } from '../../Components/Loader/Loader';
 import { useSearchParams } from 'react-router-dom';

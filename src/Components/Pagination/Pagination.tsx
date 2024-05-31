@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link, useSearchParams } from 'react-router-dom';
 import { filterByQuery, filterProducts } from '../../helper/Filters';
 import { Product } from '../../helper/Product';
