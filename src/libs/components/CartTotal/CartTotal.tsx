@@ -9,7 +9,7 @@ export const CartTotal = () => {
   const [isModalActive, setIsModalActive] = useState(false);
   const totalSum = items.reduce(
     (sum, { product, quantity }) => sum + quantity * product.price,
-    0
+    0,
   );
   const totalItems = items.reduce((sum, { quantity }) => sum + quantity, 0);
 
@@ -19,17 +19,14 @@ export const CartTotal = () => {
 
   return (
     <>
-      <div className='cart-total'>
-        <p className='cart-total__total-price'>{`$ ${totalSum}`}</p>
-        <p
-          className='cart-total__description'
-          data-cy='productQauntity'
-        >
+      <div className="cart-total">
+        <p className="cart-total__total-price">{`$ ${totalSum}`}</p>
+        <p className="cart-total__description" data-cy="productQauntity">
           {`Total for ${totalItems} items`}
         </p>
         <button
-          type='button'
-          className='cart-total__checkout-button'
+          type="button"
+          className="cart-total__checkout-button"
           onClick={handleClick}
         >
           Checkout
@@ -40,7 +37,7 @@ export const CartTotal = () => {
         <Modal
           isActive={isModalActive}
           setIsModalActive={(value: boolean) => setIsModalActive(value)}
-          text='We are sorry, but this feature is not implemented yet'
+          text="We are sorry, but this feature is not implemented yet"
         />
       )}
     </>

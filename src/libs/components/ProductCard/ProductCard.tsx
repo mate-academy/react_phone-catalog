@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
     name,
     price,
     ram,
-    screen
+    screen,
   } = product;
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(state => state.cartItems);
@@ -48,7 +48,7 @@ export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
       const cartItem: ICartItem = {
         id: String(new Date().valueOf()),
         quantity: 1,
-        product
+        product,
       };
 
       dispatch(cartActions.addItem(cartItem));
@@ -65,40 +65,30 @@ export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
 
   return (
     <div className={cn('product-card', classNames)}>
-      <Link
-        to={link}
-        className='product-card__photo-link'
-      >
-        <img
-          src={`${image}`}
-          alt={name}
-          className='product-card__photo'
-        />
+      <Link to={link} className="product-card__photo-link">
+        <img src={`${image}`} alt={name} className="product-card__photo" />
       </Link>
 
-      <Link
-        to={link}
-        className='product-card__title'
-      >
+      <Link to={link} className="product-card__title">
         {name}
       </Link>
 
       <Price
         discountPrice={price}
         fullPrice={fullPrice}
-        classNames='product-card__price'
+        classNames="product-card__price"
       />
       <TechSpecs
-        classNames='product-card__details'
+        classNames="product-card__details"
         hasBorder
         specs={{
           screen,
           capacity,
-          ram
+          ram,
         }}
       />
       <BuyButtons
-        classNames='product-card__buttons'
+        classNames="product-card__buttons"
         add={handleAddToCart}
         isAddButtonSelected={hasInCart}
         like={handleAddToFavorites}

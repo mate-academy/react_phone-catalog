@@ -12,7 +12,7 @@ export interface ISuggestedProductsState {
 const initialState: ISuggestedProductsState = {
   loaded: false,
   hasError: false,
-  suggestedProducts: []
+  suggestedProducts: [],
 };
 
 export const fetchSuggestedProducts = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchSuggestedProducts = createAsyncThunk(
     const products = await getSuggestedProducts();
 
     return products;
-  }
+  },
 );
 
 const suggestedProductsSlice = createSlice({
@@ -43,7 +43,7 @@ const suggestedProductsSlice = createSlice({
         state.loaded = true;
         state.hasError = true;
       });
-  }
+  },
 });
 
 export default suggestedProductsSlice.reducer;

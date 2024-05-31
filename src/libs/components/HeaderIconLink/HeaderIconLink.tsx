@@ -20,7 +20,7 @@ export const HeaderIconLink: React.FC<Props> = ({
   classNames,
   hasItemsIn,
   count,
-  onClick = () => {}
+  onClick = () => {},
 }) => {
   return (
     <NavLink
@@ -28,13 +28,10 @@ export const HeaderIconLink: React.FC<Props> = ({
       className={cn('icon-link', classNames)}
       onClick={onClick}
     >
-      <div className='icon-link__icon-container'>
-        <Icon
-          iconName={iconName}
-          classNames='icon-link__icon'
-        />
+      <div className="icon-link__icon-container">
+        <Icon iconName={iconName} classNames="icon-link__icon" />
 
-        {hasItemsIn && <span className='icon-link__icon-count'>{count}</span>}
+        {hasItemsIn && <span className="icon-link__icon-count">{count}</span>}
       </div>
     </NavLink>
   );

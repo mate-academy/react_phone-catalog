@@ -5,7 +5,7 @@ import { useCallback } from 'react';
 import {
   FILTER_OPTIONS,
   SORT_OPTIONS,
-  SearchParamsNames
+  SearchParamsNames,
 } from '../../constants';
 import { getSearchWith } from '../../utils';
 
@@ -26,20 +26,20 @@ export const PageFilter: React.FC<Props> = ({ filterValue, sortValue }) => {
       const newParams = getSearchWith(
         {
           [paramName]: value,
-          [SearchParamsNames.page]: 1
+          [SearchParamsNames.page]: 1,
         },
-        searchParams
+        searchParams,
       );
 
       setSearchParams(newParams);
     },
-    [searchParams, setSearchParams]
+    [searchParams, setSearchParams],
   );
 
   return (
-    <div className='page-filter'>
+    <div className="page-filter">
       <DropDown
-        label='Sort by'
+        label="Sort by"
         value={sortValue}
         options={SORT_OPTIONS}
         setValue={handleSaveSearchParams(SearchParamsNames.sort)}
@@ -48,7 +48,7 @@ export const PageFilter: React.FC<Props> = ({ filterValue, sortValue }) => {
 
       <DropDown
         value={filterValue}
-        label='Items on page'
+        label="Items on page"
         options={FILTER_OPTIONS}
         setValue={handleSaveSearchParams(SearchParamsNames.filter)}
         width={128}

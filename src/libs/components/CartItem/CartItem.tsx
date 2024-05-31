@@ -9,7 +9,7 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({
-  item: { id, product, quantity }
+  item: { id, product, quantity },
 }) => {
   const dispatch = useAppDispatch();
 
@@ -21,8 +21,8 @@ export const CartItem: React.FC<Props> = ({
     dispatch(
       cartActions.setQuantity({
         id,
-        quantity: quantity - 1
-      })
+        quantity: quantity - 1,
+      }),
     );
   };
 
@@ -30,20 +30,20 @@ export const CartItem: React.FC<Props> = ({
     dispatch(
       cartActions.setQuantity({
         id,
-        quantity: quantity + 1
-      })
+        quantity: quantity + 1,
+      }),
     );
   };
 
   return (
-    <div className='cart-item'>
+    <div className="cart-item">
       <button
-        type='button'
-        className='
+        type="button"
+        className="
         cart-item__button
         cart-item__button--delete-button
-        '
-        data-cy='cartDeleteButton'
+        "
+        data-cy="cartDeleteButton"
         onClick={handleDeleteItem}
       >
         x
@@ -52,39 +52,39 @@ export const CartItem: React.FC<Props> = ({
       <img
         src={product.image}
         alt={product.name}
-        className='cart-item__product-image'
+        className="cart-item__product-image"
       />
 
-      <p className='cart-item__product-name'>{product.name}</p>
+      <p className="cart-item__product-name">{product.name}</p>
 
-      <div className='cart-item__count-container'>
+      <div className="cart-item__count-container">
         <button
-          type='button'
-          className='
+          type="button"
+          className="
           cart-item__button
           cart-item__count-button
-          '
+          "
           onClick={handleDecreaseQuantity}
           disabled={quantity === 1}
         >
           -
         </button>
 
-        <p className='cart-item__item-count'>{quantity}</p>
+        <p className="cart-item__item-count">{quantity}</p>
 
         <button
-          type='button'
-          className='
+          type="button"
+          className="
           cart-item__button
           cart-item__count-button
-          '
+          "
           onClick={handleIncreaseQuantity}
         >
           +
         </button>
       </div>
 
-      <p className='cart-item__product-price'>{product.price}</p>
+      <p className="cart-item__product-price">{product.price}</p>
     </div>
   );
 };

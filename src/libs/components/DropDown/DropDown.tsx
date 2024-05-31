@@ -17,7 +17,7 @@ export const DropDown = <T extends string>({
   value,
   setValue,
   options,
-  width
+  width,
 }: DropProps<T>) => {
   const [isOpen, setIsOpen] = useState(false);
   const selectRef = useRef<HTMLDivElement>(null);
@@ -55,30 +55,30 @@ export const DropDown = <T extends string>({
 
   return (
     <div
-      className='dropdown'
+      className="dropdown"
       style={{
-        width: `${width}px`
+        width: `${width}px`,
       }}
     >
-      <label className='dropdown__label'>
-        <span className='dropdown__label-text'>{label}</span>
+      <label className="dropdown__label">
+        <span className="dropdown__label-text">{label}</span>
 
         <div
-          className='dropdown__select'
-          role='presentation'
+          className="dropdown__select"
+          role="presentation"
           onClick={() => hadnleOnSelectClick()}
           ref={selectRef}
         >
           <span>{currentValueTitle}</span>
 
           {isOpen && (
-            <ul className='dropdown__option-list'>
+            <ul className="dropdown__option-list">
               {options.map(option => (
                 <li
                   value={option.value}
                   key={option.value}
-                  className='dropdown__option-item'
-                  role='presentation'
+                  className="dropdown__option-item"
+                  role="presentation"
                   onClick={() => handleSelectValue(option)}
                 >
                   {option.label}
@@ -90,7 +90,7 @@ export const DropDown = <T extends string>({
 
         <Icon
           iconName={isOpen ? 'arrowUp' : 'arrowDown'}
-          classNames='dropdown__arrow'
+          classNames="dropdown__arrow"
         />
       </label>
     </div>

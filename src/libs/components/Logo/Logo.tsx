@@ -11,21 +11,13 @@ export const Logo: React.FC<Props> = ({ classNames }) => {
   const handleClick = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 
   return (
-    <Link
-      className={cn('logo', classNames)}
-      to='/'
-      onClick={handleClick}
-    >
-      <img
-        src='img/Logo.png'
-        alt='Logo'
-        className='logo__image'
-      />
+    <Link className={cn('logo', classNames)} to="/" onClick={handleClick}>
+      <img src="img/Logo.png" alt="Logo" className="logo__image" />
     </Link>
   );
 };

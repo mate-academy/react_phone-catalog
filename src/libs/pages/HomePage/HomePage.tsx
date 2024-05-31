@@ -10,13 +10,13 @@ import {
   ProductsSlider,
   Banner,
   Loader,
-  ErrorMessage
+  ErrorMessage,
 } from '../../components';
 
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const { allProducts, loaded, hasError } = useAppSelector(
-    store => store.products
+    store => store.products,
   );
 
   const productsWithHotPrice = useMemo(() => {
@@ -42,7 +42,7 @@ export const HomePage = () => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   }, []);
 
@@ -59,22 +59,22 @@ export const HomePage = () => {
       {hasProducts && (
         <>
           <ProductsSlider
-            title='Hot prices'
+            title="Hot prices"
             items={productsWithHotPrice}
-            classNames='main__hot-prices'
+            classNames="main__hot-prices"
           />
 
           <ShopByCategory />
 
           <ProductsSlider
             items={brandNewProducts}
-            title='Brand new models'
-            classNames='main__brand-new-models'
+            title="Brand new models"
+            classNames="main__brand-new-models"
           />
         </>
       )}
 
-      {hasErrorMessage && <ErrorMessage title='Failed to fetch products' />}
+      {hasErrorMessage && <ErrorMessage title="Failed to fetch products" />}
     </>
   );
 };

@@ -5,6 +5,6 @@ export const getPhones = async () => {
   const allProducts = await client.get<IProduct[]>('/api/products.json');
 
   return allProducts.filter(
-    product => product.category === ProductCategory.Phones
+    product => product.category === ProductCategory.Phones,
   );
 };

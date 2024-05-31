@@ -28,4 +28,14 @@
     margin-top: 24px;
     margin-bottom: 40px;
   }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+
+    & > ul {
+      display: flex;
+      gap: 4px;
+    }
+  }
 }

@@ -8,7 +8,7 @@ export interface ICartState {
 }
 
 const initialState: ICartState = {
-  cartItems: []
+  cartItems: [],
 };
 
 const cartSlice = createSlice({
@@ -29,7 +29,7 @@ const cartSlice = createSlice({
     },
     setQuantity: (state, action: PayloadAction<Omit<ICartItem, 'product'>>) => {
       const currentItem = state.cartItems.find(
-        el => el.id === action.payload.id
+        el => el.id === action.payload.id,
       );
 
       if (currentItem) {
@@ -37,8 +37,8 @@ const cartSlice = createSlice({
       }
 
       saveToLocalSotrage('cartItems', state.cartItems);
-    }
-  }
+    },
+  },
 });
 
 export const { setItems, addItem, deleteItem, setQuantity } = cartSlice.actions;

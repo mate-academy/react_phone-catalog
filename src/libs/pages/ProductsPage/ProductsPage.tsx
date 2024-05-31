@@ -1,23 +1,28 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useEffect, useMemo } from 'react';
+import { StyledEngineProvider } from '@mui/material/styles';
+import { Pagination } from '@mui/material';
 
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ProductCategory, IProduct } from '../../types';
 import { SORT_VALUES, SearchParamsNames } from '../../constants';
 
-import { getCategoryTitle, fetchCategoryProducts } from '../../utils';
+import {
+  getCategoryTitle,
+  fetchCategoryProducts,
+  getSearchWith,
+} from '../../utils';
 
 import {
   SectionHeader,
-  Pagination,
   PageFilter,
   Breadcrumbs,
   ProductCard,
   NoResults,
   Loader,
   NoSearchResults,
-  ErrorMessage
+  ErrorMessage,
 } from '../../components';
 
 import './ProductsPage.scss';
@@ -27,11 +32,11 @@ type Props = {
   title?: string;
 };
 
-const getVisibleProducts = (
+export const getVisibleProducts = (
   products: IProduct[],
   sortValue: string,
   filterValue: string,
-  page: number
+  page: number,
 ): IProduct[] => {
   const visibleProducts = [...products];
 
@@ -69,7 +74,7 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
   const {
     hasError,
     loaded,
-    products: fetchedProducts
+    products: fetchedProducts,
   } = useAppSelector(state => {
     switch (categoryName) {
       case ProductCategory.Tablets:
@@ -84,7 +89,7 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
     }
   });
 
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get(SearchParamsNames.sort) || SORT_VALUES.Newest;
   const filterBy = searchParams.get(SearchParamsNames.filter) || '4';
   const searchQuery = searchParams.get(SearchParamsNames.query) || '';
@@ -92,17 +97,17 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
 
   const categoryTitle = useMemo(
     () => title || getCategoryTitle(categoryName),
-    [categoryName, title]
+    [categoryName, title],
   );
 
   const filteredProductsBySearchQuery = useMemo(
     () =>
       searchQuery
         ? fetchedProducts.filter(product =>
-            product.name.toLowerCase().includes(searchQuery.toLowerCase())
+            product.name.toLowerCase().includes(searchQuery.toLowerCase()),
           )
         : fetchedProducts,
-    [fetchedProducts, searchQuery]
+    [fetchedProducts, searchQuery],
   );
 
   const visibleProducts = useMemo(
@@ -111,9 +116,9 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
         filteredProductsBySearchQuery,
         sortBy,
         filterBy,
-        currentPage
+        currentPage,
       ),
-    [currentPage, filterBy, sortBy, filteredProductsBySearchQuery]
+    [currentPage, filterBy, sortBy, filteredProductsBySearchQuery],
   );
 
   const fetchedProductsCount = fetchedProducts.length;
@@ -122,6 +127,7 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
   const hasFetchedProducts = loaded && !!fetchedProductsCount && !hasError;
   const hasNoFetchedProducts = loaded && !fetchedProductsCount && !hasError;
   const hasErrorMessage = loaded && hasError;
+  const pageCount = Math.ceil(filteredProductsCount / +filterBy);
 
   useEffect(() => {
     dispatch(fetchCategoryProducts(categoryName));
@@ -130,70 +136,72 @@ export const ProductsPage: React.FC<Props> = ({ title }) => {
   useEffect(() => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   });
 
+  const handleSetParams = (paramValue: string) => {
+    const newParams = getSearchWith(
+      { [SearchParamsNames.page]: paramValue || null },
+      searchParams,
+    );
+
+    setSearchParams(newParams);
+  };
+
   return (
-    <div className='products-page'>
-      <Breadcrumbs classNames='products-page__breadcrumbs' />
+    <StyledEngineProvider injectFirst>
+      <div className="products-page">
+        <Breadcrumbs classNames="products-page__breadcrumbs" />
 
-      {hasLoader && <Loader />}
+        {hasLoader && <Loader />}
 
-      {hasFetchedProducts && (
-        <>
-          <div className='products-page__title'>
-            <SectionHeader
-              title={categoryTitle}
-              subtitle={`${filteredProductsCount} ${searchQuery ? 'results' : 'models'}`}
-            />
-          </div>
-
-          {filteredProductsCount ? (
-            <>
-              <PageFilter
-                sortValue={sortBy}
-                filterValue={filterBy}
+        {hasFetchedProducts && (
+          <>
+            <div className="products-page__title">
+              <SectionHeader
+                title={categoryTitle}
+                subtitle={`${filteredProductsCount} ${searchQuery ? 'results' : 'models'}`}
               />
+            </div>
 
-              <div
-                className='products-page__cards'
-                data-cy='productList'
-              >
-                {visibleProducts.map(product => (
-                  <ProductCard
-                    product={product}
-                    key={product.id}
+            {filteredProductsCount ? (
+              <>
+                <PageFilter sortValue={sortBy} filterValue={filterBy} />
+
+                <div className="products-page__cards" data-cy="productList">
+                  {visibleProducts.map(product => (
+                    <ProductCard product={product} key={product.id} />
+                  ))}
+                </div>
+
+                {filteredProductsCount > +filterBy && filterBy !== 'all' && (
+                  <Pagination
+                    count={pageCount}
+                    page={currentPage}
+                    onChange={(_, page) => handleSetParams(String(page))}
+                    variant="outlined"
+                    shape="rounded"
+                    className="products-page__pagination"
                   />
-                ))}
-              </div>
+                )}
+              </>
+            ) : (
+              <NoSearchResults />
+            )}
+          </>
+        )}
 
-              {filteredProductsCount > +filterBy && filterBy !== 'all' && (
-                <Pagination
-                  productsCount={filteredProductsCount}
-                  currentPage={currentPage}
-                  filterValue={filterBy}
-                />
-              )}
-            </>
-          ) : (
-            <NoSearchResults />
-          )}
-        </>
-      )}
+        {hasNoFetchedProducts && (
+          <NoResults title={`${categoryTitle} not found`} hasBackButton />
+        )}
 
-      {hasNoFetchedProducts && (
-        <NoResults
-          title={`${categoryTitle} not found`}
-          hasBackButton
-        />
-      )}
-
-      {hasErrorMessage && (
-        <ErrorMessage
-          title={`Failed to fetch ${categoryTitle.toLowerCase()} `}
-        />
-      )}
-    </div>
+        {hasErrorMessage && (
+          <ErrorMessage
+            title={`Failed to fetch ${categoryTitle.toLowerCase()} `}
+          />
+        )}
+      </div>
+    </StyledEngineProvider>
   );
 };

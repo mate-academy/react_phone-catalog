@@ -11,15 +11,15 @@ type Props = {
 export const Modal: React.FC<Props> = ({
   text,
   isActive,
-  setIsModalActive
+  setIsModalActive,
 }) => {
   return (
     <div className={cn('modal', { 'modal--active': isActive })}>
-      <div className='modal__content'>
-        <p className='modal__text'>{text}</p>
+      <div className="modal__content">
+        <p className="modal__text">{text}</p>
         <button
-          type='button'
-          className='modal__button'
+          type="button"
+          className="modal__button"
           onClick={() => {
             setIsModalActive(false);
           }}

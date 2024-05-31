@@ -20,13 +20,13 @@ type Props = {
 export const SearchBar: React.FC<Props> = ({
   classNames,
   isInputExpanded,
-  onClick = () => {}
+  onClick = () => {},
 }) => {
   const formRef = useRef<HTMLFormElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState(
-    searchParams.get(SearchParamsNames.query) || ''
+    searchParams.get(SearchParamsNames.query) || '',
   );
   const inputRef = useRef<HTMLInputElement>(null);
   const { pathname } = useLocation();
@@ -36,7 +36,7 @@ export const SearchBar: React.FC<Props> = ({
   const handleSetParams = (paramValue: string) => {
     const newParams = getSearchWith(
       { [SearchParamsNames.query]: paramValue || null },
-      searchParams
+      searchParams,
     );
 
     setSearchParams(newParams);
@@ -112,10 +112,10 @@ export const SearchBar: React.FC<Props> = ({
       ref={formRef}
     >
       <input
-        type='text'
+        type="text"
         value={value}
         className={cn('search-bar__input', {
-          'search-bar__input--small-screen': !isInputExpanded
+          'search-bar__input--small-screen': !isInputExpanded,
         })}
         placeholder={placeholder}
         onChange={handleChange}
@@ -123,28 +123,28 @@ export const SearchBar: React.FC<Props> = ({
       />
 
       <button
-        type='button'
-        className='search-bar__button
-        search-bar__button--on-big-screen'
+        type="button"
+        className="search-bar__button
+        search-bar__button--on-big-screen"
         onClick={() => handleButtonClick()}
       >
         <Icon
           iconName={!value ? 'search' : 'close'}
-          classNames='search-bar__icon'
+          classNames="search-bar__icon"
           data-cy={value && 'searchDelete'}
         />
       </button>
 
       <button
-        type='button'
-        className='search-bar__button
-        search-bar__button--on-small-screen'
+        type="button"
+        className="search-bar__button
+        search-bar__button--on-small-screen"
         onClick={() => handleSmallScreenButtonClick()}
         ref={buttonRef}
       >
         <Icon
           iconName={!value ? 'search' : 'close'}
-          classNames='search-bar__icon'
+          classNames="search-bar__icon"
           data-cy={value && 'searchDelete'}
         />
       </button>

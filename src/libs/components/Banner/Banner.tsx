@@ -5,7 +5,7 @@ import { useMemo, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
 import {
-  BANNER_IMAGES
+  BANNER_IMAGES,
   // BANNER_MOBILE_IMAGES
 } from '../../constants';
 
@@ -54,49 +54,29 @@ export const Banner = () => {
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNext(),
-    onSwipedRight: () => handlePrev()
+    onSwipedRight: () => handlePrev(),
   });
 
   return (
-    <div className='main__banner banner-container'>
-      <div
-        className='banner-container__slider slider'
-        {...swipeHandlers}
-      >
-        <button
-          className='slider__button'
-          type='button'
-          onClick={handlePrev}
-        >
-          <Icon
-            iconName='arrowLeft'
-            classNames='slider__button-icon'
-          />
+    <div className="main__banner banner-container">
+      <div className="banner-container__slider slider" {...swipeHandlers}>
+        <button className="slider__button" type="button" onClick={handlePrev}>
+          <Icon iconName="arrowLeft" classNames="slider__button-icon" />
         </button>
 
-        <div className='slider__banner-container'>
+        <div className="slider__banner-container">
           <ul
-            className='slider__banner-list'
+            className="slider__banner-list"
             style={{
               transform: `translateX(${translateX}px)`,
-              transition: 'all 1500ms'
+              transition: 'all 1500ms',
             }}
             ref={containerRef}
           >
             {images.map(([key, value]) => (
-              <li
-                className='slider__banner-item'
-                key={key}
-              >
-                <Link
-                  to={key}
-                  className='slider__banner-link'
-                >
-                  <img
-                    src={value}
-                    alt={key}
-                    className='slider__banner-img'
-                  />
+              <li className="slider__banner-item" key={key}>
+                <Link to={key} className="slider__banner-link">
+                  <img src={value} alt={key} className="slider__banner-img" />
                   {/* <picture
                     className="slider__banner-img"
                   >
@@ -120,24 +100,17 @@ export const Banner = () => {
           </ul>
         </div>
 
-        <button
-          className='slider__button'
-          type='button'
-          onClick={handleNext}
-        >
-          <Icon
-            iconName='arrowRight'
-            classNames='slider__button-icon'
-          />
+        <button className="slider__button" type="button" onClick={handleNext}>
+          <Icon iconName="arrowRight" classNames="slider__button-icon" />
         </button>
       </div>
-      <div className='banner-container__pagination pagination'>
+      <div className="banner-container__pagination pagination">
         {images.map((item, index) => (
           <button
-            type='button'
+            type="button"
             key={item[0]}
             className={cn('pagination__part', {
-              'pagination__part--active': index + 1 === slideId
+              'pagination__part--active': index + 1 === slideId,
             })}
             onClick={() => setSlideId(index + 1)}
           />

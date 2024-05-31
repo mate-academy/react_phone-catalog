@@ -9,7 +9,7 @@ import {
   SectionHeader,
   ProductCard,
   NoResults,
-  NoSearchResults
+  NoSearchResults,
 } from '../../components';
 
 import './FavouritesPage.scss';
@@ -24,18 +24,18 @@ export const FavouritesPage = () => {
     () =>
       searchQuery
         ? favouritesItems.filter(item =>
-            item.name.toLowerCase().includes(searchQuery.toLowerCase())
+            item.name.toLowerCase().includes(searchQuery.toLowerCase()),
           )
         : favouritesItems,
-    [favouritesItems, searchQuery]
+    [favouritesItems, searchQuery],
   );
   const visibleItemsCount = visibleItems.length;
 
   return (
-    <div className='favourites'>
+    <div className="favourites">
       <Breadcrumbs />
       <SectionHeader
-        title='Favourites'
+        title="Favourites"
         subtitle={
           favouritesItemsCount
             ? `${visibleItemsCount} ${searchQuery ? 'results' : 'items'}`
@@ -44,12 +44,9 @@ export const FavouritesPage = () => {
       />
       {!!favouritesItems.length &&
         (visibleItems.length ? (
-          <div className='favourites__cards'>
+          <div className="favourites__cards">
             {visibleItems.map(item => (
-              <ProductCard
-                product={item}
-                key={item.id}
-              />
+              <ProductCard product={item} key={item.id} />
             ))}
           </div>
         ) : (
@@ -57,7 +54,7 @@ export const FavouritesPage = () => {
         ))}
 
       {!favouritesItems.length && (
-        <NoResults title='Your favourites list is empty' />
+        <NoResults title="Your favourites list is empty" />
       )}
     </div>
   );

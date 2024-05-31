@@ -12,7 +12,7 @@ export interface ITabletsState {
 const initialState: ITabletsState = {
   loaded: false,
   hasError: false,
-  products: []
+  products: [],
 };
 
 export const fetchTablets = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchTablets = createAsyncThunk(
     const phones = await getTablets();
 
     return phones;
-  }
+  },
 );
 
 const tabletsSlice = createSlice({
@@ -43,7 +43,7 @@ const tabletsSlice = createSlice({
         state.loaded = true;
         state.hasError = true;
       });
-  }
+  },
 });
 
 export default tabletsSlice.reducer;

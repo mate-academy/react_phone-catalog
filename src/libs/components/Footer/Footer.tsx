@@ -17,40 +17,34 @@ export const Footer: React.FC<Props> = ({ classNames }) => {
   const handleBackToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: 'smooth'
+      behavior: 'smooth',
     });
   };
 
   return (
     <footer className={cn('footer', classNames)}>
-      <Logo classNames='footer__logo' />
-      <ul className='footer__list'>
+      <Logo classNames="footer__logo" />
+      <ul className="footer__list">
         {Object.entries(FOOTER_LINKS).map(([key, value]) => (
-          <li
-            className='footer__item'
-            key={key}
-          >
+          <li className="footer__item" key={key}>
             <Link
               to={key === 'Contacts' ? `mailto:${value}` : value}
-              className='footer__link'
-              target='_blank'
+              className="footer__link"
+              target="_blank"
             >
               {key.toUpperCase()}
             </Link>
           </li>
         ))}
       </ul>
-      <div className='footer__back-to-top back-to-top'>
-        <span className='back-to-top__text'>Back to top</span>
+      <div className="footer__back-to-top back-to-top">
+        <span className="back-to-top__text">Back to top</span>
         <button
-          type='button'
-          className='back-to-top__button'
+          type="button"
+          className="back-to-top__button"
           onClick={handleBackToTop}
         >
-          <Icon
-            iconName='arrowUp'
-            classNames='back-to-top__icon'
-          />
+          <Icon iconName="arrowUp" classNames="back-to-top__icon" />
         </button>
       </div>
     </footer>

@@ -13,19 +13,16 @@ export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
 
   return (
     <div className={cn('breadcrumbs', classNames)}>
-      <Link
-        to='/'
-        className='breadcrumbs__home'
-      />
+      <Link to="/" className="breadcrumbs__home" />
       {pathes.map((path, i) => {
         if (i === pathes.length - 1) {
           return (
             <p
               key={path}
-              className='
+              className="
                 breadcrumbs__link
                 breadcrumbs__link--current
-              '
+              "
             >
               {`${path[0].toUpperCase()}${path.slice(1)}`}
             </p>
@@ -34,11 +31,11 @@ export const Breadcrumbs: React.FC<Props> = ({ classNames }) => {
 
         return (
           <Link
-            to='/phones'
+            to="/phones"
             key={path}
-            className='
+            className="
                 breadcrumbs__link
-              '
+              "
           >
             {`${path[0].toUpperCase()}${path.slice(1)}`}
           </Link>

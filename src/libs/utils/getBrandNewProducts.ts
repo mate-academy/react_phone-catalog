@@ -2,7 +2,7 @@ import { IProduct } from '../types';
 
 export const getBrandNewProducts = (products: IProduct[]) => {
   const productsWithoutDiscount = products.filter(
-    ({ price, fullPrice }) => !price || price === fullPrice
+    ({ price, fullPrice }) => !price || price === fullPrice,
   );
 
   const brandNewProducts = (

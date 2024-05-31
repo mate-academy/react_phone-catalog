@@ -12,7 +12,7 @@ export interface IProductsState {
 const initialState: IProductsState = {
   loaded: false,
   hasError: false,
-  allProducts: []
+  allProducts: [],
 };
 
 export const fetchAll = createAsyncThunk('products/fetchAll', async () => {
@@ -40,7 +40,7 @@ const productsSlice = createSlice({
         state.loaded = true;
         state.hasError = true;
       });
-  }
+  },
 });
 
 export default productsSlice.reducer;

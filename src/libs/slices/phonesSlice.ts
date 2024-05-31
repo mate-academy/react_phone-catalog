@@ -12,7 +12,7 @@ export interface IPhonesState {
 const initialState: IPhonesState = {
   loaded: false,
   hasError: false,
-  products: []
+  products: [],
 };
 
 export const fetchPhones = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchPhones = createAsyncThunk(
     const phones = await getPhones();
 
     return phones;
-  }
+  },
 );
 
 const phonesSlice = createSlice({
@@ -43,7 +43,7 @@ const phonesSlice = createSlice({
         state.loaded = true;
         state.hasError = true;
       });
-  }
+  },
 });
 
 export default phonesSlice.reducer;

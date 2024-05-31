@@ -8,7 +8,7 @@ export interface IFavouritesState {
 }
 
 const initialState: IFavouritesState = {
-  favouritesItems: []
+  favouritesItems: [],
 };
 
 const favouritesSlice = createSlice({
@@ -25,11 +25,11 @@ const favouritesSlice = createSlice({
     },
     deleteItem: (state, action: PayloadAction<string>) => {
       state.favouritesItems = state.favouritesItems.filter(
-        el => el.itemId !== action.payload
+        el => el.itemId !== action.payload,
       );
       saveToLocalSotrage('favouritesItems', state.favouritesItems);
-    }
-  }
+    },
+  },
 });
 
 export const { setItems, addItem, deleteItem } = favouritesSlice.actions;

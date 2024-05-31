@@ -12,7 +12,7 @@ export interface IProductDetailsState {
 const initialState: IProductDetailsState = {
   loaded: false,
   hasError: false,
-  productDetails: null
+  productDetails: null,
 };
 
 export const fetchProductDetails = createAsyncThunk(
@@ -20,11 +20,11 @@ export const fetchProductDetails = createAsyncThunk(
   async (payload: { id: string; category: ProductCategory }) => {
     const productDetails = await getProductDetails(
       payload.id,
-      payload.category
+      payload.category,
     );
 
     return productDetails ?? null;
-  }
+  },
 );
 
 const productDetailsSlice = createSlice({
@@ -47,7 +47,7 @@ const productDetailsSlice = createSlice({
         state.loaded = false;
         state.hasError = false;
       });
-  }
+  },
 });
 
 export default productDetailsSlice.reducer;

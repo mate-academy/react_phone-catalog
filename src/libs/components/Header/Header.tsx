@@ -62,15 +62,15 @@ export const Header: React.FC<Props> = ({ classNames }) => {
   return (
     <>
       <header className={cn('header', classNames)}>
-        <div className='header__logo-container'>
+        <div className="header__logo-container">
           <Logo />
         </div>
 
-        <div className='header__nav-content'>
+        <div className="header__nav-content">
           {!isMobile && (
             <div
               className={cn('header__nav-menu', {
-                'header__nav-menu--tablet': isSearchInputExpanded
+                'header__nav-menu--tablet': isSearchInputExpanded,
               })}
             >
               {!isCartPage && <Navbar />}
@@ -80,34 +80,34 @@ export const Header: React.FC<Props> = ({ classNames }) => {
           {hasSearchBar && (
             <SearchBar
               classNames={cn('header__search-bar', {
-                'header__search-bar--mobile': isSearchInputExpanded
+                'header__search-bar--mobile': isSearchInputExpanded,
               })}
               isInputExpanded={isSearchInputExpanded}
               onClick={setIsSearchInputExpanded}
             />
           )}
 
-          <div className='header__nav-icons'>
+          <div className="header__nav-icons">
             {!isCartPage && (
               <HeaderIconLink
-                iconName='favourites'
-                linkTo='favourites'
+                iconName="favourites"
+                linkTo="favourites"
                 hasItemsIn={hasItemsInFavourites}
                 count={favouritesItems.length}
               />
             )}
 
             <HeaderIconLink
-              iconName='shopping'
-              linkTo='cart'
+              iconName="shopping"
+              linkTo="cart"
               hasItemsIn={hasItemsInCart}
               count={cartItems.length}
             />
           </div>
 
           <button
-            type='button'
-            className='header__mobile-menu-button'
+            type="button"
+            className="header__mobile-menu-button"
             onClick={handleMenuButtonClick}
           >
             <Icon iconName={isMobileMenuOpen ? 'close' : 'burgerMenu'} />
@@ -117,16 +117,16 @@ export const Header: React.FC<Props> = ({ classNames }) => {
 
       {isMobile && (
         <div
-          className='header__mobile-menu'
+          className="header__mobile-menu"
           style={
             isMobileMenuOpen
               ? {
                   transition: 'all 0.8s',
-                  transform: 'translateX(0)'
+                  transform: 'translateX(0)',
                 }
               : {
                   transition: 'all 0.8s',
-                  transform: 'translateX(100%)'
+                  transform: 'translateX(100%)',
                 }
           }
         >

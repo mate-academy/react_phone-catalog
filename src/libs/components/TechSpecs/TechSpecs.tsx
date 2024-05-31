@@ -15,24 +15,21 @@ type Props = {
 export const TechSpecs: React.FC<Props> = ({
   specs = {},
   classNames,
-  hasBorder = false
+  hasBorder = false,
 }) => {
   const productSpecs = Object.entries(specs);
 
   return (
     <table
       className={cn('product-details', classNames, {
-        'product-details--border': hasBorder
+        'product-details--border': hasBorder,
       })}
     >
-      <tbody className='product-details__body'>
+      <tbody className="product-details__body">
         {productSpecs.map(([key, value]) => (
-          <tr
-            className='product-details__row'
-            key={key}
-          >
-            <td className='product-details__name'>{key}</td>
-            <td className='product-details__description'>
+          <tr className="product-details__row" key={key}>
+            <td className="product-details__name">{key}</td>
+            <td className="product-details__description">
               {parseSpecsValue(value)}
             </td>
           </tr>

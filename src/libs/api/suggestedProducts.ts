@@ -13,7 +13,7 @@ export const getSuggestedProducts = async () => {
 
     [products[currentIndex], products[randomIndex]] = [
       products[randomIndex],
-      products[currentIndex]
+      products[currentIndex],
     ];
   }
 

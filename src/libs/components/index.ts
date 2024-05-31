@@ -22,7 +22,6 @@ export { Modal } from './Modal';
 export { NoResults } from './NoResults';
 export { NoSearchResults } from './NoSearchResults';
 export { PageFilter } from './PageFilter';
-export { Pagination } from './Pagination';
 export { Breadcrumbs } from './Breadcrumbs';
 export { SearchBar } from './SearchBar';
 export { SectionHeader } from './SectionHeader';

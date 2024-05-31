@@ -26,7 +26,7 @@ type Props = {
 export const ProductsSlider: React.FC<Props> = ({
   items,
   title,
-  classNames
+  classNames,
 }) => {
   const totalCardsCount = items.length;
   const firstSlideId = 1;
@@ -76,7 +76,7 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const swipeHandlers = useSwipeable({
     onSwipedLeft: () => handleNextClick(),
-    onSwipedRight: () => handlePrevClick()
+    onSwipedRight: () => handlePrevClick(),
   });
 
   useEffect(() => {
@@ -99,7 +99,7 @@ export const ProductsSlider: React.FC<Props> = ({
         cardWidth,
         cardsPerSlide: visibleCardsOnSlide,
         sliderWidth,
-        containerGap
+        containerGap,
       });
       setSlideId(firstSlideId);
       setTranslateX(startOffset);
@@ -115,60 +115,51 @@ export const ProductsSlider: React.FC<Props> = ({
   }, []);
 
   return (
-    <section
-      className={cn('products-slider', classNames)}
-      {...swipeHandlers}
-    >
-      <div className='products-slider__header'>
+    <section className={cn('products-slider', classNames)} {...swipeHandlers}>
+      <div className="products-slider__header">
         <SectionHeader title={title} />
 
-        <div className='section-buttons'>
+        <div className="section-buttons">
           <button
-            type='button'
-            className='section-buttons__button'
+            type="button"
+            className="section-buttons__button"
             onClick={handlePrevClick}
           >
             <Icon
-              iconName='arrowLeft'
+              iconName="arrowLeft"
               classNames={cn('section-buttons__icon', {
-                'section-buttons__icon--disabled': isPrevButtonDisabled
+                'section-buttons__icon--disabled': isPrevButtonDisabled,
               })}
             />
           </button>
 
           <button
-            type='button'
-            className='section-buttons__button'
+            type="button"
+            className="section-buttons__button"
             onClick={handleNextClick}
           >
             <Icon
-              iconName='arrowRight'
+              iconName="arrowRight"
               classNames={cn('section-buttons__icon', {
-                'section-buttons__icon--disabled': isNextButtonDisabled
+                'section-buttons__icon--disabled': isNextButtonDisabled,
               })}
             />
           </button>
         </div>
       </div>
 
-      <div
-        className='products-slider__slider'
-        ref={sliderRef}
-      >
+      <div className="products-slider__slider" ref={sliderRef}>
         <div
-          className='products-slider__cards'
-          data-cy='cardsContainer'
+          className="products-slider__cards"
+          data-cy="cardsContainer"
           style={{
             transform: `translateX(${translateX}px)`,
-            transition: 'all 900ms'
+            transition: 'all 900ms',
           }}
           ref={cardsContainerRef}
         >
           {items.map(el => (
-            <ProductCard
-              product={el}
-              key={el.id}
-            />
+            <ProductCard product={el} key={el.id} />
           ))}
         </div>
       </div>

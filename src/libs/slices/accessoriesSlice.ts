@@ -12,7 +12,7 @@ export interface IAccessoriesState {
 const initialState: IAccessoriesState = {
   loaded: false,
   hasError: false,
-  products: []
+  products: [],
 };
 
 export const fetchAccessories = createAsyncThunk(
@@ -21,7 +21,7 @@ export const fetchAccessories = createAsyncThunk(
     const phones = await getAccessories();
 
     return phones;
-  }
+  },
 );
 const accessoriesSlice = createSlice({
   name: 'accessories',
@@ -42,7 +42,7 @@ const accessoriesSlice = createSlice({
         state.loaded = true;
         state.hasError = true;
       });
-  }
+  },
 });
 
 export default accessoriesSlice.reducer;
