@@ -71,5 +71,15 @@
     border-right: none;
     border-bottom: none;
     border-color: $color-elements;
+
+    &--favorites {
+      background-image: url('../../../public/icons/heart-black.svg');
+      background-repeat: no-repeat;
+      background-position: center center;
+
+      &:hover {
+        background-image: url('../../../public/icons/heart-red.svg');
+      }
+    }
   }
 }
