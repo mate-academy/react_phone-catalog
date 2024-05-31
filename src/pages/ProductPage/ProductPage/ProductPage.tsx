@@ -188,7 +188,10 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
         <ProductsList products={displayedProducts} />
       </section>
 
-      <Pagination pagesTotal={pagesTotal} />
+      <Pagination
+        className={'product-page__pagination'}
+        pagesTotal={pagesTotal}
+      />
     </main>
   );
 };

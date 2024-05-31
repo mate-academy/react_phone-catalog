@@ -19,8 +19,13 @@
   transition: 0.3s all ease-in-out;
 
   @include for-tablet {
-    height: 512px;
-    width: 237px;
+    flex-grow: 1;
+
+    min-height: 506px;
+    min-width: 229px;
+
+    max-height: 621px;
+    max-width: 288px;
   }
 
   &:hover {

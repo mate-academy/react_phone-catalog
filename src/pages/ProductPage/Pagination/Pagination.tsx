@@ -2,12 +2,14 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import './Pagination.scss';
+import classNames from 'classnames';
 
 type Props = {
   pagesTotal: number;
+  className: string;
 };
 
-export const Pagination: React.FC<Props> = ({ pagesTotal }) => {
+export const Pagination: React.FC<Props> = ({ pagesTotal, className = '' }) => {
   const [currentPage, setCurrentPage] = useState(1);
 
   const [pagesList, setPagesList] = useState<number[]>([]);
@@ -48,7 +50,7 @@ export const Pagination: React.FC<Props> = ({ pagesTotal }) => {
   }, [currentPage, pagesList, visiblePages]);
 
   return (
-    <ul className="pagination">
+    <ul className={classNames('pagination', className)}>
       <button
         className={cn('pagination__arrow', 'arrow-left', {
           'arrow-left--active': currentPage > 1,

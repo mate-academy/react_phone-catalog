@@ -1,13 +1,26 @@
 @use '../../../utils/mixins' as *;
+@use '../../../utils/variables' as *;
 
 .product-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
+  // display: flex;
+  // flex-wrap: wrap;
+  // gap: 16px;
+  // justify-content: center;
+  // align-items: center;
+
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+
   justify-content: center;
-  align-items: center;
+  justify-items: center;
+
+  gap: 40px $gap-small;
 
   &__item {
     flex-grow: 1;
+
+    grid-column: span 1;
+
+    display: flex;
   }
 }
