@@ -2,20 +2,18 @@
 import { useContext } from 'react';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import style from './ThemeToggle.module.scss';
+import classNames from 'classnames';
 
 const ThemeToggle = () => {
-  const { toggleTheme } = useContext(ThemeContext);
+  const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <label className={style.theme}>
-      <div className={style.theme__switch}>
-        <input
-          type="checkbox"
-          className={`${style.theme__switch} ${style.theme__input}`}
-          onClick={toggleTheme}
-        />
-        <span className={style.theme__slider}></span>
-      </div>
+    <label htmlFor="" className={classNames({ [style.theme__check]: theme })}>
+      <input
+        type="text"
+        className={classNames(style.theme__switch)}
+        onClick={toggleTheme}
+      />
     </label>
   );
 };
