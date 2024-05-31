@@ -1,0 +1,164 @@
+@import '../../variables';
+@import '../../mixins';
+@import '../../fonts';
+@import '../../animations';
+
+$card-item-width: 208px;
+$padding-top: 8px;
+
+.productCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 272px;
+  height: 506px;
+  border: 1px solid $elements-color;
+}
+
+.productPhoto {
+  width: $card-item-width;
+  height: 196px;
+  object-fit: contain;
+  padding-top: 32px;
+  transition: $transition-duration;
+ 
+
+  &:hover {
+    transform: scale(110%);
+  }
+}
+
+.productDescription {
+  padding-top: 24px;
+  width: $card-item-width;
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+}
+
+.productPriceContainer {
+  display: flex;
+  padding-top: $padding-top;
+  width: $card-item-width;
+  gap: 8px;
+}
+
+.productPrice {
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30.8px;
+  text-align: left;
+}
+
+.productDiscount {
+  color: $secondary-color;
+  text-decoration: line-through;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-align: left;
+}
+
+.divider {
+  margin-top: 8px;
+  height: 1px;
+  width: $card-item-width;
+  background-color: $elements-color;
+}
+
+.techCharacteristicsContainer {
+  display: flex;
+  flex-direction: column;
+  width: $card-item-width;
+  height: 77px;
+  padding-top: $padding-top;
+}
+
+.characteristic {
+  display: flex;
+  padding-top: $padding-top;
+  justify-content: space-between;
+}
+
+.characteristicTitle {
+  color: $secondary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 15.34px;
+  text-align: left;
+}
+
+.characteristicValue {
+  color: $primary-color;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+}
+
+.btnsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: $card-item-width;
+  height: 40px;
+  padding-top: $padding-top;
+}
+
+.addToCardBtn {
+  border: none;
+  cursor: pointer;
+  width: 160px;
+  background-color: $primary-color;
+  color: white;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  transition: $transition-duration;
+
+  &:hover {
+    box-shadow: 0px 3px 13px 0px #17203166;
+  }
+}
+
+.favoriteBtn {
+  background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-default.svg);
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  transition: $transition-duration;
+
+  &:hover {
+    background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-hover.svg);
+  }
+}
+
+.addedToCart {
+  background: white;
+  border: 1px solid $elements-color;
+  color: #27ae60;
+
+  &:hover {
+    box-shadow: none;
+  }
+}
+
+.favoriteActive {
+  background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-added.svg);
+
+  &:hover {
+    background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-added.svg);
+  }
+}
