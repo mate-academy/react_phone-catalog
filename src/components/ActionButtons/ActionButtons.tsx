@@ -1,6 +1,8 @@
 import styles from './ActionButtons.module.scss';
+import favoritesIcon from './img/fav.module.svg'
+/* const favoritesIcon = './img/fav.jpg'; */
 
-let isProductInCart = true; // DELETE LATER
+const isProductInCart = true; // DELETE LATER
 
 export const ActionButtons: React.FC = () => {
   return (
@@ -13,10 +15,10 @@ export const ActionButtons: React.FC = () => {
       <button className={styles.buttonFavorite}>
         <img
           className={styles.buttonFavoriteIcon}
-          src="../../../public/images/icons/FavoritesIcon.svg"
+          src={favoritesIcon}
           alt="favorite"
         />
       </button>
     </div>
   );
-}
+};

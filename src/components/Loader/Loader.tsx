@@ -6,5 +6,3 @@ export const Loader: React.FC = () => (
     <div className={styles.loaderContent} />
   </div>
 );
-
-
