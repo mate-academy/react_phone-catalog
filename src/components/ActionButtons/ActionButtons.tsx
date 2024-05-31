@@ -1,5 +1,5 @@
 import styles from './ActionButtons.module.scss';
-import favoritesIcon from './img/fav.module.svg'
+import favoritesIcon from './img/fav.module.svg';
 /* const favoritesIcon = './img/fav.jpg'; */
 
 const isProductInCart = true; // DELETE LATER

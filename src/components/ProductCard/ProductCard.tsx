@@ -5,7 +5,7 @@ import { ActionButtons } from '../ActionButtons';
 export const ProductCard: React.FC = () => {
   return (
     <div className={styles.ProductCard}>
-{/*       <Link
+      {/*       <Link
         to="/placeholder-link"  // Linia 9: Zmiana na placeholder link
         className={styles.imageContainer}
       >
@@ -17,7 +17,7 @@ export const ProductCard: React.FC = () => {
       </Link> */}
 
       <div className={styles.wrapper}>
-{/*         <Link to="/placeholder-link" className={styles.title}>  // Linia 17: Zmiana na placeholder link
+        {/*         <Link to="/placeholder-link" className={styles.title}>  // Linia 17: Zmiana na placeholder link
           {'Smartphone XXX'}
         </Link> */}
 

@@ -1,5 +1,5 @@
-import {App} from './App';
-import {HashRouter as Router, Route, Switch} from 'react-router-dom';
+import { App } from './App';
+import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 
 export const Root = () => {
   return (
@@ -9,4 +9,4 @@ export const Root = () => {
       </Switch>
     </Router>
   );
-}
+};
