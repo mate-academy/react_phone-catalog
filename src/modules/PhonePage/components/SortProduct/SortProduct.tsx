@@ -49,7 +49,7 @@ export const SortProduct: React.FC = () => {
 
   useEffect(() => {
     setSortName(changNameSort(sort));
-  }, [search]);
+  }, [search, sort]);
 
   const handleFilterProduct = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,

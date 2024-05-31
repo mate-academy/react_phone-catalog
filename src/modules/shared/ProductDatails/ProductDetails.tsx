@@ -106,8 +106,9 @@ export const ProductDetails = () => {
                   key={item}
                   style={{ backgroundColor: `${item}` }}
                   className={classNames(styles.product__color, {
-                    [styles.product__color__active]: productDetails
-                      .name.toLowerCase().includes(item.toLowerCase()),
+                    [styles.product__color__active]: productDetails.name
+                      .toLowerCase()
+                      .includes(item.toLowerCase()),
                   })}
                 />
               ))}
