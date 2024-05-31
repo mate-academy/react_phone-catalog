@@ -13,7 +13,6 @@ export const ProductCartDetails = () => {
   );
 
   const fullItem = cartItem.reduce((acc, item) => acc + item.quantity, 0);
-
   const scrollFix = () => {
     const menu = document.getElementById('menu');
 

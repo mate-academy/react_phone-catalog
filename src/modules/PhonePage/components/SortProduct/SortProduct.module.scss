@@ -184,4 +184,8 @@
       color: $border-button-color-hover;
     }
   }
+
+  &__is_active {
+    background-color: rgb(16, 17, 17);
+  }
 }

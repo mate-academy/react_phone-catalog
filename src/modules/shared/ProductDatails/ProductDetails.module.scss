@@ -172,6 +172,10 @@
     text-decoration: none;
     font-size: 14px;
     line-height: 21px;
+    color: $border-button-color-hover;
+  }
+
+  &__capacity__link {
     color: $color-white;
   }
 

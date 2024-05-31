@@ -67,7 +67,7 @@ export const Pagination = () => {
               })}
               onClick={handlChangPage}
             >
-              <button className={styles.nav__link}>{index + 1}</button>
+              {index + 1}
             </li>
           ))}
         </ul>

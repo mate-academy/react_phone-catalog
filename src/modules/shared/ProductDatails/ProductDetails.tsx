@@ -6,14 +6,12 @@ import { Link } from 'react-router-dom';
 import * as actionProduct from '../../../features/DetailsSlice';
 export const ProductDetails = () => {
   const [borderImg, setBorderImg] = useState(0);
-  const [indexColor] = useState(0);
   const [widthSlider, setWidthSlider] = useState(0);
   const widthPicture = document.getElementById('widthPicture')?.offsetWidth;
   const { productDetails, products } = useAppSelector(state => state.product);
   const { cartItem, favorite } = useAppSelector(state => state.selectedProduct);
   const dispath = useAppDispatch();
   const isCart = cartItem.find(item => item.id === productDetails?.id);
-
   const isFavorite = favorite.find(item => item.itemId === productDetails?.id);
 
   const choosePhoto = (
@@ -102,13 +100,14 @@ export const ProductDetails = () => {
               <span className={styles.product__text_available}>ID: 802390</span>
             </div>
             <div className={styles.product__available}>
-              {productDetails?.colorsAvailable.map((item, index) => (
+              {productDetails?.colorsAvailable.map(item => (
                 <Link
                   to={{ pathname: `${changeProductByColor(item)}` }}
                   key={item}
                   style={{ backgroundColor: `${item}` }}
                   className={classNames(styles.product__color, {
-                    [styles.product__color__active]: indexColor === index,
+                    [styles.product__color__active]: productDetails
+                      .name.toLowerCase().includes(item.toLowerCase()),
                   })}
                 />
               ))}
@@ -128,7 +127,10 @@ export const ProductDetails = () => {
                   })}
                 >
                   <Link
-                    className={styles.product__capacity}
+                    className={classNames(styles.product__capacity, {
+                      [styles.product__capacity__link]:
+                        productDetails.capacity === item,
+                    })}
                     to={{ pathname: findProdutByCapacity(item) }}
                   >
                     {item}

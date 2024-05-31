@@ -120,6 +120,7 @@
     background-color: $border-button-color-hover;
     border: none;
     cursor: pointer;
+    color: $color-white;
 
     &:hover {
       box-shadow: 0 3px 13px 0;
@@ -208,6 +209,7 @@
     display: flex;
     align-items: center;
     gap: 16px;
+    width: 96px;
   }
 
   &__minus {
@@ -244,6 +246,8 @@
   &__price {
     @extend %mont-800;
 
+    text-align: end;
+    width: 80px;
     font-size: 22px;
     line-height: 30px;
     color: $border-button-color-hover;

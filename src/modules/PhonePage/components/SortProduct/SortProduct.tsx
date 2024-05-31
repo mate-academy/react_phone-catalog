@@ -1,8 +1,9 @@
-import { Link, useSearchParams } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import styles from './SortProduct.module.scss';
-import { useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import usePageLocation from '../../../shared/hooks/usePageLocation';
 import useFilterProducts from '../../../shared/hooks/useFilterProducts';
+import classNames from 'classnames';
 
 export const SortProduct: React.FC = () => {
   const [isOpenButtonSort, setIsOpenButtonSort] = useState(false);
@@ -12,7 +13,8 @@ export const SortProduct: React.FC = () => {
   const { filterProduct } = useFilterProducts();
   const sort = searchParams.get('sort') || '';
   const perPage = searchParams.get('perPage') || '';
-
+  const { search } = useLocation();
+  const [sortName, setSortName] = useState('');
   const chooseSort = (value: string | null) => {
     switch (value) {
       case 'Newest':
@@ -28,6 +30,26 @@ export const SortProduct: React.FC = () => {
         return '';
     }
   };
+
+  const changNameSort = (value: string) => {
+    switch (value) {
+      case 'age':
+        return 'Newest';
+
+      case 'title':
+        return 'Alphabetically';
+
+      case 'price':
+        return 'Cheapest';
+
+      default:
+        return '';
+    }
+  };
+
+  useEffect(() => {
+    setSortName(changNameSort(sort));
+  }, [search]);
 
   const handleFilterProduct = (
     e: React.MouseEvent<HTMLLIElement, MouseEvent>,
@@ -55,6 +77,22 @@ export const SortProduct: React.FC = () => {
     setIsOpenButtonPage(false);
   };
 
+  const findPagination = useMemo(() => {
+    let pagination = 0;
+
+    if (!search.includes('perPage')) {
+      return;
+    }
+
+    search.split('&').forEach(item => {
+      if (item.includes('perPage')) {
+        pagination = +item.split('=')[1];
+      }
+    });
+
+    return pagination;
+  }, [search]);
+
   return (
     <div className={styles.phones__page}>
       <div className={styles.phones__page__location}>
@@ -80,7 +118,7 @@ export const SortProduct: React.FC = () => {
             className={styles.search__by}
             onClick={() => setIsOpenButtonSort(prev => !prev)}
           >
-            {sort ? sort : 'Choose option'}
+            {sortName ? sortName : 'Choose option'}
 
             {isOpenButtonSort ? (
               <i
@@ -94,13 +132,28 @@ export const SortProduct: React.FC = () => {
             className={styles.search__list}
             style={{ display: `${isOpenButtonSort ? 'block' : 'none'}` }}
           >
-            <li className={styles.search__item} onClick={handleFilterProduct}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: sortName === 'Newest',
+              })}
+              onClick={handleFilterProduct}
+            >
               <button className={styles.search__name}>Newest</button>
             </li>
-            <li className={styles.search__item} onClick={handleFilterProduct}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: sortName === 'Alphabetically',
+              })}
+              onClick={handleFilterProduct}
+            >
               <button className={styles.search__name}>Alphabetically</button>
             </li>
-            <li className={styles.search__item} onClick={handleFilterProduct}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: sortName === 'Cheapest',
+              })}
+              onClick={handleFilterProduct}
+            >
               <button className={styles.search__name}>Cheapest</button>
             </li>
           </ul>
@@ -133,16 +186,36 @@ export const SortProduct: React.FC = () => {
             className={styles.search__list}
             style={{ display: `${isOpenButtonPage ? 'block' : 'none'}` }}
           >
-            <li className={styles.search__item} onClick={getPerpage}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: !findPagination,
+              })}
+              onClick={getPerpage}
+            >
               <button className={styles.search__name}>All</button>
             </li>
-            <li className={styles.search__item} onClick={getPerpage}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: findPagination === 4,
+              })}
+              onClick={getPerpage}
+            >
               <button className={styles.search__name}>4</button>
             </li>
-            <li className={styles.search__item} onClick={getPerpage}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: findPagination === 8,
+              })}
+              onClick={getPerpage}
+            >
               <button className={styles.search__name}>8</button>
             </li>
-            <li className={styles.search__item} onClick={getPerpage}>
+            <li
+              className={classNames(styles.search__item, {
+                [styles.search__is_active]: findPagination === 16,
+              })}
+              onClick={getPerpage}
+            >
               <button className={styles.search__name}>16</button>
             </li>
           </ul>

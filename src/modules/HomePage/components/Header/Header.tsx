@@ -1,9 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import style from './Header.module.scss';
 import * as productAction from '../../../../features/ProductSlice';
 import { useAppDispatch, useAppSelector } from '../../../shared/hooks/hooks';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
+import debounce from 'lodash.debounce';
 
 export const Header: React.FC = ({}) => {
   const dispatch = useAppDispatch();
@@ -12,11 +13,10 @@ export const Header: React.FC = ({}) => {
   const { favorite, cartItem } = useAppSelector(state => state.selectedProduct);
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSearch, setIsSearch] = useState(false);
+  const [searchQuery, setSearhQuery] = useState('');
   const isSearchInUrl = pathname.includes(
     'phones' || 'tablets' || 'accessories',
   );
-
-  const query = searchParams.get('query') || '';
 
   useEffect(() => {
     dispatch(productAction.fetchProduct());
@@ -58,6 +58,7 @@ export const Header: React.FC = ({}) => {
     setIsOpenMenu(!isOpenMenu);
   };
 
+  const applyQuery = useCallback(debounce(setSearchParams, 1000), []);
   const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
     const params = new URLSearchParams(searchParams);
 
@@ -67,7 +68,14 @@ export const Header: React.FC = ({}) => {
       params.delete('query');
     }
 
-    setSearchParams(params);
+    setSearhQuery(e.target.value);
+    applyQuery(params);
+  };
+
+  const closeSearch = () => {
+    setSearhQuery('');
+    setSearchParams('');
+    setIsSearch(false);
   };
 
   return (
@@ -83,7 +91,6 @@ export const Header: React.FC = ({}) => {
           </Link>
         </div>
         <nav
-          // style={{display: isSearch ? 'none' : 'block'}}
           className={classNames(style.header__nav, {
             [style.header__active]: isOpenMenu,
           })}
@@ -126,12 +133,12 @@ export const Header: React.FC = ({}) => {
                     <input
                       onChange={handleQuery}
                       placeholder="Search.."
-                      value={query}
+                      value={searchQuery}
                       className={style.nav__query}
                       type="text"
                     />
                     <button
-                      onClick={() => setIsSearch(false)}
+                      onClick={closeSearch}
                       className={style.nav__close}
                     />
                   </div>
@@ -172,14 +179,11 @@ export const Header: React.FC = ({}) => {
               <input
                 onChange={handleQuery}
                 placeholder="Search.."
-                value={query}
+                value={searchQuery}
                 className={style.nav__query}
                 type="text"
               />
-              <button
-                onClick={() => setIsSearch(false)}
-                className={style.nav__close}
-              />
+              <button onClick={closeSearch} className={style.nav__close} />
             </div>
           )}
         </>
