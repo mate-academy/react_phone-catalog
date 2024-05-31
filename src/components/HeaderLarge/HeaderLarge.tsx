@@ -67,9 +67,17 @@ export const HeaderLarge: React.FC = () => {
         ></Link>
         <Link
           to="/cart"
-          className="header-large__selection-link default-button"
+          className={classNames(
+            'header-large__selection-link',
+            'header-large__selection-link--cart',
+            'default-button',
+          )}
         >
-          <img src="./icons/cart.svg" alt="cart icon" />
+          <img
+            className="header-large__cart-icon"
+            src="./icons/cart.svg"
+            alt="cart icon"
+          />
         </Link>
       </div>
 

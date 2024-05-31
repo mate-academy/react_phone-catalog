@@ -22,17 +22,21 @@
 
   &__category-link {
     height: 48px;
-    box-sizing: border-box;
 
     display: flex;
     align-items: center;
+    box-sizing: border-box;
 
     text-decoration: none;
     color: $color-secondary;
 
     position: relative;
 
+    border: none;
+
     &--active {
+      // border-bottom: 3px solid $color-primary;
+
       &::after {
         content: '';
 
@@ -46,24 +50,22 @@
       }
     }
 
+    border-bottom: 0 solid transparent;
+    transition: 2s all cubic-bezier(0.2, 2.07, 0.22, 2.07);
+
     &:hover {
-      &::after {
-        content: '';
-
-        height: 3px;
-        width: 100%;
-
-        position: absolute;
-        bottom: 0;
-
-        background-color: $color-primary;
-      }
+      border-bottom: 6px solid $color-primary;
+      transition: 0.2s all cubic-bezier(0.2, 2.07, 0.22, 2.07);
     }
   }
 
   &__user-products {
     display: flex;
     gap: -2px;
+  }
+
+  &__cart-icon {
+    transition: 0.2s all cubic-bezier(0.55, 2.07, 0.01, -0.19);
   }
 
   &__selection-link {
@@ -79,6 +81,15 @@
 
       &:hover {
         background-image: url('../../../public/icons/heart-red.svg');
+      }
+    }
+
+    &--cart {
+      &:hover {
+        .header-large__cart-icon {
+          transform: translateY(-10px);
+          transition: 0.2s all ease-in-out;
+        }
       }
     }
   }
