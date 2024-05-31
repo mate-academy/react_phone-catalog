@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/label-has-for */
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import { ThemeContext } from '../../../store/ThemeProvider';
@@ -8,13 +9,19 @@ const ThemeToggle = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <label htmlFor="" className={classNames({ [style.theme__check]: theme })}>
+    <>
       <input
-        type="text"
-        className={classNames(style.theme__switch)}
+        type="checkbox"
+        className={style.theme__checkbox}
         onClick={toggleTheme}
+        id="switcher"
+        checked={theme}
       />
-    </label>
+      <label
+        htmlFor="switcher"
+        className={classNames(style.theme__switch)}
+      ></label>
+    </>
   );
 };
 
