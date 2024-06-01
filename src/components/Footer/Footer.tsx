@@ -13,17 +13,14 @@ export const Footer = () => (
       </div>
 
       <div className="footer__centerBlock">
-        <a href="" className="link link__footer">
+        <a
+          href="https://github.com/yepolotn1ak/react_phone-catalog"
+          className="link link__footer"
+        >
           Github
         </a>
-
-        <a href="" className="link link__footer">
-          Contacts
-        </a>
-
-        <a href="" className="link link__footer">
-          Rights
-        </a>
+        <p className="link link__footer">Contacts</p>
+        <p className="link link__footer">Rights</p>
       </div>
 
       <div className="footer__rightBlock" onClick={Service.scrollWindowTop}>
