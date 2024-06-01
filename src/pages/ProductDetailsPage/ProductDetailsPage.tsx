@@ -211,110 +211,117 @@ export const ProductDetailsPage: React.FC = () => {
               <h2 className="product-content__name title--2">{name}</h2>
             </div>
 
-            <div className="product-images product-content__images">
-              <img
-                className="product-images__main-image"
-                ref={pictureElement}
-                src={'./' + images[currentImageIndex]}
-                alt="Product image"
-              />
-
-              <ul className="images-list product-images__images-list">
-                {productImages.map((imageIndex: number) => (
-                  <li key={imageIndex} className="images-list__element">
-                    <img
-                      className={cn('images-list__image', {
-                        'images-list__image--active':
-                          imageIndex === currentImageIndex,
-                      })}
-                      src={'./' + images[imageIndex]}
-                      alt="product image"
-                      onClick={() => setCurrentImageIndex(imageIndex)}
-                    />
-                  </li>
-                ))}
-              </ul>
-            </div>
-
-            <div className="options product-content__options">
-              <div className="colors options__colors">
-                <div className="colors__text-wrapper">
-                  <p className="colors__available small-text">
-                    Available colors
-                  </p>
-                  <p className="colors__id small-text">
-                    ID: {foundProduct?.id}
-                  </p>
-                </div>
-                <div className="colors__colors-list">
-                  <ColorOptions
-                    displayedProduct={displayedProduct}
-                    colorsAvailable={colorsAvailable}
-                  />
-                </div>
-              </div>
-
-              <hr className="options__divider" />
-
-              <div className="options__capacities">
-                <CapacityOptions
-                  displayedProduct={displayedProduct}
-                  capacity={capacity}
-                  capacityAvailable={capacityAvailable}
+            <div className="options-block product-content__options-block">
+              <div className="product-images options-block__images">
+                <img
+                  className="product-images__main-image"
+                  ref={pictureElement}
+                  src={'./' + images[currentImageIndex]}
+                  alt="Product image"
                 />
+                <ul className="images-list product-images__images-list">
+                  {productImages.map((imageIndex: number) => (
+                    <li key={imageIndex} className="images-list__element">
+                      <img
+                        className={cn('images-list__image', {
+                          'images-list__image--active':
+                            imageIndex === currentImageIndex,
+                        })}
+                        src={'./' + images[imageIndex]}
+                        alt="product image"
+                        onClick={() => setCurrentImageIndex(imageIndex)}
+                      />
+                    </li>
+                  ))}
+                </ul>
               </div>
 
-              <hr className="options__divider" />
-            </div>
-
-            <div className="purchase product-content__purchase">
-              <div className="prices purchase__prices">
-                <h2 className="prices__regular title--1">${priceDiscount}</h2>
-                <p className="prices__discount">${priceRegular}</p>
-              </div>
-
-              <div className="add-buttons purchase__add-buttons">
-                <button
-                  className={cn('add-buttons__cart', 'default-button-text', {
-                    'add-buttons__cart--added': isProductInCart,
-                  })}
-                  onClick={() => {
-                    if (foundProduct) {
-                      if (!isProductInCart) {
-                        addToCart(foundProduct);
-                      } else {
-                        removeFromCart(foundProduct.id);
-                      }
-                    }
-                  }}
-                >
-                  {cartButtonText}
-                </button>
-                <button
-                  className="add-buttons__favorite default-button"
-                  onClick={() => {
-                    if (foundProduct) {
-                      addToFavorites(foundProduct);
-                    }
-                  }}
-                >
-                  <img
-                    src={favoriteIconPath}
-                    alt="Add to wishlist heart icon"
-                  />
-                </button>
-              </div>
-            </div>
-
-            <div className="main-info product-content__main-info">
-              {productInfo.map((info: string) => (
-                <div key={info} className="main-info__pair">
-                  <p className="main-info__label small-text">{info}</p>
-                  <p className="main-info__value">
-                    {displayedProduct[info as DetailedProductKeys] as string}
-                  </p>
+              <div className="options-block__options-wrapper">
+                <div className="options options-block__options">
+                  <div className="colors options__colors">
+                    <div className="colors__text-wrapper">
+                      <p className="colors__available small-text">
+                        Available colors
+                      </p>
+                      <p className="colors__id small-text">
+                        ID: {foundProduct?.id}
+                      </p>
+                    </div>
+                    <div className="colors__colors-list">
+                      <ColorOptions
+                        displayedProduct={displayedProduct}
+                        colorsAvailable={colorsAvailable}
+                      />
+                    </div>
+                  </div>
+                  <hr className="options__divider" />
+                  <div className="options__capacities">
+                    <CapacityOptions
+                      displayedProduct={displayedProduct}
+                      capacity={capacity}
+                      capacityAvailable={capacityAvailable}
+                    />
+                  </div>
+                  <hr className="options__divider" />
                 </div>
-              ))}
+                <div className="purchase options-block__purchase">
+                  <div className="prices purchase__prices">
+                    <h2 className="prices__regular title--1">
+                      ${priceDiscount}
+                    </h2>
+                    <p className="prices__discount">${priceRegular}</p>
+                  </div>
+                  <div className="add-buttons purchase__add-buttons">
+                    <button
+                      className={cn(
+                        'add-buttons__cart',
+                        'default-button-text',
+                        {
+                          'add-buttons__cart--added': isProductInCart,
+                        },
+                      )}
+                      onClick={() => {
+                        if (foundProduct) {
+                          if (!isProductInCart) {
+                            addToCart(foundProduct);
+                          } else {
+                            removeFromCart(foundProduct.id);
+                          }
+                        }
+                      }}
+                    >
+                      {cartButtonText}
+                    </button>
+                    <button
+                      className="add-buttons__favorite default-button"
+                      onClick={() => {
+                        if (foundProduct) {
+                          addToFavorites(foundProduct);
+                        }
+                      }}
+                    >
+                      <img
+                        src={favoriteIconPath}
+                        alt="Add to wishlist heart icon"
+                      />
+                    </button>
+                  </div>
+                </div>
+                <div className="main-info options-block__main-info">
+                  {productInfo.map((info: string) => (
+                    <div key={info} className="main-info__pair">
+                      <p className="main-info__label small-text">{info}</p>
+                      <p className="main-info__value">
+                        {
+                          displayedProduct[
+                            info as DetailedProductKeys
+                          ] as string
+                        }
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              </div>
             </div>
           </section>
 
