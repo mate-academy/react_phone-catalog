@@ -75,12 +75,12 @@ export function getPages(value: number) {
   return toReturn;
 }
 
-export const addAlert = (type: 'success' | 'error') => {
+export const addAlert = (type: 'success' | 'error', text: string) => {
   if (type === 'success') {
     Swal.fire({
       position: 'top',
       title: 'Sucess',
-      text: 'You logged in / signed up successfully',
+      text,
       icon: 'success',
       confirmButtonText: 'Cool',
       confirmButtonColor: 'rgb(62, 79, 79)',
@@ -92,7 +92,7 @@ export const addAlert = (type: 'success' | 'error') => {
   Swal.fire({
     position: 'top',
     title: 'Error',
-    text: 'You entered a wrong password',
+    text,
     icon: 'error',
     confirmButtonText: 'Try again',
     confirmButtonColor: 'rgb(62, 79, 79)',

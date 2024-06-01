@@ -31,14 +31,14 @@ export const Login: React.FC<Props> = ({ setIsLoggedIn }) => {
     const response = await create({ email, password });
 
     if (response.data.message === 'The password is incorrect') {
-      addAlert('error');
+      addAlert('error', response.data.message);
 
       return;
     }
 
     localStorage.setItem('auth_token', response.data.token);
 
-    addAlert('success');
+    addAlert('success', response.data.message);
     setIsLoggedIn(true);
     setData(initialInputBody);
   };

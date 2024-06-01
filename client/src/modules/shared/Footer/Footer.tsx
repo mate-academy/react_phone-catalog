@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { addAlert } from '../../../utils/helpers/helpers';
 
 interface Props {
   setIsLoggedIn: React.Dispatch<React.SetStateAction<boolean>>;
@@ -12,6 +13,7 @@ export const Footer: React.FC<Props> = ({ setIsLoggedIn }) => {
   const handleLogOut = async () => {
     localStorage.removeItem('auth_token');
     setIsLoggedIn(false);
+    addAlert('success', 'Logged out successfully')
   };
 
   return (
