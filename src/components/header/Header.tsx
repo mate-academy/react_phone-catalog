@@ -1,6 +1,6 @@
 import React, { useContext, useRef } from 'react';
 import styles from './Header.module.scss';
-import { useBreakpoint } from '../../breakPoints/BreakPoint';
+// import { useBreakpoint } from '../../breakPoints/BreakPoint';
 import { ContextApp } from '../../appContext/AppContext';
 
 // const NAVIGATION_OVER_640px = (
@@ -17,8 +17,7 @@ import { ContextApp } from '../../appContext/AppContext';
 export const Header: React.FC = () => {
   const { app } = useContext(ContextApp);
   const burger = useRef<HTMLDivElement>(null);
-  // const app = useRef(null);
-  const isPhone = useBreakpoint('phone');
+  // const isPhone = useBreakpoint('phone');
 
   const handlerOpenBurger = () => {
 
@@ -26,6 +25,7 @@ export const Header: React.FC = () => {
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
       app.current.style.overflow = 'hidden';
+      app.current.style.height = '100vh';
 
     }
   };
@@ -35,6 +35,7 @@ export const Header: React.FC = () => {
       burger.current.style.transform = 'translateX(+100%)';
       document.body.style.overflow = 'visible';
       app.current.style.overflow = 'visible';
+      app.current.style.height = 'fit-content';
     }
   };
 
