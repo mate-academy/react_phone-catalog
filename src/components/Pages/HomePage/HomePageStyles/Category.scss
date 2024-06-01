@@ -45,7 +45,7 @@
       height: 100%;
     }
 
-    &--container:hover .categories__block--photo {
+    &--container:hover &--photo {
       top: 0;
     }
 

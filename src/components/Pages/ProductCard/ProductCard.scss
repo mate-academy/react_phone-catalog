@@ -141,9 +141,7 @@
     }
   }
 
-  &_item:hover {
-    .productCard__imageBlock {
-      transform: scale(1.1);
-    }
+  &__item:hover &__imageBlock {
+    transform: scale(1.1);
   }
 }
