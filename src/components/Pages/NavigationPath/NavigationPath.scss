@@ -1,0 +1,59 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+
+.navigate-path {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+
+  &__urlBlock {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &--link {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 12px;
+      color: $nav-link-color;
+      height: 16px;
+      text-decoration: none;
+    }
+
+    &--link-block {
+      cursor: not-allowed;
+      pointer-events: none;
+    }
+
+    &--link-active {
+      color: $text-color;
+      font-family: Mont-SemiBold, sans-serif;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    margin-bottom: 24px;
+    width: max-content;
+    cursor: pointer;
+
+    @include on-tablet {
+      margin-bottom: 16px;
+    }
+
+    &--link {
+      color: $nav-link-color;
+      height: 15px;
+    }
+
+    &:hover &--link {
+      color: $text-color;
+    }
+  }
+}

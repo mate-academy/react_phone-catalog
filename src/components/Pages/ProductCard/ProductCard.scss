@@ -1,0 +1,149 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+@import '../../../styles/heading';
+@import '../../../styles/selection-off';
+
+.productCard {
+  opacity: 1;
+
+  &__deleted {
+    opacity: 0;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    background-color: $bg-button-color;
+    border-radius: 8px;
+    height: min-content;
+    padding: 32px;
+    box-sizing: border-box;
+    border: 1px solid $shadow-color;
+    transition-timing-function: $transition-timing-function;
+    grid-column: span 4;
+
+    @include on-big-mobile {
+      grid-column: span 2;
+    }
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-big-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+
+    &--container {
+      text-decoration: none;
+      color: $text-color;
+    }
+
+    &--fix {
+      width: 212px;
+
+      @include on-tablet {
+        width: 237px;
+      }
+
+      @include on-desktop {
+        width: 272px;
+      }
+    }
+  }
+
+  &__item-top {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    justify-content: space-between;
+    gap: 8px;
+    padding-block: 24px 8px;
+    min-height: 113px;
+
+    &--priceBlock {
+      display: flex;
+      gap: 8px;
+    }
+
+    &--priceBlock-fullPrice {
+      font-family: Mont-Regular, sans-serif;
+      color: $nav-link-color;
+      font-size: 22px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__item-center {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid $shadow-color;
+    padding-block: 16px;
+  }
+
+  &__item-center-param {
+    display: flex;
+    justify-content: space-between;
+    line-height: 15.34px;
+
+    &--left {
+      color: $nav-link-color;
+    }
+
+    &--right {
+      color: $text-color;
+      font-family: Mont-SemiBold, sans-serif;
+      font-size: 12px;
+    }
+  }
+
+  &__item-bottom {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &--cart {
+      height: 40px;
+    }
+
+    &--favourite {
+      min-width: 40px;
+      min-height: 40px;
+    }
+  }
+
+  &__imageBlock {
+    display: grid;
+    place-items: center;
+
+    @include hover(transform, scale(1.1));
+
+    &--image {
+      display: block;
+      object-fit: contain;
+      width: 148px;
+      height: 139px;
+
+      @include on-tablet {
+        width: 173px;
+        height: 181px;
+      }
+
+      @include on-desktop {
+        width: 206px;
+        height: 196px;
+      }
+    }
+  }
+
+  &_item:hover {
+    .productCard__imageBlock {
+      transform: scale(1.1);
+    }
+  }
+}

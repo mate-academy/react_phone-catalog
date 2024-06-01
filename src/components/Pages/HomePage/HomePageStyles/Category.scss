@@ -1,0 +1,90 @@
+@import '../../../../styles/vars';
+@import '../../../../styles/mixins';
+
+.categories {
+  &__items-counter {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $nav-link-color;
+    margin-top: 4px;
+  }
+
+  &__block {
+    @include page-grid;
+
+    margin-top: 24px;
+    row-gap: 32px;
+
+    &--container {
+      position: relative;
+      width: 100%;
+      padding-top: 100%;
+      overflow: hidden;
+      border-radius: 10px;
+      margin-bottom: 24px;
+    }
+
+    &--container-phones {
+      background-color: $categoty-phones-bg;
+    }
+
+    &--container-tablets {
+      background-color: $categoty-tablets-bg;
+    }
+
+    &--container-accessories {
+      background-color: $categoty-accessories-bg;
+    }
+
+    &--photo {
+      position: absolute;
+      top: 15%;
+      left: 10%;
+      width: 100%;
+      height: 100%;
+    }
+
+    &--container:hover .categories__block--photo {
+      top: 0;
+    }
+
+    &--title {
+      text-decoration: none;
+    }
+
+    &--phones,
+    &--tablets,
+    &--accessories {
+      grid-column: 1 / -1;
+    }
+
+    @include on-tablet {
+      &--phones {
+        grid-column: 1 / 5;
+      }
+
+      &--tablets {
+        grid-column: 5 / 9;
+      }
+
+      &--accessories {
+        grid-column: 9 / 13;
+      }
+    }
+
+    @include on-desktop {
+      &--phones {
+        grid-column: 1 / 9;
+      }
+
+      &--tablets {
+        grid-column: 9 / 17;
+      }
+
+      &--accessories {
+        grid-column: 17 / -1;
+      }
+    }
+  }
+}

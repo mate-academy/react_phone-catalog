@@ -1,0 +1,38 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+@import '../../styles/button';
+@import '../../styles/selection-off';
+
+.slider {
+  &__hBLock {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    &--buttons-imgLeft {
+      rotate: 180deg;
+    }
+
+    &--title {
+      @media (max-width: 340px) {
+        width: 130px;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    box-sizing: border-box;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    overflow: hidden;
+    margin-top: 24px;
+  }
+}
