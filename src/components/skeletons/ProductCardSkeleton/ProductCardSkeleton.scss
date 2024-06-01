@@ -1,0 +1,164 @@
+@import './../../../styles/utils/mixins';
+@import './../../../styles/utils/vars';
+
+.skelet {
+  background: rgba(130, 130, 130, 0.2);
+  background: -webkit-gradient(linear, left top, right top, color-stop(8%, rgba(130, 130, 130, 0.2)), color-stop(18%, rgba(130, 130, 130, 0.3)), color-stop(33%, rgba(130, 130, 130, 0.2)));
+  background: linear-gradient(to right, rgba(130, 130, 130, 0.2) 8%, rgba(130, 130, 130, 0.3) 18%, rgba(130, 130, 130, 0.2) 33%);
+  background-size: 800px 100px;
+  animation: wave-squares 2s infinite ease-out;
+}
+
+.productCardSkeleton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+  border-radius: 5px;
+  background: #fff;
+  box-shadow: 0 3px 4px 0 rgba(0, 0, 0, .14), 0 3px 3px -2px rgba(0, 0, 0, .2), 0 1px 8px 0 rgba(0, 0, 0, .12);
+
+  &:nth-child(n + 2) {
+    display: none;
+  }
+
+  @include on-tablet {
+    &:nth-child(n + 2) {
+      display: block;
+    }
+
+    &:nth-child(n + 3) {
+      display: none;
+    }
+  }
+
+  @include on-big-tablet {
+    &:nth-child(n + 3) {
+      display: block;
+    }
+
+    &:nth-child(n + 4) {
+      display: none;
+    }
+
+  }
+
+  @include on-desktop {
+    &:nth-child(n + 4) {
+      display: block;
+    }
+  }
+
+  &__fix {
+    min-width: 212px;
+    min-height: 439px;
+
+    @include on-tablet {
+      min-width: 237px;
+      min-height: 512px;
+    }
+
+    @include on-desktop {
+      min-width: 272px;
+      min-height: 506px;
+    }
+  }
+
+  &__photo {
+    width: 220px;
+    height: 129px;
+
+    &--fix {
+      width: auto;
+    }
+  }
+
+  &__text {
+    margin-top: 24px;
+    min-height: 40px;
+  }
+
+  &__priceBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    height: 31px;
+    width: 100%;
+
+    &--component {
+      width: 45%;
+      height: 100%;
+    }
+  }
+
+  &__line {
+    height: 1px;
+    margin-top: 8px;
+  }
+
+  &__charBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-block: 16px;
+    height: 61.8px;
+    width: 100%;
+
+    &--component {
+      width: 45%;
+    }
+  }
+
+  &__btnBlock {
+    display: flex;
+    justify-content: space-between;
+    height: 40px;
+
+    &--button {
+      margin-right: 8px;
+      width: 100%;
+      height: 40px;
+      border-radius: 48px;
+    }
+
+    &--heart {
+      height: 40px;
+      min-width: 40px;
+      border-radius: 100%;
+    }
+  }
+
+  @include on-tablet {
+    width: auto;
+
+    &__photo {
+      width: 100%;
+      height: 202px;
+    }
+  }
+
+  @include on-desktop {
+    &__photo {
+      height: 196px;
+    }
+  }
+}
+
+@keyframes wave-lines {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}
+
+@keyframes wave-squares {
+  0% {
+    background-position: -468px 0;
+  }
+
+  100% {
+    background-position: 468px 0;
+  }
+}

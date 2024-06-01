@@ -1,0 +1,15 @@
+.container {
+  width: 100%;
+  padding-inline: 16px;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}

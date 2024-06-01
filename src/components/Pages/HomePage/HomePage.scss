@@ -1,0 +1,58 @@
+@import './HomePageStyles/category';
+@import './HomePageStyles/welcome';
+@import './../../../styles/headingStyles';
+@import './../../../styles/utils/mixins';
+
+.homePage {
+  background-color: $bg-color;
+
+  &__welcome {
+    padding-top: calc(24px + $small-nav-height);
+  }
+
+  &__new,
+  &__category {
+    margin-top: 56px;
+  }
+
+  &__prices {
+    padding-block: 56px 64px;
+  }
+
+  @include on-tablet {
+    &__welcome {
+      padding-top: calc(32px + $small-nav-height);
+    }
+
+    &__new,
+    &__category {
+      margin-top: 64px;
+    }
+
+    &__prices {
+      padding-block: 64px;
+    }
+  }
+
+  @include on-desktop {
+    &__welcome {
+      padding-top: calc(56px + $big-nav-height);
+    }
+
+    &__new,
+    &__category {
+      margin-top: 80px;
+    }
+
+    &__prices {
+      padding-block: 80px;
+    }
+  }
+}
+
+.selection-off {
+  -webkit-user-drag: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
