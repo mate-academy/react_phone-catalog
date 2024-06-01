@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from '../../../shared/hooks/hooks';
 import { Link, NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import debounce from 'lodash.debounce';
+const page = ['phones', 'tablets', 'accessories'];
 
 export const Header: React.FC = ({}) => {
   const dispatch = useAppDispatch();
@@ -14,9 +15,13 @@ export const Header: React.FC = ({}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSearch, setIsSearch] = useState(false);
   const [searchQuery, setSearhQuery] = useState('');
-  const isSearchInUrl = pathname.includes(
-    'phones' || 'tablets' || 'accessories',
-  );
+  const isSearchInUrl = page.some((item) => {
+    if (pathname.length > 12) {
+      return false;
+    }
+
+    return pathname.includes(item);
+  });
 
   useEffect(() => {
     dispatch(productAction.fetchProduct());
@@ -58,8 +63,9 @@ export const Header: React.FC = ({}) => {
     setIsOpenMenu(!isOpenMenu);
   };
 
-  const applyQuery = useCallback(debounce(setSearchParams, 1000), []);
+  const applyQuery = useCallback(debounce(setSearchParams, 1000), [debounce]);
   const handleQuery = (e: React.ChangeEvent<HTMLInputElement>) => {
+    e.preventDefault();
     const params = new URLSearchParams(searchParams);
 
     params.set('query', e.target.value);
@@ -67,6 +73,7 @@ export const Header: React.FC = ({}) => {
     if (e.target.value.trim() === '') {
       params.delete('query');
     }
+
 
     setSearhQuery(e.target.value);
     applyQuery(params);
@@ -111,13 +118,11 @@ export const Header: React.FC = ({}) => {
                 TABLETS
               </NavLink>
             </li>
-            {!isSearch && (
-              <li className={style.nav__item}>
-                <NavLink to="/accessories" className={getLinkClass}>
-                  ACCESSORIES
-                </NavLink>
-              </li>
-            )}
+            <li className={style.nav__item}>
+              <NavLink to="/accessories" className={getLinkClass}>
+                ACCESSORIES
+              </NavLink>
+            </li>
           </ul>
           <div className={style.header__icon}>
             {isSearchInUrl && (
@@ -136,6 +141,7 @@ export const Header: React.FC = ({}) => {
                       value={searchQuery}
                       className={style.nav__query}
                       type="text"
+                      onBlur={() => setIsSearch(false)}
                     />
                     <button
                       onClick={closeSearch}
@@ -145,24 +151,28 @@ export const Header: React.FC = ({}) => {
                 )}
               </>
             )}
-            {favorite.length > 0 ? (
-              <NavLink className={getLinkClassButtonFavorite} to="/favorite">
-                <span className={style.header__count}>{favorite.length}</span>
-              </NavLink>
-            ) : (
-              <NavLink
-                className={getLinkClassButtonFavorite}
-                to="/favorite"
-              ></NavLink>
-            )}
+            {!isSearch &&
+              <>
+                {favorite.length > 0 ? (
+                  <NavLink className={getLinkClassButtonFavorite} to="/favorite">
+                    <span className={style.header__count}>{favorite.length}</span>
+                  </NavLink>
+                ) : (
+                  <NavLink
+                    className={getLinkClassButtonFavorite}
+                    to="/favorite"
+                  ></NavLink>
+                )}
 
-            {cartItem.length > 0 ? (
-              <NavLink className={getLinkClassButtonCart} to="/cart">
-                <span className={style.header__count}>{cartItem.length}</span>
-              </NavLink>
-            ) : (
-              <NavLink className={getLinkClassButtonCart} to="/cart" />
-            )}
+                {cartItem.length > 0 ? (
+                  <NavLink className={getLinkClassButtonCart} to="/cart">
+                    <span className={style.header__count}>{cartItem.length}</span>
+                  </NavLink>
+                ) : (
+                  <NavLink className={getLinkClassButtonCart} to="/cart" />
+                )}
+              </>
+            }
           </div>
         </nav>
       </div>
@@ -182,6 +192,7 @@ export const Header: React.FC = ({}) => {
                 value={searchQuery}
                 className={style.nav__query}
                 type="text"
+                onBlur={() => setIsSearch(false)}
               />
               <button onClick={closeSearch} className={style.nav__close} />
             </div>

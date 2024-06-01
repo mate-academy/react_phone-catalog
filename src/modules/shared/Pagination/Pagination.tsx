@@ -1,4 +1,4 @@
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import styles from './Pagination.module.scss';
 import classNames from 'classnames';
 import { useMemo } from 'react';
@@ -8,6 +8,7 @@ export const Pagination = () => {
   const { createPageProducts } = usePagination();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 0;
+  const { search } = useLocation()
 
   const handlChangPage = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const params = new URLSearchParams(searchParams);
@@ -32,7 +33,7 @@ export const Pagination = () => {
 
   const turnPagination = useMemo(() => {
     if (+page % 2 !== 0) {
-      return;
+      return 0;
     }
 
     if (+page >= createPageProducts.length - 1) {
@@ -40,7 +41,7 @@ export const Pagination = () => {
     }
 
     return +page * 40 - 80;
-  }, [page, createPageProducts]);
+  }, [page, createPageProducts, search]);
 
   const stateButtonLeft = +page === 1;
   const stateButtonRight = +page === createPageProducts.length;

@@ -58,7 +58,7 @@
 
   &__button {
     height: 48px;
-    width: 48px;
+    min-width: 48px;
     background-color: inherit;
     background-image: url(../../../shared/headerImg/search.svg);
     background-repeat: no-repeat;
@@ -313,7 +313,7 @@
 
   &__menu {
     height: 48px;
-    width: 48px;
+    min-width: 48px;
     border-left: 1px solid $border-button-color;
     display: flex;
     align-items: center;
