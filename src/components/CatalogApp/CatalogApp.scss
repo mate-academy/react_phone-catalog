@@ -1,0 +1,14 @@
+.app-container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow: hidden;
+
+  &__burgerMenu {
+    overflow: hidden;
+  }
+}
+
+.flex-main {
+  flex: 1;
+}

@@ -1,0 +1,19 @@
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid $arrow-border-color;
+  background-color: $white-bg-color;
+
+  cursor: pointer;
+  transition: border-color $duration-time;
+
+  &:hover {
+    border-color: $nav-activelink-underline;
+  }
+}
+

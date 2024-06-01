@@ -1,0 +1,94 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+@import './../../styles/utils/activeLink';
+@import './../../styles/utils/icons';
+@import './../../styles/utils/container';
+
+.footer {
+  box-shadow: 0 -1px 0 0 $shadow-color;
+
+  &__logo {
+    margin: 0;
+    height: 32px;
+    width: 89px;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+    box-sizing: border-box;
+  }
+
+  &__centerBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__rightBlock {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    transition: border-color $duration-time;
+    cursor: pointer;
+
+    &--link {
+      text-transform: initial;
+      font-family: MontSemiBold, sans-serif;
+      width: 75px;
+      font-weight: 800;
+      font-size: 12px;
+      color: $nav-link-color;
+      letter-spacing: 0.04em;
+      transition-duration: $duration-time;
+    }
+
+    &--imgLink {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border: 1px solid $arrow-border-color;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      transition: border-color $duration-time;
+    }
+
+    &:hover .footer__rightBlock--imgLink {
+      border-color: $nav-activelink-underline;
+    }
+
+    &:hover .footer__rightBlock--link {
+      color: $nav-activelink-underline;
+    }
+
+    &--img {
+      width: 16px;
+      height: 16px;
+      background-image: url(./../../images/imagesRoot/Vector.svg);
+    }
+  }
+
+  @include on-tablet {
+    &__container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 32px;
+    }
+
+    &__centerBlock {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+  }
+
+  @include on-desktop {
+    &__centerBlock {
+      gap: 107px;
+    }
+  }
+}
