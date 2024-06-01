@@ -1,8 +1,11 @@
 import style from './Slider.module.scss';
 import first from '../../../../image/BannerImage/first.png';
-import second from '../../../../image/BannerImage/second.png';
-import third from '../../../../image/BannerImage/third.jpg';
-import { useCallback, useEffect, useRef, useState } from 'react';
+import second from '../../../../image/BannerImage/phone-bunner.jpg';
+import third from '../../../../image/BannerImage/phone-third.png';
+import secondPortrait from '../../../../image/BannerImage/portrain-second.jpg';
+import thirdPortrait from '../../../../image/BannerImage/phone-four.webp';
+import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
 
 type Props = {
   count: number;
@@ -10,6 +13,7 @@ type Props = {
 
 export const Slider: React.FC<Props> = ({ count }) => {
   const myRef = useRef<HTMLDivElement>(null);
+  const { isMobile } = useContext(BreakPointsContext);
   const [width, setWidth] = useState(0);
 
   const handleResize = useCallback(() => {
@@ -35,9 +39,27 @@ export const Slider: React.FC<Props> = ({ count }) => {
         className={style.slider__container}
         style={{ transform: `translateX( -${count * width}px)` }}
       >
-        <img src={first} alt="Banner" className={style.slider__image} />
-        <img src={second} alt="Banner" className={style.slider__image} />
-        <img src={third} alt="Banner" className={style.slider__image} />
+        {!isMobile ? (
+          <>
+            <img src={first} alt="Banner" className={style.slider__image} />
+            <img src={second} alt="Banner" className={style.slider__image} />
+            <img src={third} alt="Banner" className={style.slider__image} />
+          </>
+        ) : (
+          <>
+            <img src={first} alt="Banner" className={style.slider__image} />
+            <img
+              src={secondPortrait}
+              alt="Banner"
+              className={style.slider__image}
+            />
+            <img
+              src={thirdPortrait}
+              alt="Banner"
+              className={style.slider__image}
+            />
+          </>
+        )}
       </div>
     </div>
   );

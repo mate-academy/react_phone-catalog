@@ -19,7 +19,6 @@ export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
   const [count, setCount] = useState(0);
-  // const [direction, setDirection] = useState(false);
   const { openBurger, setOpenBurger } = useContext(StateContext);
 
   function handleNext() {
@@ -47,7 +46,7 @@ export const Header = () => {
           return prevCount + 1;
         }
       });
-    }, 1000);
+    }, 3000);
 
     return () => clearInterval(intervalId);
   }, []);

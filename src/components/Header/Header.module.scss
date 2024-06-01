@@ -139,7 +139,7 @@
   }
 }
 
-@media (max-width: 1199px) {
+@include onTablet {
   .header {
     &__top {
       height: 48px;
@@ -169,6 +169,37 @@
     }
   }
 }
+
+// @media (max-width: 1199px) {
+//   .header {
+//     &__top {
+//       height: 48px;
+//       margin-bottom: 32px;
+//     }
+
+//     &__leftNav {
+//       gap: 16px;
+//     }
+
+//     &__logo {
+//       margin-left: 16px;
+//       height: 22px;
+//       width: 64px;
+//     }
+//     &__actionsLink {
+//       height: 48px;
+//       width: 48px;
+//     }
+
+//     &__title {
+//       margin: 48px auto;
+//     }
+
+//     &__content {
+//       margin-inline: 24px;
+//     }
+//   }
+// }
 
 @media (max-width: 639px) {
   .header {
