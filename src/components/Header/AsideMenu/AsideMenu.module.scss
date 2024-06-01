@@ -1,4 +1,5 @@
 @use '../../../styles/block/utils/variables.scss' as *;
+@import '../../../styles/block/utils/mixins.scss';
 
 .menu {
   position: fixed;
@@ -9,6 +10,8 @@
   background-color: $background-color;
   pointer-events: none;
   font-size: 18px;
+  transition: all 0.4s;
+
 
   &__top {
     display: flex;
@@ -98,7 +101,7 @@
   pointer-events: all;
 }
 
-@media (max-width: 1199px) {
+@include onTablet {
   .menu {
     &__listLink {
       font-size: 14px;
@@ -106,7 +109,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include onPhone {
   .menu {
     &__listLink {
       font-size: 12px;

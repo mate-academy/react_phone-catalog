@@ -1,5 +1,5 @@
 @use '../../../styles/block/utils/variables.scss' as *;
-
+@import '../../../styles/block/utils/mixins.scss';
 .nav {
   &__list {
     display: flex;
@@ -21,8 +21,8 @@
   }
 }
 
-@media (max-width: 1199px) {
-  .nav__item:not(:last-child) {
-    padding-inline-end: 32px;
-  }
-}
+// @include onTablet {
+//   .nav__item:not(:last-child) {
+//     padding-inline-end: 32px;
+//   }
+// }
