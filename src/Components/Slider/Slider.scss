@@ -1,0 +1,110 @@
+@import '../../styles/main';
+
+.slider {
+  grid-column: 1 / -1;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__box {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+
+  &__images-container {
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 30vw;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    width: 300%;
+
+    transition: transform 0.5s;
+  }
+
+  &__link {
+    width: 33.33%;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100vw;
+    object-fit: cover;
+    object-position: center center;
+
+    @include on-tablet {
+      height: 30vw;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__button {
+    display: none;
+    width: 32px;
+    border: 1px solid $iconsColor;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-color: $hoverBGColor;
+    border-radius: 16px;
+    background-size: 16px;
+    cursor: pointer;
+
+    @include hover (border, $effectDuration);
+
+    @include on-tablet {
+      display: flex;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    &--left {
+      padding-inline: 16px;
+      background-image: url(../../images/icons/arrow-left.png);
+    }
+
+    &--right {
+      padding-inline: 16px;
+      background-image: url(../../images/icons/arrow-right.png);
+    }
+
+    &:hover {
+      border-color: $primaryColor;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    height: 24px;
+  }
+
+  &__dot {
+    cursor: pointer;
+    border: none;
+    width: 14px;
+    height: 4px;
+    background-color: $elementsColor;
+
+    &--active {
+      background-color: $primaryColor;
+    }
+  }
+}

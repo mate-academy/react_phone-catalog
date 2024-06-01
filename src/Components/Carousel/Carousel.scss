@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.carousel {
+  &__top {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 26px;
+  }
+
+  &__title {
+    color: $primaryColor;
+  }
+
+  &__nav {
+    @include on-mobile {
+      display: flex;
+      gap: 16px;
+      padding-right: $paddingMobile;
+    }
+
+    @include on-tablet {
+      padding-right: $paddingTablet;
+    }
+
+    @include on-desktop {
+      padding-right: 0;
+    }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $iconsColor;
+    border-radius: 50%;
+    cursor: pointer;
+    background-color: $hoverBGColor;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+
+    @include hover (border, $effectDuration);
+
+    &:hover {
+      border: 1px solid $primaryColor;
+    }
+
+    &:disabled {
+      cursor: no-drop;
+    }
+
+    &--left {
+      background-image: url('../../images/icons/arrow-left.png');
+    }
+
+    &--left:disabled {
+      background-image: url('../../images/icons/arrow-left.png');
+      border: 1px solid $elementsColor;
+    }
+
+    &--right {
+      background-image: url('../../images/icons/arrow-right.png');
+    }
+
+    &--right:disabled {
+      background-image: url('../../images/icons/arrow-right.png');
+      border: 1px solid $elementsColor;
+    }
+  }
+
+  &__cards {
+    @include on-mobile {
+      @include page-grid;
+
+      padding: 0;
+      overflow: hidden;
+      scroll-behavior: smooth;
+      grid-column: 1 / -1;
+      grid-row: 1;
+      column-gap: 16px;
+      grid-template-columns: repeat(20, 220px);
+    }
+
+    @include on-tablet {
+      grid-template-columns: repeat(20, 237px);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(20, 272px);
+    }
+  }
+}

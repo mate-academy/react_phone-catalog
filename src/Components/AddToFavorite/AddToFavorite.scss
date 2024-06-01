@@ -1,0 +1,24 @@
+@import '../../styles/main';
+
+.button-favorite {
+  width: 100%;
+  height: 100%;
+  border: 1px solid $elementsColor;
+  border-radius: 50%;
+  background-image: url("../../images/icons/favourites.png");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px;
+  background-color: $whiteColor;
+
+  @include hover (border, $effectDuration);
+
+  &:hover {
+    cursor: pointer;
+    border: 1px solid $primaryColor;
+  }
+
+  &--active {
+    background-image: url("../../images/icons/Favourites\ Filled\ \(Heart\ Like\).png");
+  }
+}

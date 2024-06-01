@@ -1,0 +1,54 @@
+@import '../../styles/main';
+
+.modal-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background-color: $whiteColor;
+  padding: 20px;
+  border-radius: 16px;
+  align-items: center;
+
+  &__text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__block {
+    display: flex;
+    width: 100%;
+    gap: 16px;
+  }
+
+  &__button {
+    font-family: Mont-SemiBold, serif;
+    background-color: $accentColor;
+    cursor: pointer;
+    color: $whiteColor;
+    border: none;
+    width: 100%;
+    height: 40px;
+    font-size: 16px;
+    border-radius: 8px;
+
+    @include hover (box-shadow, $effectDuration);
+
+    &:hover {
+      cursor: pointer;
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+}

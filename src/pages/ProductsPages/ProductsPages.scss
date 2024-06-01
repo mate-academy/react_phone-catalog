@@ -1,0 +1,11 @@
+@import '../../styles/main';
+
+.content {
+  margin-inline: auto;
+  width: 100%;
+  max-width: 1200px;
+}
+
+.product-page {
+  @include content-padding-inline;
+}
