@@ -25,7 +25,7 @@ export const Header: React.FC = () => {
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
       app.current.style.overflow = 'hidden';
-      app.current.style.height = '100vh';
+      app.current.style.height = '50vh';
 
     }
   };
