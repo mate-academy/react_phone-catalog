@@ -7,7 +7,8 @@
   justify-content: center;
   width: 1040px;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
+  overflow: hidden;
   margin-inline: 15px;
   &__container {
     display: flex;
