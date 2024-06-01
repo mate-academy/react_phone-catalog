@@ -5,7 +5,7 @@ import { LogoCart } from '../Logo/LogoCart';
 import { NavList } from './NavList/NavList';
 import { LogoFavorites } from '../Logo/LogoFavorites';
 import style from './Header.module.scss';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logo/LogoBurger';
 import { LanguageContext } from '../../store/LanguageProvider';
@@ -19,37 +19,38 @@ export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
   const [count, setCount] = useState(0);
-  const [direction, setDirection] = useState(false);
-  const timer = useRef<NodeJS.Timer>();
+  // const [direction, setDirection] = useState(false);
   const { openBurger, setOpenBurger } = useContext(StateContext);
 
   function handleNext() {
-    clearTimeout(timer.current);
     if (count < 2) {
       setCount(prevCount => prevCount + 1);
     }
   }
 
   function handlePrev() {
-    clearTimeout(timer.current);
-
     if (count > 0) {
       setCount(prevCount => prevCount - 1);
     }
   }
 
-  timer.current = setTimeout(() => {
-    if (direction) {
-      setCount(prevCount => prevCount + 1);
-    }
+  function handleSmallButton(item: number) {
+    setCount(item);
+  }
 
-    if (count <= 1) {
-      setDirection(true);
-    } else if (count === 2) {
-      setDirection(false);
-      setCount(0);
-    }
-  }, 600000);
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      setCount(prevCount => {
+        if (prevCount + 1 > 2) {
+          return 0;
+        } else {
+          return prevCount + 1;
+        }
+      });
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
 
   return (
     <header className={style.header}>
@@ -108,7 +109,7 @@ export const Header = () => {
                 {[0, 1, 2].map(item => (
                   <span
                     key={item}
-                    onClick={() => setCount(item)}
+                    onClick={() => handleSmallButton(item)}
                     className={classNames(style.header__smallButton, {
                       [style.header__activeButton]: count === item,
                     })}

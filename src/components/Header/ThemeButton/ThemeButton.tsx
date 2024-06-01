@@ -9,19 +9,16 @@ const ThemeToggle = () => {
   const { toggleTheme, theme } = useContext(ThemeContext);
 
   return (
-    <>
+    <label className={classNames(style.theme__area)} htmlFor="switcher">
       <input
         type="checkbox"
         className={style.theme__checkbox}
-        onClick={toggleTheme}
+        onChange={toggleTheme}
         id="switcher"
         checked={theme}
       />
-      <label
-        htmlFor="switcher"
-        className={classNames(style.theme__switch)}
-      ></label>
-    </>
+      <div className={classNames(style.theme__switch)}></div>
+    </label>
   );
 };
 
