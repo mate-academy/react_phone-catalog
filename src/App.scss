@@ -1,8 +1,18 @@
 // not empty
-.app{
+* {
   transition: all 0.6s ease-in-out;
+}
+
+.app{
 
   &__title {
     visibility: hidden;
+  }
+
+  &__separator {
+    width: 100vw;
+    height: 1px;
+    border: 1px solid #E2E6E9;
+    margin-bottom: 32px
   }
 };

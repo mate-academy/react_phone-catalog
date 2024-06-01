@@ -1,37 +1,48 @@
 .footer {
-  transition: all 0.6s ease-in-out;
+  // transition: all 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  font-family: 'Montserrat', sans-serif;
+  width: 288px;
+  margin: 0 auto;
 
   &__logo {
     height: 30px;
     width: 289px;
-    margin-bottom: 1px;
-    // background-image: url(../../../public/img/svg/Nice_Gadgets_logo.svg);
-    // background-size: contain;
-    // background-repeat: no-repeat;
-
-    &__img {
-      height: fit-content;
-
-    }
+    margin-bottom: 32px;
 
   }
 
   &__links {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    height: 65px;
+    margin-bottom: 32px;
+    text-transform: uppercase;
 
-    &__item {}
+
+    &__item {
+      line-height: 12px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      color: #89939A;
+    }
   }
 
   &__back {
     display: flex;
     height: 32px;
+    margin: 0 auto 32px;
 
     &__paragraph {
       margin-right: 16px;
+      line-height: 32px;
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: 1px;
     }
 
     &__link {

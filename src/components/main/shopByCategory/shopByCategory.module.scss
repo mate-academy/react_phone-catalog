@@ -1,18 +1,24 @@
-.shop_by_category {
-  align-self: center;
-  width: 288px;
+.title {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #313237;
+  margin-bottom: 24px;
+}
 
-  &__title {
-    font-family: 'Montserrat', sans-serif;
-    font-weight: 700;
-    font-size: 20px;
-    color: #313237;
-  }
+.shop_by_category {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+  width: 288px;
+  height: 1000px;
 
   &__section {
 
     &__picture {
       height: 230px;
+      margin-bottom: 24px;
 
       &--phones {
         background-color: violet;

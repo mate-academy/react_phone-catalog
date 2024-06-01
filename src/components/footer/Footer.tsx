@@ -1,7 +1,16 @@
 import React from 'react';
 import styles from './Footer.module.scss';
+// import { Link, NavLink } from 'react-router-dom';
 
 export const Footer: React.FC = () => {
+
+  const scrollToHeader = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    event.preventDefault();
+    const headerElement = document.getElementById('header');
+    if (headerElement) {
+      headerElement.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   return (
     <div className={styles['footer']}>
@@ -17,7 +26,7 @@ export const Footer: React.FC = () => {
 
       <div className={styles['footer__back']}>
         <p className={styles['footer__back__paragraph']}>Back to top</p>
-        <a className={styles['footer__back__link']} href="#header">
+        <a className={styles['footer__back__link']} onClick={scrollToHeader} href="#header">
         </a>
       </div>
     </div>

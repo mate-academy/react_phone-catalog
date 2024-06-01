@@ -3,12 +3,87 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  transition: all 0.6s ease-in-out;
+  border-bottom: 1px solid #E2E6E9;
+  // transition: all 0.6s ease-in-out;
 
   &__container--1,
   &__container--2 {
     display: flex;
     height: 48px;
+  }
+
+  &__burger_menu {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 100vh;
+    width: 100vw;
+    bottom: 0;
+    overflow: hidden;
+    right: 0;
+    z-index: 10;
+    background-color: #FFF;
+    transform: translateX(100%);
+    border-bottom: 1px solid #E2E6E9;
+
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      height: 48px;
+      width: 100vw;
+      border-bottom: 1px solid #E2E6E9;
+
+      &__close {
+        border: 1px solid #E2E6E9;
+        width: 48px;
+        background-image: url(../../../public/img/svg/close_burger.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        // background-size: cover;
+      }
+    }
+
+    &__list {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 156px;
+      width: 288px;
+      margin-bottom: 200px;
+
+      &__element {
+
+      }
+
+    }
+
+    &__footer {
+      display: flex;
+      height: 64px;
+      width: 100%;
+
+      &__fav {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../../public/img/svg/fav_icon.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid #E2E6E9;
+      }
+
+      &__cart {
+        width: 50%;
+        height: 100%;
+        background-image: url(../../../public/img/svg/Shopping_bag_Cart.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+        border: 1px solid #E2E6E9;
+      }
+
+    }
   }
 
   &__nav {
@@ -40,6 +115,7 @@
     display: flex;
     width: 48px;
     align-items: center;
+    border: 1px solid #E2E6E9;
 
     &__img {
       margin: auto;
