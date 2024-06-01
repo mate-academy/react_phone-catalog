@@ -1,8 +1,10 @@
 import React, { useContext } from 'react';
-import './Modal.scss';
+
 import { CartContext } from '../../context/CartContext';
 import { useLoading } from '../../hooks/useLoading';
 import { Loader } from '../Loader/Loader';
+
+import './Modal.scss';
 
 type Props = {
   onClose: () => void;

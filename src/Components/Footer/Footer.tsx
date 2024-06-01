@@ -38,11 +38,19 @@ export const Footer = () => {
         </Link>
 
         <div className="footer__contant-block">
-          <Link className="footer__link" to="https://github.com/denedweb">
+          <Link
+            className="footer__link"
+            to="https://github.com/khvashchenkodenys"
+            target="_blank"
+          >
             Github
           </Link>
 
-          <Link className="footer__link" to="/">
+          <Link
+            className="footer__link"
+            to="https://www.linkedin.com/in/denys-khvashchenko-78a3a9311/"
+            target="_blank"
+          >
             Contacts
           </Link>
 

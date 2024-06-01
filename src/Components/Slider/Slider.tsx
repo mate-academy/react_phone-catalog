@@ -1,79 +1,93 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Category } from '../../types/Category';
+import classNames from 'classnames';
 
 import './Slider.scss';
 
 export const Slider = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
   const banners = Object.values(Category);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+  const [translateValue, setTranslateValue] = useState(0);
 
-  const handleMoveLeft = () => {
-    setActiveIndex(prevIndex =>
-      prevIndex === 0 ? banners.length - 1 : prevIndex - 1,
-    );
+  const handleLeftButton = () => {
+    const index = currentImageIndex - 1 >= 0 ? currentImageIndex - 1 : 2;
+
+    setCurrentImageIndex(index);
+    setTranslateValue(33.33 * index);
   };
 
-  const handleMoveRight = () => {
-    setActiveIndex(prevIndex =>
-      prevIndex === banners.length - 1 ? 0 : prevIndex + 1,
-    );
+  const handleRightButton = () => {
+    const index = currentImageIndex + 1 <= 2 ? currentImageIndex + 1 : 0;
+
+    setCurrentImageIndex(index);
+    setTranslateValue(33.33 * index);
   };
 
   const handleButtonDownClick = (index: number): void => {
-    setActiveIndex(index);
+    setCurrentImageIndex(index);
+    setTranslateValue(33.33 * index);
   };
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      handleMoveRight();
+    const timerId = setInterval(() => {
+      handleRightButton();
     }, 5000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timerId);
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [activeIndex]);
+  }, [currentImageIndex]);
 
   return (
     <div className="slider">
-      <div className="slider__img-block">
-        <button
-          type="button"
-          aria-label="previous slide"
-          className="slider__button move-left"
-          onClick={handleMoveLeft}
-        />
-        <div className="slider__photo">
-          {banners.map((category, index) => (
-            <Link
-              to={`./${category}`}
-              key={category}
-              className={`slider__item ${index === activeIndex ? 'active-img' : ''}`}
+      <div className="slider__content">
+        <div className="slider__box">
+          <button
+            aria-label="previous slide"
+            type="button"
+            className="slider__button slider__button--left"
+            onClick={handleLeftButton}
+          />
+          <div className="slider__images-container">
+            <div
+              className="slider__images"
+              style={{ transform: `translateX(-${translateValue}%)` }}
             >
-              <img
-                src={`img/banner-${category}${window.innerWidth <= 640 ? '-mini' : ''}.jpg`}
-                alt={`Slide ${index + 1}`}
-                className="slider__image"
-              />
-            </Link>
+              {banners.map((category, index) => (
+                <Link
+                  to={`./${category}`}
+                  key={category}
+                  className="slider__link"
+                >
+                  <img
+                    src={`img/banner-${category}${window.innerWidth <= 640 ? '-mini' : ''}.jpg`}
+                    alt={`Slide ${index + 1}`}
+                    className="slider__image"
+                  />
+                </Link>
+              ))}
+            </div>
+          </div>
+          <button
+            aria-label="next slide"
+            type="button"
+            className="slider__button slider__button--right"
+            onClick={handleRightButton}
+          />
+        </div>
+        <div className="slider__dots">
+          {banners.map((category, index) => (
+            <button
+              type="button"
+              aria-label="button"
+              className={classNames('slider__dot', {
+                'slider__dot--active': index === currentImageIndex,
+              })}
+              onClick={() => handleButtonDownClick(index)}
+              key={category}
+            />
           ))}
         </div>
-        <button
-          type="button"
-          aria-label="button"
-          className="slider__button move-right"
-          onClick={handleMoveRight}
-        />
-      </div>
-      <div className="slider slider__buttons">
-        {banners.map((category, index) => (
-          <button
-            type="button"
-            aria-label="button"
-            className={`slider__button-down ${activeIndex === index ? 'is-active' : ''}`}
-            onClick={() => handleButtonDownClick(index)}
-            key={category}
-          />
-        ))}
       </div>
     </div>
   );

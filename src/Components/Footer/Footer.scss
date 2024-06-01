@@ -115,6 +115,8 @@
       cursor: pointer;
     }
 
+    @include hover (border, $effectDuration);
+
     &:hover {
       border: 1px $primaryColor solid;
     }
