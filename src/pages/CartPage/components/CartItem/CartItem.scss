@@ -1,17 +1,22 @@
 @use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
 
 .cart-item {
-  padding: 16px;
-
-  // LATER for desktop() - padding: 24px
-
-  width: 100%;
-  box-sizing: border-box;
-  border: 1px solid $color-elements;
-
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: $padding-small;
+
+  border: 1px solid $color-elements;
+
+  @include for-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: $padding-medium;
+  }
 
   // &__main-info {
   // }
@@ -47,11 +52,16 @@
   align-items: center;
   justify-content: space-between;
 
+  @include for-tablet {
+    gap: 53px;
+  }
+
   &__quantity {
     display: flex;
     align-items: center;
     gap: 13px;
   }
+
   &__price {
     // styleName: Desktop & Tablet/H3;
     font-family: $font-family;
