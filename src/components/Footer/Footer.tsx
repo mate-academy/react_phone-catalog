@@ -14,8 +14,10 @@ export const Footer = () => (
 
       <div className="footer__centerBlock">
         <a
-          href="https://github.com/yepolotn1ak/react_phone-catalog"
+          href="https://github.com/yepolotn1ak"
           className="link link__footer"
+          target="_blank"
+          rel="noreferrer"
         >
           Github
         </a>

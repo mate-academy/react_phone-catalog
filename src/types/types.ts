@@ -97,7 +97,7 @@ export enum NotFound {
 
 export enum ModaleButton {
   Confirm = 'Confirm',
-  Cencel = 'Cencel',
+  Cencel = 'Cancel',
 }
 
 export enum FixColor {
