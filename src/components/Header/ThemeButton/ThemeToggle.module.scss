@@ -1,4 +1,5 @@
 @use '../../../styles/block/utils/variables.scss' as *;
+@import '../../../styles/block/utils/mixins.scss';
 
 .theme__area {
   display: flex;
@@ -7,6 +8,7 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+
 }
 
 .theme__switch {
@@ -36,11 +38,11 @@
 
 .theme__checkbox:checked + .theme__switch::after {
   transform: translateX(137%);
-  transition: all 0.4s cubic-bezier(0.17, 0.88, 0.32, 1);
+  @include transitionPage;
 }
 
 .theme__checkbox + .theme__switch::after {
-  transition: all 0.4s cubic-bezier(0.17, 0.88, 0.32, 1);
+  @include transitionPage;
 }
 
 .theme__checkbox {

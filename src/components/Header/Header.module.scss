@@ -3,7 +3,7 @@
 
 .header {
   height: 100vh;
-
+  @include transitionPage;
   &__top {
     display: flex;
     align-items: center;
@@ -194,3 +194,5 @@
     }
   }
 }
+
+// @include onHover('.header__logo');

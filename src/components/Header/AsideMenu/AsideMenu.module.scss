@@ -2,6 +2,7 @@
 @import '../../../styles/block/utils/mixins.scss';
 
 .menu {
+  overflow: auto;
   position: fixed;
   top: 0;
   left: 0;
@@ -10,8 +11,8 @@
   background-color: $background-color;
   pointer-events: none;
   font-size: 18px;
-  transition: all 0.4s;
-
+  scroll-behavior: smooth;
+  @include transitionPage;
 
   &__top {
     display: flex;
@@ -21,6 +22,7 @@
     padding-left: 16px;
     height: 48px;
     border-bottom: 1px solid $border-color;
+
   }
 
   &__topLogo {
@@ -99,9 +101,10 @@
   z-index: 1;
   opacity: 1;
   pointer-events: all;
+  // transform: translateY(100);
 }
 
-@include onTablet {
+@media (max-width: 1199px) {
   .menu {
     &__listLink {
       font-size: 14px;
@@ -109,7 +112,7 @@
   }
 }
 
-@include onPhone {
+@media (max-width: 639px) {
   .menu {
     &__listLink {
       font-size: 12px;

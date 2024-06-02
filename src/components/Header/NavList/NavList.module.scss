@@ -6,6 +6,9 @@
     list-style: none;
     padding: 0;
   }
+  &__item {
+    @include transitionPage;
+  }
 
   &__item:not(:last-child) {
     padding-inline-end: 64px;
@@ -26,3 +29,5 @@
 //     padding-inline-end: 32px;
 //   }
 // }
+
+@include onHover('.nav__item');

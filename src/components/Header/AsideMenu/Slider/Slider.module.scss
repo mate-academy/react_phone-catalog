@@ -10,15 +10,18 @@
   overflow: hidden;
   overflow: hidden;
   margin-inline: 15px;
+
   &__container {
     display: flex;
+    @include transitionPage;
+    // aspect-ratio: 1 / 1;
   }
 
   &__image {
     width: 100%;
-
   }
 }
+
 
 @include onTablet {
   .slider {
