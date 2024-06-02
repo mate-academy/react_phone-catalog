@@ -7,7 +7,7 @@ import { CatalogContext } from '../../../context/CatalogContext';
 import { CartItem } from '../CartItem/CartItem';
 import { Modale } from './Modale/Modale';
 import { Images } from '../../../images/images';
-import { disableScroll } from '../../../utils/service';
+import { disableScroll, getQuantityText } from '../../../utils/service';
 
 export const CartPage = () => {
   const {
@@ -56,7 +56,9 @@ export const CartPage = () => {
                 <article className="cart__totalPrice">
                   <div className="cart__totalPrice--priceInfo">
                     <h2 className="cart__totalPrice--priceInfo-price">{`$${totalCheckout}`}</h2>
-                    <p className="body-text">{`Total for ${totalCartQuantity} items`}</p>
+                    <p className="body-text">
+                      {getQuantityText(totalCartQuantity)}
+                    </p>
                   </div>
 
                   <button

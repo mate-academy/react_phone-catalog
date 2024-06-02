@@ -38,7 +38,7 @@ export const getPhotoClass = (path: Types.Category, conteiner: boolean) => {
       'categories__block--container-phones': path === Types.Category.Phones,
       'categories__block--container-tablets': path === Types.Category.Tablets,
       'categories__block--container-accessories':
-          path === Types.Category.Accessories,
+        path === Types.Category.Accessories,
     })
     : classNames('categories__block--title', {
       'categories__block--phones': path === Types.Category.Phones,
@@ -308,3 +308,8 @@ export const getBunnerImages = (pageWidth: number) =>
   pageWidth >= 640
     ? Object.values(Images.Banner.Big)
     : Object.values(Images.Banner.Small);
+
+export const getQuantityText = (totalCartQuantity: number | null) =>
+  totalCartQuantity === 1
+    ? `Total for ${totalCartQuantity} item`
+    : `Total for ${totalCartQuantity} items`;
