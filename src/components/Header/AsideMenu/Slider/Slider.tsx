@@ -6,6 +6,7 @@ import secondPortrait from '../../../../image/BannerImage/portrain-second.jpg';
 import thirdPortrait from '../../../../image/BannerImage/phone-four.webp';
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
+import { StateContext } from '../../../../store/StateProvider';
 
 type Props = {
   count: number;
@@ -14,7 +15,10 @@ type Props = {
 export const Slider: React.FC<Props> = ({ count }) => {
   const myRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(BreakPointsContext);
+  const { autoPlay, setAutoPlay } = useContext(StateContext);
   const [width, setWidth] = useState(0);
+
+  console.log(autoPlay);
 
   const handleResize = useCallback(() => {
     if (myRef.current) {
@@ -38,6 +42,8 @@ export const Slider: React.FC<Props> = ({ count }) => {
         ref={myRef}
         className={style.slider__container}
         style={{ transform: `translateX( -${count * width}px)` }}
+        onMouseEnter={() => setAutoPlay(true)}
+        onMouseLeave={() => setAutoPlay(false)}
       >
         {!isMobile ? (
           <>

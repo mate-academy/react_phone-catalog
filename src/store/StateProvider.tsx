@@ -3,6 +3,8 @@ import React, { useState } from 'react';
 type StateType = {
   openBurger: boolean;
   setOpenBurger: (v: boolean) => void;
+  autoPlay: boolean;
+  setAutoPlay: (v: boolean) => void;
 };
 
 type Props = {
@@ -12,14 +14,19 @@ type Props = {
 export const StateContext = React.createContext<StateType>({
   openBurger: false,
   setOpenBurger: () => {},
+  autoPlay: false,
+  setAutoPlay: () => {},
 });
 
 export const StateProvider: React.FC<Props> = ({ children }) => {
   const [openBurger, setOpenBurger] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(false);
 
   const stateTools = {
     openBurger,
     setOpenBurger,
+    autoPlay,
+    setAutoPlay,
   };
 
   return (

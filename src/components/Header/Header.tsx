@@ -19,7 +19,7 @@ export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
   const [count, setCount] = useState(0);
-  const { openBurger, setOpenBurger } = useContext(StateContext);
+  const { openBurger, setOpenBurger, autoPlay } = useContext(StateContext);
 
   function handleNext() {
     if (count < 2) {
@@ -38,18 +38,22 @@ export const Header = () => {
   }
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCount(prevCount => {
-        if (prevCount + 1 > 2) {
-          return 0;
-        } else {
-          return prevCount + 1;
-        }
-      });
-    }, 3000);
+    if (!autoPlay) {
+      const intervalId = setInterval(() => {
+        setCount(prevCount => {
+          if (prevCount + 1 > 2) {
+            return 0;
+          } else {
+            return prevCount + 1;
+          }
+        });
+      }, 3000);
 
-    return () => clearInterval(intervalId);
-  }, []);
+      return () => clearInterval(intervalId);
+    } else {
+      return () => {};
+    }
+  }, [autoPlay]);
 
   return (
     <header className={style.header}>

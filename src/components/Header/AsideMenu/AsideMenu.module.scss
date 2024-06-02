@@ -22,7 +22,6 @@
     padding-left: 16px;
     height: 48px;
     border-bottom: 1px solid $border-color;
-
   }
 
   &__topLogo {
@@ -54,6 +53,7 @@
     padding: 8px 0;
     margin-bottom: 16px;
     line-height: 16px;
+    @include transitionPage;
   }
 
   &__listLink {
@@ -120,3 +120,5 @@
     }
   }
 }
+
+@include onHover('.menu__listItem');
