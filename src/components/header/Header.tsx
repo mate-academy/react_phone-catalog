@@ -23,7 +23,6 @@ export const Header: React.FC = () => {
     if (burger.current && app.current) {
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
-      app.current.style.overflow = 'hidden';
     }
   };
 
@@ -31,8 +30,6 @@ export const Header: React.FC = () => {
     if (burger.current && app.current) {
       burger.current.style.transform = 'translateX(+100%)';
       document.body.style.overflow = 'visible';
-      app.current.style.overflow = 'visible';
-      app.current.style.height = 'fit-content';
     }
   };
 
