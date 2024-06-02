@@ -4,6 +4,7 @@ import './App.scss';
 import { Header } from './Components/Header/Header';
 import { Footer } from './Components/Footer/Footer';
 import { ChangeColor } from './Components/ChangeColor/ChangeColor';
+import classNames from 'classnames';
 
 export const App = () => {
   const location = useLocation();
@@ -20,7 +21,11 @@ export const App = () => {
         <ChangeColor />
       </div>
 
-      <main className="main">
+      <main
+        className={classNames('main', {
+          'main--with-burger': menuBurger,
+        })}
+      >
         <Outlet />
       </main>
 

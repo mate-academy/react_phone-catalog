@@ -19,7 +19,7 @@ footer {
   margin-top: auto;
  }
 
-main {
+.main {
   min-height: 40vh;
   flex: 1;
   display: flex;
@@ -44,6 +44,12 @@ main {
     margin-bottom: 56px;
     padding-left: 16px;
     padding-right: 16px;
+  }
+
+  &--with-burger {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
   }
 }
 
