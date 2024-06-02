@@ -26,7 +26,7 @@
     gap: 6px;
     height: 16px;
 
-    @include for-tablet() {
+    @include for-tablet {
       grid-column: 1 / 13;
     }
   }
@@ -74,10 +74,14 @@
 .product-content {
   @include grid;
 
-  grid-template-rows: auto;
+  grid-template-rows: auto auto auto;
   row-gap: 32px;
 
   padding-top: 0;
+
+  // &__name {
+  //   grid-column: 1 / 5;
+  // }
 
   &__top {
     grid-column: 1 / 5;
@@ -85,21 +89,19 @@
     flex-direction: column;
     gap: 16px;
 
-    @include for-tablet() {
+    @include for-tablet {
       grid-column: 1 / 14;
+      grid-row: 1 / 2;
     }
   }
 
   &__options-block {
     grid-column: 1 / 5;
 
-    @include for-tablet() {
-      grid-column: span 12;
+    @include for-tablet {
+      grid-column: 1 / 14;
+      grid-row: 2 / 3;
     }
-  }
-
-  &__name {
-    grid-column: 1 / 5;
   }
 }
 
@@ -109,8 +111,20 @@
 
   gap: $gap-large;
 
+  @include for-tablet {
+    @include grid;
+
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+  }
+
   &__images {
     grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 8;
+      grid-row: 1 / 2;
+    }
   }
 
   &__options-wrapper {
@@ -118,6 +132,11 @@
     flex-direction: column;
 
     gap: $gap-large;
+
+    @include for-tablet {
+      grid-column: 8 / 13;
+      grid-row: 1 / 2;
+    }
   }
 
   &__options {
@@ -141,14 +160,32 @@
   align-items: center;
   gap: 16px;
 
+  @include for-tablet {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: auto;
+    justify-items: center;
+  }
+
   &__main-image {
     width: 288px;
     height: 288px;
     object-fit: contain;
+
+    @include for-tablet {
+      grid-column: 2 / 8;
+      grid-row: 1 / 2;
+
+      height: 449px;
+    }
   }
 
-  // &__images-list {
-  // }
+  &__images-list {
+    @include for-tablet {
+      grid-column: 1 / 2;
+      grid-row: 1 / 2;
+    }
+  }
 }
 
 .images-list {
@@ -157,6 +194,10 @@
   gap: 8px;
 
   max-width: 100%;
+
+  @include for-tablet {
+    flex-direction: column;
+  }
 
   // &__element {
   // }
