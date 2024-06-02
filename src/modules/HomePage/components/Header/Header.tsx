@@ -15,7 +15,8 @@ export const Header: React.FC = ({}) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [isSearch, setIsSearch] = useState(false);
   const [searchQuery, setSearhQuery] = useState('');
-  const isSearchInUrl = page.some((item) => {
+  const countCartItem = cartItem.reduce((acm, item) => acm + item.quantity, 0);
+  const isSearchInUrl = page.some(item => {
     if (pathname.length > 12) {
       return false;
     }
@@ -73,7 +74,6 @@ export const Header: React.FC = ({}) => {
     if (e.target.value.trim() === '') {
       params.delete('query');
     }
-
 
     setSearhQuery(e.target.value);
     applyQuery(params);
@@ -151,11 +151,16 @@ export const Header: React.FC = ({}) => {
                 )}
               </>
             )}
-            {!isSearch &&
+            {!isSearch && (
               <>
                 {favorite.length > 0 ? (
-                  <NavLink className={getLinkClassButtonFavorite} to="/favorite">
-                    <span className={style.header__count}>{favorite.length}</span>
+                  <NavLink
+                    className={getLinkClassButtonFavorite}
+                    to="/favorite"
+                  >
+                    <span className={style.header__count}>
+                      {favorite.length}
+                    </span>
                   </NavLink>
                 ) : (
                   <NavLink
@@ -166,13 +171,15 @@ export const Header: React.FC = ({}) => {
 
                 {cartItem.length > 0 ? (
                   <NavLink className={getLinkClassButtonCart} to="/cart">
-                    <span className={style.header__count}>{cartItem.length}</span>
+                    <span className={style.header__count}>
+                      {countCartItem}
+                    </span>
                   </NavLink>
                 ) : (
                   <NavLink className={getLinkClassButtonCart} to="/cart" />
                 )}
               </>
-            }
+            )}
           </div>
         </nav>
       </div>

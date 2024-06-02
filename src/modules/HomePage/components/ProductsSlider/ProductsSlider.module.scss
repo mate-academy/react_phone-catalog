@@ -7,6 +7,7 @@
     background-color: initial;
     border: 1px solid $border-button-color;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       border: 1px solid $border-button-color-hover;

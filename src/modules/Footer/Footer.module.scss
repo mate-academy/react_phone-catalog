@@ -117,31 +117,29 @@
     text-decoration: none;
     color: $header-text-color;
     font-size: 12px;
+    display: block;
     position: relative;
     font-weight: 800;
-
-    @include on-tablet {
-      gap: 64px;
-    }
+    transition: all 0.3s;
 
     &:hover {
       color: $border-button-color-hover;
+    }
 
-      &::after {
-        content: '';
-        position: absolute;
-        left: 0;
-        right: 0;
-        top: 35px;
-        height: 3px;
-        width: 100%;
-        background-color: $border-button-color-hover;
-      }
+    @include on-tablet {
+      gap: 64px;
     }
   }
 
   &__item {
     text-decoration: none;
     list-style: none;
+  }
+
+  &__img {
+    transition: all 0.3s;
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 }

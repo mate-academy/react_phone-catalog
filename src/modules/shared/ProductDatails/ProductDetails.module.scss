@@ -71,6 +71,10 @@
     height: 49px;
     object-fit: contain;
     border: 1px solid $color-gray;
+    transition: all 0.3s;
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
 
     @include on-tablet {
       width: 37px;
@@ -85,6 +89,7 @@
     &__active {
       border: 1px solid $border-button-color-hover;
     }
+
   }
 
   &__translate {
@@ -136,6 +141,7 @@
     height: 30px;
     border-radius: 50%;
     border: 2px solid $color-gray;
+    transition: all 0.3s;
 
     &:hover {
       border-color: $border-button-color-hover;
@@ -186,7 +192,8 @@
     width: 56px;
     height: 32px;
     border: 1px solid $border-button-color;
-  
+    transition: all 0.3s;
+
     &:hover {
       border-color: $border-button-color-hover;
     }
@@ -232,6 +239,7 @@
     font-size: 14px;
     cursor: pointer;
     flex-grow: 2;
+    transition: all 0.3s;
 
     @extend %mont-600;
 
@@ -263,6 +271,7 @@
     justify-content: center;;
     border: 1px solid $border-button-color;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       border-color: $border-button-color-hover;

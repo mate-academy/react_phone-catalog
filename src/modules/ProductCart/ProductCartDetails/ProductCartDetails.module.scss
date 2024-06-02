@@ -121,6 +121,7 @@
     border: none;
     cursor: pointer;
     color: $color-white;
+    transition: all 0.3s;
 
     &:hover {
       box-shadow: 0 3px 13px 0;

@@ -8,7 +8,7 @@ export const Pagination = () => {
   const { createPageProducts } = usePagination();
   const [searchParams, setSearchParams] = useSearchParams();
   const page = searchParams.get('page') || 0;
-  const { search } = useLocation()
+  const { search } = useLocation();
 
   const handlChangPage = (e: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const params = new URLSearchParams(searchParams);

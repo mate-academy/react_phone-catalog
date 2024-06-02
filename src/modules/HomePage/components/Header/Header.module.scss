@@ -19,6 +19,7 @@
     color: $header-text-color;
     font-size: 12px;
     position: relative;
+    transition: all 0.3s;
 
     @extend %mont-700;
 
@@ -44,6 +45,11 @@
     list-style: none;
     color: $border-button-color-hover;
     font-weight: 900;
+    transition: all 0.3s;
+
+    &:hover {
+      transform: scale(1.04);
+    }
   }
 
   &__logo__img {
@@ -66,6 +72,11 @@
     background-position: center;
     border: 1px solid $border-button-color;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
 
     @include on-tablet {
       width: 48px;
@@ -95,7 +106,8 @@
     border-right: none;
 
     &:focus {
-      border-color: $border-button-color-hover
+      outline: 0;
+      outline-offset: 0;
     }
 
     @include on-tablet {
@@ -275,6 +287,7 @@
     align-items: center;
     cursor: pointer;
     border: 1px solid $border-button-color;
+    transition: all 0.3;
 
     @include on-tablet {
       width: 48px;

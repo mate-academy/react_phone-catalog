@@ -39,6 +39,7 @@
     background-position: center;
     cursor: pointer;
     display: none;
+    transition: all 0.3s;
 
     @include on-tablet {
       display: block;
@@ -131,6 +132,11 @@
     background: initial;
     border: none;
     cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border:1px solid $border-button-color-hover;
+    }
   }
  
   &__indicator {

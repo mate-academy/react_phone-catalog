@@ -22,7 +22,6 @@ const usePagination = () => {
       .filter(item => item.includes('perPage'))[0]
       .split('=')[1];
 
-
     for (let i = 0; i < Math.ceil(serchProduct.length / +dividePage); i++) {
       arryOnPage[i] = serchProduct.slice(
         i * +dividePage,

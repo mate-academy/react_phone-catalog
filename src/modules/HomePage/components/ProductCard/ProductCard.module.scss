@@ -116,6 +116,7 @@
     color: $color-white;
     font-size: 14px;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       box-shadow: 0 3px 13px 0;
@@ -136,6 +137,7 @@
     justify-content: center;;
     border: 1px solid $border-button-color;
     cursor: pointer;
+    transition: all 0.3s;
 
     &:hover {
       border-color: $border-button-color-hover;
@@ -168,6 +170,7 @@
 .is__add {
   color: #27ae60;
   background-color: $color-gray;
+  transition: all 0.3s;
 
   &:hover {
     border-color: $border-button-color-hover;
