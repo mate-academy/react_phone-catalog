@@ -15,6 +15,12 @@
   background-color: transparent;
   border: none;
 
+  color: $color-secondary;
+
+  &:hover {
+    color: $color-primary;
+  }
+
   &__image-wrapper {
     height: 16px;
     width: 16px;
@@ -33,7 +39,5 @@
 
     display: flex;
     align-items: flex-start;
-
-    color: $color-secondary;
   }
 }
