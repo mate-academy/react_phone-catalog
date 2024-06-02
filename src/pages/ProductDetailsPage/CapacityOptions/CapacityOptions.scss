@@ -24,13 +24,18 @@
     padding: 7px 8px;
     border: 1px solid $color-icons-placeholders;
 
+    transition: all 0.2s ease-in-out;
+
     &:hover {
       background-color: $color-primary;
       color: $color-white;
 
       border: none;
       padding: 8px 9px;
+
+      transition: all 0.2s ease-in-out;
     }
+
     &--active {
       background-color: $color-primary;
       color: $color-white;
