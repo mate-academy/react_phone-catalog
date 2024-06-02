@@ -4,7 +4,14 @@ import second from '../../../../image/BannerImage/phone-bunner.jpg';
 import third from '../../../../image/BannerImage/phone-third.png';
 import secondPortrait from '../../../../image/BannerImage/portrain-second.jpg';
 import thirdPortrait from '../../../../image/BannerImage/phone-four.webp';
-import { useCallback, useContext, useEffect, useRef, useState } from 'react';
+import {
+  MouseEvent,
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
 import { StateContext } from '../../../../store/StateProvider';
 
@@ -17,6 +24,38 @@ export const Slider: React.FC<Props> = ({ count }) => {
   const { isMobile } = useContext(BreakPointsContext);
   const { setAutoPlay } = useContext(StateContext);
   const [width, setWidth] = useState(0);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [onMouseDown, setOnMouseDown] = useState(false);
+  console.log(startX);
+  console.log(onMouseDown);
+
+  const handleOnMouseDown = (e: MouseEvent<HTMLDivElement>) => {
+    setStartX(e.clientX);
+    setOnMouseDown(true);
+  };
+
+  const handleOnMouseMove = (e: MouseEvent<HTMLDivElement>) => {
+    if (!onMouseDown || !myRef.current) {
+      return;
+    }
+
+    e.preventDefault();
+
+    const deltaX = (e.clientX - startX) * 0.115;
+
+    myRef.current.scrollLeft = scrollLeft - deltaX;
+  };
+
+  const handleOnMouseUp = () => {
+    setOnMouseDown(false);
+  };
+
+  const handleOnScroll = () => {
+    if (myRef.current) {
+      setScrollLeft(myRef.current.scrollLeft);
+    }
+  };
 
   const handleResize = useCallback(() => {
     if (myRef.current) {
@@ -39,11 +78,15 @@ export const Slider: React.FC<Props> = ({ count }) => {
       <div
         ref={myRef}
         className={style.slider__container}
-        style={{ transform: `translateX( -${count * width}px)` }}
+        style={{ transform: `translateX( -${startX}px)` }}
         onMouseEnter={() => setAutoPlay(true)}
         onMouseLeave={() => setAutoPlay(false)}
-        onDragStart={e => setWidth(e.clientX)}
-        // onDragEnd={e => console.log('End', e.clientX)}
+        onMouseDown={e => handleOnMouseDown(e)}
+        onMouseMove={e => handleOnMouseMove(e)}
+        onMouseUp={handleOnMouseUp}
+        onScroll={() => {
+          handleOnScroll();
+        }}
       >
         {!isMobile ? (
           <>
