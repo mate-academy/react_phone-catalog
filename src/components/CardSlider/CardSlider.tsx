@@ -8,7 +8,7 @@ import 'swiper/css/pagination';
 
 // import required modules
 // import { Pagination } from 'swiper/modules';
-import Card from '../Card/Card';
+import Card from '../ui/Card/Card';
 import { Navigation } from 'swiper/modules';
 import { v4 as uuidv4 } from 'uuid';
 

@@ -33,6 +33,10 @@ footer {
   flex-shrink: 0;
 }
 
+button {
+  background-color: transparent;
+}
+
 .container {
   @media (min-width:320px) {
     padding-left: 16px;
@@ -46,6 +50,8 @@ footer {
 
   @media(min-width: 1200px) {
     max-width: 1136px;
+    padding-left: 32px;
+    padding-right: 32px;
     margin: 0 auto;
   }
 }

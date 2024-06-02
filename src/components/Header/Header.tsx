@@ -1,8 +1,9 @@
 import React from 'react';
-import BurgerMenu from '../burger/BurgerMenu';
+import BurgerMenu from '../ui/burger/BurgerMenu';
 import './HeaderStyles.scss';
-import Favourite from '../ActiveIcons/Favourite/Favourite';
-import Cart from '../ActiveIcons/Cart/Cart';
+import Favourite from '../ui/ActiveIcons/Favourite/Favourite';
+import Cart from '../ui/ActiveIcons/Cart/Cart';
+import { Link } from 'react-router-dom';
 
 const Header = () => {
   return (
@@ -14,27 +15,27 @@ const Header = () => {
         <nav className="header__menu">
           <ul className="header__menu--wrapper">
             <li className="header__menu--item">
-              <a href="">HOME</a>
+              <Link to="/">HOME</Link>
             </li>
             <li className="header__menu--item">
-              <a href="">PHONES</a>
+              <Link to="phones">PHONES</Link>
             </li>
             <li className="header__menu--item">
-              <a href="">TABLETS</a>
+              <Link to="tablets">TABLETS</Link>
             </li>
             <li className="header__menu--item">
-              <a href="">ACCESSORIES</a>
+              <Link to="accessories">ACCESSORIES</Link>
             </li>
           </ul>
         </nav>
 
         <div className="header__buttons">
-          <div className="header__buttons--favorite">
+          <Link className="header__buttons--favorite" to="favourite">
             <Favourite />
-          </div>
-          <div className="header__buttons--cart">
+          </Link>
+          <Link className="header__buttons--cart" to="cart">
             <Cart />
-          </div>
+          </Link>
         </div>
       </div>
 

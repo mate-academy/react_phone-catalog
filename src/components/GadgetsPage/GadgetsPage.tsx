@@ -2,7 +2,7 @@ import React from 'react';
 import Filter from './Filter/FIlter';
 import { PageType } from 'src/types/PageType';
 import './gadgetsPageStyles.scss';
-import Card from '../Card/Card';
+import Card from '../ui/Card/Card';
 import Navigation from './Navigation/Navigation';
 
 interface Props {
