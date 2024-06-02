@@ -20,9 +20,11 @@ const CartItem: React.FC = () => {
       </div>
       <div className="cart-item__footer">
         <div className="cart-item__controler">
-          <button className="cart-item__minus 
-          cart-item__controler--button 
-          cart-item__button-disabled">
+          <button
+            className="cart-item__minus 
+            cart-item__controler--button 
+            cart-item__button-disabled"
+          >
             <svg
               width="12"
               height="2"
