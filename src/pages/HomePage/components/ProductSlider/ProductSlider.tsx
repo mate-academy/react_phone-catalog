@@ -65,7 +65,7 @@ export const ProductSlider: React.FC<Props> = ({
 
   const moveToNextCard = () =>
     setActiveSlide((currentSlide: number) => {
-      return currentSlide > 0 ? currentSlide - 1 : 7;
+      return currentSlide < 8 ? currentSlide + 1 : 1;
     });
 
   return (
