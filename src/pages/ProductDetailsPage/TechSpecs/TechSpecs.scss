@@ -12,6 +12,10 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
   }
 
   &__title {
@@ -22,10 +26,18 @@
     grid-column: 1 / 5;
     width: 100%;
     background-color: $color-elements;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
   }
 
   &__info-pairs {
     grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
   }
 }
 
