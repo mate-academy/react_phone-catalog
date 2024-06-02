@@ -7,12 +7,10 @@ import { ShopByCategory } from './shopByCategory/shopByCategory';
 export const Main: React.FC = () => {
   return (
     <div className={styles['main']}>
-      {/* context */}
       <SectionDashSlider />
       <Slider title={'Brand new models'}/>
       <ShopByCategory />
       <Slider title={'Hot prices'} discount={true} />
-      {/* context */}
     </div>
   );
 };

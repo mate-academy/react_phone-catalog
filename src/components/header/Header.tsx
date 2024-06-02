@@ -20,13 +20,10 @@ export const Header: React.FC = () => {
   // const isPhone = useBreakpoint('phone');
 
   const handlerOpenBurger = () => {
-
     if (burger.current && app.current) {
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
       app.current.style.overflow = 'hidden';
-      app.current.style.height = '50vh';
-
     }
   };
 
