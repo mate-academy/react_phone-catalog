@@ -1,1 +1,14 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  scroll-behavior: smooth;
+}
+
+iframe {
+  display: none;
+}
+
+.App {
+  flex: 1;
+}

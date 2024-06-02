@@ -1,0 +1,444 @@
+@import '../../shared/utils-scss/mixins';
+@import '../../shared/utils-scss/font';
+@import '../../shared/utils-scss/variables';
+
+.product {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    font-size: 22px;
+    line-height: 41px;
+    color: $border-button-color-hover;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+      font-size: 32px;
+    }
+  }
+  
+  &__main {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 16px;
+    align-items: center;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      flex-direction: row;
+      grid-column: 1 / 6;
+      align-items: start;
+      margin: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__picture {
+    min-width: 287px;
+    height: 287px;
+    object-fit: contain;
+
+    @include on-desktop {
+      min-width: 468px;
+      min-height: 468px;
+    }
+  }
+
+  &__content {
+    display: flex;
+  }
+
+  &__slider {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    width: 51.2px;
+    height: 49px;
+    object-fit: contain;
+    border: 1px solid $color-gray;
+    transition: all 0.3s;
+    &:hover {
+      border: 1px solid $border-button-color-hover;
+    }
+
+    @include on-tablet {
+      width: 37px;
+      height: 37px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &__active {
+      border: 1px solid $border-button-color-hover;
+    }
+
+  }
+
+  &__translate {
+    display: flex;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-desktop {
+      display: grid;
+      gap: 16px;
+      grid-template-columns: repeat(24, 1fr);
+    }
+
+    &__img {
+      max-width: 287px;
+      height: 287px;
+      overflow: hidden;
+
+      @include on-desktop {
+        min-width: 468px;
+        min-height: 468px;
+      }
+    }
+  }
+
+  &__choose {
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 8 / 12;
+    }
+
+    @include on-desktop {
+      grid-column: 14/ 24;
+    }
+  }
+
+  &__color {
+    display: block;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid $color-gray;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $border-button-color-hover;
+    }
+
+    &__active {
+      border-color: $border-button-color-hover;
+    }
+  }
+
+  &__available {
+    display: flex;
+    gap: 9px;
+    margin-bottom: 24px
+  }
+
+  &__text_available {
+    @extend %mont-600;
+
+    color: $header-text-color;
+    font-size: 12px;
+    margin-bottom: 8px;
+    display: block;
+  }
+
+  &__position {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__capacity {
+    @extend %mont-500;
+
+    text-decoration: none;
+    font-size: 14px;
+    line-height: 21px;
+    color: $border-button-color-hover;
+  }
+
+  &__capacity__link {
+    color: $color-white;
+  }
+
+  &__capacity__position {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 56px;
+    height: 32px;
+    border: 1px solid $border-button-color;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $border-button-color-hover;
+    }
+
+    @include on-desktop{
+      width: 64px;
+      height: 32px;
+    }
+  }
+
+  &__capacity__action {
+    background-color: $border-button-color-hover;
+  }
+
+  &__price {
+    margin: 8px 0 16px;
+  }
+
+  &__cost {
+    @extend %mont-800;
+    
+    font-size: 32px;
+    line-height: 41px;
+    color: $border-button-color-hover;
+    margin-right: 8px
+  }
+
+  &__discount {
+    @extend %mont-500;
+
+    font-size: 22px;
+    line-height: 41px;
+    text-decoration: line-through;
+    color: $color-text-gray;
+  }
+
+
+  &__button {
+    height: 48px;
+    background-color: $border-button-color-hover;
+    border: none;
+    color: $color-white;
+    font-size: 14px;
+    cursor: pointer;
+    flex-grow: 2;
+    transition: all 0.3s;
+
+    @extend %mont-600;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0;
+    }
+
+    @include on-tablet {
+      width: 180px;
+      flex-grow: 0;
+    }
+
+    @include on-desktop {
+      width: 263px;
+    }
+  }
+
+  &__send {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__like {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;;
+    border: 1px solid $border-button-color;
+    cursor: pointer;
+    transition: all 0.3s;
+
+    &:hover {
+      border-color: $border-button-color-hover;
+    }
+  }
+
+  &__favorit {
+    display: block;
+    background-image:url(../../shared/headerImg/Favourit.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+    border: none;
+    background-color: inherit;
+
+    &__choose {
+      background-image:url(../../shared/img/Union.svg);
+    }
+  }
+
+  &__descriptin {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__display {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 320px;
+    }
+  }
+
+  &__part {
+    @extend %mont-600;
+
+    font-size: 12px;
+    color: $color-text-gray;
+  }
+
+  &__value {
+    @extend %mont-600;
+
+    font-size: 12px;
+  }
+
+  &__wraper {
+    display: block;
+
+    @include on-desktop {
+      display: grid;
+      grid-template-columns: repeat(24, 1fr,);
+    }
+  }
+}
+
+.specs {
+  @include on-desktop {
+    grid-column: 14 / 25;
+  }
+
+  &__title {
+    margin-bottom: 16px;
+  }
+
+  &__wraper {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__margin {
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      margin-bottom: 25px;
+    }
+  }
+
+  &__description {
+    @extend %mont-500;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $border-button-color-hover;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.about {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+    margin-bottom: 80px;
+  }
+
+  &__line {
+    width: 100%;
+    border: 1px solid $color-gray;
+
+    @include on-tablet {
+      grid-column: 1 / 6;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__name {
+    @extend %mont-700;
+
+    grid-column: 1 / 3;
+    font-size: 22px;
+    line-height: 30px;
+    color: $border-button-color-hover;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      font-weight: 800;
+    }
+  }
+
+  &__title {
+    @extend %mont-700;
+
+    font-size: 20px;
+    line-height: 25px;
+    color: $border-button-color-hover;
+    margin-bottom: 16px;
+  }
+
+  &__description {
+    margin-top: 32px;
+  }
+
+  &__text {
+    @extend %mont-500;
+
+    font-size: 14px;
+    line-height: 21px;
+    color: $header-text-color;
+  }
+}
+
+.is__add {
+  color: #27ae60;
+  background-color: $color-gray;
+
+  &:hover {
+    border-color: $border-button-color-hover;
+  }
+}

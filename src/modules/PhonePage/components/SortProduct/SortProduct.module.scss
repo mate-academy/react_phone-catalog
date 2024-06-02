@@ -1,0 +1,191 @@
+@import '../../../shared/utils-scss/variables';
+@import '../../../shared/utils-scss/font';
+@import '../../../shared/utils-scss/mixins';
+
+.phones__page {
+  &__location {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    background-image: url(../../../shared/headerImg/slider/Vector-right.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__plase {
+    @extend %mont-600;
+
+    font-size: 12px;
+    line-height: 15px;
+    color: $border-button-color;
+    align-items: flex-end;
+  }
+
+  &__home__img {
+    height: 16px;
+    width: 16px;
+    background-image: url('../../../shared/img/Home.svg');
+    background-repeat: no-repeat;
+    display: block;
+  }
+
+  &__title {
+    @extend %mont-800;
+
+    color: $border-button-color-hover;
+    font-size: 32px;
+    line-height: 41px;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      line-height: 56px;
+      font-size: 48px;
+    }
+  }
+
+  &__items {
+    @extend %mont-600;
+
+    line-height: 21px;
+    font-size: 14px;
+    color: $border-button-color;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__search {
+    display: flex;
+    gap: 16px;
+  }
+}
+
+.search {
+  &__product {
+    @extend %mont-700;
+
+    display: block;
+    font-size: 12px;
+    line-height: 15px;
+    color: $border-button-color;
+    margin-bottom: 4px;
+    width: 100%;
+
+    @include on-tablet {
+      width: max-content;
+    }
+  }
+
+  &__by {
+    @extend %mont-600;
+
+    font-size: 14px;
+    width: 100%;
+    height: 40px;
+    color: $border-button-color-hover;
+    background-color: inherit;
+    border: 1px solid $border-button-color;
+    padding: 0 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    margin-bottom: 4px;
+
+    &:hover {
+      border-color: $color-text-gray;
+    }
+
+    &:focus {
+      border-color: $border-button-color-hover;
+    }
+
+    @include on-tablet {
+      width: 187px;
+      height: 40px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+
+  &__arrow {
+    display: block;
+    height: 16px;
+    width: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image:url(../../../shared/headerImg/slider/Vector-left.svg);
+  }
+
+  &__down {
+    transform: rotate(90deg);
+  }
+
+  &__up {
+    transform: rotate(-90deg);
+  }
+
+  &__list {
+    width: 136px;
+    background-color: rgb(25, 26, 27);
+    border: 1px solid $color-gray;
+    padding: 8px 0;
+    position: absolute;
+    z-index: 4;
+    opacity: 1;
+    transition: all 0.3s;
+
+    @include on-tablet {
+      width: 176px;
+    }
+  }
+
+  &__item {
+    list-style: none;
+
+    cursor: pointer;
+    height: 32px;
+    margin: auto;
+    padding: 6px 0 5px 12px;
+
+    &:hover {
+      background-color: rgb(16, 17, 17);
+    }
+  }
+
+  &__name {
+    background-color: inherit;
+    width: 100%;
+    border: none;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-text-gray;
+    cursor: pointer;
+    text-align: start;
+
+    @extend %mont-500;
+
+    &:hover {
+      color: $border-button-color-hover;
+    }
+  }
+
+  &__is_active {
+    background-color: rgb(16, 17, 17);
+  }
+}
