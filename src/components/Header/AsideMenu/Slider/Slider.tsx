@@ -42,7 +42,11 @@ export const Slider: React.FC<Props> = ({ count }) => {
         style={{ transform: `translateX( -${count * width}px)` }}
         onMouseEnter={() => setAutoPlay(true)}
         onMouseLeave={() => setAutoPlay(false)}
-        onDragStart={() => setWidth(prev => prev + 1)}
+        onDragStart={e => {
+          if (e.clientX) {
+            setWidth(prev => prev + 1);
+          }
+        }}
         // onDragEnd={e => console.log('End', e.clientX)}
       >
         {!isMobile ? (
