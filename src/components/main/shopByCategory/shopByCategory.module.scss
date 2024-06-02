@@ -20,7 +20,7 @@
       height: 230px;
       margin-bottom: 24px;
 
-      &--phones {
+      &--products {
         background-color: violet;
       }
 
@@ -46,7 +46,8 @@
     &__paragraph {
       font-family: 'Montserrat', sans-serif;
       font-weight: 600;
-      font-size: 14px; line-height:  21px;
+      font-size: 14px;
+      line-height: 21px;
       color: #89939A;
     }
   }

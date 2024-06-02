@@ -2,12 +2,13 @@ import React, { useContext, useRef } from 'react';
 import styles from './Header.module.scss';
 // import { useBreakpoint } from '../../breakPoints/BreakPoint';
 import { ContextApp } from '../../appContext/AppContext';
+import { Link } from 'react-router-dom';
 
 // const NAVIGATION_OVER_640px = (
 //   <nav className={styles['header__nav']}>
 //     <ul className={styles[`header__nav__list`]}>
 //       <li className={styles[`header__nav__list__element`]}>Home</li>
-//       <li className={styles[`header__nav__list__element`]}>Phones</li>
+//       <li className={styles[`header__nav__list__element`]}>products</li>
 //       <li className={styles[`header__nav__list__element`]}>Tablets</li>
 //       <li className={styles[`header__nav__list__element`]}>Accessories</li>
 //     </ul>
@@ -50,16 +51,16 @@ export const Header: React.FC = () => {
 
           <ul className={styles[`header__burger_menu__list`]}>
             <li className={styles[`header__burger_menu__list__element`]}>
-              Home
+              <Link to={'/home'}>home</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              Phones
+              <Link to={'/products'}>products</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              Tablets
+              <Link to={'/Tablets'}>tablets</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              Accessories
+              <Link to={'/accessories'}>accessories</Link>
             </li>
           </ul>
 

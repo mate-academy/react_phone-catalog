@@ -1,7 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Product } from '../../types/Product';
 import styles from './Slider.module.scss';
 import { ProductCard } from '../productCard';
+import { ContextApp } from '../../../appContext/AppContext';
 
 type Props = {
   title: string;
@@ -9,30 +10,33 @@ type Props = {
 };
 
 export const Slider: React.FC<Props> = ({ title, discount }) => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const { products, productsTotalNumber } = useContext(ContextApp);
+  // const [products, setProducts] = useState<Product[]>([]);
   const [active, setActive] = useState(0);
-  const totalNumber = products.length;
+  // const productsTotalNumber = products.length;
 
-  useEffect(() => {
-    fetch('./api/products.json')
-      .then(response => response.json())
-      .then(setProducts)
-      .catch(err => {
-        throw new Error(err);
-      });
-  }, []);
+  // useEffect(() => {
+  //   fetch('./api/products.json')
+  //     .then(response => response.json())
+  //     .then(setProducts)
+  //     .catch(err => {
+  //       throw new Error(err);
+  //     });
+  // }, []);
 
   const handlerleft = () => {
     if (active < 0) {
-      setActive(totalNumber);
+      setActive(productsTotalNumber);
     }
-    setActive(prevState => (prevState - 1 + totalNumber) % totalNumber);
+    setActive(
+      prevState => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+    );
   };
   const handlerRight = () => {
-    if (active > totalNumber ) {
+    if (active > productsTotalNumber) {
       setActive(0);
     }
-    setActive(prevState => (prevState + 1) % totalNumber);
+    setActive(prevState => (prevState + 1) % productsTotalNumber);
     console.log(active);
   };
 
@@ -42,8 +46,14 @@ export const Slider: React.FC<Props> = ({ title, discount }) => {
         <div className={styles['brand_new_models__container']}>
           <h1 className={styles['brand_new_models__title']}>{title}</h1>
           <div className={styles['brand_new_models__button']}>
-            <div onClick={handlerleft} className={styles['brand_new_models__button__left']}></div>
-            <div onClick={handlerRight} className={styles['brand_new_models__button__right']}></div>
+            <div
+              onClick={handlerleft}
+              className={styles['brand_new_models__button__left']}
+            ></div>
+            <div
+              onClick={handlerRight}
+              className={styles['brand_new_models__button__right']}
+            ></div>
           </div>
         </div>
 

@@ -1,10 +1,10 @@
 import React from 'react';
-import styles from './Main.module.scss';
+import styles from './Home.module.scss';
 import { SectionDashSlider } from './sectionDashSlider';
 import { Slider } from './slider';
 import { ShopByCategory } from './shopByCategory/shopByCategory';
 
-export const Main: React.FC = () => {
+export const Home: React.FC = () => {
   return (
     <div className={styles['main']}>
       <SectionDashSlider />

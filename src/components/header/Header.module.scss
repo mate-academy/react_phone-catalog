@@ -4,6 +4,7 @@
   justify-content: space-between;
   width: 100vw;
   border-bottom: 1px solid #E2E6E9;
+  font-family: 'Montserrat', sans-serif;
   transition: all 0.6s ease-in-out;
 
   &__container--1,
@@ -21,7 +22,7 @@
     height: 100vh;
     width: 100vw;
     bottom: 0;
-    overflow: hidden;
+    overflow: auto;
     right: 0;
     z-index: 10;
     background-color: #FFF;
@@ -32,7 +33,7 @@
       display: flex;
       justify-content: space-between;
       height: 48px;
-      width: 100vw;
+      width: 100%;
       border-bottom: 1px solid #E2E6E9;
 
       &__close {
@@ -41,7 +42,6 @@
         background-image: url(../../../public/img/svg/close_burger.svg);
         background-position: center;
         background-repeat: no-repeat;
-        background-color: #89939A;
       }
     }
 
@@ -52,10 +52,14 @@
       justify-content: space-between;
       height: 156px;
       width: 288px;
-      margin-bottom: 200px;
+      margin-bottom: 160px;
 
       &__element {
-
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        font-size: 12px;
+        font-weight: 800;
+        color: #89939A;
       }
 
     }
@@ -67,7 +71,7 @@
 
       &__fav {
         width: 50%;
-        height: 100%;
+        height: 64px;
         background-image: url(../../../public/img/svg/fav_icon.svg);
         background-position: center;
         background-repeat: no-repeat;
@@ -76,7 +80,7 @@
 
       &__cart {
         width: 50%;
-        height: 100%;
+        height: 64px;
         background-image: url(../../../public/img/svg/Shopping_bag_Cart.svg);
         background-position: center;
         background-repeat: no-repeat;
