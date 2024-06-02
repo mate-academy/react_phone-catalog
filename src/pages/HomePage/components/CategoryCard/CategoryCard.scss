@@ -13,6 +13,8 @@
     width: 100%;
     height: 100%;
     object-fit: contain;
+
+    transition: all 0.3s ease-in-out;
   }
 
   &__info {
@@ -38,5 +40,13 @@
     text-align: left;
 
     color: $color-secondary;
+  }
+
+  &:hover {
+    .category__image {
+      transform: scale(1.02);
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
   }
 }
