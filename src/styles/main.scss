@@ -30,6 +30,10 @@
   padding: $side-padding-16;
   box-sizing: border-box;
 
+  @include for-tablet {
+    padding: $side-padding-24;
+  }
+
   &--full-width {
     padding: 0;
   }
