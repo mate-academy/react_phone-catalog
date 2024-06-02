@@ -1,0 +1,134 @@
+@import '../../Global';
+
+.homePageSlider {
+  &__container {
+    @include phone-style {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__h1 {
+    @include h1-style;
+
+    display: none;
+
+    &--desktop {
+      @include desktop-style {
+        display: block;
+        margin-bottom: 56px;
+      }
+    }
+
+    &--tablet {
+      @include tablet-style {
+        margin-bottom: 32px;
+        display: block;
+      }
+
+      @include phone-style {
+        display: block;
+        margin-bottom: 24px;
+        font-size: 32px;
+        line-height: 41px;
+      }
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    overflow: hidden;
+    margin-bottom: 8px;
+  }
+
+  &__pic-box {
+    position: relative;
+
+    --width-picbox: 1040px;
+    --height-picbox: 400px;
+    
+    width: var(--width-picbox);
+    height: var(--height-picbox);
+
+    @include tablet-style {
+      width: calc(var(--width-picbox) / 2.2);
+      height: calc(var(--height-picbox) / 2);
+    }
+
+    @include phone-style {
+      width: 320px;
+      height: 320px;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    width:100%;
+    height: 100%;
+    z-index: 10;
+
+    @include phone-style {
+      width: fit-content;
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 400px;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--icon-color);
+    background-color: var(--white);
+    
+    @include tablet-style {
+      height: 189px;
+    }
+
+    @include phone-style {
+      display: none;
+    }
+  }
+
+  &__button:hover {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__arr {
+    display: inline-block;
+    padding: 2.5px;
+    border: solid var(--primary-color);
+    border-width: 0 2px 2px 0;
+
+    &--right {  
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+    &--left {  
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: var(--elements-color);
+
+    &.is-active {
+      background-color: var(--primary-color);
+    }
+  }
+}

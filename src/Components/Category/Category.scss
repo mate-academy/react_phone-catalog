@@ -1,0 +1,104 @@
+@import '../../Global';
+
+.category {
+  &__title {
+    margin-bottom: 24px;
+
+    @include h1-style;
+
+    @include phone-style {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 18px;
+
+    @include phone-style {
+      flex-direction: column;
+      justify-content: center;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+
+  &__image-box {
+    --item-size: 368px;
+  
+    width: var(--item-size);
+    height: var(--item-size);
+    position: relative;
+    margin-bottom: 24px;
+    overflow: hidden;
+
+
+  @include tablet-style {
+    width: calc(var(--item-size) / 2.1); 
+    height: calc(var(--item-size) / 2.5); 
+  }
+
+  @include phone-style {
+    width: 288px; 
+    height: 288px; 
+  }
+    
+
+    &--phones {
+      background-color: #FCDBC1;
+    }
+
+    &--tablets {
+      background-color: #8D8D92;
+    }
+
+    &--acccessories {
+      background-color: #973D5F;
+      ;
+    }
+  }
+
+  &__img {
+    position: absolute;
+    
+    &--phones {
+      width: 386px;
+      height: 457px;
+      left: 73px;
+      top: 8px;
+    }
+
+    &--tablets {
+      width: 386px;
+      height: 457px;
+      left: 22px;
+      top: 27px;
+
+    }
+
+    &--acccessories {
+      width: 180%;
+      height: 100%;
+      left: 37px;
+      top: 50px;
+    }
+  }
+
+  &__link {
+    margin-bottom: 4px;
+    text-decoration: none;
+    
+    @include h3-style;
+  }
+
+  &__descr {
+    @include body-text14;
+
+    color: var(--secondary-color);
+  }
+}

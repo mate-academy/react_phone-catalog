@@ -1,0 +1,31 @@
+@import '../../Global';
+
+.favoritesPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    
+    @include sizing-items;
+  }
+
+  &__amount {
+    @include body-text14;
+
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+  }
+
+  &__h1 {
+    @include h1-style;
+    
+    margin-bottom: 8px;
+  }
+
+  &__empty {
+    @include h1-style;
+  }
+}

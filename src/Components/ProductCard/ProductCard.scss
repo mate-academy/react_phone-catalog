@@ -1,0 +1,147 @@
+@import '../../Global';
+
+$card-width: 272px;
+
+.cardsContainer__card {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+
+.card {
+  width: $card-width;
+  height: 503px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--elements-color);
+  box-sizing: border-box;
+  background-color: var(--card-color);
+
+  &__link {
+    text-decoration: none;
+  }
+ 
+  &__list {
+    padding: 24px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__item:not(:last-child) {
+    margin-bottom: 16px;
+  }
+
+  &__item:first-child {
+    border-bottom: var(--elements-color) solid  ;
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 208px;
+    height: 208px;
+  }
+
+  &__icon-image {
+    height: 95%;
+  }
+
+  &__theme {
+    margin-bottom: 6.5px;
+    width: 224px;
+    height: 42px;
+
+    @include body-text14;
+  }
+
+  &__price {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 6.5px;
+
+    &--discPrice {
+      @include h2-style;
+    }
+
+    &--hotPrices, &--alsoLike {
+      font-family: Mont, sans-serif;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      color: var(--secondary-color);
+      text-decoration: line-through;
+    }
+
+    &--brandNew {
+      @include h2-style;
+    }
+  }
+
+  &__char {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+
+    &--title {
+      @include smoll-text;
+    }
+
+    &--descr {
+      @include smoll-text;
+
+      color: var(--primary-color);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__button {
+    width: 176px;
+    height: 40px;
+
+    @include buttons;
+
+    &.added {
+      background-color: var(--white);
+      color: var(--primary-color);
+      border: 1px solid var(--elements-color);
+    }
+  }
+
+  &__button:hover {
+      box-shadow: 0 3px 13px 0 var(--hover-card);
+  }
+
+  &__favor {
+    width: 40px;
+    height: 39px;
+    display: flex;
+    flex-wrap: wrap;
+    place-content: center;
+    border: 1px solid var(--elements-color);
+    background-color: var(--icon-color);
+  }
+
+  &__favor:hover {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__favor-icon {
+    width: 15px;
+    height: 14px;
+  }
+}
+
+.card:hover {
+  box-shadow: 0 3px 13px 0 var(--hover-card);
+}
