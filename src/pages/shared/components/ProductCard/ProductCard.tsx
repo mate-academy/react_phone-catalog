@@ -46,9 +46,11 @@ export const ProductCard: React.FC<Props> = ({
           alt="Image of the product"
         />
       </Link>
+
       <Link to={`/product/${product.itemId}`} className="product__name-wrapper">
         <h3 className="product__name">{name}</h3>
       </Link>
+
       <div className="product__price-wrapper">
         <p className="product__price">${price}</p>
         {hasDiscount && (
