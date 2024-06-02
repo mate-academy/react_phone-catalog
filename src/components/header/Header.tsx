@@ -54,7 +54,7 @@ export const Header: React.FC = () => {
               <Link to={'/home'}>home</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              <Link to={'/products'}>products</Link>
+              <Link to={'/phones'}>phones</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
               <Link to={'/Tablets'}>tablets</Link>

@@ -16,6 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount }) => {
     ram,
     screen,
   } = product;
+  
   return (
     <div className={styles['productCard']}>
       <img

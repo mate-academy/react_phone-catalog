@@ -5,7 +5,8 @@ import { Header } from './components/header';
 import { useContext } from 'react';
 import { ContextApp } from './appContext/AppContext';
 import { NotFoundPage } from './components/notFoundPage';
-import { Home } from './components/main';
+import { Home } from './components/home';
+import { Phones } from './components/phones/Phones';
 
 export const App = () => {
   const { app } = useContext(ContextApp);
@@ -16,8 +17,8 @@ export const App = () => {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Navigate to="/" replace={true} />} />
-        {/* <Route path="/products" element={<products />} />
-        <Route path="/tablets" element={<Tablets />} />
+        <Route path="/phones" element={<Phones />} />
+        {/* <Route path="/tablets" element={<Tablets />} />
         <Route path="/accessories" element={<Accessories />} /> */}
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

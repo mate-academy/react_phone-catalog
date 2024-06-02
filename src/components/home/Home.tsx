@@ -6,9 +6,9 @@ import { ShopByCategory } from './shopByCategory/shopByCategory';
 
 export const Home: React.FC = () => {
   return (
-    <div className={styles['main']}>
+    <div className={styles['home']}>
       <SectionDashSlider />
-      <Slider title={'Brand new models'}/>
+      <Slider title={'Brand new models'} />
       <ShopByCategory />
       <Slider title={'Hot prices'} discount={true} />
     </div>

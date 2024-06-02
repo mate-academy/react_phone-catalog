@@ -1,0 +1,40 @@
+.phones {
+  font-family: 'Montserrat', sans-serif;
+
+  &__head {
+
+    &__title {
+      line-height: 32px;
+      font-size: 32px;
+      font-weight: 800;
+
+    }
+
+    &__paragraph {
+      font-size: 14px;
+      font-weight: 600;
+
+    }
+
+  }
+
+  &__filters {
+
+    &__sort {
+
+    }
+
+    &__items {
+
+    }
+
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    width: 288px;
+    align-items: center;
+    margin: 0 auto;
+  }
+};

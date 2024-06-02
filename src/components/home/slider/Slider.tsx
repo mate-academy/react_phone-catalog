@@ -11,18 +11,8 @@ type Props = {
 
 export const Slider: React.FC<Props> = ({ title, discount }) => {
   const { products, productsTotalNumber } = useContext(ContextApp);
-  // const [products, setProducts] = useState<Product[]>([]);
   const [active, setActive] = useState(0);
-  // const productsTotalNumber = products.length;
 
-  // useEffect(() => {
-  //   fetch('./api/products.json')
-  //     .then(response => response.json())
-  //     .then(setProducts)
-  //     .catch(err => {
-  //       throw new Error(err);
-  //     });
-  // }, []);
 
   const handlerleft = () => {
     if (active < 0) {
