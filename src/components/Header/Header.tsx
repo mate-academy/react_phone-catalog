@@ -103,6 +103,7 @@ export const Header = () => {
                   className={style.header__sliderButton}
                   onClick={handlePrev}
                   disabled={count === 0}
+                  onTouchEnd={handlePrev}
                 >
                   <ArrowLeft className={style.header__arrowIcon} />
                 </button>
@@ -124,6 +125,7 @@ export const Header = () => {
                   className={style.header__sliderButton}
                   onClick={handleNext}
                   disabled={count === 2}
+                  onTouchStart={handleNext}
                 >
                   <ArrowRight className={style.header__arrowIcon} />
                 </button>

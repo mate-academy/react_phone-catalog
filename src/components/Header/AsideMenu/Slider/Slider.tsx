@@ -15,10 +15,8 @@ type Props = {
 export const Slider: React.FC<Props> = ({ count }) => {
   const myRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(BreakPointsContext);
-  const { autoPlay, setAutoPlay } = useContext(StateContext);
+  const { setAutoPlay } = useContext(StateContext);
   const [width, setWidth] = useState(0);
-
-  console.log(autoPlay);
 
   const handleResize = useCallback(() => {
     if (myRef.current) {
