@@ -2,11 +2,17 @@
 @use '../../../../utils/mixins' as *;
 
 .product-page {
+  @include grid;
+
   &__favorites {
     grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
   }
 
-  &__empty {
-    grid-column: 1 / 5;
+  @include for-tablet {
+    grid-column: 1 / 13;
   }
 }
