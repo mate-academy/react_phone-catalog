@@ -2,7 +2,7 @@
 @import '../../styles/block/utils/_mixins.scss';
 
 .header {
-  height: 100vh;
+  // height: 100vh;
   @include transitionPage;
   &__top {
     display: flex;

@@ -19,15 +19,20 @@ import { DeskTopBannerImages } from '../../constant';
 export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
-  const {
-    openBurger,
-    setOpenBurger,
-    autoPlay,
-    count,
-    setCount,
-    handleNext,
-    handlePrev,
-  } = useContext(StateContext);
+  const { openBurger, setOpenBurger, autoPlay, count, setCount } =
+    useContext(StateContext);
+
+  function handleNext() {
+    if (count < 2) {
+      setCount(prevCount => prevCount + 1);
+    }
+  }
+
+  function handlePrev() {
+    if (count > 0) {
+      setCount(prevCount => prevCount - 1);
+    }
+  }
 
   function handleSmallButton(item: number) {
     setCount(item);
@@ -98,7 +103,6 @@ export const Header = () => {
                 <button
                   className={style.header__sliderButton}
                   onClick={handlePrev}
-                  disabled={count === 0}
                 >
                   <ArrowLeft className={style.header__arrowIcon} />
                 </button>
@@ -119,7 +123,6 @@ export const Header = () => {
                 <button
                   className={style.header__sliderButton}
                   onClick={handleNext}
-                  disabled={count === 2}
                 >
                   <ArrowRight className={style.header__arrowIcon} />
                 </button>

@@ -1,5 +1,5 @@
 import style from './Slider.module.scss';
-import { useContext, useRef, useState } from 'react';
+import { useCallback, useContext, useRef, useState } from 'react';
 import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
 import { StateContext } from '../../../../store/StateProvider';
 import { DeskTopBannerImages, MobileBannerImages } from '../../../../constant';
@@ -7,22 +7,28 @@ import { DeskTopBannerImages, MobileBannerImages } from '../../../../constant';
 export const Slider = () => {
   const myRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(BreakPointsContext);
-  const { setAutoPlay } = useContext(StateContext);
+  const { setAutoPlay, count, setCount } = useContext(StateContext);
   const [clientX, setClientX] = useState(0);
   const [clientXEnd, setClientXEnd] = useState(0);
-  const [count, setCount] = useState(0);
 
-  const handleMouseEvent = (startX: number, endX: number) => {
-    if (startX > endX && count !== DeskTopBannerImages.length - 1) {
-      setCount(prevCount => prevCount + 1);
-      setAutoPlay(false);
-    } else if (startX < endX && count !== 0) {
-      setCount(prevCount => prevCount - 1);
-      setAutoPlay(false);
-    }
-  };
+  const handleMouseEvent = useCallback(
+    (startX: number, endX: number, currentCount: number) => {
+      if (startX > endX && count !== DeskTopBannerImages.length - 1) {
+        setCount(count + 1);
+        setAutoPlay(false);
+      } else if (startX < endX && count !== 0) {
+        setCount(count - 1);
+        setAutoPlay(false);
+      }
 
-  handleMouseEvent(clientX, clientXEnd);
+      return currentCount;
+    },
+    [clientX],
+  );
+
+  console.log(clientX);
+
+  const position = handleMouseEvent(clientX, clientXEnd, count);
 
   // const handleResize = useCallback(() => {
   //   if (myRef.current) {
@@ -45,7 +51,7 @@ export const Slider = () => {
       <div
         ref={myRef}
         className={style.slider__container}
-        style={{ transform: `translateX( ${-100 * count}%)` }}
+        style={{ transform: `translateX( ${-100 * position}%)` }}
         onMouseEnter={() => setAutoPlay(false)}
         onMouseLeave={() => setAutoPlay(true)}
         onTouchStart={e => setClientX(e.touches[0].clientX)}
