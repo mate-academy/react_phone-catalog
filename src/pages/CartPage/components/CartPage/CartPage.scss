@@ -5,21 +5,41 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  padding: $side-padding-16;
 
+  padding: $side-padding-16;
   padding-top: 24px;
+
+  @include for-desktop {
+    @include grid;
+
+    align-items: start;
+  }
 
   &__top {
     grid-column: 1 / 5;
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
   }
 
   &__items {
     display: flex;
     flex-direction: column;
     gap: 24px;
+
+    @include for-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__total {
+    @include for-desktop {
+      grid-column: span 8;
+    }
   }
 }
 
