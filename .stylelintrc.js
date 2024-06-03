@@ -1,4 +1,7 @@
 module.exports = {
-  extends: "@mate-academy/stylelint-config",
-  rules: {}
+  extends: '@mate-academy/stylelint-config',
+  rules: {
+    'font-family-name-quotes': null,
+    'import-notation': 'url',
+  },
 };
