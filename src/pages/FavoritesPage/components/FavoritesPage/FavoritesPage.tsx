@@ -9,7 +9,7 @@ export const FavoritesPage: React.FC = () => {
 
   const favoritesCounterText =
     `${favoriteProducts.length} item` +
-    (favoriteProducts.length > 1 ? 's' : '');
+    (favoriteProducts.length !== 1 ? 's' : '');
 
   return (
     <main className="product-page">
@@ -31,7 +31,9 @@ export const FavoritesPage: React.FC = () => {
       </section>
 
       {!favoriteProducts.length ? (
-        <p className="body-text--14 product-page__empty">No favorites yet.</p>
+        <p className="body-text--14 product-page__empty section">
+          No favorites yet.
+        </p>
       ) : (
         <section className="favorites-products product-page__favorites section">
           <ProductsList products={favoriteProducts} />
