@@ -28,9 +28,11 @@ export const Slider = () => {
   const handleMouseEvent = (startX: number, endX: number) => {
     if (startX > endX && count !== 2) {
       setCount(prevCount => prevCount + 1);
+      setAutoPlay(true);
       // console.log('First Condition');
     } else if (startX < endX && count !== 0) {
       setCount(prevCount => prevCount - 1);
+      setAutoPlay(true);
       // console.log('Second Condition');
     }
   };
