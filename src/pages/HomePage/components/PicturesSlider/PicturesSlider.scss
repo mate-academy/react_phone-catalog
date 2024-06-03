@@ -15,7 +15,7 @@
   }
 
   @include for-desktop {
-    max-height: 400px;
+    height: 400px;
   }
 }
 
@@ -33,6 +33,10 @@
     padding-bottom: 32px;
     box-sizing: border-box;
     margin-bottom: 64px;
+  }
+
+  @include for-desktop {
+    height: 432px;
   }
 
   &__image {
@@ -56,6 +60,12 @@
       width: calc(100% - 102px);
       margin: 0 auto;
     }
+
+    @include for-tablet {
+      height: 432px;
+      width: calc(100% - 102px);
+      margin: 0 auto;
+    }
   }
 
   .slick-dots {
@@ -66,6 +76,11 @@
     @include for-tablet {
       left: 0;
       bottom: 4px;
+    }
+
+    @include for-desktop {
+      left: 0;
+      bottom: 6px;
     }
   }
 
@@ -98,6 +113,10 @@
       transform: translate(0, 0);
       background-repeat: no-repeat;
       background-position: center;
+    }
+
+    @include for-desktop {
+      height: 400px;
     }
   }
 
