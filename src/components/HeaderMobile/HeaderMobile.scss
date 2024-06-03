@@ -56,6 +56,20 @@
 
   background-color: white;
   z-index: 9999;
+
+  transition: 1s all ease-in-out;
+}
+
+.render {
+  visibility: hidden;
+  transform: translate(100vw, 200px);
+  transition: all 0.3s ease-in;
+}
+
+.show {
+  visibility: visible;
+  transform: translate(0, 0);
+  transition: all 0.9s cubic-bezier(0.2, 0.8, 0.23, 0.99);
 }
 
 .menu-top {
