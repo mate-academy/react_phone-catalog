@@ -27,7 +27,6 @@ export const Slider: React.FC<Props> = ({ title, discount }) => {
       setActive(0);
     }
     setActive(prevState => (prevState + 1) % productsTotalNumber);
-    console.log(active);
   };
 
   return (

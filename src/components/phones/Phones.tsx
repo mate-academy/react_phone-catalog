@@ -20,10 +20,6 @@ export const Phones: React.FC = () => {
   const startFromElement = +itemsPerPage * activePage - +itemsPerPage;
   const endOnElement = Math.min(+itemsPerPage * activePage, phonesTotalNumber);
 
-  console.log('activePage z phones', activePage);
-  console.log('startFromElement', startFromElement);
-  console.log('endOnElement', endOnElement);
-
   const phonesOnPage =
     itemsPerPage === 'all'
       ? phones

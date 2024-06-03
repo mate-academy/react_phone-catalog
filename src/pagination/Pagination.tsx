@@ -19,14 +19,10 @@ export const Pagination: React.FC<Props> = ({
     pageNumber.push(i + 1);
   }
 
-  console.log('pageNumber', pageNumber)
-
   const [activeButtons, setActiveButtons] = useState({
     prev: activePage > 0,
     next: activePage === pagesTotalNumber,
   });
-
-  console.log('pagesTotalNumber', pagesTotalNumber)
 
   const handleDirectButton = (number: number) => {
     const newPage =
