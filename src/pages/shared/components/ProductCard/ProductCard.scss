@@ -9,8 +9,12 @@
   gap: 8px;
 
   box-sizing: border-box;
-  height: 439px;
+  width: 100%;
+
   min-width: 212px;
+
+  max-height: 621px;
+  max-width: 288px;
 
   padding: $padding-large;
 
@@ -23,9 +27,6 @@
 
     min-height: 506px;
     min-width: 229px;
-
-    max-height: 621px;
-    max-width: 288px;
   }
 
   &:hover {
