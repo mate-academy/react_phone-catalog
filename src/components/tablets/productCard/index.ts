@@ -1,0 +1,1 @@
+export { TabletCard } from './TabletCard';

@@ -1,12 +1,11 @@
 import { useContext, useMemo, useState } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
-
-import style from './Phones.module.scss';
+import style from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
-import { PhoneCard } from './productCard';
+import { TabletCard } from './productCard';
 
-export const Phones: React.FC = () => {
-  const { phonesTotalNumber, phones } = useContext(ContextApp);
+export const Tablets: React.FC = () => {
+  const {  tabletsTotalNumber, tablets } = useContext(ContextApp);
   const [selectedOption, setSortBy] = useState('Newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
@@ -15,16 +14,16 @@ export const Phones: React.FC = () => {
     if (itemsPerPage === 'all') {
       return 1;
     }
-    return Math.ceil(phonesTotalNumber / +itemsPerPage);
-  }, [phonesTotalNumber, itemsPerPage]);
+    return Math.ceil(tabletsTotalNumber / +itemsPerPage);
+  }, [tabletsTotalNumber, itemsPerPage]);
 
   const startFromElement = +itemsPerPage * activePage - +itemsPerPage;
-  const endOnElement = Math.min(+itemsPerPage * activePage, phonesTotalNumber);
+  const endOnElement = Math.min(+itemsPerPage * activePage, tabletsTotalNumber);
 
-  const phonesOnPage =
+  const tabletsOnPage =
     itemsPerPage === 'all'
-      ? phones
-      : phones.slice(startFromElement, endOnElement);
+      ? tablets
+      : tablets.slice(startFromElement, endOnElement);
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(e.target.value);
@@ -40,20 +39,20 @@ export const Phones: React.FC = () => {
   };
 
   return (
-    <div className={style['phones']}>
-      <div className={style['phones__head']}>
-        <h1 className={style['phones__head__title']}>Mobile phones</h1>
-        <p className={style['phones__head__paragraph']}>
-          {phonesTotalNumber} models
+    <div className={style['tablets']}>
+      <div className={style['tablets__head']}>
+        <h1 className={style['tablets__head__title']}>Mobile tablets</h1>
+        <p className={style['tablets__head__paragraph']}>
+          {tabletsTotalNumber} models
         </p>
       </div>
 
-      <div className={style['phones__filters']}>
-        <div className={style['phones__filters__sort']}>
-          <p className={style['phones__filters__sort__paragraph']}>Sort by</p>
+      <div className={style['tablets__filters']}>
+        <div className={style['tablets__filters__sort']}>
+          <p className={style['tablets__filters__sort__paragraph']}>Sort by</p>
 
           <select
-            className={style['phones__filters__sort__select']}
+            className={style['tablets__filters__sort__select']}
             value={selectedOption}
             onChange={handleChangeSort}
           >
@@ -63,13 +62,13 @@ export const Phones: React.FC = () => {
           </select>
         </div>
 
-        <div className={style['phones__filters__items']}>
-          <p className={style['phones__filters__items__paragraph']}>
+        <div className={style['tablets__filters__items']}>
+          <p className={style['tablets__filters__items__paragraph']}>
             Items on page
           </p>
 
           <select
-            className={style['phones__filters__items__select']}
+            className={style['tablets__filters__items__select']}
             value={itemsPerPage}
             onChange={handleChangeItems}
           >
@@ -81,13 +80,13 @@ export const Phones: React.FC = () => {
         </div>
       </div>
 
-      <div className={style['phones__container']}>
-        {phonesOnPage.map(phone => {
-          return <PhoneCard key={phone.id} product={phone} />;
+      <div className={style['tablets__container']}>
+        {tabletsOnPage.map(phone => {
+          return <TabletCard key={phone.id} product={phone} />;
         })}
       </div>
 
-      <div className={style['phones__choose_page']}>
+      <div className={style['tablets__choose_page']}>
         <Pagination
           pagesTotalNumber={pagesTotalNumber}
           activePage={activePage}
