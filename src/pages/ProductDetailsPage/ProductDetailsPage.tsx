@@ -137,7 +137,7 @@ export const ProductDetailsPage: React.FC = () => {
     setIsLoadingProduct(false);
   }, [foundProduct, productId]);
 
-  if (isLoadingProduct === false && !displayedProduct) {
+  if (!isLoadingProduct && !displayedProduct) {
     return (
       <p className="product-not-found body-text--14">
         Product doesn&apos;t exist{' '}

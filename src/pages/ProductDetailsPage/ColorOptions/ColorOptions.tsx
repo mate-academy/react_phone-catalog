@@ -16,9 +16,13 @@ export const ColorOptions: React.FC<Props> = ({
 
   const currentColor = displayedProduct.color;
 
+  const urlColors = [...colorsAvailable].map((color: string) =>
+    color.replaceAll(' ', '-'),
+  );
+
   return (
     <ul className="colors-list">
-      {colorsAvailable.map((color: string) => (
+      {urlColors.map((color: string) => (
         <li
           key={color}
           className={cn('colors-list__item', {
