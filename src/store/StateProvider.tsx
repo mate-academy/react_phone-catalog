@@ -28,7 +28,7 @@ export const StateContext = React.createContext<StateType>({
 
 export const StateProvider: React.FC<Props> = ({ children }) => {
   const [openBurger, setOpenBurger] = useState(false);
-  const [autoPlay, setAutoPlay] = useState(false);
+  const [autoPlay, setAutoPlay] = useState(true);
   const [count, setCount] = useState(0);
 
   function handleNext() {

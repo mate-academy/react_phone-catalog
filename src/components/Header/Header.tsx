@@ -14,11 +14,11 @@ import { ArrowRight } from '../Logo/ArrowRight';
 import { Slider } from './AsideMenu/Slider/Slider';
 import classNames from 'classnames';
 import { StateContext } from '../../store/StateProvider';
+import { DeskTopBannerImages } from '../../constant';
 
 export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
-  // const [count, setCount] = useState(0);
   const {
     openBurger,
     setOpenBurger,
@@ -34,16 +34,16 @@ export const Header = () => {
   }
 
   useEffect(() => {
-    if (!autoPlay) {
+    if (autoPlay) {
       const intervalId = setInterval(() => {
         setCount(prevCount => {
-          if (prevCount + 1 > 2) {
+          if (prevCount + 1 > DeskTopBannerImages.length - 1) {
             return 0;
           } else {
             return prevCount + 1;
           }
         });
-      }, 3000);
+      }, 10000);
 
       return () => clearInterval(intervalId);
     } else {
@@ -99,19 +99,18 @@ export const Header = () => {
                   className={style.header__sliderButton}
                   onClick={handlePrev}
                   disabled={count === 0}
-                  onTouchEnd={handlePrev}
                 >
                   <ArrowLeft className={style.header__arrowIcon} />
                 </button>
               )}
               <Slider />
               <div className={style.header__containerSmallBtn}>
-                {[0, 1, 2].map(item => (
+                {DeskTopBannerImages.map((_, index) => (
                   <span
-                    key={item}
-                    onClick={() => handleSmallButton(item)}
+                    key={index}
+                    onClick={() => handleSmallButton(index)}
                     className={classNames(style.header__smallButton, {
-                      [style.header__activeButton]: count === item,
+                      [style.header__activeButton]: count === index,
                     })}
                   ></span>
                 ))}
@@ -121,7 +120,6 @@ export const Header = () => {
                   className={style.header__sliderButton}
                   onClick={handleNext}
                   disabled={count === 2}
-                  onTouchStart={handleNext}
                 >
                   <ArrowRight className={style.header__arrowIcon} />
                 </button>

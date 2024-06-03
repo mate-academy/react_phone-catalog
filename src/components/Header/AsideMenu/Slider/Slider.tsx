@@ -1,92 +1,77 @@
 import style from './Slider.module.scss';
-import first from '../../../../image/BannerImage/first.png';
-import second from '../../../../image/BannerImage/phone-bunner.jpg';
-import third from '../../../../image/BannerImage/phone-third.png';
-import secondPortrait from '../../../../image/BannerImage/portrain-second.jpg';
-import thirdPortrait from '../../../../image/BannerImage/phone-four.webp';
-import {
-  // MouseEvent,
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import { useContext, useRef, useState } from 'react';
 import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
 import { StateContext } from '../../../../store/StateProvider';
+import { DeskTopBannerImages, MobileBannerImages } from '../../../../constant';
 
 export const Slider = () => {
   const myRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(BreakPointsContext);
-  const { setAutoPlay, count, setCount } = useContext(StateContext);
-  const [width, setWidth] = useState(0);
+  const { setAutoPlay } = useContext(StateContext);
   const [clientX, setClientX] = useState(0);
   const [clientXEnd, setClientXEnd] = useState(0);
-  // console.log(clientX);
-  // console.log('clientXEnd', clientXEnd);
+  const [count, setCount] = useState(0);
 
   const handleMouseEvent = (startX: number, endX: number) => {
-    if (startX > endX && count !== 2) {
+    if (startX > endX && count !== DeskTopBannerImages.length - 1) {
       setCount(prevCount => prevCount + 1);
-      setAutoPlay(true);
-      // console.log('First Condition');
+      setAutoPlay(false);
     } else if (startX < endX && count !== 0) {
       setCount(prevCount => prevCount - 1);
-      setAutoPlay(true);
-      // console.log('Second Condition');
+      setAutoPlay(false);
     }
   };
 
-  useEffect(() => {
-    handleMouseEvent(clientX, clientXEnd);
-  }, [clientX, clientXEnd]);
+  handleMouseEvent(clientX, clientXEnd);
 
-  const handleResize = useCallback(() => {
-    if (myRef.current) {
-      setWidth(myRef.current.offsetWidth);
-    }
-  }, [myRef]);
+  // const handleResize = useCallback(() => {
+  //   if (myRef.current) {
+  //     setWidth(myRef.current.offsetWidth);
+  //   }
+  // }, [myRef]);
 
-  useEffect(() => {
-    window.addEventListener('load', handleResize);
-    window.addEventListener('resize', handleResize);
+  // useEffect(() => {
+  //   window.addEventListener('load', handleResize);
+  //   window.addEventListener('resize', handleResize);
 
-    return () => {
-      window.removeEventListener('load', handleResize);
-      window.removeEventListener('resize', handleResize);
-    };
-  }, [myRef, handleResize]);
+  //   return () => {
+  //     window.removeEventListener('load', handleResize);
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [myRef, handleResize]);
 
   return (
     <div className={style.slider}>
       <div
         ref={myRef}
         className={style.slider__container}
-        style={{ transform: `translateX( -${count * width}px)` }}
-        onMouseEnter={() => setAutoPlay(true)}
-        onMouseLeave={() => setAutoPlay(false)}
+        style={{ transform: `translateX( ${-100 * count}%)` }}
+        onMouseEnter={() => setAutoPlay(false)}
+        onMouseLeave={() => setAutoPlay(true)}
         onTouchStart={e => setClientX(e.touches[0].clientX)}
         onTouchEnd={e => setClientXEnd(e.changedTouches[0].clientX)}
       >
         {!isMobile ? (
           <>
-            <img src={first} alt="Banner" className={style.slider__image} />
-            <img src={second} alt="Banner" className={style.slider__image} />
-            <img src={third} alt="Banner" className={style.slider__image} />
+            {DeskTopBannerImages.map(item => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt="Banner"
+                className={style.slider__image}
+              />
+            ))}
           </>
         ) : (
           <>
-            <img src={first} alt="Banner" className={style.slider__image} />
-            <img
-              src={secondPortrait}
-              alt="Banner"
-              className={style.slider__image}
-            />
-            <img
-              src={thirdPortrait}
-              alt="Banner"
-              className={style.slider__image}
-            />
+            {MobileBannerImages.map(item => (
+              <img
+                key={item.src}
+                src={item.src}
+                alt="Banner"
+                className={style.slider__image}
+              />
+            ))}
           </>
         )}
       </div>
