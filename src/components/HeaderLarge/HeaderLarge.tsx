@@ -1,59 +1,61 @@
 import { Link, NavLink } from 'react-router-dom';
+import classNames from 'classnames';
 import './HeaderLarge.scss';
 import '../../styles/main.scss';
-import classNames from 'classnames';
 
 export const HeaderLarge: React.FC = () => {
   return (
     <header className="header-large" id="header">
-      <Link to="/" className="header-large__logo">
-        <img src="./icons/logo.svg" alt="logo" />
-      </Link>
+      <div className="header-left header-large__left">
+        <Link to="/" className="header-left__logo">
+          <img src="./icons/logo.svg" alt="logo" />
+        </Link>
 
-      <div className="header-large__categories">
-        <NavLink
-          className={({ isActive }) =>
-            classNames('header-large__category-link', 'uppercase', {
-              'header-large__category-link--active': isActive,
-            })
-          }
-          to="/"
-        >
-          Home
-        </NavLink>
+        <div className="header-left__categories">
+          <NavLink
+            className={({ isActive }) =>
+              classNames('header-left__category-link', 'uppercase', {
+                'header-left__category-link--active': isActive,
+              })
+            }
+            to="/"
+          >
+            Home
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) =>
-            classNames('header-large__category-link', 'uppercase', {
-              'header-large__category-link--active': isActive,
-            })
-          }
-          to="/phones"
-        >
-          Phones
-        </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('header-left__category-link', 'uppercase', {
+                'header-left__category-link--active': isActive,
+              })
+            }
+            to="/phones"
+          >
+            Phones
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) =>
-            classNames('header-large__category-link', 'uppercase', {
-              'header-large__category-link--active': isActive,
-            })
-          }
-          to="tablets"
-        >
-          Tablets
-        </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('header-left__category-link', 'uppercase', {
+                'header-left__category-link--active': isActive,
+              })
+            }
+            to="tablets"
+          >
+            Tablets
+          </NavLink>
 
-        <NavLink
-          className={({ isActive }) =>
-            classNames('header-large__category-link', 'uppercase', {
-              'header-large__category-link--active': isActive,
-            })
-          }
-          to="accessories"
-        >
-          Accessories
-        </NavLink>
+          <NavLink
+            className={({ isActive }) =>
+              classNames('header-left__category-link', 'uppercase', {
+                'header-left__category-link--active': isActive,
+              })
+            }
+            to="accessories"
+          >
+            Accessories
+          </NavLink>
+        </div>
       </div>
 
       <div className="header-large__user-products">
