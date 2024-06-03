@@ -58,9 +58,6 @@
     gap: $gap-xl;
   }
 
-  // &__logo {
-  // }
-
   &__categories {
     display: flex;
     gap: $gap-large;
@@ -86,8 +83,6 @@
     border: none;
 
     &--active {
-      // border-bottom: 3px solid $color-primary;
-
       &::after {
         content: '';
 

@@ -2,12 +2,6 @@
 @use '../../../utils/variables' as *;
 
 .product-list {
-  // display: flex;
-  // flex-wrap: wrap;
-  // gap: 16px;
-  // justify-content: center;
-  // align-items: center;
-
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
 

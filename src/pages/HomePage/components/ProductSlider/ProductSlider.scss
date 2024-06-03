@@ -2,8 +2,6 @@
 @use '../../../../utils/variables' as *;
 
 .product-slider {
-  // @include grid;
-
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -14,10 +12,6 @@
 
   row-gap: 24px;
   overflow: hidden;
-
-  // &__top {
-  //   grid-column: 1 / 5;
-  // }
 }
 
 .slider-top {
@@ -37,8 +31,6 @@
   }
 
   &__title {
-    // width: 136px;
-
     font-family: $font-family;
     font-size: 22px;
     font-weight: 800;
@@ -83,8 +75,4 @@
   @include for-desktop {
     padding: 0;
   }
-
-  // &__container {
-  //   width: 212px;
-  // }
 }
