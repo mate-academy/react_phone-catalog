@@ -163,17 +163,17 @@
 
     flex-grow: 1;
 
-    border: 1px solid transparent;
+    border: none;
 
-    color: #fff;
+    color: $color-white;
     background-color: $color-primary;
     white-space: nowrap;
+    transition: all 0.2s ease-in-out;
 
     &:hover {
       cursor: pointer;
-      color: $color-green;
-      background-color: $color-white;
-      border: 1px solid $color-elements;
+      box-shadow: 0 3px 13px 0 #17203166;
+      transition: all 0.2s ease-in-out;
     }
 
     &--added {
