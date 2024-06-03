@@ -26,7 +26,8 @@ export const ColorOptions: React.FC<Props> = ({
         <li
           key={color}
           className={cn('colors-list__item', {
-            'colors-list__item--active': color === currentColor,
+            'colors-list__item--active':
+              color === currentColor.replaceAll(' ', '-'),
           })}
         >
           <Link

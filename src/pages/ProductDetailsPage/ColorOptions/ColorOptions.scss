@@ -17,8 +17,11 @@
     border: 1px solid $color-elements;
     padding: 2px;
 
+    transition: 0.2s all ease-in-out;
+
     &:hover {
       border-color: $color-icons-placeholders;
+      transition: 0.15s all ease-in-out;
     }
 
     &--active {
