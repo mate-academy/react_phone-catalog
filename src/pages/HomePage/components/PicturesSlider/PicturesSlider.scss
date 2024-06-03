@@ -13,6 +13,10 @@
     object-position: center center;
     object-fit: contain;
   }
+
+  @include for-desktop {
+    max-height: 400px;
+  }
 }
 
 .banner-container {

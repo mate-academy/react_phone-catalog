@@ -34,6 +34,10 @@
     padding: $side-padding-24;
   }
 
+  @include for-desktop {
+    padding: 0;
+  }
+
   &--full-width {
     padding: 0;
   }

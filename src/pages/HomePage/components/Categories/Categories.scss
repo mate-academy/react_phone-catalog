@@ -7,11 +7,19 @@
   grid-template-rows: auto;
   row-gap: 32px;
 
+  @include for-desktop {
+    padding: 0 !important;
+  }
+
   &__category-wrapper {
     grid-column: 1 / 5;
 
     @include for-tablet {
       grid-column: span 4;
+    }
+
+    @include for-desktop {
+      grid-column: span 8;
     }
   }
 }

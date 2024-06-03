@@ -8,6 +8,14 @@
     @include for-tablet {
       padding-top: 32px;
     }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  @include for-desktop {
+    @include grid;
   }
 }
 
@@ -40,6 +48,10 @@
       height: 221px;
 
       padding: $side-padding-24;
+    }
+
+    @include for-desktop {
+      padding: 0;
     }
   }
 
@@ -80,6 +92,10 @@
 
     @include for-tablet {
       grid-column: 1 / 10;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
     }
   }
 }

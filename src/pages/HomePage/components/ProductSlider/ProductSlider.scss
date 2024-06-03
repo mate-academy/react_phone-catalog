@@ -32,6 +32,10 @@
     padding: $side-padding-24;
   }
 
+  @include for-desktop {
+    padding: 0;
+  }
+
   &__title {
     // width: 136px;
 
@@ -70,10 +74,14 @@
   flex-wrap: nowrap;
   gap: 16px;
 
-  padding: 0 0 0 16px;
+  padding: 0 0 0 $padding-small;
 
   @include for-tablet {
-    padding: 0 0 0 24px;
+    padding: 0 0 0 $padding-medium;
+  }
+
+  @include for-desktop {
+    padding: 0;
   }
 
   // &__container {
