@@ -10,9 +10,13 @@
     @include for-tablet {
       grid-column: 1 / 13;
     }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
   }
 
   @include for-tablet {
-    grid-column: 1 / 13;
+    grid-column: span 12;
   }
 }
