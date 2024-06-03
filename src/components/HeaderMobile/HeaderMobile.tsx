@@ -88,7 +88,6 @@ export const HeaderMobile: React.FC = () => {
             </nav>
           </div>
 
-          {/* 64px height of top flex-grow: 1 */}
           <div className="menu-bottom menu__bottom">
             <Link
               to={'/favorites'}
