@@ -4,6 +4,10 @@
 .product-descriptions {
   @include grid;
 
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
   row-gap: 32px;
 
   &__top {

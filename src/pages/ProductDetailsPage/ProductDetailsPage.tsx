@@ -5,16 +5,16 @@ import { CartContext } from '../../context/AppContext';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
 import { CapacityOptions } from './CapacityOptions';
-import { HomeLink } from '../shared/components/HomeLink/HomeLink';
 import { ProductDescriptions } from './ProductDescriptions';
 import { TechSpecs } from './TechSpecs';
-import { FavoritesContext } from '../../context/FavoritesContext';
 import { BackLink } from '../shared/components/BackLink';
+import { HomeLink } from '../shared/components/HomeLink/HomeLink';
+import { FavoritesContext } from '../../context/FavoritesContext';
+import { getAllProducts } from '../../helpers/getAllProducts';
+import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
 import { Product } from '../../types/ProductCard';
 import { DetailedProduct } from '../../types/DetailedProduct';
 import { ProductCategories } from '../../types/ProductCategories';
-import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';
-import { getAllProducts } from '../../helpers/getAllProducts';
 import { DetailedProductKeys } from '../../types/DetailedProductKeys';
 import './ProductDetailsPage.scss';
 import '../../styles/main.scss';
@@ -182,7 +182,7 @@ export const ProductDetailsPage: React.FC = () => {
     <>
       {!isLoadingProduct && displayedProduct && (
         <main className="product-details">
-          <section className="product-content section">
+          <section className="product-content section product-details__top">
             <div className="product-content__top">
               <nav className="breadcrumbs product-content__breadcrumbs">
                 <div className="breadcrumbs__wrapper">
@@ -325,9 +325,13 @@ export const ProductDetailsPage: React.FC = () => {
             </div>
           </section>
 
-          <ProductDescriptions descriptions={description} />
+          <div className="product-details__descriptions">
+            <ProductDescriptions descriptions={description} />
+          </div>
 
-          <TechSpecs product={displayedProduct} />
+          <div className="product-details__tech-specs">
+            <TechSpecs product={displayedProduct} />
+          </div>
 
           <section className="product-details__products-slider">
             <ProductSlider title="You may also like" hasDiscount={true} />

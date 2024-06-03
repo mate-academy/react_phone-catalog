@@ -8,15 +8,41 @@
 
   padding-top: 24px;
   overflow: hidden;
+
+  @include for-desktop {
+    @include grid;
+
+    align-items: start;
+
+    grid-template-rows: auto auto auto;
+
+    &__top {
+      grid-column: span 24;
+    }
+
+    &__descriptions {
+      grid-column: 1 / 13;
+    }
+
+    &__tech-specs {
+      grid-column: 14 / 25;
+    }
+
+    &__products-slider {
+      grid-column: span 24;
+    }
+  }
 }
 
 .breadcrumbs {
-  // grid-column: 1 / 5;
-
   @include grid;
 
   grid-template-rows: auto auto;
   row-gap: 25px;
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
 
   &__wrapper {
     grid-column: 1 / 5;
@@ -79,9 +105,9 @@
 
   padding-top: 0;
 
-  // &__name {
-  //   grid-column: 1 / 5;
-  // }
+  @include for-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
 
   &__top {
     grid-column: 1 / 5;
@@ -90,8 +116,12 @@
     gap: 16px;
 
     @include for-tablet {
-      grid-column: 1 / 14;
+      grid-column: 1 / 13;
       grid-row: 1 / 2;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
     }
   }
 
@@ -101,6 +131,10 @@
     @include for-tablet {
       grid-column: 1 / 14;
       grid-row: 2 / 3;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
     }
   }
 }
@@ -125,6 +159,10 @@
       grid-column: 1 / 8;
       grid-row: 1 / 2;
     }
+
+    @include for-desktop {
+      grid-column: 1 / 13;
+    }
   }
 
   &__options-wrapper {
@@ -136,6 +174,10 @@
     @include for-tablet {
       grid-column: 8 / 13;
       grid-row: 1 / 2;
+    }
+
+    @include for-desktop {
+      grid-column: 14 / 25;
     }
   }
 
