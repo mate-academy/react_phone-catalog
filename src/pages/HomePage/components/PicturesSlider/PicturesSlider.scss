@@ -61,10 +61,8 @@
       margin: 0 auto;
     }
 
-    @include for-tablet {
+    @include for-desktop {
       height: 432px;
-      width: calc(100% - 102px);
-      margin: 0 auto;
     }
   }
 
