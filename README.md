@@ -1,5 +1,5 @@
 # React Product Catalog
-fbhdzb  чghbdgrhrxxx
+fbhdzb  чghbdgrhrxxxteeeest
 
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
