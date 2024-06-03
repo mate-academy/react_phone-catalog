@@ -41,7 +41,7 @@ export const Tablets: React.FC = () => {
   return (
     <div className={style['tablets']}>
       <div className={style['tablets__head']}>
-        <h1 className={style['tablets__head__title']}>Mobile tablets</h1>
+        <h1 className={style['tablets__head__title']}>Tablets</h1>
         <p className={style['tablets__head__paragraph']}>
           {tabletsTotalNumber} models
         </p>
