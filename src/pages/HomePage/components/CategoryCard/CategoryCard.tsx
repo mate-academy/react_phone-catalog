@@ -22,8 +22,10 @@ export const CategoryCard: React.FC<Props> = ({
           src={photoSrc}
           alt="Image of a product category"
         />
+
         <div className="category__info">
-          <h3 className="category__title">{title}</h3>
+          <h4 className="category__title title title--4">{title}</h4>
+
           <p className="category__amount">Models: {modelsAmount}</p>
         </div>
       </Link>

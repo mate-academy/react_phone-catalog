@@ -90,6 +90,14 @@
     font-weight: 700;
     line-height: 25.56px;
     text-align: left;
+
+    @include for-tablet {
+      // styleName: Desktop & Tablet/H3;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: left;
+    }
   }
 
   &--4 {
@@ -99,6 +107,14 @@
     font-weight: 700;
     line-height: 20.45px;
     text-align: left;
+
+    @include for-tablet {
+      // styleName: Desktop & Tablet/H4;
+      font-size: 20px;
+      font-weight: 600;
+      line-height: 25.56px;
+      text-align: left;
+    }
   }
 }
 

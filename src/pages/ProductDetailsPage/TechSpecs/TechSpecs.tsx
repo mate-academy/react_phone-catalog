@@ -22,7 +22,8 @@ export const TechSpecs: React.FC<Props> = ({ product }) => {
   return (
     <section className="tech-specs section">
       <div className="tech-specs__top">
-        <h3 className="tech-specs__title title--3">Tech specs</h3>
+        <h3 className="tech-specs__title title title--3">Tech specs</h3>
+
         <hr className="divider tech-specs__divider" />
       </div>
 
