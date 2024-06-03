@@ -4,20 +4,26 @@
 .main {
   flex-grow: 1;
 
+  @include for-tablet {
+    gap: 64px;
+  }
+
+  @include for-desktop {
+    @include grid;
+
+    row-gap: 80px;
+  }
+
   &__section {
     padding-top: 24px;
 
     @include for-tablet {
-      padding-top: 32px;
+      padding-top: $padding-large;
     }
 
     @include for-desktop {
       grid-column: span 24;
     }
-  }
-
-  @include for-desktop {
-    @include grid;
   }
 }
 
@@ -27,7 +33,15 @@
   gap: $gap-medium;
 
   @include for-tablet {
+    padding-top: $padding-large;
+
     gap: $gap-large;
+  }
+
+  @include for-desktop {
+    padding-top: $padding-2xl;
+
+    gap: $gap-2xl !important;
   }
 
   &__title {
