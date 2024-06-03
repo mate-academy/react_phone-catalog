@@ -1,8 +1,6 @@
 import Slider from 'react-slick';
 import { Link } from 'react-router-dom';
 import './PicturesSlider.scss';
-
-// Import css files for the carousel
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 

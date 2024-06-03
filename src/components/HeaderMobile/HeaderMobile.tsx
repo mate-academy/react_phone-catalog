@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 import { useEffect } from 'react';
+import classNames from 'classnames';
 import useOpenMenu from '../../hooks/useOpenMenu';
 import './HeaderMobile.scss';
 import '../../styles/main.scss';
-import classNames from 'classnames';
 
 export const HeaderMobile: React.FC = () => {
   const [isMenuOpen, hideMenu, showMenu] = useOpenMenu();

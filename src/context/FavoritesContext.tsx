@@ -1,7 +1,7 @@
 import { createContext } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/ProductCard';
 import { Favorites } from '../types/Favorites';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 
 type FavoritesContextType = {
   favoriteProducts: Favorites;

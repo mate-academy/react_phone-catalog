@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import './Pagination.scss';
-import classNames from 'classnames';
 
 type Props = {
   pagesTotal: number;
@@ -50,7 +49,7 @@ export const Pagination: React.FC<Props> = ({ pagesTotal, className = '' }) => {
   }, [currentPage, pagesList, visiblePages]);
 
   return (
-    <ul className={classNames('pagination', className)}>
+    <ul className={cn('pagination', className)}>
       <button
         className={cn('pagination__arrow', 'arrow-left', {
           'arrow-left--active': currentPage > 1,

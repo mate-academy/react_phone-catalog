@@ -1,12 +1,10 @@
 import { Link } from 'react-router-dom';
 import { useContext, useRef } from 'react';
+import classNames from 'classnames';
 import { CartContext } from '../../../../context/AppContext';
-
 import { Product } from '../../../../types/ProductCard';
-
 import './CartItem.scss';
 import '../../../../styles/main.scss';
-import classNames from 'classnames';
 
 type Props = {
   product: Product;

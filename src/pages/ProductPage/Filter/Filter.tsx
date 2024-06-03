@@ -2,8 +2,8 @@ import { useState } from 'react';
 import { SetURLSearchParams } from 'react-router-dom';
 import cn from 'classnames';
 import { Sort } from '../../../types/Sort';
-import './Filter.scss';
 import { FilterOption } from '../../../types/FilterOption';
+import './Filter.scss';
 
 export enum Pages {
   'four' = 4,

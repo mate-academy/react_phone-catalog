@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { ProductsList } from '../../../ProductPage/ProductsList';
-import { FavoritesContext } from '../../../../context/FavoritesContext';
 import { HomeLink } from '../../../shared/components/HomeLink/HomeLink';
+import { FavoritesContext } from '../../../../context/FavoritesContext';
 import './FavoritesPage.scss';
 
 export const FavoritesPage: React.FC = () => {

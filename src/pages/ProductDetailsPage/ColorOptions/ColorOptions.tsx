@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
 import { getNewColorUrl } from '../../../helpers/getNewColorUrl';
 import { theme } from '../../../helpers/colors';
 import { Color } from '../../../types/Color';
 import { DetailedProduct } from '../../../types/DetailedProduct';
 import './ColorOptions.scss';
-import cn from 'classnames';
 
 type Props = { colorsAvailable: string[]; displayedProduct: DetailedProduct };
 

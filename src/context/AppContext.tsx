@@ -1,7 +1,7 @@
 import { createContext, useCallback } from 'react';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/ProductCard';
 import { CartProducts } from '../types/CartProducts';
-import { useLocalStorage } from '../hooks/useLocalStorage';
 
 export type CartContextType = {
   cartProducts: CartProducts;

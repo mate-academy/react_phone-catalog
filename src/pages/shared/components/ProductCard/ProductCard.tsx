@@ -1,10 +1,10 @@
+import { useContext } from 'react';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { CartContext } from '../../../../context/AppContext';
+import { FavoritesContext } from '../../../../context/FavoritesContext';
 import { Product } from '../../../../types/ProductCard';
 import './ProductCard.scss';
-import { useContext } from 'react';
-import { CartContext } from '../../../../context/AppContext';
-import classNames from 'classnames';
-import { FavoritesContext } from '../../../../context/FavoritesContext';
 
 type Props = {
   product: Product;

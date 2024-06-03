@@ -1,7 +1,6 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import cn from 'classnames';
-import { CartContext } from '../../context/AppContext';
 import { ProductSlider } from '../HomePage/components/ProductSlider';
 import { ColorOptions } from './ColorOptions';
 import { CapacityOptions } from './CapacityOptions';
@@ -9,6 +8,7 @@ import { ProductDescriptions } from './ProductDescriptions';
 import { TechSpecs } from './TechSpecs';
 import { BackLink } from '../shared/components/BackLink';
 import { HomeLink } from '../shared/components/HomeLink/HomeLink';
+import { CartContext } from '../../context/AppContext';
 import { FavoritesContext } from '../../context/FavoritesContext';
 import { getAllProducts } from '../../helpers/getAllProducts';
 import { GetDetailedProducts } from '../../helpers/GetDetailedProducts';

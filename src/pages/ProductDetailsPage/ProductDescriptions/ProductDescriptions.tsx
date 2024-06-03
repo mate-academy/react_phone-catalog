@@ -1,6 +1,6 @@
+import { DescriptionPair } from '../../../types/DescriptionPair';
 import './ProductDescriptions.scss';
 import '../../../styles/main.scss';
-import { DescriptionPair } from '../../../types/DescriptionPair';
 
 type Props = {
   descriptions: DescriptionPair[];
