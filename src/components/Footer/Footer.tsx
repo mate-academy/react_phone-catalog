@@ -11,14 +11,16 @@ export const Footer: React.FC = () => {
 
       <nav className="footer-nav footer__nav">
         <a
-          href="https://github.com/olafchuszno/react_phone-catalog"
+          href="https://github.com/olafchuszno/react_phone-catalog/tree/develop"
           className="footer-nav__item"
         >
           Github
         </a>
+
         <a href="/" className="footer-nav__item">
           Contacts
         </a>
+
         <a href="/" className="footer-nav__item">
           Rights
         </a>
