@@ -17,13 +17,12 @@ export const PhoneCard: React.FC<Props> = ({ product, discount }) => {
     screen,
     images
   } = product;
-  console.log(images)
 
   return (
     <div className={styles['productCard']}>
       <img
         className={styles['productCard__picture']}
-        src={`./${product.images[0]}`}
+        src={`./${images[0]}`}
       />
       <p className={styles['productCard__product_name']}>{name}</p>
       {discount ? (

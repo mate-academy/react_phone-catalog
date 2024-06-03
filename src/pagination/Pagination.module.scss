@@ -1,0 +1,49 @@
+.pagination {
+  display: flex;
+  height: fit-content;
+  margin-bottom: 60px;
+
+  &__list {
+    width: 288px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    flex-wrap: wrap;
+
+    &__item {
+      font-size: 14px;
+      font-weight: 600;
+      color: #313237;
+      line-height: 32px;
+      text-align: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid #E2E6E9;
+
+      &__active {
+        background-color: #313237;
+        color: #FFF;
+      }
+
+      &__button_prev {
+        margin-right: 6px;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #E2E6E9;
+        background-image: url(../../public/img/svg/arrow_left_active.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+
+      &__button_next {
+        margin-left: 6px;
+        width: 32px;
+        height: 32px;
+        border: 1px solid #E2E6E9;
+        background-image: url(../../public/img/svg/arrow_right_active.svg);
+        background-position: center;
+        background-repeat: no-repeat;
+      }
+    }
+  }
+}
