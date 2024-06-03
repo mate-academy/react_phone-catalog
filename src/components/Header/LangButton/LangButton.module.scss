@@ -1,5 +1,5 @@
-@use '../../../styles/block/utils/variables.scss' as *;
-@import '../../../styles/block/utils/mixins.scss';
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/_mixins.scss';
 
 .language__button {
   display: flex;
@@ -13,4 +13,9 @@
   border: none;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+
+.language__button:hover {
+  transform: scale(1.1);
 }

@@ -11,7 +11,6 @@ html {
   font-size: 12px;
   font-weight: 800;
   color: $text-color;
-  margin: 0;
 }
 
 .page {
@@ -22,8 +21,8 @@ html {
   --border-color: #323542;
   --button-color: #323542;
   --button-slider-color: #3b3e4a;
-  background-color: var(--background-color);
 
+  background-color: var(--background-color);
   color: $text-color;
 }
 

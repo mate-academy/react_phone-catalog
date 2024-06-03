@@ -1,5 +1,5 @@
-@use '../../../styles/block/utils/variables.scss' as *;
-@import '../../../styles/block/utils/mixins.scss';
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/_mixins.scss';
 
 .menu {
   overflow: auto;
@@ -54,6 +54,7 @@
     margin-bottom: 16px;
     line-height: 16px;
     @include transitionPage;
+    @include onScale;
   }
 
   &__listLink {
@@ -101,10 +102,9 @@
   z-index: 1;
   opacity: 1;
   pointer-events: all;
-  // transform: translateY(100);
 }
 
-@media (max-width: 1199px) {
+@include onTablet {
   .menu {
     &__listLink {
       font-size: 14px;
@@ -112,7 +112,7 @@
   }
 }
 
-@media (max-width: 639px) {
+@include onPhone {
   .menu {
     &__listLink {
       font-size: 12px;
@@ -120,5 +120,3 @@
     }
   }
 }
-
-@include onHover('.menu__listItem');

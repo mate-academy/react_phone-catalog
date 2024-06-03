@@ -3,6 +3,7 @@ import { AsideMenu } from './components/Header/AsideMenu';
 import { useContext } from 'react';
 import { ThemeContext } from './store/ThemeProvider';
 import cn from 'classnames';
+import { Main } from './components/Main/Main';
 
 export const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -11,8 +12,8 @@ export const App = () => {
     <div className={cn({ page: theme })}>
       <Header />
       <AsideMenu />
+      <Main />
 
-      <main className={'background'}></main>
       <footer></footer>
     </div>
   );

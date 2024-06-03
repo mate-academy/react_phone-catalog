@@ -1,5 +1,5 @@
-@use '../../../styles/block/utils/variables.scss' as *;
-@import '../../../styles/block/utils/mixins.scss';
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/_mixins.scss';
 .nav {
   &__list {
     display: flex;
@@ -7,6 +7,7 @@
     padding: 0;
   }
   &__item {
+    @include onScale;
     @include transitionPage;
   }
 
@@ -23,11 +24,3 @@
     }
   }
 }
-
-// @include onTablet {
-//   .nav__item:not(:last-child) {
-//     padding-inline-end: 32px;
-//   }
-// }
-
-@include onHover('.nav__item');

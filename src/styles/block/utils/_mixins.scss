@@ -14,10 +14,8 @@
   transition: all 0.4s;
 }
 
-@mixin onHover($selector) {
-  #{$selector}:hover {
-    @content;
+@mixin onScale {
+  &:hover {
     transform: scale(1.1);
-
   }
 }

@@ -5,7 +5,7 @@ import { LogoCart } from '../Logo/LogoCart';
 import { NavList } from './NavList/NavList';
 import { LogoFavorites } from '../Logo/LogoFavorites';
 import style from './Header.module.scss';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logo/LogoBurger';
 import { LanguageContext } from '../../store/LanguageProvider';
@@ -18,20 +18,16 @@ import { StateContext } from '../../store/StateProvider';
 export const Header = () => {
   const { isLaptop, isMobile } = useContext(BreakPointsContext);
   const { t } = useContext(LanguageContext);
-  const [count, setCount] = useState(0);
-  const { openBurger, setOpenBurger, autoPlay } = useContext(StateContext);
-
-  function handleNext() {
-    if (count < 2) {
-      setCount(prevCount => prevCount + 1);
-    }
-  }
-
-  function handlePrev() {
-    if (count > 0) {
-      setCount(prevCount => prevCount - 1);
-    }
-  }
+  // const [count, setCount] = useState(0);
+  const {
+    openBurger,
+    setOpenBurger,
+    autoPlay,
+    count,
+    setCount,
+    handleNext,
+    handlePrev,
+  } = useContext(StateContext);
 
   function handleSmallButton(item: number) {
     setCount(item);
@@ -53,7 +49,7 @@ export const Header = () => {
     } else {
       return () => {};
     }
-  }, [autoPlay]);
+  }, [autoPlay, setCount]);
 
   return (
     <header className={style.header}>
@@ -108,7 +104,7 @@ export const Header = () => {
                   <ArrowLeft className={style.header__arrowIcon} />
                 </button>
               )}
-              <Slider count={count} />
+              <Slider />
               <div className={style.header__containerSmallBtn}>
                 {[0, 1, 2].map(item => (
                   <span

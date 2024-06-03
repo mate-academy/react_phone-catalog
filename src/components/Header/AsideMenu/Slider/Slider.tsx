@@ -5,7 +5,7 @@ import third from '../../../../image/BannerImage/phone-third.png';
 import secondPortrait from '../../../../image/BannerImage/portrain-second.jpg';
 import thirdPortrait from '../../../../image/BannerImage/phone-four.webp';
 import {
-  MouseEvent,
+  // MouseEvent,
   useCallback,
   useContext,
   useEffect,
@@ -15,47 +15,29 @@ import {
 import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
 import { StateContext } from '../../../../store/StateProvider';
 
-type Props = {
-  count: number;
-};
-
-export const Slider: React.FC<Props> = ({ count }) => {
+export const Slider = () => {
   const myRef = useRef<HTMLDivElement>(null);
   const { isMobile } = useContext(BreakPointsContext);
-  const { setAutoPlay } = useContext(StateContext);
+  const { setAutoPlay, count, setCount } = useContext(StateContext);
   const [width, setWidth] = useState(0);
-  const [startX, setStartX] = useState(0);
-  const [scrollLeft, setScrollLeft] = useState(0);
-  const [onMouseDown, setOnMouseDown] = useState(false);
-  console.log(startX);
-  console.log(onMouseDown);
+  const [clientX, setClientX] = useState(0);
+  const [clientXEnd, setClientXEnd] = useState(0);
+  // console.log(clientX);
+  // console.log('clientXEnd', clientXEnd);
 
-  const handleOnMouseDown = (e: MouseEvent<HTMLDivElement>) => {
-    setStartX(e.clientX);
-    setOnMouseDown(true);
-  };
-
-  const handleOnMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!onMouseDown || !myRef.current) {
-      return;
-    }
-
-    e.preventDefault();
-
-    const deltaX = (e.clientX - startX) * 0.115;
-
-    myRef.current.scrollLeft = scrollLeft - deltaX;
-  };
-
-  const handleOnMouseUp = () => {
-    setOnMouseDown(false);
-  };
-
-  const handleOnScroll = () => {
-    if (myRef.current) {
-      setScrollLeft(myRef.current.scrollLeft);
+  const handleMouseEvent = (startX: number, endX: number) => {
+    if (startX > endX && count !== 2) {
+      setCount(prevCount => prevCount + 1);
+      // console.log('First Condition');
+    } else if (startX < endX && count !== 0) {
+      setCount(prevCount => prevCount - 1);
+      // console.log('Second Condition');
     }
   };
+
+  useEffect(() => {
+    handleMouseEvent(clientX, clientXEnd);
+  }, [clientX, clientXEnd]);
 
   const handleResize = useCallback(() => {
     if (myRef.current) {
@@ -78,15 +60,11 @@ export const Slider: React.FC<Props> = ({ count }) => {
       <div
         ref={myRef}
         className={style.slider__container}
-        style={{ transform: `translateX( -${startX}px)` }}
+        style={{ transform: `translateX( -${count * width}px)` }}
         onMouseEnter={() => setAutoPlay(true)}
         onMouseLeave={() => setAutoPlay(false)}
-        onMouseDown={e => handleOnMouseDown(e)}
-        onMouseMove={e => handleOnMouseMove(e)}
-        onMouseUp={handleOnMouseUp}
-        onScroll={() => {
-          handleOnScroll();
-        }}
+        onTouchStart={e => setClientX(e.touches[0].clientX)}
+        onTouchEnd={e => setClientXEnd(e.changedTouches[0].clientX)}
       >
         {!isMobile ? (
           <>

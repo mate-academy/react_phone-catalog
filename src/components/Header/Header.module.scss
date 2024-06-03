@@ -1,8 +1,7 @@
-@use '../../styles/block/utils/variables.scss' as *;
-@import '../../styles/block/utils/mixins.scss';
+@use '../../styles/block/utils/_variables.scss' as *;
+@import '../../styles/block/utils/_mixins.scss';
 
 .header {
-  height: 100vh;
   @include transitionPage;
   &__top {
     display: flex;
@@ -66,6 +65,7 @@
   &__bottom {
     max-width: 1200px;
     margin: 0 auto;
+    margin-bottom: 80px;
   }
 
   &__content {
@@ -142,6 +142,7 @@
 
 @include onTablet {
   .header {
+    margin-bottom: 64px;
     &__top {
       height: 48px;
       margin-bottom: 32px;
@@ -155,6 +156,7 @@
       margin-left: 16px;
       height: 22px;
       width: 64px;
+      @include onScale;
     }
     &__actionsLink {
       height: 48px;
@@ -173,6 +175,7 @@
 
 @include onPhone {
   .header {
+    margin-bottom: 56px;
     &__actions__link {
       height: 48px;
       width: 48px;
@@ -194,5 +197,3 @@
     }
   }
 }
-
-// @include onHover('.header__logo');
