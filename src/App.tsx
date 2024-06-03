@@ -3,7 +3,7 @@ import './App.scss';
 
 export const App = () => {
   const [count, setCount] = useState(0);
-  const [value, setValue] = useState(3);
+  const [value, setValue] = useState(4);
 
   const increment = () => {
     setCount(prev => prev + value);
