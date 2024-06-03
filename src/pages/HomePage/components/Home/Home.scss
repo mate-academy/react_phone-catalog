@@ -2,6 +2,8 @@
 @use '../../../../utils/variables' as *;
 
 .main {
+  flex-grow: 1;
+
   &__section {
     padding-top: 24px;
 

@@ -9,6 +9,8 @@
   padding: $side-padding-16;
   padding-top: 24px;
 
+  flex-grow: 1;
+
   @include for-desktop {
     @include grid;
 

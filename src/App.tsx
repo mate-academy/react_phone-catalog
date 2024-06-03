@@ -10,10 +10,10 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { FavoritesPage } from './pages/FavoritesPage/components/FavoritesPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import HeaderLarge from './components/HeaderLarge/HeaderLarge';
-import './styles/main.scss';
-import './App.scss';
-import './utils/_reset.scss';
 import { useWindowDimensions } from './hooks/useWindowsDimensions';
+import './App.scss';
+import './styles/main.scss';
+import './utils/_reset.scss';
 
 export const App = () => {
   const [isMobile, setIsMobile] = useState(false);
@@ -33,7 +33,7 @@ export const App = () => {
   const { Phones, Tablets, Accessories } = ProductCategories;
 
   return (
-    <>
+    <div className="App">
       {isMobile ? <HeaderMobile /> : <HeaderLarge />}
 
       <Routes>
@@ -56,6 +56,6 @@ export const App = () => {
       </Routes>
 
       <Footer />
-    </>
+    </div>
   );
 };
