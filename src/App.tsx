@@ -16,7 +16,7 @@ export const App = () => {
   return (
     <div className="App">
       <h1>Product Catalog</h1>
-      <h2>DELEET THAT</h2>
+      <h2>DELEET THAT LATER</h2>
       <h2>{count}</h2>
       <input
         type="number"
