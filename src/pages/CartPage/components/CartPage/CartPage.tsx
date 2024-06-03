@@ -49,7 +49,7 @@ export const CartPage: React.FC = () => {
       </section>
 
       {!products.length ? (
-        <p className="cart-page__empty body-text--14">Your cart is empty</p>
+        <p className="cart-page__empty body-text--14">Your cart is empty.</p>
       ) : (
         <>
           <section className="cart-page__items section--full-width">

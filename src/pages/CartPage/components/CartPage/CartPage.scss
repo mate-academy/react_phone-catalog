@@ -14,6 +14,8 @@
   @include for-desktop {
     @include grid;
 
+    grid-template-rows: fit-content(100%) fit-content(100%);
+
     align-items: start;
   }
 
@@ -42,6 +44,11 @@
     @include for-desktop {
       grid-column: span 8;
     }
+  }
+
+  &__empty {
+    font-weight: 700;
+    grid-column: span 8;
   }
 }
 
