@@ -90,7 +90,7 @@ export const ProductCard: React.FC<Props> = ({
             }
           }}
         >
-          {isProductInCart ? 'In cart' : 'Add to cart'}
+          {isProductInCart ? 'Added' : 'Add to cart'}
         </button>
         <button
           onClick={() => addToFavorites(product)}

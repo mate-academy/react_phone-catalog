@@ -159,15 +159,15 @@
     line-height: 21px;
     text-align: center;
     box-sizing: border-box;
+    height: 40px;
 
     flex-grow: 1;
-
-    height: 40px;
 
     border: 1px solid transparent;
 
     color: #fff;
     background-color: $color-primary;
+    white-space: nowrap;
 
     &:hover {
       cursor: pointer;
