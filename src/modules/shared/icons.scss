@@ -21,6 +21,10 @@
   &--close {
     box-shadow: none;
   }
+
+  @include on-desctop {
+    width: $header-height-desctop;
+  }
 }
 
 .icon {

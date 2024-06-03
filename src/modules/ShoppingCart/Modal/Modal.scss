@@ -1,0 +1,62 @@
+.modal {
+  height: 100vh;
+  width: 100vw;
+
+  position: fixed;
+  top: 0;
+
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 10;
+
+  @include padding-content-inline;
+
+  &__container {
+    width: 100%;
+    max-width: max-content;
+    height: max-content;
+    padding: 16px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+
+    background-color: #fff;
+    border-radius: 10px;
+
+    @include on-tablet {
+      padding: 24px;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+
+    gap: 50px;
+  }
+
+  &__button {
+    padding: 10px;
+
+    border-radius: 5px;
+    cursor: pointer;
+    border: 1px solid $border-color-default;
+
+    font-size: 16px;
+
+    &:hover {
+      border-color: $border-color-hover;
+    }
+  }
+}

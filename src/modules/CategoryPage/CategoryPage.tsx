@@ -133,7 +133,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
             )}
           </div>
         ) : (
-          <div className="loader">
+          <div className="category-page__loader">
             <Loader />
           </div>
         )}

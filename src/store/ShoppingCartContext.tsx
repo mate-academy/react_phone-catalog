@@ -1,10 +1,10 @@
 import React, { useMemo } from 'react';
 import { useLocalStorage } from '../modules/hooks/useLocalStorage';
-// import { ShoppingCartList } from '../types/ShoppingCartList';
+import { CartItem } from '../types/CartItem';
 
 type ContextType = {
-  shoppingList: string[];
-  setShoppingList: React.Dispatch<string[]>;
+  shoppingList: CartItem[];
+  setShoppingList: React.Dispatch<CartItem[]>;
 };
 
 export const ShoppingCartContext = React.createContext<ContextType>({
@@ -17,8 +17,8 @@ type Props = {
 };
 
 export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
-  const [shoppingList, setShoppingList] = useLocalStorage<string[]>(
-    'itemId',
+  const [shoppingList, setShoppingList] = useLocalStorage<CartItem[]>(
+    'CartItem',
     [],
   );
 

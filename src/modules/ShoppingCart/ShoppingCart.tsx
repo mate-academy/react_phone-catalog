@@ -1,40 +1,28 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ShoppingCartContext } from '../../store/ShoppingCartContext';
 import { ShoppingItem } from './ShoppingItem';
 import { BackButton } from '../shared/Buttons/MoveButtons';
-import { Product } from '../../types/Product';
-import { PRODUCT_URL } from "../constants/URL's/URL's";
-import { client } from '../../api';
+import { CartItem } from '../../types/CartItem';
+import { ModalWindowContext } from '../../store/ModalWindowContext';
 
 export const ShoppingCart = React.memo(() => {
   const { shoppingList } = useContext(ShoppingCartContext);
+  const { setIsOpenModal } = useContext(ModalWindowContext);
   const naigate = useNavigate();
 
-  const [shoppingProducts, setShoppingProducts] = useState<Product[]>([]);
-
-  const totalPrice = shoppingList.reduce((total, device) => {
-    const product = shoppingProducts.find(item => item.itemId === device);
-
-    if (product && device === product.itemId) {
-      return total + product.price;
+  const uniqueShoppingList = shoppingList.reduce<CartItem[]>((acc, item) => {
+    if (!acc.some(i => i === item)) {
+      acc.push(item);
     }
 
-    return total;
-  }, 0);
+    return acc;
+  }, []);
 
-  useEffect(() => {
-    client
-      .get<Product[]>(PRODUCT_URL)
-      .then(data => {
-        const getProducts = data.filter(product =>
-          shoppingList.includes(product.itemId),
-        );
-
-        setShoppingProducts(getProducts);
-      })
-      .catch(() => {});
-  }, [shoppingList]);
+  const totalPrice = shoppingList.reduce(
+    (total, device) => total + device.currentPrice,
+    0,
+  );
 
   return (
     <div className="shopping-cart">
@@ -44,25 +32,35 @@ export const ShoppingCart = React.memo(() => {
 
       <h1 className="shopping-cart__title primary-title">Cart</h1>
 
-      <div className="shopping-cart__items-container">
-        {shoppingProducts.map(item => (
-          <ShoppingItem product={item} key={item.id} />
-        ))}
-      </div>
+      {shoppingList.length > 0 && (
+        <div className="shopping-cart__container">
+          <div className="shopping-cart__list">
+            {uniqueShoppingList.map(item => (
+              <ShoppingItem cartItem={item} key={item.itemId} />
+            ))}
+          </div>
 
-      <div className="shopping-cart__total">
-        <h2 className="shopping-cart__total-price">${totalPrice}</h2>
-        <p className="shopping-cart__total-items">
-          Total for {shoppingList.length} items
-        </p>
-        <button
-          type="button"
-          className="shopping-cart__checkout"
-          onClick={() => {}}
-        >
-          Checkout
-        </button>
-      </div>
+          <div className="shopping-cart__total">
+            <h2 className="shopping-cart__total-price">${totalPrice}</h2>
+
+            <p className="shopping-cart__total-items">
+              Total for {shoppingList.length} items
+            </p>
+
+            <button
+              type="button"
+              className="shopping-cart__checkout"
+              onClick={() => setIsOpenModal(true)}
+            >
+              Checkout
+            </button>
+          </div>
+        </div>
+      )}
+
+      {shoppingList.length === 0 && (
+        <div className="shopping-cart__empty-cart">Your cart is empty</div>
+      )}
     </div>
   );
 });

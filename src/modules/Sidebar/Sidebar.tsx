@@ -3,19 +3,26 @@ import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { SidebarContext } from '../../store/SidebarContext';
 import { IconFavourites, IconShoppingCart } from '../shared/IconsSVG';
+import { ShoppingCartContext } from '../../store/ShoppingCartContext';
 
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('sidebar__nav-item navigation-title', { active: isActive });
+
+const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
+  classNames('sidebar__added-to icon-container', {
+    active: isActive,
+  });
 
 export const Sidebar = React.memo(() => {
   const { setIsOpenSidebar } = useContext(SidebarContext);
+  const { shoppingList } = useContext(ShoppingCartContext);
 
   return (
     <aside className="sidebar">
       <div className="sidebar__nav">
         <NavLink
           to="/"
-          className={getLinkClass}
+          className={getLinkClassCategory}
           onClick={() => setIsOpenSidebar(false)}
         >
           Home
@@ -23,7 +30,7 @@ export const Sidebar = React.memo(() => {
 
         <NavLink
           to="/phones"
-          className={getLinkClass}
+          className={getLinkClassCategory}
           onClick={() => setIsOpenSidebar(false)}
         >
           Phones
@@ -31,7 +38,7 @@ export const Sidebar = React.memo(() => {
 
         <NavLink
           to="/tablets"
-          className={getLinkClass}
+          className={getLinkClassCategory}
           onClick={() => setIsOpenSidebar(false)}
         >
           Tablets
@@ -39,7 +46,7 @@ export const Sidebar = React.memo(() => {
 
         <NavLink
           to="/accessories"
-          className={getLinkClass}
+          className={getLinkClassCategory}
           onClick={() => setIsOpenSidebar(false)}
         >
           Accessories
@@ -48,14 +55,23 @@ export const Sidebar = React.memo(() => {
 
       <div className="sidebar__fav-and-cart">
         <NavLink
-          to="/favourites"
-          className="sidebar__fav icon-container icon-container--fav"
+          to="favourites"
+          className={getLinkClassCart}
+          onClick={() => setIsOpenSidebar(false)}
         >
           <IconFavourites />
+          <div className="sidebar__added">?</div>
         </NavLink>
 
-        <NavLink to="/shoping-cart" className="sidebar__cart icon-container">
+        <NavLink
+          to="shopping-cart"
+          className={getLinkClassCart}
+          onClick={() => setIsOpenSidebar(false)}
+        >
           <IconShoppingCart />
+          {shoppingList.length > 0 && (
+            <div className="sidebar__added">{shoppingList.length}</div>
+          )}
         </NavLink>
       </div>
     </aside>

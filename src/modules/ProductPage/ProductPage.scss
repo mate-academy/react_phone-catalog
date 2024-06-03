@@ -10,6 +10,7 @@
   @include on-desctop {
     width: 1136px;
     margin-inline: auto;
+    padding-bottom: 81px;
   }
 
   & > :not(:last-child) {
@@ -17,7 +18,11 @@
   }
 
   &__route {
-    margin-bottom: 40px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
   }
 
   &__back {
@@ -191,27 +196,26 @@
       background-color: $border-color-light-gray;
     }
   }
-}
 
-.loader {
-  --padding-top: 24px;
-  --padding-bottom: 64px;
-  --route-height: 16px;
-  --title-height: 41px;
-  --margin-bottom-route: 24px;
-  --margin-bottom-title: 24px;
-  --footer-height: 257px;
-  --gap: 8px;
-  --general-height:
-    calc(#{$header-height} + var(--route-height) + var(--title-height) + var(--margin-bottom-route) + var(--margin-bottom-title) + var(--footer-height) + var(--padding-top) + var(--padding-bottom) + var(--gap));
+  &__loader {
+    display: flex;
+    align-items: center;
 
-  min-height: calc(100vh - var(--general-height));
+    --header-height: #{$header-height};
+    --footer-height: #{$footer-height};
+    --general-height: calc(24px + 16px + 24px + 16px + 16px + 56px);
 
-  display: flex;
-  align-items: center;
+    min-height:
+      calc(100vh - var(--header-height) - var(--footer-height) - var(--general-height));
 
-  @include on-tablet {
-    --footer-height: 96px;
-    --margin-bottom-route: 40px;
+    @include on-tablet {
+      --general-height: calc(24px + 16px + 40px + 16px + 16px + 64px);
+      --footer-height: #{$footer-height-tablet};
+    }
+
+    @include on-desctop {
+      --general-height: calc(24px + 16px + 40px + 16px + 16px + 81px);
+      --header-height: #{#{$header-height-desctop}};
+    }
   }
 }

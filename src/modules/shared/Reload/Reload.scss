@@ -1,10 +1,11 @@
 .reload-block {
+  --header-height: $header-height;
   --footer-height: 257px;
 
   min-width: 320px;
   margin: auto;
 
-  min-height: calc(100vh - #{$header-height} - var(--footer-height));
+  min-height: calc(100vh - var($header-height) - var(--footer-height));
 
   display: flex;
   flex-direction: column;
@@ -15,6 +16,10 @@
 
   @include on-tablet {
     --footer-height: 96px;
+  }
+
+  @include on-desctop {
+    --header-height: $header-height-desctop;
   }
 
   &__page-not-found {

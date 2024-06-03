@@ -1,26 +1,32 @@
 import React, { useContext } from 'react';
+import cn from 'classnames';
 import { IconFavourites } from '../../IconsSVG';
 import { ShoppingCartContext } from '../../../../store/ShoppingCartContext';
+import { CartItem } from '../../../../types/CartItem';
 
 type Props = {
-  itemId: string;
+  cartItem: CartItem;
 };
 
-export const AddBlock: React.FC<Props> = React.memo(({ itemId }) => {
+export const AddBlock: React.FC<Props> = React.memo(({ cartItem }) => {
   const { setShoppingList, shoppingList } = useContext(ShoppingCartContext);
 
+  const added = shoppingList.some(item => item.itemId === cartItem.itemId);
+
   const handleAddToCart = () => {
-    setShoppingList([...shoppingList, itemId]);
+    if (!added) {
+      setShoppingList([...shoppingList, cartItem]);
+    }
   };
 
   return (
     <div className="add-block">
       <button
         type="button"
-        className="add-block__add-to-cart"
+        className={cn('add-block__add-to-cart', { added })}
         onClick={handleAddToCart}
       >
-        Add to cart
+        {added ? 'Added to cart' : 'Add to cart'}
       </button>
       <div className="add-block__add-to-fav">
         <IconFavourites />

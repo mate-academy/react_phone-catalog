@@ -1,22 +1,22 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext } from 'react';
 import classNames from 'classnames';
-import { Product } from '../../../types/Product';
 import { IconClose } from '../../shared/IconsSVG';
 import { NumberOrSymbol } from '../../shared/Buttons/MoveButtons';
 import { ShoppingCartContext } from '../../../store/ShoppingCartContext';
+import { CartItem } from '../../../types/CartItem';
 
 type Props = {
-  product: Product;
+  cartItem: CartItem;
 };
 
-export const ShoppingItem: React.FC<Props> = React.memo(({ product }) => {
-  const { name, image, price, itemId } = product;
+export const ShoppingItem: React.FC<Props> = React.memo(({ cartItem }) => {
+  const { name, image, currentPrice, itemId } = cartItem;
 
   const { shoppingList, setShoppingList } = useContext(ShoppingCartContext);
 
   const countItems = shoppingList.reduce((total, device) => {
-    if (device === itemId) {
+    if (device.itemId === itemId) {
       return total + 1;
     }
 
@@ -28,7 +28,7 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ product }) => {
       return;
     }
 
-    const indx = shoppingList.indexOf(itemId);
+    const indx = shoppingList.indexOf(cartItem);
 
     const updatedShoppingList = [
       ...shoppingList.slice(0, indx),
@@ -39,18 +39,18 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ product }) => {
   };
 
   const onAdding = () => {
-    setShoppingList([...shoppingList, itemId]);
+    setShoppingList([...shoppingList, cartItem]);
   };
 
   const deleteDevice = () => {
     const updatedShoppingList = shoppingList.filter(
-      device => device !== itemId,
+      device => device !== cartItem,
     );
 
     setShoppingList(updatedShoppingList);
   };
 
-  return countItems !== 0 ? (
+  return countItems > 0 ? (
     <div className="shopping-item">
       <div className="shopping-item__main-row">
         <button
@@ -85,7 +85,7 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ product }) => {
           </div>
         </div>
 
-        <p className="shopping-item__price">{`$${price}`}</p>
+        <p className="shopping-item__price">{`$${currentPrice}`}</p>
       </div>
     </div>
   ) : null;

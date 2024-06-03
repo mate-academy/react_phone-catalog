@@ -10,6 +10,7 @@ import {
   IconShoppingCart,
 } from '../shared/IconsSVG';
 import { getLogo } from '../../services/getLogo';
+import { ShoppingCartContext } from '../../store/ShoppingCartContext';
 
 const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('header__nav-link navigation-title', {
@@ -17,12 +18,13 @@ const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   });
 
 const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
-  classNames('icon-container header__navbar-shopping-cart', {
+  classNames('icon-container header__navbar-added-to', {
     active: isActive,
   });
 
 export const Header: React.FC = React.memo(() => {
   const { isOpenSidebar, setIsOpenSidebar } = useContext(SidebarContext);
+  const { shoppingList } = useContext(ShoppingCartContext);
 
   return (
     <header className="header">
@@ -56,10 +58,14 @@ export const Header: React.FC = React.memo(() => {
         <div className="header__navbar-icons icons-wrapper">
           <NavLink to="favourites" className={getLinkClassCart}>
             <IconFavourites />
+            <div className="header__navbar-added">?</div>
           </NavLink>
 
           <NavLink to="shopping-cart" className={getLinkClassCart}>
             <IconShoppingCart />
+            {shoppingList.length > 0 && (
+              <div className="header__navbar-added">{shoppingList.length}</div>
+            )}
           </NavLink>
 
           <button

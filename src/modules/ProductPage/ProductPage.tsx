@@ -17,6 +17,7 @@ import { Loader } from '../shared/Loader';
 import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
+import { CartItem } from '../../types/CartItem';
 
 type Specs = {
   [key: string]: string | string[];
@@ -41,6 +42,15 @@ export const ProductPage: React.FC = React.memo(() => {
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   const heightPreview = useRef<HTMLDivElement>(null);
+
+  const cartItem: CartItem = {
+    itemId: itemId || '',
+    name: device?.name || '',
+    image: device?.images[0] || '',
+    currentPrice: state
+      ? device?.priceDiscount || 0
+      : device?.priceRegular || 0,
+  };
 
   useEffect(() => {
     if (!device || device.namespaceId !== nameDevice) {
@@ -169,7 +179,7 @@ export const ProductPage: React.FC = React.memo(() => {
           </div>
 
           <div className="product-page__add-block">
-            <AddBlock itemId={device.id} />
+            <AddBlock cartItem={cartItem} />
           </div>
 
           <div
@@ -203,7 +213,7 @@ export const ProductPage: React.FC = React.memo(() => {
           </div>
         </div>
       ) : (
-        <div className="loader">
+        <div className="product-page__loader">
           <Loader />
         </div>
       )}

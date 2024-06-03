@@ -54,8 +54,44 @@
     box-shadow: 0 -1px 0 $border-color-light-gray;
   }
 
-  &__fav,
-  &__cart {
+  &__added-to {
     width: 50%;
+
+    position: relative;
+  }
+
+  &__added-to.active {
+    position: relative;
+
+    &::after {
+      content: "";
+
+      position: absolute;
+      bottom: 0;
+
+      height: 3px;
+      width: 100%;
+
+      background-color: $border-color-hover;
+    }
+  }
+
+  &__added {
+    height: 14px;
+    width: 14px;
+
+    position: absolute;
+
+    top: 18px;
+    left: calc(100vw / 4);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eb5757;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 9px;
   }
 }

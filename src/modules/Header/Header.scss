@@ -9,6 +9,10 @@
   background-color: $back-ground-color-white;
   z-index: 1;
 
+  @include on-desctop {
+    height: $header-height-desctop
+  }
+
   &__container {
     height: 100%;
 
@@ -64,8 +68,7 @@
     overflow: hidden;
   }
 
-  &__navbar-favourites,
-  &__navbar-shopping-cart {
+  &__navbar-added-to {
     display: none;
 
     @include on-tablet {
@@ -90,6 +93,31 @@
     }
   }
 
+  &__navbar-added {
+    height: 14px;
+    width: 14px;
+
+    position: absolute;
+
+    top: 10px;
+    right: 10px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: #eb5757;
+    border-radius: 50%;
+    color: #fff;
+    font-size: 9px;
+    line-height: 100%;
+
+    @include on-desctop {
+      top: 18px;
+      right: 18px;
+    }
+  }
+
   &__navbar-menu {
     border: none;
     background-color: $back-ground-color-white;
@@ -110,6 +138,10 @@
     border: none;
     background-color: $back-ground-color-white;
     cursor: pointer;
+
+    @include on-tablet {
+      display: none;
+    }
   }
 
   &__logo-link {

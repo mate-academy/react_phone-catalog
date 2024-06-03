@@ -8,12 +8,24 @@
   border: solid 1px $border-color-light-gray;
   border-radius: 5px;
 
+  @include on-tablet {
+    padding: 24px;
+
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
   &__main-row {
     height: 80px;
 
     display: flex;
     align-items: center;
     gap: 16px;
+
+    @include  on-tablet {
+      gap: 24px;
+    }
   }
 
   &__delete {
@@ -53,8 +65,13 @@
 
   &__count-and-price {
     display: flex;
-
+    align-items: center;
+    gap: 54px;
     justify-content: space-between;
+
+    @include on-tablet {
+      width: 200px;
+    }
   }
 
   &__change-count {
@@ -64,46 +81,9 @@
     align-items: center;
     justify-content: space-between;
 
-    & > :not(:nth-child(2)) {
+    & > :nth-child(2) {
       font-size: 20px;
     }
-
-    // & > :first-child {
-    //   position: relative;
-
-    //   &::before {
-    //     content: "";
-
-    //     width: 10.67px;
-    //     height: 1.33px;
-
-    //     background-color: $border-color-hover;
-    //   }
-    // }
-
-    // & > :last-child {
-    //   position: relative;
-
-    //   &::before {
-    //     content: "";
-
-    //     width: 10.67px;
-    //     height: 1.33px;
-
-    //     background-color: $border-color-hover;
-    //   }
-
-    //   &::after {
-    //     content: "";
-
-    //     height: 10.67px;
-    //     width: 1.33px;
-
-    //     position: absolute;
-
-    //     background-color: $border-color-hover;
-    //   }
-    // }
   }
 
   &__decrease {

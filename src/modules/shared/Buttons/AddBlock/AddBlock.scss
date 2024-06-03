@@ -23,6 +23,19 @@
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
     }
+
+    &.added {
+      color: #27ae60;
+
+      border: 1px solid $border-color-light-gray;
+      background-color: #fff;
+
+      cursor: default;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
   }
 
   &__add-to-fav {
@@ -34,8 +47,8 @@
     cursor: pointer;
 
     &:hover {
-      // border: solid 1px $border-color-hover;
       border-color: $border-color-hover;
+      box-shadow: 0 3px 13px 0 #17203166;
     }
   }
 }
