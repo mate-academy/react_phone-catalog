@@ -75,4 +75,10 @@
   @include for-desktop {
     padding: 0;
   }
+
+  &__container {
+    flex-grow: 1;
+
+    max-width: 272px;
+  }
 }

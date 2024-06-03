@@ -41,7 +41,7 @@ export const ProductSlider: React.FC<Props> = ({
         // finalProducts = filterRandomProducts(productsFromApi.slice(0, 50));
         finalProducts = productsFromApi
           .sort((prod1: Product, prod2: Product) => prod2.year - prod1.year)
-          .slice(0, 20)
+          .slice(29, 50)
           .sort((prod1: Product, prod2: Product) => prod2.price - prod1.price)
           .slice(0, 8);
       }
