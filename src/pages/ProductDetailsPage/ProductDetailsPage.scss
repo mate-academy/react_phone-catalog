@@ -4,10 +4,14 @@
 .product-details {
   display: flex;
   flex-direction: column;
-  gap: 56px;
+  gap: $gap-2xl;
 
   padding-top: 24px;
   overflow: hidden;
+
+  @include for-tablet {
+    gap: 64px;
+  }
 
   @include for-desktop {
     @include grid;
@@ -15,6 +19,7 @@
     align-items: start;
 
     grid-template-rows: auto auto auto;
+    row-gap: 80px;
 
     &__top {
       grid-column: span 24;
@@ -101,9 +106,13 @@
   @include grid;
 
   grid-template-rows: auto auto auto;
-  row-gap: 32px;
+  row-gap: $gap-large;
 
   padding-top: 0;
+
+  @include for-tablet {
+    row-gap: 40px;
+  }
 
   @include for-desktop {
     grid-template-columns: repeat(24, 1fr);
@@ -185,6 +194,10 @@
     grid-column: 1 / 5;
 
     padding-top: 8px;
+
+    @include for-tablet {
+      padding-top: 0;
+    }
   }
 
   &__purchase {
@@ -224,6 +237,8 @@
 
   &__images-list {
     @include for-tablet {
+      align-self: start !important;
+
       grid-column: 1 / 2;
       grid-row: 1 / 2;
     }
@@ -232,7 +247,7 @@
 
 .images-list {
   display: flex;
-  align-self: center;
+
   gap: 8px;
 
   max-width: 100%;
