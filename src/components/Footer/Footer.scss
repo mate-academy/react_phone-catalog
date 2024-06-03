@@ -56,6 +56,13 @@
     text-transform: uppercase;
     color: $color-secondary;
     text-decoration: none;
+
+    transition: 0.3s all ease-in-out;
+
+    &:hover {
+      color: $color-primary;
+      transition: 0.25s all ease-in-out;
+    }
   }
 }
 
