@@ -1,16 +1,17 @@
 import { useEffect, useState } from 'react';
-import { ProductsList } from '../ProductsList';
-import { Product } from '../../../types/ProductCard';
-import { Pagination } from '../Pagination';
-import { getProducts } from '../../../helpers/getProducts';
-import { getPageTitle } from '../../../helpers/getPageTitle';
-import { Sort } from '../../../types/Sort';
-import { Filter, Pages } from '../Filter/Filter';
-import { ProductCategories } from '../../../types/ProductCategories';
-import './ProductPage.scss';
 import { useSearchParams } from 'react-router-dom';
-import { FilterOption } from '../../../types/FilterOption';
+import { ProductsList } from '../ProductsList';
+import { Filter, Pages } from '../Filter/Filter';
+import { Pagination } from '../Pagination';
 import { HomeLink } from '../../shared/components/HomeLink/HomeLink';
+import { getPageTitle } from '../../../helpers/getPageTitle';
+import { getProducts } from '../../../helpers/getProducts';
+import { Product } from '../../../types/ProductCard';
+import { Sort } from '../../../types/Sort';
+import { ProductCategories } from '../../../types/ProductCategories';
+import { FilterOption } from '../../../types/FilterOption';
+import './ProductPage.scss';
+import '../../../styles/main.scss';
 
 type Props = {
   category: ProductCategories;
@@ -165,7 +166,7 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
           <p className="product-page__models-count">{modelsCounterText}</p>
         </div>
         <div className="filters product-page__filters">
-          <div className="filters__item">
+          <div className="filters__item filters__item--sort">
             <Filter
               option={FilterOption.Sort}
               searchParams={searchParams}
@@ -173,7 +174,8 @@ export const ProductPage: React.FC<Props> = ({ category }) => {
               title="Sort by"
             />
           </div>
-          <div className="filters__item">
+
+          <div className="filters__item filters__item--quantity">
             <Filter
               option={FilterOption.Items}
               title="Items on page"

@@ -17,7 +17,11 @@
     gap: 24px;
 
     @include for-tablet {
-      grid-column: 1 / 13;
+      grid-column: span 12;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
     }
   }
 
@@ -53,6 +57,10 @@
     @include for-tablet {
       grid-column: 1 / 13;
     }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
   }
 
   &__filters {
@@ -60,6 +68,10 @@
 
     @include for-tablet {
       grid-column: 1 / 8;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
     }
   }
 
@@ -108,6 +120,16 @@
 
     @include for-tablet {
       grid-column: span 3;
+    }
+
+    @include for-desktop {
+      &--sort {
+        grid-column: span 4;
+      }
+
+      &--quantity {
+        grid-column: span 3;
+      }
     }
   }
 }
