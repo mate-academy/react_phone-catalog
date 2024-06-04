@@ -5,12 +5,13 @@ export const ROUTES: Readonly<{
   ACCESSORIES: string;
   CART: string;
   FAVORITES: string;
+  PRODUCT_DETAIL: string;
 }> = {
   HOME: '/',
-  PRODUCT_DETAIL: ':productId',
   PHONES: 'phones',
   TABLETS: 'tablets',
   ACCESSORIES: 'accessories',
   CART: 'cart',
   FAVORITES: 'favorites',
+  PRODUCT_DETAIL: ':productId',
 };

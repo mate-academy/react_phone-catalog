@@ -3,9 +3,7 @@
   padding: 32px;
   border: 1px solid var(--elements-color);
   color: var(--primary-color);
-  font:
-    14px / 1.5 Mont,
-    sans-serif;
+  font-size: 14px;
 }
 
 .header {
@@ -81,10 +79,10 @@
   background-color: var(--primary-color);
   font-weight: 700;
   color: var(--white-color);
-  padding-block: 9.5px;
   font-size: inherit;
   line-height: inherit;
   border: 1px solid transparent;
+  font-family: var(--primary-font);
 }
 
 .addBtnSelected {
@@ -106,9 +104,14 @@
   justify-content: center;
 }
 
-.favouriteBtn::after {
+.favouriteBtn img {
+  width: 16px;
+  height: 16px;
+}
+
+/* .favouriteBtn::after {
   content: '';
   width: 16px;
   height: 16px;
   background: url(./icon-favourite.svg) no-repeat center;
-}
+} */

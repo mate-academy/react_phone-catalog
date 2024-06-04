@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Product from '../../Types/Productю';
+import Product from '../../Types/Product';
 import { getPhones } from '../../api/getProduct';
 
 const PhonesPage = () => {
