@@ -1,35 +1,49 @@
-import { useState } from 'react';
 import './App.scss';
-import { Test } from './components/test/Test';
+import Button from './UI/Button/Button';
+import svgHeart from './assets/icons/Favourites.svg';
+import svgFilledHeart from './assets/icons/Favourites Filled.svg';
 
 export const App = () => {
-  const [count, setCount] = useState(0);
-  const [value, setValue] = useState(3);
-
-  const increment = () => {
-    setCount(prev => prev + value);
-  };
-
-  const decrement = () => {
-    setCount(prev => prev - value);
-  };
-
   return (
-    <div className="App">
-      <Test />
-      <h1>Product Catalog</h1>
-      <h2>{count}</h2>
-      <input
-        type="number"
-        min={1}
-        max={100}
-        value={value}
-        onChange={e => setValue(+e.target.value)}
-      />
-      <div className="buttons">
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
+    <div>
+      <h1>Buttons</h1>
+      <div className="button-group">
+        <Button type="number">1</Button>
+        <Button type="number" state="selected">
+          1
+        </Button>
+
+        <Button type="arrow">{'>'}</Button>
+        <Button type="arrow" state="selected">
+          {'>'}
+        </Button>
+        <Button type="arrow" state="disabled">
+          {'>'}
+        </Button>
+
+        <Button type="radio" color="#EB5757" />
+        <Button type="radio" color="#FFBF00" />
+        <Button type="radio" color="#40E0D0" />
+        <Button type="radio" color="#6495ED" />
+        <Button type="radio" color="#9FE2BF" />
+        <Button type="radio" color="#EB5757" state="selected" />
+
+        <Button type="icon">
+          <img src={svgHeart} alt="" />
+        </Button>
+        <Button type="icon" state="selected">
+          <img src={svgHeart} alt="" />
+        </Button>
+        <Button type="icon" state="disabled">
+          <img src={svgFilledHeart} alt="" />
+        </Button>
       </div>
+
+      <Button type="primary" state="selected">
+        Primary
+      </Button>
+
+      <Button type="back">Return</Button>
     </div>
   );
 };
