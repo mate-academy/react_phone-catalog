@@ -4,12 +4,69 @@ import { ContextApp } from '../../appContext/AppContext';
 import style from './Phones.module.scss';
 import { Pagination } from '../../pagination';
 import { PhoneCard } from './productCard';
+import { Phone } from '../types/Phone';
+import { Product } from '../types/Product';
+
+type SortBy = 'Newest' | 'Alphabetically' | 'Cheapest';
+
+function sortBy(products: Product[], phones: Phone[], sortBy: SortBy ): Phone[] {
+  let copyPhones: Phone[] = [];
+
+  if (sortBy === 'Newest') {
+    products
+      .sort((a, b) => b.year - a.year)
+      .forEach(product => {
+        const match = phones.find(phone => phone.id === product.itemId);
+
+        if (match) {
+          return copyPhones.push(match);
+        }
+
+        return;
+      });
+  }
+
+  if (sortBy === 'Alphabetically') {
+    products
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .forEach(product => {
+        const match = phones.find(phone => phone.id === product.itemId);
+
+        if (match) {
+          return copyPhones.push(match);
+        }
+
+        return;
+      });
+  }
+
+  if (sortBy === 'Cheapest')
+    products
+      .sort((a, b) => a.price - b.price)
+      .forEach(product => {
+        const match = phones.find(phone => phone.id === product.itemId);
+
+        if (match) {
+          return copyPhones.push(match);
+        }
+
+        return;
+      });
+
+  return copyPhones;
+}
 
 export const Phones: React.FC = () => {
-  const { phonesTotalNumber, phones } = useContext(ContextApp);
-  const [selectedOption, setSortBy] = useState('Newest');
+  const { phonesTotalNumber, products, phones } = useContext(ContextApp);
+  const [selectedOption, setSelectedOption] = useState<SortBy>('Newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
+
+  const sortedPhones = sortBy(products, phones, selectedOption);
+
+  // const sortedPhones = useMemo(() => {
+  //   return sortBy(products, phones, selectedOption);
+  // }, [selectedOption, phones, products]);
 
   const pagesTotalNumber = useMemo(() => {
     if (itemsPerPage === 'all') {
@@ -23,11 +80,11 @@ export const Phones: React.FC = () => {
 
   const phonesOnPage =
     itemsPerPage === 'all'
-      ? phones
-      : phones.slice(startFromElement, endOnElement);
+      ? sortedPhones
+      : sortedPhones.slice(startFromElement, endOnElement);
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(e.target.value);
+  setSelectedOption(e.target.value as SortBy)
   };
 
   const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -57,9 +114,9 @@ export const Phones: React.FC = () => {
             value={selectedOption}
             onChange={handleChangeSort}
           >
-            <option value="Newest">Newest</option>
-            <option value="Alphabetically">Alphabetically</option>
-            <option value="Cheapest">Cheapest</option>
+            <option value='Newest'>Newest</option>
+            <option value='Alphabetically'>Alphabetically</option>
+            <option value='Cheapest'>Cheapest</option>
           </select>
         </div>
 

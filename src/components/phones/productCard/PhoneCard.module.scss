@@ -65,7 +65,8 @@
     &__paragraph {
       display: flex;
       justify-content: space-between;
-      height: 15px;
+      height: fit-content;
+      text-align: end;
       margin-bottom: 8px;
       width: 225px;
 
