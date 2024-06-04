@@ -1,7 +1,5 @@
-.container {
+.footer {
   border-top: 1px solid var(--elements-color);
-  padding: 0 32px;
-  margin: auto;
 }
 
 .footer_content {
@@ -97,11 +95,11 @@
     margin-bottom: 32px;
   }
 
-  .footer__link{
+  .footer__link {
     margin-bottom: 16px;
   }
 
-  .footer__link:last-child{
+  .footer__link:last-child {
     margin-bottom: 32px;
   }
 

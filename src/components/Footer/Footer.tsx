@@ -4,13 +4,13 @@ import styles from './Footer.module.css';
 const Footer = () => {
   return (
     <footer className={styles.footer}>
-      <div className={styles.container}>
+      <div className="container">
         <div className={styles.footer_content}>
           <div className={styles.footer__logo_container}>
             <Link to="/" className={styles.footer__logo_link}>
               <img
                 className={styles.footer__logo}
-                src="/img/logo.png"
+                src="img/logo.png"
                 alt="Nice gadgets logo"
               />
             </Link>
