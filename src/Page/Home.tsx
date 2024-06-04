@@ -1,47 +1,55 @@
 import { useMemo } from 'react';
 import {
-  PhonesSlider as BrandNewModels,
-  PhonesSlider as HotPrices,
+  ProductsSlider as BrandNewModels,
+  ProductsSlider as HotPrices,
   ImageSlider,
   ShopByCategory,
 } from '../components/Home';
 import { IPhone } from '../types';
 import { useAppSelector } from '../app/hooks';
-import { selectPhones } from '../features/phoneSlice';
+import {
+  selectAccessories,
+  selectPhones,
+  selectProducts,
+  selectTalets,
+} from '../features/productsSlice';
 import { getMultipleRandomPhones } from '../helper';
 
 export const Home = () => {
+  const products = useAppSelector(selectProducts) || [];
   const phones = useAppSelector(selectPhones) || [];
+  const talets = useAppSelector(selectTalets) || [];
+  const accessories = useAppSelector(selectAccessories) || [];
 
   const newHotPricePhones: IPhone[] = useMemo(
-    () => getMultipleRandomPhones(phones, 10),
-    [phones],
+    () => getMultipleRandomPhones(products, 10),
+    [products],
   );
 
-  const newBrandModelsFilter = phones.filter((phone) => phone.year === 2019);
+  const newBrandModelsFilter
+    = products.filter((product) => product.year > 2020);
 
   const newBrandModelsRandom: IPhone[] = useMemo(
     () => getMultipleRandomPhones(newBrandModelsFilter, 10),
-    [phones],
+    [products],
   );
 
   return (
     <>
-      <div
-        style={{
-          width: '100%',
-          height: '432px',
-          margin: '40px 0px 72px',
-          position: 'relative',
-        }}
-      >
-        <ImageSlider />
-      </div>
+      <h1>Welcome to Nice Gadgets store!</h1>
+      <ImageSlider />
 
-      <HotPrices phones={newHotPricePhones} title="Hot Prices" />
+      <HotPrices newProducts={newHotPricePhones} title="Hot Prices" />
 
-      <ShopByCategory phonesLength={phones.length} />
-      <BrandNewModels phones={newBrandModelsRandom} title="Bran New Models" />
+      <ShopByCategory
+        phonesLength={phones.length}
+        tabletsLength={talets.length}
+        accessoriesLength={accessories.length}
+      />
+      <BrandNewModels
+        newProducts={newBrandModelsRandom}
+        title="Bran New Models"
+      />
     </>
   );
 };

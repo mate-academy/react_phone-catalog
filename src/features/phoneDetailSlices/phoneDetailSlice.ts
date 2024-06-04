@@ -1,8 +1,9 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import axios from 'axios';
 import type { RootState } from '../../app/store';
-import { IPhoneDetail } from '../../types/PhoneDetail.interface';
+import { IPhoneDetail } from '../../types';
 import { BASE_URL } from '../../helper';
+// import { IPhone } from '../../types';
 
 type PhoneDetail = {
   phone: IPhoneDetail | null;
@@ -18,10 +19,20 @@ const initialState: PhoneDetail = {
 
 export const fetchPhoneDetail = createAsyncThunk<IPhoneDetail, string>(
   'phoneDetail/fetchPhoneDetail',
-  async (id: string) => {
-    const res = await axios.get<IPhoneDetail>(`${BASE_URL}products/${id}.json`);
+  async (id: string, { rejectWithValue }) => {
+    try {
+      const res = await axios.get<IPhoneDetail[]>(`${BASE_URL}/phones.json`);
 
-    return res.data;
+      const phone = res.data.find((el) => el.id === id);
+
+      if (!phone) {
+        return rejectWithValue(`Phone with id ${id} not found`);
+      }
+
+      return phone;
+    } catch (error) {
+      throw new Error();
+    }
   },
 );
 

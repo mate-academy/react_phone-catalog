@@ -1,4 +1,4 @@
-import { IPhoneDetail } from '../types/PhoneDetail.interface';
+import { IPhoneDetail } from '../types';
 
 export const truncatePhoneId = (
   el: IPhoneDetail | null,

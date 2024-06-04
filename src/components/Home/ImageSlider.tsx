@@ -44,6 +44,7 @@ export const ImageSlider = () => {
   return (
     <section
       className="slider"
+      style={{ paddingInline: 0 }}
     >
       <button
         onClick={showPrevImage}

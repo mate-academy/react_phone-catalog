@@ -1,36 +1,72 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .main-header {
-  box-shadow: 0 1px 0 0 #e2e6e9;
+  margin-bottom: 24px;
+  width: 100%;
 
   &__nav {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 64px;
+    height: 48px;
+    box-shadow: 0 1px 0 0 #e2e6e9;
+
+    @include onDesktop {
+      height: 64px;
+    }
+
+    &--aside {
+      box-shadow: none;
+      margin-bottom: 24px;
+      height: 188px;
+    }
   }
 
   &__list {
     padding-left: 20px;
+    width: 100%;
     list-style: none;
-    margin: 0;
+    // margin: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 64px;
+
+    @include onTablet {
+      gap: 32px;
+      width: auto;
+    }
+
+    @include onDesktop {
+      gap: 64px;
+    }
 
     &--left {
       gap: 0;
+    }
 
-      & a {
-        padding: 25px;
-        border-left: 1px solid $grayElements;
-      }
+    &--aside {
+      flex-direction: column;
+      gap: 24px;
     }
   }
 
   &__link {
     position: relative;
+
+    &--left {
+      height: 48px;
+      width: 48px;
+      border-left: 1px solid $grayElements;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      @include onDesktop {
+        height: 64px;
+        width: 64px;
+      }
+    }
 
     & a {
       color: $graySecondary;
@@ -42,30 +78,44 @@
       letter-spacing: 0.48px;
       text-transform: uppercase;
       padding-block: 25px;
+
+      @include onTablet {
+        padding-block: 19px;
+      }
+
+      @include onDesktop {
+        padding-block: 26px;
+      }
     }
   }
 
   &__active {
-    color: $grayPrimary;
-
     &::after {
       content: "";
       display: block;
       position: absolute;
-      bottom: -23px;
+      bottom: -7px;
       height: 3px;
       width: 100%;
       background-color: $grayPrimary;
       transition: transform 0.5s;
       transform: scale(1);
       transform-origin: left;
+
+      @include onTablet {
+        bottom: -14px;
+      }
+
+      @include onDesktop {
+        bottom: -22px;
+      }
     }
   }
 
   &__text {
     position: absolute;
-    top: -3px;
-    right: 20px;
+    top: -4px;
+    left: 9px;
     display: block;
     width: 13px;
     height: 13px;
@@ -77,17 +127,37 @@
     text-align: center;
     font-size: 9px;
     font-weight: 600;
+
+    &--footer {
+      top: 19px;
+      left: 80px;
+    }
+
+    @include onTablet {
+      top: 20px;
+      left: 25px;
+    }
+
+    @include onDesktop {
+      left: 32px;
+      top: 18px;
+    }
   }
 
   &__search {
-    height: 64px;
-    width: 327px;
-    border-left: 1px solid #e2e6e9;
+    display: none;
 
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 23px 24px;
+    @include onDesktop {
+      display: block;
+      height: 64px;
+      width: 300px;
+      border-left: 1px solid #e2e6e9;
+
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 23px 24px;
+    }
   }
 
   &__input {
@@ -95,6 +165,7 @@
     font-size: 14px;
     caret-color: $grayPrimary;
     font-weight: 600;
+    width: 200px;
 
     &::placeholder {
       color: $grayIcons;
@@ -107,5 +178,51 @@
 
   &__input-active {
     background-color: $grayHoverAndBG;
+  }
+}
+
+.aside {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background-color: white;
+  transform: translateX(-100%);
+  min-width: 320px;
+  z-index: 1;
+  overflow: hidden;
+  transition: all 0.7s;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  @include onTablet {
+    display: none;
+  }
+
+  &__bottom-list {
+    box-shadow: 10px 1px 11px 5px #e2e6e9;
+    width: 100%;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:nth-child(1) {
+      border-right: 1px solid #e2e6e9;
+    }
   }
 }

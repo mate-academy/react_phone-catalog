@@ -12,8 +12,12 @@ import {
 import storage from 'redux-persist/lib/storage';
 import cartSlice from '../features/cartSlices/cartSlice';
 import favouritesSlices from '../features/favouritesSlices/favouritesSlice';
-import phoneDetailSlice from '../features/phoneDetail/phoneDetailSlice';
-import phonesSlice from '../features/phoneSlice/phonesSlice';
+import phoneDetailSlice from '../features/phoneDetailSlices/phoneDetailSlice';
+import productsSlice from '../features/productsSlice/productsSlice';
+import tabletDetailSlice
+  from '../features/tabletDetailSlices/tabletDetailSlice';
+import accessoriesDetailSlice
+  from '../features/accessoriesSlices/accessoriesDetailSlice';
 
 const persistConfigCart = {
   key: 'cartPhones',
@@ -29,7 +33,9 @@ const persistConfigFavourites = {
 
 const rootReducer = combineReducers({
   phoneDetail: phoneDetailSlice,
-  phones: phonesSlice,
+  accessoriesDetail: accessoriesDetailSlice,
+  tabletDetail: tabletDetailSlice,
+  products: productsSlice,
   cart: persistReducer(persistConfigCart, cartSlice),
   favourites: persistReducer(persistConfigFavourites, favouritesSlices),
 });

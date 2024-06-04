@@ -1,5 +1,5 @@
-import { IPhone } from './Phone.interface';
+import { IProduct } from './Product.interface';
 
-export interface ICartPhone extends IPhone {
+export interface ICartPhone extends IProduct {
   quantity: number,
 }

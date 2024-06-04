@@ -1,23 +1,24 @@
 import { useEffect, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
-import { PhonesList } from '../components/PhoneList';
+import { ProductsList } from '../components/ProductsList';
 import { useAppSelector } from '../app/hooks';
 import { getCheckQuery } from '../helper';
 import {
   selectPhones,
-  selectPhonesStatus,
-} from '../features/phoneSlice';
+  selectProductsStatus,
+} from '../features/productsSlice';
 
 import { Loader } from '../components/Loader';
 import { Error } from './Error';
 import { Breadcrumbs } from '../components/Bredcrambs';
 
-import '../components/PhoneList/PhonesList.scss';
+import '../components/ProductsList/ProductsList.scss';
+import { IPhone } from '../types';
 
-export const PhonesListPage = () => {
-  const phones = useAppSelector(selectPhones) || [];
-  const phonesStatus = useAppSelector(selectPhonesStatus);
+export const PhonesPage = () => {
+  const phones: IPhone[] = useAppSelector(selectPhones) || [];
+  const productsStatus = useAppSelector(selectProductsStatus);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
@@ -38,9 +39,12 @@ export const PhonesListPage = () => {
         {`${filteredPhones.length} ${query.length > 0 ? 'result' : 'models'}`}
       </p>
 
-      {phonesStatus === 'loading' && <Loader />}
-      {phonesStatus === 'succeeded' && <PhonesList phones={filteredPhones} />}
-      {phonesStatus === 'error'
+      {productsStatus === 'loading' && <Loader />}
+      {
+        productsStatus === 'succeeded'
+        && <ProductsList products={filteredPhones} />
+      }
+      {productsStatus === 'error'
         && <Error message="Sorry but phones not found" />}
     </div>
   );

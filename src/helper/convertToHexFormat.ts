@@ -5,6 +5,22 @@ export const convertToHexFormat = (colorName: any) => {
     return '#4C4C4C';
   }
 
+  if (colorName === 'midnight') {
+    return '#1d1936';
+  }
+
+  if (colorName === 'spaceblack') {
+    return '#505150';
+  }
+
+  if (colorName === 'sierrablue') {
+    return '#BFDAF7';
+  }
+
+  if (colorName === 'graphite') {
+    return '#41424C';
+  }
+
   if (colorName === 'midnightgreen') {
     return '#5F7170';
   }

@@ -1,9 +1,14 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .cart {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 16px;
+
+  @include onDesktop {
+    flex-direction: row;
+  }
 
   &__list {
     list-style: none;
@@ -12,10 +17,18 @@
   }
 
   &__item {
-    width: 752px;
-    height: 128px;
+    width: 100%;
+    height: 160px;
     border: 1px solid $grayElements;
     margin-bottom: 16px;
+
+    @include onTablet {
+      height: 128px;
+    }
+
+    @include onDesktop {
+      width: 752px;
+    }
   }
 
   &__wrapper {
@@ -28,22 +41,36 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 368px;
-    height: 206px;
+    width: 100%;
+    height: 190px;
     border: 1px solid $grayElements;
     margin-bottom: 20px;
+    padding: 24px;
+
+    @include onTablet {
+      margin-bottom: 64px;
+    }
+
+    @include onDesktop {
+      width: 368px;
+      height: 206px;
+    }
   }
 
   &__description {
-    margin-bottom: 48px;
+    margin-bottom: 32px;
     color: $graySecondary;
+
+    @include onDesktop {
+      margin-bottom: 46px;
+    }
   }
 
   &__button {
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
-    width: 320px;
+    width: 100%;
     height: 48px;
     background-color: $grayPrimary;
     color: $white;
@@ -54,10 +81,14 @@
       content: "";
       display: block;
       position: absolute;
-      bottom: 75px;
+      bottom: 65px;
       height: 1px;
       width: 100%;
       background-color: $grayElements;
+
+      @include onDesktop {
+        bottom: 73px;
+      }
     }
 
     &:hover {

@@ -9,12 +9,14 @@ import {
   Home,
   Accessories,
   PhoneDetailPage,
-  PhoneRoot,
-  PhonesListPage,
+  RootOutlet,
+  PhonesPage,
   FavouritesPage,
   Tablets,
   CartPage,
 } from './Page';
+import { TabletDetailPage } from './Page/TabletsDetailPage';
+import { AccessoriesDetailPage } from './Page/AccessoriesDetailPage';
 
 const router = createHashRouter([
   {
@@ -31,20 +33,46 @@ const router = createHashRouter([
       },
       {
         path: 'phones',
-        element: <PhoneRoot />,
+        element: <RootOutlet />,
         children: [
           {
             index: true,
-            element: <PhonesListPage />,
+            element: <PhonesPage />,
           },
           {
-            path: ':phoneId',
+            path: ':itemId',
             element: <PhoneDetailPage />,
           },
         ],
       },
-      { path: 'tablets', element: <Tablets /> },
-      { path: 'accesories', element: <Accessories /> },
+      {
+        path: 'tablets',
+        element: <RootOutlet />,
+        children: [
+          {
+            index: true,
+            element: <Tablets />,
+          },
+          {
+            path: ':itemId',
+            element: <TabletDetailPage />,
+          },
+        ],
+      },
+      {
+        path: 'accessories',
+        element: <RootOutlet />,
+        children: [
+          {
+            index: true,
+            element: <Accessories />,
+          },
+          {
+            path: ':itemId',
+            element: <AccessoriesDetailPage />,
+          },
+        ],
+      },
       { path: 'favourites', element: <FavouritesPage /> },
       { path: 'cart', element: <CartPage /> },
     ],

@@ -4,10 +4,16 @@ import { categoryImages } from '../../helper';
 import './ShopByCategory.scss';
 
 type Props = {
-  phonesLength: number
+  phonesLength: number;
+  tabletsLength: number;
+  accessoriesLength: number;
 };
 
-export const ShopByCategory: FC<Props> = ({ phonesLength }) => {
+export const ShopByCategory: FC<Props> = ({
+  phonesLength,
+  tabletsLength,
+  accessoriesLength,
+}) => {
   const handleClick = () => {
     window.scrollTo({ top: 0, left: 0 });
   };
@@ -15,11 +21,11 @@ export const ShopByCategory: FC<Props> = ({ phonesLength }) => {
   return (
     <section className="shopcategory">
       <div>
-        <h1>Shop by category</h1>
+        <h2>Shop by category</h2>
       </div>
       <div className="shopcategory__models">
         <Link to="/phones" className="shopcategory__link" onClick={handleClick}>
-          <div className="shopcategory__model shopcategory__model--beige">
+          <div className="shopcategory__model shopcategory__model--grey">
             <img
               className="shopcategory__img"
               src={categoryImages[0].img}
@@ -38,9 +44,9 @@ export const ShopByCategory: FC<Props> = ({ phonesLength }) => {
             />
           </div>
           <p className="shopcategory__title">Tablets</p>
-          <p className="shopcategory__count">0 models</p>
+          <p className="shopcategory__count">{`${tabletsLength} models`}</p>
         </Link>
-        <Link to="/accesories" className="shopcategory__link">
+        <Link to="/accessories" className="shopcategory__link">
           <div className="shopcategory__model shopcategory__model--red">
             <img
               className="shopcategory__img shopcategory__img--accessories"
@@ -49,7 +55,7 @@ export const ShopByCategory: FC<Props> = ({ phonesLength }) => {
             />
           </div>
           <p className="shopcategory__title">Accessories</p>
-          <p className="shopcategory__count">0 models</p>
+          <p className="shopcategory__count">{`${accessoriesLength} models`}</p>
         </Link>
       </div>
     </section>

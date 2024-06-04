@@ -42,11 +42,11 @@ export const Buttons: FC<Props> = ({
 
   useEffect(() => {
     const isPhoneInFavourites = favouritesPhones.some(
-      (item) => item.phoneId === phoneID,
+      (item) => item.itemId === phoneID,
     );
 
     const isPhoneInCart = cartPhones.some(
-      (item) => item.phoneId === phoneID,
+      (item) => item.itemId === phoneID,
     );
 
     setHasPhoneInCart(isPhoneInCart);

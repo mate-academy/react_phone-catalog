@@ -1,14 +1,23 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .phoneDetail {
   display: flex;
   flex-direction: column;
 
+  &__title {
+    margin-bottom: 40px;
+  }
+
   &__bottom {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     gap: 64px;
     margin-bottom: 80px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
   }
 
   &__button {
@@ -31,30 +40,61 @@
 .top {
   height: 100%;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 64px;
   margin-bottom: 81px;
 
+  @include onTablet {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+  }
+
   &__photo {
     height: 100%;
-    width: 560px;
+    width: 100%;
     gap: 16px;
     display: flex;
+    flex-direction: column-reverse;
+
+    @include onTablet {
+      flex-direction: row;
+      width: 560px;
+    }
   }
 
   &__parameters {
-    width: 512px;
+    width: 100%;
+
+    @include onTablet {
+      width: 512px;
+    }
   }
 }
 
 .parameters {
   display: flex;
+  position: relative;
 
   &__block {
-    width: 320px;
+    width: 100%;
+
+    @include onTablet {
+      width: 288px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
   }
 
   &__id {
+    position: absolute;
+    right: 0;
+    top: 0;
     width: 192px;
     text-align: end;
     font-size: 12px;
@@ -169,8 +209,12 @@
   &__slider {
     display: flex;
     gap: 16px;
-    flex-direction: column;
+    flex-direction: row;
     list-style: none;
+
+    @include onTablet {
+      flex-direction: column;
+    }
   }
 
   &__img {
@@ -178,8 +222,18 @@
     background-color: #fff;
     border: 1px solid $grayElements;
     padding: 7px;
-    width: 80px;
-    height: 80px;
+    width: 100%;
+    height: 49px;
+
+    @include onTablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
 
     & img {
       height: 100%;
@@ -189,9 +243,14 @@
   }
 
   &__current {
-    width: 464px;
-    height: 464px;
+    width: 100%;
+    height: 288px;
     padding: 11px;
+
+    @include onDesktop {
+      width: 464px;
+      height: 464px;
+    }
 
     & img {
       height: 100%;
@@ -216,7 +275,15 @@
 }
 
 .about {
-  width: 560px;
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 560px;
+  }
 
   &__title {
     font-size: 22px;
@@ -265,7 +332,15 @@
 }
 
 .tech-specs {
-  width: 512px;
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 512px;
+  }
 
   &__title {
     font-size: 22px;
@@ -303,6 +378,10 @@
 
     & span {
       color: $grayPrimary;
+    }
+
+    &:last-child > span {
+      width: 150px;
     }
   }
 }

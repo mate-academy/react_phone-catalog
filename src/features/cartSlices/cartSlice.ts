@@ -24,7 +24,7 @@ const cartSlice = createSlice({
     },
     incrementPhoneQauntity(state, action: PayloadAction<ICartPhone>) {
       const phone = state.phones.find(
-        (item) => item.phoneId === action.payload.phoneId,
+        (item) => item.itemId === action.payload.itemId,
       );
 
       if (phone) {
@@ -34,13 +34,13 @@ const cartSlice = createSlice({
     },
     decrementPhoneQauntity(state, action: PayloadAction<string>) {
       const phone = state.phones.find(
-        (item) => item.phoneId === action.payload,
+        (item) => item.itemId === action.payload,
       );
 
       if (phone) {
         if (phone.quantity === 1) {
           state.phones = state.phones.filter(
-            (item) => item.phoneId !== action.payload,
+            (item) => item.itemId !== action.payload,
           );
           state.quantityCart -= 1;
         } else {
@@ -51,12 +51,12 @@ const cartSlice = createSlice({
     },
     removePhoneFromCart(state, action: PayloadAction<string>) {
       const phone = state.phones.find(
-        (item) => item.phoneId === action.payload,
+        (item) => item.itemId === action.payload,
       );
 
       if (phone) {
         state.phones = state.phones.filter(
-          (item) => item.phoneId !== action.payload,
+          (item) => item.itemId !== action.payload,
         );
         state.quantityCart -= phone.quantity;
       }

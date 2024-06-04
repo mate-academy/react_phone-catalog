@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { IPhone } from '../../types';
 import { PhoneItem } from '../PhoneItem';
-import '../PhoneList/PhonesList.scss';
+import '../ProductsList/ProductsList.scss';
 import './Favourites.scss';
 
 type Props = {

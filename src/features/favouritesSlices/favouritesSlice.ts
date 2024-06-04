@@ -21,7 +21,7 @@ const favouritesSlices = createSlice({
   reducers: {
     addToFavourites(state, action: PayloadAction<IPhone>) {
       const hasPhones = state.favourites.find(
-        (phones) => phones.phoneId === action.payload.phoneId,
+        (phones) => phones.itemId === action.payload.itemId,
       );
 
       if (!hasPhones) {
@@ -31,7 +31,7 @@ const favouritesSlices = createSlice({
         state.quantityFavourites += 1;
       } else {
         state.favourites = state.favourites.filter(
-          (phones) => phones.phoneId !== action.payload.phoneId,
+          (phones) => phones.itemId !== action.payload.itemId,
         );
         state.quantityFavourites -= 1;
       }

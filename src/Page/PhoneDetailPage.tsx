@@ -6,8 +6,8 @@ import {
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import {
-  fetchPhoneDetail, selectPhoneDetailStatus,
-} from '../features/phoneDetail';
+  fetchPhoneDetail, selectPhoneDetail, selectPhoneDetailStatus,
+} from '../features/phoneDetailSlices';
 import { Breadcrumbs } from '../components/Bredcrambs';
 import { PhoneDetail } from '../components/PhoneDetail';
 import { Loader } from '../components/Loader';
@@ -15,21 +15,24 @@ import { ArrowLeft } from '../icons';
 
 import '../components/PhoneDetail/PhoneDetail.scss';
 import { Error } from './Error';
+import { selectPhones } from '../features/productsSlice';
 
 export const PhoneDetailPage = () => {
-  const { phoneId } = useParams();
+  const { itemId } = useParams();
   const phoneDetailStatus = useAppSelector(selectPhoneDetailStatus);
+  const phones = useAppSelector(selectPhones);
+  const phone = useAppSelector(selectPhoneDetail);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { state } = useLocation();
+  const location = useLocation();
 
   const goBack = () => {
-    navigate({ pathname: '..', search: state?.search });
+    navigate({ pathname: '..', search: location.state?.search });
   };
 
   useEffect(() => {
-    dispatch(fetchPhoneDetail(phoneId || ''));
-  }, [dispatch, phoneId]);
+    dispatch(fetchPhoneDetail(itemId || ''));
+  }, [dispatch, itemId]);
 
   return (
     <>
@@ -47,7 +50,10 @@ export const PhoneDetailPage = () => {
             <span>Back</span>
           </button>
 
-          <PhoneDetail phoneId={phoneId} />
+          <PhoneDetail
+            item={phone}
+            items={phones}
+          />
         </>
       )}
       {phoneDetailStatus === 'error' && (

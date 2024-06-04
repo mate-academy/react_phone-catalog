@@ -42,14 +42,14 @@ export const CartList: FC<Props> = ({ phoneCart }) => {
       <div className="cart">
         <ul className="cart__list">
           {phoneCart.map((phone) => (
-            <li key={phone.phoneId} className="cart__item">
+            <li key={phone.itemId} className="cart__item">
               <CartItem phone={phone} />
             </li>
           ))}
         </ul>
         <div className="cart__wrapper">
           <div className="cart__price">
-            <h1>{formatter.format(totalPrice)}</h1>
+            <h2>{formatter.format(totalPrice)}</h2>
             <p
               className="cart__description"
             >

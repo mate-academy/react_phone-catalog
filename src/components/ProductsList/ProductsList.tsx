@@ -7,30 +7,30 @@ import { Pagination } from '../Pagination';
 import { DropDown } from '../DropDown/DropDown';
 import { TSort, TPage, IPhone } from '../../types';
 
-import './PhonesList.scss';
+import './ProductsList.scss';
 
 type Props = {
-  phones: IPhone[];
+  products: IPhone[];
 };
 
-export const PhonesList: FC<Props> = ({ phones }) => {
+export const ProductsList: FC<Props> = ({ products }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get('sort') || '';
   const perPage = +(searchParams.get('perPage') || 16);
   const page = +(searchParams.get('page') || '1');
 
-  const sortedPhones = useMemo(() => {
-    return sortPhones(phones, sort);
-  }, [phones, sort]);
+  const sortedProducts = useMemo(() => {
+    return sortPhones(products, sort);
+  }, [products, sort]);
 
   const firstItem = (page - 1) * perPage;
 
   const lastItem = Math.min(
     (page) * perPage,
-    sortedPhones.length,
+    sortedProducts.length,
   );
 
-  const currentItems = sortedPhones.slice(firstItem, lastItem);
+  const currentItems = sortedProducts.slice(firstItem, lastItem);
 
   const onPageChange = ((value: number) => {
     setSearchWith(
@@ -41,7 +41,7 @@ export const PhonesList: FC<Props> = ({ phones }) => {
   });
 
   const handleItemsPerPage = (value: string) => {
-    const setValue = value === 'All' ? 71 : value;
+    const setValue = value === 'All' ? sortedProducts.length : value;
 
     setSearchWith(
       searchParams,
@@ -98,15 +98,15 @@ export const PhonesList: FC<Props> = ({ phones }) => {
           label="Items on page"
           listOfProperties={listOfPage}
           handleClick={handleItemsPerPage}
-          nameProperties={perPage === 71 ? 'All' : perPage}
+          nameProperties={perPage === sortPhones.length ? 'All' : perPage}
         />
       </div>
 
-      {phones.length ? (
+      {products.length ? (
         <>
           <ul className="phoneList__grid" data-cy="productList">
             {currentItems.map((phone) => (
-              <li className="phoneList__gridItem" key={phone.phoneId}>
+              <li className="phoneList__gridItem" key={phone.itemId}>
                 <PhoneItem phone={phone} />
               </li>
             ))}
@@ -117,7 +117,7 @@ export const PhonesList: FC<Props> = ({ phones }) => {
           ) : (
             <div className="phoneList__pagiantion">
               <Pagination
-                totalItems={phones.length}
+                totalItems={products.length}
                 currentPage={page}
                 onPageChange={onPageChange}
                 itemPerPage={perPage}

@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom';
 
-export const PhoneRoot = () => {
+export const RootOutlet = () => {
   return (
     <>
       <Outlet />

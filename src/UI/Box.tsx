@@ -9,7 +9,7 @@ type Props = {
 
 export const Box: FC<Props> = ({ children, classname }) => {
   return (
-    <div className={cn('content', classname)}>{children}</div>
+    <div className={cn('box', classname)}>{children}</div>
   );
 };
 

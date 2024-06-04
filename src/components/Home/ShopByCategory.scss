@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .shopcategory {
   display: flex;
@@ -12,19 +13,35 @@
   &__models {
     display: flex;
     justify-content: center;
+    flex-direction: column;
     align-items: center;
     gap: 16px;
+
+    @include onTablet {
+      flex-direction: row;
+    }
   }
 
   &__model {
     position: relative;
     overflow: hidden;
-    width: 368px;
-    height: 368px;
+    width: 100%;
+    height: 288px;
     margin-bottom: 24px;
 
-    &--beige {
-      background-color: #fcdbc1;
+    @include onTablet {
+      height: 187px;
+      width: 100%;
+    }
+
+    @include onDesktop {
+      height: 368px;
+      width: 368px;
+    }
+
+    &--grey {
+      background-color: rgba(109, 100, 116, 1);
+      ;
     }
 
     &--black {
@@ -38,21 +55,21 @@
 
   &__link {
     text-decoration: none;
+    width: 100%;
   }
 
   &__img {
     position: absolute;
-    top: 40px;
+    top: 60px;
     right: -70px;
 
-    object-fit: cover;
-    flex-shrink: 0;
-    flex-grow: 0;
+    object-fit: contain;
     width: 100%;
     height: 100%;
 
-    &--accessories {
-      object-position: left;
+    @include onTablet {
+      top: 40px;
+      right: -30px;
     }
   }
 

@@ -2,10 +2,11 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { FC, useEffect } from 'react';
 
 import { IPhone } from '../../types/Phone.interface';
-import { BASE_URL, formatter } from '../../helper';
+import { formatter } from '../../helper';
 import { Buttons } from '../Buttons';
 
 import './PhoneItem.scss';
+import { BASE_URL_PHOTO } from '../../helper/BASE_URL';
 
 type Props = {
   phone: IPhone,
@@ -13,7 +14,7 @@ type Props = {
 
 export const PhoneItem: FC<Props> = ({ phone }) => {
   const {
-    phoneId,
+    itemId,
     image,
     price,
     fullPrice,
@@ -21,6 +22,7 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
     screen,
     capacity,
     ram,
+    category,
   } = phone;
 
   const [searchParams] = useSearchParams();
@@ -38,24 +40,24 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
           <section className="phoneItem">
             <Link
               to={
-                `/phones/${phone.phoneId}`
+                `/${category}/${phone.itemId}`
               }
               style={{ textDecorationLine: 'none' }}
               state={{ search: searchParams.toString() }}
             >
               <article className="phoneItem__image">
-                <img src={`${BASE_URL}${image}`} alt="Modile Phone" />
+                <img src={`${BASE_URL_PHOTO}/${image}`} alt="Modile Phone" />
               </article>
               <p className="phoneItem__title">{`${name} (iMT9G2FS/A)`}</p>
             </Link>
             <article className="phoneItem__description">
               <div className="phoneItem__prices">
-                <h2 className="phoneItem__price">{formatPrice}</h2>
-                <h2
+                <h3 className="phoneItem__price">{formatPrice}</h3>
+                <h3
                   className="phoneItem__fullPrice"
                 >
                   {formatFullPrice}
-                </h2>
+                </h3>
               </div>
 
               <div className="phoneItem__parameters">
@@ -81,7 +83,7 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
                   widthAddButton={176}
                   heightAddButton={40}
                   phone={phone}
-                  phoneID={phoneId}
+                  phoneID={itemId}
                 />
               </div>
             </article>

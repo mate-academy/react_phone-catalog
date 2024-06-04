@@ -7,9 +7,21 @@
   }
 
   &__gridItem {
-    grid-column: span 6;
+    grid-column: span 4;
     list-style: none;
     padding-bottom: 40px;
+
+    @include onTablet {
+      grid-column: span 6;
+    }
+
+    @include onMiddleScreen {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+    }
   }
 
   &__dropdown {

@@ -1,4 +1,4 @@
-import { IPhoneDetail } from '../types/PhoneDetail.interface';
+import { IPhoneDetail } from '../types';
 
 export const truncatePhoneGB = (
   el: IPhoneDetail | null,
@@ -7,9 +7,13 @@ export const truncatePhoneGB = (
 ) => {
   const phoneGB = el && id?.split('-');
 
-  const modifyPhoneGB = phoneGB?.map(
-    (item) => (item.includes('gb') ? value.toLowerCase() : item),
-  ).join('-');
+  const modifyPhoneGB = phoneGB?.map((item) => {
+    if (item.includes('gb') || item.includes('tb') || item.includes('mm')) {
+      return value.toLowerCase();
+    }
+
+    return item;
+  }).join('-');
 
   return modifyPhoneGB;
 };

@@ -1,3 +1,3 @@
 export { ImageSlider } from './ImageSlider';
-export { PhonesSlider } from './PhonesSlider';
+export { ProductsSlider } from './ProductsSlider';
 export { ShopByCategory } from './ShopByCategory';
