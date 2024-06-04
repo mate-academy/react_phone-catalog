@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import s from './PicturesSlider.module.css';
 
 const slides = [
-  { url: '/img/banner-phones.png', id: 1, path: 'phones' },
-  { url: '/img/banner-tablets.png', id: 2, path: 'tablets' },
-  { url: '/img/banner-accessories.png', id: 3, path: 'accessories' },
+  { url: 'img/banner-phones.png', id: 1, path: 'phones' },
+  { url: 'img/banner-tablets.png', id: 2, path: 'tablets' },
+  { url: 'img/banner-accessories.png', id: 3, path: 'accessories' },
 ];
 
 const PicturesSlider = () => {
@@ -32,7 +32,7 @@ const PicturesSlider = () => {
     <>
       <div className={s.sliderContainer}>
         <button className={s.btn} onClick={handlePrevSlide}>
-          <img src="/img/icons/arrow-left-dark-icon.svg" alt="Previous Slide" />
+          <img src="img/icons/arrow-left-dark-icon.svg" alt="Previous Slide" />
         </button>
         <div className={s.slider}>
           <div className={s.sliders}>
@@ -48,7 +48,7 @@ const PicturesSlider = () => {
           </div>
         </div>
         <button className={s.btn} onClick={handleNextSlide}>
-          <img src="/img/icons/arrow-right-dark-icon.svg" alt="Next Slide" />
+          <img src="img/icons/arrow-right-dark-icon.svg" alt="Next Slide" />
         </button>
       </div>
 
