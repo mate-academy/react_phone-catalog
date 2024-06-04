@@ -1,8 +1,86 @@
 @use '../../styles/block/utils/_variables.scss' as *;
+@import '../../styles/block/utils/mixins';
 
 .main {
   // background-color: $background-color;
   &__content {
+  }
+
+  &__bottom {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-bottom: 80px;
+  }
+
+  &__content {
+    margin-inline: 16px;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+
+  &__title {
+    line-height: 56px;
+    font-size: 48px;
+    font-weight: 800;
+    margin: 56px 0;
+  }
+
+  &__slider {
+    display: flex;
+    position: relative;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-height: 432px;
+  }
+
+  &__sliderButton {
+    box-sizing: border-box;
+    min-width: 32px;
+    background-color: $button-color;
+    border: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  &__arrowIcon {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__containerSmallBtn {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    bottom: -20px;
+  }
+
+  &__smallButton {
+    height: 4px;
+    width: 14px;
+    border-radius: 0;
+    background-color: $button-slider-color;
+    border: none;
+    position: relative;
+    margin: 4px;
+  }
+
+  &__smallButton:not(:last-child) {
+    margin: 4px;
+  }
+
+  &__smallButton:before {
+    position: absolute;
+    content: '';
+    top: -15px;
+    left: -5px;
+    right: -5px;
+    bottom: -15px;
+    cursor: pointer;
+  }
+
+  &__activeButton {
+    background-color: $button-active-slider-color;
   }
 }
 
@@ -13,4 +91,37 @@
 }
 
 .brandNewModels {
+}
+
+@include onTablet {
+  .main {
+    &__title {
+      margin: 48px auto;
+    }
+  }
+}
+
+@include onPhone {
+  .main {
+    margin-bottom: 56px;
+    &__actions__link {
+      height: 48px;
+      width: 48px;
+    }
+
+    &__title {
+      line-height: 41px;
+      margin: 24px 16px;
+      letter-spacing: -1%;
+      font-size: 32px;
+    }
+
+    &__bottom {
+      max-width: 100%;
+    }
+
+    &__content {
+      margin: 0;
+    }
+  }
 }

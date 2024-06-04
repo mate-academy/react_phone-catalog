@@ -1,29 +1,30 @@
-import first from './image/BannerImage/first.png';
-import second from './image/BannerImage/phone-bunner.jpg';
-import third from './image/BannerImage/phone-third.png';
-import secondPortrait from './image/BannerImage/portrain-second.jpg';
-import thirdPortrait from './image/BannerImage/phone-four.webp';
+import desctopFirst from './image/BannerImage/desctop-first.png';
+import desctopSecond from './image/BannerImage/desctop-second.jpg';
+import desctopThird from './image/BannerImage/desctop-third.png';
+import firstMobile from './image/BannerImage/first-mobile.png';
+import secontMobile from './image/BannerImage/socond-mobile.jpg';
+import thirdMobile from './image/BannerImage/third-mobile.webp';
 
 export const DeskTopBannerImages = [
   {
-    src: first,
+    src: desctopFirst,
   },
   {
-    src: second,
+    src: desctopSecond,
   },
   {
-    src: third,
+    src: desctopThird,
   },
 ];
 
 export const MobileBannerImages = [
   {
-    src: first,
+    src: firstMobile,
   },
   {
-    src: secondPortrait,
+    src: secontMobile,
   },
   {
-    src: thirdPortrait,
+    src: thirdMobile,
   },
 ];

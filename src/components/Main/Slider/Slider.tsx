@@ -1,8 +1,8 @@
 import style from './Slider.module.scss';
 import { useCallback, useContext, useRef, useState } from 'react';
-import { BreakPointsContext } from '../../../../store/BreakPointsProvider';
-import { StateContext } from '../../../../store/StateProvider';
-import { DeskTopBannerImages, MobileBannerImages } from '../../../../constant';
+import { BreakPointsContext } from '../../../store/BreakPointsProvider';
+import { StateContext } from '../../../store/StateProvider';
+import { DeskTopBannerImages, MobileBannerImages } from '../../../constant';
 
 export const Slider = () => {
   const myRef = useRef<HTMLDivElement>(null);
