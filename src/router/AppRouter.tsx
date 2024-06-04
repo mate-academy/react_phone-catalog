@@ -38,6 +38,8 @@ export const AppRouter = () => {
             element={<div>Single Accessories Details</div>}
           />
         </Route>
+
+        <Route path="*" element={<div>Not found page</div>} />
       </Route>
     </Routes>
   );
