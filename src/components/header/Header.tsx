@@ -1,4 +1,4 @@
-import React, { useContext, useRef } from 'react';
+import React, { useContext, useRef, useState } from 'react';
 import styles from './Header.module.scss';
 // import { useBreakpoint } from '../../breakPoints/BreakPoint';
 import { ContextApp } from '../../appContext/AppContext';
@@ -18,21 +18,29 @@ import { Link } from 'react-router-dom';
 export const Header: React.FC = () => {
   const { app } = useContext(ContextApp);
   const burger = useRef<HTMLDivElement>(null);
+  const [isBurgerClose, setIsBurgerClose] = useState(true);
   // const isPhone = useBreakpoint('phone');
 
   const handlerOpenBurger = () => {
-    if (burger.current && app.current) {
+    if (burger.current && app.current && isBurgerClose) {
+      setIsBurgerClose(state => !state)
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
-    }
-  };
-
-  const handlerCloseBurger = () => {
-    if (burger.current && app.current) {
+    } else if (burger.current && app.current && !isBurgerClose) {
+      setIsBurgerClose(state => !state);
       burger.current.style.transform = 'translateX(+100%)';
       document.body.style.overflow = 'visible';
     }
   };
+
+  console.log('isBurgerClose', isBurgerClose)
+
+  // const handlerCloseBurger = () => {
+  //   if (burger.current && app.current) {
+  //     burger.current.style.transform = 'translateX(+100%)';
+  //     document.body.style.overflow = 'visible';
+  //   }
+  // };
 
   return (
     <header className={styles.header} id="header">
@@ -40,14 +48,14 @@ export const Header: React.FC = () => {
         <img src=".\img\svg\header_Logo.svg" className="logo" />
 
         <div ref={burger} className={styles[`header__burger_menu`]}>
-          <div className={styles['header__burger_menu__container']}>
+          {/* <div className={styles['header__burger_menu__container']}>
             <img src=".\img\svg\header_Logo.svg" className="logo" />
 
             <div
               onClick={handlerCloseBurger}
               className={styles['header__burger_menu__container__close']}
             />
-          </div>
+          </div> */}
 
           <ul className={styles[`header__burger_menu__list`]}>
             <li className={styles[`header__burger_menu__list__element`]}>
@@ -73,11 +81,21 @@ export const Header: React.FC = () => {
 
       <div className={styles[`header__container--2`]}>
         <div onClick={handlerOpenBurger} className={styles[`header__burger`]}>
-          <img
-            src=".\img\svg\burger_menu.svg"
-            alt="burger menu"
-            className={styles['header__burger__img']}
-          />
+          {isBurgerClose && (
+            <img
+              src=".\img\svg\burger_menu.svg"
+              alt="burger menu"
+              className={styles['header__burger__img']}
+            />
+          )}
+
+          {!isBurgerClose && (
+            <img
+              src=".\img\svg\close_burger.svg"
+              alt="burger menu"
+              className={styles['header__burger__img']}
+            />
+          )}
         </div>
 
         <a href="#fav" className={styles[`header__fav`]}>

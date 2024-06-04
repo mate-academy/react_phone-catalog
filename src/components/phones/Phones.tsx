@@ -7,12 +7,18 @@ import { PhoneCard } from './productCard';
 import { Phone } from '../types/Phone';
 import { Product } from '../types/Product';
 
-type SortBy = 'Newest' | 'Alphabetically' | 'Cheapest';
+const SORT_BY = {
+  Newest: 'newest',
+  Alphabetical: 'alphabetical',
+  Cheapest: 'cheapest',
+} as const;
 
-function sortBy(products: Product[], phones: Phone[], sortBy: SortBy ): Phone[] {
+type SortBy = (typeof SORT_BY)[keyof typeof SORT_BY];
+
+function sortBy(products: Product[], phones: Phone[], sortBy: SortBy): Phone[] {
   let copyPhones: Phone[] = [];
 
-  if (sortBy === 'Newest') {
+  if (sortBy === 'newest') {
     products
       .sort((a, b) => b.year - a.year)
       .forEach(product => {
@@ -26,7 +32,7 @@ function sortBy(products: Product[], phones: Phone[], sortBy: SortBy ): Phone[] 
       });
   }
 
-  if (sortBy === 'Alphabetically') {
+  if (sortBy === 'alphabetical') {
     products
       .sort((a, b) => a.name.localeCompare(b.name))
       .forEach(product => {
@@ -40,7 +46,7 @@ function sortBy(products: Product[], phones: Phone[], sortBy: SortBy ): Phone[] 
       });
   }
 
-  if (sortBy === 'Cheapest')
+  if (sortBy === 'cheapest')
     products
       .sort((a, b) => a.price - b.price)
       .forEach(product => {
@@ -58,7 +64,7 @@ function sortBy(products: Product[], phones: Phone[], sortBy: SortBy ): Phone[] 
 
 export const Phones: React.FC = () => {
   const { phonesTotalNumber, products, phones } = useContext(ContextApp);
-  const [selectedOption, setSelectedOption] = useState<SortBy>('Newest');
+  const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
 
@@ -84,7 +90,7 @@ export const Phones: React.FC = () => {
       : sortedPhones.slice(startFromElement, endOnElement);
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-  setSelectedOption(e.target.value as SortBy)
+    setSelectedOption(e.target.value as SortBy);
   };
 
   const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -114,9 +120,9 @@ export const Phones: React.FC = () => {
             value={selectedOption}
             onChange={handleChangeSort}
           >
-            <option value='Newest'>Newest</option>
-            <option value='Alphabetically'>Alphabetically</option>
-            <option value='Cheapest'>Cheapest</option>
+            <option value="newest">Newest</option>
+            <option value="alphabetical">Alphabetically</option>
+            <option value="cheapest">Cheapest</option>
           </select>
         </div>
 

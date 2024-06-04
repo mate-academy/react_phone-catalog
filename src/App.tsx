@@ -6,8 +6,8 @@ import { useContext } from 'react';
 import { ContextApp } from './appContext/AppContext';
 import { NotFoundPage } from './components/notFoundPage';
 import { Home } from './components/home';
-import { Phones } from './components/phones/Phones';
 import { Tablets } from './components/tablets';
+import { Phones } from './components/phones';
 
 export const App = () => {
   const { app } = useContext(ContextApp);
