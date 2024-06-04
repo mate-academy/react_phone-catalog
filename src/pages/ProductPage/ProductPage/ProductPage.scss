@@ -83,6 +83,12 @@
 
       place-self: center center;
     }
+
+    @include for-desktop {
+      grid-column: span 24;
+
+      place-self: center center;
+    }
   }
 }
 

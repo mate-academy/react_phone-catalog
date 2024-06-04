@@ -11,12 +11,12 @@
   gap: 40px $gap-small;
 
   &__item {
-    flex-grow: 1;
-
-    width: 100%;
-
     grid-column: span 1;
 
     display: flex;
+    justify-content: center;
+    flex-grow: 1;
+
+    width: 100%;
   }
 }
