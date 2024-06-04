@@ -1,18 +1,20 @@
 import './App.css';
 
-import { RouterProvider, createBrowserRouter } from 'react-router-dom';
+import { RouterProvider, createHashRouter } from 'react-router-dom';
 
-import AccessoriesPage from './modules/AccessoriesPage/PhonesPage';
-import HomePage from './modules/HomePage/HomePage';
 import Layout from './Layout/Layout';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
-import PhonesPage from './modules/PhonesPage/PhonesPage';
 import { ROUTES } from './constants/ROUTES';
+import AccessoriesPage from './modules/AccessoriesPage/PhonesPage';
+import CartPage from './modules/CartPage/CartPage';
+import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
+import HomePage from './modules/HomePage/HomePage';
+import PhonesPage from './modules/PhonesPage/PhonesPage';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
 // eslint-disable-next-line max-len
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: ROUTES.HOME,
     element: <Layout />,
@@ -35,14 +37,12 @@ const router = createBrowserRouter([
         element: <AccessoriesPage />,
       },
       {
-        path: ROUTES.PRODUCT,
-        element: null,
-        children: [
-          {
-            path: ROUTES.PRODUCT_DETAIL,
-            element: <ProductDetailsPage />,
-          },
-        ],
+        path: ROUTES.FAVORITES,
+        element: <FavoritesPage />,
+      },
+      {
+        path: ROUTES.CART,
+        element: <CartPage />,
       },
     ],
   },

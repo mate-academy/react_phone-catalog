@@ -1,1 +1,126 @@
-/* empty */
+.footer {
+  border-top: 1px solid var(--elements-color);
+}
+
+.footer_content {
+  height: 96px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  align-items: center;
+  color: var(--white-color);
+}
+
+.footer__logo_container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  width: 379px;
+}
+
+.footer__logo {
+  width: 89px;
+  height: 32px;
+}
+
+.footer__link__container {
+  width: 379px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer__link {
+  text-transform: uppercase;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  color: var(--secondary-color);
+}
+
+.back__to__top_link {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--secondary-color);
+  display: flex;
+  align-items: center;
+  scroll-behavior: smooth;
+}
+
+.back__to__top::first-letter {
+  text-transform: uppercase;
+}
+
+.back__to__top_link::after {
+  content: '';
+  display: inline-block;
+  background-image: url('../../icons/arrow_up.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 16px 16px;
+  margin-left: 16px;
+
+  height: 32px;
+  width: 32px;
+
+  border: 1px solid var(--icon-color);
+}
+
+.back_to_top_content {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-end;
+  width: 379px;
+}
+
+@media (max-width: 640px) {
+  .footer__logo_container {
+    width: 192px;
+  }
+  .footer__link__container {
+    width: 192px;
+  }
+  .back_to_top_content {
+    width: 192px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .footer__logo_container {
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  .footer__link {
+    margin-bottom: 16px;
+  }
+
+  .footer__link:last-child {
+    margin-bottom: 32px;
+  }
+
+  .footer__link__container {
+    width: 100%;
+
+    flex-direction: column;
+    align-items: first baseline;
+  }
+
+  .back_to_top_content {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .footer_content {
+    height: 257px;
+    padding: 32px 0;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: center;
+    color: var(--white-color);
+  }
+}
