@@ -3,4 +3,6 @@ export const ROUTES: Readonly<{ [key: string]: string }> = {
   PHONES: '/phones',
   TABLETS: '/tablets',
   ACCESSORIES: '/accessories',
+  PRODUCT: '/product',
+  PRODUCT_DETAIL: ':productId',
 };

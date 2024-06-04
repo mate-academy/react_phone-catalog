@@ -9,6 +9,8 @@ import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import PhonesPage from './modules/PhonesPage/PhonesPage';
 import { ROUTES } from './constants/ROUTES';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
+// eslint-disable-next-line max-len
+import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 
 const router = createBrowserRouter([
   {
@@ -31,6 +33,16 @@ const router = createBrowserRouter([
       {
         path: ROUTES.ACCESSORIES,
         element: <AccessoriesPage />,
+      },
+      {
+        path: ROUTES.PRODUCT,
+        element: null,
+        children: [
+          {
+            path: ROUTES.PRODUCT_DETAIL,
+            element: <ProductDetailsPage />,
+          },
+        ],
       },
     ],
   },
