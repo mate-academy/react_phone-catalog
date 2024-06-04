@@ -1,5 +1,5 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
-@import '../../../styles/block/utils/_mixins.scss';
+@use '../../styles/block/utils/_variables.scss' as *;
+@import '../../styles/block/utils/_mixins.scss';
 
 .menu {
   overflow: auto;
@@ -12,7 +12,6 @@
   pointer-events: none;
   font-size: 18px;
   scroll-behavior: smooth;
-  @include transitionPage;
 
   &__top {
     display: flex;

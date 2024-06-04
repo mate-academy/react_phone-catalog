@@ -1,14 +1,14 @@
-import { Logo } from '../../Logo/Logo';
+import { Logo } from '../Logos/Logo';
 import style from './AsideMenu.module.scss';
-import { LanguageContext } from '../../../store/LanguageProvider';
+import { LanguageContext } from '../../store/LanguageProvider';
 import { useContext } from 'react';
-import { LangButton } from '../LangButton';
-import ThemeButton from '../ThemeButton/ThemeButton';
-import { LogoFavorites } from '../../Logo/LogoFavorites';
-import { LogoCart } from '../../Logo/LogoCart';
-import { LogoClose } from '../../Logo/LogoClose';
-import data from '../../../data/NavList.json';
-import { StateContext } from '../../../store/StateProvider';
+import { LangButton } from '../Header/LangButton';
+import ThemeButton from '../Header/ThemeButton/ThemeButton';
+import { LogoFavorites } from '../Logos/LogoFavorites';
+import { LogoCart } from '../Logos/LogoCart';
+import { LogoClose } from '../Logos/LogoClose';
+import data from '../../utils/NavList.json';
+import { StateContext } from '../../store/StateProvider';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);

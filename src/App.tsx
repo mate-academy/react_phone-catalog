@@ -1,5 +1,5 @@
 import { Header } from './components/Header/Header';
-import { AsideMenu } from './components/Header/AsideMenu';
+import { AsideMenu } from './components/AsideMenu';
 import { useContext } from 'react';
 import { ThemeContext } from './store/ThemeProvider';
 import cn from 'classnames';

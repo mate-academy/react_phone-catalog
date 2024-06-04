@@ -1,37 +1,37 @@
 import ThemeButton from './ThemeButton/ThemeButton';
 import { LangButton } from './LangButton/LangButton';
-import { Logo } from '../Logo/Logo';
-import { LogoCart } from '../Logo/LogoCart';
+import { Logo } from '../Logos/Logo';
+import { LogoCart } from '../Logos/LogoCart';
 import { NavList } from './NavList/NavList';
-import { LogoFavorites } from '../Logo/LogoFavorites';
+import { LogoFavorites } from '../Logos/LogoFavorites';
 import style from './Header.module.scss';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
-import { LogoBurger } from '../Logo/LogoBurger';
+import { LogoBurger } from '../Logos/LogoBurger';
 import { StateContext } from '../../store/StateProvider';
-import { DeskTopBannerImages } from '../../constant';
+// import { desktopBanner } from '../../utils/BannerList';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
-  const { setOpenBurger, autoPlay, setCount } = useContext(StateContext);
+  const { setOpenBurger } = useContext(StateContext);
 
-  useEffect(() => {
-    if (autoPlay) {
-      const intervalId = setInterval(() => {
-        setCount(prevCount => {
-          if (prevCount + 1 > DeskTopBannerImages.length - 1) {
-            return 0;
-          } else {
-            return prevCount + 1;
-          }
-        });
-      }, 100000);
+  // useEffect(() => {
+  //   if (autoPlay) {
+  //     const intervalId = setInterval(() => {
+  //       setCurrentIndex(prevCount => {
+  //         if (prevCount + 1 > desktopBanner.length - 1) {
+  //           return 0;
+  //         } else {
+  //           return prevCount + 1;
+  //         }
+  //       });
+  //     }, 5000);
 
-      return () => clearInterval(intervalId);
-    } else {
-      return () => {};
-    }
-  }, [autoPlay, setCount]);
+  //     return () => clearInterval(intervalId);
+  //   } else {
+  //     return () => {};
+  //   }
+  // }, [autoPlay, setCurrentIndex]);
 
   return (
     <header className={style.header}>

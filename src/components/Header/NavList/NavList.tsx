@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import style from './NavList.module.scss';
-import data from '../../../data/NavList.json';
+import data from '../../../utils/NavList.json';
 export const NavList = () => {
   const { t } = useContext(LanguageContext);
 

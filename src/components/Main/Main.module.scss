@@ -2,10 +2,6 @@
 @import '../../styles/block/utils/mixins';
 
 .main {
-  // background-color: $background-color;
-  &__content {
-  }
-
   &__bottom {
     max-width: 1200px;
     margin: 0 auto;
@@ -24,73 +20,12 @@
     font-weight: 800;
     margin: 56px 0;
   }
-
-  &__slider {
-    display: flex;
-    position: relative;
-    justify-content: space-between;
-    margin: 0 auto;
-    max-height: 432px;
-  }
-
-  &__sliderButton {
-    box-sizing: border-box;
-    min-width: 32px;
-    background-color: $button-color;
-    border: 1px solid $border-color;
-    cursor: pointer;
-  }
-
-  &__arrowIcon {
-    width: 16px;
-    height: 16px;
-  }
-
-  &__containerSmallBtn {
-    display: flex;
-    position: absolute;
-    justify-content: center;
-    left: 0;
-    right: 0;
-    bottom: -20px;
-  }
-
-  &__smallButton {
-    height: 4px;
-    width: 14px;
-    border-radius: 0;
-    background-color: $button-slider-color;
-    border: none;
-    position: relative;
-    margin: 4px;
-  }
-
-  &__smallButton:not(:last-child) {
-    margin: 4px;
-  }
-
-  &__smallButton:before {
-    position: absolute;
-    content: '';
-    top: -15px;
-    left: -5px;
-    right: -5px;
-    bottom: -15px;
-    cursor: pointer;
-  }
-
-  &__activeButton {
-    background-color: $button-active-slider-color;
-  }
 }
 
 .container {
   max-width: 1136px;
   margin: 0 auto;
   height: 9000px;
-}
-
-.brandNewModels {
 }
 
 @include onTablet {
