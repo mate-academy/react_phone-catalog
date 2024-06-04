@@ -12,11 +12,13 @@ import { ArrowRight } from '../../Logos/ArrowRight';
 const MIN_SWIPE_REQUIRED = 40;
 
 export const Slider = () => {
+  const { isMobile } = useContext(BreakPointsContext);
+  const { autoPlay, setAutoPlay } = useContext(StateContext);
+
   const containerRef = useRef<HTMLDivElement>(null);
   const containerWidthRef = useRef(0);
   const minOffsetXRef = useRef(0);
-  const { isMobile } = useContext(BreakPointsContext);
-  const { autoPlay, setAutoPlay } = useContext(StateContext);
+
   const currentOffsetXRef = useRef(0);
   const startXRef = useRef(0);
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
@@ -71,6 +73,7 @@ export const Slider = () => {
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
     currentOffsetXRef.current = getRefValue(offsetXRef);
+    console.log(offsetXRef);
     startXRef.current = getTouchEventData(e).clientX;
     const containerEl = getRefValue(containerRef);
     const containerWidth = containerEl.offsetWidth;

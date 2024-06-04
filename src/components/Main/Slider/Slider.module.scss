@@ -36,6 +36,7 @@
   &__images {
     display: flex;
     @include transitionPage;
+    // touch-action: pan-x;
   }
 
   &__image {

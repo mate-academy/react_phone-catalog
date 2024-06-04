@@ -9,29 +9,10 @@ import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logos/LogoBurger';
 import { StateContext } from '../../store/StateProvider';
-// import { desktopBanner } from '../../utils/BannerList';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
   const { setOpenBurger } = useContext(StateContext);
-
-  // useEffect(() => {
-  //   if (autoPlay) {
-  //     const intervalId = setInterval(() => {
-  //       setCurrentIndex(prevCount => {
-  //         if (prevCount + 1 > desktopBanner.length - 1) {
-  //           return 0;
-  //         } else {
-  //           return prevCount + 1;
-  //         }
-  //       });
-  //     }, 5000);
-
-  //     return () => clearInterval(intervalId);
-  //   } else {
-  //     return () => {};
-  //   }
-  // }, [autoPlay, setCurrentIndex]);
 
   return (
     <header className={style.header}>
