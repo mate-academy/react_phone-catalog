@@ -27,7 +27,6 @@ export const Slider = () => {
   );
 
   const position = handleMouseEvent(clientX, clientXEnd, count);
-
   // const handleResize = useCallback(() => {
   //   if (myRef.current) {
   //     setWidth(myRef.current.offsetWidth);

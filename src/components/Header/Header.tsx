@@ -48,7 +48,7 @@ export const Header = () => {
             return prevCount + 1;
           }
         });
-      }, 10000);
+      }, 100000);
 
       return () => clearInterval(intervalId);
     } else {
@@ -57,80 +57,84 @@ export const Header = () => {
   }, [autoPlay, setCount]);
 
   return (
-    <header className={style.header}>
-      <div className={style.header__top}>
-        <div className={style.header__leftNav}>
-          <a href="#" className={style.header__link}>
-            <Logo className={style.header__logo} />
-          </a>
-          {!isLaptop && <NavList />}
-        </div>
-
-        <div className={style.header__actions}>
-          {!isLaptop ? (
-            <>
-              <div className={style.header__topBtn}>
-                <LangButton />
-              </div>
-              <div className={style.header__topBtn}>
-                <ThemeButton />
-              </div>
-              <a href="#" className={style.header__actionsLink}>
-                <LogoFavorites className={style.header__actionsImg} />
-              </a>
-              <a href="#" className={style.header__actionsLink}>
-                <LogoCart className={style.header__actionsImg} />
-              </a>
-            </>
-          ) : (
-            <a
-              href="#menu"
-              className={style.header__actionsLink}
-              onClick={() => setOpenBurger(true)}
-            >
-              <LogoBurger className={style.header__actionsImg} />
+    <>
+      <header className={style.header}>
+        <div className={style.header__top}>
+          <div className={style.header__leftNav}>
+            <a href="#" className={style.header__link}>
+              <Logo className={style.header__logo} />
             </a>
-          )}
-        </div>
-      </div>
-      {!openBurger && (
-        <div className={style.header__bottom}>
-          <div className={style.header__content}>
-            <h1 className={style.header__title}>{t('welcome')}</h1>
+            {!isLaptop && <NavList />}
+          </div>
 
-            <div className={style.header__slider}>
-              {!isMobile && (
-                <button
-                  className={style.header__sliderButton}
-                  onClick={handlePrev}
-                >
-                  <ArrowLeft className={style.header__arrowIcon} />
-                </button>
-              )}
-              <Slider />
-              <div className={style.header__containerSmallBtn}>
-                {DeskTopBannerImages.map((_, index) => (
-                  <span
-                    key={index}
-                    onClick={() => handleSmallButton(index)}
-                    className={classNames(style.header__smallButton, {
-                      [style.header__activeButton]: count === index,
-                    })}
-                  ></span>
-                ))}
-              </div>
-              {!isMobile && (
-                <button
-                  className={style.header__sliderButton}
-                  onClick={handleNext}
-                >
-                  <ArrowRight className={style.header__arrowIcon} />
-                </button>
-              )}
-            </div>
+          <div className={style.header__actions}>
+            {!isLaptop ? (
+              <>
+                <div className={style.header__topBtn}>
+                  <LangButton />
+                </div>
+                <div className={style.header__topBtn}>
+                  <ThemeButton />
+                </div>
+                <a href="#" className={style.header__actionsLink}>
+                  <LogoFavorites className={style.header__actionsImg} />
+                </a>
+                <a href="#" className={style.header__actionsLink}>
+                  <LogoCart className={style.header__actionsImg} />
+                </a>
+              </>
+            ) : (
+              <a
+                href="#menu"
+                className={style.header__actionsLink}
+                onClick={() => setOpenBurger(true)}
+              >
+                <LogoBurger className={style.header__actionsImg} />
+              </a>
+            )}
           </div>
         </div>
-      )}
-    </header>
+      </header>
+      <section>
+        {!openBurger && (
+          <div className={style.header__bottom}>
+            <div className={style.header__content}>
+              <h1 className={style.header__title}>{t('welcome')}</h1>
+
+              <div className={style.header__slider}>
+                {!isMobile && (
+                  <button
+                    className={style.header__sliderButton}
+                    onClick={handlePrev}
+                  >
+                    <ArrowLeft className={style.header__arrowIcon} />
+                  </button>
+                )}
+                <Slider />
+                <div className={style.header__containerSmallBtn}>
+                  {DeskTopBannerImages.map((_, index) => (
+                    <span
+                      key={index}
+                      onClick={() => handleSmallButton(index)}
+                      className={classNames(style.header__smallButton, {
+                        [style.header__activeButton]: count === index,
+                      })}
+                    ></span>
+                  ))}
+                </div>
+                {!isMobile && (
+                  <button
+                    className={style.header__sliderButton}
+                    onClick={handleNext}
+                  >
+                    <ArrowRight className={style.header__arrowIcon} />
+                  </button>
+                )}
+              </div>
+            </div>
+          </div>
+        )}
+      </section>
+    </>
   );
 };
