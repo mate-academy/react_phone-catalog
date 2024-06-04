@@ -1,15 +1,14 @@
 import cn from 'classnames';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import * as productDetailsActions from '../../slices/productDetailsSlice';
 import * as suggestedProductsActions from '../../slices/suggestedProductsSlice';
 import * as cartActions from '../../slices/cartSlice';
-import * as productsActions from '../../slices/productsSlice';
 import * as favouritesActions from '../../slices/favouritesSlice';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { ICartItem, IProduct } from '../../types';
+import { ICartItem } from '../../types';
 
 import {
   Breadcrumbs,
@@ -24,13 +23,16 @@ import {
 } from '../../components';
 
 import './ProductDetailsPage.scss';
+import { getColor, getNewProductPath } from '../../utils';
 
 export const ProductDetailsPage = () => {
   const { pathname } = useLocation();
   const productId = pathname.split('/').slice(-1)[0];
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const {
-    productDetails,
+    selectedProductDetails,
+    selectedProduct,
     loaded: productDetailsLoaded,
     hasError: hasProductDetailsError,
   } = useAppSelector(state => state.productDetails);
@@ -42,49 +44,50 @@ export const ProductDetailsPage = () => {
     hasError: hasSuggestedProductsError,
     loaded: suggestedProductsLoaded,
   } = useAppSelector(state => state.suggestedProducts);
-  const availableColors: string[] = [];
-  const availableCapacities: string[] = [];
+  const availableColors: string[] =
+    selectedProductDetails?.colorsAvailable || [];
+  const availableCapacities: string[] =
+    selectedProductDetails?.capacityAvailable || [];
   const [selectedImage, setSelectedImage] = useState('');
   const [selectedColor, setSelectedColor] = useState('');
   const [selectedCapacity, setSelectedCapacity] = useState('');
-  const [selectedProduct, setSelectedProduct] = useState<IProduct | null>(null);
 
   const smallTechSpecs = useMemo(() => {
-    if (!productDetails) {
+    if (!selectedProductDetails) {
       return null;
     }
 
     return {
-      Screen: productDetails.screen,
-      Resolution: productDetails.resolution,
-      Processor: productDetails.processor,
-      RAM: productDetails.ram,
+      Screen: selectedProductDetails.screen,
+      Resolution: selectedProductDetails.resolution,
+      Processor: selectedProductDetails.processor,
+      RAM: selectedProductDetails.ram,
     };
-  }, [productDetails]);
+  }, [selectedProductDetails]);
 
   const techSpecs = useMemo(() => {
-    if (!productDetails) {
+    if (!selectedProductDetails) {
       return null;
     }
 
     return {
-      Screen: productDetails.screen,
-      Resolution: productDetails.resolution,
-      Processor: productDetails.processor,
-      RAM: productDetails.ram,
-      Memory: productDetails.capacity,
-      Camera: productDetails.camera,
-      Zoom: productDetails.zoom,
-      Cell: productDetails.cell.join(', '),
+      Screen: selectedProductDetails.screen,
+      Resolution: selectedProductDetails.resolution,
+      Processor: selectedProductDetails.processor,
+      RAM: selectedProductDetails.ram,
+      Memory: selectedProductDetails.capacity,
+      Camera: selectedProductDetails.camera,
+      Zoom: selectedProductDetails.zoom,
+      Cell: selectedProductDetails.cell.join(', '),
     };
-  }, [productDetails]);
+  }, [selectedProductDetails]);
 
   const currentCartItem = cartItems.find(
-    item => item.product.id === selectedProduct?.id,
+    item => item.product.itemId === selectedProduct?.itemId,
   );
   const hasInCart = !!currentCartItem;
   const hasInFavourites = !!favouritesItems.find(
-    item => item.id === selectedProduct?.id,
+    item => item.itemId === selectedProduct?.itemId,
   );
 
   const handleAddToCart = useCallback(() => {
@@ -119,42 +122,53 @@ export const ProductDetailsPage = () => {
 
   const hasLoader =
     (!productDetailsLoaded && !hasProductDetailsError) ||
-    (!suggestedProductsLoaded && !hasSuggestedProductsError);
+    (!suggestedProductsLoaded && !hasSuggestedProductsError) ||
+    !allProducts.length;
 
-  const isPageVisible =
+  const hasInfo =
     productDetailsLoaded &&
     !hasProductDetailsError &&
-    productDetails &&
     suggestedProductsLoaded &&
     !hasSuggestedProductsError &&
-    suggestedProducts;
+    !!suggestedProducts.length &&
+    !!selectedProduct &&
+    !!selectedProductDetails;
 
-  const hasError = hasProductDetailsError && productDetailsLoaded;
+  const hasError =
+    (hasProductDetailsError && productDetailsLoaded) ||
+    (!hasLoader &&
+      !selectedProduct &&
+      !selectedProductDetails &&
+      !!allProducts.length);
+
+  const selectNewProduct = useCallback(
+    (capacity: string, color: string) => {
+      if (!selectedProductDetails) {
+        return;
+      }
+
+      navigate(
+        getNewProductPath(selectedProductDetails.namespaceId, capacity, color),
+      );
+    },
+    [navigate, selectedProductDetails],
+  );
 
   useEffect(() => {
-    const product = allProducts.find(el => el.itemId === productId);
-
-    setSelectedProduct(product || null);
-  }, [allProducts, productId]);
-
-  useEffect(() => {
-    if (!selectedProduct) {
-      return;
+    if (allProducts.length) {
+      dispatch(productDetailsActions.fetchProductDetails({ id: productId }));
     }
-
-    dispatch(
-      productDetailsActions.fetchProductDetails({
-        id: selectedProduct.itemId,
-        category: selectedProduct.category,
-      }),
-    );
-    dispatch(suggestedProductsActions.fetchSuggestedProducts());
-    dispatch(productsActions.fetchAll());
-  }, [dispatch, productId, selectedProduct]);
+  }, [dispatch, productId, allProducts]);
 
   useEffect(() => {
-    setSelectedImage(productDetails?.images[0] || '');
-  }, [productDetails]);
+    dispatch(suggestedProductsActions.fetchSuggestedProducts());
+  }, [dispatch, productId]);
+
+  useEffect(() => {
+    setSelectedImage(selectedProductDetails?.images[0] || '');
+    setSelectedColor(selectedProductDetails?.color || '');
+    setSelectedCapacity(selectedProductDetails?.capacity || '');
+  }, [selectedProductDetails]);
 
   useEffect(() => {
     window.scrollTo({
@@ -163,163 +177,183 @@ export const ProductDetailsPage = () => {
     });
   }, [selectedProduct]);
 
+  useEffect(
+    () => () => {
+      dispatch(productDetailsActions.resetStore());
+    },
+    [dispatch],
+  );
+
   return (
     <div className="product-page">
       <Breadcrumbs classNames="product-page__small-nav" />
 
       {hasLoader && <Loader />}
 
-      {isPageVisible && (
+      {hasInfo && (
         <>
           <BackButton classNames="product-page__back-button" />
           <SectionHeader
-            title={productDetails.name}
+            title={selectedProductDetails.name}
             classNames="product-page__title"
           />
 
           <div className="product-page__container">
-            <section className="product-page__images product-images">
-              <div className="product-images__side-images">
-                {productDetails.images.map(el => (
-                  <img
-                    src={`${el}`}
-                    alt={productDetails.name}
-                    className={cn('product-images__side-image', {
-                      'product-images__side-image--selected':
-                        el === selectedImage,
-                    })}
-                    key={el}
-                    role="presentation"
-                    onClick={() => setSelectedImage(el)}
-                  />
-                ))}
-              </div>
+            <div
+              className="
+                product-page__info-container
+                product-page__info-container--first-part
+              "
+            >
+              <section className="product-page__images product-images">
+                <div className="product-images__side-images">
+                  {selectedProductDetails.images.map(el => (
+                    <img
+                      src={`${el}`}
+                      alt={selectedProductDetails.name}
+                      className={cn('product-images__side-image', {
+                        'product-images__side-image--selected':
+                          el === selectedImage,
+                      })}
+                      key={el}
+                      role="presentation"
+                      onClick={() => setSelectedImage(el)}
+                    />
+                  ))}
+                </div>
 
-              <img
-                src={selectedImage}
-                alt="del"
-                className="product-images__main-image"
-              />
-            </section>
+                <img
+                  src={selectedImage}
+                  alt={selectedProductDetails.name}
+                  className="product-images__main-image"
+                />
+              </section>
 
-            <section className="product-page__main-info product-info">
-              <div className="product-info__main">
-                {!!availableColors.length && (
-                  <div className="product-info__available-colors">
-                    <p className="product-info__title">Available colors</p>
-                    <div className="available-colors">
-                      {availableColors.map(color => (
-                        <span
-                          key={color}
-                          className={cn(
-                            'available-colors__circle',
-                            'available-colors__circle--big',
-                            {
-                              'available-colors__circle--selected':
-                                color === selectedColor,
-                            },
-                          )}
-                          role="presentation"
-                          onClick={() => setSelectedColor(color)}
-                        >
+              <section className="product-page__main-info product-info">
+                <div className="product-info__main">
+                  {!!availableColors.length && (
+                    <div className="product-info__available-colors">
+                      <p className="product-info__title">Available colors</p>
+                      <div className="available-colors">
+                        {availableColors.map(color => (
                           <span
-                            className="
+                            key={color}
+                            className={cn(
+                              'available-colors__circle',
+                              'available-colors__circle--big',
+                              {
+                                'available-colors__circle--selected':
+                                  color === selectedColor,
+                              },
+                            )}
+                            role="presentation"
+                            onClick={() =>
+                              selectNewProduct(selectedCapacity, color)
+                            }
+                          >
+                            <span
+                              className="
                         available-colors__circle
                         available-colors__circle--small
                         "
-                            style={{ backgroundColor: color }}
-                          />
-                        </span>
-                      ))}
+                              style={{ backgroundColor: getColor(color) }}
+                            />
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {!!availableCapacities.length && (
-                  <div className="product-info__capacity">
-                    <p className="product-info__title">Select capacity</p>
+                  {!!availableCapacities.length && (
+                    <div className="product-info__capacity">
+                      <p className="product-info__title">Select capacity</p>
 
-                    <div className="capacities">
-                      {availableCapacities.map(capacity => (
-                        <span
-                          key={capacity}
-                          className={cn('capacities__item', {
-                            'capacities__item--selected':
-                              capacity === selectedCapacity,
-                          })}
-                          role="presentation"
-                          onClick={() => setSelectedCapacity(capacity)}
-                        >
-                          {`${capacity} GB`}
-                        </span>
-                      ))}
+                      <div className="capacities">
+                        {availableCapacities.map(capacity => (
+                          <span
+                            key={capacity}
+                            className={cn('capacities__item', {
+                              'capacities__item--selected':
+                                capacity === selectedCapacity,
+                            })}
+                            role="presentation"
+                            onClick={() =>
+                              selectNewProduct(capacity, selectedColor)
+                            }
+                          >
+                            {`${capacity}`}
+                          </span>
+                        ))}
+                      </div>
                     </div>
-                  </div>
-                )}
+                  )}
 
-                {selectedProduct && (
-                  <div className="product-info__buy">
-                    <Price
-                      discountPrice={selectedProduct.price}
-                      fullPrice={selectedProduct.fullPrice}
-                      priceFontSize={32}
-                    />
-                    <BuyButtons
-                      containerHeight={48}
-                      add={handleAddToCart}
-                      isAddButtonSelected={hasInCart}
-                      like={handleAddToFavorites}
-                      isFavoriteButtonSelected={hasInFavourites}
-                    />
-                  </div>
-                )}
+                  {selectedProduct && (
+                    <div className="product-info__buy">
+                      <Price
+                        discountPrice={selectedProduct.price}
+                        fullPrice={selectedProduct.fullPrice}
+                        priceFontSize={32}
+                      />
+                      <BuyButtons
+                        containerHeight={48}
+                        add={handleAddToCart}
+                        isAddButtonSelected={hasInCart}
+                        like={handleAddToFavorites}
+                        isFavoriteButtonSelected={hasInFavourites}
+                      />
+                    </div>
+                  )}
 
-                <TechSpecs
-                  classNames="product-info__specs"
-                  specs={smallTechSpecs || {}}
-                />
-              </div>
+                  <TechSpecs
+                    classNames="product-info__specs"
+                    specs={smallTechSpecs || {}}
+                  />
+                </div>
 
-              <p className="product-info__id">
-                {`ID: ${productDetails.id.toUpperCase()}`}
-              </p>
-            </section>
+                <p className="product-info__id">
+                  {`ID: ${selectedProductDetails.id.toUpperCase()}`}
+                </p>
+              </section>
+            </div>
 
-            <section
-              className="product-page__about"
-              data-cy="productDescription"
-            >
-              <h2
-                className="
+            <div className="product-page__info-container">
+              <section
+                className="product-page__about"
+                data-cy="productDescription"
+              >
+                <h2
+                  className="
                 product-page__subtitle
                 product-page__subtitle--about"
-              >
-                About
-              </h2>
+                >
+                  About
+                </h2>
 
-              {productDetails.description.map(el => (
-                <article className="about-product" key={el.text}>
-                  <h3 className="about-product__title">{el.title}</h3>
+                {selectedProductDetails.description.map(el => (
+                  <article className="about-product" key={el.text}>
+                    <h3 className="about-product__title">{el.title}</h3>
 
-                  <p className="about-product__text">{el.text}</p>
-                </article>
-              ))}
-            </section>
+                    <p className="about-product__text">{el.text}</p>
+                  </article>
+                ))}
+              </section>
 
-            <section className="product-page__specs">
-              <h2
-                className="
+              <section className="product-page__specs">
+                <h2
+                  className="
                 product-page__subtitle
                 product-page__subtitle--specs"
-              >
-                Tech specs
-              </h2>
+                >
+                  Tech specs
+                </h2>
 
-              <TechSpecs
-                classNames="product-page__specs-table"
-                specs={techSpecs || {}}
-              />
-            </section>
+                <TechSpecs
+                  classNames="product-page__specs-table"
+                  specs={techSpecs || {}}
+                />
+              </section>
+            </div>
           </div>
 
           <ProductsSlider items={suggestedProducts} title="You may also like" />

@@ -24,7 +24,6 @@ export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
     capacity,
     category,
     fullPrice,
-    id,
     image,
     itemId,
     name,
@@ -35,11 +34,15 @@ export const ProductCard: React.FC<Props> = ({ product, classNames }) => {
   const dispatch = useAppDispatch();
   const { cartItems } = useAppSelector(state => state.cartItems);
   const { favouritesItems } = useAppSelector(state => state.favouritesItems);
-  const link = `/${category}/${id}`;
+  const link = `/${category}/${itemId}`;
 
-  const currentCartItem = cartItems.find(item => item.product.id === id);
+  const currentCartItem = cartItems.find(
+    item => item.product.itemId === itemId,
+  );
   const hasInCart = !!currentCartItem;
-  const hasInFavourites = !!favouritesItems.find(item => item.id === id);
+  const hasInFavourites = !!favouritesItems.find(
+    item => item.itemId === itemId,
+  );
 
   const handleAddToCart = useCallback(() => {
     if (hasInCart) {

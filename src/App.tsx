@@ -1,5 +1,5 @@
 import { Route, Routes } from 'react-router-dom';
-import { ProductCategory } from './libs/types/ProductCategory.enum';
+import { ProductCategory } from './libs/types/productCategory.enum';
 
 import { Root, NotFoundPage } from './libs/components';
 import {

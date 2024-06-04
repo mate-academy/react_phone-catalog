@@ -6,8 +6,8 @@ export const getProductDetails = async (
   categoryName: ProductCategory,
 ) => {
   const response = await client.get<IProductDetails[]>(
-    `/api/products/${categoryName}.json`,
+    `/api/${categoryName}.json`,
   );
 
-  return response.find(product => product.id === productId);
+  return response.find(product => product.id === productId) ?? null;
 };

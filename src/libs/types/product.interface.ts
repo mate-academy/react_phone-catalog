@@ -1,7 +1,7 @@
-import { ProductCategory } from './ProductCategory.enum';
+import { ProductCategory } from './productCategory.enum';
 
 export interface IProduct {
-  id: number;
+  id: string;
   category: ProductCategory;
   itemId: string;
   name: string;

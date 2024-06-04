@@ -3,10 +3,11 @@ import { useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 
 import { getFromLocalSotrage } from '../../utils';
-import { useAppDispatch } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { ICartItem, IProduct } from '../../types';
 import * as cartActions from '../../slices/cartSlice';
 import * as favouritesActions from '../../slices/favouritesSlice';
+import * as productsActions from '../../slices/productsSlice';
 
 import { Footer } from '../Footer';
 import { Header } from '../Header/Header';
@@ -15,6 +16,7 @@ import './Root.scss';
 
 export const Root = () => {
   const dispatch = useAppDispatch();
+  const { allProducts } = useAppSelector(state => state.products);
 
   useEffect(() => {
     const cartItems = getFromLocalSotrage<ICartItem[]>('cartItems');
@@ -28,6 +30,12 @@ export const Root = () => {
       dispatch(favouritesActions.setItems(favouritesItems));
     }
   }, [dispatch]);
+
+  useEffect(() => {
+    if (!allProducts.length) {
+      dispatch(productsActions.fetchAll());
+    }
+  }, [dispatch, allProducts]);
 
   return (
     <div className="app">
