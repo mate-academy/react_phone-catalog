@@ -1,0 +1,32 @@
+@use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
+
+.product-page {
+  @include grid;
+
+  grid-template-rows: fit-content(100%) fit-content(100%);
+
+  flex-grow: 1;
+
+  &__favorites {
+    grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+
+    @include for-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__empty {
+    grid-column: 1 / 5;
+
+    font-weight: 700;
+  }
+
+  @include for-tablet {
+    grid-column: span 12;
+  }
+}
