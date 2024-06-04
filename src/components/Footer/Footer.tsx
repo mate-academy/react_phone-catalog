@@ -10,7 +10,7 @@ const Footer = () => {
             <Link to="/" className={styles.footer__logo_link}>
               <img
                 className={styles.footer__logo}
-                src="/img/logo.png"
+                src="img/logo.png"
                 alt="Nice gadgets logo"
               />
             </Link>
