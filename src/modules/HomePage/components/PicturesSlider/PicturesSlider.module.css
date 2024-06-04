@@ -1,1 +1,135 @@
-/* empty */
+/* Common button styles */
+.btn {
+  border: 1px solid var(--icon-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease-in-out;
+  width: 32px;
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .btn {
+    display: none;
+  }
+}
+
+.btn:hover {
+  border-color: var(--primary-color);
+}
+
+.btn img {
+  height: 16px;
+  width: 16px;
+}
+
+.sliderContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: 32px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .sliderContainer {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .sliderContainer {
+    padding-inline: 0;
+  }
+}
+
+.slider {
+  height: 400px;
+  width: 100%;
+}
+
+.sliders {
+  position: relative;
+  margin: 0 auto;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .slider {
+    height: 320px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .slider {
+    height: 189px;
+  }
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.slide img {
+  height: 400px;
+  object-fit: cover;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .slide img {
+    height: 320px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .slide img {
+    height: 189px;
+  }
+}
+
+.activeSlide {
+  opacity: 1;
+}
+
+.prev img {
+  height: 20px;
+  background: #000;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dash {
+  height: 4px;
+  width: 14px;
+  background-color: var(--elements-color);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.dash:hover {
+  background-color: var(--primary-color);
+}
+
+.activeDash {
+  background-color: var(--primary-color);
+}
