@@ -42,17 +42,32 @@ export const Footer = () => {
         <nav className="footer__nav">
           <ul className="footer__nav__bar">
             <li className="footer__nav__item">
-              <a href="/" className="footer__nav__link">
+              <a
+                href="https://github.com/G0odvin"
+                className="footer__nav__link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Github
               </a>
             </li>
             <li className="footer__nav__item">
-              <a href="/" className="footer__nav__link">
+              <a
+                href="https://www.linkedin.com/in/anton-novyk-50453a212/"
+                className="footer__nav__link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Contacts
               </a>
             </li>
             <li className="footer__nav__item">
-              <a href="/" className="footer__nav__link">
+              <a
+                href="https://github.com/G0odvin"
+                className="footer__nav__link"
+                target="_blank"
+                rel="noreferrer"
+              >
                 Rights
               </a>
             </li>
