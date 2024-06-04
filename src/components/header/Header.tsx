@@ -21,7 +21,7 @@ export const Header: React.FC = () => {
   const [isBurgerClose, setIsBurgerClose] = useState(true);
   // const isPhone = useBreakpoint('phone');
 
-  const handlerOpenBurger = () => {
+  const handlerBurgerMenu = () => {
     if (burger.current && app.current && isBurgerClose) {
       setIsBurgerClose(state => !state)
       burger.current.style.transform = 'translateX(0)';
@@ -33,29 +33,12 @@ export const Header: React.FC = () => {
     }
   };
 
-  console.log('isBurgerClose', isBurgerClose)
-
-  // const handlerCloseBurger = () => {
-  //   if (burger.current && app.current) {
-  //     burger.current.style.transform = 'translateX(+100%)';
-  //     document.body.style.overflow = 'visible';
-  //   }
-  // };
-
   return (
     <header className={styles.header} id="header">
       <div className={styles[`header__container--1`]}>
         <img src=".\img\svg\header_Logo.svg" className="logo" />
 
         <div ref={burger} className={styles[`header__burger_menu`]}>
-          {/* <div className={styles['header__burger_menu__container']}>
-            <img src=".\img\svg\header_Logo.svg" className="logo" />
-
-            <div
-              onClick={handlerCloseBurger}
-              className={styles['header__burger_menu__container__close']}
-            />
-          </div> */}
 
           <ul className={styles[`header__burger_menu__list`]}>
             <li className={styles[`header__burger_menu__list__element`]}>
@@ -80,7 +63,7 @@ export const Header: React.FC = () => {
       </div>
 
       <div className={styles[`header__container--2`]}>
-        <div onClick={handlerOpenBurger} className={styles[`header__burger`]}>
+        <div onClick={handlerBurgerMenu} className={styles[`header__burger`]}>
           {isBurgerClose && (
             <img
               src=".\img\svg\burger_menu.svg"
