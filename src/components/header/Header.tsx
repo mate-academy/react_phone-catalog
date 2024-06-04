@@ -37,6 +37,26 @@ export const Header: React.FC = () => {
     <header className={styles.header} id="header">
       <div className={styles[`header__container--1`]}>
         <img src=".\img\svg\header_Logo.svg" className="logo" />
+      </div>
+
+      <div className={styles[`header__container--2`]}>
+        <div onClick={handlerBurgerMenu} className={styles[`header__burger`]}>
+          {isBurgerClose && (
+            <img
+              src=".\img\svg\burger_menu.svg"
+              alt="burger menu"
+              className={styles['header__burger__img']}
+            />
+          )}
+
+          {!isBurgerClose && (
+            <img
+              src=".\img\svg\close_burger.svg"
+              alt="burger menu"
+              className={styles['header__burger__img']}
+            />
+          )}
+        </div>
 
         <div ref={burger} className={styles[`header__burger_menu`]}>
 
@@ -60,42 +80,6 @@ export const Header: React.FC = () => {
             <div className={styles[`header__burger_menu__footer__cart`]}></div>
           </div>
         </div>
-      </div>
-
-      <div className={styles[`header__container--2`]}>
-        <div onClick={handlerBurgerMenu} className={styles[`header__burger`]}>
-          {isBurgerClose && (
-            <img
-              src=".\img\svg\burger_menu.svg"
-              alt="burger menu"
-              className={styles['header__burger__img']}
-            />
-          )}
-
-          {!isBurgerClose && (
-            <img
-              src=".\img\svg\close_burger.svg"
-              alt="burger menu"
-              className={styles['header__burger__img']}
-            />
-          )}
-        </div>
-
-        <a href="#fav" className={styles[`header__fav`]}>
-          <img
-            src=".\img\svg\fav_icon.svg"
-            alt="Fav_logo"
-            className="logo__image"
-          />
-        </a>
-
-        <a href="#cart" className={styles[`header__cart`]}>
-          <img
-            src="./img/svg/Shopping_bag_Cart.svg"
-            alt="Cart_logo"
-            className="logo__image"
-          />
-        </a>
       </div>
     </header>
   );
