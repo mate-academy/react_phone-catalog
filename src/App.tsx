@@ -14,6 +14,8 @@ export const App = () => {
     setCount(prev => prev - value);
   };
 
+  const num = 799;
+
   return (
     <div className="App">
       <Test />
@@ -30,6 +32,26 @@ export const App = () => {
         <button onClick={increment}>+</button>
         <button onClick={decrement}>-</button>
       </div>
+
+      <article>
+        <h2 style={{ fontSize: '14px', lineHeight: '21px', fontWeight: '400' }}>
+          Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
+        </h2>
+        <p style={{ fontSize: '12px' }}>
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Similique hic
+          inventore explicabo corrupti esse doloribus quaerat unde reprehenderit
+          nesciunt laboriosam?
+        </p>
+        <span
+          style={{
+            fontWeight: '700',
+            fontSize: '22px',
+            lineHeight: '30.8px',
+          }}
+        >
+          &#36;{num}
+        </span>
+      </article>
     </div>
   );
 };
