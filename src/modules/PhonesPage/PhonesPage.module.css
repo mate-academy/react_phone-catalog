@@ -1,1 +1,7 @@
-/* empty */
+.content {
+  padding: 24px 0 80px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
