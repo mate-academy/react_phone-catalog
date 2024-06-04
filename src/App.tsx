@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import './App.scss';
+import { Test } from './components/test/Test';
 
 export const App = () => {
   const [count, setCount] = useState(0);
@@ -15,6 +16,7 @@ export const App = () => {
 
   return (
     <div className="App">
+      <Test />
       <h1>Product Catalog</h1>
       <h2>{count}</h2>
       <input
