@@ -43,9 +43,9 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, label }) => {
       <button className={`dropdown__toggle`} onClick={toggleDropdown}>
         {selectedOption}
         {isOpen ? (
-          <img src={ArrowUp} className="arrowLeft" alt="Arrow Left" />
+          <img src={ArrowUp} className="arrowUp" alt="Arrow Up" />
         ) : (
-          <img src={ArrowDown} className="arrowLeft" alt="Arrow Left" />
+          <img src={ArrowDown} className="arrowDown" alt="Arrow Down" />
         )}
       </button>
       {isOpen && (
