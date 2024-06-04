@@ -11,6 +11,8 @@ import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
 import HomePage from './modules/HomePage/HomePage';
 import PhonesPage from './modules/PhonesPage/PhonesPage';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
+// eslint-disable-next-line max-len
+import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 
 const router = createHashRouter([
   {

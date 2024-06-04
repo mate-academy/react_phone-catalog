@@ -7,6 +7,7 @@ export const ROUTES: Readonly<{
   FAVORITES: string;
 }> = {
   HOME: '/',
+  PRODUCT_DETAIL: ':productId',
   PHONES: 'phones',
   TABLETS: 'tablets',
   ACCESSORIES: 'accessories',
