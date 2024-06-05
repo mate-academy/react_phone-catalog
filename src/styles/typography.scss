@@ -1,3 +1,93 @@
-// Desktop/Tablet
+/* Mixin for base text styles */
+@mixin text-base {
+  font-family: 'Mont', sans-serif;
+}
 
-// Mobile
+/* Mixin for headings */
+@mixin heading($size, $line-height) {
+  @include text-base;
+
+  font-size: $size;
+  line-height: $line-height;
+}
+
+/* Headings */
+@mixin h1 {
+  @include heading(48px, 56px);
+
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  @media screen and (max-width: 768px) {
+    @include heading(32px, 41px);
+  }
+}
+
+@mixin h2 {
+  @include heading(32px, 41px);
+
+  font-weight: 700;
+  letter-spacing: -0.01em;
+
+  @media screen and (max-width: 768px) {
+    @include heading(22px, 31px);
+  }
+}
+
+@mixin h3 {
+  @include heading(22px, 31px);
+
+  font-weight: 700;
+  letter-spacing: 0;
+
+  @media screen and (max-width: 768px) {
+    @include heading(20px, 26px);
+  }
+}
+
+@mixin h4 {
+  @include heading(20px, 26px);
+
+  font-weight: 600;
+  letter-spacing: 0;
+
+  @media screen and (max-width: 768px) {
+    @include heading(16px, 20px);
+  }
+}
+
+/* Mixin for button styles */
+@mixin button {
+  @include heading(14px, 21px);
+
+  letter-spacing: 0;
+  font-weight: 600;
+
+  cursor: pointer;
+}
+
+/* Uppercase Text */
+@mixin uppercase {
+  @include heading(12px, 11px);
+
+  letter-spacing: 0.04em;
+  font-weight: 600;
+
+  text-transform: uppercase;
+}
+
+/* Body Text */
+@mixin body-text {
+  @include heading(14px, 21px);
+
+  letter-spacing: 0;
+  font-weight: 400;
+}
+
+/* Small Text */
+@mixin small {
+  @include heading(12px, 15px);
+
+  letter-spacing: 0;
+  font-weight: 600;
+}
