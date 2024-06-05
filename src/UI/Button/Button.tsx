@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import React from 'react';
 import classNames from 'classnames';
-import './Button.scss';
+import styles from './Button.module.scss';
 import { makeColorDarker } from '../../utils/makeColorDarker';
 import ArrowLeft from '../../assets/icons/ArrowLeftBold.svg';
 
@@ -20,8 +20,8 @@ const Button: React.FC<ButtonProps> = ({
   onClick,
   children,
 }) => {
-  const btnClass = classNames('btn', `btn__${type}`, {
-    [`btn__${type}--${state}`]: state,
+  const btnClass = classNames(styles.btn, styles[`btn__${type}`], {
+    [styles[`btn__${type}--${state}`]]: state,
   });
 
   const darkerColor = color ? makeColorDarker(color, 15) : undefined;
@@ -36,7 +36,7 @@ const Button: React.FC<ButtonProps> = ({
   return (
     <button className={btnClass} onClick={onClick} style={style}>
       {type === 'back' && (
-        <img src={ArrowLeft} className="arrowLeft" alt="Arrow Left" />
+        <img src={ArrowLeft} className={styles.arrowLeft} alt="Arrow Left" />
       )}
       {children}
     </button>
