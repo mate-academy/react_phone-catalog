@@ -1,6 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import Product from '../../../Types/Product';
+import Product from '../../../types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
 import styles from './ProductCard.module.css';
 
