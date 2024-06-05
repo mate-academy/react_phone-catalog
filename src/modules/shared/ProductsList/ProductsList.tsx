@@ -10,7 +10,7 @@ interface Props {
 const ProductsList: FC<Props> = ({ products }) => {
   return (
     <div className={s.productList}>
-      {products.slice(0, 16).map(product => (
+      {products.map(product => (
         <div key={product.id} className={s.item}>
           <ProductCard product={product} />
         </div>
