@@ -1,0 +1,94 @@
+@import '../../styles/colors';
+
+.cardItem {
+  padding: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+  width: fit-content;
+  height: fit-content;
+  border: 1px solid $Elements;
+
+  &__product {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    &__closeButton {
+      height: 16px;
+      width: 16px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $Secondary;
+    }
+    &__image {
+      height: auto;
+      width: 80px;
+    }
+    &__title {
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 21px;
+      width: 336px;
+      word-break: break-all;
+      color: $Primary;
+    }
+  }
+  &__info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    &__pickAmount {
+      display: flex;
+      &__amount,
+      &__button {
+        width: 32px;
+        height: 32px;
+        border: 1px solid $Elements;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      &__amount {
+        border: none;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
+    }
+    &__price {
+      color: $Primary;
+
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      text-align: right;
+      width: 80px;
+    }
+  }
+}
+
+@media screen and (max-width: 640px) {
+  .cardItem {
+    flex-direction: column;
+    padding: 16px;
+    gap: 16px;
+    &__product {
+      gap: 16px;
+      &__title {
+        width: 129px;
+        word-break: normal;
+      }
+    }
+    &__info {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+    }
+  }
+}
