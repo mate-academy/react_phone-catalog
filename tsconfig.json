@@ -3,6 +3,7 @@
   "include": ["src", "public", "index.d.ts"],
   "compilerOptions": {
     "sourceMap": false,
-    "types": ["node", "cypress"]
+    "types": ["node", "cypress"],
+    "forceConsistentCasingInFileNames": true
   }
 }

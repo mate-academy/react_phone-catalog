@@ -92,6 +92,10 @@
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {
+  .sliders {
+    height: 320px;
+  }
+
   .slide img {
     height: 320px;
   }
@@ -106,6 +110,9 @@
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
+  .sliders {
+    height: 189px;
+  }
   .btn {
     display: none;
   }

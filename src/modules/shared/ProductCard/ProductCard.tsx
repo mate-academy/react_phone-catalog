@@ -1,7 +1,7 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import Product from '../../../Types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
+import Product from '../../../types/Product';
 import styles from './ProductCard.module.css';
 
 interface Props {
