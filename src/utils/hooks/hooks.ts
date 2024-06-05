@@ -9,7 +9,9 @@ export function useStateRef<S>(
   defaultValue: S,
 ): [S, (value: S) => void, RefObject<S>] {
   const ref = useRef(defaultValue);
+
   const [state, _setState] = useState(defaultValue);
+
   const setState = (value: S) => {
     _setState(value);
     ref.current = value;

@@ -13,7 +13,6 @@ export const App = () => {
       <Header />
       <AsideMenu />
       <Main />
-
       <footer></footer>
     </div>
   );

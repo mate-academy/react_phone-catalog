@@ -2,12 +2,6 @@
 @import '../../styles/block/utils/mixins';
 
 .main {
-  &__bottom {
-    max-width: 1200px;
-    margin: 0 auto;
-    margin-bottom: 80px;
-  }
-
   &__content {
     margin-inline: 16px;
     max-width: 1136px;
@@ -20,12 +14,12 @@
     font-weight: 800;
     margin: 56px 0;
   }
-}
 
-.container {
-  max-width: 1136px;
-  margin: 0 auto;
-  height: 9000px;
+  &__heroSlider {
+    margin-bottom: 80px;
+  }
+
+ 
 }
 
 @include onTablet {
@@ -33,12 +27,15 @@
     &__title {
       margin: 48px auto;
     }
+
+    &__heroSlider {
+      margin-bottom: 64px;
+    }
   }
 }
 
 @include onPhone {
   .main {
-    margin-bottom: 56px;
     &__actions__link {
       height: 48px;
       width: 48px;
@@ -51,12 +48,17 @@
       font-size: 32px;
     }
 
-    &__bottom {
-      max-width: 100%;
-    }
-
     &__content {
       margin: 0;
+    }
+
+    &__heroSlider {
+      margin-bottom: 64px;
+    }
+
+    &__titleBrandNewModels {
+      font-size: 22px;
+      line-height: 31px;
     }
   }
 }

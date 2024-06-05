@@ -1,0 +1,24 @@
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/_mixins.scss';
+
+.brandNewModels {
+  &__slider {
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+// @include onTablet {
+// }
+
+@include onPhone {
+  .brandNewModels {
+    &__title {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+}

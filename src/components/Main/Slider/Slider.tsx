@@ -12,16 +12,17 @@ import { ArrowRight } from '../../Logos/ArrowRight';
 const MIN_SWIPE_REQUIRED = 40;
 
 export const Slider = () => {
+  const lengthImgList = mobileBanner.length - 1;
   const { isMobile } = useContext(BreakPointsContext);
   const { autoPlay, setAutoPlay } = useContext(StateContext);
 
   const containerRef = useRef<HTMLDivElement>(null);
   const containerWidthRef = useRef(0);
-  const minOffsetXRef = useRef(0);
-
   const currentOffsetXRef = useRef(0);
   const startXRef = useRef(0);
+  const minOffsetXRef = useRef(0);
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
+
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
@@ -73,8 +74,9 @@ export const Slider = () => {
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
     currentOffsetXRef.current = getRefValue(offsetXRef);
-    console.log(offsetXRef);
+
     startXRef.current = getTouchEventData(e).clientX;
+
     const containerEl = getRefValue(containerRef);
     const containerWidth = containerEl.offsetWidth;
 
@@ -96,9 +98,9 @@ export const Slider = () => {
   };
 
   function handleNext() {
-    if (currentIndex < 2) {
+    if (currentIndex < lengthImgList) {
       indicatorOnClick(currentIndex + 1);
-    } else if (currentIndex === 2) {
+    } else if (currentIndex === lengthImgList) {
       indicatorOnClick(0);
     }
   }
@@ -119,7 +121,7 @@ export const Slider = () => {
         } else {
           indicatorOnClick(currentIndex + 1);
         }
-      }, 2000);
+      }, 50000);
 
       return () => clearInterval(intervalId);
     } else {
@@ -139,14 +141,11 @@ export const Slider = () => {
           <div
             ref={containerRef}
             className={style.slider__images}
-            // style={{ transform: `translateX( ${-100 * currentIndex}%)` }}
             style={{ transform: `translate3d(${offsetX}px, 0, 0)` }}
             onMouseEnter={() => setAutoPlay(false)}
             onMouseLeave={() => setAutoPlay(true)}
             onTouchStart={onTouchStart}
             onMouseDown={onTouchStart}
-            // onTouchStart={e => setClientX(e.touches[0].clientX)}
-            // onTouchEnd={e => setClientXEnd(e.changedTouches[0].clientX)}
           >
             {!isMobile ? (
               <>

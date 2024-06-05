@@ -8,6 +8,7 @@
     justify-content: space-between;
     margin: 0 auto;
     max-height: 432px;
+    max-width: 1136px;
   }
 
   &__button {
@@ -31,12 +32,13 @@
     box-sizing: border-box;
     overflow: hidden;
     margin-inline: 15px;
+    touch-action: pan-y;
   }
 
   &__images {
     display: flex;
     @include transitionPage;
-    // touch-action: pan-x;
+
   }
 
   &__image {
