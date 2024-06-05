@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import './DropdownMenu.scss';
+import styles from './DropdownMenu.module.scss';
 import ArrowUp from '../../assets/icons/ArrowUp.svg';
 import ArrowDown from '../../assets/icons/ArrowDown.svg';
 
@@ -38,22 +38,22 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, label }) => {
   };
 
   return (
-    <div className="dropdown" ref={dropdownRef}>
-      {label && <div className="dropdown__label">{label}</div>}
-      <button className={`dropdown__toggle`} onClick={toggleDropdown}>
+    <div className={styles.dropdown} ref={dropdownRef}>
+      {label && <div className={styles.dropdown__label}>{label}</div>}
+      <button className={styles.dropdown__toggle} onClick={toggleDropdown}>
         {selectedOption}
         {isOpen ? (
-          <img src={ArrowUp} className="arrowUp" alt="Arrow Up" />
+          <img src={ArrowUp} className={styles.arrowUp} alt="Arrow Up" />
         ) : (
-          <img src={ArrowDown} className="arrowDown" alt="Arrow Down" />
+          <img src={ArrowDown} className={styles.arrowDown} alt="Arrow Down" />
         )}
       </button>
       {isOpen && (
-        <ul className="dropdown__menu">
+        <ul className={styles.dropdown__menu}>
           {options.map((option, index) => (
             <li
               key={index}
-              className={`dropdown__item`}
+              className={styles.dropdown__item}
               onClick={() => handleOptionClick(option)}
             >
               {option}
