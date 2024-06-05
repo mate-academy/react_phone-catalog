@@ -2,8 +2,6 @@ import styles from './ProductCard.module.scss';
 import { ProductParams } from './ProductParams/ProductParams';
 const titlePlaceholder = 'Apple iPhone Xs 64GB Silver (iMT9G2FS/A)';
 
-import imagePlaceholder from './img.png';
-
 const params = {
   screen: '5.8” OLED',
   capacity: '64 GB',
@@ -13,7 +11,7 @@ const params = {
 export const ProductCard = () => {
   return (
     <article className={styles.card}>
-      <img className={styles.card__image} src={imagePlaceholder} />
+      <img className={styles.card__image} />
       <h1 className={styles.card__title}>{titlePlaceholder}</h1>
       <div>
         <p className={styles.card__price}>

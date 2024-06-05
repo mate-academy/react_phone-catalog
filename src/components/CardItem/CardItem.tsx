@@ -1,5 +1,5 @@
 import style from './CardItem.module.scss';
-import imagePlaceholder from './Photo.png';
+
 const title = 'Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)';
 
 export const CardItem = () => {
@@ -7,10 +7,7 @@ export const CardItem = () => {
     <article className={style.cardItem}>
       <div className={style.cardItem__product}>
         <div className={style.cardItem__product__closeButton}>x</div>
-        <img
-          className={style.cardItem__product__image}
-          src={imagePlaceholder}
-        />
+        <img className={style.cardItem__product__image} />
         <h2 className={style.cardItem__product__title}>{title}</h2>
       </div>
       <section className={style.cardItem__info}>
