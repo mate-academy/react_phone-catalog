@@ -1,6 +1,6 @@
 # React Phone catalog
 
-# [design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
+# [Design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
 
 # _Description:_
 
@@ -10,7 +10,7 @@ Simple responsive internet-shop with favourites, cart, search, slider. Done with
 
 # [Demolink](https://haduigon.github.io/react_phone-catalog/#/)
 
-_Status:_  
+# _Status:_  
 
 Done
 
