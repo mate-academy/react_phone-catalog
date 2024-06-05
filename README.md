@@ -6,7 +6,7 @@ _Design:_
 
 _Description:_
 
-______________________________________
+_________
 
 Simple responsive internet-shop with favourites, cart, search, slider. Done with React Context, router-dom, axios etc. There is a simple node js backend which always returns the same data, provided for the catalog.
 
