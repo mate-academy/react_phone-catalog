@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
 import Product from '../../../types/Product';
