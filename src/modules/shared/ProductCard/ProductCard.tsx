@@ -1,7 +1,9 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-import Product from '../../../types/Product';
+
+import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
+import Product from '../../../types/Product';
 import styles from './ProductCard.module.css';
 
 interface Props {
@@ -60,16 +62,12 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
       </ul>
 
       <div className={styles.actionsWrapper}>
-        <button type="button" className={styles.addBtn}>
-          Add to Cart
-        </button>
-        <button
-          type="button"
-          className={styles.favouriteBtn}
-          aria-label="Add to favourites"
-        >
+        <Button variant="primary" size="100%" isSelected={false}>
+          Add to cart
+        </Button>
+        <Button variant="icon" size="40px">
           <img src="img/icons/favorite-icon.svg" alt="" />
-        </button>
+        </Button>
       </div>
     </article>
   );

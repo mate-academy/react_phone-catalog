@@ -1,5 +1,12 @@
+import { Breadcrumbs } from '../shared/Breadcrumbs';
+
 const ProductDetailsPage = () => {
-  return <div>ProductDetailsPage</div>;
+  return (
+    <div className="container">
+      <Breadcrumbs />
+      <div>ProductDetailsPage</div>
+    </div>
+  );
 };
 
 export default ProductDetailsPage;

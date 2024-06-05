@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 
-import Product from '../../types/Product';
 import Heading from '../../UI/Heading/Heading';
 import { getPhones } from '../../api/getProduct';
+import Product from '../../types/Product';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import s from './PhonesPage.module.css';
 
@@ -16,6 +17,7 @@ const PhonesPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
+        <Breadcrumbs />
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
