@@ -1,10 +1,8 @@
 # React Phone catalog
 
-_Design:_
+# [design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
 
-[design](https://www.figma.com/file/uEetgWenSRxk9jgiym6Yzp/Phone-catalog-redesign?node-id=1%3A2)
-
-_Description:_
+# _Description:_
 
 _________
 
@@ -23,6 +21,12 @@ Done
 [![GitHub issues](https://img.shields.io/github/issues/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/issues)
 [![GitHub forks](https://img.shields.io/github/forks/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/network)
 
+# What I used / Technologies list:
+
+[![React Context](https://img.shields.io/badge/React%20Context-0.0.3-blue)](https://reactjs.org/docs/context.html)
+[![Axios](https://img.shields.io/badge/Axios-18.3.1-orange)](https://axios.com)
+[![React-router-dom](https://img.shields.io/badge/React%20Router%20Dom-6.23.1-yellow)](https://reactrouter.com/en/main)
+
 _Usage as always is very simple:_   
 
 git clone
@@ -40,9 +44,5 @@ _Screenshots are bellow:_
 
 </details>
 
-What I used:
 
-[![React Context](https://img.shields.io/badge/React%20Context-0.0.3-blue)](https://reactjs.org/docs/context.html)
-[![Axios](https://img.shields.io/badge/Axios-18.3.1-orange)](https://axios.com)
-[![React-router-dom](https://img.shields.io/badge/React%20Router%20Dom-6.23.1-yellow)](https://reactrouter.com/en/main)
 
