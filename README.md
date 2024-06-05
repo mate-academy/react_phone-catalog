@@ -31,7 +31,7 @@ Done
 
 [![Axios](https://img.shields.io/badge/Axios-18.3.1-orange)](https://axios.com)
 
-_Usage as always is very simple:_   
+# _Usage as always is very simple:_   
 
 git clone
 
@@ -39,7 +39,7 @@ npm i
 
 npm start
 
-_Screenshots are bellow:_  
+# _Screenshots are bellow:_  
 
 <details>
   <img width="1792" alt="Screenshot 2024-06-05 at 16 29 19" src="https://github.com/haduigon/react_phone-catalog/assets/20277989/7ab8607f-dc9f-4def-8b11-e1aae73d1a93">
