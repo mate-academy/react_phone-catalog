@@ -8,7 +8,10 @@ interface DropdownMenuProps {
   label?: string;
 }
 
-const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, label }) => {
+export const DropdownMenu: React.FC<DropdownMenuProps> = ({
+  options,
+  label,
+}) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState<string>(options[0]);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -64,5 +67,3 @@ const DropdownMenu: React.FC<DropdownMenuProps> = ({ options, label }) => {
     </div>
   );
 };
-
-export default DropdownMenu;

@@ -1,5 +1,3 @@
-
-
 import { AppRouter } from './router';
 
 import { Test } from './components/test/Test';
@@ -14,6 +12,4 @@ export const App = () => {
       <Test />
     </div>
   );
-
-
 };
