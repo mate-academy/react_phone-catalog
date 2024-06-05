@@ -1,0 +1,69 @@
+Button Component Documentation
+Overview
+The Button component is a versatile and customizable button designed for various use cases. It supports multiple types, states, and colors, making it adaptable to different UI requirements.
+
+Props
+type (required)
+
+Defines the type of the button. The available options are:
+'number'
+'radio'
+'icon'
+'back'
+'primary'
+
+state (optional)
+
+Specifies the state of the button. The available options are:
+'selected'
+'disabled'
+
+color (optional)
+
+Defines the color of the button. This is only used for the 'radio' type, allowing for a customized appearance.
+
+onClick (optional)
+
+A function to be called when the button is clicked.
+
+children (optional)
+
+Content to be displayed inside the button, such as text or icons.
+
+Usage
+
+Basic Example:
+<Button type="primary" onClick={() => alert('Button clicked!')}>
+  Click Me
+</Button>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Button with State
+
+<Button type="primary" state="disabled">
+  Disabled Button
+</Button>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Button with Custom Color
+
+<Button type="radio" color="#ff5733"/>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Back Button with Icon
+
+<Button type="back">
+  Back
+</Button>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Button with Icon children
+
+<Button type="icon">
+  <img src={IconImage} alt="Icon" />
+</Button>
+--------------------------------------------------------------------------------------------------------------------------------------------------
+Utilities
+The makeColorDarker utility function is used to generate a darker shade of the provided color, enhancing the button's hover effect for the 'radio' type.
+
+Example of makeColorDarker:
+
+export const makeColorDarker = (color, percent) => {
+  // logic to darken the color by the given percentage
+};
