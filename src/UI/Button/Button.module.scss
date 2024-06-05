@@ -4,6 +4,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  width: var(--btn-width);
+  height: var(--btn-height);
   line-height: 21px;
   font-size: 14px;
   font-weight: 700;
@@ -40,8 +42,7 @@
 
   &__number,
   &__icon {
-    width: 40px;
-    height: 40px;
+    aspect-ratio: 1 / 1;
     background-color: $White;
     border: 1px solid;
   }
