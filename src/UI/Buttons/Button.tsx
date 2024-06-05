@@ -1,4 +1,6 @@
+/* eslint-disable @typescript-eslint/indent */
 import { ButtonHTMLAttributes, FC } from 'react';
+
 import styles from './Button.module.css';
 
 const buttonVariants = (variant = 'default', isSelected = false) => {
@@ -10,19 +12,25 @@ const buttonVariants = (variant = 'default', isSelected = false) => {
 };
 
 interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  variant?: // eslint-disable-next-line
-    | 'default' // eslint-disable-next-line
-    | 'primary' // eslint-disable-next-line
-    | 'color-selector' // eslint-disable-next-line
-    | 'ghost' // eslint-disable-next-line
-    | 'icon' // eslint-disable-next-line
+  variant?:
+    | 'default'
+    | 'primary'
+    | 'color-selector'
+    | 'ghost'
+    | 'icon'
     | 'pagination';
   isSelected?: boolean;
   size?: string | [number, number];
 }
 
-// eslint-disable-next-line
-const Button: FC<ButtonProps> = ({ variant = 'default', size = 'default', isSelected = false, className, style, ...props }) => {
+const Button: FC<ButtonProps> = ({
+  variant = 'default',
+  size = '40px',
+  isSelected = false,
+  className,
+  style,
+  ...props
+}) => {
   const classes = buttonVariants(variant, isSelected);
 
   let buttonSize: { width?: string; height?: string } = {};
