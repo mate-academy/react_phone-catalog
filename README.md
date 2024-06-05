@@ -45,9 +45,9 @@ I also tried to find the golden mean for elements decomposition depth.
 
 A few sliders exist. Main with timer and steering buttons and two more, smaller. 
 
-Search is working with debounce
+Search is working with debounce and stores in url.
 
-
+Cart total sum is shared among every item and works well, what is amazing. 
 
 # _Usage as always is very simple:_   
 
@@ -66,7 +66,7 @@ npm start
 
 </details>
 
-Reflection
+# Reflection
 
-Create my first custom hook for slider. I shared the the ref between components with all my love.
+It was amazing and challenging expririence with creating single-page responsive app using whole bunch of interesting technologies, described above. I create my first custom hook for slider and understand what is closure. I shared the the ref between components from the bottom of my heart. Understand the power of react-router and URLParams. Takled with sliders and paginagation. When I have free time I will rewrite it with Redux. Thank for watching %) 
 
