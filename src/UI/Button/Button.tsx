@@ -6,7 +6,7 @@ import { makeColorDarker } from '../../utils/makeColorDarker';
 import ArrowLeft from '../../assets/icons/ArrowLeftBold.svg';
 
 type ButtonProps = {
-  type: 'number' | 'arrow' | 'radio' | 'icon' | 'back' | 'primary';
+  type: 'number' | 'radio' | 'icon' | 'back' | 'primary';
   state?: 'selected' | 'disabled';
   color?: string;
   onClick?: () => void;

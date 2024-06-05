@@ -1,4 +1,4 @@
-@import '../../styles/colors.scss';
+@import '../../styles/colors';
 
 .btn {
   display: flex;
@@ -39,7 +39,6 @@
   }
 
   &__number,
-  &__arrow,
   &__icon {
     width: 32px;
     height: 32px;
@@ -60,18 +59,6 @@
     }
   }
 
-  &__arrow {
-    border-color: $Icons;
-
-    &:not(.btn__arrow--disabled):hover {
-      border-color: $Primary;
-    }
-
-    &--disabled {
-      opacity: 0.3;
-    }
-  }
-
   &__icon {
     border-color: $Icons;
 
@@ -81,6 +68,10 @@
 
     &--selected {
       border-color: $Elements;
+    }
+
+    &--disabled {
+      opacity: 0.3;
     }
   }
 
