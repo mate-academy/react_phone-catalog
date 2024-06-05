@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
 
-import Product from '../../Types/Product';
 import Heading from '../../UI/Heading/Heading';
 import { getPhones } from '../../api/getProduct';
+import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import s from './PhonesPage.module.css';
 
