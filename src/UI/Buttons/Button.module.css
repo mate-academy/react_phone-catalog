@@ -1,0 +1,111 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500; /* font-medium */
+  transition: background-color 0.2s, color 0.2s;
+  outline: none;
+  position: relative;
+  padding: 0;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #000, 0 0 0 4px #fff;
+}
+
+.button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
+
+/* Variants */
+.button-variant--default {
+  background-color: #fff;
+  color: #000;
+}
+
+.button-variant--primary {
+  background-color: #313237;
+  color: #fff;
+}
+
+.button-variant--primary:hover {
+  box-shadow: 0 3px 13px 0 #17203166;
+  background-color: #424348;
+  color: #fff;
+}
+
+.button-variant--primary--selected {
+  border: #E2E6E9 solid 1px;
+  background-color: inherit;
+  color: #27AE60;
+}
+
+.button-variant--primary--selected:hover {
+  border: #313237 solid 1px;
+}
+
+.button-variant--ghost {
+  color: #89939A;
+}
+
+.button-variant--ghost:hover {
+  color: #313237;
+}
+
+.button-variant--color-selector {
+  margin: 3px;
+  border-radius: 36px;
+  outline: 1px solid #E2E6E9;
+  outline-offset: 2px;
+}
+
+.button-variant--color-selector:hover {
+  outline: 1px solid #313237;
+}
+
+.button-variant--color-selector--selected {
+  margin: 3px;
+  border-radius: 36px;
+  outline: 1px solid #313237;
+  outline-offset: 2px;
+}
+
+.button-variant--icon {
+  border: #E2E6E9 solid 1px;
+}
+
+.button-variant--icon:hover {
+  border: #313237 solid 1px;
+}
+
+.button-variant--icon--selected {
+  border: #313237 solid 1px;
+}
+
+.button-variant--icon--selected:hover {
+  border: #E2E6E9 solid 1px;
+  box-shadow: 0 3px 13px 0 #E2E6E9;
+}
+
+.button-variant--pagination {
+  border: #E2E6E9 solid 1px;
+}
+
+.button-variant--pagination:hover {
+  border: #313237 solid 1px;
+}
+
+.button-variant--pagination--selected {
+  border: #313237 solid 1px;
+  background-color: #313237;
+}
+
+.button-variant--pagination--selected:hover {
+  border: #E2E6E9 solid 1px;
+  background-color: #313237;
+  box-shadow: 0 3px 13px 0 #E2E6E9;
+}
