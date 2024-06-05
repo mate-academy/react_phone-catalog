@@ -19,7 +19,7 @@ Done
 [![GitHub issues](https://img.shields.io/github/issues/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/issues)
 [![GitHub forks](https://img.shields.io/github/forks/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/network)
 
-# What I used / Technologies list:
+# Technologies list:
 
 [![React](https://img.shields.io/badge/React-18.3.1-green)](https://react.dev/)
 
