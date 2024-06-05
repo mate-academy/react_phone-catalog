@@ -32,6 +32,7 @@
     gap: 8px;
     color: $Primary;
     position: relative;
+    
     ::after {
       content: '';
       display: block;
@@ -44,9 +45,11 @@
       left: 50%;
       transform: translate(-50%, -50%);
     }
+
     &__withoutDiscount {
       color: $Secondary;
       position: relative;
+
       &::after {
         content: '';
         position: absolute;
@@ -67,23 +70,4 @@
   justify-content: space-between;
   gap: 8px;
 
-  &__primary {
-    width: 160px;
-    height: 40px;
-    background-color: $Primary;
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  &__secondary {
-    width: 40px;
-    height: 40px;
-    border: 1px solid $Icons;
-    font-size: 30px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 }
