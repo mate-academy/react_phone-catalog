@@ -68,5 +68,5 @@ npm start
 
 # Reflection
 
-It was amazing and challenging expririence with creating single-page responsive app using whole bunch of interesting technologies, described above. I create my first custom hook for slider and understand what is closure. I shared the the ref between components from the bottom of my heart. Understand the power of react-router and URLParams. Takled with sliders and paginagation. When I have free time I will rewrite it with Redux. Thank you for watching 👨‍🦲
+It was amazing and challenging expirience with creating single-page responsive app using whole bunch of interesting technologies, described above. I created my first custom hook for slider and understand what is closure. I shared the ref between components from the bottom of my heart. Understood the power of react-router and URLParams. Takled with sliders and paginagation. As a backend I made a simple node js api which returns the same data every time, and deployed it on Debian. When I have free time I will rewrite it with Redux. Thank you for watching 👨‍🦲
 
