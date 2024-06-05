@@ -4,13 +4,11 @@
 
 # _Description:_
 
-_________
+Simple responsive internet-shop with favourites, cart, search, slider. Done with React Context, router-dom, axios etc. I made a simple node js backend which always returns the same data, provided for the catalog.
 
-Simple responsive internet-shop with favourites, cart, search, slider. Done with React Context, router-dom, axios etc. There is a simple node js backend which always returns the same data, provided for the catalog.
+ 
 
-_Demo_link:_  
-
-https://haduigon.github.io/react_phone-catalog/#/
+# [Demolink](https://haduigon.github.io/react_phone-catalog/#/)
 
 _Status:_  
 
