@@ -22,7 +22,9 @@ Done
 # What I used / Technologies list:
 
 [![React Context](https://img.shields.io/badge/React%20Context-0.0.3-blue)](https://reactjs.org/docs/context.html)
+
 [![Axios](https://img.shields.io/badge/Axios-18.3.1-orange)](https://axios.com)
+
 [![React-router-dom](https://img.shields.io/badge/React%20Router%20Dom-6.23.1-yellow)](https://reactrouter.com/en/main)
 
 _Usage as always is very simple:_   
