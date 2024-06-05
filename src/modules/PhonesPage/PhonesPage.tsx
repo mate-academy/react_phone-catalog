@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import Product from '../../Types/Product';
+import Product from '../../types/Product';
 import Heading from '../../UI/Heading/Heading';
 import { getPhones } from '../../api/getProduct';
 import ProductsList from '../shared/ProductsList/ProductsList';
