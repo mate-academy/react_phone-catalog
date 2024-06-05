@@ -19,7 +19,7 @@ const PhonesPage = () => {
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
-        <p>{phones.length} models</p>
+        <p className={s.quantity}>{phones.length} models</p>
         <ProductsList products={phones} />
       </div>
     </div>

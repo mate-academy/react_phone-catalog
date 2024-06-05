@@ -5,3 +5,8 @@
 .title {
   margin-bottom: 8px;
 }
+
+.quantity {
+  color: var(--secondary-color);
+  margin-bottom: 40px;
+}
