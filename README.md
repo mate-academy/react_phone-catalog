@@ -38,3 +38,9 @@ _Screenshots are bellow:_
 
 </details>
 
+What I used:
+
+[![React Context](https://img.shields.io/badge/React%20Context-0.0.3-blue)](https://reactjs.org/docs/context.html)
+[![Axios](https://img.shields.io/badge/Axios-18.3.1-blue)](https://axios.com)
+[![React-router-dom](https://img.shields.io/badge/react-router-dom-6.23.1-blue)](https://reactrouter.com/en/main)
+
