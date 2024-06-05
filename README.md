@@ -33,21 +33,21 @@ Done
 
 # React phone catalog features:
 
-Main data storing is realized through react context. 
+- Main data storing is realized through react context. 
 
-Cart stores in Local Storage. 
+- Cart stores in Local Storage. 
 
-React-router-dom and urlParams are widly used. 
+- React-router-dom and urlParams are widly used. 
 
-I tried to create minimum amount of maximum reusable components. 
+- I tried to create minimum amount of maximum reusable components. 
 
-I also tried to find the golden mean for elements decomposition depth. 
+- I also tried to find the golden mean for elements decomposition depth. 
 
-A few sliders exist. Main with timer and steering buttons and two more, smaller. 
+- A few sliders exist. Main with timer and steering buttons and two more, smaller. 
 
-Search is working with debounce and stores in url.
+- Search is working with debounce and stores in url.
 
-Cart total sum is shared among every item and works well, what is amazing. 
+- Cart total sum is shared among every item and works well, what is amazing. 
 
 # _Usage as always is very simple:_   
 
