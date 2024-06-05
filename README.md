@@ -14,10 +14,10 @@ Simple responsive internet-shop with favourites, cart, search, slider. Done with
 
 Done
 
-[![GitHub license](https://img.shields.io/github/license/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/blob/master/LICENSE)
-[![GitHub stars](https://img.shields.io/github/stars/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/stargazers)
-[![GitHub issues](https://img.shields.io/github/issues/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/issues)
-[![GitHub forks](https://img.shields.io/github/forks/haduigon/fb_horo_chat_landing)](https://github.com/haduigon/fb_horo_chat_landing/network)
+[![GitHub license](https://img.shields.io/github/license/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/blob/master/LICENSE)
+[![GitHub stars](https://img.shields.io/github/stars/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/stargazers)
+[![GitHub issues](https://img.shields.io/github/issues/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/issues)
+[![GitHub forks](https://img.shields.io/github/forks/haduigon/react_phone-catalog)](https://github.com/haduigon/react_phone-catalog/network)
 
 # What I used / Technologies list:
 
