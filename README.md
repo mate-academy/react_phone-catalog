@@ -31,6 +31,24 @@ Done
 
 [![Axios](https://img.shields.io/badge/Axios-18.3.1-orange)](https://axios.com)
 
+# React phone catalog features:
+
+Main data storing is realized through react context. 
+
+Cart stores in Local Storage. 
+
+React-router-dom and urlParams are widly used. 
+
+I tried to create minimum amount of maximum reusable components. 
+
+I also tried to find the golden mean for elements decomposition depth. 
+
+A few sliders exist. Main with timer and steering buttons and two more, smaller. 
+
+Search is working with debounce
+
+
+
 # _Usage as always is very simple:_   
 
 git clone
@@ -48,5 +66,7 @@ npm start
 
 </details>
 
+Reflection
 
+Create my first custom hook for slider. I shared the the ref between components with all my love.
 
