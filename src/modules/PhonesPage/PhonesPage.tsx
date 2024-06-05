@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react';
 
+
 import Heading from '../../UI/Heading/Heading';
 import Product from '../../Types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import { getPhones } from '../../api/getProduct';
 import s from './PhonesPage.module.css';
+
 
 const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);

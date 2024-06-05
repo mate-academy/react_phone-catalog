@@ -38,6 +38,11 @@
   font-weight: 800;
   letter-spacing: 0.04em;
   color: var(--secondary-color);
+  transition: color 0.3s ease-in-out;
+}
+
+.footer__link:hover {
+  color: var(--primary-color);
 }
 
 .back__to__top_link {
@@ -48,6 +53,11 @@
   display: flex;
   align-items: center;
   scroll-behavior: smooth;
+  transition: color 0.3s ease-in-out;
+}
+
+.back__to__top:hover {
+  color: var(--primary-color);
 }
 
 .back__to__top::first-letter {
@@ -57,16 +67,21 @@
 .back__to__top_link::after {
   content: '';
   display: inline-block;
-  background-image: url('../../icons/arrow_up.png');
+  background-image: url('../../../public/img/icons/arrow-up-dark-icon.svg');
   background-repeat: no-repeat;
   background-position: center;
   background-size: 16px 16px;
   margin-left: 16px;
+  transition: border-color 0.3s ease-in-out;
 
   height: 32px;
   width: 32px;
 
   border: 1px solid var(--icon-color);
+}
+
+.back__to__top_link:hover::after {
+  border: 1px solid var(--primary-color);
 }
 
 .back_to_top_content {
@@ -76,6 +91,15 @@
   justify-content: flex-end;
   width: 379px;
 }
+
+.back_to_top_content:hover .back__to__top_link {
+  color: var(--primary-color);
+}
+
+.back_to_top_content:hover .back__to__top_link::after {
+  border: 1px solid var(--primary-color);
+}
+
 
 @media (max-width: 640px) {
   .footer__logo_container {
