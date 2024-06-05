@@ -96,29 +96,31 @@ export const AccessoriesPage = () => {
       ) : (
         <>
           <div className="container">
-            <Breadcrumbs />
-            <h1 className="accessoriesPage__title">Accessories</h1>
-            <p className="accessoriesPage__description">{`${countAccessories} models`}</p>
-            {sortedAccessoriesList.length === 0 && query.length > 0 ? (
-              <NoSearchResults />
-            ) : (
-              <>
-                <div className="accessoriesPage__sortContainer">
-                  <DropDown type="sort-by" />
-                  <DropDown type="items-on-page" />
-                </div>
-                <ProductList dataProducts={paginatedData} />
+            <main className="accessoriesPage">
+              <Breadcrumbs />
+              <h1 className="accessoriesPage__title">Accessories</h1>
+              <p className="accessoriesPage__description">{`${countAccessories} models`}</p>
+              {sortedAccessoriesList.length === 0 && query.length > 0 ? (
+                <NoSearchResults />
+              ) : (
+                <>
+                  <div className="accessoriesPage__sortContainer">
+                    <DropDown type="sort-by" />
+                    <DropDown type="items-on-page" />
+                  </div>
+                  <ProductList dataProducts={paginatedData} />
 
-                {itemsOnPage !== 'All' && (
-                  <PaginationSearchParams
-                    countDatas={sortedAccessoriesList.length} // totalCount
-                    itemsPerPage={itemsPerPage} // pageSize
-                    onPageChange={handlePageChange} // onPageChange
-                    currentPage={+currentPage}
-                  />
-                )}
-              </>
-            )}
+                  {itemsOnPage !== 'All' && (
+                    <PaginationSearchParams
+                      countDatas={sortedAccessoriesList.length} // totalCount
+                      itemsPerPage={itemsPerPage} // pageSize
+                      onPageChange={handlePageChange} // onPageChange
+                      currentPage={+currentPage}
+                    />
+                  )}
+                </>
+              )}
+            </main>
           </div>
           <Footer />
         </>

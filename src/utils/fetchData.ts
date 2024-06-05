@@ -1,8 +1,5 @@
 const BASE_URL =
-  'https://mate-academy.github.io/react_phone-catalog/_new/products.json';
-
-// const BASE_URL2
-//    = 'https://github.com/mate-academy/product_catalog/tree/main/public/api';
+  'https://mate-academy.github.io/react_phone-catalog/api/products.json';
 
 const PRODUCT_DETAILS = '/api/';
 

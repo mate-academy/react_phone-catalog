@@ -90,29 +90,31 @@ export const TabletsPage = () => {
       ) : (
         <>
           <div className="container">
-            <Breadcrumbs />
-            <h1 className="tabletsPage__title">Tablets</h1>
-            <p className="tabletsPage__description">{`${countTablets} models`}</p>
-            {sortedTabletsList.length === 0 && query.length > 0 ? (
-              <NoSearchResults />
-            ) : (
-              <>
-                <div className="tabletsPage__sortContainer">
-                  <DropDown type="sort-by" />
-                  <DropDown type="items-on-page" />
-                </div>
-                <ProductList dataProducts={paginatedData} />
+            <main className="tabletsPage">
+              <Breadcrumbs />
+              <h1 className="tabletsPage__title">Tablets</h1>
+              <p className="tabletsPage__description">{`${countTablets} models`}</p>
+              {sortedTabletsList.length === 0 && query.length > 0 ? (
+                <NoSearchResults />
+              ) : (
+                <>
+                  <div className="tabletsPage__sortContainer">
+                    <DropDown type="sort-by" />
+                    <DropDown type="items-on-page" />
+                  </div>
+                  <ProductList dataProducts={paginatedData} />
 
-                {itemsOnPage !== 'All' && (
-                  <PaginationSearchParams
-                    countDatas={sortedTabletsList.length} // totalCount
-                    itemsPerPage={itemsPerPage} // pageSize
-                    onPageChange={handlePageChange} // onPageChange
-                    currentPage={+currentPage}
-                  />
-                )}
-              </>
-            )}
+                  {itemsOnPage !== 'All' && (
+                    <PaginationSearchParams
+                      countDatas={sortedTabletsList.length} // totalCount
+                      itemsPerPage={itemsPerPage} // pageSize
+                      onPageChange={handlePageChange} // onPageChange
+                      currentPage={+currentPage}
+                    />
+                  )}
+                </>
+              )}
+            </main>
           </div>
         </>
       )}

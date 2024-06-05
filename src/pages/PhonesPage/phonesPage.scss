@@ -2,6 +2,9 @@
 
 .phonesPage {
   font-family: Mont-Bold, sans-serif;
+  min-height: calc(100vh - 96px);
+  overflow-y: hidden;
+
   &__title {
     @extend %page-names;
 
