@@ -5,6 +5,8 @@
 body {
   font-family: var(--primary-font);
   scroll-behavior: smooth;
+  font-size: 14px;
+  line-height: 24px;
 }
 
 .app {
