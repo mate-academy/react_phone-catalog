@@ -4,11 +4,15 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import Button from '../../UI/Buttons/Button';
 import { ROUTES } from '../../constants/ROUTES';
+import { useProductStore } from '../../store/store';
 import { MobileMenu } from '../BurgerMenu';
 import styles from './Header.module.css';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
+
+  const cart = useProductStore(state => state.cartItems);
+  const favorites = useProductStore(state => state.favorites);
 
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.link, {
@@ -66,12 +70,18 @@ const Header = () => {
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
             <img src="img/icons/favorite-icon.svg" alt="" />
+            {!!favorites.length && (
+              <span className={styles.badge}>{favorites.length}</span>
+            )}
           </Button>
         </NavLink>
 
         <NavLink to={ROUTES.CART} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
             <img src="img/icons/cart-icon.svg" alt="" />
+            {!!cart.length && (
+              <span className={styles.badge}>{cart.length}</span>
+            )}
           </Button>
         </NavLink>
       </div>
