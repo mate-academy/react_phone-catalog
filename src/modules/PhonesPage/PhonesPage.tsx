@@ -12,7 +12,7 @@ const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [perPage, setPerPage] = useState(4);
   const [currentPage, setCurrentPage] = useState(1);
-  const [sortOption, setSortOption] = useState('newest'); // Default sort option
+  const [sortOption, setSortOption] = useState('newest');
 
   useEffect(() => {
     getPhones().then(setPhones);
@@ -79,12 +79,14 @@ const PhonesPage = () => {
         <ProductsList products={paginatedPhones} />
 
         <div className={s.pagination}>
-          <Pagination
-            total={sortedPhones.length}
-            currentPage={currentPage}
-            perPage={perPage}
-            onPageChange={handlePageChange}
-          />
+          {phones.length !== perPage && (
+            <Pagination
+              total={sortedPhones.length}
+              currentPage={currentPage}
+              perPage={perPage}
+              onPageChange={handlePageChange}
+            />
+          )}
         </div>
       </div>
     </div>

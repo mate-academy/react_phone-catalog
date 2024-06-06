@@ -25,7 +25,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 
 const Button: FC<ButtonProps> = ({
   variant = 'default',
-  size = '40px',
+  size = '',
   isSelected = false,
   className,
   style,
