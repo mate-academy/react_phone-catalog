@@ -1,0 +1,83 @@
+@import '../../../../styles/main';
+
+.modalCart {
+  &__overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__content {
+    margin: 0 24px;
+    max-width: 380px;
+    position: relative;
+    display: flex;
+    padding: 32px;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+    background-color: var(--main-bg-color);
+
+    @include on-tablet {
+      margin: 0;
+      padding: 40px 24px;
+      max-width: unset;
+      width: 560px;
+    }
+
+    &.dark {
+      background-color: var(--surface-1);
+    }
+  }
+
+  &__text {
+    text-align: center;
+
+    @include on-tablet {
+      width: 360px;
+    }
+  }
+
+  &__button {
+    height: 48px;
+    width: 70%;
+    font-family: inherit;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border: none;
+
+    &:hover:not(.dark) {
+      box-shadow: 0 2px 16px 0 rgba(49, 57, 60, 0.32);
+    }
+
+    &.dark {
+      color: var(--main-text-color);
+      background-color: var(--accent-color);
+
+      @include hover(background-color, var(--hover-accent));
+    }
+  }
+
+  &__closeButton {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    border: none;
+    background-color: transparent;
+
+    @include hover(transform, scale(1.2));
+
+    @include on-tablet {
+      top: 24px;
+      right: 24px;
+    }
+  }
+}

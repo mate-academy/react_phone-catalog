@@ -1,0 +1,140 @@
+@import '../../../styles/main';
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  width: 100%;
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--elements-color);
+    height: 48px;
+    background-color: var(--main-bg-color);
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    gap: 24px;
+  }
+
+  &__logo {
+    box-sizing: border-box;
+    padding-inline: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 96px;
+
+    @include on-desktop {
+      padding-inline: 24px;
+      max-width: 128px;
+    }
+  }
+
+  &__logoLink {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logoIcon {
+    min-width: 48px;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__navbar {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__right {
+    display: flex;
+
+    &-item {
+      display: none;
+      color: var(--secondary-text-color);
+
+      position: relative;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      border: none;
+      background-color: var(--main-bg-color);
+      border-left: 1px solid var(--elements-color);
+
+      @include on-tablet {
+        display: flex;
+      }
+
+      @include on-desktop {
+        width: 64px;
+      }
+
+      &.active {
+        &::before {
+          position: absolute;
+          bottom: 0;
+          content: "";
+          height: 3px;
+          width: 100%;
+          background-color: var(--main-text-color);
+        }
+      }
+
+      @include hover(background-color, var(--hover-bg));
+    }
+  }
+
+  &__burgerMenu {
+    display: flex;
+    position: relative;
+    justify-content: center;
+    align-items: center;
+    width: 48px;
+    background-color: var(--main-bg-color);
+    border: none;
+    border-left: 1px solid var(--elements-color);
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include hover(background-color, var(--hover-bg));
+  }
+}
+
+.itemCounter {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  color: #fff;
+  height: 14px;
+  width: 14px;
+  border: 1px solid var(--main-bg-color);
+  border-radius: 50%;
+  background-color: var(--red);
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 9px;
+
+  animation: pulse 1s ease;
+}

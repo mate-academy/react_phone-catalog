@@ -1,0 +1,72 @@
+@import '../../../styles/main';
+
+.products-slider {
+  &__top {
+    padding-bottom: 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__products {
+    width: calc(100vw - 16px);
+    overflow: hidden;
+    margin-left: 16px;
+
+    @include on-tablet {
+      width: calc(100vw - 24px);
+      margin-left: 24px;
+    }
+
+    @include on-desktop {
+      @include container;
+    }
+  }
+
+  &__list {
+    display: flex;
+    padding: 0;
+    gap: 16px;
+    scroll-behavior: smooth;
+  }
+
+  &__item {
+    list-style: none;
+  }
+}
+
+.arrowBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-surface);
+  border: 1px solid var(--icons-color);
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+
+  &.dark {
+    border: none;
+
+    &:not(:disabled):hover {
+      border: none;
+      background-color: var(--button-hover);
+    }
+  }
+
+  &:hover  {
+    border-color: var(--main-text-color);
+    background-color: var(--button-hover);
+  }
+
+  &:disabled {
+    border: 1px solid var(--elements-color);
+    background-color: var(--main-bg-color);
+  }
+}

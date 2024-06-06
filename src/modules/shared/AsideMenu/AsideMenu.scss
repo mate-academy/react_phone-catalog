@@ -1,0 +1,82 @@
+@import '../../../Styles/main';
+
+.burgerMenu {
+  background-color: var(--main-bg-color);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+
+  transform: translateX(-100%);
+  transition: all 300ms;
+
+  &--shown {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+
+    &:target {
+      overflow: hidden;
+    }
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--elements-color);
+    height: 48px;
+    background-color: var(--main-bg-color);
+  }
+
+  &__content {
+    padding-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    height: calc(100vh - 64px - 48px);
+    align-items: center;
+  }
+
+  &__footer {
+    display: flex;
+    border-top: 1px solid var(--elements-color);
+    height: 64px;
+  }
+
+  &__button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background-color: var(--main-bg-color);
+
+    &:first-child {
+      border-right: 1px solid var(--elements-color);
+    }
+  }
+}
+
+.itemCounter {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: 14px;
+  width: 14px;
+  border: 1px solid var(--main-bg-color);
+  border-radius: 50%;
+  background-color: var(--red);
+  color: #fff;
+  font-family: Mont-SemiBold, sans-serif;
+  font-size: 9px;
+}

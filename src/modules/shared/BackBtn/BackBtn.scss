@@ -1,0 +1,29 @@
+@import '../../../styles/main';
+
+.back-btn {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  border: none;
+  background-color: var(--main-bg-color);
+
+  &__detail {
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+  }
+
+  &__text {
+    color: var(--secondary-text-color);
+
+    @include hover(color, var(--main-text-color));
+
+    &.dark {
+      color: var(--main-text-color);
+
+      @include hover(color, var(--accent-color));
+    }
+  }
+}

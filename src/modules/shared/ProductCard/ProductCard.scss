@@ -1,0 +1,109 @@
+@import '../../../styles/main';
+
+.product-card {
+  box-sizing: border-box;
+  min-width: 212px;
+  width: 100%;
+  border: 1px solid var(--elements-color);
+  background-color: var(--main-bg-color);
+  transition: box-shadow 300ms;
+
+  &:hover:not(.dark) {
+    box-shadow: 0 2px 16px 0 rgba(107, 127, 135, 0.32);
+  }
+  &.dark {
+    border: 1px solid var(--surface-1);
+    background-color: var(--surface-1);
+
+    &:hover {
+      border: 1px solid var(--color-surface);
+    }
+  }
+
+  &__container {
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 440px;
+
+    @include on-tablet {
+      height: 506px;
+    }
+  }
+
+  &__top {
+    min-height: 225px;
+    max-height: 301px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__bottom {
+    padding-top: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__image-container {
+    min-height: 109px;
+    max-height: 196px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+
+    @include hover(transform, scale(1.06));
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: fill;
+  }
+
+  &__name {
+    padding-top: 16px;
+    color: var(--main-text-color);
+    text-decoration: none;
+  }
+
+  &__cost {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__fullPrice {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0;
+    color: var(--secondary-text-color);
+    text-decoration: line-through;
+  }
+
+  &__detail {
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-color);
+  }
+
+  &__info {
+    padding: 8px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      gap: 8px;
+    }
+
+    &-title {
+      color: var(--secondary-text-color);
+    }
+  }
+}

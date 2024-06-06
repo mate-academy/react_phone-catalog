@@ -1,0 +1,29 @@
+:root {
+  --main-text-color: #313237;
+  --color-surface: #fff;
+  --button-hover: #fff;
+  --secondary-text-color: #89939A;
+  --elements-color: #E2E6E9;
+  --hover-bg: #FAFBFC;
+  --icons-color: #B4BDC3;
+  --green: #27AE60;
+  --red: #EB5757;
+  --main-bg-color: #fff;
+}
+
+[data-theme="dark"] {
+  --main-text-color: #f1f2f9;
+  --secondary-text-color: #75767f;
+  --elements-color: #3b3e4a;
+  --hover-bg: #323542;
+  --button-hover: #4a4d58;
+  --icons-color: #4a4d58;
+  --green: #27AE60;
+  --red: #EB5757;
+  --main-bg-color: #0f1121;
+  --accent-color: #905BFF;
+  --hover-accent: #A378FF;
+  --surface-1: #161827;
+  --color-surface: #323542;
+  --black: #0f1121;
+}

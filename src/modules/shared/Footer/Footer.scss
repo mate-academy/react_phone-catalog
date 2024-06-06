@@ -1,0 +1,88 @@
+@import '../../../styles/main';
+
+.footer {
+  width: 100%;
+  border-top: 1px solid var(--elements-color);
+  background-color: var(--main-bg-color);
+
+  &__container {
+    padding: 32px 0;
+    display: flex;
+    gap: 32px;
+    flex-direction: column;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    line-height: 0%;
+
+    &-icon {
+      width: 89px;
+      height: 32px;
+    }
+  }
+
+  &__nav {
+    width: 30%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    &-item {
+      color: var(--secondary-text-color);
+      text-decoration: none;
+
+      &:hover {
+        color: var(--main-text-color);
+      }
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      display: unset;
+    }
+  }
+
+  &__back-button {
+    padding: 0;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    border: none;
+    background-color: unset;
+    color: var(--secondary-text-color);
+    cursor: pointer;
+
+    &-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 32px;
+      width: 32px;
+      border: 1px solid var(--icons-color);
+
+      @include hover(border-color, var(--main-text-color));
+
+      &.dark {
+        border: none;
+        background-color: var(--color-surface);
+
+        @include hover(background-color, var(--icons-color));
+      }
+    }
+  }
+}
