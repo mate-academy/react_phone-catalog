@@ -69,7 +69,7 @@ export const HomePage = () => {
         <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
       )}
 
-      <Banner classNames="home__banner" />
+      {!hasErrorMessage && <Banner classNames="home__banner" />}
 
       {hasLoader && <Loader />}
 
@@ -93,7 +93,7 @@ export const HomePage = () => {
 
       {hasErrorMessage && (
         <ErrorMessage
-          title="Failed to fetch products"
+          title="OOOPS! Something went wrong"
           classNames="home__erroressage"
         />
       )}
