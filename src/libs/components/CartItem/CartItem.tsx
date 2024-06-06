@@ -13,7 +13,7 @@ export const CartItem: React.FC<Props> = ({
   item: { id, product, quantity },
 }) => {
   const dispatch = useAppDispatch();
-  const { category, itemId } = product;
+  const { category, itemId, image, name, price } = product;
 
   const link = `/${category}/${itemId}`;
 
@@ -51,14 +51,10 @@ export const CartItem: React.FC<Props> = ({
           x
         </button>
 
-        <img
-          src={product.image}
-          alt={product.name}
-          className="cart-item__product-image"
-        />
+        <img src={image} alt={name} className="cart-item__product-image" />
 
         <Link to={link} className="cart-item__product-name">
-          {product.name}
+          {name}
         </Link>
       </div>
 
@@ -84,7 +80,7 @@ export const CartItem: React.FC<Props> = ({
           </button>
         </div>
 
-        <p className="cart-item__product-price">${product.price}</p>
+        <p className="cart-item__product-price">${price}</p>
       </div>
     </div>
   );
