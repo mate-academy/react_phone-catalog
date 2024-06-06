@@ -8,6 +8,7 @@ import {
   ThemeType,
 } from '../../../../contexts/ThemeContext/ThemeContext';
 import classNames from 'classnames';
+import { BASE_URL } from '../../../../services/httpClient';
 
 type Props = {
   cartItem: CartItemType;
@@ -45,7 +46,11 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
           />
         </button>
         <div className="cartItem__imageWrap">
-          <img src={`/${product.image}`} alt="" className="cartItem__image" />
+          <img
+            src={`${BASE_URL}${product.image}`}
+            alt=""
+            className="cartItem__image"
+          />
         </div>
         <p className="cartItem__productName">{product.name}</p>
       </div>
