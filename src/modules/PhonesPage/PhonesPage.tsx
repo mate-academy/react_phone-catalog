@@ -118,3 +118,4 @@ const PhonesPage = () => {
 };
 
 export default PhonesPage;
+
