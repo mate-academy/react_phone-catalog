@@ -39,15 +39,17 @@ Done
 
 - React-router-dom and urlParams are widly used. 
 
-- I tried to create minimum amount of maximum reusable components. 
+- You can sort a list of products.
 
-- I also tried to find the golden mean for elements decomposition depth. 
+- There are the breadcrumbs.
 
 - A few sliders exist. Main with timer and steering buttons and two more, smaller. 
 
 - Search is working with debounce and stores in url.
 
-- Cart total sum is shared among every item and works well, what is amazing. 
+- Cart total sum is shared among every item and works well, what is amazing.
+
+- Pagination is customizible by setting amount of items on page.
 
 # _Usage as always is very simple:_   
 
@@ -68,5 +70,5 @@ npm start
 
 # Reflection
 
-It was amazing and challenging expirience with creating single-page responsive app using whole bunch of interesting technologies, described above. I created my first custom hook for slider and understand what is closure. I shared the ref between components from the bottom of my heart. Understood the power of react-router and URLParams. Takled with sliders and paginagation. As a backend I made a simple node js api which returns the same data every time, and deployed it on Debian. When I have free time I will rewrite it with Redux. Thank you for watching 👨‍🦲
+It was amazing and challenging expirience with creating single-page responsive app using whole bunch of interesting technologies, described above. I created my first custom hook for slider and understand what is closure. I shared the ref between components from the bottom of my heart. Understood the power of react-router and URLParams. Takled with sliders and paginagation. I tried to create minimum amount of maximum reusable components. I also tried to find the golden mean for elements decomposition depth. As a backend I made a simple node js api which returns the same data every time, and deployed it on Debian. When I have free time I will rewrite it with Redux. Thank you for watching 👨‍🦲
 
