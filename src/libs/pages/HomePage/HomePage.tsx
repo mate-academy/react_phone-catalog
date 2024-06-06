@@ -69,18 +69,18 @@ export const HomePage = () => {
         <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
       )}
 
-      {!hasErrorMessage && <Banner classNames="home__banner" />}
+      <Banner classNames="home__banner" />
 
       {hasLoader && <Loader />}
 
-      <ProductsSlider
-        title="Hot prices"
-        items={productsWithHotPrice}
-        classNames="home__hot-prices"
-      />
-
       {hasProducts && (
         <>
+          <ProductsSlider
+            title="Hot prices"
+            items={productsWithHotPrice}
+            classNames="home__hot-prices"
+          />
+
           <ShopByCategory classNames="home__shop-by-category" />
 
           <ProductsSlider
@@ -94,7 +94,7 @@ export const HomePage = () => {
       {hasErrorMessage && (
         <ErrorMessage
           title="Failed to fetch products"
-          classNames="home__error-message"
+          classNames="home__erroressage"
         />
       )}
     </div>
