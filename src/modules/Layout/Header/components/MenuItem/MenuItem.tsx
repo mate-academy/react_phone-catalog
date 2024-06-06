@@ -21,7 +21,7 @@ export const HeaderMenuItem: FC<Props> = ({ item: { text, to } }) => {
           })
         }
       >
-        <Text variant="uppercase">{text}</Text>
+        <Text.Uppercase>{text}</Text.Uppercase>
       </NavLink>
     </li>
   );

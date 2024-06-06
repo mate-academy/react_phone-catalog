@@ -1,0 +1,21 @@
+@import 'src/styles/mixins';
+
+.container {
+  row-gap: 40px;
+
+  &__card {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-big-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

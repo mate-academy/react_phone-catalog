@@ -35,13 +35,9 @@ export const ProductsCarousel: FC<Props> = ({
   return (
     <Container {...props} className={cn(classes.carousel, className)}>
       <div className={classes.carousel__header}>
-        <Text
-          className={classes.carousel__title}
-          variant="heading-2"
-          element="h2"
-        >
+        <Text.H2 className={classes.carousel__title} element="h2">
           {carouselTitle}
-        </Text>
+        </Text.H2>
         <div className={classes.carousel__controlls}>
           <RoundButton disabled={isDisabled.prev} onClick={handlePrevClick}>
             <Icon variant="arrow-left" />

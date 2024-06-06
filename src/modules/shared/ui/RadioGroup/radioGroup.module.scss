@@ -7,9 +7,10 @@
   background: var(--accent-secondary);
 
   &__tag {
+    cursor: pointer;
     height: 32px;
     width: 32px;
-    display: block;
+    display: flex;
     border-radius: inherit;
     box-shadow:
       inset 0 0 0 1px var(--elements),
@@ -18,13 +19,50 @@
     transition: box-shadow var(--transition-specs, 1s);
 
     @include hover {
-      cursor: pointer;
       box-shadow:
         inset 0 0 0 1px var(--icons),
         inset 0 0 0 3px var(--white);
     }
   }
 
+  &__input:checked ~ &__tag {
+    box-shadow:
+      inset 0 0 0 1px var(--primary),
+      inset 0 0 0 3px var(--white);
+  }
+}
+
+.radioButtonWithText {
+  display: inline-block;
+  position: relative;
+  border-radius: 50%;
+
+  &__tag {
+    cursor: pointer;
+    border-radius: inherit;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: inset 0 0 0 1px var(--elements);
+    transition: box-shadow var(--transition-specs, 1s);
+    user-select: none;
+
+    @include hover {
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+  }
+
+  &__input:checked ~ &__tag {
+    color: var(--white);
+    background: var(--primary);
+    box-shadow: inset 0 0 0 0 var(--elements);
+  }
+}
+
+.radioButton,
+.radioButtonWithText {
   &__input {
     position: absolute;
     top: 0;
@@ -33,11 +71,5 @@
     height: 0;
     opacity: 0;
     pointer-events: none;
-  }
-
-  &__input:checked ~ &__tag {
-    box-shadow:
-      inset 0 0 0 1px var(--primary),
-      inset 0 0 0 3px var(--white);
   }
 }

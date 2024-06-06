@@ -1,0 +1,41 @@
+@import 'src/styles/mixins';
+
+.page {
+  padding-block: 24px 64px;
+
+  @include on-desktop {
+    padding-bottom: 24px 80px;
+  }
+
+  &__info {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__selects {
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__pagination {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+
+    @include on-desktop {
+      margin-top: 40px;
+    }
+  }
+
+  &__products {
+    margin-top: 24px;
+  }
+}

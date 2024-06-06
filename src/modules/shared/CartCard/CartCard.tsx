@@ -61,9 +61,7 @@ export const CartCard: FC<Props> = ({
           </RoundButton>
         </div>
 
-        <Text className={classes.card__price} variant={'heading-3'}>
-          ${price}
-        </Text>
+        <Text.H3 className={classes.card__price}>${price}</Text.H3>
       </div>
     </div>
   );

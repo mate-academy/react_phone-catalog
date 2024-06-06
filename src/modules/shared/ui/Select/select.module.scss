@@ -1,0 +1,74 @@
+@import 'src/styles/mixins';
+
+.select {
+  & &__control {
+    padding: 10px 12px;
+    border: 0;
+    box-shadow: inset 0 0 0 1px var(--icons);
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include hover {
+      &:not(.select__control_open) {
+        box-shadow: inset 0 0 0 1px var(--secondary);
+      }
+    }
+  }
+
+  & &__control_open {
+    box-shadow: inset 0 0 0 1px var(--primary);
+  }
+
+  & &__separator {
+    display: none;
+  }
+
+  & &__valueContainer {
+    padding: 0;
+    line-height: 1;
+  }
+
+  & &__indicatorContainer {
+    padding: 0;
+    color: var(--icons);
+
+    @include hover {
+      color: var(--icons);
+    }
+
+    svg {
+      width: 16px;
+    }
+  }
+
+  & &__control_open &__indicatorContainer {
+    transform: rotate(180deg);
+  }
+
+  & &__menu {
+    box-shadow: none;
+    margin-top: 4px;
+  }
+
+  & &__menuList {
+    box-shadow: inset 0 0 0 1px var(--elements);
+    border-radius: 8px;
+    padding: 8px 1px;
+  }
+
+  & &__option {
+    color: var(--secondary);
+    padding: 6px 12px;
+    line-height: 1;
+    background: transparent;
+    cursor: pointer;
+
+    @include hover {
+      color: var(--primary);
+    }
+  }
+
+  & &__option_selected {
+    color: var(--primary);
+  }
+}

@@ -34,7 +34,7 @@ export const Footer: FC<Props> = () => {
             to={''}
             className={classes.footer__backToTopTextLink}
           >
-            <Text variant="small">Back to top</Text>
+            <Text.Small>Back to top</Text.Small>
           </Link>
           <Link onClick={scrollToTop} to={''}>
             <RoundButton>

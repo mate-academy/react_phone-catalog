@@ -13,9 +13,7 @@ export const ProductCardPrice: FC<Props> = ({ isOnSale }) => {
 
   return (
     <div className={classes.card__prices}>
-      <Text variant="heading-3" className={classes.card__regularPrice}>
-        ${price}
-      </Text>
+      <Text.H3 className={classes.card__regularPrice}>${price}</Text.H3>
       {isOnSale && (
         <span className={classes.card__fullPrice}>${fullPrice}</span>
       )}

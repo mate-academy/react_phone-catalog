@@ -15,9 +15,7 @@ export const Home: FC<Props> = ({}) => {
     <div className={classes.page}>
       <h1 className="visually-hidden">Product Catalog</h1>
       <Container className={classes.page__title}>
-        <Text variant="heading-1" element="h2">
-          Welcome to Nice Gadgets store!
-        </Text>
+        <Text.H1 element="h2">Welcome to Nice Gadgets store!</Text.H1>
       </Container>
       <HeroCarousel className={classes.page__heroCarousel} />
       <NewProductsCarousel className={classes.page__newProductsCarousel} />

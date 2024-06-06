@@ -13,7 +13,7 @@ export const FooterMenuItem: FC<Props> = ({ item: { to, text } }) => {
   return (
     <li className={classes.menuItem}>
       <Link className={classes.menuItem__link} to={to}>
-        <Text variant="uppercase">{text}</Text>
+        <Text.Uppercase>{text}</Text.Uppercase>
       </Link>
     </li>
   );

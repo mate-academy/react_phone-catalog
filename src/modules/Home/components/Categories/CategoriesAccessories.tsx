@@ -37,9 +37,7 @@ export const CategoriesAccessories: FC<Props> = ({}) => {
       </Link>
       <div className={classes.categories__itemInfo}>
         <Link to={'accessories'} className={classes.categories__nameLink}>
-          <Text variant="heading-4" className={classes.categories__name}>
-            Accessories
-          </Text>
+          <Text.H4 className={classes.categories__name}>Accessories</Text.H4>
         </Link>
         {status === 'pending' ? (
           <Skeleton
@@ -49,7 +47,7 @@ export const CategoriesAccessories: FC<Props> = ({}) => {
             )}
           />
         ) : (
-          <Text className={classes.categories__count} variant="regular">
+          <Text className={classes.categories__count}>
             {products.length} models
           </Text>
         )}

@@ -6,9 +6,7 @@ import { Text } from '../Text';
 export const Button: FC<Props> = ({ children, ...props }) => {
   return (
     <ButtonOuter {...props}>
-      <Text variant="button" element="span">
-        {children}
-      </Text>
+      <Text.Button element="span">{children}</Text.Button>
     </ButtonOuter>
   );
 };

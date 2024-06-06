@@ -12,21 +12,15 @@ export const ProductCardSpecs: FC<Props> = ({}) => {
   return (
     <ul className={classes.card__specs}>
       <li className={classes.card__spec}>
-        <Text className={classes.card__specTitle} variant="small">
-          Screen
-        </Text>
+        <Text.Small className={classes.card__specTitle}>Screen</Text.Small>
         <span className={classes.card__specValue}>{screen}</span>
       </li>
       <li className={classes.card__spec}>
-        <Text className={classes.card__specTitle} variant="small">
-          Capacity
-        </Text>
+        <Text.Small className={classes.card__specTitle}>Capacity</Text.Small>
         <span className={classes.card__specValue}>{capacity}</span>
       </li>
       <li className={classes.card__spec}>
-        <Text className={classes.card__specTitle} variant="small">
-          RAM
-        </Text>
+        <Text.Small className={classes.card__specTitle}>RAM</Text.Small>
         <span className={classes.card__specValue}>{ram}</span>
       </li>
     </ul>

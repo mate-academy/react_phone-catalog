@@ -9,9 +9,9 @@ type Props = {};
 export const NotFound: FC<Props> = ({}) => {
   return (
     <Container className={classes.page}>
-      <Text className={classes.page__title} variant="heading-1" element="h1">
+      <Text.H1 className={classes.page__title} element="h1">
         Page not found
-      </Text>
+      </Text.H1>
     </Container>
   );
 };

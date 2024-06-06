@@ -1,5 +1,6 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { AppState } from '../../store';
+import { Category, Product } from '../../../types';
 
 export const selectProducts = (state: AppState) => state.products.products;
 export const selectProductsInfo = (state: AppState) => state.products;
@@ -40,3 +41,10 @@ export const selectAccessories = createSelector([selectProducts], products =>
 export const selectTablets = createSelector([selectProducts], products =>
   products.filter(product => product.category === 'tablets'),
 );
+
+export const SELECT_CATEGORY: Record<Category, (state: AppState) => Product[]> =
+  {
+    accessories: selectAccessories,
+    phones: selectPhones,
+    tablets: selectTablets,
+  };

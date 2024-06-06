@@ -13,13 +13,9 @@ type Props = ComponentProps<'div'>;
 export const Categories: FC<Props> = ({ className, ...props }) => {
   return (
     <Container.Grid {...props} className={cn(classes.categories, className)}>
-      <Text
-        className={classes.categories__title}
-        variant="heading-2"
-        element="h2"
-      >
+      <Text.H2 className={classes.categories__title} element="h2">
         Shop by category
-      </Text>
+      </Text.H2>
       <CategoriesPhones />
       <CategoriesTablets />
       <CategoriesAccessories />
