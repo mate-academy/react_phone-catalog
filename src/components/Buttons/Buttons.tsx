@@ -2,16 +2,16 @@ import { FC, useEffect, useState } from 'react';
 import cn from 'classnames';
 
 import { FavouritesIcon, FavouritesIconRed } from '../../icons';
-import { IPhone, ICartPhone } from '../../types';
+import { ICartProduct, IProduct } from '../../types';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
 import {
-  addPhoneToCart,
-  removePhoneFromCart,
-  selectCartPhones,
+  addProductToCart,
+  removeProductFromCart,
+  selectCartProducts,
 } from '../../features/cartSlices';
 import {
   addToFavourites,
-  selectFavouritesPhones,
+  selectFavouritesProduct,
 } from '../../features/favouritesSlices';
 
 import './Buttons.scss';
@@ -21,70 +21,70 @@ type Props = {
   heightSelectedButton: number;
   widthAddButton: number;
   heightAddButton: number;
-  phoneID: string;
-  phone: IPhone | undefined;
+  productID: string;
+  product: IProduct | undefined;
 };
 
 export const Buttons: FC<Props> = ({
-  phoneID,
-  phone,
+  productID,
+  product,
   widthAddButton,
   heightAddButton,
   widthSelectedButton,
   heightSelectedButton,
 }) => {
-  const cartPhones = useAppSelector(selectCartPhones);
-  const favouritesPhones = useAppSelector(selectFavouritesPhones);
+  const cartProducts = useAppSelector(selectCartProducts);
+  const favouritesPhones = useAppSelector(selectFavouritesProduct);
 
-  const [hasPhoneInCart, setHasPhoneInCart] = useState(false);
-  const [hasPhoneInFavourites, setHasPhoneInFavourites] = useState(false);
+  const [hasProductInCart, setHasProductInCart] = useState(false);
+  const [hasProductInFavourites, setHasProductInFavourites] = useState(false);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
-    const isPhoneInFavourites = favouritesPhones.some(
-      (item) => item.itemId === phoneID,
+    const isProductInFavourites = favouritesPhones.some(
+      (item) => item.itemId === productID,
     );
 
-    const isPhoneInCart = cartPhones.some(
-      (item) => item.itemId === phoneID,
+    const isProductInCart = cartProducts.some(
+      (item) => item.itemId === productID,
     );
 
-    setHasPhoneInCart(isPhoneInCart);
-    setHasPhoneInFavourites(isPhoneInFavourites);
-  }, [phoneID]);
+    setHasProductInCart(isProductInCart);
+    setHasProductInFavourites(isProductInFavourites);
+  }, [productID]);
 
-  const handleRemovePhoneFromCart = () => {
-    setHasPhoneInCart(false);
-    dispatch(removePhoneFromCart(phoneID));
+  const handleRemoveProductFromCart = () => {
+    setHasProductInCart(false);
+    dispatch(removeProductFromCart(productID));
   };
 
-  const handleAddPhoneToCart = () => {
-    if (phone) {
-      const newPhone: ICartPhone = {
-        ...phone,
+  const handleAddProductToCart = () => {
+    if (product) {
+      const newProduct: ICartProduct = {
+        ...product,
         quantity: 1,
       };
 
-      setHasPhoneInCart(true);
-      dispatch(addPhoneToCart(newPhone));
+      setHasProductInCart(true);
+      dispatch(addProductToCart(newProduct));
     }
   };
 
   const handleAddToMyFavourites = () => {
-    setHasPhoneInFavourites(prev => !prev);
-    if (phone) {
-      dispatch(addToFavourites(phone));
+    setHasProductInFavourites(prev => !prev);
+    if (product) {
+      dispatch(addToFavourites(product));
     }
   };
 
   return (
     <div className="buttons">
-      {hasPhoneInCart ? (
+      {hasProductInCart ? (
         <button
           type="button"
           style={{ width: widthAddButton, height: heightAddButton }}
           className="buttons__added"
-          onClick={handleRemovePhoneFromCart}
+          onClick={handleRemoveProductFromCart}
         >
           Added to cart
         </button>
@@ -93,7 +93,7 @@ export const Buttons: FC<Props> = ({
           type="button"
           style={{ width: widthAddButton, height: heightAddButton }}
           className="buttons__add"
-          onClick={handleAddPhoneToCart}
+          onClick={handleAddProductToCart}
         >
           Add to cart
         </button>
@@ -102,13 +102,13 @@ export const Buttons: FC<Props> = ({
         type="button"
         style={{ width: widthSelectedButton, height: heightSelectedButton }}
         className={cn('buttons__favorites', {
-          selected: hasPhoneInFavourites,
+          selected: hasProductInFavourites,
         })}
         data-cy="addToFavorite"
         onClick={handleAddToMyFavourites}
       >
         {
-          hasPhoneInFavourites
+          hasProductInFavourites
             ? <FavouritesIconRed />
             : <FavouritesIcon />
         }

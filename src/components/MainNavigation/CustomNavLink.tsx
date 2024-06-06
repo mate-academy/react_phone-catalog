@@ -15,7 +15,8 @@ export const CustomNavLink: FC<Props> = ({ to, text, onClick }) => {
     <NavLink
       to={to}
       className={({ isActive }) => cn(
-        isActive ? 'main-header__active main-header__active--left' : '',
+        'main-header__link-item',
+        isActive ? 'main-header__active' : '',
       )}
       onClick={onClick}
     >

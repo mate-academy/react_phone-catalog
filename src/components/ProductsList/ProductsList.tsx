@@ -1,7 +1,7 @@
 import { FC, useMemo } from 'react';
 import { TypeAnimation } from 'react-type-animation';
 import { useSearchParams } from 'react-router-dom';
-import { PhoneItem } from '../PhoneItem';
+import { ProductItem } from '../ProductItem';
 import { sortPhones, setSearchWith } from '../../helper';
 import { Pagination } from '../Pagination';
 import { DropDown } from '../DropDown/DropDown';
@@ -86,7 +86,7 @@ export const ProductsList: FC<Props> = ({ products }) => {
 
   return (
     <>
-      <div className="phoneList__dropdown">
+      <div className="productList__dropdown">
         <DropDown
           label="Sort by"
           listOfProperties={listOfSort}
@@ -104,10 +104,10 @@ export const ProductsList: FC<Props> = ({ products }) => {
 
       {products.length ? (
         <>
-          <ul className="phoneList__grid" data-cy="productList">
-            {currentItems.map((phone) => (
-              <li className="phoneList__gridItem" key={phone.itemId}>
-                <PhoneItem phone={phone} />
+          <ul className="productList__grid" data-cy="productList">
+            {currentItems.map((item) => (
+              <li className="productList__gridItem" key={item.itemId}>
+                <ProductItem product={item} />
               </li>
             ))}
           </ul>
@@ -115,7 +115,7 @@ export const ProductsList: FC<Props> = ({ products }) => {
           {perPage === 71 ? (
             ''
           ) : (
-            <div className="phoneList__pagiantion">
+            <div className="productList__pagiantion">
               <Pagination
                 totalItems={products.length}
                 currentPage={page}

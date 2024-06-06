@@ -1,5 +1,5 @@
 export { type IProductDetail } from './ProductDetail.interface';
-export { type ICartPhone } from './CartPhone.interface';
+export { type ICartProduct } from './CartPhone.interface';
 export { type TPage } from './Page.type';
 export { type TSort } from './Sort.type';
 export { type IProduct } from './Product.interface';

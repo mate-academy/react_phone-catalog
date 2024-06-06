@@ -1,5 +1,5 @@
 export {
   addToFavourites,
-  selectFavouritesPhones,
+  selectFavouritesProduct,
   selectFavouritesQuantity,
 } from './favouritesSlice';

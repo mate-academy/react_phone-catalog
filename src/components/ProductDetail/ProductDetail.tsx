@@ -1,13 +1,12 @@
+/* eslint-disable max-len */
 /* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
 import { FC, useEffect, useState } from 'react';
-import { Link, useLocation, useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import cn from 'classnames';
-import './PhoneDetail.scss';
+import './ProductDetail.scss';
 import {
   convertToHexFormat,
   formatter,
-  truncatePhoneGB,
-  truncatePhoneId,
 } from '../../helper';
 import { Buttons } from '../Buttons';
 import { ProductsSlider } from '../Home';
@@ -19,12 +18,28 @@ type Props = {
   item: IProductDetail | null,
 };
 
-export const PhoneDetail: FC<Props> = ({ items, item }) => {
+export const ProductDetail: FC<Props> = ({ items, item }) => {
   const [image, setImage] = useState(item?.images[0] || null);
   const [searchParams] = useSearchParams();
-  const location = useLocation();
-  const newLocation
-    = location.pathname.split('/')[1];
+  const {
+    category,
+    namespaceId,
+    capacity,
+    images,
+    colorsAvailable,
+    color,
+    screen,
+    resolution,
+    processor,
+    priceDiscount,
+    priceRegular,
+    camera,
+    capacityAvailable,
+    cell,
+    zoom,
+    ram,
+    description,
+  } = item as IProductDetail;
 
   const selectedName = item?.name.split(' ').slice(2, 3);
 
@@ -33,18 +48,25 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
   );
 
   const techSpecs = [
-    { label: 'Screen', value: item?.screen },
-    { label: 'Resolution', value: item?.resolution },
-    { label: 'Processor', value: item?.processor },
-    { label: 'RAM', value: item?.ram },
-    { label: 'Built-in Memory', value: item?.capacity },
-    { label: 'Camera', value: item?.camera || 'none' },
-    { label: 'Zoom', value: item?.zoom || 'none' },
-    { label: 'Cell', value: item?.cell.join(', ') },
+    { label: 'Screen', value: screen },
+    { label: 'Resolution', value: resolution },
+    { label: 'Processor', value: processor },
+    { label: 'RAM', value: ram },
+    { label: 'Built-in Memory', value: capacity },
+    { label: 'Camera', value: camera || 'none' },
+    { label: 'Zoom', value: zoom || 'none' },
+    { label: 'Cell', value: cell.join(', ') },
   ];
 
-  const findPhone = items.find((anyItem) => anyItem.itemId === item?.id || '');
-  const newId = truncatePhoneId(item, item?.id);
+  const findProduct = items.find((anyItem) => anyItem.itemId === item?.id || '');
+
+  const getColor = (value: string) => {
+    return `/${category}/${namespaceId}-${capacity.toLowerCase()}-${value.replaceAll(' ', '-')}`;
+  };
+
+  const getCapacity = (value: string) => {
+    return `/${category}/${namespaceId}-${value.toLowerCase()}-${color.replaceAll(' ', '-')}`;
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -54,13 +76,13 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
     <>
       {item && (
         <>
-          <div className="phoneDetail" data-cy="cardsContainer">
-            <h2 className="phoneDetail__title">{`${item.name} (iMT9G2FS/A)`}</h2>
-            <div className="phoneDetail__top top">
+          <div className="productDetail" data-cy="cardsContainer">
+            <h2 className="productDetail__title">{`${item.name} (iMT9G2FS/A)`}</h2>
+            <div className="productDetail__top top">
               <section className="top__photo">
                 <div>
                   <ul className="photo__slider">
-                    {item.images.map((img) => (
+                    {images.map((img) => (
                       <li
                         onClick={() => setImage(img)}
                         onKeyDown={() => {}}
@@ -84,18 +106,20 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
                 <div className="parameters__block">
                   <p className="parameters__description">Available colors</p>
                   <ul className="parameters__avaible-colors">
-                    {item.colorsAvailable.map((color) => (
+                    {colorsAvailable.map((currentColor) => (
                       <li
-                        key={color}
+                        key={currentColor}
                         className={cn(
                           'parameters__avaible-color',
-                          { active__color: item.color === color },
+                          { active__color: color === currentColor },
                         )}
-                        style={{ backgroundColor: convertToHexFormat(color) }}
+                        style={{
+                          backgroundColor: convertToHexFormat(currentColor.replaceAll(' ', '')),
+                        }}
                       >
                         <Link
                           className="parameters__link"
-                          to={`/${newLocation}/${newId}-${color}`}
+                          to={getColor(currentColor)}
                           state={{ search: searchParams.toString() }}
                         >
                           {' '}
@@ -106,15 +130,15 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
 
                   <p className="parameters__description">Select capacity</p>
                   <ul className="parameters__capacity">
-                    {item.capacityAvailable.map((cpct) => (
+                    {capacityAvailable.map((cpct) => (
                       <li
                         key={cpct}
                       >
                         <Link
-                          to={`/${newLocation}/${truncatePhoneGB(item, item?.id, cpct)}`}
+                          to={getCapacity(cpct)}
                           className={cn(
                             'parameters__cpct-link',
-                            { active__cpct: item.capacity === cpct },
+                            { active__cpct: capacity === cpct },
                           )}
                           state={{ search: searchParams.toString() }}
                         >
@@ -125,10 +149,10 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
                   </ul>
                   <div className="parameters__prices">
                     <p className="parameters__price">
-                      {formatter.format(item.priceDiscount)}
+                      {formatter.format(priceDiscount)}
                     </p>
                     <p className="parameters__full-price">
-                      {formatter.format(item.priceRegular)}
+                      {formatter.format(priceRegular)}
                     </p>
                   </div>
 
@@ -138,27 +162,27 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
                       heightAddButton={48}
                       widthSelectedButton={48}
                       heightSelectedButton={48}
-                      phoneID={item.id}
-                      phone={findPhone}
+                      productID={item.id}
+                      product={findProduct}
                     />
                   </div>
 
                   <div className="parameters__technical-data">
                     <p className="parameters__technical-item">
                       Screen
-                      <span>{item.screen}</span>
+                      <span>{screen}</span>
                     </p>
                     <p className="parameters__technical-item">
                       Resolution
-                      <span>{item.resolution}</span>
+                      <span>{resolution}</span>
                     </p>
                     <p className="parameters__technical-item">
                       Processor
-                      <span>{item.processor}</span>
+                      <span>{processor}</span>
                     </p>
                     <p className="parameters__technical-item">
                       RAM
-                      <span>{item.ram}</span>
+                      <span>{ram}</span>
                     </p>
                   </div>
                 </div>
@@ -166,11 +190,11 @@ export const PhoneDetail: FC<Props> = ({ items, item }) => {
               </section>
             </div>
 
-            <div className="phoneDetail__bottom" data-cy="productDescription">
+            <div className="productDetail__bottom" data-cy="productDescription">
               <section className="about">
                 <h2 className="about__title">About</h2>
                 <div className="about__info">
-                  {item.description.map(({ text, title }) => (
+                  {description.map(({ text, title }) => (
                     <div className="about__info-item" key={title}>
                       <h3 className="about__info-title">{title}</h3>
                       <span

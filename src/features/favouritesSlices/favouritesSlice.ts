@@ -2,12 +2,12 @@ import {
   createSlice,
   PayloadAction,
 } from '@reduxjs/toolkit';
-import { IPhone } from '../../types/Phone.interface';
 import type { RootState } from '../../app/store';
+import { IProduct } from '../../types';
 
 type Favourites = {
   quantityFavourites: number,
-  favourites: IPhone[],
+  favourites: IProduct[],
 };
 
 const initialState: Favourites = {
@@ -19,19 +19,19 @@ const favouritesSlices = createSlice({
   name: 'favourites',
   initialState,
   reducers: {
-    addToFavourites(state, action: PayloadAction<IPhone>) {
-      const hasPhones = state.favourites.find(
-        (phones) => phones.itemId === action.payload.itemId,
+    addToFavourites(state, action: PayloadAction<IProduct>) {
+      const hasProduct = state.favourites.find(
+        (product) => product.itemId === action.payload.itemId,
       );
 
-      if (!hasPhones) {
+      if (!hasProduct) {
         state.favourites.push({
           ...action.payload,
         });
         state.quantityFavourites += 1;
       } else {
         state.favourites = state.favourites.filter(
-          (phones) => phones.itemId !== action.payload.itemId,
+          (product) => product.itemId !== action.payload.itemId,
         );
         state.quantityFavourites -= 1;
       }
@@ -39,7 +39,7 @@ const favouritesSlices = createSlice({
   },
 });
 
-export const selectFavouritesPhones
+export const selectFavouritesProduct
  = (state: RootState) => state.favourites.favourites;
 export const selectFavouritesQuantity
   = (state: RootState) => state.favourites.quantityFavourites;

@@ -5,6 +5,7 @@ import {
   useRef,
   useState,
 } from 'react';
+import cn from 'classnames';
 import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
 import { CustomNavLink } from './CustomNavLink';
 import { Search } from './Search';
@@ -80,16 +81,6 @@ export const MainNavigation: FC = () => {
     };
   }, [windowWidth]);
 
-  // useEffect(() => {
-  //   // Disable scroll
-  //   document.body.style.overflow = 'hidden';
-
-  //   // Re-enable scroll when component unmounts
-  //   return () => {
-  //     document.body.style.overflow = '';
-  //   };
-  // }, [openRef]);
-
   return (
     <header className="main-header">
       {(windowWidth >= 320 && windowWidth <= 639) ? (
@@ -100,7 +91,7 @@ export const MainNavigation: FC = () => {
                 <Logo />
               </NavLink>
             </li>
-            <li className="main-header__link main-header__link--left">
+            <li className="main-header__item main-header__item--left">
               <button
                 className="main-header__button"
                 type="button"
@@ -119,16 +110,16 @@ export const MainNavigation: FC = () => {
                 <Logo />
               </NavLink>
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink to="/" text="Home" />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink to="/phones" text="Phones" />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink to="/tablets" text="Tablets" />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink to="/accessories" text="Accessories" />
             </li>
           </ul>
@@ -166,23 +157,43 @@ export const MainNavigation: FC = () => {
               placeholder="Search in accessories"
             />
 
-            <li className="main-header__link main-header__link--left">
-              <CustomNavLink
+            <li className="main-header__item main-header__item--left">
+              <NavLink
                 to="/favourites"
-                text={<FavouritesIcon />}
-              />
-              {quantityFavourites > 0 && (
-                <span className="main-header__text">{quantityFavourites}</span>
-              )}
+                className={({ isActive }) => cn(
+                  'main-header__link-item',
+                  isActive ? 'main-header__active' : '',
+                )}
+                onClick={handleOpenRef}
+              >
+                <FavouritesIcon />
+                {quantityFavourites > 0 && (
+                  <span
+                    className="main-header__text"
+                  >
+                    {quantityFavourites}
+                  </span>
+                )}
+              </NavLink>
             </li>
-            <li className="main-header__link main-header__link--left">
-              <CustomNavLink
+            <li className="main-header__item main-header__item--left">
+              <NavLink
                 to="/cart"
-                text={<ShopIcon />}
-              />
-              {quantityCart > 0 && (
-                <span className="main-header__text">{quantityCart}</span>
-              )}
+                className={({ isActive }) => cn(
+                  'main-header__link-item',
+                  isActive ? 'main-header__active' : '',
+                )}
+                onClick={handleOpenRef}
+              >
+                <ShopIcon />
+                {quantityCart > 0 && (
+                  <span
+                    className="main-header__text"
+                  >
+                    {quantityCart}
+                  </span>
+                )}
+              </NavLink>
             </li>
           </ul>
         </nav>
@@ -195,8 +206,12 @@ export const MainNavigation: FC = () => {
                 <Logo />
               </NavLink>
             </li>
-            <li className="main-header__link main-header__link--left">
-              <button type="button" onClick={handleOpenRef}>
+            <li className="main-header__item main-header__item--left">
+              <button
+                className="main-header__button"
+                type="button"
+                onClick={handleOpenRef}
+              >
                 <DeleteIcon color="#000" />
               </button>
             </li>
@@ -205,28 +220,28 @@ export const MainNavigation: FC = () => {
 
         <nav className="main-header__nav main-header__nav--aside">
           <ul className="main-header__list main-header__list--aside">
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink
                 to="/"
                 text="Home"
                 onClick={handleOpenRef}
               />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink
                 to="/phones"
                 text="Phones"
                 onClick={handleOpenRef}
               />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink
                 to="/tablets"
                 text="Tablets"
                 onClick={handleOpenRef}
               />
             </li>
-            <li className="main-header__link">
+            <li className="main-header__item">
               <CustomNavLink
                 to="/accessories"
                 text="Accessories"
@@ -238,33 +253,43 @@ export const MainNavigation: FC = () => {
 
         <div>
           <ul className="aside__bottom-list">
-            <li className="main-header__link aside__link">
-              <CustomNavLink
+            <li className="main-header__item aside__link">
+              <NavLink
                 to="/favourites"
-                text={<FavouritesIcon />}
+                className={({ isActive }) => cn(
+                  'main-header__link-item main-header__link-item--footer',
+                  isActive ? 'main-header__active' : '',
+                )}
                 onClick={handleOpenRef}
-              />
-              {quantityFavourites > 0 && (
-                <span
-                  className="main-header__text main-header__text--footer"
-                >
-                  {quantityFavourites}
-                </span>
-              )}
+              >
+                <FavouritesIcon />
+                {quantityFavourites > 0 && (
+                  <span
+                    className="main-header__text main-header__text--footer"
+                  >
+                    {quantityFavourites}
+                  </span>
+                )}
+              </NavLink>
             </li>
-            <li className="main-header__link aside__link">
-              <CustomNavLink
+            <li className="main-header__item aside__link">
+              <NavLink
                 to="/cart"
-                text={<ShopIcon />}
+                className={({ isActive }) => cn(
+                  'main-header__link-item main-header__link-item--footer',
+                  isActive ? 'main-header__active' : '',
+                )}
                 onClick={handleOpenRef}
-              />
-              {quantityCart > 0 && (
-                <span
-                  className="main-header__text main-header__text--footer"
-                >
-                  {quantityCart}
-                </span>
-              )}
+              >
+                <ShopIcon />
+                {quantityCart > 0 && (
+                  <span
+                    className="main-header__text main-header__text--footer"
+                  >
+                    {quantityCart}
+                  </span>
+                )}
+              </NavLink>
             </li>
           </ul>
         </div>

@@ -11,6 +11,7 @@ import {
   selectProductsStatus,
 } from '../features/productsSlice';
 import { useAppSelector } from '../app/hooks';
+import '../components/ProductsList/ProductsList.scss';
 
 export const Accessories = () => {
   const accessories: IAccessories[] = useAppSelector(selectAccessories) || [];
@@ -28,10 +29,10 @@ export const Accessories = () => {
   }, []);
 
   return (
-    <div className="phoneList">
+    <div className="productList">
       <Breadcrumbs />
-      <h1 className="phoneList__title">Accessories</h1>
-      <p className="phoneList__length">
+      <h1 className="productList__title">Accessories</h1>
+      <p className="productList__length">
         {`${filteredAccessories.length} ${query.length > 0 ? 'result' : 'models'}`}
       </p>
 

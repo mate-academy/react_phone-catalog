@@ -3,17 +3,17 @@ import { TypeAnimation } from 'react-type-animation';
 
 import { CartItem } from './CartItem';
 import { formatter } from '../../helper';
-import { ICartPhone } from '../../types';
+import { ICartProduct } from '../../types';
 
 import './CartList.scss';
 
 type Props = {
-  phoneCart: ICartPhone[],
+  productCart: ICartProduct[],
 };
 
-export const CartList: FC<Props> = ({ phoneCart }) => {
+export const CartList: FC<Props> = ({ productCart }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const totalPrice = phoneCart.reduce((acc, val) => {
+  const totalPrice = productCart.reduce((acc, val) => {
     return acc + (val.price * val.quantity);
   }, 0);
 
@@ -41,9 +41,9 @@ export const CartList: FC<Props> = ({ phoneCart }) => {
 
       <div className="cart">
         <ul className="cart__list">
-          {phoneCart.map((phone) => (
-            <li key={phone.itemId} className="cart__item">
-              <CartItem phone={phone} />
+          {productCart.map((product) => (
+            <li key={product.itemId} className="cart__item">
+              <CartItem product={product} />
             </li>
           ))}
         </ul>
@@ -53,7 +53,7 @@ export const CartList: FC<Props> = ({ phoneCart }) => {
             <p
               className="cart__description"
             >
-              {`Total for ${phoneCart.length} ${phoneCart.length === 1 ? 'item' : 'items'}`}
+              {`Total for ${productCart.length} ${productCart.length === 1 ? 'item' : 'items'}`}
             </p>
             <button
               type="button"

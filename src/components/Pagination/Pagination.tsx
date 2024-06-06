@@ -38,15 +38,12 @@ export const Pagination: FC<Props> = ({
   );
   const [position, setPosition] = useState(initialPosition);
 
-  console.log(initialPosition);
-
   const itemWidth = 40;
   const frameSize = 4;
   const minPosition = 0;
   const maxPosition = pageNumbers.length - frameSize;
 
   const showNextButton = () => {
-    // setPosition(prev => Math.min(prev + 1, maxPosition));
     const newPosition = Math.min(position + 1, maxPosition);
 
     setPosition(newPosition);
@@ -57,7 +54,6 @@ export const Pagination: FC<Props> = ({
     const newPosition = Math.max(position - 1, minPosition);
 
     setPosition(newPosition);
-    // setPosition(prev => Math.max(prev - 1, minPosition));
     localStorage.setItem('paginationPosition', newPosition.toString());
   };
 

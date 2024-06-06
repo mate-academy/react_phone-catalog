@@ -1,4 +1,5 @@
 @import "../../styles/variables";
+@import "../../styles/mixins";
 
 .phonesSlider {
   display: flex;
@@ -25,13 +26,22 @@
     flex-shrink: 0;
     flex-grow: 0;
     list-style: none;
-    gap: 16px;
   }
 
   &__item {
-    width: 100%;
+    // width: 100%;
     transition: transform 700ms ease-in-out;
     box-sizing: border-box;
+    width: 212px;
+    margin-right: 16px;
+
+    @include onTablet {
+      width: 237px;
+    }
+
+    @include onDesktop {
+      width: 272px;
+    }
   }
 
   &__buttons {

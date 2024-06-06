@@ -1,56 +1,27 @@
-import convert from 'color-convert';
+type ColorName = string;
 
-export const convertToHexFormat = (colorName: any) => {
-  if (colorName === 'spacegray') {
-    return '#4C4C4C';
-  }
+export const convertToHexFormat = (colorName: ColorName): string => {
+  const colorCodes: Record<ColorName, string> = {
+    spacegray: '#4C4C4C',
+    midnight: '#1d1936',
+    spaceblack: '#505150',
+    sierrablue: '#BFDAF7',
+    graphite: '#41424C',
+    midnightgreen: '#5F7170',
+    rosegold: '#F8D8D3',
+    purple: '#CCC2D9',
+    green: '#BEE8D5',
+    yellow: '#FEE889',
+    gold: '#FCDBC1',
+    red: '#D31B35',
+    black: '#000',
+    coral: '#F88379',
+    blue: '#023E8A',
+    pink: '#FFD1DC',
+    silver: '#A9B0B4',
+    skyblue: '#87CEEB',
+    starlight: '#9A9898',
+  };
 
-  if (colorName === 'midnight') {
-    return '#1d1936';
-  }
-
-  if (colorName === 'spaceblack') {
-    return '#505150';
-  }
-
-  if (colorName === 'sierrablue') {
-    return '#BFDAF7';
-  }
-
-  if (colorName === 'graphite') {
-    return '#41424C';
-  }
-
-  if (colorName === 'midnightgreen') {
-    return '#5F7170';
-  }
-
-  if (colorName === 'rosegold') {
-    return '#F8D8D3';
-  }
-
-  if (colorName === 'purple') {
-    return '#CCC2D9';
-  }
-
-  if (colorName === 'green') {
-    return '#BEE8D5';
-  }
-
-  if (colorName === 'yellow') {
-    return '#FEE889';
-  }
-
-  if (colorName === 'gold') {
-    return '#FCDBC1';
-  }
-
-  if (colorName === 'red') {
-    return '#D31B35';
-  }
-
-  const rgbArray = convert.keyword.rgb(colorName);
-  const hexValue = convert.rgb.hex(rgbArray);
-
-  return `#${hexValue}`;
+  return colorCodes[colorName];
 };

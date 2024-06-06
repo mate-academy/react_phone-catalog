@@ -32,10 +32,10 @@ export const PhonesPage = () => {
   }, []);
 
   return (
-    <div className="phoneList">
+    <div className="productList">
       <Breadcrumbs />
-      <h1 className="phoneList__title">Modile Phones</h1>
-      <p className="phoneList__length">
+      <h1 className="productList__title">Modile Phones</h1>
+      <p className="productList__length">
         {`${filteredPhones.length} ${query.length > 0 ? 'result' : 'models'}`}
       </p>
 

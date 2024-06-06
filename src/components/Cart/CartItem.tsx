@@ -1,11 +1,11 @@
 import { FC } from 'react';
 
 import { useAppDispatch } from '../../app/hooks';
-import { ICartPhone } from '../../types';
+import { ICartProduct } from '../../types';
 import {
-  decrementPhoneQauntity,
-  incrementPhoneQauntity,
-  removePhoneFromCart,
+  decrementProductQauntity,
+  incrementProductQauntity,
+  removeProductFromCart,
 } from '../../features/cartSlices/cartSlice';
 import { formatter } from '../../helper';
 import { DeleteIcon, MinusIcon, PlusIcon } from '../../icons';
@@ -14,30 +14,30 @@ import './CartItem.scss';
 import { BASE_URL_PHOTO } from '../../helper/BASE_URL';
 
 type Props = {
-  phone: ICartPhone;
+  product: ICartProduct;
 };
 
-export const CartItem: FC<Props> = ({ phone }) => {
+export const CartItem: FC<Props> = ({ product }) => {
   const {
     name,
     image,
     itemId,
     quantity,
     price,
-  } = phone;
+  } = product;
 
   const dispatch = useAppDispatch();
 
   const handleIncrementQuantity = () => {
-    dispatch(incrementPhoneQauntity(phone));
+    dispatch(incrementProductQauntity(product));
   };
 
   const handleDecrementQuantity = () => {
-    dispatch(decrementPhoneQauntity(itemId));
+    dispatch(decrementProductQauntity(itemId));
   };
 
   const handleRemovePhoneFromCart = () => {
-    dispatch(removePhoneFromCart(itemId));
+    dispatch(removeProductFromCart(itemId));
   };
 
   return (

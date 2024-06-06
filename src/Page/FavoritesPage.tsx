@@ -7,18 +7,18 @@ import { getCheckQuery } from '../helper';
 import { Breadcrumbs } from '../components/Bredcrambs';
 import { Favourites } from '../components/Favourites';
 import {
-  selectFavouritesPhones,
+  selectFavouritesProduct,
 } from '../features/favouritesSlices';
 
 import '../components/Favourites/Favourites.scss';
 
 export const FavouritesPage = () => {
-  const favouritesPhones = useAppSelector(selectFavouritesPhones);
+  const favouritesPhones = useAppSelector(selectFavouritesProduct);
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query') || '';
 
-  const filteredFavouritesPhones = useMemo(() => {
+  const filteredFavouritesProducts = useMemo(() => {
     return favouritesPhones.filter((phone) => getCheckQuery(phone.name, query));
   }, [query, favouritesPhones]);
 
@@ -34,15 +34,15 @@ export const FavouritesPage = () => {
             style={{ marginTop: '24px' }}
             className="favourites__itemLength"
           >
-            {`${filteredFavouritesPhones.length} results`}
+            {`${filteredFavouritesProducts.length} results`}
           </p>
-          <Favourites favouritesPhones={filteredFavouritesPhones} />
+          <Favourites favouritesProducts={filteredFavouritesProducts} />
         </>
       ) : (
         <>
           <Breadcrumbs />
           <h1 className="favourites__title">Favourites</h1>
-          <p className="favourites__itemLength">{`${filteredFavouritesPhones.length} items`}</p>
+          <p className="favourites__itemLength">{`${filteredFavouritesProducts.length} items`}</p>
 
           {!favouritesPhones.length ? (
             <TypeAnimation
@@ -56,7 +56,7 @@ export const FavouritesPage = () => {
               }}
             />
           ) : (
-            <Favourites favouritesPhones={filteredFavouritesPhones} />
+            <Favourites favouritesProducts={filteredFavouritesProducts} />
           )}
         </>
       )}

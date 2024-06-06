@@ -6,11 +6,11 @@ import {
 import { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { Breadcrumbs } from '../components/Bredcrambs';
-import { PhoneDetail } from '../components/PhoneDetail';
+import { ProductDetail } from '../components/ProductDetail';
 import { Loader } from '../components/Loader';
 import { ArrowLeft } from '../icons';
 
-import '../components/PhoneDetail/PhoneDetail.scss';
+import '../components/ProductDetail/ProductDetail.scss';
 import { Error } from './Error';
 import {
   fetchTabletsDetail,
@@ -45,21 +45,21 @@ export const TabletDetailPage = () => {
           <button
             data-cy="backButton"
             type="button"
-            className="phoneDetail__button"
+            className="productDetail__button"
             onClick={goBack}
           >
             <ArrowLeft />
             <span>Back</span>
           </button>
 
-          <PhoneDetail
+          <ProductDetail
             item={tablet}
             items={tablets}
           />
         </>
       )}
       {tabletDetailStatus === 'error' && (
-        <Error message="Sorry but phone is not found" />
+        <Error message="Sorry but tablet is not found" />
       )}
     </>
   );

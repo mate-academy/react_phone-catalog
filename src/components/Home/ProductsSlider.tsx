@@ -4,11 +4,11 @@ import cn from 'classnames';
 import { selectProductsStatus } from '../../features/productsSlice';
 import { useAppSelector } from '../../app/hooks';
 import { IPhone } from '../../types';
-import { PhoneItem } from '../PhoneItem';
+import { ProductItem } from '../ProductItem';
 import { Loader } from '../Loader';
 
 import { ArrowLeft, ArrowRight } from '../../icons';
-import './PhonesSlider.scss';
+import './ProductsSlider.scss';
 
 type Props = {
   newProducts: IPhone[];
@@ -16,16 +16,15 @@ type Props = {
 };
 
 export const ProductsSlider: FC<Props> = ({ newProducts, title }) => {
-  const phonesStatus = useAppSelector(selectProductsStatus);
+  const productsStatus = useAppSelector(selectProductsStatus);
   const [position, setPosition] = useState(0);
   const [frameSize, setFrameSize] = useState(4);
   const [maxPosition, setMaxPosition]
     = useState(newProducts.length - frameSize);
+  const [itemWidth, setItemWidth] = useState(288);
 
-  // const frameSize = 4;
-  const itemWidth = 288;
   const minPosition = 0;
-  // const maxPosition = newProducts.length - frameSize;
+  const marginRight = 16;
 
   const showNextPhone = () => {
     if (position + 1 < maxPosition) {
@@ -47,15 +46,20 @@ export const ProductsSlider: FC<Props> = ({ newProducts, title }) => {
     const handleResize = () => {
       const windowWidth = window.innerWidth;
       let newFrameSize = 4;
+      let newItemWidth = 0;
 
       if (windowWidth >= 1200) {
         newFrameSize = 4;
+        newItemWidth = 272;
       } else if (windowWidth >= 640 && windowWidth <= 1199) {
         newFrameSize = 2;
+        newItemWidth = 237;
       } else if (windowWidth >= 320 && windowWidth <= 639) {
         newFrameSize = 1;
+        newItemWidth = 212;
       }
 
+      setItemWidth(newItemWidth);
       setFrameSize(newFrameSize);
       setMaxPosition(Math.max(newProducts.length - newFrameSize, 0));
     };
@@ -104,16 +108,18 @@ export const ProductsSlider: FC<Props> = ({ newProducts, title }) => {
           </button>
         </div>
       </div>
-      {phonesStatus === 'loading' ? (<Loader />) : (
+      {productsStatus === 'loading' ? (<Loader />) : (
         <div className="phonesSlider__bottom">
           <ul className="phonesSlider__list">
             {newProducts.map((product) => (
               <li
                 key={product.itemId}
                 className="phonesSlider__item"
-                style={{ transform: `translateX(${-(position * itemWidth)}px)` }}
+                style={{
+                  transform: `translateX(${-(position * (itemWidth + marginRight))}px)`,
+                }}
               >
-                <PhoneItem phone={product} />
+                <ProductItem product={product} />
               </li>
             ))}
           </ul>

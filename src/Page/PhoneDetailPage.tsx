@@ -9,11 +9,11 @@ import {
   fetchPhoneDetail, selectPhoneDetail, selectPhoneDetailStatus,
 } from '../features/phoneDetailSlices';
 import { Breadcrumbs } from '../components/Bredcrambs';
-import { PhoneDetail } from '../components/PhoneDetail';
+import { ProductDetail } from '../components/ProductDetail';
 import { Loader } from '../components/Loader';
 import { ArrowLeft } from '../icons';
 
-import '../components/PhoneDetail/PhoneDetail.scss';
+import '../components/ProductDetail/ProductDetail.scss';
 import { Error } from './Error';
 import { selectPhones } from '../features/productsSlice';
 
@@ -43,14 +43,14 @@ export const PhoneDetailPage = () => {
           <button
             data-cy="backButton"
             type="button"
-            className="phoneDetail__button"
+            className="productDetail__button"
             onClick={goBack}
           >
             <ArrowLeft />
             <span>Back</span>
           </button>
 
-          <PhoneDetail
+          <ProductDetail
             item={phone}
             items={phones}
           />

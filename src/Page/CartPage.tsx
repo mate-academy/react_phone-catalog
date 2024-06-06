@@ -3,13 +3,13 @@ import { useNavigate } from 'react-router-dom';
 
 import { useAppSelector } from '../app/hooks';
 import { CartList } from '../components/Cart';
-import { selectCartPhones } from '../features/cartSlices';
+import { selectCartProducts } from '../features/cartSlices';
 import { ArrowLeft } from '../icons';
 
 import '../components/Cart/CartList.scss';
 
 export const CartPage = () => {
-  const phoneCart = useAppSelector(selectCartPhones);
+  const productCart = useAppSelector(selectCartProducts);
   const navigate = useNavigate();
 
   const goBack = () => {
@@ -27,14 +27,14 @@ export const CartPage = () => {
         <span>Back</span>
       </button>
       <h1 className="cart__title">Cart</h1>
-      {!phoneCart.length ? (
+      {!productCart.length ? (
         <TypeAnimation
           sequence={[
             'Your cart is empty, please add a product', 1000,
           ]}
         />
       ) : (
-        <CartList phoneCart={phoneCart} />
+        <CartList productCart={productCart} />
       )}
     </>
   );

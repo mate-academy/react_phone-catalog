@@ -1,76 +1,76 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import type { RootState } from '../../app/store';
-import { ICartPhone } from '../../types';
+import { ICartProduct } from '../../types';
 
 type Cart = {
   quantityCart: number,
-  phones: ICartPhone[],
+  products: ICartProduct[],
 };
 
 const initialState: Cart = {
   quantityCart: 0,
-  phones: [],
+  products: [],
 };
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addPhoneToCart(state, action: PayloadAction<ICartPhone>) {
-      state.phones.push({
+    addProductToCart(state, action: PayloadAction<ICartProduct>) {
+      state.products.push({
         ...action.payload,
       });
       state.quantityCart += 1;
     },
-    incrementPhoneQauntity(state, action: PayloadAction<ICartPhone>) {
-      const phone = state.phones.find(
+    incrementProductQauntity(state, action: PayloadAction<ICartProduct>) {
+      const product = state.products.find(
         (item) => item.itemId === action.payload.itemId,
       );
 
-      if (phone) {
-        phone.quantity += 1;
+      if (product) {
+        product.quantity += 1;
         state.quantityCart += 1;
       }
     },
-    decrementPhoneQauntity(state, action: PayloadAction<string>) {
-      const phone = state.phones.find(
+    decrementProductQauntity(state, action: PayloadAction<string>) {
+      const product = state.products.find(
         (item) => item.itemId === action.payload,
       );
 
-      if (phone) {
-        if (phone.quantity === 1) {
-          state.phones = state.phones.filter(
+      if (product) {
+        if (product.quantity === 1) {
+          state.products = state.products.filter(
             (item) => item.itemId !== action.payload,
           );
           state.quantityCart -= 1;
         } else {
-          phone.quantity -= 1;
+          product.quantity -= 1;
           state.quantityCart -= 1;
         }
       }
     },
-    removePhoneFromCart(state, action: PayloadAction<string>) {
-      const phone = state.phones.find(
+    removeProductFromCart(state, action: PayloadAction<string>) {
+      const product = state.products.find(
         (item) => item.itemId === action.payload,
       );
 
-      if (phone) {
-        state.phones = state.phones.filter(
+      if (product) {
+        state.products = state.products.filter(
           (item) => item.itemId !== action.payload,
         );
-        state.quantityCart -= phone.quantity;
+        state.quantityCart -= product.quantity;
       }
     },
   },
 });
 
-export const selectCartPhones = (state: RootState) => state.cart.phones;
+export const selectCartProducts = (state: RootState) => state.cart.products;
 export const selectCartQuantity = (state: RootState) => state.cart.quantityCart;
 
 export const {
-  addPhoneToCart,
-  removePhoneFromCart,
-  decrementPhoneQauntity,
-  incrementPhoneQauntity,
+  addProductToCart,
+  removeProductFromCart,
+  decrementProductQauntity,
+  incrementProductQauntity,
 } = cartSlice.actions;
 export default cartSlice.reducer;

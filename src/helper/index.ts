@@ -7,7 +7,5 @@ export { getMultipleRandomPhones } from './getMultipleRandomPhones';
 export { bannerImages, categoryImages } from './images';
 export { getSearchWith, setSearchWith } from './searchHelper';
 export { sortPhones } from './sort';
-export { truncatePhoneGB } from './truncatePhoneGB';
-export { truncatePhoneId } from './truncatePhoneId';
 export { fnUpperFirstLetter } from './upperFirstLetter';
 export { debounce } from './debonce';

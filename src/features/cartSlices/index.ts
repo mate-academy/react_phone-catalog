@@ -1,8 +1,8 @@
 export {
-  selectCartPhones,
+  selectCartProducts,
   selectCartQuantity,
-  addPhoneToCart,
-  incrementPhoneQauntity,
-  decrementPhoneQauntity,
-  removePhoneFromCart,
+  addProductToCart,
+  incrementProductQauntity,
+  decrementProductQauntity,
+  removeProductFromCart,
 } from './cartSlice';

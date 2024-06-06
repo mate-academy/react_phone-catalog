@@ -8,7 +8,7 @@
   flex-direction: row;
   gap: 16px;
   padding-bottom: 20px;
-  margin: 40px 0px 52px;
+  margin: 40px 0 52px;
   position: relative;
 
   @include onTablet {
@@ -29,7 +29,6 @@
       opacity: 1;
       display: block;
     }
-
 
     &--right:hover > * {
       animation: right 1s ease infinite;

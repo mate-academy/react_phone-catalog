@@ -19,15 +19,20 @@
     &--aside {
       box-shadow: none;
       margin-bottom: 24px;
-      height: 188px;
+      height: 288px;
     }
+  }
+
+  &__button {
+    width: 100%;
+    height: 100%;
   }
 
   &__list {
     padding-left: 20px;
     width: 100%;
+    height: 100%;
     list-style: none;
-    // margin: 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +56,7 @@
     }
   }
 
-  &__link {
+  &__item {
     position: relative;
 
     &--left {
@@ -67,25 +72,36 @@
         width: 64px;
       }
     }
+  }
 
-    & a {
-      color: $graySecondary;
-      font-size: 12px;
-      text-decoration: none;
-      font-style: normal;
-      font-weight: 700;
-      line-height: 11px;
-      letter-spacing: 0.48px;
-      text-transform: uppercase;
-      padding-block: 25px;
+  &__link-item {
+    color: $graySecondary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    width: 100%;
+    font-size: 12px;
+    text-decoration: none;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    // padding-block: 25px;
 
-      @include onTablet {
-        padding-block: 19px;
-      }
+    &--footer {
+      height: 64px;
+      // width: 100%;
+      text-align: center
+    }
 
-      @include onDesktop {
-        padding-block: 26px;
-      }
+    @include onTablet {
+      // padding-block: 19px;
+    }
+
+    @include onDesktop {
+      height: 64px;
     }
   }
 
@@ -94,28 +110,20 @@
       content: "";
       display: block;
       position: absolute;
-      bottom: -7px;
+      bottom: -1px;
       height: 3px;
       width: 100%;
       background-color: $grayPrimary;
       transition: transform 0.5s;
       transform: scale(1);
       transform-origin: left;
-
-      @include onTablet {
-        bottom: -14px;
-      }
-
-      @include onDesktop {
-        bottom: -22px;
-      }
     }
   }
 
   &__text {
     position: absolute;
-    top: -4px;
-    left: 9px;
+    top: -7px;
+    left: -7px;
     display: block;
     width: 13px;
     height: 13px;
@@ -129,18 +137,17 @@
     font-weight: 600;
 
     &--footer {
-      top: 19px;
-      left: 80px;
+      position: relative;
     }
 
     @include onTablet {
-      top: 20px;
+      top: 10px;
       left: 25px;
     }
 
     @include onDesktop {
+      top: 19px;
       left: 32px;
-      top: 18px;
     }
   }
 
@@ -148,7 +155,6 @@
     display: none;
 
     @include onDesktop {
-      display: block;
       height: 64px;
       width: 300px;
       border-left: 1px solid #e2e6e9;

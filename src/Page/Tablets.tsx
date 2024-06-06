@@ -9,6 +9,7 @@ import { getCheckQuery } from '../helper';
 import { useAppSelector } from '../app/hooks';
 import { selectProductsStatus, selectTalets } from '../features/productsSlice';
 import { ITablet } from '../types';
+import '../components/ProductsList/ProductsList.scss';
 
 export const Tablets = () => {
   const tablets: ITablet[] = useAppSelector(selectTalets) || [];
@@ -26,10 +27,10 @@ export const Tablets = () => {
   }, []);
 
   return (
-    <div className="phoneList">
+    <div className="productList">
       <Breadcrumbs />
-      <h1 className="phoneList__title">Tablets</h1>
-      <p className="phoneList__length">
+      <h1 className="productList__title">Tablets</h1>
+      <p className="productList__length">
         {`${filteredTablets.length} ${query.length > 0 ? 'result' : 'models'}`}
       </p>
 

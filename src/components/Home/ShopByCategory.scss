@@ -41,7 +41,6 @@
 
     &--grey {
       background-color: rgba(109, 100, 116, 1);
-      ;
     }
 
     &--black {
@@ -69,7 +68,6 @@
 
     @include onTablet {
       top: 40px;
-      right: -30px;
     }
   }
 

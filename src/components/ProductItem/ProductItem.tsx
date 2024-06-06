@@ -5,14 +5,14 @@ import { IPhone } from '../../types/Phone.interface';
 import { formatter } from '../../helper';
 import { Buttons } from '../Buttons';
 
-import './PhoneItem.scss';
+import './ProductItem.scss';
 import { BASE_URL_PHOTO } from '../../helper/BASE_URL';
 
 type Props = {
-  phone: IPhone,
+  product: IPhone,
 };
 
-export const PhoneItem: FC<Props> = ({ phone }) => {
+export const ProductItem: FC<Props> = ({ product }) => {
   const {
     itemId,
     image,
@@ -23,7 +23,7 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
     capacity,
     ram,
     category,
-  } = phone;
+  } = product;
 
   const [searchParams] = useSearchParams();
   const formatPrice = formatter.format(price);
@@ -33,14 +33,18 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
     window.scrollTo(0, 0);
   }, []);
 
+  useEffect(() => {
+
+  }, []);
+
   return (
     <>
-      {phone
+      {product
         && (
           <section className="phoneItem">
             <Link
               to={
-                `/${category}/${phone.itemId}`
+                `/${category}/${itemId}`
               }
               style={{ textDecorationLine: 'none' }}
               state={{ search: searchParams.toString() }}
@@ -48,7 +52,7 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
               <article className="phoneItem__image">
                 <img src={`${BASE_URL_PHOTO}/${image}`} alt="Modile Phone" />
               </article>
-              <p className="phoneItem__title">{`${name} (iMT9G2FS/A)`}</p>
+              <p className="phoneItem__title">{`${name}`}</p>
             </Link>
             <article className="phoneItem__description">
               <div className="phoneItem__prices">
@@ -82,8 +86,8 @@ export const PhoneItem: FC<Props> = ({ phone }) => {
                   heightSelectedButton={40}
                   widthAddButton={176}
                   heightAddButton={40}
-                  phone={phone}
-                  phoneID={itemId}
+                  product={product}
+                  productID={itemId}
                 />
               </div>
             </article>
