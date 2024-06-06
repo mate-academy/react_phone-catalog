@@ -1,0 +1,92 @@
+@import '../../../../styles/main';
+
+.slider {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  align-content: center;
+
+  &__displayFrame {
+    touch-action: none;
+    text-align: center;
+    overflow: hidden hidden;
+    white-space: nowrap;
+    z-index: 1;
+    caret-color: transparent;
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__dots {
+    margin-inline: auto;
+    width: 80px;
+    height: 24px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+    cursor: pointer;
+
+    &--active {
+      background-color: $white;
+    }
+  }
+
+  &__image {
+    display: inline-block;
+    height: 100%;
+    transition: all 500ms ease-out;
+  }
+
+  &__image img {
+    height: 100%;
+    width: 100%;
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      min-width: 32px;
+      background-color: $surface_2;
+      padding: 0;
+      border: none;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+    }
+
+    &-left {
+      background-image: url('../../../../../public/img/icons/Arrow-Left.svg');
+
+      @include on-desktop {
+        grid-column: 1;
+      }
+    }
+
+    &-right {
+      background-image: url('../../../../../public/img/icons/Arrow-Right.svg');
+
+      @include on-desktop {
+        grid-column: 24;
+      }
+    }
+  }
+}
+
+.FastAnimation{
+  transition: all 50ms linear;
+}

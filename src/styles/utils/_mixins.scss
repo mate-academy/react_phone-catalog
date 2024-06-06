@@ -1,0 +1,136 @@
+@import '../utils/vars';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin content-padding-inline {
+  padding-inline: $mobile-padding-inline;
+
+  @include on-tablet {
+    padding-inline: $tablet-padding-inline;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+  }
+}
+
+.container {
+  @include content-padding-inline;
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 1fr);
+  }
+}
+
+@mixin primary-button {
+  @include buttons;
+
+  padding: 0;
+  border: none;
+  color: $white;
+  background-color: $accent;
+
+  &:hover {
+    background-color: #a378ff;
+  }
+}
+
+@mixin secondary-button {
+  padding: 0;
+  border: none;
+  background-color: $surface_2;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid $elements;
+  }
+}
+
+@mixin secondary-button-selected {
+  background-color: transparent;
+  border: 1px solid $elements;
+}
+
+@mixin arrow-right {
+  background-image: url(../../../public/img/icons/Arrow-Right.svg);
+
+  &:disabled {
+    background-image: url(../../../public/img/icons/Arrow-Right-disable.svg);
+  }
+}
+
+@mixin arrow-left {
+  background-image: url(../../../public/img/icons/Arrow-Left.svg);
+
+  &:disabled {
+    background-image: url(../../../public/img/icons/Arrow-Left-disable.svg);
+  }
+}
+
+@mixin arrow-up {
+  background-image: url(../../../public/img/icons/Arrow-Up.svg);
+
+  &:disabled {
+    background-image: url(../../../public/img/icons/Arrow-Up-disable.svg);
+  }
+}
+
+@mixin hover($_property, $_toValue) {
+  transition: #{$_property} 0.3s;
+  &:hover {
+    #{$_property}: $_toValue;
+  }
+}
+
+@mixin skeleton-bg {
+  background: $surface_2;
+  background: linear-gradient(
+    110deg,
+    $surface_1 14%,
+    $black 33%,
+    $surface_1 56%
+  );
+  background-size: 200% 100%;
+  animation: 1.5s skeleton-loading linear infinite;
+
+  @keyframes skeleton-loading {
+    to {
+      background-position-x: -200%;
+    }
+  }
+}

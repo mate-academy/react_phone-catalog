@@ -1,0 +1,44 @@
+@import '../../../../styles/main';
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $surface_1;
+  padding-block: 100px;
+  width: 60vw;
+  text-align: center;
+  box-shadow: 5px 5px 20px black;
+  z-index: 99;
+
+  &__text {
+    @include header-3;
+  }
+
+  &__buttons {
+    margin-top: 50px;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  &__button {
+    width: 200px;
+    height: 40px;
+
+    &-confirm {
+      @include primary-button;
+    }
+
+    &-cancel {
+      @include secondary-button;
+
+      background-color: $surface_2;
+      color: $white;
+
+      @include buttons;
+    }
+  }
+}

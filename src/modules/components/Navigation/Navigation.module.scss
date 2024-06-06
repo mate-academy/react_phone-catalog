@@ -1,0 +1,71 @@
+@import '../../../styles/main';
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  &__icon {
+    display: block;
+    min-width: 16px;
+    min-height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__home {
+    background-image: url(../../../../public/img/icons/Home.svg);
+  }
+
+  &__arrow {
+    background-image: url(../../../../public/img/icons/Arrow-Right-disable.svg);
+  }
+  &__arrow-left {
+    background-image: url(../../../../public/img/icons/Arrow-Left.svg);
+  }
+
+  &__text {
+    @include small-text;
+
+    font-weight: 600;
+    color: $elements;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &-white {
+      color: $white;
+    }
+
+    &-position {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__back {
+    margin-top: 24px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__backButton {
+    color: $white;
+
+    @include small-text;
+  }
+}

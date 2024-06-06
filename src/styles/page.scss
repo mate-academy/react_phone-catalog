@@ -1,0 +1,20 @@
+.pageHead {
+  margin: 0;
+  padding: 0;
+
+  @include mobile-header-1;
+
+  margin-top: 24px;
+
+  @include on-tablet {
+    @include header-1;
+  }
+}
+
+.pageNumbers {
+  margin-top: 8px;
+
+  @include body-text;
+
+  color: $elements;
+}

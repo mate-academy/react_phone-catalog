@@ -1,0 +1,96 @@
+@import '../../../../styles/main';
+
+.card {
+  width: auto;
+  border: 1px solid $elements;
+  padding: 16px;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+
+  &__name {
+    @include body-text;
+
+    justify-self: flex-end;
+  }
+
+  &__product {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__delete {
+    border: none;
+    background: none;
+    height: 16px;
+    width: 16px;
+    background-image: url('../../../../../public/img/icons/Close_grey.svg');
+    background-size: contain;
+  }
+
+  &__image {
+    display: block;
+    margin: 7px;
+    width: 80px;
+    height: 80px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-desktop {
+      @include hover(transform, scale(1.1));
+    }
+  }
+
+  &__info {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__count {
+    width: 96px;
+    display: flex;
+    justify-content: space-between;
+    flex-flow: row nowrap;
+    align-items: center;
+  }
+
+  &__button {
+    border: none;
+    background: none;
+    width: 32px;
+    height: 32px;
+    background-color: $surface_2;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include buttons;
+
+    color: $white;
+
+    &:disabled {
+      background-color: $surface_1;
+      border: 1px solid $white;
+      opacity: .2;
+    }
+
+    &-plus {
+      background-image: url('../../../../../public/img/icons/Plus.svg');
+    }
+
+    &-minus {
+      background-image: url('../../../../../public/img/icons/Minus.svg');
+    }
+  }
+
+  &__price {
+    @include header-3;
+  }
+}

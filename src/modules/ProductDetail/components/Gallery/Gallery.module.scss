@@ -1,0 +1,73 @@
+@import '../../../../styles/main';
+
+.gallery {
+  @include on-tablet {
+    display: flex;
+    flex-direction: row-reverse;
+    height: 100%;
+    gap: 16px;
+  }
+
+  &__image {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &-main {
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      padding-inline: 10%;
+
+      @include on-tablet {
+        flex: 6;
+      }
+
+      @include on-desktop {
+        padding-top: 0;
+        padding-inline: 0;
+        width: 464px;
+        height: 464px;
+      }
+    }
+
+    &-secondary {
+      display: block;
+      width: 100%;
+      border: 1px solid --elements;
+
+      @include on-tablet {
+        height: 0;
+        padding-top: 100%;
+      }
+
+      @include on-desktop {
+        height: 80px;
+        width: 80px;
+      }
+    }
+
+    &-selected {
+      border: 1px solid --white;
+    }
+  }
+
+  &__list {
+    margin-top: 16px;
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    height: 48px;
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      flex: 1;
+      margin-top: 0;
+    }
+  }
+}

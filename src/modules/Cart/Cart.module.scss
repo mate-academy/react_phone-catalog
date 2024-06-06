@@ -1,0 +1,64 @@
+@import '../../styles/main';
+
+.cart {
+  @include on-desktop {
+    @include page-grid;
+  }
+
+  &__list {
+    margin-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__summary {
+    margin-top: 32px;
+    border: 1px solid $elements;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 24px;
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+      height: fit-content;
+    }
+  }
+
+  &__price {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-bottom: 1px solid $elements;
+    padding-bottom: 16px;
+  }
+
+  &__sum {
+    @include header-2;
+
+    line-height: 100%;
+  }
+
+  &__total {
+    margin: 0;
+
+    @include body-text;
+
+    color: $elements;
+  }
+
+  &__checkout {
+    @include primary-button;
+
+    margin-top: 16px;
+    width: 100%;
+    height: 48px;
+    line-height: 48px;
+  }
+}

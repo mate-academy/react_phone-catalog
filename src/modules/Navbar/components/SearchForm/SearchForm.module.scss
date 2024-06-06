@@ -1,0 +1,31 @@
+@import '../../../../styles/main';
+
+.searchForm {
+  display: none;
+
+  @include on-desktop {
+    display: flex;
+  }
+
+  align-items: center;
+  padding-right: 30px;
+
+  &__input {
+    background-color: $black;
+    color: $white;
+    height: 50%;
+    width: 100%;
+    border-radius: 20px;
+    border: 1px solid $surface_2;
+    padding-inline: 20px;
+
+    &::placeholder {
+      color: $surface_2;
+    }
+
+    &:focus {
+      outline: none;
+      border: 1px solid $white;
+    }
+  }
+}
