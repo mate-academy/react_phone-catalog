@@ -1,0 +1,13 @@
+@import './utils/_vars';
+@import './utils/typography.scss';
+
+.button {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: solid 1px $gray-elements;
+
+  @include button-text;
+}

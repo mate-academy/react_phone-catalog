@@ -1,0 +1,7 @@
+@import '../../styles/utils/mixins.scss';
+.home-page__top {
+  display: flex;
+  flex-direction: column;
+
+  @include HomePageTopIndentation;
+}

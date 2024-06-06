@@ -1,0 +1,12 @@
+@import './utils/mixins.scss';
+
+.container {
+  margin-inline: 16px;
+
+  @include OnTablet {
+    margin-inline: 32px;
+  }
+  @include OnDesktop {
+    margin-inline: 152px;
+  }
+}

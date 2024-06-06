@@ -1,0 +1,77 @@
+@import '../../styles/utils/__vars.scss';
+@import '../../styles/utils/typography.scss';
+@import '../../styles/utils/mixins.scss';
+
+.footer {
+  background: #fff;
+  border: 1px $gray-elements solid;
+  margin-top: 64px;
+
+  @include OnDesktop {
+    margin-top: 80px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    padding: 32px 0;
+    gap: 32px;
+
+    @include OnTablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 96px;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+    width: 89px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include OnTablet {
+      flex-direction: row;
+      gap: 13, 5px;
+    }
+
+    @include OnDesktop {
+      gap: 106px;
+      ;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    align-self: center;
+
+    &__text {
+      color: $gray-secondary;
+      width: 70px;
+    }
+  }
+
+  &__up-arrow {
+    height: 32px;
+    width: 32px;
+
+    &:hover {
+      border: solid 1px $gray-primary;
+    }
+
+    &--disabled {
+      color: $gray-elements;
+    }
+  }
+}

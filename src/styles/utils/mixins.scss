@@ -1,0 +1,60 @@
+@import './_vars';
+
+@mixin OnTablet {
+  @media (min-width: $min-tablet-with) {
+    @content;
+  }
+}
+
+@mixin OnDesktop {
+  @media (min-width: $min-desktop-with) {
+    @content;
+  }
+}
+
+@mixin CarouselImageSize {
+  width: 320px;
+
+  @include OnTablet {
+    width: 490px;
+  }
+
+  @include OnDesktop {
+    width: 1040px;
+  }
+}
+
+@mixin HomePageTopIndentation {
+  gap: 24px;
+  margin-top: 24px;
+  margin-bottom: 56px;
+
+  @include OnTablet {
+    gap: 32px;
+    margin-top: 32px;
+    margin-bottom: 64px;
+  }
+
+  @include OnDesktop {
+    gap: 56px;
+    margin-top: 56px;
+    margin-bottom: 80px;
+  }
+}
+
+@mixin PageGrid {
+  --columns: 4;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include OnTablet {
+    --columns: 12;
+  }
+
+  @include OnDesktop {
+    --columns: 24;
+    grid-template-columns: repeat(var(--columns), 32px);
+  }
+}
+

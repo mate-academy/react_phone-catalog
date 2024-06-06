@@ -1,0 +1,110 @@
+@import "../../styles/utils/_vars";
+@import '../../styles/utils/mixins.scss';
+
+.header {
+  background: #fff;
+  box-shadow: 0px 1px 0px 0px $gray-elements;
+  box-sizing: border-box;
+
+  &__content {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    @include OnTablet {
+      gap: 16px;
+    }
+
+    @include OnDesktop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    display: flex;
+    justify-content: center;
+    padding: 13px 16px;
+  }
+
+  &__search {
+    display: none;
+
+    @include OnTablet {
+      display: inline;
+    }
+
+    flex-grow: 2;
+    width: 100%;
+  }
+
+  &__button {
+    height: $phone-header-height;
+    width: $phone-header-height;
+  }
+
+  &__right {
+    display: none;
+
+    @include OnTablet {
+      display: flex;
+    }
+
+    flex-direction: row;
+    justify-self: end;
+  }
+
+  &__burger-menu {
+    margin-left: auto;
+
+    @include OnTablet {
+      opacity: 0;
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include OnTablet {
+      display: flex;
+      gap: 32px;
+    }
+
+    @include OnDesktop {
+      gap: 64px;
+    }
+
+    &__item {
+      padding-block: $phone-header-height / 2;
+      position: relative;
+      box-sizing: border-box;
+      height: $phone-header-height - 1px;
+    }
+  }
+}
+
+@include OnDesktop {
+  $header-height: 64px; // Change height on desktop
+
+  .header {
+    &__logo {
+      width: 80px;
+      height: 28px;
+      padding: 18px 24px;
+    }
+
+    &__button {
+      height: $header-height;
+      width: $header-height;
+    }
+  }
+
+  .nav {
+    &__item {
+      padding-block: $header-height / 2;
+    }
+  }
+}
