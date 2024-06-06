@@ -2,7 +2,7 @@ import { IProduct } from '../types';
 import { client } from '../utils/fetchClient';
 
 export const getSuggestedProducts = async () => {
-  const products = await client.get<IProduct[]>('/api/products.json');
+  const products = await client.get<IProduct[]>('products.json');
 
   let currentIndex = products.length;
   let randomIndex;

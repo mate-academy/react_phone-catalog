@@ -73,14 +73,14 @@ export const HomePage = () => {
 
       {hasLoader && <Loader />}
 
+      <ProductsSlider
+        title="Hot prices"
+        items={productsWithHotPrice}
+        classNames="home__hot-prices"
+      />
+
       {hasProducts && (
         <>
-          <ProductsSlider
-            title="Hot prices"
-            items={productsWithHotPrice}
-            classNames="home__hot-prices"
-          />
-
           <ShopByCategory classNames="home__shop-by-category" />
 
           <ProductsSlider

@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_API_URL = '/.';
+const BASE_API_URL = 'api/';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
