@@ -26,7 +26,7 @@ export const SearchBar: React.FC = () => {
 
   const debouncedSetSearchWith = useCallback(
     debounce(newValue => {
-      setSearchWith({ query: newValue || null, page: '1' });
+      setSearchWith({ query: newValue || null, page: null });
     }, 1000),
     [setSearchWith],
   );
