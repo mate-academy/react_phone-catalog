@@ -19,13 +19,14 @@ const Footer = () => {
             <Link
               to="https://github.com/FS-MAR24-Code-Busters/react_phone-catalog"
               className={styles.footer__link}
+              target="_blank"
             >
               github
             </Link>
-            <Link to="#" className={styles.footer__link}>
+            <Link to="#" className={styles.footer__link} target="_blank">
               contacts
             </Link>
-            <Link to="#" className={styles.footer__link}>
+            <Link to="#" className={styles.footer__link} target="_blank">
               rights
             </Link>
           </div>

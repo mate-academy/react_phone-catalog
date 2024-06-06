@@ -71,6 +71,10 @@ const router = createHashRouter([
         path: ROUTES.CART,
         element: <CartPage />,
       },
+      {
+        path: ROUTES.PRODUCT_DETAIL,
+        element: <ProductDetailsPage />,
+      },
     ],
   },
 ]);

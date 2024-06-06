@@ -29,7 +29,7 @@ const PhonesPage = () => {
   const sortedPhones = phones.slice().sort((a, b) => {
     switch (sortOption) {
       case 'newest':
-        return a.processor.localeCompare(b.processor);
+        return b.processor.localeCompare(a.processor);
       case 'alphabetically':
         return a.name.localeCompare(b.name);
       case 'cheapest':
