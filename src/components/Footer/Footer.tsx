@@ -29,7 +29,10 @@ const Footer = () => {
               rights
             </Link>
           </div>
-          <div className={styles.back_to_top_content}>
+          <div
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={styles.back_to_top_content}
+          >
             <Link to="#" className={styles.back__to__top_link}>
               <span className={styles.back__to__top}>back to top</span>
             </Link>
