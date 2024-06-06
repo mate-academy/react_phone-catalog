@@ -3,7 +3,6 @@ import axios from 'axios';
 import type { RootState } from '../../app/store';
 import { IPhoneDetail } from '../../types';
 import { BASE_URL } from '../../helper';
-// import { IPhone } from '../../types';
 
 type PhoneDetail = {
   phone: IPhoneDetail | null;

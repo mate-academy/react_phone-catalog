@@ -125,7 +125,6 @@ export const ProductsSlider: FC<Props> = ({ newProducts, title }) => {
           </ul>
         </div>
       )}
-
     </section>
   );
 };
