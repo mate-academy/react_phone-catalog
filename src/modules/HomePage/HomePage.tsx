@@ -1,6 +1,7 @@
 import Heading from '../../UI/Heading/Heading';
 import BrandNewModels from '../BrandNewModels/BrandNewModels';
 import HotPrices from '../HotPrices/HotPrices';
+import s from './HomePage.module.css';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 
 const HomePage = () => {
