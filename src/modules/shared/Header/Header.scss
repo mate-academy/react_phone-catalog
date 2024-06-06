@@ -76,6 +76,7 @@
       border: none;
       background-color: var(--main-bg-color);
       border-left: 1px solid var(--elements-color);
+      cursor: pointer;
 
       @include on-tablet {
         display: flex;
@@ -109,6 +110,7 @@
     background-color: var(--main-bg-color);
     border: none;
     border-left: 1px solid var(--elements-color);
+    cursor: pointer;
 
     @include on-tablet {
       display: none;

@@ -41,13 +41,19 @@ export const AsideMenu: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
       })}
     >
       <div className="burgerMenu__header">
-        <Link to="/" className="header__logo" onClick={handleCloseMenu}>
-          <img
-            className="header__logo-image"
-            src={getIconSrc('logo', theme)}
-            alt="logo"
-          />
-        </Link>
+        <div className="burgerMenu__logo">
+          <Link
+            to="/"
+            className="burgerMenu__logoLink"
+            onClick={handleCloseMenu}
+          >
+            <img
+              className="header__logoIcon"
+              src={getIconSrc('logo', theme)}
+              alt="logo"
+            />
+          </Link>
+        </div>
         <button
           type="button"
           className="header__burgerMenu"
@@ -58,7 +64,9 @@ export const AsideMenu: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
       </div>
 
       <div className="burgerMenu__content">
-        <Navbar onClick={handleCloseMenu} />
+        <div className="burgerMenu__nav">
+          <Navbar onClick={handleCloseMenu} />
+        </div>
       </div>
 
       <div className="burgerMenu__footer">

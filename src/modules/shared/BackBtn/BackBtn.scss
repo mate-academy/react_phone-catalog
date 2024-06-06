@@ -17,6 +17,7 @@
 
   &__text {
     color: var(--secondary-text-color);
+    cursor: pointer;
 
     @include hover(color, var(--main-text-color));
 

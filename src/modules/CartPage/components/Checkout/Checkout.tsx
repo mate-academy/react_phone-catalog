@@ -21,11 +21,11 @@ export const Checkout: React.FC<Props> = ({ setShowModal }) => {
     return acc + itemPrice;
   }, 0);
 
-  const items = useMemo(() => {
-    return cart.length === 1 ? 'item' : 'items';
-  }, [cart.length]);
-
   const totalItems = cart.reduce((acc, item) => item.quantity + acc, 0);
+
+  const items = useMemo(() => {
+    return totalItems === 1 ? 'item' : 'items';
+  }, [totalItems]);
 
   return (
     <div className="checkout">

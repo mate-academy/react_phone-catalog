@@ -33,6 +33,11 @@
     }
   }
 
+  &__productName {
+    color: var(--main-text-color);
+    text-decoration: none;
+  }
+
   &__cost {
     display: flex;
     align-items: center;
@@ -63,6 +68,8 @@
     height: 66px;
     width: 66px;
     object-fit: contain;
+
+    @include hover(transform, scale(1.1));
   }
 
   &__quantity {
@@ -80,6 +87,7 @@
     height: 32px;
     background-color: var(--main-bg-color);
     border: 1px solid var(--icons-color);
+    cursor: pointer;
 
     @include hover(border-color, var(--main-text-color));
 

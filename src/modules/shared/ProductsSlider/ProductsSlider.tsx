@@ -90,7 +90,7 @@ export const ProductsSlider: React.FC<Props> = ({
                 theme,
               )}
               alt="previous"
-              className="icon"
+              className="icon arrowBtn__icon"
             />
           </button>
           <button

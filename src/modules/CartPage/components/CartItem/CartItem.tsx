@@ -9,6 +9,7 @@ import {
 } from '../../../../contexts/ThemeContext/ThemeContext';
 import classNames from 'classnames';
 import { BASE_URL } from '../../../../services/httpClient';
+import { Link } from 'react-router-dom';
 
 type Props = {
   cartItem: CartItemType;
@@ -45,14 +46,22 @@ export const CartItem: React.FC<Props> = ({ cartItem }) => {
             alt="delete"
           />
         </button>
-        <div className="cartItem__imageWrap">
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className="cartItem__imageWrap"
+        >
           <img
             src={`${BASE_URL}${product.image}`}
-            alt=""
+            alt={product.name}
             className="cartItem__image"
           />
-        </div>
-        <p className="cartItem__productName">{product.name}</p>
+        </Link>
+        <Link
+          to={`/${product.category}/${product.itemId}`}
+          className="cartItem__productName"
+        >
+          {product.name}
+        </Link>
       </div>
 
       <div className="cartItem__cost">

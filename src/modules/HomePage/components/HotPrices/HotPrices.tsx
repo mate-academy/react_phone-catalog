@@ -1,5 +1,5 @@
 import { Product } from '../../../../types/Product';
-import { ProductsSlider } from '../../../shared/ProductsSlider ';
+import { ProductsSlider } from '../../../shared/ProductsSlider';
 
 type Props = {
   products: Product[];

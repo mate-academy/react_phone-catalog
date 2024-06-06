@@ -14,7 +14,7 @@ export const Footer = () => {
 
   return (
     <div className="footer">
-      <div className=" container footer__container">
+      <div className="container footer__wrap">
         <Link to="/" className="footer__logo">
           <img
             src={getIconSrc('logo', theme)}

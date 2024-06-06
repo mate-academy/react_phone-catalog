@@ -2,6 +2,7 @@
 
 .cartPage {
   padding-top: 24px;
+  padding-bottom: 64px;
   min-height: calc(100vh - 48px - 257px);
 
   @include on-tablet {

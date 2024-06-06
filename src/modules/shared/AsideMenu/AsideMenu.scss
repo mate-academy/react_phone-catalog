@@ -33,12 +33,28 @@
     background-color: var(--main-bg-color);
   }
 
+  &__logo {
+    padding-inline: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-width: 96px;
+  }
+
+  &__logoLink {
+    display: flex;
+    align-items: center;
+  }
+
   &__content {
     padding-top: 24px;
+    height: calc(100vh - 64px - 48px);
+  }
+
+  &__nav {
     display: flex;
     flex-direction: column;
     gap: 32px;
-    height: calc(100vh - 64px - 48px);
     align-items: center;
   }
 

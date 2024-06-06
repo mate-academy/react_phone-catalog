@@ -39,6 +39,7 @@
     background-color: var(--main-text-color);
     border: none;
     transition: box-shadow 300ms;
+    cursor: pointer;
 
     &:hover:not(.dark) {
       box-shadow: 0 2px 16px 0 rgba(49, 57, 60, 0.32);

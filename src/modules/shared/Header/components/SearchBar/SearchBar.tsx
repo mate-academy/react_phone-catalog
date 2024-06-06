@@ -64,7 +64,7 @@ export const SearchBar: React.FC = () => {
         <button
           className="searchBar__closeBtn"
           onClick={() => {
-            setSearchWith({ query: null, page: '1' });
+            setSearchWith({ query: null, page: null });
             setLocalQuery('');
           }}
         >
