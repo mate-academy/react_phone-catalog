@@ -16,53 +16,28 @@
   border-bottom: 1px solid $elements;
   min-height: calc(100vh - #{$header-height} - #{$footer-height});
   position: relative;
+  display: flex;
 
   &__container {
     @include flexbox-center-vertical;
 
     flex-direction: column;
-    max-width: 1136px;
+    width: 1200px;
+    max-width: 1200px;
     margin-inline: auto;
-    padding-bottom: 80px;
+    padding-inline: $main-side-padding;
+    padding-block: $main-block-padding;
 
     @include on-mobile {
       width: 100%;
-      padding: 0 10px 70px;
+      padding-inline: 16px;
+      padding-bottom: 56px;
     }
 
     @include on-tablet {
-      padding-inline: 20px;
-    }
-
-    @include on-laptop {
-      width: 1024px;
-      padding-inline: 20px;
-    }
-  }
-
-  &__banner {
-    padding-top: 40px;
-    margin-bottom: 72px;
-
-    @include on-mobile {
-      padding-top: 30px;
-      margin-bottom: 42px;
-    }
-  }
-
-  &__hot-prices {
-    margin-bottom: 80px;
-
-    @include on-mobile {
-      margin-bottom: 60px;
-    }
-  }
-
-  &__shop-by-category {
-    margin-bottom: 80px;
-
-    @include on-mobile {
-      margin-bottom: 60px;
+      min-width: 640px;
+      padding-inline: 24px;
+      padding-bottom: 64px;
     }
   }
 }

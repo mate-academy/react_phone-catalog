@@ -26,3 +26,7 @@ export { Breadcrumbs } from './Breadcrumbs';
 export { SearchBar } from './SearchBar';
 export { SectionHeader } from './SectionHeader';
 export { ErrorMessage } from './ErrorMessage';
+export { ProductImagesSection } from './ProductImagesSection';
+export { ProductInfoSection } from './ProductInfoSection';
+export { ProductDescriptionSection } from './ProductDescriptionSection';
+export { ProductSpecsSection } from './ProductSpecsSection';

@@ -13,6 +13,8 @@ import {
   ErrorMessage,
 } from '../../components';
 
+import './HomePage.scss';
+
 export const HomePage = () => {
   const dispatch = useAppDispatch();
   const { allProducts, loaded, hasError } = useAppSelector(
@@ -51,8 +53,23 @@ export const HomePage = () => {
   }, [dispatch]);
 
   return (
-    <>
-      {!hasErrorMessage && <Banner />}
+    <div className="main__home home">
+      <h1
+        style={{
+          visibility: 'hidden',
+          pointerEvents: 'none',
+          width: 0,
+          height: 0,
+        }}
+      >
+        Product Catalog
+      </h1>
+
+      {!hasErrorMessage && (
+        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+      )}
+
+      {!hasErrorMessage && <Banner classNames="home__banner" />}
 
       {hasLoader && <Loader />}
 
@@ -61,20 +78,25 @@ export const HomePage = () => {
           <ProductsSlider
             title="Hot prices"
             items={productsWithHotPrice}
-            classNames="main__hot-prices"
+            classNames="home__hot-prices"
           />
 
-          <ShopByCategory />
+          <ShopByCategory classNames="home__shop-by-category" />
 
           <ProductsSlider
             items={brandNewProducts}
             title="Brand new models"
-            classNames="main__brand-new-models"
+            classNames="home__brand-new-models"
           />
         </>
       )}
 
-      {hasErrorMessage && <ErrorMessage title="Failed to fetch products" />}
-    </>
+      {hasErrorMessage && (
+        <ErrorMessage
+          title="Failed to fetch products"
+          classNames="home__error-message"
+        />
+      )}
+    </div>
   );
 };

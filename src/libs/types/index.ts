@@ -5,3 +5,4 @@ export { type IProductDetails } from './productDetails.interface';
 export { type ICartItem } from './cartItems.interface';
 export { type LocalStorageKeys } from './localStorageKeys.type';
 export { Colors } from './colors.enum';
+export { type IBannerImages } from './bannerImages.interface';

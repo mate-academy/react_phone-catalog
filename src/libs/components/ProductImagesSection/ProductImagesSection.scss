@@ -1,0 +1,80 @@
+@import '/src/assets/css/styles';
+
+
+.product-images {
+  @include flexbox-center-vertical;
+
+  gap: 16px;
+  height: 464px;
+
+  @include on-mobile {
+    flex-direction: column-reverse;
+    height: auto;
+    gap: 24px;
+  }
+
+  @include on-tablet {
+    height: 287px;
+  }
+
+  &__main-image {
+    width: 464px;
+    height: 100%;
+    padding: 7px;
+    margin: 0 auto;
+    object-fit: contain;
+
+    @include on-mobile {
+      width: 100%;
+      height: 288px;
+    }
+
+    @include on-tablet {
+      width: 287px;
+    }
+  }
+
+  &__side-images {
+    @include flexbox-center-vertical;
+
+    flex-direction: column;
+    gap: 16px;
+    height: 100%;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    cursor: pointer;
+
+    @include on-mobile {
+      flex-direction: row;
+      width: 100%;
+      overflow: scroll hidden;
+      gap: 8px;
+    }
+
+    @include on-tablet {
+      gap: 8px;
+    }
+  }
+
+  &__side-image {
+    width: 80px;
+    height: 80px;
+    border: 1px solid $elements;
+    padding: 7px;
+    object-fit: contain;
+
+    @include on-mobile {
+      width: 50px;
+      height: 50px;
+    }
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    &--selected {
+     border-color: $primary;
+    }
+  }
+}

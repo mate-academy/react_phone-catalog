@@ -1,9 +1,3 @@
-@mixin on-laptop {
-  @media screen and (min-width: $large ){
-    @content;
-  }
-}
-
 @mixin on-tablet {
   $header-height: 48px !global;
 
@@ -16,7 +10,6 @@
   $header-height: 48px !global;
 
   @media screen and (max-width: ($medium - 1)) {
-
     @content;
   }
 }

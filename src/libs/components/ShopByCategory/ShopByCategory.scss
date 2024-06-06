@@ -7,21 +7,14 @@
   width: 100%;
 
   &__cards {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
 
     @include on-mobile {
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    @include on-tablet {
-      flex-direction: column;
-      gap: 16px;
-    }
-
-    @include on-laptop {
-      gap: 20px;
+      grid-template-rows: repeat(3, 1fr);
+      grid-template-columns: none;
+      width: 100%
     }
   }
 }

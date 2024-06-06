@@ -2,269 +2,58 @@
 
 .product-page {
   width: 100%;
-  padding-top: 24px;
 
-  &__small-nav,
-  &__title {
+  &__small-nav {
     margin-bottom: 40px;
+
+    @include on-mobile {
+      margin-bottom: 24px;
+    }
   }
 
   &__back-button {
     margin-bottom: 16px;
   }
 
-  &__container {
+
+  &__basic-info {
     display: grid;
     grid-template-columns: 560px 512px;
-    grid-template-areas:
-    'images main-info'
-    'about specs';
-    gap: 80px 64px;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @include on-tablet {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 17px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__detailed-info {
+    display: grid;
+    grid-template-columns: 560px 512px;
+    gap: 64px;
     height: max-content;
     margin-bottom: 80px;
 
     @include on-mobile {
       display: flex;
       flex-direction: column;
-      gap: 60px;
+      gap: 56px;
     }
 
     @include on-tablet {
       display: flex;
       flex-direction: column;
-      gap: 60px;
-    }
-
-    @include on-laptop {
-      grid-template-columns: 1fr 1fr;
-    }
-  }
-
-  &__images {
-    grid-area: images;
-  }
-
-  &__main-info {
-    grid-area: main-info;
-  }
-
-  &__subtitle {
-    @include h2-text;
-
-    color: $primary;
-    padding-bottom: 16px;
-    border-bottom: 1px solid $elements;
-
-    &--about {
-      margin-bottom: 32px;
-    }
-
-    &--specs {
-      margin-bottom: 25px;
-    }
-  }
-
-  &__about {
-    grid-area: about;
-  }
-
-  &__specs {
-    display: flex;
-    flex-direction: column;
-    grid-area: specs;
-  }
-
-}
-
-.product-images {
-  @include flexbox-center-vertical;
-
-  gap: 16px;
-  height: 464px;
-
-  @include on-mobile {
-    flex-direction: column-reverse;
-    height: auto;
-    gap: 24px;
-  }
-
-  @include on-tablet {
-    flex-direction: column-reverse;
-    height: auto;
-    gap: 24px;
-  }
-
-  &__main-image {
-    width: 464px;
-    height: 100%;
-
-    @include on-mobile {
-      width: 100%;
-    }
-  }
-
-  &__side-images {
-    @include flexbox-center-vertical;
-
-    flex-direction: column;
-    gap: 16px;
-    height: 100%;
-    overflow-y: scroll;
-    scrollbar-width: none;
-    cursor: pointer;
-
-    @include on-mobile {
-      flex-direction: row;
-      width: 100%;
-      overflow-x: scroll;
-    }
-
-    @include on-tablet {
-      flex-direction: row;
-      width: 100%;
-      overflow-x: scroll;
-      justify-content: center;
-    }
-  }
-
-  &__side-image {
-    width: 80px;
-    height: 80px;
-    border: 1px solid $elements;
-
-    @include on-mobile {
-      width: 100px;
-      height: 100px;
-    }
-
-    &--selected {
-     border-color: $primary;
+      gap: 64px;
     }
   }
 }
 
-.product-info {
-  display: grid;
-  grid-template-columns: 2fr 1fr;
-  justify-content: space-between;
-  width: 100%;
-
-  @include on-mobile {
-    display: flex;
-    flex-direction: column-reverse;
-    gap: 30px;
-  }
-
-  @include on-tablet {
-    gap: 30px;
-  }
-
-  @include on-laptop {
-    display: flex;
-    flex-direction: column-reverse;
-    justify-content: flex-end;
-    gap: 30px;
-  }
-
-  &__main {
-    @include on-tablet {
-      max-width: 400px;
-    }
-  }
-
-  &__id {
-    @include uppercase-text;
-
-    text-align: end;
-    color: $icons;
-    max-width: 180px;
-    word-break: break-word;
-
-    @include on-mobile{
-      text-align: start;
-      font-size: 10px
-    }
-  }
-
-  &__title {
-    @include small-text;
-
-    color: $secondary;
-    margin-bottom: 8px;
-  }
-
-  &__available-colors {
-    padding-bottom: 24px;
-    border-bottom: 1px solid $elements;
-    margin-bottom: 24px;
-  }
-
-  &__capacity {
-    padding-bottom: 24px;
-    border-bottom: 1px solid $elements;
-    margin-bottom: 32px;
-  }
-
-  &__buy {
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    margin-bottom: 32px;
-  }
-
-  &__specs {
-    width: 100%;
-  }
-}
-
-.available-colors {
-  display: flex;
-  gap: 8px;
-
-  &__circle {
-    display: block;
-    border-radius: 50%;
-    cursor: pointer;
-
-    &--big {
-      width: 32px;
-      height: 32px;
-      border: 1px solid $elements;
-    }
-
-    &--small {
-      width: 30px;
-      height: 30px;
-      border: 2px solid $white;
-    }
-
-    &--selected {
-      border-color: $primary;
-    }
-  }
-}
-
-.capacities {
-  display: flex;
-  gap: 8px;
-
-  &__item {
-    padding: 7px 8px 4px;
-    text-align: center;
-    border: 1px solid $icons;
-    color: $primary;
-    cursor: pointer;
-
-    &--selected {
-      color: $white;
-      background-color: $primary;
-      border: none;
-    }
-  }
-}
-
-.about-product {
-  &__text {
-    color: $secondary;
-  }
-}

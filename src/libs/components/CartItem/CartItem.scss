@@ -16,10 +16,6 @@
     justify-content: space-around;
   }
 
-  @include on-laptop {
-    justify-content: space-around;
-  }
-
   &__button {
     @include flexbox-center;
 
@@ -63,10 +59,6 @@
     @include on-tablet {
       padding: 0;
     }
-
-    @include on-laptop {
-      padding: 0;
-    }
   }
 
   &__product-name {
@@ -90,11 +82,6 @@
     }
 
     @include on-tablet {
-      width: 195px;
-      min-width: 195px;
-    }
-
-    @include on-laptop {
       width: 195px;
       min-width: 195px;
     }

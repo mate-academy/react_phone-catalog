@@ -4,16 +4,17 @@ import { Link } from 'react-router-dom';
 import { useMemo, useRef, useState } from 'react';
 import { useSwipeable } from 'react-swipeable';
 
-import {
-  BANNER_IMAGES,
-  // BANNER_MOBILE_IMAGES
-} from '../../constants';
+import { BANNER_IMAGES } from '../../constants';
 
 import { Icon } from '../Icon';
 
 import './Banner.scss';
 
-export const Banner = () => {
+type Props = {
+  classNames?: string;
+};
+
+export const Banner: React.FC<Props> = ({ classNames }) => {
   const firstSlideId = 1;
   const [slideId, setSlideId] = useState(firstSlideId);
   const containerRef = useRef<HTMLUListElement>(null);
@@ -58,7 +59,7 @@ export const Banner = () => {
   });
 
   return (
-    <div className="main__banner banner-container">
+    <div className={cn('banner-container', classNames)}>
       <div className="banner-container__slider slider" {...swipeHandlers}>
         <button className="slider__button" type="button" onClick={handlePrev}>
           <Icon iconName="arrowLeft" classNames="slider__button-icon" />
@@ -76,12 +77,9 @@ export const Banner = () => {
             {images.map(([key, value]) => (
               <li className="slider__banner-item" key={key}>
                 <Link to={key} className="slider__banner-link">
-                  <img src={value} alt={key} className="slider__banner-img" />
-                  {/* <picture
-                    className="slider__banner-img"
-                  >
+                  <picture className="slider__banner-img">
                     <source
-                      srcSet={BANNER_MOBILE_IMAGES[key]}
+                      srcSet={value.mobile}
                       media="(max-width: 639px)"
                       className="
                       slider__banner-img
@@ -89,11 +87,11 @@ export const Banner = () => {
                       "
                     />
                     <img
-                      src={value}
+                      src={value.general}
                       alt={key}
                       className="slider__banner-img"
                     />
-                  </picture> */}
+                  </picture>
                 </Link>
               </li>
             ))}

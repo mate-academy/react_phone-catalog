@@ -13,9 +13,12 @@
 .slider {
   display: flex;
   gap: 16px;
-  min-height: 200px;
-  height: 35vw;
-  max-height: 400px;
+
+  @include on-mobile {
+    min-height: 320px;
+    height: 320px;
+  }
+
 
   &__button {
     @include transition;
@@ -28,10 +31,6 @@
     @include on-mobile {
       display: none;
     }
-
-    @include on-tablet {
-      display: none;
-    }
   }
 
   &__button-icon path{
@@ -42,6 +41,15 @@
     display: flex;
     overflow: hidden;
     width: 100%;
+
+    @include on-mobile {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 130px;
+      min-height: 320px;
+      height: 320px;
+    }
   }
 
   &__banner-list {
@@ -77,9 +85,15 @@
     width: 100%;
     height: 100%;
     object-fit: cover;
+    aspect-ratio: 2.6 / 1;
 
     @include on-mobile {
-      object-position: right top
+      object-position: top;
+      aspect-ratio: 1 / 1;
+    }
+
+    @include on-tablet {
+      aspect-ratio: 2.5 / 1;
     }
   }
 }

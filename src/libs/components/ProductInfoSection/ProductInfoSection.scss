@@ -1,0 +1,150 @@
+@import '/src/assets/css/styles';
+
+
+.product-info {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  justify-content: space-between;
+  width: 100%;
+
+  @include on-mobile {
+    display: flex;
+    flex-direction: column-reverse;
+    gap: 30px;
+  }
+
+  @include on-tablet {
+    grid-template-columns: 1fr;
+  }
+
+  &__main {
+    @include on-tablet {
+      max-width: 400px;
+    }
+  }
+
+  &__titles-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+
+  &__title {
+    @include small-text;
+
+    display: inline;
+    color: $secondary;
+    margin-bottom: 8px;
+
+    @include on-mobile {
+      display: block;
+      margin-bottom: 0;
+    }
+
+    @include on-tablet {
+      display: block;
+      margin-bottom: 0;
+    }
+  }
+
+  &__id {
+    @include uppercase-text;
+
+    text-align: end;
+    color: $icons;
+    max-width: 180px;
+    word-break: break-word;
+
+    @include on-mobile{
+      display: none;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &--on-small-screens {
+      display: none;
+
+      @include on-mobile{
+        display: inline;
+      }
+
+      @include on-tablet {
+        display: inline;
+      }
+    }
+
+  }
+
+  &__available-colors {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 32px;
+  }
+
+  &__buy {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__specs {
+    width: 100%;
+  }
+}
+
+
+.available-colors {
+  display: flex;
+  gap: 8px;
+
+  &__circle {
+    display: block;
+    border-radius: 50%;
+    cursor: pointer;
+
+    &--big {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $elements;
+    }
+
+    &--small {
+      width: 30px;
+      height: 30px;
+      border: 2px solid $white;
+    }
+
+    &--selected {
+      border-color: $primary;
+    }
+  }
+}
+
+.capacities {
+  display: flex;
+  gap: 8px;
+
+  &__item {
+    padding: 7px 8px 4px;
+    text-align: center;
+    border: 1px solid $icons;
+    color: $primary;
+    cursor: pointer;
+
+    &--selected {
+      color: $white;
+      background-color: $primary;
+      border: none;
+    }
+  }
+}
