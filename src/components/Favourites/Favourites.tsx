@@ -10,9 +10,9 @@ type Props = {
 
 export const Favourites: FC<Props> = ({ favouritesProducts }) => {
   return (
-    <ul className="phoneList__grid favourites__items" data-cy="productList">
+    <ul className="productList__grid favourites__items" data-cy="productList">
       {favouritesProducts.map((product) => (
-        <li className="phoneList__gridItem" key={product.itemId}>
+        <li className="productList__gridItem" key={product.itemId}>
           <ProductItem product={product} />
         </li>
       ))}
