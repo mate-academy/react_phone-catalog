@@ -63,7 +63,9 @@ export const Sidebar = React.memo(() => {
         >
           <IconFavourites />
           {favouritesList.length > 0 && (
-            <div className="sidebar__added">{favouritesList.length}</div>
+            <div className="sidebar__added">
+              {favouritesList.length}
+              </div>
           )}
         </NavLink>
 
