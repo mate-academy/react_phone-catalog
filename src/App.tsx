@@ -12,10 +12,8 @@ export const App = () => {
   return (
     <div className="App">
       <Navbar />
-
       {isMenuOpen && <Menu />}
-      {!isMenuOpen && <Outlet />}
-
+      <main className="content">{!isMenuOpen && <Outlet />}</main>
       {!isMenuOpen && <Footer />}
     </div>
   );

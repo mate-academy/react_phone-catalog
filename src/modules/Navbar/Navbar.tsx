@@ -68,8 +68,9 @@ export const Navbar = () => {
               <li className={styles.menu__item} key={item}>
                 <Link
                   className={classNames(styles.menu__link, {
-                    [styles['menu__link-active']]:
-                      location.pathname === `/${item}`,
+                    [styles['menu__link-active']]: location.pathname.startsWith(
+                      `/${item.split('/')[0]}`,
+                    ),
                   })}
                   to={item}
                 >

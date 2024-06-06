@@ -10,10 +10,18 @@
   align-items: center;
   gap: 16px;
 
+  @include on-desktop {
+    flex-flow: row nowrap;
+  }
+
   &__name {
     @include body-text;
 
     justify-self: flex-end;
+
+    @include on-desktop {
+      white-space: nowrap;
+    }
   }
 
   &__product {
@@ -52,6 +60,11 @@
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+
+    @include on-desktop {
+      justify-content: flex-end;
+      gap: 24px;
+    }
   }
 
   &__count {
@@ -92,5 +105,9 @@
 
   &__price {
     @include header-3;
+
+    @include on-desktop {
+      padding-left: 28px;
+    }
   }
 }

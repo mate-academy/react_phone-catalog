@@ -57,9 +57,11 @@
     flex-direction: row;
     gap: 4px;
     align-items: center;
+    cursor: pointer;
 
     @include on-tablet {
       margin-top: 40px;
+      margin-bottom: 16px;
     }
   }
 

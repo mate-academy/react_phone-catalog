@@ -62,3 +62,41 @@
     line-height: 48px;
   }
 }
+
+.navigation {
+  margin-top: 24px;
+  text-decoration: none;
+  display: flex;
+  flex-direction: row;
+  gap: 4px;
+  align-items: center;
+  cursor: pointer;
+
+  @include on-tablet {
+    margin-top: 40px;
+    margin-bottom: 16px;
+  }
+
+  &__icon {
+    display: block;
+    min-width: 16px;
+    min-height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  &__text {
+    @include small-text;
+
+    font-weight: 600;
+    color: $white;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+
+  &__arrow {
+    background-image: url(../../../public/img/icons/Arrow-Right-disable.svg);
+  }
+  &__arrow-left {
+    background-image: url(../../../public/img/icons/Arrow-Left.svg);
+  }
+}

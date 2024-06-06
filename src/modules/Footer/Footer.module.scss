@@ -1,36 +1,20 @@
 @import '../../styles/main';
 
 .footer {
-  position: relative;
-  bottom: 0;
+  border-top: 1px solid $elements;
+  margin-top: 42px;
   width: 100%;
   padding: 32px;
-  margin-top: 32px;
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   gap: 32px;
   background-color: $black;
-
-  &::before {
-    content: '';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 1px;
-    width: 100%;
-    background-color: $elements;
-  }
 
   @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-  }
-
-  &.fixed {
-    position: fixed;
-    bottom: 0;
   }
 
   &__back {

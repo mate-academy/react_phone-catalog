@@ -6,6 +6,7 @@ import { Details } from '../../../../types/Details';
 import { getSelectedItem } from '../../../../api';
 import { getId } from '../../../../utils/getId';
 import { removeSpaces } from '../../../../utils/removeSpaces';
+import { Link } from 'react-router-dom';
 
 type Props = {
   selectedProduct: Details;
@@ -43,8 +44,9 @@ export const Colors: React.FC<Props> = ({ selectedProduct }) => {
           const correctedItem = removeSpaces(item);
 
           return (
-            <div
+            <Link
               key={item}
+              to={`../${namespaceId}-${capacity.toLowerCase()}-${correctedItem}`}
               className={classNames(styles.colors__color, {
                 [styles['colors__color-selected']]: correctedItem === color,
               })}
@@ -57,7 +59,7 @@ export const Colors: React.FC<Props> = ({ selectedProduct }) => {
                   styles[`colors__color-${correctedItem}`],
                 )}
               />
-            </div>
+            </Link>
           );
         })}
       </div>

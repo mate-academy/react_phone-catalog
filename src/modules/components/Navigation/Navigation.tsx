@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import styles from './Navigation.module.scss';
 
@@ -11,6 +11,12 @@ type Props = {
 };
 
 export const Navigation: React.FC<Props> = ({ category, name, back }) => {
+  const navigate = useNavigate();
+
+  const goBack = () => {
+    navigate(-1);
+  };
+
   return (
     <div className={classNames(styles.container, styles.navigation)}>
       <div className={styles.navigation__main}>
@@ -57,7 +63,7 @@ export const Navigation: React.FC<Props> = ({ category, name, back }) => {
       </div>
 
       {back && (
-        <Link to={'../'} className={styles.navigation__back}>
+        <div className={styles.navigation__back} onClick={goBack}>
           <span
             className={classNames(
               styles.navigation__icon,
@@ -73,7 +79,7 @@ export const Navigation: React.FC<Props> = ({ category, name, back }) => {
           >
             Back
           </span>
-        </Link>
+        </div>
       )}
     </div>
   );
