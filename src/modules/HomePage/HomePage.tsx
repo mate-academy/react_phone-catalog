@@ -1,6 +1,6 @@
 import Heading from '../../UI/Heading/Heading';
-import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 import s from './HomePage.module.css';
+import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 
 const HomePage = () => {
   return (

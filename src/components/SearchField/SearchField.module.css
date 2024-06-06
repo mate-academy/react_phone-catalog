@@ -1,0 +1,83 @@
+.searchField {
+  width: 327px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  background-color: var(--white-color);
+  border-left: 1px solid var(--primary-color);
+  padding: 24px;
+}
+
+@media (min-width: 1024px) {
+  .searchField {
+    width: 250px;
+  }
+}
+
+@media (min-width: 768px) {
+  .searchField {
+    padding: 12px;
+  }
+}
+
+@media (max-width: 767px) {
+  .searchField {
+    width: 200px;
+  }
+}
+
+@media (max-width: 360px) {
+  .searchField {
+    display: none;
+  }
+}
+
+.searchFieldInput {
+  height: 32px;
+  flex-grow: 1;
+  outline: none;
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  background-color: var(--white-color);
+  color: var(--white-color);
+}
+
+@media (max-width: 767px) {
+  .searchFieldInput {
+    font-size: 12px;
+  }
+}
+
+.searchFieldInput:focus {
+  background-color: var(--white-color);
+}
+
+.searchFieldInput::placeholder {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--icons);
+}
+
+@media (max-width: 767px) {
+  .searchFieldInput::placeholder {
+    font-size: 12px;
+  }
+}
+
+.searchFieldButton {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition-duration: var(--transition-duration);
+}
+
+.searchFieldButton:hover {
+  transform: scale(1.2);
+}
+
+.focus {
+  background-color: var(--hover-color);
+}
