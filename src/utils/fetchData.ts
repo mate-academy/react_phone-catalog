@@ -1,7 +1,7 @@
 const BASE_URL =
   'https://g0odvin.github.io/react_phone-catalog/api/products.json';
 
-const PRODUCT_DETAILS = '/api/';
+const PRODUCT_DETAILS = 'https://g0odvin.github.io/react_phone-catalog/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => {
