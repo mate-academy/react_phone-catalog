@@ -33,6 +33,7 @@ const PhonesPage = () => {
     const queryParams = new URLSearchParams();
 
     queryParams.append('sort', sortOption);
+    queryParams.append('page', currentPage.toString());
     queryParams.append('perPage', perPage.toString());
     navigate(`?${queryParams.toString()}`);
   }, [currentPage, perPage, sortOption, navigate]);
