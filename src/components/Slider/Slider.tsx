@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import cn from 'classnames';
 import '../../styles/button.scss';
 import './Slider.scss';
@@ -15,7 +15,7 @@ export const Slider = () => {
 
   const maxPosition = images.length - 1;
 
-  const nextButton = () => {
+  const nextButton = useCallback(() => {
     if (position + 1 > maxPosition) {
       setPosition(0);
       setCurrentPage(0);
@@ -23,7 +23,7 @@ export const Slider = () => {
       setPosition(position + 1);
       setCurrentPage(position + 1);
     }
-  };
+  }, [position, maxPosition]);
 
   const prevButton = () => {
     if (position - 1 < 0) {
