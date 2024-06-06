@@ -2,6 +2,7 @@ import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
+import { useProductStore } from '../../../store/store';
 import Product from '../../../types/Product';
 import styles from './ProductCard.module.css';
 
@@ -21,6 +22,15 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     ram,
     id,
   } = product;
+
+  const addToCart = useProductStore(state => state.toggleProductInCart);
+  const toggleFavorite = useProductStore(state => state.toggleFavorite);
+
+  const cart = useProductStore(state => state.cartItems);
+  const favorites = useProductStore(state => state.favorites);
+
+  const isInCart = cart.some(item => item.id === product.id);
+  const isFavorite = favorites.some(item => item.id === product.id);
 
   return (
     <article className={styles.wrapper}>
@@ -61,11 +71,23 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
       </ul>
 
       <div className={styles.actionsWrapper}>
-        <Button variant="primary" isSelected={false}>
-          Add to cart
+        <Button
+          onClick={() => addToCart(product)}
+          variant="primary"
+          isSelected={isInCart}
+        >
+          {isInCart ? 'Added' : 'Add to cart'}
         </Button>
-        <Button variant="icon" size="40px">
-          <img src="img/icons/favorite-icon.svg" alt="" />
+        <Button
+          onClick={() => toggleFavorite(product)}
+          variant="icon"
+          size="40px"
+        >
+          {isFavorite ? (
+            <img src="img/icons/favorite-fill-icon.svg" alt="" />
+          ) : (
+            <img src="img/icons/favorite-icon.svg" alt="" />
+          )}
         </Button>
       </div>
     </article>

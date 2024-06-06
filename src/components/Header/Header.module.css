@@ -130,6 +130,23 @@
   transition: transform 0.3s ease-out;
 }
 
+.badge {
+  background-color: var(--red-color);
+  padding: 5px;
+  width: 14px;
+  height: 14px;
+  font-size: 9px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  top: -40%;
+  right: -40%;
+  color: var(--white-color);
+  font-weight: 700;
+}
+
 @media (max-width: 768px) {
   .header {
     height: 48px;

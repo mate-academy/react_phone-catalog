@@ -4,6 +4,7 @@ import classNames from 'classnames';
 import React from 'react';
 import Button from '../../UI/Buttons/Button';
 import { ROUTES } from '../../constants/ROUTES';
+import { useProductStore } from '../../store/store';
 import styles from './BurgerMenu.module.css';
 
 type Props = {
@@ -15,6 +16,9 @@ export const MobileMenu: React.FC<Props> = ({
   isMenuShown,
   setIsMenuShown,
 }) => {
+  const cart = useProductStore(state => state.cartItems);
+  const favorites = useProductStore(state => state.favorites);
+
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.mobileMenuNavListLink, {
       [styles.activeLink]: isActive,
@@ -101,15 +105,18 @@ export const MobileMenu: React.FC<Props> = ({
           >
             <Button size={[16, 16]}>
               <img src="img/icons/favorite-icon.svg" alt="" />
+              {!!favorites.length && (
+                <span className={styles.badge}>{favorites.length}</span>
+              )}
             </Button>
           </NavLink>
-          <NavLink
-            to={ROUTES.CART}
-            className={getIconLinkStatus}
-            onClick={() => setIsMenuShown(false)}
-          >
+
+          <NavLink to={ROUTES.CART} className={getIconLinkStatus}>
             <Button size={[16, 16]}>
               <img src="img/icons/cart-icon.svg" alt="" />
+              {!!cart.length && (
+                <span className={styles.badge}>{cart.length}</span>
+              )}
             </Button>
           </NavLink>
         </div>
