@@ -1,5 +1,6 @@
 /* eslint-disable max-len */
 import React, { useCallback, useContext, useEffect, useState } from 'react';
+// eslint-disable-next-line
 import debounce from 'lodash.debounce';
 import './SearchBar.scss';
 import { getIconSrc } from '../../../../../helpers/getIconSrc';
