@@ -45,6 +45,7 @@
     color: $primary;
     word-break: break-all;
     min-width: 336px;
+    text-decoration: none;
 
     @include on-mobile {
       min-width: 128px;

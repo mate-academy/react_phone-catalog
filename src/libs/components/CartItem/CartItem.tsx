@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { useAppDispatch } from '../../app/hooks';
 import { ICartItem } from '../../types';
 import * as cartActions from '../../slices/cartSlice';
@@ -12,6 +13,9 @@ export const CartItem: React.FC<Props> = ({
   item: { id, product, quantity },
 }) => {
   const dispatch = useAppDispatch();
+  const { category, itemId } = product;
+
+  const link = `/${category}/${itemId}`;
 
   const handleDeleteItem = () => {
     dispatch(cartActions.deleteItem(id));
@@ -53,7 +57,9 @@ export const CartItem: React.FC<Props> = ({
           className="cart-item__product-image"
         />
 
-        <p className="cart-item__product-name">{product.name}</p>
+        <Link to={link} className="cart-item__product-name">
+          {product.name}
+        </Link>
       </div>
 
       <div className="cart-item__quantity-price">
