@@ -17,9 +17,10 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1 className="h1 home-page__title container">
+      <h1 hidden>Product Catalog</h1>
+      <p className="h1 home-page__title container">
         Welcome to Nice Gadgets store!
-      </h1>
+      </p>
       <div className="home-page__content">
         <PicturesSlider />
         <BrandNew products={allProducts} />
