@@ -3,88 +3,63 @@
 .cart-item {
   @include flexbox-center-vertical;
 
-  padding: 24px 40px 24px 24px;
+  gap: 24px;
+  padding: 24px;
   border: 1px solid $elements;
 
   @include on-mobile {
-    padding: 20px 5px;
-    position: relative;
-    justify-content: space-around;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
   }
 
-  @include on-tablet {
-    justify-content: space-around;
+  &__details {
+    @include flexbox-center-vertical;
+
+    gap: 24px;
+    width: 100%;
+
+    @include on-mobile {
+      gap: 16px;
+    }
   }
 
-  &__button {
+  &__delete-button {
     @include flexbox-center;
 
     font-family: inherit;
-    color: $primary;
-
-    &--delete-button {
-      font-family: inherit;
-      width: 16px;
-      height: 16px;
-      font-size: 16px;
-      color: $icons;
-      margin-right: 24px;
-
-      @include on-mobile {
-        position: absolute;
-        right: 3px;
-        top: 3px;
-        width: 20px;
-        height: 20px;
-        font-size: 18px;
-        margin: 0;
-      }
-    }
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    color: $icons;
   }
 
   &__product-image {
-    display: block;
     width: 80px;
     height: 80px;
-    margin-right: 24px;
     padding: 7px;
-
-    @include on-mobile {
-      width: 50px;
-      height: 50px;
-      padding: 0;
-      margin: 0;
-    }
-
-    @include on-tablet {
-      padding: 0;
-    }
+    object-fit: contain;
   }
 
   &__product-name {
-    @include flexbox-center-vertical;
-
-    min-width: 295px;
-    width: 295px;
     color: $primary;
-    margin-right: 49px;
+    word-break: break-all;
+    min-width: 336px;
 
     @include on-mobile {
-      width: 95px;
-      min-width: 95px;
-      overflow: hidden;
-      text-overflow: ellipsis;
-      margin: 0;
-
-      @include small-text;
-
-      font-weight: 400;
+      min-width: 128px;
     }
 
     @include on-tablet {
-      width: 195px;
-      min-width: 195px;
+      min-width: 176px;
     }
+  }
+
+  &__quantity-price {
+    @include flexbox-center-vertical;
+
+    gap: 24px;
+    width: 100%;
   }
 
   &__count-container {
@@ -92,10 +67,8 @@
 
     max-width: 96px;
     gap: 13px;
-    margin-right: 43px;
 
     @include on-mobile {
-      margin: 0;
       gap: 10px;
     }
   }
@@ -103,6 +76,8 @@
   &__count-button {
     @include flexbox-center;
 
+    font-family: inherit;
+    color: $primary;
     width: 32px;
     height: 32px;
     padding: 8px;
@@ -112,10 +87,6 @@
       cursor: not-allowed;
       color: $icons;
       border-color: $elements
-    }
-
-    @include on-mobile {
-      padding: 4px;
     }
   }
 
@@ -128,13 +99,8 @@
   &__product-price {
     @include h2-text;
 
-    display: block;
-    min-width: 61px;
+    min-width: 80px;
     color: $primary;
-
-    @include on-mobile {
-      font-size: 20px;
-      text-align: center;
-    }
+    text-align: end;
   }
 }

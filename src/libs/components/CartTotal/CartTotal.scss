@@ -10,20 +10,11 @@
   padding: 24px;
 
   @include on-mobile {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
     height: auto;
-    padding: 12px;
+    width: 100%;
   }
 
   @include on-tablet {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
     width: 100%;
     height: auto;
   }
@@ -32,11 +23,8 @@
     @include flexbox-center;
     @include h1-text;
 
+    width: 100%;
     color: $primary;
-
-    @include on-mobile {
-      font-size: 22px;
-    }
   }
 
   &__description {
@@ -49,11 +37,13 @@
     color: $secondary;
 
     @include on-mobile {
-      padding-bottom: 10px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
     }
 
     @include on-tablet {
-      max-width: 320px;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
     }
   }
 
@@ -68,10 +58,6 @@
 
     &:active {
       @include button-active;
-    }
-
-    @include on-tablet {
-      max-width: 320px;
     }
   }
 }

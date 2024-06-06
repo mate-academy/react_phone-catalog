@@ -4,22 +4,22 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  padding-top: 40px;
+  padding-top: 16px;
 
   @include on-mobile {
-    padding-top: 20px;
+    padding-top: 0;
   }
 
   &__back-button {
     margin-bottom: 16px;
+
+    @include on-mobile {
+      margin-bottom: 24px;
+    }
   }
 
   &__title {
-    margin-bottom: 24px;
-
-    @include on-mobile {
-      margin-bottom: 10px;
-    }
+    margin-bottom: 32px;
   }
 
   &__main {
@@ -27,7 +27,15 @@
     gap: 16px;
 
     @include on-mobile {
-    flex-direction: column;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 32px;
+      max-width: 592px;
+      margin: 0 auto;
     }
   }
 
@@ -35,13 +43,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
-
-    @include on-mobile {
-      gap: 8px;
-    }
-
-    @include on-tablet {
-      width: 100%;
-    }
+    width: 100%;
+    max-width: 752px;
   }
 }

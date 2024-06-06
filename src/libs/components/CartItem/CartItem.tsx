@@ -37,54 +37,49 @@ export const CartItem: React.FC<Props> = ({
 
   return (
     <div className="cart-item">
-      <button
-        type="button"
-        className="
-        cart-item__button
-        cart-item__button--delete-button
-        "
-        data-cy="cartDeleteButton"
-        onClick={handleDeleteItem}
-      >
-        x
-      </button>
-
-      <img
-        src={product.image}
-        alt={product.name}
-        className="cart-item__product-image"
-      />
-
-      <p className="cart-item__product-name">{product.name}</p>
-
-      <div className="cart-item__count-container">
+      <div className="cart-item__details">
         <button
           type="button"
-          className="
-          cart-item__button
-          cart-item__count-button
-          "
-          onClick={handleDecreaseQuantity}
-          disabled={quantity === 1}
+          className="cart-item__delete-button"
+          data-cy="cartDeleteButton"
+          onClick={handleDeleteItem}
         >
-          -
+          x
         </button>
 
-        <p className="cart-item__item-count">{quantity}</p>
+        <img
+          src={product.image}
+          alt={product.name}
+          className="cart-item__product-image"
+        />
 
-        <button
-          type="button"
-          className="
-          cart-item__button
-          cart-item__count-button
-          "
-          onClick={handleIncreaseQuantity}
-        >
-          +
-        </button>
+        <p className="cart-item__product-name">{product.name}</p>
       </div>
 
-      <p className="cart-item__product-price">{product.price}</p>
+      <div className="cart-item__quantity-price">
+        <div className="cart-item__count-container">
+          <button
+            type="button"
+            className="cart-item__count-button"
+            onClick={handleDecreaseQuantity}
+            disabled={quantity === 1}
+          >
+            -
+          </button>
+
+          <p className="cart-item__item-count">{quantity}</p>
+
+          <button
+            type="button"
+            className="cart-item__count-button"
+            onClick={handleIncreaseQuantity}
+          >
+            +
+          </button>
+        </div>
+
+        <p className="cart-item__product-price">${product.price}</p>
+      </div>
     </div>
   );
 };
