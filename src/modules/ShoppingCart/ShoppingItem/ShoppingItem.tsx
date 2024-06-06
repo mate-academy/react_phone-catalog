@@ -28,7 +28,7 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ cartItem }) => {
       return;
     }
 
-    const indx = shoppingList.indexOf(cartItem);
+    const indx = shoppingList.lastIndexOf(cartItem);
 
     const updatedShoppingList = [
       ...shoppingList.slice(0, indx),

@@ -6,7 +6,7 @@ import { Footer } from './modules/Footer/Footer';
 import { SidebarContext } from './store/SidebarContext';
 import { Sidebar } from './modules/Sidebar';
 import { scrollToTop } from './services/scrollToTop';
-import { Modal } from './modules/ShoppingCart/Modal';
+import { Modal } from './modules/Modal';
 import { ModalWindowContext } from './store/ModalWindowContext';
 import { ShoppingCartContext } from './store/ShoppingCartContext';
 

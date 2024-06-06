@@ -42,6 +42,7 @@ export const ProductCard: React.FC<Props> = React.memo(
       name,
       image,
       currentPrice: discount ? price : fullPrice,
+      discount,
     };
     const widthImg = windowSize * 0.396875;
 

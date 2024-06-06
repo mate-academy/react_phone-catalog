@@ -18,7 +18,12 @@ export const Route: React.FC<Props> = React.memo(({ category, name }) => {
       <IconRight />
 
       <Link to={name ? '..' : '.'} className="route__category">
-        <span className={cn({ black: name })}>{category}</span>
+        <span
+          className={cn({ black: name })}
+          style={name ? {} : { cursor: 'default' }}
+        >
+          {category}
+        </span>
       </Link>
 
       {name && <IconRight />}

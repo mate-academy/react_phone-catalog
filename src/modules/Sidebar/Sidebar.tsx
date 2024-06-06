@@ -4,6 +4,7 @@ import React, { useContext } from 'react';
 import { SidebarContext } from '../../store/SidebarContext';
 import { IconFavourites, IconShoppingCart } from '../shared/IconsSVG';
 import { ShoppingCartContext } from '../../store/ShoppingCartContext';
+import { FavoutitesContext } from '../../store/FavouritesContext';
 
 const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('sidebar__nav-item navigation-title', { active: isActive });
@@ -16,6 +17,7 @@ const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
 export const Sidebar = React.memo(() => {
   const { setIsOpenSidebar } = useContext(SidebarContext);
   const { shoppingList } = useContext(ShoppingCartContext);
+  const { favouritesList } = useContext(FavoutitesContext);
 
   return (
     <aside className="sidebar">
@@ -60,7 +62,9 @@ export const Sidebar = React.memo(() => {
           onClick={() => setIsOpenSidebar(false)}
         >
           <IconFavourites />
-          <div className="sidebar__added">?</div>
+          {favouritesList.length > 0 && (
+            <div className="sidebar__added">{favouritesList.length}</div>
+          )}
         </NavLink>
 
         <NavLink

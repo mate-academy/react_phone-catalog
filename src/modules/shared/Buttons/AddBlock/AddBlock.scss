@@ -38,11 +38,37 @@
     }
   }
 
-  &__add-to-fav {
+  &__fav {
     padding: 11px;
 
     border: solid 1px $border-color-default;
     border-radius: 5px;
+    background-color: #fff;
+
+    cursor: pointer;
+
+    &:hover {
+      border-color: $border-color-hover;
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    &.added {
+      border: 1px solid $border-color-light-gray;
+
+      cursor: default;
+
+      &:hover {
+        box-shadow: none;
+      }
+    }
+  }
+
+  &__remove {
+    padding: 11px;
+
+    border: solid 1px $border-color-default;
+    border-radius: 5px;
+    background-color: #fff;
 
     cursor: pointer;
 

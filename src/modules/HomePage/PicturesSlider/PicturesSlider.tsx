@@ -1,4 +1,10 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Picture } from '../../../types/Picture';
@@ -33,21 +39,30 @@ export const PicturesSlider: React.FC = React.memo(() => {
       PADDINGS.tablet * 2 -
       GAP_BETWEEN_COLUMNS * (TABLET_COLUMNS - 1)) /
       TABLET_COLUMNS) *
-      10 +
+      (TABLET_COLUMNS - 2) +
     GAP_BETWEEN_COLUMNS * 9;
 
   const oneStepForDesctop =
     (DESCTOP_COLUMNS - 2) * COLUMN_SIZE_FOR_DESCTOP +
     GAP_BETWEEN_COLUMNS * (DESCTOP_COLUMNS - 3);
 
-  const otherDevicesStep =
-    windowSize < WIDTH_DEVICES.desctop ? oneStepForTablet : oneStepForDesctop;
+  const getStepForDevices = useCallback(() => {
+    if (windowSize >= WIDTH_DEVICES.desctop) {
+      return oneStepForDesctop;
+    }
 
-  const oneStep =
-    windowSize > WIDTH_DEVICES.mobile ? otherDevicesStep : windowSize;
+    if (
+      windowSize > WIDTH_DEVICES.mobile &&
+      windowSize <= WIDTH_DEVICES.tablet
+    ) {
+      return oneStepForTablet;
+    }
+
+    return windowSize;
+  }, [windowSize, oneStepForDesctop, oneStepForTablet]);
 
   const selectPicture = (index: number) => {
-    setPosition(index * oneStep);
+    setPosition(index * getStepForDevices());
     setImgPosition(index);
   };
 
@@ -58,12 +73,12 @@ export const PicturesSlider: React.FC = React.memo(() => {
 
     if (imgPosition > 0) {
       setImgPosition(prevPosition => prevPosition - 1);
-      setPosition(prevPosition => prevPosition - oneStep);
+      setPosition(prevPosition => prevPosition - getStepForDevices());
     }
 
     if (imgPosition === 0) {
       const newImgPosition = images.length - 1;
-      const newPosition = newImgPosition * oneStep;
+      const newPosition = newImgPosition * getStepForDevices();
 
       setImgPosition(newImgPosition);
       setPosition(newPosition);
@@ -77,7 +92,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
 
     if (imgPosition < images.length - 1) {
       setImgPosition(prevPosition => prevPosition + 1);
-      setPosition(prevPosition => prevPosition + oneStep);
+      setPosition(prevPosition => prevPosition + getStepForDevices());
     }
 
     if (imgPosition === images.length - 1) {
@@ -120,19 +135,21 @@ export const PicturesSlider: React.FC = React.memo(() => {
         return;
       }
 
-      setPosition(prevPosition => prevPosition + oneStep);
+      setPosition(prevPosition => prevPosition + getStepForDevices());
       setImgPosition(prevPosition => prevPosition + 1);
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [images.length, imgPosition, oneStep, windowSize]);
+  }, [getStepForDevices, images.length, imgPosition, windowSize]);
+  // change pictures every 5 seconds
 
   useEffect(() => {
     if (currentSize !== windowSize && imgPosition !== 0) {
       setCurrentSize(windowSize);
-      setPosition(imgPosition * oneStep);
+      setPosition(imgPosition * getStepForDevices());
     }
-  }, [imgPosition, oneStep, currentSize, windowSize]);
+  }, [imgPosition, currentSize, windowSize, getStepForDevices]);
+  // adapting picture position at changing size of window
 
   useEffect(() => {
     if (windowSize <= WIDTH_DEVICES.mobile && images !== imgsMobile) {
@@ -142,7 +159,8 @@ export const PicturesSlider: React.FC = React.memo(() => {
     if (windowSize > WIDTH_DEVICES.mobile && images !== imgs) {
       setImages(imgs);
     }
-  }, [images, windowSize]); // setting images depending on the width of the devices
+  }, [images, windowSize]);
+  // setting images depending on the width of the devices
 
   return (
     <div className="pictures-slider">
@@ -166,7 +184,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
                 className="pictures-slider__img-wrapper"
                 ref={imagesRef}
                 key={img.id}
-                style={{ width: `${oneStep}px` }}
+                style={{ width: `${getStepForDevices()}px` }}
               >
                 <img
                   src={img.url}

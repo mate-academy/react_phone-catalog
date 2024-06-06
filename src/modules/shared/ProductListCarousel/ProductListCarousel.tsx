@@ -37,41 +37,39 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
     const [position, setPosition] = useState(getPadding(windowSize));
     const [imgPosition, setImgPosition] = useState<number>(0);
 
-    // #region
     const windowSizeForDesctop =
       COLUMN_SIZE_FOR_DESCTOP * DESCTOP_COLUMNS +
       GAP_BETWEEN_COLUMNS * (DESCTOP_COLUMNS - 1);
 
-    const currentWindowSizeSlider =
+    const windowSizeSlider =
       windowSize < WIDTH_DEVICES.desctop ? windowSize : windowSizeForDesctop;
 
-    const oneItem = widthCard + GAP_BETWEEN_COLUMNS;
+    const widthOneItem = widthCard + GAP_BETWEEN_COLUMNS;
 
     const itemsPerStep =
       windowSize < WIDTH_DEVICES.desctop
-        ? Math.floor(currentWindowSizeSlider / oneItem)
-        : Math.floor((currentWindowSizeSlider + GAP_BETWEEN_COLUMNS) / oneItem);
+        ? Math.floor(windowSizeSlider / widthOneItem)
+        : Math.floor((windowSizeSlider + GAP_BETWEEN_COLUMNS) / widthOneItem);
 
     const maxPosition = dataLoaded ? products.length - itemsPerStep : 0;
 
-    const boundary =
-      products.length * oneItem -
+    const limitOfPosition =
+      products.length * widthOneItem -
       GAP_BETWEEN_COLUMNS +
       padding -
-      currentWindowSizeSlider +
+      windowSizeSlider +
       widthScrollbar;
-    // #endregion
 
     const moveRight = () => {
       if (imgPosition < maxPosition) {
         const newImgPosition = imgPosition + itemsPerStep;
         const newPosition =
           windowSize < WIDTH_DEVICES.desctop
-            ? newImgPosition * oneItem - GAP_BETWEEN_COLUMNS
-            : newImgPosition * oneItem;
+            ? newImgPosition * widthOneItem - GAP_BETWEEN_COLUMNS
+            : newImgPosition * widthOneItem;
 
         setImgPosition(Math.min(newImgPosition, maxPosition));
-        setPosition(Math.max(-newPosition, -boundary));
+        setPosition(Math.max(-newPosition, -limitOfPosition));
       }
     };
 
@@ -80,8 +78,8 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
         const newImgPosition = imgPosition - itemsPerStep;
         const newPosition =
           windowSize < WIDTH_DEVICES.desctop
-            ? newImgPosition * oneItem - GAP_BETWEEN_COLUMNS
-            : newImgPosition * oneItem;
+            ? newImgPosition * widthOneItem - GAP_BETWEEN_COLUMNS
+            : newImgPosition * widthOneItem;
 
         setImgPosition(Math.max(newImgPosition, 0));
         setPosition(Math.min(-newPosition, padding));
@@ -117,33 +115,36 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
       if (imgPosition > maxPosition) {
         setImgPosition(maxPosition);
 
-        const newPosition = maxPosition * oneItem - GAP_BETWEEN_COLUMNS;
+        const newPosition = maxPosition * widthOneItem - GAP_BETWEEN_COLUMNS;
 
-        setPosition(Math.max(-newPosition, -boundary));
+        setPosition(Math.max(-newPosition, -limitOfPosition));
 
         return;
-      }
+      } // adapting the position of the picture when the current position
+      // becomes larger than the maximum when changing the size of the window
 
       if (dataLoaded && currentSize !== windowSize && imgPosition !== 0) {
         const newPosition =
           windowSize < WIDTH_DEVICES.desctop
-            ? imgPosition * oneItem - GAP_BETWEEN_COLUMNS
-            : imgPosition * oneItem;
+            ? imgPosition * widthOneItem - GAP_BETWEEN_COLUMNS
+            : imgPosition * widthOneItem;
 
-        setPosition(Math.max(-newPosition, -boundary));
+        setPosition(Math.max(-newPosition, -limitOfPosition));
         setCurrentSize(windowSize);
-      }
+      } // adaptation of the current position of pictures
+      // when changing the size of the window when the current position !== 0
 
       if (dataLoaded && position !== padding && imgPosition === 0) {
         setPosition(padding);
         setCurrentSize(windowSize);
-      }
+      } // adaptation of the current position of pictures
+      // when changing the size of the window when the current position === 0
     }, [
-      boundary,
+      limitOfPosition,
       dataLoaded,
       imgPosition,
       maxPosition,
-      oneItem,
+      widthOneItem,
       padding,
       position,
       currentSize,

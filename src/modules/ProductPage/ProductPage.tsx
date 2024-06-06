@@ -50,6 +50,7 @@ export const ProductPage: React.FC = React.memo(() => {
     currentPrice: state
       ? device?.priceDiscount || 0
       : device?.priceRegular || 0,
+    discount: state,
   };
 
   useEffect(() => {

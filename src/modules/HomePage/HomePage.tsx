@@ -3,7 +3,7 @@ import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategory';
 import { Product } from '../../types/Product';
-import { client } from '../../api'; // тимчасово
+import { client } from '../../api';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 
 function maxDifference(products: Product[], excluded: string) {
@@ -23,7 +23,6 @@ function maxDifference(products: Product[], excluded: string) {
 }
 
 export const HomePage = React.memo(() => {
-  // #region тимчасово
   const [dataLoaded, setDataLoaded] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
 
@@ -46,7 +45,6 @@ export const HomePage = React.memo(() => {
       })
       .catch(() => {});
   }, []); // fetch
-  // #endregion
 
   const newModels = phones
     .filter(phone => phone.name.toLowerCase().includes(latestPhones))
