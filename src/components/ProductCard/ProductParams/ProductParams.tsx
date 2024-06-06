@@ -2,6 +2,7 @@ import styles from './ProductParams.module.scss';
 
 type Props = {
   phoneParams: any;
+  /* later im gonna change it to actual type*/
 };
 
 export const ProductParams: React.FC<Props> = ({ phoneParams }) => {

@@ -21,7 +21,9 @@ const product = {
   image: 'img/phones/apple-iphone-14-pro/gold/00.webp',
 };
 
-export const ProductCard = () => {
+/* product object should be props now its just a placeholder ti prevent errors*/
+
+export const ProductCard = (/*{product}*/) => {
   const [selected, setSelected] = useState({
     primary: false,
     favourite: false,
