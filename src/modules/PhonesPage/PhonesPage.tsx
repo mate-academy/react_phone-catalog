@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 
-import Product from '../../Types/Product';
 import { getPhones } from '../../api/getProduct';
+import Product from '../../types/Product';
 
 const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
