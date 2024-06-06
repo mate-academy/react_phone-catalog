@@ -15,6 +15,16 @@
 }
 
 .description {
+  margin-top: 40px;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
   &__section {
     margin-top: 32px;
   }

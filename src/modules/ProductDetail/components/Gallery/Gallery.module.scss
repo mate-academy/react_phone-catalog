@@ -36,7 +36,7 @@
     &-secondary {
       display: block;
       width: 100%;
-      border: 1px solid --elements;
+      border: 1px solid $elements;
 
       @include on-tablet {
         height: 0;
@@ -50,7 +50,7 @@
     }
 
     &-selected {
-      border: 1px solid --white;
+      border: 1px solid $white;
     }
   }
 
@@ -58,7 +58,7 @@
     margin-top: 16px;
     display: flex;
     flex-direction: row;
-    gap: 8px;
+    justify-content: space-between;
     height: 48px;
     width: 100%;
 
