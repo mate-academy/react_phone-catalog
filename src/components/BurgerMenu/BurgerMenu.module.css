@@ -1,0 +1,122 @@
+.mobileMenu {
+  background: var(--white-color);
+  height: 100vh;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  transform: translateX(-100%);
+  opacity: 0.3;
+  transition: transform 0.3s ease-out;
+}
+
+.mobileMenuTop {
+  height: 48px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 0 var(--elements-color);
+}
+
+.mobileMenuLogoLink {
+  margin-left: 16px;
+}
+
+.mobileMenuCloseLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 48px;
+  height: 100%;
+  box-shadow: -1px 0 0 0 #e2e6e9;
+  padding: 16px;
+}
+
+.mobileMenuNavList {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  padding: 24px 16px;
+}
+
+.mobileMenuNavListLink {
+  color: var(--secondary-color);
+  font-size: 16px;
+  font-weight: 700;
+  position: relative;
+}
+
+.mobileMenuNavListLink::after {
+  content: '';
+  width: 0%;
+  height: 6%;
+  background: var(--white-color);
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  transition-duration: var(--transition-duration);
+}
+
+.mobileMenuNavListLink:hover {
+  color: var(--primary-color);
+}
+
+.mobileMenuNavListLink:hover::after {
+  width: 100%;
+}
+
+.menuShown {
+  transform: translateX(0%);
+  opacity: 1;
+}
+
+.activeLink {
+  position: relative;
+  color: var(--primary-color);
+}
+
+.activeLink::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+  transform-origin: left;
+  transform: scaleX(1);
+  transition: transform 0.3s ease-out;
+}
+
+.btns {
+  display: flex;
+  height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #e2e6e9;
+}
+
+.iconLink {
+  display: flex;
+  width: 50%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 #e2e6e9;
+}
+
+@media (min-width: 768px) {
+  .mobileMenu {
+    display: block;
+  }
+}
+
+@media (max-width: 767px) {
+  .mobileMenuNavListLink {
+    font-size: 12px;
+    font-weight: bold;
+  }
+}

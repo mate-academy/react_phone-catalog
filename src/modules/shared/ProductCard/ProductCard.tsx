@@ -1,6 +1,5 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
-
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
 import Product from '../../../types/Product';
@@ -62,7 +61,7 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
       </ul>
 
       <div className={styles.actionsWrapper}>
-        <Button variant="primary" size="100%" isSelected={false}>
+        <Button variant="primary" isSelected={false}>
           Add to cart
         </Button>
         <Button variant="icon" size="40px">
