@@ -159,9 +159,9 @@ export const ProductsPage: React.FC<Props> = ({ header, path }) => {
 
             <span
               className={styles.pageNumbers}
-            >{`${preparedItems().length} items`}</span>
+            >{`${arragedItems().length} items`}</span>
 
-            {!!arragedItems.length && (
+            {!!arragedItems().length && (
               <div className={classNames(styles.products__sort, styles.sort)}>
                 <div
                   className={classNames(
