@@ -9,7 +9,7 @@ type Props = {
   onPageChange: (value: number) => void;
 };
 
-export const Pagination: React.FC<Props> = ({
+const Pagination: React.FC<Props> = ({
   total,
   perPage,
   currentPage,
@@ -50,37 +50,42 @@ export const Pagination: React.FC<Props> = ({
 
   return (
     <ul className={s.pagination}>
-      <li onClick={handlePrevPage}>
+      <li>
         <Button
           variant="pagination"
           size={[32, 32]}
+          onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          <img src="img/icons/arrow-left-dark-icon.svg" alt="Previous Page" />
+          &lt;
         </Button>
       </li>
 
       {pages.map(page => (
-        <li onClick={() => onPageChange(page)} key={page}>
+        <li key={page}>
           <Button
             variant="pagination"
             isSelected={currentPage === page}
             size={[32, 32]}
+            onClick={() => onPageChange(page)}
           >
             {page}
           </Button>
         </li>
       ))}
 
-      <li onClick={handleNextPage}>
+      <li>
         <Button
           variant="pagination"
           size={[32, 32]}
+          onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          <img src="img/icons/arrow-right-dark-icon.svg" alt="Next Page" />
+          &gt;
         </Button>
       </li>
     </ul>
   );
 };
+
+export default Pagination;
