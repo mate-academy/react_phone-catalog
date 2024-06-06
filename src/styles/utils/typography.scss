@@ -1,4 +1,4 @@
-@import './mixins.scss';
+@import './mixins';
 
 @font-face {
   font-family: Mont-Bold, sans-serif;
@@ -22,7 +22,7 @@
   letter-spacing: -0.01em;
   text-align: left;
 
-  @include OnTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -31,7 +31,7 @@
     font-size: 22px;
     line-height: 31px;
 
-    @include OnTablet {
+    @include on-tablet {
       font-size: 32px;
       line-height: 41px;
     }
@@ -41,7 +41,7 @@
     font-size: 20px;
     line-height: 26px;
 
-    @include OnTablet {
+    @include on-tablet {
       font-size: 22px;
       line-height: 31px;
     }
@@ -51,7 +51,7 @@
     font-size: 16px;
     line-height: 20px;
 
-    @include OnTablet {
+    @include on-tablet {
       font-size: 20px;
       line-height: 26px;
     }

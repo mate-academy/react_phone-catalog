@@ -1,13 +1,13 @@
-@import '../../styles/utils/__vars.scss';
-@import '../../styles/utils/typography.scss';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars';
+@import '../../styles/utils/typography';
+@import '../../styles/utils/mixins';
 
 .footer {
   background: #fff;
   border: 1px $gray-elements solid;
   margin-top: 64px;
 
-  @include OnDesktop {
+  @include on-desktop{
     margin-top: 80px;
   }
 
@@ -19,7 +19,7 @@
     padding: 32px 0;
     gap: 32px;
 
-    @include OnTablet {
+    @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
@@ -37,12 +37,12 @@
     flex-direction: column;
     gap: 16px;
 
-    @include OnTablet {
+    @include on-tablet {
       flex-direction: row;
       gap: 13, 5px;
     }
 
-    @include OnDesktop {
+    @include on-desktop{
       gap: 106px;
       ;
     }

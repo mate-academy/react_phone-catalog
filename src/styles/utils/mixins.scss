@@ -1,60 +1,70 @@
-@import './_vars';
+@import './vars';
 
-@mixin OnTablet {
+
+
+@mixin on-tablet {
   @media (min-width: $min-tablet-with) {
     @content;
   }
 }
 
-@mixin OnDesktop {
+
+
+@mixin on-desktop {
   @media (min-width: $min-desktop-with) {
     @content;
   }
 }
 
-@mixin CarouselImageSize {
+
+
+@mixin carousel-image-size {
   width: 320px;
 
-  @include OnTablet {
+  @include on-tablet {
     width: 490px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     width: 1040px;
   }
 }
 
-@mixin HomePageTopIndentation {
+
+
+@mixin home-page-top-indentation {
   gap: 24px;
   margin-top: 24px;
   margin-bottom: 56px;
 
-  @include OnTablet {
+  @include on-tablet {
     gap: 32px;
     margin-top: 32px;
     margin-bottom: 64px;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     gap: 56px;
     margin-top: 56px;
     margin-bottom: 80px;
   }
 }
 
-@mixin PageGrid {
+
+@mixin page-grid {
   --columns: 4;
+
   display: grid;
   column-gap: 16px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
-  @include OnTablet {
+  @include on-tablet {
     --columns: 12;
   }
 
-  @include OnDesktop {
+  @include on-desktop {
     --columns: 24;
+    
     grid-template-columns: repeat(var(--columns), 32px);
   }
 }
-

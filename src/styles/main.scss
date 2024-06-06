@@ -1,4 +1,4 @@
-@import './utils/_vars';
+@import './utils/vars';
 @import './mixins';
 @import './typography';
 
@@ -12,5 +12,6 @@
 .page__content {
   // max-width: $desctop_size;
   margin: 0 auto;
+
   // padding-inline: 24px;
 }

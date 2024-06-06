@@ -1,9 +1,9 @@
-@import "../../styles/utils/_vars";
-@import '../../styles/utils/mixins.scss';
+@import "../../styles/utils/vars";
+@import '../../styles/utils/mixins';
 
 .header {
   background: #fff;
-  box-shadow: 0px 1px 0px 0px $gray-elements;
+  box-shadow: 0 1px 0 0 $gray-elements;
   box-sizing: border-box;
 
   &__content {
@@ -11,11 +11,11 @@
     flex-direction: row;
     align-items: center;
 
-    @include OnTablet {
+    @include on-tablet {
       gap: 16px;
     }
 
-    @include OnDesktop {
+    @include on-desktop{
       gap: 24px;
     }
   }
@@ -31,7 +31,7 @@
   &__search {
     display: none;
 
-    @include OnTablet {
+    @include on-tablet {
       display: inline;
     }
 
@@ -47,7 +47,7 @@
   &__right {
     display: none;
 
-    @include OnTablet {
+    @include on-tablet {
       display: flex;
     }
 
@@ -58,7 +58,7 @@
   &__burger-menu {
     margin-left: auto;
 
-    @include OnTablet {
+    @include on-tablet {
       opacity: 0;
       width: 0;
       height: 0;
@@ -68,12 +68,12 @@
   &__nav {
     display: none;
 
-    @include OnTablet {
+    @include on-tablet {
       display: flex;
       gap: 32px;
     }
 
-    @include OnDesktop {
+    @include on-desktop{
       gap: 64px;
     }
 
@@ -86,7 +86,7 @@
   }
 }
 
-@include OnDesktop {
+@include on-desktop{
   $header-height: 64px; // Change height on desktop
 
   .header {

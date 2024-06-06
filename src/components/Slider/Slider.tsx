@@ -44,7 +44,7 @@ export const Slider = () => {
     const intervalId = setInterval(nextButton, 5000);
 
     return () => clearInterval(intervalId);
-  }, [position, maxPosition]);
+  }, [position, maxPosition, nextButton]);
 
   return (
     <div className="Slider">

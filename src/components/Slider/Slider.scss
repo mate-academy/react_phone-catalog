@@ -1,5 +1,5 @@
-@import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/_vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
 
 .Slider {
   display: flex;
@@ -21,7 +21,8 @@
     align-items: center;
     overflow: hidden;
     padding: 0;
-    @include CarouselImageSize;
+
+    @include carousel-image-size;
   }
 
   &__item {
@@ -30,14 +31,15 @@
 
   &__img {
     object-fit: cover;
-    @include CarouselImageSize;
+
+    @include carousel-image-size;
   }
 
   &__button {
     cursor: pointer;
     height: 189px;
 
-    @include OnDesktop {
+    @include on-desktop{
       height: 400px;
     }
 
