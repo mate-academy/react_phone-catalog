@@ -1,0 +1,388 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.productDetail {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    margin-bottom: 40px;
+  }
+
+  &__bottom {
+    display: flex;
+    flex-direction: column;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    color: $graySecondary;
+
+    margin-top: 40px;
+    margin-bottom: 16px;
+
+    & span {
+      font-size: 12px;
+      font-weight: 600;
+      margin: 0;
+    }
+  }
+}
+
+.top {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 64px;
+  margin-bottom: 81px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 18px;
+  }
+
+  @include onDesktop {
+    gap: 64px;
+  }
+
+  &__photo {
+    height: 100%;
+    width: 100%;
+    gap: 16px;
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include onTablet {
+      flex-direction: row;
+      width: 560px;
+    }
+  }
+
+  &__parameters {
+    width: 100%;
+
+    @include onTablet {
+      width: 512px;
+    }
+  }
+}
+
+.parameters {
+  display: flex;
+  position: relative;
+
+  &__block {
+    width: 100%;
+
+    @include onTablet {
+      width: 288px;
+    }
+
+    @include onDesktop {
+      width: 320px;
+    }
+  }
+
+  &__id {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 192px;
+    text-align: end;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $grayIcons;
+  }
+
+  &__avaible-colors {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    list-style: none;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $grayElements;
+    margin-bottom: 24px;
+  }
+
+  &__avaible-color {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grayElements;
+    border-radius: 50%;
+    padding: 2px;
+    box-sizing: border-box;
+    background-clip: content-box;
+  }
+
+  &__link {
+    display: inline-block;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__description {
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $graySecondary;
+    margin-bottom: 8px;
+  }
+
+  &__capacity {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-bottom: 24px;
+    border-bottom: 1px solid $grayElements;
+    margin-bottom: 32px;
+  }
+
+  &__cpct-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 32px;
+    text-decoration: none;
+    border: 1px solid $grayIcons;
+    color: $grayPrimary;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+    font-weight: 700;
+    letter-spacing: -0.32px;
+    color: $grayPrimary;
+  }
+
+  &__full-price {
+    font-size: 22px;
+    font-weight: 500;
+    text-decoration-line: line-through;
+    color: $graySecondary;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__technical-data {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__technical-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12px;
+    font-weight: 600;
+    color: $graySecondary;
+
+    & > * {
+      color: $grayPrimary;
+    }
+  }
+}
+
+.photo {
+  &__slider {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    list-style: none;
+
+    @include onTablet {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    cursor: pointer;
+    background-color: #fff;
+    border: 1px solid $grayElements;
+    padding: 7px;
+    width: 100%;
+    height: 49px;
+
+    @include onTablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include onDesktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+
+  &__current {
+    width: 100%;
+    height: 288px;
+    padding: 11px;
+
+    @include onDesktop {
+      width: 464px;
+      height: 464px;
+    }
+
+    & img {
+      height: 100%;
+      width: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.photo__active {
+  border: 1px solid $grayPrimary;
+}
+
+.active__color {
+  border: 1px solid $grayPrimary;
+}
+
+.active__cpct {
+  color: $white;
+  background-color: $grayPrimary;
+  border: 1px solid $grayPrimary;
+}
+
+.about {
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 560px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $grayPrimary;
+    margin-bottom: 48px;
+
+    &::after {
+      display: block;
+      content: "";
+      position: relative;
+      top: 16px;
+      width: 100%;
+      height: 1px;
+      background-color: $grayElements;
+    }
+  }
+
+  &__info-item {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__info-title {
+    margin-bottom: 16px;
+    font-size: 20px;
+    font-weight: 600;
+    color: $grayPrimary;
+  }
+
+  &__info-text {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+
+    &--one {
+      margin-top: 25px;
+    }
+  }
+}
+
+.tech-specs {
+  width: 100%;
+
+  @include onTablet {
+    width: 100%;
+  }
+
+  @include onDesktop {
+    width: 512px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $grayPrimary;
+    margin-bottom: 48px;
+
+    &::after {
+      display: block;
+      content: "";
+      position: relative;
+      top: 16px;
+      width: 100%;
+      height: 1px;
+      background-color: $grayElements;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+
+    & span {
+      color: $grayPrimary;
+    }
+
+    &:last-child > span {
+      width: 150px;
+    }
+  }
+}

@@ -1,0 +1,83 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.footer {
+  margin-top: auto;
+  width: 100%;
+  border-top: 1px solid $grayElements;
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 32px;
+    padding-block: 32px;
+    padding-inline: 16px;
+
+    @include onTablet {
+      height: 97px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      padding-inline: 32px;
+    }
+  }
+
+  &__contacts {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 64px;
+      flex-direction: row;
+    }
+  }
+
+  &__contact {
+    text-transform: uppercase;
+    color: $graySecondary;
+    text-decoration: none;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 0.48px;
+  }
+
+  &__backToTop {
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+    gap: 16px;
+
+    @include onTablet {
+      margin: 0;
+    }
+  }
+
+  &__title {
+    color: $graySecondary;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $grayIcons;
+    width: 32px;
+    height: 32px;
+
+    transition: border 0.5s;
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+  }
+}

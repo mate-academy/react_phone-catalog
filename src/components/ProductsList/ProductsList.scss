@@ -1,0 +1,57 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.productList {
+  &__grid {
+    @include pageGrid;
+  }
+
+  &__gridItem {
+    grid-column: span 4;
+    list-style: none;
+    margin-bottom: 40px;
+
+    @include onTablet {
+      grid-column: span 6;
+      width: 288px;
+      height: 507px;
+    }
+
+    @include onMiddleScreen {
+      grid-column: span 4;
+      width: 229px;
+    }
+
+    @include onDesktop {
+      grid-column: span 6;
+      width: 272px;
+      height: 507px;
+    }
+  }
+
+  &__dropdown {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__length {
+    margin-bottom: 40px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+  }
+
+  &__pagiantion {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 80px;
+  }
+}

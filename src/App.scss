@@ -1,1 +1,85 @@
-// not empty
+@import "./styles/variables";
+@import "./styles/mixins";
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-Bold.otf") format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-Regular.otf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: "Mont";
+  src: local("Mont"),
+    url("./fonts/Mont-SemiBold.otf") format("truetype");
+  font-weight: 600;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: "Mont", sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-width: 320px;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+div,
+span,
+ul,
+li,
+button {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  background: none;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.App h1 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1px;
+  color: $grayPrimary;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.App h2 {
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -1px;
+  color: $grayPrimary;
+}

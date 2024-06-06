@@ -1,0 +1,41 @@
+@import "./variables";
+
+@mixin pageGrid {
+  --columns: 4;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include onTablet {
+    --columns: 12;
+    column-gap: 16px;
+  }
+
+  @include onMiddleScreen {
+    --columns: 12;
+    column-gap: 16px;
+  }
+
+  @include onDesktop {
+    --columns: 24;
+    column-gap: 16px;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: $desktopMinWidth) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: $tabletMinWidth) {
+    @content;
+  }
+}
+
+@mixin onMiddleScreen {
+  @media (min-width: $middleScreen) {
+    @content;
+  }
+}

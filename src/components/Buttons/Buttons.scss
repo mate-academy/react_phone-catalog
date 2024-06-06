@@ -1,0 +1,58 @@
+@import "../../styles/variables";
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+
+  &__add {
+    background-color: $grayPrimary;
+    cursor: pointer;
+    text-align: center;
+    color: #fff;
+    border: 1px solid $grayPrimary;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.26);
+    }
+  }
+
+  &__added {
+    cursor: pointer;
+    text-align: center;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    background-color: #fff;
+    color: #27ae60;
+    border: 1px solid $grayIcons;
+    transition: all 0.5s;
+  }
+
+  &__favorites {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $grayIcons;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    transition: all 0.5s;
+
+    &:hover {
+      border: 1px solid $grayPrimary;
+    }
+  }
+}
+
+.selected {
+  border: 1px solid $grayElements !important;
+}

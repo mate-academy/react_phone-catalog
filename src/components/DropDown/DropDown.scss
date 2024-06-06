@@ -1,0 +1,82 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  position: relative;
+
+  & > label {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: normal;
+    color: $graySecondary;
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding: 0 12px;
+    width: 136px;
+    height: 40px;
+    background-color: $white;
+    border: 1px solid $grayIcons;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: $grayPrimary;
+
+    transition: all 0.5s;
+
+    &:nth-of-type(1) {
+      @include onTablet {
+        width: 187px;
+      }
+    }
+
+    &:hover {
+      border: 1px solid $graySecondary;
+    }
+
+    &:focus {
+      border: 1px solid $grayPrimary;
+    }
+  }
+
+  &__content {
+    position: absolute;
+    top: 108%;
+    z-index: 1;
+
+    width: 136px;
+    padding: 8px 0;
+    border: 1px solid $grayIcons;
+    list-style: none;
+    background-color: white;
+    cursor: pointer;
+
+    @include onTablet {
+      width: 187px;
+    }
+  }
+
+  &__item {
+    height: 32px;
+    padding-left: 12px;
+    display: flex;
+    align-items: center;
+
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+
+    &:hover {
+      color: $grayPrimary;
+    }
+  }
+}

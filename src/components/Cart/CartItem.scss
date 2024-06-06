@@ -1,0 +1,109 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.cartItem {
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    padding: 23px;
+    gap: 24px;
+  }
+
+  &__remove {
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.2);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $grayIcons;
+    box-sizing: border-box;
+    transition: all 0.5s;
+
+    &:hover {
+      box-shadow: 4px 4px 2px $grayPrimary;
+      border-color: $grayPrimary;
+    }
+  }
+
+  &__imgWrapper {
+    padding: 7px;
+    height: 80px;
+    width: 80px;
+  }
+
+  &__wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+
+    &--bottom {
+      gap: 0;
+
+      @include onTablet {
+        gap: 24px;
+        justify-content: center;
+      }
+    }
+  }
+
+  &__image {
+    width: 66px;
+    height: 66px;
+    object-fit: contain;
+  }
+
+  &__title {
+    width: 100%;
+
+    @include onTablet {
+      width: 176px;
+    }
+
+    @include onDesktop {
+      width: 336px;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include onTablet {
+      padding-left: 30px;
+    }
+  }
+
+  &__quantity {
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

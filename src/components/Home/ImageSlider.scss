@@ -1,0 +1,107 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.slider {
+  width: 100%;
+  height: 320px;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  padding-bottom: 20px;
+  margin: 40px 0 52px;
+  position: relative;
+
+  @include onTablet {
+    height: 189px;
+  }
+
+  @include onDesktop {
+    height: 400px;
+  }
+
+  &__button {
+    height: 100%;
+    width: 32px;
+    border: 1px solid $grayIcons;
+    display: none;
+
+    @include onTablet {
+      opacity: 1;
+      display: block;
+    }
+
+    &--right:hover > * {
+      animation: right 1s ease infinite;
+    }
+
+    &--left:hover > * {
+      animation: left 1s ease infinite;
+    }
+  }
+
+  &__images {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+  }
+
+  &__image {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    transition: transform 500ms ease-in-out;
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: 6px;
+    left: 50%;
+    translate: -50%;
+    display: flex;
+    gap: 6px;
+  }
+
+  &__dot {
+    width: 20px;
+    height: 6px;
+    background-color: $grayElements;
+    cursor: pointer;
+
+    transition: all 0.5s;
+
+    &--active {
+      background-color: $grayPrimary;
+    }
+  }
+}
+
+@keyframes right {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(-5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes left {
+  0% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(5px);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}

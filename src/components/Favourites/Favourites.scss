@@ -1,0 +1,19 @@
+@import "../../styles/variables";
+
+.favourites {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__itemLength {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $graySecondary;
+    margin-bottom: 40px;
+  }
+
+  &__items {
+    margin-bottom: 40px;
+  }
+}

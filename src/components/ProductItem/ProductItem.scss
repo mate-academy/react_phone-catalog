@@ -1,0 +1,112 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.phoneItem {
+  width: 100%;
+  border: 1px solid #e2e6e9;
+  background: #fff;
+  box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.05);
+  transition: all 0.5s;
+
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
+  }
+
+  &__image {
+    padding: 32px 32px 0;
+    margin-bottom: 24px;
+
+    & img {
+      width: 100%;
+      height: 130px;
+      object-fit: contain;
+      display: flex;
+      align-items: center;
+
+      @include onTablet {
+        height: 208px;
+      }
+
+      @include onMiddleScreen {
+        height: 196px;
+        width: 165px;
+      }
+
+      @include onDesktop {
+        width: 208px;
+        height: 196px;
+      }
+    }
+  }
+
+  &__description {
+    padding: 0 32px 32px;
+
+    @include onDesktop {
+      padding: 0 24px 24px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid $grayElements;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    text-decoration: none;
+    height: 63px;
+    padding-inline: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $grayPrimary;
+    margin-bottom: 6px;
+
+    @include onDesktop {
+      padding-inline: 24px;
+      height: 42px;
+    }
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    color: $grayPrimary;
+  }
+
+  &__fullPrice {
+    color: #89939a;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: normal;
+    text-decoration-line: line-through;
+  }
+
+  &__parameters {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__parametersItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    color: $graySecondary;
+
+    & > * {
+      color: $grayPrimary;
+    }
+  }
+}
