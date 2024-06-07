@@ -11,6 +11,9 @@
 
 .title {
   line-height: 24px;
+  max-width: calc(20 * 1em); /* Обмежує ширину заголовка */
+  white-space: pre-wrap; /* Дозволяє переносити слова */
+  overflow-wrap: break-word;
 }
 
 .navigation {
@@ -27,7 +30,15 @@
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
+  .title {
+    line-height: 24px;
+    max-width: calc(8 * 1em);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
   .product__slider {
+    padding-left: 16px;
     padding-right: 0;
   }
 }
