@@ -118,6 +118,10 @@
   height: 16px;
 }
 
+.paramValue {
+  text-align: right;
+}
+
 @media (min-width: 640px) and (max-width: 1199px) {
   .imgWrapper {
     height: 173px;

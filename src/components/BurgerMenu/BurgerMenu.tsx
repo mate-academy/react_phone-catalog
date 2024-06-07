@@ -4,7 +4,8 @@ import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import Button from '../../UI/Buttons/Button';
 import { ROUTES } from '../../constants/ROUTES';
-import { useProductStore } from '../../store/store';
+import { useCartStore } from '../../store/cartStore';
+import { useFavoritesStore } from '../../store/favoritesStore';
 import styles from './BurgerMenu.module.css';
 
 type Props = {
@@ -16,8 +17,8 @@ export const MobileMenu: React.FC<Props> = ({
   isMenuShown,
   setIsMenuShown,
 }) => {
-  const cart = useProductStore(state => state.cartItems);
-  const favorites = useProductStore(state => state.favorites);
+  const cart = useCartStore(state => state.cartItems);
+  const favorites = useFavoritesStore(state => state.favorites);
 
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.mobileMenuNavListLink, {

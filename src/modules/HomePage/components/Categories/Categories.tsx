@@ -1,13 +1,15 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 import {
   getAccessories,
   getPhones,
   getTablets,
 } from '../../../../api/getProduct';
+
+import { Link } from 'react-router-dom';
 import Heading from '../../../../UI/Heading/Heading';
-import s from './Categories.module.css';
+import { ROUTES } from '../../../../constants/ROUTES';
 import Product from '../../../../types/Product';
+import s from './Categories.module.css';
 
 export const Categories = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -23,6 +25,7 @@ export const Categories = () => {
   useEffect(() => {
     getAccessories().then(setAccessories);
   }, []);
+
   return (
     <div className="container">
       <Heading className={s.categories} as="h2">
@@ -30,7 +33,7 @@ export const Categories = () => {
       </Heading>
       <div className={s.shopCategories}>
         <article className={s.shopCategory}>
-          <Link to={'/phones'} className={s.categoryLink}>
+          <Link to={ROUTES.PHONES} className={s.categoryLink}>
             <div
               className={`${s.categoryBackground} ${s.phonesBackgroundColor}`}
             >
@@ -48,7 +51,7 @@ export const Categories = () => {
         </article>
 
         <article className={s.shopCategory}>
-          <Link to={'/tablets'} className={s.categoryLink}>
+          <Link to={ROUTES.TABLETS} className={s.categoryLink}>
             <div
               className={`${s.categoryBackground}  ${s.tabletsBackgroundColor}`}
             >
@@ -66,7 +69,7 @@ export const Categories = () => {
         </article>
 
         <article className={s.shopCategory}>
-          <Link to={'/accessories'} className={s.categoryLink}>
+          <Link to={ROUTES.ACCESSORIES} className={s.categoryLink}>
             <div
               className={`${s.categoryBackground} ${s.accessoriesBackgroundColor}`}
             >
