@@ -16,9 +16,6 @@ const HomePage = () => {
         </div>
         <PicturesSlider />
         <BrandNewModels />
-        <div className="container">
-          <div>Shop by category</div>
-        </div>
         <Categories />
         <HotPrices />
       </section>
