@@ -1,4 +1,4 @@
-import Product from '../Types/Productю';
+import Product from '../types/Product';
 import { client } from '../utils/fetchClient';
 
 export const getPhones = () => {

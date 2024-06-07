@@ -19,17 +19,21 @@ const Footer = () => {
             <Link
               to="https://github.com/FS-MAR24-Code-Busters/react_phone-catalog"
               className={styles.footer__link}
+              target="_blank"
             >
               github
             </Link>
-            <Link to="#" className={styles.footer__link}>
+            <Link to="#" className={styles.footer__link} target="_blank">
               contacts
             </Link>
-            <Link to="#" className={styles.footer__link}>
+            <Link to="#" className={styles.footer__link} target="_blank">
               rights
             </Link>
           </div>
-          <div className={styles.back_to_top_content}>
+          <div
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className={styles.back_to_top_content}
+          >
             <Link to="#" className={styles.back__to__top_link}>
               <span className={styles.back__to__top}>back to top</span>
             </Link>

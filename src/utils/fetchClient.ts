@@ -27,7 +27,7 @@ async function request<T>(
   }
 
   // DON'T change the delay it is required for tests
-  await wait(100);
+  await wait(1500);
   const response = await fetch(BASE_URL + url, options);
 
   if (!response.ok) {

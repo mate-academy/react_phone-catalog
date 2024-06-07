@@ -1,0 +1,27 @@
+.content {
+  padding: 24px 0 80px;
+}
+
+.header_content{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  line-height: 24px;
+}
+
+.quantity {
+  color: var(--secondary-color);
+  margin-bottom: 40px;
+}
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+
