@@ -1,4 +1,5 @@
 import Heading from '../../UI/Heading/Heading';
+import { Categories } from './components/Categories/Categories';
 import BrandNewModels from '../BrandNewModels/BrandNewModels';
 import HotPrices from '../HotPrices/HotPrices';
 import s from './HomePage.module.css';
@@ -18,6 +19,7 @@ const HomePage = () => {
         <div className="container">
           <div>Shop by category</div>
         </div>
+        <Categories />
         <HotPrices />
       </section>
     </>
