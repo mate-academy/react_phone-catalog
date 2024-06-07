@@ -1,0 +1,54 @@
+@import '../../../../styles/main';
+
+.header {
+  &__title {
+    @include mobile-header-1;
+
+    margin-block: 24px;
+
+    @include on-tablet {
+      @include header-1;
+
+      margin-block: 32px;
+    }
+
+    @include on-desktop {
+      margin-block: 56px;
+    }
+
+    &-hiden {
+      display: none;
+    }
+  }
+}
+
+.skeleton {
+  &__title {
+    width: 100%;
+    height: 50px;
+  }
+
+  &__slider {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    height: 350px;
+    gap: 20px;
+  }
+
+  &__button {
+    width: 40px;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__title,
+  &__button,
+  &__image {
+    @include skeleton-bg;
+  }
+}

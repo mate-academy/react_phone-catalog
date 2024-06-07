@@ -1,0 +1,100 @@
+@import '../../../../styles/main';
+
+.productList {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__list {
+    margin-top: 32px;
+
+    @include page-grid;
+
+    gap: 40px;
+  }
+
+  &__productCard {
+    grid-column: span 4;
+
+    @media (min-width: 640px) {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+
+      @media (min-width: 1024px) {
+        grid-column: span 3;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__block {
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    margin-top: 24px;
+
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__pages {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__pageItem {
+    display: block;
+    background-color: $surface_1;
+
+    @include body-text;
+
+    line-height: 32px;
+    text-align: center;
+
+    text-decoration: none;
+    color: $white;
+
+    width: 32px;
+    height: 32px;
+
+    &-active {
+      background-color: $accent;
+    }
+  }
+
+  &__button {
+    @include secondary-button;
+
+    &-arrowLeft {
+      @include arrow-left;
+    }
+
+    &-arrowRight {
+      @include arrow-right;
+    }
+  }
+}
+
+.skeleton {
+  display: block;
+
+  &__block {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__button {
+    @include skeleton-bg;
+  }
+}

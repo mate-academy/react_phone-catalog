@@ -1,0 +1,98 @@
+@import './utils/typography';
+@import './utils/vars';
+@import './utils/mixins';
+
+.sort {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+
+  @include on-tablet {
+    @include page-grid;
+  }
+
+  margin-top: 32px;
+
+  &__dropDown {
+    width: 50%;
+    position: relative;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &-date {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &-amount {
+    @include on-tablet {
+      grid-column: span 3;
+    }
+    }
+  }
+
+  &__label {
+    @include small-text;
+
+    color: $elements;
+  }
+
+  &__selectField {
+    height: 40px;
+    padding-inline: 12px;
+
+
+    background-color: $surface_2;
+    color: $white;
+
+    @include buttons;
+
+    line-height: 40px;
+    font-weight: 400;
+
+    background-image: url('../../public/img/icons/Arrow_Down.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+
+    cursor: pointer;
+    position: relative;
+
+    &-active {
+      border: 1px solid $accent;
+    }
+  }
+
+  &__selectList {
+    position: absolute;
+    width: 100%;
+    top: 100%;
+    left: 0;
+    margin-top: 4px;
+    border: 1px solid $surface_2;
+    z-index: 1;
+  }
+
+  &__option {
+    display: block;
+
+    @include body-text;
+
+    text-decoration: none;
+    color: $white;
+
+    height: 32px;
+    line-height: 32px;
+    background-color: $black;
+    padding-inline: 12px;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $surface_2;
+    }
+  }
+}

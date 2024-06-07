@@ -1,0 +1,95 @@
+@import '../../../styles/main';
+
+.phoneSlider {
+  margin-top: $mobile-block-margin;
+
+  @include on-tablet {
+    margin-top: $tablet-block-margin;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+    @include page-grid;
+  }
+
+  &__header {
+    grid-column: 1 / 3;
+
+    @include on-tablet {
+      grid-column: 1 / 11;
+    }
+  }
+
+  &__buttons {
+    place-self: center right;
+    grid-column: 4;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: 12;
+    }
+
+    @include on-desktop {
+      grid-column: 24;
+    }
+  }
+
+  &__button {
+    @include secondary-button;
+
+    width: 32px;
+    height: 32px;
+
+    &-left {
+      @include arrow-left;
+    }
+
+    &-right {
+      @include arrow-right;
+    }
+  }
+
+  &__products {
+    width: calc(100% + $mobile-padding-inline);
+    display: inline-flex;
+    overflow: hidden;
+    scroll-behavior: smooth;
+    gap: 16px;
+
+    margin-right: -$mobile-padding-inline;
+
+    @include on-tablet {
+      width: calc(100% + $tablet-padding-inline);
+      margin-right: -$tablet-padding-inline;
+    }
+
+    @include on-desktop {
+      width: 100%;
+    }
+  }
+
+  &__product {
+    min-width: 212px;
+  }
+}
+
+.skeleton {
+  &__header {
+    width: 100%;
+    height: 40px;
+  }
+
+  &__button {
+    background: none;
+  }
+
+  &__header ,
+  &__button {
+    @include skeleton-bg;
+  }
+}
