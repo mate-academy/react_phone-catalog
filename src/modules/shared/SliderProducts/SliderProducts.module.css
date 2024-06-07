@@ -2,7 +2,7 @@
   padding: 24px 0 80px;
 }
 
-.header_content{
+.header_content {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -19,4 +19,21 @@
   justify-content: center;
 }
 
+.product__slider {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
 
+@media (min-width: 320px) and (max-width: 639px) {
+  .product__slider {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .product__slider {
+    padding-right: 0;
+  }
+}

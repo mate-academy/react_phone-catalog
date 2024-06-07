@@ -74,45 +74,45 @@ const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
             </li>
           </ul>
         </div>
-        <div className="product-slider">
-          <Swiper
-            onSwiper={swiper => (swiperRef.current = swiper)}
-            onSlideChange={updateCurrentPage}
-            modules={[Navigation, Pagination, Autoplay]}
-            spaceBetween={16}
-            slidesPerView={4}
-            speed={800}
-            autoplay={{
-              delay: 10000, // Затримка між автоскролом у мілісекундах
-              disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
-            }}
-            breakpoints={{
-              1200: {
-                slidesPerView: 4,
-                slidesPerGroup: 4,
-                spaceBetween: 16,
-              },
-              640: {
-                slidesPerView: 3,
-                slidesPerGroup: 3,
-                spaceBetween: 16,
-              },
-              320: {
-                slidesPerView: 1,
-                slidesPerGroup: 1,
-                spaceBetween: 16,
-              },
-            }}
-          >
-            {products.map(product => (
-              <SwiperSlide key={product.id}>
-                <div key={product.id} className={s.item}>
-                  <ProductCard product={product} />
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
+      </div>
+      <div className={s.product__slider}>
+        <Swiper
+          onSwiper={swiper => (swiperRef.current = swiper)}
+          onSlideChange={updateCurrentPage}
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={16}
+          slidesPerView={4}
+          speed={800}
+          autoplay={{
+            delay: 10000, // Затримка між автоскролом у мілісекундах
+            disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
+          }}
+          breakpoints={{
+            1200: {
+              slidesPerView: 4,
+              slidesPerGroup: 4,
+              spaceBetween: 16,
+            },
+            640: {
+              slidesPerView: 2.5,
+              slidesPerGroup: 3,
+              spaceBetween: 16,
+            },
+            320: {
+              slidesPerView: 1.4,
+              slidesPerGroup: 1,
+              spaceBetween: 16,
+            },
+          }}
+        >
+          {products.map(product => (
+            <SwiperSlide key={product.id}>
+              <div key={product.id} className={s.item}>
+                <ProductCard product={product} />
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );

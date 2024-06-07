@@ -117,3 +117,28 @@
   width: 16px;
   height: 16px;
 }
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .imgWrapper {
+    height: 173px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .paramItem{
+    gap: 15px;
+  }
+  .paramValue {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .imgWrapper {
+    height: 148px;
+  }
+  .descr {
+    padding-top: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

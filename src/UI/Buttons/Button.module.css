@@ -38,6 +38,7 @@
   width: 100%;
   transition: box-shadow 0.3s ease-out;
   height: 40px;
+  padding: 0 9.5px;
 }
 
 .button-variant--primary:hover {
