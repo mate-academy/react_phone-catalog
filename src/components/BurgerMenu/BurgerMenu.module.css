@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   right: 0;
-  z-index: 1;
+  z-index: 2;
   transform: translateX(-100%);
   opacity: 0.3;
   transition: transform 0.3s ease-out;
@@ -123,6 +123,10 @@
   right: -40%;
   color: var(--white-color);
   font-weight: 700;
+}
+
+.noScroll {
+  overflow: hidden;
 }
 
 @media (max-width: 767px) {

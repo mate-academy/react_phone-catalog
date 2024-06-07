@@ -1,7 +1,7 @@
+import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 
 import classNames from 'classnames';
-import React from 'react';
 import Button from '../../UI/Buttons/Button';
 import { ROUTES } from '../../constants/ROUTES';
 import { useProductStore } from '../../store/store';
@@ -28,6 +28,18 @@ export const MobileMenu: React.FC<Props> = ({
     classNames(styles.iconLink, {
       [styles.activeLink]: isActive,
     });
+
+  useEffect(() => {
+    if (isMenuShown) {
+      document.body.classList.add(styles.noScroll);
+    } else {
+      document.body.classList.remove(styles.noScroll);
+    }
+
+    return () => {
+      document.body.classList.remove(styles.noScroll);
+    };
+  }, [isMenuShown]);
 
   return (
     <div
