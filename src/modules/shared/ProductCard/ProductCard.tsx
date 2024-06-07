@@ -1,5 +1,6 @@
+import { Link, useLocation } from 'react-router-dom';
+
 import { FC } from 'react';
-import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
@@ -24,13 +25,24 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     id,
   } = product;
 
-  const toggleProductInCart = useProductStore(
-    state => state.toggleProductInCart,
-  );
-  const toggleFavorite = useProductStore(state => state.toggleFavorite);
+  const { pathname } = useLocation();
+  const isPhonesPage = pathname.includes('/phones');
 
-  const cart = useProductStore(state => state.cartItems);
-  const favorites = useProductStore(state => state.favorites);
+  const productLink = isPhonesPage
+    ? ROUTES.PRODUCT_DETAIL.replace(':productId', id)
+    : ROUTES.PHONES + '/' + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+
+  const {
+    toggleProductInCart,
+    toggleFavorite,
+    cartItems: cart,
+    favorites,
+  } = useProductStore(state => ({
+    toggleProductInCart: state.toggleProductInCart,
+    toggleFavorite: state.toggleFavorite,
+    cartItems: state.cartItems,
+    favorites: state.favorites,
+  }));
 
   const isInCart = cart.some(item => item.id === product.id);
   const isFavorite = favorites.some(item => item.id === product.id);
@@ -53,10 +65,7 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
   return (
     <article className={styles.wrapper}>
       <div className={styles.header}>
-        <Link
-          to={ROUTES.PRODUCT_DETAIL.replace(':productId', id)}
-          className={styles.imgWrapper}
-        >
+        <Link to={productLink} className={styles.imgWrapper}>
           <img src={images[0]} alt={name} className={styles.image} />
         </Link>
         <Link
