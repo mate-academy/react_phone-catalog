@@ -120,6 +120,7 @@
 
 .paramValue {
   text-align: right;
+}
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .imgWrapper {
@@ -128,7 +129,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
-  .paramItem{
+  .paramItem {
     gap: 15px;
   }
   .paramValue {
@@ -144,5 +145,4 @@
     font-size: 14px;
     line-height: 24px;
   }
-
 }
