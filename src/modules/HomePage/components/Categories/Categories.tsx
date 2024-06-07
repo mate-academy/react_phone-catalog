@@ -1,8 +1,28 @@
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {
+  getAccessories,
+  getPhones,
+  getTablets,
+} from '../../../../api/getProduct';
 import Heading from '../../../../UI/Heading/Heading';
 import s from './Categories.module.css';
+import Product from '../../../../types/Product';
 
 export const Categories = () => {
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Product[]>([]);
+
+  useEffect(() => {
+    getPhones().then(setPhones);
+  }, []);
+  useEffect(() => {
+    getTablets().then(setTablets);
+  }, []);
+  useEffect(() => {
+    getAccessories().then(setAccessories);
+  }, []);
   return (
     <div className="container">
       <Heading className={s.categories} as="h2">
@@ -24,7 +44,7 @@ export const Categories = () => {
           <Heading as="h3" className={s.categoryTitle}>
             Mobile phones
           </Heading>
-          <p className={s.categoryModels}>{`95 models`}</p>
+          <p className={s.categoryModels}>{`${phones.length} models`}</p>
         </article>
 
         <article className={s.shopCategory}>
@@ -42,7 +62,7 @@ export const Categories = () => {
           <Heading as="h3" className={s.categoryTitle}>
             Tablets
           </Heading>
-          <p className={s.categoryModels}>{`24 models`}</p>
+          <p className={s.categoryModels}>{`${tablets.length} models`}</p>
         </article>
 
         <article className={s.shopCategory}>
@@ -60,7 +80,7 @@ export const Categories = () => {
           <Heading as="h3" className={s.categoryTitle}>
             Accessories
           </Heading>
-          <p className={s.categoryModels}>{`100 models`}</p>
+          <p className={s.categoryModels}>{`${accessories.length} models`}</p>
         </article>
       </div>
     </div>
