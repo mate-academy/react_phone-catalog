@@ -40,6 +40,14 @@
   height: 48px !important;
 }
 
+.error {
+  height: 100%;
+  background-image: url(/public/img/cart-is-empty.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
 @media (min-width: 320px) and (max-width: 1199px) {
   .list {
     grid-column: span 24;

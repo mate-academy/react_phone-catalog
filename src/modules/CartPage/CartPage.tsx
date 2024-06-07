@@ -12,7 +12,7 @@ const CartPage: FC = () => {
     0,
   );
 
-  return (
+  return cartItems.length ? (
     <div className="container">
       <section className={styles.wrapper}>
         <Heading as="h1" className={styles.heading}>
@@ -33,20 +33,20 @@ const CartPage: FC = () => {
             ))}
           </ul>
 
-          {!!cartItems.length && (
-            <div className={styles.info}>
-              <Heading as="h2" className={styles.price}>
-                ${totalPrice}
-              </Heading>
-              <p className={styles.descr}>Total for {cartItems.length} items</p>
-              <Button variant="primary" className={styles.btn}>
-                Checkout
-              </Button>
-            </div>
-          )}
+          <div className={styles.info}>
+            <Heading as="h2" className={styles.price}>
+              ${totalPrice}
+            </Heading>
+            <p className={styles.descr}>Total for {cartItems.length} items</p>
+            <Button variant="primary" className={styles.btn}>
+              Checkout
+            </Button>
+          </div>
         </div>
       </section>
     </div>
+  ) : (
+    <div className={styles.error} />
   );
 };
 
