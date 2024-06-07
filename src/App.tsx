@@ -8,6 +8,7 @@ import { NotFoundPage } from './components/notFoundPage';
 import { Home } from './components/home';
 import { Tablets } from './components/tablets';
 import { Phones } from './components/phones';
+import { Accessories } from './components/accessories';
 
 export const App = () => {
   const { app } = useContext(ContextApp);
@@ -20,7 +21,7 @@ export const App = () => {
         <Route path="/home" element={<Navigate to="/" replace={true} />} />
         <Route path="/phones" element={<Phones />} />
         <Route path="/tablets" element={<Tablets />} />
-        {/* <Route path="/accessories" element={<Accessories />} /> */}
+        <Route path="/accessories" element={<Accessories />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Outlet />

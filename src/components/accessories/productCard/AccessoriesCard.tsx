@@ -1,37 +1,36 @@
 import React from 'react';
-import styles from './ProductCard.module.scss';
-import { Product } from '../../types/Product';
+import styles from './AccessoriesCard.module.scss';
+import { Accessory } from '../../types/Accessory';
+
 
 interface Props {
-  product: Product;
-  discount: boolean;
+  product: Accessory;
+  discount?: boolean;
 }
 
-export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const { capacity, fullPrice, name, price, ram, screen } = product;
+export const AccessoriesCard: React.FC<Props> = ({ product, discount }) => {
+  const { capacity, priceDiscount, name, priceRegular, ram, screen, images } =
+    product;
 
   return (
     <div className={styles['productCard']}>
-      <img
-        className={styles['productCard__picture']}
-        src={`./${product.image}`}
-      />
+      <img className={styles['productCard__picture']} src={`./${images[0]}`} />
       <p className={styles['productCard__product_name']}>{name}</p>
       {discount ? (
         <>
           <div className={styles['productCard__container']}>
             <span className={styles['productCard__container__price']}>
-              ${price}
+              ${priceDiscount}
             </span>
             <span className={styles['productCard__container__price__reduce']}>
-              ${fullPrice}
+              ${priceRegular}
             </span>
           </div>
         </>
       ) : (
         <div className={styles['productCard__container']}>
           <span className={styles['productCard__container__price']}>
-            ${fullPrice}
+            ${priceRegular}
           </span>
           <span
             className={styles['productCard__container__price__empty']}

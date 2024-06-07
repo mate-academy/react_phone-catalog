@@ -8,35 +8,33 @@ interface Props {
 }
 
 export const PhoneCard: React.FC<Props> = ({ product, discount }) => {
-  const {
-    capacity,
-    priceDiscount,
-    name,
-    priceRegular,
-    ram,
-    screen,
-    images
-  } = product;
+  const { capacity, priceDiscount, name, priceRegular, ram, screen, images } =
+    product;
 
   return (
     <div className={styles['productCard']}>
-      <img
-        className={styles['productCard__picture']}
-        src={`./${images[0]}`}
-      />
+      <img className={styles['productCard__picture']} src={`./${images[0]}`} />
       <p className={styles['productCard__product_name']}>{name}</p>
       {discount ? (
         <>
           <div className={styles['productCard__container']}>
-            <span className={styles['productCard__container__price']}>${priceDiscount}</span>
-            <span className={styles['productCard__container__price__reduce']}>${priceRegular}</span>
+            <span className={styles['productCard__container__price']}>
+              ${priceDiscount}
+            </span>
+            <span className={styles['productCard__container__price__reduce']}>
+              ${priceRegular}
+            </span>
           </div>
         </>
       ) : (
         <div className={styles['productCard__container']}>
-            <span className={styles['productCard__container__price']}>${priceRegular}</span>
-            <span className={styles['productCard__container__price__empty']}></span>
-          </div>
+          <span className={styles['productCard__container__price']}>
+            ${priceRegular}
+          </span>
+          <span
+            className={styles['productCard__container__price__empty']}
+          ></span>
+        </div>
       )}
 
       <div className={styles['productCard__separator']}></div>

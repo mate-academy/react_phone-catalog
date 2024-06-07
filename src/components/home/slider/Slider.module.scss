@@ -1,5 +1,4 @@
 .brand_new_models {
-  // transition: all 0.6s ease-in-out;
 
   &__container {
     display: flex;
@@ -7,7 +6,7 @@
     align-items: center;
     width: 288px;
     height: 62px;
-    margin: auto;
+    margin: 0 auto 24px;
   }
 
   &__title {
@@ -15,7 +14,7 @@
     font-weight: 800;
     width: 136px;
     font-family: 'Montserrat', sans-serif;
-    margin-bottom: 24px;
+
   }
 
   &__button {
@@ -52,5 +51,3 @@
     width: 440px;
   }
 }
-
-;

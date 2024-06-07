@@ -23,7 +23,7 @@ export const Header: React.FC = () => {
 
   const handlerBurgerMenu = () => {
     if (burger.current && app.current && isBurgerClose) {
-      setIsBurgerClose(state => !state)
+      setIsBurgerClose(state => !state);
       burger.current.style.transform = 'translateX(0)';
       document.body.style.overflow = 'hidden';
     } else if (burger.current && app.current && !isBurgerClose) {
@@ -36,7 +36,9 @@ export const Header: React.FC = () => {
   return (
     <header className={styles.header} id="header">
       <div className={styles[`header__container--1`]}>
-        <img src=".\img\svg\header_Logo.svg" className="logo" />
+        <Link to={'/home'}>
+          <img src=".\img\svg\header_Logo.svg" className="logo" />
+        </Link>
       </div>
 
       <div className={styles[`header__container--2`]}>
@@ -59,7 +61,6 @@ export const Header: React.FC = () => {
         </div>
 
         <div ref={burger} className={styles[`header__burger_menu`]}>
-
           <ul className={styles[`header__burger_menu__list`]}>
             <li className={styles[`header__burger_menu__list__element`]}>
               <Link to={'/home'}>home</Link>

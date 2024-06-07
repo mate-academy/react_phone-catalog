@@ -13,7 +13,6 @@ export const Slider: React.FC<Props> = ({ title, discount }) => {
   const { products, productsTotalNumber } = useContext(ContextApp);
   const [active, setActive] = useState(0);
 
-
   const handlerleft = () => {
     if (active < 0) {
       setActive(productsTotalNumber);
@@ -33,7 +32,7 @@ export const Slider: React.FC<Props> = ({ title, discount }) => {
     <>
       <div className={styles['brand_new_models']}>
         <div className={styles['brand_new_models__container']}>
-          <h1 className={styles['brand_new_models__title']}>{title}</h1>
+          <h2 className={styles['brand_new_models__title']}>{title}</h2>
           <div className={styles['brand_new_models__button']}>
             <div
               onClick={handlerleft}

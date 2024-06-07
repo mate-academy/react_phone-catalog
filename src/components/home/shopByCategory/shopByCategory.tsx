@@ -11,7 +11,6 @@ export const ShopByCategory: React.FC = () => {
       <h2 className={styles['title']}>shopByCategory</h2>
 
       <div className={styles['shop_by_category']}>
-        {/* <h2 className={styles['shop_by_category__title']}>shopByCategory</h2> */}
         <Link to="/products" className={styles['shop_by_category__section']}>
           <img
             className={`${styles['shop_by_category__section__picture']} ${styles['shop_by_category__section__picture--products']}`}

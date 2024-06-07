@@ -1,33 +1,33 @@
 import { useContext, useMemo, useState } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
-import style from './Tablets.module.scss';
+import style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
-import { sortBy } from '../../functions/sortBy';
+import { AccessoriesCard } from './productCard';
 import { SortBy } from '../types/SortBy';
-import { TabletCard } from './productCard/TabletCard';
+import { sortBy } from '../../functions/sortBy';
 
-export const Tablets: React.FC = () => {
-  const { tabletsTotalNumber, tablets, products } = useContext(ContextApp);
+export const Accessories: React.FC = () => {
+  const { accessoriesTotalNumber, accessories, products } = useContext(ContextApp);
   const [selectedOption, setSortBy] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
 
-  const sortedPhones = sortBy(products, tablets, selectedOption);
+  const sortedAccessories = sortBy(products, accessories, selectedOption);
 
   const pagesTotalNumber = useMemo(() => {
     if (itemsPerPage === 'all') {
       return 1;
     }
-    return Math.ceil(tabletsTotalNumber / +itemsPerPage);
-  }, [tabletsTotalNumber, itemsPerPage]);
+    return Math.ceil(accessoriesTotalNumber / +itemsPerPage);
+  }, [accessoriesTotalNumber, itemsPerPage]);
 
   const startFromElement = +itemsPerPage * activePage - +itemsPerPage;
-  const endOnElement = Math.min(+itemsPerPage * activePage, tabletsTotalNumber);
+  const endOnElement = Math.min(+itemsPerPage * activePage, accessoriesTotalNumber);
 
-  const tabletsOnPage =
+  const accessoriesOnPage =
     itemsPerPage === 'all'
-      ? sortedPhones
-      : sortedPhones.slice(startFromElement, endOnElement);
+      ? sortedAccessories
+      : sortedAccessories.slice(startFromElement, endOnElement);
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSortBy(e.target.value as SortBy);
@@ -43,20 +43,20 @@ export const Tablets: React.FC = () => {
   };
 
   return (
-    <div className={style['tablets']}>
-      <div className={style['tablets__head']}>
-        <h1 className={style['tablets__head__title']}>Tablets</h1>
-        <p className={style['tablets__head__paragraph']}>
-          {tabletsTotalNumber} models
+    <div className={style['accessories']}>
+      <div className={style['accessories__head']}>
+        <h1 className={style['accessories__head__title']}>accessories</h1>
+        <p className={style['accessories__head__paragraph']}>
+          {accessoriesTotalNumber} models
         </p>
       </div>
 
-      <div className={style['tablets__filters']}>
-        <div className={style['tablets__filters__sort']}>
-          <p className={style['tablets__filters__sort__paragraph']}>Sort by</p>
+      <div className={style['accessories__filters']}>
+        <div className={style['accessories__filters__sort']}>
+          <p className={style['accessories__filters__sort__paragraph']}>Sort by</p>
 
           <select
-            className={style['tablets__filters__sort__select']}
+            className={style['accessories__filters__sort__select']}
             value={selectedOption}
             onChange={handleChangeSort}
           >
@@ -66,13 +66,13 @@ export const Tablets: React.FC = () => {
           </select>
         </div>
 
-        <div className={style['tablets__filters__items']}>
-          <p className={style['tablets__filters__items__paragraph']}>
+        <div className={style['accessories__filters__items']}>
+          <p className={style['accessories__filters__items__paragraph']}>
             Items on page
           </p>
 
           <select
-            className={style['tablets__filters__items__select']}
+            className={style['accessories__filters__items__select']}
             value={itemsPerPage}
             onChange={handleChangeItems}
           >
@@ -84,13 +84,13 @@ export const Tablets: React.FC = () => {
         </div>
       </div>
 
-      <div className={style['tablets__container']}>
-        {tabletsOnPage.map(phone => {
-          return <TabletCard key={phone.id} product={phone} />;
+      <div className={style['accessories__container']}>
+        {accessoriesOnPage.map(accessory => {
+          return <AccessoriesCard key={accessory.id} product={accessory} />;
         })}
       </div>
 
-      <div className={style['tablets__choose_page']}>
+      <div className={style['accessories__choose_page']}>
         <Pagination
           pagesTotalNumber={pagesTotalNumber}
           activePage={activePage}
@@ -100,3 +100,4 @@ export const Tablets: React.FC = () => {
     </div>
   );
 };
+
