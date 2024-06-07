@@ -125,12 +125,6 @@
   font-weight: 700;
 }
 
-@media (min-width: 768px) {
-  .mobileMenu {
-    display: block;
-  }
-}
-
 @media (max-width: 767px) {
   .mobileMenuNavListLink {
     font-size: 12px;

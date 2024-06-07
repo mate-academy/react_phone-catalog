@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
+import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
 import { useProductStore } from '../../../store/store';
@@ -23,7 +24,9 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     id,
   } = product;
 
-  const addToCart = useProductStore(state => state.toggleProductInCart);
+  const toggleProductInCart = useProductStore(
+    state => state.toggleProductInCart,
+  );
   const toggleFavorite = useProductStore(state => state.toggleFavorite);
 
   const cart = useProductStore(state => state.cartItems);
@@ -31,6 +34,21 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
 
   const isInCart = cart.some(item => item.id === product.id);
   const isFavorite = favorites.some(item => item.id === product.id);
+
+  const handleToggleFavorite = (newProduct: Product) => {
+    toggleFavorite(newProduct);
+    toast.message(
+      isFavorite ? 'Removed from Favorites' : 'Added to Favorites',
+      { description: newProduct.name },
+    );
+  };
+
+  const handleToggleCart = (newProduct: Product) => {
+    toggleProductInCart(newProduct);
+    toast.message(isInCart ? 'Removed from Cart' : 'Added to Cart', {
+      description: newProduct.name,
+    });
+  };
 
   return (
     <article className={styles.wrapper}>
@@ -72,14 +90,14 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
 
       <div className={styles.actionsWrapper}>
         <Button
-          onClick={() => addToCart(product)}
+          onClick={() => handleToggleCart(product)}
           variant="primary"
           isSelected={isInCart}
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </Button>
         <Button
-          onClick={() => toggleFavorite(product)}
+          onClick={() => handleToggleFavorite(product)}
           variant="icon"
           size="40px"
         >
