@@ -13,12 +13,7 @@
   line-height: 24px;
 }
 
-.quantity {
-  color: var(--secondary-color);
-  margin-bottom: 40px;
-}
-
-.pagination {
+.navigation {
   display: flex;
   gap: 16px;
   justify-content: center;

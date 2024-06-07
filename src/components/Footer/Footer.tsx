@@ -23,7 +23,11 @@ const Footer = () => {
             >
               github
             </Link>
-            <Link to="#" className={styles.footer__link} target="_blank">
+            <Link
+              to="https://github.com/orgs/FS-MAR24-Code-Busters/people"
+              className={styles.footer__link}
+              target="_blank"
+            >
               contacts
             </Link>
             <Link to="#" className={styles.footer__link} target="_blank">

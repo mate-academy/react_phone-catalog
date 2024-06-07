@@ -4,7 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination } from 'swiper/modules';
+import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import Heading from '../../../UI/Heading/Heading';
 import Product from '../../../types/Product';
 import s from './SliderProducts.module.css';
@@ -37,6 +37,12 @@ const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
     setCurrentPage(prev => Math.min(prev + 1, totalPages));
   };
 
+  const updateCurrentPage = () => {
+    if (swiperRef.current) {
+      setCurrentPage(swiperRef.current.activeIndex / 4 + 1);
+    }
+  };
+
   return (
     <div className={s.content}>
       <div className="container">
@@ -44,7 +50,7 @@ const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
           <Heading className={s.title} as="h2">
             {sliderTitle}
           </Heading>
-          <ul className={s.pagination}>
+          <ul className={s.navigation}>
             <li>
               <Button
                 variant="pagination"
@@ -71,9 +77,15 @@ const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
         <div className="product-slider">
           <Swiper
             onSwiper={swiper => (swiperRef.current = swiper)}
-            modules={[Navigation, Pagination]}
+            onSlideChange={updateCurrentPage}
+            modules={[Navigation, Pagination, Autoplay]}
             spaceBetween={16}
             slidesPerView={4}
+            speed={800}
+            autoplay={{
+              delay: 10000, // Затримка між автоскролом у мілісекундах
+              disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
+            }}
             breakpoints={{
               1200: {
                 slidesPerView: 4,

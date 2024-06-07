@@ -94,10 +94,10 @@ const PhonesPage = () => {
             onChange={handlePerPageChange}
             className={s.select}
           >
+            <option value="all">All</option>
             <option value="4">4 per page</option>
             <option value="8">8 per page</option>
             <option value="16">16 per page</option>
-            <option value="all">All</option>
           </select>
         </div>
         <p className={s.quantity}>{phones.length} models</p>

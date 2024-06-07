@@ -16,7 +16,7 @@ const BrandNewModels = () => {
       const brandNewPhones = res.filter(phone => phone.name.includes(newModel));
 
       setPhones(brandNewPhones);
-      setTotalPages(Math.ceil(brandNewPhones.length / 3));
+      setTotalPages(Math.ceil(brandNewPhones.length / 4));
     });
   }, []);
 
