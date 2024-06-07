@@ -1,6 +1,6 @@
 @use './shared/global/utils/mixins' as *;
 
-.App {
+.page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,7 +8,7 @@
   min-height: 100vh;
 }
 
-.container {
+[class*='__container'] {
   flex-grow: 1;
 
   @include on-desktop {

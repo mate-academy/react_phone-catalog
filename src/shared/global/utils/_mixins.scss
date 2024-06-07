@@ -12,6 +12,12 @@
   }
 }
 
+@mixin on-mobile {
+  @media (min-width: $mobile-min-width) {
+    @content;
+  }
+}
+
 @mixin content-padding-inline {
   padding-inline: 16px;
 
