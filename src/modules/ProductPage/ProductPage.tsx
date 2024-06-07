@@ -12,7 +12,7 @@ import { Product } from '../../types/Product';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { getRandomNumbers } from '../../services/getRandomNumbers';
 import { BackButton } from '../shared/Buttons/MoveButtons';
-import { Route } from '../shared/Route';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { Loader } from '../shared/Loader';
 import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
@@ -124,7 +124,7 @@ export const ProductPage: React.FC = React.memo(() => {
   return (
     <div className="product-page">
       <div className="product-page__route">
-        <Route category={category} name={device?.name} />
+        <Breadcrumbs category={category} name={device?.name} />
       </div>
 
       <div className="product-page__back">

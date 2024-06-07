@@ -25,7 +25,7 @@ type Props = {
 export const ProductListCarousel: React.FC<Props> = React.memo(
   ({ title, products, dataLoaded, discount }) => {
     const { windowSize } = useContext(WindowWidthContext);
-    const widthScrollbar = getWidtScrollbar();
+
     const [currentSize, setCurrentSize] = useState<number>(windowSize);
 
     const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
@@ -33,6 +33,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
 
     const widthCard = getWidthCard(windowSize);
     const padding = getPadding(windowSize);
+    const widthScrollbar = getWidtScrollbar();
 
     const [position, setPosition] = useState(getPadding(windowSize));
     const [imgPosition, setImgPosition] = useState<number>(0);
@@ -60,7 +61,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
       windowSizeSlider +
       widthScrollbar;
 
-    const moveRight = () => {
+    const handleMoveRight = () => {
       if (imgPosition < maxPosition) {
         const newImgPosition = imgPosition + itemsPerStep;
         const newPosition =
@@ -73,7 +74,7 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
       }
     };
 
-    const moveLeft = () => {
+    const handleMoveLeft = () => {
       if (imgPosition > 0) {
         const newImgPosition = imgPosition - itemsPerStep;
         const newPosition =
@@ -100,9 +101,9 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
 
         if (Math.abs(deltaX) > 50) {
           if (deltaX > 0) {
-            moveLeft();
+            handleMoveLeft();
           } else {
-            moveRight();
+            handleMoveRight();
           }
         }
       }
@@ -157,9 +158,9 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
           <h2 className="carousel__title secondary-title">{title}</h2>
 
           <div className="carousel__slider-control">
-            <MoveButton move={moveLeft} disabled={imgPosition <= 0} />
+            <MoveButton move={handleMoveLeft} disabled={imgPosition <= 0} />
             <MoveButton
-              move={moveRight}
+              move={handleMoveRight}
               disabled={imgPosition >= maxPosition}
             />
           </div>

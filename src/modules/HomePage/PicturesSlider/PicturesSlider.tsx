@@ -24,6 +24,7 @@ import { WindowWidthContext } from '../../../store/WindowWidthContext';
 
 export const PicturesSlider: React.FC = React.memo(() => {
   const { windowSize } = useContext(WindowWidthContext);
+
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const [currentSize, setCurrentSize] = useState(windowSize);

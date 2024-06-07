@@ -13,7 +13,7 @@ type Props = {
 export const Dropdown: React.FC<Props> = React.memo(
   ({ title, options, defaultValue, setSelectValue, resetCurrentPage }) => {
     const [openDropdown, setOpenDropdown] = useState(false);
-    const [select, setSelect] = useState(defaultValue);
+    const [selected, setSelected] = useState(defaultValue);
     const [styles, setStyles] = useState<CSSProperties>({
       overflow: 'hidden',
       border: 'none',
@@ -23,8 +23,8 @@ export const Dropdown: React.FC<Props> = React.memo(
     const handleSelectItems = (event: React.MouseEvent<HTMLButtonElement>) => {
       const { value } = event.currentTarget;
 
-      if (value !== select) {
-        setSelect(value);
+      if (value !== selected) {
+        setSelected(value);
         setSelectValue(value);
         resetCurrentPage();
       }
@@ -71,7 +71,7 @@ export const Dropdown: React.FC<Props> = React.memo(
             className="dropdown__selected"
             onClick={() => setOpenDropdown(!openDropdown)}
           >
-            <div className="dropdown__selected-item">{select}</div>
+            <div className="dropdown__selected-item">{selected}</div>
 
             {openDropdown ? (
               <div className="dropdown__move">

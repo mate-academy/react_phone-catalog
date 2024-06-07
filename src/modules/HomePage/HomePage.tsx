@@ -5,22 +5,7 @@ import { ShopByCategory } from './ShopByCategory';
 import { Product } from '../../types/Product';
 import { client } from '../../api';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
-
-function maxDifference(products: Product[], excluded: string) {
-  const result = products
-    .slice()
-    .filter(product => !product.name.toLowerCase().includes(excluded))
-    .sort((product1, product2) => {
-      return (
-        product2.fullPrice -
-        product2.price -
-        (product1.fullPrice - product1.price)
-      );
-    })
-    .slice(0, 10);
-
-  return result;
-}
+import { getMaxDifference } from '../../services/getMaxDifference';
 
 export const HomePage = React.memo(() => {
   const [dataLoaded, setDataLoaded] = useState(false);
@@ -44,15 +29,15 @@ export const HomePage = React.memo(() => {
         setDataLoaded(true);
       })
       .catch(() => {});
-  }, []); // fetch
+  }, []);
 
   const newModels = phones
     .filter(phone => phone.name.toLowerCase().includes(latestPhones))
     .sort((phone1, phone2) => phone2.fullPrice - phone1.fullPrice);
 
-  const hotPricesPhones = maxDifference(phones, latestPhones);
-  const hotPricesTablets = maxDifference(tablets, latestPhones);
-  const hotPricesAccessories = maxDifference(accessories, latestPhones);
+  const hotPricesPhones = getMaxDifference(phones, latestPhones);
+  const hotPricesTablets = getMaxDifference(tablets, latestPhones);
+  const hotPricesAccessories = getMaxDifference(accessories, latestPhones);
 
   const unitHotPricesModels = [
     ...hotPricesPhones,

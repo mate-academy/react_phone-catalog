@@ -1,6 +1,6 @@
 import { useLocation } from 'react-router-dom';
 import { useContext } from 'react';
-import { Route } from '../shared/Route';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { FavoutitesContext } from '../../store/FavouritesContext';
 import { ProductCard } from '../shared/ProductCard';
 import { Loader } from '../shared/Loader';
@@ -15,7 +15,7 @@ export const Favourites = () => {
   return (
     <div className="favourites">
       <div className="favourites__route">
-        <Route category={category} />
+        <Breadcrumbs category={category} />
       </div>
 
       <h1 className="favourites__title primary-title">Favourites</h1>

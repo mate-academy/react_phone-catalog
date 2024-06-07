@@ -12,7 +12,7 @@ import {
 import { getSortProducts } from '../../services/getSortProducts';
 import { Loader } from '../shared/Loader';
 import { Reload } from '../shared/Reload';
-import { Route } from '../shared/Route';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { Pagination } from './Pagination';
 import { scrollToTop } from '../../services/scrollToTop';
@@ -74,7 +74,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   ) : (
     <div className="category-page">
       <div className="category-page__route">
-        <Route category={category} />
+        <Breadcrumbs category={category} />
       </div>
 
       <div className="category-page__title">

@@ -32,8 +32,8 @@ export const ProductCard: React.FC<Props> = React.memo(
     const { windowSize } = useContext(WindowWidthContext);
 
     const { pathname } = useLocation();
-    const isCategory = pathname.includes(category);
-    const isItemId = pathname.split('/')[2];
+    const isCategoryPage = pathname.includes(category);
+    const isProductPage = pathname.split('/')[2];
 
     const specs = { screen, capacity, ram };
 
@@ -63,7 +63,11 @@ export const ProductCard: React.FC<Props> = React.memo(
     };
 
     function getHeightImg() {
-      if (windowSize <= WIDTH_DEVICES.mobile && isCategory && !isItemId) {
+      if (
+        windowSize <= WIDTH_DEVICES.mobile &&
+        isCategoryPage &&
+        !isProductPage
+      ) {
         return { height: `${widthImg}px`, marginBottom: '32px' };
       }
 
@@ -71,7 +75,7 @@ export const ProductCard: React.FC<Props> = React.memo(
     }
 
     function getHeightCard() {
-      if (windowSize <= WIDTH_DEVICES.mobile && isCategory) {
+      if (windowSize <= WIDTH_DEVICES.mobile && isCategoryPage) {
         return { width: `${widthCard}px`, height: 'auto' };
       }
 

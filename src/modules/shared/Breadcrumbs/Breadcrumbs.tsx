@@ -8,7 +8,7 @@ type Props = {
   name?: string;
 };
 
-export const Route: React.FC<Props> = React.memo(({ category, name }) => {
+export const Breadcrumbs: React.FC<Props> = React.memo(({ category, name }) => {
   return (
     <div className="route">
       <Link to="/">
