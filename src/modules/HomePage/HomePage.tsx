@@ -1,4 +1,5 @@
 import Heading from '../../UI/Heading/Heading';
+import { Categories } from './components/Categories/Categories';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 import s from './HomePage.module.css';
 
@@ -12,6 +13,7 @@ const HomePage = () => {
           </Heading>
         </div>
         <PicturesSlider />
+        <Categories />
       </section>
     </>
   );
