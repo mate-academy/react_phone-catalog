@@ -13,8 +13,13 @@
     border: 1px solid $elements;
     padding: 8px;
     cursor: pointer;
+    transition-duration: 0.3s;
 
     @include body-text;
+
+    &:hover {
+      background-color: $elements;
+    }
 
     &-selected {
       background-color: $white;

@@ -38,6 +38,11 @@
     color: $elements;
     text-decoration: none;
     text-transform: capitalize;
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: $surface_2;
+    }
 
     &-white {
       color: $white;

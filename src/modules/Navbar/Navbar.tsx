@@ -1,10 +1,11 @@
 import { Link, useLocation } from 'react-router-dom';
 import styles from './Navbar.module.scss';
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useMemo } from 'react';
 import { DispatchContext, StateContext } from '../../Store';
 import { ColorChange } from './components/ColorChange';
 import { SearchForm } from './components/SearchForm';
+import { getTotalAmount } from '../../utils/getTotalAmount';
 
 export const Navbar = () => {
   const { isMenuOpen, favourites, cart } = useContext(StateContext);
@@ -42,6 +43,8 @@ export const Navbar = () => {
 
     return;
   };
+
+  const totalAmount = useMemo(() => getTotalAmount(cart), [cart]);
 
   return (
     <div className={styles.topBar}>
@@ -112,7 +115,7 @@ export const Navbar = () => {
           to="/cart"
         >
           {!!cart.length && (
-            <span className={styles['topBar__icon-num']}>{cart.length}</span>
+            <span className={styles['topBar__icon-num']}>{totalAmount}</span>
           )}
         </Link>
       </div>

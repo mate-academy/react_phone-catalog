@@ -29,8 +29,13 @@
     padding-top: 16px;
     text-decoration: none;
     color: inherit;
+    transition-duration: 0.3s;
 
     @include body-text;
+
+    &:hover {
+      color: $accent;
+    }
   }
 
   &__prices {

@@ -30,6 +30,11 @@
 
     &-text {
       color: $elements;
+      transition-duration: 0.3s;
+
+      &:hover {
+        color: $white;
+      }
     }
 
     &-button {
@@ -70,5 +75,10 @@
     text-decoration: none;
     color: $white;
     text-align: center;
+
+
+    &:hover {
+      color: $elements;
+    }
   }
 }

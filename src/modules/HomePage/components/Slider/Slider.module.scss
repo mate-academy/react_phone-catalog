@@ -35,6 +35,11 @@
     height: 4px;
     background-color: $elements;
     cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $surface_1;
+    }
 
     &--active {
       background-color: $white;
@@ -67,6 +72,11 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;
+      transition-duration: 0.3s;
+
+      &:hover {
+        background-color: $surface_1;
+      }
     }
 
     &-left {

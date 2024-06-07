@@ -38,6 +38,12 @@
     width: 16px;
     background-image: url('../../../../../public/img/icons/Close_grey.svg');
     background-size: contain;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $surface_2;
+    }
   }
 
   &__image {
@@ -83,10 +89,15 @@
     background-color: $surface_2;
     background-repeat: no-repeat;
     background-position: center;
+    cursor: pointer;
+    color: $white;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $elements;
+    }
 
     @include buttons;
-
-    color: $white;
 
     &:disabled {
       background-color: $surface_1;

@@ -7,6 +7,8 @@
   padding: 20px;
   margin-right: 30px;
   position: relative;
+  cursor: pointer;
+  transition-duration: 0.3s;
 
   &-active, &:hover {
     background-color: $surface-2;
@@ -56,6 +58,7 @@
     text-align: center;
     padding: 10px;
     border-bottom: 1px solid $elements;
+    transition-duration: 0.3s;
 
     &:hover {
       background-color: $surface_1;

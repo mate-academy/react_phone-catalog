@@ -67,13 +67,18 @@
     background-repeat: no-repeat;
     border-left: 1px solid $elements;
     position: relative;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $surface_2;
+    }
 
     @include on-desktop {
       width: 64px;
       height: 64px;
     }
 
-    &:active, &-active {
+    &-active {
       &::after {
         content: '';
         position: absolute;
@@ -155,9 +160,14 @@
       display: flex;
       align-items: center;
       line-height: 48px;
+      transition-duration: 0.3s;
 
       @include on-desktop {
         line-height: 64px;
+      }
+
+      &:hover {
+        color: $white;
       }
 
       &-active {

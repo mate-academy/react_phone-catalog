@@ -12,7 +12,7 @@
       width: 100%;
 
       @include on-desktop {
-        @include hover(transform, scale(1.1));
+        @include hover(transform, scale(1.05));
       }
     }
   }
@@ -25,6 +25,12 @@
     text-decoration: 0;
     color: inherit;
     margin-top: 24px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      color: $surface-2;
+    }
   }
 
   &__numbers {

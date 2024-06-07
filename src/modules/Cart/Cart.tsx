@@ -1,11 +1,12 @@
 import styles from './Cart.module.scss';
-import { useContext, useState } from 'react';
+import { useContext, useMemo, useState } from 'react';
 import { StateContext } from '../../Store';
 import { CartCard } from './components/CartCard';
 import classNames from 'classnames';
 import { Placeholder } from '../components/Placeholder';
 import { Modal } from './components/Modal';
 import { useNavigate } from 'react-router-dom';
+import { getTotalAmount } from '../../utils/getTotalAmount';
 
 export const Cart = () => {
   const { cart } = useContext(StateContext);
@@ -22,16 +23,11 @@ export const Cart = () => {
     );
   };
 
-  const getTotalAmount = () => {
-    return cart.reduce(
-      (accumulator, currentValue) => accumulator + currentValue.amount,
-      0,
-    );
-  };
-
   const goBack = () => {
     navigate(-1);
   };
+
+  const totalAmount = useMemo(() => getTotalAmount(cart), [cart]);
 
   return (
     <>
@@ -68,8 +64,7 @@ export const Cart = () => {
               <div className={styles.cart__price}>
                 <span className={styles.cart__sum}>${getTotalPrice()}</span>
                 <p className={styles.cart__total}>
-                  Total for {getTotalAmount()}{' '}
-                  {cart.length > 1 ? 'items' : 'item'}
+                  Total for {totalAmount} {cart.length > 1 ? 'items' : 'item'}
                 </p>
               </div>
 

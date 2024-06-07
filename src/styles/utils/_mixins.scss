@@ -57,6 +57,8 @@
   border: none;
   color: $white;
   background-color: $accent;
+  cursor: pointer;
+  outline: none;
 
   &:hover {
     background-color: #a378ff;
@@ -70,6 +72,8 @@
   background-position: center;
   background-repeat: no-repeat;
   background-size: 16px;
+  cursor: pointer;
+  outline: none;
 
   &:hover {
     background-color: $icons;

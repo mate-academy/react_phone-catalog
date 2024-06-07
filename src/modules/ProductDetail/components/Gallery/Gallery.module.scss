@@ -14,6 +14,11 @@
     background-repeat: no-repeat;
     background-position: center;
     cursor: pointer;
+    transition-duration: 0.3s;
+
+    @include on-desktop {
+      @include hover(transform, scale(1.1));
+    }
 
     &-main {
       width: 100%;

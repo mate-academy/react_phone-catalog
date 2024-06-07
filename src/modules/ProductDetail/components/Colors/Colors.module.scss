@@ -53,6 +53,11 @@
     border: 2px solid $elements;
     border-radius: 50%;
     cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      border-color: $surface_1;
+    }
 
     &-selected {
       border: 2px solid $white;

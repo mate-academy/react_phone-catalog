@@ -22,6 +22,7 @@
     position: relative;
     text-decoration: none;
     color: $secondary;
+    transition-duration: 0.3s;
   }
 
   &__link:hover {

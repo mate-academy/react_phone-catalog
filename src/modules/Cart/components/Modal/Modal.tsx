@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import styles from './Modal.module.scss';
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { DispatchContext } from '../../../../Store';
 
 type Props = {
@@ -18,6 +18,36 @@ export const Modal: React.FC<Props> = ({ setIsModalOpen }) => {
     dispatch({ type: 'clearCart' });
     setIsModalOpen(false);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [setIsModalOpen]);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const modalElement = document.querySelector(`.${styles.modal}`);
+
+      if (modalElement && !modalElement.contains(event.target as Node)) {
+        setIsModalOpen(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [setIsModalOpen]);
 
   return (
     <div className={styles.modal}>
