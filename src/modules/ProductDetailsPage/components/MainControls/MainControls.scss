@@ -1,0 +1,77 @@
+@import '../../../../styles/main';
+
+.mainControls {
+
+  &__variables {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__detail {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-color);
+  }
+
+  &__price {
+    padding-top: 32px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__fullPrice {
+    font-family: Mont-Regular, sans-serif;
+    font-size: 22px;
+    line-height: 26px;
+    letter-spacing: 0;
+    color: var(--secondary-text-color);
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    padding-top: 16px;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cartButton {
+    height: 48px;
+    width: 100%;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border: 0;
+
+    @include hover(box-shadow, 0 2px 16px 0 rgba(49, 57, 60, 0.32))
+  }
+
+  &__favButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 48px;
+    min-width: 48px;
+    border: 1px solid var(--icons-color);
+    background-color: var(--main-bg-color);
+
+    @include hover(border-color, var(--main-text-color))
+  }
+
+  &__info {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+.buttons {
+  &--active {
+    color: var(--green);
+    border: 1px solid var(--elements-color);
+    background-color: var(--main-bg-color);
+  }
+}

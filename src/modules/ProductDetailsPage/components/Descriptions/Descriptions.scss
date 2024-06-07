@@ -1,0 +1,35 @@
+@import '../../../../styles/main';
+
+.descriptions {
+  &__title {
+    padding-bottom: 16px;
+    font-family: Mont-Bold, sans-serif;
+    font-size: 22px;
+    line-height: 31px;
+    letter-spacing: 0;
+  }
+
+  &__detail {
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: var(--elements-color);
+  }
+
+  &__content {
+    padding-top: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__paragraph {
+    color: var(--secondary-text-color);
+  }
+}
