@@ -12,11 +12,14 @@
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
+    "react-content-loader": "^7.0.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
     "react-transition-group": "^4.4.5",
-    "swiper": "^11.1.4"
+    "sonner": "^1.4.41",
+    "swiper": "^11.1.4",
+    "zustand": "^4.5.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",

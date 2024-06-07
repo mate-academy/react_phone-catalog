@@ -2,6 +2,7 @@ import Heading from '../../UI/Heading/Heading';
 import BrandNewModels from '../BrandNewModels/BrandNewModels';
 import HotPrices from '../HotPrices/HotPrices';
 import s from './HomePage.module.css';
+import { Categories } from './components/Categories/Categories';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 
 const HomePage = () => {
@@ -15,9 +16,7 @@ const HomePage = () => {
         </div>
         <PicturesSlider />
         <BrandNewModels />
-        <div className="container">
-          <div>Shop by category</div>
-        </div>
+        <Categories />
         <HotPrices />
       </section>
     </>
