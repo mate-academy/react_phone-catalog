@@ -3,9 +3,9 @@ import './App.css';
 
 import { RouterProvider, createHashRouter } from 'react-router-dom';
 
-import Layout from './Layout/Layout';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import { ROUTES } from './constants/ROUTES';
+import Layout from './layout/Layout';
 import AccessoriesPage from './modules/AccessoriesPage/PhonesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';

@@ -1,8 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
 import Heading from '../../UI/Heading/Heading';
-import { useProductStore } from '../../store/store';
+import { getPhones } from '../../api/getProduct';
+import Product from '../../types/Product';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
@@ -10,9 +11,10 @@ import ProductsList from '../shared/ProductsList/ProductsList';
 import s from './PhonesPage.module.css';
 
 const PhonesPage = () => {
+  const [phones, setPhones] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
-
-  const { phones, fetchPhones, isLoading } = useProductStore();
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,18 +30,31 @@ const PhonesPage = () => {
   const [currentPage, setCurrentPage] = useState(Number(initialPage));
   const [sortOption, setSortOption] = useState(initialSort);
 
+  const fetchPhones = useCallback(async () => {
+    try {
+      setIsLoading(true);
+      setIsError(false);
+      const phonesData = await getPhones();
+
+      setPhones(phonesData);
+    } catch (error) {
+      setIsError(true);
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
   useEffect(() => {
     fetchPhones();
   }, [fetchPhones]);
 
   useEffect(() => {
-    // eslint-disable-next-line @typescript-eslint/no-shadow
-    const queryParams = new URLSearchParams();
+    const newQueryParams = new URLSearchParams();
 
-    queryParams.append('sort', sortOption);
-    queryParams.append('page', currentPage.toString());
-    queryParams.append('perPage', perPage.toString());
-    navigate(`?${queryParams.toString()}`);
+    newQueryParams.append('sort', sortOption);
+    newQueryParams.append('page', currentPage.toString());
+    newQueryParams.append('perPage', perPage.toString());
+    navigate(`?${newQueryParams.toString()}`);
   }, [currentPage, perPage, sortOption, navigate]);
 
   const handlePageChange = (page: number) => {
@@ -97,6 +112,8 @@ const PhonesPage = () => {
         </Heading>
         {isLoading ? (
           <Loader />
+        ) : isError ? (
+          <p>Error loading phones. Please try again later.</p>
         ) : (
           <>
             <div>
@@ -125,7 +142,6 @@ const PhonesPage = () => {
               products={paginatedPhones}
               isChangingPage={isChangingPage}
             />
-
             <div className={s.pagination}>
               {typeof perPage === 'number' && phones.length > perPage && (
                 <Pagination

@@ -4,7 +4,8 @@ import { FC } from 'react';
 import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
-import { useProductStore } from '../../../store/store';
+import { useCartStore } from '../../../store/cartStore';
+import { useFavoritesStore } from '../../../store/favoritesStore';
 import Product from '../../../types/Product';
 import styles from './ProductCard.module.css';
 
@@ -32,15 +33,13 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     ? ROUTES.PRODUCT_DETAIL.replace(':productId', id)
     : ROUTES.PHONES + '/' + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
-  const {
-    toggleProductInCart,
-    toggleFavorite,
-    cartItems: cart,
-    favorites,
-  } = useProductStore(state => ({
+  const { toggleProductInCart, cartItems: cart } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
-    toggleFavorite: state.toggleFavorite,
     cartItems: state.cartItems,
+  }));
+
+  const { toggleFavorite, favorites } = useFavoritesStore(state => ({
+    toggleFavorite: state.toggleFavorite,
     favorites: state.favorites,
   }));
 

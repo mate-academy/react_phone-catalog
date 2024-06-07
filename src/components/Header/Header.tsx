@@ -4,15 +4,16 @@ import classNames from 'classnames';
 import { useState } from 'react';
 import Button from '../../UI/Buttons/Button';
 import { ROUTES } from '../../constants/ROUTES';
-import { useProductStore } from '../../store/store';
+import { useCartStore } from '../../store/cartStore';
+import { useFavoritesStore } from '../../store/favoritesStore';
 import { MobileMenu } from '../BurgerMenu';
 import styles from './Header.module.css';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
 
-  const cart = useProductStore(state => state.cartItems);
-  const favorites = useProductStore(state => state.favorites);
+  const cart = useCartStore(state => state.cartItems);
+  const favorites = useFavoritesStore(state => state.favorites);
 
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.link, {
