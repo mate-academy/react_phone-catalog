@@ -68,10 +68,7 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
         <Link to={productLink} className={styles.imgWrapper}>
           <img src={images[0]} alt={name} className={styles.image} />
         </Link>
-        <Link
-          to={ROUTES.PRODUCT_DETAIL.replace(':productId', id)}
-          className={styles.descr}
-        >
+        <Link to={productLink} className={styles.descr}>
           {name}
         </Link>
         <p className={styles.prices}>
