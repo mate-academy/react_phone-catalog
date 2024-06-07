@@ -15,7 +15,7 @@ export const Categories = () => {
               className={`${s.categoryBackground} ${s.phonesBackgroundColor}`}
             >
               <img
-                src={`img/category-phonesg.png`}
+                src={`img/category-phones.png`}
                 alt={`Category mobile phones`}
                 className={`${s.categoryImage}`}
               />
