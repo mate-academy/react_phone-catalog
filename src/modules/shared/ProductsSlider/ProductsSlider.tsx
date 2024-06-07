@@ -25,26 +25,26 @@ export const ProductsSlider: React.FC<Props> = ({
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cardWidth, setCardWidth] = useState(212);
 
+  const changeListWidth = () => {
+    const width = window.innerWidth;
+
+    if (width < 640) {
+      setCardWidth(212);
+      setPerPage(1);
+    }
+
+    if (width >= 640 && width < 1200) {
+      setCardWidth(237);
+      setPerPage(2);
+    }
+
+    if (width >= 1200) {
+      setCardWidth(272);
+      setPerPage(4);
+    }
+  };
+
   useEffect(() => {
-    const changeListWidth = () => {
-      const width = window.innerWidth;
-
-      if (width < 640) {
-        setCardWidth(212);
-        setPerPage(1);
-      }
-
-      if (width >= 640 && width < 1200) {
-        setCardWidth(237);
-        setPerPage(2);
-      }
-
-      if (width >= 1200) {
-        setCardWidth(272);
-        setPerPage(4);
-      }
-    };
-
     changeListWidth();
     window.addEventListener('resize', changeListWidth);
 

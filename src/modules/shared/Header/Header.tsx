@@ -1,7 +1,7 @@
 import './Header.scss';
 import { Link, NavLink, useLocation } from 'react-router-dom';
 import { Navbar } from '../Navbar';
-import React, { useContext, useState } from 'react';
+import React, { SetStateAction, useContext } from 'react';
 import { AsideMenu } from '../AsideMenu';
 import { StateContext } from '../../../contexts/AppContext/AppContext';
 import { getLinkClass } from '../../../helpers/getLinkClass';
@@ -13,10 +13,14 @@ import { getIconSrc } from '../../../helpers/getIconSrc';
 import { SearchBar } from './components/SearchBar';
 import { scrollToTop } from '../../../helpers/scrollToTop';
 
-export const Header: React.FC = () => {
+type Props = {
+  isOpenMenu: boolean;
+  setIsOpenMenu: React.Dispatch<SetStateAction<boolean>>;
+};
+
+export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
   const { favorites, cart } = useContext(StateContext);
   const { theme, toggleTheme } = useContext(ThemeContext);
-  const [isOpenMenu, setIsOpenMenu] = useState<boolean>(false);
   const location = useLocation();
 
   const handleMenu = () => {
