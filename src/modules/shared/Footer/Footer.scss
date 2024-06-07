@@ -44,9 +44,7 @@
       color: var(--secondary-text-color);
       text-decoration: none;
 
-      &:hover {
-        color: var(--main-text-color);
-      }
+      @include hover(color, var(--main-text-color));
     }
   }
 
@@ -68,6 +66,8 @@
     background-color: unset;
     color: var(--secondary-text-color);
     cursor: pointer;
+    
+    @include hover(color, var(--main-text-color));
 
     &-icon {
       display: flex;

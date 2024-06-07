@@ -97,7 +97,9 @@
         }
       }
 
-      @include hover(background-color, var(--hover-bg));
+      &:hover {
+        background-color: var(--hover-bg);
+      }
     }
   }
 
