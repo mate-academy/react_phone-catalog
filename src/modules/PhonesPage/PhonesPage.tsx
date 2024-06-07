@@ -10,6 +10,8 @@ import ProductsList from '../shared/ProductsList/ProductsList';
 import s from './PhonesPage.module.css';
 
 const PhonesPage = () => {
+  const [isChangingPage, setIsChangingPage] = useState(false);
+
   const { phones, fetchPhones, isLoading } = useProductStore();
 
   const navigate = useNavigate();
@@ -41,19 +43,31 @@ const PhonesPage = () => {
   }, [currentPage, perPage, sortOption, navigate]);
 
   const handlePageChange = (page: number) => {
-    setCurrentPage(page);
+    setIsChangingPage(true);
+    setTimeout(() => {
+      setCurrentPage(page);
+      setIsChangingPage(false);
+    }, 800);
   };
 
   const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setIsChangingPage(true);
     setSortOption(e.target.value);
     setCurrentPage(1);
+    setTimeout(() => {
+      setIsChangingPage(false);
+    }, 800);
   };
 
   const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setIsChangingPage(true);
     const value = e.target.value === 'all' ? 'all' : Number(e.target.value);
 
     setPerPage(value);
     setCurrentPage(1);
+    setTimeout(() => {
+      setIsChangingPage(false);
+    }, 800);
   };
 
   const sortedPhones = phones.slice().sort((a, b) => {
@@ -107,7 +121,10 @@ const PhonesPage = () => {
               </select>
             </div>
             <p className={s.quantity}>{phones.length} models</p>
-            <ProductsList products={paginatedPhones} />
+            <ProductsList
+              products={paginatedPhones}
+              isChangingPage={isChangingPage}
+            />
 
             <div className={s.pagination}>
               {typeof perPage === 'number' && phones.length > perPage && (
