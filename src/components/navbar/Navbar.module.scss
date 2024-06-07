@@ -8,12 +8,30 @@
   justify-content: space-between;
   height: 48px;
 
-  @include on-tablet {
-    width: 100%;
-  }
-
   @include on-desktop {
     height: 64px;
+  }
+
+  &__footer {
+    flex-direction: column;
+
+    @include on-desktop {
+      flex-direction: row;
+    }
+
+    &_ul {
+      flex-direction: column;
+
+      @include on-tablet {
+        display: flex;
+        flex-direction: row;
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
   }
 
   &__items {

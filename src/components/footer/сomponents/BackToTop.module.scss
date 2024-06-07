@@ -1,0 +1,12 @@
+@import '../../../shared/global/utils/vars';
+
+.toTopBtn {
+  display: flex;
+  gap: 16px;
+
+  border: 0;
+  background-color: inherit;
+  color: $secondary-text-color;
+
+  cursor: pointer;
+}

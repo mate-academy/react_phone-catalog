@@ -29,7 +29,7 @@ export const Header = () => {
               to="/favourites"
               className={({ isActive }) =>
                 classNames(styles.header__button, {
-                  [styles.header__itemlink_active]: isActive,
+                  [styles.header__button_active]: isActive,
                 })
               }
             >
