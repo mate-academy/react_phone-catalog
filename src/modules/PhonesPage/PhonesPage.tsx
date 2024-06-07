@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
+
 import Heading from '../../UI/Heading/Heading';
-import { getPhones } from '../../api/getProduct';
-import Product from '../../types/Product';
+import { useProductStore } from '../../store/store';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Loader from '../shared/Loader/Loader';
+import Pagination from '../shared/Pagination/Pagination';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import s from './PhonesPage.module.css';
-import Pagination from '../shared/Pagination/Pagination';
 
 const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const { phones, fetchPhones, isLoading } = useProductStore();
+
   const navigate = useNavigate();
   const location = useLocation();
 
   const queryParams = new URLSearchParams(location.search);
   const initialSort = queryParams.get('sort') || 'newest';
-  const initialPerPage = queryParams.get('perPage') || '4';
+  const initialPerPage = queryParams.get('perPage') || '8';
   const initialPage = queryParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -25,8 +27,8 @@ const PhonesPage = () => {
   const [sortOption, setSortOption] = useState(initialSort);
 
   useEffect(() => {
-    getPhones().then(setPhones);
-  }, []);
+    fetchPhones();
+  }, [fetchPhones]);
 
   useEffect(() => {
     // eslint-disable-next-line @typescript-eslint/no-shadow
@@ -79,40 +81,46 @@ const PhonesPage = () => {
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
-        <div>
-          <select
-            value={sortOption}
-            onChange={handleSortChange}
-            className={s.select}
-          >
-            <option value="newest">Newest</option>
-            <option value="alphabetically">Alphabetically</option>
-            <option value="cheapest">Cheapest</option>
-          </select>
-          <select
-            value={perPage === 'all' ? 'all' : perPage.toString()}
-            onChange={handlePerPageChange}
-            className={s.select}
-          >
-            <option value="4">4 per page</option>
-            <option value="8">8 per page</option>
-            <option value="16">16 per page</option>
-            <option value="all">All</option>
-          </select>
-        </div>
-        <p className={s.quantity}>{phones.length} models</p>
-        <ProductsList products={paginatedPhones} />
+        {isLoading ? (
+          <Loader />
+        ) : (
+          <>
+            <div>
+              <select
+                value={sortOption}
+                onChange={handleSortChange}
+                className={s.select}
+              >
+                <option value="newest">Newest</option>
+                <option value="alphabetically">Alphabetically</option>
+                <option value="cheapest">Cheapest</option>
+              </select>
+              <select
+                value={perPage === 'all' ? 'all' : perPage.toString()}
+                onChange={handlePerPageChange}
+                className={s.select}
+              >
+                <option value="4">4 per page</option>
+                <option value="8">8 per page</option>
+                <option value="16">16 per page</option>
+                <option value="all">All</option>
+              </select>
+            </div>
+            <p className={s.quantity}>{phones.length} models</p>
+            <ProductsList products={paginatedPhones} />
 
-        <div className={s.pagination}>
-          {typeof perPage === 'number' && phones.length > perPage && (
-            <Pagination
-              total={sortedPhones.length}
-              currentPage={currentPage}
-              perPage={perPage}
-              onPageChange={handlePageChange}
-            />
-          )}
-        </div>
+            <div className={s.pagination}>
+              {typeof perPage === 'number' && phones.length > perPage && (
+                <Pagination
+                  total={sortedPhones.length}
+                  currentPage={currentPage}
+                  perPage={perPage}
+                  onPageChange={handlePageChange}
+                />
+              )}
+            </div>
+          </>
+        )}
       </div>
     </div>
   );
