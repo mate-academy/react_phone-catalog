@@ -123,7 +123,11 @@ export const MobileMenu: React.FC<Props> = ({
             </Button>
           </NavLink>
 
-          <NavLink to={ROUTES.CART} className={getIconLinkStatus}>
+          <NavLink
+            to={ROUTES.CART}
+            className={getIconLinkStatus}
+            onClick={() => setIsMenuShown(false)}
+          >
             <Button size={[16, 16]}>
               <img src="img/icons/cart-icon.svg" alt="" />
               {!!cart.length && (
