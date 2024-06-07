@@ -10,6 +10,7 @@ $padding-top: 8px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  box-sizing: border-box;
   width: 272px;
   height: 506px;
   border: 1px solid $elements-color;
@@ -21,7 +22,6 @@ $padding-top: 8px;
   object-fit: contain;
   padding-top: 32px;
   transition: $transition-duration;
- 
 
   &:hover {
     transform: scale(110%);
@@ -30,6 +30,7 @@ $padding-top: 8px;
 
 .productDescription {
   padding-top: 24px;
+  min-height: 42px;
   width: $card-item-width;
   color: $primary-color;
   font-family: Mont, Helvetica, sans-serif;
@@ -126,7 +127,7 @@ $padding-top: 8px;
   transition: $transition-duration;
 
   &:hover {
-    box-shadow: 0px 3px 13px 0px #17203166;
+    box-shadow: 0 3px 13px 0 #17203166;
   }
 }
 
@@ -160,5 +161,61 @@ $padding-top: 8px;
 
   &:hover {
     background: url(../../../../../public/img/icons/Buttons/add-to-fovourites-added.svg);
+  }
+}
+
+@include on-tablet {
+  $card-item-width: 173px;
+
+  .productCard {
+    width: 237px;
+    height: 512px;
+  }
+
+  .productPhoto {
+    height: 181px;
+  }
+
+  .productPhoto,
+  .productDescription,
+  .productPriceContainer,
+  .divider,
+  .techCharacteristicsContainer,
+  .btnsContainer {
+    width: $card-item-width;
+  }
+
+  .addToCardBtn {
+    width: 125px;
+  }
+}
+
+@include on-mobile {
+  $card-item-width: 148px;
+
+  .productDescription {
+    min-height: 63px;
+  }
+
+  .productCard {
+    width: 212px;
+    height: 439px;
+  }
+
+  .productPhoto {
+    height: 108px;
+  }
+
+  .productPhoto,
+  .productDescription,
+  .productPriceContainer,
+  .divider,
+  .techCharacteristicsContainer,
+  .btnsContainer {
+    width: $card-item-width;
+  }
+
+  .addToCardBtn {
+    width: 100px;
   }
 }

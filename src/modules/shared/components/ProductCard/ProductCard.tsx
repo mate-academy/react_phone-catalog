@@ -1,8 +1,13 @@
 import { useState } from 'react';
 import styles from './ProductCard.module.scss';
 import classNames from 'classnames';
+import { Product } from '../../types';
 
-export const ProductCard = () => {
+type Props = {
+  product: Product;
+};
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
 
@@ -17,18 +22,16 @@ export const ProductCard = () => {
   return (
     <div className={styles.productCard}>
       <img
-        src="./img/phones/apple-iphone-xs-max/silver/00.webp"
+        src={`./${product.image}`}
         alt="product photo"
         className={styles.productPhoto}
       />
 
-      <p className={styles.productDescription}>
-        Apple iPhone Xs 64GB Silver (iMT9G2FS/A)
-      </p>
+      <p className={styles.productDescription}>{product.name}</p>
 
       <div className={styles.productPriceContainer}>
-        <h3 className={styles.productPrice}>$799</h3>
-        <p className={styles.productDiscount}>$899</p>
+        <h3 className={styles.productPrice}>{product.price}</h3>
+        <p className={styles.productDiscount}>{product.fullPrice}</p>
       </div>
 
       <div className={styles.divider}></div>
@@ -36,15 +39,15 @@ export const ProductCard = () => {
       <div className={styles.techCharacteristicsContainer}>
         <div className={styles.characteristic}>
           <p className={styles.characteristicTitle}>Screen</p>
-          <p className={styles.characteristicValue}>5.8” OLED</p>
+          <p className={styles.characteristicValue}>{product.screen}</p>
         </div>
         <div className={styles.characteristic}>
           <p className={styles.characteristicTitle}>Capacity</p>
-          <p className={styles.characteristicValue}>64 GB</p>
+          <p className={styles.characteristicValue}>{product.capacity}</p>
         </div>
         <div className={styles.characteristic}>
           <p className={styles.characteristicTitle}>RAM</p>
-          <p className={styles.characteristicValue}>4 GB</p>
+          <p className={styles.characteristicValue}>{product.ram}</p>
         </div>
       </div>
 

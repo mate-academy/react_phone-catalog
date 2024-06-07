@@ -33,10 +33,7 @@ $slider-image-num: 3;
   height: 100%;
   width: $slider-image-width * $slider-image-num;
 
-  transition: translate;
-  transition-property: transform;
-  transition-duration: 300ms;
-  transition-timing-function: ease-in-out;
+  @include slider-trasition;
 }
 
 .btn {
@@ -137,7 +134,7 @@ $slider-image-num: 3;
 
   .sliderImg {
     width: $slider-image-width-tablet;
-  } 
+  }
 }
 
 @include on-mobile {
@@ -163,5 +160,5 @@ $slider-image-num: 3;
 
   .sliderImg {
     width: $slider-image-width-mobile;
-  } 
+  }
 }
