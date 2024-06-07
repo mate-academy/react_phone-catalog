@@ -10,14 +10,15 @@ const Skeleton = () => (
     backgroundColor="#f3f3f3"
     foregroundColor="#d1d1d1"
   >
-    <rect x="32" y="0" rx="0" ry="0" width="210" height="196" />
-    <rect x="32" y="220" rx="0" ry="0" width="210" height="41" />
+    <rect x="32" y="5" rx="0" ry="0" width="210" height="225" />
     <rect x="32" y="284" rx="0" ry="0" width="120" height="25" />
-    <rect x="32" y="322" rx="0" ry="0" width="204" height="14" />
-    <rect x="32" y="345" rx="0" ry="0" width="204" height="14" />
-    <rect x="32" y="369" rx="0" ry="0" width="204" height="14" />
-    <rect x="33" y="414" rx="0" ry="0" width="140" height="40" />
-    <rect x="195" y="415" rx="0" ry="0" width="40" height="40" />
+    <rect x="32" y="365" rx="0" ry="0" width="204" height="14" />
+    <rect x="32" y="390" rx="0" ry="0" width="204" height="14" />
+    <rect x="32" y="415" rx="0" ry="0" width="204" height="14" />
+    <rect x="33" y="440" rx="0" ry="0" width="155" height="40" />
+    <rect x="195" y="440" rx="0" ry="0" width="37" height="40" />
+    <rect x="32" y="245" rx="0" ry="0" width="210" height="30" />
+    <rect x="32" y="328" rx="0" ry="0" width="210" height="1" />
   </ContentLoader>
 );
 

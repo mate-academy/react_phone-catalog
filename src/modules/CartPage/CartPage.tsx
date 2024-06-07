@@ -1,12 +1,12 @@
 import { FC } from 'react';
+import Button from '../../UI/Buttons/Button';
 import Heading from '../../UI/Heading/Heading';
-import { useProductStore } from '../../store/store';
+import { useCartStore } from '../../store/cartStore';
 import styles from './CartPage.module.css';
 import CartItem from './components/CartItem';
-import Button from '../../UI/Buttons/Button';
 
 const CartPage: FC = () => {
-  const cartItems = useProductStore(state => state.cartItems);
+  const cartItems = useCartStore(state => state.cartItems);
   const totalPrice = cartItems.reduce(
     (price, cartItem) => price + cartItem.priceDiscount,
     0,
