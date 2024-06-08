@@ -1,0 +1,48 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.goods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @include header-2;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__button_left {
+    transform: rotate(-90deg);
+  }
+
+  &__button_right {
+    transform: rotate(90deg);
+  }
+
+  &__cards_wrapper {
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
