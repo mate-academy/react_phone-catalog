@@ -1,7 +1,11 @@
 @use '../utils/mixins' as *;
 @use '../utils/vars.scss' as *;
 @use '../utils/fonts.scss' as *;
-@use '../utils/typography' as *;
+
+* {
+  padding: 0;
+  margin: 0;
+}
 
 body {
   scroll-behavior: smooth;
