@@ -5,9 +5,15 @@ import { Pagination } from '../../pagination';
 import { AccessoriesCard } from './productCard';
 import { SortBy } from '../types/SortBy';
 import { sortBy } from '../../functions/sortBy';
+import { Skeleton } from '../../skeletons/Skelton.tsx';
 
 export const Accessories: React.FC = () => {
-  const { accessoriesTotalNumber, accessories, products } = useContext(ContextApp);
+  const {
+    accessoriesTotalNumber,
+    isLoadingAccessories,
+    accessories,
+    products,
+  } = useContext(ContextApp);
   const [selectedOption, setSortBy] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
@@ -22,7 +28,10 @@ export const Accessories: React.FC = () => {
   }, [accessoriesTotalNumber, itemsPerPage]);
 
   const startFromElement = +itemsPerPage * activePage - +itemsPerPage;
-  const endOnElement = Math.min(+itemsPerPage * activePage, accessoriesTotalNumber);
+  const endOnElement = Math.min(
+    +itemsPerPage * activePage,
+    accessoriesTotalNumber,
+  );
 
   const accessoriesOnPage =
     itemsPerPage === 'all'
@@ -44,60 +53,64 @@ export const Accessories: React.FC = () => {
 
   return (
     <div className={style['accessories']}>
-      <div className={style['accessories__head']}>
-        <h1 className={style['accessories__head__title']}>accessories</h1>
-        <p className={style['accessories__head__paragraph']}>
-          {accessoriesTotalNumber} models
-        </p>
-      </div>
+      {isLoadingAccessories && <Skeleton />}
 
-      <div className={style['accessories__filters']}>
-        <div className={style['accessories__filters__sort']}>
-          <p className={style['accessories__filters__sort__paragraph']}>Sort by</p>
+      {!isLoadingAccessories && (
+        <>
+          <div className={style['accessories__head']}>
+            <h1 className={style['accessories__head__title']}>Accessories</h1>
+            <p className={style['accessories__head__paragraph']}>
+              {accessoriesTotalNumber} models
+            </p>
+          </div>
+          <div className={style['accessories__filters']}>
+            <div className={style['accessories__filters__sort']}>
+              <p className={style['accessories__filters__sort__paragraph']}>
+                Sort by
+              </p>
 
-          <select
-            className={style['accessories__filters__sort__select']}
-            value={selectedOption}
-            onChange={handleChangeSort}
-          >
-            <option value="newest">Newest</option>
-            <option value="alphabetical">Alphabetically</option>
-            <option value="cheapest">Cheapest</option>
-          </select>
-        </div>
+              <select
+                className={style['accessories__filters__sort__select']}
+                value={selectedOption}
+                onChange={handleChangeSort}
+              >
+                <option value="newest">Newest</option>
+                <option value="alphabetical">Alphabetically</option>
+                <option value="cheapest">Cheapest</option>
+              </select>
+            </div>
 
-        <div className={style['accessories__filters__items']}>
-          <p className={style['accessories__filters__items__paragraph']}>
-            Items on page
-          </p>
+            <div className={style['accessories__filters__items']}>
+              <p className={style['accessories__filters__items__paragraph']}>
+                Items on page
+              </p>
 
-          <select
-            className={style['accessories__filters__items__select']}
-            value={itemsPerPage}
-            onChange={handleChangeItems}
-          >
-            <option value="all">All</option>
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-          </select>
-        </div>
-      </div>
-
-      <div className={style['accessories__container']}>
-        {accessoriesOnPage.map(accessory => {
-          return <AccessoriesCard key={accessory.id} product={accessory} />;
-        })}
-      </div>
-
-      <div className={style['accessories__choose_page']}>
-        <Pagination
-          pagesTotalNumber={pagesTotalNumber}
-          activePage={activePage}
-          onPageChange={handlePageChange}
-        />
-      </div>
+              <select
+                className={style['accessories__filters__items__select']}
+                value={itemsPerPage}
+                onChange={handleChangeItems}
+              >
+                <option value="all">All</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+              </select>
+            </div>
+          </div>
+          <div className={style['accessories__container']}>
+            {accessoriesOnPage.map(accessory => {
+              return <AccessoriesCard key={accessory.id} product={accessory} />;
+            })}
+          </div>
+          <div className={style['accessories__choose_page']}>
+            <Pagination
+              pagesTotalNumber={pagesTotalNumber}
+              activePage={activePage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
-

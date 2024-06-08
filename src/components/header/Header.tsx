@@ -33,6 +33,14 @@ export const Header: React.FC = () => {
     }
   };
 
+  const handleClick = () => {
+    if (burger.current && app.current && !isBurgerClose) {
+      setIsBurgerClose(state => !state);
+      burger.current.style.transform = 'translateX(+100%)';
+      document.body.style.overflow = 'visible';
+    }
+  };
+
   return (
     <header className={styles.header} id="header">
       <div className={styles[`header__container--1`]}>
@@ -63,22 +71,22 @@ export const Header: React.FC = () => {
         <div ref={burger} className={styles[`header__burger_menu`]}>
           <ul className={styles[`header__burger_menu__list`]}>
             <li className={styles[`header__burger_menu__list__element`]}>
-              <Link to={'/home'}>home</Link>
+              <Link onClick={handleClick} to={'/home'}>home</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              <Link to={'/phones'}>phones</Link>
+              <Link onClick={handleClick} to={'/phones'}>phones</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              <Link to={'/Tablets'}>tablets</Link>
+              <Link onClick={handleClick} to={'/Tablets'}>tablets</Link>
             </li>
             <li className={styles[`header__burger_menu__list__element`]}>
-              <Link to={'/accessories'}>accessories</Link>
+              <Link onClick={handleClick} to={'/accessories'}>accessories</Link>
             </li>
           </ul>
 
           <div className={styles[`header__burger_menu__footer`]}>
-            <div className={styles[`header__burger_menu__footer__fav`]}></div>
-            <div className={styles[`header__burger_menu__footer__cart`]}></div>
+            <div onClick={handleClick} className={styles[`header__burger_menu__footer__fav`]}></div>
+            <div onClick={handleClick} className={styles[`header__burger_menu__footer__cart`]}></div>
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import styles from './SectionDashSlider.module.scss';
+import Styles from './SectionDashSlider.module.scss';
 
 export const SectionDashSlider: React.FC = () => {
   const [active, setActive] = useState(1);
@@ -39,42 +39,42 @@ export const SectionDashSlider: React.FC = () => {
   };
 
   return (
-    <section className={styles['slider']}>
-      <h1 className={styles['slider__title']}>
+    <section className={Styles['slider']}>
+      <h1 className={Styles['slider__title']}>
         Welcome to Nice Gadgets store!
       </h1>
       <div
         onTouchStart={handlerTouchStart}
         onTouchEnd={handlerTouchEnd}
         onTouchMove={handlerTouchMove}
-        className={styles['slider__container']}
+        className={Styles['slider__container']}
         style={{
           transform: `translateX(-${active * 100}%)`,
           transition: 'transform 0.5s ease-in-out',
         }}
       >
         <img
-          className={`${styles.slider__pic} ${styles['slider__pic--1']}`}
+          className={`${Styles.slider__pic} ${Styles['slider__pic--1']}`}
           src=".\img\phones\apple-iphone-14-pro\spaceblack\00.webp"
           alt="Gadget 1"
         />
         <img
-          className={`${styles.slider__pic} ${styles['slider__pic--2']}`}
+          className={`${Styles.slider__pic} ${Styles['slider__pic--2']}`}
           src=".\img\phones\apple-iphone-14-pro\spaceblack\01.webp"
           alt="Gadget 2"
         />
         <img
-          className={`${styles.slider__pic} ${styles['slider__pic--3']}`}
+          className={`${Styles.slider__pic} ${Styles['slider__pic--3']}`}
           src=".\img\phones\apple-iphone-14-pro\spaceblack\02.webp"
           alt="Gadget 3"
         />
         <img
-          className={`${styles.slider__pic} ${styles['slider__pic--4']}`}
+          className={`${Styles.slider__pic} ${Styles['slider__pic--4']}`}
           src=".\img\phones\apple-iphone-14-pro\spaceblack\03.webp"
           alt="Gadget 4"
         />
         <img
-          className={`${styles.slider__pic} ${styles['slider__pic--5']}`}
+          className={`${Styles.slider__pic} ${Styles['slider__pic--5']}`}
           src=".\img\phones\apple-iphone-14-pro\spaceblack\04.webp"
           alt="Gadget 5"
         />
@@ -82,19 +82,19 @@ export const SectionDashSlider: React.FC = () => {
 
       <div className="slider__picker">
         <div
-          className={`${styles['slider__dash']} ${styles['slider__dash-1']}`}
+          className={`${Styles['slider__dash']} ${Styles['slider__dash-1']}`}
         ></div>
         <div
-          className={`${styles['slider__dash']} ${styles['slider__dash-2']}`}
+          className={`${Styles['slider__dash']} ${Styles['slider__dash-2']}`}
         ></div>
         <div
-          className={`${styles['slider__dash']} ${styles['slider__dash-3']}`}
+          className={`${Styles['slider__dash']} ${Styles['slider__dash-3']}`}
         ></div>
         <div
-          className={`${styles['slider__dash']} ${styles['slider__dash-4']}`}
+          className={`${Styles['slider__dash']} ${Styles['slider__dash-4']}`}
         ></div>
         <div
-          className={`${styles['slider__dash']} ${styles['slider__dash-5']}`}
+          className={`${Styles['slider__dash']} ${Styles['slider__dash-5']}`}
         ></div>
       </div>
     </section>

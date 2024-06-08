@@ -3,6 +3,7 @@ import { Product } from '../components/types/Product';
 import { Phone } from '../components/types/Phone';
 import { Tablet } from '../components/types/Tablet';
 import { Accessory } from '../components/types/Accessory';
+import { useLocation } from 'react-router-dom';
 
 type AppContextProps = {
   app: React.RefObject<HTMLDivElement>;
@@ -40,27 +41,16 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phones, setPhones] = useState<Phone[]>([]);
   const [tablets, setTablets] = useState<Tablet[]>([]);
   const [accessories, setAccessories] = useState<Accessory[]>([]);
-  const [isLoadingPoducts, setIsLoadingPoducts] = useState(false);
-  const [isLoadingPhones, setIsLoadingPhones] = useState(false);
-  const [isLoadingTablets, setIsLoadingTablets] = useState(false);
+  const [isLoadingPoducts, setIsLoadingPoducts] = useState(true);
+  const [isLoadingPhones, setIsLoadingPhones] = useState(true);
+  const [isLoadingTablets, setIsLoadingTablets] = useState(true);
   const [isLoadingAccessories, setIsLoadingAccessories] = useState(false);
   const accessoriesTotalNumber = accessories.length;
   const phonesTotalNumber = phones.length;
   const productsTotalNumber = products.length;
   const tabletsTotalNumber = tablets.length;
 
-  useEffect(() => {
-    setIsLoadingAccessories(true);
-    fetch('./api/accessories.json')
-      .then(response => response.json())
-      .then(setAccessories)
-      .catch(err => {
-        throw new Error(err);
-      })
-      .finally(() => {
-        setIsLoadingAccessories(false);
-      });
-  }, []);
+  const location = useLocation();
 
   useEffect(() => {
     setIsLoadingPoducts(true);
@@ -73,9 +63,23 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       .finally(() => {
         setIsLoadingPoducts(false);
       });
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
+    setIsLoadingAccessories(true);
+    fetch('./api/accessories.json')
+      .then(response => response.json())
+      .then(setAccessories)
+      .catch(err => {
+        throw new Error(err);
+      })
+      .finally(() => {
+        setIsLoadingAccessories(false);
+      });
+  }, [location.pathname]);
+
+  useEffect(() => {
+    console.log('in products');
     setIsLoadingPhones(true);
     fetch('./api/phones.json')
       .then(response => response.json())
@@ -86,7 +90,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       .finally(() => {
         setIsLoadingPhones(false);
       });
-  }, []);
+  }, [location.pathname]);
 
   useEffect(() => {
     setIsLoadingTablets(true);
@@ -99,7 +103,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       .finally(() => {
         setIsLoadingTablets(false);
       });
-  }, []);
+  }, [location.pathname]);
 
   return (
     <ContextApp.Provider

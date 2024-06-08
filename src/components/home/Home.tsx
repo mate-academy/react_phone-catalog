@@ -3,7 +3,7 @@ import styles from './Home.module.scss';
 import { SectionDashSlider } from './sectionDashSlider';
 import { Slider } from './slider';
 import { ShopByCategory } from './shopByCategory/shopByCategory';
-import { SkeletonMain } from '../../skeleton/SkeletonMain';
+import { SkeletonMain } from '../../skeletons/SkeletonMain';
 import { ContextApp } from '../../appContext/AppContext';
 
 export const Home: React.FC = () => {

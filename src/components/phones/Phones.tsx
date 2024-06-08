@@ -5,9 +5,11 @@ import { Pagination } from '../../pagination';
 import { PhoneCard } from './productCard';
 import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../types/SortBy';
+import { Skeleton } from '../../skeletons/Skelton.tsx';
 
 export const Phones: React.FC = () => {
-  const { phonesTotalNumber, products, phones } = useContext(ContextApp);
+  const { phonesTotalNumber, products, phones, isLoadingPhones } =
+    useContext(ContextApp);
   const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('16');
   const [activePage, setActivePage] = useState(1);
@@ -44,59 +46,64 @@ export const Phones: React.FC = () => {
 
   return (
     <div className={style['phones']}>
-      <div className={style['phones__head']}>
-        <h1 className={style['phones__head__title']}>Mobile phones</h1>
-        <p className={style['phones__head__paragraph']}>
-          {phonesTotalNumber} models
-        </p>
-      </div>
+      {isLoadingPhones && <Skeleton />}
 
-      <div className={style['phones__filters']}>
-        <div className={style['phones__filters__sort']}>
-          <p className={style['phones__filters__sort__paragraph']}>Sort by</p>
+      {!isLoadingPhones && (
+        <>
+          <div className={style['phones__head']}>
+            <h1 className={style['phones__head__title']}>Mobile phones</h1>
+            <p className={style['phones__head__paragraph']}>
+              {phonesTotalNumber} models
+            </p>
+          </div>
+          <div className={style['phones__filters']}>
+            <div className={style['phones__filters__sort']}>
+              <p className={style['phones__filters__sort__paragraph']}>
+                Sort by
+              </p>
 
-          <select
-            className={style['phones__filters__sort__select']}
-            value={selectedOption}
-            onChange={handleChangeSort}
-          >
-            <option value="newest">Newest</option>
-            <option value="alphabetical">Alphabetically</option>
-            <option value="cheapest">Cheapest</option>
-          </select>
-        </div>
+              <select
+                className={style['phones__filters__sort__select']}
+                value={selectedOption}
+                onChange={handleChangeSort}
+              >
+                <option value="newest">Newest</option>
+                <option value="alphabetical">Alphabetically</option>
+                <option value="cheapest">Cheapest</option>
+              </select>
+            </div>
 
-        <div className={style['phones__filters__items']}>
-          <p className={style['phones__filters__items__paragraph']}>
-            Items on page
-          </p>
+            <div className={style['phones__filters__items']}>
+              <p className={style['phones__filters__items__paragraph']}>
+                Items on page
+              </p>
 
-          <select
-            className={style['phones__filters__items__select']}
-            value={itemsPerPage}
-            onChange={handleChangeItems}
-          >
-            <option value="all">All</option>
-            <option value="4">4</option>
-            <option value="8">8</option>
-            <option value="16">16</option>
-          </select>
-        </div>
-      </div>
-
-      <div className={style['phones__container']}>
-        {phonesOnPage.map(phone => {
-          return <PhoneCard key={phone.id} product={phone} />;
-        })}
-      </div>
-
-      <div className={style['phones__choose_page']}>
-        <Pagination
-          pagesTotalNumber={pagesTotalNumber}
-          activePage={activePage}
-          onPageChange={handlePageChange}
-        />
-      </div>
+              <select
+                className={style['phones__filters__items__select']}
+                value={itemsPerPage}
+                onChange={handleChangeItems}
+              >
+                <option value="all">All</option>
+                <option value="4">4</option>
+                <option value="8">8</option>
+                <option value="16">16</option>
+              </select>
+            </div>
+          </div>
+          <div className={style['phones__container']}>
+            {phonesOnPage.map(phone => {
+              return <PhoneCard key={phone.id} product={phone} />;
+            })}
+          </div>
+          <div className={style['phones__choose_page']}>
+            <Pagination
+              pagesTotalNumber={pagesTotalNumber}
+              activePage={activePage}
+              onPageChange={handlePageChange}
+            />
+          </div>
+        </>
+      )}
     </div>
   );
 };
