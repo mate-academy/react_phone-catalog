@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
 import { ButtonHTMLAttributes, FC } from 'react';
-
 import styles from './Button.module.css';
 
 const buttonVariants = (variant = 'default', isSelected = false) => {
@@ -21,19 +20,59 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'pagination';
   isSelected?: boolean;
   size?: string | [number, number];
+  color?:
+    | 'black'
+    | 'green'
+    | 'yellow'
+    | 'white'
+    | 'purple'
+    | 'red'
+    | 'spacegray' // немає
+    | 'midnightgreen' // немає
+    | 'gold'
+    | 'silver'
+    | 'rosegold' // немає
+    | 'coral'
+    | 'midnight' // немає
+    | 'spaceblack' // немає
+    | 'blue'
+    | 'pink'
+    | 'graphite' // немає
+    | 'sierrablue'; // немає
 }
+
+const unsupportedColorsHexMapping: { [key: string]: string } = {
+  spacegray: '#A0A0A0',
+  midnightgreen: '#004953',
+  rosegold: '#B76E79',
+  midnight: '#191970',
+  spaceblack: '#1B1B1B',
+  graphite: '#383838',
+  sierrablue: '#A3C1DA',
+};
 
 const Button: FC<ButtonProps> = ({
   variant = 'default',
   size = '',
   isSelected = false,
+  color,
   className,
   style,
   ...props
 }) => {
   const classes = buttonVariants(variant, isSelected);
 
+  const buttonColor: { 'background-color'?: string } = {};
   let buttonSize: { width?: string; height?: string } = {};
+
+  function setColor(colorToCheck: string) {
+    if (colorToCheck in unsupportedColorsHexMapping) {
+      buttonColor['background-color'] =
+        unsupportedColorsHexMapping[colorToCheck];
+    } else {
+      buttonColor['background-color'] = colorToCheck;
+    }
+  }
 
   if (typeof size === 'string') {
     const [width, height] = size.split(' ');
@@ -50,12 +89,16 @@ const Button: FC<ButtonProps> = ({
     const heightValue = parseInt(buttonSize.height ?? '0') - 3;
 
     buttonSize = { width: `${widthValue}px`, height: `${heightValue}px` };
+
+    if (color !== undefined) {
+      setColor(color);
+    }
   }
 
   return (
     <button
       className={`${classes} ${className ?? ''}`}
-      style={{ ...buttonSize, ...style }}
+      style={{ ...buttonSize, ...buttonColor, ...style }}
       {...props}
     >
       {props.children}
