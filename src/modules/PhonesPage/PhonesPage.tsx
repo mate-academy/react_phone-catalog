@@ -1,6 +1,8 @@
-import React, { useCallback, useEffect, useState } from 'react';
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
+import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
 import { getPhones } from '../../api/getProduct';
 import Product from '../../types/Product';
@@ -65,18 +67,19 @@ const PhonesPage = () => {
     }, 800);
   };
 
-  const handleSortChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleSortChange = (selectedOption: any) => {
     setIsChangingPage(true);
-    setSortOption(e.target.value);
+    setSortOption(selectedOption.value);
     setCurrentPage(1);
     setTimeout(() => {
       setIsChangingPage(false);
     }, 800);
   };
 
-  const handlePerPageChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+  const handlePerPageChange = (selectedOption: any) => {
     setIsChangingPage(true);
-    const value = e.target.value === 'all' ? 'all' : Number(e.target.value);
+    const value =
+      selectedOption.value === 'all' ? 'all' : Number(selectedOption.value);
 
     setPerPage(value);
     setCurrentPage(1);
@@ -106,38 +109,44 @@ const PhonesPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
-        <Breadcrumbs />
+        <div className={s.breadcrumbs}>
+          <Breadcrumbs />
+        </div>
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
+
         {isLoading ? (
           <Loader />
         ) : isError ? (
           <p>Error loading phones. Please try again later.</p>
         ) : (
           <>
-            <div>
-              <select
-                value={sortOption}
-                onChange={handleSortChange}
-                className={s.select}
-              >
-                <option value="newest">Newest</option>
-                <option value="alphabetically">Alphabetically</option>
-                <option value="cheapest">Cheapest</option>
-              </select>
-              <select
-                value={perPage === 'all' ? 'all' : perPage.toString()}
-                onChange={handlePerPageChange}
-                className={s.select}
-              >
-                <option value="4">4 per page</option>
-                <option value="8">8 per page</option>
-                <option value="16">16 per page</option>
-                <option value="all">All</option>
-              </select>
-            </div>
             <p className={s.quantity}>{phones.length} models</p>
+
+            <div className={s.filter}>
+              <div>
+                <p className={s.label}>Sort by</p>
+                <Dropdown
+                  defaultValue={sortOption}
+                  options={['newest', 'alphabetically', 'cheapest']}
+                  dropdownWidth={150}
+                  dropdownHeight={40}
+                  onChange={handleSortChange}
+                />
+              </div>
+              <div>
+                <p className={s.label}>Items on page</p>
+                <Dropdown
+                  defaultValue={perPage === 'all' ? 'all' : perPage.toString()}
+                  options={['4', '8', '16', 'all']}
+                  dropdownWidth={128}
+                  dropdownHeight={40}
+                  onChange={handlePerPageChange}
+                />
+              </div>
+            </div>
+
             <ProductsList
               products={paginatedPhones}
               isChangingPage={isChangingPage}
