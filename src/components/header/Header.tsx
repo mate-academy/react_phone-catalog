@@ -43,7 +43,7 @@ export const Header = () => {
               to="/basket"
               className={({ isActive }) =>
                 classNames(styles.header__button, {
-                  [styles.header__itemlink_active]: isActive,
+                  [styles.header__button_active]: isActive,
                 })
               }
             >
