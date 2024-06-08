@@ -19,7 +19,9 @@
     "react-transition-group": "^4.4.5",
     "sonner": "^1.4.41",
     "swiper": "^11.1.4",
-    "zustand": "^4.5.2"
+    "zustand": "^4.5.2",
+    "react-select": "^5.8.0",
+    "react-icons": "^5.2.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
