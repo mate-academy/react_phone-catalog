@@ -1,6 +1,6 @@
-import { Link, useLocation } from 'react-router-dom';
+import { FC, useMemo } from 'react';
 
-import { FC } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
 import { ROUTES } from '../../../constants/ROUTES';
@@ -26,14 +26,9 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     id,
   } = product;
 
-  const { pathname } = useLocation();
-  const isPhonesPage = pathname.includes('/phones');
+  const productLink = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
-  const productLink = isPhonesPage
-    ? ROUTES.PRODUCT_DETAIL.replace(':productId', id)
-    : ROUTES.PHONES + '/' + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
-
-  const { toggleProductInCart, cartItems: cart } = useCartStore(state => ({
+  const { toggleProductInCart, cartItems } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
     cartItems: state.cartItems,
   }));
@@ -43,8 +38,14 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     favorites: state.favorites,
   }));
 
-  const isInCart = cart.some(item => item.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
+  const isInCart = useMemo(
+    () => cartItems.some(item => item.id === product.id),
+    [cartItems, product.id],
+  );
+  const isFavorite = useMemo(
+    () => favorites.some(item => item.id === product.id),
+    [favorites, product.id],
+  );
 
   const handleToggleFavorite = (newProduct: Product) => {
     toggleFavorite(newProduct);
@@ -106,11 +107,14 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
           variant="icon"
           size="40px"
         >
-          {isFavorite ? (
-            <img src="img/icons/favorite-fill-icon.svg" alt="" />
-          ) : (
-            <img src="img/icons/favorite-icon.svg" alt="" />
-          )}
+          <img
+            src={
+              isFavorite
+                ? 'img/icons/favorite-fill-icon.svg'
+                : 'img/icons/favorite-icon.svg'
+            }
+            alt=""
+          />
         </Button>
       </div>
     </article>

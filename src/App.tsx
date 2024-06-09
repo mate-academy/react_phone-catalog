@@ -6,7 +6,7 @@ import { RouterProvider, createHashRouter } from 'react-router-dom';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import { ROUTES } from './constants/ROUTES';
 import Layout from './layout/Layout';
-import AccessoriesPage from './modules/AccessoriesPage/PhonesPage';
+import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
 import HomePage from './modules/HomePage/HomePage';

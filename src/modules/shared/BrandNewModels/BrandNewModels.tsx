@@ -1,10 +1,12 @@
-import { useEffect, useState } from 'react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { getPhones } from '../../api/getProduct';
-import Product from '../../types/Product';
-import SliderProducts from '../shared/SliderProducts/SliderProducts';
+
+import { useEffect, useState } from 'react';
+
+import { getPhones } from '../../../api/getProduct';
+import Product from '../../../types/Product';
+import SliderProducts from '../SliderProducts/SliderProducts';
 
 const BrandNewModels = () => {
   const [phones, setPhones] = useState<Product[]>([]);
