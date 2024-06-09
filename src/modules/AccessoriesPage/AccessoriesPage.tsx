@@ -2,18 +2,18 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
+import { getAccessories } from '../../api/getProduct';
+import Product from '../../types/Product';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
-import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
-import { getPhones } from '../../api/getProduct';
-import s from './PhonesPage.module.css';
+import s from './AccessoriesPage.module.css';
 
-const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+const AccessoriesPage = () => {
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
@@ -32,13 +32,13 @@ const PhonesPage = () => {
   const [currentPage, setCurrentPage] = useState(Number(initialPage));
   const [sortOption, setSortOption] = useState(initialSort);
 
-  const fetchPhones = useCallback(async () => {
+  const fetchAccessories = useCallback(async () => {
     try {
       setIsLoading(true);
       setIsError(false);
-      const phonesData = await getPhones();
+      const accessoriesData = await getAccessories();
 
-      setPhones(phonesData);
+      setAccessories(accessoriesData);
     } catch (error) {
       setIsError(true);
     } finally {
@@ -47,8 +47,8 @@ const PhonesPage = () => {
   }, []);
 
   useEffect(() => {
-    fetchPhones();
-  }, [fetchPhones]);
+    fetchAccessories();
+  }, [fetchAccessories]);
 
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
@@ -88,7 +88,7 @@ const PhonesPage = () => {
     }, 800);
   };
 
-  const sortedPhones = phones.slice().sort((a, b) => {
+  const sortedPhones = accessories.slice().sort((a, b) => {
     switch (sortOption) {
       case 'newest':
         return b.processor.localeCompare(a.processor);
@@ -113,7 +113,7 @@ const PhonesPage = () => {
           <Breadcrumbs />
         </div>
         <Heading className={s.title} as="h1">
-          Mobile phones
+          Accessories
         </Heading>
 
         {isLoading ? (
@@ -122,7 +122,7 @@ const PhonesPage = () => {
           <p>Error loading phones. Please try again later.</p>
         ) : (
           <>
-            <p className={s.quantity}>{phones.length} models</p>
+            <p className={s.quantity}>{accessories.length} models</p>
 
             <div className={s.filter}>
               <div>
@@ -152,7 +152,7 @@ const PhonesPage = () => {
               isChangingPage={isChangingPage}
             />
             <div className={s.pagination}>
-              {typeof perPage === 'number' && phones.length > perPage && (
+              {typeof perPage === 'number' && accessories.length > perPage && (
                 <Pagination
                   total={sortedPhones.length}
                   currentPage={currentPage}
@@ -168,4 +168,4 @@ const PhonesPage = () => {
   );
 };
 
-export default PhonesPage;
+export default AccessoriesPage;

@@ -1,6 +1,6 @@
 import Heading from '../../UI/Heading/Heading';
-import BrandNewModels from '../BrandNewModels/BrandNewModels';
-import HotPrices from '../HotPrices/HotPrices';
+import BrandNewModels from '../shared/BrandNewModels/BrandNewModels';
+import HotPrices from '../shared/HotPrices/HotPrices';
 import s from './HomePage.module.css';
 import { Categories } from './components/Categories/Categories';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
