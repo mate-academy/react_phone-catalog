@@ -9,7 +9,11 @@
   gap: 24px;
 
   &__title {
-    @include header-2;
+    @include header-3;
+
+    @include on-tablet {
+      @include header-2;
+    }
   }
 
   &__header {

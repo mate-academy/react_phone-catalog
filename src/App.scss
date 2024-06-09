@@ -7,12 +7,3 @@
 
   min-height: 100vh;
 }
-
-[class*='__container'] {
-  flex-grow: 1;
-
-  @include on-desktop {
-    width: 1200px;
-    margin-inline: auto;
-  }
-}

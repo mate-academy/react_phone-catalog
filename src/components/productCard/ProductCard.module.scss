@@ -10,7 +10,16 @@
   background-color: $white;
   box-sizing: border-box;
   padding: 32px;
+  width: 212px;
   gap: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
 
   &__img {
     display: block;
@@ -30,6 +39,10 @@
     color: inherit;
     transition-duration: 0.3s;
     margin-top: 16px;
+    width: 100%;
+    flex-wrap: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     cursor: pointer;
 
     @include body-text;

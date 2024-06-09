@@ -5,7 +5,11 @@ import { useEffect, useRef, useState } from 'react';
 
 const products = [1, 2, 3, 4, 5, 6, 7, 8];
 
-export const ProductSlider = () => {
+type Props = {
+  type: string;
+};
+
+export const ProductSlider: React.FC<Props> = ({ type }) => {
   const [productWidth, setProductWidth] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const productsRef = useRef<HTMLDivElement>(null);
@@ -97,7 +101,7 @@ export const ProductSlider = () => {
     <>
       <section className={styles.goods}>
         <div className={styles.goods__header}>
-          <h2 className={styles.goods__title}>Brand new models</h2>
+          <h2 className={styles.goods__title}>{type}</h2>
 
           <div className={styles.goods__buttons}>
             <button
