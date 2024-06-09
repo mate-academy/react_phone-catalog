@@ -1,12 +1,12 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 
-import { Text } from '../../../../shared/ui/Text';
+import { Text } from '../../../shared/ui/Text';
 import { MenuItem } from '../../types';
 import classes from './footerMenuItem.module.scss';
 
 type Props = {
-  item: Omit<MenuItem, 'key'>;
+  item: MenuItem;
 };
 
 export const FooterMenuItem: FC<Props> = ({ item: { to, text } }) => {

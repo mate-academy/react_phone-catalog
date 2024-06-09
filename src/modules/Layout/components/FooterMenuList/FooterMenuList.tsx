@@ -11,8 +11,8 @@ type Props = {
 export const FooterMenuList: FC<Props> = ({ items }) => {
   return (
     <ul className={classes.menu}>
-      {items.map(({ key, ...item }) => (
-        <FooterMenuItem key={key} item={item} />
+      {items.map(item => (
+        <FooterMenuItem key={item.text} item={item} />
       ))}
     </ul>
   );

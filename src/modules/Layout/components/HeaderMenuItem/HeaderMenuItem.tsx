@@ -2,12 +2,12 @@ import React, { FC } from 'react';
 import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 
-import { Text } from '../../../../shared/ui/Text';
 import { MenuItem } from '../../types';
-import classes from './menuItem.module.scss';
+import { Text } from '../../../shared/ui/Text';
+import classes from './headerMenuItem.module.scss';
 
 type Props = {
-  item: Omit<MenuItem, 'key'>;
+  item: MenuItem;
 };
 
 export const HeaderMenuItem: FC<Props> = ({ item: { text, to } }) => {
