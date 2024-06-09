@@ -1,13 +1,13 @@
 import { FC, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
-import { Link } from 'react-router-dom';
-import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
+import Product from '../../../types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
+import styles from './ProductCard.module.css';
+import { toast } from 'sonner';
 import { useCartStore } from '../../../store/cartStore';
 import { useFavoritesStore } from '../../../store/favoritesStore';
-import Product from '../../../types/Product';
-import styles from './ProductCard.module.css';
 
 interface Props {
   product: Product;
@@ -26,7 +26,12 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     id,
   } = product;
 
-  const productLink = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+  const { pathname } = useLocation();
+
+  const productLink =
+    pathname === ROUTES.HOME
+      ? `${ROUTES.PHONES}/${id}`
+      : ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
   const { toggleProductInCart, cartItems } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
