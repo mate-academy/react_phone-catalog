@@ -1,15 +1,17 @@
-import { FC, useRef, useState } from 'react';
-import { Swiper as SwiperType } from 'swiper/types';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+import { FC, useRef, useState } from 'react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+
+import { Swiper as SwiperType } from 'swiper/types';
+import Button from '../../../UI/Buttons/Button';
 import Heading from '../../../UI/Heading/Heading';
 import Product from '../../../types/Product';
+import ProductCard from '../ProductCard/ProductCard';
 import s from './SliderProducts.module.css';
-import Button from '../../../UI/Buttons/Button';
-import ProductCard from '../../shared/ProductCard/ProductCard';
 
 interface Props {
   sliderTitle: string;

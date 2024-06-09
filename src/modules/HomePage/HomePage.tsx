@@ -1,8 +1,8 @@
 import Heading from '../../UI/Heading/Heading';
-import BrandNewModels from '../shared/BrandNewModels/BrandNewModels';
-import HotPrices from '../shared/HotPrices/HotPrices';
 import s from './HomePage.module.css';
+import BrandNewModels from './components/BrandNewModels/BrandNewModels';
 import { Categories } from './components/Categories/Categories';
+import HotPrices from './components/HotPrices/HotPrices';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
 
 const HomePage = () => {
