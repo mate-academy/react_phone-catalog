@@ -2,6 +2,7 @@
 
 .select {
   & &__control {
+    background: var(--bg);
     padding: 10px 12px;
     border: 0;
     box-shadow: inset 0 0 0 1px var(--icons);
@@ -47,13 +48,19 @@
 
   & &__menu {
     box-shadow: none;
+    background: transparent;
     margin-top: 4px;
+  }
+
+  & &__singleValue {
+    color: var(--primary);
   }
 
   & &__menuList {
     box-shadow: inset 0 0 0 1px var(--elements);
     border-radius: 8px;
     padding: 8px 1px;
+    background: var(--bg);
   }
 
   & &__option {

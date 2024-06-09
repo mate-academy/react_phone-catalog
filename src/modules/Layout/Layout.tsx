@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, ScrollRestoration } from 'react-router-dom';
 
 import { Header } from './Header';
 import { Footer } from './Footer';
@@ -15,6 +15,7 @@ export const Layout: FC<Props> = () => {
         <Outlet />
       </main>
       <Footer />
+      <ScrollRestoration />
     </div>
   );
 };

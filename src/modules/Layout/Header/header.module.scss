@@ -7,7 +7,7 @@
   position: sticky;
   top: 0;
   z-index: 100;
-  background: var(--white);
+  background: var(--bg);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -28,7 +28,7 @@
     z-index: 101;
     inset: 0;
     box-shadow: 0 1px 0 var(--elements);
-    background: var(--white);
+    background: var(--bg);
 
     @include on-tablet {
       display: none;
@@ -87,7 +87,7 @@
       justify-content: space-between;
       flex-direction: column;
 
-      background: var(--white);
+      background: var(--bg);
       padding-top: calc(var(--height) + 24px);
     }
 

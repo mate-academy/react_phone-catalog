@@ -22,12 +22,12 @@
 
   &_inversed {
     color: var(--accent);
-    background: var(--white);
+    background: var(--bg);
     outline: 1px solid var(--elements);
   }
 
   &_regular {
-    color: var(--white);
+    color: var(--bg);
     background: var(--accent);
   }
 
