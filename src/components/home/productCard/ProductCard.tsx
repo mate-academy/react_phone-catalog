@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
-import { Product } from '../../types/Product';
+import { Product } from '../../../types/Product';
 
 interface Props {
   product: Product;

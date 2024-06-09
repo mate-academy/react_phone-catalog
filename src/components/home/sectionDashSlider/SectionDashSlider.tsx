@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import Styles from './SectionDashSlider.module.scss';
 
 export const SectionDashSlider: React.FC = () => {
-  const [active, setActive] = useState(1);
+  const [active, setActive] = useState(0);
   const totalPictureNumber = 5;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
@@ -82,19 +82,19 @@ export const SectionDashSlider: React.FC = () => {
 
       <div className="slider__picker">
         <div
-          className={`${Styles['slider__dash']} ${Styles['slider__dash-1']}`}
+          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-1']}`}
         ></div>
         <div
-          className={`${Styles['slider__dash']} ${Styles['slider__dash-2']}`}
+          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-2']}`}
         ></div>
         <div
-          className={`${Styles['slider__dash']} ${Styles['slider__dash-3']}`}
+          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-3']}`}
         ></div>
         <div
-          className={`${Styles['slider__dash']} ${Styles['slider__dash-4']}`}
+          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-4']}`}
         ></div>
         <div
-          className={`${Styles['slider__dash']} ${Styles['slider__dash-5']}`}
+          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-5']}`}
         ></div>
       </div>
     </section>

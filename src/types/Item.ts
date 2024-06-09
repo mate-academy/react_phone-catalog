@@ -1,4 +1,4 @@
-export type Tablet = {
+export type Item = {
   id: string;
   category: string;
   namespaceId: string;

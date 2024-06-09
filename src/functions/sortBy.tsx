@@ -1,7 +1,11 @@
-import { Product } from '../components/types/Product';
-import { SortBy } from '../components/types/SortBy';
+import { Product } from '../types/Product';
+import { SortBy } from '../types/SortBy';
 
-export function sortBy<T extends {id: string}>(products: Product[], array: T[], sortBy: SortBy): T[] {
+export function sortBy<T extends { id: string }>(
+  products: Product[],
+  array: T[],
+  sortBy: SortBy,
+): T[] {
   let copyArray: T[] = [];
   let copyProducts: Product[] = [...products];
 

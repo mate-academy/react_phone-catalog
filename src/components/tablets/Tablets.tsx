@@ -3,7 +3,7 @@ import { ContextApp } from '../../appContext/AppContext';
 import style from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
-import { SortBy } from '../types/SortBy';
+import { SortBy } from '../../types/SortBy';
 import { TabletCard } from './productCard/TabletCard';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 

@@ -9,9 +9,10 @@ import { Home } from './components/home';
 import { Tablets } from './components/tablets';
 import { Phones } from './components/phones';
 import { Accessories } from './components/accessories';
+import { Details } from './components/details';
 
 export const App = () => {
-  const { app } = useContext(ContextApp);
+  const { app,accessories } = useContext(ContextApp);
   return (
     <div ref={app} className="app">
       <Header />
@@ -21,7 +22,12 @@ export const App = () => {
         <Route path="/home" element={<Navigate to="/" replace={true} />} />
         <Route path="/phones" element={<Phones />} />
         <Route path="/tablets" element={<Tablets />} />
-        <Route path="/accessories" element={<Accessories />} />
+
+        <Route path="/accessories">
+          <Route index element={<Accessories />} />
+          <Route path=':itemId' element={<Details list={accessories} />} />
+        </Route>
+
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
       <Outlet />

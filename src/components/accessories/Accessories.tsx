@@ -3,7 +3,7 @@ import { ContextApp } from '../../appContext/AppContext';
 import style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
 import { AccessoriesCard } from './productCard';
-import { SortBy } from '../types/SortBy';
+import { SortBy } from '../../types/SortBy';
 import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 

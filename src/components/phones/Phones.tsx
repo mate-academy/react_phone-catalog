@@ -4,7 +4,7 @@ import style from './Phones.module.scss';
 import { Pagination } from '../../pagination';
 import { PhoneCard } from './productCard';
 import { sortBy } from '../../functions/sortBy';
-import { SortBy } from '../types/SortBy';
+import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 
 export const Phones: React.FC = () => {

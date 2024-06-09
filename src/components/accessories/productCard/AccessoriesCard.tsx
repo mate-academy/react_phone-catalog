@@ -1,21 +1,32 @@
 import React from 'react';
 import styles from './AccessoriesCard.module.scss';
-import { Accessory } from '../../types/Accessory';
+import { Item } from '../../../types/Item';
+import { Link } from 'react-router-dom';
 
-
-interface Props {
-  product: Accessory;
+type Props = {
+  product: Item;
   discount?: boolean;
-}
+};
 
 export const AccessoriesCard: React.FC<Props> = ({ product, discount }) => {
-  const { capacity, priceDiscount, name, priceRegular, ram, screen, images } =
-    product;
+  const {
+    capacity,
+    priceDiscount,
+    name,
+    priceRegular,
+    ram,
+    screen,
+    images,
+    namespaceId,
+  } = product;
 
   return (
     <div className={styles['productCard']}>
-      <img className={styles['productCard__picture']} src={`./${images[0]}`} />
-      <p className={styles['productCard__product_name']}>{name}</p>
+      <Link to={`/accessories/${namespaceId}`}>
+        <img className={styles['productCard__picture']} src={`./${images[0]}`} />
+        <p className={styles['productCard__product_name']}>{name}</p>
+      </Link>
+
       {discount ? (
         <>
           <div className={styles['productCard__container']}>

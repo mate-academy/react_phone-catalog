@@ -1,5 +1,5 @@
 import React, { useContext, useState } from 'react';
-import { Product } from '../../types/Product';
+import { Product } from '../../../types/Product';
 import styles from './Slider.module.scss';
 import { ProductCard } from '../productCard';
 import { ContextApp } from '../../../appContext/AppContext';
@@ -7,6 +7,7 @@ import { ContextApp } from '../../../appContext/AppContext';
 type Props = {
   title: string;
   discount?: boolean;
+  showRandom?: boolean;
 };
 
 export const Slider: React.FC<Props> = ({ title, discount }) => {

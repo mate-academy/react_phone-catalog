@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './PhoneCard.module.scss';
-import { Phone } from '../../types/Phone';
+import { Item } from '../../../types/Item';
 
 interface Props {
-  product: Phone;
+  product: Item;
   discount?: boolean;
 }
 

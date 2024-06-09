@@ -1,9 +1,9 @@
 import React from 'react';
 import styles from './TabletCard.module.scss';
-import { Tablet } from '../../types/Tablet';
+import { Item } from '../../../types/Item';
 
 interface Props {
-  product: Tablet;
+  product: Item;
   discount?: boolean;
 }
 

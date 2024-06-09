@@ -1,8 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Product } from '../components/types/Product';
-import { Phone } from '../components/types/Phone';
-import { Tablet } from '../components/types/Tablet';
-import { Accessory } from '../components/types/Accessory';
+import { Product } from '../types/Product';
+import { Item } from '../types/Item';
 import { useLocation } from 'react-router-dom';
 
 type AppContextProps = {
@@ -11,14 +9,14 @@ type AppContextProps = {
   products: Product[];
   productsTotalNumber: number;
   phonesTotalNumber: number;
-  phones: Phone[];
-  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>;
-  tablets: Tablet[];
-  setTablets: React.Dispatch<React.SetStateAction<Tablet[]>>;
+  phones: Item[];
+  setPhones: React.Dispatch<React.SetStateAction<Item[]>>;
+  tablets: Item[];
+  setTablets: React.Dispatch<React.SetStateAction<Item[]>>;
   tabletsTotalNumber: number;
   accessoriesTotalNumber: number;
-  accessories: Accessory[];
-  setAccessories: React.Dispatch<React.SetStateAction<Accessory[]>>;
+  accessories: Item[];
+  setAccessories: React.Dispatch<React.SetStateAction<Item[]>>;
   isLoadingPoducts: boolean;
   setIsLoadingPoducts: React.Dispatch<React.SetStateAction<boolean>>;
   isLoadingPhones: boolean;
@@ -38,9 +36,9 @@ export const ContextApp = React.createContext({} as AppContextProps);
 export const AppContext: React.FC<Props> = ({ children }) => {
   const app = useRef(null);
   const [products, setProducts] = useState<Product[]>([]);
-  const [phones, setPhones] = useState<Phone[]>([]);
-  const [tablets, setTablets] = useState<Tablet[]>([]);
-  const [accessories, setAccessories] = useState<Accessory[]>([]);
+  const [phones, setPhones] = useState<Item[]>([]);
+  const [tablets, setTablets] = useState<Item[]>([]);
+  const [accessories, setAccessories] = useState<Item[]>([]);
   const [isLoadingPoducts, setIsLoadingPoducts] = useState(true);
   const [isLoadingPhones, setIsLoadingPhones] = useState(true);
   const [isLoadingTablets, setIsLoadingTablets] = useState(true);
@@ -79,7 +77,6 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   }, [location.pathname]);
 
   useEffect(() => {
-    console.log('in products');
     setIsLoadingPhones(true);
     fetch('./api/phones.json')
       .then(response => response.json())

@@ -87,7 +87,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - `About` section should contain just a description (without any subheaders);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
+5. Implement `You may also like` block with products choosen randomly:
    - Create `getSuggestedProducts` method fetching the suggested products.
 6. Add `Back` button working the same way as a Browser `Back` button.
 7. Add `Breadcrumbs` at the top with:
