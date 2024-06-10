@@ -1,9 +1,9 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
+import { SearchParams } from '../../types/Categories';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
-import { SearchParams } from '../../types/Categories';
 import styles from './SearchField.module.css';
 import { useDebounce } from '../../hooks/useDebounce';
 
@@ -64,7 +64,7 @@ export const SearchField = () => {
         id="search"
         type="text"
         className={classNames(styles.searchFieldInput, {
-          [styles.focus]: isSearchFocused,
+          [styles.focusq]: isSearchFocused,
         })}
         placeholder={`Search in ${pathname.slice(1)}...`}
         ref={titleField}
