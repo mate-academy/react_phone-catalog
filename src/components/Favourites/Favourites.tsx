@@ -29,7 +29,7 @@ export const Favourites: React.FC<Props> = ({
         <div className={styles.favourites__empty}>
           <img
             className={styles['favourites__empty-image']}
-            src="/img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="favouritesEmpty"
           />
           <h2 className={styles.favourites__title}>
