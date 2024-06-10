@@ -17,7 +17,7 @@ export const Header: React.FC<Props> = ({
   return (
     <header className={styles.header}>
       <a href="#" className={styles.header__logo}>
-        <img src="/img/Logo.svg" alt="" />
+        <img src="img/Logo.svg" alt="" />
       </a>
       <div className={styles.header__toplist}>
         <nav className={styles['header__navigation--pages']}>
@@ -52,12 +52,12 @@ export const Header: React.FC<Props> = ({
           <ul className={styles.header__list}>
             <li className={styles.header__button}>
               <a href="" className={styles.header__link}>
-                <img src="/img/header/favorite.svg" alt="favorite" />
+                <img src="img/header/favorite.svg" alt="favorite" />
               </a>
             </li>
             <li className={styles.header__button}>
               <a href="" className={styles.header__link}>
-                <img src="/img/header/cart.svg" alt="cart" />
+                <img src="img/header/cart.svg" alt="cart" />
               </a>
             </li>
           </ul>
@@ -69,7 +69,7 @@ export const Header: React.FC<Props> = ({
           className={styles['header__burger-menu']}
           onClick={() => setIsMenuOpen(true)}
         >
-          <img src="/img/header/burger-menu.svg" alt="burger-menu" />
+          <img src="img/header/burger-menu.svg" alt="burger-menu" />
         </a>
       </div>
     </header>

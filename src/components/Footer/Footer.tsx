@@ -6,7 +6,7 @@ export const Footer: React.FC = () => {
   return (
     <footer className={styles.footer}>
       <a href="#" className={styles.footer__logo}>
-        <img src="/img/Logo.svg" alt="logo" className={styles.footer__image} />
+        <img src="img/Logo.svg" alt="logo" className={styles.footer__image} />
       </a>
       <nav className={styles.footer__navigation}>
         <ul className={styles.footer__list}>

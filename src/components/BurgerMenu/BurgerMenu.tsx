@@ -23,7 +23,7 @@ export const BurgerMenu: React.FC<Props> = ({
     <div className={styles.menu}>
       <div className={styles.menu__header}>
         <a href="#" className={styles.menu__logo}>
-          <img src="/img/Logo.svg" alt="" />
+          <img src="img/Logo.svg" alt="" />
         </a>
         <button
           className={styles.menu__close}
@@ -60,10 +60,10 @@ export const BurgerMenu: React.FC<Props> = ({
       </nav>
       <div className={styles.menu__footer}>
         <a href="" className={styles['menu__footer-link']}>
-          <img src="/img/header/favorite.svg" alt="favorite" />
+          <img src="img/header/favorite.svg" alt="favorite" />
         </a>
         <a href="" className={styles['menu__footer-link']}>
-          <img src="/img/header/cart.svg" alt="cart" />
+          <img src="img/header/cart.svg" alt="cart" />
         </a>
       </div>
     </div>
