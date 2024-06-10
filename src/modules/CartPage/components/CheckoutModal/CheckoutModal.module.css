@@ -1,0 +1,55 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in 0.3s;
+}
+
+.modalContent {
+  background-color: var(--white-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  animation: slide-in 0.3s;
+}
+
+.modalButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.confirm {
+  background-color: var(--green-color);
+  color: var(--white-color);
+}
+
+.cancel {
+  background-color: var(--red-color);
+  color: var(--white-color);
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}

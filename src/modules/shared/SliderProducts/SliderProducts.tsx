@@ -1,23 +1,35 @@
-import { FC, useRef, useState } from 'react';
-import { Swiper as SwiperType } from 'swiper/types';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { Navigation, Pagination, Autoplay } from 'swiper/modules';
+
+import { FC, useRef, useState } from 'react';
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Swiper as SwiperType } from 'swiper/types';
+
+import Button from '../../../UI/Buttons/Button';
 import Heading from '../../../UI/Heading/Heading';
 import Product from '../../../types/Product';
+import ProductCard from '../ProductCard/ProductCard';
 import s from './SliderProducts.module.css';
-import Button from '../../../UI/Buttons/Button';
-import ProductCard from '../../shared/ProductCard/ProductCard';
+import Skeleton from '../Skeleton/Skeleton';
+import Loader from '../Loader/Loader';
 
 interface Props {
   sliderTitle: string;
   products: Product[];
   totalPages: number;
+  isLoading: boolean;
+  isLoadingProduct: boolean;
 }
 
-const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
+const SliderProducts: FC<Props> = ({
+  sliderTitle,
+  products,
+  totalPages,
+  isLoading,
+  isLoadingProduct,
+}) => {
   const [currentPage, setCurrentPage] = useState(1);
   const swiperRef = useRef<SwiperType | null>(null);
 
@@ -75,45 +87,53 @@ const SliderProducts: FC<Props> = ({ sliderTitle, products, totalPages }) => {
           </ul>
         </div>
       </div>
-      <div className={s.product__slider}>
-        <Swiper
-          onSwiper={swiper => (swiperRef.current = swiper)}
-          onSlideChange={updateCurrentPage}
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={16}
-          slidesPerView={4}
-          speed={800}
-          autoplay={{
-            delay: 10000, // Затримка між автоскролом у мілісекундах
-            disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
-          }}
-          breakpoints={{
-            1200: {
-              slidesPerView: 4,
-              slidesPerGroup: 4,
-              spaceBetween: 16,
-            },
-            640: {
-              slidesPerView: 2.5,
-              slidesPerGroup: 3,
-              spaceBetween: 16,
-            },
-            320: {
-              slidesPerView: 1.4,
-              slidesPerGroup: 1,
-              spaceBetween: 16,
-            },
-          }}
-        >
-          {products.map(product => (
-            <SwiperSlide key={product.id}>
-              <div key={product.id} className={s.item}>
-                <ProductCard product={product} />
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
-      </div>
+      {isLoading ? (
+        <Loader />
+      ) : (
+        <div className={s.product__slider}>
+          <Swiper
+            onSwiper={swiper => (swiperRef.current = swiper)}
+            onSlideChange={updateCurrentPage}
+            modules={[Navigation, Pagination, Autoplay]}
+            spaceBetween={16}
+            slidesPerView={4}
+            speed={800}
+            autoplay={{
+              delay: 10000, // Затримка між автоскролом у мілісекундах
+              disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
+            }}
+            breakpoints={{
+              1200: {
+                slidesPerView: 4,
+                slidesPerGroup: 4,
+                spaceBetween: 16,
+              },
+              640: {
+                slidesPerView: 2.5,
+                slidesPerGroup: 3,
+                spaceBetween: 16,
+              },
+              320: {
+                slidesPerView: 1.4,
+                slidesPerGroup: 1,
+                spaceBetween: 16,
+              },
+            }}
+          >
+            {products.map(product => (
+              <SwiperSlide key={product.id}>
+                <div key={product.id} className={s.item}>
+                  {isLoadingProduct ? (
+                    <Skeleton />
+                  ) : (
+                    <ProductCard product={product} />
+                  )}
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      )}
     </div>
   );
 };

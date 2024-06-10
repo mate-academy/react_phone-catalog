@@ -1,16 +1,32 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import Button from '../../UI/Buttons/Button';
 import Heading from '../../UI/Heading/Heading';
 import { useCartStore } from '../../store/cartStore';
 import styles from './CartPage.module.css';
-import CartItem from './components/CartItem';
+import CartItem from './components/CartItem/CartItem';
+import CheckoutModal from './components/CheckoutModal/CheckoutModal';
 
 const CartPage: FC = () => {
-  const cartItems = useCartStore(state => state.cartItems);
+  const { cartItems, changeQuantityInCart, deleteProductInCart, clearCart } =
+    useCartStore(state => ({
+      cartItems: state.cartItems,
+      changeQuantityInCart: state.changeQuantityInCart,
+      deleteProductInCart: state.deleteProductInCart,
+      clearCart: state.clearCart,
+    }));
+
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const totalPrice = cartItems.reduce(
-    (price, cartItem) => price + cartItem.priceDiscount,
+    (price, cartItem) =>
+      price + cartItem.product.priceDiscount * cartItem.quantity,
     0,
   );
+
+  const handleConfirmOrder = () => {
+    clearCart();
+    setIsModalOpen(false);
+  };
 
   return cartItems.length ? (
     <div className="container">
@@ -24,10 +40,11 @@ const CartPage: FC = () => {
             {cartItems.map(cartItem => (
               <li key={cartItem.id} className={styles.item}>
                 <CartItem
-                  product={cartItem}
-                  onDelete={() => {}}
-                  onMinus={() => {}}
-                  onPlus={() => {}}
+                  product={cartItem.product}
+                  quantity={cartItem.quantity}
+                  onDelete={deleteProductInCart}
+                  onMinus={id => changeQuantityInCart(id, 'sub')}
+                  onPlus={id => changeQuantityInCart(id, 'add')}
                 />
               </li>
             ))}
@@ -38,12 +55,23 @@ const CartPage: FC = () => {
               ${totalPrice}
             </Heading>
             <p className={styles.descr}>Total for {cartItems.length} items</p>
-            <Button variant="primary" className={styles.btn}>
+            <Button
+              variant="primary"
+              className={styles.btn}
+              onClick={() => setIsModalOpen(true)}
+            >
               Checkout
             </Button>
           </div>
         </div>
       </section>
+
+      {isModalOpen && (
+        <CheckoutModal
+          closeModal={() => setIsModalOpen(false)}
+          confirmOrder={handleConfirmOrder}
+        />
+      )}
     </div>
   ) : (
     <div className={styles.error} />

@@ -2,15 +2,15 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
-import { getPhones } from '../../api/getProduct';
-import Product from '../../types/Product';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
+import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import { SearchParams } from '../../types/Categories';
+import { getPhones } from '../../api/getProduct';
 import s from './PhonesPage.module.css';
 
 const PhonesPage = () => {

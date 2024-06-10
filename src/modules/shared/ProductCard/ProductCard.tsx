@@ -1,13 +1,13 @@
+import { FC, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
-import { FC } from 'react';
-import { toast } from 'sonner';
 import Button from '../../../UI/Buttons/Button';
+import Product from '../../../types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
+import styles from './ProductCard.module.css';
+import { toast } from 'sonner';
 import { useCartStore } from '../../../store/cartStore';
 import { useFavoritesStore } from '../../../store/favoritesStore';
-import Product from '../../../types/Product';
-import styles from './ProductCard.module.css';
 
 interface Props {
   product: Product;
@@ -27,13 +27,13 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
   } = product;
 
   const { pathname } = useLocation();
-  const isPhonesPage = pathname.includes('/phones');
 
-  const productLink = isPhonesPage
-    ? ROUTES.PRODUCT_DETAIL.replace(':productId', id)
-    : ROUTES.PHONES + '/' + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+  const productLink =
+    pathname === ROUTES.HOME
+      ? `${ROUTES.PHONES}/${id}`
+      : ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
-  const { toggleProductInCart, cartItems: cart } = useCartStore(state => ({
+  const { toggleProductInCart, cartItems } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
     cartItems: state.cartItems,
   }));
@@ -43,8 +43,14 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     favorites: state.favorites,
   }));
 
-  const isInCart = cart.some(item => item.id === product.id);
-  const isFavorite = favorites.some(item => item.id === product.id);
+  const isInCart = useMemo(
+    () => cartItems.some(item => item.id === product.id),
+    [cartItems, product.id],
+  );
+  const isFavorite = useMemo(
+    () => favorites.some(item => item.id === product.id),
+    [favorites, product.id],
+  );
 
   const handleToggleFavorite = (newProduct: Product) => {
     toggleFavorite(newProduct);
@@ -55,7 +61,11 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
   };
 
   const handleToggleCart = (newProduct: Product) => {
-    toggleProductInCart(newProduct);
+    toggleProductInCart({
+      id: newProduct.id,
+      quantity: 1,
+      product: newProduct,
+    });
     toast.message(isInCart ? 'Removed from Cart' : 'Added to Cart', {
       description: newProduct.name,
     });
@@ -106,11 +116,14 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
           variant="icon"
           size="40px"
         >
-          {isFavorite ? (
-            <img src="img/icons/favorite-fill-icon.svg" alt="" />
-          ) : (
-            <img src="img/icons/favorite-icon.svg" alt="" />
-          )}
+          <img
+            src={
+              isFavorite
+                ? 'img/icons/favorite-fill-icon.svg'
+                : 'img/icons/favorite-icon.svg'
+            }
+            alt=""
+          />
         </Button>
       </div>
     </article>
