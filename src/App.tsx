@@ -7,12 +7,12 @@ import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
 import HomePage from './modules/HomePage/HomePage';
-import Layout from './layout/Layout';
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import PhonesPage from './modules/PhonesPage/PhonesPage';
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 import { ROUTES } from './constants/ROUTES';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
+import Layout from './Layout/Layout';
 
 const router = createHashRouter([
   {
