@@ -1,0 +1,11 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.home-page {
+  margin: 40px 0 80px;
+
+  &__content {
+    display: grid;
+    row-gap: 80px;
+  }
+}

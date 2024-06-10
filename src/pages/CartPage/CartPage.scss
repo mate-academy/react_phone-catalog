@@ -1,0 +1,35 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.cart-page {
+  margin-top: 40px;
+  margin-bottom: 80px;
+
+  &__main {
+    @include page-grid;
+  }
+
+  &__cart-list {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__checkout {
+    grid-column: 1 / -1;
+
+    height: fit-content;
+
+    position: sticky;
+    bottom: 0;
+
+    background-color: bisque;
+
+    @include on-desktop {
+      top: 40px;
+      grid-column: span 8;
+    }
+  }
+}

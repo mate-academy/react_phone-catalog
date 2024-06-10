@@ -1,0 +1,112 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.promo-slider {
+  --hide-navigation: 24px;
+
+  &__container {
+    @include page-grid;
+
+    grid-template-rows: 1fr var(--hide-navigation);
+
+    height: 200px;
+
+    @include on-tablet {
+      height: 300px;
+    }
+
+    @include on-desktop {
+      height: 432px;
+    }
+
+  }
+
+  &__content-content {
+    overflow: hidden;
+    grid-row: 1;
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 2 / -1;
+    }
+  }
+
+  &__button-left {
+    display: none;
+
+    @include on-desktop {
+      grid-column: 1;
+      display: block;
+    }
+  }
+
+  &__button-right {
+    display: none;
+
+    @include on-desktop {
+      grid-column: -1;
+      display: block;
+    }
+  }
+
+  &__content-list {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 300%;
+    height: 100%;
+  }
+
+  &__content-item {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__navigation {
+    justify-self: center;
+    display: flex;
+    gap: 4px;
+    grid-row: 2;
+    grid-column: 1 /-1;
+  }
+
+  &__radio {
+    width: 1px;
+    height: 1px;
+    opacity: 1;
+    z-index: -10;
+    position: absolute;
+  }
+
+  &__radio-label {
+    width: 24px;
+    height: var(--hide-navigation);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  &__radio-button {
+    background-color: $elements-color;
+
+    width: 14px;
+    height: 4px;
+
+    @include hover(scale, 1.2);
+
+    &--active {
+      background-color: $primary-color;
+    }
+  }
+}

@@ -1,1 +1,52 @@
-// not empty
+@font-face {
+  font-family: Mont;
+  src:
+    url('./../public/fonts/mont-bold-webfont.woff') format('woff'),
+    url('./../public/fonts/mont-bold-webfont.woff2') format('woff2');
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    url('./../public/fonts/mont-regular-webfont.woff') format('woff'),
+    url('./../public/fonts/mont-regular-webfont.woff2') format('woff2');
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src:
+    url('./../public/fonts/mont-semibold-webfont.woff') format('woff'),
+    url('./../public/fonts/mont-semibold-webfont.woff2') format('woff2');
+  font-weight: 600;
+}
+
+h1, h2, h3 {
+  font-weight: 700;
+}
+
+h1 {
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+h2 {
+  font-size: 22px;
+  line-height: 31px;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 26px;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+
+  font-family: Mont, monospace;
+}

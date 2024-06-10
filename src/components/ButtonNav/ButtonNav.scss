@@ -1,0 +1,35 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.button-nav {
+  box-sizing: border-box;
+  background-color: inherit;
+  border: 1px solid $icon-placeholder-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  height: 100%;
+  width: 100%;
+  min-width: 30px;
+
+  @include active(background-color, $primary-color);
+  @include hover(border-color, $primary-color);
+
+
+
+  &--left {
+    background-image: url('../../../public/img/ico/arrow-left.svg');
+
+    &:active {
+      background-image: url('../../../public/img/ico/arrow-left-active.svg');
+    }
+  }
+
+  &--right {
+    background-image: url('../../../public/img/ico/arrow-right.svg');
+
+    &:active {
+      background-image: url('../../../public/img/ico/arrow-right-active.svg');
+    }
+  }
+}

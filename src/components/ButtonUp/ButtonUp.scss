@@ -1,0 +1,37 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+.button-up {
+  background: inherit;
+  border: none;
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  cursor: pointer;
+  font-size: 12px;
+  color: $secondary-color;
+
+  &__box {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icon-placeholder-color;
+    background-image: url('../../../public/img/ico/arrow-up.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: border-color $effectDuration
+  }
+
+  @media (hover: hover) {
+    @include hover(color, $primary-color);
+
+    &:hover .button-up__box {
+      border-color: $primary-color;
+    }
+  }
+
+  &:active .button-up__box {
+    border: 1px solid $primary-color;
+    background-color: $primary-color;
+    background-image: url('../../../public/img/ico/arrow-up-active.svg');
+  }
+}

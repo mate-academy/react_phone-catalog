@@ -1,0 +1,8 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+.page-not-find {
+  &__content {
+    text-align: center;
+  }
+}

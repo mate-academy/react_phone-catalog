@@ -1,0 +1,14 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.product-details {
+  margin-top: 24px;
+  margin-bottom: 80px;
+
+  &__content {
+    display: grid;
+    gap: 80px;
+  }
+
+}

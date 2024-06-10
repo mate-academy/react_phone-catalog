@@ -1,0 +1,42 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.warning {
+  &-enter {
+    opacity: 0;
+  }
+  &-enter-active {
+    opacity: 1;
+    transition: opacity $effectDuration;
+  }
+  &-exit {
+    opacity: 1;
+  }
+  &-exit-active {
+    opacity: 0;
+    transition: opacity $effectDuration;
+  }
+
+  &__massage {
+    --bg-color: #df728ef2;
+
+    width: 50vw;
+    min-height: 25vh;
+
+    align-self: center;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+
+    background-color: var(--bg-color);
+    padding: 30px;
+
+    border-radius: 20px;
+    box-shadow: 0 -1px 72px 20px var(--bg-color);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}

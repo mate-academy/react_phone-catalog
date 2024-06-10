@@ -1,0 +1,70 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.menu-button {
+  --size: 32px;
+
+  font-size: 0;
+  width: var(--size);
+  height: var(--size);
+
+  background-color: inherit;
+  border: none;
+  cursor: pointer;
+
+  padding: 0;
+  margin-inline: 24px;
+
+  position: relative;
+
+  &--active {
+    margin-right: 0;
+  }
+
+  &__line-t,
+  &__line-m-1,
+  &__line-m-2,
+  &__line-b {
+    height: 4px;
+    width: var(--size);
+    background-color: $secondary-color;
+    position: absolute;
+
+    transition: all $effectDuration;
+  }
+
+  &__line-t {
+    top: 25%;
+    transform: translateY(-50%);
+  }
+
+  &__line-b {
+    bottom: 25%;
+    transform: translateY(50%);
+  }
+
+  &__line-m-1,
+  &__line-m-2 {
+    top: 50%;
+    transform: translateY(-50%) rotate(0deg);
+  }
+
+  &__line-m-1 {
+    &--active {
+      transform: translateY(-50%) rotate(45deg);
+      background-color: $primary-color;
+    }
+  }
+  &__line-m-2 {
+    &--active {
+      transform: translateY(-50%) rotate(-45deg);
+      background-color: $primary-color;
+    }
+  }
+
+  &__line-t--active,
+  &__line-b--active {
+    background-color: $primary-color;
+    display: none;
+  }
+}

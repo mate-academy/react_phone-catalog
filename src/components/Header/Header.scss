@@ -1,0 +1,45 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.header {
+  height: 65px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid $icon-placeholder-color;
+
+  &__right {
+    display: flex;
+  }
+
+  &__nuv {
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__left {
+    display: flex;
+  }
+
+  &__FavCart {
+    display: none;
+
+    @include on-desktop {
+      display: flex;
+    }
+  }
+
+  &__search {
+    height: 100%;
+  }
+
+  &__menu-button {
+    align-self: center;
+
+    @include on-desktop {
+      display: none;
+    }
+  }
+}

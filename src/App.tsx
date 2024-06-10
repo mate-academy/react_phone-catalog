@@ -1,7 +1,20 @@
+import React from 'react';
+import { Outlet } from 'react-router-dom';
+import './helpers/style/normalize.css';
 import './App.scss';
+import { Header } from './components/Header';
+import { Footer } from './components/Footer';
+import { ScrollToTop } from './components/ScrollToTop';
 
-export const App = () => (
-  <div className="App">
-    <h1>React Phone Catalog</h1>
-  </div>
-);
+export const App: React.FC = () => {
+  return (
+    <div className="app">
+      <Header />
+      <ScrollToTop />
+
+      <Outlet />
+
+      <Footer />
+    </div>
+  );
+};

@@ -1,0 +1,69 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.favorites {
+  box-sizing: border-box;
+  border: none;
+  width: 65px;
+  height: 65px;
+
+  position: relative;
+
+  @include hover(border-color, $primary-color);
+
+  @include on-desktop {
+    border: 1px solid $icon-placeholder-color;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    background-image: url('../../../public/img/ico/heart.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+
+    transition: background-color $effectDuration;
+
+    &--active {
+      &::after {
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: $primary-color;
+        position: absolute;
+        bottom: 0;
+        right: 0;
+      }
+    }
+
+    &:active {
+      background-color: $primary-color;
+      background-image: url('../../../public/img/ico/heart-active.svg');
+    }
+  }
+
+  &__count {
+    --size: 15px;
+
+    display: block;
+    border-radius: 50%;
+    background-color: #EB5757;
+
+    color: white;
+    text-align: center;
+    line-height: var(--size);
+    font-size: 10px;
+
+    width: var(--size);
+    height: var(--size);
+
+    position: absolute;
+    left: 50%;
+    top: 50%;
+
+    transform: translateY(-100%);
+  }
+}

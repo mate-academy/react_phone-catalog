@@ -1,0 +1,80 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.product-card {
+  --title-line-height: 21px;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 32px 24px 24px;
+  border: 1px solid $elements-color;
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__img {
+    width: 100%;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    margin: 0;
+    padding: 0;
+    margin-bottom: 17px;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    color: $primary-color;
+
+    height: calc(var(--title-line-height) * 2);
+    -webkit-box-orient: vertical;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__prices {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 8px;
+    font-size: 22px;
+    line-height: 30px;
+  }
+
+  &__current-price {
+    margin: 0;
+    font-weight: 700;
+    color: $primary-color;
+  }
+
+  &__fool-price {
+    margin: 0;
+    font-weight: 500;
+    color: $secondary-color;
+    text-decoration:line-through;
+  }
+
+  &__characteristics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 8px;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    margin-bottom: 16px;
+  }
+
+  &__characteristics-name {
+    margin: 0;
+    color: $secondary-color;
+  }
+
+  &__characteristics-value {
+    justify-self: end;
+    color: $primary-color;
+  }
+}

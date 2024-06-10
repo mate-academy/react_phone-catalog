@@ -1,0 +1,41 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.checkout {
+  border: 1px solid $elements-color;
+  text-align: center;
+  padding: 24px;
+
+  display: grid;
+  gap: 24px;
+
+  &__price {
+    margin: 0;
+    padding: 0;
+  }
+
+  &__quantity {
+    color: $secondary-color;
+    font-size: 14px;
+  }
+
+  &__line {
+    width: 100%;
+    height: 1px;
+    background-color: $elements-color;
+  }
+
+  &__button {
+    background-color: $primary-color;
+    color: white;
+    padding: 14px;
+    cursor: pointer;
+    transition: all, $effectDuration ;
+
+
+    &:active {
+      color: $primary-color;
+      background-color: inherit;
+    }
+  }
+}

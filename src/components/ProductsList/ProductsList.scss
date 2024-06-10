@@ -1,0 +1,22 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+.products-list {
+  &__container {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__cart {
+    grid-column: span 2;
+
+    @include onTablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

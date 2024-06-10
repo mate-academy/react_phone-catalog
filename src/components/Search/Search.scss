@@ -1,0 +1,59 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.search {
+  box-sizing: border-box;
+
+  --icon-size: 16px;
+
+  height: 100%;
+  max-width: 325px;
+  padding-right: 24px;
+  cursor: text;
+
+  border: 1px solid $icon-placeholder-color;
+
+  display: flex;
+  align-items: center;
+
+  transition: border-color $effectDuration;
+
+  &--focus {
+    border-color: $primary-color;
+  }
+
+  &__clear,
+  &__label {
+    width: var(--icon-size);
+    height: var(--icon-size);
+  }
+
+  &__clear {
+    box-sizing: border-box;
+
+    background-image: url(../../../public/img/ico/delete.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+
+    font-size: 0;
+    background-color: inherit;
+    border: 1px solid white;
+    cursor: pointer;
+
+    @include hover(border-color, $elements-color);
+    @include active(border-color, $primary-color);
+  }
+
+  &__input {
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-inline: 10px;
+    outline:none;
+    border: none;
+  }
+
+  &__label {
+    background-image: url(../../../public/img/ico/search.svg);
+  }
+}

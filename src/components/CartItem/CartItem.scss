@@ -1,0 +1,62 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.cart-item {
+  --quantity-size: 32px;
+
+  box-sizing: border-box;
+
+  display: grid;
+  grid-template-columns: min-content 80px 1fr;
+  grid-template-rows: repeat(2, fit-content);
+  gap: 10px;
+  align-items: center;
+
+  @include on-desktop {
+    grid-template-columns: min-content 80px 1fr min-content 1fr;
+    gap: 24px;
+  }
+
+  padding: 24px 40px 24px 24px;
+  border: 1px solid $elements-color;
+
+  &__img {
+    width: 80px;
+  }
+
+  &__quantity-count,
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    margin: 0;
+  }
+
+  &__quantity {
+    display: flex;
+    align-items: center;
+    grid-column: span 2;
+
+    @include on-desktop {
+      grid-column: span 1;
+    }
+  }
+
+  &__quantity-count {
+    display: block;
+    width: var(--quantity-size);
+    height: var(--quantity-size);
+    line-height: var(--quantity-size);
+    text-align: center;
+  }
+
+  &__price {
+    justify-self: end;
+    grid-column: 3;
+
+
+    @include on-desktop {
+    grid-column: 5;
+    }
+  }
+}

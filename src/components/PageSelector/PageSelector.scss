@@ -1,0 +1,69 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.page-selector {
+
+  &__container {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+  }
+
+  &__link {
+    --link-size: 32px;
+
+    color: $primary-color;
+    text-decoration: none;
+
+    width: var(--link-size);
+    height: var(--link-size);
+
+    border: 1px solid $elements-color;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-position: center;
+    background-repeat: no-repeat;
+
+    @include hover(border-color, $primary-color);
+    @include active(background-color, $primary-color);
+    @include active(color, white);
+
+
+    &--right {
+      background-image: url('../../../public/img/ico/arrow-right.svg');
+
+      &:active {
+        background-image: url('../../../public/img/ico/arrow-right-active.svg');
+      }
+    }
+
+    &--left {
+      background-image: url('../../../public/img/ico/arrow-left.svg');
+
+      &:active {
+        background-image: url('../../../public/img/ico/arrow-left-active.svg');
+      }
+    }
+
+    &--arrow {
+      border: 1px solid $icon-placeholder-color;
+    }
+
+    &--active {
+      color: white;
+      background-color: $primary-color;
+    }
+
+    &--disable-left {
+      background-image: url('../../../public/img/ico/arrow-left-disable.svg');
+    }
+
+    &--disable-right {
+      background-image: url('../../../public/img/ico/arrow-right-disable.svg');
+    }
+  }
+}

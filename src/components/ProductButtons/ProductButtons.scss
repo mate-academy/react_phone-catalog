@@ -1,0 +1,68 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.product-buttons {
+  --size: 40px;
+
+  &--big {
+    --size: 48px;
+  }
+
+  display: flex;
+  gap: 8px;
+
+  &__cart,
+  &__favorite {
+    cursor: pointer;
+
+    @include hover(border-color, $primary-color);
+  }
+
+  &__cart {
+    width: 100%;
+
+    background-color: $primary-color;
+    color: white;
+    border: none;
+
+    &:active {
+      background-color: inherit;
+      color: #27ae60;
+    }
+
+    &--selected {
+      background-color: inherit;
+      border: 1px solid $elements-color;
+
+      color: #27ae60;
+
+      &:active {
+        background-color: $primary-color;
+        color: white;
+      }
+    }
+  }
+
+  &__favorite {
+    width: var(--size);
+    height: var(--size);
+    border: 1px solid $icon-placeholder-color;
+
+    flex-shrink: 0;
+
+    background-color: white;
+    background-image: url(../../../public/img/ico/heart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include active(background-color, $primary-color);
+
+    &:active {
+      background-image: url(../../../public/img/ico/heart-active.svg);
+    }
+
+    &--selected {
+      background-image: url(../../../public/img/ico/heart-selected.svg);
+    }
+  }
+}

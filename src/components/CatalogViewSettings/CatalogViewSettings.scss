@@ -1,0 +1,75 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.selectors {
+  display: flex;
+  gap: 16px;
+}
+
+.selector {
+  --indent: 12px;
+  --size-arrow: 16px;
+  --padding-inline: var(--indent) calc(var(--indent) * 2 + var(--size-arrow));
+
+  display: grid;
+  gap: 4px;
+  position: relative;
+
+  &__container {
+    position: relative;
+  }
+
+  &__title {
+    margin: 0;
+    font-size: 12px;
+    color: $secondary-color;
+  }
+
+  &__arrow {
+    position: absolute;
+    z-index: -9999;
+
+    right: var(--indent);
+    top: 50%;
+    transform: translateY(-50%);
+
+    width: var(--size-arrow);
+    height: var(--size-arrow);
+    background-image: url(../../../public/img/ico/arrow-down.svg);
+
+    @include hover(background-image, url(../../../public/img/ico/arrow-down-active.svg));
+  }
+
+  &__body {
+    margin: 0;
+    padding-block: 10px;
+    padding-inline: var(--padding-inline);
+    border-color: $icon-placeholder-color;
+    cursor: pointer;
+
+    background: transparent;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+
+    &:focus-visible {
+      border-color: $primary-color;
+
+      outline: none;
+    }
+
+    @include hover(border-color, $primary-color);
+
+    &__body:focus + .selector__arrow,
+    &__body.focus-visible + .selector__arrow {
+      transform: translateY(-50%) rotate(180deg); /* Поворачиваем стрелку */
+    }
+  }
+
+  &__option {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 600;
+    color: $primary-color;
+  }
+}

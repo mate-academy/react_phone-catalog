@@ -1,0 +1,69 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.nav {
+  margin-left: 40px;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: end;
+
+    margin: 0;
+    padding: 0;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 64px;
+      height: 100%;
+    }
+  }
+
+  &__item {
+    display: flex;
+    height: 100%;
+    list-style: none;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+
+    position: relative;
+  }
+
+  &__link {
+    color: $primary-color;
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+
+    @include hover(color, $primary-color);
+
+    @include on-desktop {
+      color: $secondary-color;
+    }
+
+    &--footer {
+      color: $secondary-color;
+    }
+
+    &--active {
+      color: $primary-color;
+
+      &::after {
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: $primary-color;
+        position: absolute;
+        right: 0;
+        bottom: -10px;
+
+        @include on-desktop {
+          bottom: 0;
+        }
+      }
+    }
+  }
+}

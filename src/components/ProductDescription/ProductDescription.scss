@@ -1,0 +1,45 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.product-description {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+
+  @include page-grid;
+
+  &__article-title {
+    margin: 0;
+    margin-bottom: 32px;
+    padding: 16px;
+    border-bottom: 1px solid $elements-color;
+  }
+
+  &__about {
+    grid-column: span 12;
+  }
+
+  &__text {
+    color: $secondary-color;
+  }
+
+  &__tech-specs {
+    grid-column: 14 / -1;
+  }
+
+  &__tech-table {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    row-gap: 8px;
+  }
+
+  &__tech-name {
+    color: $secondary-color;
+  }
+
+  &__tech-value {
+    justify-self: end;
+    color: $primary-color;
+  }
+}

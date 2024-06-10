@@ -1,0 +1,42 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+@import '../../helpers/style/disable';
+
+.direction {
+  display: flex;
+
+  &__icon-link {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../public/img/ico/home.svg');
+    background-position: start;
+    background-repeat: no-repeat;
+
+    padding: 0 10px 0 0;
+  }
+
+  &__point-box {
+    display: flex;
+  }
+
+  &__point-arrow {
+    height: 16px;
+    width: 16px;
+    background-image: url('../../../public/img/ico/arrow-right-disable.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__point-link {
+    padding-inline: 10px;
+
+    font-size: 12px;
+    line-height: 15px;
+    color: $primary-color;
+
+    text-decoration: none;
+
+    width: fit-content;
+  }
+}

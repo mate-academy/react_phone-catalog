@@ -1,0 +1,41 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.menu {
+  position: absolute;
+  z-index: 100;
+
+  background-color: rgb(162, 162, 162);
+
+  width: 100vw;
+  height: 100vh;
+
+  overflow: auto;
+
+  &__content {
+    margin-top: 20px;
+    display: grid;
+    gap: 24px;
+    justify-items: end;
+  }
+}
+
+.CSSTransition-menu {
+  &-enter {
+    opacity: 0;
+    transform: translateX(100%);
+  }
+  &-enter-active {
+    opacity: 1;
+    transform: translateX(0);
+    transition: all $effectDuration;
+  }
+  &-exit {
+    opacity: 1;
+  }
+  &-exit-active {
+    opacity: 0;
+    transform: translateX(100%);
+    transition: all $effectDuration;
+  }
+}

@@ -1,0 +1,38 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.button-quantity {
+  --size: 32px;
+
+  font-size: 0;
+  width: var(--size);
+  height: var(--size);
+
+  background-color: inherit;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  border: 1px solid $icon-placeholder-color;
+
+  cursor: pointer;
+
+  @include hover(border-color, $primary-color);
+  @include active(background-color, $primary-color);
+
+  &--plus {
+    background-image: url(../../../public/img/ico/plus.svg);
+
+    @include active(background-image, url(../../../public/img/ico/plus-active.svg));
+  }
+
+  &--minus {
+    background-image: url(../../../public/img/ico/minus.svg);
+
+    @include active(background-image, url(../../../public/img/ico/minus-active.svg));
+  }
+
+  &--disable {
+    border: 1px solid $elements-color;
+    opacity: 0.5;
+  }
+}

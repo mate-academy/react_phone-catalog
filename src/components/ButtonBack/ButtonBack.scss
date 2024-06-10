@@ -1,0 +1,15 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.button-back {
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  padding: 3px;
+
+  text-decoration: none;
+  color: $secondary-color;
+
+  @include hover(color, $primary-color)
+}

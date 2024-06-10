@@ -1,0 +1,11 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+.logo-link {
+  display: flex;
+  justify-content: center;
+  padding: 25px;
+  width: fit-content;
+
+  @include hover(scale, 1.1);
+}

@@ -1,0 +1,9 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.disable {
+  pointer-events: none;
+  color: $secondary-color;
+  border-color: $secondary-color;
+}

@@ -1,0 +1,56 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.footer {
+  --grid-columns: 2;
+  --grid-rows: 3;
+
+  &__container {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns), 1fr);
+    grid-template-rows: var(--grid-rows);
+    row-gap: 15px;
+
+    @include on-desktop {
+      --grid-columns: 3;
+      --grid-rows: 2;
+    }
+  }
+
+  &__logo {
+    place-self: center start;
+  }
+
+  &__nav {
+    place-self: center end;
+
+
+    grid-column: 2;
+
+    @include on-desktop {
+      justify-self: center;
+    }
+  }
+
+  &__button {
+    justify-self: end;
+
+    grid-column: 2;
+    grid-row: 2;
+
+    @include on-desktop {
+      grid-column: 3;
+      grid-row: 1;
+    }
+  }
+
+  &__git-hab-link {
+    grid-row: 3;
+    grid-column: 1 / -1;
+    justify-self: center;
+
+    @include on-desktop {
+      grid-row: 2;
+    }
+  }
+}

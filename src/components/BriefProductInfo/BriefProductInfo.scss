@@ -1,0 +1,51 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.brief-product-info {
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__price-current {
+    margin: 0;
+    padding: 0;
+    font-size: 32px;
+  }
+
+  &__price-fool {
+    font-size: 28px;
+    text-decoration: line-through;
+    color: $secondary-color;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
+
+  &__characteristics {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    align-items: center;
+    row-gap: 8px;
+    font-weight: 600;
+    font-size: 12px;
+  }
+
+  &__characteristics-name {
+    grid-column: 1;
+    margin: 0;
+    padding: 0;
+    color: $secondary-color;
+  }
+
+  &__characteristics-value {
+    grid-column: 2;
+    justify-self: end;
+    color: $primary-color;
+  }
+}

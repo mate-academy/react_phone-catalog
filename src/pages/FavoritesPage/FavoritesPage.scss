@@ -1,0 +1,26 @@
+@import "../../helpers/style/variables";
+@import "../../helpers/style/mixins";
+
+
+.favorites-page {
+  &__content {
+    display: grid;
+    gap: 40px;
+
+    margin-bottom: 80px;
+    margin-top: 24px;
+  }
+
+  &__title {
+    display: grid;
+    gap: 8px;
+  }
+
+  &__main-title {
+    margin: 0;
+  }
+
+  &__side-title {
+    color: $secondary-color;
+  }
+}
