@@ -1,12 +1,11 @@
-/* eslint-disable import/no-extraneous-dependencies */
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
 import { SearchParams } from '../../types/Categories';
-// import debounce from 'lodash.debounce';
 import styles from './SearchField.module.css';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export const SearchField = () => {
   const { pathname } = useLocation();
@@ -14,9 +13,9 @@ export const SearchField = () => {
   const query = searchParams.get(SearchParams.Query) || '';
   const [isSearchFocused, setIsSearchFocused] = useState(false);
   const [inputQuery, setInputQuery] = useState(query);
-
   const titleField = useRef<HTMLInputElement>(null);
   const firstRender = useRef(true);
+  const debouncedSearch = useDebounce(inputQuery, 500);
 
   useEffect(() => {
     if (titleField.current && isSearchFocused) {
@@ -34,26 +33,24 @@ export const SearchField = () => {
     setInputQuery('');
   }, [pathname]);
 
-  const debouncedSearch = (newQuery: string) => {
+  useEffect(() => {
     setSearchParams(
-      getSearchWith({ [SearchParams.Query]: newQuery || null }, searchParams),
+      getSearchWith(
+        { [SearchParams.Query]: debouncedSearch || null },
+        searchParams,
+      ),
     );
-  };
-
-  // const debouncedSearch = debounce((newQuery: string) => {
-  //   setSearchParams(
-  //     getSearchWith({ [SearchParams.Query]: newQuery || null }, searchParams),
-  //   );
-  // }, 1000);
+  }, [debouncedSearch, searchParams, setSearchParams]);
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputQuery(event.target.value);
-    debouncedSearch(event.target.value);
   };
 
   const handleClearSearch = () => {
     setInputQuery('');
-    setSearchParams(getSearchWith({ query: null }, searchParams));
+    setSearchParams(
+      getSearchWith({ [SearchParams.Query]: null }, searchParams),
+    );
   };
 
   return (
@@ -85,17 +82,17 @@ export const SearchField = () => {
           aria-label="search"
           onClick={() => setIsSearchFocused(true)}
         >
-          <div className="icon icon--search" />
+          <img src="img/icons/search-icon.svg" alt="Search icon" />
         </button>
       ) : (
         <button
           data-cy="searchDelete"
           type="button"
           className={styles.searchFieldButton}
-          aria-label="search"
+          aria-label="clear search"
           onClick={handleClearSearch}
         >
-          <div className="icon icon--remove" />
+          <img src="img/icons/close-icon-hover.svg" alt="Clear search icon" />
         </button>
       )}
     </label>

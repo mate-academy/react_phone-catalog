@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
@@ -10,6 +10,7 @@ import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
 import ProductsList from '../shared/ProductsList/ProductsList';
+import { SearchParams } from '../../types/Categories';
 import s from './PhonesPage.module.css';
 
 const PhonesPage = () => {
@@ -19,12 +20,12 @@ const PhonesPage = () => {
   const [isChangingPage, setIsChangingPage] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
+  const [searchParams] = useSearchParams();
 
-  const queryParams = new URLSearchParams(location.search);
-  const initialSort = queryParams.get('sort') || 'newest';
-  const initialPerPage = queryParams.get('perPage') || '8';
-  const initialPage = queryParams.get('page') || '1';
+  const query = searchParams.get(SearchParams.Query) || '';
+  const initialSort = searchParams.get('sort') || 'newest';
+  const initialPerPage = searchParams.get('perPage') || '8';
+  const initialPage = searchParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
     initialPerPage === 'all' ? 'all' : Number(initialPerPage),
@@ -56,8 +57,12 @@ const PhonesPage = () => {
     newQueryParams.append('sort', sortOption);
     newQueryParams.append('page', currentPage.toString());
     newQueryParams.append('perPage', perPage.toString());
+    if (query) {
+      newQueryParams.append(SearchParams.Query, query);
+    }
+
     navigate(`?${newQueryParams.toString()}`);
-  }, [currentPage, perPage, sortOption, navigate]);
+  }, [currentPage, perPage, sortOption, query, navigate]);
 
   const handlePageChange = (page: number) => {
     setIsChangingPage(true);
@@ -101,10 +106,18 @@ const PhonesPage = () => {
     }
   });
 
+  const filteredPhones = sortedPhones.filter(phone =>
+    phone.name.toLowerCase().includes(query.toLowerCase()),
+  );
+
+// prettier-ignore
   const paginatedPhones =
     perPage === 'all'
-      ? sortedPhones
-      : sortedPhones.slice((currentPage - 1) * perPage, currentPage * perPage);
+      ? filteredPhones
+      : filteredPhones.slice(
+        (currentPage - 1) * perPage,
+        currentPage * perPage,
+      );
 
   return (
     <div className={s.content}>
@@ -154,7 +167,7 @@ const PhonesPage = () => {
             <div className={s.pagination}>
               {typeof perPage === 'number' && phones.length > perPage && (
                 <Pagination
-                  total={sortedPhones.length}
+                  total={filteredPhones.length}
                   currentPage={currentPage}
                   perPage={perPage}
                   onPageChange={handlePageChange}

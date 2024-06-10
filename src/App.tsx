@@ -5,7 +5,6 @@ import { RouterProvider, createHashRouter } from 'react-router-dom';
 
 import NotFoundPage from './components/NotFoundPage/NotFoundPage';
 import { ROUTES } from './constants/ROUTES';
-import Layout from './layout/Layout';
 import AccessoriesPage from './modules/AccessoriesPage/PhonesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
@@ -13,6 +12,7 @@ import HomePage from './modules/HomePage/HomePage';
 import PhonesPage from './modules/PhonesPage/PhonesPage';
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
+import Layout from './Layout/Layout';
 
 const router = createHashRouter([
   {

@@ -14,7 +14,7 @@
   display: flex;
   margin-left: 24px;
   transition-duration: 0.3s;
-  color: var(--black);
+  color: var(--primary-color);
 }
 
 .logo:hover {
