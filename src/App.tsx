@@ -2,7 +2,6 @@
 import './App.css';
 
 import { RouterProvider, createHashRouter } from 'react-router-dom';
-
 import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';

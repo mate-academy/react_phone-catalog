@@ -1,34 +1,30 @@
 .searchField {
-  width: 327px;
+  width: 100%;
+  max-width: 327px;
   height: 100%;
   display: flex;
   align-items: center;
   background-color: var(--white-color);
   border-left: 1px solid var(--primary-color);
-  padding: 24px;
+  padding: 12px;
 }
 
 @media (min-width: 1024px) {
   .searchField {
-    width: 250px;
-  }
-}
-
-@media (min-width: 768px) {
-  .searchField {
-    padding: 12px;
+    max-width: 250px;
   }
 }
 
 @media (max-width: 767px) {
   .searchField {
-    width: 200px;
+    max-width: 200px;
   }
 }
 
 @media (max-width: 360px) {
   .searchField {
-    display: none;
+    display: flex;
+    max-width: 150px;
   }
 }
 
@@ -40,7 +36,7 @@
   font-size: 14px;
   font-weight: 600;
   background-color: var(--white-color);
-  color: var(--white-color);
+  color: var(--primary-color);
 }
 
 @media (max-width: 767px) {
@@ -56,7 +52,7 @@
 .searchFieldInput::placeholder {
   font-size: 14px;
   font-weight: 600;
-  color: var(--icons);
+  color: var(--icon-color);
 }
 
 @media (max-width: 767px) {
@@ -66,18 +62,20 @@
 }
 
 .searchFieldButton {
-  width: 32px;
-  height: 32px;
+  width: 24px; /* Increased button size for better visibility */
+  height: 24px; /* Increased button size for better visibility */
   display: flex;
   justify-content: center;
   align-items: center;
-  transition-duration: var(--transition-duration);
+  transition-duration: var(--basic-transition-time);
+  margin-left: 8px; /* Add some space between the input and the button */
+}
+
+.searchFieldButton img {
+  width: 100%; /* Ensure icons fit within the button */
+  height: 100%;
 }
 
 .searchFieldButton:hover {
   transform: scale(1.2);
-}
-
-.focus {
-  background-color: var(--hover-color);
 }

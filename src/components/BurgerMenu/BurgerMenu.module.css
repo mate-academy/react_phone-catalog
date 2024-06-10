@@ -33,6 +33,13 @@
   padding: 16px;
 }
 
+.mobileMenuContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: calc(100vh - 48px);
+}
+
 .mobileMenuNavList {
   display: flex;
   flex-direction: column;
@@ -56,7 +63,7 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  transition-duration: var(--transition-duration);
+  transition-duration: var(--basic-transition-time);
 }
 
 .mobileMenuNavListLink:hover {

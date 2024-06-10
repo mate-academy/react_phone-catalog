@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import classNames from 'classnames';
 import { useState } from 'react';
@@ -8,9 +8,11 @@ import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
 import { MobileMenu } from '../BurgerMenu';
 import styles from './Header.module.css';
+import { SearchField } from '../SearchField/SearchField';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
+  const { pathname } = useLocation();
 
   const cart = useCartStore(state => state.cartItems);
   const favorites = useFavoritesStore(state => state.favorites);
@@ -24,6 +26,12 @@ const Header = () => {
     classNames(styles.iconLink, {
       [styles.activeLink]: isActive,
     });
+
+  const isSearchShown =
+    pathname === `/${ROUTES.PHONES}` ||
+    pathname === `/${ROUTES.TABLETS}` ||
+    pathname === `/${ROUTES.ACCESSORIES}` ||
+    pathname === `/${ROUTES.FAVORITES}`;
 
   return (
     <header className={styles.header} id="header">
@@ -68,6 +76,8 @@ const Header = () => {
       </div>
 
       <div className={styles.containerRight}>
+        {isSearchShown && <SearchField />}
+
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
             <img src="img/icons/favorite-icon.svg" alt="" />
