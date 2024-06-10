@@ -4,7 +4,12 @@
 .item {
   border: 1px solid rgb(226, 230, 233);
   border-radius: 8px;
-  transition: transform 0.3s;
+  transition: border 0.3s;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid rgb(66, 25, 208);
+  }
 
   &__wrapper,
   &__content,
@@ -100,6 +105,7 @@
   }
 
   &__add-to-cart {
+    width: 125px;
     color: rgb(255, 255, 255);
     font-size: 14px;
     letter-spacing: 0.01em;
@@ -108,6 +114,20 @@
     padding: 10px;
     border-radius: 48px;
     background: rgb(66, 25, 208);
+    transition: all 0.3s;
+    border: 1px solid rgb(66, 25, 208);
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      color: $main-black;
+    }
+
+    &--added {
+      color: rgb(66, 25, 208);
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(226, 230, 233);
+    }
 
     @include on-tablet {
       padding: 10px 22px;
@@ -115,6 +135,7 @@
 
     @include on-desktop{
       padding: 10px 40px;
+      width: 160px;
     }
   }
 
@@ -124,6 +145,11 @@
     height: 40px;
     border-radius: 50%;
     border: 1px solid rgb(180, 189, 196);
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $main-black;
+    }
 
     &::after {
       content: '';
@@ -136,6 +162,12 @@
       background-repeat: no-repeat;
       background-size: contain;
       background-image: url('./img/favorite.svg');
+    }
+
+    &--selected {
+      &::after {
+        background-image: url('./img/favorite.png');
+      }
     }
   }
 }

@@ -7,13 +7,19 @@ interface Props {
   setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
   currentPage: PageSection;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  favourites: number[];
 }
 
 export const Header: React.FC<Props> = ({
   currentPage,
   setCurrentPage,
   setIsMenuOpen,
+  favourites,
 }) => {
+  const pagesToShow = Object.values(PageSection).filter(
+    link => link !== PageSection.Favorites && link !== PageSection.Cart,
+  );
+
   return (
     <header className={styles.header}>
       <a href="#" className={styles.header__logo}>
@@ -24,7 +30,7 @@ export const Header: React.FC<Props> = ({
           <ul
             className={`${styles.header__list} ${styles['header__list--pages']}`}
           >
-            {Object.values(PageSection).map(link => (
+            {pagesToShow.map(link => (
               <li
                 className={classNames(
                   styles.header__item,
@@ -50,15 +56,37 @@ export const Header: React.FC<Props> = ({
         </nav>
         <nav className={styles.header__navigation}>
           <ul className={styles.header__list}>
-            <li className={styles.header__button}>
-              <a href="" className={styles.header__link}>
-                <img src="img/header/favorite.svg" alt="favorite" />
-              </a>
+            <li
+              className={classNames(styles.header__button, {
+                [styles['header__button--active']]:
+                  currentPage === 'Favourites',
+              })}
+              onClick={() => setCurrentPage(PageSection.Favorites)}
+            >
+              <button
+                className={`${styles.header__link} ${styles['header__link--button']}`}
+              >
+                <img
+                  className={styles.header__image}
+                  src="img/header/favorite.svg"
+                  alt="favorite"
+                />
+                {favourites.length > 0 && (
+                  <span className={styles.header__span}>
+                    {favourites.length}
+                  </span>
+                )}
+              </button>
             </li>
-            <li className={styles.header__button}>
-              <a href="" className={styles.header__link}>
+            <li
+              className={classNames(styles.header__button, {
+                [styles['header__button--active']]: currentPage === 'Cart',
+              })}
+              onClick={() => setCurrentPage(PageSection.Cart)}
+            >
+              <button className={styles.header__link}>
                 <img src="img/header/cart.svg" alt="cart" />
-              </a>
+              </button>
             </li>
           </ul>
         </nav>

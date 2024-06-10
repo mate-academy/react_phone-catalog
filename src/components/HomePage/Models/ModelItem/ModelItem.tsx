@@ -6,9 +6,40 @@ import { Products } from '../../../../types/Products';
 interface Props {
   model: Products;
   modelsTitle: string;
+  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
+  favourites: number[];
+  cart: number[];
+  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
+export const ModelItem: React.FC<Props> = ({
+  model,
+  modelsTitle,
+  setFavourites,
+  favourites,
+  cart,
+  setCart,
+}) => {
+  const selected = favourites.find(number => number === model.id);
+  const added = cart.find(number => number === model.id);
+  const handleAddFavourite = () => {
+    if (selected) {
+      setFavourites(prevFavourites =>
+        prevFavourites.filter(number => number !== model.id),
+      );
+    } else {
+      setFavourites(prevFavourites => [...prevFavourites, model.id]);
+    }
+  };
+
+  const handleAddCart = () => {
+    if (added) {
+      setCart(prevCart => prevCart.filter(number => number !== model.id));
+    } else {
+      setCart(prevCart => [...prevCart, model.id]);
+    }
+  };
+
   return (
     <div className={`models__item ${styles.item}`}>
       <div className={styles.item__wrapper}>
@@ -50,10 +81,32 @@ export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
             </div>
           </div>
           <div className={styles.item__buttons}>
-            <a href="" className={styles['item__add-to-cart']}>
-              Add to cart
-            </a>
-            <button className={styles['item__add-to-favorite']}></button>
+            {!added ? (
+              <button
+                className={styles['item__add-to-cart']}
+                onClick={handleAddCart}
+              >
+                Add to cart
+              </button>
+            ) : (
+              <button
+                className={`${styles['item__add-to-cart']} ${styles['item__add-to-cart--added']}`}
+                onClick={handleAddCart}
+              >
+                Added
+              </button>
+            )}
+            {!selected ? (
+              <button
+                className={`${styles['item__add-to-favorite']} ${styles['item__add-to-favorite--default']}`}
+                onClick={handleAddFavourite}
+              ></button>
+            ) : (
+              <button
+                className={`${styles['item__add-to-favorite']} ${styles['item__add-to-favorite--selected']}`}
+                onClick={handleAddFavourite}
+              ></button>
+            )}
           </div>
         </div>
       </div>

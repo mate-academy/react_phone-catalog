@@ -9,6 +9,12 @@ html {
   scroll-behavior: smooth;
 }
 
+.App {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
 .swiper-button-next,
 .swiper-button-prev {
   display: none!important;

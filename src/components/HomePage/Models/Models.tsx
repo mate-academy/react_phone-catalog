@@ -7,12 +7,20 @@ interface Props {
   phones: Products[];
   swiperIndex: number;
   modelsTitle: string;
+  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
+  favourites: number[];
+  cart: number[];
+  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export const Models: React.FC<Props> = ({
   phones,
   swiperIndex,
   modelsTitle,
+  setFavourites,
+  favourites,
+  cart,
+  setCart,
 }) => {
   return (
     <section className={`page__models ${styles.models}`}>
@@ -31,6 +39,10 @@ export const Models: React.FC<Props> = ({
         models={phones}
         swiperIndex={swiperIndex}
         modelsTitle={modelsTitle}
+        favourites={favourites}
+        setFavourites={setFavourites}
+        cart={cart}
+        setCart={setCart}
       />
     </section>
   );

@@ -3,4 +3,6 @@ export enum PageSection {
   Phones = 'Phones',
   Tablets = 'Tablets',
   Accessories = 'Accessories',
+  Favorites = 'Favourites',
+  Cart = 'Cart',
 }

@@ -99,7 +99,20 @@
 
   &__button {
     width: 136px;
-    justify-content: start!important;
+    justify-content: space-between!important;
+    align-items: center;
   }
 
+  &__arrow {
+    width: 16px;
+    height: 16px;
+
+    &--up {
+      background-image: url('./img/arrowUp.svg');
+    }
+
+    &--down {
+      background-image: url('./img/arrowDown.svg');
+    }
+  }
 }

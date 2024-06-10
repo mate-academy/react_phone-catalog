@@ -90,6 +90,10 @@
     &--active {
       color: $main-black;
     }
+
+    &--button {
+      position: relative;
+    }
   }
 
   &__button {
@@ -100,6 +104,11 @@
     justify-content: center;
     box-shadow: -1px 0 0 0 rgb(226, 230, 233);
     transition: $background-transition;
+    border-bottom: 3px solid transparent;
+
+    &--active {
+      border-bottom: 3px solid $main-black
+    }
 
     &:hover {
       background-color: rgb(226, 230, 233);
@@ -127,6 +136,19 @@
     @include on-tablet {
       display: none;
     }
+  }
 
+  &__span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    top: -8px;
+    left: 8px;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    background: rgb(66, 25, 208);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
   }
 }

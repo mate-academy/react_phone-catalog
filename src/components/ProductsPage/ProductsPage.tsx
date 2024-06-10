@@ -8,13 +8,25 @@ import { PerPage } from '../../types/ItemsPerPage';
 import classNames from 'classnames';
 import 'bulma/css/bulma.css';
 import { Pagination } from './Pagination';
+import { Footer } from '../Footer';
 
 interface Props {
   product: Products[];
   currentPage: PageSection;
+  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
+  favourites: number[];
+  cart: number[];
+  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const ProductsPage: React.FC<Props> = ({ product, currentPage }) => {
+export const ProductsPage: React.FC<Props> = ({
+  product,
+  currentPage,
+  setFavourites,
+  favourites,
+  cart,
+  setCart,
+}) => {
   const [filterBy, setFilterBy] = useState<FilterBy>(FilterBy.age);
   const [itemsPerPage, setItemsPerPage] = useState<PerPage>(PerPage.All);
   const [activeDropdown, setActiveDropdown] = useState(false);
@@ -85,9 +97,15 @@ export const ProductsPage: React.FC<Props> = ({ product, currentPage }) => {
                     aria-controls="dropdown-menu"
                   >
                     <span className={styles.page__item}>{filterBy}</span>
-                    <span className="icon is-small">
-                      <i className="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
+                    {activeDropdown ? (
+                      <span
+                        className={`${styles.page__arrow} ${styles['page__arrow--up']}`}
+                      ></span>
+                    ) : (
+                      <span
+                        className={`${styles.page__arrow} ${styles['page__arrow--down']}`}
+                      ></span>
+                    )}
                   </button>
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
@@ -131,9 +149,15 @@ export const ProductsPage: React.FC<Props> = ({ product, currentPage }) => {
                     aria-controls="dropdown-menu"
                   >
                     <span className={styles.page__item}>{itemsPerPage}</span>
-                    <span className="icon is-small">
-                      <i className="fas fa-angle-down" aria-hidden="true"></i>
-                    </span>
+                    {activeDropdownPage ? (
+                      <span
+                        className={`${styles.page__arrow} ${styles['page__arrow--up']}`}
+                      ></span>
+                    ) : (
+                      <span
+                        className={`${styles.page__arrow} ${styles['page__arrow--down']}`}
+                      ></span>
+                    )}
                   </button>
                 </div>
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
@@ -168,6 +192,10 @@ export const ProductsPage: React.FC<Props> = ({ product, currentPage }) => {
                   model={phone}
                   modelsTitle="Hot prices"
                   key={phone.id}
+                  setFavourites={setFavourites}
+                  favourites={favourites}
+                  cart={cart}
+                  setCart={setCart}
                 />
               ))}
           </div>
@@ -181,6 +209,7 @@ export const ProductsPage: React.FC<Props> = ({ product, currentPage }) => {
           />
         )}
       </div>
+      <Footer />
     </main>
   );
 };
