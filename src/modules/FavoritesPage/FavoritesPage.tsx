@@ -1,14 +1,15 @@
-import Heading from '../../UI/Heading/Heading';
-import s from './FavoritesPage.module.css';
-import { useProductStore } from '../../store/store';
-import ProductsList from '../shared/ProductsList/ProductsList';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { useEffect, useState } from 'react';
+
+import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Heading from '../../UI/Heading/Heading';
+import ProductsList from '../shared/ProductsList/ProductsList';
+import s from './FavoritesPage.module.css';
+import { useFavoritesStore } from '../../store/favoritesStore';
 
 const FavoritesPage = () => {
   const [isChangingPage, setIsChangingPage] = useState(false);
 
-  const favorites = useProductStore(state => state.favorites);
+  const favorites = useFavoritesStore(state => state.favorites);
 
   const handleLoadCard = () => {
     setIsChangingPage(true);
