@@ -14,24 +14,23 @@ const FavoritesPage = () => {
     setIsChangingPage(true);
     setTimeout(() => {
       setIsChangingPage(false);
-    }, 800)
-  }
+    }, 800);
+  };
 
   useEffect(() => {
     handleLoadCard();
   }, []);
 
   return (
-    <div className={s.content} >
-        <div className="container">
-       <Breadcrumbs />
-      <Heading as="h1" className={s.title}>Favorites</Heading>
-      <p className={s.quantity}>{`${favorites.length} models`}</p>
-      <ProductsList
-       products={favorites}
-       isChangingPage={isChangingPage}
-     />
-    </div>
+    <div className={s.content}>
+      <div className="container">
+        <Breadcrumbs />
+        <Heading as="h1" className={s.title}>
+          Favorites
+        </Heading>
+        <p className={s.quantity}>{`${favorites.length} models`}</p>
+        <ProductsList products={favorites} isChangingPage={isChangingPage} />
+      </div>
     </div>
   );
 };
