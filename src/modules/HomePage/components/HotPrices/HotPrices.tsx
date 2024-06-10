@@ -11,16 +11,29 @@ import SliderProducts from '../../../shared/SliderProducts/SliderProducts';
 const HotPrices = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
 
   useEffect(() => {
-    getPhones().then(res => {
-      const hotPricesPhones = res.filter(
-        phone => phone.priceRegular - phone.priceDiscount >= 100,
-      );
+    setIsLoadingProduct(true);
+    setIsLoading(true);
+    getPhones()
+      .then(res => {
+        const hotPricesPhones = res.filter(
+          phone => phone.priceRegular - phone.priceDiscount >= 100,
+        );
 
-      setPhones(hotPricesPhones);
-      setTotalPages(Math.ceil(hotPricesPhones.length / 3));
-    });
+        setPhones(hotPricesPhones);
+        setTotalPages(Math.ceil(hotPricesPhones.length / 3));
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 100);
+        setTimeout(() => {
+          setIsLoadingProduct(false);
+        }, 500);
+      });
   }, []);
 
   return (
@@ -28,6 +41,8 @@ const HotPrices = () => {
       sliderTitle={'Hot prices'}
       products={phones}
       totalPages={totalPages}
+      isLoading={isLoading}
+      isLoadingProduct={isLoadingProduct}
     />
   );
 };
