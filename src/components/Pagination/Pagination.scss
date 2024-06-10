@@ -1,0 +1,45 @@
+.pagination {
+  @include full-grid;
+  display: flex;
+  justify-content: center;
+  height: 32px;
+  gap: 16px;
+
+  &__pages {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__slider {
+    border: none;
+    cursor: pointer;
+    box-sizing: border-box;
+    height: 32px;
+    width: 32px;
+
+    &:first-child {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__page-link {
+    cursor: pointer;
+    color: $white;
+    box-sizing: border-box;
+    background-color: $surface-1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    @include defaultAnimation;
+
+    &:hover {
+      background-color: $elements;
+    }
+
+    &--active {
+      background-color: $accent;
+    }
+  }
+}

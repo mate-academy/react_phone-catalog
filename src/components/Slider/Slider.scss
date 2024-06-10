@@ -1,0 +1,52 @@
+.slider {
+  display: flex;
+  overflow: hidden;
+  position: relative;
+  min-width: 100vw;
+  height: 320px;
+  border: 1px solid $surface-2;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    min-width: 100%;
+    height: 189px;
+  }
+
+  @include on-desktop {
+    min-width: 100%;
+    height: 400px;
+  }
+
+  &__slides {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    display: flex;
+    @include slideAnimation;
+    height: 320px;
+
+    @include on-tablet {
+      height: 189px;
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+  }
+
+  &__slide {
+    min-width: 100vw;
+    height: 320px;
+    object-fit: cover;
+
+    @include on-tablet {
+      min-width: 490px;
+      height: 189px;
+    }
+
+    @include on-desktop {
+      min-width: 1040px;
+      height: 400px;
+    }
+  }
+}

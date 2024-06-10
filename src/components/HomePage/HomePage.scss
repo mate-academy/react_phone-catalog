@@ -1,0 +1,79 @@
+.home-page {
+  @include create-grid;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-bottom: 80px;
+  }
+
+  &__title {
+    color: $white;
+    padding-block: 32px;
+    @include full-grid;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: center;
+    @include full-grid;
+
+    @include on-tablet {
+      grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__product-slider {
+    @include full-grid;
+    @include home-margin-top;
+    @include on-desktop {
+      overflow: hidden;
+    }
+  }
+
+  &__product-links {
+    @include home-margin-top;
+  }
+
+  &__slide {
+    border: none;
+    background-image: url('../../img/Icons/Arrow.png');
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+
+    &-left {
+      grid-column: 1 / 2;
+      transform: rotate(180deg);
+    }
+
+    &-right {
+      grid-column: 12 / 13;
+    }
+
+    &-wrapper {
+      display: none;
+
+      &:hover {
+        background-color: $elements;
+        cursor: pointer;
+      }
+
+      @include on-tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 189px;
+        background-color: $surface-2;
+      }
+
+      @include on-desktop {
+        height: 400px;
+      }
+    }
+  }
+}

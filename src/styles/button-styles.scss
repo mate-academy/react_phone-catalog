@@ -1,0 +1,26 @@
+.button {
+  box-sizing: border-box;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0;
+  font-size: 14px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $accent;
+  color: $white;
+  box-sizing: border-box;
+  width: 176px;
+  height: 40px;
+  border: none;
+  @include defaultAnimation;
+
+  &:hover {
+    background-color: $light-accent;
+  }
+
+  &-selected {
+    color: $surface-2;
+  }
+}
