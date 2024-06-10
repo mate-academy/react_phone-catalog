@@ -1,27 +1,22 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 import React, { useState } from 'react';
-// eslint-disable-next-line import/no-extraneous-dependencies
 import Select, {
-  StylesConfig,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  OptionTypeBase,
   ActionMeta,
-  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
-  // @ts-ignore
-  ValueType,
+  SingleValue,
+  StylesConfig,
   components,
 } from 'react-select';
-// eslint-disable-next-line import/no-extraneous-dependencies
-import { FaChevronDown, FaChevronUp } from 'react-icons/fa';
 
-interface DropdownOption extends OptionTypeBase {
+interface DropdownOption {
   value: string;
+  label: string;
 }
 
 const getDropdownStyles = (
   dropdownWidth: string | number,
   dropdownHeight: string | number,
-): StylesConfig<DropdownOption> => ({
+): StylesConfig<DropdownOption, false> => ({
   control: (styles, { isFocused }) => ({
     ...styles,
     backgroundColor: 'white',
@@ -29,6 +24,7 @@ const getDropdownStyles = (
     boxShadow: isFocused ? '0 0 0 1px #313237' : styles.boxShadow,
     '&:hover': {
       borderColor: '#89939A',
+      backgroundColor: '#f7f7f7',
     },
     width: dropdownWidth,
     height: dropdownHeight,
@@ -48,6 +44,9 @@ const getDropdownStyles = (
         ? '#313237'
         : '#89939A',
     cursor: isDisabled ? 'not-allowed' : 'default',
+    ':hover': {
+      backgroundColor: '#f1f1f1',
+    },
     ':active': {
       ...styles[':active'],
       backgroundColor: !isDisabled
@@ -77,7 +76,7 @@ interface DropdownSelectProps {
   dropdownWidth?: string | number;
   dropdownHeight?: string | number;
   onChange?: (
-    selectedOption: ValueType<DropdownOption, false>,
+    selectedOption: SingleValue<DropdownOption>,
     actionMeta: ActionMeta<DropdownOption>,
   ) => void;
 }
