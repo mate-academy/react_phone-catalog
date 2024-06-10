@@ -61,7 +61,11 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
   };
 
   const handleToggleCart = (newProduct: Product) => {
-    toggleProductInCart(newProduct);
+    toggleProductInCart({
+      id: newProduct.id,
+      quantity: 1,
+      product: newProduct,
+    });
     toast.message(isInCart ? 'Removed from Cart' : 'Added to Cart', {
       description: newProduct.name,
     });

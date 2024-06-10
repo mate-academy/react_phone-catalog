@@ -1,45 +1,27 @@
-import { FC, useState } from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import styles from './CartItem.module.css';
-import Product from '../../../types/Product';
-import { ROUTES } from '../../../constants/ROUTES';
 import classNames from 'classnames';
+import { ROUTES } from '../../../../constants/ROUTES';
+import Product from '../../../../types/Product';
 
 interface Props {
   product: Product;
+  quantity: number;
   onDelete: (id: string) => void;
   onMinus: (id: string) => void;
   onPlus: (id: string) => void;
 }
 
-const DEFAULT_COUNTER_VALUE = 1;
-
-const CartItem: FC<Props> = ({ product, onDelete, onPlus, onMinus }) => {
-  const [counter, setCounter] = useState(DEFAULT_COUNTER_VALUE); // Temp solution
-  const [isDisabled, setIsDisabled] = useState(
-    () => counter === DEFAULT_COUNTER_VALUE,
-  );
+const CartItem: FC<Props> = ({
+  product,
+  quantity,
+  onDelete,
+  onPlus,
+  onMinus,
+}) => {
   const { images, name, id, priceRegular, priceDiscount } = product;
   const pathToDetailInfo = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
-
-  const handleMinus = (idToMinus: string) => {
-    setCounter(current => {
-      const copyCurrent = current - 1;
-
-      if (copyCurrent === 1) {
-        setIsDisabled(true);
-      }
-
-      return copyCurrent;
-    });
-    onMinus(idToMinus);
-  };
-
-  const handlePlus = (idToPlus: string) => {
-    setCounter(current => current + 1);
-    setIsDisabled(false);
-    onPlus(idToPlus);
-  };
 
   return (
     <div className={styles.cartItem}>
@@ -65,23 +47,24 @@ const CartItem: FC<Props> = ({ product, onDelete, onPlus, onMinus }) => {
               `${styles.actionBtn}`,
               `${styles.actionBtnMinus}`,
               {
-                [styles.actionBtnDisabled]: isDisabled,
+                [styles.actionBtnDisabled]: quantity === 1,
               },
             )}
-            disabled={isDisabled}
-            onClick={() => handleMinus(id)}
+            disabled={quantity === 1}
+            onClick={() => (quantity === 1 ? null : onMinus(id))}
             aria-label="Add button"
           ></button>
-          <span className={styles.counter}>{counter}</span>
+          <span className={styles.counter}>{quantity}</span>
           <button
             className={`${styles.actionBtn} ${styles.actionBtnPlus}`}
-            onClick={() => handlePlus(id)}
+            onClick={() => onPlus(id)}
             aria-label="Remove button"
           ></button>
         </div>
 
         <p className={styles.price}>
-          ${!!priceDiscount ? priceDiscount * counter : priceRegular * counter}
+          $
+          {!!priceDiscount ? priceDiscount * quantity : priceRegular * quantity}
         </p>
       </div>
     </div>
