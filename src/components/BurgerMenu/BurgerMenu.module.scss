@@ -21,7 +21,7 @@
   }
 
   &__header {
-    box-shadow: 0px 1px 0px 0px rgb(226, 230, 233);
+    box-shadow: 0 1px 0 0 rgb(226, 230, 233);
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -38,7 +38,7 @@
     width: 48px;
     height: 48px;
     position: relative;
-    box-shadow: -1px 0px 0px 0px rgb(226, 230, 233);
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
 
     &:hover {
       background-color: rgb(226, 230, 233);
@@ -47,8 +47,6 @@
     &::before,
     &::after {
       content: '';
-      top: 50%;
-      left: 50%;
       position: absolute;
       width: 9px;
       height: 1px;
@@ -118,7 +116,7 @@
     justify-content: center;
     width: 50%;
     padding: 24px;
-    box-shadow: -1px 0px 0px 0px rgb(226, 230, 233);
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
 
     &:hover {
       background-color: rgb(226, 230, 233);

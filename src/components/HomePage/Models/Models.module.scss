@@ -46,7 +46,7 @@
     position: relative;
 
     &::after {
-      font-family: swiper-icons;
+      font-family: swiper-icons, sans-serif;
       font-size: 10px;
       transform: translate(-50%, -50%);
       position: absolute;

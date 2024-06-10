@@ -1,5 +1,5 @@
 @import '../../styles/variables';
-@import '../../styles/mixins.scss';
+@import '../../styles/mixins';
 
 .header {
   position: fixed;
@@ -10,7 +10,7 @@
   height: 48px;
   align-items: center;
   gap: 32px;
-  box-shadow: 0px 1px 0px 0px rgb(226, 230, 233);
+  box-shadow: 0 1px 0 0 rgb(226, 230, 233);
   justify-content: space-between;
   background-color: #fff;
   z-index: 50;
@@ -98,7 +98,7 @@
     cursor: pointer;
     width: 48px;
     justify-content: center;
-    box-shadow: -1px 0px 0px 0px rgb(226, 230, 233);
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
     transition: $background-transition;
 
     &:hover {
@@ -116,7 +116,7 @@
     height: 48px;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 0px 0px rgb(226, 230, 233);
+    box-shadow: -1px 0 0 0 rgb(226, 230, 233);
     transition: $background-transition;
     cursor: pointer;
 

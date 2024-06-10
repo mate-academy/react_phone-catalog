@@ -2,7 +2,7 @@
 @import './styles/variables';
 
 * {
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
 }
 
 html {
@@ -36,8 +36,8 @@ html {
 }
 
 
-.swiper-button-prev:after,
-.swiper-button-next:after {
+.swiper-button-prev::after,
+.swiper-button-next::after {
   color: $main-black;
   transform: translate(-50%, -50%);
   font-size: 12px !important;
