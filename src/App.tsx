@@ -32,9 +32,9 @@ export const App: React.FC = () => {
     <div className={classNames('App', { 'no-scroll': isMenuOpen })}>
       <Header
         setCurrentPage={setCurrentPage}
+        favourites={favourites}
         currentPage={currentPage}
         setIsMenuOpen={setIsMenuOpen}
-        favourites={favourites}
       />
       {isMenuOpen && (
         <BurgerMenu
