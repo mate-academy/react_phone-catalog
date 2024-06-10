@@ -11,15 +11,30 @@ import SliderProducts from '../../../shared/SliderProducts/SliderProducts';
 const BrandNewModels = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(true);
+  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
 
   useEffect(() => {
-    getPhones().then(res => {
-      const newModel = '14';
-      const brandNewPhones = res.filter(phone => phone.name.includes(newModel));
+    setIsLoadingProduct(true);
+    setIsLoading(true);
+    getPhones()
+      .then(res => {
+        const newModel = '14';
+        const brandNewPhones = res.filter(phone =>
+          phone.name.includes(newModel),
+        );
 
-      setPhones(brandNewPhones);
-      setTotalPages(Math.ceil(brandNewPhones.length / 4));
-    });
+        setPhones(brandNewPhones);
+        setTotalPages(Math.ceil(brandNewPhones.length / 4));
+      })
+      .finally(() => {
+        setTimeout(() => {
+          setIsLoading(false);
+        }, 100);
+        setTimeout(() => {
+          setIsLoadingProduct(false);
+        }, 500);
+      });
   }, []);
 
   return (
@@ -27,6 +42,8 @@ const BrandNewModels = () => {
       sliderTitle={'Brand new models'}
       products={phones}
       totalPages={totalPages}
+      isLoading={isLoading}
+      isLoadingProduct={isLoadingProduct}
     />
   );
 };
