@@ -9,6 +9,12 @@
   display: grid;
   gap: 24px;
 
+  background-color: bisque;
+
+  @include on-desktop {
+    background-color: inherit;
+  }
+
   &__price {
     margin: 0;
     padding: 0;
@@ -30,8 +36,7 @@
     color: white;
     padding: 14px;
     cursor: pointer;
-    transition: all, $effectDuration ;
-
+    transition: all, $effectDuration;
 
     &:active {
       color: $primary-color;

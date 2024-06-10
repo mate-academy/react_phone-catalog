@@ -11,7 +11,7 @@ export const ButtonUp: React.FC<Props> = () => {
   return (
     <button type="button" className="button-up" onClick={goUp}>
       <span className="button-up__text">Back to top</span>
-      <div className="button-up__box"></div>
+      <div className="button-up__box" />
     </button>
   );
 };

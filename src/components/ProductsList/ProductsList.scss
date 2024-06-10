@@ -11,7 +11,7 @@
   &__cart {
     grid-column: span 2;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 3;
     }
 
