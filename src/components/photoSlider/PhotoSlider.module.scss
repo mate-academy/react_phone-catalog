@@ -1,0 +1,83 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.banner {
+  width: 100%;
+
+  &__maincontent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__photo {
+    width: 100%;
+
+    @include on-tablet {
+      width: 490px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+    }
+  }
+
+  &__button {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      min-width: 32px;
+      border: 1px solid $elements-border-color;
+      padding: 0;
+      font: inherit;
+      color: inherit;
+      cursor: pointer;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      transition-duration: 0.3s;
+    }
+
+    &-left {
+      background-image: url('../../../public/img/icons/Arrow-Left.svg');
+    }
+
+    &-right {
+      background-image: url('../../../public/img/icons/Arrow-Left.svg');
+      transform: rotate(180deg);
+    }
+  }
+
+  &__dots {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 14px;
+    height: 4px;
+    background-color: $elements-border-color;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $btns-border-color;
+    }
+
+    &_active {
+      background-color: $accent-color;
+    }
+  }
+}
