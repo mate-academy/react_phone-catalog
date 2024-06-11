@@ -131,7 +131,7 @@ const TabletsPage = () => {
 
         {isLoading && <Loader />}
         {!isLoading && filteredTablets.length === 0 && (
-          <p>There are no phones products matching the query</p>
+          <p>There are no tablets products matching the query</p>
         )}
 
         {!isLoading && filteredTablets.length > 0 && (

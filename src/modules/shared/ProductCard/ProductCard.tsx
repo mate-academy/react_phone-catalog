@@ -8,6 +8,7 @@ import styles from './ProductCard.module.css';
 import { toast } from 'sonner';
 import { useCartStore } from '../../../store/cartStore';
 import { useFavoritesStore } from '../../../store/favoritesStore';
+import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface Props {
   product: Product;
@@ -111,7 +112,38 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </Button>
-        <Button
+        <Tooltip.Provider skipDelayDuration={300} delayDuration={500}>
+          <Tooltip.Root>
+            <Tooltip.Trigger asChild>
+              <Button
+                onClick={() => handleToggleFavorite(product)}
+                className={styles.favouriteBtn}
+              >
+                <img
+                  src={
+                    isFavorite
+                      ? 'img/icons/favorite-fill-icon.svg'
+                      : 'img/icons/favorite-icon.svg'
+                  }
+                  alt=""
+                />
+              </Button>
+            </Tooltip.Trigger>
+            <Tooltip.Portal>
+              <Tooltip.Content
+                className={styles.tooltipContent}
+                sideOffset={5}
+                aria-label={
+                  isFavorite ? 'Delete from favorite' : 'Add to favorite'
+                }
+              >
+                {isFavorite ? 'Delete from favorite' : 'Add to favorite'}
+                <Tooltip.Arrow className={styles.tooltipArrow} />
+              </Tooltip.Content>
+            </Tooltip.Portal>
+          </Tooltip.Root>
+        </Tooltip.Provider>
+        {/* <Button
           onClick={() => handleToggleFavorite(product)}
           variant="icon"
           size="40px"
@@ -124,7 +156,7 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
             }
             alt=""
           />
-        </Button>
+        </Button> */}
       </div>
     </article>
   );

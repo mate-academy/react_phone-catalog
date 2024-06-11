@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import './App.css';
 
-import { RouterProvider, createHashRouter } from 'react-router-dom';
+import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
 import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
@@ -20,6 +20,13 @@ const router = createHashRouter([
     errorElement: <NotFoundPage />,
     children: [
       { index: true, element: <HomePage /> },
+      {
+        path: 'home',
+        children: [
+          { index: true, element: <Navigate to="/" replace /> },
+          { path: 'home', element: <Navigate to="/" replace /> },
+        ],
+      },
       {
         path: ROUTES.PHONES,
         children: [
