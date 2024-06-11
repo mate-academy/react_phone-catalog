@@ -13,6 +13,7 @@ const BrandNewModels = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoadingProduct(true);
@@ -26,6 +27,9 @@ const BrandNewModels = () => {
 
         setPhones(brandNewPhones);
         setTotalPages(Math.ceil(brandNewPhones.length / 4));
+      })
+      .catch(() => {
+        setIsError(true);
       })
       .finally(() => {
         setTimeout(() => {
@@ -44,6 +48,7 @@ const BrandNewModels = () => {
       totalPages={totalPages}
       isLoading={isLoading}
       isLoadingProduct={isLoadingProduct}
+      isError={isError}
     />
   );
 };

@@ -16,7 +16,7 @@ type CartStore = {
 };
 
 export const useCartStore = create<CartStore>(set => ({
-  cartItems: [],
+  cartItems: JSON.parse(localStorage.getItem('cartitems') || '[]'),
 
   toggleProductInCart: (product: UCartItem) =>
     set(state => {
@@ -24,10 +24,14 @@ export const useCartStore = create<CartStore>(set => ({
         item => item.id === product.id,
       );
 
+      const newCartItems = isProductInCart
+        ? state.cartItems.filter(item => item.id !== product.id)
+        : [...state.cartItems, product];
+
+      localStorage.setItem('cartitems', JSON.stringify(newCartItems));
+
       return {
-        cartItems: isProductInCart
-          ? state.cartItems.filter(item => item.id !== product.id)
-          : [...state.cartItems, product],
+        cartItems: newCartItems,
       };
     }),
 
@@ -51,13 +55,23 @@ export const useCartStore = create<CartStore>(set => ({
 
   deleteProductInCart: (id: string) =>
     set(state => {
+      const newCartItems = state.cartItems.filter(
+        cartItem => cartItem.id !== id,
+      );
+
+      localStorage.setItem('cartitems', JSON.stringify(newCartItems));
+
       return {
-        cartItems: state.cartItems.filter(cartItem => cartItem.id !== id),
+        cartItems: newCartItems,
       };
     }),
 
   clearCart: () =>
-    set({
-      cartItems: [],
+    set(() => {
+      localStorage.removeItem('cartitems');
+
+      return {
+        cartItems: [],
+      };
     }),
 }));

@@ -132,7 +132,7 @@ const AccessoriesPage = () => {
 
         {isLoading && <Loader />}
         {!isLoading && filteredAccessories.length === 0 && (
-          <p>There are no phones products matching the query</p>
+          <p>There are no accessories products matching the query</p>
         )}
 
         {!isLoading && filteredAccessories.length > 0 && (

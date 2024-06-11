@@ -13,6 +13,7 @@ const HotPrices = () => {
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
+  const [isError, setIsError] = useState(false);
 
   useEffect(() => {
     setIsLoadingProduct(true);
@@ -25,6 +26,9 @@ const HotPrices = () => {
 
         setPhones(hotPricesPhones);
         setTotalPages(Math.ceil(hotPricesPhones.length / 3));
+      })
+      .catch(() => {
+        setIsError(true);
       })
       .finally(() => {
         setTimeout(() => {
@@ -43,6 +47,7 @@ const HotPrices = () => {
       totalPages={totalPages}
       isLoading={isLoading}
       isLoadingProduct={isLoadingProduct}
+      isError={isError}
     />
   );
 };

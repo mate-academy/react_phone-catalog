@@ -25,7 +25,7 @@ const PhonesPage = () => {
 
   const query = searchParams.get(SearchParams.Query) || '';
   const initialSort = searchParams.get('sort') || 'newest';
-  const initialPerPage = searchParams.get('perPage') || '8';
+  const initialPerPage = searchParams.get('perPage') || 'all';
   const initialPage = searchParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -110,8 +110,6 @@ const PhonesPage = () => {
   const filteredPhones = sortedPhones.filter(phone =>
     phone.name.toLowerCase().includes(query.toLowerCase()),
   );
-
-  window.console.log(isError);
 
   const paginatedPhones =
     perPage === 'all'
