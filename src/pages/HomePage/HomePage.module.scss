@@ -8,4 +8,8 @@
   flex-direction: column;
   gap: 80px;
   margin-block: 80px;
+
+  &__title {
+    @include header-1;
+  }
 }

@@ -8,6 +8,11 @@
   flex-direction: column;
   gap: 24px;
 
+  &__link {
+    text-decoration: none;
+    color: inherit;
+  }
+
   &__title {
     @include header-3;
 
@@ -21,17 +26,36 @@
   }
 
   &__category {
-    grid-column: span 8;
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
     gap: 24px;
 
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
     &_photo {
       position: relative;
-      background-color: #6d6474;
       overflow: hidden;
 
       height: 368px;
+
+      &_1 {
+        background-color: #6d6474;
+      }
+
+      &_2 {
+        background-color: #8d8d92;
+      }
+
+      &_3 {
+        background-color: #d53c51;
+      }
     }
 
     &_img {

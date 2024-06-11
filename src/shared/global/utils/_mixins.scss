@@ -26,12 +26,16 @@
   }
 
   @include on-desktop {
-    padding-inline: 152px;
+    max-width: 1136px;
   }
 }
 
 .container {
   @include content-padding-inline;
+
+  @include on-desktop {
+    margin: 0 auto;
+  }
 }
 
 @mixin page-grid {
@@ -39,6 +43,7 @@
 
   display: grid;
   column-gap: 16px;
+  row-gap: 32px;
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
