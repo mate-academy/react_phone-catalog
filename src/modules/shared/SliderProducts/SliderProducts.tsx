@@ -21,6 +21,7 @@ interface Props {
   totalPages: number;
   isLoading: boolean;
   isLoadingProduct: boolean;
+  isError: boolean;
 }
 
 const SliderProducts: FC<Props> = ({
@@ -29,6 +30,7 @@ const SliderProducts: FC<Props> = ({
   totalPages,
   isLoading,
   isLoadingProduct,
+  isError,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const swiperRef = useRef<SwiperType | null>(null);
@@ -89,6 +91,10 @@ const SliderProducts: FC<Props> = ({
       </div>
       {isLoading ? (
         <Loader />
+      ) : isError ? (
+        <p className={s.product__slider}>
+          Error loading data. Please try again later.
+        </p>
       ) : (
         <div className={s.product__slider}>
           <Swiper

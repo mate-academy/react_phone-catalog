@@ -130,7 +130,7 @@
 
 @media (min-width: 320px) and (max-width: 639px) {
   .paramItem{
-    gap: 57px;
+    gap: 54px;
   }
   .paramValue {
     white-space: nowrap;

@@ -111,8 +111,6 @@ const PhonesPage = () => {
     phone.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  window.console.log(isError);
-
   const paginatedPhones =
     perPage === 'all'
       ? filteredPhones
