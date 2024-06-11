@@ -1,3 +1,4 @@
+// src/components/ProductCard/ProductCard.tsx
 import { FC, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -5,9 +6,9 @@ import Button from '../../../UI/Buttons/Button';
 import Product from '../../../types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
 import styles from './ProductCard.module.css';
-import { toast } from 'sonner';
 import { useCartStore } from '../../../store/cartStore';
 import { useFavoritesStore } from '../../../store/favoritesStore';
+import { useToastStore } from '../../../store/toastStore';
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface Props {
@@ -29,11 +30,6 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
 
   const { pathname } = useLocation();
 
-  const productLink =
-    pathname === ROUTES.HOME
-      ? `${ROUTES.PHONES}/${id}`
-      : ROUTES.PRODUCT_DETAIL.replace(':productId', id);
-
   const { toggleProductInCart, cartItems } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
     cartItems: state.cartItems,
@@ -44,6 +40,13 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     favorites: state.favorites,
   }));
 
+  const { addToast } = useToastStore();
+
+  const productLink =
+    pathname === ROUTES.HOME
+      ? `${ROUTES.PHONES}/${id}`
+      : ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+
   const isInCart = useMemo(
     () => cartItems.some(item => item.id === product.id),
     [cartItems, product.id],
@@ -53,23 +56,21 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     [favorites, product.id],
   );
 
-  const handleToggleFavorite = (newProduct: Product) => {
-    toggleFavorite(newProduct);
-    toast.message(
-      isFavorite ? 'Removed from Favorites' : 'Added to Favorites',
-      { description: newProduct.name },
-    );
-  };
-
   const handleToggleCart = (newProduct: Product) => {
     toggleProductInCart({
       id: newProduct.id,
       quantity: 1,
       product: newProduct,
     });
-    toast.message(isInCart ? 'Removed from Cart' : 'Added to Cart', {
-      description: newProduct.name,
-    });
+    addToast(isInCart ? 'Removed from Cart' : 'Added to Cart', newProduct.name);
+  };
+
+  const handleToggleFavorite = (newProduct: Product) => {
+    toggleFavorite(newProduct);
+    addToast(
+      isFavorite ? 'Removed from Favorites' : 'Added to Favorites',
+      newProduct.name,
+    );
   };
 
   return (
@@ -112,6 +113,8 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </Button>
+        
+        <Button
         <Tooltip.Provider skipDelayDuration={300} delayDuration={500}>
           <Tooltip.Root>
             <Tooltip.Trigger asChild>
@@ -143,20 +146,6 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
             </Tooltip.Portal>
           </Tooltip.Root>
         </Tooltip.Provider>
-        {/* <Button
-          onClick={() => handleToggleFavorite(product)}
-          variant="icon"
-          size="40px"
-        >
-          <img
-            src={
-              isFavorite
-                ? 'img/icons/favorite-fill-icon.svg'
-                : 'img/icons/favorite-icon.svg'
-            }
-            alt=""
-          />
-        </Button> */}
       </div>
     </article>
   );

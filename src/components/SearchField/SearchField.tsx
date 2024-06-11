@@ -64,7 +64,7 @@ export const SearchField = () => {
         id="search"
         type="text"
         className={classNames(styles.searchFieldInput, {
-          [styles.focusq]: isSearchFocused,
+          [styles.focus]: isSearchFocused,
         })}
         placeholder={`Search in ${pathname.slice(1)}...`}
         ref={titleField}
