@@ -1,0 +1,16 @@
+.backLink {
+  display: flex;
+  align-items: center;
+  width: max-content;
+  gap: 4px;
+  cursor: pointer;
+}
+
+.linkText {
+  color: var(--secondary-color);
+  transition: color 0.3s ease-out;
+}
+
+.backLink:hover .linkText {
+  color: #000;
+}

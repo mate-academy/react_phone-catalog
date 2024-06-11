@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
 import Loader from '../shared/Loader/Loader';
@@ -122,18 +123,20 @@ const PhonesPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
-        <div className={s.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
+
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
 
         {isLoading && <Loader />}
         {isError && (
-          <p className={s.error}>
-            Failed to load phones. Please try again later.
-          </p>
+          <div className={s.error}>
+            <p>Failed to load phones. Please try again later.</p>
+            <Button variant="primary" size={[120, 40]} onClick={fetchPhones}>
+              Reload
+            </Button>
+          </div>
         )}
         {!isLoading && !isError && filteredPhones.length === 0 && (
           <p>There are no phones products matching the query</p>
