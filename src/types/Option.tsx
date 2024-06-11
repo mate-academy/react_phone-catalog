@@ -1,3 +1,4 @@
 export type Option = {
-  [key: string]: string;
+  value: string;
+  criteria: string;
 };

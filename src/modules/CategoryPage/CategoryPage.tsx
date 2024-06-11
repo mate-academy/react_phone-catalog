@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../shared/ProductCard';
 import { Dropdown } from './Dropdown';
 import { getItemsPerPage } from '../../services/getItemsPerPage';
@@ -16,33 +16,42 @@ import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { Pagination } from './Pagination';
 import { scrollToTop } from '../../services/scrollToTop';
+import { Option } from '../../types/Option';
 
 type Props = {
   title: string;
 };
 
+function getValue(
+  searchParams: string | null,
+  options: Option[],
+  defaultValue: string,
+): string {
+  const foundOption = options.find(item => item.criteria === searchParams);
+
+  return foundOption ? foundOption.value : defaultValue;
+}
+
 export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const { pathname } = useLocation();
   const category = pathname.slice(1);
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const perPage = searchParams.get('perPage') || '';
+  const sort = searchParams.get('sort') || '';
+  const currentPage = searchParams.get('page') || '';
+
+  const perPageValue = getValue(
+    perPage,
+    optionsItemsPerPage,
+    optionsItemsPerPage[1].value,
+  );
+  const sortValue = getValue(sort, optionsSortBy, optionsSortBy[0].value);
 
   const [dataLoaded, setDataLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLength, setProductsLength] = useState<number>(0);
-
-  const [currentPage, setCurrentPage] = useState(1);
-  const [selectSortBy, setSelectSortBy] = useState(optionsSortBy[0].value);
-  const [itemsPerPage, setItemsPerPage] = useState(
-    optionsItemsPerPage[1].value,
-  );
-
-  useEffect(() => {
-    if (products.length && products[0].category !== category) {
-      setSelectSortBy(optionsSortBy[0].value);
-      setItemsPerPage(optionsItemsPerPage[1].value);
-      setCurrentPage(1);
-    }
-  }, [products, category]);
 
   useEffect(() => {
     setDataLoaded(false);
@@ -55,19 +64,56 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
           product => product.category === category,
         );
 
-        const perPage = getItemsPerPage(itemsPerPage, getProducts.length);
-        const start = (currentPage - 1) * perPage + 1;
-        const end = Math.min(currentPage * perPage, getProducts.length);
+        const itemsPerPage = getItemsPerPage(
+          perPage || optionsItemsPerPage[1].criteria,
+          getProducts.length,
+        );
+
+        const start = currentPage ? (+currentPage - 1) * itemsPerPage + 1 : 1;
+        const end = currentPage
+          ? Math.min(+currentPage * itemsPerPage, getProducts.length)
+          : Math.min(itemsPerPage, getProducts.length);
 
         setProductsLength(getProducts.length);
         setProducts(
-          getProducts.sort(getSortProducts(selectSortBy)).slice(start - 1, end),
+          getProducts
+            .sort(getSortProducts(sort || optionsSortBy[0].criteria))
+            .slice(start - 1, end),
         );
         setDataLoaded(true);
         scrollToTop(false);
       })
       .catch(() => setError(true));
-  }, [currentPage, itemsPerPage, selectSortBy, category]);
+  }, [currentPage, perPage, category, sort]);
+
+  function handlePerPageChange(value: string) {
+    const newParams = new URLSearchParams(searchParams);
+
+    if (newParams.get('page')) {
+      newParams.delete('page');
+    }
+
+    newParams.set('perPage', value);
+    setSearchParams(newParams);
+  }
+
+  function handleSelectSortBy(value: string) {
+    const newParams = new URLSearchParams(searchParams);
+
+    if (newParams.get('page')) {
+      newParams.delete('page');
+    }
+
+    newParams.set('sort', value);
+    setSearchParams(newParams);
+  }
+
+  function handleSelectPage(value: number) {
+    const newParams = new URLSearchParams(searchParams);
+
+    newParams.set('page', value.toString());
+    setSearchParams(newParams);
+  }
 
   return error ? (
     <Reload imgOfError="page-not-found.png" />
@@ -93,20 +139,18 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
               <div className="category-page__dropdown-sort">
                 <Dropdown
                   title="Sort by"
-                  defaultValue={selectSortBy}
+                  currentValue={sortValue}
                   options={optionsSortBy}
-                  setSelectValue={value => setSelectSortBy(value)}
-                  resetCurrentPage={() => setCurrentPage(1)}
+                  setSelectedCriteria={value => handleSelectSortBy(value)}
                 />
               </div>
 
               <div className="category-page__dropdown-items">
                 <Dropdown
                   title="Items per page"
-                  defaultValue={itemsPerPage}
+                  currentValue={perPageValue}
                   options={optionsItemsPerPage}
-                  setSelectValue={value => setItemsPerPage(value)}
-                  resetCurrentPage={() => setCurrentPage(1)}
+                  setSelectedCriteria={value => handlePerPageChange(value)}
                 />
               </div>
             </div>
@@ -125,9 +169,12 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
               <div className="category-page__navigation">
                 <Pagination
                   total={productsLength}
-                  perPage={getItemsPerPage(itemsPerPage, productsLength)}
-                  currentPage={currentPage}
-                  onPageChange={page => setCurrentPage(page)}
+                  perPage={getItemsPerPage(
+                    perPage || optionsItemsPerPage[1].criteria,
+                    productsLength,
+                  )}
+                  currentPage={currentPage ? +currentPage : 1}
+                  onPageChange={page => handleSelectPage(page)}
                 />
               </div>
             )}

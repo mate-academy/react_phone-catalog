@@ -8,9 +8,7 @@
   & :first-child {
     color: $text-gray-color;
 
-    &::first-letter {
-      text-transform: uppercase;
-    }
+    text-transform: capitalize;
   }
 
   & :last-child {

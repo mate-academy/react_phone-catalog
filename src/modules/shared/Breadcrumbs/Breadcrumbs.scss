@@ -11,9 +11,7 @@
     line-height: 16px;
     text-decoration: none;
 
-    &::first-letter {
-      text-transform: uppercase;
-    }
+    text-transform: capitalize;
   }
 
   &__device {

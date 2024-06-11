@@ -1,5 +1,5 @@
 export function getItemsPerPage(option: string, length: number) {
-  if (option !== 'All') {
+  if (option !== 'all') {
     switch (option) {
       case '4':
         return 4;

@@ -4,16 +4,15 @@ import { IconDown, IconUp } from '../../shared/IconsSVG';
 
 type Props = {
   title: string;
-  defaultValue: string;
+  currentValue: string;
   options: Option[];
-  setSelectValue: (value: string) => void;
-  resetCurrentPage: () => void;
+  setSelectedCriteria: (value: string) => void;
 };
 
 export const Dropdown: React.FC<Props> = React.memo(
-  ({ title, options, defaultValue, setSelectValue, resetCurrentPage }) => {
-    const [openDropdown, setOpenDropdown] = useState(false);
-    const [selected, setSelected] = useState(defaultValue);
+  ({ title, options, currentValue, setSelectedCriteria }) => {
+    const [isOpenDropdown, setIsOpenDropdown] = useState(false);
+    const [selectedValue, setSelectedValue] = useState(currentValue);
     const [styles, setStyles] = useState<CSSProperties>({
       overflow: 'hidden',
       border: 'none',
@@ -22,36 +21,36 @@ export const Dropdown: React.FC<Props> = React.memo(
 
     const handleSelectItems = (event: React.MouseEvent<HTMLButtonElement>) => {
       const { value } = event.currentTarget;
+      const newValue = options[+value].value;
 
-      if (value !== selected) {
-        setSelected(value);
-        setSelectValue(value);
-        resetCurrentPage();
+      if (newValue !== selectedValue) {
+        setSelectedValue(options[+value].value);
+        setSelectedCriteria(options[+value].criteria);
       }
 
-      setOpenDropdown(false);
+      setIsOpenDropdown(false);
     };
 
     useEffect(() => {
       let timeout: NodeJS.Timeout;
 
-      if (openDropdown) {
+      if (isOpenDropdown) {
         setStyles({ overflow: 'hidden', border: '1px solid #b4bdc3' });
       }
 
-      if (!openDropdown) {
+      if (!isOpenDropdown) {
         setTimeout(() => {
           setStyles({ overflow: 'hidden', border: 'none' });
         }, 280);
       }
 
       return () => clearTimeout(timeout);
-    }, [openDropdown]);
+    }, [isOpenDropdown]);
 
     useEffect(() => {
       const handleClickOutside = (event: MouseEvent) => {
         if (focus.current && !focus.current.contains(event.target as Node)) {
-          setOpenDropdown(false);
+          setIsOpenDropdown(false);
         }
       };
 
@@ -69,11 +68,11 @@ export const Dropdown: React.FC<Props> = React.memo(
           <button
             type="button"
             className="dropdown__selected"
-            onClick={() => setOpenDropdown(!openDropdown)}
+            onClick={() => setIsOpenDropdown(!isOpenDropdown)}
           >
-            <div className="dropdown__selected-item">{selected}</div>
+            <div className="dropdown__selected-item">{selectedValue}</div>
 
-            {openDropdown ? (
+            {isOpenDropdown ? (
               <div className="dropdown__move">
                 <IconUp />
               </div>
@@ -84,15 +83,15 @@ export const Dropdown: React.FC<Props> = React.memo(
             )}
           </button>
 
-          <div className="dropdown__items" style={openDropdown ? {} : styles}>
-            {options.map(option => (
+          <div className="dropdown__items" style={isOpenDropdown ? {} : styles}>
+            {options.map((option, index) => (
               <button
                 key={option.value}
                 type="button"
-                value={option.value}
+                value={index}
                 onClick={handleSelectItems}
                 className="dropdown__item"
-                style={openDropdown ? { height: '32px' } : { height: 0 }}
+                style={isOpenDropdown ? { height: '32px' } : { height: 0 }}
               >
                 {option.value}
               </button>

@@ -2,11 +2,11 @@ import { Product } from '../types/Product';
 
 export function getSortProducts(sortParams: string) {
   switch (sortParams) {
-    case 'Alphabetically':
+    case 'title':
       return (a: Product, b: Product) =>
         a.name.localeCompare(b.name, 'en', { numeric: true });
 
-    case 'Cheapest':
+    case 'price':
       return (a: Product, b: Product) => a.price - b.price;
 
     default:
