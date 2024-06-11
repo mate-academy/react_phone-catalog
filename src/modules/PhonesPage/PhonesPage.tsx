@@ -56,15 +56,20 @@ const PhonesPage = () => {
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
 
-    newQueryParams.append('sort', sortOption);
-    newQueryParams.append('page', currentPage.toString());
-    newQueryParams.append('perPage', perPage.toString());
-    if (query) {
-      newQueryParams.append(SearchParams.Query, query);
+    if (sortOption !== 'newest') {
+      newQueryParams.append('sort', sortOption);
+    }
+
+    if (currentPage !== 1) {
+      newQueryParams.append('page', currentPage.toString());
+    }
+
+    if (perPage !== 'all') {
+      newQueryParams.append('perPage', perPage.toString());
     }
 
     navigate(`?${newQueryParams.toString()}`);
-  }, [currentPage, perPage, sortOption, query, navigate]);
+  }, [currentPage, perPage, sortOption, navigate]);
 
   const handlePageChange = (page: number) => {
     setIsChangingPage(true);

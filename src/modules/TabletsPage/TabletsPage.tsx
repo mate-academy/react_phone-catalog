@@ -28,7 +28,7 @@ const TabletsPage = () => {
   const query = searchParams.get(SearchParams.Query) || '';
   const queryParams = new URLSearchParams(location.search);
   const initialSort = queryParams.get('sort') || 'newest';
-  const initialPerPage = queryParams.get('perPage') || '8';
+  const initialPerPage = queryParams.get('perPage') || 'all';
   const initialPage = queryParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -58,9 +58,18 @@ const TabletsPage = () => {
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
 
-    newQueryParams.append('sort', sortOption);
-    newQueryParams.append('page', currentPage.toString());
-    newQueryParams.append('perPage', perPage.toString());
+    if (sortOption !== 'newest') {
+      newQueryParams.append('sort', sortOption);
+    }
+
+    if (currentPage !== 1) {
+      newQueryParams.append('page', currentPage.toString());
+    }
+
+    if (perPage !== 'all') {
+      newQueryParams.append('perPage', perPage.toString());
+    }
+
     navigate(`?${newQueryParams.toString()}`);
   }, [currentPage, perPage, sortOption, navigate]);
 
