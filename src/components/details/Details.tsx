@@ -109,10 +109,10 @@ export const Details: React.FC<Props> = ({ list }) => {
                     src={`./${item}`}
                     alt="item picture"
                     onClick={() => {
-                      const index = product.images.findIndex(
-                        img => img === item,
-                      );
-                      setActive(index);
+                      const index =
+                        product &&
+                        product.images.findIndex(img => img === item);
+                      setActive(index?);
                     }}
                   />
                 );
@@ -133,10 +133,8 @@ export const Details: React.FC<Props> = ({ list }) => {
         <div className={Styles.card__colors__container}>
           {product?.colorsAvailable.map(item => {
             const formated =
-              item.split(' ')[1] === undefined
-                ? item
-                : item.split(' ')[1];
-                console.log(formated, 'l')
+              item.split(' ')[1] === undefined ? item : item.split(' ')[1];
+            console.log(formated, 'l');
 
             return (
               <div
