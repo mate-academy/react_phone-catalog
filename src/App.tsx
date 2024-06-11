@@ -9,6 +9,7 @@ import { ProductsPage } from './components/ProductsPage';
 import { BurgerMenu } from './components/BurgerMenu';
 import classNames from 'classnames';
 import { Favourites } from './components/Favourites';
+import { Cart } from './components/Cart';
 
 const phones = productsFromServer.filter(
   product => product.category === 'phones',
@@ -35,6 +36,7 @@ export const App: React.FC = () => {
         favourites={favourites}
         currentPage={currentPage}
         setIsMenuOpen={setIsMenuOpen}
+        cart={cart}
       />
       {isMenuOpen && (
         <BurgerMenu
@@ -46,10 +48,13 @@ export const App: React.FC = () => {
       {currentPage === PageSection.Home && (
         <HomePage
           phones={phones}
+          tablets={tablets}
+          accessories={accessories}
           favourites={favourites}
           setFavourites={setFavourites}
           cart={cart}
           setCart={setCart}
+          setCurrentPage={setCurrentPage}
         />
       )}
       {currentPage === PageSection.Phones && (
@@ -90,6 +95,9 @@ export const App: React.FC = () => {
           cart={cart}
           setCart={setCart}
         />
+      )}
+      {currentPage === PageSection.Cart && (
+        <Cart cart={cart} models={productsFromServer} setCart={setCart} />
       )}
     </div>
   );

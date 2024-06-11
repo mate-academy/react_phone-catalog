@@ -77,22 +77,15 @@
     &--active {
       border-bottom: 3px solid $main-black
     }
-
-    &:hover {
-      background-color: rgb(226, 230, 233);
-    }
   }
 
   &__link {
     color: rgb(137, 147, 154);
     transition: color 0.3s;
+    position: relative;
 
     &--active {
       color: $main-black;
-    }
-
-    &--button {
-      position: relative;
     }
   }
 

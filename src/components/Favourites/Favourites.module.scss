@@ -3,6 +3,7 @@
 
 .favourites {
   margin-top: 124px;
+  flex: 1 1;
 
   @include on-tablet {
     margin-top: 128px;

@@ -1,5 +1,6 @@
 import React from 'react';
 import styles from './Category.module.scss';
+import { PageSection } from '../../../types/PageSection';
 import { GadgetCategory } from '../../../types/GadgetCategory';
 
 interface CategoryData {
@@ -10,16 +11,31 @@ interface CategoryData {
 
 interface Props {
   categories: Record<GadgetCategory, CategoryData>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
 }
 
-export const Category: React.FC<Props> = ({ categories }) => {
+export const Category: React.FC<Props> = ({ categories, setCurrentPage }) => {
+  const handleSetPage = (category: GadgetCategory) => {
+    if (category === GadgetCategory.Phones) {
+      setCurrentPage(PageSection.Phones);
+    } else if (category === GadgetCategory.Tablets) {
+      setCurrentPage(PageSection.Tablets);
+    } else if (category === GadgetCategory.Accessories) {
+      setCurrentPage(PageSection.Accessories);
+    }
+  };
+
   return (
     <section className={`page__category ${styles.category}`}>
       <h2 className={styles.category__title}>Shop by category</h2>
       <nav className={styles.category__content}>
         <ul className={styles.category__list}>
           {Object.values(GadgetCategory).map(category => (
-            <li className={styles.category__item} key={category}>
+            <li
+              className={styles.category__item}
+              key={category}
+              onClick={() => handleSetPage(category)}
+            >
               <a href="#" className={styles.category__link}>
                 <img
                   className={styles.category__image}

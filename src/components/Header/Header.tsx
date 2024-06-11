@@ -8,6 +8,7 @@ interface Props {
   currentPage: PageSection;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
   favourites: number[];
+  cart: number[];
 }
 
 export const Header: React.FC<Props> = ({
@@ -15,6 +16,7 @@ export const Header: React.FC<Props> = ({
   setCurrentPage,
   setIsMenuOpen,
   favourites,
+  cart,
 }) => {
   const pagesToShow = Object.values(PageSection).filter(
     link => link !== PageSection.Favorites && link !== PageSection.Cart,
@@ -63,9 +65,7 @@ export const Header: React.FC<Props> = ({
               })}
               onClick={() => setCurrentPage(PageSection.Favorites)}
             >
-              <button
-                className={`${styles.header__link} ${styles['header__link--button']}`}
-              >
+              <button className={styles.header__link}>
                 <img
                   className={styles.header__image}
                   src="img/header/favorite.svg"
@@ -86,6 +86,9 @@ export const Header: React.FC<Props> = ({
             >
               <button className={styles.header__link}>
                 <img src="img/header/cart.svg" alt="cart" />
+                {cart.length > 0 && (
+                  <span className={styles.header__span}>{cart.length}</span>
+                )}
               </button>
             </li>
           </ul>

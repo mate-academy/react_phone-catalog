@@ -9,6 +9,7 @@ import TabletsImage from './Category/img/Tablets.svg';
 import AccessoriesImage from './Category/img/Accessories.svg';
 import { Products } from '../../types/Products';
 import { Footer } from '../Footer';
+import { PageSection } from '../../types/PageSection';
 
 interface Props {
   phones: Products[];
@@ -16,6 +17,9 @@ interface Props {
   favourites: number[];
   cart: number[];
   setCart: React.Dispatch<React.SetStateAction<number[]>>;
+  setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
+  tablets: Products[];
+  accessories: Products[];
 }
 
 interface CategoryData {
@@ -24,30 +28,15 @@ interface CategoryData {
   count: number;
 }
 
-const categoryData: Record<GadgetCategory, CategoryData> = {
-  [GadgetCategory.Phones]: {
-    name: 'Mobile phones',
-    image: PhoneImage,
-    count: 123,
-  },
-  [GadgetCategory.Tablets]: {
-    name: 'Tablets',
-    image: TabletsImage,
-    count: 45,
-  },
-  [GadgetCategory.Accessories]: {
-    name: 'Accessories',
-    image: AccessoriesImage,
-    count: 67,
-  },
-};
-
 export const HomePage: React.FC<Props> = ({
   phones,
+  tablets,
+  accessories,
   setFavourites,
   favourites,
   cart,
   setCart,
+  setCurrentPage,
 }) => {
   const newModels: Products[] = phones
     .filter(phone => phone.name.includes('Apple iPhone 14'))
@@ -56,6 +45,24 @@ export const HomePage: React.FC<Props> = ({
   const hotPrices: Products[] = phones
     .filter(phone => phone.fullPrice - phone.price > 80)
     .sort((a, b) => b.price - a.price);
+
+  const categoryData: Record<GadgetCategory, CategoryData> = {
+    [GadgetCategory.Phones]: {
+      name: 'Mobile phones',
+      image: PhoneImage,
+      count: phones.length,
+    },
+    [GadgetCategory.Tablets]: {
+      name: 'Tablets',
+      image: TabletsImage,
+      count: tablets.length,
+    },
+    [GadgetCategory.Accessories]: {
+      name: 'Accessories',
+      image: AccessoriesImage,
+      count: accessories.length,
+    },
+  };
 
   return (
     <main className={styles.page}>
@@ -70,7 +77,7 @@ export const HomePage: React.FC<Props> = ({
           cart={cart}
           setCart={setCart}
         />
-        <Category categories={categoryData} />
+        <Category categories={categoryData} setCurrentPage={setCurrentPage} />
         <Models
           phones={hotPrices}
           swiperIndex={3}

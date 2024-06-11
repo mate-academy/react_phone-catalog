@@ -9,12 +9,6 @@ html {
   scroll-behavior: smooth;
 }
 
-.App {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .swiper-button-next,
 .swiper-button-prev {
   display: none!important;
@@ -89,4 +83,11 @@ html {
 .dropdown-menu {
   max-width: 136px;
   min-width: 136px!important;
+}
+
+
+.page {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
