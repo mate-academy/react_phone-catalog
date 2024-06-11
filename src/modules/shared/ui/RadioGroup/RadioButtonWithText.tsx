@@ -8,7 +8,7 @@ import React, {
 import cn from 'classnames';
 
 import { Text } from '../Text';
-import { RadioContext } from './context';
+import { RadioContext } from './RadioContext';
 import classes from './radioGroup.module.scss';
 
 type Props = PropsWithChildren<ComponentProps<'input'>>;

@@ -2,7 +2,7 @@
 import React, { ComponentProps, FC, useContext } from 'react';
 import cn from 'classnames';
 
-import { RadioContext } from './context';
+import { RadioContext } from './RadioContext';
 import classes from './radioGroup.module.scss';
 
 type Props = ComponentProps<'input'>;

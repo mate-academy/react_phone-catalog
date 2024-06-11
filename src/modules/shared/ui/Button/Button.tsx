@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 
-import { ButtonOuter, Props } from './ButtonOuter';
 import { Text } from '../Text';
+import { ButtonOuter, Props } from './ButtonOuter';
 
 export const Button: FC<Props> = ({ children, ...props }) => {
   return (

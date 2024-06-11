@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { FC, useCallback, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 
@@ -22,15 +22,39 @@ import {
 } from './variables';
 import classes from './category.module.scss';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import { useDebounce } from '../../hooks/useDebounce';
+import { SearchInput } from './components/SearchInput';
 
 type Props = {
   category: CategoryType;
+};
+
+const QUERY_KEY = {
+  SEARCH: 'query',
+  TAKE: 'take',
+  SORT: 'sort',
 };
 
 export const Category: FC<Props> = ({ category }) => {
   const { products, status } = useProducts(SELECT_CATEGORY[category]);
   const [searchParams, setSearchParams] = useSearchParams();
   const isChangedByApp = useRef(false);
+  //! SEARCH
+  const searchQueryParam = searchParams.get(QUERY_KEY.SEARCH) ?? '';
+
+  const setSearchQueryParam = (newSearch: string) => {
+    const newSearchParams = new URLSearchParams(searchParams);
+
+    if (!newSearch) {
+      newSearchParams.delete(QUERY_KEY.SEARCH);
+    } else {
+      newSearchParams.set(QUERY_KEY.SEARCH, newSearch);
+    }
+
+    setSearchParams(newSearchParams);
+  };
+  //! SEARCH
+
   const currentSortOption =
     SORT_SELECT_OPTIONS.find(
       option => option.value === searchParams.get('sort'),
@@ -41,20 +65,26 @@ export const Category: FC<Props> = ({ category }) => {
       option => option.value === searchParams.get('take'),
     ) ?? takeSelectOptionDefault;
 
-  const setAppSearchParams = useCallback(
+  const setAppSearchParams = useDebounce(
     (arg: Parameters<typeof setSearchParams>[0]) => {
       isChangedByApp.current = true;
       setSearchParams(arg, { preventScrollReset: true });
     },
-    [setSearchParams],
+    300,
   );
-  const take = Math.min(+currentTakeOption.value, products.length);
-  const numberOfPages = Math.ceil(products.length / take);
+
+  const filteredProducts = products.filter(product => {
+    return product.name.toLowerCase().includes(searchQueryParam.toLowerCase());
+  });
+
+  const take = Math.min(+currentTakeOption.value, filteredProducts.length);
+  const numberOfPages = Math.ceil(filteredProducts.length / take);
   const page = Math.max(
     Math.min(Number(searchParams.get('page')) || 1, numberOfPages),
     1,
   );
-  const currentProducts = [...products]
+
+  const currentProducts = filteredProducts
     .sort((productA, productB) => {
       switch (currentSortOption.value) {
         case SORT_VALUES.title:
@@ -122,11 +152,12 @@ export const Category: FC<Props> = ({ category }) => {
 
     const newSearchParams = new URLSearchParams(searchParams);
 
+    newSearchParams.delete('page');
+
     if (newTakeOption === takeSelectOptionDefault) {
       newSearchParams.delete('take');
     } else {
       newSearchParams.set('take', newTakeOption.value);
-      newSearchParams.delete('page');
     }
 
     setAppSearchParams(newSearchParams);
@@ -167,7 +198,7 @@ export const Category: FC<Props> = ({ category }) => {
     <div className={classes.page}>
       <Breadcrumbs />
       <Info
-        numberOfProducts={products.length}
+        numberOfProducts={filteredProducts.length}
         status={status}
         category={category}
         className={classes.page__info}
@@ -198,12 +229,18 @@ export const Category: FC<Props> = ({ category }) => {
           />
         </label>
       </Container.Grid>
-      <Products
-        take={4}
-        status={status}
-        products={currentProducts}
-        className={classes.page__products}
-      />
+      {currentProducts.length > 0 || status !== 'fulfilled' ? (
+        <Products
+          take={4}
+          status={status}
+          products={currentProducts}
+          className={classes.page__products}
+        />
+      ) : (
+        <Container className={classes.page__products}>
+          <Text.H3>No products were found</Text.H3>
+        </Container>
+      )}
       {numberOfPages > 1 && (
         <Pagination
           className={classes.page__pagination}
@@ -215,6 +252,11 @@ export const Category: FC<Props> = ({ category }) => {
           crumbs={<Pagination.Crumbs take={4} />}
         />
       )}
+      <SearchInput
+        initialQuery={searchQueryParam}
+        setQuery={setSearchQueryParam}
+        placeholder={'Find ' + category}
+      />
     </div>
   );
 };
