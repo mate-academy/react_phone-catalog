@@ -23,6 +23,11 @@ const CartPage: FC = () => {
     0,
   );
 
+  const totalQuantity = cartItems.reduce(
+    (total, cartItem) => total + cartItem.quantity,
+    0,
+  );
+
   const handleConfirmOrder = () => {
     clearCart();
     setIsModalOpen(false);
@@ -54,7 +59,9 @@ const CartPage: FC = () => {
             <Heading as="h2" className={styles.price}>
               ${totalPrice}
             </Heading>
-            <p className={styles.descr}>Total for {cartItems.length} items</p>
+            <p className={styles.descr}>
+              Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
+            </p>
             <Button
               variant="primary"
               className={styles.btn}
