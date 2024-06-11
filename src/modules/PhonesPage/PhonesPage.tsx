@@ -130,6 +130,7 @@ const PhonesPage = () => {
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
+
         {isLoading && <Loader />}
         {!isLoading && filteredPhones.length === 0 && (
           <p>There are no phones products matching the query</p>

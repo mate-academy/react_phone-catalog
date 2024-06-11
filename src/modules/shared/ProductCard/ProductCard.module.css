@@ -129,7 +129,7 @@
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
-  .paramItem{
+  .paramItem {
     gap: 57px;
   }
   .paramValue {
