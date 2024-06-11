@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import Product from '../types/Product';
+import { create } from 'zustand';
 
 type FavoritesStore = {
   favorites: Product[];
@@ -7,7 +7,7 @@ type FavoritesStore = {
 };
 
 export const useFavoritesStore = create<FavoritesStore>(set => ({
-  favorites: [],
+  favorites: JSON.parse(localStorage.getItem('favorites') || '[]'),
 
   toggleFavorite: (product: Product) =>
     set(state => {
@@ -15,10 +15,14 @@ export const useFavoritesStore = create<FavoritesStore>(set => ({
         item => item.id === product.id,
       );
 
+      const newFavorites = isProductInFavorites
+        ? state.favorites.filter(item => item.id !== product.id)
+        : [...state.favorites, product];
+
+      localStorage.setItem('favorites', JSON.stringify(newFavorites));
+
       return {
-        favorites: isProductInFavorites
-          ? state.favorites.filter(item => item.id !== product.id)
-          : [...state.favorites, product],
+        favorites: newFavorites,
       };
     }),
 }));

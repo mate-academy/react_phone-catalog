@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
@@ -110,14 +111,13 @@ const PhonesPage = () => {
     phone.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  // prettier-ignore
   const paginatedPhones =
     perPage === 'all'
       ? filteredPhones
       : filteredPhones.slice(
-        (currentPage - 1) * perPage,
-        currentPage * perPage,
-      );
+          (currentPage - 1) * perPage,
+          currentPage * perPage,
+        );
 
   return (
     <div className={s.content}>
@@ -128,12 +128,12 @@ const PhonesPage = () => {
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
+        {isLoading && <Loader />}
+        {!isLoading && filteredPhones.length === 0 && (
+          <p>There are no phones products matching the query</p>
+        )}
 
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
-          <p>Error loading phones. Please try again later.</p>
-        ) : (
+        {!isLoading && filteredPhones.length > 0 && (
           <>
             <p className={s.quantity}>{phones.length} models</p>
 

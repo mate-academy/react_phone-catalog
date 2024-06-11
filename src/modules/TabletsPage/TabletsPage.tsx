@@ -1,15 +1,17 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
-import { getTablets } from '../../api/getProduct';
-import Product from '../../types/Product';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
+import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
+import { SearchParams } from '../../types/Categories';
+import { getTablets } from '../../api/getProduct';
 import s from './TabletsPage.module.css';
 
 const TabletsPage = () => {
@@ -18,9 +20,13 @@ const TabletsPage = () => {
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
 
+  window.console.log(isError);
+
   const navigate = useNavigate();
   const location = useLocation();
+  const [searchParams] = useSearchParams();
 
+  const query = searchParams.get(SearchParams.Query) || '';
   const queryParams = new URLSearchParams(location.search);
   const initialSort = queryParams.get('sort') || 'newest';
   const initialPerPage = queryParams.get('perPage') || '8';
@@ -88,7 +94,7 @@ const TabletsPage = () => {
     }, 800);
   };
 
-  const sortedPhones = tablets.slice().sort((a, b) => {
+  const sortedTablets = tablets.slice().sort((a, b) => {
     switch (sortOption) {
       case 'newest':
         return b.processor.localeCompare(a.processor);
@@ -101,10 +107,17 @@ const TabletsPage = () => {
     }
   });
 
-  const paginatedPhones =
+  const filteredTablets = sortedTablets.filter(tablet =>
+    tablet.name.toLowerCase().includes(query.toLowerCase()),
+  );
+
+  const paginatedTablets =
     perPage === 'all'
-      ? sortedPhones
-      : sortedPhones.slice((currentPage - 1) * perPage, currentPage * perPage);
+      ? filteredTablets
+      : filteredTablets.slice(
+          (currentPage - 1) * perPage,
+          currentPage * perPage,
+        );
 
   return (
     <div className={s.content}>
@@ -116,11 +129,12 @@ const TabletsPage = () => {
           Tablets
         </Heading>
 
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
-          <p>Error loading phones. Please try again later.</p>
-        ) : (
+        {isLoading && <Loader />}
+        {!isLoading && filteredTablets.length === 0 && (
+          <p>There are no phones products matching the query</p>
+        )}
+
+        {!isLoading && filteredTablets.length > 0 && (
           <>
             <p className={s.quantity}>{tablets.length} models</p>
 
@@ -148,13 +162,13 @@ const TabletsPage = () => {
             </div>
 
             <ProductsList
-              products={paginatedPhones}
+              products={paginatedTablets}
               isChangingPage={isChangingPage}
             />
             <div className={s.pagination}>
               {typeof perPage === 'number' && tablets.length > perPage && (
                 <Pagination
-                  total={sortedPhones.length}
+                  total={filteredTablets.length}
                   currentPage={currentPage}
                   perPage={perPage}
                   onPageChange={handlePageChange}
