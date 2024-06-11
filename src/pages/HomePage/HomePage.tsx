@@ -1,9 +1,13 @@
+import { useContext } from 'react';
 import { Categories } from '../../components/categories/Categories';
 import { PhotoSlider } from '../../components/photoSlider';
 import { ProductSlider } from '../../components/productSlider';
 import styles from './HomePage.module.scss';
+import { AppContext } from '../../store/context';
 
 export const HomePage = () => {
+  const { products } = useContext(AppContext);
+
   return (
     <>
       <section className={styles.homepage}>
@@ -11,9 +15,9 @@ export const HomePage = () => {
           Welcome to Nice Gadgets store!
         </h1>
         <PhotoSlider />
-        <ProductSlider type="Brand new models" />
+        <ProductSlider type="Brand new models" products={products} />
         <Categories />
-        <ProductSlider type="Hot prices" />
+        <ProductSlider type="Hot prices" products={products} />
       </section>
     </>
   );

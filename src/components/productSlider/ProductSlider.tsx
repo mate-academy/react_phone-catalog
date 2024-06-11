@@ -2,14 +2,14 @@ import classNames from 'classnames';
 import styles from './ProductSlider.module.scss';
 import { ProductCard } from '../productCard';
 import { useEffect, useRef, useState } from 'react';
-
-const products = [1, 2, 3, 4, 5, 6, 7, 8];
+import { Product } from '../../types/Product';
 
 type Props = {
   type: string;
+  products: Product[];
 };
 
-export const ProductSlider: React.FC<Props> = ({ type }) => {
+export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   const [productWidth, setProductWidth] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const productsRef = useRef<HTMLDivElement>(null);
@@ -135,7 +135,7 @@ export const ProductSlider: React.FC<Props> = ({ type }) => {
         <div className={styles.goods__cards_wrapper}>
           <div className={styles.goods__cards} ref={productsRef}>
             {products.map(product => (
-              <ProductCard key={product} />
+              <ProductCard key={product.id} product={product} />
             ))}
           </div>
         </div>

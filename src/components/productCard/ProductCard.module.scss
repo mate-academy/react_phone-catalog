@@ -23,13 +23,20 @@
 
   &__img {
     display: block;
-    width: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+    object-fit: contain;
+    width: 148px;
+    height: 139px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 181px;
+    }
 
     @include on-desktop {
       @include hover(transform, scale(1.03));
+
+      width: 206px;
+      height: 196px;
     }
   }
 

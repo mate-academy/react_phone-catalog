@@ -1,23 +1,22 @@
+import { Product } from '../../types/Product';
 import { AccentButton } from '../accentButton';
 import { SecondaryButton } from '../secondaryButton';
 import styles from './ProductCard.module.scss';
 
-export const ProductCard = () => {
+type Props = {
+  product: Product;
+};
+
+export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <>
       <div className={styles.card}>
-        <img
-          src="img/phones/apple-iphone-13-pro-max/graphite/00.webp"
-          alt={'card'}
-          className={styles.card__img}
-        />
+        <img src={product.image} alt={'card'} className={styles.card__img} />
 
-        <p className={`${styles.card__name} paragraph`}>
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </p>
+        <p className={`${styles.card__name} paragraph`}>{product.name}</p>
 
         <div className={styles.prices}>
-          <h3 className={styles.card__price}>$999</h3>
+          <h3 className={styles.card__price}>${product.fullPrice}</h3>
         </div>
 
         <div className={styles.card__divider}></div>
@@ -25,17 +24,17 @@ export const ProductCard = () => {
         <div className={styles.card__informartion}>
           <div className={styles.card__info}>
             <p className={styles.card__techChar}>Screen</p>
-            <h5 className={styles.card__techValue}>6.1” OLED</h5>
+            <h5 className={styles.card__techValue}>{product.screen}</h5>
           </div>
 
           <div className={styles.card__info}>
             <p className={styles.card__techChar}>Capacity</p>
-            <h5 className={styles.card__techValue}>128 GB</h5>
+            <h5 className={styles.card__techValue}>{product.capacity}</h5>
           </div>
 
           <div className={styles.card__info}>
             <p className={styles.card__techChar}>RAM</p>
-            <h5 className={styles.card__techValue}>6 GB</h5>
+            <h5 className={styles.card__techValue}>{product.ram}</h5>
           </div>
         </div>
 
