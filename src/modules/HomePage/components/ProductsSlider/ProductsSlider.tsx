@@ -12,26 +12,16 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [translatePercentage, setTranslatePercentage] = useState(100);
-
-  const handlePrevClick = () => {
-    setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
-  };
-
-  const handleNextClick = () => {
-    setCurrentIndex(prevIndex =>
-      Math.min(prevIndex + 1, Math.floor(products.length / 4)),
-    );
-  };
+  const [productsOnPage, setProductsOnPage] = useState(0);
 
   useEffect(() => {
     const handleSize = () => {
       if (window.innerWidth <= 1199 && window.innerWidth >= 640) {
-        setTranslatePercentage(50);
+        setProductsOnPage(2);
       } else if (window.innerWidth >= 1200) {
-        setTranslatePercentage(100);
+        setProductsOnPage(4);
       } else {
-        setTranslatePercentage(35);
+        setProductsOnPage(1);
       }
     };
 
@@ -42,6 +32,16 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
       window.removeEventListener('resize', handleSize);
     };
   }, []);
+
+  const handlePrevClick = () => {
+    setCurrentIndex(prevIndex => Math.max(prevIndex - 1, 0));
+  };
+
+  const handleNextClick = () => {
+    setCurrentIndex(prevIndex =>
+      Math.min(prevIndex + 1, Math.ceil(products.length / productsOnPage - 1)),
+    );
+  };
 
   const handlerSwipes = useSwipeable({
     onSwipedLeft: () => handleNextClick(),
@@ -63,10 +63,12 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         <button
           className={classNames(styles.scrollBtn, styles.scrollBtnRight, {
             [styles.disabledBtnRight]:
-              currentIndex >= Math.floor(products.length / 4),
+              currentIndex >= Math.ceil(products.length / productsOnPage - 1),
           })}
           onClick={handleNextClick}
-          disabled={currentIndex >= Math.floor(products.length / 4)}
+          disabled={
+            currentIndex >= Math.ceil(products.length / productsOnPage - 1)
+          }
         ></button>
       </div>
 
@@ -75,7 +77,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
           className={styles.slidesContainer}
           {...handlerSwipes}
           style={{
-            transform: `translateX(-${currentIndex * translatePercentage}%)`,
+            transform: `translateX(-${currentIndex * 100}%)`,
           }}
         >
           {products.map(product => (

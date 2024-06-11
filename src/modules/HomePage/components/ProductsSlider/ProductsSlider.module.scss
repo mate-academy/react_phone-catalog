@@ -2,6 +2,8 @@
 @import '../../../shared/mixins';
 @import '../../../shared/fonts';
 
+$gap: 16px;
+
 .productsSlider {
   grid-column: 1 / -1;
   display: grid;
@@ -15,7 +17,7 @@
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat($grid-columns, 32px);
-  column-gap: 16px;
+  column-gap: $gap;
   height: 41px;
 }
 
@@ -90,8 +92,8 @@
 
 .slidesContainer {
   display: flex;
-  width: 1152px;
-  gap: 16px;
+  width: (272px + $gap) * 4;
+  gap: $gap;
 
   @include slider-trasition;
 }
@@ -115,7 +117,7 @@
   }
 
   .slidesContainer {
-    width: 744px;
+    width: (237px + $gap) * 2;
   }
 }
 
@@ -142,7 +144,7 @@
   }
 
   .slidesContainer {
-    width: 440px;
+    width: 212px + $gap;
   }
 
   .scrollBtnLeft,
