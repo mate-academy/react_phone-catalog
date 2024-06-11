@@ -109,8 +109,10 @@
   width: 40px;
   height: 40px;
   display: flex;
+  flex-shrink: 0;
   align-items: center;
   justify-content: center;
+  font-family: inherit;
 }
 
 .favouriteBtn img {
@@ -118,19 +120,67 @@
   height: 16px;
 }
 
+.favouriteBtn:hover {
+  border: 1px solid var(--primary-color);
+}
+
 .paramValue {
   text-align: right;
+}
+
+.tooltipContent {
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 15px;
+  line-height: 1;
+  color: var(--violet-11);
+  background-color: white;
+  box-shadow:
+    hsl(206deg 22% 7% / 35%) 0 10px 38px -10px,
+    hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
+  user-select: none;
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.tooltipContent[data-state='delayed-open'][data-side='top'] {
+  animation-name: slideDownAndFade;
+}
+
+.tooltipContent[data-state='delayed-open'][data-side='right'] {
+  animation-name: slideLeftAndFade;
+}
+
+.tooltipContent[data-state='delayed-open'][data-side='bottom'] {
+  animation-name: slideUpAndFade;
+}
+
+.tooltipContent[data-state='delayed-open'][data-side='left'] {
+  animation-name: slideRightAndFade;
+}
+
+.tooltipArrow {
+  fill: white;
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {
   .imgWrapper {
     height: 173px;
   }
+  .paramItem {
+    gap: 10px;
+  }
+  .paramValue {
+    white-space: nowrap;
+    overflow: hidden;
+  }
 }
 
 @media (min-width: 320px) and (max-width: 639px) {
-  .paramItem{
-    gap: 57px;
+  .paramItem {
+    gap: 53px;
   }
   .paramValue {
     white-space: nowrap;
