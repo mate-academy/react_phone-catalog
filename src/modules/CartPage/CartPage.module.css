@@ -18,6 +18,7 @@
 .info {
   border: 1px solid var(--elements-color);
   padding: 24px;
+
   grid-column: span 8;
   max-height: 206px;
 }
@@ -48,9 +49,20 @@
   background-size: contain;
 }
 
-@media (min-width: 320px) and (max-width: 1199px) {
+@media (min-width: 640px) and (max-width: 1199px) {
   .list {
-    grid-column: span 24;
+    grid-column: span 12;
+  }
+
+  .info {
+    grid-column: span 12;
+    margin-top: 32px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .list {
+    grid-column: span 4;
   }
 
   .descr {
@@ -59,7 +71,7 @@
   }
 
   .info {
-    grid-column: span 24;
+    grid-column: span 4;
     margin-top: 32px;
   }
 }

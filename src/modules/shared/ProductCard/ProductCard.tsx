@@ -1,4 +1,6 @@
-// src/components/ProductCard/ProductCard.tsx
+/* eslint-disable import/no-extraneous-dependencies */
+import * as Tooltip from '@radix-ui/react-tooltip';
+
 import { FC, useMemo } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
@@ -9,7 +11,6 @@ import styles from './ProductCard.module.css';
 import { useCartStore } from '../../../store/cartStore';
 import { useFavoritesStore } from '../../../store/favoritesStore';
 import { useToastStore } from '../../../store/toastStore';
-import * as Tooltip from '@radix-ui/react-tooltip';
 
 interface Props {
   product: Product;
@@ -113,8 +114,7 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
         >
           {isInCart ? 'Added' : 'Add to cart'}
         </Button>
-        
-        <Button
+
         <Tooltip.Provider skipDelayDuration={300} delayDuration={500}>
           <Tooltip.Root>
             <Tooltip.Trigger asChild>

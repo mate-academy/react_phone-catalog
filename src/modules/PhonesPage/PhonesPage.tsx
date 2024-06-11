@@ -130,11 +130,16 @@ const PhonesPage = () => {
         </Heading>
 
         {isLoading && <Loader />}
-        {!isLoading && filteredPhones.length === 0 && (
+        {isError && (
+          <p className={s.error}>
+            Failed to load phones. Please try again later.
+          </p>
+        )}
+        {!isLoading && !isError && filteredPhones.length === 0 && (
           <p>There are no phones products matching the query</p>
         )}
 
-        {!isLoading && filteredPhones.length > 0 && (
+        {!isLoading && !isError && filteredPhones.length > 0 && (
           <>
             <p className={s.quantity}>{phones.length} models</p>
 

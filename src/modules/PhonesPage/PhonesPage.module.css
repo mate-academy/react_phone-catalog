@@ -29,3 +29,7 @@
 .breadcrumbs {
   margin-bottom: 40px;
 }
+
+.error {
+  color: var(--red-color);
+}
