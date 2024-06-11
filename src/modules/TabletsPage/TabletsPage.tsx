@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
 import Loader from '../shared/Loader/Loader';
@@ -19,8 +20,6 @@ const TabletsPage = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
-
-  window.console.log(isError);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -122,15 +121,22 @@ const TabletsPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
-        <div className={s.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
+
         <Heading className={s.title} as="h1">
           Tablets
         </Heading>
 
         {isLoading && <Loader />}
-        {!isLoading && filteredTablets.length === 0 && (
+        {isError && (
+          <div className={s.error}>
+            <p>Failed to load tablets. Please try again later.</p>
+            <Button variant="primary" size={[120, 40]} onClick={fetchTablets}>
+              Reload
+            </Button>
+          </div>
+        )}
+        {!isLoading && !isError && filteredTablets.length === 0 && (
           <p>There are no tablets products matching the query</p>
         )}
 

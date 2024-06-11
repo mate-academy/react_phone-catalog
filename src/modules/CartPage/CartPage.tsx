@@ -1,10 +1,12 @@
 import { FC, useState } from 'react';
+
+import BackLink from '../../UI/BackLink/BackLink';
 import Button from '../../UI/Buttons/Button';
-import Heading from '../../UI/Heading/Heading';
-import { useCartStore } from '../../store/cartStore';
-import styles from './CartPage.module.css';
 import CartItem from './components/CartItem/CartItem';
 import CheckoutModal from './components/CheckoutModal/CheckoutModal';
+import Heading from '../../UI/Heading/Heading';
+import styles from './CartPage.module.css';
+import { useCartStore } from '../../store/cartStore';
 
 const CartPage: FC = () => {
   const { cartItems, changeQuantityInCart, deleteProductInCart, clearCart } =
@@ -33,44 +35,56 @@ const CartPage: FC = () => {
     setIsModalOpen(false);
   };
 
-  return cartItems.length ? (
+  return (
     <div className="container">
       <section className={styles.wrapper}>
+        <BackLink className={styles.backLink} />
+
         <Heading as="h1" className={styles.heading}>
           Cart
         </Heading>
 
-        <div className="grid">
-          <ul className={styles.list}>
-            {cartItems.map(cartItem => (
-              <li key={cartItem.id} className={styles.item}>
-                <CartItem
-                  product={cartItem.product}
-                  quantity={cartItem.quantity}
-                  onDelete={deleteProductInCart}
-                  onMinus={id => changeQuantityInCart(id, 'sub')}
-                  onPlus={id => changeQuantityInCart(id, 'add')}
-                />
-              </li>
-            ))}
-          </ul>
+        {cartItems.length !== 0 ? (
+          <div className="grid">
+            <ul className={styles.list}>
+              {cartItems.map(cartItem => (
+                <li key={cartItem.id} className={styles.item}>
+                  <CartItem
+                    product={cartItem.product}
+                    quantity={cartItem.quantity}
+                    onDelete={deleteProductInCart}
+                    onMinus={id => changeQuantityInCart(id, 'sub')}
+                    onPlus={id => changeQuantityInCart(id, 'add')}
+                  />
+                </li>
+              ))}
+            </ul>
 
-          <div className={styles.info}>
-            <Heading as="h2" className={styles.price}>
-              ${totalPrice}
-            </Heading>
-            <p className={styles.descr}>
-              Total for {totalQuantity} {totalQuantity === 1 ? 'item' : 'items'}
-            </p>
-            <Button
-              variant="primary"
-              className={styles.btn}
-              onClick={() => setIsModalOpen(true)}
-            >
-              Checkout
-            </Button>
+            <div className={styles.info}>
+              <Heading as="h2" className={styles.price}>
+                ${totalPrice}
+              </Heading>
+              <p className={styles.descr}>
+                Total for {totalQuantity}{' '}
+                {totalQuantity === 1 ? 'item' : 'items'}
+              </p>
+              <Button
+                variant="primary"
+                className={styles.btn}
+                onClick={() => setIsModalOpen(true)}
+              >
+                Checkout
+              </Button>
+            </div>
           </div>
-        </div>
+        ) : (
+          <>
+            <Heading as="h3" className={styles.empty}>
+              Your cart is empty 🤔
+            </Heading>
+            <div className={styles.error} />
+          </>
+        )}
       </section>
 
       {isModalOpen && (
@@ -80,9 +94,9 @@ const CartPage: FC = () => {
         />
       )}
     </div>
-  ) : (
-    <div className={styles.error} />
   );
 };
 
 export default CartPage;
+
+//     <div className={styles.error} />

@@ -26,10 +26,15 @@
   font-weight: 700;
 }
 
-.breadcrumbs {
-  margin-bottom: 40px;
-}
-
 .error {
+  padding: 25px 0;
+  font-size: 20px;
   color: var(--red-color);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  height: 50vh;
+  text-align: center;
 }
