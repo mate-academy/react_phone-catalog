@@ -26,11 +26,11 @@ export const Shop: React.FC<Props> = () => {
 
   useEffect(() => {
     switch (filterParam) {
-      case 'phone':
+      case 'phones':
         setTitle('Mobile phones');
         break;
 
-      case 'tablet':
+      case 'tablets':
         setTitle('Tablets');
         break;
 

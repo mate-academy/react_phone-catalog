@@ -25,7 +25,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
         )}
         <li className="nav__item">
           <NavLink
-            to="/shop/phone"
+            to="/shop/phones"
             className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
           >
             Phones
@@ -33,7 +33,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
         </li>
         <li className="nav__item">
           <NavLink
-            to="/shop/tablet"
+            to="/shop/tablets"
             className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
           >
             tablets

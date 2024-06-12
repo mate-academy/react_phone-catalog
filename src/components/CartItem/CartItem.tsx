@@ -15,7 +15,7 @@ export const CartItem: React.FC<Props> = ({
   deleteFromCart,
   changQuantity,
 }) => {
-  const { name, price, imageUrl, quantity, id } = productData;
+  const { name, price, image, quantity, id } = productData;
 
   const totalPrice = price * quantity;
 
@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({
         <ButtonCroce handleClick={deleteFromCart} id={id} />
       </div>
 
-      <img src={imageUrl} alt="product" className="cart-item__img" />
+      <img src={`./_new/${image}`} alt="product" className="cart-item__img" />
 
       <p className="cart-item__name">{name}</p>
 

@@ -1,1 +1,1 @@
-export type ProductType = `phone` | `tablet` | `accessory`;
+export type ProductType = `phones` | `tablets` | `accessory`;

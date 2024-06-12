@@ -30,7 +30,7 @@ export const FavoritesPage: React.FC<Props> = () => {
         const newFavoritesGoods = products.filter(p => {
           const loverName = p.name.toLocaleLowerCase();
 
-          return favoriteIds.includes(p.id) && loverName.includes(query);
+          return favoriteIds.includes(p.itemId) && loverName.includes(query);
         });
 
         setFavoritesGoods(newFavoritesGoods);

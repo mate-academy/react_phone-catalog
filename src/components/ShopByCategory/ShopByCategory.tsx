@@ -9,8 +9,8 @@ type Props = {};
 export const ShopByCategory: React.FC<Props> = () => {
   const { products } = useContext(ProductContext);
 
-  const phones = products ? filterBy(products, 'phone') : null;
-  const tablets = products ? filterBy(products, 'tablet') : null;
+  const phones = products ? filterBy(products, 'phones') : null;
+  const tablets = products ? filterBy(products, 'tablets') : null;
   const accessories = products ? filterBy(products, 'accessory') : null;
 
   return (

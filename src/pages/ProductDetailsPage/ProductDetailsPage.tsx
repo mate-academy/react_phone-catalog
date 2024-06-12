@@ -19,7 +19,10 @@ export const ProductDetailsPage: React.FC<Props> = () => {
 
   useEffect(() => {
     if (productId) {
-      getLocalStorageOrApi<DeviceDetails>(productId, productId)
+      getLocalStorageOrApi<DeviceDetails>(
+        productId,
+        `/products/${productId}.json`,
+      )
         .then(prod => setProduct(prod))
         .catch(() => setIsError(true));
     }

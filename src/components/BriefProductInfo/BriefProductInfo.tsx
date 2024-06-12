@@ -10,26 +10,25 @@ type Props = {
   id: string;
   name: string;
   prices: Prices;
-  imageUrl: string;
+  image: string;
 };
 
 export const BriefProductInfo: React.FC<Props> = ({
   id,
   prices,
   name,
-  imageUrl,
+  image,
 }) => {
   const [shortDetails, setShortDetails] = useState<ShortDetails>();
 
-  const { currentPrice, foolPrice } = prices;
+  const { currentPrice, fullPrice } = prices;
 
   useEffect(() => {
     getLocalStorageOrApi<DeviceDetails>(id, `/products/${id}.json`).then(
       details => {
-        const screen = parseFloat(details.display.screenSize);
-        const { flash, ram } = details.storage;
+        const { screen, ram, capacity } = details;
 
-        setShortDetails({ screen, flash, ram });
+        setShortDetails({ screen, capacity, ram });
       },
     );
   }, []);
@@ -40,9 +39,9 @@ export const BriefProductInfo: React.FC<Props> = ({
         <h1 className="brief-product-info__price-current">
           {`$${currentPrice}`}
         </h1>
-        {currentPrice !== foolPrice && (
+        {currentPrice !== fullPrice && (
           <span className="brief-product-info__price-fool">
-            {`$${foolPrice}`}
+            {`$${fullPrice}`}
           </span>
         )}
       </div>
@@ -52,7 +51,7 @@ export const BriefProductInfo: React.FC<Props> = ({
           id={id}
           name={name}
           price={currentPrice}
-          imageUrl={imageUrl}
+          image={image}
           isBig
         />
       </div>
@@ -65,7 +64,7 @@ export const BriefProductInfo: React.FC<Props> = ({
           </span>
           <h4 className="brief-product-info__characteristics-name">Capacity</h4>
           <span className="brief-product-info__characteristics-value">
-            {shortDetails.flash || '-'}
+            {shortDetails.capacity || '-'}
           </span>
           <h4 className="brief-product-info__characteristics-name">RAM</h4>
           <span className="brief-product-info__characteristics-value">

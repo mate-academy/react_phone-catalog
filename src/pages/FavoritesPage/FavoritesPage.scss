@@ -4,7 +4,8 @@
 
 .favorites-page {
   &__content {
-    display: grid;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
 
     margin-bottom: 80px;

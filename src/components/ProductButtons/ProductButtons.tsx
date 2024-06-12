@@ -7,7 +7,7 @@ type Props = {
   id: string;
   name: string;
   price: number;
-  imageUrl: string;
+  image: string;
   isBig?: boolean;
 };
 
@@ -15,7 +15,7 @@ export const ProductButtons: React.FC<Props> = ({
   id,
   name,
   price,
-  imageUrl,
+  image,
   isBig = false,
 }) => {
   const [isInFavorites, setIsInFavorites] = useState(false);
@@ -66,7 +66,7 @@ export const ProductButtons: React.FC<Props> = ({
         id,
         name,
         quantity: 1,
-        imageUrl,
+        image,
         price,
       },
     };
@@ -102,7 +102,7 @@ export const ProductButtons: React.FC<Props> = ({
             id,
             name,
             quantity: 1,
-            imageUrl,
+            image,
             price,
           };
 

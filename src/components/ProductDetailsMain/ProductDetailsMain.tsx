@@ -22,32 +22,30 @@ export const ProductDetailsMain: React.FC<Props> = ({ product }) => {
   const [prices, setPrices] = useState<Prices>();
 
   useEffect(() => {
-    const { type, price, discount } = products?.find(
-      good => good.id === productId,
+    const { category, price, fullPrice } = products?.find(
+      good => good.itemId === productId,
     ) || {
-      type: undefined,
+      category: undefined,
       price: 0,
-      discount: 0,
+      fullPrice: 0,
     };
 
-    const currentPrice = price - (price / 100) * discount;
-
     setPrices({
-      foolPrice: price,
-      currentPrice,
+      fullPrice,
+      currentPrice: price,
     });
 
     setPath([
       {
-        name: type || '',
-        path: `/shop/${type}`,
+        name: category || '',
+        path: `/shop/${category}`,
       },
       {
         name,
         path: `/product/${name}`,
       },
     ]);
-  }, [products, productId]);
+  }, [products, productId, name]);
 
   return (
     <section className="main-product-details">
@@ -72,7 +70,7 @@ export const ProductDetailsMain: React.FC<Props> = ({ product }) => {
               id={id}
               name={name}
               prices={prices}
-              imageUrl={images[0]}
+              image={images[0]}
             />
           )}
         </div>

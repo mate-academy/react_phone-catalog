@@ -9,8 +9,6 @@ type Props = {
   products: Product[];
 };
 
-// const COUNT_VISIBLE_CARTS = 4;
-
 const TABLET_MIN_WIDTH = 744;
 const DESKTOP_MIN_WIDTH = 1024;
 

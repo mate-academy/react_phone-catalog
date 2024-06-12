@@ -6,8 +6,9 @@
   margin-bottom: 80px;
 
   &__content {
-    display: grid;
-    row-gap: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
   }
 
   &__top {

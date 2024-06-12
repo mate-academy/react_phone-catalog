@@ -25,6 +25,8 @@
     height: var(--size-small-img);
     border: 1px solid $elements-color;
 
+
+
     @include hover(border-color, $primary-color);
 
     &--active {
@@ -32,18 +34,15 @@
     }
   }
 
-  &__img {
-    width: 100%;
-    height: 100%;
-  }
-
   &__main {
     width: var(--size-main-img);
     height: var(--size-main-img);
   }
 
+  &__img,
   &__main-img {
     width: 100%;
     height: 100%;
+    object-fit: contain;
   }
 }

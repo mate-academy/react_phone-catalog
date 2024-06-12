@@ -20,8 +20,11 @@ export const Footer: React.FC = () => {
           <div className="footer__button">
             <ButtonUp />
           </div>
-          <Link to="/" className="footer__git-hab-link">
-            ВСТАВИТЬ СЫЛКУ
+          <Link
+            to="https://github.com/VazilX/react_phone-catalog"
+            className="footer__git-hab-link"
+          >
+            Github repo
           </Link>
         </div>
       </div>

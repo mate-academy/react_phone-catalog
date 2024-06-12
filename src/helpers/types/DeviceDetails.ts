@@ -1,25 +1,22 @@
-import { Android } from './Android';
-import { Battery } from './Battery';
-import { Camera } from './Camera';
-import { Connectivity } from './Connectivity';
-import { Display } from './Display';
-import { Hardware } from './Hardware';
-import { SizeAndWeight } from './SizeAndWeight';
-import { Storage } from './Storage';
+import { Description } from './Description';
 
 export interface DeviceDetails {
-  additionalFeatures: string;
-  android: Android;
-  availability: string[];
-  battery: Battery;
-  camera: Camera;
-  connectivity: Connectivity;
-  description: string;
-  display: Display;
-  hardware: Hardware;
   id: string;
-  images: string[];
+  namespaceId: string;
   name: string;
-  sizeAndWeight: SizeAndWeight;
-  storage: Storage;
+  capacityAvailable: string[];
+  capacity: string;
+  priceRegular: number;
+  priceDiscount: number;
+  colorsAvailable: string[];
+  color: string[];
+  images: string[];
+  description: Description[];
+  screen: string;
+  resolution: string;
+  processor: string;
+  ram: string;
+  camera: string;
+  zoom: string;
+  cell: string;
 }

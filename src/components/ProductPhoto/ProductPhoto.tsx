@@ -34,13 +34,21 @@ export const ProductPhoto: React.FC<Props> = ({ images, productName }) => {
                 'photos__label--active': pathMainImg === image,
               })}
             >
-              <img src={image} alt={`${productName}`} className="photos__img" />
+              <img
+                src={`./_new/${image}`}
+                alt={`${productName}`}
+                className="photos__img"
+              />
             </label>
           </Fragment>
         ))}
       </div>
       <div className="photos__main">
-        <img src={pathMainImg} alt="big" className="photos__main-img" />
+        <img
+          src={`./_new/${pathMainImg}`}
+          alt="big"
+          className="photos__main-img"
+        />
       </div>
     </section>
   );

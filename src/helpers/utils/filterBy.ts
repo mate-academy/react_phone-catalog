@@ -7,7 +7,8 @@ export const filterBy = (
 ) => {
   return products.filter(product => {
     const loverName = product.name.toLocaleLowerCase();
+    const loverQuery = searchQuery.toLocaleLowerCase();
 
-    return product.type === category && loverName.includes(searchQuery);
+    return product.category === category && loverName.includes(loverQuery);
   });
 };

@@ -12,7 +12,9 @@ export const App: React.FC = () => {
       <Header />
       <ScrollToTop />
 
-      <Outlet />
+      <div className="app__outlet">
+        <Outlet />
+      </div>
 
       <Footer />
     </div>
