@@ -31,58 +31,62 @@ export const BrandNewModels = () => {
           </div>
         </div>
 
-        <div className={style.brandNewModels__phoneCard}>
-          {products.map(product => (
-            <div className={style.brandNewModels__container} key={product.id}>
-              <img
-                src={product.image}
-                alt={product.name}
-                className={style.brandNewModels__imgPhone}
-              />
-              <div className={style.brandNewModels__cardContent}>
-                <div className={style.brandNewModels__containerForPhoneName}>
-                  <h2 className={style.brandNewModels__phoneName}>
-                    {product.name}
-                  </h2>
+        <div className={style.brandNewModels__wrapper}>
+          <ul className={style.brandNewModels__phoneCard}>
+            {products.map(product => (
+              <li className={style.brandNewModels__container} key={product.id}>
+                <img
+                  src={product.image}
+                  alt={product.name}
+                  className={style.brandNewModels__imgPhone}
+                />
+                <div className={style.brandNewModels__cardContent}>
+                  <div className={style.brandNewModels__containerForPhoneName}>
+                    <h2 className={style.brandNewModels__phoneName}>
+                      {product.name}
+                    </h2>
+                  </div>
+
+                  <p className={style.brandNewModels__phonePrice}>
+                    &#36;{product.price}
+                  </p>
+                  <p className={style.brandNewModels__line} />
+
+                  <div className={style.brandNewModels__info}>
+                    <p className={style.brandNewModels__valueName}>
+                      {t('screen')}
+                    </p>
+                    <p className={style.brandNewModels__value}>
+                      {product.screen}
+                    </p>
+                  </div>
+                  <div className={style.brandNewModels__info}>
+                    <p className={style.brandNewModels__valueName}>
+                      {t('capacity')}
+                    </p>
+                    <p className={style.brandNewModels__value}>
+                      {product.capacity}
+                    </p>
+                  </div>
+                  <div className={style.brandNewModels__info}>
+                    <p className={style.brandNewModels__valueName}>
+                      {t('ram')}
+                    </p>
+                    <p className={style.brandNewModels__value}>{product.ram}</p>
+                  </div>
                 </div>
 
-                <p className={style.brandNewModels__phonePrice}>
-                  {product.price}
-                </p>
-                <p className={style.brandNewModels__line} />
-
-                <div className={style.brandNewModels__info}>
-                  <p className={style.brandNewModels__valueName}>
-                    {t('screen')}
-                  </p>
-                  <p className={style.brandNewModels__value}>
-                    {product.screen}
-                  </p>
+                <div className={style.brandNewModels__wrapButtons}>
+                  <button className={style.brandNewModels__addToCart}>
+                    {t('addToCart')}
+                  </button>
+                  <button className={style.brandNewModels__favBtn}>
+                    <LogoFavorites />
+                  </button>
                 </div>
-                <div className={style.brandNewModels__info}>
-                  <p className={style.brandNewModels__valueName}>
-                    {t('capacity')}
-                  </p>
-                  <p className={style.brandNewModels__value}>
-                    {product.capacity}
-                  </p>
-                </div>
-                <div className={style.brandNewModels__info}>
-                  <p className={style.brandNewModels__valueName}>{t('ram')}</p>
-                  <p className={style.brandNewModels__value}>{product.ram}</p>
-                </div>
-              </div>
-
-              <div className={style.brandNewModels__wrapButtons}>
-                <button className={style.brandNewModels__addToCart}>
-                  {t('addToCart')}
-                </button>
-                <button className={style.brandNewModels__favBtn}>
-                  <LogoFavorites />
-                </button>
-              </div>
-            </div>
-          ))}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </section>

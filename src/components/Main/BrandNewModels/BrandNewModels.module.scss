@@ -3,12 +3,17 @@
 
 .brandNewModels {
   position: relative;
+  overflow: hidden;
 
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat($grid-columns-desctop, 1fr);
+    column-gap: 16px;
+  }
   &__title {
     display: flex;
     font-size: 32px;
     line-height: 41px;
-    margin: 0 0 24px 0;
   }
 
   &__rightSide {
@@ -32,17 +37,22 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin: 0 0 24px 0;
   }
 
   &__phoneCard {
     display: flex;
-    overflow: hidden;
+
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
     gap: 16px;
+    grid-column: 1 / 7;
   }
 
   &__container {
-    width: 272px;
-    height: 506px;
+    width: 100%;
     border: 1px solid $border-color;
     padding: 32px;
     background-color: $background-color-phoneCard;
@@ -165,6 +175,19 @@
 }
 
 @include onTablet {
+  .brandNewModels {
+    &__wrapper {
+      grid-template-columns: repeat($grid-columns-tablet, 1fr);
+    }
+
+    &__phoneCard {
+      display: flex;
+
+      list-style: none;
+      column-gap: 16px;
+      grid-column: 1 / 7;
+    }
+  }
 }
 
 @include onPhone {
@@ -172,6 +195,15 @@
     &__title {
       font-size: 22px;
       line-height: 31px;
+    }
+
+    &__wrapper {
+      grid-template-columns: repeat($grid-columns-phone, 1fr);
+    }
+
+    &__phoneCard {
+      grid-column: 1 / 5;
+      column-gap: 16px;
     }
   }
 }
