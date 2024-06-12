@@ -1,32 +1,35 @@
 .DropdownMenuTrigger {
-  background-color: var(--white-color);
+  background-color: var(--background-color);
   display: flex;
   padding: 10px 12px;
 
   width: 176px;
   justify-content: space-between;
   align-items: center;
-  border: 1px solid var(--elements-color);
+  border: 1px solid var(--button-border);
   font-size: 14px;
   line-height: 150%;
-  color: #313237;
   font-weight: 600;
   font-family: var(--primary-font);
+  color: var(--font-color-primary);
+  transition:
+    border-color 0.3s ease-out,
+    background-color 0.3s ease-out;
 }
 
 .DropdownMenuTrigger:hover {
-  border-color: var(--primary-color);
+  border-color: var(--button-border-hover);
+  background-color: var(--button-bg-hover);
 }
 
 .DropdownMenuContent {
-  border: 1px solid var(--icon-color);
+  border: 1px solid var(--button-border);
   width: 176px;
-  background-color: var(--white-color);
+  background-color: var(--background-color);
   margin-top: 10px;
   z-index: 5;
   padding: 8px 0;
   animation-duration: 1.5s;
-
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -36,17 +39,18 @@
   font-weight: 600;
   font-size: 14px;
   line-height: 150%;
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   cursor: pointer;
+  transition: background-color 0.3s ease-out;
 }
 
 .DropdownMenuItem[data-highlighted],
 .DropdownMenuItemActive {
-  background: var(--hover-color);
+  background-color: var(--dropdown-bg-hover);
   font-weight: 500;
   font-size: 14px;
   line-height: 150%;
-  color: var(--primary-color);
+  color: var(--font-color-primary);
 }
 
 .DropdownMenuContent[data-side='bottom'] {

@@ -62,7 +62,7 @@
 }
 
 .link:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .link::before {
@@ -71,7 +71,7 @@
   width: 100%;
   height: 3px;
   border-radius: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   bottom: 0;
   left: 0;
   transform-origin: right;
@@ -86,7 +86,7 @@
 
 .activeLink {
   position: relative;
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .iconLink {
@@ -106,7 +106,7 @@
   width: 100%;
   height: 3px;
   border-radius: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   bottom: 0;
   left: 0;
   transform-origin: right;
@@ -125,7 +125,7 @@
   width: 100%;
   height: 3px;
   border-radius: 4px;
-  background-color: var(--primary-color);
+  background-color: var(--accent-color);
   bottom: 0;
   left: 0;
   transform-origin: left;
@@ -134,7 +134,7 @@
 }
 
 .badge {
-  background-color: var(--red-color);
+  background-color: var(--color-red);
   padding: 5px;
   width: 14px;
   height: 14px;
@@ -146,8 +146,12 @@
   position: absolute;
   top: -40%;
   right: -40%;
-  color: var(--white-color);
+  color: #fff;
   font-weight: 700;
+}
+
+.btnToggleTheme {
+  box-shadow: -1px 0 0 0 var(--elements-color);
 }
 
 @media (max-width: 768px) {

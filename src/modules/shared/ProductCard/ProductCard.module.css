@@ -1,10 +1,10 @@
 .wrapper {
   width: 100%;
-  border: 1px solid var(--elements-color);
-  color: var(--primary-color);
+  border: 1px solid var(--card-border);
+
   font-size: 14px;
   height: 516px;
-  transition: box-shadow 0.3s ease-out;
+  transition: border-color 0.3s ease-out;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -12,7 +12,7 @@
 }
 
 .wrapper:hover {
-  box-shadow: 0 0 11px rgba(33, 33, 33, 0.2);
+  border-color: var(--card-border-hover);
 }
 
 .header {
@@ -53,7 +53,7 @@
   font-size: 22px;
   line-height: 1.28;
   text-decoration: line-through;
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
 }
 
 .paramsList {
@@ -74,7 +74,7 @@
 }
 
 .paramType {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
 }
 
 .actionsWrapper {
@@ -113,6 +113,7 @@
   align-items: center;
   justify-content: center;
   font-family: inherit;
+  background-color: var(--btn-color-bg-default);
 }
 
 .favouriteBtn img {
