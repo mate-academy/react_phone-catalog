@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   background-color: var(--white-color);
-  border-left: 1px solid var(--primary-color);
   padding: 12px;
 }
 
@@ -29,12 +28,16 @@
 }
 
 .searchFieldInput {
-  height: 32px;
-  flex-grow: 1;
-  outline: none;
-  border: none;
-  font-size: 14px;
-  font-weight: 600;
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  border-radius: 4px;
+  padding: 0 10px;
+  font-size: 13px;
+  line-height: 1;
+  height: 25px;
   background-color: var(--white-color);
   color: var(--primary-color);
 }
@@ -62,20 +65,54 @@
 }
 
 .searchFieldButton {
-  width: 24px; /* Increased button size for better visibility */
-  height: 24px; /* Increased button size for better visibility */
+  width: 24px;
+  height: 24px;
   display: flex;
   justify-content: center;
   align-items: center;
   transition-duration: var(--basic-transition-time);
-  margin-left: 8px; /* Add some space between the input and the button */
+  margin-left: 8px;
 }
 
 .searchFieldButton img {
-  width: 100%; /* Ensure icons fit within the button */
+  width: 100%;
   height: 100%;
 }
 
 .searchFieldButton:hover {
   transform: scale(1.2);
+}
+
+.PopoverContent{
+  border-radius: 4px;
+  padding: 8px;
+  width: 260px;
+  background-color: white;
+  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  animation-duration: 400ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  will-change: transform, opacity;
+}
+
+.Trigger{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 64px;
+  height: 64px;
+  box-shadow: -1px 0 0 0 #e2e6e9;
+}
+
+@media (max-width: 767px) {
+  .Trigger{
+    width: 48px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .Trigger{
+    width: 64px;
+    height: 48px;
+  }
 }

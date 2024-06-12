@@ -8,7 +8,7 @@ import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
 import { MobileMenu } from '../BurgerMenu';
 import styles from './Header.module.css';
-import { SearchField } from '../SearchField/SearchField';
+import SearchField from '../SearchField/SearchField';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);

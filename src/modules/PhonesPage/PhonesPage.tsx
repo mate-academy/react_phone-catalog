@@ -110,7 +110,7 @@ const PhonesPage = () => {
     phone.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-// prettier-ignore
+  // prettier-ignore
   const paginatedPhones =
     perPage === 'all'
       ? filteredPhones
