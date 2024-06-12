@@ -1,19 +1,17 @@
+/* eslint-disable import/no-extraneous-dependencies */
+import * as Popover from '@radix-ui/react-popover';
+
+import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import * as Popover from '@radix-ui/react-popover';
-import { IoSearch } from 'react-icons/io5';
-import classNames from 'classnames';
-import { getSearchWith } from '../../helpers/searchHelper';
 import { SearchParams } from '../../types/Categories';
 import classNames from 'classnames';
 import { getSearchWith } from '../../helpers/searchHelper';
 import styles from './SearchField.module.css';
-
 import { useDebounce } from '../../hooks/useDebounce';
-import styles from './SearchField.module.css';
 
-const PopoverDemo = () => {
+const SearchField = () => {
   const { pathname } = useLocation();
   const [searchParams, setSearchParams] = useSearchParams();
   const query = searchParams.get(SearchParams.Query) || '';
@@ -63,18 +61,13 @@ const PopoverDemo = () => {
     <Popover.Root>
       <Popover.Trigger className={styles.Trigger} asChild>
         <button className="IconButton" aria-label="Search">
-          <IoSearch size={16} />
+          <IoSearch size={18} />
         </button>
       </Popover.Trigger>
       <Popover.Portal>
         <Popover.Content className={styles.PopoverContent} sideOffset={5}>
           <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-            <label
-              htmlFor="search"
-              className={classNames(styles.searchField, {
-                [styles.focus]: isSearchFocused,
-              })}
-            >
+            <label htmlFor="search" className={styles.searchField}>
               <input
                 id="search"
                 type="text"
@@ -97,7 +90,7 @@ const PopoverDemo = () => {
                   aria-label="search"
                   onClick={() => setIsSearchFocused(true)}
                 >
-                  <img src="img/icons/search-icon.svg" alt="Search icon" />
+                  <IoSearch size={16} />
                 </button>
               ) : (
                 <button
@@ -107,10 +100,7 @@ const PopoverDemo = () => {
                   aria-label="clear search"
                   onClick={handleClearSearch}
                 >
-                  <img
-                    src="img/icons/close-icon-hover.svg"
-                    alt="Clear search icon"
-                  />
+                  <IoCloseOutline size={18} />
                 </button>
               )}
             </label>
@@ -121,4 +111,4 @@ const PopoverDemo = () => {
   );
 };
 
-export default PopoverDemo;
+export default SearchField;

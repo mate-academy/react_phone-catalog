@@ -1,14 +1,14 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-import classNames from 'classnames';
-import { useState } from 'react';
 import Button from '../../UI/Buttons/Button';
+import { MobileMenu } from '../BurgerMenu';
 import { ROUTES } from '../../constants/ROUTES';
+import SearchField from '../SearchField/SearchField';
+import classNames from 'classnames';
+import styles from './Header.module.css';
 import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
-import { MobileMenu } from '../BurgerMenu';
-import styles from './Header.module.css';
-import SearchField from '../SearchField/SearchField';
+import { useState } from 'react';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);
@@ -95,11 +95,11 @@ const Header = () => {
             )}
           </Button>
         </NavLink>
-      </div>
 
-      <button onClick={() => setIsMenuShown(true)} className={styles.burger}>
-        <img src="img/icons/burger-menu-icon.svg" alt="" />
-      </button>
+        <button onClick={() => setIsMenuShown(true)} className={styles.burger}>
+          <img src="img/icons/burger-menu-icon.svg" alt="" />
+        </button>
+      </div>
     </header>
   );
 };

@@ -5,7 +5,6 @@
   display: flex;
   align-items: center;
   background-color: var(--white-color);
-  box-shadow: -1px 0 0 0 var(--elements-color);
   padding: 12px;
   position: relative;
 }
@@ -46,11 +45,11 @@
   font-family: var(--primary-font);
 }
 
-.focus::before {
+/* .focus::before {
   content: '';
   position: absolute;
   width: 100%;
-  height: 3px;
+  height: 2px;
   border-radius: 4px;
   background-color: var(--primary-color);
   bottom: 0;
@@ -59,7 +58,7 @@
   transition: transform 0.3s ease-out;
   transform-origin: left;
   transform: scaleX(1);
-}
+} */
 
 @media (max-width: 767px) {
   .searchFieldInput {
@@ -95,21 +94,22 @@
 }
 
 .searchFieldButton:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
-.PopoverContent{
+.PopoverContent {
   border-radius: 4px;
-  padding: 8px;
   width: 260px;
   background-color: white;
-  box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+  box-shadow:
+    hsl(206deg 22% 7% / 35%) 0 10px 38px -10px,
+    hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
 }
 
-.Trigger{
+.Trigger {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -119,15 +119,14 @@
 }
 
 @media (max-width: 767px) {
-  .Trigger{
+  .Trigger {
     width: 48px;
     height: 48px;
   }
 }
 
 @media (max-width: 1024px) {
-  .Trigger{
+  .Trigger {
     width: 64px;
-    height: 48px;
   }
 }
