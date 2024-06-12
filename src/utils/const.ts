@@ -1,1 +1,1 @@
-export const BASE_URL = 'http://localhost:3000/';
+export const BASE_URL = 'https://andreyysak.github.io/react_phone-catalog/#/';
