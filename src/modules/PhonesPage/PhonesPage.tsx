@@ -13,15 +13,15 @@ import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import { SearchParams } from '../../types/Categories';
 import { getPhones } from '../../api/getProduct';
+import pageOptions from '../../constants/PageOptions';
 import s from './PhonesPage.module.css';
+import sortOptions from '../../constants/sortOptions';
 
 const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
-
-  window.console.log(isError);
 
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -81,19 +81,20 @@ const PhonesPage = () => {
     }, 800);
   };
 
-  const handleSortChange = (selectedOption: any) => {
+  const handleSortChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    setSortOption(selectedOption.value);
+
+    setSortOption(selectedOption);
+
     setCurrentPage(1);
     setTimeout(() => {
       setIsChangingPage(false);
     }, 800);
   };
 
-  const handlePerPageChange = (selectedOption: any) => {
+  const handlePerPageChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    const value =
-      selectedOption.value === 'all' ? 'all' : Number(selectedOption.value);
+    const value = selectedOption === 'all' ? 'all' : Number(selectedOption);
 
     setPerPage(value);
     setCurrentPage(1);
@@ -103,7 +104,7 @@ const PhonesPage = () => {
   };
 
   const sortedPhones = phones.slice().sort((a, b) => {
-    switch (sortOption) {
+    switch (sortOption.toLowerCase()) {
       case 'newest':
         return b.processor.localeCompare(a.processor);
       case 'alphabetically':
@@ -157,21 +158,19 @@ const PhonesPage = () => {
               <div>
                 <p className={s.label}>Sort by</p>
                 <Dropdown
-                  defaultValue={sortOption}
-                  options={['newest', 'alphabetically', 'cheapest']}
-                  dropdownWidth={150}
-                  dropdownHeight={40}
-                  onChange={handleSortChange}
+                  defaultValue={sortOption === 'newest' ? 'Newest' : sortOption}
+                  options={sortOptions}
+                  onChange={(option: string) => handleSortChange(option)}
+                  sortOption={sortOption}
                 />
               </div>
               <div>
                 <p className={s.label}>Items on page</p>
                 <Dropdown
-                  defaultValue={perPage === 'all' ? 'all' : perPage.toString()}
-                  options={['4', '8', '16', 'all']}
-                  dropdownWidth={128}
-                  dropdownHeight={40}
-                  onChange={handlePerPageChange}
+                  defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+                  options={pageOptions}
+                  onChange={(option: string) => handlePerPageChange(option)}
+                  sortOption={String(perPage)}
                 />
               </div>
             </div>

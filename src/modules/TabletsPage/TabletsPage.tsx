@@ -13,7 +13,9 @@ import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import { SearchParams } from '../../types/Categories';
 import { getTablets } from '../../api/getProduct';
+import pageOptions from '../../constants/PageOptions';
 import s from './TabletsPage.module.css';
+import sortOptions from '../../constants/sortOptions';
 
 const TabletsPage = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -157,21 +159,21 @@ const TabletsPage = () => {
               <div>
                 <p className={s.label}>Sort by</p>
                 <Dropdown
-                  defaultValue={sortOption}
-                  options={['newest', 'alphabetically', 'cheapest']}
-                  dropdownWidth={150}
-                  dropdownHeight={40}
-                  onChange={handleSortChange}
+                  defaultValue={
+                    sortOption === 'newest' ? 'Newest' : perPage.toString()
+                  }
+                  options={sortOptions}
+                  onChange={(option: string) => handleSortChange(option)}
+                  sortOption={sortOption}
                 />
               </div>
               <div>
                 <p className={s.label}>Items on page</p>
                 <Dropdown
-                  defaultValue={perPage === 'all' ? 'all' : perPage.toString()}
-                  options={['4', '8', '16', 'all']}
-                  dropdownWidth={128}
-                  dropdownHeight={40}
-                  onChange={handlePerPageChange}
+                  defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+                  options={pageOptions}
+                  onChange={(option: string) => handlePerPageChange(option)}
+                  sortOption={String(perPage)}
                 />
               </div>
             </div>

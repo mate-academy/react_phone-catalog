@@ -1,66 +1,45 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-import { FaChevronDown } from 'react-icons/fa';
-import React from 'react';
-import * as Select from '@radix-ui/react-select';
-import s from './Dropdown.module.css';
+import { Content, Item, Root, Trigger } from '@radix-ui/react-dropdown-menu';
 
-interface DropdownOption {
-  value: string;
-  label: string;
+import { FC } from 'react';
+import { IoIosArrowDown } from 'react-icons/io';
+import Option from '../../types/Options';
+import classNames from 'classnames';
+import styles from './Dropdown.module.css';
+
+interface Props {
+  defaultValue: string;
+  onChange: (value: string) => void;
+  options: Option[];
+  sortOption: string;
 }
 
-interface DropdownSelectProps {
-  defaultValue?: string;
-  options: string[];
-  dropdownWidth?: string | number;
-  dropdownHeight?: string | number;
-  onChange?: (value: string) => void;
-}
-
-const Dropdown: React.FC<DropdownSelectProps> = ({
+const Dropdown: FC<Props> = ({
   defaultValue,
-  options,
-  dropdownWidth = 'auto',
-  dropdownHeight = 'auto',
   onChange,
-}) => {
-  const transformedOptions: DropdownOption[] = options.map(option => ({
-    value: option,
-    label: option,
-  }));
-
-  return (
-    <Select.Root onValueChange={onChange}>
-      {/* value={value} */}
-      <Select.Trigger
-        className={s.trigger}
-        style={{
-          width: dropdownWidth,
-          height: dropdownHeight,
-        }}
-      >
-        <Select.Value aria-label={defaultValue}>{defaultValue}</Select.Value>
-        <Select.Icon className={s.indicator}>
-          <FaChevronDown />
-        </Select.Icon>
-      </Select.Trigger>
-      <Select.Portal>
-        <Select.Content className={s.content}>
-          <Select.Viewport>
-            {transformedOptions.map(option => (
-              <Select.Item
-                className={s.item}
-                key={option.value}
-                value={option.value}
-              >
-                <Select.ItemText>{option.label}</Select.ItemText>
-              </Select.Item>
-            ))}
-          </Select.Viewport>
-        </Select.Content>
-      </Select.Portal>
-    </Select.Root>
-  );
-};
+  options,
+  sortOption,
+}) => (
+  <Root>
+    <Trigger className={styles.DropdownMenuTrigger}>
+      <div>{defaultValue.charAt(0).toUpperCase() + defaultValue.slice(1)}</div>
+      <div className={styles.DropdownMenuTriggerIcon}>
+        <IoIosArrowDown size={16} />
+      </div>
+    </Trigger>
+    <Content className={styles.DropdownMenuContent} side="bottom">
+      {options.map(option => (
+        <Item
+          key={option.value}
+          onSelect={() => onChange(option.value)}
+          className={classNames(styles.DropdownMenuItem, {
+            [styles.DropdownMenuItemActive]: sortOption === option.value,
+          })}
+        >
+          {option.label}
+        </Item>
+      ))}
+    </Content>
+  </Root>
+);
 
 export default Dropdown;
