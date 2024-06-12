@@ -52,13 +52,9 @@ const CartItem: FC<Props> = ({
           <Button
             variant="icon"
             size={[32, 32]}
-            className={classNames(
-              `${styles.actionBtn}`,
-              `${styles.actionBtnMinus}`,
-              {
-                [styles.actionBtnDisabled]: quantity === 1,
-              },
-            )}
+            className={classNames('', {
+              [styles.actionBtnDisabled]: quantity === 1,
+            })}
             disabled={quantity === 1}
             onClick={() => (quantity === 1 ? null : onMinus(id))}
             aria-label="Add button"
@@ -69,7 +65,6 @@ const CartItem: FC<Props> = ({
           <Button
             variant="icon"
             size={[32, 32]}
-            className={`${styles.actionBtn} ${styles.actionBtnPlus}`}
             onClick={() => onPlus(id)}
             aria-label="Remove button"
           >

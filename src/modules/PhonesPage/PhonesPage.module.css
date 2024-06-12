@@ -7,7 +7,7 @@
 }
 
 .quantity {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   margin-bottom: 40px;
   font-weight: 600;
 }
@@ -20,7 +20,7 @@
 }
 
 .label {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   font-size: 12px;
   margin-bottom: 4px;
   font-weight: 700;

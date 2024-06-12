@@ -5,12 +5,12 @@
   justify-content: flex-end;
   height: 100vh;
   text-align: center;
-  background-color: #f8f9fa;
-  color: #343a40;
+  background-color: var(--background-color);
+  color: var(--font-color-primary);
   background-image: url(../../../public/img/page-not-found.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain;
+  background-size: 40%;
 }
 
 .not__found__title {
@@ -20,12 +20,13 @@
 
 .not__found__link {
   font-size: 20px;
-  color: var(--white-color);
   text-decoration: none;
   margin-bottom: 50px;
   background-color: var(--primary-color);
   padding: 8px 16px;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition:
+    background-color 0.3s ease,
+    color 0.3s ease;
 }
 
 .not__found__link:hover {

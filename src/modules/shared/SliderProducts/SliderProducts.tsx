@@ -68,7 +68,7 @@ const SliderProducts: FC<Props> = ({
           <ul className={s.navigation}>
             <li>
               <Button
-                variant="pagination"
+                variant="icon"
                 size={[32, 32]}
                 onClick={handlePrevClick}
                 disabled={currentPage === 1}
@@ -79,7 +79,7 @@ const SliderProducts: FC<Props> = ({
 
             <li>
               <Button
-                variant="pagination"
+                variant="icon"
                 size={[32, 32]}
                 onClick={handleNextClick}
                 disabled={currentPage === totalPages}

@@ -1,14 +1,19 @@
 .btn {
-  border: 1px solid var(--icon-color);
+  border: 1px solid var(--elements-color);
+  background-color: var(--button-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: border-color 0.3s ease-in-out;
   width: 32px;
+  color: var(--font-color-primary);
+  transition:
+    border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
 }
 
 .btn:hover {
-  border-color: var(--primary-color);
+  border-color: var(--button-border);
+  background-color: var(--button-bg-hover);
 }
 
 .btn img {
@@ -84,11 +89,11 @@
 }
 
 .dash:hover {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
 }
 
 .activeDash {
-  background-color: var(--primary-color);
+  background-color: var(--color-primary);
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {

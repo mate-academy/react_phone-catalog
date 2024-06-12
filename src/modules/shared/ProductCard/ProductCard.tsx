@@ -120,8 +120,9 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
           <Tooltip.Root>
             <Tooltip.Trigger asChild>
               <Button
+                variant="icon"
                 onClick={() => handleToggleFavorite(product)}
-                className={styles.favouriteBtn}
+                size={[40, 40]}
               >
                 {isFavorite ? (
                   <FaHeart color="red" size={16} />

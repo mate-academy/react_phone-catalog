@@ -8,7 +8,6 @@
   justify-content: space-between;
   flex-direction: row;
   align-items: center;
-  color: var(--white-color);
 }
 
 .footer__logo_container {
@@ -25,7 +24,7 @@
 }
 
 .footer__logo:hover {
-  transform: scale(1.2);
+  transform: scale(1.1);
 }
 
 .footer__link__container {
@@ -42,28 +41,27 @@
   font-size: 12px;
   font-weight: 800;
   letter-spacing: 0.04em;
-  color: var(--secondary-color);
   transition: color 0.3s ease-in-out;
 }
 
 .footer__link:hover {
-  color: var(--primary-color);
+  color: var(--accent-color);
 }
 
 .back__to__top_link {
   font-family: Mont, sans-serif;
   font-size: 12px;
   font-weight: 700;
-  color: var(--secondary-color);
   display: flex;
   align-items: center;
   gap: 15px;
+  color: var(--font-color-secondary);
   scroll-behavior: smooth;
   transition: color 0.3s ease-in-out;
 }
 
 .back__to__top:hover {
-  color: var(--primary-color);
+  color: var(--font-color-primary);
 }
 
 .back__to__top::first-letter {
@@ -79,11 +77,11 @@
 }
 
 .back_to_top_content:hover .back__to__top_link {
-  color: var(--primary-color);
+  color: var(--font-color-primary);
 }
 
 .back_to_top_content:hover .back__to__top_link::after {
-  border: 1px solid var(--primary-color);
+  border: 1px solid var(--font-color-secondary);
 }
 
 @media (max-width: 640px) {

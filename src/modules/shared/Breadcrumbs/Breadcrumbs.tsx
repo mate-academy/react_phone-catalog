@@ -30,12 +30,12 @@ export const Breadcrumbs: FC<Props> = ({ className }) => {
 
         return isLast ? (
           <div key={idx} className={styles.activeLink}>
-            <GoChevronLeft size={16} />
+            <GoChevronLeft size={16} className={styles.icon} />
             <span>{capitalize(name)}</span>
           </div>
         ) : (
           <Link key={idx} to={breadcrumbsPath} className={styles.link}>
-            <GoChevronLeft size={16} />
+            <GoChevronLeft size={16} className={styles.icon} />
             <span>{capitalize(name)}</span>
           </Link>
         );

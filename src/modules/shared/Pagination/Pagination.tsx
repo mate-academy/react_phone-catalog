@@ -1,5 +1,7 @@
-import React from 'react';
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
+
 import Button from '../../../UI/Buttons/Button';
+import React from 'react';
 import s from './Pagination.module.css';
 
 type Props = {
@@ -16,7 +18,7 @@ const Pagination: React.FC<Props> = ({
   onPageChange,
 }) => {
   if (total === 0 || perPage === 0) {
-    return null; // or some other handling for zero values
+    return null;
   }
 
   const totalPages = Math.ceil(total / perPage);
@@ -52,12 +54,12 @@ const Pagination: React.FC<Props> = ({
     <ul className={s.pagination}>
       <li>
         <Button
-          variant="pagination"
+          variant="icon"
           size={[32, 32]}
           onClick={handlePrevPage}
           disabled={currentPage === 1}
         >
-          &lt;
+          <GoChevronLeft size={16} />
         </Button>
       </li>
 
@@ -76,12 +78,12 @@ const Pagination: React.FC<Props> = ({
 
       <li>
         <Button
-          variant="pagination"
+          variant="icon"
           size={[32, 32]}
           onClick={handleNextPage}
           disabled={currentPage === totalPages}
         >
-          &gt;
+          <GoChevronRight size={16} />
         </Button>
       </li>
     </ul>

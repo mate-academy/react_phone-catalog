@@ -2,8 +2,11 @@ import Button from '../../UI/Buttons/Button';
 import { IoIosArrowUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
+import useDarkThemeStore from '../../store/darkThemeStore';
 
 const Footer = () => {
+  const { theme } = useDarkThemeStore();
+
   return (
     <footer className={styles.footer}>
       <div className="container">
@@ -12,7 +15,7 @@ const Footer = () => {
             <Link to="/" className={styles.footer__logo_link}>
               <img
                 className={styles.footer__logo}
-                src="img/logo.png"
+                src={`img/${theme === 'dark' ? 'logo-dark.svg' : 'logo.svg'}`}
                 alt="Nice gadgets logo"
               />
             </Link>

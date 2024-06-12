@@ -1,3 +1,7 @@
+.content {
+  padding: 24px 0 80px;
+}
+
 .container {
   display: flex;
   gap: 8px;
@@ -21,5 +25,5 @@
 }
 
 .activeLink {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
 }

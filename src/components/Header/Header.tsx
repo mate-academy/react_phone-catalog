@@ -3,13 +3,16 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import Button from '../../UI/Buttons/Button';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
+import { LuSun } from 'react-icons/lu';
 import { MobileMenu } from '../BurgerMenu';
+import { PiMoonBold } from 'react-icons/pi';
 import { ROUTES } from '../../constants/ROUTES';
 import { RxHamburgerMenu } from 'react-icons/rx';
 import SearchField from '../SearchField/SearchField';
 import classNames from 'classnames';
 import styles from './Header.module.css';
 import { useCartStore } from '../../store/cartStore';
+import useDarkThemeStore from '../../store/darkThemeStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
 import { useState } from 'react';
 
@@ -19,6 +22,8 @@ const Header = () => {
 
   const cart = useCartStore(state => state.cartItems);
   const favorites = useFavoritesStore(state => state.favorites);
+
+  const { theme, toggleTheme } = useDarkThemeStore();
 
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.link, {
@@ -40,7 +45,10 @@ const Header = () => {
     <header className={styles.header} id="header">
       <div className={styles.containerLeft}>
         <Link to={ROUTES.HOME} className={styles.logo}>
-          <img src="img/logo.png" alt="Nice gadgets logo" />
+          <img
+            src={`img/${theme === 'dark' ? 'logo-dark.svg' : 'logo.svg'}`}
+            alt="Nice gadgets logo"
+          />
         </Link>
 
         <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />
@@ -80,6 +88,15 @@ const Header = () => {
 
       <div className={styles.containerRight}>
         {isSearchShown && <SearchField />}
+
+        <Button
+          variant="ghost"
+          size={[64, 64]}
+          onClick={toggleTheme}
+          className={styles.btnToggleTheme}
+        >
+          {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
+        </Button>
 
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
