@@ -37,6 +37,11 @@
 
   &__image {
     height: 129px;
+    transition: transform 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
 
     @include on-tablet {
       height: 200px;
@@ -44,9 +49,15 @@
   }
 
   &__title {
+    color: $main-black;
     font-size: 14px;
-    font-weight: 500;
+    font-weight: 700;
     line-height: 21px;
+    transition: color 0.5s;
+
+    &:hover {
+      color: rgb(66, 25, 208);
+    }
   }
 
   &__price {

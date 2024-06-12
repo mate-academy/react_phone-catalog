@@ -2,22 +2,33 @@ import React from 'react';
 import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames';
 import { PageSection } from '../../types/PageSection';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  currentPage: PageSection;
-  setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
 }
 
-export const BurgerMenu: React.FC<Props> = ({
-  setIsMenuOpen,
-  currentPage,
-  setCurrentPage,
-}) => {
+export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
+  const { setCurrentPage, currentPage } = useAppContext();
+
   const handleOpenPage = (link: PageSection) => {
     setCurrentPage(link);
     setIsMenuOpen(false);
   };
+
+  const handleSetCart = () => {
+    setCurrentPage(PageSection.Cart);
+    setIsMenuOpen(false);
+  };
+
+  const handleSetFavourite = () => {
+    setCurrentPage(PageSection.Favorites);
+    setIsMenuOpen(false);
+  };
+
+  const pagesToShow = Object.values(PageSection).filter(
+    link => link !== PageSection.Favorites && link !== PageSection.Cart,
+  );
 
   return (
     <div className={styles.menu}>
@@ -34,7 +45,7 @@ export const BurgerMenu: React.FC<Props> = ({
       </div>
       <nav className={styles.menu__navigation}>
         <ul className={styles.menu__list}>
-          {Object.values(PageSection).map(link => (
+          {pagesToShow.map(link => (
             <li
               className={classNames(
                 styles.menu__item,
@@ -59,10 +70,10 @@ export const BurgerMenu: React.FC<Props> = ({
         </ul>
       </nav>
       <div className={styles.menu__footer}>
-        <a href="" className={styles['menu__footer-link']}>
+        <a onClick={handleSetFavourite} className={styles['menu__footer-link']}>
           <img src="img/header/favorite.svg" alt="favorite" />
         </a>
-        <a href="" className={styles['menu__footer-link']}>
+        <a onClick={handleSetCart} className={styles['menu__footer-link']}>
           <img src="img/header/cart.svg" alt="cart" />
         </a>
       </div>

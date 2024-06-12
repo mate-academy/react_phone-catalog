@@ -2,24 +2,16 @@ import React from 'react';
 import styles from './ModelItem.module.scss';
 import '../../../../styles/variables.scss';
 import { Products } from '../../../../types/Products';
+import { useAppContext } from '../../../../AppContext';
 
 interface Props {
   model: Products;
   modelsTitle: string;
-  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
-  favourites: number[];
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const ModelItem: React.FC<Props> = ({
-  model,
-  modelsTitle,
-  setFavourites,
-  favourites,
-  cart,
-  setCart,
-}) => {
+export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
+  const { favourites, setFavourites, cart, setCart } = useAppContext();
+
   const selected = favourites.find(number => number === model.id);
   const added = cart.find(number => number === model.id);
   const handleAddFavourite = () => {

@@ -2,29 +2,24 @@ import React from 'react';
 import styles from './Header.module.scss';
 import { PageSection } from '../../types/PageSection';
 import classNames from 'classnames';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
-  setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
-  currentPage: PageSection;
   setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-  favourites: number[];
-  cart: number[];
 }
 
-export const Header: React.FC<Props> = ({
-  currentPage,
-  setCurrentPage,
-  setIsMenuOpen,
-  favourites,
-  cart,
-}) => {
+export const Header: React.FC<Props> = ({ setIsMenuOpen }) => {
   const pagesToShow = Object.values(PageSection).filter(
     link => link !== PageSection.Favorites && link !== PageSection.Cart,
   );
+  const { setCurrentPage, currentPage, favourites, cart } = useAppContext();
 
   return (
     <header className={styles.header}>
-      <a href="#" className={styles.header__logo}>
+      <a
+        className={styles.header__logo}
+        onClick={() => setCurrentPage(PageSection.Home)}
+      >
         <img src="img/Logo.svg" alt="" />
       </a>
       <div className={styles.header__toplist}>

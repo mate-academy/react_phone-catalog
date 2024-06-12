@@ -10,6 +10,9 @@ import { BurgerMenu } from './components/BurgerMenu';
 import classNames from 'classnames';
 import { Favourites } from './components/Favourites';
 import { Cart } from './components/Cart';
+import { useAppContext } from './AppContext';
+// import { Products } from './types/Products';
+// import { useSearchParams } from 'react-router-dom';
 
 const phones = productsFromServer.filter(
   product => product.category === 'phones',
@@ -24,81 +27,27 @@ const accessories = productsFromServer.filter(
 );
 
 export const App: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(PageSection.Home);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [favourites, setFavourites] = useState<number[]>([]);
-  const [cart, setCart] = useState<number[]>([]);
+  const { currentPage } = useAppContext();
 
   return (
     <div className={classNames('App', { 'no-scroll': isMenuOpen })}>
-      <Header
-        setCurrentPage={setCurrentPage}
-        favourites={favourites}
-        currentPage={currentPage}
-        setIsMenuOpen={setIsMenuOpen}
-        cart={cart}
-      />
-      {isMenuOpen && (
-        <BurgerMenu
-          setIsMenuOpen={setIsMenuOpen}
-          currentPage={currentPage}
-          setCurrentPage={setCurrentPage}
-        />
-      )}
+      <Header setIsMenuOpen={setIsMenuOpen} />
+      {isMenuOpen && <BurgerMenu setIsMenuOpen={setIsMenuOpen} />}
       {currentPage === PageSection.Home && (
-        <HomePage
-          phones={phones}
-          tablets={tablets}
-          accessories={accessories}
-          favourites={favourites}
-          setFavourites={setFavourites}
-          cart={cart}
-          setCart={setCart}
-          setCurrentPage={setCurrentPage}
-        />
+        <HomePage phones={phones} tablets={tablets} accessories={accessories} />
       )}
-      {currentPage === PageSection.Phones && (
-        <ProductsPage
-          currentPage={currentPage}
-          product={phones}
-          setFavourites={setFavourites}
-          favourites={favourites}
-          cart={cart}
-          setCart={setCart}
-        />
-      )}
+      {currentPage === PageSection.Phones && <ProductsPage product={phones} />}
       {currentPage === PageSection.Tablets && (
-        <ProductsPage
-          currentPage={currentPage}
-          product={tablets}
-          setFavourites={setFavourites}
-          favourites={favourites}
-          cart={cart}
-          setCart={setCart}
-        />
+        <ProductsPage product={tablets} />
       )}
       {currentPage === PageSection.Accessories && (
-        <ProductsPage
-          currentPage={currentPage}
-          product={accessories}
-          setFavourites={setFavourites}
-          favourites={favourites}
-          cart={cart}
-          setCart={setCart}
-        />
+        <ProductsPage product={accessories} />
       )}
       {currentPage === PageSection.Favorites && (
-        <Favourites
-          favourites={favourites}
-          models={productsFromServer}
-          setFavourites={setFavourites}
-          cart={cart}
-          setCart={setCart}
-        />
+        <Favourites models={productsFromServer} />
       )}
-      {currentPage === PageSection.Cart && (
-        <Cart cart={cart} models={productsFromServer} setCart={setCart} />
-      )}
+      {currentPage === PageSection.Cart && <Cart models={productsFromServer} />}
     </div>
   );
 };

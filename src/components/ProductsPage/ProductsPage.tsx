@@ -9,30 +9,21 @@ import classNames from 'classnames';
 import 'bulma/css/bulma.css';
 import { Pagination } from './Pagination';
 import { Footer } from '../Footer';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
   product: Products[];
-  currentPage: PageSection;
-  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
-  favourites: number[];
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const ProductsPage: React.FC<Props> = ({
-  product,
-  currentPage,
-  setFavourites,
-  favourites,
-  cart,
-  setCart,
-}) => {
+export const ProductsPage: React.FC<Props> = ({ product }) => {
   const [filterBy, setFilterBy] = useState<FilterBy>(FilterBy.age);
   const [itemsPerPage, setItemsPerPage] = useState<PerPage>(PerPage.All);
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [activeDropdownPage, setActiveDropdownPage] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { currentPage } = useAppContext();
+
   const startEl =
     itemsPerPage === PerPage.All ? 0 : currentIndex * Number(itemsPerPage);
   const endEl =
@@ -192,10 +183,6 @@ export const ProductsPage: React.FC<Props> = ({
                   model={phone}
                   modelsTitle="Hot prices"
                   key={phone.id}
-                  setFavourites={setFavourites}
-                  favourites={favourites}
-                  cart={cart}
-                  setCart={setCart}
                 />
               ))}
           </div>

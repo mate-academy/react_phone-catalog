@@ -2,14 +2,15 @@ import React, { useState } from 'react';
 import styles from './Cart.module.scss';
 import { Footer } from '../Footer';
 import { Products } from '../../types/Products';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
   models: Products[];
 }
 
-export const Cart: React.FC<Props> = ({ cart, setCart, models }) => {
+export const Cart: React.FC<Props> = ({ models }) => {
+  const { cart, setCart } = useAppContext();
+
   const [itemCounts, setItemCounts] = useState<Record<number, number>>(
     cart.reduce(
       (acc, id) => ({ ...acc, [id]: 1 }),

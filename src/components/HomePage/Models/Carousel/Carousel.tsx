@@ -12,20 +12,12 @@ interface Props {
   models: Products[];
   swiperIndex: number;
   modelsTitle: string;
-  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
-  favourites: number[];
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
 export const Carousel: React.FC<Props> = ({
   models,
   swiperIndex,
   modelsTitle,
-  setFavourites,
-  favourites,
-  cart,
-  setCart,
 }) => {
   return (
     <div className="models__wrapper">
@@ -50,14 +42,7 @@ export const Carousel: React.FC<Props> = ({
         >
           {models.map(model => (
             <SwiperSlide key={model.id}>
-              <ModelItem
-                model={model}
-                modelsTitle={modelsTitle}
-                favourites={favourites}
-                setFavourites={setFavourites}
-                cart={cart}
-                setCart={setCart}
-              />
+              <ModelItem model={model} modelsTitle={modelsTitle} />
             </SwiperSlide>
           ))}
         </Swiper>

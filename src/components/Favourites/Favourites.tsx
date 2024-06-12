@@ -3,22 +3,15 @@ import styles from './Favourites.module.scss';
 import { Products } from '../../types/Products';
 import { ModelItem } from '../HomePage/Models/ModelItem';
 import { Footer } from '../Footer';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
   models: Products[];
-  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
-  favourites: number[];
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
 }
 
-export const Favourites: React.FC<Props> = ({
-  favourites,
-  models,
-  setFavourites,
-  cart,
-  setCart,
-}) => {
+export const Favourites: React.FC<Props> = ({ models }) => {
+  const { favourites } = useAppContext();
+
   const visiblFavourites = models.filter(product =>
     favourites.includes(product.id),
   );
@@ -51,10 +44,6 @@ export const Favourites: React.FC<Props> = ({
                   model={model}
                   key={model.id}
                   modelsTitle="Hot prices"
-                  setFavourites={setFavourites}
-                  cart={cart}
-                  setCart={setCart}
-                  favourites={favourites}
                 />
               ))}
             </div>

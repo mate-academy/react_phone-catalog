@@ -9,15 +9,10 @@ import TabletsImage from './Category/img/Tablets.svg';
 import AccessoriesImage from './Category/img/Accessories.svg';
 import { Products } from '../../types/Products';
 import { Footer } from '../Footer';
-import { PageSection } from '../../types/PageSection';
+import { useAppContext } from '../../AppContext';
 
 interface Props {
   phones: Products[];
-  setFavourites: React.Dispatch<React.SetStateAction<number[]>>;
-  favourites: number[];
-  cart: number[];
-  setCart: React.Dispatch<React.SetStateAction<number[]>>;
-  setCurrentPage: React.Dispatch<React.SetStateAction<PageSection>>;
   tablets: Products[];
   accessories: Products[];
 }
@@ -28,16 +23,9 @@ interface CategoryData {
   count: number;
 }
 
-export const HomePage: React.FC<Props> = ({
-  phones,
-  tablets,
-  accessories,
-  setFavourites,
-  favourites,
-  cart,
-  setCart,
-  setCurrentPage,
-}) => {
+export const HomePage: React.FC<Props> = ({ phones, tablets, accessories }) => {
+  const { setCurrentPage } = useAppContext();
+
   const newModels: Products[] = phones
     .filter(phone => phone.name.includes('Apple iPhone 14'))
     .sort((a, b) => b.fullPrice - a.fullPrice);
@@ -72,21 +60,9 @@ export const HomePage: React.FC<Props> = ({
           phones={newModels}
           swiperIndex={2}
           modelsTitle="Brand new models"
-          setFavourites={setFavourites}
-          favourites={favourites}
-          cart={cart}
-          setCart={setCart}
         />
         <Category categories={categoryData} setCurrentPage={setCurrentPage} />
-        <Models
-          phones={hotPrices}
-          swiperIndex={3}
-          modelsTitle="Hot prices"
-          setFavourites={setFavourites}
-          favourites={favourites}
-          cart={cart}
-          setCart={setCart}
-        />
+        <Models phones={hotPrices} swiperIndex={3} modelsTitle="Hot prices" />
       </div>
       <Footer />
     </main>
