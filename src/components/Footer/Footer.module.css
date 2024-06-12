@@ -21,6 +21,11 @@
 .footer__logo {
   width: 89px;
   height: 32px;
+  transition-duration: 0.3s;
+}
+
+.footer__logo:hover {
+  transform: scale(1.2);
 }
 
 .footer__link__container {
@@ -121,10 +126,6 @@
   .footer__link:not(:last-child) {
     margin-bottom: 16px;
   }
-
-  /* .footer__link:last-child {
-    margin-bottom: 32px;
-  } */
 
   .footer__link__container {
     width: 100%;
