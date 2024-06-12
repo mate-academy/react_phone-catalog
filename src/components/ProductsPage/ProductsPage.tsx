@@ -102,8 +102,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
                     {Object.values(FilterBy).map(item => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           'dropdown-item',
                           styles.page__item,
@@ -116,7 +115,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
                       >
                         {' '}
                         {item}{' '}
-                      </a>
+                      </button>
                     ))}
                   </div>
                 </div>
@@ -154,8 +153,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
                 <div className="dropdown-menu" id="dropdown-menu" role="menu">
                   <div className="dropdown-content">
                     {Object.values(PerPage).map(item => (
-                      <a
-                        href="#"
+                      <button
                         className={classNames(
                           'dropdown-item',
                           styles.page__item,
@@ -168,7 +166,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
                       >
                         {' '}
                         {item}{' '}
-                      </a>
+                      </button>
                     ))}
                   </div>
                 </div>

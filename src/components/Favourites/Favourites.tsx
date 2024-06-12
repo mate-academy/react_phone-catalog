@@ -13,7 +13,7 @@ export const Favourites: React.FC<Props> = ({ models }) => {
   const { favourites } = useAppContext();
 
   const visiblFavourites = models.filter(product =>
-    favourites.includes(product.id),
+    favourites.includes(product),
   );
 
   return (

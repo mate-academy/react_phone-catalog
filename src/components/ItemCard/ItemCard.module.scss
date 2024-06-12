@@ -1,0 +1,356 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.details {
+  margin-top: 144px;
+
+  &__container,
+  &__photos,
+  &__buy,
+  &__info,
+  &__content,
+  &__part,
+  &__description,
+  &__about {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__container {
+    gap: 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 17px;
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__content {
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+  }
+
+  &__title {
+    color: $main-black;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+
+    @include on-tablet {
+      font-size: 32px;
+    line-height: 41px;
+    }
+
+    &--about {
+      font-size: 20px;
+      line-height: 26px;
+      padding-bottom: 16px;
+      border-bottom: 1px solid rgb(226, 230, 233);
+    }
+  }
+
+  &__main {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  &__photos {
+    gap: 23px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 40px;
+    }
+  }
+
+  &__side-photos {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+  }
+
+  &__main-photo {
+    height: 274px;
+    cursor: pointer;
+    max-width: 425px;
+
+    @include on-desktop {
+      height: 442px;
+    }
+  }
+
+  &__main-image {
+    display: flex;
+    justify-content: center;
+
+    @include on-tablet {
+      order: 1;
+    }
+  }
+
+  &__image {
+    height: 50px;
+    width: 40px;
+    padding: 5px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    cursor: pointer;
+
+    @include on-desktop {
+      width: 70px;
+      height: 80px;
+    }
+
+    &--active {
+      border: 1px solid $main-black;
+    }
+  }
+
+  &__type {
+    position: relative;
+    padding: 24.5px 0;
+    border-bottom: 1px solid rgb(226, 230, 233);
+  }
+
+  &__buy {
+    margin-top: 32px;
+    gap: 16px;
+  }
+
+  &__checkout {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    color: rgb(15, 15, 17);
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+
+    &--discount {
+      color: rgb(137, 147, 154);
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__characteristic {
+    margin-top: 16px;
+
+    @include on-tablet {
+      max-width: 320px;
+    }
+  }
+
+  &__type-name {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__id {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgb(180, 189, 196);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__items {
+    display: flex;
+    gap: 10px;
+  }
+
+  &__wrapper {
+    border: 1px solid rgb(226, 230, 233);
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+
+    &--active {
+      border: 1px solid $main-black;
+    }
+  }
+
+  &__color {
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 50%;
+    border: 2px solid rgb(255, 255, 255);
+  }
+
+  &__memory {
+    padding: 7px 8px 4px;
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 4px;
+    transition: all 0.3s;
+
+    &--active {
+      background-color: $main-black;
+      border: 1px solid $main-black;
+    }
+  }
+
+  &__amount {
+    color: $main-black;
+    transition: color 0.3s;
+
+    &--active {
+      color: rgb(255, 255, 255);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__add-to-cart {
+    width: 231px;
+    color: rgb(255, 255, 255);
+    font-size: 14px;
+    letter-spacing: 0.01em;
+    font-weight: 700;
+    line-height: 21px;
+    padding: 10px;
+    border-radius: 48px;
+    background: rgb(66, 25, 208);
+    transition: all 0.3s;
+    border: 1px solid rgb(66, 25, 208);
+    box-sizing: border-box;
+
+    &:hover {
+      background-color: rgb(255, 255, 255);
+      color: $main-black;
+    }
+
+    &--added {
+      color: rgb(66, 25, 208);
+      background-color: rgb(255, 255, 255);
+      border: 1px solid rgb(226, 230, 233);
+    }
+
+    @include on-tablet {
+      padding: 10px 22px;
+    }
+
+    @include on-desktop{
+      padding: 10px 40px;
+      width: 160px;
+    }
+  }
+  &__add-to-favorite {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 1px solid rgb(180, 189, 196);
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid $main-black;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 16px;
+      height: 16px;
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-image: url('./img/favorite.svg');
+    }
+
+    &--selected {
+      &::after {
+        background-image: url('./img/favorite.png');
+      }
+    }
+  }
+
+  &__info {
+    gap: 8px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__point {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__value {
+    color: $main-black;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__part {
+    gap: 32px;
+
+    @include on-tablet {
+      width: 559px;
+    }
+  }
+
+  &__description {
+    gap: 16px;
+  }
+
+  &__name {
+    color: $main-black;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20px;
+  }
+
+  &__subtitle {
+    color: rgb(137, 147, 154);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__about {
+    gap: 101px;
+
+    @include on-desktop {
+      flex-direction: row;
+      gap: 64px;
+      justify-content: space-between;
+    }
+  }
+}

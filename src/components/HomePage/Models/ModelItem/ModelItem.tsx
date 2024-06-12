@@ -3,6 +3,7 @@ import styles from './ModelItem.module.scss';
 import '../../../../styles/variables.scss';
 import { Products } from '../../../../types/Products';
 import { useAppContext } from '../../../../AppContext';
+import { Link } from 'react-router-dom';
 
 interface Props {
   model: Products;
@@ -12,36 +13,42 @@ interface Props {
 export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
   const { favourites, setFavourites, cart, setCart } = useAppContext();
 
-  const selected = favourites.find(number => number === model.id);
-  const added = cart.find(number => number === model.id);
+  const selected = favourites.find(number => number === model);
+  const added = cart.find(number => number === model);
   const handleAddFavourite = () => {
     if (selected) {
       setFavourites(prevFavourites =>
-        prevFavourites.filter(number => number !== model.id),
+        prevFavourites.filter(number => number !== model),
       );
     } else {
-      setFavourites(prevFavourites => [...prevFavourites, model.id]);
+      setFavourites(prevFavourites => [...prevFavourites, model]);
     }
   };
 
   const handleAddCart = () => {
     if (added) {
-      setCart(prevCart => prevCart.filter(number => number !== model.id));
+      setCart(prevCart => prevCart.filter(number => number !== model));
     } else {
-      setCart(prevCart => [...prevCart, model.id]);
+      setCart(prevCart => [...prevCart, model]);
     }
   };
 
   return (
     <div className={`models__item ${styles.item}`}>
       <div className={styles.item__wrapper}>
-        <div className={styles.item__photo}>
+        <Link
+          to={`/${model.category}/${model.itemId}`}
+          className={styles.item__photo}
+        >
           <img className={styles.item__image} src={model.image} alt="" />
-        </div>
+        </Link>
         <div className={styles.item__content}>
-          <div className={styles.item__title}>
+          <Link
+            to={`/${model.category}/${model.itemId}`}
+            className={styles.item__title}
+          >
             <p>{model.name}</p>
-          </div>
+          </Link>
           <div className={styles.item__price}>
             {modelsTitle === 'Hot prices' ? (
               <>

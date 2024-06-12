@@ -13,21 +13,21 @@ export const Cart: React.FC<Props> = ({ models }) => {
 
   const [itemCounts, setItemCounts] = useState<Record<number, number>>(
     cart.reduce(
-      (acc, id) => ({ ...acc, [id]: 1 }),
+      (acc, product) => ({ ...acc, [product.id]: 1 }),
       {} as Record<number, number>,
     ),
   );
 
-  const visibleCartItems = models.filter(product => cart.includes(product.id));
+  const visibleCartItems = models.filter(product => cart.includes(product));
   const handleDeleteItem = (id: number) => {
-    setCart(prevItems => prevItems.filter(itemId => itemId !== id));
+    setCart(prevItems => prevItems.filter(item => item.id !== id));
   };
 
   const handleDecrement = (id: number) => {
     setItemCounts(prevCounts => {
       if (prevCounts[id] > 1) {
         setCart(prevCart => {
-          const index = prevCart.lastIndexOf(id);
+          const index = prevCart.findIndex(item => item.id === id);
 
           if (index > -1) {
             return [...prevCart.slice(0, index), ...prevCart.slice(index + 1)];
@@ -51,7 +51,15 @@ export const Cart: React.FC<Props> = ({ models }) => {
       ...prevCounts,
       [id]: (prevCounts[id] || 1) + 1,
     }));
-    setCart(prevCart => [...prevCart, id]);
+    setCart(prevCart => {
+      const product = models.find(item => item.id === id);
+
+      if (product) {
+        return [...prevCart, product];
+      }
+
+      return prevCart;
+    });
   };
 
   const totalPrice = visibleCartItems.reduce(

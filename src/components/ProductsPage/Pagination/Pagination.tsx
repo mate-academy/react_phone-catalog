@@ -57,8 +57,7 @@ export const Pagination: React.FC<Props> = ({
       <ul className={styles.pagination__list}>
         {[...Array(paginationCounts)].map((_, index) => (
           <li key={index}>
-            <a
-              href="#"
+            <button
               className={classNames(
                 'pagination-link',
                 styles.pagination__link,
@@ -70,7 +69,7 @@ export const Pagination: React.FC<Props> = ({
               onClick={() => setCurrentIndex(index)}
             >
               {index + 1}
-            </a>
+            </button>
           </li>
         ))}
       </ul>

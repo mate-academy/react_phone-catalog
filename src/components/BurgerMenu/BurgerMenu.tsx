@@ -3,27 +3,26 @@ import styles from './BurgerMenu.module.scss';
 import classNames from 'classnames';
 import { PageSection } from '../../types/PageSection';
 import { useAppContext } from '../../AppContext';
+import { NavLink, useNavigate } from 'react-router-dom';
 
-interface Props {
-  setIsMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
+export const BurgerMenu: React.FC = () => {
   const { setCurrentPage, currentPage } = useAppContext();
+  const navigate = useNavigate();
+
+  const handleCloseMenu = () => {
+    navigate(-1); // Go back to the previous page
+  };
 
   const handleOpenPage = (link: PageSection) => {
     setCurrentPage(link);
-    setIsMenuOpen(false);
   };
 
   const handleSetCart = () => {
     setCurrentPage(PageSection.Cart);
-    setIsMenuOpen(false);
   };
 
   const handleSetFavourite = () => {
     setCurrentPage(PageSection.Favorites);
-    setIsMenuOpen(false);
   };
 
   const pagesToShow = Object.values(PageSection).filter(
@@ -36,10 +35,7 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
         <a href="#" className={styles.menu__logo}>
           <img src="img/Logo.svg" alt="" />
         </a>
-        <button
-          className={styles.menu__close}
-          onClick={() => setIsMenuOpen(false)}
-        >
+        <button className={styles.menu__close} onClick={handleCloseMenu}>
           <span className={styles['menu__icon-close']}></span>
         </button>
       </div>
@@ -57,25 +53,33 @@ export const BurgerMenu: React.FC<Props> = ({ setIsMenuOpen }) => {
               key={link}
               onClick={() => handleOpenPage(link)}
             >
-              <a
-                href="#"
+              <NavLink
+                to={link === PageSection.Home ? '/' : `/${link.toLowerCase()}`}
                 className={classNames(styles.menu__link, {
                   [styles['menu__link--active']]: currentPage === link,
                 })}
               >
                 {link}
-              </a>
+              </NavLink>
             </li>
           ))}
         </ul>
       </nav>
       <div className={styles.menu__footer}>
-        <a onClick={handleSetFavourite} className={styles['menu__footer-link']}>
+        <NavLink
+          to="/favourites"
+          onClick={handleSetFavourite}
+          className={styles['menu__footer-link']}
+        >
           <img src="img/header/favorite.svg" alt="favorite" />
-        </a>
-        <a onClick={handleSetCart} className={styles['menu__footer-link']}>
+        </NavLink>
+        <NavLink
+          to="/cart"
+          onClick={handleSetCart}
+          className={styles['menu__footer-link']}
+        >
           <img src="img/header/cart.svg" alt="cart" />
-        </a>
+        </NavLink>
       </div>
     </div>
   );
