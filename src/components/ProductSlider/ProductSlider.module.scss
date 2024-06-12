@@ -1,0 +1,78 @@
+@import "../../styles/main";
+
+.productsSlider {
+  @include section-grid;
+
+  padding-left: 16px;
+  padding-right: 0;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}
+
+.topWrap {
+  grid-column: 1/-1;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.title {
+  @include h2-tablet;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  padding-right: 24px;
+
+  @include on-desktop {
+    padding-right: 0;
+  }
+}
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  width: 32px;
+  height: 32px;
+  background-color: var(--color-elements);
+
+  &:hover {
+    background-color: var(--color-icons);
+  }
+}
+
+.isDisabled {
+  opacity: 0.5;
+  cursor: default;
+
+  border: 1px solid (--color-elements);
+  background-color: transparent;
+}
+
+.container {
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  gap: 16px;
+  flex-wrap: nowrap;
+
+  @include on-desktop {
+    flex-wrap: nowrap;
+  }
+}
+
+.sliderWrapper {
+  transition: transform 0.5s ease;
+  will-change: transform;
+}

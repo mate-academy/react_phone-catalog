@@ -1,0 +1,32 @@
+@import "../../styles/main";
+
+.container {
+  @include container;
+
+  padding-top: 24px;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  @include h1-mobile;
+  @include padding-inline;
+  
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    @include h1-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}

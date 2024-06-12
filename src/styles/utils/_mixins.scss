@@ -1,0 +1,49 @@
+@import "./variables";
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin middle-screen {
+  @media (min-width: $breakpoint-middle) {
+    @content;
+  }
+}
+
+@mixin container {
+  @include on-desktop {
+    box-sizing: border-box;
+    max-width: 1136px;
+    margin: 0 auto;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+}
+
+@mixin section-grid {
+  display: grid;
+  grid-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}

@@ -1,0 +1,91 @@
+@import "../../styles/main";
+
+.container {
+  padding-top: 56px;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    padding-inline: 0;
+
+    @include container;
+
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+.title {
+  @include h2-mobile;
+
+  color: var(--color-white);
+
+  @include on-tablet {
+    @include h2-tablet;
+  }
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}
+
+.category {
+  display: block;
+  width: 288px;
+  height: 288px;
+  padding-block: 24px;
+  position: relative;
+  overflow: hidden;
+
+  @include on-tablet {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 368px;
+  }
+}
+
+.image {
+  position: absolute;
+  object-fit: contain;
+  left: 0;
+  top: 0;
+}
+
+.subtitle {
+  @include h4-mobile;
+
+  color: var(--color-white);
+  padding-top: 24px;
+  padding-bottom: 4px;
+
+  @include on-tablet {
+    @include h4-tablet;
+  }
+
+}
+
+.count {
+  @include body-text;
+  
+  color: var(--color-secondary);
+
+  margin-bottom: 32px;
+
+  &:last-child {
+    padding-bottom: 0;
+  }
+}
