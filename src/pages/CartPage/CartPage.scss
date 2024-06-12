@@ -30,4 +30,15 @@
       grid-column: span 8;
     }
   }
+
+  &__empty {
+    width: 100%;
+    height: 50vh;
+
+    background-image: url(../../../public/img/empty_cart.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    opacity: 0.2;
+  }
 }

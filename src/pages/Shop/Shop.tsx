@@ -59,15 +59,6 @@ export const Shop: React.FC<Props> = () => {
                 path={[{ name: filterParam, path: `/shop/${filterParam}` }]}
               />
             )}
-
-            <div className="shop-page__title">
-              <h1>{title}</h1>
-              {filteredProducts && (
-                <span className="shop-page__side-title">{`${filteredProducts.length} models`}</span>
-              )}
-            </div>
-
-            <CatalogViewSettings />
           </div>
 
           {filteredProducts ? (
@@ -75,14 +66,26 @@ export const Shop: React.FC<Props> = () => {
               {filteredProducts.length === 0 ? (
                 <NoResults categoryName={title} />
               ) : (
-                <ProductsList filteredProducts={filteredProducts} />
+                <>
+                  <div className="shop-page__title">
+                    <h1>{title}</h1>
+                    {filteredProducts && (
+                      <span className="shop-page__side-title">{`${filteredProducts.length} models`}</span>
+                    )}
+                  </div>
+                  <CatalogViewSettings />
+
+                  <ProductsList filteredProducts={filteredProducts} />
+
+                  {filteredProducts && (
+                    <PageSelector products={filteredProducts} />
+                  )}
+                </>
               )}
             </>
           ) : (
             <Loader />
           )}
-
-          {filteredProducts && <PageSelector products={filteredProducts} />}
         </div>
       </div>
     </main>

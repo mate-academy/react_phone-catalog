@@ -64,22 +64,24 @@ export const FavoritesPage: React.FC<Props> = () => {
             <Direction path={[{ name: 'favorites', path: `/favorites` }]} />
           </div>
 
-          <div className="favorites-page__title">
-            <h1 className="favorites-page__main-title">Favorites</h1>
-            {favoritesGoods && (
-              <span className="favorites-page__side-title">{`${favoritesGoods.length} models`}</span>
-            )}
-          </div>
-
           {favoritesGoods ? (
             <>
               {favoritesGoods.length === 0 ? (
                 <NoResults categoryName="favorites" />
               ) : (
-                <ProductsList
-                  filteredProducts={favoritesGoods}
-                  hasOnlyOnePage
-                />
+                <>
+                  <div className="favorites-page__title">
+                    <h1 className="favorites-page__main-title">Favorites</h1>
+                    {favoritesGoods && (
+                      <span className="favorites-page__side-title">{`${favoritesGoods.length} models`}</span>
+                    )}
+                  </div>
+
+                  <ProductsList
+                    filteredProducts={favoritesGoods}
+                    hasOnlyOnePage
+                  />
+                </>
               )}
             </>
           ) : (

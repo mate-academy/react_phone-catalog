@@ -41,7 +41,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
 
     setWidthGap(newWidthGap);
     setCountVisibleCarts(newCountVisibleCarts);
-  }, [window.innerWidth]);
+  });
 
   const countGaps = countVisibleCarts - 1;
 

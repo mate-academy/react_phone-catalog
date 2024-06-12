@@ -5,6 +5,7 @@ import { CartList } from '../../components/CartList';
 import { Checkout } from '../../components/Checkout';
 import { getLocalStorage } from '../../helpers/utils/getLocalStorage';
 import { CartObjType } from '../../helpers/types/CartObjType';
+import { Loader } from '../../components/Loader';
 
 type Props = {};
 
@@ -39,23 +40,48 @@ export const CartPage: React.FC<Props> = () => {
     return () => window.removeEventListener('storage', getCartProducts);
   }, []);
 
+  const isEmpty = Object.keys(productsInCart || {}).length === 0;
+
   return (
     <main className="cart-page">
       <div className="container">
         <div className="cart-page__content">
           <section className="cart-page__head">
             <ButtonBack />
-            <h1 className="cart-page__title">Cart</h1>
-          </section>
-          <section className="cart-page__main">
-            <div className="cart-page__cart-list">
-              {productsInCart && <CartList productsInCart={productsInCart} />}
-            </div>
 
-            <div className="cart-page__checkout">
-              <Checkout totalPrice={totalPrice} totalQuantity={totalQuantity} />
-            </div>
+            {!isEmpty ? (
+              <h1 className="cart-page__title">Cart</h1>
+            ) : (
+              <h1 className="cart-page__title">Cart is empty 😔</h1>
+            )}
           </section>
+
+          {productsInCart ? (
+            <>
+              {!isEmpty ? (
+                <>
+                  <section className="cart-page__main">
+                    <div className="cart-page__cart-list">
+                      {productsInCart && (
+                        <CartList productsInCart={productsInCart} />
+                      )}
+                    </div>
+
+                    <div className="cart-page__checkout">
+                      <Checkout
+                        totalPrice={totalPrice}
+                        totalQuantity={totalQuantity}
+                      />
+                    </div>
+                  </section>
+                </>
+              ) : (
+                <section className="cart-page__empty" />
+              )}
+            </>
+          ) : (
+            <Loader />
+          )}
         </div>
       </div>
     </main>
