@@ -3,7 +3,11 @@
 .page {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  &__container {
+    margin-top: 24px;
+    margin-bottom: 80px;
+  }
 
   min-height: 100vh;
 }

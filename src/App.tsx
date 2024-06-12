@@ -1,14 +1,22 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/header/Header';
 import { Footer } from './components/footer';
+import { BreadCrumbs } from './components/breadcrumbs';
 
-export const App = () => (
-  <div className="page">
-    <Header />
-    <main className="container">
-      <Outlet />
-    </main>
-    <Footer />
-  </div>
-);
+export const App = () => {
+  const location = useLocation();
+  const isHomePage = location.pathname === '/';
+
+  return (
+    <div className="page">
+      <Header />
+      <main className="page__container container">
+        {!isHomePage && <BreadCrumbs />}
+
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  );
+};

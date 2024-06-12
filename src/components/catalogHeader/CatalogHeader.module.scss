@@ -1,0 +1,19 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.catalogHeader {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+
+  &__title {
+    @include header-1;
+  }
+
+  &__info {
+    color: $secondary-text-color;
+  }
+}
