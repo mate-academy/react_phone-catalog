@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = './_new';
+const BASE_URL = './public/_new';
 
 function wait(delay: number) {
   return new Promise(resolve => {
