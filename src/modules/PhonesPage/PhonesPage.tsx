@@ -21,6 +21,8 @@ const PhonesPage = () => {
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
 
+  window.console.log(isError);
+
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
 
