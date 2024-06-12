@@ -1,9 +1,13 @@
+import { GoDash, GoPlus } from 'react-icons/go';
+
+import Button from '../../../../UI/Buttons/Button';
 import { FC } from 'react';
+import { IoCloseOutline } from 'react-icons/io5';
 import { Link } from 'react-router-dom';
-import styles from './CartItem.module.css';
-import classNames from 'classnames';
-import { ROUTES } from '../../../../constants/ROUTES';
 import Product from '../../../../types/Product';
+import { ROUTES } from '../../../../constants/ROUTES';
+import classNames from 'classnames';
+import styles from './CartItem.module.css';
 
 interface Props {
   product: Product;
@@ -26,11 +30,14 @@ const CartItem: FC<Props> = ({
   return (
     <div className={styles.cartItem}>
       <div className={styles.leftSide}>
-        <button
+        <Button
+          variant="ghost"
           className={styles.closeBtn}
           aria-label="Delete button"
           onClick={() => onDelete(id)}
-        ></button>
+        >
+          <IoCloseOutline size={18} />
+        </Button>
 
         <Link to={pathToDetailInfo} className={styles.imgWrapper}>
           <img src={images[0]} alt={name} className={styles.img} />
@@ -42,7 +49,9 @@ const CartItem: FC<Props> = ({
 
       <div className={styles.rightSide}>
         <div className={styles.actionsList}>
-          <button
+          <Button
+            variant="icon"
+            size={[32, 32]}
             className={classNames(
               `${styles.actionBtn}`,
               `${styles.actionBtnMinus}`,
@@ -53,13 +62,19 @@ const CartItem: FC<Props> = ({
             disabled={quantity === 1}
             onClick={() => (quantity === 1 ? null : onMinus(id))}
             aria-label="Add button"
-          ></button>
+          >
+            <GoDash size={16} />
+          </Button>
           <span className={styles.counter}>{quantity}</span>
-          <button
+          <Button
+            variant="icon"
+            size={[32, 32]}
             className={`${styles.actionBtn} ${styles.actionBtnPlus}`}
             onClick={() => onPlus(id)}
             aria-label="Remove button"
-          ></button>
+          >
+            <GoPlus size={16} />
+          </Button>
         </div>
 
         <p className={styles.price}>

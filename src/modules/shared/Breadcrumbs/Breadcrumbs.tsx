@@ -1,6 +1,8 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import { FC } from 'react';
+import { FiHome } from 'react-icons/fi';
+import { GoChevronLeft } from 'react-icons/go';
 import { ROUTES } from '../../../constants/ROUTES';
 import classNames from 'classnames';
 import styles from './Breadcrumbs.module.css';
@@ -20,7 +22,7 @@ export const Breadcrumbs: FC<Props> = ({ className }) => {
   return (
     <div className={classNames(styles.container, className)}>
       <Link to={ROUTES.HOME} className={styles.icon}>
-        <img src="img/icons/home-icon.svg" alt="home icon" />
+        <FiHome size={16} />
       </Link>
       {pathnames.map((name, idx) => {
         breadcrumbsPath += `/${name}`;
@@ -28,20 +30,12 @@ export const Breadcrumbs: FC<Props> = ({ className }) => {
 
         return isLast ? (
           <div key={idx} className={styles.activeLink}>
-            <img
-              src="img/icons/arrow-right-grey-icon.svg"
-              alt="arrow icon"
-              className={styles.icon}
-            />
+            <GoChevronLeft size={16} />
             <span>{capitalize(name)}</span>
           </div>
         ) : (
           <Link key={idx} to={breadcrumbsPath} className={styles.link}>
-            <img
-              src="img/icons/arrow-right-grey-icon.svg"
-              alt="arrow icon"
-              className={styles.icon}
-            />
+            <GoChevronLeft size={16} />
             <span>{capitalize(name)}</span>
           </Link>
         );

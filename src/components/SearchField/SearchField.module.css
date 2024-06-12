@@ -15,14 +15,7 @@
   }
 }
 
-@media (max-width: 767px) {
-  .searchField {
-    max-width: 200px;
-    margin-left: auto;
-  }
-}
-
-@media (max-width: 360px) {
+@media (max-width: 320px) {
   .searchField {
     display: flex;
     max-width: 150px;
@@ -44,21 +37,6 @@
   color: var(--primary-color);
   font-family: var(--primary-font);
 }
-
-/* .focus::before {
-  content: '';
-  position: absolute;
-  width: 100%;
-  height: 2px;
-  border-radius: 4px;
-  background-color: var(--primary-color);
-  bottom: 0;
-  left: 0;
-
-  transition: transform 0.3s ease-out;
-  transform-origin: left;
-  transform: scaleX(1);
-} */
 
 @media (max-width: 767px) {
   .searchFieldInput {
@@ -101,9 +79,7 @@
   border-radius: 4px;
   width: 260px;
   background-color: white;
-  box-shadow:
-    hsl(206deg 22% 7% / 35%) 0 10px 38px -10px,
-    hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
+  border: 1px solid #e2e6e9;
   animation-duration: 400ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform, opacity;
@@ -122,11 +98,5 @@
   .Trigger {
     width: 48px;
     height: 48px;
-  }
-}
-
-@media (max-width: 1024px) {
-  .Trigger {
-    width: 64px;
   }
 }

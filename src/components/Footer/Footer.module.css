@@ -57,6 +57,7 @@
   color: var(--secondary-color);
   display: flex;
   align-items: center;
+  gap: 15px;
   scroll-behavior: smooth;
   transition: color 0.3s ease-in-out;
 }
@@ -67,26 +68,6 @@
 
 .back__to__top::first-letter {
   text-transform: uppercase;
-}
-
-.back__to__top_link::after {
-  content: '';
-  display: inline-block;
-  background-image: url('../../../public/img/icons/arrow-up-dark-icon.svg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 16px 16px;
-  margin-left: 16px;
-  transition: border-color 0.3s ease-in-out;
-
-  height: 32px;
-  width: 32px;
-
-  border: 1px solid var(--icon-color);
-}
-
-.back__to__top_link:hover::after {
-  border: 1px solid var(--primary-color);
 }
 
 .back_to_top_content {
@@ -104,7 +85,6 @@
 .back_to_top_content:hover .back__to__top_link::after {
   border: 1px solid var(--primary-color);
 }
-
 
 @media (max-width: 640px) {
   .footer__logo_container {

@@ -2,18 +2,19 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { FC, useRef, useState } from 'react';
 import { Autoplay, Navigation, Pagination } from 'swiper/modules';
+import { FC, useRef, useState } from 'react';
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Swiper as SwiperType } from 'swiper/types';
 
 import Button from '../../../UI/Buttons/Button';
 import Heading from '../../../UI/Heading/Heading';
+import Loader from '../Loader/Loader';
 import Product from '../../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
-import s from './SliderProducts.module.css';
 import Skeleton from '../Skeleton/Skeleton';
-import Loader from '../Loader/Loader';
+import { Swiper as SwiperType } from 'swiper/types';
+import s from './SliderProducts.module.css';
 
 interface Props {
   sliderTitle: string;
@@ -72,7 +73,7 @@ const SliderProducts: FC<Props> = ({
                 onClick={handlePrevClick}
                 disabled={currentPage === 1}
               >
-                <img src="img/icons/arrow-left-dark-icon.svg" alt="Previous" />
+                <GoChevronLeft size={16} />
               </Button>
             </li>
 
@@ -83,7 +84,7 @@ const SliderProducts: FC<Props> = ({
                 onClick={handleNextClick}
                 disabled={currentPage === totalPages}
               >
-                <img src="img/icons/arrow-right-dark-icon.svg" alt="Next" />
+                <GoChevronRight size={16} />
               </Button>
             </li>
           </ul>

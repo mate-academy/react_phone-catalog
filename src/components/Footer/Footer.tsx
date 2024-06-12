@@ -1,3 +1,5 @@
+import Button from '../../UI/Buttons/Button';
+import { IoIosArrowUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
 import styles from './Footer.module.css';
 
@@ -40,6 +42,9 @@ const Footer = () => {
           >
             <Link to="#" className={styles.back__to__top_link}>
               <span className={styles.back__to__top}>back to top</span>
+              <Button variant="icon">
+                <IoIosArrowUp />
+              </Button>
             </Link>
           </div>
         </div>

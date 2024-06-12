@@ -1,8 +1,11 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
 import Button from '../../UI/Buttons/Button';
+import { FaRegHeart } from 'react-icons/fa';
+import { FiShoppingBag } from 'react-icons/fi';
 import { MobileMenu } from '../BurgerMenu';
 import { ROUTES } from '../../constants/ROUTES';
+import { RxHamburgerMenu } from 'react-icons/rx';
 import SearchField from '../SearchField/SearchField';
 import classNames from 'classnames';
 import styles from './Header.module.css';
@@ -80,7 +83,7 @@ const Header = () => {
 
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
-            <img src="img/icons/favorite-icon.svg" alt="" />
+            <FaRegHeart size={16} />
             {!!favorites.length && (
               <span className={styles.badge}>{favorites.length}</span>
             )}
@@ -89,7 +92,8 @@ const Header = () => {
 
         <NavLink to={ROUTES.CART} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
-            <img src="img/icons/cart-icon.svg" alt="" />
+            <FiShoppingBag size={16} />
+
             {!!cart.length && (
               <span className={styles.badge}>{cart.length}</span>
             )}
@@ -97,7 +101,7 @@ const Header = () => {
         </NavLink>
 
         <button onClick={() => setIsMenuShown(true)} className={styles.burger}>
-          <img src="img/icons/burger-menu-icon.svg" alt="" />
+          <RxHamburgerMenu size={16} />
         </button>
       </div>
     </header>

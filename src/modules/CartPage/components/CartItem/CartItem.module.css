@@ -23,18 +23,13 @@
 .closeBtn {
   width: 16px;
   height: 16px;
-  transition: background-image var(--basic-transition-time);
-  background-image: url(/public/img/icons/close-icon.svg);
-}
-
-.closeBtn:hover {
-  background-image: url(/public/img/icons/close-icon-hover.svg);
 }
 
 .imgWrapper {
   width: 80px;
   height: 80px;
   transition: transform var(--basic-transition-time);
+  color: grey;
 }
 
 .imgWrapper:hover {
@@ -75,20 +70,17 @@
   display: flex;
 }
 
-.actionBtn,
-.counter {
-  width: 32px;
-  height: 32px;
+.actionBtn {
   display: flex;
   align-items: center;
   justify-content: center;
-  font-weight: 600;
-  color: #000;
 }
 
-.actionBtn {
-  border: 1px solid var(--icon-color);
-  transition: border-color var(--basic-transition-time);
+.counter {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .actionBtnDisabled {
@@ -102,24 +94,6 @@
 
 .actionBtnDisabled:hover {
   border-color: var(--elements-color);
-}
-
-.actionBtn::after {
-  content: '';
-  width: 16px;
-  height: 16px;
-}
-
-.actionBtnMinus::after {
-  background-image: url(/public/img/icons/minus-icon.svg);
-}
-
-.actionBtnPlus::after {
-  background-image: url(/public/img/icons/plus-icon.svg);
-}
-
-.actionBtnDisabled::after {
-  background-image: url(/public/img/icons/minus-icon-disabled.svg);
 }
 
 .price {

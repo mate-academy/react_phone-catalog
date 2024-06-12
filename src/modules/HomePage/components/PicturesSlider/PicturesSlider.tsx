@@ -1,3 +1,4 @@
+import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { useCallback, useEffect, useState } from 'react';
 
 import { Link } from 'react-router-dom';
@@ -32,8 +33,9 @@ const PicturesSlider = () => {
     <>
       <div className={s.sliderContainer}>
         <button className={s.btn} onClick={handlePrevSlide}>
-          <img src="img/icons/arrow-left-dark-icon.svg" alt="Previous Slide" />
+          <GoChevronLeft size={16} />
         </button>
+
         <div className={s.slider}>
           <div className={s.sliders}>
             {slides.map((slide, index) => (
@@ -48,7 +50,7 @@ const PicturesSlider = () => {
           </div>
         </div>
         <button className={s.btn} onClick={handleNextSlide}>
-          <img src="img/icons/arrow-right-dark-icon.svg" alt="Next Slide" />
+          <GoChevronRight size={16} />
         </button>
       </div>
 

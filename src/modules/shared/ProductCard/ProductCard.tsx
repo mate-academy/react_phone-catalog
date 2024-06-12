@@ -2,6 +2,7 @@
 import * as Tooltip from '@radix-ui/react-tooltip';
 
 import { FC, useMemo } from 'react';
+import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 
 import Button from '../../../UI/Buttons/Button';
@@ -122,14 +123,11 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
                 onClick={() => handleToggleFavorite(product)}
                 className={styles.favouriteBtn}
               >
-                <img
-                  src={
-                    isFavorite
-                      ? 'img/icons/favorite-fill-icon.svg'
-                      : 'img/icons/favorite-icon.svg'
-                  }
-                  alt=""
-                />
+                {isFavorite ? (
+                  <FaHeart color="red" size={16} />
+                ) : (
+                  <FaRegHeart size={16} />
+                )}
               </Button>
             </Tooltip.Trigger>
             <Tooltip.Portal>

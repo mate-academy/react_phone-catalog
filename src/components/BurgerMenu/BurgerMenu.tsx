@@ -1,12 +1,15 @@
-import React, { useEffect } from 'react';
 import { Link, NavLink } from 'react-router-dom';
+import React, { useEffect } from 'react';
 
-import classNames from 'classnames';
 import Button from '../../UI/Buttons/Button';
+import { FaRegHeart } from 'react-icons/fa';
+import { FiShoppingBag } from 'react-icons/fi';
+import { IoClose } from 'react-icons/io5';
 import { ROUTES } from '../../constants/ROUTES';
+import classNames from 'classnames';
+import styles from './BurgerMenu.module.css';
 import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
-import styles from './BurgerMenu.module.css';
 
 type Props = {
   isMenuShown: boolean;
@@ -61,12 +64,13 @@ export const MobileMenu: React.FC<Props> = ({
           />
         </Link>
 
-        <button
+        <Button
+          variant="ghost"
           className={styles.mobileMenuCloseLink}
           onClick={() => setIsMenuShown(false)}
         >
-          <img src="img/icons/close-icon.svg" alt="" />
-        </button>
+          <IoClose size={16} />
+        </Button>
       </div>
 
       <div className={styles.mobileMenuContainer}>
@@ -121,7 +125,7 @@ export const MobileMenu: React.FC<Props> = ({
             onClick={() => setIsMenuShown(false)}
           >
             <Button size={[16, 16]}>
-              <img src="img/icons/favorite-icon.svg" alt="" />
+              <FaRegHeart size={16} />{' '}
               {!!favorites.length && (
                 <span className={styles.badge}>{favorites.length}</span>
               )}
@@ -134,7 +138,7 @@ export const MobileMenu: React.FC<Props> = ({
             onClick={() => setIsMenuShown(false)}
           >
             <Button size={[16, 16]}>
-              <img src="img/icons/cart-icon.svg" alt="" />
+              <FiShoppingBag size={16} />
               {!!cart.length && (
                 <span className={styles.badge}>{cart.length}</span>
               )}
