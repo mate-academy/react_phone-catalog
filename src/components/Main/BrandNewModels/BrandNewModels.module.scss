@@ -40,7 +40,7 @@
     margin: 0 0 24px 0;
   }
 
-  &__phoneCard {
+  &__phonesList {
     display: flex;
 
     list-style: none;
@@ -51,7 +51,7 @@
     grid-column: 1 / 7;
   }
 
-  &__container {
+  &__phoneItem {
     width: 100%;
     border: 1px solid $border-color;
     padding: 32px;
@@ -62,7 +62,7 @@
     display: flex;
     align-items: flex-end;
     min-height: 58px;
-    width: 208px;
+    width: 100%;
   }
 
   &__phoneName {
@@ -74,11 +74,15 @@
   }
 
   &__imgPhone {
-    display: flex;
-    margin: 0 auto 8px;
-    width: 208px;
-    height: 196px;
+    margin-bottom: 8px;
     object-fit: contain;
+  }
+
+  &__imgWrap {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    height: 196px;
   }
 
   &__line {
@@ -96,7 +100,7 @@
     line-height: 15px;
   }
 
-  &__phoneCard p {
+  &__phonesList p {
     margin-bottom: 8px;
   }
 
@@ -180,12 +184,12 @@
       grid-template-columns: repeat($grid-columns-tablet, 1fr);
     }
 
-    &__phoneCard {
+    &__phonesList {
       display: flex;
 
       list-style: none;
       column-gap: 16px;
-      grid-column: 1 / 7;
+      grid-column: 1 / 6;
     }
   }
 }
@@ -198,11 +202,11 @@
     }
 
     &__wrapper {
-      grid-template-columns: repeat($grid-columns-phone, 1fr);
+      grid-template-columns: repeat(4, 1fr);
     }
 
-    &__phoneCard {
-      grid-column: 1 / 5;
+    &__phonesList {
+      grid-column: 1 / 4;
       column-gap: 16px;
     }
   }

@@ -32,14 +32,16 @@ export const BrandNewModels = () => {
         </div>
 
         <div className={style.brandNewModels__wrapper}>
-          <ul className={style.brandNewModels__phoneCard}>
+          <ul className={style.brandNewModels__phonesList}>
             {products.map(product => (
-              <li className={style.brandNewModels__container} key={product.id}>
-                <img
-                  src={product.image}
-                  alt={product.name}
-                  className={style.brandNewModels__imgPhone}
-                />
+              <li className={style.brandNewModels__phoneItem} key={product.id}>
+                <a href="#" className={style.brandNewModels__imgWrap}>
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className={style.brandNewModels__imgPhone}
+                  />
+                </a>
                 <div className={style.brandNewModels__cardContent}>
                   <div className={style.brandNewModels__containerForPhoneName}>
                     <h2 className={style.brandNewModels__phoneName}>
