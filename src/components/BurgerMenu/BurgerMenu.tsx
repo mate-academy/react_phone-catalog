@@ -54,7 +54,11 @@ export const MobileMenu: React.FC<Props> = ({
           className={styles.mobileMenuLogoLink}
           onClick={() => setIsMenuShown(false)}
         >
-          <img src="img/logo.png" alt="" />
+          <img
+            className={styles.logo}
+            src="img/logo.png"
+            alt="Nice gadgets logo"
+          />
         </Link>
 
         <button

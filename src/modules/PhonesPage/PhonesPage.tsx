@@ -1,17 +1,21 @@
+/* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
+import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
-import { getPhones } from '../../api/getProduct';
-import Product from '../../types/Product';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
+import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import { SearchParams } from '../../types/Categories';
+import { getPhones } from '../../api/getProduct';
+import pageOptions from '../../constants/PageOptions';
 import s from './PhonesPage.module.css';
+import sortOptions from '../../constants/sortOptions';
 
 const PhonesPage = () => {
   const [phones, setPhones] = useState<Product[]>([]);
@@ -24,7 +28,7 @@ const PhonesPage = () => {
 
   const query = searchParams.get(SearchParams.Query) || '';
   const initialSort = searchParams.get('sort') || 'newest';
-  const initialPerPage = searchParams.get('perPage') || '8';
+  const initialPerPage = searchParams.get('perPage') || 'all';
   const initialPage = searchParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -54,15 +58,20 @@ const PhonesPage = () => {
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
 
-    newQueryParams.append('sort', sortOption);
-    newQueryParams.append('page', currentPage.toString());
-    newQueryParams.append('perPage', perPage.toString());
-    if (query) {
-      newQueryParams.append(SearchParams.Query, query);
+    if (sortOption !== 'newest') {
+      newQueryParams.append('sort', sortOption);
+    }
+
+    if (currentPage !== 1) {
+      newQueryParams.append('page', currentPage.toString());
+    }
+
+    if (perPage !== 'all') {
+      newQueryParams.append('perPage', perPage.toString());
     }
 
     navigate(`?${newQueryParams.toString()}`);
-  }, [currentPage, perPage, sortOption, query, navigate]);
+  }, [currentPage, perPage, sortOption, navigate]);
 
   const handlePageChange = (page: number) => {
     setIsChangingPage(true);
@@ -72,19 +81,20 @@ const PhonesPage = () => {
     }, 800);
   };
 
-  const handleSortChange = (selectedOption: any) => {
+  const handleSortChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    setSortOption(selectedOption.value);
+
+    setSortOption(selectedOption);
+
     setCurrentPage(1);
     setTimeout(() => {
       setIsChangingPage(false);
     }, 800);
   };
 
-  const handlePerPageChange = (selectedOption: any) => {
+  const handlePerPageChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    const value =
-      selectedOption.value === 'all' ? 'all' : Number(selectedOption.value);
+    const value = selectedOption === 'all' ? 'all' : Number(selectedOption);
 
     setPerPage(value);
     setCurrentPage(1);
@@ -94,7 +104,7 @@ const PhonesPage = () => {
   };
 
   const sortedPhones = phones.slice().sort((a, b) => {
-    switch (sortOption) {
+    switch (sortOption.toLowerCase()) {
       case 'newest':
         return b.processor.localeCompare(a.processor);
       case 'alphabetically':
@@ -110,30 +120,37 @@ const PhonesPage = () => {
     phone.name.toLowerCase().includes(query.toLowerCase()),
   );
 
-  // prettier-ignore
   const paginatedPhones =
     perPage === 'all'
       ? filteredPhones
       : filteredPhones.slice(
-        (currentPage - 1) * perPage,
-        currentPage * perPage,
-      );
+          (currentPage - 1) * perPage,
+          currentPage * perPage,
+        );
 
   return (
     <div className={s.content}>
       <div className="container">
-        <div className={s.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
+
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
 
-        {isLoading ? (
-          <Loader />
-        ) : isError ? (
-          <p>Error loading phones. Please try again later.</p>
-        ) : (
+        {isLoading && <Loader />}
+        {isError && (
+          <div className={s.error}>
+            <p>Failed to load phones. Please try again later.</p>
+            <Button variant="primary" size={[120, 40]} onClick={fetchPhones}>
+              Reload
+            </Button>
+          </div>
+        )}
+        {!isLoading && !isError && filteredPhones.length === 0 && (
+          <p>There are no phones products matching the query</p>
+        )}
+
+        {!isLoading && !isError && filteredPhones.length > 0 && (
           <>
             <p className={s.quantity}>{phones.length} models</p>
 
@@ -141,21 +158,19 @@ const PhonesPage = () => {
               <div>
                 <p className={s.label}>Sort by</p>
                 <Dropdown
-                  defaultValue={sortOption}
-                  options={['newest', 'alphabetically', 'cheapest']}
-                  dropdownWidth={150}
-                  dropdownHeight={40}
-                  onChange={handleSortChange}
+                  defaultValue={sortOption === 'newest' ? 'Newest' : sortOption}
+                  options={sortOptions}
+                  onChange={(option: string) => handleSortChange(option)}
+                  sortOption={sortOption}
                 />
               </div>
               <div>
                 <p className={s.label}>Items on page</p>
                 <Dropdown
-                  defaultValue={perPage === 'all' ? 'all' : perPage.toString()}
-                  options={['4', '8', '16', 'all']}
-                  dropdownWidth={128}
-                  dropdownHeight={40}
-                  onChange={handlePerPageChange}
+                  defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
+                  options={pageOptions}
+                  onChange={(option: string) => handlePerPageChange(option)}
+                  sortOption={String(perPage)}
                 />
               </div>
             </div>

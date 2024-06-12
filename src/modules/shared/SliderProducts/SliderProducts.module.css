@@ -29,6 +29,12 @@
   padding-right: 24px;
 }
 
+@media (min-width: 640px) and (max-width: 1199px) {
+  .product__slider {
+    padding-right: 0;
+  }
+}
+
 @media (min-width: 320px) and (max-width: 639px) {
   .title {
     line-height: 24px;
@@ -39,12 +45,6 @@
 
   .product__slider {
     padding-left: 16px;
-    padding-right: 0;
-  }
-}
-
-@media (min-width: 640px) and (max-width: 1199px) {
-  .product__slider {
     padding-right: 0;
   }
 }

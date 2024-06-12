@@ -136,6 +136,11 @@
   overflow: hidden;
 }
 
+.logo{
+  width: 64px;
+  height: 24px;
+}
+
 @media (max-width: 767px) {
   .mobileMenuNavListLink {
     font-size: 12px;

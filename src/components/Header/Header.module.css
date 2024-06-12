@@ -15,6 +15,8 @@
   margin-left: 24px;
   transition-duration: 0.3s;
   color: var(--primary-color);
+  width: 80px;
+  height: 28px;
 }
 
 .logo:hover {
@@ -91,6 +93,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   width: 64px;
   height: 100%;
   box-shadow: -1px 0 0 0 var(--elements-color);
@@ -161,7 +164,14 @@
   }
 }
 
-@media (max-width: 639px) {
+@media (min-width: 640px) and (max-width: 1099px) {
+  .logo {
+    width: 64px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
   .burger {
     display: flex;
     justify-content: center;
@@ -178,5 +188,9 @@
 
   .navigation {
     display: none;
+  }
+  .logo {
+    width: 64px;
+    height: 22px;
   }
 }

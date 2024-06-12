@@ -37,7 +37,7 @@ const Header = () => {
     <header className={styles.header} id="header">
       <div className={styles.containerLeft}>
         <Link to={ROUTES.HOME} className={styles.logo}>
-          <img src="img/logo.png" alt="" />
+          <img src="img/logo.png" alt="Nice gadgets logo" />
         </Link>
 
         <MobileMenu isMenuShown={isMenuShown} setIsMenuShown={setIsMenuShown} />

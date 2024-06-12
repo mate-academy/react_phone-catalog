@@ -1,9 +1,15 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import { FC } from 'react';
 import { ROUTES } from '../../../constants/ROUTES';
+import classNames from 'classnames';
 import styles from './Breadcrumbs.module.css';
 
-export const Breadcrumbs = () => {
+interface Props {
+  className?: string;
+}
+
+export const Breadcrumbs: FC<Props> = ({ className }) => {
   const { pathname } = useLocation();
   const pathnames = pathname.split('/').filter(path => path !== '');
   let breadcrumbsPath = '';
@@ -12,7 +18,7 @@ export const Breadcrumbs = () => {
     str.charAt(0).toUpperCase() + str.slice(1);
 
   return (
-    <div className={styles.container}>
+    <div className={classNames(styles.container, className)}>
       <Link to={ROUTES.HOME} className={styles.icon}>
         <img src="img/icons/home-icon.svg" alt="home icon" />
       </Link>

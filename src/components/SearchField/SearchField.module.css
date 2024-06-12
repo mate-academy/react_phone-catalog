@@ -5,7 +5,9 @@
   display: flex;
   align-items: center;
   background-color: var(--white-color);
+  box-shadow: -1px 0 0 0 var(--elements-color);
   padding: 12px;
+  position: relative;
 }
 
 @media (min-width: 1024px) {
@@ -17,6 +19,7 @@
 @media (max-width: 767px) {
   .searchField {
     max-width: 200px;
+    margin-left: auto;
   }
 }
 
@@ -40,16 +43,28 @@
   height: 25px;
   background-color: var(--white-color);
   color: var(--primary-color);
+  font-family: var(--primary-font);
+}
+
+.focus::before {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 3px;
+  border-radius: 4px;
+  background-color: var(--primary-color);
+  bottom: 0;
+  left: 0;
+
+  transition: transform 0.3s ease-out;
+  transform-origin: left;
+  transform: scaleX(1);
 }
 
 @media (max-width: 767px) {
   .searchFieldInput {
     font-size: 12px;
   }
-}
-
-.searchFieldInput:focus {
-  background-color: var(--white-color);
 }
 
 .searchFieldInput::placeholder {

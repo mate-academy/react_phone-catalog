@@ -1,15 +1,28 @@
-import { Outlet } from 'react-router-dom';
-import { Toaster } from 'sonner';
 import Footer from '../components/Footer/Footer';
 import Header from '../components/Header/Header';
+import { Outlet } from 'react-router-dom';
+import ToastNotification from '../UI/ToastNotification/ToastNotification';
+// import { Toaster } from 'sonner';
+import { useToastStore } from '../store/toastStore';
 
 const Layout = () => {
+  const { toasts } = useToastStore();
+
   return (
     <div className="app">
       <Header />
       <main>
         <Outlet />
-        <Toaster position="top-right" offset={80} richColors duration={1500} />
+        <div>
+          {toasts.map(toast => (
+            <ToastNotification
+              key={toast.id}
+              open={true}
+              title={toast.message}
+              description={toast.description || ''}
+            />
+          ))}
+        </div>
       </main>
       <Footer />
     </div>
