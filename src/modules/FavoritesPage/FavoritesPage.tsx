@@ -29,8 +29,18 @@ const FavoritesPage = () => {
         <Heading as="h1" className={s.title}>
           Favorites
         </Heading>
-        <p className={s.quantity}>{`${favorites.length} models`}</p>
-        <ProductsList products={favorites} isChangingPage={isChangingPage} />
+
+        {favorites.length === 0 && <p>Your favorites list is empty.</p>}
+
+        {favorites.length !== 0 && (
+          <>
+            <p className={s.quantity}>{`${favorites.length} models`}</p>
+            <ProductsList
+              products={favorites}
+              isChangingPage={isChangingPage}
+            />
+          </>
+        )}
       </div>
     </div>
   );

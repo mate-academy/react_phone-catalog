@@ -91,6 +91,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-shrink: 0;
   width: 64px;
   height: 100%;
   box-shadow: -1px 0 0 0 var(--elements-color);

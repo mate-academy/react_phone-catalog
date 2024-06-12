@@ -1,5 +1,5 @@
-import { create } from 'zustand';
 import Product from '../types/Product';
+import { create } from 'zustand';
 
 type UCartItem = {
   quantity: number;
@@ -37,19 +37,24 @@ export const useCartStore = create<CartStore>(set => ({
 
   changeQuantityInCart: (id: string, action: 'add' | 'sub') =>
     set(state => {
+      const newCartItems = state.cartItems.map(item => {
+        if (item.id === id) {
+          const updatedQuantity =
+            action === 'add' ? item.quantity + 1 : item.quantity - 1;
+
+          return {
+            ...item,
+            quantity: updatedQuantity > 0 ? updatedQuantity : 0,
+          };
+        }
+
+        return item;
+      });
+
+      localStorage.setItem('cartitems', JSON.stringify(newCartItems));
+
       return {
-        cartItems: state.cartItems.map(item => {
-          const copyItem = item;
-
-          if (copyItem.id === id) {
-            copyItem.quantity =
-              action === 'add' ? copyItem.quantity + 1 : copyItem.quantity - 1;
-
-            return copyItem;
-          }
-
-          return copyItem;
-        }),
+        cartItems: newCartItems,
       };
     }),
 

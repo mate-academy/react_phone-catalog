@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
 import Loader from '../shared/Loader/Loader';
@@ -20,8 +21,6 @@ const AccessoriesPage = () => {
   const [isError, setIsError] = useState(false);
   const [isChangingPage, setIsChangingPage] = useState(false);
 
-  window.console.log(isError);
-
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
@@ -30,7 +29,7 @@ const AccessoriesPage = () => {
 
   const queryParams = new URLSearchParams(location.search);
   const initialSort = queryParams.get('sort') || 'newest';
-  const initialPerPage = queryParams.get('perPage') || '8';
+  const initialPerPage = queryParams.get('perPage') || 'all';
   const initialPage = queryParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -60,9 +59,18 @@ const AccessoriesPage = () => {
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
 
-    newQueryParams.append('sort', sortOption);
-    newQueryParams.append('page', currentPage.toString());
-    newQueryParams.append('perPage', perPage.toString());
+    if (sortOption !== 'newest') {
+      newQueryParams.append('sort', sortOption);
+    }
+
+    if (currentPage !== 1) {
+      newQueryParams.append('page', currentPage.toString());
+    }
+
+    if (perPage !== 'all') {
+      newQueryParams.append('perPage', perPage.toString());
+    }
+
     navigate(`?${newQueryParams.toString()}`);
   }, [currentPage, perPage, sortOption, navigate]);
 
@@ -123,16 +131,27 @@ const AccessoriesPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
-        <div className={s.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
+
         <Heading className={s.title} as="h1">
           Accessories
         </Heading>
 
         {isLoading && <Loader />}
-        {!isLoading && filteredAccessories.length === 0 && (
-          <p>There are no phones products matching the query</p>
+        {isError && (
+          <div className={s.error}>
+            <p>Failed to load accessories. Please try again later.</p>
+            <Button
+              variant="primary"
+              size={[120, 40]}
+              onClick={fetchAccessories}
+            >
+              Reload
+            </Button>
+          </div>
+        )}
+        {!isLoading && !isError && filteredAccessories.length === 0 && (
+          <p>There are no accessories products matching the query</p>
         )}
 
         {!isLoading && filteredAccessories.length > 0 && (

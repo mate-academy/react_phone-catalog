@@ -4,6 +4,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
+import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
 import Loader from '../shared/Loader/Loader';
@@ -27,7 +28,7 @@ const PhonesPage = () => {
 
   const query = searchParams.get(SearchParams.Query) || '';
   const initialSort = searchParams.get('sort') || 'newest';
-  const initialPerPage = searchParams.get('perPage') || '8';
+  const initialPerPage = searchParams.get('perPage') || 'all';
   const initialPage = searchParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
@@ -57,15 +58,20 @@ const PhonesPage = () => {
   useEffect(() => {
     const newQueryParams = new URLSearchParams();
 
-    newQueryParams.append('sort', sortOption);
-    newQueryParams.append('page', currentPage.toString());
-    newQueryParams.append('perPage', perPage.toString());
-    if (query) {
-      newQueryParams.append(SearchParams.Query, query);
+    if (sortOption !== 'newest') {
+      newQueryParams.append('sort', sortOption);
+    }
+
+    if (currentPage !== 1) {
+      newQueryParams.append('page', currentPage.toString());
+    }
+
+    if (perPage !== 'all') {
+      newQueryParams.append('perPage', perPage.toString());
     }
 
     navigate(`?${newQueryParams.toString()}`);
-  }, [currentPage, perPage, sortOption, query, navigate]);
+  }, [currentPage, perPage, sortOption, navigate]);
 
   const handlePageChange = (page: number) => {
     setIsChangingPage(true);
@@ -124,18 +130,26 @@ const PhonesPage = () => {
   return (
     <div className={s.content}>
       <div className="container">
-        <div className={s.breadcrumbs}>
-          <Breadcrumbs />
-        </div>
+        <Breadcrumbs />
+
         <Heading className={s.title} as="h1">
           Mobile phones
         </Heading>
+
         {isLoading && <Loader />}
-        {!isLoading && filteredPhones.length === 0 && (
+        {isError && (
+          <div className={s.error}>
+            <p>Failed to load phones. Please try again later.</p>
+            <Button variant="primary" size={[120, 40]} onClick={fetchPhones}>
+              Reload
+            </Button>
+          </div>
+        )}
+        {!isLoading && !isError && filteredPhones.length === 0 && (
           <p>There are no phones products matching the query</p>
         )}
 
-        {!isLoading && filteredPhones.length > 0 && (
+        {!isLoading && !isError && filteredPhones.length > 0 && (
           <>
             <p className={s.quantity}>{phones.length} models</p>
 

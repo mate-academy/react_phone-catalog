@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import { ButtonHTMLAttributes, FC } from 'react';
+import { ButtonHTMLAttributes, forwardRef } from 'react';
 import styles from './Button.module.css';
 
 const buttonVariants = (variant = 'default', isSelected = false) => {
@@ -51,59 +51,66 @@ const unsupportedColorsHexMapping: { [key: string]: string } = {
   sierrablue: '#A3C1DA',
 };
 
-const Button: FC<ButtonProps> = ({
-  variant = 'default',
-  size = '',
-  isSelected = false,
-  color,
-  className,
-  style,
-  ...props
-}) => {
-  const classes = buttonVariants(variant, isSelected);
+const Button = forwardRef<HTMLButtonElement, ButtonProps>(
+  (
+    {
+      variant = 'default',
+      size = '',
+      isSelected = false,
+      color,
+      className,
+      style,
+      ...props
+    },
+    ref,
+  ) => {
+    const classes = buttonVariants(variant, isSelected);
 
-  const buttonColor: { 'background-color'?: string } = {};
-  let buttonSize: { width?: string; height?: string } = {};
+    const buttonColor: { 'background-color'?: string } = {};
+    let buttonSize: { width?: string; height?: string } = {};
 
-  function setColor(colorToCheck: string) {
-    if (colorToCheck in unsupportedColorsHexMapping) {
-      buttonColor['background-color'] =
-        unsupportedColorsHexMapping[colorToCheck];
-    } else {
-      buttonColor['background-color'] = colorToCheck;
+    function setColor(colorToCheck: string) {
+      if (colorToCheck in unsupportedColorsHexMapping) {
+        buttonColor['background-color'] =
+          unsupportedColorsHexMapping[colorToCheck];
+      } else {
+        buttonColor['background-color'] = colorToCheck;
+      }
     }
-  }
 
-  if (typeof size === 'string') {
-    const [width, height] = size.split(' ');
+    if (typeof size === 'string') {
+      const [width, height] = size.split(' ');
 
-    buttonSize = { width, height };
-  } else if (Array.isArray(size)) {
-    const [width, height] = size;
+      buttonSize = { width, height };
+    } else if (Array.isArray(size)) {
+      const [width, height] = size;
 
-    buttonSize = { width: `${width}px`, height: `${height}px` };
-  }
-
-  if (variant === 'color-selector') {
-    const widthValue = parseInt(buttonSize.width ?? '0') - 3;
-    const heightValue = parseInt(buttonSize.height ?? '0') - 3;
-
-    buttonSize = { width: `${widthValue}px`, height: `${heightValue}px` };
-
-    if (color !== undefined) {
-      setColor(color);
+      buttonSize = { width: `${width}px`, height: `${height}px` };
     }
-  }
 
-  return (
-    <button
-      className={`${classes} ${className ?? ''}`}
-      style={{ ...buttonSize, ...buttonColor, ...style }}
-      {...props}
-    >
-      {props.children}
-    </button>
-  );
-};
+    if (variant === 'color-selector') {
+      const widthValue = parseInt(buttonSize.width ?? '0') - 3;
+      const heightValue = parseInt(buttonSize.height ?? '0') - 3;
 
+      buttonSize = { width: `${widthValue}px`, height: `${heightValue}px` };
+
+      if (color !== undefined) {
+        setColor(color);
+      }
+    }
+
+    return (
+      <button
+        ref={ref}
+        className={`${classes} ${className ?? ''}`}
+        style={{ ...buttonSize, ...buttonColor, ...style }}
+        {...props}
+      >
+        {props.children}
+      </button>
+    );
+  },
+);
+
+Button.displayName = 'Button';
 export default Button;
