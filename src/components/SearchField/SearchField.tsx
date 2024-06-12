@@ -5,9 +5,12 @@ import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import React, { useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
+
+import * as Popover from '@radix-ui/react-popover';
+import { IoSearch } from 'react-icons/io5';
+import { getSearchWith } from '../../helpers/searchHelper';
 import { SearchParams } from '../../types/Categories';
 import classNames from 'classnames';
-import { getSearchWith } from '../../helpers/searchHelper';
 import styles from './SearchField.module.css';
 import { useDebounce } from '../../hooks/useDebounce';
 
