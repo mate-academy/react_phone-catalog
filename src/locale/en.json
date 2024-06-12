@@ -5,6 +5,10 @@
     "tablets": "Tablets",
     "accessories": "Accessories",
     "welcome": "Welcome to Nice Gadgets store!",
-    "newModels": "Brand new models"
+    "newModels": "Brand new models",
+    "addToCart": "Add to cart",
+    "screen": "Screen",
+    "capacity": "Capacity",
+    "ram": "RAM"
   }
 }

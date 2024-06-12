@@ -6,15 +6,18 @@ import { ThemeProvider } from './store/ThemeProvider';
 import './styles/main.scss';
 import { BreakPointsProvider } from './store/BreakPointsProvider';
 import { StateProvider } from './store/StateProvider';
+import { PhoneProvider } from './store/PhoneProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <StateProvider>
-    <BreakPointsProvider>
-      <ThemeProvider>
-        <LanguageProvider>
-          <App />
-        </LanguageProvider>
-      </ThemeProvider>
-    </BreakPointsProvider>
-  </StateProvider>,
+  <PhoneProvider>
+    <StateProvider>
+      <BreakPointsProvider>
+        <ThemeProvider>
+          <LanguageProvider>
+            <App />
+          </LanguageProvider>
+        </ThemeProvider>
+      </BreakPointsProvider>
+    </StateProvider>
+  </PhoneProvider>,
 );

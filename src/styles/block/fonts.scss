@@ -1,6 +1,13 @@
 @font-face {
   font-family: Mont;
   src: url(../../../public/fonts/Mont-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../../../public/fonts/Mont-Regular.otf);
+  font-weight: 500;
 }
 
 @font-face {
@@ -11,6 +18,13 @@
 
 @font-face {
   font-family: Mont;
-  src: url(../../../public/fonts/Mont-Bold.otf);
-  font-weight: bold;
+  src: url(../../../public/fonts/Mont-SemiBold.otf);
+  font-weight: 700;
 }
+
+@font-face {
+  font-family: Mont;
+  src: url(../../../public/fonts/Mont-Bold.otf);
+  font-weight: 800;
+}
+

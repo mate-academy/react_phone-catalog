@@ -2,6 +2,7 @@
 @import '../../../../src/styles/block/utils/_mixins.scss';
 
 .slider {
+  padding-inline: $onDesctop-container-padding;
   &__block {
     display: flex;
     position: relative;
@@ -38,7 +39,6 @@
   &__images {
     display: flex;
     @include transitionPage;
-
   }
 
   &__image {
@@ -71,27 +71,17 @@
   &__activeButton {
     background-color: $button-active-slider-color;
   }
-
-  // &__smallButton:before {
-  //   position: absolute;
-  //   content: '';
-  //   top: -15px;
-  //   left: -5px;
-  //   right: -5px;
-  //   bottom: -15px;
-  //   cursor: pointer;
-  // }
 }
 
 @include onTablet {
   .slider {
-    margin-inline: 19px;
+    padding-inline: $onTablet-container-padding;
   }
 }
 
 @include onPhone {
   .slider {
-    margin: 0;
+    padding-inline: 0;
     &__container {
       margin: 0;
     }

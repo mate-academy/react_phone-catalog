@@ -2,17 +2,170 @@
 @import '../../../styles/block/utils/_mixins.scss';
 
 .brandNewModels {
-  &__slider {
-  }
+  position: relative;
 
   &__title {
+    display: flex;
     font-size: 32px;
     line-height: 41px;
+    margin: 0 0 24px 0;
+  }
+
+  &__rightSide {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__phoneCard {
+    display: flex;
+    overflow: hidden;
+    gap: 16px;
+  }
+
+  &__container {
+    width: 272px;
+    height: 506px;
+    border: 1px solid $border-color;
+    padding: 32px;
+    background-color: $background-color-phoneCard;
+  }
+
+  &__containerForPhoneName {
+    display: flex;
+    align-items: flex-end;
+    min-height: 58px;
+    width: 208px;
+  }
+
+  &__phoneName {
+    margin-bottom: 8px;
+
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__imgPhone {
+    display: flex;
+    margin: 0 auto 8px;
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+  }
+
+  &__line {
+    display: block;
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__info > p {
+    line-height: 15px;
+  }
+
+  &__phoneCard p {
+    margin-bottom: 8px;
+  }
+
+  &__phonePrice {
+    margin-bottom: 8px;
+    font-size: 22px;
+    line-height: 31px;
+    font-weight: 800;
+  }
+
+  &__valueName {
+    font-weight: 700;
+    color: $text-phone-card-color;
+  }
+
+  &__value {
+    font-weight: 700;
+  }
+
+  &__buttons:hover {
+    @extend %lightThemeHoverButton;
+  }
+
+  &__darkTheme &__buttons:hover {
+    @extend %darkThemeHoverButton;
+  }
+
+  &__wrapButtons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__addToCart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+    background-color: $background-color-button-cart;
+    width: 160px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-color-phoneCardHover;
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+
+  &__wrapButtons {
+    padding-top: 8px;
+  }
+
+  &__favBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: $background-color-button-fav;
+    border: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  &__favBtn:hover {
+    @extend %lightThemeHoverButton;
+  }
+
+  &__darkTheme &__favBtn:hover {
+    @extend %darkThemeHoverButton;
   }
 }
 
-// @include onTablet {
-// }
+@include onTablet {
+}
 
 @include onPhone {
   .brandNewModels {

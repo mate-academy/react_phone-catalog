@@ -3,8 +3,8 @@
 
 .main {
   &__content {
-    margin-inline: 16px;
     max-width: 1136px;
+
     margin: 0 auto;
   }
 
@@ -13,29 +13,38 @@
     font-size: 48px;
     font-weight: 800;
     margin: 56px 0;
+    padding-inline: $onDesctop-container-padding;
   }
 
   &__heroSlider {
-    margin-bottom: 80px;
+    margin-bottom: 112px;
   }
 
- 
+  &__container {
+    padding-inline: 32px;
+  }
 }
 
 @include onTablet {
   .main {
     &__title {
       margin: 48px auto;
+      padding-inline: $onTablet-container-padding;
     }
 
     &__heroSlider {
-      margin-bottom: 64px;
+      margin-bottom: 96px;
+    }
+
+    &__container {
+      padding-inline: $onTablet-container-padding;
     }
   }
 }
 
 @include onPhone {
   .main {
+    margin-inline: 0;
     &__actions__link {
       height: 48px;
       width: 48px;
@@ -43,9 +52,10 @@
 
     &__title {
       line-height: 41px;
-      margin: 24px 16px;
+      margin: 24px 0;
       letter-spacing: -1%;
       font-size: 32px;
+      padding-inline: $onPhone-container-padding;
     }
 
     &__content {
@@ -53,12 +63,16 @@
     }
 
     &__heroSlider {
-      margin-bottom: 64px;
+      margin-bottom: 88px;
     }
 
     &__titleBrandNewModels {
       font-size: 22px;
       line-height: 31px;
+    }
+
+    &__container {
+      padding-inline: 16px;
     }
   }
 }

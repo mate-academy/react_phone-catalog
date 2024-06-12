@@ -17,8 +17,9 @@ export const Main = () => {
         <section className={style.main__heroSlider}>
           {!openBurger && <Slider />}
         </section>
-
-        <BrandNewModels />
+        <div className={style.main__container}>
+          <BrandNewModels />
+        </div>
       </div>
     </main>
   );

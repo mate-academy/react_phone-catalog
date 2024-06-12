@@ -19,3 +19,11 @@
     transform: scale(1.1);
   }
 }
+
+%lightThemeHoverButton {
+  border: 1px solid $border-hover-button;
+}
+
+%darkThemeHoverButton {
+  background-color: $background-hover-button;
+}
