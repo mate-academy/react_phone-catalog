@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { useCallback, useEffect, useState } from 'react';
-import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
+import { useNavigate, useSearchParams } from 'react-router-dom';
 
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Button from '../../UI/Buttons/Button';
@@ -24,14 +24,12 @@ const TabletsPage = () => {
   const [isChangingPage, setIsChangingPage] = useState(false);
 
   const navigate = useNavigate();
-  const location = useLocation();
   const [searchParams] = useSearchParams();
 
   const query = searchParams.get(SearchParams.Query) || '';
-  const queryParams = new URLSearchParams(location.search);
-  const initialSort = queryParams.get('sort') || 'newest';
-  const initialPerPage = queryParams.get('perPage') || 'all';
-  const initialPage = queryParams.get('page') || '1';
+  const initialSort = searchParams.get('sort') || 'newest';
+  const initialPerPage = searchParams.get('perPage') || 'all';
+  const initialPage = searchParams.get('page') || '1';
 
   const [perPage, setPerPage] = useState<number | 'all'>(
     initialPerPage === 'all' ? 'all' : Number(initialPerPage),
@@ -43,9 +41,9 @@ const TabletsPage = () => {
     try {
       setIsLoading(true);
       setIsError(false);
-      const phonesData = await getTablets();
+      const tabletsData = await getTablets();
 
-      setTablets(phonesData);
+      setTablets(tabletsData);
     } catch (error) {
       setIsError(true);
     } finally {
@@ -83,19 +81,20 @@ const TabletsPage = () => {
     }, 800);
   };
 
-  const handleSortChange = (selectedOption: any) => {
+  const handleSortChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    setSortOption(selectedOption.value);
+
+    setSortOption(selectedOption);
+
     setCurrentPage(1);
     setTimeout(() => {
       setIsChangingPage(false);
     }, 800);
   };
 
-  const handlePerPageChange = (selectedOption: any) => {
+  const handlePerPageChange = (selectedOption: string) => {
     setIsChangingPage(true);
-    const value =
-      selectedOption.value === 'all' ? 'all' : Number(selectedOption.value);
+    const value = selectedOption === 'all' ? 'all' : Number(selectedOption);
 
     setPerPage(value);
     setCurrentPage(1);
@@ -105,7 +104,7 @@ const TabletsPage = () => {
   };
 
   const sortedTablets = tablets.slice().sort((a, b) => {
-    switch (sortOption) {
+    switch (sortOption.toLowerCase()) {
       case 'newest':
         return b.processor.localeCompare(a.processor);
       case 'alphabetically':
@@ -159,9 +158,7 @@ const TabletsPage = () => {
               <div>
                 <p className={s.label}>Sort by</p>
                 <Dropdown
-                  defaultValue={
-                    sortOption === 'newest' ? 'Newest' : perPage.toString()
-                  }
+                  defaultValue={sortOption === 'newest' ? 'Newest' : sortOption}
                   options={sortOptions}
                   onChange={(option: string) => handleSortChange(option)}
                   sortOption={sortOption}
