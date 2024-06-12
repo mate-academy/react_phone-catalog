@@ -4,12 +4,16 @@ import 'swiper/css/pagination';
 
 import { useEffect, useState } from 'react';
 
-import { getPhones } from '../../../../api/getProduct';
+import {
+  getAccessories,
+  getPhones,
+  getTablets,
+} from '../../../../api/getProduct';
 import Product from '../../../../types/Product';
 import SliderProducts from '../../../shared/SliderProducts/SliderProducts';
 
 const BrandNewModels = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [isLoadingProduct, setIsLoadingProduct] = useState(true);
@@ -18,33 +22,46 @@ const BrandNewModels = () => {
   useEffect(() => {
     setIsLoadingProduct(true);
     setIsLoading(true);
-    getPhones()
-      .then(res => {
-        const newModel = '14';
-        const brandNewPhones = res.filter(phone =>
-          phone.name.includes(newModel),
+
+    const fetchAllData = async () => {
+      try {
+        const [phones, tablets, accessories] = await Promise.all([
+          getPhones(),
+          getTablets(),
+          getAccessories(),
+        ]);
+
+        const allProducts = [...phones, ...tablets, ...accessories];
+
+        const noDiscountProducts = allProducts.filter(
+          product => product.priceRegular === product.priceDiscount,
         );
 
-        setPhones(brandNewPhones);
-        setTotalPages(Math.ceil(brandNewPhones.length / 4));
-      })
-      .catch(() => {
+        const sortedProducts = (
+          noDiscountProducts.length === 0 ? allProducts : noDiscountProducts
+        ).sort((a, b) => b.priceRegular - a.priceRegular);
+
+        setProducts(sortedProducts);
+        setTotalPages(Math.ceil(sortedProducts.length / 4));
+      } catch (error) {
         setIsError(true);
-      })
-      .finally(() => {
+      } finally {
         setTimeout(() => {
           setIsLoading(false);
         }, 100);
         setTimeout(() => {
           setIsLoadingProduct(false);
         }, 500);
-      });
+      }
+    };
+
+    fetchAllData();
   }, []);
 
   return (
     <SliderProducts
       sliderTitle={'Brand new models'}
-      products={phones}
+      products={products}
       totalPages={totalPages}
       isLoading={isLoading}
       isLoadingProduct={isLoadingProduct}
