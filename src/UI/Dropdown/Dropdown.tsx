@@ -24,12 +24,10 @@ const Dropdown: React.FC<DropdownSelectProps> = ({
   dropdownHeight = 'auto',
   onChange,
 }) => {
-
   const transformedOptions: DropdownOption[] = options.map(option => ({
     value: option,
     label: option,
   }));
-
 
   return (
     <Select.Root onValueChange={onChange}>
@@ -43,7 +41,7 @@ const Dropdown: React.FC<DropdownSelectProps> = ({
       >
         <Select.Value aria-label={defaultValue}>{defaultValue}</Select.Value>
         <Select.Icon className={s.indicator}>
-        <FaChevronDown />
+          <FaChevronDown />
         </Select.Icon>
       </Select.Trigger>
       <Select.Portal>
