@@ -4,8 +4,7 @@
 @import '../../animations';
 
 .footer {
-  // Margin for scrolling testing
-  margin-top: 800px;
+  margin-top: 80px;
   display: flex;
   justify-content: space-around;
   width: 100%;
@@ -75,11 +74,18 @@
   }
 }
 
+@include on-tablet {
+  .footer {
+    margin-top: 64px;
+  }
+}
+
 @include on-mobile {
   .footer {
     flex-direction: column;
     height: 257px;
     align-items: start;
+    margin-top: 64px;
   }
 
   .logoLink {

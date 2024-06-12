@@ -1,0 +1,138 @@
+@import '../../../shared/variables';
+@import '../../../shared/mixins';
+@import '../../../shared/fonts';
+
+.shopByCategory {
+  grid-column: 1 / -1;
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 32px);
+  column-gap: $gap;
+  padding-top: 80px;
+  height: 508px;
+}
+
+.title {
+  grid-column: 1 / 13;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $primary-color;
+}
+
+.categories {
+  grid-column: 1/ -1;
+  display: grid;
+  grid-template-columns: repeat($grid-columns, 32px);
+  column-gap: $gap;
+  padding-top: 24px;
+  height: 443px;
+}
+
+.categoryLink {
+  grid-column: span 8;
+  text-decoration: none;
+  color: inherit;
+}
+
+.imgs {
+  grid-column: 1 / -1;
+  height: 368px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    transform: scale(105%);
+  }
+}
+
+.imgPhones {
+  background-image: url(../../../../../public/img/categories/phones-category-desktop.svg);
+}
+
+.imgTablets {
+  background-image: url(../../../../../public/img/categories/tablets-category-desktop.svg);
+}
+
+.imgAccessories {
+  background-image: url(../../../../../public/img/categories/accessories-category-desktop.svg);
+}
+
+.categoryName {
+  grid-column: 1 / -1;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 25.56px;
+  text-align: left;
+  color: $primary-color;
+  padding-top: 24px;
+}
+
+.productCount {
+  grid-column: 1 / -1;
+  font-family: Mont, Helvetica, sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: $secondary-color;
+}
+
+@include on-tablet {
+  .shopByCategory {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+    padding-top: 64px;
+    height: 327px;
+  }
+
+  .title {
+    grid-column: 1 / -1;
+  }
+
+  .categories {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+    height: 262px;
+  }
+
+  .categoryLink {
+    grid-column: span 4;
+  }
+
+  .imgs {
+    height: 187px;
+  }
+}
+
+@include on-mobile {
+  .shopByCategory {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+    padding-top: 56px;
+    height: 1208px;
+  }
+
+  .title {
+    grid-column: 1 / -1;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+  }
+
+  .categories {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+    height: 1137px;
+  }
+
+  .categoryLink {
+    grid-column: 1 / -1;
+    height: 363px;
+  }
+
+  .imgs {
+    height: 288px;
+  }
+}

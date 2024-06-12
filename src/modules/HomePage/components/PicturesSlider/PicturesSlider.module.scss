@@ -18,7 +18,7 @@ $slider-image-num: 3;
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat($grid-columns, 32px);
-  column-gap: 16px;
+  column-gap: $gap;
   height: 400px;
 }
 
@@ -124,7 +124,7 @@ $slider-image-num: 3;
 
   .picturesSlider {
     grid-template-columns: repeat($grid-columns-tablet, 32px);
-    column-gap: 16px;
+    column-gap: $gap;
     height: 189px;
   }
 
@@ -144,7 +144,7 @@ $slider-image-num: 3;
 
   .picturesSlider {
     grid-template-columns: repeat($grid-columns-mobile, 60px);
-    column-gap: 16px;
+    column-gap: $gap;
     height: 320px;
   }
 

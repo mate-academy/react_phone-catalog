@@ -2,13 +2,11 @@
 @import '../../../shared/mixins';
 @import '../../../shared/fonts';
 
-$gap: 16px;
-
 .productsSlider {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: repeat($grid-columns, 32px);
-  column-gap: 16px;
+  column-gap: $gap;
   height: 571px;
   padding-top: 80px;
 }
@@ -30,6 +28,7 @@ $gap: 16px;
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
+  color: $primary-color;
 }
 
 .scrollBtn {

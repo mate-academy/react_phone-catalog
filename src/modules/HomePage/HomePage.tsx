@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import styles from './HomePage.module.scss';
 import { PicturesSlider } from './components/PicturesSlider';
 import { ProductsSlider } from './components/ProductsSlider';
+import { ShopByCategory } from './components/ShopByCategory';
 import { getProducts } from '../shared/api';
 import { Product } from '../shared/types';
 
@@ -28,6 +29,7 @@ export const HomePage = () => {
     <div className={styles.homePage}>
       <h1 className={styles.welcomeTitle}>Welcome to Nice Gadgets store!</h1>
       <PicturesSlider />
+      <ShopByCategory products={products} />
       <ProductsSlider title={`Hot prices`} products={productsByDiscount} />
     </div>
   );
