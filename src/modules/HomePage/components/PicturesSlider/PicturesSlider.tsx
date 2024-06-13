@@ -2,10 +2,8 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import s from './PicturesSlider.module.css';
-import useDarkThemeStore from '../../../../store/darkThemeStore';
-
 import styles from './PicturesSlider.module.css';
+import useDarkThemeStore from '../../../../store/darkThemeStore';
 
 const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
