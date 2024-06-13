@@ -88,7 +88,7 @@ const Header = () => {
 
       <div className={styles.containerRight}>
         {isSearchShown && (
-          <div className={styles.searchBtn}>
+          <div className={`${styles.searchBtn} ${styles.iconLink}`}>
             <SearchField />
           </div>
         )}
@@ -96,7 +96,7 @@ const Header = () => {
         <Button
           variant="ghost"
           onClick={toggleTheme}
-          className={styles.btnToggleTheme}
+          className={`${styles.btnToggleTheme} ${styles.iconLink}`}
         >
           {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
         </Button>
