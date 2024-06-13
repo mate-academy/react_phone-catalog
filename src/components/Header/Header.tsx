@@ -88,19 +88,18 @@ const Header = () => {
 
       <div className={styles.containerRight}>
         {isSearchShown && (
-          <div className={styles.iconLink}>
+          <div className={styles.searchBtn}>
             <SearchField />
           </div>
         )}
-        <div className={styles.iconLink}>
-          <Button
-            variant="ghost"
-            onClick={toggleTheme}
-            className={styles.btnToggleTheme}
-          >
-            {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
-          </Button>
-        </div>
+
+        <Button
+          variant="ghost"
+          onClick={toggleTheme}
+          className={styles.btnToggleTheme}
+        >
+          {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
+        </Button>
 
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>

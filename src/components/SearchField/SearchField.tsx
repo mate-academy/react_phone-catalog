@@ -61,7 +61,7 @@ const SearchField = () => {
     <Popover.Root>
       <Popover.Trigger className={styles.Trigger} asChild>
         <button className="IconButton" aria-label="Search">
-          <IoSearch size={18} />
+          <IoSearch size={16} />
         </button>
       </Popover.Trigger>
       <Popover.Portal>

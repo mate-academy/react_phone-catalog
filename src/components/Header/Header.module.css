@@ -89,6 +89,11 @@
   color: var(--accent-color);
 }
 
+.searchBtn {
+  width: 64px;
+  height: 64px;
+}
+
 .iconLink {
   display: flex;
   justify-content: center;
@@ -181,6 +186,11 @@
 
   .btnToggleTheme {
     width: 50px;
+  }
+
+  .searchBtn {
+    height: 48px;
+    width: 48px;
   }
 }
 
