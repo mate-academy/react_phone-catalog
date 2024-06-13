@@ -2,12 +2,8 @@
 @import '/src/styles/variables';
 
 .favourites {
-  margin-top: 124px;
+  margin-top: 25px;
   flex: 1 1;
-
-  @include on-tablet {
-    margin-top: 128px;
-  }
 
   &__title {
     color: $main-black;
@@ -52,5 +48,30 @@
 
   &__empty-image {
     width: 300px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__breadcrumbs-link {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
   }
 }

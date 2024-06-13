@@ -2,12 +2,8 @@
 @import '/src/styles/variables';
 
 .cart {
-  margin-top: 124px;
+  margin-top: 40px;
   flex: 1 1;
-
-  @include on-tablet {
-    margin-top: 128px;
-  }
 
   &__container {
     gap: 32px;
@@ -37,6 +33,18 @@
 
   &__empty-image {
     width: 300px;
+  }
+
+  &__navigate {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__back {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
   }
 
   &__title {
@@ -82,10 +90,35 @@
   }
 
   &__item {
-    justify-content: space-between;
+    flex-direction: column;
     border: 1px solid rgb(226, 230, 233);
     border-radius: 16px;
-    padding: 24px;
+    padding: 16px;
+    gap: 16px;
+
+    @include on-tablet {
+      padding: 24px;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__navigation {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      width: auto;
+      gap: 53px;
+    }
+  }
+
+  &__name {
+    color: $main-black;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
   }
 
   &__info {
@@ -99,6 +132,7 @@
 
   &__delete {
     height: 16px;
+    width: 16px;
     transition: background-color 0.3s;
 
     &:hover {
@@ -108,6 +142,8 @@
 
   &__icon-delete {
     transition: transform 0.3s;
+    height: 100%;
+    width: 100%;
 
     &:hover {
       transform: scale(1.15);

@@ -80,6 +80,7 @@
     color: rgb(137, 147, 154);
     font-size: 12px;
     font-weight: 700;
+    position: relative;
     line-height: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
@@ -120,6 +121,31 @@
 
     &:hover {
       background-color: rgb(226, 230, 233);
+    }
+  }
+
+  &__span {
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    color: rgb(255, 255, 255);
+    background: rgb(66, 25, 208);
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--favourite {
+      top: 18px;
+      left: 79px;
+    }
+
+    &--cart {
+      top: 18px;
+      right: 65px;
     }
   }
 }

@@ -10,7 +10,7 @@ import 'bulma/css/bulma.css';
 import { Pagination } from './Pagination';
 import { Footer } from '../Footer';
 import { useAppContext } from '../../AppContext';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 
 interface Props {
   product: Products[];
@@ -69,6 +69,17 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
     <main className={styles.page}>
       <div className={styles.page__container}>
         <div className={styles.page__main}>
+          <div className={styles.page__breadcrumbs}>
+            <Link className={styles['page__breadcrumbs-link']} to="/">
+              <img src="/img/products/home.svg" alt="home" />
+            </Link>
+            <img
+              className={styles['page__breadcrumbs-link']}
+              src="/img/products/arrow.svg"
+              alt="arrow"
+            />
+            <p className={styles.page__current}>{currentPage}</p>
+          </div>
           {currentPage === PageSection.Phones ? (
             <h2 className={styles.page__title}>Mobile phones</h2>
           ) : (

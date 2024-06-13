@@ -3,6 +3,8 @@ import styles from './Cart.module.scss';
 import { Footer } from '../Footer';
 import { Products } from '../../types/Products';
 import { useAppContext } from '../../AppContext';
+import { ModalWindow } from '../ModalWindow';
+import { useNavigate } from 'react-router-dom';
 
 interface Props {
   models: Products[];
@@ -10,6 +12,8 @@ interface Props {
 
 export const Cart: React.FC<Props> = ({ models }) => {
   const { cart, setCart } = useAppContext();
+  const [visibleModal, setVisibleModal] = useState(false);
+  const navigate = useNavigate();
 
   const [itemCounts, setItemCounts] = useState<Record<number, number>>(
     cart.reduce(
@@ -83,6 +87,17 @@ export const Cart: React.FC<Props> = ({ models }) => {
           </div>
         ) : (
           <div className={styles.cart__container}>
+            <button
+              className={styles.cart__navigate}
+              onClick={() => navigate(-1)}
+            >
+              <img
+                className={styles.cart__arrow}
+                src="img/burgerMenu/arrow.svg"
+                alt="arrow"
+              />
+              <p className={styles.cart__back}>Back</p>
+            </button>
             <h2 className={styles.cart__title}>Cart</h2>
             <div className={styles.cart__content}>
               <div className={styles.cart__items}>
@@ -105,6 +120,8 @@ export const Cart: React.FC<Props> = ({ models }) => {
                         className={styles.cart__image}
                       />
                       <p className={styles.cart__name}>{item.name}</p>
+                    </div>
+                    <div className={styles.cart__navigation}>
                       <div className={styles['cart__count-control']}>
                         <button
                           className={`${styles.cart__counter} ${styles['cart__counter--decrement']}`}
@@ -130,8 +147,8 @@ export const Cart: React.FC<Props> = ({ models }) => {
                           />
                         </button>
                       </div>
+                      <h3 className={styles.cart__price}>{`$${item.price}`}</h3>
                     </div>
-                    <h3 className={styles.cart__price}>{`$${item.price}`}</h3>
                   </div>
                 ))}
               </div>
@@ -150,12 +167,18 @@ export const Cart: React.FC<Props> = ({ models }) => {
                     </p>
                   )}
                 </div>
-                <button className={styles.cart__checkout}>Checkout</button>
+                <button
+                  className={styles.cart__checkout}
+                  onClick={() => setVisibleModal(true)}
+                >
+                  Checkout
+                </button>
               </div>
             </div>
           </div>
         )}
       </section>
+      {visibleModal && <ModalWindow setVisibleModal={setVisibleModal} />}
       <Footer />
     </div>
   );

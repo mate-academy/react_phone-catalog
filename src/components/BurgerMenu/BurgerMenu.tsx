@@ -7,6 +7,7 @@ import { NavLink, useNavigate } from 'react-router-dom';
 
 export const BurgerMenu: React.FC = () => {
   const { setCurrentPage, currentPage } = useAppContext();
+  const { cart, favourites } = useAppContext();
   const navigate = useNavigate();
 
   const handleCloseMenu = () => {
@@ -72,6 +73,13 @@ export const BurgerMenu: React.FC = () => {
           className={styles['menu__footer-link']}
         >
           <img src="img/header/favorite.svg" alt="favorite" />
+          {favourites.length > 0 && (
+            <span
+              className={`${styles.menu__span} ${styles['menu__span--favourite']}`}
+            >
+              {favourites.length}
+            </span>
+          )}
         </NavLink>
         <NavLink
           to="/cart"
@@ -79,6 +87,13 @@ export const BurgerMenu: React.FC = () => {
           className={styles['menu__footer-link']}
         >
           <img src="img/header/cart.svg" alt="cart" />
+          {cart.length > 0 && (
+            <span
+              className={`${styles.menu__span} ${styles['menu__span--cart']}`}
+            >
+              {cart.length}
+            </span>
+          )}
         </NavLink>
       </div>
     </div>

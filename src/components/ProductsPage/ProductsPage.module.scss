@@ -2,11 +2,7 @@
 @import '/src/styles/variables';
 
 .page {
-  margin-top: 112px;
-
-  @include on-tablet {
-    margin-top: 128px;
-  }
+  margin-top: 25px;
 
   &__content,
   &__filter-by,
@@ -114,5 +110,30 @@
     &--down {
       background-image: url('./img/arrowDown.svg');
     }
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__breadcrumbs-link {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
   }
 }
