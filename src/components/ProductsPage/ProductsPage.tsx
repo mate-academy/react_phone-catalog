@@ -10,14 +10,16 @@ import 'bulma/css/bulma.css';
 import { Pagination } from './Pagination';
 import { Footer } from '../Footer';
 import { useAppContext } from '../../AppContext';
+import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   product: Products[];
 }
 
 export const ProductsPage: React.FC<Props> = ({ product }) => {
-  const [filterBy, setFilterBy] = useState<FilterBy>(FilterBy.age);
-  const [itemsPerPage, setItemsPerPage] = useState<PerPage>(PerPage.All);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const filterBy = searchParams.get('filterBy') || FilterBy.age;
+  const itemsPerPage = searchParams.get('perPage') || PerPage.All;
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [activeDropdownPage, setActiveDropdownPage] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -32,18 +34,24 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
       : Math.min(startEl + Number(itemsPerPage), product.length);
 
   const handleSetFilter = (item: FilterBy) => {
-    setFilterBy(item);
+    const params = new URLSearchParams(searchParams);
+
+    params.set('filterBy', item);
+    setSearchParams(params);
     setActiveDropdown(false);
   };
 
   const handleSetPerPage = (item: PerPage) => {
-    setItemsPerPage(item);
+    const params = new URLSearchParams(searchParams);
+
+    params.set('perPage', item);
+    setSearchParams(params);
     setActiveDropdownPage(false);
   };
 
   const sortedProduct = (
     products: Products[],
-    newFilter: FilterBy,
+    newFilter: string,
   ): Products[] => {
     switch (newFilter) {
       case FilterBy.age:

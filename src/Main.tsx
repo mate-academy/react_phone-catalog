@@ -29,15 +29,15 @@ export const Main = () => {
         <Route path="menu" element={<BurgerMenu />} />
         <Route path="phones">
           <Route index element={<ProductsPage product={phones} />} />
-          <Route path=":productId?" element={<ItemCard />} />
+          <Route path=":productId?" element={<ItemCard swiperIndex={3} />} />
         </Route>
         <Route path="tablets">
           <Route index element={<ProductsPage product={tablets} />} />
-          <Route path=":productId?" element={<ItemCard />} />
+          <Route path=":productId?" element={<ItemCard swiperIndex={4} />} />
         </Route>
         <Route path="accessories">
           <Route index element={<ProductsPage product={accessories} />} />
-          <Route path=":productId?" element={<ItemCard />} />
+          <Route path=":productId?" element={<ItemCard swiperIndex={5} />} />
         </Route>
         <Route
           path="favourites"

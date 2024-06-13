@@ -10,8 +10,13 @@ import { Accessories } from '../../types/AccessoriesType';
 import classNames from 'classnames';
 import productsFromServer from '../../api/products.json';
 import { useAppContext } from '../../AppContext';
+import { Carousel } from '../HomePage/Models/Carousel';
 
-export const ItemCard: React.FC = () => {
+interface Props {
+  swiperIndex: number;
+}
+
+export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const { favourites, setFavourites, cart, setCart } = useAppContext();
   const { productId } = useParams();
   const location = useLocation();
@@ -26,6 +31,10 @@ export const ItemCard: React.FC = () => {
   const [startMemory, setStartMemory] = useState<string | undefined>(
     firstColor,
   );
+
+  const relatedItems = productsFromServer
+    .filter(item => item.category === category)
+    .filter(item => item.itemId !== model?.id);
 
   const handleChangeColor = () => {
     const pathParts = location.pathname.split('/');
@@ -358,7 +367,26 @@ export const ItemCard: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className={styles['details__related-items']}></div>
+            <div className={styles['details__related-items']}>
+              <div className={styles.details__navigation}>
+                <h3 className={styles['details__title-related']}>
+                  You may also like
+                </h3>
+                <div className={styles.details__arrows}>
+                  <button
+                    className={`${styles.details__button} ${styles['details__button--prev']} swiper-button-prev--${swiperIndex}`}
+                  ></button>
+                  <button
+                    className={`${styles.details__button} ${styles['details__button--next']} swiper-button-next--${swiperIndex}`}
+                  ></button>
+                </div>
+              </div>
+              <Carousel
+                swiperIndex={swiperIndex}
+                modelsTitle="Hot prices"
+                models={relatedItems}
+              />
+            </div>
           </div>
         </section>
       ) : (

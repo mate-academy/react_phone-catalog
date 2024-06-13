@@ -8,7 +8,7 @@ import classNames from 'classnames';
 
 interface Props {
   products: Products[];
-  perPage: PerPage;
+  perPage: string;
   currentIndex: number;
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
 }
