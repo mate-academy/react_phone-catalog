@@ -1,5 +1,5 @@
 import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Link } from 'react-router-dom';
 import s from './PicturesSlider.module.css';
@@ -12,16 +12,18 @@ const slides = [
 
 const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const touchStartX = useRef(0);
+  const touchEndX = useRef(0);
 
   const handleNextSlide = useCallback(() => {
     setCurrentSlide(prevSlide => (prevSlide + 1) % slides.length);
   }, []);
 
-  const handlePrevSlide = () => {
+  const handlePrevSlide = useCallback(() => {
     setCurrentSlide(prevSlide =>
       prevSlide === 0 ? slides.length - 1 : prevSlide - 1,
     );
-  };
+  }, []);
 
   useEffect(() => {
     const intervalId = setInterval(handleNextSlide, 5000);
@@ -29,9 +31,32 @@ const PicturesSlider = () => {
     return () => clearInterval(intervalId);
   }, [handleNextSlide]);
 
+  const handleTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    touchEndX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStartX.current - touchEndX.current > 50) {
+      handleNextSlide();
+    }
+
+    if (touchStartX.current - touchEndX.current < -50) {
+      handlePrevSlide();
+    }
+  };
+
   return (
     <>
-      <div className={s.sliderContainer}>
+      <div
+        className={s.sliderContainer}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <button className={s.btn} onClick={handlePrevSlide}>
           <GoChevronLeft size={16} />
         </button>
