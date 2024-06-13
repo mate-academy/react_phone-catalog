@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = './public/_new';
+const BASE_URL = './_new';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -31,6 +31,10 @@ function request<T>(
       }
 
       return response.json();
+    })
+    .catch(error => {
+      // eslint-disable-next-line
+      console.log(error);
     });
 }
 
