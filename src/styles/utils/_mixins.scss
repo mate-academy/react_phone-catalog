@@ -30,6 +30,22 @@
   }
 }
 
+@mixin grid {
+  display: grid;
+
+  --columns: 4;
+
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
 @mixin h1 {
   font-family: "Mont", sans-serif;
   font-weight: bold;

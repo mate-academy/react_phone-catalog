@@ -1,0 +1,75 @@
+@import '../../App.scss';
+
+.footer {
+  padding-block: 32px;
+  border-top: 1px solid $elements;
+  @include grid;
+  row-gap: 32px;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__ul {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+    color: $secondary;
+    transition: all 0.3s;
+
+    &:hover {
+      color: $primary;
+    }
+  }
+
+  &__top {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    @include small-text;
+    color: $secondary;
+  }
+}
+
+.icon {
+  &--footer-logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &--chevron {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
