@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Heading from '../../UI/Heading/Heading';
 import ProductsList from '../shared/ProductsList/ProductsList';
-import s from './FavoritesPage.module.css';
+import styles from './FavoritesPage.module.css';
 import { useFavoritesStore } from '../../store/favoritesStore';
 
 const FavoritesPage = () => {
@@ -23,10 +23,10 @@ const FavoritesPage = () => {
   }, []);
 
   return (
-    <div className={s.content}>
+    <div className={styles.content}>
       <div className="container">
         <Breadcrumbs />
-        <Heading as="h1" className={s.title}>
+        <Heading as="h1" className={styles.title}>
           Favorites
         </Heading>
 
@@ -34,7 +34,9 @@ const FavoritesPage = () => {
 
         {favorites.length !== 0 && (
           <>
-            <p className={s.quantity}>{`${favorites.length} models`}</p>
+            <p className={styles.quantity}>
+              {favorites.length} {favorites.length === 1 ? 'item' : 'items'}
+            </p>
             <ProductsList
               products={favorites}
               isChangingPage={isChangingPage}

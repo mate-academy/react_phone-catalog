@@ -12,7 +12,6 @@
 }
 
 .loader {
-  color: var(--primary-color);
   font-size: 7px;
   position: relative;
   text-indent: -9999em;

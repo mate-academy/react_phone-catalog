@@ -2,7 +2,7 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import s from './PicturesSlider.module.css';
+import styles from './PicturesSlider.module.css';
 
 const slides = [
   { url: 'img/banner-phones.png', id: 1, path: 'phones' },
@@ -52,42 +52,42 @@ const PicturesSlider = () => {
   return (
     <>
       <div
-        className={s.sliderContainer}
+        className={styles.sliderContainer}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
-        <button className={s.btn} onClick={handlePrevSlide}>
+        <button className={styles.btn} onClick={handlePrevSlide}>
           <GoChevronLeft size={16} />
         </button>
 
-        <div className={s.slider}>
-          <div className={s.sliders}>
+        <div className={styles.slider}>
+          <div className={styles.sliders}>
             {slides.map((slide, index) => (
               <Link
                 to={slides[currentSlide].path}
                 key={slide.id}
-                className={`${s.slide} ${index === currentSlide ? s.activeSlide : ''}`}
+                className={`${styles.slide} ${index === currentSlide ? styles.activeSlide : ''}`}
               >
                 <img src={slide.url} alt={`Slide ${index + 1}`} />
               </Link>
             ))}
           </div>
         </div>
-        <button className={s.btn} onClick={handleNextSlide}>
+        <button className={styles.btn} onClick={handleNextSlide}>
           <GoChevronRight size={16} />
         </button>
       </div>
 
-      <div className={s.dots}>
+      <div className={styles.dots}>
         {slides.map((slide, index) => (
           <div
-            className={`${s.dot} ${index === currentSlide ? s.activeDot : ''}`}
+            className={`${styles.dot} ${index === currentSlide ? styles.activeDot : ''}`}
             key={slide.id}
             onClick={() => setCurrentSlide(index)}
           >
             <div
-              className={`${s.dash} ${index === currentSlide ? s.activeDash : ''}`}
+              className={`${styles.dash} ${index === currentSlide ? styles.activeDash : ''}`}
             ></div>
           </div>
         ))}

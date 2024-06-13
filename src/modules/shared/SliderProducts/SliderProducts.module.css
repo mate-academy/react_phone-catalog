@@ -11,8 +11,8 @@
 
 .title {
   line-height: 24px;
-  max-width: calc(20 * 1em); /* Обмежує ширину заголовка */
-  white-space: pre-wrap; /* Дозволяє переносити слова */
+  max-width: calc(20 * 1em);
+  white-space: pre-wrap;
   overflow-wrap: break-word;
 }
 

@@ -33,6 +33,7 @@
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  color: var(--font-color-secondary);
 }
 
 .footer__link {
@@ -122,6 +123,5 @@
     margin: 32px 0;
     flex-direction: column;
     align-items: center;
-    color: var(--white-color);
   }
 }

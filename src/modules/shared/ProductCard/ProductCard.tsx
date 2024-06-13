@@ -3,9 +3,9 @@ import * as Tooltip from '@radix-ui/react-tooltip';
 
 import { FC, useMemo } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
-import { Link, useLocation } from 'react-router-dom';
 
 import Button from '../../../UI/Buttons/Button';
+import { Link } from 'react-router-dom';
 import Product from '../../../types/Product';
 import { ROUTES } from '../../../constants/ROUTES';
 import styles from './ProductCard.module.css';
@@ -30,8 +30,6 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
     id,
   } = product;
 
-  const { pathname } = useLocation();
-
   const { toggleProductInCart, cartItems } = useCartStore(state => ({
     toggleProductInCart: state.toggleProductInCart,
     cartItems: state.cartItems,
@@ -44,15 +42,13 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
 
   const { addToast } = useToastStore();
 
-  const productLink =
-    pathname === ROUTES.HOME
-      ? `${ROUTES.PHONES}/${id}`
-      : ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+  const productLink = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
   const isInCart = useMemo(
     () => cartItems.some(item => item.id === product.id),
     [cartItems, product.id],
   );
+
   const isFavorite = useMemo(
     () => favorites.some(item => item.id === product.id),
     [favorites, product.id],

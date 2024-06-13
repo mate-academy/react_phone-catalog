@@ -7,7 +7,7 @@
 }
 
 .quantity {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   margin-bottom: 40px;
   font-weight: 600;
 }
@@ -20,7 +20,7 @@
 }
 
 .label {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   font-size: 12px;
   margin-bottom: 4px;
   font-weight: 700;
@@ -29,7 +29,7 @@
 .error {
   padding: 25px 0;
   font-size: 20px;
-  color: var(--red-color);
+  color: var(--color-red);
   display: flex;
   flex-direction: column;
   align-items: center;

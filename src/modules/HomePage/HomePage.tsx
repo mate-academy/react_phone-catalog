@@ -3,18 +3,18 @@ import { Categories } from './components/Categories/Categories';
 import Heading from '../../UI/Heading/Heading';
 import HotPrices from './components/HotPrices/HotPrices';
 import PicturesSlider from './components/PicturesSlider/PicturesSlider';
-import s from './HomePage.module.css';
+import styles from './HomePage.module.css';
 
 const HomePage = () => {
   return (
     <>
       <div className="container">
-        <Heading as="h1" className={s.title}>
+        <Heading as="h1" className={styles.title}>
           Welcome to Nice Gadgets store!
         </Heading>
       </div>
 
-      <section className={s.picturesSlider}>
+      <section className={styles.picturesSlider}>
         <PicturesSlider />
       </section>
 

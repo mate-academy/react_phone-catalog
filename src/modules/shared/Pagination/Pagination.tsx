@@ -2,7 +2,7 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 
 import Button from '../../../UI/Buttons/Button';
 import React from 'react';
-import s from './Pagination.module.css';
+import styles from './Pagination.module.css';
 
 type Props = {
   total: number;
@@ -51,7 +51,7 @@ const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <ul className={s.pagination}>
+    <ul className={styles.pagination}>
       <li>
         <Button
           variant="icon"

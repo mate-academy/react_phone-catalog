@@ -28,13 +28,12 @@
 
 .ToastTitle {
   margin-bottom: 8px;
-  color: var(--primary-color);
+
   font-weight: 600;
 }
 
 .ToastDescription {
   margin-bottom: 8px;
-  color: var(--primary-color);
 }
 
 .ToastRoot[data-state='open'] {
@@ -55,7 +54,7 @@
 }
 
 .ToastRoot[data-swipe='end'] {
-  animation: swipe-out 100ms ease-out;
+  animation: swipe-out 00ms ease-out;
 }
 
 @keyframes hide {
@@ -78,9 +77,9 @@
 
 @keyframes swipe-out {
   from {
-    transform: translateX(var(--radix-toast-swipe-end-x));
+    transform: translateX(0);
   }
   to {
-    transform: translateX(calc(100% + var(--viewport-padding)));
+    transform: translateX(calc(100% + 32px));
   }
 }

@@ -14,7 +14,7 @@ import Product from '../../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
 import Skeleton from '../Skeleton/Skeleton';
 import { Swiper as SwiperType } from 'swiper/types';
-import s from './SliderProducts.module.css';
+import styles from './SliderProducts.module.css';
 
 interface Props {
   sliderTitle: string;
@@ -59,13 +59,13 @@ const SliderProducts: FC<Props> = ({
   };
 
   return (
-    <div className={s.content}>
+    <div className={styles.content}>
       <div className="container">
-        <div className={s.header_content}>
-          <Heading className={s.title} as="h2">
+        <div className={styles.header_content}>
+          <Heading className={styles.title} as="h2">
             {sliderTitle}
           </Heading>
-          <ul className={s.navigation}>
+          <ul className={styles.navigation}>
             <li>
               <Button
                 variant="icon"
@@ -93,11 +93,11 @@ const SliderProducts: FC<Props> = ({
       {isLoading ? (
         <Loader />
       ) : isError ? (
-        <p className={s.product__slider}>
+        <p className={styles.product__slider}>
           Error loading data. Please try again later.
         </p>
       ) : (
-        <div className={s.product__slider}>
+        <div className={styles.product__slider}>
           <Swiper
             onSwiper={swiper => (swiperRef.current = swiper)}
             onSlideChange={updateCurrentPage}
@@ -106,8 +106,8 @@ const SliderProducts: FC<Props> = ({
             slidesPerView={4}
             speed={800}
             autoplay={{
-              delay: 10000, // Затримка між автоскролом у мілісекундах
-              disableOnInteraction: false, // Продовжити автоскрол навіть після взаємодії користувача
+              delay: 10000,
+              disableOnInteraction: false,
             }}
             breakpoints={{
               1200: {
@@ -129,7 +129,7 @@ const SliderProducts: FC<Props> = ({
           >
             {products.map(product => (
               <SwiperSlide key={product.id}>
-                <div key={product.id} className={s.item}>
+                <div key={product.id} className={styles.item}>
                   {isLoadingProduct ? (
                     <Skeleton />
                   ) : (

@@ -4,13 +4,20 @@
   width: max-content;
   gap: 4px;
   cursor: pointer;
-}
-
-.linkText {
-  color: var(--secondary-color);
+  color: var(--font-color-primary);
   transition: color 0.3s ease-out;
 }
 
+.linkText {
+  color: var(--font-color-primary);
+  transition: color 0.3s ease-out;
+  line-height: 15px;
+}
+
+.backLink:hover {
+  color: var(--font-color-secondary);
+}
+
 .backLink:hover .linkText {
-  color: #000;
+  color: var(--font-color-secondary);
 }
