@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = './public/_new';
+const BASE_URL = 'https://vazilx.github.io/react_phone-catalog/_new';
 
 function wait(delay: number) {
   return new Promise(resolve => {
@@ -24,7 +24,12 @@ function request<T>(
   }
 
   return wait(100)
-    .then(() => fetch(BASE_URL + url, options))
+    .then(() => {
+      // eslint-disable-next-line
+      console.log(BASE_URL + url);
+
+      return fetch(BASE_URL + url, options);
+    })
     .then(response => {
       if (!response.ok) {
         throw new Error();
