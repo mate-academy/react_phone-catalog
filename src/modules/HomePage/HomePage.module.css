@@ -6,3 +6,9 @@
 .picturesSlider {
   margin-bottom: 80px;
 }
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .picturesSlider {
+    margin-bottom: 56px;
+  }
+}

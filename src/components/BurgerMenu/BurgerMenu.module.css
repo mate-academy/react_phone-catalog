@@ -75,6 +75,7 @@
 .activeLink {
   position: relative;
   color: var(--accent-color);
+  text-transform: uppercase;
 }
 
 .activeLink::before {
