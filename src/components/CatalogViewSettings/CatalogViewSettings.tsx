@@ -41,8 +41,7 @@ export const CatalogViewSettings: React.FC<Props> = () => {
       <div className="selector">
         <span className="selector__title">Sort by</span>
         <div className="selector__container">
-          {/* eslint-disable-next-line */}
-          <div className="selector__arrow"></div>
+          <div className="selector__arrow" />
 
           <select
             name={SORT_NAME}
@@ -68,8 +67,7 @@ export const CatalogViewSettings: React.FC<Props> = () => {
         <span className="selector__title">Sort by</span>
 
         <div className="selector__container">
-          {/* eslint-disable-next-line */}
-          <div className="selector__arrow"></div>
+          <div className="selector__arrow" />
 
           <select
             name={ITEM_NAME}

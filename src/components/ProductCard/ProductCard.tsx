@@ -9,6 +9,7 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
+  // eslint-disable-next-line
   const { fullPrice, price, image, name, itemId, screen, ram, capacity } =
     product;
 
@@ -16,7 +17,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <Link to={`/product/${itemId}`} className="product-card__link">
       <article className="product-card" data-cy="cardsContainer">
         <img
-          src={`./_new/${image}`}
+          src={`./api/${image}`}
           alt={`${name} img`}
           className="product-card__img"
         />

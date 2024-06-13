@@ -129,7 +129,7 @@ export const PromoSlider: React.FC<Props> = () => {
                     'promo-slider__radio-button--active':
                       currentPhotoId === img.id,
                   })}
-                ></div>
+                />
               </label>
             </div>
           ))}

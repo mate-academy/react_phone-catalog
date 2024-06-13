@@ -15,8 +15,6 @@
   @include active(background-color, $primary-color);
   @include hover(border-color, $primary-color);
 
-
-
   &--left {
     background-image: url('../../../public/img/ico/arrow-left.svg');
 

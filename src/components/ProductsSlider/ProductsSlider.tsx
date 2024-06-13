@@ -45,8 +45,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
 
   const countGaps = countVisibleCarts - 1;
 
+  // eslint-disable-next-line
   const move =
-    step * ((contentWidth - countGaps * widthGap) / countVisibleCarts) +
+    step * ((contentWidth - countGaps * widthGap) / countVisibleCarts) + //eslint-disable-line
     widthGap * step;
 
   const canMoveLeft = step !== 0;

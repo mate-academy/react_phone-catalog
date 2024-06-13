@@ -25,7 +25,7 @@ export const CartItem: React.FC<Props> = ({
         <ButtonCroce handleClick={deleteFromCart} id={id} />
       </div>
 
-      <img src={`./_new/${image}`} alt="product" className="cart-item__img" />
+      <img src={`./api/${image}`} alt="product" className="cart-item__img" />
 
       <p className="cart-item__name">{name}</p>
 

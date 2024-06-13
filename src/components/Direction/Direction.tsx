@@ -16,8 +16,7 @@ export const Direction: React.FC<Props> = ({ path }) => {
       </div>
       {path.map((point, i) => (
         <div className="direction__point-box" key={point.name}>
-          {/* eslint-disable-next-line */}
-          <div className="direction__point-arrow"></div>
+          <div className="direction__point-arrow" />
           <Link
             to={point.path}
             className={classNames('direction__point-link', {

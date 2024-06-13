@@ -14,6 +14,7 @@ export const Checkout: React.FC<Props> = ({ totalPrice, totalQuantity }) => {
     setHasWarning(true);
   };
 
+  // eslint-disable-next-line
   const warningMessage =
     'We are sorry, but this feature is not implemented yet';
 
