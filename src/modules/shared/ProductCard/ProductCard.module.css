@@ -83,7 +83,7 @@
   gap: 8px;
 }
 
-.addBtn {
+/* .addBtn {
   width: 100%;
   background-color: var(--primary-color);
   color: var(--white-color);
@@ -102,9 +102,9 @@
 
 .addBtn:hover {
   box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
-}
+} */
 
-.favouriteBtn {
+/* .favouriteBtn {
   border: 1px solid var(--icon-color);
   width: 40px;
   height: 40px;
@@ -123,7 +123,7 @@
 
 .favouriteBtn:hover {
   border: 1px solid var(--primary-color);
-}
+} */
 
 .paramValue {
   text-align: right;
@@ -134,12 +134,9 @@
   padding: 10px 15px;
   font-size: 15px;
   line-height: 1;
-  color: var(--violet-11);
-  background-color: white;
-  box-shadow:
-    hsl(206deg 22% 7% / 35%) 0 10px 38px -10px,
-    hsl(206deg 22% 7% / 20%) 0 10px 20px -15px;
+  background-color: var(--button-bg);
   user-select: none;
+  border: 1px solid var(--elements-color);
   animation-duration: 300ms;
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
@@ -163,7 +160,7 @@
 }
 
 .tooltipArrow {
-  fill: white;
+  fill: var(--button-bg);
 }
 
 @media (min-width: 640px) and (max-width: 1199px) {

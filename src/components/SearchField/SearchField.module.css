@@ -89,14 +89,14 @@
   align-items: center;
   justify-content: center;
   width: 64px;
-  height: 64px;
+  height: 100%;
   box-shadow: -1px 0 0 0 var(--elements-color);
   color: var(--font-color-primary);
 }
 
-@media (max-width: 767px) {
+@media (max-width: 768px) {
   .Trigger {
-    width: 48px;
+    width: 50px;
     height: 48px;
   }
 }
