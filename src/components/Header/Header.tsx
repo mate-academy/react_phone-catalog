@@ -91,7 +91,6 @@ const Header = () => {
 
         <Button
           variant="ghost"
-          size={[64, 64]}
           onClick={toggleTheme}
           className={styles.btnToggleTheme}
         >

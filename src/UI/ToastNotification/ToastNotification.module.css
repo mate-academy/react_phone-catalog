@@ -16,8 +16,8 @@
 }
 
 .ToastRoot {
-  background-color: var(--white-color);
-  color: white;
+  background-color: var(--background-color);
+  color: var(--font-color-primary);
   padding: 16px;
   display: flex;
   flex-direction: column;

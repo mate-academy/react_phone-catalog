@@ -9,6 +9,7 @@ import { ROUTES } from '../../constants/ROUTES';
 import classNames from 'classnames';
 import styles from './BurgerMenu.module.css';
 import { useCartStore } from '../../store/cartStore';
+import useDarkThemeStore from '../../store/darkThemeStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
 
 type Props = {
@@ -22,6 +23,8 @@ export const MobileMenu: React.FC<Props> = ({
 }) => {
   const cart = useCartStore(state => state.cartItems);
   const favorites = useFavoritesStore(state => state.favorites);
+
+  const { theme } = useDarkThemeStore();
 
   const getLinkStatus = ({ isActive }: { isActive: boolean }) =>
     classNames(styles.mobileMenuNavListLink, {
@@ -58,8 +61,7 @@ export const MobileMenu: React.FC<Props> = ({
           onClick={() => setIsMenuShown(false)}
         >
           <img
-            className={styles.logo}
-            src="img/logo.png"
+            src={`img/${theme === 'dark' ? 'logo-dark.svg' : 'logo.svg'}`}
             alt="Nice gadgets logo"
           />
         </Link>

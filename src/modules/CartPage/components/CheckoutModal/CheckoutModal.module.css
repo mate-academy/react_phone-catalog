@@ -9,12 +9,13 @@
 }
 
 .modalContent {
-  background-color: var(--white-color);
+  background-color: var(--background-color);
   padding: 20px;
   border-radius: 8px;
   width: 300px;
   text-align: center;
   animation: slide-in 0.3s;
+  border: 1px solid var(--elements-color);
 }
 
 .modalButton {
@@ -25,13 +26,15 @@
 }
 
 .confirm {
-  background-color: var(--green-color);
-  color: var(--white-color);
+  background-color: var(--color-green);
+  color: var(--font-color-primary);
+  font-family: var(--primary-font);
 }
 
 .cancel {
-  background-color: var(--red-color);
-  color: var(--white-color);
+  background-color: var(--color-red);
+  color: var(--font-color-primary);
+  font-family: var(--primary-font);
 }
 
 @keyframes fade-in {

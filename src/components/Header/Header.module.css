@@ -152,6 +152,14 @@
 
 .btnToggleTheme {
   box-shadow: -1px 0 0 0 var(--elements-color);
+  width: 64px;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  .list {
+    gap: 55px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -170,12 +178,20 @@
   .iconLink {
     width: 50px;
   }
+
+  .btnToggleTheme {
+    width: 50px;
+  }
 }
 
 @media (min-width: 640px) and (max-width: 1099px) {
   .logo {
     width: 64px;
     height: 22px;
+  }
+
+  .containerLeft {
+    gap: 34px;
   }
 }
 
@@ -186,8 +202,13 @@
     align-items: center;
     width: 48px;
     height: 100%;
-    box-shadow: -1px 0 0 0 #e2e6e9;
+    box-shadow: -1px 0 0 0 var(--elements-color);
     padding: 16px;
+    color: var(--font-color-primary);
+  }
+
+  .btnToggleTheme {
+    width: 48px;
   }
 
   .iconLink {
