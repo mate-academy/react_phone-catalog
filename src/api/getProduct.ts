@@ -12,3 +12,7 @@ export const getTablets = () => {
 export const getAccessories = () => {
   return client.get<Product[]>('/accessories.json');
 };
+
+export const getProductOfType = (type: string | null) => {
+  return client.get<Product[]>(`/${type}.json`);
+};
