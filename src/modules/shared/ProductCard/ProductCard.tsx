@@ -42,7 +42,8 @@ const ProductCard: FC<Props> = ({ product, isBrandNew = false }) => {
 
   const { addToast } = useToastStore();
 
-  const productLink = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+  const productLink =
+    `/${product.category}/` + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
   const isInCart = useMemo(
     () => cartItems.some(item => item.id === product.id),
