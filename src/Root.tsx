@@ -24,7 +24,6 @@ export const Root = () => (
         <FavouritesProvider>
           <ModalWindowProvider>
             <SidebarProvider>
-              {/* <ProductProvider> */}
               <Routes>
                 <Route path="/" element={<App />}>
                   <Route index element={<HomePage />} />
@@ -61,7 +60,6 @@ export const Root = () => (
                   />
                 </Route>
               </Routes>
-              {/* </ProductProvider> */}
             </SidebarProvider>
           </ModalWindowProvider>
         </FavouritesProvider>

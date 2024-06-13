@@ -1,7 +1,7 @@
 import { WIDTH_DEVICES } from '../modules/constants/WIDTH_DEVICES';
 import { imgs, imgsMobile } from './imgsForDevices';
 
-export function getImages(windowSize: number) {
+export function getImagesForSlider(windowSize: number) {
   if (windowSize <= WIDTH_DEVICES.mobile) {
     return imgsMobile.slice();
   }

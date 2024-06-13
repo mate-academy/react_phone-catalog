@@ -20,8 +20,17 @@
     display: flex;
     align-items: center;
 
-    :hover {
+    flex-direction: column;
+    color: $text-black-color;
+    text-decoration: none;
+    gap: 8px;
+    flex: 1;
+
+    &:hover {
       cursor: pointer;
+    }
+
+    &:hover :first-child{
       scale: 1.1;
     }
   }
@@ -41,9 +50,8 @@
     }
   }
 
-  &__title {
-    margin-top: 16px;
-    margin-top: auto;
+  &__name {
+    margin-block: auto;
 
     font-size: 14px;
     font-weight: 600;

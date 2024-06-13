@@ -1,4 +1,4 @@
-export function getNumbers(from: number, to: number): number[] {
+export function getNumbersToPagination(from: number, to: number): number[] {
   const numbers = [];
 
   for (let n = from; n <= to; n += 1) {

@@ -5,6 +5,7 @@
     calc(var(--header-height) + var(--footer-height));
 
   min-height: calc(100vh - var(--general-height));
+  max-width: 1136px;
 
   padding-block: 24px 56px;
 
@@ -127,13 +128,24 @@
     }
   }
 
-  &__empty-cart {
+  &__empty {
+    height: calc(100vh - var(--general-height) - 24px - 16px - 24px - 41px - 32px - 56px);
+
     display: flex;
-    height: 100px;
     align-items: center;
     justify-content: center;
 
-    font-size: 32px;
-    font-family: Mont-Bold, sans-serif;
+    @include on-tablet {
+      height: calc(100vh - var(--general-height) - 40px - 16px - 16px - 56px - 32px - 64px);
+    }
+
+    @include on-desctop {
+      height: calc(100vh - var(--general-height) - 40px - 16px - 16px - 56px - 32px - 80px);
+    }
+  }
+
+  &__empty-img {
+    width: 100%;
+    max-width: 600px;
   }
 }

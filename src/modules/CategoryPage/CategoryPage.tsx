@@ -9,9 +9,8 @@ import {
   optionsItemsPerPage,
   optionsSortBy,
 } from '../constants/DROPDOWN_PARAMS';
-import { getSortProducts } from '../../services/getSortProducts';
+import { getSortedProducts } from '../../services/getSortedProducts';
 import { Loader } from '../shared/Loader';
-import { Reload } from '../shared/Reload';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { Pagination } from './Pagination';
@@ -77,7 +76,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         setProductsLength(getProducts.length);
         setProducts(
           getProducts
-            .sort(getSortProducts(sort || optionsSortBy[0].criteria))
+            .sort(getSortedProducts(sort || optionsSortBy[0].criteria))
             .slice(start - 1, end),
         );
         setDataLoaded(true);
@@ -109,15 +108,14 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   }
 
   function handleSelectPage(value: number) {
+    setDataLoaded(false);
     const newParams = new URLSearchParams(searchParams);
 
     newParams.set('page', value.toString());
     setSearchParams(newParams);
   }
 
-  return error ? (
-    <Reload imgOfError="page-not-found.png" />
-  ) : (
+  return (
     <div className="category-page">
       <div className="category-page__route">
         <Breadcrumbs category={category} />

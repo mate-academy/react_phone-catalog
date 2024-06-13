@@ -57,9 +57,9 @@ export const FavouritesProvider: React.FC<Props> = ({ children }) => {
           setProducts(favProducts);
           setDataLoaded(true);
         })
-        .catch(() => {});
+        .catch(() => {}); // setError
     }
-  }, [favouritesList, products.length]); // fetch
+  }, [favouritesList, products.length]);
 
   const value = useMemo(
     () => ({

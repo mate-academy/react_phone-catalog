@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom';
 import { Picture } from '../../../types/Picture';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { imgsMobile, imgs } from '../../../services/imgsForDevices';
-import { getImages } from '../../../services/getImages';
+import { getImagesForSlider } from '../../../services/getImagesForSlider';
 import { PADDINGS } from '../../constants/PADDINGS';
 import {
   COLUMN_SIZE_FOR_DESCTOP,
@@ -28,7 +28,9 @@ export const PicturesSlider: React.FC = React.memo(() => {
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);
   const [currentSize, setCurrentSize] = useState(windowSize);
-  const [images, setImages] = useState<Picture[]>(getImages(windowSize));
+  const [images, setImages] = useState<Picture[]>(
+    getImagesForSlider(windowSize),
+  );
 
   const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
   const [touchEnd, setTouchEnd] = useState<{ x: number } | null>(null);

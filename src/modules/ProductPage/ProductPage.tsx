@@ -5,7 +5,7 @@ import { client } from '../../api';
 import { Device } from '../../types/Device';
 import { AddBlock } from '../shared/Buttons/AddBlock';
 import { Price } from '../shared/Price';
-import { SpecsList } from '../shared/SpecsList';
+import { SpecsItem } from '../shared/SpecsItem';
 import { DescriptionList } from './DescriptionList';
 import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { Product } from '../../types/Product';
@@ -18,6 +18,7 @@ import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
 import { CartItem } from '../../types/CartItem';
+import { Reload } from '../shared/Reload';
 
 type Specs = {
   [key: string]: string | string[];
@@ -38,10 +39,14 @@ export const ProductPage: React.FC = React.memo(() => {
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
   const [loadedDevice, setLoadedDevice] = useState(false);
+  const [errorLoadedDevice, setErrorLoadedDevice] = useState(false);
   const [updatedDevice, setUpdatedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   const heightPreview = useRef<HTMLDivElement>(null);
+
+  // console.log(pathname);
+  // console.log(nameDevice);
 
   const cartItem: CartItem = {
     itemId: itemId || '',
@@ -54,6 +59,8 @@ export const ProductPage: React.FC = React.memo(() => {
   };
 
   useEffect(() => {
+    setErrorLoadedDevice(false);
+
     if (!device || device.namespaceId !== nameDevice) {
       setLoadedDevice(false);
     }
@@ -64,6 +71,10 @@ export const ProductPage: React.FC = React.memo(() => {
       .get<Device[]>(`api/${category}.json`)
       .then(data => {
         const getDevice = data.find(dev => itemId === dev.id);
+
+        if (!getDevice) {
+          setErrorLoadedDevice(true);
+        }
 
         if (getDevice) {
           const {
@@ -94,9 +105,7 @@ export const ProductPage: React.FC = React.memo(() => {
         setLoadedDevice(true);
         setUpdatedDevice(true);
       })
-      .catch(() => {
-        // console.log('error');
-      });
+      .catch(() => setErrorLoadedDevice(true));
   }, [category, itemId, nameDevice]);
 
   useEffect(() => {
@@ -118,10 +127,12 @@ export const ProductPage: React.FC = React.memo(() => {
         setSuggestedProducts(randomSuggestedProducts);
         setLoadedSuggestedProduct(true);
       })
-      .catch(() => {});
+      .catch(() => {}); // setError
   }, [nameDevice]);
 
-  return (
+  return errorLoadedDevice ? (
+    <Reload imgOfError="product-not-found.png" />
+  ) : (
     <div className="product-page">
       <div className="product-page__route">
         <Breadcrumbs category={category} name={device?.name} />
@@ -189,7 +200,7 @@ export const ProductPage: React.FC = React.memo(() => {
           >
             {shortSpecs &&
               Object.entries(shortSpecs).map(prop => (
-                <SpecsList prop={prop} key={prop[0]} />
+                <SpecsItem prop={prop} key={prop[0]} />
               ))}
           </div>
 
@@ -209,7 +220,7 @@ export const ProductPage: React.FC = React.memo(() => {
             </h3>
             {fullSpecs &&
               Object.entries(fullSpecs).map(
-                prop => prop[1] && <SpecsList prop={prop} key={prop[0]} />,
+                prop => prop[1] && <SpecsItem prop={prop} key={prop[0]} />,
               )}
           </div>
         </div>

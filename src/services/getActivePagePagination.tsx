@@ -1,4 +1,7 @@
-export const getActivePage = (currentPage: number, countPages: number) => {
+export const getActivePagePagination = (
+  currentPage: number,
+  countPages: number,
+) => {
   if (currentPage === 1) {
     return 0;
   }

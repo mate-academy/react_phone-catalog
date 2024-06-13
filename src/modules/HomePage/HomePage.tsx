@@ -28,7 +28,7 @@ export const HomePage = React.memo(() => {
         setProducts(data);
         setDataLoaded(true);
       })
-      .catch(() => {});
+      .catch(() => {}); // setError
   }, []);
 
   const newModels = phones

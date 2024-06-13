@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { getCategoryImgs } from '../../../services/getCategotyImgs';
+import { BASE_URL } from "../../constants/URL's/URL's";
 
 type Props = {
   amountPhones: number;
@@ -10,8 +10,6 @@ type Props = {
 
 export const ShopByCategory: React.FC<Props> = React.memo(
   ({ amountPhones, amountTablets, amountAccessories }) => {
-    const { phones, tablets, accessories } = getCategoryImgs();
-
     return (
       <div className="shop-by-category">
         <h2 className="shop-by-category__title secondary-title">
@@ -26,7 +24,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--mobile-phones"
             >
               <img
-                src={phones}
+                src={`${BASE_URL}img/category-phones-1.png`}
                 alt="mobile phones"
                 className="shop-by-category__item-img
               shop-by-category__item-img--phone"
@@ -46,7 +44,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--tablets"
             >
               <img
-                src={tablets}
+                src={`${BASE_URL}img/category-tablets.png`}
                 alt="tablets"
                 className="shop-by-category__item-img
               shop-by-category__item-img--tablets"
@@ -64,7 +62,7 @@ export const ShopByCategory: React.FC<Props> = React.memo(
             shop-by-category__item--accessories"
             >
               <img
-                src={accessories}
+                src={`${BASE_URL}img/category-accessories.png`}
                 alt="accessories"
                 className="shop-by-category__item-img
               shop-by-category__item-img--accessories"

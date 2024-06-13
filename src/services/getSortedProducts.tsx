@@ -1,6 +1,6 @@
 import { Product } from '../types/Product';
 
-export function getSortProducts(sortParams: string) {
+export function getSortedProducts(sortParams: string) {
   switch (sortParams) {
     case 'title':
       return (a: Product, b: Product) =>

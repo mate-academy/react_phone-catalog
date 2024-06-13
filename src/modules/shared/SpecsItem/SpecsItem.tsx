@@ -4,7 +4,7 @@ type Props = {
   prop: [string, string | string[]];
 };
 
-export const SpecsList: React.FC<Props> = React.memo(({ prop }) => {
+export const SpecsItem: React.FC<Props> = React.memo(({ prop }) => {
   if (prop[0] === 'screen' && typeof prop[1] === 'string') {
     return (
       <div className="spec-item">

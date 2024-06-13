@@ -1,7 +1,11 @@
+/* eslint-disable max-len */
 import React from 'react';
-import { getNumbers } from '../../../services/getNumbers';
-import { getActivePage } from '../../../services/getActivePage';
-import { MoveButton, NumberOrSymbol } from '../../shared/Buttons/MoveButtons';
+import { getNumbersToPagination } from '../../../services/getNumbersToPagination';
+import { getActivePagePagination } from '../../../services/getActivePagePagination';
+import {
+  MoveButton,
+  NumberOrSymbol as Number,
+} from '../../shared/Buttons/MoveButtons';
 
 type Props = {
   total: number;
@@ -41,12 +45,12 @@ export const Pagination: React.FC<Props> = React.memo(
       return Math.min(getFirstItem() + 4, countPages);
     };
 
-    const pages = getNumbers(
+    const pages = getNumbersToPagination(
       getFirstItem() || firstItem,
       getLastItem() || lastItem,
     );
 
-    const pageChange = (page: number) => {
+    const handleChangePage = (page: number) => {
       onPageChange(page);
     };
 
@@ -56,10 +60,10 @@ export const Pagination: React.FC<Props> = React.memo(
 
         <div className="pagination__pages">
           {pages.map((page, i) => (
-            <NumberOrSymbol
+            <Number
               key={page}
-              move={() => pageChange(page)}
-              active={i === getActivePage(currentPage, countPages)}
+              move={() => handleChangePage(page)}
+              active={i === getActivePagePagination(currentPage, countPages)}
               number={page}
             />
           ))}

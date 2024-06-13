@@ -2,7 +2,7 @@
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 import { IconClose } from '../../shared/IconsSVG';
-import { NumberOrSymbol } from '../../shared/Buttons/MoveButtons';
+import { NumberOrSymbol as Symbol } from '../../shared/Buttons/MoveButtons';
 import { ShoppingCartContext } from '../../../store/ShoppingCartContext';
 import { CartItem } from '../../../types/CartItem';
 
@@ -75,13 +75,13 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ cartItem }) => {
               disabled: countItems === 1,
             })}
           >
-            <NumberOrSymbol move={onDecrease} />
+            <Symbol move={onDecrease} />
           </div>
 
           <p className="shopping-item__count-items">{countItems}</p>
 
           <div className="shopping-item__adding">
-            <NumberOrSymbol move={onAdding} />
+            <Symbol move={onAdding} />
           </div>
         </div>
 

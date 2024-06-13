@@ -11,10 +11,6 @@
 
     display: flex;
     gap: 8px;
-
-    & * {
-      transition: none;
-    }
   }
 
   & > :last-child {

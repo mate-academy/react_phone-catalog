@@ -32,7 +32,7 @@ export const ShoppingCart = React.memo(() => {
 
       <h1 className="shopping-cart__title primary-title">Cart</h1>
 
-      {shoppingList.length > 0 && (
+      {shoppingList.length > 0 ? (
         <div className="shopping-cart__container">
           <div className="shopping-cart__list">
             {uniqueShoppingList.map(item => (
@@ -56,10 +56,14 @@ export const ShoppingCart = React.memo(() => {
             </button>
           </div>
         </div>
-      )}
-
-      {shoppingList.length === 0 && (
-        <div className="shopping-cart__empty-cart">Your cart is empty</div>
+      ) : (
+        <div className="shopping-cart__empty">
+          <img
+            src="/img/cart-is-empty.png"
+            alt="Empty cart"
+            className="shopping-cart__empty-img"
+          />
+        </div>
       )}
     </div>
   );

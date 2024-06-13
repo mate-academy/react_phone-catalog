@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { AddBlock } from '../Buttons/AddBlock';
 import { Product } from '../../../types/Product';
 import { Price } from '../Price';
-import { SpecsList } from '../SpecsList';
+import { SpecsItem } from '../SpecsItem';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { scrollToTop } from '../../../services/scrollToTop';
@@ -96,9 +96,9 @@ export const ProductCard: React.FC<Props> = React.memo(
             className="product-card__img"
             style={getHeightImg()}
           />
-        </Link>
 
-        <p className="product-card__title">{name}</p>
+          <p className="product-card__name">{name}</p>
+        </Link>
 
         <div className="product-card__price">
           <Price
@@ -110,7 +110,7 @@ export const ProductCard: React.FC<Props> = React.memo(
 
         <div className="product-card__descr">
           {Object.entries(specs).map(prop => (
-            <SpecsList prop={prop} key={prop[0]} />
+            <SpecsItem prop={prop} key={prop[0]} />
           ))}
         </div>
 
