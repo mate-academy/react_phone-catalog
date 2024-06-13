@@ -55,7 +55,7 @@
   font-weight: bold;
   font-size: 12px;
   line-height: 21px;
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   transition: color 0.3s ease-out;
   position: relative;
   height: 64px;
