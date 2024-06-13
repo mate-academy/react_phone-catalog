@@ -1,0 +1,86 @@
+@import '../../../../App.scss';
+
+.icon {
+  &--logo {
+    width: 96px;
+    height: $header-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      width: 128px;
+      height: $header-height-desktop;
+    }
+
+    img {
+      width: 64px;
+      height: 22px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &--block {
+    border-inline: 1px solid $elements;
+    width: $header-height;
+    height: $header-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    @include on-desktop {
+      width: $header-height-desktop;
+      height: $header-height-desktop;
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--menu {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--nav-menu {
+    display: flex;
+  }
+
+  &--nav-favourites, &--nav-cart {
+    width: 50%;
+    justify-content: center;
+    padding-block: 24px;
+    border-top: 1px solid $elements;
+
+    &:hover {
+      border-bottom: 1px solid $primary;
+    }
+  }
+
+  &--nav-favourites {
+    border-right: 1px solid $elements;
+  }
+
+  &--favourites, &--cart {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+    }
+  }
+}

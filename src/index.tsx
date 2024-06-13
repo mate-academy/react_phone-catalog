@@ -1,4 +1,12 @@
 import { createRoot } from 'react-dom/client';
-import { App } from './App';
+import { HashRouter as Router } from 'react-router-dom';
+import { Root } from './routes/Root';
 
-createRoot(document.getElementById('root') as HTMLElement).render(<App />);
+const App = () => (
+  <Router>
+    <Root />
+  </Router>
+);
+
+createRoot(document.getElementById('root') as HTMLElement)
+  .render(<App />);

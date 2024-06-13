@@ -1,1 +1,32 @@
-// not empty
+@import './styles/fonts.scss';
+@import './styles/utils.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Mont", sans-serif;
+}
+
+.container {
+  @include content-padding-inline;
+}
+
+a {
+  text-decoration: none;
+  font-family: "Mont", sans-serif;
+}
+
+ul, ol, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
