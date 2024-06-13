@@ -95,7 +95,6 @@ const Header = () => {
         <div className={styles.iconLink}>
           <Button
             variant="ghost"
-            size={[64, 64]}
             onClick={toggleTheme}
             className={styles.btnToggleTheme}
           >
