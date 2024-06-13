@@ -14,8 +14,8 @@ import ProductsList from '../shared/ProductsList/ProductsList';
 import { SearchParams } from '../../types/Categories';
 import { getTablets } from '../../api/getProduct';
 import pageOptions from '../../constants/PageOptions';
-import s from './TabletsPage.module.css';
 import sortOptions from '../../constants/sortOptions';
+import styles from './TabletsPage.module.css';
 
 const TabletsPage = () => {
   const [tablets, setTablets] = useState<Product[]>([]);
@@ -129,17 +129,17 @@ const TabletsPage = () => {
         );
 
   return (
-    <div className={s.content}>
+    <div className={styles.content}>
       <div className="container">
         <Breadcrumbs />
 
-        <Heading className={s.title} as="h1">
+        <Heading className={styles.title} as="h1">
           Tablets
         </Heading>
 
         {isLoading && <Loader />}
         {isError && (
-          <div className={s.error}>
+          <div className={styles.error}>
             <p>Failed to load tablets. Please try again later.</p>
             <Button variant="primary" size={[120, 40]} onClick={fetchTablets}>
               Reload
@@ -152,11 +152,11 @@ const TabletsPage = () => {
 
         {!isLoading && filteredTablets.length > 0 && (
           <>
-            <p className={s.quantity}>{tablets.length} models</p>
+            <p className={styles.quantity}>{tablets.length} models</p>
 
-            <div className={s.filter}>
+            <div className={styles.filter}>
               <div>
-                <p className={s.label}>Sort by</p>
+                <p className={styles.label}>Sort by</p>
                 <Dropdown
                   defaultValue={sortOption === 'newest' ? 'Newest' : sortOption}
                   options={sortOptions}
@@ -165,7 +165,7 @@ const TabletsPage = () => {
                 />
               </div>
               <div>
-                <p className={s.label}>Items on page</p>
+                <p className={styles.label}>Items on page</p>
                 <Dropdown
                   defaultValue={perPage === 'all' ? 'All' : perPage.toString()}
                   options={pageOptions}
@@ -179,7 +179,7 @@ const TabletsPage = () => {
               products={paginatedTablets}
               isChangingPage={isChangingPage}
             />
-            <div className={s.pagination}>
+            <div className={styles.pagination}>
               {typeof perPage === 'number' && tablets.length > perPage && (
                 <Pagination
                   total={filteredTablets.length}

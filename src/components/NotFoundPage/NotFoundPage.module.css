@@ -22,15 +22,10 @@
   font-size: 20px;
   text-decoration: none;
   margin-bottom: 50px;
-  background-color: var(--primary-color);
   padding: 8px 16px;
   transition:
     background-color 0.3s ease,
     color 0.3s ease;
-}
-
-.not__found__link:hover {
-  background-color: var(--secondary-color);
 }
 
 @media (max-width: 640px) {

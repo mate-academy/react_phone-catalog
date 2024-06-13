@@ -7,6 +7,6 @@
 }
 
 .quantity {
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   margin-bottom: 40px;
 }
