@@ -2,7 +2,7 @@ import { FC } from 'react';
 import Product from '../../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
 import Skeleton from '../Skeleton/Skeleton';
-import s from './ProductsList.module.css';
+import styles from './ProductsList.module.css';
 
 interface Props {
   products: Product[];
@@ -11,9 +11,9 @@ interface Props {
 
 const ProductsList: FC<Props> = ({ products, isChangingPage }) => {
   return (
-    <div className={s.productList}>
+    <div className={styles.productList}>
       {products.map(product => (
-        <div key={product.id} className={s.item}>
+        <div key={product.id} className={styles.item}>
           {isChangingPage ? <Skeleton /> : <ProductCard product={product} />}
         </div>
       ))}

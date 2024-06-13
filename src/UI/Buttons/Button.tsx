@@ -1,5 +1,6 @@
 /* eslint-disable @typescript-eslint/indent */
 import { ButtonHTMLAttributes, forwardRef } from 'react';
+
 import styles from './Button.module.css';
 
 const buttonVariants = (variant = 'default', isSelected = false) => {

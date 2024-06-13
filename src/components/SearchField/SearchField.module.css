@@ -45,7 +45,7 @@
 .searchFieldInput::placeholder {
   font-size: 14px;
   font-weight: 600;
-  color: var(--icon-color);
+  color: var(--font-color-secondary);
 }
 
 @media (max-width: 767px) {

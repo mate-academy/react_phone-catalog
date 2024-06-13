@@ -3,7 +3,7 @@
 }
 
 .heading {
-  color: var(--primary-color);
+  color: var(--font-color-primary);
   margin-bottom: 32px;
 }
 
@@ -24,13 +24,13 @@
 }
 
 .price {
-  color: var(--primary-color);
+  color: var(--font-color-primary);
   text-align: center;
 }
 
 .descr {
   line-height: 1.5;
-  color: var(--secondary-color);
+  color: var(--font-color-secondary);
   text-align: center;
   padding-bottom: 24px;
   margin-bottom: 24px;

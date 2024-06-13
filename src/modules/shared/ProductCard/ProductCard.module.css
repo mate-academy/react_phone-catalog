@@ -9,6 +9,7 @@
   flex-direction: column;
   justify-content: space-between;
   padding: 32px;
+  background-color: var(--card-bg-color);
 }
 
 .wrapper:hover {
@@ -83,48 +84,6 @@
   gap: 8px;
 }
 
-/* .addBtn {
-  width: 100%;
-  background-color: var(--primary-color);
-  color: var(--white-color);
-  font-size: inherit;
-  line-height: inherit;
-  border: 1px solid transparent;
-  font-family: var(--primary-font);
-  transition: box-shadow 0.3s ease-out;
-}
-
-.addBtnSelected {
-  border-color: var(--elements-color);
-  background-color: var(--white-color);
-  color: var(--green-color);
-}
-
-.addBtn:hover {
-  box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
-} */
-
-/* .favouriteBtn {
-  border: 1px solid var(--icon-color);
-  width: 40px;
-  height: 40px;
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: center;
-  font-family: inherit;
-  background-color: var(--btn-color-bg-default);
-}
-
-.favouriteBtn img {
-  width: 16px;
-  height: 16px;
-}
-
-.favouriteBtn:hover {
-  border: 1px solid var(--primary-color);
-} */
-
 .paramValue {
   text-align: right;
 }
@@ -132,7 +91,7 @@
 .tooltipContent {
   border-radius: 4px;
   padding: 10px 15px;
-  font-size: 15px;
+  font-size: 12px;
   line-height: 1;
   background-color: var(--button-bg);
   user-select: none;
@@ -141,22 +100,6 @@
   animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
   z-index: 1;
   will-change: transform, opacity;
-}
-
-.tooltipContent[data-state='delayed-open'][data-side='top'] {
-  animation-name: slideDownAndFade;
-}
-
-.tooltipContent[data-state='delayed-open'][data-side='right'] {
-  animation-name: slideLeftAndFade;
-}
-
-.tooltipContent[data-state='delayed-open'][data-side='bottom'] {
-  animation-name: slideUpAndFade;
-}
-
-.tooltipContent[data-state='delayed-open'][data-side='left'] {
-  animation-name: slideRightAndFade;
 }
 
 .tooltipArrow {
