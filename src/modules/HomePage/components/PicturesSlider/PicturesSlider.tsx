@@ -2,31 +2,50 @@ import { GoChevronLeft, GoChevronRight } from 'react-icons/go';
 import { useCallback, useEffect, useRef, useState } from 'react';
 
 import { Link } from 'react-router-dom';
-import styles from './PicturesSlider.module.css';
+import s from './PicturesSlider.module.css';
+import useDarkThemeStore from '../../../../store/darkThemeStore';
 
-const slides = [
-  { url: 'img/banner-phones.png', id: 1, path: 'phones' },
-  { url: 'img/banner-tablets.png', id: 2, path: 'tablets' },
-  { url: 'img/banner-accessories.png', id: 3, path: 'accessories' },
-];
+import styles from './PicturesSlider.module.css';
 
 const PicturesSlider = () => {
   const [currentSlide, setCurrentSlide] = useState(0);
   const touchStartX = useRef(0);
   const touchEndX = useRef(0);
+  const { theme } = useDarkThemeStore();
+
+  const slides = [
+    {
+      url: `img/${theme === 'dark' ? 'mainSliderImg/Iphone_dark.png' : 'mainSliderImg/Iphone_light.png'}`,
+      urlMobile: `img/${theme === 'dark' ? 'mainSliderImg/Iphone_dark_mobile.png' : 'mainSliderImg/Iphone_light_mobile.png'}`,
+      id: 1,
+      path: 'phones',
+    },
+    {
+      url: `img/${theme === 'dark' ? 'mainSliderImg/Tablets_dark.png' : 'mainSliderImg/Tablets_light.png'}`,
+      urlMobile: `img/${theme === 'dark' ? 'mainSliderImg/Tablets_dark_mobile.png' : 'mainSliderImg/Tablets_light_mobile.png'}`,
+      id: 2,
+      path: 'tablets',
+    },
+    {
+      url: `img/${theme === 'dark' ? 'mainSliderImg/Accessories_dark.png' : 'mainSliderImg/Accessories_light.png'}`,
+      urlMobile: `img/${theme === 'dark' ? 'mainSliderImg/Accessories_dark_mobile.png' : 'mainSliderImg/Accessories_light_mobile.png'}`,
+      id: 3,
+      path: 'accessories',
+    },
+  ];
 
   const handleNextSlide = useCallback(() => {
     setCurrentSlide(prevSlide => (prevSlide + 1) % slides.length);
-  }, []);
+  }, [slides.length]);
 
   const handlePrevSlide = useCallback(() => {
     setCurrentSlide(prevSlide =>
       prevSlide === 0 ? slides.length - 1 : prevSlide - 1,
     );
-  }, []);
+  }, [slides.length]);
 
   useEffect(() => {
-    const intervalId = setInterval(handleNextSlide, 5000);
+    const intervalId = setInterval(handleNextSlide, 10000);
 
     return () => clearInterval(intervalId);
   }, [handleNextSlide]);
@@ -69,7 +88,10 @@ const PicturesSlider = () => {
                 key={slide.id}
                 className={`${styles.slide} ${index === currentSlide ? styles.activeSlide : ''}`}
               >
-                <img src={slide.url} alt={`Slide ${index + 1}`} />
+                <picture>
+                  <source media="(min-width:639px)" srcSet={slide.url}></source>
+                  <img src={slide.urlMobile} alt={`Slide ${index + 1}`} />
+                </picture>
               </Link>
             ))}
           </div>
