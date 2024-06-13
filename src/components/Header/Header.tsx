@@ -87,16 +87,21 @@ const Header = () => {
       </div>
 
       <div className={styles.containerRight}>
-        {isSearchShown && <SearchField />}
-
-        <Button
-          variant="ghost"
-          size={[64, 64]}
-          onClick={toggleTheme}
-          className={styles.btnToggleTheme}
-        >
-          {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
-        </Button>
+        {isSearchShown && (
+          <div className={styles.iconLink}>
+            <SearchField />
+          </div>
+        )}
+        <div className={styles.iconLink}>
+          <Button
+            variant="ghost"
+            size={[64, 64]}
+            onClick={toggleTheme}
+            className={styles.btnToggleTheme}
+          >
+            {theme === 'dark' ? <LuSun size={18} /> : <PiMoonBold size={18} />}
+          </Button>
+        </div>
 
         <NavLink to={ROUTES.FAVORITES} className={getIconLinkStatus}>
           <Button size={[16, 16]}>
