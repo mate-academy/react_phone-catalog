@@ -20,8 +20,8 @@
   margin-bottom: 16px;
 }
 
-h2 {
-  margin-bottom: 32px;
+.titleH4 {
+  margin-bottom: 16px;
 }
 
 .mainInfoContainer {
@@ -73,7 +73,7 @@ h2 {
 }
 
 .buttonContainer::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -16px;
   left: 0;
@@ -90,7 +90,7 @@ h2 {
 }
 
 .underline::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: -16px;
   left: 0;
@@ -103,7 +103,7 @@ h2 {
   margin-bottom: 32px;
 }
 
-span {
+.descr {
   font-weight: 600;
   font-size: 12px;
   line-height: 21px;
@@ -216,6 +216,10 @@ span {
   margin-bottom: 32px;
 }
 
+.titleH2 {
+  margin-bottom: 40px;
+}
+
 /* Media */
 
 @media (min-width: 640px) {
@@ -226,10 +230,6 @@ span {
 
   .breadcrumbs {
     margin-bottom: 20px;
-  }
-
-  h2 {
-    margin-bottom: 40px;
   }
 
   .mainInfoContainer {
@@ -246,6 +246,7 @@ span {
   .photoContainer {
     flex-direction: row;
     align-items: flex-start;
+    width: 100%;
   }
 
   .smallPhotosContainer {
@@ -276,7 +277,7 @@ span {
     grid-column: span 2;
   }
 
-  h2 {
+  .titleH2 {
     grid-column: span 2;
   }
 

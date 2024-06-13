@@ -21,25 +21,7 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
     | 'pagination';
   isSelected?: boolean;
   size?: string | [number, number];
-  color?:
-    | 'black'
-    | 'green'
-    | 'yellow'
-    | 'white'
-    | 'purple'
-    | 'red'
-    | 'spacegray' // немає
-    | 'midnightgreen' // немає
-    | 'gold'
-    | 'silver'
-    | 'rosegold' // немає
-    | 'coral'
-    | 'midnight' // немає
-    | 'spaceblack' // немає
-    | 'blue'
-    | 'pink'
-    | 'graphite' // немає
-    | 'sierrablue'; // немає
+  color?: string;
 }
 
 const unsupportedColorsHexMapping: { [key: string]: string } = {
@@ -67,15 +49,14 @@ const Button = forwardRef<HTMLButtonElement, ButtonProps>(
   ) => {
     const classes = buttonVariants(variant, isSelected);
 
-    const buttonColor: { 'background-color'?: string } = {};
+    const buttonColor: { backgroundColor?: string } = {};
     let buttonSize: { width?: string; height?: string } = {};
 
     function setColor(colorToCheck: string) {
       if (colorToCheck in unsupportedColorsHexMapping) {
-        buttonColor['background-color'] =
-          unsupportedColorsHexMapping[colorToCheck];
+        buttonColor.backgroundColor = unsupportedColorsHexMapping[colorToCheck];
       } else {
-        buttonColor['background-color'] = colorToCheck;
+        buttonColor.backgroundColor = colorToCheck;
       }
     }
 

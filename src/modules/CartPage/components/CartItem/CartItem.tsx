@@ -25,7 +25,9 @@ const CartItem: FC<Props> = ({
   onMinus,
 }) => {
   const { images, name, id, priceRegular, priceDiscount } = product;
-  const pathToDetailInfo = ROUTES.PRODUCT_DETAIL.replace(':productId', id);
+
+  const pathToDetailInfo =
+    `/${product.category}/` + ROUTES.PRODUCT_DETAIL.replace(':productId', id);
 
   return (
     <div className={styles.cartItem}>
