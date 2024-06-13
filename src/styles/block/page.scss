@@ -1,4 +1,14 @@
-:root {
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 800;
+  scroll-behavior: smooth;
+}
+
+html {
   --background-color: #fff;
   --text-color: #313237;
   --text-nav-color: #89939a;
@@ -12,7 +22,6 @@
   --background-color-phoneCard: #ffffff;
   --background-color-phoneCardHover: #313237;
   --background-color-button-cart: #313237;
-
 }
 
 .page {
@@ -28,17 +37,6 @@
   --background-color-button-fav: #323542;
   --background-color-phoneCard: #161827;
   --background-color-phoneCardHover: #a378ff;
-  background-color: var(--background-color);
-  color: var(--text-color);
-
-}
-
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-  font-family: Mont;
-  font-size: 12px;
-  font-weight: 800;
-  
+  color: $text-color;
+  background-color: $background-color;
 }

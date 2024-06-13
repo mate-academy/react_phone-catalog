@@ -8,7 +8,7 @@
   }
   &__item {
     @include onScale;
-    @include transitionPage;
+    @extend %transitionPage;
   }
 
   &__item:not(:last-child) {

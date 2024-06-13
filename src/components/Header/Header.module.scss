@@ -6,9 +6,8 @@
   top: 0;
   z-index: 1;
   background-color: $background-color;
-  // height: 100vh;
+  @extend %transitionPage;
 
-  // @include transitionPage;
   &__top {
     display: flex;
     align-items: center;

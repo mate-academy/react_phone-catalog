@@ -8,7 +8,6 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
-
 }
 
 .theme__switch {
@@ -38,11 +37,11 @@
 
 .theme__checkbox:checked + .theme__switch::after {
   transform: translateX(137%);
-  @include transitionPage;
+  @extend %transitionPage;
 }
 
 .theme__checkbox + .theme__switch::after {
-  @include transitionPage;
+  @extend %transitionPage;
 }
 
 .theme__checkbox {

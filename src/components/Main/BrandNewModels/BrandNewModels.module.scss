@@ -46,6 +46,7 @@
     display: grid;
     grid-template-columns: repeat($grid-columns-desctop, 1fr);
     column-gap: 16px;
+    @extend %transitionPage;
   }
 
   &__cardsList {

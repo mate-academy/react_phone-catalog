@@ -10,14 +10,18 @@
   }
 }
 
-@mixin transitionPage {
-  transition: all 0.4s;
-}
+// @mixin transitionPage {
+//   transition: all 0.4s;
+// }
 
 @mixin onScale {
   &:hover {
     transform: scale(1.1);
   }
+}
+
+%transitionPage {
+  transition: all 0.4s;
 }
 
 %lightThemeHoverButton {

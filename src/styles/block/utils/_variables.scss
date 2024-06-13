@@ -1,23 +1,27 @@
-$background-color: var(--background-color);
 $text-color: var(--text-color);
 $text-nav-color: var(--text-nav-color);
+$text-phone-card-color: var(--text-phone-card-color);
 $border-color: var(--border-color);
 $button-color: var(--button-color);
 $button-slider-color: var(--button-slider-color);
 $button-active-slider-color: var(--button-active-slider-color);
-$tablet-max-width: 1199px;
-$phone-max-width: 639px;
-$onDesctop-container-padding: 32px;
-$onTablet-container-padding: 24px;
-$onPhone-container-padding: 16px;
+$background-color: var(--background-color);
 $background-hover-button: #4a4d58;
 $border-hover-button: #313237;
-$text-phone-card-color: var(--text-phone-card-color);
 $background-color-phoneCard: var(--background-color-button-cart);
 $background-color-button-fav: var(--background-color-button-fav);
 $background-color-phoneCard: var(--background-color-phoneCard);
 $background-color-phoneCardHover: var(--background-color-phoneCardHover);
 $background-color-button-cart: var(--background-color-button-cart);
+
+
+$tablet-max-width: 1199px;
+$phone-max-width: 639px;
+
+$onDesctop-container-padding: 32px;
+$onTablet-container-padding: 24px;
+$onPhone-container-padding: 16px;
+
 $grid-columns-desctop: 24;
 $grid-columns-tablet: 12;
 $grid-columns-phone: 4;
