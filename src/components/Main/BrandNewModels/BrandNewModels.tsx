@@ -19,32 +19,32 @@ export const BrandNewModels = () => {
       })}
     >
       <div className={style.brandNewModels__slider}>
-        <div className={style.brandNewModels__nav}>
-          <h2 className={style.brandNewModels__title}>{t('newModels')}</h2>
-          <div className={classNames(style.brandNewModels__rightSide)}>
-            <button className={style.brandNewModels__buttons}>
+        <div className={style.brandNewModels__cardHeader}>
+          <h2 className={style.brandNewModels__cardTitle}>{t('newModels')}</h2>
+          <div className={classNames(style.brandNewModels__cardNavBtns)}>
+            <button className={style.brandNewModels__icons}>
               <ArrowLeft />
             </button>
-            <button className={style.brandNewModels__buttons}>
+            <button className={style.brandNewModels__icons}>
               <ArrowRight />
             </button>
           </div>
         </div>
 
-        <div className={style.brandNewModels__wrapper}>
-          <ul className={style.brandNewModels__phonesList}>
+        <div className={style.brandNewModels__cardContainer}>
+          <ul className={style.brandNewModels__cardsList}>
             {products.map(product => (
-              <li className={style.brandNewModels__phoneItem} key={product.id}>
-                <a href="#" className={style.brandNewModels__imgWrap}>
+              <li className={style.brandNewModels__card} key={product.id}>
+                <a href="#" className={style.brandNewModels__cardLink}>
                   <img
                     src={product.image}
                     alt={product.name}
-                    className={style.brandNewModels__imgPhone}
+                    className={style.brandNewModels__cardImg}
                   />
                 </a>
                 <div className={style.brandNewModels__cardContent}>
-                  <div className={style.brandNewModels__containerForPhoneName}>
-                    <h2 className={style.brandNewModels__phoneName}>
+                  <div className={style.brandNewModels__containerCardName}>
+                    <h2 className={style.brandNewModels__cardName}>
                       {product.name}
                     </h2>
                   </div>
@@ -52,37 +52,31 @@ export const BrandNewModels = () => {
                   <p className={style.brandNewModels__phonePrice}>
                     &#36;{product.price}
                   </p>
-                  <p className={style.brandNewModels__line} />
+                  <span className={style.brandNewModels__cardLine} />
 
-                  <div className={style.brandNewModels__info}>
-                    <p className={style.brandNewModels__valueName}>
-                      {t('screen')}
-                    </p>
+                  <div className={style.brandNewModels__cardDescription}>
+                    <p className={style.brandNewModels__key}>{t('screen')}</p>
                     <p className={style.brandNewModels__value}>
                       {product.screen}
                     </p>
                   </div>
-                  <div className={style.brandNewModels__info}>
-                    <p className={style.brandNewModels__valueName}>
-                      {t('capacity')}
-                    </p>
+                  <div className={style.brandNewModels__cardDescription}>
+                    <p className={style.brandNewModels__key}>{t('capacity')}</p>
                     <p className={style.brandNewModels__value}>
                       {product.capacity}
                     </p>
                   </div>
-                  <div className={style.brandNewModels__info}>
-                    <p className={style.brandNewModels__valueName}>
-                      {t('ram')}
-                    </p>
+                  <div className={style.brandNewModels__cardDescription}>
+                    <p className={style.brandNewModels__key}>{t('ram')}</p>
                     <p className={style.brandNewModels__value}>{product.ram}</p>
                   </div>
                 </div>
 
-                <div className={style.brandNewModels__wrapButtons}>
-                  <button className={style.brandNewModels__addToCart}>
+                <div className={style.brandNewModels__cardActions}>
+                  <button className={style.brandNewModels__addToCard}>
                     {t('addToCart')}
                   </button>
-                  <button className={style.brandNewModels__favBtn}>
+                  <button className={style.brandNewModels__CardfavBtn}>
                     <LogoFavorites />
                   </button>
                 </div>

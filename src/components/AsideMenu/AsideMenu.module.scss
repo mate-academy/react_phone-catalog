@@ -4,6 +4,7 @@
 .menu {
   overflow: auto;
   position: fixed;
+  z-index: 1;
   top: 0;
   left: 0;
   right: 0;
@@ -13,6 +14,8 @@
   font-size: 18px;
   scroll-behavior: smooth;
   height: 100vh;
+  transition: transform 0.4s ease-in-out;
+  transform: translateY(-100%);
 
   &__top {
     display: flex;
@@ -102,6 +105,7 @@
   z-index: 1;
   opacity: 1;
   pointer-events: all;
+  transform: translateY(0);
 }
 
 @include onTablet {

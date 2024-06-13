@@ -2,7 +2,10 @@
 @import '../../styles/block/utils/mixins';
 
 .main {
+  // background-color: $background-color;
+
   &__content {
+    background-color: $background-color;
     max-width: 1136px;
 
     margin: 0 auto;

@@ -11,16 +11,19 @@ export const Main = () => {
 
   return (
     <main className={style.main}>
-      <div className={style.main__content}>
-        <h1 className={style.main__title}>{t('welcome')}</h1>
+      {!openBurger && (
+        <div className={style.main__content}>
+          <h1 className={style.main__title}>{t('welcome')}</h1>
 
-        <section className={style.main__heroSlider}>
-          {!openBurger && <Slider />}
-        </section>
-        <div className={style.main__container}>
-          <BrandNewModels />
+          <section className={style.main__heroSlider}>
+            <Slider />
+          </section>
+
+          <div className={style.main__container}>
+            <BrandNewModels />
+          </div>
         </div>
-      </div>
+      )}
     </main>
   );
 };
