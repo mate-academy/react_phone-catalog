@@ -1,20 +1,20 @@
 import { Link, NavLink, useLocation } from 'react-router-dom';
 
-import Button from '../../UI/Buttons/Button';
+import classNames from 'classnames';
+import { useState } from 'react';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import { LuSun } from 'react-icons/lu';
-import { MobileMenu } from '../BurgerMenu';
 import { PiMoonBold } from 'react-icons/pi';
-import { ROUTES } from '../../constants/ROUTES';
 import { RxHamburgerMenu } from 'react-icons/rx';
+import Button from '../../../UI/Buttons/Button';
+import { ROUTES } from '../../../constants/ROUTES';
+import { useCartStore } from '../../../store/cartStore';
+import useDarkThemeStore from '../../../store/darkThemeStore';
+import { useFavoritesStore } from '../../../store/favoritesStore';
+import { MobileMenu } from '../BurgerMenu';
 import SearchField from '../SearchField/SearchField';
-import classNames from 'classnames';
 import styles from './Header.module.css';
-import { useCartStore } from '../../store/cartStore';
-import useDarkThemeStore from '../../store/darkThemeStore';
-import { useFavoritesStore } from '../../store/favoritesStore';
-import { useState } from 'react';
 
 const Header = () => {
   const [isMenuShown, setIsMenuShown] = useState(false);

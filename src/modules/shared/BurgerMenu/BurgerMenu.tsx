@@ -1,16 +1,16 @@
-import { Link, NavLink } from 'react-router-dom';
 import React, { useEffect } from 'react';
+import { Link, NavLink } from 'react-router-dom';
 
-import Button from '../../UI/Buttons/Button';
+import classNames from 'classnames';
 import { FaRegHeart } from 'react-icons/fa';
 import { FiShoppingBag } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5';
-import { ROUTES } from '../../constants/ROUTES';
-import classNames from 'classnames';
+import Button from '../../../UI/Buttons/Button';
+import { ROUTES } from '../../../constants/ROUTES';
+import { useCartStore } from '../../../store/cartStore';
+import useDarkThemeStore from '../../../store/darkThemeStore';
+import { useFavoritesStore } from '../../../store/favoritesStore';
 import styles from './BurgerMenu.module.css';
-import { useCartStore } from '../../store/cartStore';
-import useDarkThemeStore from '../../store/darkThemeStore';
-import { useFavoritesStore } from '../../store/favoritesStore';
 
 type Props = {
   isMenuShown: boolean;

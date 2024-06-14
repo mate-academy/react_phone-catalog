@@ -9,8 +9,8 @@
   background-image: url(../../../public/img/pageNotFound/404-error-template-flat-style.png);
   background-repeat: no-repeat;
   background-position: center;
-  background-size: contain; /* Змінено на contain для кращої адаптивності */
-  padding: 20px; /* Додано відступи для зручного розміщення контенту */
+  background-size: contain;
+  padding: 20px;
   height: 100vh;
 }
 
@@ -31,7 +31,7 @@
 
 @media (max-width: 1200px) {
   .not_found_container {
-    background-size: 70%; /* Зменшено розмір зображення для середніх екранів */
+    background-size: 70%;
   }
 
   .not__found__title {
@@ -45,7 +45,7 @@
 
 @media (max-width: 640px) {
   .not_found_container {
-    background-size: 100%; /* Зменшено розмір зображення для малих екранів */
+    background-size: 100%;
   }
 
   .not__found__title {

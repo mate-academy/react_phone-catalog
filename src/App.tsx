@@ -2,16 +2,17 @@
 import './App.css';
 
 import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
+
+import Layout from './Layout/Layout';
+import { ROUTES } from './constants/ROUTES';
 import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
 import CartPage from './modules/CartPage/CartPage';
 import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
 import HomePage from './modules/HomePage/HomePage';
-import NotFoundPage from './components/NotFoundPage/NotFoundPage';
+import NotFoundPage from './modules/NotFoundPage/NotFoundPage';
 import PhonesPage from './modules/PhonesPage/PhonesPage';
 import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
-import { ROUTES } from './constants/ROUTES';
 import TabletsPage from './modules/TabletsPage/TabletsPage';
-import Layout from './Layout/Layout';
 
 const router = createHashRouter([
   {
@@ -31,7 +32,6 @@ const router = createHashRouter([
           {
             path: ROUTES.PRODUCT_DETAIL,
             element: <ProductDetailsPage />,
-            errorElement: <NotFoundPage />,
           },
         ],
       },
@@ -42,7 +42,6 @@ const router = createHashRouter([
           {
             path: ROUTES.PRODUCT_DETAIL,
             element: <ProductDetailsPage />,
-            errorElement: <NotFoundPage />,
           },
         ],
       },
@@ -53,7 +52,6 @@ const router = createHashRouter([
           {
             path: ROUTES.PRODUCT_DETAIL,
             element: <ProductDetailsPage />,
-            errorElement: <NotFoundPage />,
           },
         ],
       },
