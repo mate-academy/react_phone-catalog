@@ -44,7 +44,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     getProducts().then(newProducts => {
       setProducts(() => newProducts);
     });
-  }, [setProducts]);
+  });
 
   const value = useMemo(() => {
     return {
