@@ -77,7 +77,7 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
     );
 
     if (itemToAdd) {
-      if (cart.some(item => item.id === itemToAdd.id)) {
+      if (favourites.some(item => item.id === itemToAdd.id)) {
         // Об'єкт вже є в корзині, видаляємо його
         setFavourites(prevFavourites =>
           prevFavourites.filter(item => item.id !== itemToAdd.id),
