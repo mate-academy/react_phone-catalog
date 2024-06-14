@@ -1,10 +1,10 @@
 import { Link, useLocation } from 'react-router-dom';
 
+import classNames from 'classnames';
 import { FC } from 'react';
 import { FiHome } from 'react-icons/fi';
 import { GoChevronLeft } from 'react-icons/go';
 import { ROUTES } from '../../../constants/ROUTES';
-import classNames from 'classnames';
 import styles from './Breadcrumbs.module.css';
 
 interface Props {

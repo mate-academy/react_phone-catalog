@@ -1,16 +1,20 @@
 /* eslint-disable @typescript-eslint/indent */
 import { FC, useCallback, useEffect, useState } from 'react';
+
 import { useNavigate, useSearchParams } from 'react-router-dom';
 
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Button from '../../UI/Buttons/Button';
 import Dropdown from '../../UI/Dropdown/Dropdown';
 import Heading from '../../UI/Heading/Heading';
+
+import SearchParams from '../../types/Categories';
+import Product from '../../types/Product';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
+
 import Loader from '../shared/Loader/Loader';
 import Pagination from '../shared/Pagination/Pagination';
-import Product from '../../types/Product';
 import ProductsList from '../shared/ProductsList/ProductsList';
-import { SearchParams } from '../../types/Categories';
+
 import styles from './ProductPage.module.css';
 
 const pageOptions = [
