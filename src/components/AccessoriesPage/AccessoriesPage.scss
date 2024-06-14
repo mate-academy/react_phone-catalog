@@ -1,0 +1,194 @@
+@import '../../styles/utils';
+
+.product-page {
+  padding-top: 24px;
+  max-width: 1136px;
+  margin: 0 auto;
+  flex: 1 1 auto;
+
+  @include content-padding-inline;
+
+  &__bread-crumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__number-of-models {
+    font-weight: 600;
+    color: $second-text-color;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  &__action {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__action-name {
+    font-size: 12px;
+    font-weight: 600;
+    color: $second-text-color;
+  }
+
+  &__pagination-buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    padding-bottom: 64px;
+
+    @include on-desktop {
+      padding-bottom: 80px;
+    }
+  }
+
+  &__page-buttons {
+    width: 152px;
+    overflow: hidden;
+  }
+
+  &__page-buttons-list {
+    display: flex;
+    gap: 8px;
+    transition: transform 0.3s;
+
+    & li {
+      min-width: 32px;
+    }
+  }
+}
+
+.drop-down {
+  position: relative;
+
+  &__sort-trigger {
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid $icons-color;
+    padding: 10px 0 9px 12px;
+    background-color: $white-color;
+    text-align-last: left;
+    min-width: 136px;
+
+    &:hover {
+      border-color: $second-text-color;
+    }
+
+    &:focus {
+      border-color: $main-text-color;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: url('../../../public/images/icons/arrow-down.svg');
+      width: 16px;
+      height: 16px;
+      top: 30%;
+      right: 12px;
+      z-index: 10;
+      transition: all 0.3s ease 0s;
+    }
+
+    &--rotate-arrow::before {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__per-page-trigger {
+    position: relative;
+    cursor: pointer;
+    border-radius: 8px;
+    border: 1px solid $icons-color;
+    padding: 10px 0 9px 12px;
+    background-color: $white-color;
+    text-align-last: left;
+    min-width: 136px;
+
+    &:hover {
+      border-color: $second-text-color;
+    }
+
+    &:focus {
+      border-color: $main-text-color;
+    }
+
+    &::before {
+      position: absolute;
+      content: '';
+      background: url('../../../public/images/icons/arrow-down.svg');
+      width: 16px;
+      height: 16px;
+      top: 30%;
+      right: 12px;
+      z-index: 10;
+      transition: all 0.3s ease 0s;
+    }
+
+    &--rotate-arrow::before {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__content {
+    display: none;
+    width: 100%;
+    background-color: $white-color;
+    position: absolute;
+
+    border-radius: 8px;
+    border: 1px solid $elements-color;
+    padding-block: 8px;
+    transform: translateY(4px);
+    z-index: 10;
+
+    &--visible {
+      display: block;
+    }
+  }
+
+  &__list {
+    & li {
+      font-weight: 500;
+      color: $second-text-color;
+      border-radius: 8px;
+      padding: 6px 0 6px 12px;
+      cursor: pointer;
+      transition: all 0.3s;
+
+      &:hover {
+        color: $main-text-color;
+        background-color: $bg-color;
+      }
+    }
+  }
+}
+
+.error-page {
+  text-align: center;
+  flex: 1 1 auto;
+  &__message {
+    padding-top: 50px;
+    font-size: 20px;
+    margin-bottom: 15px;
+  }
+}

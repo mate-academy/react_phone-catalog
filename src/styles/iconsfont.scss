@@ -1,0 +1,80 @@
+@font-face {
+  font-family: icons;
+  src:
+    url('../fonts/icons.ttf?vc1lhj') format('truetype'),
+    url('../fonts/icons.woff?vc1lhj') format('woff'),
+    url('../fonts/icons.svg?vc1lhj#icons') format('svg');
+  font-weight: normal;
+  font-style: normal;
+  font-display: block;
+}
+
+[class^='icon-']::before,
+[class*=' icon-']::before {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: icons, sans-serif;
+  speak: never;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  transition: all $transition-duration;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-arrow-down::before {
+  content: '\e900';
+}
+
+.icon-arrow-left::before {
+  content: '\e901';
+}
+
+.icon-arrow-right::before {
+  content: '\e902';
+}
+
+.icon-arrow-up::before {
+  content: '\e903';
+}
+
+.icon-cart::before {
+  content: '\e904';
+}
+
+.icon-close::before {
+  content: '\e905';
+}
+
+.icon-favorites::before {
+  content: '\e906';
+}
+
+.icon-favorites-filled::before {
+  content: '\e907';
+  color: $pink-color;
+}
+
+.icon-home::before {
+  content: '\e908';
+}
+
+.icon-menu::before {
+  content: '\e909';
+}
+
+.icon-minus::before {
+  content: '\e90a';
+}
+
+.icon-plus::before {
+  content: '\e90b';
+}
+
+.icon-search::before {
+  content: '\e90c';
+}

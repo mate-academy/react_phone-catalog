@@ -1,1 +1,363 @@
-// not empty
+@import './styles/reset';
+@import './styles/utils';
+@import './styles/fonts';
+@import './styles/iconsfont';
+
+.app {
+  position: relative;
+  font-family: $main-font-family;
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 150%;
+  background-color: $bg-color;
+  color: $main-text-color;
+  min-width: 320px;
+
+  &--dark-theme {
+    background-color: $dark-bg-color;
+    color: $bg-color;
+  }
+
+  &__brand-new-models {
+    margin-bottom: 80px;
+  }
+}
+
+body {
+  position: relative;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  place-items: stretch, stretch;
+  min-height: 100vh;
+}
+
+.page {
+  flex: 1 1 auto;
+}
+
+.title {
+  font-size: 22px;
+  line-height: 140%;
+  font-weight: 800;
+  text-align-last: left;
+
+  @include on-tablet {
+    font-size: 32px;
+  }
+
+  &--big {
+    font-size: 32px;
+    line-height: 130%;
+    letter-spacing: -1%;
+
+    @include on-tablet {
+      font-size: 48px;
+    }
+  }
+
+  &--small {
+    font-size: 20px;
+    line-height: 130%;
+    font-weight: 800;
+  }
+}
+
+.menu-link {
+  position: relative;
+  display: inline-block;
+  font-family: $main-font-family;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 130%;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: $second-text-color;
+
+  @include hover(color, $main-text-color);
+
+  &::after {
+    display: block;
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    background-color: $main-text-color;
+    width: 0;
+    height: 3px;
+    transition: all $transition-duration;
+
+    @include on-desktop {
+      bottom: -23px;
+    }
+  }
+
+  &--burger {
+    &::after {
+      display: block;
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      background-color: $main-text-color;
+      width: 0;
+      height: 3px;
+      transition: all $transition-duration;
+    }
+  }
+
+  &--active {
+    color: $main-text-color;
+
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &--dark-theme {
+    @include hover(color, $bg-color);
+
+    &::after {
+      background-color: $bg-color;
+    }
+  }
+
+  &--dark-theme-active {
+    color: $bg-color;
+    &::after {
+      width: 100%;
+    }
+  }
+
+  &:hover {
+    &::after {
+      width: 100%;
+    }
+  }
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid $icons-color;
+  border-radius: 48px;
+  width: 32px;
+  height: 32px;
+  background-color: transparent;
+  cursor: pointer;
+
+  @include hover(border-color, $main-text-color);
+
+  &--dark-theme {
+    @include hover(border-color, $bg-color);
+
+    &::before {
+      color: $bg-color;
+    }
+  }
+
+  &::before {
+    font-size: 16px;
+  }
+
+  &--disabled {
+    cursor: not-allowed;
+    border-color: $elements-color;
+
+    @include hover(border-color, $elements-color);
+
+    &::before {
+      color: $elements-color;
+    }
+  }
+
+  &--dark-theme-disabled {
+    cursor: not-allowed;
+    border-color: $gray-color;
+
+    @include hover(border-color, $gray-color);
+
+    &::before {
+      color: $gray-color;
+    }
+  }
+
+  &--selected {
+    border-color: $elements-color;
+  }
+
+  &--page-selected {
+    background-color: $main-text-color;
+    color: $white-color;
+  }
+}
+
+.add-to-cart-button {
+  cursor: pointer;
+  background-color: $blue-color;
+  color: $white-color;
+  padding-block: 9.5px;
+  border-radius: 8px;
+  text-align: center;
+  font-weight: 700;
+  border: 1px solid $blue-color;
+  min-width: 100px;
+  max-width: 100%;
+  flex: 1 1 auto;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &--selected {
+    border-color: $elements-color;
+    background-color: $white-color;
+    color: $blue-color;
+  }
+}
+
+.bread-crumbs {
+  display: flex;
+  place-content: center, flex-start;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &__home-link {
+    font-size: 16px;
+    color: $main-text-color;
+
+    &--dark-theme {
+      color: $bg-color;
+    }
+  }
+
+  &__link {
+    &--selected {
+      width: 400px; /* Need to specify a width (can be any unit). overflow: hidden does nothing unless the width of .title is less than the width of the containing content */
+      overflow: hidden; /* to hide anything that doesn't fit in the containing element. */
+      white-space: nowrap; /* to make sure the line doesn't break when it is longer than the containing div. */
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      font-size: 16px;
+      color: $icons-color;
+    }
+  }
+}
+
+.back-nav {
+  display: flex;
+  gap: 4px;
+  font-size: 12px;
+  font-weight: 600;
+
+  &__arrow {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &::before {
+      font-size: 16px;
+    }
+  }
+
+  &__link {
+    color: $second-text-color;
+    align-self: flex-end;
+  }
+}
+
+.actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: stretch;
+
+  &__add-to-cart-button {
+    align-self: stretch;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.product-info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+
+  &--short {
+    font-size: 12px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text {
+    font-weight: 500;
+    color: $second-text-color;
+  }
+
+  &__value {
+    font-weight: 600;
+  }
+}
+
+.theme-switcher {
+  position: relative;
+  margin-right: 15px;
+  align-self: center;
+  width: 50px;
+  height: 25px;
+  border-radius: 20px;
+  background-color: $dark-bg-color;
+
+  &::before {
+    position: absolute;
+    display: block;
+    content: '';
+    top: 2.5px;
+    left: 5px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background-color: $bg-color;
+    transition: all 0.3s ease 0s;
+  }
+
+  &--dark-theme {
+    background-color: $bg-color;
+
+    &::before {
+      background-color: $dark-bg-color;
+      transform: translateX(20px);
+    }
+  }
+}
+
+.query-input {
+  max-width: 150px;
+  outline: none;
+  border: 1px solid $icons-color;
+  border-radius: 4px;
+  padding: 3px;
+  font-size: 12px;
+
+  @include hover(border-color, $second-text-color);
+
+  &:focus {
+    border: 1px solid $main-text-color;
+  }
+}

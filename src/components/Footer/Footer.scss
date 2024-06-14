@@ -1,0 +1,87 @@
+@import '../../styles/utils';
+
+.footer {
+  border-top: 1px solid $elements-color;
+  background-color: $white-color;
+  scroll-behavior: smooth;
+
+  &--dark-theme {
+    background-color: $dark-bg-color;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+    max-width: 1136px;
+    margin: 0 auto;
+
+    @include content-padding-inline;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  &__logo {
+    display: flex;
+  }
+
+  &__logo-image {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__nav {
+    flex-basis: 33%;
+  }
+
+  &__nav-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link {
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 130%;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: $second-text-color;
+
+    @include hover(color, $main-text-color);
+
+    &--dark-theme {
+      @include hover(color, $bg-color);
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    align-self: center;
+  }
+
+  &__text {
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 130%;
+    color: $second-text-color;
+  }
+}
+
+.icon-arrow-up {
+  &--dark-theme {
+    color: $bg-color;
+  }
+}
