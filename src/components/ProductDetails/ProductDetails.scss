@@ -291,38 +291,11 @@
     }
   }
 
-  &__back {
-    box-sizing: border-box;
-    width: 66px;
-    height: 16px;
-    display: flex;
-    align-items: center;
-    padding: 0 15px 0 20px;
-    position: relative;
-    cursor: pointer;
+  &__button-back {
     margin-top: 24px;
 
     @include on-tablet {
       margin-top: 40px;
-    }
-
-    &-text {
-      color: $white;
-      position: absolute;
-      left: 20px;
-      top: 1px;
-    }
-
-    &::before {
-      content: '';
-      width: 16px;
-      height: 16px;
-      background-size: contain;
-      background-position: center;
-      transform: rotate(180deg);
-      background-image: url('../../img/Icons/Arrow.png');
-      position: absolute;
-      left: 0;
     }
   }
 }

@@ -58,6 +58,10 @@
       height: 64px;
     }
 
+    &--active {
+      border-bottom: 3px solid $white;
+    }
+
     &-favourites {
       background-image: url('../../img/Icons/Favourites.png');
     }

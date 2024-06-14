@@ -1,0 +1,49 @@
+.cart {
+  @include create-grid;
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__button-back {
+    @include full-grid;
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__title {
+    @include full-grid;
+    color: $white;
+  }
+
+  &__products {
+    @include full-grid;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+    }
+  }
+
+  &__total-price {
+    @include full-grid;
+
+    @include on-desktop {
+      grid-column: 17 / 25;
+    }
+  }
+
+  &__products, &__total-price {
+    margin-top: 32px;
+  }
+}

@@ -6,7 +6,7 @@ export type Product = {
   capacityAvailable: string[];
   capacity: string;
   priceRegular: number;
-  priceDiscount: number;
+  priceDiscount?: number;
   colorsAvailable: string[];
   color: string;
   images: string[];

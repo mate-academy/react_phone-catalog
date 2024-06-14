@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import { Link, NavLink, useLocation } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { PageContext } from '../../context/PageContext';
 import { useContext } from 'react';
@@ -12,6 +12,12 @@ const buttons = [
 
 function isActiveLink({ isActive }: { isActive: boolean }) {
   return classNames('nav__item uppercase', { 'nav__item--selected': isActive });
+}
+
+function isActiveButtonLink(prop: { isActive: boolean }, buttonName: string) {
+  return classNames(`header__button header__button-${buttonName}`, {
+    'header__button--active': prop.isActive,
+  });
 }
 
 export const HeaderButtons = () => {
@@ -42,12 +48,12 @@ export const HeaderButtons = () => {
       </nav>
       <div className="header__buttons">
         {buttons.map(button => (
-          <Link
+          <NavLink
             key={button.id}
             onClick={handleSetPrevPage}
             to={`/${button.name}`}
-            className={`header__button header__button-${button.name}`}
-          ></Link>
+            className={event => isActiveButtonLink(event, button.name)}
+          ></NavLink>
         ))}
       </div>
     </Fragment>

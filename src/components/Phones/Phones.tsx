@@ -191,17 +191,10 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
             />
           </section>
           <section className="products__cards">
-            {visibleProducts.map(phone => (
+            {visibleProducts.map(product => (
               <ProductCard
-                key={phone.id}
-                id={phone.id}
-                price={phone.priceRegular}
-                priceDiscount={phone.priceDiscount}
-                ram={phone.ram}
-                capacity={phone.capacity}
-                screen={phone.screen}
-                image={phone.images[0]}
-                name={phone.name}
+                key={product.id}
+                product={product}
                 productType={productsType}
               />
             ))}

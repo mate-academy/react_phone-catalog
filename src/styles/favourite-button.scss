@@ -19,5 +19,7 @@
 
   &--active {
     background-image: url('../img/Icons/Favourites-Filled.png');
+    background-color: transparent;
+    border: 1px solid $elements;
   }
 }

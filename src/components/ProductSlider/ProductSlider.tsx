@@ -1,11 +1,9 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-
 import { ProductCard } from '../ProductCard';
 import classNames from 'classnames';
 import { getDeviceType } from '../../utils/getDeviceType';
 import { ProductsTypes } from '../../types/ProductsTypes';
 import { Product } from '../../types/Product';
-import productsFromServer from '../../api/products.json';
 
 type Props = {
   parentClassName?: string;
@@ -78,17 +76,8 @@ export const ProductSlider: React.FC<Props> = ({
       <div className="product-slider__items" ref={productsBlock}>
         {products.map(product => (
           <ProductCard
-            key={
-              productsFromServer.find(pr => pr.itemId === product.id)?.id ?? -1
-            }
-            id={product.id}
-            name={product.name}
-            screen={product.screen}
-            ram={product.ram}
-            price={product.priceRegular}
-            priceDiscount={product.priceDiscount}
-            capacity={product.capacity}
-            image={product.images[0]}
+            key={product.id}
+            product={product}
             productType={ProductsTypes.Phones}
           />
         ))}

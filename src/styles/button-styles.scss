@@ -14,13 +14,15 @@
   width: 176px;
   height: 40px;
   border: none;
+  cursor: pointer;
   @include defaultAnimation;
 
   &:hover {
     background-color: $light-accent;
   }
 
-  &-selected {
-    color: $surface-2;
+  &:disabled {
+    background-color: $surface-2;
+    cursor: default;
   }
 }

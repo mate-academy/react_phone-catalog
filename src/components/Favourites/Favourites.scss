@@ -1,0 +1,45 @@
+.favourites {
+  @include create-grid;
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+
+  &__path {
+    @include full-grid;
+    margin-top: 24px;
+  }
+
+  &__title {
+    color: $white;
+    margin-top: 24px;
+    @include full-grid;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__items-count {
+    @include full-grid;
+    margin-top: 8px;
+    color: $secondary;
+  }
+
+  &__items {
+    @include full-grid;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 40px 16px;
+    margin-top: 32px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}

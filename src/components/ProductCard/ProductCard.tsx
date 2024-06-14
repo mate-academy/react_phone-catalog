@@ -1,34 +1,51 @@
 import { useNavigate } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
 import { ProductsTypes } from '../../types/ProductsTypes';
+import { useContext } from 'react';
+import { FavouritesContext } from '../../context/FavouritesContext';
+import { Product } from '../../types/Product';
+import classNames from 'classnames';
+import { CartContext } from '../../context/CartContext';
 
 type Props = {
-  image: string;
-  name: string;
-  price: number;
-  priceDiscount?: number;
-  screen: string;
-  capacity: string;
-  ram: string;
-  id: string;
-  productType: ProductsTypes;
+  product: Product;
+  productType: ProductsTypes | string;
 };
 
-export const ProductCard: React.FC<Props> = ({
-  id,
-  image,
-  name,
-  price,
-  priceDiscount,
-  screen,
-  capacity,
-  ram,
-  productType,
-}) => {
+export const ProductCard: React.FC<Props> = ({ product, productType }) => {
   const navigate = useNavigate();
+  const {
+    id,
+    images,
+    name,
+    priceRegular,
+    priceDiscount,
+    screen,
+    capacity,
+    ram,
+  } = product;
+
+  const image = images[0];
 
   const handleNavigate = () => {
     navigate(`/${productType}/` + id);
+  };
+
+  const { favourites, setFavourites } = useContext(FavouritesContext);
+  const { cart, setCart } = useContext(CartContext);
+
+  const handleAddFavourite = () => {
+    if (favourites.filter(fav => fav.id === product.id).length > 0) {
+      setFavourites(favourites.filter(fav => fav.id !== product.id));
+    } else {
+      setFavourites([...favourites, product]);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (cart.filter(crt => crt.id === product.id).length <= 0) {
+      setCart([...cart, { ...product, count: 1 }]);
+    }
   };
 
   return (
@@ -46,10 +63,10 @@ export const ProductCard: React.FC<Props> = ({
         {priceDiscount ? (
           <Fragment>
             <h3 className="card__price">{priceDiscount}$</h3>
-            <p className="card__old-price">{price}$</p>
+            <p className="card__old-price">{priceRegular}$</p>
           </Fragment>
         ) : (
-          <h3 className="card__price">{price}$</h3>
+          <h3 className="card__price">{priceRegular}$</h3>
         )}
       </div>
       <div className="card__info">
@@ -67,10 +84,22 @@ export const ProductCard: React.FC<Props> = ({
         </div>
       </div>
       <div className="card__buttons">
-        <a className="card__button button" href="#">
-          Add to cart
-        </a>
-        <a className="card__favourite favourite-button" href="#"></a>
+        <button
+          disabled={cart.filter(crt => crt.id === product.id).length > 0}
+          className="card__button button"
+          onClick={handleAddToCart}
+        >
+          {cart.filter(crt => crt.id === product.id).length > 0
+            ? 'Added to cart'
+            : 'Add to cart'}
+        </button>
+        <button
+          className={classNames('card__favourite favourite-button', {
+            'favourite-button--active':
+              favourites.filter(fav => fav.id === product.id).length > 0,
+          })}
+          onClick={handleAddFavourite}
+        ></button>
       </div>
     </div>
   );

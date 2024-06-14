@@ -1,9 +1,19 @@
 import classNames from 'classnames';
-import { Link, useNavigate } from 'react-router-dom';
-import { Fragment, useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
+import {
+  Fragment,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+} from 'react';
 import productsFromServer from '../../api/products.json';
 import { Product } from '../../types/Product';
 import { ProductSlider } from '../ProductSlider';
+import { FavouritesContext } from '../../context/FavouritesContext';
+import { BackButton } from '../BackButton';
+import { CartContext } from '../../context/CartContext';
 
 type Props = {
   product: Product;
@@ -18,36 +28,41 @@ export const ProductDetails: React.FC<Props> = ({
   parentClassName = '',
   products,
 }) => {
-  const navigate = useNavigate();
   const [currentImage, setCurrentImage] = useState(product.images[0]);
 
   useEffect(() => {
     setCurrentImage(product.images[0]);
   }, [product]);
 
-  const handleGetRandomProducts = () => {
+  const handleGetRandomProducts = useCallback(() => {
     const numbers: number[] = [];
 
-    function generate() {
-      return Math.floor(Math.random() * (products.length + 1));
+    const eachNum: number[] = [];
+
+    for (let i = 0; i < products.length; i++) {
+      eachNum.push(i);
     }
 
-    for (let i = 0; i <= 8; i++) {
-      const number = generate();
+    function generate(maxNum: number) {
+      return Math.floor(Math.random() * maxNum);
+    }
 
-      if (!numbers.includes(number)) {
-        numbers.push(number);
-      } else {
-        numbers.push(generate());
-      }
+    for (let i = 1; i <= 8; i++) {
+      const number = generate(eachNum.length);
+
+      numbers.push(eachNum[number]);
+      eachNum.splice(number, 1);
     }
 
     const result = numbers.map(num => products[num]);
 
     return result;
-  };
+  }, [products]);
 
-  const randomProducts = handleGetRandomProducts();
+  const randomProducts = useMemo(
+    () => handleGetRandomProducts(),
+    [handleGetRandomProducts],
+  );
 
   const params = useMemo(
     () => [
@@ -88,18 +103,30 @@ export const ProductDetails: React.FC<Props> = ({
     prod => prod.itemId === product.id,
   )?.id;
 
+  const { favourites, setFavourites } = useContext(FavouritesContext);
+  const { cart, setCart } = useContext(CartContext);
+
+  const handleAddFavourite = () => {
+    if (favourites.filter(fav => fav.id === product.id).length > 0) {
+      setFavourites(favourites.filter(fav => fav.id !== product.id));
+    } else {
+      setFavourites([...favourites, product]);
+    }
+  };
+
+  const handleAddToCart = () => {
+    if (cart.filter(crt => crt.id === product.id).length <= 0) {
+      setCart([...cart, { ...product, count: 1 }]);
+    }
+  };
+
   return (
     <div
       className={classNames('product-details', {
         [`${parentClassName}__product-details`]: parentClassName,
       })}
     >
-      <div
-        onClick={() => navigate('/' + category)}
-        className="product-details__back"
-      >
-        <p className="product-details__back-text small-text">Back</p>
-      </div>
+      <BackButton url={category} parentClassName="product-details" />
       <h2 className="product-details__title">{product.name}</h2>
       <div className="product-details__visible-content">
         <div className="product-details__images">
@@ -179,11 +206,26 @@ export const ProductDetails: React.FC<Props> = ({
               )}
             </div>
             <div className="product-details__buttons">
-              <button className="product-details__button button">
-                Add to card
+              <button
+                disabled={cart.filter(crt => crt.id === product.id).length > 0}
+                onClick={handleAddToCart}
+                className="product-details__button button"
+              >
+                {cart.filter(crt => crt.id === product.id).length > 0
+                  ? 'Added to cart'
+                  : 'Add to cart'}
               </button>
-              {/* eslint-disable-next-line max-len */}
-              <button className="product-details__favourite-button favourite-button" />
+              <button
+                onClick={handleAddFavourite}
+                className={classNames(
+                  'product-details__favourite-button favourite-button',
+                  {
+                    'favourite-button--active':
+                      favourites.filter(fav => fav.id === product.id).length >
+                      0,
+                  },
+                )}
+              />
             </div>
           </div>
           <div className="product-details__params-block">
