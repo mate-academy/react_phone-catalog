@@ -17,52 +17,55 @@ export const BrandNewModels = () => {
   const { products } = useContext(PhoneContext);
   const lengthImgList = products.length - 1;
   const containerRef = useRef<HTMLDivElement>(null);
-  const containerWidthRef = useRef(0);
-  const currentOffsetXRef = useRef(0);
-  const startXRef = useRef(0);
-  const minOffsetXRef = useRef(0);
+
+  const containerWidthRef = useRef(0); //save width container
+  const widthRef = useRef<HTMLLIElement>(null);
+  const currentOffsetXRef = useRef(0); // save current off set X
+
+  const startXRef = useRef(0); // initial x ref
+  const minOffsetXRef = useRef(0); // -55549
+
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
-  console.log(currentIndex);
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
-    const currentX = getTouchEventData(e).clientX;
-    const diff = getRefValue(startXRef) - currentX;
-    let newOffsetX = getRefValue(currentOffsetXRef) - diff;
-
+    let newOffsetX = // -946
+      getRefValue(currentOffsetXRef) - //поточне зміщення наприклад 856 (тобто на скільки змістився контейнер)
+      (getRefValue(startXRef) - getTouchEventData(e).clientX);
     const maxOffsetX = 0;
-    const minOffsetX = getRefValue(minOffsetXRef);
 
     if (newOffsetX > maxOffsetX) {
       newOffsetX = 0;
     }
 
-    if (newOffsetX < minOffsetX) {
-      newOffsetX = minOffsetX;
+    if (newOffsetX < getRefValue(minOffsetXRef)) {
+      newOffsetX = getRefValue(minOffsetXRef);
     }
 
     setOffsetX(newOffsetX);
   };
 
   const onTouchEnd = () => {
-    const containerWidth = getRefValue(containerWidthRef);
-    const currentOffsetX = getRefValue(currentOffsetXRef);
-    let newOffSetX = getRefValue(offsetXRef);
-
-    const diff = currentOffsetX - newOffSetX;
+    const widthCard = getRefValue(widthRef).offsetWidth;
+    const containerWidth = getRefValue(containerWidthRef); //container Width Actual 865
+    let newOffSetX = getRefValue(offsetXRef); // -234
+    const diff = getRefValue(currentOffsetXRef) - newOffSetX;
+    const cardGap = Math.floor(containerWidth / widthCard) * 16;
+    const card = Math.floor(containerWidth / widthCard);
+    const contNew = widthCard * card + cardGap;
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (diff > 0) {
-        newOffSetX = Math.floor(newOffSetX / containerWidth) * containerWidth;
+        newOffSetX = Math.floor(newOffSetX / contNew) * contNew;
       } else {
-        newOffSetX = Math.ceil(newOffSetX / containerWidth) * containerWidth;
+        newOffSetX = Math.ceil(newOffSetX / contNew) * contNew;
       }
     } else {
-      newOffSetX = Math.round(newOffSetX / containerWidth) * containerWidth;
+      newOffSetX = Math.round(newOffSetX / contNew) * contNew;
     }
 
     setOffsetX(newOffSetX);
-    setCurrentIndex(Math.abs(newOffSetX / containerWidth));
+    setCurrentIndex(Math.abs(containerWidth / widthCard));
 
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('touchend', onTouchEnd);
@@ -73,15 +76,13 @@ export const BrandNewModels = () => {
   const onTouchStart = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
-    currentOffsetXRef.current = getRefValue(offsetXRef);
+    currentOffsetXRef.current = getRefValue(offsetXRef); // current off set X
+    startXRef.current = getTouchEventData(e).clientX; //initial x ref
 
-    startXRef.current = getTouchEventData(e).clientX;
-
-    const containerEl = getRefValue(containerRef);
-    const containerWidth = containerEl.offsetWidth;
-
-    containerWidthRef.current = containerWidth;
-    minOffsetXRef.current = containerEl.offsetWidth - containerEl.scrollWidth;
+    containerWidthRef.current = getRefValue(containerRef).offsetWidth; //save width container
+    minOffsetXRef.current =
+      getRefValue(containerRef).offsetWidth -
+      getRefValue(containerRef).scrollWidth;
 
     window.addEventListener('touchmove', onTouchMove);
     window.addEventListener('touchend', onTouchEnd);
@@ -90,11 +91,8 @@ export const BrandNewModels = () => {
   };
 
   const indicatorOnClick = (ind: number) => {
-    const containerEl = getRefValue(containerRef);
-    const containerWidth = containerEl.offsetWidth;
-
     setCurrentIndex(ind);
-    setOffsetX(-(containerWidth * ind));
+    setOffsetX(-(getRefValue(containerRef).offsetWidth * ind));
   };
 
   function handleNext() {
@@ -147,7 +145,11 @@ export const BrandNewModels = () => {
         >
           <ul className={style.brandNewModels__cardsList}>
             {products.map(product => (
-              <li className={style.brandNewModels__card} key={product.id}>
+              <li
+                className={style.brandNewModels__card}
+                key={product.id}
+                ref={widthRef}
+              >
                 <a href="#" className={style.brandNewModels__cardLink}>
                   <img
                     src={product.image}
