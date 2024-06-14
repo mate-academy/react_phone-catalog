@@ -63,9 +63,9 @@ export const Tablets = () => {
               <div className={styles.title}>
                 <h1 style={{ display: 'none' }}>Tablets page</h1>
                 <p className="text--page-title">Tablets</p>
-                <p
-                  className={`text--grey ${styles.title__text}`}
-                >{`${products.length} models`}</p>
+                <p className={`text--grey ${styles.title__text}`}>
+                  {`${products.length} models`}
+                </p>
               </div>
 
               <Dropdown />
