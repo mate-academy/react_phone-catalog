@@ -7,7 +7,7 @@
   row-gap: 32px;
 
   @include on-tablet {
-    display: flex;
+    display: flex !important;
     align-items: center;
     justify-content: space-between;
   }

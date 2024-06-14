@@ -1,7 +1,9 @@
-import React from 'react'
+import React from 'react';
 
 export const ProductDetailsPage: React.FC = () => {
   return (
-    <div>ProductDetailsPage :React.FC</div>
+    <div>
+      <h1>Product Details Page</h1>
+    </div>
   );
 };

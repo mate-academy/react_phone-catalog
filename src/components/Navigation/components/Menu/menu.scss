@@ -7,13 +7,13 @@
   }
 }
 
-::-webkit-scrollbar {
-  width: 0;
-}
-
 .menu {
   background-color: white;
   overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
 
   &__page {
     opacity: 0;

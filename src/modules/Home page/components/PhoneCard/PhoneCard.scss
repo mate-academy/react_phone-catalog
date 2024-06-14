@@ -1,0 +1,66 @@
+@import '../../../../App.scss';
+
+.phone-card {
+  display: inline-block;
+  border: 1px solid $elements;
+  margin-top: 24px;
+  padding: 32px;
+
+  &__image{
+    width: 208px;
+  }
+
+  &__title {
+    @include body-text;
+    padding-top: 16px;
+  }
+
+  &__price {
+    @include h3;
+    padding-block: 8px;
+
+    &--hot {
+      color: $secondary;
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+  }
+
+  &__specs {
+    padding-block: 16px;
+    border-top: 1px solid $elements;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    &-label {
+      @include small-text;
+      color: $secondary;
+    }
+
+    &-value {
+      @include small-text;
+      color: $primary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    @include buttons;
+    color: white;
+    background-color: $primary;
+    padding-inline: 9.5px;
+    flex: 1;
+  }
+}

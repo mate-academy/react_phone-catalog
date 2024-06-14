@@ -11,22 +11,31 @@ html {
 
 body {
   margin: 0;
-  font-family: "Mont", sans-serif;
+  font-family: 'Mont', sans-serif;
 }
 
 .container {
+  display: block;
   @include content-padding-inline;
+}
+
+button {
+  cursor: pointer;
 }
 
 a {
   text-decoration: none;
-  font-family: "Mont", sans-serif;
+  font-family: 'Mont', sans-serif;
 }
 
-ul, ol, li {
+ul,
+ol,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
 }
 
-
+p, h2, h4 {
+  margin: 0;
+}

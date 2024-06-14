@@ -8,5 +8,4 @@ const App = () => (
   </Router>
 );
 
-createRoot(document.getElementById('root') as HTMLElement)
-  .render(<App />);
+createRoot(document.getElementById('root') as HTMLElement).render(<App />);

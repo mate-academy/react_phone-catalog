@@ -1,0 +1,77 @@
+@import '../../../../App.scss';
+
+.slider {
+  @include on-tablet {
+    @include content-padding-inline;
+    @include grid;
+  }
+
+  &__button--left, &__button--right {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      border: 1px solid $icons;
+      background-color: white;
+      width: 32px;
+    }
+  }
+
+  &__button--left {
+    @include on-tablet {
+      grid-column: 1 / 2;
+    }
+  }
+
+  &__button--right {
+    @include on-tablet {
+      grid-column: 12 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 24 / -1;
+    }
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+    @include on-tablet {
+      grid-column: 2 / 12;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 18px;
+
+    @include on-tablet {
+      grid-column: 6 / 8;
+      grid-row: 2;
+    }
+
+    @include on-desktop {
+      grid-column: 12 / 14;
+    }
+  }
+}
+
+.img-slider-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.img-slider-dot-btn {
+  border: none;
+  background-color: white;
+}
