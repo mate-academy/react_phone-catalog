@@ -7,8 +7,7 @@ type Props = {
 };
 
 export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
-  const [next, setNext] = useState<number>(0);
-  const [isNextButtonDisabled, setisNextButtonDisabled] = useState(false);
+  const [next, setNext] = useState(0);
   const [isPrevButtonDisabled, setisPrevButtonDisabled] = useState(true);
 
   useEffect(() => {
@@ -18,14 +17,6 @@ export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
 
     if (next < 0) {
       setisPrevButtonDisabled(false);
-    }
-
-    if (next === -2) {
-      setisNextButtonDisabled(true);
-    }
-
-    if (next > -2) {
-      setisNextButtonDisabled(false);
     }
   }, [next]);
 
@@ -54,6 +45,16 @@ export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
       clearInterval(timerId);
     };
   }, [next]);
+
+  const handleNextButton = () => {
+    if (next === -2) {
+      setNext(0);
+
+      return;
+    }
+
+    setNext(currentNext => currentNext - 1);
+  };
 
   return (
     <section className="welcome">
@@ -113,16 +114,10 @@ export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
               // eslint-disable-next-line max-len
               'pictures-slider__button button pictures-slider__button--next icon-arrow-right',
               {
-                'button--disabled': isNextButtonDisabled,
-                'button--dark-theme-disabled':
-                  isNextButtonDisabled && darkTheme,
                 'button--dark-theme': darkTheme,
               },
             )}
-            onClick={() => {
-              setNext(currentNext => currentNext - 1);
-            }}
-            disabled={isNextButtonDisabled}
+            onClick={handleNextButton}
           ></button>
         </div>
       </div>
@@ -134,6 +129,7 @@ export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
           })}
           onClick={() => setNext(0)}
         ></button>
+
         <button
           className={cn('dash-button dash-button--2', {
             'dash-button--active': next === -1,
@@ -142,6 +138,7 @@ export const PicturesSlider: React.FC<Props> = ({ darkTheme }) => {
             setNext(-1);
           }}
         ></button>
+
         <button
           className={cn('dash-button dash-button--3', {
             'dash-button--active': next === -2,
