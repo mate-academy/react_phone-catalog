@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumb } from '../../components/Breadcrumb';
@@ -40,7 +41,7 @@ export const Phones = () => {
       .finally(() => {
         setLoading(false);
       });
-  }, [productsGeneral]);
+  }, []);
 
   const filteredProducts = useMemo(() => {
     return getFilteredItems(products, sortBy);

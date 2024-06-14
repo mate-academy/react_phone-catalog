@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Dispatch, SetStateAction, useEffect, useMemo } from 'react';
 import { getProducts } from '../api/products';
 import { ProductGeneral } from '../types/ProductGeneral';
@@ -44,7 +45,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     getProducts().then(newProducts => {
       setProducts(() => newProducts);
     });
-  });
+  }, []);
 
   const value = useMemo(() => {
     return {
