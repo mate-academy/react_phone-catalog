@@ -71,11 +71,11 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
         <div className={styles.page__main}>
           <div className={styles.page__breadcrumbs}>
             <Link className={styles['page__breadcrumbs-link']} to="/">
-              <img src="/img/products/home.svg" alt="home" />
+              <img src="img/products/home.svg" alt="home" />
             </Link>
             <img
               className={styles['page__breadcrumbs-link']}
-              src="/img/products/arrow.svg"
+              src="img/products/arrow.svg"
               alt="arrow"
             />
             <p className={styles.page__current}>{currentPage}</p>

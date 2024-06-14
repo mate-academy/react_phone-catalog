@@ -11,59 +11,17 @@ interface Props {
 }
 
 export const Cart: React.FC<Props> = ({ models }) => {
-  const { cart, setCart } = useAppContext();
+  const { cart, setCart, itemCounts, handleDecrement, handleIncrement } =
+    useAppContext();
   const [visibleModal, setVisibleModal] = useState(false);
   const navigate = useNavigate();
 
-  const [itemCounts, setItemCounts] = useState<Record<number, number>>(
-    cart.reduce(
-      (acc, product) => ({ ...acc, [product.id]: 1 }),
-      {} as Record<number, number>,
-    ),
+  const visibleCartItems = models.filter(product =>
+    cart.some(fav => fav.id === product.id),
   );
 
-  const visibleCartItems = models.filter(product => cart.includes(product));
   const handleDeleteItem = (id: number) => {
     setCart(prevItems => prevItems.filter(item => item.id !== id));
-  };
-
-  const handleDecrement = (id: number) => {
-    setItemCounts(prevCounts => {
-      if (prevCounts[id] > 1) {
-        setCart(prevCart => {
-          const index = prevCart.findIndex(item => item.id === id);
-
-          if (index > -1) {
-            return [...prevCart.slice(0, index), ...prevCart.slice(index + 1)];
-          }
-
-          return prevCart;
-        });
-
-        return {
-          ...prevCounts,
-          [id]: prevCounts[id] - 1,
-        };
-      }
-
-      return prevCounts;
-    });
-  };
-
-  const handleIncrement = (id: number) => {
-    setItemCounts(prevCounts => ({
-      ...prevCounts,
-      [id]: (prevCounts[id] || 1) + 1,
-    }));
-    setCart(prevCart => {
-      const product = models.find(item => item.id === id);
-
-      if (product) {
-        return [...prevCart, product];
-      }
-
-      return prevCart;
-    });
   };
 
   const totalPrice = visibleCartItems.reduce(
@@ -138,7 +96,9 @@ export const Cart: React.FC<Props> = ({ models }) => {
                         </p>
                         <button
                           className={`${styles.cart__counter} ${styles['cart__counter--increment']}`}
-                          onClick={() => handleIncrement(item.id)}
+                          onClick={() => {
+                            handleIncrement(item.id);
+                          }}
                         >
                           <img
                             className={styles['cart__counter-image']}

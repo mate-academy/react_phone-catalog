@@ -14,7 +14,7 @@ export const Favourites: React.FC<Props> = ({ models }) => {
   const { favourites, currentPage } = useAppContext();
 
   const visiblFavourites = models.filter(product =>
-    favourites.includes(product),
+    favourites.some(fav => fav.id === product.id),
   );
 
   return (

@@ -11,27 +11,11 @@ interface Props {
 }
 
 export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
-  const { favourites, setFavourites, cart, setCart } = useAppContext();
+  const { favourites, cart, handleAddCart, handleAddFavourite } =
+    useAppContext();
 
-  const selected = favourites.find(number => number === model);
-  const added = cart.find(number => number === model);
-  const handleAddFavourite = () => {
-    if (selected) {
-      setFavourites(prevFavourites =>
-        prevFavourites.filter(number => number !== model),
-      );
-    } else {
-      setFavourites(prevFavourites => [...prevFavourites, model]);
-    }
-  };
-
-  const handleAddCart = () => {
-    if (added) {
-      setCart(prevCart => prevCart.filter(number => number !== model));
-    } else {
-      setCart(prevCart => [...prevCart, model]);
-    }
-  };
+  const selected = favourites.some(fav => fav.id === model.id);
+  const added = cart.some(item => item.id === model.id);
 
   return (
     <div className={`models__item ${styles.item}`}>
@@ -83,14 +67,14 @@ export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
             {!added ? (
               <button
                 className={styles['item__add-to-cart']}
-                onClick={handleAddCart}
+                onClick={() => handleAddCart(model)}
               >
                 Add to cart
               </button>
             ) : (
               <button
                 className={`${styles['item__add-to-cart']} ${styles['item__add-to-cart--added']}`}
-                onClick={handleAddCart}
+                onClick={() => handleAddCart(model)}
               >
                 Added
               </button>
@@ -98,12 +82,12 @@ export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
             {!selected ? (
               <button
                 className={`${styles['item__add-to-favorite']} ${styles['item__add-to-favorite--default']}`}
-                onClick={handleAddFavourite}
+                onClick={() => handleAddFavourite(model)}
               ></button>
             ) : (
               <button
                 className={`${styles['item__add-to-favorite']} ${styles['item__add-to-favorite--selected']}`}
-                onClick={handleAddFavourite}
+                onClick={() => handleAddFavourite(model)}
               ></button>
             )}
           </div>

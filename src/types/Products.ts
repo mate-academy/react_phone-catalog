@@ -11,4 +11,5 @@ export interface Products {
   ram: string;
   year: number;
   image: string;
+  count?: number;
 }
