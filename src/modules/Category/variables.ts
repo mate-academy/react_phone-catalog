@@ -11,7 +11,7 @@ export const TAKE_SELECT_OPTIONS: QuerySelectOption[] = [
   { label: 'All', value: String(Infinity), default: true },
 ];
 
-export const takeSelectOptionDefault = TAKE_SELECT_OPTIONS.find(
+export const takeSelectDefaultOption = TAKE_SELECT_OPTIONS.find(
   option => option.default,
 )!;
 
@@ -29,6 +29,13 @@ export const SORT_SELECT_OPTIONS: (QuerySelectOption & {
   { label: 'Newest', value: SORT_VALUES.age, default: true },
 ];
 
-export const sortSelectOptionDefault = SORT_SELECT_OPTIONS.find(
+export const sortSelectDefaultOption = SORT_SELECT_OPTIONS.find(
   option => option.default,
 )!;
+
+export const QUERY_KEY = {
+  SEARCH: 'query',
+  TAKE: 'take',
+  SORT: 'sort',
+  PAGE: 'page',
+};

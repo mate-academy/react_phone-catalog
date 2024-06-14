@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-import { delay } from '../../../helpers/delay';
+import { delay } from '../../../utils/delay';
 import { Product } from '../../../types';
 import { AppState } from '../../store';
 

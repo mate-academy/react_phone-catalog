@@ -7,6 +7,8 @@ export const useDebounce = <T extends any[]>(
   const ref = useRef(fn);
   const timer = useRef<NodeJS.Timer>();
 
+  ref.current = fn;
+
   const debounced = useCallback(
     (...args: T) => {
       clearTimeout(timer.current);

@@ -11,4 +11,6 @@ export type Variant =
   | 'minus'
   | 'plus'
   | 'search'
-  | 'cart';
+  | 'cart'
+  | 'lightMode'
+  | 'darkMode';

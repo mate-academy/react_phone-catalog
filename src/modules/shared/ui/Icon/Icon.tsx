@@ -2,7 +2,7 @@ import React, { FC, ComponentProps } from 'react';
 import cn from 'classnames';
 
 import { Variant } from './types';
-import { PATH } from './constants';
+import { PATH } from './variables';
 import icons from './sprite.svg';
 import classes from './icon.module.scss';
 

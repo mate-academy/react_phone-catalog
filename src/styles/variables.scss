@@ -12,16 +12,16 @@
   --transition-specs: 0.2s ease;
 }
 
-// :root {
-//   --accent: #fd832c;
-//   --accent-secondary: #476df4;
-//   --primary: #fafbfc;
-//   --secondary: #9595a2;
-//   --icons: #72727d;
-//   --elements: #56565e;
-//   --hover-bg: #2c2f38;
-//   --bg: #343740;
-//   --green: #27ae60;
-//   --red: #eb5757;
-//   --transition-specs: 0.2s ease;
-// }
+:root[data-is-dark] {
+  --accent: #fd832c;
+  --accent-secondary: #7e99fc;
+  --primary: #fafbfc;
+  --secondary: #9595a2;
+  --icons: #72727d;
+  --elements: #56565e;
+  --hover-bg: #2c2f38;
+  --bg: #343740;
+  --green: #27ae60;
+  --red: #eb5757;
+  --transition-specs: 0.2s ease;
+}

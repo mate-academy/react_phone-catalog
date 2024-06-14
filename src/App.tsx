@@ -14,7 +14,7 @@ import { Category } from './modules/Category';
 import { CATEGORIES } from './variables/categories';
 import { Icon } from './modules/shared/ui/Icon';
 import { Text } from './modules/shared/ui/Text';
-import { capitalize } from './helpers/capitalize';
+import { capitalize } from './utils/capitalize';
 import { selectProducts, useProducts } from './app/features/products';
 import './styles/index.scss';
 

@@ -14,4 +14,6 @@ export const PATH: Record<Variant, string> = {
   plus: '#Plus',
   search: '#Search',
   cart: '#Cart',
+  lightMode: '#light-mode',
+  darkMode: '#dark-mode',
 };

@@ -2,7 +2,7 @@ import React, { ComponentProps, FC } from 'react';
 import cn from 'classnames';
 
 import { Category, QueryStatus } from '../../../../types';
-import { capitalize } from '../../../../helpers/capitalize';
+import { capitalize } from '../../../../utils/capitalize';
 import { Container } from '../../../shared/Container';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { Text } from '../../../shared/ui/Text';

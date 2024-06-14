@@ -146,7 +146,8 @@
     }
   }
 
-  &__burgerMenu {
+  &__burgerMenu,
+  &__theme {
     position: relative;
     z-index: 102;
     height: var(--height);
@@ -166,10 +167,15 @@
         -1px 0 var(--elements),
         inset 0 calc(var(--underline-height) * -1) 0 currentColor;
     }
+  }
 
+  &__burgerMenu {
     @include on-tablet {
       display: none;
     }
+  }
+  &__theme {
+    margin-left: auto;
   }
 
   &__slot {

@@ -1,8 +1,10 @@
+/* eslint-disable max-len */
 import React, { ComponentProps, FC, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import Logo from '../../../../assets/img/Logo.png';
+import { useIsThemeDark } from '../../../../app/features/preferences/useIsThemeDark';
+import { getLogoPath } from '../../../../utils/getLogoPath';
 import { Icon } from '../../../shared/ui/Icon';
 import { MenuItem } from '../../types';
 import { useHeaderSlot } from '../../HeaderSlotContext';
@@ -18,8 +20,10 @@ type Props = ComponentProps<'header'> & {
 
 export const Header: FC<Props> = ({ className, links, ...props }) => {
   const { setSlotRef } = useHeaderSlot();
-  const containerRef = useRef<HTMLDivElement>(null);
   const [isMenuOpen, toggleIsMenuOpen] = useHeader();
+  const [isDark, toggleIsDark] = useIsThemeDark();
+
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setSlotRef(containerRef);
@@ -28,7 +32,11 @@ export const Header: FC<Props> = ({ className, links, ...props }) => {
   return (
     <header {...props} className={cn(classes.header, className)}>
       <Link to={'/'} className={classes.header__logo}>
-        <img className={classes.header__logoImg} src={Logo} alt="LOGO" />
+        <img
+          className={classes.header__logoImg}
+          src={getLogoPath(isDark)}
+          alt="LOGO"
+        />
       </Link>
 
       <nav
@@ -46,6 +54,13 @@ export const Header: FC<Props> = ({ className, links, ...props }) => {
           <CartLink />
         </div>
       </nav>
+      <button
+        title={`Switch to ${isDark ? 'light' : 'dark'}`}
+        className={classes.header__theme}
+        onClick={toggleIsDark}
+      >
+        <Icon variant={isDark ? 'darkMode' : 'lightMode'} />
+      </button>
       <button
         title="menu"
         className={classes.header__burgerMenu}

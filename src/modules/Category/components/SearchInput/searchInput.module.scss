@@ -5,4 +5,12 @@
   color: inherit;
   font: inherit;
   background: transparent;
+  font-size: 14px;
+  transition: box-shadow var(--transition-specs);
+
+  &:focus {
+    box-shadow:
+      -1px 0 var(--elements),
+      inset 0 calc(var(--underline-height) * -1) 0 currentColor;
+  }
 }
