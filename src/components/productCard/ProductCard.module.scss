@@ -10,32 +10,22 @@
   background-color: $white;
   box-sizing: border-box;
   padding: 32px;
-  width: 212px;
+  width: 100%;
   gap: 8px;
-
-  @include on-tablet {
-    width: 237px;
-  }
-
-  @include on-desktop {
-    width: 272px;
-  }
 
   &__img {
     display: block;
     object-fit: contain;
-    width: 148px;
-    height: 139px;
+    align-items: center;
+    width: 100%;
 
     @include on-tablet {
-      width: 173px;
       height: 181px;
     }
 
     @include on-desktop {
       @include hover(transform, scale(1.03));
 
-      width: 206px;
       height: 196px;
     }
   }
@@ -63,12 +53,14 @@
     display: flex;
     flex-direction: row;
     gap: 8px;
+    align-items: center;
   }
 
   &__price {
     @include header-3;
 
-    &-discount {
+    &_regular {
+      @include header-3;
       color: $elements-border-color;
       font-weight: 600;
       text-decoration: line-through;

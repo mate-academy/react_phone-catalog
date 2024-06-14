@@ -2,11 +2,11 @@ import classNames from 'classnames';
 import styles from './ProductSlider.module.scss';
 import { ProductCard } from '../productCard';
 import { useEffect, useRef, useState } from 'react';
-import { Product } from '../../types/Product';
+import { ProductInfo } from '../../types/ProductInfo';
 
 type Props = {
   type: string;
-  products: Product[];
+  products: ProductInfo[];
 };
 
 export const ProductSlider: React.FC<Props> = ({ type, products }) => {

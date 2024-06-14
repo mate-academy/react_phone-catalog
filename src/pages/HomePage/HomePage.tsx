@@ -6,7 +6,7 @@ import styles from './HomePage.module.scss';
 import { AppContext } from '../../store/context';
 
 export const HomePage = () => {
-  const { products } = useContext(AppContext);
+  const { phones } = useContext(AppContext);
 
   return (
     <>
@@ -15,9 +15,9 @@ export const HomePage = () => {
           Welcome to Nice Gadgets store!
         </h1>
         <PhotoSlider />
-        <ProductSlider type="Brand new models" products={products} />
+        <ProductSlider type="Brand new models" products={phones} />
         <Categories />
-        <ProductSlider type="Hot prices" products={products} />
+        <ProductSlider type="Hot prices" products={phones} />
       </section>
     </>
   );

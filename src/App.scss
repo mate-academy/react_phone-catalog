@@ -3,11 +3,10 @@
 .page {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 
   &__container {
     margin-top: 24px;
     margin-bottom: 80px;
   }
-
-  min-height: 100vh;
 }

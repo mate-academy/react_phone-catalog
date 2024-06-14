@@ -34,6 +34,7 @@
   @include content-padding-inline;
 
   @include on-desktop {
+    width: 100%;
     margin: 0 auto;
   }
 }

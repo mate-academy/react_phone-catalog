@@ -1,23 +1,37 @@
-import { Product } from '../../types/Product';
+import { ProductInfo } from '../../types/ProductInfo';
 import { AccentButton } from '../accentButton';
 import { SecondaryButton } from '../secondaryButton';
 import styles from './ProductCard.module.scss';
 
 type Props = {
-  product: Product;
+  product: ProductInfo;
+  type?: string | null;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, type }) => {
   return (
     <>
       <div className={styles.card}>
-        <img src={product.image} alt={'card'} className={styles.card__img} />
+        <img
+          src={product.images[0]}
+          alt={'card'}
+          className={styles.card__img}
+        />
 
         <p className={`${styles.card__name} paragraph`}>{product.name}</p>
 
-        <div className={styles.prices}>
-          <h3 className={styles.card__price}>${product.fullPrice}</h3>
-        </div>
+        {type === 'Hot prices' ? (
+          <div className={styles.card__prices}>
+            <h3 className={styles.card__price}>${product.priceDiscount}</h3>
+            <h3 className={styles.card__price_regular}>
+              ${product.priceRegular}
+            </h3>
+          </div>
+        ) : (
+          <div className={styles.card__prices}>
+            <h3 className={styles.card__price}>${product.priceRegular}</h3>
+          </div>
+        )}
 
         <div className={styles.card__divider}></div>
 
