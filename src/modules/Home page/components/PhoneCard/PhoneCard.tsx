@@ -1,41 +1,41 @@
 import React from 'react';
-import { Phone } from '../../../../types/Phone';
+import { PhoneType } from '../../../../types/PhoneType';
 import './PhoneCard.scss';
 
 interface Props {
-  phone: Phone;
+  phone: PhoneType;
   isHot?: boolean;
 }
 
 export const PhoneCard: React.FC<Props> = ({ phone, isHot }) => {
-  const { name, images } = phone;
-
   return (
     <article className="phone-card">
       <div className="phone-card__image-wrapper">
         <img
-          src={images[0]}
-          alt="Apple iPhone 14 Pro"
+          src={phone.images[0]}
+          alt={phone.namespaceId}
           className="phone-card__image"
         />
       </div>
-      <h2 className="phone-card__title">{name}</h2>
+      <h2 className="phone-card__title">{phone.name}</h2>
       <p className="phone-card__price">
-        $999
-        {isHot && <span className="phone-card__price--hot">$1199</span>}
+        ${phone.priceRegular}
+        {isHot && (
+          <span className="phone-card__price--hot">${phone.priceDiscount}</span>
+        )}
       </p>
       <div className="phone-card__specs">
         <div className="phone-card__spec">
           <span className="phone-card__spec-label">Screen</span>
-          <span className="phone-card__spec-value">6.1” OLED</span>
+          <span className="phone-card__spec-value">{phone.screen}</span>
         </div>
         <div className="phone-card__spec">
           <span className="phone-card__spec-label">Capacity</span>
-          <span className="phone-card__spec-value">128 GB</span>
+          <span className="phone-card__spec-value">{phone.capacity}</span>
         </div>
         <div className="phone-card__spec">
           <span className="phone-card__spec-label">RAM</span>
-          <span className="phone-card__spec-value">6 GB</span>
+          <span className="phone-card__spec-value">{phone.ram}</span>
         </div>
       </div>
       <div className="phone-card__buttons">

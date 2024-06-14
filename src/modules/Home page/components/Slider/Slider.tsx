@@ -28,7 +28,6 @@ export const Slider: React.FC = () => {
       }
     };
 
-    // Initial check
     if (mediaQuery.matches) {
       setImages(imagesTablet);
     }
@@ -39,6 +38,16 @@ export const Slider: React.FC = () => {
       mediaQuery.removeListener(handleMediaQueryChange);
     };
   }, []);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setImageIndex(prevIndex =>
+        prevIndex === images.length - 1 ? 0 : prevIndex + 1,
+      );
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, [images]);
 
   function showNextImage() {
     setImageIndex(index => {

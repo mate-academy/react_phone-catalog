@@ -7,7 +7,15 @@
   padding: 32px;
 
   &__image{
-    width: 208px;
+    width: 148px;
+
+    @include on-tablet {
+      width: 173px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+    }
   }
 
   &__title {

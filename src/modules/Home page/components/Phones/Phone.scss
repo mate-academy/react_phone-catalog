@@ -1,5 +1,6 @@
 @import '../../../../App.scss';
 
+
 .phone {
   padding-block: 56px;
 
@@ -7,10 +8,26 @@
     padding-block: 64px;
   }
 
+  &__disabled {
+    pointer-events: none;
+    opacity: .5;
+  }
+
   &__top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+  }
+
+  &__viewport {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__grid {
+    display: flex;
+    gap: 16px;
+    transition: transform 0.3s ease-in-out;
   }
 
   &__title {
@@ -25,6 +42,7 @@
 
     &--left, &--right {
       border: 1px solid $icons;
+      cursor: pointer;
       display: flex;
       justify-content: center;
       align-items: center;
