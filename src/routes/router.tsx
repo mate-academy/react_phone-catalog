@@ -1,20 +1,18 @@
 /* eslint-disable max-len */
-import './App.css';
+import { Navigate, createHashRouter } from 'react-router-dom';
 
-import { Navigate, RouterProvider, createHashRouter } from 'react-router-dom';
+import AccessoriesPage from '../modules/AccessoriesPage/AccessoriesPage';
+import CartPage from '../modules/CartPage/CartPage';
+import FavoritesPage from '../modules/FavoritesPage/FavoritesPage';
+import HomePage from '../modules/HomePage/HomePage';
+import Layout from '../Layout/Layout';
+import NotFoundPage from '../modules/NotFoundPage/NotFoundPage';
+import PhonesPage from '../modules/PhonesPage/PhonesPage';
+import ProductDetailsPage from '../modules/ProductDetailsPage/ProductDetailsPage';
+import { ROUTES } from '../constants/ROUTES';
+import TabletsPage from '../modules/TabletsPage/TabletsPage';
 
-import Layout from './Layout/Layout';
-import { ROUTES } from './constants/ROUTES';
-import AccessoriesPage from './modules/AccessoriesPage/AccessoriesPage';
-import CartPage from './modules/CartPage/CartPage';
-import FavoritesPage from './modules/FavoritesPage/FavoritesPage';
-import HomePage from './modules/HomePage/HomePage';
-import NotFoundPage from './modules/NotFoundPage/NotFoundPage';
-import PhonesPage from './modules/PhonesPage/PhonesPage';
-import ProductDetailsPage from './modules/ProductDetailsPage/ProductDetailsPage';
-import TabletsPage from './modules/TabletsPage/TabletsPage';
-
-const router = createHashRouter([
+export const router = createHashRouter([
   {
     path: ROUTES.HOME,
     element: <Layout />,
@@ -60,5 +58,3 @@ const router = createHashRouter([
     ],
   },
 ]);
-
-export const App = () => <RouterProvider router={router} />;

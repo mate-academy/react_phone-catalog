@@ -1,7 +1,7 @@
+import Footer from './Footer/Footer';
+import Header from './Header/Header';
 import { Outlet } from 'react-router-dom';
 import ToastNotification from '../UI/ToastNotification/ToastNotification';
-import Footer from '../modules/shared/Footer/Footer';
-import Header from '../modules/shared/Header/Header';
 import { useToastStore } from '../store/toastStore';
 
 const Layout = () => {

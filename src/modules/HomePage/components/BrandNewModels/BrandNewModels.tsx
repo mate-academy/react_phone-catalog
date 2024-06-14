@@ -2,13 +2,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { useEffect, useState } from 'react';
-
 import {
   getAccessories,
   getPhones,
   getTablets,
 } from '../../../../api/getProduct';
+import { useEffect, useState } from 'react';
+
 import Product from '../../../../types/Product';
 import SliderProducts from '../../../shared/SliderProducts/SliderProducts';
 
@@ -16,11 +16,9 @@ const BrandNewModels = () => {
   const [products, setProducts] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
   const [isError, setIsError] = useState(false);
 
   useEffect(() => {
-    setIsLoadingProduct(true);
     setIsLoading(true);
 
     const fetchAllData = async () => {
@@ -49,9 +47,6 @@ const BrandNewModels = () => {
         setTimeout(() => {
           setIsLoading(false);
         }, 100);
-        setTimeout(() => {
-          setIsLoadingProduct(false);
-        }, 500);
       }
     };
 
@@ -64,7 +59,6 @@ const BrandNewModels = () => {
       products={products}
       totalPages={totalPages}
       isLoading={isLoading}
-      isLoadingProduct={isLoadingProduct}
       isError={isError}
     />
   );

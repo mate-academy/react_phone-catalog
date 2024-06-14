@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 
-import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Heading from '../../UI/Heading/Heading';
+import { useFavoritesStore } from '../../store/favoritesStore';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import ProductsList from '../shared/ProductsList/ProductsList';
 import styles from './FavoritesPage.module.css';
-import { useFavoritesStore } from '../../store/favoritesStore';
 
 const FavoritesPage = () => {
   const [isChangingPage, setIsChangingPage] = useState(false);
@@ -30,7 +30,9 @@ const FavoritesPage = () => {
           Favorites
         </Heading>
 
-        {favorites.length === 0 && <p>Your favorites list is empty.</p>}
+        {favorites.length === 0 && (
+          <Heading as="h3">Your favorites list is empty. 🥲</Heading>
+        )}
 
         {favorites.length !== 0 && (
           <>

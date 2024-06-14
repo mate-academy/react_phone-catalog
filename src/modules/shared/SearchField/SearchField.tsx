@@ -7,7 +7,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { SearchParams } from '../../../types/Categories';
 import classNames from 'classnames';
-import { getSearchWith } from '../../../helpers/searchHelper';
+import { getSearchWith } from '../../../utils/searchHelper';
 import styles from './SearchField.module.css';
 import { useDebounce } from '../../../hooks/useDebounce';
 

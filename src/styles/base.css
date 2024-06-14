@@ -1,6 +1,6 @@
-@import './styles/reset.css';
-@import './styles/fonts.css';
-@import './styles/variables.css';
+@import './reset.css';
+@import './fonts.css';
+@import './variables.css';
 
 body {
   font-family: var(--primary-font);
