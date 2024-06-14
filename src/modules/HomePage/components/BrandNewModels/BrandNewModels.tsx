@@ -2,13 +2,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 
-import { useEffect, useState } from 'react';
-
 import {
   getAccessories,
   getPhones,
   getTablets,
 } from '../../../../api/getProduct';
+import { useEffect, useState } from 'react';
+
 import Product from '../../../../types/Product';
 import SliderProducts from '../../../shared/SliderProducts/SliderProducts';
 

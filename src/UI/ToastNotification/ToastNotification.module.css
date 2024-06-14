@@ -2,7 +2,6 @@
   position: fixed;
   top: 80px;
   right: 16px;
-  z-index: 1000;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -12,6 +11,10 @@
 @media (min-width: 320px) and (max-width: 639px) {
   .ToastViewport {
     width: 95%;
+    top: 10px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
   }
 }
 
@@ -21,7 +24,7 @@
   padding: 16px;
   display: flex;
   flex-direction: column;
-  align-items: start;
+  align-items: center;
   border-radius: 15px;
   border: 1px solid var(--elements-color);
 }

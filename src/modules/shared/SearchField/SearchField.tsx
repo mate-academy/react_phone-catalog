@@ -1,15 +1,18 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import * as Popover from '@radix-ui/react-popover';
 
-import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import React, { useEffect, useRef, useState } from 'react';
+
+import { IoCloseOutline, IoSearch } from 'react-icons/io5';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
-import { SearchParams } from '../../../types/Categories';
 import classNames from 'classnames';
-import { getSearchWith } from '../../../helpers/searchHelper';
-import styles from './SearchField.module.css';
+
 import { useDebounce } from '../../../hooks/useDebounce';
+import SearchParams from '../../../types/Categories';
+import { getSearchWith } from '../../../utils/searchHelper';
+
+import styles from './SearchField.module.css';
 
 const SearchField = () => {
   const { pathname } = useLocation();

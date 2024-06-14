@@ -1,8 +1,8 @@
+import Button from '../../UI/Buttons/Button';
 import { IoIosArrowUp } from 'react-icons/io';
 import { Link } from 'react-router-dom';
-import Button from '../../../UI/Buttons/Button';
-import useDarkThemeStore from '../../../store/darkThemeStore';
 import styles from './Footer.module.css';
+import useDarkThemeStore from '../../store/darkThemeStore';
 
 const Footer = () => {
   const { theme } = useDarkThemeStore();

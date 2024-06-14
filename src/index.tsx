@@ -1,10 +1,12 @@
+import './styles/base.css';
+
 import * as Toast from '@radix-ui/react-toast';
 
-import { App } from './App';
+import Root from './routes/Root';
 import { createRoot } from 'react-dom/client';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Toast.Provider>
-    <App />
+    <Root />
   </Toast.Provider>,
 );

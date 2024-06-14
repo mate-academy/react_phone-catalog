@@ -1,12 +1,13 @@
 import { FC, useState } from 'react';
 
+import { BsCartX } from 'react-icons/bs';
 import BackLink from '../../UI/BackLink/BackLink';
 import Button from '../../UI/Buttons/Button';
+import Heading from '../../UI/Heading/Heading';
+import { useCartStore } from '../../store/cartStore';
+import styles from './CartPage.module.css';
 import CartItem from './components/CartItem/CartItem';
 import CheckoutModal from './components/CheckoutModal/CheckoutModal';
-import Heading from '../../UI/Heading/Heading';
-import styles from './CartPage.module.css';
-import { useCartStore } from '../../store/cartStore';
 
 const CartPage: FC = () => {
   const { cartItems, changeQuantityInCart, deleteProductInCart, clearCart } =
@@ -82,7 +83,8 @@ const CartPage: FC = () => {
             <Heading as="h3" className={styles.empty}>
               Your cart is empty 🤔
             </Heading>
-            <div className={styles.error} />
+
+            <BsCartX size={150} />
           </>
         )}
       </section>
@@ -98,5 +100,3 @@ const CartPage: FC = () => {
 };
 
 export default CartPage;
-
-//     <div className={styles.error} />

@@ -1,23 +1,23 @@
 import * as Tooltip from '@radix-ui/react-tooltip';
 
-import { useEffect, useMemo, useState } from 'react';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
+import { useEffect, useMemo, useState } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import BackLink from '../../UI/BackLink/BackLink';
+import { Breadcrumbs } from '../shared/Breadcrumbs';
 import Button from '../../UI/Buttons/Button';
 import Heading from '../../UI/Heading/Heading';
+import Loader from '../shared/Loader/Loader';
+import Product from '../../types/Product';
+import ProductNotFound from '../shared/ProductNotFound/ProductNotFound';
+import SliderProducts from '../shared/SliderProducts/SliderProducts';
 import { getProductOfType } from '../../api/getProduct';
+import style from './ProductDetailsPage.module.css';
+import styles from '../shared/ProductCard/ProductCard.module.css';
 import { useCartStore } from '../../store/cartStore';
 import { useFavoritesStore } from '../../store/favoritesStore';
 import { useToastStore } from '../../store/toastStore';
-import Product from '../../types/Product';
-import { Breadcrumbs } from '../shared/Breadcrumbs';
-import Loader from '../shared/Loader/Loader';
-import styles from '../shared/ProductCard/ProductCard.module.css';
-import ProductNotFound from '../shared/ProductNotFound/ProductNotFound';
-import SliderProducts from '../shared/SliderProducts/SliderProducts';
-import style from './ProductDetailsPage.module.css';
 
 const ProductDetailsPage = () => {
   const { pathname } = useLocation();
@@ -410,7 +410,6 @@ const ProductDetailsPage = () => {
             products={likedProduct}
             totalPages={2}
             isLoading={isLoading}
-            isLoadingProduct={isLoading}
             isError={false}
           />
         </>

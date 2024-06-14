@@ -1,12 +1,13 @@
-export const ROUTES: Readonly<{
-  HOME: string;
-  PHONES: string;
-  TABLETS: string;
-  ACCESSORIES: string;
-  CART: string;
-  FAVORITES: string;
-  PRODUCT_DETAIL: string;
-}> = {
+type RoutesNames =
+  | 'HOME'
+  | 'PHONES'
+  | 'TABLETS'
+  | 'ACCESSORIES'
+  | 'CART'
+  | 'FAVORITES'
+  | 'PRODUCT_DETAIL';
+
+export const ROUTES: Record<RoutesNames, string> = {
   HOME: '/',
   PHONES: 'phones',
   TABLETS: 'tablets',
@@ -14,4 +15,4 @@ export const ROUTES: Readonly<{
   CART: 'cart',
   FAVORITES: 'favorites',
   PRODUCT_DETAIL: ':productId',
-};
+} as const;

@@ -20,7 +20,6 @@ interface Props {
   products: Product[];
   totalPages: number;
   isLoading: boolean;
-  isLoadingProduct?: boolean;
   isError: boolean;
 }
 

@@ -27,7 +27,7 @@
 }
 
 .confirm {
-  background-color: var(--color-green);
+  background-color: var(--accent-color);
   color: var(--font-color-primary);
   font-family: var(--primary-font);
 }
