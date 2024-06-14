@@ -11,13 +11,15 @@ import classNames from 'classnames';
 import productsFromServer from '../../api/products.json';
 import { useAppContext } from '../../AppContext';
 import { Carousel } from '../HomePage/Models/Carousel';
+import { Navigation } from '../Navigation';
 
 interface Props {
   swiperIndex: number;
 }
 
 export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
-  const { favourites, setFavourites, cart, setCart } = useAppContext();
+  const { favourites, setFavourites, cart, setCart, currentPage } =
+    useAppContext();
   const { productId } = useParams();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
@@ -140,6 +142,12 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
       {model ? (
         <section className={styles.details}>
           <div className={styles.details__container}>
+            <Navigation
+              category={category}
+              currentPage={currentPage}
+              back
+              model={model}
+            />
             <h2 className={styles.details__title}>{model.name}</h2>
             <div className={styles.details__content}>
               <div className={styles.details__main}>
