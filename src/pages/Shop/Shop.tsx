@@ -10,6 +10,7 @@ import { filterBy } from '../../helpers/utils/filterBy';
 import { Product } from '../../helpers/types/Product';
 import { Loader } from '../../components/Loader';
 import { NoResults } from '../../components/NoResults';
+import { SearchContext } from '../../helpers/utils/searchContext';
 
 type Props = {};
 
@@ -20,6 +21,7 @@ export const Shop: React.FC<Props> = () => {
   const navigate = useNavigate();
 
   const { products } = useContext(ProductContext);
+  const { setCanSearch } = useContext(SearchContext);
 
   const [searchParams] = useSearchParams();
   const searchString = searchParams.get('query') || '';
@@ -45,9 +47,12 @@ export const Shop: React.FC<Props> = () => {
     }
 
     if (products) {
+      const filtered = filterBy(products, filterParam, '');
+
+      setCanSearch(filtered.length !== 0);
       setFilteredProducts(filterBy(products, filterParam, searchString));
     }
-  }, [filterParam, navigate, products, searchString]);
+  }, [filterParam, navigate, products, searchString, setCanSearch]);
 
   return (
     <main className="shop-page">

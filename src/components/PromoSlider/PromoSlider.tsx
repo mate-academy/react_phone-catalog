@@ -7,9 +7,9 @@ import { ButtonNav } from '../ButtonNav';
 type Props = {};
 
 const SLIDER_CONTENT_IMG = [
-  { path: './img/photo-slider-1.png', id: 1 },
-  { path: './img/photo-slider-2.webp', id: 2 },
-  { path: './img/photo-slider-3.png', id: 3 },
+  { path: './api/img/banner-phones.png', id: 1 },
+  { path: './api/img/banner-accessories.png', id: 2 },
+  { path: './api/img/banner-tablets.png', id: 3 },
 ];
 
 export const PromoSlider: React.FC<Props> = () => {

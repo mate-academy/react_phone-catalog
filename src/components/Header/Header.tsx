@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { Search } from '../Search';
 import { Logo } from '../Logo';
@@ -8,11 +8,13 @@ import { Cart } from '../Cart';
 import './Header.scss';
 import { MenuButton } from '../MenuButton/MenuButton';
 import { Menu } from '../Menu';
+import { SearchContext } from '../../helpers/utils/searchContext';
 
 export const Header: React.FC = () => {
   const location = useLocation();
   const [whereIsSearch, setWhereIsSearch] = useState('');
   const [hasMenu, setHesMenu] = useState(false);
+  const { canSearch } = useContext(SearchContext);
 
   useEffect(() => {
     const path = location.pathname;
@@ -40,7 +42,9 @@ export const Header: React.FC = () => {
 
       <div className="header__left">
         <div className="header__search">
-          {whereIsSearch && <Search whereIsSearch={whereIsSearch} />}
+          {whereIsSearch && canSearch && (
+            <Search whereIsSearch={whereIsSearch} />
+          )}
         </div>
 
         <div className="header__FavCart">

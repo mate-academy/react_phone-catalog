@@ -49,6 +49,12 @@
     grid-column: 1 / -1;
     justify-self: center;
 
+    color: $secondary-color;
+    margin-bottom: 10px;
+    text-decoration: none;
+
+    @include hover(color, $primary-color);
+
     @include on-desktop {
       grid-row: 2;
     }

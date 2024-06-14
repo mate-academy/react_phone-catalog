@@ -15,6 +15,8 @@
   grid-template-rows: auto repeat(4, min-content);
   align-items: end;
 
+  @include hover(border-color, $primary-color);
+
   &__link {
     text-decoration: none;
   }
