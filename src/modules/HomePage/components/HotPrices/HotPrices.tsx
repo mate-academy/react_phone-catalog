@@ -18,7 +18,6 @@ const HotPrices = () => {
   const [accessories, setAccessories] = useState<Product[]>([]);
   const [totalPages, setTotalPages] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
-  const [isLoadingProduct, setIsLoadingProduct] = useState(true);
   const [isError, setIsError] = useState(false);
 
   const fetchData = async (
@@ -45,16 +44,12 @@ const HotPrices = () => {
       setTimeout(() => {
         setIsLoading(false);
       }, 100);
-      setTimeout(() => {
-        setIsLoadingProduct(false);
-      }, 500);
     }
 
     return 0;
   };
 
   useEffect(() => {
-    setIsLoadingProduct(true);
     setIsLoading(true);
 
     const fetchAllData = async () => {
@@ -78,7 +73,6 @@ const HotPrices = () => {
       products={allProducts}
       totalPages={totalPages}
       isLoading={isLoading}
-      isLoadingProduct={isLoadingProduct}
       isError={isError}
     />
   );

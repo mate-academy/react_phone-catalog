@@ -12,7 +12,6 @@ import Heading from '../../../UI/Heading/Heading';
 import Loader from '../Loader/Loader';
 import Product from '../../../types/Product';
 import ProductCard from '../ProductCard/ProductCard';
-import Skeleton from '../Skeleton/Skeleton';
 import { Swiper as SwiperType } from 'swiper/types';
 import styles from './SliderProducts.module.css';
 
@@ -21,7 +20,7 @@ interface Props {
   products: Product[];
   totalPages: number;
   isLoading: boolean;
-  isLoadingProduct: boolean;
+  isLoadingProduct?: boolean;
   isError: boolean;
 }
 
@@ -30,7 +29,6 @@ const SliderProducts: FC<Props> = ({
   products,
   totalPages,
   isLoading,
-  isLoadingProduct,
   isError,
 }) => {
   const [currentPage, setCurrentPage] = useState(1);
@@ -130,11 +128,7 @@ const SliderProducts: FC<Props> = ({
             {products.map(product => (
               <SwiperSlide key={product.id}>
                 <div key={product.id} className={styles.item}>
-                  {isLoadingProduct ? (
-                    <Skeleton />
-                  ) : (
-                    <ProductCard product={product} />
-                  )}
+                  <ProductCard product={product} />
                 </div>
               </SwiperSlide>
             ))}
