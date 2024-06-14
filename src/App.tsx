@@ -21,6 +21,7 @@ export const App: React.FC = () => {
 
   return (
     <ItemsProvider>
+      <h1 className="main-title">Product Catalog</h1>
       <div
         className={cn('app', {
           'app--dark-theme': darkTheme,
