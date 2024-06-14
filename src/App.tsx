@@ -22,30 +22,39 @@ const router = createHashRouter([
       { index: true, element: <HomePage /> },
       {
         path: 'home',
-        children: [
-          { index: true, element: <Navigate to="/" replace /> },
-          { path: 'home', element: <Navigate to="/" replace /> },
-        ],
+        element: <Navigate to="/" replace />,
       },
       {
         path: ROUTES.PHONES,
         children: [
           { index: true, element: <PhonesPage /> },
-          { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailsPage /> },
+          {
+            path: ROUTES.PRODUCT_DETAIL,
+            element: <ProductDetailsPage />,
+            errorElement: <NotFoundPage />,
+          },
         ],
       },
       {
         path: ROUTES.TABLETS,
         children: [
           { index: true, element: <TabletsPage /> },
-          { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailsPage /> },
+          {
+            path: ROUTES.PRODUCT_DETAIL,
+            element: <ProductDetailsPage />,
+            errorElement: <NotFoundPage />,
+          },
         ],
       },
       {
         path: ROUTES.ACCESSORIES,
         children: [
           { index: true, element: <AccessoriesPage /> },
-          { path: ROUTES.PRODUCT_DETAIL, element: <ProductDetailsPage /> },
+          {
+            path: ROUTES.PRODUCT_DETAIL,
+            element: <ProductDetailsPage />,
+            errorElement: <NotFoundPage />,
+          },
         ],
       },
       { path: ROUTES.FAVORITES, element: <FavoritesPage /> },
