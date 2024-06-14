@@ -1,0 +1,72 @@
+@import '../../styles/utils/utils';
+
+.container {
+  @include content-pading-inline;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: left;
+  gap: 32px;
+  padding-block: 32px;
+  border-top: solid 1px $grey-hover;
+  background-color: $white;
+
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+}
+
+.nav {
+  display: flex;
+  list-style: none;
+  flex-direction: column;
+  align-items: start;
+  margin: 0;
+  padding: 0;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 14px;
+  }
+
+  @include on-desktop {
+    gap: 107px;
+  }
+}
+
+.link {
+  height: 100%;
+  display: flex;
+  margin: 0;
+  padding-block: 8px;
+  align-items: center;
+  text-decoration: none;
+  color: $grey-secondary;
+  font-size: 12px;
+  font-weight: bold;
+
+  @include hover(color, $grey-primary);
+}
+
+.buttonBack {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__errow {
+    transform: rotate(-90deg);
+  }
+}
+
+.logo {
+  &_img {
+    height: 32px;
+    width: 89px;
+  }
+}

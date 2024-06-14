@@ -1,0 +1,57 @@
+@import '../../../../styles/utils/utils';
+
+.categories {
+  @include content-pading-inline;
+  @include section-gap;
+
+  width: 100%;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    @include page-grid;
+    
+    gap: 32px;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    & > * {
+      grid-column: span 4;
+
+      @include on-desktop {
+        grid-column: span 8;
+      }
+    }
+  }
+}
+
+.category {
+  &__link {
+    display: block;
+    position: relative;
+    height: 0;
+    padding-bottom: 100%;
+    overflow: hidden;
+    transition: opacity 0.3s;
+    margin-bottom: 24px;
+
+    @include hover(border-radius, 10%);
+  }
+
+  &__title {
+    color: $grey-primary;
+    padding-bottom: 8px;
+  }
+
+  &__img {
+    height: 100%;
+    opacity: 1;
+    position: absolute;
+    top: 20%;
+    left: 0;
+  }
+}

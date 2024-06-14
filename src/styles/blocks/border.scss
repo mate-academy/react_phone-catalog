@@ -1,0 +1,9 @@
+.border {
+  border: 1px solid $grey-elements;
+
+  &--bottom {
+    border-bottom: 1px solid $grey-elements;
+  }
+}
+
+

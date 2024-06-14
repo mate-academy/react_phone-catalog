@@ -1,0 +1,39 @@
+@import '../../styles/utils/utils';
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: $white;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+
+  &__nav {
+    flex-grow: 1;
+    flex-direction: column;
+
+    &__list {
+      flex-direction: column;
+      padding: 24px 16px;
+      & > * {
+        padding-block: 8px;
+      }
+    }
+
+    &__icons {
+      border-top: solid 1px $grey-hover;
+      width: 100%;
+      align-items: stretch;
+
+      & > * {
+        flex-grow: 1;
+        max-height: 64px;
+        padding: 24px 72px;
+      }
+    }
+
+
+  }
+}

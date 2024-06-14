@@ -1,0 +1,71 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  justify-content: start;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  pointer-events: all;
+  cursor: pointer;
+  width: 136px;
+  gap: 8px;
+  justify-content: space-between;
+
+  @include on-desktop {
+    width: 126px;
+  }
+
+  &:first-child {
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+}
+
+.dropdown {
+  position: relative;
+
+  &__value {
+    display: block;
+    padding: 10px;
+  }
+
+  &__container {
+    position: absolute;
+    box-sizing: border-box;
+    padding: 10px;
+    width: 100%;
+    top: 110%;
+    left: 0;
+    list-style: none;
+    background-color: $white;
+    box-shadow: 2px 15px #0000000d;
+  }
+
+  &__icon {
+    position: absolute;
+    z-index: 1;
+    height: 100%;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    right: 0;
+    bottom: 0;
+    transform: rotate(90deg);
+  }
+
+  &__item {
+    @include hover(background-color, $grey-white);
+    @include hover( color, $grey-primary);
+  }
+}

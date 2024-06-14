@@ -1,0 +1,26 @@
+.wrapper {
+  max-width: 248px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  & > * {
+    &:first-child {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  gap: 8px;
+}
+
+
+
+.button {
+  flex-grow: 0;
+  flex-shrink: 0;
+}

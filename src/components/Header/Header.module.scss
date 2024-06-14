@@ -1,0 +1,52 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background-color: $white;
+  width: 100%;
+  border-bottom: solid 1px $grey-hover;
+}
+
+.logo {
+  padding: 13px 16px;
+  &_img {
+    height: 22px;
+    width: 64px;
+  }
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    flex-grow: 1;
+  }
+
+  &__list {
+    gap: 32px;
+  }
+}
+
+.icon {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  border-left: solid 1px $grey-hover;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    display: none;
+  }
+}

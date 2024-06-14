@@ -1,0 +1,75 @@
+.button {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+
+  background-color: $white;
+  color: $grey-primary;
+  border: 1px solid $grey-icons;
+  & :first-child {
+    fill: $grey-primary;
+  }
+
+  @include hover(box-shadow, 0 2px 16px 0 $grey-hover);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: none;
+
+    @include hover(box-shadow, none);
+
+    & :first-child {
+      fill: $grey-icons;
+    }
+  }
+
+  &--small {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+  }
+
+  &--medium {
+    height: 40px;
+    width: 40px;
+    padding: 12px;
+  }
+
+  &--big {
+    width: 100%;
+  }
+
+  &--black {
+    background-color: $grey-primary;
+    font-family: Mont, sans-serif;
+    padding: 9px;
+    color: $white;
+    font-size: 14px;
+    font-weight: 600;
+    border: none;
+
+    @include hover(box-shadow, 0 2px 16px 0 $green);
+
+    &--selected {
+      border: 1px solid $grey-elements;
+      background-color: $white;
+      color: $green;
+      white-space: nowrap;
+
+      @include hover(box-shadow, 0 2px 16px 0 $grey-hover);
+    }
+  }
+
+  &--like {
+    @include hover(box-shadow, 0 2px 16px 0 $red);
+
+    &--selected {
+      & :first-child {
+        fill: #eb5757;
+        border: none;
+      }
+    }
+  }
+}

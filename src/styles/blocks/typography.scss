@@ -1,0 +1,59 @@
+
+
+.text {
+  &--category-title {
+    font-weight: 800;
+    font-size: 20px;
+    letter-spacing: -0.01em;
+    color: $grey-primary;
+
+    @include on-desktop {
+      font-weight: 600;
+    }
+  }
+
+  &--page-title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 1.2em;
+    }
+  }
+
+  &--section-title {
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 1.4em;
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &--bold {
+    font-weight: 800;
+  }
+  &--semi-bold {
+    font-weight: 700;
+  }
+  &--grey {
+    color: $grey-secondary;
+  }
+
+  &--small {
+    font-size: 12px;
+  }
+
+  &--regular {
+    font-size: 14px;
+  }
+}

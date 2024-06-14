@@ -1,0 +1,48 @@
+.icon {
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  height: 16px;
+  width: 16px;
+  margin: auto 0;
+
+  &--menu {
+    background-image: url(../../../public/img/icons/menu.png);
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--fav {
+    background-image: url(../../../public/img/icons/favourites.png);
+  }
+
+  &--cart {
+    background-image: url(../../../public/img/icons/shopping-bag.png);
+  }
+
+  &--close {
+    background-image: url(../../../public/img/icons/close.png);
+  }
+
+  &--minus {
+    background-image: url(../../../public/img/icons/minus.svg);
+  }
+
+  &--arrow {
+    background-image: url(../../../public/img/icons/arrow.svg);
+  }
+  &--arrow-black {
+    background-image: url(../../../public/img/icons/arrow--black.svg);
+  }
+
+  &--plus {
+    background-image: url(../../../public/img/icons/plus.svg);
+  }
+
+  &--home {
+    background-image: url(../../../public/img/icons/home.svg);
+  }
+}

@@ -1,0 +1,22 @@
+@import '../../styles/utils/utils';
+
+.container {
+  width: 100%;
+  padding-block: 8px;
+
+}
+
+.techSpec {
+  line-height: 1em;
+  padding-top: 8px;
+  font-weight: 600;
+
+  &__name {
+    color: $grey-secondary;
+    text-align: left;
+  }
+
+  &__value {
+    text-align: right;
+  }
+}

@@ -1,25 +1,62 @@
-import React, { useEffect, useState } from 'react';
-import { getNewProducts } from '../api/products';
+import React, { Dispatch, SetStateAction, useEffect, useMemo } from 'react';
+import { getProducts } from '../api/products';
 import { ProductGeneral } from '../types/ProductGeneral';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 
-export const ProductContext = React.createContext<ProductGeneral[]>([]);
+type InitialContext = {
+  products: ProductGeneral[];
+  likedItems: string[];
+  setLikedItems: Dispatch<SetStateAction<string[]>>;
+  addedItems: string[];
+  setAddedItems: Dispatch<SetStateAction<string[]>>;
+};
+
+const initialContext: InitialContext = {
+  products: [],
+  likedItems: [],
+  setLikedItems: () => {},
+  addedItems: [],
+  setAddedItems: () => {},
+};
+
+export const ProductContext =
+  React.createContext<InitialContext>(initialContext);
 
 type Props = {
   children: React.ReactNode;
 };
 
 export const ProductProvider: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useState<ProductGeneral[]>([]);
+  const [products, setProducts] = useLocalStorage<ProductGeneral[]>(
+    'products',
+    [],
+  );
+  const [likedItems, setLikedItems] = useLocalStorage<string[]>(
+    'likedItems',
+    [],
+  );
+  const [addedItems, setAddedItems] = useLocalStorage<string[]>(
+    'addedItems',
+    [],
+  );
 
   useEffect(() => {
-    getNewProducts().then(newProducts => {
-      setProducts(newProducts);
+    getProducts().then(newProducts => {
+      setProducts(() => newProducts);
     });
-  }, []);
+  }, [setProducts]);
+
+  const value = useMemo(() => {
+    return {
+      products,
+      likedItems,
+      setLikedItems,
+      addedItems,
+      setAddedItems,
+    };
+  }, [products, likedItems, setLikedItems, addedItems, setAddedItems]);
 
   return (
-    <ProductContext.Provider value={products}>
-      {children}
-    </ProductContext.Provider>
+    <ProductContext.Provider value={value}>{children}</ProductContext.Provider>
   );
 };

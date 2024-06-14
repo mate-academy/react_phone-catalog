@@ -1,0 +1,67 @@
+@import '../../styles/utils/utils';
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+
+  @include section-gap;
+
+  @include on-desktop {
+    @include content-pading-inline;
+  }
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 0;
+  }
+}
+
+.container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow: hidden;
+  column-gap: 16px;
+  padding-left: 16px;
+
+  @include on-tablet {
+    padding-left: 24px;
+  }
+
+  @include on-desktop {
+    padding-left: 0;
+  }
+}
+
+.item {
+  width: 212px;
+
+  @include on-tablet {
+   width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 16px;
+}
+
+.button {
+  transform: rotate(180deg);
+}

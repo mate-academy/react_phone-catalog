@@ -1,0 +1,15 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #fff;
+}
+
+.text {
+  width: 55vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

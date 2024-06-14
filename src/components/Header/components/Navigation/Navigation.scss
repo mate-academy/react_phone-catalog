@@ -1,58 +1,47 @@
-@use '../../../../styles/vars.scss' as vars;
-@use '../../../../styles/mixins.scss' as mixins;
+@import '../../../../styles/utils/utils';
 
 .nav {
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 
   &__list {
-    padding-inline: 16px;
-  }
-
-  &--item {
     display: flex;
+    align-items: center;
     justify-content: center;
     list-style: none;
-    position: relative;
+    margin: 0;
+    padding-left: 0;
 
-    &::after {
-      content: '';
-      display: block;
-      background-color: vars.$black;
-      height: 3px;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-
-      transition: transform 0.3s;
-      transform: scale(0);
-    }
-
-    &:hover {
-      & > * {
-        color: vars.$black;
-      }
-      &::after {
-        transform: scale(1);
-      }
+    @include on-tablet {
+      height: 100%;
+      gap: 32px;
     }
   }
 
-  &--link {
+  &__item {
+    height: 100%;
+  }
+
+  &__link {
+    height: 100%;
+    display: flex;
+    margin: 0;
+    align-items: center;
     text-decoration: none;
-    justify-content: center;
-
-    font-size: 12px;
+    color: $grey-secondary;
     font-weight: bold;
-    line-height: 11px;
-    letter-spacing: 4%;
-    color: vars.$grey-secondary;
-    margin: auto 0;
 
-    transition: color 0.3s;
+
+    @include hover(color, $grey-primary);
   }
-
   &__icons {
     display: flex;
+    
+    @include on-tablet {
+      height: 100%;
+    }
   }
 
   &__icon {
@@ -60,61 +49,42 @@
     justify-content: center;
     align-items: center;
     position: relative;
-    border-left: solid 1px vars.$grey-hover;
-    padding: 16px;
+    border-left: solid 1px $grey-hover;
+    padding-inline: 16px;
 
-    &::after {
-      content: '';
-      display: block;
-      background-color: vars.$black;
-      height: 3px;
-      width: 100%;
-      position: absolute;
-      bottom: 0;
-      right: 0;
-
-      transition: transform 0.3s;
-      transform: scale(0);
+    @include on-desktop {
+      padding-inline: 24px;
     }
 
-    &:hover {
-      &::after {
-        transform: scale(1);
+    &_count {
+      position: absolute;
+      top: 30%;
+      right: 43%;
+      height: 14px;
+      width: 14px;
+      box-sizing: border-box;
+      border-radius: 50%;
+      background-color: $red;
+      font-size: 9px;
+      line-height: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: $white;
+      border: 1px solid $white;
+
+      @include on-tablet {
+        top: 22%;
+        right: 20%;
+      }
+
+      @include on-desktop {
+        top: 27%;
+        right: 27%;
       }
     }
 
-    &--hide {
-            @include mixins.onTablet {
-              display: none;
-            }
-          }
   }
 }
 
-.icon {
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  height: 16px;
-  width: 16px;
-  margin: auto 0;
 
-  &--menu {
-    background-image: url('../../../../../public/img/icons/menu.png');
-
-    @include mixins.onTablet {
-      display: none;
-    }
-  }
-
-  &--fav {
-    background-image: url('../../../../../public/img/icons/favourites.png');
-  }
-  &--cart {
-    background-image: url('../../../../../public/img/icons/shopping-bag.png');
-  }
-
-  &--close {
-    background-image: url('../../../../../public/img/icons/close.png');
-  }
-}

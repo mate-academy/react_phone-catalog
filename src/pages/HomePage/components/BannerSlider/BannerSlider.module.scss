@@ -1,0 +1,129 @@
+@import '../../../../styles/utils/utils';
+
+.slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  
+  @include section-gap;
+
+  @include on-tablet {
+    @include content-pading-inline;
+
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  &__middle {
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: 30px 1fr 30px;
+      justify-items: center;
+      gap: 19px;
+    }
+  }
+
+  &__container {
+    grid-column: 2 / 3;
+    height: 100vw;
+    display: flex;
+    overflow: hidden;
+    white-space: nowrap;
+
+    @include on-tablet {
+      height: 189px;
+      width: 490px;
+      grid-column: 2 / 3;
+    }
+
+    @include on-desktop {
+      height: 400px;
+      width: 100%;
+    }
+
+    &:hover > * {
+      animation-play-state: paused;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: none;
+
+    &:first-child {
+      transform: rotate(180deg);
+    }
+
+    @include on-tablet {
+      display: block;
+      width: 100%;
+    }
+
+    &_left {
+      grid-column: 1 / 2;
+    }
+
+    &_right {
+      grid-column: 3 / -1;
+    }
+
+    &_small {
+      display: none;
+      position: absolute;
+      bottom: 15%;
+      left: 5%;
+      font-size: 12px;
+      padding: 10px 20px;
+      color: $white;
+      font-weight: 600;
+      background-color: $grey-primary;
+      border: none;
+      border-radius: 40px;
+      transition: transform 0.3s;
+
+      @include on-tablet {
+        display: block;
+      }
+
+      @include on-desktop {
+        font-size: 14px;
+        padding: 20px 40px;
+      }
+    }
+  }
+
+  &__img {
+    display: flex;
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    padding-bottom: 50%;
+    position: relative;
+
+    &--link {
+      position: relative;
+      object-fit: contain;
+      background-position: center;
+    }
+  }
+
+  &__bottom {
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    padding: 10px;
+  }
+}
+
+.rectangular {
+  height: 4px;
+  width: 14px;
+  background-color: $grey-elements;
+}

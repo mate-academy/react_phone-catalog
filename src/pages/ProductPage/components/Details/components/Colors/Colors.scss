@@ -1,0 +1,35 @@
+@import '../../../../../../styles/utils/utils';
+
+.colors {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 24px;
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__link {
+    --bg-color: #0000001A;
+    
+    border-radius: 50%;
+
+    @include hover(border, 1px solid $grey-icons);
+    @include hover(box-shadow, 0 2px 16px 0 var(--bgColor));
+
+    &--active {
+      border: 1px solid $grey-primary;
+
+      @include hover(border, 1px solid $grey-primary);
+    }
+  }
+
+  &__item {
+    height: 32px;
+    width: 32px;
+    box-sizing: border-box;
+    border: 2px solid #fff;
+    border-radius: 50%;
+  }
+}

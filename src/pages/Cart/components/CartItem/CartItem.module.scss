@@ -1,0 +1,70 @@
+@import '../../../../styles/utils/utils';
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+
+  width: 100%;
+  box-sizing: border-box;
+  padding: 16px;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 24px;
+  }
+}
+
+.name {
+  // text-wrap: wrap;
+  white-space: wrap;
+  width: 48%;
+
+  @include on-tablet {
+    width: 32%;
+  }
+}
+
+.img {
+  height: 66px;
+  width: auto;
+  padding: 7px;
+  margin: 16px;
+
+  @include on-tablet {
+    padding: 0;
+  }
+}
+
+.count {
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 32px;
+  width: 32px;
+}
+
+.price {
+  font-size: 22px;
+  font-weight: 800;
+  text-align: right;
+  width: 80px;
+}
+
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+
+  @include on-tablet {
+    gap: 24px;
+    width: auto;
+  }
+}
+
+.buttons {
+  display: flex;
+}

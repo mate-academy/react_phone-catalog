@@ -1,32 +1,40 @@
+import classNames from 'classnames';
 import { NavIcons } from './components/NavIcons';
-import './Navigation.scss';
 import { NavLink } from 'react-router-dom';
+import './Navigation.scss';
+
 type Props = {
-  className: 'header__nav' | 'menu__nav';
+  className?: string;
 };
 
-export const Navigation: React.FC<Props> = ({ className }) => {
+export const Navigation: React.FC<Props> = ({ className = '' }) => {
+  const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+    classNames(`text--small nav__link`, {
+      'navlink--underline': isActive,
+      'link--underline': !isActive,
+    });
+
   return (
     <>
-      <nav className={`${className} nav__list`}>
-        <ul className={`nav ${className}__list nav__list`}>
-          <li className="nav--item">
-            <NavLink to="/" className="nav--link">
+      <nav className={`${className} nav`}>
+        <ul className={`${className}__list nav__list`}>
+          <li className="nav__item">
+            <NavLink to="/" className={getLinkClass}>
               HOME
             </NavLink>
           </li>
-          <li className="nav--item">
-            <NavLink to="phones" className="nav--link">
+          <li className="nav__item">
+            <NavLink to="/phones" className={getLinkClass}>
               PHONES
             </NavLink>
           </li>
-          <li className="nav--item">
-            <NavLink to="tablets" className="nav--link">
+          <li className="nav__item">
+            <NavLink to="/tablets" className={getLinkClass}>
               TABLETS
             </NavLink>
           </li>
-          <li className="nav--item">
-            <NavLink to="accessories" className="nav--link">
+          <li className="nav__item">
+            <NavLink to="/accessories" className={getLinkClass}>
               ACCESSORIES
             </NavLink>
           </li>

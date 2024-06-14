@@ -1,0 +1,89 @@
+@import '../../../../styles/utils/utils';
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+  }
+
+
+}
+
+.mainImg {
+  padding: 11px;
+  margin-bottom: 16px;
+
+  &__link {
+    width: 266px;
+    height: 266px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    
+    @include on-tablet {
+      background-position: top;
+    }
+
+    @include on-desktop {
+      width: 443px;
+      height: 443px;
+    }
+  }
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  @include on-tablet {
+    justify-content: flex-start;
+    flex-direction: column;
+  }
+}
+
+.item {
+  height: 49px;
+  width: 49px;
+  padding: 3px;
+  box-sizing: border-box;
+  transition: transform 3s;
+  background-color: #fff;
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 #0000001A;
+    border: 1px solid $grey-icons;
+    z-index: 2;
+  }
+
+  &__active {
+    border: 1px solid $grey-primary;
+
+    &:hover {
+      border: 1px solid $grey-primary;
+    }
+  }
+
+  @include on-tablet {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 80px;
+    height: 80px;
+  }
+}
+
+.link {
+  height: 100%;
+  width: 100%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}

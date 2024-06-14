@@ -1,0 +1,68 @@
+@import '../../styles/utils/utils';
+
+.container {
+  width: 100%;
+  padding-top: 24px;
+  margin-bottom: 80px;
+
+  @include content-pading-inline;
+
+  @include on-tablet {
+    padding-block: 40px 24px;
+  }
+}
+
+.gridContainer {
+  @include on-desktop {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 16px;
+  }
+}
+
+.title {
+  padding-block: 24px 32px;
+
+  @include on-tablet {
+    padding-block: 16px 32px;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / -1;
+  }
+}
+
+.items {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.cost {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 24px;
+  margin-top: 32px;
+
+  @include on-desktop {
+    margin-top: 0;
+    height: 206px;
+    box-sizing: border-box;
+  }
+
+  &__container {
+    width: 100%;
+    padding-bottom: 16px;
+    margin-bottom: 16px;
+    text-align: center;
+
+    @include on-desktop {
+      padding-bottom: 25px;
+      & :first-child {
+        line-height: 1em;
+      }
+    }
+  }
+}

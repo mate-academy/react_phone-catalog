@@ -1,0 +1,27 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+  height: 439px;
+  width: 100%;
+  padding: 32px;
+  color: $grey-primary;
+
+  @include hover(box-shadow, 0 2px 16px 0 $grey-secondary);
+}
+
+.img {
+  padding: 0;
+  width: auto;
+  height: 35%;
+
+  &__link {
+    padding: 0;
+    width: auto;
+    height: 100%;
+  }
+}

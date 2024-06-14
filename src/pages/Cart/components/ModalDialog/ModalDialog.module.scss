@@ -1,0 +1,48 @@
+@import '../../../../styles/utils/utils';
+
+.modalDialog {
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 0;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  position: fixed;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    position: relative;
+    padding: 16px;
+    gap: 16px;
+    max-width: 60%;
+    font-size: 14px;
+    border-radius: 20px;
+    background-color: $white;
+    border: 2px solid $grey-primary;
+  }
+
+  &__close {
+    align-self: flex-end;
+    display: flex;
+    border-radius: 50%;
+    justify-content: center;
+    height: 25px;
+    width: 25px;
+    border: 2px solid $grey-primary;
+
+    @include hover(box-shadow, 0 2px 16px 0 $red);
+
+  }
+
+  &__confirm {
+    align-self: center;
+    width: 120px;
+  }
+}

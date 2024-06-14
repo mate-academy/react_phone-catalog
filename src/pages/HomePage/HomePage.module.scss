@@ -1,0 +1,30 @@
+@import '../../styles/utils/utils';
+
+.container {
+  margin-bottom: 8px;
+  width: 100%;
+  
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+}
+
+.title {
+  padding-block: 24px;
+
+  @include content-pading-inline;
+
+  @include on-tablet {
+    padding-block: 32px;
+  }
+
+  @include on-desktop {
+    padding-block: 56px;
+  }
+
+  &__hidden {
+    position: absolute;
+    visibility: hidden;
+  }
+}
+

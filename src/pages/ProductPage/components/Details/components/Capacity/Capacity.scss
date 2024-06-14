@@ -1,0 +1,20 @@
+.capacity {
+  display: flex;
+  flex-direction: column;
+  padding-block: 24px;
+  gap: 8px;
+
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    height: 32px;
+    width: 56px;
+  }
+}
