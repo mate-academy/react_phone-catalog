@@ -12,7 +12,7 @@ export const ShoppingCart = React.memo(() => {
   const naigate = useNavigate();
 
   const uniqueShoppingList = shoppingList.reduce<CartItem[]>((acc, item) => {
-    if (!acc.some(i => i === item)) {
+    if (!acc.some(i => i.itemId === item.itemId)) {
       acc.push(item);
     }
 
@@ -35,9 +35,11 @@ export const ShoppingCart = React.memo(() => {
       {shoppingList.length > 0 ? (
         <div className="shopping-cart__container">
           <div className="shopping-cart__list">
-            {uniqueShoppingList.map(item => (
-              <ShoppingItem cartItem={item} key={item.itemId} />
-            ))}
+            {uniqueShoppingList
+              .sort((item1, item2) => item1.id - item2.id)
+              .map(item => (
+                <ShoppingItem cartItem={item} key={item.id} />
+              ))}
           </div>
 
           <div className="shopping-cart__total">

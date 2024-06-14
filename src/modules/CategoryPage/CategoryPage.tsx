@@ -131,7 +131,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
       </div>
 
       <div className="category-page__content-wrapper">
-        {dataLoaded && !error ? (
+        {dataLoaded && !error && products.length > 0 && (
           <div className="category-page__content-container">
             <div className="category-page__dropdown-container">
               <div className="category-page__dropdown-sort">
@@ -177,10 +177,16 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
               </div>
             )}
           </div>
-        ) : (
+        )}
+
+        {!dataLoaded && !error && (
           <div className="category-page__loader">
             <Loader />
           </div>
+        )}
+
+        {dataLoaded && !error && products.length === 0 && (
+          <div>There are no {category} yet</div>
         )}
       </div>
     </div>

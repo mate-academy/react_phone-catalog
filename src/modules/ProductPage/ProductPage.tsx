@@ -18,7 +18,6 @@ import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
 import { CartItem } from '../../types/CartItem';
-import { Reload } from '../shared/Reload';
 
 type Specs = {
   [key: string]: string | string[];
@@ -45,9 +44,6 @@ export const ProductPage: React.FC = React.memo(() => {
 
   const heightPreview = useRef<HTMLDivElement>(null);
 
-  // console.log(pathname);
-  // console.log(nameDevice);
-
   const cartItem: CartItem = {
     itemId: itemId || '',
     name: device?.name || '',
@@ -56,6 +52,7 @@ export const ProductPage: React.FC = React.memo(() => {
       ? device?.priceDiscount || 0
       : device?.priceRegular || 0,
     discount: state,
+    id: 0,
   };
 
   useEffect(() => {
@@ -65,8 +62,6 @@ export const ProductPage: React.FC = React.memo(() => {
       setLoadedDevice(false);
     }
 
-    setUpdatedDevice(false);
-
     client
       .get<Device[]>(`api/${category}.json`)
       .then(data => {
@@ -74,6 +69,8 @@ export const ProductPage: React.FC = React.memo(() => {
 
         if (!getDevice) {
           setErrorLoadedDevice(true);
+
+          return;
         }
 
         if (getDevice) {
@@ -130,9 +127,7 @@ export const ProductPage: React.FC = React.memo(() => {
       .catch(() => {}); // setError
   }, [nameDevice]);
 
-  return errorLoadedDevice ? (
-    <Reload imgOfError="product-not-found.png" />
-  ) : (
+  return (
     <div className="product-page">
       <div className="product-page__route">
         <Breadcrumbs category={category} name={device?.name} />
@@ -142,7 +137,7 @@ export const ProductPage: React.FC = React.memo(() => {
         <BackButton move={() => navigate(-1)} />
       </div>
 
-      {loadedDevice && device ? (
+      {loadedDevice && !errorLoadedDevice && device && (
         <div
           className="product-page__container"
           style={
@@ -171,7 +166,12 @@ export const ProductPage: React.FC = React.memo(() => {
               <span>Avaliable colors</span>
               <span>ID: 496827</span>
             </div>
-            <AvaliableItems device={device} colors discount={state} />
+            <AvaliableItems
+              device={device}
+              colors
+              discount={state}
+              onUpdateDevice={() => setUpdatedDevice(false)}
+            />
           </div>
 
           <div
@@ -179,7 +179,12 @@ export const ProductPage: React.FC = React.memo(() => {
                 product-page__avaliable-container--2"
           >
             <div className="product-page__avaliable-title">Selest capacity</div>
-            <AvaliableItems device={device} colors={false} discount={state} />
+            <AvaliableItems
+              device={device}
+              colors={false}
+              discount={state}
+              onUpdateDevice={() => setUpdatedDevice(false)}
+            />
           </div>
 
           <div className="product-page__price">
@@ -224,9 +229,21 @@ export const ProductPage: React.FC = React.memo(() => {
               )}
           </div>
         </div>
-      ) : (
+      )}
+
+      {!loadedDevice && !errorLoadedDevice && (
         <div className="product-page__loader">
           <Loader />
+        </div>
+      )}
+
+      {errorLoadedDevice && (
+        <div className="product-page__not-found-wrapper">
+          <img
+            src="/img/product-not-found.png"
+            alt="Device not found"
+            className="product-page__product-not-found"
+          />
         </div>
       )}
 

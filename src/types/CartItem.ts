@@ -4,4 +4,5 @@ export type CartItem = {
   image: string;
   currentPrice: number;
   discount: boolean;
+  id: number;
 };

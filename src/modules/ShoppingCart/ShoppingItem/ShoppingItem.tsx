@@ -5,6 +5,7 @@ import { IconClose } from '../../shared/IconsSVG';
 import { NumberOrSymbol as Symbol } from '../../shared/Buttons/MoveButtons';
 import { ShoppingCartContext } from '../../../store/ShoppingCartContext';
 import { CartItem } from '../../../types/CartItem';
+import { getNewCartItemId } from '../../../services/getNewCartItemId';
 
 type Props = {
   cartItem: CartItem;
@@ -28,23 +29,29 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ cartItem }) => {
       return;
     }
 
-    const indx = shoppingList.lastIndexOf(cartItem);
+    const otherItems = shoppingList.filter(
+      item => item.itemId !== cartItem.itemId,
+    );
 
-    const updatedShoppingList = [
-      ...shoppingList.slice(0, indx),
-      ...shoppingList.slice(indx + 1),
-    ];
+    const currentItems = shoppingList
+      .filter(item => item.itemId === cartItem.itemId)
+      .slice(0, -1);
 
-    setShoppingList(updatedShoppingList);
+    setShoppingList([...otherItems, ...currentItems]);
   };
 
   const onAdding = () => {
-    setShoppingList([...shoppingList, cartItem]);
+    const newCartItem: CartItem = {
+      ...cartItem,
+      id: getNewCartItemId(shoppingList),
+    };
+
+    setShoppingList([...shoppingList, newCartItem]);
   };
 
   const deleteDevice = () => {
     const updatedShoppingList = shoppingList.filter(
-      device => device !== cartItem,
+      device => device.itemId !== cartItem.itemId,
     );
 
     setShoppingList(updatedShoppingList);

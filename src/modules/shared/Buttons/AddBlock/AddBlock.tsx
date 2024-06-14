@@ -11,6 +11,7 @@ import { ShoppingCartContext } from '../../../../store/ShoppingCartContext';
 import { CartItem } from '../../../../types/CartItem';
 import { FavoutitesContext } from '../../../../store/FavouritesContext';
 import { FavItem } from '../../../../types/FavItem';
+import { getNewCartItemId } from '../../../../services/getNewCartItemId';
 
 type Props = {
   cartItem: CartItem;
@@ -33,7 +34,12 @@ export const AddBlock: React.FC<Props> = React.memo(({ cartItem }) => {
 
   const handleAddToCart = () => {
     if (!addedToCart) {
-      setShoppingList([...shoppingList, cartItem]);
+      const newCartItem: CartItem = {
+        ...cartItem,
+        id: getNewCartItemId(shoppingList),
+      };
+
+      setShoppingList([...shoppingList, newCartItem]);
     }
   };
 

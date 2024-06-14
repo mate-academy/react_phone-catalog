@@ -43,6 +43,7 @@ export const ProductCard: React.FC<Props> = React.memo(
       image,
       currentPrice: discount ? price : fullPrice,
       discount,
+      id: 0,
     };
     const widthImg = windowSize * 0.396875;
 
@@ -86,7 +87,11 @@ export const ProductCard: React.FC<Props> = React.memo(
       <div className="product-card" style={getHeightCard()}>
         <Link
           to={linkTo()}
-          onClick={() => scrollToTop(false)}
+          onClick={() =>
+            setTimeout(() => {
+              scrollToTop(false);
+            }, 25)
+          }
           state={discount}
           className="product-card__link"
         >

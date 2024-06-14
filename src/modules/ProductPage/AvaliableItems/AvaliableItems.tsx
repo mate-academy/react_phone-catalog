@@ -8,25 +8,29 @@ type Props = {
   device: Device;
   colors: boolean;
   discount: boolean;
+  onUpdateDevice: () => void;
 };
 
 export const AvaliableItems: React.FC<Props> = React.memo(
-  ({ device, colors, discount }) => {
+  ({ device, colors, discount, onUpdateDevice }) => {
     const { capacityAvailable, colorsAvailable, capacity, color, namespaceId } =
       device;
 
     const property = colors ? colorsAvailable : capacityAvailable;
     const selectedItem = colors ? color : capacity;
 
+    function getLink(item: string) {
+      return colors
+        ? `../${namespaceId}-${capacity.toLowerCase()}-${item}`
+        : `../${namespaceId}-${item.toLowerCase()}-${color}`;
+    }
+
     return (
       <div className="container">
         {property.map(item => (
           <Link
-            to={
-              colors
-                ? `../${namespaceId}-${capacity.toLowerCase()}-${item}`
-                : `../${namespaceId}-${item.toLowerCase()}-${color}`
-            }
+            to={getLink(item)}
+            onClick={() => onUpdateDevice()}
             state={discount}
             key={item}
             className={cn('container__item-wrapper', {
