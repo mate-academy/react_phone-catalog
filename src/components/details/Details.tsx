@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import Styles from './Details.module.scss';
 import { Item } from '../../types/Item';
-import { useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import { SkeletonDetails } from '../../skeletons/SkeletonDetails/SkeletonDetails';
 import { ItemSlider } from '../itemSlider';
@@ -28,24 +28,28 @@ type ColorNames = {
 export const Details: React.FC<Props> = ({ list }) => {
   const { idItem } = useParams();
   const navigate = useNavigate();
+  // const location = useLocation();
   const product = list.find(item => item.id === idItem);
   const [capacity, setCapacity] = useState(idItem?.split('-').slice(-2, -1).join(' ').toUpperCase());
   const [active, setActive] = useState(0);
-  const [selectedColor, setSelectedColor] = useState<string>(`${idItem?.split('-').slice(-1).join('-')}`,
-  );
+  const [selectedColor, setSelectedColor] = useState<string>(`${idItem?.split('-').slice(-1).join('-')}`);
   const totalPictureNumber = product?.images.length ?? 0;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
 
+  // useEffect(() => {
+  //   setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`)
+  // }, [location.pathname])
+
   const colorNames: ColorNames = {
     'space gray': '#CCCCCC',
-    spaceblack: '#333333',
-    midnightgreen: '#003300',
-    rosegold: '#FFCCCC',
-    spacegray: '#AAAAAA',
-    sierrablue: '#66CCFF',
-    graphite: '#666666',
-    midnight: '#000033',
+    'spaceblack': '#333333',
+    'midnightgreen': '#003300',
+    'rosegold': '#FFCCCC',
+    'spacegray': '#AAAAAA',
+    'sierrablue': '#66CCFF',
+    'graphite': '#666666',
+    'midnight': '#000033',
   };
 
   const handlerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -70,6 +74,15 @@ export const Details: React.FC<Props> = ({ list }) => {
 
   const handleChangeColor = (color: string) => {
     setSelectedColor(color);
+    
+    const newId = idItem
+      ?.split('-')
+      .slice(0, -1)
+      .concat(selectedColor)
+      .join('-');
+    if (product) {
+      navigate(`/${product.category}/${newId}`);
+    }
   };
 
   const handleChangeCapacity = (cap: string) => {
@@ -77,7 +90,7 @@ export const Details: React.FC<Props> = ({ list }) => {
 
     const newId = idItem?.split('-');
     if (newId) {
-      newId[3] = cap.toLowerCase();
+      newId[newId.length - 2] = cap.toLowerCase();
     }
     const newString = newId?.join('-');
     const newUrl = `/${product?.category}/${newString}`;

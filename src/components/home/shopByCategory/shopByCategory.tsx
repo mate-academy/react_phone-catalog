@@ -10,7 +10,7 @@ export const ShopByCategory: React.FC = () => {
   return (
     <div className={styles['shop_by_category']}>
       <h2 className={styles['title']}>Shop By Category</h2>
-      <Link to="/products" className={styles['shop_by_category__section']}>
+      <Link to="/phones" className={styles['shop_by_category__section']}>
         <img
           className={`${styles['shop_by_category__section__picture']} ${styles['shop_by_category__section__picture--products']}`}
           src=".\img\banner-accessories.png"

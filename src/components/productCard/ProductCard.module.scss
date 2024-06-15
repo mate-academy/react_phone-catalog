@@ -18,7 +18,7 @@
 
   &__product_name {
     width: 75%;
-    margin-bottom: 8px;
+    margin: 0 auto 8px;
   }
 
   &__container {
@@ -70,12 +70,14 @@
       width: 225px;
 
       &__name {
+        height: fit-content;
         font-weight: 700;
         font-size: 12px;
         color: #89939A;
       }
 
       &__value {
+        height: fit-content;
         font-weight: 700;
         font-size: 12px;
         color: #313237;
