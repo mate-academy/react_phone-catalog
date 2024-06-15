@@ -16,21 +16,22 @@ export const BrandNewModels = () => {
   const { theme } = useContext(ThemeContext);
   const { products } = useContext(PhoneContext);
   const lengthImgList = products.length - 1;
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const containerWidthRef = useRef(0); //save width container
+  const containerRef = useRef<HTMLDivElement>(null);
   const widthRef = useRef<HTMLLIElement>(null);
   const currentOffsetXRef = useRef(0); // save current off set X
-
   const startXRef = useRef(0); // initial x ref
-  const minOffsetXRef = useRef(0); // -55549
+  const minOffsetXRef = useRef(0);
 
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  console.log(currentIndex);
+
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
     let newOffsetX = // -946
-      getRefValue(currentOffsetXRef) - //поточне зміщення наприклад 856 (тобто на скільки змістився контейнер)
+      getRefValue(currentOffsetXRef) - //поточне зміщення 856 (тобто на скільки змістився контейнер)
       (getRefValue(startXRef) - getTouchEventData(e).clientX);
     const maxOffsetX = 0;
 
@@ -65,7 +66,17 @@ export const BrandNewModels = () => {
     }
 
     setOffsetX(newOffSetX);
-    setCurrentIndex(Math.abs(containerWidth / widthCard));
+
+    const cardsPerSwipe = Math.floor(
+      Math.abs(getRefValue(currentOffsetXRef) / widthCard),
+    );
+
+    if (getRefValue(currentOffsetXRef) === 0) {
+      setCurrentIndex(Math.floor(containerWidth / widthCard));
+    } else {
+      setCurrentIndex(Math.abs(cardsPerSwipe));
+      // console.log(cardsPerSwipe);
+    }
 
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('touchend', onTouchEnd);
@@ -92,12 +103,17 @@ export const BrandNewModels = () => {
 
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
-    setOffsetX(-(getRefValue(containerRef).offsetWidth * ind));
+    setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
 
   function handleNext() {
     if (currentIndex < lengthImgList) {
-      indicatorOnClick(currentIndex + 1);
+      const quantityCard = Math.floor(
+        getRefValue(containerRef).offsetWidth /
+          getRefValue(widthRef).offsetWidth,
+      );
+
+      indicatorOnClick(currentIndex + quantityCard);
     } else if (currentIndex === lengthImgList) {
       indicatorOnClick(0);
     }
@@ -105,7 +121,12 @@ export const BrandNewModels = () => {
 
   function handlePrev() {
     if (currentIndex > 0) {
-      indicatorOnClick(currentIndex - 1);
+      const quantityCard = Math.ceil(
+        getRefValue(containerRef).offsetWidth /
+          getRefValue(widthRef).offsetWidth,
+      );
+
+      indicatorOnClick(currentIndex - quantityCard);
     } else if (currentIndex === 0) {
       indicatorOnClick(2);
     }
@@ -143,18 +164,23 @@ export const BrandNewModels = () => {
           onTouchStart={onTouchStart}
           onMouseDown={onTouchStart}
         >
-          <ul className={style.brandNewModels__cardsList}>
+          <ul className={style.brandNewModels__cardsList} draggable={false}>
             {products.map(product => (
               <li
                 className={style.brandNewModels__card}
                 key={product.id}
                 ref={widthRef}
               >
-                <a href="#" className={style.brandNewModels__cardLink}>
+                <a
+                  href="#"
+                  className={style.brandNewModels__cardLink}
+                  draggable={false}
+                >
                   <img
                     src={product.image}
                     alt={product.name}
                     className={style.brandNewModels__cardImg}
+                    draggable={false}
                   />
                 </a>
                 <div className={style.brandNewModels__cardContent}>
