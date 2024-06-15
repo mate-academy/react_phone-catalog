@@ -8,6 +8,7 @@ import accessoriesFromServer from './api/accessories.json';
 import { ProductsTypes } from './types/ProductsTypes';
 import { Favourites } from './components/Favourites';
 import { Cart } from './components/Cart';
+import { PageNotFound } from './components/PageNotFound';
 
 export const RoutesComponent = () => {
   return (
@@ -43,6 +44,7 @@ export const RoutesComponent = () => {
       />
       <Route path="/favourites" element={<Favourites />} />
       <Route path="/cart" element={<Cart />} />
+      <Route path="*" element={<PageNotFound />} />
     </Routes>
   );
 };

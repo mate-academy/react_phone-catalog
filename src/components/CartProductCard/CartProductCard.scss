@@ -6,6 +6,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  flex-wrap: wrap;
+
+  @include on-tablet {
+    flex-wrap: nowrap;
+  }
 
   &__first-block, &__second-block {
     display: flex;
@@ -75,6 +80,7 @@
     font-size: 20px;
     color: $white;
     @include defaultAnimation;
+    cursor: pointer;
 
     &:hover {
       background-color: $icons;
@@ -83,11 +89,22 @@
     &:disabled {
       background-color: transparent;
       border: 1px solid $elements;
+      cursor: default;
+    }
+  }
+
+  &__second-block {
+    flex-grow: 1;
+
+    @include on-tablet {
+      flex-grow: 0;
     }
   }
 
   &__price {
     color: $white;
+    display: flex;
+    justify-content: space-between;
 
     @include on-tablet {
       width: 80px;

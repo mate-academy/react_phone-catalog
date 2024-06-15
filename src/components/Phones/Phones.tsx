@@ -113,16 +113,17 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
 
   const canShow = useMemo(() => {
     const page = searchParams.get('page');
+    const perPage = searchParams.get('perPage') ?? products.length;
 
     return (
       !(phoneId || tabletId || accessoryId) &&
       !isNaN(Number(page)) &&
       Number(page) >= 0 &&
-      Number(page) < products.length
+      Number(page) <= Math.ceil(products.length / Number(perPage))
     );
   }, [phoneId, tabletId, accessoryId, searchParams, products.length]);
 
-  const handleGetProduct = () => {
+  const handleGetProduct = (isBoolean: boolean) => {
     const currentProduct = productsFromServer.find(prod =>
       Ids.includes(prod.itemId),
     );
@@ -151,7 +152,7 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
 
     const formattedProduct = getProduct();
 
-    if (formattedProduct && currentProduct) {
+    if (formattedProduct && currentProduct && !isBoolean) {
       return (
         <ProductDetails
           products={products}
@@ -159,6 +160,12 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
           category={currentProduct.category}
         />
       );
+    } else if (isBoolean) {
+      if (formattedProduct && currentProduct) {
+        return true;
+      }
+
+      return false;
     }
 
     return null;
@@ -167,7 +174,7 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
   return (
     <main className="products flex">
       <Path parentClassName="products" />
-      {canShow && (
+      {canShow ? (
         <Fragment>
           <h1 className="products__title">Mobile phones</h1>
           <p className="products__count body-text">
@@ -204,8 +211,20 @@ export const Phones: React.FC<Props> = ({ products, productsType }) => {
             parentClassName="products"
           />
         </Fragment>
+      ) : (
+        <h1 className="products__title">
+          {(phoneId || tabletId || accessoryId) &&
+            !handleGetProduct(true) &&
+            "Product didn't found"}
+
+          {!phoneId &&
+            !tabletId &&
+            !accessoryId &&
+            !canShow &&
+            "Page didn't found"}
+        </h1>
       )}
-      {(phoneId || tabletId || accessoryId) && handleGetProduct()}
+      {(phoneId || tabletId || accessoryId) && handleGetProduct(false)}
     </main>
   );
 };
