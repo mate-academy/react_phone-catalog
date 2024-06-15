@@ -27,7 +27,7 @@ export const BrandNewModels = () => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  console.log(currentIndex);
+  // console.log(currentIndex);
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
     let newOffsetX = // -946

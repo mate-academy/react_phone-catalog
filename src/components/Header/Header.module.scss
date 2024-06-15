@@ -6,7 +6,6 @@
   top: 0;
   z-index: 1;
   background-color: $background-color;
-  @extend %transitionPage;
 
   &__top {
     display: flex;
