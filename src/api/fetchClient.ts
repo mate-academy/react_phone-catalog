@@ -21,7 +21,7 @@ export const getSuggestedProducts = (
   return suggestedProducts;
 };
 
-const BASE_URL = 'http://vinogradova8.github.io/react_phone-catalog/api';
+const BASE_URL = 'https://vinogradova8.github.io/react_phone-catalog/api';
 
 function wait(delay: number): Promise<void> {
   return new Promise(resolve => {
