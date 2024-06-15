@@ -2,10 +2,10 @@ import { useContext, useMemo, useState } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import style from './Phones.module.scss';
 import { Pagination } from '../../pagination';
-import { PhoneCard } from './productCard';
 import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { ProductCard } from '../productCard';
 
 export const Phones: React.FC = () => {
   const { phonesTotalNumber, products, phones, isLoadingPhones } =
@@ -92,7 +92,7 @@ export const Phones: React.FC = () => {
           </div>
           <div className={style['phones__container']}>
             {phonesOnPage.map(phone => {
-              return <PhoneCard key={phone.id} product={phone} />;
+              return <ProductCard key={phone.id} type={'phones'} product={phone} />;
             })}
           </div>
           <div className={style['phones__choose_page']}>

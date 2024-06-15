@@ -1,0 +1,53 @@
+.brand_new_models {
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 288px;
+    height: 62px;
+    margin: 0 auto 24px;
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    width: 136px;
+    font-family: Montserrat, sans-serif;
+
+  }
+
+  &__button {
+    height: 32px;
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+
+    &__left {
+      border: 1px solid #E2E6E9;
+      height: 32px;
+      width: 32px;
+      background-image: url(../../../public/img/svg/arrow_left.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    // &__left.active {}
+
+    &__right {
+      border: 1px solid #E2E6E9;
+      height: 32px;
+      width: 32px;
+      background-image: url(../../../public/img/svg/arrow_right.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    // &__right.active {}
+  }
+
+  &__slider {
+    display: flex;
+    width: 440px;
+  }
+}

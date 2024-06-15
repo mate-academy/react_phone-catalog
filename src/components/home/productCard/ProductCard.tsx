@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
+import {  useNavigate } from 'react-router-dom';
 
 interface Props {
   product: Product;
@@ -8,15 +9,30 @@ interface Props {
 }
 
 export const ProductCard: React.FC<Props> = ({ product, discount }) => {
-  const { capacity, fullPrice, name, price, ram, screen } = product;
+  const { capacity, fullPrice, name, price, ram, screen, itemId, category } =
+    product;
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    const newId = itemId.split('-').slice(0, -2).join('-');
+    const newUrl = `/${category}/${newId}`
+
+    return navigate(newUrl);
+  };
+
+
 
   return (
     <div className={styles['productCard']}>
       <img
         className={styles['productCard__picture']}
         src={`./${product.image}`}
+        onClick={handleClick}
       />
-      <p className={styles['productCard__product_name']}>{name}</p>
+      <p className={styles['productCard__product_name']} onClick={handleClick}>
+        {name}
+      </p>
+
       {discount ? (
         <>
           <div className={styles['productCard__container']}>

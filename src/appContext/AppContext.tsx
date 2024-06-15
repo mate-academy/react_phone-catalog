@@ -25,6 +25,10 @@ type AppContextProps = {
   setIsLoadingTablets: React.Dispatch<React.SetStateAction<boolean>>;
   isLoadingAccessories: boolean;
   setIsLoadingAccessories: React.Dispatch<React.SetStateAction<boolean>>;
+  setAccessoriesTotalNumber: React.Dispatch<React.SetStateAction<number>>;
+  setPhonesTotalNumber: React.Dispatch<React.SetStateAction<number>>;
+  setProductsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
+  setTabletsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
 };
 
 type Props = {
@@ -43,10 +47,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [isLoadingPhones, setIsLoadingPhones] = useState(true);
   const [isLoadingTablets, setIsLoadingTablets] = useState(true);
   const [isLoadingAccessories, setIsLoadingAccessories] = useState(false);
-  const accessoriesTotalNumber = accessories.length;
-  const phonesTotalNumber = phones.length;
-  const productsTotalNumber = products.length;
-  const tabletsTotalNumber = tablets.length;
+  const [accessoriesTotalNumber, setAccessoriesTotalNumber] = useState(0);
+  const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
+  const [productsTotalNumber, setProductsTotalNumber] = useState(0);
+  const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
 
   const location = useLocation();
 
@@ -54,7 +58,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     setIsLoadingPoducts(true);
     fetch('./api/products.json')
       .then(response => response.json())
-      .then(setProducts)
+      .then(response => {
+        setProducts(response);
+        setProductsTotalNumber(response.length);
+      })
       .catch(err => {
         throw new Error(err);
       })
@@ -67,7 +74,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     setIsLoadingAccessories(true);
     fetch('./api/accessories.json')
       .then(response => response.json())
-      .then(setAccessories)
+      .then(response => {
+        setAccessories(response);
+        setAccessoriesTotalNumber(response.length);
+      })
       .catch(err => {
         throw new Error(err);
       })
@@ -80,7 +90,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     setIsLoadingPhones(true);
     fetch('./api/phones.json')
       .then(response => response.json())
-      .then(setPhones)
+      .then(response => {
+        setPhones(response);
+        setPhonesTotalNumber(response.length);
+      })
       .catch(err => {
         throw new Error(err);
       })
@@ -93,7 +106,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     setIsLoadingTablets(true);
     fetch('./api/tablets.json')
       .then(response => response.json())
-      .then(setTablets)
+      .then(response => {
+        setTablets(response);
+        setTabletsTotalNumber(response.length);
+      })
       .catch(err => {
         throw new Error(err);
       })
@@ -105,6 +121,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   return (
     <ContextApp.Provider
       value={{
+        setAccessoriesTotalNumber,
+        setPhonesTotalNumber,
+        setProductsTotalNumber,
+        setTabletsTotalNumber,
         isLoadingAccessories,
         isLoadingPhones,
         isLoadingPoducts,

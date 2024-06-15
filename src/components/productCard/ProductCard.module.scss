@@ -3,7 +3,7 @@
   min-width: 288px;
   height: 440px;
   border: 1px solid #E2E6E9;
-  margin: 0 0 16px ;
+  margin: 0 7px 16px ;
   font-size: 14px;
   display: flex;
   flex-direction: column;
@@ -65,8 +65,7 @@
     &__paragraph {
       display: flex;
       justify-content: space-between;
-      height: fit-content;
-      text-align: end;
+      height: 15px;
       margin-bottom: 8px;
       width: 225px;
 
@@ -103,7 +102,7 @@
     &__fav {
       width: 40px;
       border: 1px solid #B4BDC3;
-      background-image: url(../../../../public/img/svg/fav_icon.svg);
+      background-image: url(../../../public/img/svg/fav_icon.svg);
       background-repeat: no-repeat;
       background-position: center;
     }

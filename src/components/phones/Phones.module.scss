@@ -1,5 +1,5 @@
 .phones {
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,7 +19,6 @@
       color: #89939A;
       margin-bottom: 32px;
     }
-
   }
 
   &__filters {
@@ -60,9 +59,7 @@
         height: 40px;
         border: 1px solid #B4BDC3;
       }
-
     }
-
   }
 
   &__container {

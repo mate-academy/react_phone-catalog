@@ -2,10 +2,10 @@ import { useContext, useMemo, useState } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
-import { AccessoriesCard } from './productCard';
 import { SortBy } from '../../types/SortBy';
 import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { ProductCard } from '../productCard';
 
 export const Accessories: React.FC = () => {
   const {
@@ -99,7 +99,7 @@ export const Accessories: React.FC = () => {
           </div>
           <div className={style['accessories__container']}>
             {accessoriesOnPage.map(accessory => {
-              return <AccessoriesCard key={accessory.id} product={accessory} />;
+              return <ProductCard type={'accessories'} key={accessory.id} product={accessory} />;
             })}
           </div>
           <div className={style['accessories__choose_page']}>

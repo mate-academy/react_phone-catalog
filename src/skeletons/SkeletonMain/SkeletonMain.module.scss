@@ -1,6 +1,5 @@
 .skeleton {
   display: flex;
-  // justify-content: center;
   align-items: center;
   flex-direction: column;
 
@@ -54,7 +53,7 @@
 
 
     .skeleton__item {
-      margin: 0 0 64px 0;
+      margin: 0 0 64px;
       width: 288px;
 
       &__picture {
@@ -95,15 +94,13 @@
     }
   }
 
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 200% 0;
+    }
 
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-position: 200% 0;
-  }
-
-  100% {
-    background-position: -200% 0;
+    100% {
+      background-position: -200% 0;
+    }
   }
 }

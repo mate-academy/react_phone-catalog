@@ -1,32 +1,40 @@
-import React, { useContext, useEffect, useState } from 'react';
-import styles from './Slider.module.scss';
+import React, { useEffect, useState } from 'react';
+import Styles from './itemSlider.module.scss';
+import { Item } from '../../types/Item';
+import { getNumber } from '../../functions/getNumber';
 import { ProductCard } from '../productCard';
-import { getNumber } from '../../../functions/getNumber';
-import { Product } from '../../../types/Product';
-import { ContextApp } from '../../../appContext/AppContext';
 
 type Props = {
+  type: string;
+  list: Item[];
   title: string;
   discount?: boolean;
   showRandom?: boolean;
 };
 
-export const Slider: React.FC<Props> = ({ title, discount, showRandom }) => {
-  const {products,setProductsTotalNumber,productsTotalNumber} = useContext(ContextApp)
+export const ItemSlider: React.FC<Props> = ({
+  title,
+  type,
+  discount,
+  showRandom,
+  list,
+}) => {
   const [active, setActive] = useState(0);
-  const [copyProducts, setCopyProducts] = useState<Product[]>([...products]);
+  const [copyProducts, setCopyProducts] = useState<Item[]>([...list]);
+  const [productsTotalNumber, setProductsTotalNumber] = useState(list.length);
 
   useEffect(() => {
     if (showRandom) {
-      const maxNumber = getNumber(10, productsTotalNumber);
+      const maxNumber = getNumber(15, 124);
       const minNumber = Math.floor(Math.random() * 10);
-      const newProducts = [...products].slice(minNumber, maxNumber);
+      const newProducts = [...list].slice(minNumber, maxNumber);
       setCopyProducts(newProducts);
       setProductsTotalNumber(newProducts.length);
     } else {
-      setCopyProducts([...products]);
+      setCopyProducts([...list]);
+      setProductsTotalNumber(copyProducts.length);
     }
-  }, [showRandom, products, productsTotalNumber, setProductsTotalNumber]);
+  }, [showRandom, list]);
 
   const handlerleft = () => {
     if (active < 0) {
@@ -45,34 +53,35 @@ export const Slider: React.FC<Props> = ({ title, discount, showRandom }) => {
 
   return (
     <>
-      <div className={styles['brand_new_models']}>
-        <div className={styles['brand_new_models__container']}>
-          <h2 className={styles['brand_new_models__title']}>{title}</h2>
-          <div className={styles['brand_new_models__button']}>
+      <div className={Styles['brand_new_models']}>
+        <div className={Styles['brand_new_models__container']}>
+          <h2 className={Styles['brand_new_models__title']}>{title}</h2>
+          <div className={Styles['brand_new_models__button']}>
             <div
               onClick={handlerleft}
-              className={styles['brand_new_models__button__left']}
+              className={Styles['brand_new_models__button__left']}
             ></div>
             <div
               onClick={handlerRight}
-              className={styles['brand_new_models__button__right']}
+              className={Styles['brand_new_models__button__right']}
             ></div>
           </div>
         </div>
 
         <div
           style={{
-            transform: `translateX(-${active * 228}px)`,
+            transform: `translateX(-${active * 302}px)`,
             transition: 'transform 0.5s ease-in-out',
           }}
-          className={styles['brand_new_models__slider']}
+          className={Styles['brand_new_models__slider']}
         >
           {copyProducts
-            .sort((a, b) => b.fullPrice - a.fullPrice)
-            .map((product: Product) => {
+            .sort((a, b) => b.priceRegular - a.priceRegular)
+            .map((product: Item) => {
               if (discount) {
                 return (
                   <ProductCard
+                    type={type}
                     key={product.id}
                     product={product}
                     discount={true}
@@ -82,6 +91,7 @@ export const Slider: React.FC<Props> = ({ title, discount, showRandom }) => {
 
               return (
                 <ProductCard
+                  type={type}
                   key={product.id}
                   product={product}
                   discount={false}

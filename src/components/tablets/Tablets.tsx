@@ -4,8 +4,9 @@ import style from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../../types/SortBy';
-import { TabletCard } from './productCard/TabletCard';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { ProductCard } from '../productCard';
+
 
 export const Tablets: React.FC = () => {
   const { tabletsTotalNumber, isLoadingTablets, tablets, products } =
@@ -91,7 +92,7 @@ export const Tablets: React.FC = () => {
           </div>
           <div className={style['tablets__container']}>
             {tabletsOnPage.map(phone => {
-              return <TabletCard key={phone.id} product={phone} />;
+              return <ProductCard key={phone.id} type={'tablets'} product={phone} />;
             })}
           </div>
           <div className={style['tablets__choose_page']}>

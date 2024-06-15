@@ -1,1 +1,0 @@
-export { AccessoriesCard } from './AccessoriesCard';
