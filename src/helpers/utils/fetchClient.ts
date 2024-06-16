@@ -25,9 +25,6 @@ function request<T>(
 
   return wait(100)
     .then(() => {
-      // eslint-disable-next-line
-      console.log(BASE_URL + url);
-
       return fetch(BASE_URL + url, options);
     })
     .then(response => {

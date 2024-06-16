@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import './ProductPhoto.scss';
 import classNames from 'classnames';
 
@@ -9,6 +9,10 @@ type Props = {
 
 export const ProductPhoto: React.FC<Props> = ({ images, productName }) => {
   const [pathMainImg, setPathMainImg] = useState(images[0]);
+
+  useEffect(() => {
+    setPathMainImg(images[0]);
+  }, [images]);
 
   const exchangeImg = (image: string) => {
     setPathMainImg(image);

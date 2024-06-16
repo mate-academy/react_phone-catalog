@@ -9,7 +9,7 @@ export interface DeviceDetails {
   priceRegular: number;
   priceDiscount: number;
   colorsAvailable: string[];
-  color: string[];
+  color: string;
   images: string[];
   description: Description[];
   screen: string;

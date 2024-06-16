@@ -58,7 +58,7 @@ export const ProductButtons: React.FC<Props> = ({
   useEffect(() => {
     setIsInFavorites(checkIsInFavorites());
     setIsInCart(checkIsInCart());
-  }, []);
+  }, [id]);
 
   const addFirstToCart = () => {
     const firstInCart: CartObjType = {

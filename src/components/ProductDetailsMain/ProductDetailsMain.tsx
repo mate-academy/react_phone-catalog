@@ -6,9 +6,10 @@ import { ProductContext } from '../../helpers/utils/productsContext';
 import { DeviceDetails } from '../../helpers/types/DeviceDetails';
 import { ButtonBack } from '../ButtonBack';
 import { DirectionPath } from '../../helpers/types/DirectionPath';
-import { ProductPhoto } from '../ProductPhoto';
 import { BriefProductInfo } from '../BriefProductInfo';
 import { Prices } from '../../helpers/types/Prices';
+import { ColorCapacitySelector } from '../ColorSelector';
+import { ProductPhoto } from '../ProductPhoto';
 
 type Props = {
   product: DeviceDetails;
@@ -16,7 +17,16 @@ type Props = {
 
 export const ProductDetailsMain: React.FC<Props> = ({ product }) => {
   const { products } = useContext(ProductContext);
-  const { name, images, id } = product;
+  const {
+    name,
+    images,
+    id,
+    colorsAvailable,
+    capacityAvailable,
+    color,
+    capacity,
+    namespaceId,
+  } = product;
   const { productId } = useParams();
   const [path, setPath] = useState<DirectionPath[]>();
   const [prices, setPrices] = useState<Prices>();
@@ -65,6 +75,14 @@ export const ProductDetailsMain: React.FC<Props> = ({ product }) => {
         </div>
 
         <div className="main-product-details__brief-info">
+          <ColorCapacitySelector
+            colorsAvailable={colorsAvailable}
+            capacityAvailable={capacityAvailable}
+            currentColor={color}
+            currentCapacity={capacity}
+            namespaceId={namespaceId}
+          />
+
           {prices && (
             <BriefProductInfo
               id={id}

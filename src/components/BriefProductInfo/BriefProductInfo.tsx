@@ -31,7 +31,7 @@ export const BriefProductInfo: React.FC<Props> = ({
         setShortDetails({ screen, capacity, ram });
       },
     );
-  }, []);
+  }, [id]);
 
   return (
     <article className="brief-product-info">

@@ -1,0 +1,21 @@
+@import '../../helpers/style/variables';
+@import '../../helpers/style/mixins';
+
+.color-item {
+  border-radius: 50%;
+  padding: 3px;
+  box-sizing: border-box;
+  width: 32px;
+
+  border: 2px solid $elements-color;
+
+  &--active {
+    border: 1px solid $primary-color;
+  }
+
+  &__color {
+    border-radius: 50%;
+    width: 100%;
+    padding-bottom: 100%;
+  }
+}
