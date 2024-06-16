@@ -18,11 +18,13 @@ export const Favourites = () => {
 
       <h1 className="favourites__title primary-title">Favourites</h1>
 
-      <p className="favourites__items">
-        {favouritesList.length === 1
-          ? '1 item'
-          : `${favouritesList.length} items`}
-      </p>
+      {favouritesList.length > 0 && (
+        <p className="favourites__items">
+          {favouritesList.length === 1
+            ? '1 item'
+            : `${favouritesList.length} items`}
+        </p>
+      )}
 
       <div className="favourites__items-container">
         {favouritesList.map((product, i) => (
@@ -33,6 +35,12 @@ export const Favourites = () => {
           />
         ))}
       </div>
+
+      {favouritesList.length === 0 && (
+        <h1 className="favourites__empty secondary-title">
+          You don&apos;t have favourites devices yet
+        </h1>
+      )}
     </div>
   );
 };
