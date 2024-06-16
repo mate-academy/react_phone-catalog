@@ -16,22 +16,26 @@ export const BrandNewModels = () => {
   const { theme } = useContext(ThemeContext);
   const { products } = useContext(PhoneContext);
   const lengthImgList = products.length - 1;
-  const containerRef = useRef<HTMLDivElement>(null);
 
   const containerWidthRef = useRef(0); //save width container
+  const containerRef = useRef<HTMLDivElement>(null);
   const widthRef = useRef<HTMLLIElement>(null);
   const currentOffsetXRef = useRef(0); // save current off set X
-
   const startXRef = useRef(0); // initial x ref
-  const minOffsetXRef = useRef(0); // -55549
+  const minOffsetXRef = useRef(0);
 
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
+  const indicatorOnClick = (ind: number) => {
+    setCurrentIndex(ind);
+    setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
+  };
+
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
-    let newOffsetX = // -946
-      getRefValue(currentOffsetXRef) - //поточне зміщення наприклад 856 (тобто на скільки змістився контейнер)
-      (getRefValue(startXRef) - getTouchEventData(e).clientX);
+    let newOffsetX =
+      getRefValue(currentOffsetXRef) -
+      (getRefValue(startXRef) - getTouchEventData(e).clientX); //старт Х (getRefValue(startXRef) віднімаємо client.X там де ми закінчили клік тобто клікнули на 377 свайпнули до 30
     const maxOffsetX = 0;
 
     if (newOffsetX > maxOffsetX) {
@@ -43,71 +47,110 @@ export const BrandNewModels = () => {
     }
 
     setOffsetX(newOffsetX);
+
+    // new of set X це резульати віднімання поточного зміщення на початку він 0 ПІСЛЯ першого разу він стає якраз тим резульатом зміщення а саме
+    // new of set x тобто на скільки було зміщено попереднього разу наш контейнер !! НА СКІЛЬКИ ВІДБУВСЯ СРОЛЛ!!!!
+    //останній if спрацьовує тоді коли ми наблизились до кінця контейнера і щоб далі не було скролу!
   };
 
   const onTouchEnd = () => {
     const widthCard = getRefValue(widthRef).offsetWidth;
-    const containerWidth = getRefValue(containerWidthRef); //container Width Actual 865
-    let newOffSetX = getRefValue(offsetXRef); // -234
-    const diff = getRefValue(currentOffsetXRef) - newOffSetX;
-    const cardGap = Math.floor(containerWidth / widthCard) * 16;
-    const card = Math.floor(containerWidth / widthCard);
-    const contNew = widthCard * card + cardGap;
+    const containerWidth = getRefValue(containerWidthRef);
+
+    let newOffSetX = getRefValue(offsetXRef); // на скільки відбувся новий скрол
+
+    const diff = getRefValue(currentOffsetXRef) - newOffSetX; // це різниця яка береться з попереднього скролу currentOffsetXRef і поточного що щойно відбувся newOffSetX
+    //це нам потрібно щоб зрозуміти чи свайп більший чим мінімальний 20!
+
+    const cardWidthGap = Math.floor(containerWidth / widthCard) * 16;
+    const cardsPerScroll = Math.floor(containerWidth / widthCard);
+    const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (diff > 0) {
-        newOffSetX = Math.floor(newOffSetX / contNew) * contNew;
+        console.log('First');
+        newOffSetX =
+          Math.floor(newOffSetX / widthVisibleCards) * widthVisibleCards;
       } else {
-        newOffSetX = Math.ceil(newOffSetX / contNew) * contNew;
+        console.log('Second');
+        // newOffSetX = newOffSetX
+
+        Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
       }
     } else {
-      newOffSetX = Math.round(newOffSetX / contNew) * contNew;
+      console.log('Third');
+      newOffSetX =
+        Math.round(newOffSetX / widthVisibleCards) * widthVisibleCards;
     }
 
     setOffsetX(newOffSetX);
-    setCurrentIndex(Math.abs(containerWidth / widthCard));
+
+    const quantityCard = Math.floor(
+      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+    );
+
+    const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
+
+    indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
 
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('touchend', onTouchEnd);
     window.removeEventListener('mousemove', onTouchMove);
     window.removeEventListener('mouseup', onTouchEnd);
+
+    // на End ми беремо ширину картки і ширину контенера
   };
 
   const onTouchStart = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
-    currentOffsetXRef.current = getRefValue(offsetXRef); // current off set X
-    startXRef.current = getTouchEventData(e).clientX; //initial x ref
+    currentOffsetXRef.current = getRefValue(offsetXRef); // тут ми записуємо попереднє значення на скільки було зроблено скрол минулого разу!
 
-    containerWidthRef.current = getRefValue(containerRef).offsetWidth; //save width container
+    startXRef.current = getTouchEventData(e).clientX; // це там де відбувся клік в якій області контейнера
+    containerWidthRef.current = getRefValue(containerRef).offsetWidth;
+
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
-      getRefValue(containerRef).scrollWidth;
+      getRefValue(containerRef).scrollWidth; //scroll це виявляється довжина контейнера мого!!!!
 
     window.addEventListener('touchmove', onTouchMove);
     window.addEventListener('touchend', onTouchEnd);
     window.addEventListener('mousemove', onTouchMove);
     window.addEventListener('mouseup', onTouchEnd);
-  };
 
-  const indicatorOnClick = (ind: number) => {
-    setCurrentIndex(ind);
-    setOffsetX(-(getRefValue(containerRef).offsetWidth * ind));
+    //при кліку ми на Start записуємо попереднє зміщення X
+    // Записуємо координату де ми клікнули
+    // Записуємо також поточну ширину контейнера!
+
+    //Далі ми віднімаємо ширину контейнера від довжини його скролу!
   };
 
   function handleNext() {
-    if (currentIndex < lengthImgList) {
-      indicatorOnClick(currentIndex + 1);
-    } else if (currentIndex === lengthImgList) {
-      indicatorOnClick(0);
+    const quantityCard = Math.floor(
+      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+    );
+    const pureLen = lengthImgList - quantityCard;
+
+    if (currentIndex < pureLen && currentIndex !== pureLen - 1) {
+      indicatorOnClick(currentIndex + quantityCard);
+    } else if (currentIndex === pureLen + 1) {
+      indicatorOnClick(currentIndex - quantityCard);
+    } else {
+      indicatorOnClick(pureLen + 1);
     }
   }
 
   function handlePrev() {
-    if (currentIndex > 0) {
-      indicatorOnClick(currentIndex - 1);
+    const quantityCard = Math.floor(
+      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+    );
+
+    if (currentIndex > quantityCard) {
+      indicatorOnClick(currentIndex - quantityCard);
+    } else if (currentIndex === quantityCard) {
+      indicatorOnClick(0);
     } else if (currentIndex === 0) {
-      indicatorOnClick(2);
+      indicatorOnClick(quantityCard);
     }
   }
 
@@ -143,27 +186,29 @@ export const BrandNewModels = () => {
           onTouchStart={onTouchStart}
           onMouseDown={onTouchStart}
         >
-          <ul className={style.brandNewModels__cardsList}>
+          <ul className={style.brandNewModels__cardsList} draggable={false}>
             {products.map(product => (
               <li
                 className={style.brandNewModels__card}
                 key={product.id}
                 ref={widthRef}
               >
-                <a href="#" className={style.brandNewModels__cardLink}>
+                <a
+                  href="#"
+                  className={style.brandNewModels__cardLink}
+                  draggable={false}
+                >
                   <img
                     src={product.image}
                     alt={product.name}
                     className={style.brandNewModels__cardImg}
+                    draggable={false}
                   />
                 </a>
                 <div className={style.brandNewModels__cardContent}>
-                  <div className={style.brandNewModels__containerCardName}>
-                    <h2 className={style.brandNewModels__cardName}>
-                      {product.name}
-                    </h2>
-                  </div>
-
+                  <h2 className={style.brandNewModels__cardName}>
+                    {product.name}
+                  </h2>
                   <p className={style.brandNewModels__phonePrice}>
                     &#36;{product.price}
                   </p>
