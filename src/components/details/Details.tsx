@@ -28,7 +28,7 @@ type ColorNames = {
 export const Details: React.FC<Props> = ({ list }) => {
   const { idItem } = useParams();
   const navigate = useNavigate();
-  // const location = useLocation();
+  const location = useLocation();
   const product = list.find(item => item.id === idItem);
   const [capacity, setCapacity] = useState(idItem?.split('-').slice(-2, -1).join(' ').toUpperCase());
   const [active, setActive] = useState(0);
@@ -37,9 +37,9 @@ export const Details: React.FC<Props> = ({ list }) => {
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
 
-  // useEffect(() => {
-  //   setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`)
-  // }, [location.pathname])
+  useEffect(() => {
+    setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`)
+  }, [location.pathname])
 
   const colorNames: ColorNames = {
     'space gray': '#CCCCCC',
@@ -74,7 +74,7 @@ export const Details: React.FC<Props> = ({ list }) => {
 
   const handleChangeColor = (color: string) => {
     setSelectedColor(color);
-    
+
     const newId = idItem
       ?.split('-')
       .slice(0, -1)
@@ -107,7 +107,7 @@ export const Details: React.FC<Props> = ({ list }) => {
     if (product) {
       navigate(`/${product.category}/${newId}`);
     }
-  }, [selectedColor, navigate, product, idItem]);
+  }, [selectedColor]);
 
   return (
     <>

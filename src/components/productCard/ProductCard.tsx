@@ -1,24 +1,58 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import Styles from './ProductCard.module.scss';
 import { Item } from '../../types/Item';
 import { Link } from 'react-router-dom';
+import cn from 'classnames';
+import { ContextApp } from '../../appContext/AppContext';
 
 interface Props {
-  type:string;
+  type: string;
   product: Item;
   discount?: boolean;
 }
 
 export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
-  const {
-    capacity,
-    priceDiscount,
-    priceRegular,
-    ram,
-    screen,
-    images,
-    id
-  } = product;
+  const { capacity, priceDiscount, priceRegular, ram, screen, images, id } =
+    product;
+  const { fav, setFav, cart, setCart } = useContext(ContextApp);
+
+
+
+  const handleAddFav = (newItem: string) => {
+    if (fav.includes(newItem)) {
+      setFav(prevState => {
+        const updated = [...prevState].filter(item => item !== newItem);
+        localStorage.setItem('fav', JSON.stringify(updated));
+
+        return updated;
+      });
+    } else {
+      setFav(prevState => {
+        const updated = [...prevState, newItem];
+        localStorage.setItem('fav', JSON.stringify(updated));
+
+        return updated;
+      });
+    }
+  };
+
+  const handleAddCart = (newItem: string) => {
+    if (cart.includes(newItem)) {
+      setCart(prevState => {
+        const updated = [...prevState].filter(item => item !== newItem);
+        localStorage.setItem('cart', JSON.stringify(updated));
+
+        return updated;
+      });
+    } else {
+      setCart(prevState => {
+        const updated = [...prevState, newItem];
+        localStorage.setItem('cart', JSON.stringify(updated));
+
+        return updated;
+      });
+    }
+  };
 
   return (
     <div className={Styles['productCard']}>
@@ -90,8 +124,20 @@ export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
       </div>
 
       <div className={Styles['productCard__buttons']}>
-        <div className={Styles['productCard__buttons__add']}>Add to cart</div>
-        <div className={Styles['productCard__buttons__fav']}></div>
+        <div
+          onClick={() => handleAddCart(product.id)}
+          className={cn(Styles['productCard__buttons__add'],{
+            [Styles.productCard__buttons__add__added]: cart.includes(product.id)
+          })}
+        ></div>
+        <div
+          onClick={() => handleAddFav(product.id)}
+          className={cn(Styles['productCard__buttons__fav'], {
+            [Styles.productCard__buttons__fav__selected]: fav.includes(
+              product.id,
+            ),
+          })}
+        ></div>
       </div>
     </div>
   );

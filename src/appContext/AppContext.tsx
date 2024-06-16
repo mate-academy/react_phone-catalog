@@ -29,6 +29,10 @@ type AppContextProps = {
   setPhonesTotalNumber: React.Dispatch<React.SetStateAction<number>>;
   setProductsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
   setTabletsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
+  cart: string[];
+  fav: string[];
+  setCart: React.Dispatch<React.SetStateAction<string[]>>;
+  setFav: React.Dispatch<React.SetStateAction<string[]>>;
 };
 
 type Props = {
@@ -51,6 +55,22 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
+
+  const [cart, setCart] = useState<string[]>(() => {
+    const cart = localStorage.getItem('users');
+
+    return cart ? JSON.parse(cart) : []
+  }
+
+  );
+  const [fav, setFav] = useState<string[]>(() => {
+    const fav = localStorage.getItem('fav');
+
+    return fav ? JSON.parse(fav) : []
+  });
+
+  console.log('fav!!', fav);
+  console.group('cart!!', cart);
 
   const location = useLocation();
 
@@ -121,6 +141,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   return (
     <ContextApp.Provider
       value={{
+        cart,
+        fav,
+        setCart,
+        setFav,
         setAccessoriesTotalNumber,
         setPhonesTotalNumber,
         setProductsTotalNumber,

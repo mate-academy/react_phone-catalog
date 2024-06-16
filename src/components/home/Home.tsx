@@ -1,7 +1,6 @@
 import React, { useContext } from 'react';
 import styles from './Home.module.scss';
 import { SectionDashSlider } from './sectionDashSlider';
-
 import { ShopByCategory } from './shopByCategory/shopByCategory';
 import { SkeletonMain } from '../../skeletons/SkeletonMain';
 import { ContextApp } from '../../appContext/AppContext';
