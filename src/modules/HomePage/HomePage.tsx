@@ -48,7 +48,7 @@ export const HomePage = React.memo(() => {
     ...hotPricesAccessories,
   ].sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
-  return !error ? (
+  return error ? (
     <div className="something-wrong">
       <h1 className="something-wrong__title primary-title">Something wrong</h1>
       <ReloadButton />
