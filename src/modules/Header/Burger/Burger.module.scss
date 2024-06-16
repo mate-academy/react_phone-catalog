@@ -1,0 +1,45 @@
+@import './../../../styles/utils/extends';
+@import './../../../styles/utils/vars';
+
+.header__burger {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: -1px 0 0 0 $elements;
+}
+
+.header__lines {
+  display: block;
+  position: relative;
+
+  @extend %burger-styles;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -5px;
+    transition: all 0.3s ease-in-out;
+
+    @extend %burger-styles;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    transition: all 0.3s ease-in-out;
+
+    @extend %burger-styles;
+  }
+  &.header__lines_open {
+    visibility: hidden;
+    &::after {
+      transform: rotate(45deg) translate(3px, 3px);
+      top: -4px;
+    }
+    &::before {
+      transform: rotate(-45deg) translate(3px, -3px);
+    }
+  }
+}

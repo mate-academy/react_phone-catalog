@@ -1,0 +1,13 @@
+@import './../../../../styles/utils/mixins';
+
+.cartItems {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-area: 1 / 1 / 2 / 17;
+  }
+}

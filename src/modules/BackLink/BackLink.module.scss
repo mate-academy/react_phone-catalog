@@ -1,0 +1,26 @@
+@import './../../styles/utils/vars';
+
+.backLink {
+  cursor: pointer;
+  color: $secondary;
+  position: relative;
+  padding-left: 20px;
+  &::before {
+    content: '';
+    background-image: url('./../../images/icons/chevron-right.svg');
+    width: 16px;
+    height: 16px;
+    background-repeat: no-repeat;
+    background-size: contain;
+    position: absolute;
+    left: 2px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: all 0.3s ease-in-out;
+  }
+  &:hover {
+    &::before {
+      left: 0;
+    }
+  }
+}

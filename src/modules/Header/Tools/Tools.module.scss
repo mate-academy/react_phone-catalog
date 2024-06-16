@@ -1,0 +1,89 @@
+@import './../../../styles/utils/mixins';
+@import './../../../styles/utils/vars';
+
+.header {
+  &__tools_tool {
+    position: relative;
+    img {
+      display: block;
+    }
+  }
+  &__tools_wrapper {
+    display: flex;
+    border-top: 1px solid $elements;
+
+    @include on-tablet {
+      border-top: unset;
+      height: 100%;
+    }
+  }
+  &__tools_count {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    width: 14px;
+    height: 14px;
+    background-color: $red;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    border-radius: 50%;
+    color: $white;
+    border: 2px solid $white;
+  }
+  &__tools__button {
+    flex: 0 1 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 64px;
+    &:last-child {
+      border-left: 1px solid $elements;
+    }
+
+    @include on-tablet {
+      flex: 1 1 auto;
+      height: auto;
+      width: 48px;
+      border-left: 1px solid $elements;
+      position: relative;
+      transition: all 0.3s ease-in-out;
+      &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        display: block;
+        height: 3px;
+        width: 0;
+        transition: width 0.3s ease-in-out;
+        background-color: $primary;
+      }
+      &:hover {
+        &::after {
+          width: 100%;
+          right: 0;
+        }
+      }
+    }
+
+    @include on-desktop {
+      width: 64px;
+    }
+  }
+  &__tools__button_active {
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      display: block;
+      height: 3px;
+      width: 100%;
+      background-color: $primary;
+    }
+  }
+}

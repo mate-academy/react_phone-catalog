@@ -1,0 +1,113 @@
+@import './../../../../../styles/utils/vars';
+@import './../../../../../styles/utils/mixins';
+
+.cartItem {
+  padding: 16px;
+  border: 1px solid $elements;
+
+  @include on-tablet {
+    padding-block: 20px;
+  }
+  &__wrapper {
+    display: grid;
+    grid-template-columns: 0.5fr repeat(3, 1fr);
+    grid-template-rows: repeat(2, auto);
+    grid-gap: 12px 23px;
+    align-items: center;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 1fr;
+      grid-column-gap: 20px;
+    }
+  }
+  &__btn {
+    grid-area: 1 / 1 / 2 / 2;
+
+    @include on-tablet {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+  }
+  &__button {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    img {
+      transition: all 0.3s ease-in-out;
+    }
+    &:hover {
+      img {
+        transform: rotate(90deg);
+      }
+    }
+  }
+  &__img {
+    grid-area: 1 / 2 / 2 / 3;
+
+    @include on-tablet {
+      grid-area: 1 / 2 / 2 / 4;
+    }
+  }
+  &__title {
+    grid-area: 1 / 3 / 2 / 5;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+
+    @include on-tablet {
+      grid-area: 1 / 4 / 2 / 8;
+    }
+  }
+  &__counter {
+    grid-area: 2 / 1 / 3 / 4;
+
+    @include on-tablet {
+      grid-area: 1 / 8 / 2 / 11;
+      justify-self: center;
+    }
+  }
+  &__price {
+    grid-area: 2 / 4 / 3 / 5;
+    font-weight: 700;
+
+    @include on-tablet {
+      grid-area: 1 / 11 / 2 / 13;
+      justify-self: end;
+    }
+  }
+  &__count_wrapper {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+  &__increase,
+  &__decrease {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $secondary;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      border: 1px solid $primary;
+    }
+    &[disabled] {
+      cursor: default;
+      background-color: $elements;
+      opacity: 0.3;
+    }
+  }
+  &__picture {
+    max-height: 66px;
+    display: block;
+  }
+  &__count {
+    font-size: 14px;
+    font-weight: 600;
+  }
+}

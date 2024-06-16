@@ -1,0 +1,75 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+
+.productInfo {
+  margin-top: 50px;
+  &__wrapper {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 64px;
+
+    @include on-desktop {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  &__heading {
+    padding-bottom: 16px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 30px;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1.27;
+    color: $primary;
+  }
+  &__subHeading {
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 1.27;
+    color: $primary;
+    margin-bottom: 15px;
+  }
+  &__paragraph {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: $secondary;
+    & + & {
+      margin-top: 15px;
+    }
+  }
+  &__body {
+    & + & {
+      margin-top: 32px;
+    }
+  }
+}
+
+.productTech-item {
+  font-size: 14px;
+  & + & {
+    margin-top: 8px;
+  }
+  &__named {
+    color: $secondary;
+  }
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__property {
+    color: $primary;
+    font-weight: 500;
+  }
+}
+
+.productTech {
+  &__sticky {
+    position: static;
+
+    @include on-desktop {
+      position: sticky;
+      top: 80px;
+    }
+  }
+}

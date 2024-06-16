@@ -1,1 +1,61 @@
 // not empty
+@import './styles/utils/fonts';
+@import './styles/utils/typography';
+@import './styles/utils/reset';
+@import './styles/utils/vars';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  font-family: Mont, sans-serif;
+  &.body_lock {
+    overflow: hidden;
+  }
+}
+
+.root {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.main {
+  flex: 1 1 auto;
+  padding-top: 70px;
+
+  @include on-desktop {
+    padding-top: 95px;
+  }
+}
+
+.container {
+  max-width: $max-width-content;
+  margin: 0 auto;
+  width: 100%;
+  padding: 0 15px;
+}
+
+:root {
+  --swiper-theme-color: #313237 !important;
+  --color-silver: #f0f0f0;
+  --color-sierrablue: #afcde5;
+  --color-gold: #f8eddd;
+  --color-graphite: #696763;
+  --color-yellow: #fde56d;
+  --color-purple: #e6dfed;
+  --color-midnight: #1d242d;
+  --color-midnightgreen: #59645b;
+  --color-black: #15161a;
+  --color-rosegold: #fbdad3;
+  --color-spaceblack: #302e2d;
+  --color-blue: #343950;
+  --color-red: #f05157;
+  --color-spacegray: #3e3c3b;
+  --color-starlight: #e8e2d7;
+  --color-pink: #e6d0cc;
+  --color-green: #e4efe0;
+  --color-skyblue: #bdd0de;
+}

@@ -1,0 +1,12 @@
+@import './../../../styles/utils/mixins';
+
+.logo {
+  margin-bottom: 15px;
+
+  @include on-tablet {
+    margin-bottom: 0;
+  }
+  &__img {
+    width: 89px;
+  }
+}

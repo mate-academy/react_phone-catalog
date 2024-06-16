@@ -1,0 +1,34 @@
+@import './../../../styles/utils/vars';
+@import './../../../styles/utils/mixins';
+
+.footer {
+  &__navigation {
+    margin-bottom: 25px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+  &__link {
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+    text-transform: uppercase;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $primary;
+    }
+  }
+  &__list {
+    display: block;
+
+    @include on-tablet {
+      display: flex;
+      gap: 20px;
+    }
+
+    @include on-desktop {
+      gap: 110px;
+    }
+  }
+}

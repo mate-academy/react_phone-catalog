@@ -1,0 +1,18 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements;
+  padding-block: 32px;
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+}

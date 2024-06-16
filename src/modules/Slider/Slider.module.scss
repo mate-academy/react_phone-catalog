@@ -1,0 +1,68 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+
+.slider {
+  margin-bottom: 15px;
+
+  @include on-tablet {
+    margin-bottom: 10px;
+  }
+  &__wrapper {
+    height: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 16px;
+      min-width: 0;
+    }
+
+    max-height: 400px;
+  }
+  &__container {
+    max-width: $max-width-content;
+    margin: 0 auto;
+
+    @include on-tablet {
+      padding: 0 25px;
+      margin-top: 55px;
+    }
+  }
+  &__button_prev,
+  &__button_next {
+    border: 1px solid $elements;
+    transition: border 0.3s ease-in-out;
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      flex: 0 0 32px;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+    }
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 7px;
+    margin-top: 12px;
+
+    @include on-tablet {
+      gap: 10px;
+      margin-top: 20px;
+    }
+  }
+}
+
+.slide {
+  text-align: center;
+  height: auto;
+  img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+  }
+}

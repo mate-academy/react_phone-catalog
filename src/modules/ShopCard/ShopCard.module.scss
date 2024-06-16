@@ -1,0 +1,100 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/extends';
+
+.card {
+  padding: 32px;
+  border: 1px solid $elements;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  transition: all 0.3s ease-in-out;
+  svg {
+    height: 100%;
+  }
+  &:hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+  &__picture {
+    max-height: 175px;
+  }
+  &__description {
+    font-size: 14px;
+    color: $primary;
+    flex-grow: 1;
+  }
+  &__priceBox {
+    display: flex;
+    gap: 8px;
+  }
+  &__sale_price {
+    font-weight: 600;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+  &__original_price {
+    font-weight: 700;
+  }
+  &__line {
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+  &__details {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  &__detailsInfo {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__detailsInfo_name {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.27;
+    color: $secondary;
+  }
+  &__detailsInfo_characteristic {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.27;
+    color: $primary;
+  }
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 11px;
+    height: 100%;
+    opacity: 1;
+    &_hide {
+      display: none;
+    }
+  }
+  &__image {
+    text-align: center;
+  }
+  &__buttons_card {
+    @extend %default-button;
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+  }
+  &__buttons_like {
+    @extend %like-button;
+  }
+  &__success_added {
+    height: 100%;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    color: $green;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    border: 1px solid $elements;
+  }
+}

@@ -1,0 +1,19 @@
+@import './../../styles/utils/vars';
+@import './../../styles/utils/mixins';
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: $white;
+  z-index: 15;
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 $elements;
+  }
+  &__info {
+    display: flex;
+  }
+}
