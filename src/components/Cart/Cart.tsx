@@ -7,7 +7,8 @@ import { Product } from '../../types/Product';
 import { ModalWindow } from '../ModalWindow';
 
 export const Cart: React.FC = () => {
-  const { items, setItems, allPrices, setAllPrices } = useContext(ItemsContext);
+  const { items, setItems, allPrices, setAllPrices, amountOfItems } =
+    useContext(ItemsContext);
 
   const [totalPrice, setTotalPrice] = useState(0);
   const [isModalWindowOpen, setIsModalWindowOpen] = useState(false);
@@ -73,7 +74,7 @@ export const Cart: React.FC = () => {
             <div className="cart-page__total-price-info">
               <p className="cart-page__total-price-value">{`$${totalPrice}`}</p>
               <p className="cart-page__total-price-text">
-                {`Total for ${items.length} items`}
+                {`Total for ${amountOfItems} items`}
               </p>
             </div>
 

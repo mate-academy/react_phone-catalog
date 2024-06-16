@@ -17,7 +17,7 @@ export const BurgerMenu: React.FC<Props> = ({
   darkTheme,
   setDarkTheme,
 }) => {
-  const { favoriteProducts, items } = useContext(ItemsContext);
+  const { favoriteProducts, items, amountOfItems } = useContext(ItemsContext);
 
   const links = ['home', 'phones', 'tablets', 'accessories'];
 
@@ -112,7 +112,7 @@ export const BurgerMenu: React.FC<Props> = ({
           onClick={() => setIsBurgerMenuOpen(!isBurgerMenuOpen)}
         >
           {items.length > 0 && (
-            <div className="selected__number-of-selected">{items.length}</div>
+            <div className="selected__number-of-selected">{amountOfItems}</div>
           )}
         </NavLink>
       </div>

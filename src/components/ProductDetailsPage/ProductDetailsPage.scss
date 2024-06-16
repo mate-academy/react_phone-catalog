@@ -46,7 +46,7 @@
 
   &__main-info {
     @include page-grid;
-
+    
     justify-items: stretch;
     row-gap: 40px;
     margin-bottom: 56px;
@@ -75,6 +75,7 @@
     position: relative;
     padding-bottom: 100%;
     max-height: 288px;
+    grid-column: span 4;
 
     @include on-tablet {
       grid-column: 2 / 8;
@@ -120,7 +121,7 @@
     width: 100%;
 
     @include on-tablet {
-      grid-column: 8 / 13;
+      grid-column: 8 / -1;
     }
 
     @include on-desktop {
@@ -258,6 +259,8 @@
   &__actions {
     margin-bottom: 32px;
   }
+
+
 
   &__product-info {
     &--tech {

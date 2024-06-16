@@ -5,25 +5,23 @@ import { Item } from './types/Item';
 import { Price } from './types/Price';
 
 type ItemsContextType = {
+  amountOfItems: number;
   favoriteProducts: Product[];
   setFavoriteProducts: React.Dispatch<React.SetStateAction<Product[]>>;
   items: Item[];
   setItems: React.Dispatch<React.SetStateAction<Item[]>>;
   allPrices: Price[];
   setAllPrices: React.Dispatch<React.SetStateAction<Price[]>>;
-  // darkTheme: boolean;
-  // setDarkTheme: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export const ItemsContext = React.createContext<ItemsContextType>({
+  amountOfItems: 0,
   favoriteProducts: [],
   setFavoriteProducts: () => {},
   items: [],
   setItems: () => {},
   allPrices: [],
   setAllPrices: () => {},
-  // darkTheme: darkTheme,
-  // setDarkTheme: () => {},
 });
 
 type Props = {
@@ -40,28 +38,28 @@ export const ItemsProvider: React.FC<Props> = ({ children }) => {
 
   const [allPrices, setAllPrices] = useLocalStorage<Price[]>('allPrices', []);
 
-  // const [darkTheme, setDarkTheme] = useLocalStorage('darkTheme', false);
+  const amountOfItems = items.reduce((prev, item) => {
+    return item.quantity + prev;
+  }, 0);
 
   const value = useMemo(
     () => ({
+      amountOfItems,
       favoriteProducts,
       setFavoriteProducts,
       items,
       setItems,
       allPrices,
       setAllPrices,
-      // darkTheme,
-      // setDarkTheme,
     }),
     [
+      amountOfItems,
       favoriteProducts,
       setFavoriteProducts,
       items,
       setItems,
       allPrices,
       setAllPrices,
-      // darkTheme,
-      // setDarkTheme,
     ],
   );
 

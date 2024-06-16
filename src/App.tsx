@@ -3,7 +3,7 @@ import cn from 'classnames';
 import './App.scss';
 
 import { Header } from './components/Header';
-import { Navigate, Outlet, useParams } from 'react-router-dom';
+import { Navigate, Outlet, useLocation, useParams } from 'react-router-dom';
 import { Footer } from './components/Footer';
 import { BurgerMenu } from './components/BurgerMenu';
 import { ItemsProvider } from './ItemsContext';
@@ -14,6 +14,8 @@ export const App: React.FC = () => {
   const [darkTheme, setDarkTheme] = useLocalStorage('darkTheme', false);
 
   const { currentId } = useParams();
+
+  const { pathname } = useLocation();
 
   if (currentId === 'home') {
     return <Navigate to=".." />;
@@ -35,7 +37,11 @@ export const App: React.FC = () => {
             setDarkTheme={setDarkTheme}
           />
         ) : (
-          <main>
+          <main
+            className={cn({
+              main: pathname === '/cart' || pathname === '/favorites',
+            })}
+          >
             <Header
               setIsBurgerMenuOpen={setIsBurgerMenuOpen}
               isBurgerMenuOpen={isBurgerMenuOpen}
