@@ -33,9 +33,15 @@ export const BrandNewModels = () => {
   };
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
+<<<<<<< HEAD
     let newOffsetX =
       getRefValue(currentOffsetXRef) -
       (getRefValue(startXRef) - getTouchEventData(e).clientX); //старт Х (getRefValue(startXRef) віднімаємо client.X там де ми закінчили клік тобто клікнули на 377 свайпнули до 30
+=======
+    let newOffsetX = // -946
+      getRefValue(currentOffsetXRef) - //поточне зміщення 856 (тобто на скільки змістився контейнер)
+      (getRefValue(startXRef) - getTouchEventData(e).clientX);
+>>>>>>> de1bf5c4867e650a515d27a8d2c7895f01457da3
     const maxOffsetX = 0;
 
     if (newOffsetX > maxOffsetX) {
@@ -84,6 +90,7 @@ export const BrandNewModels = () => {
 
     setOffsetX(newOffSetX);
 
+<<<<<<< HEAD
     const quantityCard = Math.floor(
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
     );
@@ -91,6 +98,17 @@ export const BrandNewModels = () => {
     const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
 
     indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
+=======
+    const cardsPerSwipe = Math.floor(
+      Math.abs(getRefValue(currentOffsetXRef) / widthCard),
+    );
+
+    if (getRefValue(currentOffsetXRef) === 0) {
+      setCurrentIndex(Math.floor(containerWidth / widthCard));
+    } else {
+      setCurrentIndex(Math.abs(cardsPerSwipe));
+    }
+>>>>>>> de1bf5c4867e650a515d27a8d2c7895f01457da3
 
     window.removeEventListener('touchmove', onTouchMove);
     window.removeEventListener('touchend', onTouchEnd);
@@ -117,11 +135,17 @@ export const BrandNewModels = () => {
     window.addEventListener('mousemove', onTouchMove);
     window.addEventListener('mouseup', onTouchEnd);
 
+<<<<<<< HEAD
     //при кліку ми на Start записуємо попереднє зміщення X
     // Записуємо координату де ми клікнули
     // Записуємо також поточну ширину контейнера!
 
     //Далі ми віднімаємо ширину контейнера від довжини його скролу!
+=======
+  const indicatorOnClick = (ind: number) => {
+    setCurrentIndex(ind);
+    setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
+>>>>>>> de1bf5c4867e650a515d27a8d2c7895f01457da3
   };
 
   function handleNext() {
@@ -132,13 +156,16 @@ export const BrandNewModels = () => {
 
     if (currentIndex < pureLen && currentIndex !== pureLen - 1) {
       indicatorOnClick(currentIndex + quantityCard);
+<<<<<<< HEAD
     } else if (currentIndex === pureLen + 1) {
       indicatorOnClick(currentIndex - quantityCard);
+=======
+>>>>>>> de1bf5c4867e650a515d27a8d2c7895f01457da3
     } else {
       indicatorOnClick(pureLen + 1);
     }
   }
-
+  console.log(currentIndex);
   function handlePrev() {
     const quantityCard = Math.floor(
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
@@ -148,8 +175,11 @@ export const BrandNewModels = () => {
       indicatorOnClick(currentIndex - quantityCard);
     } else if (currentIndex === quantityCard) {
       indicatorOnClick(0);
+<<<<<<< HEAD
     } else if (currentIndex === 0) {
       indicatorOnClick(quantityCard);
+=======
+>>>>>>> de1bf5c4867e650a515d27a8d2c7895f01457da3
     }
   }
 
