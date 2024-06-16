@@ -56,20 +56,20 @@ export const Pagination: React.FC<Props> = React.memo(
 
     return (
       <div className="pagination">
-        <MoveButton move={prevPage} disabled={currentPage === 1} />
+        <MoveButton onMove={prevPage} disabled={currentPage === 1} />
 
         <div className="pagination__pages">
           {pages.map((page, i) => (
             <Number
               key={page}
-              move={() => handleChangePage(page)}
+              onMove={() => handleChangePage(page)}
               active={i === getActivePagePagination(currentPage, countPages)}
               number={page}
             />
           ))}
         </div>
 
-        <MoveButton move={nextPage} disabled={currentPage === countPages} />
+        <MoveButton onMove={nextPage} disabled={currentPage === countPages} />
       </div>
     );
   },

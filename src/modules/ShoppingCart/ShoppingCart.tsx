@@ -27,7 +27,7 @@ export const ShoppingCart = React.memo(() => {
   return (
     <div className="shopping-cart">
       <div className="shopping-cart__back">
-        <BackButton move={() => naigate(-1)} />
+        <BackButton onMove={() => naigate(-1)} />
       </div>
 
       <h1 className="shopping-cart__title primary-title">Cart</h1>

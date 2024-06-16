@@ -157,9 +157,9 @@ export const ProductListCarousel: React.FC<Props> = React.memo(
           <h2 className="carousel__title secondary-title">{title}</h2>
 
           <div className="carousel__slider-control">
-            <MoveButton move={handleMoveLeft} disabled={imgPosition <= 0} />
+            <MoveButton onMove={handleMoveLeft} disabled={imgPosition <= 0} />
             <MoveButton
-              move={handleMoveRight}
+              onMove={handleMoveRight}
               disabled={imgPosition >= maxPosition}
             />
           </div>

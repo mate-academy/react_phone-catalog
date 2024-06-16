@@ -4,22 +4,22 @@ import React from 'react';
 import classNames from 'classnames';
 
 type PropsArrow = {
-  move: () => void;
+  onMove: () => void;
   disabled?: boolean;
 };
 
 type PropsNumberAndSymbols = {
-  move: (page: number) => void;
+  onMove: (page: number) => void;
   active?: boolean;
   number?: number;
 };
 
 export const MoveButton: React.FC<PropsArrow> = React.memo(
-  ({ move, disabled }) => {
+  ({ onMove, disabled }) => {
     return (
       <button
         type="button"
-        onClick={move}
+        onClick={onMove}
         className={classNames('button', { disabled })}
       >
         <svg
@@ -43,13 +43,13 @@ export const MoveButton: React.FC<PropsArrow> = React.memo(
 );
 
 export const NumberOrSymbol: React.FC<PropsNumberAndSymbols> = React.memo(
-  ({ move, active, number }) => {
+  ({ onMove, active, number }) => {
     const setPage = (
       event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     ) => {
       const page = parseInt(event.currentTarget.value, 10);
 
-      return move(page);
+      return onMove(page);
     };
 
     return (
@@ -105,9 +105,9 @@ export const ReloadButton = React.memo(() => {
   );
 });
 
-export const BackButton: React.FC<PropsArrow> = React.memo(({ move }) => {
+export const BackButton: React.FC<PropsArrow> = React.memo(({ onMove }) => {
   return (
-    <button type="button" onClick={move} className="button back">
+    <button type="button" onClick={onMove} className="button back">
       <svg
         width="16"
         height="16"

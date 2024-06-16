@@ -127,7 +127,7 @@ export const ProductPage: React.FC = React.memo(() => {
       </div>
 
       <div className="product-page__back">
-        <BackButton move={() => navigate(-1)} />
+        <BackButton onMove={() => navigate(-1)} />
       </div>
 
       {loadedDevice && !errorLoadedDevice && device && (

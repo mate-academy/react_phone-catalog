@@ -82,13 +82,13 @@ export const ShoppingItem: React.FC<Props> = React.memo(({ cartItem }) => {
               disabled: countItems === 1,
             })}
           >
-            <Symbol move={onDecrease} />
+            <Symbol onMove={onDecrease} />
           </div>
 
           <p className="shopping-item__count-items">{countItems}</p>
 
           <div className="shopping-item__adding">
-            <Symbol move={onAdding} />
+            <Symbol onMove={onAdding} />
           </div>
         </div>
 

@@ -169,7 +169,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
     <div className="pictures-slider">
       <div className="pictures-slider__images-container">
         <div className="pictures-slider__move-left">
-          <MoveButton move={moveLeft} />
+          <MoveButton onMove={moveLeft} />
         </div>
 
         <div
@@ -210,7 +210,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
         </div>
 
         <div className="pictures-slider__move-right">
-          <MoveButton move={moveRight} />
+          <MoveButton onMove={moveRight} />
         </div>
       </div>
 

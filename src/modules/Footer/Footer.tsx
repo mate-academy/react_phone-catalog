@@ -38,7 +38,7 @@ export const Footer = React.memo(() => {
         <div className="footer__back-to-top">
           <p className="footer__back-to-top-title">Back to top</p>
           <div className="footer__back-to-top-button">
-            <MoveUp move={() => scrollToTop(true)} />
+            <MoveUp onMove={() => scrollToTop(true)} />
           </div>
         </div>
       </div>
