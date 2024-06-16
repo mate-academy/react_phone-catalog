@@ -68,17 +68,16 @@ export const BrandNewModels = () => {
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (diff > 0) {
-        console.log('First');
+        // console.log('First');
         newOffSetX =
           Math.floor(newOffSetX / widthVisibleCards) * widthVisibleCards;
       } else {
-        console.log('Second');
-        // newOffSetX = newOffSetX
-
-        Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
+        // console.log('Second');
+        newOffSetX =
+          Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
       }
     } else {
-      console.log('Third');
+      // console.log('Third');
       newOffSetX =
         Math.round(newOffSetX / widthVisibleCards) * widthVisibleCards;
     }
