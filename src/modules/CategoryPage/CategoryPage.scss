@@ -94,6 +94,7 @@
   &__loader {
     display: flex;
     align-items: center;
+    justify-content: center;
 
     --header-height: #{$header-height};
     --footer-height: #{$footer-height};

@@ -18,6 +18,10 @@
   box-sizing: content-box;
   border-left: solid 1px $border-color-light-gray;
 
+  & > :first-child:hover {
+    scale: 1.3;
+  }
+
   &--close {
     box-shadow: none;
   }

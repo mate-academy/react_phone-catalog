@@ -6,9 +6,11 @@ import { Product } from '../../types/Product';
 import { client } from '../../api';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { getMaxDifference } from '../../services/getMaxDifference';
+import { ReloadButton } from '../shared/Buttons/MoveButtons';
 
 export const HomePage = React.memo(() => {
   const [dataLoaded, setDataLoaded] = useState(false);
+  const [error, setError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
 
   const latestPhones = 'iphone 14';
@@ -21,6 +23,7 @@ export const HomePage = React.memo(() => {
 
   useEffect(() => {
     setDataLoaded(false);
+    setError(false);
 
     client
       .get<Product[]>(PRODUCT_URL)
@@ -28,7 +31,7 @@ export const HomePage = React.memo(() => {
         setProducts(data);
         setDataLoaded(true);
       })
-      .catch(() => {}); // setError
+      .catch(() => setError(true));
   }, []);
 
   const newModels = phones
@@ -45,7 +48,12 @@ export const HomePage = React.memo(() => {
     ...hotPricesAccessories,
   ].sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price));
 
-  return (
+  return !error ? (
+    <div className="something-wrong">
+      <h1 className="something-wrong__title primary-title">Something wrong</h1>
+      <ReloadButton />
+    </div>
+  ) : (
     <main className="home-page">
       <h1 className="home-page__greeting primary-title">
         Welcome to Nice Gadgets&nbsp;store!

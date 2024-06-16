@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext, useEffect, useState } from 'react';
 import { ProductCard } from '../ProductCard';
 import { getPadding } from '../../../services/getPadding';

@@ -18,7 +18,6 @@ import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
 import { emptyProduct } from '../constants/emptyProduct';
-// import { CartItem } from '../../types/CartItem';
 
 type Specs = {
   [key: string]: string | string[];

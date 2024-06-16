@@ -7,7 +7,6 @@ import { SpecsItem } from '../SpecsItem';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { scrollToTop } from '../../../services/scrollToTop';
-// import { CartItem } from '../../../types/CartItem';
 
 type Props = {
   product: Product;

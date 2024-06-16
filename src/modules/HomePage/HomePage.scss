@@ -38,3 +38,28 @@
     }
   }
 }
+
+.something-wrong {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 50px;
+
+  --header-height: #{$header-height};
+  --footer-height: #{$footer-height};
+
+  min-height: calc(100vh - var(--header-height) - var(--footer-height));
+
+  & > :last-child {
+    width: 150px;
+  }
+
+  @include on-tablet {
+    --footer-height: #{$footer-height-tablet};
+  }
+
+  @include on-desctop {
+    --header-height: #{#{$header-height-desctop}};
+  }
+}
