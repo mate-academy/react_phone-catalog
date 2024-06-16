@@ -27,8 +27,6 @@ export const BrandNewModels = () => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  // console.log(currentIndex);
-
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
     let newOffsetX = // -946
       getRefValue(currentOffsetXRef) - //поточне зміщення 856 (тобто на скільки змістився контейнер)
@@ -75,7 +73,6 @@ export const BrandNewModels = () => {
       setCurrentIndex(Math.floor(containerWidth / widthCard));
     } else {
       setCurrentIndex(Math.abs(cardsPerSwipe));
-      // console.log(cardsPerSwipe);
     }
 
     window.removeEventListener('touchmove', onTouchMove);
@@ -107,28 +104,27 @@ export const BrandNewModels = () => {
   };
 
   function handleNext() {
-    if (currentIndex < lengthImgList) {
-      const quantityCard = Math.floor(
-        getRefValue(containerRef).offsetWidth /
-          getRefValue(widthRef).offsetWidth,
-      );
+    const quantityCard = Math.floor(
+      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+    );
+    const pureLen = lengthImgList - quantityCard;
 
+    if (currentIndex < pureLen && currentIndex !== pureLen - 1) {
       indicatorOnClick(currentIndex + quantityCard);
-    } else if (currentIndex === lengthImgList) {
-      indicatorOnClick(0);
+    } else {
+      indicatorOnClick(pureLen + 1);
     }
   }
-
+  console.log(currentIndex);
   function handlePrev() {
-    if (currentIndex > 0) {
-      const quantityCard = Math.ceil(
-        getRefValue(containerRef).offsetWidth /
-          getRefValue(widthRef).offsetWidth,
-      );
+    const quantityCard = Math.floor(
+      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+    );
 
+    if (currentIndex > quantityCard) {
       indicatorOnClick(currentIndex - quantityCard);
-    } else if (currentIndex === 0) {
-      indicatorOnClick(2);
+    } else if (currentIndex === quantityCard) {
+      indicatorOnClick(0);
     }
   }
 
@@ -184,12 +180,9 @@ export const BrandNewModels = () => {
                   />
                 </a>
                 <div className={style.brandNewModels__cardContent}>
-                  <div className={style.brandNewModels__containerCardName}>
-                    <h2 className={style.brandNewModels__cardName}>
-                      {product.name}
-                    </h2>
-                  </div>
-
+                  <h2 className={style.brandNewModels__cardName}>
+                    {product.name}
+                  </h2>
                   <p className={style.brandNewModels__phonePrice}>
                     &#36;{product.price}
                   </p>

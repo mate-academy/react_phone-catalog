@@ -63,14 +63,10 @@
     background-color: $background-color-phoneCard;
   }
 
-  &__containerCardName {
+  &__cardName {
     display: flex;
     align-items: flex-end;
     min-height: 58px;
-    width: 100%;
-  }
-
-  &__cardName {
     margin-bottom: 8px;
     font-size: 14px;
     font-weight: 600;
@@ -79,14 +75,13 @@
 
   &__cardImg {
     margin-bottom: 8px;
-    object-fit: contain;
+    max-width: 100%;
   }
 
   &__cardLink {
     display: flex;
     justify-content: center;
-    width: 100%;
-    height: 196px;
+    height: 208px;
   }
 
   &__cardLine {
@@ -188,6 +183,7 @@
 
 @include onPhone {
   .brandNewModels {
+
     &__cardTitle {
       font-size: 22px;
       line-height: 31px;
