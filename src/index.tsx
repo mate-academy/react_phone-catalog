@@ -4,13 +4,16 @@ import { HashRouter } from 'react-router-dom';
 import { PageProvider } from './context/PageContext';
 import { FavouritesProvider } from './context/FavouritesContext';
 import { CartProvider } from './context/CartContext';
+import { IsActiveMenuProvider } from './context/IsActiveMenuContext';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <HashRouter>
     <PageProvider>
       <FavouritesProvider>
         <CartProvider>
-          <App />
+          <IsActiveMenuProvider>
+            <App />
+          </IsActiveMenuProvider>
         </CartProvider>
       </FavouritesProvider>
     </PageProvider>

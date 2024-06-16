@@ -1,12 +1,10 @@
-import { Route, Routes } from 'react-router-dom';
 import { MainFooter } from '../blocks/MainFooter';
 import { MenuFooter } from '../blocks/MenuFooter';
+import { Fragment, useContext } from 'react';
+import { IsActiveMenuContext } from '../../context/IsActiveMenuContext';
 
 export const Footer = () => {
-  return (
-    <Routes>
-      <Route path="/menu" element={<MenuFooter />} />
-      <Route path="*" element={<MainFooter />} />
-    </Routes>
-  );
+  const { isActiveMenu } = useContext(IsActiveMenuContext);
+
+  return <Fragment>{isActiveMenu ? <MenuFooter /> : <MainFooter />}</Fragment>;
 };

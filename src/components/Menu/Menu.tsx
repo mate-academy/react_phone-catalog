@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { PageContext } from '../../context/PageContext';
+import { useContext, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { IsActiveMenuContext } from '../../context/IsActiveMenuContext';
 
 const links = [
   { id: 1, title: 'home' },
@@ -11,7 +11,12 @@ const links = [
 ];
 
 export const Menu = () => {
-  const { lastPage } = useContext(PageContext);
+  const { setIsActiveMenu } = useContext(IsActiveMenuContext);
+  const location = useLocation();
+  const formattedLocation = useMemo(
+    () => location.pathname.split('/'),
+    [location],
+  );
 
   return (
     <section className="menu flex">
@@ -20,30 +25,14 @@ export const Menu = () => {
           <Link
             key={link.id}
             to={`/${link.title}`}
+            onClick={() => setIsActiveMenu(false)}
             className={classNames('menu__nav-item uppercase nav__item', {
-              'nav__item--selected': lastPage === link.title,
+              'nav__item--selected': formattedLocation[1] === link.title,
             })}
           >
             {`${link.title[0].toUpperCase()}${link.title.slice(1)}`}
           </Link>
         ))}
-        {/* <Link
-          to="#"
-          className={classNames('menu__nav-item uppercase nav__item', {
-            'nav__item--selected': lastPage === 'home',
-          })}
-        >
-          Home
-        </Link>
-        <Link to="/phones" className={isActiveLink}>
-          Phones
-        </Link>
-        <Link to="/tablets" className={isActiveLink}>
-          Tablets
-        </Link>
-        <Link to="/accessories" className={isActiveLink}>
-          Accessories
-        </Link> */}
       </nav>
     </section>
   );

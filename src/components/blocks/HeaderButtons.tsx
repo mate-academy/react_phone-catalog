@@ -1,8 +1,11 @@
 import classNames from 'classnames';
-import { NavLink, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Fragment } from 'react/jsx-runtime';
-import { PageContext } from '../../context/PageContext';
-import { useContext } from 'react';
+// import { PageContext } from '../../context/PageContext';
+import { useContext, useMemo } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { FavouritesContext } from '../../context/FavouritesContext';
+import { IsActiveMenuContext } from '../../context/IsActiveMenuContext';
 
 const buttons = [
   { id: 1, name: 'favourites' },
@@ -21,14 +24,19 @@ function isActiveButtonLink(prop: { isActive: boolean }, buttonName: string) {
 }
 
 export const HeaderButtons = () => {
-  const { setLastPage } = useContext(PageContext);
-  const location = useLocation();
+  const { cart } = useContext(CartContext);
+  const { favourites } = useContext(FavouritesContext);
+  const { setIsActiveMenu } = useContext(IsActiveMenuContext);
 
-  const handleSetPrevPage = () => {
-    const page = location.pathname.split('/')[1];
+  const totalCartCount = useMemo(() => {
+    let count = 0;
 
-    setLastPage(page);
-  };
+    cart.forEach(item => {
+      count += item.count;
+    });
+
+    return count;
+  }, [cart]);
 
   return (
     <Fragment>
@@ -48,12 +56,36 @@ export const HeaderButtons = () => {
       </nav>
       <div className="header__buttons">
         {buttons.map(button => (
-          <NavLink
-            key={button.id}
-            onClick={handleSetPrevPage}
-            to={`/${button.name}`}
-            className={event => isActiveButtonLink(event, button.name)}
-          ></NavLink>
+          <Fragment key={button.id}>
+            {button.name === 'menu' ? (
+              <div
+                className={classNames(
+                  `header__button header__button-${button.name}`,
+                )}
+                onClick={() => {
+                  if (button.name === 'menu') {
+                    setIsActiveMenu(true);
+                  }
+                }}
+              ></div>
+            ) : (
+              <NavLink
+                to={`/${button.name}`}
+                className={event => isActiveButtonLink(event, button.name)}
+              >
+                {button.name === 'cart' && totalCartCount > 0 && (
+                  <p className="header__items-amount counter">
+                    {totalCartCount}
+                  </p>
+                )}
+                {button.name === 'favourites' && favourites.length > 0 && (
+                  <p className="header__items-amount counter">
+                    {favourites.length}
+                  </p>
+                )}
+              </NavLink>
+            )}
+          </Fragment>
         ))}
       </div>
     </Fragment>

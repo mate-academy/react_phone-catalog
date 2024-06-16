@@ -1,16 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
 import { HeaderMenuButtons } from '../blocks/HeaderMenuButtons';
 import { HeaderButtons } from '../blocks/HeaderButtons';
 import logo from '../../img/logo.png';
+import { useContext } from 'react';
+import { IsActiveMenuContext } from '../../context/IsActiveMenuContext';
 
 export const Header = () => {
+  const { isActiveMenu } = useContext(IsActiveMenuContext);
+
   return (
     <header className="header" id="header">
       <img src={logo} alt="logo" className="header__logo" />
-      <Routes>
-        <Route path="/menu" element={<HeaderMenuButtons />} />
-        <Route path="*" element={<HeaderButtons />} />
-      </Routes>
+      {isActiveMenu ? <HeaderMenuButtons /> : <HeaderButtons />}
     </header>
   );
 };

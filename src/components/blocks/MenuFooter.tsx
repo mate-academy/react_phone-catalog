@@ -1,7 +1,7 @@
 import classNames from 'classnames';
-import { useContext } from 'react';
-import { Link } from 'react-router-dom';
-import { PageContext } from '../../context/PageContext';
+import { useContext, useMemo } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { IsActiveMenuContext } from '../../context/IsActiveMenuContext';
 
 const buttons = [
   { id: 1, name: 'favourites' },
@@ -9,7 +9,12 @@ const buttons = [
 ];
 
 export const MenuFooter = () => {
-  const { lastPage } = useContext(PageContext);
+  const { setIsActiveMenu } = useContext(IsActiveMenuContext);
+  const location = useLocation();
+  const formattedLocation = useMemo(
+    () => location.pathname.split('/'),
+    [location],
+  );
 
   return (
     <footer className="footer menu__footer">
@@ -18,9 +23,13 @@ export const MenuFooter = () => {
           <Link
             key={button.id}
             to={`/${button.name}`}
+            onClick={() => setIsActiveMenu(false)}
             className={classNames(
               `menu__button-block menu__button-block-${button.name}`,
-              { 'menu__button-block-selected': button.name === lastPage },
+              {
+                'menu__button-block-selected':
+                  button.name === formattedLocation[1],
+              },
             )}
           >
             <span className={`menu__button menu__button-${button.name}`}></span>

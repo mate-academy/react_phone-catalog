@@ -24,6 +24,16 @@ export const Cart = () => {
     return sum;
   }, [cart]);
 
+  const totalCount = useMemo(() => {
+    let count = 0;
+
+    cart.forEach(item => {
+      count += item.count;
+    });
+
+    return count;
+  }, [cart]);
+
   const handleCancel = () => {
     setIsVisibleModal(false);
   };
@@ -65,7 +75,7 @@ export const Cart = () => {
             <article className="cart__price-block">
               <h2 className="cart__price">{totalPrice}$</h2>
               <p className="cart__amount body-text">
-                Total for {cart.length} items
+                Total for {totalCount} items
               </p>
             </article>
             <button

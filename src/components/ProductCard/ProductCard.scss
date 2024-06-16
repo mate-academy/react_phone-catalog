@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: end;
   position: relative;
-  width: 212px;
+  min-width: 288px;
   height: 439px;
   @include defaultAnimation;
 
@@ -17,28 +17,30 @@
   }
 
   @include on-tablet {
-    width: 237px;
+    min-width: 237px;
     height: 512px;
   }
 
   @include on-desktop {
-    width: 272px;
+    min-width: 272px;
     height: 506px;
   }
 
   &__image {
     cursor: pointer;
     width: 148px;
-    height: 129px;
+    height: 148px;
     object-position: center;
     object-fit: contain;
     position: absolute;
     top: 32px;
+    transform: translateX(25%);
     @include defaultAnimation;
 
     @include on-tablet {
+      transform: translateX(0);
       width: 173px;
-      height: 202px;
+      height: 173px;
     }
 
     @include on-desktop {
@@ -102,6 +104,14 @@
   }
 
   &__button {
-    max-width: 160px;
+    width: 224.4 - 40px;
+
+    @include on-tablet {
+      width: 173.4 - 40px;
+    }
+
+    @include on-desktop {
+      width: 208 - 40px;
+    }
   }
 }

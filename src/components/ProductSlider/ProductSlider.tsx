@@ -18,7 +18,7 @@ export const ProductSlider: React.FC<Props> = ({
 }) => {
   const [blockLeft, setBlockLeft] = useState(0);
   const productsBlock = useRef<HTMLDivElement | null>(null);
-  const [step, setStep] = useState(getDeviceType(228, 253, 288));
+  const [step, setStep] = useState(getDeviceType(304, 253, 288));
   const handleNext = () => {
     if (productsBlock.current) {
       setBlockLeft(prev => prev - step);
@@ -33,7 +33,7 @@ export const ProductSlider: React.FC<Props> = ({
 
   const handleResize = useCallback(() => {
     setBlockLeft(0);
-    setStep(getDeviceType(228, 253, 288));
+    setStep(getDeviceType(304, 253, 288));
   }, []);
 
   useEffect(() => {

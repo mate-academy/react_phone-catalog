@@ -1,6 +1,20 @@
+@keyframes slide-animation {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
 .menu {
   background-color: $black;
   padding: 24px 16px;
+  width: 100%;
+  height: 100%;
+  z-index: 20;
+  animation: slide-animation 500ms;
+
 
   &__nav {
     align-items: center;
@@ -24,6 +38,7 @@
   &__footer {
     padding: 0;
     height: 64px;
+    animation: slide-animation 500ms;
   }
 
   &__button {

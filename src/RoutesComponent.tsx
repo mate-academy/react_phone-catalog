@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 import { Menu } from './components/Menu';
 import { HomePage } from './components/HomePage';
 import { Phones } from './components/Phones/Phones';
@@ -13,8 +13,9 @@ import { PageNotFound } from './components/PageNotFound';
 export const RoutesComponent = () => {
   return (
     <Routes>
-      <Route path="/menu" element={<Menu />} />
       <Route path="/" element={<HomePage />} />
+      <Route path="/home" element={<Navigate to="/" />} />
+      <Route path="/menu" element={<Menu />} />
       <Route
         path="/phones/:phoneId?"
         element={
