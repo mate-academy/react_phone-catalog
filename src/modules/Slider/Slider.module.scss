@@ -27,7 +27,8 @@
       margin-top: 55px;
     }
   }
-  &__button {
+  &__button_prev,
+  &__button_next {
     border: 1px solid $elements;
     transition: border 0.3s ease-in-out;
     display: none;

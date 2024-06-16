@@ -12,14 +12,23 @@ import bannerTablets from './../../images/banner/dark_banner_6.jpg';
 import style from './Slider.module.scss';
 import prevArrow from './../../images/icons/prev_icon.svg';
 import nextArrow from './../../images/icons/next_icon.svg';
-import { useRef } from 'react';
-import { NavigationOptions, PaginationOptions } from 'swiper/types';
+import { Slide } from './Slide/Slide';
 
 export const Slider = () => {
-  const swiperRef = useRef(null);
-  const prevSliderBtn = useRef<HTMLButtonElement | null>(null);
-  const nextSliderBtn = useRef<HTMLButtonElement | null>(null);
-  const sliderPagination = useRef(null);
+  const images = [
+    {
+      image: bannerPhones,
+      alt: 'Banner accessories',
+    },
+    {
+      image: bannerAccessories,
+      alt: 'Banner phones',
+    },
+    {
+      image: bannerTablets,
+      alt: 'Banner tablets',
+    },
+  ];
 
   return (
     <section className={style.slider}>
@@ -28,77 +37,47 @@ export const Slider = () => {
       </div>
       <div className={style.slider__container}>
         <div className={style.slider__wrapper}>
-          <button ref={prevSliderBtn} className={style.slider__button}>
+          <button
+            className={`${style.slider__button_prev} slider__button_prev_btn`}
+          >
             <img src={prevArrow} alt="Previous arrow" />
           </button>
 
           <Swiper
-            ref={swiperRef}
-            observeParents={true}
-            observer={true}
             modules={[Navigation, Pagination, EffectFade, Autoplay]}
             effect="fade"
+            observer={true}
             autoplay={{
               delay: 3000,
               disableOnInteraction: false,
             }}
             speed={1000}
-            loop={true}
             slidesPerView={1}
+            observeParents={true}
             navigation={{
-              nextEl: nextSliderBtn.current,
-              prevEl: prevSliderBtn.current,
+              nextEl: '.slider__button_next_btn',
+              prevEl: '.slider__button_prev_btn',
             }}
-            pagination={{ clickable: true, el: sliderPagination.current }}
-            onAfterInit={swiper => {
-              const navigation = swiper.params.navigation as
-                | NavigationOptions
-                | undefined;
-
-              if (navigation) {
-                navigation.nextEl = nextSliderBtn.current;
-                navigation.prevEl = prevSliderBtn.current;
-                swiper.navigation.init();
-                swiper.navigation.update();
-              }
-
-              const pagination = swiper.params.pagination as
-                | PaginationOptions
-                | undefined;
-
-              if (pagination) {
-                pagination.el = sliderPagination.current;
-                swiper.pagination.update();
-                swiper.pagination.init();
-              }
-            }}
+            pagination={{ clickable: true, el: '.slider__pagination' }}
           >
-            <SwiperSlide className={style.slide}>
-              <img
-                src={bannerAccessories}
-                alt="Banner accessories"
-                loading="lazy"
-              />
-              <div className="swiper-lazy-preloader"></div>
-            </SwiperSlide>
-            <SwiperSlide className={style.slide}>
-              <img src={bannerPhones} alt="Banner phones" loading="lazy" />
-              <div className="swiper-lazy-preloader"></div>
-            </SwiperSlide>
-            <SwiperSlide className={style.slide}>
-              <img src={bannerTablets} alt="Banner tablets" loading="lazy" />
-              <div className="swiper-lazy-preloader"></div>
-            </SwiperSlide>
+            {images.map(picture => {
+              const { alt, image } = picture;
+
+              return (
+                <SwiperSlide key={alt} className={style.slide}>
+                  <Slide key={image.alt} image={image} alt={alt} />
+                </SwiperSlide>
+              );
+            })}
           </Swiper>
 
-          <button ref={nextSliderBtn} className={style.slider__button}>
+          <button
+            className={`${style.slider__button_next} slider__button_next_btn`}
+          >
             <img src={nextArrow} alt="Next arrow" />
           </button>
         </div>
-        <div
-          ref={sliderPagination}
-          className={`${style.slider__pagination} slider__pagination`}
-        ></div>
+        <div className={`${style.slider__pagination} slider__pagination`}></div>
       </div>
     </section>
   );
