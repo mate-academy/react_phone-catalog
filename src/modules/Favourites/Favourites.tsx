@@ -3,11 +3,9 @@ import { useContext } from 'react';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { FavoutitesContext } from '../../store/FavouritesContext';
 import { ProductCard } from '../shared/ProductCard';
-import { Loader } from '../shared/Loader';
 
 export const Favourites = () => {
-  const { favouritesList, products, dataLoaded } =
-    useContext(FavoutitesContext);
+  const { favouritesList } = useContext(FavoutitesContext);
 
   const { pathname } = useLocation();
   const category = pathname.slice(1);
@@ -26,21 +24,15 @@ export const Favourites = () => {
           : `${favouritesList.length} items`}
       </p>
 
-      {dataLoaded ? (
-        <div className="favourites__items-container">
-          {products.map((product, i) => (
-            <ProductCard
-              key={product.id}
-              product={product}
-              discount={favouritesList[i].discount}
-            />
-          ))}
-        </div>
-      ) : (
-        <div className="favourites__loader">
-          <Loader />
-        </div>
-      )}
+      <div className="favourites__items-container">
+        {favouritesList.map((product, i) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            discount={favouritesList[i].discount}
+          />
+        ))}
+      </div>
     </div>
   );
 };

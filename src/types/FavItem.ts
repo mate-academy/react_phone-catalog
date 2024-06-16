@@ -1,4 +1,4 @@
-export type FavItem = {
-  itemId: string;
-  discount: boolean;
-};
+import { Product } from './Product';
+
+// export type FavItem = Omit<Product, 'year' | 'color'> & { discount: boolean };
+export type FavItem = Product & { discount: boolean };

@@ -65,19 +65,4 @@
       }
     }
   }
-
-  &__loader {
-    display: flex;
-    align-items: center;
-
-    min-height: calc(100vh - var(--general-height) - 24px - 16px - 24px - 41px - 8px - 19px - 32px - 56px);
-
-    @include on-tablet {
-      min-height: calc(100vh - var(--general-height) - 24px - 16px - 40px - 41px - 8px - 19px - 40px - 64px);
-    }
-
-    @include on-desctop {
-      min-height: calc(100vh - var(--general-height) - 24px - 16px - 40px - 41px - 8px - 19px - 40px - 80px);
-    }
-  }
 }

@@ -7,7 +7,7 @@ import { SpecsItem } from '../SpecsItem';
 import { WindowWidthContext } from '../../../store/WindowWidthContext';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { scrollToTop } from '../../../services/scrollToTop';
-import { CartItem } from '../../../types/CartItem';
+// import { CartItem } from '../../../types/CartItem';
 
 type Props = {
   product: Product;
@@ -37,14 +37,6 @@ export const ProductCard: React.FC<Props> = React.memo(
 
     const specs = { screen, capacity, ram };
 
-    const cartItem: CartItem = {
-      itemId,
-      name,
-      image,
-      currentPrice: discount ? price : fullPrice,
-      discount,
-      id: 0,
-    };
     const widthImg = windowSize * 0.396875;
 
     const linkTo = () => {
@@ -119,7 +111,7 @@ export const ProductCard: React.FC<Props> = React.memo(
           ))}
         </div>
 
-        <AddBlock cartItem={cartItem} />
+        <AddBlock product={product} discount={discount} />
       </div>
     );
   },

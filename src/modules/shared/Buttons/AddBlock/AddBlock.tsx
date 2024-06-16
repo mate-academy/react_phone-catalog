@@ -8,33 +8,42 @@ import {
   IconFavourites,
 } from '../../IconsSVG';
 import { ShoppingCartContext } from '../../../../store/ShoppingCartContext';
-import { CartItem } from '../../../../types/CartItem';
 import { FavoutitesContext } from '../../../../store/FavouritesContext';
-import { FavItem } from '../../../../types/FavItem';
 import { getNewCartItemId } from '../../../../services/getNewCartItemId';
+import { Product } from '../../../../types/Product';
+import { FavItem } from '../../../../types/FavItem';
+import { CartItem } from '../../../../types/CartItem';
 
 type Props = {
-  cartItem: CartItem;
+  product: Product;
+  discount: boolean;
 };
 
-export const AddBlock: React.FC<Props> = React.memo(({ cartItem }) => {
+export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
   const { setShoppingList, shoppingList } = useContext(ShoppingCartContext);
-  const { setFavouritesList, favouritesList, setProducts, products } =
-    useContext(FavoutitesContext);
+  const { setFavouritesList, favouritesList } = useContext(FavoutitesContext);
   const { pathname } = useLocation();
 
   const isFavourites = pathname.includes('favourites');
 
-  const { itemId, discount } = cartItem;
-  const favItem: FavItem = { itemId, discount };
+  const favItem: FavItem = { ...product, discount };
+  const cartItem: CartItem = {
+    id: product.id,
+    itemId: product.itemId,
+    name: product.name,
+    currentPrice: discount ? product.price : product.fullPrice,
+    image: product.image,
+  };
 
-  const addedToCart = shoppingList.some(item => item.itemId === itemId);
+  const addedToCart = shoppingList.some(item => item.itemId === product.itemId);
 
-  const addedToFavourites = favouritesList.some(item => item.itemId === itemId);
+  const addedToFavourites = favouritesList.some(
+    item => item.itemId === product.itemId,
+  );
 
   const handleAddToCart = () => {
     if (!addedToCart) {
-      const newCartItem: CartItem = {
+      const newCartItem = {
         ...cartItem,
         id: getNewCartItemId(shoppingList),
       };
@@ -51,14 +60,9 @@ export const AddBlock: React.FC<Props> = React.memo(({ cartItem }) => {
 
   const removeFromFavoutites = () => {
     const updatedFavouritesList = favouritesList.filter(
-      fav => fav.itemId !== cartItem.itemId,
+      fav => fav.itemId !== favItem.itemId,
     );
 
-    const updatedProducts = products.filter(
-      product => product.itemId !== cartItem.itemId,
-    );
-
-    setProducts(updatedProducts);
     setFavouritesList(updatedFavouritesList);
   };
 

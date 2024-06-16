@@ -17,7 +17,8 @@ import { Loader } from '../shared/Loader';
 import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
-import { CartItem } from '../../types/CartItem';
+import { emptyProduct } from '../constants/emptyProduct';
+// import { CartItem } from '../../types/CartItem';
 
 type Specs = {
   [key: string]: string | string[];
@@ -32,6 +33,7 @@ export const ProductPage: React.FC = React.memo(() => {
   const nameDevice = pathname.split('/')[2].split('-').slice(0, -2).join('-');
 
   const [device, setDevice] = useState<Device>();
+  const [product, setProduct] = useState<Product>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
@@ -43,17 +45,6 @@ export const ProductPage: React.FC = React.memo(() => {
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
 
   const heightPreview = useRef<HTMLDivElement>(null);
-
-  const cartItem: CartItem = {
-    itemId: itemId || '',
-    name: device?.name || '',
-    image: device?.images[0] || '',
-    currentPrice: state
-      ? device?.priceDiscount || 0
-      : device?.priceRegular || 0,
-    discount: state,
-    id: 0,
-  };
 
   useEffect(() => {
     setErrorLoadedDevice(false);
@@ -113,8 +104,10 @@ export const ProductPage: React.FC = React.memo(() => {
       .then(data => {
         const idxSmlrDvcs: number[] = [];
 
-        data.forEach((product, i) => {
-          getSimilarDevices(product, nameDevice, idxSmlrDvcs, i);
+        const thisProduct = data.find(prod => prod.itemId === itemId);
+
+        data.forEach((prod, i) => {
+          getSimilarDevices(prod, nameDevice, idxSmlrDvcs, i);
         });
 
         const randomNumbers = getRandomNumbers(0, data.length, 30, idxSmlrDvcs);
@@ -123,6 +116,7 @@ export const ProductPage: React.FC = React.memo(() => {
 
         setSuggestedProducts(randomSuggestedProducts);
         setLoadedSuggestedProduct(true);
+        setProduct(thisProduct);
       })
       .catch(() => {}); // setError
   }, [nameDevice]);
@@ -196,7 +190,7 @@ export const ProductPage: React.FC = React.memo(() => {
           </div>
 
           <div className="product-page__add-block">
-            <AddBlock cartItem={cartItem} />
+            <AddBlock product={product || emptyProduct} discount={state} />
           </div>
 
           <div
