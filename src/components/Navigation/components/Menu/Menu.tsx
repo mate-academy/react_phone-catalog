@@ -21,17 +21,17 @@ export const Menu: React.FC = () => {
             </Link>
           </li>
           <li className="menu__list">
-            <Link to="phones" className="menu__link">
+            <Link to="/product/phones" className="menu__link">
               Phones
             </Link>
           </li>
           <li className="menu__list">
-            <Link to="tablets" className="menu__link">
+            <Link to="/product/tablets" className="menu__link">
               Tablets
             </Link>
           </li>
           <li className="menu__list">
-            <Link to="accessories" className="menu__link">
+            <Link to="/product/accessories" className="menu__link">
               Accessories
             </Link>
           </li>

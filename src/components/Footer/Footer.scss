@@ -1,22 +1,24 @@
 @import '../../App.scss';
 
 .footer {
-  padding-block: 32px;
-  border-top: 1px solid $elements;
-  @include grid;
-  row-gap: 32px;
+  &__container {
+    padding-block: 32px;
+    border-top: 1px solid $elements;
+    @include grid;
+    row-gap: 32px;
 
-  @include on-tablet {
-    display: flex !important;
-    align-items: center;
-    justify-content: space-between;
+    @include on-tablet {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+    }
   }
 
   &__ul {
-    display: flex;
+    display: flex !important;
     flex-direction: column;
     gap: 16px;
-    grid-column: 1 / -1;
+    grid-column: 1 / 2;
 
     @include on-tablet {
       flex-direction: row;
@@ -39,7 +41,7 @@
   }
 
   &__top {
-    display: flex;
+    display: flex !important;
     justify-content: center;
     align-items: center;
     gap: 16px;

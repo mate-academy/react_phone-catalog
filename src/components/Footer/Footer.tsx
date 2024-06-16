@@ -11,35 +11,37 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <footer className="footer container">
-      <Link to="/" className="icon icon--footer-logo">
+    <footer className="footer">
+      <div className="footer__container ">
+      <Link to="/" className="icon icon--footer-logo container">
         <img src="nav/logo.svg" alt="logo" />
       </Link>
 
-      <ul className="footer__ul">
+      <ul className="footer__ul container">
         <li className="footer__list">
-          <Link to="home" className="footer__link">
+          <Link to="/" className="footer__link">
             GitHub
           </Link>
         </li>
         <li className="footer__list">
-          <Link to="phones" className="footer__link">
+          <Link to="/" className="footer__link">
             Contacts
           </Link>
         </li>
         <li className="footer__list">
-          <Link to="tablets" className="footer__link">
+          <Link to="/" className="footer__link">
             Rights
           </Link>
         </li>
       </ul>
 
-      <div className="footer__top">
+      <div className="footer__top container">
         <span className="footer__text">Back to top</span>
         <Link to="/" className="icon icon--chevron" onClick={scrollToTop}>
           <img src="nav/chevron (arrow top).svg" alt="chevron (arrow top)" />
         </Link>
       </div>
-    </footer>
+      </div>
+      </footer>
   );
 };

@@ -1,0 +1,33 @@
+@import '../../../../App.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 40px;
+  gap: 8px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__block {
+    border: 1px solid $icons;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__active {
+    color: white;
+    background-color: $primary;
+    border: 1px solid $primary;
+  }
+}

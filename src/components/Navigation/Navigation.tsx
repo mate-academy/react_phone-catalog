@@ -18,17 +18,17 @@ export const Navigation: React.FC = () => {
               </Link>
             </li>
             <li className="nav__list">
-              <Link to="phones" className="nav__link">
+              <Link to="/product/phones" className="nav__link">
                 Phones
               </Link>
             </li>
             <li className="nav__list">
-              <Link to="tablets" className="nav__link">
+              <Link to="/product/tablets" className="nav__link">
                 Tablets
               </Link>
             </li>
             <li className="nav__list">
-              <Link to="accessories" className="nav__link">
+              <Link to="/product/accessories" className="nav__link">
                 Accessories
               </Link>
             </li>

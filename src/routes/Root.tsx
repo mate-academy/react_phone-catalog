@@ -10,21 +10,20 @@ import { Menu } from '../components/Navigation/components/Menu/Menu';
 
 export const Root = () => {
   return (
-    <>
-      <Routes>
-        <Route path="/" element={<App />}>
-          <Route index element={<HomePage />} />
-          <Route path="home" element={<Navigate to="/" />} />
-        </Route>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" />} />
         <Route path="menu" element={<Menu />} />
-        <Route path="phones" element={<ProductPage />} />
-        <Route path="tablets" element={<ProductPage />} />
-        <Route path="accessories" element={<ProductPage />} />
-        <Route path="product/:productId" element={<ProductDetailsPage />} />
+        <Route path="product/:productType" element={<ProductPage />} />
+        <Route
+          path="product/:productType/:productId"
+          element={<ProductDetailsPage />}
+        />
         <Route path="cart" element={<CartPage />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="*" element={<NotFoundPage />} />
-      </Routes>
-    </>
+      </Route>
+    </Routes>
   );
 };

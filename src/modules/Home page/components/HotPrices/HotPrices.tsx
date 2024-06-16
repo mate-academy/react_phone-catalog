@@ -2,12 +2,16 @@ import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './HotPrices.scss';
 import classNames from 'classnames';
-import { PhoneType } from '../../../../types/PhoneType';
+import { ProductType } from '../../../../types/ProductType';
+
+const shuffleArray = (array: ProductType[]) => {
+  return array.sort(() => Math.random() - 0.5);
+};
 
 export const HotPrices: React.FC = () => {
-  const [phones, setPhones] = useState<PhoneType[]>([]);
   const [imageIndex, setImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
+  const [shuffledProducts, setShuffledProducts] = useState<ProductType[]>([]);
 
   const updateTranslateX = (index: number) => {
     if (screenWidth < 639) {
@@ -22,12 +26,33 @@ export const HotPrices: React.FC = () => {
   const translateX = updateTranslateX(imageIndex);
 
   useEffect(() => {
-    fetch('/api/phones.json')
-      .then(response => response.json())
-      .then(data => setPhones(data.slice(0, 8)));
-  }, []);
+    const storedPhones = localStorage.getItem('phones');
+    const storedTablets = localStorage.getItem('tablets');
+    const storedAccessories = localStorage.getItem('accessories');
 
-  useEffect(() => {
+    let phonesData: ProductType[] = [];
+    let tabletsData: ProductType[] = [];
+    let accessoriesData: ProductType[] = [];
+
+    if (storedPhones) {
+      phonesData = JSON.parse(storedPhones) as ProductType[];
+    }
+
+    if (storedTablets) {
+      tabletsData = JSON.parse(storedTablets) as ProductType[];
+    }
+
+    if (storedAccessories) {
+      accessoriesData = JSON.parse(storedAccessories) as ProductType[];
+    }
+
+    const selectedProducts: ProductType[] = [
+      ...phonesData.slice(0, 2),
+      ...tabletsData.slice(0, 3),
+      ...accessoriesData.slice(0, 3),
+    ];
+
+    setShuffledProducts(shuffleArray(selectedProducts));
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
@@ -39,7 +64,7 @@ export const HotPrices: React.FC = () => {
     };
   }, []);
 
-  function showNextImage() {
+  const showNextImage = () => {
     setImageIndex(index => {
       if (index === 4) {
         return 0;
@@ -49,10 +74,10 @@ export const HotPrices: React.FC = () => {
     });
   }
 
-  function showPrevImage() {
+  const showPrevImage = () => {
     setImageIndex(index => {
       if (index === 0) {
-        return phones.length - 1;
+        return shuffledProducts.length - 1;
       }
 
       return index - 1;
@@ -89,7 +114,7 @@ export const HotPrices: React.FC = () => {
           className="phone__grid"
           style={{ transform: `translateX(-${translateX}%)` }}
         >
-          {phones.map(phone => (
+          {shuffledProducts.map(phone => (
             <PhoneCard key={phone.id} phone={phone} isHot={true} />
           ))}
         </div>

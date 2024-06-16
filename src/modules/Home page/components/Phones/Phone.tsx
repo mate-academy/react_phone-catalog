@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './Phone.scss';
-import { PhoneType } from '../../../../types/PhoneType';
 import classNames from 'classnames';
+import { ProductType } from '../../../../types/ProductType';
 
 export const Phone: React.FC = () => {
-  const [phones, setPhones] = useState<PhoneType[]>([]);
+  const [phones, setPhones] = useState<ProductType[]>([]);
   const [imageIndex, setImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
 
@@ -22,12 +22,12 @@ export const Phone: React.FC = () => {
   const translateX = updateTranslateX(imageIndex);
 
   useEffect(() => {
-    fetch('/api/phones.json')
-      .then(response => response.json())
-      .then(data => setPhones(data.slice(0, 8)));
-  }, []);
+    const storedPhones = localStorage.getItem('phones');
+    if (storedPhones) {
+      const parsedPhones = JSON.parse(storedPhones) as ProductType[];
+      setPhones(parsedPhones);
+    }
 
-  useEffect(() => {
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
@@ -39,7 +39,7 @@ export const Phone: React.FC = () => {
     };
   }, []);
 
-  function showNextImage() {
+  const showNextImage = () => {
     setImageIndex(index => {
       if (index === 4) {
         return 0;
@@ -49,7 +49,7 @@ export const Phone: React.FC = () => {
     });
   }
 
-  function showPrevImage() {
+  const showPrevImage = () => {
     setImageIndex(index => {
       if (index === 0) {
         return phones.length - 1;
