@@ -1,0 +1,7 @@
+@media (min-width:320px) and (max-width:549px) {
+  .catalog-grid {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(200px, 250px));
+    gap: 16px;
+  }
+}

@@ -1,0 +1,17 @@
+@media (min-width:320px) and (max-width:720px) {
+  .footer {
+    &__container {
+      flex-wrap: wrap;
+      flex-direction: column;
+    }
+
+    &__text {
+      flex-direction: column;
+      align-self: flex-start;
+    }
+
+    &__button {
+      align-self: center;
+    }
+  }
+}

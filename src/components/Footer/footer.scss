@@ -1,0 +1,77 @@
+.footer{
+  padding: 32px 0;
+  max-width: 80%;
+  margin: 0 auto;
+
+  &-horizontal-line {
+    border-color: #E2E6E9;
+  }
+
+  &__container, &__block {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  &__button {
+    justify-content: flex-end;
+  }
+
+  &__text {
+    gap: 100px;
+  }
+}
+
+.block {
+  display: flex;
+  align-items: center;
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    justify-content: center;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__img {
+    width: 89px;
+    height:32px;
+  }
+
+  &__text:hover {
+    color: #313237
+  }
+
+  &__text, &__text--thin {
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  color: #89939A;
+
+  &--thin {
+font-weight: 700;
+line-height: 15.34px;
+text-align: right;
+  }
+  &--thin:hover {
+    color: #313237;
+  }
+  }
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-image: url('../../../public/img/svg/arrow-up.svg');
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #B4BDC3;
+  }
+  &__button:hover {
+    border:1px solid #313237;
+  }
+}
