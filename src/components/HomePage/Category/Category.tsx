@@ -2,6 +2,7 @@ import React from 'react';
 import styles from './Category.module.scss';
 import { PageSection } from '../../../types/PageSection';
 import { GadgetCategory } from '../../../types/GadgetCategory';
+import { Link } from 'react-router-dom';
 
 interface CategoryData {
   name: string;
@@ -36,7 +37,10 @@ export const Category: React.FC<Props> = ({ categories, setCurrentPage }) => {
               key={category}
               onClick={() => handleSetPage(category)}
             >
-              <a href="#" className={styles.category__link}>
+              <Link
+                to={category === 'Mobile phones' ? 'Phones' : category}
+                className={styles.category__link}
+              >
                 <img
                   className={styles.category__image}
                   src={categories[category].image}
@@ -50,7 +54,7 @@ export const Category: React.FC<Props> = ({ categories, setCurrentPage }) => {
                     {`${categories[category].count} models`}
                   </p>
                 </div>
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
