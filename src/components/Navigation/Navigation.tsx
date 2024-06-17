@@ -36,10 +36,10 @@ export const Navigation: React.FC = () => {
         </div>
 
         <div className="nav__right">
-          <Link to="/" className="icon icon--block icon--favourites">
+          <Link to="/favorites" className="icon icon--block icon--favourites">
             <img src="nav/favourites.svg" alt="favourites" />
           </Link>
-          <Link to="/" className="icon icon--block icon--cart">
+          <Link to="/cart" className="icon icon--block icon--cart">
             <img src="nav/cart.svg" alt="cart" />
           </Link>
           <Link to="/menu" className="icon icon--block icon--menu">

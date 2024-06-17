@@ -8,7 +8,11 @@ const shuffleArray = (array: ProductType[]) => {
   return array.sort(() => Math.random() - 0.5);
 };
 
-export const HotPrices: React.FC = () => {
+interface Props {
+  title: string;
+}
+
+export const HotPrices: React.FC<Props> = ({ title }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [shuffledProducts, setShuffledProducts] = useState<ProductType[]>([]);
@@ -26,33 +30,37 @@ export const HotPrices: React.FC = () => {
   const translateX = updateTranslateX(imageIndex);
 
   useEffect(() => {
-    const storedPhones = localStorage.getItem('phones');
-    const storedTablets = localStorage.getItem('tablets');
-    const storedAccessories = localStorage.getItem('accessories');
-
     let phonesData: ProductType[] = [];
     let tabletsData: ProductType[] = [];
     let accessoriesData: ProductType[] = [];
+    let selectedProducts: ProductType[] = [];
 
-    if (storedPhones) {
-      phonesData = JSON.parse(storedPhones) as ProductType[];
-    }
+    setTimeout(() => {
+      const storedPhones = localStorage.getItem('phones');
+      const storedTablets = localStorage.getItem('tablets');
+      const storedAccessories = localStorage.getItem('accessories');
 
-    if (storedTablets) {
-      tabletsData = JSON.parse(storedTablets) as ProductType[];
-    }
 
-    if (storedAccessories) {
-      accessoriesData = JSON.parse(storedAccessories) as ProductType[];
-    }
+      if (storedPhones) {
+        phonesData = JSON.parse(storedPhones) as ProductType[];
+      }
 
-    const selectedProducts: ProductType[] = [
-      ...phonesData.slice(0, 2),
-      ...tabletsData.slice(0, 3),
-      ...accessoriesData.slice(0, 3),
-    ];
+      if (storedTablets) {
+        tabletsData = JSON.parse(storedTablets) as ProductType[];
+      }
 
-    setShuffledProducts(shuffleArray(selectedProducts));
+      if (storedAccessories) {
+        accessoriesData = JSON.parse(storedAccessories) as ProductType[];
+      }
+      selectedProducts = [
+        ...phonesData.slice(0, 2),
+        ...tabletsData.slice(0, 3),
+        ...accessoriesData.slice(0, 3),
+      ];
+      setShuffledProducts(shuffleArray(selectedProducts));
+    }, 500);
+
+
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
     };
@@ -87,7 +95,7 @@ export const HotPrices: React.FC = () => {
   return (
     <section className="phone container">
       <div className="phone__top">
-        <h1 className="phone__title">Hot prices</h1>
+        <h1 className="phone__title">{title}</h1>
         <div className="phone__slide">
           <div
             className={classNames('phone__slide--left', {
@@ -114,8 +122,8 @@ export const HotPrices: React.FC = () => {
           className="phone__grid"
           style={{ transform: `translateX(-${translateX}%)` }}
         >
-          {shuffledProducts.map(phone => (
-            <PhoneCard key={phone.id} phone={phone} isHot={true} />
+          {shuffledProducts.map(product => (
+            <PhoneCard key={product.id} product={product} isHot={true} />
           ))}
         </div>
       </div>

@@ -43,7 +43,7 @@ export const HomePage: React.FC = () => {
     } else {
       fetchData();
     }
-  }, []); // Прибираємо залежності з useEffect
+  }, []);
 
   return (
     <section className="home">
@@ -55,7 +55,7 @@ export const HomePage: React.FC = () => {
         tabletsLength={tablets.length}
         accessoriesLength={accessories.length}
       />
-      <HotPrices />
+      <HotPrices title={'Hot prices'} />
     </section>
   );
 };

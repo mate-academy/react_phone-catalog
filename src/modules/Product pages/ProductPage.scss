@@ -32,8 +32,8 @@
   }
 
   &__filter {
-
-position: relative;    padding-top: 32px;
+    position: relative;
+    padding-top: 32px;
     @include grid;
 
     @include on-tablet {

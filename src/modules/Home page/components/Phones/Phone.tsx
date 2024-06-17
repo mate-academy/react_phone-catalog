@@ -22,11 +22,13 @@ export const Phone: React.FC = () => {
   const translateX = updateTranslateX(imageIndex);
 
   useEffect(() => {
-    const storedPhones = localStorage.getItem('phones');
-    if (storedPhones) {
-      const parsedPhones = JSON.parse(storedPhones) as ProductType[];
-      setPhones(parsedPhones);
-    }
+    setTimeout(() => {
+      const storedPhones = localStorage.getItem('phones');
+      if (storedPhones) {
+        const parsedPhones = JSON.parse(storedPhones) as ProductType[];
+        setPhones(parsedPhones);
+      }
+    }, 500);
 
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -90,7 +92,7 @@ export const Phone: React.FC = () => {
           style={{ transform: `translateX(-${translateX}%)` }}
         >
           {phones.map(phone => (
-            <PhoneCard key={phone.id} phone={phone} />
+            <PhoneCard key={phone.id} product={phone} />
           ))}
         </div>
       </div>

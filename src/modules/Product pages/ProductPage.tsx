@@ -15,7 +15,7 @@ export const ProductPage: React.FC = () => {
   const itemsPerPageOptions = ['4', '8', '16', 'all'];
 
   const [itemsPerPage, setItemsPerPage] = useState<string>(
-    searchParams.get('perPage') || '16',
+    searchParams.get('perPage') || itemsPerPageOptions[2],
   );
   const [selectedSort, setSelectedSort] = useState<string>(
     searchParams.get('sort') || sortBy[0],
@@ -23,7 +23,7 @@ export const ProductPage: React.FC = () => {
   const [isDropdownSortOpen, setIsDropdownSortOpen] = useState<boolean>(false);
   const [isDropdownPerOpen, setIsDropdownPerOpen] = useState<boolean>(false);
   const [currentPage, setCurrentPage] = useState<number>(
-    +(searchParams.get('page') || '1', 10),
+    +(searchParams.get('page') || '1'),
   );
   const dropdownSortRef = useRef<HTMLDivElement>(null);
   const dropdownPerRef = useRef<HTMLDivElement>(null);
@@ -209,7 +209,7 @@ export const ProductPage: React.FC = () => {
 
       <div className="product__all">
         {numbers.map(product => (
-          <PhoneCard key={product.id} phone={product} />
+          <PhoneCard key={product.id} product={product} />
         ))}
       </div>
 

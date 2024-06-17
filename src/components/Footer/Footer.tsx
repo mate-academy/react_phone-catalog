@@ -13,35 +13,35 @@ export const Footer: React.FC = () => {
   return (
     <footer className="footer">
       <div className="footer__container ">
-      <Link to="/" className="icon icon--footer-logo container">
-        <img src="nav/logo.svg" alt="logo" />
-      </Link>
-
-      <ul className="footer__ul container">
-        <li className="footer__list">
-          <Link to="/" className="footer__link">
-            GitHub
-          </Link>
-        </li>
-        <li className="footer__list">
-          <Link to="/" className="footer__link">
-            Contacts
-          </Link>
-        </li>
-        <li className="footer__list">
-          <Link to="/" className="footer__link">
-            Rights
-          </Link>
-        </li>
-      </ul>
-
-      <div className="footer__top container">
-        <span className="footer__text">Back to top</span>
-        <Link to="/" className="icon icon--chevron" onClick={scrollToTop}>
-          <img src="nav/chevron (arrow top).svg" alt="chevron (arrow top)" />
+        <Link to="/" className="icon icon--footer-logo container">
+          <img src="nav/logo.svg" alt="logo" />
         </Link>
+
+        <ul className="footer__ul container">
+          <li className="footer__list">
+            <Link to="/" className="footer__link">
+              GitHub
+            </Link>
+          </li>
+          <li className="footer__list">
+            <Link to="/" className="footer__link">
+              Contacts
+            </Link>
+          </li>
+          <li className="footer__list">
+            <Link to="/" className="footer__link">
+              Rights
+            </Link>
+          </li>
+        </ul>
+
+        <div className="footer__top container">
+          <span className="footer__text">Back to top</span>
+          <div className="icon icon--chevron" onClick={scrollToTop}>
+            <img src="nav/chevron (arrow top).svg" alt="chevron (arrow top)" />
+          </div>
+        </div>
       </div>
-      </div>
-      </footer>
+    </footer>
   );
 };

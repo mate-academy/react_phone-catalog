@@ -31,11 +31,13 @@
   &__title {
     @include body-text;
     padding-top: 16px;
+    color: $primary;
   }
 
   &__price {
     @include h3;
     padding-block: 8px;
+    color: $primary;
 
     &--hot {
       color: $secondary;

@@ -11,4 +11,7 @@ export interface ProductType {
   ram: string;
   year: number;
   image: string;
+  images: string[];
+  priceRegular: number;
+  priceDiscount: number;
 };
