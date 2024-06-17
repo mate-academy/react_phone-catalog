@@ -4,6 +4,7 @@ import { StateContext } from '../../store/StateProvider';
 import { Slider } from './Slider/Slider';
 import { BrandNewModels } from './BrandNewModels/BrandNewModels';
 import { LanguageContext } from '../../store/LanguageProvider';
+import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 
 export const Main = () => {
   const { openBurger } = useContext(StateContext);
@@ -21,6 +22,7 @@ export const Main = () => {
 
           <div className={style.main__container}>
             <BrandNewModels />
+            <ShopByCategory />
           </div>
         </div>
       )}

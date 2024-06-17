@@ -4,6 +4,7 @@
 .brandNewModels {
   position: relative;
   overflow: hidden;
+  @include space-between-sectionsDesktop;
 
   &__cardHeader {
     display: flex;
@@ -100,11 +101,25 @@
     margin-bottom: 8px;
   }
 
-  &__phonePrice {
-    margin-bottom: 8px;
+  &__price {
+    display: flex;
     font-size: 22px;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__discountPrice {
     line-height: 31px;
     font-weight: 800;
+    font-size: inherit;
+  }
+
+  &__fullPrice {
+    color: $text-discount-color;
+    font-weight: 600;
+    font-size: inherit;
+    line-height: 28px;
+    text-decoration: line-through;
   }
 
   &__key {
@@ -173,9 +188,9 @@
 
 @include onTablet {
   .brandNewModels {
+    @include space-between-sectionsTablet;
     &__cardContainer {
       grid-template-columns: repeat($grid-columns-tablet, 1fr);
-
     }
 
     &__cardsList {
@@ -186,7 +201,7 @@
 
 @include onPhone {
   .brandNewModels {
-
+    @include space-between-sectionsPhone;
     &__cardTitle {
       font-size: 22px;
       line-height: 31px;
@@ -194,7 +209,6 @@
 
     &__cardContainer {
       grid-template-columns: repeat(4, 1fr);
-
     }
 
     &__cardsList {

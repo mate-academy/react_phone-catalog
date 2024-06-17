@@ -6,10 +6,10 @@ import { ThemeProvider } from './store/ThemeProvider';
 import './styles/main.scss';
 import { BreakPointsProvider } from './store/BreakPointsProvider';
 import { StateProvider } from './store/StateProvider';
-import { PhoneProvider } from './store/PhoneProvider';
+import { ProductsProvider } from './store/ProductsProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
-  <PhoneProvider>
+  <ProductsProvider>
     <StateProvider>
       <BreakPointsProvider>
         <ThemeProvider>
@@ -19,5 +19,5 @@ createRoot(document.getElementById('root') as HTMLElement).render(
         </ThemeProvider>
       </BreakPointsProvider>
     </StateProvider>
-  </PhoneProvider>,
+  </ProductsProvider>,
 );

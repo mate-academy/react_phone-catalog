@@ -6,7 +6,7 @@ import { ArrowLeft } from '../../Logos/ArrowLeft';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import classNames from 'classnames';
 import { LogoFavorites } from '../../Logos/LogoFavorites';
-import { PhoneContext } from '../../../store/PhoneProvider';
+import { ProductsContext } from '../../../store/ProductsProvider';
 import { getRefValue, useStateRef } from '../../../utils/hooks/hooks';
 import { getTouchEventData } from '../../../utils/hooks/dom';
 const MIN_SWIPE_REQUIRED = 20;
@@ -14,14 +14,14 @@ const MIN_SWIPE_REQUIRED = 20;
 export const BrandNewModels = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
-  const { products } = useContext(PhoneContext);
+  const { products } = useContext(ProductsContext);
   const lengthImgList = products.length - 1;
 
-  const containerWidthRef = useRef(0); //save width container
+  const containerWidthRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const widthRef = useRef<HTMLLIElement>(null);
-  const currentOffsetXRef = useRef(0); // save current off set X
-  const startXRef = useRef(0); // initial x ref
+  const currentOffsetXRef = useRef(0);
+  const startXRef = useRef(0);
   const minOffsetXRef = useRef(0);
 
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
@@ -67,17 +67,17 @@ export const BrandNewModels = () => {
     const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
 
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
-      if (diff > 0) {
-        // console.log('First');
+      if (
+        diff > 0 &&
+        newOffSetX > getRefValue(minOffsetXRef) - widthVisibleCards
+      ) {
         newOffSetX =
           Math.floor(newOffSetX / widthVisibleCards) * widthVisibleCards;
       } else {
-        // console.log('Second');
         newOffSetX =
           Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
       }
     } else {
-      // console.log('Third');
       newOffSetX =
         Math.round(newOffSetX / widthVisibleCards) * widthVisibleCards;
     }
@@ -110,8 +110,8 @@ export const BrandNewModels = () => {
 
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
-      getRefValue(containerRef).scrollWidth; //scroll це виявляється довжина контейнера мого!!!!
-
+      getRefValue(containerRef).scrollWidth;
+    // getRefValue(containerRef).scrollWidth; //scroll це виявляється довжина контейнера мого!!!!
     window.addEventListener('touchmove', onTouchMove);
     window.addEventListener('touchend', onTouchEnd);
     window.addEventListener('mousemove', onTouchMove);
@@ -138,7 +138,7 @@ export const BrandNewModels = () => {
       indicatorOnClick(pureLen + 1);
     }
   }
-  console.log(currentIndex);
+
   function handlePrev() {
     const quantityCard = Math.floor(
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
@@ -208,9 +208,15 @@ export const BrandNewModels = () => {
                   <h2 className={style.brandNewModels__cardName}>
                     {product.name}
                   </h2>
-                  <p className={style.brandNewModels__phonePrice}>
-                    &#36;{product.price}
-                  </p>
+                  <div className={style.brandNewModels__price}>
+                    <p className={style.brandNewModels__discountPrice}>
+                      &#36;{product.price}
+                    </p>
+                    <p className={style.brandNewModels__fullPrice}>
+                      &#36;{product.fullPrice}
+                    </p>
+                  </div>
+
                   <span className={style.brandNewModels__cardLine} />
 
                   <div className={style.brandNewModels__cardDescription}>

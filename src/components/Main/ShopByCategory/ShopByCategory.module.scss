@@ -1,0 +1,33 @@
+@use '../../../../src/styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/mixins';
+
+.shopByCategory {
+  @include space-between-sectionsDesktop;
+ 
+  &__title {
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    padding-bottom: 24px;
+  }
+}
+
+@include onTablet {
+  .shopByCategory {
+    @include space-between-sectionsTablet;
+
+  }
+}
+
+@include onPhone {
+  .shopByCategory {
+    @include space-between-sectionsPhone;
+
+    &__title {
+      font-size: 22px;
+      line-height: 31px;
+    }
+
+
+  }
+}

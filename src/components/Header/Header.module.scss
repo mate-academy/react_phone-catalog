@@ -69,10 +69,8 @@
 
 @include onTablet {
   .header {
-    // margin-bottom: 64px;
     &__top {
       height: 48px;
-      // margin-bottom: 32px;
     }
 
     &__leftNav {
@@ -90,10 +88,6 @@
       width: 48px;
     }
 
-    // &__title {
-    //   margin: 48px auto;
-    // }
-
     &__content {
       margin-inline: 24px;
     }
@@ -102,7 +96,6 @@
 
 @include onPhone {
   .header {
-    // margin-bottom: 56px;
     &__actions__link {
       height: 48px;
       width: 48px;

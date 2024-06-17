@@ -1,3 +1,27 @@
+%transitionPage {
+  transition: all 0.4s;
+}
+
+%lightThemeHoverButton {
+  border: 1px solid $border-hover-button;
+}
+
+%darkThemeHoverButton {
+  background-color: $background-hover-button;
+}
+
+@mixin space-between-sectionsDesktop {
+  margin-bottom: 80px;
+}
+
+@mixin space-between-sectionsTablet {
+  margin-bottom: 64px;
+}
+
+@mixin space-between-sectionsPhone {
+  margin-bottom: 56px;
+}
+
 @mixin onTablet {
   @media (max-width: $tablet-max-width) {
     @content;
@@ -10,24 +34,8 @@
   }
 }
 
-// @mixin transitionPage {
-//   transition: all 0.4s;
-// }
-
 @mixin onScale {
   &:hover {
     transform: scale(1.1);
   }
-}
-
-%transitionPage {
-  transition: all 0.4s;
-}
-
-%lightThemeHoverButton {
-  border: 1px solid $border-hover-button;
-}
-
-%darkThemeHoverButton {
-  background-color: $background-hover-button;
 }

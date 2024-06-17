@@ -22,6 +22,8 @@ html {
   --background-color-phoneCard: #ffffff;
   --background-color-phoneCardHover: #313237;
   --background-color-button-cart: #313237;
+  --text-discount-color: #89939a;
+  --text-items-color: #89939a;
 }
 
 .page {
@@ -37,6 +39,8 @@ html {
   --background-color-button-fav: #323542;
   --background-color-phoneCard: #161827;
   --background-color-phoneCardHover: #a378ff;
+  --text-discount-color: #75767f;
+  --text-items-color: #75767f;
   color: $text-color;
   background-color: $background-color;
 }
