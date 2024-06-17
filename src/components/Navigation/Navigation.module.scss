@@ -1,0 +1,78 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.navigation {
+  display: flex;
+  flex-direction: column;
+
+  &__main {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+    margin-top: 24px;
+  }
+
+  &__icon {
+    display: block;
+    min-width: 16px;
+    min-height: 16px;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__home {
+    background-image: url(./img/home.svg);
+  }
+
+  &__arrow {
+    background-image: url(./img/arrow.svg);
+
+    &--left {
+      background-image: url(./img/arrowLeft.svg);
+    }
+  }
+
+  &__text {
+    color: rgb(15, 15, 17);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    text-decoration: none;
+    text-transform: capitalize;
+
+    &--back {
+      color: rgb(137, 147, 154);
+      line-height: 15px;
+    }
+
+    &--current {
+      color: $main-black;
+    }
+
+    &-position {
+      color: rgb(137, 147, 154);
+      line-height: 15px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+  }
+
+  &__back {
+    margin-top: 24px;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    gap: 4px;
+    align-items: center;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+
+  &__backButton {
+    color: $main-black;
+  }
+}

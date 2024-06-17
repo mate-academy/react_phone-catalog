@@ -1,0 +1,42 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+
+.pagination {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+
+  &__list {
+    display: flex;
+  }
+
+  &__link {
+    border-radius: 50%;
+
+    &--active {
+      color: rgb(255, 255, 255);
+      background-color: rgb(15, 15, 17);
+    }
+  }
+
+  &__button {
+    width: 40px;
+    border: 1px solid rgb(180, 189, 196);
+    border-radius: 50%;
+    height: 40px;
+    padding: 8px;
+    display: block;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--next {
+      background-image: url('./navigationButtons/IconNext.svg');
+    }
+
+    &--prev {
+      background-image: url('./navigationButtons/IconPrev.svg');
+    }
+  }
+}

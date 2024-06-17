@@ -1,0 +1,77 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.favourites {
+  margin-top: 25px;
+  flex: 1 1;
+
+  &__title {
+    color: $main-black;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+  }
+
+  &__subtitle {
+    color: rgb(137, 147, 154);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+
+  &__container {
+    gap: 32px;
+    max-width: 1160px;
+    margin: 0 auto;
+    padding: 0 17px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__items {
+    display: grid;
+    gap: 16px; /* Відстань між картками */
+    grid-template-columns: repeat(auto-fill, minmax(221px, 1fr));
+  }
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    align-items: center;
+  }
+
+  &__empty-image {
+    width: 300px;
+  }
+
+  &__breadcrumbs {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__breadcrumbs-link {
+    display: block;
+    width: 16px;
+    height: 16px;
+  }
+
+  &__current {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__main {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+}

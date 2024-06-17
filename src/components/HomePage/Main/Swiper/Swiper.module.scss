@@ -1,0 +1,93 @@
+@import '/src/styles/mixins';
+
+.swiper {
+  max-width: 320px;
+  max-height: 320px;
+  margin: 0 auto;
+  position: relative;
+
+  @include on-tablet {
+    max-width: 490px;
+    max-height: 190px;
+  }
+
+  @include on-desktop {
+    max-width: 1040px;
+    max-height: 400px;
+  }
+
+  &__slide {
+    width: 320px;
+    height: 320px;
+    display: grid;
+    display: flex;
+    border-radius: 15px;
+
+    @include on-tablet {
+      width: 490px;
+      height: 190px;
+    }
+
+    @include on-desktop {
+      width: 1040px;
+      height: 400px;
+    }
+  }
+
+  &__wrapper {
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+
+    &--1 {
+      background-color: rgb(235, 87, 87);
+    }
+
+    &--2 {
+      background-color: rgb(137, 147, 154);
+    }
+
+    &--3 {
+      background-color: rgb(39, 174, 96);
+    }
+  }
+
+
+  &__image {
+    background-size: contain;
+    width: 100%;
+    height: 100%;
+    display: block;
+    border-radius: 8px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--1 {
+      background-image: url('./img/firstSlide.png');
+
+      @include on-tablet {
+        background-image: url('./img/firstSLide.svg');
+        background-position: right;
+        background-size: cover;
+        width: 50%;
+        border-radius: 0 8px 8px 0;
+      }
+    }
+
+    &--2 {
+      background-image: url('./img/secondSlide.png');
+      background-position: bottom;
+    }
+
+    &--3 {
+      background-image: url('./img/thirdSlide.png');
+      background-size: cover;
+    }
+
+    &--4 {
+      background-image: url('./img/fourthSlide.webp');
+    }
+  }
+}
