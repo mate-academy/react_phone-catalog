@@ -1,16 +1,16 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import styles from './Search.module.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
-import debounce from 'lodash.debounce';
+import { useDebounce } from '../../hooks/useDebounce';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState('');
-  const applyQuery = useCallback(debounce(setSearchParams, 1000), []);
   const { pathname } = useLocation();
+  const applyQuery = useDebounce(setSearchParams, 1000);
 
   useEffect(() => {
-    setSearchParams('');
+    setValue('');
   }, [pathname]);
 
   const onQueryChange = (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -1,7 +1,7 @@
 .wrapper {
-  max-width: 248px;
+  width: 248px;
   display: flex;
-  align-items: center;
+  align-items: stretch;
   gap: 16px;
 
   & > * {
@@ -12,9 +12,12 @@
 }
 
 .container {
+  overflow: hidden;
+}
+
+.block {
   display: flex;
   flex-wrap: nowrap;
-  overflow: hidden;
   gap: 8px;
 }
 

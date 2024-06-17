@@ -26,6 +26,7 @@ const DropdownItem: React.FC<Props> = ({ options, title, name }) => {
     const params = new URLSearchParams(searchParams);
 
     params.set(name, newValue);
+    params.set('page', '1');
     setSearchParams(params);
     setDisplayed(false);
   }

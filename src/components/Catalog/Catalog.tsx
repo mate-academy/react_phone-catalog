@@ -4,7 +4,7 @@ import { ProductCard } from '../ProductCard';
 import { Buttons } from './components/Buttons';
 import { getItemsPerPage } from '../../utils/getItemsPerPage';
 import { ProductGeneral } from '../../types/ProductGeneral';
-import styles from './ProductsList.module.scss';
+import styles from './Catalog.module.scss';
 
 type Props = {
   products: ProductGeneral[];
@@ -12,12 +12,19 @@ type Props = {
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
-  const itemsPerPage = +(searchParams.get('itemsPerPage') || products.length);
+  const itemsPerPage = () => {
+    if (searchParams.get('itemsPerPage') === 'All') {
+      return products.length;
+    }
+
+    return +(searchParams.get('itemsPerPage') || products.length);
+  };
+
   const selectedPage = +(searchParams.get('page') || 1);
-  const numberOfPages = Math.ceil(products.length / itemsPerPage);
+  const numberOfPages = Math.ceil(products.length / itemsPerPage());
 
   const displayedProducts = useMemo(() => {
-    return getItemsPerPage(products, itemsPerPage, selectedPage);
+    return getItemsPerPage(products, itemsPerPage(), selectedPage);
   }, [products, itemsPerPage, selectedPage]);
 
   return (

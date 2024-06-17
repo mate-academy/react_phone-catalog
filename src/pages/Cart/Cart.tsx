@@ -36,6 +36,10 @@ export const Cart = () => {
     }, 0);
   }, [itemsWithCount]);
 
+  const itemsCount = useMemo(() => {
+    return itemsWithCount.reduce((prev, { count }) => prev + count, 0);
+  }, [itemsWithCount]);
+
   function handleDelete(id = '') {
     if (id === '') {
       setItemWithCount(prevItems =>
@@ -67,7 +71,7 @@ export const Cart = () => {
   };
 
   return (
-    <section className={styles.container} style={{}}>
+    <section className={styles.container}>
       <BreadcrumbBack />
       <p className={`text--page-title ${styles.title}`}>Cart</p>
       {addedItems.length === 0 ? (
@@ -99,7 +103,7 @@ export const Cart = () => {
           <div className={`${styles.cost} border`}>
             <div className={`${styles.cost__container} border--bottom`}>
               <div className="text--page-title">{`$ ${sum}`}</div>
-              <p className="text--grey">{`Total for ${addedItems.length} items`}</p>
+              <p className="text--grey">{`Total for ${itemsCount} items`}</p>
             </div>
             <button
               className={`button button--black button--big ${styles.buttonMain}`}
