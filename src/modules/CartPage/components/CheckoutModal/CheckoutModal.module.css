@@ -28,14 +28,14 @@
 
 .confirm {
   background-color: var(--accent-color);
-  color: var(--font-color-primary);
   font-family: var(--primary-font);
+  color: #fff;
 }
 
 .cancel {
   background-color: var(--color-red);
-  color: var(--font-color-primary);
   font-family: var(--primary-font);
+  color: #fff;
 }
 
 @keyframes fade-in {
