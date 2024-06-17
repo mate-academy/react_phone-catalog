@@ -1,0 +1,63 @@
+.modal {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+
+  &::before {
+    content: '';
+    width: 100%;
+    background-color: $elements;
+    height: 100%;
+    position: absolute;
+    opacity: 0.6;
+  }
+
+  &__inner-block {
+    background-color: $white;
+    opacity: 1;
+    z-index: 10;
+    width: 40%;
+    height: 30%;
+    padding: 10px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__confirm, &__cancel {
+    width: 40%;
+    border: 1px solid $elements;
+    border-radius: 5px;
+    cursor: pointer;
+    @include defaultAnimation;
+  }
+
+  &__confirm {
+    background-color: rgb(117, 205, 117);
+
+    &:hover {
+      background-color: rgb(53, 214, 53);
+    }
+  }
+
+  &__cancel {
+    background-color: rgb(205, 117, 117);
+
+    &:hover {
+      background-color: rgb(214, 53, 53);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    height: 30%;
+  }
+}

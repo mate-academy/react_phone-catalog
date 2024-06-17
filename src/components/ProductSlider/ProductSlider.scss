@@ -1,0 +1,53 @@
+.product-slider {
+  @include on-desktop {
+    overflow: hidden;
+  }
+
+  &__items {
+    display: flex;
+    gap: 16px;
+    margin-top: 24px;
+    position: relative;
+    @include slideAnimation;
+  }
+
+  &__title {
+    color: $white;
+    display: inline-block;
+    margin-right: 10px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: space-between;
+  }
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__button {
+    background-image: url('../../img/buttons/Slider-Button.png');
+    width: 32px;
+    height: 32px;
+    background-size: cover;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-image: url('../../img/buttons/Slider-Button-Hoveer.png');
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: transparent;
+      background-image: url('../../img/buttons/Slider-Button-Disabled.png');
+    }
+
+    &-prev {
+      transform: rotate(180deg);
+    }
+  }
+}

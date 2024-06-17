@@ -1,0 +1,66 @@
+.footer {
+  box-sizing: border-box;
+  display: flex;
+  background-color: $black;
+  width: 100%;
+  padding: 32px 16px;
+  height: 257px;
+  flex-direction: column;
+  gap: 32px;
+  border-top: 1px solid $elements;
+
+  @include on-tablet {
+    flex-direction: row;
+    padding: 32px 32px;
+    justify-content: space-between;
+    align-items: center;
+    height: 96px;
+  }
+
+  @include on-desktop {
+    padding-inline: 152px;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__links {
+    display: flex;
+    list-style: none;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+      gap: 106.83px;
+    }
+  }
+
+  &__link {
+    & > a {
+      text-decoration: none;
+      color: $white;
+    }
+  }
+
+  &__to-top {
+    position: relative;
+    gap: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: $secondary;
+    padding: 8.5px 48px 8.5px 0;
+    cursor: pointer;
+
+    &-button {
+      display: inline-block;
+      transform: rotate(-90deg);
+    }
+  }
+}

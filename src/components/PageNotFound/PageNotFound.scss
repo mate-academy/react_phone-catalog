@@ -1,0 +1,21 @@
+.page-not-found {
+  @include create-grid;
+
+  &__path {
+    min-width: 100%;
+    @include full-grid;
+  }
+
+  &__title {
+    @include full-grid;
+    color: $white;
+  }
+
+  &__block {
+    @include full-grid;
+    display: flex;
+    flex-direction: column;
+    padding-block: 32px;
+    gap: 16px;
+  }
+}

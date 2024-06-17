@@ -1,0 +1,29 @@
+.path {
+  display: flex;
+  gap: 8px;
+  height: 16px;
+  align-items: center;
+
+  &__home {
+    background-image: url('../../img/Icons/Home.png');
+  }
+
+  &__arrow {
+    background-image: url('../../img/Icons/Arrow.png');
+  }
+
+  &__arrow, &__home {
+    width: 16px;
+    height: 16px;
+    background-size: cover;
+  }
+
+  &__name {
+    color: $secondary;
+
+    &-link {
+      color: $white;
+      cursor: pointer;
+    }
+  }
+}
