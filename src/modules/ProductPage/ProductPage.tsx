@@ -9,7 +9,7 @@ import { SpecsItem } from '../shared/SpecsItem';
 import { DescriptionList } from './DescriptionList';
 import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { Product } from '../../types/Product';
-import { PRODUCT_URL } from "../constants/URL's/URL's";
+import { BASE_URL, PRODUCT_URL } from "../constants/URL's/URL's";
 import { getRandomNumbers } from '../../services/getRandomNumbers';
 import { BackButton } from '../shared/Buttons/MoveButtons';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
@@ -233,14 +233,14 @@ export const ProductPage: React.FC = React.memo(() => {
       {errorLoadedDevice && (
         <div className="product-page__not-found-wrapper">
           <img
-            src="/img/product-not-found.png"
+            src={`${BASE_URL}/img/product-not-found.png`}
             alt="Device not found"
             className="product-page__product-not-found"
           />
         </div>
       )}
 
-      {loadedSuggestedProduct && (
+      {loadedSuggestedProduct && !errorLoadedDevice && (
         <ProductListCarousel
           title="You may also like"
           products={suggestedProducts}
