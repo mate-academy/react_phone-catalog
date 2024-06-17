@@ -284,9 +284,12 @@
 
     &-param {
       color: $white;
+      max-width: 50%;
+      text-align: end;
 
       &-name {
         color: $secondary;
+        margin-right: 10px;
       }
     }
   }

@@ -8,7 +8,7 @@
   flex-direction: column;
   justify-content: end;
   position: relative;
-  min-width: 288px;
+  width: 288px;
   height: 439px;
   @include defaultAnimation;
 
@@ -17,12 +17,12 @@
   }
 
   @include on-tablet {
-    min-width: 237px;
+    width: 237px;
     height: 512px;
   }
 
   @include on-desktop {
-    min-width: 272px;
+    width: 272px;
     height: 506px;
   }
 
@@ -34,11 +34,10 @@
     object-fit: contain;
     position: absolute;
     top: 32px;
-    transform: translateX(25%);
+    align-self: center;
     @include defaultAnimation;
 
     @include on-tablet {
-      transform: translateX(0);
       width: 173px;
       height: 173px;
     }

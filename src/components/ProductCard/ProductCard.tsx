@@ -88,7 +88,7 @@ export const ProductCard: React.FC<Props> = ({ product, productType }) => {
       <div className="card__buttons">
         <button
           className={classNames('card__button button', {
-            'button-disabled':
+            'button--disabled':
               cart.filter(crt => crt.id === product.id).length > 0,
           })}
           onClick={handleAddToCart}

@@ -21,7 +21,7 @@
     background-color: $light-accent;
   }
 
-  &:disabled, &-disabled, &-disabled:hover {
+  &:disabled, &--disabled, &--disabled:hover {
     background-color: $surface-2;
   }
 }

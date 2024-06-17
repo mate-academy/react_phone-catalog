@@ -117,6 +117,8 @@ export const ProductDetails: React.FC<Props> = ({
   const handleAddToCart = () => {
     if (cart.filter(crt => crt.id === product.id).length <= 0) {
       setCart([...cart, { ...product, count: 1 }]);
+    } else {
+      setCart(cart.filter(crt => crt.id !== product.id));
     }
   };
 
@@ -207,9 +209,11 @@ export const ProductDetails: React.FC<Props> = ({
             </div>
             <div className="product-details__buttons">
               <button
-                disabled={cart.filter(crt => crt.id === product.id).length > 0}
                 onClick={handleAddToCart}
-                className="product-details__button button"
+                className={classNames('product-details__button button', {
+                  'button--disabled':
+                    cart.filter(crt => crt.id === product.id).length > 0,
+                })}
               >
                 {cart.filter(crt => crt.id === product.id).length > 0
                   ? 'Added to cart'
