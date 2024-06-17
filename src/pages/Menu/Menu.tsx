@@ -1,7 +1,6 @@
 import { Navigation } from '../../components/Header/components/Navigation';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Header } from '../../components/Header';
 import { useWidth } from '../../hooks/useWidth';
 import './Menu.scss';
 
@@ -17,7 +16,6 @@ export const Menu: React.FC = () => {
 
   return (
     <aside className="menu" style={{ overflow: 'hidden' }}>
-      <Header />
       <Navigation className="menu__nav" />
     </aside>
   );

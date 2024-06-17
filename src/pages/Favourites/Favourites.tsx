@@ -1,8 +1,6 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
 import { Breadcrumb } from '../../components/Breadcrumb';
 import { Loader } from '../../components/Loader';
-import { getFilteredItems } from '../../utils/getFilteredItems';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import { ProductContext } from '../../store/ProductContext';
 import { Error } from '../../components/Error';
@@ -15,8 +13,6 @@ export const Favourites = () => {
   const { products: productsGeneral, likedItems } = useContext(ProductContext);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<ErrorText | ''>('');
-  const [searchParams] = useSearchParams();
-  const sortBy = searchParams.get('sortBy') || '';
 
   useEffect(() => {
     setLoading(true);
@@ -36,10 +32,6 @@ export const Favourites = () => {
       setLoading(false);
     }
   }, [productsGeneral, likedItems]);
-
-  const filteredProducts = useMemo(() => {
-    return getFilteredItems(products, sortBy);
-  }, [products, sortBy]);
 
   return (
     <section className={styles.container}>
@@ -62,7 +54,7 @@ export const Favourites = () => {
                 >{`${products.length} models`}</p>
               </div>
               <div className={styles.catalog}>
-                <ProductsList products={filteredProducts} />
+                <ProductsList products={products} />
               </div>
             </>
           )}

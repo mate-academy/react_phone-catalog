@@ -15,7 +15,11 @@ export const getRecomended = (
     .sort((item1, item2) => item2.fullPrice - item1.fullPrice)
     .slice(0, 10);
 
-  return [...similarProducts, ...randomProducts].sort(
-    (item1, item2) => item2.fullPrice - item1.fullPrice,
+  const recommended = new Set(
+    [...similarProducts, ...randomProducts].sort(
+      (item1, item2) => item2.fullPrice - item1.fullPrice,
+    ),
   );
+
+  return Array.from(recommended);
 };

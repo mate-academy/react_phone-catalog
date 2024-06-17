@@ -90,7 +90,7 @@ export const ProductSlider: React.FC<Props> = ({
           {products.map(item => {
             return (
               <div
-                key={item.itemId}
+                key={item.id}
                 style={
                   {
                     transition: 'transform 3s',

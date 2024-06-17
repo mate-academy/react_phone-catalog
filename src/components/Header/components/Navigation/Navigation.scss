@@ -38,7 +38,8 @@
   }
   &__icons {
     display: flex;
-    
+    margin-left: 20px;
+
     @include on-tablet {
       height: 100%;
     }

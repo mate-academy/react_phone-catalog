@@ -2,10 +2,15 @@ import { Link, useLocation } from 'react-router-dom';
 import { Navigation } from './components/Navigation/Navigation';
 import { useWidth } from '../../hooks/useWidth';
 import styles from './Header.module.scss';
+import { Search } from '../Search/Search';
 
 export const Header = () => {
   const { pathname } = useLocation();
   const width = useWidth();
+  const displaySearch =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
 
   return (
     <header className={styles.container}>
@@ -18,7 +23,8 @@ export const Header = () => {
           <Navigation />
         </div>
       ) : (
-        <>
+        <div className={styles.icons}>
+          {displaySearch && <Search />}
           {pathname.includes('menu') ? (
             <Link to=".." className={styles.icon}>
               <div className="icon icon--close"></div>
@@ -28,7 +34,7 @@ export const Header = () => {
               <div className="icon icon--menu"></div>
             </Link>
           )}
-        </>
+        </div>
       )}
     </header>
   );

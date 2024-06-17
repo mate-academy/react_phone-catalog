@@ -1,12 +1,12 @@
 import { useNavigate } from 'react-router-dom';
-import { useEffect } from 'react';
+// import { useEffect } from 'react';
 import styles from './Error.module.scss';
 import { ErrorText } from '../../constants/errorText';
 import emptyCart from '../../images/cart-is-empty.png';
 import pageNotFound from '../../images/page-not-found.png';
 import productNotFound from '../../images/product-not-found.png';
 
-export const getErrorImg = (error: ErrorText) => {
+export const getErrorImg = (error: string) => {
   switch (error) {
     case ErrorText.emptyCart:
       return emptyCart;
@@ -18,18 +18,18 @@ export const getErrorImg = (error: ErrorText) => {
 };
 
 type Props = {
-  errorText: ErrorText;
+  errorText: string;
 };
 
 export const Error: React.FC<Props> = ({ errorText }) => {
   const navigate = useNavigate();
   const bgImage = getErrorImg(errorText);
 
-  useEffect(() => {
-    setTimeout(() => {
-      navigate('../');
-    }, 999000);
-  }, [navigate]);
+  // useEffect(() => {
+  //   setTimeout(() => {
+  //     navigate(-1);
+  //   }, 1000);
+  // }, [navigate]);
 
   return (
     <section className={styles.container}>

@@ -1,7 +1,12 @@
 @import '../../styles/utils/utils';
 
+.container {
+  width: 100%;
+}
+
 .gridContainer {
   @include content-pading-inline;
+
 
   @include on-tablet {
     @include page-grid;
@@ -40,7 +45,7 @@
 .details {
   grid-column: 6 / -1;
   position: relative;
-  
+
   @include section-gap;
 
   @include on-desktop {

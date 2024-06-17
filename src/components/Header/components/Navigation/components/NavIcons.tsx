@@ -1,8 +1,9 @@
-import { NavLink } from 'react-router-dom';
+import { NavLink, useLocation } from 'react-router-dom';
 import { ProductContext } from '../../../../../store/ProductContext';
 import { useContext } from 'react';
 import classNames from 'classnames';
 import '../Navigation.scss';
+import { Search } from '../../../../Search/Search';
 
 type Props = {
   className: string;
@@ -18,9 +19,16 @@ export const NavIcons: React.FC<Props> = ({ className }) => {
       'link--underline': !isActive,
     });
 
+  const { pathname } = useLocation();
+  const displaySearch =
+    pathname === '/phones' ||
+    pathname === '/tablets' ||
+    pathname === '/accessories';
+
   return (
     <>
       <div className={`${className}__icons nav__icons`}>
+        {displaySearch && <Search />}
         <NavLink to="/favourites" className={getLinkClass}>
           <div className="icon icon--fav"></div>
           {likedItemsCount > 0 && (

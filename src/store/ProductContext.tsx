@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { Dispatch, SetStateAction, useEffect, useMemo } from 'react';
 import { getProducts } from '../api/products';
 import { ProductGeneral } from '../types/ProductGeneral';

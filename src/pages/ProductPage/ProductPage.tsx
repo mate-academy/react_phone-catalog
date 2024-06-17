@@ -78,7 +78,7 @@ export const ProductPage = () => {
   const recomendedProducts = getRecomended(products, product, product.category);
 
   return (
-    <section>
+    <section className={styles.container}>
       {loading ? (
         <Loader />
       ) : (

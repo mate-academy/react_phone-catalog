@@ -23,11 +23,17 @@ export const ProductButtons: React.FC<Props> = ({ productId }) => {
     return productItem.isLiked(addedItems, productId);
   }, [addedItems, productId]);
 
-  const handleLikeClick = () => {
+  const handleLikeClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
     productItem.updateSelectedProducts(setLikedItems, productId);
   };
 
-  const handleAddClick = () => {
+  const handleAddClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+  ) => {
+    event.stopPropagation();
     productItem.updateSelectedProducts(setAddedItems, productId);
   };
 

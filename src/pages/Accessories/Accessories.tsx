@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Breadcrumb } from '../../components/Breadcrumb';
@@ -20,6 +19,7 @@ export const Accessories = () => {
   const [error, setError] = useState<ErrorText | ''>('');
   const [searchParams] = useSearchParams();
   const sortBy = searchParams.get('sortBy') || '';
+  const query = searchParams.get('query') || '';
 
   useEffect(() => {
     setLoading(true);
@@ -45,8 +45,8 @@ export const Accessories = () => {
   }, []);
 
   const filteredProducts = useMemo(() => {
-    return getFilteredItems(products, sortBy);
-  }, [products, sortBy]);
+    return getFilteredItems(products, sortBy, query);
+  }, [products, sortBy, query]);
 
   return (
     <section className={styles.container}>
@@ -70,9 +70,16 @@ export const Accessories = () => {
               </div>
 
               <Dropdown />
-              <div className={styles.catalog}>
-                <ProductsList products={filteredProducts} />
-              </div>
+
+              {filteredProducts.length === 0 ? (
+                <Error
+                  errorText={`There are no products matching the query!`}
+                />
+              ) : (
+                <div className={styles.catalog}>
+                  <ProductsList products={filteredProducts} />
+                </div>
+              )}
             </>
           )}
         </>

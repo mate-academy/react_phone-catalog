@@ -1,8 +1,21 @@
 import { SortBy } from '../components/Dropdown';
 import { ProductGeneral } from '../types/ProductGeneral';
 
-export function getFilteredItems(products: ProductGeneral[], sortBy: string) {
-  const displayedProducts = [...products];
+export function getFilteredItems(
+  products: ProductGeneral[],
+  sortBy: string,
+  query: string,
+) {
+  let displayedProducts = [...products];
+
+  if (query) {
+    displayedProducts = displayedProducts.filter(product => {
+      const normalizedName = product.name.toLowerCase();
+      const normalizedQuery = query.toLowerCase();
+
+      return normalizedName.includes(normalizedQuery);
+    });
+  }
 
   displayedProducts.sort((item1, item2) => {
     switch (sortBy) {
