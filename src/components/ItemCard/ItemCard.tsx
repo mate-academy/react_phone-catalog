@@ -3,15 +3,18 @@ import styles from './ItemCard.module.scss';
 import { Footer } from '../Footer';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { Phone } from '../../types/PhoneType';
-import phones from '../../api/phones.json';
-import tablets from '../../api/tablets.json';
-import accessories from '../../api/accessories.json';
 import { Accessories } from '../../types/AccessoriesType';
 import classNames from 'classnames';
 import productsFromServer from '../../api/products.json';
 import { useAppContext } from '../../AppContext';
 import { Carousel } from '../HomePage/Models/Carousel';
 import { Navigation } from '../Navigation';
+import { Loader } from '../Loader';
+import {
+  getDetailedAccessories,
+  getDetailedPhones,
+  getDetailedTablets,
+} from '../../api';
 
 interface Props {
   swiperIndex: number;
@@ -33,6 +36,8 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const [startMemory, setStartMemory] = useState<string | undefined>(
     firstColor,
   );
+
+  const [loading, setLoading] = useState(false);
 
   const relatedItems = productsFromServer
     .filter(item => item.category === category)
@@ -106,36 +111,43 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   };
 
   useEffect(() => {
-    const categoryModels = () => {
+    setLoading(true); // Set loading to true before fetching data
+
+    const fetchData = async () => {
+      let fetchedModel: Phone | Accessories | null = null; // Initialize fetchedModel
+
       switch (category) {
-        case 'accessories':
-          return accessories;
+        case 'phones':
+          const detailedPhones = await getDetailedPhones();
+
+          fetchedModel = detailedPhones.find(p => p.id === productId) || null;
+          break;
         case 'tablets':
-          return tablets;
+          const detailedTablets = await getDetailedTablets();
+
+          fetchedModel = detailedTablets.find(t => t.id === productId) || null;
+          break;
+        case 'accessories':
+          const detailedAccessories = await getDetailedAccessories();
+
+          fetchedModel =
+            detailedAccessories.find(a => a.id === productId) || null;
+          break;
         default:
-          return phones;
+          fetchedModel = null;
       }
+
+      setModel(fetchedModel); // Set the fetched model
+
+      setLoading(false); // Set loading to false after data is fetched
     };
 
-    const newModels = categoryModels();
+    fetchData();
+  }, [category, productId]);
 
-    const newModel = newModels.find(
-      visibleModels => visibleModels.id === productId,
-    );
-
-    if (newModel) {
-      setModel(newModel);
-      if (!firstColor || !newModel.colorsAvailable.includes(firstColor)) {
-        setActiveColor(newModel.color);
-        setStartMemory(newModel.capacity);
-      } else {
-        setActiveColor(firstColor);
-        setStartMemory(startMemory);
-      }
-    } else {
-      setModel(null);
-    }
-  }, [productId, category, firstColor, startMemory]);
+  if (loading) {
+    return <Loader />; // Показуємо лоадер під час завантаження даних
+  }
 
   return (
     <div className="page">

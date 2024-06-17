@@ -1,10 +1,12 @@
 import classNames from 'classnames';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, useLocation } from 'react-router-dom';
 
 import styles from './Navigation.module.scss';
 import { Phone } from '../../types/PhoneType';
 import { Accessories } from '../../types/AccessoriesType';
+import { useAppContext } from '../../AppContext';
+import { PageSection } from '../../types/PageSection';
 
 type Props = {
   category: string;
@@ -19,6 +21,31 @@ export const Navigation: React.FC<Props> = ({
   back,
   model,
 }) => {
+  const { setCurrentPage } = useAppContext();
+
+  const location = useLocation();
+
+  // Set currentPage when location changes
+  useEffect(() => {
+    const pathSegments = location.pathname.split('/');
+    const currentSection = pathSegments[1]; // Assuming path is '/category'
+
+    switch (currentSection) {
+      case 'phones':
+        setCurrentPage(PageSection.Phones);
+        break;
+      case 'tablets':
+        setCurrentPage(PageSection.Tablets);
+        break;
+      case 'accessories':
+        setCurrentPage(PageSection.Accessories);
+        break;
+      default:
+        setCurrentPage(PageSection.Home); // or any default section you prefer
+        break;
+    }
+  }, [location.pathname, setCurrentPage]);
+
   return (
     <div className={classNames(styles.container, styles.navigation)}>
       <div className={styles.navigation__main}>
@@ -39,7 +66,7 @@ export const Navigation: React.FC<Props> = ({
           className={classNames(styles.navigation__text, {
             [styles['navigation__text--current']]: currentPage,
           })}
-          to={`../`}
+          to={`/${model.category}`}
         >
           {category}
         </Link>

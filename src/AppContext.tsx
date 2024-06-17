@@ -2,6 +2,7 @@ import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PageSection } from './types/PageSection';
 import { Products } from './types/Products';
 import productsFromServer from './api/products.json';
+import { getProduct } from './api';
 
 interface AppContextInterface {
   currentPage: PageSection;
@@ -11,6 +12,9 @@ interface AppContextInterface {
   cart: Products[];
   setCart: React.Dispatch<React.SetStateAction<Products[]>>;
   phones: Products[];
+  setPhones: React.Dispatch<React.SetStateAction<Products[]>>;
+  setTablets: React.Dispatch<React.SetStateAction<Products[]>>;
+  setAccessories: React.Dispatch<React.SetStateAction<Products[]>>;
   tablets: Products[];
   accessories: Products[];
   handleAddFavourite: (model: Products) => void;
@@ -29,17 +33,31 @@ export const AppProvider: React.FC<React.PropsWithChildren<{}>> = ({
   const [favourites, setFavourites] = useState<Products[]>([]);
   const [cart, setCart] = useState<Products[]>([]);
   const [itemCounts, setItemCounts] = useState<Record<number, number>>({});
-  const phones = productsFromServer.filter(
-    product => product.category === 'phones',
-  );
+  const [phones, setPhones] = useState<Products[]>([]);
+  const [tablets, setTablets] = useState<Products[]>([]);
+  const [accessories, setAccessories] = useState<Products[]>([]);
 
-  const tablets = productsFromServer.filter(
-    product => product.category === 'tablets',
-  );
+  useEffect(() => {
+    const fetchData = async () => {
+      const allProducts = await getProduct();
 
-  const accessories = productsFromServer.filter(
-    product => product.category === 'accessories',
-  );
+      const phonesData = allProducts.filter(
+        product => product.category === 'phones',
+      );
+      const tabletsData = allProducts.filter(
+        product => product.category === 'tablets',
+      );
+      const accessoriesData = allProducts.filter(
+        product => product.category === 'accessories',
+      );
+
+      setPhones(phonesData);
+      setTablets(tabletsData);
+      setAccessories(accessoriesData);
+    };
+
+    fetchData();
+  }, []);
 
   const handleAddFavourite = (model: Products) => {
     const index = favourites.findIndex(item => item.id === model.id);
@@ -156,6 +174,9 @@ export const AppProvider: React.FC<React.PropsWithChildren<{}>> = ({
         handleDecrement,
         handleIncrement,
         itemCounts,
+        setPhones,
+        setTablets,
+        setAccessories,
       }}
     >
       {children}
