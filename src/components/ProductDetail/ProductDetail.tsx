@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styles from './ProductDetail.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { ProductContext } from '../../context/ProductContext';
@@ -14,7 +14,11 @@ import { ProductControls } from '../ProductControls';
 import { Loader } from '../Loader';
 import { ProductSlider } from '../ProductSlider';
 
-const ProductDetail = () => {
+interface Props {
+  category: string;
+}
+
+const ProductDetail: React.FC<Props> = ({ category }) => {
   const { productId } = useParams<{ productId: string }>();
   const {
     allProducts,
@@ -41,7 +45,8 @@ const ProductDetail = () => {
           if (productId && matchProduct) {
             const detaileProduct = await getProductDetail(
               productId,
-              matchProduct.category,
+              category,
+              // matchProduct.category,
             );
 
             setDetailedProduct(detaileProduct);
@@ -60,7 +65,7 @@ const ProductDetail = () => {
     if (productId) {
       fetchProduct();
     }
-  }, [productId, matchProduct, setLoading, setError, error]);
+  }, [productId, matchProduct, setLoading, setError, error, category]);
 
   if (loading || !detailedProduct || !matchProduct) {
     return <Loader />;
@@ -78,6 +83,7 @@ const ProductDetail = () => {
 
   return (
     <section className={styles.container}>
+      {category}
       <Breadcrumbs />
       <Link to="/" className={styles.goBackButton}>
         <img

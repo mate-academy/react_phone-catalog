@@ -31,8 +31,8 @@ const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
 
         <div className={styles.price}>
-          <div className={styles.existPrice}>${price}</div>
-          <div className={styles.hotPrice}>${fullPrice}</div>
+          <div className={styles.hotPrice}>${price}</div>
+          <div className={styles.existPrice}>${fullPrice}</div>
         </div>
 
         <div className={styles.divider}></div>

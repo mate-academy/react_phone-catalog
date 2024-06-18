@@ -81,8 +81,8 @@ const ProductControls: React.FC<Props> = ({ productDetails, product }) => {
       <div className={styles.divider}></div>
 
       <div className={styles.price}>
-        <div className={styles.existPrice}>${productDetails.priceDiscount}</div>
-        <div className={styles.hotPrice}>${productDetails.priceRegular}</div>
+        <div className={styles.hotPrice}>${productDetails.priceDiscount}</div>
+        <div className={styles.existPrice}>${productDetails.priceRegular}</div>
       </div>
 
       {product && <ActionButtons product={product} />}

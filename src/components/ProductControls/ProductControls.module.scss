@@ -12,7 +12,6 @@
 
   @include on-desktop {
     grid-column: 14 / -5;
-
   }
 }
 
@@ -27,7 +26,7 @@
   flex-direction: column;
   gap: 8px;
 
-  @include  small-text;
+  @include small-text;
 
   color: var(--color-white);
 }
@@ -52,7 +51,6 @@
   border: 0;
   padding: 4px;
   cursor: pointer;
-
 }
 
 .activeColorsAvailable {
@@ -72,7 +70,6 @@
   cursor: pointer;
 
   @include body-text;
-
 }
 
 .active {
@@ -85,17 +82,17 @@
   display: flex;
   gap: 8px;
 
-  @include  h3-tablet;
+  @include h3-tablet;
 }
 
 .existPrice {
-  color: var(--color-white);
-}
-
-.hotPrice {
   display: flex;
   color: var(--color-secondary);
   text-decoration: line-through;
+}
+
+.hotPrice {
+  color: var(--color-white);
 }
 
 .specsList {
@@ -110,13 +107,13 @@
 }
 
 .specsKey {
-  @include  body-text;
+  @include body-text;
 
   color: var(--color-white);
 }
 
 .specsValue {
-  @include  body-text;
+  @include body-text;
 
   color: var(--color-white);
 }

@@ -1,11 +1,41 @@
-import styles from './Breadcrumbs.module.scss';
+import { useContext, useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ProductContext } from '../../context/ProductContext';
+import styles from './Breadcrumbs.module.scss';
 import { BASE_URL } from '../../utils/const';
+
+type Breadcrumb = {
+  name: string;
+  path: string;
+  isLast: boolean;
+};
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
-  const breadcrumbs = pathname.split('/').filter(x => x);
-  let breadcrumbPath = '';
+  const { allProducts } = useContext(ProductContext);
+  const [breadcrumbs, setBreadcrumbs] = useState<Breadcrumb[]>([]);
+
+  useEffect(() => {
+    const pathnames = pathname.split('/').filter(x => x);
+    const breadcrumbItems = pathnames.map((name, index) => {
+      const breadcrumbPath = `/${pathnames.slice(0, index + 1).join('/')}`;
+      const isLast = index === pathnames.length - 1;
+
+      let displayName = name.replace(/-/g, ' ');
+
+      if (index === 1) {
+        const product = allProducts.find(item => item.itemId === name);
+
+        if (product) {
+          displayName = product.category;
+        }
+      }
+
+      return { name: displayName, path: breadcrumbPath, isLast };
+    });
+
+    setBreadcrumbs(breadcrumbItems);
+  }, [pathname, allProducts]);
 
   return (
     <div className={styles.breadcrumbs}>
@@ -16,27 +46,22 @@ const Breadcrumbs = () => {
           className={styles.icon}
         />
       </Link>
-      {breadcrumbs.map((name, index) => {
-        breadcrumbPath += `/${name}`;
-        const isLast = index === breadcrumbs.length - 1;
-
-        return (
-          <span key={breadcrumbPath} className={styles.breadcrumbItem}>
-            <img
-              src={`${BASE_URL}/icons/ArrowRight.svg`}
-              alt="ArrowRight"
-              className={styles.arrow}
-            />
-            {isLast ? (
-              <span className={styles.current}>{name.replace(/-/g, ' ')}</span>
-            ) : (
-              <Link to={breadcrumbPath} className={styles.link}>
-                {name.replace(/-/g, ' ')}
-              </Link>
-            )}
-          </span>
-        );
-      })}
+      {breadcrumbs.map(({ name, path, isLast }) => (
+        <span key={path} className={styles.breadcrumbItem}>
+          <img
+            src={`${BASE_URL}/icons/ArrowRight.svg`}
+            alt="ArrowRight"
+            className={styles.arrow}
+          />
+          {isLast ? (
+            <span className={styles.current}>{name}</span>
+          ) : (
+            <Link to={path} className={styles.link}>
+              {name}
+            </Link>
+          )}
+        </span>
+      ))}
     </div>
   );
 };

@@ -1,4 +1,4 @@
-@import "../../styles/main";
+@import '../../styles/main';
 
 .header {
   border-bottom: 1px solid var(--color-elements);
@@ -61,13 +61,13 @@
   padding-block: 18.5px;
 
   @include on-desktop {
-    padding-block: 26.5px
+    padding-block: 26.5px;
   }
 }
 
 .link {
   @include uppercase;
-  
+
   color: var(--color-secondary);
   text-decoration: none;
 
@@ -80,7 +80,7 @@
   }
 
   @include on-desktop {
-    padding-block: 26.5px
+    padding-block: 26.5px;
   }
 }
 
@@ -91,7 +91,7 @@
   &::after {
     position: absolute;
     z-index: 2;
-    content: "";
+    content: '';
     bottom: 0;
     left: 0;
     right: 0;
@@ -110,26 +110,33 @@
   }
 }
 
-.iconMenu {
+.navLink {
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 16px;
   border-left: 1px solid var(--color-elements);
+  position: relative;
 
   @include on-desktop {
     padding: 24px;
   }
 }
 
-
-.actionIcon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.activeIcon {
+  color: var(--color-white);
   position: relative;
-  height: 28px;
-  width: 28px;
+
+  &::after {
+    position: absolute;
+    z-index: 2;
+    content: '';
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background-color: var(--color-white);
+  }
 }
 
 .count {
@@ -137,13 +144,18 @@
   align-items: center;
   justify-content: center;
   position: absolute;
-  top: 0;
-  left: 14px;
+  top: 12px;
+  right: 12px;
   width: 14px;
   height: 14px;
   border-radius: 50%;
   border: 1px solid var(--color-background);
   background-color: var(--color-red);
+
+  @include on-desktop {
+    top: 20px;
+    right: 14px;
+  }
 }
 
 .countText {
@@ -153,7 +165,6 @@
   line-height: 11.5px;
   text-align: center;
 }
-
 
 .menuBlock {
   display: flex;

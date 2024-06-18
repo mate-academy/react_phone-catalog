@@ -1,4 +1,4 @@
-@import "../../styles/main";
+@import '../../styles/main';
 
 .ProductCard {
   display: flex;
@@ -74,7 +74,6 @@
   padding-top: 16px;
 }
 
-
 .price {
   display: flex;
   gap: 8px;
@@ -83,12 +82,13 @@
 }
 
 .existPrice {
-  color: var(--color-white);
+  display: flex;
+  color: var(--color-secondary);
+  text-decoration: line-through;
 }
 
 .hotPrice {
-  display: flex;
-  color: var(--color-secondary);
+  color: var(--color-white);
 }
 
 .divider {
@@ -109,6 +109,8 @@
 }
 
 .descriptionTitle {
+  color: var(--color-secondary);
+  
   @include small-text;
 }
 

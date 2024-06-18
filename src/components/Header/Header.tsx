@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { BASE_URL } from '../../utils/const';
 import styles from './Header.module.scss';
@@ -6,18 +6,21 @@ import classNames from 'classnames';
 import { OverlayMenu } from '../OverlayMenu';
 import { ProductContext } from '../../context/ProductContext';
 
-interface Props {
-  isOpen: boolean;
-  toggleOpenMenu: () => void;
-}
-
-export const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
+const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.link, {
     [styles.activeLink]: isActive,
   });
 
-const Header: React.FC<Props> = ({ isOpen, toggleOpenMenu }) => {
+export const classActiveIcon = ({ isActive }: { isActive: boolean }) =>
+  classNames(styles.navLink, {
+    [styles.activeIcon]: isActive,
+  });
+
+const Header = () => {
   const { cart, favorites } = useContext(ProductContext);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpenMenu = () => setIsOpen(current => !current);
 
   return (
     <>
@@ -58,32 +61,23 @@ const Header: React.FC<Props> = ({ isOpen, toggleOpenMenu }) => {
         </div>
 
         <div className={styles.icons}>
-          <div className={styles.iconMenu}>
-            <Link to="/favorites">
-              <div className={styles.actionIcon}>
-                <img src={`${BASE_URL}/icons/Favorites.svg`} alt="Favorites" />
-                {favorites.length > 0 && (
-                  <span className={styles.count}>
-                    <p className={styles.countText}>{favorites.length}</p>
-                  </span>
-                )}
-              </div>
-            </Link>
-          </div>
-          <div className={styles.iconMenu}>
-            <Link to="/cart">
-              <div className={styles.actionIcon}>
-                <img src={`${BASE_URL}/icons/Cart.svg`} alt="Favorites" />
-                {cart.length > 0 && (
-                  <span className={styles.count}>
-                    <p className={styles.countText}>{cart.length}</p>
-                  </span>
-                )}
-              </div>
-            </Link>
-          </div>
+          <NavLink to="/favorites" className={classActiveIcon}>
+            <img src={`${BASE_URL}/icons/Favorites.svg`} alt="Favorites" />
+            {favorites.length > 0 && (
+              <span className={styles.count}>
+                <p className={styles.countText}>{favorites.length}</p>
+              </span>
+            )}
+          </NavLink>
+          <NavLink to="/cart" className={classActiveIcon}>
+            <img src={`${BASE_URL}/icons/Cart.svg`} alt="Cart" />
+            {cart.length > 0 && (
+              <span className={styles.count}>
+                <p className={styles.countText}>{cart.length}</p>
+              </span>
+            )}
+          </NavLink>
         </div>
-
         <div className={styles.menuBlock}>
           <button className={styles.menuButton} onClick={toggleOpenMenu}>
             <img
@@ -99,7 +93,7 @@ const Header: React.FC<Props> = ({ isOpen, toggleOpenMenu }) => {
         </div>
       </header>
 
-      {isOpen && <OverlayMenu />}
+      {isOpen && <OverlayMenu setOpen={setIsOpen} />}
     </>
   );
 };
