@@ -1,0 +1,35 @@
+@import "../../utils/styles/mixins";
+
+.phones-page {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    @include title-1;
+
+    margin: 0 0 8px;
+  }
+
+  &__models-count {
+    @include text-body;
+
+    margin: 0 0 32px;
+    color: $secondary;
+  }
+
+  &__filter {
+    margin-bottom: 24px;
+  }
+
+  &__product-list {
+    scroll-margin-top: $header-hight-mobile + 24px;
+    margin-bottom: 24px;
+  }
+}

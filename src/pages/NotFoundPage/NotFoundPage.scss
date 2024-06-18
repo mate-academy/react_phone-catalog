@@ -1,0 +1,23 @@
+@import '../../utils/styles/mixins';
+
+.not-found-page {
+  &__title {
+    @include title-1;
+  }
+
+  &__home-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: $primary;
+    text-decoration: none;
+
+    &::before {
+      content: '';
+      display: block;
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/icons/chevron-black-left.svg);
+    }
+  }
+}

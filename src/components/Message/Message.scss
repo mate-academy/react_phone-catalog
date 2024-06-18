@@ -1,0 +1,7 @@
+@import '../../utils/styles/mixins';
+
+.message {
+  @include title-3;
+
+  margin: 0;
+}

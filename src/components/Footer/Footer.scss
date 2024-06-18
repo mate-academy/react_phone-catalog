@@ -1,0 +1,68 @@
+@import "../../utils/styles/mixins";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-block: 32px;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__link-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include onTablet {
+      width: 30%;
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__link {
+    @include text-uppercase;
+
+    text-decoration: none;
+    color: $secondary;
+  }
+
+  &__to-top-button {
+    @include text-small;
+
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: initial;
+    border: none;
+    color: $secondary;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    cursor: pointer;
+
+    @include onTablet {
+      margin: 0;
+    }
+
+    &::after {
+      @include button;
+
+      content: "";
+      width: 32px;
+      height: 32px;
+      background-image: url(../../../public/img/icons/chevron-black-up.svg);
+    }
+  }
+}

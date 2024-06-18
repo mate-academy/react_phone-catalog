@@ -1,0 +1,71 @@
+@import "../../utils/styles/mixins";
+
+.pagination {
+  display: flex;
+  gap: 16px;
+  width: fit-content;
+  margin: 0 auto;
+
+  &__button {
+    @include button;
+    @include text-body;
+
+    display: block;
+    width: 32px;
+    height: 32px;
+    user-select: none;
+
+    &--type--back {
+      background-image: url(../../../public/img/icons/chevron-black-left.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/chevron-left.svg );
+      }
+    }
+
+    &--type--next {
+      background-image: url(../../../public/img/icons/chevron-black-right.svg );
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/chevron-right.svg );
+      }
+    }
+
+    &--border--light {
+      border: 1px solid $elements;
+    }
+
+    &.active {
+      @include button--color--black;
+
+      pointer-events: none;
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border: 1px solid $elements;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    &--size--s {
+      @include onTablet {
+        display: none;
+      }
+    }
+
+    &--size--l {
+      display: none;
+
+      @include onTablet {
+        display: flex;
+      }
+    }
+  }
+}

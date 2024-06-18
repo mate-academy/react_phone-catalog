@@ -1,0 +1,143 @@
+@import "../../utils/styles/mixins";
+
+.nav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+
+  @include onTablet {
+    flex-direction: row;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style: none;
+
+    @include onTablet {
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    box-sizing: border-box;
+    height: auto;
+    padding-block: 8px;
+
+    @include onTablet {
+      height: 100%;
+    }
+  }
+
+  &__link {
+    @include text-uppercase;
+
+    display: flex;
+    align-items: center;
+    height: 100%;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $secondary;
+
+    &.active {
+      color: $primary;
+    }
+
+    &.active::after {
+      content: "";
+
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      display: block;
+      height: 2px;
+
+      background-color: $primary;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    height: 64px;
+    width: 100%;
+    border-top: 1px solid #E2E6E9;
+
+    @include onTablet {
+      height: 100%;
+      width: auto;
+      border: none;
+    }
+  }
+
+  &__button {
+    @include button;
+
+    position: relative;
+    height: 100%;
+    width: 50%;
+    box-shadow: -1px 0 0 0 $elements;
+    border: none;
+
+    &--favourites {
+      background-image: url(../../../public/img/icons/heart.svg);
+    }
+
+    &--cart {
+      background-image: url(../../../public/img/icons/cart.svg);
+    }
+
+    @include onTablet {
+      aspect-ratio: 1;
+      width: auto;
+      background-size: 35%;
+    }
+
+    &.active::after {
+      content: "";
+
+      position: absolute;
+
+      left: 0;
+      right: 0;
+      bottom: 0;
+
+      height: 2px;
+
+      background-color: $primary;
+    }
+  }
+
+  &__button-counter {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+
+    display: none;
+    height: 14px;
+    aspect-ratio: 1;
+
+    line-height: 14px;
+    text-align: center;
+    font-size: 9px;
+    color: $white;
+
+    background-color: $red;
+    border: 1px solid $white;
+    border-radius: 50%;
+
+    @include onTablet {
+      display: block;
+    }
+  }
+}

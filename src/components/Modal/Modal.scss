@@ -1,0 +1,72 @@
+@import "../../utils/styles/mixins";
+
+.modal {
+  position: fixed;
+  inset: 0;
+
+  display: flex;
+  flex-direction: center;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+  background-color: rgba($color: #000, $alpha: 0.2);
+  }
+
+  &__window {
+    display: flex;
+    flex-direction: column;
+    padding: 18px;
+    max-width: 400px;
+
+    background-color: $white;
+    border-radius: 10px;
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  &__close-button {
+    height: 20px;
+    aspect-ratio: 1;
+    margin-bottom: 10px;
+    align-self: flex-end;
+
+    border: none;
+    background-color: initial;
+    background-image: url(../../../public/img/icons/close-light.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+
+  &__message {
+    margin-bottom: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 12px;
+    flex-direction: column;
+    align-self: center;
+    width: 100%;
+    max-width: 250px;
+
+    @include onTablet {
+      flex-direction: row;
+      width: 300px;
+    }
+  }
+
+  &__button {
+    @include button;
+
+    padding: 8px;
+    flex-grow: 1;
+
+    &--black {
+      @include button--color--black;
+    }
+  }
+}

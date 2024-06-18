@@ -1,0 +1,35 @@
+// colors
+$primary: #313237;
+$secondary: #89939A;
+$icons: #B4BDC3;
+$elements: #E2E6E9;
+$bgAndHover: #FAFBFC;
+$white: #FFF;
+$green: #27AE60;
+$red: #EB5757;
+$product-colors: (
+  black: #4C4C4C ,
+  green: $green,
+  yellow: #FFCC03,
+  white: $white,
+  purple: #B8AFE6,
+  red: $red,
+  space-gray: #5F7170,
+  silver: #F0F0F0,
+  gold: #FCDBC1,
+);
+
+// breakpoints
+$tablet-width: 640px;
+$desktop-width: 1200px;
+
+// sizes
+$max-width: 1200px;
+$header-hight-mobile: 48px;
+$mobile-inline-padding: 16px;
+$title-margin: 24px;
+$footer-desktop-height: 98px;
+$footer-mobile-height: 292px;
+
+// animations
+$transition: 700ms;

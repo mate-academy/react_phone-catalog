@@ -1,0 +1,185 @@
+@import "../../utils/styles/mixins";
+
+.cart-page {
+  padding-top: 24px;
+
+  &__back {
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @include title-1;
+
+    margin: 0 0 32px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onDesktop {
+      @include grid;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+
+    @include onDesktop {
+      grid-column: span 16;
+    }
+  }
+
+  &__list-item {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 16px;
+    border: 1px solid $elements;
+
+    @include onTablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__product {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__delete-button {
+    height: 16px;
+    aspect-ratio: 1;
+    border: none;
+    background-color: transparent;
+    background-image: url(../../../public/img/icons/close-light.svg);
+    cursor: pointer;
+  }
+
+  &__product-link {
+    @include text-body;
+
+    display: flex;
+    gap: 16px;
+
+    text-decoration: none;
+    color: $primary;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__product-image {
+    height: 80px;
+    aspect-ratio: 1;
+    object-fit: contain;
+  }
+
+  &__numbers {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__counter {
+    @include text-body;
+
+    display: flex;
+    gap: 14px;
+    align-items: center
+  }
+
+  &__counter-button {
+    @include button;
+
+    height: 32px;
+    aspect-ratio: 1;
+
+    background-size: 16px;
+
+    &--type--plus{
+      background-image: url(../../../public/img/icons/plus.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/plus-light.svg);
+      }
+    }
+
+    &--type--minus{
+      background-image: url(../../../public/img/icons/minus.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/minus-light.svg);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border-color: $elements;
+    }
+  }
+
+  &__item-price {
+    @include title-3;
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    height: fit-content;
+    padding: 24px;
+    border: 1px solid $elements;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__total {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__total-price {
+    @include title-2;
+
+    margin: 0;
+  }
+
+  &__total-amount {
+    @include text-body;
+
+    margin: 0;
+    color: $secondary;
+  }
+
+  &__divider {
+    border-bottom: 1px solid $elements;
+  }
+
+  &__checkout-button {
+    @include button;
+    @include button--color--black;
+
+    height: 48px;
+  }
+}

@@ -1,0 +1,79 @@
+@import '../../utils/styles/mixins';
+
+.product-slider {
+  &__heading {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: $title-margin;
+  }
+
+  &__title {
+    @include title-2;
+
+    margin: 0;
+    width: 50%;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    @include button;
+
+    width: 32px;
+    height: 32px;
+
+    &--direction--next {
+      background-image: url(../../../public/img/icons/chevron-black-right.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/chevron-right.svg);
+      }
+    }
+
+    &--direction--prev {
+      background-image: url(../../../public/img/icons/chevron-black-left.svg);
+
+      &.disabled {
+        background-image: url(../../../public/img/icons/chevron-left.svg);
+      }
+    }
+
+    &.disabled {
+      pointer-events: none;
+      border-color: $elements;
+    }
+  }
+
+  &__list-wrapper {
+    overflow: hidden;
+    margin-right: -1 * $mobile-inline-padding;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    transition: transform $transition;
+
+    overflow: scroll;
+    scroll-snap-type: x mandatory;
+    scrollbar-width: none;
+    scroll-behavior: smooth;
+
+    &::-webkit-scrollbar {
+      width: 0;
+      height: 0;
+    }
+  }
+
+  &__item {
+    scroll-snap-align: start;
+  }
+}

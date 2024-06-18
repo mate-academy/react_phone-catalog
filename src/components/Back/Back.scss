@@ -1,0 +1,24 @@
+@import '../../utils/styles/mixins';
+
+.back {
+  @include text-small;
+
+  display: flex;
+  align-items: center;
+  gap: 4px;
+
+  color: $secondary;
+  border: none;
+  background-color: transparent;
+
+  &:hover {
+    color: $primary;
+  }
+
+  &::before {
+    content: '';
+    height: 16px;
+    width: 16px;
+    background-image: url(../../../public/img/icons/chevron-black-left.svg);
+  }
+}

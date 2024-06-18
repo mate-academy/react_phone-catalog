@@ -1,0 +1,76 @@
+@import "../../utils/styles/mixins";
+
+.categories {
+  &__title {
+    @include title-2;
+
+    margin: 0 0 $title-margin;
+  }
+
+  &__list {
+    @include grid;
+
+    row-gap: 32px;
+
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+
+
+  &__image {
+    width: 100%;
+    aspect-ratio: 1;
+    margin-bottom: 24px;
+
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50px 50px;
+    transition: background-position $transition ease-out 100ms;
+
+    &--category--phones {
+      background-image: url(../../../public/img/category-phones.webp);
+      background-color: #6D6474;
+    }
+
+    &--category--tablets {
+      background-image: url(../../../public/img/category-tablets.webp);
+      background-color: #D53C51;
+    }
+
+    &--category--accessories {
+      background-image: url(../../../public/img/category-accessories.webp);
+      background-color: #D53C51;
+    }
+  }
+
+  &__link {
+    color: $primary;
+    text-decoration: none;
+
+    &:hover > .categories__image {
+      background-position: 30px 10px;
+    }
+  }
+
+  &__subtitle {
+    @include title-3;
+
+    margin: 0 0 4px;
+  }
+
+  &__models-number {
+    @include text-body;
+
+    margin: 0;
+    color: $secondary;
+  }
+}
