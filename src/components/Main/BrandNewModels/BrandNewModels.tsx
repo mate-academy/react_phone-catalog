@@ -1,14 +1,15 @@
 import style from './BrandNewModels.module.scss';
 import { LanguageContext } from '../../../store/LanguageProvider';
-import { useContext, useRef, useState } from 'react';
+import { useContext, useRef } from 'react';
 import { ArrowRight } from '../../Logos/ArrowRight';
 import { ArrowLeft } from '../../Logos/ArrowLeft';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import classNames from 'classnames';
 import { LogoFavorites } from '../../Logos/LogoFavorites';
 import { ProductsContext } from '../../../store/ProductsProvider';
-import { getRefValue, useStateRef } from '../../../utils/hooks/hooks';
-import { getTouchEventData } from '../../../utils/hooks/dom';
+// import { useStateRef } from '../../../utils/hooks/hooks';
+// import { getTouchEventData } from '../../../utils/hooks/dom';
+import { SliderEngine } from '../../../utils/hooks/Slider';
 const MIN_SWIPE_REQUIRED = 20;
 
 export const BrandNewModels = () => {
@@ -16,142 +17,144 @@ export const BrandNewModels = () => {
   const { theme } = useContext(ThemeContext);
   const { products } = useContext(ProductsContext);
   const lengthImgList = products.length - 1;
-
-  const containerWidthRef = useRef(0);
+  // const containerWidthRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const widthRef = useRef<HTMLLIElement>(null);
-  const currentOffsetXRef = useRef(0);
-  const startXRef = useRef(0);
-  const minOffsetXRef = useRef(0);
+  // const currentOffsetXRef = useRef(0);
+  // const startXRef = useRef(0);
+  // const minOffsetXRef = useRef(0);
 
-  const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
-  const [currentIndex, setCurrentIndex] = useState(0);
+  // const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
+  // const [currentIndex, setCurrentIndex] = useState(0);
 
-  const indicatorOnClick = (ind: number) => {
-    setCurrentIndex(ind);
-    setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
-  };
+  // const indicatorOnClick = (ind: number) => {
+  //   setCurrentIndex(ind);
+  //   setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
+  // };
 
-  const onTouchMove = (e: MouseEvent | TouchEvent) => {
-    let newOffsetX =
-      getRefValue(currentOffsetXRef) -
-      (getRefValue(startXRef) - getTouchEventData(e).clientX); //старт Х (getRefValue(startXRef) віднімаємо client.X там де ми закінчили клік тобто клікнули на 377 свайпнули до 30
-    const maxOffsetX = 0;
+  // const onTouchMove = (e: MouseEvent | TouchEvent) => {
+  //   let newOffsetX =
+  //     getRefValue(currentOffsetXRef) -
+  //     (getRefValue(startXRef) - getTouchEventData(e).clientX); //старт Х (getRefValue(startXRef) віднімаємо client.X там де ми закінчили клік тобто клікнули на 377 свайпнули до 30
+  //   const maxOffsetX = 0;
 
-    if (newOffsetX > maxOffsetX) {
-      newOffsetX = 0;
-    }
+  //   if (newOffsetX > maxOffsetX) {
+  //     newOffsetX = 0;
+  //   }
 
-    if (newOffsetX < getRefValue(minOffsetXRef)) {
-      newOffsetX = getRefValue(minOffsetXRef);
-    }
+  //   if (newOffsetX < getRefValue(minOffsetXRef)) {
+  //     newOffsetX = getRefValue(minOffsetXRef);
+  //   }
+  //   setOffsetX(newOffsetX);
+  //   // new of set X це резульати віднімання поточного зміщення на початку він 0 ПІСЛЯ першого разу він стає якраз тим резульатом зміщення а саме
+  //   // new of set x тобто на скільки було зміщено попереднього разу наш контейнер !! НА СКІЛЬКИ ВІДБУВСЯ СРОЛЛ!!!!
+  //   //останній if спрацьовує тоді коли ми наблизились до кінця контейнера і щоб далі не було скролу!
+  // };
 
-    setOffsetX(newOffsetX);
+  // const onTouchEnd = () => {
+  //   const widthCard = getRefValue(widthRef).offsetWidth;
+  //   const containerWidth = getRefValue(containerWidthRef);
+  //   let newOffSetX = getRefValue(offsetXRef); // на скільки відбувся новий скрол
+  //   const diff = getRefValue(currentOffsetXRef) - newOffSetX; // це різниця яка береться з попереднього скролу currentOffsetXRef і поточного що щойно відбувся newOffSetX
+  //   //це нам потрібно щоб зрозуміти чи свайп більший чим мінімальний 20!
+  //   const cardWidthGap = Math.floor(containerWidth / widthCard) * 16;
+  //   const cardsPerScroll = Math.floor(containerWidth / widthCard);
+  //   const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
 
-    // new of set X це резульати віднімання поточного зміщення на початку він 0 ПІСЛЯ першого разу він стає якраз тим резульатом зміщення а саме
-    // new of set x тобто на скільки було зміщено попереднього разу наш контейнер !! НА СКІЛЬКИ ВІДБУВСЯ СРОЛЛ!!!!
-    //останній if спрацьовує тоді коли ми наблизились до кінця контейнера і щоб далі не було скролу!
-  };
+  //   if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
+  //     if (
+  //       diff > 0 &&
+  //       newOffSetX > getRefValue(minOffsetXRef) - widthVisibleCards
+  //     ) {
+  //       newOffSetX =
+  //         Math.floor(newOffSetX / widthVisibleCards) * widthVisibleCards;
+  //     } else {
+  //       newOffSetX =
+  //         Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
+  //     }
+  //   } else {
+  //     newOffSetX =
+  //       Math.round(newOffSetX / widthVisibleCards) * widthVisibleCards;
+  //   }
 
-  const onTouchEnd = () => {
-    const widthCard = getRefValue(widthRef).offsetWidth;
-    const containerWidth = getRefValue(containerWidthRef);
+  //   setOffsetX(newOffSetX);
+  //   const quantityCard = Math.floor(
+  //     getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+  //   );
+  //   const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
+  //   indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
 
-    let newOffSetX = getRefValue(offsetXRef); // на скільки відбувся новий скрол
+  //   window.removeEventListener('touchmove', onTouchMove);
+  //   window.removeEventListener('touchend', onTouchEnd);
+  //   window.removeEventListener('mousemove', onTouchMove);
+  //   window.removeEventListener('mouseup', onTouchEnd);
 
-    const diff = getRefValue(currentOffsetXRef) - newOffSetX; // це різниця яка береться з попереднього скролу currentOffsetXRef і поточного що щойно відбувся newOffSetX
-    //це нам потрібно щоб зрозуміти чи свайп більший чим мінімальний 20!
+  //   // на End ми беремо ширину картки і ширину контенера
+  // };
 
-    const cardWidthGap = Math.floor(containerWidth / widthCard) * 16;
-    const cardsPerScroll = Math.floor(containerWidth / widthCard);
-    const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
+  // const onTouchStart = (
+  //   e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
+  // ) => {
+  //   currentOffsetXRef.current = getRefValue(offsetXRef); // тут ми записуємо попереднє значення на скільки було зроблено скрол минулого разу!
 
-    if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
-      if (
-        diff > 0 &&
-        newOffSetX > getRefValue(minOffsetXRef) - widthVisibleCards
-      ) {
-        newOffSetX =
-          Math.floor(newOffSetX / widthVisibleCards) * widthVisibleCards;
-      } else {
-        newOffSetX =
-          Math.ceil(newOffSetX / widthVisibleCards) * widthVisibleCards;
-      }
-    } else {
-      newOffSetX =
-        Math.round(newOffSetX / widthVisibleCards) * widthVisibleCards;
-    }
+  //   startXRef.current = getTouchEventData(e).clientX; // це там де відбувся клік в якій області контейнера
+  //   containerWidthRef.current = getRefValue(containerRef).offsetWidth;
 
-    setOffsetX(newOffSetX);
+  //   minOffsetXRef.current =
+  //     getRefValue(containerRef).offsetWidth -
+  //     getRefValue(containerRef).scrollWidth;
+  //   // getRefValue(containerRef).scrollWidth; //scroll це виявляється довжина контейнера мого!!!!
+  //   window.addEventListener('touchmove', onTouchMove);
+  //   window.addEventListener('touchend', onTouchEnd);
+  //   window.addEventListener('mousemove', onTouchMove);
+  //   window.addEventListener('mouseup', onTouchEnd);
 
-    const quantityCard = Math.floor(
-      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
-    );
+  //   //при кліку ми на Start записуємо попереднє зміщення X
+  //   // Записуємо координату де ми клікнули
+  //   // Записуємо також поточну ширину контейнера!
 
-    const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
+  //   //Далі ми віднімаємо ширину контейнера від довжини його скролу!
+  // };
+  const gapBetween = 16;
+  const defaulIndex = 0;
 
-    indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
+  const [onTouchStart, handleNext, handlePrev, offsetX] = SliderEngine(
+    containerRef,
+    widthRef,
+    lengthImgList,
+    gapBetween,
+    defaulIndex,
+    MIN_SWIPE_REQUIRED,
+  );
 
-    window.removeEventListener('touchmove', onTouchMove);
-    window.removeEventListener('touchend', onTouchEnd);
-    window.removeEventListener('mousemove', onTouchMove);
-    window.removeEventListener('mouseup', onTouchEnd);
+  // function handleNext() {
+  //   const quantityCard = Math.floor(
+  //     getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+  //   );
+  //   const pureLen = lengthImgList - quantityCard;
 
-    // на End ми беремо ширину картки і ширину контенера
-  };
+  //   if (currentIndex < pureLen && currentIndex !== pureLen - 1) {
+  //     indicatorOnClick(currentIndex + quantityCard);
+  //   } else if (currentIndex === pureLen + 1) {
+  //     indicatorOnClick(currentIndex - quantityCard);
+  //   } else {
+  //     indicatorOnClick(pureLen + 1);
+  //   }
+  // }
 
-  const onTouchStart = (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
-  ) => {
-    currentOffsetXRef.current = getRefValue(offsetXRef); // тут ми записуємо попереднє значення на скільки було зроблено скрол минулого разу!
+  // function handlePrev() {
+  //   const quantityCard = Math.floor(
+  //     getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
+  //   );
 
-    startXRef.current = getTouchEventData(e).clientX; // це там де відбувся клік в якій області контейнера
-    containerWidthRef.current = getRefValue(containerRef).offsetWidth;
-
-    minOffsetXRef.current =
-      getRefValue(containerRef).offsetWidth -
-      getRefValue(containerRef).scrollWidth;
-    // getRefValue(containerRef).scrollWidth; //scroll це виявляється довжина контейнера мого!!!!
-    window.addEventListener('touchmove', onTouchMove);
-    window.addEventListener('touchend', onTouchEnd);
-    window.addEventListener('mousemove', onTouchMove);
-    window.addEventListener('mouseup', onTouchEnd);
-
-    //при кліку ми на Start записуємо попереднє зміщення X
-    // Записуємо координату де ми клікнули
-    // Записуємо також поточну ширину контейнера!
-
-    //Далі ми віднімаємо ширину контейнера від довжини його скролу!
-  };
-
-  function handleNext() {
-    const quantityCard = Math.floor(
-      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
-    );
-    const pureLen = lengthImgList - quantityCard;
-
-    if (currentIndex < pureLen && currentIndex !== pureLen - 1) {
-      indicatorOnClick(currentIndex + quantityCard);
-    } else if (currentIndex === pureLen + 1) {
-      indicatorOnClick(currentIndex - quantityCard);
-    } else {
-      indicatorOnClick(pureLen + 1);
-    }
-  }
-
-  function handlePrev() {
-    const quantityCard = Math.floor(
-      getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
-    );
-
-    if (currentIndex > quantityCard) {
-      indicatorOnClick(currentIndex - quantityCard);
-    } else if (currentIndex === quantityCard) {
-      indicatorOnClick(0);
-    } else if (currentIndex === 0) {
-      indicatorOnClick(quantityCard);
-    }
-  }
+  //   if (currentIndex > quantityCard) {
+  //     indicatorOnClick(currentIndex - quantityCard);
+  //   } else if (currentIndex === quantityCard) {
+  //     indicatorOnClick(0);
+  //   } else if (currentIndex === 0) {
+  //     indicatorOnClick(quantityCard);
+  //   }
+  // }
 
   return (
     <section

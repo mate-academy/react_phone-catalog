@@ -4,6 +4,7 @@
 .brandNewModels {
   position: relative;
   overflow: hidden;
+
   @include space-between-sectionsDesktop;
 
   &__cardHeader {

@@ -3,6 +3,7 @@
 
 .slider {
   padding-inline: $onDesctop-container-padding;
+  cursor: pointer;
   &__block {
     display: flex;
     position: relative;

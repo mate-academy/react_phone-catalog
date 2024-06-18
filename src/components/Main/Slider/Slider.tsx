@@ -14,9 +14,10 @@ const MIN_SWIPE_REQUIRED = 40;
 export const Slider = () => {
   const lengthImgList = mobileBanner.length - 1;
   const { isMobile } = useContext(BreakPointsContext);
-  const { autoPlay, setAutoPlay } = useContext(StateContext);
+  const { setAutoPlay, autoPlay } = useContext(StateContext);
 
   const containerRef = useRef<HTMLDivElement>(null);
+  const widthRef = useRef<HTMLImageElement>(null);
   const containerWidthRef = useRef(0);
   const currentOffsetXRef = useRef(0);
   const startXRef = useRef(0);
@@ -121,7 +122,7 @@ export const Slider = () => {
         } else {
           indicatorOnClick(currentIndex + 1);
         }
-      }, 50000);
+      }, 5000);
 
       return () => clearInterval(intervalId);
     } else {
@@ -151,6 +152,7 @@ export const Slider = () => {
               <>
                 {desktopBanner.map(image => (
                   <img
+                    ref={widthRef}
                     key={image.src}
                     src={image.src}
                     alt="Banner"
