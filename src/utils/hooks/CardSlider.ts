@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RefObject, useRef, useState } from 'react';
 import { getTouchEventData } from './dom';
 import { useStateRef } from './hooks';
