@@ -87,12 +87,17 @@
     justify-content: center;
     height: 100%;
     position: relative;
+    text-decoration: none;
 
     padding-inline: 24px;
     border-left: 1px solid $elements-border-color;
 
     &:hover {
       color: $main-text-color;
+    }
+
+    &_img {
+      position: relative;
     }
 
     &_active {
@@ -105,5 +110,24 @@
     @include on-tablet {
       display: none;
     }
+  }
+
+  &__infolabel {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 14px;
+    height: 14px;
+    box-sizing: border-box;
+    border: 1px solid white;
+    border-radius: 50%;
+    background-color: #eb5757;
+    color: white;
+    font-size: 9px;
+    text-decoration: none;
+
+    position: absolute;
+    top: 18px;
+    right: 18px;
   }
 }

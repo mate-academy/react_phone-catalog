@@ -6,9 +6,14 @@ import styles from './CatalogHeader.module.scss';
 type Props = {
   products: ProductInfo[];
   category?: string;
+  withoutDrop: boolean;
 };
 
-export const CatalogHeader: React.FC<Props> = ({ products, category }) => {
+export const CatalogHeader: React.FC<Props> = ({
+  products,
+  category,
+  withoutDrop,
+}) => {
   return (
     <>
       <div className={styles.catalogHeader}>
@@ -19,19 +24,21 @@ export const CatalogHeader: React.FC<Props> = ({ products, category }) => {
           </p>
         </div>
 
-        <div className={styles.catalogHeader__filters}>
-          <div className={styles.catalogHeader__filter}>
-            <span className={styles.catalogHeader__filterText}>Sort by</span>
-            <Dropdown items={sortBy} params="sortBy" />
-          </div>
+        {!withoutDrop && (
+          <div className={styles.catalogHeader__filters}>
+            <div className={styles.catalogHeader__filter}>
+              <span className={styles.catalogHeader__filterText}>Sort by</span>
+              <Dropdown items={sortBy} params="sortBy" />
+            </div>
 
-          <div className={styles.catalogHeader__filter}>
-            <span className={styles.catalogHeader__filterText}>
-              Items on page
-            </span>
-            <Dropdown items={itemsOnPage} params="onPage" />
+            <div className={styles.catalogHeader__filter}>
+              <span className={styles.catalogHeader__filterText}>
+                Items on page
+              </span>
+              <Dropdown items={itemsOnPage} params="onPage" />
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

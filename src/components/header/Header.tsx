@@ -2,11 +2,29 @@ import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { Navbar } from '../navbar';
 import { AsideMenu } from './components/AsideMenu/AsideMenu';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { ProductInfo } from '../../types/ProductInfo';
+import { AppContext } from '../../store/context';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const { likedProducts, setLikedProducts } = useContext(AppContext);
+
+  useEffect(() => {
+    const selectedProductFromStorage = localStorage.getItem('likedProducts');
+
+    if (selectedProductFromStorage) {
+      const parsedProducts: ProductInfo[] = JSON.parse(
+        selectedProductFromStorage,
+      );
+
+      if (JSON.stringify(parsedProducts) !== JSON.stringify(likedProducts)) {
+        setLikedProducts(parsedProducts);
+      }
+    }
+  }, [likedProducts, setLikedProducts]);
 
   return (
     <>
@@ -37,6 +55,9 @@ export const Header = () => {
                 className={styles.header__button_image}
                 src="../../img/icons/favourite.svg"
               />
+              <div className={styles.header__infolabel}>
+                {likedProducts.length}
+              </div>
             </NavLink>
 
             <NavLink

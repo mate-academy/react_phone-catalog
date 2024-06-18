@@ -7,9 +7,10 @@ import { Pagination } from '../pagination/Pagination';
 
 type Props = {
   products: ProductInfo[];
+  pagination: boolean;
 };
 
-export const ProductList: React.FC<Props> = ({ products }) => {
+export const ProductList: React.FC<Props> = ({ products, pagination }) => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sortBy') || 'new';
@@ -33,13 +34,15 @@ export const ProductList: React.FC<Props> = ({ products }) => {
           </div>
         ))}
 
-        <div className={styles.products__pagination}>
-          <Pagination
-            total={sortedProducts.length}
-            perPage={perPage}
-            currentPage={+page}
-          />
-        </div>
+        {pagination && (
+          <div className={styles.products__pagination}>
+            <Pagination
+              total={sortedProducts.length}
+              perPage={perPage}
+              currentPage={+page}
+            />
+          </div>
+        )}
       </section>
     </>
   );

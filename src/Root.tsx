@@ -4,6 +4,7 @@ import { HomePage } from './pages/HomePage';
 import { ContextProvider } from './store/context';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
 import { ProductPage } from './pages/ProductPage';
+import { FavouritePage } from './pages/FavouritePage';
 
 export const Root = () => {
   return (
@@ -36,6 +37,8 @@ export const Root = () => {
                 element={<ProductPage type="accessories" />}
               />
             </Route>
+
+            <Route path="favourites" element={<FavouritePage />} />
           </Route>
         </Routes>
       </BrowserRouter>

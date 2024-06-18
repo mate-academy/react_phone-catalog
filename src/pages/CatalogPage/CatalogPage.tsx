@@ -26,13 +26,13 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
   return (
     <section className={styles.phonespage}>
       <div className={styles.phonespage__top}>
-        <CatalogHeader products={items} category={title} />
+        <CatalogHeader products={items} category={title} withoutDrop={false} />
       </div>
 
       {loading[type] && <Loader />}
 
       <div className={styles.phonespage__products}>
-        <ProductList products={items} />
+        <ProductList products={items} pagination={true} />
       </div>
     </section>
   );
