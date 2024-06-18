@@ -1,16 +1,13 @@
-import './Order.scss';
+import styles from './Order.module.scss';
 
 export const Order = () => {
   return (
-    <div className="container-order">
-      <div className="message">
-        <h1 className="gradient-text"> Now available in our store!&nbsp;</h1>
-        <span role="img" aria-label="thumbs up">
-          👍
-        </span>
+    <div className={styles.container}>
+      <div className={styles.message}>
+        <h2 className={styles.gradient}> Now available in our store!&nbsp;</h2>
       </div>
-      <span className="sub-message">Be the first!</span>
-      <button className="order-button">ORDER NOW</button>
+      <span className={styles.sub}>Be the first!</span>
+      <button className={styles.orderButton}>ORDER NOW</button>
     </div>
   );
 };

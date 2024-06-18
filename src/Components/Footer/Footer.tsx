@@ -1,29 +1,27 @@
 // import { NavLink } from 'react-router-dom';
-import { GridContainer } from '../GridContainer/GridContainer';
-import './Footer.scss';
+import { topScroll } from '../../Functions/ScrolTop/topScrol';
+import { GridContainer } from '../GridContainer';
+import styles from './Footer.module.scss';
 
 export const Footer = () => {
-  const topFunction = () => {
-    document.body.scrollTop = 0; // For Safari
-    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-  };
-
   return (
-    <div className="footer-container">
+    <div className={styles.container}>
       <GridContainer>
-        <div className="footer-content">
-          <div className="footer-logo">
-            <img src="img/Logo.png" alt="" className="logo-img" />
+        <div className={styles.content}>
+          <div className={styles.logo}>
+            <img src="img/icons/Logo.png" alt="" className="footer-logo_img" />
           </div>
-          <div className="footer-link">
+          <div className={styles.link}>
             <a href="#">GITHUB</a> {/*NavLink */}
             <a href="#">CONTACTS</a>
             <a href="#">RIGHTS</a>
           </div>
-          <div className="footer-back-to-top">
-            <h1 className="footer-btn-title">Back to top </h1>
-            <button className="footer-btn" onClick={topFunction}>
-              {`>`}
+          <div className={styles.backToTop}>
+            <h2 className={styles.btnTitle}>Back to top </h2>
+            <button className={styles.btn} onClick={topScroll}>
+              <span>
+                <img src="img/icons/Arrow_Up.svg" alt="" />
+              </span>
             </button>
           </div>
         </div>

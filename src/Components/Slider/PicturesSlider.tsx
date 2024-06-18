@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './PicturesSlider.scss';
-import { Order } from '../Order/Order';
+import styles from './PicturesSlider.module.scss';
+import { Order } from '../Order';
+import classNames from 'classnames';
 
 interface PicturesSliderProps {
   images: string[];
@@ -15,7 +16,7 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({ images }) => {
     }, 5000);
 
     return () => clearInterval(interval);
-  }, [currentIndex]);
+  }, [currentIndex, images.length]);
 
   const goToPrevious = () => {
     setCurrentIndex(prevIndex =>
@@ -32,33 +33,51 @@ export const PicturesSlider: React.FC<PicturesSliderProps> = ({ images }) => {
   };
 
   return (
-    <div className="pictures-slider">
-      <div className="container">
-        <Order />
-        <div className="slider">
+    <div className={styles.pictures}>
+      <div className={styles.container}>
+        <div className={styles.orderBanner}>
+          <Order />
+        </div>
+        <div className={styles.slider}>
           {images.map((image, index) => (
             <img
               key={index}
               src={image}
               alt={`Slide ${index}`}
-              className={index === currentIndex ? 'slide active' : 'slide'}
+              className={classNames(styles.slide, {
+                [styles.active]: index === currentIndex,
+              })}
             />
           ))}
         </div>
       </div>
-      <button className="previous controls" onClick={goToPrevious}>
-        <div className="arrow">{'<'}</div>
+      <button
+        className={classNames(styles.previous, styles.controls)}
+        onClick={goToPrevious}
+      >
+        <div className={styles.arrow}>
+          <span>
+            <img src="img/icons/Arrow_Left.svg" alt="arow_left" />
+          </span>
+        </div>
       </button>
-      <button className="next controls" onClick={goToNext}>
-        <div className="arrow">{'>'}</div>
+      <button
+        className={classNames(styles.next, styles.controls)}
+        onClick={goToNext}
+      >
+        <div className={styles.arrow}>
+          <span>
+            <img src="img/icons/Arrow_Right.svg" alt="arow_left" />
+          </span>
+        </div>
       </button>
-      <div className="indicators">
+      <div className={styles.indicators}>
         {images.map((_, index) => (
           <div
             key={index}
-            className={
-              index === currentIndex ? 'indicator active' : 'indicator'
-            }
+            className={classNames(styles.indicator, {
+              [styles.indicatorActive]: index === currentIndex,
+            })}
             onClick={() => goToImage(index)}
           />
         ))}

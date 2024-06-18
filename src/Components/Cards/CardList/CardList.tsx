@@ -1,6 +1,6 @@
 import { Products } from '../../../type/Products';
 import { Card } from '../Card/Card';
-import './CardList.scss';
+import styles from './CardList.module.scss';
 
 type Props = {
   products: Products[];
@@ -8,9 +8,11 @@ type Props = {
 
 export const CradList: React.FC<Props> = ({ products }) => {
   return (
-    <div className="card__list-container">
+    <div className={styles.container}>
       {products.map(product => (
-        <Card key={product.id} product={product} />
+        <div className={styles.center} key={product.id}>
+          <Card product={product} />
+        </div>
       ))}
     </div>
   );

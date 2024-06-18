@@ -1,19 +1,33 @@
 import { useContext } from 'react';
 import { Context } from '../../Store/Store';
-import { CradList } from '../Cards/CardList/CardList';
+import { CradList } from '../Cards/CardList';
+import { Link } from 'react-router-dom';
+import styles from './Favorites.module.scss';
 
 export const Favorites = () => {
   const { favorite } = useContext(Context);
 
   return (
-    <div className="favorite-container">
-      <div style={{ color: 'red' }}>{`Home > Favorite`}</div>
+    <div className={styles.container}>
+      <div className={styles.link}>
+        <Link to={`/`}>
+          <img src="img/icons/home_icon.svg" alt="home" />
+        </Link>
+        <span>
+          <img src="img/icons/Arrow_Right.svg" alt="arrow_right" />
+        </span>
+        <Link to={`/tables`}>Tables</Link>
+      </div>
       <h1>Favorites</h1>
-      <div>items №</div>
+      <div className={styles.item}>{`items ${favorite.length}`}</div>
       <div className="favorites-cards">
-        <div className="favortites-card">
-          {favorite.length !== 0 && <CradList products={favorite} />}
-        </div>
+        {favorite.length !== 0 ? (
+          <CradList products={favorite} />
+        ) : (
+          <div className={styles.empty}>
+            <h1>Your Favorite products will be collected here</h1>
+          </div>
+        )}
       </div>
     </div>
   );

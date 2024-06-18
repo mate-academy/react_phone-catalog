@@ -1,9 +1,9 @@
 import './App.scss';
 import { Outlet } from 'react-router-dom';
-import { GridContainer } from './Components/GridContainer/GridContainer';
+import { GridContainer } from './Components/GridContainer';
 import { Provider } from './Store/Store';
-import { Header } from './Components/Header/Header';
-import { Footer } from './Components/Footer/Footer';
+import { Header } from './Components/Header';
+import { Footer } from './Components/Footer';
 
 export const App = () => (
   <Provider>

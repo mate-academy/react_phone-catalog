@@ -1,86 +1,79 @@
-import './Navbar.scss';
+import styles from './Navbar.module.scss';
 import classNames from 'classnames';
+import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
-// import { GridContainer } from '../GridContainer/GridContainer';
+import { Context } from '../../Store/Store';
+import { BurgerMenu } from '../BurgerMenu';
 
 export const Navbar = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames('navbar-item', {
-      'is-active': isActive,
+    classNames('', {
+      [styles.isActive]: isActive,
     });
 
+  const { favorite, carts, burgerMenuOpen, setBurgerMenuOpen } =
+    useContext(Context);
+
+  const toggleBurgerMenu = () => {
+    setBurgerMenuOpen(!burgerMenuOpen);
+  };
+
   return (
-    <nav className="nav">
-      <ul className="nav__list">
-        <div className="nav-start">
-          <li className="nav__item">
+    <nav className={styles.nav}>
+      <ul className={styles.list}>
+        <div className={styles.start}>
+          <li className={styles.item}>
             <NavLink className={getLinkClass} to="/">
               Home
             </NavLink>
           </li>
-          <li className="nav__item">
-            <NavLink className={getLinkClass} to="/phone">
+          <li className={styles.item}>
+            <NavLink className={getLinkClass} to="/phones">
               Phone
             </NavLink>
           </li>
-          <li className="nav__item">
+          <li className={styles.item}>
             <NavLink className={getLinkClass} to="/tables">
               Tables
             </NavLink>
           </li>
-          <li className="nav__item">
+          <li className={styles.item}>
             <NavLink className={getLinkClass} to="/smart">
               Accessories
             </NavLink>
           </li>
         </div>
-        <div className="nav-end">
-          <li className="nav__item">
-            <NavLink className={getLinkClass} to="/cart">
-              Cart
-            </NavLink>
-          </li>
-          <li className="nav__item">
+        <div className={styles.end}>
+          <li className={styles.item}>
             <NavLink className={getLinkClass} to="/favorites">
-              {`<3`}
+              <img src="img/icons/favourites_icon.svg" alt="favorites" />
             </NavLink>
+            {favorite.length !== 0 && (
+              <span className={styles.counter}>{favorite.length}</span>
+            )}
+          </li>
+          <li className={styles.item}>
+            <NavLink className={getLinkClass} to="/cart">
+              <img src="img/icons/cart_icon.svg" alt="cart" />
+            </NavLink>
+            {carts.length !== 0 && (
+              <span className={styles.counter}>{carts.length}</span>
+            )}
           </li>
         </div>
+        <div className={styles.burgerСcontainer}>
+          <img
+            src="img/icons/Menu.svg"
+            alt="burger menu"
+            onClick={toggleBurgerMenu}
+          />
+        </div>
       </ul>
+      {burgerMenuOpen && (
+        <div className={styles.burgerMenu}>
+          <BurgerMenu toggleMenu={toggleBurgerMenu} />
+        </div>
+      )}
     </nav>
   );
 };
-// <nav
-//   className="navbar hsa-shadow"
-//   role="navigation"
-//   aria-label="main navigation"
-// >
-//   <div className="container">
-//     <div className="navbar-brand">
-// <NavLink className={getLinkClass} to="/">
-//   Home
-// </NavLink>
-
-// <NavLink className={getLinkClass} to="/phone">
-//   Phone
-// </NavLink>
-
-// <NavLink className={getLinkClass} to="/tables">
-//   Tables
-// </NavLink>
-
-// <NavLink className={getLinkClass} to="/smart">
-//   Accessories
-// </NavLink>
-//     </div>
-//     <div className="navbar-end">
-//       <NavLink className={getLinkClass} to="/cart">
-//         Cart
-//       </NavLink>
-
-//       <NavLink className={getLinkClass} to="/favorites">
-//         Favorites
-//       </NavLink>
-//     </div>
-//   </div>
-// </nav>

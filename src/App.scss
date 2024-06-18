@@ -1,41 +1,64 @@
 @font-face {
-  font-family: 'Mont';
+  font-family: Mont;
   src: local('mont-bold') url('./fonts/Mont-Regular.otf') format('opentype');
 }
+
 @font-face {
-  font-family: 'Mont-bold';
+  font-family: Mont;
+  font-weight: bold;
   src: local('mont-bold') url('./fonts/Mont-Bold.otf') format('opentype');
 }
+
 @font-face {
-  font-family: 'Mont-semi';
+  font-family: Mont;
+  font-weight: 600;
   src: local('mont-bold') url('./fonts/Mont-SemiBold.otf') format('opentype');
+}
+
+// *, :after, :before {
+//   box-sizing: inherit;
+// }
+
+// *,
+// *::before,
+// *::after {
+//   box-sizing: border-box;
+// }
+
+:root {
+  --secondary: #75767f;
+  --icons: #4a4d58;
+  --elements: #3b3e4a;
+  --surface-2: #323542;
+  --black: #0f1121;
+  --white: #f1f2f9;
+  --accent: #905BFF;
+  --green: #27ae60;
+  --red: #eb5757;
+
 }
 
 body {
   margin: 0;
+  font-style: normal;
 }
 
 .App {
+  overflow: hidden;
   background: #161827;
-  display: flex;
   flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
-  font-family: 'Mont', sans-serif;
+  font-family: Mont, sans-serif;
   margin: 0 auto;
 }
 
 .Outlet {
-  min-height: 100rch;
-
-  // display: flex;
-  // justify-content: center;
-  // position: relative;
+  min-height: calc(100vh - (68px + 96px * 2));
+  grid-column: 1 / -1;
 }
 
 .logo {
-  // display: flex;
-  // align-items: center;
-  // justify-content: center;
   margin-right: 24px;
 
   &-img{
@@ -45,6 +68,32 @@ body {
 
 h1,
 h2{
-  color: white;
+  color: var(--white);
   margin: 0;
+}
+
+.link-block {
+  margin-top: 15px;
+  display: flex;
+  gap: 10px;
+
+  a {
+    color: var(--white);
+    text-decoration: none;
+  }
+}
+
+@media (min-width: 640px) {
+  h2 {
+      font-size: 32px;
+      line-height: 41px;
+  }
+}
+
+h2 {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  line-height: 30.8px;
+  margin: 0;
+  font-weight: bold;
 }

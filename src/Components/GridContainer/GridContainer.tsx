@@ -1,14 +1,10 @@
 import React, { ReactNode } from 'react';
-import './GridContainer.scss';
+import styles from './GridContainer.module.scss';
 
 interface GridContainerProps {
   children: ReactNode;
 }
 
 export const GridContainer: React.FC<GridContainerProps> = ({ children }) => {
-  return (
-    <div className="grid-container">
-      <div className="grid-item">{children}</div>
-    </div>
-  );
+  return <div className={styles.container}>{children}</div>;
 };
