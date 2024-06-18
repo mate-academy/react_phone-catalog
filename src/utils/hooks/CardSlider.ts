@@ -100,6 +100,7 @@ export const CardSlider = (
   const onTouchStart = (
     event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
+    event.preventDefault();
     document.body.style.overflowY = 'hidden';
     currentOffsetXRef.current = getRefValue(offsetXRef);
 
