@@ -9,7 +9,7 @@ import { LogoFavorites } from '../../Logos/LogoFavorites';
 import { ProductsContext } from '../../../store/ProductsProvider';
 // import { useStateRef } from '../../../utils/hooks/hooks';
 // import { getTouchEventData } from '../../../utils/hooks/dom';
-import { SliderEngine } from '../../../utils/hooks/Slider';
+import { CardSlider } from '../../../utils/hooks/CardSlider';
 const MIN_SWIPE_REQUIRED = 20;
 
 export const BrandNewModels = () => {
@@ -118,13 +118,13 @@ export const BrandNewModels = () => {
   const gapBetween = 16;
   const defaulIndex = 0;
 
-  const [onTouchStart, handleNext, handlePrev, offsetX] = SliderEngine(
+  const [onTouchStart, handleNext, handlePrev, offsetX] = CardSlider(
     containerRef,
     widthRef,
     lengthImgList,
+    MIN_SWIPE_REQUIRED,
     gapBetween,
     defaulIndex,
-    MIN_SWIPE_REQUIRED,
   );
 
   // function handleNext() {

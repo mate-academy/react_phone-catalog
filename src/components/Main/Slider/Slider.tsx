@@ -122,13 +122,14 @@ export const Slider = () => {
         } else {
           indicatorOnClick(currentIndex + 1);
         }
-      }, 5000);
+      }, 50000);
 
       return () => clearInterval(intervalId);
     } else {
       return () => {};
     }
   }, [autoPlay, currentIndex]);
+
 
   return (
     <div className={style.slider}>

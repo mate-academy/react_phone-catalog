@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { RefObject, useRef, useState } from 'react';
 import { getTouchEventData } from './dom';
 import { useStateRef } from './hooks';
@@ -6,23 +7,25 @@ export function getRefValue<C>(ref: RefObject<C>) {
   return ref.current as C;
 }
 
-export const SliderEngine = (
+type EventsType =
+  | React.TouchEvent<HTMLDivElement>
+  | React.MouseEvent<HTMLDivElement>;
+
+export const CardSlider = (
   containerRef: RefObject<HTMLDivElement>,
   widthRef: RefObject<HTMLLIElement>,
   lengthImgList: number,
-  gapBetween: number = 0,
-  defaulIndex: number = 0,
   MIN_SWIPE_REQUIRED: number,
+  gapBetween = 0,
+  defaulIndex = 0,
 ): [
-  (
-    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
-  ) => void,
-  () => void,
-  () => void,
-  Number,
-  Number,
-  (v: number) => void,
-  (v: number) => void,
+    (e:EventsType) => void,
+    () => void,
+    () => void,
+    number,
+    number,
+    (v: number) => void,
+    (v: number) => void,
 ] => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(defaulIndex);
@@ -30,6 +33,7 @@ export const SliderEngine = (
   const startXRef = useRef(0);
   const currentOffsetXRef = useRef(0);
   const containerWidthRef = useRef(0);
+
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
     setOffsetX(-((getRefValue(widthRef).offsetWidth + gapBetween) * ind));
@@ -48,6 +52,7 @@ export const SliderEngine = (
     if (newOffsetX < getRefValue(minOffsetXRef)) {
       newOffsetX = getRefValue(minOffsetXRef);
     }
+
     setOffsetX(newOffsetX);
   };
 
@@ -77,10 +82,13 @@ export const SliderEngine = (
     }
 
     setOffsetX(newOffSetX);
+
     const quantityCard = Math.floor(
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
     );
+
     const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
+
     indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
 
     window.removeEventListener('touchmove', onTouchMove);
