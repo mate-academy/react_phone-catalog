@@ -65,8 +65,6 @@ export const CardSlider = (
     const cardsPerScroll = Math.floor(containerWidth / widthCard);
     const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
 
-    document.body.style.overflowY = 'auto';
-
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (
         diff > 0 &&
@@ -84,7 +82,7 @@ export const CardSlider = (
     }
 
     setOffsetX(newOffSetX);
-
+    document.body.style.overflowY = 'auto';
     const quantityCard = Math.floor(
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
     );
