@@ -1,6 +1,6 @@
 import { Products } from '../types/ContextType/Products';
 import { client } from './fetchClient';
-import { Phone } from '../types/ContextType/Phones';
+import { Phones } from '../types/ContextType/Phones';
 import { Tablets } from '../types/ContextType/Tablets';
 import { Accessories } from '../types/ContextType/Accessories';
 
@@ -9,7 +9,7 @@ export const getGadgets = (url: string) => {
 };
 
 export const getPhones = (url: string) => {
-  return client.get<Phone[]>(url);
+  return client.get<Phones[]>(url);
 };
 
 export const getTablets = (url: string) => {

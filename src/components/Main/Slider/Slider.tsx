@@ -130,7 +130,6 @@ export const Slider = () => {
     }
   }, [autoPlay, currentIndex]);
 
-
   return (
     <div className={style.slider}>
       <div className={style.slider__block}>

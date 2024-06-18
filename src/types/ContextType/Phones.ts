@@ -1,4 +1,4 @@
-export interface Phone {
+export type Phones = {
   id: string;
   category: string;
   namespaceId: string;

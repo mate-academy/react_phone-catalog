@@ -2,9 +2,11 @@ import style from '../Main/Main.module.scss';
 import { useContext } from 'react';
 import { StateContext } from '../../store/StateProvider';
 import { Slider } from './Slider/Slider';
-import { BrandNewModels } from './BrandNewModels/BrandNewModels';
+// import { SectionCards } from './SectionCards/SectionCards';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
+import { BrandNewModels } from './BrandNewModels/BrandNewModels';
+import { HotPrices } from './HotPrices/HotPrices';
 
 export const Main = () => {
   const { openBurger } = useContext(StateContext);
@@ -23,6 +25,7 @@ export const Main = () => {
           <div className={style.main__container}>
             <BrandNewModels />
             <ShopByCategory />
+            <HotPrices />
           </div>
         </div>
       )}

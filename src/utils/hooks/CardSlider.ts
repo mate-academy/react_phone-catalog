@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { RefObject, useRef, useState } from 'react';
 import { getTouchEventData } from './dom';
 import { useStateRef } from './hooks';
@@ -19,13 +18,13 @@ export const CardSlider = (
   gapBetween = 0,
   defaulIndex = 0,
 ): [
-    (e:EventsType) => void,
-    () => void,
-    () => void,
-    number,
-    number,
-    (v: number) => void,
-    (v: number) => void,
+  (e: EventsType) => void,
+  () => void,
+  () => void,
+  number,
+  number,
+  (v: number) => void,
+  (v: number) => void,
 ] => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(defaulIndex);
@@ -65,6 +64,8 @@ export const CardSlider = (
     const cardsPerScroll = Math.floor(containerWidth / widthCard);
     const widthVisibleCards = widthCard * cardsPerScroll + cardWidthGap;
 
+    document.body.style.overflowY = 'auto';
+
     if (Math.abs(diff) > MIN_SWIPE_REQUIRED) {
       if (
         diff > 0 &&
@@ -100,6 +101,7 @@ export const CardSlider = (
   const onTouchStart = (
     event: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
+    document.body.style.overflowY = 'hidden';
     currentOffsetXRef.current = getRefValue(offsetXRef);
 
     startXRef.current = getTouchEventData(event).clientX;
