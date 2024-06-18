@@ -5,7 +5,7 @@ import {
   useContext,
 } from 'react';
 import { useLocalStorage } from '../helpers/useLocalStorage';
-import { CartItemType } from '../helpers/сartItemType';
+import { CartItemType } from '../types/сartItemType';
 import { Product } from '../types/Product';
 import { NotificationContext, NotificationStatus } from './notificationContext';
 
@@ -36,8 +36,9 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
 
   const handleCart = (product: Product) => {
     if (isInCart(product)) {
-      setCart((prev) => prev.filter((cartItem) => cartItem.product.id
-        !== product.id));
+      setCart((prev) => prev.filter(
+        (cartItem) => cartItem.product.id !== product.id,
+      ));
       setNotification({
         message: 'Deleted from cart',
         color: NotificationStatus.Error,

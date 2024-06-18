@@ -10,11 +10,11 @@
   &__container {
     display: flex;
     justify-content: space-between;
-  }
 
-  &__phone {
-    display: block;
-    width: 368px;
+    @include onTablet {
+      flex-direction: column;
+      gap: 24px;
+    }
   }
 
   &__img {
@@ -32,6 +32,11 @@
     height: 368px;
     overflow: hidden;
     transition: all 0.3s ease-in-out;
+
+    @include onTablet {
+      width: 100%;
+      height: 230px;
+    }
 
     &--phone {
       background-color: #f8d1b3;

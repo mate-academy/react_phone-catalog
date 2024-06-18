@@ -15,4 +15,12 @@
     padding-bottom: 60px;
     padding-top: 24px;
   }
+
+  &--extend {
+    padding-top: 40px;
+
+    @include onTablet {
+      padding-top: 24px;
+    }
+  }
 }

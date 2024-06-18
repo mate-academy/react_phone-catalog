@@ -1,19 +1,23 @@
-.product-list {
+@import "../../style-utils/mixins";
 
+.product-list {
   &__items {
     display: flex;
-    width: 1136px;
+    row-gap: 40px;
+    column-gap: 16px;
     flex-wrap: wrap;
     margin-bottom: 40px;
-  }
 
-  &__item {
-    display: block;
-    margin-right: 16px;
-    margin-bottom: 16px;
+    @include onLaptop {
+      justify-content: center;
+    }
 
-    &:nth-child(4n) {
-      margin-right: 0;
+    @include onTablet {
+      row-gap: 32px;
+    }
+
+    @include onPhone {
+      row-gap: 16px;
     }
   }
 

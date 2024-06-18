@@ -27,14 +27,12 @@ export const AccessoriesPage = () => {
   }, []);
 
   return (
-    <section className="phones">
-      <ProductPage
-        products={productsAccessories}
-        isError={isError}
-        isLoading={isLoading}
-        category={ProductType.Accessories}
-        title="Accessoryies"
-      />
-    </section>
+    <ProductPage
+      products={productsAccessories}
+      isError={isError}
+      isLoading={isLoading}
+      category={ProductType.Accessories}
+      title="Accessoryies"
+    />
   );
 };

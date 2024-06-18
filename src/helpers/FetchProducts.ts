@@ -35,6 +35,22 @@ export const getHotProducts = async () => {
   );
 };
 
+export const getBrandNewProducts = async () => {
+  const products: Product[] = await getProducts(URL_NEW);
+
+  return products.sort((a, b) => {
+    if (a.year !== b.year) {
+      return b.year - a.year;
+    }
+
+    if (a.price !== b.price) {
+      return b.price - a.price;
+    }
+
+    return 0;
+  });
+};
+
 function shuffleArray<T>(array: T[]): T[] {
   return array
     .map((value: T) => ({ value, sortKey: Math.random() }))

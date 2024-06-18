@@ -2,13 +2,17 @@
 @import "../../style-utils/mixins";
 
 .product-card {
-  display: flex;
-  flex-direction: column;
+  position: relative;
+  box-sizing: border-box;
   width: 272px;
   height: 507px;
   padding: 32px 24px 24px;
   border: 1px solid $grey-third-color;
   transition: all 0.3s;
+
+  &:nth-child(4n) {
+    margin-right: 0;
+  }
 
   &__link {
     display: flex;

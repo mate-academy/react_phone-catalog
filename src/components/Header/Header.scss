@@ -1,5 +1,6 @@
 @import "../../style-utils/variables";
 @import "../../helpers/sharedStyles";
+@import "../../style-utils/mixins";
 
 .header {
   width: 100%;
@@ -24,19 +25,24 @@
   }
 
   &__logo {
-    margin-top: 15px;
-    width: 40px;
-    height: 24px;
-    margin-left: 25px;
-    position: relative;
-    background-image: url("../../Images/Icons/logo.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    transition: transform 0.3s ease;
+    @include logo;
 
     &:hover {
       transform: scale(1.2);
       transition: transform 0.3s ease;
+    }
+  }
+
+  &__menu-hamburger {
+    justify-content: center;
+    cursor: pointer;
+    width: 18px;
+    height: 18px;
+    transform: scale(1);
+    transition: all 0.3s ease-in-out;
+
+    &:hover {
+      transform: scale(1.2);
     }
   }
   
@@ -48,6 +54,28 @@
   &__shopping-cart {
     background-image: url("../../Images/Icons/ShoppingCart.svg");
     @extend .header-icons;
+  }
+
+  &__icon-count {
+    position: relative;
+    top: 0;
+    left: 30px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    font-size: 9px;
+    line-height: 1;
+    color: $white-color;
+    width: 14px;
+    height: 14px;
+    border: 2px solid white;
+    border-radius: 50%;
+    background-color: $red;
+
+    transform: translate(50%, -50%);
   }
 }
 

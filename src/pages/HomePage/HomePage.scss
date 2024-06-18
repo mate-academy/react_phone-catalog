@@ -1,5 +1,15 @@
+@import "../../style-utils/mixins";
+
 .home-page {
   &__section {
     margin-bottom: 80px;
+      
+    @include onTablet {
+      margin-bottom: 40px;
+    }
+
+    @include onPhone {
+      margin-bottom: 24px;
+    }
   }
 }

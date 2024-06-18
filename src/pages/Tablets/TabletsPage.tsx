@@ -31,14 +31,12 @@ export const TabletsPage = () => {
   }, []);
 
   return (
-    <section className="phones">
-      <ProductPage
-        products={tablets}
-        title="Tablets"
-        isError={error}
-        isLoading={loading}
-        category={ProductType.Tablet}
-      />
-    </section>
+    <ProductPage
+      products={tablets}
+      title="Tablets"
+      isError={error}
+      isLoading={loading}
+      category={ProductType.Tablet}
+    />
   );
 };

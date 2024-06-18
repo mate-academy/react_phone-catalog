@@ -1,39 +1,49 @@
 @import "../../style-utils/variables";
+@import "../../style-utils/mixins";
 
 .banner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 400px;
-  width: 100%;
+  --gap: 16px;
+  --button-width: 32px;
 
-  &--margin {
-    margin-top: 40px;
+  display: flex;
+  flex-direction: column;
+  flex-basis: 1136px;
+
+  &__content {
+    display: flex;
+    gap: var(--gap);
     margin-bottom: 8px;
   }
 
   &__caroucel {
     display: flex;
-    height: 100%;
-    max-width: 1040px;
+    width: calc(100% - ((var(--button-width) * 2) + (var(--gap) * 2)));
+    height: 432px;
+    
     overflow: hidden;
     box-shadow: rgba(0, 0, 0, 0.4) 0 2px 4px,
       rgba(0, 0, 0, 0.3) 0 7px 13px -3px,
       rgba(0, 0, 0, 0.2) 0 -3px 0 inset;
-  }
 
+    @include onTablet {
+      height: 300px;
+    }
+
+    @include onPhone {
+      width: 100%;
+      height: 200px;
+    }
+  }
+  
   &__list {
     display: flex;
-    padding-inline-start: 0;
-    margin: 0;
+    width: 100%;
   }
 
   &__button {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-    width: 32px;
+    position: relative;
+    height: auto;
+    width: var(--button-width);
     border: 1px solid $border-color;
     background-color: #fff;
 
@@ -42,32 +52,52 @@
     &:hover {
       border-color: $grey-primery-color;
     }
+
+    &:disabled {
+      color: $border-color;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $border-color;
+      }
+    }
   
     &--left {
-      margin-right: 16px;
       background-image: url(../../Images/Icons/ArrowLeft.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
   
     &--right {
-      margin-left: 16px;
       background-image: url(../../Images/Icons/ArrowRight.svg);
       background-repeat: no-repeat;
       background-position: center;
     }
+
+    @include onTablet {
+      width: 28px;
+    }
+
+    @include onPhone {
+      display: none;
+    }
   }
 
   &__img {
-    height: 400px;
+    display: flex;
     object-fit: cover;
-    overflow: hidden;
+    object-position: center;
+
+    flex-grow: 0;
+    flex-shrink: 0;
+
+    width: 100%;
+    height: 100%;
   }
 
   &__indicators {
     display: flex;
     justify-content: center;
-    margin-bottom: 104px;
     align-items: center;
     height: 24px;
   }

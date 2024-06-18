@@ -1,13 +1,16 @@
 @import "../../style-utils/variables";
 
 .products-page {
-
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 40px;
+  
   &__content {
-    width: 1136px;
-  }
-
-  &__nav {
-    margin: 24px 0 40px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    flex-grow: 1;
   }
 
   &__title {

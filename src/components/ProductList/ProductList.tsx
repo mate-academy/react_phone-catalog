@@ -13,7 +13,7 @@ import { DropDown } from '../DropDown/DropDown';
 import { sortParam, itemsOnPage } from '../../types/SortTypes';
 
 type Props = {
-  products: Product[]
+  products: Product[];
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
@@ -26,13 +26,15 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
   const query = searchParams.get('query') || '';
 
-  const filteredProducts = useMemo(() => (
-    filterProducts(products, query)
-  ), [products, query]);
+  const filteredProducts = useMemo(
+    () => filterProducts(products, query),
+    [products, query],
+  );
 
-  const sortedProducts: Product[] = useMemo(() => (
-    getSortedProducts(filteredProducts, sortBy)
-  ), [filteredProducts, sortBy]);
+  const sortedProducts: Product[] = useMemo(
+    () => getSortedProducts(filteredProducts, sortBy),
+    [filteredProducts, sortBy],
+  );
 
   const visibleProducts = sortedProducts.slice(start, end);
 
@@ -65,24 +67,14 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
         </div>
       )}
 
-      <ul
-        data-cy="productList"
-        className="product-list__items"
-      >
-        {visibleProducts.map(product => {
+      <div className="product-list__items" data-cy="productList">
+        {visibleProducts.map((product) => {
           return (
-            <li
-              className="product-list__item"
-              key={product.id}
-            >
-              <ProductCard
-                product={product}
-              />
-            </li>
+            <ProductCard key={product.id} product={product} />
           );
         })}
-      </ul>
-      {(perPage < sortedProducts.length && filteredProducts.length > 0) && (
+      </div>
+      {perPage < sortedProducts.length && filteredProducts.length > 0 && (
         <div className="product-list__pagination">
           <Pagination
             totalItems={sortedProducts.length}

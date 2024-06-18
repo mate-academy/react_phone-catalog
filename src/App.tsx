@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import './App.scss';
 import { Header } from './components/Header/Header';
 import { Container } from './components/Container/Container';
-// import { Notification } from './components/Notification';
+import { Notification } from './components/Notification/Notification';
 // import { Modal } from './components/Modal';
 // import { ContactForm } from './components/ContactForm';
 // import { Footer } from './components/Footer';
@@ -17,9 +17,9 @@ const App = () => {
         <Outlet />
       </Container>
 
-      {/* <Notification />
+      <Notification />
 
-      <Modal>
+      {/* <Modal>
         <ContactForm />
       </Modal> */}
 

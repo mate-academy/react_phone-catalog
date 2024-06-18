@@ -1,11 +1,15 @@
 import classNames from 'classnames';
 import './Header.scss';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
+import { CSSTransition } from 'react-transition-group';
+
 import { Search } from '../Search/Search';
 import { useViewport } from '../../helpers/useViewport';
-
+import { Menu } from '../MenuHamburger/Menu';
+import { FavouritesContext } from '../../contexts/favoritesContext';
+import { CartContext } from '../../contexts/cartContext';
 import Hamburger from '../../Images/Icons/Hamburger.svg';
 
 export const Header = () => {
@@ -18,6 +22,9 @@ export const Header = () => {
   const location = useLocation();
   const { pathname } = location;
   const isPathnameHome = pathname === '/';
+
+  const { favorites } = useContext(FavouritesContext);
+  const { cart } = useContext(CartContext);
 
   useEffect(() => {
     if (!isTabletLaptopSize) {
@@ -35,15 +42,24 @@ export const Header = () => {
 
   return (
     <header className="header">
+      <CSSTransition
+        in={isMenuOpened}
+        timeout={400}
+        classNames="menu-fade"
+        unmountOnExit
+      >
+        <Menu onOpen={setIsMenuOpened} />
+      </CSSTransition>
+
       <div className="header__container">
         {isTabletLaptopSize && (
           <div className="header__container--flex-start">
             <li
-              className="navigation__item"
+              className="header__item"
               onClick={() => setIsMenuOpened(true)}
               aria-hidden="true"
             >
-              <div className="navigation__menu-container">
+              <div className="header__menu-hamburger">
                 <img src={Hamburger} alt="menu" />
               </div>
             </li>
@@ -118,11 +134,11 @@ export const Header = () => {
               { nav__active: isActive },
             )}
           >
-            {/* {favourites.length > 0 && (
+            {favorites.length > 0 && (
               <div className="header__icon-count">
-                {favourites.length}
+                {favorites.length}
               </div>
-            )} */}
+            )}
           </NavLink>
 
           <NavLink
@@ -134,11 +150,11 @@ export const Header = () => {
             )}
             to="cart"
           >
-            {/* {cart.length > 0 && (
+            {cart.length > 0 && (
               <div className="header__icon-count">
                 {cart.length}
               </div>
-            )} */}
+            )}
           </NavLink>
         </div>
 

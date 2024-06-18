@@ -7,38 +7,33 @@ import banner2 from '../../Images/Banner/banner-tablets.png';
 import banner3 from '../../Images/Banner/banner-accessories.png';
 
 export const Banner = () => {
-  const [position, setPosition] = useState(0);
   const bannerImg = [
     banner1,
     banner2,
     banner3,
   ];
 
-  const imgWidth = 1040;
-  const maxPosition = imgWidth * (bannerImg.length - 1);
+  const [position, setPosition] = useState(0);
+  const imgPosition = -100 * position;
 
   const handleClickNext = () => {
-    const newPosition = position - imgWidth;
-
-    if (position === -maxPosition) {
+    if (position === bannerImg.length - 1) {
       setPosition(0);
     } else {
-      setPosition(newPosition);
+      setPosition(ind => ind + 1);
     }
   };
 
   const handleClickPrev = () => {
-    const newPosition = position + imgWidth;
-
     if (position === 0) {
-      setPosition(-maxPosition);
+      setPosition(bannerImg.length - 1);
     } else {
-      setPosition(newPosition);
+      setPosition(ind => ind - 1);
     }
   };
 
   const handleIndicator = (index: number) => {
-    setPosition(-imgWidth * index);
+    setPosition(index);
   };
 
   useEffect(() => {
@@ -52,8 +47,8 @@ export const Banner = () => {
   }, [position]);
 
   return (
-    <>
-      <div className="banner banner--margin">
+    <div className="banner">
+      <div className="banner__content">
         <button
           className="banner__button banner__button--left"
           type="button"
@@ -63,32 +58,27 @@ export const Banner = () => {
         </button>
 
         <div className="banner__caroucel">
-          <ul
+          <div
             className="banner__list"
             style={{
-              transform: `translateX(${position}px)`,
-              transition: 'transform 1s',
-              width: imgWidth * bannerImg.length,
+              transform: `translateX(${imgPosition}%)`,
+              transition: 'transform 2s',
             }}
           >
             {bannerImg.map((img, index) => (
-              <li
+              <img
                 key={img}
-              >
-                <img
-                  className="banner__img"
-                  width={imgWidth}
-                  src={img}
-                  alt={`banner ${index + 1}`}
-                />
-              </li>
+                className="banner__img"
+                src={img}
+                alt={`banner ${index + 1}`}
+              />
             ))}
-          </ul>
+          </div>
         </div>
 
         <button
-          className="banner__button banner__button--right"
           type="button"
+          className="banner__button banner__button--right"
           onClick={handleClickNext}
         >
           {}
@@ -101,7 +91,7 @@ export const Banner = () => {
             key={img}
             type="button"
             className={classNames('banner__indicator', {
-              'banner__indicator--active': position === -imgWidth * index,
+              'banner__indicator--active': position === index,
             })}
             onClick={() => handleIndicator(index)}
           >
@@ -109,6 +99,6 @@ export const Banner = () => {
           </button>
         ))}
       </div>
-    </>
+    </div>
   );
 };
