@@ -10,10 +10,6 @@
     grid-column: 1 / -1;
 
     @include on-tablet {
-      grid-column: span 4;
-    }
-
-    @include on-desktop {
       grid-column: span 6;
     }
   }

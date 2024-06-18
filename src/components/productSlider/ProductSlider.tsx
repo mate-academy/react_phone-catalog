@@ -11,7 +11,7 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   const [productWidth, setProductWidth] = useState(0);
-  const [scrollPosition, setScrollPosition] = useState(0);
+  const [, setScrollPosition] = useState(0);
   const productsRef = useRef<HTMLDivElement>(null);
   const scrollingByScript = useRef(false);
 
@@ -111,7 +111,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
             <button
               onClick={handlePrevClick}
               className={styles.goods__slider}
-              disabled={scrollPosition === 0}
+              // disabled={scrollPosition === 0}
             >
               <img
                 className={classNames(

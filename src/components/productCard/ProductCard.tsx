@@ -10,16 +10,13 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, type }) => {
-  // eslint-disable-next-line no-console
-  console.log(type);
-
   return (
     <>
       <div className={styles.card}>
         <Link
+          className={styles.card__img_wrapper}
           to={{
             pathname: `/${product.category}/${product.id}`,
-            // state: searchParams.toString(),
           }}
         >
           <img

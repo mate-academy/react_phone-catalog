@@ -20,6 +20,7 @@
 
   &__photo {
     width: 100%;
+    transition: all 0.3s ease;
 
     @include on-tablet {
       width: 490px;
@@ -44,7 +45,7 @@
       background-repeat: no-repeat;
       background-position: center;
       background-size: 16px;
-      transition-duration: 0.3s;
+      transition: all 0.3s ease;
     }
 
     &-left {
@@ -70,7 +71,6 @@
     height: 4px;
     background-color: $elements-border-color;
     cursor: pointer;
-    transition-duration: 0.3s;
 
     &:hover {
       background-color: $btns-border-color;
