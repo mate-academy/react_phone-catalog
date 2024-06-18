@@ -1,7 +1,7 @@
 /* eslint-disable */
 import { RefObject, useRef, useState } from 'react';
-import { getTouchEventData } from './dom';
-import { useStateRef } from './hooks';
+import { getTouchEventData } from './hooks/dom';
+import { useStateRef } from './hooks/hooks';
 
 export function getRefValue<C>(ref: RefObject<C>) {
   return ref.current as C;
@@ -41,6 +41,8 @@ export const CardSlider = (
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
     e.preventDefault();
+    e.stopImmediatePropagation();
+
     let newOffsetX =
       getRefValue(currentOffsetXRef) -
       (getRefValue(startXRef) - getTouchEventData(e).clientX);

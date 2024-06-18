@@ -9,7 +9,7 @@ import { LogoFavorites } from '../../Logos/LogoFavorites';
 // import { ProductsContext } from '../../../store/ProductsProvider';
 // import { useStateRef } from '../../../utils/hooks/hooks';
 // import { getTouchEventData } from '../../../utils/hooks/dom';
-import { CardSlider } from '../../../utils/hooks/CardSlider';
+import { CardSlider } from '../../../utils/CardSlider';
 import { Products } from '../../../types/ContextType/Products';
 const MIN_SWIPE_REQUIRED = 20;
 
