@@ -40,6 +40,7 @@ export const CardSlider = (
   };
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
+    e.preventDefault();
     let newOffsetX =
       getRefValue(currentOffsetXRef) -
       (getRefValue(startXRef) - getTouchEventData(e).clientX);
