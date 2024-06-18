@@ -3,6 +3,7 @@ import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { ContextProvider } from './store/context';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
+import { ProductPage } from './pages/ProductPage';
 
 export const Root = () => {
   return (
@@ -14,17 +15,26 @@ export const Root = () => {
 
             <Route path="phones">
               <Route index element={<CatalogPage type="phones" />} />
-              <Route path=":productId" element={<App />} />
+              <Route
+                path=":productId"
+                element={<ProductPage type="phones" />}
+              />
             </Route>
 
             <Route path="tablets">
               <Route index element={<CatalogPage type="tablets" />} />
-              <Route path=":productId" element={<App />} />
+              <Route
+                path=":productId"
+                element={<ProductPage type="tablets" />}
+              />
             </Route>
 
             <Route path="accessories">
               <Route index element={<CatalogPage type="accessories" />} />
-              <Route path=":productId" element={<App />} />
+              <Route
+                path=":productId"
+                element={<ProductPage type="accessories" />}
+              />
             </Route>
           </Route>
         </Routes>

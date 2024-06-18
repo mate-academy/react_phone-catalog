@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-const BASE_URL = 'api/';
+const BASE_URL = 'http://localhost:3000/api/';
 
 export function wait(delay: number) {
   return new Promise(resolve => {

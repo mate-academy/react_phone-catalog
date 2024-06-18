@@ -1,9 +1,8 @@
-import { useContext, useEffect } from 'react';
 import { CatalogHeader } from '../../components/catalogHeader';
 import styles from './CatalogPage.module.scss';
 import { ProductList } from '../../components/productList';
-import { AppContext } from '../../store/context';
 import { Loader } from '../../components/Loader';
+import { useFetchProducts } from '../../helpers/useFetchProducts';
 
 type ProductType = 'products' | 'phones' | 'tablets' | 'accessories';
 
@@ -12,8 +11,7 @@ type Props = {
 };
 
 export const CatalogPage: React.FC<Props> = ({ type }) => {
-  const { loading, phones, tablets, products, accessories, fetchProducts } =
-    useContext(AppContext);
+  const { loading, phones, tablets, accessories } = useFetchProducts(type);
 
   const title =
     type === 'phones'
@@ -24,24 +22,6 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
 
   const items =
     type === 'phones' ? phones : type === 'tablets' ? tablets : accessories;
-
-  useEffect(() => {
-    if (
-      (type === 'phones' && phones.length === 0) ||
-      (type === 'tablets' && tablets.length === 0) ||
-      (type === 'products' && products.length === 0) ||
-      (type === 'accessories' && accessories.length === 0)
-    ) {
-      fetchProducts(type);
-    }
-  }, [
-    type,
-    fetchProducts,
-    phones.length,
-    tablets.length,
-    products.length,
-    accessories.length,
-  ]);
 
   return (
     <section className={styles.phonespage}>

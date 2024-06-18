@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { ProductInfo } from '../../types/ProductInfo';
 import { AccentButton } from '../accentButton';
 import { SecondaryButton } from '../secondaryButton';
@@ -9,14 +10,24 @@ type Props = {
 };
 
 export const ProductCard: React.FC<Props> = ({ product, type }) => {
+  // eslint-disable-next-line no-console
+  console.log(type);
+
   return (
     <>
       <div className={styles.card}>
-        <img
-          src={product.images[0]}
-          alt={'card'}
-          className={styles.card__img}
-        />
+        <Link
+          to={{
+            pathname: `/${product.category}/${product.id}`,
+            // state: searchParams.toString(),
+          }}
+        >
+          <img
+            src={`../${product.images[0]}`}
+            alt={'card'}
+            className={styles.card__img}
+          />
+        </Link>
 
         <p className={`${styles.card__name} paragraph`}>{product.name}</p>
 

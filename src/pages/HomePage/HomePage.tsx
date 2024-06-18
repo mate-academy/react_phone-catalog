@@ -1,12 +1,11 @@
-import { useContext } from 'react';
 import { Categories } from '../../components/categories/Categories';
 import { PhotoSlider } from '../../components/photoSlider';
 import { ProductSlider } from '../../components/productSlider';
 import styles from './HomePage.module.scss';
-import { AppContext } from '../../store/context';
+import { useFetchProducts } from '../../helpers/useFetchProducts';
 
 export const HomePage = () => {
-  const { phones } = useContext(AppContext);
+  const { phones } = useFetchProducts('phones');
 
   return (
     <>

@@ -13,6 +13,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   const [productWidth, setProductWidth] = useState(0);
   const [scrollPosition, setScrollPosition] = useState(0);
   const productsRef = useRef<HTMLDivElement>(null);
+  const scrollingByScript = useRef(false);
 
   useEffect(() => {
     if (productsRef.current) {
@@ -26,6 +27,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
+      scrollingByScript.current = true;
       if (productsRef.current) {
         const maxScroll =
           productsRef.current.scrollWidth - productsRef.current.clientWidth;
@@ -45,12 +47,15 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
       }
     }, 3000);
 
-    return () => clearInterval(intervalId);
+    return () => {
+      clearInterval(intervalId);
+      scrollingByScript.current = false;
+    };
   }, [productWidth]);
 
   useEffect(() => {
     const handleScroll = () => {
-      if (productsRef.current) {
+      if (!scrollingByScript.current && productsRef.current) {
         setScrollPosition(productsRef.current.scrollLeft);
       }
     };
@@ -59,11 +64,10 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
       productsRef.current.addEventListener('scroll', handleScroll);
     }
 
-    const currentProductsRef = productsRef.current;
-
     return () => {
-      if (currentProductsRef) {
-        currentProductsRef.removeEventListener('scroll', handleScroll);
+      if (productsRef.current) {
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        productsRef.current.removeEventListener('scroll', handleScroll);
       }
     };
   }, []);
@@ -135,7 +139,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
         <div className={styles.goods__cards_wrapper}>
           <div className={styles.goods__cards} ref={productsRef}>
             {products.map(product => (
-              <ProductCard key={product.id} product={product} />
+              <ProductCard key={product.id} product={product} type={type} />
             ))}
           </div>
         </div>
