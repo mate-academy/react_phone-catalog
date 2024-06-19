@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import Styles from './Details.module.scss';
 import { Item } from '../../types/Item';
@@ -6,6 +6,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import { SkeletonDetails } from '../../skeletons/SkeletonDetails/SkeletonDetails';
 import { ItemSlider } from '../itemSlider';
+import { ContextApp } from '../../appContext/AppContext';
 
 type Props = {
   list: Item[];
@@ -30,26 +31,32 @@ export const Details: React.FC<Props> = ({ list }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const product = list.find(item => item.id === idItem);
-  const [capacity, setCapacity] = useState(idItem?.split('-').slice(-2, -1).join(' ').toUpperCase());
+  const [capacity, setCapacity] = useState(
+    idItem?.split('-').slice(-2, -1).join(' ').toUpperCase(),
+  );
   const [active, setActive] = useState(0);
-  const [selectedColor, setSelectedColor] = useState<string>(`${idItem?.split('-').slice(-1).join('-')}`);
+  const [selectedColor, setSelectedColor] = useState<string>(
+    `${idItem?.split('-').slice(-1).join('-')}`,
+  );
   const totalPictureNumber = product?.images.length ?? 0;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
 
+  const { fav, cart,  handleAddCart, handleAddFav } = useContext(ContextApp);
+
   useEffect(() => {
-    setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`)
-  }, [location.pathname])
+    setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`);
+  }, [location.pathname]);
 
   const colorNames: ColorNames = {
     'space gray': '#CCCCCC',
-    'spaceblack': '#333333',
-    'midnightgreen': '#003300',
-    'rosegold': '#FFCCCC',
-    'spacegray': '#AAAAAA',
-    'sierrablue': '#66CCFF',
-    'graphite': '#666666',
-    'midnight': '#000033',
+    spaceblack: '#333333',
+    midnightgreen: '#003300',
+    rosegold: '#FFCCCC',
+    spacegray: '#AAAAAA',
+    sierrablue: '#66CCFF',
+    graphite: '#666666',
+    midnight: '#000033',
   };
 
   const handlerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
@@ -198,7 +205,8 @@ export const Details: React.FC<Props> = ({ list }) => {
                     key={cap}
                     onClick={() => handleChangeCapacity(cap)}
                     className={cn(Styles.card__capacity__container__item, {
-                      [Styles.card__capacity__container__item__active]: capacity === cap ,
+                      [Styles.card__capacity__container__item__active]:
+                        capacity === cap,
                     })}
                   >
                     {cap}
@@ -221,8 +229,18 @@ export const Details: React.FC<Props> = ({ list }) => {
             </div>
 
             <div className={Styles.card__price__container}>
-              <div className={Styles.card__price__add}>Add to cart</div>
-              <div className={Styles.card__price__fav} />
+              <div
+                onClick={() => handleAddCart(product)}
+                className={cn(Styles.card__price__add,{
+                  [Styles.card__price__add__added]: cart.includes(product)
+                })}
+              ></div>
+              <div
+                onClick={() => handleAddFav(product)}
+                className={cn(Styles.card__price__fav,{
+                  [Styles.card__price__fav__selected]: fav.includes(product)
+                })}
+              />
             </div>
           </div>
 
@@ -336,7 +354,6 @@ export const Details: React.FC<Props> = ({ list }) => {
           <div className={Styles.card__list}>
             <ItemSlider
               list={list}
-              type={product.category}
               showRandom={true}
               title={'You may also like'}
             />

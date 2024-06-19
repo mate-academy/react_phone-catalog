@@ -4,11 +4,11 @@ import { SectionDashSlider } from './sectionDashSlider';
 import { ShopByCategory } from './shopByCategory/shopByCategory';
 import { SkeletonMain } from '../../skeletons/SkeletonMain';
 import { ContextApp } from '../../appContext/AppContext';
-import { Slider } from './slider';
-
+import { ItemSlider } from '../itemSlider';
 
 export const Home: React.FC = () => {
   const { isLoadingPoducts } = useContext(ContextApp);
+  const { tablets, phones, accessories } = useContext(ContextApp);
   return (
     <div className={styles['home']}>
       {isLoadingPoducts && <SkeletonMain />}
@@ -16,9 +16,16 @@ export const Home: React.FC = () => {
       {!isLoadingPoducts && (
         <>
           <SectionDashSlider />
-          <Slider title={'Brand new models'} />
+          <ItemSlider
+            list={[...tablets, ...phones, ...accessories]}
+            title={'Brand new models'}
+          />
           <ShopByCategory />
-          <Slider title={'Hot prices'} discount={true} />
+          <ItemSlider
+            list={[...tablets, ...phones, ...accessories]}
+            title={'Hot prices'}
+            discount={true}
+          />
         </>
       )}
     </div>

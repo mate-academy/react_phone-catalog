@@ -1,0 +1,29 @@
+.fav {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__title {
+    color: #313237;
+    font-size: 32px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    align-self: flex-start;
+    width: 288px;
+  }
+
+  &__paragraph {
+    height: 21px;
+    width: 288px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+  }
+
+  &__container {
+    width: 288px;
+    display: flex;
+    flex-direction: column;
+  }
+}

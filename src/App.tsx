@@ -10,6 +10,8 @@ import { Tablets } from './components/tablets';
 import { Phones } from './components/phones';
 import { Accessories } from './components/accessories';
 import { Details } from './components/details';
+import { Favourites } from './components/favourites/Favourtes';
+import { Cart } from './components/cart';
 
 export const App = () => {
   const { app, accessories, tablets, phones } = useContext(ContextApp);
@@ -19,10 +21,12 @@ export const App = () => {
       <h1 className="app__title">Product Catalog</h1>
 
       <Routes>
-        <Route path="/" element={<Home />} />
-
         <Route path="/">
           <Route index element={<Home />} />
+
+          <Route path="fav" element={<Favourites />} />
+
+          <Route path="cart" element={<Cart />} />
 
           <Route path="phones">
             <Route index element={<Phones />} />
@@ -44,8 +48,11 @@ export const App = () => {
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
+
       <Outlet />
+
       <div className="app__separator"></div>
+
       <Footer />
     </div>
   );

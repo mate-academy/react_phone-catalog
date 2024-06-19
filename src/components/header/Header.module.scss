@@ -4,7 +4,7 @@
   justify-content: space-between;
   width: 100vw;
   border-bottom: 1px solid #E2E6E9;
-  font-family: 'Montserrat', sans-serif;
+  font-family: Montserrat, sans-serif;
   transition: all 0.6s ease-in-out;
   margin-bottom: 1px;
 
@@ -58,19 +58,23 @@
       &__fav {
         width: 50%;
         height: 64px;
-        background-image: url(../../../public/img/svg/fav_icon.svg);
-        background-position: center;
-        background-repeat: no-repeat;
         border: 1px solid #E2E6E9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        // &__link {}
+
+        // &__item {}
       }
 
       &__cart {
         width: 50%;
         height: 64px;
-        background-image: url(../../../public/img/svg/Shopping_bag_Cart.svg);
-        background-position: center;
-        background-repeat: no-repeat;
         border: 1px solid #E2E6E9;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
     }
@@ -86,7 +90,6 @@
 
       &__element {
         margin-right: 15px;
-        font-family: 'Montserrat', sans-serif;
         color: #89939A;
         font-weight: 800;
         line-height: 64px;

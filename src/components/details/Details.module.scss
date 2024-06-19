@@ -157,6 +157,22 @@
       color: #FFF;
       font-size: 14px;
       font-weight: 700;
+
+      &::before {
+        content: 'Add to cart';
+        display: block;
+      }
+
+      &__added {
+        color: #27AE60;
+        background-color: #fff;
+        border: 1px solid #E2E6E9;
+
+        &::before {
+          content: 'Added to cart';
+          display: block;
+        }
+      }
     }
 
     &__fav {
@@ -167,6 +183,14 @@
       width: 48px;
       height: 48px;
       border: 1px solid #B4BDC3;
+
+      &:hover {
+        border-color: black;
+      }
+
+      &__selected {
+        background-image: url(../../../public/img/svg/fav_icon_red.svg);
+      }
     }
   }
 

@@ -5,7 +5,6 @@ import { getNumber } from '../../functions/getNumber';
 import { ProductCard } from '../productCard';
 
 type Props = {
-  type: string;
   list: Item[];
   title: string;
   discount?: boolean;
@@ -14,7 +13,6 @@ type Props = {
 
 export const ItemSlider: React.FC<Props> = ({
   title,
-  type,
   discount,
   showRandom,
   list,
@@ -70,7 +68,7 @@ export const ItemSlider: React.FC<Props> = ({
 
         <div
           style={{
-            transform: `translateX(-${active * 302}px)`,
+            transform: `translateX(-${active * 303}px)`,
             transition: 'transform 0.5s ease-in-out',
           }}
           className={Styles['brand_new_models__slider']}
@@ -81,7 +79,7 @@ export const ItemSlider: React.FC<Props> = ({
               if (discount) {
                 return (
                   <ProductCard
-                    type={type}
+                    type={product.category}
                     key={product.id}
                     product={product}
                     discount={true}
@@ -91,7 +89,7 @@ export const ItemSlider: React.FC<Props> = ({
 
               return (
                 <ProductCard
-                  type={type}
+                  type={product.category}
                   key={product.id}
                   product={product}
                   discount={false}

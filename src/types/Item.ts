@@ -21,4 +21,5 @@ export type Item = {
   camera: string;
   zoom: string;
   cell: string[];
+  quantity?:number;
 };

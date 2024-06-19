@@ -1,5 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
-import styles from './Header.module.scss';
+import Styles from './Header.module.scss';
 // import { useBreakpoint } from '../../breakPoints/BreakPoint';
 import { ContextApp } from '../../appContext/AppContext';
 import { Link } from 'react-router-dom';
@@ -42,20 +42,20 @@ export const Header: React.FC = () => {
   };
 
   return (
-    <header className={styles.header} id="header">
-      <div className={styles[`header__container--1`]}>
+    <header className={Styles.header} id="header">
+      <div className={Styles[`header__container--1`]}>
         <Link to={'/home'}>
           <img src=".\img\svg\header_Logo.svg" className="logo" />
         </Link>
       </div>
 
-      <div className={styles[`header__container--2`]}>
-        <div onClick={handlerBurgerMenu} className={styles[`header__burger`]}>
+      <div className={Styles[`header__container--2`]}>
+        <div onClick={handlerBurgerMenu} className={Styles[`header__burger`]}>
           {isBurgerClose && (
             <img
               src=".\img\svg\burger_menu.svg"
               alt="burger menu"
-              className={styles['header__burger__img']}
+              className={Styles['header__burger__img']}
             />
           )}
 
@@ -63,30 +63,59 @@ export const Header: React.FC = () => {
             <img
               src=".\img\svg\close_burger.svg"
               alt="burger menu"
-              className={styles['header__burger__img']}
+              className={Styles['header__burger__img']}
             />
           )}
         </div>
 
-        <div ref={burger} className={styles[`header__burger_menu`]}>
-          <ul className={styles[`header__burger_menu__list`]}>
-            <li className={styles[`header__burger_menu__list__element`]}>
-              <Link onClick={handleClick} to={'/home'}>home</Link>
+        <div ref={burger} className={Styles[`header__burger_menu`]}>
+          <ul className={Styles[`header__burger_menu__list`]}>
+            <li className={Styles[`header__burger_menu__list__element`]}>
+              <Link onClick={handleClick} to={'/home'}>
+                home
+              </Link>
             </li>
-            <li className={styles[`header__burger_menu__list__element`]}>
-              <Link onClick={handleClick} to={'/phones'}>phones</Link>
+            <li className={Styles[`header__burger_menu__list__element`]}>
+              <Link onClick={handleClick} to={'/phones'}>
+                phones
+              </Link>
             </li>
-            <li className={styles[`header__burger_menu__list__element`]}>
-              <Link onClick={handleClick} to={'/Tablets'}>tablets</Link>
+            <li className={Styles[`header__burger_menu__list__element`]}>
+              <Link onClick={handleClick} to={'/Tablets'}>
+                tablets
+              </Link>
             </li>
-            <li className={styles[`header__burger_menu__list__element`]}>
-              <Link onClick={handleClick} to={'/accessories'}>accessories</Link>
+            <li className={Styles[`header__burger_menu__list__element`]}>
+              <Link onClick={handleClick} to={'/accessories'}>
+                accessories
+              </Link>
             </li>
           </ul>
 
-          <div className={styles[`header__burger_menu__footer`]}>
-            <div onClick={handleClick} className={styles[`header__burger_menu__footer__fav`]}></div>
-            <div onClick={handleClick} className={styles[`header__burger_menu__footer__cart`]}></div>
+          <div className={Styles[`header__burger_menu__footer`]}>
+            <div className={Styles[`header__burger_menu__footer__fav`]}>
+              <Link
+                className={Styles.header__burger_menu__footer__fav__link}
+                onClick={handleClick}
+                to={'/fav'}
+              >
+                <img
+                  className={Styles.header__burger_menu__footer__fav__item}
+                  src="./img/svg/fav_icon.svg"
+                  alt="fav icon"
+                />
+              </Link>
+            </div>
+
+            <div className={Styles.header__burger_menu__footer__cart}>
+              <Link onClick={handleClick} to={'/cart'}>
+                <img
+                  className={Styles.header__burger_menu__footer__fav__item}
+                  src="./img/svg/Shopping_bag_Cart.svg"
+                  alt="fav icon"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
