@@ -2,7 +2,6 @@ import style from '../Main/Main.module.scss';
 import { useContext } from 'react';
 import { StateContext } from '../../store/StateProvider';
 import { Slider } from './Slider/Slider';
-// import { SectionCards } from './SectionCards/SectionCards';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 import { BrandNewModels } from './BrandNewModels/BrandNewModels';

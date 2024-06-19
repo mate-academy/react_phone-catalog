@@ -13,7 +13,7 @@
   pointer-events: none;
   font-size: 18px;
   scroll-behavior: smooth;
-  height: 100vh;
+  min-height: 100%;
   transform: translateY(-100%);
 
   &__top {

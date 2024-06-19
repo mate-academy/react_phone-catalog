@@ -33,6 +33,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mouseTouch, setMouseTouch] = useState(false);
+  console.log(mouseTouch);
 
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
@@ -58,8 +59,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
+      document.body.removeEventListener('touchmove', preventDefault);
     } else if (leftX || rightX) {
-      e.preventDefault();
       document.body.addEventListener('touchmove', preventDefault, {
         passive: false,
       });
@@ -124,7 +125,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const onTouchStart = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
-    e.preventDefault();
     currentOffsetXRef.current = getRefValue(offsetXRef);
     setMouseTouch(true);
     startXRef.current = getTouchEventData(e).clientX;

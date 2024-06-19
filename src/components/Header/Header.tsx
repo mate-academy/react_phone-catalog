@@ -16,7 +16,7 @@ export const Header = () => {
 
   return (
     <header className={style.header}>
-      <div className={style.header__top}>
+      <nav className={style.header__top}>
         <div className={style.header__leftNav}>
           <a href="#" className={style.header__link}>
             <Logo className={style.header__logo} />
@@ -24,7 +24,7 @@ export const Header = () => {
           {!isLaptop && <NavList />}
         </div>
 
-        <div className={style.header__actions}>
+        <ul className={style.header__actions}>
           {!isLaptop ? (
             <>
               <div className={style.header__topBtn}>
@@ -49,8 +49,8 @@ export const Header = () => {
               <LogoBurger className={style.header__actionsImg} />
             </a>
           )}
-        </div>
-      </div>
+        </ul>
+      </nav>
     </header>
   );
 };

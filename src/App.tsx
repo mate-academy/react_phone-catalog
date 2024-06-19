@@ -4,6 +4,7 @@ import { useContext } from 'react';
 import { ThemeContext } from './store/ThemeProvider';
 import cn from 'classnames';
 import { Main } from './components/Main/Main';
+import { Footer } from './components/Main/Footer/Footer';
 
 export const App = () => {
   const { theme } = useContext(ThemeContext);
@@ -13,7 +14,8 @@ export const App = () => {
       <Header />
       <AsideMenu />
       <Main />
-      <footer></footer>
+      <Footer />
+
     </div>
   );
 };

@@ -27,6 +27,7 @@ html {
   scrollbar-gutter: stable;
   scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
   scrollbar-color: darkgray lightgray;
+  // touch-action: none;
 }
 
 .page {
