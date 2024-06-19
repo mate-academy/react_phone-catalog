@@ -16,6 +16,7 @@
     align-items: center;
     gap: 8px;
     margin: 24px 0 24px;
+    text-transform: capitalize;
 
     @include on-tablet {
       margin: 24px 0 40px;
@@ -35,6 +36,7 @@
     padding-bottom: 8px;
     margin-bottom: 32px;
     grid-column: 1 / -1;
+    text-transform: capitalize;
   }
 
   &__data {

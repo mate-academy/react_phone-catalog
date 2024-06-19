@@ -14,6 +14,13 @@ body {
   font-family: 'Mont', sans-serif;
 }
 
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
 .container {
   display: block;
   @include content-padding-inline;
@@ -21,6 +28,7 @@ body {
 
 button {
   cursor: pointer;
+  border: none;
 }
 
 a {

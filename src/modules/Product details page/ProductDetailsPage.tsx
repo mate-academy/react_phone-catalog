@@ -20,6 +20,13 @@ export const ProductDetailsPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
+  const title = (item: PhoneType) => {
+    return (
+      item?.namespaceId.split('-').join(' ') +
+      ` ${choosedCapacity} ${choosedColor}`
+    );
+  };
+
   const handleGoBack = () => {
     navigate(-1);
   };
@@ -91,7 +98,7 @@ export const ProductDetailsPage: React.FC = () => {
               alt="chevron_right"
             />
             <Link to={`/product/${product?.id}`} className="product__link">
-              {product?.name}
+              {title(product as PhoneType)}
             </Link>
           </div>
 
@@ -105,7 +112,7 @@ export const ProductDetailsPage: React.FC = () => {
             </span>
           </div>
 
-          <h1 className="details__title">{product?.name}</h1>
+          <h1 className="details__title">{title(product as PhoneType)}</h1>
 
           <Data
             product={product}

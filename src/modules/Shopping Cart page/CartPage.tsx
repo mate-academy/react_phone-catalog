@@ -15,8 +15,12 @@ export const CartPage: React.FC = () => {
   const { cart } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const total = cart.reduce(
+  const totalPrice = cart.reduce(
     (acc, product) => acc + (product.price || 0) * (product.quantity || 1),
+    0,
+  );
+  const totalAmount = cart.reduce(
+    (acc, product) => acc + (product.quantity || 1),
     0,
   );
 
@@ -32,8 +36,8 @@ export const CartPage: React.FC = () => {
     setIsModalOpen(false);
   };
 
-  const handleDeleteFromCart = (id: number) => {
-    dispatch(deleteFromCart(id));
+  const handleDeleteFromCart = (itemId: string) => {
+    dispatch(deleteFromCart(itemId));
   };
 
   const handlePlusQuantity = (product: ProductType) => {
@@ -78,7 +82,7 @@ export const CartPage: React.FC = () => {
                       src="img/cart/close.svg"
                       alt="close"
                       className="item__info--close"
-                      onClick={() => handleDeleteFromCart(product.id)}
+                      onClick={() => handleDeleteFromCart(product.itemId)}
                     />
                     <img
                       src={product?.image}
@@ -113,9 +117,11 @@ export const CartPage: React.FC = () => {
               ))}
             </div>
             <div className="cart__total">
-              <span className="cart__total--total">${total.toFixed(2)}</span>
+              <span className="cart__total--total">
+                ${totalPrice.toFixed(2)}
+              </span>
               <span className="cart__total--text">
-                Total for {cart.length} items
+                Total for {totalAmount} items
               </span>
               <div className="cart__line"></div>
               <button className="cart__checkout" onClick={openModal}>
