@@ -42,7 +42,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
-    console.log(getTouchEventData(e));
     const startY = Math.abs(getRefValue(startYRef));
     const endY = Math.abs(getTouchEventData(e).clientY);
     const upY = startY > endY + MIN_SWIPE_REQUIRED;
@@ -53,10 +52,16 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     const leftX = startX - MIN_SWIPE_REQUIRED > endX;
     const rightX = startX + MIN_SWIPE_REQUIRED < endX;
 
+    function preventDefault(e: { preventDefault: () => void; }) {
+      e.preventDefault();
+    }
+  
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
     } else if (leftX || rightX) {
-      e.preventDefault();
+      document.body.addEventListener('touchmove', preventDefault, {
+        passive: false,
+      });
       document.body.style.overflowY = 'hidden';
       let newOffsetX =
         getRefValue(currentOffsetXRef) -
@@ -113,6 +118,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const onTouchStart = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
+    e.preventDefault();
     currentOffsetXRef.current = getRefValue(offsetXRef);
     setMouseTouch(true);
     startXRef.current = getTouchEventData(e).clientX;
