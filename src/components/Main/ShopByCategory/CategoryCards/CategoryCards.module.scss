@@ -6,12 +6,11 @@
     column-gap: 16px;
     display: grid;
     grid-template-columns: repeat($grid-columns-desctop, 1fr);
-    display: flex;
   }
 
   &__card {
     font-weight: 600;
-    grid-column: 1 / 9;
+    grid-column: span 8;
   }
 
   &__cardLink {
@@ -48,7 +47,7 @@
     }
 
     &__card {
-      grid-column: 1 / 5;
+      grid-column: span 4;
     }
   }
 }
@@ -60,7 +59,7 @@
       grid-template-columns: repeat($grid-columns-phone, 1fr);
     }
     &__card {
-      grid-column: 1 / 5;
+      grid-column: span 4;
     }
   }
 }
