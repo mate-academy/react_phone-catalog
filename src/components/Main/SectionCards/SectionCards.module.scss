@@ -1,7 +1,7 @@
 @use '../../../styles/block/utils/_variables.scss' as *;
 @import '../../../styles/block/utils/_mixins.scss';
 
-.brandNewModels {
+.sectionCards {
   position: relative;
   overflow: hidden;
 
@@ -57,6 +57,8 @@
     list-style: none;
     column-gap: 16px;
     grid-column: 1 / 7;
+
+    user-select: none;
   }
 
   &__card {
@@ -188,7 +190,7 @@
 }
 
 @include onTablet {
-  .brandNewModels {
+  .sectionCards {
     @include space-between-sectionsTablet;
     &__cardContainer {
       grid-template-columns: repeat($grid-columns-tablet, 1fr);
@@ -201,7 +203,7 @@
 }
 
 @include onPhone {
-  .brandNewModels {
+  .sectionCards {
     @include space-between-sectionsPhone;
     &__cardTitle {
       font-size: 22px;

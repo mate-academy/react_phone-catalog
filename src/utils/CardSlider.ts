@@ -159,3 +159,14 @@ export const CardSlider = (
     indicatorOnClick,
   ];
 };
+
+
+
+  // const [onTouchStart, handleNext, handlePrev, offsetX] = CardSlider(
+  //   containerRef,
+  //   widthRef,
+  //   lengthImgList,
+  //   MIN_SWIPE_REQUIRED,
+  //   gapBetween,
+  //   defaulIndex,
+  // );
