@@ -1,7 +1,7 @@
 @import '../../../../App.scss';
 
 .phone-card {
-  display: flex;
+  display: flex !important;
   flex-direction: column;
   justify-content: space-between;
   border: 1px solid $elements;
