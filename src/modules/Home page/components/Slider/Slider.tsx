@@ -8,9 +8,15 @@ const imagesMobile = [
 ];
 
 const imagesTablet = [
-  { url: `img/slider/tablet/iphone.png`, alt: 'iphone slide' },
+  { url: 'img/slider/tablet/iphone.png', alt: 'iphone slide' },
   { url: 'img/slider/tablet/ipad.png', alt: 'ipad slide' },
   { url: 'img/slider/tablet/iwatch.png', alt: 'iwatch slide' },
+];
+
+const imagesDesktop = [
+  { url: 'img/slider/desktop/iphone.png', alt: 'iphone slide' },
+  { url: 'img/slider/desktop/ipad.png', alt: 'ipad slide' },
+  { url: 'img/slider/desktop/iwatch.png', alt: 'iwatch slide' },
 ];
 
 export const Slider: React.FC = () => {
@@ -18,24 +24,29 @@ export const Slider: React.FC = () => {
   const [images, setImages] = useState(imagesMobile);
 
   useEffect(() => {
-    const mediaQuery = window.matchMedia('(min-width: 640px)');
+    const mediaQueryTablet = window.matchMedia(
+      '(min-width: 640px) and (max-width: 1024px)',
+    );
+    const mediaQueryDesktop = window.matchMedia('(min-width: 1025px)');
 
-    const handleMediaQueryChange = (event: MediaQueryListEvent) => {
-      if (event.matches) {
+    const handleMediaQueryChange = () => {
+      if (mediaQueryDesktop.matches) {
+        setImages(imagesDesktop);
+      } else if (mediaQueryTablet.matches) {
         setImages(imagesTablet);
       } else {
         setImages(imagesMobile);
       }
     };
 
-    if (mediaQuery.matches) {
-      setImages(imagesTablet);
-    }
+    handleMediaQueryChange();
 
-    mediaQuery.addListener(handleMediaQueryChange);
+    mediaQueryTablet.addListener(handleMediaQueryChange);
+    mediaQueryDesktop.addListener(handleMediaQueryChange);
 
     return () => {
-      mediaQuery.removeListener(handleMediaQueryChange);
+      mediaQueryTablet.removeListener(handleMediaQueryChange);
+      mediaQueryDesktop.removeListener(handleMediaQueryChange);
     };
   }, []);
 
@@ -49,7 +60,7 @@ export const Slider: React.FC = () => {
     return () => clearInterval(interval);
   }, [images]);
 
-  function showNextImage() {
+  const showNextImage = () => {
     setImageIndex(index => {
       if (index === images.length - 1) {
         return 0;
@@ -57,9 +68,9 @@ export const Slider: React.FC = () => {
 
       return index + 1;
     });
-  }
+  };
 
-  function showPrevImage() {
+  const showPrevImage = () => {
     setImageIndex(index => {
       if (index === 0) {
         return images.length - 1;
@@ -67,14 +78,13 @@ export const Slider: React.FC = () => {
 
       return index - 1;
     });
-  }
+  };
 
   return (
     <section className="slider">
       <button className="slider__button--left" onClick={showPrevImage}>
         <img src="img/slider/svg/chevron (arrow left).svg" alt="chevron_left" />
       </button>
-
       <div className="slider__container">
         {images.map(({ url, alt }, index) => (
           <img
@@ -119,7 +129,6 @@ export const Slider: React.FC = () => {
           </button>
         ))}
       </div>
-
       <button className="slider__button--right" onClick={showNextImage}>
         <img
           src="img/slider/svg/chevron (arrow right).svg"

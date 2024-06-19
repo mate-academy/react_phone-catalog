@@ -30,7 +30,6 @@ export const Data: React.FC<Props> = ({
 }) => {
   const [isAddedInCart, setIsAddedInCart] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
-
   const id = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
   const { cart, favorites } = useAppSelector(state => state.user);
   const dispatch = useAppDispatch();
@@ -67,6 +66,10 @@ export const Data: React.FC<Props> = ({
     dispatch(addInFavorites(product));
   };
 
+  const imageToDisplay = (img: string) => {
+    return `${img.split('/').slice(0, 3).join('/')}/${choosedColor?.split(' ').join('-')}/${img.split('/').slice(4)}`;
+  };
+
   useEffect(() => {
     const isAdded =
       Array.isArray(cart) && cart.some(item => item.itemId === product?.itemId);
@@ -84,7 +87,7 @@ export const Data: React.FC<Props> = ({
     <div className="details__data">
       <aside className="details__images">
         <img
-          src={product?.images[activeImage]}
+          src={imageToDisplay(product?.images[activeImage] || '')}
           alt=""
           className="details__images--main"
         />
@@ -97,7 +100,7 @@ export const Data: React.FC<Props> = ({
               })}
               onClick={() => setActiveImage(index)}
             >
-              <img src={image} alt="" />
+              <img src={imageToDisplay(image)} alt="device" />
             </div>
           ))}
         </div>

@@ -45,6 +45,11 @@
 
     @include on-desktop {
       grid-column: 2 / 24;
+
+      img {
+        width: 1040px;
+        height: 400px;
+      }
     }
   }
 
