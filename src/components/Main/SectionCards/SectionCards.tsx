@@ -32,14 +32,16 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const minOffsetXRef = useRef(0);
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mouseTouch, setMouseTouch] = useState(false);
 
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
     setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
 
-  const onTouchMove = (e: MouseEvent | TouchEvent) => {
-    console.log(Math.abs(getRefValue(startYRef)));
+  const onTouchMove = (
+    e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
+  ) => {
     const startY = Math.abs(getRefValue(startYRef));
     const endY = Math.abs(getTouchEventData(e).clientY);
     const upY = startY > endY + MIN_SWIPE_REQUIRED;
@@ -50,14 +52,15 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     const leftX = startX - MIN_SWIPE_REQUIRED > endX;
     const rightX = startX + MIN_SWIPE_REQUIRED < endX;
 
-    // console.log('Up', upY);
-    // console.log('Down', downY);
-    // console.log('Left', leftX);
-    // console.log('Right', rightX);
+    console.log('Up', upY);
+    console.log('Down', downY);
+    console.log('Left', leftX);
+    console.log('Right', rightX);
 
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
     } else if (leftX || rightX) {
+      e.preventDefault();
       document.body.style.overflowY = 'hidden';
       let newOffsetX =
         getRefValue(currentOffsetXRef) -
@@ -71,6 +74,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       if (newOffsetX < getRefValue(minOffsetXRef)) {
         newOffsetX = getRefValue(minOffsetXRef);
       }
+
       setOffsetX(newOffsetX);
     }
   };
@@ -105,19 +109,16 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       getRefValue(containerRef).offsetWidth / getRefValue(widthRef).offsetWidth,
     );
     const newFormuls = (quantityCard * widthCard + cardWidthGap) / quantityCard;
-    indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
 
-    window.removeEventListener('touchmove', onTouchMove);
-    window.removeEventListener('touchend', onTouchEnd);
-    window.removeEventListener('mousemove', onTouchMove);
-    window.removeEventListener('mouseup', onTouchEnd);
+    indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
+    setMouseTouch(false);
   };
 
   const onTouchStart = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
     currentOffsetXRef.current = getRefValue(offsetXRef);
-
+    setMouseTouch(true);
     startXRef.current = getTouchEventData(e).clientX;
     startYRef.current = getTouchEventData(e).clientY;
 
@@ -126,10 +127,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
       getRefValue(containerRef).scrollWidth;
-    window.addEventListener('touchmove', onTouchMove);
-    window.addEventListener('touchend', onTouchEnd);
-    window.addEventListener('mousemove', onTouchMove);
-    window.addEventListener('mouseup', onTouchEnd);
   };
 
   function handleNext() {
@@ -185,7 +182,11 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
           ref={containerRef}
           style={{ transform: `translate3d(${offsetX}px, 0, 0)` }}
           onTouchStart={onTouchStart}
+          onTouchMove={e => onTouchMove(e)}
+          onTouchEnd={onTouchEnd}
           onMouseDown={onTouchStart}
+          onMouseMove={e => mouseTouch && onTouchMove(e)}
+          onMouseUp={onTouchEnd}
         >
           <ul className={style.sectionCards__cardsList} draggable={false}>
             {products.map(product => (
