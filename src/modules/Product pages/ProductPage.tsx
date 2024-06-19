@@ -3,22 +3,20 @@ import { Link, useParams, useSearchParams } from 'react-router-dom';
 import './ProductPage.scss';
 import { ProductType } from '../../types/ProductType';
 import { PhoneCard } from '../Home page/components/PhoneCard/PhoneCard';
-import classNames from 'classnames';
 import { Pagination } from './components/Pagination/Pagination';
+import { Filter } from './components/Filter/Filter';
 
 export const ProductPage: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
   const { productType } = useParams<{ productType: string }>();
   const [searchParams, setSearchParams] = useSearchParams();
-
-  const sortBy: string[] = ['Newest', 'Alphabetically', 'Cheapest'];
   const itemsPerPageOptions = ['4', '8', '16', 'all'];
 
   const [itemsPerPage, setItemsPerPage] = useState<string>(
-    searchParams.get('perPage') || itemsPerPageOptions[2],
+    searchParams.get('perPage') || '16',
   );
   const [selectedSort, setSelectedSort] = useState<string>(
-    searchParams.get('sort') || sortBy[0],
+    searchParams.get('sort') || 'Newest',
   );
   const [isDropdownSortOpen, setIsDropdownSortOpen] = useState<boolean>(false);
   const [isDropdownPerOpen, setIsDropdownPerOpen] = useState<boolean>(false);
@@ -30,9 +28,11 @@ export const ProductPage: React.FC = () => {
 
   const firstIndex: number = (currentPage - 1) * +itemsPerPage;
   const lastIndex: number = Math.min(
-    currentPage * +itemsPerPage, products.length
+    currentPage * +itemsPerPage,
+    products.length,
   );
-  const numbers: ProductType[] = itemsPerPage === 'all' ? products : products.slice(firstIndex, lastIndex);
+  const numbers: ProductType[] =
+    itemsPerPage === 'all' ? products : products.slice(firstIndex, lastIndex);
   let headerTitle = '';
 
   const title = () => {
@@ -50,10 +50,12 @@ export const ProductPage: React.FC = () => {
         headerTitle = 'Products';
     }
   };
+
   title();
 
   useEffect(() => {
     const storedProducts = localStorage.getItem(`${productType}`);
+
     if (storedProducts) {
       const response = JSON.parse(storedProducts) as ProductType[];
 
@@ -64,6 +66,7 @@ export const ProductPage: React.FC = () => {
       } else {
         response.sort((a, b) => b.year - a.year);
       }
+
       setProducts(response);
     }
   }, [productType, selectedSort]);
@@ -76,6 +79,7 @@ export const ProductPage: React.FC = () => {
       ) {
         setIsDropdownSortOpen(false);
       }
+
       if (
         dropdownPerRef.current &&
         !dropdownPerRef.current.contains(event.target as Node)
@@ -85,6 +89,7 @@ export const ProductPage: React.FC = () => {
     };
 
     document.addEventListener('mousedown', handleClickOutside);
+
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
     };
@@ -94,22 +99,9 @@ export const ProductPage: React.FC = () => {
     setSearchParams({
       page: currentPage.toString(),
       perPage: itemsPerPage,
-      sort: selectedSort
+      sort: selectedSort,
     });
   }, [currentPage, itemsPerPage, selectedSort, setSearchParams]);
-
-  const handleSortSelection = (sortCriteria: string) => {
-    setSelectedSort(sortCriteria);
-    setIsDropdownSortOpen(false);
-    setIsDropdownPerOpen(false);
-  };
-
-  const handlePerPageSelection = (perPage: string) => {
-    setItemsPerPage(perPage);
-    setCurrentPage(1); // Reset to first page when items per page change
-    setIsDropdownPerOpen(false);
-    setIsDropdownSortOpen(false);
-  };
 
   return (
     <section className="product container">
@@ -131,81 +123,20 @@ export const ProductPage: React.FC = () => {
       <h1 className="product__title">{headerTitle}</h1>
       <p className="product__description">{products.length} models</p>
 
-      <div className="product__filter">
-        <aside className="product__filter--sort-by" ref={dropdownSortRef}>
-          <p className="product__filter--text">Sort by</p>
-          <div className="product__dropdown-trigger">
-            <button
-              type="button"
-              className="product__dropdown-button"
-              aria-haspopup="true"
-              aria-controls="product__dropdown-button"
-              onClick={() => setIsDropdownSortOpen(!isDropdownSortOpen)}
-            >
-              <span>{selectedSort}</span>
-              <img
-                src={`../../../img/links/${isDropdownSortOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
-                alt="chevron"
-              />
-            </button>
-          </div>
-
-          {isDropdownSortOpen && (
-            <div className="product__dropdown-menu" id="dropdown-menu" role="menu">
-              <div className="product__dropdown-content">
-                {sortBy.map((criteria, index) => (
-                  <a
-                    key={index}
-                    className={classNames('product__dropdown-item', {
-                      'is-active': selectedSort === criteria,
-                    })}
-                    onClick={() => handleSortSelection(criteria)}
-                  >
-                    {criteria}
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </aside>
-        <aside className="product__filter--per-page" ref={dropdownPerRef}>
-          <p className="product__filter--text">Items on page</p>
-          <div className="product__dropdown-trigger">
-            <button
-              type="button"
-              className="product__dropdown-button"
-              aria-haspopup="true"
-              aria-controls="product__dropdown-button"
-              onClick={() => setIsDropdownPerOpen(!isDropdownPerOpen)}
-            >
-              <span>{itemsPerPage}</span>
-              <img
-                src={`../../../img/links/${isDropdownPerOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
-                alt="chevron"
-              />
-            </button>
-          </div>
-
-          {isDropdownPerOpen && (
-            <div className="product__dropdown-menu" id="dropdown-menu" role="menu">
-              <div className="product__dropdown-content">
-                {itemsPerPageOptions.map((perPage, index) => (
-                  <a
-                    key={index}
-                    className={classNames('product__dropdown-item', {
-                      'is-active': itemsPerPage === perPage,
-                    })}
-                    onClick={() => handlePerPageSelection(perPage)}
-                  >
-                    {perPage}
-                    <br />
-                  </a>
-                ))}
-              </div>
-            </div>
-          )}
-        </aside>
-      </div>
+      <Filter
+        itemsPerPage={itemsPerPage}
+        setItemsPerPage={setItemsPerPage}
+        selectedSort={selectedSort}
+        setSelectedSort={setSelectedSort}
+        isDropdownSortOpen={isDropdownSortOpen}
+        setIsDropdownSortOpen={setIsDropdownSortOpen}
+        isDropdownPerOpen={isDropdownPerOpen}
+        setIsDropdownPerOpen={setIsDropdownPerOpen}
+        dropdownSortRef={dropdownSortRef}
+        dropdownPerRef={dropdownPerRef}
+        setCurrentPage={setCurrentPage}
+        itemsPerPageOptions={itemsPerPageOptions}
+      />
 
       <div className="product__all">
         {numbers.map(product => (

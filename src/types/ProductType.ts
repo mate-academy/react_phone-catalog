@@ -14,4 +14,5 @@ export interface ProductType {
   images: string[];
   priceRegular: number;
   priceDiscount: number;
+  quantity: number;
 };

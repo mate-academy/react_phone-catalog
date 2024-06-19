@@ -1,5 +1,11 @@
 @import '../../../../App.scss';
 
+.loader {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-block: 50px;
+}
 
 .phone {
   padding-block: 56px;

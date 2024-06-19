@@ -1,4 +1,4 @@
-import { Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes, useLocation } from 'react-router-dom';
 import { App } from '../App';
 import { HomePage } from '../modules/Home page/HomePage';
 import { Favorites } from '../modules/Favorites page/Favorites';
@@ -9,9 +9,12 @@ import { NotFoundPage } from '../modules/Not found page/NotFoundPage';
 import { Menu } from '../components/Navigation/components/Menu/Menu';
 
 export const Root = () => {
+  const location = useLocation();
+  const hideNavigation = location.pathname === '/menu';
+
   return (
     <Routes>
-      <Route path="/" element={<App />}>
+      <Route path="/" element={<App hideNavigation={hideNavigation} />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" />} />
         <Route path="menu" element={<Menu />} />

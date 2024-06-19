@@ -2,6 +2,11 @@
 @import './components/Icon/icon.scss';
 
 .nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: $white;
+
   &__content {
     box-shadow: 0px 1px 0px $elements;
     display: flex;
@@ -40,14 +45,42 @@
     display: flex;
     align-items: center;
 
-    a {
-      height: $header-height;
-      align-content: space-evenly;
-      @include hover(color, $primary);
-      @include uppercase;
-      color: $secondary;
+  }
+
+  &__link {
+    height: $header-height;
+    align-content: space-evenly;
+    @include hover(color, $primary);
+    @include uppercase;
+    color: $secondary;
+    position: relative;
+    transition: all 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 45px;
+      height: 3px;
+      width: 0;
+      background-color: $primary;
+      transition: width 0.3s;
+
+      @include on-desktop {
+        top: 53px;
+      }
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      display: block;
       position: relative;
-      transition: all 0.3s;
+      color: $primary;
 
       &::after {
         content: "";
@@ -55,20 +88,34 @@
         position: absolute;
         top: 45px;
         height: 3px;
-        width: 0;
         background-color: $primary;
-        transition: width 0.3s;
+        width: 100%;
 
         @include on-desktop {
           top: 53px;
         }
       }
+    }
+  }
 
-      &:hover {
-        &::after {
-          width: 100%;
-        }
-      }
+  &__counter {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid $white;
+    background-color: $red;
+    color: $white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+
+    @include on-desktop {
+      top: 19px;
+      right: 15px;
     }
   }
 }

@@ -82,5 +82,11 @@
     background-color: $primary;
     padding-inline: 9.5px;
     flex: 1;
+
+    &--added {
+      border: 1px solid $elements;
+      background-color: $white;
+      color: $green;
+    }
   }
 }

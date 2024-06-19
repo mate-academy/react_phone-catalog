@@ -19,7 +19,10 @@ export const Footer: React.FC = () => {
 
         <ul className="footer__ul container">
           <li className="footer__list">
-            <Link to="/" className="footer__link">
+            <Link
+              to="https://github.com/KatsuboDmytro/react_phone-catalog"
+              className="footer__link"
+            >
               GitHub
             </Link>
           </li>

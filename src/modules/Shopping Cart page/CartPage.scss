@@ -30,6 +30,7 @@
     @include on-desktop {
       grid-column: 17 / -1;
       margin: 0px;
+      height: fit-content;
     }
 
     &--total {
@@ -78,9 +79,16 @@
     justify-content: space-between;
   }
 
-  @include on-desktop {
-    grid-column: 1 / 17;
-    height: fit-content;
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-desktop {
+      grid-column: 1 / 17;
+      height: fit-content;
+    }
   }
 
   &__info {
@@ -89,10 +97,14 @@
     align-items: center;
     gap: 16px;
 
+    &--close {
+      cursor: pointer;
+    }
+
     &--product {
       width: 80px;
       height: 80px;
-      object-fit: cover;
+      object-fit: contain;
     }
 
     &--name {

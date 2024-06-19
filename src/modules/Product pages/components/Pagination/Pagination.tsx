@@ -64,10 +64,11 @@ export const Pagination: React.FC<PaginationProps> = ({
       </div>
 
       {visiblePages.map((item, index) =>
-        item === -1
-          ? (
-            <span key={`ellipsis-${index}`} className="pagination__ellipsis">...</span>
-          ) : (
+        item === -1 ? (
+          <span key={`ellipsis-${index}`} className="pagination__ellipsis">
+            ...
+          </span>
+        ) : (
           <div
             key={item}
             className={`pagination--number pagination__block ${currentPage === item ? 'pagination__active' : ''}`}
@@ -77,6 +78,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           </div>
         ),
       )}
+
       <div
         className={`pagination--right pagination__block ${currentPage === amountOfPages ? 'disabled' : ''}`}
         onClick={

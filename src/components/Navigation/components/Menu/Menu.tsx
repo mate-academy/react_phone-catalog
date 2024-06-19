@@ -39,10 +39,13 @@ export const Menu: React.FC = () => {
       </div>
 
       <div className="menu__bottom">
-        <Link to="/" className="icon icon--nav-menu icon--nav-favourites">
+        <Link
+          to="/favorites"
+          className="icon icon--nav-menu icon--nav-favourites"
+        >
           <img src="nav/favourites.svg" alt="favourites" />
         </Link>
-        <Link to="/" className="icon icon--nav-menu icon--nav-cart">
+        <Link to="/cart" className="icon icon--nav-menu icon--nav-cart">
           <img src="nav/cart.svg" alt="cart" />
         </Link>
       </div>

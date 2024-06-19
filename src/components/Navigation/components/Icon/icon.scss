@@ -31,6 +31,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    position: relative;
 
     &:hover {
       box-shadow: none;
@@ -39,6 +40,22 @@
     @include on-desktop {
       width: $header-height-desktop;
       height: $header-height-desktop;
+    }
+
+    &-active {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 45px;
+        height: 3px;
+        width: 100%;
+        background-color: $primary;
+
+        @include on-desktop {
+          top: 60px;
+        }
+      }
     }
 
     img {
@@ -92,5 +109,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
+
+    &-active {
+      border: 1px solid $primary;
+    }
   }
 }

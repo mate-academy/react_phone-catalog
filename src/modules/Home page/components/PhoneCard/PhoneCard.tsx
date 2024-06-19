@@ -1,7 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './PhoneCard.scss';
 import { ProductType } from '../../../../types/ProductType';
 import { Link } from 'react-router-dom';
+import classNames from 'classnames';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
+import {
+  addInCart,
+  addInFavorites,
+  deleteFavorite,
+  deleteFromCart,
+} from '../../../../features/User/userSlice';
 
 interface Props {
   product: ProductType;
@@ -9,6 +17,51 @@ interface Props {
 }
 
 export const PhoneCard: React.FC<Props> = ({ product, isHot }) => {
+  const [isAddedInCart, setIsAddedInCart] = useState(false);
+  const [isFavorited, setIsFavorited] = useState(false);
+  const { cart, favorites } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+
+  const handleAddToCart = async () => {
+    if (cart.some(item => item.itemId === product.itemId) && isAddedInCart) {
+      dispatch(deleteFromCart(product.itemId));
+      setIsAddedInCart(false);
+
+      return;
+    }
+
+    const item: ProductType = {
+      ...product,
+      quantity: 1,
+    };
+
+    dispatch(addInCart(item));
+  };
+
+  const handleFavorited = async () => {
+    if (favorites.some(item => item.itemId === product.itemId) && isFavorited) {
+      dispatch(deleteFavorite(product.itemId));
+      setIsFavorited(false);
+
+      return;
+    }
+
+    dispatch(addInFavorites(product));
+  };
+
+  useEffect(() => {
+    const isAdded =
+      Array.isArray(cart) && cart.some(item => item.itemId === product.itemId);
+
+    setIsAddedInCart(isAdded);
+
+    const favourites =
+      Array.isArray(favorites) &&
+      favorites.some(item => item.itemId === product.itemId);
+
+    setIsFavorited(favourites);
+  }, [cart, favorites, product.itemId]);
+
   return (
     <article className="phone-card">
       <Link to={`/product/${product.category}/${product.itemId}`}>
@@ -44,13 +97,29 @@ export const PhoneCard: React.FC<Props> = ({ product, isHot }) => {
             </div>
           </div>
         </div>
-        <div className="phone-card__buttons">
-          <button className="phone-card__button">Add to cart</button>
-          <button className="icon icon--favourites--button">
-            <img src="nav/favourites.svg" alt="favourites" />
-          </button>
-        </div>
       </Link>
+
+      <div className="phone-card__buttons">
+        <button
+          className={classNames('phone-card__button', {
+            'phone-card__button--added': isAddedInCart,
+          })}
+          onClick={handleAddToCart}
+        >
+          {isAddedInCart ? 'Added to cart' : 'Add to cart'}
+        </button>
+        <button
+          className={classNames('icon icon--favourites--button', {
+            'icon--favourites--button-active': isFavorited,
+          })}
+          onClick={handleFavorited}
+        >
+          <img
+            src={`nav/favourites${isFavorited ? ' red' : ''}.svg`}
+            alt="favourites"
+          />
+        </button>
+      </div>
     </article>
   );
 };

@@ -8,7 +8,11 @@ interface Props {
   accessoriesLength: number;
 }
 
-export const Categories: React.FC<Props> = ({ phoneLength, tabletsLength, accessoriesLength }) => {
+export const Categories: React.FC<Props> = ({
+  phoneLength,
+  tabletsLength,
+  accessoriesLength,
+}) => {
   return (
     <section className="category container">
       <h2 className="category__title">Shop by category</h2>
@@ -44,7 +48,9 @@ export const Categories: React.FC<Props> = ({ phoneLength, tabletsLength, access
               className="category__accessories-img"
             />
             <h4 className="category__accessories-title">Accessories</h4>
-            <p className="category__accessories-text">{accessoriesLength} models</p>
+            <p className="category__accessories-text">
+              {accessoriesLength} models
+            </p>
           </Link>
         </article>
       </div>

@@ -1,77 +1,131 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { ProductType } from '../../types/ProductType';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import './CartPage.scss';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import {
+  deleteFromCart,
+  minusQuantity,
+  plusQuantity,
+} from '../../features/User/userSlice';
+import { ProductType } from '../../types/ProductType';
+import Modal from './components/Modal/Modal';
 
 export const CartPage: React.FC = () => {
-  const [cart, setCart] = useState<ProductType[]>([]);
-  const total = cart.reduce((acc, product) => acc + product.priceDiscount, 0);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const { cart } = useAppSelector(state => state.user);
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const total = cart.reduce(
+    (acc, product) => acc + (product.price || 0) * (product.quantity || 1),
+    0,
+  );
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await fetch('/api/cart.json');
-      const data: ProductType[] = await response.json();
+  const handleGoBack = () => {
+    navigate(-1);
+  };
 
-      setCart(data);
-      localStorage.setItem('cart', JSON.stringify(data));
-    };
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
 
-    const isValidStoredData = (data: string | null) => {
-      return data && JSON.parse(data).length > 0;
-    };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-    const storedCart = localStorage.getItem('cart');
+  const handleDeleteFromCart = (id: number) => {
+    dispatch(deleteFromCart(id));
+  };
 
-    if (isValidStoredData(storedCart)) {
-      setCart(JSON.parse(storedCart as string));
-    } else {
-      fetchData();
-    }
-  }, [cart]);
+  const handlePlusQuantity = (product: ProductType) => {
+    dispatch(plusQuantity(product));
+  };
+
+  const handleMinusQuantity = (product: ProductType) => {
+    dispatch(minusQuantity(product));
+  };
 
   return (
     <section className="cart container">
-      <div className="cart__back">
-        <img
-          src="../../../img/slider/svg/chevron (arrow left).svg"
-          alt="chevron_left"
-        />
-        <Link to={`/`} className="cart__link">
-          Back
-        </Link>
-      </div>
-
-      <h1 className="cart__title">Cart</h1>
-
-      <div className="cart__block">
-        {cart.map(product => (
-          <article key={product.id} className="item">
-            <div className="item__info">
-              <img src="../../../img/cart/close.svg" alt="close" className="item__info--close" />
-              <img src={product?.images[0]} alt={`${product?.name}`} className="item__info--product" />
-              <span className="item__info--name">{product?.name}</span>
-            </div>
-            <div className="item__amount">
-              <div className="item__amount--count">
-                <button className="item__amount--count-button">
-                  <img src="../../../img/cart/minus.svg" alt="minus" />
-                </button>
-                <span className="item__amount--count-number">1</span>
-                <button className="item__amount--count-button">
-                  <img src="../../../img/cart/plus.svg" alt="plus" />
-                </button>
-              </div>
-              <span className="item__amount--price">${product?.priceDiscount}</span>
-            </div>
-          </article>
-        ))}
-        <div className="cart__total">
-          <span className="cart__total--total">${total}</span>
-          <span className="cart__total--text">Total for {cart.length} items</span>
-          <div className="cart__line"></div>
-          <button className="cart__checkout">Checkout</button>
+      {cart.length === 0 ? (
+        <div className="favorites__empty">
+          <img
+            className="favorites__empty"
+            src="../../../img/cart-is-empty.png"
+            alt="cart-is-empty"
+          />
+          <h1 className="favorites__title">Cart is empty</h1>
         </div>
-      </div>
+      ) : (
+        <>
+          <div className="cart__back">
+            <img
+              src="../../../img/slider/svg/chevron (arrow left).svg"
+              alt="chevron_left"
+            />
+            <span onClick={handleGoBack} className="details__link">
+              Back
+            </span>
+          </div>
+
+          <h1 className="cart__title">Cart</h1>
+
+          <div className="cart__block">
+            <div className="item__block">
+              {cart.map(product => (
+                <article key={product.id} className="item">
+                  <div className="item__info">
+                    <img
+                      src="../../../img/cart/close.svg"
+                      alt="close"
+                      className="item__info--close"
+                      onClick={() => handleDeleteFromCart(product.id)}
+                    />
+                    <img
+                      src={product?.image}
+                      alt={product?.name || 'Product image'}
+                      className="item__info--product"
+                    />
+                    <span className="item__info--name">{product?.name}</span>
+                  </div>
+                  <div className="item__amount">
+                    <div className="item__amount--count">
+                      <button
+                        className="item__amount--count-button"
+                        onClick={() => handleMinusQuantity(product)}
+                      >
+                        <img src="../../../img/cart/minus.svg" alt="minus" />
+                      </button>
+                      <span className="item__amount--count-number">
+                        {product.quantity}
+                      </span>
+                      <button
+                        className="item__amount--count-button"
+                        onClick={() => handlePlusQuantity(product)}
+                      >
+                        <img src="../../../img/cart/plus.svg" alt="plus" />
+                      </button>
+                    </div>
+                    <span className="item__amount--price">
+                      ${product?.price}
+                    </span>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className="cart__total">
+              <span className="cart__total--total">${total.toFixed(2)}</span>
+              <span className="cart__total--text">
+                Total for {cart.length} items
+              </span>
+              <div className="cart__line"></div>
+              <button className="cart__checkout" onClick={openModal}>
+                Checkout
+              </button>
+            </div>
+          </div>
+          <Modal isOpen={isModalOpen} onClose={closeModal} />
+        </>
+      )}
     </section>
   );
 };

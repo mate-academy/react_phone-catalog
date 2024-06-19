@@ -39,3 +39,10 @@ li {
 p, h1, h2, h3, h4 {
   margin: 0;
 }
+
+img {
+  transition: all .3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

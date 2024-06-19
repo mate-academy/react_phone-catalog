@@ -1,5 +1,6 @@
 export type PhoneType = {
   id: string;
+  itemId?: string;
   category: string;
   namespaceId: string;
   name: string;

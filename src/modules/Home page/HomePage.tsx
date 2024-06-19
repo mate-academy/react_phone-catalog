@@ -16,9 +16,15 @@ export const HomePage: React.FC = () => {
       const response = await fetch('/api/products.json');
       const data: ProductType[] = await response.json();
 
-      const phonesData = data.filter((product: ProductType) => product.category === 'phones');
-      const tabletsData = data.filter((product: ProductType) => product.category === 'tablets');
-      const accessoriesData = data.filter((product: ProductType) => product.category === 'accessories');
+      const phonesData = data.filter(
+        (product: ProductType) => product.category === 'phones',
+      );
+      const tabletsData = data.filter(
+        (product: ProductType) => product.category === 'tablets',
+      );
+      const accessoriesData = data.filter(
+        (product: ProductType) => product.category === 'accessories',
+      );
 
       setPhones(phonesData);
       localStorage.setItem('phones', JSON.stringify(phonesData));
@@ -36,7 +42,11 @@ export const HomePage: React.FC = () => {
     const storedTablets = localStorage.getItem('tablets');
     const storedAccessories = localStorage.getItem('accessories');
 
-    if (isValidStoredData(storedPhones) && isValidStoredData(storedTablets) && isValidStoredData(storedAccessories)) {
+    if (
+      isValidStoredData(storedPhones) &&
+      isValidStoredData(storedTablets) &&
+      isValidStoredData(storedAccessories)
+    ) {
       setPhones(JSON.parse(storedPhones as string));
       setTablets(JSON.parse(storedTablets as string));
       setAccessories(JSON.parse(storedAccessories as string));

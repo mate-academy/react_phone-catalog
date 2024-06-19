@@ -94,6 +94,10 @@
           border: 1px solid $primary;
         }
 
+        &-active {
+          border: 1px solid $primary;
+        }
+
         img {
           width: 100%;
           height: 100%;
@@ -121,6 +125,7 @@
       display: flex;
       gap: 8px;
       margin-top: 8px;
+
       &-block {
         width: 32px;
         height: 32px;
@@ -132,6 +137,10 @@
         align-items: center;
 
         &:hover {
+          border: 1px solid $primary;
+        }
+
+        &-active {
           border: 1px solid $primary;
         }
 
@@ -189,6 +198,12 @@
         &:hover {
           border: 1px solid $primary;
         }
+
+        &-active {
+          border: 1px solid $primary;
+          background-color: $primary;
+          color: $white;
+        }
       }
     }
   }
@@ -212,6 +227,14 @@
     &--buttons {
       display: flex;
       gap: 8px;
+
+      &-added {
+        width: 231px;
+        height: 48px;
+        background-color: $white;
+        border: 1px solid $icons;
+        color: $green;
+      }
 
       &-cart {
         width: 231px;

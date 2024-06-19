@@ -40,7 +40,6 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
       const storedTablets = localStorage.getItem('tablets');
       const storedAccessories = localStorage.getItem('accessories');
 
-
       if (storedPhones) {
         phonesData = JSON.parse(storedPhones) as ProductType[];
       }
@@ -52,6 +51,7 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
       if (storedAccessories) {
         accessoriesData = JSON.parse(storedAccessories) as ProductType[];
       }
+
       selectedProducts = [
         ...phonesData.slice(0, 2),
         ...tabletsData.slice(0, 3),
@@ -59,7 +59,6 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
       ];
       setShuffledProducts(shuffleArray(selectedProducts));
     }, 500);
-
 
     const handleResize = () => {
       setScreenWidth(window.innerWidth);
@@ -80,7 +79,7 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
 
       return index + 1;
     });
-  }
+  };
 
   const showPrevImage = () => {
     setImageIndex(index => {
@@ -90,7 +89,7 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
 
       return index - 1;
     });
-  }
+  };
 
   return (
     <section className="phone container">
@@ -99,7 +98,7 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
         <div className="phone__slide">
           <div
             className={classNames('phone__slide--left', {
-              'phone__disabled': translateX === 0
+              'phone__disabled': translateX === 0,
             })}
             onClick={showPrevImage}
           >
