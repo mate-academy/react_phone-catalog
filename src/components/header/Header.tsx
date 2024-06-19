@@ -61,7 +61,7 @@ export const Header: React.FC = () => {
 
           {!isBurgerClose && (
             <img
-              src=".\img\svg\close_burger.svg"
+              src=".\img\svg\close.svg"
               alt="burger menu"
               className={Styles['header__burger__img']}
             />
