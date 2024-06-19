@@ -24,9 +24,7 @@ export const App = () => {
         <Route path="/">
           <Route index element={<Home />} />
 
-          <Route path="fav" element={
-            // <Favourites /> 
-            <NotFoundPage />} />
+          <Route path="fav" element={<Favourites />} />
 
           <Route path="cart" element={<Cart />} />
 
