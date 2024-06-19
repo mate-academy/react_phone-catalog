@@ -15,7 +15,6 @@ export const App = () => {
       <AsideMenu />
       <Main />
       <Footer />
-
     </div>
   );
 };

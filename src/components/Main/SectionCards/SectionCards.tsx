@@ -33,7 +33,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mouseTouch, setMouseTouch] = useState(false);
-  console.log(mouseTouch);
 
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
