@@ -6,6 +6,7 @@ import { HotPrices } from '../Home page/components/HotPrices/HotPrices';
 import { Grid } from 'react-loader-spinner';
 import { Data } from './components/Data/Data';
 import { Info } from './components/Info/Info';
+import { BASE_URL } from '../../utils/vars';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productType } = useParams<{ productType: string }>();
@@ -25,7 +26,7 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch(`/api/${productType}.json`);
+      const response = await fetch(`${BASE_URL}/api/${productType}.json`);
       const data: PhoneType[] = await response.json();
 
       const localData = data
@@ -71,10 +72,10 @@ export const ProductDetailsPage: React.FC = () => {
         <>
           <div className="details__history">
             <Link to="/" className="product__link">
-              <img src="../../../img/links/home.svg" alt="home" />
+              <img src="img/links/home.svg" alt="home" />
             </Link>
             <img
-              src="../../../img/links/chevron (arrow right).svg"
+              src="img/links/chevron (arrow right).svg"
               alt="chevron_right"
             />
             <Link
@@ -86,7 +87,7 @@ export const ProductDetailsPage: React.FC = () => {
                   product?.category.slice(1)}
             </Link>
             <img
-              src="../../../img/links/chevron (arrow right).svg"
+              src="img/links/chevron (arrow right).svg"
               alt="chevron_right"
             />
             <Link to={`/product/${product?.id}`} className="product__link">
@@ -96,7 +97,7 @@ export const ProductDetailsPage: React.FC = () => {
 
           <div className="details__back">
             <img
-              src="../../../img/slider/svg/chevron (arrow left).svg"
+              src="img/slider/svg/chevron (arrow left).svg"
               alt="chevron_left"
             />
             <span onClick={handleGoBack} className="details__link">

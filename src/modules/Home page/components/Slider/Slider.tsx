@@ -2,15 +2,15 @@ import React, { useState, useEffect } from 'react';
 import './Slider.scss';
 
 const imagesMobile = [
-  { url: '../../../img/slider/mobile/iphone.png', alt: 'iphone slide' },
-  { url: '../../../img/slider/mobile/ipad.png', alt: 'ipad slide' },
-  { url: '../../../img/slider/mobile/iwatch.png', alt: 'iwatch slide' },
+  { url: 'img/slider/mobile/iphone.png', alt: 'iphone slide' },
+  { url: 'img/slider/mobile/ipad.png', alt: 'ipad slide' },
+  { url: 'img/slider/mobile/iwatch.png', alt: 'iwatch slide' },
 ];
 
 const imagesTablet = [
-  { url: '../../../img/slider/tablet/iphone.png', alt: 'iphone slide' },
-  { url: '../../../img/slider/tablet/ipad.png', alt: 'ipad slide' },
-  { url: '../../../img/slider/tablet/iwatch.png', alt: 'iwatch slide' },
+  { url: `img/slider/tablet/iphone.png`, alt: 'iphone slide' },
+  { url: 'img/slider/tablet/ipad.png', alt: 'ipad slide' },
+  { url: 'img/slider/tablet/iwatch.png', alt: 'iwatch slide' },
 ];
 
 export const Slider: React.FC = () => {
@@ -72,10 +72,7 @@ export const Slider: React.FC = () => {
   return (
     <section className="slider">
       <button className="slider__button--left" onClick={showPrevImage}>
-        <img
-          src="../../../img/slider/svg/chevron (arrow left).svg"
-          alt="chevron_left"
-        />
+        <img src="img/slider/svg/chevron (arrow left).svg" alt="chevron_left" />
       </button>
 
       <div className="slider__container">
@@ -125,7 +122,7 @@ export const Slider: React.FC = () => {
 
       <button className="slider__button--right" onClick={showNextImage}>
         <img
-          src="../../../img/slider/svg/chevron (arrow right).svg"
+          src="img/slider/svg/chevron (arrow right).svg"
           alt="chevron_right"
         />
       </button>

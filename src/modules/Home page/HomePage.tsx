@@ -5,6 +5,7 @@ import { Phone } from './components/Phones/Phone';
 import { Categories } from './components/Category/Categories';
 import { HotPrices } from './components/HotPrices/HotPrices';
 import { ProductType } from '../../types/ProductType';
+import { BASE_URL } from '../../utils/vars';
 
 export const HomePage: React.FC = () => {
   const [phones, setPhones] = useState<ProductType[]>([]);
@@ -13,7 +14,7 @@ export const HomePage: React.FC = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await fetch('/api/products.json');
+      const response = await fetch(`${BASE_URL}/api/products.json`);
       const data: ProductType[] = await response.json();
 
       const phonesData = data.filter(

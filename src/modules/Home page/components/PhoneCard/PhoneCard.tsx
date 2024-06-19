@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import './PhoneCard.scss';
-import { ProductType } from '../../../../types/ProductType';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 import {
   addInCart,
   addInFavorites,
   deleteFavorite,
   deleteFromCart,
 } from '../../../../features/User/userSlice';
+import { ProductType } from '../../../../types/ProductType';
+import { useAppDispatch, useAppSelector } from '../../../../app/hooks';
 
 interface Props {
   product: ProductType;

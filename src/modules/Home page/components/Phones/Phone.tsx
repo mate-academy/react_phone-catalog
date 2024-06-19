@@ -2,8 +2,8 @@ import React, { useEffect, useState } from 'react';
 import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './Phone.scss';
 import classNames from 'classnames';
-import { ProductType } from '../../../../types/ProductType';
 import { Grid } from 'react-loader-spinner';
+import { ProductType } from '../../../../types/ProductType';
 
 export const Phone: React.FC = () => {
   const [phones, setPhones] = useState<ProductType[]>([]);
@@ -95,13 +95,13 @@ export const Phone: React.FC = () => {
                 onClick={showPrevImage}
               >
                 <img
-                  src="../../../img/slider/svg/chevron (arrow left).svg"
+                  src="img/slider/svg/chevron (arrow left).svg"
                   alt="left"
                 />
               </div>
               <div className="phone__slide--right" onClick={showNextImage}>
                 <img
-                  src="../../../img/slider/svg/chevron (arrow right).svg"
+                  src="img/slider/svg/chevron (arrow right).svg"
                   alt="right"
                 />
               </div>

@@ -13,7 +13,7 @@ export const Favorites: React.FC = () => {
         <div className="favorites__empty">
           <img
             className='favorites__empty'
-            src="../../../img/product-not-found.png"
+            src="img/product-not-found.png"
             alt="not-found"
           />
           <h1 className="favorites__title">No favorites devices</h1>
@@ -22,10 +22,10 @@ export const Favorites: React.FC = () => {
         <>
           <div className="product__history">
             <Link to="/" className="product__link">
-              <img src="../../../img/links/home.svg" alt="home" />
+              <img src="img/links/home.svg" alt="home" />
             </Link>
             <img
-              src="../../../img/links/chevron (arrow right).svg"
+              src="img/links/chevron (arrow right).svg"
               alt="chevron_right"
             />
             <Link to={`/favorites`} className="product__link">

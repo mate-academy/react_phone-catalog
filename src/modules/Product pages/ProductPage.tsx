@@ -107,12 +107,9 @@ export const ProductPage: React.FC = () => {
     <section className="product container">
       <div className="product__history">
         <Link to="/" className="product__link">
-          <img src="../../../img/links/home.svg" alt="home" />
+          <img src="img/links/home.svg" alt="home" />
         </Link>
-        <img
-          src="../../../img/links/chevron (arrow right).svg"
-          alt="chevron_right"
-        />
+        <img src="img/links/chevron (arrow right).svg" alt="chevron_right" />
         <Link to={`/product/${productType}`} className="product__link">
           {productType
             ? productType.charAt(0).toUpperCase() + productType.slice(1)

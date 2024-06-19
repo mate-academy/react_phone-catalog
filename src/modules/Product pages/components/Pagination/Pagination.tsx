@@ -57,10 +57,7 @@ export const Pagination: React.FC<PaginationProps> = ({
           currentPage > 1 ? () => onPageChange(currentPage - 1) : undefined
         }
       >
-        <img
-          src="../../../img/slider/svg/chevron (arrow left).svg"
-          alt="chevron"
-        />
+        <img src="img/slider/svg/chevron (arrow left).svg" alt="chevron" />
       </div>
 
       {visiblePages.map((item, index) =>
@@ -87,10 +84,7 @@ export const Pagination: React.FC<PaginationProps> = ({
             : undefined
         }
       >
-        <img
-          src="../../../img/slider/svg/chevron (arrow right).svg"
-          alt="chevron"
-        />
+        <img src="img/slider/svg/chevron (arrow right).svg" alt="chevron" />
       </div>
     </div>
   );

@@ -59,7 +59,7 @@ export const Filter: React.FC<Props> = ({
           >
             <span>{selectedSort}</span>
             <img
-              src={`../../../img/links/${isDropdownSortOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
+              src={`img/links/${isDropdownSortOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
               alt="chevron"
             />
           </button>
@@ -99,7 +99,7 @@ export const Filter: React.FC<Props> = ({
           >
             <span>{itemsPerPage}</span>
             <img
-              src={`../../../img/links/${isDropdownPerOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
+              src={`img/links/${isDropdownPerOpen ? 'chevron (arrow up).svg' : 'chevron (arrow down).svg'}`}
               alt="chevron"
             />
           </button>

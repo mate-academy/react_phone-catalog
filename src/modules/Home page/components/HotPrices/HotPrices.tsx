@@ -103,13 +103,13 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
             onClick={showPrevImage}
           >
             <img
-              src="../../../img/slider/svg/chevron (arrow left).svg"
+              src="img/slider/svg/chevron (arrow left).svg"
               alt="left"
             />
           </div>
           <div className="phone__slide--right" onClick={showNextImage}>
             <img
-              src="../../../img/slider/svg/chevron (arrow right).svg"
+              src="img/slider/svg/chevron (arrow right).svg"
               alt="right"
             />
           </div>

@@ -50,7 +50,7 @@ export const CartPage: React.FC = () => {
         <div className="favorites__empty">
           <img
             className="favorites__empty"
-            src="../../../img/cart-is-empty.png"
+            src="img/cart-is-empty.png"
             alt="cart-is-empty"
           />
           <h1 className="favorites__title">Cart is empty</h1>
@@ -59,7 +59,7 @@ export const CartPage: React.FC = () => {
         <>
           <div className="cart__back">
             <img
-              src="../../../img/slider/svg/chevron (arrow left).svg"
+              src="img/slider/svg/chevron (arrow left).svg"
               alt="chevron_left"
             />
             <span onClick={handleGoBack} className="details__link">
@@ -75,7 +75,7 @@ export const CartPage: React.FC = () => {
                 <article key={product.id} className="item">
                   <div className="item__info">
                     <img
-                      src="../../../img/cart/close.svg"
+                      src="img/cart/close.svg"
                       alt="close"
                       className="item__info--close"
                       onClick={() => handleDeleteFromCart(product.id)}
@@ -93,7 +93,7 @@ export const CartPage: React.FC = () => {
                         className="item__amount--count-button"
                         onClick={() => handleMinusQuantity(product)}
                       >
-                        <img src="../../../img/cart/minus.svg" alt="minus" />
+                        <img src="img/cart/minus.svg" alt="minus" />
                       </button>
                       <span className="item__amount--count-number">
                         {product.quantity}
@@ -102,7 +102,7 @@ export const CartPage: React.FC = () => {
                         className="item__amount--count-button"
                         onClick={() => handlePlusQuantity(product)}
                       >
-                        <img src="../../../img/cart/plus.svg" alt="plus" />
+                        <img src="img/cart/plus.svg" alt="plus" />
                       </button>
                     </div>
                     <span className="item__amount--price">

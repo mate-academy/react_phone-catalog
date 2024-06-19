@@ -23,7 +23,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose }) => {
         <div className="modal__top">
           <h2 className="modal__title">Checkout</h2>
           <button className="modal-close" onClick={onClose}>
-            <img src="../../../img/cart/close.svg" alt="close" />
+            <img src="img/cart/close.svg" alt="close" />
           </button>
         </div>
         <p className="modal__text">
