@@ -52,11 +52,13 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     const leftX = startX - MIN_SWIPE_REQUIRED > endX;
     const rightX = startX + MIN_SWIPE_REQUIRED < endX;
 
-    function preventDefault(e: { preventDefault: () => void; }) {
-      e.preventDefault();
+    function preventDefault(event: { preventDefault: () => void }) {
+      event.preventDefault();
     }
-  
+
     if (upY || downY) {
+      document.body.removeEventListener('touchmove', preventDefault);
+
       document.body.style.overflowY = 'auto';
     } else if (leftX || rightX) {
       document.body.addEventListener('touchmove', preventDefault, {
