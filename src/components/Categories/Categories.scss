@@ -20,7 +20,7 @@
   &__item {
     grid-column: span 4;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 8;
     }
   }

@@ -3,11 +3,11 @@
 .homepage {
   padding-top: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     padding-top: 32px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding-top: 56px;
   }
 
@@ -18,11 +18,11 @@
     gap: 56px;
     margin: 0 auto;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 80px;
     }
   }

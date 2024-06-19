@@ -6,7 +6,7 @@
   &__breadcrumbs {
     margin-bottom: 24px;
 
-    @include onDesktop {
+    @include on-desktop {
       margin-bottom: 40px;
     }
   }
@@ -20,7 +20,7 @@
 
     margin: 0 0 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       margin-bottom: 40px;
     }
 
@@ -29,7 +29,7 @@
       width: 70%;
       background-color: $elements;
 
-      @include onTablet {
+      @include on-tablet {
         height: 56px;
       }
     }
@@ -40,11 +40,11 @@
     flex-direction: column;
     gap: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       gap: 80px;
     }
   }
@@ -54,11 +54,11 @@
     flex-direction: column;
     gap: 56px;
 
-    @include onTablet {
+    @include on-tablet {
       gap: 64px;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       @include grid;
     }
   }
@@ -67,7 +67,7 @@
     display: flex;
     flex-direction: column;
 
-    @include onTablet {
+    @include on-tablet {
       @include grid;
     }
   }
@@ -75,14 +75,14 @@
   &__images {
     margin-bottom: 40px;
 
-    @include onTablet {
+    @include on-tablet {
       display: grid;
       grid-template-columns: subgrid;
       grid-column: span 7;
       margin-bottom: 0;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 12;
     }
   }
@@ -94,12 +94,12 @@
     object-fit: contain;
     transition: transform $transition;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 0;
       grid-column: 2 / span 6;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 3 / span 10;
     }
 
@@ -123,13 +123,13 @@
     display: flex;
     gap: 8px;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: 1 / span 1;
       grid-row: 1;
       flex-direction: column;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 1 / span 2;
     }
   }
@@ -141,7 +141,7 @@
     object-fit: contain;
     transition: border-color $transition;
 
-    @include onTablet {
+    @include on-tablet {
       width: 100%;
     }
 
@@ -163,11 +163,11 @@
     flex-direction: column;
     gap: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 5;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 14 / span 7;
     }
   }
@@ -181,7 +181,7 @@
 
     color: $secondary;
 
-    @include onDesktop {
+    @include on-desktop {
       width: 480px;
     }
   }
@@ -247,7 +247,7 @@
     padding: 7px 8px;
 
     &.active {
-      @include button--color--black;
+      @include button-color-black;
     }
 
     &--placeholder {
@@ -272,7 +272,7 @@
     margin: 0;
     line-height: 41px;
 
-    @include onTablet {
+    @include on-tablet {
       @include title-2;
 
       margin: 0;
@@ -349,7 +349,7 @@
     flex-direction: column;
     gap: 32px;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 12;
     }
   }
@@ -361,7 +361,7 @@
     flex-direction: column;
     gap: 8px;
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: 14 / -1;
     }
   }
@@ -392,7 +392,7 @@
   &__details-title-wrapper {
     margin-bottom: 30px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 25px;
     }
   }

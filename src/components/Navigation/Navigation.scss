@@ -6,7 +6,7 @@
   justify-content: space-between;
   height: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
   }
 
@@ -20,7 +20,7 @@
     height: 100%;
     list-style: none;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       align-items: flex-start;
       gap: 16px;
@@ -33,7 +33,7 @@
     height: auto;
     padding-block: 8px;
 
-    @include onTablet {
+    @include on-tablet {
       height: 100%;
     }
   }
@@ -73,7 +73,7 @@
     width: 100%;
     border-top: 1px solid #E2E6E9;
 
-    @include onTablet {
+    @include on-tablet {
       height: 100%;
       width: auto;
       border: none;
@@ -97,7 +97,7 @@
       background-image: url(../../../public/img/icons/cart.svg);
     }
 
-    @include onTablet {
+    @include on-tablet {
       aspect-ratio: 1;
       width: auto;
       background-size: 35%;
@@ -136,7 +136,7 @@
     border: 1px solid $white;
     border-radius: 50%;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
     }
   }

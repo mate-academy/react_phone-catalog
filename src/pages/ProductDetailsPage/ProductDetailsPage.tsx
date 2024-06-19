@@ -23,6 +23,7 @@ export const ProductDetailsPage = () => {
   const [productWithDetails, setProductWithDetails] =
     useState<ProductWithDetails | null>(null);
   const [product, setProduct] = useState<Product | null>(null);
+  const [productsHaveError, setProductsHaveError] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
   const [productNotFound, setProductNotFound] = useState(false);
@@ -64,6 +65,8 @@ export const ProductDetailsPage = () => {
   };
 
   const getSuggestedAndProduct = async () => {
+    setProductsHaveError(false);
+
     try {
       const productsFromServer = await getProducts();
 
@@ -99,6 +102,7 @@ export const ProductDetailsPage = () => {
         setSuggestedProducts(randomProducts);
       }
     } catch (error) {
+      setProductsHaveError(true);
       throw error;
     }
   };
@@ -366,6 +370,7 @@ export const ProductDetailsPage = () => {
             <ProductsSlider
               products={suggestedProducts}
               title="You may also like"
+              hasError={productsHaveError}
             />
           </div>
         </>

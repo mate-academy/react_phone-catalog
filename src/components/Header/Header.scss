@@ -18,7 +18,7 @@
   background-color: $white;
   border-bottom: 1px solid $elements;
 
-  @include onDesktop {
+  @include on-desktop {
     padding-left: 24px;
     gap: 24px;
   }
@@ -28,7 +28,7 @@
     height: 100%;
     display: none;
 
-    @include onTablet {
+    @include on-tablet {
       display: initial;
     }
   }
@@ -37,7 +37,7 @@
     display: flex;
     height: 100%;
 
-    @include onTablet {
+    @include on-tablet {
       display: none;
     }
   }

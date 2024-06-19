@@ -4,13 +4,19 @@ import './ProductsSlider.scss';
 import { ProductCard } from '../ProductCard';
 import classNames from 'classnames';
 import { useDebounce } from '../../utils/hooks/useDebounce';
+import { useNavigate } from 'react-router-dom';
 
 type Props = {
   products: (Product | null)[];
   title: string;
+  hasError: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  products,
+  title,
+  hasError,
+}) => {
   const [listScrollLeftValue, setListScrollLeftValue] = useState(0);
   const [canScrollNext, setCanScrollNext] = useState(true);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
@@ -18,6 +24,8 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
 
   const scrolledWithButtonRef = useRef(false);
   const listRef = useRef<HTMLUListElement>(null);
+
+  const navigate = useNavigate();
 
   if (listRef.current) {
     listRef.current.scrollLeft = listScrollLeftValue;
@@ -154,6 +162,19 @@ export const ProductsSlider: React.FC<Props> = ({ products, title }) => {
       </div>
 
       <div className="product-slider__list-wrapper">
+        {hasError && (
+          <div className="product-slider__error-message">
+            <p className="product-slider__error-text">Something went wrong</p>
+            <button
+              className="product-slider__reload-button"
+              onClick={() => {
+                navigate(0);
+              }}
+            >
+              Reload page
+            </button>
+          </div>
+        )}
         <ul
           className="product-slider__list"
           onScroll={() => {

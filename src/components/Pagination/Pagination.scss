@@ -36,7 +36,7 @@
     }
 
     &.active {
-      @include button--color--black;
+      @include button-color-black;
 
       pointer-events: none;
     }
@@ -55,7 +55,7 @@
     list-style: none;
 
     &--size--s {
-      @include onTablet {
+      @include on-tablet {
         display: none;
       }
     }
@@ -63,7 +63,7 @@
     &--size--l {
       display: none;
 
-      @include onTablet {
+      @include on-tablet {
         display: flex;
       }
     }

@@ -6,7 +6,7 @@
   &__breadcrumbs {
     margin-bottom: 24px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }
@@ -22,7 +22,7 @@
 
     margin: 0 0 32px;
 
-    @include onTablet {
+    @include on-tablet {
       margin-bottom: 40px;
     }
   }

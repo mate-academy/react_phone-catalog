@@ -9,7 +9,7 @@
     gap: 32px;
     padding-block: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       flex-direction: row;
       justify-content: space-between;
     }
@@ -23,7 +23,7 @@
     padding: 0;
     list-style: none;
 
-    @include onTablet {
+    @include on-tablet {
       width: 30%;
       flex-direction: row;
       align-items: center;
@@ -52,7 +52,7 @@
     font-family: Mont, Arial, Helvetica, sans-serif;
     cursor: pointer;
 
-    @include onTablet {
+    @include on-tablet {
       margin: 0;
     }
 

@@ -7,21 +7,13 @@ const wait = (delay: number) => {
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
-const BASE_URL = '/api';
+const BASE_URL = 'https://io-med.github.io/react_phone-catalog/api/';
 
 const request = async <T>(
   path: string,
   method: RequestMethod = 'GET',
-  data = null,
 ): Promise<T> => {
   const options: RequestInit = { method };
-
-  if (data) {
-    options.body = JSON.stringify(data);
-    options.headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-    };
-  }
 
   await wait(800);
 

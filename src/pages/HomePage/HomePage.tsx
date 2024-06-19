@@ -16,6 +16,7 @@ export const HomePage = () => {
     tablets: 0,
     accessories: 0,
   });
+  const [hasError, setHasError] = useState(false);
 
   const calculateProductsNumber = (productsFromServer: Product[]) => {
     const initialProductNumber = {
@@ -44,12 +45,15 @@ export const HomePage = () => {
   };
 
   const loadProducts = async () => {
+    setHasError(false);
+
     try {
       const productsFromServer = await getProducts();
 
       calculateProductsNumber(productsFromServer);
       setProducts(productsFromServer);
     } catch (error) {
+      setHasError(true);
       throw error;
     }
   };
@@ -84,6 +88,7 @@ export const HomePage = () => {
         <ProductsSlider
           products={newProducts.length > 0 ? newProducts : blankProducts}
           title="Brand new models"
+          hasError={hasError}
         />
 
         <Categories productNumbers={productNumbers} />
@@ -91,6 +96,7 @@ export const HomePage = () => {
         <ProductsSlider
           products={hotProducts.length > 0 ? hotProducts : blankProducts}
           title="Hot prices"
+          hasError={hasError}
         />
       </div>
     </main>

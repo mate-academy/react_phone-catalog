@@ -18,7 +18,7 @@
 
   &__reload-button {
     @include button;
-    @include button--color--black;
+    @include button-color-black;
 
     width: 100%;
     max-width: 350px;
@@ -30,15 +30,15 @@
   &__item {
     grid-column: span 4;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 6;
     }
 
-    @media (width > 768px) {
+    @media (min-width: 768px) {
       grid-column: span 4;
     }
 
-    @include onDesktop {
+    @include on-desktop {
       grid-column: span 6;
     }
   }

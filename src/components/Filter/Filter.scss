@@ -6,12 +6,12 @@
   &__item {
     grid-column: span 2;
 
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 4;
     }
 
   &--width--smaller {
-    @include onTablet {
+    @include on-tablet {
       grid-column: span 3;
     }
   }

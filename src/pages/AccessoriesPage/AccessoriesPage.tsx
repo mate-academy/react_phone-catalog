@@ -60,21 +60,21 @@ export const AccessoriesPage = () => {
   };
 
   return (
-    <main className="phones-page container">
-      <div className="phones-page__breadcrumbs">
+    <main className="accessories-page container">
+      <div className="accessories-page__breadcrumbs">
         <Breadcrumbs />
       </div>
 
-      <h1 className="phones-page__title">Mobile phones</h1>
-      <p className="phones-page__models-count">
+      <h1 className="accessories-page__title">Mobile phones</h1>
+      <p className="accessories-page__models-count">
         {products.length > 0 ? `${products.length} models` : 'Loading...'}
       </p>
 
-      <div className="phones-page__filter">
+      <div className="accessories-page__filter">
         <Filter DEF_DISPLAYED={DEF_DISPLAYED} DEF_SORT={DEF_SORT} />
       </div>
 
-      <div className="phones-page__product-list" ref={listRef}>
+      <div className="accessories-page__product-list" ref={listRef}>
         <ProductsList products={products} hasError={hasError} />
       </div>
 

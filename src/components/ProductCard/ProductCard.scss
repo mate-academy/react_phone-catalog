@@ -1,6 +1,8 @@
 @import '../../utils/styles/mixins';
 
 .product-card {
+  @include opacityAnimation;
+
   display: flex;
   flex-direction: column;
   gap: 8px;
@@ -32,7 +34,11 @@
       justify-content: center;
       align-items: center;
       background-color: $elements;
-      margin-bottom: 16px;
+      margin-bottom: 24px;
+
+      @media (min-width: 360px) {
+        margin-bottom: 5px;
+      }
     }
 
     &:hover {
@@ -107,7 +113,7 @@
     height: 40px;
 
     &--type--add {
-      @include button--color--black;
+      @include button-color-black;
 
       flex-grow: 1;
     }

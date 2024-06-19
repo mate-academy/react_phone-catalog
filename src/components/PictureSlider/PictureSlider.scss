@@ -4,7 +4,7 @@
   width: 100vw;
   transform: translateX(-1 * $mobile-inline-padding);
 
-  @include onTablet {
+  @include on-tablet {
     width: 100%;
     transform: none;
   }
@@ -30,7 +30,7 @@
     list-style: none;
     transition: transform $transition;
 
-    @include onTablet {
+    @include on-tablet {
       aspect-ratio: 2.6;
     }
 
@@ -48,7 +48,7 @@
     background-size: contain;
     transition: background-position 3000ms;
 
-    @include onTablet {
+    @include on-tablet {
       aspect-ratio: 2.6;
     }
 
@@ -56,7 +56,7 @@
       background-image: url(../../../public/img/phones/apple-iphone-14/midnight/02.webp), url(../../../public/img/phones/apple-iphone-14/yellow/02.webp), url(../../../public/img/phones/apple-iphone-14/purple/02.webp);
       background-position: 75% 1000px, 50% 2000px, 25% 3000px;
 
-      @include onTablet {
+      @include on-tablet {
         background-position: 90% 1000px, 80% 2000px, 70% 3000px;
       }
     }
@@ -65,7 +65,7 @@
       background-position: 75% 100px, 50% 50px, 25%;
       transition: background-position 1500ms cubic-bezier(0,.82,0,1);
 
-      @include onTablet {
+      @include on-tablet {
         background-position: 90% 100px, 80% 50px, 70% 0;
       }
     }
@@ -74,7 +74,7 @@
       background-image: url(../../../public/img/accessories/apple-watch-series-6/blue/01.webp), url(../../../public/img/accessories/apple-watch-series-6/gold/01.webp), url(../../../public/img/accessories/apple-watch-series-6/red/01.webp), url(../../../public/img/accessories/apple-watch-series-6/silver/01.webp), url(../../../public/img/accessories/apple-watch-series-6/space-gray/01.webp);
       background-position: -40px -200px, -20px -400px, 0 -600px, 20px -800px, 40px -1000px;
 
-      @include onTablet {
+      @include on-tablet {
         background-position: 115% -500px, 105% -1000px, 95% -1500px, 85% -2000px, 75% -2500px;
       }
     }
@@ -83,7 +83,7 @@
       background-position: -40px 120px, -20px 90px, 0 60px, 20px 30px, 40px 0;
       transition: background-position 2000ms cubic-bezier(0,.82,0,1);
 
-      @include onTablet {
+      @include on-tablet {
         background-position: 115% 120px, 105% 90px, 95% 60px, 85% 30px, 75% 0;
       }
     }
@@ -97,7 +97,7 @@
       background-position: 100px, 50px, 0;
       transition: background-position 1500ms cubic-bezier(0,.82,0,1);
 
-      @include onTablet {
+      @include on-tablet {
         background-position: 100%, 90%, 80%;
       }
     }
@@ -111,7 +111,7 @@
     text-decoration: none;
     color: $elements;
 
-    @include onTablet {
+    @include on-tablet {
       padding: 10px;
     }
   }
@@ -127,7 +127,7 @@
     padding: 16px;
     background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(49,50,55,0.8) 100%);
 
-    @include onTablet {
+    @include on-tablet {
       justify-content: center;
       width: 50%;
       border-radius: 10px;
@@ -143,7 +143,7 @@
     color: $white;
     margin: 0;
 
-    @include onDesktop {
+    @include on-desktop {
       @include title-1;
     }
 
@@ -160,7 +160,7 @@
 
     color: $white;
 
-    @include onTablet {
+    @include on-tablet {
       display: inline;
     }
   }
@@ -189,7 +189,7 @@
 
     width: 32px;
 
-    @include onTablet {
+    @include on-tablet {
       display: block;
     }
 
