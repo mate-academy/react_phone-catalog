@@ -16,7 +16,8 @@ import {
 } from '../../features/productInfoSlice';
 import { useLocalStorage } from '../../LocaleStorage/LocaleStorage';
 import { NotFoundPage } from '../NotFoundPage/NotFoundPage';
-import { actions } from '../../features/favSlice';
+import { actions as favActions } from '../../features/favSlice';
+import { actions as cartActions } from '../../features/cartSlice';
 
 export const ProductDetails = () => {
   const dispatch = useAppDispatch();
@@ -39,6 +40,8 @@ export const ProductDetails = () => {
 
   const [currentImage, setCurrentImage] = useState<string>('');
   const [imageError, setImageError] = useState('');
+  const [clicked, setClicked] = useState(false);
+  const [pressed, setPressed] = useState(false);
 
   const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
 
@@ -57,17 +60,39 @@ export const ProductDetails = () => {
     return <NotFoundPage />;
   }
 
+  const handleFavClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    prod: TabAccessPhone,
+  ) => {
+    event.preventDefault();
+
+    if (clicked === false) {
+      dispatch(favActions.addProduct(prod));
+      setClicked(true);
+    } else if (clicked === true) {
+      dispatch(favActions.removeProduct(prod));
+      setClicked(false);
+    }
+  };
+
+  const handleCartClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    prod: TabAccessPhone,
+  ) => {
+    event.preventDefault();
+
+    if (pressed === false) {
+      dispatch(cartActions.addProduct(prod));
+      setPressed(true);
+    } else if (pressed === true) {
+      dispatch(cartActions.removeProduct(prod));
+      setPressed(false);
+    }
+  };
+
   const handleCurrentImg = (image: string) => {
     setCurrentImage(image);
   };
-
-  const itemToUpperCase = (item: string) => {
-    return item.charAt(0).toUpperCase() + item.slice(1);
-  };
-
-  function goBack() {
-    window.history.back();
-  }
 
   const handleNextImg = () => {
     const index = product.images.indexOf(currentImage);
@@ -87,26 +112,13 @@ export const ProductDetails = () => {
     return item.toLocaleLowerCase();
   };
 
-  const [clicked, setClicked] = useState(false);
-
-  const handleFavClick = (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-    prod: TabAccessPhone,
-  ) => {
-    event.preventDefault();
-
-    if (clicked === false) {
-      // event.stopPropagation();
-      setClicked(true);
-      dispatch(actions.addProduct(prod));
-    }
-
-    if (clicked === true) {
-      // event.stopPropagation();
-      setClicked(false);
-      dispatch(actions.removeProduct(prod));
-    }
+  const itemToUpperCase = (item: string) => {
+    return item.charAt(0).toUpperCase() + item.slice(1);
   };
+
+  function goBack() {
+    window.history.back();
+  }
 
   return (
     <>
@@ -122,9 +134,11 @@ export const ProductDetails = () => {
                 alt="Vector_light_right"
                 className="details__arrow-right"
               />
-              <div className="details__paths" onClick={goBack}>
-                {itemToUpperCase(paths[0])}
-              </div>
+              <NavLink to={`/${paths[0]}`} className="details__pathsLink">
+                <div className="details__paths">
+                  {itemToUpperCase(paths[0])}
+                </div>
+              </NavLink>
               <img
                 src={Vec_light_right}
                 alt="Vector_light_right"
@@ -235,11 +249,24 @@ export const ProductDetails = () => {
                   </div>
                 </div>
                 <div className="details__product__buttonContainer">
-                  <button className="details__product__buttonAdd">
-                    Add to cart
+                  <button
+                    className="details__product__buttonAdd"
+                    style={
+                      pressed
+                        ? { color: '#27AE60', backgroundColor: '#fff' }
+                        : { color: '#fff', backgroundColor: '#313237' }
+                    }
+                    onClick={event => handleCartClick(event, product)}
+                  >
+                    {pressed ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     className="details__product__buttonFavorite"
+                    style={
+                      clicked
+                        ? { border: '1px solid #E2E6E9' }
+                        : { border: '1px solid #B4BDC3' }
+                    }
                     onClick={event => handleFavClick(event, product)}
                   >
                     <img

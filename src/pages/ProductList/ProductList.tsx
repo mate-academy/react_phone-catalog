@@ -1,4 +1,4 @@
-import { NavLink, useLocation, useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import { Pagination } from '../../components/Pagination/Pagination';
 import { SortByItem } from '../../helpers/sortBy';
 import './ProductList.scss';
@@ -18,7 +18,6 @@ export const ProductList: React.FC<Props> = ({ products }) => {
   const { loading } = useAppSelector(state => state.products);
 
   const [searchParams] = useSearchParams();
-  const { pathname } = useLocation();
   const [choosenItems, setChoosenItems] = useLocalStorage<
     TabAccessPhone[] | []
   >('products', []);
@@ -70,7 +69,7 @@ export const ProductList: React.FC<Props> = ({ products }) => {
             return (
               <NavLink
                 key={product.id}
-                to={{ pathname: `${pathname}/${product.id}` }}
+                to={`/${product.category}/${product.id}`}
                 className="productsPage__link"
               >
                 <PhoneTablAccessCard product={product} key={product.id} />

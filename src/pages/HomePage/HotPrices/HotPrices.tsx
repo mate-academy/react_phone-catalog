@@ -2,7 +2,7 @@ import { useContext, useEffect } from 'react';
 import { CatalogContext } from '../../CatalogContext';
 import Arrow_Left from '../../../images/homePage/Arrow_Left.svg';
 import Arrow_Right from '../../../images/homePage/Arrow_Right.svg';
-import Vector_light_left from '../../../images/homePage/Vector_light_left.svg';
+import Vec_light_left from '../../../images/homePage/Vec_light_left.svg';
 import Vec_light_right from '../../../images/homePage/Vec_light_right.svg';
 import './HotPrices.scss';
 import { NavLink } from 'react-router-dom';
@@ -47,9 +47,7 @@ export const HotPrices = () => {
               disabled={currentPage === 1}
             >
               <img
-                src={
-                  currentPage === 1 ? `${Vector_light_left}` : `${Arrow_Left}`
-                }
+                src={currentPage === 1 ? `${Vec_light_left}` : `${Arrow_Left}`}
                 className="hotPrices__arrays__img"
                 alt={Arrow_Left}
               />

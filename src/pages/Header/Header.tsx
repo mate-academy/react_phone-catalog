@@ -3,10 +3,15 @@ import React, { useState } from 'react';
 import './Header.scss';
 import Logo from '../../images/homePage/Logo.svg';
 import Favorites from '../../images/homePage/Favorites.svg';
+import favImage from '../../images/favImage.svg';
 import Cart from '../../images/homePage/Cart.svg';
 import classNames from 'classnames';
+import { useAppSelector } from '../../app/hooks';
 
 export const Header: React.FC = () => {
+  const { favProducts } = useAppSelector(state => state.favourites);
+  const { cartProducts } = useAppSelector(state => state.cartItems);
+
   const [opened, setOpened] = useState(false);
 
   const handlePage = () => {
@@ -83,15 +88,31 @@ export const Header: React.FC = () => {
             className="header__heart header__heart--favorites"
           >
             <img
-              className="header__favorites__img"
+              className="header__favoritesImg"
               src={Favorites}
               alt="Favorite"
             />
+            <div className="header__favoritesLength">{favProducts.length}</div>
+            {favProducts.length !== 0 && (
+              <img
+                className="header__favoritesFavImage"
+                src={favImage}
+                alt="favImage"
+              />
+            )}
           </NavLink>
         </div>
         <div className="header__preferies__link">
           <NavLink to="/cart" className="header__heart header__heart--cart">
-            <img className="header__cart__img" src={Cart} alt="cart" />
+            <img className="header__favoritesImg" src={Cart} alt="cart" />
+            <div className="header__favoritesLength">{cartProducts.length}</div>
+            {cartProducts.length !== 0 && (
+              <img
+                className="header__favoritesFavImage"
+                src={favImage}
+                alt="favImage"
+              />
+            )}
           </NavLink>
         </div>
       </div>

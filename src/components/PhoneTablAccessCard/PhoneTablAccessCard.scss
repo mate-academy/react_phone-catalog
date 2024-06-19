@@ -1,6 +1,7 @@
 @import '../../utils/main';
 
 .card {
+  margin-bottom: 25px;
   padding: 20px;
   border: 1px solid #E2E6E9;
   width: $card-width-mobile;
@@ -148,8 +149,7 @@
       margin-right: 5px;
       font-family: Mont, sans-serif;
       font-size: 14px;
-      color: #fff;
-      background-color: $grey-primary;
+      border: 1px solid #E2E6E9;
 
       @include on-desktop {
         min-width: 160px;
@@ -160,7 +160,6 @@
       width: 47px;
       height: 100%;
       background-color: #fff;
-      border: 1px solid $grey-secondary;
     }
 
     &__heart {

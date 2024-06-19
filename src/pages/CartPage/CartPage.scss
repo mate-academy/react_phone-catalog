@@ -1,0 +1,237 @@
+@import '../../utils/main';
+
+.cartProduct {
+  min-width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 20px 20px 0;
+
+  @include on-tablet {
+    min-width: 300px;
+    align-items: center;
+  }
+
+&__constrain {
+  min-width: 350px;
+
+  @include on-tablet {
+    max-width: 900px;
+  }
+}
+
+&__breadcrumbs {
+  display: flex;
+  align-items: center;
+}
+
+&__home-link {
+  display: flex;
+  align-items: center;
+  margin-right: 12px;
+  text-decoration: none;
+}
+
+&__arrow-right {
+  width: 5px;
+  height: 9px;
+  margin-right: 12px;
+}
+
+&__back {
+  @include bread;
+}
+
+&__header {
+  margin-bottom: 30px;
+  padding-top: 35px;
+  font-family: Mont, sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -1%;
+  color: $grey-primary;
+}
+
+&__box {
+  @include on-desktop {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row;
+  }
+}
+
+&__itemCard {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  height: 160px;
+  width: 100%;
+  border: 1px solid #E2E6E9;
+
+  @include on-tablet {
+    height: 128px;
+  }
+
+  @include on-desktop {
+    display: flex;
+    align-items: center;
+    width: 725px;
+    margin-right: 20px;
+  }
+}
+
+  &__containerItem {
+    margin: 20px;
+    width: 100%;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__navLink {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    margin-right: 10px;
+    margin-bottom: 15px;
+    text-decoration: none;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__crossImage {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__buttonCross {
+    background-color: #fff;
+    border: none;
+    cursor: pointer;
+  }
+
+  &__cross {
+    width: 10px;
+    height: 10px;
+  }
+
+  &__image {
+    margin: 0 15px;
+
+    @include on-desktop {
+      margin: 0 30px;
+    }
+
+    &__link {
+      height: 66px;
+      width: 66px;
+    }
+  }
+
+  &__name {
+    @include category-quantity;
+    width: 200px;
+    color: $grey-primary;
+    font-weight: 600;
+
+    @include on-desktop {
+      width: 330px;
+    }
+  }
+
+  &__countPrice {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 15px;
+
+    @include on-desktop {
+      margin-right: 30px;
+    }
+
+    &__box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $border-capacity;
+    }
+
+    &__quantity {
+      padding: 12px;
+    }
+  }
+
+  &__price {
+    @include header-phone;
+  }
+
+  &__checkout {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+    height: 206px;
+    border: 1px solid $border;
+
+    @include on-desktop {
+      width: 368px;
+      height: 206px;
+      margin-top: 0;
+    }
+  }
+
+  &__toPay {
+    @include header;
+    margin-bottom: 5px;
+  }
+
+  &__totalItems {
+    @include category-quantity;
+    margin-bottom: 30px;
+  }
+
+  &__payButton {
+    @include category-quantity;
+    color: #fff;
+    font-weight: 700;
+    width: 90%;
+    height: 48px;
+    background-color: $grey-primary;
+    border: 1px solid $grey-primary;
+    cursor: pointer;
+    
+    @include on-desktop {
+      width: 320px;
+    }
+  }
+}
+

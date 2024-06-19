@@ -204,4 +204,25 @@
       border-bottom: 1px solid $grey-primary;
     }
   }
+
+  &__favoritesImg {
+    position: absolute;
+  }
+
+  &__favoritesLength {
+    position: relative;
+    display: inline;
+    font-family: Mont, sans-serif;
+    font-size: 9px;
+    color: #fff;
+    right: -16px;
+    top: -7px;
+    z-index: 1;
+  }
+
+  &__favoritesFavImage {
+    position: relative;
+    top: -7px;
+    right: -6px;
+  }
 }

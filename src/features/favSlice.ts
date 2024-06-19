@@ -23,7 +23,7 @@ const FavSlice = createSlice({
       if (!findSame) {
         currentState.favProducts.push(action.payload);
       } else {
-        currentState;
+        currentState.favProducts;
       }
     },
 

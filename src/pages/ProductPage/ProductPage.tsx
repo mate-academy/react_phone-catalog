@@ -1,5 +1,5 @@
-import { ChangeEvent, useEffect, useMemo } from 'react';
-import { Link, NavLink, useSearchParams } from 'react-router-dom';
+import { BaseSyntheticEvent, ChangeEvent, useEffect, useMemo } from 'react';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import './ProductPage.scss';
 import Home from '../../images/Home.svg';
 import Vec_light_right from '../../images/homePage/Vec_light_right.svg';
@@ -8,9 +8,6 @@ import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { Category } from '../../types/category';
 import { ProductList } from '../ProductList/ProductList';
 import { fetchProducts } from '../../features/productssSlice';
-import classNames from 'classnames';
-import { getSearchWith } from '../../utils/searchHelpers';
-import { SortByItem } from '../../helpers/sortBy';
 
 interface Props {
   title: string;
@@ -42,21 +39,13 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
 
   const [searchParams, setSearchParams] = useSearchParams();
   const sortParams = useMemo(
-    () => ['None', 'Newest', 'Alphabetically', 'Cheapest'],
+    () => ['', 'Newest', 'Alphabetically', 'Cheapest'],
     [],
   );
 
-  const sortBy = searchParams.get('sortBy') || SortByItem.None;
+  const sortBy = searchParams.get('sortBy') || '';
   const perPage = searchParams.get('perPage') || 'all';
   const currentPage = searchParams.get('page') || '1';
-
-  const toBeSortedBy = (event: ChangeEvent<HTMLSelectElement>) => {
-    setSearchParams({
-      page: currentPage,
-      perPage: perPage,
-      sortBy: event.target.value as SortByItem,
-    });
-  };
 
   const handlePerPage = (event: ChangeEvent<HTMLSelectElement>) => {
     setSearchParams({
@@ -66,15 +55,13 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
     });
   };
 
-  const currentValue = useMemo(
-    () => searchParams.get(sortBy) || sortParams[0],
-    [searchParams, sortBy, sortParams],
-  );
-
-  const selectedItem = useMemo(
-    () => sortParams.find(item => item === currentValue) || sortParams[0],
-    [sortParams, currentValue],
-  );
+  const handleSortBy = (event: BaseSyntheticEvent) => {
+    setSearchParams({
+      page: currentPage,
+      perPage: perPage,
+      sortBy: event.target.value,
+    });
+  };
 
   const itemToUpperCase = (item: string) => {
     return item.charAt(0).toUpperCase() + item.slice(1);
@@ -102,28 +89,11 @@ export const ProductPage: React.FC<Props> = ({ title, category }) => {
             <div className="productsPage__choose">Sort by</div>
             <select
               value={sortBy}
-              onChange={toBeSortedBy}
+              onChange={handleSortBy}
               className="productsPage__selectSort"
             >
-              {sortParams.map((param, index) => {
-                return (
-                  <option key={index}>
-                    <Link
-                      to={{
-                        search: getSearchWith(searchParams, {
-                          sortBy: param,
-                          page: currentPage,
-                          perPage: perPage,
-                        }),
-                      }}
-                      className={classNames('productsPage__option', {
-                        'productsPage__option--main': param === selectedItem,
-                      })}
-                    >
-                      {param}
-                    </Link>
-                  </option>
-                );
+              {sortParams.map(param => {
+                return <option key={param}>{param}</option>;
               })}
             </select>
           </div>

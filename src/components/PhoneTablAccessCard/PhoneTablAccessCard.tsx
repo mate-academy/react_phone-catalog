@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './PhoneTablAccessCard.scss';
 import { TabAccessPhone } from '../../types/tabAccessPhones';
 import Favorites from '../../images/homePage/Favorites.svg';
 import redHeart from '../../images/homePage/redHeart.svg';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
-import { actions } from '../../features/favSlice';
+import { actions as favActions } from '../../features/favSlice';
+import { actions as cartActions } from '../../features/cartSlice';
 
 type Props = {
   product: TabAccessPhone;
@@ -15,8 +16,26 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   const dispatch = useAppDispatch();
 
   const { favProducts } = useAppSelector(state => state.favourites);
+  const { cartProducts } = useAppSelector(state => state.cartItems);
 
   const [clicked, setClicked] = useState(false);
+  const [pressed, setPressed] = useState(false);
+
+  useEffect(() => {
+    const favProd = favProducts.find(prod => prod.id === product.id);
+
+    if (favProd) {
+      setClicked(true);
+    }
+  }, [favProducts, product, setClicked]);
+
+  useEffect(() => {
+    const cartProd = cartProducts.find(prod => prod === product);
+
+    if (cartProd) {
+      setPressed(true);
+    }
+  }, [cartProducts, product, setPressed]);
 
   const handleFavClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -25,17 +44,40 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
     event.preventDefault();
 
     if (clicked === false) {
-      dispatch(actions.addProduct(prod));
+      dispatch(favActions.addProduct(prod));
       setClicked(true);
     }
 
     if (clicked === true) {
-      dispatch(actions.removeProduct(prod));
+      dispatch(favActions.removeProduct(prod));
       setClicked(false);
     }
-
-    console.log(favProducts);
   };
+
+  const handleCartClick = (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
+    prod: TabAccessPhone,
+  ) => {
+    event.preventDefault();
+
+    // const findSame = cartProducts.find(pr => pr.id === prod.id);
+
+    // if (findSame) {
+    //   return;
+    // }
+
+    if (pressed === false) {
+      dispatch(cartActions.addProduct(prod));
+      setPressed(true);
+    }
+
+    if (pressed === true) {
+      dispatch(cartActions.removeProduct(prod));
+      setPressed(false);
+    }
+  };
+
+  console.log(pressed);
 
   return (
     <div className="card" data-cy="cardsContainer">
@@ -88,9 +130,24 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
           </div>
         </div>
         <div className="card__buttons">
-          <button className="card__buttons__add">Add to cart</button>
+          <button
+            className="card__buttons__add"
+            style={
+              pressed
+                ? { color: '#27AE60', backgroundColor: '#fff' }
+                : { color: '#fff', backgroundColor: '#313237' }
+            }
+            onClick={event => handleCartClick(event, product)}
+          >
+            {pressed ? 'Added to cart' : 'Add to cart'}
+          </button>
           <button
             className="card__buttons__favorite"
+            style={
+              clicked
+                ? { border: '1px solid #E2E6E9' }
+                : { border: '1px solid #B4BDC3' }
+            }
             onClick={event => handleFavClick(event, product)}
           >
             <img
