@@ -42,6 +42,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
+    console.log(getTouchEventData(e));
     const startY = Math.abs(getRefValue(startYRef));
     const endY = Math.abs(getTouchEventData(e).clientY);
     const upY = startY > endY + MIN_SWIPE_REQUIRED;
@@ -51,11 +52,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     const endX = Math.abs(getTouchEventData(e).clientX);
     const leftX = startX - MIN_SWIPE_REQUIRED > endX;
     const rightX = startX + MIN_SWIPE_REQUIRED < endX;
-
-    console.log('Up', upY);
-    console.log('Down', downY);
-    console.log('Left', leftX);
-    console.log('Right', rightX);
 
     if (upY || downY) {
       document.body.style.overflowY = 'auto';

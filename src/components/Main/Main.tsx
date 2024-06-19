@@ -11,9 +11,14 @@ import { HotPrices } from './HotPrices/HotPrices';
 export const Main = () => {
   const { openBurger } = useContext(StateContext);
   const { t } = useContext(LanguageContext);
+  const activeScroll = () => (document.body.style.overflowY = 'auto');
 
   return (
-    <main className={style.main}>
+    <main
+      className={style.main}
+      onWheel={activeScroll}
+      onTouchStart={activeScroll}
+    >
       {!openBurger && (
         <div className={style.main__content}>
           <h1 className={style.main__title}>{t('welcome')}</h1>
