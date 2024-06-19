@@ -1,0 +1,32 @@
+@import '../../variable';
+
+.Container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+}
+
+.Header {
+  border-bottom: 1px solid $surface-main-color;
+  padding-top: 23px;
+  padding-bottom: 25px;
+}
+
+.HeaderContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 700;
+  font-size: 12px;
+}
+
+.HeaderInner {
+  display: flex;
+  gap: 50px;
+  align-items: center;
+}
+
+.HeaderLogo {
+  width: 80px;
+  height: 30px;
+}

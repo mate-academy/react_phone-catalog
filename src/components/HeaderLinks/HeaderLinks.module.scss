@@ -1,0 +1,38 @@
+@import '../../variable';
+@import '../../mixin';
+
+.Links {
+  display: flex;
+  gap: 64px;
+  list-style-type: none;
+}
+
+.Item {
+  text-transform: uppercase;
+}
+
+.Link {
+  transition: color $transition-duration;
+  text-decoration: none;
+  color: $secondary-color;
+
+  &::after {
+    @include link-line(0%);
+  }
+
+  &:hover::after {
+    @include link-line(100%);
+  }
+
+  &:hover {
+    color: $white-color;
+  }
+}
+
+.Active {
+  color: $white-color;
+
+  &::after {
+    @include link-line(100%);
+  }
+}

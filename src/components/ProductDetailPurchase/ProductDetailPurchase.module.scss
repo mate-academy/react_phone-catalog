@@ -1,0 +1,40 @@
+@import '../../variable';
+
+.ProductDescription {
+  display: flex;
+  flex-direction: column;
+  width: 320px;
+}
+
+.Title {
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: $secondary-color;
+}
+
+.Buttons {
+  display: flex;
+  column-gap: 8px;
+}
+
+.Inner {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 32px;
+}
+
+.Descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.Text {
+  font-size: 12px;
+  font-weight: 400;
+  color: $secondary-color;
+}
+
+.TextActive {
+  color: $white-color;
+}

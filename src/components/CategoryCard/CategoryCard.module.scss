@@ -1,0 +1,33 @@
+@import '../../variable';
+
+.Wrapper {
+  text-decoration: none;
+  color: $white-color;
+}
+
+.CategoryCard {
+  display: flex;
+  flex-direction: column;
+  margin-top: 34px;
+  transition: transform $transition-duration;
+
+  &:hover {
+    transform: scale(1.02);
+    cursor: pointer;
+  }
+}
+
+.Picture {
+  width: 368px;
+}
+
+.Title {
+  font-size: 20px;
+  margin-top: 24px;
+}
+
+.Subtitle {
+  font-size: 14px;
+  margin-top: 4px;
+  color: $secondary-color;
+}

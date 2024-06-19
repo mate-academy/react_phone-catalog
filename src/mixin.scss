@@ -1,0 +1,9 @@
+@mixin link-line($width) {
+  display: block;
+  width: $width;
+  height: 3px;
+  content: '';
+  background: $white-color;
+  transform: translateY(30px);
+  transition: all $transition-duration;
+}

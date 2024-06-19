@@ -1,0 +1,18 @@
+@import '../../variable';
+
+.CategoryCards {
+  margin-top: 24px;
+  color: $white-color;
+}
+
+.CategoryContent {
+  display: flex;
+  gap: 16px;
+}
+
+.CategoryCardsTitle {
+  font-size: 32px;
+  font-weight: 700;
+  margin-top: 80px;
+}
+

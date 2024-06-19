@@ -1,0 +1,13 @@
+@import '../variable';
+
+.Main {
+  padding-bottom: 100px;
+}
+
+.Container {
+  width: 100%;
+  max-width: $full-desktop;
+  margin: 0 auto;
+  padding-left: 20px;
+  padding-right: 20px;
+}

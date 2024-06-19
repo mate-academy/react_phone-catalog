@@ -1,0 +1,37 @@
+@import '../../variable';
+
+.TechSpecs {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+}
+
+.TechSpecsInner {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 25px;
+}
+
+.TechSpecsDescriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.TechSpecsText {
+  font-size: 14px;
+  font-weight: 400;
+  color: $secondary-color;
+}
+
+.TechSpecsTextActive {
+  color: $white-color;
+}
+
+.TechSpecsTitle {
+  font-weight: 800;
+  color: $white-color;
+  font-size: 22px;
+  border-bottom: 1px solid $elements-color;
+  padding-bottom: 16px;
+}

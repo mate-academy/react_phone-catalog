@@ -1,0 +1,39 @@
+@import '../../variable';
+
+.SelectColorWrapper {
+  display: flex;
+  border-bottom: 1px solid $elements-color;
+  padding-bottom: 24px;
+  margin-bottom: 24px;
+  column-gap: 8px;
+}
+
+.SelectColorItem {
+  width: 32px;
+  height: 32px;
+  border: none;
+  position: relative;
+  outline: 2px solid $elements-color;
+  padding: 15px;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+
+  &:hover {
+    outline: 2px solid $secondary-color;
+  }
+}
+
+.SelectColorItemActive {
+  outline: 2px solid $secondary-color;
+}
+
+.SelectColorElement {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+}

@@ -1,0 +1,60 @@
+@import '../../variable';
+
+.ProductCard {
+  width: 272px;
+  padding: 32px;
+  background: $surface-secondary-color;
+  color: $white-color;
+
+  &:hover {
+    border: 1px solid $surface-main-color;
+  }
+}
+
+.Link {
+  text-decoration: none;
+}
+
+.Picture {
+  width: 208px;
+  height: 196px;
+  object-fit: contain;
+}
+
+.Title {
+  font-weight: 400;
+  font-size: 14px;
+  height: 50px;
+  color: $white-color;
+  line-height: 21px;
+  margin-top: 24px;
+}
+
+.Buttons {
+  display: flex;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.ProductCardInner {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid $elements-color;
+  padding-top: 16px;
+}
+
+.Descriptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.DescriptionsText {
+  font-size: 12px;
+  font-weight: 400;
+  color: $secondary-color;
+}
+
+.DescriptionsTextActive {
+  color: $white-color;
+}

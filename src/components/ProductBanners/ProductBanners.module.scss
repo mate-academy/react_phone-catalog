@@ -1,0 +1,14 @@
+@import '../../variable';
+
+$default-width: 1040px;
+
+.Picture {
+  min-width: $default-width;
+  object-fit: cover;
+}
+
+.ProductBanners {
+  display: flex;
+}
+
+

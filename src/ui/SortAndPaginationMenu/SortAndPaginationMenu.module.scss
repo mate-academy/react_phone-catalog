@@ -1,0 +1,17 @@
+@import '../../variable';
+
+.DropdownsMenuWrapper {
+  display: flex;
+  column-gap: 16px;
+  margin-top: 40px;
+}
+
+.DropdownsMenu {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.Title {
+  color: $secondary-color;
+}

@@ -1,0 +1,13 @@
+@import '../../variable';
+
+.Slider {
+  min-width: max-content;
+}
+
+.SliderWrapper {
+  overflow: hidden;
+}
+
+.SliderInner {
+  display: flex;
+}

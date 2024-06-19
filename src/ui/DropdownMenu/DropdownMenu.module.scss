@@ -1,0 +1,41 @@
+@import '../../variable';
+
+.DropdownMenu {
+  width: 176px;
+  display: flex;
+  flex-direction: column;
+}
+
+.Large {
+  width: 128px;
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 9px;
+  background: $surface-main-color;
+  cursor: pointer;
+}
+
+.Text {
+  color: $white-color;
+}
+
+.Items {
+  margin-top: 4px;
+  background: $black-color;
+  border: 1px solid $icons-color;
+}
+
+.Item {
+  padding: 6px 12px 5px;
+  font-size: 14px;
+  color: $secondary-color;
+  cursor: pointer;
+
+  &:hover {
+    background: $surface-main-color;
+  }
+}

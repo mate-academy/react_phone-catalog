@@ -1,0 +1,46 @@
+@import '../../variable';
+
+.PaginationWrapper {
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+  margin-top: 40px;
+}
+
+.Inner {
+  display: flex;
+  column-gap: 8px;
+}
+
+.Button {
+  width: 32px;
+  height: 32px;
+  font-family: Mont;
+  background: $surface-secondary-color;
+  border: none;
+  outline: none;
+  color: $white-color;
+  cursor: pointer;
+  transition: all $transition-duration;
+
+  &:hover {
+    background: $purple-color;
+  }
+}
+
+.ButtonPrimary {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  padding: 5px;
+  background: $surface-main-color;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+
+.Active {
+  background: $purple-color;
+}

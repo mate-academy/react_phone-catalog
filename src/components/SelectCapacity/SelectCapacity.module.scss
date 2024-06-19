@@ -1,0 +1,31 @@
+@import '../../variable';
+
+.SelectCapacityWrapper {
+  display: flex;
+  column-gap: 8px;
+  border-bottom: 1px solid $elements-color;
+  padding-bottom: 24px;
+  margin-bottom: 32px;
+}
+
+.SelectCapacityButton {
+  width: 63px;
+  height: 32px;
+  text-transform: uppercase;
+  background: transparent;
+  outline: none;
+  color: $white-color;
+  border: 1px solid $icons-color;
+  transition: all $transition-duration;
+  cursor: pointer;
+
+  &:hover {
+    background: $white-color;
+    color: $black-color;
+  }
+}
+
+.SelectCapacityButtonActive {
+  background: $white-color;
+  color: $black-color;
+}

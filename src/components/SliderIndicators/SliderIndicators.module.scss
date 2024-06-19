@@ -1,0 +1,19 @@
+$white-color: white;
+$light-gray: #3b3e4a;
+
+.SliderIndicators {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.SliderIndicator {
+  width: 14px;
+  height: 4px;
+  background: $light-gray;
+}
+
+.SliderIndicatorActive {
+  background: $white-color;
+}

@@ -1,0 +1,62 @@
+@import '../../variable';
+
+.Container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.Footer {
+  border-top: 1px solid $elements-color;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  height: 100px;
+  margin-top: 80px;
+}
+
+.Content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.Logo {
+  width: 89px;
+  height: 32px;
+}
+
+.Socials {
+  display: flex;
+  column-gap: 105px;
+  list-style-type: none;
+}
+
+.Link {
+  color: $white-color;
+  text-decoration: none;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.Buttons {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+}
+
+.Text {
+  color: $secondary-color;
+}
+
+.Button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  background: $surface-main-color;
+  cursor: pointer;
+}

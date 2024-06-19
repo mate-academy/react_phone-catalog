@@ -1,0 +1,17 @@
+@import '../../variable';
+
+.Link {
+  padding: 33px;
+  background: transparent;
+  border: none;
+  border-left: 1px solid $surface-main-color;
+  outline: none;
+
+  &:hover {
+    cursor: pointer;
+  }
+
+  &:not(:last-child) {
+    border-right: 1px solid $surface-main-color;
+  }
+}

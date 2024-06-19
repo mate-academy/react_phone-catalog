@@ -1,1 +1,10 @@
-// not empty
+@import './reset';
+@import './variable';
+@import './fonts';
+@import './scrollbar';
+
+// body
+body {
+  background: $black-color;
+  font-family: Mont;
+}

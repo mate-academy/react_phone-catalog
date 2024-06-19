@@ -1,0 +1,13 @@
+@import '../../variable';
+
+.Products {
+  display: flex;
+  flex-direction: column;
+}
+
+.Wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px 16px;
+  margin-top: 24px;
+}
