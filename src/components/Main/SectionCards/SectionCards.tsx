@@ -82,7 +82,9 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       setOffsetX(newOffsetX);
     }
 
-    document.body.removeEventListener('touchmove', preventDefault);
+    setTimeout(() => {
+      document.body.removeEventListener('touchmove', preventDefault);
+    }, 1000);
   };
 
   const onTouchEnd = () => {
