@@ -84,7 +84,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     setTimeout(() => {
       document.body.removeEventListener('touchmove', preventDefault);
-    }, 1000);
+    }, 500);
   };
 
   const onTouchEnd = () => {
