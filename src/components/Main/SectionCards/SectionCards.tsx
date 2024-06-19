@@ -58,7 +58,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
-      document.body.removeEventListener('touchmove', preventDefault);
     } else if (leftX || rightX) {
       e.preventDefault();
       document.body.addEventListener('touchmove', preventDefault, {
@@ -84,7 +83,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     setTimeout(() => {
       document.body.removeEventListener('touchmove', preventDefault);
-    }, 300);
+    }, 500);
   };
 
   const onTouchEnd = () => {
