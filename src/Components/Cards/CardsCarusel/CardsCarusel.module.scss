@@ -1,0 +1,41 @@
+.container {
+  margin-top: 2px;
+  width: 100%;
+  position: relative;
+}
+
+.cards {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(4, minmax(272px, 1fr)); /* Автоматично підлаштовує кількість колонок */
+}
+
+// .carousel-card {
+//   background-color: var(--white); /* Білий фон */
+//   border-radius: 0.5rem; /* Закруглені кути */
+//   box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Тінь */
+// }
+
+.buttons {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-bottom: 28px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  background-color: var(--surface-2); /* Gray/Surface 2 */
+  color: var(--white); /* Колір тексту */
+  cursor: pointer; /* Зміна курсора на вказівник при наведенні */
+  border: 1px solid var(--surface-2);
+
+  &:hover {
+    background: var(--icons);
+  }
+
+  &:disabled {
+    background-color: inherit;
+  }
+}
