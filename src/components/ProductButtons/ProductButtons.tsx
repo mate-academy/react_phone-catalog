@@ -4,7 +4,10 @@ import { Product } from '../../types/Product';
 import classNames from 'classnames';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { toggleFavoriteWithLocal } from '../../features/favoritesSlice';
-import { createInCartWithLocal } from '../../features/cartSlice';
+import {
+  createInCartWithLocal,
+  deleteFromCartWithLocal,
+} from '../../features/cartSlice';
 
 type Props = {
   product?: Product | null;
@@ -37,6 +40,12 @@ export const ProductButtons: React.FC<Props> = ({
 
   const handleAddToCart = () => {
     if (product !== null) {
+      if (isInCart) {
+        dispatch(deleteFromCartWithLocal(product.id));
+
+        return;
+      }
+
       dispatch(createInCartWithLocal(product));
     }
   };

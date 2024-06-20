@@ -2,8 +2,13 @@ import { NavLink, useLocation } from 'react-router-dom';
 import './Navigation.scss';
 import React from 'react';
 import { useAppSelector } from '../../app/hooks';
+import { SearchField } from '../SearchField';
 
-export const Navigation: React.FC = () => {
+type Props = {
+  searchIsShown?: boolean;
+};
+
+export const Navigation: React.FC<Props> = ({ searchIsShown = false }) => {
   const favoritesNumber = useAppSelector(state => state.favorites.length);
   const cartNumber = useAppSelector(state => state.cart.length);
   const location = useLocation();
@@ -37,6 +42,8 @@ export const Navigation: React.FC = () => {
       </ul>
 
       <div className="nav__buttons">
+        {searchIsShown && <SearchField searchIsShown={searchIsShown} />}
+
         <NavLink
           className="nav__button nav__button--favourites"
           to="/favourites"

@@ -1,4 +1,4 @@
-import { useLocation, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 import { ProductWithDetails } from '../../types/ProductWithDetails';
 import { ProductCategories } from '../../types/ProductCategories';
@@ -23,6 +23,7 @@ export const ProductDetailsPage = () => {
   const [productWithDetails, setProductWithDetails] =
     useState<ProductWithDetails | null>(null);
   const [product, setProduct] = useState<Product | null>(null);
+  const [products, setProducts] = useState<Product[]>([]);
   const [productsHaveError, setProductsHaveError] = useState(false);
   const [selectedPhoto, setSelectedPhoto] = useState(0);
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
@@ -32,6 +33,7 @@ export const ProductDetailsPage = () => {
   const category = location.pathname.split('/')[1];
   const lastPhotoId =
     productWithDetails !== null ? productWithDetails.images.length - 1 : 0;
+  const navigate = useNavigate();
 
   const loadProduct = async () => {
     try {
@@ -64,13 +66,15 @@ export const ProductDetailsPage = () => {
     }
   };
 
-  const getSuggestedAndProduct = async () => {
+  const getProductsAndProcessThem = async () => {
     setProductsHaveError(false);
 
     try {
       const productsFromServer = await getProducts();
 
       if (productsFromServer) {
+        setProducts(productsFromServer);
+
         const matchedProduct = productsFromServer.find(
           productFromServer => productFromServer.itemId === productId,
         );
@@ -111,7 +115,7 @@ export const ProductDetailsPage = () => {
     setProductWithDetails(null);
     setSuggestedProducts([]);
     loadProduct();
-    getSuggestedAndProduct();
+    getProductsAndProcessThem();
   }, [productId]);
 
   const switchToNextPhoto = () => {
@@ -130,6 +134,43 @@ export const ProductDetailsPage = () => {
     onSwipedLeft: () => switchToNextPhoto(),
     onSwipedRight: () => switchToPrevPhoto(),
   });
+
+  const productModel = productWithDetails?.namespaceId ?? '';
+  const colors: { [keys: string]: null | string } = {};
+  const capacities: { [keys: string]: null | string } = {};
+
+  productWithDetails?.colorsAvailable.forEach(color => {
+    colors[color] = null;
+  });
+
+  productWithDetails?.capacityAvailable.forEach(capacity => {
+    capacities[capacity] = null;
+  });
+
+  if (productModel) {
+    products.forEach(lookedProduct => {
+      if (
+        lookedProduct.itemId.includes('pro') &&
+        !productModel.includes('pro')
+      ) {
+        return;
+      }
+
+      if (
+        lookedProduct.itemId.includes(productModel) &&
+        lookedProduct.capacity === productWithDetails?.capacity
+      ) {
+        colors[lookedProduct.color] = lookedProduct.itemId;
+      }
+
+      if (
+        lookedProduct.itemId.includes(productModel) &&
+        lookedProduct.color === productWithDetails?.color
+      ) {
+        capacities[lookedProduct.capacity] = lookedProduct.itemId;
+      }
+    });
+  }
 
   return (
     <main className="container product-details">
@@ -178,21 +219,33 @@ export const ProductDetailsPage = () => {
                     <p className="product-details__info-text">
                       Available colors
                     </p>
-                    <p className="product-details__id">{`ID: 802390`}</p>
+                    <p className="product-details__id">{`ID: 000${product?.id}`}</p>
                   </div>
 
                   <ul className="product-details__picker-list">
-                    {productWithDetails.colorsAvailable.map(color => (
+                    {Object.keys(colors).map(color => (
                       <li
                         className="product-details__color-list-item"
                         key={color}
                       >
                         <button
-                          className={`
-                        product-details__color-button
-                        product-details__color-button--color--${color}
-                        ${color === productWithDetails.color && 'active'}
-                      `}
+                          onClick={() => {
+                            if (colors[color]) {
+                              navigate(
+                                `/${productWithDetails.category}/${colors[color]}`,
+                              );
+                            }
+                          }}
+                          className={classNames(
+                            'product-details__color-button',
+                            `product-details__color-button--color--${color}`,
+                            {
+                              active: color === productWithDetails.color,
+                              disabled:
+                                colors[color] === null &&
+                                color !== productWithDetails.color,
+                            },
+                          )}
                         ></button>
                       </li>
                     ))}
@@ -209,16 +262,28 @@ export const ProductDetailsPage = () => {
                   </div>
 
                   <ul className="product-details__picker-list">
-                    {productWithDetails.capacityAvailable.map(capacity => (
+                    {Object.keys(capacities).map(capacity => (
                       <li
                         className="product-details__capacity-list-item"
                         key={capacity}
                       >
                         <button
-                          className={`
-                        product-details__capacity-button
-                        ${capacity === productWithDetails.capacity && 'active'}
-                      `}
+                          onClick={() => {
+                            if (capacities[capacity]) {
+                              navigate(
+                                `/${productWithDetails.category}/${capacities[capacity]}`,
+                              );
+                            }
+                          }}
+                          className={classNames(
+                            'product-details__capacity-button',
+                            {
+                              active: capacity === productWithDetails.capacity,
+                              disabled:
+                                capacities[capacity] === null &&
+                                capacity !== productWithDetails.capacity,
+                            },
+                          )}
                         >
                           {capacity}
                         </button>

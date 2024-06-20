@@ -7,6 +7,7 @@ import { Footer } from './components/Footer';
 import { useAppDispatch } from './app/hooks';
 import { initiateFavoritesFromLocal } from './features/favoritesSlice';
 import { initiateCartFromLocal } from './features/cartSlice';
+import classNames from 'classnames';
 
 export const App = () => {
   const [menuShown, setMenuShown] = useState(false);
@@ -23,7 +24,7 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="page">
+    <div className={classNames('page', { 'page--unscrollable': menuShown })}>
       <Header menuShow={menuShown} setMenuShown={setMenuShown} />
       {menuShown && <Menu />}
 

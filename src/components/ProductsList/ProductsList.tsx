@@ -11,7 +11,7 @@ type Props = {
   products: Product[];
   PER_PAGE?: PerPage;
   DEF_SORT?: SortBy;
-  hasError?: boolean;
+  error?: string;
 };
 
 const blankProducts: null[] = new Array(10).fill(null);
@@ -20,9 +20,9 @@ export const ProductsList: React.FC<Props> = ({
   products,
   DEF_SORT = SortBy.NEWEST,
   PER_PAGE = PerPage.EIGHT,
-  hasError = false,
+  error = '',
 }) => {
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
 
   const sortedBy = searchParams.get(SearchParams.SORT_BY) ?? DEF_SORT;
@@ -51,16 +51,15 @@ export const ProductsList: React.FC<Props> = ({
     productsPage = sortedProducts.slice(perPage * (page - 1), perPage * page);
   }
 
-  if (hasError) {
+  if (error) {
     return (
       <div className="product-list__error">
-        <p className="product-list__error-message">
-          Can&apos;t load products, please try again.
-        </p>
+        <p className="product-list__error-message">{error}</p>
 
         <button
           className="product-list__reload-button"
           onClick={() => {
+            setSearchParams('');
             navigate(0);
           }}
         >
@@ -73,10 +72,10 @@ export const ProductsList: React.FC<Props> = ({
   return (
     <ul className="product-list">
       {(productsPage.length > 0 ? productsPage : blankProducts).map(
-        (product, id) => (
+        (product, index) => (
           <li
             className="product-list__item"
-            key={product !== null ? product.id : id}
+            key={product !== null ? product.id : index}
           >
             <ProductCard product={product} />
           </li>

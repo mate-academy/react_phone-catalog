@@ -21,6 +21,7 @@ export const Pagination: React.FC<Props> = ({ pagesNumber, scrollToTop }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const currentPage = +(searchParams.get(SearchParams.PAGE_NUMBER) ?? 1);
+  const query = searchParams.get(SearchParams.QUERY) ?? '';
   const newParams = new URLSearchParams(searchParams);
   const pages = new Array(pagesNumber)
     .fill(1)
@@ -71,6 +72,10 @@ export const Pagination: React.FC<Props> = ({ pagesNumber, scrollToTop }) => {
     setSearchParams(newParams);
     scrollToTop();
   };
+
+  useEffect(() => {
+    handlePageChange(1);
+  }, [query]);
 
   const prepareCenterPages = () => {
     if (currentPage <= 4) {

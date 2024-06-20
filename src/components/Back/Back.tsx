@@ -10,7 +10,7 @@ export const Back = () => {
     if (prevPage !== null) {
       navigate(location.state.pathname);
     } else {
-      navigate(-1);
+      navigate('..', { relative: 'path' });
     }
   };
 

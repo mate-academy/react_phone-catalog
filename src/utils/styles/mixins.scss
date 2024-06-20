@@ -154,8 +154,12 @@
   }
 }
 
-@mixin opacityAnimation {
+@mixin opacity-animation {
   animation: opacity $transition linear;
+}
+
+@mixin slide-in-animation {
+  animation: slide $transition / 2 ease-out 1;
 }
 
 @keyframes l17-0 {
@@ -198,10 +202,6 @@
   100% {
     opacity: 1;
   }
-}
-
-@mixin slideAnimation {
-  animation: slide $transition / 2 ease-out 1;
 }
 
 @keyframes slide {

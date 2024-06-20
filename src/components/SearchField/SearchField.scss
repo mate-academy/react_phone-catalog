@@ -1,0 +1,33 @@
+@import '../../utils/styles/mixins';
+
+.search-field {
+  box-sizing: border-box;
+  height: 100%;
+  width: 100%;
+  min-width: 40px;
+  flex-grow: 1;
+  margin-left: 8px;
+  padding-inline: 8px;
+
+  border: none;
+  border-inline: 1px solid $elements;
+  opacity: 1;
+  transform: scaleX(1);
+  transition: transform $transition;
+
+  &.hidden {
+    opacity: 0;
+    transform: scaleX(0);
+  }
+
+  &::placeholder {
+    @include text-buttons;
+
+    color: $icons;
+  }
+
+  &:focus {
+    outline: 1px solid $primary;
+    outline-offset: -2px;
+  }
+}

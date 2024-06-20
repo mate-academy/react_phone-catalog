@@ -10,6 +10,7 @@
   &__error {
     display: flex;
     flex-direction: column;
+    align-items: center;
   }
 
   &__error-message {

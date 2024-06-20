@@ -10,13 +10,17 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
+
 
   padding-left: 16px;
   height: $header-hight-mobile;
 
   background-color: $white;
   border-bottom: 1px solid $elements;
+
+  @include on-tablet {
+    gap: 16px;
+  }
 
   @include on-desktop {
     padding-left: 24px;
@@ -58,7 +62,18 @@
     &--close {
       background-image: url(../../../public/img/icons/close.svg);
     }
+
+    &--search {
+      background-image: url(../../../public/img/icons/search.svg);
+    }
   }
 
+  &__search-wrapper {
+    height: 100%;
+    flex-grow: 1;
 
+    @include on-tablet {
+      display: none;
+    }
+  }
 }

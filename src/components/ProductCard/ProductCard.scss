@@ -1,7 +1,7 @@
 @import '../../utils/styles/mixins';
 
 .product-card {
-  @include opacityAnimation;
+  @include opacity-animation;
 
   display: flex;
   flex-direction: column;
@@ -41,7 +41,7 @@
       }
     }
 
-    &:hover {
+    &:hover:not(&--placeholder) {
       transform: scale(1.1);
     }
   }

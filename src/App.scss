@@ -34,6 +34,16 @@ body {
   display: grid;
   grid-template-rows:auto 1fr auto;
   grid-template-columns: minmax(0, 1fr);
+
+  &--unscrollable {
+    height: 100dvh;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: auto;
+      overflow: auto;
+    }
+  }
 }
 
 .container {

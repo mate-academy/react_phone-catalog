@@ -97,6 +97,10 @@
       background-image: url(../../../public/img/icons/cart.svg);
     }
 
+    &--search {
+      background-image: url(../../../public/img/icons/search.svg);
+    }
+
     @include on-tablet {
       aspect-ratio: 1;
       width: auto;
@@ -119,15 +123,16 @@
   }
 
   &__button-counter {
-    position: absolute;
-    top: 10px;
-    right: 10px;
+    --counter-size: 14px;
 
-    display: none;
-    height: 14px;
+    position: absolute;
+    top: calc(50% - var(--counter-size));
+    right: calc(50% - var(--counter-size));
+
+    height: var(--counter-size);
     aspect-ratio: 1;
 
-    line-height: 14px;
+    line-height: var(--counter-size);
     text-align: center;
     font-size: 9px;
     color: $white;
@@ -137,7 +142,9 @@
     border-radius: 50%;
 
     @include on-tablet {
-      display: block;
+      top: 10px;
+      right: 10px;
+
     }
   }
 }

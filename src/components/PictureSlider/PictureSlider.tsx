@@ -80,7 +80,7 @@ export const PictureSlider = () => {
             )}
           >
             <li className="slider__item slider__item--page--1">
-              <Link className="slider__link" to="/phones">
+              <Link className="slider__link" to="/phones?query=iphone+14">
                 <div className="slider__text-block">
                   <h3
                     className="
@@ -113,7 +113,7 @@ export const PictureSlider = () => {
               </Link>
             </li>
             <li className="slider__item slider__item--page--3">
-              <Link className="slider__link" to="/">
+              <Link className="slider__link" to="/tablets?sort=price">
                 <div className="slider__text-block">
                   <h3 className="slider__item-title">Summer sale</h3>
                   <p className="slider__item-description"></p>

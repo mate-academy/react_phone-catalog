@@ -1,6 +1,6 @@
 # React Product Catalog
 
-[View ](https://io-med.github.io/react_phone-catalog/);
+[DEMO](https://io-med.github.io/react_phone-catalog/);
 
 Phone catalog with shopping cart and favorites page. Based on design:
 
@@ -11,4 +11,4 @@ Technologies:
 - React
 - TypeScript
 - Redux with toolkit
-- SCSS
+- SCSS with BEM naming
