@@ -2,9 +2,9 @@ import { Product } from '../types/Product';
 import { PhoneDetails } from '../types/Phone';
 
 export const URL_NEW
- = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/_new/products.json';
+ = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/new/products.json';
 export const detailsURL
- = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/_new/products/';
+ = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/new/products/';
 
 export const getProducts = <T>(url: string): Promise<T> => {
   return fetch(url)

@@ -2,7 +2,7 @@ import './ProductPage.scss';
 import { Product } from '../../types/Product';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { Loader } from '../../components/Loader/Loader';
-import { NoResults } from '../../components/NoResult/NoResult';
+import { NoSearchResults } from '../../components/NoResult/NoSearchResults';
 import { ProductsList } from '../../components/ProductList/ProductList';
 
 type Props = {
@@ -18,7 +18,6 @@ export const ProductPage: React.FC<Props> = ({
   isError,
   products,
   title,
-  category,
 }) => {
   return (
     <section className="products-page">
@@ -38,12 +37,9 @@ export const ProductPage: React.FC<Props> = ({
                 {!isLoading && !isError && <ProductsList products={products} />}
               </>
             ) : (
-              <NoResults category={category} />
+              <NoSearchResults />
             )}
           </>
-        )}
-        {isError && !isLoading && (
-          <p>{`Cannot find a ${category} for you, try it later...`}</p>
         )}
       </div>
     </section>

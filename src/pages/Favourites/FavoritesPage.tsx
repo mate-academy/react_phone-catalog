@@ -4,7 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { FavouritesContext } from '../../contexts/favoritesContext';
 import { SearchTypes } from '../../types/SearchTypes';
-import { NoSearchResults } from '../NoSearchResults/NoSearchResults';
+import { NoSearchResults } from '../../components/NoResult/NoSearchResults';
 import { ProductsList } from '../../components/ProductList/ProductList';
 
 import './favoritesPage.scss';

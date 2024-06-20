@@ -22,6 +22,10 @@
     top: 60px;
     left: 60px;
     transition: all 0.3s ease-in-out;
+
+    &--phone {
+      width: 90%;
+    }
   }
 
   &__bg {
@@ -39,10 +43,10 @@
     }
 
     &--phone {
-      background-color: #f8d1b3;
+      background-color: #b9a2d5;
 
       &:hover {
-        background-color: #f8d1b3;
+        background-color: #9664d3;
       }
 
     }
@@ -78,17 +82,17 @@
         transition: all 0.3s ease-in-out;
       }
     }
-  }
 
-  &__name {
-    margin-bottom: 4px;
-  }
+    &__name {
+      margin-bottom: 4px;
+    }
 
-  &__count {
-    font-family: $font-semibold;
-    font-size: 14px;
-    line-height: 18px;
-    letter-spacing: 0.02em;
-    color: $grey-secondary-color;
+    &__count {
+      font-family: $font-semibold;
+      font-size: 14px;
+      line-height: 18px;
+      letter-spacing: 0.02em;
+      color: $grey-secondary-color;
+    }
   }
 }

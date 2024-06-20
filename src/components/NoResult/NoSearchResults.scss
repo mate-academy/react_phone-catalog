@@ -1,0 +1,32 @@
+@import "../../style-utils/mixins.scss";
+
+.no-search-result {
+  display: flex;
+
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  flex-grow: 1;
+  gap: 8px;
+
+  &__title {
+    @include h2Text;
+    text-align: center;
+  }
+
+  &__description {
+    @include bodyText;
+    text-align: center;
+  }
+
+  &__image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin: 60px auto;
+    text-align: center;
+  }
+}

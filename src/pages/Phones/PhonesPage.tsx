@@ -31,14 +31,12 @@ export const PhonesPage = () => {
   }, []);
 
   return (
-    <section className="phones">
-      <ProductPage
-        products={phones}
-        title="Mobile phones"
-        isError={isError}
-        isLoading={isLoading}
-        category={ProductType.Phone}
-      />
-    </section>
+    <ProductPage
+      products={phones}
+      title="Mobile phones"
+      isError={isError}
+      isLoading={isLoading}
+      category={ProductType.Phone}
+    />
   );
 };

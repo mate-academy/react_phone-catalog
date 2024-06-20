@@ -33,4 +33,14 @@
     display: flex;
     align-items: center;
   }
+
+  &__image {
+    width: 40%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin: 60px auto;
+    text-align: center;
+  }
 }

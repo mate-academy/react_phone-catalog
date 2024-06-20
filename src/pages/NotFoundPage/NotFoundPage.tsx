@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import './NotFoundPage.scss';
+import PageNotFound from '../../Images/NotFound/page-not-found.png';
 
 export const NotFoundPage:React.FC = () => {
   return (
@@ -11,6 +12,12 @@ export const NotFoundPage:React.FC = () => {
       <p className="no-page__description">
         Seems like page you are looking for does&#x27;t exist
       </p>
+
+      <img
+        className="no-page__image"
+        src={PageNotFound}
+        alt="not-found-product"
+      />
 
       <Link
         to="/"

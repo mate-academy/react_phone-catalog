@@ -141,6 +141,16 @@
     color: $grey-secondary-color;
     text-align: center;
   }
+  
+  &__empty-image {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin: 60px auto;
+    text-align: center;
+  }
 }
 
 .checkout-message-fade {

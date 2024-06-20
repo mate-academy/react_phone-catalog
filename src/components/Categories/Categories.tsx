@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { Product, ProductType } from '../../types/Product';
 
 import './Categories.scss';
-import phoneBaner from '../../Images/Categories/phoneBaner.png';
+import phoneBaner from '../../Images/Categories/category-phones.png';
 import tabletsBaner from '../../Images/Categories/tabletBaner.png';
 import accessoriesBaner from '../../Images/Categories/accessoryBanner.png';
 
@@ -23,7 +23,11 @@ export const Categories: React.FC<Props> = ({ products }) => {
       <div className="category__container">
         <Link to="/phones" className="category__phone">
           <div className="category__bg category__bg--phone">
-            <img className="category__img" src={phoneBaner} alt="phone" />
+            <img
+              className="category__img category__img--phone"
+              src={phoneBaner}
+              alt="phone"
+            />
           </div>
           <h3 className="category__name">Mobile phones</h3>
           <div className="category__count">
@@ -35,7 +39,11 @@ export const Categories: React.FC<Props> = ({ products }) => {
 
         <Link to="/tablets" className="category__tablets">
           <div className="category__bg category__bg--tablets">
-            <img className="category__img" src={tabletsBaner} alt="tablets" />
+            <img
+              className="category__img"
+              src={tabletsBaner}
+              alt="tablets"
+            />
           </div>
           <h3 className="category__name">Tablets</h3>
           <div className="category__count">

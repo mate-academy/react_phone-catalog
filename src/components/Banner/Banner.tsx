@@ -3,7 +3,7 @@ import './Banner.scss';
 import classNames from 'classnames';
 
 import banner1 from '../../Images/Banner/banner-phones.png';
-import banner2 from '../../Images/Banner/banner-tablets.png';
+import banner2 from '../../Images/Banner/ipad-new.png';
 import banner3 from '../../Images/Banner/banner-accessories.png';
 
 export const Banner = () => {

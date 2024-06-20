@@ -9,6 +9,7 @@ import {
   NotificationContext,
   NotificationStatus,
 } from '../../contexts/notificationContext';
+import CartIsEmptyImage from '../../Images/NotFound/cart-is-empty.png';
 
 import './CartPage.scss';
 
@@ -148,6 +149,11 @@ export const CartPage: React.FC = () => {
           <p className="cart-page__empty-description">
             You can always fill it with our products :&#41;
           </p>
+          <img
+            className="cart-page__empty-image"
+            src={CartIsEmptyImage}
+            alt="empty cart"
+          />
         </div>
       )}
     </div>
