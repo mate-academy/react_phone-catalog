@@ -6,7 +6,7 @@ import { Container } from './components/Container/Container';
 import { Notification } from './components/Notification/Notification';
 // import { Modal } from './components/Modal';
 // import { ContactForm } from './components/ContactForm';
-// import { Footer } from './components/Footer';
+import { Footer } from './components/Footer/Footer';
 
 const App = () => {
   return (
@@ -23,7 +23,7 @@ const App = () => {
         <ContactForm />
       </Modal> */}
 
-      {/* <Footer /> */}
+      <Footer />
     </div>
   );
 };

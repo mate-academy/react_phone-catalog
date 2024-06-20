@@ -28,7 +28,7 @@
     @include logo;
 
     &:hover {
-      transform: scale(1.2);
+      transform: scale(1.1);
       transition: transform 0.3s ease;
     }
   }
@@ -99,14 +99,12 @@
 
   &__link {
     color: $grey-light-color;
-    font-family: $basic-font;
-    font-weight: 800;
     font-size: 12px;
     line-height: 11px;
     text-decoration: none;
     cursor: pointer;
     text-transform: uppercase;
-    padding: 26px 0;
+    padding: 27px 0;
     margin-left: 64px;
     position: relative;
     transition: color 0.5s;
