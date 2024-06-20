@@ -12,6 +12,10 @@
     "ram": "RAM",
     "shopByCategory": "Shop by category",
     "mobilePhones": "Mobile Phones",
-    "hotPrices": "Hot prices"
+    "hotPrices": "Hot prices",
+    "contacts": "Contacts",
+    "rights": "Rights",
+    "backToTop": "Back to top",
+    "models": "models"
   }
 }

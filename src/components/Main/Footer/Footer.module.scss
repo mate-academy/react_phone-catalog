@@ -1,35 +1,71 @@
 @use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/_mixins.scss';
 .footer {
-  display: flex;
-  border-top: $border-color 1px solid;
   height: 96px;
-  padding-inline: 32px;
-  &__container {
-    max-width: 1136px;
-    // margin: 0 auto;
-  }
+  border-top: $border-color 1px solid;
 
-  &__navFooter {
+  &__container {
     display: flex;
     align-items: center;
-  }
-
-  &__navList {
-    display: flex;
+    height: 100%;
+    max-width: 1136px;
+    margin: 0 auto;
+    padding-inline: 32px;
     justify-content: space-between;
-    list-style: none;
-    width: 100%;
   }
 
-  &__navItem {
-    text-transform: uppercase;
-
+  &__logoLink {
+    height: 32px;
+    width: 89px;
   }
 
   &__navLink {
-    line-height: 11px;
-    font-size: 12px;
+    display: flex;
+    white-space: nowrap;
     text-decoration: none;
+    color: $textFooterColor;
+    text-transform: uppercase;
+  }
+
+  &__navBlock {
+    display: flex;
+    width: 50%;
+    justify-content: space-around;
+  }
+
+  &__navLinkMod {
     color: $text-nav-color;
+    text-transform: none;
+    line-height: 15px;
+    font-weight: 700;
+  }
+
+  &__arrowUpImg {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrowUpLink {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-color: $background-color;
+    width: 32px;
+    height: 32px;
+    border: $border-color 1px solid;
+
+    &:hover {
+      @extend %lightThemeHoverButton;
+    }
+
+    .footer__darkTheme &:hover {
+      @extend %darkThemeHoverButton;
+    }
+  }
+
+  &__upNav {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
   }
 }

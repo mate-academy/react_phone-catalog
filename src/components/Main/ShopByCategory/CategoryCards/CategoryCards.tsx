@@ -24,7 +24,7 @@ export const CategoryCards = () => {
             <a href="#" className={style.category__cardName}>
               {t(photo.title)}
             </a>
-            <p className={style.category__cardQuantity}>{items[i]} models</p>
+            <p className={style.category__cardQuantity}>{items[i]} {t('models')}</p>
           </div>
         ))}
       </div>

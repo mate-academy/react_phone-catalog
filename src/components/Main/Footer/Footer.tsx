@@ -1,31 +1,51 @@
+import classNames from 'classnames';
 import { Logo } from '../../Logos/Logo';
 import style from './Footer.module.scss';
+import { ArrowUp } from '../../Logos/ArrowUp';
+import { useContext } from 'react';
+import { LanguageContext } from '../../../store/LanguageProvider';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 export const Footer = () => {
+  const { t } = useContext(LanguageContext);
+  const { theme } = useContext(ThemeContext);
   return (
-    <footer className={style.footer}>
+    <footer
+      className={classNames(style.footer, {
+        [style.footer__darkTheme]: theme,
+      })}
+    >
       <div className={style.footer__container}>
-        <nav className={style.footer__navFooter}>
+        <a href="#" className={style.footer__navLink}>
+          <Logo className={style.footer__logoLink} />
+        </a>
+
+        <nav className={style.footer__navBlock}>
           <a href="#" className={style.footer__navLink}>
-            <Logo />
+            Github
           </a>
-
-          <div className={style.footer__navList}>
-            <a href="#" className={style.footer__navLink}>
-              Github
-            </a>
-            <a href="#" className={style.footer__navLink}>
-              Contacts
-            </a>
-            <a href="#" className={style.footer__navLink}>
-              Rights
-            </a>
-          </div>
-
           <a href="#" className={style.footer__navLink}>
-            Back to top
+            {t('contacts')}
+          </a>
+          <a href="#" className={style.footer__navLink}>
+            {t('rights')}
           </a>
         </nav>
+
+        <div className={style.footer__upNav}>
+          <a
+            href="#"
+            className={classNames(
+              style.footer__navLink,
+              style.footer__navLinkMod,
+            )}
+          >
+            {t('backToTop')}
+          </a>
+          <a href="#" className={style.footer__arrowUpLink}>
+            <ArrowUp className={style.footer__arrowUpImg} />
+          </a>
+        </div>
       </div>
     </footer>
   );

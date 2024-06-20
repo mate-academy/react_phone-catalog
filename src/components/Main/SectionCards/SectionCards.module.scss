@@ -39,7 +39,7 @@
       @extend %lightThemeHoverButton;
     }
 
-    .brandNewModels__darkTheme &:hover {
+    .sectionCards__darkTheme &:hover {
       @extend %darkThemeHoverButton;
     }
   }
