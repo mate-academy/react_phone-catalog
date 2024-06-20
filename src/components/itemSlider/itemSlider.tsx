@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import Styles from './itemSlider.module.scss';
 import { Item } from '../../types/Item';
 import { getNumber } from '../../functions/getNumber';
@@ -20,6 +20,29 @@ export const ItemSlider: React.FC<Props> = ({
   const [active, setActive] = useState(0);
   const [copyProducts, setCopyProducts] = useState<Item[]>([...list]);
   const [productsTotalNumber, setProductsTotalNumber] = useState(list.length);
+  const startTouch = useRef<number>(0);
+  const endTouch = useRef<number>(0);
+
+  const handlerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
+    startTouch.current = e.touches[0].clientX;
+  };
+
+  const handlerTouchMove = (e: React.TouchEvent<HTMLDivElement>) => {
+    endTouch.current = e.touches[0].clientX;
+  };
+
+  const handlerTouchEnd = () => {
+    if (startTouch.current - endTouch.current > 40) {
+      setActive(prevState => (prevState + 1) % productsTotalNumber);
+    }
+
+    if (startTouch.current - endTouch.current < -40) {
+      setActive(
+        prevState =>
+          (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+      );
+    }
+  };
 
   useEffect(() => {
     if (showRandom) {
@@ -67,6 +90,9 @@ export const ItemSlider: React.FC<Props> = ({
         </div>
 
         <div
+          onTouchStart={handlerTouchStart}
+          onTouchEnd={handlerTouchEnd}
+          onTouchMove={handlerTouchMove}
           style={{
             transform: `translateX(-${active * 303}px)`,
             transition: 'transform 0.5s ease-in-out',

@@ -42,7 +42,7 @@ export const Details: React.FC<Props> = ({ list }) => {
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
 
-  const { fav, cart,  handleAddCart, handleAddFav } = useContext(ContextApp);
+  const { fav, cart, handleAddCart, handleAddFav } = useContext(ContextApp);
 
   useEffect(() => {
     setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`);
@@ -231,14 +231,16 @@ export const Details: React.FC<Props> = ({ list }) => {
             <div className={Styles.card__price__container}>
               <div
                 onClick={() => handleAddCart(product)}
-                className={cn(Styles.card__price__add,{
-                  [Styles.card__price__add__added]: cart.includes(product)
+                className={cn(Styles.card__price__add, {
+                  [Styles.card__price__add__added]: cart.find(
+                    item => item.id === product.id,
+                  ),
                 })}
               ></div>
               <div
                 onClick={() => handleAddFav(product)}
-                className={cn(Styles.card__price__fav,{
-                  [Styles.card__price__fav__selected]: fav.includes(product)
+                className={cn(Styles.card__price__fav, {
+                  [Styles.card__price__fav__selected]: fav.includes(product),
                 })}
               />
             </div>

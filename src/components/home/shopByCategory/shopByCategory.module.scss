@@ -19,21 +19,15 @@
     &__picture {
       height: 230px;
       margin-bottom: 24px;
+      border-radius: 20px;
+      border: 1px solid #E2E6E9;
 
-      &--products {
-        background-color: violet;
-      }
-
-      &--tablets {
-        background-color: greenyellow;
-      }
-
-      &--accessories {
-        background-color: chocolate;
+      &:hover {
+        box-shadow:
+          3px 3px 3px #89939A,
+          6px 6px 3px #E2E6E9;
       }
     }
-
-
 
     &__title {
       font-family: 'Montserrat', sans-serif;

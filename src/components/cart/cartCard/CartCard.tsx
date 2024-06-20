@@ -1,32 +1,62 @@
 import { useContext, useEffect, useState } from 'react';
 import Styles from './CardCart.module.scss';
 import { ContextApp } from '../../../appContext/AppContext';
-import { Item } from '../../../types/Item';
-
-type ItemWithQuantity = Item & { quantity: number };
+import { ItemWithQuantity } from '../../../types/ItemWithQuantity';
 
 type Props = {
   product: ItemWithQuantity;
+  setTotalPrice: React.Dispatch<React.SetStateAction<number>>;
+  setTotalQuantity: React.Dispatch<React.SetStateAction<number>>;
 };
 
-export const CartCard: React.FC<Props> = ({ product }) => {
+export const CartCard: React.FC<Props> = ({
+  product,
+  setTotalQuantity,
+  setTotalPrice,
+}) => {
   const { setCart } = useContext(ContextApp);
   const [quantity, setQuantity] = useState(product.quantity);
+  const [cardPrice, setCardPrice] = useState(quantity * product.priceDiscount);
 
   useEffect(() => {
+    setTotalPrice(prevState => prevState + cardPrice);
+    setTotalQuantity(prevState => prevState + quantity);
+  }, []);
+
+  useEffect(() => {
+    setTotalPrice(
+      prevState =>
+        prevState + product.priceDiscount * (quantity - product.quantity),
+    );
+  }, [cardPrice, quantity]);
+
+  useEffect(() => {
+    setTotalQuantity(prevState => prevState + quantity - product.quantity);
+
+    setCardPrice(quantity * product.priceDiscount);
+
     setCart(prevCart => {
       const newCart = prevCart.map(item =>
-        item.id === product.id ? { ...item, quantity: quantity } : item
+        item.id === product.id ? { ...item, quantity: quantity } : item,
       );
-      
+
       localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     });
-  }, [quantity, setCart, product.id]);
+  }, [quantity]);
 
   const handleClose = (id: string) => {
     setCart(prev => {
+      const itemToRemove = prev.find(item => item.id === id);
       const newCart = prev.filter(item => item.id !== id);
+
+      if (itemToRemove) {
+        setTotalPrice(
+          prevState =>
+            prevState - itemToRemove.quantity * itemToRemove.priceDiscount,
+        );
+        setTotalQuantity(prevState => prevState - itemToRemove.quantity);
+      }
 
       localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
@@ -42,48 +72,45 @@ export const CartCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <div className={Styles.cart}>
-      <div className={Styles.cart__product}>
+    <div className={Styles.cartCard}>
+      <div className={Styles.cartCard__product}>
         <img
           onClick={() => handleClose(product.id)}
-          className={Styles.cart__product__closeButton}
+          className={Styles.cartCard__product__closeButton}
           src=".\img\svg\close.svg"
           alt="close button"
         />
 
         <img
-          className={Styles.cart__product__img}
+          className={Styles.cartCard__product__img}
           src={`./${product.images[0]}`}
           alt="product image"
         />
 
-        <p className={Styles.cart__product__paragraph}>{product.id}</p>
+        <p className={Styles.cartCard__product__paragraph}>{product.id}</p>
       </div>
 
-      <div className={Styles.cart__container}>
-        <div className={Styles.cart__container__quantity}>
+      <div className={Styles.cartCard__container}>
+        <div className={Styles.cartCard__container__quantity}>
           <div
             onClick={handleIncrease}
-            className={Styles.cart__container__quantity__plus}
+            className={Styles.cartCard__container__quantity__item}
           >
             +
           </div>
-          <p className={Styles.cart__container__quantity__number}>{quantity}</p>
+          <div className={Styles.cartCard__container__quantity__item}>
+            {quantity}
+          </div>
           <div
             onClick={handleDecrease}
-            className={Styles.cart__container__quantity__plus}
+            className={Styles.cartCard__container__quantity__item}
           >
             -
           </div>
         </div>
 
-        <p className={Styles.cart__total_price}>
-          {' '}
-          {`$${quantity * product.priceDiscount}`}
-        </p>
+        <div className={Styles.cartCard__container__price}>${cardPrice}</div>
       </div>
-
-      <div className={Styles.cart_container}></div>
     </div>
   );
 };

@@ -30,9 +30,9 @@ type AppContextProps = {
   setPhonesTotalNumber: React.Dispatch<React.SetStateAction<number>>;
   setProductsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
   setTabletsTotalNumber: React.Dispatch<React.SetStateAction<number>>;
-  cart: Item[];
+  cart: ItemWithQuantity[];
   fav: Item[];
-  setCart: React.Dispatch<React.SetStateAction<Item[]>>;
+  setCart: React.Dispatch<React.SetStateAction<ItemWithQuantity[]>>;
   setFav: React.Dispatch<React.SetStateAction<Item[]>>;
   handleAddFav: (newItem: Item) => void;
   handleAddCart: (newItem: Item) => void;
@@ -60,7 +60,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
 
-  const [cart, setCart] = useState<Item[]>(() => {
+  const [cart, setCart] = useState<ItemWithQuantity[]>(() => {
     const cart = localStorage.getItem('cart');
 
     return cart ? JSON.parse(cart) : [];
