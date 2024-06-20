@@ -23,8 +23,6 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
     }
   }, [theme]);
 
-  console.log(theme);
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
