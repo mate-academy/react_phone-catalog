@@ -48,14 +48,13 @@ export const Footer = () => {
       </nav>
 
       <div className="footer__back-to-top">
+        <span className="footer__back-to-top">Back to top</span>
         <button
           type="button"
           onClick={backToUp}
-          className="footer__back-to-top"
+          className="footer__back-to-top--icon"
           aria-label="Back to top"
-        >
-          Back to top
-        </button>
+        />
       </div>
     </footer>
   );
