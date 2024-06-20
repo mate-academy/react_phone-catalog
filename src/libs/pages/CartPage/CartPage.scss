@@ -1,0 +1,49 @@
+@import '/src/assets/css/styles';
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 16px;
+
+  @include on-mobile {
+    padding-top: 0;
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+
+    @include on-mobile {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 32px;
+      max-width: 592px;
+      margin: 0 auto;
+    }
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    width: 100%;
+    max-width: 752px;
+  }
+}

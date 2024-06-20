@@ -1,0 +1,10 @@
+import { IProduct, ProductCategory } from '../types';
+import { client } from '../utils/fetchClient';
+
+export const getTablets = async () => {
+  const products = await client.get<IProduct[]>('products.json');
+
+  return products.filter(
+    product => product.category === ProductCategory.Tablets,
+  );
+};

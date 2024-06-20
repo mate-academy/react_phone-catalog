@@ -1,0 +1,62 @@
+@import '/src/assets/css/styles';
+
+.modal {
+  @include flexbox-center;
+  @include transition;
+
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  height: 100vh;
+  background-color: $modal-background;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+
+  &--active {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  @include on-mobile {
+    padding-inline: 20px;
+  }
+
+  &__content {
+    @include flexbox-center;
+
+    flex-direction: column;
+    gap: 30px;
+    height: 25vh;
+    width: 40vw;
+    padding: 20px;
+    background-color: $white;
+    border-radius: 12px;
+
+    @include on-mobile {
+      width: 100%;
+    }
+  }
+
+  &__text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  &__button {
+    @include flexbox-center;
+
+    width: 100%;
+    max-width: 320px;
+    height: 48px;
+    background-color: $primary;
+    font-weight: 600;
+    font-size: $body-font-size;
+    color: $white;
+
+    &:active {
+      @include button-active;
+    }
+  }
+}

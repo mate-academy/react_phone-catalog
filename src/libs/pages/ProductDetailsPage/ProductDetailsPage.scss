@@ -1,0 +1,59 @@
+@import '/src/assets/css/styles';
+
+.product-page {
+  width: 100%;
+
+  &__small-nav {
+    margin-bottom: 40px;
+
+    @include on-mobile {
+      margin-bottom: 24px;
+    }
+  }
+
+  &__back-button {
+    margin-bottom: 16px;
+  }
+
+
+  &__basic-info {
+    display: grid;
+    grid-template-columns: 560px 512px;
+    gap: 64px;
+    margin-bottom: 80px;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      margin-bottom: 56px;
+    }
+
+    @include on-tablet {
+      grid-template-columns: 1.4fr 1fr;
+      gap: 17px;
+      margin-bottom: 64px;
+    }
+  }
+
+  &__detailed-info {
+    display: grid;
+    grid-template-columns: 560px 512px;
+    gap: 64px;
+    height: max-content;
+    margin-bottom: 80px;
+
+    @include on-mobile {
+      display: flex;
+      flex-direction: column;
+      gap: 56px;
+    }
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: column;
+      gap: 64px;
+    }
+  }
+}
+

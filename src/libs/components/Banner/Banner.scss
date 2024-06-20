@@ -1,0 +1,126 @@
+@import '/src/assets/css/styles';
+
+.banner-container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+
+  &__slider {
+    margin-bottom: 8px;
+  }
+}
+
+.slider {
+  display: flex;
+  gap: 16px;
+
+  @include on-mobile {
+    min-height: 320px;
+    height: 320px;
+  }
+
+
+  &__button {
+    @include transition;
+    @include button-border-on-hover;
+
+    width: 32px;
+    min-width: 32px;
+    border: 1px solid $icons;
+
+    @include on-mobile {
+      display: none;
+    }
+  }
+
+  &__button-icon path{
+    fill: $primary
+  }
+
+  &__banner-container {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    @include on-mobile {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 130px;
+      min-height: 320px;
+      height: 320px;
+    }
+  }
+
+  &__banner-list {
+    display: flex;
+    flex-grow: 1;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    @include on-mobile {
+      touch-action: pan-y;
+    }
+
+    @include on-tablet {
+      touch-action: pan-y;
+    }
+  }
+
+  &__banner-item {
+    display: flex;
+    width: 100%;
+    flex: 1 0 100%;
+  }
+
+  &__banner-link {
+    width: 100%;
+    text-decoration: none;
+  }
+
+
+  &__banner-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    aspect-ratio: 2.6 / 1;
+
+    @include on-mobile {
+      object-position: top;
+      aspect-ratio: 1 / 1;
+    }
+
+    @include on-tablet {
+      aspect-ratio: 2.5 / 1;
+    }
+  }
+}
+
+.pagination {
+  @include flexbox-center;
+
+  gap: 14px;
+  height: 24px;
+
+  &__part {
+    width: 14px;
+    height: 4px;
+    background-color: $elements;
+
+    &--active {
+      background-color: $primary;
+    }
+
+    @include on-mobile {
+      width: 18px;
+      height: 8px;
+    }
+
+    @include on-tablet {
+      width: 18px;
+      height: 8px;
+    }
+  }
+}
