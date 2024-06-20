@@ -15,11 +15,11 @@ const ThemeProvider: React.FC<Props> = ({ children }) => {
 
   useEffect(() => {
     if (theme) {
-      document.body.classList.remove('light');
-      document.body.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      document.documentElement.classList.add('dark');
     } else {
-      document.body.classList.remove('dark');
-      document.body.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      document.documentElement.classList.add('light');
     }
   }, [theme]);
 
