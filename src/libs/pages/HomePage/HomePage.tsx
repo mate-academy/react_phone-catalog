@@ -66,7 +66,7 @@ export const HomePage = () => {
       </h1>
 
       {!hasErrorMessage && (
-        <h1 className="home__title">Welcome to Nice Gadgets store!</h1>
+        <h2 className="home__title">Welcome to Nice Gadgets store!</h2>
       )}
 
       {!hasErrorMessage && <Banner classNames="home__banner" />}
