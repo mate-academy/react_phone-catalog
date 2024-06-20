@@ -18,14 +18,13 @@ export const Footer = () => {
       })}
     >
       <nav className={style.footer__navContainer}>
-
         <a href="#" className={style.footer__logoLink}>
           <Logo className={style.footer__logoImage} />
         </a>
 
         <ul className={style.footer__navList}>
           {footerNavList.map(item => (
-            <li className={style.footer__navItem}>
+            <li className={style.footer__navItem} key={item}>
               <a href="#" className={style.footer__navLink}>
                 {item}
               </a>
@@ -34,12 +33,7 @@ export const Footer = () => {
         </ul>
 
         <div className={style.footer__upNav}>
-          <a
-            href="#"
-            className={classNames(
-              style.footer__navLinkMod,
-            )}
-          >
+          <a href="#" className={classNames(style.footer__upLink)}>
             {t('backToTop')}
           </a>
           <a href="#" className={style.footer__arrowUpLink}>
