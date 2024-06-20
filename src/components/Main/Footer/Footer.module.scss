@@ -14,7 +14,12 @@
     justify-content: space-between;
   }
 
+
   &__logoLink {
+    display: flex;
+  }
+
+  &__logoImage {
     height: 32px;
     width: 89px;
   }
@@ -25,6 +30,11 @@
     text-decoration: none;
     color: $textFooterColor;
     text-transform: uppercase;
+    @include onScale;
+
+    &:hover {
+      @extend %transitionPage;
+    }
   }
 
   &__navBlock {
@@ -67,5 +77,28 @@
     display: flex;
     align-items: center;
     column-gap: 16px;
+  }
+}
+
+@include onPhone {
+  .footer {
+    height: 257px;
+    &__container {
+      flex-direction: column;
+      align-items: start;
+      padding: 32px 16px;
+    }
+
+    &__navBlock {
+      flex-direction: column;
+      gap: 16px;
+      padding-block: 32px;
+    }
+
+    &__upNav {
+      width: 100%;
+      align-items: center;
+      justify-content: center;
+    }
   }
 }

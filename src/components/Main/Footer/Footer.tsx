@@ -9,6 +9,7 @@ import { ThemeContext } from '../../../store/ThemeProvider';
 export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
+
   return (
     <footer
       className={classNames(style.footer, {
@@ -16,13 +17,13 @@ export const Footer = () => {
       })}
     >
       <div className={style.footer__container}>
-        <a href="#" className={style.footer__navLink}>
-          <Logo className={style.footer__logoLink} />
+        <a href="#" className={style.footer__logoLink}>
+          <Logo className={style.footer__logoImage} />
         </a>
 
         <nav className={style.footer__navBlock}>
           <a href="#" className={style.footer__navLink}>
-            Github
+            {t('gitHub')}
           </a>
           <a href="#" className={style.footer__navLink}>
             {t('contacts')}
