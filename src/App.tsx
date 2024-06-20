@@ -1,16 +1,16 @@
 import { Header } from './components/Header/Header';
 import { AsideMenu } from './components/AsideMenu';
-import { useContext } from 'react';
-import { ThemeContext } from './store/ThemeProvider';
-import cn from 'classnames';
+// import { useContext } from 'react';
+// import { ThemeContext } from './store/ThemeProvider';
+// import cn from 'classnames';
 import { Main } from './components/Main/Main';
 import { Footer } from './components/Main/Footer/Footer';
 
 export const App = () => {
-  const { theme } = useContext(ThemeContext);
+  // const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={cn('light', { dark: theme })}>
+    <div>
       <Header />
       <AsideMenu />
       <Main />
