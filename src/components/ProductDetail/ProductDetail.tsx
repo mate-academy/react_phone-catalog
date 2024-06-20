@@ -1,5 +1,5 @@
 /* eslint-disable no-console */
-import React, { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './ProductDetail.module.scss';
 import { Link, useParams } from 'react-router-dom';
 import { ProductContext } from '../../context/ProductContext';
@@ -14,11 +14,11 @@ import { ProductControls } from '../ProductControls';
 import { Loader } from '../Loader';
 import { ProductSlider } from '../ProductSlider';
 
-interface Props {
+interface ProductDetailProps {
   category: string;
 }
 
-const ProductDetail: React.FC<Props> = ({ category }) => {
+const ProductDetail: React.FC<ProductDetailProps> = ({ category }) => {
   const { productId } = useParams<{ productId: string }>();
   const {
     allProducts,
@@ -29,8 +29,9 @@ const ProductDetail: React.FC<Props> = ({ category }) => {
     error,
     suggestedProducts,
   } = useContext(ProductContext);
+
   const matchProduct = allProducts.find(
-    product => product.itemId === productId,
+    product => product.itemId === productId && product.category === category,
   );
 
   const [detailedProduct, setDetailedProduct] = useState<ProductDetails | null>(
@@ -45,8 +46,7 @@ const ProductDetail: React.FC<Props> = ({ category }) => {
           if (productId && matchProduct) {
             const detaileProduct = await getProductDetail(
               productId,
-              category,
-              // matchProduct.category,
+              matchProduct.category,
             );
 
             setDetailedProduct(detaileProduct);
@@ -65,7 +65,7 @@ const ProductDetail: React.FC<Props> = ({ category }) => {
     if (productId) {
       fetchProduct();
     }
-  }, [productId, matchProduct, setLoading, setError, error, category]);
+  }, [productId, matchProduct, setLoading, setError, error]);
 
   if (loading || !detailedProduct || !matchProduct) {
     return <Loader />;
@@ -83,7 +83,6 @@ const ProductDetail: React.FC<Props> = ({ category }) => {
 
   return (
     <section className={styles.container}>
-      {category}
       <Breadcrumbs />
       <Link to="/" className={styles.goBackButton}>
         <img

@@ -29,27 +29,29 @@
 }
 
 .categories {
-  display: flex;
-  flex-direction: column;
   padding-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
 
   @include on-tablet {
-    flex-direction: row;
+    grid-template-columns: repeat(3, 1fr);
     justify-content: space-between;
+    gap: 16px;
   }
 }
 
 .category {
   display: block;
-  width: 288px;
-  height: 288px;
+  width: 100%;
+  min-height: 288px;
   padding-block: 24px;
   position: relative;
   overflow: hidden;
+  padding-bottom: 100%;
 
   @include on-tablet {
-    width: 187px;
-    height: 187px;
+    min-width: 187px;
+    padding-bottom: 100%;
   }
 
   @include on-desktop {
@@ -58,11 +60,33 @@
   }
 }
 
+// .category {
+//   display: block;
+//   min-width: 288px;
+//   min-height: 288px;
+//   padding-block: 24px;
+//   position: relative;
+//   overflow: hidden;
+//   width: 100%;
+//   padding-bottom: 100%;
+
+//   @include on-tablet {
+//     width: 187px;
+//     height: 187px;
+//   }
+
+//   @include on-desktop {
+//     width: 368px;
+//     height: 368px;
+//   }
+// }
+
+
 .image {
   position: absolute;
   object-fit: contain;
-  left: 0;
-  top: 0;
+  left: -10px;
+  top: -20px;
 }
 
 .subtitle {
@@ -80,7 +104,7 @@
 
 .count {
   @include body-text;
-  
+
   color: var(--color-secondary);
 
   margin-bottom: 32px;

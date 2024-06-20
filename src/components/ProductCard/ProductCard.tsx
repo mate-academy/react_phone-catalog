@@ -10,12 +10,13 @@ interface Props {
 }
 
 const ProductCard: React.FC<Props> = ({ product }) => {
-  const { image, name, fullPrice, price, screen, capacity, ram } = product;
+  const { image, name, fullPrice, price, screen, capacity, ram, category } =
+    product;
 
   return (
     <div className={styles.ProductCard}>
       <Link
-        to={`/products/${product.itemId}`}
+        to={`/${category}/${product.itemId}`}
         className={styles.imageContainer}
       >
         <img
@@ -26,7 +27,7 @@ const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className={styles.wrapper}>
-        <Link to={`/products/${product.itemId}`} className={styles.title}>
+        <Link to={`/${category}/${product.itemId}`} className={styles.title}>
           {name}
         </Link>
 

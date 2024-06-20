@@ -6,7 +6,7 @@
 
   @include on-tablet {
     padding-inline: 24px;
-    
+
     @include section-grid;
 
     padding-top: 32px;
@@ -34,7 +34,6 @@
 
   @include on-desktop {
     height: 432px;
-    justify-content: center;
   }
 }
 

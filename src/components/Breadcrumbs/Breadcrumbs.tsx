@@ -23,11 +23,12 @@ const Breadcrumbs = () => {
 
       let displayName = name.replace(/-/g, ' ');
 
+      // Check if it's a product ID and replace the name with product name if it is
       if (index === 1) {
         const product = allProducts.find(item => item.itemId === name);
 
         if (product) {
-          displayName = product.category;
+          displayName = product.name;
         }
       }
 

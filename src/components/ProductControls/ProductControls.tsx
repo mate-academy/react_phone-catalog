@@ -25,7 +25,7 @@ const ProductControls: React.FC<Props> = ({ productDetails, product }) => {
     );
 
     if (newProductId) {
-      navigate(`/products/${newProductId}`);
+      navigate(`/${productDetails.category}/${newProductId}`);
     }
   };
 

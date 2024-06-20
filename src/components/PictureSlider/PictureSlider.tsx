@@ -18,7 +18,7 @@ const PictureSlider = () => {
 
   const handlePrevClick = () => {
     setCurrentIndex(prevIndex =>
-      prevIndex === PicturesSliderMap.length - 1 ? 0 : +1,
+      prevIndex === 0 ? PicturesSliderMap.length - 1 : prevIndex - 1,
     );
   };
 
