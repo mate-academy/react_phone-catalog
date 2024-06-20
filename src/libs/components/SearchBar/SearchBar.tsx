@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 
 import cn from 'classnames';
-import { useEffect, useRef, useState } from 'react';
+import debounce from 'lodash.debounce';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 
 import { getSearchWith } from '../../utils';
@@ -25,7 +26,7 @@ export const SearchBar: React.FC<Props> = ({
   const formRef = useRef<HTMLFormElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
   const [searchParams, setSearchParams] = useSearchParams();
-  const [value, setValue] = useState(
+  const [query, setQuery] = useState(
     searchParams.get(SearchParamsNames.query) || '',
   );
   const inputRef = useRef<HTMLInputElement>(null);
@@ -42,34 +43,31 @@ export const SearchBar: React.FC<Props> = ({
     setSearchParams(newParams);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    handleSetParams(value);
-  };
+  const applyQuery = useCallback(debounce(handleSetParams, 1000), []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setValue(e.target.value);
+    setQuery(e.target.value);
+    applyQuery(e.target.value);
   };
 
   const handleReset = () => {
-    setValue('');
+    setQuery('');
     searchParams.delete(SearchParamsNames.query);
     setSearchParams(searchParams);
   };
 
   const handleButtonClick = () => {
-    if (!value) {
+    if (!query) {
       inputRef.current?.focus();
     }
 
-    if (value) {
+    if (query) {
       handleReset();
     }
   };
 
   const handleSmallScreenButtonClick = () => {
-    if (!value) {
+    if (!query) {
       onClick(!isInputExpanded);
     }
 
@@ -77,7 +75,7 @@ export const SearchBar: React.FC<Props> = ({
   };
 
   useEffect(() => {
-    setValue(searchParams.get(SearchParamsNames.query) || '');
+    setQuery(searchParams.get(SearchParamsNames.query) || '');
   }, [searchParams]);
 
   useEffect(() => {
@@ -106,14 +104,10 @@ export const SearchBar: React.FC<Props> = ({
   }, [onClick, isInputExpanded]);
 
   return (
-    <form
-      className={cn(classNames, 'search-bar')}
-      onSubmit={handleSubmit}
-      ref={formRef}
-    >
+    <form className={cn(classNames, 'search-bar')} ref={formRef}>
       <input
         type="text"
-        value={value}
+        value={query}
         className={cn('search-bar__input', {
           'search-bar__input--small-screen': !isInputExpanded,
         })}
@@ -129,9 +123,9 @@ export const SearchBar: React.FC<Props> = ({
         onClick={() => handleButtonClick()}
       >
         <Icon
-          iconName={!value ? 'search' : 'close'}
+          iconName={!query ? 'search' : 'close'}
           classNames="search-bar__icon"
-          data-cy={value && 'searchDelete'}
+          data-cy={query && 'searchDelete'}
         />
       </button>
 
@@ -143,9 +137,9 @@ export const SearchBar: React.FC<Props> = ({
         ref={buttonRef}
       >
         <Icon
-          iconName={!value ? 'search' : 'close'}
+          iconName={!query ? 'search' : 'close'}
           classNames="search-bar__icon"
-          data-cy={value && 'searchDelete'}
+          data-cy={query && 'searchDelete'}
         />
       </button>
     </form>
