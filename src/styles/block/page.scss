@@ -48,9 +48,9 @@ html {
   --text-items-color: #75767f;
   --textFooterColor: #F1F2F9;
   color: $text-color;
-  background-color: $background-color;
+
 }
 
 :root {
-  background-color: black;
+  background-color: $background-color;
 }
