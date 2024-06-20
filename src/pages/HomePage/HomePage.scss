@@ -1,6 +1,12 @@
 @import "../../style-utils/mixins";
 
 .home-page {
+  &__title {
+    @include h1Text;
+    font-size: 48px;
+    margin-bottom: 32px;
+  }
+
   &__section {
     margin-bottom: 80px;
       

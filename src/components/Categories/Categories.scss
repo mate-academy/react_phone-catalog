@@ -82,17 +82,18 @@
         transition: all 0.3s ease-in-out;
       }
     }
+  }
 
-    &__name {
-      margin-bottom: 4px;
-    }
+  &__name {
+    margin-bottom: 4px;
+  }
 
-    &__count {
-      font-family: $font-semibold;
-      font-size: 14px;
-      line-height: 18px;
-      letter-spacing: 0.02em;
-      color: $grey-secondary-color;
-    }
+  &__count {
+    font-family: $basic-font;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    letter-spacing: 0.02em;
+    color: $grey-secondary-color;
   }
 }

@@ -20,7 +20,7 @@
     margin-bottom: 4px;
     border: 1px solid $border-color;
     cursor: pointer;
-    font-family: $font-semibold;
+    font-family: $basic-font;
   }
 
   &__icon {
@@ -71,7 +71,7 @@
     font-style: normal;
     cursor: pointer;
     transition: all 0.3s;
-    font-family: $font-regular;
+    font-family: $basic-font;
 
     &:hover {
       background-color: $grey-background;

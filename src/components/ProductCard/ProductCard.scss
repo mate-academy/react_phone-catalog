@@ -26,6 +26,7 @@
     color: $grey-primery-color;
     font-size: 14px;
     font-style: normal;
+    font-family: $basic-font;
     font-weight: 500;
     line-height: 21px;
 
@@ -50,7 +51,7 @@
 
   &__price-regular {
     margin-right: 8px;
-    font-family: $font-bold;
+    font-family: $basic-font;
     font-size: 22px;
     color: $grey-primery-color;
   }
@@ -85,7 +86,7 @@
     margin-bottom: 8px;
     color: $grey-secondary-color;
     font-weight: 600;
-    font-family: $font-semibold;
+    font-family: $basic-font;
 
     &:last-child {
       margin-bottom: 0;
