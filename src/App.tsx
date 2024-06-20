@@ -10,7 +10,7 @@ export const App = () => {
   const { theme } = useContext(ThemeContext);
 
   return (
-    <div className={cn({ page: theme })}>
+    <div className={cn('light', { dark: theme })}>
       <Header />
       <AsideMenu />
       <Main />

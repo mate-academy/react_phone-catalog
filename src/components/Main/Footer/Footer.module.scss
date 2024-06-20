@@ -38,7 +38,6 @@
   &__navLink {
     display: flex;
     white-space: nowrap;
-    text-decoration: none;
     color: $textFooterColor;
     text-transform: uppercase;
 
@@ -55,7 +54,6 @@
 
   &__upLink {
     display: flex;
-    text-decoration: none;
     color: $text-nav-color;
     line-height: 15px;
     font-weight: 700;

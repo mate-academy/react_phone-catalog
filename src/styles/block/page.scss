@@ -6,9 +6,53 @@
   font-size: 12px;
   font-weight: 800;
   scroll-behavior: smooth;
+  text-decoration: none;
 }
 
-html {
+// html {
+//   --background-color: #fff;
+//   --text-color: #313237;
+//   --text-nav-color: #89939a;
+//   --border-color: #e2e6e9;
+//   --button-color: #fff;
+//   --button-slider-color: #e2e6e9;
+//   --button-active-slider-color: #313237;
+//   --text-phone-card-color: #89939a;
+//   --background-color-button-cart: #313237;
+//   --background-color-button-fav: #fff;
+//   --background-color-phoneCard: #fff;
+//   --background-color-phoneCardHover: #313237;
+//   --background-color-button-cart: #313237;
+//   --text-discount-color: #89939a;
+//   --text-items-color: #89939a;
+//   --textFooterColor: #89939A;
+//   scrollbar-gutter: stable;
+//   scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
+//   scrollbar-color: darkgray lightgray;
+//   // touch-action: none;
+// }
+
+// .page {
+//   --button-active-slider-color: #f1f2f9;
+//   --background-color: #0f1121;
+//   --text-color: #f1f2f9;
+//   --text-nav-color: #75767f;
+//   --border-color: #323542;
+//   --button-color: #323542;
+//   --button-slider-color: #3b3e4a;
+//   --text-phone-card-color: #75767f;
+//   --background-color-button-cart: #905bff;
+//   --background-color-button-fav: #323542;
+//   --background-color-phoneCard: #161827;
+//   --background-color-phoneCardHover: #a378ff;
+//   --text-discount-color: #75767f;
+//   --text-items-color: #75767f;
+//   --textFooterColor: #F1F2F9;
+//   color: $text-color;
+//   background-color: $background-color;
+// }
+
+.light {
   --background-color: #fff;
   --text-color: #313237;
   --text-nav-color: #89939a;
@@ -31,7 +75,7 @@ html {
   // touch-action: none;
 }
 
-.page {
+.dark {
   --button-active-slider-color: #f1f2f9;
   --background-color: #0f1121;
   --text-color: #f1f2f9;
@@ -48,9 +92,5 @@ html {
   --text-items-color: #75767f;
   --textFooterColor: #F1F2F9;
   color: $text-color;
-
-}
-
-:root {
   background-color: $background-color;
 }
