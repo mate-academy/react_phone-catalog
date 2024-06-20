@@ -1,0 +1,13 @@
+@import '../../variable.scss';
+
+.Wrapper {
+  display: flex;
+  column-gap: 16px;
+  margin-top: 32px;
+}
+
+.Title {
+  color: $white-color;
+  font-size: 48px;
+  margin-top: 16px;
+}

@@ -9,7 +9,6 @@ import styles from './ProductList.module.scss';
 
 type Props = {
   products: Product[];
-  loading: boolean;
   isHaveSlider: boolean;
   title?: string;
   isHotPrice?: boolean;
@@ -17,21 +16,10 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({
   products,
-  // loading,
   isHaveSlider,
   title,
   isHotPrice = false,
 }) => {
-  // if (loading) {
-  //   return <Loader />;
-  // }
-
-  // useEffect(() => {
-  //   if (!products.length) {
-  //     toast.error('There are no phones/tablets/accessories yet');
-  //   }
-  // }, [products]);
-
   const sliderSettings = {
     pictureWidth: 272,
     height: 500,

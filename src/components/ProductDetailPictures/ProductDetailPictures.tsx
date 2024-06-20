@@ -1,5 +1,5 @@
 import cn from 'classnames';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import styles from './ProductDetailPictures.module.scss';
 
@@ -9,6 +9,10 @@ type Props = {
 
 export const ProductDetailPictures: React.FC<Props> = ({ images = [] }) => {
   const [currentImageUrl, setCurrentImageUrl] = useState('');
+
+  useEffect(() => {
+    setCurrentImageUrl(images[0]);
+  }, [images]);
 
   const handleSelectImage = (imageUrl: string) => {
     setCurrentImageUrl(imageUrl);

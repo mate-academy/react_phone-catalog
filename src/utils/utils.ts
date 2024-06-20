@@ -6,6 +6,7 @@ import { Product } from '../types/Product';
 import { SortOrders, SortOrdersType } from '../types/SortOrders';
 import { Sorts, SortsType } from '../types/Sorts';
 
+import { Cart } from '../types/Cart';
 import { suffle } from './helpers';
 
 export const request = <T>(url: string): Promise<T> => {
@@ -37,6 +38,25 @@ export const getSortedProducts = (
     default:
       return products;
   }
+};
+
+export const getLocalStorage = () => {
+  const saved = localStorage.getItem('cart');
+  const initialStore = JSON.parse(String(saved));
+
+  return initialStore || [];
+};
+
+export const getTotalPriceOfCart = (cart: Cart[]) => {
+  let total = 0;
+
+  for (const item of cart) {
+    const result = item.quantity * item.product.price;
+
+    total += result;
+  }
+
+  return total;
 };
 
 export const getSuggestedProducts = (products: Product[]) => {

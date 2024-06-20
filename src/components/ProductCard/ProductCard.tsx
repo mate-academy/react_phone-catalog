@@ -8,6 +8,7 @@ import { Product } from '../../types/Product';
 import { normalizeString } from '../../utils/utils';
 import { ProductCardPrices } from '../ProductCardPrices';
 
+import { useProductsCart } from '../../hooks/useProductsCart';
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -17,6 +18,8 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = props => {
   const { pathname } = useLocation();
+  const { addProduct, cart } = useProductsCart();
+  const isHaveProduct = cart.some(item => item.id === props.product.id);
 
   const { name, screen, capacity, ram, image, price, fullPrice, itemId } =
     props.product;
@@ -26,6 +29,10 @@ export const ProductCard: React.FC<Props> = props => {
   const normalizeRam = normalizeString(ram);
 
   const activeProductCardText = `${styles.DescriptionsText} ${styles.DescriptionsTextActive}`;
+
+  const handleAddProduct = () => {
+    addProduct(props.product);
+  };
 
   return (
     <div className={styles.ProductCard}>
@@ -59,7 +66,9 @@ export const ProductCard: React.FC<Props> = props => {
       </div>
 
       <div className={styles.Buttons}>
-        <PurchaseButton>Add to cart</PurchaseButton>
+        <PurchaseButton handleClick={handleAddProduct}>
+          {isHaveProduct ? 'Added to cart' : 'Add to cart'}
+        </PurchaseButton>
 
         <FavouriteButton>
           <img src={favoriteIcon} alt="favorite" />

@@ -6,25 +6,22 @@ import { Header } from './components/Header';
 
 import './App.scss';
 import { PageLayout } from './layouts/PageLayout';
-import { AccessoriesProvider } from './store/AccessoriesProvider';
-import { PhonesProvider } from './store/PhonesProvider';
-import { TabletsProvider } from './store/TabletsProvider';
+import { CartProvider } from './store/CartProvider';
+import { FavoritesProvider } from './store/FavoritesProvider';
 
 export const App = () => (
   <div className="App">
-    <PhonesProvider>
-      <TabletsProvider>
-        <AccessoriesProvider>
-          <Header />
+    <FavoritesProvider>
+      <CartProvider>
+        <Header />
 
-          <PageLayout>
-            <Outlet />
-          </PageLayout>
+        <PageLayout>
+          <Outlet />
+        </PageLayout>
 
-          <ToastContainer />
-          <Footer />
-        </AccessoriesProvider>
-      </TabletsProvider>
-    </PhonesProvider>
+        <ToastContainer />
+        <Footer />
+      </CartProvider>
+    </FavoritesProvider>
   </div>
 );

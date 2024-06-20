@@ -8,18 +8,20 @@ import { ProductBanners } from '../../components/ProductBanners';
 import { ProductList } from '../../components/ProductList';
 
 import { ERROR_MESSAGE } from '../../constants/errors';
-import { getProducts } from '../../services/products';
-import { Categories } from '../../types/Categories';
+import { getAllProducts } from '../../services/products';
 import { Product } from '../../types/Product';
 import { SortOrders } from '../../types/SortOrders';
 import { Sorts } from '../../types/Sorts';
 import { getSortedProducts } from '../../utils/utils';
 
+import { Categories } from '../../types/Categories';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [loading, setLoading] = useState(false);
+
+  const phones = products.filter(item => item.category === Categories.phones);
 
   const newPhones = getSortedProducts(phones, Sorts.year, SortOrders.desc);
   const discountPhones = getSortedProducts(
@@ -31,9 +33,9 @@ export const HomePage = () => {
   useEffect(() => {
     setLoading(true);
 
-    getProducts(Categories.phones)
+    getAllProducts()
       .then(products => {
-        setPhones(products);
+        setProducts(products);
 
         setLoading(false);
       })
@@ -55,7 +57,6 @@ export const HomePage = () => {
       {newPhones.length ? (
         <ProductList
           title="Brand new models"
-          loading={loading}
           products={newPhones}
           isHaveSlider={true}
         />
@@ -68,7 +69,6 @@ export const HomePage = () => {
       {newPhones.length ? (
         <ProductList
           title="Hot prices"
-          loading={loading}
           products={discountPhones}
           isHaveSlider={true}
           isHotPrice={true}

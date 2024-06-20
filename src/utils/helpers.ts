@@ -1,4 +1,4 @@
-export const suffle = (array: any) => {
+export const suffle = <Type>(array: Type[]): Type[] => {
   const currentArray = [...array];
   let currentIndex = currentArray.length;
 

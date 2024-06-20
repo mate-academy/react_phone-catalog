@@ -1,8 +1,7 @@
-import { NavigationButton } from '../../ui/NavigationButton/NavigationButton';
-
 import cartIcon from '../../assets/images/cart-icon.svg';
 import favoriteIcon from '../../assets/images/favourite-icon.svg';
 import { logo } from '../../assets/index';
+import { NavigationButton } from '../../ui/NavigationButton';
 import { HeaderLinks } from '../HeaderLinks/HeaderLinks';
 
 import styles from './Header.module.scss';

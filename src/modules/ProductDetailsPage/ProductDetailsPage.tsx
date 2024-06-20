@@ -1,8 +1,6 @@
 import cn from 'classnames';
 import { useCallback, useEffect, useState } from 'react';
-import { Link, useLocation, useParams } from 'react-router-dom';
-
-import { IconLeft } from '../../ui/IconLeft';
+import { useParams } from 'react-router-dom';
 
 import { AboutProductDetail } from '../../components/AboutProductDetail';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
@@ -19,6 +17,7 @@ import { Product } from '../../types/Product';
 import { ProductDetail } from '../../types/ProductDetail';
 import { getSuggestedProducts } from '../../utils/utils';
 
+import { ButtonBack } from '../../ui/ButtonBack';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
@@ -29,8 +28,6 @@ export const ProductDetailsPage = () => {
   );
 
   const [loading, setLoading] = useState(false);
-
-  const { state } = useLocation();
 
   const fetchSuggestedProducts = useCallback(async () => {
     const result = await getProducts(productDetail?.category as Categories);
@@ -96,11 +93,7 @@ export const ProductDetailsPage = () => {
         productName={productDetail?.name}
       />
 
-      <Link className={styles.ProductLink} to={state?.prevPath || '/'}>
-        <IconLeft fill="#F1F2F9" />
-
-        <p className={styles.ProductLinkText}>Back</p>
-      </Link>
+      <ButtonBack />
 
       <p className={styles.Title}>{productDetail?.name}</p>
 
@@ -123,7 +116,6 @@ export const ProductDetailsPage = () => {
         products={suggestedProducts}
         isHaveSlider={true}
         isHotPrice={true}
-        loading={true}
       />
     </>
   );

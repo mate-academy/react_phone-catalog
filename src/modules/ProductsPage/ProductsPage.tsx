@@ -63,7 +63,6 @@ export const ProductsPage = () => {
 
           <ProductList
             products={totalProducts}
-            loading={loading}
             isHaveSlider={false}
             isHotPrice={true}
           />

@@ -1,0 +1,63 @@
+@import '../../variable.scss';
+
+.CartItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 100%;
+  width: 752px;
+  padding: 24px;
+  background: $surface-secondary-color;
+}
+
+.ButtonDelete {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Picture {
+  width: 80px;
+}
+
+.ProductName {
+  font-size: 14px;
+  color: $white-color;
+}
+
+.ProductPrice {
+  font-weight: 800;
+  font-size: 22px;
+  color: $white-color;
+}
+
+.Quantities {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.ButtonQuantity {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: $elements-color;
+  border: 1px solid $elements-color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ButtonQuantityActive {
+  background: $surface-main-color;
+  color: $white-color;
+}
+
+.Quantity {
+  color: $white-color;
+  font-weight: 600;
+}
