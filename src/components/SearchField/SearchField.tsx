@@ -26,13 +26,31 @@ export const SearchField: React.FC<Props> = ({ searchIsShown = false }) => {
     setSearchParams(newParams);
   };
 
+  const handleClear = () => {
+    newParams.delete(SearchParams.QUERY);
+
+    if (query) {
+      setSearchParams(newParams);
+    }
+  };
+
   return (
-    <input
-      type="text"
-      value={query}
-      className={classNames('search-field', { hidden: !searchIsShown })}
-      placeholder="Search"
-      onChange={event => handleChange(event)}
-    />
+    <div className={classNames('search-field', { hidden: !searchIsShown })}>
+      <input
+        type="text"
+        value={query}
+        placeholder="Search"
+        maxLength={18}
+        className="search-field__input"
+        onChange={event => handleChange(event)}
+      />
+
+      <button
+        className={classNames('search-field__button', {
+          'search-field__button--type--delete': query,
+        })}
+        onClick={handleClear}
+      ></button>
+    </div>
   );
 };

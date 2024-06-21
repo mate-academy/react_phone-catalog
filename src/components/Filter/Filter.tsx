@@ -4,6 +4,7 @@ import { SearchParams } from '../../types/SearchParams';
 import './Filter.scss';
 import React from 'react';
 import { PerPage } from '../../types/PerPage';
+import { Select } from '../Select';
 
 type Props = {
   DEF_SORT?: SortBy;
@@ -21,10 +22,8 @@ export const Filter: React.FC<Props> = ({
   );
   const newParams = new URLSearchParams(searchParams);
 
-  const handleItemsNumberChange = (
-    event: React.ChangeEvent<HTMLSelectElement>,
-  ) => {
-    const newPerPage = event.target.value;
+  const handleItemsNumberChange = (newValue: string | number) => {
+    const newPerPage = `${newValue}`;
 
     if (newPerPage === `${DEF_DISPLAYED}`) {
       newParams.delete(SearchParams.PER_PAGE);
@@ -35,8 +34,8 @@ export const Filter: React.FC<Props> = ({
     setSearchParams(newParams);
   };
 
-  const handleSortByChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    const newSortBy = event.target.value;
+  const handleSortByChange = (newValue: string | number) => {
+    const newSortBy = `${newValue}`;
 
     if (newSortBy === DEF_SORT) {
       newParams.delete(SearchParams.SORT_BY);
@@ -47,39 +46,35 @@ export const Filter: React.FC<Props> = ({
     setSearchParams(newParams);
   };
 
+  const sortValues = {
+    age: 'Newest',
+    title: 'Alphabetically',
+    price: 'Cheapest',
+  };
+
+  const perPageValues = {
+    [PerPage.ALL]: 'All',
+    [PerPage.EIGHT]: '8',
+    [PerPage.FOUR]: '4',
+    [PerPage.SIXTEEN]: '16',
+  };
+
   return (
     <div className="filter">
       <div className="filter__item">
-        <label className="filter__name" htmlFor="sortBy">
-          Sort by
-        </label>
-        <select
-          className="filter__select"
-          id="sortBy"
-          value={sortBy}
-          onChange={event => handleSortByChange(event)}
-        >
-          <option value="age">Newest</option>
-          <option value="title">Alphabetically</option>
-          <option value="price">Cheapest</option>
-        </select>
+        <Select
+          values={sortValues}
+          currentValue={sortBy}
+          handleChange={handleSortByChange}
+        />
       </div>
 
       <div className="filter__item filter__item--width--smaller">
-        <label className="filter__name" htmlFor="itemsShown">
-          Items on page
-        </label>
-        <select
-          className="filter__select"
-          id="itemsShown"
-          value={itemsShownNumber}
-          onChange={event => handleItemsNumberChange(event)}
-        >
-          <option value={PerPage.ALL}>All</option>
-          <option value={PerPage.FOUR}>4</option>
-          <option value={PerPage.EIGHT}>8</option>
-          <option value={PerPage.SIXTEEN}>16</option>
-        </select>
+        <Select
+          values={perPageValues}
+          currentValue={itemsShownNumber}
+          handleChange={handleItemsNumberChange}
+        />
       </div>
     </div>
   );

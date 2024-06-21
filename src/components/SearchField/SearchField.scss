@@ -1,33 +1,68 @@
 @import '../../utils/styles/mixins';
 
 .search-field {
+  position: relative;
+  transform: scaleX(1);
+
   box-sizing: border-box;
   height: 100%;
   width: 100%;
   min-width: 40px;
   flex-grow: 1;
   margin-left: 8px;
-  padding-inline: 8px;
 
-  border: none;
   border-inline: 1px solid $elements;
   opacity: 1;
-  transform: scaleX(1);
+
   transition: transform $transition;
+
+  &__input {
+    @include text-body;
+
+    box-sizing: border-box;
+    height: 100%;
+    width: 100%;
+    padding-inline: 8px;
+
+    border: none;
+
+    font-family: Mont, Arial, Helvetica, sans-serif;
+
+    &::placeholder {
+      @include text-buttons;
+
+      color: $icons;
+    }
+
+    &:focus {
+      outline: 1px solid $primary;
+      outline-offset: -2px;
+    }
+  }
 
   &.hidden {
     opacity: 0;
     transform: scaleX(0);
   }
 
-  &::placeholder {
-    @include text-buttons;
+  &__button {
+    position: absolute;
+    right: 8px;
+    top: 50%;
+    transform: translateY(-50%);
 
-    color: $icons;
-  }
+    height: 15px;
+    aspect-ratio: 1;
 
-  &:focus {
-    outline: 1px solid $primary;
-    outline-offset: -2px;
+    border: none;
+    background-color: transparent;
+
+    background-image: url(../../../public/img/icons/search.svg);
+    background-repeat: no-repeat;
+    background-size: contain;
+
+    &--type--delete {
+      background-image: url(../../../public/img/icons/close.svg);
+    }
   }
 }

@@ -41,7 +41,7 @@ export const Pagination: React.FC<Props> = ({ pagesNumber, scrollToTop }) => {
     }
   }, [currentPage]);
 
-  const handlePageChange = (page: Direction | number) => {
+  const handlePageChange = (page: Direction | number, scroll = true) => {
     switch (page) {
       case Direction.BACK:
         if (currentPage - 1 > 1) {
@@ -70,11 +70,14 @@ export const Pagination: React.FC<Props> = ({ pagesNumber, scrollToTop }) => {
     }
 
     setSearchParams(newParams);
-    scrollToTop();
+
+    if (scroll) {
+      scrollToTop();
+    }
   };
 
   useEffect(() => {
-    handlePageChange(1);
+    handlePageChange(1, false);
   }, [query]);
 
   const prepareCenterPages = () => {

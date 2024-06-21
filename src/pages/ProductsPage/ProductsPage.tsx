@@ -16,8 +16,9 @@ const DEF_SORT = SortBy.NEWEST;
 const DEF_DISPLAYED = PerPage.EIGHT;
 
 export const ProductsPage = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [categoryProducts, setCategoryProducts] = useState<Product[]>([]);
   const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [pagesNumber, setPagesNumber] = useState(1);
   const [error, setError] = useState('');
   const [searchParams] = useSearchParams();
@@ -25,7 +26,6 @@ export const ProductsPage = () => {
   const [category, setCategory] = useState<ProductCategories>(
     location.pathname.slice(1) as ProductCategories,
   );
-  const [firstLoad, setFirstLoad] = useState(true);
 
   const perPage = +(searchParams.get(SearchParams.PER_PAGE) ?? DEF_DISPLAYED);
   const query = searchParams.get(SearchParams.QUERY) ?? '';
@@ -49,21 +49,19 @@ export const ProductsPage = () => {
   }
 
   const loadProducts = async () => {
-    setError('');
+    setIsLoading(true);
 
     try {
       const productsFromServer = await getProducts();
 
-      const categoryProducts = productsFromServer.filter(
+      const preparedCategoryProducts = productsFromServer.filter(
         productFromServer => productFromServer.category === category,
       );
 
-      setProducts(categoryProducts);
-      setFilteredProducts(categoryProducts);
-
-      if (firstLoad) {
-        setFirstLoad(false);
-      }
+      setCategoryProducts(preparedCategoryProducts);
+      setFilteredProducts(preparedCategoryProducts);
+      setError('');
+      setIsLoading(false);
     } catch (fetchError) {
       setError('Products loading failed. Please try again.');
       throw fetchError;
@@ -73,15 +71,15 @@ export const ProductsPage = () => {
   const filterProducts = () => {
     setError('');
 
-    let preparedProducts = products;
+    let preparedProducts = categoryProducts;
 
     if (query) {
-      preparedProducts = products.filter(product =>
+      preparedProducts = categoryProducts.filter(product =>
         product.name.toLowerCase().includes(query.toLowerCase()),
       );
     }
 
-    if (preparedProducts.length === 0 && !firstLoad) {
+    if (preparedProducts.length === 0 && !isLoading) {
       setError('No matching products');
     }
 
@@ -93,8 +91,7 @@ export const ProductsPage = () => {
   }, [location]);
 
   useEffect(() => {
-    setFirstLoad(true);
-    setProducts([]);
+    setCategoryProducts([]);
     loadProducts();
   }, [category]);
 
@@ -110,7 +107,7 @@ export const ProductsPage = () => {
 
   useEffect(() => {
     filterProducts();
-  }, [query, products]);
+  }, [query, categoryProducts]);
 
   const scrollToTop = () => {
     if (listRef.current) {
@@ -128,7 +125,7 @@ export const ProductsPage = () => {
 
       <h1 className="products-page__title">{titleText}</h1>
       <p className="products-page__models-count">
-        {products.length > 0
+        {categoryProducts.length > 0
           ? `${filteredProducts.length} models`
           : 'Loading...'}
       </p>
