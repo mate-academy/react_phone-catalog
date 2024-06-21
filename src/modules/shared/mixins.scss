@@ -1,0 +1,18 @@
+@mixin on-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin slider-trasition {
+  transition: translate;
+  transition-property: transform;
+  transition-duration: 300ms;
+  transition-timing-function: ease-in-out;
+}
