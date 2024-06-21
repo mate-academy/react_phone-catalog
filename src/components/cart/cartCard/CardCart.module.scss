@@ -44,6 +44,21 @@
         line-height: 32px;
         font-weight: 600;
         font-size: 14px;
+        cursor: pointer;
+      }
+
+      &__item.border {
+        border: 1px solid #B4BDC3;
+      }
+
+      &__input {
+        height: 32px;
+        width: 32px;
+        text-align: center;
+        line-height: 32px;
+        font-weight: 600;
+        font-size: 14px;
+        cursor: pointer;
       }
     }
 

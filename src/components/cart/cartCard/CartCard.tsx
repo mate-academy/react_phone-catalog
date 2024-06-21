@@ -15,7 +15,9 @@ export const CartCard: React.FC<Props> = ({
   setTotalPrice,
 }) => {
   const { setCart } = useContext(ContextApp);
+  const [isEdited, setIsEdited] = useState(false);
   const [quantity, setQuantity] = useState(product.quantity);
+  const [inputValue, setInputValue] = useState(quantity);
   const [cardPrice, setCardPrice] = useState(quantity * product.priceDiscount);
 
   useEffect(() => {
@@ -71,6 +73,22 @@ export const CartCard: React.FC<Props> = ({
     setQuantity(prevState => (prevState === 1 ? 1 : prevState - 1));
   };
 
+  const handleEdit = () => {
+    setIsEdited(true);
+  };
+
+  const handleKeyDownOnInput = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      setQuantity(inputValue);
+      setIsEdited(false);
+    }
+  };
+
+  const handleBlurOnInput = () => {
+    setQuantity(inputValue);
+    setIsEdited(false);
+  };
+
   return (
     <div className={Styles.cartCard}>
       <div className={Styles.cartCard__product}>
@@ -94,16 +112,33 @@ export const CartCard: React.FC<Props> = ({
         <div className={Styles.cartCard__container__quantity}>
           <div
             onClick={handleIncrease}
-            className={Styles.cartCard__container__quantity__item}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border}`}
           >
             +
           </div>
-          <div className={Styles.cartCard__container__quantity__item}>
-            {quantity}
+
+          <div
+            onClick={handleEdit}
+            onDoubleClick={handleEdit}
+            className={Styles.cartCard__container__quantity__item}
+          >
+            {isEdited ? (
+              <input
+              className={Styles.cartCard__container__quantity__input}
+                value={inputValue}
+                onChange={event => setInputValue(+event.target.value)}
+                type="number"
+                onKeyDown={handleKeyDownOnInput}
+                onBlur={handleBlurOnInput}
+              />
+            ) : (
+              quantity
+            )}
           </div>
+
           <div
             onClick={handleDecrease}
-            className={Styles.cartCard__container__quantity__item}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border}`}
           >
             -
           </div>

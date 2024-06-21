@@ -5,17 +5,23 @@ import { CartCard } from './cartCard';
 import { ItemWithQuantity } from '../../types/ItemWithQuantity';
 
 export const Cart: React.FC = () => {
-  const { cart } = useContext(ContextApp);
+  const { cart, setCart } = useContext(ContextApp);
   const [totalPrice, setTotalPrice] = useState(0);
   const [totalQuantity, setTotalQuantity] = useState(0);
   const dialogRef = useRef<HTMLDialogElement>(null);
 
-  const closeDialog = () => {
+  const handleCloseDialog = () => {
     dialogRef.current?.close();
   };
 
   const handleCheckout = () => {
-    dialogRef.current?.showModal();
+    dialogRef.current?.insertAdjacentElement;
+  };
+
+  const handleClearCart = () => {
+    setCart([]);
+    setTotalPrice(0);
+    setTotalQuantity(0);
   };
 
   return (
@@ -23,7 +29,7 @@ export const Cart: React.FC = () => {
       <h1 className={Styles.cart__title}>Cart</h1>
 
       <div className={Styles.cart__items_container}>
-        {cart.length > 0 &&
+        {cart.length > 0 ? (
           cart.map(product => {
             return (
               <CartCard
@@ -33,38 +39,59 @@ export const Cart: React.FC = () => {
                 product={product as ItemWithQuantity}
               />
             );
-          })}
-
-        {cart.length === 0 && (
-          <p className={Styles.cart__items__container__paragraph}>empty</p>
+          })
+        ) : (
+          <p className={Styles.cart__items__container__paragraph}>Your cart is empty</p>
         )}
       </div>
 
-      <div className={Styles.cart__sum_container}>
-        <p className={Styles.cart__sum_container__total_price}>
-          {`$${totalPrice}`}
-        </p>
+      {cart.length > 0 && (
+        <div className={Styles.cart__sum_container}>
+          <p className={Styles.cart__sum_container__total_price}>
+            {`$${totalPrice}`}
+          </p>
 
-        <p
-          className={Styles.cart__sum_container__paragraph}
-        >{`Total for ${totalQuantity} items`}</p>
+          <p
+            className={Styles.cart__sum_container__paragraph}
+          >{`Total for ${totalQuantity} items`}</p>
 
-        <div className={Styles.cart__sum_container__separator}></div>
+          <div className={Styles.cart__sum_container__separator}></div>
 
-        <div
-          onClick={handleCheckout}
-          className={Styles.cart__sum_container__checkout}
-        >
-          Checkout
+          <div
+            onClick={handleCheckout}
+            className={Styles.cart__sum_container__checkout}
+          >
+            Checkout
+          </div>
         </div>
+      )}
 
-        <dialog ref={dialogRef}>
-          <button onClick={closeDialog}>Close</button>
-          <h1>
-            `Checkout is not implemented yet. Do you want to clear the Cart?`
-          </h1>
-        </dialog>
-      </div>
+      <dialog className={Styles.cart__dialog} ref={dialogRef}>
+        <button
+          className={Styles.cart__dialog__button_close}
+          onClick={handleCloseDialog}
+        >
+          Close
+        </button>
+
+        <h1 className={Styles.cart__dialog__title}>
+          Checkout is not implemented yet. Do you want to clear the Cart?
+        </h1>
+
+        <button
+          onClick={handleClearCart}
+          className={Styles.cart__dialog__button_confirm}
+        >
+          Confirm
+        </button>
+
+        <button
+          onClick={handleCloseDialog}
+          className={Styles.cart__dialog__button_confirm}
+        >
+          Cancel
+        </button>
+      </dialog>
     </div>
   );
 };
