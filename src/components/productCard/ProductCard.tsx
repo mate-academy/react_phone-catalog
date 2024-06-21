@@ -61,7 +61,7 @@ export const ProductCard: React.FC<Props> = ({ product, type }) => {
         </div>
 
         <div className={styles.card__buttons}>
-          <AccentButton text="Add to cart" />
+          {product && <AccentButton text="Add to cart" product={product} />}
           <SecondaryButton product={product} />
         </div>
       </div>

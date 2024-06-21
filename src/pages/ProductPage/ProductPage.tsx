@@ -20,7 +20,7 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
   const { productId } = useParams<{ productId: string }>();
 
   let product: ProductInfo | undefined;
-  let productsSlider: ProductInfo[] = []; // Initialize productsSlider with an empty array
+  let productsSlider: ProductInfo[] = [];
 
   if (type === 'phones') {
     product = phones.find(phone => phone.id === productId);
@@ -60,8 +60,10 @@ export const ProductPage: React.FC<Props> = ({ type }) => {
               </div>
 
               <div className={styles.productpage__buttons}>
-                <AccentButton text="Add to cart" />
-                <SecondaryButton />
+                {product && (
+                  <AccentButton text="Add to cart" product={product} />
+                )}
+                {product && <SecondaryButton product={product} />}
               </div>
             </div>
 

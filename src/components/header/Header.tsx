@@ -6,11 +6,16 @@ import { useContext, useEffect, useState } from 'react';
 import classNames from 'classnames';
 import { ProductInfo } from '../../types/ProductInfo';
 import { AppContext } from '../../store/context';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-
-  const { likedProducts, setLikedProducts } = useContext(AppContext);
+  const {
+    likedProducts,
+    setLikedProducts,
+    selectedProducts,
+    setSelectedProducts,
+  } = useContext(AppContext);
 
   useEffect(() => {
     const selectedProductFromStorage = localStorage.getItem('likedProducts');
@@ -25,6 +30,20 @@ export const Header = () => {
       }
     }
   }, [likedProducts, setLikedProducts]);
+
+  useEffect(() => {
+    const selectedProductFromStorage = localStorage.getItem('likedProducts');
+
+    if (selectedProductFromStorage) {
+      const parsedProducts: ProductWithQuantity[] = JSON.parse(
+        selectedProductFromStorage,
+      );
+
+      if (JSON.stringify(parsedProducts) !== JSON.stringify(selectedProducts)) {
+        setSelectedProducts(parsedProducts);
+      }
+    }
+  }, [selectedProducts, setSelectedProducts]);
 
   return (
     <>
@@ -72,6 +91,9 @@ export const Header = () => {
                 className={styles.header__button_image}
                 src="../../img/icons/cart.svg"
               />
+              <div className={styles.header__infolabel}>
+                {selectedProducts.length}
+              </div>
             </NavLink>
           </div>
 

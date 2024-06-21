@@ -5,6 +5,7 @@ import { ContextProvider } from './store/context';
 import { CatalogPage } from './pages/CatalogPage/CatalogPage';
 import { ProductPage } from './pages/ProductPage';
 import { FavouritePage } from './pages/FavouritePage';
+import { BasketPage } from './pages/BasketPage';
 
 export const Root = () => {
   return (
@@ -39,6 +40,7 @@ export const Root = () => {
             </Route>
 
             <Route path="favourites" element={<FavouritePage />} />
+            <Route path="basket" element={<BasketPage />} />
           </Route>
         </Routes>
       </BrowserRouter>

@@ -1,21 +1,57 @@
-import classNames from 'classnames';
 import styles from './AccentButton.module.scss';
+import { useContext, useEffect, useState } from 'react';
+import { AppContext } from '../../store/context';
+import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 
 type Props = {
   text: string;
   onClick?: () => void;
-  hasCart?: boolean;
+  product?: ProductWithQuantity;
 };
 
-export const AccentButton: React.FC<Props> = ({ text, onClick, hasCart }) => {
+export const AccentButton: React.FC<Props> = ({ text, product, onClick }) => {
+  const { selectedProducts, setSelectedProducts } = useContext(AppContext);
+  const [isSelected, setIsSelected] = useState(false);
+
+  const productId = product?.id;
+
+  useEffect(() => {
+    const isProductSelected = selectedProducts.some(
+      selectedProduct => selectedProduct.id === productId,
+    );
+
+    setIsSelected(isProductSelected);
+  }, [selectedProducts, productId]);
+
+  const handleButtonFavorite = () => {
+    if (!product) return;
+
+    const isSelected = selectedProducts.some(item => item.id === product.id);
+
+    let updatedSelectedProducts: ProductWithQuantity[];
+
+    if (isSelected) {
+      updatedSelectedProducts = selectedProducts.filter(
+        item => item.id !== product.id,
+      );
+    } else {
+      const newProduct: ProductWithQuantity = { ...product, quantity: 1 };
+      updatedSelectedProducts = [...selectedProducts, newProduct];
+    }
+
+    localStorage.setItem(
+      'likedProducts',
+      JSON.stringify(updatedSelectedProducts),
+    );
+    setSelectedProducts(updatedSelectedProducts);
+  };
+
   return (
     <button
-      className={classNames(styles.accentButton, {
-        [styles.accentButton__added]: hasCart,
-      })}
-      onClick={onClick}
+      className={`${styles.accentButton} ${isSelected ? styles.accentButton_pressed : ''}`}
+      onClick={onClick ? onClick : handleButtonFavorite}
     >
-      {text}
+      {!isSelected ? text : 'Added to cart'}
     </button>
   );
 };

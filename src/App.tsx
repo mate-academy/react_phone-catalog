@@ -6,7 +6,8 @@ import { BreadCrumbs } from './components/breadcrumbs';
 
 export const App = () => {
   const location = useLocation();
-  const isHomePage = location.pathname === '/';
+  const isHomePage =
+    location.pathname === '/' || location.pathname === '/basket';
 
   return (
     <div className="page">

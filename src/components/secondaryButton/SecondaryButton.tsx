@@ -12,7 +12,7 @@ export const SecondaryButton: React.FC<Props> = ({ product }) => {
   const [imgButton, setImgButton] = useState('');
 
   useEffect(() => {
-    const productId = product.id;
+    const productId = product?.id;
     const isLiked = likedProducts.some(
       likedProduct => likedProduct.id === productId,
     );
@@ -21,10 +21,10 @@ export const SecondaryButton: React.FC<Props> = ({ product }) => {
         ? '../../img/icons/fillHeart.svg'
         : '../../img/icons/favourite.svg',
     );
-  }, [likedProducts, product.id]);
+  }, [likedProducts, product?.id]);
 
   const handleButtonFavorite = () => {
-    const productId = product.id;
+    const productId = product?.id;
     const isLiked = likedProducts.some(product => product.id === productId);
 
     let updatedLikedProducts: ProductInfo[];
