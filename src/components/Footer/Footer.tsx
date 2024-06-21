@@ -1,9 +1,17 @@
+import { useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { ModalContext } from '../../contexts/modalContext';
 import NiceGadgets from '../../Images/Icons/NiceGadgets.svg';
 import './Footer.scss';
 
 export const Footer = () => {
   const location = useLocation();
+  const { setIsOpen } = useContext(ModalContext);
+
+  const openModal = (e: React.MouseEvent<HTMLAnchorElement, MouseEvent>) => {
+    e.preventDefault();
+    setIsOpen(true);
+  };
 
   const backToUp = () => {
     window.scrollTo({
@@ -39,7 +47,11 @@ export const Footer = () => {
         >
           Github
         </Link>
-        <Link to="/contacts" className="footer__nav-link nav__link">
+        <Link
+          to="/contacts"
+          className="footer__nav-link nav__link"
+          onClick={openModal}
+        >
           Contacts
         </Link>
         <Link to="/rights" className="footer__nav-link nav__link">

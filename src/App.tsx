@@ -4,8 +4,8 @@ import './App.scss';
 import { Header } from './components/Header/Header';
 import { Container } from './components/Container/Container';
 import { Notification } from './components/Notification/Notification';
-// import { Modal } from './components/Modal';
-// import { ContactForm } from './components/ContactForm';
+import { Modal } from './components/Modal/Modal';
+import { ContactForm } from './components/ContactForm/ContactForm';
 import { Footer } from './components/Footer/Footer';
 
 const App = () => {
@@ -19,9 +19,9 @@ const App = () => {
 
       <Notification />
 
-      {/* <Modal>
+      <Modal>
         <ContactForm />
-      </Modal> */}
+      </Modal>
 
       <Footer />
     </div>
