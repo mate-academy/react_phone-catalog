@@ -1,16 +1,24 @@
 import style from '../Main/Main.module.scss';
-import { useContext } from 'react';
-import { StateContext } from '../../store/StateProvider';
+import { useContext, useEffect } from 'react';
 import { Slider } from './Slider/Slider';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 import { BrandNewModels } from './BrandNewModels/BrandNewModels';
 import { HotPrices } from './HotPrices/HotPrices';
+import { useParams } from 'react-router-dom';
 
 export const Main = () => {
-  const { openBurger } = useContext(StateContext);
   const { t } = useContext(LanguageContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
+  const { menu } = useParams();
+
+  useEffect(() => {
+    if (menu) {
+      document.body.style.scrollbarGutter = 'stable';
+    } else {
+      document.body.style.scrollbarGutter = 'auto';
+    }
+  }, [menu]);
 
   return (
     <main
@@ -18,7 +26,7 @@ export const Main = () => {
       onWheel={activeScroll}
       onTouchStart={activeScroll}
     >
-      {!openBurger && (
+      {!menu && (
         <div className={style.main__content}>
           <h1 className={style.main__title}>{t('welcome')}</h1>
 
@@ -29,7 +37,7 @@ export const Main = () => {
           <div className={style.main__container}>
             <BrandNewModels />
             <ShopByCategory />
-            <HotPrices />
+            <HotPrices />~
           </div>
         </div>
       )}

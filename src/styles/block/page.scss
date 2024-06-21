@@ -6,8 +6,7 @@
   font-size: 12px;
   font-weight: 800;
   text-decoration: none;
-  // scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
-  // scrollbar-color: darkgray lightgray;
+  scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
 }
 
 .light {
@@ -48,4 +47,8 @@
   --textFooterColor: #f1f2f9;
   color: $text-color;
   background-color: $background-color;
+}
+
+html {
+  scrollbar-gutter: stable;
 }
