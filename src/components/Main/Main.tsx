@@ -37,7 +37,7 @@ export const Main = () => {
           <div className={style.main__container}>
             <BrandNewModels />
             <ShopByCategory />
-            <HotPrices />~
+            <HotPrices />
           </div>
         </div>
       )}
