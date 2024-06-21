@@ -14,7 +14,6 @@ import classNames from 'classnames';
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
   const { menu } = useParams();
-  console.log(menu);
 
   return (
     <aside

@@ -6,6 +6,7 @@ import { Outlet, useParams } from 'react-router-dom';
 
 export const App = () => {
   const { menu } = useParams();
+
   return (
     <div>
       {menu ? (

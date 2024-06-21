@@ -14,7 +14,6 @@ export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
   const { menu } = useParams();
 
-  console.log(menu)
   return (
     <header className={style.header}>
       <nav className={style.header__top}>

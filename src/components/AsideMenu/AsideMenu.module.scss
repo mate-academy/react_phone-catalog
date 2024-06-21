@@ -2,7 +2,7 @@
 @import '../../styles/block/utils/_mixins.scss';
 
 .menu {
-  scrollbar-gutter: auto;
+  scrollbar-gutter: unset;
   overflow: auto;
   position: fixed;
   z-index: -100;
