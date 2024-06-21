@@ -2,21 +2,22 @@
 @import '../../styles/block/utils/_mixins.scss';
 
 .menu {
+  scrollbar-gutter: auto;
   overflow: auto;
   position: fixed;
-  z-index: -1;
+  z-index: -100;
   top: 0;
   left: 0;
   right: 0;
-  opacity: 0;
   background-color: $background-color;
   pointer-events: none;
   font-size: 18px;
   scroll-behavior: smooth;
-  // min-height: 100%;
+  min-height: 100%;
   height: 100vh;
   height: 100svh;
   transform: translateY(-100%);
+  opacity: 0;
 
   &__top {
     display: flex;
@@ -101,7 +102,7 @@
   }
 }
 
-.menu:target {
+.menu__active {
   z-index: 1;
   opacity: 1;
   pointer-events: all;

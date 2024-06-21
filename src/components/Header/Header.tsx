@@ -8,12 +8,13 @@ import style from './Header.module.scss';
 import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logos/LogoBurger';
-import { StateContext } from '../../store/StateProvider';
+import { Link, useParams } from 'react-router-dom';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
-  const { setOpenBurger } = useContext(StateContext);
+  const { menu } = useParams();
 
+  console.log(menu)
   return (
     <header className={style.header}>
       <nav className={style.header__top}>
@@ -41,13 +42,12 @@ export const Header = () => {
               </a>
             </>
           ) : (
-            <a
-              href="#menu"
+            <Link
+              to={menu ? '../' : '/menu'}
               className={style.header__actionsLink}
-              onClick={() => setOpenBurger(true)}
             >
               <LogoBurger className={style.header__actionsImg} />
-            </a>
+            </Link>
           )}
         </ul>
       </nav>

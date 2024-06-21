@@ -8,25 +8,27 @@ import { LogoFavorites } from '../Logos/LogoFavorites';
 import { LogoCart } from '../Logos/LogoCart';
 import { LogoClose } from '../Logos/LogoClose';
 import data from '../../utils/NavList.json';
-import { StateContext } from '../../store/StateProvider';
+import { Link, useParams } from 'react-router-dom';
+import classNames from 'classnames';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
-  const { setOpenBurger } = useContext(StateContext);
+  const { menu } = useParams();
+  console.log(menu);
 
   return (
-    <aside className={style.menu} id="menu">
+    <aside
+      className={classNames(style.menu, {
+        [style.menu__active]: !!menu,
+      })}
+    >
       <div className={style.menu__top}>
-        <a href="#">
+        <Link to="/home">
           <Logo className={style.menu__topLogo} />
-        </a>
-        <a
-          href="#"
-          className={style.menu__topLink}
-          onClick={() => setOpenBurger(false)}
-        >
+        </Link>
+        <Link to="/" className={style.menu__topLink}>
           <LogoClose className={style.menu__icons} />
-        </a>
+        </Link>
       </div>
 
       <div className={style.menu__content}>
