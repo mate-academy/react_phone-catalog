@@ -203,11 +203,11 @@
   }
 }
 
-[class$='-Svg'] {
+svg {
   display: none !important;
 }
 
 [class$='-indicatorContainer'] {
-  margin-right: 12px !important;
-  background-image: url(../../../public/img/icons/chevron-arrow-down.svg) !important;
+  margin-right: 12px;
+  background-image: url(../../../public/img/icons/chevron-arrow-down.svg);
 }
