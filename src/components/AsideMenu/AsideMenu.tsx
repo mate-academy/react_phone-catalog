@@ -18,7 +18,7 @@ export const AsideMenu = () => {
   return (
     <aside
       className={classNames(style.menu, {
-        [style.menu__active]: !!menu,
+        [style.menu__active]: menu,
       })}
     >
       <div className={style.menu__top}>

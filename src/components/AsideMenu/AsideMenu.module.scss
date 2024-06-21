@@ -2,7 +2,6 @@
 @import '../../styles/block/utils/_mixins.scss';
 
 .menu {
-  scrollbar-gutter: unset;
   overflow: auto;
   position: fixed;
   z-index: -100;
@@ -12,7 +11,6 @@
   background-color: $background-color;
   pointer-events: none;
   font-size: 18px;
-  scroll-behavior: smooth;
   min-height: 100%;
   height: 100vh;
   height: 100svh;
@@ -107,6 +105,12 @@
   opacity: 1;
   pointer-events: all;
   transform: translateY(0);
+}
+
+.menu:has(.menu__active) {
+  overflow: hidden;
+  scrollbar-gutter: unset;
+
 }
 
 @include onTablet {
