@@ -17,6 +17,7 @@ export const AsideMenu = () => {
 
   return (
     <aside
+      id="menu"
       className={classNames(style.menu, {
         [style.menu__active]: menu,
       })}

@@ -2,9 +2,9 @@
 @import '../../styles/block/utils/_mixins.scss';
 
 .menu {
-  overflow: auto;
+  overflow: hidden !important;
   position: fixed;
-  z-index: -100;
+  z-index: -1;
   top: 0;
   left: 0;
   right: 0;
@@ -15,6 +15,7 @@
   height: 100vh;
   height: 100svh;
   transform: translateY(-100%);
+  scroll-behavior: smooth;
   opacity: 0;
 
   &__top {
@@ -98,19 +99,18 @@
     border-right: 1px solid $border-color;
     font-size: 12px;
   }
-}
 
-.menu__active {
-  z-index: 1;
-  opacity: 1;
-  pointer-events: all;
-  transform: translateY(0);
+  &__active {
+    z-index: 1;
+    opacity: 1;
+    pointer-events: all;
+    transform: translateY(0);
+  }
 }
 
 .menu:has(.menu__active) {
   overflow: hidden;
   scrollbar-gutter: unset;
-
 }
 
 @include onTablet {
