@@ -1,0 +1,68 @@
+@import '../../main.scss';
+
+.border {
+  border-top: 1px solid #E2E6E9;
+}
+
+.container {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include onTablet {
+    padding: 32px 0;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 13px;
+  }
+
+  @include onDesktop {
+    gap: 106px;
+  }
+}
+
+.item {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+  color: #89939A;
+}
+
+.backTop {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  align-items: center;
+}
+
+.backTopText {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: #89939A;
+}
+
+.button {
+  background-color: white;
+  border: 1px solid #E2E6E9;
+  width: 32px;
+  height: 32px;
+}

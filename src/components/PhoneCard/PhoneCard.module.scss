@@ -1,0 +1,180 @@
+@import '../../main.scss';
+
+.container {
+  height: 437px;
+  border: 1px solid #E2E6E9;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include onTablet {
+    // width: 235px;
+    height: 494px;
+  }
+
+  @include onDesktop {
+    // width: 270px;
+    height: 504px;
+  }
+}
+
+.img {
+  width: min-content;
+  height: 129px;
+  margin-bottom: 24px;
+  margin: 0 auto;
+  max-height: 196px;
+  object-fit: contain;
+  margin-bottom: 24px;
+
+  @include hover(transform, scale(1.05));
+
+  @include onTablet {
+    height: 181px;
+  }
+
+  @include onDesktop {
+    height: 196px;
+  }
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  margin-bottom: 8px;
+  color: #313237;
+}
+
+.allPrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: #313237;
+}
+
+.secondPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  text-align: left;
+  color: #89939A;
+  text-decoration: line-through;
+}
+
+.border {
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleScreen {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.screen {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #313237;
+}
+
+.titleCapacity {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.capacity {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #313237;
+}
+
+.titleRam {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.ram {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #313237;
+}
+
+.buttonConteiner {
+  display: flex;
+  gap: 8px;
+}
+
+.add {
+  width: 100%;
+  min-width: 100px;
+  height: 40px;
+  background-color: #313237;
+  color: #fff;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+
+
+  @include onTablet {
+    width: 125px;
+  }
+
+  @include onDesktop {
+    width: 160px;
+  }
+}
+
+.heart {
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border: 1px solid #B4BDC3;
+}

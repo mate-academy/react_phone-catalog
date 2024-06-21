@@ -1,0 +1,133 @@
+@import '../../main.scss';
+
+.header {
+  display: flex;
+  border-bottom: 1px solid #E2E6E9;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: block;
+  width: 64px;
+  height: 22px;
+  margin: 16px 13px;
+
+  @include onDesktop {
+    width: 80px;
+    height: 28px;
+    margin: 18px 24px;
+  }
+}
+
+.nav {
+  display: none;
+
+  @include onTablet {
+    display: block;
+  }
+}
+
+.list {
+  display: flex;
+  list-style: none;
+
+  @include onDesktop {
+    gap: 64px;
+  }
+}
+
+.link {
+  color: #89939A;
+  text-decoration: none;
+
+  @include onTablet {
+    margin: 0 18px;
+  }
+
+  @include onDesktop {
+    margin: 0;
+  }
+}
+
+.activeLink {
+  color: $header-color-hover;
+  border-bottom: 3px solid $header-color-hover;
+
+  padding: 21px 0;
+
+  @include onDesktop {
+    padding: 28px 0;
+  }
+}
+
+.icons {
+  display: none;
+
+  @include onTablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.iconMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid #E2E6E9;
+
+  @include onDesktop {
+    padding: 24px;
+  }
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 28px;
+  width: 28px;
+}
+
+.logoMenu {
+  display: flex;
+}
+
+.menuBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid #E2E6E9;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.menuButton {
+  text-transform: none;
+  border: none;
+  background-color: white;
+}
+
+.burger {
+  background-color: white;
+}

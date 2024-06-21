@@ -1,0 +1,33 @@
+@import '../../main';
+
+.homePage__container {
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  padding-top: 24px;
+  // padding-bottom: 56px;
+
+  @include onTablet() {
+    padding-top: 32px;
+    // padding-bottom: 64px;
+    padding: 32px 24px 0 24px;
+  }
+
+  @include onDesktop() {   
+    padding: 56px 32px 0 32px; 
+  }
+}
+
+.title {
+  @include h1-smartphone-title;
+  padding: 0 16px 24px 16px;
+
+  @include onTablet {
+    @include h1-Tablet-title;
+    padding: 0 0 32px 0;
+  }
+
+  @include onDesktop {   
+    padding-bottom: 56px;
+  }
+}

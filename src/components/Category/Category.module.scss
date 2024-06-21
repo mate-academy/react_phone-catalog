@@ -1,0 +1,107 @@
+@import '../../main.scss';
+
+.container {
+  padding: 0 16px 56px 16px;
+
+  @include onTablet {
+    padding-bottom: 64px;
+  }
+
+  @include onDesktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: #313237;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: auto;
+
+  @include onTablet {
+    flex-direction: row;
+    gap: 16px;
+  }
+}
+
+.category {
+  width: 100%;
+  margin-bottom: 32px;
+}
+
+.categoryAccessories {
+  width: 100%;
+}
+
+.photoContainer {
+  position: relative;
+  overflow: hidden;
+  background-color: #6D6474;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+}
+
+.photoContainerTablets {
+  position: relative;
+  overflow: hidden;
+  background-color: #89939A;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+}
+
+.photoContainerAccessories {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 24px;
+  background-color: #8E243266;
+}
+
+.img {
+  width: 100%;
+  height: auto;
+  position: absolute;
+  top: 50px;
+  left: 50px;
+}
+
+.categoryName {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  text-align: left;
+  color: #313237;
+  padding-bottom: 4px;
+
+  @include onDesktop {
+    font-weight: 600;
+  }
+}
+
+.quantity {
+font-family: Mont, sans-serif;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+color: #89939A;
+}

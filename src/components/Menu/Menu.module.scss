@@ -1,0 +1,55 @@
+@import '../../main.scss';
+
+.menu {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  right: 0;
+  background-color: white;
+  transition-duration: 0.5s;
+  overflow: hidden;
+  width: 70vw;
+  height: 100vh;
+}
+
+.menuTop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menuContent {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+}
+
+.link {
+  color: black;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 150%;
+  letter-spacing: -0.16px;
+  cursor: pointer;
+}
+
+.activeLink {
+  color: $header-color-hover;
+  border-bottom: 3px solid $header-color-hover;
+}
+
+// .item {
+//   cursor: pointer;
+// }
+
+// .menuIcon {
+//   cursor: pointer;
+// }

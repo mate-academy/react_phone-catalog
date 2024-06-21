@@ -1,0 +1,108 @@
+@import '../../main.scss';
+
+$widthOfSliderButton: 32px;
+$paddingFromSliderToButton: 19px;
+$paddingFromSliderToButtonOnDesctop: 16px;
+
+.slider {
+  padding-bottom: 56px;
+
+  @include onTablet {
+    display: flex;
+  }
+
+  @include onDesktop {
+    justify-content: center;
+    padding-bottom: 80px;
+  }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: auto;
+
+  @include onTablet {
+    width: calc(100% - (2 * $widthOfSliderButton));
+    height: auto;
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include onTablet {
+    height: calc(100vw * 189 / 640);
+    margin: 0 $paddingFromSliderToButton;
+  }
+
+  @include onDesktop {
+    height: calc(100vw * 400 / 1200);
+    margin: 0 $paddingFromSliderToButtonOnDesctop;
+  }
+}
+
+.sliderContent {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 0.5s;
+  height: 100vw;
+
+  @include onTablet {
+    height: calc(100vw * 189 / 640);
+  }
+
+  @include onDesktop {
+    height: calc(100vw * 400 / 1200);
+  }
+}
+
+.banner {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+
+  @include onTablet {
+    width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButton) - (2 * 24px));
+    height: auto;
+  }
+
+  @include onDesktop {
+    width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButtonOnDesctop) - (2 * 32px));
+    height: auto;
+  }
+}
+
+.button {
+  display: none;
+
+  @include onTablet {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.bottomButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include onTablet {
+    display: none;
+  }
+}
+
+.button_slider {
+  border: none;
+  background-color: white;
+}
+
+// .isActive {
+//   background-color: #313237;
+// }

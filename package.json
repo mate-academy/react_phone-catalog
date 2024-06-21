@@ -8,6 +8,7 @@
   "dependencies": {
     "@cypress/react18": "^2.0.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@react-hook/window-size": "^3.1.1",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",

@@ -1,0 +1,14 @@
+@mixin h1-smartphone-title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+}
+
+@mixin h1-Tablet-title {
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+}
