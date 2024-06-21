@@ -6,7 +6,7 @@ import './styles/main.scss';
 import { BreakPointsProvider } from './store/BreakPointsProvider';
 import { StateProvider } from './store/StateProvider';
 import { ProductsProvider } from './store/ProductsProvider';
-import { BrowserRouter as Router } from 'react-router-dom';
+import { HashRouter as Router } from 'react-router-dom';
 import { Root } from './Root';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
