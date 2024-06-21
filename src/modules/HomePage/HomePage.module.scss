@@ -2,6 +2,16 @@
 @import '../shared/fonts';
 @import '../shared/mixins';
 
+.error {
+  font-family: Mont, sans-serif, Helvetica;
+  font-size: 21px;
+  letter-spacing: -0.01em;
+  line-height: 50px;
+  align-self: center;
+  color: red;
+  min-height: 100vh;
+}
+
 .homePage {
   align-self: center;
   display: grid;

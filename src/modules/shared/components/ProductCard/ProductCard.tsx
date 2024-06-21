@@ -5,9 +5,10 @@ import { Product } from '../../types';
 
 type Props = {
   product: Product;
+  discount?: boolean;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ product, discount }) => {
   const [isActiveFavorite, setIsActiveFavorite] = useState(false);
   const [isAdded, setIsAdded] = useState(false);
 
@@ -31,7 +32,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className={styles.productPriceContainer}>
         <h3 className={styles.productPrice}>{product.price}</h3>
-        <p className={styles.productDiscount}>{product.fullPrice}</p>
+        {discount && (
+          <p className={styles.productDiscount}>{product.fullPrice}</p>
+        )}
       </div>
 
       <div className={styles.divider}></div>

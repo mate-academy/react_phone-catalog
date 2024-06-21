@@ -23,14 +23,21 @@ export const HomePage = () => {
     return discountB - discountA;
   });
 
+  const productsByYear = products.sort((a, b) => b.year - a.year);
+
   return errorMessage ? (
-    <h1>{errorMessage}</h1>
+    <h1 className={styles.error}>{errorMessage}</h1>
   ) : (
     <div className={styles.homePage}>
       <h1 className={styles.welcomeTitle}>Welcome to Nice Gadgets store!</h1>
       <PicturesSlider />
+      <ProductsSlider title={`Brand new models`} products={productsByYear} />
       <ShopByCategory products={products} />
-      <ProductsSlider title={`Hot prices`} products={productsByDiscount} />
+      <ProductsSlider
+        title={`Hot prices`}
+        products={productsByDiscount}
+        discount={true}
+      />
     </div>
   );
 };

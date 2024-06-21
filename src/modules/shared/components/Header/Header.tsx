@@ -1,10 +1,9 @@
-import { useState } from 'react';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Header = () => {
-  const [isActive, setIsActive] = useState('');
+  const { pathname } = useLocation();
 
   return (
     <>
@@ -16,38 +15,34 @@ export const Header = () => {
 
           <nav className={styles.nav}>
             <Link
-              to="#"
+              to="/"
               className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: isActive === 'home',
+                [styles.isActiveMenu]: pathname === '/',
               })}
-              onClick={() => setIsActive('home')}
             >
               home
             </Link>
             <Link
-              to="#"
+              to="/phones"
               className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: isActive === 'phones',
+                [styles.isActiveMenu]: pathname === '/phones',
               })}
-              onClick={() => setIsActive('phones')}
             >
               phones
             </Link>
             <Link
               to="#"
               className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: isActive === 'tablets',
+                [styles.isActiveMenu]: pathname === '/tablets',
               })}
-              onClick={() => setIsActive('tablets')}
             >
               tablets
             </Link>
             <Link
               to="#"
               className={classNames(styles.navBtn, {
-                [styles.isActiveMenu]: isActive === 'accessories',
+                [styles.isActiveMenu]: pathname === '/accessories',
               })}
-              onClick={() => setIsActive('accessories')}
             >
               accessories
             </Link>

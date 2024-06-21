@@ -8,9 +8,14 @@ import { useSwipeable } from 'react-swipeable';
 type Props = {
   title: string;
   products: Product[] | [];
+  discount?: boolean;
 };
 
-export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
+export const ProductsSlider: React.FC<Props> = ({
+  title,
+  products,
+  discount,
+}) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [productsOnPage, setProductsOnPage] = useState(0);
 
@@ -82,7 +87,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
         >
           {products.map(product => (
             <div key={product.id} className={styles.card}>
-              <ProductCard product={product} />
+              <ProductCard product={product} discount={discount} />
             </div>
           ))}
         </div>

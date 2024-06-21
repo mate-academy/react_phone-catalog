@@ -102,13 +102,13 @@
     padding-top: 64px;
   }
 
-  .productsSlider,
-  .topContainer {
+  .topContainer,
+  .productsSlider {
     grid-template-columns: repeat($grid-columns-tablet, 32px);
   }
 
   .title {
-    grid-column: 1 / 7;
+    grid-column: 1 / -3;
   }
 
   .sliderWindow {
