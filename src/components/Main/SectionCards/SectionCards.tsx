@@ -58,12 +58,15 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
-      document.body.removeEventListener('touchmove', preventDefault);
+      document.body.style.overflowX = 'hidden';
+
     } else if (leftX || rightX) {
+      document.body.style.overflowY = 'hidden';
+      document.body.style.overflowX = 'auto';
+
       document.body.addEventListener('touchmove', preventDefault, {
         passive: false,
       });
-      document.body.style.overflowY = 'hidden';
 
       let newOffsetX =
         getRefValue(currentOffsetXRef) -
@@ -79,11 +82,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       }
 
       setOffsetX(newOffsetX);
-    }
-
-    setTimeout(() => {
       document.body.removeEventListener('touchmove', preventDefault);
-    }, 500);
+    }
   };
 
   const onTouchEnd = () => {
@@ -134,6 +134,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
       getRefValue(containerRef).scrollWidth;
+
+    document.body.style.overflow = 'hidden';
   };
 
   function handleNext() {

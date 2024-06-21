@@ -50,6 +50,8 @@
     column-gap: 16px;
     flex-shrink: 0;
     @extend %transitionPage;
+
+
   }
 
   &__cardsList {
@@ -57,9 +59,7 @@
     list-style: none;
     column-gap: 16px;
     grid-column: 1 / 7;
-
     // touch-action: none;
-
     user-select: none;
   }
 

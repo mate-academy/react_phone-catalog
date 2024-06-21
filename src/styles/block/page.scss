@@ -7,6 +7,9 @@
   font-weight: 800;
   scroll-behavior: smooth;
   text-decoration: none;
+  scrollbar-gutter: stable;
+  scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
+  scrollbar-color: darkgray lightgray;
 }
 
 .light {
@@ -25,10 +28,7 @@
   --background-color-button-cart: #313237;
   --text-discount-color: #89939a;
   --text-items-color: #89939a;
-  --textFooterColor: #89939A;
-  scrollbar-gutter: stable;
-  scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
-  scrollbar-color: darkgray lightgray;
+  --textFooterColor: #89939a;
   // touch-action: none;
 }
 
@@ -47,7 +47,7 @@
   --background-color-phoneCardHover: #a378ff;
   --text-discount-color: #75767f;
   --text-items-color: #75767f;
-  --textFooterColor: #F1F2F9;
+  --textFooterColor: #f1f2f9;
   color: $text-color;
   background-color: $background-color;
 }
