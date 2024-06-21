@@ -1,5 +1,5 @@
 import style from '../Main/Main.module.scss';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { Slider } from './Slider/Slider';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
@@ -11,14 +11,6 @@ export const Main = () => {
   const { t } = useContext(LanguageContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
   const { menu } = useParams();
-
-  useEffect(() => {
-    if (menu) {
-      document.body.style.scrollbarGutter = 'stable';
-    } else {
-      document.body.style.scrollbarGutter = 'auto';
-    }
-  }, [menu]);
 
   return (
     <main
