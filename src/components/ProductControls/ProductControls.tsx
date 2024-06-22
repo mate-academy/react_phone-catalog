@@ -50,7 +50,9 @@ const ProductControls: React.FC<Props> = ({ productDetails, product }) => {
                       ? 'midnightblue'
                       : color === 'spacegray'
                         ? 'gray'
-                        : color,
+                        : color === 'spaceblack'
+                          ? 'black'
+                          : color,
                 }}
                 className={styles.colorButton}
                 onClick={() =>
