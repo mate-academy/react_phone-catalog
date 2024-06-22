@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 import { Link, To } from 'react-router-dom';
 
@@ -8,7 +8,7 @@ import { Text } from '../ui/Text';
 import classes from './cartCard.module.scss';
 import { RoundButton } from '../ui/RoundButton';
 
-type Props = ComponentProps<'div'> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   to: To;
   product: Pick<Product, 'image' | 'name' | 'price'>;
   count: number;

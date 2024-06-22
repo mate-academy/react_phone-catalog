@@ -1,0 +1,21 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    color: var(--primary);
+
+    &_skeleton {
+      height: 20px;
+    }
+  }
+
+  &__text {
+    color: var(--secondary);
+
+    &_skeleton {
+      height: 100px;
+    }
+  }
+}

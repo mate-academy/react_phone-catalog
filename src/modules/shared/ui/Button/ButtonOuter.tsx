@@ -1,11 +1,11 @@
-import React, { FC, ComponentProps } from 'react';
+import React, { FC, ComponentPropsWithoutRef } from 'react';
 import cn from 'classnames';
 
 import classes from './button.module.scss';
 
 type Variant = 'regular' | 'inversed';
 
-export type Props = ComponentProps<'button'> & {
+export type Props = ComponentPropsWithoutRef<'button'> & {
   variant?: Variant;
 };
 

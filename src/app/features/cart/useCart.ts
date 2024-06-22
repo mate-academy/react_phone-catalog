@@ -5,7 +5,7 @@ import { AppState } from '../../store';
 import { useAppDispatch } from '../../hooks';
 import { increase, decrease, deleteProduct, addProduct } from './cartSlice';
 
-type Payload = Pick<Product, 'id'>;
+type Payload = Pick<Product, 'itemId'>;
 
 export const useCart = <T>(selector: (state: AppState) => T) => {
   const data = useSelector(selector);

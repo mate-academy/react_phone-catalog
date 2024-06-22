@@ -1,11 +1,11 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Element } from './types';
 import { VARIANT } from './vaiables';
 import classes from './text.module.scss';
 
-type Props = { element?: Element } & ComponentProps<Element>;
+type Props = { element?: Element } & ComponentPropsWithoutRef<Element>;
 
 export const TextH1: FC<Props> = ({
   element = 'span',

@@ -1,11 +1,10 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
-import { Container } from '../Container';
 import { PaginationProviedr } from './PaginationContext';
 import classes from './pagination.module.scss';
 
-type Props = ComponentProps<typeof Container> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   pageCount: number;
   currentSelectedIndex: number;
   select: (index: number) => void;
@@ -30,11 +29,11 @@ export const Pagination: FC<Props> = ({
       select={select}
       currentSelectedIndex={currentSelectedIndex}
     >
-      <Container {...props} className={cn(classes.pagination, className)}>
+      <div {...props} className={cn(classes.pagination, className)}>
         {prevButton}
         {crumbs}
         {nextButton}
-      </Container>
+      </div>
     </PaginationProviedr>
   );
 };

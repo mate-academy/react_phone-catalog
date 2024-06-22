@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 
 import {
   selectHotPrices,
@@ -8,7 +8,7 @@ import {
 import { ProductCard } from '../../../shared/ProductCard';
 import { ProductsCarousel } from '../../../shared/ProductsCarousel';
 
-type Props = ComponentProps<'div'>;
+type Props = ComponentPropsWithoutRef<'div'>;
 
 const skeletons = Array.from(Array(4), (_, i) => (
   <ProductCard.Skeleton key={i} />

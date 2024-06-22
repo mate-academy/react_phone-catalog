@@ -5,7 +5,7 @@ import { Product, ProductId } from '../../../types';
 
 type State = ProductId[];
 
-type PayloadId = PayloadAction<Pick<Product, 'id'>>;
+type PayloadId = PayloadAction<Pick<Product, 'itemId'>>;
 
 const initialState: State = [];
 
@@ -13,19 +13,19 @@ export const favouritesSlice = createSlice({
   initialState,
   name: 'favourites',
   reducers: {
-    addItem(state, { payload: { id } }: PayloadId) {
-      state.push(id);
+    addItem(state, { payload: { itemId } }: PayloadId) {
+      state.push(itemId);
     },
-    removeItem(state, { payload: { id } }: PayloadId) {
-      const target = state.findIndex(currentId => currentId === id);
+    removeItem(state, { payload: { itemId } }: PayloadId) {
+      const target = state.findIndex(currentId => currentId === itemId);
 
       state.splice(target, 1);
     },
-    toggleItem(state, { payload: { id } }: PayloadId) {
-      if (!state.includes(id)) {
-        state.push(id);
+    toggleItem(state, { payload: { itemId } }: PayloadId) {
+      if (!state.includes(itemId)) {
+        state.push(itemId);
       } else {
-        const target = state.findIndex(currentId => currentId === id);
+        const target = state.findIndex(currentId => currentId === itemId);
 
         state.splice(target, 1);
       }

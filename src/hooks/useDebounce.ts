@@ -2,7 +2,7 @@ import { useCallback, useRef } from 'react';
 
 export const useDebounce = <T extends any[]>(
   fn: (...args: T) => void,
-  deley: number,
+  delay: number,
 ) => {
   const ref = useRef(fn);
   const timer = useRef<NodeJS.Timer>();
@@ -13,9 +13,9 @@ export const useDebounce = <T extends any[]>(
     (...args: T) => {
       clearTimeout(timer.current);
 
-      timer.current = setTimeout(() => ref.current(...args), deley);
+      timer.current = setTimeout(() => ref.current(...args), delay);
     },
-    [deley],
+    [delay],
   );
 
   return debounced;

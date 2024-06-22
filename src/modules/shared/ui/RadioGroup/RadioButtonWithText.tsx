@@ -1,6 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, {
-  ComponentProps,
+  ComponentPropsWithoutRef,
   FC,
   PropsWithChildren,
   useContext,
@@ -11,7 +11,7 @@ import { Text } from '../Text';
 import { RadioContext } from './RadioContext';
 import classes from './radioGroup.module.scss';
 
-type Props = PropsWithChildren<ComponentProps<'input'>>;
+type Props = PropsWithChildren<ComponentPropsWithoutRef<'input'>>;
 
 export const RadioButtonWithText: FC<Props> = ({
   id,

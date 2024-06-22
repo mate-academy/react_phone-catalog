@@ -5,15 +5,15 @@ import { AppState } from '../../../store';
 import { fetchPhones } from './fetchPhones';
 import { selectPhonesInfo } from './selectors';
 
-export const useProducts = <T>(selector: (state: AppState) => T) => {
+export const usePhones = <T>(selector: (state: AppState) => T) => {
   const retryCount = useRef(0);
-  const products = useAppSelector(selector);
-  const productsInfo = useAppSelector(selectPhonesInfo);
+  const phones = useAppSelector(selector);
+  const phonesInfo = useAppSelector(selectPhonesInfo);
   const dispatch = useAppDispatch();
 
   useEffect(() => {
     const isValidStatus =
-      productsInfo.status == 'pending' || productsInfo.status === 'fulfilled';
+      phonesInfo.status == 'pending' || phonesInfo.status === 'fulfilled';
 
     const isValidRetry = retryCount.current < 5;
 
@@ -23,10 +23,10 @@ export const useProducts = <T>(selector: (state: AppState) => T) => {
 
     retryCount.current++;
     dispatch(fetchPhones());
-  }, [productsInfo.status, dispatch]);
+  }, [phonesInfo.status, dispatch]);
 
   return {
-    ...productsInfo,
-    products,
+    ...phonesInfo,
+    phones,
   };
 };

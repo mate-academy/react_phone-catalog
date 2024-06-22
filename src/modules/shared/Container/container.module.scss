@@ -13,18 +13,18 @@
     margin-inline: auto;
     padding-inline: 32px;
   }
+}
 
-  &_grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    column-gap: 16px;
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
 
-    @include on-tablet {
-      grid-template-columns: repeat(12, 1fr);
-    }
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
 
-    @include on-desktop {
-      grid-template-columns: repeat(24, 1fr);
-    }
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
   }
 }

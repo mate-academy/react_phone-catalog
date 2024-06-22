@@ -36,17 +36,15 @@ export const Category: FC<Props> = ({ category }) => {
   } = useCategory(category);
 
   return (
-    <div className={classes.page}>
-      <Breadcrumbs />
+    <Container className={classes.page}>
+      <Breadcrumbs className={classes.page__breadCrumbs} />
       <Info
         numberOfProducts={filteredProducts.length}
         status={status}
         category={category}
         className={classes.page__info}
       />
-      <Container.Grid
-        className={cn(classes.page__selects, classes.selectContaienr)}
-      >
+      <Container.Grid>
         <label className={cn(classes.select, classes.select_sort)}>
           <Text.Small className={classes.select__text}>Sort</Text.Small>
 
@@ -98,6 +96,6 @@ export const Category: FC<Props> = ({ category }) => {
         setQuery={setSearchQuery}
         placeholder={'Find ' + category}
       />
-    </div>
+    </Container>
   );
 };

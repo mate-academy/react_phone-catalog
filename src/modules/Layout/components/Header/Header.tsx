@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { ComponentProps, FC, useEffect, useRef } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -14,7 +14,7 @@ import { useHeader } from './useHeader';
 import { FavouritesLink } from './FavouritesLink';
 import classes from './header.module.scss';
 
-type Props = ComponentProps<'header'> & {
+type Props = ComponentPropsWithoutRef<'header'> & {
   links: MenuItem[];
 };
 

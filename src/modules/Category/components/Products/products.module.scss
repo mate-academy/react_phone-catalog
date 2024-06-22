@@ -2,6 +2,8 @@
 
 .container {
   row-gap: 40px;
+  padding-inline: 0;
+  min-width: 0;
 
   &__card {
     grid-column: 1 / -1;

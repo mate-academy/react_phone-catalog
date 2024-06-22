@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { RoundButton } from '../ui/RoundButton';
@@ -6,7 +6,7 @@ import { Icon } from '../ui/Icon';
 import { usePagination } from './PaginationContext';
 import classes from './pagination.module.scss';
 
-type Props = ComponentProps<typeof RoundButton>;
+type Props = ComponentPropsWithoutRef<typeof RoundButton>;
 
 export const PaginationPrevButton: FC<Props> = ({
   className,

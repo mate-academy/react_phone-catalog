@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, useMemo } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useMemo } from 'react';
 import cn from 'classnames';
 
 import { getFragment } from '../../../utils/getFragment';
@@ -6,7 +6,7 @@ import { RadioGroup } from '../ui/RadioGroup';
 import { usePagination } from './PaginationContext';
 import classes from './pagination.module.scss';
 
-type Props = ComponentProps<'div'> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   take: number;
 };
 

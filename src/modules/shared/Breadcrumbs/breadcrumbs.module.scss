@@ -16,11 +16,13 @@
 
 .crumb {
   min-width: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 
   &_link {
+    display: block;
+    line-height: 0;
     color: var(--primary);
     text-decoration: none;
     transition: color var(--transition-specs);
@@ -28,12 +30,5 @@
     @include hover {
       color: var(--secondary);
     }
-  }
-
-  span {
-    font-weight: 600;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
   }
 }

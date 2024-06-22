@@ -5,7 +5,7 @@ import { Product } from '../../../types';
 import { useAppDispatch } from '../../hooks';
 import { AppState } from '../../store';
 
-type Payload = Pick<Product, 'id'>;
+type Payload = Pick<Product, 'itemId'>;
 
 export const useFavourites = <T>(selector: (state: AppState) => T) => {
   const data = useSelector(selector);

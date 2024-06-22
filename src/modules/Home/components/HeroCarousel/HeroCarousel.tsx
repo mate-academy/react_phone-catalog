@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Container } from '../../../shared/Container';
@@ -9,7 +9,7 @@ import { HeroCarouselSlide } from './HeroCarouselSlide';
 import { SLIDES } from './variables';
 import classes from './heroCarousel.module.scss';
 
-type Props = ComponentProps<'div'>;
+type Props = ComponentPropsWithoutRef<'div'>;
 
 export const HeroCarousel: FC<Props> = ({ className, ...props }) => {
   const {

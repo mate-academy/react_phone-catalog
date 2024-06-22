@@ -1,5 +1,5 @@
-/* eslint-disable @typescript-eslint/indent */
-import React, { ComponentProps, FC, useMemo } from 'react';
+/* eslint-disable  @typescript-eslint/indent */
+import React, { ComponentPropsWithoutRef, FC, useMemo } from 'react';
 
 import classes from './products.module.scss';
 import { Container } from '../../../shared/Container';
@@ -7,7 +7,7 @@ import { ProductCard } from '../../../shared/ProductCard';
 import cn from 'classnames';
 import { Product, QueryStatus } from '../../../../types';
 
-type Props = ComponentProps<typeof Container> & {
+type Props = ComponentPropsWithoutRef<typeof Container> & {
   products: Product[];
   take: number;
   status: QueryStatus;

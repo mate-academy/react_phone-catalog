@@ -15,6 +15,7 @@ export const HeaderMenuItem: FC<Props> = ({ item: { text, to } }) => {
     <li className={classes.menuItem}>
       <NavLink
         to={to}
+        end
         className={({ isActive }) =>
           cn(classes.menuItem__link, {
             [classes.menuItem__link_active]: isActive,

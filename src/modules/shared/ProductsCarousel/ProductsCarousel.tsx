@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import cn from 'classnames';
 
@@ -6,10 +6,9 @@ import { useCarouselButtons } from '../../../hooks/useCarouselButtons';
 import { Text } from '../ui/Text';
 import { RoundButton } from '../ui/RoundButton';
 import { Icon } from '../ui/Icon';
-import { Container } from '../Container';
 import classes from './productsCarousel.module.scss';
 
-type Props = ComponentProps<'div'> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   carouselTitle: string;
 };
 
@@ -33,7 +32,7 @@ export const ProductsCarousel: FC<Props> = ({
     useCarouselButtons(api);
 
   return (
-    <Container {...props} className={cn(classes.carousel, className)}>
+    <div {...props} className={cn(classes.carousel, className)}>
       <div className={classes.carousel__header}>
         <Text.H2 className={classes.carousel__title} element="h2">
           {carouselTitle}
@@ -56,6 +55,6 @@ export const ProductsCarousel: FC<Props> = ({
           ))}
         </ul>
       </div>
-    </Container>
+    </div>
   );
 };

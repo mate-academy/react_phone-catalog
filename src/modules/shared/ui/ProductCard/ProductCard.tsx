@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, FC, ReactNode } from 'react';
 import { Link, To } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -6,7 +6,7 @@ import { Product } from '../../../../types';
 import { ProductCardProvider } from './ProductCardContext';
 import classes from './productCard.module.scss';
 
-type Props = ComponentProps<'article'> & {
+type Props = ComponentPropsWithoutRef<'article'> & {
   product: Product;
   to: To;
   actions?: ReactNode;

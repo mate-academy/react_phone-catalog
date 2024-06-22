@@ -4,6 +4,8 @@
   --vertical-gap-sm: 24px;
   --vertical-gap-lg: 56px;
 
+  padding-block: var(--vertical-gap-sm) var(--vertical-gap-lg);
+
   @include on-tablet {
     --vertical-gap-sm: 32px;
     --vertical-gap-lg: 64px;
@@ -31,6 +33,6 @@
   }
 
   &__hotPricesCarousel {
-    margin-block: var(--vertical-gap-lg);
+    margin-top: var(--vertical-gap-lg);
   }
 }

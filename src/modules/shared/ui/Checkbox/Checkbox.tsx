@@ -1,9 +1,9 @@
-import React, { ComponentProps, FC, PropsWithChildren } from 'react';
+import React, { ComponentPropsWithoutRef, FC, PropsWithChildren } from 'react';
 import cn from 'classnames';
 
 import classes from './checkbox.module.scss';
 
-type Props = PropsWithChildren<ComponentProps<'input'>>;
+type Props = PropsWithChildren<ComponentPropsWithoutRef<'input'>>;
 
 export const Checkbox: FC<Props> = ({
   style,

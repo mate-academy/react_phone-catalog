@@ -1,9 +1,9 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import classes from './roundButton.module.scss';
 
-type Props = ComponentProps<'button'>;
+type Props = ComponentPropsWithoutRef<'button'>;
 
 export const RoundButton: FC<Props> = ({ className, children, ...props }) => {
   return (

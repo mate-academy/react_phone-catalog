@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Text } from '../../../shared/ui/Text';
@@ -8,7 +8,7 @@ import { CategoriesTablets } from './CategoriesTablets';
 import { CategoriesAccessories } from './CategoriesAccessories';
 import classes from './categories.module.scss';
 
-type Props = ComponentProps<'div'>;
+type Props = ComponentPropsWithoutRef<'div'>;
 
 export const Categories: FC<Props> = ({ className, ...props }) => {
   return (

@@ -1,4 +1,4 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 
 import { Product } from '../../../types';
 import { selectInCart, useCart } from '../../../app/features/cart';
@@ -8,7 +8,7 @@ import {
 } from '../../../app/features/favourites';
 import { ProductCard as GenericProductCard } from '../ui/ProductCard';
 
-type Props = ComponentProps<'article'> & {
+type Props = ComponentPropsWithoutRef<'article'> & {
   product: Product;
   showFullPrice?: boolean;
 };
@@ -20,8 +20,8 @@ export const ProductCard: FC<Props> = ({
 }) => {
   const [favourites, { toggle }] = useFavourites(selectFavourites);
   const [inCart, { addToCart }] = useCart(selectInCart);
-  const isFavourite = favourites.includes(product.id);
-  const isInCart = Boolean(inCart[product.id]);
+  const isFavourite = favourites.includes(product.itemId);
+  const isInCart = Boolean(inCart[product.itemId]);
 
   return (
     <GenericProductCard

@@ -1,15 +1,14 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Category, QueryStatus } from '../../../../types';
 import { capitalize } from '../../../../utils/capitalize';
-import { Container } from '../../../shared/Container';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { Text } from '../../../shared/ui/Text';
 import { TITLE } from './variables';
 import classes from './info.module.scss';
 
-type Props = ComponentProps<typeof Container> & {
+type Props = ComponentPropsWithoutRef<'div'> & {
   category: Category;
   numberOfProducts: number;
   status: QueryStatus;
@@ -23,7 +22,7 @@ export const Info: FC<Props> = ({
   ...props
 }) => {
   return (
-    <Container {...props} className={cn(classes.info, className)}>
+    <div {...props} className={cn(classes.info, className)}>
       <Text.H1 className={classes.info__title} element="h1">
         {capitalize(TITLE[category])}
       </Text.H1>
@@ -40,6 +39,6 @@ export const Info: FC<Props> = ({
           )}
         />
       )}
-    </Container>
+    </div>
   );
 };

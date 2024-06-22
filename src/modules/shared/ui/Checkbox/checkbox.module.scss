@@ -5,6 +5,8 @@
   position: relative;
   border-radius: 50%;
   background: var(--bg);
+  width: 40px;
+  height: 40px;
 
   &__input {
     position: absolute;
@@ -19,12 +21,11 @@
   &__tag {
     position: relative;
     border-radius: inherit;
-
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
 
     background: var(--bg);
     border: 1px solid var(--icons);

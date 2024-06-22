@@ -1,26 +1,17 @@
-import React, { FC, ReactNode } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import { Link, useMatches } from 'react-router-dom';
-import { Icon } from '../ui/Icon';
-
-import classes from './breadcrumbs.module.scss';
-import { Container } from '../Container';
 import cn from 'classnames';
 
-type Props = {};
+import { Icon } from '../ui/Icon';
+import { Text } from '../ui/Text';
+import { hasCrumb } from './utils/hasCrumb';
+import classes from './breadcrumbs.module.scss';
 
-const hasCrumb = (
-  obj: unknown,
-): obj is { crumb: (pathname?: string) => ReactNode } => {
-  return (
-    typeof obj == 'object' &&
-    obj !== null &&
-    'crumb' in obj &&
-    typeof obj.crumb === 'function'
-  );
-};
+type Props = ComponentPropsWithoutRef<'div'>;
 
-export const Breadcrumbs: FC<Props> = ({}) => {
+export const Breadcrumbs: FC<Props> = ({ className, ...props }) => {
   const matches = useMatches();
+
   const crumbs = matches
     .filter(match => hasCrumb(match.handle))
     .map((match, index, filteredCrumbs) => {
@@ -28,12 +19,14 @@ export const Breadcrumbs: FC<Props> = ({}) => {
         return null;
       }
 
+      const currentCrumb = (
+        <Text.Small className={classes.crumb}>
+          {match.handle.crumb()}
+        </Text.Small>
+      );
+
       if (index === filteredCrumbs.length - 1) {
-        return (
-          <span className={classes.crumb} key={index}>
-            {match.handle.crumb(match.pathname)}
-          </span>
-        );
+        return <React.Fragment key={index}>{currentCrumb}</React.Fragment>;
       }
 
       return (
@@ -42,12 +35,16 @@ export const Breadcrumbs: FC<Props> = ({}) => {
             to={match.pathname}
             className={cn(classes.crumb, classes.crumb_link)}
           >
-            {match.handle.crumb(match.pathname)}
+            {currentCrumb}
           </Link>
           <Icon variant="arrow-right" />
         </React.Fragment>
       );
     });
 
-  return <Container className={classes.crumbs}>{crumbs}</Container>;
+  return (
+    <div {...props} className={cn(classes.crumbs, className)}>
+      {crumbs}
+    </div>
+  );
 };

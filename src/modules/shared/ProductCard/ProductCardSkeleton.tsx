@@ -1,10 +1,10 @@
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
 import { Skeleton } from '../ui/Skeleton';
 import classes from './productCardSkeleton.module.scss';
 
-type Props = ComponentProps<'div'>;
+type Props = ComponentPropsWithoutRef<'div'>;
 
 export const ProductCardSkeleton: FC<Props> = ({ className }) => {
   return (

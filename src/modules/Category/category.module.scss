@@ -7,16 +7,13 @@
     padding-bottom: 24px 80px;
   }
 
-  &__info {
-    margin-top: 24px;
-
-    @include on-tablet {
-      margin-top: 40px;
-    }
+  &__breadCrumbs {
+    grid-column: 1 / -1;
   }
 
-  &__selects {
-    margin-top: 32px;
+  &__info {
+    margin-top: 24px;
+    grid-column: 1 / -1;
 
     @include on-tablet {
       margin-top: 40px;
@@ -25,6 +22,7 @@
 
   &__pagination {
     margin-top: 24px;
+    grid-column: 1 / -1;
 
     @include on-tablet {
       margin-top: 40px;
@@ -37,11 +35,19 @@
 
   &__products {
     margin-top: 24px;
+    grid-column: 1 / -1;
+    width: 100%;
   }
 }
 
 .select {
+  line-height: 0;
+  margin-top: 32px;
   grid-column: span 2;
+
+  @include on-tablet {
+    margin-top: 40px;
+  }
 
   &_take {
     @include on-tablet {
@@ -53,5 +59,9 @@
     @include on-tablet {
       grid-column: span 4;
     }
+  }
+
+  &__text {
+    margin-bottom: 4px;
   }
 }

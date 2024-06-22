@@ -12,15 +12,14 @@ type Props = {};
 
 export const Home: FC<Props> = ({}) => {
   return (
-    <div className={classes.page}>
+    <Container className={classes.page}>
       <h1 className="visually-hidden">Product Catalog</h1>
-      <Container className={classes.page__title}>
-        <Text.H1 element="h2">Welcome to Nice Gadgets store!</Text.H1>
-      </Container>
+
+      <Text.H1 element="h2">Welcome to Nice Gadgets store!</Text.H1>
       <HeroCarousel className={classes.page__heroCarousel} />
       <NewProductsCarousel className={classes.page__newProductsCarousel} />
       <Categories className={classes.page__categories} />
       <HotPricesCarousel className={classes.page__hotPricesCarousel} />
-    </div>
+    </Container>
   );
 };

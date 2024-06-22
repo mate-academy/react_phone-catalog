@@ -1,5 +1,5 @@
 /* eslint-disable max-len */
-import React, { ComponentProps, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
@@ -13,7 +13,7 @@ import { FooterMenuList } from '../FooterMenuList';
 import classes from './footer.module.scss';
 import { getLogoPath } from '../../../../utils/getLogoPath';
 
-type Props = ComponentProps<'footer'> & {
+type Props = ComponentPropsWithoutRef<'footer'> & {
   links: MenuItem[];
 };
 

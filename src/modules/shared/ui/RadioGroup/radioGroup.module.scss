@@ -1,14 +1,32 @@
 @import 'src/styles/mixins';
 
-.radioButton {
+.radioButtonWithTextSquare,
+.radioButton,
+.radioButtonWithText {
   display: inline-block;
   position: relative;
-  border-radius: 50%;
-  background: var(--accent-secondary);
+
+  &__input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
 
   &__tag {
     cursor: pointer;
     height: 32px;
+  }
+}
+
+.radioButton {
+  border-radius: 50%;
+  background: var(--accent-secondary);
+
+  &__tag {
     width: 32px;
     display: flex;
     border-radius: inherit;
@@ -33,18 +51,14 @@
 }
 
 .radioButtonWithText {
-  display: inline-block;
-  position: relative;
   border-radius: 50%;
 
   & > &__tag {
     display: flex;
     align-items: center;
     justify-content: center;
-    cursor: pointer;
     border-radius: inherit;
     width: 32px;
-    height: 32px;
     box-shadow: inset 0 0 0 1px var(--elements);
     transition: box-shadow var(--transition-specs, 1s);
     user-select: none;
@@ -61,15 +75,30 @@
   }
 }
 
-.radioButton,
-.radioButtonWithText {
-  &__input {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 0;
-    height: 0;
-    opacity: 0;
-    pointer-events: none;
+.radioButtonWithTextSquare {
+  display: inline-block;
+  position: relative;
+  border-radius: 4px;
+
+  & > &__tag {
+    line-height: 32px;
+    padding-inline: 8px;
+    color: var(--primary);
+    box-shadow: inset 0 0 0 1px var(--icons);
+    border-radius: inherit;
+    transition:
+      color var(--transition-specs),
+      box-shadow var(--transition-specs),
+      background-color var(--transition-specs);
+
+    @include hover {
+      box-shadow: inset 0 0 0 1px var(--primary);
+    }
+  }
+
+  &__input:checked ~ &__tag {
+    color: var(--bg);
+    background: var(--primary);
+    box-shadow: inset 0 0 0 1px var(--primary);
   }
 }

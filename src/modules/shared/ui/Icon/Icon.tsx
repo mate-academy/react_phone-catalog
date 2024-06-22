@@ -1,4 +1,4 @@
-import React, { FC, ComponentProps } from 'react';
+import React, { FC, ComponentPropsWithoutRef } from 'react';
 import cn from 'classnames';
 
 import { Variant } from './types';
@@ -6,7 +6,7 @@ import { PATH } from './variables';
 import icons from './sprite.svg';
 import classes from './icon.module.scss';
 
-type Props = Exclude<ComponentProps<'svg'>, 'children'> & {
+type Props = Exclude<ComponentPropsWithoutRef<'svg'>, 'children'> & {
   variant: Variant;
 };
 
