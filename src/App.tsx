@@ -19,7 +19,7 @@ export const App = () => {
     useContext(ContextApp);
 
   const handleScroll = () => {
-    console.log('ScrollY:', window.pageYOffset );
+    console.log('ScrollY:', window.scrollY);
     if (window.scrollY > 70 && backToTop.current) {
       console.log('in')
       backToTop.current.style.marginTop = '10px';
@@ -32,9 +32,9 @@ export const App = () => {
   };
 
   useEffect(() => {
-    document.addEventListener('scroll', () => handleScroll());
+    document.addEventListener('scroll', handleScroll);
 
-    return document.removeEventListener('scroll', () => handleScroll());
+    return document.removeEventListener('scroll', handleScroll);
   }, []);
 
   return (
