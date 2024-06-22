@@ -39,9 +39,9 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
 
-  function preventDefault(event: { preventDefault: () => void }) {
+  const preventDefault = (event: { preventDefault: () => void }) => {
     event.preventDefault();
-  }
+  };
 
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
@@ -79,8 +79,11 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       }
 
       setOffsetX(newOffsetX);
-      // document.body.removeEventListener('touchmove', preventDefault);
     }
+
+    setTimeout(() => {
+      document.body.removeEventListener('touchmove', preventDefault);
+    }, 500);
   };
 
   const onTouchEnd = () => {
@@ -116,8 +119,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
 
     indicatorOnClick(Math.floor(Math.abs(newOffSetX / newFormuls)));
     setMouseTouch(false);
-
-    document.body.removeEventListener('touchmove', preventDefault);
   };
 
   const onTouchStart = (
@@ -133,8 +134,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
       getRefValue(containerRef).scrollWidth;
-
-    // document.body.style.overflowY = 'hidden';
   };
 
   function handleNext() {
