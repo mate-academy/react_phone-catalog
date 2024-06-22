@@ -20,12 +20,12 @@ export const App = () => {
 
   const handleScroll = () => {
     console.log('ScrollY:', window.pageYOffset );
-    if (window.scrollY > 100 && backToTop.current) {
+    if (window.scrollY > 70 && backToTop.current) {
       console.log('in')
       backToTop.current.style.marginTop = '10px';
     }
 
-    if (window.scrollY < 100 && backToTop.current) {
+    if (window.scrollY < 70 && backToTop.current) {
       console.log('in')
       backToTop.current.style.marginTop = '150vh';
     }
@@ -34,7 +34,7 @@ export const App = () => {
   useEffect(() => {
     document.addEventListener('scroll', () => handleScroll());
 
-    return document.removeEventListener('scroll', handleScroll);
+    return document.removeEventListener('scroll', () => handleScroll());
   }, []);
 
   return (
