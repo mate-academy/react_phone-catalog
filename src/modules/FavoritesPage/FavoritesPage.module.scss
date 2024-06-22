@@ -1,0 +1,15 @@
+@import '../../variable.scss';
+
+.Title {
+  margin-top: 40px;
+  color: $white-color;
+  font-size: 48px;
+  font-weight: 800;
+}
+
+.Subtitle {
+  font-size: 14px;
+  color: $secondary-color;
+  margin-top: 8px;
+  margin-bottom: 16px;
+}

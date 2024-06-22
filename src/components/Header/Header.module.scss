@@ -8,8 +8,6 @@
 
 .Header {
   border-bottom: 1px solid $surface-main-color;
-  padding-top: 23px;
-  padding-bottom: 25px;
 }
 
 .HeaderContent {
@@ -26,7 +24,10 @@
   align-items: center;
 }
 
+.HeaderList {
+  display: flex;
+}
+
 .HeaderLogo {
   width: 80px;
-  height: 30px;
 }

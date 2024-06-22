@@ -4,7 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { IconRight } from '../../ui/IconRight';
 
 import iconHome from '../../assets/images/home.svg';
-import { capatalize } from '../../utils/utils';
+import { capatalize } from '../../utils';
 
 import styles from './Breadcrumbs.module.scss';
 

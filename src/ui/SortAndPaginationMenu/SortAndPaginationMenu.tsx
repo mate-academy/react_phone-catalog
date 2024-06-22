@@ -7,7 +7,7 @@ import {
 import { DropdownMenu } from '../DropdownMenu/DropdownMenu';
 
 import { Sorts } from '../../types/Sorts';
-import { capatalize } from '../../utils/utils';
+import { capatalize } from '../../utils';
 
 import styles from './SortAndPaginationMenu.module.scss';
 

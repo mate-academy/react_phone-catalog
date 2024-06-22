@@ -15,21 +15,24 @@ import { getProducts } from '../../services/products';
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';
 import { ProductDetail } from '../../types/ProductDetail';
-import { getSuggestedProducts } from '../../utils/utils';
+import { getSuggestedProducts } from '../../utils';
 
 import { ButtonBack } from '../../ui/ButtonBack';
 import styles from './ProductDetailsPage.module.scss';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
-  const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
+
+  const [products, setProducts] = useState<Product[]>([]);
   const [productDetail, setProductDetail] = useState<ProductDetail | null>(
     null,
   );
 
   const [loading, setLoading] = useState(false);
 
-  const fetchSuggestedProducts = useCallback(async () => {
+  const suggestedProducts = getSuggestedProducts(products);
+
+  const fetchAllProducts = useCallback(async () => {
     const result = await getProducts(productDetail?.category as Categories);
 
     return result;
@@ -58,16 +61,8 @@ export const ProductDetailsPage = () => {
   }, []);
 
   useEffect(() => {
-    setLoading(true);
-
-    fetchSuggestedProducts()
-      .then(products => {
-        setSuggestedProducts(getSuggestedProducts(products));
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, [productDetail, fetchSuggestedProducts]);
+    fetchAllProducts().then(setProducts);
+  }, [productDetail, fetchAllProducts]);
 
   useEffect(() => {
     setLoading(true);
@@ -86,6 +81,10 @@ export const ProductDetailsPage = () => {
       });
   }, [productId, fetchProducts]);
 
+  if (loading) {
+    return <Loader />;
+  }
+
   return (
     <>
       <Breadcrumbs
@@ -99,7 +98,10 @@ export const ProductDetailsPage = () => {
 
       <section className={styles.ProductWrapper}>
         <ProductDetailPictures images={productDetail?.images} />
-        <ProductDetailPurchase productDetail={productDetail} />
+        <ProductDetailPurchase
+          products={products}
+          productDetail={productDetail}
+        />
       </section>
 
       <section
@@ -108,8 +110,6 @@ export const ProductDetailsPage = () => {
         <AboutProductDetail description={productDetail?.description} />
         <TechSpecsProduct productDetail={productDetail} />
       </section>
-
-      {loading && <Loader />}
 
       <ProductList
         title="You may also like"

@@ -4,11 +4,15 @@ import { FavouriteButton } from '../../ui/FavouriteButton';
 import { PurchaseButton } from '../../ui/PurchaseButton';
 
 import { favoriteIcon } from '../../assets';
+import isFavoriteIcon from '../../assets/images/is-favorite.svg';
+
 import { Product } from '../../types/Product';
-import { normalizeString } from '../../utils/utils';
+import { extractNumberAndSuffix } from '../../utils';
 import { ProductCardPrices } from '../ProductCardPrices';
 
+import { useFavorites } from '../../hooks/useFavorites';
 import { useProductsCart } from '../../hooks/useProductsCart';
+
 import styles from './ProductCard.module.scss';
 
 type Props = {
@@ -19,19 +23,32 @@ type Props = {
 export const ProductCard: React.FC<Props> = props => {
   const { pathname } = useLocation();
   const { addProduct, cart } = useProductsCart();
+  const { favorites, addToFavorites, removeProduct } = useFavorites();
+
   const isHaveProduct = cart.some(item => item.id === props.product.id);
+  const isFavoriteProduct = favorites.some(
+    item => item.id === props.product.id,
+  );
 
   const { name, screen, capacity, ram, image, price, fullPrice, itemId } =
     props.product;
   const { isHotPrice } = props;
 
-  const normalizeCapacity = normalizeString(capacity);
-  const normalizeRam = normalizeString(ram);
+  const normalizeCapacity = extractNumberAndSuffix(capacity);
+  const normalizeRam = extractNumberAndSuffix(ram);
 
   const activeProductCardText = `${styles.DescriptionsText} ${styles.DescriptionsTextActive}`;
 
   const handleAddProduct = () => {
     addProduct(props.product);
+  };
+
+  const handleToggleFavoriteStatus = () => {
+    if (!isFavoriteProduct) {
+      addToFavorites(props.product);
+    } else {
+      removeProduct(props.product.id);
+    }
   };
 
   return (
@@ -70,8 +87,15 @@ export const ProductCard: React.FC<Props> = props => {
           {isHaveProduct ? 'Added to cart' : 'Add to cart'}
         </PurchaseButton>
 
-        <FavouriteButton>
-          <img src={favoriteIcon} alt="favorite" />
+        <FavouriteButton
+          className={isFavoriteProduct ? 'Active' : ''}
+          isLarge={false}
+          handleClick={handleToggleFavoriteStatus}
+        >
+          <img
+            src={isFavoriteProduct ? isFavoriteIcon : favoriteIcon}
+            alt="favorite"
+          />
         </FavouriteButton>
       </div>
     </div>

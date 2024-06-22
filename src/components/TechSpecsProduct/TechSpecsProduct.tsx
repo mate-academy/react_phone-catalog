@@ -1,5 +1,5 @@
 import { ProductDetail } from '../../types/ProductDetail';
-import { normalizeString } from '../../utils/utils';
+import { extractNumberAndSuffix } from '../../utils';
 
 import styles from './TechSpecsProduct.module.scss';
 
@@ -8,8 +8,10 @@ type Props = {
 };
 
 export const TechSpecsProduct: React.FC<Props> = ({ productDetail }) => {
-  const normalizeRam = normalizeString(productDetail?.ram || '');
-  const normalizeCapacity = normalizeString(productDetail?.capacity || '');
+  const normalizeRam = extractNumberAndSuffix(productDetail?.ram || '');
+  const normalizeCapacity = extractNumberAndSuffix(
+    productDetail?.capacity || '',
+  );
 
   const activeProductCardText = `${styles.TechSpecsText} ${styles.TechSpecsTextActive}`;
 

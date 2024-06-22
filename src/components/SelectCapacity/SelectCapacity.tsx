@@ -1,6 +1,6 @@
 import cn from 'classnames';
 
-import { normalizeString } from '../../utils/utils';
+import { extractNumberAndSuffix } from '../../utils';
 
 import styles from './SelectCapacity.module.scss';
 
@@ -26,7 +26,7 @@ export const SelectCapacity: React.FC<Props> = ({
               updatedCapacity === currentCapacity,
           })}
         >
-          {normalizeString(currentCapacity)}
+          {extractNumberAndSuffix(currentCapacity)}
         </button>
       ))}
     </div>

@@ -1,9 +1,9 @@
 import cartIcon from '../../assets/images/cart-icon.svg';
 import favoriteIcon from '../../assets/images/favourite-icon.svg';
 import { logo } from '../../assets/index';
-import { NavigationButton } from '../../ui/NavigationButton';
 import { HeaderLinks } from '../HeaderLinks/HeaderLinks';
 
+import { NavigationButton } from '../../ui/NavigationButton';
 import styles from './Header.module.scss';
 
 export const Header = () => {
@@ -17,14 +17,14 @@ export const Header = () => {
             <HeaderLinks />
           </div>
 
-          <nav className={styles.HeaderNavigation}>
+          <div className={styles.HeaderList}>
             <NavigationButton href="/favorites">
               <img src={favoriteIcon} alt="favorites" />
             </NavigationButton>
             <NavigationButton href="/cart">
               <img src={cartIcon} alt="cart" />
             </NavigationButton>
-          </nav>
+          </div>
         </div>
       </div>
     </header>

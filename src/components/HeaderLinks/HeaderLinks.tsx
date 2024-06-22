@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router-dom';
 
-import { getActiveNavLink } from '../../utils/utils';
+import { getActiveNavLink } from '../../utils';
 
 import styles from './HeaderLinks.module.scss';
 

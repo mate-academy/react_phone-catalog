@@ -4,19 +4,21 @@ import styles from './FavouriteButton.module.scss';
 
 type Props = {
   children: React.ReactNode;
-  size?: string;
   handleClick?: () => void;
+  className?: string;
+  isLarge: boolean;
 };
 
 export const FavouriteButton: React.FC<Props> = ({
   children,
   handleClick = () => {},
-  size,
+  className = '',
+  isLarge,
 }) => {
   return (
     <button
-      className={cn(styles.FavouriteButton, {
-        [styles.Large]: size === 'large',
+      className={cn(styles.FavouriteButton, styles[className], {
+        [styles.Large]: isLarge,
       })}
       onClick={handleClick}
     >

@@ -1,9 +1,9 @@
 import { API_ACCESSORIES, API_PHONES, API_TABLETS } from '../constants/api';
 import { ProductDetail } from '../types/ProductDetail';
-import { request } from '../utils/utils';
+import { httpRequest } from '../utils/httpRequest';
 
 export const getDevice = (url: string) => {
-  return request<ProductDetail[]>(url);
+  return httpRequest<ProductDetail[]>(url);
 };
 
 export const getPhones = (): Promise<ProductDetail[]> => {

@@ -59,7 +59,10 @@ export const DropdownMenu: React.FC<Props> = ({
       urlParams.set('sort', Sorts.title);
     } else if (currentItem === Sorts.cheapest) {
       urlParams.set('sort', Sorts.price);
-    } else if (valuesPagination.includes(item) && item !== DEFAULT_PER_PAGE) {
+    } else if (
+      valuesPagination.includes(item) &&
+      item !== DEFAULT_PER_PAGE.toString()
+    ) {
       urlParams.set('perPage', item);
     }
 

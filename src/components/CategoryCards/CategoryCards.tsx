@@ -1,18 +1,22 @@
-import { useAccessories } from '../../hooks/useAccessories';
-import { usePhones } from '../../hooks/usePhones';
-import { useTablets } from '../../hooks/useTablets';
-
 import categoryAccessories from '../../assets/images/category-accessories.png';
 import categoryPhone from '../../assets/images/category-phones.png';
 import categoryTablet from '../../assets/images/category-tablet.png';
 import { CategoryCard } from '../CategoryCard/CategoryCard';
 
+import { Categories } from '../../types/Categories';
+import { Product } from '../../types/Product';
 import styles from './CategoryCards.module.scss';
 
-export const CategoryCards = () => {
-  const { phones } = usePhones();
-  const { tablets } = useTablets();
-  const { accessories } = useAccessories();
+type Props = {
+  products: Product[];
+};
+
+export const CategoryCards: React.FC<Props> = ({ products }) => {
+  const phones = products.filter(item => item.category === Categories.phones);
+  const tablets = products.filter(item => item.category === Categories.tablets);
+  const accessories = products.filter(
+    item => item.category === Categories.accessories,
+  );
 
   return (
     <section className={styles.CategoryCards}>

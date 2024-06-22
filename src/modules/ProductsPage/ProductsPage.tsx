@@ -13,8 +13,9 @@ import { getProducts } from '../../services/products';
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';
 import { Sorts, SortsType } from '../../types/Sorts';
-import { capatalize, getSortedProducts } from '../../utils/utils';
+import { capatalize } from '../../utils';
 
+import { getSortedProducts } from '../../utils/getSortedProducts';
 import styles from './PhonesPage.module.scss';
 
 export const ProductsPage = () => {

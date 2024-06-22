@@ -12,9 +12,9 @@ import { getAllProducts } from '../../services/products';
 import { Product } from '../../types/Product';
 import { SortOrders } from '../../types/SortOrders';
 import { Sorts } from '../../types/Sorts';
-import { getSortedProducts } from '../../utils/utils';
 
 import { Categories } from '../../types/Categories';
+import { getSortedProducts } from '../../utils/getSortedProducts';
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {
@@ -64,7 +64,7 @@ export const HomePage = () => {
         <p>Phones not found</p>
       )}
 
-      <CategoryCards />
+      <CategoryCards products={products} />
 
       {newPhones.length ? (
         <ProductList
