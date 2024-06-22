@@ -34,8 +34,8 @@ export const HomePage = () => {
     setLoading(true);
 
     getAllProducts()
-      .then(products => {
-        setProducts(products);
+      .then(items => {
+        setProducts(items);
 
         setLoading(false);
       })

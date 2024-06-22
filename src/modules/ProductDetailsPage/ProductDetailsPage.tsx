@@ -68,8 +68,8 @@ export const ProductDetailsPage = () => {
     setLoading(true);
 
     fetchProducts()
-      .then(products => {
-        const result = products.flat();
+      .then(items => {
+        const result = items.flat();
         const product = result.find(item => item.id.toString() === productId);
 
         if (product) {

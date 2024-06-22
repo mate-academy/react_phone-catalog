@@ -15,7 +15,7 @@ export const useSlider = (settings: SliderSettings) => {
         }
       }, TIME_SLIDER);
     }
-  }, [currentIndex, settings.total]);
+  }, [currentIndex, settings.total, settings.autoplay, settings.step]);
 
   useEffect(() => {
     if (settings.isFullScroll) {
