@@ -15,17 +15,47 @@ const Pagination: React.FC<Props> = ({
 }) => {
   const renderPageNumbers = () => {
     const pageNumbers = [];
+    const delta = 2;
 
-    for (let i = 1; i <= totalPages; i++) {
+    const startPage = Math.max(2, currentPage - delta);
+    const endPage = Math.min(totalPages - 1, currentPage + delta);
+
+    const addPageButton = (page: number) => {
       pageNumbers.push(
         <button
-          key={i}
-          className={currentPage === i ? styles.activePage : styles.numPage}
-          onClick={() => onPageChange(i)}
+          key={page}
+          className={currentPage === page ? styles.activePage : styles.numPage}
+          onClick={() => onPageChange(page)}
         >
-          {i}
+          {page}
         </button>,
       );
+    };
+
+    addPageButton(1);
+
+    if (startPage > 2) {
+      pageNumbers.push(
+        <span key="start-ellipsis" className={styles.ellipsis}>
+          ...
+        </span>,
+      );
+    }
+
+    for (let i = startPage; i <= endPage; i++) {
+      addPageButton(i);
+    }
+
+    if (endPage < totalPages - 1) {
+      pageNumbers.push(
+        <span key="end-ellipsis" className={styles.ellipsis}>
+          ...
+        </span>,
+      );
+    }
+
+    if (totalPages > 1) {
+      addPageButton(totalPages);
     }
 
     return pageNumbers;

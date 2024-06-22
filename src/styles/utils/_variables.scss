@@ -8,15 +8,17 @@ $height-on-tablet: 48px;
 $transition-duration: 0.5s;
 
 :root {
-  --color-background: #0F1121;
+  --color-background: #0f1121;
   --color-primary: #161827;
   --color-surface: #323542;
-  --color-elements: #3B3E4A;
-  --color-icons: #4A4D58;
-  --color-secondary: #75767F;
-  --color-white: #F1F2F9;
-  --color-accent: #905BFF;
-  --color-accent-hover: #A378FF;
-  --color-green: #27AE60;
-  --color-red: #EB5757;
+  --color-elements: #3b3e4a;
+  --color-icons: #4a4d58;
+  --color-secondary: #75767f;
+  --color-white: #f1f2f9;
+  --color-accent: #905bff;
+  --color-accent-hover: #a378ff;
+  --color-accent-dark: #7e42ff;
+  --color-green: #27ae60;
+  --color-red: #eb5757;
+  --color-midnight: #040622;
 }

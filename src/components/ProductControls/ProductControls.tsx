@@ -44,7 +44,14 @@ const ProductControls: React.FC<Props> = ({ productDetails, product }) => {
             >
               <button
                 value={color}
-                style={{ backgroundColor: color }}
+                style={{
+                  backgroundColor:
+                    color === 'midnight'
+                      ? 'midnightblue'
+                      : color === 'spacegray'
+                        ? 'gray'
+                        : color,
+                }}
                 className={styles.colorButton}
                 onClick={() =>
                   handleAttributeChange(color, productDetails.capacity)

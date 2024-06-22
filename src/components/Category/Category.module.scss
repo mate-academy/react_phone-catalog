@@ -60,28 +60,6 @@
   }
 }
 
-// .category {
-//   display: block;
-//   min-width: 288px;
-//   min-height: 288px;
-//   padding-block: 24px;
-//   position: relative;
-//   overflow: hidden;
-//   width: 100%;
-//   padding-bottom: 100%;
-
-//   @include on-tablet {
-//     width: 187px;
-//     height: 187px;
-//   }
-
-//   @include on-desktop {
-//     width: 368px;
-//     height: 368px;
-//   }
-// }
-
-
 .image {
   position: absolute;
   object-fit: contain;

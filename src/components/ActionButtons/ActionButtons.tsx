@@ -24,7 +24,8 @@ const ActionButtons: React.FC<Props> = ({ product }) => {
   return (
     <div className={styles.buttons}>
       <button
-        className={styles.buttonCard}
+        // className={styles.buttonCard}
+        className={isAddToCart ? styles.buttonCardInCart : styles.buttonCard}
         onClick={() => {
           isAddToCart ? removeFromCart(product.id) : addToCart(product);
         }}

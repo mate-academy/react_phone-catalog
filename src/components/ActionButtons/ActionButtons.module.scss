@@ -25,6 +25,24 @@
   }
 }
 
+.buttonCardInCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--color-accent-dark);
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--color-accent-hover);
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
 .buttonText {
   display: flex;
   justify-content: center;
