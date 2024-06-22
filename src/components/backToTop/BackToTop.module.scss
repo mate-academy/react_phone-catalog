@@ -1,0 +1,45 @@
+.back {
+  position: sticky;
+  width: 130px;
+  bottom: 20px;
+  left: calc(50% - 65px);
+  display: flex;
+  height: 32px;
+  margin-top: 150vh;
+
+  &__paragraph {
+    margin-right: 16px;
+    line-height: 32px;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 1px;
+  }
+
+  &__link {
+    width: 32px;
+    background-image: url(../../../public/img/svg/arrow_up.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    border: 1px solid #B4BDC3;
+  }
+
+  // @media (max-height: 800px) {
+  //   .back {
+  //     margin-top: 105vh ;
+
+  //     &__paragraph {
+  //       color: pink;
+  //     }
+  //   }
+  // }
+
+  // @media (min-height: 801px) {
+  //   .back {
+  //     margin-top: 1vh;
+  //   }
+
+  //   &__paragraph {
+  //     color: red;
+  //   }
+  // }
+}

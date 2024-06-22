@@ -17,6 +17,7 @@
     line-height: 41px;
     letter-spacing: -0.01em;
     text-align: left;
+    margin-bottom: 15px;
   }
 
   &__items_container {
@@ -25,6 +26,17 @@
     align-items: center;
     justify-content: space-evenly;
 
+    &__paragraph {
+      color: #313237;
+      width: 288px;
+      height: 41px;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      text-align: left;
+
+    }
   }
 
   &__sum_container {

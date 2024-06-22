@@ -4,15 +4,18 @@
 }
 
 .app{
-  overflow: hidden;
+  // overflow: auto;
+  height: 100vh;
+  width: 100vw;
+  position: relative;
+
 
   &__title {
     visibility: hidden;
-    color: lightb;
   }
 
   &__separator {
-    width: 100vw;
+    width: 102vw;
     height: 1px;
     border: 1px solid #E2E6E9;
     margin-bottom: 32px

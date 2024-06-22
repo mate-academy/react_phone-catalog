@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { Product } from '../types/Product';
 import { Item } from '../types/Item';
 import { useLocation } from 'react-router-dom';
@@ -36,6 +36,7 @@ type AppContextProps = {
   setFav: React.Dispatch<React.SetStateAction<Item[]>>;
   handleAddFav: (newItem: Item) => void;
   handleAddCart: (newItem: Item) => void;
+  backToTop: RefObject<HTMLDivElement>;
 };
 
 type Props = {
@@ -46,6 +47,7 @@ export const ContextApp = React.createContext({} as AppContextProps);
 
 export const AppContext: React.FC<Props> = ({ children }) => {
   const app = useRef(null);
+  const backToTop = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const [products, setProducts] = useState<Product[]>([]);
   const [phones, setPhones] = useState<Item[]>([]);
@@ -172,6 +174,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   return (
     <ContextApp.Provider
       value={{
+        backToTop,
         handleAddCart,
         handleAddFav,
         cart,

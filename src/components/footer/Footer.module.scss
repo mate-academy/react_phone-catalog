@@ -32,26 +32,29 @@
     }
   }
 
-  &__back {
-    display: flex;
-    height: 32px;
-    margin: 0 auto;
+  // &__back {
+  //   position: sticky;
+  //   top: 300px;
+  //   bottom: 25px;
+  //   display: flex;
+  //   height: 32px;
+  //   margin: 0 auto;
 
-    &__paragraph {
-      margin-right: 16px;
-      line-height: 32px;
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: 1px;
-    }
+  //   &__paragraph {
+  //     margin-right: 16px;
+  //     line-height: 32px;
+  //     font-size: 12px;
+  //     font-weight: 800;
+  //     letter-spacing: 1px;
+  //   }
 
-    &__link {
-      width: 32px;
-      background-image: url(../../../public/img/svg/arrow_up.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-      border: 1px solid #B4BDC3;
-    }
-  }
+  //   &__link {
+  //     width: 32px;
+  //     background-image: url(../../../public/img/svg/arrow_up.svg);
+  //     background-position: center;
+  //     background-repeat: no-repeat;
+  //     border: 1px solid #B4BDC3;
+  //   }
+  // }
 
 }

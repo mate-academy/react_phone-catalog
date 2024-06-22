@@ -41,7 +41,7 @@ export const Cart: React.FC = () => {
             );
           })
         ) : (
-          <p className={Styles.cart__items__container__paragraph}>Your cart is empty</p>
+          <p className={Styles.cart__items_container__paragraph}>Your cart is empty</p>
         )}
       </div>
 

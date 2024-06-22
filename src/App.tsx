@@ -2,7 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { ContextApp } from './appContext/AppContext';
 import { NotFoundPage } from './components/notFoundPage';
 import { Home } from './components/home';
@@ -12,9 +12,31 @@ import { Accessories } from './components/accessories';
 import { Details } from './components/details';
 import { Favourites } from './components/favourites/Favourtes';
 import { Cart } from './components/cart';
+import { BackToTop } from './components/backToTop';
 
 export const App = () => {
-  const { app, accessories, tablets, phones } = useContext(ContextApp);
+  const { app, accessories, tablets, phones, backToTop } =
+    useContext(ContextApp);
+
+  const handleScroll = () => {
+    console.log('ScrollY:', window.pageYOffset );
+    if (window.scrollY > 100 && backToTop.current) {
+      console.log('in')
+      backToTop.current.style.marginTop = '10px';
+    }
+
+    if (window.scrollY < 100 && backToTop.current) {
+      console.log('in')
+      backToTop.current.style.marginTop = '150vh';
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener('scroll', () => handleScroll());
+
+    return document.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
     <div ref={app} className="app">
       <Header />
@@ -54,6 +76,7 @@ export const App = () => {
       <div className="app__separator"></div>
 
       <Footer />
+      <BackToTop />
     </div>
   );
 };
