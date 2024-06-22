@@ -1,0 +1,31 @@
+@import '../../styles/main';
+
+.filters {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-bottom: 24px;
+}
+
+.link {
+  text-decoration: none;
+  color: var(--color-secondary);
+}
+
+.container {
+  display: grid;
+  gap: 40px;
+  grid-template-columns: 1;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    row-gap: 40px;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+    justify-content: space-between;
+  }
+}

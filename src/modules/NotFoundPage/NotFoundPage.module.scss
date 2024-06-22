@@ -1,0 +1,15 @@
+@import '../../styles/main';
+
+.empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.emptyImg {
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+}

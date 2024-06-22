@@ -1,0 +1,93 @@
+@import "../../styles/main";
+
+.container {
+  @include padding-inline;
+  @include container;
+}
+
+.goBackButton {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  text-decoration: none;
+}
+
+.goBackText {
+  @include small-text;
+
+  color: var(--color-white);
+}
+
+.title {
+  @include h2-mobile;
+
+  padding-top: 16px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    @include h2-tablet;
+    
+    padding-bottom: 40px;
+  }
+}
+
+.wrap {
+  @include section-grid;
+}
+
+.block {
+  display: grid;
+  grid-gap: 16px;
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+.skeletonLoading {
+  background-color: #f0f0f0;
+  border-radius: 4px;
+  animation: pulse 1.5s ease-in-out infinite;
+
+  @keyframes pulse {
+    0% {
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 0.3;
+    }
+    100% {
+      opacity: 0.6;
+    }
+  }
+}
+
+.skeleton-back-button {
+  width: 100px;
+  height: 40px;
+}
+
+.skeleton-text {
+  width: 60px;
+  height: 20px;
+}
+
+.skeleton-image-gallery {
+  width: 50%;
+  height: 200px;
+}
+
+.skeleton-product-controls {
+  width: 50%;
+  height: 200px;
+}
+
+.skeleton-description {
+  width: 100%;
+  height: 100px;
+}
+
+.skeleton-techspecs {
+  width: 100%;
+  height: 200px;
+}

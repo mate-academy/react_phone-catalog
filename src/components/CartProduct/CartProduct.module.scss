@@ -1,0 +1,89 @@
+@import "../../styles/main";
+
+.card {
+  padding: 16px;
+  background-color: var(--color-primary);
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+  }
+}
+
+.remove {
+  background-color: transparent;
+  border: none;
+}
+
+.top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.image {
+  display: block;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+
+.name {
+  width: 128px;
+  
+  @include body-text;
+
+  color: var(--color-white);
+
+  @include on-tablet {
+    width: 176px;
+  }
+
+  @include on-desktop {
+    width: 336px;
+  }
+}
+
+.bottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+}
+
+.action {
+  background-color: transparent;
+  color: var(--color-white);
+  padding: 8px;
+  border: 1px solid var(--color-secondary);
+
+  &:hover {
+    background-color: var(--color-secondary);
+  }
+}
+
+.count {
+  @include body-text;
+
+  color: var(--color-white);
+}
+
+.productPrice {
+  @include h3-tablet;
+}

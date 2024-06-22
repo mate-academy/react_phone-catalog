@@ -1,0 +1,76 @@
+@import "../../styles/main";
+
+.buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.buttonCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--color-accent);
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--color-accent-hover);
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.buttonCardInCart {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  cursor: pointer;
+  border: 0;
+  background-color: var(--color-accent-dark);
+  transition: transform $transition-duration ease;
+
+  &:hover {
+    transform: scale(1.05);
+    background-color: var(--color-accent-hover);
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+.buttonText {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+
+  @include buttons;
+
+  color: var(--color-white);
+}
+
+.buttonFavorite {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  flex-grow: 0;
+
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  box-sizing: border-box;
+
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-secondary);
+  }
+}
