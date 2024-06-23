@@ -39,9 +39,9 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
 
-  const preventDefault = (event: { preventDefault: () => void }) => {
-    event.preventDefault();
-  };
+  // const preventDefault = (event: { preventDefault: () => void }) => {
+  //   event.preventDefault();
+  // };
 
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,

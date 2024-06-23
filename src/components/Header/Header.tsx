@@ -8,19 +8,20 @@ import style from './Header.module.scss';
 import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Logos/LogoBurger';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
-  const { menu } = useParams();
+  const location = useLocation();
+  console.log(location.pathname)
 
   return (
     <header className={style.header}>
       <nav className={style.header__top}>
         <div className={style.header__leftNav}>
-          <a href="#" className={style.header__link}>
+          <Link to="#" className={style.header__link}>
             <Logo className={style.header__logo} />
-          </a>
+          </Link>
           {!isLaptop && <NavList />}
         </div>
 
@@ -33,16 +34,16 @@ export const Header = () => {
               <div className={style.header__topBtn}>
                 <ThemeButton />
               </div>
-              <a href="#" className={style.header__actionsLink}>
+              <Link to="#" className={style.header__actionsLink}>
                 <LogoFavorites className={style.header__actionsImg} />
-              </a>
-              <a href="#" className={style.header__actionsLink}>
+              </Link>
+              <Link to="#" className={style.header__actionsLink}>
                 <LogoCart className={style.header__actionsImg} />
-              </a>
+              </Link>
             </>
           ) : (
             <Link
-              to={menu ? '../' : '/menu'}
+              to={location.pathname === '/menu' ? '../' : '/menu'}
               className={style.header__actionsLink}
             >
               <LogoBurger className={style.header__actionsImg} />

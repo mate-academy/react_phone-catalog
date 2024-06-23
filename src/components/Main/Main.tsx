@@ -5,12 +5,24 @@ import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 import { BrandNewModels } from './BrandNewModels/BrandNewModels';
 import { HotPrices } from './HotPrices/HotPrices';
-import { useParams } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
+
+enum Pathname {
+  phones = '/phones',
+  tablets = '/tabets',
+  accessories = '/accessories',
+}
 
 export const Main = () => {
   const { t } = useContext(LanguageContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
-  const { menu } = useParams();
+  const { pathname } = useLocation();
+
+  const homePage =
+    pathname !== Pathname.phones &&
+    pathname !== Pathname.tablets &&
+    pathname !== Pathname.accessories;
 
   return (
     <main
@@ -18,7 +30,7 @@ export const Main = () => {
       onWheel={activeScroll}
       onTouchStart={activeScroll}
     >
-      {!menu && (
+      {homePage && (
         <div className={style.main__content}>
           <h1 className={style.main__title}>{t('welcome')}</h1>
 
@@ -33,6 +45,7 @@ export const Main = () => {
           </div>
         </div>
       )}
+      <Outlet />
     </main>
   );
 };

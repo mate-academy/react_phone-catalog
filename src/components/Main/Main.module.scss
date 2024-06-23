@@ -2,6 +2,7 @@
 @import '../../styles/block/utils/mixins';
 
 .main {
+  flex-grow: 1;
   color: $text-color;
   &__content {
     max-width: 1136px;

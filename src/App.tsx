@@ -2,16 +2,14 @@ import { Header } from './components/Header/Header';
 import { AsideMenu } from './components/AsideMenu';
 import { Main } from './components/Main/Main';
 import { Footer } from './components/Main/Footer/Footer';
-import { Outlet } from 'react-router-dom';
-
+import style from './App.module.scss';
 export const App = () => {
   return (
-    <div>
+    <div className={style.appContent}>
       <Header />
       <AsideMenu />
       <Main />
       <Footer />
-      <Outlet />
     </div>
   );
 };
