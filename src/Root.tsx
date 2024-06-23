@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
 import { ContextProvider } from './store/context';
@@ -13,7 +13,7 @@ export const Root = () => {
   return (
     <SkeletonTheme baseColor="#e2e6e9" highlightColor="#b4bdc3">
       <ContextProvider>
-        <BrowserRouter>
+        <Router>
           <Routes>
             <Route path="/" element={<App />}>
               <Route index element={<HomePage />} />
@@ -47,7 +47,7 @@ export const Root = () => {
               <Route path="*" element={<NotFoundPage />} />
             </Route>
           </Routes>
-        </BrowserRouter>
+        </Router>
       </ContextProvider>
     </SkeletonTheme>
   );
