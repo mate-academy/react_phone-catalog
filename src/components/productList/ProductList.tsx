@@ -4,13 +4,19 @@ import styles from './ProductList.module.scss';
 import { sortProducts } from '../../helpers/sortProducts';
 import { ProductCard } from '../productCard';
 import { Pagination } from '../pagination/Pagination';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 type Props = {
   products: ProductInfo[];
   pagination: boolean;
+  loading?: boolean;
 };
 
-export const ProductList: React.FC<Props> = ({ products, pagination }) => {
+export const ProductList: React.FC<Props> = ({
+  products,
+  pagination,
+  loading,
+}) => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sortBy') || 'new';
@@ -24,6 +30,8 @@ export const ProductList: React.FC<Props> = ({ products, pagination }) => {
   const startIndex = (+page - 1) * perPage;
   const endIndex = Math.min(startIndex + perPage, sortedProducts.length);
   const preparedProducts = sortedProducts.slice(startIndex, endIndex);
+
+  console.log(loading);
 
   return (
     <>
