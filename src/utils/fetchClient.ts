@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 // const BASE_URL = 'http://localhost:3000/api/';
 
-const BASE_URL = 'https://creonluv.github.io/react_phone-catalog';
+const BASE_URL = 'https://creonluv.github.io/react_phone-catalog/api';
 
 export function wait(delay: number) {
   return new Promise(resolve => {
