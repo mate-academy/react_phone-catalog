@@ -4,21 +4,21 @@ import styles from './Categories.module.scss';
 const categories = [
   {
     name: 'Mobile phones',
-    cover: '../../img/iphone_category.png',
+    cover: 'img/iphone_category.png',
     number: 95,
     path: 'phones',
     color: 1,
   },
   {
     name: 'Tablets',
-    cover: '../../img/tablet_category.png',
+    cover: 'img/tablet_category.png',
     number: 43,
     path: 'tablets',
     color: 2,
   },
   {
     name: 'Accessories',
-    cover: '../../img/case_category.png',
+    cover: 'img/case_category.png',
     number: 17,
     path: 'accessories',
     color: 3,

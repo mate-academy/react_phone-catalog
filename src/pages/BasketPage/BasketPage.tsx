@@ -147,19 +147,21 @@ export const BasketPage = () => {
           ))}
         </div>
 
-        <div className={styles.basketpage__total}>
-          <h3 className={styles.basketpage__price}>${allSumOfProducts()}</h3>
-          <span className={styles.basketpage__divider}></span>
-          <p className={styles.basketpage__info}>
-            Total for {selectedProducts.length} items
-          </p>
-          <button
-            className={styles.basketpage__button}
-            onClick={() => setShowModal(true)}
-          >
-            <p className={styles.basketpage__button_text}>Checkout</p>
-          </button>
-        </div>
+        {selectedProducts.length > 0 && (
+          <div className={styles.basketpage__total}>
+            <h3 className={styles.basketpage__price}>${allSumOfProducts()}</h3>
+            <span className={styles.basketpage__divider}></span>
+            <p className={styles.basketpage__info}>
+              Total for {selectedProducts.length} items
+            </p>
+            <button
+              className={styles.basketpage__button}
+              onClick={() => setShowModal(true)}
+            >
+              <p className={styles.basketpage__button_text}>Checkout</p>
+            </button>
+          </div>
+        )}
 
         {showModal && (
           <ModalWin
@@ -170,7 +172,7 @@ export const BasketPage = () => {
 
         {selectedProducts.length === 0 && (
           <p className={styles.basketpage__errormsj}>
-            Oops! It's still empty here
+            Oops! Its still empty here
           </p>
         )}
       </div>

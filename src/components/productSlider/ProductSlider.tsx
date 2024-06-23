@@ -144,7 +144,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
                 styles.goods__button,
                 styles.goods__button_left,
               )}
-              src="../../img/icons/chevron.svg"
+              src="img/icons/chevron.svg"
               alt=""
             />
           </button>
@@ -155,7 +155,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
           >
             <img
               className={styles.goods__button}
-              src="../../img/icons/chevron.svg"
+              src="img/icons/chevron.svg"
               alt=""
             />
           </button>
