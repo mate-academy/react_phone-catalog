@@ -1,0 +1,35 @@
+@import "../../utils/styles/mixins";
+
+.homepage {
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {
+    padding-top: 56px;
+  }
+
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+    margin: 0 auto;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+
+  &__title{
+    @include title-1;
+
+    margin: 0;
+  }
+}

@@ -1,1 +1,67 @@
-// not empty
+@import './utils/styles/mixins';
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-Regular.otf);
+  font-weight: 400;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-SemiBold.otf);
+  font-weight: 600;
+}
+
+
+@font-face {
+  font-family: Mont;
+  src: url(../public/fonts/Mont-Bold.otf);
+  font-weight: 700;
+}
+
+html {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $primary;
+  font-weight: 600;
+}
+
+body {
+  margin: 0;
+}
+
+.page {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows:auto 1fr auto;
+  grid-template-columns: minmax(0, 1fr);
+
+  &--unscrollable {
+    height: 100dvh;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: auto;
+      overflow: auto;
+    }
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: $max-width;
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: $mobile-inline-padding;
+  padding-bottom: 64px;
+
+  @include on-tablet {
+    gap: 64px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+    padding-inline: 32px;
+    padding-bottom: 80px;
+  }
+}

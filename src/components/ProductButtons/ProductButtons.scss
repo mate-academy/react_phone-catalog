@@ -1,0 +1,46 @@
+@import "../../utils/styles/mixins";
+
+.product-buttons {
+  display: flex;
+  gap: 8px;
+
+  &__button {
+    @include button;
+
+    height: 40px;
+
+    &--size--high {
+      height: 48px;
+    }
+
+    &--type--add {
+      @include button-color-black;
+
+      flex-grow: 1;
+    }
+
+    &--type--add-added {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+    }
+
+    &--type--like {
+      aspect-ratio: 1;
+      background-image: url(../../../public/img/icons/heart.svg);
+    }
+
+    &--type--like-favorite {
+      background-image: url(../../../public/img/icons/heart-red.svg);
+      border-color: $elements;
+    }
+
+    &--placeholder {
+      color: $elements;
+      background-color: $elements;
+      background-image: none;
+      border: none;
+      pointer-events: none;
+    }
+  }
+}

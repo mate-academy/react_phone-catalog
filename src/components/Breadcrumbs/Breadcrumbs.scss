@@ -1,0 +1,45 @@
+@import "../../utils/styles/mixins";
+
+.breadcrumbs {
+  &__list {
+    display: flex;
+    gap: 8px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__link {
+    @include text-small;
+
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    text-decoration: none;
+    text-transform: capitalize;
+    color: $primary;
+
+    &.disabled {
+      pointer-events: none;
+      color: $secondary;
+    }
+
+    &::before {
+      content: "";
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/icons/chevron-right.svg);
+    }
+
+    &--to--home {
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/icons/home.svg);
+
+      &::before {
+        content: none;
+      }
+    }
+  }
+}

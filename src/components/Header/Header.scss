@@ -1,0 +1,79 @@
+@import '../../utils/styles/mixins';
+
+.header {
+  position: sticky;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 2;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+
+  padding-left: 16px;
+  height: $header-hight-mobile;
+
+  background-color: $white;
+  border-bottom: 1px solid $elements;
+
+  @include on-tablet {
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    padding-left: 24px;
+    gap: 24px;
+  }
+
+  &__navigation {
+    flex-grow: 1;
+    height: 100%;
+    display: none;
+
+    @include on-tablet {
+      display: initial;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    height: 100%;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__button {
+    @include button;
+
+    height: 100%;
+    aspect-ratio: 1;
+    box-shadow: -1px 0 0 0 $elements;
+    border: none;
+    background-size: 35%;
+
+    &--menu {
+      background-image: url(../../../public/img/icons/menu.svg);
+    }
+
+    &--close {
+      background-image: url(../../../public/img/icons/close.svg);
+    }
+
+    &--search {
+      background-image: url(../../../public/img/icons/search.svg);
+    }
+  }
+
+  &__search-wrapper {
+    height: 100%;
+    flex-grow: 1;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}

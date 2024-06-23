@@ -1,0 +1,414 @@
+@import '../../utils/styles/mixins';
+
+.product-details {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__back {
+    margin-bottom: 16px;
+  }
+
+  &__main-title {
+    @include title-1;
+
+    margin: 0 0 32px;
+
+    @include on-desktop {
+      margin-bottom: 40px;
+    }
+
+    &--placeholder {
+      height: 41px;
+      width: 70%;
+      background-color: $elements;
+
+      @include on-tablet {
+        height: 56px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      gap: 80px;
+    }
+  }
+
+  &__text-sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include on-tablet {
+      gap: 64px;
+    }
+
+    @include on-desktop {
+      @include grid;
+    }
+  }
+
+  &__product {
+    display: flex;
+    flex-direction: column;
+
+    @include on-tablet {
+      @include grid;
+    }
+  }
+
+  &__images {
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      display: grid;
+      grid-template-columns: subgrid;
+      grid-column: span 7;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__selected-image {
+    width: 100%;
+    margin-bottom: 16px;
+    aspect-ratio: 1;
+    object-fit: contain;
+    transition: transform $transition;
+
+    @include on-tablet {
+      margin-bottom: 0;
+      grid-column: 2 / span 6;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / span 10;
+    }
+
+    &--placeholder {
+      background-color: $elements;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &:hover:not(&--placeholder) {
+      transform: scale(1.05)
+    }
+  }
+
+  &__loader {
+    @include loader;
+  }
+
+  &__all-images {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      grid-column: 1 / span 1;
+      grid-row: 1;
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / span 2;
+    }
+  }
+
+  &__image {
+    width: 50px;
+    border: 1px solid $elements;
+    aspect-ratio: 1;
+    object-fit: contain;
+    transition: border-color $transition;
+
+    @include on-tablet {
+      width: 100%;
+    }
+
+    &.active {
+      border-color: $primary;
+    }
+
+    &--placeholder {
+      background-color: $elements;
+    }
+
+    &:hover {
+      border-color: $primary;
+    }
+  }
+
+  &__info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / span 7;
+    }
+  }
+
+  &__info-text-block {
+    @include text-small;
+
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    color: $secondary;
+
+    @include on-desktop {
+      width: 480px;
+    }
+  }
+
+  &__info-text {
+    margin: 0;
+
+    &--placeholder {
+      background-color: $elements;
+      width: 80%;
+      height: 19px;
+    }
+  }
+
+  &__id {
+    margin: 0;
+    font-weight: 700;
+  }
+
+  &__picker-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  &__color-button {
+    box-sizing: border-box;
+    height: 30px;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    border: 2px solid $white;
+    outline: 1px solid $elements;
+
+    &.active {
+      outline: 1px solid $primary;
+    }
+
+    &.disabled {
+      background-image: url(../../../public/img/icons/close-light.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+
+      pointer-events: none;
+    }
+
+    &--placeholder {
+      background-color: $elements;
+    }
+
+    @each $color-name, $color-value in $product-colors {
+      &--color--#{$color-name} {
+        background-color: $color-value;
+      }
+    }
+    &:hover {
+      border-color: $icons;
+    }
+  }
+
+  &__divider {
+    border-bottom: 1px solid $elements;
+  }
+
+  &__capacity-button {
+    @include button;
+    @include text-body;
+
+    padding: 7px 8px;
+
+    &.active {
+      @include button-color-black;
+    }
+
+    &.disabled {
+      background-image: url(../../../public/img/icons/close-light.svg);
+      background-size: contain;
+
+      pointer-events: none;
+    }
+
+    &--placeholder {
+      box-sizing: border-box;
+      height: 32px;
+      width: 64px;
+      background-color: $elements;
+      border: none;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 16px;
+  }
+
+  &__current-price {
+    font-size: 32px;
+    font-weight: 800;
+    margin: 0;
+    line-height: 41px;
+
+    @include on-tablet {
+      @include title-2;
+
+      margin: 0;
+    }
+
+    &--placeholder{
+      background-color: $elements;
+      height: 41px;
+      width: 70px;
+    }
+  }
+
+  &__previous-price {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 500;
+    line-height: 28px;
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button {
+    @include button;
+
+    height: 48px;
+
+    &--type--add {
+      background-color: $primary;
+      color: $white;
+      border: none;
+      flex-grow: 1;
+    }
+
+    &--type--like {
+      aspect-ratio: 1;
+      background-image: url(../../../public/img/icons/heart.svg);
+    }
+
+    &--placeholder {
+      flex-grow: 1;
+      background-color: $elements;
+      border: none;
+    }
+  }
+
+  &__specs {
+    @include text-small;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    &--placeholder {
+      background-color: $elements;
+    }
+  }
+
+  &__spec-name {
+    color: $secondary;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__specs-section {
+    @include text-body;
+
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+  }
+
+  &__section-title {
+    @include title-3;
+
+    margin: 0 0 16px;
+  }
+
+  &__subtitle {
+    @include title-4;
+
+    margin: 0 0 16px;
+  }
+
+  &__paragraph {
+    @include text-body;
+
+    margin: 0 0 21px;
+    color: $secondary;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__details-title-wrapper {
+    margin-bottom: 30px;
+
+    @include on-tablet {
+      margin-bottom: 25px;
+    }
+  }
+}

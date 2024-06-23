@@ -1,0 +1,21 @@
+@import '../../utils/styles/mixins';
+
+.logo {
+  display: block;
+  height: 22px;
+  width: 64px;
+  background-image: url('../../../public/img/logo/logo-m.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+
+  &--placement--footer {
+    height: 32px;
+    width: 89px;
+  }
+
+  @include on-desktop {
+    height: 28px;
+    width: 80px;
+  }
+}

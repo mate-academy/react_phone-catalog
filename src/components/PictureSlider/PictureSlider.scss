@@ -1,0 +1,231 @@
+@import "../../utils/styles/mixins";
+
+.slider {
+  width: 100vw;
+  transform: translateX(-1 * $mobile-inline-padding);
+
+  @include on-tablet {
+    width: 100%;
+    transform: none;
+  }
+
+  &__main {
+    display: flex;
+    gap: 16px;
+
+    padding-bottom: 8px;
+  }
+
+  &__list-wrapper {
+    flex-grow: 1;
+    overflow-x: hidden;
+  }
+
+  &__list {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    transition: transform $transition;
+
+    @include on-tablet {
+      aspect-ratio: 2.6;
+    }
+
+    @for $i from 0 through 5 {
+      &--show--#{$i} {
+        transform: translateX($i * -100%);
+      }
+    }
+  }
+
+  &__item {
+    aspect-ratio: 1;
+    flex-shrink: 0;
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: background-position 3000ms;
+
+    @include on-tablet {
+      aspect-ratio: 2.6;
+    }
+
+    &--page--1 {
+      background-image: url(../../../public/img/phones/apple-iphone-14/midnight/02.webp), url(../../../public/img/phones/apple-iphone-14/yellow/02.webp), url(../../../public/img/phones/apple-iphone-14/purple/02.webp);
+      background-position: 75% 1000px, 50% 2000px, 25% 3000px;
+
+      @include on-tablet {
+        background-position: 90% 1000px, 80% 2000px, 70% 3000px;
+      }
+    }
+
+    .slider__list--show--0 &--page--1 {
+      background-position: 75% 100px, 50% 50px, 25%;
+      transition: background-position 1500ms cubic-bezier(0,.82,0,1);
+
+      @include on-tablet {
+        background-position: 90% 100px, 80% 50px, 70% 0;
+      }
+    }
+
+    &--page--2 {
+      background-image: url(../../../public/img/accessories/apple-watch-series-6/blue/01.webp), url(../../../public/img/accessories/apple-watch-series-6/gold/01.webp), url(../../../public/img/accessories/apple-watch-series-6/red/01.webp), url(../../../public/img/accessories/apple-watch-series-6/silver/01.webp), url(../../../public/img/accessories/apple-watch-series-6/space-gray/01.webp);
+      background-position: -40px -200px, -20px -400px, 0 -600px, 20px -800px, 40px -1000px;
+
+      @include on-tablet {
+        background-position: 115% -500px, 105% -1000px, 95% -1500px, 85% -2000px, 75% -2500px;
+      }
+    }
+
+    .slider__list--show--1 &--page--2 {
+      background-position: -40px 120px, -20px 90px, 0 60px, 20px 30px, 40px 0;
+      transition: background-position 2000ms cubic-bezier(0,.82,0,1);
+
+      @include on-tablet {
+        background-position: 115% 120px, 105% 90px, 95% 60px, 85% 30px, 75% 0;
+      }
+    }
+
+    &--page--3 {
+      background-image: url(../../../public/img/tablets/apple-ipad-10-2-2020/gold/00.webp), url(../../../public/img/tablets/apple-ipad-10-2-2020/silver/00.webp), url(../../../public/img/tablets/apple-ipad-10-2-2020/spacegray/00.webp);
+      background-position: 1000px, 1200px, 1400px;
+    }
+
+    .slider__list--show--2 &--page--3 {
+      background-position: 100px, 50px, 0;
+      transition: background-position 1500ms cubic-bezier(0,.82,0,1);
+
+      @include on-tablet {
+        background-position: 100%, 90%, 80%;
+      }
+    }
+  }
+
+  &__link {
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    height: 100%;
+    text-decoration: none;
+    color: $elements;
+
+    @include on-tablet {
+      padding: 10px;
+    }
+  }
+
+  &__text-block {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    width: 100%;
+    padding: 16px;
+    background: linear-gradient(180deg, rgba(255,255,255,0) 55%, rgba(49,50,55,0.8) 100%);
+
+    @include on-tablet {
+      justify-content: center;
+      width: 50%;
+      border-radius: 10px;
+      background: radial-gradient(circle, rgba(32, 32, 32, 0.89) 30%, rgba(0, 0, 0, 0.9) 100%);
+    }
+  }
+
+  &__item-title {
+    @include title-2;
+
+    background-image: linear-gradient(90deg, rgba(250,180,249,1) 0%, rgba(255,251,98,1) 50%, rgb(5, 152, 197) 100%);
+    background-clip: text;
+    color: $white;
+    margin: 0;
+
+    @include on-desktop {
+      @include title-1;
+    }
+
+    &--color--gradient {
+      color: transparent;
+    }
+  }
+
+  &__item-description {
+    @include title-4;
+
+    display: none;
+    margin: 0 0 20px;
+
+    color: $white;
+
+    @include on-tablet {
+      display: inline;
+    }
+  }
+
+  &__slide-button {
+    @include title-4;
+
+    padding: 5px 20px;
+    background-color: transparent;
+    color: $elements;
+    border: 1px solid $secondary;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: color $transition, background-color $transition;
+
+    &:hover {
+      background-color: $white;
+      color: $primary;
+    }
+  }
+
+  &__switch-button {
+    @include button;
+
+    display: none;
+
+    width: 32px;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &--direction--prev {
+      background-image: url(../../../public/img/icons/chevron-black-left.svg);
+    }
+
+    &--direction--next {
+      background-image: url(../../../public/img/icons/chevron-black-right.svg);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 4px;
+  }
+
+  &__page-button {
+    display: flex;
+    align-items: center;
+    border: none;
+    height: 24px;
+    width: 24px;
+    background-color: $white;
+    cursor: pointer;
+
+    &::after {
+      content: "";
+      background-color: $elements;
+      height: 4px;
+      width: 14px;
+    }
+
+    &.active::after {
+      background-color: $primary;
+    }
+  }
+}

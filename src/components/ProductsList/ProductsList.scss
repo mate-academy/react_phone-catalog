@@ -1,0 +1,46 @@
+@import "../../utils/styles/mixins";
+
+.product-list {
+  @include grid;
+
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  &__error-message {
+    @include title-2;
+  }
+
+  &__reload-button {
+    @include button;
+    @include button-color-black;
+
+    width: 100%;
+    max-width: 350px;
+    align-self: center;
+
+    padding: 10px;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

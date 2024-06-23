@@ -1,0 +1,29 @@
+@import "../../utils/styles/mixins";
+
+.favorites-page {
+  padding-top: 24px;
+
+  &__breadcrumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    @include title-1;
+
+    margin: 0 0 8px;
+  }
+
+  &__items-number {
+    @include text-body;
+
+    margin: 0 0 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
