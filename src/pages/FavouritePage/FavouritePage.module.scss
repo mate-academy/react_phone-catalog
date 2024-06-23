@@ -9,4 +9,10 @@
     flex-direction: column;
     gap: 40px;
   }
+
+  &__errormsj {
+    margin: 0 auto;
+
+    @include header-4;
+  }
 }

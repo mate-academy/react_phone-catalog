@@ -8,19 +8,19 @@ import { ProductInfo } from '../../types/ProductInfo';
 export const FavouritePage = () => {
   const { likedProducts, setLikedProducts } = useContext(AppContext);
 
-  useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('likedProducts');
+  console.log(likedProducts);
 
-    if (selectedProductFromStorage) {
-      const parsedProducts: ProductInfo[] = JSON.parse(
-        selectedProductFromStorage,
-      );
+  useEffect(() => {
+    const likedProductFromStorage = localStorage.getItem('likedProducts');
+
+    if (likedProductFromStorage) {
+      const parsedProducts: ProductInfo[] = JSON.parse(likedProductFromStorage);
 
       if (JSON.stringify(parsedProducts) !== JSON.stringify(likedProducts)) {
         setLikedProducts(parsedProducts);
       }
     }
-  }, [likedProducts, setLikedProducts]);
+  }, [setLikedProducts]);
 
   return (
     <section className={styles.favouritepage}>
@@ -31,6 +31,12 @@ export const FavouritePage = () => {
           withoutDrop={true}
         />
         <ProductList products={likedProducts} pagination={false} />
+
+        {likedProducts.length === 0 && (
+          <p className={styles.favouritepage__errormsj}>
+            Your favorite products will be collected here 😉
+          </p>
+        )}
       </div>
     </section>
   );

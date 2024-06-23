@@ -2,6 +2,8 @@ import { itemsOnPage, sortBy } from '../../helpers/constArrs';
 import { Dropdown } from '../Dropdown';
 import { ProductInfo } from '../../types/ProductInfo';
 import styles from './CatalogHeader.module.scss';
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
 
 type Props = {
   products: ProductInfo[];
@@ -20,7 +22,7 @@ export const CatalogHeader: React.FC<Props> = ({
         <div className={styles.catalogHeader__top}>
           <h1 className={styles.catalogHeader__title}>{category}</h1>
           <p className={styles.catalogHeader__info}>
-            {`${products.length}`} models
+            {`${products.length}` || <Skeleton />} models
           </p>
         </div>
 

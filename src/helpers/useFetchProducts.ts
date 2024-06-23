@@ -9,7 +9,7 @@ import { Product } from '../types/Product';
 type ProductType = 'products' | 'phones' | 'tablets' | 'accessories';
 
 type UseFetchProductsReturn = {
-  loading: Record<ProductType, boolean>;
+  loading: boolean;
   products: Product[];
   phones: ProductInfo[];
   tablets: ProductInfo[];
@@ -20,43 +20,32 @@ type UseFetchProductsReturn = {
 export const useFetchProducts = (
   productType: ProductType,
 ): UseFetchProductsReturn => {
-  const [loading, setLoading] = useState<Record<ProductType, boolean>>({
-    products: false,
-    phones: false,
-    tablets: false,
-    accessories: false,
-  });
-
+  const [loading, setLoading] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [phones, setPhones] = useState<ProductInfo[]>([]);
   const [tablets, setTablets] = useState<ProductInfo[]>([]);
   const [accessories, setAccessories] = useState<ProductInfo[]>([]);
 
   const fetchProducts = useCallback(async (type: ProductType) => {
-    setLoading(prev => ({ ...prev, [type]: true }));
+    setLoading(true);
     try {
       if (type === 'phones') {
         const phonesData = await getPhones();
-
         setPhones(phonesData);
       } else if (type === 'tablets') {
         const tabletsData = await getTablets();
-
         setTablets(tabletsData);
       } else if (type === 'accessories') {
         const accessoriesData = await getAccessories();
-
         setAccessories(accessoriesData);
       } else {
         const productsData = await getProducts();
-
         setProducts(productsData);
       }
     } catch (error) {
-      // eslint-disable-next-line no-console
       console.error(`Error fetching ${type}:`, error);
     } finally {
-      setLoading(prev => ({ ...prev, [type]: false }));
+      setLoading(false);
     }
   }, []);
 

@@ -29,12 +29,26 @@
     gap: 8px;
   }
 
-  &__button_left {
-    transform: rotate(-90deg);
+  &__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $btns-border-color;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid $accent-color;
+    }
+
+    &_disabled {
+      opacity: 50%;
+    }
   }
 
-  &__button_right {
-    transform: rotate(90deg);
+  &__button_left {
+    transform: rotate(-180deg);
   }
 
   &__cards_wrapper {

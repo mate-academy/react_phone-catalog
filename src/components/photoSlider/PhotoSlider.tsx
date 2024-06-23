@@ -27,6 +27,7 @@ const photos = [
 export const PhotoSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isMobile, setIsMobile] = useState(window.innerWidth <= 640);
+  const [direction, setDirection] = useState('');
 
   const handleResize = () => {
     setIsMobile(window.innerWidth <= 640);
@@ -41,10 +42,12 @@ export const PhotoSlider = () => {
   }, []);
 
   const handleNextClick = useCallback(() => {
+    setDirection('next');
     setCurrentIndex(prevIndex => (prevIndex + 1) % photos.length);
   }, []);
 
   const handlePrevClick = useCallback(() => {
+    setDirection('prev');
     setCurrentIndex(
       prevIndex => (prevIndex - 1 + photos.length) % photos.length,
     );
@@ -65,6 +68,7 @@ export const PhotoSlider = () => {
   });
 
   const handleDotsClick = (id: number) => {
+    setDirection(id > currentIndex ? 'next' : 'prev');
     setCurrentIndex(id);
   };
 
@@ -73,26 +77,52 @@ export const PhotoSlider = () => {
       <div className={styles.banner__body}>
         <div className={styles.banner__maincontent}>
           <button
-            className={classNames(
-              styles.banner__button,
-              styles['banner__button-left'],
-            )}
+            className={styles.banner__button_wrapper}
             onClick={handlePrevClick}
-          />
-          <img
-            className={styles.banner__photo}
-            src={
-              isMobile ? photos[currentIndex].phone : photos[currentIndex].cover
-            }
-            alt={photos[currentIndex].alt}
-          />
+          >
+            <img
+              className={classNames(
+                styles.banner__button,
+                styles.banner__button_left,
+              )}
+              src="../../img/icons/chevron.svg"
+              alt=""
+            />
+          </button>
+
+          <div className={styles.banner__photoWrapper}>
+            {photos.map((photo, index) => (
+              <img
+                key={photo.id}
+                className={classNames(styles.banner__photo, {
+                  [styles.banner__photo_active]: index === currentIndex,
+                  [styles.banner__photo_next]:
+                    direction === 'next' &&
+                    index === (currentIndex + 1) % photos.length,
+                  [styles.banner__photo_prev]:
+                    direction === 'prev' &&
+                    index ===
+                      (currentIndex - 1 + photos.length) % photos.length,
+                })}
+                src={isMobile ? photo.phone : photo.cover}
+                alt={photo.alt}
+              />
+            ))}
+          </div>
+
           <button
-            className={classNames(
-              styles.banner__button,
-              styles['banner__button-right'],
-            )}
+            className={styles.banner__button_wrapper}
             onClick={handleNextClick}
-          />
+          >
+            <img
+              className={classNames(
+                styles.banner__button,
+                styles.banner__button_right,
+              )}
+              src="../../img/icons/chevron.svg"
+              alt=""
+            />
+          </button>
         </div>
         <div className={styles.banner__dots}>
           {photos.map(photo => (

@@ -11,14 +11,13 @@ type Props = {
 
 export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   const [productWidth, setProductWidth] = useState(0);
-  const [, setScrollPosition] = useState(0);
+  const [scrollPosition, setScrollPosition] = useState(0);
   const productsRef = useRef<HTMLDivElement>(null);
   const scrollingByScript = useRef(false);
 
   useEffect(() => {
     if (productsRef.current) {
       const firstProduct = productsRef.current.firstElementChild;
-
       if (firstProduct) {
         setProductWidth(firstProduct.clientWidth);
       }
@@ -27,29 +26,35 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
 
   useEffect(() => {
     const intervalId = setInterval(() => {
-      scrollingByScript.current = true;
       if (productsRef.current) {
         const maxScroll =
           productsRef.current.scrollWidth - productsRef.current.clientWidth;
         const nextScroll = productsRef.current.scrollLeft + productWidth;
+
+        scrollingByScript.current = true;
 
         if (nextScroll >= maxScroll) {
           productsRef.current.scrollTo({
             left: 0,
             behavior: 'smooth',
           });
+          setScrollPosition(0);
         } else {
           productsRef.current.scrollBy({
             left: productWidth,
             behavior: 'smooth',
           });
+          setScrollPosition(nextScroll);
         }
+
+        setTimeout(() => {
+          scrollingByScript.current = false;
+        }, 500);
       }
     }, 3000);
 
     return () => {
       clearInterval(intervalId);
-      scrollingByScript.current = false;
     };
   }, [productWidth]);
 
@@ -66,7 +71,6 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
 
     return () => {
       if (productsRef.current) {
-        // eslint-disable-next-line react-hooks/exhaustive-deps
         productsRef.current.removeEventListener('scroll', handleScroll);
       }
     };
@@ -74,10 +78,19 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
 
   const handlePrevClick = () => {
     if (productsRef.current) {
+      const prevScroll = productsRef.current.scrollLeft - productWidth;
+
+      scrollingByScript.current = true;
+
       productsRef.current.scrollBy({
         left: -productWidth,
         behavior: 'smooth',
       });
+
+      setTimeout(() => {
+        setScrollPosition(Math.max(0, prevScroll));
+        scrollingByScript.current = false;
+      }, 500);
     }
   };
 
@@ -87,63 +100,74 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
         productsRef.current.scrollWidth - productsRef.current.clientWidth;
       const nextScroll = productsRef.current.scrollLeft + productWidth;
 
+      scrollingByScript.current = true;
+
       if (nextScroll >= maxScroll) {
         productsRef.current.scrollTo({
           left: 0,
           behavior: 'smooth',
         });
+
+        setTimeout(() => {
+          setScrollPosition(0);
+          scrollingByScript.current = false;
+        }, 500);
       } else {
         productsRef.current.scrollBy({
           left: productWidth,
           behavior: 'smooth',
         });
+
+        setTimeout(() => {
+          setScrollPosition(nextScroll);
+          scrollingByScript.current = false;
+        }, 500);
       }
     }
   };
 
   return (
-    <>
-      <section className={styles.goods}>
-        <div className={styles.goods__header}>
-          <h2 className={styles.goods__title}>{type}</h2>
+    <section className={styles.goods}>
+      <div className={styles.goods__header}>
+        <h2 className={styles.goods__title}>{type}</h2>
 
-          <div className={styles.goods__buttons}>
-            <button
-              onClick={handlePrevClick}
-              className={styles.goods__slider}
-              // disabled={scrollPosition === 0}
-            >
-              <img
-                className={classNames(
-                  styles.goods__button,
-                  styles.goods__button_left,
-                )}
-                src="../../img/icons/slider-button.svg"
-                alt=""
-              />
-            </button>
+        <div className={styles.goods__buttons}>
+          <button
+            onClick={handlePrevClick}
+            className={classNames(styles.goods__slider, {
+              [styles.goods__slider_disabled]: scrollPosition === 0,
+            })}
+          >
+            <img
+              className={classNames(
+                styles.goods__button,
+                styles.goods__button_left,
+              )}
+              src="../../img/icons/chevron.svg"
+              alt=""
+            />
+          </button>
 
-            <button onClick={handleNextClick} className={styles.goods__slider}>
-              <img
-                className={classNames(
-                  styles.goods__button,
-                  styles.goods__button_right,
-                )}
-                src="../../img/icons/slider-button.svg"
-                alt=""
-              />
-            </button>
-          </div>
+          <button
+            onClick={handleNextClick}
+            className={classNames(styles.goods__slider)}
+          >
+            <img
+              className={styles.goods__button}
+              src="../../img/icons/chevron.svg"
+              alt=""
+            />
+          </button>
         </div>
+      </div>
 
-        <div className={styles.goods__cards_wrapper}>
-          <div className={styles.goods__cards} ref={productsRef}>
-            {products.map(product => (
-              <ProductCard key={product.id} product={product} type={type} />
-            ))}
-          </div>
+      <div className={styles.goods__cards_wrapper}>
+        <div className={styles.goods__cards} ref={productsRef}>
+          {products.map(product => (
+            <ProductCard key={product.id} product={product} type={type} />
+          ))}
         </div>
-      </section>
-    </>
+      </div>
+    </section>
   );
 };

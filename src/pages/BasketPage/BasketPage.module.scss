@@ -161,4 +161,11 @@
   &__info {
     color: $secondary-text-color;
   }
+
+  &__errormsj {
+    grid-column: 1 / -1;
+    margin: 0 auto;
+
+    @include header-4;
+  }
 }

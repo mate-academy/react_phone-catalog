@@ -1,4 +1,5 @@
-import { useState, useContext, useEffect } from 'react';
+// BasketPage component
+import { useContext, useState, useEffect } from 'react';
 import { CatalogHeader } from '../../components/catalogHeader';
 import styles from './BasketPage.module.scss';
 import { AppContext } from '../../store/context';
@@ -11,7 +12,7 @@ export const BasketPage = () => {
   const { selectedProducts, setSelectedProducts } = useContext(AppContext);
 
   useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('likedProducts');
+    const selectedProductFromStorage = localStorage.getItem('selectedProducts');
 
     if (selectedProductFromStorage) {
       const parsedProducts: ProductWithQuantity[] = JSON.parse(
@@ -36,7 +37,7 @@ export const BasketPage = () => {
 
     setSelectedProducts(updatedSelectedProducts);
     localStorage.setItem(
-      'likedProducts',
+      'selectedProducts',
       JSON.stringify(updatedSelectedProducts),
     );
   };
@@ -58,7 +59,7 @@ export const BasketPage = () => {
 
     setSelectedProducts(updatedSelectedProducts);
     localStorage.setItem(
-      'likedProducts',
+      'selectedProducts',
       JSON.stringify(updatedSelectedProducts),
     );
   };
@@ -71,7 +72,7 @@ export const BasketPage = () => {
     setSelectedProducts(updatedSelectedProducts);
 
     localStorage.setItem(
-      'likedProducts',
+      'selectedProducts',
       JSON.stringify(updatedSelectedProducts),
     );
   };

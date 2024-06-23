@@ -32,7 +32,7 @@ export const Header = () => {
   }, [likedProducts, setLikedProducts]);
 
   useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('likedProducts');
+    const selectedProductFromStorage = localStorage.getItem('selectedProducts');
 
     if (selectedProductFromStorage) {
       const parsedProducts: ProductWithQuantity[] = JSON.parse(
@@ -74,9 +74,11 @@ export const Header = () => {
                 className={styles.header__button_image}
                 src="../../img/icons/favourite.svg"
               />
-              <div className={styles.header__infolabel}>
-                {likedProducts.length}
-              </div>
+              {likedProducts.length > 0 && (
+                <div className={styles.header__infolabel}>
+                  {likedProducts.length}
+                </div>
+              )}
             </NavLink>
 
             <NavLink
@@ -91,9 +93,11 @@ export const Header = () => {
                 className={styles.header__button_image}
                 src="../../img/icons/cart.svg"
               />
-              <div className={styles.header__infolabel}>
-                {selectedProducts.length}
-              </div>
+              {selectedProducts.length > 0 && (
+                <div className={styles.header__infolabel}>
+                  {selectedProducts.length}
+                </div>
+              )}
             </NavLink>
           </div>
 

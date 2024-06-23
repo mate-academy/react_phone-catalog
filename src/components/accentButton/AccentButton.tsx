@@ -1,3 +1,4 @@
+// AccentButton component
 import styles from './AccentButton.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { AppContext } from '../../store/context';
@@ -40,7 +41,7 @@ export const AccentButton: React.FC<Props> = ({ text, product, onClick }) => {
     }
 
     localStorage.setItem(
-      'likedProducts',
+      'selectedProducts',
       JSON.stringify(updatedSelectedProducts),
     );
     setSelectedProducts(updatedSelectedProducts);
