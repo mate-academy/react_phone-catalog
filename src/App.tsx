@@ -18,19 +18,17 @@ export const App = () => {
   const { app, accessories, tablets, phones, backToTop } =
     useContext(ContextApp);
 
-
-
   const handleScroll = () => {
-    console.log('ScrollY:', window.scrollY);
+    // console.log('ScrollY:', window.scrollY);
     if (backToTop.current) {
-      console.log(backToTop.current.getBoundingClientRect().y);
+      console.log('offset', backToTop.current.offsetTop);
     }
-    if (backToTop.current && backToTop.current.getBoundingClientRect().y === 411) {
+    if (backToTop.current && backToTop.current.offsetTop < 1150) {
       console.log('in');
-      backToTop.current.style.marginTop = '10px';
-    } else if (backToTop.current) {
+      backToTop.current.style.marginTop = '120vh';
+    } else if ((backToTop.current && backToTop.current.offsetTop > 1150)) {
       console.log('out');
-      backToTop.current.style.marginTop = '150vh';
+      backToTop.current.style.marginTop = '10px';
     }
   };
 
