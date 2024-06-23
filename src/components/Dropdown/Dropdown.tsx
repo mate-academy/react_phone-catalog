@@ -53,7 +53,7 @@ export const Dropdown: React.FC<Props> = ({ items, params }) => {
         {selectedOption ? selectedOption.title : 'Select an option'}
         <img
           className={`${styles.dropdown__icon} ${isOpen ? styles.dropdown__icon_rotate : null}`}
-          src="../../img/icons/vector.svg"
+          src="img/icons/vector.svg"
           alt=""
         />
       </div>
