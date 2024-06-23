@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 
-type ArbFunction = (args?: any[]) => void;
+type ArbFunction = (args?: any) => void;
 
 const DELAY = 200;
 
@@ -24,7 +24,7 @@ export const useDebounce = (
     window.clearTimeout(timer.current);
 
     timer.current = window.setTimeout(() => {
-      functionToExecute(args);
+      functionToExecute(...args);
     }, delay);
   };
 

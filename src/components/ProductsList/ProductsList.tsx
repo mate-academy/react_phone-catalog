@@ -12,6 +12,7 @@ type Props = {
   PER_PAGE?: PerPage;
   DEF_SORT?: SortBy;
   error?: string;
+  buttonText?: string;
 };
 
 const blankProducts: null[] = new Array(10).fill(null);
@@ -21,6 +22,7 @@ export const ProductsList: React.FC<Props> = ({
   DEF_SORT = SortBy.NEWEST,
   PER_PAGE = PerPage.EIGHT,
   error = '',
+  buttonText = 'Reload page',
 }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const navigate = useNavigate();
@@ -63,7 +65,7 @@ export const ProductsList: React.FC<Props> = ({
             navigate(0);
           }}
         >
-          Reload page
+          {buttonText}
         </button>
       </div>
     );

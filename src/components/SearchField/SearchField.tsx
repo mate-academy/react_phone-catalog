@@ -1,8 +1,9 @@
 import { useSearchParams } from 'react-router-dom';
 import './SearchField.scss';
 import { SearchParams } from '../../types/SearchParams';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import classNames from 'classnames';
+import { useDebounce } from '../../utils/hooks/useDebounce';
 
 type Props = {
   searchIsShown?: boolean;
@@ -10,9 +11,18 @@ type Props = {
 
 export const SearchField: React.FC<Props> = ({ searchIsShown = false }) => {
   const [searchParams, setSearchParams] = useSearchParams();
-  const query: string = searchParams.get(SearchParams.QUERY) ?? '';
+  const [queryInput, setQueryInput] = useState('');
+  const queryFromParams: string = searchParams.get(SearchParams.QUERY) ?? '';
+
+  useEffect(() => {
+    setQueryInput(queryFromParams);
+  }, [queryFromParams]);
 
   const newParams = new URLSearchParams(searchParams);
+  const setParamsWithDebounce = useDebounce(params => {
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
+    setSearchParams(params);
+  }, 500);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const newQuery = event.target.value;
@@ -23,13 +33,14 @@ export const SearchField: React.FC<Props> = ({ searchIsShown = false }) => {
       newParams.set(SearchParams.QUERY, newQuery);
     }
 
-    setSearchParams(newParams);
+    setQueryInput(newQuery);
+    setParamsWithDebounce(newParams);
   };
 
   const handleClear = () => {
     newParams.delete(SearchParams.QUERY);
 
-    if (query) {
+    if (queryFromParams) {
       setSearchParams(newParams);
     }
   };
@@ -38,7 +49,7 @@ export const SearchField: React.FC<Props> = ({ searchIsShown = false }) => {
     <div className={classNames('search-field', { hidden: !searchIsShown })}>
       <input
         type="text"
-        value={query}
+        value={queryInput}
         placeholder="Search"
         maxLength={18}
         className="search-field__input"
@@ -47,7 +58,7 @@ export const SearchField: React.FC<Props> = ({ searchIsShown = false }) => {
 
       <button
         className={classNames('search-field__button', {
-          'search-field__button--type--delete': query,
+          'search-field__button--type--delete': queryFromParams,
         })}
         onClick={handleClear}
       ></button>
