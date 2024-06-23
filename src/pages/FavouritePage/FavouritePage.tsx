@@ -8,8 +8,6 @@ import { ProductInfo } from '../../types/ProductInfo';
 export const FavouritePage = () => {
   const { likedProducts, setLikedProducts } = useContext(AppContext);
 
-  console.log(likedProducts);
-
   useEffect(() => {
     const likedProductFromStorage = localStorage.getItem('likedProducts');
 

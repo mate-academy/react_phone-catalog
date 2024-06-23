@@ -25,18 +25,23 @@ export const AccentButton: React.FC<Props> = ({ text, product, onClick }) => {
   }, [selectedProducts, productId]);
 
   const handleButtonFavorite = () => {
-    if (!product) return;
+    if (!product) {
+      return;
+    }
 
-    const isSelected = selectedProducts.some(item => item.id === product.id);
+    const productIsSelected = selectedProducts.some(
+      item => item.id === product.id,
+    );
 
     let updatedSelectedProducts: ProductWithQuantity[];
 
-    if (isSelected) {
+    if (productIsSelected) {
       updatedSelectedProducts = selectedProducts.filter(
         item => item.id !== product.id,
       );
     } else {
       const newProduct: ProductWithQuantity = { ...product, quantity: 1 };
+
       updatedSelectedProducts = [...selectedProducts, newProduct];
     }
 
@@ -44,6 +49,7 @@ export const AccentButton: React.FC<Props> = ({ text, product, onClick }) => {
       'selectedProducts',
       JSON.stringify(updatedSelectedProducts),
     );
+
     setSelectedProducts(updatedSelectedProducts);
   };
 

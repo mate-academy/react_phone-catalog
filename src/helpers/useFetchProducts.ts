@@ -31,19 +31,21 @@ export const useFetchProducts = (
     try {
       if (type === 'phones') {
         const phonesData = await getPhones();
+
         setPhones(phonesData);
       } else if (type === 'tablets') {
         const tabletsData = await getTablets();
+
         setTablets(tabletsData);
       } else if (type === 'accessories') {
         const accessoriesData = await getAccessories();
+
         setAccessories(accessoriesData);
       } else {
         const productsData = await getProducts();
+
         setProducts(productsData);
       }
-    } catch (error) {
-      console.error(`Error fetching ${type}:`, error);
     } finally {
       setLoading(false);
     }

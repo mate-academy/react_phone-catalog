@@ -19,7 +19,7 @@ export const ProductCard: React.FC<Props> = ({ product, type }) => {
         }}
       >
         <img
-          src={`../${product.images[0]}`}
+          src={`${product.images[0]}`}
           alt={'card'}
           className={styles.card__img}
         />

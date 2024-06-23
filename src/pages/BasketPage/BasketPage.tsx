@@ -29,6 +29,7 @@ export const BasketPage = () => {
     const updatedSelectedProducts = selectedProducts.map(product => {
       if (product.id === productId) {
         const newQuantity = product.quantity ? product.quantity + 1 : 1;
+
         return { ...product, quantity: newQuantity };
       }
 
@@ -106,7 +107,7 @@ export const BasketPage = () => {
             <div key={item.id} className={styles.basketpage__item}>
               <div className={styles.basketpage__item_left}>
                 <button onClick={() => handleDeleteProduct(item.id)}>
-                  <img src="../../img/icons/close.svg" alt="" />
+                  <img src="img/icons/close.svg" alt="" />
                 </button>
                 <div className={styles.basketpage__photo_wrapper}>
                   <img
@@ -165,6 +166,12 @@ export const BasketPage = () => {
             setShowModal={setShowModal}
             setSelectedProducts={setSelectedProducts}
           />
+        )}
+
+        {selectedProducts.length === 0 && (
+          <p className={styles.basketpage__errormsj}>
+            Oops! It's still empty here
+          </p>
         )}
       </div>
     </section>

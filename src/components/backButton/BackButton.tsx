@@ -10,7 +10,7 @@ export const BackButton = () => {
 
   return (
     <button type="button" className={styles.backbutton} onClick={goBack}>
-      <img src="../../img/icons/vector-black.svg" />
+      <img src="img/icons/vector-black.svg" />
       <span className={styles.backbutton__text}> Back</span>
     </button>
   );

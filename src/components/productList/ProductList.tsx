@@ -12,11 +12,7 @@ type Props = {
   loading?: boolean;
 };
 
-export const ProductList: React.FC<Props> = ({
-  products,
-  pagination,
-  loading,
-}) => {
+export const ProductList: React.FC<Props> = ({ products, pagination }) => {
   const [searchParams] = useSearchParams();
 
   const sort = searchParams.get('sortBy') || 'new';
@@ -30,8 +26,6 @@ export const ProductList: React.FC<Props> = ({
   const startIndex = (+page - 1) * perPage;
   const endIndex = Math.min(startIndex + perPage, sortedProducts.length);
   const preparedProducts = sortedProducts.slice(startIndex, endIndex);
-
-  console.log(loading);
 
   return (
     <>

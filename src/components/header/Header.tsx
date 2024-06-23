@@ -52,7 +52,7 @@ export const Header = () => {
           <Link to="/" className={styles.header__logo}>
             <img
               className={styles.header__logoimage}
-              src="../../img/icons/main-logo.svg"
+              src="img/icons/main-logo.svg"
               alt="LOGO"
             />
           </Link>
@@ -72,7 +72,7 @@ export const Header = () => {
             >
               <img
                 className={styles.header__button_image}
-                src="../../img/icons/favourite.svg"
+                src="img/icons/favourite.svg"
               />
               {likedProducts.length > 0 && (
                 <div className={styles.header__infolabel}>
@@ -91,7 +91,7 @@ export const Header = () => {
             >
               <img
                 className={styles.header__button_image}
-                src="../../img/icons/cart.svg"
+                src="img/icons/cart.svg"
               />
               {selectedProducts.length > 0 && (
                 <div className={styles.header__infolabel}>
@@ -107,7 +107,7 @@ export const Header = () => {
           >
             <img
               className={styles.header__button_image}
-              src="../../img/icons/burger.svg"
+              src="img/icons/burger.svg"
               alt="menu"
             />
           </div>

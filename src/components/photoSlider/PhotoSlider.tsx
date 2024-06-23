@@ -6,20 +6,20 @@ import classNames from 'classnames';
 const photos = [
   {
     id: 0,
-    cover: '../../img/main-banner.png',
-    phone: '../../img/banner-phone.png',
+    cover: 'img/main-banner.png',
+    phone: 'img/banner-phone.png',
     alt: 'banner-main',
   },
   {
     id: 1,
-    cover: '../../img/banner-phones.png',
-    phone: '../../img/banner-phone.png',
+    cover: 'img/banner-phones.png',
+    phone: 'img/banner-phone.png',
     alt: 'banner-phones',
   },
   {
     id: 2,
-    cover: '../../img/main-banner.png',
-    phone: '../../img/banner-phone.png',
+    cover: 'img/main-banner.png',
+    phone: 'img/banner-phone.png',
     alt: 'banner-main',
   },
 ];
@@ -85,7 +85,7 @@ export const PhotoSlider = () => {
                 styles.banner__button,
                 styles.banner__button_left,
               )}
-              src="../../img/icons/chevron.svg"
+              src="img/icons/chevron.svg"
               alt=""
             />
           </button>
@@ -119,7 +119,7 @@ export const PhotoSlider = () => {
                 styles.banner__button,
                 styles.banner__button_right,
               )}
-              src="../../img/icons/chevron.svg"
+              src="img/icons/chevron.svg"
               alt=""
             />
           </button>

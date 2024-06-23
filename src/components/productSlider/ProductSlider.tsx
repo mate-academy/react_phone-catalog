@@ -18,6 +18,7 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   useEffect(() => {
     if (productsRef.current) {
       const firstProduct = productsRef.current.firstElementChild;
+
       if (firstProduct) {
         setProductWidth(firstProduct.clientWidth);
       }

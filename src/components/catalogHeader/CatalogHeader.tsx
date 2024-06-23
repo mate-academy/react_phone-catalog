@@ -3,6 +3,7 @@ import { Dropdown } from '../Dropdown';
 import { ProductInfo } from '../../types/ProductInfo';
 import styles from './CatalogHeader.module.scss';
 import Skeleton from 'react-loading-skeleton';
+// eslint-disable-next-line import/no-extraneous-dependencies
 import 'react-loading-skeleton/dist/skeleton.css';
 
 type Props = {

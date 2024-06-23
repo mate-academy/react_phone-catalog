@@ -25,10 +25,13 @@ export const ContextProvider: React.FC<ContextProviderProps> = ({
   children,
 }) => {
   const [likedProducts, setLikedProducts] = useState<ProductInfo[]>([]);
+
+  // eslint-disable-next-line @typescript-eslint/indent
   const [selectedProducts, setSelectedProducts] = useState<
     ProductWithQuantity[]
   >([]);
 
+  // eslint-disable-next-line @typescript-eslint/indent
   const value = useMemo(
     () => ({
       likedProducts,
