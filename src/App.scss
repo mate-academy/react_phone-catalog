@@ -1,1 +1,45 @@
-// not empty
+$black-color: #313237;
+$gray-color: #89939a;
+$second-gray-color: #b4bdc3;
+$third-gray-color: #e2e6e9;
+$fourth-gray-color: #fafbfc;
+$white-color: #FFF;
+$green-color: #27ae60;
+$red-color: #eb5757;
+
+@import './styles/reset';
+@import './styles/icon';
+@import './styles/button';
+
+html {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+}
+
+.app {
+  font-family: Montserrat, sans-serif;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &__main {
+    display: flex;
+    margin-bottom: 80px;
+    flex-grow: 2;
+  }
+
+  &__container {
+    margin: 0 auto;
+    width: 1136px;
+    height: 100%;
+  }
+
+  &__footer {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    right: 0;
+  }
+}

@@ -1,0 +1,140 @@
+$black-color: #313237;
+$second-gray-color: #B4BDC3;
+$third-gray-color: #E2E6E9;
+$fourth-gray-color: #FAFBFC;
+$white-color: #FFF;
+$red-color: #EB5757;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  width: 100vw;
+  height: 64px;
+
+  border-bottom: 1px solid $third-gray-color;
+
+  &__block {
+    display: flex;
+
+    &--padding {
+      padding: 20px 0 20px 24px;
+    }
+  }
+
+  &__search-element {
+    position: relative;
+
+    width: 327px;
+    height: 64px;
+  }
+
+  &__search-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+  }
+
+  &__close-icon {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__search-field {
+    width: 100%;
+    height: 100%;
+
+    border: none;
+    border-left: 1px solid $third-gray-color;
+    border-bottom: 1px solid $third-gray-color;
+    padding: 23px 40px 23px 24px;
+
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 17.89px;
+    color: $black-color;
+
+    &::placeholder {
+      font-family: Montserrat, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 17.89px;
+      color: $second-gray-color;
+    }
+
+    &:focus-visible {
+      background-color: $fourth-gray-color;
+      outline: none;
+    }
+  }
+
+  &__logo {
+    margin-right: 64px;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 40px;
+    height: 24px;
+  }
+
+  &__icon {
+    position: relative;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 66px;
+    border-left: 1px solid $third-gray-color;
+
+    &:hover {
+      border-bottom: 1px solid $black-color;
+    }
+
+    &--isActive {
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: -1px;
+
+        display: block;
+        height: 4px;
+        width: 100%;
+        background-color: $black-color;
+      }
+    }
+  }
+
+  &__count-icon {
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    top: 19px;
+    left: 32px;
+
+    width: 14px;
+    height: 14px;
+
+    background-color: $red-color;
+    border: 1px solid $white-color;
+    border-radius: 100%;
+
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    text-align: center;
+    color: $white-color;
+  }
+}

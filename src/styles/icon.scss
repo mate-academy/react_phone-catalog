@@ -1,0 +1,91 @@
+.icon {
+  width: 16px;
+  height: 16px;
+
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+
+  &--favorites {
+    background-image: url(../../public/icons/Favourites.svg);
+
+    &--active {
+      background-image: url(../../public/icons/FavoritesActive.png);
+    }
+  }
+
+  &--cart {
+    background-image: url(../../public/icons/Cart.svg);
+  }
+
+  &--home {
+    background-image: url(../../public/icons/Home.svg);
+  }
+
+  &--arrow-up {
+    background-image: url(../../public/icons/ArrowUp.svg);
+
+    &--disabled {
+      background-image: url(../../public/icons/ArrowUpDisabled.svg);
+      transform: rotate(0.75turn);
+    }
+  }
+
+  &--arrow-down {
+    background-image: url(../../public/icons/ArrowUp.svg);
+    transform: rotate(0.5turn);
+
+    &--disabled {
+      background-image: url(../../public/icons/ArrowUpDisabled.svg);
+      transform: rotate(0.25turn);
+    }
+  }
+
+  &--arrow-left {
+    background-image: url(../../public/icons/ArrowUp.svg);
+    transform: rotate(0.75turn);
+
+    &--disabled {
+      background-image: url(../../public/icons/ArrowUpDisabled.svg);
+      transform: rotate(0.5turn);
+    }
+  }
+
+  &--arrow-right {
+    background-image: url(../../public/icons/ArrowUp.svg);
+    transform: rotate(0.25turn);
+
+    &--disabled {
+      background-image: url(../../public/icons/ArrowUpDisabled.svg);
+      transform: rotate(0);
+    }
+  }
+
+  &--close {
+    background-image: url(../../public/icons/Close.svg);
+
+    &--black {
+      background-image: url(../../public/icons/CloseBlack.svg);
+    }
+  }
+
+  &--minus {
+    background-image: url(../../public/icons/Minus.svg);
+
+    &--disabled {
+      background-image: url(../../public/icons/MinusDisabled.svg);
+    }
+  }
+
+  &--plus {
+    background-image: url(../../public/icons/Plus.svg);
+
+    &--disabled {
+      background-image: url(../../public/icons/PlusDisabled.svg);
+    }
+  }
+
+  &--search {
+    background-image: url(../../public/icons/Search.svg);
+  }
+}

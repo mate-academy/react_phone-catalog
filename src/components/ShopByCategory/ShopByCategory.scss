@@ -1,0 +1,69 @@
+$black-color: #313237;
+$gray-color: #89939a;
+
+.shopByCategory {
+  &__title {
+    font-family: inherit;
+    color: $black-color;
+
+    &--main {
+      margin-bottom: 24px;
+
+      font-weight: 700;
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+    }
+
+    &--second {
+      margin-bottom: 4px;
+
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+
+  &__blocks {
+    display: flex;
+    column-gap: 16px;
+  }
+
+  &__text {
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    color: $gray-color;
+  }
+
+  &__image {
+    display: block;
+    width: 368px;
+    height: 368px;
+
+    margin-bottom: 24px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: 0.3s;
+
+    &--phones {
+      background-image: url(../../../public/img/phones.png);
+    }
+
+    &--tablets {
+      background-image: url(../../../public/img/tablets.png);
+    }
+
+    &--accessories {
+      background-image: url(../../../public/img/accessories.png);
+    }
+
+    &:hover {
+      transform: scale(0.97);
+    }
+  }
+}

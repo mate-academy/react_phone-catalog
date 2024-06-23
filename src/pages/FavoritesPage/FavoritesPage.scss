@@ -1,0 +1,48 @@
+$black-color: #313237;
+$gray-color: #89939a;
+
+.favoritesPage {
+  margin-top: 24px;
+
+  &__link {
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+
+    margin-bottom: 40px;
+  }
+
+  &__link-text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: $gray-color;
+    text-decoration: none;
+  }
+
+  &__titles {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    margin-bottom: 40px;
+  }
+
+  &__main-title {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    color: $black-color;
+  }
+
+  &__subtitle {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+
+    color: $gray-color;
+  }
+
+}

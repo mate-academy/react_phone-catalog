@@ -1,0 +1,44 @@
+$black-color: #313237;
+$second-gray-color: #B4BDC3;
+$third-gray-color: #E2E6E9;
+
+.pagination {
+  display: flex;
+  column-gap: 16px;
+  margin: 0 auto;
+  width: min-content;
+
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid $second-gray-color;
+
+    cursor: pointer;
+    transition: 0.3s;
+
+    &--active {
+      color: #fff;
+      background-color: $black-color;
+    }
+
+    &:hover {
+      border-color: $black-color;
+    }
+
+    &:disabled {
+      border-color: $third-gray-color;
+      cursor: default;
+    }
+  }
+
+  &__block {
+    display: flex;
+    column-gap: 8px;
+  }
+}

@@ -1,0 +1,28 @@
+.button {
+  display: block;
+  height: 40px;
+  width: max-content;
+  background-color: $black-color;
+
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  color: $white-color;
+  transition: box-shadow 0.3s;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203142;
+    cursor: pointer;
+  }
+
+  &:disabled {
+    border: 1px solid $third-gray-color;
+    background-color: $white-color;
+    color: $green-color;
+    box-shadow: none;
+    cursor: default;
+  }
+
+}

@@ -1,0 +1,129 @@
+$black-color: #313237;
+$gray-color: #89939a;
+$second-gray-color: #b4bdc3;
+$third-gray-color: #e2e6e9;
+$white-color: #fff;
+
+.productCard {
+  display: block;
+  padding: 32px 24px 0;
+  width: 272px;
+  height: 507px;
+
+  text-decoration: none;
+
+  border: 1px solid $third-gray-color;
+
+  &__picture {
+    display: flex;
+    justify-content: center;
+
+    margin-bottom: 24px;
+
+    width: 208px;
+    height: 208px;
+  }
+
+  &__image {
+    height: 100%;
+
+    transition: 0.3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__title {
+    margin-bottom: 6.5px;
+
+    font-family: inherit;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $black-color;
+  }
+
+  &__prices {
+    display: flex;
+    column-gap: 8px;
+
+    margin-bottom: 6.5px;
+  }
+
+  &__price {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 31px;
+    color: $black-color;
+
+    &--discount {
+      font-weight: 500;
+      text-decoration: line-through;
+      color: $gray-color;
+    }
+  }
+
+  &__line {
+    display: block;
+    margin-bottom: 16px;
+    height: 1px;
+    background-color: $third-gray-color;
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+
+    margin-bottom: 16px;
+  }
+
+  &__block {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__text {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $gray-color;
+
+    &--second {
+      color: $black-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    column-gap: 8px;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    flex-grow: 2;
+  }
+
+  &__favorites {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 40px;
+    height: 40px;
+
+    border: 1px solid $second-gray-color;
+    background-color: $white-color;
+    transition: 0.3s;
+
+    &:hover {
+      cursor: pointer;
+      border-color: $black-color;
+    }
+
+    &--active {
+      border-color: $third-gray-color;
+    }
+  }
+}

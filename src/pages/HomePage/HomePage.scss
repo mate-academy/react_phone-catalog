@@ -1,0 +1,38 @@
+.homePage {
+  margin-top: 40px;
+
+  &__bannerSlider {
+    margin-bottom: 72px;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__bannerImage {
+    min-width: 1040px;
+    height: 400px;
+
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--1 {
+      background-image: url(../../../public/_new/img/banner-phones.png);
+    }
+
+    &--2 {
+      background-image: url(../../../public/_new/img/banner-accessories.png);
+    }
+
+    &--3 {
+      background-image: url(../../../public/_new/img/banner-tablets.png);
+    }
+  }
+
+  &__hotPrices {
+    margin-bottom: 80px;
+  }
+
+  &__shopByCategory {
+    margin-bottom: 80px;
+  }
+}

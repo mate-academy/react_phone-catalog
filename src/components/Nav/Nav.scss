@@ -1,0 +1,43 @@
+$black-color: #313237;
+$gray-color: #89939A;
+
+.nav {
+  display: flex;
+  align-items: center;
+  column-gap: 64px;
+  text-align: center;
+  height: 24px;
+
+  &__link {
+    position: relative;
+
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 4%;
+    color: $gray-color;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: 0.3s;
+
+    &--isActive {
+      color: $black-color;
+
+      &::after {
+        content: '';
+
+        position: absolute;
+        bottom: -26px;
+
+        display: block;
+        height: 3px;
+        width: 100%;
+        background-color: $black-color;
+      }
+    }
+
+    &:hover {
+      color: $black-color;
+    }
+  }
+}
