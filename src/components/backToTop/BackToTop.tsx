@@ -14,6 +14,7 @@ const scrollToHeader = (
 
 export const BackToTop: React.FC = () => {
   const { backToTop } = useContext(ContextApp);
+
   return (
     <div ref={backToTop} className={Styles['back']}>
       <p className={Styles['back__paragraph']}>Back to top</p>

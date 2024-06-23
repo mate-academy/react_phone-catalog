@@ -2,7 +2,7 @@ import { Navigate, Outlet, Route, Routes } from 'react-router-dom';
 import './App.scss';
 import { Footer } from './components/footer';
 import { Header } from './components/header';
-import { useContext, useEffect } from 'react';
+import { useContext } from 'react';
 import { ContextApp } from './appContext/AppContext';
 import { NotFoundPage } from './components/notFoundPage';
 import { Home } from './components/home';
@@ -18,27 +18,33 @@ export const App = () => {
   const { app, accessories, tablets, phones, backToTop } =
     useContext(ContextApp);
 
+
+
   const handleScroll = () => {
     console.log('ScrollY:', window.scrollY);
-    if (window.scrollY > 70 && backToTop.current) {
-      console.log('in')
-      backToTop.current.style.marginTop = '10px';
+    if (backToTop.current) {
+      console.log(backToTop.current.getBoundingClientRect().y);
     }
-
-    if (window.scrollY < 70 && backToTop.current) {
-      console.log('in')
+    if (backToTop.current && backToTop.current.getBoundingClientRect().y === 411) {
+      console.log('in');
+      backToTop.current.style.marginTop = '10px';
+    } else if (backToTop.current) {
+      console.log('out');
       backToTop.current.style.marginTop = '150vh';
     }
   };
 
-  useEffect(() => {
-    document.addEventListener('scroll', handleScroll);
-
-    return document.removeEventListener('scroll', handleScroll);
-  }, []);
+  // useEffect(() => {
+  //   window.addEventListener('scroll', () => handleScroll());
+  //   return () => {
+  //     window.removeEventListener('Scroll', () => handleScroll());
+  //   };
+  // }, []);
 
   return (
-    <div ref={app} className="app">
+    <div
+    onScroll={handleScroll}
+    ref={app} className="app">
       <Header />
       <h1 className="app__title">Product Catalog</h1>
 
