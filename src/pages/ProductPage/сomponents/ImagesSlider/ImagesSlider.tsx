@@ -34,7 +34,7 @@ export const ImagesSlider: React.FC<Props> = ({ photos }) => {
           >
             <img
               className={styles.imagesslider__photo}
-              src={`../${image}`}
+              src={`${image}`}
               alt={`photo-${index}`}
               onClick={() => handleImageClick(index)}
             />
@@ -45,7 +45,7 @@ export const ImagesSlider: React.FC<Props> = ({ photos }) => {
       <div className={styles.imagesslider__mainphoto}>
         <img
           className={styles.imagesslider__photo}
-          src={`../../${selectedImg}`}
+          src={`${selectedImg}`}
           alt="main-photo"
         />
       </div>

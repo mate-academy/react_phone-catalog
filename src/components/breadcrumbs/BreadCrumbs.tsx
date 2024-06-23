@@ -23,12 +23,12 @@ export const BreadCrumbs = () => {
               <Link className={styles.breadcrumbs__home} to="/">
                 <img
                   className={styles.breadcrumbs__home_img}
-                  src="../../img/icons/home.svg"
+                  src="img/icons/home.svg"
                   alt=""
                 />
               </Link>
 
-              <img src="../../img/icons/vector.svg" alt="" />
+              <img src="img/icons/vector.svg" alt="" />
             </div>
           )}
 
@@ -36,7 +36,7 @@ export const BreadCrumbs = () => {
             {crumbText}
           </Link>
 
-          {!isLast && <img src="../../img/icons/vector.svg" alt="" />}
+          {!isLast && <img src="img/icons/vector.svg" alt="" />}
         </React.Fragment>
       );
     });
