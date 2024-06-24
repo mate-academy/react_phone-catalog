@@ -41,7 +41,11 @@ export const ProductList: React.FC<Props> = ({ products, pagination }) => {
           </div>
         ))}
 
-        {pagination && (
+        {filteredProducts.length === 0 && (
+          <h2 className={styles.products__title}>Oooops! No products found!</h2>
+        )}
+
+        {filteredProducts.length !== 0 && pagination && (
           <div className={styles.products__pagination}>
             <Pagination
               total={sortedProducts.length}

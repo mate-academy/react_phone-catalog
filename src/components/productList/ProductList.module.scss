@@ -14,6 +14,16 @@
     }
   }
 
+  &__title {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 8 / 19;
+    }
+
+    @include header-2;
+  }
+
   &__pagination {
     grid-column: 1 / -1;
   }

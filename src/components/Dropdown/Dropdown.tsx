@@ -65,6 +65,7 @@ export const Dropdown: React.FC<Props> = ({ items, params }) => {
               to={{
                 search: getSearchWith(searchParams, {
                   [params]: option.name,
+                  page: '1',
                 }),
               }}
               className={styles.dropdown__item}

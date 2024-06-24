@@ -5,11 +5,7 @@ export const NotFoundPage = () => {
   return (
     <div className={styles.notfoundpage}>
       <div className={styles.notfoundpage__content}>
-        <img
-          className={styles.notfoundpage__photo}
-          src="../../img/404.svg"
-          alt=""
-        />
+        <img className={styles.notfoundpage__photo} src="img/404.svg" alt="" />
         <h2 className={styles.notfoundpage__title}>
           Oooops! Something went wrong...
         </h2>
