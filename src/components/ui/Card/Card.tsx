@@ -46,7 +46,7 @@ const Card: React.FC<Props> = ({ data }) => {
           className="card__image--wrapper"
           onClick={() => handleClick()}
         >
-          <img src={`/${data.image}`} alt="" className="card__image" />
+          <img src={`${data.image}`} alt="" className="card__image" />
         </Link>
         <Link
           to={productLink}
