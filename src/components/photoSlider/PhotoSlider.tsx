@@ -76,19 +76,21 @@ export const PhotoSlider = () => {
     <section className={styles.banner} {...swipeHandlers}>
       <div className={styles.banner__body}>
         <div className={styles.banner__maincontent}>
-          <button
-            className={styles.banner__button_wrapper}
-            onClick={handlePrevClick}
-          >
-            <img
-              className={classNames(
-                styles.banner__button,
-                styles.banner__button_left,
-              )}
-              src="img/icons/chevron.svg"
-              alt=""
-            />
-          </button>
+          {!isMobile && (
+            <button
+              className={styles.banner__button_wrapper}
+              onClick={handlePrevClick}
+            >
+              <img
+                className={classNames(
+                  styles.banner__button,
+                  styles.banner__button_left,
+                )}
+                src="img/icons/chevron.svg"
+                alt=""
+              />
+            </button>
+          )}
 
           <div className={styles.banner__photoWrapper}>
             {photos.map((photo, index) => (
@@ -110,19 +112,21 @@ export const PhotoSlider = () => {
             ))}
           </div>
 
-          <button
-            className={styles.banner__button_wrapper}
-            onClick={handleNextClick}
-          >
-            <img
-              className={classNames(
-                styles.banner__button,
-                styles.banner__button_right,
-              )}
-              src="img/icons/chevron.svg"
-              alt=""
-            />
-          </button>
+          {!isMobile && (
+            <button
+              className={styles.banner__button_wrapper}
+              onClick={handleNextClick}
+            >
+              <img
+                className={classNames(
+                  styles.banner__button,
+                  styles.banner__button_right,
+                )}
+                src="img/icons/chevron.svg"
+                alt=""
+              />
+            </button>
+          )}
         </div>
         <div className={styles.banner__dots}>
           {photos.map(photo => (

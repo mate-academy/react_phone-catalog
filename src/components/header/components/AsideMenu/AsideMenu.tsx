@@ -19,7 +19,7 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         <Link to="/" className={adideStyles.menu__header_logo}>
           <img
             className={adideStyles.menu__header_logoimage}
-            src="../../img/icons/main-logo.svg"
+            src="img/icons/main-logo.svg"
             alt="LOGO"
           />
         </Link>
@@ -31,7 +31,7 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
           >
             <img
               className={adideStyles.menu__header_button_image}
-              src="../../img/icons/close.svg"
+              src="img/icons/close.svg"
               alt="menu"
             />
           </div>
@@ -55,7 +55,7 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           <img
             className={adideStyles.menu__button_image}
-            src="../../../img/icons/favourite.svg"
+            src="img/icons/favourite.svg"
           />
         </NavLink>
 
@@ -69,7 +69,7 @@ export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
         >
           <img
             className={adideStyles.menu__button_image}
-            src="../../../img/icons/cart.svg"
+            src="img/icons/cart.svg"
           />
         </NavLink>
       </div>
