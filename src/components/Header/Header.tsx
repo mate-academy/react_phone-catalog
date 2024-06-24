@@ -67,7 +67,7 @@ export const Header = () => {
       <div className="header__block header__block--padding">
         <div className="header__logo">
           <Link to="/" className="header__link">
-            <img src="/icons/LOGO.svg" alt="Logo" />
+            <img src="icons/LOGO.svg" alt="Logo" />
           </Link>
         </div>
 

@@ -123,7 +123,7 @@ export const CartItem: React.FC<Props> = ({
 
       <div className="cartItem__picture">
         <img
-          src={`_new/${cartProduct[0].image}`}
+          src={`${cartProduct[0].image}`}
           alt={cartProduct[0].name}
           className="cartItem__image"
         />

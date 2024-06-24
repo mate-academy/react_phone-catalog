@@ -167,7 +167,7 @@ export const ProductDetailsPage = () => {
                     >
                       <img
                         className="productDetails__image"
-                        src={`/_new/${image}`}
+                        src={`${image}`}
                         alt={`${i}`}
                       />
                     </button>
@@ -177,7 +177,7 @@ export const ProductDetailsPage = () => {
                 <div className="productDetails__main-picture">
                   <img
                     className="productDetails__image"
-                    src={`/_new/${currentImage}`}
+                    src={`${currentImage}`}
                     alt={productDetails?.name}
                   />
                 </div>
