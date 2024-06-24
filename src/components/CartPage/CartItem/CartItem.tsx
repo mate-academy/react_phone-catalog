@@ -11,7 +11,7 @@ interface Props {
 
 const CartItem: React.FC<Props> = ({ item }) => {
   const dispatch = useContext(DispatchContext);
-  const [counter, setCounter] = useState(item.amount);
+  const [counter, setCounter] = useState<number>(item.amount);
   const isMinusDisabled = counter === 1;
 
   const handleDeleteItem = () => {
@@ -31,38 +31,15 @@ const CartItem: React.FC<Props> = ({ item }) => {
   const handlePlusItem = () => {
     dispatch({ type: ActionTypes.PlusOneItem, payload: { id: item.itemId } });
     setCounter(counter + 1);
-
-    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const updatedCart = currentCart.filter(
-      (elem: Product) => elem.itemId === item.itemId,
-    );
-
-    updatedCart[0].amount += 1;
-    localStorage.setItem('cart', JSON.stringify(updatedCart));
   };
 
   const handleMinusItem = () => {
-    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
-    const updatedCart = currentCart.filter(
-      (elem: Product) => elem.itemId === item.itemId,
-    );
-
-    if (updatedCart[0].amount > 1) {
+    if (counter > 1) {
       dispatch({
         type: ActionTypes.MinusOneItem,
         payload: { id: item.itemId },
       });
       setCounter(counter - 1);
-
-      const currentCartStorage = JSON.parse(
-        localStorage.getItem('cart') || '[]',
-      );
-      const updatedCartStorage = currentCartStorage.filter(
-        (elem: Product) => elem.itemId === item.itemId,
-      );
-
-      updatedCartStorage[0].amount -= 1;
-      localStorage.setItem('cart', JSON.stringify(updatedCartStorage));
     }
   };
 

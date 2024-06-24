@@ -101,6 +101,10 @@
 
 }
 
+.burger__container.active--burger + main{
+  overflow: hidden;
+}
+
 .close {
   display: flex;
   align-items: center;

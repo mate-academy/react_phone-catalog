@@ -14,6 +14,10 @@ const CartPage = () => {
     return acc + cur.fullPrice * cur.amount;
   }, 0);
 
+  const totalAmountOfItems = cart.reduce((acc, cur) => {
+    return acc + 1 * cur.amount;
+  }, 0);
+
   const goBack = () => {
     navigate(-1);
   };
@@ -51,7 +55,9 @@ const CartPage = () => {
         <div className="cartPage__footer">
           <div className="cartPage__info">
             <h2 className="cartPage__price">${priceOfGadgets}</h2>
-            <div className="cartPage__couter-item">Total for 3 items</div>
+            <div className="cartPage__couter-item">
+              Total for {totalAmountOfItems} items
+            </div>
           </div>
           <hr className="cartPage__line" />
           <button className="cartPage__button-checkout">checkout</button>

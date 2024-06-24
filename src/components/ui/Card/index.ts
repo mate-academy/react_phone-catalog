@@ -14,7 +14,7 @@ export const handleAddToCart = (dispatch: Dispatch<any>, data: Product) => {
   );
 
   if (!isItemInCart) {
-    const updatedCart = [...currentCart, data];
+    const updatedCart = [...currentCart, newData];
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
   }

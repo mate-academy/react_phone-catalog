@@ -21,7 +21,7 @@ const Card: React.FC<Props> = ({ data }) => {
   const { cart, favourites } = useContext(StateContext);
   const [type, setType] = useState(data.category);
 
-  const isIndludeCard = cart.find(elem => elem.itemId == data.itemId);
+  const isIndludeCard = !!cart.find(elem => elem.itemId == data.itemId);
   const isLiked = favourites.find(elem => elem.itemId === data.itemId);
 
   useEffect(() => {
@@ -77,7 +77,7 @@ const Card: React.FC<Props> = ({ data }) => {
           </div>
         </div>
         <div className="card__buttons">
-          {!!isIndludeCard ? (
+          {isIndludeCard ? (
             <button
               className="card__buttons--add button-added"
               onClick={() => handleRemoveFromCart(dispatch, data)}

@@ -12,6 +12,10 @@ const BurgerMenu = () => {
     setActiveBurger(arg);
   };
 
+  const handlecloseMenu = () => {
+    setActiveBurger(false);
+  };
+
   return (
     <>
       <nav className="burger">
@@ -24,11 +28,11 @@ const BurgerMenu = () => {
             />
           </div>
           {activeBurger && (
-            <div className="burger__container">
+            <div className="burger__container active--burger">
               <div className="burger__header">
                 <div className="burger__header--logo">
                   <img
-                    src="img/Icons/Logo.png"
+                    src="icons/Logo.png"
                     alt="logo"
                     className="burger__header--logo-img"
                   />
@@ -46,26 +50,51 @@ const BurgerMenu = () => {
               <nav className="burger__nav-wrapper">
                 <ul className="burger__nav-List menu--text">
                   <li className="burger__nav-List--Item">
-                    <Link to="/">HOME</Link>
+                    <Link to="/" onClick={() => handlecloseMenu()}>
+                      HOME
+                    </Link>
                   </li>
                   <li className="burger__nav-List--Item">
-                    <Link to={PageType.Accessories}>PHONES</Link>
+                    <Link
+                      to={PageType.Accessories}
+                      onClick={() => handlecloseMenu()}
+                    >
+                      PHONES
+                    </Link>
                   </li>
                   <li className="burger__nav-List--Item">
-                    <Link to={PageType.Tablets}>TABLETS</Link>
+                    <Link
+                      to={PageType.Tablets}
+                      onClick={() => handlecloseMenu()}
+                    >
+                      TABLETS
+                    </Link>
                   </li>
                   <li className="burger__nav-List--Item">
-                    <Link to={PageType.Accessories}>ACCESSORIES</Link>
+                    <Link
+                      to={PageType.Accessories}
+                      onClick={() => handlecloseMenu()}
+                    >
+                      ACCESSORIES
+                    </Link>
                   </li>
                 </ul>
               </nav>
               <div className="burger__footer">
-                <div className="burger__favourite">
+                <Link
+                  className="burger__favourite"
+                  to="favourites"
+                  onClick={() => handlecloseMenu()}
+                >
                   <Favourite />
-                </div>
-                <div className="burger__cart">
+                </Link>
+                <Link
+                  className="burger__cart"
+                  to="cart"
+                  onClick={() => handlecloseMenu()}
+                >
                   <Cart />
-                </div>
+                </Link>
               </div>
             </div>
           )}

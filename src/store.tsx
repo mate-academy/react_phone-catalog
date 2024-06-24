@@ -83,11 +83,14 @@ const rootReducer = (state: State = initialState, action: Action): State => {
         elem => elem.itemId === action.payload.id,
       );
       //set amount to 1 for next manipulations with amount of product in cart
-      selectedProduct[0].amount = 1;
+      const newObj = {
+        ...selectedProduct[0],
+        amount: 1,
+      };
 
       return {
         ...state,
-        cart: [...state.cart, ...selectedProduct],
+        cart: [...state.cart, newObj],
       };
 
     case ActionTypes.RemoveFromCart:
@@ -107,6 +110,7 @@ const rootReducer = (state: State = initialState, action: Action): State => {
 
         return elem;
       });
+      localStorage.setItem('cart', JSON.stringify(result));
 
       return {
         ...state,
@@ -124,6 +128,7 @@ const rootReducer = (state: State = initialState, action: Action): State => {
 
         return elem;
       });
+      localStorage.setItem('cart', JSON.stringify(resultArray));
 
       return {
         ...state,
