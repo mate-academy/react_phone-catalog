@@ -50,7 +50,7 @@ export const colorDictionary: ColorsType = {
 export const ProductDetailsPage = () => {
   const { isInCart, handleCart } = useContext(CartContext);
   const { isInFavorites, handleFavorites } = useContext(FavouritesContext);
-  const newPath = '/new/';
+  const newPath = './new/';
 
   const location = useLocation();
   const category = location.pathname.split('/')[1];
