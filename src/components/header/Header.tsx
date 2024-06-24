@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { Navbar } from '../navbar';
 import { AsideMenu } from './components/AsideMenu/AsideMenu';
@@ -7,6 +7,7 @@ import classNames from 'classnames';
 import { ProductInfo } from '../../types/ProductInfo';
 import { AppContext } from '../../store/context';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
+import { ProductSearch } from '../productSearch';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -16,6 +17,12 @@ export const Header = () => {
     selectedProducts,
     setSelectedProducts,
   } = useContext(AppContext);
+
+  const location = useLocation();
+  const isProductsList =
+    location.pathname === '/phones' ||
+    location.pathname === '/tablets' ||
+    location.pathname === '/accessories';
 
   useEffect(() => {
     const selectedProductFromStorage = localStorage.getItem('likedProducts');
@@ -62,6 +69,8 @@ export const Header = () => {
 
         <div className={styles.header__right}>
           <div className={styles.header__buttons}>
+            {isProductsList && <ProductSearch />}
+
             <NavLink
               to="/favourites"
               className={({ isActive }) =>
