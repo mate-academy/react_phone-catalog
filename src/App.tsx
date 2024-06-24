@@ -23,7 +23,7 @@ export const App = () => {
     if (backToTop.current) {
       console.log('offset', backToTop.current.offsetTop);
     }
-    if (backToTop.current && backToTop.current.offsetTop < 1150) {
+    if (backToTop.current && backToTop.current.offsetTop < 500) {
       console.log('in');
       backToTop.current.style.marginTop = '120vh';
     } else if ((backToTop.current && backToTop.current.offsetTop > 1150)) {

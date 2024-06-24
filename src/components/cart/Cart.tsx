@@ -15,13 +15,19 @@ export const Cart: React.FC = () => {
   };
 
   const handleCheckout = () => {
-    dialogRef.current?.insertAdjacentElement;
+    dialogRef.current?.showModal();
   };
 
   const handleClearCart = () => {
     setCart([]);
     setTotalPrice(0);
     setTotalQuantity(0);
+    handleCloseDialog();
+
+    const headerElement = document.getElementById('header');
+  if (headerElement) {
+    headerElement.scrollIntoView({ behavior: 'smooth' });
+  }
   };
 
   return (
@@ -80,14 +86,14 @@ export const Cart: React.FC = () => {
 
         <button
           onClick={handleClearCart}
-          className={Styles.cart__dialog__button_confirm}
+          className={Styles.cart__dialog__button}
         >
           Confirm
         </button>
 
         <button
           onClick={handleCloseDialog}
-          className={Styles.cart__dialog__button_confirm}
+          className={Styles.cart__dialog__button}
         >
           Cancel
         </button>
