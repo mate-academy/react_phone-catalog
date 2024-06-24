@@ -1,0 +1,14 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.search {
+  &__input {
+    height: 100%;
+    box-sizing: border-box;
+    border: none;
+    border-left: 1px solid $elements-border-color;
+    padding: 8px;
+  }
+}
