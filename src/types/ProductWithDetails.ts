@@ -1,4 +1,4 @@
-export type PhoneDetails = {
+export type ProductWithDetails = {
   id: string,
   namespaceId: string,
   name: string,

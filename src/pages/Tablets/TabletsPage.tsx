@@ -15,7 +15,7 @@ export const TabletsPage = () => {
       const getPhonesFromServer = await getAllProducts();
 
       const tabletsOnly = getPhonesFromServer.filter(
-        product => product.category === ProductType.Tablet,
+        (product) => product.category === ProductType.Tablet,
       );
 
       setTablets(tabletsOnly);

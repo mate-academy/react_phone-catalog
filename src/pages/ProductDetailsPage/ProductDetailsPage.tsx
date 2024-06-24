@@ -1,22 +1,22 @@
 import classNames from 'classnames';
 import { useLocation, useNavigate } from 'react-router-dom';
 import {
-  useState,
-  useEffect,
-  useContext,
-  Fragment,
+  useState, useEffect, useContext, Fragment,
 } from 'react';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { BackButton } from '../../components/BackButton/BackButton';
 
-import { Product } from '../../types/Product';
-import { PhoneDetails } from '../../types/Phone';
+import { Product, ProductType } from '../../types/Product';
+import { ProductWithDetails } from '../../types/ProductWithDetails';
 
 import {
   getAllProducts,
-  getPhoneDetails,
   getShuffleProducts,
 } from '../../helpers/FetchProducts';
+import { getPhones } from '../../api/phones';
+import { getTablets } from '../../api/tablets';
+import { getAccessories } from '../../api/accessories';
+
 import { Loader } from '../../components/Loader/Loader';
 import './ProductDetailsPage.scss';
 
@@ -50,16 +50,22 @@ export const colorDictionary: ColorsType = {
 export const ProductDetailsPage = () => {
   const { isInCart, handleCart } = useContext(CartContext);
   const { isInFavorites, handleFavorites } = useContext(FavouritesContext);
+  const newPath = '/new/';
 
   const location = useLocation();
+  const category = location.pathname.split('/')[1];
+
   const { pathname } = location;
   const productAdress = pathname.split('/').filter((item) => item !== '');
   const productId = productAdress[productAdress.length - 1];
-  const [productInfo, setProductInfo] = useState<Product | null>(null);
-  const [details, setDetails] = useState<PhoneDetails | null>(null);
+
   const [products, setProducts] = useState<Product[] | null>(null);
+  const [productInfo, setProductInfo] = useState<Product | null>(null);
+  const [details, setDetails] = useState<ProductWithDetails | null>(null);
+
   const [error, setError] = useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [isShufflLoading, setIsShufflLoading] = useState(true);
   const [currentImage, setCurrentImage] = useState('');
   const navigate = useNavigate();
 
@@ -68,68 +74,101 @@ export const ProductDetailsPage = () => {
   };
 
   const handleColorChange = (color: string) => {
-    const Url = `/${productInfo?.category}/${details?.namespaceId}-${details?.capacity}-${color}`.toLowerCase();
+    const Url
+      = `/${productInfo?.category}/${details?.namespaceId}-${details?.capacity}-${color}`.toLowerCase();
 
     navigate(Url);
   };
 
   const handleCapacityChange = (capacity: string) => {
-    const Url = `/${productInfo?.category}/${details?.namespaceId}-${capacity}-${details?.color}`.toLowerCase();
+    const Url
+      = `/${productInfo?.category}/${details?.namespaceId}-${capacity}-${details?.color}`.toLowerCase();
 
     navigate(Url);
   };
 
-  useEffect(() => {
-    async function getData() {
-      try {
-        const phoneDetails = await getPhoneDetails(productId || '');
+  const fetchData = async () => {
+    setIsLoading(true);
 
-        if (!phoneDetails) {
-          setError('Product details were not found...');
+    try {
+      let productsDetails: ProductWithDetails[] = [];
 
-          return;
-        }
-
-        setDetails(phoneDetails);
-        setCurrentImage(phoneDetails.images[0]);
-
-        const phones = await getAllProducts();
-        const phoneInfo = phones.find(
-          (phone) => phone.phoneId === phoneDetails.id,
-        );
-
-        if (!phoneInfo) {
-          setError('Could not find exact product...');
-
-          return;
-        }
-
-        setProductInfo(phoneInfo);
-      } finally {
-        setIsLoading(false);
+      switch (category) {
+        case ProductType.Phone:
+          productsDetails = await getPhones();
+          break;
+        case ProductType.Tablet:
+          productsDetails = await getTablets();
+          break;
+        case ProductType.Accessories:
+          productsDetails = await getAccessories();
+          break;
+        default:
+          setError('Invalid category');
+          break;
       }
-    }
 
-    getData();
-  }, [navigate]);
+      if (productsDetails.length === 0) {
+        setError('Product details were not found...');
 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const shuffledProducts = await getShuffleProducts();
+        return;
+      }
 
-        setProducts(shuffledProducts);
-      } catch (err) {
+      const allProducts = await getAllProducts();
+      const currentProduct = allProducts.find(
+        (prod) => prod.itemId === productId,
+      );
+
+      if (!currentProduct) {
         setError('Could not find exact product...');
-      } finally {
-        setIsLoading(false);
-      }
-    };
 
+        return;
+      }
+
+      setProductInfo(currentProduct);
+
+      const currentDetails = productsDetails.find(
+        (prodDetails) => prodDetails.id === currentProduct.itemId,
+      );
+
+      if (!currentDetails) {
+        setError('Could not find details for the product...');
+
+        return;
+      }
+
+      setDetails(currentDetails);
+      setCurrentImage(currentProduct.image);
+    } catch (err) {
+      setError('Error fetching product details');
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  const fetchShuffledProducts = async () => {
+    setIsShufflLoading(true);
+    try {
+      const shuffledProducts = await getShuffleProducts();
+
+      setProducts(shuffledProducts);
+    } catch (err) {
+      setError('Could not fetch shuffled products');
+    } finally {
+      setIsShufflLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    setIsLoading(true);
     fetchData();
+  }, [productId, category]);
+
+  useEffect(() => {
+    fetchShuffledProducts();
   }, []);
 
-  if (isLoading) {
+  if (isLoading || isShufflLoading) {
     return <Loader />;
   }
 
@@ -177,8 +216,8 @@ export const ProductDetailsPage = () => {
                   >
                     <img
                       className="product-details__photo"
-                      src={image}
-                      alt={image}
+                      src={newPath + image}
+                      alt={newPath + image}
                     />
                   </div>
                 ))}
@@ -187,8 +226,8 @@ export const ProductDetailsPage = () => {
               <div className="product-details__big-photo-container">
                 <img
                   className="product-details__photo"
-                  src={currentImage}
-                  alt={currentImage}
+                  src={newPath + currentImage}
+                  alt={newPath + currentImage}
                 />
               </div>
 
@@ -306,7 +345,9 @@ export const ProductDetailsPage = () => {
                     </span>
                   </li>
 
-                  <li className="product-details__actions-description-box">
+                  <li
+                    className="product-details__actions-description-box"
+                  >
                     <span
                       className="product-details__actions-description-title"
                     >
@@ -334,7 +375,9 @@ export const ProductDetailsPage = () => {
                     </span>
                   </li>
 
-                  <li className="product-details__actions-description-box">
+                  <li
+                    className="product-details__actions-description-box"
+                  >
                     <span
                       className="product-details__actions-description-title"
                     >
@@ -360,7 +403,7 @@ export const ProductDetailsPage = () => {
                 <div className="product-details__underline" />
 
                 <div className="product-details__about-description">
-                  {details.description.map(article => (
+                  {details.description.map((article) => (
                     <article
                       key={article.title}
                       className="product-details__about-article"

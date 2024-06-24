@@ -69,9 +69,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
 
       <div className="product-list__items" data-cy="productList">
         {visibleProducts.map((product) => {
-          return (
-            <ProductCard key={product.id} product={product} />
-          );
+          return <ProductCard key={product.id} product={product} />;
         })}
       </div>
       {perPage < sortedProducts.length && filteredProducts.length > 0 && (

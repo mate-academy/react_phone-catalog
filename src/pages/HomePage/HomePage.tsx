@@ -55,9 +55,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1 className="home-page__title">
-        Welcome to Nice Gadgets store!
-      </h1>
+      <h1 className="home-page__title">Welcome to Nice Gadgets store!</h1>
 
       <section className="home-page__section">
         <Banner />

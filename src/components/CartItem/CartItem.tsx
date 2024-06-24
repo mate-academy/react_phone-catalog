@@ -16,6 +16,7 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { setCart } = useContext(CartContext);
+  const newPath = '/new/';
 
   const isMinusDisabled = item.quantity === 1;
   const isPlusDisabled = item.quantity === 10;
@@ -57,7 +58,7 @@ export const CartItem: React.FC<Props> = ({ item }) => {
       >
         <div className="cart-item__preview">
           <img
-            src={item.product.image}
+            src={newPath + item.product.image}
             alt={item.product.name}
             className="cart-item__preview-img"
           />

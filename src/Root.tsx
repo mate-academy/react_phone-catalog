@@ -31,13 +31,20 @@ export const Root: React.FC = () => (
 
                 <Route path="tablets">
                   <Route index element={<TabletsPage />} />
+                  <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
 
                 <Route path="accessories">
                   <Route index element={<AccessoriesPage />} />
+                  <Route path=":productId" element={<ProductDetailsPage />} />
                 </Route>
 
-                <Route path="favorites" element={<FavoritesPage />} />
+                <Route path="favorites">
+                  <Route index element={<FavoritesPage />} />
+                  <Route path=":productId" element={<ProductDetailsPage />} />
+                </Route>
+
+                <Route path=":productId" element={<ProductDetailsPage />} />
                 <Route path="cart" element={<CartPage />} />
               </Route>
               <Route path="*" element={<NotFoundPage />} />

@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     fullPrice,
     name,
     category,
-    phoneId,
+    itemId,
     image,
   } = product;
 
@@ -36,7 +36,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     <div className="product-card" data-cy="cardsContainer">
       <Link
         className="product-card__link"
-        to={`/${category}/${phoneId}`}
+        to={`/${category}/${itemId}`}
         onClick={() => {
           window.scrollTo(0, 0);
         }}

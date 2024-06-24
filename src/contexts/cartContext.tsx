@@ -1,8 +1,5 @@
 import {
-  Dispatch,
-  SetStateAction,
-  createContext,
-  useContext,
+  Dispatch, SetStateAction, createContext, useContext,
 } from 'react';
 import { useLocalStorage } from '../helpers/useLocalStorage';
 import { CartItemType } from '../types/сartItemType';

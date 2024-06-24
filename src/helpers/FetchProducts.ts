@@ -1,10 +1,12 @@
 import { Product } from '../types/Product';
-import { PhoneDetails } from '../types/Phone';
 
 export const URL_NEW
  = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/new/products.json';
 export const detailsURL
- = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/new/products/';
+ = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/src/api/';
+
+export const URL_JSON
+ = 'https://JulyaPetrovskaya.github.io/react_phone-catalog/new/';
 
 export const getProducts = <T>(url: string): Promise<T> => {
   return fetch(url)
@@ -16,10 +18,6 @@ export const getProducts = <T>(url: string): Promise<T> => {
       return response.json();
     });
 };
-
-export function getPhoneDetails(phoneId: string) {
-  return getProducts<PhoneDetails>(`${detailsURL}/${phoneId}.json`);
-}
 
 export const getAllProducts = async () => {
   const products: Product[] = await getProducts(URL_NEW);
@@ -62,3 +60,28 @@ export function getShuffleProducts() {
   return getAllProducts()
     .then(phones => shuffleArray<Product>([...phones]).slice(0, 20));
 }
+
+const wait = (delay: number) => {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+};
+
+type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
+
+const request = async <T>(
+  path: string,
+  method: RequestMethod = 'GET',
+): Promise<T> => {
+  const options: RequestInit = { method };
+
+  await wait(800);
+
+  const response = await fetch(`${URL_JSON}/${path}`, options);
+
+  return response.json();
+};
+
+export const client = {
+  get: <T>(path: string) => request<T>(path),
+};

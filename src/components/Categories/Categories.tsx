@@ -39,11 +39,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
 
         <Link to="/tablets" className="category__tablets">
           <div className="category__bg category__bg--tablets">
-            <img
-              className="category__img"
-              src={tabletsBaner}
-              alt="tablets"
-            />
+            <img className="category__img" src={tabletsBaner} alt="tablets" />
           </div>
           <h3 className="category__name">Tablets</h3>
           <div className="category__count">

@@ -11,8 +11,9 @@ export const AccessoriesPage = () => {
   const fetchProductsAccessory = async () => {
     setIsLoading(true);
     try {
-      const getAccessoryFromServer = (await getAllProducts())
-        .filter(product => product.category === ProductType.Accessories);
+      const getAccessoryFromServer = (await getAllProducts()).filter(
+        (product) => product.category === ProductType.Accessories,
+      );
 
       setProductsAccessory(getAccessoryFromServer);
     } catch {

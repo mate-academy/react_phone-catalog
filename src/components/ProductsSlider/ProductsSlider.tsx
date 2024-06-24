@@ -15,12 +15,9 @@ type Props = {
 
 export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   const {
-    width,
-    isMobileSize,
-    isTabletSize,
-    isLaptopSize,
-    isDesktopSize,
-  } = useViewport();
+    width, isMobileSize, isTabletSize, isLaptopSize, isDesktopSize,
+  }
+    = useViewport();
 
   const [position, setPosition] = useState(0);
   const [itemsVisible, setItemsVisible] = useState(4);

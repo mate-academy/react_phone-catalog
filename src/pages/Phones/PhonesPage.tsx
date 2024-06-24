@@ -15,7 +15,7 @@ export const PhonesPage = () => {
       const getPhonesFromServer = await getAllProducts();
 
       const phonesOnly = getPhonesFromServer.filter(
-        product => product.category === ProductType.Phone,
+        (product) => product.category === ProductType.Phone,
       );
 
       setPhones(phonesOnly);
