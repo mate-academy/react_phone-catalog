@@ -25,7 +25,7 @@ const Main = () => {
     <main className="main">
       <Routes>
         {/* Домашня сторінка */}
-        <Route path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} index />
 
         {/* Сторінки категорій */}
         <Route
