@@ -32,11 +32,11 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const handlerTouchEnd = () => {
-    if (startTouch.current - endTouch.current > 40) {
+    if (startTouch.current - endTouch.current > 80) {
       setActive(prevState => (prevState + 1) % productsTotalNumber);
     }
 
-    if (startTouch.current - endTouch.current < -40) {
+    if (startTouch.current - endTouch.current < -80) {
       setActive(
         prevState =>
           (prevState - 1 + productsTotalNumber) % productsTotalNumber,
@@ -94,7 +94,7 @@ export const ItemSlider: React.FC<Props> = ({
           onTouchEnd={handlerTouchEnd}
           onTouchMove={handlerTouchMove}
           style={{
-            transform: `translateX(-${active * 303}px)`,
+            transform: `translateX(-${active * 302}px)`,
             transition: 'transform 0.5s ease-in-out',
           }}
           className={Styles['brand_new_models__slider']}
