@@ -3,4 +3,8 @@
   flex-direction: column;
   justify-content: center;
   transition: all 0.6s ease-in-out;
+
+  &__crumbs {
+    display: flex;
+  }
 }

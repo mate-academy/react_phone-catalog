@@ -1,11 +1,12 @@
 import { useContext, useMemo, useState } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
-import style from './Phones.module.scss';
+import Styles from './Phones.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
+import { Link } from 'react-router-dom';
 
 export const Phones: React.FC = () => {
   const { phonesTotalNumber, products, phones, isLoadingPhones } =
@@ -45,25 +46,27 @@ export const Phones: React.FC = () => {
   };
 
   return (
-    <div className={style['phones']}>
+    <div className={Styles['phones']}>
       {isLoadingPhones && <Skeleton />}
 
       {!isLoadingPhones && (
         <>
-          <div className={style['phones__head']}>
-            <h1 className={style['phones__head__title']}>Mobile phones</h1>
-            <p className={style['phones__head__paragraph']}>
+          
+
+          <div className={Styles['phones__head']}>
+            <h1 className={Styles['phones__head__title']}>Mobile phones</h1>
+            <p className={Styles['phones__head__paragraph']}>
               {phonesTotalNumber} models
             </p>
           </div>
-          <div className={style['phones__filters']}>
-            <div className={style['phones__filters__sort']}>
-              <p className={style['phones__filters__sort__paragraph']}>
+          <div className={Styles['phones__filters']}>
+            <div className={Styles['phones__filters__sort']}>
+              <p className={Styles['phones__filters__sort__paragraph']}>
                 Sort by
               </p>
 
               <select
-                className={style['phones__filters__sort__select']}
+                className={Styles['phones__filters__sort__select']}
                 value={selectedOption}
                 onChange={handleChangeSort}
               >
@@ -73,13 +76,13 @@ export const Phones: React.FC = () => {
               </select>
             </div>
 
-            <div className={style['phones__filters__items']}>
-              <p className={style['phones__filters__items__paragraph']}>
+            <div className={Styles['phones__filters__items']}>
+              <p className={Styles['phones__filters__items__paragraph']}>
                 Items on page
               </p>
 
               <select
-                className={style['phones__filters__items__select']}
+                className={Styles['phones__filters__items__select']}
                 value={itemsPerPage}
                 onChange={handleChangeItems}
               >
@@ -90,12 +93,14 @@ export const Phones: React.FC = () => {
               </select>
             </div>
           </div>
-          <div className={style['phones__container']}>
+          <div className={Styles['phones__container']}>
             {phonesOnPage.map(phone => {
-              return <ProductCard key={phone.id} type={'phones'} product={phone} />;
+              return (
+                <ProductCard key={phone.id} type={'phones'} product={phone} />
+              );
             })}
           </div>
-          <div className={style['phones__choose_page']}>
+          <div className={Styles['phones__choose_page']}>
             <Pagination
               pagesTotalNumber={pagesTotalNumber}
               activePage={activePage}

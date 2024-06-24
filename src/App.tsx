@@ -19,25 +19,17 @@ export const App = () => {
     useContext(ContextApp);
 
   const handleScroll = () => {
-    // console.log('ScrollY:', window.scrollY);
     if (backToTop.current) {
-      console.log('offset', backToTop.current.offsetTop);
+      console.log('offset', window.scrollY);
     }
     if (backToTop.current && backToTop.current.offsetTop < 500) {
       console.log('in');
-      backToTop.current.style.marginTop = '120vh';
+      backToTop.current.style.marginTop = '110vh';
     } else if ((backToTop.current && backToTop.current.offsetTop > 1150)) {
       console.log('out');
       backToTop.current.style.marginTop = '10px';
     }
   };
-
-  // useEffect(() => {
-  //   window.addEventListener('scroll', () => handleScroll());
-  //   return () => {
-  //     window.removeEventListener('Scroll', () => handleScroll());
-  //   };
-  // }, []);
 
   return (
     <div

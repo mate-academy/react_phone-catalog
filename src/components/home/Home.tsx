@@ -1,5 +1,5 @@
 import React, { useContext } from 'react';
-import styles from './Home.module.scss';
+import Styles from './Home.module.scss';
 import { SectionDashSlider } from './sectionDashSlider';
 import { ShopByCategory } from './shopByCategory/shopByCategory';
 import { SkeletonMain } from '../../skeletons/SkeletonMain';
@@ -9,8 +9,13 @@ import { ItemSlider } from '../itemSlider';
 export const Home: React.FC = () => {
   const { isLoadingPoducts } = useContext(ContextApp);
   const { tablets, phones, accessories } = useContext(ContextApp);
+
+  const handleScroll = () => {
+    console.log('scrollY', window.scrollY);
+  };
+
   return (
-    <div className={styles['home']}>
+    <div onScroll={handleScroll} className={Styles.home}>
       {isLoadingPoducts && <SkeletonMain />}
 
       {!isLoadingPoducts && (
