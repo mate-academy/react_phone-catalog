@@ -1,4 +1,4 @@
-@import './../../utils/style/variables';
+@import 'src/components/ui/utils/style/variables';
 
 .swiper-button-next, .swiper-button-prev {
   color: #000 !important;
@@ -16,6 +16,7 @@
 .swiper-button-prev {
 
   &__svg {
+    width: inherit;
     transform: rotateY(180deg);
   }
 }
@@ -41,6 +42,7 @@
   display: flex;
   justify-self: end;
   gap: 16px;
+  box-sizing: border-box;
 }
 
 @media(min-width:320px) {

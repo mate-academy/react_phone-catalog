@@ -1,5 +1,5 @@
-@import 'src/utils/style/mixin';
-@import 'src/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
 
 .cart-item {
   display: flex;
@@ -27,8 +27,12 @@
     display: flex;
     justify-content: space-between;
   }
+  
+  &__plus--path, &__minus--path {
+    fill: black;
+  }
 
-  &__controler {
+  &__controller {
     display: flex;
     align-items: center;
     gap: 13px;
@@ -37,16 +41,25 @@
       width: 32px;
       height: 32px;
       border: 1px solid $Icons;
-      border-radius: 50%;
+      border-radius: 50%; 
     
       @include center-element
+    }
+
+    &__button-disabled {
+      border: 1px solid $Elements;
+      & > path{
+        fill: $Elements;
+      }
     }
   }
 
   &__button-disabled {
     border: 1px solid $Elements;
-    & > path {
-      fill: $Icons;
+    & > svg {
+      & > path {
+        fill: $Icons;
+      }
     }
     
   }

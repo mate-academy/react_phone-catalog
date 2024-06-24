@@ -1,5 +1,5 @@
-@import 'src/utils/style/variables';
-@import 'src/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
 
 .cartPage {
   display: flex;
@@ -7,6 +7,32 @@
   padding-top: 24px;
   padding-bottom: 56px;
   gap: 32px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__no-items {
+    // position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--text {
+      // position: absolute;
+      font-size: 50px;
+      color: $Elements;
+      display: flex;
+      text-align: center;
+    }
+    &--image {
+      max-width: 400px;
+      width: 100%;
+    }
+  }
 
   &__main {
     box-sizing: border-box;
@@ -26,6 +52,10 @@
 
     &--img {
       transform: rotate(-90deg);
+    }
+
+    &:hover {
+      cursor: pointer;
     }
   }
 
@@ -53,6 +83,8 @@
 
   &__line {
     background-color: $Elements;
+    margin-top: 24px;
+    margin-bottom: 24px;
   }
 
   &__button-checkout {
@@ -92,8 +124,13 @@
 @media(min-width:1200px) {
   .cartPage {
     box-sizing: border-box;
-    flex-direction: row;
+
+    // flex-direction: row;
     padding: 40px 0 80px ;
+
+    &__wrapper {
+      flex-direction: row;
+    }
 
     &__main {
       width: 752px;

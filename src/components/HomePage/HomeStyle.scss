@@ -1,4 +1,4 @@
-@import '/src/utils/style/variables';
+@import '/src/components/ui/utils/style/variables';
 
 .home {
   width: 100%;
@@ -33,6 +33,8 @@
   display: flex;
   flex-direction: row;
   gap: 19px;
+  aspect-ratio: 1 / 1;
+  margin-bottom: 56px;
 }
 
 .categories {
@@ -75,6 +77,11 @@
       margin: 32px 0;
     }
   }
+
+  .home-slider__main {
+    aspect-ratio: 4 / 1.54 !important;
+    margin-bottom: 64px;
+  }
 }
 
 @media (min-width:1200px) {
@@ -93,4 +100,8 @@
     }
   }
   
+  .home-slider__main {
+    aspect-ratio: 4.12 / 1.54 !important;
+    margin-bottom: 80px;
+  }
 }

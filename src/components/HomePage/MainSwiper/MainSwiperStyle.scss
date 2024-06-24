@@ -1,4 +1,4 @@
-@import 'src/utils/style/variables';
+@import 'src/components/ui/utils/style/variables';
 
 .mySwiper { 
   padding-bottom: 24px !important;
@@ -58,8 +58,6 @@
       transform: rotateZ(90deg);
     }
   }
-
-
 }
 
 @media(min-width:640px) {
@@ -70,7 +68,9 @@
     }
   }
   
-  .swiper {
-    aspect-ratio: 4 / 1.54;
-  }
+  // .mySwiper { 
+  //   & > .swiper {
+  //     aspect-ratio: 4 / 1.54 !important;
+  //   }
+  // }
 }

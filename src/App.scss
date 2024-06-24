@@ -8,6 +8,7 @@ html {
 body {
   height: 100vh;
   position: relative;
+  box-sizing: border-box;
 }
 
 ul,li,a,button,body {
@@ -35,6 +36,11 @@ footer {
 
 button {
   background-color: transparent;
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
 }
 
 .container {
@@ -57,7 +63,7 @@ button {
 }
 
 h1,h2,h3 {
-  font-family: Mont-Bold, sans-serif;
+  // font-family: Mont-Bold, sans-serif;
   margin: 0;
   color: black;
 }
@@ -66,6 +72,7 @@ h1 {
   font-size: 32px ;
   line-height: 41px ; 
   letter-spacing: -0.01em;
+  font-family: Mont-Bold, sans-serif;
 
   @media (min-width:640px) {
     font-size: 48px ;
@@ -78,6 +85,9 @@ h2 {
   line-height: 31px ; 
   letter-spacing: 0 ;
 
+  // font-weight: 800;
+  font-family: Mont-Bold, sans-serif;
+
   @media (min-width:640px) {
     font-size: 32px ;
     line-height: 41px ; 
@@ -85,13 +95,15 @@ h2 {
 }
 
 h3 {
-  font-size: 22px ;
-  line-height: 31px ; 
+  font-size: 20px ;
+  line-height: 26px ; 
   letter-spacing: 0 ;
+  font-family: Mont-SemiBold, sans-serif;
 
   @media (min-width:640px) {
-    font-size: 32px ;
-    line-height: 41px ; 
+    font-size: 22px ;
+    line-height: 31px ; 
+    font-family: Mont-Bold, sans-serif;
   }
 }
 

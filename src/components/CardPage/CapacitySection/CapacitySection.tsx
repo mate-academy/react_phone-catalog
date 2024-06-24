@@ -1,16 +1,20 @@
 import classNames from 'classnames';
-import React, { useState } from 'react';
+import React from 'react';
 import './CapacitySectionStyle.scss';
 
 interface Props {
   capacity: string[];
+  handleSetCapacity: (arg: string) => void;
+  selectedCapacity: string;
 }
 
-const CapacitySection: React.FC<Props> = ({ capacity }) => {
-  const [selected, setSelected] = useState(capacity[0]);
-
+const CapacitySection: React.FC<Props> = ({
+  capacity,
+  handleSetCapacity,
+  selectedCapacity,
+}) => {
   const handleClick = elem => {
-    setSelected(elem);
+    handleSetCapacity(elem);
   };
 
   return (
@@ -20,7 +24,7 @@ const CapacitySection: React.FC<Props> = ({ capacity }) => {
         {capacity.map(elem => (
           <button
             className={classNames('details__capacity--item', {
-              'selected-capacity': elem === selected,
+              'selected-capacity': elem === selectedCapacity,
             })}
             key={elem}
             onClick={() => handleClick(elem)}

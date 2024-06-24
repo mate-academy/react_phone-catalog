@@ -1,18 +1,22 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Favourite.scss';
+import { StateContext } from 'src/store';
 
 const Favourite = () => {
-  const number = 0;
+  const { favourites } = useContext(StateContext);
+  const isFavorites = favourites.length > 0;
 
   return (
     <div className="favourite">
       <div className="favourite__icon">
         <img
-          src="icons/favourite.png"
+          src="/icons/favourite.png"
           alt="favourite__logo"
           className="favorite__img"
         />
-        <div className="favourite__counter">{number}</div>
+        {isFavorites && (
+          <div className="favourite__counter">{favourites.length}</div>
+        )}
       </div>
     </div>
   );

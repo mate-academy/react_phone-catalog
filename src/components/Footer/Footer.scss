@@ -1,5 +1,5 @@
-@import './../../utils/style/mixin';
-@import './../../utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
 
 .footer {
   display: flex;
@@ -39,9 +39,8 @@
       & > a {
         color: $Secondary;
 
-        &:hover {
-          @include hover-scale(1.2);
-        }
+        @include hover-on-menu-item;
+        @include hover-scale(1.1);
       }
       
     }
@@ -59,7 +58,7 @@
       border: 1px solid $Icons;
 
       @include center-element;
-      @include hover-scale(1.2);
+      @include hover-scale(1.1);
     }
   }
 }

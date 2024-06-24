@@ -1,32 +1,43 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './FilterStyle.scss';
 import classNames from 'classnames';
+import { useSearchParams } from 'react-router-dom';
 
 interface Props {
   title: string;
   items: string[];
+  type: 'sort' | 'itemsPerPage';
+  defaultItem: number;
+  selectedValue: string;
+  onFilterChange: (value: string) => void;
 }
 
-const Filter: React.FC<Props> = ({ title, items }) => {
-  const [selected, setSelected] = useState('select');
+const Filter: React.FC<Props> = ({
+  title,
+  items,
+  type,
+  selectedValue,
+  onFilterChange,
+}) => {
   const [active, setActive] = useState(false);
+
+  const [searchParams, setSearchParams] = useSearchParams();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
-  const getRandom = () => {
-    const date = new Date();
-
-    return date.getTime();
-  };
-
   const handleClick = (elem: string) => {
-    if (active) {
-      setSelected(elem);
-      setActive(false);
+    onFilterChange(elem);
+    setActive(false);
 
-      return;
+    const newParams = new URLSearchParams(searchParams);
+
+    if (type === 'itemsPerPage' && elem === 'all') {
+      // Remove 'itemsOnPage' parameter if 'all' is selected
+      newParams.delete('itemsPerPage');
+    } else {
+      // Set the parameter for both sort and itemsOnPage
+      newParams.set(type, elem);
     }
-
-    setActive(true);
+    setSearchParams(newParams);
   };
 
   const handleOpen = () => {
@@ -44,6 +55,11 @@ const Filter: React.FC<Props> = ({ title, items }) => {
 
   useEffect(() => {
     document.addEventListener('mousedown', handleClickOutside);
+    const sortType = searchParams.get(type);
+
+    if (typeof sortType === 'string') {
+      onFilterChange(sortType);
+    }
 
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
@@ -55,7 +71,7 @@ const Filter: React.FC<Props> = ({ title, items }) => {
       <div className="dropdown__title">{title}</div>
       <div className="dropdown__menu--wrapper">
         <button className="dropdown__menu--main" onClick={() => handleOpen()}>
-          <div className="dropdown__menu--title">{selected}</div>
+          <div className="dropdown__menu--title">{selectedValue}</div>
           <img
             className={classNames('dropdown__menu--arrow', {
               'arrow--rotate': active,
@@ -73,7 +89,7 @@ const Filter: React.FC<Props> = ({ title, items }) => {
               value={elem}
               className="dropdown__menu--item"
               onClick={() => handleClick(elem)}
-              key={getRandom() + elem}
+              key={elem}
             >
               {elem}
             </li>

@@ -11,15 +11,12 @@ import 'swiper/css/thumbs';
 // import required modules
 import { FreeMode, Thumbs } from 'swiper/modules';
 
-export default function App() {
+interface Props {
+  urls: string[];
+}
+
+const PicturesContloller: React.FC<Props> = ({ urls }) => {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
-  const images = [
-    'img/phones/apple-iphone-11/black/00.webp',
-    'img/phones/apple-iphone-11/black/01.webp',
-    'img/phones/apple-iphone-11/black/02.webp',
-    'img/phones/apple-iphone-11/black/03.webp',
-    'img/phones/apple-iphone-11/black/04.webp',
-  ];
 
   return (
     <div className="My-swiper__wrapper">
@@ -30,10 +27,14 @@ export default function App() {
         modules={[FreeMode, Thumbs]}
         className="my-Swiper-Second"
       >
-        {images.map(elem => (
+        {urls.map(elem => (
           <SwiperSlide className="my-Swiper-Second__wrapper" key={elem + 1}>
             <div className="my-Swiper-Second__background">
-              <img src={elem} className="my-Swiper-Second__img" />
+              <img
+                src={`/${elem}`}
+                className="my-Swiper-Second__img"
+                alt="product"
+              />
             </div>
           </SwiperSlide>
         ))}
@@ -49,12 +50,18 @@ export default function App() {
         className="my-Swiper-Controller"
         navigation={false}
       >
-        {images.map(elem => (
+        {urls.map(elem => (
           <SwiperSlide className="my-Swiper-Controller__wrapper" key={elem + 2}>
-            <img src={elem} className="my-Swiper-Controller__img" />
+            <img
+              src={`/${elem}`}
+              className="my-Swiper-Controller__img"
+              alt="product"
+            />
           </SwiperSlide>
         ))}
       </Swiper>
     </div>
   );
-}
+};
+
+export default PicturesContloller;

@@ -1,7 +1,8 @@
-@import 'src/utils/style/mixin';
-@import 'src/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
 
 .card {
+  display: block;
   box-sizing: border-box;
   min-width: 212px;
   max-width: 272px;
@@ -12,7 +13,8 @@
 
   &__line {
     width: 100%;
-    box-sizing: border-box;
+    border:1px solid $Elements;
+    margin: 8px 0;
   }
 
   &__parameters--wrapper {
@@ -23,12 +25,17 @@
     font-family: Mont-Regular, sans-serif;
     font-size: 14px;
     line-height: 21px;
-    height: 100%;
   }
 
   &__image {
     width: 100%;
     margin-bottom: 24px;
+    object-fit: contain;
+    height: 100%;
+
+    &--wrapper {
+      height: 100%;
+    }
   }
 
   &__price {
@@ -115,3 +122,12 @@
   }
 }
 
+.button-added {
+  color: $Accent;
+  background-color: transparent;
+  border: 1px solid $Elements;
+}
+
+.button-liked {
+ background-color: none;
+}

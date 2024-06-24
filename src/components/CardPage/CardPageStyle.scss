@@ -1,5 +1,5 @@
-@import 'src/utils/style/variables';
-@import 'src/utils/style/mixin'; 
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
 
 .cardpage {
 
@@ -136,6 +136,11 @@
       border-radius: 50%;
       border: 1px solid $Icons;
 
+      &:hover {
+        transition: border 0.5s ease;
+        border: 1px solid black;
+      }
+
       @include center-element;
     }
   }
@@ -161,6 +166,18 @@
     &--sub-title {
       @include small-text;
     }
+  }
+}
+
+.added-to-cart {
+  border: 1px solid $Elements;
+  color: $Accent;
+  background-color: transparent;
+}
+
+.added-to-favourite {
+  &:hover {
+    border: 1px solid black;
   }
 }
 

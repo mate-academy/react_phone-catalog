@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './HomeStyle.scss';
 
 // Import Swiper styles
@@ -9,8 +9,12 @@ import 'swiper/css/pagination';
 import CardSlider from '../CardSlider/CardSlider';
 import CategoryCard from './CategoryCard/CategoryCard';
 import MainSwiper from './MainSwiper/MainSwiper';
+import { PageType } from 'src/types/PageType';
+import { StateContext } from 'src/store';
 
 const HomePage = () => {
+  const { brandNewModels, hotPrices } = useContext(StateContext);
+
   return (
     <div className="home">
       <div className="home__wrapper">
@@ -22,7 +26,10 @@ const HomePage = () => {
           <MainSwiper />
         </div>
         <div className="home__slider-card">
-          <CardSlider title={'Brand new models'} />
+          <CardSlider
+            title={'Brand new models'}
+            cards={brandNewModels.slice(0, 6)}
+          />
         </div>
         <div className="home__categories--sections categories container">
           <h2 className="categories__title">Shop by category</h2>
@@ -31,24 +38,24 @@ const HomePage = () => {
               title="Mobile phones"
               subTitle=""
               imgUrl="img/caregory-phones-main.png"
-              UrlTo="/"
+              UrlTo={PageType.Phones}
             />
             <CategoryCard
               title="Tablets"
               subTitle=""
               imgUrl="img/category-tablets-main.png"
-              UrlTo="/"
+              UrlTo={PageType.Tablets}
             />
             <CategoryCard
               title="Accessories"
               subTitle=""
               imgUrl="img/category-accessories-main.png"
-              UrlTo="/"
+              UrlTo={PageType.Accessories}
             />
           </div>
         </div>
         <div className="home__second-slider-card">
-          <CardSlider title={'Hot prices'} />
+          <CardSlider title={'Hot prices'} cards={hotPrices.slice(7)} />
         </div>
       </div>
     </div>

@@ -1,16 +1,20 @@
-import React, { useState } from 'react';
+import React from 'react';
 import './colorShoseStyle.scss';
 import classNames from 'classnames';
 
 interface Props {
   colors: string[];
+  handleSetColor: (variable: string) => void;
+  chosenColor: string;
 }
 
-const ColorsChose: React.FC<Props> = ({ colors }) => {
-  const [color, setColor] = useState(colors[0]);
-
-  const handleClick = elem => {
-    setColor(elem);
+const ColorsChose: React.FC<Props> = ({
+  colors,
+  handleSetColor,
+  chosenColor,
+}) => {
+  const handleClick = (elem: string) => {
+    handleSetColor(elem);
   };
 
   return (
@@ -18,7 +22,7 @@ const ColorsChose: React.FC<Props> = ({ colors }) => {
       {colors.map(elem => (
         <button
           className={classNames('details__colors--item', {
-            'chosen-color': elem === color,
+            'chosen-color': elem === chosenColor,
           })}
           key={elem}
           onClick={() => handleClick(elem)}

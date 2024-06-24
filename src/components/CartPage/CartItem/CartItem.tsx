@@ -1,29 +1,93 @@
-import React from 'react';
+import React, { useContext, useState } from 'react';
 import './CartItemStyle.scss';
+import { Product } from 'src/types/Product';
+import { DispatchContext } from 'src/store';
+import { ActionTypes } from 'src/types/ActionTypes';
+import classNames from 'classnames';
 
-const CartItem: React.FC = () => {
+interface Props {
+  item: Product;
+}
+
+const CartItem: React.FC<Props> = ({ item }) => {
+  const dispatch = useContext(DispatchContext);
+  const [counter, setCounter] = useState(item.amount);
+  const isMinusDisabled = counter === 1;
+
+  const handleDeleteItem = () => {
+    dispatch({
+      type: ActionTypes.RemoveFromCart,
+      payload: { id: item.itemId },
+    });
+    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+
+    const updatedCart = currentCart.filter(
+      (elem: Product) => elem.itemId !== item.itemId,
+    );
+
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handlePlusItem = () => {
+    dispatch({ type: ActionTypes.PlusOneItem, payload: { id: item.itemId } });
+    setCounter(counter + 1);
+
+    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updatedCart = currentCart.filter(
+      (elem: Product) => elem.itemId === item.itemId,
+    );
+
+    updatedCart[0].amount += 1;
+    localStorage.setItem('cart', JSON.stringify(updatedCart));
+  };
+
+  const handleMinusItem = () => {
+    const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
+    const updatedCart = currentCart.filter(
+      (elem: Product) => elem.itemId === item.itemId,
+    );
+
+    if (updatedCart[0].amount > 1) {
+      dispatch({
+        type: ActionTypes.MinusOneItem,
+        payload: { id: item.itemId },
+      });
+      setCounter(counter - 1);
+
+      const currentCartStorage = JSON.parse(
+        localStorage.getItem('cart') || '[]',
+      );
+      const updatedCartStorage = currentCartStorage.filter(
+        (elem: Product) => elem.itemId === item.itemId,
+      );
+
+      updatedCartStorage[0].amount -= 1;
+      localStorage.setItem('cart', JSON.stringify(updatedCartStorage));
+    }
+  };
+
   return (
     <div className="cart-item">
       <div className="cart-item__main">
-        <button className="cart-item__delete">
+        <button
+          className="cart-item__delete"
+          onClick={() => handleDeleteItem()}
+        >
           {' '}
-          <img src="icons/dagger.png " alt="" />
+          <img src="icons/delete-cart-item.svg " alt="" />
         </button>
-        <img
-          src="img/phones/apple-iphone-11/black/00.webp"
-          alt=""
-          className="cart-item__img"
-        />
-        <div className="cart-item__title">
-          Apple iPhone 14 Pro 128GB Silver (MQ023)
-        </div>
+        <img src={`${item.image}`} alt="" className="cart-item__img" />
+        <div className="cart-item__title">{item.name}</div>
       </div>
       <div className="cart-item__footer">
-        <div className="cart-item__controler">
+        <div className="cart-item__controller">
           <button
-            className="cart-item__minus 
-            cart-item__controler--button 
-            cart-item__button-disabled"
+            className={classNames(
+              'cart-item__minus',
+              'cart-item__controller--button',
+              { 'cart-item__button-disabled': isMinusDisabled },
+            )}
+            onClick={() => handleMinusItem()}
           >
             <svg
               width="12"
@@ -42,12 +106,14 @@ const CartItem: React.FC = () => {
                 11.3327 0.99998C11.3327 1.36817 11.0342 1.66665 10.666 
                 1.66665H1.33268C0.964492 1.66665 0.666016 1.36817 0.666016 
                 0.99998Z"
-                fill="#B4BDC4"
               />
             </svg>
           </button>
-          <div className="cart-item__counter">1</div>
-          <button className="cart-item__plus cart-item__controler--button">
+          <div className="cart-item__counter">{counter}</div>
+          <button
+            className="cart-item__plus cart-item__controller--button"
+            onClick={() => handlePlusItem()}
+          >
             <svg
               width="12"
               height="12"
@@ -60,7 +126,6 @@ const CartItem: React.FC = () => {
                 className="cart-item__plus--path"
                 fillRule="evenodd"
                 clipRule="evenodd"
-                fill="#0F0F11"
                 d="M6.66602 1.33335C6.66602 0.965164 6.36754 0.666687 5.99935 
                 0.666687C5.63116 0.666687 5.33268 0.965164 5.33268 
                 1.33335V5.33335H1.33268C0.964492 5.33335 0.666016 5.63183 
@@ -74,7 +139,7 @@ const CartItem: React.FC = () => {
             </svg>
           </button>
         </div>
-        <h3 className="cart-item__price">$999</h3>
+        <h3 className="cart-item__price">${item.fullPrice}</h3>
       </div>
     </div>
   );

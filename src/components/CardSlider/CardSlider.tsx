@@ -10,15 +10,18 @@ import 'swiper/css/pagination';
 // import { Pagination } from 'swiper/modules';
 import Card from '../ui/Card/Card';
 import { Navigation } from 'swiper/modules';
-import { v4 as uuidv4 } from 'uuid';
+import { Product } from 'src/types/Product';
+import { Randomiser } from '../ui/Randomiser/Randomiser';
 
 interface Props {
   title: string;
+  cards: Product[];
+  type?: string;
 }
 
-const CardSlider: React.FC<Props> = ({ title }) => {
-  const prevButtonId = `prev-${uuidv4()}`;
-  const nextButtonId = `next-${uuidv4()}`;
+const CardSlider: React.FC<Props> = ({ title, cards, type }) => {
+  const prevButtonId = `prev-${Randomiser(1)}`;
+  const nextButtonId = `next-${Randomiser(2)}`;
 
   return (
     <>
@@ -86,33 +89,11 @@ const CardSlider: React.FC<Props> = ({ title }) => {
           modules={[Navigation]}
           className="card__swiper"
         >
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
-          <SwiperSlide>
-            <Card />
-          </SwiperSlide>
+          {cards.map(elem => (
+            <SwiperSlide key={elem.itemId}>
+              <Card data={elem} type={type} />
+            </SwiperSlide>
+          ))}
         </Swiper>
       </div>
     </>
