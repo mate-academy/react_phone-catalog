@@ -16,7 +16,7 @@ type Props = {
 
 export const CartItem: React.FC<Props> = ({ item }) => {
   const { setCart } = useContext(CartContext);
-  const newPath = '/new/';
+  const newPath = './new/';
 
   const isMinusDisabled = item.quantity === 1;
   const isPlusDisabled = item.quantity === 10;
