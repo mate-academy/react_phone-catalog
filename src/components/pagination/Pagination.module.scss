@@ -56,6 +56,10 @@
     }
   }
 
+  &__button {
+    cursor: pointer;
+  }
+
   &__paginationNumActive {
     display: flex;
     align-items: center;

@@ -18,7 +18,7 @@ const photos = [
   },
   {
     id: 2,
-    cover: 'img/main-banner.png',
+    cover: 'img/banner-tablets.png',
     phone: 'img/banner-phone.png',
     alt: 'banner-main',
   },

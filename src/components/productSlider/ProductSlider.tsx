@@ -26,40 +26,6 @@ export const ProductSlider: React.FC<Props> = ({ type, products }) => {
   }, [products]);
 
   useEffect(() => {
-    const intervalId = setInterval(() => {
-      if (productsRef.current) {
-        const maxScroll =
-          productsRef.current.scrollWidth - productsRef.current.clientWidth;
-        const nextScroll = productsRef.current.scrollLeft + productWidth;
-
-        scrollingByScript.current = true;
-
-        if (nextScroll >= maxScroll) {
-          productsRef.current.scrollTo({
-            left: 0,
-            behavior: 'smooth',
-          });
-          setScrollPosition(0);
-        } else {
-          productsRef.current.scrollBy({
-            left: productWidth,
-            behavior: 'smooth',
-          });
-          setScrollPosition(nextScroll);
-        }
-
-        setTimeout(() => {
-          scrollingByScript.current = false;
-        }, 500);
-      }
-    }, 3000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [productWidth]);
-
-  useEffect(() => {
     const handleScroll = () => {
       if (!scrollingByScript.current && productsRef.current) {
         setScrollPosition(productsRef.current.scrollLeft);

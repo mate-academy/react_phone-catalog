@@ -15,7 +15,8 @@ export const ModalWin: React.FC<Props> = ({
   const handleClearCart = () => {
     setSelectedProducts([]);
 
-    localStorage.setItem('likedProducts', JSON.stringify([]));
+    localStorage.setItem('selectedProducts', JSON.stringify([]));
+    setShowModal(false);
   };
 
   useEffect(() => {
@@ -40,7 +41,7 @@ export const ModalWin: React.FC<Props> = ({
             onClick={() => setShowModal(false)}
             className={styles.modalwin__clsbutton}
           >
-            <img src="../../../../img/icons/close.svg" alt="" />
+            <img src="img/icons/close.svg" alt="" />
           </button>
 
           <p className={styles.modalwin__text}>

@@ -28,8 +28,6 @@ export const Pagination: React.FC<Props> = ({
   };
 
   const totalPages = Math.ceil(total / perPage);
-  const firstPage = currentPage === 1;
-  const lastPage = currentPage === totalPages;
 
   return (
     <div className={styles.pagination}>
@@ -41,9 +39,9 @@ export const Pagination: React.FC<Props> = ({
         previousLabel={
           <div className={styles.pagination__img}>
             <img
-              src="../../img/icons/slider-button.svg"
+              src="img/icons/slider-button.svg"
               alt=""
-              className={firstPage ? styles.disabledImg : ''}
+              className={styles.pagination__button}
             />
           </div>
         }
@@ -52,9 +50,9 @@ export const Pagination: React.FC<Props> = ({
             className={`${styles.pagination__img} ${styles.pagination__img_right}`}
           >
             <img
-              src="../../img/icons/slider-button.svg"
+              src="img/icons/slider-button.svg"
               alt=""
-              className={lastPage ? styles.disabledImg : ''}
+              className={styles.pagination__button}
             />
           </div>
         }
