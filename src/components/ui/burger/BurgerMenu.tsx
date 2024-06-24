@@ -18,7 +18,7 @@ const BurgerMenu = () => {
         <div className="burger__wrapper">
           <div className="burger__logo" onClick={() => handleClick(true)}>
             <img
-              src="/icons/burger.png"
+              src="icons/burger.png"
               alt="logo"
               className="burger__logo--image"
             />
@@ -28,7 +28,7 @@ const BurgerMenu = () => {
               <div className="burger__header">
                 <div className="burger__header--logo">
                   <img
-                    src="/img/Icons/Logo.png"
+                    src="img/Icons/Logo.png"
                     alt="logo"
                     className="burger__header--logo-img"
                   />

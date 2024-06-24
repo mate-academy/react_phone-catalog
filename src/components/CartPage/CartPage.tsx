@@ -40,7 +40,7 @@ const CartPage = () => {
           ) : (
             <div className="cartPage__no-items">
               <img
-                src="/icons/Discovery-cuate.png"
+                src="icons/Discovery-cuate.png"
                 alt=""
                 className="cartPage__no-items--image"
               />

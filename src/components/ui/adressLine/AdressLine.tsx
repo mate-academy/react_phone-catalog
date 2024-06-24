@@ -13,7 +13,7 @@ const AdressLine: React.FC = () => {
       {formattedPath.map(elem => (
         <div key={elem} className="adress__container">
           <img
-            src="/icons/arrow-left-gray.png"
+            src="icons/arrow-left-gray.png"
             alt=">"
             className="adress__arrow"
           />

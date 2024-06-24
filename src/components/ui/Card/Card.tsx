@@ -46,7 +46,7 @@ const Card: React.FC<Props> = ({ data }) => {
           className="card__image--wrapper"
           onClick={() => handleClick()}
         >
-          <img src={`/${data.image}`} alt="" className="card__image" />
+          <img src={`${data.image}`} alt="" className="card__image" />
         </Link>
         <Link
           to={productLink}
@@ -98,14 +98,14 @@ const Card: React.FC<Props> = ({ data }) => {
               className="card__buttons--like like"
               onClick={() => handleAddFavourite(dispatch, data)}
             >
-              <img src="/icons/like.svg" alt="" />
+              <img src="icons/like.svg" alt="" />
             </button>
           ) : (
             <button
               className="card__buttons--like button-liked"
               onClick={() => handleRemoveFromFavourite(dispatch, data)}
             >
-              <img src="/icons/liked.svg" alt="" />
+              <img src="icons/liked.svg" alt="" />
             </button>
           )}
         </div>

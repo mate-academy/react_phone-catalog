@@ -70,7 +70,7 @@ const GoodsSection: React.FC<Props> = ({ cards, filters, type }) => {
       {isFavouriteNoItems && (
         <div className="goods-section__no-items">
           <img
-            src="/icons/Discovery-cuate.png"
+            src="icons/Discovery-cuate.png"
             alt=""
             className="goods-section__no-items--image"
           />

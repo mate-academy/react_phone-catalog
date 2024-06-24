@@ -10,7 +10,7 @@ const Favourite = () => {
     <div className="favourite">
       <div className="favourite__icon">
         <img
-          src="/icons/favourite.png"
+          src="icons/favourite.png"
           alt="favourite__logo"
           className="favorite__img"
         />

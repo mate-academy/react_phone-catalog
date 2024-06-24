@@ -9,7 +9,7 @@ const Cart = () => {
   return (
     <div className="cart">
       <div className="cart__icon">
-        <img src="/icons/Cart.png" alt="cart" className="cart__icon--img" />
+        <img src="icons/Cart.png" alt="cart" className="cart__icon--img" />
         {isCart && <div className="cart__icon--counter">{cart.length}</div>}
       </div>
     </div>

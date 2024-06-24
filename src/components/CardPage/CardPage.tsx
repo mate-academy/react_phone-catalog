@@ -128,7 +128,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
           <AdressLine />
           <button className="cardpage__back" onClick={() => goBack()}>
             <img
-              src="/icons/arrow-up-black.png"
+              src="icons/arrow-up-black.png"
               alt="Back"
               className="cardpage__back--img"
             />
@@ -189,7 +189,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                           handleAddFavourite(dispatch, detailsCard)
                         }
                       >
-                        <img src="/icons/like.svg" alt="" />
+                        <img src="icons/like.svg" alt="" />
                       </button>
                     ) : (
                       <button
@@ -198,7 +198,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                           handleRemoveFromFavourite(dispatch, detailsCard)
                         }
                       >
-                        <img src="/icons/liked.svg" alt="" />
+                        <img src="icons/liked.svg" alt="" />
                       </button>
                     )}
                   </div>

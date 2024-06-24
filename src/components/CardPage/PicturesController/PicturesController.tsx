@@ -31,7 +31,7 @@ const PicturesContloller: React.FC<Props> = ({ urls }) => {
           <SwiperSlide className="my-Swiper-Second__wrapper" key={elem + 1}>
             <div className="my-Swiper-Second__background">
               <img
-                src={`/${elem}`}
+                src={`${elem}`}
                 className="my-Swiper-Second__img"
                 alt="product"
               />
@@ -53,7 +53,7 @@ const PicturesContloller: React.FC<Props> = ({ urls }) => {
         {urls.map(elem => (
           <SwiperSlide className="my-Swiper-Controller__wrapper" key={elem + 2}>
             <img
-              src={`/${elem}`}
+              src={`${elem}`}
               className="my-Swiper-Controller__img"
               alt="product"
             />

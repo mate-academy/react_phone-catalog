@@ -13,7 +13,7 @@ const Footer = () => {
     <footer className="footer">
       <div className="footer__wrapper">
         <div className="footer__logo">
-          <img src="/icons/Logo.png" alt="logo" />
+          <img src="icons/Logo.png" alt="logo" />
         </div>
         <nav className="footer__menu">
           <ul className="footer__menu--wrapper">
@@ -35,7 +35,7 @@ const Footer = () => {
             onClick={() => handleScroll()}
           >
             <img
-              src="/icons/arrow-up-black.png"
+              src="icons/arrow-up-black.png"
               alt="arrowUp"
               className="footer__toTop--logo"
             />
