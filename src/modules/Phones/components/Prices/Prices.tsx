@@ -7,7 +7,7 @@ import classes from './prices.module.scss';
 
 type Props = ComponentPropsWithoutRef<typeof Skeleton | 'div'> & {
   isLoaded: boolean;
-  regularPrice?: number;
+  regularPrice: number;
   discountPrice?: number;
 };
 

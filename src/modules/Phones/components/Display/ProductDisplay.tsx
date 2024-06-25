@@ -11,6 +11,7 @@ type Props = ComponentPropsWithRef<typeof Container.Grid> & {
   images: string[];
   isLoaded: boolean;
   info: React.ReactNode;
+  extraSlot?: React.ReactNode;
 };
 
 const skeletons = Array.from(Array(5), (_, i) => (
@@ -25,6 +26,7 @@ export const Display: FC<Props> = ({
   isLoaded,
   info,
   className,
+  extraSlot,
   ...props
 }) => {
   const slides = isLoaded
@@ -52,6 +54,9 @@ export const Display: FC<Props> = ({
         />
       </ThumbnailsCarousel>
       <div className={classes.display__info}>{info}</div>
+      {extraSlot && (
+        <div className={classes.display__extraSlot}>{extraSlot}</div>
+      )}
     </Container.Grid>
   );
 };

@@ -8,8 +8,8 @@ import { ColorPalette } from '../../../shared/ColorPalette';
 import classes from './availableColors.module.scss';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
-  colors?: string[];
-  productId?: string;
+  colors: string[];
+  productId: string;
   isLoaded: boolean;
 };
 

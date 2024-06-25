@@ -1,33 +1,30 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
 
-import { Category, QueryStatus } from '../../../../types';
-import { capitalize } from '../../../../utils/capitalize';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { Text } from '../../../shared/ui/Text';
-import { TITLE } from './variables';
 import classes from './info.module.scss';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
-  category: Category;
   numberOfProducts: number;
-  status: QueryStatus;
+  isLoaded: boolean;
+  title: string;
 };
 
 export const Info: FC<Props> = ({
   className,
-  category,
   numberOfProducts,
-  status,
+  isLoaded,
+  title,
   ...props
 }) => {
   return (
     <div {...props} className={cn(classes.info, className)}>
       <Text.H1 className={classes.info__title} element="h1">
-        {capitalize(TITLE[category])}
+        {title}
       </Text.H1>
 
-      {status === 'fulfilled' ? (
+      {isLoaded ? (
         <Text element="span" className={classes.info__productsCount}>
           {numberOfProducts} models
         </Text>

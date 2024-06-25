@@ -1,11 +1,9 @@
 @import 'src/styles/mixins';
 
-.container {
+.grid {
   row-gap: 40px;
-  padding-inline: 0;
-  min-width: 0;
 
-  &__card {
+  &__item {
     grid-column: 1 / -1;
 
     @include on-tablet {

@@ -13,7 +13,7 @@ export const usePhones = <T>(selector: (state: AppState) => T) => {
 
   useEffect(() => {
     const isValidStatus =
-      phonesInfo.status == 'pending' || phonesInfo.status === 'fulfilled';
+      phonesInfo.status === 'pending' || phonesInfo.status === 'fulfilled';
 
     const isValidRetry = retryCount.current < 5;
 

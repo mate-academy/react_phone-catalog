@@ -38,30 +38,12 @@
     grid-column: 1 / -1;
     width: 100%;
   }
-}
 
-.select {
-  line-height: 0;
-  margin-top: 32px;
-  grid-column: span 2;
+  &__selects {
+    margin-top: 32px;
 
-  @include on-tablet {
-    margin-top: 40px;
-  }
-
-  &_take {
     @include on-tablet {
-      grid-column: span 3;
+      margin-top: 40px;
     }
-  }
-
-  &_sort {
-    @include on-tablet {
-      grid-column: span 4;
-    }
-  }
-
-  &__text {
-    margin-bottom: 4px;
   }
 }

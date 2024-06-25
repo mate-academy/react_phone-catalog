@@ -3,20 +3,16 @@ import React, { FC, useEffect, useState } from 'react';
 import { useDebounce } from '../../../../hooks/useDebounce';
 import { HeaderSlot } from '../../../Layout/HeaderSlotContext';
 import classes from './searchInput.module.scss';
+import { useSearchQuery } from '../../hooks/useSearchQuery';
 
 type Props = {
-  initialQuery: string;
   placeholder: string;
-  setQuery: (newQuery: string) => void;
 };
 
-export const SearchInput: FC<Props> = ({
-  initialQuery,
-  placeholder,
-  setQuery,
-}) => {
-  const [input, setInput] = useState(initialQuery);
-  const debouncedSearch = useDebounce(setQuery, 300);
+export const SearchInput: FC<Props> = ({ placeholder }) => {
+  const [searchQuery, setSearchQuery] = useSearchQuery();
+  const [input, setInput] = useState(searchQuery);
+  const debouncedSearch = useDebounce(setSearchQuery, 300);
 
   useEffect(() => {
     debouncedSearch(input);

@@ -1,1 +1,3 @@
-export * from './Category';
+export * from './Phones';
+export * from './Tablets';
+export * from './Accessories';

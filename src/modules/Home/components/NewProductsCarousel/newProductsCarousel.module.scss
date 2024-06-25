@@ -1,0 +1,18 @@
+.carousel {
+  &__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__view {
+    margin-top: 24px;
+    user-select: none;
+  }
+}

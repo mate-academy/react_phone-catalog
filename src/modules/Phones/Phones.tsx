@@ -1,4 +1,5 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
+/* eslint-disable  @typescript-eslint/indent */
 import React, { FC } from 'react';
 import cn from 'classnames';
 import { useParams } from 'react-router-dom';
@@ -7,93 +8,85 @@ import {
   usePhones,
   selectPhones,
 } from '../../app/features/detailedProduct/phones';
-import { selectProducts, useProducts } from '../../app/features/products';
+import { getSpecsFromObject } from '../shared/ui/SpecsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { LinkBack } from '../shared/LinkBack';
 import { Container } from '../shared/Container';
-import { Spec, SpecsList, getSpecsFromObject } from '../shared/ui/SpecsList';
 import { Display } from './components/Display';
 import { AvailableColors } from './components/AvailableColors';
-import { AvailableCapacity } from './components/AvailableCapacity';
+import { AvailableOptions } from './components/AvailableOptions';
 import { ActionButtons } from './components/ActionButtons';
 import { Prices } from './components/Prices';
 import { Title } from './components/Title';
-import { SuggestedProducts } from './SuggestedProducts';
-import classes from './phones.module.scss';
+import { SuggestedProducts } from './components/SuggestedProducts';
 import { Description } from './components/Description';
+import { ProductId } from './components/ProductId';
+import { MainSpecList } from './components/MainSpecList';
+import classes from './phones.module.scss';
 
 type Props = {};
 
 export const Phones: FC<Props> = ({}) => {
-  const { status: phonesStatus, phones } = usePhones(selectPhones);
-  const { products, status: productsStatus } = useProducts(selectProducts);
+  const { status, phones } = usePhones(selectPhones);
   const { productId } = useParams();
 
   const currentPhone = phones.find(phone => phone.id === productId);
-  const isLoaded =
-    phonesStatus === 'fulfilled' && productsStatus === 'fulfilled';
-  const foundProduct = products.find(product => product.itemId === productId);
+  const isLoaded = status === 'fulfilled';
 
-  if (
-    phonesStatus === 'fulfilled' &&
-    productsStatus === 'fulfilled' &&
-    (!currentPhone || !foundProduct)
-  ) {
+  if (isLoaded && !currentPhone) {
     throw new Response('Not found', { status: 404 });
   }
 
-  const mainSpecs: Spec[] = getSpecsFromObject({
+  const mainSpecs = getSpecsFromObject({
     Screen: currentPhone?.screen || '',
     Resolution: currentPhone?.resolution || '',
     Processor: currentPhone?.processor || '',
     RAM: currentPhone?.ram || '',
   });
 
-  const allSpecs: Spec[] = [
-    ...mainSpecs,
-    ...getSpecsFromObject({
+  const allSpecs = mainSpecs.concat(
+    getSpecsFromObject({
       'Built in memory': currentPhone?.capacity || '',
       Camera: currentPhone?.camera || '',
       Zoom: currentPhone?.zoom || '',
       Cell: currentPhone?.cell.join(', ') || '',
-    }).concat(),
-  ];
+    }),
+  );
 
   return (
     <Container className={classes.page}>
       <Breadcrumbs className={classes.page__breadCrumbs} />
-
       <LinkBack className={classes.page__linkBack} />
-
       <Title isLoaded={isLoaded} className={classes.page__title}>
         {currentPhone?.name}
       </Title>
-
       <Display
         className={classes.page__mainInfo}
-        isLoaded={phonesStatus === 'fulfilled'}
+        isLoaded={isLoaded}
         images={currentPhone?.images || []}
+        extraSlot={productId && <ProductId productId={productId} />}
         info={
           <>
             <AvailableColors
               className={classes.page__options}
-              productId={currentPhone?.id}
-              colors={currentPhone?.colorsAvailable}
+              productId={currentPhone?.id || ''}
+              colors={currentPhone?.colorsAvailable || []}
               isLoaded={isLoaded}
             />
-            <AvailableCapacity
+            <AvailableOptions
+              title="Select capacity"
               className={cn(
                 classes.page__options,
                 classes.page__options_capacity,
               )}
-              capacity={currentPhone?.capacityAvailable || []}
+              options={currentPhone?.capacityAvailable || []}
               productId={currentPhone?.id || ''}
               isLoaded={isLoaded}
             />
             <Prices
               className={classes.page__prices}
               isLoaded={isLoaded}
-              regularPrice={currentPhone?.priceRegular}
+              regularPrice={currentPhone?.priceRegular || 0}
               discountPrice={currentPhone?.priceDiscount}
             />
             <ActionButtons
@@ -101,7 +94,7 @@ export const Phones: FC<Props> = ({}) => {
               productId={currentPhone?.id || ''}
               isLoaded={isLoaded}
             />
-            <SpecsList
+            <MainSpecList
               isLoaded={isLoaded}
               specs={mainSpecs}
               className={classes.page__mainSpecs}
@@ -109,18 +102,13 @@ export const Phones: FC<Props> = ({}) => {
           </>
         }
       />
-
       <Description
         className={classes.page__description}
-        about={currentPhone?.description ?? []}
+        about={currentPhone?.description || []}
         isLoaded={isLoaded}
         specs={allSpecs}
       />
-      <SuggestedProducts
-        className={classes.page__suggestedProducts}
-        status={productsStatus}
-        products={products}
-      />
+      <SuggestedProducts className={classes.page__suggestedProducts} />
     </Container>
   );
 };

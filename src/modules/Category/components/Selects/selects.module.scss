@@ -1,0 +1,24 @@
+@import 'src/styles/mixins';
+
+.selects {
+  &__select {
+    line-height: 0;
+    grid-column: span 2;
+
+    &_take {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+
+    &_sort {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+  }
+
+  &__text {
+    margin-bottom: 4px;
+  }
+}

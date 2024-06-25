@@ -7,12 +7,15 @@ import classes from './specsList.module.scss';
 
 export type Spec = { title: string; value: string };
 
-type RenderProps = { children: ReactNode; className: string };
+export type RenderProps = {
+  children: ReactNode;
+  className: string;
+};
 
 type Props = ComponentPropsWithoutRef<'ul'> & {
   specs: Spec[];
-  Title?: (props: RenderProps) => ReactNode;
   isLoaded?: boolean;
+  Title?: (props: RenderProps) => ReactNode;
   Value?: (props: RenderProps) => ReactNode;
 };
 
@@ -24,8 +27,8 @@ export const SpecsList: FC<Props> = ({
   Value,
   ...props
 }) => {
-  const ValidTitle = Title ?? isLoaded ? Text : Skeleton;
-  const ValidValue = Value ?? isLoaded ? Text : Skeleton;
+  const ValidTitle = Title ?? (isLoaded ? Text : Skeleton);
+  const ValidValue = Value ?? (isLoaded ? Text : Skeleton);
 
   return (
     <ul {...props} className={cn(classes.specsList, className)}>

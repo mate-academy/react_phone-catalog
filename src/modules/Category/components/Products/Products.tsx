@@ -1,46 +1,35 @@
 /* eslint-disable  @typescript-eslint/indent */
-import React, { ComponentPropsWithoutRef, FC, useMemo } from 'react';
+import React, { ComponentPropsWithoutRef, FC } from 'react';
 
-import classes from './products.module.scss';
 import { Container } from '../../../shared/Container';
 import { ProductCard } from '../../../shared/ProductCard';
-import cn from 'classnames';
-import { Product, QueryStatus } from '../../../../types';
+import { Product } from '../../../../types';
+import { ItemGrid } from '../../../shared/ItemGrid';
+import { Text } from '../../../shared/ui/Text';
 
-type Props = ComponentPropsWithoutRef<typeof Container> & {
+type Props = ComponentPropsWithoutRef<typeof Container | typeof Text.H3> & {
   products: Product[];
-  take: number;
-  status: QueryStatus;
+  isLoaded: boolean;
 };
 
-export const Products: FC<Props> = ({
-  products,
-  status,
-  className,
-  take,
-  ...props
-}) => {
-  const skeletons = useMemo(
-    () =>
-      Array.from(Array(take), (_, i) => (
-        <ProductCard.Skeleton className={classes.container__card} key={i} />
-      )),
-    [take],
-  );
-  const isSuccess = status === 'fulfilled';
+const skeletons = Array.from(Array(4), (_, i) => (
+  <ProductCard.Skeleton key={i} />
+));
 
-  return (
-    <Container.Grid {...props} className={cn(classes.container, className)}>
-      {isSuccess
-        ? products.map(product => (
-            <ProductCard
-              className={classes.container__card}
-              product={product}
-              key={product.id}
-              showFullPrice={true}
-            />
-          ))
-        : skeletons}
-    </Container.Grid>
-  );
+export const Products: FC<Props> = ({ products, isLoaded, ...props }) => {
+  if (isLoaded && !products.length) {
+    return (
+      <Text.H3 {...props} element="p">
+        No products were found
+      </Text.H3>
+    );
+  }
+
+  const items = isLoaded
+    ? products.map(product => (
+        <ProductCard showFullPrice={true} product={product} key={product.id} />
+      ))
+    : skeletons;
+
+  return <ItemGrid {...props} items={items} />;
 };

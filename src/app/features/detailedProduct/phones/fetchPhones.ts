@@ -1,4 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
+import { removeWhiteSpaces } from '../../../../utils/removeWhiteSpaces';
 import { delay } from '../../../../utils/delay';
 import { AppState } from '../../../store';
 import { Phone } from '../../../../types';
@@ -13,7 +15,11 @@ export const fetchPhones = createAsyncThunk<Phone[]>(
     });
 
     if (response.ok) {
-      return (await response.json()) as Phone[];
+      const phones = (await response.json()) as Phone[];
+
+      return phones.map(phone =>
+        removeWhiteSpaces(phone, 'colorsAvailable', 'color'),
+      );
     }
 
     throw new Error(response.statusText);

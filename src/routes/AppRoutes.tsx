@@ -6,11 +6,15 @@ import {
   createRoutesFromElements,
 } from 'react-router-dom';
 
-import { Category } from '../modules/Category';
+import { Accessories, Phones, Tablets } from '../modules/Category';
 import { Home } from '../modules/Home';
 import { Layout } from '../modules/Layout';
 import { NotFound } from '../modules/NotFound';
-import { Phones } from '../modules/Phones';
+import {
+  Phones as PhoneDetails,
+  Tablets as TabletDetails,
+  Accessories as AccessoryDetails,
+} from '../modules/Phones';
 import { Icon } from '../modules/shared/ui/Icon';
 import { ProductDetailsCrumb } from './ProductDetailsCrumb';
 
@@ -32,10 +36,40 @@ export const AppRoutes: FC<Props> = ({}) => (
               }}
               path="Phones"
             >
-              <Route index element={<Category category={'phones'} />} />
+              <Route index element={<Phones />} />
               <Route
                 path=":productId"
-                element={<Phones />}
+                element={<PhoneDetails />}
+                handle={{
+                  crumb: () => <ProductDetailsCrumb param="productId" />,
+                }}
+              />
+            </Route>
+            <Route
+              handle={{
+                crumb: () => 'Tablets',
+              }}
+              path="Tablets"
+            >
+              <Route index element={<Tablets />} />
+              <Route
+                path=":productId"
+                element={<TabletDetails />}
+                handle={{
+                  crumb: () => <ProductDetailsCrumb param="productId" />,
+                }}
+              />
+            </Route>
+            <Route
+              handle={{
+                crumb: () => 'Accessories',
+              }}
+              path="Accessories"
+            >
+              <Route index element={<Accessories />} />
+              <Route
+                path=":productId"
+                element={<AccessoryDetails />}
                 handle={{
                   crumb: () => <ProductDetailsCrumb param="productId" />,
                 }}

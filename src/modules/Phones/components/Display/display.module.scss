@@ -1,6 +1,8 @@
 @import 'src/styles/mixins';
 
 .display {
+  position: relative;
+
   &__carousel {
     grid-column: 1 / -1;
     grid-row: 1;
@@ -58,7 +60,7 @@
 
   &__info {
     grid-column: 1 / -1;
-
+    grid-row: 3;
     margin-top: 40px;
 
     @include on-tablet {
@@ -69,6 +71,24 @@
 
     @include on-desktop {
       grid-column: 14 / 21;
+    }
+  }
+
+  &__extraSlot {
+    margin-top: 40px;
+    width: 100%;
+    position: absolute;
+    grid-column: 4 / -1;
+    grid-row: 3;
+
+    @include on-tablet {
+      margin-top: 0;
+      grid-row: 1;
+      grid-column: 11 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 22 / -1;
     }
   }
 }

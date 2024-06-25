@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { SelectOption } from '../../types';
 
 export type QuerySelectOption = SelectOption & {

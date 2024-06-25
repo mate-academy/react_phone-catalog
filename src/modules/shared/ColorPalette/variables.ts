@@ -12,9 +12,13 @@ export const COLOR_TO_HEX: Record<string, string> = {
   pink: '#fde3de',
   green: '#bbe7d4',
   spacegray: '#61605f',
+  'space-gray': '#61605f',
   midnightgreen: '#6f776e',
   silver: '#dfded5',
   coral: '#ff6854',
   rosegold: '#f9d6cf',
+  'rose-gold': '#f9d6cf',
   spaceblack: '#5b5653',
+  starlight: '#d7d0c5',
+  'sky-blue': '#d5e1ed',
 };

@@ -104,4 +104,7 @@
   &__addToCartButton {
     flex-grow: 1;
   }
+  &__addToCartFavourites {
+    flex-shrink: 0;
+  }
 }
