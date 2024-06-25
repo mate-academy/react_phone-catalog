@@ -16,7 +16,7 @@ import { Link } from 'react-router-dom';
 // );
 
 export const Header: React.FC = () => {
-  const { app } = useContext(ContextApp);
+  const { app, fav, cart } = useContext(ContextApp);
   const burger = useRef<HTMLDivElement>(null);
   const [isBurgerClose, setIsBurgerClose] = useState(true);
   // const isPhone = useBreakpoint('phone');
@@ -99,22 +99,54 @@ export const Header: React.FC = () => {
                 onClick={handleClick}
                 to={'/fav'}
               >
-                <img
-                  className={Styles.header__burger_menu__footer__fav__item}
-                  src="./img/svg/fav_icon.svg"
-                  alt="fav icon"
-                />
+                {fav.length ? (
+                  <>
+                    <img
+                      className={Styles.header__burger_menu__footer__fav__item}
+                      src="./img/svg/fav_icon.svg"
+                      alt="fav icon"
+                    />
+
+                    <div
+                      className={
+                        Styles.header__burger_menu__footer__fav__number
+                      }
+                    >
+                      {fav.length}
+                    </div>
+                  </>
+                ) : (
+                  <img
+                    className={Styles.header__burger_menu__footer__fav__item}
+                    src="./img/svg/fav_icon.svg"
+                    alt="fav icon"
+                  />
+                )}
               </Link>
             </div>
 
             <div className={Styles.header__burger_menu__footer__cart}>
-              <Link onClick={handleClick} to={'/cart'}>
+              {cart.length ? (
+                <Link onClick={handleClick} to={'/cart'}>
+                  <img
+                    className={Styles.header__burger_menu__footer__fav__item}
+                    src="./img/svg/Shopping_bag_Cart.svg"
+                    alt="fav icon"
+                  />
+
+                  <div
+                    className={Styles.header__burger_menu__footer__fav__number}
+                  >
+                    {cart.length}
+                  </div>
+                </Link>
+              ) : (
                 <img
                   className={Styles.header__burger_menu__footer__fav__item}
                   src="./img/svg/Shopping_bag_Cart.svg"
                   alt="fav icon"
                 />
-              </Link>
+              )}
             </div>
           </div>
         </div>
