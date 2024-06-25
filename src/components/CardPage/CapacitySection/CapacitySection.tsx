@@ -13,7 +13,7 @@ const CapacitySection: React.FC<Props> = ({
   handleSetCapacity,
   selectedCapacity,
 }) => {
-  const handleClick = elem => {
+  const handleClick = (elem: string) => {
     handleSetCapacity(elem);
   };
 

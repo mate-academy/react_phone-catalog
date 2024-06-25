@@ -28,8 +28,10 @@ const CardPage: React.FC<Props> = ({ type }) => {
   const [detailsCard, setDetailsCard] = useState<Details | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const { brandNewModels, cart, favourites } = useContext(StateContext);
+  const { brandNewModels, cart, favourites, selectedProduct } =
+    useContext(StateContext);
   const dispatch = useContext(DispatchContext);
+  const idOfProduct = selectedProduct && selectedProduct.id;
 
   const [selectedColor, setSelectedColor] = useState<string | null>(null);
   const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
@@ -43,7 +45,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
   const { idProduct } = useParams<{ idProduct: string }>();
   const navigate = useNavigate();
 
-  useEffect(() => {
+  const fetchProduct = () => {
     if (type && idProduct) {
       setIsLoading(true);
       getSelectedItem(type, idProduct)
@@ -63,6 +65,10 @@ const CardPage: React.FC<Props> = ({ type }) => {
           setIsLoading(false);
         });
     }
+  };
+
+  useEffect(() => {
+    fetchProduct();
   }, [idProduct]);
 
   const changeProduct = (newProductName: string) => {
@@ -72,9 +78,11 @@ const CardPage: React.FC<Props> = ({ type }) => {
   };
 
   const handleSetColor = (chosenColor: string) => {
+    setIsLoading(true);
+
     if (detailsCard && chosenColor !== selectedColor) {
       setSelectedColor(chosenColor);
-      setIsLoading(true);
+
       getItemByParameters(
         type,
         detailsCard.namespaceId,
@@ -98,6 +106,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
     if (detailsCard && chosenCapacity !== selectedCapacity) {
       setSelectedCapacity(chosenCapacity);
       setIsLoading(true);
+
       getItemByParameters(
         type,
         detailsCard.namespaceId,
@@ -141,7 +150,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
               <div className="details__wrapper">
                 <div className="details__text">
                   <div className="details__title">Available colors</div>
-                  <div className="details__sub-title">ID : {idProduct}</div>
+                  <div className="details__sub-title">ID : {idOfProduct}</div>
                 </div>
                 <div className="details__inner">
                   <div className="details__colors">
