@@ -1,15 +1,18 @@
 import classNames from 'classnames';
-import { Logo } from '../../Logos/Logo';
+import { Logo } from '../../Icons/Logo';
 import style from './Footer.module.scss';
-import { ArrowUp } from '../../Logos/ArrowUp';
+import { IconUp } from '../../Icons/IconUp';
 import { useContext } from 'react';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import { ThemeContext } from '../../../store/ThemeProvider';
+import { Link } from 'react-router-dom';
+import { HashLink } from 'react-router-hash-link';
 
 export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
   const footerNavList = ['gitHub', 'contacts', 'rights'];
+  // const { pathname } = useLocation();
 
   return (
     <footer
@@ -18,27 +21,27 @@ export const Footer = () => {
       })}
     >
       <nav className={style.footer__navContainer}>
-        <a href="#" className={style.footer__logoLink}>
+        <Link to="#" className={style.footer__logoLink}>
           <Logo className={style.footer__logoImage} />
-        </a>
+        </Link>
 
         <ul className={style.footer__navList}>
           {footerNavList.map(item => (
             <li className={style.footer__navItem} key={item}>
-              <a href="#" className={style.footer__navLink}>
+              <Link to="#" className={style.footer__navLink}>
                 {item}
-              </a>
+              </Link>
             </li>
           ))}
         </ul>
 
         <div className={style.footer__upNav}>
-          <a href="#" className={classNames(style.footer__upLink)}>
+          <HashLink smooth to='#' className={classNames(style.footer__upLink)}>
             {t('backToTop')}
-          </a>
-          <a href="#" className={style.footer__arrowUpLink}>
-            <ArrowUp className={style.footer__arrowUpImg} />
-          </a>
+          </HashLink>
+          <HashLink smooth to='#' className={style.footer__arrowUpLink}>
+            <IconUp className={style.footer__arrowUpImg} />
+          </HashLink>
         </div>
       </nav>
     </footer>

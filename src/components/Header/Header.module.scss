@@ -32,6 +32,10 @@
 
   &__link {
     display: flex;
+    &:hover {
+      @include onScale;
+      @extend %transitionPage;
+    }
   }
 
   &__actions {
@@ -55,6 +59,19 @@
     border-left: 1px solid $border-color;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &__burgerMenu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+    border-left: 1px solid $border-color;
+    border-bottom: 1px solid $border-color;
+    height: 48px;
+    width: 48px;
+    background-color: $background-color;
+    cursor: pointer;
   }
 
   &__topBtn {

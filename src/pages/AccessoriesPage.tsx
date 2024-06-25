@@ -1,6 +1,6 @@
 import { GadgetsList } from '../components/GadgetsList/GadgetsList';
 
-export const PhonesPage = () => {
-  const title = 'Mobile phones';
+export const AccessoriesPage = () => {
+  const title = 'Accessories';
   return <GadgetsList title={title} />;
 };

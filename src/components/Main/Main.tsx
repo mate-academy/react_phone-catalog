@@ -7,12 +7,7 @@ import { BrandNewModels } from './BrandNewModels/BrandNewModels';
 import { HotPrices } from './HotPrices/HotPrices';
 import { useLocation } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
-
-enum Pathname {
-  phones = '/phones',
-  tablets = '/tabets',
-  accessories = '/accessories',
-}
+import { Pathname } from '../../enums/Pathname';
 
 export const Main = () => {
   const { t } = useContext(LanguageContext);
@@ -23,6 +18,7 @@ export const Main = () => {
     pathname !== Pathname.phones &&
     pathname !== Pathname.tablets &&
     pathname !== Pathname.accessories;
+
 
   return (
     <main

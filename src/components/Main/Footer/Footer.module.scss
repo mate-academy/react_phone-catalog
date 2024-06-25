@@ -4,7 +4,6 @@
   height: 96px;
   border-top: $border-color 1px solid;
 
-
   &__navContainer {
     display: flex;
     align-items: center;
@@ -73,13 +72,17 @@
     width: 32px;
     height: 32px;
     border: $border-color 1px solid;
-
     &:hover {
       @extend %lightThemeHoverButton;
     }
 
-    .footer__darkTheme &:hover {
+    .footer__darkTheme & {
+      background-color: $linkBackgroundButton;
       @extend %darkThemeHoverButton;
+    }
+
+    .footer__darkTheme &:hover {
+      background-color: $linkBackgroundButtonHover;
     }
   }
 

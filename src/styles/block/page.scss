@@ -26,6 +26,11 @@
   --text-discount-color: #89939a;
   --text-items-color: #89939a;
   --textFooterColor: #89939a;
+  --selectBackground: #fff;
+  --linkBackgroundButton: #323542;
+  --selectDefault: #B4BDC3;
+  --selectFocus: #313237;
+  --selectHover: #89939A;
   // touch-action: none;
 }
 
@@ -45,10 +50,17 @@
   --text-discount-color: #75767f;
   --text-items-color: #75767f;
   --textFooterColor: #f1f2f9;
+  --selectBackground: #323542;
+  --linkBackgroundButton: #323542;
+  --linkBackgroundButtonHover: #4a4d58;
+  --selectDefault:#323542;
+  --selectFocus: #905BFF;
+  --selectHover: #4A4D58;
   color: $text-color;
   background-color: $background-color;
 }
 
 html {
   scrollbar-gutter: stable;
+  scroll-behavior: smooth;
 }

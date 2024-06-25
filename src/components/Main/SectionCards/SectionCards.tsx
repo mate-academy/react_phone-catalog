@@ -1,11 +1,11 @@
 import style from './SectionCards.module.scss';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import { useContext, useRef, useState } from 'react';
-import { ArrowRight } from '../../Logos/ArrowRight';
-import { ArrowLeft } from '../../Logos/ArrowLeft';
+import { IconRight } from '../../Icons/IconRight';
+import { IconLeft } from '../../Icons/IconLeft';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import classNames from 'classnames';
-import { LogoFavorites } from '../../Logos/LogoFavorites';
+import { LogoFavorites } from '../../Icons/IconFavorites';
 import { Products } from '../../../types/ContextType/Products';
 import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
@@ -39,10 +39,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
 
-  // const preventDefault = (event: { preventDefault: () => void }) => {
-  //   event.preventDefault();
-  // };
-
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
   ) => {
@@ -56,14 +52,20 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     const leftX = startX - MIN_SWIPE_REQUIRED > endX;
     const rightX = startX + MIN_SWIPE_REQUIRED < endX;
 
+    function preventDefault(event: { preventDefault: () => void }) {
+      event.preventDefault();
+    }
+
     if (upY || downY) {
+      document.body.style.overflowY = 'auto';
       document.body.style.overflowX = 'hidden';
+
     } else if (leftX || rightX) {
       document.body.style.overflowY = 'hidden';
-
-      // document.body.addEventListener('touchmove', preventDefault, {
-      //   passive: false,
-      // });
+      document.body.style.overflowX = 'auto';
+      document.body.addEventListener('touchmove', preventDefault, {
+        passive: false,
+      });
 
       let newOffsetX =
         getRefValue(currentOffsetXRef) -
@@ -79,11 +81,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
       }
 
       setOffsetX(newOffsetX);
+      document.body.removeEventListener('touchmove', preventDefault);
     }
-
-    // setTimeout(() => {
-    //   document.body.removeEventListener('touchmove', preventDefault);
-    // }, 500);
   };
 
   const onTouchEnd = () => {
@@ -134,6 +133,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     minOffsetXRef.current =
       getRefValue(containerRef).offsetWidth -
       getRefValue(containerRef).scrollWidth;
+
+    document.body.style.overflow = 'hidden';
   };
 
   function handleNext() {
@@ -176,10 +177,10 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
           <h2 className={style.sectionCards__cardTitle}>{t(title)}</h2>
           <div className={classNames(style.sectionCards__cardNavBtns)}>
             <button className={style.sectionCards__icons} onClick={handlePrev}>
-              <ArrowLeft />
+              <IconLeft />
             </button>
             <button className={style.sectionCards__icons} onClick={handleNext}>
-              <ArrowRight />
+              <IconRight />
             </button>
           </div>
         </div>

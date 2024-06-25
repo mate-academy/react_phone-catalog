@@ -1,25 +1,25 @@
 import ThemeButton from './ThemeButton/ThemeButton';
 import { LangButton } from './LangButton/LangButton';
-import { Logo } from '../Logos/Logo';
-import { LogoCart } from '../Logos/LogoCart';
+import { Logo } from '../Icons/Logo';
+import { LogoCart } from '../Icons/IconCart';
 import { NavList } from './NavList/NavList';
-import { LogoFavorites } from '../Logos/LogoFavorites';
+import { LogoFavorites } from '../Icons/IconFavorites';
 import style from './Header.module.scss';
 import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
-import { LogoBurger } from '../Logos/LogoBurger';
-import { Link, useLocation } from 'react-router-dom';
+import { LogoBurger } from '../Icons/IconBurger';
+import { Link } from 'react-router-dom';
+import { StateContext } from '../../store/StateProvider';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
-  const location = useLocation();
-  console.log(location.pathname)
+  const { setActiveMenu } = useContext(StateContext);
 
   return (
     <header className={style.header}>
       <nav className={style.header__top}>
         <div className={style.header__leftNav}>
-          <Link to="#" className={style.header__link}>
+          <Link to="../" className={style.header__link}>
             <Logo className={style.header__logo} />
           </Link>
           {!isLaptop && <NavList />}
@@ -42,12 +42,12 @@ export const Header = () => {
               </Link>
             </>
           ) : (
-            <Link
-              to={location.pathname === '/menu' ? '../' : '/menu'}
-              className={style.header__actionsLink}
+            <button
+              className={style.header__burgerMenu}
+              onClick={() => setActiveMenu(true)}
             >
-              <LogoBurger className={style.header__actionsImg} />
-            </Link>
+              <LogoBurger className={style.header__burgerMenuImg} />
+            </button>
           )}
         </ul>
       </nav>

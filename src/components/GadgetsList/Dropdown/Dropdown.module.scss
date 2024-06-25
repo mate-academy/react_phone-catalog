@@ -1,0 +1,78 @@
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/_mixins.scss';
+
+.dropdown {
+  position: relative;
+
+  &__dropdownBtn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 176px;
+    height: 40px;
+    padding-inline: 12px;
+    border: 1px solid $selectDefault;
+    background-color: $selectBackground;
+    cursor: pointer;
+  }
+
+  &____toggleIcon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transform: rotate(180deg);
+    pointer-events: none;
+  }
+
+  &__open {
+    border: $selectFocus 1px solid;
+    transition: transform 0.3s ease;
+  }
+
+  &__content {
+    position: absolute;
+    min-width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    margin-top: 4px;
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    max-height: 40vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    transform: translateY(-5%);
+    transition:
+      transform 150ms ease-in-out,
+      opacity 100ms ease-in-out;
+    opacity: 0;
+    pointer-events: none;
+    color: $text-color;
+  }
+
+  &__openContent {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  &__item {
+    color: $text-color;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 0.5rem;
+    margin: 0.1rem;
+    width: 100%;
+    cursor: pointer;
+    padding-inline: 12px;
+    &:hover {
+      background-color: $selectHover;
+    }
+  }
+}
+
+.dropdown__dropdownBtn:hover {
+  border: 1px solid $selectHover;
+}

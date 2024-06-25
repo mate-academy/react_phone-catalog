@@ -3,7 +3,7 @@ import darkArrow from '../../image/DarkTheme/arrow-left.svg';
 import { useContext } from 'react';
 import { ThemeContext } from '../../store/ThemeProvider';
 
-export const ArrowLeft = ({ ...props }) => {
+export const IconLeft = ({ ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   const logo = theme ? darkArrow : lightArrow;

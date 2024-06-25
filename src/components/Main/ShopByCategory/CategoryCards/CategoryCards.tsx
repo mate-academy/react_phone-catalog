@@ -2,13 +2,27 @@ import { useContext } from 'react';
 import { LanguageContext } from '../../../../store/LanguageProvider';
 import { CategoryList } from '../../../../utils/CategoryList';
 import style from './CategoryCards.module.scss';
-import { ProductsContext } from '../../../../store/ProductsProvider';
 import { Link } from 'react-router-dom';
+import { ProductsContext } from '../../../../store/ProductsProvider';
 
 export const CategoryCards = () => {
   const { t } = useContext(LanguageContext);
-  const { phones, tablets, accessories } = useContext(ProductsContext);
-  const items = [phones.length, tablets.length, accessories.length];
+  const { products } = useContext(ProductsContext);
+
+  const items = products.reduce(
+    (counts, product) => {
+      if (product.category === 'phones') {
+        counts[0]++;
+      } else if (product.category === 'tablets') {
+        counts[1]++;
+      } else if (product.category === 'accessories') {
+        counts[2]++;
+      }
+
+      return counts;
+    },
+    [0, 0, 0],
+  );
 
   return (
     <div className={style.category}>

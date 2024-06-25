@@ -5,9 +5,9 @@ import { StateContext } from '../../../store/StateProvider';
 import { desktopBanner, mobileBanner } from '../../../utils/BannerList';
 import { getRefValue, useStateRef } from '../../../utils/hooks/hooks';
 import { getTouchEventData } from '../../../utils/hooks/dom';
-import { ArrowLeft } from '../../Logos/ArrowLeft';
+import { IconLeft } from '../../Icons/IconLeft';
 import classNames from 'classnames';
-import { ArrowRight } from '../../Logos/ArrowRight';
+import { IconRight } from '../../Icons/IconRight';
 
 const MIN_SWIPE_REQUIRED = 40;
 
@@ -135,7 +135,7 @@ export const Slider = () => {
       <div className={style.slider__block}>
         {!isMobile && (
           <button className={style.slider__button} onClick={handlePrev}>
-            <ArrowLeft className={style.slider__arrowIcon} />
+            <IconLeft className={style.slider__arrowIcon} />
           </button>
         )}
         <div className={style.slider__container}>
@@ -188,7 +188,7 @@ export const Slider = () => {
         </div>
         {!isMobile && (
           <button className={style.slider__button} onClick={handleNext}>
-            <ArrowRight className={style.slider__arrowIcon} />
+            <IconRight className={style.slider__arrowIcon} />
           </button>
         )}
       </div>

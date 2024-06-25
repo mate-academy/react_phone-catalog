@@ -1,0 +1,148 @@
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/mixins';
+
+.cards {
+  margin-bottom: 40px;
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    justify-content: center;
+    row-gap: 40px;
+    column-gap: 16px;
+    list-style: none;
+    user-select: none;
+  }
+
+  &__container {
+    width: 100%;
+    padding: 32px;
+    border: 1px solid $border-color;
+    background-color: $background-color-phoneCard;
+    flex-shrink: 0;
+  }
+
+  &__cardName {
+    display: flex;
+    align-items: flex-end;
+    min-height: 58px;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+  }
+
+  &__cardImg {
+    margin-bottom: 8px;
+    max-width: 100%;
+  }
+
+  &__cardLink {
+    display: flex;
+    justify-content: center;
+    height: 208px;
+  }
+
+  &__cardLine {
+    display: block;
+    border-bottom: 1px solid $border-color;
+    margin-bottom: 16px;
+    width: 100%;
+  }
+
+  &__cardDescription {
+    display: flex;
+    justify-content: space-between;
+    line-height: 15px;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    font-size: 22px;
+    gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__discountPrice {
+    line-height: 31px;
+    font-weight: 800;
+    font-size: inherit;
+  }
+
+  &__fullPrice {
+    color: $text-discount-color;
+    font-weight: 600;
+    font-size: inherit;
+    line-height: 28px;
+    text-decoration: line-through;
+  }
+
+  &__key {
+    font-weight: 700;
+    color: $text-phone-card-color;
+  }
+
+  &__value {
+    font-weight: 700;
+  }
+
+  &__buttons:hover {
+    @extend %lightThemeHoverButton;
+  }
+
+  &__darkTheme &__buttons:hover {
+    @extend %darkThemeHoverButton;
+  }
+
+  &__cardActions {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    padding-top: 8px;
+  }
+
+  &__addToCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 21px;
+    color: #ffffff;
+    background-color: $background-color-button-cart;
+    width: 160px;
+    height: 40px;
+    border: none;
+    cursor: pointer;
+
+    &:hover {
+      background-color: $background-color-phoneCardHover;
+      box-shadow: 0px 3px 13px 0px #17203166;
+    }
+  }
+
+  &__CardfavBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    background-color: $background-color-button-fav;
+    border: 1px solid $border-color;
+    cursor: pointer;
+  }
+
+  &__CardfavBtn:hover {
+    @extend %lightThemeHoverButton;
+  }
+
+  &__darkTheme &__CardfavBtn:hover {
+    @extend %darkThemeHoverButton;
+  }
+}
+
+@include onPhone {
+  .card {
+    margin-bottom: 24px;
+  }
+}

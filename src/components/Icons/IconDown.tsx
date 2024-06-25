@@ -1,9 +1,9 @@
-import lightArrow from '../../image/Light-Theme/arrow-right.svg';
-import darkArrow from '../../image/DarkTheme/arrow-right.svg';
+import lightArrow from '../../image/Light-Theme/arrow-down.svg';
+import darkArrow from '../../image/DarkTheme/arrow-down.svg';
 import { useContext } from 'react';
 import { ThemeContext } from '../../store/ThemeProvider';
 
-export const ArrowRight = ({ ...props }) => {
+export const IconDown = ({ ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   const logo = theme ? darkArrow : lightArrow;

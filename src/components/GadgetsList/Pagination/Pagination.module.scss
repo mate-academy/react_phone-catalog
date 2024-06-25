@@ -1,0 +1,21 @@
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $border-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $border-hover-button;
+    }
+  }
+}

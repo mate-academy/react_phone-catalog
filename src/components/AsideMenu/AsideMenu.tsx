@@ -1,45 +1,57 @@
-import { Logo } from '../Logos/Logo';
+import { Logo } from '../Icons/Logo';
 import style from './AsideMenu.module.scss';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { useContext } from 'react';
 import { LangButton } from '../Header/LangButton';
 import ThemeButton from '../Header/ThemeButton/ThemeButton';
-import { LogoFavorites } from '../Logos/LogoFavorites';
-import { LogoCart } from '../Logos/LogoCart';
-import { LogoClose } from '../Logos/LogoClose';
+import { LogoFavorites } from '../Icons/IconFavorites';
+import { LogoCart } from '../Icons/IconCart';
+import { LogoClose } from '../Icons/IconClose';
 import data from '../../utils/NavList.json';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { StateContext } from '../../store/StateProvider';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
-  const location = useLocation();
+  const isActive = ({ isActive }: { isActive: boolean }) =>
+    classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
+
+  const { activeMenu, setActiveMenu } = useContext(StateContext);
 
   return (
     <aside
       className={classNames(style.menu, {
-        [style.menu__active]: location.pathname === '/menu',
+        [style.menu__active]: activeMenu,
       })}
     >
       <div className={style.menu__top}>
-        <Link to="/home">
+        <Link to="/home" onClick={() => setActiveMenu(false)}>
           <Logo className={style.menu__topLogo} />
         </Link>
-        <Link to="/home" className={style.menu__topLink}>
+        <button
+          className={style.menu__closeButton}
+          onClick={() => setActiveMenu(false)}
+        >
           <LogoClose className={style.menu__icons} />
-        </Link>
+        </button>
       </div>
 
       <div className={style.menu__content}>
         <ul className={style.menu__contentList}>
           {data.map(item => (
             <li className={style.menu__listItem} key={item}>
-              <Link
-                to={`../${item.toLocaleLowerCase()}`}
-                className={style.menu__listLink}
+              <NavLink
+                to={
+                  item.toLocaleLowerCase() === 'home'
+                    ? '../'
+                    : `../${item.toLocaleLowerCase()}`
+                }
+                className={isActive}
+                onClick={() => setActiveMenu(false)}
               >
                 {t(`${item.toLowerCase()}`)}
-              </Link>
+              </NavLink>
             </li>
           ))}
         </ul>
