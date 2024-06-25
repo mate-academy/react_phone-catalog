@@ -6,6 +6,7 @@ import { SortBy } from '../../types/SortBy';
 import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
+import { Crumbs } from '../breadCrumbs/Crumbs';
 
 export const Accessories: React.FC = () => {
   const {
@@ -57,6 +58,8 @@ export const Accessories: React.FC = () => {
 
       {!isLoadingAccessories && (
         <>
+          <Crumbs path={['accessories']} />
+
           <div className={style['accessories__head']}>
             <h1 className={style['accessories__head__title']}>Accessories</h1>
             <p className={style['accessories__head__paragraph']}>
@@ -99,7 +102,13 @@ export const Accessories: React.FC = () => {
           </div>
           <div className={style['accessories__container']}>
             {accessoriesOnPage.map(accessory => {
-              return <ProductCard type={'accessories'} key={accessory.id} product={accessory} />;
+              return (
+                <ProductCard
+                  type={'accessories'}
+                  key={accessory.id}
+                  product={accessory}
+                />
+              );
             })}
           </div>
           <div className={style['accessories__choose_page']}>

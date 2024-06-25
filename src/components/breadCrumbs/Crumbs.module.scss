@@ -1,3 +1,34 @@
 .crumbs {
-  
+  display: flex;
+  gap: 8px;
+  font-family: Montserrat, sans-serif;
+  margin-bottom: 40px;
+  width: 288px;
+  height: 16px;
+
+  &__item {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__paragraph {
+    color: #313237;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    width: fit-content;
+    overflow: hidden;
+  }
+
+  &__details {
+    color: #89939A;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 16px;
+    text-align: left;
+    width: fit-content;
+    overflow: hidden;
+  }
+
 }

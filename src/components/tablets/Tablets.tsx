@@ -6,7 +6,7 @@ import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
-
+import { Crumbs } from '../breadCrumbs/Crumbs';
 
 export const Tablets: React.FC = () => {
   const { tabletsTotalNumber, isLoadingTablets, tablets, products } =
@@ -50,6 +50,8 @@ export const Tablets: React.FC = () => {
       {isLoadingTablets && <Skeleton />}
       {!isLoadingTablets && (
         <>
+          <Crumbs path={['tablets']} />
+          
           <div className={style['tablets__head']}>
             <h1 className={style['tablets__head__title']}>Tablets</h1>
             <p className={style['tablets__head__paragraph']}>
@@ -92,7 +94,9 @@ export const Tablets: React.FC = () => {
           </div>
           <div className={style['tablets__container']}>
             {tabletsOnPage.map(phone => {
-              return <ProductCard key={phone.id} type={'tablets'} product={phone} />;
+              return (
+                <ProductCard key={phone.id} type={'tablets'} product={phone} />
+              );
             })}
           </div>
           <div className={style['tablets__choose_page']}>

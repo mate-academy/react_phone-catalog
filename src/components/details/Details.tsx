@@ -7,6 +7,8 @@ import React from 'react';
 import { SkeletonDetails } from '../../skeletons/SkeletonDetails/SkeletonDetails';
 import { ItemSlider } from '../itemSlider';
 import { ContextApp } from '../../appContext/AppContext';
+import { Crumbs } from '../breadCrumbs/Crumbs';
+import { firstLetterCapital } from '../../functions/firstLetterCapital';
 
 type Props = {
   list: Item[];
@@ -121,7 +123,9 @@ export const Details: React.FC<Props> = ({ list }) => {
       {!product && <SkeletonDetails />}
       {product && (
         <div className={Styles.card}>
-          <h1 className={Styles.card__title}>{product.id}</h1>
+          <Crumbs path={[product.category]} details={`${product.id}`} />
+
+          <h1 className={Styles.card__title}>{firstLetterCapital(product.id)}</h1>
 
           <div className={Styles.card__slider}>
             <div
@@ -240,7 +244,8 @@ export const Details: React.FC<Props> = ({ list }) => {
               <div
                 onClick={() => handleAddFav(product)}
                 className={cn(Styles.card__price__fav, {
-                  [Styles.card__price__fav__selected]: fav.includes(product),
+                  [Styles.card__price__fav__selected]: fav.find(
+                    item => item.id === product.id),
                 })}
               />
             </div>

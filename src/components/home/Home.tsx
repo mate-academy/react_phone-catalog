@@ -10,12 +10,8 @@ export const Home: React.FC = () => {
   const { isLoadingPoducts } = useContext(ContextApp);
   const { tablets, phones, accessories } = useContext(ContextApp);
 
-  const handleScroll = () => {
-    console.log('scrollY', window.scrollY);
-  };
-
   return (
-    <div onScroll={handleScroll} className={Styles.home}>
+    <div className={Styles.home}>
       {isLoadingPoducts && <SkeletonMain />}
 
       {!isLoadingPoducts && (

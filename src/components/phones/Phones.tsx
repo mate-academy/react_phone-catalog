@@ -6,7 +6,7 @@ import { sortBy } from '../../functions/sortBy';
 import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
-import { Link } from 'react-router-dom';
+import { Crumbs } from '../breadCrumbs/Crumbs';
 
 export const Phones: React.FC = () => {
   const { phonesTotalNumber, products, phones, isLoadingPhones } =
@@ -51,7 +51,7 @@ export const Phones: React.FC = () => {
 
       {!isLoadingPhones && (
         <>
-          
+        <Crumbs path={['phones']} />
 
           <div className={Styles['phones__head']}>
             <h1 className={Styles['phones__head__title']}>Mobile phones</h1>

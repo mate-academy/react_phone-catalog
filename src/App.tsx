@@ -15,26 +15,18 @@ import { Cart } from './components/cart';
 import { BackToTop } from './components/backToTop';
 
 export const App = () => {
-  const { app, accessories, tablets, phones, backToTop } =
-    useContext(ContextApp);
+  const { app, accessories, tablets, phones, backToTop } = useContext(ContextApp);
 
   const handleScroll = () => {
-    if (backToTop.current) {
-      console.log('offset', window.scrollY);
-    }
     if (backToTop.current && backToTop.current.offsetTop < 500) {
-      console.log('in');
       backToTop.current.style.marginTop = '110vh';
-    } else if ((backToTop.current && backToTop.current.offsetTop > 1150)) {
-      console.log('out');
+    } else if (backToTop.current && backToTop.current.offsetTop > 1150) {
       backToTop.current.style.marginTop = '10px';
     }
   };
 
   return (
-    <div
-    onScroll={handleScroll}
-    ref={app} className="app">
+    <div onScroll={handleScroll} ref={app} className="app">
       <Header />
       <h1 className="app__title">Product Catalog</h1>
 

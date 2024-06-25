@@ -4,6 +4,7 @@ import { Item } from '../../types/Item';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 import { ContextApp } from '../../appContext/AppContext';
+import { firstLetterCapital } from '../../functions/firstLetterCapital';
 
 interface Props {
   type: string;
@@ -23,7 +24,7 @@ export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
           className={Styles['productCard__picture']}
           src={`./${images[0]}`}
         />
-        <p className={Styles['productCard__product_name']}>{id}</p>
+        <p className={Styles['productCard__product_name']}>{firstLetterCapital(id)}</p>
       </Link>
 
       {discount ? (
