@@ -19,7 +19,6 @@ export const Main = () => {
     pathname !== Pathname.tablets &&
     pathname !== Pathname.accessories;
 
-
   return (
     <main
       className={style.main}

@@ -59,7 +59,6 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     if (upY || downY) {
       document.body.style.overflowY = 'auto';
       document.body.style.overflowX = 'hidden';
-
     } else if (leftX || rightX) {
       document.body.style.overflowY = 'hidden';
       document.body.style.overflowX = 'auto';

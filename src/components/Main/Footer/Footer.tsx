@@ -36,10 +36,10 @@ export const Footer = () => {
         </ul>
 
         <div className={style.footer__upNav}>
-          <HashLink smooth to='#' className={classNames(style.footer__upLink)}>
+          <HashLink smooth to="#" className={classNames(style.footer__upLink)}>
             {t('backToTop')}
           </HashLink>
-          <HashLink smooth to='#' className={style.footer__arrowUpLink}>
+          <HashLink smooth to="#" className={style.footer__arrowUpLink}>
             <IconUp className={style.footer__arrowUpImg} />
           </HashLink>
         </div>

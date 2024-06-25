@@ -20,6 +20,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   const items = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const target = event.currentTarget;
+
     setSortBy(target.textContent || '');
   };
 
@@ -33,6 +34,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
         setOpen(false);
       }
     };
+
     document.addEventListener('click', handler);
 
     return () => {
@@ -65,7 +67,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
         })}
       >
         {items.map(item => (
-          <div className={style.dropdown__item} onClick={e => handleClick(e)}>
+          <div
+            className={style.dropdown__item}
+            onClick={e => handleClick(e)}
+            key={item}
+          >
             {item}
           </div>
         ))}
