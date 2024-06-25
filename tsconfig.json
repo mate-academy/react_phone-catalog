@@ -5,6 +5,7 @@
   ],
   "compilerOptions": {
     // "jsx": "react",
+    "target": "es2015",
     "sourceMap": false,
     "types": ["node", "cypress"]
   }

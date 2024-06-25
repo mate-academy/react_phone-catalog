@@ -25,6 +25,8 @@ export const ProductDetails = () => {
   const { phones, tablets, accessories } = useAppSelector(
     state => state.products,
   );
+  const { cartProducts } = useAppSelector(state => state.cartItems);
+  const { favProducts } = useAppSelector(state => state.favourites);
 
   const { productId } = useParams();
 
@@ -40,8 +42,6 @@ export const ProductDetails = () => {
 
   const [currentImage, setCurrentImage] = useState<string>('');
   const [imageError, setImageError] = useState('');
-  const [clicked, setClicked] = useState(false);
-  const [pressed, setPressed] = useState(false);
 
   const allProducts: TabAccessPhone[] = phones.concat(tablets, accessories);
 
@@ -60,18 +60,19 @@ export const ProductDetails = () => {
     return <NotFoundPage />;
   }
 
+  const favClick = favProducts.find(item => item.id === choosenProduct?.id);
+  const cartClick = cartProducts.find(item => item.id === choosenProduct?.id);
+
   const handleFavClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     prod: TabAccessPhone,
   ) => {
     event.preventDefault();
 
-    if (clicked === false) {
+    if (favClick) {
       dispatch(favActions.addProduct(prod));
-      setClicked(true);
-    } else if (clicked === true) {
+    } else {
       dispatch(favActions.removeProduct(prod));
-      setClicked(false);
     }
   };
 
@@ -81,12 +82,10 @@ export const ProductDetails = () => {
   ) => {
     event.preventDefault();
 
-    if (pressed === false) {
+    if (cartClick) {
       dispatch(cartActions.addProduct(prod));
-      setPressed(true);
-    } else if (pressed === true) {
+    } else {
       dispatch(cartActions.removeProduct(prod));
-      setPressed(false);
     }
   };
 
@@ -252,25 +251,25 @@ export const ProductDetails = () => {
                   <button
                     className="details__product__buttonAdd"
                     style={
-                      pressed
+                      cartClick
                         ? { color: '#27AE60', backgroundColor: '#fff' }
                         : { color: '#fff', backgroundColor: '#313237' }
                     }
                     onClick={event => handleCartClick(event, product)}
                   >
-                    {pressed ? 'Added to cart' : 'Add to cart'}
+                    {cartClick ? 'Added to cart' : 'Add to cart'}
                   </button>
                   <button
                     className="details__product__buttonFavorite"
                     style={
-                      clicked
+                      favClick
                         ? { border: '1px solid #E2E6E9' }
                         : { border: '1px solid #B4BDC3' }
                     }
                     onClick={event => handleFavClick(event, product)}
                   >
                     <img
-                      src={clicked === true ? redHeart : Favorites}
+                      src={favClick ? redHeart : Favorites}
                       alt="favorites"
                       className="details__product__buttonImg"
                     />

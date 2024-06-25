@@ -7,10 +7,12 @@ import Minus from '../../images/cartImages/Minus.svg';
 import Plus from '../../images/cartImages/Plus.svg';
 import { TabAccessPhone } from '../../types/tabAccessPhones';
 import { actions } from '../../features/cartSlice';
+import { useEffect, useState } from 'react';
 
 export const CartPage = () => {
   const dispatch = useAppDispatch();
   const { cartProducts } = useAppSelector(state => state.cartItems);
+  const [error, setError] = useState<string>('');
 
   const handleDelete = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
@@ -21,15 +23,27 @@ export const CartPage = () => {
     dispatch(actions.removeProduct(prod));
   };
 
+  function countProduct(product: TabAccessPhone) {
+    return cartProducts.filter((pr) => pr.id === product.id).length
+  }
+
   const handlePlus = (product: TabAccessPhone) => {
-    console.log(product);
+    dispatch(actions.addProduct(product));
   };
 
   const handleMinus = (product: TabAccessPhone) => {
-    console.log(product);
+    dispatch(actions.removeLastProduct(product));
   };
 
-  return cartProducts.length !== 0 ? (
+  useEffect(() => {
+    if (cartProducts.length === 0) {
+      setError('There are no products in the cart yet') ;
+    }
+  }, [cartProducts])
+
+  const uniq = [...new Set(cartProducts)];
+
+  return !error ? (
     <div className="cartProduct">
       <div className="cartProduct__constrain">
         <div className="cartProduct__breadcrumbs">
@@ -45,11 +59,10 @@ export const CartPage = () => {
         <h1 className="cartProduct__header">Cart</h1>
         <div className="cartProduct__box">
           <div className="cartProduct__container">
-            {cartProducts.map((product: TabAccessPhone) => {
-              console.log(product)
+            {uniq && uniq.map((product: TabAccessPhone, index) => {
               return (
                 <div
-                  key={product.id}
+                  key={index}
                   className="cartProduct__itemCard"
                 >
                   <div className="cartProduct__containerItem">
@@ -94,7 +107,7 @@ export const CartPage = () => {
                             />
                           </button>
                           <div className="cartProduct__count__quantity">
-                            {1}
+                            {countProduct(product)}
                           </div>
                           <button
                             className="cartProduct__count__box"
@@ -115,7 +128,8 @@ export const CartPage = () => {
                   </div>
                 </div>
               );
-            })}
+            })
+          }
           </div>
           <div className="cartProduct__checkout">
             <div className="cartProduct__checkBlock">
@@ -130,6 +144,6 @@ export const CartPage = () => {
       </div>
     </div>
   ) : (
-    <div>There are no products in the cart yet</div>
+    <div>{error}</div>
   );
 };

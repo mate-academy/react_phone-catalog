@@ -60,12 +60,6 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
   ) => {
     event.preventDefault();
 
-    // const findSame = cartProducts.find(pr => pr.id === prod.id);
-
-    // if (findSame) {
-    //   return;
-    // }
-
     if (pressed === false) {
       dispatch(cartActions.addProduct(prod));
       setPressed(true);
@@ -77,7 +71,7 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
     }
   };
 
-  console.log(pressed);
+  console.log(cartProducts);
 
   return (
     <div className="card" data-cy="cardsContainer">

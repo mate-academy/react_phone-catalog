@@ -26,6 +26,17 @@ const CartSlice = createSlice({
         prod => prod.id !== action.payload.id,
       );
     },
+
+    removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+      const currentState = state;
+
+      const findProd = currentState.cartProducts.findIndex((pr) => pr.id === action.payload.id);
+    
+      const { cartProducts } = state;
+
+      console.log(cartProducts)
+      // currentState.cartProducts = currentState.cartProducts.splice(findProd, 1);
+    }
   },
 });
 
