@@ -1,0 +1,50 @@
+.content {
+  padding: 24px 0 80px;
+}
+
+.header_content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.title {
+  line-height: 24px;
+  max-width: calc(20 * 1em);
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.navigation {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+}
+
+.product__slider {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .product__slider {
+    padding-right: 0;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .title {
+    line-height: 24px;
+    max-width: calc(8 * 1em);
+    white-space: pre-wrap;
+    overflow-wrap: break-word;
+  }
+
+  .product__slider {
+    padding-left: 16px;
+    padding-right: 0;
+  }
+}

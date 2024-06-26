@@ -1,0 +1,139 @@
+.wrapper {
+  width: 100%;
+  border: 1px solid var(--card-border);
+
+  font-size: 14px;
+  height: 516px;
+  transition: border-color 0.3s ease-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+  background-color: var(--card-bg-color);
+}
+
+.wrapper:hover {
+  border-color: var(--card-border-hover);
+}
+
+.header {
+  padding-bottom: 8px;
+  border-bottom: inherit;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+  margin-bottom: 8px;
+}
+
+.imgWrapper {
+  display: flex;
+  height: 196px;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.descr {
+  padding-top: 16px;
+  font-weight: 600;
+}
+
+.prices {
+  display: flex;
+  column-gap: 8px;
+}
+
+.newPrice {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.4;
+}
+
+.oldPrice {
+  font-size: 22px;
+  line-height: 1.28;
+  text-decoration: line-through;
+  color: var(--font-color-secondary);
+}
+
+.paramsList {
+  margin-bottom: 8px;
+  padding-block: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 1.28;
+}
+
+.paramItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paramItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.paramType {
+  color: var(--font-color-secondary);
+}
+
+.actionsWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.paramValue {
+  text-align: right;
+}
+
+.tooltipContent {
+  border-radius: 4px;
+  padding: 10px 15px;
+  font-size: 12px;
+  line-height: 1;
+  background-color: var(--button-bg);
+  user-select: none;
+  border: 1px solid var(--elements-color);
+  animation-duration: 300ms;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+  z-index: 1;
+  will-change: transform, opacity;
+}
+
+.tooltipArrow {
+  fill: var(--button-bg);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .imgWrapper {
+    height: 173px;
+  }
+  .paramItem {
+    gap: 10px;
+  }
+  .paramValue {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .paramItem {
+    gap: 53px;
+  }
+  .paramValue {
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  .imgWrapper {
+    height: 148px;
+  }
+  .descr {
+    padding-top: 24px;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 24px;
+  }
+}

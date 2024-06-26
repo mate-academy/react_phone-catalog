@@ -1,0 +1,134 @@
+.cartItem {
+  border: 1px solid var(--elements-color);
+  padding: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--primary-color);
+  background-color: var(--card-bg-color);
+}
+
+.leftSide {
+  display: flex;
+  align-items: center;
+
+  column-gap: 24px;
+}
+
+.rightSide {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+}
+
+.closeBtn {
+  width: 16px;
+  height: 16px;
+}
+
+.imgWrapper {
+  width: 80px;
+  height: 80px;
+  transition: transform var(--basic-transition-time);
+  color: grey;
+}
+
+.imgWrapper:hover {
+  transform: scale(var(--basic-scale-img));
+}
+
+.img {
+  height: 100%;
+  object-fit: contain;
+}
+
+.descrWrapper {
+  max-width: 336px;
+  overflow: hidden;
+}
+
+.descr {
+  position: relative;
+}
+
+.descr::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  transform: translate(-100%);
+  width: 100%;
+  height: 1px;
+  background-color: var(--primary-color);
+  transition: transform var(--basic-transition-time);
+}
+
+.descr:hover::after {
+  transform: translate(0);
+}
+
+.actionsList {
+  display: flex;
+}
+
+.actionBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.counter {
+  width: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.actionBtnDisabled {
+  border-color: var(--elements-color);
+  cursor: default;
+}
+
+.actionBtn:hover {
+  border-color: var(--primary-color);
+}
+
+.actionBtnDisabled:hover {
+  border-color: var(--elements-color);
+}
+
+.price {
+  width: 80px;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 1.4;
+  text-align: right;
+  overflow-wrap: normal;
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .cartItem {
+    flex-wrap: wrap;
+    padding: 16px;
+    row-gap: 16px;
+  }
+
+  .leftSide,
+  .rightSide {
+    column-gap: 16px;
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .descrWrapper {
+    max-width: 128px;
+  }
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .descrWrapper {
+    max-width: 176px;
+  }
+}

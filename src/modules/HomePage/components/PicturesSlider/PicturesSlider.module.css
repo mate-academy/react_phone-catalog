@@ -1,0 +1,136 @@
+.btn {
+  border: 1px solid var(--elements-color);
+  background-color: var(--button-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  color: var(--font-color-primary);
+  transition:
+    border-color 0.3s ease-in-out,
+    background-color 0.3s ease-in-out;
+}
+
+.btn:hover {
+  border-color: var(--button-border);
+  background-color: var(--button-bg-hover);
+}
+
+.btn img {
+  height: 16px;
+  width: 16px;
+}
+
+.sliderContainer {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding-inline: 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.slider {
+  height: 400px;
+  width: 100%;
+}
+
+.sliders {
+  position: relative;
+  margin: 0 auto;
+  height: 400px;
+  width: 100%;
+  overflow: hidden;
+}
+
+.slide {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.slide img {
+  height: 400px;
+  object-fit: contain;
+}
+
+.activeSlide {
+  opacity: 1;
+}
+
+.prev img {
+  height: 20px;
+  background: #000;
+}
+
+.dots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+}
+
+.dot {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.dash {
+  height: 4px;
+  width: 14px;
+  background-color: var(--elements-color);
+  transition: background-color 0.5s ease-in-out;
+}
+
+.dash:hover {
+  background-color: var(--color-primary);
+}
+
+.activeDash {
+  background-color: var(--color-primary);
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .sliders {
+    height: 320px;
+  }
+
+  .slide img {
+    height: 320px;
+  }
+
+  .slider {
+    height: 320px;
+  }
+
+  .sliderContainer {
+    padding-inline: 24px;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .sliders {
+    height: 189px;
+  }
+  .btn {
+    display: none;
+  }
+
+  .sliderContainer {
+    padding-inline: 0;
+  }
+
+  .slide img {
+    height: 189px;
+  }
+
+  .slider {
+    height: 189px;
+  }
+}

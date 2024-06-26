@@ -1,0 +1,126 @@
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+  font-size: 14px;
+  font-weight: 500;
+  transition:
+    background-color 0.3s ease-out,
+    color 0.3s ease-out;
+  outline: none;
+  padding: 0;
+  font-family: var(--primary-font);
+  position: relative;
+}
+
+.button:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 2px #000,
+    0 0 0 4px #fff;
+}
+
+.button:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.button-variant--default {
+  color: var(--color-primary);
+}
+
+.button-variant--primary {
+  background-color: var(--accent-color);
+  color: #fff;
+  width: 100%;
+  height: 40px;
+  padding: 0 9.5px;
+  transition: background-color 0.3s ease-out;
+}
+
+.button-variant--primary:hover {
+  background-color: var(--button-primary-bg-hover);
+}
+
+.button-variant--primary--selected {
+  border: 1px solid var(--button-color-border-selected);
+  background-color: inherit;
+  color: var(--color-green);
+  width: 100%;
+  height: 40px;
+  transition:
+    border 0.3s ease-out,
+    background-color 0.3s ease-out;
+}
+
+.button-variant--primary--selected:hover {
+  border-color: #424348;
+  background-color: var(--button-bg-hover);
+}
+
+.button-variant--ghost {
+  color: var(--color-primary);
+}
+
+.button-variant--color-selector {
+  margin: 3px;
+  border-radius: 36px;
+  outline: 1px solid var(--elements-color);
+  outline-offset: 2px;
+}
+
+.button-variant--color-selector:hover {
+  outline: 1px solid var(--color-primary);
+}
+
+.button-variant--color-selector--selected {
+  margin: 3px;
+  border-radius: 36px;
+  outline: 1px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.button-variant--icon {
+  background-color: var(--button-bg);
+  border: var(--button-border) solid 1px;
+  padding: 8px;
+  transition:
+    border 0.3s ease-out,
+    background-color 0.3s ease-out;
+  color: var(--font-color-primary);
+}
+
+.button-variant--icon:hover {
+  border: var(--button-border-hover) solid 1px;
+  background-color: var(--button-bg-hover);
+}
+
+.button-variant--icon--selected {
+  border: var(--color-primary) solid 1px;
+}
+
+.button-variant--icon--selected:hover {
+  border: var(--elements-color) solid 1px;
+  box-shadow: 0 3px 13px 0 var(--elements-color);
+}
+
+.button-variant--pagination {
+  border: 1px solid var(--button-border);
+  padding: 8px;
+  color: var(--font-color-primary);
+  transition:
+    background-color 0.3s ease-out,
+    border 0.3s ease-out;
+}
+
+.button-variant--pagination:hover {
+  border: var(--button-border-hover) solid 1px;
+  background-color: var(--button-bg-hover);
+}
+
+.button-variant--pagination--selected {
+  border: var(--primary-color) solid 1px;
+  background-color: var(--accent-color);
+  color: #fff;
+}
