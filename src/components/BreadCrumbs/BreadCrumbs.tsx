@@ -7,11 +7,7 @@ export const BreadCrumbs = () => {
   let currentLink = '..';
 
   const crumbs = location.pathname.split('/').map(crumb => {
-    if (crumb === '') {
-      crumb;
-    } else {
-      currentLink += `/${crumb}`;
-    }
+    currentLink += `/${crumb}`;
 
     return (
       <div key={crumb} className={style.crumb}>

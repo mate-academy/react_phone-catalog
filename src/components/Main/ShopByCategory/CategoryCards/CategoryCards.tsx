@@ -11,9 +11,11 @@ export const CategoryCards = () => {
 
   const items = products.reduce(
     (counts, product) => {
+      // Create new variables to hold updated counts
       let phoneCounts = counts[0];
       let tabletCounts = counts[1];
       let accessoriesCounts = counts[2];
+
       if (product.category === 'phones') {
         phoneCounts++;
       } else if (product.category === 'tablets') {
@@ -22,6 +24,7 @@ export const CategoryCards = () => {
         accessoriesCounts++;
       }
 
+      // Return a new array with updated counts
       return [phoneCounts, tabletCounts, accessoriesCounts];
     },
     [0, 0, 0],
