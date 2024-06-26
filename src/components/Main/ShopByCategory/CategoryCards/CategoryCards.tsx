@@ -11,15 +11,18 @@ export const CategoryCards = () => {
 
   const items = products.reduce(
     (counts, product) => {
+      let phoneCounts = counts[0];
+      let tabletCounts = counts[1];
+      let accessoriesCounts = counts[2];
       if (product.category === 'phones') {
-        counts[0]++;
+        phoneCounts++;
       } else if (product.category === 'tablets') {
-        counts[1]++;
+        tabletCounts++;
       } else if (product.category === 'accessories') {
-        counts[2]++;
+        accessoriesCounts++;
       }
 
-      return counts;
+      return [phoneCounts, tabletCounts, accessoriesCounts];
     },
     [0, 0, 0],
   );

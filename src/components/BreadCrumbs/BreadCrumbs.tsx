@@ -8,7 +8,7 @@ export const BreadCrumbs = () => {
 
   const crumbs = location.pathname.split('/').map(crumb => {
     if (crumb === '') {
-      return;
+      crumb;
     } else {
       currentLink += `/${crumb}`;
     }
