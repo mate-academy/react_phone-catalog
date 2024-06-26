@@ -30,11 +30,11 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
   // console.log(close);
   // console.log(toggle);
 
-  const sortedBy = (sortBy: string, gadgets: Products[]): Products[] => {
-    let copyOfProducts = [...gadgets];
+  const sortedBy = (sortByItem: string, device: Products[]): Products[] => {
+    const copyOfProducts = [...device];
 
-    if (sortBy) {
-      switch (sortBy) {
+    if (sortByItem) {
+      switch (sortByItem) {
         case SortBy.newest:
           return copyOfProducts.sort((a, b) => b.year - a.year);
         case SortBy.alphabetically:

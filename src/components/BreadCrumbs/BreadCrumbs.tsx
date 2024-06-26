@@ -15,9 +15,7 @@ export const BreadCrumbs = () => {
 
     return (
       <div key={crumb} className={style.crumb}>
-        <Link to={currentLink}>
-          {crumb === '' ? <IconHome /> : crumb}
-        </Link>
+        <Link to={currentLink}>{crumb === '' ? <IconHome /> : crumb}</Link>
       </div>
     );
   });

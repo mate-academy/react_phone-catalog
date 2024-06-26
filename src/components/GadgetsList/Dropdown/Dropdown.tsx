@@ -25,7 +25,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   };
 
   const toggleDropdown = () => {
-    setOpen(open => !open);
+    setOpen(prevOpen => !prevOpen);
   };
 
   useEffect(() => {
