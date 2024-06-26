@@ -28,11 +28,17 @@
   --textFooterColor: #89939a;
   --selectBackground: #fff;
   --linkBackgroundButton: #323542;
-  --selectItemsTextDefault: #89939A;
-  --selectBackgroundFocus: #FAFBFC;
-  --selectDefault: #B4BDC3;
+  --selectItemsTextDefault: #89939a;
+  --selectBackgroundFocus: #fafbfc;
+  --selectDefault: #b4bdc3;
   --selectFocus: #313237;
-  --selectHover: #89939A;
+  --selectHover: #89939a;
+  --paginationBackColor: #fff;
+  --paginationBackColorHover: #fff;
+  --paginationBorderColorHover: #313237;
+  --paginationNumberBackColor: #fff;
+  --paginationTextColorActive: #fff;
+  --paginationNumberBackColorActive: #313237;
   // touch-action: none;
 }
 
@@ -56,10 +62,16 @@
   --linkBackgroundButton: #323542;
   --linkBackgroundButtonHover: #4a4d58;
   --selectBackgroundFocus: #323542;
-  --selectDefault:#323542;
-  --selectFocus: #905BFF;
-  --selectHover: #4A4D58;
-  --selectItemsTextDefault: #75767F;
+  --selectDefault: #323542;
+  --selectFocus: #905bff;
+  --selectHover: #4a4d58;
+  --selectItemsTextDefault: #75767f;
+  --paginationBackColor: #323542;
+  --paginationBackColorHover: #4a4d58;
+  --paginationBorderColorHover: #323542;
+  --paginationNumberBackColor: #161827;
+  --paginationTextColorActive: #F1F2F9;
+  --paginationNumberBackColorActive: #905BFF;
   color: $text-color;
   background-color: $background-color;
 }

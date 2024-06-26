@@ -4,18 +4,54 @@
 .pagination {
   display: flex;
   justify-content: center;
-
+  column-gap: 16px;
+  margin-bottom: 80px;
   &__link {
     display: flex;
     align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    border: 1px solid $border-color;
     cursor: pointer;
+    background-color: $paginationBackColor;
+    border: 1px solid $selectDefault;
 
     &:hover {
-      border: 1px solid $border-hover-button;
+      background-color: $paginationBackColorHover;
+      border: 1px solid $paginationBorderColorHover;
     }
+  }
+
+  &__numbers {
+    display: flex;
+    column-gap: 8px;
+  }
+
+  &__number {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: $paginationNumberBackColor;
+    border: 1px solid $selectDefault;
+    color: $text-color;
+    font-weight: 600;
+    font-size: 14px;
+    &:hover {
+      background-color: $paginationBackColorHover;
+      border: 1px solid $paginationBorderColorHover;
+    }
+  }
+
+  &__active {
+    color: $paginationTextColorActive;
+    background-color: $paginationNumberBackColorActive;
+    border: none;
+    pointer-events: none;
+  }
+
+  &__disabled {
+    pointer-events: none;
   }
 }

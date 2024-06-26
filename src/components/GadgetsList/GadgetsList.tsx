@@ -3,12 +3,10 @@ import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 import { Cards } from '../Cards/Cards';
 import style from './GadgetsList.module.scss';
 import { ProductsContext } from '../../store/ProductsProvider';
-import { useLocation, useSearchParams } from 'react-router-dom';
-import { filterGadgets } from '../../utils/filterGadgets';
+import { useSearchParams } from 'react-router-dom';
 import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
 import { SortBy } from '../../enums/SortBy';
-import { Products } from '../../types/ContextType/Products';
 import { Pagination } from './Pagination/Pagination';
 import { Dropdown } from './Dropdown/Dropdown';
 import { ItemsList } from '../../enums/ItemsPerPage';
@@ -18,12 +16,10 @@ type Props = {
 };
 
 export const GadgetsList: React.FC<Props> = ({ title }) => {
-  const [searchParams] = useSearchParams();
-  const { products } = useContext(ProductsContext);
-  const { pathname } = useLocation();
   const { theme } = useContext(ThemeContext);
+  const [searchParams] = useSearchParams();
+  const { gadgets, resultFilteredDev } = useContext(ProductsContext);
 
-  const gadgets = filterGadgets(pathname, products);
   const listSortedBy = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
   const listItemsPerPage = [
     ItemsList.four,
@@ -31,30 +27,8 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
     ItemsList.sixteen,
     ItemsList.all,
   ];
-
   const sortBy = searchParams.get('sortBy') || SortBy.newest;
   const itemsOnPage = searchParams.get('itemsOnPage') || ItemsList.four;
-
-  const sortedBy = (sortByItem: string, device: Products[]): Products[] => {
-    const copyOfProducts = [...device];
-
-    if (sortByItem) {
-      switch (sortByItem) {
-        case SortBy.newest:
-          return copyOfProducts.sort((a, b) => b.year - a.year);
-        case SortBy.alphabetically:
-          return copyOfProducts.sort((a, b) => a.name.localeCompare(b.name));
-        case SortBy.cheapest:
-          return copyOfProducts.sort((a, b) => a.price - b.price);
-        default:
-          return copyOfProducts;
-      }
-    }
-
-    return copyOfProducts;
-  };
-
-  const sortedGadgets = sortedBy(sortBy, gadgets.gadgets);
 
   return (
     <div
@@ -86,8 +60,8 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
         />
       </div>
 
-      <Cards gadgets={sortedGadgets} />
-      <Pagination />
+      <Cards gadgets={resultFilteredDev} />
+      <Pagination perPage={itemsOnPage} />
     </div>
   );
 };

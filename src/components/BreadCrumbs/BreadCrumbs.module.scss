@@ -8,30 +8,32 @@
   max-width: 1136px;
   display: flex;
   align-items: center;
+
+  & > * {
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+  }
+
+  & .crumb::after {
+    content: '>';
+    margin-left: 8px;
+    color: $text-nav-color;
+  }
+
+  & .crumb:last-child:after {
+    display: none;
+  }
+
+  & .crumb a {
+    color: $text-nav-color;
+    font-weight: 600;
+    font-size: 12px;
+    line-height: 15px;
+    text-transform: capitalize;
+  }
 }
 
-.breadCrumbs > * {
-  display: flex;
-  align-items: center;
-  margin-right: 8px;
-}
-
-.breadCrumbs .crumb::after {
-  content: '>';
-  margin-left: 8px;
-  color: $text-nav-color;
-}
-
-.breadCrumbs .crumb:last-child:after {
-  display: none;
-}
-
-
-
-.breadCrumbs .crumb a {
-  color: $text-nav-color;
-  font-weight: 600;
-  font-size: 12px;
-  line-height: 15px;
-  text-transform: capitalize;
+.crumb:last-child {
+  pointer-events: none;
 }
