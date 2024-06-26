@@ -1,15 +1,16 @@
-import { MouseEvent, useEffect, useRef, useState } from 'react';
+import { MouseEvent, useEffect, useRef } from 'react';
 import style from './Dropdown.module.scss';
 import classNames from 'classnames';
 import { IconUp } from '../../Icons/IconUp';
 import { IconDown } from '../../Icons/IconDown';
-import { SortBy } from '../../../enums/SortBy';
+import { useSearchParams } from 'react-router-dom';
+import { useModal } from '../../../utils/useModals';
 
 interface DropdownProps {
   listItems: string[];
   titleDropdown: string;
   currentItem: string;
-  setItem: (value: SortBy) => void;
+  keySearchParams: string;
   className: string;
 }
 
@@ -17,31 +18,33 @@ export const Dropdown: React.FC<DropdownProps> = ({
   listItems,
   titleDropdown,
   currentItem,
-  setItem,
+  keySearchParams,
   className = '',
 }) => {
-  const [open, setOpen] = useState(false);
+  const { isOpen, close, toggle } = useModal(false);
+
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const handleClick = (event: MouseEvent<HTMLDivElement>) => {
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = new URLSearchParams(searchParams);
+
+  const handleClick = (event: MouseEvent<HTMLLIElement>) => {
     const target = event.currentTarget;
-    const selectedText = target.textContent as SortBy;
+    const selectedText = target.textContent;
 
     if (selectedText) {
-      setItem(selectedText);
+      params.set(keySearchParams, selectedText);
+      setSearchParams(params);
     }
 
-    setOpen(false);
-  };
-
-  const toggleDropdown = () => {
-    setOpen(prevOpen => !prevOpen);
+    close();
   };
 
   useEffect(() => {
     const handler = (event: { target: any }) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
-        setOpen(false);
+        close();
       }
     };
 
@@ -56,15 +59,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
     <div ref={dropdownRef} className={style.dropdown}>
       <p className={style.dropdown__titleSelecrors}>{titleDropdown}</p>
       <div
-        onClick={toggleDropdown}
+        onClick={toggle}
         ref={buttonRef}
-        className={classNames(style.dropdown__dropdownBtn, className,{
-          [style.dropdown__open]: open,
+        className={classNames(style.dropdown__dropdownBtn, className, {
+          [style.dropdown__open]: isOpen,
         })}
       >
         {currentItem}
         <span className={style.dropdown____toggleIcon}>
-          {open ? (
+          {isOpen ? (
             <IconUp className={style.dropdown____toggleIcon} />
           ) : (
             <IconDown className={style.dropdown____toggleIcon} />
@@ -72,13 +75,13 @@ export const Dropdown: React.FC<DropdownProps> = ({
         </span>
       </div>
 
-      <div
+      <ul
         className={classNames(style.dropdown__content, {
-          [style.dropdown__openContent]: open,
+          [style.dropdown__openContent]: isOpen,
         })}
       >
         {listItems.map(item => (
-          <div
+          <li
             className={classNames(style.dropdown__item, {
               [style.dropdown__selectedItem]: item === currentItem,
             })}
@@ -86,9 +89,9 @@ export const Dropdown: React.FC<DropdownProps> = ({
             key={item}
           >
             {item}
-          </div>
+          </li>
         ))}
-      </div>
+      </ul>
     </div>
   );
 };

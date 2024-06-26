@@ -1,9 +1,9 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 import { Cards } from '../Cards/Cards';
 import style from './GadgetsList.module.scss';
 import { ProductsContext } from '../../store/ProductsProvider';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import { filterGadgets } from '../../utils/filterGadgets';
 import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
@@ -18,17 +18,22 @@ type Props = {
 };
 
 export const GadgetsList: React.FC<Props> = ({ title }) => {
+  const [searchParams] = useSearchParams();
   const { products } = useContext(ProductsContext);
   const { pathname } = useLocation();
   const { theme } = useContext(ThemeContext);
 
   const gadgets = filterGadgets(pathname, products);
   const listSortedBy = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
-  const listItemsPerPage = [ItemsList.four, ItemsList.eight, ItemsList.sixteen, ItemsList.all]
+  const listItemsPerPage = [
+    ItemsList.four,
+    ItemsList.eight,
+    ItemsList.sixteen,
+    ItemsList.all,
+  ];
 
-  const [sortBy, setSortBy] = useState<SortBy>(SortBy.newest);
-
-  const [itemsOnPage, setItemsOnPage] = useState<string>(ItemsList.four)
+  const sortBy = searchParams.get('sortBy') || SortBy.newest;
+  const itemsOnPage = searchParams.get('itemsOnPage') || ItemsList.four;
 
   const sortedBy = (sortByItem: string, device: Products[]): Products[] => {
     const copyOfProducts = [...device];
@@ -68,7 +73,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           listItems={listSortedBy}
           titleDropdown={'Sort by'}
           currentItem={sortBy}
-          setItem={(v: SortBy) => setSortBy(v)}
+          keySearchParams={'sortBy'}
           className={style.gadgets__widthSortBy}
         />
 
@@ -76,7 +81,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           listItems={listItemsPerPage}
           titleDropdown={'Items on page'}
           currentItem={itemsOnPage}
-          setItem={(v) => setItemsOnPage(v)}
+          keySearchParams={'itemsOnPage'}
           className={style.gadgets__widthItemsOnPage}
         />
       </div>
