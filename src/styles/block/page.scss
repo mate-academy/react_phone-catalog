@@ -28,6 +28,8 @@
   --textFooterColor: #89939a;
   --selectBackground: #fff;
   --linkBackgroundButton: #323542;
+  --selectItemsTextDefault: #89939A;
+  --selectBackgroundFocus: #FAFBFC;
   --selectDefault: #B4BDC3;
   --selectFocus: #313237;
   --selectHover: #89939A;
@@ -53,9 +55,11 @@
   --selectBackground: #323542;
   --linkBackgroundButton: #323542;
   --linkBackgroundButtonHover: #4a4d58;
+  --selectBackgroundFocus: #323542;
   --selectDefault:#323542;
   --selectFocus: #905BFF;
   --selectHover: #4A4D58;
+  --selectItemsTextDefault: #75767F;
   color: $text-color;
   background-color: $background-color;
 }

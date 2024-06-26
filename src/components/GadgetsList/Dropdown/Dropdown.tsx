@@ -6,22 +6,32 @@ import { IconDown } from '../../Icons/IconDown';
 import { SortBy } from '../../../enums/SortBy';
 
 interface DropdownProps {
-  buttonText: string;
-  setSortBy: (v: string) => void;
+  listItems: string[];
+  titleDropdown: string;
+  currentItem: string;
+  setItem: (value: SortBy) => void;
+  className: string;
 }
 
 export const Dropdown: React.FC<DropdownProps> = ({
-  buttonText,
-  setSortBy,
+  listItems,
+  titleDropdown,
+  currentItem,
+  setItem,
+  className = '',
 }) => {
   const [open, setOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLDivElement>(null);
-  const items = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
   const handleClick = (event: MouseEvent<HTMLDivElement>) => {
     const target = event.currentTarget;
+    const selectedText = target.textContent as SortBy;
 
-    setSortBy(target.textContent || '');
+    if (selectedText) {
+      setItem(selectedText);
+    }
+
+    setOpen(false);
   };
 
   const toggleDropdown = () => {
@@ -44,14 +54,15 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   return (
     <div ref={dropdownRef} className={style.dropdown}>
+      <p className={style.dropdown__titleSelecrors}>{titleDropdown}</p>
       <div
         onClick={toggleDropdown}
         ref={buttonRef}
-        className={classNames(style.dropdown__dropdownBtn, {
+        className={classNames(style.dropdown__dropdownBtn, className,{
           [style.dropdown__open]: open,
         })}
       >
-        {buttonText}
+        {currentItem}
         <span className={style.dropdown____toggleIcon}>
           {open ? (
             <IconUp className={style.dropdown____toggleIcon} />
@@ -66,9 +77,11 @@ export const Dropdown: React.FC<DropdownProps> = ({
           [style.dropdown__openContent]: open,
         })}
       >
-        {items.map(item => (
+        {listItems.map(item => (
           <div
-            className={style.dropdown__item}
+            className={classNames(style.dropdown__item, {
+              [style.dropdown__selectedItem]: item === currentItem,
+            })}
             onClick={e => handleClick(e)}
             key={item}
           >

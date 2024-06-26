@@ -11,7 +11,7 @@ import { SortBy } from '../../enums/SortBy';
 import { Products } from '../../types/ContextType/Products';
 import { Pagination } from './Pagination/Pagination';
 import { Dropdown } from './Dropdown/Dropdown';
-// import { useModal } from '../../utils/useModals';
+import { ItemsList } from '../../enums/ItemsPerPage';
 
 type Props = {
   title: string;
@@ -21,14 +21,14 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
   const { products } = useContext(ProductsContext);
   const { pathname } = useLocation();
   const { theme } = useContext(ThemeContext);
-  const gadgets = filterGadgets(pathname, products);
-  const [sortBy, setSortBy] = useState(SortBy.newest);
 
-  // const { isOpen, open, close, toggle } = useModal(false);
-  // console.log(isOpen);
-  // console.log(open);
-  // console.log(close);
-  // console.log(toggle);
+  const gadgets = filterGadgets(pathname, products);
+  const listSortedBy = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
+  const listItemsPerPage = [ItemsList.four, ItemsList.eight, ItemsList.sixteen, ItemsList.all]
+
+  const [sortBy, setSortBy] = useState<SortBy>(SortBy.newest);
+
+  const [itemsOnPage, setItemsOnPage] = useState<string>(ItemsList.four)
 
   const sortedBy = (sortByItem: string, device: Products[]): Products[] => {
     const copyOfProducts = [...device];
@@ -39,7 +39,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           return copyOfProducts.sort((a, b) => b.year - a.year);
         case SortBy.alphabetically:
           return copyOfProducts.sort((a, b) => a.name.localeCompare(b.name));
-        case SortBy.newest:
+        case SortBy.cheapest:
           return copyOfProducts.sort((a, b) => a.price - b.price);
         default:
           return copyOfProducts;
@@ -64,41 +64,21 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
       </p>
 
       <div className={style.gadgets__selectors}>
-        <div className={style.gadgets__select}>
-          <label htmlFor="selectSortBy" className={style.gadgets__slectTitle}>
-            Sort by
-          </label>
+        <Dropdown
+          listItems={listSortedBy}
+          titleDropdown={'Sort by'}
+          currentItem={sortBy}
+          setItem={(v: SortBy) => setSortBy(v)}
+          className={style.gadgets__widthSortBy}
+        />
 
-          <Dropdown buttonText={sortBy} setSortBy={setSortBy} />
-
-          {/* <select
-            name="SelectSort"
-            id="selectSortBy"
-            className={style.gadgets__selectOptions}
-            value={sortBy}
-            onChange={e => setSortBy(e.target.value)}
-          >
-            <option value="Newest">Newest</option>
-            <option value="Alphabetically">Alphabetically</option>
-            <option value="Cheapest">Cheapest</option>
-          </select> */}
-        </div>
-
-        <div className={style.gadgets__select}>
-          <label htmlFor="itemsPerPage" className={style.gadgets__slectTitle}>
-            Items on page
-          </label>
-          <select
-            name="SelectPerPage"
-            className={style.gadgets__selectOptions}
-            id="itemsPerPage"
-          >
-            <option value="4">4</option>
-            <option value="4">8</option>
-            <option value="4">16</option>
-            <option value="All">All</option>
-          </select>
-        </div>
+        <Dropdown
+          listItems={listItemsPerPage}
+          titleDropdown={'Items on page'}
+          currentItem={itemsOnPage}
+          setItem={(v) => setItemsOnPage(v)}
+          className={style.gadgets__widthItemsOnPage}
+        />
       </div>
 
       <Cards gadgets={sortedGadgets} />

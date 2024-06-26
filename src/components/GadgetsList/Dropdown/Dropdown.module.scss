@@ -4,11 +4,20 @@
 .dropdown {
   position: relative;
 
+  &__titleSelecrors {
+    font-weight: 700;
+    color: $text-items-color;
+    line-height: 15px;
+    padding-bottom: 4px;
+  }
+
   &__dropdownBtn {
+    font-weight: 600;
+    line-height: 21px;
+    font-size: 14px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 176px;
     height: 40px;
     padding-inline: 12px;
     border: 1px solid $selectDefault;
@@ -58,18 +67,23 @@
   }
 
   &__item {
-    color: $text-color;
-    font-weight: 600;
+    color: $selectItemsTextDefault;
+    font-weight: 500;
     font-size: 14px;
     line-height: 21px;
     padding: 0.5rem;
-    margin: 0.1rem;
     width: 100%;
     cursor: pointer;
     padding-inline: 12px;
     &:hover {
       background-color: $selectHover;
+      color: $text-color;
     }
+  }
+
+  &__selectedItem {
+    background-color: $selectBackgroundFocus;
+    color: $text-color;
   }
 }
 
