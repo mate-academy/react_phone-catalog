@@ -14,7 +14,7 @@ import { StateContext } from '../../store/StateProvider';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
-  const isActive = ({ isActive }: { isActive: boolean }) =>
+  const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
 
   const { activeMenu, setActiveMenu } = useContext(StateContext);
@@ -47,7 +47,7 @@ export const AsideMenu = () => {
                     ? '../'
                     : `../${item.toLocaleLowerCase()}`
                 }
-                className={isActive}
+                className={isActiveLink}
                 onClick={() => setActiveMenu(false)}
               >
                 {t(`${item.toLowerCase()}`)}
