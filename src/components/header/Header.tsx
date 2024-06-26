@@ -127,7 +127,11 @@ export const Header: React.FC = () => {
 
             <div className={Styles.header__burger_menu__footer__cart}>
               {cart.length ? (
-                <Link onClick={handleClick} to={'/cart'}>
+                <Link
+                  className={Styles.header__burger_menu__footer__fav__link}
+                  onClick={handleClick}
+                  to={'/cart'}
+                >
                   <img
                     className={Styles.header__burger_menu__footer__fav__item}
                     src="./img/svg/Shopping_bag_Cart.svg"
