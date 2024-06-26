@@ -5,12 +5,14 @@ export const filterGadgets = (loc: string, prod: Products[]) => {
   switch (loc) {
     case Pathname.phones:
       const phones = [...prod].filter(phone => phone.category === 'phones');
+
       return {
         gadgetsLen: phones.length,
         gadgets: phones,
       };
     case Pathname.tablets:
       const tablets = [...prod].filter(phone => phone.category === 'tablets');
+
       return {
         gadgetsLen: tablets.length,
         gadgets: tablets,
@@ -19,6 +21,7 @@ export const filterGadgets = (loc: string, prod: Products[]) => {
       const accessories = [...prod].filter(
         phone => phone.category === 'accessories',
       );
+
       return {
         gadgetsLen: accessories.length,
         gadgets: accessories,

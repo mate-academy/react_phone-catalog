@@ -9,7 +9,7 @@ export const NavList = () => {
   const { t } = useContext(LanguageContext);
   const { setActiveMenu } = useContext(StateContext);
 
-  const isActive = ({ isActive }: { isActive: boolean }) =>
+  const isActiveClass = ({ isActive }: { isActive: boolean }) =>
     classNames(style.nav__link, { [style.nav__activeLink]: isActive });
 
   return (
@@ -23,7 +23,7 @@ export const NavList = () => {
                   ? '/'
                   : item.toLocaleLowerCase()
               }
-              className={isActive}
+              className={isActiveClass}
               onClick={() => setActiveMenu(false)}
             >
               {t(`${item.toLowerCase()}`)}

@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import {  getGadgets } from '../utils/fetchMethods';
+import { getGadgets } from '../utils/fetchMethods';
 import { Products } from '../types/ContextType/Products';
 // import { Phones } from '../types/ContextType/Phones';
 // import { Tablets } from '../types/ContextType/Tablets';
@@ -43,7 +43,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     // getTablets('/tablets.json').then(response => setTablets(response));
     // getAccessories('/accessories.json').then(response => setAccessories(response));
   }, []);
-
 
   const gadgetsTools = {
     products,
