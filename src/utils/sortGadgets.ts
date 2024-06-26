@@ -1,11 +1,12 @@
-import { SortBy } from "../enums/SortBy";
-import { Products } from "../types/ContextType/Products";
+import { SortBy } from '../enums/SortBy';
+import { Products } from '../types/ContextType/Products';
 
 export const sortedBy = (
   sortByItem: string,
   device: Products[],
 ): Products[] => {
   const copyOfProducts = [...device];
+
   if (sortByItem) {
     switch (sortByItem) {
       case SortBy.newest:

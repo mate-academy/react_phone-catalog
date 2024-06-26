@@ -43,8 +43,8 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   const filteredList = (
     devices: Products[],
-    devicesPerPage: string = '4',
     currentPage: number,
+    devicesPerPage = '4',
   ) => {
     const copyDevices = [...devices];
 
@@ -53,11 +53,12 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     } else {
       const entIndex = +devicesPerPage * currentPage;
       const startIndex = entIndex - +devicesPerPage;
+
       return copyDevices.slice(startIndex, entIndex);
     }
   };
 
-  const resultFilteredDev = filteredList(sortedGadgets, itemsPerPage, +page);
+  const resultFilteredDev = filteredList(sortedGadgets, +page, itemsPerPage);
 
   useEffect(() => {
     getGadgets('/products.json').then(response => setProducts(response));

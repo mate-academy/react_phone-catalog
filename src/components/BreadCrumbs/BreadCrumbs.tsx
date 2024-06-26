@@ -16,9 +16,5 @@ export const BreadCrumbs = () => {
     );
   });
 
-  return (
-    <div className={style.breadCrumbs}>
-      {crumbs}
-    </div>
-  );
+  return <div className={style.breadCrumbs}>{crumbs}</div>;
 };

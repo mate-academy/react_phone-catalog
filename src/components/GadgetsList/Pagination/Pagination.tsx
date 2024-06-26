@@ -20,13 +20,9 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
   const paginationQuantity = Math.ceil(
     gadgets.gadgets.length / Number(perPage),
   );
-
   const pages = Array.from({ length: paginationQuantity }, (_, i) => i + 1);
-
   const allPages = pages.length !== 0 ? pages : ['1'];
 
-  console.log(pages);
-  console.log(allPages.length);
   return (
     <div className={style.pagination}>
       <SearchLink
