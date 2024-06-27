@@ -55,6 +55,10 @@
         border: 1px solid #C4C4C4;
         object-position: center;
         object-fit: contain;
+
+        &:hover {
+          scale: 110%;
+        }
       }
     }
   }

@@ -1,13 +1,11 @@
 .slider {
   overflow: hidden;
   width: 320px;
-  margin-bottom: 56px;
-  margin: 0 auto;
-
+  margin: 0 auto 56px;
 
   &__title {
     color: #313237;
-    font-family: 'Montserrat', sans-serif;
+    font-family: Montserrat, sans-serif;
     font-weight: 800;
     font-size: 32px;
 
