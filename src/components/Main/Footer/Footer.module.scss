@@ -43,6 +43,7 @@
 
     &:hover {
       @extend %transitionPage;
+      color: var(--text-color);
     }
   }
 

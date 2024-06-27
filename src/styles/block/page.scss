@@ -39,6 +39,7 @@
   --paginationNumberBackColor: #fff;
   --paginationTextColorActive: #fff;
   --paginationNumberBackColorActive: #313237;
+  --breadCrubsLastNonActiveItem: #89939A;
   // touch-action: none;
 }
 
@@ -72,6 +73,7 @@
   --paginationNumberBackColor: #161827;
   --paginationTextColorActive: #F1F2F9;
   --paginationNumberBackColorActive: #905BFF;
+  --breadCrubsLastNonActiveItem: #75767F;
   color: $text-color;
   background-color: $background-color;
 }

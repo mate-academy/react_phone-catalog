@@ -5,6 +5,7 @@ import { LogoFavorites } from '../Icons/IconFavorites';
 import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
 import { Products } from '../../types/ContextType/Products';
+import { Link } from 'react-router-dom';
 
 type Props = {
   gadgets: Products[];
@@ -21,16 +22,25 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
       <ul className={style.cards__list} draggable={false}>
         {gadgets.map(product => (
           <li className={style.cards__container} key={product.id}>
-            <a href="#" className={style.cards__cardLink} draggable={false}>
+            <Link
+              to={`${product.itemId}`}
+              className={style.cards__cardLink}
+              draggable={false}
+            >
               <img
                 src={product.image}
                 alt={product.name}
                 className={style.cards__cardImg}
                 draggable={false}
               />
-            </a>
+            </Link>
             <div className={style.cards__cardContent}>
-              <h2 className={style.cards__cardName}>{product.name}</h2>
+              <Link
+                to={`${product.itemId}`}
+                className={style.cards__cardName}
+              >
+                {product.name}
+              </Link>
               <div className={style.cards__price}>
                 <p className={style.cards__discountPrice}>
                   &#36;{product.price}

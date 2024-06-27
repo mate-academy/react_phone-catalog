@@ -1,10 +1,11 @@
-import { MouseEvent, useEffect, useRef } from 'react';
+import { MouseEvent, useContext, useEffect, useRef } from 'react';
 import style from './Dropdown.module.scss';
 import classNames from 'classnames';
 import { IconUp } from '../../Icons/IconUp';
 import { IconDown } from '../../Icons/IconDown';
 import { useSearchParams } from 'react-router-dom';
 import { useModal } from '../../../utils/useModals';
+import { LanguageContext } from '../../../store/LanguageProvider';
 
 interface DropdownProps {
   listItems: string[];
@@ -21,6 +22,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
   keySearchParams,
   className = '',
 }) => {
+  const { t } = useContext(LanguageContext);
   const { isOpen, close, toggle } = useModal(false);
 
   const dropdownRef = useRef<HTMLDivElement>(null);
@@ -65,7 +67,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
           [style.dropdown__open]: isOpen,
         })}
       >
-        {currentItem}
+        {t(currentItem)}
         <span className={style.dropdown____toggleIcon}>
           {isOpen ? (
             <IconUp className={style.dropdown____toggleIcon} />
@@ -88,7 +90,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
             onClick={e => handleClick(e)}
             key={item}
           >
-            {item}
+            {t(item.toLowerCase())}
           </li>
         ))}
       </ul>

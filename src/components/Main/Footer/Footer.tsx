@@ -29,7 +29,7 @@ export const Footer = () => {
           {footerNavList.map(item => (
             <li className={style.footer__navItem} key={item}>
               <Link to="#" className={style.footer__navLink}>
-                {item}
+                {t(item)}
               </Link>
             </li>
           ))}

@@ -10,12 +10,14 @@ import { SortBy } from '../../enums/SortBy';
 import { Pagination } from './Pagination/Pagination';
 import { Dropdown } from './Dropdown/Dropdown';
 import { ItemsList } from '../../enums/ItemsPerPage';
+import { LanguageContext } from '../../store/LanguageProvider';
 
 type Props = {
   title: string;
 };
 
 export const GadgetsList: React.FC<Props> = ({ title }) => {
+  const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
   const [searchParams] = useSearchParams();
   const { gadgets, resultFilteredDev } = useContext(ProductsContext);
@@ -39,13 +41,13 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
       <BreadCrumbs />
       <h1 className={style.gadgets__title}>{title}</h1>
       <p className={style.gadgets__itemsQuantity}>
-        {gadgets.gadgetsLen} models
+        {gadgets.gadgetsLen} {t('models')}
       </p>
 
       <div className={style.gadgets__selectors}>
         <Dropdown
           listItems={listSortedBy}
-          titleDropdown={'Sort by'}
+          titleDropdown={t('sortBy')}
           currentItem={sortBy}
           keySearchParams={'sort'}
           className={style.gadgets__widthSortBy}
@@ -53,7 +55,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
 
         <Dropdown
           listItems={listItemsPerPage}
-          titleDropdown={'Items on page'}
+          titleDropdown={t('itemsPerPage')}
           currentItem={itemsOnPage}
           keySearchParams={'perPage'}
           className={style.gadgets__widthItemsOnPage}

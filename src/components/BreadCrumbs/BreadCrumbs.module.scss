@@ -26,7 +26,7 @@
   }
 
   & .crumb a {
-    color: $text-nav-color;
+    color: $text-color;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;
@@ -35,5 +35,6 @@
 }
 
 .crumb:last-child {
+  color: #fbdb94;
   pointer-events: none;
 }

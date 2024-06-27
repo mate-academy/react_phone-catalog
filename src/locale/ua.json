@@ -17,6 +17,11 @@
     "rights": "Права",
     "backToTop": "Повернутися до початку",
     "models": "моделі",
-    "gitHub": "Github"
+    "gitHub": "Github",
+    "sortBy": "Сортувати за",
+    "itemsPerPage": "Кількість на сторінці",
+    "newest": "Новизною",
+    "alphabetically": "Алфавітом",
+    "cheapest": "Найдешевше"
   }
 }

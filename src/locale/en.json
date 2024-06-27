@@ -17,6 +17,11 @@
     "rights": "Rights",
     "backToTop": "Back to top",
     "models": "models",
-    "gitHub": "Github"
+    "gitHub": "Github",
+    "sortBy": "Sort by",
+    "itemsPerPage": "Items on page",
+    "newest": "Newest",
+    "alphabetically": "Alphabetically",
+    "cheapest": "Cheapest"
   }
 }
