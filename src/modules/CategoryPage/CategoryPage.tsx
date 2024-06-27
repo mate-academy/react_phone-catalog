@@ -178,7 +178,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
 
         {dataLoaded && !error && products.length === 0 && (
           <div className="category-page__loader secondary-title">
-            There are no {category} yet
+            There are no {category}
           </div>
         )}
       </div>
