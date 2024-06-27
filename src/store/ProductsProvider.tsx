@@ -32,7 +32,7 @@ type Props = {
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Products[]>([]);
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
 
   const gadgets = filterGadgets(pathname, products);
@@ -40,6 +40,12 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const page = searchParams.get('page') || '1';
   const itemsPerPage = searchParams.get('itemsOnPage') || '4';
   const sortedGadgets = sortedBy(sortBy, gadgets.gadgets);
+
+  useEffect(() => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', '1');
+    setSearchParams(params);
+  }, [itemsPerPage]);
 
   const filteredList = (
     devices: Products[],

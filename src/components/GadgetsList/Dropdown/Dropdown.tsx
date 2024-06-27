@@ -53,7 +53,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
     return () => {
       document.removeEventListener('click', handler);
     };
-  }, [dropdownRef]);
+  }, [dropdownRef, close]);
 
   return (
     <div ref={dropdownRef} className={style.dropdown}>
