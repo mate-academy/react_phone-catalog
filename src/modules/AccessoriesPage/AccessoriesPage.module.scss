@@ -1,0 +1,189 @@
+@import '../../main.scss';
+
+.container {
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: auto;
+  padding: 24px 16px 0 16px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 24px 32px;
+  }
+}
+
+.top {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}
+
+.iconHome {
+  width: 16px;
+  height: 16px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin-bottom: 8px;
+
+  @include onTablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.subtitle {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #89939A;
+  margin-bottom: 32px;
+
+  @include onTablet {
+    margin-bottom: 40px;
+  }
+}
+
+.selectContainer {
+  @include gridPage;
+  margin-bottom: 24px;
+}
+
+.field {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 4;
+  }
+}
+
+.fieldSecond {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  grid-column: span 2;
+
+  @include onTablet {
+    grid-column: span 3;
+  }
+}
+
+.select {
+  height: 40px;
+  border: 1px solid #E2E6E9;
+  padding: 10px;
+}
+
+.label {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.optionName {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+}
+
+.list {
+  @include gridPage;
+  margin-bottom: 24px;
+}
+
+.listItem {
+  grid-column: span 4;
+
+  @include onTablet {
+    grid-column: span 6;
+  }
+
+  @include onBigTablet {
+    grid-column: span 4;
+  }
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sliderButton {
+  margin-bottom: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid #E2E6E9;
+  background-color: white;
+  color: #313237;
+  cursor: pointer;
+}
+
+.buttonActive {
+  width: 32px;
+  height: 32px;
+  background-color: #373131;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+
+.buttonIsActive {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #E2E6E9;
+}
+
+.middleButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}

@@ -1,4 +1,6 @@
-import styles from './PhoneCard.module.scss';
+import { Link } from 'react-router-dom';
+import styles from './ProductCard.module.scss';
+import { Product } from '../../types/Product';
 
 type Props = {
   img: string;
@@ -8,9 +10,10 @@ type Props = {
   capacity: string;
   ram: string;
   secondPrice: number;
+  product: Product;
 };
 
-export const PhoneCard = ({
+export const ProductCard = ({
   img,
   name,
   price,
@@ -18,11 +21,16 @@ export const PhoneCard = ({
   capacity,
   ram,
   secondPrice,
+  product,
 }: Props) => {
   return (
     <div className={styles.container}>
-      <img src={`${img}`} alt="img" className={styles.img} />
-      <h3 className={styles.name}>{name}</h3>
+      <Link to={`/${product.category}/${product.itemId}`}>
+        <img src={`${img}`} alt="img" className={styles.img} />
+      </Link>
+      <Link to={`/${product.category}/${product.itemId}`}>
+        <h3 className={styles.name}>{name}</h3>
+      </Link>
       <div className={styles.allPrice}>
         <h3 className={styles.price}>{`$${price}`}</h3>
         <h3 className={styles.secondPrice}>{`$${secondPrice}`}</h3>
@@ -44,10 +52,14 @@ export const PhoneCard = ({
       </section>
 
       <div className={styles.buttonConteiner}>
+        {/* <Link to="/card"> */}
         <button className={styles.add}>Add to cart</button>
+        {/* </Link> */}
+        {/* <Link to="favorites"> */}
         <button className={styles.heart}>
           <img src="img/homePage/heart.svg" alt="heart" />
         </button>
+        {/* </Link> */}
       </div>
     </div>
   );

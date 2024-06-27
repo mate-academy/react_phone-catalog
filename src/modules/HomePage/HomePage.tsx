@@ -1,6 +1,5 @@
 import { BrandNewModel } from '../../components/BrandNewModels';
 import { Category } from '../../components/Category';
-import { Footer } from '../../components/Footer';
 import { HotPrices } from '../../components/HotPrices';
 import { PictureSlider } from '../../components/PictureSlider';
 import styles from './HomePage.module.scss';
@@ -13,7 +12,6 @@ export const HomePage = () => {
       <BrandNewModel />
       <Category />
       <HotPrices />
-      <Footer />
     </div>
   );
 };

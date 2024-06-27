@@ -27,6 +27,8 @@
   max-height: 196px;
   object-fit: contain;
   margin-bottom: 24px;
+  display: block;
+  justify-content: center;
 
   @include hover(transform, scale(1.05));
 
@@ -47,6 +49,7 @@
   text-align: left;
   margin-bottom: 8px;
   color: #313237;
+  height: 42px;
 }
 
 .allPrice {
@@ -161,6 +164,7 @@
   font-weight: 700;
   line-height: 21px;
   text-align: center;
+  cursor: pointer;
 
 
   @include onTablet {
@@ -177,4 +181,5 @@
   height: 40px;
   background-color: #fff;
   border: 1px solid #B4BDC3;
+  cursor: pointer;
 }

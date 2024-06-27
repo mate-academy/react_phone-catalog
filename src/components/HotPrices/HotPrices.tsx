@@ -1,7 +1,7 @@
 import { useContext, useState } from 'react';
 import styles from './HotPrices.module.scss';
 import { StateContext } from '../../Store';
-import { PhoneCard } from '../PhoneCard';
+import { ProductCard } from '../ProductCard';
 import { useWindowWidth } from '@react-hook/window-size';
 
 export const HotPrices = () => {
@@ -78,7 +78,7 @@ export const HotPrices = () => {
           style={{ left: `-${imgWidth * curretIndex}px` }}
         >
           {phones.map(product => (
-            <PhoneCard
+            <ProductCard
               key={product.id}
               img={product.image}
               name={product.name}
@@ -87,6 +87,7 @@ export const HotPrices = () => {
               screen={product.screen}
               capacity={product.capacity}
               ram={product.ram}
+              product={product}
             />
           ))}
         </div>

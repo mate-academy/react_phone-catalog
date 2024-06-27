@@ -8,12 +8,14 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   padding-bottom: 56px;
 
   @include onTablet {
+    padding: 0 24px 56px 24px;
     display: flex;
   }
 
   @include onDesktop {
+  padding: 0 32px 80px 32px;
     justify-content: center;
-    padding-bottom: 80px;
+    // padding-bottom: 80px;
   }
 }
 
@@ -79,6 +81,8 @@ $paddingFromSliderToButtonOnDesctop: 16px;
 }
 
 .button {
+  background-color: white;
+  border: 1px solid #E2E6E9;
   display: none;
 
   @include onTablet {
@@ -102,7 +106,3 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   border: none;
   background-color: white;
 }
-
-// .isActive {
-//   background-color: #313237;
-// }

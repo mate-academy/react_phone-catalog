@@ -6,6 +6,14 @@
   margin: 0 auto;
   height: auto;
   padding: 24px 16px 0 16px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 24px 32px;
+  }
 }
 
 .top {
@@ -94,6 +102,7 @@
 .select {
   height: 40px;
   border: 1px solid #E2E6E9;
+  padding: 10px;
 }
 
 .label {
@@ -154,6 +163,7 @@
   border: 1px solid #E2E6E9;
   background-color: white;
   color: #313237;
+  cursor: pointer;
 }
 
 .buttonActive {
@@ -162,14 +172,18 @@
   background-color: #373131;
   border: none;
   color: #fff;
+  cursor: pointer;
+}
+
+.buttonIsActive {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border: 1px solid #E2E6E9;
 }
 
 .middleButton {
   display: flex;
   align-items: center;
   gap: 8px;
-}
-
-.border {
-  border-bottom: 1px solid #E2E6E9;
 }

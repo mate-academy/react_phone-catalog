@@ -1,83 +1,66 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import styles from './PhonePage.module.scss';
 import { StateContext } from '../../Store';
-import { Footer } from '../../components/Footer';
-import { Link } from 'react-router-dom';
-import { PhoneCard } from '../../components/PhoneCard';
+import { Link, useSearchParams } from 'react-router-dom';
+import { ProductCard } from '../../components/ProductCard';
 import classNames from 'classnames';
 
 export const PhonePage = () => {
   const state = useContext(StateContext);
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = new URLSearchParams(searchParams);
   const { products } = state;
-  const [query, setQuery] = useState('');
-  const [quantity, setQuantity] = useState(4);
-  const [currentPage, setCurrentPage] = useState(0);
+  const pageFromSearchParam = searchParams.get('page') || '';
+  const quantityFromSearchParam = searchParams.get('quantity') || '';
+  const queryFromSearchParam = searchParams.get('sortBy') || '';
+  const currentPage = pageFromSearchParam ? +pageFromSearchParam : 0;
+  const quantity = quantityFromSearchParam ? +quantityFromSearchParam : 4;
+  const query = queryFromSearchParam ? queryFromSearchParam : '';
 
   const currentIndex = currentPage * quantity;
-  // const [currentIndex, setCurrentIndex] = useState(0);
 
   const phones = products
     .filter(product => product.category === 'phones')
-    .sort((a, b) => b.fullPrice - a.fullPrice);
+    .sort((a, b) => b.year - a.year);
 
   let sortingPhones = [...phones];
 
   const handleSelectedSorting = (
     event: React.ChangeEvent<HTMLSelectElement>,
   ) => {
-    setQuery(event.target.value);
+    const value = event.target.value;
+
+    params.set('sortBy', value);
+    setSearchParams(params);
+
+    params.set('page', '0');
+    setSearchParams(params);
   };
 
   if (query === 'Newest') {
-    sortingPhones = sortingPhones.filter(phone => phone.year >= 2022);
+    sortingPhones = sortingPhones.sort((a, b) => b.year - a.year);
   }
 
   if (query === 'Cheapest') {
     sortingPhones = sortingPhones.sort((a, b) => a.fullPrice - b.fullPrice);
   }
 
-  if (query === 'Iphone 14') {
-    sortingPhones = sortingPhones.filter(phone =>
-      phone.name.includes('iPhone 14'),
-    );
-  }
-
-  if (query === 'Iphone 13') {
-    sortingPhones = sortingPhones.filter(phone =>
-      phone.name.includes('iPhone 13'),
-    );
-  }
-
-  if (query === 'Iphone 12') {
-    sortingPhones = sortingPhones.filter(phone =>
-      phone.name.includes('iPhone 12'),
-    );
-  }
-
-  if (query === 'Iphone 11') {
-    sortingPhones = sortingPhones.filter(phone =>
-      phone.name.includes('iPhone 11'),
-    );
+  if (query === 'Alphabetically') {
+    sortingPhones = sortingPhones.sort((a, b) => a.name.localeCompare(b.name));
   }
 
   const pagesCount = Math.ceil(phones.length / quantity);
 
-  console.log(
-    '=',
-    phones.length,
-    quantity,
-    pagesCount,
-    'currentIndex=',
-    currentIndex,
-    'currentPage=',
-    currentPage,
-  );
-
   sortingPhones = sortingPhones.slice(currentIndex, currentIndex + quantity);
 
   const handleChangeQuatity = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setQuantity(+event.target.value);
-    setCurrentPage(0);
+    const value = event.target.value;
+
+    params.set('quantity', value);
+    setSearchParams(params);
+
+    params.set('page', '0');
+    setSearchParams(params);
   };
 
   const handleNext = () => {
@@ -85,7 +68,8 @@ export const PhonePage = () => {
       return;
     }
 
-    setCurrentPage(currentPage + 1);
+    params.set('page', `${currentPage + 1}`);
+    setSearchParams(params);
   };
 
   const handlePrev = () => {
@@ -93,7 +77,8 @@ export const PhonePage = () => {
       return;
     }
 
-    setCurrentPage(currentPage - 1);
+    params.set('page', `${currentPage - 1}`);
+    setSearchParams(params);
   };
 
   const getButtonActiveClass = (page: number) => {
@@ -140,17 +125,8 @@ export const PhonePage = () => {
               <option value="Cheapest" className={styles.optionName}>
                 Cheapest
               </option>
-              <option value="Iphone 14" className={styles.optionName}>
-                Iphone 14
-              </option>
-              <option value="Iphone 13" className={styles.optionName}>
-                Iphone 13
-              </option>
-              <option value="Iphone 12" className={styles.optionName}>
-                Iphone 12
-              </option>
-              <option value="Iphone 11" className={styles.optionName}>
-                Iphone 11
+              <option value="Alphabetically" className={styles.optionName}>
+                Alphabetically
               </option>
             </select>
           </div>
@@ -181,7 +157,7 @@ export const PhonePage = () => {
           {sortingPhones.map(phone => (
             <li key={phone.id} className={styles.listItem}>
               <div className={styles.card}>
-                <PhoneCard
+                <ProductCard
                   key={phone.id}
                   img={phone.image}
                   name={phone.name}
@@ -190,6 +166,7 @@ export const PhonePage = () => {
                   capacity={phone.capacity}
                   ram={phone.ram}
                   secondPrice={phone.price}
+                  product={phone}
                 />
               </div>
             </li>
@@ -201,9 +178,11 @@ export const PhonePage = () => {
               <img src="img/arrowLeftLight.svg" alt="Previous" />
             </button>
           ) : (
-            <button className={styles.buttonActive} onClick={handlePrev}>
-              <img src="img/ArrowLeft.svg" alt="Previous" />
-            </button>
+            <Link to={`?page=${currentPage - 1}`}>
+              <button className={styles.buttonIsActive} onClick={handlePrev}>
+                <img src="img/ArrowLeft.svg" alt="Previous" />
+              </button>
+            </Link>
           )}
           <div className={styles.middleButton}>
             {[...Array(4)].map((_, idx) => {
@@ -214,13 +193,15 @@ export const PhonePage = () => {
               }
 
               return (
-                <button
-                  key={buttonNum}
-                  className={getButtonActiveClass(buttonNum)}
-                  onClick={() => setCurrentPage(buttonNum)}
-                >
-                  {1 + buttonNum}
-                </button>
+                // eslint-disable-next-line react/jsx-key
+                <Link to={`?page=${buttonNum}`}>
+                  <button
+                    key={buttonNum}
+                    className={getButtonActiveClass(buttonNum)}
+                  >
+                    {1 + buttonNum}
+                  </button>
+                </Link>
               );
             })}
           </div>
@@ -229,16 +210,13 @@ export const PhonePage = () => {
               <img src="img/arrowRightLight.svg" alt="Next" />
             </button>
           ) : (
-            <button className={styles.buttonActive} onClick={handleNext}>
-              <img src="img/ArrowRight.svg" alt="Next" />
-            </button>
+            <Link to={`?page=${currentPage + 1}`}>
+              <button className={styles.buttonIsActive} onClick={handleNext}>
+                <img src="img/ArrowRight.svg" alt="Next" />
+              </button>
+            </Link>
           )}
-          {/* <button className={styles.button}>
-            <img src="img/ArrowRight.svg" alt="previous" />
-          </button> */}
         </section>
-        <div className={styles.border}></div>
-        <Footer />
       </div>
     </>
   );

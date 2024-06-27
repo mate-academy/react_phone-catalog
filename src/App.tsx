@@ -4,6 +4,7 @@ import { Header } from './components/Header/Header';
 import { useContext, useEffect } from 'react';
 import { getProducts } from './api';
 import { DispatchContext } from './Store';
+import { Footer } from './components/Footer';
 
 export const App = () => {
   const dispatch = useContext(DispatchContext);
@@ -21,6 +22,7 @@ export const App = () => {
     <div className="App">
       <Header />
       <Outlet />
+      <Footer />
     </div>
   );
 };

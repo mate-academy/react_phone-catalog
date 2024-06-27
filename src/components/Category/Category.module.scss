@@ -4,11 +4,11 @@
   padding: 0 16px 56px 16px;
 
   @include onTablet {
-    padding-bottom: 64px;
+    padding: 0 24px 64px 24px;
   }
 
   @include onDesktop {
-    padding-bottom: 80px;
+    padding: 0 32px 80px 32px;
   }
 }
 

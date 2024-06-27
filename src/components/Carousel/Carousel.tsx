@@ -1,11 +1,11 @@
-import { useContext, useState } from 'react';
-import styles from './BrandNewModels.module.scss';
-
+import styles from './Carousel.module.scss';
 import { StateContext } from '../../Store';
 import { useWindowWidth } from '@react-hook/window-size';
 import { ProductCard } from '../ProductCard';
+import { useContext, useState } from 'react';
 
-export const BrandNewModel = () => {
+export const Carousel = (params: { category: string }) => {
+  const { category } = params;
   const state = useContext(StateContext);
   const { products } = state;
   const [curretIndex, setCurrentIndex] = useState(0);
@@ -14,13 +14,27 @@ export const BrandNewModel = () => {
   const isTablet = screenWidth >= 640 && screenWidth < 1200;
   const isDesctop = screenWidth >= 1200;
 
-  const phones = products
-    .filter(product => product.category === 'phones')
-    .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
+  const selectedProducts = [...products];
+
+  if (category === 'phones') {
+    selectedProducts.filter(item => item.category === 'phones');
+  }
+
+  if (category === 'tablets') {
+    selectedProducts.filter(item => item.category === 'tablets');
+  }
+
+  if (category === 'accessories') {
+    selectedProducts.filter(item => item.category === 'accessories');
+  }
+
+  // const phones = products
+  //   .filter(product => product.category === 'phones')
+  //   .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
 
   const handleNextPhone = () => {
     setCurrentIndex(prevIndex =>
-      prevIndex === phones.length - 1 ? prevIndex : prevIndex + 1,
+      prevIndex === selectedProducts.length - 1 ? prevIndex : prevIndex + 1,
     );
   };
 
@@ -41,7 +55,7 @@ export const BrandNewModel = () => {
   return (
     <div className={styles.container}>
       <div className={styles.titleBrand}>
-        <h2 className={styles.title}>Brand new models</h2>
+        <h2 className={styles.title}>You may also like</h2>
         <div className={styles.titleButton}>
           {curretIndex === 0 ? (
             <button className={styles.buttonArrow} onClick={handlePrevPhone}>
@@ -55,7 +69,7 @@ export const BrandNewModel = () => {
               <img src="img/ArrowLeft.svg" alt="Previous" />
             </button>
           )}
-          {curretIndex === phones.length - 1 ? (
+          {curretIndex === selectedProducts.length - 1 ? (
             <button className={styles.buttonArrow} onClick={handleNextPhone}>
               <img src="img/arrowRightLight.svg" alt="Next" />
             </button>
@@ -74,7 +88,7 @@ export const BrandNewModel = () => {
           className={styles.sliderContent}
           style={{ left: `-${imgWidth * curretIndex}px` }}
         >
-          {phones.map(product => (
+          {selectedProducts.map(product => (
             <ProductCard
               key={product.id}
               img={product.image}

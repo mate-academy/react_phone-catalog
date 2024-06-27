@@ -1,18 +1,13 @@
 import { useReducer, createContext } from 'react';
-import { Phone } from './types/Phone';
 import { Product } from './types/Product';
 
-export type Action =
-  | { type: 'setPhones'; payload: Phone[] }
-  | { type: 'setProducts'; payload: Product[] };
+export type Action = { type: 'setProducts'; payload: Product[] };
 
 export type State = {
-  phones: Phone[];
   products: Product[];
 };
 
 const initialState: State = {
-  phones: [],
   products: [],
 };
 
@@ -20,11 +15,6 @@ type InitialDispatch = (action: Action) => void;
 
 const reducer = (state: State, action: Action): State => {
   switch (action.type) {
-    case 'setPhones':
-      return {
-        ...state,
-        phones: action.payload,
-      };
     case 'setProducts':
       return {
         ...state,

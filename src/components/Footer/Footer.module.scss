@@ -11,10 +11,14 @@
   gap: 32px;
 
   @include onTablet {
-    padding: 32px 0;
+    padding: 32px 24px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+  }
+
+  @include onDesktop {
+    padding:  32px;
   }
 }
 

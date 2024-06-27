@@ -5,16 +5,18 @@
   margin: 0 auto;
 
   padding-top: 24px;
+  // padding: 24px 16px 0 16px;
   // padding-bottom: 56px;
 
   @include onTablet() {
     padding-top: 32px;
     // padding-bottom: 64px;
-    padding: 32px 24px 0 24px;
+    // padding: 32px 24px 0 24px;
   }
 
   @include onDesktop() {   
-    padding: 56px 32px 0 32px; 
+      padding-top: 56px;
+    // padding: 56px 32px 0 32px; 
   }
 }
 
@@ -24,10 +26,10 @@
 
   @include onTablet {
     @include h1-Tablet-title;
-    padding: 0 0 32px 0;
+    padding: 0 24px 32px 24px;
   }
 
   @include onDesktop {   
-    padding-bottom: 56px;
+    padding: 0 32px 32px 32px;
   }
 }

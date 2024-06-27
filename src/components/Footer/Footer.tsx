@@ -1,4 +1,4 @@
-import { Link, NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import styles from './Footer.module.scss';
 
 export const Footer = () => {
@@ -10,13 +10,13 @@ export const Footer = () => {
     <>
       <div className={styles.border}></div>
       <div className={styles.container}>
-        <NavLink to="./" className={styles.logo}>
+        <Link to="/">
           <img
             src="img/Logo_header_homePage.svg"
             alt="Logo"
             className={styles.img}
           />
-        </NavLink>
+        </Link>
         <nav className={styles.footerNav}>
           <ul className={styles.list}>
             <li>
