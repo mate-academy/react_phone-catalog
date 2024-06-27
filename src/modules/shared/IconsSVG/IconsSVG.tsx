@@ -212,3 +212,7 @@ export const IconShoppingCart = () => {
     </svg>
   );
 };
+
+export const IconFur = () => {
+  return <div className="fur" />;
+};

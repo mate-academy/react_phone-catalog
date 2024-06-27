@@ -1,3 +1,55 @@
 .icon-svg {
   display: flex;
 }
+
+.fur {
+  height: 100%;
+  width: 100%;
+
+  position: relative;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    height: 10px;
+    width: 10px;
+
+    top: 1px;
+    left: 1px;
+
+    border: solid 2px $border-color-default;
+    border-radius: 50%;
+
+    @include on-desctop {
+      height: 14px;
+      width: 14px;
+    }
+  }
+
+  &::after {
+    content: "";
+
+    position: absolute;
+
+    height: 2px;
+    width: 9.3px;
+
+    top: 11.1px;
+    left: 7.6px;
+    rotate: 45deg;
+
+    transform: translate(50%);
+
+    background-color: $border-color-default;
+    border-radius: 1px;
+
+    @include on-desctop {
+      width: 12px;
+
+      top: 14px;
+      left: 9px;
+    }
+  }
+}

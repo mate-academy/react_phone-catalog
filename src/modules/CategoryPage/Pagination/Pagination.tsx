@@ -51,7 +51,9 @@ export const Pagination: React.FC<Props> = React.memo(
     );
 
     const handleChangePage = (page: number) => {
-      onPageChange(page);
+      if (currentPage !== page) {
+        onPageChange(page);
+      }
     };
 
     return (

@@ -17,7 +17,9 @@
     height: 100%;
 
     display: flex;
-    gap: 16px;
+    gap: 15px;
+
+    position: relative;
 
     box-shadow: 0 1px 0 $border-color-light-gray;
 
@@ -31,7 +33,7 @@
 
     @include on-tablet {
       display: flex;
-      gap: 32px;
+      gap: 30px;
     }
 
     @include on-desctop {
@@ -64,6 +66,10 @@
   }
 
   &__navbar-icons {
+    height: 100%;
+
+    display: flex;
+
     position: relative;
     overflow: hidden;
   }
@@ -116,6 +122,42 @@
       top: 18px;
       right: 18px;
     }
+  }
+
+  &__search {
+    height: 100%;
+    margin-left: auto;
+
+    display: flex;
+    align-items: center;
+
+    direction: rtl;
+  }
+
+  &__switch-theme {
+    height: 20px;
+    width: 30px;
+
+    margin-block: auto;
+    padding: 5px;
+
+    border-radius: 20px;
+    background-color: $text-black-color;
+
+    cursor: pointer;
+
+    @include on-desctop {
+      height: 30px;
+      width: 50px;
+    }
+  }
+
+  &__switcher {
+    height: 100%;
+    width: 50%;
+
+    border-radius: 50%;
+    background-color: #fff;
   }
 
   &__navbar-menu {

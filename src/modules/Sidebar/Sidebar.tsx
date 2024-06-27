@@ -10,7 +10,7 @@ const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('sidebar__nav-item navigation-title', { active: isActive });
 
 const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
-  classNames('sidebar__added-to icon-container', {
+  classNames('sidebar__added-to icon-wrapper', {
     active: isActive,
   });
 

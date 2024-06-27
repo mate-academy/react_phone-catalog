@@ -59,6 +59,13 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
   };
 
   const removeFromFavoutites = () => {
+    if (favouritesList.length === 1) {
+      setFavouritesList([]);
+      localStorage.removeItem('favItem');
+
+      return;
+    }
+
     const updatedFavouritesList = favouritesList.filter(
       fav => fav.itemId !== favItem.itemId,
     );

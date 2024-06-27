@@ -18,7 +18,7 @@ type Props = {
 
 export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
   const [shoppingList, setShoppingList] = useLocalStorage<CartItem[]>(
-    'CartItem',
+    'cartItem',
     [],
   );
 

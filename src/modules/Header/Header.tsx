@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import React, { useContext } from 'react';
 import { SidebarContext } from '../../store/SidebarContext';
@@ -12,6 +12,7 @@ import {
 import { getLogo } from '../../services/getLogo';
 import { ShoppingCartContext } from '../../store/ShoppingCartContext';
 import { FavoutitesContext } from '../../store/FavouritesContext';
+import { SearchForm } from '../CategoryPage/SearchForm';
 
 const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   classNames('header__nav-link navigation-title', {
@@ -19,7 +20,7 @@ const getLinkClassCategory = ({ isActive }: { isActive: boolean }) =>
   });
 
 const getLinkClassCart = ({ isActive }: { isActive: boolean }) =>
-  classNames('icon-container header__navbar-added-to', {
+  classNames('icon-wrapper header__navbar-added-to', {
     active: isActive,
   });
 
@@ -27,6 +28,10 @@ export const Header: React.FC = React.memo(() => {
   const { isOpenSidebar, setIsOpenSidebar } = useContext(SidebarContext);
   const { shoppingList } = useContext(ShoppingCartContext);
   const { favouritesList } = useContext(FavoutitesContext);
+
+  const { pathname } = useLocation();
+  const category = pathname.slice(1);
+  const isProductPage = pathname.split('/')[2];
 
   return (
     <header className="header">
@@ -57,7 +62,15 @@ export const Header: React.FC = React.memo(() => {
           </NavLink>
         </div>
 
-        <div className="header__navbar-icons icons-wrapper">
+        <div className="header__search">
+          {!!category && !isProductPage && <SearchForm />}
+        </div>
+
+        <div className="header__switch-theme">
+          <div className="header__switcher" />
+        </div>
+
+        <div className="header__navbar-icons">
           <NavLink to="favourites" className={getLinkClassCart}>
             <IconFavourites />
             {favouritesList.length > 0 && (
@@ -76,7 +89,7 @@ export const Header: React.FC = React.memo(() => {
 
           <button
             type="button"
-            className="icon-container header__navbar-menu"
+            className="icon-wrapper header__navbar-menu"
             onClick={() => setIsOpenSidebar(true)}
           >
             <IconMenu />
@@ -85,7 +98,7 @@ export const Header: React.FC = React.memo(() => {
           <button
             type="button"
             className="header__navbar-close
-              icon-container icon-container--close"
+              icon-wrapper icon-wrapper--close"
             style={isOpenSidebar ? { right: 0 } : { right: '-49px' }}
             onClick={() => setIsOpenSidebar(false)}
           >

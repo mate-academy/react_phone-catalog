@@ -28,12 +28,12 @@ export const App = () => {
 
   const applyCheckout = () => {
     setShoppingList([]);
-    localStorage.removeItem('CartItem');
+    localStorage.removeItem('cartItem');
     setIsOpenModal(false);
   };
 
   return (
-    <div className="App" style={isOpenModal ? { overflow: 'hidden' } : {}}>
+    <div className="App">
       <Header />
 
       <div

@@ -16,6 +16,7 @@ import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { Pagination } from './Pagination';
 import { scrollToTop } from '../../services/scrollToTop';
 import { Option } from '../../types/Option';
+import { getSearchWith } from '../../services/getSearchWith';
 
 type Props = {
   title: string;
@@ -39,6 +40,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const perPage = searchParams.get('perPage') || '';
   const sort = searchParams.get('sort') || '';
   const currentPage = searchParams.get('page') || '';
+  const query = searchParams.get('query') || '';
 
   const perPageValue = getValue(
     perPage,
@@ -59,9 +61,9 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
     client
       .get<Product[]>(PRODUCT_URL)
       .then(data => {
-        const getProducts = data.filter(
-          product => product.category === category,
-        );
+        const getProducts = data
+          .filter(product => product.category === category)
+          .filter(product => product.name.toLowerCase().includes(query));
 
         const itemsPerPage = getItemsPerPage(
           perPage || optionsItemsPerPage[1].criteria,
@@ -83,36 +85,25 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         scrollToTop(false);
       })
       .catch(() => setError(true));
-  }, [currentPage, perPage, category, sort]);
+  }, [currentPage, perPage, category, sort, query]);
 
   function handlePerPageChange(value: string) {
-    const newParams = new URLSearchParams(searchParams);
+    const newPerPage = { perPage: value || null, page: null };
 
-    if (newParams.get('page')) {
-      newParams.delete('page');
-    }
-
-    newParams.set('perPage', value);
-    setSearchParams(newParams);
+    setSearchParams(getSearchWith(searchParams, newPerPage));
   }
 
   function handleSelectSortBy(value: string) {
-    const newParams = new URLSearchParams(searchParams);
+    const newSort = { sort: value || null, page: null };
 
-    if (newParams.get('page')) {
-      newParams.delete('page');
-    }
-
-    newParams.set('sort', value);
-    setSearchParams(newParams);
+    setSearchParams(getSearchWith(searchParams, newSort));
   }
 
   function handleSelectPage(value: number) {
     setDataLoaded(false);
-    const newParams = new URLSearchParams(searchParams);
+    const newPage = { page: value.toString() || null };
 
-    newParams.set('page', value.toString());
-    setSearchParams(newParams);
+    setSearchParams(getSearchWith(searchParams, newPage));
   }
 
   return (

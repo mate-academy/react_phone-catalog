@@ -9,6 +9,7 @@ type Props = {
 export const ImagePreview: React.FC<Props> = React.memo(({ device }) => {
   const [activeImg, setActiveImg] = useState(device.images[0]);
 
+  // #region
   // const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
   // const [touchEnd, setTouchEnd] = useState<{ x: number } | null>(null);
 
@@ -55,6 +56,7 @@ export const ImagePreview: React.FC<Props> = React.memo(({ device }) => {
   //   setTouchStart(null);
   //   setTouchEnd(null);
   // };
+  // #endregion this code will be used for change images by swiping
 
   return (
     <div className="image-preview">
