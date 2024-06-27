@@ -1,78 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { Product } from '../types/Product';
+import classNames from 'classnames';
 import { ProductGeneral } from '../types/ProductGeneral';
-
-export const productItem = {
-  getColor(color: string) {
-    return color.toLowerCase().replaceAll(' ', '').replaceAll('-', '');
-  },
-
-  getLink(namespaceId: string, capacity: string, color: string) {
-    const normalizedColor = this.getColor(color);
-
-    return `${namespaceId}-${capacity}-${normalizedColor}`.toLowerCase();
-  },
-
-  getTitle(productID = '') {
-    const title = [];
-
-    for (const el of productID.split('-')) {
-      if (el.includes('gb')) {
-        title.push(el.toUpperCase());
-        continue;
-      }
-
-      title.push(el[0].toUpperCase() + el.slice(1));
-    }
-
-    return title.join(' ');
-  },
-
-  getTechSpecs(product: Product) {
-    const {
-      screen,
-      resolution,
-      processor,
-      ram: RAM,
-      capacity,
-      camera,
-      zoom,
-      cell,
-    } = product;
-
-    return {
-      screen,
-      resolution,
-      processor,
-      ram: RAM,
-      capacity,
-      camera,
-      zoom,
-      cell,
-    };
-  },
-
-  updateSelectedProducts(
-    setter: React.Dispatch<React.SetStateAction<string[]>>,
-    productId: string,
-  ) {
-    setter(prevItems => {
-      const newItems = [...prevItems];
-      const isIncluded = prevItems.findIndex(item => item === productId);
-
-      return isIncluded >= 0
-        ? newItems.filter(item => item !== productId)
-        : [...newItems, productId];
-    });
-  },
-
-  isLiked(likedItems: string[], productId: string) {
-    return likedItems.findIndex(item => item === productId) >= 0;
-  },
-  isAdded(addedItems: string[], productId: string) {
-    return addedItems.findIndex(item => item === productId) >= 0;
-  },
-};
+import { ErrorText } from '../constants/errorText';
+import { dots } from '../constants/dots';
 
 export function getNumberOfItems(width: number) {
   if (width < 640) {
@@ -93,3 +23,50 @@ export function isProductGeneralType(obj: any): obj is ProductGeneral {
     typeof obj.priceRegular === undefined
   );
 }
+
+export const getButtonSecondaryClass = (darkTheme: boolean) =>
+  classNames(`button button--secondary`, {
+    'button--secondary-darkTheme': darkTheme,
+  });
+
+export const getButtonMainClass = (darkTheme: boolean) =>
+  classNames(`button button--main`, {
+    'button--main-darkTheme': darkTheme,
+  });
+
+export const getCatagoryNameANDError = (category: string) => {
+  switch (category) {
+    case 'tablets':
+      return { name: 'Tablets', errorText: ErrorText.noTablets };
+    case 'phones':
+      return { name: 'Mobile phones', errorText: ErrorText.noPhones };
+    default:
+    case 'accessories':
+      return { name: 'Accessories', errorText: ErrorText.noAccessories };
+  }
+};
+
+export const getButtonValue = (
+  value: string | number,
+  index: number,
+  visibleButtons: (string | number)[],
+  selectedPage: number,
+) => {
+  const previousValue = visibleButtons[index - 1];
+  const nextValue = visibleButtons[index + 1];
+
+  if (typeof value === 'number') {
+    return value;
+  }
+
+  switch (value) {
+    case dots.start:
+      return +previousValue + 1;
+
+    case dots.end:
+      return +nextValue - 1;
+
+    default:
+      return selectedPage;
+  }
+};

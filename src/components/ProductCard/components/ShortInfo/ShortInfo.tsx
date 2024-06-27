@@ -1,9 +1,9 @@
 import { useContext } from 'react';
 import { ProductContext } from '../../../../store/ProductContext';
 import { TechSpecs } from '../../../TechSpecs';
-import { Price } from '../Price';
 import styles from './ShortInfo.module.scss';
 import { ProductButtons } from '../../../ProductButtons';
+import { Price } from '../../../Price';
 
 type Props = {
   productId: string;
@@ -29,7 +29,9 @@ export const ShortInfo: React.FC<Props> = ({ productId, displayFullPrice }) => {
             RAM: product.ram,
           }}
         />
-        <ProductButtons productId={productId} />
+        <div className={styles.buttons}>
+          <ProductButtons productId={productId} />
+        </div>
       </div>
     )
   );

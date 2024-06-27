@@ -1,16 +1,17 @@
 import { useContext, useMemo } from 'react';
-import { productItem } from '../../utils/utils';
+import { getButtonMainClass, getButtonSecondaryClass } from '../../utils/utils';
 import { ProductContext } from '../../store/ProductContext';
 import classNames from 'classnames';
-import { Heart } from '../UIKit/Heart';
+import { Heart } from '../ProductCard/components/Heart';
 import styles from './ProductButtons.module.scss';
 import { useWidth } from '../../hooks/useWidth';
+import { productItem } from '../../utils/productItem';
 type Props = {
   productId: string;
 };
 
 export const ProductButtons: React.FC<Props> = ({ productId }) => {
-  const { likedItems, setLikedItems, addedItems, setAddedItems } =
+  const { darkTheme, likedItems, setLikedItems, addedItems, setAddedItems } =
     useContext(ProductContext);
   const width = useWidth();
 
@@ -40,18 +41,21 @@ export const ProductButtons: React.FC<Props> = ({ productId }) => {
   return (
     <div className={`${styles.productButtons}`}>
       <button
-        className={classNames('button button--black button--big', {
-          'button--black--selected': isAdded,
+        className={classNames(`${getButtonMainClass(darkTheme)} button--big`, {
+          'button--main--selected': isAdded && !darkTheme,
+          'button--main--selected-darkTheme': isAdded && darkTheme,
         })}
         onClick={handleAddClick}
       >
         {!isAdded ? 'Add to cart' : getButtonText}
       </button>
       <button
-        className={classNames('button button--medium', {
-          'button--like': !isLiked,
-          'button--like--selected': isLiked,
-        })}
+        className={classNames(
+          `button ${styles.likeButton} button--medium ${getButtonSecondaryClass(darkTheme)}`,
+          {
+            'button--secondary--selected': isLiked,
+          },
+        )}
         onClick={handleLikeClick}
       >
         <Heart isSelected={Boolean(isLiked)} />

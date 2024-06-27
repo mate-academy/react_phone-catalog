@@ -36,7 +36,7 @@ export const TechSpecs: React.FC<Props> = ({
             : detail[1];
 
           return (
-            <tr key={detailName} className={`${styles.techSpec}`}>
+            <tr key={detailName} className={styles.techSpec}>
               <th className={`${getClassName()} ${styles.techSpec__name}`}>
                 {detailName}
               </th>

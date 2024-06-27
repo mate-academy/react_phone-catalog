@@ -1,5 +1,4 @@
 import classNames from 'classnames';
-import { NavIcons } from './components/NavIcons';
 import { NavLink } from 'react-router-dom';
 import './Navigation.scss';
 
@@ -39,7 +38,6 @@ export const Navigation: React.FC<Props> = ({ className = '' }) => {
             </NavLink>
           </li>
         </ul>
-        <NavIcons className={className} />
       </nav>
     </>
   );

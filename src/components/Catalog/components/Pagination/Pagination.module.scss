@@ -1,0 +1,27 @@
+.wrapper {
+  width: 248px;
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+
+  & > * {
+    &:first-child {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.container {
+  display: flex;
+  gap: 8px;
+}
+
+
+
+.button {
+  flex-grow: 0;
+  flex-shrink: 0;
+  padding: 8px;
+
+  
+}

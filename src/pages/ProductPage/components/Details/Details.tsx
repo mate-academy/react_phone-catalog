@@ -1,5 +1,5 @@
 import { ProductButtons } from '../../../../components/ProductButtons';
-import { Price } from '../../../../components/ProductCard/components/Price';
+import { Price } from '../../../../components/Price';
 import { TechSpecs } from '../../../../components/TechSpecs';
 import { Product } from '../../../../types/Product';
 import { Capacity } from './components/Capacity';
@@ -16,13 +16,17 @@ export const Details: React.FC<Props> = ({ product }) => {
 
       <Capacity product={product} className="border--bottom" />
 
-      <Price
-        productId={product.id}
-        displayFullPrice={true}
-        parentBlock="productPage"
-      />
+      <div className="details__price">
+        <Price
+          productId={product.id}
+          displayFullPrice={true}
+          parentBlock="productPage"
+        />
+      </div>
 
-      <ProductButtons productId={product.id} />
+      <div className="details__buttons">
+        <ProductButtons productId={product.id} />
+      </div>
 
       <TechSpecs
         techSpecs={{

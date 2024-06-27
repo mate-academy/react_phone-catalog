@@ -1,8 +1,8 @@
 import { Link } from 'react-router-dom';
 import { Product } from '../../../../../../types/Product';
-import { productItem } from '../../../../../../utils/utils';
 import classNames from 'classnames';
 import './Capacity.scss';
+import { productItem } from '../../../../../../utils/productItem';
 
 type Props = {
   product: Product;
@@ -22,13 +22,12 @@ export const Capacity: React.FC<Props> = ({ product, className }) => {
           return (
             <Link
               to={link}
-              className={classNames('link capacity__item', {
-                'button ': capacity != currentCapacity,
-                'button button--black': capacity === currentCapacity,
+              className={classNames('link capacity__item border', {
+                capacity__item__selected: capacity === currentCapacity,
               })}
               key={currentCapacity}
             >
-              <p>{currentCapacity}</p>
+              {currentCapacity}
             </Link>
           );
         })}

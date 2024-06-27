@@ -9,7 +9,7 @@
     &::after {
       content: '';
       display: block;
-      background-color: $grey-primary;
+      background-color: var(--text-color);
       height: 3px;
       width: 100%;
       position: absolute;
@@ -17,10 +17,10 @@
 
       transition: transform 0.3s;
       transform: scale(0);
-
-
     }
 
+    @include hover(color, var(--text-color));
+    
     &:hover {
       &::after {
         transform: scale(1);
@@ -32,12 +32,12 @@
 .navlink {
   &--underline {
     position: relative;
-    color: $grey-primary;
+    color: var(--text-color);
 
     &::after {
       content: '';
       display: block;
-      background-color: $grey-primary;
+      background-color: var(--text-color);
       height: 3px;
       width: 100%;
       position: absolute;
@@ -45,6 +45,3 @@
     }
   }
 }
-
-
-

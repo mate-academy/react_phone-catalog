@@ -16,5 +16,12 @@
     box-sizing: border-box;
     height: 32px;
     width: 56px;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+
+    &__selected {
+      background-color: var(--text-color);
+      color: var(--bg-color);
+    }
   }
 }

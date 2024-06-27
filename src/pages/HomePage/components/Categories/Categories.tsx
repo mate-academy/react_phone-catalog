@@ -28,7 +28,9 @@ const CategoryCard: React.FC<Props> = ({ category }) => {
             className={`${styles.category__img} hover--scale`}
           />
         </div>
-        <p className="text--category-title link">{name}</p>
+        <p className={`text--category-title link ${styles.category__title}`}>
+          {name}
+        </p>
         <p className={`${styles.category__number} text--grey`}>
           {`${getProductNumber(id, products)} models`}
         </p>

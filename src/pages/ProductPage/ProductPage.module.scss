@@ -2,6 +2,7 @@
 
 .container {
   width: 100%;
+  padding-top: 24px;
 }
 
 .gridContainer {
@@ -69,7 +70,6 @@
 
 .sectionTitle {
   padding-bottom: 16px;
-  margin-bottom: 32px;
 
   @include on-tablet {
     font-weight: 800;
@@ -78,6 +78,18 @@
   @include on-tablet {
     font-size: 22px;
   }
+
+  &__techSpecs {
+    margin-bottom: 22px;
+
+    @include on-tablet {
+      margin-bottom: 17px;
+    }
+  }
+}
+
+.sectionSubTitle {
+  padding-block: 32px 16px;
 }
 
 .techSpecs {

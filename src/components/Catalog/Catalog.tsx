@@ -1,7 +1,7 @@
-import { useMemo } from 'react';
+import { useCallback, useMemo } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../ProductCard';
-import { Buttons } from './components/Buttons';
+import { Pagination } from './components/Pagination';
 import { getItemsPerPage } from '../../utils/getItemsPerPage';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import styles from './Catalog.module.scss';
@@ -10,15 +10,15 @@ type Props = {
   products: ProductGeneral[];
 };
 
-export const ProductsList: React.FC<Props> = ({ products }) => {
+export const Catalog: React.FC<Props> = ({ products }) => {
   const [searchParams] = useSearchParams();
-  const itemsPerPage = () => {
+  const itemsPerPage = useCallback(() => {
     if (searchParams.get('itemsPerPage') === 'All') {
       return products.length;
     }
 
     return +(searchParams.get('itemsPerPage') || products.length);
-  };
+  }, [products, searchParams]);
 
   const selectedPage = +(searchParams.get('page') || 1);
   const numberOfPages = Math.ceil(products.length / itemsPerPage());
@@ -40,7 +40,7 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       </div>
       {numberOfPages > 1 && (
         <div className={styles.bottom}>
-          <Buttons numberOfPages={numberOfPages} />
+          <Pagination numberOfPages={numberOfPages} />
         </div>
       )}
     </section>

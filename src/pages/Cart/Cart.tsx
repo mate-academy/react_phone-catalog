@@ -7,6 +7,7 @@ import styles from './Cart.module.scss';
 import { ErrorText } from '../../constants/errorText';
 import { Error } from '../../components/Error';
 import { ModalDialog } from './components/ModalDialog';
+import { getButtonMainClass } from '../../utils/utils';
 
 type ItemWithCount = { item: ProductGeneral; count: number };
 
@@ -15,6 +16,7 @@ export const Cart = () => {
     addedItems: addedItemsIds,
     setAddedItems,
     products,
+    darkTheme,
   } = useContext(ProductContext);
   const addedItems = useMemo(() => {
     return products
@@ -106,7 +108,7 @@ export const Cart = () => {
               <p className="text--grey">{`Total for ${itemsCount} items`}</p>
             </div>
             <button
-              className={`button button--black button--big ${styles.buttonMain}`}
+              className={`${getButtonMainClass(darkTheme)} button--big ${styles.buttonMain}`}
               onClick={() => {
                 setShowModal(true);
               }}

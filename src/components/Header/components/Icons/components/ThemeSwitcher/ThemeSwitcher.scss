@@ -1,0 +1,20 @@
+.themeSwitcher {
+  background-color: var(--text-color);
+  border-radius: 20px;
+  width: 35px;
+  padding: 5px;
+
+  &::after {
+    display: block;
+    background-color: var(--bg-color);
+    content: '';
+    width: 50%;
+    padding-bottom: 50%;
+    border-radius: 50%;
+    transition: transform 3s;
+  }
+}
+
+.darkTheme .themeSwitcher::after {
+  transform: translateX(100%);
+}

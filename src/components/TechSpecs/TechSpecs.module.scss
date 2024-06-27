@@ -2,21 +2,24 @@
 
 .container {
   width: 100%;
-  padding-block: 8px;
-
+  border-spacing:0 8px;
 }
 
 .techSpec {
-  line-height: 1em;
-  padding-top: 8px;
   font-weight: 600;
+  vertical-align: top;
 
   &__name {
-    color: $grey-secondary;
+    color: var(--grey-secondary);
+    white-space: nowrap;
     text-align: left;
   }
 
   &__value {
     text-align: right;
   }
+}
+
+th, tr {
+  padding: 0;
 }

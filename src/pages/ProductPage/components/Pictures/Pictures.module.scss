@@ -9,12 +9,9 @@
   @include on-tablet {
     flex-direction: row-reverse;
   }
-
-
 }
 
 .mainImg {
-  padding: 11px;
   margin-bottom: 16px;
 
   &__link {
@@ -23,7 +20,7 @@
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
-    
+
     @include on-tablet {
       background-position: top;
     }
@@ -48,12 +45,14 @@
 }
 
 .item {
-  height: 49px;
-  width: 49px;
-  padding: 3px;
+  height: 50px;
+  width: 50px;
+  padding: 8px;
   box-sizing: border-box;
   transition: transform 3s;
-  background-color: #fff;
+  background-color: var(--bg-color);
+  position: relative;
+  cursor: pointer;
 
   &:hover {
     box-shadow: 0 2px 15px 0 #0000001A;
@@ -61,11 +60,15 @@
     z-index: 2;
   }
 
+  &__noBorder {
+    padding-bottom: 0;
+  }
+
   &__active {
-    border: 1px solid $grey-primary;
+    border: 1px solid var(--text-color);
 
     &:hover {
-      border: 1px solid $grey-primary;
+      border: 1px solid var(--text-color);
     }
   }
 
@@ -86,4 +89,6 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
+
+
 }

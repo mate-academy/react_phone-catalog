@@ -1,4 +1,4 @@
-import { SortBy } from '../components/Dropdown';
+import { SortBy } from '../pages/ProductsPage/components/Dropdown';
 import { ProductGeneral } from '../types/ProductGeneral';
 
 export function getFilteredItems(

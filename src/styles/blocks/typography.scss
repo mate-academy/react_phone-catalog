@@ -1,11 +1,9 @@
-
-
 .text {
   &--category-title {
-    font-weight: 800;
+    font-weight: 600;
     font-size: 20px;
     letter-spacing: -0.01em;
-    color: $grey-primary;
+    color: inherit;
 
     @include on-desktop {
       font-weight: 600;
@@ -33,10 +31,6 @@
     @include on-tablet {
       font-size: 32px;
     }
-
-    @include on-desktop {
-      font-size: 48px;
-    }
   }
 
   &--bold {
@@ -46,14 +40,16 @@
     font-weight: 700;
   }
   &--grey {
-    color: $grey-secondary;
+    color: var(--grey-secondary);
   }
 
   &--small {
     font-size: 12px;
+    line-height: 1em;
   }
 
   &--regular {
     font-size: 14px;
+    line-height: 1em;
   }
 }

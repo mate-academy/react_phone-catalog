@@ -1,0 +1,46 @@
+@import '../../../../../../styles/utils/utils';
+
+.form {
+  position: relative;
+  border: none;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    width: 70%;
+  }
+
+  @include on-desktop {
+    width: 100%;
+  }
+}
+
+.search {
+  height: 100%;
+ width: 150px;
+  padding-left: calc(1.5em + 16px);
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  border: none;
+  font-size: inherit;
+  outline: none;
+  display: flex;
+  align-items: center;
+  appearance: auto;
+
+
+  &::-webkit-search-cancel-button{
+    -webkit-appearance: none;
+}
+
+  &__icon {
+    position: absolute;
+    left: 1em;
+  }
+
+  &__iconClose {
+    position: absolute;
+    cursor: pointer;
+    right: 1em;
+  }
+}

@@ -4,71 +4,93 @@
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
-
-  background-color: $white;
-  color: $grey-primary;
-  border: 1px solid $grey-icons;
-  & :first-child {
-    fill: $grey-primary;
-  }
-
-  @include hover(box-shadow, 0 2px 16px 0 $grey-hover);
-
-  &:disabled {
-    opacity: 0.5;
-    cursor: none;
-
-    @include hover(box-shadow, none);
-
-    & :first-child {
-      fill: $grey-icons;
-    }
-  }
+  color: var(--text-color);
 
   &--small {
     height: 32px;
     width: 32px;
-    padding: 8px;
   }
 
   &--medium {
     height: 40px;
     width: 40px;
-    padding: 12px;
   }
 
   &--big {
     width: 100%;
   }
 
-  &--black {
+  &--secondary {
+    border: 1px solid $grey-icons;
+    background-color: inherit;
+
+    @include hover(box-shadow, 0 2px 16px 0 $grey-elements);
+    @include hover(border-color, $grey-primary);
+
+    &:disabled {
+      cursor: none;
+      border: 1px solid var(--disabled-color);
+
+      @include hover(box-shadow, none);
+    }
+
+    &-darkTheme {
+      border: none;
+      background-color: $grey-button;
+      
+      @include hover(box-shadow, none);
+      @include hover(background-color, $grey-button-dark);
+
+      &:disabled {
+        cursor: none;
+        background-color: var(--bg-color);
+      }
+    }
+
+    &--selected {
+      flex-shrink: 0;
+      border-color: #e2e6e9;
+
+      & :first-child {
+        fill: #eb5757;
+        border: none;
+      }
+    }
+  }
+
+  &--main {
     background-color: $grey-primary;
-    font-family: Mont, sans-serif;
+    font-family: inherit;
     padding: 9px;
-    color: $white;
+    color: var(--bg-color);
     font-size: 14px;
     font-weight: 600;
     border: none;
 
     @include hover(box-shadow, 0 2px 16px 0 $green);
+    @include hover(border-color, $grey-primary);
+
+    &-darkTheme {
+      background-color: $violet-main;
+      color: var(--text-color);
+
+      @include hover(background-color, $violet-hover);
+      @include hover(box-shadow, none);
+    }
 
     &--selected {
       border: 1px solid $grey-elements;
-      background-color: $white;
+      background-color: var(--bg-color);
       color: $green;
       white-space: nowrap;
 
-      @include hover(box-shadow, 0 2px 16px 0 $grey-hover);
-    }
-  }
+      @include hover(box-shadow, 0 2px 16px 0 $grey-elements);
 
-  &--like {
-    @include hover(box-shadow, 0 2px 16px 0 $red);
-
-    &--selected {
-      & :first-child {
-        fill: #eb5757;
+      &-darkTheme {
+        background-color: $grey-button;
         border: none;
+
+        @include hover(box-shadow, none);
       }
     }
   }

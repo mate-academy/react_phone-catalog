@@ -9,6 +9,8 @@ type InitialContext = {
   setLikedItems: Dispatch<SetStateAction<string[]>>;
   addedItems: string[];
   setAddedItems: Dispatch<SetStateAction<string[]>>;
+  darkTheme: boolean;
+  setDarkTheme: Dispatch<SetStateAction<boolean>>;
 };
 
 const initialContext: InitialContext = {
@@ -17,6 +19,8 @@ const initialContext: InitialContext = {
   setLikedItems: () => {},
   addedItems: [],
   setAddedItems: () => {},
+  darkTheme: false,
+  setDarkTheme: () => {},
 };
 
 export const ProductContext =
@@ -40,6 +44,11 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
+  const [darkTheme, setDarkTheme] = useLocalStorage<boolean>(
+    'darkTheme',
+    false,
+  );
+
   useEffect(() => {
     getProducts().then(newProducts => {
       setProducts(() => newProducts);
@@ -53,8 +62,18 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       setLikedItems,
       addedItems,
       setAddedItems,
+      darkTheme,
+      setDarkTheme,
     };
-  }, [products, likedItems, setLikedItems, addedItems, setAddedItems]);
+  }, [
+    products,
+    likedItems,
+    setLikedItems,
+    addedItems,
+    setAddedItems,
+    darkTheme,
+    setDarkTheme,
+  ]);
 
   return (
     <ProductContext.Provider value={value}>{children}</ProductContext.Provider>

@@ -4,7 +4,7 @@ import { Loader } from '../../components/Loader';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import { ProductContext } from '../../store/ProductContext';
 import { Error } from '../../components/Error';
-import { ProductsList } from '../../components/Catalog';
+import { Catalog } from '../../components/Catalog';
 import styles from './Favourites.module.scss';
 import { ErrorText } from '../../constants/errorText';
 
@@ -22,7 +22,7 @@ export const Favourites = () => {
       );
 
       if (newProducts.length === 0) {
-        setError(ErrorText.noTablets);
+        setError(ErrorText.noFavourites);
       }
 
       setProducts(newProducts);
@@ -54,7 +54,7 @@ export const Favourites = () => {
                 >{`${products.length} models`}</p>
               </div>
               <div className={styles.catalog}>
-                <ProductsList products={products} />
+                <Catalog products={products} />
               </div>
             </>
           )}

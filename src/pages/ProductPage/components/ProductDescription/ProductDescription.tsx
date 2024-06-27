@@ -11,7 +11,9 @@ export const ProductDescription: React.FC<Props> = ({ description }) => {
       {description.map(info => {
         return (
           <div key={info.title}>
-            <p className={`${styles.title} text--semi-bold`}>{info.title}</p>
+            <p className={`${styles.sectionSubTitle} text--semi-bold`}>
+              {info.title}
+            </p>
             {info.text.map((text, index) => (
               <p key={index} className="text--grey">
                 {text}

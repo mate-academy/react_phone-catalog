@@ -8,28 +8,35 @@
   &__text {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 8px;
   }
 
   &__link {
-    --bg-color: #0000001A;
-    
+    padding: 1px;
+    border: 1px solid $grey-elements;
+
     border-radius: 50%;
 
-    @include hover(border, 1px solid $grey-icons);
+    @include hover(border-color, $grey-icons);
     @include hover(box-shadow, 0 2px 16px 0 var(--bgColor));
 
-    &--active {
-      border: 1px solid $grey-primary;
+    &__darkTheme {
+      border-color: $grey-button;
 
-      @include hover(border, 1px solid $grey-primary);
+      @include hover(border-color, $grey-icons-dark);
+    }
+
+    &--active {
+      border-color: var(--text-color);
+
+      @include hover(border-color, var(--text-color));
     }
   }
 
   &__item {
     height: 32px;
     width: 32px;
-    box-sizing: border-box;
-    border: 2px solid #fff;
+    margin: 2px;
     border-radius: 50%;
   }
 }

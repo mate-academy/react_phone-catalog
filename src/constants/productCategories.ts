@@ -3,7 +3,7 @@ import { Category } from '../types/Category';
 export const productCategories: Category[] = [
   {
     id: 'phones',
-    categoryName: 'Mobile Phones',
+    categoryName: 'Mobile phones',
     categoryImg: 'img/category-phones.png',
     color: 'rgba(109, 100, 116, 0.8)',
   },

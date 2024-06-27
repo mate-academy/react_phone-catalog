@@ -1,11 +1,12 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { ProductGeneral } from '../../types/ProductGeneral';
-import { Errow } from '../UIKit/Errow';
 import { ProductCard } from '../ProductCard';
 import { useWidth } from '../../hooks/useWidth';
 import { MobileSwiper } from '../MobileSwiper/MobileSwiper';
-import { getNumberOfItems } from '../../utils/utils';
+import { getButtonSecondaryClass, getNumberOfItems } from '../../utils/utils';
 import styles from './ProductSlider.module.scss';
+import classNames from 'classnames';
+import { ProductContext } from '../../store/ProductContext';
 
 type Props = {
   products: ProductGeneral[];
@@ -19,8 +20,10 @@ export const ProductSlider: React.FC<Props> = ({
   displayFullPrize,
 }) => {
   const [displayIndex, setDisplayIndex] = useState(0);
+  const { darkTheme } = useContext(ProductContext);
   const width = useWidth();
   const itemsPerPage = getNumberOfItems(width);
+  const buttonClass = `${getButtonSecondaryClass(darkTheme)} button--small`;
 
   const handleIncrease = (step: number) => {
     setDisplayIndex(prevIndex => {
@@ -58,22 +61,30 @@ export const ProductSlider: React.FC<Props> = ({
         <h2 className="text--section-title">{sectionTitle}</h2>
         <div className={styles.buttons}>
           <button
-            className={`${styles.button} button button--medium`}
+            className={`${styles.button} ${buttonClass}`}
             onClick={() => {
               handleDecrease(1);
             }}
             disabled={displayIndex <= 0}
           >
-            <Errow />
+            <div
+              className={classNames('icon icon--arrow', {
+                'icon--notActive': displayIndex <= 0,
+              })}
+            ></div>
           </button>
           <button
-            className="button button--medium"
+            className={buttonClass}
             onClick={() => {
               handleIncrease(1);
             }}
             disabled={displayIndex >= products.length - 1}
           >
-            <Errow />
+            <div
+              className={classNames('icon icon--arrow', {
+                'icon--notActive': displayIndex >= products.length - 1,
+              })}
+            ></div>
           </button>
         </div>
       </div>

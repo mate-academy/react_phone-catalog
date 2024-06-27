@@ -9,9 +9,8 @@
   align-items: left;
   gap: 32px;
   padding-block: 32px;
-  border-top: solid 1px $grey-hover;
-  background-color: $white;
-
+  border-top: solid 1px var(--border-color);
+  background-color: var(--bg-color);
 
   @include on-tablet {
     flex-direction: row;
@@ -46,9 +45,13 @@
   padding-block: 8px;
   align-items: center;
   text-decoration: none;
-  color: $grey-secondary;
+  color: var(--grey-secondary);
   font-size: 12px;
   font-weight: bold;
+
+  &__darkTheme {
+    color: var(--text-color)
+  }
 
   @include hover(color, $grey-primary);
 }
@@ -58,8 +61,9 @@
   align-items: center;
   justify-content: center;
   gap: 16px;
+  cursor: pointer;
 
-  &__errow {
+  &__arrow {
     transform: rotate(-90deg);
   }
 }

@@ -1,16 +1,17 @@
-import { useEffect, useMemo, useRef, useState } from 'react';
-import { ButtonWithErrow } from '../../../../components/UIKit/ButtonWithErrow';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import phoneSmall from '../../../../images/slider/phone.png';
 import phoneBig from '../../../../images/slider/phone-1.png';
 import tabletSmall from '../../../../images/slider/tablet.png';
 import tabletBig from '../../../../images/slider/tablet-1.png';
 import watchSmall from '../../../../images/slider/watch.png';
 import watchBig from '../../../../images/slider/watch-1.png';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useWidth } from '../../../../hooks/useWidth';
 import { MobileSwiper } from '../../../../components/MobileSwiper/MobileSwiper';
 import styles from './BannerSlider.module.scss';
 import classNames from 'classnames';
+import { getButtonSecondaryClass } from '../../../../utils/utils';
+import { ProductContext } from '../../../../store/ProductContext';
 
 export const bannerSmall = [
   {
@@ -49,11 +50,10 @@ export const bannerBig = [
 
 export const BannerSlider = () => {
   const [displayIndex, setDisplayIndex] = useState(0);
+  const { darkTheme } = useContext(ProductContext);
 
   const width = useWidth();
-  const buttonClass = classNames(`${styles.slider__button}`, {
-    button: width >= 640,
-  });
+  const buttonClass = `${styles.slider__button}  ${width >= 640 && getButtonSecondaryClass(darkTheme)}`;
   const displayedImg = useMemo(() => {
     if (width < 640) {
       return bannerSmall;
@@ -62,6 +62,7 @@ export const BannerSlider = () => {
     }
   }, [width]);
   const timerId = useRef(0);
+  const navigate = useNavigate();
 
   //#region handle increase and decrease
   const handleIncrease = () => {
@@ -111,7 +112,9 @@ export const BannerSlider = () => {
   return (
     <div className={styles.slider}>
       <div className={styles.slider__middle}>
-        <ButtonWithErrow className={buttonClass} onClick={handleDecrease} />
+        <button className={buttonClass} onClick={handleDecrease}>
+          <div className=" icon icon--arrow"></div>
+        </button>
 
         <div className={styles.slider__container}>
           <div className={styles.slider__wrapper}>
@@ -119,6 +122,7 @@ export const BannerSlider = () => {
               <div
                 className={styles.slider__img}
                 key={banner1.img}
+                onClick={() => navigate(`/${banner1.id}`)}
                 style={
                   {
                     transition: displayIndex === 0 ? '' : 'transform 3s',
@@ -128,7 +132,7 @@ export const BannerSlider = () => {
               >
                 <MobileSwiper onSwipe={onSwipe}>
                   <img
-                    className={`${styles.slider__img} ${styles.slider__img_link} hover--scale`}
+                    className={`${styles.slider__img} ${styles.slider__img_link}`}
                     src={banner1.img}
                     alt={banner1.name}
                   />
@@ -144,18 +148,19 @@ export const BannerSlider = () => {
             ))}
           </div>
         </div>
-        <ButtonWithErrow className={buttonClass} onClick={handleIncrease} />
+        <button className={buttonClass} onClick={handleIncrease}>
+          <div className="icon icon--arrow"></div>
+        </button>
       </div>
       <div className={styles.slider__bottom}>
         {displayedImg.map((_el, index) => {
           return (
             <div
               key={index}
-              className={styles.rectangular}
+              className={classNames(`${styles.rectangular} `, {
+                [styles.rectangular__selected]: index === displayIndex,
+              })}
               onClick={() => setDisplayIndex(index)}
-              style={{
-                backgroundColor: index === displayIndex ? '#313237' : '',
-              }}
             ></div>
           );
         })}

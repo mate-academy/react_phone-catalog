@@ -4,7 +4,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  
+
   @include section-gap;
 
   @include on-tablet {
@@ -15,30 +15,30 @@
   }
 
   &__middle {
+    height: 100vw;
+
     @include on-tablet {
       display: grid;
-      grid-template-columns: 30px 1fr 30px;
+      grid-template-columns: 32px 1fr 32px;
       justify-items: center;
       gap: 19px;
+      height: 30vw;
+    }
+
+    @include on-desktop {
+      height: 400px;
     }
   }
 
   &__container {
     grid-column: 2 / 3;
-    height: 100vw;
+    height: 100%;
     display: flex;
     overflow: hidden;
     white-space: nowrap;
 
     @include on-tablet {
-      height: 189px;
-      width: 490px;
       grid-column: 2 / 3;
-    }
-
-    @include on-desktop {
-      height: 400px;
-      width: 100%;
     }
 
     &:hover > * {
@@ -74,7 +74,7 @@
     &_small {
       display: none;
       position: absolute;
-      bottom: 15%;
+      bottom: 35%;
       left: 5%;
       font-size: 12px;
       padding: 10px 20px;
@@ -105,6 +105,7 @@
     padding: 0;
     padding-bottom: 50%;
     position: relative;
+    cursor: pointer;
 
     &--link {
       position: relative;
@@ -125,5 +126,10 @@
 .rectangular {
   height: 4px;
   width: 14px;
-  background-color: $grey-elements;
+  cursor: pointer;
+  background-color: var(--border-color);
+
+  &__selected {
+    background-color: var(--text-color);
+  }
 }

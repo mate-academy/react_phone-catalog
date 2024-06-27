@@ -30,62 +30,7 @@
     margin: 0;
     align-items: center;
     text-decoration: none;
-    color: $grey-secondary;
+    color: var(--grey-secondary);
     font-weight: bold;
-
-
-    @include hover(color, $grey-primary);
-  }
-  &__icons {
-    display: flex;
-    margin-left: 20px;
-
-    @include on-tablet {
-      height: 100%;
-    }
-  }
-
-  &__icon {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    border-left: solid 1px $grey-hover;
-    padding-inline: 16px;
-
-    @include on-desktop {
-      padding-inline: 24px;
-    }
-
-    &_count {
-      position: absolute;
-      top: 30%;
-      right: 43%;
-      height: 14px;
-      width: 14px;
-      box-sizing: border-box;
-      border-radius: 50%;
-      background-color: $red;
-      font-size: 9px;
-      line-height: 9px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: $white;
-      border: 1px solid $white;
-
-      @include on-tablet {
-        top: 22%;
-        right: 20%;
-      }
-
-      @include on-desktop {
-        top: 27%;
-        right: 27%;
-      }
-    }
-
   }
 }
-
-

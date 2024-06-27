@@ -1,7 +1,9 @@
 @import './styles/utils/utils';
 @import './styles/blocks/typography';
 
-p, h1, h2 {
+p,
+h1,
+h2 {
   margin: 0;
 }
 
@@ -11,28 +13,32 @@ p, h1, h2 {
   padding: 0;
   font-size: 14px;
   line-height: 1.3em;
-  color: $grey-primary;
 
+  --bg-color: #fff;
+  --text-color: #0f1121;
+  --border-color: #e2e6e9;
+  --disabled-color: #e2e6e9; 
+  --grey-secondary: #89939a;
+  --disabled-icon-color: #B4BDC3;
 }
 
-.container{
+.container {
   min-height: 98vh;
 
   display: grid;
   grid-template-rows: 48px 1fr 257px;
   grid-template-areas:
-  'header'
-  'main'
-  'footer';
+    'header'
+    'main'
+    'footer';
 
   @include on-tablet {
     grid-template-rows: 48px 1fr 96px;
-
   }
 
-@include on-desktop {
-  grid-template-rows: 64px 1fr 96px;
-}
+  @include on-desktop {
+    grid-template-rows: 64px 1fr 96px;
+  }
 }
 
 .footer {
@@ -42,11 +48,12 @@ p, h1, h2 {
 .body {
   grid-area: main;
   scroll-behavior: smooth;
+  background-color: var(--bg-color);
+  color: var(--text-color);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   align-items: center;
-
 
   & > * {
     max-width: 1200px;

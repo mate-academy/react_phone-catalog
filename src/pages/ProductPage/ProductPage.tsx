@@ -2,7 +2,6 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 import { getProduct } from '../../api/product';
-import { productItem } from '../../utils/utils';
 import styles from './ProductPage.module.scss';
 
 import {
@@ -19,6 +18,7 @@ import { Loader } from '../../components/Loader';
 import { Error } from '../../components/Error';
 import { ProductDescription } from './components/ProductDescription';
 import { getRecomended } from '../../utils/getRecommended';
+import { productItem } from '../../utils/productItem';
 
 export const ProductPage = () => {
   const { pathname } = useLocation();
@@ -128,7 +128,7 @@ export const ProductPage = () => {
 
                     <article className={styles.techSpecs}>
                       <p
-                        className={`${styles.sectionTitle} text--category-title  border--bottom`}
+                        className={`${styles.sectionTitle} ${styles.sectionTitle__techSpecs} text--category-title  border--bottom`}
                       >
                         Tech specs
                       </p>
@@ -154,7 +154,7 @@ export const ProductPage = () => {
               <div className={styles.slider}>
                 <ProductSlider
                   products={recomendedProducts}
-                  sectionTitle={'Recommended products'}
+                  sectionTitle={'You may also like'}
                   displayFullPrize={true}
                 />
               </div>

@@ -1,0 +1,27 @@
+@import '../../../../styles/utils/utils';
+
+.icons {
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
+  height: 100%;
+
+  @include on-tablet {
+    height: 100%;
+  }
+}
+
+.icon1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  background-color: inherit;
+  border-left: solid 1px var(--border-color);
+  padding-inline: 16px;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+}

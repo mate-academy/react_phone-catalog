@@ -1,5 +1,12 @@
 .details {
   display: flex;
   flex-direction: column;
-  gap: 32px;
+
+  &__price {
+    padding-block: 32px 16px;
+  }
+
+  &__buttons {
+    margin-bottom: 32px;
+  }
 }

@@ -1,14 +1,19 @@
 .icon {
-  background-position: center;
-  background-size: contain;
-  background-repeat: no-repeat;
-  cursor: pointer;
   height: 16px;
   width: 16px;
-  margin: auto 0;
+
+
+  background-color: var(--text-color);
+  mask-repeat: no-repeat;
+  mask-position: center;
+
+  &--notActive {
+    background-color:  var(--disabled-icon-color);
+  }
 
   &--menu {
-    background-image: url(../../../public/img/icons/menu.png);
+    -webkit-mask-image: url(../../../public/img/icons/menu.svg);
+    mask-image: url(../../../public/img/icons/menu.svg);
 
     @include on-tablet {
       display: none;
@@ -16,37 +21,50 @@
   }
 
   &--fav {
-    background-image: url(../../../public/img/icons/favourites.png);
+    -webkit-mask-image: url(../../../public/img/icons/favourites.svg);
+    mask-image: url(../../../public/img/icons/favourites.svg);
   }
 
   &--cart {
-    background-image: url(../../../public/img/icons/shopping-bag.png);
+    -webkit-mask-image: url(../../../public/img/icons/shopping-bag.svg);
+    mask-image: url(../../../public/img/icons/shopping-bag.svg);
   }
 
   &--close {
-    background-image: url(../../../public/img/icons/close.png);
+    -webkit-mask-image: url(../../../public/img/icons/close.svg);
+    mask-image: url(../../../public/img/icons/close.svg);
+    background-color: var(--text-color);
   }
 
   &--minus {
-    background-image: url(../../../public/img/icons/minus.svg);
+    -webkit-mask-image: url(../../../public/img/icons/minus.svg);
+    mask-image: url(../../../public/img/icons/minus.svg);
+    background-color: var(--text-color);
   }
 
   &--arrow {
-    background-image: url(../../../public/img/icons/arrow.svg);
+    -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
+    mask-image: url(../../../public/img/icons/arrow.svg);
+
   }
   &--arrow-black {
-    background-image: url(../../../public/img/icons/arrow--black.svg);
+    -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
+    mask-image: url(../../../public/img/icons/arrow.svg);
   }
 
   &--plus {
-    background-image: url(../../../public/img/icons/plus.svg);
+    -webkit-mask-image: url(../../../public/img/icons/plus.svg);
+    mask-image: url(../../../public/img/icons/plus.svg);
   }
 
   &--home {
-    background-image: url(../../../public/img/icons/home.svg);
+    -webkit-mask-image: url(../../../public/img/icons/home.svg);
+    mask-image: url(../../../public/img/icons/home.svg);
+
   }
 
   &--search {
-    background-image: url(../../../public/img/icons/search.svg);
+    -webkit-mask-image: url(../../../public/img/icons/search.svg);
+    mask-image: url(../../../public/img/icons/search.svg);
   }
 }

@@ -5,10 +5,13 @@
 
   &__name {
     margin: 0;
-    margin-top: 16px;
   }
 
   &__price {
-    margin-bottom: 8px;
+    padding-block: 8px;
   }
+}
+
+.buttons {
+  margin-top: 8px;
 }

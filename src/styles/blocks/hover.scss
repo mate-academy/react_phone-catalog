@@ -1,3 +1,5 @@
-.hover--scale {
-  @include hover(transform, scale(1.1));
+.hover {
+  &--scale {
+    @include hover(transform, scale(1.1));
+  }
 }

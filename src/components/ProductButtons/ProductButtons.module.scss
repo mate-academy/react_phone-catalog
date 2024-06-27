@@ -1,12 +1,18 @@
 @import '../../styles/utils/utils';
 
-
 .productButtons {
   display: flex;
-  justify-content: space-between;
   gap: 8px;
   height: 40px;
-  width: 100%;
-  margin-top: 8px;
 }
 
+.likeButton {
+  flex-shrink: 0;
+
+  @include hover(box-shadow, 0 2px 16px 0 $red);
+
+  & :first-child {
+    fill: var(--text-color);
+  }
+
+}
