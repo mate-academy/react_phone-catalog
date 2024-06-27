@@ -42,17 +42,20 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const currentPage = searchParams.get('page') || '';
   const query = searchParams.get('query') || '';
 
-  const perPageValue = getValue(
-    perPage,
-    optionsItemsPerPage,
-    optionsItemsPerPage[1].value,
-  );
-  const sortValue = getValue(sort, optionsSortBy, optionsSortBy[0].value);
-
   const [dataLoaded, setDataLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLength, setProductsLength] = useState<number>(0);
+
+  const defaultPerPage = optionsItemsPerPage[1];
+  const defaultSort = optionsSortBy[0];
+
+  const perPageValue = getValue(
+    perPage,
+    optionsItemsPerPage,
+    defaultPerPage.value,
+  );
+  const sortValue = getValue(sort, optionsSortBy, defaultSort.value);
 
   useEffect(() => {
     setDataLoaded(false);
@@ -66,7 +69,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
           .filter(product => product.name.toLowerCase().includes(query));
 
         const itemsPerPage = getItemsPerPage(
-          perPage || optionsItemsPerPage[1].criteria,
+          perPage || defaultPerPage.criteria,
           getProducts.length,
         );
 
@@ -78,14 +81,22 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         setProductsLength(getProducts.length);
         setProducts(
           getProducts
-            .sort(getSortedProducts(sort || optionsSortBy[0].criteria))
+            .sort(getSortedProducts(sort || defaultSort.criteria))
             .slice(start - 1, end),
         );
         setDataLoaded(true);
         scrollToTop(false);
       })
       .catch(() => setError(true));
-  }, [currentPage, perPage, category, sort, query]);
+  }, [
+    currentPage,
+    perPage,
+    category,
+    sort,
+    query,
+    defaultPerPage.criteria,
+    defaultSort.criteria,
+  ]);
 
   function handlePerPageChange(value: string) {
     const newPerPage = { perPage: value || null, page: null };
@@ -159,7 +170,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
                 <Pagination
                   total={productsLength}
                   perPage={getItemsPerPage(
-                    perPage || optionsItemsPerPage[1].criteria,
+                    perPage || defaultPerPage.criteria,
                     productsLength,
                   )}
                   currentPage={currentPage ? +currentPage : 1}

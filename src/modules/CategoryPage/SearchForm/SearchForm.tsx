@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import debounce from 'lodash.debounce';
 import cn from 'classnames';
@@ -11,6 +11,14 @@ export const SearchForm = React.memo(() => {
 
   const [title, setTitle] = useState('' || query);
   const [focus, setFocus] = useState<boolean>(!!query);
+
+  useEffect(() => {
+    setTitle(query);
+
+    if (!query) {
+      setFocus(false);
+    }
+  }, [query]);
 
   const applyQuery = useMemo(
     () => debounce(newQuery => setSearchParams(newQuery), 1000),
