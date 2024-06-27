@@ -36,16 +36,17 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const { pathname } = useLocation();
 
   const gadgets = filterGadgets(pathname, products);
-  const sortBy = searchParams.get('sortBy') || SortBy.newest;
+  const sortBy = searchParams.get('sort') || SortBy.newest;
   const page = searchParams.get('page') || '1';
-  const itemsPerPage = searchParams.get('itemsOnPage') || '4';
+  const perPage = searchParams.get('perPage') || '4';
   const sortedGadgets = sortedBy(sortBy, gadgets.gadgets);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
+
     params.set('page', '1');
     setSearchParams(params);
-  }, [itemsPerPage]);
+  }, [perPage]);
 
   const filteredList = (
     devices: Products[],
@@ -64,7 +65,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const resultFilteredDev = filteredList(sortedGadgets, +page, itemsPerPage);
+  const resultFilteredDev = filteredList(sortedGadgets, +page, perPage);
 
   useEffect(() => {
     getGadgets('/products.json').then(response => setProducts(response));

@@ -6,6 +6,7 @@
   justify-content: center;
   column-gap: 16px;
   margin-bottom: 80px;
+
   &__link {
     display: flex;
     align-items: center;
@@ -38,11 +39,12 @@
     color: $text-color;
     font-weight: 600;
     font-size: 14px;
-    // &:hover {
-    //   background-color: $paginationBackColorHover;
-    //   border: 1px solid $paginationBorderColorHover;
-    //   color: $text-color;
-    // }
+
+    &:hover {
+      background-color: $paginationBackColorHover;
+      border: 1px solid $paginationBorderColorHover;
+      color: $text-color;
+    }
   }
 
   &__active {

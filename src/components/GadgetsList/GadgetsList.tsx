@@ -27,8 +27,8 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
     ItemsList.sixteen,
     ItemsList.all,
   ];
-  const sortBy = searchParams.get('sortBy') || SortBy.newest;
-  const itemsOnPage = searchParams.get('itemsOnPage') || ItemsList.four;
+  const sortBy = searchParams.get('sort') || SortBy.newest;
+  const itemsOnPage = searchParams.get('perPage') || ItemsList.four;
 
   return (
     <div
@@ -47,7 +47,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           listItems={listSortedBy}
           titleDropdown={'Sort by'}
           currentItem={sortBy}
-          keySearchParams={'sortBy'}
+          keySearchParams={'sort'}
           className={style.gadgets__widthSortBy}
         />
 
@@ -55,7 +55,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           listItems={listItemsPerPage}
           titleDropdown={'Items on page'}
           currentItem={itemsOnPage}
-          keySearchParams={'itemsOnPage'}
+          keySearchParams={'perPage'}
           className={style.gadgets__widthItemsOnPage}
         />
       </div>

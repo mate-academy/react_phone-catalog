@@ -43,11 +43,19 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
         readyLength.push(...initialArray.slice(currentPage, end - 1));
       }
 
-      if (end - 1 >= initialArray.length && initialArray.length - lengthPages > 0) {
-        readyLength.push(...initialArray.slice(initialArray.length - lengthPages));
+      if (
+        end - 1 >= initialArray.length &&
+        initialArray.length - lengthPages > 0
+      ) {
+        readyLength.push(
+          ...initialArray.slice(initialArray.length - lengthPages),
+        );
       }
 
-      if (end - 1 >= initialArray.length && initialArray.length - lengthPages < 0) {
+      if (
+        end - 1 >= initialArray.length &&
+        initialArray.length - lengthPages < 0
+      ) {
         readyLength.push(...initialArray.slice(start));
       }
 
