@@ -47,9 +47,6 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLength, setProductsLength] = useState<number>(0);
 
-  const querySamsung =
-    dataLoaded && !error && products.length === 0 && query.includes('samsung'); // adfhdf
-
   const defaultPerPage = optionsItemsPerPage[1];
   const defaultSort = optionsSortBy[0];
 
@@ -192,12 +189,6 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         {!dataLoaded && !error && (
           <div className="category-page__loader">
             <Loader />
-          </div>
-        )}
-
-        {querySamsung && (
-          <div className="category-page__loader secondary-title">
-            Іван, це сайт з гнилими яблуками і ніяких {query} тут немає
           </div>
         )}
 
