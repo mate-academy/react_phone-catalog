@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/indent */
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
 
 type InitialType = {
@@ -19,9 +19,25 @@ type Props = {
 };
 
 export const FavoritesProvider: React.FC<Props> = ({ children }) => {
+  const storageFavorites = localStorage.getItem('favoriteProducts');
+
   const [favoritesProducts, setFavoritesProducts] = useState<Product[] | []>(
-    [],
+    storageFavorites ? JSON.parse(storageFavorites) : [],
   );
+
+  useEffect(() => {
+    const fav = localStorage.getItem('favoriteProducts');
+
+    if (fav) {
+      setFavoritesProducts(JSON.parse(fav));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.removeItem('favoriteProducts');
+
+    localStorage.setItem('favoriteProducts', JSON.stringify(favoritesProducts));
+  }, [favoritesProducts]);
 
   return (
     <FavoritesContext.Provider

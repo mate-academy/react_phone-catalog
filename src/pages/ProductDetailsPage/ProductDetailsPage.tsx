@@ -89,7 +89,7 @@ export const ProductDetailsPage = () => {
     getSuggestedProducts().then(serverProducts =>
       setRandomProducts(serverProducts),
     );
-  }, []);
+  }, [productId]);
 
   useEffect(() => {
     const sss = cartProducts.find(
