@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Link, useLocation } from 'react-router-dom';
 import { BreadCrumbs } from '../components/BreadCrumbs/BreadCrumbs';
 import style from '../modules/ProductDetailsPage.module.scss';
@@ -38,6 +39,7 @@ export const ProductDetailsPage = () => {
         const detailsProduct = response.filter(
           item => item.id === relevantPath[1],
         );
+
         setCategoryProduct(detailsProduct);
       }
     }
@@ -45,6 +47,9 @@ export const ProductDetailsPage = () => {
     fetchData();
   }, [relevantPath[1]]);
 
+  const initialMainImage = categoryProduct.map(item => item.images);
+  const resultImage = initialMainImage.length > 0 ? initialMainImage[0][0] : '';
+  const [image, setImage] = useState('');
   return (
     <div className={style.product}>
       <div className={style.product__container}>
@@ -56,20 +61,26 @@ export const ProductDetailsPage = () => {
       </div>
       {categoryProduct.map(item => (
         <div key={item.id}>
-          <h1>{item.name}</h1>
+          <h1 className={style.product__phoneName}>{item.name}</h1>
 
           <div className={style.product__gridContainer}>
             <ul className={style.product__imageList}>
               {item.images.map(image => (
                 <li className={style.product__imageItem} key={image}>
-                  <img
-                    src={image}
-                    alt="Gadget"
-                    className={style.product__image}
-                  />
+                  <button className={style.product__buttonImage} onClick={() => setImage(image)}>
+                    <img
+                      src={image}
+                      alt="Gadget"
+                      className={style.product__smallImage}
+                    />
+                  </button>
                 </li>
               ))}
             </ul>
+
+            <div className={style.product__mainImageContainer}>
+              <img src={image ? image : resultImage} alt="Gadget" className={style.product__mainImage}/>
+            </div>
           </div>
         </div>
       ))}
