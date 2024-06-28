@@ -71,8 +71,6 @@ export const PhoneTablAccessCard: React.FC<Props> = ({ product, brand }) => {
     }
   };
 
-  console.log(cartProducts);
-
   return (
     <div className="card" data-cy="cardsContainer">
       <div className="card__url">

@@ -30,12 +30,10 @@ const CartSlice = createSlice({
     removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      const findProd = currentState.cartProducts.findIndex((pr) => pr.id === action.payload.id);
-    
-      const { cartProducts } = state;
+      const findProd = currentState.cartProducts.map(p => 
+        ({...p})).findIndex(item => item.id === action.payload.id);
 
-      console.log(cartProducts)
-      // currentState.cartProducts = currentState.cartProducts.splice(findProd, 1);
+      currentState.cartProducts = currentState.cartProducts.filter((_, index) => index !== findProd)
     }
   },
 });
