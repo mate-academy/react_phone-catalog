@@ -71,8 +71,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     getGadgets('/products.json').then(response => setProducts(response));
   }, []);
 
-  
-
   const gadgetsTools = {
     products,
     setProducts,

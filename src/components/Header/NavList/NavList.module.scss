@@ -21,7 +21,9 @@
     }
   }
 }
-
+.nav__link.nav__activeLink {
+  color: $text-color;
+}
 
 .nav__activeLink::after {
   background-color: $text-color;
@@ -32,5 +34,4 @@
   top: 37px;
   left: 0;
   color: $text-color;
-  
 }

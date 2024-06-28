@@ -1,0 +1,72 @@
+@use '../styles/block/utils/variables' as *;
+@import '../styles/block/utils/_mixins.scss';
+.product {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding-inline: 32px;
+  &__container {
+    // display: flex;
+  }
+
+  &__link {
+    display: flex;
+    color: #89939a;
+    align-items: center;
+    text-align: center;
+    column-gap: 4px;
+    max-width: 55px;
+    &:hover {
+      color: $backHoverBtn;
+      @extend %transitionPage;
+    }
+  }
+
+  &__paragraph {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+  }
+
+  &__paragraph::before {
+    content: '<';
+    padding-right: 4px;
+
+    color: $text-color;
+  }
+
+  &__paragraph:hover::before {
+    color: $paginationNumberBackColorActive;
+  }
+
+  &__gridContainer {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+  }
+
+  &__imageList {
+
+    list-style: none;
+    grid-column: 1 / 3;
+  }
+
+  &__imageItem {
+    justify-content: center;
+  }
+
+  &__image {
+    height: 80px;
+  }
+}
+
+@include onTablet {
+  .product {
+    padding-inline: 24px;
+  }
+}
+
+@include onPhone {
+  .product {
+    padding-inline: 16px;
+  }
+}

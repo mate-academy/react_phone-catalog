@@ -35,10 +35,7 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
               />
             </Link>
             <div className={style.cards__cardContent}>
-              <Link
-                to={`${product.itemId}`}
-                className={style.cards__cardName}
-              >
+              <Link to={`${product.itemId}`} className={style.cards__cardName}>
                 {product.name}
               </Link>
               <div className={style.cards__price}>

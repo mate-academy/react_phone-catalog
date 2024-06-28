@@ -39,7 +39,8 @@
   --paginationNumberBackColor: #fff;
   --paginationTextColorActive: #fff;
   --paginationNumberBackColorActive: #313237;
-  --breadCrubsLastNonActiveItem: #89939A;
+  --breadCrubsLastNonActiveItem: #89939a;
+  --backHoverBtn: #313237;
   // touch-action: none;
 }
 
@@ -71,9 +72,10 @@
   --paginationBackColorHover: #4a4d58;
   --paginationBorderColorHover: #323542;
   --paginationNumberBackColor: #161827;
-  --paginationTextColorActive: #F1F2F9;
-  --paginationNumberBackColorActive: #905BFF;
-  --breadCrubsLastNonActiveItem: #75767F;
+  --paginationTextColorActive: #f1f2f9;
+  --paginationNumberBackColorActive: #905bff;
+  --breadCrubsLastNonActiveItem: #75767f;
+  --backHoverBtn: #905bff;
   color: $text-color;
   background-color: $background-color;
 }
