@@ -16,7 +16,7 @@ export const Footer: React.FC<Props> = ({ isVisible }) => {
       <div className="footer__block">
         <div className="footer__logo">
           <Link to="/" className="footer__link">
-            <img src="/icons/LOGO.svg" alt="Logo" />
+            <img src="icons/LOGO.svg" alt="Logo" />
           </Link>
         </div>
       </div>
