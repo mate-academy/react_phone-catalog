@@ -20,16 +20,16 @@ export const FavoritesPage = () => {
 
   return (
     <div className="favoritesPage">
-      {(searchedFavProducts.length === 0 && (
-        <div className="cartPage__no-results">Your favorites cart is empty</div>
-      )) || (
-        <>
-          <div data-cy="breadCrumbs" className="favoritesPage__link">
-            <Link to="/home" className="icon icon--home" />
-            <div className="icon icon--arrow-right--disabled" />
-            <p className="productDetails__link-text">Favourites</p>
-          </div>
+      <div data-cy="breadCrumbs" className="favoritesPage__link">
+        <Link to="/home" className="icon icon--home" />
+        <div className="icon icon--arrow-right--disabled" />
+        <p className="productDetails__link-text">Favourites</p>
+      </div>
 
+      {searchedFavProducts.length === 0 ? (
+        <div className="cartPage__no-results">Your favorites cart is empty</div>
+      ) : (
+        <>
           <div className="favoritesPage__titles">
             <div className="favoritesPage__main-title">Favourites</div>
             <div className="favoritesPage__subtitle">{`${favoritesProducts.length} items`}</div>

@@ -1,7 +1,7 @@
 $black-color: #313237;
-$gray-color: #89939A;
-$second-gray-color: #B4BDC3;
-$third-gray-color: #E2E6E9;
+$gray-color: #89939a;
+$second-gray-color: #b4bdc3;
+$third-gray-color: #e2e6e9;
 
 .footer {
   display: flex;
@@ -51,7 +51,7 @@ $third-gray-color: #E2E6E9;
 
     transition: 0.3s;
   }
-  
+
   &__icon-link {
     display: flex;
     align-items: center;
@@ -63,6 +63,7 @@ $third-gray-color: #E2E6E9;
     color: $gray-color;
     text-decoration: none;
     transition: 0.3s;
+    cursor: pointer;
 
     &:hover {
       color: #313237;
@@ -72,5 +73,4 @@ $third-gray-color: #E2E6E9;
       }
     }
   }
-
 }

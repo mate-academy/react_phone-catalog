@@ -8,6 +8,8 @@ import { Nav } from '../Nav';
 import { CartContext } from '../CartContext';
 import { FavoritesContext } from '../FavoritesContext';
 import { getLinkClass } from '../../helpers/getHeaderLinkClass';
+import { getAccessories, getPhones, getTablets } from '../../api/products';
+import { Product } from '../../types/Product';
 
 export const Header = () => {
   const location = useLocation();
@@ -21,6 +23,9 @@ export const Header = () => {
 
   const [countProducts, setCountProducts] = useState(0);
   const [searchText, setSearchText] = useState(search);
+  const [phones, setPhones] = useState<Product[]>();
+  const [tablets, setTablets] = useState<Product[]>();
+  const [accessories, setAccessories] = useState<Product[]>();
 
   const timerId = useRef(0);
 
@@ -53,6 +58,12 @@ export const Header = () => {
   };
 
   useEffect(() => {
+    getPhones().then(phone => setPhones(phone));
+    getTablets().then(tablet => setTablets(tablet));
+    getAccessories().then(accessorie => setAccessories(accessorie));
+  }, []);
+
+  useEffect(() => {
     setCountProducts(0);
 
     cartProducts.forEach(cartProduct => {
@@ -82,11 +93,13 @@ export const Header = () => {
         <div
           className="header__search-element"
           style={
-            (location.pathname.includes('phones') ||
-              location.pathname.includes('tablets') ||
-              location.pathname.includes('accessories') ||
-              location.pathname.includes('favorites')) &&
-            !location.pathname.split('/')[2]
+            (location.pathname.includes('phones') && phones?.length) ||
+            (location.pathname.includes('tablets') && tablets?.length) ||
+            (location.pathname.includes('accessories') &&
+              accessories?.length) ||
+            (location.pathname.includes('favorites') &&
+              favoritesProducts.length &&
+              !location.pathname.split('/')[2])
               ? {}
               : { display: 'none' }
           }

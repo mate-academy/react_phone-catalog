@@ -27,7 +27,7 @@ export const ProductDetailsPage = () => {
   const [randomProducts, setRandomProducts] = useState<Product[]>();
   const [currentImage, setCurrentImage] = useState<string>();
   const [isLoading, setIsLoading] = useState(true);
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isChoosed, setIsChoosed] = useState(false);
   const [isActive, setIsActive] = useState(false);
   const [isNotFounded, setIsNotFounded] = useState(false);
 
@@ -45,17 +45,9 @@ export const ProductDetailsPage = () => {
         );
 
         if (productIndex !== -1) {
-          const updatedProducts: [Product, number][] = prewArr.map(
-            (pArr, index) => {
-              if (index === productIndex) {
-                return [pArr[0], pArr[1] + 1];
-              }
+          setIsChoosed(false);
 
-              return pArr;
-            },
-          );
-
-          return updatedProducts;
+          return prewArr.filter(pArr => pArr[0].id !== product.id);
         }
 
         return [...prewArr, [product, 1]];
@@ -105,7 +97,7 @@ export const ProductDetailsPage = () => {
     );
 
     if (sss) {
-      setIsDisabled(true);
+      setIsChoosed(true);
     }
   }, [cartProducts]);
 
@@ -242,12 +234,17 @@ export const ProductDetailsPage = () => {
 
                   <div className="productDetails__buttons">
                     <button
-                      disabled={isDisabled}
                       type="submit"
-                      className="productDetails__add-button button"
+                      className={classNames(
+                        'button',
+                        'productDetails__add-button',
+                        {
+                          'button--active': isChoosed,
+                        },
+                      )}
                       onClick={addCartButton}
                     >
-                      {(isDisabled && 'Added to cart') || 'Add to cart'}
+                      {(isChoosed && 'Added to cart') || 'Add to cart'}
                     </button>
 
                     <button

@@ -32,26 +32,26 @@ export const CartPage = () => {
 
   return (
     <div className="cartPage">
-      {(cartProducts.length === 0 && (
+      {isCheckout && (
+        <div className="cartPage__checkout">
+          We are sorry, but this feature is not implemented yet
+        </div>
+      )}
+
+      <Link
+        to=".."
+        relative="path"
+        className="cartPage__back"
+        data-cy="backButton"
+      >
+        <div className="icon icon--arrow-left" />
+        Back
+      </Link>
+
+      {cartProducts.length === 0 ? (
         <div className="cartPage__no-results">Your cart is empty</div>
-      )) || (
+      ) : (
         <>
-          {isCheckout && (
-            <div className="cartPage__checkout">
-              We are sorry, but this feature is not implemented yet
-            </div>
-          )}
-
-          <Link
-            to=".."
-            relative="path"
-            className="cartPage__back"
-            data-cy="backButton"
-          >
-            <div className="icon icon--arrow-left" />
-            Back
-          </Link>
-
           <div className="cartPage__title">Cart</div>
 
           <div className="cartPage__elements">

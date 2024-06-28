@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/indent */
 import './PhonesPage.scss';
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { Filters } from '../../components/Filters';
 import { Product } from '../../types/Product';
@@ -90,46 +90,51 @@ export const PhonesPage = () => {
 
   return (
     <div className="phonesPage">
-      {filteredPhones.length === 0 && !isLoading && (
-        <NoResults categoryName="Mobile Phones" />
-      )}
-
       {isLoading && filteredPhones.length > 0 && (
         <div className="phonesPage__loader">
           <Loader />
         </div>
       )}
 
-      {!isLoading && filteredPhones.length > 0 && (
+      {!isLoading && (
         <>
           <div className="phonesPage__link">
-            <div className="icon icon--home" />
+            <Link to="/" className="icon icon--home" />
             <div className="icon icon--arrow-right--disabled" />
             <div className="phonesPage__link-text">Phones</div>
           </div>
 
-          <h1 className="phonesPage__title">Mobile phones</h1>
+          {filteredPhones.length === 0 && !isLoading ? (
+            <NoResults categoryName="Mobile Phones" />
+          ) : (
+            <>
+              <h1 className="phonesPage__title">Mobile phones</h1>
 
-          <p className="phonesPage__text">{`${phones.length} models`}</p>
+              <p className="phonesPage__text">{`${phones.length} models`}</p>
 
-          <div className="phonesPage__filters">
-            <Filters setFilterItem={setFilterItem} filterItem={filterItem} />
-          </div>
-
-          <div className="phonesPage__list">
-            <ProductsList products={filteredPhones} />
-          </div>
-
-          {filterItem.count !== 'all' &&
-            searchedPhones.length > +filterItem.count && (
-              <div className="phonesPage__pagination">
-                <Pagination
-                  productsLength={searchedPhones.length}
-                  countLength={filterItem.count}
-                  setCurrentPage={setCurrentPage}
+              <div className="phonesPage__filters">
+                <Filters
+                  setFilterItem={setFilterItem}
+                  filterItem={filterItem}
                 />
               </div>
-            )}
+
+              <div className="phonesPage__list">
+                <ProductsList products={filteredPhones} />
+              </div>
+
+              {filterItem.count !== 'all' &&
+                searchedPhones.length > +filterItem.count && (
+                  <div className="phonesPage__pagination">
+                    <Pagination
+                      productsLength={searchedPhones.length}
+                      countLength={filterItem.count}
+                      setCurrentPage={setCurrentPage}
+                    />
+                  </div>
+                )}
+            </>
+          )}
         </>
       )}
     </div>

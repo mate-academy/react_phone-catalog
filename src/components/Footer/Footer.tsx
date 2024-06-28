@@ -1,7 +1,12 @@
+/* eslint-disable react/button-has-type */
 import { Link } from 'react-router-dom';
 import './Footer.scss';
 
-export const Footer = () => {
+type Props = {
+  isVisible: boolean;
+};
+
+export const Footer: React.FC<Props> = ({ isVisible }) => {
   const goToTop = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
@@ -36,12 +41,19 @@ export const Footer = () => {
       </div>
 
       <div className="footer__block">
-        <Link onClick={goToTop} className="footer__icon-link" to="#top">
+        <button
+          onClick={goToTop}
+          className="footer__icon-link"
+          id="myBtn"
+          style={
+            isVisible ? { visibility: 'visible' } : { visibility: 'hidden' }
+          }
+        >
           Back to top
           <div className="footer__icon">
             <div className="icon icon--arrow-up" />
           </div>
-        </Link>
+        </button>
       </div>
     </div>
   );

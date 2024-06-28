@@ -16,7 +16,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const { favoritesProducts, setFavoritesProducts } =
     useContext(FavoritesContext);
 
-  const [isDisabled, setIsDisabled] = useState(false);
+  const [isChoosed, setIsChoosed] = useState(false);
   const [isActive, setIsActive] = useState(false);
 
   const addCartButton = () => {
@@ -24,17 +24,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       const productIndex = prewArr.findIndex(pArr => pArr[0].id === product.id);
 
       if (productIndex !== -1) {
-        const updatedProducts: [Product, number][] = prewArr.map(
-          (pArr, index) => {
-            if (index === productIndex) {
-              return [pArr[0], pArr[1] + 1];
-            }
+        setIsChoosed(false);
 
-            return pArr;
-          },
-        );
-
-        return updatedProducts;
+        return prewArr.filter(pArr => pArr[0].id !== product.id);
       }
 
       return [...prewArr, [product, 1]];
@@ -61,7 +53,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     );
 
     if (sss) {
-      setIsDisabled(true);
+      setIsChoosed(true);
     }
   }, [cartProducts]);
 
@@ -122,12 +114,13 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
       <div className="productCard__buttons">
         <button
-          disabled={isDisabled}
-          className="button productCard__button"
+          className={classNames('button', 'productCard__button', {
+            'button--active': isChoosed,
+          })}
           type="button"
           onClick={addCartButton}
         >
-          {(isDisabled && 'Added to cart') || 'Add to cart'}
+          {(isChoosed && 'Added to cart') || 'Add to cart'}
         </button>
 
         <button

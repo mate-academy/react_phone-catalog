@@ -2,7 +2,7 @@
 import './AccessoriesPage.scss';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { Filters } from '../../components/Filters';
 import { Product } from '../../types/Product';
@@ -54,46 +54,51 @@ export const AccessoriesPage = () => {
 
   return (
     <div className="accessoriesPage">
-      {accessories.length === 0 && !isLoading && (
-        <NoResults categoryName="Accessories" />
-      )}
-
       {isLoading && accessories.length > 0 && (
         <div className="accessoriesPage__loader">
           <Loader />
         </div>
       )}
 
-      {!isLoading && accessories.length > 0 && (
+      {!isLoading && (
         <>
           <div className="accessoriesPage__link">
-            <div className="icon icon--home" />
+            <Link to="/" className="icon icon--home" />
             <div className="icon icon--arrow-right--disabled" />
             <div className="accessoriesPage__link-text">Accessories</div>
           </div>
 
-          <h1 className="accessoriesPage__title">Accessories</h1>
+          {accessories.length === 0 && !isLoading ? (
+            <NoResults categoryName="Accessories" />
+          ) : (
+            <>
+              <h1 className="accessoriesPage__title">Accessories</h1>
 
-          <p className="accessoriesPage__text">{`${accessories.length} models`}</p>
+              <p className="accessoriesPage__text">{`${accessories.length} models`}</p>
 
-          <div className="accessoriesPage__filters">
-            <Filters setFilterItem={setFilterItem} filterItem={filterItem} />
-          </div>
-
-          <div className="accessoriesPage__list">
-            <ProductsList products={filteredAccessories} />
-          </div>
-
-          {filterItem.count !== 'all' &&
-            accessories.length > +filterItem.count && (
-              <div className="accessoriesPage__pagination">
-                <Pagination
-                  productsLength={accessories.length}
-                  countLength={filterItem.count}
-                  setCurrentPage={setCurrentPage}
+              <div className="accessoriesPage__filters">
+                <Filters
+                  setFilterItem={setFilterItem}
+                  filterItem={filterItem}
                 />
               </div>
-            )}
+
+              <div className="accessoriesPage__list">
+                <ProductsList products={filteredAccessories} />
+              </div>
+
+              {filterItem.count !== 'all' &&
+                accessories.length > +filterItem.count && (
+                  <div className="accessoriesPage__pagination">
+                    <Pagination
+                      productsLength={accessories.length}
+                      countLength={filterItem.count}
+                      setCurrentPage={setCurrentPage}
+                    />
+                  </div>
+                )}
+            </>
+          )}
         </>
       )}
     </div>

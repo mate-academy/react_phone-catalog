@@ -1,7 +1,8 @@
+/* eslint-disable @typescript-eslint/indent */
 import './TabletsPage.scss';
 
 import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { Link, useSearchParams } from 'react-router-dom';
 import { ProductsList } from '../../components/ProductsList';
 import { Filters } from '../../components/Filters';
 import { Product } from '../../types/Product';
@@ -49,44 +50,50 @@ export const TabletsPage = () => {
 
   return (
     <div className="tabletsPage">
-      {tablets.length === 0 && !isLoading && (
-        <NoResults categoryName="Tablets" />
-      )}
-
       {isLoading && tablets.length > 0 && (
         <div className="tabletsPage__loader">
           <Loader />
         </div>
       )}
 
-      {!isLoading && tablets.length > 0 && (
+      {!isLoading && (
         <>
           <div className="tabletsPage__link">
-            <div className="icon icon--home" />
+            <Link to="/" className="icon icon--home" />
             <div className="icon icon--arrow-right--disabled" />
             <div className="tabletsPage__link-text">Tablets</div>
           </div>
 
-          <h1 className="tabletsPage__title">Tablets</h1>
+          {tablets.length === 0 && !isLoading ? (
+            <NoResults categoryName="Tablets" />
+          ) : (
+            <>
+              <h1 className="tabletsPage__title">Tablets</h1>
 
-          <p className="tabletsPage__text">{`${tablets.length} models`}</p>
+              <p className="tabletsPage__text">{`${tablets.length} models`}</p>
 
-          <div className="tabletsPage__filters">
-            <Filters setFilterItem={setFilterItem} filterItem={filterItem} />
-          </div>
+              <div className="tabletsPage__filters">
+                <Filters
+                  setFilterItem={setFilterItem}
+                  filterItem={filterItem}
+                />
+              </div>
 
-          <div className="tabletsPage__list">
-            <ProductsList products={filteredTablets} />
-          </div>
+              <div className="tabletsPage__list">
+                <ProductsList products={filteredTablets} />
+              </div>
 
-          {filterItem.count !== 'all' && tablets.length > +filterItem.count && (
-            <div className="tabletsPage__pagination">
-              <Pagination
-                productsLength={tablets.length}
-                countLength={filterItem.count}
-                setCurrentPage={setCurrentPage}
-              />
-            </div>
+              {filterItem.count !== 'all' &&
+                tablets.length > +filterItem.count && (
+                  <div className="tabletsPage__pagination">
+                    <Pagination
+                      productsLength={tablets.length}
+                      countLength={filterItem.count}
+                      setCurrentPage={setCurrentPage}
+                    />
+                  </div>
+                )}
+            </>
           )}
         </>
       )}
