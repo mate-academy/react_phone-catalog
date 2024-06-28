@@ -111,13 +111,14 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(e.target.value);
     setActivePage(1);
+    searchParams.delete('page');
+    
     if (itemsPerPage !== 'all') {
       searchParams.set('perPage', itemsPerPage);
     }
 
     if (e.target.value === 'all') {
       searchParams.delete('perPage');
-      setSearchParams(new URLSearchParams(searchParams));
     }
 
     setSearchParams(new URLSearchParams(searchParams));
@@ -276,20 +277,20 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       searchParams.set('page', activePage.toString());
     }
 
-    if (option === 'newest') {
-      searchParams.delete('sortBy');
-      setSearchParams(new URLSearchParams(searchParams));
-    }
+    // if (option === 'newest') {
+    //   searchParams.delete('sortBy');
+    //   setSearchParams(new URLSearchParams(searchParams));
+    // }
 
-    if (perPage === 'all') {
-      searchParams.delete('perPage');
-      setSearchParams(new URLSearchParams(searchParams));
-    }
+    // if (perPage === 'all') {
+    //   searchParams.delete('perPage');
+    //   setSearchParams(new URLSearchParams(searchParams));
+    // }
 
-    if (page === '1') {
-      searchParams.delete('page');
-      setSearchParams(new URLSearchParams(searchParams));
-    }
+    // if (page === '1') {
+    //   searchParams.delete('page');
+    //   setSearchParams(new URLSearchParams(searchParams));
+    // }
 
     console.log('searchParams', searchParams.toString());
 
