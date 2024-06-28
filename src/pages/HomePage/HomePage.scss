@@ -1,0 +1,36 @@
+@import '../../styles/main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+}
+
+.homeTop {
+  @include section-grid;
+
+  padding-bottom: 24px;
+
+  @include on-tablet {
+    padding-bottom: 32px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 56px;
+  }
+
+  &__title {
+    @extend %h1-mobile;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      @include h1-tablet;
+
+      grid-column: 1 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / -1;
+    }
+  }
+}
