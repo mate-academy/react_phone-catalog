@@ -1,0 +1,79 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.pagination {
+  height: 32px;
+
+  &__buttons {
+    display: flex;
+    height: 100%;
+    gap: 16px;
+    margin-top: 40px;
+    justify-content: center;
+
+  }
+
+  &__prev {
+    border: 1px solid $Icons;
+    
+    & > img {
+      transform: rotateZ(-90deg);
+    }
+  }
+
+  &__main {
+    &--buttons {
+      display: flex;
+      gap: 8px;
+      width: 152px;
+      height: 100%;
+      transform: translateX(-400px);
+    }
+
+    &--wrapper {
+      height: 100%;
+      overflow: hidden;    
+    }
+  }
+
+  &__page {
+    border: 1px solid $Elements;
+    box-sizing: border-box;
+    min-width: 32px;
+    
+    &--active {
+      background-color: black;
+      color: white;
+
+    }
+  }
+
+  &__next {
+    border: 1px solid $Icons;
+
+    & > img {
+      transform: rotateZ(90deg);
+    }
+  }
+
+  &__next, &__prev, &__page{
+    border-radius: 50%;
+    width: 32px;
+    height: 100%;
+    background-color: transparent;
+   
+
+    @include center-element;
+
+    &:hover {
+      border: 1px solid black;
+      transition: border ease 0.5s;
+    }
+  }
+}
+
+.page--active {
+  background-color: black;
+  color: white;
+  
+}

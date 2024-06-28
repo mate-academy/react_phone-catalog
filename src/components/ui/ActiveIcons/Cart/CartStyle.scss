@@ -1,0 +1,32 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.cart {
+  width: 28px;
+  height: 28px;
+  
+  &__icon { 
+    position: absolute;
+    width: 28px;
+    height: 28px;
+
+    @include center-element;
+
+    &--counter{
+      height: 14px;
+      width: 14px;
+      font-size: 9px;
+      background-color: $Accent;
+      position: absolute;
+      right: 0;
+      top: 0;
+      border-radius: 50%;
+      outline: 1px solid white;
+      font-weight: 9px;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+  }
+}
