@@ -140,7 +140,7 @@
         background-color: $colorRed;
       }
 
-      @include onDesktop {
+      @include on-desktop {
         top: 30%;
         right: 30%;
       }
