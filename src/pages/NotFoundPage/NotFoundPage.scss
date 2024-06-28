@@ -1,0 +1,35 @@
+@import '../../styles/main';
+
+.notFoundPage {
+  @include section-grid;
+
+
+  &__contant {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 24px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__description {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20%;
+
+    &-title {
+      @extend %h1-mobile;
+
+      @include on-tablet {
+        @include h1-tablet;
+      }
+    }
+  }
+}

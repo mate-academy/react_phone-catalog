@@ -1,0 +1,36 @@
+@import '../../styles/main';
+
+.pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-flow: row wrap;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    padding: 7px;
+    border: 1px solid $colorElements;
+    background-color: $colorWhite;
+    cursor: pointer;
+
+    @extend %small-text;
+
+    color: $colorPrimary;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+
+    &:hover {
+      border-color: $colorPrimary;
+    }
+
+    &-active {
+      background-color: $colorPrimary;
+      color: $colorWhite;
+    }
+  }
+}

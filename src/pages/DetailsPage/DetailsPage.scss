@@ -1,0 +1,65 @@
+@import '../../styles/main';
+
+.detailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+
+  &__loader {
+    display: flex;
+    margin-top: 56px;
+  }
+
+  &__block {
+    @include section-grid;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    grid-column: 1 / -1;
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &-title {
+      @extend %body-text;
+
+      color: $colorSecondary;
+      text-transform: capitalize;
+      padding-top: 2px;
+
+      white-space: nowrap;
+      overflow: hidden;
+    }
+  }
+
+  &__name {
+    @extend %h2-mobile;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      @include h2-tablet;
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @extend %small-text;
+
+    color: $colorSecondary;
+
+    @include on-tablet {
+      display: block;
+      grid-column: 23 / -1;
+      justify-self: end;
+    }
+  }
+}
+
+

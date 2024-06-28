@@ -1,0 +1,37 @@
+@import '../../../styles/main';
+
+.DescriptionContant {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-title {
+      @extend %h3-mobile;
+
+      @include on-tablet {
+        @include h3-tablet;
+      }
+    }
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background-color: $colorElements;
+    }
+
+    &-text {
+      margin-top: 16px;
+
+      @extend %body-text;
+
+      color: $colorSecondary;
+    }
+  }
+}

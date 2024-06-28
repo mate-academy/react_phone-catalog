@@ -1,0 +1,119 @@
+@import '../../styles/main';
+
+.footer {
+  display: flex;
+  width: 100%;
+  border-top: 1px solid $colorElements;
+  box-shadow: 0 -1px 0 0 $colorElements;
+  background-color: $colorWhite;
+
+  @include on-tablet {
+    height: 96px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__block {
+    display: flex;
+    width: 100%;
+    padding: 32px 16px;
+    flex-direction: column;
+
+    @include on-tablet {
+      @include section-grid;
+
+      align-items: center;
+      justify-content: center;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    padding-bottom: 32px;
+
+    @include on-tablet {
+      grid-column: span 4;
+      padding-bottom: 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+
+    &--img {
+      width: 89px;
+      height: 32px;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    gap: 16px;
+
+    @include on-tablet {
+      grid-column: span 4;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &--link {
+      @extend %uppercase-text;
+
+      color: $colorSecondary;
+      cursor: pointer;
+
+      &:hover {
+        color: $colorPrimary;
+      }
+    }
+  }
+
+  &__back {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+    padding-top: 32px;
+
+    @include on-tablet {
+      justify-content: flex-end;
+      grid-column: span 4;
+      padding-top: 0;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+
+    &--title {
+      @extend %small-text;
+
+      color: $colorSecondary;
+      text-decoration: none;
+      margin-right: 16px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    width: 32px;
+    height: 32px;
+    background-color: $colorWhite;
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $colorIcons;
+  }
+}
+
+
