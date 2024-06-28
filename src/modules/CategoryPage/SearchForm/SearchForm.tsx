@@ -26,8 +26,8 @@ export const SearchForm = React.memo(() => {
   );
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const newTitle = event.target.value;
-    const newQuery = { query: newTitle.toLowerCase() || null };
+    const newTitle = event.target.value.trimStart();
+    const newQuery = { query: newTitle.toLowerCase() || null, page: null };
 
     setTitle(newTitle);
     applyQuery(getSearchWith(searchParams, newQuery));

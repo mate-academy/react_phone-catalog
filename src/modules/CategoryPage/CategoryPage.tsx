@@ -47,6 +47,9 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [productsLength, setProductsLength] = useState<number>(0);
 
+  const querySamsung =
+    dataLoaded && !error && products.length === 0 && query.includes('samsung'); // adfhdf
+
   const defaultPerPage = optionsItemsPerPage[1];
   const defaultSort = optionsSortBy[0];
 
@@ -64,9 +67,13 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
     client
       .get<Product[]>(PRODUCT_URL)
       .then(data => {
+        const queryWords = query.split(' ');
+
         const getProducts = data
           .filter(product => product.category === category)
-          .filter(product => product.name.toLowerCase().includes(query));
+          .filter(product =>
+            queryWords.every(word => product.name.toLowerCase().includes(word)),
+          );
 
         const itemsPerPage = getItemsPerPage(
           perPage || defaultPerPage.criteria,
@@ -112,7 +119,8 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
 
   function handleSelectPage(value: number) {
     setDataLoaded(false);
-    const newPage = { page: value.toString() || null };
+    const newPage =
+      value === 1 ? { page: null } : { page: value.toString() || null };
 
     setSearchParams(getSearchWith(searchParams, newPage));
   }
@@ -184,6 +192,12 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         {!dataLoaded && !error && (
           <div className="category-page__loader">
             <Loader />
+          </div>
+        )}
+
+        {querySamsung && (
+          <div className="category-page__loader secondary-title">
+            Іван, це сайт з гнилими яблуками і ніяких {query} тут немає
           </div>
         )}
 
