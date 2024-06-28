@@ -26,7 +26,7 @@ export const Warning: FC<Props> = ({ className, ...props }) => {
     <div {...props} className={cn(classes.warning, className)}>
       <div className={classes.warning__header}>
         <Text.H3 className={classes.warning__title}>
-          Do you want to clear the Cart?
+          Checkout is not implemented yet.
         </Text.H3>
         <RoundButton onClick={close} className={classes.warning__closeButton}>
           ✖
@@ -34,7 +34,7 @@ export const Warning: FC<Props> = ({ className, ...props }) => {
       </div>
       <div className={classes.warning__body}>
         <Text className={classes.warning__description}>
-          Checkout is not implemented yet.
+          Do you want to clear the Cart?
         </Text>
         <Button onClick={clear} className={classes.warning__button}>
           Clear the cart

@@ -3,15 +3,15 @@ import { MenuItem } from '../types';
 export const FOOTER_MENU_ITEMS: MenuItem[] = [
   {
     text: 'Github',
-    to: '/',
+    to: 'https://github.com/yaroslav-na',
   },
   {
     text: 'Contacts',
-    to: '/',
+    to: 'https://github.com/yaroslav-na',
   },
   {
     text: 'Rights',
-    to: '/',
+    to: 'https://github.com/yaroslav-na',
   },
 ];
 
