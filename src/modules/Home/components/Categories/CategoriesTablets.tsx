@@ -2,16 +2,20 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import { selectTablets, useProducts } from '../../../../app/features/products';
+import {
+  fetchProducts,
+  selectTablets,
+} from '../../../../app/features/products';
 import { Text } from '../../../shared/ui/Text';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { IMG } from './variables';
 import classes from './categories.module.scss';
+import { useFetchedData } from '../../../../hooks/useFetchedData';
 
 type Props = {};
 
 export const CategoriesTablets: FC<Props> = ({}) => {
-  const { products, status } = useProducts(selectTablets);
+  const { products, status } = useFetchedData(fetchProducts(), selectTablets);
 
   return (
     <div className={classes.categories__item}>

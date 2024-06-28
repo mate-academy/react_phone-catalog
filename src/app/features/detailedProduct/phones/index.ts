@@ -1,2 +1,2 @@
-export * from './usePhones';
+export * from './fetchPhones';
 export * from './selectors';

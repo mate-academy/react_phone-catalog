@@ -2,32 +2,35 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 
 import { Product, ProductId } from '../../../types';
+import { favouriteLocalStorageManager } from './localStorageManager';
 
-type State = ProductId[];
+export type State = {
+  items: ProductId[];
+};
 
 type PayloadId = PayloadAction<Pick<Product, 'itemId'>>;
 
-const initialState: State = [];
+const initialState: State = favouriteLocalStorageManager.get() || { items: [] };
 
 export const favouritesSlice = createSlice({
   initialState,
   name: 'favourites',
   reducers: {
     addItem(state, { payload: { itemId } }: PayloadId) {
-      state.push(itemId);
+      state.items.push(itemId);
     },
     removeItem(state, { payload: { itemId } }: PayloadId) {
-      const target = state.findIndex(currentId => currentId === itemId);
+      const target = state.items.findIndex(currentId => currentId === itemId);
 
-      state.splice(target, 1);
+      state.items.splice(target, 1);
     },
     toggleItem(state, { payload: { itemId } }: PayloadId) {
-      if (!state.includes(itemId)) {
-        state.push(itemId);
+      if (!state.items.includes(itemId)) {
+        state.items.push(itemId);
       } else {
-        const target = state.findIndex(currentId => currentId === itemId);
+        const target = state.items.findIndex(currentId => currentId === itemId);
 
-        state.splice(target, 1);
+        state.items.splice(target, 1);
       }
     },
   },

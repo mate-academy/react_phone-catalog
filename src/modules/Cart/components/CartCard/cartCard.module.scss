@@ -68,6 +68,11 @@
     @include hover {
       color: var(--secondary);
     }
+
+    &_skeleton {
+      width: 200px;
+      height: 21px;
+    }
   }
 
   &__controlls {
@@ -81,5 +86,9 @@
     display: block;
     width: 80px;
     text-align: right;
+
+    &_skeleton {
+      height: 31px;
+    }
   }
 }

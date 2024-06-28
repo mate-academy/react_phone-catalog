@@ -8,7 +8,7 @@ import { Accessory } from '../../../../types';
 export const fetchAccessories = createAsyncThunk<Accessory[]>(
   'accessories/fetch',
   async (_arg, api) => {
-    await delay(1000);
+    await delay(300);
 
     const response = await fetch('api/accessories.json', {
       signal: api.signal,

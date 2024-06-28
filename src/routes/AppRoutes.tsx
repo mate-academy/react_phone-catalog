@@ -13,10 +13,12 @@ import { NotFound } from '../modules/NotFound';
 import {
   Phones as PhoneDetails,
   Tablets as TabletDetails,
-  Accessories as AccessoryDetails,
+  AccessoryDetails,
 } from '../modules/Phones';
 import { Icon } from '../modules/shared/ui/Icon';
 import { ProductDetailsCrumb } from './ProductDetailsCrumb';
+import { Favourites } from '../modules/Favourites';
+import { Cart } from '../modules/Cart';
 
 type Props = ComponentPropsWithoutRef<typeof Route>;
 
@@ -75,6 +77,16 @@ export const AppRoutes: FC<Props> = ({}) => (
                 }}
               />
             </Route>
+            <Route
+              path="favourites"
+              handle={{ crumb: () => 'Favourites' }}
+              element={<Favourites />}
+            />
+            <Route
+              path="cart"
+              handle={{ crumb: () => 'Cart' }}
+              element={<Cart />}
+            />
             <Route path="*" element={<NotFound />} />
           </Route>
         </Route>,

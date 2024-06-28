@@ -6,6 +6,7 @@ import { ThumbnailsCarousel } from '../../../shared/ThumbnailsCarousel';
 import { Container } from '../../../shared/Container';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import classes from './display.module.scss';
+import { ProductDisplayImg } from './ProductDisplayImg';
 
 type Props = ComponentPropsWithRef<typeof Container.Grid> & {
   images: string[];
@@ -31,7 +32,11 @@ export const Display: FC<Props> = ({
 }) => {
   const slides = isLoaded
     ? images.map((image, i) => (
-        <img className={classes.display__slide} key={i} src={image} alt={''} />
+        <ProductDisplayImg
+          src={image}
+          key={i}
+          className={classes.display__slide}
+        />
       ))
     : skeletons;
 

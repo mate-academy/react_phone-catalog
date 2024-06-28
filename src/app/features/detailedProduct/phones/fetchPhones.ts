@@ -8,7 +8,7 @@ import { Phone } from '../../../../types';
 export const fetchPhones = createAsyncThunk<Phone[]>(
   'phones/fetch',
   async (_arg, api) => {
-    await delay(1000);
+    await delay(300);
 
     const response = await fetch('api/phones.json', {
       signal: api.signal,

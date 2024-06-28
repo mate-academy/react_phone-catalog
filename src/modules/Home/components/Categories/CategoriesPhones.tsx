@@ -2,7 +2,8 @@ import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
-import { selectPhones, useProducts } from '../../../../app/features/products';
+import { fetchProducts, selectPhones } from '../../../../app/features/products';
+import { useFetchedData } from '../../../../hooks/useFetchedData';
 import { Text } from '../../../shared/ui/Text';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { IMG } from './variables';
@@ -11,7 +12,7 @@ import classes from './categories.module.scss';
 type Props = {};
 
 export const CategoriesPhones: FC<Props> = ({}) => {
-  const { products, status } = useProducts(selectPhones);
+  const { products, status } = useFetchedData(fetchProducts(), selectPhones);
 
   return (
     <div className={classes.categories__item}>

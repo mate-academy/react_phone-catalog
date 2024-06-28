@@ -2,16 +2,17 @@
 /* eslint-disable  @typescript-eslint/indent */
 import React, { FC } from 'react';
 import cn from 'classnames';
-import { useParams } from 'react-router-dom';
 
 import {
-  usePhones,
+  fetchPhones,
   selectPhones,
 } from '../../app/features/detailedProduct/phones';
+import { useFetchedData } from '../../hooks/useFetchedData';
 import { getSpecsFromObject } from '../shared/ui/SpecsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { LinkBack } from '../shared/LinkBack';
 import { Container } from '../shared/Container';
+import { useFoundProduct } from './hooks/useFoundProduct';
 import { Display } from './components/Display';
 import { AvailableColors } from './components/AvailableColors';
 import { AvailableOptions } from './components/AvailableOptions';
@@ -27,29 +28,23 @@ import classes from './phones.module.scss';
 type Props = {};
 
 export const Phones: FC<Props> = ({}) => {
-  const { status, phones } = usePhones(selectPhones);
-  const { productId } = useParams();
-
-  const currentPhone = phones.find(phone => phone.id === productId);
+  const { status, phones } = useFetchedData(fetchPhones(), selectPhones);
   const isLoaded = status === 'fulfilled';
-
-  if (isLoaded && !currentPhone) {
-    throw new Response('Not found', { status: 404 });
-  }
+  const phone = useFoundProduct(phones, isLoaded);
 
   const mainSpecs = getSpecsFromObject({
-    Screen: currentPhone?.screen || '',
-    Resolution: currentPhone?.resolution || '',
-    Processor: currentPhone?.processor || '',
-    RAM: currentPhone?.ram || '',
+    Screen: phone?.screen || '',
+    Resolution: phone?.resolution || '',
+    Processor: phone?.processor || '',
+    RAM: phone?.ram || '',
   });
 
   const allSpecs = mainSpecs.concat(
     getSpecsFromObject({
-      'Built in memory': currentPhone?.capacity || '',
-      Camera: currentPhone?.camera || '',
-      Zoom: currentPhone?.zoom || '',
-      Cell: currentPhone?.cell.join(', ') || '',
+      'Built in memory': phone?.capacity || '',
+      Camera: phone?.camera || '',
+      Zoom: phone?.zoom || '',
+      Cell: phone?.cell.join(', ') || '',
     }),
   );
 
@@ -58,19 +53,20 @@ export const Phones: FC<Props> = ({}) => {
       <Breadcrumbs className={classes.page__breadCrumbs} />
       <LinkBack className={classes.page__linkBack} />
       <Title isLoaded={isLoaded} className={classes.page__title}>
-        {currentPhone?.name}
+        {phone?.name}
       </Title>
       <Display
+        key={phone?.id}
         className={classes.page__mainInfo}
         isLoaded={isLoaded}
-        images={currentPhone?.images || []}
-        extraSlot={productId && <ProductId productId={productId} />}
+        images={phone?.images || []}
+        extraSlot={<ProductId productId={phone?.id || ''} />}
         info={
           <>
             <AvailableColors
               className={classes.page__options}
-              productId={currentPhone?.id || ''}
-              colors={currentPhone?.colorsAvailable || []}
+              productId={phone?.id || ''}
+              colors={phone?.colorsAvailable || []}
               isLoaded={isLoaded}
             />
             <AvailableOptions
@@ -79,19 +75,19 @@ export const Phones: FC<Props> = ({}) => {
                 classes.page__options,
                 classes.page__options_capacity,
               )}
-              options={currentPhone?.capacityAvailable || []}
-              productId={currentPhone?.id || ''}
+              options={phone?.capacityAvailable || []}
+              productId={phone?.id || ''}
               isLoaded={isLoaded}
             />
             <Prices
               className={classes.page__prices}
               isLoaded={isLoaded}
-              regularPrice={currentPhone?.priceRegular || 0}
-              discountPrice={currentPhone?.priceDiscount}
+              regularPrice={phone?.priceRegular || 0}
+              discountPrice={phone?.priceDiscount}
             />
             <ActionButtons
               className={classes.page__actionButtons}
-              productId={currentPhone?.id || ''}
+              productId={phone?.id || ''}
               isLoaded={isLoaded}
             />
             <MainSpecList
@@ -104,11 +100,14 @@ export const Phones: FC<Props> = ({}) => {
       />
       <Description
         className={classes.page__description}
-        about={currentPhone?.description || []}
+        about={phone?.description || []}
         isLoaded={isLoaded}
         specs={allSpecs}
       />
-      <SuggestedProducts className={classes.page__suggestedProducts} />
+      <SuggestedProducts
+        productId={phone?.id || ''}
+        className={classes.page__suggestedProducts}
+      />
     </Container>
   );
 };

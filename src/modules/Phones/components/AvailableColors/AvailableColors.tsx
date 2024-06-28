@@ -37,7 +37,7 @@ export const AvailableColors: FC<Props> = ({
   return (
     <div {...props} className={cn(classes.availableColors, className)}>
       <Text.Small className={classes.availableColors__title}>
-        Available colors
+        Available colours
       </Text.Small>
       {isLoaded ? (
         <ColorPalette

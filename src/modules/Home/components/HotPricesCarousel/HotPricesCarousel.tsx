@@ -1,11 +1,12 @@
 /* eslint-disable @typescript-eslint/indent */
-import React, { ComponentPropsWithoutRef, FC } from 'react';
+import React, { ComponentPropsWithoutRef, FC, useMemo } from 'react';
 import cn from 'classnames';
 
 import {
+  fetchProducts,
   selectHotPrices,
-  useProducts,
 } from '../../../../app/features/products';
+import { useFetchedData } from '../../../../hooks/useFetchedData';
 import { ProductCard } from '../../../shared/ProductCard';
 import { HorizontalCarousel } from '../../../shared/HorizontalCarousel';
 import { Text } from '../../../shared/ui/Text';
@@ -18,11 +19,12 @@ const skeletons = Array.from(Array(4), (_, i) => (
 ));
 
 export const HotPricesCarousel: FC<Props> = ({ className, ...props }) => {
-  const { products, status } = useProducts(selectHotPrices);
+  const { products, status } = useFetchedData(fetchProducts(), selectHotPrices);
+  const topProducts = useMemo(() => products.slice(0, 16), [products]);
   const isSuccess = status === 'fulfilled';
 
   const cards = isSuccess
-    ? products.map(product => (
+    ? topProducts.map(product => (
         <ProductCard product={product} key={product.id} />
       ))
     : skeletons;

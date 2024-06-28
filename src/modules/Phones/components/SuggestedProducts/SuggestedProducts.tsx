@@ -1,30 +1,44 @@
 import React, { ComponentPropsWithoutRef, FC, useMemo } from 'react';
 import cn from 'classnames';
 
-import { getRandomNumbers } from '../../../../utils/getRandomNumbers';
-import { useProducts, selectProducts } from '../../../../app/features/products';
+import {
+  selectShuffledProducts,
+  fetchProducts,
+} from '../../../../app/features/products';
+import { useFetchedData } from '../../../../hooks/useFetchedData';
 import { Text } from '../../../shared/ui/Text';
 import { HorizontalCarousel } from '../../../shared/HorizontalCarousel';
 import { ProductCard } from '../../../shared/ProductCard';
 import classes from './suggestedProducts.module.scss';
 
-type Props = ComponentPropsWithoutRef<'div'>;
+type Props = ComponentPropsWithoutRef<'div'> & {
+  productId: string;
+};
 
 const skeletons = Array.from(Array(4), (_, i) => (
   <ProductCard.Skeleton key={i} />
 ));
 
-export const SuggestedProducts: FC<Props> = ({ className, ...props }) => {
-  const { products, status } = useProducts(selectProducts);
+export const SuggestedProducts: FC<Props> = ({
+  className,
+  productId,
+  ...props
+}) => {
+  const { products, status } = useFetchedData(
+    fetchProducts(),
+    selectShuffledProducts,
+  );
+
+  const requiredProducts = useMemo(
+    () => products.filter(product => product.itemId !== productId).slice(0, 16),
+    [products, productId],
+  );
+
   const isSuccess = status === 'fulfilled';
 
-  const productCards = useMemo(
-    () =>
-      getRandomNumbers(10, 0, products.length).map(index => (
-        <ProductCard product={products[index]} key={products[index].id} />
-      )),
-    [products],
-  );
+  const productCards = requiredProducts.map(product => (
+    <ProductCard product={product} key={product.id} />
+  ));
 
   return (
     <section {...props} className={cn(className, classes.carousel)}>

@@ -1,13 +1,15 @@
 /* eslint-disable  @typescript-eslint/indent */
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 
-import { Container } from '../../../shared/Container';
 import { ProductCard } from '../../../shared/ProductCard';
 import { Product } from '../../../../types';
 import { ItemGrid } from '../../../shared/ItemGrid';
 import { Text } from '../../../shared/ui/Text';
 
-type Props = ComponentPropsWithoutRef<typeof Container | typeof Text.H3> & {
+type Props = Omit<
+  ComponentPropsWithoutRef<typeof ItemGrid | typeof Text.H3>,
+  'items'
+> & {
   products: Product[];
   isLoaded: boolean;
 };

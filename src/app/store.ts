@@ -7,6 +7,7 @@ import { preferencesSlice } from './features/preferences/preferencesSlice';
 import { phonesSlice } from './features/detailedProduct/phones/phonesSlice';
 import { tabletsSlice } from './features/detailedProduct/tablets/tabletsSlice';
 import { accessoriesSlice } from './features/detailedProduct/accessories/accessoriesSlice';
+import { listenerMiddleware } from './listenerMiddleware';
 
 export const store = configureStore({
   reducer: {
@@ -18,6 +19,7 @@ export const store = configureStore({
     [tabletsSlice.name]: tabletsSlice.reducer,
     [accessoriesSlice.name]: accessoriesSlice.reducer,
   },
+  middleware: gDM => gDM().prepend(listenerMiddleware.middleware),
 });
 
 export type AppState = ReturnType<typeof store.getState>;

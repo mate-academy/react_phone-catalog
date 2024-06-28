@@ -1,2 +1,2 @@
 export * from './selectors';
-export * from './useTablets';
+export * from './fetchTablets';

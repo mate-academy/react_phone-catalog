@@ -8,7 +8,7 @@ import { Tablet } from '../../../../types';
 export const fetchTablets = createAsyncThunk<Tablet[]>(
   'tablets/fetch',
   async (_arg, api) => {
-    await delay(1000);
+    await delay(300);
 
     const response = await fetch('api/tablets.json', {
       signal: api.signal,

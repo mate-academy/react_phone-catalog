@@ -7,7 +7,7 @@ import { AppState } from '../../store';
 export const fetchProducts = createAsyncThunk<Product[]>(
   'products/fetch',
   async (_arg, api) => {
-    await delay(1000);
+    await delay(300);
 
     const response = await fetch('api/products.json', {
       signal: api.signal,

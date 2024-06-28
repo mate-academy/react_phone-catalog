@@ -1,7 +1,8 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { FC } from 'react';
 
-import { selectAccessories, useProducts } from '../../app/features/products';
+import { fetchProducts, selectAccessories } from '../../app/features/products';
+import { useFetchedData } from '../../hooks/useFetchedData';
 import { Container } from '../shared/Container';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { useCategory } from './hooks/useCategory';
@@ -15,7 +16,10 @@ import classes from './category.module.scss';
 type Props = {};
 
 export const Accessories: FC<Props> = ({}) => {
-  const { products, status } = useProducts(selectAccessories);
+  const { products, status } = useFetchedData(
+    fetchProducts(),
+    selectAccessories,
+  );
   const { preparedProducts, filteredProducts, numberOfPages } =
     useCategory(products);
 

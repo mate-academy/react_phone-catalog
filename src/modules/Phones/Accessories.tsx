@@ -1,17 +1,18 @@
 /* eslint-disable @typescript-eslint/no-throw-literal */
 /* eslint-disable  @typescript-eslint/indent */
 import React, { FC } from 'react';
-import { useParams } from 'react-router-dom';
 import cn from 'classnames';
 
 import {
-  useAccessories,
+  fetchAccessories,
   selectAccessories,
 } from '../../app/features/detailedProduct/accessories';
+import { useFetchedData } from '../../hooks/useFetchedData';
 import { getSpecsFromObject } from '../shared/ui/SpecsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { Container } from '../shared/Container';
 import { LinkBack } from '../shared/LinkBack';
+import { useFoundProduct } from './hooks/useFoundProduct';
 import { ActionButtons } from './components/ActionButtons';
 import { AvailableOptions } from './components/AvailableOptions';
 import { AvailableColors } from './components/AvailableColors';
@@ -26,30 +27,25 @@ import classes from './phones.module.scss';
 
 type Props = {};
 
-export const Accessories: FC<Props> = ({}) => {
-  const { status, accessories } = useAccessories(selectAccessories);
-  const { productId } = useParams();
-
-  const currentAccessory = accessories.find(
-    accessory => accessory.id === productId,
+export const AccessoryDetails: FC<Props> = ({}) => {
+  const { status, accessories } = useFetchedData(
+    fetchAccessories(),
+    selectAccessories,
   );
   const isLoaded = status === 'fulfilled';
-
-  if (isLoaded && !currentAccessory) {
-    throw new Response('Not found', { status: 404 });
-  }
+  const accessory = useFoundProduct(accessories, isLoaded);
 
   const mainSpecs = getSpecsFromObject({
-    Screen: currentAccessory?.screen || '',
-    Resolution: currentAccessory?.resolution || '',
-    Processor: currentAccessory?.processor || '',
-    RAM: currentAccessory?.ram || '',
+    Screen: accessory?.screen || '',
+    Resolution: accessory?.resolution || '',
+    Processor: accessory?.processor || '',
+    RAM: accessory?.ram || '',
   });
 
   const allSpecs = mainSpecs.concat(
     getSpecsFromObject({
-      'Built in memory': currentAccessory?.capacity || '',
-      Cell: currentAccessory?.cell.join(', ') || '',
+      'Built in memory': accessory?.capacity || '',
+      Cell: accessory?.cell.join(', ') || '',
     }),
   );
 
@@ -58,19 +54,20 @@ export const Accessories: FC<Props> = ({}) => {
       <Breadcrumbs className={classes.page__breadCrumbs} />
       <LinkBack className={classes.page__linkBack} />
       <Title isLoaded={isLoaded} className={classes.page__title}>
-        {currentAccessory?.name}
+        {accessory?.name}
       </Title>
       <Display
+        key={accessory?.id}
         className={classes.page__mainInfo}
         isLoaded={isLoaded}
-        images={currentAccessory?.images || []}
-        extraSlot={productId && <ProductId productId={productId} />}
+        images={accessory?.images || []}
+        extraSlot={<ProductId productId={accessory?.id || ''} />}
         info={
           <>
             <AvailableColors
               className={classes.page__options}
-              productId={currentAccessory?.id || ''}
-              colors={currentAccessory?.colorsAvailable || []}
+              productId={accessory?.id || ''}
+              colors={accessory?.colorsAvailable || []}
               isLoaded={isLoaded}
             />
             <AvailableOptions
@@ -79,19 +76,19 @@ export const Accessories: FC<Props> = ({}) => {
                 classes.page__options,
                 classes.page__options_capacity,
               )}
-              options={currentAccessory?.capacityAvailable || []}
-              productId={currentAccessory?.id || ''}
+              options={accessory?.capacityAvailable || []}
+              productId={accessory?.id || ''}
               isLoaded={isLoaded}
             />
             <Prices
               className={classes.page__prices}
               isLoaded={isLoaded}
-              regularPrice={currentAccessory?.priceRegular || 0}
-              discountPrice={currentAccessory?.priceDiscount}
+              regularPrice={accessory?.priceRegular || 0}
+              discountPrice={accessory?.priceDiscount}
             />
             <ActionButtons
               className={classes.page__actionButtons}
-              productId={currentAccessory?.id || ''}
+              productId={accessory?.id || ''}
               isLoaded={isLoaded}
             />
             <MainSpecList
@@ -104,11 +101,14 @@ export const Accessories: FC<Props> = ({}) => {
       />
       <Description
         className={classes.page__description}
-        about={currentAccessory?.description || []}
+        about={accessory?.description || []}
         isLoaded={isLoaded}
         specs={allSpecs}
       />
-      <SuggestedProducts className={classes.page__suggestedProducts} />
+      <SuggestedProducts
+        productId={accessory?.id || ''}
+        className={classes.page__suggestedProducts}
+      />
     </Container>
   );
 };

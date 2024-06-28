@@ -2,6 +2,7 @@ import React, { ComponentPropsWithoutRef, FC } from 'react';
 
 import { Product } from '../../../types';
 import { selectInCart, useCart } from '../../../app/features/cart';
+import { useAppSelector } from '../../../app/hooks';
 import {
   selectFavourites,
   useFavourites,
@@ -18,8 +19,10 @@ export const ProductCard: FC<Props> = ({
   showFullPrice = false,
   ...props
 }) => {
-  const [favourites, { toggle }] = useFavourites(selectFavourites);
-  const [inCart, { addToCart }] = useCart(selectInCart);
+  const { items: favourites } = useAppSelector(selectFavourites);
+  const inCart = useAppSelector(selectInCart);
+  const { toggle } = useFavourites();
+  const { addToCart } = useCart();
   const isFavourite = favourites.includes(product.itemId);
   const isInCart = Boolean(inCart[product.itemId]);
 

@@ -11,6 +11,7 @@ import { Checkbox } from '../../../shared/ui/Checkbox';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { Icon } from '../../../shared/ui/Icon';
 import classes from './actionButtons.module.scss';
+import { useAppSelector } from '../../../../app/hooks';
 
 type Props = ComponentPropsWithoutRef<'div'> & {
   productId: string;
@@ -23,8 +24,10 @@ export const ActionButtons: FC<Props> = ({
   isLoaded,
   ...props
 }) => {
-  const [favourites, { toggle }] = useFavourites(selectFavourites);
-  const [inCart, { addToCart }] = useCart(selectInCart);
+  const { items: favourites } = useAppSelector(selectFavourites);
+  const inCart = useAppSelector(selectInCart);
+  const { toggle } = useFavourites();
+  const { addToCart } = useCart();
 
   const isFavourite = favourites.includes(productId || '');
   const isInCart = Boolean(inCart[productId || '']);

@@ -4,9 +4,10 @@ import { Link } from 'react-router-dom';
 import cn from 'classnames';
 
 import {
+  fetchProducts,
   selectAccessories,
-  useProducts,
 } from '../../../../app/features/products';
+import { useFetchedData } from '../../../../hooks/useFetchedData';
 import { Text } from '../../../shared/ui/Text';
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { IMG } from './variables';
@@ -15,7 +16,10 @@ import classes from './categories.module.scss';
 type Props = {};
 
 export const CategoriesAccessories: FC<Props> = ({}) => {
-  const { products, status } = useProducts(selectAccessories);
+  const { products, status } = useFetchedData(
+    fetchProducts(),
+    selectAccessories,
+  );
 
   return (
     <div className={classes.categories__item}>

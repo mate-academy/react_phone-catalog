@@ -1,12 +1,13 @@
 import { createSelector } from '@reduxjs/toolkit';
 import { AppState } from '../../store';
-import { Category, Product } from '../../../types';
+import { shuffle } from '../../../utils/shuffle';
 
-export const selectProducts = (state: AppState) => state.products.products;
-export const selectProductsInfo = (state: AppState) => state.products;
-export const selectNewProducts = createSelector([selectProducts], products =>
-  [...products]
-    .sort((a, b) => {
+export const selectProducts = (state: AppState) => state.products;
+export const selectNewProducts = createSelector(
+  [selectProducts],
+  productsInfo => ({
+    ...productsInfo,
+    products: [...productsInfo.products].sort((a, b) => {
       const yearDifference = b.year - a.year;
 
       if (!yearDifference) {
@@ -14,12 +15,14 @@ export const selectNewProducts = createSelector([selectProducts], products =>
       }
 
       return yearDifference;
-    })
-    .slice(0, 15),
+    }),
+  }),
 );
-export const selectHotPrices = createSelector([selectProducts], products =>
-  [...products]
-    .sort((a, b) => {
+export const selectHotPrices = createSelector(
+  [selectProducts],
+  productsInfo => ({
+    ...productsInfo,
+    products: [...productsInfo.products].sort((a, b) => {
       const discount = b.fullPrice - b.price - (a.fullPrice - a.price);
 
       if (!discount) {
@@ -27,24 +30,37 @@ export const selectHotPrices = createSelector([selectProducts], products =>
       }
 
       return discount;
-    })
-    .slice(0, 15),
+    }),
+  }),
 );
 
-export const selectPhones = createSelector([selectProducts], products =>
-  products.filter(product => product.category === 'phones'),
-);
+export const selectPhones = createSelector([selectProducts], productsInfo => ({
+  ...productsInfo,
+  products: productsInfo.products.filter(
+    product => product.category === 'phones',
+  ),
+}));
 
-export const selectAccessories = createSelector([selectProducts], products =>
-  products.filter(product => product.category === 'accessories'),
+export const selectAccessories = createSelector(
+  [selectProducts],
+  productsInfo => ({
+    ...productsInfo,
+    products: productsInfo.products.filter(
+      product => product.category === 'accessories',
+    ),
+  }),
 );
-export const selectTablets = createSelector([selectProducts], products =>
-  products.filter(product => product.category === 'tablets'),
-);
+export const selectTablets = createSelector([selectProducts], productsInfo => ({
+  ...productsInfo,
+  products: productsInfo.products.filter(
+    product => product.category === 'tablets',
+  ),
+}));
 
-export const SELECT_CATEGORY: Record<Category, (state: AppState) => Product[]> =
-  {
-    accessories: selectAccessories,
-    phones: selectPhones,
-    tablets: selectTablets,
-  };
+export const selectShuffledProducts = createSelector(
+  [selectProducts],
+  productsInfo => ({
+    ...productsInfo,
+    products: shuffle(productsInfo.products),
+  }),
+);
