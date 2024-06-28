@@ -5,7 +5,8 @@ function wait(delay: number) {
   });
 }
 
-export const BASE_API_URL = 'http://localhost:3000/api/';
+export const BASE_API_URL =
+  'https://serhiivoitiuk.github.io/react_phone-catalog/api/';
 
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
