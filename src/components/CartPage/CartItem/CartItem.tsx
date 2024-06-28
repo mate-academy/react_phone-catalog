@@ -22,7 +22,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
     const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
     const updatedCart = currentCart.filter(
-      (elem: Product) => elem.itemId !== item.itemId,
+      (elem: Product) => elem.itemId !== item.itemId
     );
 
     localStorage.setItem('cart', JSON.stringify(updatedCart));
@@ -62,7 +62,7 @@ const CartItem: React.FC<Props> = ({ item }) => {
             className={classNames(
               'cart-item__minus',
               'cart-item__controller--button',
-              { 'cart-item__button-disabled': isMinusDisabled },
+              { 'cart-item__button-disabled': isMinusDisabled }
             )}
             onClick={() => handleMinusItem()}
           >

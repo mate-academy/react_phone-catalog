@@ -4,6 +4,7 @@ import products from 'src/api/products.json';
 import phones from 'src/api/phones.json';
 import tablets from 'src/api/tablets.json';
 import accessories from 'src/api/accessories.json';
+import { PageType } from 'src/types/PageType';
 
 function wait(delay: number): Promise<void> {
   return new Promise(resolve => setTimeout(resolve, delay));
@@ -35,14 +36,14 @@ export async function getDetailedPhones(): Promise<Details[]> {
 
 export function getSelectedItem(category: string, itemId: string) {
   switch (category) {
-    case 'Tablets':
+    case PageType.Tablets:
       return getDetailedTablets().then(item => {
         const selectedItem = item.find(product => product.id === itemId);
 
         return selectedItem;
       });
 
-    case 'Accessories':
+    case PageType.Accessories:
       return getDetailedAccessories().then(item => {
         const selectedItem = item.find(product => product.id === itemId);
 
@@ -62,7 +63,7 @@ export function getItemByParameters(
   category: string,
   name: string,
   color: string,
-  capacity: string,
+  capacity: string
 ) {
   switch (category) {
     case 'Tablets':
@@ -71,8 +72,8 @@ export function getItemByParameters(
           product =>
             product.namespaceId === name &&
             product.color === color &&
-            product.capacity === capacity,
-        ),
+            product.capacity === capacity
+        )
       );
     case 'Accessories':
       return getDetailedAccessories().then(items =>
@@ -80,8 +81,8 @@ export function getItemByParameters(
           product =>
             product.namespaceId === name &&
             product.color === color &&
-            product.capacity === capacity,
-        ),
+            product.capacity === capacity
+        )
       );
     default:
       return getDetailedPhones().then(items =>
@@ -89,8 +90,8 @@ export function getItemByParameters(
           product =>
             product.namespaceId === name &&
             product.color === color &&
-            product.capacity === capacity,
-        ),
+            product.capacity === capacity
+        )
       );
   }
 }

@@ -1,30 +1,37 @@
 import classNames from 'classnames';
-import React from 'react';
+import React, { useContext } from 'react';
 import './CapacitySectionStyle.scss';
-
+import { Details } from 'src/types/Details';
+import { ActionTypes } from 'src/types/ActionTypes';
+import { DispatchContext } from 'src/store';
+import { getSelectedItem } from 'src/components/ui/utils/api/api';
 interface Props {
-  capacity: string[];
-  handleSetCapacity: (arg: string) => void;
-  selectedCapacity: string;
+  selectedProduct: Details;
 }
 
-const CapacitySection: React.FC<Props> = ({
-  capacity,
-  handleSetCapacity,
-  selectedCapacity,
-}) => {
+const CapacitySection: React.FC<Props> = ({ selectedProduct }) => {
+  const dispatch = useContext(DispatchContext);
+  const { namespaceId, color, category, capacityAvailable, capacity } =
+    selectedProduct;
+
   const handleClick = (elem: string) => {
-    handleSetCapacity(elem);
+    const idForDispatch = `${namespaceId}-${elem}-${color}`.toLowerCase();
+
+    getSelectedItem(category, idForDispatch).then(payload => {
+      if (payload) {
+        dispatch({ type: ActionTypes.AddSelectedProduct, payload });
+      }
+    });
   };
 
   return (
     <>
       <div className="details__capacity--title">Select capacity</div>
       <div className="details__capacity--items">
-        {capacity.map(elem => (
+        {capacityAvailable.map(elem => (
           <button
             className={classNames('details__capacity--item', {
-              'selected-capacity': elem === selectedCapacity,
+              'selected-capacity': elem === capacity,
             })}
             key={elem}
             onClick={() => handleClick(elem)}

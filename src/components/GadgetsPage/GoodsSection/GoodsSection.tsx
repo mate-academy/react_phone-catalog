@@ -31,7 +31,7 @@ const GoodsSection: React.FC<Props> = ({ cards, filters, type }) => {
   // Effect to sort cards
   useEffect(() => {
     const sorted = [...cards].sort((a, b) =>
-      sortBy === 'newest' ? b.year - a.year : a.year - b.year,
+      sortBy === 'newest' ? b.year - a.year : a.year - b.year
     );
     setSortedCards(sorted);
   }, [cards, sortBy]);

@@ -11,6 +11,6 @@ export type State = {
   accessories: Details[];
   favourites: Product[];
   cart: Product[];
-  selectedProduct: Product | null;
+  selectedProduct: Details | null;
   isLoading: boolean;
 };

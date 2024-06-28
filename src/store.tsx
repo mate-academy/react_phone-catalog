@@ -80,7 +80,7 @@ const rootReducer = (state: State = initialState, action: Action): State => {
 
     case ActionTypes.AddToCart:
       const selectedProduct = state.products.filter(
-        elem => elem.itemId === action.payload.id,
+        elem => elem.itemId === action.payload.id
       );
       //set amount to 1 for next manipulations with amount of product in cart
       const newObj = {
@@ -139,14 +139,15 @@ const rootReducer = (state: State = initialState, action: Action): State => {
       return { ...state, selectedProduct: action.payload };
 
     case ActionTypes.SetIsLoading:
-      // return { ...state, isLoading: action.value };
-      return state;
+      return { ...state, isLoading: action.payload.value };
     case ActionTypes.ClearCart:
       return { ...state, cart: [] };
     case ActionTypes.SetCart:
       return { ...state, cart: [...action.payload] };
     case ActionTypes.SetFavourites:
       return { ...state, favourites: [...action.payload] };
+    case ActionTypes.SetMenu:
+      return { ...state, isMenuOpen: action.payload.value };
     case ActionTypes.FindProduct:
       return state;
     default:
@@ -156,7 +157,7 @@ const rootReducer = (state: State = initialState, action: Action): State => {
 
 export const StateContext = createContext<State>(initialState);
 export const DispatchContext = createContext<(action: Action) => void>(
-  () => {},
+  () => {}
 );
 
 type Props = {
@@ -175,7 +176,7 @@ export const GlobalStateProvider: React.FC<Props> = ({ children }) => {
         dispatch({ type: ActionTypes.SetHotPrices });
       })
       .finally(() =>
-        dispatch({ type: ActionTypes.SetIsLoading, payload: { value: false } }),
+        dispatch({ type: ActionTypes.SetIsLoading, payload: { value: false } })
       );
   }, []);
 

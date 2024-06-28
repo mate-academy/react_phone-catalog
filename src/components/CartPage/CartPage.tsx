@@ -1,14 +1,16 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import CartItem from './CartItem/CartItem';
 import './CartPageStyle.scss';
 import { StateContext } from 'src/store';
 import { useNavigate } from 'react-router-dom';
 import AnimatedTitle from '../ui/AnimatedTitle/AnimatedTitle';
+import Modal from './Modal/Modal';
 
 const CartPage = () => {
   const { cart } = useContext(StateContext);
   const navigate = useNavigate();
   const isItems = cart.length > 0;
+  const [activeMoval, setActiveModal] = useState(false);
 
   const priceOfGadgets = cart.reduce((acc, cur) => {
     return acc + cur.fullPrice * cur.amount;
@@ -22,8 +24,13 @@ const CartPage = () => {
     navigate(-1);
   };
 
+  const handleSetModal = () => {
+    setActiveModal(false);
+  };
+
   return (
     <div className="cartPage container">
+      {activeMoval && <Modal handleSetModal={handleSetModal} />}
       <div className="cartPage__wrapper">
         <div className="cartPage__main">
           <button className="cartPage__back" onClick={() => goBack()}>
@@ -60,7 +67,12 @@ const CartPage = () => {
             </div>
           </div>
           <hr className="cartPage__line" />
-          <button className="cartPage__button-checkout">checkout</button>
+          <button
+            className="cartPage__button-checkout"
+            onClick={() => setActiveModal(true)}
+          >
+            checkout
+          </button>
         </div>
       </div>
     </div>

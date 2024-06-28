@@ -14,10 +14,11 @@ export type Action =
   | { type: ActionTypes.RemoveFromCart; payload: { id: string } }
   | { type: ActionTypes.PlusOneItem; payload: { id: string } }
   | { type: ActionTypes.MinusOneItem; payload: { id: string } }
-  | { type: ActionTypes.AddSelectedProduct; payload: Product }
+  | { type: ActionTypes.AddSelectedProduct; payload: Details }
   | { type: ActionTypes.SetIsLoading; payload: { value: boolean } }
   | { type: ActionTypes.ClearCart }
   | { type: ActionTypes.SetCart; payload: Product[] }
   | { type: ActionTypes.SetFavourites; payload: Product[] }
   | { type: ActionTypes.FindProduct; payload: { path: string; value: string } }
-  | { type: ActionTypes.RemoveFromfavourite; payload: { id: string } };
+  | { type: ActionTypes.RemoveFromfavourite; payload: { id: string } }
+  | { type: ActionTypes.SetMenu; payload: { value: boolean } };

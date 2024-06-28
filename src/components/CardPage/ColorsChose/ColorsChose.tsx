@@ -1,38 +1,57 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './colorShoseStyle.scss';
 import classNames from 'classnames';
+import { Details } from 'src/types/Details';
+import { DispatchContext } from 'src/store';
+import { getSelectedItem } from 'src/components/ui/utils/api/api';
+import { Link } from 'react-router-dom';
+import { removeSpaces } from 'src/components/ui/utils/removeSpaces';
+import { ActionTypes } from 'src/types/ActionTypes';
 
 interface Props {
-  colors: string[];
-  handleSetColor: (variable: string) => void;
-  chosenColor: string;
+  selectedProduct: Details;
 }
 
-const ColorsChose: React.FC<Props> = ({
-  colors,
-  handleSetColor,
-  chosenColor,
-}) => {
-  const handleClick = (elem: string) => {
-    handleSetColor(elem);
+const ColorsChose: React.FC<Props> = ({ selectedProduct }) => {
+  const dispatch = useContext(DispatchContext);
+  // const navigate = useNavigate();
+  const { colorsAvailable, color, category, capacity, namespaceId } =
+    selectedProduct;
+
+  const handleOnColorChange = (itemColor: string, e: React.MouseEvent) => {
+    e.stopPropagation();
+    e.preventDefault();
+    const idForDispatch =
+      `${namespaceId}-${capacity}-${itemColor}`.toLowerCase();
+
+    getSelectedItem(category, idForDispatch).then(payload => {
+      if (payload) {
+        dispatch({ type: ActionTypes.AddSelectedProduct, payload });
+      }
+    });
   };
 
   return (
     <div className="details__colors">
-      {colors.map(elem => (
-        <button
-          className={classNames('details__colors--item', {
-            'chosen-color': elem === chosenColor,
-          })}
-          key={elem}
-          onClick={() => handleClick(elem)}
-        >
-          <div
-            className="details__colors--inner"
-            style={{ backgroundColor: elem }}
-          ></div>
-        </button>
-      ))}
+      {colorsAvailable.map(elem => {
+        const correctedItem = removeSpaces(elem);
+
+        return (
+          <Link
+            className={classNames('details__colors--item', {
+              'chosen-color': elem === color,
+            })}
+            to={`../${namespaceId}-${capacity.toLowerCase()}-${correctedItem}`}
+            key={elem}
+            onClick={e => handleOnColorChange(correctedItem, e)}
+          >
+            <div
+              className="details__colors--inner"
+              style={{ backgroundColor: elem }}
+            ></div>
+          </Link>
+        );
+      })}
     </div>
   );
 };

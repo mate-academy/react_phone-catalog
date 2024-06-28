@@ -3,13 +3,9 @@ import './CardPageStyle.scss';
 import AdressLine from '../ui/adressLine/AdressLine';
 import ColorsChose from './ColorsChose/ColorsChose';
 import CapacitySection from './CapacitySection/CapacitySection';
-import { Details } from 'src/types/Details';
-import {
-  getItemByParameters,
-  getSelectedItem,
-} from 'src/components/ui/utils/api/api';
+import { getSelectedItem } from 'src/components/ui/utils/api/api';
 import PicturesContloller from './PicturesController/PicturesController';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import Loader from '../ui/Loader/Loader';
 import CardSlider from '../CardSlider/CardSlider';
 import { DispatchContext, StateContext } from 'src/store';
@@ -19,120 +15,75 @@ import {
   handleRemoveFromCart,
   handleRemoveFromFavourite,
 } from './index';
+import { ActionTypes } from 'src/types/ActionTypes';
+import { getId } from '../ui/utils/getId';
 
 interface Props {
   type: string;
 }
 
 const CardPage: React.FC<Props> = ({ type }) => {
-  const [detailsCard, setDetailsCard] = useState<Details | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  const { brandNewModels, cart, favourites, selectedProduct } =
-    useContext(StateContext);
-  const dispatch = useContext(DispatchContext);
-  const idOfProduct = selectedProduct && selectedProduct.id;
-
-  const [selectedColor, setSelectedColor] = useState<string | null>(null);
-  const [selectedCapacity, setSelectedCapacity] = useState<string | null>(null);
-
-  const isLiked = detailsCard
-    ? favourites.some(elem => elem.itemId === detailsCard.id)
-    : false;
-  const addedToCart = detailsCard
-    ? cart.some(elem => elem.itemId === detailsCard.id)
-    : false;
   const { idProduct } = useParams<{ idProduct: string }>();
+  const location = useLocation().pathname.split('/')[1];
+
+  const {
+    brandNewModels,
+    cart,
+    favourites,
+    selectedProduct,
+    isLoading,
+    products,
+  } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
+  const [hasError, setHasError] = useState(false);
+
+  const isLiked = selectedProduct
+    ? favourites.some(elem => elem.itemId === selectedProduct.id)
+    : false;
+  const addedToCart = selectedProduct
+    ? cart.some(elem => elem.itemId === selectedProduct.id)
+    : false;
+
   const navigate = useNavigate();
 
-  const fetchProduct = () => {
-    if (type && idProduct) {
-      setIsLoading(true);
-      getSelectedItem(type, idProduct)
-        .then(data => {
-          if (data) {
-            setDetailsCard(data);
-            setSelectedColor(data.color || null);
-            setSelectedCapacity(data.capacity || null);
-          } else {
-            setDetailsCard(null);
+  useEffect(() => {
+    dispatch({ type: ActionTypes.SetIsLoading, payload: { value: true } });
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
+    if (idProduct) {
+      getSelectedItem(location, idProduct)
+        .then(payload => {
+          if (payload) {
+            dispatch({ type: ActionTypes.AddSelectedProduct, payload });
           }
         })
         .catch(() => {
-          // console.error('Error fetching selected item:', error);
+          setHasError(true);
         })
         .finally(() => {
-          setIsLoading(false);
+          dispatch({
+            type: ActionTypes.SetIsLoading,
+            payload: { value: false },
+          });
         });
     }
-  };
-
-  useEffect(() => {
-    fetchProduct();
-  }, [idProduct]);
-
-  const changeProduct = (newProductName: string) => {
-    if (detailsCard) {
-      navigate(`/${type}/${newProductName}`, { replace: true });
-    }
-  };
-
-  const handleSetColor = (chosenColor: string) => {
-    setIsLoading(true);
-
-    if (detailsCard && chosenColor !== selectedColor) {
-      setSelectedColor(chosenColor);
-
-      getItemByParameters(
-        type,
-        detailsCard.namespaceId,
-        chosenColor,
-        selectedCapacity || detailsCard.capacity,
-      )
-        .then(data => {
-          changeProduct((data as Details).id);
-          setDetailsCard(data || null);
-        })
-        .catch(() => {
-          // console.error('Error fetching selected item by color:', error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  };
-
-  const handleSetCapacity = (chosenCapacity: string) => {
-    if (detailsCard && chosenCapacity !== selectedCapacity) {
-      setSelectedCapacity(chosenCapacity);
-      setIsLoading(true);
-
-      getItemByParameters(
-        type,
-        detailsCard.namespaceId,
-        selectedColor || detailsCard.color,
-        chosenCapacity,
-      )
-        .then(data => {
-          changeProduct((data as Details).id);
-          setDetailsCard(data || null);
-        })
-        .catch(() => {
-          // console.error('Error fetching selected item by capacity:', error);
-        })
-        .finally(() => {
-          setIsLoading(false);
-        });
-    }
-  };
+  }, [idProduct, dispatch, location]);
 
   const goBack = () => {
     navigate(-1);
   };
 
+  if (!selectedProduct || isLoading) {
+    return <Loader />;
+  }
+
   return (
     <div className="cardpage">
-      {!isLoading && detailsCard ? (
+      {/* {hasError && !isLoading && } */}
+      {!isLoading && !hasError && (
         <div className="cardpage__wrapper container">
           <AdressLine />
           <button className="cardpage__back" onClick={() => goBack()}>
@@ -143,30 +94,27 @@ const CardPage: React.FC<Props> = ({ type }) => {
             />
             <div className="cardpage__back--text">Back</div>
           </button>
-          <h2 className="cardpage__title">{detailsCard.name}</h2>
+          <h2 className="cardpage__title">{selectedProduct.name}</h2>
           <div className="cardpage__main">
-            <PicturesContloller urls={detailsCard.images} />
+            <PicturesContloller urls={selectedProduct.images} />
             <div className="cardpage__main--details details">
               <div className="details__wrapper">
                 <div className="details__text">
                   <div className="details__title">Available colors</div>
-                  <div className="details__sub-title">ID : {idOfProduct}</div>
+                  <div className="details__sub-title">
+                    {`ID: ${getId(
+                      selectedProduct.category, 
+                      products, 
+                      selectedProduct.id)}`}
+                  </div>
                 </div>
                 <div className="details__inner">
                   <div className="details__colors">
-                    <ColorsChose
-                      colors={detailsCard.colorsAvailable}
-                      handleSetColor={handleSetColor}
-                      chosenColor={selectedColor || ''}
-                    />
+                    <ColorsChose selectedProduct={selectedProduct} />
                   </div>
                   <hr className="details__first-line" />
                   <div className="details__capacity">
-                    <CapacitySection
-                      capacity={detailsCard.capacityAvailable}
-                      handleSetCapacity={handleSetCapacity}
-                      selectedCapacity={selectedCapacity || ''}
-                    />
+                    <CapacitySection selectedProduct={selectedProduct} />
                   </div>
                   <hr className="details__second-line" />
                   <div className="details__price">
@@ -178,7 +126,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                       <button
                         className="details__buttons--add added-to-cart"
                         onClick={() =>
-                          handleRemoveFromCart(dispatch, detailsCard)
+                          handleRemoveFromCart(dispatch, selectedProduct)
                         }
                       >
                         Added
@@ -186,7 +134,9 @@ const CardPage: React.FC<Props> = ({ type }) => {
                     ) : (
                       <button
                         className="details__buttons--add"
-                        onClick={() => handleAddToCart(dispatch, detailsCard)}
+                        onClick={() =>
+                          handleAddToCart(dispatch, selectedProduct)
+                        }
                       >
                         Add to cart
                       </button>
@@ -195,7 +145,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                       <button
                         className="details__buttons--like"
                         onClick={() =>
-                          handleAddFavourite(dispatch, detailsCard)
+                          handleAddFavourite(dispatch, selectedProduct)
                         }
                       >
                         <img src="icons/like.svg" alt="" />
@@ -204,7 +154,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                       <button
                         className="details__buttons--like addded-to-favourite"
                         onClick={() =>
-                          handleRemoveFromFavourite(dispatch, detailsCard)
+                          handleRemoveFromFavourite(dispatch, selectedProduct)
                         }
                       >
                         <img src="icons/liked.svg" alt="" />
@@ -213,10 +163,10 @@ const CardPage: React.FC<Props> = ({ type }) => {
                   </div>
                   <div className="details__information">
                     {Object.entries({
-                      Screen: detailsCard.screen,
-                      Resolution: detailsCard.resolution,
-                      Processor: detailsCard.processor,
-                      RAM: detailsCard.ram,
+                      Screen: selectedProduct.screen,
+                      Resolution: selectedProduct.resolution,
+                      Processor: selectedProduct.processor,
+                      RAM: selectedProduct.ram,
                     }).map(([key, value]) => (
                       <div className="details__information--section" key={key}>
                         <div className="details__information--title">{key}</div>
@@ -235,7 +185,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
               <h3 className="cardpage__section--title">About</h3>
               <hr className="cardpage__sections--line" />
             </div>
-            {detailsCard.description.map(elem => (
+            {selectedProduct.description.map(elem => (
               <div className="cardpage__section" key={elem.title}>
                 <h4 className="cardpage__section--title">{elem.title}</h4>
                 {elem.text.map(Item => (
@@ -250,14 +200,14 @@ const CardPage: React.FC<Props> = ({ type }) => {
               <hr className="cardpage__tech--line" />
               <div className="cardpage__tech--specs">
                 {Object.entries({
-                  Screen: detailsCard.screen,
-                  Resolution: detailsCard.resolution,
-                  Processor: detailsCard.processor,
-                  RAM: detailsCard.ram,
-                  'Built in Memory': selectedCapacity,
-                  Camera: detailsCard.camera,
-                  Zoom: detailsCard.zoom,
-                  Cell: detailsCard.cell,
+                  Screen: selectedProduct.screen,
+                  Resolution: selectedProduct.resolution,
+                  Processor: selectedProduct.processor,
+                  RAM: selectedProduct.ram,
+                  'Built in Memory': selectedProduct.capacity,
+                  Camera: selectedProduct.camera,
+                  Zoom: selectedProduct.zoom,
+                  Cell: selectedProduct.cell,
                 }).map(
                   ([key, value]) =>
                     value && (
@@ -269,7 +219,7 @@ const CardPage: React.FC<Props> = ({ type }) => {
                           {value}
                         </div>
                       </div>
-                    ),
+                    )
                 )}
               </div>
             </div>
@@ -280,8 +230,6 @@ const CardPage: React.FC<Props> = ({ type }) => {
             />
           </div>
         </div>
-      ) : (
-        <Loader />
       )}
     </div>
   );

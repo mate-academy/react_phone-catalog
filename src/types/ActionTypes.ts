@@ -17,4 +17,5 @@ export enum ActionTypes {
   SetFavourites = 'setFavourites',
   FindProduct = 'findProduct',
   SetBrandNewModels = 'setBrandNewModels',
+  SetMenu = 'MenuSet',
 }

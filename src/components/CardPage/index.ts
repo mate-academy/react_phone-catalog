@@ -7,7 +7,7 @@ export const handleAddToCart = (dispatch: Dispatch<any>, data: Details) => {
   dispatch({ type: ActionTypes.AddToCart, payload: { id: data.id } });
   const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
   const isItemInCart = currentCart.some(
-    (item: Product) => item.itemId === data.id,
+    (item: Product) => item.itemId === data.id
   );
 
   if (!isItemInCart) {
@@ -19,14 +19,14 @@ export const handleAddToCart = (dispatch: Dispatch<any>, data: Details) => {
 
 export const handleRemoveFromCart = (
   dispatch: Dispatch<any>,
-  data: Details,
+  data: Details
 ) => {
   dispatch({ type: ActionTypes.RemoveFromCart, payload: { id: data.id } });
 
   const currentCart = JSON.parse(localStorage.getItem('cart') || '[]');
 
   const updatedCart = currentCart.filter(
-    (item: Product) => item.itemId !== data.id,
+    (item: Product) => item.itemId !== data.id
   );
   localStorage.setItem('cart', JSON.stringify(updatedCart));
 };
@@ -36,7 +36,7 @@ export const handleAddFavourite = (dispatch: Dispatch<any>, data: Details) => {
 
   const currentCart = JSON.parse(localStorage.getItem('favourites') || '[]');
   const isItemInCart = currentCart.some(
-    (item: Product) => item.itemId === data.id,
+    (item: Product) => item.itemId === data.id
   );
 
   if (!isItemInCart) {
@@ -47,14 +47,14 @@ export const handleAddFavourite = (dispatch: Dispatch<any>, data: Details) => {
 
 export const handleRemoveFromFavourite = (
   dispatch: Dispatch<any>,
-  data: Details,
+  data: Details
 ) => {
   dispatch({ type: ActionTypes.RemoveFromfavourite, payload: { id: data.id } });
 
   const currentCart = JSON.parse(localStorage.getItem('favourites') || '[]');
 
   const updatedCart = currentCart.filter(
-    (item: Product) => item.itemId !== data.id,
+    (item: Product) => item.itemId !== data.id
   );
   localStorage.setItem('favourites', JSON.stringify(updatedCart));
 };

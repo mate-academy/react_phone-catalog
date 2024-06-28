@@ -1,19 +1,18 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import './BurgerMenuStyles.scss';
 import { PageType } from 'src/types/PageType';
 import { Link } from 'react-router-dom';
 import Cart from '../ActiveIcons/Cart/Cart';
 import Favourite from '../ActiveIcons/Favourite/Favourite';
+import { DispatchContext, StateContext } from 'src/store';
+import { ActionTypes } from 'src/types/ActionTypes';
 
 const BurgerMenu = () => {
-  const [activeBurger, setActiveBurger] = useState(false);
+  const { isMenuOpen } = useContext(StateContext);
+  const dispatch = useContext(DispatchContext);
 
   const handleClick = (arg: boolean) => {
-    setActiveBurger(arg);
-  };
-
-  const handlecloseMenu = () => {
-    setActiveBurger(false);
+    dispatch({ type: ActionTypes.SetMenu, payload: { value: arg } });
   };
 
   return (
@@ -27,7 +26,7 @@ const BurgerMenu = () => {
               className="burger__logo--image"
             />
           </div>
-          {activeBurger && (
+          {isMenuOpen && (
             <div className="burger__container active--burger">
               <div className="burger__header">
                 <div className="burger__header--logo">
@@ -50,14 +49,14 @@ const BurgerMenu = () => {
               <nav className="burger__nav-wrapper">
                 <ul className="burger__nav-List menu--text">
                   <li className="burger__nav-List--Item">
-                    <Link to="/" onClick={() => handlecloseMenu()}>
+                    <Link to="/" onClick={() => handleClick(false)}>
                       HOME
                     </Link>
                   </li>
                   <li className="burger__nav-List--Item">
                     <Link
                       to={PageType.Accessories}
-                      onClick={() => handlecloseMenu()}
+                      onClick={() => handleClick(false)}
                     >
                       PHONES
                     </Link>
@@ -65,7 +64,7 @@ const BurgerMenu = () => {
                   <li className="burger__nav-List--Item">
                     <Link
                       to={PageType.Tablets}
-                      onClick={() => handlecloseMenu()}
+                      onClick={() => handleClick(false)}
                     >
                       TABLETS
                     </Link>
@@ -73,7 +72,7 @@ const BurgerMenu = () => {
                   <li className="burger__nav-List--Item">
                     <Link
                       to={PageType.Accessories}
-                      onClick={() => handlecloseMenu()}
+                      onClick={() => handleClick(false)}
                     >
                       ACCESSORIES
                     </Link>
@@ -84,14 +83,14 @@ const BurgerMenu = () => {
                 <Link
                   className="burger__favourite"
                   to="favourites"
-                  onClick={() => handlecloseMenu()}
+                  onClick={() => handleClick(false)}
                 >
                   <Favourite />
                 </Link>
                 <Link
                   className="burger__cart"
                   to="cart"
-                  onClick={() => handlecloseMenu()}
+                  onClick={() => handleClick(false)}
                 >
                   <Cart />
                 </Link>

@@ -15,10 +15,7 @@
     background-color: white;
   }
 
-  & > .swiper-slide-active {
-    // transition: border 0.5s ease;
-    border: 1px solid #0F0F11;
-  }
+  
 }
 
 .my-Swiper-Controller {
@@ -40,6 +37,11 @@
     border: 1px solid $Elements;
     border-radius: 4px;
     aspect-ratio: 1;
+  }
+  
+  & .swiper-slide-thumb-active {
+    transition: border 0.5s ease ;
+    border: 1px solid #0F0F11;
   }
 
   &__img {

@@ -9,11 +9,12 @@ import './MainStyle.scss';
 import CardPage from '../CardPage/CardPage';
 import { StateContext } from 'src/store';
 import Loader from '../ui/Loader/Loader';
+import classNames from 'classnames';
 
 register();
 
 const Main = () => {
-  const { selectedProduct } = useContext(StateContext);
+  const { selectedProduct, isMenuOpen } = useContext(StateContext);
 
   const getTypeByIdProduct = () => {
     // Логіка для визначення типу на основі idProduct або інша бізнес-логіка
@@ -22,7 +23,7 @@ const Main = () => {
   };
 
   return (
-    <main className="main">
+    <main className={classNames('main', { 'main-hidden': isMenuOpen })}>
       <Routes>
         {/* Домашня сторінка */}
         <Route path="/" element={<HomePage />} index />
