@@ -1,9 +1,9 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useMemo, useState } from 'react';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import { ProductCard } from '../ProductCard';
 import { useWidth } from '../../hooks/useWidth';
 import { MobileSwiper } from '../MobileSwiper/MobileSwiper';
-import { getButtonSecondaryClass, getNumberOfItems } from '../../utils/utils';
+import { getButtonSecondaryClass, getItemsPerScroll } from '../../utils/utils';
 import styles from './ProductSlider.module.scss';
 import classNames from 'classnames';
 import { ProductContext } from '../../store/ProductContext';
@@ -22,27 +22,30 @@ export const ProductSlider: React.FC<Props> = ({
   const [displayIndex, setDisplayIndex] = useState(0);
   const { darkTheme } = useContext(ProductContext);
   const width = useWidth();
-  const itemsPerPage = getNumberOfItems(width);
   const buttonClass = `${getButtonSecondaryClass(darkTheme)} button--small`;
+  const maxLastIndex = useMemo(
+    () => products.length - getItemsPerScroll(width),
+    [width, products],
+  );
 
-  const handleIncrease = (step: number) => {
-    setDisplayIndex(prevIndex => {
-      if (prevIndex + step >= products.length) {
-        return products.length - 1;
-      }
+  const step = useMemo(
+    () => (getItemsPerScroll(width) === 1 ? 1 : getItemsPerScroll(width) - 1),
+    [width],
+  );
 
-      return prevIndex + step;
-    });
+  const getTransformValue = `translateX(calc((-100% * ${displayIndex} - 16px * ${displayIndex} - ${width > 640 ? '8px' : '0px'}))`;
+
+  const handleIncrease = (step1 = step) => {
+    setDisplayIndex(prevIndex =>
+      prevIndex + step1 >= maxLastIndex ? maxLastIndex : prevIndex + step1,
+    );
   };
 
-  const handleDecrease = (step: number) => {
-    setDisplayIndex(prevIndex => {
-      if (prevIndex - step < 0) {
-        return 0;
-      }
-
-      return prevIndex - step;
-    });
+  //#region handlers and on swipe
+  const handleDecrease = (step1 = step) => {
+    setDisplayIndex(prevIndex =>
+      prevIndex - step1 < 0 ? 0 : prevIndex - step1,
+    );
   };
 
   const onSwipe = (diff: number) => {
@@ -55,6 +58,8 @@ export const ProductSlider: React.FC<Props> = ({
     }
   };
 
+  //#endregion
+
   return (
     <section className={styles.wrapper}>
       <div className={styles.header}>
@@ -62,9 +67,7 @@ export const ProductSlider: React.FC<Props> = ({
         <div className={styles.buttons}>
           <button
             className={`${styles.button} ${buttonClass}`}
-            onClick={() => {
-              handleDecrease(1);
-            }}
+            onClick={() => handleDecrease()}
             disabled={displayIndex <= 0}
           >
             <div
@@ -75,29 +78,19 @@ export const ProductSlider: React.FC<Props> = ({
           </button>
           <button
             className={buttonClass}
-            onClick={() => {
-              handleIncrease(1);
-            }}
-            disabled={displayIndex >= products.length - 1}
+            onClick={() => handleIncrease()}
+            disabled={displayIndex >= maxLastIndex}
           >
             <div
               className={classNames('icon icon--arrow', {
-                'icon--notActive': displayIndex >= products.length - 1,
+                'icon--notActive': displayIndex >= maxLastIndex,
               })}
             ></div>
           </button>
         </div>
       </div>
       <MobileSwiper onSwipe={onSwipe}>
-        <div
-          className={styles.container}
-          style={
-            {
-              '--displayIndex': displayIndex,
-              '--column-count': itemsPerPage,
-            } as React.CSSProperties
-          }
-        >
+        <div className={styles.container}>
           {products.map(item => {
             return (
               <div
@@ -105,7 +98,7 @@ export const ProductSlider: React.FC<Props> = ({
                 style={
                   {
                     transition: 'transform 3s',
-                    transform: `translateX(calc((-100% * ${displayIndex} - 16px * ${displayIndex}))`,
+                    transform: `${getTransformValue}`,
                   } as React.CSSProperties
                 }
               >

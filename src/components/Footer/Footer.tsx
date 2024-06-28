@@ -4,9 +4,11 @@ import { useContext } from 'react';
 import { ProductContext } from '../../store/ProductContext';
 import classNames from 'classnames';
 import { getButtonSecondaryClass } from '../../utils/utils';
+import { useScrollExists } from '../../hooks/useHeight';
 
 export const Footer = () => {
   const { darkTheme } = useContext(ProductContext);
+  const displayButton = useScrollExists();
   const buttonClass = `${styles.buttonBack__arrow} button--small ${getButtonSecondaryClass(darkTheme)}`;
   const getLinkClass = classNames(`${styles.link} link--underline`, {
     [styles.link__darkTheme]: darkTheme,
@@ -22,7 +24,7 @@ export const Footer = () => {
         darkTheme: darkTheme,
       })}
     >
-      <Link to="/" className={`${styles.logo} hover--scale`}>
+      <Link to="/" className={styles.logo}>
         <img src={getLogoLink} alt="logo" className={styles.logo_img} />
       </Link>
       <ul className={styles.nav}>
@@ -46,14 +48,18 @@ export const Footer = () => {
         </li>
       </ul>
 
-      <div className={styles.buttonBack} onClick={handleButtonClick}>
-        <p className={`${styles.link} link--underline`}>Back to top</p>
-        <Link to="#">
-          <button className={buttonClass}>
-            <div className=" icon icon--arrow"></div>
-          </button>
-        </Link>
-      </div>
+      {displayButton ? (
+        <div className={styles.buttonBack} onClick={handleButtonClick}>
+          <p className={`${styles.link} link--underline`}>Back to top</p>
+          <Link to="#">
+            <button className={buttonClass}>
+              <div className=" icon icon--arrow"></div>
+            </button>
+          </Link>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   );
 };

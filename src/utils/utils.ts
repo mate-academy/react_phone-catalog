@@ -4,17 +4,17 @@ import { ProductGeneral } from '../types/ProductGeneral';
 import { ErrorText } from '../constants/errorText';
 import { dots } from '../constants/dots';
 
-export function getNumberOfItems(width: number) {
-  if (width < 640) {
-    return 2;
-  }
-
-  if (width < 1200) {
+export const getItemsPerScroll = (width: number) => {
+  if (width > 1020) {
+    return 4;
+  } else if (width > 773) {
     return 3;
+  } else if (width > 464) {
+    return 2;
+  } else {
+    return 1;
   }
-
-  return 4;
-}
+};
 
 export function isProductGeneralType(obj: any): obj is ProductGeneral {
   return (

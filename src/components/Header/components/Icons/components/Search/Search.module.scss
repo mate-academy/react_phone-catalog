@@ -17,7 +17,7 @@
 
 .search {
   height: 100%;
- width: 150px;
+  width: 100%;
   padding-left: calc(1.5em + 16px);
   background-color: var(--bg-color);
   color: var(--text-color);
@@ -27,7 +27,6 @@
   display: flex;
   align-items: center;
   appearance: auto;
-
 
   &::-webkit-search-cancel-button{
     -webkit-appearance: none;

@@ -2,11 +2,13 @@ import { useEffect, useState } from 'react';
 import styles from './Search.module.scss';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { useDebounce } from '../../../../../../hooks/useDebounce';
+import { useWidth } from '../../../../../../hooks/useWidth';
 
 export const Search = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [value, setValue] = useState('');
   const { pathname } = useLocation();
+  const width = useWidth();
   const applyQuery = useDebounce(setSearchParams, 1000);
 
   useEffect(() => {
@@ -48,13 +50,17 @@ export const Search = () => {
       <input
         autoFocus
         type="search"
-        name=""
         className={`${styles.search} border--left`}
         placeholder="Search"
         value={value}
         onChange={onQueryChange}
+        style={{
+          paddingLeft: `${width < 680 && value.length >= 1 ? '8px' : 'calc(1.5em + 16px)'}`,
+        }}
       />
-      <div className={`icon icon--search ${styles.search__icon} `}></div>
+      {(value.length === 0 || width > 680) && (
+        <div className={`icon icon--search ${styles.search__icon} `}></div>
+      )}
       {value.length > 0 && (
         <div
           onClick={clearQuery}

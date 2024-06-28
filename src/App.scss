@@ -9,35 +9,35 @@ h2 {
 
 .page {
   font-family: Mont, sans-serif;
-  margin: 0;
-  padding: 0;
   font-size: 14px;
   line-height: 1.3em;
+  box-sizing: border-box;
+  background-color: var(--bg-color);
 
   --bg-color: #fff;
   --text-color: #0f1121;
   --border-color: #e2e6e9;
-  --disabled-color: #e2e6e9; 
+  --disabled-color: #e2e6e9;
   --grey-secondary: #89939a;
-  --disabled-icon-color: #B4BDC3;
+  --disabled-icon-color: #b4bdc3;
 }
 
 .container {
-  min-height: 98vh;
-
+  min-height: 100vh;
+  box-sizing: border-box;
   display: grid;
-  grid-template-rows: 48px 1fr 257px;
+  grid-template-rows: 48px 1fr 256px;
   grid-template-areas:
     'header'
     'main'
     'footer';
 
   @include on-tablet {
-    grid-template-rows: 48px 1fr 96px;
+    grid-template-rows: 48px 1fr 95px;
   }
 
   @include on-desktop {
-    grid-template-rows: 64px 1fr 96px;
+    grid-template-rows: 64px 1fr 95px;
   }
 }
 

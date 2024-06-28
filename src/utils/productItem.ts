@@ -71,15 +71,3 @@ export const productItem = {
     return addedItems.findIndex(item => item === productId) >= 0;
   },
 };
-
-export function getNumberOfItems(width: number) {
-  if (width < 640) {
-    return 2;
-  }
-
-  if (width < 1200) {
-    return 3;
-  }
-
-  return 4;
-}

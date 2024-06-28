@@ -7,15 +7,18 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: left;
+  height: 100%;
   gap: 32px;
   padding-block: 32px;
   border-top: solid 1px var(--border-color);
   background-color: var(--bg-color);
 
+
   @include on-tablet {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    padding-block: 0;
     width: 100%;
   }
 }
@@ -27,6 +30,8 @@
   align-items: flex-start;
   margin: 0;
   padding: 0;
+
+  gap: 8px;
 
   @include on-tablet {
     flex-direction: row;
@@ -41,8 +46,10 @@
 .link {
   height: 100%;
   display: flex;
+  line-height: 1em;
   margin: 0;
-  padding-block: 8px;
+  padding: 0;
+  padding-bottom: 4px;
   align-items: center;
   text-decoration: none;
   color: var(--grey-secondary);
@@ -70,7 +77,11 @@
 
 .logo {
   &_img {
-    height: 32px;
+    height: 30px;
     width: 89px;
+
+    @include on-tablet {
+      @include hover(transform, scale(1.1));
+    }
   }
 }

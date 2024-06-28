@@ -30,6 +30,8 @@
 }
 
 .category {
+  overflow: hidden;
+
   &__link {
     display: block;
     position: relative;
@@ -53,5 +55,6 @@
     position: absolute;
     top: 20%;
     left: 0;
+    overflow: hidden;
   }
 }

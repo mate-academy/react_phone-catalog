@@ -26,11 +26,16 @@
 
   &__link {
     height: 100%;
+    padding-bottom: 6px;
     display: flex;
     margin: 0;
     align-items: center;
     text-decoration: none;
     color: var(--grey-secondary);
     font-weight: bold;
+
+    @include on-tablet {
+      padding-bottom: 0;
+    }
   }
 }
