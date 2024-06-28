@@ -36,7 +36,7 @@
 
   @include padding-inline;
 
-  @include np {
+  @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
   }
 
