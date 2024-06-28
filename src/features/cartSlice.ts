@@ -2,7 +2,7 @@ import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { TabAccessPhone } from '../types/tabAccessPhones';
 
 export type CartInfo = {
-  cartProducts: TabAccessPhone [];
+  cartProducts: TabAccessPhone[];
 };
 
 const initialState: CartInfo = {
@@ -30,11 +30,14 @@ const CartSlice = createSlice({
     removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
       const currentState = state;
 
-      const findProd = currentState.cartProducts.map(p => 
-        ({...p})).findIndex(item => item.id === action.payload.id);
+      const findProd = currentState.cartProducts
+        .map(p => ({ ...p }))
+        .findIndex(item => item.id === action.payload.id);
 
-      currentState.cartProducts = currentState.cartProducts.filter((_, index) => index !== findProd)
-    }
+      currentState.cartProducts = currentState.cartProducts.filter(
+        (_, index) => index !== findProd,
+      );
+    },
   },
 });
 
