@@ -1,8 +1,7 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
-import { SortBy } from '../../types/SortBy';
 import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
@@ -14,10 +13,10 @@ export const Accessories: React.FC = () => {
     isLoadingAccessories,
     accessories,
     products,
+    handleChangeItems,
+    handleChangeSort,
+    handlePageChange,selectedOption,itemsPerPage,activePage
   } = useContext(ContextApp);
-  const [selectedOption, setSortBy] = useState<SortBy>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState('all');
-  const [activePage, setActivePage] = useState(1);
 
   const sortedAccessories = sortBy(products, accessories, selectedOption);
 
@@ -38,19 +37,6 @@ export const Accessories: React.FC = () => {
     itemsPerPage === 'all'
       ? sortedAccessories
       : sortedAccessories.slice(startFromElement, endOnElement);
-
-  const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(e.target.value as SortBy);
-  };
-
-  const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setItemsPerPage(e.target.value);
-    setActivePage(1);
-  };
-
-  const handlePageChange = (number: number) => {
-    setActivePage(number);
-  };
 
   return (
     <div className={style['accessories']}>

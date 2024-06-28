@@ -50,6 +50,9 @@ type AppContextProps = {
   setSearchParams: SetURLSearchParams;
   selectedOption: SortBy;
   setSelectedOption: React.Dispatch<React.SetStateAction<SortBy>>;
+  handleChangeSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handleChangeItems: (e: React.ChangeEvent<HTMLSelectElement>) => void;
+  handlePageChange: (number: number) => void;
 };
 
 type Props = {
@@ -75,9 +78,11 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
+
   const perPage = searchParams.get('perPage');
   const page = searchParams.get('page');
   const option = searchParams.get('sortBy');
+
   const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('all');
   const [activePage, setActivePage] = useState(1);
@@ -92,6 +97,45 @@ export const AppContext: React.FC<Props> = ({ children }) => {
 
     return fav ? JSON.parse(fav) : [];
   });
+
+  const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setSelectedOption(e.target.value as SortBy);
+
+    if (e.target.value === 'newest') {
+      searchParams.delete('sortBy');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+    setSearchParams(new URLSearchParams(searchParams));
+  };
+
+  const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setItemsPerPage(e.target.value);
+    setActivePage(1);
+    if (itemsPerPage !== 'all') {
+      searchParams.set('perPage', itemsPerPage);
+    }
+
+    if (e.target.value === 'all') {
+      searchParams.delete('perPage');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    setSearchParams(new URLSearchParams(searchParams));
+  };
+
+  const handlePageChange = (number: number) => {
+    setActivePage(number);
+
+    if (activePage !== 1) {
+      searchParams.set('page', activePage.toString());
+    }
+
+    if (number === 1) {
+      searchParams.delete('page');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+    setSearchParams(new URLSearchParams(searchParams));
+  };
 
   const handleAddFav = (newItem: Item) => {
     if (fav.find(item => item.id === newItem.id)) {
@@ -130,12 +174,28 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (option) {
       setSelectedOption(option as SortBy);
+
     }
     if (perPage) {
       setItemsPerPage(perPage);
     }
     if (page) {
       setActivePage(+page);
+    }
+
+    if (option === 'newest') {
+      searchParams.delete('sortBy');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    if (perPage === 'all') {
+      searchParams.delete('perPage');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    if (page === '1') {
+      searchParams.delete('page');
+      setSearchParams(new URLSearchParams(searchParams));
     }
   }, [accessories, tablets, phones, location.pathname]);
 
@@ -203,9 +263,45 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       });
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (selectedOption !== 'newest') {
+      searchParams.set('sortBy', selectedOption);
+    }
+
+    if (itemsPerPage !== 'all') {
+      searchParams.set('perPage', itemsPerPage);
+    }
+
+    if (activePage !== 1) {
+      searchParams.set('page', activePage.toString());
+    }
+
+    if (option === 'newest') {
+      searchParams.delete('sortBy');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    if (perPage === 'all') {
+      searchParams.delete('perPage');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    if (page === '1') {
+      searchParams.delete('page');
+      setSearchParams(new URLSearchParams(searchParams));
+    }
+
+    console.log('searchParams', searchParams.toString());
+
+    setSearchParams(new URLSearchParams(searchParams));
+  }, [itemsPerPage, activePage, selectedOption, location.pathname]);
+
   return (
     <ContextApp.Provider
       value={{
+        handleChangeItems,
+        handleChangeSort,
+        handlePageChange,
         selectedOption,
         setSelectedOption,
         searchParams,

@@ -1,19 +1,26 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import style from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
-import { SortBy } from '../../types/SortBy';
+// import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton.tsx';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 
 export const Tablets: React.FC = () => {
-  const { tabletsTotalNumber, isLoadingTablets, tablets, products } =
-    useContext(ContextApp);
-  const [selectedOption, setSortBy] = useState<SortBy>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState('all');
-  const [activePage, setActivePage] = useState(1);
+  const {
+    tabletsTotalNumber,
+    isLoadingTablets,
+    tablets,
+    products,
+    selectedOption,
+    itemsPerPage,
+    activePage,
+    handleChangeItems,
+    handleChangeSort,
+    handlePageChange,
+  } = useContext(ContextApp);
 
   const sortedPhones = sortBy(products, tablets, selectedOption);
 
@@ -31,19 +38,6 @@ export const Tablets: React.FC = () => {
     itemsPerPage === 'all'
       ? sortedPhones
       : sortedPhones.slice(startFromElement, endOnElement);
-
-  const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setSortBy(e.target.value as SortBy);
-  };
-
-  const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    setItemsPerPage(e.target.value);
-    setActivePage(1);
-  };
-
-  const handlePageChange = (number: number) => {
-    setActivePage(number);
-  };
 
   return (
     <div className={style['tablets']}>
