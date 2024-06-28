@@ -39,38 +39,43 @@ export const Pagination: React.FC<Props> = ({
   };
 
   return (
-    <div className={Styles.pagination}>
-      <ul className={Styles.pagination__list}>
-        <li
-          onClick={() => handleDirectButton(-1)}
-          className={cn(
-            Styles.pagination__list__item,
-            Styles.pagination__list__item__button_prev,
-            { [Styles.active]: activeButtons.prev },
-          )}
-        ></li>
+    <>
+      {pagesTotalNumber > 1 && (
+        <div className={Styles.pagination}>
+          <ul className={Styles.pagination__list}>
+            <li
+              onClick={() => handleDirectButton(-1)}
+              className={cn(
+                Styles.pagination__list__item,
+                Styles.pagination__list__item__button_prev,
+                { [Styles.active]: activeButtons.prev },
+              )}
+            ></li>
 
-        {pageNumber.map(number => (
-          <li
-            key={number}
-            onClick={() => onPageChange(number)}
-            className={cn(Styles.pagination__list__item, {
-              [Styles.pagination__list__item__active]: activePage === number,
-            })}
-          >
-            {number}
-          </li>
-        ))}
+            {pageNumber.map(number => (
+              <li
+                key={number}
+                onClick={() => onPageChange(number)}
+                className={cn(Styles.pagination__list__item, {
+                  [Styles.pagination__list__item__active]:
+                    activePage === number,
+                })}
+              >
+                {number}
+              </li>
+            ))}
 
-        <li
-          onClick={() => handleDirectButton(1)}
-          className={cn(
-            Styles.pagination__list__item,
-            Styles.pagination__list__item__button_next,
-            { [Styles.active]: activeButtons.prev },
-          )}
-        ></li>
-      </ul>
-    </div>
+            <li
+              onClick={() => handleDirectButton(1)}
+              className={cn(
+                Styles.pagination__list__item,
+                Styles.pagination__list__item__button_next,
+                { [Styles.active]: activeButtons.prev },
+              )}
+            ></li>
+          </ul>
+        </div>
+      )}
+    </>
   );
 };

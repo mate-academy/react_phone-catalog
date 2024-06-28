@@ -12,7 +12,7 @@ export const Tablets: React.FC = () => {
   const { tabletsTotalNumber, isLoadingTablets, tablets, products } =
     useContext(ContextApp);
   const [selectedOption, setSortBy] = useState<SortBy>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState('16');
+  const [itemsPerPage, setItemsPerPage] = useState('all');
   const [activePage, setActivePage] = useState(1);
 
   const sortedPhones = sortBy(products, tablets, selectedOption);
@@ -51,7 +51,7 @@ export const Tablets: React.FC = () => {
       {!isLoadingTablets && (
         <>
           <Crumbs path={['tablets']} />
-          
+
           <div className={style['tablets__head']}>
             <h1 className={style['tablets__head__title']}>Tablets</h1>
             <p className={style['tablets__head__paragraph']}>

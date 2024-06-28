@@ -9,6 +9,7 @@ import { ItemSlider } from '../itemSlider';
 import { ContextApp } from '../../appContext/AppContext';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 import { firstLetterCapital } from '../../functions/firstLetterCapital';
+import { BackButton } from '../backButton';
 
 type Props = {
   list: Item[];
@@ -124,6 +125,8 @@ export const Details: React.FC<Props> = ({ list }) => {
       {product && (
         <div className={Styles.card}>
           <Crumbs path={[product.category]} details={`${product.id}`} />
+
+          <BackButton />
 
           <h1 className={Styles.card__title}>{firstLetterCapital(product.id)}</h1>
 

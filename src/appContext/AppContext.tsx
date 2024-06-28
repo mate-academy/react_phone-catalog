@@ -1,8 +1,13 @@
 import React, { RefObject, useEffect, useRef, useState } from 'react';
 import { Product } from '../types/Product';
 import { Item } from '../types/Item';
-import { useLocation } from 'react-router-dom';
+import {
+  SetURLSearchParams,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
 import { ItemWithQuantity } from '../types/ItemWithQuantity';
+import { SortBy } from '../types/SortBy';
 
 type AppContextProps = {
   app: React.RefObject<HTMLDivElement>;
@@ -37,6 +42,14 @@ type AppContextProps = {
   handleAddFav: (newItem: Item) => void;
   handleAddCart: (newItem: Item) => void;
   backToTop: RefObject<HTMLDivElement>;
+  itemsPerPage: string;
+  setItemsPerPage: React.Dispatch<React.SetStateAction<string>>;
+  activePage: number;
+  setActivePage: React.Dispatch<React.SetStateAction<number>>;
+  searchParams: URLSearchParams;
+  setSearchParams: SetURLSearchParams;
+  selectedOption: SortBy;
+  setSelectedOption: React.Dispatch<React.SetStateAction<SortBy>>;
 };
 
 type Props = {
@@ -47,6 +60,7 @@ export const ContextApp = React.createContext({} as AppContextProps);
 
 export const AppContext: React.FC<Props> = ({ children }) => {
   const app = useRef(null);
+  const [searchParams, setSearchParams] = useSearchParams();
   const backToTop = useRef<HTMLDivElement>(null);
   const location = useLocation();
   const [products, setProducts] = useState<Product[]>([]);
@@ -61,6 +75,12 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
+  const perPage = searchParams.get('perPage');
+  const page = searchParams.get('page');
+  const option = searchParams.get('sortBy');
+  const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
+  const [itemsPerPage, setItemsPerPage] = useState('all');
+  const [activePage, setActivePage] = useState(1);
 
   const [cart, setCart] = useState<ItemWithQuantity[]>(() => {
     const cart = localStorage.getItem('cart');
@@ -106,6 +126,18 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       return null;
     }
   };
+
+  useEffect(() => {
+    if (option) {
+      setSelectedOption(option as SortBy);
+    }
+    if (perPage) {
+      setItemsPerPage(perPage);
+    }
+    if (page) {
+      setActivePage(+page);
+    }
+  }, [accessories, tablets, phones, location.pathname]);
 
   useEffect(() => {
     setIsLoadingPoducts(true);
@@ -174,6 +206,14 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   return (
     <ContextApp.Provider
       value={{
+        selectedOption,
+        setSelectedOption,
+        searchParams,
+        setSearchParams,
+        activePage,
+        itemsPerPage,
+        setActivePage,
+        setItemsPerPage,
         backToTop,
         handleAddCart,
         handleAddFav,

@@ -44,13 +44,17 @@ export const ItemSlider: React.FC<Props> = ({
     }
   };
 
+  const getSuggestedProducts = () => {
+    const minNumber = Math.floor(Math.random() * 124);
+    const maxNumber = getNumber(minNumber, 124);
+    const newProducts = [...list].slice(minNumber, maxNumber);
+    setCopyProducts(newProducts);
+    setProductsTotalNumber(newProducts.length);
+  };
+
   useEffect(() => {
     if (showRandom) {
-      const maxNumber = getNumber(15, 124);
-      const minNumber = Math.floor(Math.random() * 10);
-      const newProducts = [...list].slice(minNumber, maxNumber);
-      setCopyProducts(newProducts);
-      setProductsTotalNumber(newProducts.length);
+      getSuggestedProducts();
     } else {
       setCopyProducts([...list]);
       setProductsTotalNumber(copyProducts.length);

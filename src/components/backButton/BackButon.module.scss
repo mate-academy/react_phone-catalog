@@ -1,0 +1,27 @@
+.back {
+  font-family: Montserrat, sans-serif;
+  height: 20px;
+  margin-bottom: 20px;
+  width: 288px;
+
+  &__button {
+    color: #FFF;
+    box-sizing: border-box;
+    border-radius: 20px;
+    background-color: #313237;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 20px;
+    text-align: center;
+    width: fit-content;
+    padding: 5px;
+
+
+    &:hover {
+      box-shadow: 0 3px 13px 0 #17203166;
+
+    }
+  }
+}
+
+;

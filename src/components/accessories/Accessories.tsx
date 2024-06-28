@@ -16,7 +16,7 @@ export const Accessories: React.FC = () => {
     products,
   } = useContext(ContextApp);
   const [selectedOption, setSortBy] = useState<SortBy>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState('16');
+  const [itemsPerPage, setItemsPerPage] = useState('all');
   const [activePage, setActivePage] = useState(1);
 
   const sortedAccessories = sortBy(products, accessories, selectedOption);

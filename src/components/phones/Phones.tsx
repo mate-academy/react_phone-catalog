@@ -1,4 +1,4 @@
-import { useContext, useMemo, useState } from 'react';
+import { useContext, useEffect, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import Styles from './Phones.module.scss';
 import { Pagination } from '../../pagination';
@@ -9,11 +9,22 @@ import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 
 export const Phones: React.FC = () => {
-  const { phonesTotalNumber, products, phones, isLoadingPhones } =
-    useContext(ContextApp);
-  const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
-  const [itemsPerPage, setItemsPerPage] = useState('16');
-  const [activePage, setActivePage] = useState(1);
+  const {
+    phonesTotalNumber,
+    searchParams,
+    setSearchParams,
+    itemsPerPage,
+    activePage,
+    setActivePage,
+    setItemsPerPage,
+    products,
+    phones,
+    isLoadingPhones,
+    selectedOption,
+    setSelectedOption,
+  } = useContext(ContextApp);
+
+  // const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
 
   const sortedPhones = sortBy(products, phones, selectedOption);
 
@@ -34,16 +45,42 @@ export const Phones: React.FC = () => {
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value as SortBy);
+    const getSortBy= searchParams.get('sortBY');
+
+    searchParams.set('sortBy', selectedOption);
+
+    if (getSortBy === 'newest') {
+      searchParams.delete('sortBy')
+    }
+    setSearchParams(new URLSearchParams(searchParams));
   };
 
   const handleChangeItems = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setItemsPerPage(e.target.value);
     setActivePage(1);
+    searchParams.set('perPage', itemsPerPage);
+    searchParams.set('page', '1');
+    setSearchParams(new URLSearchParams(searchParams));
   };
 
   const handlePageChange = (number: number) => {
     setActivePage(number);
+
+    searchParams.set('page', activePage.toString());
+    setSearchParams(new URLSearchParams(searchParams));
   };
+
+  useEffect(() => {
+    searchParams.set('sortBy', selectedOption);
+    searchParams.set('perPage', itemsPerPage);
+    searchParams.set('page', activePage.toString());
+    console.log('activePage', activePage)
+    setSearchParams(new URLSearchParams(searchParams))
+  }, [itemsPerPage, activePage, selectedOption]);
+
+  console.log('hej', searchParams.toString());
+
+
 
   return (
     <div className={Styles['phones']}>
@@ -51,7 +88,7 @@ export const Phones: React.FC = () => {
 
       {!isLoadingPhones && (
         <>
-        <Crumbs path={['phones']} />
+          <Crumbs path={['phones']} />
 
           <div className={Styles['phones__head']}>
             <h1 className={Styles['phones__head__title']}>Mobile phones</h1>
