@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { Link } from 'react-router-dom';
 import cn from 'classnames';
+import pluralize from 'pluralize';
 
 import { fetchProducts, selectPhones } from '../../../../app/features/products';
 import { useFetchedData } from '../../../../hooks/useFetchedData';
@@ -45,7 +46,7 @@ export const CategoriesPhones: FC<Props> = ({}) => {
           />
         ) : (
           <Text className={classes.categories__count}>
-            {products.length} models
+            {products.length} {pluralize('model', products.length)}
           </Text>
         )}
       </div>

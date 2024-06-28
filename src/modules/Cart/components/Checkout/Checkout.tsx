@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
+import pluralize from 'pluralize';
 
 import classes from './checkout.module.scss';
 import { useAppSelector } from '../../../../app/hooks';
@@ -50,7 +51,7 @@ export const Checkout: FC<Props> = ({ className, onCheckout, ...props }) => {
           />
         )}
         <Text className={classes.checkout__totlaItems}>
-          Total for {numberOfItems} items
+          Total for {numberOfItems} {pluralize('item', numberOfItems)}
         </Text>
       </div>
       <Button onClick={onCheckout} className={classes.checkout__button}>

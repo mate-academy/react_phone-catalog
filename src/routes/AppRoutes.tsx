@@ -11,10 +11,10 @@ import { Home } from '../modules/Home';
 import { Layout } from '../modules/Layout';
 import { NotFound } from '../modules/NotFound';
 import {
-  Phones as PhoneDetails,
-  Tablets as TabletDetails,
+  PhoneDetails,
+  TabletDetails,
   AccessoryDetails,
-} from '../modules/Phones';
+} from '../modules/Details';
 import { Icon } from '../modules/shared/ui/Icon';
 import { ProductDetailsCrumb } from './ProductDetailsCrumb';
 import { Favourites } from '../modules/Favourites';

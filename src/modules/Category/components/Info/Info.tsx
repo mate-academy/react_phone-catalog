@@ -1,5 +1,6 @@
 import React, { ComponentPropsWithoutRef, FC } from 'react';
 import cn from 'classnames';
+import pluralize from 'pluralize';
 
 import { Skeleton } from '../../../shared/ui/Skeleton';
 import { Text } from '../../../shared/ui/Text';
@@ -26,7 +27,7 @@ export const Info: FC<Props> = ({
 
       {isLoaded ? (
         <Text element="span" className={classes.info__productsCount}>
-          {numberOfProducts} models
+          {numberOfProducts} {pluralize('model', numberOfProducts)}
         </Text>
       ) : (
         <Skeleton

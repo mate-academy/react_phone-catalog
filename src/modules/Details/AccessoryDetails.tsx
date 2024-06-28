@@ -4,9 +4,10 @@ import React, { FC } from 'react';
 import cn from 'classnames';
 
 import {
-  fetchTablets,
-  selectTablets,
-} from '../../app/features/detailedProduct/tablets';
+  fetchAccessories,
+  selectAccessories,
+} from '../../app/features/detailedProduct/accessories';
+import { useFetchedData } from '../../hooks/useFetchedData';
 import { getSpecsFromObject } from '../shared/ui/SpecsList';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { Container } from '../shared/Container';
@@ -22,29 +23,29 @@ import { SuggestedProducts } from './components/SuggestedProducts';
 import { Title } from './components/Title';
 import { ProductId } from './components/ProductId';
 import { MainSpecList } from './components/MainSpecList';
-import { useFetchedData } from '../../hooks/useFetchedData';
-import classes from './phones.module.scss';
+import classes from './details.module.scss';
 
 type Props = {};
 
-export const Tablets: FC<Props> = ({}) => {
-  const { status, tablets } = useFetchedData(fetchTablets(), selectTablets);
+export const AccessoryDetails: FC<Props> = ({}) => {
+  const { status, accessories } = useFetchedData(
+    fetchAccessories(),
+    selectAccessories,
+  );
   const isLoaded = status === 'fulfilled';
-  const tablet = useFoundProduct(tablets, isLoaded);
+  const accessory = useFoundProduct(accessories, isLoaded);
 
   const mainSpecs = getSpecsFromObject({
-    Screen: tablet?.screen || '',
-    Resolution: tablet?.resolution || '',
-    Processor: tablet?.processor || '',
-    RAM: tablet?.ram || '',
+    Screen: accessory?.screen || '',
+    Resolution: accessory?.resolution || '',
+    Processor: accessory?.processor || '',
+    RAM: accessory?.ram || '',
   });
 
   const allSpecs = mainSpecs.concat(
     getSpecsFromObject({
-      'Built in memory': tablet?.capacity || '',
-      Camera: tablet?.camera || '',
-      Zoom: tablet?.zoom || '',
-      Cell: tablet?.cell.join(', ') || '',
+      'Built in memory': accessory?.capacity || '',
+      Cell: accessory?.cell.join(', ') || '',
     }),
   );
 
@@ -53,41 +54,41 @@ export const Tablets: FC<Props> = ({}) => {
       <Breadcrumbs className={classes.page__breadCrumbs} />
       <LinkBack className={classes.page__linkBack} />
       <Title isLoaded={isLoaded} className={classes.page__title}>
-        {tablet?.name}
+        {accessory?.name}
       </Title>
       <Display
-        key={tablet?.id}
+        key={accessory?.id}
         className={classes.page__mainInfo}
         isLoaded={isLoaded}
-        images={tablet?.images || []}
-        extraSlot={<ProductId productId={tablet?.id || ''} />}
+        images={accessory?.images || []}
+        extraSlot={<ProductId productId={accessory?.id || ''} />}
         info={
           <>
             <AvailableColors
               className={classes.page__options}
-              productId={tablet?.id || ''}
-              colors={tablet?.colorsAvailable || []}
+              productId={accessory?.id || ''}
+              colors={accessory?.colorsAvailable || []}
               isLoaded={isLoaded}
             />
             <AvailableOptions
-              title="Select capacity"
+              title="Select size"
               className={cn(
                 classes.page__options,
                 classes.page__options_capacity,
               )}
-              options={tablet?.capacityAvailable || []}
-              productId={tablet?.id || ''}
+              options={accessory?.capacityAvailable || []}
+              productId={accessory?.id || ''}
               isLoaded={isLoaded}
             />
             <Prices
               className={classes.page__prices}
               isLoaded={isLoaded}
-              regularPrice={tablet?.priceRegular || 0}
-              discountPrice={tablet?.priceDiscount}
+              regularPrice={accessory?.priceRegular || 0}
+              discountPrice={accessory?.priceDiscount}
             />
             <ActionButtons
               className={classes.page__actionButtons}
-              productId={tablet?.id || ''}
+              productId={accessory?.id || ''}
               isLoaded={isLoaded}
             />
             <MainSpecList
@@ -100,12 +101,12 @@ export const Tablets: FC<Props> = ({}) => {
       />
       <Description
         className={classes.page__description}
-        about={tablet?.description || []}
+        about={accessory?.description || []}
         isLoaded={isLoaded}
         specs={allSpecs}
       />
       <SuggestedProducts
-        productId={tablet?.id || ''}
+        productId={accessory?.id || ''}
         className={classes.page__suggestedProducts}
       />
     </Container>

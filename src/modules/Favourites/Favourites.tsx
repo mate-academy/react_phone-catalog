@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import pluralize from 'pluralize';
 
 import { useAppSelector } from '../../app/hooks';
 import { selectFavourites } from '../../app/features/favourites';
@@ -29,7 +30,8 @@ export const Favourites: FC<Props> = ({}) => {
       </Text.H1>
       {Boolean(favouriteProducts.length) && (
         <Text className={classes.page__itemCount}>
-          {favouriteProducts.length} items
+          {favouriteProducts.length}{' '}
+          {pluralize('item', favouriteProducts.length)}
         </Text>
       )}
       <Products

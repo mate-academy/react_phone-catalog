@@ -23,11 +23,11 @@ import { SuggestedProducts } from './components/SuggestedProducts';
 import { Description } from './components/Description';
 import { ProductId } from './components/ProductId';
 import { MainSpecList } from './components/MainSpecList';
-import classes from './phones.module.scss';
+import classes from './details.module.scss';
 
 type Props = {};
 
-export const Phones: FC<Props> = ({}) => {
+export const PhoneDetails: FC<Props> = ({}) => {
   const { status, phones } = useFetchedData(fetchPhones(), selectPhones);
   const isLoaded = status === 'fulfilled';
   const phone = useFoundProduct(phones, isLoaded);
