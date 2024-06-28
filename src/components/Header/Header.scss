@@ -14,7 +14,7 @@
   z-index: 1;
   box-shadow: 0 1px 0 0 $colorElements;
 
-  @include on-desktopp {
+  @include on-desktop {
     gap: 24px;
     height: 64px;
   }
