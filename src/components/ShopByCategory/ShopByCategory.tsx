@@ -3,9 +3,15 @@ import './ShopByCategory.scss';
 
 type Props = {
   phonesLength: number;
+  tabletsLength: number;
+  accessoriesLength: number;
 };
 
-export const ShopByCategory: React.FC<Props> = ({ phonesLength }) => {
+export const ShopByCategory: React.FC<Props> = ({
+  phonesLength,
+  tabletsLength,
+  accessoriesLength,
+}) => {
   return (
     <div className="shopByCategory">
       <h1 className="shopByCategory__title shopByCategory__title--main">
@@ -37,7 +43,7 @@ export const ShopByCategory: React.FC<Props> = ({ phonesLength }) => {
             <h3 className="shopByCategory__title shopByCategory__title--second">
               Tablets
             </h3>
-            <p className="shopByCategory__text">24 models</p>
+            <p className="shopByCategory__text">{`${tabletsLength} models`}</p>
           </div>
         </div>
 
@@ -51,7 +57,7 @@ export const ShopByCategory: React.FC<Props> = ({ phonesLength }) => {
             <h3 className="shopByCategory__title shopByCategory__title--second">
               Accessories
             </h3>
-            <p className="shopByCategory__text">100 models</p>
+            <p className="shopByCategory__text">{`${accessoriesLength} models`}</p>
           </div>
         </div>
       </div>

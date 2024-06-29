@@ -93,13 +93,17 @@ export const Header = () => {
         <div
           className="header__search-element"
           style={
-            (location.pathname.includes('phones') && phones?.length) ||
-            (location.pathname.includes('tablets') && tablets?.length) ||
+            (location.pathname.includes('phones') &&
+              phones?.length &&
+              !location.pathname.split('/')[2]) ||
+            (location.pathname.includes('tablets') &&
+              tablets?.length &&
+              !location.pathname.split('/')[2]) ||
             (location.pathname.includes('accessories') &&
-              accessories?.length) ||
+              accessories?.length &&
+              !location.pathname.split('/')[2]) ||
             (location.pathname.includes('favorites') &&
-              favoritesProducts.length &&
-              !location.pathname.split('/')[2])
+              favoritesProducts.length)
               ? {}
               : { display: 'none' }
           }

@@ -14,9 +14,13 @@ import { Product } from '../../types/Product';
 import { Loader } from '../../components/Loader';
 import { CartContext } from '../../components/CartContext';
 import { FavoritesContext } from '../../components/FavoritesContext';
+// eslint-disable-next-line max-len
+import { getProductLinkByCapacity } from '../../helpers/getProductLinkByCapacity';
+import { getProductLinkByColor } from '../../helpers/getProductLinkByColor';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
+
   const { cartProducts, setCartProducts } = useContext(CartContext);
   const { favoritesProducts, setFavoritesProducts } =
     useContext(FavoritesContext);
@@ -77,7 +81,9 @@ export const ProductDetailsPage = () => {
     getProducts().then(serverProducts => {
       setProducts(serverProducts);
     });
+  }, []);
 
+  useEffect(() => {
     getProductDetail(productId ?? '')
       .then(details => {
         setProductDetails(details);
@@ -89,27 +95,35 @@ export const ProductDetailsPage = () => {
     getSuggestedProducts().then(serverProducts =>
       setRandomProducts(serverProducts),
     );
-  }, [productId]);
+  }, [productId, cartProducts, favoritesProducts]);
 
   useEffect(() => {
-    const sss = cartProducts.find(
-      cartProduct => cartProduct[0].phoneId === productId,
-    );
+    setIsChoosed(false);
 
-    if (sss) {
-      setIsChoosed(true);
+    if (productId) {
+      const sss = cartProducts.find(cartProduct =>
+        cartProduct[0].phoneId.includes(productId),
+      );
+
+      if (sss) {
+        setIsChoosed(true);
+      }
     }
-  }, [cartProducts]);
+  }, [cartProducts, productId]);
 
   useEffect(() => {
-    const sss = favoritesProducts.find(
-      favoriteProduct => favoriteProduct.phoneId === productId,
-    );
+    setIsActive(false);
 
-    if (sss) {
-      setIsActive(true);
+    if (productId) {
+      const sss = favoritesProducts.find(favoriteProduct =>
+        favoriteProduct.phoneId.includes(productId),
+      );
+
+      if (sss) {
+        setIsActive(true);
+      }
     }
-  }, [favoritesProducts]);
+  }, [favoritesProducts, productId]);
 
   return (
     <div className="productDetails">
@@ -184,7 +198,8 @@ export const ProductDetailsPage = () => {
 
                     <div className="productDetails__elements">
                       {productDetails?.colorsAvailable.map(color => (
-                        <div
+                        <Link
+                          to={getProductLinkByColor(color, productId, products)}
                           key={color}
                           className={classNames('productDetails__color', {
                             'productDetails__color--active':
@@ -205,7 +220,12 @@ export const ProductDetailsPage = () => {
 
                     <div className="productDetails__elements">
                       {productDetails?.capacityAvailable.map(capacity => (
-                        <div
+                        <Link
+                          to={getProductLinkByCapacity(
+                            capacity,
+                            productId,
+                            products,
+                          )}
                           key={capacity}
                           className={classNames('productDetails__capacity', {
                             'productDetails__capacity--active':
@@ -213,7 +233,7 @@ export const ProductDetailsPage = () => {
                           })}
                         >
                           {capacity}
-                        </div>
+                        </Link>
                       ))}
                     </div>
                   </div>
@@ -333,7 +353,10 @@ export const ProductDetailsPage = () => {
 
               <div className="productDetails__information-description">
                 {productDetails?.description.map(des => (
-                  <div className="productDetails__information-elements">
+                  <div
+                    key={des.title}
+                    className="productDetails__information-elements"
+                  >
                     <div className="productDetails__information-title">
                       {des.title}
                     </div>
