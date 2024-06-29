@@ -1,0 +1,54 @@
+@import "variables";
+@import "mixins";
+
+@font-face {
+  font-family: Mont;
+  src: url("../../public/fonts/Mont-Regular.otf");
+  font-weight: 400;
+  font-style: normal;
+
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("../../public/fonts/Mont-SemiBold.otf");
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  src: url("../../public/fonts/Mont-Bold.otf");
+  font-weight: 700;
+  font-style: normal;
+
+}
+
+html {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  color: $primary;
+  font-weight: 600;
+  scroll-behavior: smooth;
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+
+.main-title {
+  margin-top: 24px;
+  font-weight: 800;
+  font-size: 48px;
+  line-height: 117%;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
+  @include on-desktop {
+    margin-top: 64px;
+  }
+}

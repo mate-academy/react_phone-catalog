@@ -1,0 +1,28 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.navigation {
+
+  @media (min-width: 640px) {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__items {
+    display: none;
+
+    @media (min-width: 640px) {
+      display: flex;
+      flex-direction: row;
+      justify-content: start;
+    }
+
+  }
+
+  &__item {
+    margin-right: 0;
+    line-height: 27px;
+  }
+}

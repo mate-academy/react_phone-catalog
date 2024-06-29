@@ -1,0 +1,12 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.home__page {
+  padding-top: var(--header--height, 48px);
+
+  @include on-desktop {
+    padding-top: var(--header--height, 64px);
+  }
+
+}

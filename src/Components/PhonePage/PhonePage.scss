@@ -1,0 +1,94 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.products {
+
+  padding-top: var(--header--height, 48px);
+
+  @include on-desktop {
+    padding-top: var(--header--height, 64px);
+  }
+
+  &__cards {
+    margin-top: 24px;
+    row-gap: 40px;
+    margin-bottom: 40px;
+    @include page-grid;
+
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @media (min-width: 768px) {
+      grid-column: span 4;
+    }
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -1px;
+    color: $primary;
+    margin-bottom: 8px;
+
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 117%;
+    }
+
+    @include on-desktop {
+      font-size: 48px;
+      line-height: 117%;
+    }
+  }
+
+  &__amount-models {
+    font-weight: 600;
+    font-size: 14px;
+    color: $secondary;
+    line-height: 150%;
+    margin-bottom: 40px;
+  }
+
+  &__container {
+    @include page-grid;
+  }
+
+  &__sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+
+  &__items {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-desktop {
+      grid-column: span 4;
+    }
+  }
+
+}
+

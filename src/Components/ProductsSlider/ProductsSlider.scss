@@ -1,0 +1,101 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.product-slider {
+
+  @include page-grid;
+
+  padding-right: 0;
+
+  @include on-tablet {
+    padding-right: 0;
+  }
+
+  margin-top: 80px;
+
+  &__container {
+    grid-column: 1 / -1;
+    display: flex;
+    overflow: hidden;
+    gap: 16px;
+    margin-bottom: 64px;
+
+    @include on-tablet {
+      margin-bottom: 80px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+
+    &__item {
+      transition: transform 0.5s ease;
+      will-change: transform;
+
+      @include on-desktop {
+        max-width: 272px;
+      }
+    }
+
+
+  }
+
+  &__header {
+    grid-column: 1 / -1;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-right: 16px;
+
+    &--title {
+      font-weight: 800;
+      font-size: 32px;
+      line-height: 128%;
+      letter-spacing: -1px;
+      color: $primary;
+    }
+
+    &--buttons {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
+
+      &-img--left {
+        background-image: url("../../icons/arrow-left.svg");
+      }
+
+      &-img--right {
+        background-image: url("../../icons/arrow-right.svg");
+      }
+    }
+
+    &--button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icons;
+      background-color: $white;
+
+      &:hover {
+        border: 1px solid $primary;
+      }
+
+      &--disabled {
+        border: 1px solid $elements;
+      }
+    }
+  }
+
+
+}
+
+.img {
+  width: 16px;
+  height: 16px;
+  border: none;
+  background-color: $white;
+}

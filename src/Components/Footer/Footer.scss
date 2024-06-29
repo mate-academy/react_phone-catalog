@@ -1,0 +1,110 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.footer {
+  box-shadow: 0 -1px 0 0 $elements;
+
+  &__container {
+    height: 257px;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    justify-content: start;
+
+    @include on-tablet {
+      height: 96px;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    @include on-desktop {
+
+    }
+  }
+
+  &__wrapper {
+    padding-top: 32px;
+
+    @include on-tablet {
+      padding-top: 0;
+    }
+  }
+
+
+  &__icon {
+    background-image: url("../../icons/nice-gadgets-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 89px;
+    height: 32px;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    justify-content: center;
+
+    @include on-tablet {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+      justify-content: space-between;
+    }
+
+    @include on-desktop {
+
+      gap: 105px;
+
+    }
+
+    &--item {
+      text-decoration: none;
+      font-weight: bold;
+      color: $secondary;
+      line-height: 92%;
+      font-size: 12px;
+      text-transform: uppercase;
+    }
+  }
+
+  &__back-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      color: $secondary;
+      font-size: 12px;
+      margin-right: 16px;
+    }
+
+
+    &__button {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $icons;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__back {
+      background-image: url("../../icons/arrow-up.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      background-position: center;
+      width: 16px;
+      height: 16px;
+      border: none;
+      background-color: $white;
+    }
+  }
+}
+
+.icon__container {
+  cursor: pointer;
+}

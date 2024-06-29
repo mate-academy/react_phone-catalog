@@ -1,0 +1,35 @@
+@import "../../styles/variables.scss";
+
+.breadcrumbs {
+  height: 16px;
+  margin-top: 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 40px;
+
+  &--home {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../icons/Home.svg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--arrow-right {
+    width: 16px;
+    height: 16px;
+    background-image: url("../../icons/arrow-right.svg");
+    background-size: cover;
+    background-position: center;
+  }
+
+  &--text {
+    padding-top: 2px;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    color: $secondary;
+
+  }
+}

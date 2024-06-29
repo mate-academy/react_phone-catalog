@@ -1,0 +1,33 @@
+@import '../../../styles/variables';
+
+.available {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  width: 320px;
+
+
+  &__color {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    border: 1px solid $elements;
+    border-radius: 50%;
+
+    &--active {
+      border: 1px solid $primary;
+    }
+
+    &--item {
+      box-sizing: border-box;
+      border: 2px solid $white;
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+    }
+
+
+  }
+}
+

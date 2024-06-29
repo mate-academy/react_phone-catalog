@@ -1,0 +1,229 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+
+.details__wrapper {
+  padding-top: var(--header--height, 48px);
+
+  @include on-desktop {
+    padding-top: var(--header--height, 64px);
+  }
+}
+
+.details {
+  min-height: 100vh;
+
+  &__container {
+    margin-top: 40px;
+    display: flex;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    font-size: 32px;
+    line-height: 128%;
+    letter-spacing: -1px;
+    color: $primary;
+  }
+
+  &__slider-photos {
+    box-sizing: border-box;
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    width: 80px;
+    height: 464px;
+  }
+
+  &__main-photo {
+    width: 464px;
+    height: 464px;
+    margin-left: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-right: 64px;
+
+    &--img {
+      cursor: pointer;
+      max-width: 100%;
+      max-height: 100%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+  }
+
+  &__properties {
+    &--text {
+      font-size: 12px;
+      font-weight: 600;
+      color: $secondary;
+      margin-bottom: 8px;
+    }
+  }
+
+  &__prices {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+
+    &--discount {
+      font-size: 32px;
+      line-height: 128%;
+      letter-spacing: -1px;
+      color: $primary;
+    }
+
+    &--full {
+      color: $secondary;
+      font-weight: normal;
+      position: relative;
+      font-size: 22px;
+
+      &::after {
+        background-color: $secondary;
+        bottom: 50%;
+        content: "";
+        display: block;
+        height: 5%;
+        mix-blend-mode: color-dodge;
+        position: absolute;
+        text-align: center;
+        width: 100%;
+      }
+    }
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    margin-bottom: 32px;
+
+    &--add {
+      padding: 0;
+      width: 263px;
+      height: 40px;
+      background-color: $primary;
+      color: $white;
+      border: none;
+      margin-right: 8px;
+      font-size: 14px;
+      line-height: 150%;
+      font-weight: 700;
+
+      &--active {
+        border: 1px solid $icons;
+        background-color: $white;
+        color: $green;
+      }
+    }
+
+    &--like {
+      padding: 0;
+      width: 40px;
+      height: 40px;
+      background-color: $white;
+      border: 1px solid $icons;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      &__link {
+        width: 16px;
+        height: 16px;
+        background-image: url("../../icons/Heart-like.svg");
+        background-position: center;
+        background-size: cover;
+
+        &__active {
+          background-image: url('../../icons/heart-like-fullfield.svg');
+        }
+      }
+    }
+  }
+
+  &__specs {
+    width: 512px;
+
+    &__items {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &__title {
+      font-size: 22px;
+      line-height: 140%;
+      font-weight: 800;
+      color: $primary;
+      margin-bottom: 16px;
+    }
+
+    &__item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      &--name {
+        font-size: 14px;
+        line-height: 150%;
+        font-weight: 500;
+        color: $secondary;
+      }
+
+      &--description {
+        font-size: 14px;
+        line-height: 150%;
+        font-weight: 500;
+        color: $primary;
+      }
+    }
+  }
+
+  &__items-about {
+    width: 559px;
+    margin-right: 64px;
+
+    &__wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &-title {
+      color: $primary;
+      font-size: 22px;
+      line-height: 140%;
+      font-weight: 800;
+      margin-bottom: 16px;
+    }
+
+    &-container {
+      &-title {
+        color: $primary;
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      &-text {
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 150%;
+        color: $secondary;
+      }
+    }
+  }
+
+  &__descriptions--container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+
+.line {
+  width: 100%;
+  border: 1px solid $elements;
+  margin-bottom: 24px;
+}

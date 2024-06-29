@@ -1,0 +1,41 @@
+@import "../../styles/mixins";
+@import "../../styles/variables";
+
+.favorites {
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  padding-top: var(--header--height, 48px);
+
+  @include on-desktop {
+    padding-top: var(--header--height, 64px);
+  }
+
+  &__text {
+    display: flex;
+    justify-content: center;
+    padding-top: 20px;
+    font-size: 22px;
+  }
+
+  &__empty {
+    background-image: url("../../../public/img/product-not-found.png");
+    width: 500px;
+    height: 500px;
+    margin: 0 auto;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @media (max-width: 640px) {
+      width: 350px;
+      height: 350px;
+    }
+  }
+
+}

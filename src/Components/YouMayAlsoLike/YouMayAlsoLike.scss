@@ -1,0 +1,19 @@
+.new-models {
+  width: 100%;
+  margin-top: 80px;
+  margin-bottom: 80px;
+
+  &__title {
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -1%;
+    margin-bottom: 24px;
+  }
+
+  &__cards {
+    @include page-grid;
+    grid-column: span 6;
+
+  }
+}

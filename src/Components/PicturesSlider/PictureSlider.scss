@@ -1,0 +1,34 @@
+@import "../../styles/styles";
+
+
+.slider {
+  display: flex;
+  height: 400px;
+  width: 100%;
+  margin-top: 56px;
+
+  &__button {
+    cursor: pointer;
+    width: 32px;
+    height: 100%;
+    background-color: #FFFFFF;
+    border: 1px solid $icons;
+  }
+
+  &__button-left {
+    margin-right: auto;
+  }
+
+  &__button-right {
+    margin-left: auto;
+  }
+
+  &__pictures {
+    margin-inline: 16px;
+    //background-image: url("../../../public/img/banners/Banner.png");
+    background-size: contain;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+  }
+}

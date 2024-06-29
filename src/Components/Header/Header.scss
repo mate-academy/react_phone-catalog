@@ -1,0 +1,210 @@
+@import '../../styles/variables';
+@import "../../styles/mixins";
+
+body.menu-open {
+  overflow: hidden;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background-color: $white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 $elements;
+  height: 48px;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__wrapper {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    background-image: url("../../icons/nice-gadgets-logo.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 80px;
+    height: 28px;
+    margin-left: 24px;
+    margin-right: 48px;
+    @include on-desktop {
+      margin-right: 48px;
+    }
+  }
+
+  &__link {
+    display: block;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+    font-size: 12px;
+    text-transform: uppercase;
+    color: $secondary;
+    line-height: 48px;
+
+    @include on-tablet {
+      margin-right: 32px;
+    }
+
+    @include on-desktop {
+
+      margin-right: 64px;
+      line-height: 64px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    height: inherit;
+    cursor: pointer;
+
+    &__container {
+      box-shadow: -1px 1px 1px $elements;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+    }
+
+    @media (max-width: 640px) {
+      display: none;
+    }
+  }
+}
+
+.menu__button {
+  display: flex;
+  height: inherit;
+
+  &__container {
+    box-shadow: -1px 1px 1px $elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 64px;
+  }
+
+  @media (min-width: 640px) {
+    display: none;
+  }
+}
+
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+  background-size: cover;
+  background-position: center;
+  cursor: pointer;
+
+  &__container {
+    width: 50%;
+    height: 64px;
+    border: 1px solid $icons;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &--menu {
+    background-image: url("../../icons/Menu.svg");
+  }
+
+  &--close {
+    background-image: url("../../icons/Close.png");
+  }
+
+  &--favourites {
+    position: absolute;
+    background-image: url("../../icons/Heart-like.svg");
+
+    &__number {
+      background-color: red;
+      top: -5px;
+      left: 8px;
+      position: relative;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__text {
+      font-size: 9px;
+      font-weight: 80;
+      color: $white;
+    }
+  }
+
+  &--cart {
+    background-image: url("../../icons/Cart.svg");
+  }
+}
+
+
+.is-active {
+  position: relative;
+  color: $primary;
+}
+
+.is-active::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  left: 0;
+  bottom: 0;
+  border-bottom: 3px solid $primary;
+}
+
+
+.overlay {
+  height: calc(100vh - 48px);
+  width: 100%;
+  position: fixed;
+  z-index: 999;
+  top: 48px;
+  left: 0;
+  background-color: $white;
+  transition: 0.5s;
+
+
+  .navigation__items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .navigation__item {
+    margin-bottom: 24px;
+    font-size: 18px;
+  }
+}
+
+.overlay__content {
+  height: calc(100% - 24px);
+  position: relative;
+  margin-top: 24px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+
+.mobile-menu__footer {
+  width: 100%;
+  display: flex;
+}
