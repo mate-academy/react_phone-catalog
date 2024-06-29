@@ -1,0 +1,12 @@
+.info {
+  &__productsCount {
+    display: block;
+    margin-top: 8px;
+    color: var(--secondary);
+
+    &_loading {
+      width: 75px;
+      height: 21px;
+    }
+  }
+}

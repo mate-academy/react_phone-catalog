@@ -1,0 +1,30 @@
+@import 'src/styles/mixins';
+
+.container {
+  min-width: 320px;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-inline: 32px;
+  }
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 1fr);
+  }
+}

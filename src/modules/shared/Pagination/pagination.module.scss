@@ -1,0 +1,11 @@
+.pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+
+  &__crumbs {
+    display: flex;
+    gap: 8px;
+  }
+}

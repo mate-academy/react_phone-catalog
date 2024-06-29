@@ -1,0 +1,39 @@
+@import 'src/styles/mixins';
+
+.carousel {
+  --indent: 16px;
+
+  overflow: hidden;
+  position: relative;
+  width: calc(100% + var(--indent) * 2);
+  margin-left: calc(var(--indent) * -1);
+
+  @include on-tablet {
+    --indent: 24px;
+  }
+
+  @include on-desktop {
+    --indent: 0;
+  }
+
+  &__container {
+    list-style: none;
+    display: flex;
+    align-items: stretch;
+    margin-inline: var(--indent);
+    gap: 16px;
+  }
+
+  &__slide {
+    flex: 0 0 73.61%;
+    min-width: 0;
+
+    @include on-tablet {
+      flex-basis: 40.03%;
+    }
+
+    @include on-desktop {
+      flex-basis: 272px;
+    }
+  }
+}

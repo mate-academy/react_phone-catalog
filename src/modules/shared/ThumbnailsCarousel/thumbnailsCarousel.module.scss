@@ -1,0 +1,16 @@
+@import 'src/styles/mixins';
+
+.carousel {
+  --gap: 16px;
+
+  overflow: hidden;
+
+  &__content {
+    display: flex;
+    gap: var(--gap);
+  }
+
+  &__slide {
+    flex: 0 0 100%;
+  }
+}

@@ -1,0 +1,120 @@
+@import 'src/styles/mixins';
+
+.categories {
+  &__title {
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    &:not(:last-child) {
+      margin-bottom: 32px;
+    }
+
+    @include on-tablet {
+      &:not(:last-child) {
+        margin-bottom: 0;
+      }
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__imgContainer {
+    display: block;
+    position: relative;
+    padding-bottom: 100%;
+    border-radius: 8px;
+    overflow: hidden;
+
+    @include hover {
+      .categories__img {
+        transform: scale(1.1);
+      }
+    }
+
+    &_accessories {
+      background: linear-gradient(to bottom, #973d5f 50%, #ae597a 100%);
+    }
+
+    &_tablets {
+      background: linear-gradient(to bottom, #8d8d92 50%, #bdbdc2 100%);
+    }
+
+    &_phones {
+      background: linear-gradient(to bottom, #6d6474 50%, #8a808f 100%);
+    }
+
+    &_tablets,
+    &_phones,
+    &_accessories {
+      transition: background-position var(--transition-specs);
+      background-size: 100% 200%;
+      background-position: 50% 0%;
+
+      @include hover {
+        background-position: 50% 100%;
+      }
+    }
+  }
+  &__img {
+    position: absolute;
+    object-fit: contain;
+    transition: transform var(--transition-specs);
+
+    &_phones {
+      top: 10.86%;
+      left: 13.31%;
+      width: 104.89%;
+      height: 124.18%;
+    }
+
+    &_tablets {
+      width: 148.37%;
+      height: 148.37%;
+      top: 5.43%;
+      left: 5.98%;
+    }
+
+    &_accessories {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  &__itemInfo {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: start;
+  }
+
+  &__nameLink {
+    color: inherit;
+    transition: color var(--transition-specs);
+
+    @include hover {
+      color: var(--secondary);
+    }
+  }
+
+  &__name {
+    line-height: 26px;
+  }
+
+  &__count {
+    color: var(--secondary);
+
+    &_loading {
+      height: 21px;
+      width: 80px;
+    }
+  }
+}

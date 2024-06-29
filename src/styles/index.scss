@@ -1,0 +1,24 @@
+@import './reset';
+@import './variables';
+@import './fonts';
+
+body {
+  font-family: Mont, Helvetica, sans-serif;
+  color: var(--primary);
+  background: var(--hover-bg);
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 1px solid var(--primary);
+}
+
+.visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
