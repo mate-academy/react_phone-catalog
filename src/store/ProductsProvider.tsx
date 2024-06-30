@@ -1,5 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react';
-import { getGadgets } from '../utils/fetchMethods';
+import { getProducts } from '../utils/fetchMethods';
 import { Products } from '../types/ContextType/Products';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { filterGadgets } from '../utils/filterGadgets';
@@ -68,7 +68,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const resultFilteredDev = filteredList(sortedGadgets, +page, perPage);
 
   useEffect(() => {
-    getGadgets('/products.json').then(response => setProducts(response));
+    getProducts('products').then(response => setProducts(response));
   }, []);
 
   const gadgetsTools = {

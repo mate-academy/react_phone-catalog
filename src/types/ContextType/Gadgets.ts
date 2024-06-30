@@ -1,4 +1,4 @@
-export type Phones = {
+export type Gadgets = {
   id: string;
   category: string;
   namespaceId: string;

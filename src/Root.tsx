@@ -5,19 +5,25 @@ import { PhonesPage } from './pages/PhonesPage';
 import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
+import { Category } from './enums/Category';
+
+
 
 const linkList = [
   {
     path: 'phones',
     element: <PhonesPage />,
+    type: Category.phones
   },
   {
     path: 'tablets',
     element: <TabletsPage />,
+    type: Category.tablets
   },
   {
     path: 'accessories',
     element: <AccessoriesPage />,
+    type: Category.accessories
   },
 ];
 
@@ -30,7 +36,7 @@ export const Root = () => (
       {linkList.map(item => (
         <Route path={item.path} key={item.path}>
           <Route index element={item.element} />
-          <Route path=":productId?" element={<ProductDetailsPage />} />
+          <Route path=":productId?" element={<ProductDetailsPage type={item.type}/>} />
         </Route>
       ))}
     </Route>

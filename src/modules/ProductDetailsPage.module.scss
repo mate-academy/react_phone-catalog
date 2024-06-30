@@ -6,6 +6,8 @@
   padding-inline: 32px;
   &__container {
     // display: flex;
+
+
   }
 
   &__link {
@@ -21,25 +23,28 @@
     }
   }
 
-  &__paragraph {
+  &__back {
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
+    cursor: pointer;
   }
 
-  &__paragraph::before {
+  &__back::before {
     content: '<';
     padding-right: 4px;
 
     color: $text-color;
   }
 
-  &__paragraph:hover::before {
+  &__back:hover::before {
     color: $paginationNumberBackColorActive;
   }
 
   &__phoneName {
     margin-bottom: 40px;
+    // background-color: red;
+    background-color: 'space-gray';
   }
 
   &__gridContainer {
@@ -72,7 +77,6 @@
   }
 
   &__mainImageContainer {
-    display: flex;
     justify-content: center;
     grid-column: 3 / 11;
   }
@@ -81,6 +85,22 @@
     max-height: 464px;
     max-width: 100%;
   }
+
+  &__availableColors {
+    display: flex;
+    gap: 8px;
+    grid-column: 12 / 21;
+
+  }
+
+  &__colorParam {
+    display: flex;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+  }
+
+
 }
 
 @include onTablet {
