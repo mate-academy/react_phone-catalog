@@ -9,7 +9,7 @@
   height: 32px;
   margin-top: 120vh;
 
-  @include for-tablet() {
+  @include for-tablet {
     bottom: 32px;
     left: calc(100% - 140px);
   }

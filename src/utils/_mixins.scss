@@ -1,10 +1,10 @@
-@mixin for-tablet () {
+@mixin for-tablet() {
   @media (min-width: 640px) {
     @content;
   }
 }
 
-@mixin for-desktop () {
+@mixin for-desktop() {
   @media (min-width: 1260px) {
     @content;
   }
@@ -16,7 +16,7 @@
   grid-template-columns: repeat(2, 130px);
   column-gap: 20px;
 
-  @include for-tablet() {
+  @include for-tablet {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(6, 80px);
@@ -24,7 +24,7 @@
     padding: 0 72px;
   }
 
-  @include for-desktop() {
+  @include for-desktop {
     display: grid;
     justify-content: center;
     grid-template-columns: repeat(12, 63px);

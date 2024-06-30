@@ -10,7 +10,7 @@
     height: 62px;
     margin: 0 auto 24px;
 
-    @include for-tablet() {
+    @include for-tablet {
       width: 600px;
     }
   }
@@ -21,7 +21,7 @@
     width: 136px;
     font-family: Montserrat, sans-serif;
 
-    @include for-tablet() {
+    @include for-tablet {
       width: 450px;
       font-size: 32px;
     }
