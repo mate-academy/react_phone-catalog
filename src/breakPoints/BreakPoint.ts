@@ -11,12 +11,12 @@ type Breakpoint = keyof typeof BREAKPOINTS;
 
 export const useBreakpoint = (breakpoint: Breakpoint) => {
   const [matches, setMatches] = useState(
-      window.innerWidth <= BREAKPOINTS[breakpoint]
+      window.innerWidth >= BREAKPOINTS[breakpoint]
   );
 
   useEffect(() => {
       const handler = () => {
-          setMatches(window.innerWidth <= BREAKPOINTS[breakpoint]);
+          setMatches(window.innerWidth >= BREAKPOINTS[breakpoint]);
       };
 
       window.addEventListener("resize", handler);

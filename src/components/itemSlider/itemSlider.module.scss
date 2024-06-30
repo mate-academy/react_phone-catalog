@@ -1,3 +1,5 @@
+@use "../../utils/mixins" as *;
+
 .brand_new_models {
 
   &__container {
@@ -7,6 +9,10 @@
     width: 288px;
     height: 62px;
     margin: 0 auto 24px;
+
+    @include for-tablet() {
+      width: 600px;
+    }
   }
 
   &__title {
@@ -15,6 +21,10 @@
     width: 136px;
     font-family: Montserrat, sans-serif;
 
+    @include for-tablet() {
+      width: 450px;
+      font-size: 32px;
+    }
   }
 
   &__button {
@@ -30,9 +40,11 @@
       background-image: url(../../../public/img/svg/arrow_left.svg);
       background-repeat: no-repeat;
       background-position: center;
-    }
 
-    // &__left.active {}
+      &:active {
+        background-image: url(../../../public/img/svg/arrow_left_active.svg);
+      }
+    }
 
     &__right {
       border: 1px solid #E2E6E9;
@@ -41,9 +53,11 @@
       background-image: url(../../../public/img/svg/arrow_right.svg);
       background-repeat: no-repeat;
       background-position: center;
-    }
 
-    // &__right.active {}
+      &:active {
+        background-image: url(../../../public/img/svg/arrow_right_active.svg);
+      }
+    }
   }
 
   &__slider {

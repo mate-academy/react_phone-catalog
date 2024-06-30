@@ -1,3 +1,5 @@
+@use "../../utils/mixins" as *;
+
 .crumbs {
   display: flex;
   gap: 8px;
@@ -5,6 +7,10 @@
   margin-bottom: 40px;
   width: 288px;
   height: 16px;
+
+  @include for-tablet() {
+    width: 600px;
+  }
 
   &__item {
     height: 16px;

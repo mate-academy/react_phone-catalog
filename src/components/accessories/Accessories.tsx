@@ -3,7 +3,7 @@ import { ContextApp } from '../../appContext/AppContext';
 import style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
-import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 
@@ -15,7 +15,10 @@ export const Accessories: React.FC = () => {
     products,
     handleChangeItems,
     handleChangeSort,
-    handlePageChange,selectedOption,itemsPerPage,activePage
+    handlePageChange,
+    selectedOption,
+    itemsPerPage,
+    activePage,
   } = useContext(ContextApp);
 
   const sortedAccessories = sortBy(products, accessories, selectedOption);

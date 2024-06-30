@@ -1,3 +1,5 @@
+@use "../../utils/mixins" as *;
+
 .back {
   position: sticky;
   width: 130px;
@@ -6,6 +8,11 @@
   display: flex;
   height: 32px;
   margin-top: 120vh;
+
+  @include for-tablet() {
+    bottom: 32px;
+    left: calc(100% - 140px);
+  }
 
   &__paragraph {
     margin-right: 16px;
@@ -22,24 +29,4 @@
     background-repeat: no-repeat;
     border: 1px solid #B4BDC3;
   }
-
-  // @media (max-height: 800px) {
-  //   .back {
-  //     margin-top: 105vh ;
-
-  //     &__paragraph {
-  //       color: pink;
-  //     }
-  //   }
-  // }
-
-  // @media (min-height: 801px) {
-  //   .back {
-  //     margin-top: 1vh;
-  //   }
-
-  //   &__paragraph {
-  //     color: red;
-  //   }
-  // }
 }

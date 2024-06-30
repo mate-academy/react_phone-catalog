@@ -2,6 +2,10 @@
   overflow: hidden;
   width: 320px;
   margin: 0 auto 56px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  align-content: center;
 
   &__title {
     color: #313237;
@@ -23,27 +27,21 @@
     width: 100%;
   }
 
-  // &__pic--1 {}
+  &__picker {
+    display: flex;
+    justify-content: center;
+    width: 288px;
+    height: 4px;
 
-  // &__pic--2 {}
+    &__dash {
+      width: 14px;
+      height: 4px;
+      margin-right: 15px;
+      background-color: #E2E6E9;
 
-  // &__pic--3 {}
-
-  // &__pic--4 {}
-
-  // &__pic--5 {}
-
-  &__dash {
-    display: none;
+      &__selected {
+        background-color: #313237;
+      }
+    }
   }
-
-  // &__dash-1 {}
-
-  // &__dash-2 {}
-
-  // &__dash-3 {}
-
-  // &__dash-4 {}
-
-  // &__dash-5 {}
 }

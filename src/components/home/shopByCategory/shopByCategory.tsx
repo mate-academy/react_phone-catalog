@@ -9,7 +9,8 @@ export const ShopByCategory: React.FC = () => {
     useContext(ContextApp);
   return (
     <div className={Styles.shop_by_category}>
-      <h2 className={Styles['title']}>Shop By Category</h2>
+      <h2 className={Styles.title}>Shop By Category</h2>
+      
       <Link to="/phones" className={Styles.shop_by_category__section}>
         <img
           className={Styles.shop_by_category__section__picture}

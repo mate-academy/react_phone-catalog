@@ -15,13 +15,14 @@ import { Cart } from './components/cart';
 import { BackToTop } from './components/backToTop';
 
 export const App = () => {
-  const { app, accessories, tablets, phones, backToTop } = useContext(ContextApp);
+  const { app, accessories, tablets, phones, backToTop } =
+    useContext(ContextApp);
 
   const handleScroll = () => {
     if (backToTop.current && backToTop.current.offsetTop < 500) {
       backToTop.current.style.marginTop = '110vh';
     } else if (backToTop.current && backToTop.current.offsetTop > 1150) {
-      backToTop.current.style.marginTop = '10px';
+      backToTop.current.style.marginTop = '0px';
     }
   };
 
@@ -31,6 +32,8 @@ export const App = () => {
       <h1 className="app__title">Product Catalog</h1>
 
       <Routes>
+      <Route path="/home" element={<Navigate to="/" replace={true} />} />
+
         <Route path="/">
           <Route index element={<Home />} />
 
@@ -52,9 +55,11 @@ export const App = () => {
             <Route index element={<Accessories />} />
             <Route path=":idItem" element={<Details list={accessories} />} />
           </Route>
-        </Route>
 
-        <Route path="/home" element={<Navigate to="/" replace={true} />} />
+          <Route path="home" element={<Navigate to="/" replace={true} />} />
+
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

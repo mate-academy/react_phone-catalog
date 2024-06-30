@@ -1,6 +1,8 @@
+@use "../../utils/mixins" as *;
+
 .productCard {
   font-family: Montserrat, sans-serif;
-  min-width: 288px;
+  width: 288px;
   height: 440px;
   border: 1px solid #E2E6E9;
   margin: 0 7px 16px;
@@ -9,6 +11,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @include for-tablet() {
+    margin: 0 7px 7px 0;
+  }
 
   &__picture {
     margin: auto;

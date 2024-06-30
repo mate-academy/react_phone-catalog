@@ -3,7 +3,7 @@ import { ContextApp } from '../../appContext/AppContext';
 import Styles from './Phones.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
-import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 

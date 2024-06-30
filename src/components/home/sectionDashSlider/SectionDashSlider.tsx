@@ -1,12 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Styles from './SectionDashSlider.module.scss';
+import cn from 'classnames';
+import { ContextApp } from '../../../appContext/AppContext';
 
 export const SectionDashSlider: React.FC = () => {
+  const { isTablet } = useContext(ContextApp);
   const [active, setActive] = useState(0);
   const totalPictureNumber = 5;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
   const timeoutId = useRef<number>();
+  const array = Array.from({ length: 5 }, (_, index) => index);
 
   useEffect(() => {
     timeoutId.current = window.setTimeout(() => {
@@ -38,11 +42,21 @@ export const SectionDashSlider: React.FC = () => {
     }
   };
 
+  const handlerPicker = (number: number) => {
+    setActive(number);
+  };
+
   return (
     <section className={Styles['slider']}>
       <h1 className={Styles['slider__title']}>
         Welcome to Nice Gadgets store!
       </h1>
+
+      {isTablet &&
+      (<div>
+        <img src="" alt="" />
+      </div>)}
+
       <div
         onTouchStart={handlerTouchStart}
         onTouchEnd={handlerTouchEnd}
@@ -53,49 +67,30 @@ export const SectionDashSlider: React.FC = () => {
           transition: 'transform 0.5s ease-in-out',
         }}
       >
-        <img
-          className={`${Styles.slider__pic} ${Styles['slider__pic--1']}`}
-          src=".\img\phones\apple-iphone-14-pro\spaceblack\00.webp"
-          alt="Gadget 1"
-        />
-        <img
-          className={`${Styles.slider__pic} ${Styles['slider__pic--2']}`}
-          src=".\img\phones\apple-iphone-14-pro\spaceblack\01.webp"
-          alt="Gadget 2"
-        />
-        <img
-          className={`${Styles.slider__pic} ${Styles['slider__pic--3']}`}
-          src=".\img\phones\apple-iphone-14-pro\spaceblack\02.webp"
-          alt="Gadget 3"
-        />
-        <img
-          className={`${Styles.slider__pic} ${Styles['slider__pic--4']}`}
-          src=".\img\phones\apple-iphone-14-pro\spaceblack\03.webp"
-          alt="Gadget 4"
-        />
-        <img
-          className={`${Styles.slider__pic} ${Styles['slider__pic--5']}`}
-          src=".\img\phones\apple-iphone-14-pro\spaceblack\04.webp"
-          alt="Gadget 5"
-        />
+        {array.map(item => {
+          return (
+            <img
+              key={item}
+              className={`${Styles.slider__pic}`}
+              src={`./img/phones/apple-iphone-14-pro/spaceblack/0${item}.webp`}
+              alt={`Gadget ${item + 1}`}
+            />
+          );
+        })}
       </div>
 
-      <div className="slider__picker">
-        <div
-          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-1']}`}
-        ></div>
-        <div
-          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-2']}`}
-        ></div>
-        <div
-          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-3']}`}
-        ></div>
-        <div
-          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-4']}`}
-        ></div>
-        <div
-          className={`${Styles['slider__picker__dash']} ${Styles['slider__picker__dash-5']}`}
-        ></div>
+      <div className={Styles.slider__picker}>
+        {array.map(item => {
+          return (
+            <div
+              key={item}
+              onClick={() => handlerPicker(item)}
+              className={cn(Styles.slider__picker__dash, {
+                [Styles.slider__picker__dash__selected]: item === active,
+              })}
+            ></div>
+          );
+        })}
       </div>
     </section>
   );

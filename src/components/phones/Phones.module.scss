@@ -1,8 +1,15 @@
+@use "../../utils/mixins" as *;
+
 .phones {
   font-family: Montserrat, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include for-tablet() {
+    align-items: flex-start;
+    padding-left: 15px;
+  }
 
   &__head {
     &__title {
@@ -12,6 +19,9 @@
       margin-bottom: 8px;
       width: 288px;
 
+      @include for-tablet() {
+        width: 600px;
+      }
     }
 
     &__paragraph {
@@ -29,9 +39,19 @@
     width: 288px;
     margin: 0 auto 24px;
 
+    @include for-tablet() {
+      width: 600px;
+      justify-content: flex-start;
+      margin: 0 0 24px;
+    }
+
 
     &__sort {
       width: 136px;
+
+      @include for-tablet() {
+        margin-right: 15px;
+      }
 
       &__paragraph {
         font-size: 12px;
@@ -69,6 +89,16 @@
     width: 288px;
     align-items: center;
     margin: 0 auto;
+
+    @include for-tablet() {
+      justify-content: flex-start;
+      flex-direction: row;
+      flex-wrap: wrap;
+      max-width: 1199px;
+      width: calc(100% - 20px);
+      max-width: 1199px;
+      margin:0 0 64px 0;
+    }
   }
 
   &__choose_page {

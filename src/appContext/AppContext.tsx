@@ -8,6 +8,7 @@ import {
 } from 'react-router-dom';
 import { ItemWithQuantity } from '../types/ItemWithQuantity';
 import { SortBy } from '../types/SortBy';
+import { useBreakpoint } from '../breakPoints/BreakPoint';
 
 type AppContextProps = {
   app: React.RefObject<HTMLDivElement>;
@@ -53,6 +54,10 @@ type AppContextProps = {
   handleChangeSort: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handleChangeItems: (e: React.ChangeEvent<HTMLSelectElement>) => void;
   handlePageChange: (number: number) => void;
+  isPhone: boolean;
+  isTablet: boolean;
+  isDesktop: boolean;
+  handleClearParams: () => void;
 };
 
 type Props = {
@@ -86,6 +91,9 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [selectedOption, setSelectedOption] = useState<SortBy>('newest');
   const [itemsPerPage, setItemsPerPage] = useState('all');
   const [activePage, setActivePage] = useState(1);
+  const isPhone = useBreakpoint('phone');
+  const isTablet = useBreakpoint('tablet');
+  const isDesktop = useBreakpoint('desktop');
 
   const [cart, setCart] = useState<ItemWithQuantity[]>(() => {
     const cart = localStorage.getItem('cart');
@@ -97,6 +105,13 @@ export const AppContext: React.FC<Props> = ({ children }) => {
 
     return fav ? JSON.parse(fav) : [];
   });
+
+  const handleClearParams = () => {
+    setSearchParams(new URLSearchParams());
+    setSelectedOption('newest');
+    setItemsPerPage('all');
+    setActivePage(1);
+  };
 
   const handleChangeSort = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSelectedOption(e.target.value as SortBy);
@@ -112,7 +127,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     setItemsPerPage(e.target.value);
     setActivePage(1);
     searchParams.delete('page');
-    
+
     if (itemsPerPage !== 'all') {
       searchParams.set('perPage', itemsPerPage);
     }
@@ -175,7 +190,6 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     if (option) {
       setSelectedOption(option as SortBy);
-
     }
     if (perPage) {
       setItemsPerPage(perPage);
@@ -277,29 +291,16 @@ export const AppContext: React.FC<Props> = ({ children }) => {
       searchParams.set('page', activePage.toString());
     }
 
-    // if (option === 'newest') {
-    //   searchParams.delete('sortBy');
-    //   setSearchParams(new URLSearchParams(searchParams));
-    // }
-
-    // if (perPage === 'all') {
-    //   searchParams.delete('perPage');
-    //   setSearchParams(new URLSearchParams(searchParams));
-    // }
-
-    // if (page === '1') {
-    //   searchParams.delete('page');
-    //   setSearchParams(new URLSearchParams(searchParams));
-    // }
-
-    console.log('searchParams', searchParams.toString());
-
     setSearchParams(new URLSearchParams(searchParams));
   }, [itemsPerPage, activePage, selectedOption, location.pathname]);
 
   return (
     <ContextApp.Provider
       value={{
+        handleClearParams,
+        isDesktop,
+        isPhone,
+        isTablet,
         handleChangeItems,
         handleChangeSort,
         handlePageChange,

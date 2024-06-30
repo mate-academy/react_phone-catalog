@@ -1,8 +1,16 @@
+@use "../../../utils/mixins" as *;
+
 .title {
   font-family: Montserrat, sans-serif;
   font-weight: 700;
   font-size: 20px;
   color: #313237;
+
+  @include for-tablet() {
+    font-size: 32px;
+    width: 500px;
+    margin-bottom: 24px;
+  }
 }
 
 .shop_by_category {
@@ -14,6 +22,13 @@
   height: 1000px;
   margin-bottom: 56px;
 
+  @include for-tablet() {
+    width: 600px;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: fit-content;
+  }
+
   &__section {
 
     &__picture {
@@ -21,6 +36,12 @@
       margin-bottom: 24px;
       border-radius: 20px;
       border: 1px solid #E2E6E9;
+
+      @include for-tablet() {
+        width: 190px;
+        height: 160px;
+
+      }
 
       &:hover {
         box-shadow:

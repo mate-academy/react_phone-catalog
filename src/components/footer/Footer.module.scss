@@ -1,5 +1,6 @@
+@use "../../utils/mixins" as *;
+
 .footer {
-  // transition: all 0.6s ease-in-out;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,11 +9,36 @@
   width: 288px;
   margin: 0 auto;
 
+  @include for-tablet() {
+    flex-direction: row;
+    align-items: center;
+    width: calc(100% - 20px);
+    padding-left: 15px;
+    margin: 0;
+  }
+
   &__logo {
     height: 30px;
     width: 289px;
+    width: 100%;
+    text-align: center;
     margin-bottom: 32px;
 
+    @include for-tablet() {
+      margin-bottom: 0;
+      margin-right: 15px;
+      height: fit-content;
+      width: fit-content;
+    }
+
+    &__img {
+      margin: 0 auto;
+
+      @include for-tablet() {
+        flex-direction: row;
+        margin: 0;
+      }
+    }
   }
 
   &__links {
@@ -22,7 +48,15 @@
     height: 65px;
     margin-bottom: 32px;
     text-transform: uppercase;
+    width: 100%;
+    text-align: center;
 
+    @include for-tablet() {
+      flex-direction: row;
+      margin-bottom: 0;
+      height: 32px;
+      justify-content: center;
+    }
 
     &__item {
       line-height: 12px;
@@ -30,32 +64,11 @@
       font-weight: 800;
       letter-spacing: 1px;
       color: #89939A;
+
+      @include for-tablet() {
+        line-height: 32px;
+        margin-right: 15px;
+      }
     }
   }
-
-  // &__back {
-  //   position: sticky;
-  //   top: 300px;
-  //   bottom: 25px;
-  //   display: flex;
-  //   height: 32px;
-  //   margin: 0 auto;
-
-  //   &__paragraph {
-  //     margin-right: 16px;
-  //     line-height: 32px;
-  //     font-size: 12px;
-  //     font-weight: 800;
-  //     letter-spacing: 1px;
-  //   }
-
-  //   &__link {
-  //     width: 32px;
-  //     background-image: url(../../../public/img/svg/arrow_up.svg);
-  //     background-position: center;
-  //     background-repeat: no-repeat;
-  //     border: 1px solid #B4BDC3;
-  //   }
-  // }
-
 }

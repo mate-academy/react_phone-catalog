@@ -4,7 +4,7 @@ import style from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
 // import { SortBy } from '../../types/SortBy';
-import { Skeleton } from '../../skeletons/Skelton.tsx';
+import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
 
