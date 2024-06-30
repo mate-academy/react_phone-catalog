@@ -1,6 +1,6 @@
 .App {
   min-height: 100vh;
-  min-width: 320px;
+  min-width: $min-width;
   margin: 0;
 
   &__container {

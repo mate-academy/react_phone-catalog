@@ -25,7 +25,7 @@
   &.active {
     border: none;
     background-color: $text-black-color;
-    color: #fff;
+    color: $text-white-color;
   }
 
   &.back {
@@ -70,7 +70,7 @@
   font-family: Mont-SemiBold, sans-serif;
 
   &:hover {
-    box-shadow: 0 3px 13px 0 #17203166;
+    box-shadow: 0 3px 13px 0 $shadow-color;
   }
 
   &__icon {

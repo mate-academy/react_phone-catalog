@@ -26,7 +26,7 @@
     justify-content: center;
     gap: 30px;
 
-    background-color: #fff;
+    background-color: $back-ground-color-white;
     border-radius: 10px;
 
     @include on-tablet {

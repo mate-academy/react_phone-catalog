@@ -2,7 +2,7 @@
   --header-height: #{$header-height};
   --footer-height: 257px;
 
-  min-width: 320px;
+  min-width: $min-width;
   margin: auto;
 
   min-height: calc(100vh - var(--header-height) - var(--footer-height));

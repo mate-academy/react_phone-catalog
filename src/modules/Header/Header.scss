@@ -112,9 +112,9 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #eb5757;
+    background-color: $quantity-icon-back-color;
     border-radius: 50%;
-    color: #fff;
+    color: $text-white-color;
     font-size: 9px;
     line-height: 100%;
 
@@ -157,7 +157,7 @@
     width: 50%;
 
     border-radius: 50%;
-    background-color: #fff;
+    background-color: $back-ground-color-white;
   }
 
   &__navbar-menu {

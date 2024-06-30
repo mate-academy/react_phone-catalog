@@ -89,9 +89,9 @@
     align-items: center;
     justify-content: center;
 
-    background-color: #eb5757;
+    background-color: $quantity-icon-back-color;
     border-radius: 50%;
-    color: #fff;
+    color: $text-white-color;
     font-size: 9px;
   }
 }

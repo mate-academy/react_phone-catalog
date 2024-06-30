@@ -44,13 +44,13 @@
   }
 
   &__item-wrapper.is-active {
-    color: #fff;
+    color: $text-white-color;
     background-color: $border-color-hover;
     border: none;
   }
 
   &__item-wrapper--color.is-active {
-    background-color: #fff;
+    background-color: $back-ground-color-white;
     border: 1px solid $border-color-hover;
   }
 

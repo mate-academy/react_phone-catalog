@@ -195,7 +195,7 @@ export const PicturesSlider: React.FC = React.memo(() => {
                   className={`pictures-slider__img pictures-slider__img--${img.id}`}
                 />
                 <Link
-                  to="/"
+                  to="/phones/apple-iphone-14-pro-128gb-spaceblack"
                   className={`pictures-slider__order-link pictures-slider__order-link--${img.id}`}
                 >
                   <img
