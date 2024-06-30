@@ -8,18 +8,20 @@ import classNames from 'classnames';
 
 type Props = {
   item: ProductGeneral;
+  numberOfItems: number;
   updateCount: (v: number) => void;
   handleDelete: (v: string) => void;
 };
 
 export const CartItem: React.FC<Props> = ({
   item,
+  numberOfItems,
   updateCount,
   handleDelete,
 }) => {
   const { image, name, price, category, itemId } = item;
   const { darkTheme } = useContext(ProductContext);
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState(numberOfItems);
   const navigate = useNavigate();
   const onDelete = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     event.stopPropagation();

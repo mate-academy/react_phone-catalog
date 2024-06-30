@@ -71,9 +71,10 @@ export const Cart = () => {
       ) : (
         <div className={styles.gridContainer}>
           <div className={styles.items}>
-            {addedItems.map(({ item }) => (
+            {addedItems.map(({ item, count }) => (
               <CartItem
                 item={item}
+                numberOfItems={count}
                 key={item.id}
                 updateCount={(newCount: number) => {
                   handlCountChange(item.itemId, newCount);
