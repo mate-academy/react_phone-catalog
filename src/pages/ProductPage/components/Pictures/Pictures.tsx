@@ -14,12 +14,10 @@ export const Pictures: React.FC<Props> = ({
 }) => {
   return (
     <div className={styles.wrapper}>
-      <div className={styles.mainImg}>
-        <div
-          className={`${styles.mainImg__link} hover--scale`}
-          style={{ backgroundImage: `url(${mainImg})` }}
-        ></div>
-      </div>
+      <div
+        className={`${styles.mainImg} hover--scale`}
+        style={{ backgroundImage: `url(${mainImg})` }}
+      ></div>
       <div className={styles.container}>
         {images.map(img => {
           return (

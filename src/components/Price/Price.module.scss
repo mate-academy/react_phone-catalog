@@ -13,25 +13,29 @@
   &__line {
     font-size: 22px;
     color: var(--grey-secondary);
+    z-index: 1;
+
     position: relative;
 
     &::after {
       position: absolute;
-      height: 5%;
+      height: 10%;
       width: 100%;
-      bottom: 50%;
+      bottom: 46%;
       content: '';
       display: block;
       text-align: center;
+      filter: invert(25%);
       mix-blend-mode: color-dodge;
-      backdrop-filter: invert(74%);
 
       background-color: var(--grey-secondary);
     }
+
 
     &__darkTheme::after {
       mix-blend-mode: difference;
-      background-color: var(--grey-secondary);
     }
   }
 }
+
+

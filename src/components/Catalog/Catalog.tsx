@@ -38,11 +38,7 @@ export const Catalog: React.FC<Props> = ({ products }) => {
           />
         ))}
       </div>
-      {numberOfPages > 1 && (
-        <div className={styles.bottom}>
-          <Pagination numberOfPages={numberOfPages} />
-        </div>
-      )}
+      {numberOfPages > 1 && <Pagination numberOfPages={numberOfPages} />}
     </section>
   );
 };

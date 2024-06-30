@@ -32,6 +32,12 @@ export const Price: React.FC<Props> = ({
             })}
           >{`$${product.fullPrice}`}</p>
         )}
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          version="1.1"
+          style={{ display: ' none' }}
+        ></svg>
       </div>
     )
   );

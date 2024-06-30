@@ -1,7 +1,5 @@
-import classNames from 'classnames';
 import { ProductGeneral } from '../types/ProductGeneral';
 import { ErrorText } from '../constants/errorText';
-import { dots } from '../constants/dots';
 import { CartItem } from '../types/CartItem';
 
 export const getItemsPerScroll = (width: number) => {
@@ -16,16 +14,6 @@ export const getItemsPerScroll = (width: number) => {
   }
 };
 
-export const getButtonSecondaryClass = (darkTheme: boolean) =>
-  classNames(`button button--secondary`, {
-    'button--secondary-darkTheme': darkTheme,
-  });
-
-export const getButtonMainClass = (darkTheme: boolean) =>
-  classNames(`button button--main`, {
-    'button--main-darkTheme': darkTheme,
-  });
-
 export const getCatagoryNameANDError = (category: string) => {
   switch (category) {
     case 'tablets':
@@ -35,31 +23,6 @@ export const getCatagoryNameANDError = (category: string) => {
     default:
     case 'accessories':
       return { name: 'Accessories', errorText: ErrorText.noAccessories };
-  }
-};
-
-export const getButtonValue = (
-  value: string | number,
-  index: number,
-  visibleButtons: (string | number)[],
-  selectedPage: number,
-) => {
-  const previousValue = visibleButtons[index - 1];
-  const nextValue = visibleButtons[index + 1];
-
-  if (typeof value === 'number') {
-    return value;
-  }
-
-  switch (value) {
-    case dots.start:
-      return +previousValue + 1;
-
-    case dots.end:
-      return +nextValue - 1;
-
-    default:
-      return selectedPage;
   }
 };
 

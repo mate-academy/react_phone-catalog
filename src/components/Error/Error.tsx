@@ -7,8 +7,8 @@ import productNotFound from '../../images/product-not-found.png';
 import classNames from 'classnames';
 import { useContext, useEffect, useRef } from 'react';
 import { ProductContext } from '../../store/ProductContext';
-import { getButtonMainClass } from '../../utils/utils';
 import { NewProducts } from '../../pages/HomePage/components/NewProducts';
+import { getButtonClass } from '../../utils/getButtonClass';
 
 export const getErrorImg = (error: string) => {
   switch (error) {
@@ -53,7 +53,7 @@ export const Error: React.FC<Props> = ({ errorText }) => {
       {errorText === ErrorText.default && (
         <button
           className={classNames(
-            `${styles.buttonReload} ${getButtonMainClass(darkTheme)}`,
+            `${styles.buttonReload} ${getButtonClass.main(darkTheme)}`,
           )}
           onClick={() => navigate(0)}
         >

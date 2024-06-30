@@ -9,7 +9,6 @@
   font-family: inherit;
   height: 439px;
   width: 100%;
-  max-width: 300px;
   padding: 32px;
   color: inherit;
   cursor: pointer;
@@ -28,18 +27,17 @@
 
 .img {
   padding: 0;
-  width: auto;
   height: 30%;
+  width: 100%;
+  object-fit: contain;
+
   flex-shrink: 2;
   flex-grow: 2;
 
-  &__link {
-    padding: 0;
-    width: auto;
-    height: 100%;
-  }
+
 }
 
 .mainInfo {
   flex-shrink: 0;
+  width: 100%;
 }

@@ -5,14 +5,16 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  height: 100%;
   gap: 24px;
 }
 
 .img {
   display: block;
-  width: 400px;
-  height: 300px;
+  width: 50vw;
+  height: 50vw;
   background-size: contain;
+  background-position: center;
   background-repeat: no-repeat;
 }
 

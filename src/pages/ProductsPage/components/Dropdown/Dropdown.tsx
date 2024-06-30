@@ -23,33 +23,28 @@ const DropdownItem: React.FC<Props> = ({ options, title, name }) => {
   const value = searchParams.get(name) || startValue;
   const [displayed, setDisplayed] = useState(false);
   const { darkTheme } = useContext(ProductContext);
+  const dropdownClassName = classNames(`${styles.dropdown__value} border`, {
+    [styles.dropdown__value__active]: displayed,
+    [styles.dropdown__value__darkTheme]: darkTheme,
+    [styles.dropdown__value__darkTheme__active]: darkTheme && displayed,
+  });
 
   function handleClick(newValue: string) {
+    setDisplayed(false);
     const params = new URLSearchParams(searchParams);
 
     params.set(name, newValue);
     params.delete('page');
     setSearchParams(params);
-    setDisplayed(false);
   }
 
   return (
-    <div
-      className={styles.item}
-      tabIndex={0}
-      onClick={() => setDisplayed(prev => !prev)}
-      onBlur={() => {
-        setDisplayed(false);
-      }}
-    >
+    <div className={styles.item}>
       <p className="text--grey text--small">{title}</p>
       <div className={styles.dropdown}>
         <div
-          className={classNames(`${styles.dropdown__value} border`, {
-            [styles.dropdown__value__active]: displayed,
-            [styles.dropdown__value__darkTheme]: darkTheme,
-            [styles.dropdown__value__darkTheme__active]: darkTheme && displayed,
-          })}
+          onClick={() => setDisplayed(prev => !prev)}
+          className={dropdownClassName}
         >
           <p>{value}</p>
 
@@ -65,9 +60,8 @@ const DropdownItem: React.FC<Props> = ({ options, title, name }) => {
         {displayed && (
           <ul
             className={`${styles.dropdown__container} border`}
-            onMouseLeave={() => {
-              setDisplayed(false);
-            }}
+            tabIndex={0}
+            onMouseLeave={() => setDisplayed(false)}
           >
             {options.map(item => (
               <li

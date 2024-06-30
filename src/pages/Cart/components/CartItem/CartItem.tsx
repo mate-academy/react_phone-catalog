@@ -1,10 +1,10 @@
 import { useContext, useState } from 'react';
 import { ProductGeneral } from '../../../../types/ProductGeneral';
 import styles from './CartItem.module.scss';
-import { getButtonSecondaryClass } from '../../../../utils/utils';
 import { ProductContext } from '../../../../store/ProductContext';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
+import { getButtonClass } from '../../../../utils/getButtonClass';
 
 type Props = {
   item: ProductGeneral;
@@ -46,7 +46,7 @@ export const CartItem: React.FC<Props> = ({
         <div className={`${styles.buttons}`}>
           <button
             disabled={count === 1}
-            className={`button--small ${getButtonSecondaryClass(darkTheme)}`}
+            className={`button--small ${getButtonClass.secondary(darkTheme)}`}
             onClick={event => {
               setCount(prevCount => prevCount - 1);
               updateCount(count - 1);
@@ -61,7 +61,7 @@ export const CartItem: React.FC<Props> = ({
           </button>
           <div className={`${styles.count} button button--small`}>{count}</div>
           <button
-            className={`button--small ${getButtonSecondaryClass(darkTheme)}`}
+            className={`button--small ${getButtonClass.secondary(darkTheme)}`}
             onClick={event => {
               setCount(prevCount => prevCount + 1);
               updateCount(count + 1);

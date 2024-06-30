@@ -29,13 +29,7 @@ export const ProductCard: React.FC<Props> = React.memo(
           window.scrollTo(0, 0);
         }}
       >
-        <div className={`${styles.img}`}>
-          <img
-            className={`${styles.img__link} hover--scale`}
-            src={img}
-            alt={id}
-          />
-        </div>
+        <img className={`${styles.img} hover--scale`} src={img} alt={id} />
         <div className={styles.mainInfo}>
           <ShortInfo productId={id} displayFullPrice={displayFullPrice} />
         </div>

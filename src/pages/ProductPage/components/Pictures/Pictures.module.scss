@@ -13,22 +13,18 @@
 
 .mainImg {
   margin-bottom: 16px;
+  width: 100%;
+  height: 266px;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
 
-  &__link {
-    width: 266px;
-    height: 266px;
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
+  @include on-tablet {
+    background-position: top;
+  }
 
-    @include on-tablet {
-      background-position: top;
-    }
-
-    @include on-desktop {
-      width: 443px;
-      height: 443px;
-    }
+  @include on-desktop {
+    height: 443px;
   }
 }
 
@@ -55,7 +51,7 @@
   cursor: pointer;
 
   &:hover {
-    box-shadow: 0 2px 15px 0 #0000001A;
+    box-shadow: 0 2px 15px 0 #0000001a;
     border: 1px solid $grey-icons;
     z-index: 2;
   }
@@ -89,6 +85,4 @@
   background-size: contain;
   background-repeat: no-repeat;
   background-position: center;
-
-
 }

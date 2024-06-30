@@ -3,11 +3,9 @@ import classNames from 'classnames';
 import styles from './Pagination.module.scss';
 import { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../../../../store/ProductContext';
-import {
-  getButtonSecondaryClass,
-  getButtonValue,
-} from '../../../../utils/utils';
-import { dots } from '../../../../constants/dots';
+import { useWidth } from '../../../../hooks/useWidth';
+import { getPagination } from '../../../../utils/getPagination';
+import { getButtonClass } from '../../../../utils/getButtonClass';
 
 type Props = {
   numberOfPages: number;
@@ -16,32 +14,16 @@ type Props = {
 export const Pagination: React.FC<Props> = ({ numberOfPages }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const { darkTheme } = useContext(ProductContext);
-  const buttonClass = `${styles.button} button--small ${getButtonSecondaryClass(darkTheme)}`;
+  const width = useWidth();
+  const buttonClass = `${styles.pageButton} button--small ${getButtonClass.secondary(darkTheme)}`;
   const [visibleButtons, setVisibleButtons] = useState<(number | string)[]>([]);
   const selectedPage = +(searchParams.get('page') || 1);
 
   useEffect(() => {
-    let buttons: (number | string)[] = Array.from(
-      Array(numberOfPages + 1).keys(),
-    ).slice(1);
+    let buttons = getPagination.smallScreens(numberOfPages, selectedPage);
 
-    if (numberOfPages <= 6) {
-      setVisibleButtons(buttons);
-
-      return;
-    }
-
-    if (selectedPage <= 4) {
-      buttons = [...buttons.slice(0, 4), dots.start, numberOfPages];
-    } else if (selectedPage <= numberOfPages - 4 && selectedPage > 4) {
-      const buttonsMiddle = [selectedPage - 1, selectedPage, selectedPage + 1];
-
-      buttons = [1, dots.start, ...buttonsMiddle, dots.end, numberOfPages];
-    } else if (selectedPage > numberOfPages - 4) {
-      const rest = numberOfPages - 4;
-      const hideButtons = rest > 1 ? dots.end : numberOfPages - 1;
-
-      buttons = [1, hideButtons, ...buttons.slice(-4)];
+    if (width > 640) {
+      buttons = getPagination.bigScreens(numberOfPages, selectedPage);
     }
 
     setVisibleButtons(buttons);
@@ -87,7 +69,7 @@ export const Pagination: React.FC<Props> = ({ numberOfPages }) => {
       </button>
       <div className={styles.container}>
         {visibleButtons.map((button, index) => {
-          const buttonValue = getButtonValue(
+          const buttonValue = getPagination.itemValue(
             button,
             index,
             visibleButtons,

@@ -8,6 +8,7 @@
 
 .text {
   cursor: pointer;
+  font-weight: 600;
 
   @include hover(color, var(--text-color));
   @include hover(font-weight, bold);

@@ -3,10 +3,11 @@ import { ProductGeneral } from '../../types/ProductGeneral';
 import { ProductCard } from '../ProductCard';
 import { useWidth } from '../../hooks/useWidth';
 import { MobileSwiper } from '../MobileSwiper/MobileSwiper';
-import { getButtonSecondaryClass, getItemsPerScroll } from '../../utils/utils';
+import { getItemsPerScroll } from '../../utils/utils';
 import styles from './ProductSlider.module.scss';
 import classNames from 'classnames';
 import { ProductContext } from '../../store/ProductContext';
+import { getButtonClass } from '../../utils/getButtonClass';
 
 type Props = {
   products: ProductGeneral[];
@@ -22,7 +23,7 @@ export const ProductSlider: React.FC<Props> = ({
   const [displayIndex, setDisplayIndex] = useState(0);
   const { darkTheme } = useContext(ProductContext);
   const width = useWidth();
-  const buttonClass = `${getButtonSecondaryClass(darkTheme)} button--small`;
+  const buttonClass = `${getButtonClass.secondary(darkTheme)} button--small`;
   const maxLastIndex = useMemo(
     () => products.length - getItemsPerScroll(width),
     [width, products],
@@ -33,7 +34,9 @@ export const ProductSlider: React.FC<Props> = ({
     [width],
   );
 
-  const getTransformValue = `translateX(calc((-100% * ${displayIndex} - 16px * ${displayIndex} - ${width > 640 ? '8px' : '0px'}))`;
+  const onTablets = width > 640 && width < 1200;
+
+  const getTransformValue = `translateX(calc((-100% * ${displayIndex} - 16px * ${displayIndex} - ${onTablets && displayIndex !== 0 ? '8px' : '0px'}))`;
 
   const handleIncrease = (step1 = step) => {
     setDisplayIndex(prevIndex =>

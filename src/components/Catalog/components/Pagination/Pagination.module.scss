@@ -1,6 +1,9 @@
+@import '../../../../styles/utils/utils';
+
 .wrapper {
+  width: 100%;
   display: flex;
-  align-items: stretch;
+  justify-content: center;
   gap: 16px;
 
   & > * {
@@ -15,12 +18,7 @@
   gap: 8px;
 }
 
-
-
-.button {
+.pageButton {
   flex-grow: 0;
   flex-shrink: 0;
-  padding: 8px;
-
-
 }

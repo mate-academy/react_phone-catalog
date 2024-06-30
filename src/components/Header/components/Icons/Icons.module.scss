@@ -40,17 +40,15 @@
 
 .bar {
   position: absolute;
-  height: 2px;
+  display: block;
+  height: 1.5px;
   width: 16px;
-  font-size: 0;
-  line-height: 0;
   background-color: var(--text-color);
   border-radius: 4px;
   transition: all 0.4s ease-in-out;
 
   &__0 {
     top: 0;
-
     &__selected {
       transform: rotate(45deg);
       transform-origin: top left;
@@ -59,7 +57,7 @@
   }
 
   &__1 {
-    top: 34.5%;
+    top: 3.4px;
 
     &__selected {
       transform: translateX(-100%);
@@ -68,8 +66,7 @@
   }
 
   &__2 {
-    top: 34.5%;
-    left: 0;
+    top: 3.5px;
 
     &__selected {
       transform: translateX(100%);

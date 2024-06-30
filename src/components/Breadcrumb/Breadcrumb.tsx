@@ -26,7 +26,9 @@ export const Breadcrumb: React.FC<Props> = ({ productName = '' }) => {
       <div className=" icon icon--arrow icon--notActive"></div>
       <Link
         to={`/${category}`}
-        className={`link text--grey ${styles.text} ${styles.text__main}`}
+        className={classNames(`link text--grey ${styles.text}`, {
+          [styles.text__main]: productName,
+        })}
       >{`${categoryName}`}</Link>
 
       {productName && (
@@ -53,7 +55,7 @@ export const BreadcrumbBack: React.FC<Props> = () => {
     >
       <div className={`icon icon--arrow ${styles.iconBack}`}></div>
       <p
-        className={`link text--grey ${styles.text} ${styles.text__main}`}
+        className={`link text--grey ${styles.text}`}
         onClick={() => navigate(-1)}
       >
         Back

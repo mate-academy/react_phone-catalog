@@ -10,8 +10,8 @@ import { useWidth } from '../../../../hooks/useWidth';
 import { MobileSwiper } from '../../../../components/MobileSwiper/MobileSwiper';
 import styles from './BannerSlider.module.scss';
 import classNames from 'classnames';
-import { getButtonSecondaryClass } from '../../../../utils/utils';
 import { ProductContext } from '../../../../store/ProductContext';
+import { getButtonClass } from '../../../../utils/getButtonClass';
 
 export const bannerSmall = [
   {
@@ -53,7 +53,7 @@ export const BannerSlider = () => {
   const { darkTheme } = useContext(ProductContext);
 
   const width = useWidth();
-  const buttonClass = `${styles.slider__button}  ${width >= 640 && getButtonSecondaryClass(darkTheme)}`;
+  const buttonClass = `${styles.slider__button}  ${width >= 640 && getButtonClass.secondary(darkTheme)}`;
   const displayedImg = useMemo(() => {
     if (width < 640) {
       return bannerSmall;
@@ -122,7 +122,10 @@ export const BannerSlider = () => {
               <div
                 className={styles.slider__img}
                 key={banner1.img}
-                onClick={() => navigate(`/${banner1.id}`)}
+                onClick={() => {
+                  navigate(`/${banner1.id}`);
+                  window.scroll(0, 0);
+                }}
                 style={
                   {
                     transition: displayIndex === 0 ? '' : 'transform 3s',
@@ -140,6 +143,7 @@ export const BannerSlider = () => {
 
                 <Link
                   to={`/${banner1.id}`}
+                  onClick={() => window.scroll(0, 0)}
                   className={`${styles.slider__button_small} link hover--scale`}
                 >
                   ORDER NOW

@@ -1,7 +1,7 @@
 import styles from './ModalDialog.module.scss';
 import { useContext } from 'react';
 import { ProductContext } from '../../../../store/ProductContext';
-import { getButtonMainClass } from '../../../../utils/utils';
+import { getButtonClass } from '../../../../utils/getButtonClass';
 export type Props = {
   onDelete: () => void;
   displayModal: (v: boolean) => void;
@@ -24,7 +24,7 @@ export const ModalDialog: React.FC<Props> = ({ onDelete, displayModal }) => {
           Do you want to clear the Cart?
         </p>
         <div
-          className={`${styles.modalDialog__confirm} ${getButtonMainClass(darkTheme)}`}
+          className={`${styles.modalDialog__confirm} ${getButtonClass.main(darkTheme)}`}
           onClick={() => onDelete()}
         >
           Yes

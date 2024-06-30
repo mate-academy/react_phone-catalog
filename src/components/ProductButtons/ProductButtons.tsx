@@ -1,11 +1,11 @@
 import { useContext, useMemo } from 'react';
-import { getButtonMainClass, getButtonSecondaryClass } from '../../utils/utils';
 import { ProductContext } from '../../store/ProductContext';
 import classNames from 'classnames';
 import { Heart } from '../ProductCard/components/Heart';
 import styles from './ProductButtons.module.scss';
 import { useWidth } from '../../hooks/useWidth';
 import { productItem } from '../../utils/productItem';
+import { getButtonClass } from '../../utils/getButtonClass';
 type Props = {
   productId: string;
 };
@@ -41,7 +41,7 @@ export const ProductButtons: React.FC<Props> = ({ productId }) => {
   return (
     <div className={`${styles.productButtons}`}>
       <button
-        className={classNames(`${getButtonMainClass(darkTheme)} button--big`, {
+        className={classNames(`${getButtonClass.main(darkTheme)} button--big`, {
           'button--main--selected': isAdded && !darkTheme,
           'button--main--selected-darkTheme': isAdded && darkTheme,
         })}
@@ -51,7 +51,7 @@ export const ProductButtons: React.FC<Props> = ({ productId }) => {
       </button>
       <button
         className={classNames(
-          `button ${styles.likeButton} button--medium ${getButtonSecondaryClass(darkTheme)}`,
+          `button ${styles.likeButton} button--medium ${getButtonClass.secondary(darkTheme)}`,
           {
             'button--secondary--selected': isLiked,
           },
