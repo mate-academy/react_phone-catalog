@@ -37,7 +37,7 @@
     &-darkTheme {
       border: none;
       background-color: $grey-button;
-      
+
       @include hover(box-shadow, none);
       @include hover(background-color, $grey-button-dark);
 
@@ -61,7 +61,7 @@
   &--main {
     background-color: $grey-primary;
     font-family: inherit;
-    padding: 9px;
+    padding: 5px;
     color: var(--bg-color);
     font-size: 14px;
     font-weight: 600;

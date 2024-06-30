@@ -2,13 +2,14 @@ import React, { Dispatch, SetStateAction, useEffect, useMemo } from 'react';
 import { getProducts } from '../api/products';
 import { ProductGeneral } from '../types/ProductGeneral';
 import { useLocalStorage } from '../hooks/useLocalStorage';
+import { CartItem } from '../types/CartItem';
 
 type InitialContext = {
   products: ProductGeneral[];
   likedItems: string[];
   setLikedItems: Dispatch<SetStateAction<string[]>>;
-  addedItems: string[];
-  setAddedItems: Dispatch<SetStateAction<string[]>>;
+  addedItems: CartItem[];
+  setAddedItems: Dispatch<SetStateAction<CartItem[]>>;
   darkTheme: boolean;
   setDarkTheme: Dispatch<SetStateAction<boolean>>;
 };
@@ -39,7 +40,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     'likedItems',
     [],
   );
-  const [addedItems, setAddedItems] = useLocalStorage<string[]>(
+  const [addedItems, setAddedItems] = useLocalStorage<CartItem[]>(
     'addedItems',
     [],
   );

@@ -1,8 +1,8 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import classNames from 'classnames';
 import { ProductGeneral } from '../types/ProductGeneral';
 import { ErrorText } from '../constants/errorText';
 import { dots } from '../constants/dots';
+import { CartItem } from '../types/CartItem';
 
 export const getItemsPerScroll = (width: number) => {
   if (width > 1020) {
@@ -15,14 +15,6 @@ export const getItemsPerScroll = (width: number) => {
     return 1;
   }
 };
-
-export function isProductGeneralType(obj: any): obj is ProductGeneral {
-  return (
-    typeof obj.id === 'number' &&
-    typeof obj.fullPrice == 'number' &&
-    typeof obj.priceRegular === undefined
-  );
-}
 
 export const getButtonSecondaryClass = (darkTheme: boolean) =>
   classNames(`button button--secondary`, {
@@ -69,4 +61,25 @@ export const getButtonValue = (
     default:
       return selectedPage;
   }
+};
+
+export const getCountOf = {
+  itemsInCart(
+    addedItems: ({ item: ProductGeneral; count: number } | CartItem)[],
+  ) {
+    return addedItems.reduce((prev, { count }) => prev + count, 0);
+  },
+
+  sumInCart(
+    addedItems: {
+      item: ProductGeneral;
+      count: number;
+    }[],
+  ) {
+    return addedItems.reduce((prev, { item, count }) => {
+      const price = item.price * count;
+
+      return prev + price;
+    }, 0);
+  },
 };

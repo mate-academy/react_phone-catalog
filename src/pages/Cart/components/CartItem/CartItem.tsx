@@ -4,6 +4,7 @@ import styles from './CartItem.module.scss';
 import { getButtonSecondaryClass } from '../../../../utils/utils';
 import { ProductContext } from '../../../../store/ProductContext';
 import { useNavigate } from 'react-router-dom';
+import classNames from 'classnames';
 
 type Props = {
   item: ProductGeneral;
@@ -50,7 +51,11 @@ export const CartItem: React.FC<Props> = ({
               event.stopPropagation();
             }}
           >
-            <div className="icon icon--minus"></div>
+            <div
+              className={classNames('icon icon--minus', {
+                'icon--notActive': count === 1,
+              })}
+            ></div>
           </button>
           <div className={`${styles.count} button button--small`}>{count}</div>
           <button

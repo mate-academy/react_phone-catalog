@@ -2,13 +2,12 @@
   height: 16px;
   width: 16px;
 
-
   background-color: var(--text-color);
   mask-repeat: no-repeat;
   mask-position: center;
 
   &--notActive {
-    background-color:  var(--disabled-icon-color);
+    background-color: var(--disabled-icon-color);
   }
 
   &--menu {
@@ -39,13 +38,11 @@
   &--minus {
     -webkit-mask-image: url(../../../public/img/icons/minus.svg);
     mask-image: url(../../../public/img/icons/minus.svg);
-    background-color: var(--text-color);
   }
 
   &--arrow {
     -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
     mask-image: url(../../../public/img/icons/arrow.svg);
-
   }
   &--arrow-black {
     -webkit-mask-image: url(../../../public/img/icons/arrow.svg);
@@ -60,7 +57,6 @@
   &--home {
     -webkit-mask-image: url(../../../public/img/icons/home.svg);
     mask-image: url(../../../public/img/icons/home.svg);
-
   }
 
   &--search {
@@ -68,3 +64,4 @@
     mask-image: url(../../../public/img/icons/search.svg);
   }
 }
+

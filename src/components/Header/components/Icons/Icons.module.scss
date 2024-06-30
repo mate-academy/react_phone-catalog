@@ -20,8 +20,71 @@
   background-color: inherit;
   border-left: solid 1px var(--border-color);
   padding-inline: 16px;
+  transition: transform 8s;
 
   @include on-desktop {
     padding-inline: 24px;
   }
 }
+
+.hamburger {
+  position: relative;
+  height: 8.5px;
+  width: 14px;
+
+  &__selected {
+    height: 16px;
+    width: 16px;
+  }
+}
+
+.bar {
+  position: absolute;
+  height: 2px;
+  width: 16px;
+  font-size: 0;
+  line-height: 0;
+  background-color: var(--text-color);
+  border-radius: 4px;
+  transition: all 0.4s ease-in-out;
+
+  &__0 {
+    top: 0;
+
+    &__selected {
+      transform: rotate(45deg);
+      transform-origin: top left;
+      width: 21px;
+    }
+  }
+
+  &__1 {
+    top: 34.5%;
+
+    &__selected {
+      transform: translateX(-100%);
+      background-color: transparent;
+    }
+  }
+
+  &__2 {
+    top: 34.5%;
+    left: 0;
+
+    &__selected {
+      transform: translateX(100%);
+      background-color: transparent;
+    }
+  }
+
+  &__3 {
+    bottom: 0;
+    &__selected {
+      transform: rotate(-45deg);
+      transform-origin: bottom left;
+      width: 21px;
+    }
+  }
+}
+
+

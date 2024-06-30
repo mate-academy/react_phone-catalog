@@ -21,21 +21,21 @@ export const ProductButtons: React.FC<Props> = ({ productId }) => {
     return productItem.isLiked(likedItems, productId);
   }, [likedItems, productId]);
   const isAdded = useMemo(() => {
-    return productItem.isLiked(addedItems, productId);
+    return productItem.isAdded(addedItems, productId);
   }, [addedItems, productId]);
 
   const handleLikeClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    productItem.updateSelectedProducts(setLikedItems, productId);
+    productItem.updateLikedProducts(setLikedItems, productId);
   };
 
   const handleAddClick = (
     event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
   ) => {
     event.stopPropagation();
-    productItem.updateSelectedProducts(setAddedItems, productId);
+    productItem.updateAddedProducts(setAddedItems, productId);
   };
 
   return (

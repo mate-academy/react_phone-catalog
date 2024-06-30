@@ -1,74 +1,62 @@
 import { useContext, useMemo, useState } from 'react';
 import { ProductContext } from '../../store/ProductContext';
 import { CartItem } from './components/CartItem/CartItem';
-import { ProductGeneral } from '../../types/ProductGeneral';
 import { BreadcrumbBack } from '../../components/Breadcrumb/Breadcrumb';
 import styles from './Cart.module.scss';
 import { ErrorText } from '../../constants/errorText';
 import { Error } from '../../components/Error';
 import { ModalDialog } from './components/ModalDialog';
-import { getButtonMainClass } from '../../utils/utils';
-
-type ItemWithCount = { item: ProductGeneral; count: number };
+import { getCountOf, getButtonMainClass } from '../../utils/utils';
+import { ProductGeneral } from '../../types/ProductGeneral';
 
 export const Cart = () => {
   const {
-    addedItems: addedItemsIds,
+    addedItems: addedItemsFromServer,
     setAddedItems,
     products,
     darkTheme,
   } = useContext(ProductContext);
-  const addedItems = useMemo(() => {
-    return products
-      .filter(product => addedItemsIds.includes(product.itemId))
-      .map(item => {
-        return { item, count: 1 };
-      });
-  }, [products, addedItemsIds]);
+  const addedItems = useMemo(
+    () =>
+      addedItemsFromServer
+        .map(({ item, count }) => {
+          const newItem = products.find(
+            product => product.itemId == item,
+          ) as ProductGeneral;
+
+          return { item: newItem, count };
+        })
+        .sort((el1, el2) => el1.item.itemId.localeCompare(el2.item.itemId)),
+    [products, addedItemsFromServer],
+  );
   const [showModal, setShowModal] = useState(false);
 
-  const [itemsWithCount, setItemWithCount] =
-    useState<ItemWithCount[]>(addedItems);
-
-  const sum = useMemo(() => {
-    return itemsWithCount.reduce((prev, { item, count }) => {
-      const price = item.price * count;
-
-      return prev + price;
-    }, 0);
-  }, [itemsWithCount]);
+  const sum = useMemo(
+    () => getCountOf.sumInCart(addedItems),
+    [addedItemsFromServer],
+  );
 
   const itemsCount = useMemo(() => {
-    return itemsWithCount.reduce((prev, { count }) => prev + count, 0);
-  }, [itemsWithCount]);
+    return getCountOf.itemsInCart(addedItemsFromServer);
+  }, [addedItemsFromServer]);
 
   function handleDelete(id = '') {
     if (id === '') {
-      setItemWithCount(prevItems =>
-        prevItems.filter(({ item }) => item.itemId === id),
-      );
-
       setAddedItems(prevItems => {
-        return prevItems.filter(currentItem => currentItem === id);
+        return prevItems.filter(({ item }) => item === id);
       });
     } else {
-      setItemWithCount(prevItems =>
-        prevItems.filter(({ item }) => item.itemId !== id),
-      );
-
       setAddedItems(prevItems => {
-        return prevItems.filter(currentItem => currentItem !== id);
+        return prevItems.filter(({ item }) => item !== id);
       });
     }
   }
 
-  const handlCountChange = (item: ProductGeneral, count: number) => {
-    setItemWithCount(oldItems => {
-      const newItems = [...oldItems].filter(
-        oldItem => oldItem.item.id !== item.id,
-      );
+  const handlCountChange = (currentItem: string, newCount: number) => {
+    setAddedItems(oldItems => {
+      const newItems = [...oldItems].filter(({ item }) => item != currentItem);
 
-      return [...newItems, { item, count }];
+      return [...newItems, { item: currentItem, count: newCount }];
     });
   };
 
@@ -88,7 +76,7 @@ export const Cart = () => {
                 item={item}
                 key={item.id}
                 updateCount={(newCount: number) => {
-                  handlCountChange(item, newCount);
+                  handlCountChange(item.itemId, newCount);
                 }}
                 handleDelete={handleDelete}
               />

@@ -3,11 +3,12 @@ import { useContext } from 'react';
 import { NavLink } from 'react-router-dom';
 import { ProductContext } from '../../store/ProductContext';
 import styles from './NavIcons.module.scss';
+import { getCountOf } from '../../utils/utils';
 
 export const NavIcons = () => {
   const { addedItems, likedItems } = useContext(ProductContext);
   const likedItemsCount = likedItems.length;
-  const addedItemsCount = addedItems.length;
+  const addedItemsCount = getCountOf.itemsInCart(addedItems);
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
     classNames(`${styles.icon} `, {
       'navlink--underline': isActive,

@@ -1,3 +1,4 @@
+import { CartItem } from '../types/CartItem';
 import { Product } from '../types/Product';
 
 export const productItem = {
@@ -50,7 +51,7 @@ export const productItem = {
     };
   },
 
-  updateSelectedProducts(
+  updateLikedProducts(
     setter: React.Dispatch<React.SetStateAction<string[]>>,
     productId: string,
   ) {
@@ -64,10 +65,27 @@ export const productItem = {
     });
   },
 
+  updateAddedProducts(
+    setter: React.Dispatch<React.SetStateAction<CartItem[]>>,
+    productId: string,
+  ) {
+    setter(prevItems => {
+      const newItems = [...prevItems];
+      const isIncluded = prevItems.findIndex(({ item }) => item === productId);
+
+      return isIncluded >= 0
+        ? newItems.filter(({ item }) => item !== productId)
+        : [...newItems, { item: productId, count: 1 }];
+    });
+  },
+
   isLiked(likedItems: string[], productId: string) {
     return likedItems.findIndex(item => item === productId) >= 0;
   },
-  isAdded(addedItems: string[], productId: string) {
-    return addedItems.findIndex(item => item === productId) >= 0;
+
+  isAdded(addedItems: CartItem[], productId: string) {
+    const addedItemsIds = addedItems.map(({ item }) => item);
+
+    return addedItemsIds.findIndex(item => item === productId) >= 0;
   },
 };
