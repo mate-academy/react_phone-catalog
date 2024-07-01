@@ -20,6 +20,10 @@ $third-gray-color: #e2e6e9;
     line-height: 15.34px;
     color: $gray-color;
     text-decoration: none;
+
+    &--black {
+      color: $black-color;
+    }
   }
 
   &__back {

@@ -78,6 +78,13 @@ export const ProductDetailsPage = () => {
     }
   };
 
+  const goToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
   useEffect(() => {
     getProducts().then(serverProducts => {
       setProducts(serverProducts);
@@ -93,10 +100,16 @@ export const ProductDetailsPage = () => {
       .catch(() => setIsNotFounded(true))
       .finally(() => setIsLoading(false));
 
-    getSuggestedProducts().then(serverProducts =>
-      setRandomProducts(serverProducts),
+    setTimeout(() => goToTop(), 100);
+
+    setTimeout(
+      () =>
+        getSuggestedProducts().then(serverProducts =>
+          setRandomProducts(serverProducts),
+        ),
+      800,
     );
-  }, [productId, cartProducts, favoritesProducts]);
+  }, [productId]);
 
   useEffect(() => {
     setIsChoosed(false);
@@ -139,7 +152,12 @@ export const ProductDetailsPage = () => {
           <div data-cy="breadCrumbs" className="productDetails__link">
             <Link to="/home" className="icon icon--home" />
             <div className="icon icon--arrow-right--disabled" />
-            <Link to="/phones" className="productDetails__link-text">
+            <Link
+              to="/phones"
+              className="
+                productDetails__link-text productDetails__link-text--black
+              "
+            >
               Phones
             </Link>
             <div className="icon icon--arrow-right--disabled" />
