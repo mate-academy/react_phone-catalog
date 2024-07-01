@@ -39,7 +39,12 @@
 
 
 .container {
+  padding-top: var(--header--height, 48px);
   @include content-padding-inline;
+
+  @include on-desktop {
+    padding-top: var(--header--height--desktop, 64px);
+  }
 }
 
 

@@ -25,43 +25,43 @@ export const PhonePage = () => {
 
   return (
     <>
-      <div className="container">
-        <div className="products">
-          <Breadcrumbs />
-          <h1 className="products__title">Mobile phones</h1>
-          <p className="products__amount-models">{phones.length}</p>
-          <div className="products__container">
-            <div className="products__sort">
-              <Dropdown
-                title={'Sort by'}
-                items={['Newest', 'Alphabetically', 'Cheapest']}
-                initialItem={'Newest'}
-                isForItemsOnPage={false}
-              />
-            </div>
-
-            <div className="products__items">
-              <Dropdown
-                title={'Items on page'}
-                items={['4', '8', '16', 'all']}
-                initialItem={'all'}
-                isForItemsOnPage={true}
-              />
-            </div>
+      {/*<div className="container">*/}
+      <div className="products container">
+        <Breadcrumbs />
+        <h1 className="products__title">Mobile phones</h1>
+        <p className="products__amount-models">{phones.length}</p>
+        <div className="products__container">
+          <div className="products__sort">
+            <Dropdown
+              title={'Sort by'}
+              items={['Newest', 'Alphabetically', 'Cheapest']}
+              initialItem={'Newest'}
+              isForItemsOnPage={false}
+            />
           </div>
-          <section className="products__cards">
-            {preparedPhones.slice(start, end).map(phone => (
-              <React.Fragment key={`${phone.id}`}>
-                <div className="products__item">
-                  <ProductCard product={phone} key={phone.id} />
-                </div>
-              </React.Fragment>
-            ))}
-          </section>
 
-          <Pagination total={total} />
+          <div className="products__items">
+            <Dropdown
+              title={'Items on page'}
+              items={['4', '8', '16', 'all']}
+              initialItem={'all'}
+              isForItemsOnPage={true}
+            />
+          </div>
         </div>
+        <section className="products__cards">
+          {preparedPhones.slice(start, end).map(phone => (
+            <React.Fragment key={`${phone.id}`}>
+              <div className="products__item">
+                <ProductCard product={phone} key={phone.id} />
+              </div>
+            </React.Fragment>
+          ))}
+        </section>
+
+        <Pagination total={total} />
       </div>
+      {/*</div>*/}
     </>
   );
 };

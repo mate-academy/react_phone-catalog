@@ -1,15 +1,17 @@
 import { Colors } from '../../../utils/Colors';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { NavLink, useNavigate } from 'react-router-dom';
 import { Product } from '../../../types/Product';
 import './AvailiableColors.scss';
-import {
-  getDetailedAccessories,
-  getDetailedPhones,
-  getDetailedTablets,
-} from '../../../api/DetailedProduct';
-import { ProductContext } from '../../../store/ProductContext';
 import classNames from 'classnames';
+import { ProductContext } from '../../../store/ProductContext';
+import { getDetailedItems } from '../../../api/DetailedProduct';
 
 type Props = {
   selectedProduct: Product;
@@ -18,8 +20,20 @@ type Props = {
 
 export const AvailableColors: React.FC<Props> = ({ selectedProduct }) => {
   const [newId, setNewId] = useState('');
-  const { onSelectedProduct, onSelectedImg } = useContext(ProductContext);
   const navigate = useNavigate();
+  const { onSelectedProduct, onSelectedImg } = useContext(ProductContext);
+
+  const onSelectedProductRef = useRef(onSelectedProduct);
+  const selectedProductRef = useRef(selectedProduct);
+  const onSelectedImgRef = useRef(onSelectedImg);
+  const navigateRef = useRef(navigate);
+
+  useEffect(() => {
+    selectedProductRef.current = selectedProduct;
+    onSelectedProductRef.current = onSelectedProduct;
+    onSelectedImgRef.current = onSelectedImg;
+    navigateRef.current = navigate;
+  });
 
   const handleColorClick = useCallback(
     (color: string) => {
@@ -34,38 +48,29 @@ export const AvailableColors: React.FC<Props> = ({ selectedProduct }) => {
 
       const id = result.join('-') + `-${newColor}`;
 
-      setNewId(id);
+      if (id !== selectedProduct.id) {
+        setNewId(id);
+      }
     },
-    [selectedProduct.id],
+    [selectedProduct.id, selectedProduct.color],
   );
 
   useEffect(() => {
     const getProducts = async () => {
-      const detailedPhones = await getDetailedPhones();
-      const detailedTablets = await getDetailedTablets();
-      const detailedAccessories = await getDetailedAccessories();
-      const newPhone = detailedPhones.find(phone => phone.id === newId);
-      const newTablet = detailedTablets.find(tablet => tablet.id === newId);
-      const newAccessories = detailedAccessories.find(
-        accessory => accessory.id === newId,
-      );
+      if (newId && newId !== selectedProductRef.current.id) {
+        const products = await getDetailedItems(
+          selectedProductRef.current.category,
+        );
+        const newItem = products.find(item => item.id === newId);
 
-      if (newPhone) {
-        onSelectedProduct(newPhone);
-        onSelectedImg('');
-        navigate(`/phones/${newId}`);
-      }
-
-      if (newTablet) {
-        onSelectedProduct(newTablet);
-        onSelectedImg('');
-        navigate(`/tablets/${newId}`);
-      }
-
-      if (newAccessories) {
-        onSelectedProduct(newAccessories);
-        onSelectedImg('');
-        navigate(`/accessories/${newId}`);
+        if (newItem) {
+          onSelectedProductRef.current(newItem);
+          onSelectedImgRef.current('');
+          navigateRef.current(
+            `/${selectedProductRef.current.category}/${newId}`,
+            { replace: true },
+          );
+        }
       }
     };
 
@@ -84,7 +89,12 @@ export const AvailableColors: React.FC<Props> = ({ selectedProduct }) => {
                 'available__color--active': element === selectedProduct.color,
               })}
             >
-              <NavLink to={'.'} onClick={() => handleColorClick(element)}>
+              <NavLink
+                to={'.'}
+                onClick={() => {
+                  handleColorClick(element);
+                }}
+              >
                 <div
                   className={'available__color--item'}
                   style={{ backgroundColor: `${backGroundColor}` }}

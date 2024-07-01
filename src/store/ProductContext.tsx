@@ -20,6 +20,7 @@ interface ProductContextState {
   tablets: ProductGeneral[];
   accessories: ProductGeneral[];
   loading: boolean;
+  onLoading: (value: boolean) => void;
   errorMessage: string;
   currentPage: number;
   itemsOnPage: string | number;
@@ -46,6 +47,7 @@ export const ProductContext = createContext<ProductContextState>({
   tablets: [],
   accessories: [],
   loading: false,
+  onLoading: () => {},
   errorMessage: '',
   currentPage: 1,
   onPageChange: () => {},
@@ -111,7 +113,7 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
-  const addProductToCart = (value: ProductGeneral) => {
+  const addProductToCart = useCallback((value: ProductGeneral) => {
     const itemInCart = inCart.find(prod => prod === value);
 
     if (itemInCart) {
@@ -125,31 +127,38 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
       setInCart(newItems);
     }
-  };
+  }, []);
 
-  const addProductToFavourites = (value: ProductGeneral) => {
-    const itemInFav = inFavourites.find(prod => prod === value);
+  const onLoading = useCallback((value: boolean) => {
+    setLoading(value);
+  }, []);
 
-    if (itemInFav) {
-      const newItems = [...inFavourites, value];
+  const addProductToFavourites = useCallback(
+    (value: ProductGeneral) => {
+      const itemInFav = inFavourites.find(prod => prod === value);
 
-      const newList = newItems.filter(item => item !== value);
+      if (itemInFav) {
+        const newItems = [...inFavourites, value];
 
-      setInFavourites(newList);
-    } else {
-      const newItems = [...inFavourites, value];
+        const newList = newItems.filter(item => item !== value);
 
-      setInFavourites(newItems);
-    }
-  };
+        setInFavourites(newList);
+      } else {
+        const newItems = [...inFavourites, value];
 
-  const onMenuOpened = (value: boolean) => {
+        setInFavourites(newItems);
+      }
+    },
+    [inFavourites],
+  );
+
+  const onMenuOpened = useCallback((value: boolean) => {
     if (window.innerWidth > 640) {
       setMenuOpened(false);
     }
 
     setMenuOpened(value);
-  };
+  }, []);
 
   const onIsMobile = () => {
     setIsMobile(true);
@@ -179,10 +188,10 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
     [currentPage],
   );
 
-  const onSelectedProduct = (value: Product | null) => {
+  const onSelectedProduct = useCallback((value: Product | null) => {
     onSelectedImg('');
     setSelectedProduct(value);
-  };
+  }, []);
 
   const value = useMemo(
     () => ({
@@ -195,25 +204,25 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       currentPage,
       onPageChange,
       itemsOnPage,
-      onSetItemsOnPage,
       sortBy,
-      onSortBy,
-      onSelectedProduct,
       selectedProduct,
       selectedImg,
-      onSelectedImg,
-      onMenuOpened,
       menuOpened,
-      onIsMobile,
       isMobile,
       inFavourites,
-      addProductToFavourites,
       inCart,
+      onSetItemsOnPage,
+      onSortBy,
+      onSelectedImg,
+      onMenuOpened,
+      onIsMobile,
+      addProductToFavourites,
+      onSelectedProduct,
       addProductToCart,
+      onLoading,
     }),
     [
       menuOpened,
-      onMenuOpened,
       selectedProduct,
       phones,
       accessories,
@@ -228,6 +237,11 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       isMobile,
       inFavourites,
       inCart,
+      onMenuOpened,
+      addProductToCart,
+      addProductToFavourites,
+      onSelectedProduct,
+      onLoading,
     ],
   );
 

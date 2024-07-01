@@ -8,7 +8,8 @@ import { NavItems } from '../Navigation/Navigation';
 const windowSize = window.innerWidth > 640;
 
 export const Header = () => {
-  const { menuOpened, onMenuOpened, inFavourites } = useContext(ProductContext);
+  const { menuOpened, onMenuOpened, inFavourites, inCart } =
+    useContext(ProductContext);
   const [isDesktop, setIsDesktop] = useState(windowSize);
   const navigate = useNavigate();
 
@@ -41,9 +42,13 @@ export const Header = () => {
     navigate('/favorites');
   };
 
-  // const handleCartButton = () => {
-  //   navigate('/cart');
-  // };
+  const handleCartButton = () => {
+    if (menuOpened) {
+      onMenuOpened(false);
+    }
+
+    navigate('/cart');
+  };
 
   return (
     <>
@@ -65,8 +70,17 @@ export const Header = () => {
               </div>
             )}
           </div>
-          <div className="header__buttons__container">
+
+          <div
+            className="header__buttons__container"
+            onClick={handleCartButton}
+          >
             <a className="icon icon--cart"></a>
+            {!!inCart.length && (
+              <div className="icon--favourites__number">
+                <p className="icon--favourites__text">{inCart.length}</p>
+              </div>
+            )}
           </div>
         </div>
 

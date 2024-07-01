@@ -1,40 +1,89 @@
-import React, { useContext } from 'react';
+import React, { useContext, useMemo } from 'react';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { ProductContext } from '../../store/ProductContext';
 import classNames from 'classnames';
+import { getDetailedItems } from '../../api/DetailedProduct';
 
 type Props = {
   product: ProductGeneral | null;
 };
 
 export const ProductCard: React.FC<Props> = ({ product }) => {
-  const { addProductToFavourites, inFavourites } = useContext(ProductContext);
+  const {
+    addProductToFavourites,
+    inFavourites,
+    onSelectedProduct,
+    onLoading,
+    inCart,
+  } = useContext(ProductContext);
+
+  const { pathname } = useLocation();
+
+  const getModifiedPathname = useMemo(() => {
+    if (!product) {
+      return '';
+    }
+
+    const parts = pathname.split('/').filter(Boolean);
+
+    // Check if the current path is for a different category
+    const currentCategory = parts[0];
+
+    if (currentCategory && currentCategory !== product.category) {
+      // If we're changing categories, we should use only the new category and product ID
+      return `/${product.category}/${product.itemId}`;
+    }
+
+    // If we're in the same category or there's no category, proceed as before
+    const pathWithoutIds = parts.filter(part => !part.includes('-'));
+
+    // Ensure the category is in the path
+    if (!pathWithoutIds.includes(product.category)) {
+      pathWithoutIds.unshift(product.category);
+    }
+
+    // Add the current product's ID
+    pathWithoutIds.push(product.itemId);
+
+    return `/${pathWithoutIds.join('/')}`;
+  }, [pathname, product]);
 
   const checkItemInCart = (card: ProductGeneral) => {
-    return inFavourites.find(prod => prod === card);
+    return inCart.find(prod => prod === card);
   };
 
   const checkLikedItem = (card: ProductGeneral) => {
     return inFavourites.find(prod => prod === card);
   };
 
+  const handleGeneralProduct = async () => {
+    window.scrollTo(0, 0);
+    onLoading(true);
+    if (product) {
+      const productGeneral = await getDetailedItems(product.category);
+
+      const data = productGeneral.find(item => item.id === product.itemId);
+
+      if (data) {
+        onSelectedProduct(data);
+      }
+    }
+  };
+
   return (
     <>
       {product && (
         <div className="product-card">
-          <Link to={`./${product.itemId}`} className="product-card__image">
+          <Link to={getModifiedPathname} className="product-card__image">
             <img
+              onClick={handleGeneralProduct}
               className="product-card__image--link"
               src={product.image}
             ></img>
           </Link>
-          <Link
-            to={`./${product.itemId}`}
-            relative={'path'}
-            className="product-card__title"
-          >
+          <Link to={getModifiedPathname} className="product-card__title">
             {product.name}
           </Link>
           <div className="product-card__prices">

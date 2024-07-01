@@ -4,12 +4,6 @@
 
 .products {
 
-  padding-top: var(--header--height, 48px);
-
-  @include on-desktop {
-    padding-top: var(--header--height, 64px);
-  }
-
   &__cards {
     margin-top: 24px;
     row-gap: 40px;

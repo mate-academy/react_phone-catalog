@@ -14,7 +14,7 @@ export const Footer = () => {
     <>
       <footer className="footer">
         <div
-          className={classNames('footer__container container ', {
+          className={classNames('footer__container ', {
             'footer__container--mobile': isMobile,
           })}
         >

@@ -76,5 +76,5 @@ export const usePagination = ({
     }
 
     return range(1, totalPageCount);
-  }, [totalItems, itemsOnPage, siblingCount, currentPage]);
+  }, [totalItems, itemsOnPage, siblingCount, currentPage, mobile]);
 };

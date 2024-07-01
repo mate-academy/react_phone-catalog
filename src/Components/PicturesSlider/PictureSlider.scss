@@ -1,34 +1,96 @@
 @import "../../styles/styles";
 
-
-.slider {
+.carousel-container {
+  margin-top: 24px;
   display: flex;
-  height: 400px;
+  justify-content: center;
+  align-items: center;
+  position: relative;
   width: 100%;
-  margin-top: 56px;
+  height: 432px; // Fixed height
+  overflow: hidden;
 
-  &__button {
-    cursor: pointer;
-    width: 32px;
-    height: 100%;
-    background-color: #FFFFFF;
-    border: 1px solid $icons;
+  @include on-tablet {
+    margin-top: 32px;
   }
 
-  &__button-left {
-    margin-right: auto;
+  @include on-desktop {
+    margin-top: 56px;
+  }
+}
+
+.carousel-button {
+  display: none;
+  z-index: 10;
+  cursor: pointer;
+  width: 32px;
+  height: 100%;
+  background-color: $white;
+  border: 1px solid $icons;
+
+  @include on-tablet {
+    display: block;
+    padding-inline: 19px;
   }
 
-  &__button-right {
-    margin-left: auto;
+  @include on-desktop {
+    padding-inline: 16px;
+  }
+}
+
+.carousel {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+  min-width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel-item.active {
+  display: flex;
+}
+
+.carousel-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  @include on-tablet {
+    padding-inline: 19px;
   }
 
-  &__pictures {
-    margin-inline: 16px;
-    //background-image: url("../../../public/img/banners/Banner.png");
-    background-size: contain;
-    background-position: center;
-    width: 100%;
-    height: 100%;
+  @include on-desktop {
+    padding-inline: 16px;
   }
+}
+
+.carousel-pagination {
+  margin-top: 18px;
+  display: flex;
+  justify-content: center;
+  //position: absolute;
+  gap: 8px;
+}
+
+.carousel-dot {
+  width: 14px;
+  height: 4px;
+  border: none;
+  background-color: $elements;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.carousel-dot.active {
+  background-color: $primary;
 }

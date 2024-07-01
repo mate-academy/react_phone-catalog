@@ -122,10 +122,11 @@ body.menu-open {
     background-image: url("../../icons/Close.png");
   }
 
-  &--favourites {
+  &--favourites,
+  &--cart {
     position: absolute;
     background-image: url("../../icons/Heart-like.svg");
-
+    
     &__number {
       background-color: red;
       top: -5px;

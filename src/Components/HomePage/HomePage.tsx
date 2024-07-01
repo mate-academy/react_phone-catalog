@@ -6,8 +6,18 @@ import { PictureSlider } from '../PicturesSlider/PictureSlider';
 import { ProductsSlider } from '../ProductsSlider';
 import { ShopByCategory } from '../ShopByCategory';
 
+export interface CarouselItem {
+  img: string;
+}
+
 export const HomePage = () => {
   const { loading, phones } = useContext(ProductContext);
+
+  const items: CarouselItem[] = [
+    { img: '/img/banner-phones.png' },
+    { img: '/img/banner-accessories.png' },
+    { img: '/img/banner-tablets.png' },
+  ];
 
   return (
     <div className="home__page container">
@@ -17,7 +27,7 @@ export const HomePage = () => {
         <>
           <div className="home__page__wrapper">
             <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
-            <PictureSlider />
+            <PictureSlider items={items} />
 
             <ProductsSlider title={'Brand new models'} products={phones} />
             <ShopByCategory />

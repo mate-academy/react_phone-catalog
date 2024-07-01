@@ -6,8 +6,9 @@ import { TabletsPage } from './Components/TabletsPage';
 import { NotFoundPage } from './Components/NotFoundPage/NotFoundPage';
 import { AccessoriesPage } from './Components/AccessoriesPage';
 // eslint-disable-next-line max-len
-import { ProductDetailPage } from './Components/ProductDetailPage/ProductDetailPage';
-import { FavoritesPage } from './Components/FavoritesPage/FavoritesPage';
+import { ProductDetailPage } from './Components/ProductDetailPage';
+import { FavoritesPage } from './Components/FavoritesPage';
+import { CartPage } from './Components/CartPage/CartPage';
 
 export const Root = () => {
   return (
@@ -30,6 +31,7 @@ export const Root = () => {
           </Route>
 
           <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="cart" element={<CartPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

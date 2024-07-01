@@ -1,14 +1,16 @@
 import { Product } from '../../../types/Product';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, {
+  useCallback,
+  useContext,
+  useEffect,
+  useRef,
+  useState,
+} from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import './CapacityAvailable.scss';
-import { ProductContext } from '../../../store/ProductContext';
-import {
-  getDetailedAccessories,
-  getDetailedPhones,
-  getDetailedTablets,
-} from '../../../api/DetailedProduct';
 import classNames from 'classnames';
+import { ProductContext } from '../../../store/ProductContext';
+import { getDetailedItems } from '../../../api/DetailedProduct';
 
 type Props = {
   selectedProduct: Product;
@@ -18,6 +20,18 @@ export const CapacityAvailable: React.FC<Props> = ({ selectedProduct }) => {
   const { onSelectedProduct, onSelectedImg } = useContext(ProductContext);
   const [capacityGB, setCapacityGB] = useState('');
   const navigate = useNavigate();
+
+  const selectedProductRef = useRef(selectedProduct);
+  const onSelectedProductRef = useRef(onSelectedProduct);
+  const onSelectedImgRef = useRef(onSelectedImg);
+  const navigateRef = useRef(navigate);
+
+  useEffect(() => {
+    selectedProductRef.current = selectedProduct;
+    onSelectedProductRef.current = onSelectedProduct;
+    onSelectedImgRef.current = onSelectedImg;
+    navigateRef.current = navigate;
+  });
 
   const handleClickLink = useCallback(
     (capacity: string) => {
@@ -35,49 +49,37 @@ export const CapacityAvailable: React.FC<Props> = ({ selectedProduct }) => {
         }
       });
 
-      newId = newId.slice(0, -1);
+      const id = newId.slice(0, -1);
 
-      setCapacityGB(newId);
+      if (id !== selectedProduct.id) {
+        setCapacityGB(id);
+      }
     },
     [selectedProduct.id],
   );
 
   useEffect(() => {
-    const getProductProps = async () => {
-      const detailedPhones = await getDetailedPhones();
-      const detailedTablets = await getDetailedTablets();
-      const detailedAccessories = await getDetailedAccessories();
+    const getProducts = async () => {
+      if (capacityGB && capacityGB !== selectedProductRef.current.id) {
+        const products = await getDetailedItems(
+          selectedProductRef.current.category,
+        );
+        const newItem = products.find(item => item.id === capacityGB);
 
-      const newPhone = detailedPhones.find(phone => phone.id === capacityGB);
-
-      const newTablet = detailedTablets.find(
-        tablet => tablet.id === capacityGB,
-      );
-
-      const newAccessories = detailedAccessories.find(
-        accessory => accessory.id === capacityGB,
-      );
-
-      if (newPhone) {
-        onSelectedProduct(newPhone);
-        onSelectedImg('');
-        navigate(`/phones/${capacityGB}`);
-      }
-
-      if (newTablet) {
-        onSelectedProduct(newTablet);
-        onSelectedImg('');
-        navigate(`/tablets/${capacityGB}`);
-      }
-
-      if (newAccessories) {
-        onSelectedProduct(newAccessories);
-        onSelectedImg('');
-        navigate(`/accessories/${capacityGB}`);
+        if (newItem) {
+          onSelectedProductRef.current(newItem);
+          onSelectedImgRef.current('');
+          navigateRef.current(
+            `/${selectedProductRef.current.category}/${capacityGB}`,
+            {
+              replace: true,
+            },
+          );
+        }
       }
     };
 
-    getProductProps();
+    getProducts();
   }, [capacityGB]);
 
   return (
