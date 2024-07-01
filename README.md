@@ -1,12 +1,14 @@
 # React Product Catalog
 
+git ci -m "try" --no-verify
+
 Implement the catalog with a shopping cart and favorites page according to one of the next designs:
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+- [Original](<https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original>)
+- [Original Dark](<https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark>)
+- [Rounded Blue](<https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1>)
+- [Rounded Purple](<https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1>)
+- [Rounded Orange](<https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1>)
 
 You may also implement color theme switching!
 
@@ -64,8 +66,8 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
 3. Add `ProductsList` component showing all the `products`.
 4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
+<!-- 5. In case of a loading error show the something went wrong message with a reload button. -->
+<!-- 6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required). -->
 7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
    - Save the sort value in the URL `?sort=age` and apply it after the page reload.
 8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
@@ -85,8 +87,8 @@ Create `ProductDetailsPage` available at `/product/:productId`.
    - `About` section should contain just a description (without any subheaders);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
+5. Implement `You may also like` block with products choosen randomly:
+    Create `getSuggestedProducts` method fetching the suggested products. <!-- - `IT HAS TO BE FETCH?` -->
 6. Add `Back` button working the same way as a Browser `Back` button.
 7. Add `Breadcrumbs` at the top with:
    - A Home page link;
@@ -128,7 +130,7 @@ Create `Favorites` page with a `ProductsList` showing favorite products at `/fav
 1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
 2. Implement the `Product was not found` state for the `ProductDetailsPage`.
 
-## (*) Advanced tasks
+## (\*) Advanced tasks
 
 - Implement color theme switching!
 - Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.

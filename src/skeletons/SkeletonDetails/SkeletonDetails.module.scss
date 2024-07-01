@@ -1,0 +1,218 @@
+.skeleton {
+  font-family: Montserrat, sans-serif;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__animate {
+    background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+    background-size: 200% 100%;
+    animation: skeleton-loading 1.5s infinite;
+  }
+
+  &__separator {
+    width: 288px;
+    height: 1px;
+    margin-bottom: 24px;
+    border: 1px solid #E2E6E9;
+  }
+
+  &__title {
+    height: 30px;
+    width: 288px;
+    margin-bottom: 32px;
+  }
+
+  &__slider {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    overflow: hidden;
+    margin-bottom: 40px;
+
+    &__container {
+      height: 288px;
+      width: 288px;
+      margin: 0 auto 16px;
+      display: flex;
+
+      &__img {
+        max-width: 100%;
+        object-position: center;
+        object-fit: contain;
+      }
+    }
+
+    &__picker {
+      display: flex;
+
+      &__item {
+        margin-left: 2px;
+        width: 50px;
+        height: 50px;
+      }
+    }
+  }
+
+  &__colors {
+
+    &__container {
+      display: flex;
+
+      &__item {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        padding: 2px;
+        margin-right: 8px;
+        margin-bottom: 24px;
+      }
+    }
+
+    &__paragraphs {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      width: 288px;
+
+      &__item {
+        width: 100px;
+        height: 18px;
+      }
+    }
+  }
+
+  &__capacity {
+
+    &__paragraph {
+      height: 18px;
+      width: 100px;
+      margin-bottom: 8px;
+    }
+
+    &__container {
+      display: flex;
+      width: 288px;
+      margin-bottom: 24px;
+
+      &__item {
+        margin-right: 8px;
+        height: 32px;
+        width: 64px;
+      }
+    }
+  }
+
+  &__price {
+
+    &__container {
+      margin-bottom: 16px;
+      display: flex;
+      width: 288px;
+    }
+
+    &__discount {
+      height: 41px;
+      min-width: 75px;
+      margin-right: 2px;
+    }
+
+    &__full {
+      height: 41px;
+      min-width: 80px;
+    }
+
+    &__add {
+      line-height: 48px;
+      margin-right: 8px;
+      width: 231px;
+    }
+
+    &__fav {
+      width: 48px;
+      height: 48px;
+    }
+  }
+
+  &__info {
+    width: 288px;
+    margin-bottom: 56px;
+
+    &__paragraph {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+      &__name {
+        width: 100px;
+        height: 15px;
+      }
+
+      &__value {
+        height: 15px;
+        width: 100px;
+      }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 288px;
+
+
+    &__title {
+      margin-bottom: 16px;
+      min-height: 20px;
+      width: 60px;
+    }
+
+    &__article {
+      margin-bottom: 16px;
+      height: 189px;
+    }
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 288px;
+    margin-bottom: 56px;
+
+    &__title {
+      height: 25px;
+      margin-bottom: 16px;
+      width: 100px;
+    }
+
+    &__paragraph {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+
+
+      &__name {
+        height: 15px;
+        width: 100px;
+      }
+
+      &__value {
+        height: 15px;
+        width: 100px;
+      }
+    }
+  }
+
+  @keyframes skeleton-loading {
+    0% {
+      background-position: 200% 0;
+    }
+
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}

@@ -1,0 +1,68 @@
+@use "../../../utils/mixins" as *;
+
+.title {
+  font-family: Montserrat, sans-serif;
+  font-weight: 700;
+  font-size: 20px;
+  color: #313237;
+
+  @include for-tablet {
+    font-size: 32px;
+    width: 500px;
+    margin-bottom: 24px;
+  }
+}
+
+.shop_by_category {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  justify-content: space-between;
+  width: 288px;
+  height: 1000px;
+  margin-bottom: 56px;
+
+  @include for-tablet {
+    width: 600px;
+    flex-flow: row wrap;
+    height: fit-content;
+  }
+
+  &__section {
+
+    &__picture {
+      height: 230px;
+      margin-bottom: 24px;
+      border-radius: 20px;
+      border: 1px solid #E2E6E9;
+
+      @include for-tablet {
+        width: 190px;
+        height: 160px;
+
+      }
+
+      &:hover {
+        box-shadow:
+          3px 3px 3px #89939A,
+          6px 6px 3px #E2E6E9;
+      }
+    }
+
+    &__title {
+      font-family: Montserrat, sans-serif;
+      font-weight: 700;
+      line-height: 25px;
+      font-size: 20px;
+      color: #313237;
+    }
+
+    &__paragraph {
+      font-family: Montserrat, sans-serif;
+      font-weight: 600;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939A;
+    }
+  }
+}

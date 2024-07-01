@@ -1,0 +1,148 @@
+@use "../../utils/mixins" as *;
+
+.productCard {
+  font-family: Montserrat, sans-serif;
+  width: 288px;
+  height: 440px;
+  border: 1px solid #E2E6E9;
+  margin: 0 7px 16px;
+  font-size: 14px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  @include for-tablet {
+    margin: 0 7px 7px 0;
+  }
+
+  &__picture {
+    margin: auto;
+    width: 125px;
+    height: 148px;
+
+    &:hover {
+      scale: 110%;
+    }
+  }
+
+  &__product_name {
+    width: 75%;
+    margin: 0 auto 8px;
+  }
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    min-width: 78%;
+
+    &__price {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      color: #313237;
+      align-self: flex-start;
+      align-self: center;
+      margin-right: 8px;
+      margin-bottom: 8px;
+
+      &__reduce {
+        text-decoration: line-through;
+        font-weight: 500;
+        color: #89939A;
+        font-size: 22px;
+        line-height: 31px;
+        width: 97px;
+      }
+
+      &__empty {
+        width: 80px;
+        line-height: 31px;
+      }
+    }
+  }
+
+  &__separator {
+    height: 1px;
+    width: 225px;
+    border: 1px solid #E2E6E9;
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    width: 225px;
+
+    &__paragraph {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 8px;
+      width: 225px;
+      height: fit-content;
+
+      &__name {
+        height: fit-content;
+        font-weight: 700;
+        font-size: 12px;
+        color: #89939A;
+      }
+
+      &__value {
+        height: fit-content;
+        font-weight: 700;
+        font-size: 12px;
+        color: #313237;
+        text-align: end;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    width: 210px;
+    justify-content: space-between;
+    margin-bottom: 16px;
+
+    &__add {
+      margin-right: 10px;
+      width: 160px;
+      height: 40px;
+      background-color: #313237;
+      color: #fff;
+      line-height: 40px;
+      text-align: center;
+      font-weight: 700;
+
+      &::before {
+        content: 'Add to cart';
+        display: block;
+      }
+
+      &__added {
+        color: #27AE60;
+        background-color: #fff;
+        border: 1px solid #E2E6E9;
+
+        &::before {
+          content: 'Added to cart';
+          display: block;
+        }
+      }
+    }
+
+    &__fav {
+      width: 40px;
+      border: 1px solid #B4BDC3;
+      background-image: url(../../../public/img/svg/fav_icon.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+
+      &:hover {
+        border-color: black;
+      }
+
+      &__selected {
+        background-image: url(../../../public/img/svg/fav_icon_red.svg);
+      }
+    }
+  }
+}
