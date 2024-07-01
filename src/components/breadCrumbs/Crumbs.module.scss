@@ -4,12 +4,16 @@
   display: flex;
   gap: 8px;
   font-family: Montserrat, sans-serif;
-  margin-bottom: 40px;
+  margin-bottom: 24px;
   width: 288px;
   height: 16px;
+  grid-area: crumbs;
 
   @include for-tablet {
-    width: 600px;
+    // width: 600px;
+    grid-column: 1 / 4;
+    grid-row: 1 / 2;
+    margin-bottom: 40px;
   }
 
   &__item {

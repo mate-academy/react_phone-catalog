@@ -3,7 +3,6 @@ import Styles from './BackButon.module.scss';
 import { useNavigate } from 'react-router-dom';
 
 export const BackButton: React.FC = () => {
-
   const navigate = useNavigate();
 
   const handleclickBack = () => {
@@ -12,7 +11,9 @@ export const BackButton: React.FC = () => {
 
   return (
     <div className={Styles.back}>
-      <button onClick={handleclickBack} className={Styles.back__button}>Go Back</button>
+      <div onClick={handleclickBack} className={Styles.back__button}>
+        <div className={Styles.back__button__arrow} /> <p>Back</p>
+      </div>
     </div>
   );
 };

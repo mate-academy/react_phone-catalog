@@ -1,27 +1,42 @@
+@use "../../utils/mixins" as *;
+
 .back {
   font-family: Montserrat, sans-serif;
-  height: 20px;
-  margin-bottom: 20px;
-  width: 288px;
+  height: 16px;
+  align-self: flex-start;
+  margin-bottom: 16px;
+
+  @include for-tablet {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
 
   &__button {
-    color: #FFF;
+    color: #313237;
     box-sizing: border-box;
     border-radius: 20px;
-    background-color: #313237;
     font-size: 14px;
     font-weight: 700;
-    line-height: 20px;
+    line-height: 16px;
+    height: 16px;
     text-align: center;
     width: fit-content;
     padding: 5px;
+    width: 70px;
+    display: flex;
+    align-items: center;
 
 
     &:hover {
       box-shadow: 0 3px 13px 0 #17203166;
+    }
 
+    &__arrow {
+      height: 16px;
+      width: 16px;
+      background-image: url(../../../public/img/svg/arrow_left.svg);
+      background-position: center;
+      background-repeat: no-repeat;
     }
   }
 }
-
-;

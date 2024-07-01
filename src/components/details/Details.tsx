@@ -124,6 +124,7 @@ export const Details: React.FC<Props> = ({ list }) => {
       {!product && <SkeletonDetails />}
       {product && (
         <div className={Styles.card}>
+
           <Crumbs path={[product.category]} details={`${product.id}`} />
 
           <BackButton />
@@ -174,7 +175,7 @@ export const Details: React.FC<Props> = ({ list }) => {
             </div>
           </div>
 
-          <div className={Styles.card__colors}>
+          {/* <div className={Styles.card__colors}>
             <div className={Styles.card__colors__paragraphs}>
               <p className={Styles.card__colors__paragraphs__item}>
                 Available colors
@@ -198,11 +199,11 @@ export const Details: React.FC<Props> = ({ list }) => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
 
-          <div className={Styles.card__separator} />
+          {/* <div className={Styles.card__separator} /> */}
 
-          <div className={Styles.card__capacity}>
+          {/* <div className={Styles.card__capacity}>
             <p className={Styles.card__capacity__paragraph}>Select capacity</p>
 
             <div className={Styles.card__capacity__container}>
@@ -221,11 +222,11 @@ export const Details: React.FC<Props> = ({ list }) => {
                 );
               })}
             </div>
-          </div>
+          </div> */}
 
-          <div className={Styles.card__separator} />
+          {/* <div className={Styles.card__separator} /> */}
 
-          <div className={Styles.card__price}>
+          {/* <div className={Styles.card__price}>
             <div className={Styles.card__price__container}>
               <p className={Styles.card__price__discount}>
                 ${product?.priceDiscount}
@@ -252,9 +253,9 @@ export const Details: React.FC<Props> = ({ list }) => {
                 })}
               />
             </div>
-          </div>
+          </div> */}
 
-          <div className={Styles.card__info}>
+          {/* <div className={Styles.card__info}>
             <p className={Styles.card__info__paragraph}>
               <span className={Styles.card__info__paragraph__name}>Screen</span>
               <span className={Styles.card__info__paragraph__value}>
@@ -286,9 +287,9 @@ export const Details: React.FC<Props> = ({ list }) => {
                 {product?.ram}
               </span>
             </p>
-          </div>
+          </div> */}
 
-          <div className={Styles.card__description}>
+          {/* <div className={Styles.card__description}>
             <p className={Styles.card__description__title}>About</p>
 
             <div className={Styles.card__separator} />
@@ -305,9 +306,9 @@ export const Details: React.FC<Props> = ({ list }) => {
                 </React.Fragment>
               );
             })}
-          </div>
+          </div> */}
 
-          <div className={Styles.card__tech}>
+          {/* <div className={Styles.card__tech}>
             <p className={Styles.card__tech__title}>Tech specs</p>
 
             <div className={Styles.card__separator} />
@@ -359,15 +360,15 @@ export const Details: React.FC<Props> = ({ list }) => {
                 {product?.cell.join(',')}
               </span>
             </p>
-          </div>
+          </div> */}
 
-          <div className={Styles.card__list}>
+          {/* <div className={Styles.card__list}>
             <ItemSlider
               list={list}
               showRandom={true}
               title={'You may also like'}
             />
-          </div>
+          </div> */}
         </div>
       )}
     </>
