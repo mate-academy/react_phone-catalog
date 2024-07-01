@@ -14,9 +14,9 @@ export const HomePage = () => {
   const { loading, phones } = useContext(ProductContext);
 
   const items: CarouselItem[] = [
-    { img: '/img/banner-phones.png' },
-    { img: '/img/banner-accessories.png' },
-    { img: '/img/banner-tablets.png' },
+    { img: 'img/banner-tablets.png' },
+    { img: 'img/banner-phones.png' },
+    { img: 'img/banner-accessories.png' },
   ];
 
   return (
