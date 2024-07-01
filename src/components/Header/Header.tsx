@@ -15,7 +15,7 @@ export const Header = () => {
 
   return (
     <header
-      className={classNames(`${styles.container}`, {
+      className={classNames(`${styles.container} header`, {
         darkTheme: darkTheme,
       })}
     >

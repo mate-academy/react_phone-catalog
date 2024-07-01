@@ -99,6 +99,10 @@ export const BannerSlider = () => {
         return prevIndex + 1;
       });
     }, 5000);
+
+    return () => {
+      window.clearInterval(timerId.current);
+    };
   }, [displayedImg]);
 
   const onSwipe = (diff: number) => {
@@ -138,6 +142,10 @@ export const BannerSlider = () => {
                     className={`${styles.slider__img} ${styles.slider__img_link}`}
                     src={banner1.img}
                     alt={banner1.name}
+                    onClick={() => {
+                      navigate(`/${banner1.id}`);
+                      window.scroll(0, 0);
+                    }}
                   />
                 </MobileSwiper>
 
@@ -164,7 +172,10 @@ export const BannerSlider = () => {
               className={classNames(`${styles.rectangular} `, {
                 [styles.rectangular__selected]: index === displayIndex,
               })}
-              onClick={() => setDisplayIndex(index)}
+              onClick={() => {
+                setDisplayIndex(index);
+                window.clearInterval(timerId.current);
+              }}
             ></div>
           );
         })}

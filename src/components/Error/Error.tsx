@@ -67,7 +67,11 @@ export const Error: React.FC<Props> = ({ errorText }) => {
         }}
       ></div>
 
-      {errorText === ErrorText.noFavourites && <NewProducts />}
+      {errorText === ErrorText.noFavourites && (
+        <article className={styles.catalog}>
+          <NewProducts />
+        </article>
+      )}
     </section>
   );
 };

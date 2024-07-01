@@ -10,7 +10,6 @@
   @include on-tablet {
     @include content-pading-inline;
 
-    width: 100%;
     box-sizing: border-box;
   }
 
@@ -31,8 +30,6 @@
   }
 
   &__container {
-    grid-column: 2 / 3;
-    height: 100%;
     display: flex;
     overflow: hidden;
     white-space: nowrap;
@@ -40,15 +37,26 @@
     @include on-tablet {
       grid-column: 2 / 3;
     }
-
-    &:hover > * {
-      animation-play-state: paused;
-    }
   }
 
   &__wrapper {
     display: flex;
     gap: 16px;
+  }
+
+  &__img {
+    width: 100%;
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+
+    &--link {
+      position: relative;
+      object-fit: contain;
+      background-position: center;
+    }
   }
 
   &__button {
@@ -74,7 +82,7 @@
     &_small {
       display: none;
       position: absolute;
-      bottom: 35%;
+      bottom: 20%;
       left: 5%;
       font-size: 12px;
       padding: 10px 20px;
@@ -93,24 +101,6 @@
         font-size: 14px;
         padding: 20px 40px;
       }
-    }
-  }
-
-  &__img {
-    display: flex;
-    width: 100%;
-    flex-grow: 0;
-    flex-shrink: 0;
-    margin: 0;
-    padding: 0;
-    padding-bottom: 50%;
-    position: relative;
-    cursor: pointer;
-
-    &--link {
-      position: relative;
-      object-fit: contain;
-      background-position: center;
     }
   }
 

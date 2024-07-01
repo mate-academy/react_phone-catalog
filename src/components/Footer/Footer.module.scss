@@ -13,13 +13,10 @@
   border-top: solid 1px var(--border-color);
   background-color: var(--bg-color);
 
-
   @include on-tablet {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-    padding-block: 0;
-    width: 100%;
+    display: grid;
+    grid-template-columns: 150px 1fr 150px;
+      place-items: center;
   }
 }
 
@@ -30,8 +27,7 @@
   align-items: flex-start;
   margin: 0;
   padding: 0;
-
-  gap: 8px;
+  gap: 4px;
 
   @include on-tablet {
     flex-direction: row;
@@ -49,21 +45,26 @@
   line-height: 1em;
   margin: 0;
   padding: 0;
-  padding-bottom: 4px;
+  padding-block: 4px;
   align-items: center;
   text-decoration: none;
   color: var(--grey-secondary);
   font-size: 12px;
   font-weight: bold;
 
+  &:first-child {
+    padding-top: 0;
+  }
+
   &__darkTheme {
-    color: var(--text-color)
+    color: var(--text-color);
   }
 
   @include hover(color, $grey-primary);
 }
 
 .buttonBack {
+  justify-self: end;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,7 +73,7 @@
 
   &__hide {
     visibility: hidden;
-    cursor:default;
+    cursor: default;
   }
 
   &__arrow {
@@ -81,6 +82,8 @@
 }
 
 .logo {
+  justify-self: start;
+
   &_img {
     height: 30px;
     width: 89px;

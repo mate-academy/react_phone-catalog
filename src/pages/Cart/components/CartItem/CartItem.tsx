@@ -22,10 +22,14 @@ export const CartItem: React.FC<Props> = ({
   const { image, name, price, category, itemId } = item;
   const { darkTheme } = useContext(ProductContext);
   const [count, setCount] = useState(numberOfItems);
+  const [hide, setHide] = useState(false);
   const navigate = useNavigate();
   const onDelete = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+    setHide(true);
     event.stopPropagation();
-    handleDelete(item.itemId);
+    window.setTimeout(() => {
+      handleDelete(item.itemId);
+    }, 1500);
   };
 
   return (
@@ -33,7 +37,11 @@ export const CartItem: React.FC<Props> = ({
       className={`${styles.container} border`}
       onClick={() => {
         navigate(`/${category}/${itemId}`);
-        window.scrollTo(0, 0);
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }}
+      style={{
+        transition: `transform 2s`,
+        transform: `${hide ? 'scale(0)' : ''}`,
       }}
     >
       <div
@@ -41,12 +49,12 @@ export const CartItem: React.FC<Props> = ({
         onClick={onDelete}
       ></div>
       <img className={`${styles.img} hover--scale`} src={image} alt={name} />
-      <p className={`${styles.name}`}>{name}</p>
-      <div className={`${styles.bottom}`}>
-        <div className={`${styles.buttons}`}>
+      <p className={`${styles.name} `}>{name}</p>
+      <div className={`${styles.bottom} `}>
+        <div className={`${styles.buttons} `}>
           <button
             disabled={count === 1}
-            className={`button--small ${getButtonClass.secondary(darkTheme)}`}
+            className={`button--small ${getButtonClass.secondary(darkTheme)} `}
             onClick={event => {
               setCount(prevCount => prevCount - 1);
               updateCount(count - 1);
@@ -61,7 +69,7 @@ export const CartItem: React.FC<Props> = ({
           </button>
           <div className={`${styles.count} button button--small`}>{count}</div>
           <button
-            className={`button--small ${getButtonClass.secondary(darkTheme)}`}
+            className={`button--small ${getButtonClass.secondary(darkTheme)} `}
             onClick={event => {
               setCount(prevCount => prevCount + 1);
               updateCount(count + 1);
@@ -71,7 +79,7 @@ export const CartItem: React.FC<Props> = ({
             <div className="icon icon--plus"></div>
           </button>
         </div>
-        <div className={`${styles.price}`}>{`$ ${price}`}</div>
+        <div className={`${styles.price} `}>{`$ ${price} `}</div>
       </div>
     </article>
   );

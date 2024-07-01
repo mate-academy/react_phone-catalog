@@ -2,7 +2,7 @@
 
 .container {
   width: 100%;
-  border-spacing:0 8px;
+  border-spacing: 0 8px;
 }
 
 .techSpec {
@@ -18,9 +18,14 @@
   &__value {
     text-align: right;
     white-space: nowrap;
+
+    &__wrap {
+      white-space: wrap;
+    }
   }
 }
 
-th, tr {
+th,
+tr {
   padding: 0;
 }

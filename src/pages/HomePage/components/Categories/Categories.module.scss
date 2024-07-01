@@ -1,6 +1,8 @@
 @import '../../../../styles/utils/utils';
 
 .categories {
+  box-sizing: border-box;
+  
   @include content-pading-inline;
   @include section-gap;
 

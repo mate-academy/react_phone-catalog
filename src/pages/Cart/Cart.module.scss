@@ -2,6 +2,8 @@
 
 .container {
   width: 100%;
+  display: flex;
+  flex-direction: column;
   padding-top: 24px;
   margin-bottom: 80px;
 
@@ -13,7 +15,11 @@
 }
 
 .gridContainer {
+  max-width: 592px;
+  align-self: center;
+
   @include on-desktop {
+    max-width: 100%;
     display: grid;
     grid-template-columns: 2fr 1fr;
     gap: 16px;

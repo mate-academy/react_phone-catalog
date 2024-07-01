@@ -6,7 +6,7 @@ export const getPagination = {
       Array(numberOfPages + 1).keys(),
     ).slice(1);
 
-    if (numberOfPages <= 4) {
+    if (numberOfPages <= 5) {
       return buttons;
     }
 

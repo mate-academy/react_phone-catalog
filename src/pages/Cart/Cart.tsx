@@ -32,10 +32,7 @@ export const Cart = () => {
   );
   const [showModal, setShowModal] = useState(false);
 
-  const sum = useMemo(
-    () => getCountOf.sumInCart(addedItems),
-    [addedItemsFromServer],
-  );
+  const sum = useMemo(() => getCountOf.sumInCart(addedItems), [addedItems]);
 
   const itemsCount = useMemo(() => {
     return getCountOf.itemsInCart(addedItemsFromServer);

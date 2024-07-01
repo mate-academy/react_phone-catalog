@@ -26,7 +26,7 @@ export const ProductCard: React.FC<Props> = React.memo(
         })}
         onClick={() => {
           navigate(`/${product.category}/${id}`);
-          window.scrollTo(0, 0);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
         }}
       >
         <img className={`${styles.img} hover--scale`} src={img} alt={id} />

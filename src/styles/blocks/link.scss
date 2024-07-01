@@ -20,7 +20,7 @@
     }
 
     @include hover(color, var(--text-color));
-    
+
     &:hover {
       &::after {
         transform: scale(1);
@@ -31,9 +31,9 @@
 
 .navlink {
   &--underline {
-    position: relative;
     color: var(--text-color);
-
+    position: relative;
+    
     &::after {
       content: '';
       display: block;

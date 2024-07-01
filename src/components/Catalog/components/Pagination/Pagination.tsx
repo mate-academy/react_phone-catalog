@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({ numberOfPages }) => {
     }
 
     setVisibleButtons(buttons);
-  }, [numberOfPages, selectedPage]);
+  }, [numberOfPages, selectedPage, width]);
 
   function handleButtonClick(newValue: number) {
     window.scrollTo({ top: 0, behavior: 'smooth' });

@@ -4,17 +4,13 @@
   display: flex;
   flex-direction: row;
   margin-left: 20px;
-  height: 100%;
-
-  @include on-tablet {
-    height: 100%;
-  }
 }
 
 .icon1 {
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
   height: 100%;
   position: relative;
   background-color: inherit;
@@ -27,14 +23,19 @@
   }
 }
 
+
 .hamburger {
   position: relative;
-  height: 8.5px;
+  height: 10px;
   width: 14px;
 
   &__selected {
     height: 16px;
     width: 16px;
+  }
+
+  &:target .menu {
+    transform: translateX(100%);
   }
 }
 
@@ -57,7 +58,7 @@
   }
 
   &__1 {
-    top: 3.4px;
+    top: 40%;
 
     &__selected {
       transform: translateX(-100%);
@@ -66,7 +67,7 @@
   }
 
   &__2 {
-    top: 3.5px;
+    top: 40%;
 
     &__selected {
       transform: translateX(100%);

@@ -2,8 +2,8 @@
 
 .container {
   margin-bottom: 8px;
-  width: 100%;
-  
+  max-width: 100vw;
+
   @include on-tablet {
     margin-bottom: 0;
   }
@@ -11,6 +11,7 @@
 
 .title {
   padding-block: 24px;
+  box-sizing: border-box;
 
   @include content-pading-inline;
 

@@ -40,7 +40,15 @@ export const TechSpecs: React.FC<Props> = ({
               <th className={`${getClassName()} ${styles.techSpec__name}`}>
                 {detailName}
               </th>
-              <th className={`${getClassName()} ${styles.techSpec__value}`}>
+              <th
+                className={classNames(
+                  `${getClassName()} ${styles.techSpec__value}`,
+                  {
+                    [styles.techSpec__value__wrap]:
+                      parentElement === 'productPage',
+                  },
+                )}
+              >
                 {value}
               </th>
             </tr>

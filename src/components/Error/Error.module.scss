@@ -3,19 +3,22 @@
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  height: 100%;
-  gap: 24px;
+  justify-content: top;
+  gap: 16px;
 }
 
 .img {
   display: block;
   width: 50vw;
-  height: 50vw;
+  padding-bottom: 50%;
   background-size: contain;
   background-position: center;
   background-repeat: no-repeat;
+
+  @include on-desktop {
+    width: 400px;
+  }
 }
 
 .buttonReload {
@@ -27,8 +30,18 @@
 .text {
  font-size: 14px;
  font-weight: 600;
+ 
+ @include content-pading-inline;
 
  @include on-tablet {
   font-size: 20px;
  }
+}
+
+.catalog {
+  width: 100vw;
+
+  @include on-desktop {
+    width: 1200px;
+  }
 }
