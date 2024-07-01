@@ -3,7 +3,7 @@ import { LangButton } from './LangButton/LangButton';
 import { Logo } from '../Icons/Logo';
 import { LogoCart } from '../Icons/IconCart';
 import { NavList } from './NavList/NavList';
-import { LogoFavorites } from '../Icons/IconFavorites';
+import { IconFavorites } from '../Icons/IconFavorites';
 import style from './Header.module.scss';
 import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
@@ -35,7 +35,7 @@ export const Header = () => {
                 <ThemeButton />
               </div>
               <Link to="#" className={style.header__actionsLink}>
-                <LogoFavorites className={style.header__actionsImg} />
+                <IconFavorites className={style.header__actionsImg} />
               </Link>
               <Link to="#" className={style.header__actionsLink}>
                 <LogoCart className={style.header__actionsImg} />

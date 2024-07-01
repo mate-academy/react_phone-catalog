@@ -3,7 +3,7 @@ import darkLogo from '../../image/DarkTheme/favorites.svg';
 import lightLogo from '../../image/Light-Theme/favorites.svg';
 import { ThemeContext } from '../../store/ThemeProvider';
 
-export const LogoFavorites = ({ ...props }) => {
+export const IconFavorites = ({ ...props }) => {
   const { theme } = useContext(ThemeContext);
   const logo = theme ? darkLogo : lightLogo;
 

@@ -5,7 +5,7 @@ import { IconRight } from '../../Icons/IconRight';
 import { IconLeft } from '../../Icons/IconLeft';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import classNames from 'classnames';
-import { LogoFavorites } from '../../Icons/IconFavorites';
+import { IconFavorites } from '../../Icons/IconFavorites';
 import { Products } from '../../../types/ContextType/Products';
 import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
@@ -252,7 +252,7 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
                     {t('addToCart')}
                   </button>
                   <button className={style.sectionCards__CardfavBtn}>
-                    <LogoFavorites />
+                    <IconFavorites />
                   </button>
                 </div>
               </li>

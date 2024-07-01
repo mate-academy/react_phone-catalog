@@ -34,7 +34,7 @@
 
   &__cardImg {
     margin-bottom: 8px;
-    max-width: 100%;
+    // max-width: 100%;
   }
 
   &__cardLink {
@@ -122,7 +122,7 @@
     }
   }
 
-  &__CardfavBtn {
+  &__сardFavBtn {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -133,11 +133,11 @@
     cursor: pointer;
   }
 
-  &__CardfavBtn:hover {
+  &__сardFavBtn:hover {
     @extend %lightThemeHoverButton;
   }
 
-  &__darkTheme &__CardfavBtn:hover {
+  &__darkTheme &__сardFavBtn:hover {
     @extend %darkThemeHoverButton;
   }
 }

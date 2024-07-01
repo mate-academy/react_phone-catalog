@@ -19,6 +19,7 @@
   --button-active-slider-color: #313237;
   --text-phone-card-color: #89939a;
   --background-color-button-cart: #313237;
+  --textColorButtonCart: #ffffff;
   --background-color-button-fav: #fff;
   --background-color-phoneCard: #fff;
   --background-color-phoneCardHover: #313237;
@@ -41,6 +42,11 @@
   --paginationNumberBackColorActive: #313237;
   --breadCrubsLastNonActiveItem: #89939a;
   --backHoverBtn: #313237;
+  --circleDefaultColor: #e2e6e9;
+  --circleActiveColor: #313237;
+  --detailsDivideLine: #e2e6e9;
+  --borderCapacityColor: #b4bdc3;
+  --idsTextColor: #B4BDC3;
   // touch-action: none;
 }
 
@@ -54,6 +60,7 @@
   --button-slider-color: #3b3e4a;
   --text-phone-card-color: #75767f;
   --background-color-button-cart: #905bff;
+  --textColorButtonCart: #f1f2f9;
   --background-color-button-fav: #323542;
   --background-color-phoneCard: #161827;
   --background-color-phoneCardHover: #a378ff;
@@ -76,6 +83,11 @@
   --paginationNumberBackColorActive: #905bff;
   --breadCrubsLastNonActiveItem: #75767f;
   --backHoverBtn: #905bff;
+  --circleDefaultColor: #3b3e4a;
+  --circleActiveColor: #f1f2f9;
+  --detailsDivideLine: #3b3e4a;
+  --borderCapacityColor: #4a4d58;
+  --idsTextColor: #4A4D58;
   color: $text-color;
   background-color: $background-color;
 }

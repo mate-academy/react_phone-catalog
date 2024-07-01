@@ -1,7 +1,5 @@
 @use '../../styles/block/utils/variables' as *;
-// .crump {
-//   display: flex;
-// }
+@import '../../styles/block/utils/mixins';
 
 .breadCrumbs {
   margin: 24px auto 40px;
@@ -35,6 +33,12 @@
 }
 
 .crumb:last-child a {
-  color: #89939A;
+  color: #89939a;
   pointer-events: none;
+}
+
+@include onPhone {
+  .breadCrumbs {
+    margin: 24px auto 24px;
+  }
 }

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import style from './Cards.module.scss';
 import { LanguageContext } from '../../store/LanguageProvider';
-import { LogoFavorites } from '../Icons/IconFavorites';
+import { IconFavorites } from '../Icons/IconFavorites';
 import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
 import { Products } from '../../types/ContextType/Products';
@@ -67,8 +67,8 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
               <button className={style.cards__addToCard}>
                 {t('addToCart')}
               </button>
-              <button className={style.cards__CardfavBtn}>
-                <LogoFavorites />
+              <button className={style.cards__сardFavBtn}>
+                <IconFavorites />
               </button>
             </div>
           </li>

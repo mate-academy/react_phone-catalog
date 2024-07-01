@@ -4,7 +4,7 @@ import { LanguageContext } from '../../store/LanguageProvider';
 import { useContext } from 'react';
 import { LangButton } from '../Header/LangButton';
 import ThemeButton from '../Header/ThemeButton/ThemeButton';
-import { LogoFavorites } from '../Icons/IconFavorites';
+import { IconFavorites } from '../Icons/IconFavorites';
 import { LogoCart } from '../Icons/IconCart';
 import { LogoClose } from '../Icons/IconClose';
 import data from '../../utils/NavList.json';
@@ -64,7 +64,7 @@ export const AsideMenu = () => {
           <LangButton />
         </div>
         <Link to="#" className={style.menu__wrap}>
-          <LogoFavorites className={style.menu__icons} />
+          <IconFavorites className={style.menu__icons} />
         </Link>
         <Link to="#" className={style.menu__wrap}>
           <LogoCart className={style.menu__icons} />

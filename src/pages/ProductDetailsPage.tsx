@@ -7,17 +7,18 @@ import { getPhones } from '../utils/fetchMethods';
 import { useEffect } from 'react';
 import { useState } from 'react';
 import { Gadgets } from '../types/ContextType/Gadgets';
+import { AvailableColors } from '../enums/AvailableColors';
+import { IconFavorites } from '../components/Icons/IconFavorites';
 
 type Props = {
   type: Category;
 };
 
 export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
-  const { productId } = useParams();
+  const { productId } = useParams<{ productId: string }>();
   const navigate = useNavigate();
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
-
   const [image, setImage] = useState('');
   useEffect(() => {
     async function fetchData() {
@@ -38,69 +39,69 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   }
 
   const {
-    id,
+    // id,
     // category,
     // namespaceId,
     name,
-    // capacityAvailable,
+    capacityAvailable,
     // capacity,
-    // priceRegular,
-    // priceDiscount,
+    priceRegular,
+    priceDiscount,
     colorsAvailable,
     // color,
-    // images,
+    images,
     // description,
-    // screen,
-    // resolution,
-    // processor,
-    // ram,
+    screen,
+    resolution,
+    processor,
+    ram,
     // camera,
     // zoom,
     // cell,
   } = categoryProduct;
-  console.log(colorsAvailable);
 
   return (
     <div className={style.product}>
-      <div className={style.product__contaainer}>
-        <BreadCrumbs />
+      <BreadCrumbs />
 
-        <span className={style.product__back} onClick={() => navigate(-1)}>
-          Back
-        </span>
-      </div>
-      <div key={id}>
-        <h1 className={style.product__phoneName}>{name}</h1>
+      <span className={style.product__back} onClick={() => navigate(-1)}>
+        Back
+      </span>
 
-        <div className={style.product__gridContainer}>
-          <ul className={style.product__imageList}>
-            {categoryProduct.images.map(image => (
-              <li className={style.product__imageItem} key={image}>
-                <button
-                  className={style.product__buttonImage}
-                  onClick={() => setImage(image)}
-                >
-                  <img
-                    src={image}
-                    alt="Gadget"
-                    className={style.product__smallImage}
-                  />
-                </button>
-              </li>
-            ))}
-          </ul>
+      <h1 className={style.product__phoneName}>{name}</h1>
 
-          <div className={style.product__mainImageContainer}>
-            <img
-              src={image}
-              alt="Gadget"
-              className={style.product__mainImage}
-            />
-          </div>
+      <div className={style.product__gridContainer}>
+        <ul className={style.product__imagesList}>
+          {images.map(image => (
+            <li className={style.product__imageItem} key={image}>
+              <button
+                className={style.product__buttonForImage}
+                onClick={() => setImage(image)}
+              >
+                <img
+                  src={image}
+                  alt="Gadget"
+                  className={style.product__smallImage}
+                />
+              </button>
+            </li>
+          ))}
+        </ul>
+
+        <div className={style.product__mainImageWrapper}>
+          <img src={image} alt="Gadget" className={style.product__mainImage} />
+        </div>
+
+        <div className={style.product__paramsContainer}>
+          <p className={style.product__namesParams}>Available colors</p>
+          <p className={style.product__ids}>ID: 802390</p>
 
           <div className={style.product__availableColors}>
             {colorsAvailable.map(color => {
-              const colorNew = { backgroundColor: color };
+              const colorNew = {
+                backgroundColor:
+                  AvailableColors[color as keyof typeof AvailableColors],
+              };
 
               return (
                 <Link
@@ -111,6 +112,55 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
                 ></Link>
               );
             })}
+          </div>
+
+          <span className={style.product__line} />
+
+          <div className={style.product__capacityBlock}>
+            <p className={style.product__namesParams}>Select capacity</p>
+            <div className={style.product__capacityList}>
+              {capacityAvailable.map(item => (
+                <Link
+                  to={'../'}
+                  className={style.product__capacityLink}
+                  key={item}
+                >
+                  {item}
+                </Link>
+              ))}
+            </div>
+          </div>
+          <span className={style.product__line} />
+
+          <div className={style.product__orderContainer}>
+            <div className={style.product__sectionPrice}>
+              <p className={style.product__priceRegular}>${priceRegular}</p>
+              <p className={style.product__priceDiscount}>${priceDiscount}</p>
+            </div>
+
+            <div className={style.product__orderButtons}>
+              <button className={style.product__addToCart}>Add to cart</button>
+              <button className={style.product__favorites}>
+                <IconFavorites />
+              </button>
+            </div>
+
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Screen</p>
+              <p className={style.product__shortDesValue}>{screen}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Resolution</p>
+              <p className={style.product__shortDesValue}>{resolution}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Processor</p>
+              <p className={style.product__shortDesValue}>{processor}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>RAM</p>
+              <p className={style.product__shortDesValue}>{ram}</p>
+            </div>
           </div>
         </div>
       </div>
