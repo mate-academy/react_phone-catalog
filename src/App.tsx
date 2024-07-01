@@ -8,7 +8,7 @@ export const App = () => {
   const [isVisible, setIsVisible] = useState(false);
 
   window.onscroll = function () {
-    if (window.scrollY >= 1000) {
+    if (window.scrollY >= 80) {
       setIsVisible(true);
 
       return;

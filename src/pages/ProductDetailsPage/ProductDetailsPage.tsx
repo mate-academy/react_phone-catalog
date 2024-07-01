@@ -17,6 +17,7 @@ import { FavoritesContext } from '../../components/FavoritesContext';
 // eslint-disable-next-line max-len
 import { getProductLinkByCapacity } from '../../helpers/getProductLinkByCapacity';
 import { getProductLinkByColor } from '../../helpers/getProductLinkByColor';
+import { getCorrectColors } from '../../helpers/getCorrectColors';
 
 export const ProductDetailsPage = () => {
   const { productId } = useParams();
@@ -205,7 +206,7 @@ export const ProductDetailsPage = () => {
                             'productDetails__color--active':
                               color === productDetails.color,
                           })}
-                          style={{ backgroundColor: color }}
+                          style={{ backgroundColor: getCorrectColors(color) }}
                         />
                       ))}
                     </div>
