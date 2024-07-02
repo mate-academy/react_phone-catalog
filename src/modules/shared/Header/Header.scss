@@ -1,0 +1,57 @@
+@import "./../../../styles/services/mixin";
+
+.header{
+  box-shadow: 0 1px 0 0 #323542;
+  position: sticky;
+  top: 0;
+  background-color: #0F1121;
+  z-index: 100;
+
+  &__nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__links{
+    display: flex;
+  }
+
+  &__logo{
+    padding-inline: 16px;
+
+    @include on-tablet{
+      padding-inline: 24px;
+    }
+  }
+
+  &__link{
+    height: 48px;
+    width: 48px;
+    box-shadow: -1px 0 0 0 #3B3E4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-tablet{
+      height: 64px;
+      width: 64px;
+    }
+
+    &--burger-menu{
+      @include on-tablet{
+        display: none;
+      }
+    }
+
+    &--cart, &--heart-like{
+      display: none;
+
+      @include on-tablet{
+        display: flex;
+        position: relative;
+      }
+    }
+  }
+}
+

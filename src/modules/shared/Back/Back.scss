@@ -1,0 +1,18 @@
+.back{
+  display: flex;
+  grid-column: span 2;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #F1F2F9;
+  margin-bottom: 16px;
+  padding-left: 16px;
+  position: relative;
+  text-align: start;
+
+  &::before{
+    content: url('../../../../public/img/icons/back.svg');
+    position: absolute;
+    left: 0;
+  }
+}

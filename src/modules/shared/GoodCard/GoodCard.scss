@@ -1,0 +1,246 @@
+@import '../../../styles/services/mixin';
+
+.card{
+  padding-top: 24px;
+  box-sizing: border-box;
+
+  &__good-name{
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 31px;
+    margin-bottom: 32px;
+
+    @include on-tablet{
+      font-size: 32px;
+      line-height: 41px;
+      letter-spacing: -0.01em;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__top{
+    margin-bottom: 56px;
+
+    @include on-tablet{
+      display: flex;
+      column-gap: 17px;
+      margin-bottom: 64px;
+    }
+
+    @include on-tablet{
+      column-gap: 64px;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__slider{
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-tablet{
+      flex-basis: 50%;
+      flex-direction: row-reverse;
+      column-gap: 16px;
+    }
+  }
+
+  &__brief{
+    flex-basis: 50%;
+  }
+
+  &__main-picture{
+    height: 288px;
+    width: 288px;
+    object-fit: contain;
+    display: flex;
+    justify-content: center;
+    margin: 0 auto;
+
+    @include on-desktop{
+      height: 464px;
+      width: 464px;
+    }
+  }
+
+  &__pictures{
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet{
+      flex-direction: column;
+    }
+  }
+
+  &__picture{
+    width: 51px;
+    height: 49px;
+    object-fit: contain;
+    object-position: center;
+    cursor: pointer;
+  }
+
+  &__names{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__value{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #75767F;
+    margin-bottom: 8px;
+  }
+
+  &__id{
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    color: #4A4D58;
+  }
+
+  &__colors{
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 24px;
+  }
+
+  &__color{
+    display: block;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid #3B3E4A;
+    position: relative;
+    transition: border 0.3s;
+    cursor: auto;
+
+    &--active{
+      border: 1px solid #F1F2F9
+    }
+
+    &::after{
+      content: '';
+      width: 27px;
+      height: 27px;
+      border: 2px solid #0F1121;
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      border-radius: 50%;
+    }
+  }
+
+  &__line{
+    padding-bottom: 24px;
+    border-bottom: 1px solid #3B3E4A
+  }
+
+  &__capacities{
+    display: flex;
+    column-gap: 8px;
+    margin-bottom: 32px;
+  }
+
+  &__capacity{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #F1F2F9;
+    padding: 8px 7px 4px;
+    border: 1px solid #4A4D58;
+    cursor: auto;
+
+    &--active{
+      background: #F1F2F9;
+      color: #0F1121;
+      border: 1px solid transparent;
+    }
+  }
+
+  &__price{
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 31px;
+    display: flex;
+    column-gap: 8px;
+    align-items: center;
+    margin-bottom: 16px;
+  }
+
+  &__discount{
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 28px;
+    color: #75767F;
+    text-decoration: line-through;
+  }
+
+  &__buttons{
+    margin-bottom: 32px;
+  }
+
+  &__title{
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #3B3E4A;
+    margin-bottom: 32px;
+
+    @include on-tablet{
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 31px;
+    }
+
+    &--tech-specs{
+      margin-bottom: 30px;
+
+      @include on-desktop{
+        margin-bottom: 25px;
+      }
+    }
+  }
+
+  &__about{
+    margin-bottom: 22px;
+
+    @include on-desktop{
+      margin-bottom: 32px;
+    }
+  }
+
+  &__description{
+    margin-bottom: 32px;
+  }
+
+  &__subtitle{
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 21px;
+    margin-bottom: 16px;
+
+    @include on-tablet{
+      font-size: 20px;
+      line-height: 26px;
+    }
+  }
+
+  &__text{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #75767F;
+  }
+
+  &__tech-specs{
+    margin-bottom: 56px;
+
+    @include on-tablet{
+      margin-bottom: 64px;
+    }
+  }
+}

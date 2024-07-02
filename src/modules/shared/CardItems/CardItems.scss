@@ -1,0 +1,17 @@
+.card-items{
+    margin-bottom: 8px;
+    padding-top: 8px;
+
+  &__item{
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    padding-bottom: 8px;
+  }
+
+  &__key{
+    color: #75767F;
+  }
+}
