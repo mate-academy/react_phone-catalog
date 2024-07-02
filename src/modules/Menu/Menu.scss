@@ -1,0 +1,27 @@
+.menu{
+  &__content{
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 48px);
+  }
+
+  &__nav{
+    flex: 1 1 auto;
+  }
+
+  &__buttons{
+    display: flex;
+    border: 1px solid #3B3E4A
+  }
+  &__link{
+    flex-basis: 50%;
+    text-align: center;
+    padding-block: 16px;
+    box-shadow: -1px 0 0 0 #323542;
+    transition: border-bottom 0.3s;
+
+    &:hover{
+      border-bottom: 2px solid #F1F2F9
+    }
+  }
+}

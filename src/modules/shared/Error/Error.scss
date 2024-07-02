@@ -1,0 +1,23 @@
+.error{
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  height: 70vh;
+
+  &__button{
+    text-align: center;
+    width: 100%;
+    padding-block: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    background-color: #905BFF;
+    color: #F1F2F9;
+
+    &:hover{
+      background-color: #A378FF;
+    }
+  }
+}

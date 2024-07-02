@@ -1,0 +1,46 @@
+.checkout-modal{
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 100;
+  background-color: #00000078;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__wrapper{
+    max-width: 600px;
+    padding-inline: 15px;
+  }
+
+  &__link{
+    margin-left: auto;
+    display: block;
+    margin-bottom: 24px;
+  }
+
+  &__image{
+    height: 32px;
+    width: 32px;
+  }
+
+  &__title{
+    margin-bottom: 40px;
+  }
+
+  &__button{
+    width: 100%;
+    padding-block: 14px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    background-color: #905BFF;
+    color: #F1F2F9;
+
+    &:hover{
+      background-color: #A378FF;
+    }
+  }
+}
