@@ -4,11 +4,13 @@ import { BreadCrumbs } from '../components/BreadCrumbs/BreadCrumbs';
 import style from '../modules/ProductDetailsPage.module.scss';
 import { Category } from '../enums/Category';
 import { getPhones } from '../utils/fetchMethods';
-import { useEffect } from 'react';
+import { useContext, useEffect } from 'react';
 import { useState } from 'react';
 import { Gadgets } from '../types/ContextType/Gadgets';
 import { AvailableColors } from '../enums/AvailableColors';
 import { IconFavorites } from '../components/Icons/IconFavorites';
+import { ThemeContext } from '../store/ThemeProvider';
+import classNames from 'classnames';
 
 type Props = {
   type: Category;
@@ -16,30 +18,52 @@ type Props = {
 
 export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   const { productId } = useParams<{ productId: string }>();
+  const { theme } = useContext(ThemeContext);
   const navigate = useNavigate();
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
   const [image, setImage] = useState('');
+  const [color, setColor] = useState('');
+
   useEffect(() => {
     async function fetchData() {
       let response = await getPhones(type);
-
+      let changesColorIds = '';
       if (response) {
-        const detailsProduct = response.filter(item => item.id === productId);
-        setCategoryProduct(detailsProduct[0]);
-        setImage(detailsProduct[0].images[0]);
+        for (let key in AvailableColors) {
+          const splitProductIds = productId?.split('-');
+          if (splitProductIds?.join(' ').includes(key)) {
+            let convertToIds = splitProductIds.join(' ');
+            changesColorIds = convertToIds
+              .replaceAll(key, color)
+              .split(' ')
+              .join('-');
+          }
+        }
+
+        let detailsProduct = response.find(item => {
+          if (color && productId) {
+            return item.id === changesColorIds;
+          } else {
+            return item.id === productId;
+          }
+        });
+
+        if (detailsProduct) {
+          setCategoryProduct(detailsProduct);
+          setImage(detailsProduct.images[0]);
+        }
       }
     }
 
     fetchData();
-  }, [productId, type]);
+  }, [type, color, productId]);
 
   if (!categoryProduct) {
     return <div>Loading...</div>;
   }
-
   const {
-    // id,
+    id,
     // category,
     // namespaceId,
     name,
@@ -60,8 +84,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     // cell,
   } = categoryProduct;
 
+  console.log(id);
+
   return (
-    <div className={style.product}>
+    <div
+      className={classNames(style.product, {
+        [style.product__darkTheme]: theme,
+      })}
+    >
       <BreadCrumbs />
 
       <span className={style.product__back} onClick={() => navigate(-1)}>
@@ -105,10 +135,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
               return (
                 <Link
-                  to={'../'}
+                  to={`../${id}`}
                   key={color}
                   className={style.product__colorParam}
                   style={colorNew}
+                  onClick={() => setColor(color)}
                 ></Link>
               );
             })}
