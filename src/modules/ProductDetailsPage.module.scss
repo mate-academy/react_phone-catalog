@@ -154,6 +154,11 @@
     padding: 7px 8px 4px;
   }
 
+  &__capacityActiveLink {
+    background-color: $circleActiveColor;
+    color: $textColorActiveState;
+  }
+
   &__capacityList {
     display: flex;
     gap: 8px;

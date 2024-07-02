@@ -5,7 +5,7 @@ $text-discount-color: var(--text-discount-color);
 $border-color: var(--border-color);
 $button-color: var(--button-color);
 $button-slider-color: var(--button-slider-color);
-$button-active-slider-color: var(--button-active-slider-color);
+$buttonActiveBackColor: var(--buttonActiveBackColor);
 $background-color: var(--background-color);
 $background-hover-button: #4a4d58;
 $border-hover-button: #313237;
@@ -40,6 +40,7 @@ $borderCapacityColor: var(--borderCapacityColor);
 $textColorButtonCart: var(--textColorButtonCart);
 $idsTextColor: var(--idsTextColor);
 $circleHoverColor: var(--circleHoverColor);
+$textColorActiveState: var(--textColorActiveState);
 
 $tablet-max-width: 1199px;
 $phone-max-width: 639px;

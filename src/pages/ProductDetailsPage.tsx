@@ -152,7 +152,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
                 return (
                   <Link
                     to={`../${newCapacityIds}`}
-                    className={style.product__capacityLink}
+                    className={classNames(style.product__capacityLink, {
+                      [style.product__capacityActiveLink]: capacity === item,
+                    })}
                     key={item}
                   >
                     {item}

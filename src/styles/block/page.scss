@@ -16,7 +16,7 @@
   --border-color: #e2e6e9;
   --button-color: #fff;
   --button-slider-color: #e2e6e9;
-  --button-active-slider-color: #313237;
+  --buttonActiveBackColor: #313237;
   --text-phone-card-color: #89939a;
   --background-color-button-cart: #313237;
   --textColorButtonCart: #ffffff;
@@ -48,11 +48,12 @@
   --detailsDivideLine: #e2e6e9;
   --borderCapacityColor: #b4bdc3;
   --idsTextColor: #b4bdc3;
+  --textColorActiveState: #ffffff;
   // touch-action: none;
 }
 
 .dark {
-  --button-active-slider-color: #f1f2f9;
+  --buttonActiveBackColor: #f1f2f9;
   --background-color: #0f1121;
   --text-color: #f1f2f9;
   --text-nav-color: #75767f;
@@ -90,6 +91,7 @@
   --detailsDivideLine: #3b3e4a;
   --borderCapacityColor: #4a4d58;
   --idsTextColor: #4a4d58;
+  --textColorActiveState: #0f1121;
   color: $text-color;
   background-color: $background-color;
 }
