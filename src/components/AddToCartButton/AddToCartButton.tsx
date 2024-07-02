@@ -1,8 +1,5 @@
-// import { useContext } from 'react';
 import classNames from 'classnames';
-// import { Phones } from '../../types/Phones';
 import './AddToCartButton.scss';
-// import { CartContext } from '../ContextProviders';
 import { useLocation } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { actions as cartAction } from '../../features/cart/cartSlice';

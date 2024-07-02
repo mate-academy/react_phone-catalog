@@ -154,6 +154,7 @@
     @extend %uppercase-text;
 
     white-space: nowrap;
+    transition: all 0.5s;
 
     &:hover {
       color: var(--color-primary);

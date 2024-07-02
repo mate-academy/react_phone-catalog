@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import './Search.scss';
-import { useSearchParams } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 import SearchIcon from '../../images/icons/Search.png';
 import { getSearchWith } from '../../utils/searchHelper';
 import useDebounce from '../../hooks/useDebounce';
@@ -14,6 +14,7 @@ export const Search: React.FC<Props> = ({ placeholder }) => {
   const [searchParams, setSearchParams] = useSearchParams();
 
   const debouncedSearch = useDebounce(query, 1000);
+  const location = useLocation();
 
   const handleQueryChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setQuery(event.target.value);
@@ -30,6 +31,10 @@ export const Search: React.FC<Props> = ({ placeholder }) => {
   useEffect(() => {
     getQuery();
   }, [debouncedSearch]);
+
+  useEffect(() => {
+    setQuery('');
+  }, [location.pathname]);
 
   return (
     <div className="searchForm">

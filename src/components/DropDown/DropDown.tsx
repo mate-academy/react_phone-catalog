@@ -11,6 +11,20 @@ type Props = {
   type: SelectorType;
 };
 
+const sortByList: Record<string, string> = {
+  All: '',
+  Alphabet: 'name',
+  Newest: 'age',
+  Chepest: 'price',
+};
+
+const itemsOnPageList: Record<string, string> = {
+  All: '',
+  4: '4',
+  8: '8',
+  16: '16',
+};
+
 export const DropDown: React.FC<Props> = ({ type }) => {
   const [value, setValue] = useState('All');
   const [isOpen, setIsOpen] = useState(false);
@@ -51,20 +65,6 @@ export const DropDown: React.FC<Props> = ({ type }) => {
   }
 
   const dropDownTitle = type === 'sort-by' ? 'Sort by' : 'Items on page';
-
-  const sortByList: Record<string, string> = {
-    All: '',
-    Alphabet: 'name',
-    Newest: 'age',
-    Chepest: 'price',
-  };
-
-  const itemsOnPageList: Record<string, string> = {
-    All: '',
-    4: '4',
-    8: '8',
-    16: '16',
-  };
 
   useEffect(() => {
     if (type === 'items-on-page') {

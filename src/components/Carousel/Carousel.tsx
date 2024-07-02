@@ -34,7 +34,7 @@ export const Carousel: React.FC<Props> = ({ slides }) => {
     const newIndex = isLastSlide ? 0 : currentIndex + 1;
 
     setCurrentIndex(newIndex);
-  }, [currentIndex]);
+  }, [currentIndex, slides.length]);
 
   const goToSlide = (slideIndex: number) => {
     setCurrentIndex(slideIndex);

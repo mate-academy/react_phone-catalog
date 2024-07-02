@@ -8,7 +8,9 @@ type CheckoutProps = {
 
 export const Checkout: React.FC<CheckoutProps> = ({ setActive }) => {
   const cart = useAppSelector(state => state.cart);
-  const totalItemsInCart = cart.cartItems.length;
+  const totalItemsInCart = cart.cartItems
+    .map(item => item.itemCount)
+    .reduce((sum, item) => item + sum, 0);
   const totalPrice = calcTotalCartPrice(cart.cartItems);
 
   return (

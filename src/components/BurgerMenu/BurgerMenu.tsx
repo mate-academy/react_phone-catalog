@@ -25,7 +25,7 @@ export const BurgerMenu = () => {
   };
 
   useEffect(() => {
-    if (isActive === true) {
+    if (isActive) {
       document.body.style.overflowY = 'hidden';
     } else {
       document.body.style.overflowY = 'auto';

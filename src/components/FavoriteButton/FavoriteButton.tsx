@@ -1,7 +1,6 @@
 import './FavoriteButton.scss';
 import { useContext } from 'react';
 import FavoritesImg from '../../images/icons/Favourites (Heart Like).svg';
-// import { Phones } from '../../types/Phones';
 // eslint-disable-next-line max-len
 import FavoritesFilled from '../../images/icons/Favourites Filled (Heart Like).png';
 import { FavoritesContext } from '../ContextProviders/ContextProviders';

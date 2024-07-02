@@ -6,7 +6,6 @@
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     border: 1px solid #E2E6E9;
     border-radius: 16px;
     padding: 24px;
@@ -40,6 +39,7 @@
     }
 
     &__name {
+      width: 336px;
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;

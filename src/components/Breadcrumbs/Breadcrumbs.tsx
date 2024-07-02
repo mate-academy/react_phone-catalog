@@ -19,23 +19,20 @@ export const Breadcrumbs = () => {
         {pathnames.map((name, index) => {
           const routeTo = `/${pathnames.slice(0, index + 1).join('/')}`;
           const isLast = index === pathnames.length - 1;
+          const pageName = name.charAt(0).toUpperCase() + name.slice(1);
 
           return isLast ? (
             <div className="breadcrumbs__container" key={routeTo}>
               <img src={ArrowRight} alt="Home icon" />
 
-              <span className="breadcrumbs__pageName">
-                {name.charAt(0).toUpperCase() + name.slice(1)}
-              </span>
+              <span className="breadcrumbs__pageName">{pageName}</span>
             </div>
           ) : (
             <Link key={routeTo} to={routeTo}>
               <div className="breadcrumbs__container" key={routeTo}>
                 <img src={ArrowRight} alt="Home icon" />
 
-                <span className="breadcrumbs__pageName">
-                  {name.charAt(0).toUpperCase() + name.slice(1)}
-                </span>
+                <span className="breadcrumbs__pageName">{pageName}</span>
               </div>
             </Link>
           );

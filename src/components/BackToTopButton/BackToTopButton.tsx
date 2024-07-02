@@ -7,15 +7,11 @@ export const BackToTopButton = () => {
   };
 
   return (
-    <div className="backToTopButton">
+    <button type="button" className="backToTopButton" onClick={scrollToTop}>
       <p className="backToTopButton__text">Back to top</p>
-      <button
-        type="button"
-        className="backToTopButton__imgContainer"
-        onClick={scrollToTop}
-      >
+      <div className="backToTopButton__imgContainer">
         <img src={Arrow} alt="arrow btn" className="backToTopButton__img" />
-      </button>
-    </div>
+      </div>
+    </button>
   );
 };

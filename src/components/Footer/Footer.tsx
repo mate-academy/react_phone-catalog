@@ -34,7 +34,7 @@ export const Footer = () => {
     >
       <div className="footer__container">
         <div>
-          <a href="/" className="logo">
+          <a href="/home" className="logo">
             <img src={LogoIcon} alt="Logo" className="logoImage" />
           </a>
         </div>

@@ -86,7 +86,7 @@
       transition: all 0.5s;
 
       &:hover {
-        color: #313237;
+        color: var(--color-primary);
       }
     }
   }

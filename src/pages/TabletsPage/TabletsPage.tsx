@@ -13,6 +13,7 @@ import { NoSearchResults } from '../../components/NoSearchResults';
 import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { fetchProducts } from '../../features/products/productsSlice';
 import { Loader } from '../../components/Loader';
+import { Footer } from '../../components/Footer/Footer';
 
 export const TabletsPage = () => {
   const [dataTablets, setDataTablets] = useState<Products[]>([]);
@@ -116,6 +117,7 @@ export const TabletsPage = () => {
               )}
             </main>
           </div>
+          <Footer />
         </>
       )}
     </>
