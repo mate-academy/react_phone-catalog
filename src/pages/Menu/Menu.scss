@@ -6,12 +6,12 @@
   z-index: 2;
   background-color: var(--bg-color);
   padding-top: 48px;
-  transition: all 3s;
+  transition: all 2s;
   transform: translateX(0);
 
 
   &--hidden {
-    transition: all 3s;
+    transition: all 2s;
     opacity: 0;
 
     transform: translateX(-100%);

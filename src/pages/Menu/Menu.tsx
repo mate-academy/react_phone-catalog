@@ -18,7 +18,13 @@ export const Menu: React.FC = () => {
   return (
     <aside className={`menu ${!displayMenu && 'menu--hidden'}`} id="menu">
       <Navigation className="menu__nav" />
-      <div className="menu__icons" onClick={() => setDisplayMenu(false)}>
+      <div
+        className="menu__icons"
+        onClick={() => {
+          setDisplayMenu(false);
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        }}
+      >
         <NavIcons />
       </div>
     </aside>

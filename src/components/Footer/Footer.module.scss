@@ -6,10 +6,8 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: left;
-  height: 100%;
-  gap: 32px;
-  padding-block: 32px;
+  gap: 24px;
+  padding-block: 24px;
   border-top: solid 1px var(--border-color);
   background-color: var(--bg-color);
 
@@ -17,17 +15,17 @@
     display: grid;
     grid-template-columns: 150px 1fr 150px;
       place-items: center;
+      padding-block: 32px;
   }
 }
 
 .nav {
   display: flex;
   list-style: none;
-  flex-direction: column;
-  align-items: flex-start;
   margin: 0;
   padding: 0;
-  gap: 4px;
+  justify-content: center;
+  gap: 24px;
 
   @include on-tablet {
     flex-direction: row;

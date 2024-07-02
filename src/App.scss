@@ -29,7 +29,7 @@ h2 {
   background-color: var(--bg-color);
   display: grid;
 
-  grid-template-rows: 48px 1fr 256px;
+  grid-template-rows: 48px 1fr 180px;
   grid-template-areas:
     'header'
     'main'

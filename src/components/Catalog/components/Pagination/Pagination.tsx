@@ -30,7 +30,7 @@ export const Pagination: React.FC<Props> = ({ numberOfPages }) => {
   }, [numberOfPages, selectedPage, width]);
 
   function handleButtonClick(newValue: number) {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+    window.scrollTo({ top: 0, left: 0, behavior: 'smooth' });
     const params = new URLSearchParams(searchParams);
 
     params.set('page', `${newValue}`);
