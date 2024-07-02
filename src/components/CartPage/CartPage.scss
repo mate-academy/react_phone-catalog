@@ -37,6 +37,17 @@
     grid-column: 1 / 17;
   }
 
+  &__big {
+    display: none;
+
+    @media (min-width: 640px) {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
   &__upper {
     display: flex;
     justify-content: space-between;
@@ -44,6 +55,10 @@
     width: 100%;
     height: 80px;
     gap: 16px;
+
+    @media (min-width: 640px) {
+      display: none;
+    }
 
     &--back {
       cursor: pointer;
@@ -77,6 +92,7 @@
     margin-top: 16px;
 
     @media (min-width: 640px) {
+      display: none;
       margin-top: 0;
       margin-left: 24px;
     }
@@ -143,6 +159,7 @@
       line-height: 30.8px;
       color: #F1F2F9;
       margin: 0;
+      min-width: 65px;
     }
   }
 }

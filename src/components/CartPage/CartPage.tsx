@@ -166,7 +166,6 @@ export const CartPage = ({
                     </Link>
                     <div className="backpack__upper--name">{cart.name}</div>
                   </div>
-
                   <div className="backpack__lower">
                     <div className="backpack__lower--quantity">
                       <button
@@ -196,6 +195,49 @@ export const CartPage = ({
                       ${calculateTotalPrice(cart)}
                     </h1>
                   </div>
+                  <div className="backpack__big">
+                    {' '}
+                    {/* big */}
+                    <div
+                      className="backpack__upper--back"
+                      onClick={() => deleteCartItem(cart)}
+                    ></div>
+                    <Link to={`/phones/${cart.id}`} className="card__detail">
+                      <img
+                        src={cart.images[0]}
+                        alt="phone"
+                        className="backpack__upper--phone"
+                      />
+                    </Link>
+                    <div className="backpack__upper--name">{cart.name}</div>
+                    <div className="backpack__lower--quantity">
+                      <button
+                        className="backpack__lower--quantity--button"
+                        disabled={counts[cart.id] === 1}
+                        onClick={() =>
+                          setCountForCard(cart.id, counts[cart.id] - 1)
+                        }
+                      >
+                        <div className="backpack__lower--quantity--minus"></div>
+                      </button>
+                      <div className="backpack__lower--quantity--count">
+                        {counts[cart.id]}
+                      </div>
+                      <button
+                        className="backpack__lower--quantity--button"
+                        disabled={counts[cart.id] === 9}
+                        onClick={() =>
+                          setCountForCard(cart.id, counts[cart.id] + 1)
+                        }
+                      >
+                        <div className="backpack__lower--quantity--plus"></div>
+                      </button>
+                    </div>
+                    <h1 className="backpack__lower--price">
+                      ${calculateTotalPrice(cart)}
+                    </h1>
+                  </div>{' '}
+                  {/* big */}
                 </section>
               ))}
             </div>

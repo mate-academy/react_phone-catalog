@@ -144,6 +144,10 @@ export const PhoneDetailPage = ({
     imgElement.src = FallbackImage;
   };
 
+  const goBack = () => {
+    navigate(-1);
+  };
+
   const colorMap: { [key: string]: string } = {
     spacegray: '#5f5f5f',
     midnightgreen: '#195b64',
@@ -224,12 +228,16 @@ export const PhoneDetailPage = ({
           </section>
 
           <section className="navigate info__navigate">
-            <Link to={`/${name}`} className="navigate__href">
-              <div className="navigate__arrow navigate__arrow--white"></div>
-            </Link>
-            <Link to={`/${name}`} className="navigate__href">
-              <p className="navigate__text navigate__text--white">Back</p>
-            </Link>
+            <div
+              className="navigate__arrow navigate__arrow--white"
+              onClick={goBack}
+            ></div>
+            <p
+              className="navigate__text navigate__text--white"
+              onClick={goBack}
+            >
+              Back
+            </p>
           </section>
 
           {phone && (

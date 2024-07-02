@@ -39,6 +39,8 @@ export const HomePage = ({
     window.scrollTo({ top: 0 });
   }, [pathname]);
 
+  const paths = ['/phones', '/tablets', '/accessories'];
+
   return (
     <>
       <header className="header">
@@ -121,11 +123,12 @@ export const HomePage = ({
             reloadOnUpdate
           >
             {cars.id.map(index => (
-              <div
+              <Link
+                to={paths[index - 1]}
                 key={index}
                 className="Plate"
                 style={{ backgroundImage: `url(${cars.image[index - 1]})` }}
-              ></div>
+              ></Link>
             ))}
           </Flickity>
         </section>

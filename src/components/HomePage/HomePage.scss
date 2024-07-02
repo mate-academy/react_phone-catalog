@@ -253,7 +253,7 @@
   margin: 0 auto;
   background-size: cover;
   background-position: center;
-  cursor: auto;
+  cursor: pointer;
 
   @include on-tablet {
     height: 300px;
@@ -360,7 +360,7 @@
   }
 
   @media (min-width: 1200px) {
-    width: 272px;
+    width: 263px;
     height: 506px;
   }
 

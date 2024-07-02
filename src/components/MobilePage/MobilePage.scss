@@ -65,6 +65,7 @@
     background-image: url(../../images/Chevron.svg);
     width: 16px;
     height: 16px;
+    cursor: pointer;
 
     &--white {
       background-image: url(../../images/3432.svg);
@@ -85,6 +86,7 @@
     font-size: 12px;
     line-height: 15.34px;
     color: #75767F;
+    cursor: pointer;
 
     &--white {
       font-family: semiMont, sans-serif;
