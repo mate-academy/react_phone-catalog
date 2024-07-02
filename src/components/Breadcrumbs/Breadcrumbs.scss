@@ -1,0 +1,33 @@
+@import '../../styles/utils';
+
+.breadcrumbs {
+  padding-top: 24px;
+
+  &__list {
+    display: flex;
+    align-items: center;
+  }
+
+  &__link {
+    font-size: 12px;
+    line-height: 1.25;
+    align-self: center;
+    color: $color-primary;
+    text-transform: capitalize;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    &:last-child .breadcrumbs__link {
+      color: $color-secondary;
+    }
+
+    & .breadcrumbs__link:hover {
+      transition: all 0.3s ease-in-out;
+      color: $color-secondary-accent;
+      transform: scale(1.05);
+    }
+  }
+}

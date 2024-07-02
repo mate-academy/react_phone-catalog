@@ -1,0 +1,24 @@
+@import '../../styles/utils';
+
+.products-list {
+  @include page-grid;
+
+  gap: 40px 16px;
+
+  &__item {
+    width: 100%;
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @media (min-width: 900px) {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 6;
+    }
+  }
+}

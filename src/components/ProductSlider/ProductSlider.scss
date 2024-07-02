@@ -1,0 +1,57 @@
+@import '../../styles/utils';
+
+.product-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 21px;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $color-icons;
+    border-radius: 50%;
+    background-color: inherit;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+
+    &:disabled {
+      border-color: $color-element;
+      opacity: 0.5;
+      cursor: auto;
+    }
+  }
+
+  &__carousel {
+    overflow: hidden;
+    margin-inline: auto;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    padding: 0;
+    transition: transform 0.5s ease;
+  }
+}

@@ -1,1 +1,47 @@
-// not empty
+@import './styles/main';
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  &.dark {
+    background-color: $color-black-dark;
+
+    @import './styles/theme/dark';
+  }
+}
+
+main {
+  overflow: hidden;
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+
+  margin-bottom: auto;
+}
+
+body-text {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+  font-weight: 600;
+}
+
+.small-text {
+  font-size: 12px;
+}
+
+.container {
+  @include content-padding-inline;
+}

@@ -1,0 +1,594 @@
+// @import '../../styles/utils/vars';
+// @import '../../styles/utils/mixins';
+
+// h1,
+// h2,
+// h3,
+// h4 {
+//   color: $color-white-dark;
+// }
+
+// p,
+// a,
+// label {
+//   color: $color-secondary-dark;
+// }
+
+// .footer {
+//   background-color: $color-black-dark;
+
+//   box-shadow: 0 -1px 0 0 #323542;
+
+//   &__list {
+//     &--link {
+//       @include hover(color, $color-white-dark);
+//     }
+//   }
+
+//   &__button {
+//     background-color: inherit;
+//     color: $color-secondary;
+
+//     @include hover(color, $color-white-dark);
+
+//     &--top {
+//       border: none;
+
+//       @include hover(background-color, $color-icons-dark);
+
+//       transform: rotate(90deg);
+//     }
+//   }
+// }
+
+// .footer__button:hover {
+//   .footer__button--top {
+//     background-color: $color-icons-dark;
+//   }
+// }
+
+// .ShopByCategory {
+//   &__block {
+//     &--title {
+//       color: $color-white-dark;
+//     }
+
+//     &--models {
+//       color: $color-white-dark;
+//     }
+//   }
+// }
+
+// .block {
+//   &__phones {
+//     background-color: $color-category-phones;
+//   }
+//   &__tablets {
+//     background-color: $color-category-tablets;
+//   }
+//   &__accessories {
+//     background-color: $color-category-accessories;
+//   }
+// }
+
+// .navbar__mobile {
+//   background-color: $color-black-dark;
+//   &--menu {
+//     box-shadow: 0 1px 0 0 #323542;
+//   }
+
+//   &--buttons {
+//     box-shadow: 0 -1px 0 0 #323542;
+//   }
+// }
+
+// .navbar {
+//   background-color: $color-black-dark;
+//   box-shadow: 0 1px 0 0 #323542;
+
+//   &__menu {
+//     &--link {
+//       &::after {
+//         background-color: $color-white-dark;
+//       }
+
+//       &:hover::after {
+//         color: $color-white-dark;
+//       }
+
+//       @include hover(color, $color-white-dark);
+//     }
+//   }
+
+//   &__button {
+//     box-shadow: -1px 0 0 0 #323542;
+//     background-color: $color-black-dark;
+//   }
+// }
+
+// .active {
+//   color: $color-white-dark;
+
+//   &::after {
+//     background-color: $color-white-dark;
+//   }
+// }
+
+// .counter {
+//   color: $color-white-dark;
+//   background-color: $color-red;
+//   border-color: $color-black-dark;
+// }
+
+// .icon {
+//   &--menu {
+//     // background-image: url(../../styles/utils/icons/MenuDark.svg);
+//   }
+
+//   &--favourites {
+//     // background-image: url(../../styles/utils/icons/FavouritesDark.svg);
+//     &--selected {
+//       // background-image: url(../../styles/utils/icons/FavouritesDarkSel.svg);
+//     }
+//   }
+
+//   &--cart {
+//     // background-image: url(../../styles/utils/icons/CartDark.svg);
+//   }
+
+//   &--logo {
+//     // background-image: url(../../styles/utils/icons/LogoMobDark.svg);
+//   }
+
+//   &--close {
+//     // background-image: url(../../styles/utils/icons/CloseDark.svg);
+//   }
+
+//   &--home {
+//     // background-image: url(../../styles/utils/icons/homeDark.svg);
+//   }
+
+//   &--arrow {
+//     &-pagination {
+//       // background-image: url(../../styles/utils/icons/arrowDark.svg);
+//     }
+//   }
+
+//   &--remove {
+//     // background-image: url(../../styles/utils/icons/removeDark.svg);
+
+//     // @include hover(
+//     //   background-image,
+//     // url(../../styles/utils/icons/removeDarkHover.svg)
+//     // );
+//   }
+
+//   &--plus {
+//     // background-image: url(../../styles/utils/icons/plusDark.svg);
+
+//     &--disabled {
+//       // background-image: url(../../styles/utils/icons/plusDisabledDark.svg);
+//     }
+//   }
+
+//   &--minus {
+//     // background-image: url(../../styles/utils/icons/minusDark.svg);
+
+//     &--disabled {
+//       // background-image: url(../../styles/utils/icons/minusDisabledDark.svg);
+//     }
+//   }
+// }
+
+// .search {
+//   color: $color-secondary-dark;
+//   background-color: transparent;
+
+//   @include hover(color, $color-primary);
+
+//   &::placeholder {
+//     color: $color-secondary-dark;
+//   }
+
+//   &:focus::placeholder {
+//     color: $color-white-dark;
+//   }
+//   &:hover::placeholder {
+//     color: $color-white-dark;
+//   }
+
+//   &:focus {
+//     color: $color-white-dark;
+//   }
+// }
+
+// .productCard {
+//   background-color: $color-surface-1-dark;
+//   border: none;
+//   border-radius: 0;
+
+//   &__title {
+//     color: $color-white-dark;
+//   }
+
+//   &__price-block {
+//     &--fullprice {
+//       color: $color-secondary-dark;
+
+//       &::after {
+//         background-color: $color-secondary-dark;
+//       }
+//     }
+//   }
+
+//   &__specs {
+//     border-top: 1px solid $color-element-dark;
+
+//     &--spec {
+//       &--text {
+//         &-1 {
+//           color: $color-secondary-dark;
+//         }
+//         &-2 {
+//           color: $color-white-dark;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .DetailsPage {
+//   &__specs {
+//     &-block {
+//       &--text-block {
+//         &--text {
+//           color: $color-secondary-dark;
+//         }
+
+//         &--text-2 {
+//           color: $color-white-dark;
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .line {
+//   background-color: $color-element-dark;
+// }
+
+// .Main-Control {
+//   &__bottom {
+//     background-color: inherit;
+//   }
+// }
+
+// .select-capacity {
+//   &__title {
+//     color: $color-secondary-dark;
+//   }
+//   &__block {
+//     &--button {
+//       border-radius: 0;
+//       color: $color-white-dark;
+//       background-color: $color-black-dark;
+//       border-color: $color-icons-dark;
+
+//       @include hover(border-color, $color-white-dark);
+
+//       &--active {
+//         color: $color-black-dark;
+//         background-color: $color-white-dark;
+//         border-color: $color-white-dark;
+//       }
+//     }
+//   }
+// }
+
+// .colors {
+//   &__id {
+//     color: $color-icons-dark;
+//   }
+
+//   &__block {
+//     &--title {
+//       color: $color-secondary-dark;
+//     }
+
+//     &--colors {
+//       border-color: $color-element-dark;
+
+//       @include hover(border-color, $color-secondary-dark);
+
+//       &--active {
+//         border-color: $color-white-dark;
+//       }
+
+//       &--color {
+//         border-color: $color-black-dark;
+//       }
+//     }
+//   }
+// }
+
+// .ProductsPage {
+//   &__models-length {
+//     color: $color-secondary;
+//   }
+// }
+
+// .pagination {
+//   &__item {
+//     background-color: $color-surface-1-dark;
+//     border: none;
+//     border-radius: 0;
+//     color: $color-white-dark;
+
+//     @include hover(background-color, $color-element-dark);
+
+//     &--active {
+//       color: $color-white-dark;
+//       background-color: $color-accent-dark;
+//       border-color: $color-primary;
+//     }
+
+//     &--prev {
+//       background-color: $color-surface-2-dark;
+//     }
+
+//     &--next {
+//       background-color: $color-surface-2-dark;
+//     }
+//   }
+// }
+
+// .disabled {
+//   // background-image: url(../../styles/utils/icons/arrowDarkDis.svg);
+// }
+
+// .shoppingCart {
+//   &__total {
+//     border-radius: 0;
+//     border-color: $color-element-dark;
+
+//     &--line {
+//       background-color: $color-element-dark;
+//     }
+//   }
+// }
+
+// .ShoppingCart {
+//   background-color: $color-surface-1-dark;
+//   border: none;
+//   border-radius: 0;
+
+//   &__button-remove {
+//     background-color: transparent;
+//   }
+
+//   &__title {
+//     color: $color-white-dark;
+//   }
+
+//   &__counter {
+//     &--count {
+//       color: $color-white-dark;
+//     }
+
+//     &--button {
+//       border: none;
+//       border-radius: 0;
+//       border-color: $color-icons;
+//       background-color: $color-surface-2-dark;
+
+//       @include hover(background-color, $color-icons-dark);
+//     }
+//   }
+// }
+
+// .button--disabled {
+//   border: 1px solid $color-element-dark;
+//   background-color: transparent;
+
+//   @include hover(border-color, $color-icons-dark);
+//   @include hover(background-color, transparent);
+// }
+
+// .secondSlider {
+//   &__block {
+//     border-color: $color-border-img;
+
+//     @include hover(border-color, $color-primary);
+//   }
+
+//   .slick-current {
+//     .secondSlider__block {
+//       border-color: $color-primary;
+//     }
+//   }
+// }
+
+// .banner__slider {
+//   .slick-prev,
+//   .slick-next {
+//     border: none;
+//     border-radius: 0;
+//     background-color: $color-surface-2-dark;
+
+//     @include hover(background-color, $color-icons-dark);
+
+//     &::before {
+//       // background-image: url(../../styles/utils/icons/arrowDark.svg);
+//     }
+//   }
+
+//   .slick-dots {
+//     li {
+//       button {
+//         &::before {
+//           background-color: $color-element;
+//         }
+//       }
+
+//       &.slick-active {
+//         button {
+//           &::before {
+//             background-color: $color-white-dark;
+//           }
+//         }
+//       }
+//     }
+//   }
+// }
+
+// .custom-select {
+//   border-radius: 0;
+//   border-color: $color-surface-2-dark;
+//   background-color: $color-surface-2-dark;
+//   color: $color-white-dark;
+
+//   @include hover(border-color, $color-icons-dark);
+
+//   &--open {
+//     border-color: $color-accent-dark;
+
+//     @include hover(border-color, $color-accent-dark);
+//   }
+
+//   &__options {
+//     border-radius: 0;
+//     background-color: $color-black-dark;
+//     &--open {
+//       border-color: $color-element-dark;
+//     }
+//   }
+
+//   &__option {
+//     color: $color-secondary-dark;
+//     border-radius: 0;
+
+//     @include hover(color, $color-white-dark);
+//     @include hover(background-color, $color-surface-2-dark);
+//   }
+// }
+
+// .path {
+//   &__current-link {
+//     color: $color-secondary;
+//   }
+
+//   &__current-name {
+//     color: $color-secondary;
+//   }
+
+//   &__back {
+//     background-color: transparent;
+//     &--text {
+//       color: $color-secondary;
+//     }
+
+//     &:hover {
+//       .path__back--text {
+//         color: $color-primary;
+//       }
+//     }
+//   }
+// }
+
+// .button-primary {
+//   color: $color-white-dark;
+//   background-color: $color-accent-dark;
+//   border: none;
+//   border-radius: 0;
+
+//   @include hover(background-color, #a378ff);
+
+//   &--selected {
+//     color: $color-white-dark;
+//     background-color: $color-surface-2-dark;
+//     border-color: $color-element;
+//   }
+// }
+
+// .button-favourite {
+//   border: none;
+//   border-radius: 0;
+//   background-color: $color-surface-2-dark;
+//   // background-image: url(../../styles/utils/icons/FavouritesDark.svg);
+
+//   @include hover(background-color, $color-icons-dark);
+
+//   &--selected {
+//     // background-image: url(../../styles/utils/icons/FavouritesDarkSel.svg);
+//   }
+// }
+
+// .button-slider {
+//   border: none;
+//   background-color: $color-surface-2-dark;
+//   border-radius: 0;
+
+//   @include hover(background-color, $color-icons-dark);
+
+//   // background-image: url(../../styles/utils/icons/arrowDark.svg);
+
+//   &__disabled {
+//     // background-image: url(../../styles/utils/icons/arrowDarkDis.svg);
+//     border: 1px solid $color-element-dark;
+
+//     @include hover(border-color, $color-white-dark);
+//     @include hover(background-color, transparent);
+
+//     background-color: transparent;
+//   }
+
+//   &--prev {
+//     transform: rotate(0deg);
+//   }
+
+//   &--next {
+//     transform: rotate(180deg);
+//   }
+// }
+
+// .card-skeleton {
+//   background-color: $color-surface-1-dark;
+//   border: none;
+//   border-radius: 0;
+
+//   &__full-price {
+//     &::after {
+//       background-color: #f11a1a;
+//     }
+//   }
+
+//   &__specs {
+//     border-top: 1px solid $color-surface-2-dark;
+//   }
+// }
+
+// .skeleton {
+//   background-color: $color-surface-2-dark;
+// }
+
+// .modal {
+//   background-color: #a5a5a556;
+
+//   &__window {
+//     background-color: $color-element-dark;
+//     border-color: $color-icons-dark;
+//     box-shadow: 0 33px 30 0 #17203166;
+//   }
+
+//   &__buttons {
+//     gap: 10px;
+
+//     &--cancel {
+//       background-color: $color-red;
+//     }
+
+//     &--confirm {
+//       background-color: $color-green;
+//     }
+//   }
+// }

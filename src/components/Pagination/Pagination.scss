@@ -1,0 +1,70 @@
+@import '../../styles/utils';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  &__button {
+    width: 32px;
+    height: 32px;
+    background-color: white;
+    border: 1px solid $color-element;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    font-size: 14px;
+    line-height: 21px;
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid $color-primary;
+    }
+
+    &--prev {
+      margin-right: 8px;
+      background-image: url('../../../public/icons/Arrow.svg');
+      transform: rotate(270deg);
+      border-color: $color-secondary;
+
+      &--disabled {
+        background-image: url('../../../public/icons/Arrow-disabled.svg');
+        transform: rotate(270deg);
+        border-color: $color-element;
+
+        &:hover {
+          cursor: auto;
+        }
+      }
+    }
+
+    &--next {
+      margin-left: 8px;
+      background-image: url('../../../public/icons/Arrow.svg');
+      transform: rotate(90deg);
+      border-color: $color-secondary;
+
+      &--disabled {
+        background-image: url('../../../public/icons/Arrow-disabled.svg');
+        transform: rotate(90deg);
+        border: 1px solid $color-secondary;
+
+        &:hover {
+          cursor: auto;
+          border: 1px solid $color-primary;
+        }
+      }
+    }
+  }
+
+  &__dots {
+    display: flex;
+    align-items: flex-end;
+  }
+
+  &__active {
+    background-color: $color-primary;
+    color: white;
+    border: none;
+  }
+}

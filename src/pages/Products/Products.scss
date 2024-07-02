@@ -1,0 +1,27 @@
+@import '../../styles/utils';
+
+.products {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__amount {
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+  }
+}
+
+.loading {
+  display: flex;
+  gap: 16px;
+}

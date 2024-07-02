@@ -1,0 +1,207 @@
+@import '../../styles/utils';
+
+.product {
+  width: 212px;
+  height: 440px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 32px;
+  border: 1px solid $color-element;
+  border-radius: $border-radius;
+
+  @include on-tablet {
+    width: 237px;
+    height: 506px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    max-height: 196px;
+    object-fit: contain;
+    align-self: center;
+
+    @include hover(transform, scale(1.1));
+  }
+
+  &__title {
+    padding-top: 16px;
+    height: 63px;
+
+    @include on-tablet {
+      height: auto;
+    }
+  }
+
+  &__price-container {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__full-price {
+    position: relative;
+    font-size: 22px;
+    text-decoration: line-through;
+    color: $color-secondary;
+    font-weight: normal;
+  }
+
+  &__specs {
+    border-top: 1px solid $color-element;
+    padding-block: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &-text {
+      color: $color-secondary;
+      line-height: 1.25;
+      font-size: 12px;
+
+      &--2 {
+        font-weight: 700;
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+}
+
+.card-skeleton {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 8px;
+  background-color: #fff;
+  width: 212px;
+  padding: 32px;
+  border: 1px solid #e2e6e9;
+  border-radius: 8px;
+
+  @include on-tablet {
+    width: 237px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &__img {
+    width: 120px;
+    height: 196px;
+  }
+
+  &__title {
+    height: 20px;
+    width: 60%;
+  }
+
+  &__price-block {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    width: 100%;
+    height: 20px;
+  }
+
+  &__full-price {
+    width: 100%;
+
+    height: 20px;
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background-color: #ccc;
+    }
+  }
+
+  &__specs {
+    border-top: 1px solid #e2e6e9;
+    padding-top: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+
+    &-text-1 {
+      width: 100%;
+      height: 16px;
+    }
+
+    &-text-2 {
+      width: 100%;
+      height: 16px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__button-add {
+    width: 100%;
+    height: 32px;
+    border-radius: 4px;
+  }
+
+  &__button-favorite {
+    width: 100%;
+    height: 32px;
+    border-radius: 50%;
+  }
+}
+
+.skeleton {
+  background-color: #f0f0f0;
+  animation: pulse 1s infinite;
+
+  --c-w: 100% !important;
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 1;
+  }
+}

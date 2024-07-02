@@ -1,0 +1,63 @@
+@import '../../styles/utils';
+
+.filters {
+  @include page-grid;
+
+  row-gap: 16px;
+  position: relative;
+  align-items: end;
+
+  &__sort {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+  }
+
+  &__on-page {
+    position: relative;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 3;
+    }
+  }
+
+  &__search {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 5;
+    }
+  }
+}
+
+.search {
+  height: 40px;
+  border: 1px solid $color-icons;
+  box-sizing: border-box;
+  padding: 10px;
+  border-radius: $border-radius;
+  font-size: 14px;
+  line-height: 21px;
+
+  &:hover {
+    border: 1px solid $color-secondary;
+  }
+
+  &:focus {
+    outline: none;
+    border: 1px solid $color-primary;
+  }
+
+  &::-webkit-search-cancel-button {
+    appearance: none;
+    width: 16px;
+    height: 16px;
+    background-image: url(../../../public/icons/Close.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+  }
+}

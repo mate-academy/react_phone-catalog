@@ -1,0 +1,43 @@
+html {
+  font-family: Mont, Arial, sans-serif;
+  color: $color-primary;
+  scroll-behavior: smooth;
+}
+
+body,
+input,
+a,
+textarea,
+button,
+p,
+ul,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+strong {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border: none;
+  text-decoration: none;
+}
+
+a {
+  display: flex;
+  cursor: pointer;
+  border: none;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  resize: none;
+  text-decoration: none;
+  color: $color-primary;
+}
+
+body * {
+  box-sizing: border-box;
+}

@@ -1,0 +1,20 @@
+@import '../../styles/utils';
+
+.logo {
+  padding: 13px 16px;
+  display: flex;
+
+  @include on-desktop {
+    padding: 18px 24px;
+  }
+
+  &__image {
+    height: 22px;
+    width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+}

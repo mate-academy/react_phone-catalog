@@ -1,0 +1,31 @@
+@import '../../../styles/utils';
+
+.purchases {
+  display: none;
+  grid-template-columns: 1fr 1fr;
+  box-shadow: 0 -1px 0 0 $color-element;
+
+  @include on-tablet {
+    display: grid;
+  }
+
+  &--mobile {
+    display: grid;
+  }
+}
+
+.counter {
+  position: absolute;
+  top: 0;
+  right: 0;
+  box-sizing: border-box;
+  width: 14px;
+  height: 14px;
+  background-color: $color-accent;
+  color: $color-white;
+  border-radius: 50%;
+  font-size: 9px;
+  line-height: 11.5px;
+  text-align: center;
+  border: 1px solid;
+}

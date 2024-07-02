@@ -1,0 +1,24 @@
+@import '../../styles/utils';
+
+.not-found {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  gap: 30px;
+  padding-block: 24px;
+
+  @include content-padding-inline;
+
+  &__title {
+    @extend %h1;
+  }
+
+  &__image {
+    width: 60%;
+
+    @include on-tablet {
+      width: 50%;
+    }
+  }
+}

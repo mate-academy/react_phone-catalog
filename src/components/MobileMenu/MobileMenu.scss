@@ -1,0 +1,37 @@
+@import '../../styles/utils';
+
+.menu {
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  min-width: 320px;
+
+  position: fixed;
+  inset: 0;
+  transition: transform 0.3s ease;
+  z-index: 2;
+  transform: translateX(-100%);
+
+  &--open {
+    transform: translateX(0);
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 1px 0 0 $color-element;
+  }
+
+  &__nav {
+    display: flex;
+    align-self: center;
+    text-align: left;
+  }
+
+  &__buttons {
+    margin-top: auto;
+    display: grid;
+  }
+}

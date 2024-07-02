@@ -1,0 +1,123 @@
+@import '../../styles/utils';
+
+.header * {
+  box-sizing: border-box;
+}
+
+.header {
+  position: fixed;
+  background-color: white;
+  z-index: 2;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 1px 0 0 $color-element;
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__right {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+}
+
+// .header {
+//   @include page-grid;
+
+//   position: relative;
+
+//   &__top {
+//     grid-column: 1 / -1;
+//   }
+
+//   &__hero {
+//     grid-column: 1 / -1;
+//   }
+
+//   &__bottom {
+//     display: none;
+//     grid-column: 1 / -1;
+
+//     @include on-desktop {
+//       display: flex;
+//       justify-content: space-between;
+//       align-items: flex-start;
+//       font-weight: 500;
+//       margin-bottom: 84px;
+//     }
+
+//     @include on-large-desktop {
+//       margin-bottom: 107px;
+//     }
+
+//     &-link {
+//       color: $white-color;
+
+//       &:hover {
+//         color: $accent-color;
+//       }
+//     }
+//   }
+
+//   &__questions {
+//     display: flex;
+//     gap: 40px;
+//   }
+
+//   &__slider {
+//     display: none;
+
+//     @include on-desktop {
+//       width: 207px;
+//       display: flex;
+//       gap: 103px;
+//       padding-bottom: 10px;
+//       border-bottom: 1px solid #212121;
+//     }
+
+//     &-active {
+//       position: relative;
+
+//       &::after {
+//         content: '';
+//         display: block;
+//         position: absolute;
+//         width: 100%;
+//         height: 1px;
+//         bottom: -11px;
+//         background-color: $accent-color;
+//       }
+//     }
+//   }
+
+//   &__button {
+//     width: 280px;
+//     position: fixed;
+//     bottom: 20px;
+//     left: 50%;
+//     transform: translateX(-50%);
+//     z-index: 1;
+
+//     @include on-tablet {
+//       width: 460px;
+//     }
+
+//     @include on-desktop {
+//       display: none;
+//     }
+//   }
+// }

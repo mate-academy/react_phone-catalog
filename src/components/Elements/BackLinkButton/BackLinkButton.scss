@@ -1,0 +1,17 @@
+@import '../../../styles/utils';
+
+.link-back {
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  background-color: inherit;
+  border: none;
+  gap: 4px;
+  color: $color-secondary;
+  font-size: 12px;
+  line-height: 1.25;
+
+  &:hover {
+    color: $color-primary;
+  }
+}
