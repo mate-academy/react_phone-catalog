@@ -105,7 +105,6 @@
 
   &__availableColors {
     display: flex;
-    // justify-content: space-between;
     gap: 13px;
     padding-bottom: 24px;
   }
@@ -127,6 +126,14 @@
       border-radius: 50%;
       border: 1px solid $circleDefaultColor;
     }
+
+    &:hover::after {
+      border-color: $circleHoverColor;
+    }
+  }
+
+  .product__active::after {
+    border-color: $circleActiveColor;
   }
 
   &__line {

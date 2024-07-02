@@ -23,31 +23,15 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
   const [image, setImage] = useState('');
-  const [color, setColor] = useState('');
 
   useEffect(() => {
     async function fetchData() {
       let response = await getPhones(type);
-      let changesColorIds = '';
-      if (response) {
-        for (let key in AvailableColors) {
-          const splitProductIds = productId?.split('-');
-          if (splitProductIds?.join(' ').includes(key)) {
-            let convertToIds = splitProductIds.join(' ');
-            changesColorIds = convertToIds
-              .replaceAll(key, color)
-              .split(' ')
-              .join('-');
-          }
-        }
 
-        let detailsProduct = response.find(item => {
-          if (color && productId) {
-            return item.id === changesColorIds;
-          } else {
-            return item.id === productId;
-          }
-        });
+      let detailsProduct;
+
+      if (response) {
+        detailsProduct = response.find(item => item.id === productId);
 
         if (detailsProduct) {
           setCategoryProduct(detailsProduct);
@@ -57,22 +41,23 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     }
 
     fetchData();
-  }, [type, color, productId]);
+  }, [type, productId]);
 
   if (!categoryProduct) {
     return <div>Loading...</div>;
   }
+
   const {
-    id,
+    // id,
     // category,
     // namespaceId,
     name,
     capacityAvailable,
-    // capacity,
+    capacity,
     priceRegular,
     priceDiscount,
     colorsAvailable,
-    // color,
+    color,
     images,
     // description,
     screen,
@@ -84,7 +69,16 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     // cell,
   } = categoryProduct;
 
-  console.log(id);
+  function changeIdsParams(replaceItem: string, onNewItem: string) {
+    const newProductIds = productId
+      ?.split('-')
+      .join(' ')
+      .replace(replaceItem.toLowerCase(), onNewItem.toLowerCase())
+      .split(' ')
+      .join('-');
+
+    return newProductIds;
+  }
 
   return (
     <div
@@ -127,19 +121,21 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
           <p className={style.product__ids}>ID: 802390</p>
 
           <div className={style.product__availableColors}>
-            {colorsAvailable.map(color => {
+            {colorsAvailable.map(currentColor => {
               const colorNew = {
                 backgroundColor:
-                  AvailableColors[color as keyof typeof AvailableColors],
+                  AvailableColors[currentColor as keyof typeof AvailableColors],
               };
 
+              const newColorIds = changeIdsParams(color, currentColor);
               return (
                 <Link
-                  to={`../${id}`}
-                  key={color}
-                  className={style.product__colorParam}
+                  to={`../${newColorIds}`}
+                  key={currentColor}
+                  className={classNames(style.product__colorParam, {
+                    [style.product__active]: currentColor === color,
+                  })}
                   style={colorNew}
-                  onClick={() => setColor(color)}
                 ></Link>
               );
             })}
@@ -150,15 +146,19 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
           <div className={style.product__capacityBlock}>
             <p className={style.product__namesParams}>Select capacity</p>
             <div className={style.product__capacityList}>
-              {capacityAvailable.map(item => (
-                <Link
-                  to={'../'}
-                  className={style.product__capacityLink}
-                  key={item}
-                >
-                  {item}
-                </Link>
-              ))}
+              {capacityAvailable.map(item => {
+                const newCapacityIds = changeIdsParams(capacity, item);
+
+                return (
+                  <Link
+                    to={`../${newCapacityIds}`}
+                    className={style.product__capacityLink}
+                    key={item}
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
             </div>
           </div>
           <span className={style.product__line} />

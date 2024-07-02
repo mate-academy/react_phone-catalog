@@ -43,10 +43,11 @@
   --breadCrubsLastNonActiveItem: #89939a;
   --backHoverBtn: #313237;
   --circleDefaultColor: #e2e6e9;
+  --circleHoverColor: #b4bdc3;
   --circleActiveColor: #313237;
   --detailsDivideLine: #e2e6e9;
   --borderCapacityColor: #b4bdc3;
-  --idsTextColor: #B4BDC3;
+  --idsTextColor: #b4bdc3;
   // touch-action: none;
 }
 
@@ -84,10 +85,11 @@
   --breadCrubsLastNonActiveItem: #75767f;
   --backHoverBtn: #905bff;
   --circleDefaultColor: #3b3e4a;
+  --circleHoverColor: #75767f;
   --circleActiveColor: #f1f2f9;
   --detailsDivideLine: #3b3e4a;
   --borderCapacityColor: #4a4d58;
-  --idsTextColor: #4A4D58;
+  --idsTextColor: #4a4d58;
   color: $text-color;
   background-color: $background-color;
 }
