@@ -22,7 +22,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   const navigate = useNavigate();
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
-  const [image, setImage] = useState('');
+  const [imageState, setImage] = useState('');
 
   useEffect(() => {
     async function fetchData() {
@@ -97,7 +97,12 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       <div className={style.product__gridContainer}>
         <ul className={style.product__imagesList}>
           {images.map(image => (
-            <li className={style.product__imageItem} key={image}>
+            <li
+              className={classNames(style.product__borderImage, {
+                [style.product__activeBorderImage]: imageState === image,
+              })}
+              key={image}
+            >
               <button
                 className={style.product__buttonForImage}
                 onClick={() => setImage(image)}
@@ -113,7 +118,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
         </ul>
 
         <div className={style.product__mainImageWrapper}>
-          <img src={image} alt="Gadget" className={style.product__mainImage} />
+          <img
+            src={imageState}
+            alt="Gadget"
+            className={style.product__mainImage}
+          />
         </div>
 
         <div className={style.product__paramsContainer}>

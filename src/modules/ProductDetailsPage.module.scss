@@ -56,10 +56,14 @@
     grid-column: 1 / 3;
   }
 
-  &__imageItem {
+  &__borderImage {
     display: flex;
     justify-content: center;
     margin-bottom: 16px;
+    border: 1px solid $border-color;
+    width: 80px;
+    height: 80px;
+    margin: 0;
   }
 
   &__buttonForImage {
@@ -69,6 +73,10 @@
     border: none;
     background-color: $background-color;
     cursor: pointer;
+  }
+
+  &__activeBorderImage {
+    border-color: $borderActiveColor;
   }
 
   &__smallImage {
@@ -259,13 +267,6 @@
     font-weight: 700;
     line-height: 15px;
     right: 0px;
-  }
-
-  &__imageItem {
-    border: 1px solid $border-color;
-    width: 80px;
-    height: 80px;
-    margin: 0;
   }
 }
 
