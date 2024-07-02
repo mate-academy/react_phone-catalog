@@ -2,8 +2,8 @@ import { Link, useLocation } from 'react-router-dom';
 import './BurgerMenu.scss';
 import { useEffect, useState } from 'react';
 import classNames from 'classnames';
-import CrossImg from '../../images/icons/Cross.png';
-import FavoritesIcon from '../../images/icons/Favourites (Heart Like).svg';
+import CrossImg from '../../images/icons/Close.svg';
+import FavoritesIcon from '../../images/icons/Favourites_Heart.svg';
 import CardIcon from '../../images/icons/Shopping bag (Cart).svg';
 
 export const BurgerMenu = () => {
@@ -80,7 +80,7 @@ export const BurgerMenu = () => {
               })}
               onClick={() => setIsActive(false)}
             >
-              <button type="button">
+              <button type="button" className="burgerMenu__buttonFooter">
                 <img src={FavoritesIcon} alt="favorite icon" />
               </button>
             </Link>
@@ -96,7 +96,7 @@ export const BurgerMenu = () => {
               )}
               onClick={() => setIsActive(false)}
             >
-              <button type="button">
+              <button type="button" className="burgerMenu__buttonFooter">
                 <img src={CardIcon} alt="favorite icon" />
               </button>
             </Link>

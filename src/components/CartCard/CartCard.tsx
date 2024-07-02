@@ -1,7 +1,7 @@
 import './cartCard.scss';
 import React from 'react';
 import classNames from 'classnames';
-import Cros from '../../images/icons/close.png';
+import Cros from '../../images/icons/Close.svg';
 import Minus from '../../images/icons/minus.png';
 import MinusDisabled from '../../images/icons/minus disabled.png';
 import Plus from '../../images/icons/plus.png';

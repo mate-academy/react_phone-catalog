@@ -32,7 +32,9 @@ export const Header = () => {
   const { favorites } = useContext(FavoritesContext);
   const { theme } = useContext(ColorThemeContext);
   const cart = useAppSelector(state => state.cart);
-  const totalItemsInCart = cart.cartItems.length;
+  const totalItemsInCart = cart.cartItems
+    .map(item => item.itemCount)
+    .reduce((a, b) => a + b, 0);
 
   const sliderWidth = useWindowSize();
 

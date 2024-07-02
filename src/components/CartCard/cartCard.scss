@@ -9,7 +9,7 @@
     border: 1px solid #E2E6E9;
     border-radius: 16px;
     padding: 24px;
-    background-color: #fff;
+    background-color: var(--color-backgroundheaderfooter);
 
     @include phone {
       height: 160px;
@@ -20,7 +20,7 @@
 
     &__cross {
       margin-right: 34px;
-      background-color: #fff;
+      background-color: var(--color-backgroundheaderfooter);
     }
 
     &__imgContainer {
@@ -43,7 +43,12 @@
       font-weight: 500;
       font-size: 14px;
       line-height: 21px;
-      color: #313237;
+      color: var(--color-primary);
+
+      @include tablet {
+        width: 176px;
+        font-weight: 600;
+      }
 
       @include phone {
         font-weight: 600;
