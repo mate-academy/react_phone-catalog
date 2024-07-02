@@ -42,6 +42,7 @@ export const ProductPage: React.FC = React.memo(() => {
   const [errorLoadedDevice, setErrorLoadedDevice] = useState(false);
   const [updatedDevice, setUpdatedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
+  const [errorSuggestedProduct, setErrorSuggestedProduct] = useState(false);
 
   const heightPreview = useRef<HTMLDivElement>(null);
 
@@ -117,8 +118,11 @@ export const ProductPage: React.FC = React.memo(() => {
         setLoadedSuggestedProduct(true);
         setProduct(thisProduct);
       })
-      .catch(() => {}); // setError
+      .catch(() => setErrorSuggestedProduct(true));
   }, [nameDevice]);
+
+  const visibleSuggestedProducts =
+    loadedSuggestedProduct && !errorLoadedDevice && !errorSuggestedProduct;
 
   return (
     <div className="product-page">
@@ -240,7 +244,7 @@ export const ProductPage: React.FC = React.memo(() => {
         </div>
       )}
 
-      {loadedSuggestedProduct && !errorLoadedDevice && (
+      {visibleSuggestedProducts && (
         <ProductListCarousel
           title="You may also like"
           products={suggestedProducts}

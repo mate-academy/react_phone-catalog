@@ -30,7 +30,10 @@ export const Header: React.FC = React.memo(() => {
   const { favouritesList } = useContext(FavoutitesContext);
 
   const { pathname } = useLocation();
-  const category = pathname.slice(1);
+  const category =
+    pathname.slice(1) === 'phones' ||
+    pathname.slice(1) === 'tablets' ||
+    pathname.slice(1) === 'accessories';
   const isProductPage = pathname.split('/')[2];
 
   return (

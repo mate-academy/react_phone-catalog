@@ -1,3 +1,4 @@
+/* eslint-disable max-len */
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { MoveButton as MoveUp } from '../shared/Buttons/MoveButtons';
@@ -26,7 +27,11 @@ export const Footer = React.memo(() => {
             Github
           </Link>
 
-          <Link to="/" className="footer__nav-item navigation-title">
+          <Link
+            to="https://www.linkedin.com/in/%D1%96%D0%B2%D0%B0%D0%BD-%D1%88%D0%B0%D0%BC%D0%BA%D1%96%D0%B9-027734145/"
+            target="_blank"
+            className="footer__nav-item navigation-title"
+          >
             Contacts
           </Link>
 
