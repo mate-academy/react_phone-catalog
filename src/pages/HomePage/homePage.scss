@@ -1,0 +1,18 @@
+@import '../../styles/main';
+
+.homePage {
+  &__title {
+    @extend %page-names;
+
+    color: var(--color-primary);
+    margin-bottom: 56px;
+
+    @include tablet {
+      margin-bottom: 32px;
+    }
+
+    @include phone {
+      margin-bottom: 24px;
+    }
+  }
+}

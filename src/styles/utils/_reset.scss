@@ -1,0 +1,44 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ul,
+li {
+  margin: 0;
+}
+
+body {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style-type: none;
+}
+
+input {
+  display: block;
+  border: none;
+  padding: 0;
+  outline: none;
+  border-radius: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
