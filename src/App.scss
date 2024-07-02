@@ -1,1 +1,26 @@
 // not empty
+@font-face {
+  font-family: Mont;
+  src: url('../public/fonts/Mont-Bold.otf');
+}
+
+@font-face {
+  font-family: regularMont;
+  src: url('../public/fonts/Mont-Regular.otf');
+}
+
+@font-face {
+  font-family: semiMont;
+  src: url('../public/fonts/Mont-SemiBold.otf');
+}
+
+body {
+  margin: 0;
+  background-color: #0F1121;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
