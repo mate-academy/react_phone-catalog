@@ -1,0 +1,88 @@
+.menu {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #3B3E4A;
+  width: 100%;
+  padding: 0 0 0 16px;
+  box-sizing: border-box;
+
+  &__logo {
+    background-image: url(../../images/LogoMobile.svg);
+    width: 64px;
+    height: 22px;
+  }
+
+  &__close {
+    background-image: url(../../images/Close.svg);
+    box-sizing: border-box;
+    border-left: 1px solid #3B3E4A;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 48px;
+    height: 48px;
+  }
+}
+
+.choice {
+  display: flex;
+  justify-content: center;
+  margin: 24px 16px 0;
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  &__item {
+    text-align: center;
+    margin-top: 32px;
+    text-transform: uppercase;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+  }
+
+  &__item:first-child {
+    margin-top: 0;
+  }
+
+  &__href {
+    color: #75767F;
+    text-decoration: none;
+  }
+}
+
+.control {
+  display: flex;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: fixed;
+  border-top: 1px solid #3B3E4A;
+
+  &__like {
+    width: 100%;
+    height: 64px;
+    background-image: url('../../images/Favourites\ \(Heart\ Like\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-right: 1px solid #3B3E4A;
+  }
+
+  &__backpack {
+    width: 100%;
+    height: 64px;
+    background-image: url('../../images/Shopping\ bag\ \(Cart\).svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    border-left: 1px solid #3B3E4A;
+  }
+
+  &__href {
+    width: 50%;
+  }
+}
