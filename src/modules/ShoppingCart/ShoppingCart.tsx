@@ -5,6 +5,7 @@ import { ShoppingItem } from './ShoppingItem';
 import { BackButton } from '../shared/Buttons/MoveButtons';
 import { CartItem } from '../../types/CartItem';
 import { ModalWindowContext } from '../../store/ModalWindowContext';
+import { BASE_URL } from "../constants/URL's/URL's";
 
 export const ShoppingCart = React.memo(() => {
   const { shoppingList } = useContext(ShoppingCartContext);
@@ -46,7 +47,10 @@ export const ShoppingCart = React.memo(() => {
             <h2 className="shopping-cart__total-price">${totalPrice}</h2>
 
             <p className="shopping-cart__total-items">
-              Total for {shoppingList.length} items
+              Total for{' '}
+              {shoppingList.length === 1
+                ? '1 item'
+                : `${shoppingList.length} items`}
             </p>
 
             <button
@@ -61,7 +65,7 @@ export const ShoppingCart = React.memo(() => {
       ) : (
         <div className="shopping-cart__empty">
           <img
-            src="/img/cart-is-empty.png"
+            src={`${BASE_URL}/img/cart-is-empty.png`}
             alt="Empty cart"
             className="shopping-cart__empty-img"
           />

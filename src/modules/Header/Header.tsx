@@ -69,9 +69,14 @@ export const Header: React.FC = React.memo(() => {
           {!!category && !isProductPage && <SearchForm />}
         </div>
 
-        <div className="header__switch-theme">
+        <button
+          type="button"
+          className="header__switch-theme"
+          // eslint-disable-next-line no-alert
+          onClick={() => alert('switch theme not implemented yet')}
+        >
           <div className="header__switcher" />
-        </div>
+        </button>
 
         <div className="header__navbar-icons">
           <NavLink to="favourites" className={getLinkClassCart}>
