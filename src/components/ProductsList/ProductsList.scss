@@ -1,0 +1,46 @@
+@import '../../styles/common';
+
+.products {
+  @include page-grid;
+
+  &__form {
+    @include page-grid;
+
+    grid-column: 1 / -1;
+    margin-bottom: 24px;
+  }
+
+  &__product {
+    @include page-grid;
+    
+    grid-column: 1 / -1;
+    gap: 40px;
+  }
+}
+
+.selection-field {
+    grid-column: span 2;
+    display: flex;
+    flex-direction: column;
+
+  &__label {
+    color: $light-grey-color;
+    font-size: 12px;
+    line-height: 15.34px;
+    margin-bottom: 4px;
+  }
+
+  &__sort,
+  &__pag
+   {
+    width: 136px;
+    height: 40px;
+    color: $main-white-color;
+    background-color: $button-grey-color;
+    border: none;
+    padding: 10px 12px 9px;
+    font-size: 14px;
+    line-height: 21px;
+  }
+}
+

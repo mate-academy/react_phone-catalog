@@ -1,0 +1,78 @@
+@import '../../styles/common';
+
+.product-details {
+  @include page-grid;
+
+  &__active {
+    display: flex;
+    align-items: center;
+    padding-top: 72px;
+    gap: 8px;
+    margin-bottom: $margin-bottom-mobile;
+    overflow: hidden;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    &--link {
+      cursor: pointer;
+    }
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--cat {
+      color: $main-white-color;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+
+    &--name {
+      color: $light-grey-color;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+    margin-bottom: 16px;
+    grid-column: 1 / -1;
+
+    &--arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 16px;
+      height: 16px;
+    }
+
+    &--text {
+      color: $main-white-color;
+      font-size: 12px;
+      font-weight: 500;
+      line-height: 15.34px;
+    }
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+  }
+}

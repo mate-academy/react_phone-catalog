@@ -1,0 +1,115 @@
+@import '../../styles/common';
+
+.product-card {
+  padding: 32px;
+  background-color: $card-bgc;
+  grid-column: span 4;
+  height: 440px;
+
+  &__img-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 223px;
+    height: 130px;
+    margin-bottom: $margin-bottom-mobile;
+
+    &--img {
+      height: 100%;
+    }
+  }
+
+  &__title-link {
+    &--title {
+      padding-bottom: 8px;
+      color: $main-white-color;
+      font-size: 14px;
+      line-height: 21px;
+      letter-spacing: 0.02em;
+    }
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+    padding-bottom: 8px;
+    margin-bottom: 8px;
+    border-bottom: 1px solid #3B3E4A;
+
+    &--regular {
+      color: $main-white-color;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+      letter-spacing: 0.01em;
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 8px;
+    padding: 8px 0;
+
+    &--item {
+      display: flex;
+      justify-content: space-between;
+    }
+  }
+
+  &__btn {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+
+    &--add {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: $button-purpul-color;
+      border: none;
+      width: 176px;
+      height: 40px;
+      color: $main-white-color;
+      font-family: inherit;
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 21px;
+    }
+
+    &--heart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: $button-grey-color;
+      border: none;
+    }
+  }
+}
+
+.product-list-item {
+  &__name {
+    color: $light-grey-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+
+  &__param {
+    color: $main-white-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+}
+
+.price-disc {
+  color: $light-grey-color;
+  text-decoration: line-through;
+  font-size: 22px;
+  line-height: 28.12px;
+  letter-spacing: 0.01em;
+}
