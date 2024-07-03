@@ -14,15 +14,23 @@
 
   @include for-tablet {
     margin: 0 7px 7px 0;
+    padding: 0 15px;
+    height: 512px;
   }
 
   &__picture {
     margin: auto;
-    width: 125px;
+    width: 130px;
     height: 148px;
+    margin-bottom: 8px;
 
     &:hover {
       scale: 110%;
+    }
+
+    @include for-tablet {
+      height: 190px;
+      margin-bottom: 16px;
     }
   }
 

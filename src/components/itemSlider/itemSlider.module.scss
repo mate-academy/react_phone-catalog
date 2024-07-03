@@ -13,6 +13,11 @@
     @include for-tablet {
       width: 600px;
     }
+
+    @include for-desktop {
+      width: 1200px;
+      margin: 0 24px 24px;
+    }
   }
 
   &__title {
@@ -24,6 +29,11 @@
     @include for-tablet {
       width: 450px;
       font-size: 32px;
+    }
+
+    @include for-desktop {
+      width: 1100px;
+
     }
   }
 
@@ -63,5 +73,6 @@
   &__slider {
     display: flex;
     width: 440px;
+    margin-left: 24px;
   }
 }

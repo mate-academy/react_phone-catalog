@@ -46,52 +46,71 @@ export const SectionDashSlider: React.FC = () => {
     setActive(number);
   };
 
+  const handleNext = () => {
+    setActive(prevState => (prevState + 1) % totalPictureNumber);
+  };
+
+  const handlePrev = () => {
+    setActive(prevState =>
+      prevState > 0 ? prevState - 1 : totalPictureNumber - 1,
+    );
+  };
+
   return (
-    <section className={Styles['slider']}>
-      <h1 className={Styles['slider__title']}>
+    <>
+      <h1 className={Styles.title}>
         Welcome to Nice Gadgets store!
       </h1>
 
-      {isTablet &&
-      (<div>
-        <img src="" alt="" />
-      </div>)}
+      <section className={Styles['slider']}>
+        {/* <h1 className={Styles['title']}>
+      Welcome to Nice Gadgets store!
+    </h1> */}
 
-      <div
-        onTouchStart={handlerTouchStart}
-        onTouchEnd={handlerTouchEnd}
-        onTouchMove={handlerTouchMove}
-        className={Styles['slider__container']}
-        style={{
-          transform: `translateX(-${active * 100}%)`,
-          transition: 'transform 0.5s ease-in-out',
-        }}
-      >
-        {array.map(item => {
-          return (
-            <img
-              key={item}
-              className={`${Styles.slider__pic}`}
-              src={`./img/phones/apple-iphone-14-pro/spaceblack/0${item}.webp`}
-              alt={`Gadget ${item + 1}`}
-            />
-          );
-        })}
-      </div>
+        {isTablet && (
+          <div onClick={handleNext} className={Styles.slider__right}></div>
+        )}
 
-      <div className={Styles.slider__picker}>
-        {array.map(item => {
-          return (
-            <div
-              key={item}
-              onClick={() => handlerPicker(item)}
-              className={cn(Styles.slider__picker__dash, {
-                [Styles.slider__picker__dash__selected]: item === active,
-              })}
-            ></div>
-          );
-        })}
-      </div>
-    </section>
+        <div
+          onTouchStart={handlerTouchStart}
+          onTouchEnd={handlerTouchEnd}
+          onTouchMove={handlerTouchMove}
+          className={Styles['slider__container']}
+          style={{
+            transform: `translateX(-${active * 100}%)`,
+            transition: 'transform 0.5s ease-in-out',
+          }}
+        >
+          {array.map(item => {
+            return (
+              <img
+                key={item}
+                className={`${Styles.slider__pic}`}
+                src={`./img/phones/apple-iphone-14-pro/spaceblack/0${item}.webp`}
+                alt={`Gadget ${item + 1}`}
+              />
+            );
+          })}
+        </div>
+
+        {isTablet && (
+          <div onClick={handlePrev} className={Styles.slider__left}></div>
+        )}
+
+        <div className={Styles.slider__picker}>
+          {array.map(item => {
+            return (
+              <div
+                key={item}
+                onClick={() => handlerPicker(item)}
+                className={cn(Styles.slider__picker__dash, {
+                  [Styles.slider__picker__dash__selected]: item === active,
+                })}
+              ></div>
+            );
+          })}
+        </div>
+      </section>
+    </>
   );
 };

@@ -1,3 +1,21 @@
+@use '../../../utils/mixins' as *;
+
+.title {
+  color: #313237;
+  font-family: Montserrat, sans-serif;
+  font-weight: 800;
+  font-size: 32px;
+  width: 100%;
+  text-align: center;
+
+  @include for-tablet {
+    font-size: 48px;
+    line-height: 56px;
+    text-align: left;
+    margin-left: 24px;
+  }
+}
+
 .slider {
   overflow: hidden;
   width: 320px;
@@ -7,19 +25,67 @@
   align-items: center;
   align-content: center;
 
-  &__title {
-    color: #313237;
-    font-family: Montserrat, sans-serif;
-    font-weight: 800;
-    font-size: 32px;
+  &__left {
+    background-image: url(../../../../public/img/svg/arrow_left.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    width: 32px;
+    height: 250px;
+    border: 1px solid #B4BDC3;
+    position: absolute;
+    top: 150px;
+    left: 100px;
 
+    &:active {
+      background-image: url(../../../../public/img/svg/arrow_left_active.svg);
+    }
+
+    @include for-tablet {
+      top: 225px;
+    }
+  }
+
+  &__right {
+    background-image: url(../../../../public/img/svg/arrow_right.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+    width: 32px;
+    height: 250px;
+    border: 1px solid #B4BDC3;
+    position: absolute;
+    top: 150px;
+    right: 100px;
+
+    &:active {
+      background-image: url(../../../../public/img/svg/arrow_right_active.svg);
+    }
+
+    @include for-tablet {
+      top: 225px;
+    }
+
+    @include for-desktop {
+      top: 160px;
+    }
   }
 
   &__container {
     display: flex;
     width: 320px;
     height: 352px;
-    margin: auto;
+    margin-bottom: 5px;
+
+    @include for-tablet {
+      margin-bottom: 10px;
+      width: 500px;
+      height: 500px;
+    }
+
+    @include for-desktop {
+      top: 160px;
+    }
   }
 
   &__pic {

@@ -1,8 +1,12 @@
+@use '../../utils/mixins' as *;
+
 .skeleton {
   font-family: Montserrat, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @include grid;
 
   &__animate {
     background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
@@ -10,17 +14,16 @@
     animation: skeleton-loading 1.5s infinite;
   }
 
-  &__separator {
-    width: 288px;
-    height: 1px;
-    margin-bottom: 24px;
-    border: 1px solid #E2E6E9;
-  }
-
   &__title {
     height: 30px;
     width: 288px;
     margin-bottom: 32px;
+
+    @include for-tablet {
+      width: 100%;
+      grid-row: 1 / 2;
+      grid-column: 1 / 10;
+    }
   }
 
   &__slider {
@@ -31,11 +34,23 @@
     overflow: hidden;
     margin-bottom: 40px;
 
+    @include for-tablet {
+      flex-direction: row;
+      grid-row: 5 / 11;
+      grid-column: 1 / 6;
+    }
+
     &__container {
       height: 288px;
       width: 288px;
       margin: 0 auto 16px;
       display: flex;
+
+      @include for-tablet {
+        order: 1;
+        width: 100%;
+        margin: 0 auto;
+      }
 
       &__img {
         max-width: 100%;
@@ -46,16 +61,31 @@
 
     &__picker {
       display: flex;
+      z-index: 2;
+
+      @include for-tablet {
+        flex-direction: column;
+        grid-column: 1 / 2;
+        grid-row: 5 / 10;
+      }
 
       &__item {
         margin-left: 2px;
         width: 50px;
         height: 50px;
+
+        @include for-tablet {
+          margin-bottom: 8px;
+        }
       }
     }
   }
 
   &__colors {
+    @include for-tablet {
+      grid-column: 7 / 13;
+      grid-row: 5 / 7;
+    }
 
     &__container {
       display: flex;
@@ -76,14 +106,33 @@
       justify-content: space-between;
       width: 288px;
 
+      @include for-tablet {
+        width: 100%;
+      }
+
       &__item {
         width: 100px;
         height: 18px;
       }
     }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
   }
 
   &__capacity {
+    @include for-tablet {
+      grid-column: 7 / 13;
+      grid-row: 7 / 9;
+    }
 
     &__paragraph {
       height: 18px;
@@ -102,14 +151,33 @@
         width: 64px;
       }
     }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
   }
 
   &__price {
+    @include for-tablet {
+      grid-column: 7 / 13;
+      grid-row: 9 / 12;
+    }
 
     &__container {
       margin-bottom: 16px;
       display: flex;
       width: 288px;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
 
     &__discount {
@@ -139,6 +207,12 @@
     width: 288px;
     margin-bottom: 56px;
 
+    @include for-tablet {
+      width: 100%;
+      grid-row: 12 / 13;
+      grid-column: 7 / 13;
+    }
+
     &__paragraph {
       display: flex;
       justify-content: space-between;
@@ -162,11 +236,32 @@
     justify-content: space-between;
     width: 288px;
 
+    @include for-tablet {
+      width: 100%;
+      grid-row: 13 / 14;
+      grid-column: 1 / 13;
+    }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
+
 
     &__title {
       margin-bottom: 16px;
       min-height: 20px;
       width: 60px;
+
+      @include for-tablet {
+        width: 20%;
+      }
     }
 
     &__article {
@@ -181,6 +276,23 @@
     justify-content: space-between;
     width: 288px;
     margin-bottom: 56px;
+
+    @include for-tablet {
+      width: 100%;
+      grid-row: 14 / 15;
+      grid-column: 1 / 13;
+    }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
 
     &__title {
       height: 25px;
@@ -197,11 +309,19 @@
       &__name {
         height: 15px;
         width: 100px;
+
+        @include for-tablet {
+          width: 200px;
+        }
       }
 
       &__value {
         height: 15px;
         width: 100px;
+
+        @include for-tablet {
+          width: 200px;
+        }
       }
     }
   }

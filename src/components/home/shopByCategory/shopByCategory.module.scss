@@ -11,6 +11,10 @@
     width: 500px;
     margin-bottom: 24px;
   }
+
+  @include for-desktop {
+    width: 1200px;
+  }
 }
 
 .shop_by_category {
@@ -28,6 +32,10 @@
     height: fit-content;
   }
 
+  @include for-desktop {
+    width: 1150px;
+  }
+
   &__section {
 
     &__picture {
@@ -37,9 +45,13 @@
       border: 1px solid #E2E6E9;
 
       @include for-tablet {
-        width: 190px;
-        height: 160px;
+        width: 187px;
+        height: 187px;
+      }
 
+      @include for-desktop {
+        width: 370px;
+        height: 370px;
       }
 
       &:hover {

@@ -32,11 +32,11 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const handlerTouchEnd = () => {
-    if (startTouch.current - endTouch.current > 80) {
+     if (startTouch.current - endTouch.current > 10) {
       setActive(prevState => (prevState + 1) % productsTotalNumber);
     }
 
-    if (startTouch.current - endTouch.current < -80) {
+     if (startTouch.current - endTouch.current < -10) {
       setActive(
         prevState =>
           (prevState - 1 + productsTotalNumber) % productsTotalNumber,
@@ -45,8 +45,8 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const getSuggestedProducts = () => {
-    const minNumber = Math.floor(Math.random() * 124);
-    const maxNumber = getNumber(minNumber, 124);
+    const minNumber = Math.floor(Math.random() * 110);
+    const maxNumber = getNumber(minNumber, 125);
     const newProducts = [...list].slice(minNumber, maxNumber);
     setCopyProducts(newProducts);
     setProductsTotalNumber(newProducts.length);
@@ -69,6 +69,7 @@ export const ItemSlider: React.FC<Props> = ({
       prevState => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
     );
   };
+  
   const handlerRight = () => {
     if (active > productsTotalNumber) {
       setActive(0);

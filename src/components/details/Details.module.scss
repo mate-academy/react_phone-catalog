@@ -6,14 +6,7 @@
   flex-direction: column;
   align-items: center;
 
-  @include grid();
-
-  &__separator {
-    width: 288px;
-    height: 1px;
-    border: 1px solid #E2E6E9;
-    margin-bottom: 24px;
-  }
+  @include grid;
 
   &__title {
     font-size: 22px;
@@ -39,30 +32,31 @@
 
     @include for-tablet {
       flex-direction: row;
-      grid-row: 5 / 6;
-      grid-column: 1 / 6;
+      grid-row: 5 / 11;
+      grid-column: 1 / 5;
     }
 
     &__container {
       height: 288px;
       width: 288px;
-      margin: 0 auto 16px;
+      margin: 0 auto 5px;
       background-position: center;
       background-repeat: no-repeat;
       background-size: contain;
       transition: 'transform 0.5s ease-in-out';
       display: flex;
+      flex-direction: column;
       justify-content: space-evenly;
 
       @include for-tablet {
         order: 1;
-        width: 288px;
+        width: 100%;
         margin: 0 auto;
       }
 
-
       &__img {
-        max-width: 100%;
+        max-height: 100%;
+        padding-top: 5px;
         object-position: center;
         object-fit: contain;
       }
@@ -70,9 +64,12 @@
 
     &__picker {
       display: flex;
+      z-index: 2;
+      background-color: white;
 
       @include for-tablet {
         flex-direction: column;
+        padding: 2px;
         grid-column: 1 / 2;
         grid-row: 5 / 10;
       }
@@ -80,6 +77,7 @@
       &__item {
         width: 50px;
         height: 50px;
+        margin-right: 8px;
         border: 1px solid #C4C4C4;
         object-position: center;
         object-fit: contain;
@@ -87,11 +85,20 @@
         &:hover {
           scale: 110%;
         }
+
+        @include for-tablet {
+          margin-bottom: 8px;
+        }
       }
     }
   }
 
   &__colors {
+    @include for-tablet {
+      grid-column: 5 / 13;
+      grid-row: 5 / 7;
+    }
+
     &__container {
       display: flex;
 
@@ -113,6 +120,10 @@
       justify-content: space-between;
       width: 288px;
 
+    @include for-tablet {
+      width: 100%;
+    }
+
       &__item {
         width: fit-content;
         font-weight: 700;
@@ -120,9 +131,24 @@
         color: #B4BDC3;
       }
     }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
   }
 
   &__capacity {
+    @include for-tablet {
+      grid-column: 5 / 13;
+      grid-row: 7 / 9;
+    }
 
     &__paragraph {
       font-size: 12px;
@@ -152,13 +178,33 @@
         }
       }
     }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
+    }
   }
 
   &__price {
+    @include for-tablet {
+      grid-column: 5 / 13;
+      grid-row: 9 / 12;
+    }
+
     &__container {
       margin-bottom: 16px;
       display: flex;
       width: 288px;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
 
     &__discount {
@@ -230,6 +276,12 @@
     width: 288px;
     margin-bottom: 56px;
 
+    @include for-tablet {
+      width: 100%;
+      grid-row: 12 / 13;
+      grid-column: 5 / 13;
+    }
+
     &__paragraph {
       display: flex;
       justify-content: space-between;
@@ -259,12 +311,33 @@
     justify-content: space-between;
     width: 288px;
 
+    @include for-tablet {
+      width: 100%;
+      grid-row: 13 / 14;
+      grid-column: 1 / 13;
+    }
+
     &__title {
       margin-bottom: 16px;
       font-weight: 600;
       font-size: 16px;
       line-height: 20px;
       min-height: 20px;
+
+      @include for-tablet {
+        font-size: 22px;
+      }
+    }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
 
     &__article {
@@ -284,6 +357,12 @@
     width: 288px;
     margin-bottom: 56px;
 
+    @include for-tablet {
+      width: 100%;
+      grid-row: 14 / 15;
+      grid-column: 1 / 13;
+    }
+
     &__title {
       color: #313237;
       font-weight: 700;
@@ -291,6 +370,17 @@
       height: 25px;
       font-size: 20px;
       margin-bottom: 16px;
+    }
+
+    &__separator {
+      width: 288px;
+      height: 1px;
+      border: 1px solid #E2E6E9;
+      margin-bottom: 24px;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
 
     &__paragraph {
@@ -313,9 +403,17 @@
         line-height: 15px;
       }
     }
+
+
   }
 
   &__list {
     width: 288px;
+
+    @include for-tablet {
+      width: 100%;
+      grid-row: 15 / 16;
+      grid-column: 1 / 13;
+    }
   }
 }

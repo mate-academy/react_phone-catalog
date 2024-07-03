@@ -4,9 +4,9 @@ import Styles from './SkeletonDetails.module.scss';
 export const SkeletonDetails: React.FC = () => {
   return (
     <div className={Styles.skeleton}>
-      <h1
+      <div
         className={`${Styles.skeleton__title} ${Styles.skeleton__animate}`}
-      ></h1>
+      ></div>
 
       <div className={Styles.skeleton__slider}>
         <div className={`${Styles.skeleton__slider__container} ${Styles.skeleton__animate}`}>
@@ -64,11 +64,11 @@ export const SkeletonDetails: React.FC = () => {
             className={`${Styles['skeleton__colors__container__item']} ${Styles.skeleton__animate}`}
           ></div>
         </div>
-      </div>
 
-      <div
-        className={`${Styles.skeleton__separator} ${Styles.skeleton__animate}`}
+        <div
+        className={`${Styles.skeleton__colors__separator} ${Styles.skeleton__animate}`}
       />
+      </div>
 
       <div className={Styles.skeleton__capacity}>
         <p
@@ -86,11 +86,11 @@ export const SkeletonDetails: React.FC = () => {
             className={`${Styles.skeleton__capacity__container__item} ${Styles.skeleton__animate}`}
           ></div>
         </div>
-      </div>
 
-      <div
-        className={`${Styles.skeleton__separator} ${Styles.skeleton__animate}`}
+        <div
+        className={`${Styles.skeleton__capacity__separator} ${Styles.skeleton__animate}`}
       />
+      </div>
 
       <div className={Styles.skeleton__price}>
         <div className={Styles.skeleton__price__container}>
@@ -164,7 +164,7 @@ export const SkeletonDetails: React.FC = () => {
         ></p>
 
         <div
-          className={`${Styles.skeleton__separator} ${Styles.skeleton__animate}`}
+          className={`${Styles.skeleton__description__separator} ${Styles.skeleton__animate}`}
         />
 
         <p
@@ -195,7 +195,7 @@ export const SkeletonDetails: React.FC = () => {
         ></p>
 
         <div
-          className={Styles.skeleton__separator}
+          className={Styles.skeleton__tech__separator}
         />
 
         <p

@@ -5,53 +5,23 @@
 }
 
 @mixin for-desktop() {
-  @media (min-width: 1260px) {
+  @media (min-width: 1200px) {
     @content;
   }
 }
 
-@mixin grid() {
-  display: grid;
-  justify-content: center;
-  grid-template-columns: repeat(2, 130px);
-  column-gap: 20px;
-
+@mixin grid {
   @include for-tablet {
     display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(6, 80px);
-    column-gap: 24px;
-    padding: 0 72px;
-  }
-
-  @include for-desktop {
-    display: grid;
-    justify-content: center;
-    grid-template-columns: repeat(12, 63px);
-    column-gap: 24px;
-    padding: 0 120px;
-  }
-}
-
-@mixin grid() {
-
-  @include for-tablet() {
-    display: grid;
-    justify-content: center;
     grid-template-columns: repeat(12, 1fr);
     grid-template-rows: auto;
-    // grid-template-areas:
-    // "title title title title"
-    // "crumbs crumbs crumbs crumbs crumbs     "
-    // "back back back"
-    // ;
     column-gap: 16px;
     padding: 0 24px;
   }
 
-  @include for-desktop() {
+  @include for-desktop {
     display: grid;
-    justify-content: center;
+    margin: 0 auto;
     grid-template-columns: repeat(24, 32px);
     column-gap: 16px;
     padding: 0 24px;
