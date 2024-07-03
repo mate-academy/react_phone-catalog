@@ -1,0 +1,153 @@
+@import '../../styles/main';
+
+
+.header {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: $page-color;
+  border-bottom: 1px solid $color-surface2;
+
+  &__content {
+    height: 64px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-mobile {
+      height: 48px;
+    }
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__menu-button {
+    cursor: none;
+    display: none;
+    outline: none;
+    border: none;
+
+    @include on-mobile {
+      cursor: pointer;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 48px;
+      height: 100%;
+      border-left: 1px solid $color-surface2;
+    }
+  }
+
+  &__right {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    height: 100%;
+    width: 839px;
+
+    &-search {
+      box-sizing: border-box;
+      height: 100%;
+      border-left: 1px solid $color-surface2;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      width: 300px;
+      padding-inline: 24px;
+
+      @include on-tablet {
+        display: none;
+      }
+
+      &-input {
+        height: 100%;
+        width: 100%;
+        border: none;
+        padding: 0;
+
+        @extend %body-text;
+
+        color: $color-white;
+        background-color: $page-color;
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &-button {
+        background-color: $page-color;
+        border: none;
+        display: flex;
+        align-self: center;
+        align-items: center;
+        justify-content: center;
+        width: 64px;
+        height: 64px;
+      }
+    }
+
+    &-button {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 64px;
+      height: 100%;
+      border-left: 1px solid $color-surface2;
+
+      @include on-mobile {
+        display: none;
+      }
+
+      &-fav {
+        background-image: url('../../img/icons/heart.svg');
+      }
+
+      &-cart {
+        background-image: url('../../img/icons/cart.svg');
+      }
+    }
+
+    &-counter {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      right: 18px;
+      top: 18px;
+      font-size: 9px;
+      font-weight: 700;
+      line-height: 12px;
+      color: $color-white;
+      background-image: url('../../img/icons/counter.svg');
+    }
+  }
+
+  &__search {
+    display: none;
+
+    @include on-tablet {
+      box-sizing: border-box;
+      height: 64px;
+      border-top: 1px solid $color-surface2;
+      justify-content: space-between;
+      display: flex;
+      flex-direction: row;
+      width: 100%;
+      padding-inline: 50px;
+    }
+
+    @include on-mobile {
+      height: 40px;
+      display: flex;
+    }
+  }
+}

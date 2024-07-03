@@ -1,0 +1,14 @@
+.logo {
+  height: 28px;
+  width: 80px;
+
+  @include on-tablet {
+    height: 22px;
+    width: 64px;
+  }
+
+  background-image: url('../../img/icons/logo.svg'); 
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

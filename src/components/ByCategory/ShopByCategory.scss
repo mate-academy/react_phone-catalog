@@ -1,0 +1,17 @@
+@import '../../styles/main';
+
+.categories {
+  &__title {
+    @extend %h2;
+
+    @include on-tablet {
+      font-size: 20px;
+    }
+  }
+
+  &__container {
+    @include page-grid;
+
+    row-gap: 32px;
+  }
+}

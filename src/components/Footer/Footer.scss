@@ -1,0 +1,122 @@
+@import '../../styles/main';
+
+.footer {
+  position:absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 96px;
+  border-top: 1px solid $color-gray-elements;
+  width: 1136px;
+  margin-inline: auto;
+
+  @include on-tablet {
+    width: 100%;
+    padding-inline: 24px;
+  }
+
+  @include on-mobile {
+    height: 257px;
+  }
+
+  &__content {
+    @include page-grid;
+
+    row-gap: 32px;
+    height: 100%;
+    align-items: center;
+
+    @include on-mobile {
+      padding: 32px 0;
+    }
+  }
+
+  &__logo {
+    grid-column: span 8;
+    display: flex;
+    justify-content: flex-start;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    &-icon {
+      height: 32px;
+      width: 89px;
+
+      background-image: url('../../img/icons/logo.svg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform $transition-duration;
+
+      &:hover {
+        transform: scale(1.1);
+      }
+    }
+  }
+
+  &__nav {
+    grid-column: span 8;
+    display: flex;
+    justify-content: space-between;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      flex-direction: column;
+      gap: 16px; 
+    }
+
+    &-link {
+      @extend %upper-case;
+
+      color: $color-white;
+    }
+  }
+
+  &__back {
+    grid-column: span 8;
+    display: flex;
+    justify-content: flex-end;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-mobile {
+      justify-content: center;
+    }
+
+    &-button {
+      display: flex;
+      flex-direction: row;
+      gap: 16px;
+
+      @extend %button;
+
+      align-items: center;
+
+      &-text {
+        color: $color-secodary;
+      }
+
+      &-icon {
+        display: block;
+        height: 32px;
+        width: 32px;
+        background-color: $color-surface2;
+
+        background-image: url('../../img/icons/arrowUp.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &:hover {
+          background-color: $color-hover-icons;
+        }
+      }
+    }
+  }
+}
