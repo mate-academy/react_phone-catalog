@@ -1,0 +1,46 @@
+@import 'src/components/ui/utils/style/variables';
+
+.goods-section{
+  position: relative;
+  padding-top: 24px;
+  height: 100%;
+
+  &__main {
+    display: grid;
+    justify-items: center;
+    padding-bottom: 80px;
+
+    grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
+    gap: 40px 16px;
+
+    & > :nth-child(n):hover {
+      transition: box-shadow ease 0.5s;
+      box-shadow: 0 2px 16px 0 #0000001A;
+    }
+  }
+
+  &__no-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+
+    &--image {
+      max-width: 440px;
+      width: 100%;
+    }
+
+    &--text {
+      color: $Elements;
+      font-size: 40px;
+      
+    }
+  }
+}
+
+
+@media (min-width: 1100px) {
+  .goods-section__main {
+    grid-template-columns: repeat(4, 1fr); /* 4 columns with equal width */
+  }
+}

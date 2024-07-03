@@ -1,0 +1,240 @@
+@import 'src/components/ui/utils/style/mixin';
+@import 'src/components/ui/utils/style/variables';
+
+.cardpage {
+
+  &__wrapper {
+    padding-top: 24px;
+    padding-bottom: 56px;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 9.33px;
+    height: 16px;
+    width: 66px;
+    color: $Secondary;
+    margin-bottom: 16px;
+    margin-top: 24px;
+
+    &--img {
+      transform: rotate(-90deg);
+      position: relative;
+      top: 0;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__info {
+    margin-top: 56px;
+    margin-bottom: 64px;
+
+    & > :nth-child(n):not(:last-child) {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__section {
+    gap: 16px;
+
+    &--sub-title {
+      @include body-text;
+    }
+
+    &--line {
+      margin-top: 16px;
+      margin-bottom: 25px;
+    }
+  }
+
+  &__tech {
+
+    &--line {
+      margin-top: 16px;
+      margin-bottom: 30px;
+    }
+
+    &--specs {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    &--section {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &--section-title {
+      color: $Secondary;
+
+      @include body-text;
+    }
+
+    &--section-sub-title {
+      @include body-text;
+    }
+  }
+
+}
+
+.details {
+  margin-top: 40px;
+  min-width: 237px;
+
+  &__text {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    align-items: center;
+    gap: 8px;
+
+    &--discount {
+      font-family: Mont-Regular,sans-serif;
+      color: $Secondary;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
+  }
+
+  &__title {
+    color: $Secondary;
+
+    @include small-text;
+  }
+
+  &__sub-title {
+    color: $Icons;
+    
+    @include small-text;
+  }
+
+  &__colors {
+    margin-bottom: 24px;
+  }
+
+  &__capacity {
+    margin: 24px 0;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    justify-content: space-between;
+    box-sizing: border-box;
+
+    &--add {
+      min-width: 100px;
+      border-radius: 8px;
+      background-color: #216CFF;
+      color: white;
+      height: 48px;
+      width: 100%;
+      max-width: 231px;
+
+      @include center-element;
+      @include button-text;
+
+      & :hover {
+        transition: box-shadow ease 0.5s;
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+    }
+
+    &--like {
+      max-width: 48px;
+      width: 100%;
+      height: 48px;
+      border-radius: 50%;
+      border: 1px solid $Icons;
+
+      &:hover {
+        transition: border 0.5s ease;
+        border: 1px solid black;
+      }
+
+      @include center-element;
+    }
+  }
+
+  &__information {
+    display: flex;
+    flex-direction: column;
+    margin-top: 32px;
+    margin-bottom: 56px;
+    gap: 8px;
+
+    &--section {
+      display: flex;
+      justify-content: space-between;      
+    }
+
+    &--title {
+      color: $Secondary;
+
+      @include small-text;
+    }
+
+    &--sub-title {
+      @include small-text;
+    }
+  }
+}
+
+.added-to-cart {
+  border: 1px solid $Elements;
+  color: $Accent;
+  background-color: transparent;
+}
+
+.added-to-favourite {
+  &:hover {
+    border: 1px solid black;
+  }
+}
+
+@media(min-width:640px) {
+  .cardpage {
+    &__main {
+      box-sizing: border-box;
+      display: grid;
+      grid-template: 1fr / minmax(287px,560px) 1fr;
+      gap: 22px;
+    }
+  }
+
+  .details {
+    &__inner {
+      max-width: 320px;
+    }
+  }
+}
+
+@media(min-width:1200px) {
+  .cardpage {
+    &__info--wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &__header {
+      flex: 50%;
+    }
+
+    &__tech {
+      flex :50%;
+    }
+  }
+}

@@ -1,1 +1,120 @@
-// not empty
+@import './fonts';
+
+html {
+  height: 100vh;
+  font-family: Mont-bold, sans-serif;
+}
+
+body {
+  height: 100vh;
+  position: relative;
+  box-sizing: border-box;
+}
+
+ul,li,a,button,body {
+  padding: 0;
+  margin: 0;
+  border: none;
+  text-decoration: none;
+  list-style: none;
+  color: black;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+}
+
+footer {
+  flex-shrink: 0;
+}
+
+button {
+  background-color: transparent;
+  cursor: pointer;
+}
+
+hr {
+  margin: 0;
+}
+
+.container {
+  @media (min-width:320px) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  @media(min-width:640px) {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @media(min-width: 1200px) {
+    max-width: 1136px;
+    padding-left: 32px;
+    padding-right: 32px;
+    margin: 0 auto;
+  }
+}
+
+h1,h2,h3,h4,h5 {
+  // font-family: Mont-Bold, sans-serif;
+  margin: 0;
+  color: black;
+
+}
+
+h1 {
+  font-size: 32px ;
+  line-height: 41px ; 
+  letter-spacing: -0.01em;
+  font-family: Mont-Bold, sans-serif;
+
+  @media (min-width:640px) {
+    font-size: 48px ;
+    line-height: 56px ; 
+  }
+}
+
+h2 {
+  font-size: 22px ;
+  line-height: 31px ; 
+  letter-spacing: 0 ;
+
+  // font-weight: 800;
+  font-family: Mont-Bold, sans-serif;
+
+  @media (min-width:640px) {
+    font-size: 32px ;
+    line-height: 41px ; 
+  }
+}
+
+h3 {
+  font-size: 20px ;
+  line-height: 26px ; 
+  letter-spacing: 0 ;
+  font-family: Mont-SemiBold, sans-serif;
+
+  @media (min-width:640px) {
+    font-size: 22px ;
+    line-height: 31px ; 
+    font-family: Mont-Bold, sans-serif;
+  }
+}
+
+h4 {
+  font-family: Mont-Semibold ,sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+
+  @media(min-width:640px) {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}

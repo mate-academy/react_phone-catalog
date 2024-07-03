@@ -1,0 +1,142 @@
+@import 'src/components/ui/utils/style/variables';
+@import 'src/components/ui/utils/style/mixin';
+
+.cartPage {
+  display: flex;
+  flex-direction: column;
+  padding-top: 24px;
+  padding-bottom: 56px;
+  gap: 32px;
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__no-items {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    &--text {
+      font-size: 50px;
+      color: $Elements;
+      display: flex;
+      text-align: center;
+    }
+    &--image {
+      max-width: 400px;
+      width: 100%;
+    }
+  }
+
+  &__main {
+    box-sizing: border-box;
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    color: $Secondary;
+    width: 66px;
+    height: 16px;
+    padding: 0 6px;
+    gap: 10px;
+    margin-bottom: 24px;
+
+    @include small-text;
+
+    &--img {
+      transform: rotate(-90deg);
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__title {
+    margin-bottom: 32px;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__footer {
+    background-color: white;
+    padding: 24px;
+    border-radius: 16px;
+    border: 1px solid $Elements;
+    box-sizing: border-box;
+    max-height: 288px;
+  }
+
+  &__info {
+    text-align: center;
+  }
+
+  &__line {
+    background-color: $Elements;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
+
+  &__button-checkout {
+    background-color: $Accent;
+    width: 100%;
+    color: white;
+    height: 48px;
+    border-radius: 8px;
+
+    &:hover {
+      transition: box-shadow ease 0.5s;
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
+
+    @include button-text;
+  }
+  &__couter-item {
+    color: $Secondary;
+
+    @include body-text;
+  }
+}
+
+@media(min-width:640px) {
+  .cartPage {
+    // padding: 40px 0 64px 0;
+    padding-top: 40px;
+    padding-bottom: 64px;
+    gap: 16px;
+
+    &__back {
+      margin-bottom: 16px;
+    }
+  }
+}
+
+@media(min-width:1200px) {
+  .cartPage {
+    box-sizing: border-box;
+
+    // flex-direction: row;
+    padding: 40px 0 80px ;
+
+    &__wrapper {
+      flex-direction: row;
+    }
+
+    &__main {
+      width: 752px;
+    }
+
+    &__footer {
+      width: 368px;
+    }
+  }
+}

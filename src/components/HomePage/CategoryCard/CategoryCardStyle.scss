@@ -1,0 +1,41 @@
+@import '/src/components/ui/utils/style/variables';
+
+.categories {
+
+  &__image {
+    max-width: 100%;
+    border-radius: 8px;
+  }
+
+  &__text {
+
+    &--sub-title {
+      font-family: Mont-Regular, sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      color: $Secondary;
+    }
+  } 
+}
+
+@media(min-width:640px) {
+  .categories {
+
+    &__section {
+      flex: 0 0 calc(33.33% - 10.7px);
+    }
+
+    &__image {
+      aspect-ratio: 1 / 1;
+    }
+  }
+}
+
+@media(min-width:1200px) {
+  .categories {
+
+    &__section {
+      width: 187px;
+    }
+  }
+}
