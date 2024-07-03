@@ -3,9 +3,19 @@ import { MenuList } from '../MenuList';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { ProductContext } from '../Context/Context';
+import { getSearchWith } from '../../utils/GetSearchWith';
 
 export const Header = () => {
-  const { path, cart, favourite } = useContext(ProductContext);
+  const { path, cart, favourite, setSearchParams, params } =
+    useContext(ProductContext);
+
+  const handleSearchParamQuery = (value: string) => {
+    setSearchParams(
+      getSearchWith(params, {
+        query: value || null,
+      }),
+    );
+  };
 
   return (
     <header className="header">
@@ -14,6 +24,17 @@ export const Header = () => {
           <img src="./img/icons/logo.svg" alt="logo" />
         </Link>
         {path !== '/menu' && <MenuList />}
+        {(path === '/phones' ||
+          path === '/tablets' ||
+          path === '/accessories') && (
+          <div className="header__search-wrapper">
+            <input
+              type="text"
+              className="header__search"
+              onChange={event => handleSearchParamQuery(event.target.value)}
+            />
+          </div>
+        )}
         <div className="header__links">
           {path !== '/menu' && (
             <Link to="/menu" className="header__link header__link--burger-menu">

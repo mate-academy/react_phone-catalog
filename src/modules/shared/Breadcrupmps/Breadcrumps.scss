@@ -32,7 +32,8 @@
     }
   }
 
-  & :nth-child(3) {
+  & :last-child {
     color: #75767F;
+    cursor: auto;
   }
 }

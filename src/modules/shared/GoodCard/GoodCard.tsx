@@ -7,6 +7,8 @@ import { AddButtons } from '../AddButtons';
 import { CardItems } from '../CardItems/CardItems';
 import { ProductsSlider } from '../ProductsSlider';
 import classNames from 'classnames';
+import { colors } from '../../../utils/colors';
+
 type Props = {
   good: Good;
   category: string;
@@ -58,39 +60,38 @@ export const GoodCard: React.FC<Props> = ({ good, category }) => {
                 key={item}
                 src={item}
                 alt="good"
-                className="card__picture"
+                className={classNames('card__picture', {
+                  'card__picture--active': image === item,
+                })}
                 onClick={() => setImage(item)}
               />
             ))}
           </div>
         </div>
         <div className="card__brief">
-          <div className="card__names">
-            <h4 className="card__value">Available colors</h4>
-            <span className="card__id">ID: 802390</span>
-          </div>
+          <h4 className="card__value">Available colors</h4>
           <div className="card__colors card__line">
             {colorsAvailable.map(item => (
-              <button
+              <span
                 key={item}
                 className={classNames('card__color', {
                   'card__color--active': color === item,
                 })}
-                style={{ backgroundColor: item }}
-              ></button>
+                style={{ backgroundColor: colors[item] }}
+              ></span>
             ))}
           </div>
           <h4 className="card__value">Select capacity</h4>
           <div className="card__capacities card__line">
             {capacityAvailable.map(item => (
-              <button
+              <span
                 key={item}
                 className={classNames('card__capacity', {
                   'card__capacity--active': capacity === item,
                 })}
               >
                 {item}
-              </button>
+              </span>
             ))}
           </div>
 
@@ -110,6 +111,7 @@ export const GoodCard: React.FC<Props> = ({ good, category }) => {
             ram={ram}
           />
         </div>
+        <span className="card__id">ID: 802390</span>
       </div>
 
       <div className="card__bottom">

@@ -1,5 +1,9 @@
 import React, { Dispatch, useEffect, useMemo, useState } from 'react';
-import { useLocation } from 'react-router-dom';
+import {
+  URLSearchParamsInit,
+  useLocation,
+  useSearchParams,
+} from 'react-router-dom';
 import { getProducts } from '../../../services/products';
 import { Product } from '../../../types/Product';
 import { useLocalStorage } from '../../../hooks/UseLocalStorage';
@@ -13,6 +17,12 @@ type ProductContextType = {
   setLocalFavourite: Dispatch<React.SetStateAction<Product[] | []>>;
   isLoading: boolean;
   errorMessage: string;
+  order: string;
+  length: string;
+  params: URLSearchParams;
+  setSearchParams: (params: URLSearchParamsInit) => void;
+  currentPage: number | string;
+  query: string | null;
 };
 
 export const ProductContext = React.createContext<ProductContextType>({
@@ -24,6 +34,12 @@ export const ProductContext = React.createContext<ProductContextType>({
   setLocalFavourite: () => {},
   isLoading: false,
   errorMessage: '',
+  order: '',
+  length: '',
+  params: new URLSearchParams(),
+  setSearchParams: () => {},
+  currentPage: 1,
+  query: '',
 });
 
 type Props = {
@@ -42,6 +58,14 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   );
   const [isLoading, setIsLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
+  const params = useMemo(() => {
+    return new URLSearchParams(searchParams);
+  }, [searchParams]);
+  const order = searchParams.get('order') || 'Newest';
+  const length = searchParams.get('length') || 'All';
+  const currentPage = searchParams.get('page') || 1;
+  const query = searchParams.get('query') || null;
 
   useEffect(() => {
     setIsLoading(true);
@@ -69,6 +93,12 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       setLocalFavourite,
       isLoading,
       errorMessage,
+      query,
+      order,
+      length,
+      params,
+      setSearchParams,
+      currentPage,
     }),
     [
       errorMessage,
@@ -79,6 +109,12 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       setLocalCart,
       favourite,
       setLocalFavourite,
+      query,
+      currentPage,
+      order,
+      length,
+      setSearchParams,
+      params,
     ],
   );
 

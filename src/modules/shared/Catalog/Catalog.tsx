@@ -6,7 +6,6 @@ import { Products } from '../Products';
 import { Pagination } from '../Pagination/Pagination';
 import { Product } from '../../../types/Product';
 import { ProductContext } from '../Context/Context';
-import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   title: string;
@@ -14,12 +13,8 @@ type Props = {
 };
 
 export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
-  const [searchParams, setSearchParams] = useSearchParams();
-  const params = new URLSearchParams(searchParams);
-  const { path } = useContext(ProductContext);
-  const order = searchParams.get('order') || 'Newest';
-  const length = searchParams.get('length') || 'All';
-  const currentPage = searchParams.get('page') || 1;
+  const { path, currentPage, order, setSearchParams, length, params, query } =
+    useContext(ProductContext);
   const pageEnd = Math.ceil(productsByCategory.length / +length);
   const start = +length * (+currentPage - 1);
   const end = +length * +currentPage;
@@ -51,8 +46,16 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
         break;
     }
 
+    if (query) {
+      filteredArr = filteredArr.filter(item => {
+        const reg = new RegExp(query, 'i');
+
+        return reg.test(item.name);
+      });
+    }
+
     return length === 'All' ? filteredArr : filteredArr.slice(start, end);
-  }, [productsByCategory, order, start, end, length]);
+  }, [productsByCategory, order, start, end, length, query]);
 
   return (
     <div className="catalog">

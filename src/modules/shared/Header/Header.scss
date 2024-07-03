@@ -54,5 +54,33 @@
       }
     }
   }
+
+  &__search-wrapper{
+    position: relative;
+
+    &::after{
+      display: block;
+      content: '';
+      background-image: url('../../../../public/img/icons/search.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      position: absolute;
+      top: 5px;
+      left: 10px;
+      width: 25px;
+      height: 25px;
+    }
+
+
+  }
+
+  &__search{
+    background-color: transparent;
+    padding: 10px 5px 10px 40px;
+    border: 1px solid #323542;
+    color: #F1F2F9;
+  }
+
+
 }
 

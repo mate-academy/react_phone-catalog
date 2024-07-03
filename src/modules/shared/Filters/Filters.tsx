@@ -1,8 +1,8 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import './Filters.scss';
 import classNames from 'classnames';
-import { URLSearchParamsInit } from 'react-router-dom';
 import { getSearchWith } from '../../utils/GetSearchWith';
+import { URLSearchParamsInit } from 'react-router-dom';
 
 type Props = {
   params: URLSearchParams;
