@@ -11,43 +11,50 @@ export const Categorys = () => {
           </div>
           <div className="category__items">
             <article className="category__item">
-              <div className="category__picture category__picture--phones">
-                <img
-                  src="./img/category-phones.webp"
-                  alt="category-phones"
-                  className="category__image"
-                />
-              </div>
-              <Link to="/phones" className="category__link">
-                Mobile phones
+              <Link to="/phones">
+                <div className="category__picture category__picture--phones">
+                  <img
+                    src="./img/category-phones.webp"
+                    alt="category-phones"
+                    className="category__image"
+                  />
+                </div>
+
+                <h4 className="categoru__links"> Mobile phones </h4>
               </Link>
               <p className="category__length">95 models</p>
             </article>
 
             <article className="category__item">
-              <div className="category__picture category__picture--tablets">
-                <img
-                  src="./img/category-tablets.webp"
-                  alt="tablets-tablets"
-                  className="category__image"
-                />
-              </div>
-              <Link to="/tablets" className="category__link">
-                Tablets
+              <Link to="/tablets">
+                <div className="category__picture category__picture--tablets">
+                  <img
+                    src="./img/category-tablets.webp"
+                    alt="tablets-tablets"
+                    className="category__image"
+                  />
+                </div>
+
+                <h4 className="categoru__links"> Tablets </h4>
               </Link>
               <p className="category__length">24 models</p>
             </article>
 
             <article className="category__item">
-              <div className="category__picture category__picture--accessories">
-                <img
-                  src="./img/category-accessories.webp"
-                  alt="category-accessories"
-                  className="category__image"
-                />
-              </div>
-              <Link to="/accessories" className="category__link">
-                Accessories
+              <Link to="/accessories">
+                <div
+                  className="
+                  category__picture
+                  category__picture--accessories"
+                >
+                  <img
+                    src="./img/category-accessories.webp"
+                    alt="category-accessories"
+                    className="category__image"
+                  />
+                </div>
+
+                <h4 className="categoru__links"> Accessories </h4>
               </Link>
               <p className="category__length">100 models</p>
             </article>

@@ -6,11 +6,6 @@
   box-shadow: 0 2px 16px 0 #0000001A;
   height: 506px;
   padding: 32px;
-  transition: transform 0.3s;
-
-  &:hover{
-    transform: scale(1.1);
-  }
 
   &__image{
     display: flex;
@@ -20,6 +15,11 @@
     object-fit: contain;
     object-position: center;
     margin-bottom: 24px;
+    transition: transform 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
   }
 
   &__title{

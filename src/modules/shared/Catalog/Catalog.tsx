@@ -18,7 +18,7 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
   const params = new URLSearchParams(searchParams);
   const { path } = useContext(ProductContext);
   const order = searchParams.get('order') || 'Newest';
-  const length = searchParams.get('length') || 16;
+  const length = searchParams.get('length') || 'All';
   const currentPage = searchParams.get('page') || 1;
   const pageEnd = Math.ceil(productsByCategory.length / +length);
   const start = +length * (+currentPage - 1);
@@ -51,8 +51,8 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
         break;
     }
 
-    return filteredArr.slice(start, end);
-  }, [productsByCategory, order, start, end]);
+    return length === 'All' ? filteredArr : filteredArr.slice(start, end);
+  }, [productsByCategory, order, start, end, length]);
 
   return (
     <div className="catalog">
@@ -62,7 +62,7 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
       <Filters
         params={params}
         order={order}
-        length={+length}
+        length={length}
         setSearchParams={setSearchParams}
       />
       {productsByCategory.length > 0 ? (

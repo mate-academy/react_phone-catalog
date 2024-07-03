@@ -8,7 +8,7 @@ type Props = {
   params: URLSearchParams;
   setSearchParams: (params: URLSearchParamsInit) => void;
   order: string;
-  length: number;
+  length: string;
 };
 
 export const Filters: React.FC<Props> = ({
@@ -125,6 +125,12 @@ export const Filters: React.FC<Props> = ({
           </button>
           {items && (
             <ul className="filters__options">
+              <li
+                className="filters__option"
+                onClick={() => handleSearchParamLength('All')}
+              >
+                All
+              </li>
               <li
                 className="filters__option"
                 onClick={() => handleSearchParamLength('4')}

@@ -18,11 +18,6 @@
 
   &__item{
     margin: 0 auto;
-    transition: transform 0.3s;
-
-    &:hover{
-      transform: scale(1.1);
-    }
   }
 
   &__picture{
@@ -31,6 +26,11 @@
     position: relative;
     overflow: hidden;
     margin-bottom: 24px;
+    transition: transform 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
 
     &--phones{
       background-color: #6D6474;

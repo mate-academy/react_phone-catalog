@@ -124,7 +124,7 @@ export const Cart = () => {
                 <div className="cart__total">
                   <div className="cart__sum">${totalSums[1]}</div>
                   <div className="cart__total-number">
-                    Total for {totalSums[0]} items
+                    {`Total for ${totalSums[0]} ${totalSums[0] === 1 ? `item` : `items`}`}
                   </div>
                   <button
                     className="cart__checkout"

@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import './Footer.scss';
 
 export const Footer = () => {
@@ -5,7 +6,13 @@ export const Footer = () => {
     <footer className="footer">
       <div className="container">
         <div className="footer__content">
-          <img src="./img/icons/logo.svg" alt="logo" className="footer__logo" />
+          <Link to="/">
+            <img
+              src="./img/icons/logo.svg"
+              alt="logo"
+              className="footer__logo"
+            />
+          </Link>
           <nav className="footer__navigation">
             <a className="footer__link" href="https://github.com/">
               GITHUB
