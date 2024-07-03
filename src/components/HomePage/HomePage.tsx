@@ -107,7 +107,15 @@ export const HomePage = ({
             to="/cart"
             className={({ isActive }) => (isActive ? 'header__activenav' : '')}
           >
-            <div className="header__navigation--bag"></div>
+            <div className="header__navigation--bag">
+              {cartItems.length !== 0 && (
+                <div className="header__navigation--count">
+                  <p className="header__navigation--count--style">
+                    {cartItems.length}
+                  </p>
+                </div>
+              )}
+            </div>
           </NavLink>
         </div>
       </header>

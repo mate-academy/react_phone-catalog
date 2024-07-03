@@ -171,7 +171,7 @@ export const App = () => {
 
           <Route
             path="*"
-            element={<NotFoundPage likeItems={likeItems} />}
+            element={<NotFoundPage likeItems={likeItems} cartItems={cartItems}/>}
           ></Route>
         </Routes>
       </Router>

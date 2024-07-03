@@ -206,7 +206,15 @@ export const PhoneDetailPage = ({
             to="/cart"
             className={({ isActive }) => (isActive ? 'header__activenav' : '')}
           >
-            <div className="header__navigation--bag"></div>
+            <div className="header__navigation--bag">
+              {cartItems.length !== 0 && (
+                <div className="header__navigation--count">
+                  <p className="header__navigation--count--style">
+                    {cartItems.length}
+                  </p>
+                </div>
+              )}
+            </div>
           </NavLink>
         </div>
       </header>
@@ -217,7 +225,7 @@ export const PhoneDetailPage = ({
               <div className="navigate__house"></div>
             </Link>
             <div className="navigate__arrow"></div>
-            {}
+            { }
             <Link to={`/${name}`} className="info__href">
               <p className="navigate__text info__text">
                 {name && name.charAt(0).toUpperCase() + name.slice(1)}

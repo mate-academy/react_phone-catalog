@@ -16,7 +16,7 @@ export const CartPage = ({
 }: CartPageProps) => {
   const [counts, setCounts] = useState<{ [key: string]: number }>({});
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  const [totalItems, setTotalItems] = useState<number>(0);
+  // const [totalItems, setTotalItems] = useState<number>(0);
 
   const { pathname } = useLocation();
 
@@ -53,12 +53,12 @@ export const CartPage = ({
     }));
   };
 
-  useEffect(() => {
-    setTotalItems(0);
-    for (const prop in counts) {
-      setTotalItems(prevToralItems => prevToralItems + counts[prop]);
-    }
-  }, [totalPrice, setTotalPrice, counts]);
+  // useEffect(() => {
+  //   setTotalItems(0);
+  //   for (const prop in counts) {
+  //     setTotalItems(prevToralItems => prevToralItems + counts[prop]);
+  //   }
+  // }, [totalPrice, setTotalPrice, counts]);
 
   const deleteCartItem = (cart: CardPhone) => {
     setCartItems((prevCartItem: CardPhone[]) => {
@@ -126,7 +126,15 @@ export const CartPage = ({
             to="/cart"
             className={({ isActive }) => (isActive ? 'header__activenav' : '')}
           >
-            <div className="header__navigation--bag"></div>
+            <div className="header__navigation--bag">
+              {cartItems.length !== 0 && (
+                <div className="header__navigation--count">
+                  <p className="header__navigation--count--style">
+                    {cartItems.length}
+                  </p>
+                </div>
+              )}
+            </div>
           </NavLink>
         </div>
       </header>
@@ -245,7 +253,7 @@ export const CartPage = ({
             {cartItems.length !== 0 && (
               <section className="checkout">
                 <h1 className="checkout__price">${totalPrice}</h1>
-                <p className="checkout__items">Total for {totalItems} items</p>
+                <p className="checkout__items">Total for {cartItems.length} items</p>
                 <div className="checkout__hr"></div>
                 <button
                   className="checkout__button"
