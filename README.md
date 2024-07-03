@@ -81,7 +81,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
 1. `ProductCard` image and title should be links to the product details page.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
-   - Fix one `Available color` and one `Select capacity` value for now;
+   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
    - `About` section should contain just a description (without any subheaders);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
