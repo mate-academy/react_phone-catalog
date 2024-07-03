@@ -7,7 +7,7 @@
   &__title {
     @extend %body-text;
 
-    color: $color-secondary;
+    color: var(--color-primary);
   }
 
   &__container {
@@ -20,6 +20,7 @@
     display: flex;
     justify-content: space-between;
     outline: none;
+    background-color: var(--color-background);
     transition: all 0.5s;
 
     &:focus {
@@ -33,6 +34,7 @@
 
   &__value {
     flex-grow: 1;
+    color: var(--color-primary);
   }
 
   &__options {
@@ -61,17 +63,19 @@
   &__option {
     padding: 14px 12px;
     cursor: pointer;
+    background-color: var(--color-background);
+    color: var(--color-primary);
 
     @extend %body-text;
 
     &__highlighted {
-      color: $color-primary;
-      background-color: #FAFBFC;
+      color: var(--color-primary);
+      background-color: var(--color-secondary);
     }
 
     &__selected {
       color: $color-primary;
-      background-color: #FAFBFC;
+      background-color: $color-secondary;
     }
   }
 

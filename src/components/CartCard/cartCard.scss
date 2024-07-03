@@ -23,6 +23,10 @@
       background-color: var(--color-backgroundheaderfooter);
     }
 
+    &__crossImg {
+      fill: aqua;
+    }
+
     &__imgContainer {
       width: 80px;
       height: 80px;
@@ -87,7 +91,7 @@
         font-size: 14px;
         line-height: 21px;
         text-align: center;
-        color: #000;
+        color: var(--color-primary);
       }
     }
 
@@ -96,6 +100,6 @@
       font-weight: 800;
       font-size: 22px;
       line-height: 31px;
-      color: #0F0F11;
+      color: var(--color-primary);
     }
 }
