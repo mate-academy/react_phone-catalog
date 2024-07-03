@@ -41,13 +41,28 @@ const MainSwiper = () => {
         loop={true}
       >
         <SwiperSlide>
-          <img src="icons/swiper.jpg" alt="" />
+          <img src="icons/swiper.jpg" alt="" className="image-under__dekstop" />
+          <img
+            src="img/iPhone-11-Pro-Inner-Banner.webp"
+            alt=""
+            className="image-upper__dekstop"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="icons/swiper.jpg" alt="" />
+          <img src="icons/swiper.jpg" alt="" className="image-under__dekstop" />
+          <img
+            src="img/iconic_STORY_LEVEL_BANNER_1600x483.jpg"
+            alt=""
+            className="image-upper__dekstop"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <img src="icons/swiper.jpg" alt="" />
+          <img src="icons/swiper.jpg" alt="" className="image-under__dekstop" />
+          <img
+            src="img/banner-phones.png"
+            alt=""
+            className="image-upper__dekstop"
+          />
         </SwiperSlide>
       </Swiper>
       <button id={nextButtonId} className="home-slider__next">

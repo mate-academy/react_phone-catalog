@@ -37,6 +37,8 @@ const CardPage: React.FC<Props> = ({ type }) => {
   const dispatch = useContext(DispatchContext);
   const [hasError, setHasError] = useState(false);
 
+  const isDiscount = selectedProduct?.priceDiscount;
+
   const isLiked = selectedProduct
     ? favourites.some(elem => elem.itemId === selectedProduct.id)
     : false;
@@ -103,9 +105,10 @@ const CardPage: React.FC<Props> = ({ type }) => {
                   <div className="details__title">Available colors</div>
                   <div className="details__sub-title">
                     {`ID: ${getId(
-                      selectedProduct.category, 
-                      products, 
-                      selectedProduct.id)}`}
+                      selectedProduct.category,
+                      products,
+                      selectedProduct.id
+                    )}`}
                   </div>
                 </div>
                 <div className="details__inner">
@@ -119,7 +122,11 @@ const CardPage: React.FC<Props> = ({ type }) => {
                   <hr className="details__second-line" />
                   <div className="details__price">
                     <h2 className="details__price--regular">$299</h2>
-                    <div className="details__price--discount"></div>
+                    {isDiscount && (
+                      <div className="details__price--discount">
+                        {selectedProduct.priceDiscount}
+                      </div>
+                    )}
                   </div>
                   <div className="details__buttons">
                     {addedToCart ? (
@@ -181,48 +188,53 @@ const CardPage: React.FC<Props> = ({ type }) => {
             </div>
           </div>
           <div className="cardpage__info">
-            <div className="cardpage__section">
-              <h3 className="cardpage__section--title">About</h3>
-              <hr className="cardpage__sections--line" />
-            </div>
-            {selectedProduct.description.map(elem => (
-              <div className="cardpage__section" key={elem.title}>
-                <h4 className="cardpage__section--title">{elem.title}</h4>
-                {elem.text.map(Item => (
-                  <p className="cardpage__section--sub-title" key={Item}>
-                    {Item}
-                  </p>
+            <div className="cardpage__info--wrapper">
+              <div className="cardpage__header">
+                <div className="cardpage__section">
+                  <h3 className="cardpage__section--title">About</h3>
+                  <hr className="cardpage__section--line" />
+                </div>
+                {selectedProduct.description.map(elem => (
+                  <div className="cardpage__section" key={elem.title}>
+                    <h4 className="cardpage__section--title">{elem.title}</h4>
+                    {elem.text.map(Item => (
+                      <p className="cardpage__section--sub-title" key={Item}>
+                        {Item}
+                      </p>
+                    ))}
+                  </div>
                 ))}
               </div>
-            ))}
-            <div className="cardpage__tech">
-              <h3 className="cardpage__tech--title">Tech specs</h3>
-              <hr className="cardpage__tech--line" />
-              <div className="cardpage__tech--specs">
-                {Object.entries({
-                  Screen: selectedProduct.screen,
-                  Resolution: selectedProduct.resolution,
-                  Processor: selectedProduct.processor,
-                  RAM: selectedProduct.ram,
-                  'Built in Memory': selectedProduct.capacity,
-                  Camera: selectedProduct.camera,
-                  Zoom: selectedProduct.zoom,
-                  Cell: selectedProduct.cell,
-                }).map(
-                  ([key, value]) =>
-                    value && (
-                      <div className="cardpage__tech--section" key={key}>
-                        <div className="cardpage__tech--section-title">
-                          {key}
+              <div className="cardpage__tech">
+                <h3 className="cardpage__tech--title">Tech specs</h3>
+                <hr className="cardpage__tech--line" />
+                <div className="cardpage__tech--specs">
+                  {Object.entries({
+                    Screen: selectedProduct.screen,
+                    Resolution: selectedProduct.resolution,
+                    Processor: selectedProduct.processor,
+                    RAM: selectedProduct.ram,
+                    'Built in Memory': selectedProduct.capacity,
+                    Camera: selectedProduct.camera,
+                    Zoom: selectedProduct.zoom,
+                    Cell: selectedProduct.cell,
+                  }).map(
+                    ([key, value]) =>
+                      value && (
+                        <div className="cardpage__tech--section" key={key}>
+                          <div className="cardpage__tech--section-title">
+                            {key}
+                          </div>
+                          <div className="cardpage__tech--section-sub-title">
+                            {value}
+                          </div>
                         </div>
-                        <div className="cardpage__tech--section-sub-title">
-                          {value}
-                        </div>
-                      </div>
-                    )
-                )}
+                      )
+                  )}
+                </div>
               </div>
             </div>
+
             <CardSlider
               cards={brandNewModels}
               title={'You may also like'}

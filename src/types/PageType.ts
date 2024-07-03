@@ -2,6 +2,6 @@ export enum PageType {
   Phones = 'phones',
   Tablets = 'tablets',
   Accessories = 'accessories',
-  Favourite = 'Favourites',
+  Favourite = 'favourites',
   Cart = 'Cart',
 }

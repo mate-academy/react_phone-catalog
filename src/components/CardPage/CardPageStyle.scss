@@ -30,7 +30,9 @@
   }
 
   &__info {
+    margin-top: 56px;
     margin-bottom: 64px;
+
     & > :nth-child(n):not(:last-child) {
       margin-bottom: 32px;
     }
@@ -42,10 +44,14 @@
     &--sub-title {
       @include body-text;
     }
+
+    &--line {
+      margin-top: 16px;
+      margin-bottom: 25px;
+    }
   }
 
   &__tech {
-    margin-top: 56px;
 
     &--line {
       margin-top: 16px;
@@ -83,6 +89,23 @@
     display: flex;
     justify-content: space-between;
     margin-bottom: 8px;
+  }
+
+  &__price {
+    display: flex;
+    margin-top: 32px;
+    margin-bottom: 16px;
+    align-items: center;
+    gap: 8px;
+
+    &--discount {
+      font-family: Mont-Regular,sans-serif;
+      color: $Secondary;
+      font-size: 22px;
+      font-weight: 500;
+      line-height: 28px;
+      text-decoration: line-through;
+    }
   }
 
   &__title {
@@ -194,6 +217,24 @@
   .details {
     &__inner {
       max-width: 320px;
+    }
+  }
+}
+
+@media(min-width:1200px) {
+  .cardpage {
+    &__info--wrapper {
+      display: flex;
+      flex-direction: row;
+      gap: 64px;
+    }
+
+    &__header {
+      flex: 50%;
+    }
+
+    &__tech {
+      flex :50%;
     }
   }
 }

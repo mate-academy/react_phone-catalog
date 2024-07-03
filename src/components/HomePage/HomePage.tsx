@@ -13,7 +13,17 @@ import { PageType } from 'src/types/PageType';
 import { StateContext } from 'src/store';
 
 const HomePage = () => {
-  const { brandNewModels, hotPrices } = useContext(StateContext);
+  const { brandNewModels, hotPrices, products } = useContext(StateContext);
+
+  const phonesLength = products.filter(
+    elem => elem.category === 'phones'
+  ).length;
+  const accessoriesLength = products.filter(
+    elem => elem.category === 'accessories'
+  ).length;
+  const TablestsLength = products.filter(
+    elem => elem.category === 'tablets'
+  ).length;
 
   return (
     <div className="home">
@@ -36,19 +46,19 @@ const HomePage = () => {
           <div className="categories__wrapper">
             <CategoryCard
               title="Mobile phones"
-              subTitle=""
+              subTitle={phonesLength}
               imgUrl="img/caregory-phones-main.png"
               UrlTo={PageType.Phones}
             />
             <CategoryCard
               title="Tablets"
-              subTitle=""
+              subTitle={TablestsLength}
               imgUrl="img/category-tablets-main.png"
               UrlTo={PageType.Tablets}
             />
             <CategoryCard
               title="Accessories"
-              subTitle=""
+              subTitle={accessoriesLength}
               imgUrl="img/category-accessories-main.png"
               UrlTo={PageType.Accessories}
             />

@@ -82,6 +82,7 @@ const CardSlider: React.FC<Props> = ({ title, cards, type }) => {
         <Swiper
           slidesPerView={'auto'}
           spaceBetween={16}
+          autoHeight={false}
           navigation={{
             nextEl: `#${nextButtonId}`,
             prevEl: `#${prevButtonId}`,
@@ -90,7 +91,7 @@ const CardSlider: React.FC<Props> = ({ title, cards, type }) => {
           className="card__swiper"
         >
           {cards.map(elem => (
-            <SwiperSlide key={elem.itemId}>
+            <SwiperSlide key={elem.itemId} className="card__slide-wrapper">
               <Card data={elem} type={type} />
             </SwiperSlide>
           ))}

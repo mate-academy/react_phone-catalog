@@ -14,11 +14,13 @@ interface Props {
 
 const ColorsChose: React.FC<Props> = ({ selectedProduct }) => {
   const dispatch = useContext(DispatchContext);
-  // const navigate = useNavigate();
+
   const { colorsAvailable, color, category, capacity, namespaceId } =
     selectedProduct;
 
   const handleOnColorChange = (itemColor: string, e: React.MouseEvent) => {
+    dispatch({ type: ActionTypes.SetIsLoading, payload: { value: true } });
+
     e.stopPropagation();
     e.preventDefault();
     const idForDispatch =
@@ -28,6 +30,7 @@ const ColorsChose: React.FC<Props> = ({ selectedProduct }) => {
       if (payload) {
         dispatch({ type: ActionTypes.AddSelectedProduct, payload });
       }
+      dispatch({ type: ActionTypes.SetIsLoading, payload: { value: false } });
     });
   };
 
@@ -41,7 +44,7 @@ const ColorsChose: React.FC<Props> = ({ selectedProduct }) => {
             className={classNames('details__colors--item', {
               'chosen-color': elem === color,
             })}
-            to={`../${namespaceId}-${capacity.toLowerCase()}-${correctedItem}`}
+            to={`/${namespaceId}-${capacity.toLowerCase()}-${correctedItem}`}
             key={elem}
             onClick={e => handleOnColorChange(correctedItem, e)}
           >

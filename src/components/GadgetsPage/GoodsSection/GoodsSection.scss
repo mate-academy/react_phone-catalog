@@ -1,11 +1,14 @@
 @import 'src/components/ui/utils/style/variables';
 
 .goods-section{
+  position: relative;
   padding-top: 24px;
+  height: 100%;
 
   &__main {
     display: grid;
     justify-items: center;
+    padding-bottom: 80px;
 
     grid-template-columns: repeat(auto-fill, minmax(212px, 1fr));
     gap: 40px 16px;
@@ -23,7 +26,7 @@
     text-align: center;
 
     &--image {
-      max-width: 600px;
+      max-width: 440px;
       width: 100%;
     }
 

@@ -71,9 +71,7 @@ const GadgetsPage: React.FC<Props> = ({ type }) => {
 
           <AnimatedTitle text={isPhonesPage ? 'Mobile Phones' : type} />
 
-          <div className="gadgets__sub-title">
-            {cardsToSend.length} item on page
-          </div>
+          <div className="gadgets__sub-title">{cardsToSend.length} Models</div>
           {notFavourite && (
             <div className="gadgets__filter">
               <Filter

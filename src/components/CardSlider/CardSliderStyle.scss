@@ -1,5 +1,12 @@
 @import 'src/components/ui/utils/style/variables';
 
+.card__swiper {
+  & .swiper-slide{
+    min-height: 100% !important;
+    height: auto !important;
+  }
+}
+
 .swiper-button-next, .swiper-button-prev {
   color: #000 !important;
   background-color: rgba(255, 255, 255, 0.7) !important; 
@@ -75,9 +82,5 @@
     & .swiper-slide {
       width: 272px !important;
     }
-  }
-  .swiper-wrapper {
-    // box-sizing: content-box !important;
-    // margin: 0 auto !important;
   }
 }

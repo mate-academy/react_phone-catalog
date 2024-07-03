@@ -15,14 +15,12 @@
   }
 
   &__no-items {
-    // position: relative;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
     &--text {
-      // position: absolute;
       font-size: 50px;
       color: $Elements;
       display: flex;

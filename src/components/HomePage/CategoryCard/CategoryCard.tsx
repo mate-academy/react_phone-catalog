@@ -4,7 +4,7 @@ import './CategoryCardStyle.scss';
 
 interface Props {
   title: string;
-  subTitle: string;
+  subTitle: number;
   imgUrl: string;
   UrlTo: string;
 }

@@ -5,6 +5,7 @@ import './GoodsSection.scss';
 import Pagination from '../Pagination/Pagination';
 import { StateContext } from 'src/store';
 import { PageType } from 'src/types/PageType';
+import { useLocation } from 'react-router-dom';
 
 interface Props {
   cards: Product[];
@@ -21,10 +22,13 @@ const GoodsSection: React.FC<Props> = ({ cards, filters, type }) => {
   const [activePage, setActivePage] = useState(1);
   const [pages, setPages] = useState(0);
   const [activeSection, setActiveSection] = useState(1);
-  const { favourites } = useContext(StateContext);
 
+  const { favourites } = useContext(StateContext);
+  const location = useLocation().pathname;
   const { sortBy, itemsPerPage } = filters;
-  const isPagination = itemsPerPage !== 'all';
+
+  const isPagination =
+    itemsPerPage !== 'all' && !location.indexOf(PageType.Favourite);
   const isFavouriteNoItems =
     favourites.length === 0 && type === PageType.Favourite;
 
@@ -77,11 +81,13 @@ const GoodsSection: React.FC<Props> = ({ cards, filters, type }) => {
           <h5 className="goods-section__no-items--text">No items Selected</h5>
         </div>
       )}
-      <div className="goods-section__main">
-        {itemsToMap.map(item => (
-          <Card data={item} key={item.itemId} />
-        ))}
-      </div>
+      {itemsToMap.length > 0 && (
+        <div className="goods-section__main">
+          {itemsToMap.map(item => (
+            <Card data={item} key={item.itemId} />
+          ))}
+        </div>
+      )}
       {isPagination && (
         <div className="goods-section__footer pagination">
           <Pagination

@@ -60,6 +60,10 @@
   }
 }
 
+.image-upper__dekstop {
+  display: none !important;
+}
+
 @media(min-width:640px) {
   .home-slider {
 
@@ -67,10 +71,12 @@
       display: block;
     }
   }
-  
-  // .mySwiper { 
-  //   & > .swiper {
-  //     aspect-ratio: 4 / 1.54 !important;
-  //   }
-  // }
+
+  .image-under__dekstop {
+    display: none !important;
+  }
+
+  .image-upper__dekstop {
+   display: block !important;
+  }  
 }
