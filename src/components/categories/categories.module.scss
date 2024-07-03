@@ -1,0 +1,264 @@
+.categoriesWrapper {
+  max-width: 1400px
+}
+
+.categoriesSections {
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.categoriesTitle {
+  color: #0F0F11;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.32px;
+  margin-bottom: 24px;
+
+  &Dark {
+    color:  #F1F2F9;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+  }
+}
+
+.categoriesContainer {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  gap: 16px;
+}
+
+.mobileLink {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+}
+
+.mobilePhoneImg {
+  object-fit: cover;
+  display: flex;
+  width: 100%;
+  height: 368px;
+  border-radius: 8px;
+  background: rgb(94, 90, 90) 50% / cover no-repeat;
+  transition: opacity 0.6s ease, transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+.tabletImg {
+  object-fit: cover;
+  width: 100%;
+  height: 368px;
+  border-radius: 8px;
+  background: rgb(180, 177, 177) 50% / cover no-repeat;
+  transition: opacity 0.6s ease, transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+.accesoriesImg {
+  object-fit: cover;
+  display: flex;
+  width: 100%;
+  height: 368px;
+  border-radius: 8px;
+  background: rgb(107, 3, 3) 50% / cover no-repeat;
+  transition: opacity 0.6s ease, transform 0.5s ease-in-out;
+
+  &:hover {
+    transform: scale(1.02);
+    opacity: 0.7;
+  }
+}
+
+.categoriesProductContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.qantity {
+  display: flex;
+  color: #0F0F11;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: normal;
+}
+
+.models {
+  display: flex;
+  margin-top: 16px;
+  color: #89939A;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+
+  .categoriesProductContainer {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .categoriesContainer {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  .mobilePhoneImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(94, 90, 90) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  .tabletImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(180, 177, 177) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  .accesoriesImg {
+    width: 100%;
+    height: 100%;
+    border-radius: 8px;
+    background: rgb(107, 3, 3) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  .quantityProduct {
+    max-width: 640px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-top: 16px;
+  }
+}
+
+
+@media (min-width:320px) and (max-width: 639px) {
+  .categoriesSections {
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .categoriesContainer {
+    margin: 0 auto;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: left;
+    gap: 16px;
+  }
+
+  .mobileLink {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  .mobilePhoneImg {
+    width: 258px;
+    height: 258px;
+    border-radius: 8px;
+    background: url(./Pictures/phone.png) rgb(94, 90, 90) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  .categoriesTitle {
+    text-align: center;
+    color: #0F0F11;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.32px;
+    margin-bottom: 24px;
+
+    &Dark {
+      text-align: center;
+      color:  #F1F2F9;
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 41px;
+      letter-spacing: -0.32px;
+      margin-bottom: 24px;
+    }
+  }
+
+  .tabletImg {
+    width: 258px;
+    height: 258px;
+    border-radius: 8px;
+    background: url(./Pictures/tablets.png) rgb(180, 177, 177) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+
+  .accesoriesImg{
+    width: 258px;
+    height: 258px;
+    border-radius: 8px;
+    background: url(./Pictures/accesories.png) rgb(107, 3, 3) 50% / cover no-repeat;
+    transition: opacity 0.3s ease;
+
+    &:hover {
+      transform: scale(1.02);
+      opacity: 0.7;
+    }
+  }
+}
+
+
