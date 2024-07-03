@@ -22,6 +22,18 @@
     "itemsPerPage": "Кількість на сторінці",
     "newest": "Новизною",
     "alphabetically": "Алфавітом",
-    "cheapest": "Найдешевше"
+    "cheapest": "Найдешевше",
+    "resolution": "Розширення екрану",
+    "processor": "Процессор",
+    "builtInMemory": "Вбудована пам'ять",
+    "camera": "Камера",
+    "zoom": "Maштаб",
+    "cell": "Мережа",
+    "back": "Назад",
+    "availableColors": "Доступні кольори",
+    "selectCapacity": "Виберіть ємність",
+    "about": "Детальніше",
+    "techSpecs": "Технічні характеристики",
+    "youMayAlsoLike": "Вам також може сподобатися"
   }
 }

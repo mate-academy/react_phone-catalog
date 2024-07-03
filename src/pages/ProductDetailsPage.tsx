@@ -11,6 +11,10 @@ import { AvailableColors } from '../enums/AvailableColors';
 import { IconFavorites } from '../components/Icons/IconFavorites';
 import { ThemeContext } from '../store/ThemeProvider';
 import classNames from 'classnames';
+import { SectionCards } from '../components/Main/SectionCards';
+import { ProductsContext } from '../store/ProductsProvider';
+import { changeIdsParams } from '../utils/changeIdsParams';
+import { LanguageContext } from '../store/LanguageProvider';
 
 type Props = {
   type: Category;
@@ -18,7 +22,9 @@ type Props = {
 
 export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   const { productId } = useParams<{ productId: string }>();
+  const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
+  const { products } = useContext(ProductsContext);
   const navigate = useNavigate();
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
@@ -29,7 +35,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       let response = await getPhones(type);
 
       let detailsProduct;
-
       if (response) {
         detailsProduct = response.find(item => item.id === productId);
 
@@ -49,7 +54,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
   const {
     // id,
-    // category,
+    category,
     // namespaceId,
     name,
     capacityAvailable,
@@ -67,18 +72,9 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     camera,
     zoom,
     cell,
-  } = categoryProduct; 
+  } = categoryProduct;
 
-  function changeIdsParams(replaceItem: string, onNewItem: string) {
-    const newProductIds = productId
-      ?.split('-')
-      .join(' ')
-      .replace(replaceItem.toLowerCase(), onNewItem.toLowerCase())
-      .split(' ')
-      .join('-');
-
-    return newProductIds;
-  }
+  const recomended = products.filter(item => item.category === category);
 
   return (
     <div
@@ -89,7 +85,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       <BreadCrumbs />
 
       <span className={style.product__back} onClick={() => navigate(-1)}>
-        Back
+        {t('back')}
       </span>
 
       <h1 className={style.product__phoneName}>{name}</h1>
@@ -126,7 +122,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
         </div>
 
         <div className={style.product__paramsContainer}>
-          <p className={style.product__namesParams}>Available colors</p>
+          <p className={style.product__namesParams}>{t('availableColors')}</p>
           <p className={style.product__ids}>ID: 802390</p>
 
           <div className={style.product__availableColors}>
@@ -136,7 +132,11 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
                   AvailableColors[currentColor as keyof typeof AvailableColors],
               };
 
-              const newColorIds = changeIdsParams(color, currentColor);
+              const newColorIds = changeIdsParams(
+                color,
+                currentColor,
+                productId,
+              );
               return (
                 <Link
                   to={`../${newColorIds}`}
@@ -153,10 +153,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
           <span className={style.product__line} />
 
           <div className={style.product__capacityBlock}>
-            <p className={style.product__namesParams}>Select capacity</p>
+            <p className={style.product__namesParams}>{t('capacity')}</p>
             <div className={style.product__capacityList}>
               {capacityAvailable.map(item => {
-                const newCapacityIds = changeIdsParams(capacity, item);
+                const newCapacityIds = changeIdsParams(
+                  capacity,
+                  item,
+                  productId,
+                );
 
                 return (
                   <Link
@@ -181,26 +185,28 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
             </div>
 
             <div className={style.product__orderButtons}>
-              <button className={style.product__addToCart}>Add to cart</button>
+              <button className={style.product__addToCart}>
+                {t('addToCart')}
+              </button>
               <button className={style.product__favorites}>
                 <IconFavorites />
               </button>
             </div>
 
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Screen</p>
+              <p className={style.product__shortDesKey}>{t('screen')}</p>
               <p className={style.product__shortDesValue}>{screen}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Resolution</p>
+              <p className={style.product__shortDesKey}>{t('resolution')}</p>
               <p className={style.product__shortDesValue}>{resolution}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Processor</p>
+              <p className={style.product__shortDesKey}>{t('processor')}</p>
               <p className={style.product__shortDesValue}>{processor}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>RAM</p>
+              <p className={style.product__shortDesKey}>{t('ram')}</p>
               <p className={style.product__shortDesValue}>{ram}</p>
             </div>
           </div>
@@ -209,7 +215,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
       <div className={style.product__gridContainer}>
         <section className={style.product__aboutSection}>
-          <h2 className={style.product__sectionTitle}>About</h2>
+          <h2 className={style.product__sectionTitle}>{t('about')}</h2>
           <span className={style.product__line} />
 
           {description.map(({ title, text }) => (
@@ -220,43 +226,47 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
           ))}
         </section>
         <section className={style.product__techSpecsSection}>
-          <h2 className={style.product__sectionTitle}>Tech specs</h2>
+          <h2 className={style.product__sectionTitle}>{t('techSpecs')}</h2>
           <span className={style.product__line} />
           <div className={style.product__techSpecsParams}>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Screen</p>
+              <p className={style.product__shortDesKey}>{t('screen')}</p>
               <p className={style.product__shortDesValue}>{screen}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Resolution</p>
+              <p className={style.product__shortDesKey}>{t('resolution')}</p>
               <p className={style.product__shortDesValue}>{resolution}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Processor</p>
+              <p className={style.product__shortDesKey}>{t('processor')}</p>
               <p className={style.product__shortDesValue}>{processor}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>RAM</p>
+              <p className={style.product__shortDesKey}>{t('ram')}</p>
               <p className={style.product__shortDesValue}>{ram}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Built in memory</p>
+              <p className={style.product__shortDesKey}>{t('builtInMemory')}</p>
               <p className={style.product__shortDesValue}>{capacity}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Camera</p>
+              <p className={style.product__shortDesKey}>{t('camera')}</p>
               <p className={style.product__shortDesValue}>{camera}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Zoom</p>
+              <p className={style.product__shortDesKey}>{t('zoom')}</p>
               <p className={style.product__shortDesValue}>{zoom}</p>
             </div>
             <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>Cell</p>
+              <p className={style.product__shortDesKey}>{t('cell')}</p>
               <p className={style.product__shortDesValue}>{cell}</p>
             </div>
           </div>
         </section>
+      </div>
+
+      <div>
+        <SectionCards products={recomended} title={'You may also like'} />
       </div>
     </div>
   );

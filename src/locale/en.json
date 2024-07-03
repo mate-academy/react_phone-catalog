@@ -22,6 +22,18 @@
     "itemsPerPage": "Items on page",
     "newest": "Newest",
     "alphabetically": "Alphabetically",
-    "cheapest": "Cheapest"
+    "cheapest": "Cheapest",
+    "resolution": "Resolution",
+    "processor": "Processor",
+    "builtInMemory": "Built in memory",
+    "camera": "Camera",
+    "zoom": "Zoom",
+    "cell": "Cell",
+    "back": "Back",
+    "availableColors": "Available Colors",
+    "selectCapacity": "Select capacity",
+    "about": "About",
+    "techSpecs": "Tech specs",
+    "youMayAlsoLike": "You may also like it"
   }
 }
