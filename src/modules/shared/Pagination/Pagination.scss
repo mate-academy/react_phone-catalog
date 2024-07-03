@@ -5,8 +5,9 @@
 
   &__buttons{
     display: flex;
+
     flex-wrap: wrap;
-    column-gap: 8px;
+    gap: 8px;
   }
 
   &__button{
