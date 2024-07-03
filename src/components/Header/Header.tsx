@@ -56,6 +56,12 @@ export const Header = () => {
     return searchCondition;
   }, [searchCondition, phonesLocation, tabletsLocation, accessoriesLocation]);
 
+  const isShowSearchForm = useMemo(() => {
+    const pathName = location.pathname.split('/');
+
+    return pathName.length > 2;
+  }, [location.pathname]);
+
   return (
     <header
       className={classNames('header', { 'header--homePage': homeLocation })}
@@ -118,7 +124,9 @@ export const Header = () => {
 
       <div className="header__icons">
         <ThemeSwitcher />
-        {searchCondition && <Search placeholder={placeholderValue} />}
+        {searchCondition && !isShowSearchForm && (
+          <Search placeholder={placeholderValue} />
+        )}
         {shouldShowBurgerMenu && <BurgerMenu />}
         <Link to="/favorites" className="header__iconsBlock">
           <div className="header__iconsFavorites">

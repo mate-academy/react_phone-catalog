@@ -19,6 +19,7 @@ import { Loader } from '../../components/Loader/Loader';
 import { Footer } from '../../components/Footer/Footer';
 import { NotFound } from '../../components/NotFound/NotFound';
 import { BackButton } from '../../components/BackButton';
+import { unusualColor } from '../../utils/productDetailsMethods';
 
 type Params = {
   itemId: string;
@@ -267,7 +268,7 @@ export const ProductDetailsPage: React.FC = () => {
                         productDetails__mainDetales__colors__circle
                         "
                               style={{
-                                backgroundColor: color,
+                                backgroundColor: unusualColor(color),
                               }}
                             />
                           </button>

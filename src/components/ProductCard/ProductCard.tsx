@@ -28,7 +28,10 @@ export const ProductCard: React.FC<ProductData> = ({ productData }) => {
   return (
     <>
       <div className="card">
-        <Link to={`${itemId}`} onClick={() => setCategoryType(category)}>
+        <Link
+          to={`/${category}/${itemId}`}
+          onClick={() => setCategoryType(category)}
+        >
           <div className="card__imageContainer">
             <img src={`${image}`} alt="card" className="card__image" />
           </div>
