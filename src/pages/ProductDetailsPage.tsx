@@ -59,15 +59,15 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     colorsAvailable,
     color,
     images,
-    // description,
+    description,
     screen,
     resolution,
     processor,
     ram,
-    // camera,
-    // zoom,
-    // cell,
-  } = categoryProduct;
+    camera,
+    zoom,
+    cell,
+  } = categoryProduct; 
 
   function changeIdsParams(replaceItem: string, onNewItem: string) {
     const newProductIds = productId
@@ -205,6 +205,58 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className={style.product__gridContainer}>
+        <section className={style.product__aboutSection}>
+          <h2 className={style.product__sectionTitle}>About</h2>
+          <span className={style.product__line} />
+
+          {description.map(({ title, text }) => (
+            <article key={title}>
+              <h2 className={style.product__articleTitle}>{title}</h2>
+              <p className={style.product__sectionParagraph}>{text}</p>
+            </article>
+          ))}
+        </section>
+        <section className={style.product__techSpecsSection}>
+          <h2 className={style.product__sectionTitle}>Tech specs</h2>
+          <span className={style.product__line} />
+          <div className={style.product__techSpecsParams}>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Screen</p>
+              <p className={style.product__shortDesValue}>{screen}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Resolution</p>
+              <p className={style.product__shortDesValue}>{resolution}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Processor</p>
+              <p className={style.product__shortDesValue}>{processor}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>RAM</p>
+              <p className={style.product__shortDesValue}>{ram}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Built in memory</p>
+              <p className={style.product__shortDesValue}>{capacity}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Camera</p>
+              <p className={style.product__shortDesValue}>{camera}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Zoom</p>
+              <p className={style.product__shortDesValue}>{zoom}</p>
+            </div>
+            <div className={style.product__shortDesription}>
+              <p className={style.product__shortDesKey}>Cell</p>
+              <p className={style.product__shortDesValue}>{cell}</p>
+            </div>
+          </div>
+        </section>
       </div>
     </div>
   );

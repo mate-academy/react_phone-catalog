@@ -46,6 +46,7 @@
     grid-template-columns: repeat(24, 1fr);
     position: relative;
     column-gap: 16px;
+    margin-bottom: 80px;
   }
 
   &__imagesList {
@@ -88,7 +89,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    grid-column: 3 / 11;
+    grid-column: 3 / 13;
   }
 
   &__mainImage {
@@ -99,7 +100,7 @@
   &__paramsContainer {
     display: flex;
     flex-direction: column;
-    grid-column: 12 / 21;
+    grid-column: 14 / 21;
   }
 
   &__namesParams {
@@ -108,7 +109,7 @@
     font-size: 12px;
     font-weight: 700;
     line-height: 15px;
-    color: #89939a;
+    color: $paragraphTextColor;
   }
 
   &__availableColors {
@@ -145,7 +146,9 @@
   }
 
   &__line {
+    display: flex;
     border-bottom: 1px solid $detailsDivideLine;
+    width: 100%;
   }
 
   &__capacityBlock {
@@ -268,6 +271,43 @@
     line-height: 15px;
     right: 0px;
   }
+
+  &__aboutSection {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / 13;
+    width: 100%;
+  }
+
+  &__sectionTitle {
+    display: flex;
+    font-size: 22px;
+    line-height: 31px;
+    margin-bottom: 16px;
+  }
+
+  &__articleTitle {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-top: 32px;
+    padding-bottom: 16px;
+  }
+
+  &__sectionParagraph {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $paragraphTextColor;
+  }
+
+  &__techSpecsSection {
+    grid-column: 14 / -1;
+  }
+
+  &__techSpecsParams {
+    margin-top: 25px;
+  }
 }
 
 @include onTablet {
@@ -289,6 +329,16 @@
     &__paramsContainer {
       grid-column: 8 / 13;
     }
+
+    &__aboutSection {
+      grid-column: 1 / -1;
+    }
+
+    &__techSpecsSection {
+      margin-top: 64px;
+      margin-bottom: 64px;
+      grid-column: 1 / -1;
+    }
   }
 }
 
@@ -304,6 +354,7 @@
 
     &__gridContainer {
       grid-template-columns: repeat(4, 1fr);
+      margin-bottom: 0;
       grid-template-areas:
         'photo photo photo photo'
         'image image image image'
@@ -326,6 +377,10 @@
 
     &__paramsContainer {
       grid-area: params;
+    }
+
+    &__techSpecsSection {
+      margin-bottom: 56px;
     }
   }
 }
