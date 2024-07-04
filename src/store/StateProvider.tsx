@@ -42,6 +42,7 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       return JSON.parse(data);
     } catch (e) {
       localStorage.removeItem('favorites');
+
       return [];
     }
   });

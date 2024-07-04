@@ -17,7 +17,7 @@ export const CartItems = () => {
         <div className={style.cart__gridContainer}>
           <ul className={style.cart__list}>
             {products.map(item => (
-              <li className={style.cart__item}>
+              <li className={style.cart__item} key={item.itemId}>
                 <div className={style.cart__itemWrapper}>
                   <button className={style.cart__closeButton}>
                     <img src={close} alt="Close icon" />

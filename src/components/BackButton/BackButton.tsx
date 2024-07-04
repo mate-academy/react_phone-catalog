@@ -12,10 +12,7 @@ export const BackButton: React.FC<Props> = ({ className }) => {
   const { t } = useContext(LanguageContext);
 
   return (
-    <span
-      className={`${style.back} ${className}`}
-      onClick={() => navigate(-1)}
-    >
+    <span className={`${style.back} ${className}`} onClick={() => navigate(-1)}>
       {t('back')}
     </span>
   );
