@@ -1,3 +1,5 @@
+@use "../../utils/mixins" as *;
+
 .cart {
   font-family: Montserrat, sans-serif;
   display: flex;
@@ -8,6 +10,10 @@
   transition: all 0.6s ease-in-out;
   margin-bottom: 56px;
 
+  @include for-tablet {
+    padding: 24px;
+  }
+
   &__title {
     width: 288px;
     height: 41px;
@@ -17,6 +23,10 @@
     letter-spacing: -0.01em;
     text-align: left;
     margin-bottom: 15px;
+
+    @include for-tablet {
+      width: 100%;
+    }
   }
 
   &__items_container {
@@ -24,6 +34,10 @@
     flex-direction: column;
     align-items: center;
     justify-content: space-evenly;
+
+    @include for-tablet {
+      width: 100%;
+    }
 
     &__paragraph {
       color: #313237;
@@ -47,6 +61,11 @@
     height: 190px;
     width: 288px;
 
+    @include for-tablet {
+      width: 100%;
+      padding: 24px;
+    }
+
     &__total_price {
       font-size: 32px;
       font-weight: 800;
@@ -66,7 +85,11 @@
     &__separator {
       border: 1px solid #E2E6E9;
       height: 1px;
-      width: 288px;
+      width: 256px;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
 
     &__checkout {
@@ -78,6 +101,10 @@
       font-size: 14px;
       line-height: 50px;
       text-align: center;
+
+      @include for-tablet {
+        width: 100%;
+      }
     }
   }
 

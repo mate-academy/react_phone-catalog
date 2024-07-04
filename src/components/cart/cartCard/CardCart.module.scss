@@ -1,3 +1,5 @@
+@use "../../../utils/mixins" as *;
+
 .cartCard {
   width: 288px;
   height: 160px;
@@ -7,11 +9,21 @@
   justify-content: space-around;
   margin-bottom: 15px;
 
+  @include for-tablet {
+    width: 100%;
+    align-items: center;
+    flex-direction: row;
+  }
+
   &__product {
     display: flex;
     height: 80px;
     justify-content: space-evenly;
     align-items: center;
+
+    @include for-tablet {
+      width: 60%;
+    }
 
     &__closeButton {
       width: 15px;
@@ -33,6 +45,10 @@
   &__container {
     display: flex;
     justify-content: space-around;
+
+    @include for-tablet {
+      width: 40%;
+    }
 
     &__quantity {
       display: flex;

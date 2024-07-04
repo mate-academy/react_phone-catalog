@@ -1,3 +1,5 @@
+@use '../../utils/mixins' as *;
+
 .fav {
   font-family: Montserrat, sans-serif;
   display: flex;
@@ -5,6 +7,12 @@
   align-items: center;
   overflow: auto;
   max-height: calc(100vh - 49px);
+
+  @include for-tablet {
+    align-items: flex-start;
+    padding: 24px;
+    max-height: calc(100vh - 68px);
+  }
 
 
   &__title {
@@ -14,6 +22,11 @@
     font-weight: 800;
     letter-spacing: 1px;
     width: 288px;
+    margin-bottom: 8px;
+
+    @include for-tablet {
+      font-size: 48px;
+    }
   }
 
   &__paragraph {
@@ -22,11 +35,18 @@
     font-weight: 600;
     font-size: 14px;
     line-height: 21px;
+    margin-bottom: 32px;
   }
 
   &__container {
     width: 288px;
     display: flex;
     flex-direction: column;
+
+    @include for-tablet {
+      width: 100%;
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
   }
 }

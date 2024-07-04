@@ -1,3 +1,5 @@
+@use "../../utils/mixins" as *;
+
 .header {
   display: flex;
   align-items: center;
@@ -8,11 +10,19 @@
   transition: all 0.6s ease-in-out;
   margin-bottom: 1px;
 
+  @include for-tablet {
+    height: 64px;
+  }
+
   &__container--1,
   &__container--2 {
     display: flex;
     height: 48px;
     width: fit-content;
+
+    @include for-tablet {
+      height: 68px;
+    }
   }
 
   &__container--1 {
@@ -27,6 +37,10 @@
     justify-content: end;
     height: 48px;
 
+    @include for-tablet {
+      height: 64px;
+    }
+
     &__fav {
       width: 48px;
       height: 48px;
@@ -37,6 +51,11 @@
 
       &__link {
         position: relative;
+      }
+
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
       }
 
       &__number {
@@ -63,6 +82,11 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
+      }
 
       &__link {
         position: relative;
@@ -198,6 +222,10 @@
         font-size: 12px;
         line-height: 48px;
         letter-spacing: 2px;
+
+        @include for-tablet {
+          line-height: 64px;
+        }
       }
     }
   }
