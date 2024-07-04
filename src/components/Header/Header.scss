@@ -1,0 +1,253 @@
+@import '../../styles/utils';
+
+.header {
+  position: sticky;
+  height: 48px;
+  min-width: 320px;
+  border-bottom: 1px solid $elements-color;
+  background-color: $white-color;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &--dark-theme {
+    background-color: $dark-bg-color;
+    color: $bg-color;
+  }
+
+  &__big-block {
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 48px;
+    }
+  }
+
+  &__logo-and-menu {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__logo {
+    display: flex;
+    padding: 13px 0 13px 16px;
+  }
+
+  &__logo-image {
+    width: 64px;
+    height: 22px;
+
+    @include on-desktop {
+      width: 80px;
+      height: 28px;
+    }
+  }
+
+  &__menu {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 16px;
+    border-left: 1px solid $elements-color;
+    border-bottom: 1px solid $elements-color;
+    font-size: 16px;
+    background-color: $white-color;
+
+    &--dark-theme {
+      color: $bg-color;
+      background-color: $dark-bg-color;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    &:hover {
+      &::before {
+        color: $second-text-color;
+      }
+    }
+  }
+
+  &__actions {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__navigation {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__navigation-list {
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+}
+
+.extra {
+  display: none;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &__container {
+    display: flex;
+    height: 48px;
+    align-items: center;
+
+    @include on-desktop {
+      height: 64px;
+    }
+  }
+
+  &__selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-inline: 16px;
+    border-left: 1px solid $elements-color;
+    font-size: 16px;
+    height: 100%;
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+
+    &:hover {
+      &::before {
+        color: $second-text-color;
+      }
+    }
+  }
+}
+
+.favorites {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 16px;
+  font-size: 16px;
+  height: 100%;
+  border-left: 1px solid $elements-color;
+  border-bottom: 2px solid transparent;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+
+  &--active {
+    border-bottom: 2px solid $main-text-color;
+  }
+
+  &--dark-theme-active {
+    border-bottom: 2px solid $bg-color;
+  }
+
+  &__number-of-favorites {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background-color: $pink-color;
+    color: $white-color;
+    top: 30%;
+    left: 50%;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 600;
+    transition: background-color $transition-duration;
+  }
+
+  &:hover > div {
+    background-color: #f59bd1;
+  }
+
+  &:hover {
+    &::before {
+      color: $second-text-color;
+    }
+  }
+}
+
+.selected {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-inline: 16px;
+  border-left: 1px solid $elements-color;
+  font-size: 16px;
+  height: 100%;
+  border-bottom: 2px solid transparent;
+
+  @include on-desktop {
+    padding-inline: 24px;
+  }
+
+  &--active {
+    border-bottom: 2px solid $main-text-color;
+  }
+
+  &--dark-theme-active {
+    border-bottom: 2px solid $bg-color;
+  }
+
+  &__number-of-selected {
+    position: absolute;
+    height: 14px;
+    width: 14px;
+    background-color: $pink-color;
+    color: $white-color;
+    top: 30%;
+    left: 50%;
+    border: 1px solid $white-color;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    font-weight: 600;
+    transition: background-color $transition-duration;
+  }
+
+  &:hover > div {
+    background-color: #f59bd1;
+  }
+
+  &:hover {
+    &::before {
+      color: $second-text-color;
+    }
+  }
+}

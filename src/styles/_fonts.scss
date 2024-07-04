@@ -1,0 +1,49 @@
+@import 'https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Manrope:wght@200..800&family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap';
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url('../fonts/mont-regular.eot');
+  src:
+    local('O'),
+    url('../fonts/mont-regular.woff') format('woff'),
+    url('../fonts/mont-regular.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url('../fonts/mont-semibold.eot');
+  src:
+    local('O'),
+    url('../fonts/mont-semibold.woff') format('woff'),
+    url('../fonts/mont-semibold.ttf') format('truetype');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url('../fonts/mont-bold.eot');
+  src:
+    local('O'),
+    url('../fonts/mont-bold.woff') format('woff'),
+    url('../fonts/mont-bold.ttf') format('truetype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: Mont;
+  font-display: swap;
+  src: url('../fonts/mont-heavy.eot');
+  src:
+    local('O'),
+    url('../fonts/mont-heavy.woff') format('woff'),
+    url('../fonts/mont-heavy.ttf') format('truetype');
+  font-weight: 800;
+  font-style: normal;
+}

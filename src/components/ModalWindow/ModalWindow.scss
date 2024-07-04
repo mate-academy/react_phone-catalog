@@ -1,0 +1,40 @@
+@import '../../styles/utils';
+
+.modal-window {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  left: 0;
+  top: 0;
+  background-color: rgba(130, 115, 115, 0.7);
+
+  &__container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    padding: 25px;
+    width: 400px;
+    border-radius: 16px;
+    border: 1px solid $elements-color;
+    background-color: $white-color;
+    margin: 0 auto;
+
+    &--dark-theme {
+      background-color: $dark-bg-color;
+      color: $bg-color;
+    }
+  }
+
+  &__text {
+    font-family: $main-font-family;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 150%;
+    margin-bottom: 15px;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 15px;
+  }
+}

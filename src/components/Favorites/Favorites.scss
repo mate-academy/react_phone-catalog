@@ -1,0 +1,33 @@
+@import '../../styles/utils';
+
+.favorites-page {
+  padding-top: 24px;
+  max-width: 1136px;
+  margin: 0 auto;
+  width: 100%;
+  flex: 1 1 auto;
+  
+  @include content-padding-inline;
+
+  &__bread-crumbs {
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__number-of-models {
+    font-weight: 600;
+    color: $second-text-color;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+}
