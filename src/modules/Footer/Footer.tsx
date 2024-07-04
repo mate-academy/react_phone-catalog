@@ -5,10 +5,14 @@ import { MoveButton as MoveUp } from '../shared/Buttons/MoveButtons';
 import { getLogo } from '../../services/getLogo';
 import { SidebarContext } from '../../store/SidebarContext';
 import { scrollToTop } from '../../services/scrollToTop';
+import { WindowSizeContext } from '../../store/WindowSizeContext';
 
 export const Footer = React.memo(() => {
   const { isOpenSidebar } = useContext(SidebarContext);
+  const { windowHeight, scrollHeight } = useContext(WindowSizeContext);
   const { logo } = getLogo();
+
+  const visibleButtonScroll = scrollHeight - windowHeight > 150;
 
   return (
     <div className="footer" style={isOpenSidebar ? { display: 'none' } : {}}>
@@ -45,10 +49,14 @@ export const Footer = React.memo(() => {
         </div>
 
         <div className="footer__back-to-top">
-          <p className="footer__back-to-top-title">Back to top</p>
-          <div className="footer__back-to-top-button">
-            <MoveUp onMove={() => scrollToTop(true)} />
-          </div>
+          {visibleButtonScroll && (
+            <>
+              <p className="footer__back-to-top-title">Back to top</p>
+              <div className="footer__back-to-top-button">
+                <MoveUp onMove={() => scrollToTop(true)} />
+              </div>
+            </>
+          )}
         </div>
       </div>
     </div>

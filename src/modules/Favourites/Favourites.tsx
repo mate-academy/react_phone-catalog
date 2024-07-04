@@ -1,14 +1,20 @@
 import { useLocation } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Breadcrumbs } from '../shared/Breadcrumbs';
 import { FavoutitesContext } from '../../store/FavouritesContext';
 import { ProductCard } from '../shared/ProductCard';
+import { WindowSizeContext } from '../../store/WindowSizeContext';
 
 export const Favourites = () => {
   const { favouritesList } = useContext(FavoutitesContext);
+  const { setScrollHeight } = useContext(WindowSizeContext);
 
   const { pathname } = useLocation();
   const category = pathname.slice(1);
+
+  useEffect(() => {
+    setScrollHeight(document.documentElement.scrollHeight);
+  }, [setScrollHeight, favouritesList]);
 
   return (
     <div className="favourites">

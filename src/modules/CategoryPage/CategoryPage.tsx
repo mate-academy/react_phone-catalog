@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../shared/ProductCard';
 import { Dropdown } from './Dropdown';
@@ -17,6 +17,7 @@ import { Pagination } from './Pagination';
 import { scrollToTop } from '../../services/scrollToTop';
 import { Option } from '../../types/Option';
 import { getSearchWith } from '../../services/getSearchWith';
+import { WindowSizeContext } from '../../store/WindowSizeContext';
 
 type Props = {
   title: string;
@@ -35,6 +36,8 @@ function getValue(
 export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   const { pathname } = useLocation();
   const category = pathname.slice(1);
+
+  const { setScrollHeight } = useContext(WindowSizeContext);
 
   const [searchParams, setSearchParams] = useSearchParams();
   const perPage = searchParams.get('perPage') || '';
@@ -101,6 +104,10 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
     defaultPerPage.criteria,
     defaultSort.criteria,
   ]);
+
+  useEffect(() => {
+    setScrollHeight(document.documentElement.scrollHeight);
+  }, [setScrollHeight, dataLoaded]);
 
   function handlePerPageChange(value: string) {
     const newPerPage = { perPage: value || null, page: null };

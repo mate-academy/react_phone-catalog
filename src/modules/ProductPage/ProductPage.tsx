@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { useNavigate, useLocation, useParams } from 'react-router-dom';
 import { client } from '../../api';
 import { Device } from '../../types/Device';
@@ -18,6 +18,7 @@ import { AvaliableItems } from './AvaliableItems';
 import { ImagePreview } from './ImagePreview';
 import { getSimilarDevices } from '../../services/getSimilarDevice';
 import { emptyProduct } from '../constants/emptyProduct';
+import { WindowSizeContext } from '../../store/WindowSizeContext';
 
 type Specs = {
   [key: string]: string | string[];
@@ -27,6 +28,8 @@ export const ProductPage: React.FC = React.memo(() => {
   const { itemId } = useParams();
   const { state, pathname } = useLocation();
   const navigate = useNavigate();
+
+  const { setScrollHeight } = useContext(WindowSizeContext);
 
   const category = pathname.split('/')[1];
   const nameDevice = pathname.split('/')[2].split('-').slice(0, -2).join('-');
@@ -120,6 +123,10 @@ export const ProductPage: React.FC = React.memo(() => {
       })
       .catch(() => setErrorSuggestedProduct(true));
   }, [nameDevice]);
+
+  useEffect(() => {
+    setScrollHeight(document.documentElement.scrollHeight);
+  }, [setScrollHeight, loadedDevice]);
 
   const visibleSuggestedProducts =
     loadedSuggestedProduct && !errorLoadedDevice && !errorSuggestedProduct;

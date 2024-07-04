@@ -9,7 +9,7 @@ import { App } from './App';
 import { HomePage } from './modules/HomePage/HomePage';
 import { CategoryPage } from './modules/CategoryPage';
 import { ProductPage } from './modules/ProductPage';
-import { WindowWidthProvider } from './store/WindowWidthContext';
+import { WindowSizeProvider } from './store/WindowSizeContext';
 import { Reload } from './modules/shared/Reload';
 import { ShoppingCart } from './modules/ShoppingCart';
 import { ShoppingCartProvider } from './store/ShoppingCartContext';
@@ -19,7 +19,7 @@ import { FavouritesProvider } from './store/FavouritesContext';
 
 export const Root = () => (
   <Router>
-    <WindowWidthProvider>
+    <WindowSizeProvider>
       <ShoppingCartProvider>
         <FavouritesProvider>
           <ModalWindowProvider>
@@ -64,6 +64,6 @@ export const Root = () => (
           </ModalWindowProvider>
         </FavouritesProvider>
       </ShoppingCartProvider>
-    </WindowWidthProvider>
+    </WindowSizeProvider>
   </Router>
 );

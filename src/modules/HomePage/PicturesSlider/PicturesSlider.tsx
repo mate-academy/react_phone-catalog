@@ -20,10 +20,10 @@ import {
 } from '../../constants/PARAMS_OF_PAGE';
 import { getSliderImages } from '../../../services/getSliderImages';
 import { MoveButton } from '../../shared/Buttons/MoveButtons';
-import { WindowWidthContext } from '../../../store/WindowWidthContext';
+import { WindowSizeContext } from '../../../store/WindowSizeContext';
 
 export const PicturesSlider: React.FC = React.memo(() => {
-  const { windowSize } = useContext(WindowWidthContext);
+  const { windowSize } = useContext(WindowSizeContext);
 
   const [position, setPosition] = useState<number>(0);
   const [imgPosition, setImgPosition] = useState<number>(0);

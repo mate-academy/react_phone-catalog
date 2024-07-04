@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { ProductListCarousel } from '../shared/ProductListCarousel';
 import { PicturesSlider } from './PicturesSlider/PicturesSlider';
 import { ShopByCategory } from './ShopByCategory';
@@ -7,8 +7,10 @@ import { client } from '../../api';
 import { PRODUCT_URL } from "../constants/URL's/URL's";
 import { getMaxDifference } from '../../services/getMaxDifference';
 import { ReloadButton } from '../shared/Buttons/MoveButtons';
+import { WindowSizeContext } from '../../store/WindowSizeContext';
 
 export const HomePage = React.memo(() => {
+  const { setScrollHeight } = useContext(WindowSizeContext);
   const [dataLoaded, setDataLoaded] = useState(false);
   const [error, setError] = useState(false);
   const [products, setProducts] = useState<Product[]>([]);
@@ -30,9 +32,10 @@ export const HomePage = React.memo(() => {
       .then(data => {
         setProducts(data);
         setDataLoaded(true);
+        setScrollHeight(document.documentElement.scrollHeight);
       })
       .catch(() => setError(true));
-  }, []);
+  }, [setScrollHeight]);
 
   const newModels = phones
     .filter(phone => phone.name.toLowerCase().includes(latestPhones))

@@ -4,7 +4,7 @@ import { AddBlock } from '../Buttons/AddBlock';
 import { Product } from '../../../types/Product';
 import { Price } from '../Price';
 import { SpecsItem } from '../SpecsItem';
-import { WindowWidthContext } from '../../../store/WindowWidthContext';
+import { WindowSizeContext } from '../../../store/WindowSizeContext';
 import { WIDTH_DEVICES } from '../../constants/WIDTH_DEVICES';
 import { scrollToTop } from '../../../services/scrollToTop';
 
@@ -28,7 +28,7 @@ export const ProductCard: React.FC<Props> = React.memo(
       category,
     } = product;
 
-    const { windowSize } = useContext(WindowWidthContext);
+    const { windowSize } = useContext(WindowSizeContext);
 
     const { pathname } = useLocation();
     const isCategoryPage = pathname.includes(category);

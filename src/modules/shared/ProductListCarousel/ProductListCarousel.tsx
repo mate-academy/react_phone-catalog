@@ -11,7 +11,7 @@ import {
   GAP_BETWEEN_COLUMNS,
 } from '../../constants/PARAMS_OF_PAGE';
 import { MoveButton } from '../Buttons/MoveButtons';
-import { WindowWidthContext } from '../../../store/WindowWidthContext';
+import { WindowSizeContext } from '../../../store/WindowSizeContext';
 import { getWidtScrollbar } from '../../../services/getWidtScrollbar';
 
 type Props = {
@@ -23,7 +23,7 @@ type Props = {
 
 export const ProductListCarousel: React.FC<Props> = React.memo(
   ({ title, products, dataLoaded, discount }) => {
-    const { windowSize } = useContext(WindowWidthContext);
+    const { windowSize } = useContext(WindowSizeContext);
 
     const [currentSize, setCurrentSize] = useState<number>(windowSize);
 
