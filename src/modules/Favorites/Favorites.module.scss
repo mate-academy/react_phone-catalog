@@ -1,0 +1,54 @@
+@import "../../styles/main";
+
+.container {
+  padding-bottom: 56px;
+  padding-inline: 16px;
+
+  @include container;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}
+
+.title {
+  padding-top: 24px;
+  padding-bottom: 8px;
+
+  @include h1-mobile;
+
+  @include on-desktop {
+    padding-top: 40px;
+
+    @include h2-tablet;
+  }
+}
+
+.count {
+  padding-bottom: 32px;
+
+  @include body-text;
+  
+  color: var(--color-secondary);
+
+  @include on-desktop {
+    padding-bottom: 40px;
+  }
+}
+
+.favorites {
+  padding-inline: 16px;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  row-gap: 40px;
+  justify-content: space-between;
+
+  @include on-tablet {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

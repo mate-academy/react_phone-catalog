@@ -1,0 +1,50 @@
+@import "../../styles/main";
+
+.total {
+  border: 1px solid var(--color-elements);
+  display: flex;
+  flex-direction: column;
+  padding: 24px;
+
+  @include on-desktop {
+    max-height: 206px;
+  }
+}
+
+.top {
+  text-align: center
+}
+
+.totalPrice {
+  @include h2-tablet;
+
+  color: var(--color-white);
+}
+
+.totalCount {
+  @include body-text;
+
+  color: var(--color-secondary);
+  padding-bottom: 16px;
+}
+
+.bottom {
+  border-top: 1px solid var(--color-elements);
+  padding-top: 16px;
+  text-align: center;
+}
+
+.checkout {
+  border: none;
+  padding-block: 14px;
+  width: 100%;
+
+  @include buttons;
+  
+  color: var(--color-white);
+  background-color: var(--color-accent);
+
+  &:hover {
+    background-color: var(--color-accent-hover);
+  }
+}

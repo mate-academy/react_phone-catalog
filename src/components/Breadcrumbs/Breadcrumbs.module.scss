@@ -1,0 +1,54 @@
+@import "../../styles/main";
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  padding-bottom: 24px;
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+
+  .homeLink {
+    display: flex;
+    align-items: center;
+
+    .icon {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  .breadcrumbItem {
+    display: flex;
+    align-items: center;
+
+    .arrow {
+      margin: 0 8px;
+      width: 12px;
+      height: 12px;
+    }
+
+    .link {
+      @include small-text;
+
+      text-decoration: none;
+      color: var(--color-white);
+      transition: color 0.3s;
+      text-transform: capitalize;
+
+      &:hover {
+        color: var(--color-primary-hover);
+      }
+    }
+
+    .current {
+      @include small-text;
+      
+      text-transform: capitalize;
+      font-weight: bold;
+      color: var(--color-secondary);
+    }
+  }
+}
