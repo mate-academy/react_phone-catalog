@@ -1,0 +1,50 @@
+.product-links {
+  @include full-grid;
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__links {
+    display: flex;
+    flex-direction: column;
+    gap: 32px 16px;
+    margin-top: 24px;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__h4, &__title {
+    color: $white;
+  }
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__link {
+    display: inline-block;
+    max-height: 368px;
+    cursor: pointer;
+    @include defaultAnimation;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__text-block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-top: 24px;
+  }
+}

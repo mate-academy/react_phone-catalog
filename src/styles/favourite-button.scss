@@ -1,0 +1,25 @@
+.favourite-button {
+  box-sizing: border-box;
+  display: inline-block;
+  background-image: url('../img/Icons/Favourites.png');
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: inline-block;
+  background-color: $surface-2;
+  cursor: pointer;
+  height: 40px;
+  width: 40px;
+  border: none;
+  @include defaultAnimation;
+
+  &:hover {
+    background-color: $icons;
+  }
+
+  &--active {
+    background-image: url('../img/Icons/Favourites-Filled.png');
+    background-color: transparent;
+    border: 1px solid $elements;
+  }
+}

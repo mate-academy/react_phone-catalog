@@ -1,0 +1,19 @@
+.slide-button {
+  background-image: url('../img/buttons/Slider-Button.png');
+  background-position: center;
+  background-size: cover;
+  width: 32px;
+  height: 32px;
+  box-sizing: border-box;
+  @include defaultAnimation;
+
+  &:hover {
+    background-image: url('../img/buttons/Slider-Button-Hoveer.png');
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: transparent;
+    background-image: url('../img/buttons/Slider-Button-Disabled.png');
+  }
+}

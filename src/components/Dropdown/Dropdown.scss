@@ -1,0 +1,84 @@
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  cursor: pointer;
+
+  &__text {
+    color: $secondary;
+  }
+
+  &__param, &__params {
+    color: $white;
+  }
+
+  &__params {
+    appearance: none;
+    background-color: $surface-2;
+    padding-inline: 12px;
+    box-sizing: border-box;
+    max-width: 176px;
+    height: 40px;
+    outline: none;
+    border: 1px solid $surface-2;
+    position: relative;
+    @include defaultAnimation;
+    display: flex;
+    align-items: center;
+
+    &::after {
+      content: '';
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      background-image: url('../../img/Dropdowns/Arrow-Down.png');
+      background-repeat: no-repeat;
+      background-size: 16px;
+      right: 12px;
+      top: 50%;
+      transform: translateY(-50%);
+      @include defaultAnimation;
+    }
+
+    &:hover {
+      border-color: $icons;
+
+      &::after {
+        background-image: url('../../img/Dropdowns/Arrow-Down-Dark.png');
+      }
+    }
+
+    &-active {
+      &::after {
+        transform: translateY(-50%) rotate(180deg);
+      }
+    }
+  }
+
+  &__param {
+    &-block {
+      position: absolute;
+      left: -1px;
+      bottom: -10px;
+      transform: translateY(100%);
+      z-index: 10;
+      background-color: $black;
+      width: 100%;
+      padding-block: 8px;
+    }
+
+    background-color: transparent;
+    color: $secondary;
+    cursor: pointer;
+    padding-inline: 12px;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    @include defaultAnimation;
+
+    &:hover {
+      color: $white;
+      background-color: $surface-2;
+    }
+  }
+}

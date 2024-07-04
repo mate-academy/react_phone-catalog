@@ -1,0 +1,304 @@
+.product-details {
+  @include full-grid;
+
+  &__title {
+    color: $white;
+    margin-top: 16px;
+  }
+
+  &__visible-content {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 32px;
+    position: relative;
+    gap: 40px;
+
+    @include on-tablet {
+      margin-top: 40px;
+      gap: 17px;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+    }
+  }
+
+  &__id {
+    color: $icons;
+    position: absolute;
+    top: 0;
+    right: 0;
+  }
+
+  &__params {
+    position: relative;
+    max-width: 288px;
+
+    @include on-tablet {
+      max-width: 237px;
+    }
+
+    @include on-desktop {
+      position: static;
+      max-width: 320px;
+    }
+  }
+
+  &__image {
+    object-fit: contain;
+    width: 288px;
+    height: 288px;
+
+    @include on-tablet {
+      width: 287px;
+      height: 287px;
+    }
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__images {
+    display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet{
+      flex-direction: row;
+    }
+  }
+
+  &__image-button {
+    box-sizing: border-box;
+    object-fit: contain;
+    border: 1px solid $elements;
+    cursor: pointer;
+    width: 50px;
+    height: 50px;
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+    }
+
+    &--selected {
+      border-color: $white;
+    }
+  }
+
+  &__images-buttons {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__param-text {
+    color: $secondary;
+  }
+
+  &__color {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border: 2px solid $black;
+    border-radius: 50%;
+    outline: $elements solid 1px;
+
+    &--selected {
+      outline-color: $white;
+    }
+  }
+
+  &__capacities {
+    margin-top: 8px;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__capacity {
+    box-sizing: border-box;
+    width: 63px;
+    height: 32px;
+    border: 1px solid $icons;
+    color: $white;
+    text-decoration: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &--selected {
+      color: $black;
+      background-color: $white;
+      border-color: $white;
+    }
+  }
+
+  &__capacity-block {
+    padding-block: 24px;
+    margin-top: 24px;
+    border-block: 1px solid $icons;
+  }
+
+  &__prices {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    margin-top: 32px;
+  }
+
+  &__price {
+    color: $white;
+  }
+
+  &__old-price {
+    color: $secondary;
+    text-decoration: line-through;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__button {
+    width: 263px;
+    height: 48px;
+  }
+
+  &__favourite-button {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__params-block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__product-params {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__param-name {
+    color: $secondary;
+  }
+
+  &__param {
+    color: $white;
+  }
+
+  &__product-slider {
+    margin-top: 56px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      margin-top: 80px;
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 56px;
+    gap: 64px;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      flex-wrap: nowrap;
+      margin-top: 80px;
+    }
+
+    &-about {
+      @include on-desktop {
+        width: 560px;
+      }
+    }
+
+    &-tech-specs {
+      @include on-desktop {
+        width: 512px;
+      }
+    }
+
+    &-title, &-small-title {
+      color: $white;
+    }
+
+    &-title {
+      padding-bottom: 16px;
+      border-bottom: 1px solid $elements;
+    }
+
+    &-small-title {
+      margin-top: 32px;
+    }
+
+    &-text {
+      margin-top: 16px;
+      color: $secondary;
+    }
+
+    &-params {
+      margin-top: 25px;
+      gap: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &-param-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-param {
+      color: $white;
+      max-width: 50%;
+      text-align: end;
+
+      &-name {
+        color: $secondary;
+        margin-right: 10px;
+      }
+    }
+  }
+
+  &__button-back {
+    margin-top: 24px;
+
+    @include on-tablet {
+      margin-top: 40px;
+    }
+  }
+}
