@@ -45,8 +45,7 @@
 
     @include for-tablet {
       width: 100%;
-      flex-direction: row;
-      flex-wrap: wrap;
+      flex-flow: row wrap;
     }
   }
 }
