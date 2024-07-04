@@ -1,0 +1,50 @@
+.specsList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  list-style: none;
+
+  &__item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__itemTitle {
+    color: var(--secondary);
+  }
+
+  &__itemValue {
+    min-width: 0;
+    flex-shrink: 1;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+  /* stylelint-disable */
+  $variants:
+    1 40% 50%,
+    2 45% 45%,
+    3 30% 60%,
+    4 50% 40%;
+  /* stylelint-enable */
+  $numberOfVariants: 4;
+
+  @each $n, $titleSize, $valueSize in $variants {
+    & > *:nth-child(#{$numberOfVariants}n + #{$n}) {
+      .specsList__itemTitle {
+        &_skeleton {
+          height: 21px;
+          width: $titleSize;
+        }
+      }
+      .specsList__itemValue {
+        &_skeleton {
+          height: 21px;
+          width: $valueSize;
+        }
+      }
+    }
+  }
+}

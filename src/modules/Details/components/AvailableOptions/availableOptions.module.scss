@@ -1,0 +1,15 @@
+.availableOptions {
+  line-height: 0;
+
+  &__title {
+    color: var(--secondary);
+  }
+
+  &__options {
+    margin-top: 8px;
+
+    &_skeleton {
+      height: 35px;
+    }
+  }
+}

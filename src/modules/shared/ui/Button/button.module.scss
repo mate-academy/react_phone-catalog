@@ -1,0 +1,38 @@
+@import 'src/styles/mixins';
+
+.button {
+  $height: 40px;
+  $width: 176px;
+
+  height: $height;
+  width: $width;
+
+  text-align: center;
+  line-height: $height;
+
+  outline: none;
+  border: 0;
+  border-radius: 8px;
+
+  transition:
+    box-shadow var(--transition-specs),
+    color var(--transition-specs),
+    background-color var(--transition-specs),
+    outline var(--transition-specs);
+
+  &_inversed {
+    color: var(--accent);
+    background: var(--bg);
+    outline: 1px solid var(--elements);
+  }
+
+  &_regular {
+    color: var(--bg);
+    background: var(--accent);
+  }
+
+  @include hover {
+    cursor: pointer;
+    box-shadow: 0 3px 13px #17203166;
+  }
+}

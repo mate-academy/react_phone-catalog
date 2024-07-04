@@ -1,0 +1,16 @@
+.prices {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &_skeleton {
+    height: 41px;
+    width: 130px;
+  }
+
+  &__regular {
+    color: var(--secondary);
+    font-weight: 500;
+    text-decoration-line: line-through;
+  }
+}
