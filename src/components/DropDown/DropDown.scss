@@ -1,0 +1,89 @@
+@import '../../styles/main';
+
+.DropDown {
+  font-family: Mont, sans-serif;
+  margin-bottom: 24px;
+
+  &__title {
+    @extend %body-text;
+
+    color: var(--color-primary);
+  }
+
+  &__container {
+    width: 128px;
+    height: 40px;
+    position: relative;
+    padding: 10px 15px 10px 12px;
+    border: 1px solid #B4BDC4;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    outline: none;
+    background-color: var(--color-background);
+    transition: all 0.5s;
+
+    &:focus {
+      border: 1px solid $color-primary;
+    }
+
+    &:hover {
+      border: 1px solid $color-secondary;
+    }
+  }
+
+  &__value {
+    flex-grow: 1;
+    color: var(--color-primary);
+  }
+
+  &__options {
+    position: absolute;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    background-color: white;
+    color: $color-secondary;
+    display: none;
+    overflow-y: auto;
+    border: 1px solid #B4BDC4;
+    width: 100%;
+    left: 0;
+    top: calc(100% + 5px);
+    z-index: 100;
+
+    &__show {
+      display: block;
+    }
+  }
+
+  &__option {
+    padding: 14px 12px;
+    cursor: pointer;
+    background-color: var(--color-background);
+    color: var(--color-primary);
+
+    @extend %body-text;
+
+    &__highlighted {
+      color: var(--color-primary);
+      background-color: var(--color-secondary);
+    }
+
+    &__selected {
+      color: $color-primary;
+      background-color: $color-secondary;
+    }
+  }
+
+  &__caret {
+
+    &--up {
+      transform: matrix(1, 0, 0, -1, 0, 0);
+    }
+  }
+
+}

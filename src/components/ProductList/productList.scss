@@ -1,0 +1,11 @@
+@import '../../styles/main';
+
+.productList {
+  margin-bottom: 40px;
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(223px, 1fr));
+    gap: 16px;
+  }
+}

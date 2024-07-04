@@ -1,0 +1,82 @@
+@import '../../styles/main';
+
+.categorys {
+  font-family: Mont, sans-serif;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  margin-bottom: 80px;
+  transition: all 0.5s;
+
+  @include tablet {
+    margin-bottom: 64px;
+  }
+
+  @include phone {
+    margin-bottom: 56px;
+  }
+
+  &__title {
+    @extend %h1-text;
+
+    color: var(--color-primary);
+    margin-bottom: 24px;
+  }
+
+  &__content {
+    transition: all 0.5s;
+    position: relative;
+    overflow: hidden;
+
+    &__img {
+      transition: transform 0.5s ease;
+      
+      height: 200px;
+      width: 100%;
+      object-fit: scale-down;
+      object-position: bottom right;
+      background-color: #FCDBC1;
+      border-radius: 8px;
+      margin-bottom: 14px;
+
+      &--tablets {
+        background-color: #8D8D92;
+      }
+
+      &--accessories {
+        background-color: #D53C51;
+      }
+
+      @include phone {
+        height: 288px;
+      }
+
+      @include tablet {
+        height: 230px;
+      }
+
+      @include desktop {
+        height: 368px;
+      }
+    }
+
+    &:hover .categorys__content__img {
+      transform: scale(1.1);
+      transition: transform 0.5s ease;
+    }
+
+    &__title {
+      @extend %h4-text;
+
+      color: var(--color-primary);
+      margin-bottom: 4px;
+    }
+
+    &__description {
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 21px;
+      color: $color-secondary;
+    }
+  }
+}

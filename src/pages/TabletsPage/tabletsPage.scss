@@ -1,0 +1,29 @@
+@import '../../styles/main';
+
+.tabletsPage {
+  font-family: Mont, sans-serif;
+  min-height: calc(100vh - 96px);
+  overflow-y: hidden;
+
+  &__title {
+    @extend %page-names;
+
+    color: var(--color-primary);
+    margin-bottom: 8px;
+  }
+
+  &__description {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $color-secondary;
+    margin-bottom: 40px;
+  }
+
+  &__sortContainer {
+    position: relative;
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+}

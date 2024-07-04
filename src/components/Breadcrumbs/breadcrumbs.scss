@@ -1,0 +1,26 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  font-family: Mont, sans-serif;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  @include phone {
+    margin-bottom: 24px;
+  }
+
+  &__container {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__pageName {
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    color: $color-secondary;
+  }
+}
