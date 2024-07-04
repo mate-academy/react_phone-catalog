@@ -1,4 +1,4 @@
-import { useCallback, useContext } from 'react';
+import { useCallback, useContext, useMemo } from 'react';
 import './Catalog.scss';
 import { Breadcrumps } from '../Breadcrupmps/Breadcrumps';
 import { Filters } from '../Filters/Filters';
@@ -15,7 +15,6 @@ type Props = {
 export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
   const { path, currentPage, order, setSearchParams, length, params, query } =
     useContext(ProductContext);
-  const pageEnd = Math.ceil(productsByCategory.length / +length);
   const start = +length * (+currentPage - 1);
   const end = +length * +currentPage;
 
@@ -54,8 +53,16 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
       });
     }
 
-    return length === 'All' ? filteredArr : filteredArr.slice(start, end);
-  }, [productsByCategory, order, start, end, length, query]);
+    return filteredArr;
+  }, [productsByCategory, order, query]);
+
+  const productsSlice = useMemo(() => {
+    return length === 'All'
+      ? filteredProducts()
+      : filteredProducts().slice(start, end);
+  }, [start, end, length, filteredProducts]);
+
+  const pageEnd = Math.ceil(filteredProducts().length / +length);
 
   return (
     <div className="catalog">
@@ -68,12 +75,12 @@ export const Catalog: React.FC<Props> = ({ title, productsByCategory }) => {
         length={length}
         setSearchParams={setSearchParams}
       />
-      {productsByCategory.length > 0 ? (
-        <Products products={filteredProducts()} />
+      {filteredProducts().length > 0 ? (
+        <Products products={productsSlice} />
       ) : (
         <h1 className="title-error">There are no {path.slice(1)}</h1>
       )}
-      {productsByCategory.length > +length && (
+      {filteredProducts().length > +length && (
         <Pagination
           pageEnd={pageEnd}
           currentPage={+currentPage}

@@ -55,6 +55,7 @@ export const Filters: React.FC<Props> = ({
     setSearchParams(
       getSearchWith(params, {
         order: value,
+        page: null,
       }),
     );
 
@@ -65,6 +66,7 @@ export const Filters: React.FC<Props> = ({
     setSearchParams(
       getSearchWith(params, {
         length: value,
+        page: null,
       }),
     );
 

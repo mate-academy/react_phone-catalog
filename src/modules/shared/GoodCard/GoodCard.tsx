@@ -8,6 +8,7 @@ import { CardItems } from '../CardItems/CardItems';
 import { ProductsSlider } from '../ProductsSlider';
 import classNames from 'classnames';
 import { colors } from '../../../utils/colors';
+import { Link } from 'react-router-dom';
 
 type Props = {
   good: Good;
@@ -34,6 +35,7 @@ export const GoodCard: React.FC<Props> = ({ good, category }) => {
     priceDiscount,
     description,
     color,
+    namespaceId,
   } = good;
 
   const [image, setImage] = useState(images[0]);
@@ -69,49 +71,69 @@ export const GoodCard: React.FC<Props> = ({ good, category }) => {
           </div>
         </div>
         <div className="card__brief">
-          <h4 className="card__value">Available colors</h4>
-          <div className="card__colors card__line">
-            {colorsAvailable.map(item => (
-              <span
-                key={item}
-                className={classNames('card__color', {
-                  'card__color--active': color === item,
-                })}
-                style={{ backgroundColor: colors[item] }}
-              ></span>
-            ))}
+          <div className="card__names">
+            <h4 className="card__value">Available colors</h4>
+            <span className="card__id">ID: 802390</span>
           </div>
-          <h4 className="card__value">Select capacity</h4>
-          <div className="card__capacities card__line">
-            {capacityAvailable.map(item => (
-              <span
-                key={item}
-                className={classNames('card__capacity', {
-                  'card__capacity--active': capacity === item,
-                })}
-              >
-                {item}
-              </span>
-            ))}
-          </div>
+          <div className="card__brief-wrapper">
+            <div className="card__colors card__line">
+              {colorsAvailable.map(item => {
+                const capacityLink =
+                  capacity.slice(0, capacity.length - 2) +
+                  capacity[capacity.length - 2].toLowerCase() +
+                  capacity[capacity.length - 1].toLowerCase();
 
-          <p className="card__price">
-            ${priceDiscount}
-            <span className="card__discount">${priceRegular}</span>
-          </p>
-          {product && (
-            <div className="card__buttons">
-              <AddButtons product={product} />
+                return (
+                  <Link
+                    to={`/${category}/${namespaceId}-${capacityLink}-${item}`}
+                    key={item}
+                    className={classNames('card__color', {
+                      'card__color--active': color === item,
+                    })}
+                    style={{ backgroundColor: colors[item] }}
+                  ></Link>
+                );
+              })}
             </div>
-          )}
-          <CardItems
-            screen={screen}
-            resolution={resolution}
-            processor={processor}
-            ram={ram}
-          />
+            <h4 className="card__value">Select capacity</h4>
+            <div className="card__capacities card__line">
+              {capacityAvailable.map(item => {
+                const capacityLink =
+                  item.slice(0, item.length - 2) +
+                  item[item.length - 2].toLowerCase() +
+                  item[item.length - 1].toLowerCase();
+
+                return (
+                  <Link
+                    to={`/${category}/${namespaceId}-${capacityLink}-${color}`}
+                    key={item}
+                    className={classNames('card__capacity', {
+                      'card__capacity--active': capacity === item,
+                    })}
+                  >
+                    {item}
+                  </Link>
+                );
+              })}
+            </div>
+            <p className="card__price">
+              ${priceDiscount}
+              <span className="card__discount">${priceRegular}</span>
+            </p>
+            {product && (
+              <div className="card__buttons">
+                <AddButtons product={product} />
+              </div>
+            )}
+            <CardItems
+              screen={screen}
+              resolution={resolution}
+              processor={processor}
+              ram={ram}
+            />
+          </div>
+          <span className="card__id">ID: 802390</span>
         </div>
-        <span className="card__id">ID: 802390</span>
       </div>
 
       <div className="card__bottom">

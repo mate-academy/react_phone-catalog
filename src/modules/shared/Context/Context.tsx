@@ -8,6 +8,12 @@ import { getProducts } from '../../../services/products';
 import { Product } from '../../../types/Product';
 import { useLocalStorage } from '../../../hooks/UseLocalStorage';
 
+type CartItem = {
+  quantity: number;
+  price: number;
+  id: number;
+};
+
 type ProductContextType = {
   products: Product[];
   path: string;
@@ -23,6 +29,9 @@ type ProductContextType = {
   setSearchParams: (params: URLSearchParamsInit) => void;
   currentPage: number | string;
   query: string | null;
+  totalCart: CartItem[] | [];
+  setTotalCart: Dispatch<React.SetStateAction<CartItem[] | []>>;
+  totalSums: number[];
 };
 
 export const ProductContext = React.createContext<ProductContextType>({
@@ -40,6 +49,9 @@ export const ProductContext = React.createContext<ProductContextType>({
   setSearchParams: () => {},
   currentPage: 1,
   query: '',
+  totalCart: [],
+  setTotalCart: () => {},
+  totalSums: [],
 });
 
 type Props = {
@@ -66,6 +78,28 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const length = searchParams.get('length') || 'All';
   const currentPage = searchParams.get('page') || 1;
   const query = searchParams.get('query') || null;
+  const [totalCart, setTotalCart] = useState<CartItem[] | []>([]);
+
+  useEffect(() => {
+    const newTotalCart: CartItem[] = cart.map(product => ({
+      quantity: 1,
+      price: product.price,
+      id: product.id,
+    }));
+
+    setTotalCart(newTotalCart);
+  }, [cart]);
+
+  const totalSums = useMemo(() => {
+    const sum = [0, 0];
+
+    totalCart.forEach(product => {
+      sum[0] += product.quantity;
+      sum[1] += product.price * product.quantity;
+    });
+
+    return sum;
+  }, [totalCart]);
 
   useEffect(() => {
     setIsLoading(true);
@@ -99,6 +133,9 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       params,
       setSearchParams,
       currentPage,
+      totalSums,
+      totalCart,
+      setTotalCart,
     }),
     [
       errorMessage,
@@ -115,6 +152,9 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       length,
       setSearchParams,
       params,
+      totalSums,
+      totalCart,
+      setTotalCart,
     ],
   );
 

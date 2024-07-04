@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import './Pagination.scss';
 import { URLSearchParamsInit } from 'react-router-dom';
 import { getSearchWith } from '../../utils/GetSearchWith';
+import { useState } from 'react';
 
 type Props = {
   pageEnd: number;
@@ -17,6 +18,8 @@ export const Pagination: React.FC<Props> = ({
   setSearchParams,
 }) => {
   const pages = [];
+  const [start, setStart] = useState(0);
+  const [end, setEnd] = useState(5);
 
   for (let i = 1; i <= pageEnd; i++) {
     pages.push(i);
@@ -25,6 +28,11 @@ export const Pagination: React.FC<Props> = ({
   const handlePrevPage = () => {
     if (currentPage === 1) {
       return;
+    }
+
+    if (currentPage >= Math.ceil(end / 2) && start > 0) {
+      setStart(currentStart => currentStart - 1);
+      setEnd(currentEnd => currentEnd - 1);
     }
 
     setSearchParams(
@@ -37,6 +45,11 @@ export const Pagination: React.FC<Props> = ({
   const handleNextPage = () => {
     if (currentPage === pageEnd) {
       return;
+    }
+
+    if (currentPage >= Math.round(end / 2) && end < pageEnd) {
+      setStart(currentStart => currentStart + 1);
+      setEnd(currentEnd => currentEnd + 1);
     }
 
     setSearchParams(
@@ -54,7 +67,7 @@ export const Pagination: React.FC<Props> = ({
         disabled={currentPage === 1}
       ></button>
       <div className="pagination__buttons">
-        {pages.map(page => (
+        {pages.slice(start, end).map(page => (
           <button
             className={classNames('pagination__button', {
               'pagination__button--active': currentPage === page,

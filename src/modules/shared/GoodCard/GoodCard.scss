@@ -86,6 +86,10 @@
     }
   }
 
+  &__brief-wrapper{
+    max-width: 320px;
+  }
+
   &__names{
     display: flex;
     justify-content: space-between;
@@ -121,7 +125,6 @@
     border: 1px solid #3B3E4A;
     position: relative;
     transition: border 0.3s;
-    cursor: auto;
 
     &--active{
       border: 1px solid #F1F2F9
@@ -158,7 +161,6 @@
     color: #F1F2F9;
     padding: 8px 7px 4px;
     border: 1px solid #4A4D58;
-    cursor: auto;
 
     &--active{
       background: #F1F2F9;
@@ -212,11 +214,19 @@
     }
   }
 
+  &__bottom{
+    @include on-desktop{
+      display: flex;
+      column-gap: 64px;
+    }
+  }
+
   &__about{
     margin-bottom: 22px;
 
     @include on-desktop{
       margin-bottom: 32px;
+      flex: 1 1 50%;
     }
   }
 
@@ -248,6 +258,7 @@
 
     @include on-tablet{
       margin-bottom: 64px;
+      flex: 1 1 50%
     }
   }
 }

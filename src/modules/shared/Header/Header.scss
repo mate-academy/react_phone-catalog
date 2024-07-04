@@ -57,28 +57,93 @@
 
   &__search-wrapper{
     position: relative;
+    height: 48px;
+    width: 48px;
+    box-shadow: -1px 0 0 0 #3B3E4A;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url('../../../../public/img/icons/search.svg');
+    background-repeat: no-repeat;
+    background-position: center;
 
-    &::after{
-      display: block;
-      content: '';
-      background-image: url('../../../../public/img/icons/search.svg');
-      background-size: contain;
-      background-repeat: no-repeat;
-      position: absolute;
-      top: 5px;
-      left: 10px;
-      width: 25px;
-      height: 25px;
+    @include on-tablet{
+      height: 64px;
+      width: 64px;
+    }
+
+    @include on-desktop{
+      box-sizing: border-box;
+      height: auto;
+      width: 220px;
+      box-shadow: none;
+      margin-right: 10px;
+      background-image: none;
+    }
+
+      &::after{
+        @include on-desktop{
+        display: block;
+        position: absolute;
+        content: '';
+        background-image: url('../../../../public/img/icons/search.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        top: 20px;
+        left: 10px;
+        width: 18px;
+        height: 18px;
+      }
     }
 
 
   }
 
   &__search{
+    box-sizing: border-box;
     background-color: transparent;
-    padding: 10px 5px 10px 40px;
-    border: 1px solid #323542;
-    color: #F1F2F9;
+    outline: none;
+    border: 1px solid transparent;
+    height: 48px;
+    width: 48px;
+
+    @include on-tablet{
+      height: 64px;
+      width: 64px;
+    }
+
+    @include on-desktop{
+      width: 220px;
+      padding: 10px 5px;
+
+    }
+
+    &:focus{
+      height: auto;
+      width: 150px;
+      position: absolute;
+      bottom: -40px;
+      right: 0;
+      padding: 10px 5px;
+      border: 1px solid #323542;
+      color: #F1F2F9;
+      background-color: #0F1121;
+
+      @include on-desktop{
+        position: static;
+        width: auto;
+        padding-left: 40px;
+      }
+    }
+
+    @include on-desktop {
+      padding: 10px 5px 10px 40px;
+      border: 1px solid #323542;
+      color: #F1F2F9;
+      width: auto;
+      height: auto;
+    }
+
   }
 
 

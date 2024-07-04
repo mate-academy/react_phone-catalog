@@ -6,13 +6,14 @@ import { ProductContext } from '../Context/Context';
 import { getSearchWith } from '../../utils/GetSearchWith';
 
 export const Header = () => {
-  const { path, cart, favourite, setSearchParams, params } =
+  const { path, cart, favourite, setSearchParams, params, totalSums } =
     useContext(ProductContext);
 
   const handleSearchParamQuery = (value: string) => {
     setSearchParams(
       getSearchWith(params, {
         query: value || null,
+        page: null,
       }),
     );
   };
@@ -24,18 +25,18 @@ export const Header = () => {
           <img src="./img/icons/logo.svg" alt="logo" />
         </Link>
         {path !== '/menu' && <MenuList />}
-        {(path === '/phones' ||
-          path === '/tablets' ||
-          path === '/accessories') && (
-          <div className="header__search-wrapper">
-            <input
-              type="text"
-              className="header__search"
-              onChange={event => handleSearchParamQuery(event.target.value)}
-            />
-          </div>
-        )}
         <div className="header__links">
+          {(path === '/phones' ||
+            path === '/tablets' ||
+            path === '/accessories') && (
+            <div className="header__search-wrapper">
+              <input
+                type="text"
+                className="header__search"
+                onChange={event => handleSearchParamQuery(event.target.value)}
+              />
+            </div>
+          )}
           {path !== '/menu' && (
             <Link to="/menu" className="header__link header__link--burger-menu">
               <img
@@ -74,7 +75,9 @@ export const Header = () => {
 
           <Link to="/cart" className="header__link header__link--cart">
             {cart.length > 0 && (
-              <span className="header__count button__count">{cart.length}</span>
+              <span className="header__count button__count">
+                {totalSums[0]}
+              </span>
             )}
             <img
               className="header__image button__image"

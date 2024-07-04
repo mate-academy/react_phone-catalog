@@ -5,8 +5,7 @@
 
   &__buttons{
     display: flex;
-
-    flex-wrap: wrap;
+    max-width: 400px;
     gap: 8px;
   }
 
@@ -18,7 +17,6 @@
     line-height: 21px;
     color: #F1F2F9;
     background-color: #161827;
-    transition: background-color 0.3s;
 
     &:hover{
       background-color: #3B3E4A;

@@ -1,40 +1,13 @@
-import { useContext, useEffect, useMemo, useState } from 'react';
+import { useContext, useState } from 'react';
 import './Cart.scss';
 import { ProductContext } from '../shared/Context/Context';
 import { Back } from '../shared/Back/Back';
 import { CheckoutModal } from '../shared/CheckoutModal/CheckoutModal';
 
-type CartItem = {
-  quantity: number;
-  price: number;
-  id: number;
-};
-
 export const Cart = () => {
-  const { cart, setLocalCart } = useContext(ProductContext);
-  const [totalCart, setTotalCart] = useState<CartItem[] | []>([]);
+  const { cart, setLocalCart, setTotalCart, totalCart, totalSums } =
+    useContext(ProductContext);
   const [isModal, setIsModal] = useState(false);
-
-  useEffect(() => {
-    const newTotalCart: CartItem[] = cart.map(product => ({
-      quantity: 1,
-      price: product.price,
-      id: product.id,
-    }));
-
-    setTotalCart(newTotalCart);
-  }, [cart]);
-
-  const totalSums = useMemo(() => {
-    const sum = [0, 0];
-
-    totalCart.forEach(product => {
-      sum[0] += product.quantity;
-      sum[1] += product.price * product.quantity;
-    });
-
-    return sum;
-  }, [totalCart]);
 
   const handleMinus = (id: number) => {
     setTotalCart(currentTotalCart => {
