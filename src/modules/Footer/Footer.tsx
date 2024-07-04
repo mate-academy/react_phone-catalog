@@ -35,7 +35,11 @@ export const Footer = React.memo(() => {
             Contacts
           </Link>
 
-          <Link to="/" className="footer__nav-item navigation-title">
+          <Link
+            to="https://github.com/IShamkii"
+            target="_blank"
+            className="footer__nav-item navigation-title"
+          >
             Rights
           </Link>
         </div>

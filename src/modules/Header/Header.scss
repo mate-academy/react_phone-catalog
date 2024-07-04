@@ -147,6 +147,8 @@
 
     cursor: pointer;
 
+    display: none; // hidden yet unimplemented functionality
+
     @include on-desctop {
       height: 30px;
       width: 50px;
