@@ -1,0 +1,301 @@
+.container {
+  display: grid;
+  grid-template-columns: 1fr;
+  column-gap: 64px;
+  max-width: 100%;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.breadcrumbs {
+  grid-column: span 1;
+  justify-content: left;
+  margin-bottom: 24px;
+  margin-top: 24px;
+}
+
+.backButton {
+  grid-column: span 1;
+  justify-content: left;
+  margin-bottom: 16px;
+}
+
+.titleH4 {
+  margin-bottom: 16px;
+}
+
+.mainInfoContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 64px;
+  max-width: 100%;
+  padding: 0 10px;
+  box-sizing: border-box;
+  justify-items: center;
+  margin-bottom: 52px;
+}
+
+.mainInfoSelectable {
+  max-width: 320px;
+  min-width: 300px;
+}
+
+.column {
+  grid-column: span 1;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.fullColumn {
+  grid-column: span 1;
+  justify-content: left;
+  margin-bottom: 0;
+}
+
+/* Main Info Buttons */
+
+.button {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  width: 60px;
+  height: 32px;
+}
+
+.buttonContainer {
+  display: flex;
+  position: relative;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 52px;
+}
+
+.buttonContainer::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--font-color-secondary);
+}
+
+/* Description */
+
+.underline {
+  position: relative;
+  margin-bottom: 42px;
+}
+
+.underline::after {
+  content: '';
+  position: absolute;
+  bottom: -16px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: var(--font-color-secondary);
+}
+
+.description {
+  margin-bottom: 32px;
+}
+
+.descr {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 21px;
+  color: var(--font-color-secondary);
+}
+
+/* Short params */
+
+.paramsList {
+  margin-bottom: 8px;
+  padding-block: 8px;
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}
+
+.paramItem {
+  display: flex;
+  justify-content: space-between;
+}
+
+.paramItem:not(:last-child) {
+  margin-bottom: 8px;
+}
+
+.paramType {
+  color: var(--font-color-secondary);
+}
+
+.paramValue {
+  text-align: right;
+  color: var(--font-color-primary);
+}
+
+/* All params */
+
+.allParamsList {
+  margin-bottom: 8px;
+  padding-block: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+/* Photos */
+
+.photoContainer {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  gap: 16px;
+}
+
+.smallPhotosContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.smallPhoto {
+  height: 50px;
+  width: 50px;
+  padding: 5px;
+}
+
+.smallPhoto img {
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+.bigPhoto {
+  width: 100%;
+}
+
+.bigPhoto img {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: contain;
+}
+
+/* Price */
+
+.prices {
+  display: flex;
+  column-gap: 8px;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.newPrice {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  color: var(--font-color-primary);
+}
+
+.oldPrice {
+  font-size: 22px;
+  line-height: 28px;
+  text-decoration: line-through;
+  color: var(--font-color-secondary);
+}
+
+/* Buttons */
+
+.actionsWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 32px;
+}
+
+.titleH2 {
+  margin-bottom: 40px;
+}
+
+/* Media */
+
+@media (min-width: 640px) {
+  .container {
+    grid-template-columns: 1fr;
+    padding: 0 24px;
+  }
+
+  .breadcrumbs {
+    margin-bottom: 20px;
+  }
+
+  .mainInfoContainer {
+    grid-column: span 1;
+    grid-template-columns: 5fr 4fr;
+    column-gap: 20px;
+    margin-bottom: 64px;
+  }
+
+  .fullColumn {
+    grid-column: span 1;
+  }
+
+  .photoContainer {
+    flex-direction: row;
+    align-items: flex-start;
+    width: 100%;
+  }
+
+  .smallPhotosContainer {
+    flex-direction: column;
+  }
+
+  .smallPhoto {
+    height: 35px;
+    width: 35px;
+    padding: 3px;
+  }
+}
+
+@media (min-width: 1200px) {
+  .container {
+    grid-template-columns: 1fr 1fr;
+    max-width: 1200px;
+    column-gap: 64px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .breadcrumbs {
+    grid-column: span 2;
+  }
+
+  .backButton {
+    grid-column: span 2;
+  }
+
+  .titleH2 {
+    grid-column: span 2;
+  }
+
+  .mainInfoContainer {
+    grid-column: span 2;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 64px;
+    justify-items: left;
+    margin-bottom: 80px;
+  }
+
+  .fullColumn {
+    grid-column: span 2;
+  }
+
+  .smallPhoto {
+    height: 80px;
+    width: 80px;
+    padding: 8px;
+  }
+}

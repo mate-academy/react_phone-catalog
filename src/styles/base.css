@@ -1,0 +1,51 @@
+@import './reset.css';
+@import './fonts.css';
+@import './variables.css';
+
+body {
+  font-family: var(--primary-font);
+  scroll-behavior: smooth;
+  font-size: 14px;
+  line-height: 24px;
+  background-color: var(--background-color);
+  color: var(--font-color-primary);
+}
+
+.app {
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  grid-template-columns: 100%;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-inline: 24px;
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .container {
+    padding-inline: 16px;
+  }
+}
+
+.grid {
+  --column: 24;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  column-gap: 16px;
+}
+
+@media (min-width: 640px) and (max-width: 1199px) {
+  .grid {
+    --column: 12;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 639px) {
+  .grid {
+    --column: 4;
+  }
+}

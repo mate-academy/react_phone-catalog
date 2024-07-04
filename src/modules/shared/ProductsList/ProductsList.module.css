@@ -1,0 +1,40 @@
+.productList {
+  --column: 24;
+
+  display: grid;
+  grid-template-columns: repeat(var(--column), 1fr);
+  gap: 40px 16px;
+  margin-bottom: 40px;
+}
+
+.item {
+  grid-column: span 6;
+}
+
+@media (min-width: 669px) and (max-width: 1199px) {
+  .productList {
+    --column: 12;
+  }
+
+  .item {
+    grid-column: span 4;
+  }
+}
+
+@media (min-width: 450px) and (max-width: 700px) {
+  .productList {
+    --column: 12;
+  }
+  .item {
+    grid-column: span 6;
+  }
+}
+
+@media (min-width: 320px) and (max-width: 449px) {
+  .productList {
+    --column: 4;
+  }
+  .item {
+    grid-column: span 6;
+  }
+}

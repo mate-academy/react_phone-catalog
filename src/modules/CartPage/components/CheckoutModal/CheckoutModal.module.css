@@ -1,0 +1,59 @@
+.modalOverlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: fade-in 0.3s;
+  z-index: 5;
+}
+
+.modalContent {
+  background-color: var(--background-color);
+  padding: 20px;
+  border-radius: 8px;
+  width: 300px;
+  text-align: center;
+  animation: slide-in 0.3s;
+  border: 1px solid var(--elements-color);
+}
+
+.modalButton {
+  margin-top: 20px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.confirm {
+  background-color: var(--accent-color);
+  font-family: var(--primary-font);
+  color: #fff;
+}
+
+.cancel {
+  background-color: var(--color-red);
+  font-family: var(--primary-font);
+  color: #fff;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateY(-50px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
