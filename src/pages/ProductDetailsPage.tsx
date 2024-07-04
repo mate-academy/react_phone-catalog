@@ -1,5 +1,5 @@
 /* eslint-disable */
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../components/BreadCrumbs/BreadCrumbs';
 import style from '../modules/ProductDetailsPage.module.scss';
 import { Category } from '../enums/Category';
@@ -15,6 +15,7 @@ import { SectionCards } from '../components/Main/SectionCards';
 import { ProductsContext } from '../store/ProductsProvider';
 import { changeIdsParams } from '../utils/changeIdsParams';
 import { LanguageContext } from '../store/LanguageProvider';
+import { BackButton } from '../components/BackButton/BackButton';
 
 type Props = {
   type: Category;
@@ -25,7 +26,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
   const { products } = useContext(ProductsContext);
-  const navigate = useNavigate();
 
   const [categoryProduct, setCategoryProduct] = useState<Gadgets>();
   const [imageState, setImage] = useState('');
@@ -83,10 +83,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       })}
     >
       <BreadCrumbs />
-
-      <span className={style.product__back} onClick={() => navigate(-1)}>
-        {t('back')}
-      </span>
+      <BackButton />
 
       <h1 className={style.product__phoneName}>{name}</h1>
 

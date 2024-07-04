@@ -15,7 +15,7 @@ import { Pathname } from '../../enums/Pathname';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
-  const { setActiveMenu } = useContext(StateContext);
+  const { setActiveMenu, favorites } = useContext(StateContext);
   const { pathname } = useLocation();
 
   return (
@@ -30,7 +30,7 @@ export const Header = () => {
 
         <ul className={style.header__actions}>
           {!isLaptop ? (
-            <>
+            <div className={style.header__actionsWrapper}>
               <div className={style.header__topBtn}>
                 <LangButton />
               </div>
@@ -40,16 +40,25 @@ export const Header = () => {
               <Link
                 to="../favorites"
                 className={classNames(style.header__actionsLink, {
-                  [style.header__favoritesActive]:
-                    pathname === Pathname.favorites,
+                  [style.header__activeButton]: pathname === Pathname.favorites,
                 })}
               >
+                {favorites.length > 0 && (
+                  <span className={style.header__itemsFavCircle}>
+                    {favorites.length}
+                  </span>
+                )}
                 <IconFavorites className={style.header__actionsImg} />
               </Link>
-              <Link to="#" className={style.header__actionsLink}>
+              <Link
+                to="/cart"
+                className={classNames(style.header__actionsLink, {
+                  [style.header__activeButton]: Pathname.cart === pathname,
+                })}
+              >
                 <LogoCart className={style.header__actionsImg} />
               </Link>
-            </>
+            </div>
           ) : (
             <button
               className={style.header__burgerMenu}

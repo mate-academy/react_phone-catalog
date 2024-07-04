@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Products } from '../types/ContextType/Products';
 
 type StateType = {
@@ -8,6 +8,8 @@ type StateType = {
   setActiveMenu: (v: boolean) => void;
   favorites: Products[];
   setFavorites: (v: Products[] | ((s: Products[]) => Products[])) => void;
+  cart: Products[];
+  setToCart: (v: Products[] | ((s: Products[]) => Products[])) => void;
 };
 
 type Props = {
@@ -15,6 +17,8 @@ type Props = {
 };
 
 export const StateContext = React.createContext<StateType>({
+  cart: [],
+  setToCart: () => [],
   favorites: [],
   setFavorites: () => [],
   autoPlay: false,
@@ -26,9 +30,29 @@ export const StateContext = React.createContext<StateType>({
 export const StateProvider: React.FC<Props> = ({ children }) => {
   const [autoPlay, setAutoPlay] = useState(true);
   const [activeMenu, setActiveMenu] = useState(false);
-  const [favorites, setFavorites] = useState<Products[]>([]);
+  const [cart, setToCart] = useState<Products[]>([]);
+  const [favorites, setFavorites] = useState<Products[]>(() => {
+    const data = localStorage.getItem('favorites');
+
+    if (data === null) {
+      return [];
+    }
+
+    try {
+      return JSON.parse(data);
+    } catch (e) {
+      localStorage.removeItem('favorites');
+      return [];
+    }
+  });
+
+  useEffect(() => {
+    localStorage.setItem('favorites', JSON.stringify(favorites));
+  }, [favorites]);
 
   const stateTools = {
+    cart,
+    setToCart,
     favorites,
     setFavorites,
     autoPlay,

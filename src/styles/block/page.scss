@@ -52,6 +52,7 @@
   --borderActiveColor: #c4c4c4;
   --paragraphTextColor: #89939a;
   --actionButtonActiveBorder: #313237;
+  --favoritesCircleBackColor: #EB5757;
   // touch-action: none;
 }
 
@@ -97,6 +98,7 @@
   --textColorActiveState: #0f1121;
   --borderActiveColor: #c4c4c4;
   --actionButtonActiveBorder: #f1f2f9;
+  --favoritesCircleBackColor: #EB5757;
   color: $text-color;
   background-color: $background-color;
 }

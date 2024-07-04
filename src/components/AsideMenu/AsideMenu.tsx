@@ -19,7 +19,7 @@ export const AsideMenu = () => {
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
 
-  const { activeMenu, setActiveMenu } = useContext(StateContext);
+  const { activeMenu, setActiveMenu, favorites } = useContext(StateContext);
 
   return (
     <aside
@@ -68,13 +68,24 @@ export const AsideMenu = () => {
         <Link
           to="/favorites"
           className={classNames(style.menu__wrap, {
-            [style.menu__activeFav]: pathname === Pathname.favorites,
+            [style.menu__activeButton]: pathname === Pathname.favorites,
           })}
           onClick={() => setActiveMenu(!activeMenu)}
         >
+          {favorites.length > 0 && (
+            <span className={style.menu__itemsFavCircle}>
+              {favorites.length}
+            </span>
+          )}
           <IconFavorites className={style.menu__icons} />
         </Link>
-        <Link to="#" className={style.menu__wrap}>
+        <Link
+          to="/cart"
+          onClick={() => setActiveMenu(!activeMenu)}
+          className={classNames(style.menu__wrap, {
+            [style.menu__activeButton]: pathname === Pathname.cart,
+          })}
+        >
           <LogoCart className={style.menu__icons} />
         </Link>
       </div>

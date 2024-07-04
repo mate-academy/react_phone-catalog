@@ -1,0 +1,20 @@
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/_mixins.scss';
+
+.back {
+  display: flex;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+  cursor: pointer;
+}
+
+.back::before {
+  content: '<';
+  padding-right: 4px;
+  color: $text-color;
+}
+
+.back:hover::before {
+  color: $paginationNumberBackColorActive;
+}

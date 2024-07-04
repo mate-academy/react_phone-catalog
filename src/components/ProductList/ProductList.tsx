@@ -17,7 +17,13 @@ export const ProductList: React.FC<Props> = ({ title }) => {
         <BreadCrumbs />
         <h1 className={style.favorites__title}>{title}</h1>
 
-        <p className={style.favorites__items}> items</p>
+        <p className={style.favorites__items}>
+          {favorites.length > 0
+            ? favorites.length === 1
+              ? `${favorites.length} item`
+              : `${favorites.length} items`
+            : ''}
+        </p>
 
         <Cards gadgets={favorites} />
       </div>

@@ -225,9 +225,12 @@ export const SectionCards: React.FC<Props> = ({
                   />
                 </Link>
                 <div className={style.sectionCards__cardContent}>
-                  <h2 className={style.sectionCards__cardName}>
+                  <Link
+                    to={`/${product.category}/${product.itemId}`}
+                    className={style.sectionCards__cardName}
+                  >
                     {product.name}
-                  </h2>
+                  </Link>
                   <div className={style.sectionCards__price}>
                     {discount ? (
                       <p className={style.sectionCards__discountPrice}>
@@ -270,7 +273,12 @@ export const SectionCards: React.FC<Props> = ({
                     {t('addToCart')}
                   </button>
                   <button
-                    className={style.sectionCards__CardfavBtn}
+                    className={classNames(style.sectionCards__cardfavBtn, {
+                      [style.sectionCards__selectedFavorites]: availableFav(
+                        product,
+                        favorites,
+                      ),
+                    })}
                     onClick={() =>
                       setFavorites(prevProducts => {
                         const newFavorites = [...prevProducts];

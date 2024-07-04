@@ -18,25 +18,6 @@
     }
   }
 
-  &__back {
-
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15px;
-    cursor: pointer;
-  }
-
-  &__back::before {
-    content: '<';
-    padding-right: 4px;
-
-    color: $text-color;
-  }
-
-  &__back:hover::before {
-    color: $paginationNumberBackColorActive;
-  }
-
   &__phoneName {
     margin-top: 16px;
     margin-bottom: 40px;

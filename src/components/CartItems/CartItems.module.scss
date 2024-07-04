@@ -1,0 +1,95 @@
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/_mixins.scss';
+
+.cart {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  &__cartBack {
+    margin-top: 40px;
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    padding-inline: 32px;
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+    margin: 0;
+    margin-bottom: 32px;
+  }
+
+  &__gridContainer {
+    display: grid;
+    grid-template-columns: repeat(24, 1fr);
+    gap: 16px;
+  }
+
+  &__list {
+    grid-column: 1 / 17;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $border-color;
+    list-style: none;
+    height: 128px;
+    margin-bottom: 16px;
+  }
+
+  &__itemWrapper {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 24px;
+    padding-inline: 24px;
+  }
+
+  &__closeButton {
+    background-color: $background-color;
+    border: none;
+    display: flex;
+  }
+
+  &__gadgetPhoto {
+    max-width: 80px;
+    max-height: 80px;
+  }
+
+  &__gadgetName {
+    width: 100%;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 600;
+  }
+
+  &__gadgetPrice {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+@include onTablet {
+  .cart {
+    &__wrapper {
+      padding-inline: 24px;
+    }
+  }
+}
+
+@include onPhone {
+  .cart {
+    &__wrapper {
+      padding-inline: 16px;
+    }
+
+    &__cartBack {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+  }
+}

@@ -12,7 +12,6 @@ export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
   const footerNavList = ['gitHub', 'contacts', 'rights'];
-  // const { pathname } = useLocation();
 
   return (
     <footer

@@ -21,6 +21,7 @@ export const Main = () => {
     (pathname !== Pathname.phones || productIdChech.length > 0) &&
     pathname !== Pathname.tablets &&
     pathname !== Pathname.favorites &&
+    pathname !== Pathname.cart &&
     pathname !== Pathname.accessories &&
     !productIdChech;
 

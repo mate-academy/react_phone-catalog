@@ -27,7 +27,7 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
         {gadgets.map(product => (
           <li className={style.cards__container} key={product.id}>
             <Link
-              to={`${product.itemId}`}
+              to={`../${product.category}/${product.itemId}`}
               className={style.cards__cardLink}
               draggable={false}
             >
@@ -39,7 +39,10 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
               />
             </Link>
             <div className={style.cards__cardContent}>
-              <Link to={`${product.itemId}`} className={style.cards__cardName}>
+              <Link
+                to={`../${product.category}/${product.itemId}`}
+                className={style.cards__cardName}
+              >
                 {product.name}
               </Link>
               <div className={style.cards__price}>
