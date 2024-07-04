@@ -175,7 +175,6 @@ export const SectionCards: React.FC<Props> = ({
     }
   }
 
-
   return (
     <section
       className={classNames(style.sectionCards, {

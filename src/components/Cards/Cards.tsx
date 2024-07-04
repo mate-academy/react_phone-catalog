@@ -81,11 +81,11 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
                 onClick={() =>
                   setFavorites(prevProducts => {
                     const newFavorites = [...prevProducts];
-                    const availableFav = newFavorites.some(
+                    const availableFavorites = newFavorites.some(
                       item => item.itemId === product.itemId,
                     );
 
-                    if (availableFav) {
+                    if (availableFavorites) {
                       return newFavorites.filter(
                         item => item.itemId !== product.itemId,
                       );
