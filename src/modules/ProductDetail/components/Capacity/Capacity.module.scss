@@ -1,0 +1,46 @@
+@import '../../../../styles/main';
+
+.capacity {
+  margin-top: 24px;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__item {
+    border: 1px solid $elements;
+    padding: 8px;
+    cursor: pointer;
+    transition-duration: 0.3s;
+
+    @include body-text;
+
+    &:hover {
+      background-color: $elements;
+    }
+
+    &-selected {
+      background-color: $white;
+      color: $black;
+    }
+  }
+
+  &__header {
+    @include small-text;
+
+    color: $elements;
+    text-align: left;
+  }
+
+  &::after {
+    content: '';
+    display: block;
+    position: relative;
+    margin-top: 24px;
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+}

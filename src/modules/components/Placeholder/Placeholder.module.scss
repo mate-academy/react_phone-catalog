@@ -1,0 +1,25 @@
+@import '../../../styles/main';
+
+.placeholder {
+  height: calc(100vh - 65px - 110px);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  &__image {
+    display: block;
+    height: 50vh;
+    background-image: url('../../../../public/img/icons/Heart.svg');
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  &__header {
+    @include header-3;
+
+    text-align: center;
+    padding-bottom: 10px;
+  }
+}

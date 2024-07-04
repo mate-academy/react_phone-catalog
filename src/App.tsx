@@ -1,7 +1,20 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
+import { Navbar } from './modules/Navbar';
+import { Menu } from './modules/Menu';
+import { useContext } from 'react';
+import { StateContext } from './Store';
+import { Footer } from './modules/Footer';
 
-export const App = () => (
-  <div className="App">
-    <h1>Product Catalog</h1>
-  </div>
-);
+export const App = () => {
+  const { isMenuOpen } = useContext(StateContext);
+
+  return (
+    <div className="App">
+      <Navbar />
+      {isMenuOpen && <Menu />}
+      <main className="content">{!isMenuOpen && <Outlet />}</main>
+      {!isMenuOpen && <Footer />}
+    </div>
+  );
+};

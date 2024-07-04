@@ -1,0 +1,10 @@
+.sectionTitle {
+  @include mobile-header-2;
+
+  margin-bottom: 24px;
+  color: $white;
+
+  @include on-tablet {
+    @include header-2;
+  }
+}

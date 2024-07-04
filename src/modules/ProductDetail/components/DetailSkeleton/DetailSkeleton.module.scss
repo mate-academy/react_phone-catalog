@@ -1,0 +1,54 @@
+@import '../../../../styles/main';
+
+.product {
+  margin-top: 40px;
+
+  &__header, &__gallerySkeleton, &__colors, &__capacity, &__price, &__buttons, &__shortInfo .shortInfo__param, &__shortInfo .shortInfo__info, &__descriptionText {
+    background: $surface_2;
+    background: linear-gradient(110deg, $surface_1 14%, $black 33%, $surface_1 56%);
+    background-size: 200% 100%;
+    animation: 1.5s skeleton-loading linear infinite;
+    margin-bottom: 16px;
+  }
+
+  &__header {
+    height: 32px;
+    width: 70%;
+  }
+
+  &__gallerySkeleton {
+    height: 300px;
+    width: 100%;
+  }
+
+  &__colors, &__capacity, &__buttons {
+    height: 40px;
+    width: 100%;
+  }
+
+  &__price {
+    height: 24px;
+    width: 50%;
+  }
+
+  &__shortInfo .shortInfo__param, &__shortInfo .shortInfo__info {
+    height: 16px;
+    width: 45%;
+  }
+
+  &__descriptionText {
+    height: 100px;
+    width: 100%;
+  }
+}
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite;
+}
+
+@keyframes skeleton-loading {
+  to {
+    background-position-x: -200%;
+  }
+}
+

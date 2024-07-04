@@ -1,0 +1,67 @@
+@import '../../../../styles/main';
+
+.colorChange {
+  display: none;
+  align-self: center;
+  height: 40px;
+  padding: 20px;
+  margin-right: 30px;
+  position: relative;
+  cursor: pointer;
+  transition-duration: 0.3s;
+
+  &-active, &:hover {
+    background-color: $surface-2;
+  }
+
+  @include on-desktop {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__name {
+    @include small-text;
+
+    color: $white;
+    margin-right: 10px;
+  }
+
+  &__arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+    background-image: url('../../../../../public/img/icons/Arrow_Down.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+
+    &-active {
+      background-image: url('../../../../../public/img/icons/Arrow-Up-disable.svg');
+    }
+  }
+
+  &__list {
+    position: absolute;
+    top: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background-color: $surface-2;
+  }
+
+  &__value {
+    @include small-text;
+
+    color: $white;
+    text-align: center;
+    padding: 10px;
+    border-bottom: 1px solid $elements;
+    transition-duration: 0.3s;
+
+    &:hover {
+      background-color: $surface_1;
+    }
+  }
+}

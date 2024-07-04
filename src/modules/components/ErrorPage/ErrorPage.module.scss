@@ -1,0 +1,28 @@
+@import '../../../styles/main';
+
+.error{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 50px;
+  width: 100%;
+  height: 60vh;
+
+  &__button {
+    height: 40px;
+    width: 200px;
+
+    @include primary-button;
+  }
+
+  &__header {
+    @include header-2;
+
+    text-align: center;
+    line-height: 100%;
+  }
+
+  &__header, &__button {
+    align-self: center;
+  }
+}

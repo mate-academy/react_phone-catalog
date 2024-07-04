@@ -1,0 +1,66 @@
+@import '../../../../styles/main';
+
+.category {
+  margin-top: $mobile-block-margin;
+
+  @include on-tablet {
+    margin-top: $tablet-block-margin;
+
+    @include page-grid;
+  }
+
+  @include on-desktop {
+    margin-top: $desktop-block-margin;
+  }
+
+  &__header {
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__card {
+    &-tablets,
+    &-accessories {
+      margin-top: 32px;
+
+      @include on-tablet {
+        margin-top: 0;
+      }
+    }
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+}
+
+.skeleton {
+  margin-top: $desktop-block-margin;
+  &__header,
+  &__card {
+    @include skeleton-bg;
+  }
+
+  &__header {
+    margin-block: 25px;
+    width: 100%;
+    height: 40px;
+  }
+
+  &__card {
+    width: 100%;
+    height: 300px;
+  }
+
+  &__list {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    gap: 32px;
+}
+}
