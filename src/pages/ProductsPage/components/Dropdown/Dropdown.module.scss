@@ -1,0 +1,105 @@
+@import '../../../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: row;
+  height: auto;
+  justify-content: flex-start;
+  gap: 16px;
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  pointer-events: all;
+  cursor: pointer;
+  width: 136px;
+  gap: 8px;
+  justify-content: space-between;
+
+  @include on-desktop {
+    width: 126px;
+  }
+
+  &:first-child {
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @include on-desktop {
+      width: 176px;
+    }
+  }
+}
+
+.dropdown {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  position: relative;
+
+  &__icon {
+    background: $grey-icons;
+    transform: rotate(90deg);
+
+    &__darkTheme {
+      background: $grey-icons-dark;
+
+      &:hover {
+        background: $grey-icons-dark;
+      }
+    }
+  }
+
+  &__value {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 12px;
+
+    &:hover {
+      border-color: var(--grey-secondary);
+    }
+
+    &__active {
+      border-color: $grey-primary;
+    }
+
+    &__darkTheme {
+      @include hover(border-color, $disabled-color);
+
+      &__active {
+        border-color: $violet-main;
+
+        @include hover(border-color, $violet-main);
+      }
+
+      &:hover .dropdown__icon {
+        background-color: $disabled-color;
+      }
+    }
+  }
+
+  &__container {
+    position: absolute;
+    box-sizing: border-box;
+    padding-inline: 0;
+    padding-block: 8px;
+    top: 80%;
+    width: 100%;
+    list-style: none;
+    background-color: var(--bg-color);
+    box-shadow: 2px 15px #0000000d;
+  }
+
+  &__item {
+    padding: 6px 12px;
+
+    @include hover(background-color, $grey-white);
+    @include hover(color, var(--text-color));
+
+    &__darkTheme {
+      @include hover(background-color, $grey-button);
+    }
+  }
+}

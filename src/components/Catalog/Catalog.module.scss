@@ -1,0 +1,27 @@
+@import '../../styles/utils/utils';
+
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+
+}
+
+.gridContainer {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 300px));
+  gap: 16px;
+
+  @include on-tablet {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
