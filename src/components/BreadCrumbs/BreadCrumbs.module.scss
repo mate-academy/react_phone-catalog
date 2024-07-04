@@ -2,11 +2,11 @@
 @import '../../styles/block/utils/mixins';
 
 .breadCrumbs {
-  margin: 24px auto 40px;
+  margin: 24px auto 0;
   max-width: 1136px;
   display: flex;
   align-items: center;
-
+  margin-bottom: 40px;
   & > * {
     display: flex;
     align-items: center;

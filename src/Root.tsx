@@ -6,6 +6,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { Category } from './enums/Category';
+import { FavoritesPage } from './pages/FavoritesPage';
 
 const linkList = [
   {
@@ -30,7 +31,7 @@ export const Root = () => (
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
       <Route path="home" element={<Navigate to="/" />} />
-
+      <Route path="favorites" element={<FavoritesPage />} />
       {linkList.map(item => (
         <Route path={item.path} key={item.path}>
           <Route index element={item.element} />

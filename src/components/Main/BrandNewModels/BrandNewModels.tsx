@@ -9,7 +9,7 @@ export const BrandNewModels = () => {
 
   return (
     <div>
-      <SectionCards products={mostExpensive} title={title} />
+      <SectionCards products={mostExpensive} title={title} discount={false} />
     </div>
   );
 };

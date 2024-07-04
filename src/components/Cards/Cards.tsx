@@ -6,6 +6,9 @@ import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
 import { Products } from '../../types/ContextType/Products';
 import { Link } from 'react-router-dom';
+import { StateContext } from '../../store/StateProvider';
+import { availableFav } from '../../utils/availableFav';
+import Heart from '../../image/Favorites/heart.svg';
 
 type Props = {
   gadgets: Products[];
@@ -14,6 +17,7 @@ type Props = {
 export const Cards: React.FC<Props> = ({ gadgets }) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
+  const { setFavorites, favorites } = useContext(StateContext);
 
   return (
     <div
@@ -67,8 +71,30 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
               <button className={style.cards__addToCard}>
                 {t('addToCart')}
               </button>
-              <button className={style.cards__сardFavBtn}>
-                <IconFavorites />
+              <button
+                className={classNames(style.cards__сardFavBtn, {[style.cards__selectedFavorite]: availableFav(product, favorites)})}
+                onClick={() =>
+                  setFavorites(prevProducts => {
+                    const newFavorites = [...prevProducts];
+                    const availableFav = newFavorites.some(
+                      item => item.itemId === product.itemId,
+                    );
+
+                    if (availableFav) {
+                      return newFavorites.filter(
+                        item => item.itemId !== product.itemId,
+                      );
+                    } else {
+                      return [...newFavorites, product];
+                    }
+                  })
+                }
+              >
+                {availableFav(product, favorites) ? (
+                  <img src={Heart} alt="LikeLogo" />
+                ) : (
+                  <IconFavorites />
+                )}
               </button>
             </div>
           </li>

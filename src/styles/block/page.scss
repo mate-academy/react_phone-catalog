@@ -25,7 +25,7 @@
   --background-color-phoneCardHover: #313237;
   --background-color-button-cart: #313237;
   --text-discount-color: #89939a;
-  --text-items-color: #89939a;
+  --textItemsColor: #89939a;
   --textFooterColor: #89939a;
   --selectBackground: #fff;
   --linkBackgroundButton: #323542;
@@ -51,7 +51,8 @@
   --textColorActiveState: #ffffff;
   --borderActiveColor: #c4c4c4;
   --paragraphTextColor: #89939a;
-   // touch-action: none;
+  --actionButtonActiveBorder: #313237;
+  // touch-action: none;
 }
 
 .dark {
@@ -69,7 +70,7 @@
   --background-color-phoneCard: #161827;
   --background-color-phoneCardHover: #a378ff;
   --text-discount-color: #75767f;
-  --text-items-color: #75767f;
+  --textItemsColor: #75767f;
   --textFooterColor: #f1f2f9;
   --selectBackground: #323542;
   --linkBackgroundButton: #323542;
@@ -95,6 +96,7 @@
   --idsTextColor: #4a4d58;
   --textColorActiveState: #0f1121;
   --borderActiveColor: #c4c4c4;
+  --actionButtonActiveBorder: #f1f2f9;
   color: $text-color;
   background-color: $background-color;
 }

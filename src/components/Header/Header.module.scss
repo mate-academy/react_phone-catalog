@@ -50,6 +50,7 @@
   }
 
   &__actionsLink {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -59,6 +60,16 @@
     border-left: 1px solid $border-color;
     background-repeat: no-repeat;
     background-position: center;
+  }
+
+  &__favoritesActive::after {
+    position: absolute;
+    content: '';
+    bottom: 1px;
+    left: 1px;
+    right: 1px;
+
+    border-bottom: 3px solid $actionButtonActiveBorder;
   }
 
   &__burgerMenu {

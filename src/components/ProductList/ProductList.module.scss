@@ -1,0 +1,51 @@
+@use '../../styles/block/utils/_variables.scss' as *;
+@import '../../styles/block/utils/mixins';
+
+.favorites {
+  display: flex;
+  max-width: 1136px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+
+  &__container {
+    padding-inline: 32px;
+    width: 100%;
+  }
+
+  &__title {
+    font-size: 48px;
+    line-height: 56px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+  }
+
+  &__items {
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: $textItemsColor;
+    margin-bottom: 40px;
+  }
+}
+
+@include onTablet {
+  .favorites {
+    margin-bottom: 64px;
+    &__list {
+      padding-inline: 24px;
+    }
+  }
+}
+
+@include onPhone {
+  .favorites {
+    margin-bottom: 56px;
+    &__list {
+      padding-inline: 16px;
+    }
+
+    &__title {
+      margin-top: 24px;
+    }
+  }
+}

@@ -8,12 +8,14 @@ import { IconFavorites } from '../Icons/IconFavorites';
 import { LogoCart } from '../Icons/IconCart';
 import { LogoClose } from '../Icons/IconClose';
 import data from '../../utils/NavList.json';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
 import { StateContext } from '../../store/StateProvider';
+import { Pathname } from '../../enums/Pathname';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
+  const { pathname } = useLocation();
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
 
@@ -63,7 +65,13 @@ export const AsideMenu = () => {
         <div className={style.menu__wrap}>
           <LangButton />
         </div>
-        <Link to="#" className={style.menu__wrap}>
+        <Link
+          to="/favorites"
+          className={classNames(style.menu__wrap, {
+            [style.menu__activeFav]: pathname === Pathname.favorites,
+          })}
+          onClick={() => setActiveMenu(!activeMenu)}
+        >
           <IconFavorites className={style.menu__icons} />
         </Link>
         <Link to="#" className={style.menu__wrap}>

@@ -62,7 +62,9 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
         />
       </div>
 
-      <Cards gadgets={resultFilteredDev} />
+      <div className={style.gadgets__cardsContainer}>
+        <Cards gadgets={resultFilteredDev} />
+      </div>
       <Pagination perPage={itemsOnPage} />
     </div>
   );

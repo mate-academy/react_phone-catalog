@@ -17,6 +17,7 @@
   }
 
   &__title {
+    margin-top: 40px;
     margin-bottom: 8px;
     font-size: 48px;
     line-height: 56px;
@@ -54,6 +55,10 @@
       border: 1px solid $border-hover-button;
     }
   }
+
+  &__cardsContainer {
+    margin-bottom: 40px;
+  }
 }
 
 .gadgets__darkTheme .gadgets__paginationLink {
@@ -81,5 +86,16 @@ select:focus {
 @include onPhone {
   .gadgets {
     padding-inline: 16px;
+
+    &__title {
+      margin-top: 24px;
+      margin-bottom: 8px;
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    &__cardsContainer {
+      margin-bottom: 24px;
+    }
   }
 }

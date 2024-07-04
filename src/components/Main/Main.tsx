@@ -20,6 +20,7 @@ export const Main = () => {
   const homePage =
     (pathname !== Pathname.phones || productIdChech.length > 0) &&
     pathname !== Pathname.tablets &&
+    (pathname !== Pathname.favorites) &&
     pathname !== Pathname.accessories &&
     !productIdChech;
 

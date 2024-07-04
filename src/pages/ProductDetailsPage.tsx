@@ -266,7 +266,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       </div>
 
       <div>
-        <SectionCards products={recomended} title={'You may also like'} />
+        <SectionCards products={recomended} title={t('youMayAlsoLike')} />
       </div>
     </div>
   );

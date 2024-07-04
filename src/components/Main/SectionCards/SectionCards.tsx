@@ -10,17 +10,28 @@ import { Products } from '../../../types/ContextType/Products';
 import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
 import { getTouchEventData } from '../../../utils/hooks/dom';
+import { Link } from 'react-router-dom';
+import { StateContext } from '../../../store/StateProvider';
+import Heart from '../../../image/Favorites/heart.svg';
 const MIN_SWIPE_REQUIRED = 20;
 
 type Props = {
   products: Products[];
   title: string;
+  discount?: boolean;
 };
 
-export const SectionCards: React.FC<Props> = ({ products, title }) => {
+export const SectionCards: React.FC<Props> = ({
+  products,
+  title,
+  discount = true,
+}) => {
   const { t } = useContext(LanguageContext);
+  const { favorites, setFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
   const lengthImgList = products.length - 1;
+
+  console.log(favorites);
 
   const containerWidthRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -165,6 +176,10 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
     }
   }
 
+  const availableFav = (product: Products, favorites: Products[]) => {
+    return !!favorites.find(item => item.itemId === product.itemId);
+  };
+
   return (
     <section
       className={classNames(style.sectionCards, {
@@ -202,8 +217,8 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
                 key={product.id}
                 ref={widthRef}
               >
-                <a
-                  href="#"
+                <Link
+                  to={`/${product.category}/${product.itemId}`}
                   className={style.sectionCards__cardLink}
                   draggable={false}
                 >
@@ -213,18 +228,26 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
                     className={style.sectionCards__cardImg}
                     draggable={false}
                   />
-                </a>
+                </Link>
                 <div className={style.sectionCards__cardContent}>
                   <h2 className={style.sectionCards__cardName}>
                     {product.name}
                   </h2>
                   <div className={style.sectionCards__price}>
-                    <p className={style.sectionCards__discountPrice}>
-                      &#36;{product.price}
-                    </p>
-                    <p className={style.sectionCards__fullPrice}>
-                      &#36;{product.fullPrice}
-                    </p>
+                    {discount ? (
+                      <p className={style.sectionCards__discountPrice}>
+                        &#36;{product.price}
+                      </p>
+                    ) : (
+                      <p className={style.sectionCards__discountPrice}>
+                        &#36;{product.fullPrice}
+                      </p>
+                    )}
+                    {discount && (
+                      <p className={style.sectionCards__fullPrice}>
+                        &#36;{product.fullPrice}
+                      </p>
+                    )}
                   </div>
 
                   <span className={style.sectionCards__cardLine} />
@@ -251,8 +274,30 @@ export const SectionCards: React.FC<Props> = ({ products, title }) => {
                   <button className={style.sectionCards__addToCard}>
                     {t('addToCart')}
                   </button>
-                  <button className={style.sectionCards__CardfavBtn}>
-                    <IconFavorites />
+                  <button
+                    className={style.sectionCards__CardfavBtn}
+                    onClick={() =>
+                      setFavorites(prevProducts => {
+                        const newFavorites = [...prevProducts];
+                        const availableFav = newFavorites.some(
+                          item => item.itemId === product.itemId,
+                        );
+
+                        if (availableFav) {
+                          return newFavorites.filter(
+                            item => item.itemId !== product.itemId,
+                          );
+                        } else {
+                          return [...newFavorites, product];
+                        }
+                      })
+                    }
+                  >
+                    {availableFav(product, favorites) ? (
+                      <img src={Heart} alt="LikeLogo" />
+                    ) : (
+                      <IconFavorites />
+                    )}
                   </button>
                 </div>
               </li>

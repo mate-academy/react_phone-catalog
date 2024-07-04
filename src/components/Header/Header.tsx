@@ -8,12 +8,15 @@ import style from './Header.module.scss';
 import { useContext } from 'react';
 import { BreakPointsContext } from '../../store/BreakPointsProvider';
 import { LogoBurger } from '../Icons/IconBurger';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { StateContext } from '../../store/StateProvider';
+import classNames from 'classnames';
+import { Pathname } from '../../enums/Pathname';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
   const { setActiveMenu } = useContext(StateContext);
+  const { pathname } = useLocation();
 
   return (
     <header className={style.header}>
@@ -34,7 +37,12 @@ export const Header = () => {
               <div className={style.header__topBtn}>
                 <ThemeButton />
               </div>
-              <Link to="#" className={style.header__actionsLink}>
+              <Link
+                to="../favorites"
+                className={classNames(style.header__actionsLink, {
+                  [style.header__favoritesActive]: pathname === Pathname.favorites,
+                })}
+              >
                 <IconFavorites className={style.header__actionsImg} />
               </Link>
               <Link to="#" className={style.header__actionsLink}>
