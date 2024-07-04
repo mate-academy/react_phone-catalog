@@ -57,7 +57,7 @@ export const BurgerMenu = () => {
         className={classNames('burgerMenu', { 'burgerMenu--active': isActive })}
       >
         <div className="burgerMenu__content">
-          <ul>
+          <ul className="burgerMenu__navList">
             {navLinks.map(item => (
               <li className="burgerMenu__navItem" key={item.value}>
                 <Link to={item.hreaf} onClick={() => setIsActive(false)}>
