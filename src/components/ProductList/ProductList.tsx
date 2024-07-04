@@ -10,6 +10,7 @@ type Props = {
 
 export const ProductList: React.FC<Props> = ({ title }) => {
   const { favorites } = useContext(StateContext);
+
   return (
     <div className={style.favorites}>
       <div className={style.favorites__container}>

@@ -13,6 +13,7 @@ import { getTouchEventData } from '../../../utils/hooks/dom';
 import { Link } from 'react-router-dom';
 import { StateContext } from '../../../store/StateProvider';
 import Heart from '../../../image/Favorites/heart.svg';
+import { availableFav } from '../../../utils/availableFav';
 const MIN_SWIPE_REQUIRED = 20;
 
 type Props = {
@@ -30,8 +31,6 @@ export const SectionCards: React.FC<Props> = ({
   const { favorites, setFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
   const lengthImgList = products.length - 1;
-
-  console.log(favorites);
 
   const containerWidthRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -176,9 +175,6 @@ export const SectionCards: React.FC<Props> = ({
     }
   }
 
-  const availableFav = (product: Products, favorites: Products[]) => {
-    return !!favorites.find(item => item.itemId === product.itemId);
-  };
 
   return (
     <section

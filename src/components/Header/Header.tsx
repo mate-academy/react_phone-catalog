@@ -40,7 +40,8 @@ export const Header = () => {
               <Link
                 to="../favorites"
                 className={classNames(style.header__actionsLink, {
-                  [style.header__favoritesActive]: pathname === Pathname.favorites,
+                  [style.header__favoritesActive]:
+                    pathname === Pathname.favorites,
                 })}
               >
                 <IconFavorites className={style.header__actionsImg} />

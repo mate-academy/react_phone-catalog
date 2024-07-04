@@ -72,7 +72,12 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
                 {t('addToCart')}
               </button>
               <button
-                className={classNames(style.cards__сardFavBtn, {[style.cards__selectedFavorite]: availableFav(product, favorites)})}
+                className={classNames(style.cards__сardFavBtn, {
+                  [style.cards__selectedFavorite]: availableFav(
+                    product,
+                    favorites,
+                  ),
+                })}
                 onClick={() =>
                   setFavorites(prevProducts => {
                     const newFavorites = [...prevProducts];

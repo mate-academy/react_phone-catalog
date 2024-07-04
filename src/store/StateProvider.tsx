@@ -7,7 +7,7 @@ type StateType = {
   activeMenu: boolean;
   setActiveMenu: (v: boolean) => void;
   favorites: Products[];
-  setFavorites: (v: Products[] | ((s: Products[]) => Products[]) ) => void;
+  setFavorites: (v: Products[] | ((s: Products[]) => Products[])) => void;
 };
 
 type Props = {
