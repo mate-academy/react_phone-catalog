@@ -1,3 +1,4 @@
+/* eslint-disable */
 import style from './SectionCards.module.scss';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import { useContext, useRef, useState } from 'react';

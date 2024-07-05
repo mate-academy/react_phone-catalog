@@ -56,6 +56,7 @@
   }
 
   &__icons {
+    position: relative;
     width: 16px;
     height: 16px;
   }
@@ -139,8 +140,8 @@
     line-height: 12px;
     font-weight: 700;
     color: #fff;
-    top: 20px;
-    right: 125px;
+    top: 30%;
+    right: 45%;
     width: 14px;
     height: 14px;
     border-radius: 50%;

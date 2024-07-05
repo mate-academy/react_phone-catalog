@@ -1,11 +1,14 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BackButton } from '../BackButton/BackButton';
 import style from './CartItems.module.scss';
 import { ProductsContext } from '../../store/ProductsProvider';
 import close from '../../image/Cart-icon/close.svg';
+import Minus from '../../image/Cart-icon/minus.svg';
+import Plus from '../../image/Cart-icon/plus.svg';
 
 export const CartItems = () => {
   const { products } = useContext(ProductsContext);
+  const [count, setCount] = useState(0);
 
   return (
     <div className={style.cart}>
@@ -28,6 +31,26 @@ export const CartItems = () => {
                     className={style.cart__gadgetPhoto}
                   />
                   <p className={style.cart__gadgetName}>{item.name}</p>
+
+                  <div className={style.cart__quantityButtons}>
+                    <button
+                      className={style.cart__button}
+                      onClick={() =>
+                        setCount(prevCount =>
+                          prevCount > 0 ? prevCount - 1 : prevCount,
+                        )
+                      }
+                    >
+                      <img src={Minus} alt="Minus" />
+                    </button>
+                    <span className={style.cart__count}>{count}</span>
+                    <button
+                      className={style.cart__button}
+                      onClick={() => setCount(prevCount => prevCount + 1)}
+                    >
+                      <img src={Plus} alt="Plus" />
+                    </button>
+                  </div>
                   <p className={style.cart__gadgetPrice}>${item.fullPrice}</p>
                 </div>
               </li>

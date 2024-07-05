@@ -114,6 +114,7 @@
     height: 40px;
     border: none;
     cursor: pointer;
+    width: 100%;
 
     &:hover {
       background-color: $background-color-phoneCardHover;
@@ -125,7 +126,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 40px;
+    min-width: 40px;
     height: 40px;
     background-color: $background-color-button-fav;
     border: 1px solid $border-color;
