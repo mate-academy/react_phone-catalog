@@ -1,0 +1,20 @@
+@import '../../../styles/services/mixin';
+
+.products{
+  row-gap: 40px;
+  padding-block: 24px;
+
+  @include on-tablet{
+    padding-bottom: 40px;
+  }
+
+  @include page-grid;
+
+  :nth-child(n){
+    grid-column: span 4;
+
+    @include on-tablet{
+      grid-column: span 6;
+    }
+  }
+}

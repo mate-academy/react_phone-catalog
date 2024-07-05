@@ -1,0 +1,93 @@
+@import '../../../styles/services/mixin';
+
+.filters{
+  &__fields{
+    @include page-grid;
+
+    :nth-child(n){
+      grid-column: span 2;
+    }
+
+    @include on-tablet{
+      :nth-child(1){
+        grid-column: span 4;
+      }
+      :nth-child(2){
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__dropdown{
+    position: relative;
+  }
+
+  &__label{
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 16px;
+  color: #75767F;
+  margin-bottom: 4px;
+  }
+
+  &__triggle{
+    background-color: #323542;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    width: 100%;
+    color: #F1F2F9;
+    text-align: start;
+    padding: 10px 12px;
+    position: relative;
+    transition: border 0.3s;
+    border: 1px solid transparent;
+
+    &:hover{
+      border: 1px solid #4A4D58
+    }
+
+    &--active{
+      border: 1px solid #905BFF;
+      &::after{
+        transition: transform 0.3s;
+        transform: rotate(180deg);
+      }
+    }
+
+    &::after{
+      content: url('../../../../public/img/icons/dropdown.svg');
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      top: 12px;
+      right: 12px;
+    }
+
+
+    &:hover &::after{
+      content: url('../../../../public/img/icons/dropdown-hover.svg');
+    }
+  }
+
+  &__options{
+    position: absolute;
+    border: 1px solid #3B3E4A;
+    background-color: #0F1121;
+    padding: 8px 0;
+    left: 0;
+    right: 0;
+    top: 67px;
+    z-index: 15;
+  }
+
+  &__option{
+    transition: background-color 0.3s;
+    cursor: pointer;
+    padding: 6px 12px;
+
+    &:hover{
+      background-color: #323542;
+    }
+  }
+}

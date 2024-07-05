@@ -1,0 +1,11 @@
+@import '../../styles/services/mixin';
+
+.main{
+  padding-bottom: 64px;
+
+  @include on-desktop{
+    padding-bottom: 80px;
+  }
+}
+
+

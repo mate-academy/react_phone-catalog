@@ -1,0 +1,45 @@
+.add-buttons{
+  display: flex;
+  column-gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+
+  &__add-to-cart{
+    background: #905BFF;
+    flex: 1 0 auto;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    color: #fff;
+    transition: background-color 0.3s;
+
+    &:hover{
+      background-color: #A378FF;
+    }
+
+    &--disabled{
+      background-color: #323542;
+    }
+  }
+
+  &__heart-like{
+    background: #323542;
+    flex-basis: 40px;
+    height: 40px;
+    background-image: url('./../../../../public/img/icons/heart-like.svg');
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-color 0.3s;
+
+    &:hover{
+      background-color: #4A4D58;
+    }
+
+    &--disabled{
+      background-image: url('./../../../../public/img/icons/heart-like-disabled.svg');
+      background-color: #0F1121;
+    }
+  }
+}
