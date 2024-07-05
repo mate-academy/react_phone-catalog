@@ -4,3 +4,7 @@ export const getLinkClass = (isActive: boolean, className: string) =>
   classNames(`${className}`, {
     active: isActive,
   });
+// export const getLinkClass = (isActive: boolean, className: string) =>
+//   classNames(`${className}`, {
+//     active: isActive,
+//   });

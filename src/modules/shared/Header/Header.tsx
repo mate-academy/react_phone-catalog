@@ -59,7 +59,7 @@ export const Header: React.FC<Props> = ({ isOpenMenu, setIsOpenMenu }) => {
         <div className="header__right">
           <button
             id="theme-toggle"
-            className="header__right-item uppercase"
+            className="header__right-item theme uppercase"
             onClick={toggleTheme}
           >
             {oppositeTheme}

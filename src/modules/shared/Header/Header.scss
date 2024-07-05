@@ -97,6 +97,10 @@
         }
       }
 
+      &.theme {
+        display: flex;
+      }
+
       &:hover {
         background-color: var(--hover-bg);
       }
@@ -109,6 +113,7 @@
     justify-content: center;
     align-items: center;
     width: 48px;
+    color: var(--secondary-text-color);
     background-color: var(--main-bg-color);
     border: none;
     border-left: 1px solid var(--elements-color);
