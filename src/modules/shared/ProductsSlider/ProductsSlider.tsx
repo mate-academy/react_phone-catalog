@@ -1,3 +1,4 @@
+import { useSwipeable } from 'react-swipeable';
 import './ProductsSlider.scss';
 import { useContext, useEffect, useMemo, useState } from 'react';
 import { Product } from '../../../types/Product';
@@ -72,6 +73,11 @@ export const ProductsSlider: React.FC<Props> = ({
     [cardWidth, products.length, currentIndex],
   );
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNextClick,
+    onSwipedRight: handlePrevClick,
+  });
+
   return (
     <div className="products-slider">
       <div className="products-slider__top">
@@ -115,7 +121,11 @@ export const ProductsSlider: React.FC<Props> = ({
       </div>
 
       <div className="products-slider__products">
-        <ul className="products-slider__list" style={carouselListStyles}>
+        <ul
+          className="products-slider__list"
+          style={carouselListStyles}
+          {...handlers}
+        >
           {products.map(product => (
             <li
               className="products-slider__item"

@@ -1,3 +1,4 @@
+import { useSwipeable } from 'react-swipeable';
 import { useContext, useEffect, useState } from 'react';
 import './PicturesSlider.scss';
 import { Link } from 'react-router-dom';
@@ -47,6 +48,11 @@ export const PicturesSlider = () => {
     return () => clearInterval(intervalId);
   }, [currentImage]);
 
+  const handlers = useSwipeable({
+    onSwipedLeft: handleNextImage,
+    onSwipedRight: handlePrevImage,
+  });
+
   return (
     <section className="carousel">
       <button
@@ -58,7 +64,7 @@ export const PicturesSlider = () => {
         <img src={getIconSrc('arrow-prev', theme)} className="icon" />
       </button>
 
-      <div className="carousel__images">
+      <div className="carousel__images" {...handlers}>
         {banners.map(({ id, src, title }) => (
           <Link to={`/${title}`} key={id} className="carousel__link">
             <img
