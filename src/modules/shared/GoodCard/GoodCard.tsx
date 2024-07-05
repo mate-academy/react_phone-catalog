@@ -85,7 +85,7 @@ export const GoodCard: React.FC<Props> = ({ good, category }) => {
 
                 return (
                   <Link
-                    to={`/${category}/${namespaceId}-${capacityLink}-${item}`}
+                    to={`/${category}/${namespaceId}-${capacityLink}-${item.replaceAll(' ', '-')}`}
                     key={item}
                     className={classNames('card__color', {
                       'card__color--active': color === item,

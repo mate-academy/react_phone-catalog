@@ -61,7 +61,6 @@
     width: 48px;
     box-shadow: -1px 0 0 0 #3B3E4A;
     display: flex;
-    justify-content: center;
     align-items: center;
     background-image: url('../../../../public/img/icons/search.svg');
     background-repeat: no-repeat;
@@ -90,7 +89,7 @@
         background-size: contain;
         background-repeat: no-repeat;
         top: 20px;
-        left: 10px;
+        left: 15px;
         width: 18px;
         height: 18px;
       }
@@ -101,6 +100,7 @@
 
   &__search{
     box-sizing: border-box;
+    flex: 1 1 auto;
     background-color: transparent;
     outline: none;
     border: 1px solid transparent;
@@ -143,9 +143,6 @@
       width: auto;
       height: auto;
     }
-
   }
-
-
 }
 
