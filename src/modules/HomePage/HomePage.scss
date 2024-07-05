@@ -1,0 +1,25 @@
+@import '../../styles/main';
+
+.home-page {
+  &__title {
+    padding: 24px 0;
+
+    @include on-tablet {
+      padding: 32px 0;
+    }
+
+    @include on-desktop {
+      padding: 56px 0;
+    }
+  }
+
+  &__content {
+    padding-bottom: 64px;
+    display: grid;
+    gap: 80px;
+
+    @include on-tablet {
+      padding-bottom: 80px;
+    }
+  }
+}

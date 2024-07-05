@@ -1,0 +1,30 @@
+@import '../../../styles/main';
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    object-fit: contain;
+  }
+
+  &__title {
+    text-decoration: none;
+    color: var(--main-text-color);
+
+    &--active {
+      color: var(--secondary-text-color);
+    }
+  }
+}

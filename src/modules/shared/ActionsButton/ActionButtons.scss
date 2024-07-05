@@ -1,0 +1,73 @@
+@import '../../../styles/main';
+
+.buttons {
+  &__wrap {
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__cart {
+    width: 100%;
+    color: var(--main-bg-color);
+    background-color: var(--main-text-color);
+    border: 0;
+    transition: box-shadow 300ms;
+    cursor: pointer;
+
+    &:hover:not(.dark) {
+      box-shadow: 0 2px 16px 0 rgba(49, 57, 60, 0.32);
+    }
+
+    &.active:not(.dark) {
+      color: var(--green);
+      background-color: var(--main-bg-color);
+      border: 1px solid var(--elements-color);
+    }
+
+    &.dark {
+      color: var(--main-text-color);
+      background-color: var(--accent-color);
+
+      @include hover(background-color, var(--hover-accent));
+
+      &.active {
+        border: none;
+        background-color: var(--color-surface);
+
+        @include hover(background-color, var(--hover-accent));
+      }
+    }
+  }
+
+  &__fav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--icons-color);
+    background-color: var(--main-bg-color);
+    cursor: pointer;
+
+    @include hover(border-color, var(--main-text-color));
+
+    &.active:not(.dark) {
+      border: 1px solid var(--elements-color);
+
+      @include hover(border-color, var(--main-text-color));
+    }
+
+    &.dark {
+      background-color: var(--color-surface);
+      border: none;
+
+      @include hover(background-color, var(--icons-color));
+
+      &.active {
+        background-color: inherit;
+        border: 1px solid var(--elements-color);
+
+        @include hover(background-color, var(--icons-color));
+      }
+    }
+  }
+}

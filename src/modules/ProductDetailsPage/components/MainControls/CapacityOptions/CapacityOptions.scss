@@ -1,0 +1,38 @@
+@import '../../../../../styles/main';
+
+.capacityOptions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__title {
+    color: var(--secondary-text-color);
+  }
+
+  &__variable {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__capacityWrap {
+    display: flex;
+    align-items: center;
+    padding: 0 8px;
+    height: 32px;
+    background-color: var(--main-bg-color);
+    color: var(--main-text-color);
+    text-decoration: none;
+    border: 1px solid var(--icons-color);
+
+    &.active {
+      border: none;
+      background-color: var(--main-text-color);
+      color: var(--main-bg-color);
+    }
+
+    &:hover {
+      border-color: var(--icons-color);
+    }
+  }
+}

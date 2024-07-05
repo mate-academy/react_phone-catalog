@@ -1,0 +1,37 @@
+@import '../../styles/main';
+
+.favorites {
+  padding-top: 24px;
+  padding-bottom: 64px;
+  min-height: calc(100vh - 48px - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 48px - 96px);
+    padding-bottom: 80px;
+  }
+
+  @include on-desktop {
+    min-height: calc(100vh - 64px - 96px);
+  }
+
+  &__title {
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__items {
+    padding-top: 8px;
+    color: var(--secondary-text-color);
+  }
+
+  &__products {
+    padding-top: 32px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+}

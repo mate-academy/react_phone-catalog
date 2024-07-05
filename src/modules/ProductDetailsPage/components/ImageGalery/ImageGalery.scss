@@ -1,0 +1,93 @@
+@import '../../../../styles/main';
+
+.imageGlr {
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: unset;
+    }
+  }
+
+  &__smallWpar {
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+
+  &__smallImg {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 51px;
+    height: 49px;
+    overflow: hidden;
+    border: 1px solid var(--elements-color);
+
+    @include on-tablet {
+      width: 35px;
+      height: 35px;
+    }
+
+    @include on-desktop {
+      width: 80px;
+      height: 80px;
+
+      &:hover {
+        border-radius: 10px;
+      }
+    }
+
+    &--active {
+      border-color: var(--main-text-color);
+    }
+  }
+
+  &__bigImageMobWrap {
+    overflow: hidden;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__bigImageWrap {
+    display: none;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__bigImage {
+    object-fit: contain;
+    width: 287px;
+    height: 287px;
+
+    @include on-desktop {
+      width: 464px;
+      height: 464px;
+    }
+  }
+
+  &__image {
+    height: 100%;
+    object-fit: contain;
+  }
+}

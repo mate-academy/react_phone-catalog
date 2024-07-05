@@ -1,0 +1,17 @@
+@import '../../../../../styles/main';
+
+.mainInfo {
+  &__block {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__title {
+    color: var(--secondary-text-color);
+  }
+
+  &__text {
+    color: var(--main-text-color);
+  }
+}

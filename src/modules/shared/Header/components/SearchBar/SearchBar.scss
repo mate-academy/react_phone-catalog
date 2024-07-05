@@ -1,0 +1,40 @@
+@import '../../../../../styles/main';
+
+.searchBar {
+  box-sizing: border-box;
+  padding: 24px;
+  display: none;
+  max-width: 200px;
+  justify-content: space-between;
+  align-items: center;
+  border-left: 1px solid var(--elements-color);
+  overflow: hidden;
+
+  @include hover(background-color, var(--hover-bg));
+
+  @include on-tablet {
+    display: flex;
+  }
+
+  &__input {
+    width: 100%;
+    padding: 0;
+    background-color: inherit;
+    color: var(--main-text-color);
+    border: none;
+    outline: none;
+
+    &::placeholder {
+      color: var(--secondary-text-color);
+    }
+  }
+
+  &__closeBtn {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: inherit;
+    border: none;
+  }
+}
