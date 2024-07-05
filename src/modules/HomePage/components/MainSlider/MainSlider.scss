@@ -43,6 +43,7 @@
     grid-column: 1/-1;
     overflow: hidden;
 
+
     @include on-tablet{
       height: 189px;
       grid-column: span 10;
