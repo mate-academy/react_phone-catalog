@@ -17,3 +17,9 @@ export function getAccessories(): Promise<Product[]> {
     return response.json();
   });
 }
+
+export function getProducts(): Promise<Product[]> {
+  return fetch('http://localhost:3000/api/products.json').then(response => {
+    return response.json();
+  });
+}
