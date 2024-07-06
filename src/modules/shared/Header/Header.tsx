@@ -6,7 +6,7 @@ import { ProductContext } from '../Context/Context';
 import { getSearchWith } from '../../utils/GetSearchWith';
 
 export const Header = () => {
-  const { path, cart, favourite, setSearchParams, params, totalSums } =
+  const { path, cart, favourite, setSearchParams, params, totalSums, query } =
     useContext(ProductContext);
 
   const handleSearchParamQuery = (value: string) => {
@@ -31,6 +31,7 @@ export const Header = () => {
             path === '/accessories') && (
             <div className="header__search-wrapper">
               <input
+                value={query ? query : ''}
                 type="text"
                 className="header__search"
                 onChange={event => handleSearchParamQuery(event.target.value)}
