@@ -65,6 +65,7 @@ export const AsideMenu = () => {
         <div className={style.menu__wrap}>
           <LangButton />
         </div>
+
         <Link
           to="/favorites"
           className={classNames(style.menu__wrap, {
@@ -72,13 +73,16 @@ export const AsideMenu = () => {
           })}
           onClick={() => setActiveMenu(!activeMenu)}
         >
-          {favorites.length > 0 && (
-            <span className={style.menu__itemsFavCircle}>
-              {favorites.length}
-            </span>
-          )}
-          <IconFavorites className={style.menu__icons} />
+          <div className={classNames(style.menu__wrapper)}>
+            {favorites.length > 0 && (
+              <span className={style.menu__itemsFavCircle}>
+                {favorites.length}
+              </span>
+            )}
+            <IconFavorites className={style.menu__icons} />
+          </div>
         </Link>
+
         <Link
           to="/cart"
           onClick={() => setActiveMenu(!activeMenu)}

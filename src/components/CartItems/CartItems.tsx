@@ -1,14 +1,36 @@
 import { useContext, useState } from 'react';
 import { BackButton } from '../BackButton/BackButton';
 import style from './CartItems.module.scss';
-import { ProductsContext } from '../../store/ProductsProvider';
 import close from '../../image/Cart-icon/close.svg';
 import Minus from '../../image/Cart-icon/minus.svg';
 import Plus from '../../image/Cart-icon/plus.svg';
+import { StateContext } from '../../store/StateProvider';
 
 export const CartItems = () => {
-  const { products } = useContext(ProductsContext);
-  const [count, setCount] = useState(0);
+  const { cart, setToCart } = useContext(StateContext);
+  const [count, setCount] = useState(() => cart.map(() => 1));
+
+  const handleIncrement = (index: number) => {
+    setCount(prevCounts =>
+      prevCounts.map((prevCount, i) =>
+        index === i ? prevCount + 1 : prevCount,
+      ),
+    );
+  };
+
+  const handleDecrement = (i: number) => {
+    setCount(prevCounts =>
+      prevCounts.map((prevCount, index) =>
+        index === i && prevCount > 1 ? prevCount - 1 : prevCount,
+      ),
+    );
+  };
+
+  const handleDelete = (i: number) => {
+    const newCart = cart.filter((_, index) => index !== i);
+
+    setToCart(newCart);
+  };
 
   return (
     <div className={style.cart}>
@@ -19,10 +41,13 @@ export const CartItems = () => {
 
         <div className={style.cart__gridContainer}>
           <ul className={style.cart__list}>
-            {products.map(item => (
+            {cart.map((item, i) => (
               <li className={style.cart__item} key={item.itemId}>
                 <div className={style.cart__itemWrapper}>
-                  <button className={style.cart__closeButton}>
+                  <button
+                    className={style.cart__closeButton}
+                    onClick={() => handleDelete(i)}
+                  >
                     <img src={close} alt="Close icon" />
                   </button>
                   <img
@@ -35,18 +60,14 @@ export const CartItems = () => {
                   <div className={style.cart__quantityButtons}>
                     <button
                       className={style.cart__button}
-                      onClick={() =>
-                        setCount(prevCount =>
-                          prevCount > 0 ? prevCount - 1 : prevCount,
-                        )
-                      }
+                      onClick={() => handleDecrement(i)}
                     >
                       <img src={Minus} alt="Minus" />
                     </button>
-                    <span className={style.cart__count}>{count}</span>
+                    <span className={style.cart__count}>{count[i]}</span>
                     <button
                       className={style.cart__button}
-                      onClick={() => setCount(prevCount => prevCount + 1)}
+                      onClick={() => handleIncrement(i)}
                     >
                       <img src={Plus} alt="Plus" />
                     </button>

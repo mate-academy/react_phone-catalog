@@ -114,6 +114,10 @@
     font-size: 12px;
   }
 
+  &__wrapper {
+    position: relative;
+  }
+
   &__activeButton::after {
     content: '';
     position: absolute;
@@ -140,12 +144,13 @@
     line-height: 12px;
     font-weight: 700;
     color: #fff;
-    top: 30%;
-    right: 45%;
+    top: -20%;
+    right: -45%;
     width: 14px;
     height: 14px;
     border-radius: 50%;
     background-color: $favoritesCircleBackColor;
+    z-index: 1;
   }
 }
 
@@ -157,6 +162,7 @@
   width: 100%;
   content: '';
   left: 0;
+
 }
 
 .menu:has(.menu__active) {
