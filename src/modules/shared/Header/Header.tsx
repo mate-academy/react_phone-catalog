@@ -20,6 +20,8 @@ export const Header = () => {
         page: null,
       }),
     );
+
+    setInputValue('');
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
