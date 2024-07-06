@@ -20,6 +20,7 @@
   transition: #{$_property} 0.3s, #{$_property2} 0.3s;
   &:hover {
     #{$_property}: $_toValue;
+    
     @if $_property2 and $_toValue2 {
       #{$_property2}: #{$_toValue2};
     }
