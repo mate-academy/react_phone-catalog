@@ -1,7 +1,7 @@
 import './Header.scss';
 import { MenuList } from '../MenuList';
 import { Link } from 'react-router-dom';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import { ProductContext } from '../Context/Context';
 import { getSearchWith } from '../../utils/GetSearchWith';
 
@@ -11,7 +11,7 @@ export const Header = () => {
 
   const [inputValue, setInputValue] = useState('');
 
-  useEffect(() => {
+  const handleSearch = () => {
     const trimmedValue = inputValue.trim();
 
     setSearchParams(
@@ -20,10 +20,16 @@ export const Header = () => {
         page: null,
       }),
     );
-  }, [inputValue, setSearchParams, params]);
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+  };
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    handleSearch();
   };
 
   return (
@@ -38,7 +44,7 @@ export const Header = () => {
             path === '/tablets' ||
             path === '/accessories') && (
             <div className="header__search-wrapper">
-              <form>
+              <form action="/" onSubmit={e => handleSubmit(e)}>
                 <input
                   value={inputValue}
                   type="text"
