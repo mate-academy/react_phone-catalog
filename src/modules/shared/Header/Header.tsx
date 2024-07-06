@@ -1,21 +1,29 @@
 import './Header.scss';
 import { MenuList } from '../MenuList';
 import { Link } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { ProductContext } from '../Context/Context';
 import { getSearchWith } from '../../utils/GetSearchWith';
 
 export const Header = () => {
-  const { path, cart, favourite, setSearchParams, params, totalSums, query } =
+  const { path, cart, favourite, setSearchParams, params, totalSums } =
     useContext(ProductContext);
 
-  const handleSearchParamQuery = (value: string) => {
+  const [inputValue, setInputValue] = useState('');
+
+  useEffect(() => {
+    const trimmedValue = inputValue.trim();
+
     setSearchParams(
       getSearchWith(params, {
-        query: value || null,
+        query: trimmedValue || null,
         page: null,
       }),
     );
+  }, [inputValue, setSearchParams, params]);
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputValue(e.target.value);
   };
 
   return (
@@ -30,12 +38,14 @@ export const Header = () => {
             path === '/tablets' ||
             path === '/accessories') && (
             <div className="header__search-wrapper">
-              <input
-                value={query ? query : ''}
-                type="text"
-                className="header__search"
-                onChange={event => handleSearchParamQuery(event.target.value)}
-              />
+              <form>
+                <input
+                  value={inputValue}
+                  type="text"
+                  className="header__search"
+                  onChange={event => handleInputChange(event)}
+                />
+              </form>
             </div>
           )}
           {path !== '/menu' && (

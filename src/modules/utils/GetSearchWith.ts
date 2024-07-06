@@ -35,10 +35,11 @@ export function getSearchWith(
         newParams.append(key, part);
       });
     } else {
-      newParams.set(key, value.trim());
+      newParams.set(key, value);
     }
   });
 
   // we return a string to use it inside links
+
   return newParams.toString();
 }
