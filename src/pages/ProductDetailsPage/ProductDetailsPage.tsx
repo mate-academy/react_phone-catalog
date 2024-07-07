@@ -9,6 +9,9 @@ import 'swiper/scss/pagination';
 import { Product } from '../../types/Product';
 import { useEffect, useState } from 'react';
 import { getAccessories, getPhones, getTablets } from '../../services/products';
+import classNames from 'classnames';
+// eslint-disable-next-line max-len
+import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -16,6 +19,7 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
+  const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
     async function fetchData() {
@@ -36,7 +40,7 @@ export const ProductDetailsPage: React.FC = () => {
         foundProduct.colorsAvailable &&
         !!foundProduct.colorsAvailable
       ) {
-        setSelectedColor(foundProduct.colorsAvailable[0]);
+        setSelectedColor(foundProduct.color);
       }
 
       if (
@@ -72,6 +76,10 @@ export const ProductDetailsPage: React.FC = () => {
     zoom,
     cell,
   } = product;
+
+  const addToFav = () => {
+    setIsPressed(!isPressed);
+  };
 
   return (
     <>
@@ -192,8 +200,15 @@ export const ProductDetailsPage: React.FC = () => {
             <button type="button" className="product-details__buttons--add">
               Add to cart
             </button>
-            <button className="product-details__buttons--heart">
-              <svg className="icon icon-heart icon-heart-red">
+            <button
+              className="product-details__buttons--heart"
+              onClick={addToFav}
+            >
+              <svg
+                className={classNames('icon icon-heart', {
+                  'icon-heart-red': isPressed,
+                })}
+              >
                 <use href="/img/icons.svg#icon-favourites-filled"></use>
               </svg>
             </button>
@@ -264,6 +279,9 @@ export const ProductDetailsPage: React.FC = () => {
                 <p className="tech-specs-item__param">{`${cell[0]}, ${cell[1]}, ${cell[2]}`}</p>
               </li>
             </ul>
+          </div>
+          <div className="product-details__recomm recommended">
+            <SuggestedProducts />
           </div>
         </div>
       </div>

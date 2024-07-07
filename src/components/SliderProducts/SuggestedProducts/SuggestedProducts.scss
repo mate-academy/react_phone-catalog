@@ -1,0 +1,147 @@
+@import '../../../styles/common';
+
+.recommended {
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    grid-column: 1 / -1;
+
+    &--title {
+      color: $main-white-color;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+  }
+
+  &__list {
+    &--card {
+      display: flex;
+      align-items: center;
+      flex-direction: column;
+    }
+  }
+}
+
+.recomm-card {
+  padding: 32px;
+  gap: 8px;
+  background-color: $card-bgc;
+  height: auto;
+
+  &__picture {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 148px;
+    height: 108px;
+
+    &--img {
+      width: fit-content;
+      height: 108px;
+    }
+  }
+
+  &__title {
+    color: $main-white-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    padding-top: 16px;
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    align-self: flex-start;
+    padding-bottom: 8px;
+    gap: 8px;
+    border-bottom: 1px solid $dark-grey-color;
+
+    &--disc {
+      color: $main-white-color;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+
+    &--regular {
+      text-decoration: line-through;
+      color: $text-grey-color;
+      font-size: 22px;
+      line-height: 28.12px;
+    }
+  }
+
+  &__tech {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+
+    &--add {
+      width: 100px;
+      height: 40px;
+      border: none;
+      background-color: $button-purpul-color;
+      color: $main-white-color;
+      font-size: 14px;
+      line-height: 21px;
+      text-align: center;
+
+      @include hover(background-color, $purple-hover-color);
+
+      &:focus {
+        background-color: $button-grey-color;
+      }
+    }
+
+    &--heart {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      height: 40px;
+      background-color: $button-grey-color;
+      border: none;
+
+      @include hover(background-color, $icon-grey-color);
+
+      &:focus {
+        background-color: transparent;
+        border: 1px solid $dark-grey-color;
+      }
+    }
+  }
+}
+
+.recomm-item {
+  display: flex;
+  justify-content: space-between;
+
+  &__name {
+    color: $light-grey-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: left;
+  }
+
+  &__param {
+    color: $main-white-color;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    text-align: right;
+  }
+}

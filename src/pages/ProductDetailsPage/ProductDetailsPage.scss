@@ -11,6 +11,7 @@
     margin-bottom: $margin-bottom-mobile;
     overflow: hidden;
     grid-column: 1 / -1;
+    overflow: hidden;
 
     @include on-tablet {
       margin-bottom: 40px;
@@ -41,6 +42,8 @@
       font-size: 12px;
       font-weight: 500;
       line-height: 15.34px;
+      white-space: nowrap;
+      overflow: hidden;
     }
   }
 
@@ -97,6 +100,7 @@
       width: 288px;
       height: 49px;
     }
+
     &--img {
       width: 51px;
       height: 49px;
@@ -254,6 +258,10 @@
       flex-direction: column;
       gap: 8px;
     }
+  }
+
+  &__recomm {
+    grid-column: 1 / -1;
   }
 }
 
