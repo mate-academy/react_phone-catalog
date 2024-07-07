@@ -19,6 +19,7 @@ export const CartItems = () => {
       return JSON.parse(data);
     } catch (e) {
       localStorage.removeItem('count');
+
       return cart.map(() => 1);
     }
   });

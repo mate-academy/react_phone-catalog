@@ -68,7 +68,7 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
   });
-  
+
   const stateTools = {
     cart,
     setToCart,

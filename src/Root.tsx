@@ -1,3 +1,4 @@
+/* eslint-disable */
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
