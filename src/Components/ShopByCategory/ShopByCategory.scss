@@ -1,19 +1,35 @@
 @import "../../styles/mixins";
 
-.shop-by-category {
 
+.category {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.shop-by-category {
   &__container {
     @include page-grid;
-
   }
 
   &__title {
-    color: $primary;
     font-weight: bold;
     font-size: 32px;
     line-height: 128%;
     letter-spacing: -0.01em;
     margin-bottom: 24px;
+  }
+
+  &--wrapper--phones {
+    background-color: #6D6474;
+  }
+
+  &--wrapper--tablets {
+    background-color: #8D8D92;
+  }
+
+  &--wrapper--accessories {
+    background-color: #973D5F;
   }
 
   &__wrapper {
@@ -24,25 +40,40 @@
     }
 
     &--phones {
+      @include hover(transform, translateY(-20px));
+
       background-image: url("../../icons/Phones.png");
-      background-size: contain;
+      position: relative;
+      background-size: cover;
+      top: 20px;
+      left: 80px;
       background-repeat: no-repeat;
       padding-bottom: 100%;
-
     }
 
     &--tablets {
       background-image: url("../../icons/Tablets.png");
-      background-size: contain;
+      position: relative;
+      top: 20px;
+      left: 0;
       background-repeat: no-repeat;
       padding-bottom: 100%;
+
+      @include hover(transform, translateY(-20px));
     }
 
     &--accessories {
+      position: relative;
       background-image: url("../../icons/Accessories.png");
-      background-size: contain;
+      width: 250px;
+      top: 35px;
+      background-size: cover;
       background-repeat: no-repeat;
+      background-position: center;
       padding-bottom: 100%;
+      transform: translate(90%, -190px) scale(2);
+
+      @include hover(transform, translate(90%, -210px) scale(2.0));
     }
   }
 
@@ -50,14 +81,12 @@
     margin-top: 24px;
     font-size: 20px;
     font-weight: 600;
-    color: $primary;
   }
 
   &__number {
     margin-top: 4px;
-    font-size: 14px;
     font-weight: 400;
     line-height: 150%;
-    color: $secondary;
+    color: var(--secondary);
   }
 }

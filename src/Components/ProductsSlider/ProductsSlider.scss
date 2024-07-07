@@ -2,10 +2,9 @@
 @import "../../styles/mixins";
 
 .product-slider {
+  padding-right: 0;
 
   @include page-grid;
-
-  padding-right: 0;
 
   @include on-tablet {
     padding-right: 0;
@@ -37,30 +36,27 @@
         max-width: 272px;
       }
     }
-
-
   }
 
   &__header {
     grid-column: 1 / -1;
-    display: flex;
-    justify-content: space-between;
     margin-bottom: 24px;
     padding-right: 16px;
+
+    @include display-flex-row(row, space-between);
 
     &--title {
       font-weight: 800;
       font-size: 32px;
       line-height: 128%;
       letter-spacing: -1px;
-      color: $primary;
     }
 
     &--buttons {
-      display: flex;
-      align-items: center;
-      justify-content: center;
       gap: 16px;
+
+      @include display-flex-row(row, center);
+
 
       &-img--left {
         background-image: url("../../icons/arrow-left.svg");
@@ -72,20 +68,25 @@
     }
 
     &--button {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 32px;
       height: 32px;
-      border: 1px solid $icons;
-      background-color: $white;
+      border: 1px solid var(--icons);
+      background-color: var(--white);
+
+
+      [data-theme="dark"] & {
+        background-color: var(--surface2);
+      }
+
+
+      @include display-flex-row(row, center);
 
       &:hover {
-        border: 1px solid $primary;
+        border: 1px solid var(--primary);
       }
 
       &--disabled {
-        border: 1px solid $elements;
+        border: 1px solid var(--elements);
       }
     }
   }
@@ -94,8 +95,11 @@
 }
 
 .img {
-  width: 16px;
-  height: 16px;
   border: none;
-  background-color: $white;
+
+  [data-theme="dark"] & {
+    filter: invert(1) brightness(100);
+  }
+
+  @include icon-size(16, 16, center);
 }

@@ -1,56 +1,57 @@
-@import '../../styles/variables.scss';
+@import '../../styles/variables';
 
 .dropdown {
-  box-sizing: border-box;
-  //width: 176px;
   position: relative;
 
-
   &__triger {
-    border: 1px solid $icons;
-    background-color: $white;
+    border: 1px solid var(--icons);
+    background-color: var(--white);
     height: 40px;
   }
 
   &__title {
-    color: $secondary;
-    font-weight: 600;
+    color: var(--secondary);
     font-size: 12px;
   }
 
   &__text {
-    padding-left: 12px;
-    color: $primary;
-    font-size: 14px;
     line-height: 150%;
     font-weight: 600;
   }
 
+
   &__button {
+    padding: 10px 12px;
     cursor: pointer;
-    background-color: $white;
+    background-color: var(--white);
     width: 100%;
     height: 100%;
     display: flex;
     justify-content: space-between;
-    border: none;
     align-items: center;
+    font-size: 14px;
+
+    [data-theme="dark"] & {
+      background-color: var(--secondary);
+      color: var(--white);
+
+
+    }
   }
 
+
   &__icon {
-    padding-right: 12px;
     height: 16px;
     width: 16px;
     cursor: pointer;
 
     &__down {
-      border: none;
       width: 100%;
       height: 100%;
       background-image: url('../../icons/arrow-down.svg');
       background-position: center;
       background-repeat: no-repeat;
-      background-size: contain;
+      background-size: cover;
     }
   }
 
@@ -60,27 +61,40 @@
     margin-top: 4px;
     z-index: 100;
     visibility: hidden;
+    opacity: 0;
+    max-height: 0;
+    transition: opacity 0.5s ease, max-height 0.5s ease;
 
     &--content {
       display: flex;
       flex-direction: column;
-      border: 1px solid $icons;
-      background-color: $white;
+      border: 1px solid var(--icons);
+      background-color: var(--white);
     }
+
 
     &--item {
       cursor: pointer;
       padding-left: 12px;
       text-decoration: none;
-      color: $secondary;
-      font-size: 14px;
+      color: var(--secondary);
       line-height: 150%;
       font-weight: 500;
+
+      &:hover {
+        background: rgb(250, 251, 252);
+      }
     }
 
     &--is-active {
       visibility: visible;
+      opacity: 1;
+      max-height: 300px;
     }
   }
+}
 
+
+.dropdown__trigger:focus {
+  border: 2px solid red;
 }

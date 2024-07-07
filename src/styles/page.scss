@@ -21,23 +21,23 @@
   src: url("../../public/fonts/Mont-Bold.otf");
   font-weight: 700;
   font-style: normal;
-
 }
 
 html {
   font-family: Mont, Arial, Helvetica, sans-serif;
-  color: $primary;
   font-weight: 600;
   scroll-behavior: smooth;
-  //overflow: hidden;
-}
-
-#root {
+  font-size: 14px;
+  background-color: var(--white);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-}
 
+  [data-theme="dark"] {
+    background-color: var(--black);
+    color: var(--white);
+  }
+}
 
 .main-title {
   margin-top: 24px;
@@ -49,6 +49,7 @@ html {
   @include on-tablet {
     margin-top: 32px;
   }
+
   @include on-desktop {
     margin-top: 64px;
   }

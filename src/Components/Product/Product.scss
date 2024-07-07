@@ -3,13 +3,14 @@
 
 
 .products {
+  padding-top: $headerHeight;
 
   &__cards {
+    @include page-grid;
+
     margin-top: 24px;
     row-gap: 40px;
     margin-bottom: 40px;
-    @include page-grid;
-
   }
 
   &__item {
@@ -33,9 +34,7 @@
     font-size: 32px;
     line-height: 128%;
     letter-spacing: -1px;
-    color: $primary;
     margin-bottom: 8px;
-
 
     @include on-tablet {
       font-size: 48px;
@@ -50,8 +49,7 @@
 
   &__amount-models {
     font-weight: 600;
-    font-size: 14px;
-    color: $secondary;
+    color: var(--secondary);
     line-height: 150%;
     margin-bottom: 40px;
   }

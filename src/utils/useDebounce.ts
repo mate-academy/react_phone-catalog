@@ -4,10 +4,7 @@ type ArbFunction = (args?: any[]) => void;
 
 const DELAY = 200;
 
-export const useDebounce = (
-  functionToExecute: ArbFunction,
-  delay = DELAY,
-): ArbFunction => {
+export const useDebounce = (functionToExecute: ArbFunction, delay = DELAY) => {
   const timer = useRef(0);
 
   useEffect(() => {

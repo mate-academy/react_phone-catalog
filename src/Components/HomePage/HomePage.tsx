@@ -5,13 +5,21 @@ import { Loader } from '../Loader';
 import { PictureSlider } from '../PicturesSlider/PictureSlider';
 import { ProductsSlider } from '../ProductsSlider';
 import { ShopByCategory } from '../ShopByCategory';
+import { getNewModels } from '../../utils/getNewModels';
+import { getHotPrices } from '../../utils/getHotPrices';
 
 export interface CarouselItem {
   img: string;
 }
 
 export const HomePage = () => {
-  const { loading, phones } = useContext(ProductContext);
+  const { loading, phones, tablets, accessories } = useContext(ProductContext);
+
+  const products = [...phones, ...tablets, ...accessories];
+
+  const newPhone = getNewModels(phones);
+
+  const hotPrices = getHotPrices(products);
 
   const items: CarouselItem[] = [
     { img: 'img/banner-tablets.png' },
@@ -29,9 +37,9 @@ export const HomePage = () => {
             <h1 className="main-title">Welcome to Nice Gadgets store!</h1>
             <PictureSlider items={items} />
 
-            <ProductsSlider title={'Brand new models'} products={phones} />
+            <ProductsSlider title={'Brand new models'} products={newPhone} />
             <ShopByCategory />
-            <ProductsSlider title={'Hot Prices'} products={phones} />
+            <ProductsSlider title={'Hot Prices'} products={hotPrices} />
           </div>
         </>
       )}

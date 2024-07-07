@@ -2,6 +2,14 @@
 @import "../../styles/variables";
 
 .favorites {
+  padding-top: $headerHeight;
+
+  &__amount-models {
+    margin-top: 8px;
+    color: var(--icons);
+    line-height: 21px;
+  }
+
   &__content {
     display: flex;
     flex-direction: column;
@@ -9,10 +17,8 @@
     height: 100%;
   }
 
-  padding-top: var(--header--height, 48px);
-
   @include on-desktop {
-    padding-top: var(--header--height, 64px);
+    padding-top: $headerHeightDesktop;
   }
 
   &__text {
@@ -36,5 +42,4 @@
       height: 350px;
     }
   }
-
 }

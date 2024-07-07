@@ -5,9 +5,10 @@ import React, {
   useMemo,
   useState,
 } from 'react';
-import { getProducts } from '../api/Products';
-import { ProductGeneral } from '../types/ProductGeneral';
+import { getProductsItems } from '../api/Products';
+import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/Product';
+import { ProductGeneral } from '../types/ProductGeneral';
 
 export enum SortingBy {
   Newest = 'Newest',
@@ -23,11 +24,9 @@ interface ProductContextState {
   onLoading: (value: boolean) => void;
   errorMessage: string;
   currentPage: number;
-  itemsOnPage: string | number;
   sortBy: string;
   onSortBy: (value: string) => void;
   onPageChange: (page: number, lastNumberOfPage: number) => void;
-  onSetItemsOnPage: (value: string) => void;
   selectedProduct: Product | null;
   onSelectedProduct: (value: Product | null) => void;
   selectedImg: string;
@@ -40,6 +39,8 @@ interface ProductContextState {
   addProductToFavourites: (value: ProductGeneral) => void;
   inCart: ProductGeneral[] | [];
   addProductToCart: (value: ProductGeneral) => void;
+  removeProductFromCart: (product: ProductGeneral) => void;
+  updateProductQuantity: (product: ProductGeneral, quantity: number) => void;
 }
 
 export const ProductContext = createContext<ProductContextState>({
@@ -51,10 +52,8 @@ export const ProductContext = createContext<ProductContextState>({
   errorMessage: '',
   currentPage: 1,
   onPageChange: () => {},
-  itemsOnPage: 'all',
   sortBy: SortingBy.Newest,
   onSortBy: () => {},
-  onSetItemsOnPage: () => {},
   onSelectedProduct: () => {},
   selectedProduct: null,
   selectedImg: '',
@@ -67,6 +66,8 @@ export const ProductContext = createContext<ProductContextState>({
   addProductToFavourites: () => {},
   inCart: [],
   addProductToCart: () => {},
+  removeProductFromCart: () => {},
+  updateProductQuantity: () => {},
 });
 
 type Props = {
@@ -80,18 +81,21 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsOnPage, setItemsOnPage] = useState<string | number>('all');
   const [sortBy, setSortBy] = useState('Newest');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
   const [selectedImg, setSelectedImg] = useState('');
   const [menuOpened, setMenuOpened] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
-  const [inFavourites, setInFavourites] = useState<ProductGeneral[] | []>([]);
-  const [inCart, setInCart] = useState<ProductGeneral[] | []>([]);
+  const [inFavourites, setInFavourites] = useLocalStorage<ProductGeneral[]>(
+    'favorites',
+    [],
+  );
+  const [inCart, setInCart] = useLocalStorage<ProductGeneral[]>('cart', []);
 
   useEffect(() => {
     setLoading(true);
-    getProducts()
+
+    getProductsItems()
       .then(result => {
         const phonesData = result.filter(phone => phone.category === 'phones');
 
@@ -113,21 +117,22 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       .finally(() => setLoading(false));
   }, []);
 
-  const addProductToCart = useCallback((value: ProductGeneral) => {
-    const itemInCart = inCart.find(prod => prod === value);
+  const addProductToCart = useCallback(
+    (value: ProductGeneral) => {
+      setInCart(prevCart => {
+        const existingItem = prevCart.find(item => item.id === value.id);
 
-    if (itemInCart) {
-      const newItems = [...inCart, value];
-
-      const newList = newItems.filter(item => item !== value);
-
-      setInCart(newList);
-    } else {
-      const newItems = [...inFavourites, value];
-
-      setInCart(newItems);
-    }
-  }, []);
+        if (existingItem) {
+          return prevCart.map(item =>
+            item.id === value.id ? { ...item, quantity: 1 } : item,
+          );
+        } else {
+          return [...prevCart, { ...value, quantity: 1 }];
+        }
+      });
+    },
+    [setInCart],
+  );
 
   const onLoading = useCallback((value: boolean) => {
     setLoading(value);
@@ -139,7 +144,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
       if (itemInFav) {
         const newItems = [...inFavourites, value];
-
         const newList = newItems.filter(item => item !== value);
 
         setInFavourites(newList);
@@ -149,7 +153,25 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
         setInFavourites(newItems);
       }
     },
-    [inFavourites],
+    [inFavourites, setInFavourites],
+  );
+
+  const removeProductFromCart = useCallback(
+    (product: ProductGeneral) => {
+      setInCart(prevCart => prevCart.filter(item => item.id !== product.id));
+    },
+    [setInCart],
+  );
+
+  const updateProductQuantity = useCallback(
+    (product: ProductGeneral, quantity: number) => {
+      setInCart(prevCart =>
+        prevCart.map(item =>
+          item.id === product.id ? { ...item, quantity } : item,
+        ),
+      );
+    },
+    [setInCart],
   );
 
   const onMenuOpened = useCallback((value: boolean) => {
@@ -162,11 +184,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
   const onIsMobile = () => {
     setIsMobile(true);
-  };
-
-  const onSetItemsOnPage = (value: string | number) => {
-    setCurrentPage(1);
-    setItemsOnPage(value);
   };
 
   const onSortBy = (value: string) => {
@@ -195,7 +212,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
 
   const value = useMemo(
     () => ({
-      // products,
       phones,
       tablets,
       accessories,
@@ -203,7 +219,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       errorMessage,
       currentPage,
       onPageChange,
-      itemsOnPage,
       sortBy,
       selectedProduct,
       selectedImg,
@@ -211,7 +226,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       isMobile,
       inFavourites,
       inCart,
-      onSetItemsOnPage,
       onSortBy,
       onSelectedImg,
       onMenuOpened,
@@ -220,8 +234,12 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       onSelectedProduct,
       addProductToCart,
       onLoading,
+      removeProductFromCart,
+      updateProductQuantity,
     }),
     [
+      removeProductFromCart,
+      updateProductQuantity,
       menuOpened,
       selectedProduct,
       phones,
@@ -230,7 +248,6 @@ export const ProductProvider: React.FC<Props> = ({ children }) => {
       loading,
       errorMessage,
       currentPage,
-      itemsOnPage,
       onPageChange,
       sortBy,
       selectedImg,

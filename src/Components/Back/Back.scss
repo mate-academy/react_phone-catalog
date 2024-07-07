@@ -1,0 +1,25 @@
+@import "../../styles/variables";
+@import "../../styles/mixins";
+
+.back {
+  @include display-flex-row(row, start);
+
+  cursor: pointer;
+  margin-top: 40px;
+
+  [data-theme="dark"] & {
+    filter: invert(1) brightness(100);
+  }
+
+  &__icon {
+    @include icon-size(16, 16, cover);
+
+    background-image: url('../../icons/arrow-left.svg');
+  }
+
+  &__text {
+    font-size: 12px;
+    color: var(--secondary);
+    line-height: 15px;
+  }
+}

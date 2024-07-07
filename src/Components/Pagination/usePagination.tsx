@@ -1,24 +1,23 @@
 import { useEffect, useMemo, useState } from 'react';
 import { range } from '../../utils/range';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   totalItems: number;
   itemsOnPage: number | string;
   siblingCount: number;
-  currentPage: number;
 };
 
 export const DOTS = '...';
-
-// const windowSize = window.innerWidth < 640;
 
 export const usePagination = ({
   totalItems,
   itemsOnPage,
   siblingCount = 1,
-  currentPage,
 }: Props): (number | string)[] => {
   const [mobile, setMobile] = useState(false);
+  const [searchParams] = useSearchParams();
+  const currentPage = +(searchParams.get('page') || 1);
 
   useEffect(() => {
     const checkWindowSize = () => {

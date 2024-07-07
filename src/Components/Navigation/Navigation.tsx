@@ -8,10 +8,13 @@ const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   classNames('header__link', { 'is-active': isActive });
 
 export const NavItems = () => {
-  const { menuOpened, onMenuOpened } = useContext(ProductContext);
+  const { menuOpened, onMenuOpened, onSelectedProduct } =
+    useContext(ProductContext);
 
   const handleNavClick = () => {
+    window.scrollTo(0, 0);
     onMenuOpened(!menuOpened);
+    onSelectedProduct(null);
   };
 
   return (

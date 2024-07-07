@@ -13,7 +13,9 @@ export const FavoritesPage = () => {
         <>
           <Breadcrumbs />
           <h1 className="favorites__title">Favourites</h1>
-          <p className="favorites__amount-models">{inFavourites.length}</p>
+          <p className="favorites__amount-models">
+            {inFavourites.length} {inFavourites.length === 1 ? 'item' : 'items'}
+          </p>
 
           <section className="products__cards">
             {inFavourites.map(phone => (

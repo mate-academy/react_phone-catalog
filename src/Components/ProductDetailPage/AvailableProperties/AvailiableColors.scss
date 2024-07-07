@@ -1,4 +1,5 @@
 @import '../../../styles/variables';
+@import '../../../styles/mixins';
 
 .available {
   display: flex;
@@ -8,23 +9,33 @@
 
 
   &__color {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-sizing: border-box;
-    border: 1px solid $elements;
+    @include display-flex-row(row, center);
+
+    border: 1px solid var(--elements);
     border-radius: 50%;
 
+    [data-theme="dark"] & {
+      border: 1px solid var(--secondary);
+    }
+
     &--active {
-      border: 1px solid $primary;
+      border: 1px solid var(--primary);
+
+      [data-theme="dark"] & {
+        border: 1px solid var(--white);
+      }
     }
 
     &--item {
-      box-sizing: border-box;
-      border: 2px solid $white;
+      border: 2px solid var(--white);
       border-radius: 50%;
       width: 30px;
       height: 30px;
+
+
+      [data-theme="dark"] & {
+        border: 2px solid var(--black);
+      }
     }
 
 

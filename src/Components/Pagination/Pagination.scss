@@ -1,9 +1,10 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .pagination {
-  display: flex;
   margin-bottom: 50px;
-  justify-content: center;
+
+  @include display-flex-row(row, center);
 
   &__container {
     display: flex;
@@ -11,54 +12,53 @@
   }
 
   &__item {
+    @include display-flex-row(row, center);
+
     cursor: pointer;
-    display: flex;
-    box-sizing: border-box;
     width: 32px;
     height: 32px;
-    border: 1px solid $icons;
-    justify-content: center;
-    align-items: center;
-    font-size: 14px;
+    border: 1px solid var(--icons);
     line-height: 150%;
 
     &--is-active {
-      color: $white;
-      background-color: $primary;
       pointer-events: none;
+      color: var(--white);
+      background-color: var(--primary);
+
+      [data-theme="dark"] & {
+        background-color: var(--accent);
+      }
     }
   }
 
   &__prev {
     min-width: 32px;
     margin-right: 16px;
-    border: 1px solid $secondary;
+    border: 1px solid var(--secondary);
   }
 
   &__next {
     min-width: 32px;
     margin-left: 16px;
-    border: 1px solid $secondary;
+    border: 1px solid var(--secondary);
   }
 
   &__icon {
-    background-position: center;
-    background-repeat: no-repeat;
+    @include icon-size(16, 16, center);
+
+    [data-theme="dark"] & {
+      filter: invert(1) brightness(100);
+    }
 
     &--left {
-      width: 16px;
-      height: 16px;
       background-image: url('../../icons/arrow-left.svg');
     }
 
     &--right {
-      width: 16px;
-      height: 16px;
       background-image: url('../../icons/arrow-right.svg');
     }
   }
 }
-
 
 .disabled {
   pointer-events: none;

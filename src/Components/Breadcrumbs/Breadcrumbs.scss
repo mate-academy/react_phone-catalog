@@ -1,27 +1,32 @@
-@import "../../styles/variables.scss";
+@import "../../styles/variables";
+@import "../../styles/mixins";
 
 .breadcrumbs {
   height: 16px;
+  margin-bottom: 40px;
   margin-top: 24px;
+  gap: 8px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 40px;
 
   &--home {
-    width: 16px;
-    height: 16px;
+    @include icon-size(16, 16, cover);
+
     background-image: url("../../icons/Home.svg");
-    background-size: cover;
-    background-position: center;
+
+    [data-theme="dark"] & {
+      filter: invert(1) brightness(100);
+    }
   }
 
   &--arrow-right {
-    width: 16px;
-    height: 16px;
+    @include icon-size(16, 16, cover);
+
     background-image: url("../../icons/arrow-right.svg");
-    background-size: cover;
-    background-position: center;
+
+    [data-theme="dark"] & {
+      filter: invert(1);
+    }
   }
 
   &--text {
@@ -29,7 +34,18 @@
     display: flex;
     align-items: center;
     font-size: 12px;
-    color: $secondary;
+    color: var(--secondary);
+    pointer-events: none;
+
+    &--is-active {
+      cursor: pointer;
+      color: var(--primary);
+      pointer-events: auto;
+
+      [data-theme="dark"] & {
+        color: var(--white);
+      }
+    }
 
   }
 }

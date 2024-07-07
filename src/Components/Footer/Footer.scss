@@ -1,106 +1,119 @@
-@import "../../styles/variables";
-@import "../../styles/mixins";
+@import '../../styles/variables';
+@import '../../styles/mixins';
+
+
+.wrapped__container {
+  width: 100%;
+  box-shadow: 0 -1px 0 0 var(--elements);
+}
 
 .footer {
-  box-shadow: 0 -1px 0 0 $elements;
+  @include content-padding-inline;
+
+  margin-top: 32px;
+
+  @include on-tablet {
+    margin-top: 0;
+  }
+
+  @include on-desktop {
+    margin-top: 0;
+  }
 
   &__container {
-    height: 257px;
     display: flex;
     flex-direction: column;
+    justify-content: start;
+    height: 256px;
     gap: 32px;
 
-    justify-content: start;
-
     @include on-tablet {
-      height: 96px;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+      @include display-flex-row(row, space-between);
+
+      height: 64px;
     }
 
     @include on-desktop {
-
+      height: 96px;
     }
   }
-
-  &__wrapper {
-    padding-top: 32px;
-
-    @include on-tablet {
-      padding-top: 0;
-    }
-  }
-
 
   &__icon {
-    background-image: url("../../icons/nice-gadgets-logo.svg");
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    width: 89px;
-    height: 32px;
+    @include icon-size(89, 32, cover);
+
+    background-image: url('../../icons/nice-gadgets-logo.svg');
+
+    [data-theme="dark"] & {
+      background-image: url("../../icons/nice-gadgets-logo-light.svg");
+    }
   }
 
   &__links {
-    display: flex;
-    flex-direction: column;
+    @include display-flex-row(column, center);
+
     gap: 16px;
-    justify-content: center;
+    align-items: start;
 
     @include on-tablet {
-      display: flex;
-      flex-direction: row;
-      gap: 16px;
-      justify-content: space-between;
-    }
-
-    @include on-desktop {
+      @include display-flex-row(row, space-between);
 
       gap: 105px;
-
     }
 
     &--item {
       text-decoration: none;
-      font-weight: bold;
-      color: $secondary;
+      font-weight: 800;
+      color: var(--secondary);
       line-height: 92%;
       font-size: 12px;
       text-transform: uppercase;
+
+      [data-theme="dark"] & {
+        color: var(--white);
+      }
     }
   }
 
   &__back-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include display-flex-row(row, center);
+
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+
+    @include on-tablet {
+      position: static;
+      left: 0;
+      transform: translateX(0);
+    }
 
     &__text {
-      color: $secondary;
+      color: var(--secondary);
       font-size: 12px;
       margin-right: 16px;
     }
 
-
     &__button {
+      @include display-flex-row(row, center);
+
       width: 32px;
       height: 32px;
-      border: 1px solid $icons;
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      border: 1px solid var(--icons);
+
+      [data-theme="dark"] & {
+        background-color: var(--surface2);
+      }
     }
 
     &__back {
-      background-image: url("../../icons/arrow-up.svg");
-      background-repeat: no-repeat;
-      background-size: contain;
-      background-position: center;
-      width: 16px;
-      height: 16px;
-      border: none;
-      background-color: $white;
+      @include icon-size(16, 16, cover);
+
+      background-image: url('../../icons/arrow-up.svg');
+
+      [data-theme="dark"] & {
+        filter: invert(1) brightness(100);
+      }
+
     }
   }
 }

@@ -3,10 +3,9 @@
 
 
 .home__page {
-  padding-top: var(--header--height, 48px);
+  padding-top: $headerHeight;
 
   @include on-desktop {
-    padding-top: var(--header--height, 64px);
+    padding-top: $headerHeightDesktop;
   }
-
 }

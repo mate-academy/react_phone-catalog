@@ -1,19 +1,19 @@
-import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { ProductContext } from '../../store/ProductContext';
-import { useLocation, useParams } from 'react-router-dom';
-import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import './ProductDetailPage.scss';
-import { SliderPhotos } from './SliderPhotos/SliderPhotos';
-import { ProductsSlider } from '../ProductsSlider';
 import classNames from 'classnames';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
+import { useLocation, useParams } from 'react-router-dom';
 import { getDetailedItems } from '../../api/DetailedProduct';
+import { getProductsItems } from '../../api/Products';
+import { ProductContext } from '../../store/ProductContext';
 import { Product } from '../../types/Product';
+import { ProductGeneral } from '../../types/ProductGeneral';
+import { getHotPrices } from '../../utils/getHotPrices';
+import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
+import { Loader } from '../Loader';
+import { ProductsSlider } from '../ProductsSlider';
 import { AvailableColors } from './AvailableProperties/AvailableColors';
 import { CapacityAvailable } from './CapacityAvailable/CapacityAvailable';
-import { getHotPrices } from '../../utils/getHotPrices';
-import { ProductGeneral } from '../../types/ProductGeneral';
-import { getProducts } from '../../api/Products';
-import { Loader } from '../Loader';
+import './ProductDetailPage.scss';
+import { SliderPhotos } from './SliderPhotos/SliderPhotos';
 
 export const ProductDetailPage = () => {
   const {} = useParams();
@@ -25,6 +25,9 @@ export const ProductDetailPage = () => {
     phones,
     inFavourites,
     addProductToFavourites,
+    addProductToCart,
+    removeProductFromCart,
+    inCart,
   } = useContext(ProductContext);
   const [element, setElement] = useState<Product>();
   const [generalElement, setGeneralElement] = useState<ProductGeneral>();
@@ -40,7 +43,7 @@ export const ProductDetailPage = () => {
 
     if (category && id) {
       const products = await getDetailedItems(category);
-      const generalProducts = await getProducts();
+      const generalProducts = await getProductsItems();
       const newElem = products.find(product => product.id === id);
       const newGeneralElement = generalProducts.find(
         product => product.itemId === id,
@@ -48,13 +51,32 @@ export const ProductDetailPage = () => {
 
       if (newGeneralElement) {
         setGeneralElement(newGeneralElement);
+        onLoading(false);
       }
 
       if (newElem) {
         setElement(newElem);
+        onLoading(false);
       }
     }
-  }, [pathname]);
+  }, [pathname, onLoading]);
+
+  useEffect(() => {
+    const updateGeneralElement = async () => {
+      if (selectedProduct) {
+        const generalProducts = await getProductsItems();
+        const newGeneralElement = generalProducts.find(
+          product => product.itemId === selectedProduct.id,
+        );
+
+        if (newGeneralElement) {
+          setGeneralElement(newGeneralElement);
+        }
+      }
+    };
+
+    updateGeneralElement();
+  }, [selectedProduct]);
 
   useEffect(() => {
     if (!selectedProduct || !generalElement || !element) {
@@ -64,19 +86,30 @@ export const ProductDetailPage = () => {
       onLoading(false);
     }
   }, [
-    selectedProduct,
     handlePathNameProduct,
     pathname,
+    selectedProduct,
+    onLoading,
     generalElement,
     element,
   ]);
 
-  const checkItemInCart = () => {
-    return false;
+  const checkItemInCart = (card: ProductGeneral) => {
+    return inCart.find(product => product.id === card.id);
   };
 
-  const checkLikedItem = (card: ProductGeneral | Product) => {
+  const checkLikedItem = (card: ProductGeneral) => {
     return inFavourites.find(prod => prod === card);
+  };
+
+  const handleAddButton = (product: ProductGeneral) => {
+    const valueInCart = inCart.find(val => val.id === product.id);
+
+    if (!valueInCart) {
+      addProductToCart(product);
+    } else {
+      removeProductFromCart(product);
+    }
   };
 
   if (!element || !generalElement) {
@@ -101,7 +134,7 @@ export const ProductDetailPage = () => {
             <div className="details__slider-photos">
               {element.images.map(img => (
                 <div className="details__slider-photo" key={`img${img}`}>
-                  <SliderPhotos img={img} />
+                  <SliderPhotos img={img} onActive={selectedImg === img} />
                 </div>
               ))}
             </div>
@@ -141,11 +174,13 @@ export const ProductDetailPage = () => {
                 </div>
                 <div className="details__button">
                   <button
+                    onClick={() => handleAddButton(generalElement)}
                     className={classNames('details__button--add', {
-                      'details__button--add--active': checkItemInCart(),
+                      'details__button--add--active':
+                        checkItemInCart(generalElement),
                     })}
                   >
-                    Add to cart
+                    {!checkItemInCart(generalElement) ? 'Add to cart' : 'Added'}
                   </button>
                   <button
                     className="details__button--like"

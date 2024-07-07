@@ -37,33 +37,56 @@
   }
 }
 
+@mixin icon-size($width, $height, $size) {
+  width: #{$width}px;
+  height: #{$height}px;
+  background-size: #{$size};
+  background-position: center;
+}
+
+@mixin display-flex-row($direction,$justify) {
+  display: flex;
+  align-items: center;
+  flex-direction: #{$direction};
+  justify-content: #{$justify}
+}
 
 .container {
-  padding-top: var(--header--height, 48px);
+  padding-top: $headerHeight;
+
   @include content-padding-inline;
 
   @include on-desktop {
-    padding-top: var(--header--height--desktop, 64px);
+    padding-top: $headerHeightDesktop;
   }
 }
 
-
 @mixin page-grid {
   --columns: 4;
+
   display: grid;
   column-gap: 16px;
-
   grid-template-columns: repeat(var(--columns), 1fr);
 
   @include on-tablet {
     --columns: 12;
+
     grid-template-columns: repeat(var(--columns), 1fr);
   }
 
   @include on-desktop {
     --columns: 24;
+
     grid-template-columns: repeat(var(--columns), 1fr);
   }
 }
 
 
+@mixin hover($property, $toValue) {
+  transition: #{$property} 0.3s;
+  &:hover {
+    #{$property}: $toValue;
+    z-index: 50;
+    cursor: pointer;
+  }
+}

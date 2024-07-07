@@ -1,4 +1,4 @@
-import { Product } from '../../../types/Product';
+import classNames from 'classnames';
 import React, {
   useCallback,
   useContext,
@@ -7,10 +7,10 @@ import React, {
   useState,
 } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './CapacityAvailable.scss';
-import classNames from 'classnames';
-import { ProductContext } from '../../../store/ProductContext';
 import { getDetailedItems } from '../../../api/DetailedProduct';
+import { ProductContext } from '../../../store/ProductContext';
+import { Product } from '../../../types/Product';
+import './CapacityAvailable.scss';
 
 type Props = {
   selectedProduct: Product;
@@ -64,7 +64,9 @@ export const CapacityAvailable: React.FC<Props> = ({ selectedProduct }) => {
         const products = await getDetailedItems(
           selectedProductRef.current.category,
         );
-        const newItem = products.find(item => item.id === capacityGB);
+        const newItem = products.find(item => item.id === capacityGB) || null;
+
+        onSelectedProduct(newItem);
 
         if (newItem) {
           onSelectedProductRef.current(newItem);
@@ -80,7 +82,7 @@ export const CapacityAvailable: React.FC<Props> = ({ selectedProduct }) => {
     };
 
     getProducts();
-  }, [capacityGB]);
+  }, [capacityGB, onSelectedProduct]);
 
   return (
     <>

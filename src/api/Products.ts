@@ -1,6 +1,6 @@
-import { getData } from '../utils/fetchClient';
 import { ProductGeneral } from '../types/ProductGeneral';
+import { getData } from '../utils/fetchClient';
 
-export function getProducts() {
+export function getProductsItems() {
   return getData<ProductGeneral[]>('/products.json');
 }

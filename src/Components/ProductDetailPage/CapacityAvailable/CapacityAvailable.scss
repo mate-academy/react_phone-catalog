@@ -1,8 +1,9 @@
 @import "../../../styles/variables";
+@import "../../../styles/mixins";
 
 .capacity {
   &__text {
-    color: $secondary;
+    color: var(--secondary);
     font-size: 12px;
     margin-bottom: 8px;
   }
@@ -14,22 +15,28 @@
   }
 
   &__box {
-    color: $primary;
-    font-size: 14px;
     line-height: 150%;
 
+    &:hover {
+      box-shadow: 0 2px 7px 0 rgba(23, 32, 49, 0.4);
+    }
+
     &--text {
-      display: flex;
-      justify-content: center;
-      align-items: center;
       width: 60px;
       height: 32px;
-      border: 1px solid $icons;
+      border: 1px solid var(--icons);
+
+      @include display-flex-row(row, center);
     }
 
     &--active {
-      color: $white;
-      background-color: $primary;
+      color: var(--white);
+      background-color: var(--primary);
+
+      [data-theme="dark"] & {
+        color: var(--black);
+        background-color: var(--white);
+      }
     }
   }
 

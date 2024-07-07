@@ -1,7 +1,19 @@
 import { ProductGeneral } from '../types/ProductGeneral';
 
-export const prepareProducts = (elements: ProductGeneral[], sort: string) => {
-  const preparedPhones = [...elements];
+export const prepareProducts = (
+  elements: ProductGeneral[],
+  sort: string,
+  query: string,
+) => {
+  let preparedPhones = [...elements];
+
+  const normalizedQuery = query.trim().toLowerCase();
+
+  if (normalizedQuery) {
+    preparedPhones = preparedPhones.filter(item =>
+      item.name.trim().toLowerCase().includes(normalizedQuery),
+    );
+  }
 
   if (sort) {
     switch (sort) {

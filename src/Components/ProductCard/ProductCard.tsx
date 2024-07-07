@@ -1,7 +1,7 @@
 import React, { useContext, useMemo } from 'react';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import './ProductCard.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useSearchParams } from 'react-router-dom';
 import { ProductContext } from '../../store/ProductContext';
 import classNames from 'classnames';
 import { getDetailedItems } from '../../api/DetailedProduct';
@@ -17,9 +17,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     onSelectedProduct,
     onLoading,
     inCart,
+    addProductToCart,
+    removeProductFromCart,
   } = useContext(ProductContext);
 
   const { pathname } = useLocation();
+  const [searchParams] = useSearchParams();
 
   const getModifiedPathname = useMemo(() => {
     if (!product) {
@@ -28,30 +31,25 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
     const parts = pathname.split('/').filter(Boolean);
 
-    // Check if the current path is for a different category
     const currentCategory = parts[0];
 
     if (currentCategory && currentCategory !== product.category) {
-      // If we're changing categories, we should use only the new category and product ID
       return `/${product.category}/${product.itemId}`;
     }
 
-    // If we're in the same category or there's no category, proceed as before
     const pathWithoutIds = parts.filter(part => !part.includes('-'));
 
-    // Ensure the category is in the path
     if (!pathWithoutIds.includes(product.category)) {
       pathWithoutIds.unshift(product.category);
     }
 
-    // Add the current product's ID
     pathWithoutIds.push(product.itemId);
 
     return `/${pathWithoutIds.join('/')}`;
   }, [pathname, product]);
 
   const checkItemInCart = (card: ProductGeneral) => {
-    return inCart.find(prod => prod === card);
+    return inCart.find(prod => prod.id === card.id);
   };
 
   const checkLikedItem = (card: ProductGeneral) => {
@@ -72,18 +70,38 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
     }
   };
 
+  const handleAddButton = (value: ProductGeneral) => {
+    const valueInCart = inCart.find(val => val.id === value.id);
+
+    if (!valueInCart) {
+      addProductToCart(value);
+    } else {
+      removeProductFromCart(value);
+    }
+  };
+
   return (
     <>
       {product && (
         <div className="product-card">
-          <Link to={getModifiedPathname} className="product-card__image">
+          <Link
+            to={getModifiedPathname}
+            state={{ search: searchParams.toString(), pathname }}
+            className="product-card__image"
+          >
             <img
+              alt={`${product.name} image`}
               onClick={handleGeneralProduct}
               className="product-card__image--link"
               src={product.image}
             ></img>
           </Link>
-          <Link to={getModifiedPathname} className="product-card__title">
+          <Link
+            to={getModifiedPathname}
+            onClick={handleGeneralProduct}
+            state={{ search: searchParams.toString(), pathname }}
+            className="product-card__title"
+          >
             {product.name}
           </Link>
           <div className="product-card__prices">
@@ -114,11 +132,12 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           </div>
           <div className="product-card__buttons">
             <button
+              onClick={() => handleAddButton(product)}
               className={classNames('product-card__buttons--add', {
                 'product-card__buttons--add--active': checkItemInCart(product),
               })}
             >
-              Add to cart
+              {!checkItemInCart(product) ? 'Add to cart' : 'Added'}
             </button>
             <div
               className="product-card__buttons--wrapper"
