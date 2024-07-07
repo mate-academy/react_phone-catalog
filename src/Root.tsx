@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
+import { Route, Routes, HashRouter, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { App } from './App';
@@ -9,9 +9,9 @@ import { AccessoriesPage } from './pages/AccessoriesPage';
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
 
 export const Root = () => (
-  <BrowserRouter>
+  <HashRouter>
     <Routes>
-      {/* <Route path="/" element={<App />}>
+      <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
@@ -22,9 +22,9 @@ export const Root = () => (
         <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
-      </Route> */}
+      </Route>
 
-      <Route
+      {/* <Route
         path="/"
         element={<Navigate to="/react_phone-catalog" replace />}
       />
@@ -42,7 +42,7 @@ export const Root = () => (
         <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
-      </Route>
+      </Route> */}
     </Routes>
-  </BrowserRouter>
+  </HashRouter>
 );
