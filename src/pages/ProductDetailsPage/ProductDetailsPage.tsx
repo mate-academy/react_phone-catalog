@@ -117,10 +117,10 @@ export const ProductDetailsPage: React.FC = () => {
           </div>
           <h2 className="product-details__title">{name}</h2>
           <div className="product-details__swiper">
-            <div className="product-details__swiper--big-pict">
+            <div className="product-details__swiper--big-pict swiper-pict">
               <img
                 src={selectedImage}
-                className="swiper__large-image"
+                className="swiper-pict__large-image"
                 alt={name}
               />
             </div>

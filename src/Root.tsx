@@ -26,3 +26,11 @@ export const Root = () => (
     </Routes>
   </BrowserRouter>
 );
+
+// <Route path=":category">
+//   <Route index element={<PhonesPage />} />
+//   <Route index element={<TabletsPage />} />
+//   <Route index element={<AccessoriesPage />} />
+
+//   <Route path=":productId" element={<ProductDetailsPage />} />
+// </Route>

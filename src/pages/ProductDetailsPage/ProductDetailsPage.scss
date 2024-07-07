@@ -81,8 +81,12 @@
     display: flex;
     flex-direction: column;
     margin-bottom: 40px;
+    grid-column: 1 / -1;
 
     &--big-pict {
+      display: flex;
+      justify-content: center;
+      align-items: center;
       width: 288px;
       height: 288px;
     }
@@ -360,4 +364,9 @@
   &__param {
     color: $main-white-color;
   }
+}
+
+.swiper-pict__large-image {
+  width: 288px;
+  height: 288px;
 }
