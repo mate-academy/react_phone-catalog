@@ -9,12 +9,7 @@ import { getProductsItems } from '../api/Products';
 import { useLocalStorage } from '../hooks/useLocalStorage';
 import { Product } from '../types/Product';
 import { ProductGeneral } from '../types/ProductGeneral';
-
-export enum SortingBy {
-  Newest = 'Newest',
-  Alphabetically = 'Alphabetically',
-  Cheapest = 'Cheapest',
-}
+import { SortingBy } from '../types/SortingBy';
 
 interface ProductContextState {
   phones: ProductGeneral[];

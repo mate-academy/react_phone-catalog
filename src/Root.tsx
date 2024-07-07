@@ -2,12 +2,12 @@ import { HashRouter as Router, Route, Routes } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './Components/HomePage/HomePage';
 import { TabletsPage } from './Components/TabletsPage';
-import { NotFoundPage } from './Components/NotFoundPage/NotFoundPage';
 import { AccessoriesPage } from './Components/AccessoriesPage';
 import { ProductDetailPage } from './Components/ProductDetailPage';
 import { FavoritesPage } from './Components/FavoritesPage';
 import { CartPage } from './Components/CartPage';
 import { PhonePage } from './Components/PhonePage';
+import { NotFoundPage } from './Components/NotFoundPage';
 
 export const Root = () => {
   return (

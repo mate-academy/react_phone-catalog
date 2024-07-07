@@ -1,4 +1,4 @@
-import { Desctiption } from './Desctiption';
+import { Description } from './Description';
 
 export type Product = {
   id: string;
@@ -12,7 +12,7 @@ export type Product = {
   colorsAvailable: string[];
   color: string;
   images: string[];
-  description: Desctiption[];
+  description: Description[];
   screen: string;
   resolution: string;
   processor: string;

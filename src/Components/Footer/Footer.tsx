@@ -24,7 +24,12 @@ export const Footer = () => {
             </div>
 
             <div className="footer__links">
-              <a href="" className="footer__links--item">
+              <a
+                rel="noreferrer noopener"
+                target="_blank"
+                href="https://github.com/SlavaRevit"
+                className="footer__links--item"
+              >
                 Github
               </a>
               <a href="" className="footer__links--item">

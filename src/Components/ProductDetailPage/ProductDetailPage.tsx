@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import React, { useCallback, useContext, useEffect, useState } from 'react';
-import { useLocation, useParams } from 'react-router-dom';
+import { Navigate, useLocation, useParams } from 'react-router-dom';
 import { getDetailedItems } from '../../api/DetailedProduct';
 import { getProductsItems } from '../../api/Products';
 import { ProductContext } from '../../store/ProductContext';
@@ -8,12 +8,12 @@ import { Product } from '../../types/Product';
 import { ProductGeneral } from '../../types/ProductGeneral';
 import { getHotPrices } from '../../utils/getHotPrices';
 import { Breadcrumbs } from '../Breadcrumbs/Breadcrumbs';
-import { Loader } from '../Loader';
 import { ProductsSlider } from '../ProductsSlider';
 import { AvailableColors } from './AvailableProperties/AvailableColors';
 import { CapacityAvailable } from './CapacityAvailable/CapacityAvailable';
 import './ProductDetailPage.scss';
 import { SliderPhotos } from './SliderPhotos/SliderPhotos';
+import { NotFoundProduct } from '../NotFoundProduct/NotFoundProduct';
 
 export const ProductDetailPage = () => {
   const {} = useParams();
@@ -32,7 +32,7 @@ export const ProductDetailPage = () => {
   const [element, setElement] = useState<Product>();
   const [generalElement, setGeneralElement] = useState<ProductGeneral>();
   const youMayAlsoLike = getHotPrices(phones);
-
+  const [shouldRedirect, setShouldRedirect] = useState(false);
   const { pathname } = useLocation();
 
   const cellElements = element?.cell.join(', ').slice(0, -1);
@@ -112,8 +112,24 @@ export const ProductDetailPage = () => {
     }
   };
 
+  useEffect(() => {
+    if (!element || !generalElement) {
+      const timer = setTimeout(() => {
+        setShouldRedirect(true);
+      }, 3000);
+
+      return () => clearTimeout(timer);
+    } else {
+      return;
+    }
+  }, [element, generalElement]);
+
+  if (shouldRedirect) {
+    return <Navigate to="/" />;
+  }
+
   if (!element || !generalElement) {
-    return <Loader />;
+    return <NotFoundProduct />;
   }
 
   const elementParts = element.name.split(' ');
