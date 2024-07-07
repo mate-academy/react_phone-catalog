@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="footer">
       <Link to="/" className="footer__logo">
-        <img src="/img/Logo.png" alt="Logo" />
+        <img src="img/Logo.png" alt="Logo" />
       </Link>
       <div className="footer__navbar">
         <Link
@@ -33,7 +33,7 @@ export const Footer: React.FC = () => {
           onClick={scrollToTop}
         >
           <svg className="icon icon-up">
-            <use href="/img/icons.svg#icon-arrow-up"></use>
+            <use href="img/icons.svg#icon-arrow-up"></use>
           </svg>
         </button>
       </div>
