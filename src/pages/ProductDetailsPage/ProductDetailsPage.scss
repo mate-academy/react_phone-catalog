@@ -11,7 +11,6 @@
     margin-bottom: $margin-bottom-mobile;
     overflow: hidden;
     grid-column: 1 / -1;
-    overflow: hidden;
 
     @include on-tablet {
       margin-bottom: 40px;

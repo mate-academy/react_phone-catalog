@@ -27,9 +27,17 @@ export const SuggestedProducts: React.FC = () => {
     <>
       <div className="recommended__header">
         <h3 className="recommended__header--title">You may also like</h3>
-        <div className="recommended__header--buttons swiper-button">
-          <button className="swiper-button-left"></button>
-          <button className="swiper-button-right"></button>
+        <div className="recommended__header--buttons swiper-btn">
+          <button className="swiper-btn__prev">
+            <svg className="icon icon-nav">
+              <use href="/img/icons.svg#icon-arrow-left"></use>
+            </svg>
+          </button>
+          <button className="swiper-btn__next">
+            <svg className="icon icon-nav">
+              <use href="/img/icons.svg#icon-arrow-right"></use>
+            </svg>
+          </button>
         </div>
       </div>
       <Swiper
