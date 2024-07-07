@@ -1,7 +1,7 @@
-// const BASE_URL = 'https://yuliiacat.github.io/react_phone-catalog/';
+const BASE_URL = 'https://yuliiacat.github.io/react_phone-catalog/api';
 
 export function getData<T>(url: string): Promise<T> {
-  return fetch(url).then(response => {
+  return fetch(BASE_URL + url).then(response => {
     if (!response.ok) {
     }
 

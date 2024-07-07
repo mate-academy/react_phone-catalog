@@ -30,10 +30,10 @@ export const Root = () => (
       />
       <Route path="react_phone-catalog" element={<App />}>
         <Route index element={<HomePage />} />
-        {/* <Route
+        <Route
           path="home"
           element={<Navigate to="/react_phone-catalog" replace />}
-        /> */}
+        />
 
         <Route path="phones" element={<PhonesPage />} />
         <Route path="tablets" element={<TabletsPage />} />
