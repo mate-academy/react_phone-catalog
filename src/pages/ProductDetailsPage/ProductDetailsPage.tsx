@@ -124,7 +124,11 @@ export const ProductDetailsPage: React.FC = () => {
                 alt={name}
               />
             </div>
-            <Swiper spaceBetween={10} slidesPerView={5}>
+            <Swiper
+              spaceBetween={10}
+              slidesPerView={5}
+              className="product-details__swiper--wrapper"
+            >
               {images.map((image, index) => (
                 <SwiperSlide
                   key={index}

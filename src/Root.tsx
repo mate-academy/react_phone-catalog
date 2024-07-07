@@ -23,26 +23,6 @@ export const Root = () => (
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
-
-      {/* <Route
-        path="/"
-        element={<Navigate to="/react_phone-catalog" replace />}
-      />
-      <Route path="react_phone-catalog" element={<App />}>
-        <Route index element={<HomePage />} />
-        <Route
-          path="home"
-          element={<Navigate to="/react_phone-catalog" replace />}
-        />
-
-        <Route path="phones" element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
-
-        <Route path=":category/:productId" element={<ProductDetailsPage />} />
-
-        <Route path="*" element={<NotFoundPage />} />
-      </Route> */}
     </Routes>
   </HashRouter>
 );

@@ -80,6 +80,8 @@
   &__swiper {
     display: flex;
     flex-direction: column;
+    align-items: center;
+    gap: 16px;
     margin-bottom: 40px;
     grid-column: 1 / -1;
 
@@ -91,6 +93,10 @@
       height: 288px;
     }
 
+    &--wrapper {
+      width: 288px;
+      height: 49px;
+    }
     &--img {
       width: 51px;
       height: 49px;
@@ -367,6 +373,8 @@
 }
 
 .swiper-pict__large-image {
-  width: 288px;
-  height: 288px;
+  width: fit-content;
+  height: 100%;
 }
+
+
