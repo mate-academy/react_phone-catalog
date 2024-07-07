@@ -11,7 +11,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPag
 export const Root = () => (
   <BrowserRouter>
     <Routes>
-      <Route path="/" element={<App />}>
+      {/* <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="home" element={<Navigate to="/" replace />} />
 
@@ -21,13 +21,25 @@ export const Root = () => (
 
         <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
-        {/* <Route path=":category">
-          <Route index element={<PhonesPage />} />
-          <Route index element={<TabletsPage />} />
-          <Route index element={<AccessoriesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route> */}
 
-          <Route path=":productId" element={<ProductDetailsPage />} />
-        </Route> */}
+      <Route
+        path="/"
+        element={<Navigate to="/react_phone-catalog" replace />}
+      />
+      <Route path="react_phone-catalog" element={<App />}>
+        <Route index element={<HomePage />} />
+        <Route
+          path="home"
+          element={<Navigate to="/react_phone-catalog" replace />}
+        />
+
+        <Route path="phones" element={<PhonesPage />} />
+        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="accessories" element={<AccessoriesPage />} />
+
+        <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>

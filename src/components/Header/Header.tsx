@@ -18,13 +18,13 @@ export const Header: React.FC = () => {
         <NavLink to="/" className={getLinkClass}>
           Home
         </NavLink>
-        <NavLink to="/phones" className={getLinkClass}>
+        <NavLink to="/react_phone-catalog/phones" className={getLinkClass}>
           Phones
         </NavLink>
-        <NavLink to="/tablets" className={getLinkClass}>
+        <NavLink to="/react_phone-catalog/tablets" className={getLinkClass}>
           Tablets
         </NavLink>
-        <NavLink to="/accessories" className={getLinkClass}>
+        <NavLink to="/react_phone-catalog/accessories" className={getLinkClass}>
           Accessories
         </NavLink>
       </div>
