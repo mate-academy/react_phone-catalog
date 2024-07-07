@@ -1,1 +1,37 @@
-// not empty
+@import './components/utils/variables';
+@import './components/utils/mixins';
+@import './components/utils/fonts';
+@import './components/utils/reset';
+
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: $background-color;
+}
+
+.container {
+  padding-inline: 16px;
+
+  @include onTablet {
+    padding-inline: 24px;
+  }
+
+  @include onDesktop {
+    width: 1136px;
+    margin-inline: auto;
+    padding-inline: 0;
+  }
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1 0 auto;
+}
