@@ -1,0 +1,107 @@
+@import '../../styles/all';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: space-between;
+  align-items: center;
+  height: 440px;
+  min-width: 212px;
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  background-color: var(--color-card);
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+  }
+
+  &:hover {
+    box-shadow: 0 2px 15px 0 rgba(0, 0, 0, 0.1);
+    transform: scale(1.05);
+    transition: transform 0.3s ease;
+  }
+}
+
+.cardLink {
+  color: inherit;
+  text-decoration: none;
+}
+
+.imageContainer {
+  height: 130px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    height: 196px;
+  }
+}
+
+.image {
+  height: 100%;
+  object-fit: cover;
+  margin-inline: auto;
+  display: block;
+
+  @include on-tablet {
+    height: 196px;
+  }
+
+  &:hover {
+    transform: scale(1);
+  }
+}
+
+.name {
+  @extend %body-text;
+
+  padding-top: 16px;
+  flex: 1;
+}
+
+.priceWrapper {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 8px;
+}
+
+.fullPrice {
+  @extend %h3-desktop-tablet;
+
+  text-decoration: line-through;
+}
+
+.price {
+  @extend %discounted-price;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-elements);
+  margin-bottom: 16px;
+}
+
+.techWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 15px;
+  padding-bottom: 8px;
+}
+
+.techChars {
+  @extend %small-text;
+
+  color: var(--color-text-secondary);
+}
+
+.techCharInfo {
+  @extend %small-text;
+}

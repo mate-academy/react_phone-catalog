@@ -1,0 +1,22 @@
+@import '../../styles/all';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    gap: 32px
+  }
+
+  @include on-desktop {
+    gap: 56px;
+  }
+}
+
+.title {
+  grid-column: 1 / -1;
+
+  @include h1-title;
+  @include padding-inline;
+}

@@ -1,0 +1,60 @@
+@import '../../styles/all';
+
+.section {
+  @include section-grid;
+
+  margin-bottom: 32px;
+}
+
+.sectionTitle {
+  @extend %h2-mobile;
+
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    font-family: Mont, sans-serif;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: var(--color-text-primary);
+  }
+}
+
+.category {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 8;
+  }
+}
+
+.categoryLink {
+  display: block;
+  text-decoration: none;
+}
+
+.categoryImg {
+  object-fit: cover;
+  width: 100%;
+  margin-bottom: 10px;
+
+  &:hover {
+    transition: transform 0.3s ease;
+    transform: scale(1.05);
+  }
+}
+
+.categoryTitle {
+  @extend %h3-mobile;
+}
+
+.categoryInfo {
+  @extend %body-text;
+
+  color: var(--color-text-secondary)
+}

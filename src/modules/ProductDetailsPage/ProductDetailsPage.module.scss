@@ -1,0 +1,80 @@
+@import '../../styles/all';
+
+.productDetailsPage {
+  @include padding-inline;
+}
+
+.container {
+  @include section-grid;
+
+  padding-inline: 0;
+
+  row-gap: 56px;
+
+  @include on-tablet {
+    row-gap: 64px;
+  }
+
+  @include on-desktop {
+    row-gap: 80px;
+  }
+}
+
+.backButton {
+  @include back-button;
+}
+
+.backButtonText {
+  @include back-button-text;
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: 32px;
+
+  @include h2-title;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.descriptionWrapper {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.divider {
+  @include divider;
+}
+
+.descriptionTitle {
+  @include h3-title;
+
+  margin-bottom: 16px;
+}
+
+.descriptionSubtitle {
+  @include h4-title;
+
+  margin-top: 32px;
+}
+
+.descriptionText {
+  @extend %body-text;
+
+  color: var(--color-text-secondary);
+  margin-top: 16px;
+}
+
+.sliderWrapper {
+  grid-column: 1 / -1;
+}
+
+.noProduct {
+  @include padding-inline;
+  @include h3-title;
+}

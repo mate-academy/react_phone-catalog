@@ -1,0 +1,38 @@
+@import '../../styles/all';
+
+.pagination {
+  grid-column: 1 / -1;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  justify-content: center;
+}
+
+.button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  flex-shrink: 0;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-elements);
+  color: var(--color-text-primary);
+
+  &:hover {
+    border-color: var(--color-text-primary);
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+  }
+}
+
+.active {
+  border-color: var(--color-button);
+  background-color: var(--color-button);
+  color: var(--color-bg);
+}
+
+.buttonDisabled {
+  pointer-events: none;
+}
