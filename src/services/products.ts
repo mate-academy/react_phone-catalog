@@ -1,9 +1,8 @@
 import { Product } from '../types/Product';
+import { getData } from './httpClient';
 
 export function getPhones(): Promise<Product[]> {
-  return fetch('/api/phones.json').then(response => {
-    return response.json();
-  });
+  return getData('/phones.json');
 }
 
 export function getTablets(): Promise<Product[]> {

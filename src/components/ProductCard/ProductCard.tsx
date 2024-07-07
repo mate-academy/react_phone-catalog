@@ -11,6 +11,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const {
     id,
     name,
+    category,
     capacity,
     priceRegular,
     priceDiscount,
@@ -21,10 +22,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
 
   return (
     <div className="product-card">
-      <Link to={`/product/${id}`} className="product-card__img-link">
+      <Link to={`/${category}/${id}`} className="product-card__img-link">
         <img className="product-card__img-link--img" src={images[0]} alt={id} />
       </Link>
-      <Link to={`/product/${id}`} className="product-card__title-link">
+      <Link to={`/${category}/${id}`} className="product-card__title-link">
         <p className="product-card__title-link--title">{name}</p>
       </Link>
       <div className="product-card__price">

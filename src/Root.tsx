@@ -1,4 +1,4 @@
-import { Route, Routes, BrowserRouter } from 'react-router-dom';
+import { Route, Routes, BrowserRouter, Navigate } from 'react-router-dom';
 import { HomePage } from './pages/HomePage';
 import { PhonesPage } from './pages/PhonesPage';
 import { App } from './App';
@@ -13,24 +13,24 @@ export const Root = () => (
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
+        <Route path="home" element={<Navigate to="/" replace />} />
+
         <Route path="phones" element={<PhonesPage />} />
         <Route path="tablets" element={<TabletsPage />} />
         <Route path="accessories" element={<AccessoriesPage />} />
 
-        <Route path="product">
+        <Route path=":category/:productId" element={<ProductDetailsPage />} />
+
+        {/* <Route path=":category">
+          <Route index element={<PhonesPage />} />
+          <Route index element={<TabletsPage />} />
+          <Route index element={<AccessoriesPage />} />
+
           <Route path=":productId" element={<ProductDetailsPage />} />
-        </Route>
+        </Route> */}
 
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </BrowserRouter>
 );
-
-// <Route path=":category">
-//   <Route index element={<PhonesPage />} />
-//   <Route index element={<TabletsPage />} />
-//   <Route index element={<AccessoriesPage />} />
-
-//   <Route path=":productId" element={<ProductDetailsPage />} />
-// </Route>
