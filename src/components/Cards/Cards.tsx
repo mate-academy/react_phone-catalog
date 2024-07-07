@@ -17,12 +17,11 @@ type Props = {
 export const Cards: React.FC<Props> = ({ gadgets }) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
-  const { setFavorites, favorites, setToCart } = useContext(StateContext);
+  const { setFavorites, favorites, setToCart, cart } = useContext(StateContext);
 
   const handleAddToCart = (goods: Products) => {
     setToCart(prevItems => {
-      let newItems = [...prevItems];
-
+      const newItems = [...prevItems];
       const availableCart = newItems.some(item => item.itemId === goods.itemId);
 
       if (availableCart) {
@@ -33,13 +32,18 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
     });
   };
 
+  const handleCheckCarts = (currentProduct: Products) => {
+    const findCart = cart.find(item => item.itemId === currentProduct.itemId);
+
+    return !!findCart;
+  };
+
   return (
     <div
       className={classNames(style.cards, { [style.cards__darkTheme]: theme })}
     >
       <ul className={style.cards__list} draggable={false}>
         {gadgets.map(product => {
-          // const { availableCart } = handleAddToCart(product);
           return (
             <li className={style.cards__container} key={product.id}>
               <Link
@@ -88,16 +92,14 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
 
               <div className={style.cards__cardActions}>
                 <button
-                  className={style.cards__addToCard}
+                  className={classNames(style.cards__addToCart, {
+                    [style.cards__addedToCart]: handleCheckCarts(product),
+                  })}
                   onClick={() => handleAddToCart(product)}
                 >
-                  {t('addToCart')}
-                </button>
-                <button
-                  className={style.cards__addToCard}
-                  onClick={() => handleAddToCart(product)}
-                >
-                  {t('addToCart')}
+                  {handleCheckCarts(product)
+                    ? t('addedToCart')
+                    : t('addToCart')}
                 </button>
                 <button
                   className={classNames(style.cards__сardFavBtn, {

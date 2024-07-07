@@ -29,7 +29,7 @@ export const SectionCards: React.FC<Props> = ({
   discount = true,
 }) => {
   const { t } = useContext(LanguageContext);
-  const { favorites, setFavorites } = useContext(StateContext);
+  const { favorites, setFavorites, setToCart, cart } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
   const lengthImgList = products.length - 1;
 
@@ -176,6 +176,25 @@ export const SectionCards: React.FC<Props> = ({
     }
   }
 
+  const handleAddToCart = (goods: Products) => {
+    setToCart(prevItems => {
+      const newItems = [...prevItems];
+      const availableCart = newItems.some(item => item.itemId === goods.itemId);
+
+      if (availableCart) {
+        return newItems.filter(item => item.itemId !== goods.itemId);
+      } else {
+        return [...newItems, goods];
+      }
+    });
+  };
+
+  const handleCheckCarts = (currentProduct: Products) => {
+    const findCart = cart.find(item => item.itemId === currentProduct.itemId);
+
+    return !!findCart;
+  };
+
   return (
     <section
       className={classNames(style.sectionCards, {
@@ -270,8 +289,15 @@ export const SectionCards: React.FC<Props> = ({
                 </div>
 
                 <div className={style.sectionCards__cardActions}>
-                  <button className={style.sectionCards__addToCard}>
-                    {t('addToCart')}
+                  <button
+                    className={classNames(style.sectionCards__addToCart, {
+                      [style.sectionCards__addedToCart]: handleCheckCarts(product),
+                    })}
+                    onClick={() => handleAddToCart(product)}
+                  >
+                    {handleCheckCarts(product)
+                      ? t('addedToCart')
+                      : t('addToCart')}
                   </button>
                   <button
                     className={classNames(style.sectionCards__cardfavBtn, {

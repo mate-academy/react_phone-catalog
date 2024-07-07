@@ -24,7 +24,7 @@
   &__gridContainer {
     display: grid;
     grid-template-columns: repeat(24, 1fr);
-    gap: 16px;
+    column-gap: 16px;
   }
 
   &__list {
@@ -38,12 +38,20 @@
     border: 1px solid $border-color;
     list-style: none;
     height: 128px;
+  }
+
+  &__item:not(:last-child) {
     margin-bottom: 16px;
+  }
+
+  &__item:last-child {
+    margin-bottom: 80px;
   }
 
   &__itemWrapper {
     display: flex;
     align-items: center;
+    justify-content: space-between;
     width: 100%;
     gap: 24px;
     padding-inline: 24px;
@@ -101,12 +109,93 @@
     font-size: 14px;
     font-weight: 600;
   }
+
+  &__priceContainer {
+    grid-column: 17 / -1;
+    border: 1px solid $border-color;
+    height: 206px;
+  }
+
+  &__borderLine {
+    display: flex;
+    border-bottom: 1px solid $border-color;
+    width: 100%;
+  }
+
+  &__priceWrap {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    padding: 23px 24px 24px;
+    height: 100%;
+  }
+
+  &__price {
+    display: flex;
+    justify-content: center;
+    font-size: 38px;
+    line-height: 41px;
+  }
+
+  &__totalWrap {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__totalItems {
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 21px;
+    color: $textItemsColor;
+  }
+
+  &__checkout {
+    height: 48px;
+    background-color: $background-color-button-cart;
+    width: 100%;
+    border: none;
+    color: $textColorButtonCart;
+    font-size: 14px;
+    line-height: 21px;
+    font-weight: 700;
+  }
+
+  &__leftContainer {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+  }
+
+  &__rightContainer {
+    display: flex;
+    gap: 24px;
+  }
 }
 
 @include onTablet {
   .cart {
     &__wrapper {
       padding-inline: 24px;
+    }
+
+    &__gridContainer {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    &__list {
+      grid-column: 1 / 13;
+      margin-bottom: 32px;
+    }
+
+    &__item:last-child {
+      margin-bottom: 0px;
+    }
+
+    &__priceContainer {
+      grid-column: 1 / 13;
+      height: 190px;
+      margin-bottom: 64px;
     }
   }
 }
@@ -115,6 +204,37 @@
   .cart {
     &__wrapper {
       padding-inline: 16px;
+    }
+
+    &__gridContainer {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    &__list {
+      grid-column: 1 / -1;
+    }
+
+    &__priceContainer {
+      grid-column: 1 / -1;
+    }
+
+    &__itemWrapper {
+      padding-inline: 16px;
+      gap: 16px;
+      flex-direction: column;
+    }
+
+    &__leftContainer {
+      width: 100%;
+    }
+
+    &__rightContainer {
+      width: 100%;
+      justify-content: space-between;
+    }
+
+    &__item {
+      height: 164px;
     }
 
     &__cartBack {

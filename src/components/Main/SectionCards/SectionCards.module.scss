@@ -150,7 +150,7 @@
     padding-top: 8px;
   }
 
-  &__addToCard {
+  &__addToCart {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -169,6 +169,24 @@
       background-color: $background-color-phoneCardHover;
       box-shadow: 0px 3px 13px 0px #17203166;
     }
+  }
+
+  &__addedToCart {
+    background-color: $background-color;
+    border: 1px solid $border-color;
+    color: $addedToCartTextColor;
+  }
+
+  &__addedToCart:hover {
+    background-color: $selectBackground;
+  }
+
+  &__darkTheme  &__addedToCart {
+    background-color: $selectBackground;
+  }
+
+  &__darkTheme &__addedToCart:hover {
+    @extend %darkThemeHoverButton;
   }
 
   &__cardfavBtn {

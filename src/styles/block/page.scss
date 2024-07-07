@@ -54,6 +54,7 @@
   --actionButtonActiveBorder: #313237;
   --favoritesCircleBackColor: #EB5757;
   // touch-action: none;
+  --addedToCartTextColor: #27AE60;
 }
 
 .dark {
@@ -99,6 +100,7 @@
   --borderActiveColor: #c4c4c4;
   --actionButtonActiveBorder: #f1f2f9;
   --favoritesCircleBackColor: #EB5757;
+  --addedToCartTextColor: #F1F2F9;
   color: $text-color;
   background-color: $background-color;
 }
