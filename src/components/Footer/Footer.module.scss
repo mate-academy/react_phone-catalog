@@ -1,0 +1,72 @@
+@import '../../styles/all';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: 32px;
+  height: 275px;
+  background-color: var(--color-bg);
+  box-shadow: 0 -1px 0 0 var(--color-elements);
+
+  @include padding-inline;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    height: 96px;
+    bottom: -90px;
+  }
+
+  @include on-desktop {
+    justify-content: center;
+    gap: 275px;
+    min-width: 1200px;
+  }
+}
+
+.footerLogoLink {
+  height: 32px;
+  cursor: pointer;
+}
+
+.navContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+
+  @include on-desktop {
+    gap: 106px;
+  }
+}
+
+.navItem {
+  @extend %uppercase-text;
+
+  color: var(--color-text-secondary);
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.buttonWrapper {
+  width: 118px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.buttonText {
+  @extend %small-text;
+}
+
+.toTopButton {
+  @include action-buttons;
+}
+

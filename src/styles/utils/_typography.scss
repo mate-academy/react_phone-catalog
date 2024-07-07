@@ -1,0 +1,133 @@
+@mixin h1-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+@mixin h2-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+@mixin h3-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+@mixin h4-desktop-tablet {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+%h1-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+%h2-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+%h3-desktop-tablet {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+%h4-desktop-tablet {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+%uppercase-text {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  color: var(--color-text-primary);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+%buttons {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%body-text {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0;
+}
+
+%small-text {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0;
+}
+
+%discounted-price {
+  font-family: Mont-Regular, sans-serif;
+  font-size: 22px;
+  line-height: 28px;
+  color: var(--color-text-secondary);
+}
+
+%h1-mobile {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: var(--color-text-primary);
+}
+
+%h2-mobile {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 22px;
+  line-height: 31px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+%h3-mobile {
+  font-family: Mont-Bold, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}
+
+%h4-mobile {
+  font-family: Mont-Semibold, sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0;
+  color: var(--color-text-primary);
+}

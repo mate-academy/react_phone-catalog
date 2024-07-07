@@ -1,0 +1,105 @@
+@import '../../styles/all';
+
+.asideMenu {
+  display: none;
+  position: fixed;
+  top: 49px;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 1;
+  background-color: var(--color-bg);
+}
+
+.menuOpen {
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.nav {
+  padding-top: 24px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 276px;
+}
+
+.navItem {
+  position: relative;
+  color: var(--color-text-secondary);
+  padding: 8px 0;
+
+  @extend %uppercase-text;
+
+  &:hover {
+    color: var(--color-text-primary);
+  }
+}
+
+.actions {
+  display: flex;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.actionsItem {
+  position: relative;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  height: 64px;
+  color: var(--color-text-secondary);
+  box-shadow: 0 -1px 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
+}
+
+.actionsIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  position: relative;
+}
+
+.productCount {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 0;
+  left: 14px;
+  height: 14px;
+  width: 14px;
+  border-radius: 50%;
+  border: 1px solid var(--color-bg);
+  background-color: var(--color-red);
+}
+
+.productCountNumbers {
+  text-align: center;
+  color: var(--color-white);
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 11.5px;
+}
+
+.isActive {
+  color: var(--color-text-primary);
+
+  &::after {
+    position: absolute;
+    content: "";
+    bottom: 0;
+    right: 0;
+    left: 0;
+    height: 2px;
+    background-color: var(--color-text-primary);
+  }
+}

@@ -1,0 +1,188 @@
+@import '../../styles/all';
+
+.cartPage {
+  @include section-grid;
+  @include padding-inline;
+}
+
+.upperContainer {
+  grid-column: 1 / -1;
+}
+
+.backButton {
+  @include back-button;
+}
+
+.backButtonText {
+  @include back-button-text;
+}
+
+.pageTitle {
+  @include h1-title;
+}
+
+.mainContainer {
+  @include section-grid;
+
+  grid-column: 1 / -1;
+  padding: 0;
+
+  @include on-tablet {
+    padding: 0;
+  }
+
+  @include on-desktop {
+    flex-direction: row;
+  }
+}
+
+.mainContainerEmpty {
+  grid-column: 1 / -1;
+
+  // display: flex;
+  // flex-direction: column;
+
+  @include h3-title;
+}
+
+.cartItemsContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+
+  @include on-desktop {
+    grid-column: 1 / 17;
+  }
+}
+
+.cartItem {
+  grid-column: 1 / -1;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: var(--color-card);
+  border: 1px solid var(--color-border);
+
+  @include on-tablet {
+    padding: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  @include on-desktop {
+    grid-column: span 16;
+  }
+}
+
+.cartItemWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.iconButtonClose {
+  height: 16px;
+  width: 16px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.image {
+  height: 80px;
+  width: 80px;
+}
+
+.cartItemName {
+  @extend %body-text;
+
+  width: 176px;
+}
+
+.quantityPriceWrapper {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 109px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.quantityWrapper {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+
+  @extend %body-text;
+}
+
+.iconButton {
+  @include action-buttons;
+
+  &:disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.cartItemPrice {
+  @extend %h3-desktop-tablet;
+}
+
+.totalPriceContainer {
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 17 / -1;
+    height: 206px;
+  }
+
+  background-color: var(--color-card);
+  border: 1px solid var(--color-elements);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.totalPrice {
+  @extend %h2-desktop-tablet;
+}
+
+.totalPriceInfo {
+  @extend %body-text;
+
+  color: var(--color-text-secondary);
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-elements);
+}
+
+.checkoutButton {
+  @extend %buttons;
+
+  height: 48px;
+  width: 100%;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-button);
+  color: var(--color-bg);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}

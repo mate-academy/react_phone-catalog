@@ -1,0 +1,48 @@
+@import '../../styles/all';
+
+.favouritesPage {
+  @include section-grid;
+  @include padding-inline;
+}
+
+.upperContainer {
+  grid-column: 1 / -1;
+}
+
+.pageTitle {
+  @include h1-title;
+}
+
+.count {
+  @extend %body-text;
+
+  color: var(--color-text-secondary);
+}
+
+.mainContainer {
+  @include section-grid;
+
+  grid-column: 1 / -1;
+
+  padding: 0;
+
+  @include on-tablet {
+    padding: 0;
+  }
+}
+
+.product {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include tablet-bigger-screen {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
