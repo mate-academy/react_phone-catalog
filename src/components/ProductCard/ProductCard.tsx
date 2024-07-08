@@ -1,11 +1,11 @@
 import styles from './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
-/* import { Link } from 'react-router-dom'; */
+import { Link } from 'react-router-dom';
 
 export const ProductCard: React.FC = () => {
   return (
     <div className={styles.ProductCard}>
-      {/*       <Link
+            <Link
         to="/placeholder-link"  // Linia 9: Zmiana na placeholder link
         className={styles.imageContainer}
       >
@@ -14,12 +14,12 @@ export const ProductCard: React.FC = () => {
           src="https://via.placeholder.com/150"  // Linia 12: Zmiana na placeholder image
           alt="placeholder image"
         />
-      </Link> */}
+      </Link>
 
       <div className={styles.wrapper}>
-        {/*         <Link to="/placeholder-link" className={styles.title}>  // Linia 17: Zmiana na placeholder link
+                <Link to="/placeholder-link" className={styles.title}>
           {'Smartphone XXX'}
-        </Link> */}
+        </Link>
 
         <div className={styles.price}>
           <div className={styles.existPrice}>${`xxx`}</div>
