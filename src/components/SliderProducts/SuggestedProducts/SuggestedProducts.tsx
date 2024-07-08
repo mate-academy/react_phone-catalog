@@ -3,7 +3,7 @@ import { getSuggestedProducts } from '../../../services/getSuggestedProducts';
 import { Gadget } from '../../../types/Gadget';
 import './SuggestedProducts.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import classNames from 'classnames';
 
 export const SuggestedProducts: React.FC = () => {
@@ -44,7 +44,49 @@ export const SuggestedProducts: React.FC = () => {
       <Swiper
         spaceBetween={16}
         slidesPerView={1.5}
-        modules={[Navigation]}
+        autoplay={{
+          delay: 5000,
+          disableOnInteraction: true,
+          pauseOnMouseEnter: true,
+        }}
+        modules={[Navigation, Autoplay]}
+        breakpoints={{
+          320: {
+            slidesPerView: 1.5,
+            spaceBetween: 16,
+            loop: false,
+          },
+
+          450: {
+            slidesPerView: 2,
+            spaceBetween: 16,
+            loop: false,
+          },
+
+          640: {
+            slidesPerView: 2.5,
+            spaceBetween: 16,
+            loop: false,
+          },
+
+          800: {
+            slidesPerView: 3,
+            spaceBetween: 16,
+            loop: false,
+          },
+
+          1000: {
+            slidesPerView: 3.5,
+            spaceBetween: 16,
+            loop: false,
+          },
+
+          1200: {
+            slidesPerView: 4,
+            spaceBetween: 16,
+            loop: false,
+          },
+        }}
         navigation={{
           nextEl: '.swiper-btn__next',
           prevEl: '.swiper-btn__prev',
