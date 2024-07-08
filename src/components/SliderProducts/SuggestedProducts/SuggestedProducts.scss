@@ -161,11 +161,15 @@
     height: 32px;
     background-color: $button-grey-color;
     border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $icon-grey-color);
 
     &:disabled {
       background-color: transparent;
-      border: $dark-grey-color;
+      border: 1px solid $dark-grey-color;
       opacity: 0.3;
     }
   }
 }
+

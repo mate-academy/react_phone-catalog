@@ -3,6 +3,7 @@ import { getSuggestedProducts } from '../../../services/getSuggestedProducts';
 import { Gadget } from '../../../types/Gadget';
 import './SuggestedProducts.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
 import classNames from 'classnames';
 
 export const SuggestedProducts: React.FC = () => {
@@ -43,6 +44,11 @@ export const SuggestedProducts: React.FC = () => {
       <Swiper
         spaceBetween={16}
         slidesPerView={1.5}
+        modules={[Navigation]}
+        navigation={{
+          nextEl: '.swiper-btn__next',
+          prevEl: '.swiper-btn__prev',
+        }}
         className="recommended__list"
       >
         {suggestedProducts.map(product => (
