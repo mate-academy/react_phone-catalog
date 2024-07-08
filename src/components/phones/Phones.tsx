@@ -42,6 +42,10 @@ export const Phones: React.FC = () => {
     <div className={Styles['phones']}>
       {isLoadingPhones && <Skeleton />}
 
+      {!isLoadingPhones && phonesTotalNumber === 0 && (
+        <p className={Styles.tablets__no_item}>There are no tablets yet</p>
+      )}
+
       {!isLoadingPhones && (
         <>
           <Crumbs path={['phones']} />
@@ -86,6 +90,7 @@ export const Phones: React.FC = () => {
               </select>
             </div>
           </div>
+
           <div className={Styles['phones__container']}>
             {phonesOnPage.map(phone => {
               return (
@@ -93,6 +98,7 @@ export const Phones: React.FC = () => {
               );
             })}
           </div>
+          
           <div className={Styles['phones__choose_page']}>
             <Pagination
               pagesTotalNumber={pagesTotalNumber}

@@ -6,11 +6,11 @@ import { ContextApp } from '../../../appContext/AppContext';
 export const SectionDashSlider: React.FC = () => {
   const { isTablet } = useContext(ContextApp);
   const [active, setActive] = useState(0);
-  const totalPictureNumber = 5;
+  const totalPictureNumber = 3;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
   const timeoutId = useRef<number>();
-  const array = Array.from({ length: 5 }, (_, index) => index);
+  // const array = Array.from({ length: 5 }, (_, index) => index);
 
   useEffect(() => {
     timeoutId.current = window.setTimeout(() => {
@@ -58,15 +58,9 @@ export const SectionDashSlider: React.FC = () => {
 
   return (
     <>
-      <h1 className={Styles.title}>
-        Welcome to Nice Gadgets store!
-      </h1>
+      <h1 className={Styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <section className={Styles['slider']}>
-        {/* <h1 className={Styles['title']}>
-      Welcome to Nice Gadgets store!
-    </h1> */}
-
         {isTablet && (
           <div onClick={handleNext} className={Styles.slider__right}></div>
         )}
@@ -81,16 +75,23 @@ export const SectionDashSlider: React.FC = () => {
             transition: 'transform 0.5s ease-in-out',
           }}
         >
-          {array.map(item => {
-            return (
-              <img
-                key={item}
-                className={`${Styles.slider__pic}`}
-                src={`./img/phones/apple-iphone-14-pro/spaceblack/0${item}.webp`}
-                alt={`Gadget ${item + 1}`}
-              />
-            );
-          })}
+          <img
+            className={`${Styles.slider__pic}`}
+            src={'./img/banner-accessories.png'}
+            alt={`baner img`}
+          />
+
+          <img
+            className={`${Styles.slider__pic}`}
+            src={'./img/banner-phones.png'}
+            alt={`baner img`}
+          />
+
+          <img
+            className={`${Styles.slider__pic}`}
+            src={'./img/banner-tablets.png'}
+            alt={`baner img`}
+          />
         </div>
 
         {isTablet && (
@@ -98,17 +99,26 @@ export const SectionDashSlider: React.FC = () => {
         )}
 
         <div className={Styles.slider__picker}>
-          {array.map(item => {
-            return (
-              <div
-                key={item}
-                onClick={() => handlerPicker(item)}
-                className={cn(Styles.slider__picker__dash, {
-                  [Styles.slider__picker__dash__selected]: item === active,
-                })}
-              ></div>
-            );
-          })}
+          <div
+            onClick={() => handlerPicker(0)}
+            className={cn(Styles.slider__picker__dash, {
+              [Styles.slider__picker__dash__selected]: 0 === active,
+            })}
+          ></div>
+
+          <div
+            onClick={() => handlerPicker(1)}
+            className={cn(Styles.slider__picker__dash, {
+              [Styles.slider__picker__dash__selected]: 1 === active,
+            })}
+          ></div>
+
+<div
+            onClick={() => handlerPicker(2)}
+            className={cn(Styles.slider__picker__dash, {
+              [Styles.slider__picker__dash__selected]: 2 === active,
+            })}
+          ></div>
         </div>
       </section>
     </>

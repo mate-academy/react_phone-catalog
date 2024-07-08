@@ -1,9 +1,8 @@
 import { useContext, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
-import style from './Tablets.module.scss';
+import Styles from './Tablets.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
-// import { SortBy } from '../../types/SortBy';
 import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
@@ -40,26 +39,31 @@ export const Tablets: React.FC = () => {
       : sortedPhones.slice(startFromElement, endOnElement);
 
   return (
-    <div className={style['tablets']}>
+    <div className={Styles['tablets']}>
       {isLoadingTablets && <Skeleton />}
-      {!isLoadingTablets && (
+
+      {!isLoadingTablets && tabletsTotalNumber === 0 && (
+        <p className={Styles.tablets__no_item}>There are no tablets yet</p>
+      )}
+
+      {!isLoadingTablets && tabletsTotalNumber !== 0 && (
         <>
           <Crumbs path={['tablets']} />
 
-          <div className={style['tablets__head']}>
-            <h1 className={style['tablets__head__title']}>Tablets</h1>
-            <p className={style['tablets__head__paragraph']}>
+          <div className={Styles['tablets__head']}>
+            <h1 className={Styles['tablets__head__title']}>Tablets</h1>
+            <p className={Styles['tablets__head__paragraph']}>
               {tabletsTotalNumber} models
             </p>
           </div>
-          <div className={style['tablets__filters']}>
-            <div className={style['tablets__filters__sort']}>
-              <p className={style['tablets__filters__sort__paragraph']}>
+          <div className={Styles['tablets__filters']}>
+            <div className={Styles['tablets__filters__sort']}>
+              <p className={Styles['tablets__filters__sort__paragraph']}>
                 Sort by
               </p>
 
               <select
-                className={style['tablets__filters__sort__select']}
+                className={Styles['tablets__filters__sort__select']}
                 value={selectedOption}
                 onChange={handleChangeSort}
               >
@@ -69,13 +73,13 @@ export const Tablets: React.FC = () => {
               </select>
             </div>
 
-            <div className={style['tablets__filters__items']}>
-              <p className={style['tablets__filters__items__paragraph']}>
+            <div className={Styles['tablets__filters__items']}>
+              <p className={Styles['tablets__filters__items__paragraph']}>
                 Items on page
               </p>
 
               <select
-                className={style['tablets__filters__items__select']}
+                className={Styles['tablets__filters__items__select']}
                 value={itemsPerPage}
                 onChange={handleChangeItems}
               >
@@ -86,14 +90,14 @@ export const Tablets: React.FC = () => {
               </select>
             </div>
           </div>
-          <div className={style['tablets__container']}>
+          <div className={Styles['tablets__container']}>
             {tabletsOnPage.map(phone => {
               return (
                 <ProductCard key={phone.id} type={'tablets'} product={phone} />
               );
             })}
           </div>
-          <div className={style['tablets__choose_page']}>
+          <div className={Styles['tablets__choose_page']}>
             <Pagination
               pagesTotalNumber={pagesTotalNumber}
               activePage={activePage}

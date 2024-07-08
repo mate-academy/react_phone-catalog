@@ -1,6 +1,6 @@
 import { useContext, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
-import style from './Accessories.module.scss';
+import Style from './Accessories.module.scss';
 import { Pagination } from '../../pagination';
 import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton';
@@ -42,27 +42,31 @@ export const Accessories: React.FC = () => {
       : sortedAccessories.slice(startFromElement, endOnElement);
 
   return (
-    <div className={style['accessories']}>
+    <div className={Style['accessories']}>
       {isLoadingAccessories && <Skeleton />}
+
+      {!isLoadingAccessories && accessoriesTotalNumber === 0 && (
+        <p className={Style.tablets__no_item}>There are no tablets yet</p>
+      )}
 
       {!isLoadingAccessories && (
         <>
           <Crumbs path={['accessories']} />
 
-          <div className={style['accessories__head']}>
-            <h1 className={style['accessories__head__title']}>Accessories</h1>
-            <p className={style['accessories__head__paragraph']}>
+          <div className={Style['accessories__head']}>
+            <h1 className={Style['accessories__head__title']}>Accessories</h1>
+            <p className={Style['accessories__head__paragraph']}>
               {accessoriesTotalNumber} models
             </p>
           </div>
-          <div className={style['accessories__filters']}>
-            <div className={style['accessories__filters__sort']}>
-              <p className={style['accessories__filters__sort__paragraph']}>
+          <div className={Style['accessories__filters']}>
+            <div className={Style['accessories__filters__sort']}>
+              <p className={Style['accessories__filters__sort__paragraph']}>
                 Sort by
               </p>
 
               <select
-                className={style['accessories__filters__sort__select']}
+                className={Style['accessories__filters__sort__select']}
                 value={selectedOption}
                 onChange={handleChangeSort}
               >
@@ -72,13 +76,13 @@ export const Accessories: React.FC = () => {
               </select>
             </div>
 
-            <div className={style['accessories__filters__items']}>
-              <p className={style['accessories__filters__items__paragraph']}>
+            <div className={Style['accessories__filters__items']}>
+              <p className={Style['accessories__filters__items__paragraph']}>
                 Items on page
               </p>
 
               <select
-                className={style['accessories__filters__items__select']}
+                className={Style['accessories__filters__items__select']}
                 value={itemsPerPage}
                 onChange={handleChangeItems}
               >
@@ -89,7 +93,7 @@ export const Accessories: React.FC = () => {
               </select>
             </div>
           </div>
-          <div className={style['accessories__container']}>
+          <div className={Style['accessories__container']}>
             {accessoriesOnPage.map(accessory => {
               return (
                 <ProductCard
@@ -100,7 +104,7 @@ export const Accessories: React.FC = () => {
               );
             })}
           </div>
-          <div className={style['accessories__choose_page']}>
+          <div className={Style['accessories__choose_page']}>
             <Pagination
               pagesTotalNumber={pagesTotalNumber}
               activePage={activePage}

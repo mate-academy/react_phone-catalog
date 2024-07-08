@@ -2,22 +2,16 @@
 
 .productCard {
   font-family: Montserrat, sans-serif;
-  width: 288px;
+  width: 270px;
   height: 440px;
   border: 1px solid #E2E6E9;
-  margin: 0 7px 16px;
+  margin: 0 15px 7px 0;
+  padding: 10px 15px 0;
   font-size: 14px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-
-  @include for-tablet {
-    margin: 0 7px 7px 0;
-    padding: 0 15px;
-    height: 512px;
-    width: 270px;
-  }
 
   &__picture {
     margin: auto;
@@ -36,7 +30,7 @@
   }
 
   &__product_name {
-    width: 75%;
+    width: 85%;
     margin: 0 auto 8px;
   }
 

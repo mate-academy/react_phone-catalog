@@ -207,21 +207,32 @@
   &__nav {
     height: 48px;
 
+    @include for-tablet {
+      width: 420px;
+    }
 
     &__list {
       display: flex;
+      justify-content: space-between;
       list-style: none;
       padding: 0;
 
       &__element {
         width: fit-content;
         text-transform: uppercase;
-        margin-right: 15px;
         color: #89939A;
         font-weight: 800;
         font-size: 12px;
         line-height: 48px;
         letter-spacing: 2px;
+
+        &.with-after::after {
+          content: '';
+          width: 100%;
+          height: 2px;
+          border: 1px solid black;
+          display: block; /* Ustawienia stylu */
+        }
 
         @include for-tablet {
           line-height: 64px;

@@ -18,13 +18,16 @@ export const App = () => {
   const { app, accessories, tablets, phones, backToTop } =
     useContext(ContextApp);
 
-  const handleScroll = () => {
-    if (backToTop.current && backToTop.current.offsetTop < 500) {
-      backToTop.current.style.marginTop = '110vh';
-    } else if (backToTop.current && backToTop.current.offsetTop > 1150) {
-      backToTop.current.style.marginTop = '0px';
-    }
-  };
+    const handleScroll = () => {
+      if (app.current && backToTop.current) {
+        if (app.current.scrollTop > 80) {
+          backToTop.current.style.marginTop = '0vh';
+        } else {
+          backToTop.current.style.marginTop = '120vh';
+        }
+      }
+    };
+
 
   return (
     <div onScroll={handleScroll} ref={app} className="app">

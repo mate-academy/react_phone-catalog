@@ -1,4 +1,5 @@
 import React, { useContext, useRef, useState } from 'react';
+import cn from 'classnames';
 import Styles from './Header.module.scss';
 import { ContextApp } from '../../appContext/AppContext';
 import { Link } from 'react-router-dom';
@@ -29,22 +30,41 @@ export const Header: React.FC = () => {
   const NAVIGATION_OVER_640px = (
     <nav className={Styles['header__nav']}>
       <ul className={Styles[`header__nav__list`]}>
-        <li className={Styles[`header__nav__list__element`]}>
+        <li
+          className={cn(Styles.header__nav__list__element, {
+            [Styles['with-after']]: location.hash === '#/',
+          })}
+        >
           <Link onClick={handleClearParams} to={'/'}>
             home
           </Link>
         </li>
-        <li className={Styles[`header__nav__list__element`]}>
+
+        <li
+          className={cn(Styles.header__nav__list__element, {
+            [Styles['with-after']]: location.hash === '#/phones',
+          })}
+        >
           <Link onClick={handleClearParams} to={'/phones'}>
             phones
           </Link>
         </li>
-        <li className={Styles[`header__nav__list__element`]}>
+
+        <li
+          className={cn(Styles.header__nav__list__element, {
+            [Styles['with-after']]: location.hash === '#/tablets',
+          })}
+        >
           <Link onClick={handleClearParams} to={'/tablets'}>
             tablets
           </Link>
         </li>
-        <li className={Styles[`header__nav__list__element`]}>
+        
+        <li
+          className={cn(Styles.header__nav__list__element, {
+            [Styles['with-after']]: location.hash === '#/accessories',
+          })}
+        >
           <Link onClick={handleClearParams} to={'/accessories'}>
             accessories
           </Link>

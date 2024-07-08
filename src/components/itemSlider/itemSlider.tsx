@@ -32,14 +32,13 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const handlerTouchEnd = () => {
-     if (startTouch.current - endTouch.current > 10) {
-      setActive(prevState => (prevState + 1) % productsTotalNumber);
+    if (startTouch.current - endTouch.current > 10) {
+      setActive((prevState) => (prevState + 1) % productsTotalNumber);
     }
 
-     if (startTouch.current - endTouch.current < -10) {
+    if (startTouch.current - endTouch.current < -10) {
       setActive(
-        prevState =>
-          (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+        (prevState) => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
       );
     }
   };
@@ -47,7 +46,7 @@ export const ItemSlider: React.FC<Props> = ({
   const getSuggestedProducts = () => {
     const minNumber = Math.floor(Math.random() * 110);
     const maxNumber = getNumber(minNumber, 125);
-    const newProducts = [...list].slice(minNumber, maxNumber);
+    const newProducts = list.slice(minNumber, maxNumber);
     setCopyProducts(newProducts);
     setProductsTotalNumber(newProducts.length);
   };
@@ -57,78 +56,57 @@ export const ItemSlider: React.FC<Props> = ({
       getSuggestedProducts();
     } else {
       setCopyProducts([...list]);
-      setProductsTotalNumber(copyProducts.length);
+      setProductsTotalNumber(list.length);
     }
   }, [showRandom, list]);
 
-  const handlerleft = () => {
-    if (active < 0) {
-      setActive(productsTotalNumber);
-    }
+  const handlerLeft = () => {
     setActive(
-      prevState => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+      (prevState) => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
     );
   };
-  
+
   const handlerRight = () => {
-    if (active > productsTotalNumber) {
-      setActive(0);
-    }
-    setActive(prevState => (prevState + 1) % productsTotalNumber);
+    setActive((prevState) => (prevState + 1) % productsTotalNumber);
   };
 
   return (
-    <>
-      <div className={Styles['brand_new_models']}>
-        <div className={Styles['brand_new_models__container']}>
-          <h2 className={Styles['brand_new_models__title']}>{title}</h2>
-          <div className={Styles['brand_new_models__button']}>
-            <div
-              onClick={handlerleft}
-              className={Styles['brand_new_models__button__left']}
-            ></div>
-            <div
-              onClick={handlerRight}
-              className={Styles['brand_new_models__button__right']}
-            ></div>
-          </div>
-        </div>
-
-        <div
-          onTouchStart={handlerTouchStart}
-          onTouchEnd={handlerTouchEnd}
-          onTouchMove={handlerTouchMove}
-          style={{
-            transform: `translateX(-${active * 302}px)`,
-            transition: 'transform 0.5s ease-in-out',
-          }}
-          className={Styles['brand_new_models__slider']}
-        >
-          {copyProducts
-            .sort((a, b) => b.priceRegular - a.priceRegular)
-            .map((product: Item) => {
-              if (discount) {
-                return (
-                  <ProductCard
-                    type={product.category}
-                    key={product.id}
-                    product={product}
-                    discount={true}
-                  />
-                );
-              }
-
-              return (
-                <ProductCard
-                  type={product.category}
-                  key={product.id}
-                  product={product}
-                  discount={false}
-                />
-              );
-            })}
+    <div className={Styles['brand_new_models']}>
+      <div className={Styles['brand_new_models__container']}>
+        <h2 className={Styles['brand_new_models__title']}>{title}</h2>
+        <div className={Styles['brand_new_models__button']}>
+          <div
+            onClick={handlerLeft}
+            className={Styles['brand_new_models__button__left']}
+          ></div>
+          <div
+            onClick={handlerRight}
+            className={Styles['brand_new_models__button__right']}
+          ></div>
         </div>
       </div>
-    </>
+
+      <div
+        onTouchStart={handlerTouchStart}
+        onTouchEnd={handlerTouchEnd}
+        onTouchMove={handlerTouchMove}
+        style={{
+          transform: `translateX(-${active * 272}px)`,
+          transition: 'transform 0.5s ease-in-out',
+        }}
+        className={Styles['brand_new_models__slider']}
+      >
+        {copyProducts
+          .sort((a, b) => b.priceRegular - a.priceRegular)
+          .map((product: Item) => (
+            <ProductCard
+              type={product.category}
+              key={product.id}
+              product={product}
+              discount={!!discount}
+            />
+          ))}
+      </div>
+    </div>
   );
 };
