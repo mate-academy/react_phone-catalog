@@ -1,38 +1,35 @@
 import './Header.scss';
 import { MenuList } from '../MenuList';
 import { Link } from 'react-router-dom';
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ProductContext } from '../Context/Context';
 import { getSearchWith } from '../../utils/GetSearchWith';
 
 export const Header = () => {
-  const { path, cart, favourite, setSearchParams, params, totalSums } =
+  const { path, cart, favourite, setSearchParams, params, totalSums, query } =
     useContext(ProductContext);
+  const [inputValue, setInputValue] = useState(query || '');
 
-  const [inputValue, setInputValue] = useState('');
-
-  const handleSearch = () => {
-    const trimmedValue = inputValue.trim();
-
-    setSearchParams(
-      getSearchWith(params, {
-        query: trimmedValue || null,
-        page: null,
-      }),
-    );
-
-    setInputValue('');
-  };
+  const timerId = useRef(0);
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(e.target.value);
+
+    window.clearTimeout(timerId.current);
+
+    timerId.current = window.setTimeout(() => {
+      setSearchParams(
+        getSearchWith(params, {
+          query: e.target.value.trim() || null,
+          page: null,
+        }),
+      );
+    }, 500);
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-
-    handleSearch();
-  };
+  useEffect(() => {
+    setInputValue('');
+  }, [path]);
 
   return (
     <header className="header">
@@ -46,9 +43,9 @@ export const Header = () => {
             path === '/tablets' ||
             path === '/accessories') && (
             <div className="header__search-wrapper">
-              <form action="/" onSubmit={e => handleSubmit(e)}>
+              <form>
                 <input
-                  value={inputValue}
+                  value={inputValue || ''}
                   type="text"
                   className="header__search"
                   onChange={event => handleInputChange(event)}
