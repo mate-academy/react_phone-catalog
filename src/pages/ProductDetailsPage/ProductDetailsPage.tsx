@@ -145,9 +145,6 @@ export const ProductDetailsPage: React.FC = () => {
                   <img
                     src={image}
                     onClick={() => setSelectedImage(image)}
-                    className={
-                      selectedImage === image ? 'selected-thumbnail' : ''
-                    }
                     alt={`Thumbnail ${index + 1}`}
                   />
                 </SwiperSlide>

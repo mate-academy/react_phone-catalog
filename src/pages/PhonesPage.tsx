@@ -27,12 +27,12 @@ export const PhonesPage = () => {
           <div className="selected-cat__active">
             <Link to="/" className="selected-cat__active--link">
               <svg className="icon icon-home">
-                <use href="/img/icons.svg#icon-home"></use>
+                <use href="img/icons.svg#icon-home"></use>
               </svg>
             </Link>
             <div className="selected-cat__active--arrow">
               <svg className="icon icon-arrow-right">
-                <use href="/img/icons.svg#icon-arrow-right"></use>
+                <use href="img/icons.svg#icon-arrow-right"></use>
               </svg>
             </div>
             <Link to="/phones" className="selected-cat__active--name">
