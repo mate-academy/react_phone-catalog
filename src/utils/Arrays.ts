@@ -22,17 +22,17 @@ export const categories = [
 export const BannerPictures = [
   {
     id: 1,
-    src: '/img/banners/banner-phones.png',
+    src: './img/banners/banner-phones.png',
     name: 'phones',
   },
   {
     id: 2,
-    src: '/img/banners/banner-tablets.png',
+    src: './img/banners/banner-tablets.png',
     name: 'phones',
   },
   {
     id: 3,
-    src: '/img/banners/banner-accessories.png',
+    src: './img/banners/banner-accessories.png',
     name: 'phones',
   },
 ];

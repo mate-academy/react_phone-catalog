@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { getRandomProducts } from './getRandomProducts';
 
-export const BASE_URL = 'https://valost.github.io/react_phone-catalog';
+export const BASE_URL = 'https://valost.github.io/react_phone-catalog/';
 
 export function getData<T>(url: string): Promise<T> {
   return fetch(BASE_URL + url).then(response => {
