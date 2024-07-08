@@ -1,0 +1,54 @@
+@import '../../styles/all';
+
+.search {
+  display: flex;
+  align-items: center;
+  padding-inline: 16px;
+  box-shadow: -1px 0 0 0 var(--color-elements), 1px 0 0 0 var(--color-elements);
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  overflow: hidden;
+  height: $header-height-mobile-tablet;
+  min-width: 120px;
+  transition: width 0.5s ease;
+
+  @include on-desktop {
+    height: $header-height-desktop;
+    min-width: 320px;
+  }
+
+  &:hover {
+    color: var(--color-text-primary)
+  }
+}
+
+.input {
+  padding: 0 10px;
+  height: 100%;
+  width: 100%;
+  align-items: center;
+  padding-inline: 14px;
+  border: none;
+  outline: none;
+
+  background-color: transparent;
+  color: var(--color-text-primary);
+
+  @extend %body-text;
+
+  @include on-desktop {
+    padding-inline: 16px;
+  }
+
+  &::placeholder {
+    color: var(--color-text-secondary);
+
+    @extend %body-text;
+  }
+}
+
+.hidden {
+  display: none;
+}
+

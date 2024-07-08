@@ -1,0 +1,46 @@
+@import '../../styles/all';
+
+.productSlider {
+  @include section-grid;
+
+  margin-bottom: 32px;
+  row-gap: 8px;
+}
+
+.upperContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  gap: 72px;
+}
+
+.title {
+  @extend %h2-mobile;
+
+  @include on-tablet {
+    @include h2-title;
+  }
+}
+
+.buttonsWrapper {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.button {
+  @include action-buttons;
+}
+
+.mainContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  gap: 16px;
+  padding: 15px 0;
+}
+
+.sliderWrapper {
+  transition: transform 0.3s ease;
+  will-change: transform;
+}

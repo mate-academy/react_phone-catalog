@@ -1,0 +1,65 @@
+@import '../../styles/all';
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+.buttonCart {
+  height: 40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-button);
+  border: 1px solid var(--color-button);
+  cursor: pointer;
+
+  &:hover {
+    background-color: var(--color-button-hover);
+    box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+  }
+}
+
+.active {
+  background-color: var(--color-button-active);
+  border-color: var(--color-button-border-selected);
+
+  &:hover {
+    background-color: inherit;
+  }
+}
+
+.buttonCartAdded {
+  border: 1px solid var(--color-elements);
+  background-color: transparent;
+  color: var(--color-green);
+}
+
+.buttonText {
+  @extend %buttons;
+
+  color: var(--color-white);
+}
+
+.buttonTextAdded {
+  color: var(--color-green);
+}
+
+.buttonFavourite {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-favourite);
+  border: 1px solid var(--color-favourite-border);
+  cursor: pointer;
+
+  &:hover {
+    border-color: var(--color-text-primary);
+  }
+}

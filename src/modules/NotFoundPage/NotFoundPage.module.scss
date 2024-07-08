@@ -1,0 +1,9 @@
+@import '../../styles/all';
+
+.pageContainer {
+  @include padding-inline;
+}
+
+.title {
+  @include h3-title;
+}
