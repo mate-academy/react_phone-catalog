@@ -21,6 +21,8 @@
     fill: $main-white-color;
     width: 16px;
     height: 16px;
+
+    @include hover(fill, $purple-hover-color);
   }
 
   &-arrow-right {
@@ -52,5 +54,13 @@
     width: 6px;
     height: 10px;
     fill: $main-white-color;
+  }
+
+  &-arrow-left-back {
+    fill: $main-white-color;
+    width: 6px;
+    height: 10px;
+
+    @include hover(fill, $purple-hover-color);
   }
 }

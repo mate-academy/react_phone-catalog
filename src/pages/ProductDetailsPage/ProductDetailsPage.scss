@@ -33,16 +33,20 @@
       color: $main-white-color;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+
+      @include hover(color, $purple-hover-color);
     }
 
     &--name {
       color: $light-grey-color;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
       white-space: nowrap;
       overflow: hidden;
+
+      @include hover(color, $purple-hover-color);
     }
   }
 
@@ -66,7 +70,9 @@
       color: $main-white-color;
       font-size: 12px;
       font-weight: 500;
-      line-height: 15.34px;
+      line-height: 1.28;
+
+      @include hover(color, $purple-hover-color);
     }
   }
 
@@ -74,9 +80,17 @@
     color: $main-white-color;
     font-size: 22px;
     font-weight: 800;
-    line-height: 30.8px;
+    line-height: 1.4;
+    letter-spacing: -0.01em;
     margin-bottom: 32px;
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 800;
+      line-height: 1.28;
+      margin-bottom: 40px;
+    }
   }
 
   &__swiper {
@@ -88,25 +102,76 @@
     margin-bottom: 40px;
     grid-column: 1 / -1;
 
+    @include on-tablet {
+      flex-direction: row;
+      align-items: flex-start;
+      grid-column: 1 / 8;
+    }
+
     &--big-pict {
       display: flex;
       justify-content: center;
       align-items: center;
       width: 288px;
       height: 288px;
+
+      @include on-tablet {
+        grid-column: 2 / span 6;
+      }
+    }
+
+    &--wrapper-box {
+      display: flex;
+      justify-content: center;
+      width: 288px;
+      height: 49px;
+
+      @include on-tablet {
+        width: 35px;
+        height: fit-content;
+        flex-direction: column;
+
+        grid-column: 1 /  span 1;
+      }
     }
 
     &--wrapper {
       display: flex;
       justify-content: center;
-      align-items: baseline;
-      width: 100%;
-      height: 49px;
+      gap: 8px;
+
+      @include on-tablet {
+        flex-direction: column;
+      }
     }
 
     &--img {
+      max-width: 51px;
       display: flex;
       justify-content: center;
+      cursor: pointer;
+      border: 1px solid $dark-grey-color;
+
+      @include on-tablet {
+        max-width: 35px;
+        align-items: center;
+        height: 35px;
+      }
+    }
+
+    &--box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__product-param {
+    margin-bottom: 56px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / 13;
     }
   }
 
@@ -220,7 +285,6 @@
     display: flex;
     flex-direction: column;
     gap: 8px;
-    margin-bottom: 56px;
     grid-column: 1 / -1;
   }
 
@@ -266,6 +330,11 @@
   &__recomm {
     grid-column: 1 / -1;
   }
+}
+
+.thumbnail-picture {
+  width: fit-content;
+  height: 100%;
 }
 
 .colors-box {
@@ -323,6 +392,7 @@
 .cap-selected {
   background-color: $main-white-color;
   color: $c-main-theme;
+  border: none;
 }
 
 .tech-item {
