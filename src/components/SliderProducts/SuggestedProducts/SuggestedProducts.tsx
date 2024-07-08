@@ -31,12 +31,12 @@ export const SuggestedProducts: React.FC = () => {
         <div className="recommended__header--buttons swiper-btn">
           <button className="swiper-btn__prev">
             <svg className="icon icon-nav">
-              <use href="/img/icons.svg#icon-arrow-left"></use>
+              <use href="img/icons.svg#icon-arrow-left"></use>
             </svg>
           </button>
           <button className="swiper-btn__next">
             <svg className="icon icon-nav">
-              <use href="/img/icons.svg#icon-arrow-right"></use>
+              <use href="img/icons.svg#icon-arrow-right"></use>
             </svg>
           </button>
         </div>
@@ -137,7 +137,7 @@ export const SuggestedProducts: React.FC = () => {
                     'icon-heart-red': isPressed,
                   })}
                 >
-                  <use href="/img/icons.svg#icon-favourites-filled"></use>
+                  <use href="img/icons.svg#icon-favourites-filled"></use>
                 </svg>
               </button>
             </div>

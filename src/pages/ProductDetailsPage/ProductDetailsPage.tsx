@@ -89,12 +89,12 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-details__active">
             <Link to="/" className="product-details__active--link">
               <svg className="icon icon-home">
-                <use href="/img/icons.svg#icon-home"></use>
+                <use href="img/icons.svg#icon-home"></use>
               </svg>
             </Link>
             <div className="product-details__active--arrow">
               <svg className="icon icon-arrow-right">
-                <use href="/img/icons.svg#icon-arrow-right"></use>
+                <use href="img/icons.svg#icon-arrow-right"></use>
               </svg>
             </div>
             <Link to={`/${category}`} className="product-details__active--cat">
@@ -102,7 +102,7 @@ export const ProductDetailsPage: React.FC = () => {
             </Link>
             <div className="product-details__active--arrow">
               <svg className="icon icon-arrow-right">
-                <use href="/img/icons.svg#icon-arrow-right"></use>
+                <use href="img/icons.svg#icon-arrow-right"></use>
               </svg>
             </div>
             <Link
@@ -116,7 +116,7 @@ export const ProductDetailsPage: React.FC = () => {
           <div className="product-details__back">
             <div className="product-details__back--arrow">
               <svg className="icon icon-arrow-left">
-                <use href="/img/icons.svg#icon-arrow-left"></use>
+                <use href="img/icons.svg#icon-arrow-left"></use>
               </svg>
             </div>
             <Link to=".." className="product-details__back--text">
@@ -209,7 +209,7 @@ export const ProductDetailsPage: React.FC = () => {
                   'icon-heart-red': isPressed,
                 })}
               >
-                <use href="/img/icons.svg#icon-favourites-filled"></use>
+                <use href="img/icons.svg#icon-favourites-filled"></use>
               </svg>
             </button>
           </div>
