@@ -1,0 +1,43 @@
+@import '../../styles/index';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  &__home {
+    height: 16px;
+    width: 16px;
+    transition: transform .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    width: 16px;
+    background-image: url(../../images/icons/ButtonRight.svg);
+  }
+
+  &__text {
+    color: $secondary-gray;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+  }
+
+  &__link {
+    color: $primary-gray;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15px;
+    text-decoration: none;
+    transition: transform .3s;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+}

@@ -1,0 +1,32 @@
+@import '../../styles/index';
+
+.no-result {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  &__message {
+    font-size: 24px;
+    font-weight: 600;
+    color: $primary-gray;
+    letter-spacing: -0.32px;
+
+    @include on-tablet {
+      font-size: 32px;
+      font-weight: 700;
+    }
+  }
+
+  &__text {
+    color: $secondary-gray;
+    font-size: 16px;
+    font-weight: 500;
+    text-align: center;
+
+    @include on-tablet {
+      font-size: 20px;
+      font-weight: 600;
+    }
+  }
+}
