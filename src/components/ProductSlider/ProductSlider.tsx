@@ -7,11 +7,7 @@ export const ProductSlider: React.FC = () => {
       <div className={styles.topWrapper}>
         <div className={styles.buttons}>
           <button>
-            <img
-              src={ChevronIcon}
-              alt="scroll"
-              className={styles.iconPrev}
-            />
+            <img src={ChevronIcon} alt="scroll" className={styles.iconPrev} />
           </button>
 
           <div className={styles.container}>
@@ -21,15 +17,10 @@ export const ProductSlider: React.FC = () => {
           </div>
 
           <button>
-            <img
-              src={ChevronIcon}
-              alt="scroll"
-              className={styles.iconNext}
-            />
+            <img src={ChevronIcon} alt="scroll" className={styles.iconNext} />
           </button>
         </div>
       </div>
     </div>
   );
-}
-
+};
