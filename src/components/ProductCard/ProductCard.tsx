@@ -5,19 +5,19 @@ import { Link } from 'react-router-dom';
 export const ProductCard: React.FC = () => {
   return (
     <div className={styles.ProductCard}>
-            <Link
-        to="/placeholder-link"  // Linia 9: Zmiana na placeholder link
+      <Link
+        to="/placeholder-link" // Linia 9: Zmiana na placeholder link
         className={styles.imageContainer}
       >
         <img
           className={styles.image}
-          src="https://via.placeholder.com/150"  // Linia 12: Zmiana na placeholder image
+          src="https://via.placeholder.com/150" // Linia 12: Zmiana na placeholder image
           alt="placeholder image"
         />
       </Link>
 
       <div className={styles.wrapper}>
-                <Link to="/placeholder-link" className={styles.title}>
+        <Link to="/placeholder-link" className={styles.title}>
           {'Smartphone XXX'}
         </Link>
 
