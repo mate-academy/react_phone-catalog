@@ -1,5 +1,5 @@
 import styles from './ProductSlider.module.scss';
-import ChevronIcon from './img/ChevronIcon.module.svg';
+import ChevronIcon from './img/ChevronIcon.svg';
 
 export const ProductSlider: React.FC = () => {
   return (
@@ -16,7 +16,7 @@ export const ProductSlider: React.FC = () => {
             </div>
           </div>
 
-          <button>
+          <button className={styles.arrowButton}>
             <img src={ChevronIcon} alt="scroll" className={styles.iconNext} />
           </button>
         </div>
