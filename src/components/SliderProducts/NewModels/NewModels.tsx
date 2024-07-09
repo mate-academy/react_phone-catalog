@@ -29,13 +29,13 @@ export const NewModels: React.FC = () => {
     <div className="newmodels">
       <div className="newmodels__header">
         <h3 className="newmodels__header--title">Brand new models</h3>
-        <div className="newmodels__header--buttons swiper-btn">
-          <button className="swiper-btn__prev">
+        <div className="newmodels__header--buttons newmodels-swiper-btn">
+          <button className="newmodels-swiper-btn__prev">
             <svg className="icon icon-nav">
               <use href="img/icons.svg#icon-arrow-left"></use>
             </svg>
           </button>
-          <button className="swiper-btn__next">
+          <button className="newmodels-swiper-btn__next">
             <svg className="icon icon-nav">
               <use href="img/icons.svg#icon-arrow-right"></use>
             </svg>
@@ -85,8 +85,8 @@ export const NewModels: React.FC = () => {
             },
           }}
           navigation={{
-            nextEl: '.swiper-btn__next',
-            prevEl: '.swiper-btn__prev',
+            nextEl: '.newmodels-swiper-btn__next',
+            prevEl: '.newmodels-swiper-btn__prev',
           }}
           className="newmodels__list"
         >

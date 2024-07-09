@@ -12,7 +12,7 @@ export const Categories: React.FC = () => {
             <Link to="/phones">
               <img
                 className="card__img"
-                src="img/categories/phones.jpg"
+                src="img/categories/phones.webp"
                 alt="Mobile phones"
               />
               <h3 className="card__title">Mobile phones</h3>
@@ -23,7 +23,7 @@ export const Categories: React.FC = () => {
             <Link to="/tablets">
               <img
                 className="card__img"
-                src="img/categories/tablets.jpg"
+                src="img/categories/tablets.webp"
                 alt="Tablets"
               />
               <h3 className="card__title">Tablets</h3>

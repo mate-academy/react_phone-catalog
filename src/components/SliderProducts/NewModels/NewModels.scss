@@ -157,7 +157,7 @@
       background-color: $button-purpul-color;
       color: $main-white-color;
       font-size: 14px;
-      line-height: 21px;
+      line-height: 1.5;
       text-align: center;
 
       @include hover(background-color, $purple-hover-color);
@@ -206,7 +206,7 @@
   }
 }
 
-.swiper-btn {
+.newmodels-swiper-btn {
   &__prev,
   &__next {
     display: flex;

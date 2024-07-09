@@ -13,7 +13,7 @@
 
   @include on-desktop-small {
     padding: 0 $padding-desktop-small;
-    margin-bottom: 8px;
+    margin-bottom: 80px;
   }
 
   @include on-desktop {
@@ -70,7 +70,6 @@
   &__list {
     &--card {
       display: flex;
-      align-items: center;
       justify-content: space-between;
       flex-direction: column;
     }
@@ -81,7 +80,7 @@
   }
 }
 
-.newmodels-card {
+.hotprices-card {
   padding: 32px;
   gap: 8px;
   background-color: $card-bgc;
@@ -93,6 +92,7 @@
     align-items: center;
     width: 148px;
     height: 108px;
+    align-self: center;
 
     @include on-tablet {
       width: 173px;
@@ -159,18 +159,18 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
 
     &--add {
-      width: 100px;
+      width: 100%;
       height: 40px;
       border: none;
       background-color: $button-purpul-color;
       color: $main-white-color;
       font-size: 14px;
-      line-height: 21px;
+      line-height: 1.5;
       text-align: center;
 
       @include hover(background-color, $purple-hover-color);
@@ -178,22 +178,13 @@
       &:focus {
         background-color: $button-grey-color;
       }
-
-      @include on-tablet {
-        width: 125px;
-      }
-
-      @include on-desktop-small {
-        width: 160px;
-      }
     }
 
     &--heart {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      padding: 12px;
       background-color: $button-grey-color;
       border: none;
 
@@ -207,7 +198,7 @@
   }
 }
 
-.newmodels-item {
+.hotprices-item {
   display: flex;
   justify-content: space-between;
 
@@ -228,7 +219,7 @@
   }
 }
 
-.swiper-btn {
+.hotprices-swiper-btn {
   &__prev,
   &__next {
     display: flex;
