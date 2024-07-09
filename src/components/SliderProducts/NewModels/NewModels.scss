@@ -1,6 +1,8 @@
 @import '../../../styles/common';
 
 .newmodels {
+  @include page-grid;
+
   padding-left: $padding-tablet;
   margin-bottom: 56px;
 
@@ -18,19 +20,26 @@
     padding: 0 $padding-desktop;
   }
 
-
   &__header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    @include page-grid;
+
+    padding-right: $padding-mobile;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: center;
     margin-bottom: $margin-bottom-mobile;
     grid-column: 1 / -1;
+
+    @include on-tablet {
+      padding-right: $padding-tablet;
+    }
 
     &--title {
       color: $main-white-color;
       font-size: 22px;
       font-weight: 800;
       line-height: 1.4;
+      grid-column: 1 / span 2;
 
       @include on-tablet {
         font-size: 32px;
@@ -42,6 +51,7 @@
     &--buttons {
       display: flex;
       gap: 16px;
+      grid-column: 4 / span 1;
     }
   }
 
@@ -52,9 +62,15 @@
       flex-direction: column;
     }
   }
+
+  &__swiper {
+
+    grid-column: 1 / -1;
+  }
 }
 
 .newmodels-card {
+
   padding: 32px;
   gap: 8px;
   background-color: $card-bgc;

@@ -42,106 +42,108 @@ export const NewModels: React.FC = () => {
           </button>
         </div>
       </div>
-      <Swiper
-        spaceBetween={16}
-        slidesPerView={1.5}
-        modules={[Navigation]}
-        breakpoints={{
-          320: {
-            slidesPerView: 1.4,
-            spaceBetween: 16,
-            loop: false,
-          },
+      <div className="newmodels__swiper">
+        <Swiper
+          spaceBetween={16}
+          slidesPerView={1.5}
+          modules={[Navigation]}
+          breakpoints={{
+            320: {
+              slidesPerView: 1.4,
+              spaceBetween: 16,
+              loop: false,
+            },
 
-          450: {
-            slidesPerView: 2,
-            spaceBetween: 16,
-            loop: false,
-          },
+            450: {
+              slidesPerView: 2,
+              spaceBetween: 16,
+              loop: false,
+            },
 
-          640: {
-            slidesPerView: 2.5,
-            spaceBetween: 16,
-            loop: false,
-          },
+            640: {
+              slidesPerView: 2.5,
+              spaceBetween: 16,
+              loop: false,
+            },
 
-          800: {
-            slidesPerView: 3,
-            spaceBetween: 16,
-            loop: false,
-          },
+            800: {
+              slidesPerView: 3,
+              spaceBetween: 16,
+              loop: false,
+            },
 
-          1000: {
-            slidesPerView: 3.5,
-            spaceBetween: 16,
-            loop: false,
-          },
+            1000: {
+              slidesPerView: 3.5,
+              spaceBetween: 16,
+              loop: false,
+            },
 
-          1200: {
-            slidesPerView: 4,
-            spaceBetween: 16,
-            loop: false,
-          },
-        }}
-        navigation={{
-          nextEl: '.swiper-btn__next',
-          prevEl: '.swiper-btn__prev',
-        }}
-        className="newmodels__list"
-      >
-        {suggestedProducts.map(product => (
-          <SwiperSlide
-            key={product.id}
-            className="newmodels__list--card newmodels-card"
-          >
-            <div className="newmodels-card__picture">
-              <img
-                className="newmodels-card__picture--img"
-                src={product.image}
-                alt={product.name}
-              />
-            </div>
-            <h4 className="newmodels-card__title">{product.name}</h4>
-            <div className="newmodels-card__price">
-              <p className="newmodels-card__price--disc">{product.price}</p>
-              <p className="newmodels-card__price--regular">
-                {product.fullPrice}
-              </p>
-            </div>
-            <ul className="newmodels-card__tech">
-              <li className="newmodels-card__tech--item newmodels-item">
-                <p className="newmodels-item__name">Screen</p>
-                <p className="newmodels-item__param">{product.screen}</p>
-              </li>
-              <li className="newmodels-card__tech--item newmodels-item">
-                <p className="newmodels-item__name">Capacity</p>
-                <p className="newmodels-item__param">{product.capacity}</p>
-              </li>
-              <li className="newmodels-card__tech--item newmodels-item">
-                <p className="newmodels-item__name">RAM</p>
-                <p className="newmodels-item__param">{product.ram}</p>
-              </li>
-            </ul>
-            <div className="newmodels-card__buttons">
-              <button type="button" className="newmodels-card__buttons--add">
-                Add to cart
-              </button>
-              <button
-                className="newmodels-card__buttons--heart"
-                onClick={addToFav}
-              >
-                <svg
-                  className={classNames('icon icon-heart', {
-                    'icon-heart-red': isPressed,
-                  })}
+            1200: {
+              slidesPerView: 4,
+              spaceBetween: 16,
+              loop: false,
+            },
+          }}
+          navigation={{
+            nextEl: '.swiper-btn__next',
+            prevEl: '.swiper-btn__prev',
+          }}
+          className="newmodels__list"
+        >
+          {suggestedProducts.map(product => (
+            <SwiperSlide
+              key={product.id}
+              className="newmodels__list--card newmodels-card"
+            >
+              <div className="newmodels-card__picture">
+                <img
+                  className="newmodels-card__picture--img"
+                  src={product.image}
+                  alt={product.name}
+                />
+              </div>
+              <h4 className="newmodels-card__title">{product.name}</h4>
+              <div className="newmodels-card__price">
+                <p className="newmodels-card__price--disc">{product.price}</p>
+                <p className="newmodels-card__price--regular">
+                  {product.fullPrice}
+                </p>
+              </div>
+              <ul className="newmodels-card__tech">
+                <li className="newmodels-card__tech--item newmodels-item">
+                  <p className="newmodels-item__name">Screen</p>
+                  <p className="newmodels-item__param">{product.screen}</p>
+                </li>
+                <li className="newmodels-card__tech--item newmodels-item">
+                  <p className="newmodels-item__name">Capacity</p>
+                  <p className="newmodels-item__param">{product.capacity}</p>
+                </li>
+                <li className="newmodels-card__tech--item newmodels-item">
+                  <p className="newmodels-item__name">RAM</p>
+                  <p className="newmodels-item__param">{product.ram}</p>
+                </li>
+              </ul>
+              <div className="newmodels-card__buttons">
+                <button type="button" className="newmodels-card__buttons--add">
+                  Add to cart
+                </button>
+                <button
+                  className="newmodels-card__buttons--heart"
+                  onClick={addToFav}
                 >
-                  <use href="img/icons.svg#icon-favourites-filled"></use>
-                </svg>
-              </button>
-            </div>
-          </SwiperSlide>
-        ))}
-      </Swiper>
+                  <svg
+                    className={classNames('icon icon-heart', {
+                      'icon-heart-red': isPressed,
+                    })}
+                  >
+                    <use href="img/icons.svg#icon-favourites-filled"></use>
+                  </svg>
+                </button>
+              </div>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

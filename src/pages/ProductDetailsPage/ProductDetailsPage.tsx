@@ -20,6 +20,29 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [isPressed, setIsPressed] = useState(false);
 
+  const COLOR_MAP: { [key: string]: string } = {
+    spacegray: '#4c4c4c',
+    yellow: '#ffe681',
+    red: '#a50011',
+    midnightgreen: '#4e5851',
+    gold: '#fcdbc1',
+    silver: '#f5f5f0',
+    black: '#000000',
+    rosegold: '#e6c7c2',
+    coral: '#ee7762',
+    white: '#ffffff',
+    purple: '#b8afe6',
+    midnight: '#171e27',
+    spaceblack: '#201d24',
+    blue: '#043458',
+    pink: '#fae0d8',
+    alphinegreen: '#505f4e',
+    green: '#e1f8dc',
+    graphite: '#5c5b57',
+    sierrablue: '#9bb5ce',
+    pacificblue: '#2e4755',
+  };
+
   useEffect(() => {
     async function fetchData() {
       const phones = await getPhones();
@@ -170,13 +193,17 @@ export const ProductDetailsPage: React.FC = () => {
                     })}
                     style={{
                       backgroundColor:
-                        selectedColor === color ? color : '#3B3E4A',
+                        selectedColor === color
+                          ? COLOR_MAP[color.toLowerCase()]
+                          : '#3B3E4A',
                     }}
                     onClick={() => setSelectedColor(color)}
                   >
                     <div
                       className="colors-cont__color--in"
-                      style={{ backgroundColor: color }}
+                      style={{
+                        backgroundColor: COLOR_MAP[color.toLowerCase()],
+                      }}
                     ></div>
                   </div>
                 ))}
