@@ -80,6 +80,7 @@ body:has(.content.isOpen) {
   justify-content: center;
   height: 64px;
   width: 50%;
+  position: relative;
 }
 
 .activeLink {
@@ -124,4 +125,19 @@ body:has(.content.isOpen) {
 
 .isActive {
   border-bottom: 2px solid #313237;
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  position: absolute;
+  top: 19px;
+  right: 66px;
+
+  height: 13px;
+  width: 13px;
+  background-color: #EB5757;
+  border-radius: 50%;
 }

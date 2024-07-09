@@ -105,6 +105,7 @@ export const PhonePage = () => {
           />
           <h4 className={styles.name}>Phones</h4>
         </section>
+
         <h1 className={styles.title}>Mobile phones</h1>
         <h4 className={styles.subtitle}>{`${phones.length} phones`}</h4>
         <section className={styles.selectContainer}>
@@ -153,6 +154,7 @@ export const PhonePage = () => {
             </select>
           </div>
         </section>
+
         <ul className={styles.list}>
           {sortingPhones.map(phone => (
             <li key={phone.id} className={styles.listItem}>

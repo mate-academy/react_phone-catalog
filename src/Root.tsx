@@ -31,7 +31,10 @@ export const Root = () => (
             path="accessories/:itemId?"
             element={<InfoCartPage category="accessories" />}
           />
-          <Route path="favorites" element={<FavoritesPage />} />
+          <Route
+            path="favorites"
+            element={<FavoritesPage category="favorites" />}
+          />
           <Route path="card" element={<CartPage />} />
 
           <Route path="*" element={<NotFoundPage />} />

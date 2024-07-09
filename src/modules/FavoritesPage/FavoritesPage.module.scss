@@ -1,0 +1,95 @@
+@import '../../main.scss';
+
+.container {
+  width: 100vw;
+  height: auto;
+  padding: 24px 16px 0 16px;
+
+  @include onTablet {
+    padding: 24px;
+  }
+
+  @include onDesktop {
+    padding: 24px 32px;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+
+.topFirst {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin-bottom: 8px;
+}
+
+.favoritsLength {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #89939A;
+  margin-bottom: 32px;
+}
+
+.list {
+  @include gridPage;
+  margin-bottom: 24px;
+}
+
+.listItem {
+  grid-column: span 4;
+
+  @include onTablet {
+    grid-column: span 6;
+  }
+
+  @include onBigTablet {
+    grid-column: span 4;
+  }
+
+  @include onDesktop {
+    grid-column: span 6;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  font-family: Mont, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin-bottom: 8px;
+}

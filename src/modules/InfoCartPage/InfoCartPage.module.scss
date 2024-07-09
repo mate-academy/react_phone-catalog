@@ -122,6 +122,7 @@
   cursor: pointer;
   padding: 2px;
   border: 1px solid #E2E6E9;
+  @include hover(transform, scale(1.05));
 
   @include onDesktop {
     height: 80px;
@@ -165,6 +166,7 @@
   height: 288px;
   overflow: hidden;
   object-fit: contain;
+  @include hover(transform, scale(1.05));
 
   img {
     width: 100%;
@@ -260,7 +262,6 @@
   color: #313237;
   height: 32px;
   padding: 7px 8px;
-  ;
   background-color: #fff;
 
   font-family: Mont, sans-serif;
@@ -268,6 +269,7 @@
   font-weight: 500;
   line-height: 21px;
   text-align: center;
+  cursor: pointer;
 }
 
 .capacityIsActive {

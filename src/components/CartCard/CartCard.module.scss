@@ -1,0 +1,99 @@
+@import '../../main.scss';
+
+.container {
+  display: flex;
+  min-width: 288px;
+  max-width: 752px;
+  height: 160px;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid #E2E6E9;
+  padding: 16px;
+
+  @include onTablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.firstBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+
+  @include onTablet {
+    gap: 24px;
+  }
+}
+
+.close {
+  width: 12px;
+  height: 12px;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 7px;
+}
+
+.img {
+  height: 66px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+}
+
+.secondBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include onTablet {
+    gap: 24px;
+  }
+}
+
+.buttonBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 14px;
+  align-items: center;
+}
+
+.minus {
+  border: 1px solid #E2E6E9;
+  background-color: white;
+  width: 32px;
+  height: 32px;
+}
+
+.quantity {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  color: #000000;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: #313237;
+}

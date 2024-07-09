@@ -168,11 +168,11 @@
 
 
   @include onTablet {
-    width: 125px;
+    min-width: 125px;
   }
 
   @include onDesktop {
-    width: 160px;
+    min-width: 160px;
   }
 }
 

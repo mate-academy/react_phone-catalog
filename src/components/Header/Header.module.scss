@@ -91,9 +91,30 @@
   justify-content: center;
   padding: 16px;
   border-left: 1px solid #E2E6E9;
+  position: relative;
 
   @include onDesktop {
     padding: 24px;
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+
+  height: 16px;
+  width: 16px;
+  background-color: #EB5757;
+  border-radius: 50%;
+
+  @include onDesktop {
+    left: 37px;
+    top: 22px;
   }
 }
 

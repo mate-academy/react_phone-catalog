@@ -6,7 +6,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Phone } from '../../types/Phone';
 import { NotFoundPage } from '../NotFoundPage';
 import classNames from 'classnames';
-import { StateContext } from '../../Store';
+import { DispatchContext, StateContext } from '../../Store';
 import { Carousel } from '../../components/Carousel';
 
 const getColorByName = (name: string): string => {
@@ -37,8 +37,9 @@ export const InfoCartPage = (params: { category: string }) => {
   const [product, setProduct] = useState<null | Phone>(null);
   const [currentIndexImg, setCurrentIndexImg] = useState(0);
   const state = useContext(StateContext);
-  const { products } = state;
+  const { products, favorites } = state;
   const navigate = useNavigate();
+  const dispatch = useContext(DispatchContext);
 
   useEffect(() => {
     if (category === 'phones' && itemId) {
@@ -85,6 +86,24 @@ export const InfoCartPage = (params: { category: string }) => {
 
         navigate(`/${category}/${pathname}`);
       }
+    }
+  };
+
+  const isFavorite = !!favorites.find(item => item === product.id);
+
+  const addToFavorites = () => {
+    if (!isFavorite) {
+      dispatch({
+        type: 'addToFavorites',
+        payload: { itemId: product.id },
+      });
+    }
+
+    if (isFavorite) {
+      dispatch({
+        type: 'removeFromFavorites',
+        payload: { itemId: product.id },
+      });
     }
   };
 
@@ -198,8 +217,12 @@ export const InfoCartPage = (params: { category: string }) => {
             </div>
             <div className={styles.buttons}>
               <button className={styles.buttonAdd}>Add to cart</button>
-              <button className={styles.buttonLike}>
-                <img src="img/homePage/heart.svg" alt="like" />
+              <button className={styles.buttonLike} onClick={addToFavorites}>
+                {favorites.includes(product.id) ? (
+                  <img src="img/redHeart.svg" alt="heart" />
+                ) : (
+                  <img src="img/homePage/heart.svg" alt="heart" />
+                )}
               </button>
             </div>
           </div>

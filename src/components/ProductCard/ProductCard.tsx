@@ -1,6 +1,8 @@
 import { Link } from 'react-router-dom';
 import styles from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
+import { useContext } from 'react';
+import { DispatchContext, StateContext } from '../../Store';
 
 type Props = {
   img: string;
@@ -23,6 +25,36 @@ export const ProductCard = ({
   secondPrice,
   product,
 }: Props) => {
+  const dispatch = useContext(DispatchContext);
+  const state = useContext(StateContext);
+  const { favorites } = state;
+
+  // console.log(bascket)
+  const isFavorite = !!favorites.find(item => item === product.itemId);
+
+  const addToFavorites = () => {
+    if (!isFavorite) {
+      dispatch({
+        type: 'addToFavorites',
+        payload: product,
+      });
+    }
+
+    if (isFavorite) {
+      dispatch({
+        type: 'removeFromFavorites',
+        payload: { itemId: product.itemId },
+      });
+    }
+  };
+
+  const addToBascket = () => {
+    dispatch({
+      type: 'addToBascket',
+      payload: product,
+    });
+  };
+
   return (
     <div className={styles.container}>
       <Link to={`/${product.category}/${product.itemId}`}>
@@ -32,8 +64,8 @@ export const ProductCard = ({
         <h3 className={styles.name}>{name}</h3>
       </Link>
       <div className={styles.allPrice}>
-        <h3 className={styles.price}>{`$${price}`}</h3>
-        <h3 className={styles.secondPrice}>{`$${secondPrice}`}</h3>
+        <h3 className={styles.price}>{`$${secondPrice}`}</h3>
+        <h3 className={styles.secondPrice}>{`$${price}`}</h3>
       </div>
       <div className={styles.border}></div>
       <section className={styles.info}>
@@ -52,14 +84,16 @@ export const ProductCard = ({
       </section>
 
       <div className={styles.buttonConteiner}>
-        {/* <Link to="/card"> */}
-        <button className={styles.add}>Add to cart</button>
-        {/* </Link> */}
-        {/* <Link to="favorites"> */}
-        <button className={styles.heart}>
-          <img src="img/homePage/heart.svg" alt="heart" />
+        <button className={styles.add} onClick={addToBascket}>
+          Add to cart
         </button>
-        {/* </Link> */}
+        <button className={styles.heart} onClick={addToFavorites}>
+          {favorites.includes(product.itemId) ? (
+            <img src="img/redHeart.svg" alt="heart" />
+          ) : (
+            <img src="img/homePage/heart.svg" alt="heart" />
+          )}
+        </button>
       </div>
     </div>
   );

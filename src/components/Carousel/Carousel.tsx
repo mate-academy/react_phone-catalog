@@ -14,23 +14,25 @@ export const Carousel = (params: { category: string }) => {
   const isTablet = screenWidth >= 640 && screenWidth < 1200;
   const isDesctop = screenWidth >= 1200;
 
-  const selectedProducts = [...products];
+  let selectedProducts = [...products];
 
   if (category === 'phones') {
-    selectedProducts.filter(item => item.category === 'phones');
+    selectedProducts = selectedProducts.filter(
+      item => item.category === 'phones',
+    );
   }
 
   if (category === 'tablets') {
-    selectedProducts.filter(item => item.category === 'tablets');
+    selectedProducts = selectedProducts.filter(
+      item => item.category === 'tablets',
+    );
   }
 
   if (category === 'accessories') {
-    selectedProducts.filter(item => item.category === 'accessories');
+    selectedProducts = selectedProducts.filter(
+      item => item.category === 'accessories',
+    );
   }
-
-  // const phones = products
-  //   .filter(product => product.category === 'phones')
-  //   .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
 
   const handleNextPhone = () => {
     setCurrentIndex(prevIndex =>

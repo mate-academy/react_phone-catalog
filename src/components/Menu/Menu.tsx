@@ -1,17 +1,18 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Menu.module.scss';
 import classNames from 'classnames';
-// import { useState } from 'react';
+import { useContext } from 'react';
+import { StateContext } from '../../Store';
 
 export const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.link, {
     [styles.activeLink]: isActive,
   });
 
-// const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-//   classNames([styles.bottomItem], {
-//     [styles.isActive]: isActive,
-//   });
+const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames([styles.bottomItem], {
+    [styles.isActive]: isActive,
+  });
 
 type Props = {
   isOpen: boolean;
@@ -19,18 +20,18 @@ type Props = {
 };
 
 export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
-  // const [isActiveButton, setIsActiveButton] = useState(false);
-
-  // const getBottomIconClass = () => {
-  //   return classNames([styles.bottomItem], {
-  //     [styles.isActive]: isActiveButton,
-  //   });
-  // };
+  const state = useContext(StateContext);
+  const { favorites, bascket } = state;
 
   const click = () => {
     setIsOpen(false);
-    // setIsActiveButton(true);
   };
+
+  let totalQuantity = 0;
+
+  for (const item of bascket) {
+    totalQuantity += item.quantity;
+  }
 
   return (
     <div
@@ -101,19 +102,21 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
       </div>
 
       <div className={styles.menuBottomContent}>
-        <div className={styles.bottomItem}>
-          <NavLink to="/favorites" className={styles.icon} onClick={click}>
-            <img src="/img/HeartLike_Header_default.svg" alt="favotites" />
-          </NavLink>
-        </div>
+        <NavLink to="/favorites" className={getLinkClass} onClick={click}>
+          <img src="/img/HeartLike_Header_default.svg" alt="favotites" />
+          {favorites.length !== 0 && (
+            <span className={styles.counter}>{favorites.length}</span>
+          )}
+        </NavLink>
 
         <div className={styles.borderRight}></div>
 
-        <div className={styles.bottomItem}>
-          <NavLink to="/card" className={styles.icon} onClick={click}>
-            <img src="/img/ShoppingBag_header.svg" alt="shop" />
-          </NavLink>
-        </div>
+        <NavLink to="/card" className={getLinkClass} onClick={click}>
+          <img src="/img/ShoppingBag_header.svg" alt="shop" />
+          {bascket.length !== 0 && (
+            <span className={styles.counter}>{totalQuantity}</span>
+          )}
+        </NavLink>
       </div>
     </div>
   );

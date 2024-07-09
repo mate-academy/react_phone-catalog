@@ -1,8 +1,9 @@
 import { Link, NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import classNames from 'classnames';
 import { Menu } from '../Menu';
+import { StateContext } from '../../Store';
 
 const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   classNames(styles.link, {
@@ -11,6 +12,14 @@ const classActiveNavLink = ({ isActive }: { isActive: boolean }) =>
 
 export const Header: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const state = useContext(StateContext);
+  const { favorites, bascket } = state;
+
+  let totalQuantity = 0;
+
+  for (const item of bascket) {
+    totalQuantity += item.quantity;
+  }
 
   return (
     <>
@@ -56,6 +65,9 @@ export const Header: React.FC = () => {
                 <img src="img/HeartLike_Header_default.svg" alt="Favorites" />
               </div>
             </Link>
+            {favorites.length !== 0 && (
+              <span className={styles.counter}>{favorites.length}</span>
+            )}
           </div>
           <div className={styles.iconMenu}>
             <Link to="/card">
@@ -63,6 +75,9 @@ export const Header: React.FC = () => {
                 <img src="img/ShoppingBag_header.svg" alt="Favorites" />
               </div>
             </Link>
+            {bascket.length !== 0 && (
+              <span className={styles.counter}>{totalQuantity}</span>
+            )}
           </div>
         </div>
         <div className={styles.menuBlock}>
