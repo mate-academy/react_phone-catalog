@@ -1,8 +1,7 @@
 .shopping-cart {
   --header-height: #{$header-height};
-  --footer-height: 257px;
-  --general-height:
-    calc(var(--header-height) + var(--footer-height));
+  --footer-height: 225px;
+  --general-height: calc(var(--header-height) + var(--footer-height));
 
   min-height: calc(100vh - var(--general-height));
   max-width: 1136px;
@@ -129,18 +128,20 @@
   }
 
   &__empty {
-    height: calc(100vh - var(--general-height) - 24px - 16px - 24px - 41px - 32px - 56px);
+    --height-content: calc(24px + 16px + 24px + 41px + 32px + 56px);
+
+    min-height: calc(100vh - var(--general-height) - var(--height-content));
 
     display: flex;
     align-items: center;
     justify-content: center;
 
     @include on-tablet {
-      height: calc(100vh - var(--general-height) - 40px - 16px - 16px - 56px - 32px - 64px);
+      --height-content: calc(40px + 16px + 16px + 56px + 32px + 64px);
     }
 
     @include on-desctop {
-      height: calc(100vh - var(--general-height) - 40px - 16px - 16px - 56px - 32px - 80px);
+      --height-content: calc(40px + 16px + 16px + 56px + 32px + 80px);
     }
   }
 

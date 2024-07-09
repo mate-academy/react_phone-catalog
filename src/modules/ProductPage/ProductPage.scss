@@ -197,46 +197,24 @@
     }
   }
 
-  &__loader {
+  &__min-height {
     display: flex;
     align-items: center;
 
     --header-height: #{$header-height};
     --footer-height: #{$footer-height};
-    --general-height: calc(24px + 16px + 24px + 16px + 16px + 56px);
+    --height-content: calc(24px + 16px + 24px + 16px + 16px + 56px);
 
     min-height:
-      calc(100vh - var(--header-height) - var(--footer-height) - var(--general-height));
+      calc(100vh - var(--header-height) - var(--footer-height) - var(--height-content));
 
     @include on-tablet {
-      --general-height: calc(24px + 16px + 40px + 16px + 16px + 64px);
+      --height-content: calc(24px + 16px + 40px + 16px + 16px + 64px);
       --footer-height: #{$footer-height-tablet};
     }
 
     @include on-desctop {
-      --general-height: calc(24px + 16px + 40px + 16px + 16px + 81px);
-      --header-height: #{#{$header-height-desctop}};
-    }
-  }
-
-  &__not-found-wrapper {
-    display: flex;
-    align-items: center;
-
-    --header-height: #{$header-height};
-    --footer-height: #{$footer-height};
-    --general-height: calc(24px + 16px + 24px + 16px + 16px + 56px);
-
-    min-height:
-      calc(100vh - var(--header-height) - var(--footer-height) - var(--general-height));
-
-    @include on-tablet {
-      --general-height: calc(24px + 16px + 40px + 16px + 16px + 64px);
-      --footer-height: #{$footer-height-tablet};
-    }
-
-    @include on-desctop {
-      --general-height: calc(24px + 16px + 40px + 16px + 16px + 81px);
+      --height-content: calc(24px + 16px + 40px + 16px + 16px + 81px);
       --header-height: #{#{$header-height-desctop}};
     }
   }

@@ -2,9 +2,8 @@
   padding-block: 24px 56px;
 
   --header-height: #{$header-height};
-  --footer-height: 257px;
-  --general-height:
-    calc(var(--header-height) + var(--footer-height));
+  --footer-height: 225px;
+  --general-height: calc(var(--header-height) + var(--footer-height));
 
   min-height: calc(100vh - var(--general-height));
 
@@ -68,5 +67,8 @@
 
   &__empty {
     margin-top: 40px;
+
+    display: flex;
+    align-items: center;
   }
 }

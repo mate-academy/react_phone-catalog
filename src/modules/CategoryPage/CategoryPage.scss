@@ -1,12 +1,24 @@
 .category-page {
-  @include padding-content-inline;
+  --header-height: #{$header-height};
+  --footer-height: #{$footer-height};
+  --general-height: calc(var(--header-height) + var(--footer-height));
+
+  min-height: calc(100vh - var(--general-height));
 
   padding-block: 24px 64px;
   max-width: 1136px;
 
+  @include padding-content-inline;
+
+  @include on-tablet {
+    --footer-height: #{$footer-height-tablet};
+  }
+
   @include on-desctop {
     width: 1136px;
     margin-inline: auto;
+
+    --header-height: #{$header-height-desctop};
   }
 
   &__route {
@@ -91,25 +103,18 @@
     justify-content: center;
   }
 
-  &__loader {
+  &__category-page__min-height {
     display: flex;
     align-items: center;
     justify-content: center;
 
-    --header-height: #{$header-height};
-    --footer-height: #{$footer-height};
-    --general-height: calc(24px + 16px + 24px + 41px + 32px + 64px);
+    --height-content: cacl(24px + 16px + 24px + 41px + 32px + 64px);
 
     min-height:
-      calc(100vh - var(--header-height) - var(--footer-height) - var(--general-height));
+      calc(100vh - var(--general-height) - var(--height-content));
 
     @include on-tablet {
-      --general-height: calc(24px + 16px + 40px + 56px + 40px + 64px);
-      --footer-height: #{$footer-height-tablet};
-    }
-
-    @include on-desctop {
-      --header-height: #{#{$header-height-desctop}};
+      --height-content: calc(24px + 16px + 40px + 56px + 40px + 64px);
     }
   }
 }

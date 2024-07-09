@@ -63,6 +63,7 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
   useEffect(() => {
     setDataLoaded(false);
     setError(false);
+    setProductsLength(0);
 
     client
       .get<Product[]>(PRODUCT_URL)
@@ -194,13 +195,13 @@ export const CategoryPage: React.FC<Props> = React.memo(({ title }) => {
         )}
 
         {!dataLoaded && !error && (
-          <div className="category-page__loader">
+          <div className="category-page__min-height">
             <Loader />
           </div>
         )}
 
         {dataLoaded && !error && products.length === 0 && (
-          <div className="category-page__loader secondary-title">
+          <div className="category-page__min-height secondary-title">
             There are no {category} matching the {query}
           </div>
         )}

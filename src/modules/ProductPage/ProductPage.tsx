@@ -34,14 +34,13 @@ export const ProductPage: React.FC = React.memo(() => {
   const category = pathname.split('/')[1];
   const nameDevice = pathname.split('/')[2].split('-').slice(0, -2).join('-');
 
-  const [device, setDevice] = useState<Device>();
+  const [device, setDevice] = useState<Device | null>(null);
   const [product, setProduct] = useState<Product>();
   const [suggestedProducts, setSuggestedProducts] = useState<Product[]>([]);
 
   const [shortSpecs, setShortSpecs] = useState<Specs>();
   const [fullSpecs, setFullSpecs] = useState<Specs>();
 
-  const [loadedDevice, setLoadedDevice] = useState(false);
   const [errorLoadedDevice, setErrorLoadedDevice] = useState(false);
   const [updatedDevice, setUpdatedDevice] = useState(false);
   const [loadedSuggestedProduct, setLoadedSuggestedProduct] = useState(false);
@@ -53,7 +52,7 @@ export const ProductPage: React.FC = React.memo(() => {
     setErrorLoadedDevice(false);
 
     if (!device || device.namespaceId !== nameDevice) {
-      setLoadedDevice(false);
+      setDevice(null);
     }
 
     client
@@ -63,6 +62,7 @@ export const ProductPage: React.FC = React.memo(() => {
 
         if (!getDevice) {
           setErrorLoadedDevice(true);
+          setDevice(null);
 
           return;
         }
@@ -93,7 +93,6 @@ export const ProductPage: React.FC = React.memo(() => {
         }
 
         setDevice(getDevice);
-        setLoadedDevice(true);
         setUpdatedDevice(true);
       })
       .catch(() => setErrorLoadedDevice(true));
@@ -126,10 +125,10 @@ export const ProductPage: React.FC = React.memo(() => {
 
   useEffect(() => {
     setScrollHeight(document.documentElement.scrollHeight);
-  }, [setScrollHeight, loadedDevice]);
+  }, [setScrollHeight, device, errorLoadedDevice]);
 
   const visibleSuggestedProducts =
-    loadedSuggestedProduct && !errorLoadedDevice && !errorSuggestedProduct;
+    loadedSuggestedProduct && device && !errorSuggestedProduct;
 
   return (
     <div className="product-page">
@@ -141,12 +140,10 @@ export const ProductPage: React.FC = React.memo(() => {
         <BackButton onMove={() => navigate(-1)} />
       </div>
 
-      {loadedDevice && !errorLoadedDevice && device && (
+      {device && !errorLoadedDevice && device && (
         <div
           className="product-page__container"
-          style={
-            loadedDevice ? { transition: 'none' } : { transition: 'all 0.3s' }
-          }
+          style={device ? { transition: 'none' } : { transition: 'all 0.3s' }}
         >
           <h1 className="product-page__title secondary-title">{device.name}</h1>
 
@@ -235,14 +232,17 @@ export const ProductPage: React.FC = React.memo(() => {
         </div>
       )}
 
-      {!loadedDevice && !errorLoadedDevice && (
-        <div className="product-page__loader">
+      {!device && !errorLoadedDevice && (
+        <div className="product-page__loader product-page__min-height">
           <Loader />
         </div>
       )}
 
       {errorLoadedDevice && (
-        <div className="product-page__not-found-wrapper">
+        <div
+          className="product-page__not-found-wrapper
+          product-page__min-height"
+        >
           <img
             src={`${BASE_URL}/img/product-not-found.png`}
             alt="Device not found"

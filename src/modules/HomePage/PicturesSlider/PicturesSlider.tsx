@@ -1,10 +1,4 @@
-import React, {
-  useCallback,
-  useContext,
-  useEffect,
-  useRef,
-  useState,
-} from 'react';
+import React, { useCallback, useContext, useEffect, useState } from 'react';
 import cn from 'classnames';
 import { Link } from 'react-router-dom';
 import { Picture } from '../../../types/Picture';
@@ -34,8 +28,6 @@ export const PicturesSlider: React.FC = React.memo(() => {
 
   const [touchStart, setTouchStart] = useState<{ x: number } | null>(null);
   const [touchEnd, setTouchEnd] = useState<{ x: number } | null>(null);
-
-  const imagesRef = useRef<HTMLDivElement>(null);
 
   const oneStepForTablet =
     ((windowSize -
@@ -185,7 +177,6 @@ export const PicturesSlider: React.FC = React.memo(() => {
             {images.map(img => (
               <div
                 className="pictures-slider__img-wrapper"
-                ref={imagesRef}
                 key={img.id}
                 style={{ width: `${getStepForDevices()}px` }}
               >
