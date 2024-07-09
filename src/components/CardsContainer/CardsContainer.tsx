@@ -10,7 +10,7 @@ export const CardsContainer: React.FC<Props> = ({ gadgets }) => {
   return (
     <ul className={style.cards__list} draggable={false}>
       {gadgets.map(product => (
-        <Card product={product} discount={false} />
+        <Card product={product} discount={false} key={product.itemId} />
       ))}
     </ul>
   );

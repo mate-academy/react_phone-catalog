@@ -25,10 +25,10 @@ export const Card: React.FC<Props> = ({
   const { t } = useContext(LanguageContext);
   const { setCartItems, cartItems } = useContext(ShoppingCartContext);
   const { favorites, setFavorites } = useContext(StateContext);
-
+  const { theme } = useContext(ThemeContext);
   const handleAddToCart = (good: Product) => {
-    setCartItems(cartItems => {
-      let newItems = [...cartItems];
+    setCartItems(currentItems => {
+      const newItems = [...currentItems];
 
       if (newItems.find(item => item.id === good.id)) {
         return newItems.filter(item => item.id !== good.id);
@@ -55,8 +55,6 @@ export const Card: React.FC<Props> = ({
     return !!findCart;
   };
 
-  const { theme } = useContext(ThemeContext);
-  console.log(theme);
   return (
     <li
       className={classNames(style.card__container, {

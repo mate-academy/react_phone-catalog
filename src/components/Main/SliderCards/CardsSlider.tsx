@@ -201,7 +201,12 @@ export const CardsSlider: React.FC<Props> = ({
         >
           <ul className={style.cardsSlider__cardsList} draggable={false}>
             {products.map(product => (
-              <Card product={product} discount={discount} widthRef={widthRef} />
+              <Card
+                product={product}
+                discount={discount}
+                widthRef={widthRef}
+                key={product.itemId}
+              />
             ))}
           </ul>
         </div>
