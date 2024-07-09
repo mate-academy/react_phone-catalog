@@ -4,36 +4,25 @@ import { LanguageContext } from '../../store/LanguageProvider';
 import { IconFavorites } from '../Icons/IconFavorites';
 import classNames from 'classnames';
 import { ThemeContext } from '../../store/ThemeProvider';
-import { Products } from '../../types/ContextType/Products';
+import { Product } from '../../types/ContextType/Product';
 import { Link } from 'react-router-dom';
 import { StateContext } from '../../store/StateProvider';
 import { availableFav } from '../../utils/availableFav';
 import Heart from '../../image/Favorites/heart.svg';
+import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
 
 type Props = {
-  gadgets: Products[];
+  gadgets: Product[];
 };
 
 export const Cards: React.FC<Props> = ({ gadgets }) => {
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
-  const { setFavorites, favorites, setToCart, cart } = useContext(StateContext);
+  const { setFavorites, favorites } = useContext(StateContext);
+  const { cartItems } = useContext(ShoppingCartContext);
 
-  const handleAddToCart = (goods: Products) => {
-    setToCart(prevItems => {
-      const newItems = [...prevItems];
-      const availableCart = newItems.some(item => item.itemId === goods.itemId);
-
-      if (availableCart) {
-        return newItems.filter(item => item.itemId !== goods.itemId);
-      } else {
-        return [...newItems, goods];
-      }
-    });
-  };
-
-  const handleCheckCarts = (currentProduct: Products) => {
-    const findCart = cart.find(item => item.itemId === currentProduct.itemId);
+  const handleCheckCarts = (currentProduct: Product) => {
+    const findCart = cartItems.find(item => item.id === currentProduct.id);
 
     return !!findCart;
   };
@@ -95,7 +84,7 @@ export const Cards: React.FC<Props> = ({ gadgets }) => {
                   className={classNames(style.cards__addToCart, {
                     [style.cards__addedToCart]: handleCheckCarts(product),
                   })}
-                  onClick={() => handleAddToCart(product)}
+                  // onClick={() => handleAddToCart(product)}
                 >
                   {handleCheckCarts(product)
                     ? t('addedToCart')

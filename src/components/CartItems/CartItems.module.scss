@@ -36,7 +36,6 @@
     justify-content: center;
     align-items: center;
     border: 1px solid $border-color;
-    list-style: none;
     height: 128px;
   }
 
@@ -88,15 +87,47 @@
     display: flex;
   }
 
-  &__button {
+  &__quantityButton {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 32px;
     height: 32px;
     background-color: $background-color;
-    border: 1px solid $border-color;
+    border: 1px solid $buttonBorderColorDefault;
     cursor: pointer;
+  }
+
+  .cart__darkTheme.cart__quantityButton {
+    background-color: $selectDefault;
+  }
+
+  .cart__quantityButton:hover {
+    border-color: $border-hover-button;
+  }
+
+  .cart__darkTheme.cart__quantityButton:hover {
+    background-color: $selectHover;
+  }
+
+  .cart__remainOneItemClass.cart__darkTheme {
+    background-color: $background-color;
+    border: 1px solid $borderColorDesableDecrement;
+  }
+
+  .cart__darkTheme.cart__remainOneItemClass:hover {
+    background-color: $background-color;
+    border-color: #3b3e4a;
+  }
+
+  &__remainOneItemClass {
+    background-color: $background-color;
+    border-color: $border-color;
+    cursor: auto;
+  }
+
+  .cart__remainOneItemClass.cart__quantityButton:hover {
+    border-color: $border-color;
   }
 
   &__count {
@@ -170,6 +201,11 @@
   &__rightContainer {
     display: flex;
     gap: 24px;
+  }
+
+  &__disableDecrement {
+    cursor: auto;
+    border-color: $borderColorDesableDecrement;
   }
 }
 

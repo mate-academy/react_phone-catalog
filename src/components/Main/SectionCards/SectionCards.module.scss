@@ -54,10 +54,8 @@
 
   &__cardsList {
     display: flex;
-    list-style: none;
     column-gap: 16px;
     grid-column: 1 / 7;
-    // touch-action: none;
     user-select: none;
   }
 

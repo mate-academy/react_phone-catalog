@@ -3,7 +3,7 @@ import darkLogo from '../../image/DarkTheme/close.svg';
 import lightLogo from '../..//image/Light-Theme/close.svg';
 import { ThemeContext } from '../../store/ThemeProvider';
 
-export const LogoClose = ({ ...props }) => {
+export const IconClose = ({ ...props }) => {
   const { theme } = useContext(ThemeContext);
 
   const logo = theme ? darkLogo : lightLogo;

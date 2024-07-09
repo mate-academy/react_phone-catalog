@@ -1,10 +1,10 @@
 import { SortBy } from '../enums/SortBy';
-import { Products } from '../types/ContextType/Products';
+import { Product } from '../types/ContextType/Product';
 
 export const sortedBy = (
   sortByItem: string,
-  device: Products[],
-): Products[] => {
+  device: Product[],
+): Product[] => {
   const copyOfProducts = [...device];
 
   if (sortByItem) {

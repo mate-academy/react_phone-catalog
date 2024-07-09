@@ -6,7 +6,8 @@
   font-size: 12px;
   font-weight: 800;
   text-decoration: none;
-  scrollbar-width: thin; /* "thin" or "auto" depending on your preference */
+  scrollbar-width: thin;
+  list-style: none;
 }
 
 .light {
@@ -52,9 +53,11 @@
   --borderActiveColor: #c4c4c4;
   --paragraphTextColor: #89939a;
   --actionButtonActiveBorder: #313237;
-  --favoritesCircleBackColor: #EB5757;
+  --favoritesCircleBackColor: #eb5757;
   // touch-action: none;
-  --addedToCartTextColor: #27AE60;
+  --addedToCartTextColor: #27ae60;
+  --buttonBorderColorDefault: #b4bdc3;
+  --borderColorDesableDecrement: #E2E6E9;
 }
 
 .dark {
@@ -99,8 +102,9 @@
   --textColorActiveState: #0f1121;
   --borderActiveColor: #c4c4c4;
   --actionButtonActiveBorder: #f1f2f9;
-  --favoritesCircleBackColor: #EB5757;
-  --addedToCartTextColor: #F1F2F9;
+  --favoritesCircleBackColor: #eb5757;
+  --addedToCartTextColor: #f1f2f9;
+  --borderColorDesableDecrement: #3B3E4A;
   color: $text-color;
   background-color: $background-color;
 }

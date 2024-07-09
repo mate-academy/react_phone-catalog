@@ -1,7 +1,7 @@
 import { Pathname } from '../enums/Pathname';
-import { Products } from '../types/ContextType/Products';
+import { Product } from '../types/ContextType/Product';
 
-export const filterGadgets = (loc: string, prod: Products[]) => {
+export const filterGadgets = (loc: string, prod: Product[]) => {
   switch (loc) {
     case Pathname.phones:
       const phones = [...prod].filter(phone => phone.category === 'phones');

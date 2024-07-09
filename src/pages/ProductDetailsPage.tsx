@@ -16,6 +16,7 @@ import { ProductsContext } from '../store/ProductsProvider';
 import { changeIdsParams } from '../utils/changeIdsParams';
 import { LanguageContext } from '../store/LanguageProvider';
 import { BackButton } from '../components/BackButton/BackButton';
+import { Loader } from '../components/Loader';
 
 type Props = {
   type: Category;
@@ -49,7 +50,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   }, [type, productId]);
 
   if (!categoryProduct) {
-    return <div>Loading...</div>;
+    return <Loader />;
   }
 
   const {

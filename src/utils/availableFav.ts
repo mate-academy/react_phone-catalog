@@ -1,5 +1,5 @@
-import { Products } from '../types/ContextType/Products';
+import { Product } from '../types/ContextType/Product';
 
-export const availableFav = (product: Products, favorites: Products[]) => {
+export const availableFav = (product: Product, favorites: Product[]) => {
   return !!favorites.find(item => item.itemId === product.itemId);
 };

@@ -8,19 +8,22 @@ import { StateProvider } from './store/StateProvider';
 import { ProductsProvider } from './store/ProductsProvider';
 import { HashRouter as Router } from 'react-router-dom';
 import { Root } from './Root';
+import { ShoppingCartProvider } from './store/ShoppingCartProvider';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Router>
-    <ProductsProvider>
-      <StateProvider>
-        <BreakPointsProvider>
-          <ThemeProvider>
-            <LanguageProvider>
-              <Root />
-            </LanguageProvider>
-          </ThemeProvider>
-        </BreakPointsProvider>
-      </StateProvider>
-    </ProductsProvider>
+    <ShoppingCartProvider>
+      <ProductsProvider>
+        <StateProvider>
+          <BreakPointsProvider>
+            <ThemeProvider>
+              <LanguageProvider>
+                <Root />
+              </LanguageProvider>
+            </ThemeProvider>
+          </BreakPointsProvider>
+        </StateProvider>
+      </ProductsProvider>
+    </ShoppingCartProvider>
   </Router>,
 );

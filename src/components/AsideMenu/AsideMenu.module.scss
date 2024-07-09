@@ -22,7 +22,7 @@
   scroll-behavior: smooth;
   opacity: 0;
 
-  &__top {
+  &__header {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -32,7 +32,7 @@
     border-bottom: 1px solid $border-color;
   }
 
-  &__topLogo {
+  &__headerLogo {
     display: flex;
     height: 22px;
     width: 64px;
@@ -51,17 +51,16 @@
     border: none;
     border-left: 1px solid $border-color;
     border-bottom: 1px solid $border-color;
-    padding: 0;
     cursor: pointer;
   }
 
-  &__icons {
+  &__actionIcon {
     position: relative;
     width: 16px;
     height: 16px;
   }
 
-  &__content {
+  &__listContainer {
     margin: 24px 16px 0;
   }
 
@@ -70,7 +69,6 @@
     margin-bottom: 16px;
     line-height: 16px;
     @extend %transitionPage;
-    @include onScale;
   }
 
   &__listLink {
@@ -81,14 +79,13 @@
     height: 100%;
   }
 
-  &__contentList {
+  &__list {
     display: flex;
     align-items: center;
     flex-direction: column;
     align-items: center;
     padding: 0;
     margin: 0;
-    list-style: none;
   }
 
   &__bottom {
@@ -103,7 +100,7 @@
     border-top: 1px solid $border-color;
   }
 
-  &__wrap {
+  &__actionButton {
     position: relative;
     display: flex;
     align-items: center;
@@ -114,28 +111,38 @@
     font-size: 12px;
   }
 
-  &__wrapper {
-    position: relative;
-  }
-
-  &__activeButton::after {
+  &__actionButton::after {
     content: '';
     position: absolute;
-    content: '';
     bottom: 1px;
     left: 0;
     right: 0;
     border-bottom: 3px solid $actionButtonActiveBorder;
+    opacity: 0;
+    transition:
+      opacity 600ms,
+      transform 600ms;
+    transform: scale(0);
   }
 
-  &__active {
+  .menu__actionButton:hover::after,
+  .menu__activeAction.menu__actionButton::after {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  &__activeMenu {
     z-index: 1;
     opacity: 1;
     pointer-events: all;
     transform: translateY(0);
   }
 
-  &__itemsFavCircle {
+  &__iconWrapper {
+    position: relative;
+  }
+
+  &__quantityCircle {
     position: absolute;
     display: flex;
     justify-content: center;
@@ -154,7 +161,7 @@
   }
 }
 
-.menu__activeLink::after {
+.menu__listLink::after {
   position: absolute;
   background-color: $text-color;
   height: 2px;
@@ -162,7 +169,21 @@
   width: 100%;
   content: '';
   left: 0;
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 600ms,
+    transform 600ms;
+}
 
+.menu__activeLink::after {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu__listLink:hover::after {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .menu:has(.menu__active) {

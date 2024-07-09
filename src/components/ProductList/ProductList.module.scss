@@ -7,6 +7,11 @@
   margin: 0 auto;
   margin-bottom: 80px;
 
+  &__activeAsideMenu {
+    // overflow: hidden;
+    display: none;
+  }
+
   &__container {
     padding-inline: 32px;
     width: 100%;

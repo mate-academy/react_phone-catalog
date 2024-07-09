@@ -7,7 +7,7 @@ import { IconLeft } from '../../Icons/IconLeft';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import classNames from 'classnames';
 import { IconFavorites } from '../../Icons/IconFavorites';
-import { Products } from '../../../types/ContextType/Products';
+import { Product } from '../../../types/ContextType/Product';
 import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
 import { getTouchEventData } from '../../../utils/hooks/dom';
@@ -15,10 +15,11 @@ import { Link } from 'react-router-dom';
 import { StateContext } from '../../../store/StateProvider';
 import Heart from '../../../image/Favorites/heart.svg';
 import { availableFav } from '../../../utils/availableFav';
+import { ShoppingCartContext } from '../../../store/ShoppingCartProvider';
 const MIN_SWIPE_REQUIRED = 20;
 
 type Props = {
-  products: Products[];
+  products: Product[];
   title: string;
   discount?: boolean;
 };
@@ -29,7 +30,8 @@ export const SectionCards: React.FC<Props> = ({
   discount = true,
 }) => {
   const { t } = useContext(LanguageContext);
-  const { favorites, setFavorites, setToCart, cart } = useContext(StateContext);
+  const { favorites, setFavorites } = useContext(StateContext);
+  const { setCartItems, cartItems } = useContext(ShoppingCartContext);
   const { theme } = useContext(ThemeContext);
   const lengthImgList = products.length - 1;
 
@@ -176,21 +178,31 @@ export const SectionCards: React.FC<Props> = ({
     }
   }
 
-  const handleAddToCart = (goods: Products) => {
-    setToCart(prevItems => {
-      const newItems = [...prevItems];
-      const availableCart = newItems.some(item => item.itemId === goods.itemId);
+  const handleAddToCart = (good: Product) => {
+    setCartItems(cartItems => {
+      let newItems = [...cartItems];
 
-      if (availableCart) {
-        return newItems.filter(item => item.itemId !== goods.itemId);
+      if (newItems.find(item => item.id === good.id)) {
+        return newItems;
       } else {
-        return [...newItems, goods];
+        return [
+          ...newItems,
+          {
+            id: good.id,
+            quantity: 1,
+            name: good.name,
+            image: good.image,
+            price: good.fullPrice,
+            category: good.category,
+            itemId: good.itemId,
+          },
+        ];
       }
     });
   };
 
-  const handleCheckCarts = (currentProduct: Products) => {
-    const findCart = cart.find(item => item.itemId === currentProduct.itemId);
+  const handleCheckCarts = (currentProduct: Product) => {
+    const findCart = cartItems.find(item => item.id === currentProduct.id);
 
     return !!findCart;
   };
@@ -291,7 +303,8 @@ export const SectionCards: React.FC<Props> = ({
                 <div className={style.sectionCards__cardActions}>
                   <button
                     className={classNames(style.sectionCards__addToCart, {
-                      [style.sectionCards__addedToCart]: handleCheckCarts(product),
+                      [style.sectionCards__addedToCart]:
+                        handleCheckCarts(product),
                     })}
                     onClick={() => handleAddToCart(product)}
                   >

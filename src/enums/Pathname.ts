@@ -4,4 +4,5 @@ export enum Pathname {
   accessories = '/accessories',
   favorites = '/favorites',
   cart = '/cart',
+  home = '/home',
 }

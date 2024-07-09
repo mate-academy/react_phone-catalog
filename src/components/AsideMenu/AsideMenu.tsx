@@ -1,46 +1,47 @@
 import { Logo } from '../Icons/Logo';
-import style from './AsideMenu.module.scss';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { useContext } from 'react';
 import { LangButton } from '../Header/LangButton';
-import ThemeButton from '../Header/ThemeButton/ThemeButton';
 import { IconFavorites } from '../Icons/IconFavorites';
 import { LogoCart } from '../Icons/IconCart';
-import { LogoClose } from '../Icons/IconClose';
-import data from '../../utils/NavList.json';
+import { IconClose } from '../Icons/IconClose';
 import { Link, NavLink, useLocation } from 'react-router-dom';
-import classNames from 'classnames';
 import { StateContext } from '../../store/StateProvider';
 import { Pathname } from '../../enums/Pathname';
+import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
+import ThemeButton from '../Header/ThemeButton/ThemeButton';
+import style from './AsideMenu.module.scss';
+import data from '../../utils/NavList.json';
+import classNames from 'classnames';
 
 export const AsideMenu = () => {
   const { t } = useContext(LanguageContext);
+  const { activeMenu, setActiveMenu, favorites } = useContext(StateContext);
+  const { cartItems } = useContext(ShoppingCartContext);
   const { pathname } = useLocation();
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
 
-  const { activeMenu, setActiveMenu, favorites } = useContext(StateContext);
-
   return (
     <aside
       className={classNames(style.menu, {
-        [style.menu__active]: activeMenu,
+        [style.menu__activeMenu]: activeMenu,
       })}
     >
-      <div className={style.menu__top}>
-        <Link to="/home" onClick={() => setActiveMenu(false)}>
-          <Logo className={style.menu__topLogo} />
+      <div className={style.menu__header}>
+        <Link to={Pathname.home} onClick={() => setActiveMenu(false)}>
+          <Logo className={style.menu__headerLogo} />
         </Link>
         <button
           className={style.menu__closeButton}
           onClick={() => setActiveMenu(false)}
         >
-          <LogoClose className={style.menu__icons} />
+          <IconClose className={style.menu__actionIcon} />
         </button>
       </div>
 
-      <div className={style.menu__content}>
-        <ul className={style.menu__contentList}>
+      <div className={style.menu__listContainer}>
+        <ul className={style.menu__list}>
           {data.map(item => (
             <li className={style.menu__listItem} key={item}>
               <NavLink
@@ -59,38 +60,45 @@ export const AsideMenu = () => {
         </ul>
       </div>
       <div className={style.menu__bottom}>
-        <div className={style.menu__wrap}>
+        <div className={style.menu__actionButton}>
           <ThemeButton />
         </div>
-        <div className={style.menu__wrap}>
+        <div className={style.menu__actionButton}>
           <LangButton />
         </div>
 
-        <Link
-          to="/favorites"
-          className={classNames(style.menu__wrap, {
-            [style.menu__activeButton]: pathname === Pathname.favorites,
+        <NavLink
+          to={Pathname.favorites}
+          className={classNames(style.menu__actionButton, {
+            [style.menu__activeAction]: pathname === Pathname.favorites,
           })}
           onClick={() => setActiveMenu(!activeMenu)}
         >
-          <div className={classNames(style.menu__wrapper)}>
+          <div className={style.menu__iconWrapper}>
             {favorites.length > 0 && (
-              <span className={style.menu__itemsFavCircle}>
+              <span className={style.menu__quantityCircle}>
                 {favorites.length}
               </span>
             )}
-            <IconFavorites className={style.menu__icons} />
+            <IconFavorites className={style.menu__actionIcon} />
           </div>
-        </Link>
+        </NavLink>
 
         <Link
-          to="/cart"
+          to={Pathname.cart}
           onClick={() => setActiveMenu(!activeMenu)}
-          className={classNames(style.menu__wrap, {
-            [style.menu__activeButton]: pathname === Pathname.cart,
+          className={classNames(style.menu__actionButton, {
+            [style.menu__activeAction]: pathname === Pathname.cart,
           })}
         >
-          <LogoCart className={style.menu__icons} />
+          <div className={style.menu__iconWrapper}>
+            {cartItems.length > 0 && (
+              <span className={style.menu__quantityCircle}>
+                {cartItems.length}
+              </span>
+            )}
+            <LogoCart className={style.menu__actionIcon} />
+          </div>
         </Link>
       </div>
     </aside>

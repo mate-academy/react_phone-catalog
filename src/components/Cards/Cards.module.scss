@@ -9,7 +9,6 @@
     justify-content: center;
     row-gap: 40px;
     column-gap: 16px;
-    list-style: none;
     user-select: none;
   }
 
@@ -162,11 +161,5 @@
 
   &__darkTheme &__сardFavBtn:hover {
     @extend %darkThemeHoverButton;
-  }
-}
-
-@include onPhone {
-  .card {
-    // margin-bottom: 24px;
   }
 }

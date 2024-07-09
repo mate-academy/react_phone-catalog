@@ -3,16 +3,19 @@ import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 import { Cards } from '../Cards';
 import style from './ProductList.module.scss';
 import { StateContext } from '../../store/StateProvider';
+import classNames from 'classnames';
 
 type Props = {
   title: string;
 };
 
 export const ProductList: React.FC<Props> = ({ title }) => {
-  const { favorites } = useContext(StateContext);
+  const { favorites, activeMenu } = useContext(StateContext);
 
   return (
-    <div className={style.favorites}>
+    <div
+      className={classNames(style.favorites, { [style.favorites__activeAsideMenu]: activeMenu })}
+    >
       <div className={style.favorites__container}>
         <BreadCrumbs />
         <h1 className={style.favorites__title}>{title}</h1>

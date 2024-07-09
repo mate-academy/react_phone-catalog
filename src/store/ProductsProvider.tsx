@@ -1,19 +1,19 @@
 import React, { createContext, useEffect, useState } from 'react';
 import { getProducts } from '../utils/fetchMethods';
-import { Products } from '../types/ContextType/Products';
+import { Product } from '../types/ContextType/Product';
 import { useLocation, useSearchParams } from 'react-router-dom';
 import { filterGadgets } from '../utils/filterGadgets';
 import { sortedBy } from '../utils/sortGadgets';
 import { SortBy } from '../enums/SortBy';
 
 type ContextType = {
-  products: Products[];
-  setProducts: (v: Products[]) => void;
+  products: Product[];
+  setProducts: (v: Product[]) => void;
   gadgets: {
     gadgetsLen: number;
-    gadgets: Products[];
+    gadgets: Product[];
   };
-  resultFilteredDev: Products[];
+  resultFilteredDev: Product[];
 };
 
 export const ProductsContext = createContext<ContextType>({
@@ -31,7 +31,7 @@ type Props = {
 };
 
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
-  const [products, setProducts] = useState<Products[]>([]);
+  const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
   const { pathname } = useLocation();
 
@@ -49,7 +49,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   }, [perPage]);
 
   const filteredList = (
-    devices: Products[],
+    devices: Product[],
     currentPage: number,
     devicesPerPage = '4',
   ) => {

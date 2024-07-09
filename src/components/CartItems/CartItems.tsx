@@ -1,111 +1,109 @@
-import { useContext, useEffect, useState } from 'react';
+import { useContext } from 'react';
 import { BackButton } from '../BackButton/BackButton';
 import style from './CartItems.module.scss';
-import close from '../../image/Cart-icon/close.svg';
-import Minus from '../../image/Cart-icon/minus.svg';
-import Plus from '../../image/Cart-icon/plus.svg';
-import { StateContext } from '../../store/StateProvider';
+import classNames from 'classnames';
+import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
+import { Link } from 'react-router-dom';
+import { ThemeContext } from '../../store/ThemeProvider';
+import { IconClose } from '../Icons/IconClose';
+import { IconPlus } from '../Icons/IconPlus';
+import { IconMinus } from '../Icons/IconMinus';
+import { IconNotActiveMinus } from '../Icons/IconMinusNotActive';
 
 export const CartItems = () => {
-  const { cart, setToCart } = useContext(StateContext);
-  const [count, setCount] = useState<number[]>(() => {
-    const data = localStorage.getItem('count');
+  const {
+    cartItems,
+    removeFromCart,
+    increaseCartQuantity,
+    decreaseCartQuantity,
+    getItemsQuantity,
+  } = useContext(ShoppingCartContext);
 
-    if (data === null) {
-      return cart.map(() => 1);
-    }
+  const { theme } = useContext(ThemeContext);
 
-    try {
-      return JSON.parse(data);
-    } catch (e) {
-      localStorage.removeItem('count');
+  const getTotalPrice = cartItems.reduce(
+    (acc, val) => acc + val.quantity * (val.price || 0),
+    0,
+  );
 
-      return cart.map(() => 1);
-    }
-  });
-
-  useEffect(() => {
-    localStorage.setItem('count', JSON.stringify(count));
-  }, [count]);
-
-  const handleIncrement = (index: number) => {
-    setCount(prevCounts =>
-      prevCounts.map((prevCount, i) =>
-        index === i ? prevCount + 1 : prevCount,
-      ),
-    );
-  };
-
-  const handleDecrement = (i: number) => {
-    setCount(prevCounts =>
-      prevCounts.map((prevCount, index) =>
-        index === i && prevCount > 1 ? prevCount - 1 : prevCount,
-      ),
-    );
-  };
-
-  const handleDelete = (i: number) => {
-    const newCart = cart.filter((_, index) => index !== i);
-
-    setToCart(newCart);
-  };
+  const getTotalQuantity = cartItems.reduce(
+    (acc, val) => acc + val.quantity,
+    0,
+  );
 
   return (
-    <div className={style.cart}>
+    <div className={classNames(style.cart)}>
       <div className={style.cart__wrapper}>
         <BackButton className={style.cart__cartBack} />
 
-        <h1 className={style.cart__title}>Cart</h1>
+        <h1 className={style.cart__title}>
+          {getTotalQuantity > 0 ? 'Cart' : 'Your cart is empty'}
+        </h1>
 
         <div className={style.cart__gridContainer}>
           <ul className={style.cart__list}>
-            {cart.map((item, i) => (
-              <li className={style.cart__item} key={item.itemId}>
+            {cartItems.map(item => (
+              <li className={style.cart__item} key={item.id}>
                 <div className={style.cart__itemWrapper}>
                   <div className={style.cart__leftContainer}>
                     <button
                       className={style.cart__closeButton}
-                      onClick={() => handleDelete(i)}
+                      onClick={() => removeFromCart(item.id)}
                     >
-                      <img src={close} alt="Close icon" />
+                      <IconClose />
                     </button>
-                    <img
-                      src={item.image}
-                      alt="Gadget Photo"
-                      className={style.cart__gadgetPhoto}
-                    />
+                    <Link to={`../${item.category}/${item.itemId}`}>
+                      <img
+                        src={item.image}
+                        alt="Gadget Photo"
+                        className={style.cart__gadgetPhoto}
+                      />
+                    </Link>
                     <p className={style.cart__gadgetName}>{item.name}</p>
                   </div>
 
                   <div className={style.cart__rightContainer}>
                     <div className={style.cart__quantityButtons}>
                       <button
-                        className={style.cart__button}
-                        onClick={() => handleDecrement(i)}
+                        className={classNames(style.cart__quantityButton, {
+                          [style.cart__darkTheme]: theme,
+                          [style.cart__remainOneItemClass]:
+                            getItemsQuantity(item.id) === 1,
+                        })}
+                        disabled={getItemsQuantity(item.id) === 1}
+                        onClick={() => decreaseCartQuantity(item.id)}
                       >
-                        <img src={Minus} alt="Minus" />
+                        {getItemsQuantity(item.id) === 1 ? (
+                          <IconNotActiveMinus />
+                        ) : (
+                          <IconMinus />
+                        )}
                       </button>
-                      <span className={style.cart__count}>{count[i]}</span>
+                      <span className={style.cart__count}>
+                        {getItemsQuantity(item.id)}
+                      </span>
                       <button
-                        className={style.cart__button}
-                        onClick={() => handleIncrement(i)}
+                        className={classNames(style.cart__quantityButton, {
+                          [style.cart__darkTheme]: theme,
+                        })}
+                        onClick={() => increaseCartQuantity(item.id)}
                       >
-                        <img src={Plus} alt="Plus" />
+                        <IconPlus />
                       </button>
                     </div>
-                    <p className={style.cart__gadgetPrice}>${item.fullPrice}</p>
+                    <p className={style.cart__gadgetPrice}>${item.price}</p>
                   </div>
                 </div>
               </li>
             ))}
           </ul>
-          {cart.length > 0 && (
+          {cartItems.length > 0 && (
             <div className={style.cart__priceContainer}>
               <div className={style.cart__priceWrap}>
                 <div className={style.cart__totalWrap}>
-                  <span className={style.cart__price}>$0</span>
+                  <span className={style.cart__price}>${getTotalPrice}</span>
                   <span className={style.cart__totalItems}>
-                    Total for 3 items
+                    Total for {getTotalQuantity} items
                   </span>
                 </div>
 

@@ -33,7 +33,6 @@
   &__link {
     display: flex;
     &:hover {
-      @include onScale;
       @extend %transitionPage;
     }
   }
@@ -66,7 +65,7 @@
     background-position: center;
   }
 
-  &__itemsFavCircle {
+  &__quantityItemsCircle {
     position: absolute;
     display: flex;
     justify-content: center;
