@@ -1,6 +1,5 @@
 import styles from './ActionButtons.module.scss';
-import favoritesIcon from './img/fav.module.svg';
-/* const favoritesIcon = './img/fav.jpg'; */
+import favoritesIcon from '../../img/icons/fav.svg';
 
 const isProductInCart = true; // DELETE LATER
 
