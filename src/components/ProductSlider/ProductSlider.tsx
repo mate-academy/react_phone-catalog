@@ -1,5 +1,5 @@
 import styles from './ProductSlider.module.scss';
-import ChevronIcon from './img/ChevronIcon.svg';
+import ChevronIcon from '../../img/icons/ChevronIcon.svg';
 
 export const ProductSlider: React.FC = () => {
   return (
