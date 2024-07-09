@@ -1,0 +1,13 @@
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/mixins';
+
+.cards {
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    justify-content: center;
+    row-gap: 40px;
+    column-gap: 16px;
+    user-select: none;
+  }
+}

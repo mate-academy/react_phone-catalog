@@ -1,5 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-for */
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import { useContext } from 'react';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import style from './ThemeToggle.module.scss';

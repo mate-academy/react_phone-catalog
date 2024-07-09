@@ -28,6 +28,8 @@
     margin-left: 24px;
     height: 28px;
     width: 80px;
+    @extend %transitionPage;
+    @include onScale;
   }
 
   &__link {
@@ -52,19 +54,6 @@
     height: 16px;
   }
 
-  &__actionsLink {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-sizing: border-box;
-    height: 64px;
-    width: 64px;
-    border-left: 1px solid $border-color;
-    background-repeat: no-repeat;
-    background-position: center;
-  }
-
   &__quantityItemsCircle {
     position: absolute;
     display: flex;
@@ -82,14 +71,31 @@
     background-color: $favoritesCircleBackColor;
   }
 
-  &__activeButton::after {
-    position: absolute;
-    content: '';
-    bottom: 1px;
-    left: 1px;
-    right: 1px;
+  &__actionsLink {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    height: 64px;
+    width: 64px;
+    border-left: 1px solid $border-color;
+    background-repeat: no-repeat;
+    background-position: center;
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 1px;
+      left: 1px;
+      right: 1px;
 
-    border-bottom: 3px solid $actionButtonActiveBorder;
+      border-bottom: 3px solid $actionButtonActiveBorder;
+      @include initialAnimation();
+    }
+  }
+
+  .header__activeButton.header__actionsLink::after {
+    @include activeAnimation();
   }
 
   &__burgerMenu {

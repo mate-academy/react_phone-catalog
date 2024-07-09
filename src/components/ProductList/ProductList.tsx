@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
-import { Cards } from '../Cards';
+import { CardsContainer } from '../CardsContainer';
 import style from './ProductList.module.scss';
 import { StateContext } from '../../store/StateProvider';
 import classNames from 'classnames';
@@ -30,7 +30,7 @@ export const ProductList: React.FC<Props> = ({ title }) => {
             : ''}
         </p>
 
-        <Cards gadgets={favorites} />
+        <CardsContainer gadgets={favorites} />
       </div>
     </div>
   );

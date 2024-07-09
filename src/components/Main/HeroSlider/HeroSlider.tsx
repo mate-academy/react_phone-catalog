@@ -1,4 +1,4 @@
-import style from './Slider.module.scss';
+import style from './HeroSlider.module.scss';
 import { useContext, useEffect, useRef, useState } from 'react';
 import { BreakPointsContext } from '../../../store/BreakPointsProvider';
 import { StateContext } from '../../../store/StateProvider';
@@ -11,7 +11,7 @@ import { IconRight } from '../../Icons/IconRight';
 
 const MIN_SWIPE_REQUIRED = 40;
 
-export const Slider = () => {
+export const HeroSlider = () => {
   const lengthImgList = mobileBanner.length - 1;
   const { isMobile } = useContext(BreakPointsContext);
   const { setAutoPlay, autoPlay } = useContext(StateContext);

@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
-import { Cards } from '../Cards/Cards';
+import { CardsContainer } from '../CardsContainer/CardsContainer';
 import style from './GadgetsList.module.scss';
 import { ProductsContext } from '../../store/ProductsProvider';
 import { useSearchParams } from 'react-router-dom';
@@ -63,7 +63,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
       </div>
 
       <div className={style.gadgets__cardsContainer}>
-        <Cards gadgets={resultFilteredDev} />
+        <CardsContainer gadgets={resultFilteredDev} />
       </div>
       <Pagination perPage={itemsOnPage} />
     </div>

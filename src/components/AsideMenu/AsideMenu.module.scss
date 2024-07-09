@@ -118,17 +118,12 @@
     left: 0;
     right: 0;
     border-bottom: 3px solid $actionButtonActiveBorder;
-    opacity: 0;
-    transition:
-      opacity 600ms,
-      transform 600ms;
-    transform: scale(0);
+    @include initialAnimation();
   }
 
   .menu__actionButton:hover::after,
   .menu__activeAction.menu__actionButton::after {
-    transform: scale(1);
-    opacity: 1;
+    @include activeAnimation();
   }
 
   &__activeMenu {
@@ -169,21 +164,16 @@
   width: 100%;
   content: '';
   left: 0;
-  opacity: 0;
-  transform: scale(0);
-  transition:
-    opacity 600ms,
-    transform 600ms;
+
+  @include initialAnimation();
 }
 
 .menu__activeLink::after {
-  opacity: 1;
-  transform: scale(1);
+  @include activeAnimation();
 }
 
 .menu__listLink:hover::after {
-  opacity: 1;
-  transform: scale(1);
+  @include activeAnimation();
 }
 
 .menu:has(.menu__active) {

@@ -4,6 +4,7 @@ import { CategoryList } from '../../../../utils/CategoryList';
 import style from './CategoryCards.module.scss';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../../store/ProductsProvider';
+import { Category } from '../../../../enums/Category';
 
 export const CategoryCards = () => {
   const { t } = useContext(LanguageContext);
@@ -11,20 +12,18 @@ export const CategoryCards = () => {
 
   const items = products.reduce(
     (counts, product) => {
-      // Create new variables to hold updated counts
       let phoneCounts = counts[0];
       let tabletCounts = counts[1];
       let accessoriesCounts = counts[2];
 
-      if (product.category === 'phones') {
+      if (product.category === Category.phones) {
         phoneCounts++;
-      } else if (product.category === 'tablets') {
+      } else if (product.category === Category.tablets) {
         tabletCounts++;
-      } else if (product.category === 'accessories') {
+      } else if (product.category === Category.accessories) {
         accessoriesCounts++;
       }
 
-      // Return a new array with updated counts
       return [phoneCounts, tabletCounts, accessoriesCounts];
     },
     [0, 0, 0],

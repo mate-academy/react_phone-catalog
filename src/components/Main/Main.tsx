@@ -1,6 +1,6 @@
 import style from '../Main/Main.module.scss';
 import { useContext } from 'react';
-import { Slider } from './Slider/Slider';
+import { HeroSlider } from './HeroSlider/HeroSlider';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { ShopByCategory } from './ShopByCategory/ShopByCategory';
 import { BrandNewModels } from './BrandNewModels/BrandNewModels';
@@ -39,7 +39,7 @@ export const Main = () => {
           <h1 className={style.main__title}>{t('welcome')}</h1>
 
           <section className={style.main__heroSlider}>
-            <Slider />
+            <HeroSlider />
           </section>
 
           <div className={style.main__container}>

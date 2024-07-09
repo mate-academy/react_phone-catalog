@@ -9,6 +9,7 @@ import { IconClose } from '../Icons/IconClose';
 import { IconPlus } from '../Icons/IconPlus';
 import { IconMinus } from '../Icons/IconMinus';
 import { IconNotActiveMinus } from '../Icons/IconMinusNotActive';
+import { LanguageContext } from '../../store/LanguageProvider';
 
 export const CartItems = () => {
   const {
@@ -20,6 +21,7 @@ export const CartItems = () => {
   } = useContext(ShoppingCartContext);
 
   const { theme } = useContext(ThemeContext);
+  const { t } = useContext(LanguageContext);
 
   const getTotalPrice = cartItems.reduce(
     (acc, val) => acc + val.quantity * (val.price || 0),
@@ -35,11 +37,9 @@ export const CartItems = () => {
     <div className={classNames(style.cart)}>
       <div className={style.cart__wrapper}>
         <BackButton className={style.cart__cartBack} />
-
         <h1 className={style.cart__title}>
-          {getTotalQuantity > 0 ? 'Cart' : 'Your cart is empty'}
+          {getTotalQuantity > 0 ? t('cart') : t('yourCartIsEmpty')}
         </h1>
-
         <div className={style.cart__gridContainer}>
           <ul className={style.cart__list}>
             {cartItems.map(item => (
@@ -52,14 +52,22 @@ export const CartItems = () => {
                     >
                       <IconClose />
                     </button>
-                    <Link to={`../${item.category}/${item.itemId}`}>
+                    <Link
+                      to={`../${item.category}/${item.itemId}`}
+                      className={style.cart__linkItem}
+                    >
                       <img
                         src={item.image}
                         alt="Gadget Photo"
                         className={style.cart__gadgetPhoto}
                       />
                     </Link>
-                    <p className={style.cart__gadgetName}>{item.name}</p>
+                    <Link
+                      to={`../${item.category}/${item.itemId}`}
+                      className={style.cart__linkItem}
+                    >
+                      <p className={style.cart__gadgetName}>{item.name}</p>
+                    </Link>
                   </div>
 
                   <div className={style.cart__rightContainer}>
@@ -108,7 +116,9 @@ export const CartItems = () => {
                 </div>
 
                 <span className={style.cart__borderLine}></span>
-                <button className={style.cart__checkout}>Checkout</button>
+                <button className={style.cart__checkout}>
+                  {t('checkout')}
+                </button>
               </div>
             </div>
           )}

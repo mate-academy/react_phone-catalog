@@ -11,7 +11,7 @@ import { AvailableColors } from '../enums/AvailableColors';
 import { IconFavorites } from '../components/Icons/IconFavorites';
 import { ThemeContext } from '../store/ThemeProvider';
 import classNames from 'classnames';
-import { SectionCards } from '../components/Main/SectionCards';
+import { CardsSlider } from '../components/Main/SliderCards';
 import { ProductsContext } from '../store/ProductsProvider';
 import { changeIdsParams } from '../utils/changeIdsParams';
 import { LanguageContext } from '../store/LanguageProvider';
@@ -264,7 +264,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       </div>
 
       <div>
-        <SectionCards products={recomended} title={t('youMayAlsoLike')} />
+        <CardsSlider products={recomended} title={t('youMayAlsoLike')} />
       </div>
     </div>
   );

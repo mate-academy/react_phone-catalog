@@ -11,7 +11,20 @@ import { HashLink } from 'react-router-hash-link';
 export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
-  const footerNavList = ['gitHub', 'contacts', 'rights'];
+  const footerNavList = [
+    {
+      name: 'gitHub',
+      path: 'https://github.com/mrsvolodya/react_phone-catalog',
+    },
+    {
+      name: 'contacts',
+      path: '#',
+    },
+    {
+      name: 'rights',
+      path: '#',
+    },
+  ];
 
   return (
     <footer
@@ -26,9 +39,9 @@ export const Footer = () => {
 
         <ul className={style.footer__navList}>
           {footerNavList.map(item => (
-            <li className={style.footer__navItem} key={item}>
-              <Link to="#" className={style.footer__navLink}>
-                {t(item)}
+            <li className={style.footer__navItem} key={item.name}>
+              <Link to={item.path} className={style.footer__navLink}>
+                {t(item.name)}
               </Link>
             </li>
           ))}

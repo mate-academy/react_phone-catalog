@@ -18,6 +18,18 @@
       color: $text-color;
       @extend %transitionPage;
     }
+
+    &:after {
+      background-color: $text-color;
+      position: absolute;
+      content: '';
+      height: 3px;
+      width: 100%;
+      top: 37px;
+      left: 0;
+      color: $text-color;
+      @include initialAnimation();
+    }
   }
 }
 
@@ -25,13 +37,6 @@
   color: $text-color;
 }
 
-.nav__activeLink::after {
-  background-color: $text-color;
-  position: absolute;
-  content: '';
-  height: 3px;
-  width: 100%;
-  top: 37px;
-  left: 0;
-  color: $text-color;
+.nav__activeLink.nav__link::after {
+  @include activeAnimation();
 }

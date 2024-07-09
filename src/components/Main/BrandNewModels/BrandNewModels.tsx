@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { ProductsContext } from '../../../store/ProductsProvider';
-import { SectionCards } from '../SectionCards';
+import { CardsSlider } from '../SliderCards';
 
 export const BrandNewModels = () => {
   const { products } = useContext(ProductsContext);
@@ -8,8 +8,6 @@ export const BrandNewModels = () => {
   const title = 'newModels';
 
   return (
-    <div>
-      <SectionCards products={mostExpensive} title={title} discount={false} />
-    </div>
+    <CardsSlider products={mostExpensive} title={title} discount={false} />
   );
 };

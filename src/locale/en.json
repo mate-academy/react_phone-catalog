@@ -35,6 +35,9 @@
     "about": "About",
     "techSpecs": "Tech specs",
     "youMayAlsoLike": "You may also like it",
-    "addedToCart": "Added to cart"
+    "addedToCart": "Added to cart",
+    "cart": "Cart",
+    "yourCartIsEmpty": "Your cart is empty",
+    "checkout": "Checkout"
   }
 }

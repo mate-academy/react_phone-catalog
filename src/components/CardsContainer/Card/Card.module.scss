@@ -1,17 +1,7 @@
-@use '../../styles/block/utils/variables' as *;
-@import '../../styles/block/utils/mixins';
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/mixins';
 
-.cards {
-  // margin-bottom: 40px;
-  &__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-    justify-content: center;
-    row-gap: 40px;
-    column-gap: 16px;
-    user-select: none;
-  }
-
+.card {
   &__container {
     width: 100%;
     padding: 32px;
@@ -131,7 +121,7 @@
     background-color: $selectBackground;
   }
 
-  &__darkTheme  &__addedToCart {
+  &__darkTheme &__addedToCart {
     background-color: $selectBackground;
   }
 

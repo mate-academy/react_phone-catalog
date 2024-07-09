@@ -39,3 +39,16 @@
     transform: scale(1.1);
   }
 }
+
+@mixin initialAnimation() {
+  opacity: 0;
+  transform: scale(0);
+  transition:
+    opacity 600ms linear,
+    transform 600ms linear;
+}
+
+@mixin activeAnimation() {
+  opacity: 1;
+  transform: scale(1);
+}

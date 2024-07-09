@@ -40,7 +40,7 @@ export const Header = () => {
                 <ThemeButton />
               </div>
               <Link
-                to="../favorites"
+                to={`../${Pathname.favorites}`}
                 className={classNames(style.header__actionsLink, {
                   [style.header__activeButton]: pathname === Pathname.favorites,
                 })}
@@ -53,7 +53,7 @@ export const Header = () => {
                 <IconFavorites className={style.header__actionsImg} />
               </Link>
               <Link
-                to="/cart"
+                to={`../${Pathname.cart}`}
                 className={classNames(style.header__actionsLink, {
                   [style.header__activeButton]: Pathname.cart === pathname,
                 })}
