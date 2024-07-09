@@ -67,6 +67,21 @@ img {
 .container {
   padding-left: $padding-mobile;
   padding-right: $padding-mobile;
+
+  @include on-tablet {
+    padding-left: $padding-tablet;
+    padding-right: $padding-tablet;
+  }
+
+  @include on-desktop-small {
+    padding-left: $padding-desktop-small;
+    padding-right: $padding-desktop-small;
+  }
+
+    @include on-desktop {
+    padding-left: $padding-desktop;
+    padding-right: $padding-desktop;
+  }
 }
 
 .is-active {

@@ -134,6 +134,11 @@ export const ProductDetailsPage: React.FC = () => {
               slidesPerView={5}
               className="product-details__swiper--wrapper-box"
               wrapperClass="product-details__swiper--wrapper"
+              breakpoints={{
+                640: {
+                  slidesPerView: 1,
+                },
+              }}
             >
               {images.map((image, index) => (
                 <SwiperSlide
