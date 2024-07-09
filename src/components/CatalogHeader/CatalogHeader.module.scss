@@ -1,0 +1,50 @@
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.catalogTop {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-bottom: 32px;
+
+  @include on-tablet {
+    padding-bottom: 40px;
+  }
+}
+
+.textTop {
+  font-size: 14px;
+  color: $secondary-text-color;
+  line-height: 21px;
+}
+
+.catalogFilterWrap {
+  padding-bottom: 24px;
+
+  @include page-grid;
+}
+
+.catalogFilter {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.catalogFilterLeft {
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.filterText {
+  font-family: $font-family-semibold;
+  color: $secondary-text-color;
+  line-height: 15.34px;
+}

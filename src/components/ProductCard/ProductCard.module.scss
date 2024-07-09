@@ -1,0 +1,128 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.link {
+  color: inherit;
+}
+
+.productCard {
+  border: 1px solid $elements-border-color;
+  border-radius: $elements-border-radius;
+  background-color: $white;
+  box-sizing: border-box;
+
+  width: auto;
+  height: 439px;
+  padding: 31px;
+
+  transition: all 0.3s;
+
+  grid-column: auto;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &:hover{
+    box-shadow: 0 2px 4px 0 rgba(131, 137, 139, 0.12), 0 2px 16px 0 rgba(107, 127, 135, 0.32);
+  }
+}
+
+.productCardLink {
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.productImgContainer {
+  height: 129px;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
+}
+
+.productImg {
+  max-height: 100%;
+  object-fit: cover;
+  margin-inline: auto;
+  display: block;
+
+  @include on-tablet {
+    height: 202px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
+
+  @include hover(transform, scale(1.01));
+}
+
+.productName {
+  padding-top: 16px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  flex: 1;
+}
+
+.productPriceWrap {
+  display: flex;
+  gap: 8px;
+}
+
+.productPrice {
+  font-size: 22px;
+  line-height: 30.8px;
+  font-family: $font-family-bold;
+}
+
+.productPriceDisc {
+  color: $secondary-text-color;
+  font-family: $font-family-regular;
+  text-decoration: line-through;
+}
+
+.divider {
+  height: 1px;
+  width: 100%;
+  background-color: $elements-border-color;
+}
+
+.productTechChar {
+  color: $secondary-text-color;
+  font-family: $font-family-semibold;
+}
+
+.productTechValue {
+  font-family: $font-family-semibold;
+}
+
+.productInfo {
+  display: flex;
+  -webkit-justify-content: space-between;
+  justify-content: space-between;
+  line-height: 15.34px;
+}
+
+.paddingTop {
+  padding-top: 8px;
+}
+
+.paddingBottom {
+  padding-bottom: 8px;
+}
+

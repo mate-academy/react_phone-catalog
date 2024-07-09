@@ -1,0 +1,43 @@
+@use '../global/GlobalStyles/utils/mixins' as *;
+@use '../global/GlobalStyles/utils/vars' as *;
+
+.footer {
+  @include content-padding-inline;
+
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: 32px;
+
+  background-color: $white;
+  border-top: 1px solid $elements-border-color;
+
+  height: 257px;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    bottom: -90px;
+    height: 96px;
+  }
+}
+
+.footerLogo {
+  height: 32px;
+}
+
+.footerNav {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 13.5px;
+  }
+
+  @include on-desktop {
+    gap: 107px;
+  }
+}
