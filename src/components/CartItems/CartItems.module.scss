@@ -196,6 +196,11 @@
     font-size: 14px;
     line-height: 21px;
     font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+      @extend %buttonHoverEffect;
+    }
   }
 
   &__leftContainer {
@@ -212,6 +217,12 @@
   &__disableDecrement {
     cursor: auto;
     border-color: $borderColorDesableDecrement;
+  }
+
+  &__modalWindowContainer {
+    position: absolute;
+    left: 0;
+    top: 0;
   }
 }
 

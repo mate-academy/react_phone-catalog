@@ -10,6 +10,8 @@ import { IconPlus } from '../Icons/IconPlus';
 import { IconMinus } from '../Icons/IconMinus';
 import { IconNotActiveMinus } from '../Icons/IconMinusNotActive';
 import { LanguageContext } from '../../store/LanguageProvider';
+import { ModalWindow } from '../ModalWindow/ModalWindow';
+import { StateContext } from '../../store/StateProvider';
 
 export const CartItems = () => {
   const {
@@ -22,6 +24,8 @@ export const CartItems = () => {
 
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
+  const { modalWindow, setModalWindow } = useContext(StateContext);
+  console.log(modalWindow);
 
   const getTotalPrice = cartItems.reduce(
     (acc, val) => acc + val.quantity * (val.price || 0),
@@ -34,7 +38,7 @@ export const CartItems = () => {
   );
 
   return (
-    <div className={classNames(style.cart)}>
+    <div className={classNames(style.cart, { [style.cart__darkTheme]: theme })}>
       <div className={style.cart__wrapper}>
         <BackButton className={style.cart__cartBack} />
         <h1 className={style.cart__title}>
@@ -116,13 +120,19 @@ export const CartItems = () => {
                 </div>
 
                 <span className={style.cart__borderLine}></span>
-                <button className={style.cart__checkout}>
+                <button
+                  className={style.cart__checkout}
+                  onClick={() => setModalWindow(true)}
+                >
                   {t('checkout')}
                 </button>
               </div>
             </div>
           )}
         </div>
+      </div>
+      <div className={style.cart__modalWindowContainer}>
+        {modalWindow && <ModalWindow />}
       </div>
     </div>
   );
