@@ -14,7 +14,9 @@ export const ProductList: React.FC<Props> = ({ title }) => {
 
   return (
     <div
-      className={classNames(style.favorites, { [style.favorites__activeAsideMenu]: activeMenu })}
+      className={classNames(style.favorites, {
+        [style.favorites__activeAsideMenu]: activeMenu,
+      })}
     >
       <div className={style.favorites__container}>
         <BreadCrumbs />

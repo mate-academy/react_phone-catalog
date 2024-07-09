@@ -15,7 +15,7 @@ type CartType = {
   itemId?: string;
 };
 
-type ShoppingCartContext = {
+type ShoppingCartContextType = {
   getItemsQuantity: (id: number) => number;
   increaseCartQuantity: (id: number) => void;
   decreaseCartQuantity: (id: number) => void;
@@ -25,7 +25,7 @@ type ShoppingCartContext = {
 };
 
 export const ShoppingCartContext = React.createContext(
-  {} as ShoppingCartContext,
+  {} as ShoppingCartContextType,
 );
 
 export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
@@ -36,7 +36,6 @@ export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
   };
 
   const increaseCartQuantity = (id: number) => {
-    
     setCartItems(currentItems => {
       if (!currentItems.find(item => item.id === id)) {
         return [...currentItems, { id, quantity: 1 }];
