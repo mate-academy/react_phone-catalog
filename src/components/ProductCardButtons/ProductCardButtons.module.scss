@@ -17,6 +17,7 @@
   background-color: var(--color-button);
   border: 1px solid var(--color-button);
   cursor: pointer;
+  transition: all 0.3s;
 
   &:hover {
     background-color: var(--color-button-hover);
@@ -58,6 +59,7 @@
   background-color: var(--color-favourite);
   border: 1px solid var(--color-favourite-border);
   cursor: pointer;
+  transition: all 0.3s;
 
   &:hover {
     border-color: var(--color-text-primary);

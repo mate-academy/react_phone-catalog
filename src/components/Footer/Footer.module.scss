@@ -49,6 +49,7 @@
   @extend %uppercase-text;
 
   color: var(--color-text-secondary);
+  transition: all 0.3s;
 
   &:hover {
     color: var(--color-text-primary);

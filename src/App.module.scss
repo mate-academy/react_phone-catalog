@@ -13,7 +13,7 @@ body {
   color: var(--color-text-primary);
   font-family: Mont-Regular, sans-serif;
   font-size: 12px;
-  overflow: auto;
+  overflow-x: hidden;
 }
 
 .app {
@@ -26,8 +26,9 @@ body {
 .container {
   padding-top: 24px;
   padding-bottom: 56px;
-
-  // width: 100%;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 
   flex-grow: 1;
 
@@ -37,7 +38,7 @@ body {
   }
 
   @include on-desktop {
-    width: 1200px;
+    max-width: 1200px;
     margin-inline: auto;
     padding-bottom: 80px;
   }

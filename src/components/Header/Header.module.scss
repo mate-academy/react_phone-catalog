@@ -59,6 +59,7 @@
   height: $header-height-mobile-tablet;
   cursor: pointer;
   color: var(--color-text-secondary);
+  transition: all 0.3s;
 
   @extend %uppercase-text;
 

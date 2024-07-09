@@ -73,6 +73,7 @@
 .imageSmall {
   object-fit: contain;
   height: 40px;
+  cursor: pointer;
 
   @include on-tablet {
     height: 33px;

@@ -21,6 +21,7 @@
   background-color: transparent;
   border: 1px solid var(--color-icons);
   cursor: pointer;
+  transition: all 0.3s;
 
   @include on-tablet {
     display: block;
