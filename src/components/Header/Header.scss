@@ -87,11 +87,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  padding-left: 103px;
 
   @include on-desktop {
     gap: 16px;
-    padding-left: 495px;
   }
 }
 
@@ -99,6 +97,57 @@
   display: flex;
   align-items: center;
 
+  &__search {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 48px;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $colorElements;
+
+    @include on-desktop {
+      height: 64px;
+    }
+
+    &-block {
+      display: none;
+
+      @include on-desktop {
+        display: flex;
+        width: 250px;
+        padding-inline: 24px;
+      }
+
+      &-query {
+        @extend %body-text;
+
+        width: 100%;
+        border: none;
+        color: $colorPrimary;
+        padding: 0;
+
+        &::placeholder {
+          color: $colorIcons;
+        }
+
+        &:focus {
+          outline: none;
+        }
+      }
+
+      &-icon {
+        cursor: pointer;
+        filter: invert(65%) sepia(10%) saturate(300%) hue-rotate(150deg) brightness(95%) contrast(85%);
+      }
+
+      &-button {
+        background-color: inherit;
+        border: none;
+        align-self: center;
+        display: flex;
+      }
+    }
+  }
 
   &__link {
     display: flex;
@@ -192,5 +241,4 @@
     background-color: $colorPrimary;
   }
 }
-
 

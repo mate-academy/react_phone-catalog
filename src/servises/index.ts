@@ -36,11 +36,16 @@ export const getSuggestedProducts = (
 
 export const getTrimmedProducts = (
   products: UpgradedProduct[],
+  query: string,
   sort?: keyof typeof SortBy,
   perPage?: ItemsOnPage,
   page = 1,
 ): [UpgradedProduct[], number] => {
   let newProducts = [...products];
+
+  newProducts = newProducts.filter(product =>
+    product.name.toLowerCase().includes(query.toLowerCase()),
+  );
 
   const count = newProducts.length;
 

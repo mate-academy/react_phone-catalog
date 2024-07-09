@@ -22,10 +22,12 @@ const Items: React.FC<Props> = ({ title, items }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const sortBy = searchParams.get('sort') || 'age';
   const itemsOnPage = searchParams.get('perPage') || '8';
+  const query = searchParams.get('query') || '';
   const [page, setPage] = useState(Number(searchParams.get('page')) || 1);
 
   const [trimmedProducts, count] = getTrimmedProducts(
     items,
+    query,
     sortBy as keyof typeof SortBy,
     itemsOnPage as ItemsOnPage,
     +page,
@@ -71,6 +73,10 @@ const Items: React.FC<Props> = ({ title, items }) => {
 
       {paginationCounter > 1 && (
         <Pagination total={paginationCounter} page={page} setPage={setPage} />
+      )}
+
+      {!trimmedProducts.length && (
+        <h1 className="items__message">{`There are no ${navigationPath} products matching the query`}</h1>
       )}
     </div>
   );

@@ -42,7 +42,7 @@ const MainControls: React.FC<Props> = ({
                 to={newPath}
                 key={color}
                 className={classNames('mainControls__colors-link', {
-                  'mainControls__colors--link-active': product.color === color,
+                  'mainControls__colors-link-active': product.color === color,
                 })}
               >
                 <div

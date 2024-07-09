@@ -72,4 +72,15 @@
       }
     }
   }
+
+  &__message {
+    margin-top: 10%;
+    text-align: center;
+
+    @extend %h1-mobile;
+
+    @include on-tablet {
+      @include h1-tablet;
+    }
+  }
 }

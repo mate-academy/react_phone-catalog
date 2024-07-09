@@ -6,6 +6,7 @@ import FavouritesFiled from '../assets/icons/Favourites Filled (Heart Like).svg'
 import ShoppingBag from '../assets/icons/Shopping bag (Cart).svg';
 import ArrowUp from '../assets/icons/ArrowUp.svg';
 import close from '../assets/icons/Close.svg';
+import Search from '../assets/icons/Search.svg';
 import ArrowLeft from '../assets/icons/Arrow Left.svg';
 import ArrowRight from '../assets/icons/Arrow Right.svg';
 import Home from '../assets/icons/Home.svg';
@@ -33,6 +34,7 @@ export const arrowUpImg = ArrowUp;
 export const arrowLeftImg = ArrowLeft;
 export const arrowRightImg = ArrowRight;
 export const closeImg = close;
+export const searchImg = Search;
 export const homeImg = Home;
 export const minusImg = Minus;
 export const plusImg = Plus;
