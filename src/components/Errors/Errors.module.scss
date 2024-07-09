@@ -1,0 +1,20 @@
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.error {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  padding-block: 30px;
+}
+
+.noProductsError {
+  font-size: 24px;
+  font-family: $font-family-semibold;
+  text-align: center;
+}
+
+.errorBtn {
+  width: 150px;
+  margin-inline: auto;
+}

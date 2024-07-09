@@ -1,0 +1,6 @@
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+@use '../../shared/global/GlobalStyles/utils/vars' as *;
+
+.content {
+  @include content-padding-inline;
+}
