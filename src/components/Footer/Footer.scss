@@ -1,0 +1,70 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.footer {
+  margin-top: auto;
+  padding: 32px 0;
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+  &__logo {
+    width: 89px;
+    height: 30.25px;
+    cursor: pointer;
+
+    &--block {
+      display: flex;
+      flex: 1;
+      justify-content: flex-start;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-around;
+      flex: 2;
+      flex-shrink: 2;
+    }
+
+    &--link {
+      cursor: pointer;
+    }
+  }
+
+  &__button {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    align-items: center;
+    background-color: inherit;
+    cursor: pointer;
+
+    &--top {
+      transform: rotate(-90deg);
+    }
+
+    &--block {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+
+      @include on-tablet {
+        justify-content: flex-end;
+      }
+    }
+  }
+}

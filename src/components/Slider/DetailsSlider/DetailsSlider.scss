@@ -1,0 +1,112 @@
+@import 'slick-carousel/slick/slick.css';
+@import 'slick-carousel/slick/slick-theme.css';
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.detailsSlider {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+  }
+}
+
+.firstSlider {
+  height: 288px;
+  width: 288px;
+
+  @include hover(transform, scale(1.1));
+
+  @include on-tablet {
+    height: 287px;
+    width: 287px;
+  }
+
+  @include on-desktop {
+    height: 442px;
+    width: 442px;
+  }
+
+  &__block {
+    height: 288px;
+    width: 288px;
+
+    @include on-tablet {
+      height: 287px;
+      width: 287px;
+    }
+
+    @include on-desktop {
+      height: 442px;
+      width: 442px;
+    }
+
+    &--img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+  }
+}
+
+.secondSlider {
+  height: 49px;
+  width: 100%;
+  box-sizing: border-box;
+
+  @include on-tablet {
+    width: 35px;
+    height: 100%;
+  }
+
+  @include on-desktop {
+    width: 80px;
+  }
+
+  &__block {
+    box-sizing: border-box;
+    height: 49px;
+    width: 51.2px !important;
+    border-radius: 4px;
+    border: 1px solid;
+    cursor: pointer;
+
+    @include on-tablet {
+      height: 35px;
+      width: 35px !important;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    @include on-desktop {
+      width: 80px !important;
+      height: 80px;
+    }
+
+    &--img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  .slick-track {
+    display: flex;
+    gap: 8px;
+    margin-left: 1px;
+
+    @include on-tablet {
+      flex-direction: column;
+      margin-left: 0;
+    }
+
+    @include on-desktop {
+      gap: 16px;
+    }
+  }
+}

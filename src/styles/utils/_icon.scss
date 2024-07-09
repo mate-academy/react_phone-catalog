@@ -1,0 +1,94 @@
+.icon {
+  display: block;
+
+  background-position: center;
+  background-size: auto;
+  background-repeat: no-repeat;
+
+  &--menu {
+    background-image: url(./icons/Menu.svg);
+    height: 48px;
+    width: 48px;
+  }
+
+  &--favourites {
+    background-image: url(./icons/Favourites.svg);
+
+    height: 16px;
+    width: 16px;
+    background-size: auto;
+
+    &--selected {
+      background-image: url(./icons/favSel.svg);
+    }
+  }
+
+  &--cart {
+    background-image: url(./icons/Cart.svg);
+    height: 16px;
+    width: 16px;
+  }
+
+  &--logo {
+    height: 22px;
+    width: 64px;
+    background-size: contain;
+    background-image: url(./icons/LogoMob.svg);
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+  }
+
+  &--close {
+    background-image: url(./icons/Close.svg);
+    background-position: center;
+    height: 48px;
+    width: 48px;
+    background-size: auto;
+    background-repeat: no-repeat;
+  }
+
+  &--home {
+    background-image: url(./icons/home.svg);
+    width: 13.33px;
+    height: 14.67px;
+  }
+
+  &--arrow {
+    background-image: url(./icons/arrow.svg);
+    width: 5.33px;
+    height: 9.33px;
+
+    &-pagination {
+      background-image: url(./icons/arrowPagination.svg);
+    }
+  }
+
+  &--remove {
+    background-image: url(./icons/remove.svg);
+    width: 9.33px;
+    height: 9.33px;
+  }
+
+  &--plus {
+    background-image: url(./icons/plus.svg);
+    width: 10.67px;
+    height: 10.67px;
+
+    &--disabled {
+      background-image: url(./icons/plusDisabled.svg);
+    }
+  }
+
+  &--minus {
+    background-image: url(./icons/minus.svg);
+    width: 10.67px;
+    height: 1.33px;
+
+    &--disabled {
+      background-image: url(./icons/minusDisabled.svg);
+    }
+  }
+}

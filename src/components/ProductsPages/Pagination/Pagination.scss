@@ -1,0 +1,38 @@
+@import '../../../styles/utils/vars';
+@import '../../../styles/utils/mixins';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+
+  margin-bottom: 64px;
+  gap: 16px;
+  &__items {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 48px;
+    border: 1px solid;
+    cursor: pointer;
+
+    &--next {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.disabled {
+  background-image: url('../../../styles/utils/icons/arrow.svg');
+}
+
+.hidden {
+  display: none;
+}
