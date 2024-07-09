@@ -4,8 +4,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation } from 'swiper/modules';
 import 'swiper/scss';
 import { Gadget } from '../../../types/Gadget';
-import { getSuggestedProducts } from '../../../services/getSuggestedProducts';
 import classNames from 'classnames';
+import { getNewModels } from '../../../services/getNewModels';
 
 export const NewModels: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Gadget[]>([]);
@@ -13,7 +13,7 @@ export const NewModels: React.FC = () => {
 
   useEffect(() => {
     const fetchSuggestedProducts = async () => {
-      const products = await getSuggestedProducts();
+      const products = await getNewModels();
 
       setSuggestedProducts(products);
     };
@@ -103,12 +103,7 @@ export const NewModels: React.FC = () => {
                 />
               </div>
               <h4 className="newmodels-card__title">{product.name}</h4>
-              <div className="newmodels-card__price">
-                <p className="newmodels-card__price--disc">{product.price}</p>
-                <p className="newmodels-card__price--regular">
-                  {product.fullPrice}
-                </p>
-              </div>
+              <p className="newmodels-card__price">{`$${product.fullPrice}`}</p>
               <ul className="newmodels-card__tech">
                 <li className="newmodels-card__tech--item newmodels-item">
                   <p className="newmodels-item__name">Screen</p>

@@ -107,8 +107,8 @@ export const SuggestedProducts: React.FC = () => {
             </div>
             <h4 className="recomm-card__title">{product.name}</h4>
             <div className="recomm-card__price">
-              <p className="recomm-card__price--disc">{product.price}</p>
-              <p className="recomm-card__price--regular">{product.fullPrice}</p>
+              <p className="recomm-card__price--disc">{`$${product.price}`}</p>
+              <p className="recomm-card__price--regular">{`$${product.fullPrice}`}</p>
             </div>
             <ul className="recomm-card__tech">
               <li className="recomm-card__tech--item recomm-item">

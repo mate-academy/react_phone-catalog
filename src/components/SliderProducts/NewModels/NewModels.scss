@@ -4,7 +4,7 @@
   @include page-grid;
 
   padding-left: $padding-tablet;
-  margin-bottom: 56px;
+  margin-bottom: 57px;
 
   @include on-tablet {
     padding-left: $padding-mobile;
@@ -13,10 +13,10 @@
 
   @include on-desktop-small {
     padding: 0 $padding-desktop-small;
-    margin-bottom: 81px;
+    margin-bottom: 80px;
   }
 
-  @include on-desktop-small {
+  @include on-desktop {
     padding: 0 $padding-desktop;
   }
 
@@ -24,14 +24,16 @@
     @include page-grid;
 
     padding-right: $padding-mobile;
-    // display: flex;
-    // justify-content: space-between;
-    // align-items: center;
     margin-bottom: $margin-bottom-mobile;
     grid-column: 1 / -1;
 
     @include on-tablet {
       padding-right: $padding-tablet;
+      margin-bottom: $margin-bottom-tablet;
+    }
+
+    @include on-desktop-small {
+      padding-right: 0;
     }
 
     &--title {
@@ -45,32 +47,40 @@
         font-size: 32px;
         line-height: 1.29;
         letter-spacing: -0.01em;
+        grid-column: 1 / span 7;
       }
     }
 
     &--buttons {
       display: flex;
+      justify-content: end;
       gap: 16px;
       grid-column: 4 / span 1;
+
+      @include on-tablet {
+        grid-column: 11 / span 2;
+      }
+
+      @include on-desktop-small {
+        grid-column: 23 / span 2;
+      }
     }
   }
 
   &__list {
     &--card {
       display: flex;
-      align-items: center;
+      justify-content: space-between;
       flex-direction: column;
     }
   }
 
   &__swiper {
-
     grid-column: 1 / -1;
   }
 }
 
 .newmodels-card {
-
   padding: 32px;
   gap: 8px;
   background-color: $card-bgc;
@@ -80,6 +90,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    align-self: center;
     width: 148px;
     height: 108px;
 
@@ -113,30 +124,17 @@
     font-weight: 600;
     line-height: 1.5;
     padding-top: 16px;
+    text-align: left;
   }
 
   &__price {
-    display: flex;
-    align-items: center;
     width: 100%;
-    align-self: flex-start;
+    color: $main-white-color;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.4;
     padding-bottom: 8px;
-    gap: 8px;
     border-bottom: 1px solid $dark-grey-color;
-
-    &--disc {
-      color: $main-white-color;
-      font-size: 22px;
-      font-weight: 800;
-      line-height: 1.4;
-    }
-
-    &--regular {
-      text-decoration: line-through;
-      color: $text-grey-color;
-      font-size: 22px;
-      line-height: 28.12px;
-    }
   }
 
   &__tech {
@@ -148,12 +146,12 @@
 
   &__buttons {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     gap: 8px;
 
     &--add {
-      width: 100px;
+      width: 100%;
       height: 40px;
       border: none;
       background-color: $button-purpul-color;
@@ -167,22 +165,13 @@
       &:focus {
         background-color: $button-grey-color;
       }
-
-      @include on-tablet {
-        width: 125px;
-      }
-
-      @include on-desktop-small {
-        width: 160px;
-      }
     }
 
     &--heart {
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 40px;
-      height: 40px;
+      padding: 12px;
       background-color: $button-grey-color;
       border: none;
 
