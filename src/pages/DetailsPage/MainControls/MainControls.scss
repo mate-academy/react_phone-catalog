@@ -124,12 +124,14 @@
       height: 40px;
       background-color: $colorPrimary;
       color: $colorWhite;
+      cursor: pointer;
+      transition: transform 0.5s;
 
       @extend %buttons;
 
       &:hover {
         box-shadow: 0 3px 13px 0 #17203166;
-
+        transform: scale(1.05);
       }
 
       &-isActive {
@@ -147,9 +149,12 @@
       display: flex;
       background-color: $colorWhite;
       border: 1px solid $colorIcons;
+      cursor: pointer;
+      transition: transform 0.5s;
 
       &:hover {
         border: 1px solid $colorPrimary;
+        transform: scale(1.05);
       }
     }
   }

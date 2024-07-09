@@ -116,10 +116,13 @@
       height: 40px;
       background-color: $colorPrimary;
       color: $colorWhite;
+      cursor: pointer;
+      transition: transform 0.5s;
 
       @extend %buttons;
 
       &:hover {
+        transform: scale(1.05);
         box-shadow: 0 3px 13px 0 #17203166;
 
       }
@@ -139,8 +142,11 @@
       display: flex;
       background-color: $colorWhite;
       border: 1px solid $colorIcons;
+      transition: transform 0.5s;
+      cursor: pointer;
 
       &:hover {
+        transform: scale(1.05);
         border: 1px solid $colorPrimary;
       }
     }

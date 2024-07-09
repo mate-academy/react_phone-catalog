@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { favouritesImg, bagImg } from '../../utils/indes';
@@ -23,6 +23,18 @@ const getStylelinkActionsBurger = ({ isActive }: { isActive: boolean }) => {
 };
 
 const BurgerMenu: React.FC<Props> = ({ isMenuOpen, toggleMenu }) => {
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMenuOpen]);
+
   return (
     <div
       className={classNames('burgerMenu', {

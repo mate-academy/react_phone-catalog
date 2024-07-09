@@ -6,16 +6,17 @@
   top: 72px;
   left: 0;
   right: 0;
-  height: 100vh;
+  height: calc(100vh - 72px);
   z-index: 1;
-
-
+  transition: transform 0.3s ease-in-out;
+  transform: translateX(-100%);
   background: $colorWhite;
 
   &__show {
     display: flex;
-    justify-content: center;
-    overflow: hidden;
+    flex-direction: column;
+    justify-content: space-between;
+    transform: translateX(0);
   }
 }
 
@@ -42,8 +43,9 @@
 .burgerActions {
   display: flex;
   width: 100%;
-  position: fixed;
+  position: sticky;
   bottom: 0;
+  margin-top: auto;
 
   &__link {
     display: flex;
@@ -84,3 +86,6 @@
   }
 }
 
+body.no-scroll {
+  overflow: hidden;
+}

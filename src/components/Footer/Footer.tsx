@@ -19,13 +19,22 @@ const Footer: React.FC = () => {
         </Link>
 
         <nav className="footer__nav">
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/SerhiiVoitiuk"
+            className="footer__nav--link"
+          >
             Github
           </Link>
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/SerhiiVoitiuk"
+            className="footer__nav--link"
+          >
             Contacts
           </Link>
-          <Link to="/" className="footer__nav--link">
+          <Link
+            to="https://github.com/SerhiiVoitiuk"
+            className="footer__nav--link"
+          >
             Rights
           </Link>
         </nav>

@@ -102,6 +102,9 @@ const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
   const favourites = products.filter(item => item.addedToFavourites === true);
   const carts = products.filter(item => item.addedToCart === true);
 
+  const quantities = carts.map(item => item.quantity);
+  const totalQuantity = quantities.reduce((acc, quantity) => acc + quantity, 0);
+
   return (
     <header className="header">
       <Link
@@ -184,7 +187,7 @@ const Header: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
 
               {!!carts.length && (
                 <span className="actions__link-counter">
-                  <p className="actions__link-counter-text">{carts.length}</p>
+                  <p className="actions__link-counter-text">{totalQuantity}</p>
                 </span>
               )}
             </NavLink>
