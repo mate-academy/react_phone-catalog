@@ -8,12 +8,8 @@
 
   @include for-tablet {
     font-size: 32px;
-    width: 500px;
+    width: 100%;
     margin-bottom: 24px;
-  }
-
-  @include for-desktop {
-    width: 1200px;
   }
 }
 
@@ -22,7 +18,8 @@
   flex-direction: column;
   align-self: center;
   justify-content: space-between;
-  width: 288px;
+  width: 100%;
+  margin-left: 24px;
   height: 1000px;
   margin-bottom: 56px;
 

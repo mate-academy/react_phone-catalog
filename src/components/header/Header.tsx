@@ -59,7 +59,7 @@ export const Header: React.FC = () => {
             tablets
           </Link>
         </li>
-        
+
         <li
           className={cn(Styles.header__nav__list__element, {
             [Styles['with-after']]: location.hash === '#/accessories',
@@ -140,29 +140,30 @@ export const Header: React.FC = () => {
           </div>
 
           <div className={Styles.header__links__cart}>
-            {cart.length ? (
-              <Link
-                className={Styles.header__links__cart__link}
-                onClick={handleClick}
-                to={'/cart'}
-              >
+            <Link
+              className={Styles.header__links__cart__link}
+              onClick={handleClick}
+              to={'/cart'}
+            >
+              {cart.length ? (
+                <>
+                  <img
+                    className={Styles.header__links__cart__item}
+                    src="./img/svg/Shopping_bag_Cart.svg"
+                    alt="fav icon"
+                  />
+                  <div className={Styles.header__links__cart__number}>
+                    {cart.length}
+                  </div>
+                </>
+              ) : (
                 <img
                   className={Styles.header__links__cart__item}
                   src="./img/svg/Shopping_bag_Cart.svg"
                   alt="fav icon"
                 />
-
-                <div className={Styles.header__links__cart__number}>
-                  {cart.length}
-                </div>
-              </Link>
-            ) : (
-              <img
-                className={Styles.header__links__cart__item}
-                src="./img/svg/Shopping_bag_Cart.svg"
-                alt="fav icon"
-              />
-            )}
+              )}
+            </Link>
           </div>
         </div>
       )}

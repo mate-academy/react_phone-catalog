@@ -3,7 +3,7 @@ import Styles from './Footer.module.scss';
 
 export const Footer: React.FC = () => {
   return (
-    <div className={Styles['footer']}>
+    <footer className={Styles['footer']}>
       <p className={Styles['footer__logo']}>
         <img
           className={Styles['footer__logo__img']}
@@ -28,6 +28,6 @@ export const Footer: React.FC = () => {
           rights
         </a>
       </div>
-    </div>
+    </footer>
   );
 };

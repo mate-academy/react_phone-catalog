@@ -18,7 +18,7 @@
 
 .slider {
   overflow: hidden;
-  width: 320px;
+  width: 300px;
   margin: 0 auto 56px;
   display: flex;
   flex-direction: column;
@@ -42,11 +42,7 @@
     }
 
     @include for-tablet {
-      top: 150px;
-    }
-
-    @include for-desktop {
-      top: 160px;
+      top: 120px;
     }
   }
 
@@ -67,7 +63,7 @@
     }
 
     @include for-tablet {
-      top: 150px;
+      top: 120px;
     }
 
     @include for-desktop {

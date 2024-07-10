@@ -18,16 +18,15 @@ export const App = () => {
   const { app, accessories, tablets, phones, backToTop } =
     useContext(ContextApp);
 
-    const handleScroll = () => {
-      if (app.current && backToTop.current) {
-        if (app.current.scrollTop > 80) {
-          backToTop.current.style.marginTop = '0vh';
-        } else {
-          backToTop.current.style.marginTop = '120vh';
-        }
+  const handleScroll = () => {
+    if (app.current && backToTop.current) {
+      if (app.current.scrollTop > 80) {
+        backToTop.current.style.marginTop = '0vh';
+      } else {
+        backToTop.current.style.marginTop = '120vh';
       }
-    };
-
+    }
+  };
 
   return (
     <div onScroll={handleScroll} ref={app} className="app">
@@ -35,34 +34,17 @@ export const App = () => {
       <h1 className="app__title">Product Catalog</h1>
 
       <Routes>
-      <Route path="/home" element={<Navigate to="/" replace={true} />} />
+        <Route path="/home" element={<Navigate to="/" replace={true} />} />
 
-        <Route path="/">
-          <Route index element={<Home />} />
-
-          <Route path="fav" element={<Favourites />} />
-
-          <Route path="cart" element={<Cart />} />
-
-          <Route path="phones">
-            <Route index element={<Phones />} />
-            <Route path=":idItem" element={<Details list={phones} />} />
-          </Route>
-
-          <Route path="tablets">
-            <Route index element={<Tablets />} />
-            <Route path=":idItem" element={<Details list={tablets} />} />
-          </Route>
-
-          <Route path="accessories">
-            <Route index element={<Accessories />} />
-            <Route path=":idItem" element={<Details list={accessories} />} />
-          </Route>
-
-          <Route path="home" element={<Navigate to="/" replace={true} />} />
-
-          <Route path="*" element={<NotFoundPage />} />
-        </Route>
+        <Route path="/" element={<Home />} />
+        <Route path="fav" element={<Favourites />} />
+        <Route path="cart" element={<Cart />} />
+        <Route path="phones" element={<Phones />} />
+        <Route path="phones/:idItem" element={<Details list={phones} />} />
+        <Route path="tablets" element={<Tablets />} />
+        <Route path="tablets/:idItem" element={<Details list={tablets} />} />
+        <Route path="accessories" element={<Accessories />} />
+        <Route path="accessories/:idItem" element={<Details list={accessories} />} />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
