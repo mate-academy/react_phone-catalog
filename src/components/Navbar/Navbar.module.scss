@@ -185,14 +185,21 @@ $nav-height-desktop: 64px;
   }
 
   &__logo-link {
+    display: block;
+    height: 100%;
+
     text-decoration: none;
     text-transform: uppercase;
     font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 800;
-    line-height: 11px;
+    line-height: 40;
     letter-spacing: 0.04em;
     color: #89939a;
+
+    @include on-desktop {
+      line-height: 64px;
+    }
   }
 
   &__menu-logo-wrapper {

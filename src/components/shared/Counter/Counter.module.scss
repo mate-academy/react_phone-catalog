@@ -23,6 +23,10 @@
     height: 32px;
 
     border: 1px solid #b4bdc3;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__minus {

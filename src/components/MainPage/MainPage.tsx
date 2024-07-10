@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import Category from '../shared/Category';
 import ProductLine from '../shared/ProductLine';
 import styles from './MainPage.module.scss';
@@ -8,6 +8,8 @@ import classNames from 'classnames';
 
 export const MainPage = () => {
   const { cards } = useContext(ProductContext);
+
+  const [slide, setSlide] = useState(1);
 
   const newModels = cards.sort((c1, c2) => -(c1.year - c2.year)).slice(0, 4);
 
@@ -26,13 +28,27 @@ export const MainPage = () => {
               styles['main__carousel-arrow'],
               styles['main__carousel-arrow--left'],
             )}
+            onClick={() => setSlide(sl => (sl > 1 ? sl - 1 : sl))}
           >
             <span></span>
           </div>
 
           <div className={styles['main__carousel-slider-tablet']}>
             <div className={styles['main__carousel-slider-wrapper']}>
-              <div className={styles['main__carousel-slider-image']}></div>
+              <div
+                className={styles['main__carousel-slider-image']}
+                style={{ left: `-${(slide - 1) * 100}%` }}
+              ></div>
+
+              <div
+                className={styles['main__carousel-slider-image']}
+                style={{ left: `${100 - (slide - 1) * 100}%` }}
+              ></div>
+
+              <div
+                className={styles['main__carousel-slider-image']}
+                style={{ left: `${200 - (slide - 1) * 100}%` }}
+              ></div>
             </div>
           </div>
 
@@ -41,6 +57,7 @@ export const MainPage = () => {
               styles['main__carousel-arrow'],
               styles['main__carousel-arrow--right'],
             )}
+            onClick={() => setSlide(sl => (sl < 3 ? sl + 1 : sl))}
           >
             <span></span>
           </div>
@@ -49,10 +66,25 @@ export const MainPage = () => {
         <div className={styles['main__carousel-nav']}>
           <div className={styles.main__dots}>
             <button
-              className={`${styles.main__dot} ${styles['main__dot--active']}`}
+              className={classNames(styles.main__dot, {
+                [styles['main__dot--active']]: slide === 1,
+              })}
+              onClick={() => setSlide(1)}
             ></button>
-            <button className={styles.main__dot}></button>
-            <button className={styles.main__dot}></button>
+
+            <button
+              className={classNames(styles.main__dot, {
+                [styles['main__dot--active']]: slide === 2,
+              })}
+              onClick={() => setSlide(2)}
+            ></button>
+
+            <button
+              className={classNames(styles.main__dot, {
+                [styles['main__dot--active']]: slide === 3,
+              })}
+              onClick={() => setSlide(3)}
+            ></button>
           </div>
         </div>
       </section>

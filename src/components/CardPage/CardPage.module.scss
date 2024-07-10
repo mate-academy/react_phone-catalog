@@ -130,6 +130,11 @@
 
       padding: 10px 15px;
     }
+
+    &:hover {
+      cursor: pointer;
+      border: 1px solid #b4bdc3;
+    }
   }
 
   &__image-preview-wrapper {

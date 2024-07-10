@@ -122,7 +122,9 @@ export const Navbar = () => {
             <div className={styles.header__cart}></div>
 
             {cartCards.length > 0 && (
-              <div className={styles.header__counter}>{cartCards.length}</div>
+              <div className={styles.header__counter}>
+                {cartCards.reduce((prev, curr) => prev + curr.count, 0)}
+              </div>
             )}
           </div>
         </div>
