@@ -1,7 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg'
-
+import React from 'react';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>

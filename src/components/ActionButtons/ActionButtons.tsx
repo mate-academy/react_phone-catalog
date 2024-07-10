@@ -1,5 +1,6 @@
 import styles from './ActionButtons.module.scss';
 import favoritesIcon from '../../img/icons/fav.svg';
+import React from 'react';
 
 const isProductInCart = true; // DELETE LATER
 

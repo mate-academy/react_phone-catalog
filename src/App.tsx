@@ -1,4 +1,5 @@
 import './App.module.scss';
+import React from 'react';
 import { Loader } from './components/Loader/Loader';
 import { ProductCard } from './components/ProductCard/ProductCard';
 import { ProductSlider } from './components/ProductSlider';

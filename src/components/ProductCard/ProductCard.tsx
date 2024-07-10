@@ -1,6 +1,7 @@
 import styles from './ProductCard.module.scss';
 import { ActionButtons } from '../ActionButtons';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 export const ProductCard: React.FC = () => {
   return (
