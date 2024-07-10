@@ -117,16 +117,16 @@
 
   &__add-to-cart {
     width: 125px;
-    color: rgb(255, 255, 255);
+    color: #FFF;
     font-size: 14px;
     letter-spacing: 0.01em;
     font-weight: 700;
     line-height: 21px;
     padding: 10px;
-    border-radius: 48px;
-    background: rgb(66, 25, 208);
+    border-radius: 0;
+    background: #313237;
     transition: all 0.3s;
-    border: 1px solid rgb(66, 25, 208);
+    border: 1px solid #313237;
     box-sizing: border-box;
     white-space: nowrap;
 
@@ -136,7 +136,7 @@
     }
 
     &--added {
-      color: rgb(66, 25, 208);
+      color: #27AE60;
       background-color: rgb(255, 255, 255);
       border: 1px solid rgb(226, 230, 233);
     }
@@ -155,7 +155,7 @@
     position: relative;
     width: 40px;
     height: 40px;
-    border-radius: 50%;
+    border-radius: 0;
     border: 1px solid rgb(180, 189, 196);
     transition: border 0.3s;
 

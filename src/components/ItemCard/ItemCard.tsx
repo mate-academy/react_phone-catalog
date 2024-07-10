@@ -21,22 +21,21 @@ interface Props {
 }
 
 export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
-  const { favourites, setFavourites, cart, setCart, currentPage } =
-    useAppContext();
+  const { favourites,
+     setFavourites,
+     cart,
+     setCart,
+     currentPage } = useAppContext();
   const { productId } = useParams();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
-  const [model, setModel] = useState<Phone | Accessories | null>(null);
+  const [model, setModel] = useState<Phone
+  | Accessories
+  | null>(null);
   const [mainImage, setMainImage] = useState(0);
   const firstColor = location.pathname.split('/').pop();
-  const [activeColor, setActiveColor] = useState<string | undefined>(
-    firstColor,
-  );
-
-  const [startMemory, setStartMemory] = useState<string | undefined>(
-    firstColor,
-  );
-
+  const [activeColor, setActiveColor] = useState<string | undefined>(firstColor);
+  const [startMemory, setStartMemory] = useState<string | undefined>(firstColor);
   const [loading, setLoading] = useState(false);
 
   const relatedItems = productsFromServer
@@ -46,11 +45,11 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const handleChangeColor = () => {
     const pathParts = location.pathname.split('/');
     const secondPart = pathParts
-      .slice(2) // Починаємо з третього елементу (пропускаємо '#', 'category')
-      .join('-') // Об'єднуємо в рядок
-      .split('-') // Розділяємо на частини по '-'
-      .slice(0, -1) // Відрізаємо останню частину
-      .join('-'); // Знову об'єднуємо
+      .slice(2)
+      .join('-')
+      .split('-')
+      .slice(0, -1)
+      .join('-');
 
     return `/${pathParts[1]}/${secondPart}`;
   };
@@ -58,18 +57,17 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const handleChangeMemory = () => {
     const pathParts = location.pathname.split('/');
     const secondPart = pathParts
-      .slice(2) // Починаємо з третього елементу (пропускаємо '#', 'category')
-      .join('-') // Об'єднуємо в рядок
-      .split('-') // Розділяємо на частини по '-'
-      .slice(0, -2) // Відрізаємо останню частину
-      .join('-'); // Знову об'єднуємо
+      .slice(2)
+      .join('-')
+      .split('-')
+      .slice(0, -2)
+      .join('-');
 
     return `/${pathParts[1]}/${secondPart}`;
   };
 
   const handleFindId = (id: string) => {
     const findedId = productsFromServer.find(item => item.itemId === id);
-
     return findedId?.id;
   };
 
@@ -77,76 +75,61 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const added = cart.find(item => item.itemId === model?.id);
 
   const handleAddFavourite = () => {
-    const itemToAdd = productsFromServer.find(
-      item => item.itemId === model?.id,
-    );
-
+    const itemToAdd = productsFromServer.find(item => item.itemId === model?.id);
     if (itemToAdd) {
       if (favourites.some(item => item.id === itemToAdd.id)) {
-        // Об'єкт вже є в корзині, видаляємо його
         setFavourites(prevFavourites =>
           prevFavourites.filter(item => item.id !== itemToAdd.id),
         );
       } else {
-        // Об'єкт ще не в корзині, додаємо його
         setFavourites(prevFavourites => [...prevFavourites, itemToAdd]);
       }
     }
   };
 
   const handleAddCart = () => {
-    const itemToAdd = productsFromServer.find(
-      item => item.itemId === model?.id,
-    );
-
+    const itemToAdd = productsFromServer.find(item => item.itemId === model?.id);
     if (itemToAdd) {
       if (cart.some(item => item.id === itemToAdd.id)) {
-        // Об'єкт вже є в корзині, видаляємо його
         setCart(prevCart => prevCart.filter(item => item.id !== itemToAdd.id));
       } else {
-        // Об'єкт ще не в корзині, додаємо його
         setCart(prevCart => [...prevCart, itemToAdd]);
       }
     }
   };
 
   useEffect(() => {
-    setLoading(true); // Set loading to true before fetching data
-
+    setLoading(true);
     const fetchData = async () => {
-      let fetchedModel: Phone | Accessories | null = null; // Initialize fetchedModel
-
+      let fetchedModel: Phone | Accessories | null = null;
       switch (category) {
         case 'phones':
           const detailedPhones = await getDetailedPhones();
-
           fetchedModel = detailedPhones.find(p => p.id === productId) || null;
           break;
         case 'tablets':
           const detailedTablets = await getDetailedTablets();
-
           fetchedModel = detailedTablets.find(t => t.id === productId) || null;
           break;
         case 'accessories':
           const detailedAccessories = await getDetailedAccessories();
-
-          fetchedModel =
-            detailedAccessories.find(a => a.id === productId) || null;
+          fetchedModel = detailedAccessories.find(a => a.id === productId) || null;
           break;
         default:
           fetchedModel = null;
       }
-
-      setModel(fetchedModel); // Set the fetched model
-
-      setLoading(false); // Set loading to false after data is fetched
+      setModel(fetchedModel);
+      if (fetchedModel) {
+        setActiveColor(firstColor || fetchedModel.colorsAvailable[0]);
+        setStartMemory(fetchedModel.capacityAvailable[0]);
+      }
+      setLoading(false);
     };
-
     fetchData();
-  }, [category, productId]);
+  }, [category, productId, firstColor]);
 
   if (loading) {
-    return <Loader />; // Показуємо лоадер під час завантаження даних
+    return <Loader />;
   }
 
   return (
@@ -176,8 +159,7 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                       <img
                         key={image}
                         className={classNames(styles.details__image, {
-                          [styles['details__image--active']]:
-                            mainImage === index,
+                          [styles['details__image--active']]: mainImage === index,
                         })}
                         src={image}
                         alt="product"
@@ -199,8 +181,7 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                         <Link
                           to={`${handleChangeColor()}-${color}`}
                           className={classNames(styles.details__wrapper, {
-                            [styles['details__wrapper--active']]:
-                              color === activeColor,
+                            [styles['details__wrapper--active']]: color === activeColor,
                           })}
                           key={color}
                           onClick={() => setActiveColor(color)}
@@ -223,15 +204,13 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                           to={`${handleChangeMemory()}-${memory.toLowerCase()}-${activeColor}`}
                           key={memory}
                           className={classNames(styles.details__memory, {
-                            [styles['details__memory--active']]:
-                              startMemory === memory,
+                            [styles['details__memory--active']]: startMemory === memory,
                           })}
                           onClick={() => setStartMemory(memory)}
                         >
                           <p
                             className={classNames(styles.details__amount, {
-                              [styles['details__amount--active']]:
-                                startMemory === memory,
+                              [styles['details__amount--active']]: startMemory === memory,
                             })}
                           >
                             {memory}
@@ -415,4 +394,4 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
       <Footer />
     </div>
   );
-};
+}

@@ -25,6 +25,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
   const [activeDropdown, setActiveDropdown] = useState(false);
   const [activeDropdownPage, setActiveDropdownPage] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
+  const dropdownPageRef = useRef<HTMLDivElement>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const { currentPage } = useAppContext();
 
@@ -88,12 +89,33 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
     fetchAndFilterData();
   }, [filterBy, currentPage]);
 
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current && !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdown(false);
+      }
+      if (
+        dropdownPageRef.current && !dropdownPageRef.current.contains(event.target as Node)
+      ) {
+        setActiveDropdownPage(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, []);
+
   if (loading) {
     return <Loader />; // Показуємо лоадер під час завантаження даних
   }
 
   return (
-    <main className={styles.page}>
+    <main id="main" className={styles.page}>
       <div className={styles.page__container}>
         <div className={styles.page__main}>
           <div className={styles.page__breadcrumbs}>
@@ -105,7 +127,9 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
               src="img/products/arrow.svg"
               alt="arrow"
             />
-            <p className={styles.page__current}>{currentPage}</p>
+            <Link className={styles['page__breadcrumbs-link']} to="./">
+              <p className={styles.page__current}>{currentPage}</p>
+            </Link>
           </div>
           {currentPage === PageSection.Phones ? (
             <h2 className={styles.page__title}>Mobile phones</h2>
@@ -178,7 +202,7 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
                   'is-active': activeDropdownPage,
                 })}
                 onClick={() => setActiveDropdownPage(!activeDropdownPage)}
-                ref={dropdownRef}
+                ref={dropdownPageRef}
               >
                 <div className="dropdown-trigger">
                   <button

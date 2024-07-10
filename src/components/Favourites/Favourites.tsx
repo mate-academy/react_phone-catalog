@@ -43,7 +43,9 @@ export const Favourites: React.FC<Props> = ({ models }) => {
                   src="/img/products/arrow.svg"
                   alt="arrow"
                 />
-                <p className={styles.favourites__current}>{currentPage}</p>
+                <Link className={styles['favourites__breadcrumbs-link']} to="./">
+                  <p className={styles.favourites__current}>{currentPage}</p>
+                </Link>
               </div>
               <div className={styles.favourites__general}>
                 <h2 className={styles.favourites__title}>Favourites</h2>
