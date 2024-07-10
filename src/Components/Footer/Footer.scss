@@ -40,6 +40,7 @@
 
   &__icon {
     @include icon-size(89, 32, cover);
+    @include hover(transform, scale(1.1));
 
     background-image: url('../../icons/nice-gadgets-logo.svg');
 
@@ -50,9 +51,11 @@
 
   &__links {
     @include display-flex-row(column, center);
-
+    align-items: center;
+    height: 100%;
     gap: 16px;
     align-items: start;
+    //line-height: 100%;
 
     @include on-tablet {
       @include display-flex-row(row, space-between);
@@ -67,10 +70,13 @@
       line-height: 92%;
       font-size: 12px;
       text-transform: uppercase;
+      height: 100%;
 
       [data-theme="dark"] & {
         color: var(--white);
       }
+
+      @include hover(transform, scale(1.1));
     }
   }
 

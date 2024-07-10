@@ -36,6 +36,10 @@
   @include on-tablet {
     display: block;
   }
+
+  &:hover {
+    font-size: 20px;
+  }
 }
 
 .carousel {
@@ -82,9 +86,18 @@
 }
 
 .carousel-dot {
+  background-color: var(--icons);
   width: 14px;
   height: 4px;
   border: none;
   cursor: pointer;
   transition: background-color 0.3s ease;
+
+  &--active {
+    background-color: var(--primary);
+
+    [data-theme="dark"] & {
+      background-color: var(--white);
+    }
+  }
 }

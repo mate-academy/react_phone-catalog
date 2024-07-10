@@ -7,9 +7,10 @@
   margin-bottom: 24px;
   width: 320px;
 
-
   &__color {
     @include display-flex-row(row, center);
+
+    transition: transform 0.3s ease;
 
     border: 1px solid var(--elements);
     border-radius: 50%;
@@ -20,11 +21,17 @@
 
     &--active {
       border: 1px solid var(--primary);
+    }
+
+    &:hover {;
+      box-shadow: 0 5px 7px 0 rgba(23, 32, 49, 0.4);
+      transform: scale(1.1);
 
       [data-theme="dark"] & {
-        border: 1px solid var(--white);
+        box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
       }
     }
+
 
     &--item {
       border: 2px solid var(--white);

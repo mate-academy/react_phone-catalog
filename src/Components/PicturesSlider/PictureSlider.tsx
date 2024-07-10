@@ -69,7 +69,7 @@ export const PictureSlider = ({ items }: Props) => {
         {items.map((_, index) => (
           <button
             key={index}
-            className={`carousel-dot ${index === currentIndex ? 'active' : ''}`}
+            className={`carousel-dot ${index === currentIndex ? 'carousel-dot--active' : ''}`}
             onClick={() => handleDotClick(index)}
           ></button>
         ))}

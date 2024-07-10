@@ -114,7 +114,12 @@
       background-color: var(--color-button);
 
       &:hover {
-        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
+        box-shadow: 0 2px 7px 0 rgba(48, 64, 88, 0.4);
+        scale: 0.95;
+
+        [data-theme="dark"] & {
+          box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
+        }
       }
 
       &--active {
@@ -138,8 +143,14 @@
       background-color: var(--color-button-like);
 
       &:hover {
-        border: 1px solid var(--primary);
+        box-shadow: 0 2px 7px 0 rgba(23, 32, 49, 0.4);
+        scale: 0.90;
+
+        [data-theme="dark"] & {
+          box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
+        }
       }
+
     }
 
     &--like {

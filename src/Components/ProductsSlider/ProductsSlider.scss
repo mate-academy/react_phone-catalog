@@ -59,6 +59,8 @@
 
 
       &-img--left {
+
+
         background-image: url("../../icons/arrow-left.svg");
       }
 
@@ -73,13 +75,12 @@
       border: 1px solid var(--icons);
       background-color: var(--white);
 
+      @include hover(transform, scale(1.1));
+      @include display-flex-row(row, center);
 
       [data-theme="dark"] & {
         background-color: var(--surface2);
       }
-
-
-      @include display-flex-row(row, center);
 
       &:hover {
         border: 1px solid var(--primary);

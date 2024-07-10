@@ -16,10 +16,17 @@
 
   &__box {
     line-height: 150%;
+    transition: transform 0.3s ease;
 
     &:hover {
       box-shadow: 0 2px 7px 0 rgba(23, 32, 49, 0.4);
+      transform: scale(1.1);
+
+      [data-theme="dark"] & {
+        box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
+      }
     }
+
 
     &--text {
       width: 60px;

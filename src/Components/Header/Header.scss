@@ -48,6 +48,7 @@ body.menu-open {
       background-image: url("../../icons/Close.png");
     }
 
+
     &--input {
       width: 250px;
       height: 100%;
@@ -89,6 +90,7 @@ body.menu-open {
       background-image: url("../../icons/nice-gadgets-logo-light.svg");
     }
 
+    @include hover(transform, scale(1.1));
     @include icon-size(80, 28, cover);
 
     @include on-desktop {
@@ -104,6 +106,7 @@ body.menu-open {
     text-transform: uppercase;
     color: var(--secondary);
     line-height: 48px;
+    position: relative; /* Make sure this is positioned relative for the absolute positioning of the pseudo-element */
 
     @include on-tablet {
       margin-right: 32px;
@@ -112,6 +115,40 @@ body.menu-open {
     @include on-desktop {
       margin-right: 64px;
       line-height: 64px;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 3px;
+      left: 100%;
+      bottom: 0;
+      background-color: var(--primary);
+      transition: width 0.5s, left 0.5s;
+
+      [data-theme="dark"] & {
+        background-color: var(--white);
+      }
+    }
+
+    &:hover::before {
+      width: 100%;
+      left: 0;
+    }
+
+    &.is-active::after {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 3px;
+      left: 0;
+      bottom: 0;
+      background-color: var(--primary);
+
+      [data-theme="dark"] & {
+        background-color: var(--white);
+      }
     }
   }
 
@@ -124,12 +161,16 @@ body.menu-open {
       box-shadow: -1px 1px 1px var(--elements);
       width: 64px;
 
+      &:hover .icon {
+        transform: scale(1.2);
+        transition: transform 0.3s ease;
+      }
+
       @include display-flex-row(row, center);
 
       @media (max-width: 645px) {
         display: none;
       }
-
     }
   }
 }
@@ -186,7 +227,6 @@ body.menu-open {
     position: absolute;
     background-image: url("../../icons/Heart-like.svg");
 
-
     &__number {
       background-color: red;
       top: -5px;
@@ -208,30 +248,6 @@ body.menu-open {
 
   &--cart {
     background-image: url("../../icons/Cart.svg");
-  }
-}
-
-
-.is-active {
-  position: relative;
-  color: var(--secondary);
-
-  [data-theme="dark"] & {
-    color: var(--white);
-  }
-}
-
-.is-active::after {
-  content: "";
-  position: absolute;
-  width: 100%;
-  left: 0;
-  bottom: 0;
-  border-bottom: 3px solid var(--primary);
-
-
-  [data-theme="dark"] & {
-    border-bottom: 3px solid var(--white);
   }
 }
 
@@ -273,4 +289,12 @@ body.menu-open {
   width: 100%;
   display: flex;
   justify-content: start;
+}
+
+.is-active {
+  color: var(--primary);
+
+  [data-theme="dark"] & {
+    color: var(--white);
+  }
 }

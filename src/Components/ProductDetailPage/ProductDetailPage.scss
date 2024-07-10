@@ -175,7 +175,6 @@
 
   &__button {
     @include display-flex-row(row, space-between);
-
     margin-bottom: 32px;
 
     &--add {
@@ -188,6 +187,17 @@
       line-height: 150%;
       font-weight: 700;
       background-color: var(--color-button);
+
+
+      &:hover {
+        box-shadow: 0 2px 7px 0 rgba(23, 32, 49, 0.4);
+        scale: 0.95;
+
+        [data-theme="dark"] & {
+          box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
+        }
+      }
+
 
       @include on-desktop {
         width: 263px;
@@ -218,7 +228,12 @@
       border: 1px solid var(--icons);
 
       &:hover {
-        border: 1px solid var(--primary);
+        box-shadow: 0 2px 7px 0 rgba(23, 32, 49, 0.4);
+        scale: 0.90;
+
+        [data-theme="dark"] & {
+          box-shadow: 0 0 5px 5px rgba(195, 195, 195, 0.2);
+        }
       }
 
       &__link {
