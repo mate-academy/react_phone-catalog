@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { themeClass } from '../../utils/themeClass';
 import { ThemeContext } from '../ThemeProvider/ThemeProvider';
 import './ProductCard.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LikedLight from '../../images/LikedLight.svg';
 import LikedDark from '../../images/LikedDark.svg';
 import { LikedContext } from '../LikedProvider/LikedProvider';
@@ -22,6 +22,8 @@ export const ProductCard: React.FC<Params> = ({ product }) => {
   const [isLiked, setIsLiked] = useState(liked.includes(product));
   const { cart, setCart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(cart.includes(product));
+  const link = `/${product.category}/${product.itemId}`;
+  const navigate = useNavigate();
 
   const handleLikedButtonClick = () => {
     if (liked.includes(product)) {
@@ -52,10 +54,11 @@ export const ProductCard: React.FC<Params> = ({ product }) => {
       <img
         src={product.image}
         alt={product.name}
+        onClick={() => navigate(link)}
         className="product-card-pic"
       />
 
-      <Link to={`/${product.category}/${product.itemId}`} className="link">
+      <Link to={link} className="link">
         <p className={getClassName('product-card-name')}>{product.name}</p>
       </Link>
 

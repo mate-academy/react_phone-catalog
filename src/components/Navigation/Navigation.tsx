@@ -22,7 +22,7 @@ export const Navigation = () => {
   const { light, toggleTheme } = useContext(ThemeContext);
   const [isOpened, setIsOpened] = useState(false);
   const { liked } = useContext(LikedContext);
-  const { cart } = useContext(CartContext);
+  const { cartLength } = useContext(CartContext);
 
   const getClassName = themeClass(light);
 
@@ -116,7 +116,7 @@ export const Navigation = () => {
               <img src={CartDark} alt="Cart" />
             )}
 
-            {!!cart.length && <p className="circle">{cart.length}</p>}
+            {!!cartLength && <p className="circle">{cartLength}</p>}
           </NavLink>
         </div>
       </nav>

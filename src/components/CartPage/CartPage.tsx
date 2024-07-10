@@ -12,7 +12,7 @@ import cartEmpty from '../../images/cart-is-empty.png';
 export const CartPage = () => {
   const { light } = useContext(ThemeContext);
   const getClassName = themeClass(light);
-  const { cart } = useContext(CartContext);
+  const { cart, setCartLength } = useContext(CartContext);
   const [totalPrice, setTotalPrice] = useState(
     cart.reduce((acc, product) => acc + product.price, 0),
   );
@@ -24,6 +24,10 @@ export const CartPage = () => {
     setTotalCount(cart.length);
     setTotalPrice(cart.reduce((acc, product) => acc + product.price, 0));
   }, [cart]);
+
+  useEffect(() => {
+    setCartLength(totalCount);
+  }, [totalCount]);
 
   return (
     <main className={getClassName('cart-page')}>

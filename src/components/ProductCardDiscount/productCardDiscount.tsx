@@ -3,7 +3,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import { themeClass } from '../../utils/themeClass';
 import { ThemeContext } from '../ThemeProvider/ThemeProvider';
 import './productCardDiscount.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import LikedLight from '../../images/LikedLight.svg';
 import LikedDark from '../../images/LikedDark.svg';
 import { Product } from '../../types/Product';
@@ -24,6 +24,7 @@ export const ProductCardDicount: React.FC<Params> = ({ product }) => {
   const { cart, setCart } = useContext(CartContext);
   const [isInCart, setIsInCart] = useState(cart.includes(product));
   const link = `/${product.category}/${product.itemId}`;
+  const navigate = useNavigate();
 
   const handleLikedButtonClick = () => {
     if (liked.includes(product)) {
@@ -52,6 +53,7 @@ export const ProductCardDicount: React.FC<Params> = ({ product }) => {
   return (
     <div className={getClassName('product-card')}>
       <img
+        onClick={() => navigate(link)}
         src={product.image}
         alt={product.name}
         className={classNames('product-card-pic', {
