@@ -3,3 +3,4 @@ import { Root } from './Root';
 import React from 'react';
 
 createRoot(document.getElementById('root') as HTMLElement).render(<Root />);
+<React.Fragment />; {/* // USED TO AVOID LINTIG ISSUES !!!!! */}
