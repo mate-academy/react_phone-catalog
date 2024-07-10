@@ -1,6 +1,7 @@
 import { NavLink, Link } from "react-router-dom";
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg'
+import cartIcon from '../../img/icons/CartIcon.svg'
 import React from 'react';
 
 export const Header: React.FC = () => (
@@ -46,6 +47,25 @@ export const Header: React.FC = () => (
         >
           Accessories
         </NavLink>
+
+        <div className={styles.actionsContainer}>
+          {/* THEME TOGGLE PLACEHOLDER */}
+          {/* SEARCH TOGGLE PLACEHOLDER */}
+          <div className={styles.actions}>
+            <NavLink
+              to="/"
+              className={styles.actionItem}
+            >
+              <div className={styles.actionIcon}>
+                <img
+                  src={cartIcon}
+                  alt="Add to cart"
+                  className={styles.icon}
+                />
+              </div>
+            </NavLink>
+          </div>
+        </div>
       </nav>
     </div>
   </header>
