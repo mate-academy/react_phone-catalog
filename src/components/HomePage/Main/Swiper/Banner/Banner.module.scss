@@ -1,0 +1,92 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.banner {
+  display: none;
+  background-color: rgb(0 0 0);
+  border-radius: 8px 0 0 8px;
+  right: -1px;
+  position: relative;
+  width: 50%;
+
+  @include on-tablet {
+    display: block;
+  }
+
+  &__wrapper,
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    gap: 10px;
+
+    @include on-desktop {
+      gap: 20px;
+    }
+  }
+
+  &__wrapper {
+    margin: 5px;
+    background-color: #292929;
+    border-radius: 15px;
+    padding: 20px;
+    justify-content: space-between;
+    gap: 40px;
+
+    @include on-desktop {
+      margin: 15px;
+      border-radius: 25px;
+      gap: 75px;
+      padding: 50px;
+    }
+  }
+
+  &__title {
+    background: linear-gradient(#d06cff, #f9c);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    color: transparent;
+    font-weight: 900;
+    font-size: 18px;
+    line-height: 100%;
+
+    @include  on-desktop {
+      font-size: 48px;
+    }
+  }
+
+  &__text {
+    color: rgb(180, 189, 196);
+    font-size: 9px;
+
+    @include on-desktop {
+      font-size: 12px;
+    }
+  }
+
+  &__button {
+    color: rgb(180, 189, 196);
+    text-transform: uppercase;
+    font-size: 10px;
+    padding: 10px 20px;
+    border: 1px solid rgb(83 85 86);
+    border-radius: 30px;
+    width: fit-content;
+    font-weight: 700;
+    transition: all 0.3s;
+
+    @include on-desktop {
+      font-size: 16px;
+      padding: 20px 40px;
+    }
+
+    &:hover {
+      background-color: rgb(83 85 86);
+      color: #fff;
+      transform: translate( 0, -1px);
+    }
+  }
+}

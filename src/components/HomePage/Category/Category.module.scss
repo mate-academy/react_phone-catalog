@@ -1,0 +1,84 @@
+@import '/src/styles/variables';
+@import '/src/styles/mixins';
+
+.category {
+  color: $main-black;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  margin-top: 57px;
+
+  &__title {
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1.4em;
+    width: 288px;
+    margin: 0 auto;
+
+    @include on-tablet {
+      font-size: 32px;
+      line-height: 41px;
+      margin: 0;
+    }
+  }
+
+  &__link,
+  &__text {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__content {
+    padding: 0 16px;
+
+    @include on-desktop {
+      padding: 0;
+    }
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    align-items: center;
+    gap: 32px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+  }
+
+  &__item {
+    border: 1px solid transparent;
+    border-radius: 16px;
+    padding-bottom: 20px;
+    cursor: pointer;
+    transition: border 0.3s;
+
+    &:hover {
+      border: 1px solid rgb(66, 25, 208);;
+    }
+  }
+
+  &__link {
+    gap: 24px;
+    color: $main-black;
+  }
+
+  &__text {
+    gap: 8px;
+  }
+
+  &__name {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+  }
+
+  &__count {
+    color: rgb(137, 147, 154);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+  }
+}

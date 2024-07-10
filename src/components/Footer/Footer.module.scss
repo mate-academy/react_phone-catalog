@@ -1,0 +1,88 @@
+@import '/src/styles/mixins';
+@import '/src/styles/variables';
+
+.footer {
+  padding: 32px 16px;
+  box-shadow: 0 -1px 0 0 rgb(226, 230, 233);
+  margin-top: 64px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    padding: 32px;
+    justify-content: space-between;
+    height: $footer-height;
+  }
+
+
+  &__link,
+  &__button-text {
+    color: rgb(137, 147, 154);
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    line-height: 11px;
+  }
+
+  &__link {
+    text-transform: uppercase;
+    transition: color 0.3s;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 107px;
+    }
+  }
+
+  &__button {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    margin: 0 auto;
+
+    @include on-tablet {
+      margin: 0;
+    }
+  }
+
+  &__button-text {
+    line-height: 15px;
+    letter-spacing: 0;
+  }
+
+  &__button-arrow {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgb(180, 189, 196);
+    position: relative;
+
+    &::after {
+      content: '';
+      background-image: url('./img/arrow.svg');
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 6px;
+      height: 9px;
+      display: block;
+      background-size: contain;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+  }
+}

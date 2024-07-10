@@ -3357,16 +3357,16 @@
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE"]
   },
   {
-    "id": "apple-iphone-14-128gb-midnight",
+    "id": "apple-iphone-14-128gb-midnightblue",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
-    "name": "Apple iPhone 14 128GB Midnight",
+    "name": "Apple iPhone 14 128GB Midnightblue",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "128GB",
     "priceRegular": 1056,
     "priceDiscount": 980,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-14/midnight/00.webp",
       "img/phones/apple-iphone-14/midnight/01.webp",
@@ -3404,16 +3404,16 @@
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
-    "id": "apple-iphone-14-256gb-midnight",
+    "id": "apple-iphone-14-256gb-midnightblue",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
-    "name": "Apple iPhone 14 256GB Midnight",
+    "name": "Apple iPhone 14 256GB Midnightblue",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "256GB",
     "priceRegular": 1200,
     "priceDiscount": 1160,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-14/midnight/00.webp",
       "img/phones/apple-iphone-14/midnight/01.webp",
@@ -3451,16 +3451,16 @@
     "cell": ["GPRS", "EDGE", "WCDMA", "UMTS", "HSPA", "LTE", "5G"]
   },
   {
-    "id": "apple-iphone-14-512gb-midnight",
+    "id": "apple-iphone-14-512gb-midnightblue",
     "category": "phones",
     "namespaceId": "apple-iphone-14",
-    "name": "Apple iPhone 14 512GB Midnight",
+    "name": "Apple iPhone 14 512GB Midnightblue",
     "capacityAvailable": ["128GB", "256GB", "512GB"],
     "capacity": "512GB",
     "priceRegular": 1466,
     "priceDiscount": 1378,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-14/midnight/00.webp",
       "img/phones/apple-iphone-14/midnight/01.webp",
@@ -3506,7 +3506,7 @@
     "capacity": "128GB",
     "priceRegular": 1056,
     "priceDiscount": 980,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "yellow",
     "images": [
       "img/phones/apple-iphone-14/yellow/00.webp",
@@ -3553,7 +3553,7 @@
     "capacity": "256GB",
     "priceRegular": 1200,
     "priceDiscount": 1160,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "yellow",
     "images": [
       "img/phones/apple-iphone-14/yellow/00.webp",
@@ -3600,7 +3600,7 @@
     "capacity": "512GB",
     "priceRegular": 1466,
     "priceDiscount": 1378,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "yellow",
     "images": [
       "img/phones/apple-iphone-14/yellow/00.webp",
@@ -3647,7 +3647,7 @@
     "capacity": "128GB",
     "priceRegular": 1056,
     "priceDiscount": 980,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "purple",
     "images": [
       "img/phones/apple-iphone-14/purple/00.webp",
@@ -3694,7 +3694,7 @@
     "capacity": "256GB",
     "priceRegular": 1256,
     "priceDiscount": 1180,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "purple",
     "images": [
       "img/phones/apple-iphone-14/purple/00.webp",
@@ -3741,7 +3741,7 @@
     "capacity": "512GB",
     "priceRegular": 1600,
     "priceDiscount": 1450,
-    "colorsAvailable": ["midnight", "yellow", "purple"],
+    "colorsAvailable": ["midnightblue", "yellow", "purple"],
     "color": "purple",
     "images": [
       "img/phones/apple-iphone-14/purple/00.webp",
@@ -4516,8 +4516,8 @@
     "capacity": "64GB",
     "priceRegular": 880,
     "priceDiscount": 800,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-13-mini/midnight/00.webp",
       "img/phones/apple-iphone-13-mini/midnight/01.webp",
@@ -4561,8 +4561,8 @@
     "capacity": "128GB",
     "priceRegular": 980,
     "priceDiscount": 900,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-13-mini/midnight/00.webp",
       "img/phones/apple-iphone-13-mini/midnight/01.webp",
@@ -4606,8 +4606,8 @@
     "capacity": "256GB",
     "priceRegular": 1180,
     "priceDiscount": 1100,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
-    "color": "midnight",
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
+    "color": "midnightblue",
     "images": [
       "img/phones/apple-iphone-13-mini/midnight/00.webp",
       "img/phones/apple-iphone-13-mini/midnight/01.webp",
@@ -4651,7 +4651,7 @@
     "capacity": "64GB",
     "priceRegular": 880,
     "priceDiscount": 800,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "pink",
     "images": [
       "img/phones/apple-iphone-13-mini/pink/00.webp",
@@ -4696,7 +4696,7 @@
     "capacity": "128GB",
     "priceRegular": 980,
     "priceDiscount": 900,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "pink",
     "images": [
       "img/phones/apple-iphone-13-mini/pink/00.webp",
@@ -4741,7 +4741,7 @@
     "capacity": "256GB",
     "priceRegular": 1180,
     "priceDiscount": 1100,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "pink",
     "images": [
       "img/phones/apple-iphone-13-mini/pink/00.webp",
@@ -4786,7 +4786,7 @@
     "capacity": "64GB",
     "priceRegular": 880,
     "priceDiscount": 800,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "white",
     "images": [
       "img/phones/apple-iphone-13-mini/white/00.webp",
@@ -4831,7 +4831,7 @@
     "capacity": "128GB",
     "priceRegular": 980,
     "priceDiscount": 900,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "white",
     "images": [
       "img/phones/apple-iphone-13-mini/white/00.webp",
@@ -4876,7 +4876,7 @@
     "capacity": "256GB",
     "priceRegular": 999,
     "priceDiscount": 949,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "white",
     "images": [
       "img/phones/apple-iphone-13-mini/white/00.webp",
@@ -4921,7 +4921,7 @@
     "capacity": "64GB",
     "priceRegular": 880,
     "priceDiscount": 800,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "blue",
     "images": [
       "img/phones/apple-iphone-13-mini/blue/00.webp",
@@ -4966,7 +4966,7 @@
     "capacity": "128GB",
     "priceRegular": 980,
     "priceDiscount": 900,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "blue",
     "images": [
       "img/phones/apple-iphone-13-mini/blue/00.webp",
@@ -5011,7 +5011,7 @@
     "capacity": "256GB",
     "priceRegular": 999,
     "priceDiscount": 949,
-    "colorsAvailable": ["midnight", "white", "blue", "pink"],
+    "colorsAvailable": ["midnightblue", "white", "blue", "pink"],
     "color": "blue",
     "images": [
       "img/phones/apple-iphone-13-mini/blue/00.webp",
