@@ -37,11 +37,21 @@ export const Hero: React.FC = () => {
             </picture>
           </SwiperSlide>
           <SwiperSlide>
-            <img
-              className="hero__swiper--img"
-              src="img/banner/banner-tablets.webp"
-              alt="Tablets"
-            />
+            <picture>
+              <source
+                media="(max-width: 499px)"
+                srcSet="img/banner/banner-tablets-mobile.webp"
+              />
+              <source
+                media="(min-width: 500px)"
+                srcSet="img/banner/banner-tablets.webp"
+              />
+              <img
+                className="hero__swiper--img"
+                src="img/banner/banner-tablets.webp"
+                alt="Tablets"
+              />
+            </picture>
           </SwiperSlide>
           <SwiperSlide>
             <picture>

@@ -23,6 +23,8 @@
       margin-bottom: 0;
       grid-column: 1 / span 3;
     }
+
+    @include hover(transform, scale(1.1));
   }
 
   &__navbar {
@@ -80,6 +82,8 @@
       width: 32px;
       height: 32px;
       background-color: $button-grey-color;
+
+      @include hover(background-color, $icon-grey-color);
     }
   }
 }

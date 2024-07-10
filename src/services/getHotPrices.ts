@@ -5,10 +5,10 @@ export const getHotPrices = async (): Promise<Gadget[]> => {
   try {
     const products = await getData<Gadget[]>('api/products.json');
 
-    const shuffledProducts = products.sort(
+    const sortedProducts = products.sort(
       (a, b) => b.fullPrice - b.price - (a.fullPrice - a.price),
     );
-    const suggestedProducts = shuffledProducts.slice(0, 12);
+    const suggestedProducts = sortedProducts.slice(0, 12);
 
     return suggestedProducts;
   } catch (error) {

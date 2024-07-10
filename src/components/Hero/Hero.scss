@@ -7,6 +7,17 @@
 
   @include on-tablet {
     padding: 80px $padding-tablet 0;
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+    padding-top: 120px $padding-desktop-small 0;
+  }
+
+  @include on-desktop {
+    padding-left: $padding-desktop;
+    padding-right: $padding-desktop;
   }
 
   &__title {
@@ -28,27 +39,32 @@
 
       grid-column: 1 / 10;
     }
+
+    @include on-desktop-small {
+      grid-column: 1 / 18;
+      margin-bottom: $margin-bottom-desktop-small;
+    }
   }
 
   &__swiper {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 56px;
     grid-column: 1 / -1;
-
-    @include on-tablet {
-      margin-bottom: 64px;
-    }
 
     &--img {
       width: 100%;
       height: 320px;
 
       @include on-tablet {
-        width: 490px;
+        width: fit-content;
         height: 189px;
         margin: 0 auto;
+      }
+
+      @include on-desktop-small {
+        width: fit-content;
+        height: 400px;
       }
     }
   }
@@ -60,11 +76,16 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 352px;
+      height: 320px;
+      padding-bottom: 32px;
       grid-column: 1 / -1;
 
       @include on-tablet {
-        height: 221px;
+        height: 189px;
+      }
+
+      @include on-desktop-small {
+        height: 400px;
       }
     }
 
@@ -105,6 +126,12 @@
           font-size: 10px;
         }
       }
+
+      @include on-desktop-small {
+        height: 400px;
+      }
+
+      @include hover(background-color, $icon-grey-color);
     }
 
     &-button-prev {

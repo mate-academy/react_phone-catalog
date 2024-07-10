@@ -5,6 +5,14 @@
 
   @include page-grid;
 
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
+
   &__title {
     color: $main-white-color;
     font-size: 22px;
@@ -20,7 +28,7 @@
       font-weight: 800;
       line-height: 1.28;
 
-      grid-column: 1 / span 6;
+      grid-column: 1 / span 7;
     }
   }
 
@@ -37,6 +45,10 @@
       @include on-tablet {
         margin-bottom: 0;
       }
+
+      @include on-desktop-small {
+      grid-column: span 8;
+    }
     }
   }
 }
@@ -44,6 +56,8 @@
 .card {
   &__img {
     margin-bottom: $margin-bottom-mobile;
+
+    @include hover(box-shadow, 0 0 8px $main-white-color, transform, scale(1.04));
   }
 
   &__title {
@@ -57,6 +71,6 @@
   &__descr {
     color: $light-grey-color;
     font-size: 14px;
-    line-height: 21px;
+    line-height: 1.5;
   }
 }
