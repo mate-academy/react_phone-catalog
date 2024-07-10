@@ -46,7 +46,6 @@ export const CartPage = () => {
                       itemId={item.itemId}
                       image={item.image}
                       name={item.name}
-                      price={item.price}
                       item={item}
                     />
                   </div>
