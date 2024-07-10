@@ -12,13 +12,7 @@ type Props = {
   item: Product;
 };
 
-export const CartCard = ({
-  category,
-  itemId,
-  image,
-  name,
-  item,
-}: Props) => {
+export const CartCard = ({ category, itemId, image, name, item }: Props) => {
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const { bascket } = state;
@@ -73,7 +67,9 @@ export const CartCard = ({
             <img src="img/Plus.svg" alt="plus" />
           </button>
         </div>
-        <p className={styles.price}>{`$${bascket[index].quantity * bascket[index].price}`}</p>
+        <p
+          className={styles.price}
+        >{`$${bascket[index].quantity * bascket[index].price}`}</p>
       </div>
     </div>
   );
