@@ -12,7 +12,7 @@
 
   @include on-desktop-small {
     margin-bottom: 80px;
-    padding-top: 120px $padding-desktop-small 0;
+    padding: 120px $padding-desktop-small 0;
   }
 
   @include on-desktop {

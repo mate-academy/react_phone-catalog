@@ -17,6 +17,11 @@
     padding: 13px 16px;
 
     grid-column: 1 / span 2;
+
+    @include on-desktop-small {
+      width: 128px;
+      padding: 18px 24px;
+    }
   }
 
   &__navbar {
@@ -24,9 +29,18 @@
 
     @include on-tablet {
       display: flex;
-      gap: 32px;
+      justify-content: space-between;
+      align-items: center;
 
       grid-column: 3 / span 7;
+    }
+
+    @include on-desktop-small {
+      grid-column: 3 / span 9;
+    }
+
+    @include on-desktop {
+      padding-left: 10px;
     }
 
     &--link {
@@ -36,7 +50,7 @@
       color: $light-grey-color;
       font-size: 12px;
       font-weight: 800;
-      line-height: 11px;
+      line-height: 0.92;
       letter-spacing: 0.04em;
     }
   }
@@ -50,6 +64,10 @@
       grid-column: 11 / span 2;
     }
 
+    @include on-desktop-small {
+      grid-column: 23 / span 2;
+    }
+
     &--icon {
       display: flex;
       align-items: center;
@@ -57,6 +75,11 @@
       width: 48px;
       height: 48px;
       border-left: 1px solid $dark-grey-color;
+
+      @include on-desktop-small {
+        width: 64px;
+        height: 64px;
+      }
     }
   }
 
