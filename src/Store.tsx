@@ -6,9 +6,10 @@ export type Action =
   | { type: 'addToFavorites'; payload: { itemId: string } }
   | { type: 'removeFromFavorites'; payload: { itemId: string } }
   | { type: 'addToBascket'; payload: { itemId: string; price: number } }
+  | { type: 'removeFromBascket'; payload: { itemId: string } }
   | { type: 'removeAllFromBascket'; payload: { itemId: string } }
   | { type: 'deleteOneItem'; payload: { itemId: string; quantity: number } }
-  | { type: 'addOneItem'; payload: { itemId: string; quantity: number }    }
+  | { type: 'addOneItem'; payload: { itemId: string; quantity: number } }
   | { type: 'setBascketItem'; payload: { itemId: string; quantity: number } };
 
 export type State = {
@@ -91,6 +92,19 @@ const reducer = (state: State, action: Action): State => {
       const newState = {
         ...state,
         bascket,
+      };
+
+      localStorage.setItem(BASCKET, JSON.stringify(newState.bascket));
+
+      return newState;
+    }
+
+    case 'removeFromBascket': {
+      const newState = {
+        ...state,
+        bascket: state.bascket.filter(
+          item => item.itemId !== action.payload.itemId,
+        ),
       };
 
       localStorage.setItem(BASCKET, JSON.stringify(newState.bascket));

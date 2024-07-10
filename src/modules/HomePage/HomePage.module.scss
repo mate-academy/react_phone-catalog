@@ -5,31 +5,28 @@
   margin: 0 auto;
 
   padding-top: 24px;
-  // padding: 24px 16px 0 16px;
-  // padding-bottom: 56px;
 
-  @include onTablet() {
+  @include on-tablet {
     padding-top: 32px;
-    // padding-bottom: 64px;
-    // padding: 32px 24px 0 24px;
   }
 
-  @include onDesktop() {   
+  @include on-desktop {   
       padding-top: 56px;
-    // padding: 56px 32px 0 32px; 
   }
 }
 
 .title {
   @include h1-smartphone-title;
-  padding: 0 16px 24px 16px;
 
-  @include onTablet {
-    @include h1-Tablet-title;
-    padding: 0 24px 32px 24px;
+  padding: 0 16px 24px;
+
+  @include on-tablet {
+    @include h1-tablet-title;
+
+    padding: 0 24px 32px;
   }
 
-  @include onDesktop {   
-    padding: 0 32px 32px 32px;
+  @include on-desktop {   
+    padding: 0 32px 32px;
   }
 }

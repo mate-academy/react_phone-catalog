@@ -8,6 +8,7 @@ import { NotFoundPage } from '../NotFoundPage';
 import classNames from 'classnames';
 import { DispatchContext, StateContext } from '../../Store';
 import { Carousel } from '../../components/Carousel';
+import { Loading } from '../../components/Loading';
 
 const getColorByName = (name: string): string => {
   const mapColors: Record<string, string> = {
@@ -37,35 +38,60 @@ export const InfoCartPage = (params: { category: string }) => {
   const [product, setProduct] = useState<null | Phone>(null);
   const [currentIndexImg, setCurrentIndexImg] = useState(0);
   const state = useContext(StateContext);
-  const { products, favorites } = state;
+  const { products, favorites, bascket } = state;
   const navigate = useNavigate();
   const dispatch = useContext(DispatchContext);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const added = bascket.find(item => item.itemId === product?.id);
 
   useEffect(() => {
     if (category === 'phones' && itemId) {
-      getPhone(itemId).then(data => {
-        if (data) {
-          setProduct(data);
-        }
-      });
+      setIsLoading(true);
+
+      getPhone(itemId)
+        .then(data => {
+          if (data) {
+            setProduct(data);
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
 
     if (category === 'tablets' && itemId) {
-      getTablet(itemId).then(data => {
-        if (data) {
-          setProduct(data);
-        }
-      });
+      setIsLoading(true);
+
+      getTablet(itemId)
+        .then(data => {
+          if (data) {
+            setProduct(data);
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
 
     if (category === 'accessories' && itemId) {
-      getAccessorie(itemId).then(data => {
-        if (data) {
-          setProduct(data);
-        }
-      });
+      setIsLoading(true);
+
+      getAccessorie(itemId)
+        .then(data => {
+          if (data) {
+            setProduct(data);
+          }
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
     }
   }, [category, itemId]);
+
+  if (isLoading) {
+    return <Loading />;
+  }
 
   if (!product) {
     return <NotFoundPage />;
@@ -102,6 +128,22 @@ export const InfoCartPage = (params: { category: string }) => {
     if (isFavorite) {
       dispatch({
         type: 'removeFromFavorites',
+        payload: { itemId: product.id },
+      });
+    }
+  };
+
+  const addToBascket = () => {
+    if (!added) {
+      dispatch({
+        type: 'addToBascket',
+        payload: { itemId: product.id, price: product.priceDiscount },
+      });
+    }
+
+    if (added) {
+      dispatch({
+        type: 'removeFromBascket',
         payload: { itemId: product.id },
       });
     }
@@ -216,7 +258,15 @@ export const InfoCartPage = (params: { category: string }) => {
               >{`$${product.priceRegular}`}</p>
             </div>
             <div className={styles.buttons}>
-              <button className={styles.buttonAdd}>Add to cart</button>
+              {product.id === added?.itemId ? (
+                <button className={styles.added} onClick={addToBascket}>
+                  Added
+                </button>
+              ) : (
+                <button className={styles.buttonAdd} onClick={addToBascket}>
+                  Add to cart
+                </button>
+              )}
               <button className={styles.buttonLike} onClick={addToFavorites}>
                 {favorites.includes(product.id) ? (
                   <img src="img/redHeart.svg" alt="heart" />

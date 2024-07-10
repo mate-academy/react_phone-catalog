@@ -1,4 +1,4 @@
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import styles from './Category.module.scss';
 
 export const Category = () => {
@@ -8,11 +8,13 @@ export const Category = () => {
       <div className={styles.content}>
         <div className={styles.category}>
           <div className={styles.photoContainer}>
-            <img
-              src="img/category-phones.webp"
-              alt="categoryPhones"
-              className={styles.img}
-            />
+            <Link to="/phones">
+              <img
+                src="img/category-phones.webp"
+                alt="categoryPhones"
+                className={styles.img}
+              />
+            </Link>
           </div>
           <NavLink to="/phones" className={styles.categoryName}>
             Mobile phones
@@ -21,11 +23,13 @@ export const Category = () => {
         </div>
         <div className={styles.category}>
           <div className={styles.photoContainerTablets}>
-            <img
-              src="img/category-tablets.webp"
-              alt="categoryTablets"
-              className={styles.img}
-            />
+            <Link to="/tablets">
+              <img
+                src="img/category-tablets.webp"
+                alt="categoryTablets"
+                className={styles.img}
+              />
+            </Link>
           </div>
           <NavLink to="/tablets" className={styles.categoryName}>
             Tablets
@@ -34,11 +38,13 @@ export const Category = () => {
         </div>
         <div className={styles.categoryAccessories}>
           <div className={styles.photoContainerAccessories}>
-            <img
-              src="img/category-accessories.webp"
-              alt="categoryAccessories"
-              className={styles.img}
-            />
+            <Link to="/accessories">
+              <img
+                src="img/category-accessories.webp"
+                alt="categoryAccessories"
+                className={styles.img}
+              />
+            </Link>
           </div>
           <NavLink to="/accessories" className={styles.categoryName}>
             Accessories

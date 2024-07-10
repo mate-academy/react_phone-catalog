@@ -1,20 +1,18 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
   height: 437px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-elements;
   padding: 32px;
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  @include onTablet {
-    // width: 235px;
+  @include on-tablet {
     height: 494px;
   }
 
-  @include onDesktop {
-    // width: 270px;
+  @include on-desktop {
     height: 504px;
   }
 }
@@ -22,7 +20,6 @@
 .img {
   width: min-content;
   height: 129px;
-  margin-bottom: 24px;
   margin: 0 auto;
   max-height: 196px;
   object-fit: contain;
@@ -32,11 +29,11 @@
 
   @include hover(transform, scale(1.05));
 
-  @include onTablet {
+  @include on-tablet {
     height: 181px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: 196px;
   }
 }
@@ -48,7 +45,7 @@
   line-height: 21px;
   text-align: left;
   margin-bottom: 8px;
-  color: #313237;
+  color: $color-black;
   height: 42px;
 }
 
@@ -64,7 +61,7 @@
   font-weight: 800;
   line-height: 30.8px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .secondPrice {
@@ -73,12 +70,12 @@
   font-weight: 600;
   line-height: 28.12px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
   text-decoration: line-through;
 }
 
 .border {
-  border-bottom: 1px solid #E2E6E9;
+  border-bottom: 1px solid $color-elements;
 }
 
 .info {
@@ -93,7 +90,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .screen {
@@ -104,7 +101,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .titleCapacity {
@@ -113,7 +110,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .capacity {
@@ -124,7 +121,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .titleRam {
@@ -133,7 +130,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .ram {
@@ -144,7 +141,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .buttonConteiner {
@@ -156,8 +153,8 @@
   width: 100%;
   min-width: 100px;
   height: 40px;
-  background-color: #313237;
-  color: #fff;
+  background-color: $color-black;
+  color: $color-white;
 
   font-family: Mont, sans-serif;
   font-size: 14px;
@@ -165,21 +162,54 @@
   line-height: 21px;
   text-align: center;
   cursor: pointer;
+  box-shadow: 0 3px 13px 0 #17203166;
 
 
-  @include onTablet {
+  @include on-tablet {
     min-width: 125px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
+    min-width: 160px;
+  }
+}
+
+.added {
+  width: 100%;
+  min-width: 100px;
+  height: 40px;
+  background-color: $color-white;
+  color: $color-green;
+  border: 1px solid $color-elements;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 #17203166;
+
+
+  @include on-tablet {
+    min-width: 125px;
+  }
+
+  @include on-desktop {
     min-width: 160px;
   }
 }
 
 .heart {
-  width: 40px;
+  min-width: 40px;
   height: 40px;
-  background-color: #fff;
-  border: 1px solid #B4BDC3;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
   cursor: pointer;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: 0 3px 13px 0 #17203166;
 }

@@ -27,10 +27,10 @@ export const ProductCard = ({
 }: Props) => {
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
-  const { favorites } = state;
+  const { favorites, bascket } = state;
 
-  // console.log(bascket)
   const isFavorite = !!favorites.find(item => item === product.itemId);
+  const added = bascket.find(item => item.itemId === product.itemId);
 
   const addToFavorites = () => {
     if (!isFavorite) {
@@ -49,10 +49,19 @@ export const ProductCard = ({
   };
 
   const addToBascket = () => {
-    dispatch({
-      type: 'addToBascket',
-      payload: product,
-    });
+    if (!added) {
+      dispatch({
+        type: 'addToBascket',
+        payload: product,
+      });
+    }
+
+    if (added) {
+      dispatch({
+        type: 'removeFromBascket',
+        payload: { itemId: product.itemId },
+      });
+    }
   };
 
   return (
@@ -64,29 +73,35 @@ export const ProductCard = ({
         <h3 className={styles.name}>{name}</h3>
       </Link>
       <div className={styles.allPrice}>
-        <h3 className={styles.price}>{`$${secondPrice}`}</h3>
-        <h3 className={styles.secondPrice}>{`$${price}`}</h3>
+        <p className={styles.price}>{`$${secondPrice}`}</p>
+        <p className={styles.secondPrice}>{`$${price}`}</p>
       </div>
       <div className={styles.border}></div>
       <section className={styles.info}>
         <h3 className={styles.screen}>
-          <h4 className={styles.titleScreen}>{`Screen`}</h4>
-          <h4 className={styles.screenScreen}>{screen}</h4>
+          <p className={styles.titleScreen}>{`Screen`}</p>
+          <p className={styles.screenScreen}>{screen}</p>
         </h3>
         <h3 className={styles.capacity}>
-          <h4 className={styles.titleCapacity}>{`Capacity`}</h4>
-          <h4 className={styles.capacityCapacity}>{capacity}</h4>
+          <p className={styles.titleCapacity}>{`Capacity`}</p>
+          <p className={styles.capacityCapacity}>{capacity}</p>
         </h3>
         <h3 className={styles.ram}>
-          <h4 className={styles.titleRam}>{`RAM`}</h4>
-          <h4 className={styles.ramRam}>{ram}</h4>
+          <p className={styles.titleRam}>{`RAM`}</p>
+          <p className={styles.ramRam}>{ram}</p>
         </h3>
       </section>
 
       <div className={styles.buttonConteiner}>
-        <button className={styles.add} onClick={addToBascket}>
-          Add to cart
-        </button>
+        {product.itemId === added?.itemId ? (
+          <button className={styles.added} onClick={addToBascket}>
+            Added
+          </button>
+        ) : (
+          <button className={styles.add} onClick={addToBascket}>
+            Add to cart
+          </button>
+        )}
         <button className={styles.heart} onClick={addToFavorites}>
           {favorites.includes(product.itemId) ? (
             <img src="img/redHeart.svg" alt="heart" />

@@ -1,12 +1,14 @@
 import styles from './CardPage.module.scss';
 import { BackButton } from '../../components/BackButton';
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { StateContext } from '../../Store';
 import { CartCard } from '../../components/CartCard';
+import { ModalCheckout } from '../ModalCheckout';
 
 export const CartPage = () => {
   const state = useContext(StateContext);
   const { bascket, products } = state;
+  const [isCheckout, setIsCheckout] = useState(false);
 
   let sum = 0;
 
@@ -14,10 +16,13 @@ export const CartPage = () => {
     if (item.quantity > 1) {
       sum += item.price * item.quantity;
     }
+
     sum += item.price;
-    console.log(item);
-    // sum = item.quantity * sum;
   }
+
+  const hendleCheckout = () => {
+    setIsCheckout(true);
+  };
 
   return (
     <div className={styles.container}>
@@ -58,9 +63,12 @@ export const CartPage = () => {
             </div>
             <div className={styles.border}></div>
             <div className={styles.totalButton}>
-              <button className={styles.totalCheckout}>Checkout</button>
+              <button className={styles.totalCheckout} onClick={hendleCheckout}>
+                Checkout
+              </button>
             </div>
           </div>
+          {isCheckout && <ModalCheckout setIsCheckout={setIsCheckout} />}
         </div>
       ) : (
         <div className={styles.empty}>

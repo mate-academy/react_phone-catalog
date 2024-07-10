@@ -1,16 +1,4 @@
-@import '../../main.scss';
-
-// .container {
-//   padding: 0 16px 56px 16px;
-
-//   @include onTablet {
-//     padding: 0 24px 64px 24px;
-//   }
-
-//   @include onDesktop {
-//     padding: 0 32px 80px 32px;
-//   }
-// }
+@import '../../main';
 
 .sliderWrapper {
   position: relative;
@@ -18,11 +6,11 @@
   width: 100%;
   height: 437px;
 
-  @include onTablet {
+  @include on-tablet {
     height: 510px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: 504px;
   }
 }
@@ -51,7 +39,7 @@
   text-align: left;
   width: 100%;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 32px;
     line-height: 41px;
     letter-spacing: -0.01em; 
@@ -67,13 +55,13 @@
 .buttonArrow {
   width: 32px;
   height: 32px;
-  background-color: white;
-  border: 1px solid #E2E6E9;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
 
   &Active {
     width: 32px;
     height: 32px;
-    background-color: white;
-    border: 1px solid #B4BDC3;
+    background-color: $color-white;
+    border: 1px solid $color-icons;
   }
 }

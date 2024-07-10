@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import styles from './PhonePage.module.scss';
 import { StateContext } from '../../Store';
 import { Link, useSearchParams } from 'react-router-dom';
@@ -24,6 +24,10 @@ export const PhonePage = () => {
     .sort((a, b) => b.year - a.year);
 
   let sortingPhones = [...phones];
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, []);
 
   const handleSelectedSorting = (
     event: React.ChangeEvent<HTMLSelectElement>,
@@ -110,7 +114,7 @@ export const PhonePage = () => {
         <h4 className={styles.subtitle}>{`${phones.length} phones`}</h4>
         <section className={styles.selectContainer}>
           <div className={styles.field}>
-            <label htmlFor="filter-query" className={styles.label}>
+            <label htmlFor="sortByYear" className={styles.label}>
               Sort by
             </label>
             <select
@@ -132,7 +136,7 @@ export const PhonePage = () => {
             </select>
           </div>
           <div className={styles.fieldSecond}>
-            <label htmlFor="filter-query" className={styles.label}>
+            <label htmlFor="itemsOnPage" className={styles.label}>
               Items on page
             </label>
             <select

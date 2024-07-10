@@ -1,7 +1,7 @@
-@import '../../main.scss';
+@import '../../main';
 
 .border {
-  border-top: 1px solid #E2E6E9;
+  border-top: 1px solid $color-elements;
 }
 
 .container {
@@ -10,14 +10,14 @@
   flex-direction: column;
   gap: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 32px 24px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding:  32px;
   }
 }
@@ -27,12 +27,12 @@
   flex-direction: column;
   gap: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     gap: 13px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     gap: 106px;
   }
 }
@@ -45,7 +45,7 @@
   letter-spacing: 0.04em;
   text-align: left;
   text-transform: uppercase;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .backTop {
@@ -61,12 +61,12 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: right;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .button {
-  background-color: white;
-  border: 1px solid #E2E6E9;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
   width: 32px;
   height: 32px;
 }

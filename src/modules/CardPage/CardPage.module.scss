@@ -1,18 +1,18 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
   width: 100vw;
   height: auto;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 0;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px;
     flex-direction: row;
     align-items: center;
     gap: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 32px;
   }
 }
@@ -23,7 +23,7 @@
   flex-direction: column;
   margin-bottom: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 40px;
   }
 }
@@ -35,7 +35,7 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 32px;
 }
 
@@ -44,15 +44,15 @@
   gap: 32px;
   flex-direction: column;
 
-  @include onDesktop {
-    @include gridPage;
+  @include on-desktop {
+    @include grid-page;
   }
 }
 
 .list {
   grid-column: 1 / -1;
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 1 / 17;
   }
 }
@@ -68,20 +68,20 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 8px;
 }
 
 .total {
   display: flex;
   flex-direction: column;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-elements;
   margin-bottom: 56px;
   padding: 24px;
   justify-content: center;
   align-items: center;
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: 17 / -1;
     grid-row: 1;
   }
@@ -94,7 +94,7 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: center;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 4px;
 }
 
@@ -104,13 +104,13 @@
   font-weight: 600;
   line-height: 21px;
   text-align: center;
-  color: #89939A;
+  color: $color-secondary;
   margin-bottom: 20px;
 }
 
 .border {
   display: flex;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-elements;
   width: 100%;
   margin-bottom: 20px;
 }
@@ -118,7 +118,7 @@
 .totalButton {
   width: 100%;
   height: 48px;
-  background-color: #313237;
+  background-color: $color-black;
   display: flex;
   justify-content: center;
 }
@@ -129,7 +129,7 @@
   font-weight: 700;
   line-height: 21px;
   text-align: center;
-  color: #FFFFFF;
-  background-color: #313237;
+  color: $color-white;
+  background-color: $color-black;
   border: none;
 }

@@ -1,15 +1,15 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
   width: 100vw;
   height: auto;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 0;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 32px;
   }
 }
@@ -33,7 +33,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .title {
@@ -43,7 +43,7 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 8px;
 }
 
@@ -53,27 +53,28 @@
   font-weight: 600;
   line-height: 21px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
   margin-bottom: 32px;
 }
 
 .list {
-  @include gridPage;
+  @include grid-page;
+
   margin-bottom: 24px;
 }
 
 .listItem {
   grid-column: span 4;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: span 6;
   }
 
-  @include onBigTablet {
+  @include on-big-tablet {
     grid-column: span 4;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: span 6;
   }
 }
@@ -90,6 +91,6 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 8px;
 }

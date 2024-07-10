@@ -1,14 +1,14 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
-  padding: 0 16px 56px 16px;
+  padding: 0 16px 56px;
 
-  @include onTablet {
-    padding: 0 24px 64px 24px;
+  @include on-tablet {
+    padding: 0 24px 64px;
   }
 
-  @include onDesktop {
-    padding: 0 32px 80px 32px;
+  @include on-desktop {
+    padding: 0 32px 80px;
   }
 }
 
@@ -18,10 +18,10 @@
   font-weight: 800;
   line-height: 30.8px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 32px;
     line-height: 41px;
   }
@@ -33,7 +33,7 @@
   width: 100%;
   height: auto;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     gap: 16px;
   }
@@ -91,10 +91,10 @@
   font-weight: 700;
   line-height: 25.56px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   padding-bottom: 4px;
 
-  @include onDesktop {
+  @include on-desktop {
     font-weight: 600;
   }
 }
@@ -105,5 +105,5 @@ font-size: 14px;
 font-weight: 600;
 line-height: 21px;
 text-align: left;
-color: #89939A;
+color: $color-secondary;
 }

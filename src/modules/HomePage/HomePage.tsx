@@ -7,7 +7,7 @@ import styles from './HomePage.module.scss';
 export const HomePage = () => {
   return (
     <div className={styles.homePage__container}>
-      <h1 className={styles.title}>Welcome to Nice Gadgets store!</h1>
+      <h1 className={styles.title}>Product Catalog</h1>
       <PictureSlider />
       <BrandNewModel />
       <Category />

@@ -1,21 +1,20 @@
-@import '../../main.scss';
+@import '../../main';
 
 $widthOfSliderButton: 32px;
 $paddingFromSliderToButton: 19px;
 $paddingFromSliderToButtonOnDesctop: 16px;
 
 .slider {
-  padding-bottom: 56px;
+  padding-bottom: 8px;
 
-  @include onTablet {
-    padding: 0 24px 56px 24px;
+  @include on-tablet {
+    padding: 0 24px 8px;
     display: flex;
   }
 
-  @include onDesktop {
-  padding: 0 32px 80px 32px;
+  @include on-desktop {
+  padding: 0 32px 8px;
     justify-content: center;
-    // padding-bottom: 80px;
   }
 }
 
@@ -24,7 +23,7 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   width: 100%;
   height: auto;
 
-  @include onTablet {
+  @include on-tablet {
     width: calc(100% - (2 * $widthOfSliderButton));
     height: auto;
   }
@@ -36,12 +35,12 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   width: 100%;
   aspect-ratio: 1 / 1;
 
-  @include onTablet {
+  @include on-tablet {
     height: calc(100vw * 189 / 640);
     margin: 0 $paddingFromSliderToButton;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: calc(100vw * 400 / 1200);
     margin: 0 $paddingFromSliderToButtonOnDesctop;
   }
@@ -55,11 +54,11 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   transition: left 0.5s;
   height: 100vw;
 
-  @include onTablet {
+  @include on-tablet {
     height: calc(100vw * 189 / 640);
   }
 
-  @include onDesktop {
+  @include on-desktop {
     height: calc(100vw * 400 / 1200);
   }
 }
@@ -69,23 +68,23 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   height: 100%;
   object-fit: cover;
 
-  @include onTablet {
+  @include on-tablet {
     width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButton) - (2 * 24px));
     height: auto;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButtonOnDesctop) - (2 * 32px));
     height: auto;
   }
 }
 
 .button {
-  background-color: white;
-  border: 1px solid #E2E6E9;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
   display: none;
 
-  @include onTablet {
+  @include on-tablet {
     display: block;
     cursor: pointer;
   }
@@ -97,12 +96,28 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   justify-content: center;
   cursor: pointer;
 
-  @include onTablet {
+  @include on-tablet {
     display: none;
   }
 }
 
 .button_slider {
   border: none;
-  background-color: white;
+  background-color: $color-white;
+}
+
+.bottomButtonSecond {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 56px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
 }

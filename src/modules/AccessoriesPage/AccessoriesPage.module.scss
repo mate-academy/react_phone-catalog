@@ -1,17 +1,17 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
   width: 100vw;
   max-width: 1200px;
   margin: 0 auto;
   height: auto;
-  padding: 24px 16px 0 16px;
+  padding: 24px 16px 0;
 
-  @include onTablet {
+  @include on-tablet {
     padding: 24px;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     padding: 24px 32px;
   }
 }
@@ -21,7 +21,7 @@
   gap: 8px;
   margin-bottom: 24px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-bottom: 40px;
   }
 }
@@ -37,7 +37,7 @@
   font-weight: 600;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .title {
@@ -47,10 +47,10 @@
   line-height: 41px;
   letter-spacing: -0.01em;
   text-align: left;
-  color: #313237;
+  color: $color-black;
   margin-bottom: 8px;
 
-  @include onTablet {
+  @include on-tablet {
     font-size: 48px;
     line-height: 56px;
   }
@@ -62,16 +62,17 @@
   font-weight: 600;
   line-height: 21px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
   margin-bottom: 32px;
 
-  @include onTablet {
+  @include on-tablet {
     margin-bottom: 40px;
   }
 }
 
 .selectContainer {
-  @include gridPage;
+  @include grid-page;
+
   margin-bottom: 24px;
 }
 
@@ -82,7 +83,7 @@
   gap: 4px;
   grid-column: span 2;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: span 4;
   }
 }
@@ -94,14 +95,14 @@
   gap: 4px;
   grid-column: span 2;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: span 3;
   }
 }
 
 .select {
   height: 40px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-elements;
   padding: 10px;
 }
 
@@ -111,7 +112,7 @@
   font-weight: 700;
   line-height: 15.34px;
   text-align: left;
-  color: #89939A;
+  color: $color-secondary;
 }
 
 .optionName {
@@ -120,26 +121,27 @@
   font-weight: 700;
   line-height: 21px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .list {
-  @include gridPage;
+  @include grid-page;
+
   margin-bottom: 24px;
 }
 
 .listItem {
   grid-column: span 4;
 
-  @include onTablet {
+  @include on-tablet {
     grid-column: span 6;
   }
 
-  @include onBigTablet {
+  @include on-big-tablet {
     grid-column: span 4;
   }
 
-  @include onDesktop {
+  @include on-desktop {
     grid-column: span 6;
   }
 }
@@ -160,8 +162,8 @@
 .button {
   width: 32px;
   height: 32px;
-  border: 1px solid #E2E6E9;
-  background-color: white;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
   color: #313237;
   cursor: pointer;
 }
@@ -171,15 +173,15 @@
   height: 32px;
   background-color: #373131;
   border: none;
-  color: #fff;
+  color: $color-white;
   cursor: pointer;
 }
 
 .buttonIsActive {
   width: 32px;
   height: 32px;
-  background-color: white;
-  border: 1px solid #E2E6E9;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
 }
 
 .middleButton {

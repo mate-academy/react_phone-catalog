@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import styles from './PictureSlider.module.scss';
 import { useWindowWidth } from '@react-hook/window-size';
 import { SliderButtonPictureSlider } from '../SliderButton_PictureSlider';
@@ -10,8 +10,6 @@ export const PictureSlider = () => {
   const isMobile = screenWidth >= 320 && screenWidth < 640;
   const isTablet = screenWidth >= 640 && screenWidth < 1200;
   const isDesctop = screenWidth >= 1200;
-
-  // console.log(isDesctop);
 
   const SliderPicturesDesktop = [
     {
@@ -77,11 +75,19 @@ export const PictureSlider = () => {
     setCurrentIndex(prevIndex => (prevIndex === 0 ? prevIndex : prevIndex - 1));
   };
 
-  const handleNextClick = () => {
+  const handleNextClick = useCallback(() => {
     setCurrentIndex(prevIndex =>
       prevIndex === SliderPictures.length - 1 ? 0 : prevIndex + 1,
     );
-  };
+  }, []);
+
+  useEffect(() => {
+    const handlerId = setInterval(handleNextClick, 5_000);
+
+    return () => {
+      clearInterval(handlerId);
+    };
+  }, []);
 
   let imgWidth = screenWidth;
 
@@ -94,28 +100,43 @@ export const PictureSlider = () => {
   }
 
   return (
-    <section className={styles.slider}>
-      <button className={styles.button} onClick={handlePrevClick}>
-        <img src="img/ArrowLeft.svg" alt="Previous" />
-      </button>
-      <div className={styles.container}>
-        <div className={styles.sliderWrapper}>
-          <div
-            className={styles.sliderContent}
-            style={{ left: `-${imgWidth * currentIndex}px` }}
-          >
-            {SliderPictures.map(picture => (
-              <img
-                src={`${picture.src}`}
-                alt={picture.title}
-                key={picture.id}
-                className={styles.banner}
-              />
-            ))}
+    <>
+      <section className={styles.slider}>
+        <button className={styles.button} onClick={handlePrevClick}>
+          <img src="img/ArrowLeft.svg" alt="Previous" />
+        </button>
+        <div className={styles.container}>
+          <div className={styles.sliderWrapper}>
+            <div
+              className={styles.sliderContent}
+              style={{ left: `-${imgWidth * currentIndex}px` }}
+            >
+              {SliderPictures.map(picture => (
+                <img
+                  src={`${picture.src}`}
+                  alt={picture.title}
+                  key={picture.id}
+                  className={styles.banner}
+                />
+              ))}
+            </div>
           </div>
         </div>
-      </div>
-      <div className={styles.bottomButton}>
+        <div className={styles.bottomButton}>
+          {[0, 1, 2].map(item => (
+            <SliderButtonPictureSlider
+              currentIndex={currentIndex}
+              setCurrentIndex={setCurrentIndex}
+              item={item}
+              key={item}
+            />
+          ))}
+        </div>
+        <button className={styles.button} onClick={handleNextClick}>
+          <img src="img/ArrowRight.svg" alt="Next" />
+        </button>
+      </section>
+      <div className={styles.bottomButtonSecond}>
         {[0, 1, 2].map(item => (
           <SliderButtonPictureSlider
             currentIndex={currentIndex}
@@ -125,9 +146,6 @@ export const PictureSlider = () => {
           />
         ))}
       </div>
-      <button className={styles.button} onClick={handleNextClick}>
-        <img src="img/ArrowRight.svg" alt="Next" />
-      </button>
-    </section>
+    </>
   );
 };

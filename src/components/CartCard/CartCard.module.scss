@@ -1,4 +1,4 @@
-@import '../../main.scss';
+@import '../../main';
 
 .container {
   display: flex;
@@ -8,10 +8,10 @@
   flex-direction: column;
   gap: 16px;
   overflow: hidden;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $color-elements;
   padding: 16px;
 
-  @include onTablet {
+  @include on-tablet {
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +25,7 @@
   gap: 16px;
   align-items: center;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 24px;
   }
 }
@@ -53,7 +53,7 @@
   font-weight: 600;
   line-height: 21px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
 
 .secondBlock {
@@ -61,7 +61,7 @@
   flex-direction: row;
   justify-content: space-between;
 
-  @include onTablet {
+  @include on-tablet {
     gap: 24px;
   }
 }
@@ -74,8 +74,8 @@
 }
 
 .minus {
-  border: 1px solid #E2E6E9;
-  background-color: white;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
   width: 32px;
   height: 32px;
 }
@@ -86,7 +86,7 @@
   font-weight: 600;
   line-height: 21px;
   text-align: center;
-  color: #000000;
+  color: $color-black;
 }
 
 .price {
@@ -95,5 +95,5 @@
   font-weight: 800;
   line-height: 30.8px;
   text-align: left;
-  color: #313237;
+  color: $color-black;
 }
