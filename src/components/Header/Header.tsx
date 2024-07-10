@@ -50,9 +50,17 @@ export const Header: React.FC = () => (
         </NavLink>
 
         <div className={styles.actionsContainer}>
-          {/* THEME TOGGLE PLACEHOLDER */}
           {/* SEARCH TOGGLE PLACEHOLDER */}
           <div className={styles.actions}>
+            <NavLink
+              to="/"
+              className={styles.actionItem}
+            >
+              <div className={styles.navItem}>
+                THEME
+              </div>
+            </NavLink>
+
             <NavLink
               to="/"
               className={styles.actionItem}
