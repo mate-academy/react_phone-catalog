@@ -14,17 +14,17 @@ export const PictureSlider = () => {
   const SliderPicturesDesktop = [
     {
       id: 1,
-      src: '/img/homePage/Banner-bigDesctop.png',
+      src: 'img/homePage/Banner-bigDesctop.png',
       title: 'phones',
     },
     {
       id: 2,
-      src: '/img/homePage/slide-2.webp',
+      src: 'img/homePage/slide-2.webp',
       title: 'tablets',
     },
     {
       id: 3,
-      src: '/img/homePage/slide-3.jpg',
+      src: 'img/homePage/slide-3.jpg',
       title: 'accessories',
     },
   ];
@@ -32,17 +32,17 @@ export const PictureSlider = () => {
   const SliderPicturesTablet = [
     {
       id: 1,
-      src: '/img/homePage/Banner-middleTablet.png',
+      src: 'img/homePage/Banner-middleTablet.png',
       title: 'phones',
     },
     {
       id: 2,
-      src: '/img/homePage/slide-2.webp',
+      src: 'img/homePage/slide-2.webp',
       title: 'tablets',
     },
     {
       id: 3,
-      src: '/img/homePage/slide-3.jpg',
+      src: 'img/homePage/slide-3.jpg',
       title: 'accessories',
     },
   ];
@@ -50,17 +50,17 @@ export const PictureSlider = () => {
   const SliderPicturesMobile = [
     {
       id: 1,
-      src: '/img/homePage/Banner-smallDesctop.png',
+      src: 'img/homePage/Banner-smallDesctop.png',
       title: 'phones',
     },
     {
       id: 2,
-      src: '/img/homePage/slide-2.webp',
+      src: 'img/homePage/slide-2.webp',
       title: 'tablets',
     },
     {
       id: 3,
-      src: '/img/homePage/slide-3.jpg',
+      src: 'img/homePage/slide-3.jpg',
       title: 'accessories',
     },
   ];

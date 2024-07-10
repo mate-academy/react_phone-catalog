@@ -27,7 +27,7 @@ export const Header: React.FC = () => {
         <div className={styles.content}>
           <Link to="/">
             <img
-              src="/img/Logo_header_homePage.svg"
+              src="img/Logo_header_homePage.svg"
               alt="Logo"
               className={styles.logo}
             />
