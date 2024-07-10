@@ -6,6 +6,7 @@ import { ProductSlider } from './components/ProductSlider';
 import { Header } from './components/Header';
 import { Footer } from './components/Footer';
 import { Breadcrumbs } from './components/Breadcrumbs';
+import { Pagination } from './components/Pagination';
 
 export const App: React.FC = () => (
   <div className="App">
@@ -13,6 +14,7 @@ export const App: React.FC = () => (
     <Breadcrumbs />
     <ProductSlider />
     <ProductCard />
+    <Pagination />
     <Footer />
     <Loader />
   </div>
