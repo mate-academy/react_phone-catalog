@@ -1,5 +1,5 @@
-@import '../../utils/fonts.scss';
-@import '../../utils/mixins.scss';
+@import '../../utils/fonts';
+@import '../../utils/mixins';
 
 .main {
   margin: auto;
@@ -17,7 +17,7 @@
     display: block;
     padding: 20px 16px;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
@@ -170,7 +170,7 @@
   &__cat-title {
     display: block;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 22px;
     font-weight: 700;
     line-height: 30.8px;

@@ -49,7 +49,7 @@
   }
 
   &__title {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 22px;
     font-weight: 800;
     line-height: 31px;
@@ -180,7 +180,7 @@
   &__colors-title {
     display: block;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
@@ -190,7 +190,7 @@
   &__id {
     display: block;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 700;
     line-height: 15.34px;
@@ -241,8 +241,7 @@
   &__sizes {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    column-gap: 5px;
-    row-gap: 5px;
+    gap: 5px;
 
     border-bottom: 1px solid #e2e6e9;
 
@@ -258,7 +257,7 @@
     display: block;
     grid-column: 1 / -1;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
@@ -271,7 +270,7 @@
 
     grid-column: span 1;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 13px;
     font-weight: 500;
     line-height: 21px;
@@ -308,7 +307,7 @@
     align-items: center;
     gap: 5px;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
@@ -356,7 +355,7 @@
 
       background-color: #313237;
 
-      font-family: Montserrat;
+      font-family: Montserrat, sans-serif;
       font-size: 13px;
       font-weight: 700;
       line-height: 21px;
@@ -429,7 +428,7 @@
   }
 
   &__feature-title {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
@@ -444,7 +443,7 @@
   }
 
   &__feature-value {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
@@ -475,7 +474,7 @@
   }
 
   &__desc-title {
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 16px;
     font-weight: 700;
     line-height: 20.45px;
@@ -486,7 +485,7 @@
     display: block;
     padding-top: 15px;
 
-    font-family: Montserrat;
+    font-family: Montserrat, sans-serif;
     font-size: 14px;
     font-weight: 400;
     line-height: 21px;
