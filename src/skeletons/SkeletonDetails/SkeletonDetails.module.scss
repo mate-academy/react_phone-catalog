@@ -1,4 +1,5 @@
 @use '../../utils/mixins' as *;
+@use "../../utils/variables" as *;
 
 .skeleton {
   font-family: Montserrat, sans-serif;
@@ -119,7 +120,7 @@
     &__separator {
       width: 288px;
       height: 1px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid $border-color;
       margin-bottom: 24px;
 
       @include for-tablet {
@@ -155,7 +156,7 @@
     &__separator {
       width: 288px;
       height: 1px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid $border-color;
       margin-bottom: 24px;
 
       @include for-tablet {
@@ -245,7 +246,7 @@
     &__separator {
       width: 288px;
       height: 1px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid $border-color;
       margin-bottom: 24px;
 
       @include for-tablet {
@@ -286,7 +287,7 @@
     &__separator {
       width: 288px;
       height: 1px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid $border-color;
       margin-bottom: 24px;
 
       @include for-tablet {

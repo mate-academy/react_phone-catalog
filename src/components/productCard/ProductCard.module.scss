@@ -1,10 +1,11 @@
 @use "../../utils/mixins" as *;
+@use '../../utils/variables' as *;
 
 .productCard {
   font-family: Montserrat, sans-serif;
   width: 270px;
   height: 440px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $border-color;
   margin: 0 15px 7px 0;
   padding: 10px 15px 0;
   font-size: 14px;
@@ -52,7 +53,7 @@
       &__reduce {
         text-decoration: line-through;
         font-weight: 500;
-        color: #89939A;
+        color: $secondary-color;
         font-size: 22px;
         line-height: 31px;
         width: 97px;
@@ -68,7 +69,7 @@
   &__separator {
     height: 1px;
     width: 225px;
-    border: 1px solid #E2E6E9;
+    border: 1px solid $border-color;
     margin-bottom: 8px;
   }
 
@@ -86,7 +87,7 @@
         height: fit-content;
         font-weight: 700;
         font-size: 12px;
-        color: #89939A;
+        color: $secondary-color;
       }
 
       &__value {
@@ -123,7 +124,7 @@
       &__added {
         color: #27AE60;
         background-color: #fff;
-        border: 1px solid #E2E6E9;
+        border: 1px solid $border-color;
 
         &::before {
           content: 'Added to cart';
@@ -134,7 +135,7 @@
 
     &__fav {
       width: 40px;
-      border: 1px solid #B4BDC3;
+      border: 1px solid $icons;
       background-image: url(../../../public/img/svg/fav_icon.svg);
       background-repeat: no-repeat;
       background-position: center;

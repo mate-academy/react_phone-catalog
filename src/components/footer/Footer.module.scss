@@ -1,4 +1,5 @@
 @use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
 
 .footer {
   display: flex;
@@ -63,7 +64,7 @@
       font-size: 12px;
       font-weight: 800;
       letter-spacing: 1px;
-      color: #89939A;
+      color: $secondary-color;
 
       @include for-tablet {
         line-height: 32px;

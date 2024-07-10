@@ -1,9 +1,10 @@
 @use "../../../utils/mixins" as *;
+@use "../../../utils/variables" as *;
 
 .cartCard {
   width: 288px;
   height: 160px;
-  border: 1px solid #E2E6E9;
+  border: 1px solid $border-color;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
@@ -64,7 +65,7 @@
       }
 
       &__item.border {
-        border: 1px solid #B4BDC3;
+        border: 1px solid $icons;
       }
 
       &__input {

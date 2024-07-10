@@ -1,4 +1,5 @@
 @use "../../utils/mixins" as *;
+@use "../../utils/variables" as *;
 
 .back {
   position: sticky;
@@ -27,6 +28,6 @@
     background-image: url(../../../public/img/svg/arrow_up.svg);
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid #B4BDC3;
+    border: 1px solid $icons;
   }
 }

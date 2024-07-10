@@ -1,4 +1,6 @@
 @use "../../../utils/mixins" as *;
+@use "../../../utils/variables" as *;
+;
 
 .title {
   font-family: Montserrat, sans-serif;
@@ -24,13 +26,9 @@
   margin-bottom: 56px;
 
   @include for-tablet {
-    width: 600px;
+    width: 100%;
     flex-flow: row wrap;
     height: fit-content;
-  }
-
-  @include for-desktop {
-    width: 1150px;
   }
 
   &__section {
@@ -39,7 +37,7 @@
       height: 230px;
       margin-bottom: 24px;
       border-radius: 20px;
-      border: 1px solid #E2E6E9;
+      border: 1px solid $border-color;
 
       @include for-tablet {
         width: 187px;
@@ -53,8 +51,8 @@
 
       &:hover {
         box-shadow:
-          3px 3px 3px #89939A,
-          6px 6px 3px #E2E6E9;
+          3px 3px 3px $secondary-color,
+          6px 6px 3px $border-color;
       }
     }
 
@@ -71,7 +69,7 @@
       font-weight: 600;
       font-size: 14px;
       line-height: 21px;
-      color: #89939A;
+      color: $secondary-color;
     }
   }
 }
