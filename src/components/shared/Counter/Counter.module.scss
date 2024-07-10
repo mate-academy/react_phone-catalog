@@ -23,10 +23,6 @@
     height: 32px;
 
     border: 1px solid #b4bdc3;
-
-    &:hover {
-      cursor: pointer;
-    }
   }
 
   &__minus {
@@ -40,6 +36,10 @@
       border: 1px solid #e2e6e9;
       background-image: url('../../../images/MinusDisabled.svg');
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__plus {
@@ -48,5 +48,9 @@
     background-size: 16px 16px;
 
     background-image: url('../../../images/Plus.svg');
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 }
