@@ -2,6 +2,7 @@ import { NavLink, Link } from "react-router-dom";
 import styles from './Header.module.scss';
 import LogoIcon from '../../img/icons/LogoIcon.svg'
 import cartIcon from '../../img/icons/CartIcon.svg'
+import favIcon from '../../img/icons/fav.svg'
 import React from 'react';
 
 export const Header: React.FC = () => (
@@ -52,6 +53,19 @@ export const Header: React.FC = () => (
           {/* THEME TOGGLE PLACEHOLDER */}
           {/* SEARCH TOGGLE PLACEHOLDER */}
           <div className={styles.actions}>
+            <NavLink
+              to="/"
+              className={styles.actionItem}
+            >
+              <div className={styles.actionIcon}>
+                <img
+                  src={favIcon}
+                  alt="Add to favorites"
+                  className={styles.icon}
+                />
+              </div>
+            </NavLink>
+
             <NavLink
               to="/"
               className={styles.actionItem}
