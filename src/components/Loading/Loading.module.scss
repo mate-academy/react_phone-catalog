@@ -3,18 +3,21 @@
 .container {
   display: flex;
   justify-content: center;
-  flex-direction: column;
-  height: 500px;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
 }
 
-.titel {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 36px;
-  margin: 32px 20px;
+.spinner {
+  border: 8px solid #f3f3f3;
+  border-top: 8px solid $color-secondary;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  animation: spin 2s linear infinite;
+}
 
-  h1 {
-    text-align: center;
-  }
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }

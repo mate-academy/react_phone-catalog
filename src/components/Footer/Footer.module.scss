@@ -48,6 +48,14 @@
   color: $color-secondary;
 }
 
+.pageLink {
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
+
 .backTop {
   display: flex;
   justify-content: center;
@@ -69,4 +77,5 @@
   border: 1px solid $color-elements;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 }

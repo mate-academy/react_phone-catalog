@@ -219,6 +219,7 @@ export const InfoCartPage = (params: { category: string }) => {
                     height: 32,
                     borderRadius: '50%',
                     backgroundColor: getColorByName(element),
+                    cursor: 'pointer',
                   }}
                 ></li>
               ))}

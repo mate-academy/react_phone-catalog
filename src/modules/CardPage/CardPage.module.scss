@@ -121,6 +121,7 @@
   background-color: $color-black;
   display: flex;
   justify-content: center;
+  cursor: pointer;
 }
 
 .totalCheckout {
@@ -132,4 +133,5 @@
   color: $color-white;
   background-color: $color-black;
   border: none;
+  cursor: pointer;
 }

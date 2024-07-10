@@ -19,7 +19,7 @@ export const Footer = () => {
         </Link>
         <nav className={styles.footerNav}>
           <ul className={styles.list}>
-            <li>
+            <li className={styles.pageLink}>
               <Link
                 to="https://github.com/MariiaSuper"
                 target="_blank"
@@ -28,12 +28,12 @@ export const Footer = () => {
                 Github
               </Link>
             </li>
-            <li>
+            <li className={styles.pageLink}>
               <Link to="contacts" target="_blank" className={styles.item}>
                 Contacts
               </Link>
             </li>
-            <li>
+            <li className={styles.pageLink}>
               <Link to="rights" target="_blank" className={styles.item}>
                 rights
               </Link>

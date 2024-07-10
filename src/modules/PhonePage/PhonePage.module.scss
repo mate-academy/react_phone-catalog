@@ -104,6 +104,7 @@
   height: 40px;
   border: 1px solid $color-elements;
   padding: 10px;
+  cursor: pointer;
 }
 
 .label {
@@ -182,10 +183,12 @@
   height: 32px;
   background-color: $color-white;
   border: 1px solid $color-elements;
+  cursor: pointer;
 }
 
 .middleButton {
   display: flex;
   align-items: center;
   gap: 8px;
+  cursor: pointer;
 }

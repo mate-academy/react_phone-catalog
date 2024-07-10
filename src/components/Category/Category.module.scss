@@ -81,6 +81,7 @@
   position: absolute;
   top: 50px;
   left: 50px;
+  transition: all 0.5s;
 
   @include hover(transform, scale(1.05));
 }

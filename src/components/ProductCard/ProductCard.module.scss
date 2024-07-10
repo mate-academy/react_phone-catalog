@@ -47,6 +47,11 @@
   margin-bottom: 8px;
   color: $color-black;
   height: 42px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .allPrice {

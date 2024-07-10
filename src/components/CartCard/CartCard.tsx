@@ -24,6 +24,7 @@ export const CartCard = ({
   const dispatch = useContext(DispatchContext);
   const state = useContext(StateContext);
   const { bascket } = state;
+  console.log(price);
 
   const handleDeleteAllItems = () => {
     dispatch({
@@ -47,6 +48,16 @@ export const CartCard = ({
   };
 
   const index = state.bascket.findIndex(el => el.itemId === itemId);
+
+  let sum = 0;
+
+  for (const item of bascket) {
+    if (item.quantity > 1) {
+      sum += item.price * item.quantity;
+    }
+
+    sum += item.price;
+  }
 
   return (
     <div className={styles.container}>
@@ -75,7 +86,7 @@ export const CartCard = ({
             <img src="img/Plus.svg" alt="plus" />
           </button>
         </div>
-        <p className={styles.price}>{`$${price}`}</p>
+        <p className={styles.price}>{`$${sum}`}</p>
       </div>
     </div>
   );

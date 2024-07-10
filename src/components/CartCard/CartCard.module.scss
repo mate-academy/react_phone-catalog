@@ -33,6 +33,7 @@
 .close {
   width: 12px;
   height: 12px;
+  cursor: pointer;
 }
 
 .image {
@@ -78,6 +79,7 @@
   background-color: $color-white;
   width: 32px;
   height: 32px;
+  cursor: pointer;
 }
 
 .quantity {

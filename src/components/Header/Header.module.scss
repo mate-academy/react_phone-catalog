@@ -13,12 +13,17 @@
   letter-spacing: 0.04em;
   text-align: left;
   text-transform: uppercase;
+
+  @include on-desktop {
+    height: 76px;
+  }
 }
 
 .content {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  height: 100%;
 }
 
 .logo {
@@ -36,24 +41,39 @@
 
 .nav {
   display: none;
+  height: 100%;
 
   @include on-tablet {
-    display: block;
+    display: flex;
   }
 }
 
 .list {
   display: flex;
   list-style: none;
+  height: 100%;
 
   @include on-desktop {
     gap: 64px;
   }
 }
 
+.pageLink {
+  transition: all 0.5s;
+  height: 100%;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
+
 .link {
   color: $color-secondary;
   text-decoration: none;
+  display: flex;
+  height: 100%;
+  display: flex;
+  align-items: center;
 
   @include on-tablet {
     margin: 0 18px;
@@ -66,13 +86,8 @@
 
 .activeLink {
   color: $color-black;
+  border-top: 3px solid $color-white;
   border-bottom: 3px solid $color-black;
-
-  padding: 21px 0;
-
-  @include on-desktop {
-    padding: 28px 0;
-  }
 }
 
 .icons {
@@ -92,6 +107,7 @@
   padding: 16px;
   border-left: 1px solid $color-elements;
   position: relative;
+  cursor: pointer;
 
   @include on-desktop {
     padding: 24px;
@@ -125,6 +141,11 @@
   position: relative;
   height: 28px;
   width: 28px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
 }
 
 .logoMenu {
