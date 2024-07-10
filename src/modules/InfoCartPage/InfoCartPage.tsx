@@ -46,6 +46,10 @@ export const InfoCartPage = (params: { category: string }) => {
   const added = bascket.find(item => item.itemId === product?.id);
 
   useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [itemId]);
+
+  useEffect(() => {
     if (category === 'phones' && itemId) {
       setIsLoading(true);
 

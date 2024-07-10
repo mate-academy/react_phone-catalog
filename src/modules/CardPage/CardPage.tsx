@@ -13,11 +13,7 @@ export const CartPage = () => {
   let sum = 0;
 
   for (const item of bascket) {
-    if (item.quantity > 1) {
-      sum += item.price * item.quantity;
-    }
-
-    sum += item.price;
+    sum += item.price * item.quantity;
   }
 
   const hendleCheckout = () => {

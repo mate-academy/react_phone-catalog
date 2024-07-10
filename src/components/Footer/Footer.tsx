@@ -29,12 +29,12 @@ export const Footer = () => {
               </Link>
             </li>
             <li className={styles.pageLink}>
-              <Link to="contacts" target="_blank" className={styles.item}>
+              <Link to="https://github.com/MariiaSuper" target="_blank" className={styles.item}>
                 Contacts
               </Link>
             </li>
             <li className={styles.pageLink}>
-              <Link to="rights" target="_blank" className={styles.item}>
+              <Link to="https://github.com/MariiaSuper" target="_blank" className={styles.item}>
                 rights
               </Link>
             </li>
