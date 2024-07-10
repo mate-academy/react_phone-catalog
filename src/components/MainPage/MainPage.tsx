@@ -97,11 +97,26 @@ export const MainPage = () => {
         <h2 className={styles['main__cat-title']}>Shop by category</h2>
 
         <div className={styles['main__categories-wrapper']}>
-          <Category title="Mobile phones" desc="95 models" img="img/cat1.svg" />
+          <Category
+            title="Mobile phones"
+            desc={`${cards.filter(c => c.category === 'phones').length} models`}
+            img="img/cat1.svg"
+            link="/phones"
+          />
 
-          <Category title="Tablets" desc="24 models" img="img/cat2.svg" />
+          <Category
+            title="Tablets"
+            desc={`${cards.filter(c => c.category === 'tablets').length} models`}
+            img="img/cat2.svg"
+            link="/tablets"
+          />
 
-          <Category title="Accessories" desc="100 models" img="img/cat3.svg" />
+          <Category
+            title="Accessories"
+            desc={`${cards.filter(c => c.category === 'accessories').length} models`}
+            img="img/cat3.svg"
+            link="/accessories"
+          />
         </div>
       </section>
 

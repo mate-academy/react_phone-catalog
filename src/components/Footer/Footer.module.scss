@@ -59,6 +59,10 @@
     letter-spacing: 0.04em;
     color: #89939a;
     text-transform: uppercase;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__logo {
@@ -71,6 +75,10 @@
     height: 100%;
 
     @include background("../../images/Logo.svg");
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__back-wrapper {
@@ -81,6 +89,10 @@
     justify-content: center;
     align-items: center;
     gap: 15px;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__back-text {
@@ -104,6 +116,10 @@
     background-color: #fff;
     border: 1px solid #89939a;
     outline: 0;
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__back-arrow {

@@ -28,6 +28,10 @@ $nav-height-desktop: 64px;
       width: 128px;
       padding: 0 20px;
     }
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__logo {
@@ -186,14 +190,13 @@ $nav-height-desktop: 64px;
 
   &__logo-link {
     display: block;
-    height: 100%;
 
     text-decoration: none;
     text-transform: uppercase;
     font-family: Montserrat, sans-serif;
     font-size: 12px;
     font-weight: 800;
-    line-height: 40;
+    line-height: 40px;
     letter-spacing: 0.04em;
     color: #89939a;
 

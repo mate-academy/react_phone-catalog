@@ -13,6 +13,10 @@
     overflow: hidden;
 
     @include set-size(302, 357);
+
+    &:hover {
+      cursor: pointer;
+    }
   }
 
   &__image-src {
