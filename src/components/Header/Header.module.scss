@@ -21,6 +21,10 @@
   }
 }
 
+.headerOpenMenu {
+  position: fixed;
+}
+
 .logoLink {
   display: flex;
   align-items: center;
@@ -183,5 +187,12 @@
   width: 48px;
   box-shadow: -1px 0 0 0 var(--color-elements);
   cursor: pointer;
+}
+
+.menuIcon {
+  &:hover {
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+  }
 }
 

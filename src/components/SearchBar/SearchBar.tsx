@@ -39,7 +39,6 @@ export const SearchBar: React.FC = () => {
 
   useEffect(() => {
     setQuery('');
-    setSearchParams({});
   }, [pathname]);
 
   const isHidden =

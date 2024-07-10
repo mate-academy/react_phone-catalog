@@ -17,6 +17,7 @@ export const ShoppingCartPage: React.FC = () => {
   const plusIcon = getPlusIcon(theme);
 
   const navigate = useNavigate();
+
   const { cart, manageCartItems, countTotalPrice, removeFromCart, clearCart } =
     useAppContext();
   const allItems = cart.reduce((total, item) => total + item.quantity, 0);

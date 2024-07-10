@@ -11,7 +11,7 @@ import {
 } from '../../utils/getIcons';
 import { useTheme } from '../../context/ThemeContext';
 import { useAppContext } from '../../context/AppContext';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AsideMenu } from '../AsideMenu/AsideMenu';
 
 export const Header = () => {
@@ -34,8 +34,24 @@ export const Header = () => {
     0,
   );
 
+  const menuOverflowStatus = (menuVisibility: boolean) => {
+    if (menuVisibility) {
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = 'auto';
+    }
+  };
+
+  useEffect(() => {
+    menuOverflowStatus(isMenuOpen);
+  }, [isMenuOpen]);
+
   return (
-    <header className={styles.header}>
+    <header
+      className={classNames(styles.header, {
+        [styles.headerOpenMenu]: isMenuOpen,
+      })}
+    >
       <Link to="/" className={styles.logoLink}>
         <img src={logoIcon} alt="logo" />
       </Link>
@@ -125,7 +141,11 @@ export const Header = () => {
           onClick={handleMenuVisibility}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
         >
-          <img src={menuIcon} alt={isMenuOpen ? 'Close menu' : 'Menu'} />
+          <img
+            src={menuIcon}
+            alt={isMenuOpen ? 'Close menu' : 'Menu'}
+            className={styles}
+          />
         </button>
       </div>
 
