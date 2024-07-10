@@ -2,7 +2,7 @@ import { Phone } from './types/Phone';
 import { Product } from './types/Product';
 
 // eslint-disable-next-line operator-linebreak
-const API_URL = '/api';
+const API_URL = 'api';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
