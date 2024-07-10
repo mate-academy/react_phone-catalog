@@ -1,0 +1,74 @@
+@import '../../../utils/mixins.scss';
+
+.line {
+  display: block;
+  margin-inline: 16px;
+
+  &__new-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 56px;
+  }
+
+  &__new-header-title {
+    display: block;
+    max-width: 146px;
+
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    color: #313237;
+
+    &--reset {
+      max-width: none;
+    }
+  }
+
+  &__new-header-buttons {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__new-header-btn {
+    position: relative;
+
+    display: block;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid #b4bdc3;
+
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--left {
+      background-image: url('../../../images/LeftArrow.svg');
+
+      &--disabled {
+        background-image: url('../../../images/LeftArrowDisabled.svg');
+      }
+    }
+
+    &--right {
+      background-image: url('../../../images/RightArrow.svg');
+
+      &--disabled {
+        background-image: url('../../../images/RightArrowDisabled.svg');
+      }
+    }
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+    }
+  }
+
+  &__swiper {
+    display: block;
+    padding-top: 20px;
+  }
+}

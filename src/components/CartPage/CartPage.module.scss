@@ -1,0 +1,114 @@
+@import '../../utils/fonts';
+@import '../../utils/mixins';
+
+.cart {
+  display: block;
+  padding-inline: 16px;
+
+  max-width: 1200px;
+  margin: auto;
+
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 20px;
+  }
+
+  &__back {
+    display: block;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__title {
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+
+    @include on-tablet {
+      display: block;
+
+      font-size: 48px;
+      line-height: 56px;
+
+      grid-column: 1 / -1;
+    }
+  }
+
+  &__items {
+    display: flex;
+    padding-top: 40px;
+    flex-direction: column;
+    gap: 20px;
+
+    @include on-tablet {
+      grid-column: 1 / 9;
+    }
+  }
+
+  &__sum {
+    display: block;
+    margin-top: 30px;
+
+    padding: 20px;
+    border: 1px solid #e2e6e9;
+
+    @include on-tablet {
+      grid-column: 9 / -1;
+      margin-top: 40px;
+
+      height: fit-content;
+    }
+  }
+
+  &__header {
+    display: block;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #e2e6e9;
+  }
+
+  &__title-purchase {
+    display: block;
+
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-align: center;
+    color: #313237;
+  }
+
+  &__title-total {
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+    color: #89939a;
+  }
+
+  &__button {
+    display: block;
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px 0;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+
+    border: 0;
+    outline: 0;
+
+    background-color: #313237;
+  }
+}

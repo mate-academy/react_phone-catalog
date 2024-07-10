@@ -1,0 +1,201 @@
+@import '../../utils/fonts.scss';
+@import '../../utils/mixins.scss';
+
+.main {
+  margin: auto;
+  max-width: 1200px;
+
+
+  &__carousel {
+    @include on-tablet {
+      display: block;
+      padding-inline: 24px;
+    }
+  }
+
+  &__title {
+    display: block;
+    padding: 20px 16px;
+
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+
+    @include on-tablet {
+      padding: 40px 24px;
+
+      font-size: 48px;
+      line-height: 56px;
+    }
+
+    @include on-desktop {
+      padding: 48px 24px;
+    }
+  }
+
+  &__carousel-arrow {
+    display: none;
+
+    @include on-tablet {
+      position: relative;
+
+      display: flex;
+      width: 32px;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+
+      @include set-size(189, 32);
+
+      & :first-child {
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        display: block;
+        width: 100%;
+        height: 100%;
+
+        border: 1px solid #B4BDC3;
+      }
+
+      &--left {
+        & :first-child {
+          @include background('./../../images/SliderArrowLeft.svg');
+        }
+      }
+
+      &--right {
+        & :first-child {
+          @include background('./../../images/SliderArrowRight.svg');
+        }
+      }
+    }
+  }
+
+  &__carousel-slider {
+    position: relative;
+    display: block;
+
+    width: 100%;
+
+    @include on-tablet {
+      display: flex;
+      gap: 24px;
+    }
+  }
+
+  &__carousel-slider-tablet {
+    @include on-tablet {
+      position: relative;
+
+      display: block;
+      width: 100%;
+    }
+  }
+
+  &__carousel-slider-wrapper {
+    position: relative;
+
+    width: 100%;
+
+    @include set-size(1, 1);
+
+    @include on-tablet {
+      background-color: #000;
+
+      @include set-size(490, 189);
+    }
+  }
+
+  &__carousel-slider-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    @include background('../../images/carousel.svg');
+
+    @include on-tablet {
+      @include background('../../images/CarouselTablet1.svg');
+    }
+  }
+
+  &__carousel-nav {
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
+  }
+
+  &__dots {
+    display: flex;
+    height: 24px;
+    width: 80px;
+
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__dot {
+    display: block;
+    height: 4px;
+    width: 14px;
+
+    border: 0;
+    outline: 0;
+
+    background-color: #e2e6e9;
+
+    &--active {
+      background-color: #313237;
+    }
+  }
+
+  &__new {
+    display: block;
+    padding-top: 30px;
+  }
+
+  &__categories {
+    display: block;
+    padding: 50px 16px 0;
+  }
+
+  &__cat-title {
+    display: block;
+
+    font-family: Montserrat;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 30.8px;
+    color: #313237;
+  }
+
+  &__categories-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding-top: 20px;
+
+    @include on-tablet {
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__hot {
+    display: block;
+    padding-top: 30px;
+
+    @include on-tablet {
+      padding-top: 50px;
+    }
+  }
+}

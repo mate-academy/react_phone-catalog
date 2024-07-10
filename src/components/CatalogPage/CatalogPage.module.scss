@@ -1,0 +1,186 @@
+@import '../../utils/fonts';
+@import '../../utils/mixins';
+
+.main {
+  display: block;
+  padding: 20px 16px 0;
+  max-width: 1200px;
+  margin: auto;
+
+  &__title-wrapper {
+    display: block;
+    padding-top: 20px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+  }
+
+  &__title {
+    font-family: Montserrat;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+
+    color: #313237;
+
+    @include on-tablet {
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__count {
+    display: block;
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+
+    color: #89939a;
+  }
+
+  &__filters {
+    display: grid;
+    padding-top: 40px;
+    column-gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+
+    @include on-tablet {
+      grid-template-columns: 190px 140px repeat(4, 1fr);
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    padding-top: 20px;
+    justify-content: center;
+    align-items: center;
+
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+    outline: 0;
+    background-color: #fff;
+
+    border: 1px solid #b4bdc3;
+
+    & :nth-child(n) {
+      display: block;
+      width: 16px;
+      height: 16px;
+    }
+
+    &:hover {
+      border: 1px solid #313237;
+    }
+
+    &--left {
+      & :first-child {
+        background-image: url('../../images/LeftArrowDark.svg');
+      }
+    }
+
+    &--right {
+      & :first-child {
+        background-image: url('../../images/RightArrowDark.svg');
+      }
+    }
+
+    &--disabled-left,
+    &--disabled-right {
+      border: 1px solid #e2e6e9;
+    }
+
+    &--disabled-left {
+      & :first-child {
+        background-image: url('../../images/LeftArrowDarkDisabled.svg');
+      }
+
+      &:hover {
+        border: 1px solid #e2e6e9;
+      }
+    }
+
+    &--disabled-right {
+      & :first-child {
+        background-image: url('../../images/RightArrowDarkDisabled.svg');
+      }
+
+      &:hover {
+        border: 1px solid #e2e6e9;
+      }
+    }
+  }
+
+  &__buttons {
+    position: relative;
+
+    display: flex;
+    gap: 8px;
+
+    max-width: 192px;
+    overflow: hidden;
+  }
+
+  &__subButton {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    min-width: 32px;
+    height: 32px;
+    outline: 0;
+    background-color: #fff;
+
+    border: 1px solid #b4bdc3;
+    text-decoration: none;
+    color: #313237;
+
+    font-family: Montserrat;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+    text-align: center;
+
+
+    &--active {
+      color: #fff;
+      background-color: #313237;
+    }
+
+    @include on-desktop {
+      &:hover {
+        border: 1px solid #313237;
+      }
+    }
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+    padding-top: 30px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 16px;
+    }
+
+    @include on-middle-tablet {
+      grid-template-columns: repeat(9, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+}

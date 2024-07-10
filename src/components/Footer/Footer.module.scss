@@ -1,0 +1,117 @@
+@import '../../utils/mixins';
+@import '../../utils/fonts';
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  margin-top: 30px;
+  padding: 30px 0;
+  padding-inline: 16px;
+  border-top: 1px solid #e2e6e9;
+
+  max-width: 1200px;
+  margin: 40px auto 0;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__header {
+    display: block;
+  }
+
+  &__links {
+    @include on-tablet {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &__logo-wrapper {
+    position: relative;
+    height: 32px;
+    width: 89px;
+  }
+
+  &__link-list {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+
+    padding: 0;
+    list-style-type: none;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    @include on-desktop {
+      gap: 120px;
+    }
+  }
+
+  &__item {
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+    text-transform: uppercase;
+  }
+
+  &__logo {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    @include background("../../images/Logo.svg");
+  }
+
+  &__back-wrapper {
+    display: flex;
+    width: fit-content;
+    margin: auto;
+
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+  }
+
+  &__back-text {
+    display: block;
+
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: #89939a;
+  }
+
+  &__back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 32px;
+    height: 32px;
+
+    background-color: #fff;
+    border: 1px solid #89939a;
+    outline: 0;
+  }
+
+  &__back-arrow {
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-image: url('../../images/ArrowTop.svg');
+  }
+}

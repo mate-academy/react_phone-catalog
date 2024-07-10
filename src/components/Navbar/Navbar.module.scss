@@ -1,0 +1,221 @@
+@import '../../utils/mixins';
+@import '../../utils/fonts';
+
+$nav-height: 48px;
+$nav-height-desktop: 64px;
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: $nav-height;
+  width: 100%;
+
+  border-bottom: 1px solid #e2e6e9;
+
+  @include on-desktop {
+    height: $nav-height-desktop;
+  }
+
+  &__logo-wrapper {
+    width: 96px;
+    height: 100%;
+
+    padding: 13px 16px;
+
+    @include on-desktop {
+      width: 128px;
+      padding: 0 20px;
+    }
+  }
+
+  &__logo {
+    position: relative;
+    display: block;
+
+    @include set-size(64, 22);
+
+    @include on-desktop {
+      @include set-size(128, 64);
+    }
+  }
+
+  &__logo-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    @include background('../images/Logo.svg');
+  }
+
+  &__menu-container-wrapper {
+    display: flex;
+  }
+
+  &__menu-container {
+    display: block;
+    width: $nav-height;
+    height: $nav-height;
+
+    padding: 16px;
+
+    border-left: 1px solid #e2e6e9;
+
+    &--burger {
+      display: block;
+    }
+
+    &--like {
+      display: none;
+    }
+
+    &--cart {
+      display: none;
+    }
+
+    &--active {
+      border-bottom: 3px solid #313237;
+    }
+
+    @include on-tablet {
+      &--burger {
+        display: none;
+      }
+
+      &--like {
+        display: block;
+      }
+
+      &--cart {
+        display: block;
+      }
+    }
+
+    @include on-desktop {
+      width: $nav-height-desktop;
+      height: $nav-height-desktop;
+
+      padding: 24px;
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__menu {
+    position: relative;
+    display: block;
+
+    @include set-size(16, 16);
+  }
+
+  &__counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 14px;
+    min-height: 14px;
+
+    border: 1px solid #fff;
+    border-radius: 36px;
+
+    background-color: #eb5757;
+
+    font-family: Montserrat;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: center;
+    color: #fff;
+  }
+
+  &__burger,
+  &__like,
+  &__cart,
+  &__close {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    display: block;
+
+    width: 100%;
+    height: 100%;
+  }
+
+  &__burger {
+    @include background('../images/Menu.svg');
+  }
+
+  &__close {
+    @include background('../images/Close.svg');
+  }
+
+  &__like {
+    @include background('../images/Liked.svg');
+  }
+
+  &__cart {
+    @include background('../images/Cart.svg');
+  }
+
+  &__logo-ul {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+      height: $nav-height;
+      gap: 20px;
+      list-style-type: none;
+      padding: 0;
+    }
+
+    @include on-desktop {
+      gap: 64px;
+      height: $nav-height-desktop;
+    }
+  }
+
+  &__logo-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    color: #89939a;
+  }
+
+  &__menu-logo-wrapper {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+
+    @include on-desktop {
+      gap: 32px;
+    }
+  }
+
+  &__logo-item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    &--active {
+      border-bottom: 3px solid #313237;
+
+      & :first-child {
+        color: #313237;
+      }
+    }
+  }
+}

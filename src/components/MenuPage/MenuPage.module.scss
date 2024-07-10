@@ -1,0 +1,135 @@
+@import '../../utils/fonts';
+
+.menu {
+  position: fixed;
+  top: 48px;
+  left: -100%;
+  z-index: 10;
+
+  transition: left 0.3s ease-in-out;
+
+  display: block;
+  width: 100%;
+  height: calc(100% - 48px);
+
+  background-color: #fff;
+
+  &__active {
+    left: 0;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 30px 0 0;
+  }
+
+  &__item {
+    display: block;
+    height: 27px;
+  }
+
+  &__link {
+    display: block;
+    height: 27px;
+
+    font-family: Montserrat;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 27px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+
+    color: #89939a;
+
+    &--active {
+      color: #313131;
+      border-bottom: 2px solid #313131;
+    }
+  }
+
+  &__sub {
+    position: absolute;
+    top: 100%;
+    left: 0;
+
+    transform: translateY(-100%);
+
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+
+    width: 100%;
+    height: 64px;
+
+    border-top: 1px solid #e2e6e9;
+  }
+
+  &__like,
+  &__cart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__like {
+    grid-column: span 1;
+
+    border-right: 1px solid #e2e6e9;
+  }
+
+  &__cart {
+    grid-column: span 1;
+
+    border-left: 1px solid #e2e6e9;
+  }
+
+  &__like-icon,
+  &__cart-icon {
+    position: relative;
+
+    display: block;
+    width: 16px;
+    height: 16px;
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &__like-icon {
+    background-image: url('../../images/Like.svg');
+  }
+
+  &__cart-icon {
+    background-image: url('../../images/Cart.svg');
+  }
+
+  &__counter {
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    transform: translate(50%, -50%);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 14px;
+    min-height: 14px;
+
+    border: 1px solid #fff;
+    border-radius: 36px;
+
+    background-color: #eb5757;
+
+    font-family: Montserrat;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    text-align: center;
+    color: #fff;
+  }
+}
