@@ -116,7 +116,7 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      width: 288px;
+      width: 100%;
       height: 288px;
       grid-column: 1 / -1;
 
@@ -164,14 +164,14 @@
     }
 
     &--img {
-      max-width: 51px;
+      max-width: 100%;
       display: flex;
       justify-content: center;
       cursor: pointer;
       border: 1px solid $dark-grey-color;
 
       @include on-tablet {
-        max-width: 35px;
+        // max-width: 35px;
         align-items: center;
         height: 35px;
       }
@@ -414,7 +414,7 @@
 }
 
 .thumbnail-picture {
-  width: fit-content;
+  width: auto;
   height: 100%;
 }
 
@@ -539,6 +539,6 @@
 }
 
 .swiper-pict__large-image {
-  width: fit-content;
+  width: auto;
   height: 100%;
 }
