@@ -1,0 +1,57 @@
+@import '../../utils/fonts';
+@import '../../utils/mixins';
+
+.favourites {
+  display: block;
+  padding-inline: 16px;
+
+  max-width: 1200px;
+  margin: auto;
+
+  &__crumbs {
+    display: block;
+    padding-top: 30px;
+  }
+
+  &__header {
+    display: block;
+    padding-top: 30px;
+  }
+
+  &__title {
+    font-family: Montserrat, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #313237;
+  }
+
+  &__content {
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939a;
+  }
+
+  &__products {
+    display: grid;
+    grid-template-columns: 1fr;
+    row-gap: 30px;
+    padding-top: 30px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(6, 1fr);
+      column-gap: 16px;
+    }
+
+    @include on-middle-tablet {
+      grid-template-columns: repeat(9, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+}

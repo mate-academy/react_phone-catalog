@@ -1,0 +1,56 @@
+.counter {
+  display: flex;
+
+  &__number {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 32px;
+    height: 32px;
+
+    font-family: Montserrat, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: center;
+  }
+
+  &__minus,
+  &__plus {
+    display: block;
+    width: 32px;
+    height: 32px;
+
+    border: 1px solid #b4bdc3;
+  }
+
+  &__minus {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+
+    background-image: url('../../../images/Minus.svg');
+
+    &--disabled {
+      border: 1px solid #e2e6e9;
+      background-image: url('../../../images/MinusDisabled.svg');
+    }
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
+  &__plus {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px 16px;
+
+    background-image: url('../../../images/Plus.svg');
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+}
