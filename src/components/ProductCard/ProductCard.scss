@@ -18,18 +18,18 @@
     justify-content: center;
     align-items: center;
     align-self: center;
-    width: 223px;
+    width: 100%;
     height: 130px;
     margin-bottom: $margin-bottom-mobile;
     cursor: pointer;
 
     @include on-tablet {
-      width: 224px;
+      // width: 224px;
       height: 196px;
     }
 
     &--img {
-      width: fit-content;
+      width: auto;
       height: 100%;
 
       @include hover(transform, scale(1.1));

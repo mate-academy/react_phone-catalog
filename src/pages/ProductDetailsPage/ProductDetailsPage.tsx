@@ -145,7 +145,7 @@ export const ProductDetailsPage: React.FC = () => {
             </Link>
           </div>
 
-          <Link to=".." className="product-details__back">
+          <Link to={`/${category}`} className="product-details__back">
             <div className="product-details__back--arrow">
               <svg className="icon icon-arrow-left-back">
                 <use href="img/icons.svg#icon-arrow-left"></use>
