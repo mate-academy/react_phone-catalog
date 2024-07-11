@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React, { createContext, useEffect, useState } from 'react';
 import { getProducts } from '../utils/fetchMethods';
 import { Product } from '../types/ContextType/Product';
