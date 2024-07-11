@@ -46,6 +46,10 @@
     background-repeat: no-repeat;
     background-position: center;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &--left {
       background-image: url('../../../images/LeftArrow.svg');
 

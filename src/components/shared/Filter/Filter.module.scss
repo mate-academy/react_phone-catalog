@@ -4,6 +4,10 @@
   display: block;
   grid-column: span 1;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &__sort {
     font-family: Montserrat, sans-serif;
     font-size: 12px;

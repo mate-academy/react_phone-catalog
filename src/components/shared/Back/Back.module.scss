@@ -5,6 +5,10 @@
   padding-bottom: 20px;
   max-width: fit-content;
 
+  &:hover {
+    cursor: pointer;
+  }
+
   &__wrapper {
     display: flex;
     align-items: center;

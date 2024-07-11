@@ -353,6 +353,10 @@
     border: 0;
     outline: 0;
 
+    &:hover {
+      cursor: pointer;
+    }
+
     &--buy {
       padding: 15px;
       width: 100%;

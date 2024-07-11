@@ -98,6 +98,14 @@
     margin-top: 20px;
     width: 100%;
     padding: 10px 0;
+    box-shadow: 0 #17203166;
+    transition: box-shadow 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+
+      box-shadow: 0 3px 13px 0 #17203166;
+    }
 
     font-family: Montserrat, sans-serif;
     font-size: 14px;

@@ -22,11 +22,9 @@ export const Filter: React.FC<FilterType> = ({
   const [params] = useSearchParams();
   const refFilter = useRef<HTMLDivElement>(null);
   const refList = useRef<HTMLAnchorElement>(null);
-  const refFilterContainer = useRef<HTMLDivElement>(null);
 
   const [menuStyles, setMenuStyles] = useState({});
   const [isOpen, setIsOpen] = useState(false);
-  const [isBlur, setIsBlur] = useState(false);
 
   useEffect(() => {
     if (refList.current && isOpen) {
@@ -43,28 +41,20 @@ export const Filter: React.FC<FilterType> = ({
     }
   }, [params, isOpen]);
 
-  useEffect(() => {
-    if (isBlur) {
-      setIsOpen(false);
-      setIsBlur(false);
-    }
-  }, [isBlur]);
-
   return (
-    <div className={styles.filter} ref={refFilter}>
+    <div
+      className={styles.filter}
+      ref={refFilter}
+      tabIndex={0}
+      onBlur={() => setIsOpen(false)}
+    >
       <h3 className={styles.filter__sort}>{title}</h3>
 
       <div
         className={styles.filter__group}
         onClick={() => {
-          if (isBlur) {
-            setIsOpen(false);
-            setIsBlur(false);
-          } else {
-            setIsOpen(true);
-          }
+          setIsOpen(prev => !prev);
         }}
-        ref={refFilterContainer}
       >
         <p className={styles.filter__title}>
           {param ? values[list.findIndex(l => l === param)] : values[0]}
@@ -76,15 +66,6 @@ export const Filter: React.FC<FilterType> = ({
           })}
         ></span>
       </div>
-
-      <Link
-        to={''}
-        style={{
-          opacity: 0,
-        }}
-        ref={refList}
-        onBlur={() => setIsBlur(true)}
-      ></Link>
 
       <ul className={styles.filter__drowdown} style={menuStyles}>
         {list.map((item, ind) => {
