@@ -1,0 +1,25 @@
+@use '../../../styles/block/utils/_variables.scss' as *;
+@import '../../../styles/block/utils/_mixins.scss';
+
+.search {
+  &__field {
+    height: 63px;
+    border: none;
+    border-left: 1px solid $border-color;
+    padding-inline: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    background-color: $background-color;
+    color: $text-color;
+    outline: none;
+    font-style: italic;
+  }
+}
+
+@include onTablet {
+  .search {
+    &__field {
+      height: 47px;
+    }
+  }
+}

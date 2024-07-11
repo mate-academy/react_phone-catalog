@@ -26,6 +26,7 @@ export const Card: React.FC<Props> = ({
   const { setCartItems, cartItems } = useContext(ShoppingCartContext);
   const { favorites, setFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
+
   const handleAddToCart = (good: Product) => {
     setCartItems(currentItems => {
       const newItems = [...currentItems];
@@ -64,7 +65,7 @@ export const Card: React.FC<Props> = ({
       ref={widthRef}
     >
       <Link
-        to={`../${product.category}/${product.itemId}`}
+        to={`../../${product.category}/${product.itemId}`}
         className={style.card__cardLink}
         draggable={false}
       >
@@ -77,7 +78,7 @@ export const Card: React.FC<Props> = ({
       </Link>
       <div className={style.card__cardContent}>
         <Link
-          to={`../${product.category}/${product.itemId}`}
+          to={`../../${product.category}/${product.itemId}`}
           className={style.card__cardName}
         >
           {product.name}

@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../components/BreadCrumbs/BreadCrumbs';
 import style from '../modules/ProductDetailsPage.module.scss';
@@ -54,9 +53,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   }
 
   const {
-    // id,
     category,
-    // namespaceId,
     name,
     capacityAvailable,
     capacity,
@@ -125,6 +122,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
           <div className={style.product__availableColors}>
             {colorsAvailable.map(currentColor => {
+              console.log(currentColor);
               const colorNew = {
                 backgroundColor:
                   AvailableColors[currentColor as keyof typeof AvailableColors],

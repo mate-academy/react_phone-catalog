@@ -1,4 +1,3 @@
-/* eslint-disable */
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { App } from './App';
 import { HomePage } from './pages/HomePage';
@@ -9,6 +8,7 @@ import { ProductDetailsPage } from './pages/ProductDetailsPage';
 import { Category } from './enums/Category';
 import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
+import { NotFoundPage } from './pages/NotFountPage';
 
 const linkList = [
   {
@@ -45,6 +45,6 @@ export const Root = () => (
         </Route>
       ))}
     </Route>
-    <Route path="*" element={<h1 className="title">Page not found</h1>} />
+    <Route path="*" element={<NotFoundPage />} />
   </Routes>
 );

@@ -18,11 +18,17 @@
   }
 
   &__heroSlider {
+    width: fit-content;
     margin-bottom: 112px;
   }
 
   &__container {
     padding-inline: 32px;
+  }
+  &__containerTitle {
+    display: block;
+    padding-inline: $onDesctop-container-padding;
+    height: 100%;
   }
 }
 

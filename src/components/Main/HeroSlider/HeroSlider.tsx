@@ -23,7 +23,6 @@ export const HeroSlider = () => {
   const startXRef = useRef(0);
   const minOffsetXRef = useRef(0);
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
-
   const [currentIndex, setCurrentIndex] = useState(0);
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
@@ -122,7 +121,7 @@ export const HeroSlider = () => {
         } else {
           indicatorOnClick(currentIndex + 1);
         }
-      }, 50000);
+      }, 5000);
 
       return () => clearInterval(intervalId);
     } else {

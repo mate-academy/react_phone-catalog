@@ -18,7 +18,7 @@ export const Footer = () => {
     },
     {
       name: 'contacts',
-      path: '#',
+      path: 'https://www.linkedin.com/in/volodimir-murskyi-b54b45293/',
     },
     {
       name: 'rights',

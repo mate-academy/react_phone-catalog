@@ -5,8 +5,13 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { filterGadgets } from '../utils/filterGadgets';
 import { sortedBy } from '../utils/sortGadgets';
 import { SortBy } from '../enums/SortBy';
+import { QueryParams } from '../enums/QuryParams';
+import { ItemsList } from '../enums/ItemsPerPage';
+import { useDebounce } from 'use-debounce';
 
 type ContextType = {
+  isLoading: boolean;
+  setIsLoading: (v: boolean) => void;
   products: Product[];
   setProducts: (v: Product[]) => void;
   gadgets: {
@@ -17,6 +22,8 @@ type ContextType = {
 };
 
 export const ProductsContext = createContext<ContextType>({
+  isLoading: false,
+  setIsLoading: () => [],
   products: [],
   setProducts: () => {},
   gadgets: {
@@ -33,20 +40,52 @@ type Props = {
 export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Product[]>([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [isLoading, setIsLoading] = useState(true);
   const { pathname } = useLocation();
 
-  const gadgets = filterGadgets(pathname, products);
-  const sortBy = searchParams.get('sort') || SortBy.newest;
-  const page = searchParams.get('page') || '1';
-  const perPage = searchParams.get('perPage') || '4';
+  const sortBy = searchParams.get(QueryParams.sort) || SortBy.newest;
+  const page = searchParams.get(QueryParams.page) || '1';
+  const perPage = searchParams.get(QueryParams.perPage) || '4';
+
+  const query = searchParams.get(QueryParams.query) || '';
+  const [debounceValue] = useDebounce(query, 500);
+
+  const filteredGadgets = debounceValue
+    ? products.filter(item =>
+        item.name
+          .toLocaleLowerCase()
+          .includes(debounceValue.toLocaleLowerCase()),
+      )
+    : products;
+  const gadgets = filterGadgets(pathname, filteredGadgets);
   const sortedGadgets = sortedBy(sortBy, gadgets.gadgets);
 
   useEffect(() => {
     const params = new URLSearchParams(searchParams);
 
-    params.set('page', '1');
+    params.set(QueryParams.page, '1');
     setSearchParams(params);
   }, [perPage]);
+
+  useEffect(() => {
+    const loadProducts = async () => {
+      try {
+        const products = await getProducts('products');
+
+        if (products) {
+          setProducts(products);
+        }
+      } catch (error) {
+        throw new Error('Something went wrong');
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    loadProducts();
+  }, []);
+
+  console.log(isLoading);
 
   const filteredList = (
     devices: Product[],
@@ -55,7 +94,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   ) => {
     const copyDevices = [...devices];
 
-    if (devicesPerPage === 'All') {
+    if (devicesPerPage === ItemsList.all) {
       return copyDevices;
     } else {
       const entIndex = +devicesPerPage * currentPage;
@@ -67,11 +106,9 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
   const resultFilteredDev = filteredList(sortedGadgets, +page, perPage);
 
-  useEffect(() => {
-    getProducts('products').then(response => setProducts(response));
-  }, []);
-
   const gadgetsTools = {
+    isLoading,
+    setIsLoading,
     products,
     setProducts,
     gadgets,

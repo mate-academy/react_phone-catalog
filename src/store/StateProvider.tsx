@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { Product } from '../types/ContextType/Product';
 import { useLocaleStorage } from '../utils/hooks/useLocalStorage';
 
@@ -36,18 +36,6 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
     'favorites',
     [],
   );
-
-  const offOverflowForAsideMenu = (stateMenu: boolean) => {
-    if (stateMenu) {
-      document.documentElement.style.overflow = 'hidden';
-    } else {
-      document.documentElement.style.overflow = 'auto';
-    }
-  };
-
-  useEffect(() => {
-    offOverflowForAsideMenu(activeMenu);
-  }, [activeMenu]);
 
   const stateTools = {
     modalWindow,

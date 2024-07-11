@@ -25,8 +25,6 @@ export const CartItems = () => {
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
   const { modalWindow, setModalWindow } = useContext(StateContext);
-  console.log(modalWindow);
-
   const getTotalPrice = cartItems.reduce(
     (acc, val) => acc + val.quantity * (val.price || 0),
     0,

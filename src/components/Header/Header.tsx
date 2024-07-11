@@ -13,12 +13,18 @@ import { StateContext } from '../../store/StateProvider';
 import classNames from 'classnames';
 import { Pathname } from '../../enums/Pathname';
 import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
+import { SearchField } from './SearchField';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
   const { setActiveMenu, favorites } = useContext(StateContext);
   const { cartItems } = useContext(ShoppingCartContext);
   const { pathname } = useLocation();
+
+  const showSearchField =
+    Pathname.phones === pathname ||
+    Pathname.tablets === pathname ||
+    Pathname.accessories === pathname;
 
   return (
     <header className={style.header}>
@@ -33,6 +39,7 @@ export const Header = () => {
         <ul className={style.header__actions}>
           {!isLaptop ? (
             <div className={style.header__actionsWrapper}>
+              {showSearchField && <SearchField />}
               <div className={style.header__topBtn}>
                 <LangButton />
               </div>
@@ -67,12 +74,17 @@ export const Header = () => {
               </Link>
             </div>
           ) : (
-            <button
-              className={style.header__burgerMenu}
-              onClick={() => setActiveMenu(true)}
-            >
-              <IconBurger className={style.header__burgerMenuImg} />
-            </button>
+            <div className={style.header__actionsContainer}>
+              <div className={style.header__searchForm}>
+                {showSearchField && <SearchField />}
+              </div>
+              <button
+                className={style.header__burgerMenu}
+                onClick={() => setActiveMenu(true)}
+              >
+                <IconBurger className={style.header__burgerMenuImg} />
+              </button>
+            </div>
           )}
         </ul>
       </nav>

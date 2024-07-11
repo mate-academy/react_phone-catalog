@@ -38,6 +38,10 @@
     "addedToCart": "Added to cart",
     "cart": "Cart",
     "yourCartIsEmpty": "Your cart is empty",
-    "checkout": "Checkout"
+    "checkout": "Checkout",
+    "checkoutIsntImplemented": "Checkout is not implemented yet. Do you want to clear the Cart?",
+    "clear": "Clear",
+    "cancel": "Cancel",
+    "thereAreNoGadgets": "There are no Gadgets"
   }
 }

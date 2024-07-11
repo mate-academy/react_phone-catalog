@@ -1,0 +1,18 @@
+.sceleton {
+  background-color: rgb(199, 199, 199);
+  width: 100%;
+  height: 100%;
+  color: rgb(199, 199, 199);
+  background-size: 200% 100%;
+  background-position-x: 180%;
+  animation: 1s shine-loading-image ease-in-out infinite;
+}
+
+@keyframes shine-loading-image {
+  0% {
+    background-position: -32px;
+  }
+  40%, 100% {
+    background-position: 208px;
+  }
+}

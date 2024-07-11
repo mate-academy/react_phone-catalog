@@ -4,7 +4,7 @@ import classNames from 'classnames';
 import { IconUp } from '../../Icons/IconUp';
 import { IconDown } from '../../Icons/IconDown';
 import { useSearchParams } from 'react-router-dom';
-import { useModal } from '../../../utils/useModals';
+import { useModal } from '../../../utils/hooks/useModals';
 import { LanguageContext } from '../../../store/LanguageProvider';
 
 interface DropdownProps {
@@ -30,7 +30,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
-
+  console.log(keySearchParams);
   const handleClick = (event: MouseEvent<HTMLLIElement>) => {
     const target = event.currentTarget;
     const selectedText = target.textContent;

@@ -3,10 +3,13 @@ import { IconClose } from '../Icons/IconClose';
 import style from './ModalWindow.module.scss';
 import { StateContext } from '../../store/StateProvider';
 import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
+import { LanguageContext } from '../../store/LanguageProvider';
 
 export const ModalWindow = () => {
   const { setModalWindow } = useContext(StateContext);
   const { clearAllFromCart } = useContext(ShoppingCartContext);
+  const { t } = useContext(LanguageContext);
+
   return (
     <div className={style.modalWindow}>
       <div className={style.modalWindow__container}>
@@ -20,7 +23,7 @@ export const ModalWindow = () => {
         </div>
 
         <div className={style.modalWindow__title}>
-          Checkout is not implemented yet. Do you want to clear the Cart?
+          {t('checkoutIsntImplemented')}
         </div>
         <div className={style.modalWindow__actionButton}>
           <button
@@ -30,7 +33,7 @@ export const ModalWindow = () => {
               setModalWindow(false);
             }}
           >
-            Clear
+            {t('clear')}
           </button>
           <button
             className={style.modalWindow__cancel}
@@ -38,7 +41,7 @@ export const ModalWindow = () => {
               setModalWindow(false);
             }}
           >
-            Cancel
+            {t('cancel')}
           </button>
         </div>
       </div>

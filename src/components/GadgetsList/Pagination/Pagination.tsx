@@ -6,6 +6,7 @@ import { useContext } from 'react';
 import { ProductsContext } from '../../../store/ProductsProvider';
 import classNames from 'classnames';
 import { SearchLink } from '../../../utils/SearchLink';
+import { QueryParams } from '../../../enums/QuryParams';
 
 type Props = {
   perPage: string;
@@ -14,7 +15,7 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
   const { gadgets } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
 
-  const page = searchParams.get('page') || '1';
+  const page = searchParams.get(QueryParams.page) || '1';
   const paginationQuantity = Math.ceil(
     gadgets.gadgets.length / Number(perPage),
   );

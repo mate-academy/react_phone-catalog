@@ -1,6 +1,6 @@
 import { Logo } from '../Icons/Logo';
 import { LanguageContext } from '../../store/LanguageProvider';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { LangButton } from '../Header/LangButton';
 import { IconFavorites } from '../Icons/IconFavorites';
 import { LogoCart } from '../Icons/IconCart';
@@ -19,8 +19,21 @@ export const AsideMenu = () => {
   const { activeMenu, setActiveMenu, favorites } = useContext(StateContext);
   const { cartItems } = useContext(ShoppingCartContext);
   const { pathname } = useLocation();
+
   const isActiveLink = ({ isActive }: { isActive: boolean }) =>
     classNames(style.menu__listLink, { [style.menu__activeLink]: isActive });
+
+  const offOverflowForAsideMenu = (stateMenu: boolean) => {
+    if (stateMenu) {
+      document.documentElement.style.overflow = 'hidden';
+    } else {
+      document.documentElement.style.overflow = 'auto';
+    }
+  };
+
+  useEffect(() => {
+    offOverflowForAsideMenu(activeMenu);
+  }, [activeMenu]);
 
   return (
     <aside

@@ -58,6 +58,17 @@
     grid-column: 1 / 7;
     user-select: none;
   }
+
+  &__sceletonTitle {
+    height: 32px;
+    width: 400px;
+  }
+
+  &__sceletonCardContainer {
+    display: flex;
+    gap: 16px;
+    padding-inline: 16px;
+  }
 }
 @include onTablet {
   .cardsSlider {
@@ -86,6 +97,11 @@
 
     &__cardsList {
       grid-column: 1 / 4;
+    }
+
+    &__sceletonTitle {
+      height: 22px;
+      width: 200px;
     }
   }
 }
