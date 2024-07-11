@@ -1,9 +1,12 @@
+import React, { useEffect } from 'react';
 import { CatalogHeader } from '../../components/catalogHeader';
 import styles from './CatalogPage.module.scss';
 import { ProductList } from '../../components/productList';
-import { useFetchProducts } from '../../helpers/useFetchProducts';
-import { useSearchParams } from 'react-router-dom';
 import { ProductCardSkeleton } from '../../components/productCardSkeleton';
+import { useSearchParams } from 'react-router-dom';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { ProductCategory } from '../../types/ProductCategory';
+import { fetchProducts } from '../../features/products';
 
 type ProductType = 'products' | 'phones' | 'tablets' | 'accessories';
 
@@ -12,8 +15,12 @@ type Props = {
 };
 
 export const CatalogPage: React.FC<Props> = ({ type }) => {
-  const { loading, phones, tablets, accessories } = useFetchProducts(type);
   const [searchParams] = useSearchParams();
+  const dispatch = useAppDispatch();
+  const { phones, loading, tablets, accessories } = useAppSelector(
+    state => state.products,
+  );
+
   const onPage = searchParams.get('onPage') || '16';
 
   const title =
@@ -23,10 +30,26 @@ export const CatalogPage: React.FC<Props> = ({ type }) => {
         ? 'Tablets'
         : 'Accessories';
 
+  useEffect(() => {
+    switch (type) {
+      case 'phones':
+        dispatch(fetchProducts(ProductCategory.PHONES) as any);
+        break;
+      case 'tablets':
+        dispatch(fetchProducts(ProductCategory.TABLETS) as any);
+        break;
+      case 'accessories':
+        dispatch(fetchProducts(ProductCategory.ACCESSORIES) as any);
+        break;
+      default:
+        break;
+    }
+  }, [dispatch, type]);
+
   const items =
     type === 'phones' ? phones : type === 'tablets' ? tablets : accessories;
 
-  const perPage = onPage === 'all' ? items.length : +onPage;
+  const perPage = onPage === 'all' ? phones.length : +onPage;
 
   return (
     <section className={styles.phonespage}>

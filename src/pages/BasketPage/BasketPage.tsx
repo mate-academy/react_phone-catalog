@@ -1,93 +1,44 @@
-// BasketPage component
-import { useContext, useState, useEffect } from 'react';
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { CatalogHeader } from '../../components/catalogHeader';
 import styles from './BasketPage.module.scss';
-import { AppContext } from '../../store/context';
-import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import { BackButton } from '../../components/backButton';
 import { ModalWin } from './components/modalwin';
+import { AppDispatch, RootState } from '../../app/store';
+import {
+  decrementQuantity,
+  deleteProduct,
+  incrementQuantity,
+  setSelectedProducts,
+} from '../../features/basket';
+import { useAppSelector } from '../../app/hooks';
 
 export const BasketPage = () => {
   const [showModal, setShowModal] = useState(false);
-  const { selectedProducts, setSelectedProducts } = useContext(AppContext);
-
-  useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('selectedProducts');
-
-    if (selectedProductFromStorage) {
-      const parsedProducts: ProductWithQuantity[] = JSON.parse(
-        selectedProductFromStorage,
-      );
-
-      if (JSON.stringify(parsedProducts) !== JSON.stringify(selectedProducts)) {
-        setSelectedProducts(parsedProducts);
-      }
-    }
-  }, [selectedProducts, setSelectedProducts]);
+  const dispatch = useDispatch<AppDispatch>();
+  const { selectedProducts } = useAppSelector(
+    (state: RootState) => state.basket,
+  );
 
   const handlePlusCounter = (productId: string) => {
-    const updatedSelectedProducts = selectedProducts.map(product => {
-      if (product.id === productId) {
-        const newQuantity = product.quantity ? product.quantity + 1 : 1;
-
-        return { ...product, quantity: newQuantity };
-      }
-
-      return product;
-    });
-
-    setSelectedProducts(updatedSelectedProducts);
-    localStorage.setItem(
-      'selectedProducts',
-      JSON.stringify(updatedSelectedProducts),
-    );
+    dispatch(incrementQuantity(productId));
   };
 
   const handleMinusCounter = (productId: string) => {
-    const updatedSelectedProducts = selectedProducts.map(product => {
-      if (product.id === productId) {
-        const newQuantity = product.quantity ? product.quantity - 1 : 1;
-
-        if (newQuantity < 1) {
-          return product;
-        }
-
-        return { ...product, quantity: newQuantity };
-      }
-
-      return product;
-    });
-
-    setSelectedProducts(updatedSelectedProducts);
-    localStorage.setItem(
-      'selectedProducts',
-      JSON.stringify(updatedSelectedProducts),
-    );
+    dispatch(decrementQuantity(productId));
   };
 
   const handleDeleteProduct = (productId: string) => {
-    const updatedSelectedProducts = selectedProducts.filter(
-      product => product.id !== productId,
-    );
-
-    setSelectedProducts(updatedSelectedProducts);
-
-    localStorage.setItem(
-      'selectedProducts',
-      JSON.stringify(updatedSelectedProducts),
-    );
+    dispatch(deleteProduct(productId));
   };
 
   const allSumOfProducts = () => {
-    let sum = 0;
-
-    selectedProducts.forEach(item => {
+    return selectedProducts.reduce((sum, item) => {
       if (item.quantity && item.priceDiscount) {
         sum += item.quantity * item.priceDiscount;
       }
-    });
-
-    return sum;
+      return sum;
+    }, 0);
   };
 
   return (
@@ -101,7 +52,6 @@ export const BasketPage = () => {
             withoutDrop={true}
           />
         </div>
-
         <div className={styles.basketpage__items}>
           {selectedProducts.map(item => (
             <div key={item.id} className={styles.basketpage__item}>
@@ -129,7 +79,7 @@ export const BasketPage = () => {
                   <input
                     type="text"
                     className={styles.basketpage__quantity}
-                    value={item?.quantity || 1}
+                    value={item?.quantity ?? 1}
                     readOnly
                   />
                   <button
@@ -146,7 +96,6 @@ export const BasketPage = () => {
             </div>
           ))}
         </div>
-
         {selectedProducts.length > 0 && (
           <div className={styles.basketpage__total}>
             <h3 className={styles.basketpage__price}>${allSumOfProducts()}</h3>
@@ -162,14 +111,12 @@ export const BasketPage = () => {
             </button>
           </div>
         )}
-
         {showModal && (
           <ModalWin
             setShowModal={setShowModal}
             setSelectedProducts={setSelectedProducts}
           />
         )}
-
         {selectedProducts.length === 0 && (
           <p className={styles.basketpage__errormsj}>
             Oops! Its still empty here

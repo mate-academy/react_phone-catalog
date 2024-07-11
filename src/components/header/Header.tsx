@@ -2,55 +2,27 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { Navbar } from '../navbar';
 import { AsideMenu } from './components/AsideMenu/AsideMenu';
-import { useContext, useEffect, useState } from 'react';
+import { useState } from 'react';
 import classNames from 'classnames';
-import { ProductInfo } from '../../types/ProductInfo';
-import { AppContext } from '../../store/context';
-import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import { ProductSearch } from '../productSearch';
+import { useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const {
-    likedProducts,
-    setLikedProducts,
-    selectedProducts,
-    setSelectedProducts,
-  } = useContext(AppContext);
+  const { selectedProducts } = useAppSelector(
+    (state: RootState) => state.basket,
+  );
+
+  const { likedProducts } = useAppSelector(
+    (state: RootState) => state.favourite,
+  );
 
   const location = useLocation();
   const isProductsList =
     location.pathname === '/phones' ||
     location.pathname === '/tablets' ||
     location.pathname === '/accessories';
-
-  useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('likedProducts');
-
-    if (selectedProductFromStorage) {
-      const parsedProducts: ProductInfo[] = JSON.parse(
-        selectedProductFromStorage,
-      );
-
-      if (JSON.stringify(parsedProducts) !== JSON.stringify(likedProducts)) {
-        setLikedProducts(parsedProducts);
-      }
-    }
-  }, [likedProducts, setLikedProducts]);
-
-  useEffect(() => {
-    const selectedProductFromStorage = localStorage.getItem('selectedProducts');
-
-    if (selectedProductFromStorage) {
-      const parsedProducts: ProductWithQuantity[] = JSON.parse(
-        selectedProductFromStorage,
-      );
-
-      if (JSON.stringify(parsedProducts) !== JSON.stringify(selectedProducts)) {
-        setSelectedProducts(parsedProducts);
-      }
-    }
-  }, [selectedProducts, setSelectedProducts]);
 
   return (
     <>

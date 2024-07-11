@@ -1,6 +1,5 @@
 import { ProductSlider } from '../../components/productSlider';
 import styles from './ProductPage.module.scss';
-import { useFetchProducts } from '../../helpers/useFetchProducts';
 import { BackButton } from '../../components/backButton';
 import { useParams } from 'react-router-dom';
 import { ProductInfo } from '../../types/ProductInfo';
@@ -8,6 +7,10 @@ import { ImagesSlider } from './сomponents/ImagesSlider';
 import { VariableChars } from './сomponents/VariableChars';
 import { AccentButton } from '../../components/accentButton';
 import { SecondaryButton } from '../../components/secondaryButton';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { useEffect } from 'react';
+import { fetchProducts } from '../../features/products';
+import { ProductCategory } from '../../types/ProductCategory';
 
 type ProductType = 'products' | 'phones' | 'tablets' | 'accessories';
 
@@ -16,11 +19,30 @@ type Props = {
 };
 
 export const ProductPage: React.FC<Props> = ({ type }) => {
-  const { phones, tablets, accessories } = useFetchProducts(type);
+  const dispatch = useAppDispatch();
+  const { phones, tablets, accessories } = useAppSelector(
+    state => state.products,
+  );
   const { productId } = useParams<{ productId: string }>();
 
   let product: ProductInfo | undefined;
   let productsSlider: ProductInfo[] = [];
+
+  useEffect(() => {
+    switch (type) {
+      case 'phones':
+        dispatch(fetchProducts(ProductCategory.PHONES) as any);
+        break;
+      case 'tablets':
+        dispatch(fetchProducts(ProductCategory.TABLETS) as any);
+        break;
+      case 'accessories':
+        dispatch(fetchProducts(ProductCategory.ACCESSORIES) as any);
+        break;
+      default:
+        break;
+    }
+  }, [dispatch, type]);
 
   if (type === 'phones') {
     product = phones.find(phone => phone.id === productId);

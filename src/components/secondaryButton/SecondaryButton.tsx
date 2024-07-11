@@ -1,48 +1,35 @@
-import { useContext, useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import styles from './SecondaryButton.module.scss';
-import { AppContext } from '../../store/context';
 import { ProductInfo } from '../../types/ProductInfo';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { RootState } from '../../app/store';
+import { addProductToLiked } from '../../features/favourite';
 
 type Props = {
   product: ProductInfo;
 };
 
 export const SecondaryButton: React.FC<Props> = ({ product }) => {
-  const { likedProducts, setLikedProducts } = useContext(AppContext);
   const [imgButton, setImgButton] = useState('');
 
-  useEffect(() => {
-    const productId = product?.id;
-    const isLiked = likedProducts.some(
-      likedProduct => likedProduct.id === productId,
-    );
+  const dispatch = useAppDispatch();
+  const { likedProducts } = useAppSelector(
+    (state: RootState) => state.favourite,
+  );
 
+  const hasLiked = likedProducts.some(item => item.id === product?.id);
+
+  useEffect(() => {
     setImgButton(
-      isLiked ? 'img/icons/fillHeart.svg' : 'img/icons/favourite.svg',
+      hasLiked ? 'img/icons/fillHeart.svg' : 'img/icons/favourite.svg',
     );
   }, [likedProducts, product?.id]);
 
   const handleButtonFavorite = () => {
-    const productId = product?.id;
-    const isLiked = likedProducts.some(
-      currentProduct => currentProduct.id === productId,
-    );
-
-    let updatedLikedProducts: ProductInfo[];
-
-    if (isLiked) {
-      updatedLikedProducts = likedProducts.filter(
-        currentProduct => currentProduct.id !== productId,
-      );
-    } else {
-      updatedLikedProducts = [...likedProducts, product];
-    }
-
-    localStorage.setItem('likedProducts', JSON.stringify(updatedLikedProducts));
-    setLikedProducts(updatedLikedProducts);
+    dispatch(addProductToLiked(product));
 
     setImgButton(
-      isLiked ? 'img/icons/favourite.svg' : 'img/icons/fillHeart.svg',
+      hasLiked ? 'img/icons/favourite.svg' : 'img/icons/fillHeart.svg',
     );
   };
 
