@@ -11,9 +11,11 @@ export const CartPage = () => {
   const [isCheckout, setIsCheckout] = useState(false);
 
   let sum = 0;
+  let total = 0;
 
   for (const item of bascket) {
     sum += item.price * item.quantity;
+    total += item.quantity;
   }
 
   const hendleCheckout = () => {
@@ -54,7 +56,7 @@ export const CartPage = () => {
               <h1>{`$${sum}`}</h1>
             </div>
             <div className={styles.sum}>
-              <p>{`Total for ${bascket.length} items`}</p>
+              <p>{`Total for ${total} items`}</p>
             </div>
             <div className={styles.border}></div>
             <div className={styles.totalButton}>

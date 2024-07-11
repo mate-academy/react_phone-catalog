@@ -229,10 +229,20 @@
 .color {
   border: 2px solid $color-elements;
   border-radius: 50%;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .colorIsActive {
   outline: 1px solid #373131;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .infoText {
@@ -274,6 +284,11 @@
   line-height: 21px;
   text-align: center;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .capacityIsActive {
@@ -289,6 +304,11 @@
   height: 32px;
   padding: 7px 8px;
   border: 1px solid $color-black;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .buttonAndPrice {
@@ -346,6 +366,11 @@
   line-height: 21px;
   text-align: center;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .added {
@@ -363,6 +388,11 @@
   text-align: center;
   cursor: pointer;
   box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 
 
   @include on-tablet {
@@ -387,6 +417,11 @@
   justify-content: center;
   box-sizing: border-box;
   box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .specs {

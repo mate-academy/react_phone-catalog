@@ -82,10 +82,12 @@
   padding: 24px;
   justify-content: center;
   align-items: center;
+  height: 190px;
 
   @include on-desktop {
     grid-column: 17 / -1;
     grid-row: 1;
+    height: 206px;
   }
 }
 
@@ -124,6 +126,11 @@
   display: flex;
   justify-content: center;
   cursor: pointer;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .totalCheckout {

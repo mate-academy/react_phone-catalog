@@ -42,6 +42,11 @@
   justify-content: center;
   height: 80px;
   padding: 7px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .img {
@@ -55,12 +60,19 @@
   line-height: 21px;
   text-align: left;
   color: $color-black;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
 
 .secondBlock {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  max-width: 210px;
+  width: 206px;
 
   @include on-tablet {
     gap: 24px;
@@ -70,8 +82,8 @@
 .buttonBlock {
   display: flex;
   flex-direction: row;
-  gap: 14px;
   align-items: center;
+  justify-content: space-between;
 }
 
 .minus {
@@ -89,6 +101,7 @@
   line-height: 21px;
   text-align: center;
   color: $color-black;
+  width: 32px;
 }
 
 .price {
@@ -98,4 +111,6 @@
   line-height: 30.8px;
   text-align: left;
   color: $color-black;
+  max-width: 80px;
+  width: 75px;
 }

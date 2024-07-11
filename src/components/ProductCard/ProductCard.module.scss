@@ -168,6 +168,11 @@
   text-align: center;
   cursor: pointer;
   box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 
 
   @include on-tablet {
@@ -194,7 +199,11 @@
   text-align: center;
   cursor: pointer;
   box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
 
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 
   @include on-tablet {
     min-width: 125px;
@@ -217,4 +226,9 @@
   justify-content: center;
   box-sizing: border-box;
   box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
 }
