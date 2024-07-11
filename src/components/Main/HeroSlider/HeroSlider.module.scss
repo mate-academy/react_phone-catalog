@@ -16,7 +16,7 @@
   &__button {
     box-sizing: border-box;
     min-width: 32px;
-    background-color: $button-color;
+    background-color: $backgroundButtonSliderColor;
     border: 1px solid $bordeColor;
     cursor: pointer;
   }
@@ -59,7 +59,7 @@
     height: 4px;
     width: 14px;
     border-radius: 0;
-    background-color: $button-slider-color;
+    background-color: $backgroundSmallbuttonColor;
     border: none;
     position: relative;
     margin: 4px;

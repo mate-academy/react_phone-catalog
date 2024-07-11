@@ -6,7 +6,7 @@
 
   &__titleSelecrors {
     font-weight: 700;
-    color: $textItemsColor;
+    color: $secondTextColor;
     line-height: 15px;
     padding-bottom: 4px;
   }
@@ -67,7 +67,7 @@
   }
 
   &__item {
-    color: $selectItemsTextDefault;
+    color: $secondTextColor;
     font-weight: 500;
     font-size: 14px;
     line-height: 21px;
