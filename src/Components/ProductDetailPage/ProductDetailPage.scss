@@ -175,6 +175,7 @@
 
   &__button {
     @include display-flex-row(row, space-between);
+
     margin-bottom: 32px;
 
     &--add {
@@ -201,10 +202,6 @@
 
       @include on-desktop {
         width: 263px;
-      }
-
-      &:hover {
-        box-shadow: 0 3px 13px 0 rgba(23, 32, 49, 0.4);
       }
 
       &--active {

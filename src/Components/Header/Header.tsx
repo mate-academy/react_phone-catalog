@@ -13,6 +13,7 @@ import { NavItems } from '../Navigation/Navigation';
 import { getSearchWith } from '../../utils/getSearchWith';
 import { debounce } from '../../utils/debounce';
 import { ToggleButton } from '../ToggleButton';
+import { ProductGeneral } from '../../types/ProductGeneral';
 
 const windowSize = window.innerWidth > 640;
 
@@ -118,6 +119,11 @@ export const Header = ({ onDark, isDark }: Props) => {
     setSearchWith({ query: null });
   };
 
+  const inCartQuantity = (inCart as ProductGeneral[]).reduce(
+    (acc: number, item: ProductGeneral) => acc + item.quantity,
+    0,
+  );
+
   return (
     <>
       <header className="header" ref={headerRef}>
@@ -176,7 +182,7 @@ export const Header = ({ onDark, isDark }: Props) => {
               ></NavLink>
               {!!inCart.length && (
                 <div className="icon--favourites__number">
-                  <p className="icon--favourites__text">{inCart.length}</p>
+                  <p className="icon--favourites__text">{inCartQuantity}</p>
                 </div>
               )}
             </div>

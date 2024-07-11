@@ -1,7 +1,7 @@
 import { Product } from '../types/Product';
 import { getData } from '../utils/fetchClient';
 
-const DELAY = 250;
+const DELAY = 300;
 
 export const getDetailedPhones = async (): Promise<Product[]> => {
   const phones = await getData<Product[]>('/phones.json');

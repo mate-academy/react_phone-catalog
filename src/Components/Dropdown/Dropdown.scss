@@ -1,10 +1,10 @@
 @import '../../styles/variables';
+@import '../../styles/mixins';
 
 .dropdown {
   position: relative;
 
   &__triger {
-    border: 1px solid var(--icons);
     background-color: var(--white);
     height: 40px;
   }
@@ -21,6 +21,9 @@
 
 
   &__button {
+    @include hover(transform, scale(1.1));
+
+    border: 1px solid var(--icons);
     padding: 10px 12px;
     cursor: pointer;
     background-color: var(--white);
@@ -32,10 +35,8 @@
     font-size: 14px;
 
     [data-theme="dark"] & {
-      background-color: var(--secondary);
+      background-color: var(--surface2);
       color: var(--white);
-
-
     }
   }
 
@@ -70,6 +71,10 @@
       flex-direction: column;
       border: 1px solid var(--icons);
       background-color: var(--white);
+
+      [data-theme="dark"] & {
+        background-color: var(--surface2);
+      }
     }
 
 
@@ -82,8 +87,14 @@
       font-weight: 500;
 
       &:hover {
-        background: rgb(250, 251, 252);
+        background-color: var(--elements);
+
+        [data-theme="dark"] & {
+          background-color: var(--surface1);
+        }
       }
+
+
     }
 
     &--is-active {

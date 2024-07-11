@@ -36,7 +36,7 @@ export const Product = ({ product, title }: Props) => {
       <div className="products container">
         <Breadcrumbs />
         <h1 className="products__title">{title}</h1>
-        <p className="products__amount-models">{product.length}</p>
+        <p className="products__amount-models">{product.length} models</p>
         <div className="products__container">
           <div className="products__sort">
             <Dropdown

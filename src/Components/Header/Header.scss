@@ -6,6 +6,61 @@ body.menu-open {
 }
 
 
+.icon {
+  @include icon-size(16, 16, cover);
+
+  display: block;
+  cursor: pointer;
+
+  [data-theme="dark"] & {
+    filter: invert(1) brightness(100);
+  }
+
+  &__container {
+    @include display-flex-row(row, center);
+
+    width: 50%;
+    height: 64px;
+    border: 1px solid var(--icons);
+  }
+
+  &--menu {
+    background-image: url("../../icons/Menu.svg");
+  }
+
+  &--close {
+    background-image: url("../../icons/Close.png");
+  }
+
+  &--favourites,
+  &--cart {
+    position: absolute;
+    background-image: url("../../icons/Heart-like.svg");
+
+    &__number {
+      background-color: red;
+      top: -5px;
+      left: 8px;
+      position: relative;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+
+      @include display-flex-row(row, center);
+    }
+
+    &__text {
+      font-size: 9px;
+      font-weight: 80;
+      color: var(--white);
+    }
+  }
+
+  &--cart {
+    background-image: url("../../icons/Cart.svg");
+  }
+}
+
 .wrapper {
   display: flex;
   justify-content: end;
@@ -196,60 +251,6 @@ body.menu-open {
   }
 }
 
-.icon {
-  @include icon-size(16, 16, cover);
-
-  display: block;
-  cursor: pointer;
-
-  [data-theme="dark"] & {
-    filter: invert(1) brightness(100);
-  }
-
-  &__container {
-    @include display-flex-row(row, center);
-
-    width: 50%;
-    height: 64px;
-    border: 1px solid var(--icons);
-  }
-
-  &--menu {
-    background-image: url("../../icons/Menu.svg");
-  }
-
-  &--close {
-    background-image: url("../../icons/Close.png");
-  }
-
-  &--favourites,
-  &--cart {
-    position: absolute;
-    background-image: url("../../icons/Heart-like.svg");
-
-    &__number {
-      background-color: red;
-      top: -5px;
-      left: 8px;
-      position: relative;
-      width: 14px;
-      height: 14px;
-      border-radius: 50%;
-
-      @include display-flex-row(row, center);
-    }
-
-    &__text {
-      font-size: 9px;
-      font-weight: 80;
-      color: var(--white);
-    }
-  }
-
-  &--cart {
-    background-image: url("../../icons/Cart.svg");
-  }
-}
 
 .overlay {
   height: calc(100vh - 48px);

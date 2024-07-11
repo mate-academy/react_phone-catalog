@@ -3,10 +3,12 @@ import './App.scss';
 import { Footer } from './Components/Footer';
 import { Header } from './Components/Header';
 import './styles/styles.scss';
-import { useState } from 'react';
+import { useLocalStorage } from './hooks/useLocalStorage';
 
 export const App = () => {
-  const [isDark, setIsDark] = useState(true);
+  const preference = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  const [isDark, setIsDark] = useLocalStorage('isDark', preference);
 
   const handleThemeClick = () => {
     setIsDark(!isDark);

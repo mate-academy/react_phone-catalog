@@ -51,11 +51,9 @@
 
   &__links {
     @include display-flex-row(column, center);
-    align-items: center;
-    height: 100%;
+
     gap: 16px;
     align-items: start;
-    //line-height: 100%;
 
     @include on-tablet {
       @include display-flex-row(row, space-between);
@@ -83,6 +81,7 @@
   &__back-wrapper {
     @include display-flex-row(row, center);
 
+
     position: relative;
     left: 50%;
     transform: translateX(-50%);
@@ -101,6 +100,7 @@
 
     &__button {
       @include display-flex-row(row, center);
+      @include hover(transform, scale(1.2));
 
       width: 32px;
       height: 32px;

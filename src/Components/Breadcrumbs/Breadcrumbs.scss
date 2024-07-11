@@ -11,6 +11,7 @@
 
   &--home {
     @include icon-size(16, 16, cover);
+    @include hover(transform, scale(1.2));
 
     background-image: url("../../icons/Home.svg");
 
@@ -30,6 +31,8 @@
   }
 
   &--text {
+    @include hover(transform, scale(1.2));
+
     padding-top: 2px;
     display: flex;
     align-items: center;

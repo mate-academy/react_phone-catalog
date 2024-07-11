@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import { useContext } from 'react';
 import { ProductContext } from '../../store/ProductContext';
 import './Footer.scss';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const { isMobile } = useContext(ProductContext);
@@ -20,7 +21,9 @@ export const Footer = () => {
             })}
           >
             <div className="footer__wrapper">
-              <div className="footer__icon"></div>
+              <Link to={'/'} onClick={() => window.scrollTo(0, 0)}>
+                <div className="footer__icon"></div>
+              </Link>
             </div>
 
             <div className="footer__links">
@@ -40,9 +43,12 @@ export const Footer = () => {
               </a>
             </div>
 
-            <div className="footer__back-wrapper" onClick={handleBackToTop}>
+            <div className="footer__back-wrapper">
               <p className="footer__back-wrapper__text">Back to top</p>
-              <div className="footer__back-wrapper__button">
+              <div
+                className="footer__back-wrapper__button"
+                onClick={handleBackToTop}
+              >
                 <button className="footer__back-wrapper__back"></button>
               </div>
             </div>

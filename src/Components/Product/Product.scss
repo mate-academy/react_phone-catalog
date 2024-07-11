@@ -3,7 +3,6 @@
 
 
 .products {
-  padding-top: $headerHeight;
 
   &__cards {
     @include page-grid;
