@@ -39,11 +39,7 @@ export const Main = () => {
       {homePage && (
         <div className={style.main__content}>
           <h1 className={style.main__title}>
-            {!isLoading ? (
-              t('welcome')
-            ) : (
-              <Skeleton height={48}/>
-            )}
+            {!isLoading ? t('welcome') : <Skeleton height={48} />}
           </h1>
 
           <section className={style.main__heroSlider}>

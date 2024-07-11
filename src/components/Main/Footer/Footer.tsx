@@ -65,7 +65,7 @@ export const Footer = () => {
           </div>
         </nav>
       ) : (
-        <Skeleton className={style.footer__navContainer}/>
+        <Skeleton className={style.footer__navContainer} />
       )}
     </footer>
   );

@@ -17,7 +17,7 @@ export const Skeleton: React.FC<Props> = ({
   width,
   height,
 }) => {
-  let styles: any = {};
+  const styles: any = {};
   const skeletonClasses = classNames(
     `${style.skeleton} ${styles.skeleton__overlay} ${style[`skeleton-${variant}`]}`,
     className,
@@ -27,6 +27,7 @@ export const Skeleton: React.FC<Props> = ({
     styles.width = width;
     styles.height = height;
   }
+
   return (
     <div className={skeletonClasses} style={styles}>
       <div className={styles.skeleton__overlay}>{children}</div>

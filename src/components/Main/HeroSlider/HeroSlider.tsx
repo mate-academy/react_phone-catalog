@@ -197,7 +197,11 @@ export const HeroSlider = () => {
           )}
         </div>
       ) : (
-        <Skeleton className={`${style.slider} ${style.slider__container}`} height={300} width={1132} />
+        <Skeleton
+          className={`${style.slider} ${style.slider__container}`}
+          height={300}
+          width={1132}
+        />
       )}
     </div>
   );
