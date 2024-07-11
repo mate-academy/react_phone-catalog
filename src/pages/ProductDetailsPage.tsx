@@ -123,7 +123,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
           <div className={style.product__availableColors}>
             {colorsAvailable.map(currentColor => {
-
               const colorNew = {
                 backgroundColor:
                   AvailableColors[currentColor as keyof typeof AvailableColors],

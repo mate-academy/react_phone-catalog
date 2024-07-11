@@ -36,9 +36,9 @@ export const Main = () => {
     >
       {homePage && (
         <div className={style.main__content}>
-          <Skeleton>
-            <h1 className={style.main__title}>{t('welcome')}</h1>
-          </Skeleton>
+          {/* <Skeleton> */}
+          <h1 className={style.main__title}>{t('welcome')}</h1>
+          {/* </Skeleton> */}
 
           <section className={style.main__heroSlider}>
             <HeroSlider />

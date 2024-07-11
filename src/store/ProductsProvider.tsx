@@ -46,7 +46,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   const sortBy = searchParams.get(QueryParams.sort) || SortBy.newest;
   const page = searchParams.get(QueryParams.page) || '1';
   const perPage = searchParams.get(QueryParams.perPage) || '4';
-
   const query = searchParams.get(QueryParams.query) || '';
   const [debounceValue] = useDebounce(query, 500);
 
@@ -70,10 +69,10 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
   useEffect(() => {
     const loadProducts = async () => {
       try {
-        const products = await getProducts('products');
+        const devices = await getProducts('products');
 
-        if (products) {
-          setProducts(products);
+        if (devices) {
+          setProducts(devices);
         }
       } catch (error) {
         throw new Error('Something went wrong');
@@ -84,8 +83,6 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
 
     loadProducts();
   }, []);
-
-  console.log(isLoading);
 
   const filteredList = (
     devices: Product[],
