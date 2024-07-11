@@ -1,4 +1,4 @@
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import './ProductDetailsPage.scss';
@@ -11,6 +11,7 @@ import { getAccessories, getPhones, getTablets } from '../../services/products';
 import classNames from 'classnames';
 // eslint-disable-next-line max-len
 import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
+import { COLOR_MAP } from '../../services/colors';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -19,63 +20,60 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const [isPressed, setIsPressed] = useState(false);
-
-  const COLOR_MAP: { [key: string]: string } = {
-    spacegray: '#4c4c4c',
-    yellow: '#ffe681',
-    red: '#a50011',
-    midnightgreen: '#4e5851',
-    gold: '#fcdbc1',
-    silver: '#f5f5f0',
-    black: '#000000',
-    rosegold: '#e6c7c2',
-    coral: '#ee7762',
-    white: '#ffffff',
-    purple: '#b8afe6',
-    midnight: '#171e27',
-    spaceblack: '#201d24',
-    blue: '#043458',
-    pink: '#fae0d8',
-    alphinegreen: '#505f4e',
-    green: '#e1f8dc',
-    graphite: '#5c5b57',
-    sierrablue: '#9bb5ce',
-    pacificblue: '#2e4755',
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
+    if (!productId) {
+      navigate('/product-not-found');
+
+      return;
+    }
+
     async function fetchData() {
-      const phones = await getPhones();
-      const tablets = await getTablets();
-      const accessories = await getAccessories();
+      try {
+        const [phones, tablets, accessories] = await Promise.all([
+          getPhones(),
+          getTablets(),
+          getAccessories(),
+        ]);
 
-      const allProducts = [...phones, ...tablets, ...accessories];
-      const foundProduct = allProducts.find(item => item.id === productId);
+        const allProducts = [...phones, ...tablets, ...accessories];
+        const foundProduct = allProducts.find(
+          item => item.id.toLowerCase() === productId?.toLowerCase(),
+        );
 
-      setProduct(foundProduct || null);
-      if (foundProduct && foundProduct.images && !!foundProduct.images.length) {
-        setSelectedImage(foundProduct.images[0]);
-      }
+        setProduct(foundProduct || null);
+        if (
+          foundProduct &&
+          foundProduct.images &&
+          !!foundProduct.images.length
+        ) {
+          setSelectedImage(foundProduct.images[0]);
+        }
 
-      if (
-        foundProduct &&
-        foundProduct.colorsAvailable &&
-        !!foundProduct.colorsAvailable
-      ) {
-        setSelectedColor(foundProduct.color);
-      }
+        if (
+          foundProduct &&
+          foundProduct.colorsAvailable &&
+          !!foundProduct.colorsAvailable
+        ) {
+          setSelectedColor(foundProduct.color);
+        }
 
-      if (
-        foundProduct &&
-        foundProduct.capacityAvailable &&
-        !!foundProduct.capacityAvailable
-      ) {
-        setSelectedCapacity(foundProduct.capacityAvailable[0]);
+        if (
+          foundProduct &&
+          foundProduct.capacityAvailable &&
+          !!foundProduct.capacityAvailable
+        ) {
+          setSelectedCapacity(foundProduct.capacityAvailable[0]);
+        }
+      } catch (err) {
+        // eslint-disable-next-line no-console
+        console.log(err);
       }
     }
 
     fetchData();
-  }, [productId]);
+  }, [productId, navigate]);
 
   if (!product) {
     return <div>Loading...</div>;
@@ -85,8 +83,10 @@ export const ProductDetailsPage: React.FC = () => {
     name,
     category,
     images,
+    namespaceId,
     colorsAvailable,
     capacityAvailable,
+    capacity,
     priceRegular,
     priceDiscount,
     screen,
@@ -98,6 +98,16 @@ export const ProductDetailsPage: React.FC = () => {
     zoom,
     cell,
   } = product;
+
+  const handleColorChange = (color: string) => {
+    if (product) {
+      const normalizedColor = color.replace(/\s+/g, '-');
+      const newProductId = `${namespaceId}-${capacity}-${normalizedColor}`;
+
+      navigate(`/${category}/${newProductId}`);
+      setSelectedColor(color);
+    }
+  };
 
   const addToFav = () => {
     setIsPressed(!isPressed);
@@ -185,28 +195,34 @@ export const ProductDetailsPage: React.FC = () => {
                 <p className="colors-box__id">ID: 802390</p>
               </div>
               <div className="product-details__colors--cont colors-cont">
-                {colorsAvailable.map((color: string, index: number) => (
-                  <div
-                    key={index}
-                    className={classNames('colors-cont__color', {
-                      selected: selectedColor === color,
-                    })}
-                    style={{
-                      backgroundColor:
-                        selectedColor === color
-                          ? COLOR_MAP[color.toLowerCase()]
-                          : '#3B3E4A',
-                    }}
-                    onClick={() => setSelectedColor(color)}
-                  >
+                {colorsAvailable.map((color: string, index: number) => {
+                  const normalizedColor = color
+                    .replace(/\s+/g, '')
+                    .toLowerCase();
+
+                  return (
                     <div
-                      className="colors-cont__color--in"
+                      key={index}
+                      className={classNames('colors-cont__color', {
+                        selected: selectedColor === color,
+                      })}
                       style={{
-                        backgroundColor: COLOR_MAP[color.toLowerCase()],
+                        backgroundColor:
+                          selectedColor === color
+                            ? COLOR_MAP[normalizedColor]
+                            : '#3B3E4A',
                       }}
-                    ></div>
-                  </div>
-                ))}
+                      onClick={() => handleColorChange(color)}
+                    >
+                      <div
+                        className="colors-cont__color--in"
+                        style={{
+                          backgroundColor: COLOR_MAP[normalizedColor],
+                        }}
+                      ></div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
             <div className="product-details__capacity">

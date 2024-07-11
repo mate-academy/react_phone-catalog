@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Product } from '../types/Product';
 import { Link } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList';
-import { getTablets } from '../services/products';
+import { getProducts } from '../services/products';
+import { Gadget } from '../types/Gadget';
+import { ProductType } from '../types/ProductType';
 
 export const TabletsPage = () => {
-  const [tablets, setTablets] = useState<Product[]>([]);
+  const [tablets, setTablets] = useState<Gadget[]>([]);
 
   useEffect(() => {
-    getTablets()
-      .then(setTablets)
+    getProducts()
+      .then(products => {
+        const filteredTablets = products.filter(
+          (product: Gadget) => product.category === ProductType.tablets,
+        );
+
+        setTablets(filteredTablets);
+      })
       .catch(err => {
         // eslint-disable-next-line no-console
         console.log(err);

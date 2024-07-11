@@ -1,17 +1,24 @@
 import { useEffect, useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
-import { Product } from '../types/Product';
-import { getAccessories } from '../services/products';
+import { getProducts } from '../services/products';
 import { Link } from 'react-router-dom';
 import { ProductsList } from '../components/ProductsList';
+import { ProductType } from '../types/ProductType';
+import { Gadget } from '../types/Gadget';
 
 export const AccessoriesPage = () => {
-  const [accessories, setAccessories] = useState<Product[]>([]);
+  const [accessories, setAccessories] = useState<Gadget[]>([]);
 
   useEffect(() => {
-    getAccessories()
-      .then(setAccessories)
+    getProducts()
+      .then(products => {
+        const filteredAccessories = products.filter(
+          (product: Gadget) => product.category === ProductType.accessories,
+        );
+
+        setAccessories(filteredAccessories);
+      })
       .catch(err => {
         // eslint-disable-next-line no-console
         console.log(err);

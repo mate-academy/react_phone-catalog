@@ -10,5 +10,5 @@ export type Gadget = {
   ram: string;
   image: string;
   color: string;
-  year: string;
+  year: number;
 };

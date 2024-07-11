@@ -111,3 +111,10 @@ img {
   padding-left: 16px;
   margin-bottom: 32px;
 }
+
+.visually-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-in-out;
+}

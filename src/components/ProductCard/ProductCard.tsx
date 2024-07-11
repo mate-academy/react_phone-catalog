@@ -1,41 +1,48 @@
 import { Link } from 'react-router-dom';
-import { Product } from '../../types/Product';
 import './ProductCard.scss';
-import React from 'react';
+import React, { useState } from 'react';
+import classNames from 'classnames';
+import { Gadget } from '../../types/Gadget';
 
 type Props = {
-  product: Product;
+  gadget: Gadget;
 };
 
-export const ProductCard: React.FC<Props> = ({ product }) => {
+export const ProductCard: React.FC<Props> = ({ gadget }) => {
+  const [isPressed, setIsPressed] = useState(false);
+
   const {
-    id,
+    itemId,
     name,
     category,
     capacity,
-    priceRegular,
-    priceDiscount,
+    fullPrice,
+    price,
     screen,
     ram,
-    images,
-  } = product;
+    image,
+  } = gadget;
+
+  const addToFav = () => {
+    setIsPressed(!isPressed);
+  };
 
   return (
     <div className="product-card">
-      <Link to={`/${category}/${id}`} className="product-card__img-link">
-        <img className="product-card__img-link--img" src={images[0]} alt={id} />
+      <Link to={`/${category}/${itemId}`} className="product-card__img-link">
+        <img className="product-card__img-link--img" src={image} alt={name} />
       </Link>
-      <Link to={`/${category}/${id}`} className="product-card__title-link">
+      <Link to={`/${category}/${itemId}`} className="product-card__title-link">
         <p className="product-card__title-link--title">{name}</p>
       </Link>
       <div className="product-card__price">
-        {priceDiscount ? (
+        {price ? (
           <>
-            <p className="product-card__price--regular">{`$${priceDiscount}`}</p>
-            <p className="product-card__price--regular price-disc">{`$${priceRegular}`}</p>
+            <p className="product-card__price--regular">{`$${price}`}</p>
+            <p className="product-card__price--regular price-disc">{`$${fullPrice}`}</p>
           </>
         ) : (
-          <p className="product-card__price--regular">{`$${priceRegular}`}</p>
+          <p className="product-card__price--regular">{`$${fullPrice}`}</p>
         )}
       </div>
       <ul className="product-card__list">
@@ -56,8 +63,16 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         <button type="button" className="product-card__btn--add">
           Add to cart
         </button>
-        <button type="button" className="product-card__btn--heart">
-          <svg className="icon icon-heart icon-heart-red">
+        <button
+          type="button"
+          className="product-card__btn--heart"
+          onClick={addToFav}
+        >
+          <svg
+            className={classNames('icon icon-heart', {
+              'icon-heart-red': isPressed,
+            })}
+          >
             <use href="img/icons.svg#icon-favourites-filled"></use>
           </svg>
         </button>

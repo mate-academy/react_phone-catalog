@@ -4,15 +4,24 @@ import { Link } from 'react-router-dom';
 import '../styles/page.scss';
 import { ProductsList } from '../components/ProductsList';
 import { useEffect, useState } from 'react';
-import { Product } from '../types/Product';
-import { getPhones } from '../services/products';
+import { getProducts } from '../services/products';
+import { Gadget } from '../types/Gadget';
+import { ProductType } from '../types/ProductType';
 
 export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+  const [phones, setPhones] = useState<Gadget[]>([]);
+  // const [loading, setLoading] = useState(true);
+  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getPhones()
-      .then(setPhones)
+    getProducts()
+      .then(products => {
+        const filteredPhones = products.filter(
+          (product: Gadget) => product.category === ProductType.phones,
+        );
+
+        setPhones(filteredPhones);
+      })
       .catch(err => {
         // eslint-disable-next-line no-console
         console.log(err);

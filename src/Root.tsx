@@ -7,6 +7,7 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundProduct } from './pages/NotFoundProduct';
 
 export const Root = () => (
   <HashRouter>
@@ -22,6 +23,7 @@ export const Root = () => (
         <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
         <Route path="*" element={<NotFoundPage />} />
+        <Route path="*" element={<NotFoundProduct />} />
       </Route>
     </Routes>
   </HashRouter>

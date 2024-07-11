@@ -63,4 +63,11 @@
 
     @include hover(fill, $purple-hover-color);
   }
+
+  &-dropdown-up,
+  &-dropdown-down {
+    fill: $light-grey-color;
+    width: 10px;
+    height: 6px;
+  }
 }
