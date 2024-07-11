@@ -1,0 +1,114 @@
+@import '../../../../styles/main';
+
+.slider {
+  @include section-grid;
+
+  padding-inline: 0;
+}
+
+.container {
+  grid-column: 1 / -1;
+  display: flex;
+  overflow: hidden;
+  width: 100%;
+  height: 320px;
+
+
+  @include on-tablet {
+    grid-column: 2 / -2;
+    height: 360px;
+  }
+
+  @include middle-screen {
+    height: 410px;
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  min-width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  flex-shrink: 0;
+
+  transition: transform $transition-duration ease;
+}
+
+.button {
+  display: none;
+  width: 32px;
+  height: 100%;
+  background-color: var(--color-icons);
+  border: 1px solid var(--color-surface);
+  border-radius: 4px;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: block;
+    grid-column: span 1;
+  }
+
+  &:hover {
+    border: 1px solid var(--color-primary);
+    background-color: var(--color-hover);
+  }
+}
+
+.next {
+  @include on-tablet {
+    justify-self: end;
+  }
+}
+
+.iconNext {
+  transform : rotate(180deg);
+}
+
+
+.dashes {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 4px;
+  height: 24px;
+
+  @include on-tablet {
+    grid-column: 6 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 12 / 14;
+  }
+}
+
+.dashContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.dash {
+  height: 4px;
+  width: 14px;
+  background-color: var(--color-surface);
+
+  &.active {
+    background-color: var(--color-primary);
+  }
+}
