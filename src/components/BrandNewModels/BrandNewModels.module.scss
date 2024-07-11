@@ -2,13 +2,15 @@
 
 .container {
   padding: 0 16px 56px;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @include on-tablet {
     padding: 0 24px 64px;
   }
 
   @include on-desktop {
-    padding: 0 32px 80px;
+    padding: 0 32px 80px 32px;
   }
 }
 
@@ -34,6 +36,10 @@
   top: 0;
   left: 0;
   transition-duration: 2s;
+
+  @include on-desktop {
+    gap: 13px;
+  }
 }
 
 .titleBrand {

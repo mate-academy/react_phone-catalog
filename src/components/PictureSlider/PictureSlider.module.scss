@@ -6,6 +6,8 @@ $paddingFromSliderToButtonOnDesctop: 16px;
 
 .slider {
   padding-bottom: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @include on-tablet {
     padding: 0 24px 8px;
@@ -13,7 +15,7 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   }
 
   @include on-desktop {
-  padding: 0 32px 8px;
+    padding: 0 32px 8px 32px;
     justify-content: center;
   }
 }
@@ -69,12 +71,18 @@ $paddingFromSliderToButtonOnDesctop: 16px;
   object-fit: cover;
 
   @include on-tablet {
-    width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButton) - (2 * 24px));
+    width: calc(
+      100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButton) -
+        (2 * 24px)
+    );
     height: auto;
   }
 
   @include on-desktop {
-    width: calc(100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButtonOnDesctop) - (2 * 32px));
+    width: calc(
+      100vw - (2 * $widthOfSliderButton) -
+        (2 * $paddingFromSliderToButtonOnDesctop) - (2 * 32px)
+    );
     height: auto;
   }
 }

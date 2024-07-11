@@ -10,7 +10,6 @@ export const HotPrices = () => {
   const [curretIndex, setCurrentIndex] = useState(0);
   const screenWidth = useWindowWidth();
 
-  // const isMobile = screenWidth >= 320 && screenWidth < 640;
   const isTablet = screenWidth >= 640 && screenWidth < 1200;
   const isDesctop = screenWidth >= 1200;
 
@@ -34,7 +33,7 @@ export const HotPrices = () => {
   let imgWidth = 226;
 
   if (isTablet) {
-    imgWidth = 251;
+    imgWidth = 255;
   }
 
   if (isDesctop) {

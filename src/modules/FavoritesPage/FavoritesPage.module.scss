@@ -4,6 +4,8 @@
   width: 100vw;
   height: auto;
   padding: 24px 16px 0;
+  max-width: 1200px;
+  margin: 0 auto;
 
   @include on-tablet {
     padding: 24px;
