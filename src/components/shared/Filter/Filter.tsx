@@ -46,7 +46,9 @@ export const Filter: React.FC<FilterType> = ({
       className={styles.filter}
       ref={refFilter}
       tabIndex={0}
-      onBlur={() => setIsOpen(false)}
+      onBlur={() => {
+        setTimeout(() => setIsOpen(false), 500);
+      }}
     >
       <h3 className={styles.filter__sort}>{title}</h3>
 
