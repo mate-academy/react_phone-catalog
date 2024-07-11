@@ -2,7 +2,7 @@
 @import '../../styles/block/utils/mixins';
 
 .gadgets {
-  max-width: 1136px;
+  max-width: $maxContentWidth;
   margin: 0 auto;
   position: relative;
   overflow: hidden;
@@ -52,7 +52,7 @@
     cursor: pointer;
 
     &:hover {
-      border: 1px solid $border-hover-button;
+      border: 1px solid $borderHoverButton;
     }
   }
 

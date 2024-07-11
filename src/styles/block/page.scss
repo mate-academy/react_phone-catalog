@@ -22,41 +22,34 @@
   --selectHover: #89939a;
   --backgroundButtonSliderColor: #fff;
   --backgroundSmallbuttonColor: #e2e6e9;
-
-
-
-
+  --circleActiveColor: #313237;
+  --actionButtonActiveBorder: #313237;
+  --backgroundColorButtonCart: #313237;
+  --selectFocus: #313237;
   --buttonActiveBackColor: #313237;
-  --backgroundColor-button-cart: #313237;
+  --backTextColorDefoult: #89939a;
+  --backHoverBtn: #313237;
+  --paginationBorderColorHover: #313237;
+  --backgroundPhoneCardHover: #313237;
   --textColorButtonCart: #ffffff;
-  --backgroundColor-button-fav: #fff;
-  --backgroundColor-phoneCard: #fff;
-  --backgroundColor-phoneCardHover: #313237;
-  --backgroundColor-button-cart: #313237;
-  --selectBackground: #fff;
-  --linkBackgroundButton: #323542;
   --selectBackgroundFocus: #fafbfc;
   --selectDefault: #b4bdc3;
-  --selectFocus: #313237;
+  --selectBackground: #fff;
   --paginationBackColor: #fff;
-  --paginationBackColorHover: #fff;
-  --paginationBorderColorHover: #313237;
-  --paginationNumberBackColor: #fff;
+  --backgroundColorButtonFav: #fff;
+  --backgroundColorPhoneCard: #fff;
+  --addedToCartTextColor: #27ae60;
+  --linkBackgroundButton: #0b0c0f;
   --paginationTextColorActive: #fff;
-  --paginationNumberBackColorActive: #313237;
-  --backHoverBtn: #313237;
+  --idsTextColor: #b4bdc3;
+  --paginationBackColorHover: #fff;
+  --paginationNumberBackColor: #fff;
   --circleDefaultColor: #e2e6e9;
   --circleHoverColor: #b4bdc3;
-  --circleActiveColor: #313237;
   --borderCapacityColor: #b4bdc3;
-  --idsTextColor: #b4bdc3;
   --borderActiveColor: #c4c4c4;
-  --actionButtonActiveBorder: #313237;
   --favoritesCircleBackColor: #eb5757;
-  --addedToCartTextColor: #27ae60;
   --buttonBorderColorDefault: #b4bdc3;
-
-
 }
 
 .dark {
@@ -70,37 +63,34 @@
   --selectHover: #4a4d58;
   --backgroundButtonSliderColor: #323542;
   --backgroundSmallbuttonColor: #3b3e4a;
-
-
-
+  --circleActiveColor: #f1f2f9;
+  --actionButtonActiveBorder: #f1f2f9;
+  --backgroundColorButtonCart: #905bff;
+  --selectFocus: #905bff;
   --buttonActiveBackColor: #f1f2f9;
-  --backgroundColor-button-cart: #905bff;
+  --backTextColorDefoult: #f1f2f9;
+  --backHoverBtn: #905bff;
+  --paginationBorderColorHover: #323542;
+  --backgroundPhoneCardHover: #a378ff;
   --textColorButtonCart: #f1f2f9;
-  --backgroundColor-button-fav: #323542;
-  --backgroundColor-phoneCard: #161827;
-  --backgroundColor-phoneCardHover: #a378ff;
-  --selectBackground: #323542;
-  --linkBackgroundButton: #323542;
-  --linkBackgroundButtonHover: #4a4d58;
   --selectBackgroundFocus: #323542;
   --selectDefault: #323542;
-  --selectFocus: #905bff;
   --paginationBackColor: #323542;
-  --paginationBackColorHover: #4a4d58;
-  --paginationBorderColorHover: #323542;
-  --paginationNumberBackColor: #161827;
+  --selectBackground: #323542;
+  --backgroundColorButtonFav: #323542;
+  --backgroundColorPhoneCard: #161827;
+  --addedToCartTextColor: #f1f2f9;
+  --linkBackgroundButton: #323542;
   --paginationTextColorActive: #f1f2f9;
-  --paginationNumberBackColorActive: #905bff;
-  --backHoverBtn: #905bff;
+  --idsTextColor: #4a4d58;
+  --linkBackgroundButtonHover: #4a4d58;
+  --paginationBackColorHover: #4a4d58;
+  --paginationNumberBackColor: #161827;
   --circleDefaultColor: #3b3e4a;
   --circleHoverColor: #75767f;
-  --circleActiveColor: #f1f2f9;
   --borderCapacityColor: #4a4d58;
-  --idsTextColor: #4a4d58;
   --borderActiveColor: #c4c4c4;
-  --actionButtonActiveBorder: #f1f2f9;
   --favoritesCircleBackColor: #eb5757;
-  --addedToCartTextColor: #f1f2f9;
 
   color: $textColor;
   background-color: $backgroundColor;

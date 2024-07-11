@@ -1,5 +1,6 @@
 @use '../../../styles/block/utils/_variables.scss' as *;
 @import '../../../styles/block/utils/mixins.scss';
+@import '../../../styles/block/utils/_placeholders.scss';
 
 .theme__area {
   display: flex;
@@ -8,9 +9,11 @@
   width: 100%;
   height: 100%;
   cursor: pointer;
+
 }
 
 .theme__switch {
+
   position: relative;
   display: inline-block;
   width: 30px;
@@ -19,9 +22,10 @@
   background-color: $textColor;
   border-radius: 50px;
   border: none;
-  box-shadow: 0 0 18px $textColor;
   cursor: pointer;
+
 }
+
 
 .theme__switch::after {
   content: '';
@@ -38,6 +42,11 @@
 .theme__checkbox:checked + .theme__switch::after {
   transform: translateX(137%);
   @extend %transitionPage;
+}
+
+
+.theme__checkbox:checked + .theme__switch:hover {
+  box-shadow: 0 0 18px $secondTextColor;
 }
 
 .theme__checkbox + .theme__switch::after {

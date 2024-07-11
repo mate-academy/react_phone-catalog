@@ -3,12 +3,11 @@
 
 .favorites {
   display: flex;
-  max-width: 1136px;
+  max-width: $maxContentWidth;
   margin: 0 auto;
-  margin-bottom: 80px;
+  @include space-between-sectionsDesktop;
 
   &__activeAsideMenu {
-    // overflow: hidden;
     display: none;
   }
 
@@ -35,7 +34,7 @@
 
 @include onTablet {
   .favorites {
-    margin-bottom: 64px;
+    @include space-between-sectionsTablet;
     &__list {
       padding-inline: 24px;
     }
@@ -44,7 +43,7 @@
 
 @include onPhone {
   .favorites {
-    margin-bottom: 56px;
+    @include space-between-sectionsPhone;
     &__list {
       padding-inline: 16px;
     }

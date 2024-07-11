@@ -1,7 +1,9 @@
 @use '../styles/block/utils/variables' as *;
 @import '../styles/block/utils/_mixins.scss';
+@import '../styles/block/utils/_placeholders.scss';
+
 .product {
-  max-width: 1136px;
+  max-width: $maxContentWidth;
   margin: 0 auto;
   padding-inline: 32px;
 
@@ -25,10 +27,10 @@
 
   &__gridContainer {
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat($grid-columns-desctop, 1fr);
     position: relative;
     column-gap: 16px;
-    margin-bottom: 80px;
+    @include space-between-sectionsDesktop;
   }
 
   &__imagesList {
@@ -193,7 +195,7 @@
   &__addToCart {
     height: 48px;
     width: 100%;
-    background-color: $backgroundColor-button-cart;
+    background-color: $backgroundColorButtonCart;
     color: $textColorButtonCart;
     font-weight: 700;
     font-size: 14px;
@@ -211,13 +213,13 @@
     align-items: center;
     min-width: 48px;
     height: 48px;
-    background-color: $backgroundColor-button-fav;
+    background-color: $backgroundColorButtonFav;
     border: 1px solid $bordeColor;
     cursor: pointer;
   }
 
   &__favorites:hover {
-    @extend %lightThemeHoverBorderButton
+    @extend %lightThemeHoverBorderButton;
   }
 
   &__darkTheme &__favorites:hover {
@@ -295,7 +297,7 @@
     padding-inline: 24px;
 
     &__gridContainer {
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat($grid-columns-tablet, 1fr);
     }
 
     &__imagesList {
@@ -333,7 +335,7 @@
     }
 
     &__gridContainer {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat($grid-columns-phone, 1fr);
       margin-bottom: 0;
       grid-template-areas:
         'photo photo photo photo'

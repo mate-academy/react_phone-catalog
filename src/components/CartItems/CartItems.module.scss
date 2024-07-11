@@ -1,8 +1,9 @@
 @use '../../styles/block/utils/variables' as *;
 @import '../../styles/block/utils/_mixins.scss';
+@import '../../styles/block/utils/_placeholders.scss';
 
 .cart {
-  max-width: 1136px;
+  max-width: $maxContentWidth;
   margin: 0 auto;
 
   &__linkItem {
@@ -28,7 +29,7 @@
 
   &__gridContainer {
     display: grid;
-    grid-template-columns: repeat(24, 1fr);
+    grid-template-columns: repeat($grid-columns-desctop, 1fr);
     column-gap: 16px;
   }
 
@@ -49,7 +50,7 @@
   }
 
   &__item:last-child {
-    margin-bottom: 80px;
+    @include space-between-sectionsDesktop;
   }
 
   &__itemWrapper {
@@ -109,7 +110,7 @@
   }
 
   .cart__quantityButton:hover {
-    border-color: $border-hover-button;
+    border-color: $borderHoverButton;
   }
 
   .cart__darkTheme.cart__quantityButton:hover {
@@ -189,7 +190,7 @@
 
   &__checkout {
     height: 48px;
-    background-color: $backgroundColor-button-cart;
+    background-color: $backgroundColorButtonCart;
     width: 100%;
     border: none;
     color: $textColorButtonCart;
@@ -233,7 +234,7 @@
     }
 
     &__gridContainer {
-      grid-template-columns: repeat(12, 1fr);
+      grid-template-columns: repeat($grid-columns-tablet, 1fr);
     }
 
     &__list {
@@ -248,7 +249,7 @@
     &__priceContainer {
       grid-column: 1 / 13;
       height: 190px;
-      margin-bottom: 64px;
+      @include space-between-sectionsTablet;
     }
   }
 }
@@ -260,7 +261,7 @@
     }
 
     &__gridContainer {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat($grid-columns-phone, 1fr);
     }
 
     &__list {

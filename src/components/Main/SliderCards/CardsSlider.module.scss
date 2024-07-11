@@ -1,5 +1,6 @@
 @use '../../../styles/block/utils/_variables.scss' as *;
 @import '../../../styles/block/utils/_mixins.scss';
+@import '../../../styles/block/utils/_placeholders.scss';
 
 .cardsSlider {
   position: relative;
@@ -81,7 +82,7 @@
     }
 
     &__cardContainer {
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat($grid-columns-phone, 1fr);
     }
 
     &__cardsList {

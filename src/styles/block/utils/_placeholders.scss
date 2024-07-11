@@ -1,0 +1,16 @@
+%transitionPage {
+  transition: all 0.4s;
+}
+
+%lightThemeHoverBorderButton {
+  border: 1px solid $borderHoverButton;
+}
+
+%darkThemeHoverBackgroundButton {
+  background-color: $background-hover-button;
+}
+
+%buttonHoverEffect {
+  background-color: $backgroundPhoneCardHover;
+  box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
+}

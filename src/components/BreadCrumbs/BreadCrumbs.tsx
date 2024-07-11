@@ -6,10 +6,10 @@ import { LanguageContext } from '../../store/LanguageProvider';
 
 export const BreadCrumbs = () => {
   const { t } = useContext(LanguageContext);
-  const location = useLocation();
+  const { pathname } = useLocation();
   let currentLink = '..';
 
-  const crumbs = location.pathname.split('/').map(crumb => {
+  const crumbs = pathname.split('/').map(crumb => {
     currentLink += `/${crumb}`;
 
     return (

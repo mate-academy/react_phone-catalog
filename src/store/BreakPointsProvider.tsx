@@ -18,7 +18,7 @@ export const BreakPointsContext = React.createContext<BreakPointsContextType>({
 
 export const BreakPointsProvider: React.FC<Props> = ({ children }) => {
   const isMobile = useMediaQuery({
-    query: '(max-width: 640px)',
+    query: `(max-width: 640px)`,
   });
 
   const isLaptop = useMediaQuery({

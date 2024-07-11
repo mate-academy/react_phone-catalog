@@ -1,5 +1,6 @@
 @use '../../styles/block/utils/_variables.scss' as *;
 @import '../../styles/block/utils/_mixins.scss';
+@import '../../styles/block/utils/_placeholders.scss';
 
 .header {
   position: sticky;
@@ -68,11 +69,6 @@
     display: flex;
   }
 
-  &__actionsImg {
-    width: 16px;
-    height: 16px;
-  }
-
   &__quantityItemsCircle {
     position: absolute;
     display: flex;
@@ -88,6 +84,7 @@
     height: 14px;
     border-radius: 50%;
     background-color: $favoritesCircleBackColor;
+    z-index: 1;
   }
 
   &__actionsLink {
@@ -111,6 +108,26 @@
       border-bottom: 3px solid $actionButtonActiveBorder;
       @include initialAnimation();
     }
+  }
+
+  &__actionsImg {
+    width: 16px;
+    height: 16px;
+  }
+
+  &__actionsLink:hover {
+    .header__quantityItemsCircle, .header__actionsImg {
+      transform: scale(1.1);
+    }
+
+  }
+
+  &__containerImage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
   }
 
   .header__activeButton.header__actionsLink::after {

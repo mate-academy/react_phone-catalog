@@ -1,5 +1,6 @@
 @use '../../../styles/block/utils/_variables.scss' as *;
 @import '../../../../src/styles/block/utils/_mixins.scss';
+@import '../../../styles/block/utils/_placeholders.scss';
 
 .slider {
   padding-inline: $onDesctop-container-padding;
@@ -9,8 +10,8 @@
     position: relative;
     justify-content: space-between;
     margin: 0 auto;
-    max-height: 432px;
-    max-width: 1132;
+    // max-height: 432px;
+    // max-width: 1132px;
   }
 
   &__button {

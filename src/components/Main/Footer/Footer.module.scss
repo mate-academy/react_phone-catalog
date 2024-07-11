@@ -1,5 +1,7 @@
 @use '../../../styles/block/utils/variables' as *;
 @import '../../../styles/block/utils/_mixins.scss';
+@import '../../../styles/block/utils/_placeholders.scss';
+
 .footer {
   height: 96px;
   border-top: $bordeColor 1px solid;
@@ -8,7 +10,7 @@
     display: flex;
     align-items: center;
     height: 100%;
-    max-width: 1136px;
+    max-width: $maxContentWidth;
     margin: 0 auto;
     padding-inline: 32px;
     justify-content: space-between;

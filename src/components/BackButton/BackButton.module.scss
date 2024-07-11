@@ -3,18 +3,26 @@
 
 .back {
   display: flex;
+  width: 50px;
   font-size: 12px;
   font-weight: 700;
   line-height: 15px;
   cursor: pointer;
+  color: $backTextColorDefoult;
+  &::before {
+    content: '<';
+    padding-right: 4px;
+    color: $textColor;
+  }
 }
-
-.back::before {
-  content: '<';
-  padding-right: 4px;
-  color: $textColor;
+.back__darkTheme.back {
+  color: $backTextColorDefoult;
 }
 
 .back:hover::before {
-  color: $paginationNumberBackColorActive;
+  color: $backHoverBtn;
+}
+
+.back:hover {
+  color: $backHoverBtn;
 }

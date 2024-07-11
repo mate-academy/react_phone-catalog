@@ -1,19 +1,18 @@
 $elementsBorderColor: var(--elementsBorderColor);
 $textColor: var(--textColor);
 $secondTextColor: var(--secondTextColor);
-
+$backTextColorDefoult: var(--backTextColorDefoult);
 $bordeColor: var(--bordeColor);
 $backgroundButtonSliderColor: var(--backgroundButtonSliderColor);
 $backgroundSmallbuttonColor: var(--backgroundSmallbuttonColor);
 $buttonActiveBackColor: var(--buttonActiveBackColor);
 $backgroundColor: var(--backgroundColor);
 $background-hover-button: #4a4d58;
-$border-hover-button: #313237;
-$backgroundColor-phoneCard: var(--backgroundColor-button-cart);
-$backgroundColor-button-fav: var(--backgroundColor-button-fav);
-$backgroundColor-phoneCard: var(--backgroundColor-phoneCard);
-$backgroundColor-phoneCardHover: var(--backgroundColor-phoneCardHover);
-$backgroundColor-button-cart: var(--backgroundColor-button-cart);
+$borderHoverButton: #313237;
+$backgroundColorButtonFav: var(--backgroundColorButtonFav);
+$backgroundColorPhoneCard: var(--backgroundColorPhoneCard);
+$backgroundPhoneCardHover: var(--backgroundPhoneCardHover);
+$backgroundColorButtonCart: var(--backgroundColorButtonCart);
 $textFooterColor: var(--textFooterColor);
 $selectBackground: var(--selectBackground);
 $linkBackgroundButton: var(--linkBackgroundButton);
@@ -26,7 +25,6 @@ $paginationBackColor: var(--paginationBackColor);
 $paginationBorderColorHover: var(--paginationBorderColorHover);
 $paginationBackColorHover: var(--paginationBackColorHover);
 $paginationNumberBackColor: var(--paginationNumberBackColor);
-$paginationNumberBackColorActive: var(--paginationNumberBackColorActive);
 $paginationTextColorActive: var(--paginationTextColorActive);
 $backHoverBtn: var(--backHoverBtn);
 $circleDefaultColor: var(--circleDefaultColor);
@@ -43,7 +41,7 @@ $favoritesCircleBackColor: var(--favoritesCircleBackColor);
 $addedToCartTextColor: var(--addedToCartTextColor);
 $buttonBorderColorDefault: var(--buttonBorderColorDefault);
 
-
+$maxContentWidth: 1132px;
 $tablet-max-width: 1199px;
 $phone-max-width: 639px;
 

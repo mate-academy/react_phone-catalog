@@ -5,7 +5,7 @@
   flex-grow: 1;
   color: $textColor;
   &__content {
-    max-width: 1136px;
+    max-width: $maxContentWidth;
     margin: 0 auto;
   }
 

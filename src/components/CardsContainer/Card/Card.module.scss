@@ -1,12 +1,13 @@
 @use '../../../styles/block/utils/variables' as *;
 @import '../../../styles/block/utils/mixins';
+@import '../../../styles/block/utils/_placeholders.scss';
 
 .card {
   &__container {
     width: 100%;
     padding: 32px;
     border: 1px solid $bordeColor;
-    background-color: $backgroundColor-phoneCard;
+    background-color: $backgroundColorPhoneCard;
     flex-shrink: 0;
   }
 
@@ -98,7 +99,7 @@
     font-size: 14px;
     line-height: 21px;
     color: #ffffff;
-    background-color: $backgroundColor-button-cart;
+    background-color: $backgroundColorButtonCart;
     width: 160px;
     height: 40px;
     border: none;
@@ -134,7 +135,7 @@
     align-items: center;
     min-width: 40px;
     height: 40px;
-    background-color: $backgroundColor-button-fav;
+    background-color: $backgroundColorButtonFav;
     border: 1px solid $bordeColor;
     cursor: pointer;
   }

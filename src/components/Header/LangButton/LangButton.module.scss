@@ -1,5 +1,6 @@
 @use '../../../styles/block/utils/_variables.scss' as *;
 @import '../../../styles/block/utils/_mixins.scss';
+@import '../../../styles/block/utils/_placeholders.scss';
 
 .language__button {
   display: flex;
@@ -7,10 +8,13 @@
   justify-content: center;
   height: 100%;
   width: 100%;
-  color: $textColor;
+  color: $secondTextColor;
   font-weight: 700;
   background-color: $backgroundColor;
   border: none;
   cursor: pointer;
   box-sizing: border-box;
+  &:hover {
+    color: $textColor;
+  }
 }

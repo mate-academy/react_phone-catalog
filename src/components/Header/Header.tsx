@@ -53,6 +53,7 @@ export const Header = () => {
                   <div className={style.header__topBtn}>
                     <ThemeButton />
                   </div>
+
                   <Link
                     to={`../${Pathname.favorites}`}
                     className={classNames(style.header__actionsLink, {
