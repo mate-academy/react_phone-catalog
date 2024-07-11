@@ -1,0 +1,63 @@
+@import '/src/styles/variable.scss';
+
+.CheckoutBord {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  padding: 16px;
+  box-sizing: border-box;
+
+  height: 200px;
+  background-color: #fff;
+  z-index: 22222222;
+  position: fixed;
+
+  box-shadow: 3px -3px 13px 0px $color-dark;
+
+  &__close {
+    position: absolute;
+    background: url('/assets/img/Union.png') no-repeat center;
+    width: 16px;
+    height: 16px;
+    top: 16px;
+    right: 16px;
+
+    &:hover {
+      background: url('/assets/img/Close.svg') no-repeat center;
+    }
+  }
+
+  &__title {
+    margin-top: 32px;
+    font-size: 20px;
+    font-weight: 800;
+    line-height: 20x;
+    letter-spacing: -0.01em;
+    text-align: center;
+  }
+
+  &__bottom {
+    position: relative;
+  }
+
+  &__button {
+    padding: 10px;
+    margin-top: 32px;
+    position: absolute;
+    right: calc(50% - 100px);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    width: 200px;
+    height: 28px;
+    color: #fff;
+
+    background-color: $color-dark;
+
+    &:hover {
+      box-shadow: 3px -3px 13px 0px #17203166;
+    }
+  }
+}
