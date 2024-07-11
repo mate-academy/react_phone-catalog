@@ -61,12 +61,8 @@ export const CartPage = () => {
           </h2>
 
           <p className={styles['cart__title-total']}>
-            Total for{' '}
-            {cartCards.reduce(
-              (prev, curr) => prev + curr.count * curr.price,
-              0,
-            )}{' '}
-            items
+            Total for {cartCards.reduce((prev, curr) => prev + curr.count, 0)}
+            {'  '}items
           </p>
         </div>
 
