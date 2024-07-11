@@ -2,7 +2,7 @@
 @import '../../../styles/block/utils/_mixins.scss';
 .footer {
   height: 96px;
-  border-top: $border-color 1px solid;
+  border-top: $bordeColor 1px solid;
 
   &__navContainer {
     display: flex;
@@ -46,7 +46,7 @@
 
     &:hover {
       @extend %transitionPage;
-      color: var(--text-color);
+      color: var(--textColor);
     }
   }
 
@@ -58,13 +58,13 @@
 
   &__upLink {
     display: flex;
-    color: $text-nav-color;
+    color: $secondTextColor;
     line-height: 15px;
     font-weight: 700;
 
     &:hover {
       @extend %transitionPage;
-      color: var(--text-color);
+      color: var(--textColor);
     }
   }
 
@@ -80,14 +80,14 @@
     align-items: center;
     width: 32px;
     height: 32px;
-    border: $border-color 1px solid;
+    border: $bordeColor 1px solid;
     &:hover {
-      @extend %lightThemeHoverButton;
+      @extend %lightThemeHoverBorderButton;
     }
 
     .footer__darkTheme & {
       background-color: $linkBackgroundButton;
-      @extend %darkThemeHoverButton;
+      @extend %darkThemeHoverBackgroundButton;
     }
 
     .footer__darkTheme &:hover {

@@ -16,10 +16,10 @@
   width: 30px;
   height: 14px;
   padding-bottom: 2px;
-  background-color: $text-color;
+  background-color: $textColor;
   border-radius: 50px;
   border: none;
-  box-shadow: 0 0 18px $text-color;
+  box-shadow: 0 0 18px $textColor;
   cursor: pointer;
 }
 
@@ -27,7 +27,7 @@
   content: '';
   position: absolute;
   display: block;
-  background-color: $background-color;
+  background-color: $backgroundColor;
   width: 12px;
   height: 12px;
   border-radius: 50%;

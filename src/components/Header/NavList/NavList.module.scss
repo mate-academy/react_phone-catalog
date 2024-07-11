@@ -13,28 +13,28 @@
   &__link {
     position: relative;
     text-transform: uppercase;
-    color: $text-nav-color;
+    color: $secondTextColor;
     &:hover {
-      color: $text-color;
+      color: $textColor;
       @extend %transitionPage;
     }
 
     &:after {
-      background-color: $text-color;
+      background-color: $textColor;
       position: absolute;
       content: '';
       height: 3px;
       width: 100%;
       top: 37px;
       left: 0;
-      color: $text-color;
+      color: $textColor;
       @include initialAnimation();
     }
   }
 }
 
 .nav__link.nav__activeLink {
-  color: $text-color;
+  color: $textColor;
 }
 
 .nav__activeLink.nav__link::after {

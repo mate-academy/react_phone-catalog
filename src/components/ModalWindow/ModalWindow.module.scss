@@ -14,7 +14,7 @@
     width: 500px;
     height: 250px;
     border-radius: 12px;
-    background-color: $background-color;
+    background-color: $backgroundColor;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     display: flex;
     flex-direction: column;
@@ -31,7 +31,7 @@
     align-items: center;
     width: 100%;
     text-align: center;
-    color: $text-color;
+    color: $textColor;
   }
 
   &__actionButton {
@@ -46,7 +46,7 @@
   }
 
   &__closeButton {
-    background-color: $background-color;
+    background-color: $backgroundColor;
     border: none;
     cursor: pointer;
     width: 16px;
@@ -62,10 +62,10 @@
     width: 150px;
     height: 30px;
     border-radius: 20px;
-    border: 1px solid $border-color;
-    background-color: $background-color;
+    border: 1px solid $bordeColor;
+    background-color: $backgroundColor;
     cursor: pointer;
-    color: $text-color;
+    color: $textColor;
   }
 
   &__cancel:hover {

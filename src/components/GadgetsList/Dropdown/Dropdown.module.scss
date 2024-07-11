@@ -46,8 +46,8 @@
     align-items: center;
 
     margin-top: 4px;
-    background-color: $background-color;
-    border: 1px solid $border-color;
+    background-color: $backgroundColor;
+    border: 1px solid $bordeColor;
     max-height: 40vh;
     overflow-y: scroll;
     scrollbar-width: none;
@@ -57,7 +57,7 @@
       opacity 100ms ease-in-out;
     opacity: 0;
     pointer-events: none;
-    color: $text-color;
+    color: $textColor;
   }
 
   &__openContent {
@@ -77,13 +77,13 @@
     padding-inline: 12px;
     &:hover {
       background-color: $selectHover;
-      color: $text-color;
+      color: $textColor;
     }
   }
 
   &__selectedItem {
     background-color: $selectBackgroundFocus;
-    color: $text-color;
+    color: $textColor;
   }
 }
 

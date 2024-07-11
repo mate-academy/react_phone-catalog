@@ -16,7 +16,7 @@
   & .crumb::after {
     content: '>';
     margin-left: 8px;
-    color: $text-nav-color;
+    color: $secondTextColor;
   }
 
   & .crumb:last-child:after {
@@ -24,7 +24,7 @@
   }
 
   & .crumb a {
-    color: $text-color;
+    color: $textColor;
     font-weight: 600;
     font-size: 12px;
     line-height: 15px;

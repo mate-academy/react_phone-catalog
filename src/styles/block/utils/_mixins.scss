@@ -2,16 +2,16 @@
   transition: all 0.4s;
 }
 
-%lightThemeHoverButton {
+%lightThemeHoverBorderButton {
   border: 1px solid $border-hover-button;
 }
 
-%darkThemeHoverButton {
+%darkThemeHoverBackgroundButton {
   background-color: $background-hover-button;
 }
 
 %buttonHoverEffect {
-  background-color: $background-color-phoneCardHover;
+  background-color: $backgroundColor-phoneCardHover;
   box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
 }
 

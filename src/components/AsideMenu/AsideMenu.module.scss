@@ -9,7 +9,7 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: $background-color;
+  background-color: $backgroundColor;
   pointer-events: none;
   font-size: 18px;
   min-height: 100%;
@@ -29,7 +29,7 @@
     box-sizing: border-box;
     padding-left: 16px;
     height: 48px;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $bordeColor;
   }
 
   &__headerLogo {
@@ -44,13 +44,13 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    background-color: $background-color;
+    background-color: $backgroundColor;
     justify-content: center;
     height: 48px;
     width: 48px;
     border: none;
-    border-left: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
+    border-left: 1px solid $bordeColor;
+    border-bottom: 1px solid $bordeColor;
     cursor: pointer;
   }
 
@@ -74,7 +74,7 @@
   &__listLink {
     position: relative;
     text-transform: uppercase;
-    color: $text-color;
+    color: $textColor;
     width: 100%;
     height: 100%;
   }
@@ -97,7 +97,7 @@
     bottom: 0;
     width: 100%;
     height: 64px;
-    border-top: 1px solid $border-color;
+    border-top: 1px solid $bordeColor;
   }
 
   &__actionButton {
@@ -107,7 +107,7 @@
     justify-content: center;
     width: 100%;
     height: 100%;
-    border-right: 1px solid $border-color;
+    border-right: 1px solid $bordeColor;
     font-size: 12px;
   }
 
@@ -158,7 +158,7 @@
 
 .menu__listLink::after {
   position: absolute;
-  background-color: $text-color;
+  background-color: $textColor;
   height: 2px;
   bottom: -8px;
   width: 100%;

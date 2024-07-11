@@ -42,7 +42,7 @@
     display: flex;
     justify-content: center;
     margin-bottom: 16px;
-    border: 1px solid $border-color;
+    border: 1px solid $bordeColor;
     width: 80px;
     height: 80px;
     margin: 0;
@@ -53,7 +53,7 @@
     align-items: center;
     justify-content: center;
     border: none;
-    background-color: $background-color;
+    background-color: $backgroundColor;
     cursor: pointer;
   }
 
@@ -128,7 +128,7 @@
 
   &__line {
     display: flex;
-    border-bottom: 1px solid $detailsDivideLine;
+    border-bottom: 1px solid $elementsBorderColor;
     width: 100%;
   }
 
@@ -138,7 +138,7 @@
   }
 
   &__capacityLink {
-    color: $text-color;
+    color: $textColor;
     font-size: 14px;
     font-weight: 500;
     line-height: 21px;
@@ -170,7 +170,7 @@
     font-weight: 800;
     font-size: 32px;
     line-height: 41px;
-    color: $text-color;
+    color: $textColor;
   }
 
   &__priceDiscount {
@@ -180,7 +180,7 @@
     font-weight: 500;
     font-size: 22px;
     line-height: 28px;
-    color: $text-discount-color;
+    color: $secondTextColor;
     text-decoration: line-through;
   }
 
@@ -193,7 +193,7 @@
   &__addToCart {
     height: 48px;
     width: 100%;
-    background-color: $background-color-button-cart;
+    background-color: $backgroundColor-button-cart;
     color: $textColorButtonCart;
     font-weight: 700;
     font-size: 14px;
@@ -211,17 +211,17 @@
     align-items: center;
     min-width: 48px;
     height: 48px;
-    background-color: $background-color-button-fav;
-    border: 1px solid $border-color;
+    background-color: $backgroundColor-button-fav;
+    border: 1px solid $bordeColor;
     cursor: pointer;
   }
 
   &__favorites:hover {
-    @extend %lightThemeHoverButton;
+    @extend %lightThemeHoverBorderButton
   }
 
   &__darkTheme &__favorites:hover {
-    @extend %darkThemeHoverButton;
+    @extend %darkThemeHoverBackgroundButton;
   }
 
   &__shortDesription {
@@ -232,7 +232,7 @@
   }
 
   &__shortDesKey {
-    color: $text-phone-card-color;
+    color: $secondTextColor;
     line-height: 15px;
     font-weight: 600;
   }

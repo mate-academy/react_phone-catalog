@@ -5,15 +5,15 @@
   &__container {
     width: 100%;
     padding: 32px;
-    border: 1px solid $border-color;
-    background-color: $background-color-phoneCard;
+    border: 1px solid $bordeColor;
+    background-color: $backgroundColor-phoneCard;
     flex-shrink: 0;
   }
 
   &__cardName {
     display: flex;
     align-items: flex-end;
-    color: $text-color;
+    color: $textColor;
     min-height: 58px;
     margin-bottom: 8px;
     font-size: 14px;
@@ -33,7 +33,7 @@
 
   &__cardLine {
     display: block;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $bordeColor;
     margin-bottom: 16px;
     width: 100%;
   }
@@ -59,7 +59,7 @@
   }
 
   &__fullPrice {
-    color: $text-discount-color;
+    color: $secondTextColor;
     font-weight: 600;
     font-size: inherit;
     line-height: 28px;
@@ -68,7 +68,7 @@
 
   &__key {
     font-weight: 700;
-    color: $text-phone-card-color;
+    color: $secondTextColor;
   }
 
   &__value {
@@ -76,11 +76,11 @@
   }
 
   &__buttons:hover {
-    @extend %lightThemeHoverButton;
+    @extend %lightThemeHoverBorderButton;
   }
 
   &__darkTheme &__buttons:hover {
-    @extend %darkThemeHoverButton;
+    @extend %darkThemeHoverBackgroundButton;
   }
 
   &__cardActions {
@@ -98,7 +98,7 @@
     font-size: 14px;
     line-height: 21px;
     color: #ffffff;
-    background-color: $background-color-button-cart;
+    background-color: $backgroundColor-button-cart;
     width: 160px;
     height: 40px;
     border: none;
@@ -111,8 +111,8 @@
   }
 
   &__addedToCart {
-    background-color: $background-color;
-    border: 1px solid $border-color;
+    background-color: $backgroundColor;
+    border: 1px solid $bordeColor;
     color: $addedToCartTextColor;
   }
 
@@ -125,7 +125,7 @@
   }
 
   &__darkTheme &__addedToCart:hover {
-    @extend %darkThemeHoverButton;
+    @extend %darkThemeHoverBackgroundButton;
   }
 
   &__сardFavBtn {
@@ -134,21 +134,25 @@
     align-items: center;
     min-width: 40px;
     height: 40px;
-    background-color: $background-color-button-fav;
-    border: 1px solid $border-color;
+    background-color: $backgroundColor-button-fav;
+    border: 1px solid $bordeColor;
     cursor: pointer;
   }
 
   &__selectedFavorite {
     min-width: 40px;
-    background-color: $background-color;
+    background-color: $backgroundColor;
   }
 
   &__сardFavBtn:hover {
-    @extend %lightThemeHoverButton;
+    @extend %lightThemeHoverBorderButton;
   }
 
   &__darkTheme &__сardFavBtn:hover {
-    @extend %darkThemeHoverButton;
+    @extend %darkThemeHoverBackgroundButton;
   }
+}
+
+.card__darkTheme.card__container {
+  border: none;
 }

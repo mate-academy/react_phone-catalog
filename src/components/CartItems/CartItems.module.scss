@@ -7,7 +7,7 @@
 
   &__linkItem {
     display: flex;
-    color: $text-color;
+    color: $textColor;
   }
 
   &__cartBack {
@@ -40,7 +40,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1px solid $border-color;
+    border: 1px solid $bordeColor;
     height: 128px;
   }
 
@@ -62,7 +62,7 @@
   }
 
   &__closeButton {
-    background-color: $background-color;
+    background-color: $backgroundColor;
     border: none;
     display: flex;
     cursor: pointer;
@@ -99,7 +99,7 @@
     align-items: center;
     width: 32px;
     height: 32px;
-    background-color: $background-color;
+    background-color: $backgroundColor;
     border: 1px solid $buttonBorderColorDefault;
     cursor: pointer;
   }
@@ -117,23 +117,23 @@
   }
 
   .cart__remainOneItemClass.cart__darkTheme {
-    background-color: $background-color;
-    border: 1px solid $borderColorDesableDecrement;
+    background-color: $backgroundColor;
+    border: 1px solid $elementsBorderColor;
   }
 
   .cart__darkTheme.cart__remainOneItemClass:hover {
-    background-color: $background-color;
+    background-color: $backgroundColor;
     border-color: #3b3e4a;
   }
 
   &__remainOneItemClass {
-    background-color: $background-color;
-    border-color: $border-color;
+    background-color: $backgroundColor;
+    border-color: $bordeColor;
     cursor: auto;
   }
 
   .cart__remainOneItemClass.cart__quantityButton:hover {
-    border-color: $border-color;
+    border-color: $bordeColor;
   }
 
   &__count {
@@ -141,7 +141,7 @@
     justify-content: center;
     align-items: center;
     width: 32px;
-    color: $text-color;
+    color: $textColor;
     line-height: 21px;
     font-size: 14px;
     font-weight: 600;
@@ -149,13 +149,13 @@
 
   &__priceContainer {
     grid-column: 17 / -1;
-    border: 1px solid $border-color;
+    border: 1px solid $bordeColor;
     height: 206px;
   }
 
   &__borderLine {
     display: flex;
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $bordeColor;
     width: 100%;
   }
 
@@ -189,7 +189,7 @@
 
   &__checkout {
     height: 48px;
-    background-color: $background-color-button-cart;
+    background-color: $backgroundColor-button-cart;
     width: 100%;
     border: none;
     color: $textColorButtonCart;
@@ -216,7 +216,7 @@
 
   &__disableDecrement {
     cursor: auto;
-    border-color: $borderColorDesableDecrement;
+    border-color: $elementsBorderColor;
   }
 
   &__modalWindowContainer {

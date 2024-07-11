@@ -12,7 +12,7 @@
 .back::before {
   content: '<';
   padding-right: 4px;
-  color: $text-color;
+  color: $textColor;
 }
 
 .back:hover::before {

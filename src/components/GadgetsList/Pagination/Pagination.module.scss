@@ -36,14 +36,14 @@
     height: 32px;
     background-color: $paginationNumberBackColor;
     border: 1px solid $selectDefault;
-    color: $text-color;
+    color: $textColor;
     font-weight: 600;
     font-size: 14px;
 
     &:hover {
       background-color: $paginationBackColorHover;
       border: 1px solid $paginationBorderColorHover;
-      color: $text-color;
+      color: $textColor;
     }
   }
 

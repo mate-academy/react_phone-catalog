@@ -5,17 +5,17 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  background-color: $background-color;
+  background-color: $backgroundColor;
 
   &__searchField {
     height: 63px;
     border: none;
-    border-left: 1px solid $border-color;
+    border-left: 1px solid $bordeColor;
     padding-inline: 10px;
     font-size: 16px;
     font-weight: 500;
-    background-color: $background-color;
-    color: $text-color;
+    background-color: $backgroundColor;
+    color: $textColor;
     outline: none;
     font-style: italic;
   }
@@ -34,7 +34,7 @@
     height: 64px;
     width: 100%;
 
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid $bordeColor;
   }
 
   &__leftNav {
@@ -98,7 +98,7 @@
     box-sizing: border-box;
     height: 64px;
     width: 64px;
-    border-left: 1px solid $border-color;
+    border-left: 1px solid $bordeColor;
     background-repeat: no-repeat;
     background-position: center;
     &::after {
@@ -122,11 +122,11 @@
     justify-content: center;
     align-items: center;
     border: none;
-    border-left: 1px solid $border-color;
-    border-bottom: 1px solid $border-color;
+    border-left: 1px solid $bordeColor;
+    border-bottom: 1px solid $bordeColor;
     height: 48px;
     width: 48px;
-    background-color: $background-color;
+    background-color: $backgroundColor;
     cursor: pointer;
   }
 
@@ -136,7 +136,7 @@
     justify-content: center;
     height: 63px;
     width: 64px;
-    border-left: 1px solid $border-color;
+    border-left: 1px solid $bordeColor;
   }
 }
 

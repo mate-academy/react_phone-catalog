@@ -11,71 +11,87 @@
 }
 
 .light {
-  --background-color: #fff;
-  --text-color: #313237;
-  --text-nav-color: #89939a;
-  --border-color: #e2e6e9;
+  --bordeColor: #e2e6e9;
+  --elementsBorderColor: #e2e6e9;
+  --backgroundColor: #fff;
+  --textColorActiveState: #fff;
+  --textColor: #313237;
+
+
+
+  --secondTextColor: #89939a;
+  --secondTextColor: #89939a;
+  --secondTextColor: #89939a;
+  --textItemsColor: #89939a;
+  --selectItemsTextDefault: #89939a;
+  --breadCrubsLastNonActiveItem: #89939a;
+  --paragraphTextColor: #89939a;
+
+  --textFooterColor: #89939a;
+  --selectHover: #89939a;
   --button-color: #fff;
   --button-slider-color: #e2e6e9;
   --buttonActiveBackColor: #313237;
-  --text-phone-card-color: #89939a;
-  --background-color-button-cart: #313237;
+  --backgroundColor-button-cart: #313237;
   --textColorButtonCart: #ffffff;
-  --background-color-button-fav: #fff;
-  --background-color-phoneCard: #fff;
-  --background-color-phoneCardHover: #313237;
-  --background-color-button-cart: #313237;
-  --text-discount-color: #89939a;
-  --textItemsColor: #89939a;
-  --textFooterColor: #89939a;
+  --backgroundColor-button-fav: #fff;
+  --backgroundColor-phoneCard: #fff;
+  --backgroundColor-phoneCardHover: #313237;
+  --backgroundColor-button-cart: #313237;
   --selectBackground: #fff;
   --linkBackgroundButton: #323542;
-  --selectItemsTextDefault: #89939a;
   --selectBackgroundFocus: #fafbfc;
   --selectDefault: #b4bdc3;
   --selectFocus: #313237;
-  --selectHover: #89939a;
   --paginationBackColor: #fff;
   --paginationBackColorHover: #fff;
   --paginationBorderColorHover: #313237;
   --paginationNumberBackColor: #fff;
   --paginationTextColorActive: #fff;
   --paginationNumberBackColorActive: #313237;
-  --breadCrubsLastNonActiveItem: #89939a;
   --backHoverBtn: #313237;
   --circleDefaultColor: #e2e6e9;
   --circleHoverColor: #b4bdc3;
   --circleActiveColor: #313237;
-  --detailsDivideLine: #e2e6e9;
   --borderCapacityColor: #b4bdc3;
   --idsTextColor: #b4bdc3;
-  --textColorActiveState: #ffffff;
   --borderActiveColor: #c4c4c4;
-  --paragraphTextColor: #89939a;
   --actionButtonActiveBorder: #313237;
   --favoritesCircleBackColor: #eb5757;
   --addedToCartTextColor: #27ae60;
   --buttonBorderColorDefault: #b4bdc3;
-  --borderColorDesableDecrement: #e2e6e9;
+
+
 }
 
 .dark {
+  --bordeColor: #323542;
+  --elementsBorderColor: #3b3e4a;
+  --backgroundColor: #0f1121;
+  --textColorActiveState: #0f1121;
+  --textColor: #f1f2f9;
+
+
+  --secondTextColor: #75767f;
+
+
+
+  --textItemsColor: #75767f;
+  --selectItemsTextDefault: #75767f;
+  --breadCrubsLastNonActiveItem: #75767f;
+
+
+
+
   --buttonActiveBackColor: #f1f2f9;
-  --background-color: #0f1121;
-  --text-color: #f1f2f9;
-  --text-nav-color: #75767f;
-  --border-color: #323542;
+  --textFooterColor: #f1f2f9;
   --button-color: #323542;
   --button-slider-color: #3b3e4a;
-  --text-phone-card-color: #75767f;
-  --background-color-button-cart: #905bff;
+  --backgroundColor-button-cart: #905bff;
   --textColorButtonCart: #f1f2f9;
-  --background-color-button-fav: #323542;
-  --background-color-phoneCard: #161827;
-  --background-color-phoneCardHover: #a378ff;
-  --text-discount-color: #75767f;
-  --textItemsColor: #75767f;
-  --textFooterColor: #f1f2f9;
+  --backgroundColor-button-fav: #323542;
+  --backgroundColor-phoneCard: #161827;
+  --backgroundColor-phoneCardHover: #a378ff;
   --selectBackground: #323542;
   --linkBackgroundButton: #323542;
   --linkBackgroundButtonHover: #4a4d58;
@@ -83,29 +99,25 @@
   --selectDefault: #323542;
   --selectFocus: #905bff;
   --selectHover: #4a4d58;
-  --selectItemsTextDefault: #75767f;
   --paginationBackColor: #323542;
   --paginationBackColorHover: #4a4d58;
   --paginationBorderColorHover: #323542;
   --paginationNumberBackColor: #161827;
   --paginationTextColorActive: #f1f2f9;
   --paginationNumberBackColorActive: #905bff;
-  --breadCrubsLastNonActiveItem: #75767f;
   --backHoverBtn: #905bff;
   --circleDefaultColor: #3b3e4a;
   --circleHoverColor: #75767f;
   --circleActiveColor: #f1f2f9;
-  --detailsDivideLine: #3b3e4a;
   --borderCapacityColor: #4a4d58;
   --idsTextColor: #4a4d58;
-  --textColorActiveState: #0f1121;
   --borderActiveColor: #c4c4c4;
   --actionButtonActiveBorder: #f1f2f9;
   --favoritesCircleBackColor: #eb5757;
   --addedToCartTextColor: #f1f2f9;
-  --borderColorDesableDecrement: #3b3e4a;
-  color: $text-color;
-  background-color: $background-color;
+
+  color: $textColor;
+  background-color: $backgroundColor;
 }
 
 html {
