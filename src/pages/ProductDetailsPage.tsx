@@ -32,9 +32,10 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
   useEffect(() => {
     async function fetchData() {
-      let response = await getPhones(type);
+      const response = await getPhones(type);
 
       let detailsProduct;
+
       if (response) {
         detailsProduct = response.find(item => item.id === productId);
 
@@ -122,7 +123,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
 
           <div className={style.product__availableColors}>
             {colorsAvailable.map(currentColor => {
-              console.log(currentColor);
+
               const colorNew = {
                 backgroundColor:
                   AvailableColors[currentColor as keyof typeof AvailableColors],
@@ -133,6 +134,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
                 currentColor,
                 productId,
               );
+
               return (
                 <Link
                   to={`../${newColorIds}`}

@@ -10,7 +10,6 @@ import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
 import { getTouchEventData } from '../../../utils/hooks/dom';
 import { Card } from '../../CardsContainer/Card/Card';
-import { ProductsContext } from '../../../store/ProductsProvider';
 const MIN_SWIPE_REQUIRED = 20;
 
 type Props = {
@@ -169,9 +168,6 @@ export const CardsSlider: React.FC<Props> = ({
       indicatorOnClick(quantityCard);
     }
   }
-
-  const { isLoading } = useContext(ProductsContext);
-  console.log(isLoading);
 
   return (
     <section

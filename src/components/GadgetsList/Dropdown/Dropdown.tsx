@@ -30,7 +30,7 @@ export const Dropdown: React.FC<DropdownProps> = ({
 
   const [searchParams, setSearchParams] = useSearchParams();
   const params = new URLSearchParams(searchParams);
-  console.log(keySearchParams);
+
   const handleClick = (event: MouseEvent<HTMLLIElement>) => {
     const target = event.currentTarget;
     const selectedText = target.textContent;
