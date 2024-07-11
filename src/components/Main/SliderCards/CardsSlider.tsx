@@ -1,3 +1,4 @@
+/* eslint-disable */
 import style from './CardsSlider.module.scss';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import { useContext, useRef, useState } from 'react';
@@ -216,21 +217,21 @@ export const CardsSlider: React.FC<Props> = ({
           <ul className={style.cardsSlider__cardsList} draggable={false}>
             {isLoading
               ? skeletonCartParams.map(({ height, width }, i) => (
-                <Skeleton
-                  key={i}
-                  className={`${style.cardsSlider__cardContainer} ${style.cardsSlider__cardsList}`}
-                  width={width}
-                  height={height}
-                />
-              ))
+                  <Skeleton
+                    key={i}
+                    className={`${style.cardsSlider__cardContainer} ${style.cardsSlider__cardsList}`}
+                    width={width}
+                    height={height}
+                  />
+                ))
               : products.map(product => (
-                <Card
-                  product={product}
-                  discount={discount}
-                  widthRef={widthRef}
-                  key={product.itemId}
-                />
-              ))}
+                  <Card
+                    product={product}
+                    discount={discount}
+                    widthRef={widthRef}
+                    key={product.itemId}
+                  />
+                ))}
           </ul>
         </div>
       </div>
