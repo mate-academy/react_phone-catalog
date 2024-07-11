@@ -200,6 +200,13 @@ $nav-height-desktop: 64px;
     letter-spacing: 0.04em;
     color: #89939a;
 
+    transition: color 0.3s ease-in-out;
+
+    &:hover {
+      cursor: pointer;
+      color: #313237;
+    }
+
     @include on-desktop {
       line-height: 64px;
     }

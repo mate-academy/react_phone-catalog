@@ -39,6 +39,11 @@
   &__carousel-arrow {
     display: none;
 
+    & :first-child {
+      border: 0;
+      transition: border 0.3s ease-in-out;
+    }
+
     @include on-tablet {
       position: relative;
 
@@ -91,6 +96,7 @@
     display: block;
 
     width: 100%;
+    overflow: hidden;
 
     @include on-tablet {
       display: flex;
