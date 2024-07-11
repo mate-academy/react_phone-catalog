@@ -55,7 +55,7 @@ export const Categories: React.FC<Props> = ({ products }) => {
             </Link>
             <div className={styles.description}>
               <h2>Accessories</h2>
-              <p>{`${phoneItems('smart')} models`}</p>
+              <p>{`${phoneItems('accessories')} models`}</p>
             </div>
           </div>
         </GridContainer>

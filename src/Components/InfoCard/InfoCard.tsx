@@ -3,12 +3,13 @@ import { CardsCarusel } from '../Cards/CardsCarusel';
 import styles from './InfoCard.module.scss';
 import { Context } from '../../Store/Store';
 import { Link, useNavigate, useParams } from 'react-router-dom';
-import { getPhone } from '../../api';
-import { Phone } from '../../type/Phone';
+import { getDevice } from '../../api';
+import { Device } from '../../type/Device';
 import classNames from 'classnames';
 import { BackButton } from '../../Functions/BackButton';
+import { topScroll } from '../../Functions/ScrolTop/topScrol';
 
-const getTech = (data: Phone, size?: string) => {
+const getTech = (data: Device, size?: string) => {
   const { screen, resolution, processor, ram, capacity, camera, zoom, cell } =
     data;
 
@@ -17,6 +18,10 @@ const getTech = (data: Phone, size?: string) => {
   }
 
   return { screen, resolution, processor, ram, capacity, camera, zoom, cell };
+};
+
+const findProductById = (products: Device[], itemId: string) => {
+  return products.find(product => product.id === itemId);
 };
 
 function capitalizeWords(str: string) {
@@ -32,45 +37,54 @@ function capitalizeWords(str: string) {
 export const InfoCard: React.FC = () => {
   const { products, favorite, setFavorite, carts, setCarts } =
     useContext(Context); // json телефонів phones,
-  const { itemId } = useParams();
-  const [phone, setPhone] = useState<Phone>();
+  const { category, itemId } = useParams();
+  const [device, setDevice] = useState<Device>();
   const [images, setImages] = useState<string[]>();
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (itemId) {
-      getPhone(itemId).then(data => {
-        if (data) {
-          setPhone(data);
-          setImages(data.images);
+    topScroll();
+    if (category) {
+      getDevice(category).then((data: Device[]) => {
+        if (itemId) {
+          const deviceById = findProductById(data, itemId);
+
+          if (deviceById) {
+            setDevice(deviceById);
+            setImages(deviceById.images);
+          }
         }
       });
     }
-  }, [itemId]);
+  }, [category, itemId]);
 
   const changeCurrent = (index: number) => {
     setCurrentIndex(index);
   };
 
   const HandlerAddFavorite = () => {
-    const isFavorite = favorite.some(fav => fav.itemId === phone?.id);
+    const inFavoriteIndex = favorite.findIndex(
+      fav => fav.itemId === device?.id,
+    );
 
-    if (isFavorite) {
-      const updatedFavorites = favorite.filter(fav => fav.itemId !== phone?.id);
+    if (inFavoriteIndex !== -1) {
+      const updatedFavorites = [...favorite];
 
+      updatedFavorites.splice(inFavoriteIndex, 1);
       setFavorite(updatedFavorites);
+      localStorage.setItem('favorite', JSON.stringify(updatedFavorites));
     } else {
-      const productToAdd = products.find(prod => prod.itemId === phone?.id);
+      const productToAdd = products.find(prod => prod.itemId === device?.id);
 
       if (productToAdd) {
-        setFavorite(prevFavorites => [...prevFavorites, productToAdd]);
+        setFavorite(prevFav => [...prevFav, productToAdd]);
       }
     }
   };
 
   const HandlerAddCart = () => {
-    const inCartIndex = carts.findIndex(cart => cart.itemId === phone?.id);
+    const inCartIndex = carts.findIndex(cart => cart.itemId === device?.id);
 
     if (inCartIndex !== -1) {
       const updatedCarts = [...carts];
@@ -79,7 +93,7 @@ export const InfoCard: React.FC = () => {
       setCarts(updatedCarts);
       localStorage.setItem('carts', JSON.stringify(updatedCarts));
     } else {
-      const productToAdd = products.find(prod => prod.itemId === phone?.id);
+      const productToAdd = products.find(prod => prod.itemId === device?.id);
 
       if (productToAdd) {
         setCarts(prevCarts => [...prevCarts, { count: 1, ...productToAdd }]);
@@ -89,13 +103,13 @@ export const InfoCard: React.FC = () => {
 
   const inFavorite = () => {
     return favorite.some(fav => {
-      return fav.itemId === phone?.id;
+      return fav.itemId === device?.id;
     });
   };
 
   const inCart = () => {
     return carts.some(cart => {
-      return cart.itemId === phone?.id;
+      return cart.itemId === device?.id;
     });
   };
 
@@ -103,18 +117,25 @@ export const InfoCard: React.FC = () => {
     if (itemId) {
       const pathname = itemId.split('-');
 
-      const findIndex = pathname.findIndex(elem =>
-        elem.toLowerCase().includes('gb'),
+      const findIndex = pathname.findIndex(
+        elem =>
+          elem.toLowerCase().includes('gb') ||
+          elem.toLowerCase().includes('mm') ||
+          elem.toLowerCase().includes('tb'),
       );
 
-      if (findIndex !== -1 && find === 'gb') {
+      if (
+        (findIndex !== -1 && find === 'gb') ||
+        find === 'tb' ||
+        find === 'mm'
+      ) {
         const newPathname = [...pathname];
 
         newPathname[findIndex] = item.toLowerCase();
 
         const newUrl = newPathname.join('-');
 
-        navigate(`/info/products/${newUrl}`);
+        navigate(`/info/${category}/${newUrl}`);
       }
 
       if (find === 'color') {
@@ -124,7 +145,7 @@ export const InfoCard: React.FC = () => {
 
         const newUrl = newPathname.join('-');
 
-        navigate(`/info/products/${newUrl}`);
+        navigate(`/info/${category}/${newUrl}`);
       }
     }
   };
@@ -164,17 +185,14 @@ export const InfoCard: React.FC = () => {
                     <img
                       onClick={() => changeCurrent(index)}
                       className={styles.smallBlock}
-                      src={`https://mate-academy.github.io/react_phone-catalog/_new/${img}`}
+                      src={`/${img}`}
                       alt={`Phone ${index}`}
                     />
                   </div>
                 ))}
               </div>
               <div className={styles.imageLarge}>
-                <img
-                  src={`https://mate-academy.github.io/react_phone-catalog/_new/${images[currentIndex]}`}
-                  alt=""
-                />
+                <img src={`/${images[currentIndex]}`} alt="" />
               </div>
             </div>
           )}
@@ -182,7 +200,7 @@ export const InfoCard: React.FC = () => {
             <div className={styles.optionsColors}>
               <p>Available colors</p>
               <ul className={styles.colorWrap}>
-                {phone?.colorsAvailable.map((element, idx) => {
+                {device?.colorsAvailable.map((element, idx) => {
                   return (
                     <li
                       className={classNames([styles.color], {
@@ -201,7 +219,7 @@ export const InfoCard: React.FC = () => {
             <div className={styles.optionsMemory}>
               <p>Select capacity</p>
               <ul className={styles.memoryWrap}>
-                {phone?.capacityAvailable.map((item, idx) => {
+                {device?.capacityAvailable.map((item, idx) => {
                   return (
                     <li
                       className={classNames([styles.memory], {
@@ -220,10 +238,12 @@ export const InfoCard: React.FC = () => {
             </div>
             <div>
               <div className={styles.optionsAddPrice}>
-                <div className={styles.price}>{`$${phone?.priceDiscount}`}</div>
+                <div
+                  className={styles.price}
+                >{`$${device?.priceDiscount}`}</div>
                 <div
                   className={styles.fullPrice}
-                >{`$${phone?.priceRegular}`}</div>
+                >{`$${device?.priceRegular}`}</div>
               </div>
 
               <div className={styles.optionsAddButton}>
@@ -252,8 +272,8 @@ export const InfoCard: React.FC = () => {
               </div>
 
               <div>
-                {phone &&
-                  Object.entries(getTech(phone, 'short')).map(
+                {device &&
+                  Object.entries(getTech(device, 'short')).map(
                     ([key, value]) => {
                       return (
                         <div key={key}>
@@ -278,7 +298,7 @@ export const InfoCard: React.FC = () => {
             <div className={styles.aboutTitle}>
               <h1>About</h1>
             </div>
-            {phone?.description.map((elem, index) => (
+            {device?.description.map((elem, index) => (
               <div className={styles.aboutBlock} key={index}>
                 <h2>{elem.title}</h2>
                 {elem.text.map((item, idx) => (
@@ -291,8 +311,8 @@ export const InfoCard: React.FC = () => {
             <div className={styles.techTitle}>
               <h1>Tech specs</h1>
             </div>
-            {phone &&
-              Object.entries(getTech(phone, 'full')).map(([key, value]) => {
+            {device &&
+              Object.entries(getTech(device, 'full')).map(([key, value]) => {
                 return (
                   <div className={styles.techProperty} key={key}>
                     <div className={styles.techName}>
@@ -312,8 +332,7 @@ export const InfoCard: React.FC = () => {
         </div>
 
         <div className={styles.Suggestions}>
-          <h2>You may also like</h2>
-          <CardsCarusel props={products} />
+          <CardsCarusel props={products} name={'You may also like'} />
         </div>
       </div>
     </div>

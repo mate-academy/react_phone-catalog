@@ -16,7 +16,7 @@ export const Favorites = () => {
         <span>
           <img src="img/icons/Arrow_Right.svg" alt="arrow_right" />
         </span>
-        <Link to={`/tables`}>Tables</Link>
+        <Link to={`/favorites`}>Favorite</Link>
       </div>
       <h1>Favorites</h1>
       <div className={styles.item}>{`items ${favorite.length}`}</div>

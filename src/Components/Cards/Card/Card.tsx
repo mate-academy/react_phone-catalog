@@ -14,18 +14,20 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
   const { products, favorite, setFavorite, carts, setCarts } =
     useContext(Context);
 
-  const HanderAddFavorite = () => {
-    const isFavorite = favorite.some(fav => fav.id === product.id);
+  const HandlerAddFavorite = () => {
+    const inFavoriteIndex = favorite.findIndex(fav => fav.id === product.id);
 
-    if (isFavorite) {
-      const updatedFavorites = favorite.filter(fav => fav.id !== product.id);
+    if (inFavoriteIndex !== -1) {
+      const updatedFavorites = [...favorite];
 
+      updatedFavorites.splice(inFavoriteIndex, 1);
       setFavorite(updatedFavorites);
+      localStorage.setItem('favorite', JSON.stringify(updatedFavorites));
     } else {
       const productToAdd = products.find(prod => prod.id === product.id);
 
       if (productToAdd) {
-        setFavorite(prevFavorites => [...prevFavorites, productToAdd]);
+        setFavorite(prevFav => [...prevFav, productToAdd]);
       }
     }
   };
@@ -60,17 +62,18 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
     });
   };
 
+  // console.log(products[0].image);
+
   return (
     <div className={styles.container}>
-      <NavLink to={`/info/products/${product.itemId}`} className={styles.image}>
-        <img
-          className={styles.normaliz}
-          src={`https://mate-academy.github.io/react_phone-catalog/_new/${product.image}`}
-          alt="#"
-        />
+      <NavLink
+        to={`/info/${product.category}/${product.itemId}`}
+        className={styles.image}
+      >
+        <img className={styles.normaliz} src={`/${product.image}`} alt="#" />
       </NavLink>
       <div className="full">
-        <h2 className="product-name">{product.name}</h2>
+        <h2 className={styles.name}>{product.name}</h2>
 
         {discount ? (
           <div className={styles.productPrice}>
@@ -117,7 +120,7 @@ export const Card: React.FC<Props> = ({ product, discount }) => {
                 [styles.red]: inFavorite(),
               },
             )}
-            onClick={HanderAddFavorite}
+            onClick={HandlerAddFavorite}
           ></button>
         </div>
       </div>

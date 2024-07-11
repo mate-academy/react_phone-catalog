@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { Products } from '../type/Products';
 import { getProducts } from '../api';
-import { Phone } from '../type/Phone';
+import { Device } from '../type/Device';
 import { CartsProducts } from '../type/Carts';
 
 type ContextType = {
@@ -12,8 +12,8 @@ type ContextType = {
   setFavorite: React.Dispatch<React.SetStateAction<Products[]>>;
   carts: CartsProducts[];
   setCarts: React.Dispatch<React.SetStateAction<CartsProducts[]>>;
-  phones: Phone[];
-  setPhones: React.Dispatch<React.SetStateAction<Phone[]>>;
+  phones: Device[];
+  setPhones: React.Dispatch<React.SetStateAction<Device[]>>;
   burgerMenuOpen: boolean;
   setBurgerMenuOpen: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -39,7 +39,7 @@ export const Provider: React.FC<Props> = ({ children }) => {
   const [products, setProducts] = useState<Products[]>([]);
   const [favorite, setFavorite] = useState<Products[]>([]);
   const [carts, setCarts] = useState<Array<{ count: number } & Products>>([]);
-  const [phones, setPhones] = useState<Phone[]>([]);
+  const [phones, setPhones] = useState<Device[]>([]);
   const [burgerMenuOpen, setBurgerMenuOpen] = useState(false);
 
   useEffect(() => {
@@ -53,22 +53,22 @@ export const Provider: React.FC<Props> = ({ children }) => {
   }, [carts, favorite]);
 
   useEffect(() => {
-    const localCarts = localStorage.getItem('favorite');
+    const localFavorite = localStorage.getItem('favorite');
 
-    if (localCarts) {
-      const test = JSON.parse(localCarts);
+    if (localFavorite) {
+      const fav = JSON.parse(localFavorite);
 
-      setFavorite(test);
+      setFavorite(fav);
     }
   }, []);
 
   useEffect(() => {
-    const localFavorite = localStorage.getItem('carts');
+    const localCarts = localStorage.getItem('carts');
 
-    if (localFavorite) {
-      const test = JSON.parse(localFavorite);
+    if (localCarts) {
+      const cart = JSON.parse(localCarts);
 
-      setCarts(test);
+      setCarts(cart);
     }
   }, []);
 

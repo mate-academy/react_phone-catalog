@@ -15,16 +15,6 @@
   src: local('mont-bold') url('./fonts/Mont-SemiBold.otf') format('opentype');
 }
 
-// *, :after, :before {
-//   box-sizing: inherit;
-// }
-
-// *,
-// *::before,
-// *::after {
-//   box-sizing: border-box;
-// }
-
 :root {
   --secondary: #75767f;
   --icons: #4a4d58;
@@ -70,6 +60,10 @@ h1,
 h2{
   color: var(--white);
   margin: 0;
+}
+
+h3 {
+  color: var(--secondary);
 }
 
 .link-block {

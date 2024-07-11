@@ -22,7 +22,7 @@ export const HomePage = () => {
     }
   }, [products]);
 
-  const discountProduct: Products[] = products.slice(0, 3);
+  const discountProduct: Products[] = products.slice(0, 10);
 
   return (
     <div>
@@ -32,10 +32,16 @@ export const HomePage = () => {
         <div>
           <h1 className={styles.title}>Product Catalog</h1>
           <PicturesSlider images={[image1, image3, image4, image5]} />
-          {products.length !== 0 && <CardsCarusel props={products} />}
+          {products.length !== 0 && (
+            <CardsCarusel props={products} name={'Brand new models'} />
+          )}
           <Categories products={products} />
           {discountProduct.length !== 0 && (
-            <CardsCarusel props={discountProduct} discount={true} />
+            <CardsCarusel
+              props={discountProduct}
+              discount={true}
+              name={'Hot prices'}
+            />
           )}
         </div>
       )}

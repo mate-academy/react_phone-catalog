@@ -1,4 +1,4 @@
-export type Phone = {
+export type Device = {
   id: string;
   category: string;
   namespaceId: string;

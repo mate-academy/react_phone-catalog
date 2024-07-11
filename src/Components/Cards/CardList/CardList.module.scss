@@ -2,13 +2,13 @@
   display: grid;
   width: 100%;
   gap: 40px 16px; /* Відстань між колонками та рядами */
-  grid-template-columns: repeat(auto-fit, 229px); /* Адаптивна кількість колонок */
-  justify-content: center;
+  grid-template-columns: repeat(4, 1fr); /* Адаптивна кількість колонок */
+  // justify-content: space-between;
 }
 
 @media (max-width: 1200px) and (min-width: 640px) {
   .container {
-    grid-template-columns: repeat(auto-fit, minmax(229px, 1fr)); /* Зберігаємо ті ж значення для адаптивності */
+    grid-template-columns: repeat(auto-fit, 229px); /* Зберігаємо ті ж значення для адаптивності */
   }
 }
 

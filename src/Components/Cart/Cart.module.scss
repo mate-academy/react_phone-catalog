@@ -23,7 +23,7 @@
 
 .total {
   width: 368px;
-  height: 206px;
+  height: 100%;
   border: 1px solid #3B3E4A;
   display: flex;
   flex-direction: column;
@@ -74,6 +74,10 @@
     margin-top: 32px;
     width: 100%;
     padding: 0;
+  }
+
+  .totalCheckout {
+    margin-bottom: 24px;
   }
 
 

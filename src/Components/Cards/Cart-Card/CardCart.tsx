@@ -44,10 +44,7 @@ export const CardCart: React.FC<Props> = ({
           X
         </button>
         <div className={styles.image}>
-          <img
-            src={`https://mate-academy.github.io/react_phone-catalog/_new/${item.image}`}
-            alt="#"
-          />
+          <img src={`/${item.image}`} alt="#" />
         </div>
         <div className={styles.name}>
           <h3>{`${item.name}`}</h3>

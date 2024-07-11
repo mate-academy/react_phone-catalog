@@ -20,7 +20,9 @@ export const BurgerMenu: React.FC<BurgerMenuProps> = ({ toggleMenu }) => {
     <div className={styles.content}>
       <div className={styles.header}>
         <div className="logo">
-          <img src="img/icons/Logo.png" alt="" className="logo-img" />
+          <NavLink to="/">
+            <img src="img/icons/Logo.png" alt="" className="logo-img" />
+          </NavLink>
         </div>
         <div className={styles.close} onClick={toggleMenu}>
           <img src="img/icons/Close.svg" alt="favorites" />

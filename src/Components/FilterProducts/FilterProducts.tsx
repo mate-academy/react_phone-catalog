@@ -50,6 +50,8 @@ export const FilterProducts: React.FC<Props> = ({ products }) => {
     } else {
       setCount(+event.target.value);
     }
+
+    setCurrentPage(1);
   };
 
   const handleSortChange = (event: React.ChangeEvent<HTMLSelectElement>) => {

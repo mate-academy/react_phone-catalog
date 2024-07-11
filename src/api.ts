@@ -1,7 +1,8 @@
-import { Phone } from './type/Phone';
+import { Device } from './type/Device';
 import { Products } from './type/Products';
 
-const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+// const API_URL = 'https://mate-academy.github.io/react_phone-catalog/_new';
+const API_URL = 'https://eater228.github.io/react_phone-catalog/api/';
 
 function wait(delay: number) {
   return new Promise(resolve => setTimeout(resolve, delay));
@@ -17,12 +18,12 @@ export async function getProducts(): Promise<Products[]> {
   return fetchProducts();
 }
 
-async function fetchPhone(resource: string): Promise<Phone> {
+async function fetchDevice(resource: string): Promise<Device[]> {
   return wait(500)
-    .then(() => fetch(`${API_URL}/products/${resource}.json`))
+    .then(() => fetch(`${API_URL}/${resource}.json`))
     .then(response => response.json());
 }
 
-export async function getPhone(resource: string): Promise<Phone> {
-  return fetchPhone(resource);
+export async function getDevice(resource: string): Promise<Device[]> {
+  return fetchDevice(resource);
 }

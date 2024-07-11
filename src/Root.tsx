@@ -26,7 +26,7 @@ export const Root = () => (
         <Route path="smart" element={<Accessories />} />
         <Route path="favorites" element={<Favorites />} />
         <Route path="cart" element={<Cart />} />
-        <Route path="info/products/:itemId?" element={<InfoCard />} />
+        <Route path="info/:category/:itemId?" element={<InfoCard />} />
 
         <Route path="*" element={<NotFoundPage />}></Route>
       </Route>
