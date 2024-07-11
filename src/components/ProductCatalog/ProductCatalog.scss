@@ -1,0 +1,88 @@
+@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars.scss';
+
+.catalog {
+  display: flex;
+  flex-direction: column;
+  &__item {
+    width: 288px;
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  &__dropdown {
+    height: 40px;
+    border: 1px $gray-icons solid;
+
+    &__options {
+      color: $gray-secondary;
+
+      &:hover {
+        background-color: #FFF;
+        color: $gray-primary;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 24px;
+
+    &__box {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      color: $gray-secondary;
+    }
+  }
+
+  &__pagination {
+    margin-top: 40px;
+    align-self: center;
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+
+    &__list {
+      display: flex;
+      flex-direction: row;
+      gap: 8px;
+    }
+
+    &__button {
+      height: 40px;
+      width: 40px;
+      background-repeat: no-repeat;
+      background-position: center;
+      cursor: pointer;
+
+      &:disabled {
+        cursor: auto;
+        opacity: 0.5;
+      }
+
+      &--active {
+        color: $gray-white;
+        background-color: $gray-primary;
+      }
+    }
+  }
+}
+
+.prevButton {
+  background-image: url('../../../public/icons/arrow-left.svg');
+}
+
+.nextButton {
+  background-image: url('../../../public/icons/arrow-right.svg');
+}

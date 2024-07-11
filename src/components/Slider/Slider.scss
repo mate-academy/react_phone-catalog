@@ -1,0 +1,89 @@
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
+
+.Slider {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.Carousel {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  height: 400px;
+  gap: 16px;
+  width: 100%; // Задаем ширину для мобильных устройств
+  overflow: hidden; // Добавляем скрытие переполнения
+
+  &__list {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    padding: 0;
+    width: 100%; // Добавлено для мобильной версии
+
+    @include carousel-image-size;
+  }
+
+  &__item {
+    transition: 0.5s;
+    min-width: 100%; // Устанавливаем ширину каждого элемента равной ширине контейнера
+  }
+
+  &__img {
+    object-fit: cover;
+    width: 100%; // Изображения на всю ширину экрана
+    height: 100%; // Устанавливаем высоту на всю высоту контейнера
+
+    @include carousel-image-size;
+  }
+
+  &__button {
+    cursor: pointer;
+    height: 189px;
+    display: none; // Скрываем кнопки по умолчанию
+
+    @include on-tablet {
+      display: inline; // Показываем кнопки на планшетах
+    }
+
+    @include on-desktop {
+      height: 400px;
+    }
+
+    width: 30px;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    &--left {
+      background-image: url(../../../public/icons/arrow-left.svg);
+    }
+
+    &--right {
+      background-image: url(../../../public/icons/arrow-right.svg);
+    }
+  }
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+
+  &__dot {
+    cursor: pointer;
+    border: none;
+    background-color: $gray-elements;
+    width: 14px;
+    height: 4px;
+
+    &_active {
+      background-color: $gray-primary;
+    }
+  }
+}

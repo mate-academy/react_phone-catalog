@@ -1,0 +1,58 @@
+@import "../../styles/utils/vars";  // Удалено подчеркивание из имени файла
+
+.menu {
+  position: fixed;
+  inset: 0;  // Использована сокращенная запись
+  z-index: 1000;
+
+  background: #fff;
+  height: 100vh;
+
+  transform: translateX(0);  // Удалены единицы измерения для значений, равных нулю
+  pointer-events: all;
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    display: flex;
+    padding: 13px 16px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    box-shadow: 0 1px 0 0 $gray-elements;
+    box-sizing: border-box;
+  }
+
+  &__close {
+    margin-left: auto;
+    box-sizing: border-box;
+    height: 48px;
+    width: 48px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+  }
+
+  &__bottom {
+    display: flex;
+    height: 64px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &__button {
+      flex-grow: 1;
+    }
+  }
+}

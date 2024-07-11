@@ -1,0 +1,17 @@
+@import "./utils/vars";
+@import "./utils/typography";
+
+.nav {
+  &__item {
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $gray-secondary;
+    font-family: Montserrat, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 0.04em;
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+  }
+}

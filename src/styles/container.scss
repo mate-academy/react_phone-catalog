@@ -1,0 +1,13 @@
+@import './utils/mixins';
+
+.container {
+  margin-inline: 16px;
+
+  @include on-tablet {
+    margin-inline: 32px;
+  }
+
+  @include on-desktop{
+    margin-inline: 152px;
+  }
+}
