@@ -10,6 +10,8 @@ import { useStateRef } from '../../../utils/hooks/hooks';
 import { getRefValue } from '../../../utils/CardSlider';
 import { getTouchEventData } from '../../../utils/hooks/dom';
 import { Card } from '../../CardsContainer/Card/Card';
+import { ProductsContext } from '../../../store/ProductsProvider';
+import { Skeleton } from '../../Skeleton';
 const MIN_SWIPE_REQUIRED = 20;
 
 type Props = {
@@ -37,11 +39,14 @@ export const CardsSlider: React.FC<Props> = ({
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mouseTouch, setMouseTouch] = useState(false);
+  const { isLoading } = useContext(ProductsContext);
 
   const indicatorOnClick = (ind: number) => {
     setCurrentIndex(ind);
     setOffsetX(-((getRefValue(widthRef).offsetWidth + 16) * ind));
   };
+
+  const skeletonCartParams = Array(4).fill({ height: 400, width: 300 }, 0, 4);
 
   const onTouchMove = (
     e: React.TouchEvent<HTMLDivElement> | React.MouseEvent<HTMLDivElement>,
@@ -177,15 +182,24 @@ export const CardsSlider: React.FC<Props> = ({
     >
       <div className={style.cardsSlider__slider}>
         <div className={style.cardsSlider__cardHeader}>
-          <h2 className={style.cardsSlider__cardTitle}>{t(title)}</h2>
-          <div className={classNames(style.cardsSlider__cardNavBtns)}>
-            <button className={style.cardsSlider__icons} onClick={handlePrev}>
-              <IconLeft />
-            </button>
-            <button className={style.cardsSlider__icons} onClick={handleNext}>
-              <IconRight />
-            </button>
-          </div>
+          {isLoading ? (
+            <Skeleton width={300} height={32} />
+          ) : (
+            <h2 className={style.cardsSlider__cardTitle}>{t(title)}</h2>
+          )}
+
+          {isLoading ? (
+            <Skeleton width={80} height={32} />
+          ) : (
+            <div className={classNames(style.cardsSlider__cardNavBtns)}>
+              <button className={style.cardsSlider__icons} onClick={handlePrev}>
+                <IconLeft />
+              </button>
+              <button className={style.cardsSlider__icons} onClick={handleNext}>
+                <IconRight />
+              </button>
+            </div>
+          )}
         </div>
 
         <div
@@ -200,14 +214,22 @@ export const CardsSlider: React.FC<Props> = ({
           onMouseUp={onTouchEnd}
         >
           <ul className={style.cardsSlider__cardsList} draggable={false}>
-            {products.map(product => (
-              <Card
-                product={product}
-                discount={discount}
-                widthRef={widthRef}
-                key={product.itemId}
-              />
-            ))}
+            {isLoading
+              ? skeletonCartParams.map(({ height, width }) => (
+                  <Skeleton
+                    className={`${style.cardsSlider__cardContainer} ${style.cardsSlider__cardsList}`}
+                    width={width}
+                    height={height}
+                  />
+                ))
+              : products.map(product => (
+                  <Card
+                    product={product}
+                    discount={discount}
+                    widthRef={widthRef}
+                    key={product.itemId}
+                  />
+                ))}
           </ul>
         </div>
       </div>

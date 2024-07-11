@@ -8,6 +8,8 @@ import { getTouchEventData } from '../../../utils/hooks/dom';
 import { IconLeft } from '../../Icons/IconLeft';
 import classNames from 'classnames';
 import { IconRight } from '../../Icons/IconRight';
+import { ProductsContext } from '../../../store/ProductsProvider';
+import { Skeleton } from '../../Skeleton';
 
 const MIN_SWIPE_REQUIRED = 40;
 
@@ -129,68 +131,74 @@ export const HeroSlider = () => {
     }
   }, [autoPlay, currentIndex]);
 
+  const { isLoading } = useContext(ProductsContext);
+
   return (
     <div className={style.slider}>
-      <div className={style.slider__block}>
-        {!isMobile && (
-          <button className={style.slider__button} onClick={handlePrev}>
-            <IconLeft className={style.slider__arrowIcon} />
-          </button>
-        )}
-        <div className={style.slider__container}>
-          <div
-            ref={containerRef}
-            className={style.slider__images}
-            style={{ transform: `translate3d(${offsetX}px, 0, 0)` }}
-            onMouseEnter={() => setAutoPlay(false)}
-            onMouseLeave={() => setAutoPlay(true)}
-            onTouchStart={onTouchStart}
-            onMouseDown={onTouchStart}
-          >
-            {!isMobile ? (
-              <>
-                {desktopBanner.map(image => (
-                  <img
-                    ref={widthRef}
-                    key={image.src}
-                    src={image.src}
-                    alt="Banner"
-                    className={style.slider__image}
-                    draggable={false}
-                  />
-                ))}
-              </>
-            ) : (
-              <>
-                {mobileBanner.map(image => (
-                  <img
-                    key={image.src}
-                    src={image.src}
-                    alt="Banner"
-                    className={style.slider__image}
-                  />
-                ))}
-              </>
-            )}
+      {!isLoading ? (
+        <div className={style.slider__block}>
+          {!isMobile && (
+            <button className={style.slider__button} onClick={handlePrev}>
+              <IconLeft className={style.slider__arrowIcon} />
+            </button>
+          )}
+          <div className={style.slider__container}>
+            <div
+              ref={containerRef}
+              className={style.slider__images}
+              style={{ transform: `translate3d(${offsetX}px, 0, 0)` }}
+              onMouseEnter={() => setAutoPlay(false)}
+              onMouseLeave={() => setAutoPlay(true)}
+              onTouchStart={onTouchStart}
+              onMouseDown={onTouchStart}
+            >
+              {!isMobile ? (
+                <>
+                  {desktopBanner.map(image => (
+                    <img
+                      ref={widthRef}
+                      key={image.src}
+                      src={image.src}
+                      alt="Banner"
+                      className={style.slider__image}
+                      draggable={false}
+                    />
+                  ))}
+                </>
+              ) : (
+                <>
+                  {mobileBanner.map(image => (
+                    <img
+                      key={image.src}
+                      src={image.src}
+                      alt="Banner"
+                      className={style.slider__image}
+                    />
+                  ))}
+                </>
+              )}
+            </div>
           </div>
+          <div className={style.slider__containerSmallBtn}>
+            {desktopBanner.map((_, index) => (
+              <span
+                key={index}
+                onClick={() => indicatorOnClick(index)}
+                className={classNames(style.slider__smallButton, {
+                  [style.slider__activeButton]: currentIndex === index,
+                })}
+              ></span>
+            ))}
+          </div>
+          {!isMobile && (
+            <button className={style.slider__button} onClick={handleNext}>
+              <IconRight className={style.slider__arrowIcon} />
+            </button>
+          )}
         </div>
-        <div className={style.slider__containerSmallBtn}>
-          {desktopBanner.map((_, index) => (
-            <span
-              key={index}
-              onClick={() => indicatorOnClick(index)}
-              className={classNames(style.slider__smallButton, {
-                [style.slider__activeButton]: currentIndex === index,
-              })}
-            ></span>
-          ))}
-        </div>
-        {!isMobile && (
-          <button className={style.slider__button} onClick={handleNext}>
-            <IconRight className={style.slider__arrowIcon} />
-          </button>
-        )}
-      </div>
+      ) : (
+        <Skeleton className={`${style.slider} ${style.slider__container}`} height={300} width={1132} />
+      )}
     </div>
   );
 };

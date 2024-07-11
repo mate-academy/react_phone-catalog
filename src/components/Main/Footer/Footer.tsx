@@ -7,10 +7,13 @@ import { LanguageContext } from '../../../store/LanguageProvider';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
+import { ProductsContext } from '../../../store/ProductsProvider';
+import { Skeleton } from '../../Skeleton';
 
 export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
+  const { isLoading } = useContext(ProductsContext);
   const footerNavList = [
     {
       name: 'gitHub',
@@ -32,30 +35,38 @@ export const Footer = () => {
         [style.footer__darkTheme]: theme,
       })}
     >
-      <nav className={style.footer__navContainer}>
-        <Link to="#" className={style.footer__logoLink}>
-          <Logo className={style.footer__logoImage} />
-        </Link>
+      {!isLoading ? (
+        <nav className={style.footer__navContainer}>
+          <Link to="#" className={style.footer__logoLink}>
+            <Logo className={style.footer__logoImage} />
+          </Link>
 
-        <ul className={style.footer__navList}>
-          {footerNavList.map(item => (
-            <li className={style.footer__navItem} key={item.name}>
-              <Link to={item.path} className={style.footer__navLink}>
-                {t(item.name)}
-              </Link>
-            </li>
-          ))}
-        </ul>
+          <ul className={style.footer__navList}>
+            {footerNavList.map(item => (
+              <li className={style.footer__navItem} key={item.name}>
+                <Link to={item.path} className={style.footer__navLink}>
+                  {t(item.name)}
+                </Link>
+              </li>
+            ))}
+          </ul>
 
-        <div className={style.footer__upNav}>
-          <HashLink smooth to="#" className={classNames(style.footer__upLink)}>
-            {t('backToTop')}
-          </HashLink>
-          <HashLink smooth to="#" className={style.footer__arrowUpLink}>
-            <IconUp className={style.footer__arrowUpImg} />
-          </HashLink>
-        </div>
-      </nav>
+          <div className={style.footer__upNav}>
+            <HashLink
+              smooth
+              to="#"
+              className={classNames(style.footer__upLink)}
+            >
+              {t('backToTop')}
+            </HashLink>
+            <HashLink smooth to="#" className={style.footer__arrowUpLink}>
+              <IconUp className={style.footer__arrowUpImg} />
+            </HashLink>
+          </div>
+        </nav>
+      ) : (
+        <Skeleton className={style.footer__navContainer}/>
+      )}
     </footer>
   );
 };

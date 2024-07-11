@@ -9,13 +9,15 @@ import { useLocation, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Pathname } from '../../enums/Pathname';
 import { StateContext } from '../../store/StateProvider';
-// import { Skeleton } from '../Skeleton';
+import { Skeleton } from '../Skeleton';
+import { ProductsContext } from '../../store/ProductsProvider';
 export const Main = () => {
   const { t } = useContext(LanguageContext);
   const { activeMenu } = useContext(StateContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
   const { pathname } = useLocation();
   const { productId } = useParams();
+  const { isLoading } = useContext(ProductsContext);
 
   const productIdChech = productId ? productId : '';
 
@@ -36,9 +38,13 @@ export const Main = () => {
     >
       {homePage && (
         <div className={style.main__content}>
-          {/* <Skeleton> */}
-          <h1 className={style.main__title}>{t('welcome')}</h1>
-          {/* </Skeleton> */}
+          <h1 className={style.main__title}>
+            {!isLoading ? (
+              t('welcome')
+            ) : (
+              <Skeleton height={48}/>
+            )}
+          </h1>
 
           <section className={style.main__heroSlider}>
             <HeroSlider />

@@ -5,10 +5,12 @@ import style from './CategoryCards.module.scss';
 import { Link } from 'react-router-dom';
 import { ProductsContext } from '../../../../store/ProductsProvider';
 import { Category } from '../../../../enums/Category';
+import { Skeleton } from '../../../Skeleton';
 
 export const CategoryCards = () => {
   const { t } = useContext(LanguageContext);
   const { products } = useContext(ProductsContext);
+  const { isLoading } = useContext(ProductsContext);
 
   const items = products.reduce(
     (counts, product) => {
@@ -34,19 +36,47 @@ export const CategoryCards = () => {
       <div className={style.category__container}>
         {CategoryList.map((photo, i) => (
           <div className={style.category__card} key={i}>
-            <Link to={photo.link} className={style.category__cardLink}>
-              <img
-                className={style.category__cardImage}
-                src={photo.src}
-                alt={photo.alt}
+            {!isLoading ? (
+              <Link to={photo.link} className={style.category__cardLink}>
+                <img
+                  className={style.category__cardImage}
+                  src={photo.src}
+                  alt={photo.alt}
+                />
+              </Link>
+            ) : (
+              <div className={style.category__skeletonCenter}>
+                <Skeleton
+                  className={`${style.category__container} ${style.category__card} `}
+                  width={350}
+                  height={350}
+                />
+              </div>
+            )}
+
+            {!isLoading ? (
+              <Link to={photo.link} className={style.category__cardName}>
+                {t(photo.title)}
+              </Link>
+            ) : (
+              <Skeleton
+                className={style.category__cardName}
+                width={100}
+                height={26}
               />
-            </Link>
-            <Link to={photo.link} className={style.category__cardName}>
-              {t(photo.title)}
-            </Link>
-            <p className={style.category__cardQuantity}>
-              {items[i]} {t('models')}
-            </p>
+            )}
+
+            {!isLoading ? (
+              <p className={style.category__cardQuantity}>
+                {items[i]} {t('models')}
+              </p>
+            ) : (
+              <Skeleton
+                className={style.category__cardQuantity}
+                width={80}
+                height={12}
+              />
+            )}
           </div>
         ))}
       </div>

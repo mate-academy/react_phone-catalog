@@ -60,5 +60,11 @@
     &__card {
       grid-column: span 4;
     }
+
+    &__skeletonCenter {
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+    }
   }
 }

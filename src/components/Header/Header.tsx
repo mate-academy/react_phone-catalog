@@ -14,12 +14,15 @@ import classNames from 'classnames';
 import { Pathname } from '../../enums/Pathname';
 import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
 import { SearchField } from './SearchField';
+import { Skeleton } from '../Skeleton';
+import { ProductsContext } from '../../store/ProductsProvider';
 
 export const Header = () => {
   const { isLaptop } = useContext(BreakPointsContext);
   const { setActiveMenu, favorites } = useContext(StateContext);
   const { cartItems } = useContext(ShoppingCartContext);
   const { pathname } = useLocation();
+  const { isLoading } = useContext(ProductsContext);
 
   const showSearchField =
     Pathname.phones === pathname ||
@@ -29,64 +32,71 @@ export const Header = () => {
   return (
     <header className={style.header}>
       <nav className={style.header__top}>
-        <div className={style.header__leftNav}>
-          <Link to="../" className={style.header__link}>
-            <Logo className={style.header__logo} />
-          </Link>
-          {!isLaptop && <NavList />}
-        </div>
+        {isLoading ? (
+          <Skeleton variant="rect" className={style.header__top} />
+        ) : (
+          <>
+            <div className={style.header__leftNav}>
+              <Link to="../" className={style.header__link}>
+                <Logo className={style.header__logo} />
+              </Link>
+              {!isLaptop && <NavList />}
+            </div>
 
-        <ul className={style.header__actions}>
-          {!isLaptop ? (
-            <div className={style.header__actionsWrapper}>
-              {showSearchField && <SearchField />}
-              <div className={style.header__topBtn}>
-                <LangButton />
-              </div>
-              <div className={style.header__topBtn}>
-                <ThemeButton />
-              </div>
-              <Link
-                to={`../${Pathname.favorites}`}
-                className={classNames(style.header__actionsLink, {
-                  [style.header__activeButton]: pathname === Pathname.favorites,
-                })}
-              >
-                {favorites.length > 0 && (
-                  <span className={style.header__quantityItemsCircle}>
-                    {favorites.length}
-                  </span>
-                )}
-                <IconFavorites className={style.header__actionsImg} />
-              </Link>
-              <Link
-                to={`../${Pathname.cart}`}
-                className={classNames(style.header__actionsLink, {
-                  [style.header__activeButton]: Pathname.cart === pathname,
-                })}
-              >
-                {cartItems.length > 0 && (
-                  <span className={style.header__quantityItemsCircle}>
-                    {cartItems.length}
-                  </span>
-                )}
-                <LogoCart className={style.header__actionsImg} />
-              </Link>
-            </div>
-          ) : (
-            <div className={style.header__actionsContainer}>
-              <div className={style.header__searchForm}>
-                {showSearchField && <SearchField />}
-              </div>
-              <button
-                className={style.header__burgerMenu}
-                onClick={() => setActiveMenu(true)}
-              >
-                <IconBurger className={style.header__burgerMenuImg} />
-              </button>
-            </div>
-          )}
-        </ul>
+            <ul className={style.header__actions}>
+              {!isLaptop ? (
+                <div className={style.header__actionsWrapper}>
+                  {showSearchField && <SearchField />}
+                  <div className={style.header__topBtn}>
+                    <LangButton />
+                  </div>
+                  <div className={style.header__topBtn}>
+                    <ThemeButton />
+                  </div>
+                  <Link
+                    to={`../${Pathname.favorites}`}
+                    className={classNames(style.header__actionsLink, {
+                      [style.header__activeButton]:
+                        pathname === Pathname.favorites,
+                    })}
+                  >
+                    {favorites.length > 0 && (
+                      <span className={style.header__quantityItemsCircle}>
+                        {favorites.length}
+                      </span>
+                    )}
+                    <IconFavorites className={style.header__actionsImg} />
+                  </Link>
+                  <Link
+                    to={`../${Pathname.cart}`}
+                    className={classNames(style.header__actionsLink, {
+                      [style.header__activeButton]: Pathname.cart === pathname,
+                    })}
+                  >
+                    {cartItems.length > 0 && (
+                      <span className={style.header__quantityItemsCircle}>
+                        {cartItems.length}
+                      </span>
+                    )}
+                    <LogoCart className={style.header__actionsImg} />
+                  </Link>
+                </div>
+              ) : (
+                <div className={style.header__actionsContainer}>
+                  <div className={style.header__searchForm}>
+                    {showSearchField && <SearchField />}
+                  </div>
+                  <button
+                    className={style.header__burgerMenu}
+                    onClick={() => setActiveMenu(true)}
+                  >
+                    <IconBurger className={style.header__burgerMenuImg} />
+                  </button>
+                </div>
+              )}
+            </ul>
+          </>
+        )}
       </nav>
     </header>
   );
