@@ -1,0 +1,82 @@
+@import '../../../../styles/main';
+
+.CartItem {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+
+  background-color: $surface1-color;
+  border: 1px solid $surface1-color;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  @include hover(border-color, $accent-color-hover);
+
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__remove {
+    @include flex-center;
+    @include hover-scale;
+
+    cursor: pointer;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    color: inherit;
+  }
+
+  &__img-wrapper {
+    height: 80px;
+    width: 80px;
+
+    @include flex-center;
+  }
+
+  &__image {
+    height: 66px;
+
+    @include hover-scale;
+  }
+
+  &__title {
+    flex: 1;
+    margin-right: 49px;
+
+    @extend %text-body;
+    @include hover(color, $accent-color-hover);
+  }
+
+  &__quantity-wrapper {
+    display: flex;
+
+    @include on-tablet {
+      margin-left: auto;
+    }
+  }
+
+  &__quantity {
+    width: 32px;
+
+    @include flex-center;
+    @extend %text-body;
+  }
+
+  &__price {
+    margin-left: 19px;
+
+    @extend %h2;
+  }
+}
+

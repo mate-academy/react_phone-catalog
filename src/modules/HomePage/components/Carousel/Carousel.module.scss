@@ -1,0 +1,87 @@
+@import '../../../../styles/main';
+
+.Carousel {
+  position: relative;
+  margin-inline: -16px;
+  height: 400px;
+
+  @include on-tablet {
+    margin-inline: 0;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    padding-bottom: 24px;
+
+    @include on-tablet {
+      padding-inline: 51px;
+    }
+  }
+
+  &__img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+
+  & div[class*="swiper-pagination"] {
+    display: flex;
+    gap: 4px;
+    bottom: 0 !important;
+    height: 24px;
+    padding-top: 8px;
+
+    @include flex-center;
+
+    &>span {
+      width: 14px;
+      height: 4px;
+      border-radius: 0;
+      background: $elements-color;
+    }
+
+    &>span[class*="swiper-pagination-bullet-active"] {
+      background-color: $white-color;
+    }
+  }
+
+  & div[class*="swiper-button-prev"],
+  & div[class*="swiper-button-next"] {
+    display: none;
+    top: 0;
+    bottom: 0;
+
+    width: 32px;
+    height: 100%;
+
+    background-color: $surface2-color;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &::after {
+      display: none;
+    }
+  }
+
+  & div[class*="swiper-button-prev"] {
+    background-image: url('../../../../../public/img/icons/Chevron-Left.svg');
+  }
+
+  & div[class*="swiper-button-next"] {
+    background-image: url('../../../../../public/img/icons/Chevron-Right.svg');
+  }
+}

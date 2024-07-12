@@ -1,0 +1,78 @@
+@import '../../styles/main';
+
+.NavMobile {
+  @include flex-center;
+
+  background-color: $black-color;
+
+  @include on-tablet {
+    display: none;
+  }
+
+  &::before {
+    @include vertical-line;
+  }
+
+  &__menu {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    background-color: $black-color;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    padding-left: 16px;
+    height: 49px;
+  }
+
+  &__btn-top {
+    border-left: 1px solid $surface2-color;
+  }
+
+  &__navigation {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    padding-top: 24px;
+
+    color: $white-color;
+    border-top: 1px solid $surface2-color;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    height: 27px;
+    width: min-content;
+
+    color: $secondary-color;
+
+    @extend %text-uppercase;
+    @include hover(color, $accent-color);
+  }
+
+  &__bottom {
+    height: 64px;
+    display: flex;
+    border: 1px solid $surface2-color;
+  }
+
+  &__favorites {
+    display: flex;
+    width: 100%;
+    border-right: 1px solid $surface2-color;
+  }
+}
+
+.active {
+  @include active;
+}

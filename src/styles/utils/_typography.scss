@@ -1,0 +1,89 @@
+@import './mixins';
+
+%h1 {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+%h2 {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 31px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 32px;
+    line-height: 41px;
+  }
+}
+
+%h2-desctop {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+%h3 {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  font-weight: 800;
+  line-height: 26px;
+
+  @include on-tablet {
+    font-size: 22px;
+    line-height: 31px;
+  }
+}
+
+%h4 {
+  font-family: Mont, sans-serif;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20px;
+
+  @include on-tablet {
+    font-size: 20px;
+    line-height: 26px;
+  }
+}
+
+%text-uppercase {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%text-buttons {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+%text-body {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+}
+
+%text-small {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+}

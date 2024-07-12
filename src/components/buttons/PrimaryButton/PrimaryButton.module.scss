@@ -1,0 +1,16 @@
+@import '../../../styles/main';
+
+.PrimaryButton {
+  @include flex-center;
+
+  height: 48px;
+  width: 100%;
+
+  color: $white-color;
+  background-color: $accent-color;
+
+  cursor: pointer;
+
+  @extend %text-buttons;
+  @include hover(background-color, $accent-color-hover);
+}

@@ -1,0 +1,24 @@
+@import '../../../styles/main';
+
+.AddButton {
+  @include flex-center;
+
+  flex: 1;
+  height: 40px;
+
+  color: $white-color;
+  background-color: $accent-color;
+
+  cursor: pointer;
+
+  @extend %text-buttons;
+  @include hover(background-color, $accent-color-hover);
+
+  &--big {
+    height: 48px;
+  }
+
+  &--inCart {
+    background-color: $surface2-color;
+  }
+}

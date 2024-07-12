@@ -1,0 +1,21 @@
+@import '../../../styles/main';
+
+.FavoriteButton {
+  width: 40px;
+  height: 40px;
+  background-color: $surface2-color;
+
+  @include flex-center;
+  @include hover(background-color, $icons-color);
+  @include hover(cursor, pointer);
+
+  &--big {
+    height: 48px;
+    width: 48px;
+  }
+
+  &--isFavorite {
+    border: 1px solid $elements-color;
+    background-color: $surface1-color;
+  }
+}

@@ -1,0 +1,42 @@
+@import '../../../../styles/main';
+
+.ModalContent {
+  position: relative;
+  width: 50vw;
+  min-width: 350px;
+  padding: 50px 20px 30px;
+
+  @include flex-center;
+
+  flex-direction: column;
+  gap: 20px;
+
+  background-color: $surface1-color;
+  border: 1px solid $icons-color;
+
+  &>h2 {
+    @extend %h4;
+
+    line-height: 150%;
+  }
+
+  &__close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  &__button {
+    flex: 1;
+    padding: 10px;
+    width: 80%;
+    max-width: 200px;
+    color: $white-color;
+    background-color: $accent-color;
+    cursor: pointer;
+
+    @include flex-center;
+    @extend %text-buttons;
+    @include hover(background-color, $accent-color-hover);
+  }
+}

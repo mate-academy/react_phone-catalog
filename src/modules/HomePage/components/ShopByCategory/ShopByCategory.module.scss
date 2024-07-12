@@ -1,0 +1,65 @@
+@import '../../../../styles/main';
+
+.ShopByCategory {
+  &__title {
+    margin-bottom: 24px;
+
+    @extend %h2;
+  }
+
+  &__categories {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    width: 100%;
+    height: 100%;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__category {
+    flex: 1;
+    min-width: 0;
+    cursor: pointer;
+  }
+
+  &__img-container {
+    aspect-ratio: 1 / 1;
+    overflow: hidden;
+  }
+
+  &__img {
+    margin-top: 10%;
+    margin-left: 10%;
+    width: 100%;
+
+    @include hover-scale;
+
+    @include on-tablet {
+      margin-top: 0;
+      margin-left: 0;
+    }
+  }
+
+  &__details {
+    margin-top: 24px;
+
+    & > h3 {
+      margin-bottom: 4px;
+      color: $white-color;
+
+      @extend %h4;
+      @include hover(color, $accent-color);
+    }
+
+    & > p {
+      color: $secondary-color;
+
+      @extend %text-body;
+    }
+  }
+}

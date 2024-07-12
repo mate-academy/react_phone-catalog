@@ -1,0 +1,25 @@
+@import '../../styles/main';
+
+.HomePage {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 64px;
+
+  @include screen-properties(gap, 56px, 64px, 80px);
+  @include screen-properties(padding-top, 24px, 32px, 56px);
+
+  @include on-desctop {
+    padding-bottom: 80px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: column;
+
+    @include screen-properties(gap, 24px, 32px, 56px);
+  }
+
+  &__title {
+    @extend %h1;
+  }
+}

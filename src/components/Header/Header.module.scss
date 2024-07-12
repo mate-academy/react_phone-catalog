@@ -1,0 +1,51 @@
+@import '../../styles/main';
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+
+  background-color: $black-color;
+  border: 1px solid $surface2-color;
+
+  &__left {
+    display: flex;
+    gap: 16px;
+
+    @include on-desctop {
+      gap: 24px;
+    }
+  }
+
+  &__logo {
+    padding: 13px 16px;
+
+    @include on-desctop {
+      padding: 18px 24px;
+    }
+  }
+
+  &__right {
+    display: flex;
+  }
+
+  &__favorites, &__cart, &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__favorites, &__cart {
+    width: 48px;
+
+    @include on-desctop {
+      width: 64px;
+    }
+  }
+
+  &__favorites::before, &__cart::before  {
+    @include vertical-line;
+  }
+}

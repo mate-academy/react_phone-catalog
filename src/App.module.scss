@@ -1,0 +1,32 @@
+@import './styles/main';
+
+.App {
+  min-width: 320px;
+  color: $white-color;
+  background-color: $black-color;
+
+  &__header {
+    position: sticky;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 20;
+  }
+
+  &__container {
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+
+    // min-width: 320px;
+    max-width: 1440px;
+    min-height: 100vh;
+  }
+
+  &__content {
+    flex: 1;
+
+    @include container;
+  }
+}

@@ -1,0 +1,39 @@
+@import '../../styles/main';
+
+.ProductDetailsPage {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  color: $black-color;
+
+  @include screen-properties(margin-bottom, 56px, 64px, 80px);
+
+  &__back {
+    margin: 40px 0 16px;
+  }
+
+  &__title {
+    margin-bottom: 40px;
+    color: $white-color;
+
+    @extend %h2;
+  }
+
+  &__container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include screen-properties(row-gap, 56px, 64px, 80px);
+    @include screen-properties(margin-bottom, 56px, 64px, 80px);
+
+    @include on-tablet {
+      grid-template-columns: 1fr min-content;
+      column-gap: 17px;
+    }
+
+    @include on-desctop {
+      grid-template-columns: 1fr 1fr;
+      column-gap: 64px;
+    }
+  }
+}

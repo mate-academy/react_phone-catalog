@@ -1,0 +1,28 @@
+@import '../../styles/main';
+
+.NoResults {
+  flex: 1;
+  flex-direction: column;
+  gap: 20px;
+  margin: 40px 0;
+
+  @include flex-center;
+
+  &__title {
+    color: $white-color;
+
+    @extend %h2;
+  }
+
+  &__img {
+    height: 40vh;
+  }
+
+  &__button {
+    width: 100%;
+
+    @include on-tablet {
+      width: 320px;
+    }
+  }
+}

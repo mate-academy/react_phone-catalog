@@ -1,0 +1,28 @@
+@import '../../styles/main';
+
+.PageContent {
+  margin: 24px 0 80px;
+
+  &>h2 {
+    margin: 40px 0 8px;
+
+    @extend %h1;
+  }
+
+  &__quantity {
+    margin-bottom: 40px;
+    color: $secondary-color;
+
+    @extend %text-body;
+  }
+
+  &__dropdown-wrapper {
+    display: flex;
+    gap: 16px;
+    margin-bottom: 20px;
+  }
+
+  &__pagination {
+    margin-top: 40px;
+  }
+}

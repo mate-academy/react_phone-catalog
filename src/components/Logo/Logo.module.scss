@@ -1,0 +1,43 @@
+@import '../../styles/main';
+
+.Logo {
+  width: 64px;
+  height: 22px;
+  cursor: pointer;
+
+  @include on-desctop {
+    width: 80px;
+    height: 26px;
+  }
+
+  background-image: url('../../../public/img/icons/NiceGadgets.svg') ;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+
+  @include hover-scale;
+
+  &__img {
+    position: relative;
+    top: -15%;
+    right: -5%;
+    width: 9px;
+    height: 12px;
+
+    transition: all .5s ease-in-out;
+  }
+
+  @include on-desctop {
+    width: 80px;
+    height: 26px;
+
+    &__img {
+      width: 11px;
+      height: 15px;
+    }
+  }
+}
+
+.Logo:hover.Logo>img {
+  transform: scale(1.2) rotate(360deg);
+}

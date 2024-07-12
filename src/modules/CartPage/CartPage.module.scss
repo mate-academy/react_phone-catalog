@@ -1,0 +1,77 @@
+@import '../../styles/main';
+
+.CartPage {
+  margin-top: 40px;
+
+  @include screen-properties(margin-bottom, 56px, 64px, 80px);
+
+  &__container {
+    margin-top: 16px;
+
+    &>h2 {
+      margin-bottom: 32px;
+
+      @extend %h1;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include on-desctop {
+      flex-direction: row;
+      gap: 16px;
+    }
+  }
+
+  &__list {
+    flex: 2;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__total {
+    flex: 1;
+    height: min-content;
+    padding: 24px;
+    border: 1px solid $elements-color;
+
+    &>* {
+      text-align: center;
+    }
+  }
+
+  &__sum {
+    @extend %h2-desctop;
+  }
+
+  &__number {
+    color: $secondary-color;
+
+    @extend %text-body;
+  }
+
+  &__line {
+    margin: 24px 0;
+    height: 1px;
+    width: 100%;
+    background-color: $elements-color;
+  }
+
+  &__button {
+    flex: 1;
+    height: 48px;
+    width: 100%;
+    color: $white-color;
+    background-color: $accent-color;
+    cursor: pointer;
+
+    @include flex-center;
+    @extend %text-buttons;
+    @include hover(background-color, $accent-color-hover);
+  }
+}

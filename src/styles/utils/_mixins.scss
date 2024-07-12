@@ -1,0 +1,92 @@
+@import './vars';
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container {
+    width: 100%;
+    max-width: $max-content-width;
+    margin: 0 auto;
+    padding-inline: 16px;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+}
+
+@mixin on-tablet {
+  @media (min-width: $breakpoint-tablet) {
+    @content;
+  }
+}
+
+@mixin on-desctop {
+  @media (min-width: $breakpoint-desktop) {
+    @content;
+  }
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-durration;
+
+  &:hover {
+    #{$property}: $toValue;
+    transition-duration: $transition-durration;
+  }
+}
+
+@mixin hover-scale {
+  transition: transform $transition-durration;
+
+  &:hover {
+    transform: scale(1.1);
+    transition-duration: $transition-durration;
+  }
+}
+
+@mixin screen-properties($property, $def, $onTablet, $onDesktop) {
+  #{$property}: #{$def};
+
+  @include on-tablet {
+    #{$property}: #{$onTablet};
+  }
+
+  @include on-desctop {
+    #{$property}: #{$onDesktop};
+  }
+}
+
+@mixin active {
+  position: relative;
+
+  color: $white-color;
+
+  &::after {
+    content: '';
+
+    position: absolute;
+    bottom: 0;
+    height: 2px;
+    width: 100%;
+
+    background-color: $white-color;
+  }
+}
+
+@mixin vertical-line {
+  content: '';
+  width: 1px;
+  height: 100%;
+  background-color: $surface2-color;
+}
+
+@mixin animation($delay, $duration, $animation) {
+  animation-delay: $delay;
+  animation-duration: $duration;
+  animation-name: $animation;
+  animation-iteration-count: infinite;
+  animation-fill-mode: forwards;
+}

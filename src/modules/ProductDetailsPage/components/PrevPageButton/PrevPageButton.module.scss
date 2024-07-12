@@ -1,0 +1,19 @@
+@import '../../../../styles/main';
+
+.PrevPageButton {
+  display: flex;
+  justify-content: center;
+
+  width: 66px;
+  height: 16px;
+
+  color: $white-color;
+
+  @extend %text-small;
+  @include hover(color, $accent-color);
+
+  background-image: url("../../../../../public//img/icons/Chevron-Left.svg");
+  background-repeat: no-repeat;
+
+  cursor: pointer;
+}

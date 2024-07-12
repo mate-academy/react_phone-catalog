@@ -1,0 +1,135 @@
+@import '../../../../styles/main';
+
+
+.Characteristics {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+
+  color: $secondary-color;
+
+  @extend %text-small;
+
+  &__main {
+    width: 100%;
+
+    @include on-tablet {
+      width: 320px;
+    }
+  }
+
+  &__container {
+    border-bottom: 1px solid $elements-color;
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    gap: 8px;
+    margin: 8px 0 24px;
+  }
+
+  &__color {
+    height: 32px;
+    width: 32px;
+    padding: 2px;
+
+    border: 1px solid $elements-color;
+    border-radius: 50%;
+
+    cursor: pointer;
+
+    @include hover(border-color, $secondary-color);
+
+    &:disabled {
+      cursor:auto;
+      opacity: 0.5;
+      border: none;
+    }
+
+    &--active, &--active:hover {
+      border-color: $white-color;
+    }
+  }
+
+  &__color-item {
+    height: 100%;
+    width: 100%;
+    border-radius: 50%;
+  }
+
+  &__capacity {
+    height: 32px;
+    padding: 0 8px;
+
+    color: $white-color;
+    border: 1px solid $icons-color;
+
+    cursor: pointer;
+
+    @include flex-center;
+    @extend %text-body;
+    @include hover(border-color, $accent-color);
+
+    &:disabled {
+      cursor: auto;
+      opacity: 0.5;
+      border: none;
+    }
+
+    &--active, &--active:hover {
+      background-color: $white-color;
+      color: $black-color;
+      border-color: $white-color;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+    width: 100%;
+    margin-bottom: 32px;
+  }
+
+  &__id {
+    position: absolute;
+    top: 0;right: 0;
+    color: $icons-color;
+  }
+}
+
+.Price {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 32px 0 16px;
+
+  &>h2 {
+    color: $white-color;
+
+    @extend %h2-desctop;
+  }
+
+  &__regular {
+    position: relative;
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 28px;
+
+    &>p:first-child {
+      color: $secondary-color;
+    }
+
+    &>p:last-child {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: $surface1-color;
+      background-color: $secondary-color;
+      line-height: 8%;
+      overflow: hidden;
+    }
+  }
+}

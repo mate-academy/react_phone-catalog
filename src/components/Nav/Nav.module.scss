@@ -1,0 +1,29 @@
+@import '../../styles/main';
+
+.Nav {
+  display: none;
+  color: $white-color;
+
+  &__item {
+    display: flex;
+    align-items: center;
+
+    color: $secondary-color;
+
+    @extend %text-uppercase;
+    @include hover(color, $accent-color);
+  }
+
+  @include on-tablet {
+    display: flex;
+    gap: 32px;
+  }
+
+  @include on-desctop {
+    gap: 64px;
+  }
+}
+
+.active {
+  @include active;
+}

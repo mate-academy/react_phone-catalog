@@ -1,0 +1,30 @@
+@import "./utils/reset";
+@import "./utils/normalize";
+@import "./utils/vars";
+@import "./utils/styleshieet";
+@import "./utils/typography";
+@import "./utils/mixins";
+
+iframe {
+  display: none;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  box-sizing: border-box;
+}
+
+h1 {
+  position: absolute !important;
+  width: 1px !important;
+  height: 1px !important;
+  margin: -1px !important;
+  border: 0 !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+  clip: rect(0, 0, 0, 0) !important;
+  white-space: nowrap !important;
+}
