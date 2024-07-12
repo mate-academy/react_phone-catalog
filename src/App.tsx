@@ -1,15 +1,28 @@
 import './App.scss';
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navigation } from './components/Navigation/Navigation';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import { Footer } from './components/Footer/Footer';
 
-export const App = () => (
-  <div className="App">
-    <Navigation />
+export const App = () => {
+  const { phoneId, tabletId, accessoryId } = useParams();
 
-    <Outlet />
+  useEffect(() => {
+    if (phoneId || tabletId || accessoryId) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth',
+      });
+    }
+  }, [phoneId, tabletId, accessoryId]);
 
-    <Footer />
-  </div>
-);
+  return (
+    <div className="App">
+      <Navigation />
+
+      <Outlet />
+
+      <Footer />
+    </div>
+  );
+};

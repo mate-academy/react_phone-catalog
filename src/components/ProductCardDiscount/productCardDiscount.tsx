@@ -53,7 +53,9 @@ export const ProductCardDicount: React.FC<Params> = ({ product }) => {
   return (
     <div className={getClassName('product-card')}>
       <img
-        onClick={() => navigate(link)}
+        onClick={() => {
+          navigate(link);
+        }}
         src={product.image}
         alt={product.name}
         className={classNames('product-card-pic', {

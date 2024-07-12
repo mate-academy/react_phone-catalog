@@ -22,7 +22,7 @@ export const Navigation = () => {
   const { light, toggleTheme } = useContext(ThemeContext);
   const [isOpened, setIsOpened] = useState(false);
   const { liked } = useContext(LikedContext);
-  const { cartLength } = useContext(CartContext);
+  const { cartLength, cart, setCartLength } = useContext(CartContext);
 
   const getClassName = themeClass(light);
 
@@ -41,6 +41,10 @@ export const Navigation = () => {
       document.body.style.overflow = 'auto';
     }
   }, [isOpened]);
+
+  useEffect(() => {
+    setCartLength(cart.length);
+  }, [cart.length]);
 
   return (
     <header className={getClassName('header')}>
@@ -116,7 +120,9 @@ export const Navigation = () => {
               <img src={CartDark} alt="Cart" />
             )}
 
-            {!!cartLength && <p className="circle">{cartLength}</p>}
+            {!!cartLength && (
+              <p className="circle">{cartLength ? cartLength : cart.length}</p>
+            )}
           </NavLink>
         </div>
       </nav>

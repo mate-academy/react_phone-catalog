@@ -1,3 +1,5 @@
+$secondary-gray: #89939a;
+
 .carousel {
   transition: transform 300ms ease;
   overflow: hidden;
@@ -77,11 +79,19 @@
   &.is-dark {
     background-color: #3b3e4a;
     border: none;
+
+    &:hover {
+      opacity: 0.7;
+    }
   }
 
   &.is-light {
     background-color: white;
     border: 1px solid #b4bdc3;
+
+    &:hover {
+      background-color: $secondary-gray;
+    }
   }
 }
 

@@ -118,6 +118,10 @@ $dark-secondary-gray: #828282;
           margin-right: 15px;
           cursor: pointer;
 
+          &:hover {
+            opacity: 0.7;
+          }
+
           &.is-dark {
             color: $dark-white;
 
