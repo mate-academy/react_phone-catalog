@@ -60,6 +60,7 @@ export const CartPage = () => {
                             onClick={() => handleDeleteItem(item)}
                           ></div>
                           <img
+                            alt={item.name}
                             src={item.image}
                             className="cart__item--img"
                           ></img>

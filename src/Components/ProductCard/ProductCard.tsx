@@ -59,6 +59,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   const handleGeneralProduct = async () => {
     window.scrollTo(0, 0);
     onLoading(true);
+
     if (product) {
       const productGeneral = await getDetailedItems(product.category);
       const data = productGeneral.find(item => item.id === product.itemId);

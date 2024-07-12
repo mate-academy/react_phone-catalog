@@ -114,15 +114,15 @@ export const Header = ({ onDark, isDark }: Props) => {
     setQuery('');
   }, [pathname]);
 
-  const handleClearInput = () => {
-    setQuery('');
-    setSearchWith({ query: null });
-  };
-
   const inCartQuantity = (inCart as ProductGeneral[]).reduce(
     (acc: number, item: ProductGeneral) => acc + item.quantity,
     0,
   );
+
+  const handleClearInput = () => {
+    setQuery('');
+    setSearchWith({ query: null });
+  };
 
   return (
     <>

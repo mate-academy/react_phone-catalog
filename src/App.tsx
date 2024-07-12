@@ -7,7 +7,6 @@ import { useLocalStorage } from './hooks/useLocalStorage';
 
 export const App = () => {
   const preference = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
   const [isDark, setIsDark] = useLocalStorage('isDark', preference);
 
   const handleThemeClick = () => {
