@@ -10,6 +10,7 @@ import classNames from 'classnames';
 import { IconRight } from '../../Icons/IconRight';
 import { ProductsContext } from '../../../store/ProductsProvider';
 import { Skeleton } from '../../Skeleton';
+import { ThemeContext } from '../../../store/ThemeProvider';
 
 const MIN_SWIPE_REQUIRED = 40;
 
@@ -26,6 +27,7 @@ export const HeroSlider = () => {
   const minOffsetXRef = useRef(0);
   const [offsetX, setOffsetX, offsetXRef] = useStateRef(0);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const { theme } = useContext(ThemeContext);
 
   const onTouchMove = (e: MouseEvent | TouchEvent) => {
     const currentX = getTouchEventData(e).clientX;
@@ -134,7 +136,9 @@ export const HeroSlider = () => {
   const { isLoading } = useContext(ProductsContext);
 
   return (
-    <div className={style.slider}>
+    <div
+      className={classNames(style.slider, { [style.slider__darkTheme]: theme })}
+    >
       {!isLoading ? (
         <div className={style.slider__block}>
           {!isMobile && (

@@ -20,7 +20,7 @@
     display: flex;
     &:hover {
       @extend %transitionPage;
-      @include onScale();
+      @include onHover();
     }
   }
 
@@ -93,7 +93,7 @@
     }
 
     .footer__darkTheme &:hover {
-      background-color: $linkBackgroundButtonHover;
+      background-color: $actionsBackgroundButtonHover;
     }
   }
 

@@ -22,8 +22,14 @@
   }
 }
 
-@mixin onScale {
+@mixin onScale($property, $toValue) {
+  transform: scale(1.1);
+  #{$property}: $toValue;
+}
+
+@mixin onHover {
   &:hover {
+    transition: all 0.4s;
     transform: scale(1.1);
   }
 }

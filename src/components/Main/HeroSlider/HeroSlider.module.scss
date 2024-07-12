@@ -10,8 +10,6 @@
     position: relative;
     justify-content: space-between;
     margin: 0 auto;
-    // max-height: 432px;
-    // max-width: 1132px;
   }
 
   &__button {
@@ -20,6 +18,9 @@
     background-color: $backgroundButtonSliderColor;
     border: 1px solid $bordeColor;
     cursor: pointer;
+    &:hover {
+      border-color: $actionButtonHoverBorder;
+    }
   }
 
   &__arrowIcon {
@@ -73,6 +74,11 @@
   &__activeButton {
     background-color: $buttonActiveBackColor;
   }
+}
+
+.slider__darkTheme .slider__button:hover {
+  border: none;
+  background-color: $actionsBackgroundButtonHover;
 }
 
 @include onTablet {

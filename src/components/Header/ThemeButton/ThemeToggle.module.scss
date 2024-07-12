@@ -2,41 +2,54 @@
 @import '../../../styles/block/utils/mixins.scss';
 @import '../../../styles/block/utils/_placeholders.scss';
 
-.theme__area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  height: 100%;
-  cursor: pointer;
+.theme {
+  &__area {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+  }
 
-}
+  &__switch {
+    position: relative;
+    display: inline-block;
+    width: 30px;
+    height: 14px;
+    padding-bottom: 2px;
+    background-color: $textColor;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+  }
 
-.theme__switch {
+  &__switch::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: $backgroundColor;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    top: 1px;
+    left: 1px;
+  }
 
-  position: relative;
-  display: inline-block;
-  width: 30px;
-  height: 14px;
-  padding-bottom: 2px;
-  background-color: $textColor;
-  border-radius: 50px;
-  border: none;
-  cursor: pointer;
+  &__checkbox {
+    display: none;
+  }
 
-}
+  &__container {
+    width: 100%;
+    height: 100%;
+  }
 
-
-.theme__switch::after {
-  content: '';
-  position: absolute;
-  display: block;
-  background-color: $backgroundColor;
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  top: 1px;
-  left: 1px;
+  &__container:hover {
+    .theme__switch {
+      box-shadow: 0 0 18px $secondTextColor;
+    }
+  }
 }
 
 .theme__checkbox:checked + .theme__switch::after {
@@ -44,15 +57,6 @@
   @extend %transitionPage;
 }
 
-
-.theme__checkbox:checked + .theme__switch:hover {
-  box-shadow: 0 0 18px $secondTextColor;
-}
-
 .theme__checkbox + .theme__switch::after {
   @extend %transitionPage;
-}
-
-.theme__checkbox {
-  display: none;
 }

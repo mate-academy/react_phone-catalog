@@ -16,5 +16,6 @@
   box-sizing: border-box;
   &:hover {
     color: $textColor;
+    @extend %transitionPage;
   }
 }

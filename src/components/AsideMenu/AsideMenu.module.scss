@@ -37,8 +37,7 @@
     display: flex;
     height: 22px;
     width: 64px;
-    @extend %transitionPage;
-    @include onScale;
+    @include onHover();
   }
 
   &__closeButton {
@@ -118,7 +117,7 @@
     bottom: 1px;
     left: 0;
     right: 0;
-    border-bottom: 3px solid $actionButtonActiveBorder;
+    border-bottom: 3px solid $actionButtonHoverBorder;
     @include initialAnimation();
   }
 

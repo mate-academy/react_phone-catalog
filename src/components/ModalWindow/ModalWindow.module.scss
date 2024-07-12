@@ -1,6 +1,6 @@
 @use '../../styles/block/utils/_variables.scss' as *;
 @import '../../styles/block/utils/_mixins.scss';
-
+@import '../../styles/block/utils/_placeholders.scss';
 .modalWindow {
   width: 100vw;
   height: 100vh;
@@ -51,10 +51,7 @@
     cursor: pointer;
     width: 16px;
     height: 16px;
-  }
-
-  &__closeButton:hover {
-    @include onScale;
+    @include onHover;
   }
 
   &__clear,
@@ -70,10 +67,12 @@
 
   &__cancel:hover {
     background-color: #218104d2;
+    @extend %transitionPage;
   }
 
   &__clear:hover {
     background-color: #ff3a08;
+    @extend %transitionPage;
   }
 }
 
