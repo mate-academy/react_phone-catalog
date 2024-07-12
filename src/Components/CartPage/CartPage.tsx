@@ -68,11 +68,13 @@ export const CartPage = () => {
                         </div>
                         <div className="cart__item__price">
                           <div className="cart__item__buttons">
-                            <div className="button__container">
+                            <div
+                              className="button__container"
+                              onClick={() => handleQuantityChange(item, -1)}
+                            >
                               <div
                                 className="cart__icon
                                  cart__item__buttons--minus"
-                                onClick={() => handleQuantityChange(item, -1)}
                               ></div>
                             </div>
 
