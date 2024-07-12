@@ -1,0 +1,148 @@
+$grey-primary: #313237;
+$dark-white: #f1f2f9;
+$secondary-gray: #89939a;
+$dark-secondary-gray: #828282;
+
+.cart-item {
+  display: grid;
+  justify-content: space-between;
+
+  padding: 20px;
+
+  &.is-dark {
+    background-color: #161827;
+  }
+
+  &__pic {
+    height: 70px;
+
+    &.is-dark {
+      background-color: #161827;
+    }
+  }
+
+  &__delete {
+    border: none;
+    cursor: pointer;
+
+    &.is-light {
+      color: $secondary-gray;
+      background-color: white;
+    }
+
+    &.is-dark {
+      color: $dark-secondary-gray;
+      background-color: #161827;
+    }
+  }
+
+  &__title {
+    padding-top: 10px;
+    text-align: center;
+    cursor: pointer;
+
+    &.is-dark {
+      background-color: #161827;
+      color: $dark-white;
+    }
+
+    &.is-light {
+      color: $grey-primary;
+    }
+  }
+
+  &__counter {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    gap: 5px;
+
+    &.is-dark {
+      background-color: #161827;
+    }
+
+    &--button {
+      height: 30px;
+      width: 30px;
+      border: 1px solid;
+      font-size: 20px;
+      font-weight: 600;
+      cursor: pointer;
+
+      &:hover {
+        opacity: 0.7;
+      }
+
+      &:disabled {
+        opacity: 0.5;
+      }
+
+      &.is-light {
+        border-color: $dark-secondary-gray;
+        color: $grey-primary;
+      }
+
+      &.is-dark {
+        background-color: #161827;
+        color: $dark-white;
+      }
+    }
+
+    &--input {
+      height: 30px;
+      width: 30px;
+      border: none;
+      outline: none;
+      text-align: center;
+      font-size: 22px;
+
+      &::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+      &.is-light {
+        background-color: white;
+        color: $grey-primary;
+      }
+
+      &.is-dark {
+        background-color: #161827;
+        color: $dark-white;
+      }
+    }
+  }
+
+  &__price {
+    font-size: 25px;
+    font-weight: 800;
+
+    &.is-light {
+      color: $grey-primary;
+    }
+
+    &.is-dark {
+      color: $dark-white;
+      background-color: #161827;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .cart-item {
+    grid-template-columns: 10% 15% 35% 15% 10%;
+  }
+}
+
+@media (max-width: 640px) {
+  .cart-item {
+    grid-template-columns: 10% 30% 50%;
+
+    &__price {
+      grid-column: 3/-1;
+      position: relative;
+      left: 20px;
+    }
+  }
+}
