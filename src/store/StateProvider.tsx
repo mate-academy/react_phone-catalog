@@ -11,6 +11,8 @@ type StateType = {
   setActiveMenu: (v: boolean) => void;
   favorites: Product[];
   setFavorites: (v: Product[] | ((s: Product[]) => Product[])) => void;
+  imageProduct: string;
+  setImageProduct: (v: string) => void;
 };
 
 type Props = {
@@ -21,6 +23,7 @@ export const StateContext = React.createContext({} as StateType);
 
 export const StateProvider: React.FC<Props> = ({ children }) => {
   const [autoPlay, setAutoPlay] = useState(true);
+  const [imageProduct, setImageProduct] = useState('');
   const [activeMenu, setActiveMenu] = useState(false);
   const [modalWindow, setModalWindow] = useState(false);
   const [favorites, setFavorites] = useLocaleStorage<Product[]>(
@@ -38,6 +41,8 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       setAutoPlay,
       activeMenu,
       setActiveMenu,
+      imageProduct,
+      setImageProduct,
     }),
     [
       modalWindow,
@@ -48,6 +53,8 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       setAutoPlay,
       activeMenu,
       setActiveMenu,
+      imageProduct,
+      setImageProduct,
     ],
   );
 

@@ -1,6 +1,6 @@
-@use '../styles/block/utils/variables' as *;
-@import '../styles/block/utils/_mixins.scss';
-@import '../styles/block/utils/_placeholders.scss';
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/_mixins.scss';
+@import '../../styles/block/utils/_placeholders.scss';
 
 .product {
   max-width: $maxContentWidth;
@@ -60,7 +60,7 @@
   }
 
   &__activeBorderImage {
-    border-color: $borderActiveColor;
+    border-color: $secondBorderActiveColor;
   }
 
   &__smallImage {
@@ -146,11 +146,19 @@
     line-height: 21px;
     border: 1px solid $borderCapacityColor;
     padding: 7px 8px 4px;
+    &:hover {
+      border-color: $actionButtonHoverBorder;
+    }
   }
 
-  &__capacityActiveLink {
+  .product__capacityLink.product__capacityActiveLink {
+    border-color: $circleActiveColor;
     background-color: $circleActiveColor;
     color: $textColorActiveState;
+  }
+
+  .product__capacityLink.product__capacityActiveLink:hover {
+    cursor: default;
   }
 
   &__capacityList {

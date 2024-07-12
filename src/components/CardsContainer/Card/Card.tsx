@@ -5,7 +5,6 @@ import classNames from 'classnames';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import { RefObject, useContext } from 'react';
 import { ShoppingCartContext } from '../../../store/ShoppingCartProvider';
-import { availableFav } from '../../../utils/availableFav';
 import { StateContext } from '../../../store/StateProvider';
 import { IconFavorites } from '../../Icons/IconFavorites';
 import Heart from '../../../image/Favorites/heart.svg';
@@ -54,6 +53,10 @@ export const Card: React.FC<Props> = ({
     const findCart = cartItems.find(item => item.id === currentProduct.id);
 
     return !!findCart;
+  };
+
+  const availableFav = (product: Product, favorites: Product[]) => {
+    return !!favorites.find(item => item.itemId === product.itemId);
   };
 
   return (

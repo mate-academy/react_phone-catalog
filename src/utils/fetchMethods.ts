@@ -6,6 +6,6 @@ export const getProducts = (url: string) => {
   return client.get<Product[]>(`/${url}.json`);
 };
 
-export const getPhones = (type: Category) => {
+export const getGadgets = (type: Category) => {
   return client.get<Gadgets[]>(`/${type}.json`);
 };
