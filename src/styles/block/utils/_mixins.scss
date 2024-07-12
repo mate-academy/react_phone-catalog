@@ -22,7 +22,7 @@
   }
 }
 
-@mixin onScale($property, $toValue) {
+@mixin onScale($property: transform, $toValue: scale(1.1)) {
   transform: scale(1.1);
   #{$property}: $toValue;
 }

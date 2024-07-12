@@ -12,6 +12,7 @@
   }
 
   &__cardName {
+    position: relative;
     display: flex;
     align-items: flex-end;
     color: $textColor;
@@ -20,10 +21,16 @@
     font-size: 14px;
     font-weight: 600;
     line-height: 21px;
+    &:hover {
+      @extend %transitionPage;
+      text-decoration: underline;
+    }
   }
 
   &__cardImg {
     margin-bottom: 8px;
+    @extend %transitionPage;
+    @include onHover;
   }
 
   &__cardLink {

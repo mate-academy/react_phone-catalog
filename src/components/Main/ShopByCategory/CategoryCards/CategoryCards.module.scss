@@ -27,15 +27,25 @@
     transform: scale(1.07);
   }
 
-
-
   &__cardName {
+    position: relative;
     display: flex;
     color: $textColor;
     line-height: 26px;
     font-size: 20px;
     margin-bottom: 4px;
     font-weight: inherit;
+    width: max-content;
+    &::after {
+      position: absolute;
+      content: '';
+      bottom: 1px;
+      left: 1px;
+      right: 1px;
+
+      border-bottom: 1px solid $actionButtonHoverBorder;
+      @include initialAnimation();
+    }
   }
 
   &__cardQuantity {
@@ -44,6 +54,10 @@
     font-size: 14px;
     font-weight: inherit;
   }
+}
+
+.category__cardName:hover::after {
+  @include activeAnimation();
 }
 
 @include onTablet {
