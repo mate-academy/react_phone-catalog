@@ -92,12 +92,15 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (
-        dropdownRef.current && !dropdownRef.current.contains(event.target as Node)
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
       ) {
         setActiveDropdown(false);
       }
+
       if (
-        dropdownPageRef.current && !dropdownPageRef.current.contains(event.target as Node)
+        dropdownPageRef.current &&
+        !dropdownPageRef.current.contains(event.target as Node)
       ) {
         setActiveDropdownPage(false);
       }

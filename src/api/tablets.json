@@ -432,6 +432,7 @@
     "priceRegular": 999,
     "priceDiscount": 939,
     "colorsAvailable": ["spacegray", "silver"],
+    "colorsCss": ["#707070", "silver"],
     "color": "silver",
     "images": [
       "img/tablets/apple-ipad-pro-11-2021/silver/00.webp",

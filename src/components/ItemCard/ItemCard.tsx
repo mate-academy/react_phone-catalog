@@ -21,21 +21,20 @@ interface Props {
 }
 
 export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
-  const { favourites,
-     setFavourites,
-     cart,
-     setCart,
-     currentPage } = useAppContext();
+  const { favourites, setFavourites, cart, setCart, currentPage } =
+    useAppContext();
   const { productId } = useParams();
   const location = useLocation();
   const category = location.pathname.split('/')[1];
-  const [model, setModel] = useState<Phone
-  | Accessories
-  | null>(null);
+  const [model, setModel] = useState<Phone | Accessories | null>(null);
   const [mainImage, setMainImage] = useState(0);
   const firstColor = location.pathname.split('/').pop();
-  const [activeColor, setActiveColor] = useState<string | undefined>(firstColor);
-  const [startMemory, setStartMemory] = useState<string | undefined>(firstColor);
+  const [activeColor, setActiveColor] = useState<string | undefined>(
+    firstColor,
+  );
+  const [startMemory, setStartMemory] = useState<string | undefined>(
+    firstColor,
+  );
   const [loading, setLoading] = useState(false);
 
   const relatedItems = productsFromServer
@@ -44,30 +43,45 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
 
   const handleChangeColor = () => {
     const pathParts = location.pathname.split('/');
-    const secondPart = pathParts
+    let secondPart = pathParts
       .slice(2)
       .join('-')
       .split('-')
       .slice(0, -1)
       .join('-');
 
+    if (
+      secondPart.indexOf('gb') + 2 !== secondPart.length &&
+      secondPart.indexOf('gb') !== -1
+    ) {
+      secondPart = secondPart.slice(0, secondPart.indexOf('gb') + 2);
+    }
+
     return `/${pathParts[1]}/${secondPart}`;
   };
 
   const handleChangeMemory = () => {
     const pathParts = location.pathname.split('/');
-    const secondPart = pathParts
+    let secondPart = pathParts
       .slice(2)
       .join('-')
       .split('-')
-      .slice(0, -2)
+      .slice(0, -1)
       .join('-');
+
+    if (
+      secondPart.indexOf('gb') + 2 !== secondPart.length &&
+      secondPart.indexOf('gb') !== -1
+    ) {
+      secondPart = secondPart.slice(0, secondPart.indexOf('gb') + 2);
+    }
 
     return `/${pathParts[1]}/${secondPart}`;
   };
 
   const handleFindId = (id: string) => {
     const findedId = productsFromServer.find(item => item.itemId === id);
+
     return findedId?.id;
   };
 
@@ -75,7 +89,10 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   const added = cart.find(item => item.itemId === model?.id);
 
   const handleAddFavourite = () => {
-    const itemToAdd = productsFromServer.find(item => item.itemId === model?.id);
+    const itemToAdd = productsFromServer.find(
+      item => item.itemId === model?.id,
+    );
+
     if (itemToAdd) {
       if (favourites.some(item => item.id === itemToAdd.id)) {
         setFavourites(prevFavourites =>
@@ -88,7 +105,10 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
   };
 
   const handleAddCart = () => {
-    const itemToAdd = productsFromServer.find(item => item.itemId === model?.id);
+    const itemToAdd = productsFromServer.find(
+      item => item.itemId === model?.id,
+    );
+
     if (itemToAdd) {
       if (cart.some(item => item.id === itemToAdd.id)) {
         setCart(prevCart => prevCart.filter(item => item.id !== itemToAdd.id));
@@ -102,29 +122,37 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
     setLoading(true);
     const fetchData = async () => {
       let fetchedModel: Phone | Accessories | null = null;
+
       switch (category) {
         case 'phones':
           const detailedPhones = await getDetailedPhones();
+
           fetchedModel = detailedPhones.find(p => p.id === productId) || null;
           break;
         case 'tablets':
           const detailedTablets = await getDetailedTablets();
+
           fetchedModel = detailedTablets.find(t => t.id === productId) || null;
           break;
         case 'accessories':
           const detailedAccessories = await getDetailedAccessories();
-          fetchedModel = detailedAccessories.find(a => a.id === productId) || null;
+
+          fetchedModel =
+            detailedAccessories.find(a => a.id === productId) || null;
           break;
         default:
           fetchedModel = null;
       }
+
       setModel(fetchedModel);
       if (fetchedModel) {
         setActiveColor(firstColor || fetchedModel.colorsAvailable[0]);
         setStartMemory(fetchedModel.capacityAvailable[0]);
       }
+
       setLoading(false);
     };
+
     fetchData();
   }, [category, productId, firstColor]);
 
@@ -159,7 +187,8 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                       <img
                         key={image}
                         className={classNames(styles.details__image, {
-                          [styles['details__image--active']]: mainImage === index,
+                          [styles['details__image--active']]:
+                            mainImage === index,
                         })}
                         src={image}
                         alt="product"
@@ -177,21 +206,47 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                       {`ID: ${handleFindId(model.id)}`}
                     </p>
                     <div className={styles.details__items}>
-                      {model.colorsAvailable.map(color => (
-                        <Link
-                          to={`${handleChangeColor()}-${color}`}
-                          className={classNames(styles.details__wrapper, {
-                            [styles['details__wrapper--active']]: color === activeColor,
-                          })}
-                          key={color}
-                          onClick={() => setActiveColor(color)}
-                        >
-                          <span
-                            className={styles.details__color}
-                            style={{ backgroundColor: color }}
-                          ></span>
-                        </Link>
-                      ))}
+                      {model.colorsAvailable.map(color => {
+                        let colorScss;
+                        const colorURL = color.split(' ').join('-');
+
+                        if (color === 'spacegray') {
+                          colorScss = '#707070';
+                        } else if (color === 'rose gold') {
+                          colorScss = '#ffe8e5';
+                        } else if (color === 'sky blue') {
+                          colorScss = '#87cefa';
+                        } else if (color === 'starlight') {
+                          colorScss = '#f8f9ec';
+                        } else if (color === 'sierrablue') {
+                          colorScss = '#Bfdaf7';
+                        } else if (color === 'graphite') {
+                          colorScss = '#4b4e53';
+                        } else if (color === 'spaceblack') {
+                          colorScss = '#182030';
+                        } else {
+                          colorScss = color;
+                        }
+
+                        return (
+                          <Link
+                            to={`${handleChangeColor()}-${colorURL}`}
+                            className={classNames(styles.details__wrapper, {
+                              [styles['details__wrapper--active']]:
+                                color === activeColor,
+                            })}
+                            key={color}
+                            onClick={() => {
+                              return setActiveColor(color);
+                            }}
+                          >
+                            <span
+                              className={styles.details__color}
+                              style={{ backgroundColor: colorScss }}
+                            ></span>
+                          </Link>
+                        );
+                      })}
                     </div>
                   </div>
                   <div className={styles.details__type}>
@@ -204,13 +259,15 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                           to={`${handleChangeMemory()}-${memory.toLowerCase()}-${activeColor}`}
                           key={memory}
                           className={classNames(styles.details__memory, {
-                            [styles['details__memory--active']]: startMemory === memory,
+                            [styles['details__memory--active']]:
+                              startMemory === memory,
                           })}
                           onClick={() => setStartMemory(memory)}
                         >
                           <p
                             className={classNames(styles.details__amount, {
-                              [styles['details__amount--active']]: startMemory === memory,
+                              [styles['details__amount--active']]:
+                                startMemory === memory,
                             })}
                           >
                             {memory}
@@ -394,4 +451,4 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
       <Footer />
     </div>
   );
-}
+};

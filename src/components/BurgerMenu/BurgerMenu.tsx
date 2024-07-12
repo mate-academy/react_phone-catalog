@@ -15,6 +15,7 @@ export const BurgerMenu: React.FC = () => {
   };
 
   const handleOpenPage = (link: PageSection) => {
+    debugger;
     setCurrentPage(link);
   };
 
@@ -31,7 +32,7 @@ export const BurgerMenu: React.FC = () => {
   );
 
   return (
-    <div className={styles.menu}>
+    <div id="menu" className={classNames(styles.menu)}>
       <div className={styles.menu__header}>
         <a href="#" className={styles.menu__logo}>
           <img src="img/Logo.svg" alt="" />
