@@ -1,0 +1,99 @@
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url(../../../../public/fonts/Mont-Bold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 600;
+  src: url(../../../../public/fonts/Mont-SemiBold.otf);
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 400;
+  src: url(../../../../public/fonts/Mont-Regular.otf);
+}
+
+.page {
+  font-family: Mont, sans-serif;
+  letter-spacing: 0;
+}
+
+@mixin header-1 {
+  font-weight: 700;
+  font-size: 48px;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+}
+
+@mixin header-2 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 21px;
+  letter-spacing: -0.01em;
+}
+
+@mixin header-3 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin header-4 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin mobile-header-1 {
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+}
+
+@mixin mobile-header-2 {
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin mobile-header-3 {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin mobile-header-4 {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin uppercase {
+  text-transform: uppercase;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin body-text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+@mixin small-text {
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15px;
+}

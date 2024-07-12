@@ -1,0 +1,147 @@
+@import '../../../../shared/global/utils/mixins';
+@import '../../../../shared/global/globalStyles/globalStyles.scss';
+@import '../../../../shared/global/utils/vars';
+
+.menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: $white;
+  z-index: 3;
+  opacity: 0;
+  pointer-events: none;
+  height: 100vh;
+  width: 100%;
+  transform: translateX(-100%);
+  transition:
+    transform 0.3s,
+    opacity 0.3s;
+
+  @include on-desktop {
+    height: 56px;
+  }
+
+  &__navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 168px;
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    z-index: 3;
+    gap: 16px;
+    height: 48px;
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    border-bottom: 1px solid $elements-border-color;
+
+    &_logo {
+      padding: 13px 16px;
+      align-items: center;
+      justify-content: center;
+
+      @include on-desktop {
+        padding: 18px 24px;
+      }
+    }
+
+    &_logoimage {
+      display: block;
+      height: 21px;
+      width: 64px;
+
+      @include on-desktop {
+        height: 28px;
+        width: 80px;
+      }
+    }
+
+    &_right {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      height: 100%;
+
+      &_main {
+        display: none;
+
+        @include on-tablet {
+          display: flex;
+          flex-direction: row;
+          height: 100%;
+        }
+      }
+    }
+
+    &_button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      position: relative;
+
+      padding-inline: 24px;
+      border-left: 1px solid $elements-border-color;
+
+      &:hover {
+        color: $main-text-color;
+      }
+
+      &_active {
+        color: $main-text-color;
+        @include navbar-item-after;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    height: 64px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+  }
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: 100%;
+    position: relative;
+
+    padding-inline: 24px;
+    border-top: 1px solid $elements-border-color;
+    border-left: 1px solid $elements-border-color;
+
+    &:hover {
+      color: $main-text-color;
+    }
+
+    &_active {
+      color: $main-text-color;
+      @include navbar-item-after;
+    }
+  }
+}
+
+.shown {
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: all;
+}

@@ -1,0 +1,66 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.goods {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__title {
+    @include header-3;
+
+    @include on-tablet {
+      @include header-2;
+    }
+  }
+
+  &__header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  &__slider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $btns-border-color;
+    transition: border 0.3s ease;
+
+    &:hover {
+      border: 1px solid $accent-color;
+    }
+
+    &_disabled {
+      opacity: 50%;
+    }
+  }
+
+  &__button_left {
+    transform: rotate(-180deg);
+  }
+
+  &__cards_wrapper {
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+    overflow-x: auto;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}

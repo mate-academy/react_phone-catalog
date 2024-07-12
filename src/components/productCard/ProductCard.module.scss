@@ -1,0 +1,125 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.card {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid $elements-border-color;
+  background-color: $white;
+  box-sizing: border-box;
+  padding: 32px;
+  width: auto;
+  height: 439px;
+  gap: 8px;
+
+  @include on-tablet {
+    height: 512px;
+  }
+
+  @include on-desktop {
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0 1px 8px 0 rgba(107, 127, 135, 0.32);
+  }
+
+  &__img_wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  &__img {
+    display: block;
+    object-fit: contain;
+    align-items: center;
+    height: 129px;
+    overflow: hidden;
+
+    @include on-tablet {
+      height: 202px;
+    }
+
+    @include on-desktop {
+      @include hover(transform, scale(1.03));
+
+      height: 196px;
+    }
+  }
+
+  &__name {
+    margin: 0;
+    text-decoration: none;
+    color: inherit;
+    transition-duration: 0.3s;
+    margin-top: 16px;
+    max-width: 208px;
+    flex-wrap: wrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    cursor: pointer;
+
+    @include body-text;
+
+    &:hover {
+      color: $accent-color;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__price {
+    @include header-3;
+
+    &_regular {
+      @include header-3;
+      color: $elements-border-color;
+      font-weight: 600;
+      text-decoration: line-through;
+    }
+  }
+
+  &__divider {
+    display: block;
+    height: 1px;
+    background-color: $elements-border-color;
+  }
+
+  &__informartion {
+    display: flex;
+    flex-direction: column;
+    padding-block: 8px;
+
+    gap: 8px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__techChar {
+    @include small-text;
+    color: $secondary-text-color;
+  }
+
+  &__techValue {
+    @include small-text;
+    color: $main-text-color;
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 8px;
+  }
+}
