@@ -1,7 +1,7 @@
 import { Logo } from '../Icons/Logo';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { useContext, useEffect } from 'react';
-import { LangButton } from '../Header/LangButton';
+import { LangButton } from '../LangButton';
 import { IconFavorites } from '../Icons/IconFavorites';
 import { LogoCart } from '../Icons/IconCart';
 import { IconClose } from '../Icons/IconClose';
@@ -9,7 +9,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { StateContext } from '../../store/StateProvider';
 import { Pathname } from '../../enums/Pathname';
 import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
-import ThemeButton from '../Header/ThemeButton/ThemeButton';
+import ThemeButton from '../ThemeButton/ThemeButton';
 import style from './AsideMenu.module.scss';
 import data from '../../utils/NavList.json';
 import classNames from 'classnames';

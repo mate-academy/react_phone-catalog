@@ -20,7 +20,14 @@
 
   &__cardImage {
     width: 100%;
+    transition: 0.3s ease-in-out;
   }
+
+  &__cardImage:hover {
+    transform: scale(1.07);
+  }
+
+
 
   &__cardName {
     display: flex;

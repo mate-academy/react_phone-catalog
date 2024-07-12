@@ -48,7 +48,7 @@
 
     &:hover {
       @extend %transitionPage;
-      color: var(--textColor);
+      color: $textColor;
     }
   }
 
@@ -66,10 +66,9 @@
 
     &:hover {
       @extend %transitionPage;
-      color: var(--textColor);
+      color: $textColor;
     }
   }
-
 
   &__arrowUpImg {
     height: 16px;
@@ -102,6 +101,10 @@
     align-items: center;
     column-gap: 16px;
   }
+}
+
+.footer__darkTheme .footer__navLink:hover {
+  color: $backHoverBtn;
 }
 
 @include onPhone {

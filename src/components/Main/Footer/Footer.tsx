@@ -37,9 +37,9 @@ export const Footer = () => {
     >
       {!isLoading ? (
         <nav className={style.footer__navContainer}>
-          <Link to="#" className={style.footer__logoLink}>
+          <HashLink to="#" className={style.footer__logoLink}>
             <Logo className={style.footer__logoImage} />
-          </Link>
+          </HashLink>
 
           <ul className={style.footer__navList}>
             {footerNavList.map(item => (

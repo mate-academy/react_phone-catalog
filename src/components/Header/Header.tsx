@@ -1,5 +1,5 @@
-import ThemeButton from './ThemeButton/ThemeButton';
-import { LangButton } from './LangButton/LangButton';
+import ThemeButton from '../ThemeButton/ThemeButton';
+import { LangButton } from '../LangButton/LangButton';
 import { Logo } from '../Icons/Logo';
 import { LogoCart } from '../Icons/IconCart';
 import { NavList } from './NavList/NavList';

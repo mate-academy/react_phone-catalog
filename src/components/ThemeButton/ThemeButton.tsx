@@ -1,6 +1,6 @@
 /* eslint-disable */
 import { useContext } from 'react';
-import { ThemeContext } from '../../../store/ThemeProvider';
+import { ThemeContext } from '../../store/ThemeProvider';
 import style from './ThemeToggle.module.scss';
 import classNames from 'classnames';
 

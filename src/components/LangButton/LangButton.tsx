@@ -1,5 +1,5 @@
 import { ButtonHTMLAttributes, useContext } from 'react';
-import { LanguageContext } from '../../../store/LanguageProvider';
+import { LanguageContext } from '../../store/LanguageProvider';
 import style from './LangButton.module.scss';
 
 type Props = ButtonHTMLAttributes<HTMLButtonElement>;
