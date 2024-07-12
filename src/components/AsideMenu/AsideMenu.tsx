@@ -9,7 +9,7 @@ import { Link, NavLink, useLocation } from 'react-router-dom';
 import { StateContext } from '../../store/StateProvider';
 import { Pathname } from '../../enums/Pathname';
 import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
-import { NAV__LIST } from '../../constants/NAV__LIST';
+import { NAV_LIST } from '../../constants/NAV_LIST';
 import ThemeButton from '../ThemeButton/ThemeButton';
 import classNames from 'classnames';
 import style from './AsideMenu.module.scss';
@@ -55,7 +55,7 @@ export const AsideMenu = () => {
 
       <div className={style.menu__listContainer}>
         <ul className={style.menu__list}>
-          {NAV__LIST.map(item => (
+          {NAV_LIST.map(item => (
             <li className={style.menu__listItem} key={item}>
               <NavLink
                 to={

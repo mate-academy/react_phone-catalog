@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import { LanguageContext } from '../../../store/LanguageProvider';
 import style from './NavList.module.scss';
-import { NAV__LIST } from '../../../constants/NAV__LIST';
+import { NAV_LIST } from '../../../constants/NAV_LIST';
 import { NavLink } from 'react-router-dom';
 import { StateContext } from '../../../store/StateProvider';
 import classNames from 'classnames';
@@ -15,7 +15,7 @@ export const NavList = () => {
   return (
     <nav className={style.nav}>
       <ul className={style.nav__list}>
-        {NAV__LIST.map(item => (
+        {NAV_LIST.map(item => (
           <li className={style.nav__item} key={item}>
             <NavLink
               to={

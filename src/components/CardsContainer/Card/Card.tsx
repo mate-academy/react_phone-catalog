@@ -55,8 +55,8 @@ export const Card: React.FC<Props> = ({
     return !!findCart;
   };
 
-  const availableFav = (product: Product, favorites: Product[]) => {
-    return !!favorites.find(item => item.itemId === product.itemId);
+  const availableFav = (gadgets: Product, favorGadget: Product[]) => {
+    return !!favorGadget.find(item => item.itemId === gadgets.itemId);
   };
 
   return (
