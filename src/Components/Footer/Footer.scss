@@ -126,4 +126,7 @@
 
 .icon__container {
   cursor: pointer;
+  position: relative;
+
+  @include is-active
 }

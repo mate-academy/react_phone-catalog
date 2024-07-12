@@ -90,3 +90,40 @@
     cursor: pointer;
   }
 }
+
+
+@mixin is-active {
+  &::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 3px;
+    left: 100%;
+    bottom: 0;
+    background-color: var(--primary);
+    transition: width 0.5s, left 0.5s;
+
+    [data-theme="dark"] & {
+      background-color: var(--white);
+    }
+  }
+
+  &:hover::before {
+    width: 100%;
+    left: 0;
+  }
+
+  &.is-active::after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 3px;
+    left: 0;
+    bottom: 0;
+    background-color: var(--primary);
+
+    [data-theme="dark"] & {
+      background-color: var(--white);
+    }
+  }
+}

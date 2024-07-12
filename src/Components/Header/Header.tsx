@@ -208,7 +208,12 @@ export const Header = ({ onDark, isDark }: Props) => {
             </nav>
 
             <div className="mobile-menu__footer">
-              <div className="icon__container" onClick={handleLikeButton}>
+              <div
+                className={classNames('icon__container', {
+                  'is-active': pathname.includes('favorites'),
+                })}
+                onClick={handleLikeButton}
+              >
                 <a className="icon icon--favourites"></a>
                 {!!inFavourites.length && (
                   <div className="icon--favourites__number">
@@ -218,7 +223,12 @@ export const Header = ({ onDark, isDark }: Props) => {
                   </div>
                 )}
               </div>
-              <div className="icon__container" onClick={handleCartButton}>
+              <div
+                className={classNames('icon__container', {
+                  'is-active': pathname.includes('cart'),
+                })}
+                onClick={handleCartButton}
+              >
                 <a className="icon icon--cart"></a>
                 {!!inCart.length && (
                   <div className="icon--cart__number">
