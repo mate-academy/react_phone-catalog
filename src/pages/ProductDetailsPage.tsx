@@ -37,7 +37,6 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
     fetchData();
   }, [type, productId]);
 
-
   return (
     <>
       {!categoryProduct ? (

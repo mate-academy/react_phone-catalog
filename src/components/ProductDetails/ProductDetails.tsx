@@ -58,6 +58,7 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     zoom,
     cell,
   };
+
   return (
     <div
       className={classNames(style.product, {
@@ -204,7 +205,9 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             <div className={style.product__techSpecsParams} key={key}>
               <div className={style.product__shortDesription}>
                 <p className={style.product__shortDesKey}>{t(key)}</p>
-                <p className={style.product__shortDesValue}>{value ? value : '-'}</p>
+                <p className={style.product__shortDesValue}>
+                  {value ? value : '-'}
+                </p>
               </div>
             </div>
           ))}

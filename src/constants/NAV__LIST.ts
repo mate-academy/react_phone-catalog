@@ -1,1 +1,1 @@
-export const NAV__LIST = ["Home", "Phones", "Tablets", "Accessories"]
+export const NAV__LIST = ['Home', 'Phones', 'Tablets', 'Accessories'];
