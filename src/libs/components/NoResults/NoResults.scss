@@ -1,0 +1,18 @@
+@import '/src/assets/css/styles';
+
+.no-results-container {
+  align-self: flex-start;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__back-link {
+    @include transition;
+    @include text-color-on-hover;
+
+    font-size: $h2-font-size;
+    color: $secondary;
+    width: max-content;
+  }
+  }

@@ -1,0 +1,62 @@
+@import '/src/assets/css/styles';
+
+.icon-link {
+  @include flexbox-center;
+
+  height: 100%;
+  text-decoration: none;
+  padding: 24px;
+  border-left: 1px solid $elements;
+
+  @include on-tablet {
+    padding: 16px;
+  }
+
+  @include on-mobile {
+    padding: 24px 72px;
+    border: none;
+  }
+
+  &__icon-container {
+    @include flexbox-center;
+
+    position: relative;
+  }
+
+  &__mobile-menu-button {
+    display: none;
+
+    @include on-mobile {
+      display: flex;
+      align-items: center;
+      height: 100%;
+      padding-inline: 16px;
+      border-right: 1px solid $elements;
+      border-left: 1px solid $elements;
+    }
+  }
+
+  &__icon {
+    display: block;
+    height: 16px;
+    width: 16px;
+  }
+
+  &__icon-count {
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    text-align: center;
+    width: 14px;
+    height: 14px;
+    background-color: $red;
+    border: 1px solid $white;
+    border-radius: 50%;
+    overflow: hidden;
+    font-family: Mont, Arial, Helvetica, sans-serif;
+    font-size: 9px;
+    font-weight: 600;
+    line-height: 14px;
+    color: $white;
+  }
+}

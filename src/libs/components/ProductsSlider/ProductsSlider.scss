@@ -1,0 +1,68 @@
+@import '/src/assets/css/styles';
+
+.products-slider {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__slider {
+    width: 100%;
+    overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    gap: 16px;
+
+    @include on-mobile {
+      gap: 0;
+    }
+  }
+}
+
+.section-buttons {
+  @include flexbox-center-vertical;
+
+  gap: 16px;
+
+  @include on-mobile {
+    gap: 10px;
+  }
+
+  @include on-tablet {
+    gap: 10px;
+  }
+
+  &__icon {
+    @include transition;
+
+    display: block;
+    width: 32px;
+    height: 32px;
+    padding: 8px;
+    border: 1px solid $icons;
+
+    & path {
+      fill: $primary;
+    }
+
+    &--disabled {
+      border: 1px solid $elements;
+      cursor: not-allowed;
+    }
+
+    &--disabled path{
+      fill: $icons;
+    }
+
+    &:not(.section-buttons__icon--disabled):hover {
+      border: 1px solid $primary;
+    }
+  }
+}

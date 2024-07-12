@@ -1,0 +1,74 @@
+@import '/src/assets/css/styles';
+
+.nav {
+  @include flexbox-center-vertical;
+
+  height: 100%;
+
+  &__list {
+    @include flexbox-center-vertical;
+
+    height: 100%;
+    gap: 64px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+
+    @include on-mobile {
+      display: none;
+    }
+
+    @include on-tablet {
+      gap: 32px;
+    }
+  }
+
+  &__item {
+    position: relative;
+    height: 100%;
+  }
+
+  &__link{
+    @include uppercase-text;
+    @include text-color-on-hover;
+
+    display: block;
+    height: 100%;
+    color: $secondary;
+    text-decoration: none;
+    padding: 26px 0;
+    transition: color 0.3s;
+
+    @include on-mobile {
+      padding-block: 10px;
+    }
+
+    @include on-tablet {
+      padding-block: 18px;
+    }
+
+    &--active {
+    color: $primary;
+
+      &::after {
+        position: absolute;
+        display: block;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        content: '';
+        width: 100%;
+        height: 3px;
+        background-color: $primary;
+
+        @include on-mobile {
+          height: 1px;
+        }
+
+        @include on-tablet {
+          height: 2px;
+        }
+      }
+    }
+  }
+}

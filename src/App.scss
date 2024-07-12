@@ -1,1 +1,23 @@
-// not empty
+@import '/src/assets/css/styles';
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  font-family: Mont, Arial, sans-serif;
+  font-size: $body-font-size;
+  line-height: 21px;
+  scroll-behavior: smooth;
+}
+
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}

@@ -1,0 +1,50 @@
+@import '/src/assets/css/styles';
+
+.category-card {
+  @include transition;
+
+  display: flex;
+  flex-direction: column;
+  text-decoration: none;
+  gap: 24px;
+
+  &__photo {
+    @include transition;
+
+    width: 100%;
+    height: 100%;
+    max-height: 368px;
+    object-fit: contain;
+
+    @include on-mobile {
+      height: 288px;
+    }
+
+    @include on-tablet {
+      height: 187px;
+    }
+  }
+
+  &:hover{
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+  }
+
+  &__title {
+    min-width: max-content;
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 26px;
+    margin-bottom: 4px;
+    color: $primary;
+  }
+
+  &__models-count {
+    min-width: max-content;
+    color: $secondary;
+
+    @include on-tablet {
+      font-size: 16px;
+    }
+  }
+}
+

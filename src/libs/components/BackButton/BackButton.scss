@@ -1,0 +1,21 @@
+@import '/src/assets/css/styles';
+
+.back-button {
+  @include flexbox-center-vertical;
+  @include small-text;
+
+  color: $secondary;
+  text-decoration: none;
+  width: max-content;
+
+  &::before {
+    @include background-image-centering;
+
+    display: inline-block;
+    content: '';
+    width: 16px;
+    height: 16px;
+    margin-right: 4px;
+    background-image: url(../../../assets/icons/arrow-left.svg);
+  }
+}

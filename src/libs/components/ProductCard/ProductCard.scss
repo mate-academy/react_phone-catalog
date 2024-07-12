@@ -1,0 +1,62 @@
+@import '/src/assets/css/styles';
+
+.product-card {
+  @include transition;
+
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 272px;
+  border: 1px solid $elements;
+  padding: 32px 24px 24px;
+
+  @include on-mobile {
+    flex: 1 0 100%;
+  }
+
+  &:hover {
+    box-shadow: 0 0 15px rgba(33,33,33,.2);
+  }
+
+  &__photo-link {
+    display: flex;
+    align-self: center;
+    width: 100%;
+    max-width: 208px;
+    margin-bottom: 24px;
+    object-position: center;
+    object-fit: contain;
+
+    @include on-mobile {
+      max-width: 158px;
+    }
+  }
+
+  &__photo {
+    width: 100%;
+    object-fit: contain;
+    aspect-ratio: 1 / 1;
+    align-self: center;
+  }
+
+  &__title {
+    @include transition;
+
+    min-height: 42px;
+    height: 42px;
+    font-size: $body-font-size;
+    font-weight: 500;
+    color: $primary;
+    margin-bottom: 6.5px;
+    text-decoration: none;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+
+  &__price {
+    margin-bottom: 6px;
+  }
+}

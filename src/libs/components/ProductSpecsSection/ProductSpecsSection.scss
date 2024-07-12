@@ -1,0 +1,15 @@
+@import '/src/assets/css/styles';
+
+.product-specs {
+  display: flex;
+  flex-direction: column;
+
+  &__title {
+    @include h2-text;
+
+    color: $primary;
+    padding-bottom: 16px;
+    margin-bottom: 25px;
+    border-bottom: 1px solid $elements;
+  }
+}
