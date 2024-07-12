@@ -64,7 +64,7 @@ export const ProductDetailsPage: React.FC = () => {
           foundProduct.capacityAvailable &&
           !!foundProduct.capacityAvailable
         ) {
-          setSelectedCapacity(foundProduct.capacityAvailable[0]);
+          setSelectedCapacity(foundProduct.capacity);
         }
       } catch (err) {
         // eslint-disable-next-line no-console
@@ -106,6 +106,15 @@ export const ProductDetailsPage: React.FC = () => {
 
       navigate(`/${category}/${newProductId}`);
       setSelectedColor(color);
+    }
+  };
+
+  const handleCapChange = (cap: string) => {
+    if (product) {
+      const newProductId = `${namespaceId}-${cap}-${selectedColor}`;
+
+      navigate(`/${category}/${newProductId}`);
+      setSelectedCapacity(cap);
     }
   };
 
@@ -236,7 +245,7 @@ export const ProductDetailsPage: React.FC = () => {
                     className={classNames('capacity-box__mem', {
                       'cap-selected': selectedCapacity === cap,
                     })}
-                    onClick={() => setSelectedCapacity(cap)}
+                    onClick={() => handleCapChange(cap)}
                   >
                     {cap}
                   </div>

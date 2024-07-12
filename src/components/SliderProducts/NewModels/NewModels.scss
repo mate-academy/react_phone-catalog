@@ -95,26 +95,16 @@
     height: 108px;
 
     @include on-tablet {
-      // width: 173px;
       height: 181px;
     }
 
     @include on-desktop-small {
-      // width: 208px;
       height: 196px;
     }
 
     &--img {
       width: auto;
       height: 100%;
-
-      // @include on-tablet {
-      //   height: 181px;
-      // }
-
-      // @include on-desktop-small {
-      //   height: 196px;
-      // }
 
       @include hover(transform, scale(1.1));
     }

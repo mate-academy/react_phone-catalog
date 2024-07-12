@@ -6,6 +6,7 @@ import React, { useState } from 'react';
 import { Sort } from '../../types/Sort';
 import { sortProducts } from '../../utils/heplerFunctions';
 import { Gadget } from '../../types/Gadget';
+import { PaginationProduct } from '../Pagination';
 
 type Props = {
   products: Gadget[];
@@ -15,6 +16,31 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
   const [isSortActive, setIsSortActive] = useState(false);
   const [isPagActive, setIsPagActive] = useState(false);
   const [sortCriteria, setSortCriteria] = useState<Sort>(Sort.BY_YEAR);
+  const [itemsPerPage, setItemsPerPage] = useState(products.length);
+  const [currPage, setCurrPage] = useState(1);
+
+  const numOfPages = Math.ceil(products.length / itemsPerPage);
+  const total = products.length;
+
+  const setItems = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
+    const value = event.currentTarget.getAttribute('data-value');
+    // eslint-disable-next-line max-len
+    const newItemsPerPage = value === 'all' ? products.length : parseInt(value || '4');
+
+    setItemsPerPage(newItemsPerPage);
+    setCurrPage(1);
+    setIsPagActive(false);
+  };
+
+  const setPage = (page: number) => {
+    if (page === currPage) {
+      return;
+    }
+
+    if (page >= 1 && page <= numOfPages) {
+      setCurrPage(page);
+    }
+  };
 
   const onSortTrigger = () => {
     setIsSortActive(!isSortActive);
@@ -31,7 +57,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     setIsSortActive(false);
   };
 
-  const sortedProductList = sortProducts(products, sortCriteria);
+  const sortedProductList = sortProducts(products, sortCriteria).slice(
+    (currPage - 1) * itemsPerPage,
+    currPage * itemsPerPage
+  );
 
   return (
     <div className="products">
@@ -88,7 +117,9 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           <p className="dropdown__label">Items on page</p>
 
           <div className="dropdown__box">
-            <span className="dropdown__box--text">4</span>
+            <span className="dropdown__box--text">
+              {itemsPerPage === products.length ? 'All' : itemsPerPage}
+            </span>
             <button
               className="dropdown__box--trigger"
               onClick={onPagTrigger}
@@ -111,10 +142,32 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
           }
           )}
           >
-            <li className="dropdown__options--option" data-value="4">4</li>
-            <li className="dropdown__options--option" data-value="8">8</li>
-            <li className="dropdown__options--option" data-value="16">16</li>
-            <li className="dropdown__options--option" data-value="all">
+            <li
+              className="dropdown__options--option"
+              data-value="4"
+              onClick={setItems}
+            >
+              4
+            </li>
+            <li
+              className="dropdown__options--option"
+              data-value="8"
+              onClick={setItems}
+            >
+              8
+            </li>
+            <li
+              className="dropdown__options--option"
+              data-value="16"
+              onClick={setItems}
+            >
+              16
+            </li>
+            <li
+              className="dropdown__options--option"
+              data-value="all"
+              onClick={setItems}
+            >
               All
             </li>
           </ul>
@@ -127,6 +180,14 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
             gadget={product}
           />
         ))}
+      </div>
+      <div className="products__pagination pagination">
+        <PaginationProduct
+          total={total}
+          perPage={itemsPerPage}
+          currentPage={currPage}
+          onPageChange={setPage}
+        />
       </div>
     </div>
   );

@@ -15,6 +15,22 @@
 
     grid-column: 1 / -1;
     gap: 40px;
+    margin-bottom: $margin-bottom-mobile;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 64px;
+
+    grid-column: 1 / -1;
   }
 }
 
@@ -88,5 +104,4 @@
     }
   }
 }
-
 

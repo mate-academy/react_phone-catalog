@@ -92,8 +92,8 @@ export const HotPrices: React.FC = () => {
             },
           }}
           navigation={{
-            nextEl: '.hotprices-swiper-btn__next',
-            prevEl: '.hotprices-swiper-btn__prev',
+            nextEl: '.hotprices__swiper-btn__next',
+            prevEl: '.hotprices__swiper-btn__prev',
           }}
           className="hotprices__list"
         >
