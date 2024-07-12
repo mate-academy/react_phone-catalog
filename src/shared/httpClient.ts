@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import { Categories } from '../types/Categories';
 import { Product } from '../types/Product';
-import { ProductsDetails } from '../types/ProductsDetails';
+import { ProductDetails } from '../types/ProductDetails';
 
 // const BASE_API_URL =
 //   'https://raw.githubusercontent.com/oksanatytanych/react_phone-catalog/master/public/';
@@ -42,11 +42,31 @@ export async function getAccessories(): Promise<Product[]> {
   );
 }
 
-export async function getProductDetails(
-  productId: string,
-): Promise<ProductsDetails> {
-  return fetch(`${BASE_API_URL}/products/${productId}.json`).then(
+export async function getCategoryDetails(
+  category: string,
+): Promise<ProductDetails[]> {
+  return fetch(`${BASE_API_URL}/${category}.json`, { mode: 'no-cors' }).then(
     handleResponse,
+  );
+}
+
+export async function getProductDetails(
+  category: string,
+  productId: string,
+): Promise<ProductDetails | null> {
+  const product = getCategoryDetails(category).then(items =>
+    items.find(item => item.id === productId),
+  );
+
+  return (await product) || null;
+}
+
+export async function getDetailsList(
+  category: string,
+  id: string,
+): Promise<ProductDetails[]> {
+  return getCategoryDetails(category).then(items =>
+    items.filter(item => item.namespaceId === id),
   );
 }
 

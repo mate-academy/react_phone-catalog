@@ -6,6 +6,7 @@
 
   &__title {
     margin-bottom: 24px;
+    color: $white-color;
 
     @extend %h2;
   }
@@ -41,7 +42,7 @@
   & div[class*="swiper-button-prev"],
   & div[class*="swiper-button-next"] {
     position: absolute;
-    top: 36px;
+    top: 24px;
 
     width: 32px;
     height: 32px;

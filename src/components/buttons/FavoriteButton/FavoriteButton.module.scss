@@ -7,9 +7,11 @@
 
   @include flex-center;
   @include hover(background-color, $icons-color);
+  @include hover(cursor, pointer);
 
-  &:hover {
-    cursor: pointer;
+  &--big {
+    height: 48px;
+    width: 48px;
   }
 
   &--isFavorite {

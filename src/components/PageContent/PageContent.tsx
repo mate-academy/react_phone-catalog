@@ -7,10 +7,10 @@ import { FILTER_BY, SORT_BY } from './constants';
 import { sortFunction } from './helpers/sortFunction';
 import { Product } from '../../types/Product';
 
-import { DropDown } from './components/DropDown';
+import { DropDown } from '../DropDown';
 import { ProductsList } from './components/ProductsList';
 import { Pagination } from './components/Pagination';
-import { NoResults } from './components/NoResults';
+import { NoResults } from '../NoResults';
 import { Loader } from '../Loader/Loader';
 import { Breadcrumbs } from '../Breadcrumbs';
 
@@ -100,11 +100,13 @@ export const PageContent: React.FC<Props> = ({
     <div className={classes.PageContent} ref={elementRef}>
       <Breadcrumbs />
 
-      {!products.length && !isLoading ? (
-        <NoResults product={title} />
-      ) : (
+      {!products.length && !isLoading && (
+        <NoResults title={`There are no ${title} yet`} />
+      )}
+
+      {products.length > 0 && !isLoading && (
         <>
-          <h1>{title}</h1>
+          <h2>{title}</h2>
           <p className={classes.PageContent__quantity}>
             {`${products.length} model${products.length === 1 ? '' : 's'}`}
           </p>

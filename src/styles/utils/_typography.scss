@@ -1,7 +1,6 @@
 @import './mixins';
 
 %h1 {
-  // font-family: Mont, sans; !!!
   font-family: Mont, sans-serif;
   font-size: 32px;
   font-weight: 800;
@@ -25,6 +24,14 @@
     font-size: 32px;
     line-height: 41px;
   }
+}
+
+%h2-desctop {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
 }
 
 %h3 {

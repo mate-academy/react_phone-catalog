@@ -9,11 +9,8 @@
   color: $white-color;
   background-color: $accent-color;
 
-  @extend %text-buttons;
-
   cursor: pointer;
 
-  &:hover {
-    background-color: $accent-color-hover;
-  }
+  @extend %text-buttons;
+  @include hover(background-color, $accent-color-hover);
 }

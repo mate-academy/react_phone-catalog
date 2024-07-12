@@ -20,18 +20,17 @@ export const HomePage = () => {
 
   return (
     <div className={classes.HomePage}>
-      <section className={classes.HomePage__top}>
-        <h1 className={classes.HomePage__title}>
-          Welcome to Nice Gadgets store!
-        </h1>
+      <h1>Product Catalog</h1>
 
+      <section className={classes.HomePage__top}>
+        <h2 className={classes.HomePage__title}>
+          Welcome to Nice Gadgets store!
+        </h2>
         <Carousel />
       </section>
 
       <ProductsSlider title="Brand new models" items={brandNewList} />
-
       <ShopByCategory />
-
       <ProductsSlider title="Hot prices" items={hotPriceList} />
     </div>
   );

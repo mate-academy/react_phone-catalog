@@ -33,9 +33,7 @@
     &--move {
       background-color: $surface2-color;
 
-      &:hover {
-        background-color: $icons-color;
-      }
+      @include hover(background-color, $icons-color);
 
       &:disabled {
         border: 1px solid $surface2-color;
@@ -47,16 +45,12 @@
       color: $white-color;
       background-color: $surface1-color;
 
-      &:hover {
-        background-color: $elements-color;
-      }
+      @include hover(background-color, $elements-color);
 
       &--active {
         background-color: $accent-color;
 
-        &:hover {
-          background-color: $accent-color-hover;
-        }
+        @include hover(background-color, $accent-color-hover);
       }
     }
   }

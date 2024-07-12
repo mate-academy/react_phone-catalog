@@ -13,9 +13,7 @@
     height: 100%;
   }
 
-  &:hover {
-    background-color: $icons-color;
-  }
+  @include hover(background-color, $icons-color);
 
   &:disabled {
     border: 1px solid $surface2-color;

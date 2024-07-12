@@ -1,6 +1,7 @@
 @import './styles/main';
 
 .App {
+  min-width: 320px;
   color: $white-color;
   background-color: $black-color;
 
@@ -18,14 +19,14 @@
     display: flex;
     flex-direction: column;
 
-    min-width: 320px;
+    // min-width: 320px;
     max-width: 1440px;
     min-height: 100vh;
   }
 
   &__content {
     flex: 1;
-    
+
     @include container;
   }
 }

@@ -18,6 +18,7 @@ export const TabletsPage = () => {
 
   return (
     <div>
+      <h1>Tablet page</h1>
       <PageContent products={tablet} title="Tablets" />
     </div>
   );

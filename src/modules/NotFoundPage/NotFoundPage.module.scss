@@ -1,0 +1,131 @@
+@import '../../styles/main';
+
+$anims: float, floatReverse, float2, floatReverse2;
+$easeSmooth: cubic-bezier(0.39, 0.57, 0.28, 0.99);
+$color: #595959;
+
+.container {
+  font-size: 20px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: $black-color;
+  color: $white-color;
+  font-family: arial, sans-serif;
+  overflow: hidden;
+}
+
+.content {
+  position: relative;
+  width: 80vw;
+  max-width: 600px;
+  margin: 20px;
+  background: $white-color;
+  padding: 60px 40px;
+  text-align: center;
+  border: 1px solid $accent-color;
+  box-shadow: -10px 10px 57px -12px $accent-color-hover;
+  opacity: 0;
+  animation: apparition 0.8s 1.2s $easeSmooth forwards;
+
+  p {
+    @extend %h4;
+
+    margin-top: 0;
+    margin-bottom: 0.6rem;
+    letter-spacing: 0.1rem;
+    color: $black-color;
+  }
+
+  &__button {
+    margin: 0 auto;
+    margin-top: 60px;
+    max-width: 400px;
+  }
+}
+
+.srtong {
+  @extend %h2;
+}
+
+.particle {
+  position: absolute;
+  display: block;
+  pointer-events: none;
+
+  /* stylelint-disable */
+  @for $i from 1 through 80 {
+    &:nth-child(#{$i}) {
+      $size: random(20) + 10;
+      $blur: $i * 0.02;
+      $speed: random(20)+20;
+      $delay: random(10) * 0.1;
+      $anim: nth($anims, random(length($anims)));
+
+      top: random(100) / (100 + $size / 8) * 100%;
+      left: random(100) / (100 + $size / 10) * 100%;
+      font-size: $size + px;
+      filter: blur((#{$blur}) + px);
+      animation: $speed + s $anim infinite;
+    }
+  }
+  /* stylelint-enable */
+}
+
+@keyframes apparition {
+  from {
+    opacity: 0;
+    transform: translateY(100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(180px);
+  }
+}
+
+@keyframes float-reverse-first {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-180px);
+  }
+}
+
+@keyframes float2 {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(28px);
+  }
+}
+
+@keyframes float-reverse-second {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-28px);
+  }
+}

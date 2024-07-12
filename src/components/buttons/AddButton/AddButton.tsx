@@ -1,43 +1,44 @@
 import React, { useContext } from 'react';
-
 import classNames from 'classnames';
-
-import { Product } from '../../../types/Product';
 import { GlobalContext } from '../../../GlobalContext';
-
 import classes from './AddButton.module.scss';
 
 type Props = {
-  product: Product;
+  id: string;
+  bigButton?: boolean;
 };
 
-export const AddButton: React.FC<Props> = ({ product }) => {
-  const { cart, dispatch } = useContext(GlobalContext);
-  const isProductInCart = cart.some(item => item.id === product.id);
+export const AddButton: React.FC<Props> = ({ id, bigButton }) => {
+  const { cart, dispatch, products } = useContext(GlobalContext);
+  const product = products.find(item => item.itemId === id);
+
+  const isProductInCart = cart.some(item => item.id === product?.id);
 
   const addToCart = () => {
-    const newProduct = {
-      ...product,
-      amount: 1,
-    };
-    const index = cart.findIndex(item => item.id === newProduct.id);
+    const index = cart.findIndex(item => item.id === product?.id);
 
-    if (index === -1) {
-      dispatch({ type: 'ADD_TO_CART', payload: newProduct });
-    } else {
-      dispatch({ type: 'DELETE_FROM_CART', payload: newProduct });
+    if (product) {
+      if (index === -1) {
+        dispatch({ type: 'ADD_TO_CART', payload: { ...product, amount: 1 } });
+      } else {
+        dispatch({
+          type: 'DELETE_FROM_CART',
+          payload: { ...product, amount: 1 },
+        });
+      }
     }
   };
 
   return (
     <button
       className={classNames(classes.AddButton, {
+        [classes['AddButton--big']]: bigButton,
         [classes['AddButton--inCart']]: isProductInCart,
       })}
       type="button"
       onClick={addToCart}
     >
-      {isProductInCart ? 'Added to cart' : 'Add to cart'}
+      {isProductInCart ? 'Added' : 'Add to cart'}
     </button>
   );
 };

@@ -1,16 +1,17 @@
-@import '../../../../styles/main';
+@import '../../styles/main';
 
 .NoResults {
   flex: 1;
   flex-direction: column;
   gap: 20px;
+  margin: 40px 0;
 
   @include flex-center;
 
   &__title {
-    margin-top: 40px;
+    color: $white-color;
 
-    @extend %h1;
+    @extend %h2;
   }
 
   &__img {
@@ -19,7 +20,7 @@
 
   &__button {
     width: 100%;
-  
+
     @include on-tablet {
       width: 320px;
     }

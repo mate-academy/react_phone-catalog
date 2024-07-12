@@ -27,8 +27,8 @@ export const getPagination: Pagination = (
   const leftSiblingIndex = Math.max(currentPage - siblingCount, 1);
   const rightSiblingIndex = Math.min(currentPage + siblingCount, totalCount);
 
-  const shouldShowLeftDots = leftSiblingIndex > 2;
-  const shouldShowRightDots = rightSiblingIndex < totalCount - 2;
+  const shouldShowLeftDots = leftSiblingIndex > 3;
+  const shouldShowRightDots = rightSiblingIndex < totalCount - 4;
 
   const firstPageIndex = 1;
   const lastPageIndex = totalCount;

@@ -1,11 +1,7 @@
-import {
-  HashRouter as Router,
-  Routes,
-  Route,
-  Navigate,
-} from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 
 import { App } from './App';
+
 import { HomePage } from './modules/HomePage';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
@@ -13,6 +9,7 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { FavoritePage } from './modules/FavoritePage';
 import { CartPage } from './modules/CartPage';
 import { ProductDetailsPage } from './modules/ProductDetailsPage';
+import { NotFoundPage } from './modules/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -25,16 +22,22 @@ export const Root = () => (
           <Route path=":itemId" element={<ProductDetailsPage />} />
         </Route>
 
-        <Route path="tablets" element={<TabletsPage />} />
+        <Route path="tablets">
+          <Route index element={<TabletsPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
 
-        <Route path="accessories" element={<AccessoriesPage />} />
+        <Route path="accessories">
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":itemId" element={<ProductDetailsPage />} />
+        </Route>
 
         <Route path="favorites" element={<FavoritePage />} />
 
         <Route path="cart" element={<CartPage />} />
       </Route>
 
-      <Route path="*" element={<Navigate to="/" replace />} />
+      <Route path="*" element={<NotFoundPage />} />
     </Routes>
   </Router>
 );

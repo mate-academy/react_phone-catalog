@@ -1,0 +1,20 @@
+@import '../../../../styles/main';
+
+.Details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  color: $white-color;
+
+  @extend %text-small;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+
+    &>p:first-child {
+      color: $secondary-color;
+    }
+  }
+}

@@ -9,10 +9,15 @@ export const Footer = () => {
   return (
     <footer className={classes.Footer}>
       <div className={classes.Footer__container}>
-        <Logo bigLogo />
+        <Logo />
         <ul className={classes.Footer__list}>
           <li>
-            <a href="!#" className={classes.Footer__link}>
+            <a
+              href="https://github.com/oksanatytanych"
+              target="_blank"
+              className={classes.Footer__link}
+              rel="noreferrer"
+            >
               Github
             </a>
           </li>

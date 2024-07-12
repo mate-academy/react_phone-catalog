@@ -1,4 +1,4 @@
-@import '../../../../styles/main';
+@import '../../styles/main';
 
 .DropDown {
   display: flex;
@@ -23,20 +23,17 @@
     background-color: $surface2-color;
     border: 1px solid $surface2-color;
 
-    background-image: url('../../../../../public/img/icons/Chevron-Down.svg');
+    background-image: url('../../../public/img/icons/Chevron-Down.svg');
     background-repeat: no-repeat;
     background-position: center right 12px;
 
     cursor: pointer;
 
     @extend %text-buttons;
+    @include hover(border-color, $icons-color);
 
     &--open {
-      background-image: url('../../../../../public/img/icons/Chevron-Up.svg');
-    }
-
-    &:hover {
-      border-color: $icons-color;
+      background-image: url('../../../public/img/icons/Chevron-Up.svg');
     }
 
     &:focus {
@@ -50,17 +47,35 @@
 
   &__list {
     position: absolute;
-    padding: 8px 0;
+    visibility: hidden;
+    z-index: 10;
+    max-height: 0;
     width: 100%;
-    background-color: $black-color;
-    border: 1px solid $elements-color;
+    padding: 8px 0;
+
+    opacity: 0;
+    transition: max-height 0.6s ease;
+
+    &--open {
+      visibility: visible;
+      padding: 8px 0;
+
+      height: auto;
+      max-height: 500px;
+
+      background-color: $black-color;
+      border: 1px solid $elements-color;
+
+      opacity: 1;
+      transition: max-height 0.3s, opacity 0.4s, visibility 0.5s ease;
+    }
   }
 
   &__item {
     padding: 6px 12px;
     width: 100%;
-    color: $white-color;
     text-align: left;
+    color: $secondary-color;
 
     @extend %text-body;
 
@@ -68,9 +83,8 @@
       color: $accent-color;
     }
 
-    &:hover {
-      background-color: $surface2-color;
-    }
+    @include hover(color, $white-color);
+    @include hover(background-color, $surface2-color);
   }
 }
 

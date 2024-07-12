@@ -1,0 +1,46 @@
+@import '../../../../styles/main';
+
+.About {
+  color: $white-color;
+
+  &>h3 {
+    @extend %h3;
+
+    margin-bottom: 16px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding-top: 32px;
+    border-top: 1px solid $elements-color;
+  }
+
+  &__title {
+    @extend %h3;
+
+    margin-bottom: 16px;
+  }
+
+  &__text-container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__text {
+    color: $secondary-color;
+
+    @extend %text-body;
+  }
+
+
+  @include on-tablet {
+    grid-column: 1 / 3;
+  }
+
+  @include on-desctop {
+    grid-column: 1 / 2;
+  }
+}

@@ -1,8 +1,6 @@
-/* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext } from 'react';
 import classNames from 'classnames';
 
-import { Product } from '../../../types/Product';
 import { GlobalContext } from '../../../GlobalContext';
 import { Icon } from '../../Icon';
 import { IconList } from '../../Icon/styles/IconList';
@@ -10,20 +8,26 @@ import { IconList } from '../../Icon/styles/IconList';
 import classes from './FavoriteButton.module.scss';
 
 type Props = {
-  product: Product;
+  id: string;
+  bigButton?: boolean;
 };
 
-export const FavoriteButton: React.FC<Props> = ({ product }) => {
-  const { favourites, dispatch } = useContext(GlobalContext);
-  const isFavorite = favourites.some(item => item.id === product.id);
+export const FavoriteButton: React.FC<Props> = ({ id, bigButton }) => {
+  const { favourites, dispatch, products } = useContext(GlobalContext);
+  const isFavorite = favourites.some(item => item.itemId === id);
+  const product = products.find(item => item.itemId === id);
 
-  const checkFavoriteList = () =>
-    dispatch({ type: 'SET_FAVOURITE', payload: product });
+  const checkFavoriteList = () => {
+    if (product) {
+      dispatch({ type: 'SET_FAVOURITE', payload: product });
+    }
+  };
 
   return (
     <button
       className={classNames(classes.FavoriteButton, {
         [classes['FavoriteButton--isFavorite']]: isFavorite,
+        [classes['FavoriteButton--big']]: bigButton,
       })}
       type="button"
       onClick={checkFavoriteList}

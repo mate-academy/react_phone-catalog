@@ -65,24 +65,26 @@ export const DropDown: React.FC<Props> = ({
         </button>
 
         <div className={classes['DropDown__list-wrapper']}>
-          {open && (
-            <ul className={classes.DropDown__list}>
-              {options.map(option => (
-                <li key={option.key}>
-                  <button
-                    type="button"
-                    className={classNames(classes.DropDown__item, {
-                      [classes['DropDown__item--selected']]:
-                        selectedOption?.key === option.key,
-                    })}
-                    onClick={() => handleSelectOption(option)}
-                  >
-                    {option.name}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          )}
+          <ul
+            className={classNames(classes.DropDown__list, {
+              [classes['DropDown__list--open']]: open,
+            })}
+          >
+            {options.map(option => (
+              <li key={option.key}>
+                <button
+                  type="button"
+                  className={classNames(classes.DropDown__item, {
+                    [classes['DropDown__item--selected']]:
+                      selectedOption?.key === option.key,
+                  })}
+                  onClick={() => handleSelectOption(option)}
+                >
+                  {option.name}
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
     </div>

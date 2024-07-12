@@ -36,4 +36,6 @@
   width: 16px;
   height: 16px;
   background-image: url('../../../public/img/icons/Home.svg');
+
+  @include hover (background-image, url('../../../public/img/icons/Home-hover.svg'));
 }

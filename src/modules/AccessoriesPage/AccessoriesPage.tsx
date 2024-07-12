@@ -18,6 +18,7 @@ export const AccessoriesPage = () => {
 
   return (
     <div>
+      <h1>Accessories page</h1>
       <PageContent products={accessory} title="Accessories" />
     </div>
   );

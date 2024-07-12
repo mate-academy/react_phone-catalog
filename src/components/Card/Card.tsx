@@ -66,8 +66,8 @@ export const Card: React.FC<Props> = ({ product }) => {
       </div>
 
       <div className={classes.Card__buttons}>
-        <AddButton product={product} />
-        <FavoriteButton product={product} />
+        <AddButton id={product.itemId} />
+        <FavoriteButton id={product.itemId} />
       </div>
     </article>
   );

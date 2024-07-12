@@ -14,6 +14,8 @@ export enum IconList {
   home = 'Home',
   menu = 'Menu',
   minus = 'Minus',
+  minusDisabled = 'Minus-disabled',
   plus = 'Plus',
+  plusDisabled = 'Plus-disabled',
   search = 'Search',
 }

@@ -1,17 +1,14 @@
 import { Link } from 'react-router-dom';
-import cn from 'classnames';
-
 import styles from './Logo.module.scss';
 
 type Props = {
-  bigLogo?: boolean;
   onClick?: () => void;
 };
 
-export const Logo: React.FC<Props> = ({ bigLogo = false, onClick }) => (
+export const Logo: React.FC<Props> = ({ onClick }) => (
   <Link to="/">
     <button type="button" onClick={onClick}>
-      <div className={cn(styles.Logo, { [styles['Logo--big']]: bigLogo })}>
+      <div className={styles.Logo}>
         <img src="img/icons/Logo.png" className={styles.Logo__img} alt="Logo" />
       </div>
     </button>
