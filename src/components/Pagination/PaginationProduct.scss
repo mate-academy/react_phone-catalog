@@ -1,6 +1,14 @@
 @import '../../styles/common';
 
 .pagination {
+    &--btn-next {
+      margin-left: 8px;
+    }
+
+    &--btn-prev {
+      margin-right: 8px;
+    }
+
     &--btn-prev,
     &--btn-next {
       display: flex;
@@ -21,13 +29,6 @@
       }
     }
 
-    &--btn-next {
-      margin-left: 8px;
-    }
-
-    &--btn-prev {
-      margin-right: 8px;
-    }
 
   &__number {
     display: flex;

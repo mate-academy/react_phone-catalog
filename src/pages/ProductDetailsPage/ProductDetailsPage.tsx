@@ -12,6 +12,7 @@ import classNames from 'classnames';
 // eslint-disable-next-line max-len
 import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
 import { COLOR_MAP } from '../../services/colors';
+import { normalizeColor } from '../../utils/heplerFunctions';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -101,20 +102,23 @@ export const ProductDetailsPage: React.FC = () => {
 
   const handleColorChange = (color: string) => {
     if (product) {
-      const normalizedColor = color.replace(/\s+/g, '-');
+      const normalizedColor = normalizeColor(color);
       const newProductId = `${namespaceId}-${capacity}-${normalizedColor}`;
 
-      navigate(`/${category}/${newProductId}`);
       setSelectedColor(color);
+      navigate(`/${category}/${newProductId}`);
     }
   };
 
   const handleCapChange = (cap: string) => {
     if (product) {
-      const newProductId = `${namespaceId}-${cap}-${selectedColor}`;
+      const normalizedColor = normalizeColor(selectedColor);
+      const newProductId = `${namespaceId}-${cap}-${normalizedColor}`;
 
-      navigate(`/${category}/${newProductId}`);
+      // eslint-disable-next-line no-console
+      console.log(newProductId);
       setSelectedCapacity(cap);
+      navigate(`/${category}/${newProductId}`);
     }
   };
 
@@ -205,19 +209,17 @@ export const ProductDetailsPage: React.FC = () => {
               </div>
               <div className="product-details__colors--cont colors-cont">
                 {colorsAvailable.map((color: string, index: number) => {
-                  const normalizedColor = color
-                    .replace(/\s+/g, '')
-                    .toLowerCase();
+                  const normalizedColor = normalizeColor(color);
 
                   return (
                     <div
                       key={index}
                       className={classNames('colors-cont__color', {
-                        selected: selectedColor === color,
+                        selected: selectedColor === normalizedColor,
                       })}
                       style={{
                         backgroundColor:
-                          selectedColor === color
+                          selectedColor === normalizedColor
                             ? COLOR_MAP[normalizedColor]
                             : '#3B3E4A',
                       }}
