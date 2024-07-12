@@ -8,6 +8,7 @@ interface FavouritesPageProps {
   setLikeItems: (value: (prevItems: CardPhone[]) => CardPhone[]) => void;
   addCartItems: (a: CardPhone) => void;
   cartItems: CardPhone[];
+  totalItems: number;
 }
 
 export const FavouritesPage = ({
@@ -15,6 +16,7 @@ export const FavouritesPage = ({
   setLikeItems,
   addCartItems,
   cartItems,
+  totalItems,
 }: FavouritesPageProps) => {
   const deleteFavoritesItem = (item: CardPhone) => {
     setLikeItems(prevLikeItems => {
@@ -38,22 +40,48 @@ export const FavouritesPage = ({
     <>
       <header className="header">
         <div className="header__navlist">
-          <a href="#">
-            <div className="header--logo"></div>
-          </a>
+          <div className="header--logo"></div>
           <ul className="header__list">
-            <Link to="/" className="header__href">
-              <li className="header__item">home</li>
-            </Link>
-            <Link to="/phones" className="header__href">
-              <li className="header__item">phones</li>
-            </Link>
-            <Link to="/tablets" className="header__href">
-              <li className="header__item">tablets</li>
-            </Link>
-            <Link to="/accessories" className="header__href">
-              <li className="header__item">accessories</li>
-            </Link>
+            <li className="header__item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                home
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                phones
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                tablets
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                accessories
+              </NavLink>
+            </li>
           </ul>
         </div>
 
@@ -84,7 +112,7 @@ export const FavouritesPage = ({
               {cartItems.length !== 0 && (
                 <div className="header__navigation--count">
                   <p className="header__navigation--count--style">
-                    {cartItems.length}
+                    {totalItems}
                   </p>
                 </div>
               )}

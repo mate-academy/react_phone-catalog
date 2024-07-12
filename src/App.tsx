@@ -15,6 +15,28 @@ import { PhoneDetailPage } from './components/PhoneDetailPage/PhoneDetailPage';
 export const App = () => {
   const [likeItems, setLikeItems] = useState<CardPhone[]>([]);
   const [cartItems, setCartItems] = useState<CardPhone[]>([]);
+  const [counts, setCounts] = useState<{ [key: string]: number }>({});
+  const [totalItems, setTotalItems] = useState<number>(0);
+
+  useEffect(() => {
+    setTotalItems(0);
+    for (const prop in counts) {
+      setTotalItems(prevToralItems => prevToralItems + counts[prop]);
+    }
+  }, [counts]);
+
+  useEffect(() => {
+    const savedCounts = localStorage.getItem('counts');
+    const initialCounts: { [key: string]: number } = savedCounts
+      ? JSON.parse(savedCounts)
+      : {};
+
+    cartItems.forEach(item => {
+      initialCounts[item.id] = initialCounts[item.id] || 1;
+    });
+
+    setCounts(initialCounts);
+  }, [cartItems]);
 
   useEffect(() => {
     const localFavourites = localStorage.getItem('favourites');
@@ -76,6 +98,7 @@ export const App = () => {
                 addFavouritesItems={addFavouritesItems}
                 addCartItems={addCartItems}
                 cartItems={cartItems}
+                totalItems={totalItems}
               />
             }
           ></Route>
@@ -88,6 +111,7 @@ export const App = () => {
                 addFavouritesItems={addFavouritesItems}
                 addCartItems={addCartItems}
                 cartItems={cartItems}
+                totalItems={totalItems}
               />
             }
           ></Route>
@@ -99,6 +123,7 @@ export const App = () => {
                 cartItems={cartItems}
                 addCartItems={addCartItems}
                 addFavouritesItems={addFavouritesItems}
+                totalItems={totalItems}
               />
             }
           />
@@ -110,6 +135,7 @@ export const App = () => {
                 addFavouritesItems={addFavouritesItems}
                 addCartItems={addCartItems}
                 cartItems={cartItems}
+                totalItems={totalItems}
               />
             }
           ></Route>
@@ -121,6 +147,7 @@ export const App = () => {
                 cartItems={cartItems}
                 addCartItems={addCartItems}
                 addFavouritesItems={addFavouritesItems}
+                totalItems={totalItems}
               />
             }
           />
@@ -132,6 +159,7 @@ export const App = () => {
                 addFavouritesItems={addFavouritesItems}
                 addCartItems={addCartItems}
                 cartItems={cartItems}
+                totalItems={totalItems}
               />
             }
           ></Route>
@@ -143,6 +171,7 @@ export const App = () => {
                 cartItems={cartItems}
                 addCartItems={addCartItems}
                 addFavouritesItems={addFavouritesItems}
+                totalItems={totalItems}
               />
             }
           />
@@ -154,6 +183,7 @@ export const App = () => {
                 setLikeItems={setLikeItems}
                 addCartItems={addCartItems}
                 cartItems={cartItems}
+                totalItems={totalItems}
               />
             }
           ></Route>
@@ -165,13 +195,22 @@ export const App = () => {
                 likeItems={likeItems}
                 cartItems={cartItems}
                 setCartItems={setCartItems}
+                setCounts={setCounts}
+                counts={counts}
+                totalItems={totalItems}
               />
             }
           ></Route>
 
           <Route
             path="*"
-            element={<NotFoundPage likeItems={likeItems} cartItems={cartItems}/>}
+            element={
+              <NotFoundPage
+                likeItems={likeItems}
+                cartItems={cartItems}
+                totalItems={totalItems}
+              />
+            }
           ></Route>
         </Routes>
       </Router>

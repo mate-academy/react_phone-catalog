@@ -7,16 +7,22 @@ interface CartPageProps {
   likeItems: CardPhone[];
   cartItems: CardPhone[];
   setCartItems: (value: (prevItems: CardPhone[]) => CardPhone[]) => void;
+  setCounts: (
+    value: (prevCounts: { [key: string]: number }) => { [key: string]: number },
+  ) => void;
+  counts: { [key: string]: number };
+  totalItems: number;
 }
 
 export const CartPage = ({
   likeItems,
   cartItems,
   setCartItems,
+  setCounts,
+  counts,
+  totalItems,
 }: CartPageProps) => {
-  const [counts, setCounts] = useState<{ [key: string]: number }>({});
   const [totalPrice, setTotalPrice] = useState<number>(0);
-  // const [totalItems, setTotalItems] = useState<number>(0);
 
   const { pathname } = useLocation();
 
@@ -37,28 +43,18 @@ export const CartPage = ({
     setTotalPrice(calculatedTotalPrice);
   }, [cartItems, counts]);
 
-  useEffect(() => {
-    const initialCounts: { [key: string]: number } = {};
-
-    cartItems.forEach(item => {
-      initialCounts[item.id] = 1;
-    });
-    setCounts(initialCounts);
-  }, [cartItems]);
-
   const setCountForCard = (id: string, value: number) => {
-    setCounts(prevCounts => ({
-      ...prevCounts,
-      [id]: value,
-    }));
-  };
+    setCounts((prevCounts: { [key: string]: number }) => {
+      const updatedCounts = {
+        ...prevCounts,
+        [id]: value,
+      };
 
-  // useEffect(() => {
-  //   setTotalItems(0);
-  //   for (const prop in counts) {
-  //     setTotalItems(prevToralItems => prevToralItems + counts[prop]);
-  //   }
-  // }, [totalPrice, setTotalPrice, counts]);
+      localStorage.setItem('counts', JSON.stringify(updatedCounts));
+
+      return updatedCounts;
+    });
+  };
 
   const deleteCartItem = (cart: CardPhone) => {
     setCartItems((prevCartItem: CardPhone[]) => {
@@ -84,22 +80,48 @@ export const CartPage = ({
     <>
       <header className="header">
         <div className="header__navlist">
-          <a href="#">
-            <div className="header--logo"></div>
-          </a>
+          <div className="header--logo"></div>
           <ul className="header__list">
-            <Link to="/" className="header__href">
-              <li className="header__item">home</li>
-            </Link>
-            <Link to="/phones" className="header__href">
-              <li className="header__item">phones</li>
-            </Link>
-            <Link to="/tablets" className="header__href">
-              <li className="header__item">tablets</li>
-            </Link>
-            <Link to="/accessories" className="header__href">
-              <li className="header__item">accessories</li>
-            </Link>
+            <li className="header__item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                home
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                phones
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                tablets
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                accessories
+              </NavLink>
+            </li>
           </ul>
         </div>
 
@@ -130,7 +152,7 @@ export const CartPage = ({
               {cartItems.length !== 0 && (
                 <div className="header__navigation--count">
                   <p className="header__navigation--count--style">
-                    {cartItems.length}
+                    {totalItems}
                   </p>
                 </div>
               )}
@@ -253,7 +275,7 @@ export const CartPage = ({
             {cartItems.length !== 0 && (
               <section className="checkout">
                 <h1 className="checkout__price">${totalPrice}</h1>
-                <p className="checkout__items">Total for {cartItems.length} items</p>
+                <p className="checkout__items">Total for {totalItems} items</p>
                 <div className="checkout__hr"></div>
                 <button
                   className="checkout__button"

@@ -41,19 +41,21 @@
   &__active {
     position: relative;
     text-decoration: none;
+    list-style: none;
+    color: #949ca2;
   }
   
   &__active::after {
     content: '';
     position: absolute;
-    bottom: -25px;
+    bottom: -23px;
     left: 0;
     width: 100%;
     border-bottom: 3px solid #F1F2F9;
     box-sizing: border-box;
 
     @include on-tablet {
-      bottom: -18px;
+      bottom: -16px;
     }
   }
 
@@ -108,11 +110,15 @@
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
-    color: #89939A;
   }
 
   &__href {
     text-decoration: none;
+    color: #949ca2;
+  }
+
+  &__href:hover {
+    color: #c7c7ca;
   }
 
   &--menu {
@@ -810,6 +816,10 @@
     }
   }
 
+  &__href:hover {
+    color: #c7c7ca;
+  }
+
   &__back {
     display: flex;
     justify-content: center;
@@ -845,5 +855,9 @@
       width: 16px;
       height: 16px;
     }
+  }
+
+  &__href:hover .footer__back--text{
+    color: #c7c7ca;
   }
 }

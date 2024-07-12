@@ -1,14 +1,16 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './MobileMenu.scss';
 
 export const MobileMenu = () => {
+  const navigate = useNavigate();
+
   return (
     <>
       <header className="menu">
         <a href="#">
           <div className="menu__logo"></div>
         </a>
-        <a href="#">
+        <a onClick={() => navigate(-1)}>
           <div className="menu__close"></div>
         </a>
       </header>

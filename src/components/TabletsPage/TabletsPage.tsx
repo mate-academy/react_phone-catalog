@@ -10,6 +10,7 @@ interface Props {
   addFavouritesItems: (b: CardPhone) => void;
   addCartItems: (a: CardPhone) => void;
   cartItems: CardPhone[];
+  totalItems: number;
 }
 
 export const TabletsPage = ({
@@ -17,6 +18,7 @@ export const TabletsPage = ({
   addFavouritesItems,
   addCartItems,
   cartItems,
+  totalItems,
 }: Props) => {
   const [elements, setElements] = useState('8');
   const [currentPage, setCurrentPage] = useState(0);
@@ -92,42 +94,48 @@ export const TabletsPage = ({
     <>
       <header className="header">
         <div className="header__navlist">
-          <a href="#">
-            <div className="header--logo"></div>
-          </a>
+          <div className="header--logo"></div>
           <ul className="header__list">
-            <NavLink
-              to="/"
-              className={({ isActive }) =>
-                isActive ? 'header__active' : 'header__href'
-              }
-            >
-              <li className="header__item">home</li>
-            </NavLink>
-            <NavLink
-              to="/phones"
-              className={({ isActive }) =>
-                isActive ? 'header__active' : 'header__href'
-              }
-            >
-              <li className="header__item">phones</li>
-            </NavLink>
-            <NavLink
-              to="/tablets"
-              className={({ isActive }) =>
-                isActive ? 'header__active' : 'header__href'
-              }
-            >
-              <li className="header__item">tablets</li>
-            </NavLink>
-            <NavLink
-              to="/accessories"
-              className={({ isActive }) =>
-                isActive ? 'header__active' : 'header__href'
-              }
-            >
-              <li className="header__item">accessories</li>
-            </NavLink>
+            <li className="header__item">
+              <NavLink
+                to="/"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                home
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/phones"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                phones
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/tablets"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                tablets
+              </NavLink>
+            </li>
+            <li className="header__item">
+              <NavLink
+                to="/accessories"
+                className={({ isActive }) =>
+                  isActive ? 'header__active' : 'header__href'
+                }
+              >
+                accessories
+              </NavLink>
+            </li>
           </ul>
         </div>
 
@@ -158,7 +166,7 @@ export const TabletsPage = ({
               {cartItems.length !== 0 && (
                 <div className="header__navigation--count">
                   <p className="header__navigation--count--style">
-                    {cartItems.length}
+                    {totalItems}
                   </p>
                 </div>
               )}
