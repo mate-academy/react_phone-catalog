@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useLocaleStorage } from '../utils/hooks/useLocalStorage';
 
 type Props = {
@@ -82,18 +82,21 @@ export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
     setCartItems([]);
   };
 
+  const cartItemsTools = useMemo(
+    () => ({
+      getItemsQuantity,
+      increaseCartQuantity,
+      decreaseCartQuantity,
+      removeFromCart,
+      setCartItems,
+      cartItems,
+      clearAllFromCart,
+    }),
+    [],
+  );
+
   return (
-    <ShoppingCartContext.Provider
-      value={{
-        getItemsQuantity,
-        increaseCartQuantity,
-        decreaseCartQuantity,
-        removeFromCart,
-        setCartItems,
-        cartItems,
-        clearAllFromCart,
-      }}
-    >
+    <ShoppingCartContext.Provider value={cartItemsTools}>
       {children}
     </ShoppingCartContext.Provider>
   );

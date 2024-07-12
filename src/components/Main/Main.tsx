@@ -8,12 +8,10 @@ import { HotPrices } from './HotPrices/HotPrices';
 import { useLocation, useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import { Pathname } from '../../enums/Pathname';
-import { StateContext } from '../../store/StateProvider';
 import { Skeleton } from '../Skeleton';
 import { ProductsContext } from '../../store/ProductsProvider';
 export const Main = () => {
   const { t } = useContext(LanguageContext);
-  const { activeMenu } = useContext(StateContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
   const { pathname } = useLocation();
   const { productId } = useParams();
@@ -25,7 +23,6 @@ export const Main = () => {
     (pathname !== Pathname.phones || productIdChech.length > 0) &&
     pathname !== Pathname.tablets &&
     pathname !== Pathname.favorites &&
-    !activeMenu &&
     pathname !== Pathname.cart &&
     pathname !== Pathname.accessories &&
     !productIdChech;

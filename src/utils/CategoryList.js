@@ -1,6 +1,6 @@
-import phonesImg from '../image/ShopByCategory/phones.png';
-import tabletsImg from '../image/ShopByCategory/tablets.png';
-import accessoriesImg from '../image/ShopByCategory/accessories.png';
+import phonesImg from '../image/ShopByCategory/phones.webp';
+import tabletsImg from '../image/ShopByCategory/tablets.webp';
+import accessoriesImg from '../image/ShopByCategory/accessories.webp';
 
 export const CategoryList = [
   { src: phonesImg, alt: 'Phones', title: 'mobilePhones', link: 'phones' },
