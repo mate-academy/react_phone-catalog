@@ -1,0 +1,16 @@
+@import '../../../shared/utils-scss/mixins';
+
+.main {
+  padding: 0 16px;
+
+  @include on-tablet {
+    padding: 0 24px;
+    min-width: 592px;
+  }
+
+  @include on-desktop {
+    padding: 0;
+    margin: auto;
+    width: 1136px;
+  }
+}

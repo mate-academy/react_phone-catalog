@@ -1,0 +1,33 @@
+@import '../../../shared/utils-scss/mixins';
+
+.page {
+  height: calc(100vh - 48px - 264px);
+  display: flex;
+  justify-content: center;
+
+  width: 100%;
+  text-align: center;
+
+  @include on-tablet {
+    height: calc(100vh - 51px - 95px);
+  }
+
+  @include on-desktop {
+    height: calc(100vh - 64px - 95px);
+  }
+ 
+  &__img {
+    width: 80%;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: auto;
+      height: 80%;
+    }
+  
+    @include on-desktop {
+      width: auto;
+      height: 100%;
+    }
+  }
+}
