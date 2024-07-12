@@ -27,7 +27,7 @@ export const AsideMenu = () => {
     if (stateMenu) {
       document.documentElement.style.overflow = 'hidden';
     } else {
-      document.documentElement.style.overflow = 'auto';
+      document.documentElement.style.overflow = 'visible';
     }
   };
 

@@ -22,17 +22,7 @@ type ContextType = {
   resultFilteredDev: Product[];
 };
 
-export const ProductsContext = createContext<ContextType>({
-  isLoading: false,
-  setIsLoading: () => [],
-  products: [],
-  setProducts: () => {},
-  gadgets: {
-    gadgetsLen: 0,
-    gadgets: [],
-  },
-  resultFilteredDev: [],
-});
+export const ProductsContext = createContext<ContextType>({} as ContextType);
 
 type Props = {
   children: React.ReactNode;

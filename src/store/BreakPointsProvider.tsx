@@ -10,11 +10,9 @@ type BreakPointsContextType = {
   isDesktop: boolean;
 };
 
-export const BreakPointsContext = React.createContext<BreakPointsContextType>({
-  isMobile: false,
-  isLaptop: false,
-  isDesktop: false,
-});
+export const BreakPointsContext = React.createContext<BreakPointsContextType>(
+  {} as BreakPointsContextType,
+);
 
 export const BreakPointsProvider: React.FC<Props> = ({ children }) => {
   const isMobile = useMediaQuery({

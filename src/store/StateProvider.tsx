@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { Product } from '../types/ContextType/Product';
 import { useLocaleStorage } from '../utils/hooks/useLocalStorage';
 
@@ -17,16 +17,7 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const StateContext = React.createContext<StateType>({
-  modalWindow: false,
-  setModalWindow: () => [],
-  favorites: [],
-  setFavorites: () => [],
-  autoPlay: false,
-  setAutoPlay: () => {},
-  activeMenu: false,
-  setActiveMenu: () => {},
-});
+export const StateContext = React.createContext({} as StateType);
 
 export const StateProvider: React.FC<Props> = ({ children }) => {
   const [autoPlay, setAutoPlay] = useState(true);
@@ -37,16 +28,28 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
-  const stateTools = {
-    modalWindow,
-    setModalWindow,
-    favorites,
-    setFavorites,
-    autoPlay,
-    setAutoPlay,
-    activeMenu,
-    setActiveMenu,
-  };
+  const stateTools = useMemo(
+    () => ({
+      modalWindow,
+      setModalWindow,
+      favorites,
+      setFavorites,
+      autoPlay,
+      setAutoPlay,
+      activeMenu,
+      setActiveMenu,
+    }),
+    [
+      modalWindow,
+      setModalWindow,
+      favorites,
+      setFavorites,
+      autoPlay,
+      setAutoPlay,
+      activeMenu,
+      setActiveMenu,
+    ],
+  );
 
   return (
     <StateContext.Provider value={stateTools}>{children}</StateContext.Provider>
