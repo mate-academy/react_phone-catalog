@@ -1,5 +1,5 @@
 export const COLOR_MAP: { [key: string]: string } = {
-  spacegray: '#4c4c4c',
+  'space-gray': '#4c4c4c',
   yellow: '#ffe681',
   red: '#a50011',
   midnightgreen: '#4e5851',
@@ -19,4 +19,5 @@ export const COLOR_MAP: { [key: string]: string } = {
   graphite: '#5c5b57',
   sierrablue: '#9bb5ce',
   pacificblue: '#2e4755',
+  spacegray: '#4c4c4c',
 };

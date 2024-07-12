@@ -115,8 +115,6 @@ export const ProductDetailsPage: React.FC = () => {
       const normalizedColor = normalizeColor(selectedColor);
       const newProductId = `${namespaceId}-${cap}-${normalizedColor}`;
 
-      // eslint-disable-next-line no-console
-      console.log(newProductId);
       setSelectedCapacity(cap);
       navigate(`/${category}/${newProductId}`);
     }
