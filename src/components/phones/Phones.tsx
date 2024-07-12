@@ -98,7 +98,7 @@ export const Phones: React.FC = () => {
               );
             })}
           </div>
-          
+
           <div className={Styles['phones__choose_page']}>
             <Pagination
               pagesTotalNumber={pagesTotalNumber}

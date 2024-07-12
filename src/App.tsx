@@ -13,6 +13,7 @@ import { Details } from './components/details';
 import { Favourites } from './components/favourites/Favourtes';
 import { Cart } from './components/cart';
 import { BackToTop } from './components/backToTop';
+import { ThemeSwitcher } from './components/themeSwitcher/ThemeSwitcher';
 
 export const App = () => {
   const { app, accessories, tablets, phones, backToTop } =
@@ -32,6 +33,8 @@ export const App = () => {
     <div onScroll={handleScroll} ref={app} className="app">
       <Header />
       <h1 className="app__title">Product Catalog</h1>
+      
+      <ThemeSwitcher />
 
       <Routes>
         <Route path="/home" element={<Navigate to="/" replace={true} />} />

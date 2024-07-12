@@ -1,6 +1,7 @@
 // not empty
 
-@use "./utils/variables" as *;
+@use "./utils/themes" as *;
+@use './utils/mixins' as *;
 
 * {
   transition: all 0.6s ease-in-out;
@@ -18,9 +19,7 @@
   &__separator {
     width: 102vw;
     height: 1px;
-    border: 1px solid $border-color;
-    margin-bottom: 20px
+    border: 1px solid var(--border-color);
+    margin-bottom: 10px
   }
 }
-
-;
