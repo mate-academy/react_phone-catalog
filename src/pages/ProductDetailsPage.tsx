@@ -1,6 +1,5 @@
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../components/BreadCrumbs/BreadCrumbs';
-import style from '../modules/ProductDetailsPage.module.scss';
 import { Category } from '../enums/Category';
 import { getPhones } from '../utils/fetchMethods';
 import { useContext, useEffect } from 'react';
@@ -9,13 +8,14 @@ import { Gadgets } from '../types/ContextType/Gadgets';
 import { AvailableColors } from '../enums/AvailableColors';
 import { IconFavorites } from '../components/Icons/IconFavorites';
 import { ThemeContext } from '../store/ThemeProvider';
-import classNames from 'classnames';
 import { CardsSlider } from '../components/Main/SliderCards';
 import { ProductsContext } from '../store/ProductsProvider';
 import { changeIdsParams } from '../utils/changeIdsParams';
 import { LanguageContext } from '../store/LanguageProvider';
 import { BackButton } from '../components/BackButton/BackButton';
 import { Loader } from '../components/Loader';
+import classNames from 'classnames';
+import style from '../modules/ProductDetailsPage.module.scss';
 
 type Props = {
   type: Category;
@@ -74,6 +74,17 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
   } = categoryProduct;
 
   const recomended = products.filter(item => item.category === category);
+
+  const CARD_TECH_SPECS_PARAMS = {
+    screen,
+    resolution,
+    processor,
+    ram,
+    capacity,
+    camera,
+    zoom,
+    cell,
+  };
 
   return (
     <div
@@ -189,23 +200,14 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
                 <IconFavorites />
               </button>
             </div>
-
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('screen')}</p>
-              <p className={style.product__shortDesValue}>{screen}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('resolution')}</p>
-              <p className={style.product__shortDesValue}>{resolution}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('processor')}</p>
-              <p className={style.product__shortDesValue}>{processor}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('ram')}</p>
-              <p className={style.product__shortDesValue}>{ram}</p>
-            </div>
+            {Object.entries({ screen, resolution, processor, ram }).map(
+              ([key, value]) => (
+                <div className={style.product__shortDesription} key={key}>
+                  <p className={style.product__shortDesKey}>{t(key)}</p>
+                  <p className={style.product__shortDesValue}>{value}</p>
+                </div>
+              ),
+            )}
           </div>
         </div>
       </div>
@@ -225,40 +227,15 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
         <section className={style.product__techSpecsSection}>
           <h2 className={style.product__sectionTitle}>{t('techSpecs')}</h2>
           <span className={style.product__line} />
-          <div className={style.product__techSpecsParams}>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('screen')}</p>
-              <p className={style.product__shortDesValue}>{screen}</p>
+
+          {Object.entries(CARD_TECH_SPECS_PARAMS).map(([key, value]) => (
+            <div className={style.product__techSpecsParams} key={key}>
+              <div className={style.product__shortDesription}>
+                <p className={style.product__shortDesKey}>{t(key)}</p>
+                <p className={style.product__shortDesValue}>{value}</p>
+              </div>
             </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('resolution')}</p>
-              <p className={style.product__shortDesValue}>{resolution}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('processor')}</p>
-              <p className={style.product__shortDesValue}>{processor}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('ram')}</p>
-              <p className={style.product__shortDesValue}>{ram}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('builtInMemory')}</p>
-              <p className={style.product__shortDesValue}>{capacity}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('camera')}</p>
-              <p className={style.product__shortDesValue}>{camera}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('zoom')}</p>
-              <p className={style.product__shortDesValue}>{zoom}</p>
-            </div>
-            <div className={style.product__shortDesription}>
-              <p className={style.product__shortDesKey}>{t('cell')}</p>
-              <p className={style.product__shortDesValue}>{cell}</p>
-            </div>
-          </div>
+          ))}
         </section>
       </div>
 

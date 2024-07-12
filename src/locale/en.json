@@ -25,7 +25,7 @@
     "cheapest": "Cheapest",
     "resolution": "Resolution",
     "processor": "Processor",
-    "builtInMemory": "Built in memory",
+    "capacity": "Built in memory",
     "camera": "Camera",
     "zoom": "Zoom",
     "cell": "Cell",
