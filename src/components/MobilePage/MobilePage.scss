@@ -1,0 +1,279 @@
+@import '../../auxiliary/mixins';
+
+.functional {
+  margin: 0 16px 56px;
+
+  @include on-tablet {
+    margin: 0 32px 64px;
+  }
+
+  @include on-tv {
+    margin: 0 32px 80px;
+  }
+
+  @include on-tv {
+    margin: 0 152px 80px;
+  }
+
+  &__text {
+    margin: 24px 0 0;
+    font-family: Mont, sans-serif;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: #F1F2F9;
+
+    @media (min-width: 640px) {
+      margin: 40px 0 0;
+      font-size: 48px;
+      line-height: 56px;
+    }
+  }
+
+  &__models {
+    margin: 8px 0 0;
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    color: #75767F;
+  }
+
+  &__empty {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 21px;
+    color: #aba8a8;
+  }
+}
+
+.navigate {
+  display: flex;
+  align-items: center;
+  margin: 24px 0 0;
+  gap: 8px;
+
+  &__house {
+    background-image: url(../../images/Home.svg);
+    width: 16px;
+    height: 16px;
+  }
+
+  &__arrow {
+    background-image: url(../../images/Chevron.svg);
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+
+    &--white {
+      background-image: url(../../images/3432.svg);
+    }
+  }
+
+  &__href {
+    width: 16px;
+    height: 16px;
+    text-decoration: none;
+  }
+
+  &__text {
+    margin: 1px 0 0;
+    text-align: center;
+    font-family: Mont, sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    line-height: 15.34px;
+    color: #75767F;
+    cursor: pointer;
+
+    &--white {
+      font-family: semiMont, sans-serif;
+      color: #F1F2F9;
+    }
+  }
+
+  &__text:hover {
+    color: #F1F2F9;;
+  }
+}
+
+.sorting {
+  margin-top: 32px;
+  display: flex;
+  gap: 16px;
+
+  @media (min-width: 640px) {
+    margin-top: 40px;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    width: 50%;
+    position: relative;
+
+    @include on-tablet {
+      width: 187px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 176px;
+    }
+
+    &--text {
+      margin: 0;
+      font-family: Mont, sans-serif;
+      font-weight: 700;
+      font-size: 12px;
+      line-height: 15.34px;
+      color: #89939A;
+    }
+  }
+
+  &__block:last-child {
+    @include on-tablet {
+      width: 136px;
+    }
+
+    @media (min-width: 1200px) {
+      width: 128px;
+    }
+  }
+
+  &__select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 4px;
+    height: 40px;
+    background-color: #323542;
+    border: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    color: #F1F2F9;
+    font-family: regularMont, sans-serif;
+    font-weight: 700;
+    font-size: 14px;
+    line-height: 18px;
+    border-radius: 2px;
+  }
+
+  &__select:focus {
+    border: none;
+    outline: none;
+  }
+
+  &__wrapped {
+    display: flex;
+    align-items: center;
+  }
+
+
+  &__icon {
+    margin-top: 4px;
+    margin-left: calc(100% - 32px);
+    background-image: url('../../images/Chevron\ down.svg');
+    width: 16px;
+    height: 16px;
+    position: absolute;
+  }
+}
+
+.mobiles {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 24px 0 0;
+
+  &__favourites {
+    margin-top: 32px;
+
+    @media (min-width: 640px) {
+      margin-top: 40px;
+    }
+  }
+
+  &__card {
+    width: 100%;
+    height: 440px;
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  &__button {
+    border: none;
+    width: 32px;
+    height: 32px;
+    background-color: #161827;
+    color: #F1F2F9;
+    font-family: regularMont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    padding: 0;
+    margin-right: 8px;
+    cursor: pointer;
+
+    &--active {
+      background-color: #905BFF;
+    }
+
+    &--add {
+      width: 100%;
+    }
+  }
+
+  &__tabsContainer {
+    display: flex;
+    margin: 24px 0 0;
+  }
+
+  &__tab {
+    width: 32px;
+    height: 32px;
+    margin: 0 16px 0 0;
+    background-color: #323542;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    transition: background-color 0.3s;
+
+    &--disabled {
+      background-color: #28252592;
+    }
+  }
+
+  &__tab:hover {
+    background-color: #4A4D58;
+  }
+
+  &__tab:last-child {
+    margin: 0 0 0 8px;
+  }
+
+  &__arrow {
+    background-image: url(../../images/412414123.svg);
+    margin: auto;
+    width: 16px;
+    height: 16px;
+
+    &--left {
+      transform: rotate(180deg);
+    }
+  }
+}
+
+.cardsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(287px, 1fr));
+  gap: 40px 16px;
+  width: 100%;
+  justify-content: center;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  }
+}
