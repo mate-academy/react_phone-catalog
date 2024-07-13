@@ -57,6 +57,7 @@
 
     &__sort {
       width: 136px;
+      border-radius: 10px;
 
       @include for-tablet {
         margin-right: 15px;

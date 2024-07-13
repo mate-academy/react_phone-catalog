@@ -11,15 +11,6 @@
     height: 62px;
     padding: 0 24px;
     margin: 0 auto 24px;
-
-    // @include for-tablet {
-    //   width: 600px;
-    // }
-
-    // @include for-desktop {
-    //   width: 1200px;
-    //   margin: 0 24px 24px;
-    // }
   }
 
   &__title {
@@ -52,6 +43,12 @@
       background-repeat: no-repeat;
       background-position: center;
 
+      &:hover {
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
+      }
+
       &:active {
         background-image: url(../../../public/img/svg/arrow_left_active.svg);
       }
@@ -64,6 +61,12 @@
       background-image: url(../../../public/img/svg/arrow_right.svg);
       background-repeat: no-repeat;
       background-position: center;
+
+      &:hover {
+        box-shadow:
+          -3px 3px 3px var(--secondary-color),
+          -6px 6px 3px var(--border-color);
+      }
 
       &:active {
         background-image: url(../../../public/img/svg/arrow_right_active.svg);

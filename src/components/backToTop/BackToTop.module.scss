@@ -4,14 +4,14 @@
 .back {
   position: sticky;
   width: 130px;
-  bottom: 20px;
+  bottom: 5px;
   left: calc(100% - 130px);
   display: flex;
   height: 32px;
   margin-top: 120vh;
 
   @include for-tablet {
-    bottom: 11px;
+    bottom: 32px;
     left: calc(100% - 146px);
   }
 
@@ -29,5 +29,12 @@
     background-position: center;
     background-repeat: no-repeat;
     border: 1px solid var(--icons);
+    border-radius: 10px;
+
+    &:hover {
+      box-shadow:
+        0 0 3px 4px var(--secondary-color),
+        0 0 3px 8px var(--border-color);
+    }
   }
 }

@@ -1,3 +1,5 @@
+@use '../../utils/mixins' as *;
+
 .home {
   display: flex;
   position: relative;
@@ -5,6 +7,10 @@
   justify-content: center;
   transition: all 0.6s ease-in-out;
   height: fit-content;
+
+  // @include for-tablet {
+  //   margin-bottom: 42px;
+  // }
 
   &__crumbs {
     display: flex;

@@ -24,6 +24,7 @@
   margin-left: 24px;
   height: 1000px;
   margin-bottom: 56px;
+  padding: 0 24px;
 
   @include for-tablet {
     width: 100%;
@@ -40,6 +41,7 @@
       margin-bottom: 24px;
       border-radius: 20px;
       border: 1px solid var(--border-color);
+      padding: 10px;
 
       @include for-tablet {
         width: 187px;

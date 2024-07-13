@@ -7,7 +7,7 @@ export const Footer: React.FC = () => {
       <p className={Styles['footer__logo']}>
         <img
           className={Styles['footer__logo__img']}
-          src="./img/svg/Nice_Gadgets_logo.svg"
+          src="./img/svg/header_Logo.svg"
           alt="logo"
         />
       </p>

@@ -38,6 +38,13 @@
     position: absolute;
     top: 150px;
     left: 100px;
+    border-radius: 10px;
+
+    &:hover {
+      box-shadow:
+        3px 3px 3px var(--secondary-color),
+        6px 6px 3px var(--border-color);
+    }
 
     &:active {
       background-image: url(../../../../public/img/svg/arrow_left_active.svg);
@@ -59,6 +66,13 @@
     position: absolute;
     top: 150px;
     right: 100px;
+    border-radius: 10px;
+
+    &:hover {
+      box-shadow:
+        -3px 3px 3px var(--secondary-color),
+        -6px 6px 3px var(--border-color);
+    }
 
     &:active {
       background-image: url(../../../../public/img/svg/arrow_right_active.svg);

@@ -13,6 +13,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-radius: 10px;
+
+  &:hover {
+    box-shadow:
+      3px 3px 3px var(--secondary-color),
+      6px 6px 3px var(--border-color);
+  }
 
   @include for-tablet {
     height: 510px;
@@ -119,6 +126,13 @@
       line-height: 40px;
       text-align: center;
       font-weight: 700;
+      border-radius: 14px;
+
+      &:hover {
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
+      }
 
       &::before {
         content: 'Add to cart';
@@ -143,9 +157,12 @@
       background-image: url(../../../public/img/svg/fav_icon.svg);
       background-repeat: no-repeat;
       background-position: center;
+      border-radius: 50%;
 
       &:hover {
-        border-color: black;
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
       }
 
       &__selected {

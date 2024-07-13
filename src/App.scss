@@ -9,7 +9,7 @@
 
 .app {
   overflow-x: hidden;
-  height: 100vh;
+  max-height: 100vh;
   width: 100vw;
 
   &__title {
@@ -21,9 +21,5 @@
     height: 1px;
     border: 1px solid var(--border-color);
     margin-bottom: 10px;
-
-    @include for-tablet {
-      margin-bottom: 30px;
-    }
   }
 }
