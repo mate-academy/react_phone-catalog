@@ -92,7 +92,7 @@ export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
       cartItems,
       clearAllFromCart,
     }),
-    [],
+    [cartItems],
   );
 
   return (

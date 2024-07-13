@@ -80,7 +80,7 @@ export const AsideMenu = () => {
           <LangButton />
         </div>
 
-        <NavLink
+        <Link
           to={Pathname.favorites}
           className={classNames(style.menu__actionButton, {
             [style.menu__activeAction]: pathname === Pathname.favorites,
@@ -95,7 +95,7 @@ export const AsideMenu = () => {
             )}
             <IconFavorites className={style.menu__actionIcon} />
           </div>
-        </NavLink>
+        </Link>
 
         <Link
           to={Pathname.cart}

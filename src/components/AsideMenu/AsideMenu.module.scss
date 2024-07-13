@@ -41,6 +41,13 @@
     @include onHover();
   }
 
+  &__actionIcon {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    @include rotate;
+  }
+
   &__closeButton {
     box-sizing: border-box;
     display: flex;
@@ -53,12 +60,11 @@
     border-left: 1px solid $bordeColor;
     border-bottom: 1px solid $bordeColor;
     cursor: pointer;
-  }
-
-  &__actionIcon {
-    position: relative;
-    width: 16px;
-    height: 16px;
+    &:hover {
+      .menu__actionIcon {
+        @include rotate(transform, rotate(90deg));
+      }
+    }
   }
 
   &__listContainer {
@@ -110,6 +116,12 @@
     height: 100%;
     border-right: 1px solid $bordeColor;
     font-size: 12px;
+    &:hover {
+      .menu__quantityCircle,
+      .menu__actionIcon {
+        @include onScale(transition, all 0.4s);
+      }
+    }
   }
 
   &__actionButton::after {
@@ -122,7 +134,6 @@
     @include initialAnimation();
   }
 
-  .menu__actionButton:hover::after,
   .menu__activeAction.menu__actionButton::after {
     @include activeAnimation();
   }
