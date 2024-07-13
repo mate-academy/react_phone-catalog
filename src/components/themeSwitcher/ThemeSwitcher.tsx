@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import Styles from './ThemeSwitcher.module.scss';
 
-export const ThemeSwitcher React.FC = () => {
+export const ThemeSwitcher: React.FC = () => {
   useEffect(() => {
     const currentTheme = localStorage.getItem('theme');
     const toggleSwitch = document.querySelector(
