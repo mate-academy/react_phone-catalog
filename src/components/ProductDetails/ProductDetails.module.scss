@@ -218,6 +218,21 @@
     }
   }
 
+  &__addedToCart {
+    @include addedToCartDefaultStyle;
+    &:hover {
+      background-color: $selectBackground;
+    }
+  }
+
+  &__darkTheme &__addedToCart {
+    background-color: $selectBackground;
+  }
+
+  &__darkTheme &__addedToCart:hover {
+    @extend %darkThemeHoverBackgroundButton;
+  }
+
   &__favorites {
     display: flex;
     justify-content: center;
@@ -301,6 +316,7 @@
   &__techSpecsParams {
     margin-top: 25px;
   }
+
 }
 
 @include onTablet {

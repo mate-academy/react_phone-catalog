@@ -14,19 +14,27 @@ import classNames from 'classnames';
 import style from './ProductDetails.module.scss';
 import { BackButton } from '../BackButton';
 import { StateContext } from '../../store/StateProvider';
+import { ShoppingCartContext } from '../../store/ShoppingCartProvider';
+import { handleCheckCarts } from '../../utils/handleCheckCards';
+import { availableFav } from '../../utils/availableFav';
+import Heart from '../../image/Favorites/heart.svg';
 
 type Props = {
   type: Category;
-  product: Gadgets;
+  gadget: Gadgets;
 };
-export const ProductDetails: React.FC<Props> = ({ product }) => {
+export const ProductDetails: React.FC<Props> = ({ gadget }) => {
   const { productId } = useParams<{ productId: string }>();
   const { products } = useContext(ProductsContext);
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
-  const { imageProduct, setImageProduct } = useContext(StateContext);
+  const { imageProduct, setImageProduct, favorites, handleAddToFavorites } =
+    useContext(StateContext);
+  const { handleAddToCart } = useContext(ShoppingCartContext);
+  const { cartItems } = useContext(ShoppingCartContext);
 
   const {
+    id,
     category,
     name,
     capacityAvailable,
@@ -44,9 +52,10 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
     camera,
     zoom,
     cell,
-  } = product;
+  } = gadget;
 
   const recomended = products.filter(item => item.category === category);
+  const findProduct = products.find(item => item.itemId === id);
 
   const CARD_TECH_SPECS_PARAMS = {
     screen,
@@ -166,11 +175,29 @@ export const ProductDetails: React.FC<Props> = ({ product }) => {
             </div>
 
             <div className={style.product__orderButtons}>
-              <button className={style.product__addToCart}>
-                {t('addToCart')}
+              <button
+                className={classNames(style.product__addToCart, {
+                  [style.product__addedToCart]:
+                    findProduct && handleCheckCarts(findProduct, cartItems),
+                })}
+                onClick={() => findProduct && handleAddToCart(findProduct)}
+              >
+                {findProduct && handleCheckCarts(findProduct, cartItems)
+                  ? t('addedToCart')
+                  : t('addToCart')}
               </button>
-              <button className={style.product__favorites}>
-                <IconFavorites />
+              <button
+                className={classNames(style.product__favorites, {
+                  [style.card__selectedFavorite]:
+                    findProduct && availableFav(findProduct, favorites),
+                })}
+                onClick={() => findProduct && handleAddToFavorites(findProduct)}
+              >
+                {findProduct && availableFav(findProduct, favorites) ? (
+                  <img src={Heart} alt="LikeLogo" />
+                ) : (
+                  <IconFavorites />
+                )}
               </button>
             </div>
             {Object.entries({ screen, resolution, processor, ram }).map(

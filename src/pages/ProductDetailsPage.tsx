@@ -41,7 +41,7 @@ export const ProductDetailsPage: React.FC<Props> = ({ type }) => {
       {!categoryProduct ? (
         <Loader />
       ) : (
-        <ProductDetails type={type} product={categoryProduct} />
+        <ProductDetails type={type} gadget={categoryProduct} />
       )}
     </>
   );

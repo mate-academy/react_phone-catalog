@@ -119,13 +119,9 @@
   }
 
   &__addedToCart {
-    background-color: $backgroundColor;
-    border: 1px solid $bordeColor;
-    color: $addedToCartTextColor;
-  }
-
-  &__addedToCart:hover {
-    background-color: $selectBackground;
+    &:hover {
+      background-color: $selectBackground;
+    }
   }
 
   &__darkTheme &__addedToCart {

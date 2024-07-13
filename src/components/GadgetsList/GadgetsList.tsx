@@ -44,33 +44,36 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
       <p className={style.gadgets__itemsQuantity}>
         {gadgets.gadgets.length} {t('models')}
       </p>
+      {resultFilteredDev.length === 0 ? (
+        <p className={style.gadgets__noGadgetsText}>{t('thereAreNoGadgets')}</p>
+      ) : (
+        <>
+          <div className={style.gadgets__selectors}>
+            <Dropdown
+              listItems={listSortedBy}
+              titleDropdown={t('sortBy')}
+              currentItem={sortBy}
+              keySearchParams={QueryParams.sort}
+              className={style.gadgets__widthSortBy}
+            />
 
-      <div className={style.gadgets__selectors}>
-        <Dropdown
-          listItems={listSortedBy}
-          titleDropdown={t('sortBy')}
-          currentItem={sortBy}
-          keySearchParams={QueryParams.sort}
-          className={style.gadgets__widthSortBy}
-        />
+            <Dropdown
+              listItems={listItemsPerPage}
+              titleDropdown={t('itemsPerPage')}
+              currentItem={itemsOnPage}
+              keySearchParams={QueryParams.perPage}
+              className={style.gadgets__widthItemsOnPage}
+            />
+          </div>
 
-        <Dropdown
-          listItems={listItemsPerPage}
-          titleDropdown={t('itemsPerPage')}
-          currentItem={itemsOnPage}
-          keySearchParams={QueryParams.perPage}
-          className={style.gadgets__widthItemsOnPage}
-        />
-      </div>
-
-      <div className={style.gadgets__cardsContainer}>
-        {resultFilteredDev.length === 0 ? (
-          t('thereAreNoGadgets')
-        ) : (
-          <CardsContainer gadgets={resultFilteredDev} />
-        )}
-      </div>
-      {resultFilteredDev.length !== 0 && <Pagination perPage={itemsOnPage} />}
+          <div className={style.gadgets__cardsContainer}>
+            <CardsContainer gadgets={resultFilteredDev} />
+          </div>
+          {resultFilteredDev.length !== 0 && (
+            <Pagination perPage={itemsOnPage} />
+          )}
+        </>
+      )}
     </div>
   );
 };

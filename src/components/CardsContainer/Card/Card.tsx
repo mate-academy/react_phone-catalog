@@ -9,6 +9,8 @@ import { StateContext } from '../../../store/StateProvider';
 import { IconFavorites } from '../../Icons/IconFavorites';
 import Heart from '../../../image/Favorites/heart.svg';
 import { ThemeContext } from '../../../store/ThemeProvider';
+import { handleCheckCarts } from '../../../utils/handleCheckCards';
+import { availableFav } from '../../../utils/availableFav';
 
 type Props = {
   product: Product;
@@ -22,42 +24,9 @@ export const Card: React.FC<Props> = ({
   widthRef,
 }) => {
   const { t } = useContext(LanguageContext);
-  const { setCartItems, cartItems } = useContext(ShoppingCartContext);
-  const { favorites, setFavorites } = useContext(StateContext);
+  const { cartItems, handleAddToCart } = useContext(ShoppingCartContext);
+  const { favorites, handleAddToFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
-
-  const handleAddToCart = (good: Product) => {
-    setCartItems(currentItems => {
-      const newItems = [...currentItems];
-
-      if (newItems.find(item => item.id === good.id)) {
-        return newItems.filter(item => item.id !== good.id);
-      } else {
-        return [
-          ...newItems,
-          {
-            id: good.id,
-            quantity: 1,
-            name: good.name,
-            image: good.image,
-            price: good.fullPrice,
-            category: good.category,
-            itemId: good.itemId,
-          },
-        ];
-      }
-    });
-  };
-
-  const handleCheckCarts = (currentProduct: Product) => {
-    const findCart = cartItems.find(item => item.id === currentProduct.id);
-
-    return !!findCart;
-  };
-
-  const availableFav = (gadgets: Product, favorGadget: Product[]) => {
-    return !!favorGadget.find(item => item.itemId === gadgets.itemId);
-  };
 
   return (
     <li
@@ -118,32 +87,19 @@ export const Card: React.FC<Props> = ({
       <div className={style.card__cardActions}>
         <button
           className={classNames(style.card__addToCart, {
-            [style.card__addedToCart]: handleCheckCarts(product),
+            [style.card__addedToCart]: handleCheckCarts(product, cartItems),
           })}
           onClick={() => handleAddToCart(product)}
         >
-          {handleCheckCarts(product) ? t('addedToCart') : t('addToCart')}
+          {handleCheckCarts(product, cartItems)
+            ? t('addedToCart')
+            : t('addToCart')}
         </button>
         <button
           className={classNames(style.card__сardFavBtn, {
             [style.card__selectedFavorite]: availableFav(product, favorites),
           })}
-          onClick={() =>
-            setFavorites(prevProducts => {
-              const newFavorites = [...prevProducts];
-              const availableFavorites = newFavorites.some(
-                item => item.itemId === product.itemId,
-              );
-
-              if (availableFavorites) {
-                return newFavorites.filter(
-                  item => item.itemId !== product.itemId,
-                );
-              } else {
-                return [...newFavorites, product];
-              }
-            })
-          }
+          onClick={() => handleAddToFavorites(product)}
         >
           {availableFav(product, favorites) ? (
             <img src={Heart} alt="LikeLogo" />

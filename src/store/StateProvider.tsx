@@ -13,6 +13,7 @@ type StateType = {
   setFavorites: (v: Product[] | ((s: Product[]) => Product[])) => void;
   imageProduct: string;
   setImageProduct: (v: string) => void;
+  handleAddToFavorites: (v: Product) => void;
 };
 
 type Props = {
@@ -31,6 +32,21 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
     [],
   );
 
+  const handleAddToFavorites = (product: Product) => {
+    setFavorites(prevProducts => {
+      const newFavorites = [...prevProducts];
+      const availableFavorites = newFavorites.some(
+        item => item.itemId === product.itemId,
+      );
+
+      if (availableFavorites) {
+        return newFavorites.filter(item => item.itemId !== product.itemId);
+      } else {
+        return [...newFavorites, product];
+      }
+    });
+  };
+
   const stateTools = useMemo(
     () => ({
       modalWindow,
@@ -43,6 +59,7 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       setActiveMenu,
       imageProduct,
       setImageProduct,
+      handleAddToFavorites,
     }),
     [
       modalWindow,
@@ -55,6 +72,7 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       setActiveMenu,
       imageProduct,
       setImageProduct,
+      handleAddToFavorites,
     ],
   );
 

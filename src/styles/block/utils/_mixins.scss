@@ -51,3 +51,9 @@
   opacity: 1;
   transform: scale(1);
 }
+
+@mixin addedToCartDefaultStyle {
+  background-color: $backgroundColor;
+  border: 1px solid $bordeColor;
+  color: $addedToCartTextColor;
+}

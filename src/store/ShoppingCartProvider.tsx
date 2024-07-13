@@ -1,18 +1,10 @@
 import React, { useMemo } from 'react';
 import { useLocaleStorage } from '../utils/hooks/useLocalStorage';
+import { CartType } from '../types/ContextType/CartType';
+import { Product } from '../types/ContextType/Product';
 
 type Props = {
   children: React.ReactNode;
-};
-
-type CartType = {
-  id: number;
-  quantity: number;
-  name?: string;
-  image?: string;
-  price?: number;
-  category?: string;
-  itemId?: string;
 };
 
 type ShoppingCartContextType = {
@@ -23,6 +15,7 @@ type ShoppingCartContextType = {
   setCartItems: (v: CartType[] | ((s: CartType[]) => CartType[])) => void;
   cartItems: CartType[];
   clearAllFromCart: () => void;
+  handleAddToCart: (v: Product) => void;
 };
 
 export const ShoppingCartContext = React.createContext(
@@ -82,6 +75,29 @@ export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
     setCartItems([]);
   };
 
+  const handleAddToCart = (good: Product) => {
+    setCartItems(currentItems => {
+      const newItems = [...currentItems];
+
+      if (newItems.find(item => item.id === good.id)) {
+        return newItems.filter(item => item.id !== good.id);
+      } else {
+        return [
+          ...newItems,
+          {
+            id: good.id,
+            quantity: 1,
+            name: good.name,
+            image: good.image,
+            price: good.fullPrice,
+            category: good.category,
+            itemId: good.itemId,
+          },
+        ];
+      }
+    });
+  };
+
   const cartItemsTools = useMemo(
     () => ({
       getItemsQuantity,
@@ -91,6 +107,7 @@ export const ShoppingCartProvider: React.FC<Props> = ({ children }) => {
       setCartItems,
       cartItems,
       clearAllFromCart,
+      handleAddToCart,
     }),
     [cartItems],
   );
