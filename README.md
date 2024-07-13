@@ -66,7 +66,7 @@ There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
 2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
 3. Add `ProductsList` component showing all the `products`.
 4. Implement a `Loader` to show it while waiting for the data from the server.
-<!-- 5. In case of a loading error show the something went wrong message with a reload button. -->
+5. In case of a loading error show the something went wrong message with a reload button.
 6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
 7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
    - Save the sort value in the URL `?sort=age` and apply it after the page reload.
