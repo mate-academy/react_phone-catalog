@@ -247,6 +247,9 @@
   &__favorites:hover {
     @extend %lightThemeHoverBorderButton;
   }
+  &__darkTheme &__selectedFavorite {
+    background-color: $backgroundColor;
+  }
 
   &__darkTheme &__favorites:hover {
     @extend %darkThemeHoverBackgroundButton;
@@ -316,7 +319,6 @@
   &__techSpecsParams {
     margin-top: 25px;
   }
-
 }
 
 @include onTablet {

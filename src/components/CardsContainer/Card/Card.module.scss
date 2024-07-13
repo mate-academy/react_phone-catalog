@@ -119,6 +119,7 @@
   }
 
   &__addedToCart {
+    @include addedToCartDefaultStyle;
     &:hover {
       background-color: $selectBackground;
     }

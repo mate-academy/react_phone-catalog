@@ -188,7 +188,7 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
               </button>
               <button
                 className={classNames(style.product__favorites, {
-                  [style.card__selectedFavorite]:
+                  [style.product__selectedFavorite]:
                     findProduct && availableFav(findProduct, favorites),
                 })}
                 onClick={() => findProduct && handleAddToFavorites(findProduct)}
