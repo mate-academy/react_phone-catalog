@@ -6,8 +6,8 @@ export function sortBy<T extends { id: string }>(
   array: T[],
   sortBy: SortBy,
 ): T[] {
-  let copyArray: T[] = [];
-  let copyProducts: Product[] = [...products];
+  const copyArray: T[] = [];
+  const copyProducts: Product[] = [...products];
 
   switch (sortBy) {
     case 'newest':

@@ -20,7 +20,7 @@ export const Crumbs: React.FC<Props> = ({ path, details }) => {
 
       {path.map(item => {
         return (
-          <React.Fragment key={item} >
+          <React.Fragment key={item}>
             <img
               className={Styles.crumbs__item}
               src=".\img\svg\arrow_right_active.svg"
@@ -33,16 +33,18 @@ export const Crumbs: React.FC<Props> = ({ path, details }) => {
         );
       })}
 
-      {details &&
+      {details && (
         <>
           <img
             className={Styles.crumbs__item}
             src=".\img\svg\arrow_right_active.svg"
             alt="arrow right"
           />
-          <p className={Styles.crumbs__details}>{`${details.charAt(0).toUpperCase() + details.slice(1).replaceAll('-', ' ')}`}</p>
+          <p
+            className={Styles.crumbs__details}
+          >{`${details.charAt(0).toUpperCase() + details.slice(1).replaceAll('-', ' ')}`}</p>
         </>
-      }
+      )}
     </div>
   );
 };

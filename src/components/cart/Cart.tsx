@@ -25,9 +25,9 @@ export const Cart: React.FC = () => {
     handleCloseDialog();
 
     const headerElement = document.getElementById('header');
-  if (headerElement) {
-    headerElement.scrollIntoView({ behavior: 'smooth' });
-  }
+    if (headerElement) {
+      headerElement.scrollIntoView({ behavior: 'smooth' });
+    }
   };
 
   return (
@@ -47,7 +47,9 @@ export const Cart: React.FC = () => {
             );
           })
         ) : (
-          <p className={Styles.cart__items_container__paragraph}>Your cart is empty</p>
+          <p className={Styles.cart__items_container__paragraph}>
+            Your cart is empty
+          </p>
         )}
       </div>
 

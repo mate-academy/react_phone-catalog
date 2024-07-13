@@ -46,7 +46,7 @@ export const Phones: React.FC = () => {
 
       {!isLoadingPhones && loadingErr && <Reload />}
 
-      {!isLoadingPhones && !loadingErr  && phonesTotalNumber === 0 && (
+      {!isLoadingPhones && !loadingErr && phonesTotalNumber === 0 && (
         <p className={Styles.tablets__no_item}>There are no tablets yet</p>
       )}
 

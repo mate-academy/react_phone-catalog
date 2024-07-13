@@ -24,7 +24,9 @@ export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
           className={Styles['productCard__picture']}
           src={`./${images[0]}`}
         />
-        <p className={Styles['productCard__product_name']}>{firstLetterCapital(id)}</p>
+        <p className={Styles['productCard__product_name']}>
+          {firstLetterCapital(id)}
+        </p>
       </Link>
 
       {discount ? (
@@ -90,13 +92,17 @@ export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
         <div
           onClick={() => handleAddCart(product)}
           className={cn(Styles['productCard__buttons__add'], {
-            [Styles.productCard__buttons__add__added]: cart.find(item => item.id === product.id),
+            [Styles.productCard__buttons__add__added]: cart.find(
+              item => item.id === product.id,
+            ),
           })}
         ></div>
         <div
           onClick={() => handleAddFav(product)}
           className={cn(Styles['productCard__buttons__fav'], {
-            [Styles.productCard__buttons__fav__selected]: fav.find(item => item.id === product.id),
+            [Styles.productCard__buttons__fav__selected]: fav.find(
+              item => item.id === product.id,
+            ),
           })}
         ></div>
       </div>

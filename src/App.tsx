@@ -47,7 +47,10 @@ export const App = () => {
         <Route path="tablets" element={<Tablets />} />
         <Route path="tablets/:idItem" element={<Details list={tablets} />} />
         <Route path="accessories" element={<Accessories />} />
-        <Route path="accessories/:idItem" element={<Details list={accessories} />} />
+        <Route
+          path="accessories/:idItem"
+          element={<Details list={accessories} />}
+        />
 
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

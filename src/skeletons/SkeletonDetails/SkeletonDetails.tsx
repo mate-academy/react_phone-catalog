@@ -9,7 +9,9 @@ export const SkeletonDetails: React.FC = () => {
       ></div>
 
       <div className={Styles.skeleton__slider}>
-        <div className={`${Styles.skeleton__slider__container} ${Styles.skeleton__animate}`}>
+        <div
+          className={`${Styles.skeleton__slider__container} ${Styles.skeleton__animate}`}
+        >
           <div
             className={`${Styles.skeleton__slider__container__img} ${Styles.skeleton__animate}`}
           />
@@ -66,8 +68,8 @@ export const SkeletonDetails: React.FC = () => {
         </div>
 
         <div
-        className={`${Styles.skeleton__colors__separator} ${Styles.skeleton__animate}`}
-      />
+          className={`${Styles.skeleton__colors__separator} ${Styles.skeleton__animate}`}
+        />
       </div>
 
       <div className={Styles.skeleton__capacity}>
@@ -88,8 +90,8 @@ export const SkeletonDetails: React.FC = () => {
         </div>
 
         <div
-        className={`${Styles.skeleton__capacity__separator} ${Styles.skeleton__animate}`}
-      />
+          className={`${Styles.skeleton__capacity__separator} ${Styles.skeleton__animate}`}
+        />
       </div>
 
       <div className={Styles.skeleton__price}>
@@ -113,9 +115,7 @@ export const SkeletonDetails: React.FC = () => {
       </div>
 
       <div className={Styles.skeleton__info}>
-        <p
-
-        >
+        <p>
           <span
             className={`${Styles.skeleton__info__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -124,9 +124,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__info__paragraph}
-        >
+        <p className={Styles.skeleton__info__paragraph}>
           <span
             className={`${Styles.skeleton__info__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -135,9 +133,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__info__paragraph}
-        >
+        <p className={Styles.skeleton__info__paragraph}>
           <span
             className={`${Styles.skeleton__info__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -146,9 +142,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__info__paragraph}
-        >
+        <p className={Styles.skeleton__info__paragraph}>
           <span
             className={`${Styles.skeleton__info__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -194,13 +188,9 @@ export const SkeletonDetails: React.FC = () => {
           className={`${Styles.skeleton__tech__title} ${Styles.skeleton__animate}`}
         ></p>
 
-        <div
-          className={Styles.skeleton__tech__separator}
-        />
+        <div className={Styles.skeleton__tech__separator} />
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -209,9 +199,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -220,9 +208,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -231,9 +217,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -242,9 +226,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>
@@ -253,9 +235,7 @@ export const SkeletonDetails: React.FC = () => {
           ></span>
         </p>
 
-        <p
-          className={Styles.skeleton__tech__paragraph}
-        >
+        <p className={Styles.skeleton__tech__paragraph}>
           <span
             className={`${Styles.skeleton__tech__paragraph__name} ${Styles.skeleton__animate}`}
           ></span>

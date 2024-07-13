@@ -48,9 +48,7 @@ export const ShopByCategory: React.FC = () => {
           alt="accessories"
         />
 
-        <h3 className={Styles.shop_by_category__section__title}>
-          Accessories
-        </h3>
+        <h3 className={Styles.shop_by_category__section__title}>Accessories</h3>
 
         <p className={Styles.shop_by_category__section__paragraph}>
           {accessoriesTotalNumber}

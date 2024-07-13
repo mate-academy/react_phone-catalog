@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useMemo } from 'react';
 import { ContextApp } from '../../appContext/AppContext';
 import Style from './Accessories.module.scss';

@@ -113,7 +113,7 @@ export const SectionDashSlider: React.FC = () => {
             })}
           ></div>
 
-<div
+          <div
             onClick={() => handlerPicker(2)}
             className={cn(Styles.slider__picker__dash, {
               [Styles.slider__picker__dash__selected]: 2 === active,

@@ -124,7 +124,7 @@ export const CartCard: React.FC<Props> = ({
           >
             {isEdited ? (
               <input
-              className={Styles.cartCard__container__quantity__input}
+                className={Styles.cartCard__container__quantity__input}
                 value={inputValue}
                 onChange={event => setInputValue(+event.target.value)}
                 type="number"

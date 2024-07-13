@@ -20,8 +20,8 @@ export const ItemSlider: React.FC<Props> = ({
   const [active, setActive] = useState(0);
   const [copyProducts, setCopyProducts] = useState<Item[]>([...list]);
   const [productsTotalNumber, setProductsTotalNumber] = useState(list.length);
-  const startTouch = useRef<number>(0);
-  const endTouch = useRef<number>(0);
+  const startTouch = useRef<number | null>(0);
+  const endTouch = useRef<number | null>(0);
 
   const handlerTouchStart = (e: React.TouchEvent<HTMLDivElement>) => {
     startTouch.current = e.touches[0].clientX;
@@ -32,14 +32,20 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const handlerTouchEnd = () => {
-    if (startTouch.current - endTouch.current > 10) {
-      setActive((prevState) => (prevState + 1) % productsTotalNumber);
-    }
+    if (startTouch.current && endTouch.current) {
+      if (startTouch.current - endTouch.current > 10) {
+        setActive(prevState => (prevState + 1) % productsTotalNumber);
+      }
 
-    if (startTouch.current - endTouch.current < -10) {
-      setActive(
-        (prevState) => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
-      );
+      if (startTouch.current - endTouch.current < -10) {
+        setActive(
+          prevState =>
+            (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+        );
+      }
+
+      startTouch.current = null;
+      endTouch.current = null;
     }
   };
 
@@ -62,12 +68,12 @@ export const ItemSlider: React.FC<Props> = ({
 
   const handlerLeft = () => {
     setActive(
-      (prevState) => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
+      prevState => (prevState - 1 + productsTotalNumber) % productsTotalNumber,
     );
   };
 
   const handlerRight = () => {
-    setActive((prevState) => (prevState + 1) % productsTotalNumber);
+    setActive(prevState => (prevState + 1) % productsTotalNumber);
   };
 
   return (

@@ -14,11 +14,13 @@ export const Favourites: React.FC = () => {
 
       <div className={Styles.fav__container}>
         {fav.map(product => {
-          return <ProductCard
-            key={product.id}
-            type={product.category}
-            product={product}
-          />;
+          return (
+            <ProductCard
+              key={product.id}
+              type={product.category}
+              product={product}
+            />
+          );
         })}
       </div>
     </div>

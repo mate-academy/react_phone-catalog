@@ -124,12 +124,13 @@ export const Details: React.FC<Props> = ({ list }) => {
       {!product && <SkeletonDetails />}
       {product && (
         <div className={Styles.card}>
-
           <Crumbs path={[product.category]} details={`${product.id}`} />
 
           <BackButton />
 
-          <h1 className={Styles.card__title}>{firstLetterCapital(product.id)}</h1>
+          <h1 className={Styles.card__title}>
+            {firstLetterCapital(product.id)}
+          </h1>
 
           <div className={Styles.card__slider}>
             <div
@@ -226,8 +227,6 @@ export const Details: React.FC<Props> = ({ list }) => {
             <div className={Styles.card__capacity__separator} />
           </div>
 
-
-
           <div className={Styles.card__price}>
             <div className={Styles.card__price__container}>
               <p className={Styles.card__price__discount}>
@@ -251,7 +250,8 @@ export const Details: React.FC<Props> = ({ list }) => {
                 onClick={() => handleAddFav(product)}
                 className={cn(Styles.card__price__fav, {
                   [Styles.card__price__fav__selected]: fav.find(
-                    item => item.id === product.id),
+                    item => item.id === product.id,
+                  ),
                 })}
               />
             </div>
