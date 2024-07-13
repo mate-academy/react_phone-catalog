@@ -8,7 +8,6 @@ import { Gadgets } from '../types/ContextType/Gadgets';
 import { Loader } from '../components/Loader';
 import { ProductDetails } from '../components/ProductDetails/ProductDetails';
 import { StateContext } from '../store/StateProvider';
-
 type Props = {
   type: Category;
 };

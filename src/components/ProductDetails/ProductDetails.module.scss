@@ -48,6 +48,9 @@
     width: 80px;
     height: 80px;
     margin: 0;
+    &:hover {
+      border-color: $secondBorderActiveColor;
+    }
   }
 
   &__buttonForImage {

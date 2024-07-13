@@ -22,6 +22,7 @@
   transform: translateY(-100%);
   scroll-behavior: smooth;
   opacity: 0;
+  scrollbar-gutter: stable;
 
   &__header {
     display: flex;

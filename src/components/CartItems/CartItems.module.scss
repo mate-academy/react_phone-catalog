@@ -72,6 +72,8 @@
   &__gadgetPhoto {
     max-width: 80px;
     max-height: 80px;
+    @extend %transitionPage;
+    @include onHover;
   }
 
   &__gadgetName {
