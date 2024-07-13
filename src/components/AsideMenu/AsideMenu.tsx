@@ -42,7 +42,6 @@ export const AsideMenu = () => {
       })}
     >
       <div className={style.menu__header}>
-
         <div className={style.menu__closeWrappen}>
           <Link to={Pathname.home} onClick={() => setActiveMenu(false)}>
             <Logo className={style.menu__headerLogo} />
@@ -57,7 +56,6 @@ export const AsideMenu = () => {
             <IconClose className={style.menu__actionIcon} />
           </button>
         </div>
-
       </div>
 
       <div className={style.menu__listContainer}>
