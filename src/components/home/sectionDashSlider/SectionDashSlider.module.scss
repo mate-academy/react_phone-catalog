@@ -1,9 +1,9 @@
 @use '../../../utils/mixins' as *;
-@use '../../../utils/variables' as *;
+@use "../../../utils/themes" as *;
 ;
 
 .title {
-  color: #313237;
+  color: var(--primary-color);
   font-family: Montserrat, sans-serif;
   font-weight: 800;
   font-size: 32px;
@@ -34,7 +34,7 @@
     background-size: 30%;
     width: 32px;
     height: 250px;
-    border: 1px solid $icons;
+    border: 1px solid var(--icons);
     position: absolute;
     top: 150px;
     left: 100px;
@@ -55,7 +55,7 @@
     background-size: 30%;
     width: 32px;
     height: 250px;
-    border: 1px solid $icons;
+    border: 1px solid var(--icons);
     position: absolute;
     top: 150px;
     right: 100px;
@@ -76,7 +76,7 @@
   &__container {
     display: flex;
     width: 320px;
-    height: 352px;
+    height: 252px;
     margin-bottom: 5px;
 
     @include for-tablet {
@@ -110,10 +110,10 @@
       width: 14px;
       height: 4px;
       margin-right: 15px;
-      background-color: $border-color;
+      background-color: var(--border-color);
 
       &__selected {
-        background-color: #313237;
+        background-color: var(--primary-color);
       }
     }
   }

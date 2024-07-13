@@ -12,7 +12,7 @@
   }
 
   &__button {
-    color: #313237;
+    color: var(--primary-color);
     box-sizing: border-box;
     border-radius: 20px;
     font-size: 14px;
@@ -20,7 +20,6 @@
     line-height: 16px;
     height: 16px;
     text-align: center;
-    width: fit-content;
     padding: 5px;
     width: 70px;
     display: flex;

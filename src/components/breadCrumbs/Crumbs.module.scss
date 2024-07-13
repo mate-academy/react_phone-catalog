@@ -1,5 +1,5 @@
 @use "../../utils/mixins" as *;
-@use "../../utils/variables" as *;
+@use "../../utils/themes" as *;
 
 .crumbs {
   display: flex;
@@ -22,7 +22,7 @@
   }
 
   &__paragraph {
-    color: #313237;
+    color: var(--primary-color);
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;
@@ -32,7 +32,7 @@
   }
 
   &__details {
-    color: $secondary-color;
+    color: var(--secondary-color);
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;

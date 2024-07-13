@@ -20,6 +20,10 @@
     width: 102vw;
     height: 1px;
     border: 1px solid var(--border-color);
-    margin-bottom: 10px
+    margin-bottom: 10px;
+
+    @include for-tablet {
+      margin-bottom: 30px;
+    }
   }
 }

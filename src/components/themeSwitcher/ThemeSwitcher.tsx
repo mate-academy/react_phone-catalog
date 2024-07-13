@@ -1,20 +1,30 @@
 import React, { useEffect } from 'react';
-import Styles from './ThemeSwitcher.module.scss'
-export const ThemeSwitcher: React.FC = () => {
+import Styles from './ThemeSwitcher.module.scss';
+
+export const ThemeSwitcher React.FC = () => {
   useEffect(() => {
-    const currentTheme = localStorage.getItem('theme')
+    const currentTheme = localStorage.getItem('theme');
+    const toggleSwitch = document.querySelector(
+      `.${Styles.theme_switch} input[type="checkbox"]`,
+    ) as HTMLInputElement;
 
     if (currentTheme) {
       document.documentElement.setAttribute('data-theme', currentTheme);
     }
 
+    if (currentTheme === 'purple') {
+      toggleSwitch.checked = true;
+    }
+
     const handleSwitchChange = (event: Event) => {
       const isChecked = (event.target as HTMLInputElement).checked;
-      document.documentElement.setAttribute('data-theme', isChecked ? 'purple' : 'light');
+      document.documentElement.setAttribute(
+        'data-theme',
+        isChecked ? 'purple' : 'light',
+      );
       localStorage.setItem('theme', isChecked ? 'purple' : 'light');
     };
 
-    const toggleSwitch = document.querySelector(`.${Styles.theme_switch} input[type="checkbox"]`) as HTMLInputElement;
     toggleSwitch?.addEventListener('change', handleSwitchChange);
 
     return () => {

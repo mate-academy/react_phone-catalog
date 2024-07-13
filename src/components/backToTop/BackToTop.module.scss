@@ -1,5 +1,5 @@
 @use "../../utils/mixins" as *;
-@use "../../utils/variables" as *;
+@use "../../utils/themes" as *;
 
 .back {
   position: sticky;
@@ -11,8 +11,8 @@
   margin-top: 120vh;
 
   @include for-tablet {
-    bottom: 32px;
-    left: calc(100% - 140px);
+    bottom: 11px;
+    left: calc(100% - 146px);
   }
 
   &__paragraph {
@@ -28,6 +28,6 @@
     background-image: url(../../../public/img/svg/arrow_up.svg);
     background-position: center;
     background-repeat: no-repeat;
-    border: 1px solid $icons;
+    border: 1px solid var(--icons);
   }
 }

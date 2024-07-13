@@ -4,6 +4,7 @@
   flex-direction: column;
   justify-content: center;
   transition: all 0.6s ease-in-out;
+  height: fit-content;
 
   &__crumbs {
     display: flex;

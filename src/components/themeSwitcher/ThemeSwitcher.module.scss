@@ -19,7 +19,7 @@
     display: flex;
     align-items: center;
     justify-content: flex-end;
-    margin-top: 20px;
+    margin-bottom: 20px;
 
     em {
       margin-left: 10px;
@@ -30,15 +30,12 @@
 
 .slider {
   background-color: #ccc;
-  bottom: 0px;
   cursor: pointer;
-  left: 0;
   position: absolute;
-  right: 0;
-  top: 0px;
+  inset: 0;
   transition: 0.4s;
 
-  &:before {
+  &::before {
     background-color: #fff;
     bottom: 4px;
     content: "";
@@ -52,7 +49,7 @@
   &.round {
     border-radius: 34px;
 
-    &:before {
+    &::before {
       border-radius: 50%;
     }
   }
@@ -62,7 +59,7 @@ input:checked {
   &+.slider {
     background-color: #66bb6a;
 
-    &:before {
+    &::before {
       transform: translateX(26px);
     }
   }

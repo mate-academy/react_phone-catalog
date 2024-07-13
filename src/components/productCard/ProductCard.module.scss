@@ -1,11 +1,11 @@
 @use "../../utils/mixins" as *;
-@use '../../utils/variables' as *;
+@use "../../utils/themes" as *;
 
 .productCard {
   font-family: Montserrat, sans-serif;
   width: 270px;
   height: 440px;
-  border: 1px solid $border-color;
+  border: 1px solid var(--border-color);
   margin: 0 15px 7px 0;
   padding: 10px 15px 0;
   font-size: 14px;
@@ -13,6 +13,10 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+
+  @include for-tablet {
+    height: 510px;
+  }
 
   &__picture {
     margin: auto;
@@ -44,7 +48,7 @@
       font-weight: 800;
       font-size: 22px;
       line-height: 31px;
-      color: #313237;
+      color: var(--primary-color);
       align-self: flex-start;
       align-self: center;
       margin-right: 8px;
@@ -53,7 +57,7 @@
       &__reduce {
         text-decoration: line-through;
         font-weight: 500;
-        color: $secondary-color;
+        color: var(--secondary-color);
         font-size: 22px;
         line-height: 31px;
         width: 97px;
@@ -69,7 +73,7 @@
   &__separator {
     height: 1px;
     width: 225px;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
     margin-bottom: 8px;
   }
 
@@ -87,14 +91,14 @@
         height: fit-content;
         font-weight: 700;
         font-size: 12px;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &__value {
         height: fit-content;
         font-weight: 700;
         font-size: 12px;
-        color: #313237;
+        color: var(--primary-color);
         text-align: end;
       }
     }
@@ -110,7 +114,7 @@
       margin-right: 10px;
       width: 160px;
       height: 40px;
-      background-color: #313237;
+      background-color: var(--primary-color);
       color: #fff;
       line-height: 40px;
       text-align: center;
@@ -124,7 +128,7 @@
       &__added {
         color: #27AE60;
         background-color: #fff;
-        border: 1px solid $border-color;
+        border: 1px solid var(--border-color);
 
         &::before {
           content: 'Added to cart';
@@ -135,7 +139,7 @@
 
     &__fav {
       width: 40px;
-      border: 1px solid $icons;
+      border: 1px solid var(--icons);
       background-image: url(../../../public/img/svg/fav_icon.svg);
       background-repeat: no-repeat;
       background-position: center;

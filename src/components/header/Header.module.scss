@@ -1,4 +1,4 @@
-@use "../../utils/variables" as *;
+@use "../../utils/themes" as *;
 @use "../../utils/mixins" as *;
 
 .header {
@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100vw;
-  border-bottom: 1px solid $border-color;
+  border-bottom: 1px solid var(--border-color);
   font-family: Montserrat, sans-serif;
   transition: all 0.6s ease-in-out;
   margin-bottom: 1px;
@@ -45,7 +45,7 @@
     &__fav {
       width: 48px;
       height: 48px;
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -79,7 +79,7 @@
     &__cart {
       width: 48px;
       height: 48px;
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -124,7 +124,7 @@
     z-index: 10;
     background-color: #FFF;
     transform: translateX(100%);
-    border-bottom: 1px solid $border-color;
+    border-bottom: 1px solid var(--border-color);
 
     &__list {
       display: flex;
@@ -140,7 +140,7 @@
         letter-spacing: 2px;
         font-size: 12px;
         font-weight: 800;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
     }
@@ -153,7 +153,7 @@
       &__fav {
         width: 50%;
         height: 64px;
-        border: 1px solid $border-color;
+        border: 1px solid var(--border-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -183,7 +183,7 @@
         position: relative;
         width: 50%;
         height: 64px;
-        border: 1px solid $border-color;
+        border: 1px solid var(--border-color);
         display: flex;
         align-items: center;
         justify-content: center;
@@ -221,7 +221,7 @@
       &__element {
         width: fit-content;
         text-transform: uppercase;
-        color: $secondary-color;
+        color: var(--secondary-color);
         font-weight: 800;
         font-size: 12px;
         line-height: 48px;
@@ -231,7 +231,7 @@
           content: '';
           width: 100%;
           height: 2px;
-          border: 1px solid black;
+          border: 1px solid var(--primary-color);
           display: block;
         }
 
@@ -246,7 +246,7 @@
     display: flex;
     width: 48px;
     align-items: center;
-    border: 1px solid $border-color;
+    border: 1px solid var(--border-color);
 
     &__img {
       margin: auto;

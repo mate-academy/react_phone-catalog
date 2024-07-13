@@ -1,5 +1,5 @@
 @use "../../utils/mixins" as *;
-@use "../../utils/variables" as *;
+@use "../../utils/themes" as *;
 
 .tablets {
   font-family: Montserrat, sans-serif;
@@ -37,7 +37,7 @@
     &__paragraph {
       font-size: 14px;
       font-weight: 600;
-      color: $secondary-color;
+      color: var(--secondary-color);
       margin-bottom: 32px;
     }
   }
@@ -66,13 +66,13 @@
       &__paragraph {
         font-size: 12px;
         font-weight: 700;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &__select {
         width: 100%;
         height: 40px;
-        border: 1px solid $icons;
+        border: 1px solid var(--icons);
       }
     }
 
@@ -82,13 +82,13 @@
       &__paragraph {
         font-size: 12px;
         font-weight: 700;
-        color: $secondary-color;
+        color: var(--secondary-color);
       }
 
       &__select {
         width: 100%;
         height: 40px;
-        border: 1px solid $icons;
+        border: 1px solid var(--icons);
       }
 
     }

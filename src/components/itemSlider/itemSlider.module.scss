@@ -1,5 +1,5 @@
 @use "../../utils/mixins" as *;
-@use "../../utils/variables" as *;
+@use "../../utils/themes" as *;
 
 .brand_new_models {
 
@@ -7,18 +7,19 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    width: 288px;
+    width: 100%;
     height: 62px;
+    padding: 0 24px;
     margin: 0 auto 24px;
 
-    @include for-tablet {
-      width: 600px;
-    }
+    // @include for-tablet {
+    //   width: 600px;
+    // }
 
-    @include for-desktop {
-      width: 1200px;
-      margin: 0 24px 24px;
-    }
+    // @include for-desktop {
+    //   width: 1200px;
+    //   margin: 0 24px 24px;
+    // }
   }
 
   &__title {
@@ -34,7 +35,6 @@
 
     @include for-desktop {
       width: 1100px;
-
     }
   }
 
@@ -45,7 +45,7 @@
     justify-content: space-between;
 
     &__left {
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
       height: 32px;
       width: 32px;
       background-image: url(../../../public/img/svg/arrow_left.svg);
@@ -58,7 +58,7 @@
     }
 
     &__right {
-      border: 1px solid $border-color;
+      border: 1px solid var(--border-color);
       height: 32px;
       width: 32px;
       background-image: url(../../../public/img/svg/arrow_right.svg);
@@ -75,5 +75,10 @@
     display: flex;
     width: 440px;
     margin-left: 24px;
+    margin-bottom: 56px;
+
+    @include for-tablet {
+      margin-bottom: 80px;
+    }
   }
 }
