@@ -81,10 +81,6 @@
     @include for-tablet {
       top: 120px;
     }
-
-    @include for-desktop {
-      top: 160px;
-    }
   }
 
   &__container {

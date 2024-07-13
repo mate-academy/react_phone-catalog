@@ -73,6 +73,7 @@
         width: 100%;
         height: 40px;
         border: 1px solid var(--icons);
+        border-radius: 10px;
       }
     }
 
@@ -89,6 +90,7 @@
         width: 100%;
         height: 40px;
         border: 1px solid var(--icons);
+        border-radius: 10px;
       }
     }
   }
@@ -104,8 +106,7 @@
       justify-content: space-between;
       flex-flow: row wrap;
       align-self: center;
-      width: calc(100% - 20px);
-      max-width: 1199px;
+      width: 1200px;
       margin: 0 0 64px;
     }
   }

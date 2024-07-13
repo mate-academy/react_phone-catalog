@@ -46,7 +46,8 @@
       margin: 0 0 24px;
     }
 
-    &__sort, &__items {
+    &__sort,
+    &__items {
       display: flex;
       flex-direction: column;
       justify-content: space-between;
@@ -80,8 +81,8 @@
       justify-content: flex-start;
       flex-flow: row wrap;
       width: calc(100% - 20px);
-      max-width: 1199px;
-      margin:0 0 64px;
+      width: 1200px;
+      margin: 0 0 64px;
     }
 
     &__card {
@@ -137,9 +138,11 @@
     0% {
       background-color: #e0e0e0;
     }
+
     50% {
       background-color: #f0f0f0;
     }
+
     100% {
       background-color: #e0e0e0;
     }

@@ -33,7 +33,7 @@ export const App = () => {
     <div onScroll={handleScroll} ref={app} className="app">
       <Header />
       <h1 className="app__title">Product Catalog</h1>
-      
+
       <ThemeSwitcher />
 
       <Routes>

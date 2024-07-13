@@ -260,6 +260,12 @@
       font-weight: 700;
       border-radius: 14px;
 
+      &:hover {
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
+      }
+
       &::before {
         content: 'Add to cart';
         display: block;
@@ -288,7 +294,9 @@
       border-radius: 50%;
 
       &:hover {
-        border-color: black;
+        box-shadow:
+          3px 3px 3px var(--secondary-color),
+          6px 6px 3px var(--border-color);
       }
 
       &__selected {
@@ -451,6 +459,10 @@
       width: 100%;
       grid-row: 15 / 16;
       grid-column: 1 / 13;
+    }
+
+    @include for-desktop {
+      grid-column: 1 / 25;
     }
   }
 }

@@ -14,7 +14,8 @@
     flex-wrap: wrap;
 
     @include for-tablet {
-      width: calc(100% - 20px);
+      // width: calc(100% - 20px);
+      width: 100%;
     }
 
     &__item {
