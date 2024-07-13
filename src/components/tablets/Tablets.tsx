@@ -6,6 +6,7 @@ import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
+import { Reload } from '../reload/Reload';
 
 export const Tablets: React.FC = () => {
   const {
@@ -19,6 +20,7 @@ export const Tablets: React.FC = () => {
     handleChangeItems,
     handleChangeSort,
     handlePageChange,
+    loadingErr,
   } = useContext(ContextApp);
 
   const sortedPhones = sortBy(products, tablets, selectedOption);
@@ -46,7 +48,9 @@ export const Tablets: React.FC = () => {
         <p className={Styles.tablets__no_item}>There are no tablets yet</p>
       )}
 
-      {!isLoadingTablets && tabletsTotalNumber !== 0 && (
+      {!isLoadingTablets && loadingErr && <Reload />}
+
+      {!isLoadingTablets && !loadingErr && tabletsTotalNumber !== 0 && (
         <>
           <Crumbs path={['tablets']} />
 

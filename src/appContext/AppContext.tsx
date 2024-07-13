@@ -58,8 +58,8 @@ type AppContextProps = {
   isTablet: boolean;
   isDesktop: boolean;
   handleClearParams: () => void;
-  loadingErr: string | null;
-  setLoadingErr: React.Dispatch<React.SetStateAction<string | null>>;
+  loadingErr: boolean;
+  setLoadingErr: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 type Props = {
@@ -85,7 +85,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
   const [phonesTotalNumber, setPhonesTotalNumber] = useState(0);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const [tabletsTotalNumber, setTabletsTotalNumber] = useState(0);
-  const [loadingErr, setLoadingErr] = useState<string | null>(null);
+  const [loadingErr, setLoadingErr] = useState<boolean>(false);
 
   const perPage = searchParams.get('perPage');
   const page = searchParams.get('page');
@@ -226,6 +226,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setProductsTotalNumber(response.length);
       })
       .catch(err => {
+        setLoadingErr(true);
         throw new Error('Something went wrong', err);
       })
       .finally(() => {
@@ -242,6 +243,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setAccessoriesTotalNumber(response.length);
       })
       .catch(err => {
+        setLoadingErr(true);
         throw new Error('Smething went wrong', err);
       })
       .finally(() => {
@@ -258,6 +260,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setPhonesTotalNumber(response.length);
       })
       .catch(err => {
+        setLoadingErr(true);
         throw new Error('There are no phones yet', err);
       })
       .finally(() => {
@@ -274,7 +277,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         setTabletsTotalNumber(response.length);
       })
       .catch(err => {
-        setLoadingErr('Something went wrong')
+        setLoadingErr(true);
         throw new Error('Something went wrong', err);
       })
       .finally(() => {

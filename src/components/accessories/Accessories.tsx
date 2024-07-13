@@ -6,6 +6,7 @@ import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
+import { Reload } from '../reload/Reload';
 
 export const Accessories: React.FC = () => {
   const {
@@ -19,6 +20,7 @@ export const Accessories: React.FC = () => {
     selectedOption,
     itemsPerPage,
     activePage,
+    loadingErr,
   } = useContext(ContextApp);
 
   const sortedAccessories = sortBy(products, accessories, selectedOption);
@@ -31,6 +33,7 @@ export const Accessories: React.FC = () => {
   }, [accessoriesTotalNumber, itemsPerPage]);
 
   const startFromElement = +itemsPerPage * activePage - +itemsPerPage;
+
   const endOnElement = Math.min(
     +itemsPerPage * activePage,
     accessoriesTotalNumber,
@@ -45,11 +48,13 @@ export const Accessories: React.FC = () => {
     <div className={Style['accessories']}>
       {isLoadingAccessories && <Skeleton />}
 
+      {!isLoadingAccessories && loadingErr && <Reload />}
+
       {!isLoadingAccessories && accessoriesTotalNumber === 0 && (
         <p className={Style.tablets__no_item}>There are no tablets yet</p>
       )}
 
-      {!isLoadingAccessories && (
+      {!isLoadingAccessories && !loadingErr && (
         <>
           <Crumbs path={['accessories']} />
 

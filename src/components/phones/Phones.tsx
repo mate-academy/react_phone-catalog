@@ -6,6 +6,7 @@ import { sortBy } from '../../functions/sortBy';
 import { Skeleton } from '../../skeletons/Skelton';
 import { ProductCard } from '../productCard';
 import { Crumbs } from '../breadCrumbs/Crumbs';
+import { Reload } from '../reload/Reload';
 
 export const Phones: React.FC = () => {
   const {
@@ -19,6 +20,7 @@ export const Phones: React.FC = () => {
     handleChangeItems,
     handleChangeSort,
     handlePageChange,
+    loadingErr,
   } = useContext(ContextApp);
 
   const sortedPhones = sortBy(products, phones, selectedOption);
@@ -42,7 +44,9 @@ export const Phones: React.FC = () => {
     <div className={Styles['phones']}>
       {isLoadingPhones && <Skeleton />}
 
-      {!isLoadingPhones && phonesTotalNumber === 0 && (
+      {!isLoadingPhones && loadingErr && <Reload />}
+
+      {!isLoadingPhones && !loadingErr  && phonesTotalNumber === 0 && (
         <p className={Styles.tablets__no_item}>There are no tablets yet</p>
       )}
 
