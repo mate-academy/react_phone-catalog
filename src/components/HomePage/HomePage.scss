@@ -6,13 +6,16 @@
   justify-content: space-between;
   border-bottom: 1px solid #3B3E4A;
   padding: 0 0 0 16px;
+  height: 48px;
 
-  @include on-tv {
+  @include on-pc {
     padding: 0 0 0 24px;
+    height: 64px;
   }
 
   @include on-tv {
     padding: 0 0 0 24px;
+    height: 64px;
   }
 
   &--logo {
@@ -36,6 +39,7 @@
   &__navlist {
     display: flex;
     align-items: center;
+    height: 100%;
   }
 
   &__active {
@@ -43,19 +47,22 @@
     text-decoration: none;
     list-style: none;
     color: #949ca2;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
   
   &__active::after {
     content: '';
     position: absolute;
-    bottom: -23px;
+    bottom: 0;
     left: 0;
     width: 100%;
     border-bottom: 3px solid #F1F2F9;
     box-sizing: border-box;
 
     @include on-tablet {
-      bottom: -16px;
+      bottom: 0;
     }
   }
 
@@ -73,14 +80,21 @@
       border-bottom: 3px solid #F1F2F9;
       box-sizing: border-box;
     }
+  }
 
+  &__active:hover {
+    color: #c7c7ca;
   }
 
   &__list {
     display: none;
+    height: 100%;
+    margin: 0;
 
     @include on-tablet {
       display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0;
       list-style: none;
       gap: 32px;
@@ -89,6 +103,8 @@
 
     @include on-tv {
       display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0;
       list-style: none;
       gap: 64px;
@@ -97,6 +113,8 @@
 
     @include on-tv {
       display: flex;
+      justify-content: center;
+      align-items: center;
       padding: 0;
       list-style: none;
       gap: 64px;
@@ -110,11 +128,17 @@
     font-size: 12px;
     line-height: 11px;
     letter-spacing: 0.04em;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   &__href {
     text-decoration: none;
     color: #949ca2;
+    height: 100%;
+    display: flex;
+    align-items: center;
   }
 
   &__href:hover {
