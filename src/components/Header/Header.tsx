@@ -4,6 +4,7 @@ import LogoIcon from '../../img/icons/LogoIcon.svg'
 import cartIcon from '../../img/icons/CartIcon.svg'
 import favIcon from '../../img/icons/fav.svg'
 import React from 'react';
+import { Search } from  '../Search';
 
 export const Header: React.FC = () => (
   <header className={styles.header}>
@@ -50,7 +51,8 @@ export const Header: React.FC = () => (
         </NavLink>
 
         <div className={styles.actionsContainer}>
-          {/* SEARCH TOGGLE PLACEHOLDER */}
+          <Search />
+
           <div className={styles.actions}>
             <NavLink
               to="/"
