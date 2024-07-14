@@ -1,6 +1,6 @@
 @use '../../../styles/block/utils/variables' as *;
 @import '../../../styles/block/utils/mixins';
-@import '../../../styles/block/utils/_placeholders.scss';
+@import '../../../styles/block/utils/placeholders';
 
 .card {
   &__container {
@@ -23,12 +23,14 @@
     line-height: 21px;
     &:hover {
       @extend %transitionPage;
+
       text-decoration: underline;
     }
   }
 
   &__cardImg {
     margin-bottom: 8px;
+
     @extend %transitionPage;
     @include onHover;
   }
@@ -105,9 +107,8 @@
     font-weight: 700;
     font-size: 14px;
     line-height: 21px;
-    color: #ffffff;
+    color: #fff;
     background-color: $backgroundColorButtonCart;
-    width: 160px;
     height: 40px;
     border: none;
     cursor: pointer;

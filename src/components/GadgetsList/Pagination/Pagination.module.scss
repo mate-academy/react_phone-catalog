@@ -1,10 +1,11 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
+@use '../../../styles/block/utils/variables' as *;
 @import '../../../styles/block/utils/mixins';
 
 .pagination {
   display: flex;
   justify-content: center;
   column-gap: 16px;
+
   @include space-between-sectionsDesktop;
 
   &__link {

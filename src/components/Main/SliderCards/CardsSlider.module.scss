@@ -1,6 +1,6 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
-@import '../../../styles/block/utils/_mixins.scss';
-@import '../../../styles/block/utils/_placeholders.scss';
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/mixins';
+@import '../../../styles/block/utils/placeholders';
 
 .cardsSlider {
   position: relative;
@@ -50,6 +50,7 @@
     grid-template-columns: repeat($grid-columns-desctop, 1fr);
     column-gap: 16px;
     flex-shrink: 0;
+
     @extend %transitionPage;
   }
 
@@ -60,6 +61,7 @@
     user-select: none;
   }
 }
+
 @include onTablet {
   .cardsSlider {
     @include space-between-sectionsTablet;

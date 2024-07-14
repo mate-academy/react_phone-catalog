@@ -1,5 +1,5 @@
 @use '../../styles/block/utils/variables' as *;
-@import '../../styles/block/utils/_mixins.scss';
+@import '../../styles/block/utils/mixins';
 
 .back {
   display: flex;
@@ -15,6 +15,7 @@
     color: $textColor;
   }
 }
+
 .back__darkTheme.back {
   color: $backTextColorDefoult;
 }

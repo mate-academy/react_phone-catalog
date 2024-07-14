@@ -1,6 +1,6 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
-@import '../../../styles/block/utils/_mixins.scss';
-@import '../../../styles/block/utils/_placeholders.scss';
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/mixins';
+@import '../../../styles/block/utils/placeholders';
 
 .nav {
   &__list {
@@ -16,12 +16,8 @@
     position: relative;
     text-transform: uppercase;
     color: $secondTextColor;
-    &:hover {
-      color: $textColor;
-      @extend %transitionPage;
-    }
 
-    &:after {
+    &::after {
       background-color: $textColor;
       position: absolute;
       content: '';
@@ -30,7 +26,14 @@
       top: 37px;
       left: 0;
       color: $textColor;
-      @include initialAnimation();
+
+      @include initialAnimation;
+    }
+
+    &:hover {
+      color: $textColor;
+
+      @extend %transitionPage;
     }
   }
 }
@@ -40,5 +43,5 @@
 }
 
 .nav__activeLink.nav__link::after {
-  @include activeAnimation();
+  @include activeAnimation;
 }

@@ -1,6 +1,7 @@
-@use '../../styles/block/utils/_variables.scss' as *;
-@import '../../styles/block/utils/_mixins.scss';
-@import '../../styles/block/utils/_placeholders.scss';
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/mixins';
+@import '../../styles/block/utils/placeholders';
+
 .modalWindow {
   width: 100vw;
   height: 100vh;
@@ -15,7 +16,7 @@
     height: 250px;
     border-radius: 12px;
     background-color: $backgroundColor;
-    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0 5px 15px;
     display: flex;
     flex-direction: column;
     padding: 25px;
@@ -51,6 +52,7 @@
     cursor: pointer;
     width: 16px;
     height: 16px;
+
     @include onHover;
   }
 
@@ -67,11 +69,13 @@
 
   &__cancel:hover {
     background-color: #218104d2;
+
     @extend %transitionPage;
   }
 
   &__clear:hover {
     background-color: #ff3a08;
+
     @extend %transitionPage;
   }
 }

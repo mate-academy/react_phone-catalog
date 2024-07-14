@@ -1,4 +1,4 @@
-@use '../../styles/block/utils/_variables.scss' as *;
+@use '../../styles/block/utils/variables' as *;
 @import '../../styles/block/utils/mixins';
 
 .gadgets {
@@ -37,10 +37,6 @@
     display: flex;
     column-gap: 16px;
     margin-bottom: 24px;
-
-    > .gadgets__select:last-child .gadgets__selectOptions {
-      width: 126px;
-    }
   }
 
   &__pagination {
@@ -81,6 +77,10 @@
 
 select:focus {
   background-image: url('../../image/Light-Theme/arrow-up.svg');
+}
+
+.gadgets__selectors > .gadgets__select:last-child .gadgets__selectOptions {
+  width: 126px;
 }
 
 @include onTablet {

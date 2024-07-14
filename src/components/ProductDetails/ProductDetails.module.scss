@@ -1,6 +1,6 @@
 @use '../../styles/block/utils/variables' as *;
-@import '../../styles/block/utils/_mixins.scss';
-@import '../../styles/block/utils/_placeholders.scss';
+@import '../../styles/block/utils/mixins';
+@import '../../styles/block/utils/placeholders';
 
 .product {
   max-width: $maxContentWidth;
@@ -16,6 +16,7 @@
     max-width: 55px;
     &:hover {
       color: $backHoverBtn;
+
       @extend %transitionPage;
     }
   }
@@ -30,6 +31,7 @@
     grid-template-columns: repeat($grid-columns-desctop, 1fr);
     position: relative;
     column-gap: 16px;
+
     @include space-between-sectionsDesktop;
   }
 
@@ -43,7 +45,6 @@
   &__borderImage {
     display: flex;
     justify-content: center;
-    margin-bottom: 16px;
     border: 1px solid $bordeColor;
     width: 80px;
     height: 80px;
@@ -280,7 +281,7 @@
     color: $idsTextColor;
     font-weight: 700;
     line-height: 15px;
-    right: 0px;
+    right: 0;
   }
 
   &__aboutSection {

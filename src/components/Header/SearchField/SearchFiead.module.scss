@@ -1,5 +1,5 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
-@import '../../../styles/block/utils/_mixins.scss';
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../styles/block/utils/mixins';
 
 .search {
   &__field {
@@ -16,6 +16,7 @@
     font-style: italic;
   }
 }
+
 input[type='search']::-webkit-search-cancel-button {
   display: inline-block;
   margin-left: 10px;

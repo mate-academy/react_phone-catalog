@@ -1,6 +1,6 @@
-@use '../../../styles/block/utils/_variables.scss' as *;
-@import '../../../../src/styles/block/utils/_mixins.scss';
-@import '../../../styles/block/utils/_placeholders.scss';
+@use '../../../styles/block/utils/variables' as *;
+@import '../../../../src/styles/block/utils/mixins';
+@import '../../../styles/block/utils/placeholders';
 
 .slider {
   padding-inline: $onDesctop-container-padding;
@@ -41,6 +41,7 @@
 
   &__images {
     display: flex;
+
     @extend %transitionPage;
   }
 

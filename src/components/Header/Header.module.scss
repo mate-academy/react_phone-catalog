@@ -1,6 +1,6 @@
-@use '../../styles/block/utils/_variables.scss' as *;
-@import '../../styles/block/utils/_mixins.scss';
-@import '../../styles/block/utils/_placeholders.scss';
+@use '../../styles/block/utils/variables.scss' as *;
+@import '../../styles/block/utils/mixins';
+@import '../../styles/block/utils/placeholders';
 
 .header {
   position: sticky;
@@ -48,6 +48,7 @@
     margin-left: 24px;
     height: 28px;
     width: 80px;
+
     @include onHover;
   }
 
@@ -86,6 +87,11 @@
     z-index: 1;
   }
 
+  &__actionsImg {
+    width: 16px;
+    height: 16px;
+  }
+
   &__actionsLink {
     position: relative;
     display: flex;
@@ -97,27 +103,21 @@
     border-left: 1px solid $bordeColor;
     background-repeat: no-repeat;
     background-position: center;
+
+    .header__quantityItemsCircle,
+    .header__actionsImg {
+      @extend %transitionPage;
+    }
+
     &::after {
       position: absolute;
       content: '';
       bottom: 1px;
       left: 1px;
       right: 1px;
-
       border-bottom: 3px solid $actionButtonHoverBorder;
-      @include initialAnimation();
-    }
-  }
 
-  &__actionsImg {
-    width: 16px;
-    height: 16px;
-  }
-
-  &__actionsLink {
-    .header__quantityItemsCircle,
-    .header__actionsImg {
-      @extend %transitionPage;
+      @include initialAnimation;
     }
   }
 
@@ -137,7 +137,7 @@
   }
 
   .header__activeButton.header__actionsLink::after {
-    @include activeAnimation();
+    @include activeAnimation;
   }
 
   &__burgerMenu {
@@ -164,7 +164,7 @@
   }
 
   .header__burgerMenuImg {
-    @include rotate();
+    @include rotate;
   }
 
   &__burgerMenu:hover {
@@ -188,8 +188,10 @@
       margin-left: 16px;
       height: 22px;
       width: 64px;
+
       @include onHover;
     }
+
     &__actionsLink {
       height: 48px;
       width: 48px;

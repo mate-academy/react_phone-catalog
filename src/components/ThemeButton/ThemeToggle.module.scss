@@ -1,6 +1,6 @@
-@use '../../styles/block/utils/_variables.scss' as *;
-@import '../../styles/block/utils/mixins.scss';
-@import '../../styles/block/utils/_placeholders.scss';
+@use '../../styles/block/utils/variables' as *;
+@import '../../styles/block/utils/mixins';
+@import '../../styles/block/utils/placeholders';
 
 .theme {
   &__area {
@@ -52,11 +52,12 @@
   }
 }
 
-.theme__checkbox:checked + .theme__switch::after {
-  transform: translateX(137%);
+.theme__checkbox + .theme__switch::after {
   @extend %transitionPage;
 }
 
-.theme__checkbox + .theme__switch::after {
+.theme__checkbox:checked + .theme__switch::after {
+  transform: translateX(137%);
+
   @extend %transitionPage;
 }

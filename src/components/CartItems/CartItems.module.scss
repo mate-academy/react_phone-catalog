@@ -1,6 +1,6 @@
 @use '../../styles/block/utils/variables' as *;
-@import '../../styles/block/utils/_mixins.scss';
-@import '../../styles/block/utils/_placeholders.scss';
+@import '../../styles/block/utils/mixins';
+@import '../../styles/block/utils/placeholders';
 
 .cart {
   max-width: $maxContentWidth;
@@ -72,6 +72,7 @@
   &__gadgetPhoto {
     max-width: 80px;
     max-height: 80px;
+
     @extend %transitionPage;
     @include onHover;
   }
@@ -245,12 +246,13 @@
     }
 
     &__item:last-child {
-      margin-bottom: 0px;
+      margin-bottom: 0;
     }
 
     &__priceContainer {
       grid-column: 1 / 13;
       height: 190px;
+
       @include space-between-sectionsTablet;
     }
   }

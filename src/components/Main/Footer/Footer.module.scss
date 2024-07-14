@@ -1,6 +1,6 @@
 @use '../../../styles/block/utils/variables' as *;
-@import '../../../styles/block/utils/_mixins.scss';
-@import '../../../styles/block/utils/_placeholders.scss';
+@import '../../../styles/block/utils/mixins';
+@import '../../../styles/block/utils/placeholders';
 
 .footer {
   height: 96px;
@@ -20,7 +20,7 @@
     display: flex;
     &:hover {
       @extend %transitionPage;
-      @include onHover();
+      @include onHover;
     }
   }
 
@@ -48,6 +48,7 @@
 
     &:hover {
       @extend %transitionPage;
+
       color: $textColor;
     }
   }
@@ -66,6 +67,7 @@
 
     &:hover {
       @extend %transitionPage;
+
       color: $textColor;
     }
   }
@@ -88,6 +90,7 @@
 
     .footer__darkTheme & {
       background-color: $linkBackgroundButton;
+
       @extend %darkThemeHoverBackgroundButton;
     }
 
