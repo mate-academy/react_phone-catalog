@@ -41,7 +41,7 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
     item => item.itemId === product.itemId,
   );
 
-  const handleAddToCart = () => {
+  const handleShoppingList = () => {
     if (!addedToCart) {
       const newCartItem = {
         ...cartItem,
@@ -49,6 +49,19 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
       };
 
       setShoppingList([...shoppingList, newCartItem]);
+
+      return;
+    }
+
+    if (addedToCart && shoppingList.length > 1) {
+      const updatedShoppingList = shoppingList.filter(
+        device => device.itemId !== cartItem.itemId,
+      );
+
+      setShoppingList(updatedShoppingList);
+    } else {
+      setShoppingList([]);
+      localStorage.removeItem('cartItem');
     }
   };
 
@@ -78,7 +91,7 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
       <button
         type="button"
         className={cn('add-block__add-to-cart', { added: addedToCart })}
-        onClick={handleAddToCart}
+        onClick={handleShoppingList}
       >
         {addedToCart ? 'Added to cart' : 'Add to cart'}
       </button>
