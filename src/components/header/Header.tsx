@@ -4,25 +4,6 @@ import Styles from './Header.module.scss';
 import { ContextApp } from '../../appContext/AppContext';
 import { Link } from 'react-router-dom';
 
-// const NAVIGATION_OVER_640px = (
-//   <nav className={Styles['header__nav']}>
-//     <ul className={Styles[`header__nav__list`]}>
-//       <li className={Styles[`header__nav__list__element`]}>
-//         <Link to={'/'}>home</Link>
-//       </li>
-//       <li className={Styles[`header__nav__list__element`]}>
-//         <Link to={'/phones'}>phones</Link>
-//       </li>
-//       <li className={Styles[`header__nav__list__element`]}>
-//         <Link to={'/tablets'}>tablets</Link>
-//       </li>
-//       <li className={Styles[`header__nav__list__element`]}>
-//         <Link to={'/accessories'}>accessories</Link>
-//       </li>
-//     </ul>
-//   </nav>
-// );
-
 export const Header: React.FC = () => {
   const { app, fav, cart, isPhone, isTablet, handleClearParams } =
     useContext(ContextApp);
@@ -75,6 +56,7 @@ export const Header: React.FC = () => {
 
   const burger = useRef<HTMLDivElement>(null);
   const [isBurgerClose, setIsBurgerClose] = useState(true);
+  const [isHovered, setIsHovered] = useState(false);
 
   const handlerBurgerMenu = () => {
     if (burger.current && app.current && isBurgerClose) {
@@ -184,6 +166,11 @@ export const Header: React.FC = () => {
                 src=".\img\svg\close.svg"
                 alt="burger menu"
                 className={Styles['header__burger__img']}
+                style={{
+                  transform: isHovered ? 'rotate(90deg)' : 'rotate(0deg)',
+                }}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
               />
             )}
           </div>
