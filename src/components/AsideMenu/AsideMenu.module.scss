@@ -44,7 +44,6 @@
     height: 48px;
     width: 48px;
     border: none;
-    // border-left: 1px solid $bordeColor;
     border-bottom: 1px solid $bordeColor;
     cursor: pointer;
     &:hover {
@@ -53,7 +52,6 @@
       }
     }
   }
-
 
   &__header {
     display: flex;

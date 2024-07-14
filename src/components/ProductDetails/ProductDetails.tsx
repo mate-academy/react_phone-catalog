@@ -68,6 +68,16 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
     cell,
   };
 
+  const handleValue = (v: string[] | string) => {
+    if (Array.isArray(v)) {
+      return v.join(' ').replaceAll(' ', '/');
+    } else if (!v) {
+      return '-';
+    }
+
+    return v;
+  };
+
   return (
     <div
       className={classNames(style.product, {
@@ -228,16 +238,18 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
           <h2 className={style.product__sectionTitle}>{t('techSpecs')}</h2>
           <span className={style.product__line} />
 
-          {Object.entries(CARD_TECH_SPECS_PARAMS).map(([key, value]) => (
-            <div className={style.product__techSpecsParams} key={key}>
-              <div className={style.product__shortDesription}>
-                <p className={style.product__shortDesKey}>{t(key)}</p>
-                <p className={style.product__shortDesValue}>
-                  {value ? value : '-'}
-                </p>
+          {Object.entries(CARD_TECH_SPECS_PARAMS).map(([key, value]) => {
+            return (
+              <div className={style.product__techSpecsParams} key={key}>
+                <div className={style.product__shortDesription}>
+                  <p className={style.product__shortDesKey}>{t(key)}</p>
+                  <p className={style.product__shortDesValue}>
+                    {handleValue(value)}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </section>
       </div>
 

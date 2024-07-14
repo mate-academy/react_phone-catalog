@@ -20,6 +20,7 @@ type ContextType = {
     gadgets: Product[];
   };
   resultFilteredDev: Product[];
+  perPage: string;
 };
 
 export const ProductsContext = createContext<ContextType>({} as ContextType);
@@ -101,6 +102,7 @@ export const ProductsProvider: React.FC<Props> = ({ children }) => {
     setProducts,
     gadgets,
     resultFilteredDev,
+    perPage,
   };
 
   return (

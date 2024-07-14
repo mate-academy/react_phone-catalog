@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 import { CardsContainer } from '../CardsContainer';
 import style from './ProductList.module.scss';
@@ -10,10 +10,16 @@ type Props = {
 };
 
 export const ProductList: React.FC<Props> = ({ title }) => {
-  const { favorites, activeMenu } = useContext(StateContext);
+  const { favorites, activeMenu, handleResize } = useContext(StateContext);
+  const element = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    handleResize(element);
+  }, [favorites]);
 
   return (
     <div
+      ref={element}
       className={classNames(style.favorites, {
         [style.favorites__activeAsideMenu]: activeMenu,
       })}

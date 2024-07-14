@@ -16,7 +16,6 @@ export const Main = () => {
   const { pathname } = useLocation();
   const { productId } = useParams();
   const { isLoading } = useContext(ProductsContext);
-
   const productIdChech = productId ? productId : '';
 
   const homePage =

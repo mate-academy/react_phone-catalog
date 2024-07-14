@@ -3,6 +3,7 @@
 
 .search {
   &__field {
+    position: relative;
     height: 63px;
     border: none;
     border-left: 1px solid $bordeColor;
@@ -14,6 +15,10 @@
     outline: none;
     font-style: italic;
   }
+}
+input[type='search']::-webkit-search-cancel-button {
+  display: inline-block;
+  margin-left: 10px;
 }
 
 @include onTablet {

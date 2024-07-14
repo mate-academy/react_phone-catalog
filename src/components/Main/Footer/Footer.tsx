@@ -9,11 +9,14 @@ import { Link } from 'react-router-dom';
 import { HashLink } from 'react-router-hash-link';
 import { ProductsContext } from '../../../store/ProductsProvider';
 import { Skeleton } from '../../Skeleton';
+import { StateContext } from '../../../store/StateProvider';
 
 export const Footer = () => {
   const { t } = useContext(LanguageContext);
   const { theme } = useContext(ThemeContext);
+  const { isScroll } = useContext(StateContext);
   const { isLoading } = useContext(ProductsContext);
+
   const footerNavList = [
     {
       name: 'gitHub',
@@ -52,16 +55,20 @@ export const Footer = () => {
           </ul>
 
           <div className={style.footer__upNav}>
-            <HashLink
-              smooth
-              to="#"
-              className={classNames(style.footer__upLink)}
-            >
-              {t('backToTop')}
-            </HashLink>
-            <HashLink smooth to="#" className={style.footer__arrowUpLink}>
-              <IconUp className={style.footer__arrowUpImg} />
-            </HashLink>
+            {isScroll && (
+              <>
+                <HashLink
+                  smooth
+                  to="#"
+                  className={classNames(style.footer__upLink)}
+                >
+                  {t('backToTop')}
+                </HashLink>
+                <HashLink smooth to="#" className={style.footer__arrowUpLink}>
+                  <IconUp className={style.footer__arrowUpImg} />
+                </HashLink>
+              </>
+            )}
           </div>
         </nav>
       ) : (

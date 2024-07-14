@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { RefObject, useMemo, useState } from 'react';
 import { Product } from '../types/ContextType/Product';
 import { useLocaleStorage } from '../utils/hooks/useLocalStorage';
 
@@ -14,6 +14,9 @@ type StateType = {
   imageProduct: string;
   setImageProduct: (v: string) => void;
   handleAddToFavorites: (v: Product) => void;
+  isScroll: boolean;
+  setIsScroll: (v: boolean) => void;
+  handleResize: (el: RefObject<HTMLDivElement>) => void;
 };
 
 type Props = {
@@ -27,6 +30,7 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
   const [imageProduct, setImageProduct] = useState('');
   const [activeMenu, setActiveMenu] = useState(false);
   const [modalWindow, setModalWindow] = useState(false);
+  const [isScroll, setIsScroll] = useState(false);
   const [favorites, setFavorites] = useLocaleStorage<Product[]>(
     'favorites',
     [],
@@ -47,6 +51,14 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
     });
   };
 
+  const handleResize = (el: RefObject<HTMLDivElement>) => {
+    if (el.current) {
+      const vertivalScroll = window.innerHeight < el.current.offsetHeight;
+
+      setIsScroll(vertivalScroll);
+    }
+  };
+
   const stateTools = useMemo(
     () => ({
       modalWindow,
@@ -60,6 +72,9 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       imageProduct,
       setImageProduct,
       handleAddToFavorites,
+      isScroll,
+      setIsScroll,
+      handleResize,
     }),
     [
       modalWindow,
@@ -73,6 +88,9 @@ export const StateProvider: React.FC<Props> = ({ children }) => {
       imageProduct,
       setImageProduct,
       handleAddToFavorites,
+      isScroll,
+      setIsScroll,
+      handleResize,
     ],
   );
 

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { BackButton } from '../BackButton/BackButton';
 import style from './CartItems.module.scss';
 import classNames from 'classnames';
@@ -21,10 +21,12 @@ export const CartItems = () => {
     decreaseCartQuantity,
     getItemsQuantity,
   } = useContext(ShoppingCartContext);
+  const element = useRef(null);
 
   const { theme } = useContext(ThemeContext);
   const { t } = useContext(LanguageContext);
-  const { modalWindow, setModalWindow } = useContext(StateContext);
+  const { modalWindow, setModalWindow, handleResize } =
+    useContext(StateContext);
   const getTotalPrice = cartItems.reduce(
     (acc, val) => acc + val.quantity * (val.price || 0),
     0,
@@ -35,8 +37,15 @@ export const CartItems = () => {
     0,
   );
 
+  useEffect(() => {
+    handleResize(element);
+  }, [cartItems]);
+
   return (
-    <div className={classNames(style.cart, { [style.cart__darkTheme]: theme })}>
+    <div
+      className={classNames(style.cart, { [style.cart__darkTheme]: theme })}
+      ref={element}
+    >
       <div className={style.cart__wrapper}>
         <BackButton className={style.cart__cartBack} />
         <h1 className={style.cart__title}>

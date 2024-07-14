@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { BreadCrumbs } from '../BreadCrumbs/BreadCrumbs';
 import { CardsContainer } from '../CardsContainer/CardsContainer';
 import style from './GadgetsList.module.scss';
@@ -12,6 +12,7 @@ import { Dropdown } from './Dropdown/Dropdown';
 import { ItemsList } from '../../enums/ItemsPerPage';
 import { LanguageContext } from '../../store/LanguageProvider';
 import { QueryParams } from '../../enums/QuryParams';
+import { StateContext } from '../../store/StateProvider';
 
 type Props = {
   title: string;
@@ -22,6 +23,8 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
   const { theme } = useContext(ThemeContext);
   const [searchParams] = useSearchParams();
   const { resultFilteredDev, gadgets } = useContext(ProductsContext);
+  const { handleResize } = useContext(StateContext);
+  const element = useRef<HTMLDivElement>(null);
 
   const listSortedBy = [SortBy.newest, SortBy.alphabetically, SortBy.cheapest];
   const listItemsPerPage = [
@@ -32,6 +35,10 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
   ];
   const sortBy = searchParams.get(QueryParams.sort) || SortBy.newest;
   const itemsOnPage = searchParams.get(QueryParams.perPage) || ItemsList.four;
+
+  useEffect(() => {
+    handleResize(element);
+  }, [resultFilteredDev]);
 
   return (
     <div
@@ -66,7 +73,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
             />
           </div>
 
-          <div className={style.gadgets__cardsContainer}>
+          <div className={style.gadgets__cardsContainer} ref={element}>
             <CardsContainer gadgets={resultFilteredDev} />
           </div>
           {resultFilteredDev.length !== 0 && (
