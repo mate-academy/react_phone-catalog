@@ -14,7 +14,6 @@
     flex-wrap: wrap;
 
     @include for-tablet {
-      // width: calc(100% - 20px);
       width: 100%;
     }
 
@@ -24,10 +23,11 @@
       color: var(--primary-color);
       line-height: 32px;
       text-align: center;
-      width: 32px;
+      min-width: 32px;
       height: 32px;
       border: 1px solid var(--border-color);
       border-radius: 50%;
+      padding: 0 3px;
 
       &__active {
         background-color: var(--primary-color);

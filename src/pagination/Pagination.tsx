@@ -15,7 +15,15 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const pageNumber: number[] = [];
 
-  for (let i = 0; i < pagesTotalNumber; i++) {
+  // for (let i = 0; i < pagesTotalNumber; i++) {
+  //   pageNumber.push(i + 1);
+  // }
+
+  for (
+    let i = Math.max(activePage - 3, 0);
+    i < Math.min(activePage + 2, pagesTotalNumber);
+    i++
+  ) {
     pageNumber.push(i + 1);
   }
 
@@ -52,6 +60,28 @@ export const Pagination: React.FC<Props> = ({
               )}
             ></li>
 
+            {activePage > 3 && (
+              <>
+                <li
+                  onClick={() => onPageChange(1)}
+                  className={cn(Styles.pagination__list__item, {
+                    [Styles.pagination__list__item__active]: activePage === 1,
+                  })}
+                >
+                  {1}
+                </li>
+
+                <p
+                  className={cn(Styles.pagination__list__item, {
+                    [Styles.pagination__list__item__active]:
+                      activePage === pagesTotalNumber,
+                  })}
+                >
+                  ...
+                </p>
+              </>
+            )}
+
             {pageNumber.map(number => (
               <li
                 key={number}
@@ -64,6 +94,29 @@ export const Pagination: React.FC<Props> = ({
                 {number}
               </li>
             ))}
+
+            {activePage < pagesTotalNumber - 2 && (
+              <>
+                <p
+                  className={cn(Styles.pagination__list__item, {
+                    [Styles.pagination__list__item__active]:
+                      activePage === pagesTotalNumber,
+                  })}
+                >
+                  ...
+                </p>
+
+                <li
+                  onClick={() => onPageChange(pagesTotalNumber)}
+                  className={cn(Styles.pagination__list__item, {
+                    [Styles.pagination__list__item__active]:
+                      activePage === pagesTotalNumber,
+                  })}
+                >
+                  {pagesTotalNumber}
+                </li>
+              </>
+            )}
 
             <li
               onClick={() => handleDirectButton(1)}
