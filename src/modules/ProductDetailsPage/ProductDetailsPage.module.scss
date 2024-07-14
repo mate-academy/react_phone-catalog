@@ -1,0 +1,50 @@
+@import '../../styles/main';
+
+.productDetailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+}
+
+.container {
+  @include section-grid;
+}
+
+.breadcrumbs {
+  grid-column: 1 / -1;
+}
+
+.goBackButton {
+  margin-top: 16px;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: 0;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+.goBackText {
+  display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-secondary);
+}
+
+.title {
+  grid-column: 1 / -1;
+  margin-bottom: 40px;
+
+  @extend %h2-mobile;
+
+  @include on-tablet {
+    @include h2-tablet;
+  }
+}
+
