@@ -28,6 +28,10 @@
 
     &__closeButton {
       width: 15px;
+
+      &.spin:hover {
+        transform: rotate(90deg);
+      }
     }
 
     &__img {
@@ -62,6 +66,10 @@
         font-weight: 600;
         font-size: 14px;
         cursor: pointer;
+
+        &.spin:hover {
+          transform: rotate(360deg);
+        }
       }
 
       &__item.border {

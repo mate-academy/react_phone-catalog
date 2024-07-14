@@ -93,7 +93,7 @@ export const CartCard: React.FC<Props> = ({
       <div className={Styles.cartCard__product}>
         <img
           onClick={() => handleClose(product.id)}
-          className={Styles.cartCard__product__closeButton}
+          className={`${Styles.cartCard__product__closeButton} ${Styles.spin}`}
           src=".\img\svg\close.svg"
           alt="close button"
         />
@@ -111,7 +111,7 @@ export const CartCard: React.FC<Props> = ({
         <div className={Styles.cartCard__container__quantity}>
           <div
             onClick={handleIncrease}
-            className={`${Styles.cartCard__container__quantity__item} ${Styles.border}`}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.spin}`}
           >
             +
           </div>
@@ -137,7 +137,7 @@ export const CartCard: React.FC<Props> = ({
 
           <div
             onClick={handleDecrease}
-            className={`${Styles.cartCard__container__quantity__item} ${Styles.border}`}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.spin}`}
           >
             -
           </div>

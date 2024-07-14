@@ -52,6 +52,10 @@
       align-items: center;
       justify-content: center;
 
+      &:hover {
+        transform: rotate(360deg);
+      }
+
       &__link {
         position: relative;
       }
@@ -85,6 +89,10 @@
       display: flex;
       align-items: center;
       justify-content: center;
+
+      &:hover {
+        transform: rotate(360deg);
+      }
 
       @include for-tablet {
         width: 64px;
@@ -144,8 +152,7 @@
         font-weight: 800;
         color: var(--secondary-color);
 
-        &.with-after::after {
-          content: '';
+        &:hover {
           width: 100%;
           height: 2px;
           border: 1px solid var(--primary-color);
@@ -236,6 +243,10 @@
         font-size: 12px;
         line-height: 48px;
         letter-spacing: 2px;
+
+        &:hover {
+          transform: rotate(360deg);
+        }
 
         &.with-after::after {
           content: '';
