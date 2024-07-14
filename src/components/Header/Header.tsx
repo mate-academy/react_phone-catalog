@@ -64,7 +64,7 @@ export const Header: React.FC = () => (
             </NavLink>
 
             <NavLink
-              to="/"
+              to="/FavoritesPage"
               className={styles.actionItem}
             >
               <div className={styles.actionIcon}>
@@ -77,7 +77,7 @@ export const Header: React.FC = () => (
             </NavLink>
 
             <NavLink
-              to="/"
+              to="/CartPage"
               className={styles.actionItem}
             >
               <div className={styles.actionIcon}>
