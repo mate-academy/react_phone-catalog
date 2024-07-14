@@ -10,6 +10,7 @@ import { Pagination } from './components/Pagination';
 
 export const App: React.FC = () => (
   <div className="App">
+    <h1>This website is under construction...</h1>
     <Header />
     <Breadcrumbs />
     <ProductSlider />
