@@ -1,3 +1,4 @@
+import React from 'react';
 import { App } from './App';
 import { HashRouter as Router, Route, Switch } from 'react-router-dom';
 import { AccessoriesPage } from './modules/AccessoriesPage';
@@ -13,6 +14,7 @@ export const Root = () => {
   return (
     <Router>
       <div>
+        <React.Fragment />
         <Switch>
           <Route exact path="/" component={App} />
           <Route path="/home" component={HomePage} />
