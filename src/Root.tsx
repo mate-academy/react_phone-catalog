@@ -4,7 +4,9 @@ import { AccessoriesPage } from './modules/AccessoriesPage';
 import { PhonesPage } from './modules/PhonesPage';
 import { TabletsPage } from './modules/TabletsPage';
 import { HomePage } from './modules/HomePage';
-import { NotFoundPage} from './modules/NotFoundPage'
+import { FavoritesPage } from './modules/FavoritesPage';
+import { CartPage } from './modules/CartPage';
+import { NotFoundPage} from './modules/NotFoundPage';
 
 
 export const Root = () => {
@@ -17,6 +19,8 @@ export const Root = () => {
           <Route path="/phones" component={PhonesPage} />
           <Route path="/tablets" component={TabletsPage} />
           <Route path="/accessories" component={AccessoriesPage} />
+          <Route path="/cart" component={CartPage} />
+          <Route path="/favorites" component={FavoritesPage} />
           <Route path="*" component={NotFoundPage} />
         </Switch>
       </div>
