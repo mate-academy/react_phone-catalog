@@ -32,7 +32,7 @@ export const SortAndPaginationMenu: React.FC = () => {
         <DropdownMenu
           defaultParams={DEFAULT_PER_PAGE}
           items={valuesPagination}
-          isPrimary={true}
+          size="Small"
           params={perPage}
         />
       </div>

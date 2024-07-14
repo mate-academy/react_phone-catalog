@@ -1,14 +1,16 @@
 @import '../../variable';
-
-$default-width: 1040px;
-
-.Picture {
-  min-width: $default-width;
-  object-fit: cover;
-}
+@import '../../mixin.scss';
 
 .ProductBanners {
   display: flex;
 }
 
+.Picture {
+  width: 100%;
+  object-fit: cover;
+  height: 400px;
 
+  @include sm() {
+    height: 190px;
+  }
+}

@@ -1,8 +1,5 @@
 @import '../variable';
-
-.Main {
-  padding-bottom: 100px;
-}
+@import '../mixin.scss';
 
 .Container {
   width: 100%;
@@ -10,4 +7,14 @@
   margin: 0 auto;
   padding-left: 20px;
   padding-right: 20px;
+
+  @include md() {
+    padding-left: 24px;
+    padding-right: 24px;
+  }
+
+  @include rwd(320) {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
 }

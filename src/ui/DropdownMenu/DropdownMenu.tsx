@@ -4,10 +4,7 @@ import { useSearchParams } from 'react-router-dom';
 
 import arrowDown from '../../assets/images/arrow-down.svg';
 import arrowUp from '../../assets/images/arrow-up.svg';
-import {
-  DEFAULT_PER_PAGE,
-  valuesPagination,
-} from '../../constants/default-values';
+import { valuesPagination } from '../../constants/default-values';
 import { DropdownItem } from '../../types/DropdownItem';
 import { Sorts } from '../../types/Sorts';
 
@@ -17,7 +14,7 @@ type Props = {
   items: DropdownItem[];
   params: string | null;
   defaultParams: string;
-  isPrimary?: boolean;
+  size?: string;
 };
 
 enum SortsType {
@@ -28,7 +25,7 @@ enum SortsType {
 
 export const DropdownMenu: React.FC<Props> = ({
   items,
-  isPrimary,
+  size,
   params,
   defaultParams,
 }) => {
@@ -59,10 +56,7 @@ export const DropdownMenu: React.FC<Props> = ({
       urlParams.set('sort', Sorts.title);
     } else if (currentItem === Sorts.cheapest) {
       urlParams.set('sort', Sorts.price);
-    } else if (
-      valuesPagination.includes(item) &&
-      item !== DEFAULT_PER_PAGE.toString()
-    ) {
+    } else if (valuesPagination.includes(item)) {
       urlParams.set('perPage', item);
     }
 
@@ -80,9 +74,7 @@ export const DropdownMenu: React.FC<Props> = ({
     <div
       tabIndex={0}
       onBlur={handleCloseDropdown}
-      className={cn(styles.DropdownMenu, {
-        [styles.Large]: isPrimary,
-      })}
+      className={cn(styles.DropdownMenu, styles[size as string])}
     >
       <div onClick={handleToogleDropdown} className={styles.Header}>
         <p className={styles.Text}>{selectedItem}</p>

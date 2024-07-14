@@ -6,9 +6,14 @@ import cn from 'classnames';
 type Props = {
   children: React.ReactNode;
   href: string;
+  className?: string;
 };
 
-export const NavigationButton: React.FC<Props> = ({ children, href }) => {
+export const NavigationButton: React.FC<Props> = ({
+  children,
+  href,
+  className,
+}) => {
   const { pathname } = useLocation();
 
   return (
@@ -18,7 +23,7 @@ export const NavigationButton: React.FC<Props> = ({ children, href }) => {
         prevPath: pathname,
       }}
       className={({ isActive }) =>
-        cn(styles.Link, {
+        cn(styles.Link, styles[className as string], {
           [styles.Active]: isActive,
         })
       }

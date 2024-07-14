@@ -8,7 +8,7 @@ import { Loader } from '../../components/Loader';
 import { Pagination } from '../../components/Pagination';
 import { ProductList } from '../../components/ProductList';
 
-import { DEFAULT_PAGE } from '../../constants/default-values';
+import { DEFAULT_PAGE, DEFAULT_PER_PAGE } from '../../constants/default-values';
 import { getProducts } from '../../services/products';
 import { Categories } from '../../types/Categories';
 import { Product } from '../../types/Product';
@@ -25,7 +25,7 @@ export const ProductsPage = () => {
   const [searchParams] = useSearchParams();
 
   const sortQuery = searchParams.get('sort') || Sorts.age;
-  const perPage = +(searchParams.get('perPage') || products.length);
+  const perPage = +(searchParams.get('perPage') || DEFAULT_PER_PAGE);
   const currentPage = +(searchParams.get('page') || DEFAULT_PAGE);
 
   const sortedPhones = getSortedProducts(products, sortQuery as SortsType);

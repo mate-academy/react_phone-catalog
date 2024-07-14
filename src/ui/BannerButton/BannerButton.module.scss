@@ -1,4 +1,5 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .BannerButton {
   display: flex;
@@ -14,6 +15,14 @@
   transition: background $transition-duration;
   cursor: pointer;
 
+  @include sm() {
+    height: 190px;
+  }
+
+  @include rwd(320) {
+    display: none;
+  }
+
   &:hover {
     background: #2e303c;
   }
@@ -24,5 +33,5 @@
 }
 
 .Next {
-  margin-left: 8px;
+  margin-left: 16px;
 }

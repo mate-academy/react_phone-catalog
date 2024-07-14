@@ -1,9 +1,14 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .About {
   display: flex;
   flex-direction: column;
   width: 560px;
+
+  @include sm() {
+    width: 100%;
+  }
 }
 
 .AboutTitle {
@@ -12,6 +17,10 @@
   color: $white-color;
   border-bottom: 1px solid $elements-color;
   padding-bottom: 16px;
+
+  @include rwd(320) {
+    font-weight: 500;
+  }
 }
 
 .AboutContent {

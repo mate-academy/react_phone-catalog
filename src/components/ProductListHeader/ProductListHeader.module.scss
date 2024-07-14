@@ -1,18 +1,27 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .ProductsHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-bottom: 24px;
-  margin-top: 81px;
+  margin-top: 80px;
+
+  @include sm() {
+    margin-top: 64px;
+  }
 }
 
 .Title {
   color: $white-color;
   font-weight: 800;
   font-size: 32px;
-  margin-bottom: 24px;
+
+  @include rwd(320) {
+    width: 136px;
+    font-size: 22px;
+  }
 }
 
 .Buttons {

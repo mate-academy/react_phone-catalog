@@ -1,13 +1,48 @@
 @import '../../variable.scss';
+@import '../../mixin.scss';
 
 .CartItem {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
   max-width: 100%;
   width: 752px;
   padding: 24px;
   background: $surface-secondary-color;
+
+  @include rwd(1050) {
+    width: 650px;
+  }
+
+  @include rwd(930) {
+    width: 100%;
+  }
+
+  @include rwd(320) {
+    padding: 16px;
+  }
+}
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include rwd(570) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.Descriptions {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+  @include rwd(570) {
+    align-self: flex-start;
+  }
+
+  @include rwd(320) {
+    column-gap: 16px;
+  }
 }
 
 .ButtonDelete {
@@ -30,6 +65,16 @@
   font-weight: 800;
   font-size: 22px;
   color: $white-color;
+}
+
+.QuantitiesWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 53px;
+
+  @include rwd(570) {
+    align-self: flex-start;
+  }
 }
 
 .Quantities {

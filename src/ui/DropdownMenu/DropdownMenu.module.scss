@@ -1,13 +1,24 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .DropdownMenu {
+  position: relative;
   width: 176px;
+  height: 40px;
   display: flex;
   flex-direction: column;
+
+  @include rwd(400) {
+    width: 136px;
+  }
 }
 
-.Large {
+.Small {
   width: 128px;
+
+  @include rwd(400) {
+    width: 136px;
+  }
 }
 
 .Header {
@@ -24,9 +35,13 @@
 }
 
 .Items {
+  width: 100%;
+  position: absolute;
   margin-top: 4px;
   background: $black-color;
   border: 1px solid $icons-color;
+  transform: translateY(40px);
+  z-index: 11;
 }
 
 .Item {

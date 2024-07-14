@@ -1,10 +1,27 @@
 @import '../../variable';
 @import '../../mixin';
+@import '../../utils';
 
 .Links {
   display: flex;
   gap: 64px;
   list-style-type: none;
+
+  @include rwd(700) {
+    gap: 40px;
+  }
+
+  @include sm() {
+    gap: 32px;
+  }
+
+  @include rwd(580) {
+    gap: 20px;
+  }
+
+  @include rwd(530) {
+    display: none;
+  }
 }
 
 .Item {
@@ -17,11 +34,11 @@
   color: $secondary-color;
 
   &::after {
-    @include link-line(0%);
+    @include header-line(0%);
   }
 
   &:hover::after {
-    @include link-line(100%);
+    @include header-line(100%);
   }
 
   &:hover {
@@ -33,6 +50,6 @@
   color: $white-color;
 
   &::after {
-    @include link-line(100%);
+    @include header-line(100%);
   }
 }

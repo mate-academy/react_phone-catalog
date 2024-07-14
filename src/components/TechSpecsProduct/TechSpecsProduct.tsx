@@ -37,7 +37,9 @@ export const TechSpecsProduct: React.FC<Props> = ({ productDetail }) => {
           <p className={activeProductCardText}>{normalizeCapacity}</p>
           <p className={activeProductCardText}>{productDetail?.camera}</p>
           <p className={activeProductCardText}>{productDetail?.zoom}</p>
-          <p className={activeProductCardText}>{productDetail?.cell}</p>
+          <p className={activeProductCardText}>
+            {productDetail?.cell.join(', ')}
+          </p>
         </div>
       </div>
     </article>

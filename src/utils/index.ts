@@ -1,6 +1,6 @@
 import cn from 'classnames';
-
-import styles from '../components/HeaderLinks/HeaderLinks.module.scss';
+// eslint-disable-next-line
+import styles from '../components/HeaderNavigation/HeaderNavigation.module.scss';
 
 import { Product } from '../types/Product';
 import { suffle } from './helpers';
@@ -14,6 +14,10 @@ export const getLocalStorage = (key: string) => {
   const initialStore = JSON.parse(String(saved));
 
   return initialStore || [];
+};
+
+export const getNavigationRoute = (route: string) => {
+  return route === 'Home' ? '/' : `/${route.toLowerCase()}`;
 };
 
 export const getSuggestedProducts = (products: Product[]): Product[] => {

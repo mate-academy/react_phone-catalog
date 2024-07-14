@@ -1,9 +1,52 @@
-@mixin link-line($width) {
-  display: block;
-  width: $width;
-  height: 3px;
-  content: '';
-  background: $white-color;
-  transform: translateY(22px);
-  transition: all $transition-duration;
+$screen-xl-min: 1200px;
+$screen-lg-min: 992px;
+$screen-md-min: 768px;
+$screen-sm-min: 640px;
+
+$breakpoints: (
+  mobile: 320px,
+  large-mobile: 500px,
+);
+
+// Extra large devices
+@mixin xl {
+  @media (max-width: #{$screen-xl-min}) {
+    @content;
+  }
+}
+// Large devices
+@mixin lg {
+  @media (max-width: #{$screen-lg-min}) {
+    @content;
+  }
+}
+
+// Medium devices
+@mixin md {
+  @media (max-width: #{$screen-md-min}) {
+    @content;
+  }
+}
+
+// Small devices
+@mixin sm {
+  @media (max-width: #{$screen-sm-min}) {
+    @content;
+  }
+}
+
+// Custom devices
+@mixin rwd($screen) {
+  @media (max-width: #{$screen+'px'}) {
+    @content;
+  }
+}
+
+// multi media
+@mixin media($keys...) {
+  @each $key in $keys {
+    @media (max-width: map-get($breakpoints, $key)) {
+      @content;
+    }
+  }
 }

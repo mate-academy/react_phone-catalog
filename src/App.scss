@@ -2,10 +2,28 @@
 @import './variable';
 @import './fonts';
 @import './scrollbar';
+@import './mixin.scss';
+@import './swiper.scss';
 
-// body
+html {
+  height: 100%;
+}
+
 body {
   background: $black-color;
   font-family: Mont;
-  height: 100%;
+  position: relative;
+  min-height: 100%;
+}
+
+main {
+  padding-bottom: calc($height-footer + 80px);
+
+  @include sm() {
+    padding-bottom: calc($height-footer + 64px);
+  }
+
+  @include media(mobile, large-mobile) {
+    padding-bottom: calc(260px + 64px);
+  }
 }

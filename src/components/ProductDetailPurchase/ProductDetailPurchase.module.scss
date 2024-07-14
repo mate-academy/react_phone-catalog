@@ -1,9 +1,14 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .ProductDescription {
   display: flex;
   flex-direction: column;
   width: 320px;
+
+  @include sm() {
+    width: 100%;
+  }
 }
 
 .Title {

@@ -9,7 +9,8 @@
 
 .Inner {
   display: flex;
-  column-gap: 8px;
+  flex-wrap: wrap;
+  gap: 8px;
 }
 
 .Button {

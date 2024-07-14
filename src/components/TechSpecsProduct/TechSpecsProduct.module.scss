@@ -1,9 +1,15 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .TechSpecs {
   width: 500px;
   display: flex;
   flex-direction: column;
+
+  @include sm() {
+    width: 100%;
+    margin-top: 64px;
+  }
 }
 
 .TechSpecsInner {
@@ -15,6 +21,7 @@
 .TechSpecsDescriptions {
   display: flex;
   flex-direction: column;
+  width: 100%;
   gap: 8px;
 }
 
@@ -34,4 +41,8 @@
   font-size: 22px;
   border-bottom: 1px solid $elements-color;
   padding-bottom: 16px;
+
+  @include rwd(320) {
+    font-weight: 500;
+  }
 }

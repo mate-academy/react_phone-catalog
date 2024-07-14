@@ -1,4 +1,5 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .Products {
   display: flex;
@@ -6,8 +7,34 @@
 }
 
 .Wrapper {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 40px 16px;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  column-gap: 16px;
+  row-gap: 40px;
   margin-top: 24px;
+
+  @include xl() {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  @include md() {
+    grid-template-columns: repeat(3, 229px);
+  }
+
+  @include sm() {
+    grid-template-columns: repeat(2, 288px);
+  }
+
+  @include rwd(630) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @include media(mobile, large-mobile) {
+    grid-template-columns: repeat(1, 1fr);
+
+    img {
+      width: 100%;
+      margin: 0 auto;
+    }
+  }
 }

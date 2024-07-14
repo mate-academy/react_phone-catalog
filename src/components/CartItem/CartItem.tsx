@@ -40,31 +40,37 @@ export const CartItem: React.FC<Props> = ({
 
   return (
     <div className={styles.CartItem}>
-      <button onClick={handleDeleteProduct} className={styles.ButtonDelete}>
-        <img src={closeIcon} alt="delete" />
-      </button>
+      <div className={styles.Wrapper}>
+        <div className={styles.Descriptions}>
+          <button onClick={handleDeleteProduct} className={styles.ButtonDelete}>
+            <img src={closeIcon} alt="delete" />
+          </button>
 
-      <img className={styles.Picture} src={image} alt="product" />
+          <img className={styles.Picture} src={image} alt="product" />
 
-      <p className={styles.ProductName}>{name}</p>
+          <p className={styles.ProductName}>{name}</p>
+        </div>
 
-      <div className={styles.Quantities}>
-        <button
-          onClick={handleDecreaseQuantity}
-          className={styles.ButtonQuantity}
-        >
-          <IconMinus />
-        </button>
-        <p className={styles.Quantity}>{quantity}</p>
-        <button
-          onClick={handleIncreaseQuantity}
-          className={cn(styles.ButtonQuantity, styles.ButtonQuantityActive)}
-        >
-          <IconPlus />
-        </button>
+        <div className={styles.QuantitiesWrapper}>
+          <div className={styles.Quantities}>
+            <button
+              onClick={handleDecreaseQuantity}
+              className={styles.ButtonQuantity}
+            >
+              <IconMinus />
+            </button>
+            <p className={styles.Quantity}>{quantity}</p>
+            <button
+              onClick={handleIncreaseQuantity}
+              className={cn(styles.ButtonQuantity, styles.ButtonQuantityActive)}
+            >
+              <IconPlus />
+            </button>
+          </div>
+
+          <p className={styles.ProductPrice}>${price * quantity}</p>
+        </div>
       </div>
-
-      <p className={styles.ProductPrice}>${price * quantity}</p>
     </div>
   );
 };

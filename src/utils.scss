@@ -1,0 +1,22 @@
+@mixin header-line($width) {
+  display: block;
+  width: $width;
+  height: 3px;
+  content: '';
+  background: $white-color;
+  transform: translateY(22px);
+  transition: all $transition-duration;
+
+  @include md() {
+    transform: translateY(15px);
+  }
+}
+
+@mixin aside-line($width) {
+  display: block;
+  content: '';
+  width: $width;
+  height: 2px;
+  background: $white-color;
+  margin-top: 4px;
+}

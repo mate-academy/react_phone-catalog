@@ -1,9 +1,10 @@
-import { useSlider } from '../../hooks/useSlider';
-
 import { Product } from '../../types/Product';
 import { ProductCards } from '../ProductCards';
 import { ProductListHeader } from '../ProductListHeader/ProductListHeader';
 import { ProductListSlider } from '../ProductListSlider';
+
+import React, { useRef } from 'react';
+import { SwiperRef } from 'swiper/react';
 
 import styles from './ProductList.module.scss';
 
@@ -20,21 +21,15 @@ export const ProductList: React.FC<Props> = ({
   title,
   isHotPrice = false,
 }) => {
-  const sliderSettings = {
-    pictureWidth: 272,
-    height: 500,
-    step: 4,
-    total: products?.length,
-    gap: 16,
-    autoplay: false,
-    isFullScroll: false,
+  const swiperRef = useRef<SwiperRef>(null);
+
+  const handlePrevSlide = () => {
+    swiperRef.current?.swiper.slidePrev();
   };
 
-  const { handlePrevSlide, handleNextSlide, currentIndex } = useSlider({
-    ...sliderSettings,
-  });
-
-  const currentSlide = currentIndex + sliderSettings.step;
+  const handleNextSlide = () => {
+    swiperRef.current?.swiper.slideNext();
+  };
 
   return (
     <section className={styles.Products}>
@@ -43,15 +38,12 @@ export const ProductList: React.FC<Props> = ({
           title={title}
           handlePrevSlide={handlePrevSlide}
           handleNextSlide={handleNextSlide}
-          currentSlide={currentSlide}
-          totalProducts={products.length}
         />
       )}
 
-      {isHaveSlider && products.length ? (
+      {isHaveSlider ? (
         <ProductListSlider
-          sliderSettings={sliderSettings}
-          currentIndex={currentIndex}
+          initialRef={swiperRef}
           products={products}
           isHotPrice={isHotPrice}
         />

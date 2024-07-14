@@ -5,7 +5,6 @@
   display: flex;
   width: 64px;
   height: 64px;
-  /* text-align: center; */
   background: transparent;
   border: none;
   border-left: 1px solid #323542;
@@ -13,6 +12,15 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @include md() {
+    width: 48px;
+    height: 48px;
+  }
+
+  @include rwd(320) {
+    display: none;
+  }
 }
 
 .Active {

@@ -1,4 +1,5 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .CategoryCards {
   margin-top: 24px;
@@ -7,7 +8,17 @@
 
 .CategoryContent {
   display: flex;
-  gap: 16px;
+  gap: 15px;
+
+  @include rwd(540) {
+    display: flex;
+    flex-direction: column;
+  }
+
+  // @include onMobile() {
+  //   flex-direction: column;
+  //   gap: 32px;
+  // }
 }
 
 .CategoryCardsTitle {
@@ -15,4 +26,3 @@
   font-weight: 700;
   margin-top: 80px;
 }
-

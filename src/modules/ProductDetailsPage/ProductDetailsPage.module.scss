@@ -1,12 +1,35 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .ProductWrapper {
   display: flex;
   column-gap: 64px;
+
+  @include rwd(900) {
+    column-gap: 40px;
+  }
+
+  @include md() {
+    column-gap: 30px;
+  }
+
+  @include sm() {
+    column-gap: 17px;
+  }
+
+  @include rwd(615) {
+    flex-direction: column;
+    gap: 40px;
+  }
 }
 
 .ProductWrapperPrimary {
   margin-top: 80px;
+
+  @include sm() {
+    display: flex;
+    flex-direction: column;
+  }
 }
 
 .Title {

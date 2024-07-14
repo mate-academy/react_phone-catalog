@@ -1,60 +1,76 @@
-import { useSlider } from '../../hooks/useSlider';
-
 import { BannerButton } from '../../ui/BannerButton/BannerButton';
 
+import { useRef } from 'react';
 import { arrowRightIcon, arrowleftIcon } from '../../assets';
-import { slideImages } from '../../constants/constants';
-import { DEFAULT_VALUE } from '../../constants/default-values';
-import { Slider } from '../Slider/Slider';
+import { TIME_SLIDER, slideImages } from '../../constants/constants';
+
+import { Autoplay, Pagination } from 'swiper/modules';
+import { Swiper, SwiperRef, SwiperSlide } from 'swiper/react';
+
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/pagination';
 
 import styles from './ProductBanners.module.scss';
 
 export const ProductBanners = () => {
-  const sliderSettings = {
-    pictureWidth: 1040,
-    height: 400,
-    step: 1,
-    total: slideImages.length,
-    gap: 10,
-    autoplay: true,
-    isFullScroll: true,
+  const swiperRef = useRef<SwiperRef>(null);
+
+  const handlePrevSlide = () => {
+    swiperRef.current?.swiper.slidePrev();
   };
 
-  const { handlePrevSlide, handleNextSlide, currentIndex } = useSlider({
-    ...sliderSettings,
-  });
+  const handleNextSlide = () => {
+    swiperRef.current?.swiper.slideNext();
+  };
 
   return (
-    <div className={styles.ProductBanners}>
-      <BannerButton
-        isDisabled={currentIndex === DEFAULT_VALUE}
-        onClick={handlePrevSlide}
-        type="Prev"
-        icon={arrowleftIcon}
-      />
+    <>
+      <div className={styles.ProductBanners}>
+        <BannerButton
+          isDisabled={false}
+          onClick={handlePrevSlide}
+          type="Prev"
+          icon={arrowleftIcon}
+        />
+        <Swiper
+          autoplay={{
+            delay: TIME_SLIDER,
+            disableOnInteraction: false,
+          }}
+          className="clientSwiper"
+          modules={[Pagination, Autoplay]}
+          pagination={{
+            clickable: true,
+            el: '.swiper-pagination',
+            type: 'bullets',
+          }}
+          ref={swiperRef}
+          slidesPerView={1}
+          loop={true}
+        >
+          {slideImages.map(image => (
+            <SwiperSlide key={image}>
+              <img
+                key={image}
+                className={styles.Picture}
+                src={image}
+                alt="product-banner"
+              />
+            </SwiperSlide>
+          ))}
+        </Swiper>
 
-      <Slider
-        {...sliderSettings}
-        index={currentIndex}
-        isShowIndicators={true}
-        total={slideImages.length}
-      >
-        {slideImages.map(image => (
-          <img
-            key={image}
-            className={styles.Picture}
-            src={image}
-            alt="product-banner"
-          />
-        ))}
-      </Slider>
-
-      <BannerButton
-        isDisabled={currentIndex === slideImages.length}
-        onClick={handleNextSlide}
-        type="Next"
-        icon={arrowRightIcon}
-      />
-    </div>
+        <BannerButton
+          isDisabled={false}
+          onClick={handleNextSlide}
+          type="Next"
+          icon={arrowRightIcon}
+        />
+      </div>
+      <div className="button-swiper">
+        <div className="swiper-pagination"></div>
+      </div>
+    </>
   );
 };

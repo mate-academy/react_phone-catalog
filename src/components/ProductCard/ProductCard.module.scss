@@ -1,13 +1,17 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .ProductCard {
-  width: 272px;
   padding: 32px;
   background: $surface-secondary-color;
   color: $white-color;
 
+  // @include md() {
+  //   width: 230px;
+  // }
+
   &:hover {
-    border: 1px solid $surface-main-color;
+    outline: 1px solid $surface-main-color;
   }
 }
 
@@ -16,7 +20,7 @@
 }
 
 .Picture {
-  width: 208px;
+  width: 173px;
   height: 196px;
   object-fit: contain;
 }

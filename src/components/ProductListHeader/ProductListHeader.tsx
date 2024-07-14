@@ -7,16 +7,12 @@ type Props = {
   title: string | undefined;
   handlePrevSlide: () => void;
   handleNextSlide: () => void;
-  currentSlide: number;
-  totalProducts: number;
 };
 
 export const ProductListHeader: React.FC<Props> = ({
   title,
   handlePrevSlide,
   handleNextSlide,
-  currentSlide,
-  totalProducts,
 }) => {
   return (
     <div className={styles.ProductsHeader}>
@@ -26,11 +22,7 @@ export const ProductListHeader: React.FC<Props> = ({
         <button className={styles.Button} onClick={handlePrevSlide}>
           <IconLeft className={styles.Icon} fill="#4A4D58" />
         </button>
-        <button
-          className={styles.Button}
-          disabled={currentSlide === totalProducts}
-          onClick={handleNextSlide}
-        >
+        <button className={styles.Button} onClick={handleNextSlide}>
           <IconRight fill="#F1F2F9" />
         </button>
       </div>

@@ -1,9 +1,21 @@
 @import '../../variable';
-
+@import '../../mixin.scss';
 
 .Title {
   color: $white-color;
   font-size: 48px;
   margin-bottom: 56px;
   margin-top: 56px;
+
+  @include sm() {
+    margin-top: 32px;
+    margin-bottom: 32px;
+    font-size: 40px;
+  }
+
+  @include rwd(320) {
+    font-size: 32px;
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
 }

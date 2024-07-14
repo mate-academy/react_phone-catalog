@@ -1,14 +1,30 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .ProductDetailWrapper {
   display: flex;
   column-gap: 27px;
+
+  @include rwd(320) {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 16px;
+  }
 }
 
 .ProductDetailPictures {
   display: flex;
   flex-direction: column;
   gap: 16px;
+
+  @include rwd(670) {
+    gap: 10px;
+  }
+
+  @include rwd(320) {
+    flex-direction: row;
+    gap: 8px;
+  }
 }
 
 .Item {
@@ -19,6 +35,16 @@
   height: 80px;
   border: 1px solid $elements-color;
   cursor: pointer;
+
+  @include rwd(670) {
+    width: 35px;
+    height: 35px;
+  }
+
+  @include rwd(320) {
+    width: 50px;
+    height: 50px;
+  }
 }
 
 .ItemActive {
@@ -29,10 +55,33 @@
   width: 70px;
   height: 70px;
   object-fit: contain;
+
+  @include rwd(670) {
+    width: 30px;
+    height: 30px;
+  }
+
+  @include rwd(320) {
+    width: 40px;
+    height: 40px;
+  }
 }
 
 .PicturePrimary {
   width: 464px;
   height: 464px;
   object-fit: contain;
+
+  @include rwd(1025) {
+    width: 400px;
+  }
+
+  @include rwd(930) {
+    width: 350px;
+  }
+
+  @include md() {
+    width: 290px;
+    height: 290px;
+  }
 }

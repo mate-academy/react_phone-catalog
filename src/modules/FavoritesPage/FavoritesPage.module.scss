@@ -1,10 +1,15 @@
 @import '../../variable.scss';
+@import '../../mixin.scss';
 
 .Title {
   margin-top: 40px;
   color: $white-color;
   font-size: 48px;
   font-weight: 800;
+
+  @include rwd(320) {
+    font-size: 32px;
+  }
 }
 
 .Subtitle {

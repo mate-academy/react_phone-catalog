@@ -1,4 +1,5 @@
 @import '../../variable';
+@import '../../mixin.scss';
 
 .Wrapper {
   text-decoration: none;
@@ -18,7 +19,7 @@
 }
 
 .Picture {
-  width: 368px;
+  width: 100%;
 }
 
 .Title {
