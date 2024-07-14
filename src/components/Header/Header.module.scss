@@ -49,6 +49,7 @@
     height: 28px;
     width: 80px;
 
+    @extend %transitionPage;
     @include onHover;
   }
 

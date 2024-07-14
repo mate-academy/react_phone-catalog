@@ -18,6 +18,8 @@
 
   &__logoLink {
     display: flex;
+
+    @extend %transitionPage;
     &:hover {
       @extend %transitionPage;
       @include onHover;
