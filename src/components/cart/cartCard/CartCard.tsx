@@ -34,7 +34,6 @@ export const CartCard: React.FC<Props> = ({
 
   useEffect(() => {
     setTotalQuantity(prevState => prevState + quantity - product.quantity);
-
     setCardPrice(quantity * product.priceDiscount);
 
     setCart(prevCart => {
@@ -45,7 +44,7 @@ export const CartCard: React.FC<Props> = ({
       localStorage.setItem('cart', JSON.stringify(newCart));
       return newCart;
     });
-  }, [quantity]);
+  }, [cardPrice, quantity]);
 
   const handleClose = (id: string) => {
     setCart(prev => {
