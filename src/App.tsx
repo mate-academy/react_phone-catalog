@@ -39,7 +39,7 @@ export const App = () => {
       <ThemeSwitcher />
 
       <Routes>
-        <Route path="/home" element={<Navigate to="/" replace={true} />} />
+        <Route path="/home" element={<Navigate to="" replace={true} />} />
 
         <Route path="/" element={<Home />} />
         <Route path="fav" element={<Favourites />} />

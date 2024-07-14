@@ -5,7 +5,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100vw;
+  width: 100%;
   border-bottom: 1px solid var(--border-color);
   font-family: Montserrat, sans-serif;
   transition: all 0.6s ease-in-out;
@@ -47,6 +47,7 @@
       width: 48px;
       height: 48px;
       border: 1px solid var(--border-color);
+      border-right: none;
       display: flex;
       align-items: center;
       justify-content: center;

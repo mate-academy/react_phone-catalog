@@ -1,3 +1,5 @@
+@use "../../utils/themes" as *;
+
 .theme_switch {
   display: inline-block;
   height: 34px;
@@ -20,11 +22,6 @@
     align-items: center;
     justify-content: flex-end;
     margin-bottom: 20px;
-    
-    // em {
-    //   margin-left: 10px;
-    //   font-size: 1rem;
-    // }
   }
 }
 
@@ -57,7 +54,7 @@
 
 input:checked {
   &+.slider {
-    background-color: #66bb6a;
+    background-color: var(--primary-color);
 
     &::before {
       transform: translateX(26px);
