@@ -23,8 +23,10 @@ export const App = () => {
     if (app.current && backToTop.current) {
       if (app.current.scrollTop > 80) {
         backToTop.current.style.marginTop = '0vh';
+        backToTop.current.style.display = 'flex';
       } else {
-        backToTop.current.style.marginTop = '120vh';
+        backToTop.current.style.marginTop = '100vh';
+        backToTop.current.style.display = 'none';
       }
     }
   };
