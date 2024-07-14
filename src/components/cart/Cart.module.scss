@@ -24,6 +24,7 @@
     letter-spacing: -0.01em;
     text-align: left;
     margin-bottom: 15px;
+    color: var(--title);
 
     @include for-tablet {
       width: 100%;

@@ -54,7 +54,7 @@
 
 input:checked {
   &+.slider {
-    background-color: var(--primary-color);
+    background-color: var(--border-color);
 
     &::before {
       transform: translateX(26px);
