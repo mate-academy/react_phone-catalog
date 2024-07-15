@@ -1,0 +1,159 @@
+@import "../../../../../../mixins/mixins.scss";
+
+.card-container {
+  width: 206px;
+  border: 1px solid #E2E6E9;
+  padding: 32px 32px;
+
+  @include onTablet {
+    width: 173px;
+  }
+
+  @include onMobile {
+    width: 148px;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.picture-block {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+
+.picture {
+  object-fit: contain;
+  display: block;
+  height: 196px;
+  width: 208px;
+
+  @include onTablet {
+    height: 202px;
+    width: 173px;
+  }
+
+  @include onMobile {
+    height: 129px;
+    width: 148px;
+  }
+}
+
+.card-name {
+font-family: 'Mont';
+display: flex;
+font-size: 14px;
+font-weight: 600;
+line-height: 21px;
+text-align: left;
+color: #000000;
+padding: 16px 0 0 0;
+height: 58px;
+align-items: flex-end;
+}
+
+.price-block {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin: 8px 0 0 0;
+  border-bottom: 1px solid #E2E6E9;
+  padding-bottom: 8px;
+}
+
+.current-price {
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30.8px;
+  text-align: left;
+  color: #313237;
+  margin: 0;
+}
+
+.full-price {
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-align: left;
+  color: #89939A;
+  text-decoration: line-through white;
+  margin: 0;
+
+}
+
+.desc-block {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 0 8px 0;
+  gap: 8px;
+}
+
+.desc-line {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+}
+
+.left-text {
+font-family: 'Mont';
+font-size: 12px;
+font-weight: 600;
+line-height: 15.34px;
+text-align: left;
+color: #89939A;
+margin: 0;
+}
+
+.right-text {
+  font-family: 'Mont';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+  color: #313237;
+  margin: 0;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 8px 0 0 0;
+}
+
+.Add-btn {
+  background-color: #313237;
+  height: 40px;
+  width: 160px;
+  color: #FFFFFF;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  padding: 0;
+}
+
+.fav-btn {
+  height: 40px;
+  width: 40px;
+  border: 1px solid #B4BDC3;
+  background-color: white;
+  padding: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fav-btn:hover {
+  border: 1px solid #313237;
+}

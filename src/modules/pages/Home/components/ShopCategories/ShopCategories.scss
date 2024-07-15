@@ -1,0 +1,95 @@
+@import "../../../../../mixins/mixins.scss";
+
+.shopCateg-page {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @include onTablet {
+    width: 640px;
+  }
+
+  @include onMobile {
+    width: 288px;
+  }
+}
+
+.shopCateg-title {
+font-family: Mont;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+color:#313237;
+margin: 0 0 24px;
+}
+
+.shopCateg-card {
+  display: flex;
+  height: 443px;
+  width: 368px;
+  flex-direction: column;
+
+  @include onTablet {
+    height: 262px;
+    width: 187px;
+  }
+
+  @include onMobile {
+    width: 288px;
+    height: 363px;
+  }
+}
+
+.shopCateg-picture {
+  object-fit: cover;
+}
+
+.shopCateg-image {
+  height: 368px;
+  width: 368px;
+  display: block;
+
+  @include onTablet {
+    height: 187px;
+    width: 187px;
+    // object-fit: fill;
+  }
+
+  @include onMobile {
+    height: 288px;
+    width: 288px;
+  }
+
+}
+
+.shopCateg-name {
+font-family: Mont;
+font-size: 20px;
+font-weight: 600;
+line-height: 25.56px;
+text-align: left;
+color: #313237;
+margin: 24px 0 4px 0;
+}
+
+.shopCateg-models {
+font-family: Mont;
+font-size: 14px;
+font-weight: 500;
+line-height: 21px;
+text-align: left;
+color: #89939A;
+margin: 0;
+}
+
+.shopCateg-cards {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  @include onMobile {
+    flex-direction: column;
+  }
+}

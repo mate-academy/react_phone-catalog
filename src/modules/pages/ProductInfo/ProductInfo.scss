@@ -1,0 +1,362 @@
+
+.productInfo-container {
+  display: flex;
+  width: 1200px;
+  margin: 0 auto;
+  flex-direction: column;
+}
+
+.productInfo-h1 {
+font-family: Mont;
+font-size: 32px;
+font-weight: 800;
+line-height: 41px;
+letter-spacing: -0.01em;
+text-align: left;
+color: #313237;
+}
+
+.productInfo-pictures-block {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.productInfo-smallPictures-block {
+  display: flex;
+  flex-direction: column;
+  width: 80px;
+  gap: 16px;
+}
+
+.productInfo-smallPicture {
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border: 1px solid #C4C4C4;
+  padding: 0;
+}
+
+.productInfo-bigPicture {
+  flex-direction: column;
+  justify-content: center;
+  background-color: white;
+  border: none;
+  padding: 0;
+}
+
+.product-picture {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  display: flex;
+}
+
+.product-bigPicture {
+  width: 472px;
+  height: 472px;
+  object-fit: contain;
+  display: flex;
+}
+
+.productInfo-product {
+  display: flex;
+  flex-direction: row;
+}
+
+.product-info-rightBlock {
+  display: flex;
+  width: 320px;
+  flex-direction: column;
+}
+
+.product-colors-block {
+  display: flex;
+  height: 55px;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.product-colors-p {
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+  margin: 0;
+}
+
+.product-circle {
+  display: block;
+  border-radius: 50%;
+  height: 29px;
+  width: 29px;
+  outline: 1px solid #E2E6E9;
+  border: 2px solid #FFFFFF;
+}
+
+.btns-block {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.red {
+  background-color: red;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.gb-container {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #E2E6E9;
+  padding-top: 24px;
+  border-bottom: 1px solid #E2E6E9;
+  padding-bottom: 24px;
+}
+
+.gb-btns-block {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.gb-btns {
+  display: block;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  color: #313237;
+  background-color: white;
+  border: none;
+  padding: 4px 8px;
+  border: 1px solid #B4BDC3;
+}
+
+.gb-btns-hover {
+  display: block;
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  color: white;
+  background-color: #313237;
+  border: none;
+  padding: 4px 8px;
+}
+
+.add-to-card-block {
+  display: flex;
+  flex-direction: column;
+  margin-top: 32px;
+  gap: 16px;
+}
+
+.p-block {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+}
+
+.buttons-block {
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+}
+
+.Add-btn-black {
+  background-color: #313237;
+  height: 48px;
+  width: 100%;
+  color: #FFFFFF;
+  font-family: 'Mont';
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+  padding: 0;
+  margin-right: 8px;
+}
+
+.fav-btn-other {
+  padding: 0 16px;
+  border: 1px solid #B4BDC3;
+  background-color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.currentPrice {
+  font-family: Mont;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.fullPrice {
+  font-family: 'Mont';
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-align: left;
+  color: #89939A;
+  text-decoration: line-through white;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.desc-block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin-top: 32px;
+}
+
+.leftText {
+  font-family: 'Mont';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: #89939A;
+  margin: 0;
+  }
+
+.rightText {
+  font-family: 'Mont';
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+  color: #313237;
+  margin: 0;
+}
+
+.leftText-desc {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: #89939A;
+  margin: 0;
+  }
+
+.rightText-desc {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: right;
+
+  color: #313237;
+  margin: 0;
+}
+
+.product-id {
+  display: flex;
+  width: 178px;
+  margin-left: 16px;
+  justify-content: end;
+  padding: 0;
+}
+
+.product-id-p {
+  margin: 0;
+  font-family: Mont;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: right;
+  color: #B4BDC3;
+}
+
+.productInfo-info {
+  margin-top: 80px;
+  display: flex;
+  flex-direction: row;
+  gap: 64px;
+}
+
+.productInfo-left-block-h1 {
+  font-family: Mont;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color:#313237;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #E2E6E9;
+  margin: 0;
+}
+
+.productInfo-desc-block {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.productInfo-desc-h2 {
+  font-family: Mont;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+  text-align: left;
+  color: #313237;
+  margin: 0;
+}
+
+.productInfo-desc-p {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: left;
+  color: #89939A;
+  margin: 0;
+}
+
+.productInfo-left-block {
+  width: 560px;
+}
+
+.productInfo-right-block {
+  width: 512px;
+}
+
+.product-tech-divs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 25px;
+}

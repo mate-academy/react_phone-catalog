@@ -1,0 +1,70 @@
+.bucket-card {
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  height: 128px;
+  width: 752px;
+}
+
+.close-img-btn {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+}
+
+.close-img {
+  background-color: white;
+}
+
+.card-img {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+}
+.card-p {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: #313237;
+}
+.card-btns {
+  display: flex;
+  flex-direction: row;
+}
+.card-btn {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #E2E6E9;
+  background-color: white;
+}
+.card-btn-img {
+  background-color: white;
+}
+.card-number {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-price {
+  font-family: Mont;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: right;
+  color:#313237;
+  padding-left: 30px;
+}

@@ -1,0 +1,97 @@
+@import "../../mixins/mixins.scss";
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+.container  {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #E2E6E9;
+}
+
+.logo {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 24px;
+}
+
+.links {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  list-style: none;
+  gap: 24px;
+  height: 100%;
+  margin-left: 24px;
+}
+
+li {
+  height: 100%;
+}
+
+.link {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 61px;
+  color: #89939A;
+
+  font-family: 'Mont-Regular';
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.link:hover {
+  color: #313237;
+  border-bottom: 3px solid #313237;
+}
+
+.icons {
+  margin: 0;
+  height: 100%;
+  display: flex;
+  margin-left: auto;
+  padding: 0;
+  list-style: none;
+}
+
+.icon-link {
+  width: 64px;
+  height: 64px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-left: 1px solid #E2E6E9;
+}
+
+.onTablet {
+  display: flex;
+
+  @include onMobile {
+    display: none;
+  }
+}
+
+.onMobile {
+  display: none;
+
+  @include onMobile {
+    display: flex
+  }
+}

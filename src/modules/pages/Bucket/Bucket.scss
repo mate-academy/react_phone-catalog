@@ -1,0 +1,84 @@
+.bucket-layout {
+  width: 1200px;
+  margin: 0 auto;
+  margin-bottom: 80px;
+}
+
+.products-block {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.cards-layout {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.bucket-h1 {
+  font-family: Mont;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin: 0;
+  margin-bottom: 32px;
+}
+
+.bucket-checkout {
+  display: flex;
+  flex-direction: column;
+  width: 368px;
+  height: 206px;
+  border: 1px solid#E2E6E9;
+  justify-content: center;
+  align-items: center;
+}
+
+.checkout-h1 {
+  font-family: Mont;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin: 24px 0 0 0;
+}
+
+.checkout-p {
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+  text-align: center;
+  color: #89939A;
+  margin: 0 0 25px 0;
+}
+
+.checkout-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 320px;
+  height: 48px;
+  background-color: #313237;
+  color: #FFFFFF;
+
+  font-family: Mont;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  border: none;
+
+}
+
+.checkout-btn-block {
+  border-top: 1px solid #E2E6E9;
+  padding-top: 24px;
+  margin-bottom: 25px;
+}

@@ -1,0 +1,48 @@
+@import "../../../../../mixins/mixins.scss";
+
+.newPhone-container {
+  width: 100%;
+  margin: 80px 0;
+
+  @include onMobile {
+    padding-left: 16px;
+  }
+}
+
+.newPhones-h1 {
+  font-family: 'Mont';
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: #313237;
+  margin: 0;
+}
+
+.newPhone-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 0 24px 0;
+}
+
+
+
+.slide-btns {
+  display: flex;
+  gap: 16px;
+  margin: 4px 0 0 0;
+}
+
+.arrow-btn {
+  height: 32px;
+  width: 32px;
+  background-color: white;
+  padding: 0;
+  border: 1px solid #B4BDC3;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
