@@ -1,0 +1,59 @@
+@import './common';
+
+.menu {
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  gap: 32px;
+  height: 100vh;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    margin-bottom: auto;
+  }
+
+  &__shop {
+    display: flex;
+    width: 100%;
+    height: 64px;
+    justify-content: space-between;
+    margin-bottom: 0;
+    border-top: 1px solid $dark-grey-color;
+
+    &--icon {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 50%;
+      border-right: 1px solid $dark-grey-color;
+    }
+  }
+}
+
+.icon-count-menu {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  top: 27%;
+  left: 50%;
+  border: none;
+  border-radius: 50%;
+  background-color: $icon-red-color;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+  color: $main-white-color;
+
+  @include on-desktop-small {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+  }
+}

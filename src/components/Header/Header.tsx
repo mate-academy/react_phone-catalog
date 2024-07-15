@@ -1,18 +1,8 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import React from 'react';
-import classNames from 'classnames';
+import { getIconClass, getLinkClass } from '../../utils/heplerFunctions';
 import { useAppSelector } from '../../app/hooks';
-
-const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('header__navbar--link', {
-    'is-active': isActive,
-  });
-
-const getIconClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('header__user--icon', {
-    'is-active-icon': isActive,
-  });
 
 export const Header: React.FC = () => {
   const favProductIds = useAppSelector(state => state.favorites.products);
@@ -27,7 +17,7 @@ export const Header: React.FC = () => {
       <Link to="/" className="header__logo">
         <img src="img/Logo.png" alt="Logo" />
       </Link>
-      <div className="header__navbar">
+      <nav className="header__navbar">
         <NavLink to="/" className={getLinkClass}>
           Home
         </NavLink>
@@ -40,7 +30,7 @@ export const Header: React.FC = () => {
         <NavLink to="/accessories" className={getLinkClass}>
           Accessories
         </NavLink>
-      </div>
+      </nav>
       <div className="header__user">
         <NavLink className={getIconClass} to="/favorites">
           <svg className="icon icon-user">

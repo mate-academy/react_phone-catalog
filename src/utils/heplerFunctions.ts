@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import { Gadget } from '../types/Gadget';
 import { Sort } from '../types/Sort';
 
@@ -30,3 +31,18 @@ export function getNumbers(from: number, to: number): number[] {
 export const normalizeColor = (color: string): string => {
   return color.replace(/\s+/g, '-').toLowerCase();
 };
+
+export const getIconClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__user--icon', {
+    'is-active-icon': isActive,
+  });
+
+export const getLinkClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__navbar--link', {
+    'is-active': isActive,
+  });
+
+export const getIconMenuClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('menu__shop--icon', {
+    'is-active-icon': isActive,
+  });

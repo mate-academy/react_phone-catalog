@@ -11,6 +11,7 @@ import { Favorites } from './pages/Favorites';
 import { Provider } from 'react-redux';
 import store from './app/store';
 import { ShoppingCartPage } from './pages/ShoppingCart';
+import { MenuPage } from './pages/MenuPage';
 
 export const Root = () => (
   <Provider store={store}>
@@ -20,6 +21,7 @@ export const Root = () => (
           <Route index element={<HomePage />} />
           <Route path="home" element={<Navigate to="/" replace />} />
 
+          <Route path="menu" element={<MenuPage />} />
           <Route path="phones" element={<PhonesPage />} />
           <Route path="tablets" element={<TabletsPage />} />
           <Route path="accessories" element={<AccessoriesPage />} />
