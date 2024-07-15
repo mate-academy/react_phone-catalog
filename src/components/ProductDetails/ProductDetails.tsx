@@ -1,7 +1,7 @@
 import { Link, useParams } from 'react-router-dom';
 import { BreadCrumbs } from '../../components/BreadCrumbs/BreadCrumbs';
 import { Category } from '../../enums/Category';
-import { useContext } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { Gadgets } from '../../types/ContextType/Gadgets';
 import { AvailableColors } from '../../enums/AvailableColors';
 import { IconFavorites } from '../../components/Icons/IconFavorites';
@@ -32,6 +32,8 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
     useContext(StateContext);
   const { handleAddToCart } = useContext(ShoppingCartContext);
   const { cartItems } = useContext(ShoppingCartContext);
+  const { handleResize } = useContext(StateContext);
+  const element = useRef<HTMLDivElement>(null);
 
   const {
     id,
@@ -78,8 +80,13 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
     return v;
   };
 
+  useEffect(() => {
+    handleResize(element);
+  }, [findProduct]);
+
   return (
     <div
+      ref={element}
       className={classNames(style.product, {
         [style.product__darkTheme]: theme,
       })}
