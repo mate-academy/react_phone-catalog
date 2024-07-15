@@ -13,7 +13,6 @@ import { SearchContext } from '../../helpers/utils/searchContext';
 export const Header: React.FC = () => {
   const location = useLocation();
   const [whereIsSearch, setWhereIsSearch] = useState('');
-  const [hasMenu, setHesMenu] = useState(false);
   const { canSearch } = useContext(SearchContext);
 
   useEffect(() => {
@@ -54,10 +53,10 @@ export const Header: React.FC = () => {
       </div>
 
       <div className="header__menu-button">
-        <MenuButton hasMenu={hasMenu} setHesMenu={setHesMenu} />
+        <MenuButton />
       </div>
 
-      <Menu hasMenu={hasMenu} setHesMenu={setHesMenu} />
+      <Menu />
     </header>
   );
 };

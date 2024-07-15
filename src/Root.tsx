@@ -9,25 +9,28 @@ import { FavoritesPage } from './pages/FavoritesPage';
 import { CartPage } from './pages/CartPage';
 import { NotFoundPage } from './pages/NotFoundPage';
 import { SearchContextProvider } from './helpers/utils/searchContext';
+import { MenuContextProvider } from './helpers/utils/menuContext';
 
 export const Root: React.FC = () => (
   <ProductContextProvider>
     <SearchContextProvider>
-      <Router>
-        <Routes>
-          <Route path="/" element={<App />}>
-            <Route index element={<HomePage />} />
-            <Route path="/shop/:type" element={<Shop />} />
-            <Route
-              path="/product/:productId"
-              element={<ProductDetailsPage />}
-            />
-            <Route path="/favorites" element={<FavoritesPage />} />
-            <Route path="/cart" element={<CartPage />} />
-            <Route path="*" element={<NotFoundPage />} />
-          </Route>
-        </Routes>
-      </Router>
+      <MenuContextProvider>
+        <Router>
+          <Routes>
+            <Route path="/" element={<App />}>
+              <Route index element={<HomePage />} />
+              <Route path="/shop/:type" element={<Shop />} />
+              <Route
+                path="/product/:productId"
+                element={<ProductDetailsPage />}
+              />
+              <Route path="/favorites" element={<FavoritesPage />} />
+              <Route path="/cart" element={<CartPage />} />
+              <Route path="*" element={<NotFoundPage />} />
+            </Route>
+          </Routes>
+        </Router>
+      </MenuContextProvider>
     </SearchContextProvider>
   </ProductContextProvider>
 );

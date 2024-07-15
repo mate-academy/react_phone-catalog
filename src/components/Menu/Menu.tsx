@@ -1,17 +1,17 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Menu.scss';
 import { CSSTransition } from 'react-transition-group';
 import { Nav } from '../Nav';
 import { Favorites } from '../Favorites';
 import { Cart } from '../Cart';
 import { MenuButton } from '../MenuButton/MenuButton';
+import { MenuContext } from '../../helpers/utils/menuContext';
 
-type Props = {
-  hasMenu: boolean;
-  setHesMenu: React.Dispatch<React.SetStateAction<boolean>>;
-};
+type Props = {};
 
-export const Menu: React.FC<Props> = ({ hasMenu, setHesMenu }) => {
+export const Menu: React.FC<Props> = () => {
+  const { hasMenu } = useContext(MenuContext);
+
   return (
     <CSSTransition
       in={hasMenu}
@@ -22,7 +22,7 @@ export const Menu: React.FC<Props> = ({ hasMenu, setHesMenu }) => {
       <section className="menu">
         <div className="container">
           <div className="menu__content">
-            <MenuButton hasMenu={hasMenu} setHesMenu={setHesMenu} />
+            <MenuButton />
 
             <Nav />
 

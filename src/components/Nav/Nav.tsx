@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './Nav.scss';
 import { NavLink } from 'react-router-dom';
 import { classNameFunc } from '../../helpers/utils/classNameFunc';
+import { MenuContext } from '../../helpers/utils/menuContext';
 
 type Props = {
   isFooter?: boolean;
@@ -10,6 +11,8 @@ type Props = {
 const BASE_CLASS = 'nav__link';
 
 export const Nav: React.FC<Props> = ({ isFooter = false }) => {
+  const { setHasMenu } = useContext(MenuContext);
+
   return (
     <nav className="header__nav nav">
       <ul className="nav__list">
@@ -18,6 +21,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
             <NavLink
               to="/"
               className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
+              onClick={() => setHasMenu(false)}
             >
               HOME
             </NavLink>
@@ -27,6 +31,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
           <NavLink
             to="/shop/phones"
             className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
+            onClick={() => setHasMenu(false)}
           >
             Phones
           </NavLink>
@@ -35,6 +40,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
           <NavLink
             to="/shop/tablets"
             className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
+            onClick={() => setHasMenu(false)}
           >
             tablets
           </NavLink>
@@ -43,6 +49,7 @@ export const Nav: React.FC<Props> = ({ isFooter = false }) => {
           <NavLink
             to="/shop/accessory"
             className={ob => classNameFunc(ob, BASE_CLASS, isFooter)}
+            onClick={() => setHasMenu(false)}
           >
             accessories
           </NavLink>

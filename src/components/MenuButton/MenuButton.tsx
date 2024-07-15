@@ -1,15 +1,15 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './MenuButton.scss';
 import classNames from 'classnames';
+import { MenuContext } from '../../helpers/utils/menuContext';
 
-type Props = {
-  hasMenu: boolean;
-  setHesMenu: React.Dispatch<React.SetStateAction<boolean>>;
-};
+type Props = {};
 
-export const MenuButton: React.FC<Props> = ({ hasMenu, setHesMenu }) => {
+export const MenuButton: React.FC<Props> = () => {
+  const { hasMenu, setHasMenu } = useContext(MenuContext);
+
   const onClick = () => {
-    setHesMenu(prev => !prev);
+    setHasMenu(prev => !prev);
   };
 
   return (
