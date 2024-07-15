@@ -18,7 +18,7 @@ export const ShopByCategory: React.FC<Props> = () => {
       <h1 className="shop-by-category__title">Shop by category</h1>
 
       <div className="shop-by-category__categories">
-        <Link to="/shop/phone" className="shop-by-category__category">
+        <Link to="/shop/phones" className="shop-by-category__category">
           <div
             className="shop-by-category__img
               shop-by-category__img--phone"

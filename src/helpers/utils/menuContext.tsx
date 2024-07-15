@@ -15,7 +15,7 @@ type Props = {
 };
 
 export const MenuContextProvider: React.FC<Props> = ({ children }) => {
-  const [hasMenu, setHasMenu] = useState(true);
+  const [hasMenu, setHasMenu] = useState(false);
 
   const value = { hasMenu, setHasMenu };
 
