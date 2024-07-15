@@ -15,7 +15,7 @@
   }
 
   &__button {
-    @include on-Phone {
+    @include on-phone {
       display: none;
     }
 
@@ -112,7 +112,7 @@
     background-color: $colorSurface1;
     opacity: 98%;
 
-    @include on-Phone {
+    @include on-phone {
       display: none;
     }
 

@@ -43,7 +43,7 @@
 }
 
 .navContainer {
-  @include on-Phone {
+  @include on-phone {
     display: none;
   }
 
@@ -93,7 +93,7 @@
 }
 
 .actions {
-  @include on-Phone {
+  @include on-phone {
     display: none;
   }
 
