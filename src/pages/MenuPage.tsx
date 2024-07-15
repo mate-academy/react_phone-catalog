@@ -1,7 +1,6 @@
-import { NavLink } from 'react-router-dom';
-import { Header } from '../components/Header';
+import { Link, NavLink } from 'react-router-dom';
 import '../styles/menu.scss';
-import { getIconMenuClass, getLinkClass } from '../utils/heplerFunctions';
+import { getIconMenuClass, getLinkMenuClass } from '../utils/heplerFunctions';
 import { useAppSelector } from '../app/hooks';
 
 export const MenuPage = () => {
@@ -13,24 +12,35 @@ export const MenuPage = () => {
   );
 
   return (
-    <>
-      <Header />
-      <div className="menu">
-        <nav className="menu__list">
-          <NavLink to={'/'} className={getLinkClass}>
+    <div className="menu">
+      <div className="menu__topbar">
+        <Link to="/" className="menu__topbar--logo">
+          <img src="img/Logo.png" alt="Logo" />
+        </Link>
+        <div className="menu__topbar--box topbar-box">
+          <Link to={'/'} className="topbar-box__icon">
+            <svg className="icon icon-close">
+              <use href="img/icons.svg#icon-close"></use>
+            </svg>
+          </Link>
+        </div>
+      </div>
+      <div className="menu__nav">
+        <nav className="menu__nav--list">
+          <NavLink to={'/'} className={getLinkMenuClass}>
             Home
           </NavLink>
-          <NavLink to={'/phones'} className={getLinkClass}>
+          <NavLink to={'/phones'} className={getLinkMenuClass}>
             Phones
           </NavLink>
-          <NavLink to={'/tablets'} className={getLinkClass}>
+          <NavLink to={'/tablets'} className={getLinkMenuClass}>
             Tablets
           </NavLink>
-          <NavLink to={'/accessories'} className={getLinkClass}>
+          <NavLink to={'/accessories'} className={getLinkMenuClass}>
             Accessories
           </NavLink>
         </nav>
-        <div className="menu__shop">
+        <div className="menu__nav--shop">
           <NavLink className={getIconMenuClass} to="/favorites">
             <svg className="icon icon-user">
               <use href="img/icons.svg#icon-favourites"></use>
@@ -53,6 +63,6 @@ export const MenuPage = () => {
           </NavLink>
         </div>
       </div>
-    </>
+    </div>
   );
 };

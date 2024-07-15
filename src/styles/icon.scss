@@ -4,6 +4,7 @@
   &-menu {
     fill: $main-white-color;
     width: 14px;
+    height: 14px;
   }
 
     &-user {
@@ -87,6 +88,12 @@
   &-plus {
     width: 12px;
     height: 12px;
+    fill: $main-white-color;
+  }
+
+  &-close {
+    width: 10px;
+    height: 10px;
     fill: $main-white-color;
   }
 }

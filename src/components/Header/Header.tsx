@@ -52,7 +52,7 @@ export const Header: React.FC = () => {
         </NavLink>
       </div>
       <div className="header__menu">
-        <Link className="header__menu--icon" to="/menu">
+        <Link to={'/menu'} className="header__menu--icon">
           <svg className="icon icon-menu">
             <use href="img/icons.svg#icon-menu"></use>
           </svg>

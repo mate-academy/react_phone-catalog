@@ -21,9 +21,9 @@ html {
   select:-webkit-autofill,
   select:-webkit-autofill:hover,
   select:-webkit-autofill:focus {
-  -webkit-text-fill-color: $main-white-color;
-  -webkit-box-shadow: 0 0 0 1000px $c-main-theme inset;
-  transition: background-color 5000s ease-in-out 0s;
+    -webkit-text-fill-color: $main-white-color;
+    -webkit-box-shadow: 0 0 0 1000px $c-main-theme inset;
+    transition: background-color 5000s ease-in-out 0s;
   }
 }
 

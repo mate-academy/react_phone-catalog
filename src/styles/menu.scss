@@ -1,37 +1,57 @@
 @import './common';
 
 .menu {
-  padding-top: 80px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  gap: 32px;
   height: 100vh;
+  overflow: hidden;
 
-  &__list {
-    display: flex;
-    flex-direction: column;
+  &__topbar {
+    @include page-grid;
+
+    width: 100%;
+    background-color: $c-main-theme;
+    justify-content: space-between;
     align-items: center;
-    gap: 32px;
-    margin-bottom: auto;
+    border-bottom: 1px solid $dark-grey-color;
+    margin-bottom: $margin-bottom-mobile;
+
+    &--logo {
+      width: 96px;
+      padding: 13px 16px;
+
+      grid-column: 1 / span 2;
+    }
+
+    &--box {
+      display: flex;
+      justify-self: end;
+      border-left: 1px solid $dark-grey-color;
+      grid-column: 4 / span 1;
+    }
   }
 
-  &__shop {
+  &__nav {
     display: flex;
-    width: 100%;
-    height: 64px;
+    flex-direction: column;
     justify-content: space-between;
-    margin-bottom: 0;
-    border-top: 1px solid $dark-grey-color;
+    align-items: center;
+    gap: 32px;
+    height: calc(100vh - 74px);
 
-    &--icon {
-      position: relative;
+    &--list {
       display: flex;
+      flex-direction: column;
       align-items: center;
-      justify-content: center;
-      width: 50%;
-      border-right: 1px solid $dark-grey-color;
+      gap: 16px;
+      margin-bottom: auto;
+    }
+
+    &--shop {
+      display: flex;
+      width: 100%;
+      height: 64px;
+      justify-content: space-between;
+      margin-bottom: 0;
+      border-top: 1px solid $dark-grey-color;
     }
   }
 }
@@ -55,5 +75,64 @@
     width: 14px;
     height: 14px;
     font-size: 10px;
+  }
+}
+
+.topbar-box__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+}
+
+.menu-nav-link {
+  position: relative;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: $light-grey-color;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 0.92;
+  letter-spacing: 0.04em;
+  padding: 8px 0;
+
+  &:focus {
+    color: $main-white-color;
+    outline: none;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $main-white-color;
+      bottom: -1px;
+    }
+  }
+}
+
+.menu-shop-icon {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 50%;
+  border-right: 1px solid $dark-grey-color;
+
+  &:focus {
+    color: $main-white-color;
+    outline: none;
+
+    &::after {
+      position: absolute;
+      display: block;
+      content: '';
+      width: 100%;
+      height: 2px;
+      background-color: $main-white-color;
+      bottom: -1px;
+    }
   }
 }

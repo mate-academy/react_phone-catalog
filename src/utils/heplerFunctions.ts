@@ -43,6 +43,11 @@ export const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   });
 
 export const getIconMenuClass = ({ isActive }: { isActive: boolean }) =>
-  classNames('menu__shop--icon', {
+  classNames('menu-shop-icon', {
     'is-active-icon': isActive,
+  });
+
+export const getLinkMenuClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('menu-nav-link', {
+    'is-active': isActive,
   });
