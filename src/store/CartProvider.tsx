@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { CART_ITEMS_KEY } from '../constants/constants';
 import { Cart } from '../types/Cart';
 import { Product } from '../types/Product';
@@ -90,4 +90,8 @@ export const CartProvider: React.FC<Props> = ({ children }) => {
       {children}
     </CartContext.Provider>
   );
+};
+
+export const useProductsCart = () => {
+  return useContext(CartContext);
 };

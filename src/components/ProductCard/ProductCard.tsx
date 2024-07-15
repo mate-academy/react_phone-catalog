@@ -10,9 +10,8 @@ import { Product } from '../../types/Product';
 import { extractNumberAndSuffix } from '../../utils';
 import { ProductCardPrices } from '../ProductCardPrices';
 
-import { useFavorites } from '../../hooks/useFavorites';
-import { useProductsCart } from '../../hooks/useProductsCart';
-
+import { useProductsCart } from '../../store/CartProvider';
+import { useFavorites } from '../../store/FavoritesProvider';
 import styles from './ProductCard.module.scss';
 
 type Props = {

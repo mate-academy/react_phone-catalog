@@ -9,13 +9,13 @@ import { ProductCardPrices } from '../ProductCardPrices';
 import { SelectCapacity } from '../SelectCapacity/SelectCapacity';
 import { SelectColor } from '../SelectColor/SelectColor';
 
-import { useFavorites } from '../../hooks/useFavorites';
-import { useProductsCart } from '../../hooks/useProductsCart';
 import { Product } from '../../types/Product';
 import { extractNumberAndSuffix } from '../../utils/index';
 
 import isFavoriteIcon from '../../assets/images/is-favorite.svg';
 
+import { useProductsCart } from '../../store/CartProvider';
+import { useFavorites } from '../../store/FavoritesProvider';
 import styles from './ProductDetailPurchase.module.scss';
 
 type Props = {

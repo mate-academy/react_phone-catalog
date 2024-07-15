@@ -15,6 +15,7 @@ import { Sorts } from '../../types/Sorts';
 
 import { Categories } from '../../types/Categories';
 import { getSortedProducts } from '../../utils/getSortedProducts';
+
 import styles from './HomePage.module.scss';
 
 export const HomePage = () => {

@@ -1,4 +1,4 @@
-import { useProductsCart } from '../../hooks/useProductsCart';
+import { useProductsCart } from '../../store/CartProvider';
 import { getTotalPriceOfCart } from '../../utils/getTotalPriceOfCart';
 import AlertDialog from '../AlertDialog/AlertDialog';
 

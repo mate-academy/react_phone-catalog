@@ -5,7 +5,7 @@ import closeIcon from '../../assets/images/close.svg';
 import { IconMinus } from '../../ui/IconMinus';
 import { IconPlus } from '../../ui/IconPlus';
 
-import { useProductsCart } from '../../hooks/useProductsCart';
+import { useProductsCart } from '../../store/CartProvider';
 import styles from './CartItem.module.scss';
 
 type Props = {

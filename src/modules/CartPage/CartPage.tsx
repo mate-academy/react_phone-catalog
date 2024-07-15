@@ -1,6 +1,7 @@
 import { CartItems } from '../../components/CartItems/CartItems';
 import { CartTotal } from '../../components/CartTotal';
-import { useProductsCart } from '../../hooks/useProductsCart';
+import { useProductsCart } from '../../store/CartProvider';
+
 import { ButtonBack } from '../../ui/ButtonBack';
 
 import styles from './CartPage.module.scss';

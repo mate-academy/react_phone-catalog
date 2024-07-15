@@ -2,7 +2,7 @@ import { useLocation } from 'react-router-dom';
 import { Breadcrumbs } from '../../components/Breadcrumbs';
 
 import { ProductList } from '../../components/ProductList';
-import { useFavorites } from '../../hooks/useFavorites';
+import { useFavorites } from '../../store/FavoritesProvider';
 import styles from './FavoritesPage.module.scss';
 
 export const FavoritesPage = () => {

@@ -2,8 +2,8 @@
 @import './variable';
 @import './fonts';
 @import './scrollbar';
-@import './mixin.scss';
-@import './swiper.scss';
+@import './mixin';
+@import './swiper';
 
 html {
   height: 100%;
@@ -15,6 +15,24 @@ body {
   position: relative;
   min-height: 100%;
 }
+
+// .banner-container {
+//   width: 100%;
+//   max-width: $full-desktop;
+//   margin: 0 auto;
+//   padding-left: 20px;
+//   padding-right: 20px;
+//   margin-top: 56px;
+
+//   @include md() {
+//     padding-left: 24px;
+//     padding-right: 24px;
+//   }
+
+//   @include rwd(320) {
+//     padding: 0px;
+//   }
+// }
 
 main {
   padding-bottom: calc($height-footer + 80px);

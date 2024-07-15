@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FAVORITES_KEY } from '../constants/constants';
 import { Product } from '../types/Product';
 import { getLocalStorage } from '../utils';
@@ -43,4 +43,8 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
       {children}
     </FavoritesContext.Provider>
   );
+};
+
+export const useFavorites = () => {
+  return useContext(FavoritesContext);
 };

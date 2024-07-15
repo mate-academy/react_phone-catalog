@@ -1,4 +1,4 @@
-import { useProductsCart } from '../../hooks/useProductsCart';
+import { useProductsCart } from '../../store/CartProvider';
 import { CartItem } from '../CartItem/CartItem';
 import styles from './CartItems.module.scss';
 

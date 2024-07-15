@@ -1,8 +1,20 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .ProductBanners {
   display: flex;
+  margin-bottom: 56px;
+  margin-top: 56px;
+
+  @include sm() {
+    margin-top: 32px;
+    margin-bottom: 32px;
+  }
+
+  @include rwd(320) {
+    margin-top: 24px;
+    margin-bottom: 24px;
+  }
 }
 
 .Picture {
@@ -12,5 +24,9 @@
 
   @include sm() {
     height: 190px;
+  }
+
+  @include rwd(320) {
+    height: 320px;
   }
 }
