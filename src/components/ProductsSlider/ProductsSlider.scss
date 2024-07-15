@@ -37,16 +37,18 @@
 
   &__cart {
     --quantity-gaps: 1;
-    --quantity-cards: 2;
+    --quantity-cards: 1;
 
-    width: calc(
-      (100% - (var(--quantity-gaps) * var(--gap))) / var(--quantity-cards)
-    );
+    width: 100%;
     flex-shrink: 0;
 
     @include on-tablet {
       --quantity-gaps: 2;
       --quantity-cards: 3;
+
+      width: calc(
+        (100% - (var(--quantity-gaps) * var(--gap))) / var(--quantity-cards)
+      );
     }
 
     @include on-desktop {

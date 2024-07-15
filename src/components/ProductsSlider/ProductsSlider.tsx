@@ -25,7 +25,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, products }) => {
   useEffect(() => {
     const currentWidth = window.innerWidth;
 
-    let newCountVisibleCarts = 2;
+    let newCountVisibleCarts = 1;
 
     if (currentWidth >= TABLET_MIN_WIDTH && currentWidth < DESKTOP_MIN_WIDTH) {
       newCountVisibleCarts = 3;
