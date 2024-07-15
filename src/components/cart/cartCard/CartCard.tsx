@@ -111,9 +111,9 @@ export const CartCard: React.FC<Props> = ({
         <div className={Styles.cartCard__container__quantity}>
           <div
             onClick={handleIncrease}
-            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.spin}`}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.scale}`}
           >
-            +
+            <p className={Styles.scale}>+</p>
           </div>
 
           <div
@@ -137,9 +137,9 @@ export const CartCard: React.FC<Props> = ({
 
           <div
             onClick={handleDecrease}
-            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.spin}`}
+            className={`${Styles.cartCard__container__quantity__item} ${Styles.border} ${Styles.scale}`}
           >
-            -
+            <p className={Styles.scale}>-</p>
           </div>
         </div>
 

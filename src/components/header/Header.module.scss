@@ -52,12 +52,14 @@
       align-items: center;
       justify-content: center;
 
-      &:hover {
-        transform: rotate(360deg);
-      }
+
 
       &__link {
         position: relative;
+
+        &:hover {
+          scale: 110%;
+        }
       }
 
       @include for-tablet {
@@ -90,9 +92,7 @@
       align-items: center;
       justify-content: center;
 
-      &:hover {
-        transform: rotate(360deg);
-      }
+
 
       @include for-tablet {
         width: 64px;
@@ -101,6 +101,9 @@
 
       &__link {
         position: relative;
+        &:hover {
+          scale: 110%;
+        }
       }
 
       &__number {
@@ -238,7 +241,7 @@
         letter-spacing: 2px;
 
         &:hover {
-          transform: rotate(360deg);
+          scale: 110%;
         }
 
         &.with-after::after {

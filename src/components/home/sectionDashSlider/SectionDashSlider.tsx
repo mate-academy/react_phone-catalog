@@ -61,44 +61,85 @@ export const SectionDashSlider: React.FC = () => {
       <h1 className={Styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <section className={Styles['slider']}>
+        
         {isTablet && (
           <div onClick={handleNext} className={Styles.slider__right}></div>
         )}
 
         <div
+          className={Styles['slider__container']}
           onTouchStart={handlerTouchStart}
           onTouchEnd={handlerTouchEnd}
           onTouchMove={handlerTouchMove}
-          className={Styles['slider__container']}
-          style={{
-            transform: `translateX(-${active * 100}%)`,
-            transition: 'transform 0.5s ease-in-out',
-          }}
         >
-          <img
-            className={`${Styles.slider__pic}`}
-            src={'./img/banner-accessories.png'}
-            alt={`baner img`}
-          />
-
-          <img
-            className={`${Styles.slider__pic}`}
-            src={'./img/banner-phones.png'}
-            alt={`baner img`}
-          />
-
-          <img
-            className={`${Styles.slider__pic}`}
-            src={'./img/banner-tablets.png'}
-            alt={`baner img`}
-          />
+          {isTablet ? (
+            <>
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/main-slider1.webp'}
+                alt={`baner img`}
+              />
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/main-slider2.webp'}
+                alt={`baner img`}
+              />
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/main-slider3.webp'}
+                alt={`baner img`}
+              />
+            </>
+          ) : (
+            <>
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/banner-accessories.png'}
+                alt={`baner img`}
+              />
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/banner-phones.png'}
+                alt={`baner img`}
+              />
+              <img
+                style={{
+                  transform: `translateX(-${active * 100}%)`,
+                  transition: 'transform 0.5s ease-in-out',
+                }}
+                className={`${Styles.slider__pic}`}
+                src={'./img/banner-tablets.png'}
+                alt={`baner img`}
+              />
+            </>
+          )}
         </div>
 
         {isTablet && (
           <div onClick={handlePrev} className={Styles.slider__left}></div>
         )}
 
-        <div className={Styles.slider__picker}>
+        {/* <div className={Styles.slider__picker}>
           <div
             onClick={() => handlerPicker(0)}
             className={cn(Styles.slider__picker__dash, {
@@ -119,8 +160,31 @@ export const SectionDashSlider: React.FC = () => {
               [Styles.slider__picker__dash__selected]: 2 === active,
             })}
           ></div>
-        </div>
+        </div> */}
       </section>
+
+      <div className={Styles.slider__picker}>
+        <div
+          onClick={() => handlerPicker(0)}
+          className={cn(Styles.slider__picker__dash, {
+            [Styles.slider__picker__dash__selected]: 0 === active,
+          })}
+        ></div>
+
+        <div
+          onClick={() => handlerPicker(1)}
+          className={cn(Styles.slider__picker__dash, {
+            [Styles.slider__picker__dash__selected]: 1 === active,
+          })}
+        ></div>
+
+        <div
+          onClick={() => handlerPicker(2)}
+          className={cn(Styles.slider__picker__dash, {
+            [Styles.slider__picker__dash__selected]: 2 === active,
+          })}
+        ></div>
+      </div>
     </>
   );
 };

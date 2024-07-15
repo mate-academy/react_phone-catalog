@@ -81,7 +81,7 @@ export const Header: React.FC = () => {
   return (
     <header className={Styles.header} id="header">
       <div className={Styles[`header__container--1`]}>
-        <Link to={'/home'}>
+        <Link to={'/'}>
           <img
             src=".\img\svg\header_Logo.svg"
             className={Styles[`header__container--1__link`]}
