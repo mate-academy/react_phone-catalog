@@ -58,7 +58,7 @@
         position: relative;
 
         &:hover {
-          scale: 110%;
+          scale: 115%;
         }
       }
 
@@ -101,8 +101,9 @@
 
       &__link {
         position: relative;
+
         &:hover {
-          scale: 110%;
+          scale: 115%;
         }
       }
 
@@ -241,7 +242,7 @@
         letter-spacing: 2px;
 
         &:hover {
-          scale: 110%;
+          scale: 115%;
         }
 
         &.with-after::after {

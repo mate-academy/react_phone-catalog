@@ -50,7 +50,7 @@ export const ItemSlider: React.FC<Props> = ({
   };
 
   const getSuggestedProducts = () => {
-    const minNumber = Math.floor(Math.random() * 110);
+    const minNumber = Math.floor(Math.random() * 115);
     const maxNumber = getNumber(minNumber, 125);
     const newProducts = list.slice(minNumber, maxNumber);
     setCopyProducts(newProducts);

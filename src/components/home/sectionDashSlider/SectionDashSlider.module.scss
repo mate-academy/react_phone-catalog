@@ -90,6 +90,7 @@
     width: 320px;
     height: 252px;
     margin-bottom: 5px;
+    border-radius: 20px;
 
     @include for-tablet {
       margin-bottom: 10px;

@@ -32,7 +32,7 @@
     margin-bottom: 8px;
 
     &:hover {
-      scale: 110%;
+      scale: 115%;
     }
 
     @include for-tablet {
@@ -140,7 +140,7 @@
 
       &__added {
         color: #27AE60;
-        background-color: #fff;
+        background-color: var(--primary-color);
         border: 1px solid var(--border-color);
 
         &::before {

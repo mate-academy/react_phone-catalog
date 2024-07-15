@@ -12,7 +12,7 @@ export const ThemeSwitcher: React.FC = () => {
       document.documentElement.setAttribute('data-theme', currentTheme);
     }
 
-    if (currentTheme === 'brown') {
+    if (currentTheme === 'blue') {
       toggleSwitch.checked = true;
     }
 
@@ -20,9 +20,9 @@ export const ThemeSwitcher: React.FC = () => {
       const isChecked = (event.target as HTMLInputElement).checked;
       document.documentElement.setAttribute(
         'data-theme',
-        isChecked ? 'brown' : 'light',
+        isChecked ? 'blue' : 'light',
       );
-      localStorage.setItem('theme', isChecked ? 'brown' : 'light');
+      localStorage.setItem('theme', isChecked ? 'blue' : 'light');
     };
 
     toggleSwitch?.addEventListener('change', handleSwitchChange);
