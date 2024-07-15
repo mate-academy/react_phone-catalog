@@ -1,0 +1,153 @@
+@import '../../styles/main';
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: $colorBlack;
+  width: 100%;
+  height: 48px;
+  gap: 16px;
+
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  box-shadow: 0 1px 0 0 $colorElements;
+
+  @include on-desktop {
+    gap: 24px;
+    height: 64px;
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-inline: 16px;
+    height: 100%;
+
+    @include on-desktop {
+      padding-inline: 24px;
+    }
+
+    &-img {
+      width: 64px;
+      height: 22px;
+  
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+}
+
+.navContainer {
+  @include on-Phone {
+    display: none;
+  }
+
+  display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    height: 48px;
+    margin-right: 32px;
+    cursor: pointer;
+
+    @extend %uppercase-text;
+
+    &:hover {
+      color: $colorWhite;
+    }
+
+    @include on-desktop {
+      height: 64px;
+      margin-right: 64px;
+    }
+  }
+
+  &__active {
+    color: $colorWhite;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $colorWhite;
+    }
+  }
+}
+
+.actions {
+  @include on-Phone {
+    display: none;
+  }
+
+  display: flex;
+  align-items: center;
+
+  &__link {
+    display: flex;
+    position: relative;
+    align-items: center;
+    justify-content: center;
+
+    @include icons-header-size;
+
+    box-shadow: -1px 0 0 0 $colorElements;
+  }
+
+  &__active {
+    color: $colorWhite;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background-color: $colorWhite;
+    }
+  }
+}
+
+.BurgerMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    box-shadow: -1px 0 0 0 $colorElements;
+
+    @include icons-header-size;
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}

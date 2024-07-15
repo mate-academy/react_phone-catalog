@@ -1,0 +1,98 @@
+@import '../../styles/main';
+
+.itemForSlider {
+  width: 212px;
+  height: 100%;
+  border: 1px solid $colorElements;
+  padding: 32px;
+
+  @include on-tablet {
+    width: 237px;
+    height: 506px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 507px;
+  }
+
+  &:hover {
+    border: 1px solid $colorWhite;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    position: relative;
+
+    &-image {
+      width: 208px;
+      height: 208px;
+      object-fit: contain;
+      align-self: center;
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__title {
+    height: 58px;
+    margin-top: 16px;
+
+    @extend %body-text;
+
+    color: $colorWhite;
+
+  }
+
+  &__price {
+    display: flex;
+    font-display: row;
+    gap: 8px;
+
+    &-seil {
+      @extend %h3-tablet;
+    }
+
+    &-full {
+      @extend %full-price;
+
+      color: $colorTextSecondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    margin-top: 8px;
+    border: 1px solid $colorElements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      @extend %small-text;
+
+      color: $colorTextSecondary;
+    }
+
+    &-value {
+      @extend %small-text;
+
+      color: $colorWhite;
+      font-weight: 700;
+    }
+  }
+}
