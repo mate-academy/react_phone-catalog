@@ -81,10 +81,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: transparent;
-    border: 1px solid $dark-grey-color;
+    background-color: $button-grey-color;
+    border: none;
     width: 32px;
     height: 32px;
+    cursor: pointer;
+
+    @include hover(background-color, $purple-hover-color);
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $main-white-color;
+      opacity: 0.2;
+    }
   }
 
   &__count {

@@ -128,7 +128,7 @@
       border: none;
       cursor: pointer;
 
-      @include hover(background-color, &$button-purple-color);
+      @include hover(background-color, $purple-hover-color);
     }
   }
 }

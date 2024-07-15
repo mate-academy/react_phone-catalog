@@ -15,6 +15,8 @@ export const CartItem: React.FC<Props> = ({ product }) => {
   const takeItem = () => dispatch(removeCart(id));
   const clearItem = () => dispatch(clearCart(id));
 
+  const disabledBtn = count === 1;
+
   return (
     <div className="cart-card">
       <div className="cart-card__descr">
@@ -36,6 +38,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
             type="button"
             className="store-buttons__btn"
             onClick={takeItem}
+            disabled={disabledBtn}
           >
             <svg className="icon icon-minus">
               <use href="img/icons.svg#icon-minus"></use>
