@@ -1,4 +1,4 @@
 export type CartProduct = {
-  id: number;
+  id: string;
   count: number;
 };

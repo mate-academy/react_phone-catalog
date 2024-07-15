@@ -46,7 +46,7 @@ export const ShoppingCartPage = () => {
 
   const cartProducts = cartItems
     .map(cartItem => {
-      const item = allProducts.find(product => product.id === cartItem.id);
+      const item = allProducts.find(product => product.itemId === cartItem.id);
 
       return item ? { ...item, count: cartItem.count } : null;
     })

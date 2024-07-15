@@ -5,7 +5,7 @@ import { useAppSelector } from '../../app/hooks';
 import { addCart } from '../../features/cart';
 
 type Props = {
-  productId: number;
+  productId: string;
 };
 
 export const ButtonAddCart: React.FC<Props> = ({ productId }) => {

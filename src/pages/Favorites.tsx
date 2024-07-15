@@ -12,7 +12,7 @@ import { setError, setProducts } from '../features/productSlice';
 import { getProducts } from '../services/products';
 
 export const Favorites = () => {
-  const [storedFavs, setStoredFavs] = useLocalStorage<number[]>('favs', []);
+  const [storedFavs, setStoredFavs] = useLocalStorage<string[]>('favs', []);
   const dispatch = useDispatch();
   const favProductIds = useAppSelector(state => state.favorites.products);
   const allProducts = useAppSelector(state => state.products.items);
@@ -43,7 +43,7 @@ export const Favorites = () => {
 
   // Map favorite product IDs to actual Gadget objects
   const favoriteProducts = allProducts.filter(product =>
-    favProductIds.includes(product.id),
+    favProductIds.includes(product.itemId),
   );
 
   return (

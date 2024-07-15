@@ -29,7 +29,7 @@ const cartSlice = createSlice({
       state.totalCount = state.products.reduce((acc, item) => acc + item.count, 0);
       updateLocalStorageCart(state.products);
     },
-    addCart: (state, action: PayloadAction<number>) => {
+    addCart: (state, action: PayloadAction<string>) => {
       const item = state.products.find(product => product.id === action.payload);
 
       if (item) {
@@ -41,7 +41,7 @@ const cartSlice = createSlice({
       state.totalCount += 1;
       updateLocalStorageCart(state.products);
     },
-    removeCart: (state, action: PayloadAction<number>) => {
+    removeCart: (state, action: PayloadAction<string>) => {
       const item = state.products.find(product => product.id === action.payload);
 
       if (item) {
@@ -54,7 +54,7 @@ const cartSlice = createSlice({
 
       updateLocalStorageCart(state.products);
     },
-    clearCart: (state, action: PayloadAction<number>) => {
+    clearCart: (state, action: PayloadAction<string>) => {
       const item = state.products.find(product => product.id === action.payload);
 
       if (item) {

@@ -6,12 +6,13 @@ import 'swiper/scss';
 import 'swiper/scss/navigation';
 import 'swiper/scss/pagination';
 import { Gadget } from '../../../types/Gadget';
-import classNames from 'classnames';
 import { getHotPrices } from '../../../services/getHotPrices';
+import { ButtonAddCart } from '../../ButtonAddCart';
+import { ButtonHeart } from '../../ButtonHeart';
+import { Link } from 'react-router-dom';
 
 export const HotPrices: React.FC = () => {
   const [suggestedProducts, setSuggestedProducts] = useState<Gadget[]>([]);
-  const [isPressed, setIsPressed] = useState(false);
 
   useEffect(() => {
     const fetchSuggestedProducts = async () => {
@@ -22,10 +23,6 @@ export const HotPrices: React.FC = () => {
 
     fetchSuggestedProducts();
   }, []);
-
-  const addToFav = () => {
-    setIsPressed(!isPressed);
-  };
 
   return (
     <div className="hotprices">
@@ -92,8 +89,8 @@ export const HotPrices: React.FC = () => {
             },
           }}
           navigation={{
-            nextEl: '.hotprices__swiper-btn__next',
-            prevEl: '.hotprices__swiper-btn__prev',
+            nextEl: '.hotprices-swiper-btn__next',
+            prevEl: '.hotprices-swiper-btn__prev',
           }}
           className="hotprices__list"
         >
@@ -102,14 +99,22 @@ export const HotPrices: React.FC = () => {
               key={product.id}
               className="hotprices__list--card newmodels-card"
             >
-              <div className="hotprices-card__picture">
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="hotprices-card__picture"
+              >
                 <img
                   className="hotprices-card__picture--img"
                   src={product.image}
                   alt={product.name}
                 />
-              </div>
-              <h4 className="hotprices-card__title">{product.name}</h4>
+              </Link>
+              <Link
+                to={`/${product.category}/${product.itemId}`}
+                className="hotprices-card__title"
+              >
+                {product.name}
+              </Link>
               <div className="hotprices-card__price">
                 <p className="hotprices-card__price--disc">{`$${product.price}`}</p>
                 <p className="hotprices-card__price--regular">
@@ -131,21 +136,8 @@ export const HotPrices: React.FC = () => {
                 </li>
               </ul>
               <div className="hotprices-card__buttons">
-                <button type="button" className="hotprices-card__buttons--add">
-                  Add to cart
-                </button>
-                <button
-                  className="hotprices-card__buttons--heart"
-                  onClick={addToFav}
-                >
-                  <svg
-                    className={classNames('icon icon-heart', {
-                      'icon-heart-red': isPressed,
-                    })}
-                  >
-                    <use href="img/icons.svg#icon-favourites-filled"></use>
-                  </svg>
-                </button>
+                <ButtonAddCart productId={product.itemId} />
+                <ButtonHeart productId={product.itemId} />
               </div>
             </SwiperSlide>
           ))}

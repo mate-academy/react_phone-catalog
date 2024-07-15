@@ -5,7 +5,7 @@ import { addFav, removeFav } from '../../features/favorites';
 import { useAppSelector } from '../../app/hooks';
 
 type Props = {
-  productId: number;
+  productId: string;
 };
 
 export const ButtonHeart: React.FC<Props> = ({ productId }) => {

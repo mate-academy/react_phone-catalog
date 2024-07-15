@@ -7,7 +7,7 @@ const initialState: ProductsState = {
   error: '',
 };
 
-const updateLocalStorage = (products: number[]) => {
+const updateLocalStorage = (products: string[]) => {
   localStorage.setItem('favs', JSON.stringify(products));
 };
 
@@ -15,15 +15,15 @@ const favoritesSlice = createSlice({
   name: 'favorites',
   initialState,
   reducers: {
-    setFav: (state, action: PayloadAction<number[]>) => {
+    setFav: (state, action: PayloadAction<string[]>) => {
       state.products = action.payload;
       updateLocalStorage(state.products);
     },
-    addFav: (state, action: PayloadAction<number>) => {
+    addFav: (state, action: PayloadAction<string>) => {
       state.products.push(action.payload);
       updateLocalStorage(state.products);
     },
-    removeFav: (state, action: PayloadAction<number>) => {
+    removeFav: (state, action: PayloadAction<string>) => {
       state.products = state.products.filter(id => id !== action.payload);
       updateLocalStorage(state.products);
     },

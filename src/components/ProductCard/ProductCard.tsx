@@ -11,7 +11,6 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
   const {
-    id,
     itemId,
     name,
     category,
@@ -56,8 +55,8 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         </li>
       </ul>
       <div className="product-card__btn">
-        <ButtonAddCart productId={id} />
-        <ButtonHeart productId={id} />
+        <ButtonAddCart productId={itemId} />
+        <ButtonHeart productId={itemId} />
       </div>
     </div>
   );

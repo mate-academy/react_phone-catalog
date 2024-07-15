@@ -8,12 +8,12 @@ type Props = {
 };
 
 export const CartItem: React.FC<Props> = ({ product }) => {
-  const { image, name, price, id, count } = product;
+  const { image, name, price, itemId, count } = product;
   const dispatch = useDispatch();
 
-  const addItem = () => dispatch(addCart(id));
-  const takeItem = () => dispatch(removeCart(id));
-  const clearItem = () => dispatch(clearCart(id));
+  const addItem = () => dispatch(addCart(itemId));
+  const takeItem = () => dispatch(removeCart(itemId));
+  const clearItem = () => dispatch(clearCart(itemId));
 
   const disabledBtn = count === 1;
 

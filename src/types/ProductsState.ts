@@ -1,4 +1,4 @@
 export interface ProductsState {
-  products: number[];
+  products: string[];
   error: string;
 }

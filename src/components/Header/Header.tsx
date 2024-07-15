@@ -16,7 +16,11 @@ const getIconClass = ({ isActive }: { isActive: boolean }) =>
 
 export const Header: React.FC = () => {
   const favProductIds = useAppSelector(state => state.favorites.products);
-  const cartProductIds = useAppSelector(state => state.cart.totalCount);
+  const cartProductIds = useAppSelector(state => state.cart.products);
+  const totalCount = cartProductIds.reduce(
+    (count, product) => count + product.count,
+    0,
+  );
 
   return (
     <div className="header">
@@ -52,10 +56,8 @@ export const Header: React.FC = () => {
           <svg className="icon icon-user">
             <use href="img/icons.svg#icon-shopping-bag"></use>
           </svg>
-          {!!cartProductIds && (
-            <span className="header__user--icon icon-count">
-              {cartProductIds}
-            </span>
+          {!!totalCount && (
+            <span className="header__user--icon icon-count">{totalCount}</span>
           )}
         </NavLink>
       </div>

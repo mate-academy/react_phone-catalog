@@ -13,6 +13,10 @@ import classNames from 'classnames';
 import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
 import { COLOR_MAP } from '../../services/colors';
 import { normalizeColor } from '../../utils/heplerFunctions';
+import { useDispatch } from 'react-redux';
+import { useAppSelector } from '../../app/hooks';
+import { addFav, removeFav } from '../../features/favorites';
+import { addCart } from '../../features/cart';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -20,8 +24,30 @@ export const ProductDetailsPage: React.FC = () => {
   const { productId } = useParams<{ productId: string }>();
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
-  const [isPressed, setIsPressed] = useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const favProductIds = useAppSelector(state => state.favorites.products);
+  const isAdded = favProductIds.includes(productId || '');
+  const cartProductIds = useAppSelector(state => state.cart.products);
+  const isActive = cartProductIds.some(item => item.id === productId);
+
+  const addToCart = () => {
+    if (productId && !isActive) {
+      dispatch(addCart(productId));
+    }
+
+    return;
+  };
+
+  const addToFav = () => {
+    if (productId) {
+      if (isAdded) {
+        dispatch(removeFav(productId));
+      } else {
+        dispatch(addFav(productId));
+      }
+    }
+  };
 
   useEffect(() => {
     if (!productId) {
@@ -118,10 +144,6 @@ export const ProductDetailsPage: React.FC = () => {
       setSelectedCapacity(cap);
       navigate(`/${category}/${newProductId}`);
     }
-  };
-
-  const addToFav = () => {
-    setIsPressed(!isPressed);
   };
 
   return (
@@ -257,16 +279,24 @@ export const ProductDetailsPage: React.FC = () => {
               <p className="product-details__price--regular">{`$${priceRegular}`}</p>
             </div>
             <div className="product-details__buttons">
-              <button type="button" className="product-details__buttons--add">
-                Add to cart
+              <button
+                type="button"
+                className={classNames('product-details__buttons--add', {
+                  'added-to-cart': isActive,
+                })}
+                onClick={addToCart}
+              >
+                {!isActive ? 'Add to cart' : 'Added to cart'}
               </button>
               <button
-                className="product-details__buttons--heart"
+                className={classNames('product-details__buttons--heart', {
+                  'added-to-fav': isAdded,
+                })}
                 onClick={addToFav}
               >
                 <svg
                   className={classNames('icon icon-heart', {
-                    'icon-heart-red': isPressed,
+                    'icon-heart-red': isAdded,
                   })}
                 >
                   <use href="img/icons.svg#icon-favourites-filled"></use>
