@@ -78,39 +78,6 @@
     display: flex;
     justify-content: center;
     gap: 8px;
-
-    &--add {
-      text-align: center;
-      background-color: $button-purpul-color;
-      border: none;
-      width: 100%;
-      height: 40px;
-      color: $main-white-color;
-      font-family: inherit;
-      font-size: 14px;
-      font-weight: 700;
-      line-height: 21px;
-
-      @include hover(background-color, $purple-hover-color);
-    }
-
-    &--heart {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 40px;
-      height: 40px;
-      background-color: $button-grey-color;
-      border: none;
-      flex-shrink: 0;
-
-      @include hover(background-color, $icon-grey-color);
-
-      &:focus {
-        background-color: transparent;
-        border: 1px solid $dark-grey-color;
-      }
-    }
   }
 }
 

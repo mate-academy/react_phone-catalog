@@ -2,7 +2,7 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Link } from 'react-router-dom';
 import '../styles/page.scss';
-import { ProductsList } from '../components/ProductsList';
+import { ProductsSort } from '../components/ProductsSort';
 import { useEffect, useState } from 'react';
 import { getProducts } from '../services/products';
 import { Gadget } from '../types/Gadget';
@@ -11,7 +11,6 @@ import { ProductType } from '../types/ProductType';
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Gadget[]>([]);
   // const [loading, setLoading] = useState(true);
-  // const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     getProducts()
@@ -53,7 +52,7 @@ export const PhonesPage = () => {
             {!!phones.length && `${phones.length} models`}
           </p>
           {!!phones.length ? (
-            <ProductsList products={phones} />
+            <ProductsSort products={phones} />
           ) : (
             <p className="selected-cat__no-product">There are no phones yet</p>
           )}

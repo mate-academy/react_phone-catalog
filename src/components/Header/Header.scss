@@ -69,6 +69,7 @@
     }
 
     &--icon {
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -100,5 +101,27 @@
       width: 48px;
       height: 48px;
     }
+  }
+}
+
+.icon-count {
+  position: absolute;
+  width: 11.5px;
+  height: 11.5px;
+  top: 25%;
+  right: 25%;
+  border: none;
+  border-radius: 50%;
+  background-color: $icon-red-color;
+  font-size: 9px;
+  font-weight: 700;
+  line-height: 1.28;
+  text-align: center;
+  color: $main-white-color;
+
+  @include on-desktop-small {
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
   }
 }

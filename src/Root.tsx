@@ -7,24 +7,30 @@ import { TabletsPage } from './pages/TabletsPage';
 import { AccessoriesPage } from './pages/AccessoriesPage';
 // eslint-disable-next-line max-len
 import { ProductDetailsPage } from './pages/ProductDetailsPage/ProductDetailsPage';
-import { NotFoundProduct } from './pages/NotFoundProduct';
+import { Favorites } from './pages/Favorites';
+import { Provider } from 'react-redux';
+import store from './app/store';
+import { ShoppingCartPage } from './pages/ShoppingCart';
 
 export const Root = () => (
-  <HashRouter>
-    <Routes>
-      <Route path="/" element={<App />}>
-        <Route index element={<HomePage />} />
-        <Route path="home" element={<Navigate to="/" replace />} />
+  <Provider store={store}>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />}>
+          <Route index element={<HomePage />} />
+          <Route path="home" element={<Navigate to="/" replace />} />
 
-        <Route path="phones" element={<PhonesPage />} />
-        <Route path="tablets" element={<TabletsPage />} />
-        <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="phones" element={<PhonesPage />} />
+          <Route path="tablets" element={<TabletsPage />} />
+          <Route path="accessories" element={<AccessoriesPage />} />
+          <Route path="favorites" element={<Favorites />} />
+          <Route path="cart" element={<ShoppingCartPage />} />
 
-        <Route path=":category/:productId" element={<ProductDetailsPage />} />
+          <Route path=":category/:productId" element={<ProductDetailsPage />} />
 
-        <Route path="*" element={<NotFoundPage />} />
-        <Route path="*" element={<NotFoundProduct />} />
-      </Route>
-    </Routes>
-  </HashRouter>
+          <Route path="*" element={<NotFoundPage />} />
+        </Route>
+      </Routes>
+    </HashRouter>
+  </Provider>
 );

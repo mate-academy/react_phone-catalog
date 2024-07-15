@@ -1,17 +1,17 @@
 import { Link } from 'react-router-dom';
 import './ProductCard.scss';
-import React, { useState } from 'react';
-import classNames from 'classnames';
+import React from 'react';
 import { Gadget } from '../../types/Gadget';
+import { ButtonAddCart } from '../ButtonAddCart';
+import { ButtonHeart } from '../ButtonHeart';
 
 type Props = {
   gadget: Gadget;
 };
 
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
-  const [isPressed, setIsPressed] = useState(false);
-
   const {
+    id,
     itemId,
     name,
     category,
@@ -22,10 +22,6 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
     ram,
     image,
   } = gadget;
-
-  const addToFav = () => {
-    setIsPressed(!isPressed);
-  };
 
   return (
     <div className="product-card">
@@ -60,22 +56,8 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         </li>
       </ul>
       <div className="product-card__btn">
-        <button type="button" className="product-card__btn--add">
-          Add to cart
-        </button>
-        <button
-          type="button"
-          className="product-card__btn--heart"
-          onClick={addToFav}
-        >
-          <svg
-            className={classNames('icon icon-heart', {
-              'icon-heart-red': isPressed,
-            })}
-          >
-            <use href="img/icons.svg#icon-favourites-filled"></use>
-          </svg>
-        </button>
+        <ButtonAddCart productId={id} />
+        <ButtonHeart productId={id} />
       </div>
     </div>
   );

@@ -1,0 +1,101 @@
+@import '../../styles/common';
+
+.cart-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px;
+  background-color: $card-bgc;
+
+  @include on-tablet {
+    flex-direction: row;
+    gap: 24px;
+    justify-content: space-between;
+    padding: 24px;
+  }
+
+  &__descr {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 16px;
+
+    @include on-tablet {
+      gap: 24px;
+    }
+
+    &--img {
+      width: auto;
+      height: 80px;
+    }
+
+    &--name {
+      width: 128px;
+      color: $main-white-color;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1.5;
+
+      @include on-tablet {
+        width: 176px;
+      }
+
+      @include on-desktop-small {
+        width: 100%;
+      }
+    }
+
+    &--btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background-color: transparent;
+      border: none;
+    }
+  }
+
+  &__store {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include on-tablet {
+      gap: 53px;
+    }
+
+    &--buttons {
+      display: flex;
+    }
+
+    &--price {
+      color: $main-white-color;
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 1.4;
+    }
+  }
+}
+
+.store-buttons {
+  &__btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid $dark-grey-color;
+    width: 32px;
+    height: 32px;
+  }
+
+  &__count {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    color: $main-white-color;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1.5;
+  }
+}

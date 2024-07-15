@@ -3,7 +3,7 @@ import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { getProducts } from '../services/products';
 import { Link } from 'react-router-dom';
-import { ProductsList } from '../components/ProductsList';
+import { ProductsSort } from '../components/ProductsSort';
 import { ProductType } from '../types/ProductType';
 import { Gadget } from '../types/Gadget';
 
@@ -50,7 +50,7 @@ export const AccessoriesPage = () => {
             {!!accessories.length && `${accessories.length} models`}
           </p>
           {!!accessories.length ? (
-            <ProductsList products={accessories} />
+            <ProductsSort products={accessories} />
           ) : (
             <p className="selected-cat__no-product">
               There are no accessories yet

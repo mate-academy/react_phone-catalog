@@ -1,34 +1,33 @@
 @import '../../styles/common';
 
 .pagination {
-    &--btn-next {
-      margin-left: 8px;
+  &--btn-next {
+    margin-left: 8px;
+  }
+
+  &--btn-prev {
+    margin-right: 8px;
+  }
+
+  &--btn-prev,
+  &--btn-next {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    background-color: $button-grey-color;
+    border: none;
+    cursor: pointer;
+
+    @include hover(background-color, $icon-grey-color);
+
+    &:disabled {
+      background-color: transparent;
+      border: 1px solid $dark-grey-color;
+      opacity: 0.3;
     }
-
-    &--btn-prev {
-      margin-right: 8px;
-    }
-
-    &--btn-prev,
-    &--btn-next {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 32px;
-      height: 32px;
-      background-color: $button-grey-color;
-      border: none;
-      cursor: pointer;
-
-      @include hover(background-color, $icon-grey-color);
-
-      &:disabled {
-        background-color: transparent;
-        border: 1px solid $dark-grey-color;
-        opacity: 0.3;
-      }
-    }
-
+  }
 
   &__number {
     display: flex;
@@ -47,5 +46,5 @@
 }
 
 .is-active-page {
-  background-color: $button-purpul-color;
+  background-color: $button-purple-color;
 }

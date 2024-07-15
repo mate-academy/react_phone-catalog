@@ -102,6 +102,24 @@ img {
   }
 }
 
+.is-active-icon {
+  color: $main-white-color;
+
+  &::after {
+    position: absolute;
+    display: block;
+    content: '';
+    width: 100%;
+    height: 2px;
+    background-color: $main-white-color;
+    bottom: -1px;
+
+    @include on-desktop-small {
+      bottom: -1px;
+    }
+  }
+}
+
 .page-not-found-title {
   color: $main-white-color;
   font-size: 22px;

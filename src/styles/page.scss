@@ -1,7 +1,6 @@
 @import './common';
 
 .selected-cat {
-
   &__active {
     display: flex;
     align-items: center;
@@ -36,7 +35,7 @@
       line-height: 1.28;
       cursor: pointer;
 
-      @include hover(color, $button-purpul-color)
+      @include hover(color, $button-purple-color);
     }
   }
 
@@ -72,5 +71,20 @@
     letter-spacing: -0.01em;
     margin-bottom: 24px;
   }
+}
 
+.favorites__box {
+  @include page-grid;
+
+  margin-bottom: 56px;
+  gap: 40px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+    gap: 40px 17px;
+  }
+
+  @include on-desktop-small {
+    margin-bottom: 80px;
+  }
 }

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Footer } from '../components/Footer';
 import { Header } from '../components/Header';
 import { Link } from 'react-router-dom';
-import { ProductsList } from '../components/ProductsList';
+import { ProductsSort } from '../components/ProductsSort';
 import { getProducts } from '../services/products';
 import { Gadget } from '../types/Gadget';
 import { ProductType } from '../types/ProductType';
@@ -50,7 +50,7 @@ export const TabletsPage = () => {
             {!!tablets.length && `${tablets.length} models`}
           </p>
           {!!tablets.length ? (
-            <ProductsList products={tablets} />
+            <ProductsSort products={tablets} />
           ) : (
             <p className="selected-cat__no-product">There are no tablets yet</p>
           )}

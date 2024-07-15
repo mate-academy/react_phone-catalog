@@ -2,13 +2,22 @@ import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
 import React from 'react';
 import classNames from 'classnames';
+import { useAppSelector } from '../../app/hooks';
 
 const getLinkClass = ({ isActive }: { isActive: boolean }) =>
   classNames('header__navbar--link', {
     'is-active': isActive,
   });
 
+const getIconClass = ({ isActive }: { isActive: boolean }) =>
+  classNames('header__user--icon', {
+    'is-active-icon': isActive,
+  });
+
 export const Header: React.FC = () => {
+  const favProductIds = useAppSelector(state => state.favorites.products);
+  const cartProductIds = useAppSelector(state => state.cart.totalCount);
+
   return (
     <div className="header">
       <Link to="/" className="header__logo">
@@ -29,19 +38,29 @@ export const Header: React.FC = () => {
         </NavLink>
       </div>
       <div className="header__user">
-        <Link className="header__user--icon" to="/">
+        <NavLink className={getIconClass} to="/favorites">
           <svg className="icon icon-user">
             <use href="img/icons.svg#icon-favourites"></use>
           </svg>
-        </Link>
-        <Link className="header__user--icon" to="/">
+          {!!favProductIds.length && (
+            <span className="header__user--icon icon-count">
+              {favProductIds.length}
+            </span>
+          )}
+        </NavLink>
+        <NavLink className={getIconClass} to="/cart">
           <svg className="icon icon-user">
             <use href="img/icons.svg#icon-shopping-bag"></use>
           </svg>
-        </Link>
+          {!!cartProductIds && (
+            <span className="header__user--icon icon-count">
+              {cartProductIds}
+            </span>
+          )}
+        </NavLink>
       </div>
       <div className="header__menu">
-        <Link className="header__menu--icon" to="/">
+        <Link className="header__menu--icon" to="/menu">
           <svg className="icon icon-menu">
             <use href="img/icons.svg#icon-menu"></use>
           </svg>

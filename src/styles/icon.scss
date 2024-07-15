@@ -9,6 +9,12 @@
     &-user {
     fill: $main-white-color;
     width: 16px;
+    height: 15px;
+
+    @include on-desktop-small {
+      width: 20px;
+      height: 19px;
+    }
   }
 
   &-up {
@@ -69,5 +75,18 @@
     fill: $light-grey-color;
     width: 10px;
     height: 6px;
+  }
+
+  &-delete {
+    width: 10px;
+    height: 10px;
+    fill: $icon-grey-color;
+  }
+
+    &-minus,
+    &-plus {
+    width: 12px;
+    height: 12px;
+    fill: $icon-grey-color;
   }
 }
