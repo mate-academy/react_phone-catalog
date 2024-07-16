@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { Gadget } from '../../types/Gadget';
 import './CartItem.scss';
-import { addCart, clearCart, removeCart } from '../../features/cart';
+import { addCart, deleteItem, removeCart } from '../../features/cart';
 
 type Props = {
   product: Gadget & { count: number };
@@ -13,7 +13,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const addItem = () => dispatch(addCart(itemId));
   const takeItem = () => dispatch(removeCart(itemId));
-  const clearItem = () => dispatch(clearCart());
+  const clearItem = () => dispatch(deleteItem(itemId));
 
   const disabledBtn = count === 1;
 

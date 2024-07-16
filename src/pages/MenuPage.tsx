@@ -40,28 +40,24 @@ export const MenuPage = () => {
             Accessories
           </NavLink>
         </nav>
-        <div className="menu__nav--shop">
-          <NavLink className={getIconMenuClass} to="/favorites">
-            <svg className="icon icon-user">
-              <use href="img/icons.svg#icon-favourites"></use>
-            </svg>
-            {!!favProductIds.length && (
-              <span className="menu__shop--icon icon-count-menu">
-                {favProductIds.length}
-              </span>
-            )}
-          </NavLink>
-          <NavLink className={getIconMenuClass} to="/cart">
-            <svg className="icon icon-user">
-              <use href="img/icons.svg#icon-shopping-bag"></use>
-            </svg>
-            {!!totalCount && (
-              <span className="menu__shop--icon icon-count-menu">
-                {totalCount}
-              </span>
-            )}
-          </NavLink>
-        </div>
+      </div>
+      <div className="menu__shop">
+        <NavLink className={getIconMenuClass} to="/favorites">
+          <svg className="icon icon-user">
+            <use href="img/icons.svg#icon-favourites"></use>
+          </svg>
+          {!!favProductIds.length && (
+            <span className="icon-count-menu">{favProductIds.length}</span>
+          )}
+        </NavLink>
+        <NavLink className={getIconMenuClass} to="/cart">
+          <svg className="icon icon-user">
+            <use href="img/icons.svg#icon-shopping-bag"></use>
+          </svg>
+          {!!totalCount && (
+            <span className="icon-count-menu">{totalCount}</span>
+          )}
+        </NavLink>
       </div>
     </div>
   );
