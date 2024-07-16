@@ -42,6 +42,8 @@
       display: flex;
       justify-content: space-between;
       flex-direction: column;
+
+      @include hover(box-shadow, 0 0 4px $button-grey-color);
     }
   }
 }

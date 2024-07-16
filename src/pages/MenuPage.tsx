@@ -15,7 +15,7 @@ export const MenuPage = () => {
     <div className="menu">
       <div className="menu__topbar">
         <Link to="/" className="menu__topbar--logo">
-          <img src="img/Logo.png" alt="Logo" />
+          <img src="img/Logo.svg" alt="Logo" />
         </Link>
         <div className="menu__topbar--box topbar-box">
           <Link to={'/'} className="topbar-box__icon">

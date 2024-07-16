@@ -46,6 +46,7 @@ export const HotPrices: React.FC = () => {
           spaceBetween={16}
           slidesPerView={1.5}
           modules={[Navigation, Autoplay]}
+          speed={1000}
           autoplay={{
             delay: 5000,
             disableOnInteraction: true,

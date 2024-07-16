@@ -45,8 +45,6 @@
       line-height: 1.28;
       white-space: nowrap;
       overflow: hidden;
-
-      @include hover(color, $purple-hover-color);
     }
   }
 

@@ -47,6 +47,7 @@ export const SuggestedProducts: React.FC = () => {
           pauseOnMouseEnter: true,
         }}
         modules={[Navigation, Autoplay]}
+        speed={1000}
         breakpoints={{
           320: {
             slidesPerView: 1.5,

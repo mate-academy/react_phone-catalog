@@ -44,6 +44,7 @@ export const NewModels: React.FC = () => {
           spaceBetween={16}
           slidesPerView={1.5}
           modules={[Navigation]}
+          speed={1000}
           breakpoints={{
             320: {
               slidesPerView: 1.4,

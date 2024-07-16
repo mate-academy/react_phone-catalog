@@ -56,6 +56,7 @@
 .card {
   &__img {
     margin-bottom: $margin-bottom-mobile;
+    border-radius: 10px;
 
     @include hover(box-shadow, 0 0 8px $main-white-color, transform, scale(1.04));
   }

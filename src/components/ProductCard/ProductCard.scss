@@ -13,6 +13,8 @@
     grid-column: span 6;
   }
 
+  @include hover(box-shadow, 0 0 8px $button-grey-color);
+
   &__img-link {
     display: flex;
     justify-content: center;

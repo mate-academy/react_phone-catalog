@@ -15,7 +15,7 @@ export const Header: React.FC = () => {
   return (
     <div className="header">
       <Link to="/" className="header__logo">
-        <img src="img/Logo.png" alt="Logo" />
+        <img src="img/Logo.svg" alt="Logo" />
       </Link>
       <nav className="header__navbar">
         <NavLink to="/" className={getLinkClass}>

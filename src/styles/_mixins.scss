@@ -17,10 +17,10 @@
 }
 
 @mixin hover($_property, $_toValue, $_property2: null, $_toValue2: null) {
-  transition: #{$_property} 0.3s, #{$_property2} 0.3s;
+  transition: #{$_property} 0.4s, #{$_property2} 0.4s;
   &:hover {
     #{$_property}: $_toValue;
-    
+
     @if $_property2 and $_toValue2 {
       #{$_property2}: #{$_toValue2};
     }
