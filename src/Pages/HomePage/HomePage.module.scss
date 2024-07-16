@@ -1,0 +1,120 @@
+@import '../../styles/mixins.scss';
+@import '../../styles/variables.scss';
+
+.carousel {
+  margin-top: 56px;
+
+  @include grid-align;
+
+
+  &__title {
+    grid-column: span 17;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+    text-align: left;
+    color: $primary-color;
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+
+    @include onTablet {
+      grid-column: span 4;
+    }
+  }
+
+
+
+  &__banner {
+    position: relative;
+
+    grid-column: 2 / 24;
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    min-height: 432px;
+    background: linear-gradient(75deg, #2f2f2f, #4B0082);
+
+    border: 1px solid rgb(218, 4, 4);
+
+
+    &_link {
+      height: 100%;
+      width: 100%;
+    }
+
+    &_img {
+      width: auto;
+      max-height: 432px;
+
+      position: absolute;
+      bottom: 0;
+    }
+  }
+}
+
+.prevArrow {
+  position: relative;
+  min-height: 100%;
+
+
+  &::before {
+    content: ' ';
+    background-color: white;
+    border: 1px solid $secondary-color;
+    background-image: url('../../../public/img/arrows/arrowPrev.svg');
+    background-size: 16px;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: -22px;
+    width: 32px;
+    color: transparent;
+
+  }
+}
+
+.nextArrow {
+  position: relative;
+  min-height: 100%;
+  background-color: white;
+
+  &::before {
+    content: ' ';
+  background-image: url('../../../public/img/arrows/arrowNext.svg');
+  border: 1px solid $primary-color;
+
+  background-size: 16px;
+  background-repeat: no-repeat;
+  background-position: center;
+
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -22px;
+    width: 32px;
+
+  }
+}
+
+
+.dots {
+  position: absolute;
+  bottom: 0;
+  height: 4px;
+  width: 14px;
+  background-color: $secondary-color;
+
+}
+
+.dots.active {
+  background-color: $primary-color;
+}
+
+
+
+
