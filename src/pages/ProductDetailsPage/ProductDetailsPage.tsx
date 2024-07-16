@@ -17,6 +17,7 @@ import { useDispatch } from 'react-redux';
 import { useAppSelector } from '../../app/hooks';
 import { addFav, removeFav } from '../../features/favorites';
 import { addCart } from '../../features/cart';
+import { NotFoundProduct } from '../NotFoundProduct';
 
 export const ProductDetailsPage: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState('');
@@ -35,8 +36,6 @@ export const ProductDetailsPage: React.FC = () => {
     if (productId && !isActive) {
       dispatch(addCart(productId));
     }
-
-    return;
   };
 
   const addToFav = () => {
@@ -50,12 +49,6 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   useEffect(() => {
-    if (!productId) {
-      navigate('/product-not-found');
-
-      return;
-    }
-
     async function fetchData() {
       try {
         const [phones, tablets, accessories] = await Promise.all([
@@ -100,10 +93,10 @@ export const ProductDetailsPage: React.FC = () => {
     }
 
     fetchData();
-  }, [productId, navigate]);
+  }, [productId]);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return <NotFoundProduct />;
   }
 
   const {

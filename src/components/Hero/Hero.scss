@@ -57,12 +57,8 @@
       height: 100%;
 
       @include on-tablet {
-        width: auto;
-        margin: 0 auto;
-      }
-
-      @include on-desktop-small {
         width: 80%;
+        margin: 0 auto;
       }
     }
   }
@@ -74,7 +70,7 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      height: 320px;
+      height: 340px;
       padding-bottom: 32px;
       grid-column: 1 / -1;
 
@@ -118,7 +114,7 @@
         margin-bottom: 0;
         margin-top: 0;
         width: 40px;
-        height: 320px;
+        height: 340px;
         background-color: $button-grey-color;
         color: $main-white-color;
 

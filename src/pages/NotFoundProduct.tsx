@@ -7,7 +7,7 @@ export const NotFoundProduct = () => {
     <>
       <Header />
       <h2 className="page-not-found-title">Product not found</h2>
-      <img src="img/product-not-found.png" alt="" />
+      <img src="img/product-not-found.png" alt="not-found-product" />
       <Footer />
     </>
   );

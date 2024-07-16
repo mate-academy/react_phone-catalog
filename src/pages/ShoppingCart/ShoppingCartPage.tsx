@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { Footer } from '../../components/Footer';
 import { Header } from '../../components/Header';
 import './ShoppingCartPage.scss';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { CartItem } from '../../components/CartItem';
 import { useLocalStorage } from '../../services/getLocalStorage';
 import { useAppSelector } from '../../app/hooks';
@@ -12,6 +12,7 @@ import { setError, setProducts } from '../../features/productSlice';
 import { getProducts } from '../../services/products';
 import { Gadget } from '../../types/Gadget';
 import { CartProduct } from '../../types/CartProduct';
+import { Modal } from '../../components/Modal';
 
 export const ShoppingCartPage = () => {
   // eslint-disable-next-line max-len, prettier/prettier
@@ -19,6 +20,10 @@ export const ShoppingCartPage = () => {
   const dispatch = useDispatch();
   const cartItems = useAppSelector(state => state.cart.products);
   const allProducts = useAppSelector(state => state.products.items);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const openModal = () => setIsModalOpen(true);
+  const closeModal = () => setIsModalOpen(false);
 
   useEffect(() => {
     if (!!storedCart.length) {
@@ -82,18 +87,28 @@ export const ShoppingCartPage = () => {
                 <CartItem key={product.id} product={product} />
               ))
             ) : (
-              <p className="cart__content--empty">Your cart is empty</p>
+              <>
+                <p className="cart__content--empty">Your cart is empty</p>
+                <img src="img/cart-is-empty.png" alt="cart-is-empty" />
+              </>
             )}
           </div>
-          <div className="cart__checkout">
-            <p className="cart__checkout--total">${total}</p>
-            <p className="cart__checkout--info">
-              {`Total for ${totalCount} ${totalCount === 1 ? 'item' : 'items'}`}
-            </p>
-            <button type="button" className="cart__checkout--btn">
-              Checkout
-            </button>
-          </div>
+          {!!cartProducts.length && (
+            <div className="cart__checkout">
+              <p className="cart__checkout--total">${total}</p>
+              <p className="cart__checkout--info">
+                {`Total for ${totalCount} ${totalCount === 1 ? 'item' : 'items'}`}
+              </p>
+              <button
+                type="button"
+                className="cart__checkout--btn"
+                onClick={openModal}
+              >
+                Checkout
+              </button>
+              {isModalOpen && <Modal onClose={closeModal} />}
+            </div>
+          )}
         </div>
       </div>
       <Footer />

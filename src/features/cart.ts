@@ -12,7 +12,7 @@ type CartState = {
 
 const initialState: CartState = {
   products: JSON.parse(localStorage.getItem('cart') || '[]'),
-  totalCount: 0,
+  totalCount: JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: CartProduct) => acc + item.count, 0),
   error: '',
 };
 
@@ -54,14 +54,9 @@ const cartSlice = createSlice({
 
       updateLocalStorageCart(state.products);
     },
-    clearCart: (state, action: PayloadAction<string>) => {
-      const item = state.products.find(product => product.id === action.payload);
-
-      if (item) {
-        state.totalCount -= item.count;
-      }
-
-      state.products = state.products.filter(product => product.id !== action.payload);
+    clearCart: (state) => {
+      state.products = [];
+      state.totalCount = 0;
       updateLocalStorageCart(state.products);
     },
   },

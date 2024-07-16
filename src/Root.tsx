@@ -12,6 +12,8 @@ import { Provider } from 'react-redux';
 import store from './app/store';
 import { ShoppingCartPage } from './pages/ShoppingCart';
 import { MenuPage } from './pages/MenuPage';
+import { NotFoundProduct } from './pages/NotFoundProduct';
+// import { NotFoundProduct } from './pages/NotFoundProduct';
 
 export const Root = () => (
   <Provider store={store}>
@@ -29,6 +31,7 @@ export const Root = () => (
           <Route path="cart" element={<ShoppingCartPage />} />
 
           <Route path=":category/:productId" element={<ProductDetailsPage />} />
+          <Route path="product-not-found" element={<NotFoundProduct />} />
 
           <Route path="*" element={<NotFoundPage />} />
         </Route>
