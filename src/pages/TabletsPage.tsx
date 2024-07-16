@@ -6,11 +6,16 @@ import { ProductsSort } from '../components/ProductsSort';
 import { getProducts } from '../services/products';
 import { Gadget } from '../types/Gadget';
 import { ProductType } from '../types/ProductType';
+import { Loader } from '../components/Loader';
 
 export const TabletsPage = () => {
   const [tablets, setTablets] = useState<Gadget[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  useEffect(() => {
+  const fetchTablets = () => {
+    setLoading(true);
+    setError('');
     getProducts()
       .then(products => {
         const filteredTablets = products.filter(
@@ -22,7 +27,12 @@ export const TabletsPage = () => {
       .catch(err => {
         // eslint-disable-next-line no-console
         console.log(err);
-      });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchTablets();
   }, []);
 
   return (
@@ -46,13 +56,35 @@ export const TabletsPage = () => {
             </Link>
           </div>
           <h1 className="selected-cat__title">Tablets</h1>
+          {error && (
+            <>
+              <p className="selected-cat__error">{error}</p>
+              <button
+                type="button"
+                className="selected-cat__reload"
+                onClick={fetchTablets}
+              >
+                Reload
+              </button>
+            </>
+          )}
           <p className="selected-cat__text">
-            {!!tablets.length && `${tablets.length} models`}
+            {!error && !!tablets.length && `${tablets.length} models`}
           </p>
-          {!!tablets.length ? (
-            <ProductsSort products={tablets} />
+          {loading ? (
+            <Loader />
           ) : (
-            <p className="selected-cat__no-product">There are no tablets yet</p>
+            <>
+              {!!tablets.length && !error ? (
+                <ProductsSort products={tablets} />
+              ) : (
+                !error && (
+                  <p className="selected-cat__no-product">
+                    There are no tablets yet
+                  </p>
+                )
+              )}
+            </>
           )}
         </div>
       </div>

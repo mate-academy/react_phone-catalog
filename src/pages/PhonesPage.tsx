@@ -7,12 +7,16 @@ import { useEffect, useState } from 'react';
 import { getProducts } from '../services/products';
 import { Gadget } from '../types/Gadget';
 import { ProductType } from '../types/ProductType';
+import { Loader } from '../components/Loader';
 
 export const PhonesPage = () => {
   const [phones, setPhones] = useState<Gadget[]>([]);
-  // const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  useEffect(() => {
+  const fetchPhones = () => {
+    setLoading(true);
+    setError('');
     getProducts()
       .then(products => {
         const filteredPhones = products.filter(
@@ -22,9 +26,15 @@ export const PhonesPage = () => {
         setPhones(filteredPhones);
       })
       .catch(err => {
+        setError('Something went wrong');
         // eslint-disable-next-line no-console
         console.log(err);
-      });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchPhones();
   }, []);
 
   return (
@@ -48,13 +58,35 @@ export const PhonesPage = () => {
             </Link>
           </div>
           <h1 className="selected-cat__title">Mobile phones</h1>
+          {error && (
+            <>
+              <p className="selected-cat__error">{error}</p>
+              <button
+                type="button"
+                className="selected-cat__reload"
+                onClick={fetchPhones}
+              >
+                Reload
+              </button>
+            </>
+          )}
           <p className="selected-cat__text">
-            {!!phones.length && `${phones.length} models`}
+            {!error && !!phones.length && `${phones.length} models`}
           </p>
-          {!!phones.length ? (
-            <ProductsSort products={phones} />
+          {loading ? (
+            <Loader />
           ) : (
-            <p className="selected-cat__no-product">There are no phones yet</p>
+            <>
+              {!!phones.length && !error ? (
+                <ProductsSort products={phones} />
+              ) : (
+                !error && (
+                  <p className="selected-cat__no-product">
+                    There are no phones yet
+                  </p>
+                )
+              )}
+            </>
           )}
         </div>
       </div>

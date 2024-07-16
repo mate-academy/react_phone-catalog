@@ -7,13 +7,13 @@ import { CartProduct } from '../types/CartProduct';
 type CartState = {
   products: CartProduct[];
   totalCount: number;
-  error: string;
+  loading: boolean;
 };
 
 const initialState: CartState = {
   products: JSON.parse(localStorage.getItem('cart') || '[]'),
   totalCount: JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: CartProduct) => acc + item.count, 0),
-  error: '',
+  loading: false,
 };
 
 const updateLocalStorageCart = (products: CartProduct[]) => {
@@ -69,8 +69,11 @@ const cartSlice = createSlice({
       state.totalCount = 0;
       updateLocalStorageCart(state.products);
     },
+    setLoading: (state, action: PayloadAction<boolean>) => {
+      state.loading = action.payload;
+    },
   },
 });
 
 export default cartSlice.reducer;
-export const { setCart, addCart, removeCart, deleteItem, clearCart } = cartSlice.actions;
+export const { setCart, addCart, removeCart, deleteItem, clearCart, setLoading } = cartSlice.actions;

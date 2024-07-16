@@ -64,12 +64,33 @@
     }
   }
 
-  &__no-product {
+  &__no-product,
+  &__error {
     color: $main-white-color;
     font-size: 24px;
     line-height: 1.7;
     letter-spacing: -0.01em;
     margin-bottom: 24px;
+  }
+
+  &__error {
+    margin-top: 20px;
+    margin-bottom: 16px;
+  }
+
+  &__reload {
+    width: 120px;
+    height: 40px;
+    border: none;
+    background-color: $button-purple-color;
+    color: $main-white-color;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.5;
+    text-align: center;
+    cursor: pointer;
+
+    @include hover(background-color, $purple-hover-color);
   }
 }
 

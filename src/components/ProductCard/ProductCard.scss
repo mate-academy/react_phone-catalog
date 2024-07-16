@@ -58,7 +58,7 @@
       color: $main-white-color;
       font-size: 22px;
       font-weight: 800;
-      line-height: 30.8px;
+      line-height: 1.4;
       letter-spacing: 0.01em;
     }
   }
@@ -84,18 +84,16 @@
 }
 
 .product-list-item {
-  &__name {
+  &__name,
+  &__param {
     color: $light-grey-color;
     font-size: 12px;
     font-weight: 700;
-    line-height: 15.34px;
+    line-height: 1.28;
   }
 
   &__param {
     color: $main-white-color;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 15.34px;
   }
 }
 
@@ -103,6 +101,6 @@
   color: $light-grey-color;
   text-decoration: line-through;
   font-size: 22px;
-  line-height: 28.12px;
+  line-height: 1.28;
   letter-spacing: 0.01em;
 }

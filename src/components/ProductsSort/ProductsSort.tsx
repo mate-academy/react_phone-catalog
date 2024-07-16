@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import classNames from 'classnames';
 import './ProductsSort.scss';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Sort } from '../../types/Sort';
 import { sortProducts } from '../../utils/heplerFunctions';
 import { Gadget } from '../../types/Gadget';
@@ -15,9 +15,17 @@ type Props = {
 export const ProductsSort: React.FC<Props> = ({ products }) => {
   const [isSortActive, setIsSortActive] = useState(false);
   const [isPagActive, setIsPagActive] = useState(false);
-  const [sortCriteria, setSortCriteria] = useState<Sort>(Sort.BY_YEAR);
+  const [sortCriteria, setSortCriteria] = useState<Sort>(() => {
+    const savedSort = localStorage.getItem('sortCriteria');
+    
+    return savedSort ? (savedSort as Sort) : Sort.BY_YEAR;
+  });
   const [itemsPerPage, setItemsPerPage] = useState(products.length);
   const [currPage, setCurrPage] = useState(1);
+
+  useEffect(() => {
+    localStorage.setItem('sortCriteria', sortCriteria);
+  }, [sortCriteria]);
 
   const numOfPages = Math.ceil(products.length / itemsPerPage);
   const total = products.length;

@@ -6,11 +6,16 @@ import { Link } from 'react-router-dom';
 import { ProductsSort } from '../components/ProductsSort';
 import { ProductType } from '../types/ProductType';
 import { Gadget } from '../types/Gadget';
+import { Loader } from '../components/Loader';
 
 export const AccessoriesPage = () => {
   const [accessories, setAccessories] = useState<Gadget[]>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
 
-  useEffect(() => {
+  const fetchAccessories = () => {
+    setLoading(true);
+    setError('');
     getProducts()
       .then(products => {
         const filteredAccessories = products.filter(
@@ -22,7 +27,12 @@ export const AccessoriesPage = () => {
       .catch(err => {
         // eslint-disable-next-line no-console
         console.log(err);
-      });
+      })
+      .finally(() => setLoading(false));
+  };
+
+  useEffect(() => {
+    fetchAccessories();
   }, []);
 
   return (
@@ -46,15 +56,35 @@ export const AccessoriesPage = () => {
             </Link>
           </div>
           <h1 className="selected-cat__title">Accessories</h1>
+          {error && (
+            <>
+              <p className="selected-cat__error">{error}</p>
+              <button
+                type="button"
+                className="selected-cat__reload"
+                onClick={fetchAccessories}
+              >
+                Reload
+              </button>
+            </>
+          )}
           <p className="selected-cat__text">
-            {!!accessories.length && `${accessories.length} models`}
+            {!error && !!accessories.length && `${accessories.length} models`}
           </p>
-          {!!accessories.length ? (
-            <ProductsSort products={accessories} />
+          {loading ? (
+            <Loader />
           ) : (
-            <p className="selected-cat__no-product">
-              There are no accessories yet
-            </p>
+            <>
+              {!!accessories.length && !error ? (
+                <ProductsSort products={accessories} />
+              ) : (
+                !error && (
+                  <p className="selected-cat__no-product">
+                    There are no accessories yet
+                  </p>
+                )
+              )}
+            </>
           )}
         </div>
       </div>

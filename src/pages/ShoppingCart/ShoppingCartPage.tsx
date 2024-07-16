@@ -7,18 +7,20 @@ import { CartItem } from '../../components/CartItem';
 import { useLocalStorage } from '../../services/getLocalStorage';
 import { useAppSelector } from '../../app/hooks';
 import { useDispatch } from 'react-redux';
-import { setCart } from '../../features/cart';
+import { setCart, setLoading } from '../../features/cart';
 import { setError, setProducts } from '../../features/productSlice';
 import { getProducts } from '../../services/products';
 import { Gadget } from '../../types/Gadget';
 import { CartProduct } from '../../types/CartProduct';
 import { Modal } from '../../components/Modal';
+import { Loader } from '../../components/Loader';
 
 export const ShoppingCartPage = () => {
   // eslint-disable-next-line max-len, prettier/prettier
   const [storedCart, setStoredCart] = useLocalStorage<CartProduct[]>('cart', []);
   const dispatch = useDispatch();
   const cartItems = useAppSelector(state => state.cart.products);
+  const loading = useAppSelector(state => state.cart.loading);
   const allProducts = useAppSelector(state => state.products.items);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,12 +35,15 @@ export const ShoppingCartPage = () => {
 
   useEffect(() => {
     const fetchProducts = async () => {
+      dispatch(setLoading(true));
       try {
         const products = await getProducts();
 
         dispatch(setProducts(products));
-      } catch (error) {
+      } catch (err) {
         dispatch(setError('Failed to fetch products'));
+      } finally {
+        dispatch(setLoading(false));
       }
     };
 
@@ -82,14 +87,20 @@ export const ShoppingCartPage = () => {
           </Link>
           <h2 className="cart__title">Cart</h2>
           <div className="cart__content">
-            {!!cartProducts.length ? (
-              cartProducts.map(product => (
-                <CartItem key={product.id} product={product} />
-              ))
+            {loading ? (
+              <Loader />
             ) : (
               <>
-                <p className="cart__content--empty">Your cart is empty</p>
-                <img src="img/cart-is-empty.png" alt="cart-is-empty" />
+                {!!cartProducts.length && !loading ? (
+                  cartProducts.map(product => (
+                    <CartItem key={product.id} product={product} />
+                  ))
+                ) : (
+                  <>
+                    <p className="cart__content--empty">Your cart is empty</p>
+                    <img src="img/cart-is-empty.png" alt="cart-is-empty" />
+                  </>
+                )}
               </>
             )}
           </div>
