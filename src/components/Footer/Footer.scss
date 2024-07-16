@@ -18,9 +18,7 @@
   }
 
   &__logo {
-    width: 89px;
     margin-bottom: $margin-bottom-mobile;
-
     grid-column: 1 / span 2;
 
     @include on-tablet {
@@ -30,6 +28,10 @@
     }
 
     @include hover(transform, scale(1.1));
+
+    &--pict {
+      width: 89px;
+    }
   }
 
   &__navbar {

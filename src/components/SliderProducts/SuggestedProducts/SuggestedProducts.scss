@@ -53,6 +53,7 @@
   gap: 8px;
   background-color: $card-bgc;
   height: auto;
+  border: 1px solid $button-grey-color;
 
   &__picture {
     display: flex;

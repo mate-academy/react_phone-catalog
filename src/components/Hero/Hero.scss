@@ -57,8 +57,12 @@
       height: 100%;
 
       @include on-tablet {
-        width: 80%;
+        width: 70%;
         margin: 0 auto;
+      }
+
+      @include on-desktop-small {
+        width: 80%;
       }
     }
   }

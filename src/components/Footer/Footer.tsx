@@ -13,7 +13,7 @@ export const Footer: React.FC = () => {
   return (
     <div className="footer">
       <Link to="/" className="footer__logo">
-        <img src="img/Logo.png" alt="Logo" />
+        <img src="img/Logo.svg" alt="Logo" className="footer__logo--pict" />
       </Link>
       <div className="footer__navbar">
         <Link
