@@ -1,0 +1,137 @@
+@import "../Logo/Logo.module.scss";
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.wrapper {
+  max-width: 1136px;
+  margin: 0 auto;
+
+  display: flex;
+  justify-content: space-between;
+
+  @include onTablet {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.logo {
+  padding: 0;
+  display: flex;
+  justify-content: start;
+  width: 100%;
+}
+
+.information {
+
+  width: 100%;
+  display: flex;
+  align-items: center;
+
+  @include onTablet {
+    display: flex;
+    justify-content: start;
+    margin-top: 32px;
+  }
+
+
+  &__list {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @include onTablet {
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+
+    }
+  }
+
+  &__item {
+  }
+
+  &__link {
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    color: $secondary-color;
+    text-align: center;
+
+    transition: color 0.2s ease, transform 0.2s ease;
+
+    &:hover {
+    color: $primary-color;
+
+    }
+
+    &-dark {
+      color: $secondary-color-dark;
+
+      &:hover {
+      color: $primary-color-dark;
+
+      }
+
+    }
+  }
+}
+
+.backToTop {
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+
+
+  @include onTablet {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 32px;
+
+  }
+
+  &__text{
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  color: $secondary-color;
+  margin-right: 16px;
+  text-transform: uppercase;
+
+
+  }
+  &__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid $secondary-color;
+    transition: color 0.2s ease, transform 0.2s ease;
+    cursor: pointer;
+
+
+    &:hover {
+    border: 1px solid $primary-color;
+    }
+
+    &-dark {
+      background: #323542;
+
+      &:hover {
+        border: 1px solid $primary-color-dark;
+
+        }
+    }
+
+  }
+
+  img {
+    padding: 8px;
+  }
+}

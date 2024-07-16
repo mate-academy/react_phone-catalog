@@ -7,7 +7,10 @@
   "license": "GPL-3.0",
   "dependencies": {
     "@cypress/react18": "^2.0.0",
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@mui/material": "^5.15.21",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
@@ -15,17 +18,20 @@
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
-    "react-transition-group": "^4.4.5"
+    "react-slick": "^0.30.2",
+    "react-transition-group": "^4.4.5",
+    "slick-carousel": "^1.8.1"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
     "@mate-academy/eslint-config-react-typescript": "latest",
-    "@mate-academy/scripts": "^1.7.9",
+    "@mate-academy/scripts": "^1.8.1",
     "@mate-academy/students-ts-config": "latest",
     "@mate-academy/stylelint-config": "latest",
     "@types/node": "^16.18.80",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "@types/react-slick": "^0.23.13",
     "cypress": "^12.17.4",
     "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.11.2",

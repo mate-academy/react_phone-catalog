@@ -1,0 +1,42 @@
+@import "../styles/variables.scss";
+@import "../styles/mixins.scss";
+
+.App {
+  background: #fff;
+
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main {
+  flex: 1;
+
+  &__continer {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+}
+
+.is-bg-dark {
+  background: #0F1121;
+
+}
+
+.footer {
+  padding: 32px;
+  height: 96px;
+  border-top: 1px solid $secondary-color;
+
+  @include onTablet {
+    height: 257px;
+  }
+
+}
+
+.is-footer-dark {
+  border-top: 1px solid $secondary-color-dark;
+}
+
+

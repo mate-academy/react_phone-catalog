@@ -1,0 +1,35 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.logo {
+  padding: 18px 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+  @include onDesktop{
+    padding: 13px 16px;
+  }
+
+  &__img {
+    width: 80px;
+    height: 24px;
+    transition: all 0.3s ease, transform 0.3s ease;
+
+    @include onDesktop{
+      width: 64px;
+      height: 22px;
+
+
+    }
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+}
+
+
+
+

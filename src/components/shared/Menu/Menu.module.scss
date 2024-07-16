@@ -1,0 +1,104 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.menu {
+  margin-left: 24px;
+
+  @include onDesktop {
+    margin-left: 16px;
+
+  }
+
+  @include onTablet{
+    display: none;
+  }
+
+
+  &__list {
+    display: flex;
+    gap: 64px;
+
+    @include onDesktop {
+      gap: 32px;
+    }
+
+    @include onTablet {
+      display: none;
+      flex-direction: column;
+      justify-content: start;
+      align-items: center;
+      align-self: center;
+        width: 100%;
+        height: 100vh;
+        background-color: white;
+        position: absolute;
+        left: 0;
+        top: 48px;
+        padding-top: 24px;
+        overflow: hidden;
+
+        &-dark {
+          background-color: $BG-dark;
+        }
+     }
+
+  }
+
+  &__link {
+    color: $secondary-color;
+    padding: 20px 0px 20px 0px;
+    text-transform: uppercase;
+    font-size: 12px;
+    line-height: 11px;
+    letter-spacing: 4%;
+    font-weight: 800;
+    transition: all 0.2s ease, transform 0.2s ease;
+
+
+    @include onDesktop{
+      padding: 12px 0px 12px 0px;
+    }
+
+    @include onTablet{
+     width: 100%;
+     height: 27px;
+     font-size: 20px;
+     padding: 0;
+     text-transform: uppercase;
+
+    }
+
+    &-active {
+      color: $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+
+    &:hover {
+      color: $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+
+    &-dark {
+      color: $secondary-color-dark;
+
+      &:hover {
+        color: $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+
+      &-active {
+        color: $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+    }
+
+
+  }
+}
+
+
+
+
+
+
+

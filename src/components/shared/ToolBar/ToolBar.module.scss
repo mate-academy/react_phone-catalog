@@ -1,0 +1,183 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+
+.swither {
+  display: flex;
+  justify-content: end;
+  margin-right: 64px;
+
+  @include onDesktop {
+    margin-right: 32px;
+
+  }
+
+
+
+  @include onTablet{
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    bottom: 64px;
+    width: 100%;
+    margin: 0 auto;
+    border: 1px solid $secondary-color;
+    border-bottom: 0;
+    padding: 24px;
+  }
+
+}
+
+.ToolbarIcons {
+  display: flex;
+  justify-content: end;
+  align-items: center;
+  width: 100%;
+  height: 64px;
+
+  img {
+    width: 16px;
+    height: 16px;
+
+  }
+
+  @include onDesktop{
+    height: 48px;
+
+  }
+
+  @include onTablet{
+    display: none;
+    flex-direction: column;
+    justify-content: flex-end;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+  }
+
+  &__favorites {
+    border-left: 1px solid $secondary-color;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 3px solid transparent;
+    padding: 24px;
+    padding-bottom: 18px;
+
+    transition: border 0.3s ease, transform 0.3s ease;
+
+    @include onDesktop{
+      padding: 15px;
+      padding-bottom: 10px;
+
+    }
+
+    @include onTablet{
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50%;
+      border: 1px solid $secondary-color;
+      padding: 24px;
+
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+      border-bottom: 3px solid $primary-color;
+
+    }
+
+    &-active {
+      border: 1px solid $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+
+    &-dark {
+      border-left: 1px solid $secondary-color-dark;
+      border-right: 1px solid transparent;
+      border-top: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+
+      @include onTablet {
+      border: 1px solid $secondary-color-dark;
+
+      }
+
+      &:hover {
+        border: 1px solid $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+
+
+      &-active {
+        border: 1px solid $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+    }
+  }
+
+  &__cart {
+    border-left: 1px solid $secondary-color;
+    border-right: 1px solid transparent;
+    border-top: 1px solid transparent;
+    border-bottom: 3px solid transparent;
+    padding: 24px;
+    padding-bottom: 18px;
+    transition: border 0.3s ease, transform 0.3s ease;
+
+    @include onDesktop{
+      padding: 15px;
+      padding-bottom: 10px;
+
+
+
+    }
+
+    @include onTablet{
+      display: flex;
+      justify-content: center;
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      width: 50%;
+      border: 1px solid $secondary-color;
+      padding: 24px;
+    }
+
+    &:hover {
+      border: 1px solid $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+
+    &-active {
+      border: 1px solid $primary-color;
+      border-bottom: 3px solid $primary-color;
+    }
+
+    &-dark {
+      border-left: 1px solid $secondary-color-dark;
+      border-right: 1px solid transparent;
+      border-top: 1px solid transparent;
+      border-bottom: 3px solid transparent;
+
+      @include onTablet {
+        border: 1px solid $secondary-color-dark;
+
+        }
+
+      &:hover {
+        border: 1px solid $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+
+
+      &-active {
+        border: 1px solid $primary-color-dark;
+        border-bottom: 3px solid $primary-color-dark;
+      }
+    }
+  }
+}
+
