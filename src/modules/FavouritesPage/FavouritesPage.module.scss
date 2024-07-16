@@ -1,0 +1,10 @@
+@import '../../utils/mixins';
+
+.favourites {
+  @include grid;
+  @include padding-inline;
+}
+
+.mainDark {
+  background-color: $darkThemeBG;
+}

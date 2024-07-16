@@ -1,0 +1,40 @@
+@import '../../../utils/mixins';
+
+.productsTable {
+  grid-column: 1/-1;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  width: 100%;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.container {
+  box-sizing: border-box;
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  gap: 16px 40px;
+  align-items: center;
+  justify-content: center;
+
+  padding-inline: auto;
+
+  @media (min-width: 520px) {
+    grid-template-columns: repeat(2, auto);
+    column-gap: 22px;
+  }
+
+  @media (min-width: 850px) {
+    grid-template-columns: repeat(3, auto);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(4, auto);
+  }
+
+  @include on-desktop-wide {
+    column-gap: 48px;
+  }
+}

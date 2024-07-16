@@ -1,0 +1,135 @@
+@import '../../../utils/mixins';
+
+.container {
+  box-sizing: border-box;
+  height: 257px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  transition: $transitionTime;
+
+  @include on-tablet {
+    height: 96px;
+  }
+
+  @include grid;
+
+  @include on-desktop {
+    justify-content: center;
+  }
+
+  &Dark {
+    background-color: $darkThemeBG;
+    border-top: $darkThemeGrayBorder;
+  }
+}
+
+.footer {
+  box-sizing: border-box;
+  gap: 32px;
+  grid-column: 1/-1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: left;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  @include on-desktop {
+    padding: 0;
+  }
+
+  &__links {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      width: 25%;
+    }
+  }
+
+  &__link {
+    max-width: 70px;
+    text-decoration: none;
+    font-family: $boldFont, sans-serif;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-align: left;
+    text-transform: uppercase;
+    color: $graySecondaryColor;
+    transition: $transitionTime;
+
+    &:hover {
+      font-size: 13px;
+      color: $grayPrimaryColor;
+    }
+
+    &Dark {
+      color: $darkThemeWhite;
+
+      &:hover {
+        font-size: 14px;
+        color: $darkThemeWhite;
+      }
+    }
+  }
+
+  &__goTop {
+    display: flex;
+    gap: 16px;
+    place-self: center;
+    width: fit-content;
+    grid-column: 1/-1;
+  }
+}
+
+.goTop {
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: center;
+  color: $graySecondaryColor;
+  align-self: center;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}
+
+.goTopButton {
+  box-sizing: border-box;
+  display: flex;
+  width: 32px;
+  height: 32px;
+  border: solid 1px $grayIconsButtons;
+  transition: border $transitionTime;
+  cursor: pointer;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+}
+
+.goTopDarkButton {
+  background-color: $arrowButtonBG;
+  border: none;
+
+  &:hover {
+    background-color: $arrowButtonHover;
+    border: none;
+  }
+}

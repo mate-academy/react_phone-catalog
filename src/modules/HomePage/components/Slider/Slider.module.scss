@@ -1,0 +1,119 @@
+@import '../../../../utils/mixins';
+
+.sliderContainer {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  margin-top: 24px;
+  grid-column: 1/-1;
+  justify-content: center;
+
+  @include on-tablet {
+    @include grid;
+    @include padding-inline;
+  }
+}
+
+.sliderSubContainer {
+  display: flex;
+
+  @include on-tablet {
+    grid-column: 1/-1;
+
+    @include grid;
+  }
+}
+
+.sliderButton {
+  display: none;
+  border: solid 1px $grayIconsButtons;
+  transition: border $transitionTime;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: block;
+    width: 32px;
+
+    grid-column: span 1;
+
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  &:hover {
+    border: solid 1px $grayPrimaryColor;
+  }
+
+  &Dark {
+    background-color: $arrowButtonBG;
+    border: none;
+    transition: $transitionTime;
+
+    &:hover {
+      border: none;
+      background-color: $arrowButtonHover;
+    }
+  }
+}
+
+.sliderImage {
+  width: 100%;
+}
+
+.sliderScreen {
+  width: 100%;
+  overflow: hidden;
+
+  @include on-tablet {
+    grid-column: 2/-2;
+  }
+}
+
+.sliderImages {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  transition: transform $transitionTime ease-in-out;
+
+  @include on-tablet {
+    min-height: 189px;
+  }
+
+  @include on-desktop {
+    height: 400px;
+  }
+}
+
+.dashContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  height: 24px;
+
+  @include on-tablet {
+    grid-column: 1/-1;
+  }
+}
+
+.dash {
+  width: 14px;
+  height: 4px;
+  background-color: $graySecondaryColor;
+  transition: background-color $transitionTime;
+  cursor: pointer;
+
+  &Dark {
+    background-color: $arrowButtonHover;
+  }
+
+  &Selected {
+    background-color: $grayPrimaryColor;
+
+    &Dark {
+      background-color: $darkThemeWhite;
+    }
+  }
+}

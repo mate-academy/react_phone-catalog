@@ -1,0 +1,257 @@
+@import '../../../utils/mixins';
+
+.card {
+  padding: 32px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  border: $border;
+  gap: 8px;
+  align-items: left;
+  width: 212px;
+  height: 439px;
+  transition: $transitionTime;
+  justify-content: space-between;
+
+  @include on-tablet {
+    width: 237px;
+    height: 512px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &:hover {
+    box-shadow: 0 3px 24px 0 #0000001A;
+  }
+
+  .imgContainer {
+    box-sizing: border-box;
+    display: inline-flex;
+    justify-content: center;
+    justify-self: center;
+    width: fit-content;
+    height: 129px;
+
+    @include on-tablet {
+      height: 181px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+  }
+
+  &Image {
+    display: inline-block;
+    align-self: center;
+    transition: $transitionTime;
+    height: 129px;
+
+    @include on-tablet {
+      height: 181px;
+    }
+
+    @include on-desktop {
+      height: 196px;
+    }
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  &Title {
+    text-decoration: none;
+    box-sizing: border-box;
+    padding-top: 16px;
+    height: 63px;
+
+    @include regular-text;
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+
+  &Prices {
+    display: flex;
+    width: fit-content;
+    gap: 8px;
+  }
+
+  &InfoBlock {
+    width: 100%;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding-top: 8px;
+    padding-bottom: 8px;
+    gap: 8px;
+  }
+
+  &Buttons {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    gap: 8px;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &Dark {
+    background-color: $pageButtonBG;
+    border: none;
+
+    &:hover {
+      box-shadow: 0 2px 16px 0 $darkThemeWhite;
+    }
+  }
+}
+
+.newPrice {
+  font-family: $boldFont, sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 30.8px;
+  text-align: left;
+  color: $grayPrimaryColor;
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.oldPrice {
+  font-family: $regularFont, sans-serif;
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 28.12px;
+  text-align: left;
+  color: $graySecondaryColor;
+  text-decoration: line-through;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}
+
+.cardInfoLine {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.infoLineTitle {
+  font-family: $regularFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: $graySecondaryColor;
+
+  &Dark {
+    color: $darkThemeSecondaryGray;
+  }
+}
+
+.infoLineText {
+  font-family: $regularFont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: right;
+  color: $grayPrimaryColor;
+
+  &Dark {
+    color: $darkThemeWhite;
+  }
+}
+
+.addButton {
+  display: flex;
+  box-sizing: border-box;
+  background-color: $grayPrimaryColor;
+  color: $whiteColor;
+  font-family: $semiBoldFont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  justify-content: center;
+  align-items: center;
+  width: 100px;
+  height: 40px;
+  transition: $transitionTime;
+  cursor: pointer;
+
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+
+  @include on-tablet {
+    width: 125px;
+  }
+
+  @include on-desktop {
+    width: 160px;
+  }
+
+  &Dark {
+    border: none;
+    background-color: $toCartButtonBG;
+
+    &:hover {
+      border: none;
+      background-color: $toCartButtonHover;
+      box-shadow: 0 3px 13px 0 $toCartButtonHover;
+    }
+  }
+}
+
+.cardLine {
+  width: 100%;
+  border-bottom: $border;
+
+  &Dark {
+    border-bottom: $darkThemeGrayBorder;
+  }
+}
+
+.imgLink {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.isInCart {
+  border: $border;
+  color: $selectedColor;
+  background-color: $whiteColor;
+  cursor: auto;
+  text-align: center;
+  font-size: 13px;
+
+  @include on-tablet {
+    font-size: 14px;
+  }
+
+  &:hover {
+    box-shadow: none;
+  }
+
+  &Dark {
+    background-color: $toCartButtonSelected;
+    color: $darkThemeWhite;
+    border: none;
+
+    &:hover {
+      background-color: $toCartButtonSelected;
+      box-shadow: none;
+      border: none;
+    }
+  }
+}

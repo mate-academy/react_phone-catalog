@@ -1,0 +1,40 @@
+@import '../../../utils/mixins';
+
+.loader {
+  width: 48px;
+  height: 48px;
+  border: 5px dotted #070707;
+  border-radius: 50%;
+  display: inline-block;
+  position: relative;
+  box-sizing: border-box;
+  animation: rotation 2s linear infinite;
+
+  &Dark {
+    border: 5px dotted $darkThemeWhite;
+  }
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.loaderBox {
+  display: flex;
+  left: 0;
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background-color: $whiteColor;
+  align-items: center;
+  justify-content: center;
+
+  &Dark {
+    background-color: $darkThemeBG;
+  }
+}

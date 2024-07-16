@@ -1,0 +1,140 @@
+@import '../../../../utils/mixins';
+
+.container {
+  grid-column: 1/-1;
+  margin-top: 56px;
+
+  @include grid;
+
+  @include on-tablet {
+    margin-top: 64px;
+  }
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+}
+
+.about {
+  grid-column: 1/-1;
+
+  @include on-desktop {
+    grid-column: 1/span 12;
+  }
+
+  &__title {
+    font-family: $boldFont, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+    text-align: left;
+    color: $grayPrimaryColor;
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+}
+
+.article {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    font-family: $boldFont, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 20.45px;
+    text-align: left;
+    color: $grayPrimaryColor;
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+
+  &__text {
+    font-family: $regularFont, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    text-align: left;
+    color: $graySecondaryColor;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+    }
+  }
+}
+
+.techInfo {
+  &__container {
+    margin-top: 56px;
+    grid-column: 1/-1;
+
+    @include on-tablet {
+      margin-top: 64px;
+    }
+
+    @include on-desktop {
+      grid-column: 14/span 11;
+      margin-top: 0;
+    }
+  }
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 30px;
+
+  @include on-tablet {
+    margin-top: 26px;
+  }
+
+  &__line {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__lineTitle,
+  &__lineText {
+    font-family: $regularFont, sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    text-align: left;
+    color: $graySecondaryColor;
+
+    &Dark {
+      color: $darkThemeSecondaryGray;
+    }
+  }
+
+  &__lineText {
+    text-align: right;
+    color: $grayPrimaryColor;
+
+    &Dark {
+      color: $darkThemeWhite;
+    }
+  }
+}
+
+.line {
+  width: 100%;
+  border-bottom: $border;
+
+  &Dark {
+    border: $darkThemeGrayBorder;
+  }
+}
