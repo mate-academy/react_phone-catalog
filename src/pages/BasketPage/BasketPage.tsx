@@ -152,7 +152,7 @@ export const BasketPage = () => {
             <h3 className={styles.basketpage__price}>${allSumOfProducts()}</h3>
             <span className={styles.basketpage__divider}></span>
             <p className={styles.basketpage__info}>
-              Total for {selectedProducts.length} items
+              Total for {selectedProducts[0].quantity} items
             </p>
             <button
               className={styles.basketpage__button}

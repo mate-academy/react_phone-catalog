@@ -104,7 +104,7 @@ export const Header = () => {
               />
               {selectedProducts.length > 0 && (
                 <div className={styles.header__infolabel}>
-                  {selectedProducts.length}
+                  {selectedProducts[0].quantity}
                 </div>
               )}
             </NavLink>

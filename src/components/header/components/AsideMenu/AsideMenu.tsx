@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import adideStyles from './AsideMenu.module.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { Navbar } from '../../../navbar';
+import { useEffect } from 'react';
 
 type Props = {
   isMenuOpen: boolean;
@@ -9,6 +10,19 @@ type Props = {
 };
 
 export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
+
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('no-scroll');
+    } else {
+      document.body.classList.remove('no-scroll');
+    }
+
+    return () => {
+      document.body.classList.remove('no-scroll');
+    };
+  }, [isMenuOpen]);
+
   return (
     <aside
       className={classNames(adideStyles.menu, {

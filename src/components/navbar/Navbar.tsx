@@ -14,8 +14,17 @@ export const Navbar: React.FC<Props> = ({
   withoutUnderline,
 }) => {
   const navBarLinkItems = !withoutUnderline
-    ? ['home', 'phones', 'tablets', 'accessories']
-    : ['github', 'contacts', 'rights'];
+    ? [
+        { name: 'home', url: '/' },
+        { name: 'phones', url: '/phones' },
+        { name: 'tablets', url: '/tablets' },
+        { name: 'accessories', url: '/accessories' },
+      ]
+    : [
+        { name: 'github', url: 'https://github.com/ivan-baranovskyi' },
+        { name: 'contacts', url: '/contacts' },
+        { name: 'rights', url: '/rights' },
+      ];
 
   return (
     <div
@@ -28,10 +37,10 @@ export const Navbar: React.FC<Props> = ({
         className={`${isOpen && !withoutUnderline ? navbarStyles.navbar__aside : ''} ${withoutUnderline ? navbarStyles.navbar__footer_ul : navbarStyles.navbar__items}`}
       >
         {navBarLinkItems.map(item => (
-          <li className={navbarStyles.navbar__item} key={item}>
+          <li className={navbarStyles.navbar__item} key={item.name}>
             {isOpen}
             <NavLink
-              to={`/${item === 'home' ? '' : item}`}
+              to={item.url}
               onClick={onClick}
               className={({ isActive }) =>
                 classNames(navbarStyles.navbar__itemlink, {
@@ -40,7 +49,7 @@ export const Navbar: React.FC<Props> = ({
                 })
               }
             >
-              {item}
+              {item.name}
             </NavLink>
           </li>
         ))}

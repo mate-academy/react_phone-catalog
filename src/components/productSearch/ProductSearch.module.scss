@@ -10,5 +10,10 @@
     border: none;
     border-left: 1px solid $elements-border-color;
     padding: 8px;
+
+    &:focus {
+      outline: none;
+      border-color: $elements-border-color;
+    }
   }
 }
