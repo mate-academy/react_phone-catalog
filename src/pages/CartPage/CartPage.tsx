@@ -5,7 +5,6 @@ import { CartList } from '../../components/CartList';
 import { Checkout } from '../../components/Checkout';
 import { getLocalStorage } from '../../helpers/utils/getLocalStorage';
 import { CartObjType } from '../../helpers/types/CartObjType';
-import { Loader } from '../../components/Loader';
 
 type Props = {};
 
@@ -56,31 +55,25 @@ export const CartPage: React.FC<Props> = () => {
             )}
           </section>
 
-          {productsInCart ? (
+          {!isEmpty ? (
             <>
-              {!isEmpty ? (
-                <>
-                  <section className="cart-page__main">
-                    <div className="cart-page__cart-list">
-                      {productsInCart && (
-                        <CartList productsInCart={productsInCart} />
-                      )}
-                    </div>
+              <section className="cart-page__main">
+                <div className="cart-page__cart-list">
+                  {productsInCart && (
+                    <CartList productsInCart={productsInCart} />
+                  )}
+                </div>
 
-                    <div className="cart-page__checkout">
-                      <Checkout
-                        totalPrice={totalPrice}
-                        totalQuantity={totalQuantity}
-                      />
-                    </div>
-                  </section>
-                </>
-              ) : (
-                <section className="cart-page__empty" />
-              )}
+                <div className="cart-page__checkout">
+                  <Checkout
+                    totalPrice={totalPrice}
+                    totalQuantity={totalQuantity}
+                  />
+                </div>
+              </section>
             </>
           ) : (
-            <Loader />
+            <section className="cart-page__empty" />
           )}
         </div>
       </div>
