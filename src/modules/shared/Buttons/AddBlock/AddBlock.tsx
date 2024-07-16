@@ -1,12 +1,7 @@
 /* eslint-disable jsx-a11y/control-has-associated-label */
 import React, { useContext } from 'react';
-import { useLocation } from 'react-router-dom';
 import cn from 'classnames';
-import {
-  IconAddedToFavourites,
-  IconClose,
-  IconFavourites,
-} from '../../IconsSVG';
+import { IconAddedToFavourites, IconFavourites } from '../../IconsSVG';
 import { ShoppingCartContext } from '../../../../store/ShoppingCartContext';
 import { FavoutitesContext } from '../../../../store/FavouritesContext';
 import { getNewCartItemId } from '../../../../services/getNewCartItemId';
@@ -22,9 +17,6 @@ type Props = {
 export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
   const { setShoppingList, shoppingList } = useContext(ShoppingCartContext);
   const { setFavouritesList, favouritesList } = useContext(FavoutitesContext);
-  const { pathname } = useLocation();
-
-  const isFavourites = pathname.includes('favourites');
 
   const favItem: FavItem = { ...product, discount };
   const cartItem: CartItem = {
@@ -65,25 +57,23 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
     }
   };
 
-  const handleAddToFavourites = () => {
+  const handleFavourites = () => {
     if (!addedToFavourites) {
       setFavouritesList([...favouritesList, favItem]);
-    }
-  };
-
-  const removeFromFavoutites = () => {
-    if (favouritesList.length === 1) {
-      setFavouritesList([]);
-      localStorage.removeItem('favItem');
 
       return;
     }
 
-    const updatedFavouritesList = favouritesList.filter(
-      fav => fav.itemId !== favItem.itemId,
-    );
+    if (addedToFavourites && favouritesList.length > 1) {
+      const updatedFavouritesList = favouritesList.filter(
+        fav => fav.itemId !== favItem.itemId,
+      );
 
-    setFavouritesList(updatedFavouritesList);
+      setFavouritesList(updatedFavouritesList);
+    } else {
+      setFavouritesList([]);
+      localStorage.removeItem('favItem');
+    }
   };
 
   return (
@@ -96,25 +86,13 @@ export const AddBlock: React.FC<Props> = React.memo(({ product, discount }) => {
         {addedToCart ? 'Added to cart' : 'Add to cart'}
       </button>
 
-      {!isFavourites && (
-        <button
-          type="button"
-          className={cn('add-block__fav', { added: addedToFavourites })}
-          onClick={handleAddToFavourites}
-        >
-          {addedToFavourites ? <IconAddedToFavourites /> : <IconFavourites />}
-        </button>
-      )}
-
-      {isFavourites && (
-        <button
-          type="button"
-          className="add-block__remove"
-          onClick={removeFromFavoutites}
-        >
-          <IconClose />
-        </button>
-      )}
+      <button
+        type="button"
+        className={cn('add-block__fav', { added: addedToFavourites })}
+        onClick={handleFavourites}
+      >
+        {addedToFavourites ? <IconAddedToFavourites /> : <IconFavourites />}
+      </button>
     </div>
   );
 });

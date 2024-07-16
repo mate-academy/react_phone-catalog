@@ -48,12 +48,6 @@
 
     &.added {
       border: 1px solid $border-color-light-gray;
-
-      cursor: default;
-
-      &:hover {
-        box-shadow: none;
-      }
     }
   }
 
