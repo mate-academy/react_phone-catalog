@@ -127,6 +127,7 @@ export const CartCard: React.FC<Props> = ({
                 value={inputValue}
                 onChange={event => setInputValue(+event.target.value)}
                 type="number"
+                min={1}
                 onKeyDown={handleKeyDownOnInput}
                 onBlur={handleBlurOnInput}
               />

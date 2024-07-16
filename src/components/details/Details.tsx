@@ -85,13 +85,29 @@ export const Details: React.FC<Props> = ({ list }) => {
   const handleChangeColor = (color: string) => {
     setSelectedColor(color);
 
-    const newId = idItem
-      ?.split('-')
-      .slice(0, -1)
-      .concat(selectedColor)
-      .join('-');
+    console.log('color', color)
+
+    const formattedColor = color === 'space gray' ? ['space', 'gray'] : color;
+    // const formattedColor = color.split(' ');
+
+
+    let parts = idItem?.split('-');
+
+    console.log('split parts', parts);
+
+    if (parts && parts[parts.length - 2] === 'space') {
+      parts = parts?.filter(item => item !== 'space');
+    }
+
+    console.log('parts', parts);
+    console.log('formattedColor', formattedColor);
+
+    const id = parts?.slice(0, -1).concat(formattedColor).join('-');
+
+    console.log('Id', id);
+
     if (product) {
-      navigate(`/${product.category}/${newId}`);
+      return navigate(`/${product.category}/${id}`);
     }
   };
 
