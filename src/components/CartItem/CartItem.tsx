@@ -13,7 +13,7 @@ export const CartItem: React.FC<Props> = ({ product }) => {
 
   const addItem = () => dispatch(addCart(itemId));
   const takeItem = () => dispatch(removeCart(itemId));
-  const clearItem = () => dispatch(clearCart(itemId));
+  const clearItem = () => dispatch(clearCart());
 
   const disabledBtn = count === 1;
 
