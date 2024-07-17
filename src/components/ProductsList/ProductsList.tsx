@@ -7,14 +7,10 @@ type Props = {
 };
 
 export const ProductsList: React.FC<Props> = ({ products }) => {
-
   return (
     <>
       {products.map(product => (
-        <ProductCard
-          key={product.id}
-          gadget={product}
-        />
+        <ProductCard key={product.id} gadget={product} />
       ))}
     </>
   );

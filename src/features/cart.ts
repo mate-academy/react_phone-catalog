@@ -12,7 +12,10 @@ type CartState = {
 
 const initialState: CartState = {
   products: JSON.parse(localStorage.getItem('cart') || '[]'),
-  totalCount: JSON.parse(localStorage.getItem('cart') || '[]').reduce((acc: number, item: CartProduct) => acc + item.count, 0),
+  totalCount: JSON.parse(localStorage.getItem('cart') || '[]').reduce(
+    (acc: number, item: CartProduct) => acc + item.count,
+    0,
+  ),
   loading: false,
 };
 
@@ -26,11 +29,16 @@ const cartSlice = createSlice({
   reducers: {
     setCart: (state, action: PayloadAction<CartProduct[]>) => {
       state.products = action.payload;
-      state.totalCount = state.products.reduce((acc, item) => acc + item.count, 0);
+      state.totalCount = state.products.reduce(
+        (acc, item) => acc + item.count,
+        0,
+      );
       updateLocalStorageCart(state.products);
     },
     addCart: (state, action: PayloadAction<string>) => {
-      const item = state.products.find(product => product.id === action.payload);
+      const item = state.products.find(
+        product => product.id === action.payload,
+      );
 
       if (item) {
         item.count += 1;
@@ -42,29 +50,37 @@ const cartSlice = createSlice({
       updateLocalStorageCart(state.products);
     },
     removeCart: (state, action: PayloadAction<string>) => {
-      const item = state.products.find(product => product.id === action.payload);
+      const item = state.products.find(
+        product => product.id === action.payload,
+      );
 
       if (item) {
         state.totalCount -= 1;
         item.count -= 1;
         if (item.count <= 0) {
-          state.products = state.products.filter(product => product.id !== action.payload);
+          state.products = state.products.filter(
+            product => product.id !== action.payload,
+          );
         }
       }
 
       updateLocalStorageCart(state.products);
     },
     deleteItem: (state, action: PayloadAction<string>) => {
-      const item = state.products.find(product => product.id === action.payload);
+      const item = state.products.find(
+        product => product.id === action.payload,
+      );
 
       if (item) {
         state.totalCount -= item.count;
       }
 
-      state.products = state.products.filter(product => product.id !== action.payload);
+      state.products = state.products.filter(
+        product => product.id !== action.payload,
+      );
       updateLocalStorageCart(state.products);
     },
-    clearCart: (state) => {
+    clearCart: state => {
       state.products = [];
       state.totalCount = 0;
       updateLocalStorageCart(state.products);
@@ -76,4 +92,11 @@ const cartSlice = createSlice({
 });
 
 export default cartSlice.reducer;
-export const { setCart, addCart, removeCart, deleteItem, clearCart, setLoading } = cartSlice.actions;
+export const {
+  setCart,
+  addCart,
+  removeCart,
+  deleteItem,
+  clearCart,
+  setLoading,
+} = cartSlice.actions;

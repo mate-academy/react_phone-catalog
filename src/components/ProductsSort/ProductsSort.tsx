@@ -17,7 +17,7 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
   const [isPagActive, setIsPagActive] = useState(false);
   const [sortCriteria, setSortCriteria] = useState<Sort>(() => {
     const savedSort = localStorage.getItem('sortCriteria');
-    
+
     return savedSort ? (savedSort as Sort) : Sort.BY_YEAR;
   });
   const [itemsPerPage, setItemsPerPage] = useState(products.length);
@@ -33,7 +33,8 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
   const setItems = (event: React.MouseEvent<HTMLLIElement, MouseEvent>) => {
     const value = event.currentTarget.getAttribute('data-value');
     // eslint-disable-next-line max-len
-    const newItemsPerPage = value === 'all' ? products.length : parseInt(value || '4');
+    const newItemsPerPage =
+      value === 'all' ? products.length : parseInt(value || '4');
 
     setItemsPerPage(newItemsPerPage);
     setCurrPage(1);
@@ -67,7 +68,7 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
 
   const sortedProductList = sortProducts(products, sortCriteria).slice(
     (currPage - 1) * itemsPerPage,
-    currPage * itemsPerPage
+    currPage * itemsPerPage,
   );
 
   return (
@@ -78,10 +79,7 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
 
           <div className="dropdown__box">
             <span className="dropdown__box--text">{sortCriteria}</span>
-            <button
-              className="dropdown__box--trigger"
-              onClick={onSortTrigger}
-            >
+            <button className="dropdown__box--trigger" onClick={onSortTrigger}>
               {isSortActive ? (
                 <svg className="icon icon-dropdown-up">
                   <use href="img/icons.svg#icon-arrow-up"></use>
@@ -94,10 +92,11 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
             </button>
           </div>
 
-          <ul className={classNames('dropdown__options', {
-            'visually-hidden': !isSortActive,
-          }
-          )}>
+          <ul
+            className={classNames('dropdown__options', {
+              'visually-hidden': !isSortActive,
+            })}
+          >
             <li
               className="dropdown__options--option"
               data-value={Sort.BY_YEAR}
@@ -128,10 +127,7 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
             <span className="dropdown__box--text">
               {itemsPerPage === products.length ? 'All' : itemsPerPage}
             </span>
-            <button
-              className="dropdown__box--trigger"
-              onClick={onPagTrigger}
-            >
+            <button className="dropdown__box--trigger" onClick={onPagTrigger}>
               {isPagActive ? (
                 <svg className="icon icon-dropdown-up">
                   <use href="img/icons.svg#icon-arrow-up"></use>
@@ -141,14 +137,13 @@ export const ProductsSort: React.FC<Props> = ({ products }) => {
                   <use href="img/icons.svg#icon-arrow-down"></use>
                 </svg>
               )}
-
             </button>
           </div>
 
-          <ul className={classNames('dropdown__options', {
-            'visually-hidden': !isPagActive,
-          }
-          )}
+          <ul
+            className={classNames('dropdown__options', {
+              'visually-hidden': !isPagActive,
+            })}
           >
             <li
               className="dropdown__options--option"
