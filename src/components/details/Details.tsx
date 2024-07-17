@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useRef, useState } from 'react';
 import cn from 'classnames';
 import Styles from './Details.module.scss';
 import { Item } from '../../types/Item';
@@ -76,24 +76,15 @@ export const Details: React.FC<Props> = ({ list }) => {
 
   const handleChangeColor = (color: string) => {
 
-    console.log('color', color);
-
     const formattedColor = color === 'space gray' ? ['space', 'gray'] : color;
 
     let parts = idItem?.split('-');
-
-    console.log('split parts', parts);
 
     if (parts && parts[parts.length - 2] === 'space') {
       parts = parts?.filter(item => item !== 'space');
     }
 
-    console.log('parts', parts);
-    console.log('formattedColor', formattedColor);
-
     const id = parts?.slice(0, -1).concat(formattedColor).join('-');
-
-    console.log('Id', id);
 
     if (product) {
       return navigate(`/${product.category}/${id}`);
