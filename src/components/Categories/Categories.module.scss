@@ -1,0 +1,7 @@
+.categories {
+  @include block-margin-bottom;
+
+  &__content {
+    @include page-grid;
+  }
+}

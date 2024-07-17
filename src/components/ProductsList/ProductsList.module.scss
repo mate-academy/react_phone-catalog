@@ -1,0 +1,47 @@
+.products {
+  padding-bottom: 64px;
+
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $c-secondary;
+  }
+
+  &__content {
+    padding-block: 40px 64px;
+  }
+
+  &__dropdowns {
+    @include page-grid;
+
+    margin-bottom: 24px;
+  }
+
+  &__sort-by {
+    grid-column: 2 span;
+
+    @include on-tablet {
+      grid-column: 4 span;
+    }
+  }
+
+  &__per-page {
+    grid-column: 2 span;
+
+    @include on-tablet {
+      grid-column: 3 span;
+    }
+  }
+
+  &__list {
+    @include page-grid-auto(229px);
+
+    row-gap: 40px;
+  }
+
+  &__item {
+    min-width: 229px;
+  }
+}

@@ -1,0 +1,28 @@
+.breadcrumbs {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 24px 40px;
+  }
+
+  &__text {
+    @extend %smalltext;
+
+    color: $c-secondary;
+
+    &--link {
+      text-decoration: none;
+
+      @include hover(color, $c-white);
+    }
+  }
+
+  &:has(.icon--home:hover) {
+    .icon--home {
+      @include hover(scale, 1.1);
+    }
+  }
+}

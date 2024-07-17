@@ -1,0 +1,67 @@
+.icon {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-size: cover;
+  background-color: $c-white;
+  transition: scale $duration-transition ease-in-out;
+
+  &--c-base {
+    background-color: $c-icons;
+  }
+
+  &--favorites {
+    background-image: url('../images/icons/icon-heart-stroke.svg');
+  }
+
+  &--cart {
+    background-image: url('../images/icons/icon-shopping-bag.svg');
+  }
+
+  &--menu {
+    background-image: url('../images/icons/icon-menu.svg');
+  }
+
+  &--close {
+    background-image: url('../images/icons/icon-close.svg');
+  }
+
+  &--menu, &--close {
+    background-color: transparent;
+  }
+
+  &--arrow-left {
+    transform: rotate(180deg);
+    mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+  }
+
+  &--arrow-right {
+    mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+  }
+
+  &--arrow-up {
+    transform: rotate(-90deg);
+    mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+  }
+
+  &--heart-stroke {
+    mask: url('../images/icons/icon-heart-stroke.svg') no-repeat 50% 50%;
+  }
+
+  &--heart-filled {
+    background-color: $c-red;
+    mask: url('../images/icons/icon-heart-filled.svg') no-repeat 50% 50%;
+  }
+
+  &--home {
+    mask: url('../images/icons/icon-home.svg') no-repeat 50% 50%;
+  }
+
+  &--minus {
+    mask: url('../images/icons/icon-minus.svg') no-repeat 50% 50%;
+  }
+
+  &--plus {
+    mask: url('../images/icons/icon-plus.svg') no-repeat 50% 50%;
+  }
+}

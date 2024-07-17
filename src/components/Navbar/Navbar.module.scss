@@ -1,0 +1,131 @@
+.header {
+  position: sticky;
+  top: 0;
+  z-index: $zindex-sticky;
+  transition: height $duration-transition ease-in-out;
+
+  &__mobile-menu {
+    z-index: $zindex-modal;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-top: 24px;
+    background-color: $c-black;
+    left: 0;
+    right: 0;
+    transition: translate 0.5s ease-in-out;
+  }
+
+  &:has(.header__mobile-menu--active) {
+    .search {
+      opacity: 0;
+      pointer-events: none;
+    }
+  }
+
+  &__top {
+    position: relative;
+    z-index: $zindex-header;
+    background-color: $c-black;
+    height: $header-height-mobile-tablet;
+    display: flex;
+    border-bottom: 1px solid $c-surface-2;
+
+    @include on-desktop {
+      height: $header-height-desktop;
+    }
+  }
+
+  &__logo {
+    display: flex;
+    width: 96px;
+    padding-inline: 16px;
+    margin-right: 16px;
+
+    @include hover(scale, 1.1);
+
+    @include on-desktop {
+      width: 128px;
+      padding-inline: 24px;
+      margin-right: 24px;
+    }
+  }
+
+  &__logo-img {
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__navigation {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+      transition: opacity $duration-transition ease-in-out;
+    }
+  }
+
+  &__actions {
+    margin-left: auto;
+    display: flex;
+  }
+
+  &__actions--mobile-menu {
+    height: 64px;
+    border-top: 1px solid $c-surface-2;
+    margin: 0;
+  }
+
+  &__lang {
+    text-align: center;
+  }
+
+  &__lang,
+  &__favorites,
+  &__cart {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__lang--mobile-menu,
+  &__favorites--mobile-menu,
+  &__cart--mobile-menu {
+    display: block;
+    flex-grow: 1;
+  }
+
+  &__menu {
+    display: flex;
+
+    // &--hidden {
+    //   display: none;
+    // }
+    // @include on-tablet {
+    //   display: none;
+    // }
+  }
+
+  @include on-tablet {
+    &:has(.search--active) {
+      .header__navigation {
+        opacity: 0;
+        width: 0;
+        pointer-events: none;
+      }
+    }
+  }
+
+  @include on-desktop {
+    &:has(.search--active) {
+      .header__navigation {
+        opacity: 1;
+        width: auto;
+        pointer-events: all;
+      }
+    }
+  }
+}

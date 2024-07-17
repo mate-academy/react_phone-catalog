@@ -1,0 +1,27 @@
+.modal {
+  position: fixed;
+  z-index: $zindex-modal;
+  inset: 0;
+  background-color: rgba($c-black, 0.9);
+  padding-inline: 20px;
+  display: grid;
+  place-items: center;
+
+  &__title {
+    color: $c-secondary;
+  }
+
+  &__card {
+    max-width: 400px;
+    background-color: $c-surface-1;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+}

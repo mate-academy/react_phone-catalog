@@ -1,0 +1,42 @@
+.page {
+  @extend %bodytext;
+
+  color: $c-white;
+  scroll-behavior: smooth;
+
+  &__body {
+    min-width: 320px;
+    background-color: $c-black;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__main {
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  &:has(.header__mobile-menu--active, .modal) {
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: $c-surface-1;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: $c-surface-2;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: $c-secondary;
+  }
+}

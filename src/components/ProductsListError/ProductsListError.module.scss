@@ -1,0 +1,7 @@
+.products-list-error {
+  @include block-margin-bottom;
+
+  &__reload {
+    max-width: 200px;
+  }
+}

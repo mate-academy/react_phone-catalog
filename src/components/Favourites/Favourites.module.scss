@@ -1,0 +1,27 @@
+.favourites {
+  &__title {
+    margin-bottom: 8px;
+  }
+
+  &__subtitle {
+    color: $c-secondary;
+  }
+
+  &__content {
+    padding-block: 40px 64px;
+  }
+
+  &__list {
+    @include page-grid;
+
+    row-gap: 40px;
+  }
+
+  &__item {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 6 span;
+    }
+  }
+}

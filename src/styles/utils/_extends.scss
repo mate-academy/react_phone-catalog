@@ -1,0 +1,22 @@
+%uppercase {
+  font-family: $ff-main;
+  font-weight: $fw-bold;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+%bodytext {
+  font-family: $ff-main;
+  font-weight: $fw-regular;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+%smalltext {
+  font-family: $ff-main;
+  font-weight: $fw-semi-bold;
+  font-size: 12px;
+  line-height: 15px;
+}

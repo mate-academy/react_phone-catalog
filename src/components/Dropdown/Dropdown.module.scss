@@ -1,0 +1,78 @@
+.dropdown {
+  position: relative;
+
+  &__label {
+    @extend %smalltext;
+
+    display: block;
+    color: $c-secondary;
+    margin-bottom: 4px;
+  }
+
+  &__select {
+    all: unset;
+    box-sizing: border-box;
+    cursor: pointer;
+
+    display: flex;
+    width: 100%;
+    padding: 9px 11px;
+    border: 1px solid $c-surface-2;
+    color: $c-white;
+    background-color: $c-surface-2;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 16px;
+      height: 16px;
+      top: 11px;
+      right: 11px;
+      background-color: $c-secondary;
+      mask: url('../../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+      transform: rotate(90deg);
+    }
+
+    &:hover {
+      border: 1px solid $c-icons;
+    }
+
+    &:hover::before {
+      background-color: $c-icons;
+    }
+
+    &:focus {
+      border: 1px solid $c-accent;
+    }
+
+    &--focus::before {
+      transform: rotate(-90deg);
+    }
+  }
+
+  &__options {
+    z-index: $zindex-dropdown;
+    padding-block: 8px;
+    background-color: $c-black;
+    border: 1px solid $c-surface-2;
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    transform: translateY(100%);
+  }
+
+  &__option {
+    padding: 6px 12px;
+    color: $c-secondary;
+
+    &:hover {
+      color: $c-white;
+      background-color: $c-surface-2;
+      cursor: pointer;
+    }
+  }
+}

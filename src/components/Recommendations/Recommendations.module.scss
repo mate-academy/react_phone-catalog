@@ -1,0 +1,9 @@
+.recommendations {
+  @include block-margin-bottom;
+
+  position: relative;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+}
