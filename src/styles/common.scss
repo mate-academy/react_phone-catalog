@@ -27,10 +27,19 @@ html {
   }
 }
 
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
 body {
   min-width: 320px;
   background-color: $c-main-theme;
-  margin: 0;
+}
+
+main {
+  min-height: calc(100vh - 97px);
 }
 
 h1,
@@ -81,6 +90,8 @@ img {
     @include on-desktop {
     padding-left: $padding-desktop;
     padding-right: $padding-desktop;
+    max-width: 1440px;
+    margin: auto;
   }
 }
 
@@ -136,4 +147,5 @@ img {
   overflow: hidden;
   transition: max-height 0.3s ease-in-out;
 }
+
 

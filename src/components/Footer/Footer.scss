@@ -7,6 +7,8 @@
   justify-content: space-between;
   border-top: 1px solid $dark-grey-color;
   padding: 32px $padding-mobile;
+  width: 100%;
+  margin-top: auto;
 
   @include on-tablet {
     padding: 32px;

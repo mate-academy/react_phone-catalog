@@ -11,7 +11,7 @@ export const Footer: React.FC = () => {
   };
 
   return (
-    <div className="footer">
+    <footer className="footer">
       <Link to="/" className="footer__logo">
         <img src="img/Logo.svg" alt="Logo" className="footer__logo--pict" />
       </Link>
@@ -47,6 +47,6 @@ export const Footer: React.FC = () => {
           </svg>
         </button>
       </div>
-    </div>
+    </footer>
   );
 };

@@ -13,7 +13,7 @@ export const Header: React.FC = () => {
   );
 
   return (
-    <div className="header">
+    <header className="header">
       <Link to="/" className="header__logo">
         <img src="img/Logo.svg" alt="Logo" className="header__logo--pict" />
       </Link>
@@ -58,6 +58,6 @@ export const Header: React.FC = () => {
           </svg>
         </Link>
       </div>
-    </div>
+    </header>
   );
 };
