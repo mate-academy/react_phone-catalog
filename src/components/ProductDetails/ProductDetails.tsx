@@ -64,7 +64,7 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
     resolution,
     processor,
     ram,
-    capacity,
+    buildMemory: capacity,
     camera,
     zoom,
     cell,
@@ -160,7 +160,7 @@ export const ProductDetails: React.FC<Props> = ({ gadget }) => {
           <span className={style.product__line} />
 
           <div className={style.product__capacityBlock}>
-            <p className={style.product__namesParams}>{t('capacity')}</p>
+            <p className={style.product__namesParams}>{t('selectCapacity')}</p>
             <div className={style.product__capacityList}>
               {capacityAvailable.map(item => {
                 const newCapacityIds = changeIdsParams(

@@ -27,6 +27,7 @@ export const Card: React.FC<Props> = ({
   const { cartItems, handleAddToCart } = useContext(ShoppingCartContext);
   const { favorites, handleAddToFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
+  const { screen, capacity, ram } = product;
 
   return (
     <li
@@ -69,19 +70,12 @@ export const Card: React.FC<Props> = ({
         </div>
 
         <span className={style.card__cardLine} />
-
-        <div className={style.card__cardDescription}>
-          <p className={style.card__key}>{t('screen')}</p>
-          <p className={style.card__value}>{product.screen}</p>
-        </div>
-        <div className={style.card__cardDescription}>
-          <p className={style.card__key}>{t('capacity')}</p>
-          <p className={style.card__value}>{product.capacity}</p>
-        </div>
-        <div className={style.card__cardDescription}>
-          <p className={style.card__key}>{t('ram')}</p>
-          <p className={style.card__value}>{product.ram}</p>
-        </div>
+        {Object.entries({ screen, capacity, ram }).map(([key, value]) => (
+          <div className={style.card__cardDescription} key={key}>
+            <p className={style.card__key}>{t(key)}</p>
+            <p className={style.card__value}>{value}</p>
+          </div>
+        ))}
       </div>
 
       <div className={style.card__cardActions}>
