@@ -1,0 +1,11 @@
+@import '../../styles/index';
+
+.button {
+  @include button-main;
+
+  min-width: 160px;
+}
+
+.button-selected {
+  @include button-selected;
+}

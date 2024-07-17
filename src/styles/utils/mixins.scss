@@ -1,0 +1,39 @@
+@import './variables';
+
+@mixin button {
+  border-radius: 48px;
+  cursor: pointer;
+  text-align: center;
+}
+
+@mixin button-main {
+  @include button;
+
+  padding: 9.5px 0;
+  background-color: $accent-color;
+  color: $white-color;
+
+  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+}
+
+@mixin button-selected {
+  @include button;
+
+  padding: 9.5px 0;
+  background-color: $white-color;
+  color: $accent-color;
+  border: 1px solid $elements-color;
+}
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin flex {
+  display: flex;
+  justify-content: space-between;
+}

@@ -1,0 +1,68 @@
+@import '../../styles/index';
+
+.productCard {
+  background-color: $white-color;
+  width: 272px;
+  padding: 32px;
+  border-radius: 8px;
+
+  &__img {
+    min-height: 196px;
+    margin-bottom: 24px;
+  }
+
+  &__priceWrapper {
+    display: flex;
+    gap: 8px;
+    margin-top: 8px;
+  }
+
+  &__fullPrice {
+    position: relative;
+    color: $secondary-text-color;
+    font-weight: 500;
+    &::before {
+      content: '';
+      position: absolute;
+      bottom: 50%;
+      transform: translateY(-50%);
+      height: 1px;
+      width: 100%;
+      background-color: $secondary-text-color;
+      backdrop-filter: invert(75%);
+      mix-blend-mode: color-dodge;
+    }
+  }
+
+  &__divider {
+    background-color: $elements-color;
+    width: 100%;
+    height: 1px;
+    margin: 8px 0;
+  }
+
+  &__information {
+    padding: 8px 0;
+    margin-bottom: 8px;
+  }
+
+  &__info {
+    @include flex;
+
+    color: $secondary-text-color;
+  }
+
+  &__info:not(:first-child) {
+    padding-top: 8px;
+  }
+
+  &__techValue {
+    color: $main-text-color;
+  }
+
+  &__btns {
+    @include flex;
+
+    gap: 8px;
+  }
+}

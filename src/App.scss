@@ -1,1 +1,15 @@
-// not empty
+@import './styles/index';
+@import './styles/index.utils';
+
+body {
+  font-family: Mont, sans-serif;
+}
+
+.App {
+  background-color: $light-grey-color;
+}
+
+.container {
+  max-width: 1136px;
+  margin: 0 auto;
+}
