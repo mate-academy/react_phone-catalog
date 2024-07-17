@@ -39,7 +39,11 @@ body {
 }
 
 main {
-  min-height: calc(100vh - 97px);
+  min-height: calc(100vh - 257px);
+
+  @include on-tablet {
+    min-height: calc(100vh - 96px);
+  }
 }
 
 h1,
