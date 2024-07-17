@@ -31,7 +31,7 @@ export const Main = () => {
 
   useEffect(() => {
     handleResize(element);
-  }, [homePage]);
+  }, [homePage, handleResize]);
 
   return (
     <main
