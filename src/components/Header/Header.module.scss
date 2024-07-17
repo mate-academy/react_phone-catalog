@@ -1,0 +1,15 @@
+.header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  margin-bottom: 56px;
+
+  &__title {
+    margin-inline: 16px;
+    font-weight: 800;
+    font-size: 32px;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}

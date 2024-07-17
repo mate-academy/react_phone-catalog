@@ -1,0 +1,27 @@
+.topbar {
+  height: 48px;
+  width: 100%;
+  background-color: #fff;
+  box-shadow: 0 1px 0 0 #e2e6e9;
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+    margin: 13px 16px;
+  }
+
+  &__burgerMenuContainer {
+    box-shadow: -1px 0 0 0 #e2e6e9;
+  }
+
+  &__burgerMenu {
+    height: 16px;
+    width: 16px;
+    margin: 16px;
+  }
+}

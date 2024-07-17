@@ -1,0 +1,40 @@
+.newModels {
+  height: 500px;
+
+  &__header {
+    margin-right: 16px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+  }
+
+  &__title {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 30.8px;
+    grid-column: 1 / 3;
+  }
+
+  &__arrows {
+    display: flex;
+    gap: 16px;
+    grid-column: 4 / 5;
+    align-items: center;
+  }
+
+  &__arrowLeft {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    border: 1px solid #b4bdc3;
+    border-radius: 48px;
+  }
+
+  &__arrowRight {
+    height: 32px;
+    width: 32px;
+    padding: 8px;
+    border: 1px solid #b4bdc3;
+    border-radius: 48px;
+  }
+}
