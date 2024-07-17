@@ -1,0 +1,78 @@
+.Carousel {
+  width: 100%;
+  max-width: 1136px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+
+  &__container {
+    position: relative;
+    overflow: hidden;
+
+    @include on-tablet {
+      border-radius: 8px;
+    }
+  }
+
+  &__list {
+    width: 100%;
+    overflow: auto;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    list-style: none;
+    transition: transform 300ms ease,
+  }
+
+  &__item {
+    width: 100%;
+    display: flex;
+  }
+
+  &__image {
+    width: 100%;
+  }
+
+  &__button {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    border: none;
+    opacity: 0;
+    width: 45%;
+
+    @include on-tablet {
+      opacity: 1;
+      width: 32px;
+      border-radius: 48px;
+      background-color: #fff;
+      border: 1px solid $border-color;
+
+      @include hover(border-color, $border-color-hover);
+    }
+  }
+
+  &__dots {
+    position: absolute;
+    bottom: -32px;
+    display: flex;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 24px;
+    height: 24px;
+    background-image: url(../../assets/icons/dot.png);
+    background-position: center;
+    background-size: contain;
+    cursor: pointer;
+
+    &--active {
+      background-image: url(../../assets/icons/dot-active.png);
+    }
+  }
+}

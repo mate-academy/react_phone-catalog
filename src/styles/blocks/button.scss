@@ -1,0 +1,51 @@
+.button {
+  width: 32px;
+  height: 32px;
+  padding: 0;
+  border-radius: 50%;
+  background-color: $background-color;
+  background-repeat: no-repeat;
+  background-position: center;
+  border: 1px solid $shadow-color;
+
+  &--next {
+    right: 0;
+    background-image: url(../../assets/icons/arrowRightHover.png);
+  }
+
+  &--prev {
+    left: 0;
+    background-image: url(../../assets/icons/arrowRightHover.png);
+    transform: rotate(180deg);
+  }
+
+  &--minus {
+    background-image: url(../../assets/icons/minusGrey.png);
+  }
+
+  &--minus--active {
+    cursor: pointer;
+    background-image: url(../../assets/icons/minus.png);
+
+    @include hover(border-color, $border-color-hover);
+  }
+
+  &--plus {
+    cursor: pointer;
+    background-image: url(../../assets/icons/plus.png);
+
+    @include hover(border-color, $border-color-hover);
+  }
+
+  &--up {
+    transform: rotate(270deg);
+  }
+
+  &--active {
+    cursor: pointer;
+    border: 1px solid $border-color;
+    background-image: url(../../assets/icons/arrowRight.png);
+
+    @include hover(border-color, $border-color-hover);
+  }
+}

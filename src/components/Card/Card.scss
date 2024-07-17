@@ -1,0 +1,151 @@
+.card {
+  box-sizing: border-box;
+  height: 440px;
+  width: 100%;
+  padding: 32px;
+  border-radius: 8px;
+  border: 1px solid $shadow-color;
+  display: grid;
+  grid-template-rows: 1fr;
+  background: #fff;
+
+  @include on-tablet {
+    height: 506px;
+  }
+
+  &__top {
+    display: grid;
+    grid-template-rows: 1fr 31px;
+    margin-bottom: 8px;
+  }
+
+  &__top-wrapper {
+    display: grid;
+    grid-template-rows: 1fr;
+    row-gap: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__image-wrapper {
+    position: relative;
+    overflow: hidden;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+
+    @include hover(scale, 1.1);
+  }
+
+  &__image {
+    max-width: 100%;
+    max-height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+  }
+
+  &__title {
+    font-size: 14px;
+    font-weight: 600;
+    text-align: left;
+    padding-top: 16px;
+    text-decoration: none;
+  }
+
+  &__price-wrapper {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+  }
+
+  &__price {
+    display: inline;
+    width: min-content;
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    margin-right: 8px;
+    color: $font-color-aside;
+
+    &--full {
+      font-weight: 600;
+      color: $font-color-grey;
+      text-decoration: line-through;
+    }
+  }
+
+  &__bottom {
+    border-top: 1px solid $shadow-color;
+    padding-top: 8px;
+  }
+
+  &__properties {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    row-gap: 8px;
+    padding-block: 8px;
+    margin-bottom: 8px;
+  }
+
+  &__property {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+  }
+
+  &__property-name {
+    color: $font-color-grey;
+  }
+
+  &__buttons {
+    display: grid;
+    grid-template-columns: 1fr 40px;
+    gap: 8px;
+    height: 40px;
+  }
+
+  &__addToCart {
+    padding: 0;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: center;
+    color: #fff;
+    border-radius: 8px;
+    border: none;
+    background: $button-color;
+    cursor: pointer;
+
+    @include hover(box-shadow, 0px 3px 13px 0px $button-shadow-color);
+
+    &--selected {
+      background: #fff;
+      color: $button-color;
+      border: 1px solid $shadow-color;
+
+      @include hover(box-shadow, none);
+    }
+  }
+
+  &__addToFavourite {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: none;
+    border: 1px solid $border-color;
+    border-radius: 50%;
+    cursor: pointer;
+
+    @include hover(border-color, $border-color-hover);
+  }
+
+  &__heart {
+    width: $icon-size;
+  }
+}

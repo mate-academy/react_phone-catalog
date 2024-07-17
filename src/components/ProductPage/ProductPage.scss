@@ -1,0 +1,203 @@
+.goods {
+
+  &__top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    column-gap: 16px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(24, 1fr);
+    }
+  }
+
+  &__title {
+    grid-column: span 4;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    color: $font-color;
+    margin-bottom: 8px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__count-items {
+    grid-column: span 4;
+    font-size: 14px;
+    line-height: 21px;
+    color: $font-color-grey;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+
+    @include on-desktop {
+      grid-column: span 24;
+    }
+  }
+
+  &__sortBy {
+    grid-column: span 2;
+    margin-bottom: 24px;
+    position: relative;
+
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    &--onPage {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  &__select-name {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $font-color-grey;
+    margin-bottom: 4px;
+  }
+
+  &__custom-select {
+    position: relative;
+
+    &::after {
+      content: '';
+      width: $icon-size;
+      height: $icon-size;
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background-image: url(../../assets/icons/arrowRightHover.png);
+      transform: rotate(90deg);
+      pointer-events: none;
+    }
+
+    &--active::after {
+      transform: rotate(270deg);
+    }
+  }
+
+  &__select {
+    width: 100%;
+    box-sizing: border-box;
+    height: 40px;
+    padding-inline: 12px;
+    border-radius: 8px;
+    border: 1px solid $border-color;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    text-align: left;
+    background-color: transparent;
+
+    @include hover(border-color, $font-color-grey);
+
+    &:focus {
+      border-color: $font-color;
+      outline: none;
+    }
+  }
+
+  &__arrow {
+    width: $icon-size;
+    height: $icon-size;
+    transform: rotate(90deg);
+
+    &--active {
+      transform: rotate(270deg);
+    }
+  }
+
+  &__sort-list {
+    position: absolute;
+    z-index: 2;
+    left: 0;
+    right: 0;
+    transform: translateY(4px);
+    padding: 0;
+    padding-block: 8px;
+    margin: 0;
+    list-style: none;
+    border-radius: 8px;
+    border: 1px solid $shadow-color;
+    background: #fff;
+  }
+
+  &__sort-item {
+    height: 32px;
+    line-height: 32px;
+    padding-inline: 13px;
+    color: $font-color-grey;
+    cursor: pointer;
+
+    @include hover(color, $font-color);
+    @include hover(background-color, $background-color);
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    row-gap: 40px;
+    column-gap: 16px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(12, 1fr);
+    }
+  }
+
+  &__item {
+    grid-column: span 4;
+
+    @include on-tablet-small {
+      grid-column: span 2;
+    }
+
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-tablet-2 {
+      grid-column: span 4;
+    }
+
+    @include on-desktop {
+      grid-column: span 3;
+    }
+  }
+
+  &__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    row-gap: 16px;
+    color: $font-color-grey;
+
+    &-link {
+      padding: 8px 12px;
+      border-radius: 8px;
+      border: 1px solid $shadow-color;
+      text-decoration: none;
+      cursor: pointer;
+      color: $font-color;
+
+      @include hover(box-shadow, 0px 2px 7px 0px $button-shadow-color);
+    }
+  }
+}

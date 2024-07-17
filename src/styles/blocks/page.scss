@@ -1,0 +1,112 @@
+.page {
+  padding-top: $top-bar-height;
+  scroll-behavior: smooth;
+  background: $background-color;
+
+  @include on-desktop {
+    padding-top: $top-bar-height-desktop;
+  }
+
+  &__body {
+    font-family: Mont, sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 21px;
+    margin: 0;
+  }
+
+  &__app {
+    min-height: calc(100vh - $top-bar-height - $footer-height);
+
+    @include on-tablet {
+      min-height: calc(100vh - $top-bar-height - $footer-height-desktop);
+    }
+
+    @include on-desktop {
+      min-height: calc(100vh - $top-bar-height-desktop - $footer-height-desktop);
+    }
+  }
+
+  &__main-title {
+    display: none;
+  }
+
+  &__container {
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 1200px;
+    padding-inline: 16px;
+    margin: auto;
+
+    @include on-tablet {
+      padding-inline: 24px;
+    }
+
+    @include on-desktop {
+      padding-inline: 32px;
+    }
+  }
+
+  &__category {
+    margin-bottom: 64px;
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__aside {
+    padding-top: 48px;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 100vh;
+
+    transform: translateX(-100%);
+    transition: transform 0.3s;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+    background: #fff;
+
+    &--open {
+      transform: translateX(0);
+    }
+  }
+
+  &__main {
+
+    @include on-desktop {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+  }
+
+  &__section {
+    box-sizing: border-box;
+    margin-bottom: 56px;
+    overflow: hidden;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+  }
+
+  &__title {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+    text-align: left;
+  }
+}

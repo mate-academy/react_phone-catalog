@@ -1,0 +1,90 @@
+.footer {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 32px 16px;
+  background: #fff;
+  box-shadow: 0px -1px 0px 0px $shadow-color;
+
+  &__container {
+    width: 100%;
+    max-width: 1136px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logo-link {
+    display: flex;
+    width: min-content;
+  }
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__contacts {
+    display: flex;
+    flex-direction: column;
+    row-gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      column-gap: 13.5px;
+      align-items: center;
+    }
+
+    @include on-desktop {
+      column-gap: 107px;
+    }
+  }
+
+  &__link {
+    width: min-content;
+    font-size: 12px;
+    font-weight: 800;
+    line-height: 11px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: $font-color-grey;
+    cursor: pointer;
+
+    @include hover(color, $font-color);
+  }
+
+  &__back-to-top {
+    display: flex;
+    justify-content: center;
+    cursor: pointer;
+
+    &--hidden {
+      opacity: 0;
+      cursor: auto;
+    }
+  }
+
+  &__top-link {
+    display: flex;
+    flex-direction: row;
+    column-gap: 16px;
+    align-items: center;
+    text-decoration: none;
+  }
+
+  &__top-text {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15.34px;
+    color: $font-color-grey;
+
+    @include hover(color, $font-color);
+  }
+}

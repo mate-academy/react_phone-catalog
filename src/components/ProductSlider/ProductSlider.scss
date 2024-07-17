@@ -1,0 +1,24 @@
+.slider-section {
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+  }
+
+  &__buttons {
+    width: 80px;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__container {
+    display: grid;
+    grid-auto-flow: column;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: 16px;
+    width: min-content;
+    transition: transform 300ms ease,
+  }
+}
