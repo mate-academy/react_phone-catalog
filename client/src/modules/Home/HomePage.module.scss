@@ -1,0 +1,324 @@
+.home {
+  // some of the sizes are assigned depending on the viewport size to improve the overall look on all devices
+  @include on-tablet {
+    margin-top: calc(48px + 32px);
+  }
+
+  @include on-desktop {
+    margin-top: calc(64px + 56px);
+  }
+
+  &__title {
+    margin-top: 0;
+
+    @include textType(32px, 41px);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      @include textType(48px, 56px);
+
+      max-width: 80vw; // to make it position like on the design without having to use the grid
+    }
+  }
+}
+
+.banner {
+  margin-top: 24px;
+
+  position: relative;
+
+  @include flexCenter;
+  justify-content: space-between;
+
+  @include on-tablet {
+    margin-top: 32px;
+
+    height: 30vw;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+
+    margin-top: 56px;
+  }
+
+  &__img {
+    position: relative;
+    @include cancel-padding;
+
+
+    width: 100vw;
+    height: 100vw;
+
+    animation: bannerSlideOut .5s ease-in-out forwards;
+
+    @include on-tablet {
+      margin: 0;
+
+      height: inherit;
+      width: 77vw;
+    }
+
+    &--1, &--2, &--3 {
+      position: absolute;
+      z-index: -1;
+
+      background-size: contain;
+      background-repeat: no-repeat;
+
+      width: 100%;
+      height: 100%;
+
+      background-position: 50%;
+      visibility: hidden;
+    }
+
+    &--1 {
+      background-image: url(../../../public/img/banner--mobile.png);
+
+      @include on-tablet {
+        background-image: url(../../../public/img/banner-phones.png);
+      }
+    }
+
+    &--2, &--3 {
+      background-size: cover;
+    }
+
+    &--2 {
+      background-image: url(../../../public/img/banner-tablets.png);
+    }
+
+    &--3 {
+      background-image: url(../../../public/img/banner-accessories.png);
+    }
+  }
+
+  &__indexes {
+    --position: 20px;
+
+    position: absolute;
+    bottom: -18px;
+    left: calc(50% - var(--position)); // to position them all in the center (approximate)
+
+    display: flex;
+    gap: 9px;
+
+    @include on-tablet {
+      --position: 40px;
+    }
+  }
+
+  &__index {
+    width: 14px;
+    height: 4px;
+
+    background-color: $element-color;
+    border: none;
+  }
+
+  &__button {
+    @include on-mobile {
+      display: none;
+    }
+
+    @include flexCenter;
+
+    width: 32px;
+    height: inherit; // 189px
+
+    border: 1px solid $icon-color;
+    background-color: transparent;
+
+    transition: all .3s ease-in-out;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $primary-color;
+    }
+
+    &::after {
+      content: "";
+
+      width: 16px;
+      height: 16px;
+    }
+
+    &--left {
+      &::after {
+        background-image: url(../../icons/arrows/arrow-left-normal.svg);
+      }
+    }
+
+    &--right {
+      &::after {
+        background-image: url(../../icons/arrows/arrow-right-normal.svg);
+      }
+    }
+  }
+}
+
+.displayed-index {
+  background-color: $primary-color;
+}
+
+/* categories */
+
+.categories {
+  margin-top: 56px;
+
+  &__title {
+    @include textType(22px, 30.8px);
+    letter-spacing: -0.01em;
+
+    @include on-tablet {
+      @include textType(32px, 41px);
+    }
+  }
+
+  &__categories {
+    @include on-tablet {
+      @include page-grid;
+    }
+  }
+
+  &__category {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__img-link {
+    grid-column: span 4;
+
+    @include on-desktop {
+      grid-column: span 8;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: calc(100vw - 32px);
+
+    @include on-tablet {
+      height: 30vw;
+    }
+
+    @include on-desktop {
+      max-height: 368px;
+    }
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    cursor: pointer;
+    transition: all .3s ease-in-out;
+
+    &:hover {
+      border-radius: 5%;
+      transform: scale(0.95);
+    }
+
+    &--phones {
+      background-image: url(../../../public/img/categories--phones.png);
+    }
+
+    &--tablets {
+      background-image: url(../../../public/img/categories--tablets.png);
+    }
+
+    &--accessories {
+      background-image: url(../../../public/img/categories--accessories.png);
+    }
+  }
+
+  &__name {
+    margin-bottom: 0;
+
+    @include textTypeFull(20px, 25.56px, 'Mont-semi-bold', $primary-color);
+  }
+
+  &__model-count {
+    margin-top: 4px;
+
+    @include textTypeFull(14px, 21px, 'Mont-regular', $secondary-color);
+  }
+
+
+}
+
+// banner image animations
+.slide-in-right {
+  animation: bannerSlideInRight .5s ease-in-out forwards;
+}
+
+.slide-in-left {
+  animation: bannerSlideInLeft .5s ease-in-out forwards;
+}
+
+.slide-out-right {
+  animation: bannerSlideOutRight .5s ease-in-out forwards;
+}
+
+.slide-out-left {
+  animation: bannerSlideOutLeft .5s ease-in-out forwards;
+}
+
+@keyframes bannerSlideInRight {
+  from {
+    transform: translateX(35%);
+    opacity: .7;
+    visibility: hidden;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes bannerSlideInLeft {
+  from {
+    transform: translateX(-35%);
+    opacity: .7;
+    visibility: hidden;
+  }
+
+  to {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+@keyframes bannerSlideOutRight {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    transform: translateX(35%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes bannerSlideOutLeft {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  to {
+    transform: translateX(-35%);
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
