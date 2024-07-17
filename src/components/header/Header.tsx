@@ -3,6 +3,7 @@ import cn from 'classnames';
 import Styles from './Header.module.scss';
 import { ContextApp } from '../../appContext/AppContext';
 import { Link } from 'react-router-dom';
+import { ThemeSwitcher } from '../themeSwitcher';
 
 export const Header: React.FC = () => {
   const { app, fav, cart, isPhone, isTablet, handleClearParams } =
@@ -93,6 +94,9 @@ export const Header: React.FC = () => {
 
       {isTablet && (
         <div className={Styles.header__links}>
+          <div className={Styles.header__links__theme}>
+          <ThemeSwitcher />
+          </div>
           <div className={Styles.header__links__fav}>
             <Link
               className={Styles.header__links__fav__link}
@@ -232,6 +236,10 @@ export const Header: React.FC = () => {
                     />
                   )}
                 </Link>
+              </div>
+
+              <div className={Styles.header__burger_menu__footer__theme}>
+                <ThemeSwitcher />
               </div>
 
               <div className={Styles.header__burger_menu__footer__cart}>

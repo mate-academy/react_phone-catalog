@@ -2,7 +2,7 @@ import { useContext, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
 import Styles from './Details.module.scss';
 import { Item } from '../../types/Item';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import React from 'react';
 import { SkeletonDetails } from '../../skeletons/SkeletonDetails/SkeletonDetails';
 import { ItemSlider } from '../itemSlider';
@@ -32,24 +32,16 @@ type ColorNames = {
 export const Details: React.FC<Props> = ({ list }) => {
   const { idItem } = useParams();
   const navigate = useNavigate();
-  const location = useLocation();
   const product = list.find(item => item.id === idItem);
   const [capacity, setCapacity] = useState(
     idItem?.split('-').slice(-2, -1).join(' ').toUpperCase(),
   );
   const [active, setActive] = useState(0);
-  const [selectedColor, setSelectedColor] = useState<string>(
-    `${idItem?.split('-').slice(-1).join('-')}`,
-  );
   const totalPictureNumber = product?.images.length ?? 0;
   const startTouch = useRef<number>(0);
   const endTouch = useRef<number>(0);
 
   const { fav, cart, handleAddCart, handleAddFav } = useContext(ContextApp);
-
-  useEffect(() => {
-    setSelectedColor(`${idItem?.split('-').slice(-1).join('-')}`);
-  }, [location.pathname]);
 
   const colorNames: ColorNames = {
     'space gray': '#CCCCCC',
@@ -83,13 +75,10 @@ export const Details: React.FC<Props> = ({ list }) => {
   };
 
   const handleChangeColor = (color: string) => {
-    setSelectedColor(color);
 
-    console.log('color', color)
+    console.log('color', color);
 
     const formattedColor = color === 'space gray' ? ['space', 'gray'] : color;
-    // const formattedColor = color.split(' ');
-
 
     let parts = idItem?.split('-');
 
@@ -123,17 +112,6 @@ export const Details: React.FC<Props> = ({ list }) => {
 
     navigate(newUrl);
   };
-
-  useEffect(() => {
-    const newId = idItem
-      ?.split('-')
-      .slice(0, -1)
-      .concat(selectedColor)
-      .join('-');
-    if (product) {
-      navigate(`/${product.category}/${newId}`);
-    }
-  }, [selectedColor]);
 
   return (
     <>

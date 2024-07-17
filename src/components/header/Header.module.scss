@@ -43,7 +43,7 @@
       height: 64px;
     }
 
-    &__fav {
+    &__theme {
       width: 48px;
       height: 48px;
       border: 1px solid var(--border-color);
@@ -52,7 +52,20 @@
       align-items: center;
       justify-content: center;
 
+      @include for-tablet {
+        width: 64px;
+        height: 64px;
+      }
+    }
 
+    &__fav {
+      width: 48px;
+      height: 48px;
+      border: 1px solid var(--border-color);
+      border-right: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
 
       &__link {
         position: relative;
@@ -156,7 +169,6 @@
         font-weight: 800;
         color: var(--header-element);
       }
-
     }
 
     &__footer {
@@ -165,7 +177,7 @@
       width: 100%;
 
       &__fav {
-        width: 50%;
+        width: 40%;
         height: 64px;
         border: 1px solid var(--border-color);
         display: flex;
@@ -193,9 +205,20 @@
         }
       }
 
+      &__theme {
+        position: relative;
+        width: 20%;
+        height: 64px;
+        border-top: 1px solid var(--border-color);
+        border-bottom: 1px solid var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
       &__cart {
         position: relative;
-        width: 50%;
+        width: 40%;
         height: 64px;
         border: 1px solid var(--border-color);
         display: flex;

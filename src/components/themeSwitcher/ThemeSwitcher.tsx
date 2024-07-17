@@ -34,7 +34,7 @@ export const ThemeSwitcher: React.FC = () => {
 
   return (
     <div className={Styles.theme_switch__wrapper}>
-      <p className={Styles.theme_switch__paragraph}>Theme style</p>
+      {/* <p className={Styles.theme_switch__paragraph}>Theme style</p> */}
 
       <label className={Styles.theme_switch} htmlFor="checkbox">
         <input type="checkbox" id="checkbox" />
