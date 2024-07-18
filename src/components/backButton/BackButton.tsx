@@ -5,15 +5,16 @@ import { useNavigate } from 'react-router-dom';
 export const BackButton: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleclickBack = () => {
+  const handleClickBack = () => {
     navigate(-1);
   };
 
   return (
-    <div className={Styles.back}>
-      <div onClick={handleclickBack} className={Styles.back__button}>
-        <div className={Styles.back__button__arrow} /> <p>Back</p>
+    <div onClick={handleClickBack} className={Styles.back}>
+      <div className={Styles.back__button}>
+        <div className={Styles.back__button__arrow} />
       </div>
+      <p className={Styles.back__paragraph} onClick={handleClickBack}>Back</p>
     </div>
   );
 };

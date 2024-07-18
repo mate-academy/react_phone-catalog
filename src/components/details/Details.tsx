@@ -30,6 +30,7 @@ type ColorNames = {
 };
 
 export const Details: React.FC<Props> = ({ list }) => {
+  const [selectedColor, setSelectedColor] = useState('');
   const { idItem } = useParams();
   const navigate = useNavigate();
   const product = list.find(item => item.id === idItem);
@@ -75,6 +76,7 @@ export const Details: React.FC<Props> = ({ list }) => {
   };
 
   const handleChangeColor = (color: string) => {
+    setSelectedColor(color);
 
     const formattedColor = color === 'space gray' ? ['space', 'gray'] : color;
 
@@ -95,9 +97,15 @@ export const Details: React.FC<Props> = ({ list }) => {
     setCapacity(cap);
 
     const newId = idItem?.split('-');
-    if (newId) {
+
+    if (newId && selectedColor !== 'space gray') {
       newId[newId.length - 2] = cap.toLowerCase();
     }
+
+    if (newId && selectedColor === 'space gray') {
+      newId[newId.length - 3] = cap.toLowerCase();
+    }
+
     const newString = newId?.join('-');
     const newUrl = `/${product?.category}/${newString}`;
 

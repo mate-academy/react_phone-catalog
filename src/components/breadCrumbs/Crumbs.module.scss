@@ -19,6 +19,10 @@
   &__item {
     height: 16px;
     width: 16px;
+
+    &:hover {
+      scale: 120%;
+    }
   }
 
   &__paragraph {
@@ -29,10 +33,14 @@
     text-align: left;
     width: fit-content;
     overflow: hidden;
+
+    &:hover {
+      scale: 120%;
+    }
   }
 
   &__details {
-    color: var(--secondary-color);
+    color: var(--primary-color);
     font-size: 12px;
     font-weight: 600;
     line-height: 16px;

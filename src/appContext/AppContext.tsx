@@ -60,6 +60,7 @@ type AppContextProps = {
   handleClearParams: () => void;
   loadingErr: boolean;
   setLoadingErr: React.Dispatch<React.SetStateAction<boolean>>;
+
 };
 
 type Props = {
@@ -108,6 +109,15 @@ export const AppContext: React.FC<Props> = ({ children }) => {
 
     return fav ? JSON.parse(fav) : [];
   });
+
+  const handleClose = (id: string) => {
+    setCart(prev => {
+      const newCart = prev.filter(item => item.id !== id);
+
+      localStorage.setItem('cart', JSON.stringify(newCart));
+      return newCart;
+    });
+  };
 
   const handleClearParams = () => {
     setSearchParams(new URLSearchParams());
@@ -174,7 +184,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
     }
   };
 
-  const handleAddCart = (newItem: Item): ItemWithQuantity | null => {
+  const handleAddCart = (newItem: Item): ItemWithQuantity | void => {
     const itemExists = cart.find(item => item.id === newItem.id);
 
     if (!itemExists) {
@@ -185,8 +195,10 @@ export const AppContext: React.FC<Props> = ({ children }) => {
         return updated;
       });
       return newItemWithQuantity;
-    } else {
-      return null;
+    }
+
+    if (itemExists) {
+      return handleClose(itemExists.id)
     }
   };
 
@@ -300,6 +312,7 @@ export const AppContext: React.FC<Props> = ({ children }) => {
 
     setSearchParams(new URLSearchParams(searchParams));
   }, [itemsPerPage, activePage, selectedOption, location.pathname]);
+
 
   return (
     <ContextApp.Provider

@@ -18,8 +18,8 @@ export const ItemSlider: React.FC<Props> = ({
   list,
 }) => {
   const [active, setActive] = useState(0);
-  const [copyProducts, setCopyProducts] = useState<Item[]>([...list]);
-  const [productsTotalNumber, setProductsTotalNumber] = useState(list.length);
+  const [copyProducts, setCopyProducts] = useState<Item[]>([]);
+  const [productsTotalNumber, setProductsTotalNumber] = useState(0);
   const startTouch = useRef<number | null>(0);
   const endTouch = useRef<number | null>(0);
 
@@ -49,17 +49,18 @@ export const ItemSlider: React.FC<Props> = ({
     }
   };
 
-  const getSuggestedProducts = () => {
-    const minNumber = Math.floor(Math.random() * 115);
-    const maxNumber = getNumber(minNumber, 125);
+  const getSuggestedProducts = (number: number) => {
+    const minNumber = Math.max(1, Math.floor(Math.random() * number));
+    const maxNumber = Math.max(4, getNumber(minNumber, number));
     const newProducts = list.slice(minNumber, maxNumber);
+
     setCopyProducts(newProducts);
     setProductsTotalNumber(newProducts.length);
   };
 
   useEffect(() => {
     if (showRandom) {
-      getSuggestedProducts();
+      getSuggestedProducts(list.length);
     } else {
       setCopyProducts([...list]);
       setProductsTotalNumber(list.length);

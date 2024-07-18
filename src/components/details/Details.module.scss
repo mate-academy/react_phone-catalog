@@ -2,6 +2,7 @@
 
 .card {
   font-family: Montserrat, sans-serif;
+  max-width: 1200px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -91,6 +92,7 @@
         border: 1px solid #C4C4C4;
         object-position: center;
         object-fit: contain;
+        cursor: pointer;
 
         &:hover {
           scale: 115%;
@@ -125,6 +127,7 @@
         padding: 2px;
         margin-right: 8px;
         margin-bottom: 24px;
+        cursor: pointer;
       }
     }
 
@@ -190,6 +193,7 @@
         height: 32px;
         width: 64px;
         border-radius: 14px;
+        cursor: pointer;
 
         &__active {
           color: #FFF;
@@ -259,6 +263,7 @@
       font-size: 14px;
       font-weight: 700;
       border-radius: 14px;
+      cursor: pointer;
 
       &:hover {
         box-shadow:
@@ -292,6 +297,7 @@
       height: 48px;
       border: 1px solid var(--icons);
       border-radius: 50%;
+      cursor: pointer;
 
       &:hover {
         box-shadow:
