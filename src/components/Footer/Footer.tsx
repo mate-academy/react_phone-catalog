@@ -17,20 +17,23 @@ export const Footer: React.FC = () => {
       </Link>
       <div className="footer__navbar">
         <Link
-          to="https://github.com/YuliiaCat/react_phone-catalog"
+          to="https://github.com/YuliiaCat"
           className="footer__navbar--link"
+          target="_blank"
         >
           Github
         </Link>
         <Link
-          to="https://github.com/YuliiaCat/react_phone-catalog"
+          to="https://github.com/YuliiaCat"
           className="footer__navbar--link"
+          target="_blank"
         >
           Contacts
         </Link>
         <Link
-          to="https://github.com/YuliiaCat/react_phone-catalog"
+          to="https://github.com/YuliiaCat"
           className="footer__navbar--link"
+          target="_blank"
         >
           Rights
         </Link>

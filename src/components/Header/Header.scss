@@ -56,6 +56,13 @@
       font-weight: 800;
       line-height: 0.92;
       letter-spacing: 0.04em;
+      padding: 18.5px 0;
+
+      @include hover(text-shadow, 0 0 10px $loader-color, color, $main-white-color);
+
+      @include on-desktop-small{
+        padding: 26.5px 0;
+      }
     }
   }
 

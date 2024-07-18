@@ -109,11 +109,7 @@ img {
     width: 100%;
     height: 2px;
     background-color: $main-white-color;
-    bottom: -18px;
-
-    @include on-desktop-small {
-      bottom: -27px;
-    }
+    bottom: -1px;
   }
 }
 

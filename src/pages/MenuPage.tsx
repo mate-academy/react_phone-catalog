@@ -2,8 +2,11 @@ import { Link, NavLink } from 'react-router-dom';
 import '../styles/menu.scss';
 import { getIconMenuClass, getLinkMenuClass } from '../utils/heplerFunctions';
 import { useAppSelector } from '../app/hooks';
+import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 
 export const MenuPage = () => {
+  const [isVisible, setIsVisible] = useState(false);
   const favProductIds = useAppSelector(state => state.favorites.products);
   const cartProductIds = useAppSelector(state => state.cart.products);
   const totalCount = cartProductIds.reduce(
@@ -11,8 +14,16 @@ export const MenuPage = () => {
     0,
   );
 
+  useEffect(() => {
+    setIsVisible(true);
+  }, []);
+
   return (
-    <div className="menu">
+    <div
+      className={classNames('menu', {
+        'menu--visible': isVisible,
+      })}
+    >
       <div className="menu__topbar">
         <Link to="/" className="menu__topbar--logo">
           <img src="img/Logo.svg" alt="Logo" />

@@ -11,8 +11,7 @@ import classNames from 'classnames';
 import { SuggestedProducts } from '../../components/SliderProducts/SuggestedProducts';
 import { COLOR_MAP } from '../../services/colors';
 import { normalizeColor } from '../../utils/heplerFunctions';
-import { useDispatch } from 'react-redux';
-import { useAppSelector } from '../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
 import { addFav, removeFav } from '../../features/favorites';
 import { addCart } from '../../features/cart';
 import { NotFoundProduct } from '../NotFoundProduct';
@@ -25,7 +24,7 @@ export const ProductDetailsPage: React.FC = () => {
   const [selectedColor, setSelectedColor] = useState<string>('');
   const [selectedCapacity, setSelectedCapacity] = useState<string>('');
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const favProductIds = useAppSelector(state => state.favorites.products);
   const isAdded = favProductIds.includes(productId || '');
   const cartProductIds = useAppSelector(state => state.cart.products);
@@ -49,6 +48,8 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   useEffect(() => {
+    window.scrollTo(0, 0);
+
     async function fetchData() {
       setLoading(true);
       try {

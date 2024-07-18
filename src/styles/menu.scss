@@ -6,6 +6,16 @@
   justify-content: space-between;
   height: 100vh;
   overflow: hidden;
+  opacity: 0;
+  transform: translateX(-100%);
+  transition: opacity 0.3s ease-in, transform 0.3s ease-in;
+  pointer-events: none;
+
+  &.menu--visible {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: all;
+  }
 
   &__topbar {
     @include page-grid;
