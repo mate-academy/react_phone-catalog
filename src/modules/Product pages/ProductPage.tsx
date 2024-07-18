@@ -5,6 +5,7 @@ import { ProductType } from '../../types/ProductType';
 import { PhoneCard } from '../Home page/components/PhoneCard/PhoneCard';
 import { Pagination } from './components/Pagination/Pagination';
 import { Filter } from './components/Filter/Filter';
+import { useAppSelector } from '../../app/hooks';
 
 export const ProductPage: React.FC = () => {
   const [products, setProducts] = useState<ProductType[]>([]);
@@ -23,6 +24,7 @@ export const ProductPage: React.FC = () => {
   const [currentPage, setCurrentPage] = useState<number>(
     +(searchParams.get('page') || '1'),
   );
+  const { theme } = useAppSelector(state => state.theme);
   const dropdownSortRef = useRef<HTMLDivElement>(null);
   const dropdownPerRef = useRef<HTMLDivElement>(null);
 
@@ -107,7 +109,10 @@ export const ProductPage: React.FC = () => {
     <section className="product container">
       <div className="product__history">
         <Link to="/" className="product__link">
-          <img src="img/links/home.svg" alt="home" />
+          <img
+            src={`img/links/home${theme === 'dark' ? ' dark' : ''}.svg`}
+            alt="home"
+          />
         </Link>
         <img src="img/links/chevron (arrow right).svg" alt="chevron_right" />
         <Link to={`/product/${productType}`} className="product__link">

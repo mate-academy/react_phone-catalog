@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './Footer.scss';
+import { useAppSelector } from '../../app/hooks';
 
 export const Footer: React.FC = () => {
+  const { theme } = useAppSelector(state => state.theme);
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -14,7 +17,10 @@ export const Footer: React.FC = () => {
     <footer className="footer">
       <div className="footer__container ">
         <Link to="/" className="icon icon--footer-logo container">
-          <img src="nav/logo.svg" alt="logo" />
+          <img
+            src={`nav/logo${theme === 'dark' ? '-dark' : ''}.svg`}
+            alt="logo"
+          />
         </Link>
 
         <ul className="footer__ul container">
@@ -41,7 +47,10 @@ export const Footer: React.FC = () => {
         <div className="footer__top container">
           <span className="footer__text">Back to top</span>
           <div className="icon icon--chevron" onClick={scrollToTop}>
-            <img src="nav/chevron (arrow top).svg" alt="chevron (arrow top)" />
+            <img
+              src={`nav/chevron (arrow top)${theme === 'dark' ? ' dark' : ''}.svg`}
+              alt="chevron (arrow top)"
+            />
           </div>
         </div>
       </div>

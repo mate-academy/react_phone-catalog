@@ -2,16 +2,18 @@ import React from 'react';
 import './Navigation.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { useAppSelector } from '../../app/hooks';
+import { ThemeSwitch } from './components/ThemeSwitch/ThemeSwitch';
 
 export const Navigation: React.FC = () => {
   const { cart, favorites } = useAppSelector(state => state.user);
+  const { theme } = useAppSelector(state => state.theme);
 
   return (
     <nav className="nav">
       <div className="nav__content nav__box">
         <div className="nav__left">
           <Link to="/" className="icon icon--logo">
-            <img src="nav/logo.svg" alt="logo" />
+            <img src={`nav/logo${theme === 'dark' ? '-dark' : ''}.svg`} alt="logo" />
           </Link>
 
           <ul className="nav__ul">
@@ -59,6 +61,9 @@ export const Navigation: React.FC = () => {
         </div>
 
         <div className="nav__right">
+          <div className={'icon icon--block icon--favourites'}>
+            <ThemeSwitch />
+          </div>
           <NavLink
             to="/favorites"
             className={({ isActive }) =>
@@ -67,7 +72,10 @@ export const Navigation: React.FC = () => {
                 : 'icon icon--block icon--favourites'
             }
           >
-            <img src="nav/favourites.svg" alt="favourites" />
+            <img
+              src={`nav/favourites${theme === 'dark' ? '-dark' : ''}.svg`}
+              alt="favourites"
+            />
             {favorites.length > 0 && (
               <div className="nav__counter">{favorites.length}</div>
             )}
@@ -80,13 +88,13 @@ export const Navigation: React.FC = () => {
                 : 'icon icon--block icon--cart'
             }
           >
-            <img src="nav/cart.svg" alt="cart" />
+            <img src={`nav/cart${theme === 'dark' ? '-dark' : ''}.svg`} alt="cart" />
             {cart.length > 0 && (
               <div className="nav__counter">{cart.length}</div>
             )}
           </NavLink>
           <Link to="/menu" className="icon icon--block icon--menu">
-            <img src="nav/menu.svg" alt="menu" />
+            <img src={`nav/menu${theme === 'dark' ? ' dark' : ''}.svg`} alt="cart" />
           </Link>
         </div>
       </div>

@@ -10,17 +10,17 @@
 
   &__link {
     @include small-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &__title {
     @include h1;
-    color: $primary;
+    color: var(--primary);
     margin-bottom: 32px;
   }
 
   &__total {
-    border: 1px solid $elements;
+    border: 1px solid var(--elements);
     padding: 24px;
     display: flex;
     flex-direction: column;
@@ -35,28 +35,28 @@
 
     &--total {
       @include h2;
-      color: $primary;
+      color: var(--primary);
       padding-bottom: 4px
     }
 
     &--text {
       @include body-text;
-      color: $secondary;
+      color: var(--secondary);
     }
   }
 
   &__line {
     width: 100%;
     height: 1px;
-    background-color: $elements;
+    background-color: var(--elements);
     margin-block: 16px;
   }
 
   &__checkout {
     width: 100%;
     padding: 13px 85px;
-    background-color: $primary;
-    color: $white;
+    background-color: var(--accent);
+    color: var(--white);
     @include buttons;
   }
 
@@ -69,10 +69,11 @@
 }
 
 .item {
-  border: 1px solid $elements;
+  border: 1px solid var(--elements);
   padding: 16px;
   display: flex;
   flex-direction: column;
+  background-color: var(--surface1);
 
   @include on-tablet {
     flex-direction: row;
@@ -109,7 +110,7 @@
 
     &--name {
       @include body-text;
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -129,22 +130,25 @@
 
       &-number {
         padding-top: 7px;
+        color: var(--primary);
       }
 
       &-button {
         width: 32px;
         height: 32px;
-        border: 1px solid $icons;
+        font-size: 24px;
+        color: var(--primary);
+        border: 1px solid var(--icons);
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $white;
+        background-color: var(--surface1);
       }
     }
 
     &--price {
       @include h3;
-      color: $primary;
+      color: var(--primary);
     }
   }
 }

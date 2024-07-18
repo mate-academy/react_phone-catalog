@@ -3,6 +3,7 @@ import { PhoneCard } from '../PhoneCard/PhoneCard';
 import './HotPrices.scss';
 import classNames from 'classnames';
 import { ProductType } from '../../../../types/ProductType';
+import { useAppSelector } from '../../../../app/hooks';
 
 const shuffleArray = (array: ProductType[]) => {
   return array.sort(() => Math.random() - 0.5);
@@ -16,6 +17,7 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
   const [imageIndex, setImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [shuffledProducts, setShuffledProducts] = useState<ProductType[]>([]);
+  const { theme } = useAppSelector(state => state.theme);
 
   const updateTranslateX = (index: number) => {
     if (screenWidth < 639) {
@@ -103,13 +105,13 @@ export const HotPrices: React.FC<Props> = ({ title }) => {
             onClick={showPrevImage}
           >
             <img
-              src="img/slider/svg/chevron (arrow left).svg"
+              src={`img/slider/svg/chevron (arrow left)${theme === 'dark' ? ' dark' : ''}.svg`}
               alt="left"
             />
           </div>
           <div className="phone__slide--right" onClick={showNextImage}>
             <img
-              src="img/slider/svg/chevron (arrow right).svg"
+              src={`img/slider/svg/chevron (arrow right)${theme === 'dark' ? ' dark' : ''}.svg`}
               alt="right"
             />
           </div>

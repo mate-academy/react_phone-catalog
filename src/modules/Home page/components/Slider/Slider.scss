@@ -11,8 +11,8 @@
 
     @include on-tablet {
       display: block;
-      border: 1px solid $icons;
-      background-color: white;
+      border: 1px solid var(--icons);
+      background-color: var(--surface2);
       width: 32px;
     }
   }
@@ -78,5 +78,5 @@
 
 .img-slider-dot-btn {
   border: none;
-  background-color: white;
+  background-color: var(--bg);
 }

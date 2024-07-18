@@ -6,7 +6,7 @@
     justify-content: center;
     align-items: center;
     @include small-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &__history {
@@ -22,13 +22,13 @@
 
   &__title {
     @include h1;
-    color: $primary;
+    color: var(--primary);
     padding-bottom: 8px;
   }
 
   &__description {
     @include body-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &__filter {
@@ -42,7 +42,7 @@
 
     &--text {
       @include small-text;
-      color: $secondary;
+      color: var(--secondary);
       padding-bottom: 4px;
     }
 
@@ -67,8 +67,8 @@
 
   &__dropdown-button {
     width: 100%;
-    background-color: $white;
-    border: 1px solid $icons;
+    background-color: var(--surface2);
+    border: 1px solid var(--icons);
     padding: 10px 12px 9px 12px;
     @include buttons;
     display: flex;
@@ -76,19 +76,23 @@
     margin-top: 4px;
 
     &:hover {
-      border: 1px solid $primary;
+      border: 1px solid var(--primary);
     }
 
     &:focus {
-      border: 1px solid $primary;
+      border: 1px solid var(--primary);
+    }
+
+    span {
+      color: var(--primary);
     }
   }
 
   &__dropdown-menu {
     position: absolute;
     top: 68px;
-    background-color: $white;
-    border: 1px solid $icons;
+    background-color: var(--surface2);
+    border: 1px solid var(--icons);
     width: 100%;
   }
 
@@ -100,13 +104,13 @@
 
   &__dropdown-item {
     @include body-text;
-    color: $secondary;
+    color: var(--secondary);
     padding: 6px 12px;
     cursor: pointer;
     width: 100%;
 
     &:hover {
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -131,5 +135,5 @@
 }
 
 .is-active {
-  color: $primary;
+  color: var(--primary);
 }

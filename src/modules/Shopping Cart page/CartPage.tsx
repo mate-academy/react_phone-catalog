@@ -97,7 +97,7 @@ export const CartPage: React.FC = () => {
                         className="item__amount--count-button"
                         onClick={() => handleMinusQuantity(product)}
                       >
-                        <img src="img/cart/minus.svg" alt="minus" />
+                        -
                       </button>
                       <span className="item__amount--count-number">
                         {product.quantity}
@@ -106,7 +106,7 @@ export const CartPage: React.FC = () => {
                         className="item__amount--count-button"
                         onClick={() => handlePlusQuantity(product)}
                       >
-                        <img src="img/cart/plus.svg" alt="plus" />
+                        +
                       </button>
                     </div>
                     <span className="item__amount--price">

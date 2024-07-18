@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import './Slider.scss';
+import { useAppSelector } from '../../../../app/hooks';
 
 const imagesMobile = [
   { url: 'img/slider/mobile/iphone.png', alt: 'iphone slide' },
@@ -22,6 +23,7 @@ const imagesDesktop = [
 export const Slider: React.FC = () => {
   const [imageIndex, setImageIndex] = useState(0);
   const [images, setImages] = useState(imagesMobile);
+  const { theme } = useAppSelector(state => state.theme);
 
   useEffect(() => {
     const mediaQueryTablet = window.matchMedia(
@@ -83,7 +85,10 @@ export const Slider: React.FC = () => {
   return (
     <section className="slider">
       <button className="slider__button--left" onClick={showPrevImage}>
-        <img src="img/slider/svg/chevron (arrow left).svg" alt="chevron_left" />
+        <img
+          src={`img/slider/svg/chevron (arrow left)${theme === 'dark' ? ' dark' : ''}.svg`}
+          alt="chevron_left"
+        />
       </button>
       <div className="slider__container">
         {images.map(({ url, alt }, index) => (
@@ -131,7 +136,7 @@ export const Slider: React.FC = () => {
       </div>
       <button className="slider__button--right" onClick={showNextImage}>
         <img
-          src="img/slider/svg/chevron (arrow right).svg"
+          src={`img/slider/svg/chevron (arrow right)${theme === 'dark' ? ' dark' : ''}.svg`}
           alt="chevron_right"
         />
       </button>

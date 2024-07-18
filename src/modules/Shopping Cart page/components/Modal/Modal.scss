@@ -14,7 +14,7 @@
 }
 
 .modal-content {
-  background: white;
+  background: var(--bg);
   padding: 20px;
   border-radius: 8px;
   max-width: 500px;
@@ -40,9 +40,13 @@
     margin-bottom: 20px;
   }
 
+  &__title {
+    color: var(--primary);
+  }
+
   &__text {
     @include body-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &__buttons {
@@ -52,17 +56,17 @@
     margin-top: 30px;
 
     button:nth-child(1) {
-      background: $primary;
-      color: $white;
+      background: var(--surface2);
+      color: var(--primary);
       @include buttons;
       padding: 15px 30px;
       border-radius: 8px;
     }
 
     button:nth-child(2) {
-      border: 1px solid $icons;
-      background: $white;
-      color: $primary;
+      border: 1px solid var(--icons);
+      background: var(--surface2);
+      color: var(--primary);
       @include buttons;
       padding: 15px 30px;
       border-radius: 8px;

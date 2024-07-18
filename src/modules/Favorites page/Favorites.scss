@@ -12,4 +12,9 @@
     margin: 60px auto;
     text-align: center;
   }
+
+  &__title {
+    @include h2;
+    color: var(--primary);
+  }
 }

@@ -20,6 +20,7 @@ export const PhoneCard: React.FC<Props> = ({ product, isHot }) => {
   const [isAddedInCart, setIsAddedInCart] = useState(false);
   const [isFavorited, setIsFavorited] = useState(false);
   const { cart, favorites } = useAppSelector(state => state.user);
+  const { theme } = useAppSelector(state => state.theme);
   const dispatch = useAppDispatch();
 
   const handleAddToCart = async () => {
@@ -115,7 +116,7 @@ export const PhoneCard: React.FC<Props> = ({ product, isHot }) => {
           onClick={handleFavorited}
         >
           <img
-            src={`nav/favourites${isFavorited ? ' red' : ''}.svg`}
+            src={`nav/favourites${isFavorited ? ' red' : ''}${theme === 'dark' ? '-dark' : ''}.svg`}
             alt="favourites"
           />
         </button>

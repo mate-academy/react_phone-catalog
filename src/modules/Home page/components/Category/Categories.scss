@@ -4,7 +4,7 @@
 
   &__title {
     @include h2;
-    color: $primary;
+    color: var(--primary);
     padding-bottom: 24px;
   }
 
@@ -32,12 +32,12 @@
     &-title {
       padding: 24px 0 4px;
       @include h4;
-      color: $primary;
+      color: var(--primary);
     }
 
     &-text {
       @include body-text;
-      color: $secondary;
+      color: var(--secondary);
     }
   }
 
@@ -60,12 +60,12 @@
     &-title {
       padding: 24px 0 4px;
       @include h4;
-      color: $primary;
+      color: var(--primary);
     }
 
     &-text {
       @include body-text;
-      color: $secondary;
+      color: var(--secondary);
     }
   }
 
@@ -88,12 +88,12 @@
     &-title {
       padding: 24px 0 4px;
       @include h4;
-      color: $primary;
+      color: var(--primary);
     }
 
     &-text {
       @include body-text;
-      color: $secondary;
+      color: var(--secondary);
     }
   }
 }

@@ -38,7 +38,7 @@
 
   &__title {
     @include h2;
-    color: $primary;
+    color: var(--primary);
   }
 
   &__slide {
@@ -47,7 +47,7 @@
     gap: 16px;
 
     &--left, &--right {
-      border: 1px solid $icons;
+      border: 1px solid var(--icons);
       cursor: pointer;
       display: flex;
       justify-content: center;

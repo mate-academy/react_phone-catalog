@@ -11,8 +11,19 @@
     height: 16px;
   }
 
+  &--number {
+    background-color: var(--bg);
+    span {
+      color: var(--primary);
+    }
+  }
+
+  &--right, &--left {
+    background-color: var(--surface2);
+  }
+
   &__block {
-    border: 1px solid $icons;
+    border: 1px solid var(--icons);
     width: 32px;
     height: 32px;
     display: flex;
@@ -21,13 +32,16 @@
     cursor: pointer;
 
     &:hover {
-      border: 1px solid $primary;
+      border: 1px solid var(--primary);
     }
   }
 
   &__active {
-    color: white;
-    background-color: $primary;
-    border: 1px solid $primary;
+    background-color: var(--accent);
+    border: 1px solid var(--primary);
+
+    span {
+      color: var(--white);
+    }
   }
 }

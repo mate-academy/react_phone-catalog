@@ -3,7 +3,7 @@
 .footer {
   &__container {
     padding-block: 32px;
-    border-top: 1px solid $elements;
+    border-top: 1px solid var(--elements);
     @include grid;
     row-gap: 32px;
 
@@ -32,11 +32,11 @@
 
   &__link {
     @include uppercase;
-    color: $secondary;
+    color: var(--secondary);
     transition: all 0.3s;
 
     &:hover {
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -50,7 +50,7 @@
 
   &__text {
     @include small-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 }
 
@@ -63,7 +63,8 @@
   &--chevron {
     width: 32px;
     height: 32px;
-    border: 1px solid $elements;
+    border: 1px solid var(--elements);
+    background-color: var(--surface2);
     display: flex;
     justify-content: center;
     align-items: center;

@@ -6,6 +6,7 @@ import { useAppSelector } from '../../app/hooks';
 
 export const Favorites: React.FC = () => {
   const { favorites } = useAppSelector(state => state.user);
+  const { theme } = useAppSelector(state => state.theme);
 
   return (
     <section className="favorites container">
@@ -22,7 +23,10 @@ export const Favorites: React.FC = () => {
         <>
           <div className="product__history">
             <Link to="/" className="product__link">
-              <img src="img/links/home.svg" alt="home" />
+              <img
+                src={`img/links/home${theme === 'dark' ? ' dark' : ''}.svg`}
+                alt="home"
+              />
             </Link>
             <img
               src="img/links/chevron (arrow right).svg"

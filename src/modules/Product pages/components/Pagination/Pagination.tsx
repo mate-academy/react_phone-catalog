@@ -1,5 +1,6 @@
 import React from 'react';
 import './Pagination.scss';
+import { useAppSelector } from '../../../../app/hooks';
 
 interface PaginationProps {
   total: number;
@@ -48,6 +49,7 @@ export const Pagination: React.FC<PaginationProps> = ({
 }) => {
   const amountOfPages: number = Math.ceil(total / perPage);
   const visiblePages: number[] = getVisiblePages(amountOfPages, currentPage);
+  const { theme } = useAppSelector(state => state.theme);
 
   return (
     <div className="pagination">
@@ -57,7 +59,10 @@ export const Pagination: React.FC<PaginationProps> = ({
           currentPage > 1 ? () => onPageChange(currentPage - 1) : undefined
         }
       >
-        <img src="img/slider/svg/chevron (arrow left).svg" alt="chevron" />
+        <img
+          src={`img/slider/svg/chevron (arrow left)${theme === 'dark' ? ' dark' : ''}.svg`}
+          alt="chevron_left"
+        />
       </div>
 
       {visiblePages.map((item, index) =>
@@ -84,7 +89,10 @@ export const Pagination: React.FC<PaginationProps> = ({
             : undefined
         }
       >
-        <img src="img/slider/svg/chevron (arrow right).svg" alt="chevron" />
+        <img
+          src={`img/slider/svg/chevron (arrow right)${theme === 'dark' ? ' dark' : ''}.svg`}
+          alt="chevron_right"
+        />
       </div>
     </div>
   );

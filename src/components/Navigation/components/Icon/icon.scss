@@ -25,7 +25,7 @@
   }
 
   &--block {
-    border-inline: 1px solid $elements;
+    border-inline: 1px solid var(--elements);
     width: $header-height;
     height: $header-height;
     display: flex;
@@ -50,7 +50,7 @@
         top: 45px;
         height: 3px;
         width: 100%;
-        background-color: $primary;
+        background-color: var(--primary);
 
         @include on-desktop {
           top: 60px;
@@ -78,15 +78,15 @@
     width: 50%;
     justify-content: center;
     padding-block: 24px;
-    border-top: 1px solid $elements;
+    border-top: 1px solid var(--elements);
 
     &:hover {
-      border-bottom: 1px solid $primary;
+      border-bottom: 1px solid var(--primary);
     }
   }
 
   &--nav-favourites {
-    border-right: 1px solid $elements;
+    border-right: 1px solid var(--elements);
   }
 
   &--favourites, &--cart {
@@ -96,7 +96,7 @@
       display: flex;
 
       &:hover {
-        border: 1px solid $primary;
+        border: 1px solid var(--primary);
       }
     }
   }
@@ -104,14 +104,14 @@
   &--favourites--button {
     width: 40px;
     height: 40px;
-    background-color: white;
-    border: 1px solid $icons;
+    background-color: var(--surface2);
+    border: 1px solid var(--icons);
     display: flex;
     justify-content: center;
     align-items: center;
 
     &-active {
-      border: 1px solid $primary;
+      border: 1px solid var(--primary);
     }
   }
 }

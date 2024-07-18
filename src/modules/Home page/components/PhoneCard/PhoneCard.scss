@@ -4,7 +4,7 @@
   display: flex !important;
   flex-direction: column;
   justify-content: space-between;
-  border: 1px solid $elements;
+  border: 1px solid var(--elements);
   margin-top: 24px;
   padding: 32px;
 
@@ -31,16 +31,16 @@
   &__title {
     @include body-text;
     padding-top: 16px;
-    color: $primary;
+    color: var(--primary);
   }
 
   &__price {
     @include h3;
     padding-block: 8px;
-    color: $primary;
+    color: var(--primary);
 
     &--hot {
-      color: $secondary;
+      color: var(--secondary);
       font-weight: 400;
       text-decoration: line-through;
       margin-left: 8px;
@@ -49,7 +49,7 @@
 
   &__specs {
     padding-block: 16px;
-    border-top: 1px solid $elements;
+    border-top: 1px solid var(--elements);
     display: flex;
     flex-direction: column;
     gap: 8px;
@@ -61,12 +61,12 @@
 
     &-label {
       @include small-text;
-      color: $secondary;
+      color: var(--secondary);
     }
 
     &-value {
       @include small-text;
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -78,15 +78,15 @@
 
   &__button {
     @include buttons;
-    color: white;
-    background-color: $primary;
+    color: var(--white);
+    background-color: var(--accent);
     padding-inline: 9.5px;
     flex: 1;
 
     &--added {
-      border: 1px solid $elements;
-      background-color: $white;
-      color: $green;
+      border: 1px solid var(--elements);
+      background-color: var(--bg);
+      color: var(--green);
     }
   }
 }

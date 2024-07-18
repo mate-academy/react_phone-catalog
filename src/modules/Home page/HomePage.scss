@@ -6,7 +6,7 @@
 
   &__title {
     @include h1;
-    color: $primary;
+    color: var(--primary);
     padding-block: 24px;
 
     @include on-tablet {

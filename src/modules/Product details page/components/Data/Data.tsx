@@ -32,6 +32,7 @@ export const Data: React.FC<Props> = ({
   const [isFavorited, setIsFavorited] = useState(false);
   const id = Math.floor(Math.random() * (999999 - 100000 + 1)) + 100000;
   const { cart, favorites } = useAppSelector(state => state.user);
+  const { theme } = useAppSelector(state => state.theme);
   const dispatch = useAppDispatch();
 
   const handleAddToCart = async () => {
@@ -81,7 +82,7 @@ export const Data: React.FC<Props> = ({
       favorites.some(item => item.itemId === product?.itemId);
 
     setIsFavorited(favourites);
-  }, [cart, favorites, product?.id]);
+  }, [cart, favorites, product?.id, product?.itemId]);
 
   return (
     <div className="details__data">
@@ -175,7 +176,7 @@ export const Data: React.FC<Props> = ({
               onClick={handleFavorited}
             >
               <img
-                src={`nav/favourites${isFavorited ? ' red' : ''}.svg`}
+                src={`nav/favourites${isFavorited ? ' red' : ''}${theme === 'dark' ? '-dark' : ''}.svg`}
                 alt="favourites"
               />
             </button>

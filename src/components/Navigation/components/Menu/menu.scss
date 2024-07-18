@@ -8,7 +8,7 @@
 }
 
 .menu {
-  background-color: white;
+  background-color: var(--bg);
   overflow: hidden;
 
   ::-webkit-scrollbar {
@@ -29,7 +29,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    box-shadow: 0px 1px 0px $elements;
+    box-shadow: 0px 1px 0px var(--elements);
   }
 
   &__ul {
@@ -43,7 +43,7 @@
   &__link {
     padding-block: 8px;
     @include uppercase;
-    color: $secondary;
+    color: var(--secondary);
     position: relative;
     transition: all 0.3s;
 
@@ -54,12 +54,12 @@
       top: 33px;
       height: 3px;
       width: 0;
-      background-color: $primary;
+      background-color: var(--primary);
       transition: width 0.3s;
     }
 
     &:hover {
-      color: $primary;
+      color: var(--primary);
 
       &::after {
         width: 100%;

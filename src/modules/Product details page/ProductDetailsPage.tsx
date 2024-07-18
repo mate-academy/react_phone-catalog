@@ -7,12 +7,14 @@ import { Grid } from 'react-loader-spinner';
 import { Data } from './components/Data/Data';
 import { Info } from './components/Info/Info';
 import { BASE_URL } from '../../utils/vars';
+import { useAppSelector } from '../../app/hooks';
 
 export const ProductDetailsPage: React.FC = () => {
   const { productType } = useParams<{ productType: string }>();
   const { productId } = useParams<{ productId: string }>();
   const [product, setProduct] = useState<PhoneType | undefined>(undefined);
   const [activeImage, setActiveImage] = useState(0);
+  const { theme } = useAppSelector(state => state.theme);
   const [choosedColor, setChoosedColor] = useState<string | undefined>('');
   const [choosedCapacity, setChoosedCapacity] = useState<string | undefined>(
     '',
@@ -58,7 +60,7 @@ export const ProductDetailsPage: React.FC = () => {
       top: 0,
       behavior: 'smooth',
     });
-  }, [productId]);
+  }, [productId, productType]);
 
   return (
     <section className="details container">
@@ -79,7 +81,10 @@ export const ProductDetailsPage: React.FC = () => {
         <>
           <div className="details__history">
             <Link to="/" className="product__link">
-              <img src="img/links/home.svg" alt="home" />
+              <img
+                src={`img/links/home${theme === 'dark' ? ' dark' : ''}.svg`}
+                alt="home"
+              />
             </Link>
             <img
               src="img/links/chevron (arrow right).svg"

@@ -4,12 +4,14 @@ import './Phone.scss';
 import classNames from 'classnames';
 import { Grid } from 'react-loader-spinner';
 import { ProductType } from '../../../../types/ProductType';
+import { useAppSelector } from '../../../../app/hooks';
 
 export const Phone: React.FC = () => {
   const [phones, setPhones] = useState<ProductType[]>([]);
   const [imageIndex, setImageIndex] = useState(0);
   const [screenWidth, setScreenWidth] = useState(window.innerWidth);
   const [isLoading, setIsLoading] = useState(true);
+  const { theme } = useAppSelector(state => state.theme);
 
   const updateTranslateX = (index: number) => {
     if (screenWidth < 639) {
@@ -95,13 +97,13 @@ export const Phone: React.FC = () => {
                 onClick={showPrevImage}
               >
                 <img
-                  src="img/slider/svg/chevron (arrow left).svg"
+                  src={`img/slider/svg/chevron (arrow left)${theme === 'dark' ? ' dark' : ''}.svg`}
                   alt="left"
                 />
               </div>
               <div className="phone__slide--right" onClick={showNextImage}>
                 <img
-                  src="img/slider/svg/chevron (arrow right).svg"
+                  src={`img/slider/svg/chevron (arrow right)${theme === 'dark' ? ' dark' : ''}.svg`}
                   alt="right"
                 />
               </div>

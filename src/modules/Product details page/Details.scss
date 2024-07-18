@@ -8,7 +8,7 @@
     cursor: pointer;
 
     @include small-text;
-    color: $secondary;
+    color: var(--secondary);
   }
 
   &__history {
@@ -32,7 +32,7 @@
 
   &__title {
     @include h1;
-    color: $primary;
+    color: var(--primary);
     padding-bottom: 8px;
     margin-bottom: 32px;
     grid-column: 1 / -1;
@@ -86,7 +86,7 @@
       &-img {
         width: 50px;
         height: 50px;
-        border: 1px solid $elements;
+        border: 1px solid var(--elements);
         cursor: pointer;
 
         @include on-tablet {
@@ -95,11 +95,11 @@
         }
 
         &:hover {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
 
         &-active {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
 
         img {
@@ -134,25 +134,25 @@
         width: 32px;
         height: 32px;
         border-radius: 50%;
-        border: 1px solid $icons;
+        border: 1px solid var(--icons);
         cursor: pointer;
         display: flex;
         justify-content: center;
         align-items: center;
 
         &:hover {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
 
         &-active {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
 
         .color {
           width: 30px;
           height: 30px;
           border-radius: 50%;
-          border: 2px solid $white;
+          border: 2px solid var(--elements);
         }
       }
     }
@@ -167,24 +167,24 @@
 
     &--title {
       @include small-text;
-      color: $secondary;
+      color: var(--secondary);
     }
 
     &--id {
       @include small-text;
-      color: $icons;
+      color: var(--icons);
     }
   }
 
   &__capacity {
     padding-block: 24px;
     margin: 24px 0 32px;
-    border-top: 1px solid $elements;
-    border-bottom: 1px solid $elements;
+    border-top: 1px solid var(--elements);
+    border-bottom: 1px solid var(--elements);
 
     &--title {
       @include small-text;
-      color: $secondary;
+      color: var(--secondary);
     }
 
     &--capacities {
@@ -194,19 +194,19 @@
 
       &-block {
         padding: 7px 8px 4px;
-        background-color: white;
-        border: 1px solid $icons;
-        color: $primary;
+        background-color: var(--bg);
+        border: 1px solid var(--icons);
+        color: var(--primary);
         cursor: pointer;
 
         &:hover {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
 
         &-active {
-          border: 1px solid $primary;
-          background-color: $primary;
-          color: $white;
+          border: 1px solid var(--primary);
+          background-color: var(--primary);
+          color: var(--bg);
         }
       }
     }
@@ -217,13 +217,13 @@
       margin-bottom: 16px;
       span:nth-child(1) {
         @include h2;
-        color: $primary;
+        color: var(--primary);
       }
       span:nth-child(2) {
         margin-left: 8px;
         font-weight: 400;
         font-size: 22px;
-        color: $secondary;
+        color: var(--secondary);
         text-decoration: line-through;
       }
     }
@@ -235,16 +235,16 @@
       &-added {
         width: 231px;
         height: 48px;
-        background-color: $white;
-        border: 1px solid $icons;
-        color: $green;
+        background-color: var(--bg);
+        border: 1px solid var(--icons);
+        color: var(--green);
       }
 
       &-cart {
         width: 231px;
         height: 48px;
-        background-color: $primary;
-        color: $white;
+        background-color: var(--accent);
+        color: var(--white);
 
         @include on-tablet {
           width: 180px;
@@ -261,11 +261,11 @@
         display: flex;
         justify-content: center;
         align-items: center;
-        background-color: $white;
-        border: 1px solid $icons;
+        background-color: var(--surface2);
+        border: 1px solid var(--icons);
 
         &:hover {
-          border: 1px solid $primary;
+          border: 1px solid var(--primary);
         }
       }
     }
@@ -295,12 +295,12 @@
 
     &-label {
       @include small-text;
-      color: $secondary;
+      color: var(--secondary);
     }
 
     &-value {
       @include small-text;
-      color: $primary;
+      color: var(--primary);
     }
   }
 
@@ -310,10 +310,10 @@
 
     &--title {
       @include h3;
-      color: $primary;
+      color: var(--primary);
       display: block;
       padding-bottom: 16px;
-      border-bottom: 1px solid $elements;
+      border-bottom: 1px solid var(--elements);
     }
   }
 
@@ -329,13 +329,13 @@
 
       &-title {
         @include h4;
-        color: $primary;
+        color: var(--primary);
         margin-bottom: 16px;
       }
 
       &-text {
         @include body-text;
-        color: $secondary;
+        color: var(--secondary);
       }
     }
   }
