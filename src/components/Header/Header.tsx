@@ -1,16 +1,16 @@
 import { Link, NavLink } from 'react-router-dom';
 import './Header.scss';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { getIconClass, getLinkClass } from '../../utils/heplerFunctions';
 import { useAppSelector } from '../../app/hooks';
 
 export const Header: React.FC = () => {
   const favProductIds = useAppSelector(state => state.favorites.products);
   const cartProductIds = useAppSelector(state => state.cart.products);
-  const totalCount = cartProductIds.reduce(
-    (count, product) => count + product.count,
-    0,
-  );
+
+  const totalCount = useMemo(() => {
+    return cartProductIds.reduce((count, product) => count + product.count, 0);
+  }, [cartProductIds]);
 
   return (
     <header className="header">

@@ -3,15 +3,13 @@ import './ShoppingCartPage.scss';
 import { useEffect, useState } from 'react';
 import { CartItem } from '../../components/CartItem';
 import { useLocalStorage } from '../../services/getLocalStorage';
-import { useAppSelector } from '../../app/hooks';
-import { useDispatch } from 'react-redux';
-import { setCart, setLoading } from '../../features/cart';
-import { setError, setProducts } from '../../features/productSlice';
-import { getProducts } from '../../services/products';
+import { useAppDispatch, useAppSelector } from '../../app/hooks';
+import { setCart } from '../../features/cart';
 import { Gadget } from '../../types/Gadget';
 import { CartProduct } from '../../types/CartProduct';
 import { Modal } from '../../components/Modal';
 import { Loader } from '../../components/Loader';
+import { init } from '../../features/productSlice';
 
 export const ShoppingCartPage = () => {
   // eslint-disable-next-line max-len, prettier/prettier
@@ -19,10 +17,13 @@ export const ShoppingCartPage = () => {
     'cart',
     [],
   );
-  const dispatch = useDispatch();
-  const cartItems = useAppSelector(state => state.cart.products);
-  const loading = useAppSelector(state => state.cart.loading);
-  const allProducts = useAppSelector(state => state.products.items);
+  const dispatch = useAppDispatch();
+  const { products: cartItems, totalCount } = useAppSelector(
+    state => state.cart,
+  );
+  const { items: allProducts, loading } = useAppSelector(
+    state => state.products,
+  );
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => setIsModalOpen(true);
@@ -35,20 +36,7 @@ export const ShoppingCartPage = () => {
   }, [dispatch, storedCart]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      dispatch(setLoading(true));
-      try {
-        const products = await getProducts();
-
-        dispatch(setProducts(products));
-      } catch (err) {
-        dispatch(setError('Failed to fetch products'));
-      } finally {
-        dispatch(setLoading(false));
-      }
-    };
-
-    fetchProducts();
+    dispatch(init());
   }, [dispatch]);
 
   useEffect(() => {
@@ -65,11 +53,6 @@ export const ShoppingCartPage = () => {
 
   const total = cartProducts.reduce(
     (acc, product) => acc + product.price * product.count,
-    0,
-  );
-
-  const totalCount = cartProducts.reduce(
-    (acc, product) => acc + product.count,
     0,
   );
 

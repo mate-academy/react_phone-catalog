@@ -7,7 +7,7 @@ import { CartProduct } from '../types/CartProduct';
 type CartState = {
   products: CartProduct[];
   totalCount: number;
-  loading: boolean;
+  error: string;
 };
 
 const initialState: CartState = {
@@ -16,7 +16,7 @@ const initialState: CartState = {
     (acc: number, item: CartProduct) => acc + item.count,
     0,
   ),
-  loading: false,
+  error: '',
 };
 
 const updateLocalStorageCart = (products: CartProduct[]) => {
@@ -85,8 +85,8 @@ const cartSlice = createSlice({
       state.totalCount = 0;
       updateLocalStorageCart(state.products);
     },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.loading = action.payload;
+    setError: (state, action: PayloadAction<string>) => {
+      state.error = action.payload;
     },
   },
 });
@@ -98,5 +98,6 @@ export const {
   removeCart,
   deleteItem,
   clearCart,
-  setLoading,
+  setError,
 } = cartSlice.actions;
+

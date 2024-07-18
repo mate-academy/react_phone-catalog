@@ -1,10 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
-import { ProductsState } from '../types/ProductsState';
+
+interface ProductsState {
+  products: string[];
+}
 
 const initialState: ProductsState = {
   products: JSON.parse(localStorage.getItem('favs') || '[]'),
-  error: '',
 };
 
 const updateLocalStorage = (products: string[]) => {

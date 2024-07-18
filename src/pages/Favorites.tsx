@@ -3,17 +3,15 @@ import { Link } from 'react-router-dom';
 // import { Header } from '../components/Header';
 import '../styles/page.scss';
 import { ProductsList } from '../components/ProductsList';
-import { useAppSelector } from '../app/hooks';
-import { useDispatch } from 'react-redux';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
 import { useLocalStorage } from '../services/getLocalStorage';
 import { useEffect } from 'react';
 import { setFav } from '../features/favorites';
-import { setError, setProducts } from '../features/productSlice';
-import { getProducts } from '../services/products';
+import { init } from '../features/productSlice';
 
 export const Favorites = () => {
   const [storedFavs, setStoredFavs] = useLocalStorage<string[]>('favs', []);
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
   const favProductIds = useAppSelector(state => state.favorites.products);
   const allProducts = useAppSelector(state => state.products.items);
 
@@ -24,17 +22,7 @@ export const Favorites = () => {
   }, [dispatch, storedFavs]);
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      try {
-        const products = await getProducts();
-
-        dispatch(setProducts(products));
-      } catch (error) {
-        dispatch(setError('Failed to fetch products'));
-      }
-    };
-
-    fetchProducts();
+    dispatch(init());
   }, [dispatch]);
 
   useEffect(() => {
