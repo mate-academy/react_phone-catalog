@@ -49,7 +49,6 @@ export const ProductDetailsPage: React.FC = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     async function fetchData() {
       setLoading(true);
       try {
