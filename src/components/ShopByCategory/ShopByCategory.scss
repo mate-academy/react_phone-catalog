@@ -7,11 +7,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    gap: 16px;
 
     @include on-tablet {
       flex-direction: row;
     }
-    
+
     gap: 16px;
   }
 

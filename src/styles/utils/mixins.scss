@@ -19,6 +19,8 @@
 
 
 @mixin carousel-image-size {
+  width: 100vw;
+
   @include on-tablet {
     width: 490px; // Ширина на планшетах
   }
@@ -29,8 +31,8 @@
 }
 
 @mixin categories-image-size {
-  width: 320px;
-  height: 320px;
+  width: 288px; // Ограничиваем ширину на 100% ширины контейнера
+  height: 288px; // Устанавливаем высоту в зависимости от ширины экрана
 
   @include on-tablet {
     width: 187px;

@@ -3,6 +3,11 @@
 .home-page {
   display: flex;
   flex-direction: column;
+  // align-items: center;
 
+  &__slider {
+    display: flex;
+    justify-content: center
+  }
   @include home-page-top-indentation;
 }

@@ -44,6 +44,18 @@ export const getHotPriceProducts = async () => {
   });
 };
 
+export const getYouMayAlsoLike = async () => {
+  const response = await getData<Product[]>('/api/products.json');
+
+  for (let i = response.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    [response[i], response[j]] = [response[j], response[i]];
+  }
+
+  return response;
+};
+
 export const getBrandNewModels = async () => {
   const response = await getData<Product[]>('/api/products.json');
 
@@ -56,4 +68,12 @@ export const getBrandNewModels = async () => {
   return noDiscountProductsMaxYear.sort(
     (a: Product, b: Product) => b.price - a.price,
   );
+};
+
+export const getProductsById = async (
+  favouriteIds: string[],
+): Promise<Product[]> => {
+  const allProducts = await getAllProducts();
+
+  return allProducts.filter(product => favouriteIds.includes(product.itemId));
 };

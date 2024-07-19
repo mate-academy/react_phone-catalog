@@ -1,0 +1,40 @@
+@import '../../styles/utils/mixins.scss';
+
+.favourites {
+  display: flex;
+  flex-direction: column;
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    @include on-tablet {
+      flex-direction: row;
+    }
+
+    gap: 16px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    margin-bottom: 40px;
+  }
+
+  &__item {
+    width: 100%;
+
+    @include on-tablet {
+      width: 50%;
+    }
+
+    @include on-desktop {
+      width: 25%;
+    }
+  }
+  &__bread-crumb {
+    margin: 24px 0 40px;
+  }
+}

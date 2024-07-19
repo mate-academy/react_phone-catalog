@@ -1,11 +1,14 @@
-@import '../../styles/utils/mixins.scss';
-@import '../../styles/utils/vars.scss';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/vars';
 
 .catalog {
   display: flex;
   flex-direction: column;
   &__item {
-    width: 288px;
+
+    @include on-tablet {
+      width: 288px;
+    }
 
     @include on-desktop {
       width: 272px;
@@ -15,13 +18,14 @@
   &__list {
     display: flex;
     gap: 16px;
-    flex-direction: row;
-    flex-wrap: wrap;
+    flex-flow: row wrap;
   }
+
 
   &__dropdown {
     height: 40px;
     border: 1px $gray-icons solid;
+    width: 100%;
 
     &__options {
       color: $gray-secondary;
@@ -37,12 +41,19 @@
     display: flex;
     gap: 16px;
     margin-bottom: 24px;
+    width: 100%;
 
     &__box {
       display: flex;
       flex-direction: column;
       gap: 4px;
       color: $gray-secondary;
+
+      width: 100%;
+
+      @include on-tablet {
+        width: 136px;
+      }
     }
   }
 

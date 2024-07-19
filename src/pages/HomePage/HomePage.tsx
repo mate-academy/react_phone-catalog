@@ -10,6 +10,7 @@ import {
 } from '../../services/Products';
 import { Product } from '../../types/Product';
 import { ProductCarousel } from '../../components/ProductCarousel';
+import { Loader } from '../../components/Loader';
 
 export const HomePage = () => {
   const [hotProducts, setHotProducts] = useState<Product[]>([]);
@@ -34,19 +35,19 @@ export const HomePage = () => {
     fetchProducts();
   }, []);
 
+  if (isLoading) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {isLoading ? (
-        <div className="mal" />
-      ) : (
-        <div className="home-page">
-          <h1 className="title">Welcome to Nice Gadgets store!</h1>
-          <Slider />
-          <ProductCarousel products={brandNewModels} title="Brand New Models" />
-          <ShopByCategory />
-          <ProductCarousel products={hotProducts} title="Hot prices" />
-        </div>
-      )}
-    </>
+    <div className="home-page">
+      <h1 className="title">Welcome to Nice Gadgets store!</h1>
+      <div className="home-page__slider">
+        <Slider />
+      </div>
+      <ProductCarousel products={brandNewModels} title="Brand New Models" />
+      <ShopByCategory />
+      <ProductCarousel products={hotProducts} title="Hot prices" />
+    </div>
   );
 };

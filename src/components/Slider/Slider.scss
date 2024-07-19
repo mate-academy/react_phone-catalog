@@ -6,7 +6,6 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  width: 100%;
 }
 
 .Carousel {
@@ -15,8 +14,12 @@
   flex-direction: row;
   height: 400px;
   gap: 16px;
-  width: 100%; // Задаем ширину для мобильных устройств
-  overflow: hidden; // Добавляем скрытие переполнения
+  overflow: hidden;
+  width: 100vw;
+
+  @include on-tablet {
+    width: 100%;
+  }
 
   &__list {
     list-style: none;

@@ -1,9 +1,10 @@
 import cn from 'classnames';
-import { Link, NavLink } from 'react-router-dom';
+import { Link, NavLink, useLocation } from 'react-router-dom';
 import '../../styles/button.scss';
 import './Header.scss';
 import '../../styles/nav.scss';
 import '../../styles/is-active.scss';
+import { useAppSelector } from '../../app/hooks';
 
 interface Options {
   isActive: boolean;
@@ -25,6 +26,13 @@ const getNavLinkPath = (option: string) => {
 
 export const Header = () => {
   const options = ['home', 'phones', 'tablets', 'accessories'];
+  const cartProducts: number = useAppSelector(state => state.cart.items).length;
+  const favouriteProducts: number = useAppSelector(
+    state => state.favourite.items,
+  ).length;
+
+  const location = useLocation();
+  const currentPath = location.pathname + location.search;
 
   return (
     <header className="header">
@@ -48,19 +56,35 @@ export const Header = () => {
         <div className="search header__search" />
 
         <NavLink
-          to="/?aside=open"
+          to={`${currentPath}?aside=open`}
           className="header__burger-menu header__button button"
         >
           <img src="icons/Menu.svg" alt="cart" />
         </NavLink>
 
         <div className="header__right">
-          <NavLink to="/favourites" className={getLinkIconClass}>
-            <img src="icons/Favourites.svg" alt="favourites" />
+          <NavLink
+            to="/favourites"
+            className={cn(
+              getLinkIconClass,
+              'header__button header__button--favourites',
+            )}
+          >
+            {favouriteProducts > 0 && (
+              <div className="header__button__icon">{favouriteProducts}</div>
+            )}
           </NavLink>
 
-          <NavLink to="/cart" className={getLinkIconClass}>
-            <img src="icons/Cart.svg" alt="cart" />
+          <NavLink
+            to="/cart"
+            className={cn(
+              getLinkIconClass,
+              'header__button header__button--cart',
+            )}
+          >
+            {cartProducts > 0 && (
+              <div className="header__button__icon">{cartProducts}</div>
+            )}
           </NavLink>
         </div>
       </div>

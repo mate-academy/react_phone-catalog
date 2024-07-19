@@ -5,6 +5,7 @@ import './ProductCard.scss';
 import '../../styles/utils/typography.scss';
 import { BASE_URL } from '../../utils/const';
 import { ActionButtons } from '../ActionButtons';
+import React from 'react';
 
 type Props = {
   product: Product;
@@ -14,7 +15,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   return (
     <div className="product-card">
       <Link
-        to={`/products/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className="product-card__image-container"
       >
         <img
@@ -25,7 +26,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <Link
-        to={`/products/${product.itemId}`}
+        to={`/${product.category}/${product.itemId}`}
         className="product-card__name-container"
       >
         <p className="product-card__name paragraph">{`${product.name} (iMT9G2FS/A)`}</p>
@@ -53,7 +54,7 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </div>
       </div>
 
-      <ActionButtons />
+      <ActionButtons productId={product.itemId} />
     </div>
   );
 };

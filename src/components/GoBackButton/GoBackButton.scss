@@ -1,0 +1,13 @@
+@import '../../styles/utils/vars.scss';
+
+.go-back-button {
+  color: $gray-secondary;
+  text-decoration: none;
+  margin-right: 5px;
+  display: flex;
+  gap: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}

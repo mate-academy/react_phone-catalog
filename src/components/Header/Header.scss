@@ -15,7 +15,7 @@
       gap: 16px;
     }
 
-    @include on-desktop{
+    @include on-desktop {
       gap: 24px;
     }
   }
@@ -42,6 +42,40 @@
   &__button {
     height: $phone-header-height;
     width: $phone-header-height;
+    border-bottom: 0;
+    text-decoration: none;
+
+    border: 1px solid $gray-elements;
+    border-bottom: 0;
+
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 16px 16px;
+
+    &--favourites {
+      background-image: url(../../../public/icons/Favourites.svg);
+    }
+
+    &--cart {
+      background-image: url(../../../public/icons/Cart.svg);
+    }
+
+    &__icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      border-radius: 50%;
+      top: 30%;
+      left: 50%;
+      font-size: 9px;
+      width: 14px;
+      height: 14px;
+      background-color: red;
+      border: 1px solid #fff;
+      transition: all 0.3s;
+    }
   }
 
   &__right {
@@ -73,7 +107,7 @@
       gap: 32px;
     }
 
-    @include on-desktop{
+    @include on-desktop {
       gap: 64px;
     }
 
@@ -82,12 +116,13 @@
       position: relative;
       box-sizing: border-box;
       height: $phone-header-height - 1px;
+      color: $gray-primary;
     }
   }
 }
 
-@include on-desktop{
-  $header-height: 64px; // Change height on desktop
+@include on-desktop {
+  $header-height: 64px;
 
   .header {
     &__logo {

@@ -1,14 +1,13 @@
-@import "../../styles/utils/vars";  // Удалено подчеркивание из имени файла
+@import "../../styles/utils/vars";
 
 .menu {
   position: fixed;
-  inset: 0;  // Использована сокращенная запись
+  inset: 0;
   z-index: 1000;
 
   background: #fff;
-  height: 100vh;
 
-  transform: translateX(0);  // Удалены единицы измерения для значений, равных нулю
+  transform: translateX(0);
   pointer-events: all;
 
   &__logo {
@@ -41,9 +40,16 @@
     align-items: center;
     margin-top: 24px;
     gap: 16px;
+
+    &__item {
+      height: 27px;
+      display: flex;
+      justify-content: center;
+    }
   }
 
   &__bottom {
+    margin-top: auto;
     display: flex;
     height: 64px;
     position: absolute;

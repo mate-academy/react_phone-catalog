@@ -33,7 +33,7 @@ export const Aside = () => {
         </Link>
 
         <NavLink to="/" className="button menu__close">
-          <img src="icons/Union.svg" alt="cart" />
+          <img src="icons/Menu.svg" alt="cart" />
         </NavLink>
       </div>
 

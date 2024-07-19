@@ -4,7 +4,7 @@ import { ProductCard } from '../ProductCard';
 import './ProductCarousel.scss';
 
 type Props = {
-  products: Product[];
+  products: Product[] | [];
   title: string;
 };
 

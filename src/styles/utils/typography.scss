@@ -16,7 +16,7 @@
 }
 
 .title {
-  font-family: Mont-Bold;
+  font-family: Mont-Regular, sans-serif;
   font-size: 32px;
   line-height: 41px;
   letter-spacing: -0.01em;
@@ -60,21 +60,22 @@
 }
 
 .paragraph {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
   text-align: left;
 }
 
+
 .small-text {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 12px;
   line-height: 15px;
   text-align: left;
 }
 
 .upper-case {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 12px;
   line-height: 11px;
   letter-spacing: 0.04em;
@@ -83,7 +84,7 @@
 }
 
 @mixin button-text {
-  font-family: Mont-Regular;
+  font-family: Mont-Regular, sans-serif;
   font-size: 14px;
   line-height: 21px;
   text-align: left;
