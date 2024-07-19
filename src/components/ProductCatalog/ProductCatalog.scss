@@ -5,7 +5,6 @@
   display: flex;
   flex-direction: column;
   &__item {
-
     @include on-tablet {
       width: 288px;
     }

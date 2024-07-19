@@ -1,5 +1,5 @@
 @import '../../styles/utils/vars';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/mixins';
 
 .product-details-page {
   &__title {
@@ -44,7 +44,7 @@
     }
 
     &__title {
-      font-family: Mont-Bold;
+      font-family: Mont-Bold, sans-serif;
       color: $gray-primary;
       line-height: 30px;
       border-bottom: 1px solid $gray-elements;
@@ -108,7 +108,8 @@
     line-height: 15.34px;
     text-align: right;
     color: $gray-primary;
-    font-family: Mont-Regular;
+    font-family: Mont-Bold, sans-serif;
+
   }
 }
 

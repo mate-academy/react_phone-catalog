@@ -1,5 +1,5 @@
-@import '../../styles/utils/vars.scss';
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
 
 .cartItem {
   display: flex;
@@ -64,8 +64,9 @@
 
   &__controls {
     display: flex;
+    flex-direction: row;
     align-items: center;
-    gap: 8px;
+    gap: 24px;
 
     &__buttons {
       width: 32px;
@@ -109,16 +110,10 @@
     flex-grow: 1;
     color: $gray-primary;
     text-align: right;
+
     @include on-tablet {
       text-align: left;
     }
-  }
-
-  &__controls {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    gap: 24px;
   }
 
   &__count {

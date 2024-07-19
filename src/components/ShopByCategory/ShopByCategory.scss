@@ -12,8 +12,6 @@
     @include on-tablet {
       flex-direction: row;
     }
-
-    gap: 16px;
   }
 
   &__component {

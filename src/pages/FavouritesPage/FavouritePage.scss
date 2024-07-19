@@ -1,4 +1,4 @@
-@import '../../styles/utils/mixins.scss';
+@import '../../styles/utils/mixins';
 
 .favourites {
   display: flex;
@@ -6,8 +6,7 @@
 
   &__list {
     display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+    flex-flow: column wrap;
 
     @include on-tablet {
       flex-direction: row;
@@ -31,7 +30,7 @@
     }
 
     @include on-desktop {
-      width: 25%;
+      width: 23%;
     }
   }
   &__bread-crumb {
