@@ -174,13 +174,13 @@ export const ProductDetails: React.FC<Props> = ({
                 <span className="visually-hidden">
                   {t(TRANSLATIONS.productDetails.price.current)}
                 </span>
-                {priceDiscount}
+                ${priceDiscount}
               </h2>
               <p className="price-block__full-price">
                 <span className="visually-hidden">
                   {t(TRANSLATIONS.productDetails.price.full)}
                 </span>
-                {priceRegular}
+                ${priceRegular}
               </p>
             </div>
 

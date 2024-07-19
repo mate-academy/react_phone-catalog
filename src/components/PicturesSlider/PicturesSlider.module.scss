@@ -58,12 +58,14 @@
     width: 14px;
     height: 4px;
     margin: 10px 5px;
-    background-color: $c-elements;
-    transition: background-color, scale 0.3s ease-in-out;
+    background-color: var(--c-elements);
+    transition:
+      background-color,
+      scale 0.3s ease-in-out;
 
     &--active {
       cursor: default;
-      background-color: $c-white;
+      background-color: var(--c-text-primary);
     }
 
     &:focus-visible {
@@ -75,17 +77,4 @@
       scale: 1.3;
     }
   }
-}
-
-@keyframes skeleton-loading {
-  0% {
-    background-color: $c-surface-1;
-  }
-  100% {
-    background-color: $c-surface-2;
-  }
-}
-
-.skeleton {
-  animation: skeleton-loading 1s linear infinite alternate;
 }

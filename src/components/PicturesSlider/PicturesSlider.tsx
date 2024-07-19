@@ -109,7 +109,6 @@ export const PicturesSlider = () => {
               })}
               onClick={() => setOrderIndex(index)}
               disabled={index === orderIndex}
-              // aria-label={`View image ${index + 1}`}
               aria-label={t(TRANSLATIONS.hero.slider.dot.ariaLabel, {
                 imageNumber: index + 1,
               })}

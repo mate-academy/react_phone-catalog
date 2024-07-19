@@ -13,6 +13,14 @@
         "accessories": "accessories",
         "ariaLabel": "Search"
       },
+      "theme": {
+        "dark": {
+          "ariaLabel": "Use a dark theme"
+        },
+        "light": {
+          "ariaLabel": "Use a light theme"
+        }
+      },
       "lang": {
         "text": "Укр",
         "ariaLabel": "Змінити мову на українську"

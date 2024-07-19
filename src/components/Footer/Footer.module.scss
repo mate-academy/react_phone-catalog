@@ -1,5 +1,5 @@
 .footer {
-  border-top: 1px solid $c-elements;
+  border-top: 1px solid var(--c-elements);
 
   &__content {
     display: flex;
@@ -39,9 +39,9 @@
   }
 
   &__link {
-    color:$c-white;
+    color: var(--c-text-primary);
 
-    @include hover(color, $c-accent-hover);
+    @include hover(color, var(--c-secondary));
   }
 
   &__back-to-top {

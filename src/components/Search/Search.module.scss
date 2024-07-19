@@ -5,11 +5,13 @@
 
   &::before {
     content: '';
-    min-width: 20px;
-    min-height: 20px;
-    background-image: url('../../images/icons/icon-search.svg');
-    background-repeat: no-repeat;
-    background-size: contain;
+    display: block;
+    width: 20px;
+    height: 20px;
+    mask-image: url('../../images/icons/icon-search.svg');
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: var(--c-bg-icon);
   }
 
   @include on-tablet {
@@ -34,7 +36,7 @@
     background-color: transparent;
     border: none;
     padding: 0;
-    color: $c-white;
+    color: var(--c-text-primary);
     width: 0;
     outline: none;
     pointer-events: none;

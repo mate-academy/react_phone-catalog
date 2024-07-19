@@ -1,12 +1,12 @@
 .page {
   @extend %bodytext;
 
-  color: $c-white;
   scroll-behavior: smooth;
 
   &__body {
+    color: var(--c-text-primary);
     min-width: 320px;
-    background-color: $c-black;
+    background-color: var(--c-bg-primary);
   }
 
   &__content {
@@ -29,14 +29,14 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: $c-surface-1;
+    background: var(--c-scrollbar-track);
   }
 
   ::-webkit-scrollbar-thumb {
-    background: $c-surface-2;
+    background: var(--c-scrollbar-thumb);
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: $c-secondary;
+    background: var(--c-scrollbar-hover);
   }
 }

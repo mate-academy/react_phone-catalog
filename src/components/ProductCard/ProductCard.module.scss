@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   gap: 8px;
-  border: 1px solid $c-surface-1;
-  background-color: $c-surface-1;
+  border: 1px solid var(--c-border-product-card);
+  background-color: var(--c-bg-product-card);
   padding: 31px;
   overflow: hidden;
 
-  @include hover(border, 1px solid $c-surface-2);
+  @include hover(border, 1px solid var(--c-border-product-card-hover));
 
   &__image-frame {
     height: 200px;
@@ -28,8 +28,8 @@
     position: absolute;
     display: flex;
     padding: 8px 16px;
-    background-color: $c-surface-2;
-    color: $c-white;
+    background-color: var(--c-bg-tooltip);
+    color: var(--c-text-primary);
     right: -33px;
     top: 70%;
     transform: translateX(100%);
@@ -59,11 +59,12 @@
 
     @extend %bodytext;
 
-    &:link, &:visited {
-      color: $c-white;
+    &:link,
+    &:visited {
+      color: var(--c-text-primary);
     }
 
-    @include hover(color, $c-secondary);
+    @include hover(color, var(--c-secondary));
   }
 
   &__buttons {

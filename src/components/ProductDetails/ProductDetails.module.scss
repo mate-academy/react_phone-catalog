@@ -37,7 +37,7 @@
   }
 
   &__images-item {
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-border-img-details);
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -45,11 +45,11 @@
     flex-grow: 1;
 
     &:not(.details__images-item--active) {
-      @include hover(border, 1px solid $c-accent-hover);
+      @include hover(border, 1px solid var(--c-border-img-details-hover));
     }
 
     &--active {
-      border: 1px solid $c-white;
+      border: 1px solid var(--c-border-img-details-active);
       pointer-events: none;
     }
 
@@ -114,7 +114,7 @@
   &__selectors-title {
     @extend %smalltext;
 
-    color: $c-secondary;
+    color: var(--c-secondary);
   }
 
   &__selectors-options {
@@ -129,12 +129,12 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
 
-    @include hover(border, 1px solid $c-secondary);
+    @include hover(border, 1px solid var(--c-secondary));
 
     &--active {
-      border: 1px solid $c-white;
+      border: 1px solid var(--c-border-color-active);
       pointer-events: none;
     }
   }

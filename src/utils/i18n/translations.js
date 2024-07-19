@@ -31,6 +31,14 @@ export const TRANSLATIONS = {
         accessories: 'header.actions.search.accessories',
         ariaLabel: 'header.actions.search.ariaLabel',
       },
+      theme: {
+        dark: {
+          ariaLabel: 'header.actions.theme.dark.ariaLabel',
+        },
+        light: {
+          ariaLabel: 'header.actions.theme.light.ariaLabel',
+        },
+      },
       lang: {
         text: 'header.actions.lang.text',
         ariaLabel: 'header.actions.lang.ariaLabel',

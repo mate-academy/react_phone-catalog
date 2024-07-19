@@ -13,6 +13,14 @@
         "accessories": "аксесуарах",
         "ariaLabel": "Пошук"
       },
+      "theme": {
+        "dark": {
+          "ariaLabel": "Змінити на темну тему"
+        },
+        "light": {
+          "ariaLabel": "Змінити на світлу тему"
+        }
+      },
       "lang": {
         "text": "Eng",
         "ariaLabel": "Change the language to English"

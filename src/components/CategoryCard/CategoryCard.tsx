@@ -26,7 +26,9 @@ export const CategoryCard: React.FC<CategotyCard> = ({
         aria-label={ariaLabelLink}
       >
         <div className="category-card__image-gradient">
-          <h4>{t(TRANSLATIONS.category.card.tooltip)}</h4>
+          <h4 className="category-card__tooltip">
+            {t(TRANSLATIONS.category.card.tooltip)}
+          </h4>
         </div>
         <img
           src={imageUrl}

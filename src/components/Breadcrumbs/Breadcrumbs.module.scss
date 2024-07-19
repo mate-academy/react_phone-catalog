@@ -11,12 +11,12 @@
   &__text {
     @extend %smalltext;
 
-    color: $c-secondary;
+    color: var(--c-secondary);
 
     &--link {
       text-decoration: none;
 
-      @include hover(color, $c-white);
+      @include hover(color, var(--c-text-primary));
     }
   }
 

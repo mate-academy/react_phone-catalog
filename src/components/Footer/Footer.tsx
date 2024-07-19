@@ -1,7 +1,10 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/nuce-gadgets-logo.png';
+import logoDark from '../../images/nuce-gadgets-logo--dark.png';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import { useContext } from 'react';
+import { ThemeContext } from '../../store/ThemeContext';
 
 const backToTop = () => {
   window.scrollTo({ top: 0 });
@@ -9,6 +12,7 @@ const backToTop = () => {
 
 export const Footer = () => {
   const { t } = useTranslation();
+  const { theme } = useContext(ThemeContext);
 
   return (
     <footer className="footer">
@@ -21,7 +25,7 @@ export const Footer = () => {
             aria-label={t(TRANSLATIONS.logo.ariaLabel)}
           >
             <img
-              src={logo}
+              src={theme === 'dark-theme' ? logo : logoDark}
               alt={t(TRANSLATIONS.logo.alt)}
               className="footer__logo-img"
             />

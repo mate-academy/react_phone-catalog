@@ -22,10 +22,18 @@
     padding-bottom: 10px;
     text-align: center;
     inset: 0;
-    background-image: linear-gradient(0deg, $c-accent, transparent 50%);
+    background-image: linear-gradient(
+      0deg,
+      var(--c-bg-img-gradient),
+      transparent 50%
+    );
     opacity: 0;
 
     @include hover(opacity, 0.6);
+  }
+
+  &__tooltip {
+    color: var(--c-white);
   }
 
   &__image {
@@ -46,7 +54,7 @@
   }
 
   &__title {
-    @include hover(color, $c-secondary);
+    @include hover(color, var(--c-secondary));
   }
 
   &:has(.category-card__title-link:hover, .category-card__image:hover) {
@@ -56,6 +64,6 @@
   }
 
   &__subtitle {
-    color: $c-secondary;
+    color: var(--c-secondary);
   }
 }

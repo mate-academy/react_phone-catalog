@@ -1,10 +1,14 @@
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: $ff-main;
-  color: $c-white;
+  color: var(--c-text-primary);
   letter-spacing: 0;
 }
 
-h1, .main-title {
+h1,
+.main-title {
   @include h1-mobile;
 
   letter-spacing: -0.01em;

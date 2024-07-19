@@ -6,8 +6,9 @@
   justify-content: center;
   align-items: center;
   flex-shrink: 0;
-  padding: 9.5px;
-  background-color: $c-surface-2;
+  padding: 8.5px;
+  background-color: var(--c-bg-btn-default);
+  border: 1px solid var(--c-border-btn-default);
 
   transition: background-color 0.3s ease-in-out;
 
@@ -16,37 +17,51 @@
   }
 
   &:focus-visible,
-  &:not(.btn--image-preview, .btn--primary):hover:enabled {
-    background-color: $c-icons;
-  }
-
-  &--primary {
-    background-color: $c-accent;
-  }
-
-  &--selected {
-    background-color: $c-surface-2;
+  &:not(.btn--image-preview, .btn--primary, .btn--menu):hover:enabled {
+    background-color: var(--c-bg-btn-default-hover);
+    border-color: var(--c-border-btn-default-hover);
   }
 
   &--primary,
-  &--selected {
+  &--selected,
+  &--slider {
     width: 100%;
     flex-shrink: 1;
+  }
+
+  &--primary {
+    color: var(--c-text-btn-primary);
+    border: 1px solid var(--c-bg-btn-primary);
+    background-color: var(--c-bg-btn-primary);
 
     &:focus-visible,
     &:hover:enabled {
-      background-color: $c-accent-hover;
+      border: 1px solid var(--c-border-btn-primary-hover);
+      background-color: var(--c-bg-btn-primary-hover);
+    }
+  }
+
+  &--selected {
+    color: var(--c-text-btn-selected);
+    border: 1px solid var(--c-border-btn-selected);
+    background-color: var(--c-bg-btn-selected);
+
+    &:focus-visible,
+    &:hover:enabled {
+      border: 1px solid var(--c-bg-btn-default-hover);
+      background-color: var(--c-bg-btn-default-hover);
     }
   }
 
   &--slider {
     width: 32px;
+    border: 1px solid var(--c-border-btn-slider);
   }
 
   &--disabled,
   &--liked {
-    border: 1px solid $c-elements;
-    background-color: $c-surface-1;
+    border: 1px solid var(--c-elements);
+    background-color: var(--c-bg-btn-disabled);
   }
 
   &--disabled {
@@ -54,7 +69,7 @@
 
     &:has(.icon) {
       .icon {
-        background-color: $c-icons;
+        background-color: var(--c-icons);
       }
     }
   }
@@ -76,13 +91,14 @@
 
   &--menu {
     width: 48px;
-    border-left: 1px solid $c-surface-2;
+    border: none;
+    border-left: 1px solid var(--c-elements);
     background-color: transparent;
     background-repeat: no-repeat;
     background-position: center;
     position: relative;
 
-    @include hover(background-color, $c-surface-2);
+    @include hover(background-color, var(--c-bg-btn-menu-hover));
 
     @include on-desktop {
       width: 64px;
@@ -92,7 +108,9 @@
   &--back {
     width: fit-content;
     background-color: transparent;
-    padding: 0 0 16px;
+    padding: 0;
+    margin-bottom: 16px;
+    border: none;
 
     &-text {
       @extend %smalltext;
@@ -100,7 +118,7 @@
       padding: 1px 15px 0 4px;
     }
 
-    @include hover(color, $c-accent);
+    @include hover(color, var(--c-secondary));
   }
 
   &--back-to-top {
@@ -110,9 +128,9 @@
     cursor: pointer;
     background-color: transparent;
     padding: 0;
-    color: $c-secondary;
+    color: var(--c-link);
 
-    @include hover(color, $c-white);
+    @include hover(color, var(--c-link-hover));
   }
 
   &--remove {
@@ -120,13 +138,14 @@
   }
 
   &--page {
-    background-color: $c-surface-1;
+    background-color: var(--c-bg-btn-pagination);
 
-    @include hover(background-color, $c-elements);
+    @include hover(background-color, var(--c-bg-btn-pagination-hover));
 
     &-selected {
       cursor: default;
-      background-color: $c-accent;
+      color: var(--c-white);
+      background-color: var(--c-bg-btn-pagination-selected);
     }
   }
 
@@ -139,18 +158,18 @@
   &--capacity {
     @extend %bodytext;
 
-    color: $c-white;
+    color: var(--c-text-btn-capacity);
     text-decoration: none;
 
     padding: 6px 7px 3px;
-    border: 1px solid $c-icons;
+    border: 1px solid var(--c-icons);
 
-    @include hover(background-color, $c-icons);
+    @include hover(background-color, var(--c-icons));
 
     &--active {
-      color: $c-black;
-      background-color: $c-white;
-      border: 1px solid $c-white;
+      color: var(--c-text-btn-capacity-active);
+      background-color: var(--c-bg-btn-capacity-active);
+      border: 1px solid var(--c-border-btn-capacity-active);
       pointer-events: none;
     }
   }

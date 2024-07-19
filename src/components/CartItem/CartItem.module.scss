@@ -3,15 +3,17 @@
   flex-flow: column wrap;
   gap: 16px;
   padding: 16px;
-  background-color: $c-surface-1;
+  border: 1px solid var(--c-border-cart-card);
+  background-color: var(--c-bg-cart-card);
 
   @include on-tablet {
-    padding: 24px;
+    padding: 23px;
     flex-flow: row nowrap;
     justify-content: space-between;
   }
 
-  &__top, &__bottom {
+  &__top,
+  &__bottom {
     display: flex;
     gap: 16px;
     align-items: center;

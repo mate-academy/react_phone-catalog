@@ -1,5 +1,6 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../images/nuce-gadgets-logo.png';
+import logoDark from '../../images/nuce-gadgets-logo--dark.png';
 import classNames from 'classnames';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../store/CartContext';
@@ -9,12 +10,14 @@ import i18next from 'i18next';
 import { Lang } from '../../types/Languages';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import { ThemeContext } from '../../store/ThemeContext';
 
 export const Navbar = () => {
   const cartState = useContext(CartContext);
   const favouritesState = useContext(LikedContext);
   const [showMenu, setShowMenu] = useState<boolean>(false);
   const { t } = useTranslation();
+  const { theme, toggleTheme } = useContext(ThemeContext);
 
   const mobileMenuPosition = showMenu ? `0%` : `-110%`;
   const mobileMenuHeight = window.innerHeight - 49;
@@ -36,7 +39,7 @@ export const Navbar = () => {
           aria-label={t(TRANSLATIONS.logo.ariaLabel)}
         >
           <img
-            src={logo}
+            src={theme === 'dark-theme' ? logo : logoDark}
             alt={t(TRANSLATIONS.logo.alt)}
             className="header__logo-img"
           />
@@ -109,6 +112,24 @@ export const Navbar = () => {
           {!showMenu && <Search />}
 
           <button
+            onClick={toggleTheme}
+            className={classNames('header__theme btn btn--menu', {
+              'visually-hidden': showMenu,
+            })}
+            aria-label={
+              theme === 'dark-theme'
+                ? t(TRANSLATIONS.header.actions.theme.light.ariaLabel)
+                : t(TRANSLATIONS.header.actions.theme.dark.ariaLabel)
+            }
+          >
+            {theme === 'dark-theme' ? (
+              <span className="icon icon--sun"></span>
+            ) : (
+              <span className="icon icon--moon"></span>
+            )}
+          </button>
+
+          <button
             onClick={changeLang}
             className={classNames('header__lang btn btn--menu', {
               'visually-hidden': showMenu,
@@ -120,13 +141,14 @@ export const Navbar = () => {
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
-              classNames('header__favorites btn--menu icon--favorites', {
+              classNames('header__favorites btn btn--menu', {
                 'nav__link--active': isActive,
                 'visually-hidden': showMenu,
               })
             }
             aria-label={t(TRANSLATIONS.header.actions.favourites.ariaLabel)}
           >
+            <span className="icon icon--favorites"></span>
             {!!favouritesState.length && (
               <div className="counter">{favouritesState.length}</div>
             )}
@@ -134,13 +156,14 @@ export const Navbar = () => {
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              classNames('header__cart btn--menu icon--cart', {
+              classNames('header__cart btn btn--menu', {
                 'nav__link--active': isActive,
                 'visually-hidden': showMenu,
               })
             }
             aria-label={t(TRANSLATIONS.header.actions.cart.ariaLabel)}
           >
+            <span className="icon icon--cart"></span>
             {!!cartState.length && (
               <div className="counter">{cartState.length}</div>
             )}
@@ -241,6 +264,24 @@ export const Navbar = () => {
 
         <div className="header__actions header__actions--mobile-menu">
           <button
+            onClick={toggleTheme}
+            className={classNames(
+              'header__theme header__theme--mobile-menu btn btn--menu',
+            )}
+            aria-label={
+              theme === 'dark-theme'
+                ? t(TRANSLATIONS.header.actions.theme.light.ariaLabel)
+                : t(TRANSLATIONS.header.actions.theme.dark.ariaLabel)
+            }
+          >
+            {theme === 'dark-theme' ? (
+              <span className="icon icon--sun"></span>
+            ) : (
+              <span className="icon icon--moon"></span>
+            )}
+          </button>
+
+          <button
             onClick={changeLang}
             className="header__lang header__lang--mobile-menu btn btn--menu"
             aria-label={t(TRANSLATIONS.header.actions.lang.ariaLabel)}
@@ -253,7 +294,7 @@ export const Navbar = () => {
             className={({ isActive }) =>
               classNames(
                 // eslint-disable-next-line max-len
-                'header__favorites header__favorites--mobile-menu btn--menu icon--favorites',
+                'header__favorites header__favorites--mobile-menu btn btn--menu',
                 {
                   'nav__link--active': isActive,
                 },
@@ -262,6 +303,7 @@ export const Navbar = () => {
             onClick={() => setShowMenu(false)}
             aria-label={t(TRANSLATIONS.header.actions.favourites.ariaLabel)}
           >
+            <span className="icon icon--favorites"></span>
             {!!favouritesState.length && (
               <div className="counter counter--mobile-menu">
                 {favouritesState.length}
@@ -273,7 +315,7 @@ export const Navbar = () => {
             to="/cart"
             className={({ isActive }) =>
               classNames(
-                'header__cart header__cart--mobile-menu btn--menu icon--cart',
+                'header__cart header__cart--mobile-menu btn btn--menu',
                 {
                   'nav__link--active': isActive,
                 },
@@ -282,6 +324,7 @@ export const Navbar = () => {
             onClick={() => setShowMenu(false)}
             aria-label={t(TRANSLATIONS.header.actions.cart.ariaLabel)}
           >
+            <span className="icon icon--cart"></span>
             {!!cartState.length && (
               <div className="counter counter--mobile-menu">
                 {cartState.length}

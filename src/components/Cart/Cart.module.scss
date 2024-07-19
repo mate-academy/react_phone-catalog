@@ -31,7 +31,7 @@
     flex-direction: column;
     gap: 16px;
     padding: 24px;
-    border: 1px solid $c-elements;
+    border: 1px solid var(--c-elements);
     margin-bottom: 64px;
 
     grid-column: 1 / -1;
@@ -46,7 +46,7 @@
   }
 
   &__total-subtitle {
-    color: $c-secondary;
+    color: var(--c-secondary);
   }
 
   &__no-product-message {

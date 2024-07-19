@@ -3,31 +3,36 @@
   height: 16px;
   display: block;
   background-size: cover;
-  background-color: $c-white;
+  background-color: var(--c-bg-icon);
   transition: scale $duration-transition ease-in-out;
 
   &--c-base {
-    background-color: $c-icons;
+    background-color: var(--c-icons);
+  }
+
+  &--sun {
+    mask: url('../images/icons/icon-sun.svg') no-repeat 50% 50%;
+    mask-size: 16px;
+  }
+
+  &--moon {
+    mask: url('../images/icons/icon-moon.svg') no-repeat 50% 50%;
   }
 
   &--favorites {
-    background-image: url('../images/icons/icon-heart-stroke.svg');
+    mask: url('../images/icons/icon-heart-stroke.svg') no-repeat 50% 50%;
   }
 
   &--cart {
-    background-image: url('../images/icons/icon-shopping-bag.svg');
+    mask: url('../images/icons/icon-shopping-bag.svg') no-repeat 50% 50%;
   }
 
   &--menu {
-    background-image: url('../images/icons/icon-menu.svg');
+    mask: url('../images/icons/icon-menu.svg') no-repeat 50% 50%;
   }
 
   &--close {
-    background-image: url('../images/icons/icon-close.svg');
-  }
-
-  &--menu, &--close {
-    background-color: transparent;
+    mask: url('../images/icons/icon-close.svg') no-repeat 50% 50%;
   }
 
   &--arrow-left {
@@ -49,7 +54,7 @@
   }
 
   &--heart-filled {
-    background-color: $c-red;
+    background-color: var(--c-red);
     mask: url('../images/icons/icon-heart-filled.svg') no-repeat 50% 50%;
   }
 

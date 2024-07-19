@@ -46,15 +46,15 @@
   &__link {
     @extend %uppercase;
 
-    color: $c-secondary;
+    color: var(--c-secondary);
     text-decoration: none;
     display: flex;
     align-items: center;
 
-    @include hover(color, $c-white);
+    @include hover(color, var(--c-link-hover));
 
     &--active {
-      color: $c-white;
+      color: var(--c-link-active);
       cursor: default;
       pointer-events: none;
 
@@ -63,7 +63,7 @@
         position: absolute;
         height: 3px;
         width: 100%;
-        background-color: $c-white;
+        background-color: var(--c-link-pseudo-element);
         bottom: 0;
       }
     }
@@ -71,13 +71,13 @@
 }
 
 .counter {
-  color: $c-white;
+  color: var(--c-white);
   font-size: 9px;
 
   min-width: 14px;
   height: 14px;
-  background-color: $c-red;
-  border: 1px solid $c-black;
+  background-color: var(--c-red);
+  border: 1px solid var(--c-bg-primary);
   border-radius: 50%;
 
   display: grid;
@@ -108,7 +108,7 @@
 
 .divider {
   height: 1px;
-  background-color: $c-elements;
+  background-color: var(--c-elements);
 }
 
 .visually-hidden:not(:focus, :active) {
@@ -122,7 +122,7 @@
 }
 
 .text-color-sec {
-  color: $c-secondary;
+  color: var(--c-secondary);
 }
 
 .price-block {
@@ -138,7 +138,7 @@
     font-size: 22px;
     line-height: 28px;
     font-weight: $fw-regular;
-    color: $c-secondary;
+    color: var(--c-secondary);
     text-decoration: line-through;
   }
 }

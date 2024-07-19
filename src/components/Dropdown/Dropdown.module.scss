@@ -5,7 +5,7 @@
     @extend %smalltext;
 
     display: block;
-    color: $c-secondary;
+    color: var(--c-secondary);
     margin-bottom: 4px;
   }
 
@@ -17,9 +17,9 @@
     display: flex;
     width: 100%;
     padding: 9px 11px;
-    border: 1px solid $c-surface-2;
-    color: $c-white;
-    background-color: $c-surface-2;
+    border: 1px solid var(--c-elements);
+    color: var(--c-text-primary);
+    background-color: var(--c-bg-dropdown);
     position: relative;
 
     &::before {
@@ -30,21 +30,22 @@
       height: 16px;
       top: 11px;
       right: 11px;
-      background-color: $c-secondary;
+      background-color: var(--c-secondary);
       mask: url('../../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
       transform: rotate(90deg);
     }
 
     &:hover {
-      border: 1px solid $c-icons;
+      border: 1px solid var(--c-icons);
     }
 
     &:hover::before {
-      background-color: $c-icons;
+      background-color: var(--c-icons);
     }
 
     &:focus {
-      border: 1px solid $c-accent;
+      background-color: var(--c-bg-dropdown-focus);
+      border: 1px solid var(--c-border-dropdown-focus);
     }
 
     &--focus::before {
@@ -55,8 +56,8 @@
   &__options {
     z-index: $zindex-dropdown;
     padding-block: 8px;
-    background-color: $c-black;
-    border: 1px solid $c-surface-2;
+    background-color: var(--c-bg-primary);
+    border: 1px solid var(--c-elements);
 
     position: absolute;
     left: 0;
@@ -67,11 +68,11 @@
 
   &__option {
     padding: 6px 12px;
-    color: $c-secondary;
+    color: var(--c-secondary);
 
     &:hover {
-      color: $c-white;
-      background-color: $c-surface-2;
+      color: var(--c-text-primary);
+      background-color: var(--c-elements);
       cursor: pointer;
     }
   }
