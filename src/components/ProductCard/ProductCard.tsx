@@ -33,8 +33,10 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
       </Link>
 
       <div className="product-card__price-container">
-        <h3 className="product-card__price title title--h3">{product.price}</h3>
-        <p className="product-card__fullprice">{product.fullPrice}</p>
+        <h3 className="product-card__price title title--h3">
+          ${product.price}
+        </h3>
+        <p className="product-card__fullprice">${product.fullPrice}</p>
       </div>
 
       <div className="product-card__information">

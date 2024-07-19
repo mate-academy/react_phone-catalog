@@ -40,6 +40,12 @@ export const CartPage = () => {
     return acc + product.price * (cartItem ? cartItem.quantity : 1);
   }, 0);
 
+  const totalQuantity = cartProducts.reduce((acc, product) => {
+    const cartItem = carts.find(item => item.id === product.itemId);
+
+    return acc + (cartItem ? cartItem.quantity : 1);
+  }, 0);
+
   useEffect(() => {
     const fetchFavouriteProducts = async () => {
       const cartProd = await getProductsById(cartIds);
@@ -71,7 +77,7 @@ export const CartPage = () => {
         <div className="cartPage__total-price-block">
           <p className="cartPage__price">${totalPrice}</p>
           <p className="paragraph cartPage__subtitle ">
-            Total for {carts.length} items
+            Total for {totalQuantity} items
           </p>
           <hr className="cartPage__line" />
 

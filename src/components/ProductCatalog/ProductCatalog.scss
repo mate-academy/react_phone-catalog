@@ -4,13 +4,14 @@
 .catalog {
   display: flex;
   flex-direction: column;
+
   &__item {
     @include on-tablet {
       width: 288px;
     }
 
     @include on-desktop {
-      width: 272px;
+      width: 249px;
     }
   }
 
