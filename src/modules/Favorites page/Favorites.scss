@@ -1,0 +1,20 @@
+@import '../../App.scss';
+
+.favorites {
+  margin-bottom: 64px !important;
+
+  &__empty {
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 16px;
+    margin: 60px auto;
+    text-align: center;
+  }
+
+  &__title {
+    @include h2;
+    color: var(--primary);
+  }
+}

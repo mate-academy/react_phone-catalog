@@ -1,0 +1,117 @@
+@import '../../../../App.scss';
+
+.icon {
+  &--logo {
+    width: 96px;
+    height: $header-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include on-desktop {
+      width: 128px;
+      height: $header-height-desktop;
+    }
+
+    img {
+      width: 64px;
+      height: 22px;
+
+      @include on-desktop {
+        width: 80px;
+        height: 28px;
+      }
+    }
+  }
+
+  &--block {
+    border-inline: 1px solid var(--elements);
+    width: $header-height;
+    height: $header-height;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    &:hover {
+      box-shadow: none;
+    }
+
+    @include on-desktop {
+      width: $header-height-desktop;
+      height: $header-height-desktop;
+    }
+
+    &-active {
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 45px;
+        height: 3px;
+        width: 100%;
+        background-color: var(--primary);
+
+        @include on-desktop {
+          top: 60px;
+        }
+      }
+    }
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+
+  &--menu {
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &--nav-menu {
+    display: flex;
+  }
+
+  &--nav-favourites, &--nav-cart {
+    width: 50%;
+    justify-content: center;
+    padding-block: 24px;
+    border-top: 1px solid var(--elements);
+
+    &:hover {
+      border-bottom: 1px solid var(--primary);
+    }
+  }
+
+  &--nav-favourites {
+    border-right: 1px solid var(--elements);
+  }
+
+  &--favourites, &--cart {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+
+      &:hover {
+        border: 1px solid var(--primary);
+      }
+    }
+  }
+
+  &--favourites--button {
+    width: 40px;
+    height: 40px;
+    background-color: var(--surface2);
+    border: 1px solid var(--icons);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-active {
+      border: 1px solid var(--primary);
+    }
+  }
+}

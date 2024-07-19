@@ -1,0 +1,19 @@
+@import '../../App.scss';
+
+.home {
+  @include on-tablet {
+  }
+
+  &__title {
+    @include h1;
+    color: var(--primary);
+    padding-block: 24px;
+
+    @include on-tablet {
+      @include grid;
+
+      grid-column: 1 / 9;
+    }
+  }
+
+}

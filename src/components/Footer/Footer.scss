@@ -1,0 +1,79 @@
+@import '../../App.scss';
+
+.footer {
+  &__container {
+    padding-block: 32px;
+    border-top: 1px solid var(--elements);
+    @include grid;
+    row-gap: 32px;
+
+    @include on-tablet {
+      display: flex !important;
+      align-items: center;
+      justify-content: space-between;
+    }
+  }
+
+  &__ul {
+    display: flex !important;
+    flex-direction: column;
+    gap: 16px;
+    grid-column: 1 / 2;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 14px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__link {
+    @include uppercase;
+    color: var(--secondary);
+    transition: all 0.3s;
+
+    &:hover {
+      color: var(--primary);
+    }
+  }
+
+  &__top {
+    display: flex !important;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    grid-column: 1 / -1;
+  }
+
+  &__text {
+    @include small-text;
+    color: var(--secondary);
+  }
+}
+
+.icon {
+  &--footer-logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &--chevron {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--elements);
+    background-color: var(--surface2);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    img {
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+

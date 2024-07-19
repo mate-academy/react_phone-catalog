@@ -1,0 +1,40 @@
+@import '../../../../App.scss';
+
+.phone {
+  padding-block: 56px;
+
+  @include on-tablet {
+    padding-block: 64px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2;
+    color: var(--primary);
+  }
+
+  &__slide {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    &--left, &--right {
+      border: 1px solid var(--icons);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 32px;
+      height: 32px;
+
+      img {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+}

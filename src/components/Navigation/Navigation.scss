@@ -1,0 +1,173 @@
+@import '../../App.scss';
+@import './components/Icon/icon.scss';
+
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background-color: var(--bg);
+
+  &__content {
+    box-shadow: 0px 1px 0px var(--elements);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
+  &__ul {
+    display: none;
+
+    @include on-tablet {
+      margin-left: 16px;
+      display: flex;
+      align-items: center;
+      gap: 32px;
+    }
+
+    @include on-desktop {
+      margin-left: 24px;
+      gap: 64px;
+    }
+  }
+
+  &__list {
+    height: $header-height;
+    display: flex;
+    align-items: center;
+
+  }
+
+  &__link {
+    height: $header-height;
+    align-content: space-evenly;
+    @include hover(color, var(--primary));
+    @include uppercase;
+    color: var(--secondary);
+    position: relative;
+    transition: all 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 45px;
+      height: 3px;
+      width: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+
+      @include on-desktop {
+        top: 53px;
+      }
+    }
+
+    &:hover {
+      &::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      display: block;
+      position: relative;
+      color: var(--primary);
+
+      &::after {
+        content: "";
+        display: block;
+        position: absolute;
+        top: 45px;
+        height: 3px;
+        background-color: var(--primary);
+        width: 100%;
+
+        @include on-desktop {
+          top: 53px;
+        }
+      }
+    }
+  }
+
+  &__counter {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid var(--white);
+    background-color: var(--red);
+    color: var(--white);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 9px;
+    position: absolute;
+    top: 12px;
+    right: 10px;
+
+    @include on-desktop {
+      top: 19px;
+      right: 15px;
+    }
+  }
+}
+
+
+.toggle-switch {
+  position: relative;
+  width: 40px;
+  bottom: 10px;
+
+  &__label {
+    position: absolute;
+    width: 40px;
+    height: 20px;
+    background-color: #28292c;
+    border-radius: 50px;
+    cursor: pointer;
+  }
+
+  &__input {
+    position: absolute;
+    display: none;
+  }
+
+  &__slider {
+    position: absolute;
+    width: 100%;
+    height: 20px;
+    border-radius: 50px;
+    transition: 0.3s;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 3px;
+      left: 2px;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      box-shadow: inset 5px -4px 0px 0px #d8dbe0;
+      background-color: #28292c;
+      transition: 0.3s;
+    }
+  }
+}
+
+.toggle-switch__input:checked ~ .toggle-switch__slider {
+  background-color: #5d5d5d;
+}
+
+.toggle-switch__input:checked ~ .toggle-switch__slider::before {
+  transform: translateX(20px);
+  background-color: #ffd200;
+  box-shadow: none;
+}

@@ -1,0 +1,99 @@
+@import '../../../../App.scss';
+
+.category {
+
+  &__title {
+    @include h2;
+    color: var(--primary);
+    padding-bottom: 24px;
+  }
+
+  &__gadgets {
+    @include grid;
+    row-gap: 32px;
+  }
+
+  &__phones {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 1 / 5;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 9;
+    }
+
+    &-img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &-title {
+      padding: 24px 0 4px;
+      @include h4;
+      color: var(--primary);
+    }
+
+    &-text {
+      @include body-text;
+      color: var(--secondary);
+    }
+  }
+
+  &__tablets {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 5 / 9;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / 17;
+    }
+
+    &-img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &-title {
+      padding: 24px 0 4px;
+      @include h4;
+      color: var(--primary);
+    }
+
+    &-text {
+      @include body-text;
+      color: var(--secondary);
+    }
+  }
+
+  &__accessories {
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 9 / -1;
+    }
+
+    @include on-desktop {
+      grid-column: 17 / -1;
+    }
+
+    &-img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    &-title {
+      padding: 24px 0 4px;
+      @include h4;
+      color: var(--primary);
+    }
+
+    &-text {
+      @include body-text;
+      color: var(--secondary);
+    }
+  }
+}

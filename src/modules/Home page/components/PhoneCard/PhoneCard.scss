@@ -1,0 +1,92 @@
+@import '../../../../App.scss';
+
+.phone-card {
+  display: flex !important;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid var(--elements);
+  margin-top: 24px;
+  padding: 32px;
+
+  &__image{
+    width: 148px;
+    height: 181px;
+    object-fit: contain;
+
+    @include on-tablet {
+      width: 173px;
+      height: 211px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__title {
+    @include body-text;
+    padding-top: 16px;
+    color: var(--primary);
+  }
+
+  &__price {
+    @include h3;
+    padding-block: 8px;
+    color: var(--primary);
+
+    &--hot {
+      color: var(--secondary);
+      font-weight: 400;
+      text-decoration: line-through;
+      margin-left: 8px;
+    }
+  }
+
+  &__specs {
+    padding-block: 16px;
+    border-top: 1px solid var(--elements);
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    &-label {
+      @include small-text;
+      color: var(--secondary);
+    }
+
+    &-value {
+      @include small-text;
+      color: var(--primary);
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__button {
+    @include buttons;
+    color: var(--white);
+    background-color: var(--accent);
+    padding-inline: 9.5px;
+    flex: 1;
+
+    &--added {
+      border: 1px solid var(--elements);
+      background-color: var(--bg);
+      color: var(--green);
+    }
+  }
+}

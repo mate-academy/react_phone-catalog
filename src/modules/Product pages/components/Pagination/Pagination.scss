@@ -1,0 +1,47 @@
+@import '../../../../App.scss';
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin: 24px 0 40px;
+  gap: 8px;
+
+  img {
+    width: 16px;
+    height: 16px;
+  }
+
+  &--number {
+    background-color: var(--bg);
+    span {
+      color: var(--primary);
+    }
+  }
+
+  &--right, &--left {
+    background-color: var(--surface2);
+  }
+
+  &__block {
+    border: 1px solid var(--icons);
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid var(--primary);
+    }
+  }
+
+  &__active {
+    background-color: var(--accent);
+    border: 1px solid var(--primary);
+
+    span {
+      color: var(--white);
+    }
+  }
+}

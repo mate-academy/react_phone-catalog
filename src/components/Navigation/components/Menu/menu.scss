@@ -1,0 +1,73 @@
+@import '../Icon/icon.scss';
+
+@keyframes slide-up {
+  to {
+      opacity: 1;
+      transform: translateY(0px);
+  }
+}
+
+.menu {
+  background-color: var(--bg);
+  overflow: hidden;
+
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  &__page {
+    opacity: 0;
+    transform: translateY(20px);
+    animation: slide-up .3s ease-out forwards;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0px 1px 0px var(--elements);
+  }
+
+  &__ul {
+    margin-top: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &__link {
+    padding-block: 8px;
+    @include uppercase;
+    color: var(--secondary);
+    position: relative;
+    transition: all 0.3s;
+
+    &::after {
+      content: "";
+      display: block;
+      position: absolute;
+      top: 33px;
+      height: 3px;
+      width: 0;
+      background-color: var(--primary);
+      transition: width 0.3s;
+    }
+
+    &:hover {
+      color: var(--primary);
+
+      &::after {
+        width: 100%;
+      }
+    }
+  }
+
+  &__bottom {
+    display: flex;
+  }
+}

@@ -1,1 +1,57 @@
-// not empty
+@import './styles/fonts.scss';
+@import './styles/utils.scss';
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: 'Mont', sans-serif;
+  background-color: var(--bg);
+}
+
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.container {
+  display: block;
+  @include content-padding-inline;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+}
+
+a {
+  text-decoration: none;
+  font-family: 'Mont', sans-serif;
+}
+
+ul,
+ol,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+p, h1, h2, h3, h4 {
+  margin: 0;
+}
+
+img {
+  transition: all .3s;
+  &:hover {
+    transform: scale(1.05);
+  }
+}

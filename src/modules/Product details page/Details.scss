@@ -1,0 +1,355 @@
+@import '../../App.scss';
+
+.details {
+  &__link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    @include small-text;
+    color: var(--secondary);
+  }
+
+  &__history {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 24px 0 24px;
+    text-transform: capitalize;
+
+    @include on-tablet {
+      margin: 24px 0 40px;
+    }
+  }
+
+  &__back {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-bottom: 16px;
+  }
+
+  &__title {
+    @include h1;
+    color: var(--primary);
+    padding-bottom: 8px;
+    margin-bottom: 32px;
+    grid-column: 1 / -1;
+    text-transform: capitalize;
+  }
+
+  &__data {
+    @include grid;
+  }
+
+  &__images {
+    grid-column: 1 / -1;
+    @include grid;
+
+    @include on-tablet {
+      grid-row: 1 / -1;
+    }
+
+    &--main {
+      grid-column: 1 / -1;
+      width: 274px;
+      margin: 0 auto;
+
+      @include on-tablet {
+        grid-column: 2 / 8;
+        grid-row: 1 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 3 / 13;
+      }
+    }
+
+    &--blocks {
+      grid-column: 1 / -1;
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+
+      @include on-tablet {
+        grid-column: 1 / 2;
+        flex-direction: column;
+        grid-row: 1 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 1 / 3;
+      }
+
+      &-img {
+        width: 50px;
+        height: 50px;
+        border: 1px solid var(--elements);
+        cursor: pointer;
+
+        @include on-tablet {
+          width: 80px;
+          height: 80px;
+        }
+
+        &:hover {
+          border: 1px solid var(--primary);
+        }
+
+        &-active {
+          border: 1px solid var(--primary);
+        }
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          padding: 7px;
+        }
+      }
+    }
+  }
+
+  &__filters {
+    grid-column: 1 / -1;
+    margin: 40px 0 56px;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 1;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+    }
+
+    &--colors {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+
+      &-block {
+        width: 32px;
+        height: 32px;
+        border-radius: 50%;
+        border: 1px solid var(--icons);
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          border: 1px solid var(--primary);
+        }
+
+        &-active {
+          border: 1px solid var(--primary);
+        }
+
+        .color {
+          width: 30px;
+          height: 30px;
+          border-radius: 50%;
+          border: 2px solid var(--elements);
+        }
+      }
+    }
+  }
+
+  &__colors {
+    &--text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &--title {
+      @include small-text;
+      color: var(--secondary);
+    }
+
+    &--id {
+      @include small-text;
+      color: var(--icons);
+    }
+  }
+
+  &__capacity {
+    padding-block: 24px;
+    margin: 24px 0 32px;
+    border-top: 1px solid var(--elements);
+    border-bottom: 1px solid var(--elements);
+
+    &--title {
+      @include small-text;
+      color: var(--secondary);
+    }
+
+    &--capacities {
+      display: flex;
+      gap: 8px;
+      margin-top: 8px;
+
+      &-block {
+        padding: 7px 8px 4px;
+        background-color: var(--bg);
+        border: 1px solid var(--icons);
+        color: var(--primary);
+        cursor: pointer;
+
+        &:hover {
+          border: 1px solid var(--primary);
+        }
+
+        &-active {
+          border: 1px solid var(--primary);
+          background-color: var(--primary);
+          color: var(--bg);
+        }
+      }
+    }
+  }
+
+  &__buy {
+    &--price {
+      margin-bottom: 16px;
+      span:nth-child(1) {
+        @include h2;
+        color: var(--primary);
+      }
+      span:nth-child(2) {
+        margin-left: 8px;
+        font-weight: 400;
+        font-size: 22px;
+        color: var(--secondary);
+        text-decoration: line-through;
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 8px;
+
+      &-added {
+        width: 231px;
+        height: 48px;
+        background-color: var(--bg);
+        border: 1px solid var(--icons);
+        color: var(--green);
+      }
+
+      &-cart {
+        width: 231px;
+        height: 48px;
+        background-color: var(--accent);
+        color: var(--white);
+
+        @include on-tablet {
+          width: 180px;
+        }
+
+        @include on-desktop {
+          width: 263px;
+        }
+      }
+
+      &-favourites {
+        width: 48px;
+        height: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: var(--surface2);
+        border: 1px solid var(--icons);
+
+        &:hover {
+          border: 1px solid var(--primary);
+        }
+      }
+    }
+  }
+
+  &__specs {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 8 / -1;
+      grid-row: 2;
+      width: 237px;
+    }
+
+    @include on-desktop {
+      grid-column: 14 / 21;
+      width: 320px;
+    }
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+
+    &-label {
+      @include small-text;
+      color: var(--secondary);
+    }
+
+    &-value {
+      @include small-text;
+      color: var(--primary);
+    }
+  }
+
+  &__info {
+    margin-block: 56px;
+    @include grid;
+
+    &--title {
+      @include h3;
+      color: var(--primary);
+      display: block;
+      padding-bottom: 16px;
+      border-bottom: 1px solid var(--elements);
+    }
+  }
+
+  &__about {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+
+    &--block {
+      margin-top: 32px;
+
+      &-title {
+        @include h4;
+        color: var(--primary);
+        margin-bottom: 16px;
+      }
+
+      &-text {
+        @include body-text;
+        color: var(--secondary);
+      }
+    }
+  }
+
+  &__tech {
+    grid-column: 1 / -1;
+
+    @include on-desktop {
+      grid-column: 14 / -1;
+    }
+
+    &--specs {
+      margin-top: 32px;
+      width: 100% !important;
+    }
+  }
+}
