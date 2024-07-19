@@ -45,8 +45,8 @@
     height: 250px;
     border: 1px solid var(--icons);
     position: absolute;
-    top: 0;
-    left: 15px;
+    top: 20px;
+    left: 5px;
     border-radius: 10px;
 
     &:hover {
@@ -69,8 +69,8 @@
     height: 250px;
     border: 1px solid var(--icons);
     position: absolute;
-    top: 0;
-    right: 15px;
+    top: 20px;
+    right: 5px;
     border-radius: 10px;
 
     &:hover {
@@ -93,8 +93,9 @@
     border-radius: 20px;
 
     @include for-tablet {
+      height: 300px;
       margin-bottom: 10px;
-      width: 80%;
+      width: 90%;
     }
 
     @include for-desktop {

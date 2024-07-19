@@ -2,6 +2,7 @@
 @use "../../utils/themes" as *;
 
 .brand_new_models {
+  overflow: hidden;
 
   &__container {
     display: flex;
@@ -14,6 +15,7 @@
   }
 
   &__title {
+    color: var(--primary-color);
     font-size: 22px;
     font-weight: 800;
     width: 136px;
