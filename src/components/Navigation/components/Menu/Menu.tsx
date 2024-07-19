@@ -52,7 +52,6 @@ export const Menu: React.FC = () => {
         <div className="icon icon--nav-menu icon--nav-favourites">
           <ThemeSwitch />
         </div>
-        <div className="icon icon--nav-menu icon--nav-favourites">Lang</div>
         <Link
           to="/favorites"
           className="icon icon--nav-menu icon--nav-favourites"
