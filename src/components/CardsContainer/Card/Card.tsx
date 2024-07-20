@@ -15,7 +15,7 @@ import { availableFav } from '../../../utils/availableFav';
 type Props = {
   product: Product;
   discount?: boolean;
-  widthRef?: RefObject<HTMLLIElement>;
+  widthRef?: RefObject<HTMLDivElement>;
 };
 
 export const Card: React.FC<Props> = ({
@@ -30,12 +30,12 @@ export const Card: React.FC<Props> = ({
   const { screen, capacity, ram } = product;
 
   return (
-    <li
+    <div
+      ref={widthRef}
+      key={product.id}
       className={classNames(style.card__container, {
         [style.card__darkTheme]: theme,
       })}
-      key={product.id}
-      ref={widthRef}
     >
       <Link
         to={`../../${product.category}/${product.itemId}`}
@@ -102,6 +102,6 @@ export const Card: React.FC<Props> = ({
           )}
         </button>
       </div>
-    </li>
+    </div>
   );
 };

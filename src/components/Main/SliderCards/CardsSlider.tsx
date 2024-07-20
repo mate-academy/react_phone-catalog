@@ -32,7 +32,7 @@ export const CardsSlider: React.FC<Props> = ({
   const lengthImgList = products.length - 1;
   const containerWidthRef = useRef(0);
   const containerRef = useRef<HTMLDivElement>(null);
-  const widthRef = useRef<HTMLLIElement>(null);
+  const widthRef = useRef<HTMLDivElement>(null);
   const currentOffsetXRef = useRef(0);
   const startXRef = useRef(0);
   const startYRef = useRef(0);
@@ -217,20 +217,22 @@ export const CardsSlider: React.FC<Props> = ({
           <ul className={style.cardsSlider__cardsList} draggable={false}>
             {isLoading
               ? skeletonCartParams.map(({ height, width }, i) => (
-                  <Skeleton
-                    key={i}
-                    className={`${style.cardsSlider__cardContainer} ${style.cardsSlider__cardsList}`}
-                    width={width}
-                    height={height}
-                  />
+                  <li key={i}>
+                    <Skeleton
+                      className={`${style.cardsSlider__cardContainer} ${style.cardsSlider__cardsList}`}
+                      width={width}
+                      height={height}
+                    />
+                  </li>
                 ))
               : products.map(product => (
-                  <Card
-                    product={product}
-                    discount={discount}
-                    widthRef={widthRef}
-                    key={product.itemId}
-                  />
+                  <li key={product.itemId} className={classNames(style.cardsSlider__container, {[style.cardsSlider__darkTheme]: theme})}>
+                    <Card
+                      product={product}
+                      discount={discount}
+                      widthRef={widthRef}
+                    />
+                  </li>
                 ))}
           </ul>
         </div>

@@ -60,7 +60,20 @@
     grid-column: 1 / 7;
     user-select: none;
   }
+
+  &__container {
+    width: 100%;
+    padding: 32px;
+    border: 1px solid $bordeColor;
+    background-color: $backgroundColorPhoneCard;
+    flex-shrink: 0;
+  }
 }
+
+.cardsSlider__container.cardsSlider__darkTheme {
+  border: none;
+}
+
 
 @include onTablet {
   .cardsSlider {

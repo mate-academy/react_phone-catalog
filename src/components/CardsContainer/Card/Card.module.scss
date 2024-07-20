@@ -3,14 +3,6 @@
 @import '../../../styles/block/utils/placeholders';
 
 .card {
-  &__container {
-    width: 100%;
-    padding: 32px;
-    border: 1px solid $bordeColor;
-    background-color: $backgroundColorPhoneCard;
-    flex-shrink: 0;
-  }
-
   &__cardName {
     position: relative;
     display: flex;
@@ -157,8 +149,4 @@
   &__darkTheme &__сardFavBtn:hover {
     @extend %darkThemeHoverBackgroundButton;
   }
-}
-
-.card__darkTheme.card__container {
-  border: none;
 }
