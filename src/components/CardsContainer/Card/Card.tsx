@@ -31,6 +31,7 @@ export const Card: React.FC<Props> = ({
 
   const scrollToTop = () => {
     document.body.style.overflowY = 'auto';
+
     return window.scrollTo(0, 100);
   };
 
