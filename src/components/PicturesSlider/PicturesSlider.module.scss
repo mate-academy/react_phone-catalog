@@ -1,0 +1,30 @@
+@import '../../styles/index';
+
+.swiper {
+  &__wrapper {
+    position: relative;
+    max-width: 1040px;
+    margin: 56px auto 112px;
+  }
+
+  &__image {
+    height: 400px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 8px;
+
+    &--1 {
+      background-image: url('../../images/banner-new-phone.png');
+    }
+    &--2 {
+      background-image: url('../../images/banner-tablets.png');
+      background-position: center;
+      background-color: $grey-color;
+    }
+    &--3 {
+      background-image: url('../../images/banner-accessories.png');
+      background-position: top;
+      background-color: $red-color;
+    }
+  }
+}

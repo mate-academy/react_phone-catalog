@@ -1,0 +1,21 @@
+@import '../../styles/index';
+
+.categories {
+  margin-bottom: 80px;
+
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__text {
+    color: $secondary-text-color;
+  }
+
+  &__wrapper {
+    @include flex;
+  }
+
+  &__img {
+    @include hover(transform, scale(1.05));
+  }
+}

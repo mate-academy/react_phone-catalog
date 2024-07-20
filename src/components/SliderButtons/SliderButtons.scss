@@ -1,0 +1,45 @@
+@import '../../styles/index';
+
+.swiper-buttons-wrapper {
+  display: flex;
+  gap: 16px;
+}
+
+.swiper-button-next-brandNew,
+.swiper-button-next-hotPrices {
+  svg {
+    rotate: 180deg;
+  }
+}
+
+.swiper-button-prev-brandNew,
+.swiper-button-next-brandNew,
+.swiper-button-prev-hotPrices,
+.swiper-button-next-hotPrices {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  margin: 0;
+
+  @include button;
+
+  border: 1px solid $grey-color;
+  background-color: transparent;
+
+  &:not(:disabled) {
+    @include hover(border-color, $main-text-color);
+  }
+
+  &::after {
+    content: '';
+  }
+
+  &:disabled {
+    cursor: auto;
+    svg {
+      fill: $grey-color;
+    }
+  }
+}

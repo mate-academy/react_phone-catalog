@@ -1,14 +1,23 @@
 @import '../../styles/index';
 
 .productCard {
+  @include flex;
+
+  flex-direction: column;
   background-color: $white-color;
   width: 272px;
+  height: 506px;
   padding: 32px;
   border-radius: 8px;
+  border: 1px solid $elements-color;
+  cursor: pointer;
 
   &__img {
-    min-height: 196px;
-    margin-bottom: 24px;
+    object-fit: contain;
+    width: 208px;
+    height: 196px;
+
+    @include hover(transform, scale(1.1));
   }
 
   &__priceWrapper {

@@ -2,8 +2,15 @@ import classNames from 'classnames';
 import { Button } from '../Button/Button';
 import style from './ProductCard.module.scss';
 import { FavouritesButton } from '../FavouritesButton/FavouritesButton';
+import { Product } from '../../types/Product';
 
-export const ProductCard = () => {
+type Props = {
+  product: Product;
+  type: string;
+};
+
+export const ProductCard: React.FC<Props> = ({ product, type }) => {
+  const { name, fullPrice, price, screen, capacity, ram, image } = product;
   const techValueClassName = classNames(
     'text-small',
     style.productCard__techValue,
@@ -11,36 +18,41 @@ export const ProductCard = () => {
 
   return (
     <div className={style.productCard}>
-      <img
-        className={style.productCard__img}
-        src="../../../public/img/phones/apple-iphone-13-pro-max/gold/00.webp"
-        alt="product"
-      />
-      <p className="text-body">Apple iPhone Xs 64GB Silver (iMT9G2FS/A)</p>
-      <div className={style.productCard__priceWrapper}>
-        <h3>$799</h3>
-        <h3 className={style.productCard__fullPrice}>$899</h3>
-      </div>
+      <a className={style.productCard__imgWrapper}>
+        <img className={style.productCard__img} src={image} alt="product" />
+      </a>
+      <div>
+        <p className="text-body">{name}</p>
 
-      <div className={style.productCard__divider}></div>
+        {type === 'brandNew' ? (
+          <h3>${fullPrice}</h3>
+        ) : (
+          <div className={style.productCard__priceWrapper}>
+            <h3>${price}</h3>
+            <h3 className={style.productCard__fullPrice}>${fullPrice}</h3>
+          </div>
+        )}
 
-      <div className={style.productCard__information}>
-        <div className={style.productCard__info}>
-          <p className="text-small">Screen</p>
-          <p className={techValueClassName}>5.8” OLED</p>
+        <div className={style.productCard__divider}></div>
+
+        <div className={style.productCard__information}>
+          <div className={style.productCard__info}>
+            <p className="text-small">Screen</p>
+            <p className={techValueClassName}>{screen}</p>
+          </div>
+          <div className={style.productCard__info}>
+            <p className="text-small">Capacity</p>
+            <p className={techValueClassName}>{capacity}</p>
+          </div>
+          <div className={style.productCard__info}>
+            <p className="text-small">RAM</p>
+            <p className={techValueClassName}>{ram}</p>
+          </div>
         </div>
-        <div className={style.productCard__info}>
-          <p className="text-small">Capacity</p>
-          <p className={techValueClassName}>64 GB</p>
+        <div className={style.productCard__btns}>
+          <Button text="Add to cart" />
+          <FavouritesButton />
         </div>
-        <div className={style.productCard__info}>
-          <p className="text-small">RAM</p>
-          <p className={techValueClassName}>64 GB</p>
-        </div>
-      </div>
-      <div className={style.productCard__btns}>
-        <Button text="Add to cart" />
-        <FavouritesButton />
       </div>
     </div>
   );

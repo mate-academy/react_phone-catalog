@@ -1,10 +1,10 @@
 import React from 'react';
-import classes from './Button.module.scss';
+import styles from './Button.module.scss';
 
 type Props = {
   text: string;
 };
 
 export const Button: React.FC<Props> = ({ text }) => {
-  return <div className={classes.button}>{text}</div>;
+  return <div className={styles.button}>{text}</div>;
 };

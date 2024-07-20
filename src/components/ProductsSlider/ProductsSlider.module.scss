@@ -1,0 +1,14 @@
+@import '../../styles/index';
+
+.sliderProducts {
+  &__wrapper {
+    position: relative;
+    margin-bottom: 80px;
+  }
+
+  &__title {
+    @include flex;
+
+    margin-bottom: 24px;
+  }
+}

@@ -1,3 +1,8 @@
 @import './utils/variables';
 @import './utils/mixins';
 @import './utils/typography';
+@import 'swiper/scss';
+@import 'swiper/scss/navigation';
+@import 'swiper/scss/pagination';
+@import 'swiper/scss/autoplay';
+@import './slider';
