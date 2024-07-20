@@ -23,7 +23,7 @@ export const Crumbs: React.FC<Props> = ({ path, details }) => {
           <React.Fragment key={item}>
             <img
               className={Styles.crumbs__item}
-              src=".\img\svg\arrow_right_active.svg"
+              src=".\img\svg\arrow_right.svg"
               alt="arrow right"
             />
             <Link to={`/${item}`}>
