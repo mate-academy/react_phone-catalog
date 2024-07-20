@@ -1,14 +1,12 @@
 # React Product Catalog
 
-[DEMO](https://katsubodmytro.github.io/react_phone-catalog/)
-[MOCKUP LIGHT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
+[DEMO](https://katsubodmytro.github.io/react_phone-catalog/)\n
+[MOCKUP LIGHT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)\n
 [MOCKUP DARK](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
 
 ### Stack technologies were used:
 
-<p>
 [![My Skills](https://skillicons.dev/icons?i=react,redux,ts&perline=3)](https://skillicons.dev)
-</p>
 
 ---
 
