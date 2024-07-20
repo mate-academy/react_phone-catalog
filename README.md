@@ -1,143 +1,208 @@
 # React Product Catalog
 
-Implement the catalog with a shopping cart and favorites page according to one of the next designs:
+[DEMO](https://katsubodmytro.github.io/react_phone-catalog/)
+[MOCKUP LIGHT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
+[MOCKUP DARK](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
 
-- [Original](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)
-- [Original Dark](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-- [Rounded Purple](https://www.figma.com/file/xMK2Dy0mfBbJJSNctmOuLW/Phone-catalog-(V2)-Rounded-Style-1?node-id=0%3A1)
-- [Rounded Orange](https://www.figma.com/file/7JTa0q8n3dTSAyMNaA0u8o/Phone-catalog-(V2)-Rounded-Style-3?node-id=0%3A1)
+### Stack technologies were used:
 
-You may also implement color theme switching!
+<p>
+[![My Skills](https://skillicons.dev/icons?i=react,redux,ts&perline=3)](https://skillicons.dev)
+</p>
 
-## If you work in a team
+---
 
-Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
+<h2>
+<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" align="center" alt="html5" width="40" height="40"/>
+  HTML
+</h2>
 
-## Project Setup from scratch
+<p>
+  I used HTML to build semantically correct pages.
+</p>
 
-Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/css3/css3-original-wordmark.svg" align="center" alt="css3" width="40" height="40"/>
+  CSS
+</h2>
 
-## Data
+<p>
+  For partial styling was used CSS3. 
+</p>
 
-Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/bootstrap/bootstrap-original.svg" align="center" alt="bootstrap" width="40" height="40"/>
+  Bootstrap
+</h2>
 
-## App
+<p>
+As the main base of styles was used Bootstrap. 
+  This library has a great base of ready-to-use components and flexible singleton classes that modify only one parameter at once.
+  This feature helped to style components without writing any specific selectors inside css file which increased the speed of layout creation. 
+</p>
 
-1. Put components into the `src/components` folder.
-   - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
-   - Use CSS modules.
-   - Keep `.module.scss` files together with their components.
-2. Advanced project structure:
-   - `src/modules` folder. Inside per page modules `HomePage`, `CartPage`, etc., and `shared` folder with shared content between modules.
-   - Inside each module its own `components` folder with the structure described above. And optionally other files/folders: `hooks`, `constants`, and so on.
-3. Add the sticky header with a logo, navigation, favorites, and cart.
-4. The footer with the link to the GitHub repo and `Back to top` button.
-   - The content should be limited to the same width as the page content;
-   - `Back to top` button should scroll to the top smoothly;
-5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
-6. All changes the hover effects should be smooth.
-7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/angularjs/angularjs-original.svg" align="center" alt="angular" width="40" height="40"/> 
+  Angular
+</h2>
 
-## Home page
+<p>
+  Angular is main framework I chose for this project because it provides a robust and efficient way to build complex user interfaces with reusable components. 
+  Its build in features helps you to create complicated project in short time without any issues, 
+  by using build-in features it becomes possible to implement authentication, managed to connect the components with their common data. 
+  Additionally, Angular declarative programming model simplifies the development process and makes it easier to maintain codebase over time.
+</p>
 
-Implement Home page at available at `/`.
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/javascript/javascript-original.svg" align="center" alt="javascript" width="40" height="40"/> 
+  JavaScript
+</h2>
 
-1. `<h1>Product Catalog</h1>` should be visually hidden.
-2. `PicturesSlider`:
-   - Find your own images to personalize the App;
-   - Change pictures automatically every 5 seconds;
-   - The next buttons should show the first image after the last one;
-   - Dashes at the bottom should allow choosing an exact picture.
-3. `ProductsSlider` for the `Hot prices` block:
-   - The products with a discount starting from the biggest absolute value;
-   - `<` and `>` buttons should scroll products.
-4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive.
+<p>
+  I used JS in my Angular project, mainly to send requests to an API that was also implemented with using Firebase realtime DB.
+</p>
 
-## Product pages
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/typescript/typescript-original.svg" align="center" alt="typescript" width="40" height="40"/>
+  TypeScript
+</h2>
 
-There should be 3 separate pages `/phones`, `/tablets`, and `/accessories`.
+<p>
+  With the help of TypeScript, I was able to type everything that I could in project, 
+  which allowed me to avoid many possible errors and make JavaScript more predictable.
+</p>
 
-1. Each page loads the data of the required `type`.
-2. Add an `h1` with `Phones/Tablets/Accessories page` (choose required).
-3. Add `ProductsList` component showing all the `products`.
-4. Implement a `Loader` to show it while waiting for the data from the server.
-5. In case of a loading error show the something went wrong message with a reload button.
-6. If there are no products available show the `There are no phones/tablets/accessories yet` message (choose required).
-7. Add a `<select>` with the `Newest`, `Alphabetically`, and `Cheapest` options to sort products by `age`, `title`, or `price` (after discount).
-   - Save the sort value in the URL `?sort=age` and apply it after the page reload.
-8. Add `Pagination` buttons and `Items on page` select element with `4`, `8`, `16`, and `all` options.
-   - It should limit the products you show to the user;
-   - Save pagination params in the URL `?page=2&perPage=8` (`page=1` and `perPage=all` are the default values and should not be added to the URL;
-   - Hide pagination elements if they do not make sense;
-   - You can use the logic explained in [the React Pagination task](https://github.com/mate-academy/react_pagination#react-pagination).
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/webpack/webpack-original.svg" alt="webpack" align="center" width="40" height="40"/>
+  Webpack
+</h2>
 
-## Product details page
+<p>
+  As a main builder i decided to use webpack because of it's good compatibility with angular and great support from community.
+</p>
 
-Create `ProductDetailsPage` available at `/product/:productId`.
+<h2>
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/firebase/firebase-plain.svg" align="center" alt="firebase" width="40" height="40"/>
+  Firebase
+</h2>
 
-1. `ProductCard` image and title should be links to the product details page.
-2. Use `Loader` when fetching the product details.
-3. Show the details on the page:
-   - Fix one `Available color` and one `Select capacity` value for now;
-   - `About` section should contain just a description (without any subheaders);
-   - Choose `Tech specs` you want to show.
-4. Add the ability to choose a picture.
-5. Implement `You may also like` block with products chosen randomly:
-   - Create `getSuggestedProducts` method fetching the suggested products.
-6. Add `Back` button working the same way as a Browser `Back` button.
-7. Add `Breadcrumbs` at the top with:
-   - A Home page link;
-   - A category page link (`Phones`, `Tablets`, `Accessories`);
-   - The name of the product (just a text).
-8. Show `Product was not found` if there is no product with a given id on the server.
+<p>
+  As a main backend service I decided to use firebase, because of simplicity of creation your own API with auth.
+</p>
 
-## Shopping Cart page
+<h2>
+  <img src="https://raw.githubusercontent.com/ReactiveX/rxjs/master/docs_app/src/assets/images/logos/Rx_Logo_S.png" align="center" alt="rxjs" width="40" height="40"/>  
+  Rxjs
+</h2>
 
-Create a Cart page with a list of `CartItem`s at `/cart`.
-Each item should have an `id`, `quantity`, and a `product`.
-Use React Context or Redux to store Items.
+<p>
+  By using rxjs I managed to handle difficult logic in Angular. 
+  Besides Rxjs library is a built-in feature in Angular that guarantees good maintenance from creators.
+</p>
 
-1. `Add to cart` button in the `ProductCard` should add a product to the `Cart`.
-2. If the product is already in the `Cart` the button should say `Added to cart` and do nothing.
-3. Add the ability to remove items from the `Cart` with an `x` button next to a `CartItem`.
-4. Add a message `Your cart is empty` when there are no products in the `Cart`.
-5. Add the ability to change the item quantity in the `Cart` with `-` and `+` buttons (it should be > 0).
-6. Total amount and quantity should be calculated automatically.
-7. Show the quantity at the `Cart` icon in the header.
-8. Save the `Cart` to `localStorage` on each change and read it on page load.
-9. `Checkout` button should show a modal dialog with the text `Checkout is not implemented yet. Do you want to clear the Cart?`:
-   - Clear the Cart if the user confirms the order;
-   - Keep the Cart items and close the confirmation on cancel;
-   - Use the `confirm` function if you don't have a better solution.
+---
 
-## Favorites page
+### How to use:
 
-Create `Favorites` page with a `ProductsList` showing favorite products at `/favorites`.
+<h2>
+  Authentication
+</h2>
 
-1. Add/remove a product to favorites by pressing a heart button in the `ProductCard` element.
-2. The heart should be highlighted if the product is already added to the favorites.
-3. Use React Context or Redux to store the favorites.
-4. Show the number of favorites at the `Favorites` icon in the header.
-5. Save favorites to `localStorage` on each change and load them on page load.
+<img src="./img/auth.png" alt="auth page">
 
-## Other tasks
+<p>
+  At the beginning you have almost nothing to use (there is possible to use only shopping list tab to add some products to buy).
+  To access for all features of this app you need to have own account. 
+  It's possible to create your own one by pressing <strong>Switch to Sign Up</strong> button and pass your credentials. (Instead of this way I recommend to use test account with:
+</p>
+<div>
+<pre style="padding: 10px; margin: 0; width: max-content">
+Email: test@test.com 
+Password: test123
+</pre>
+</div>
 
-1. Add `NotFoundPage` containing text `Page not found` for all the other URLs with the link to `HomePage`.
-2. Implement the `Product was not found` state for the `ProductDetailsPage`.
+If you were successful with authenticate, you would have used all functional of this app.
 
-## (*) Advanced tasks
+<h2>
+  Recipes list
+</h2>
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+<img src="./img/recipes-tab.png" alt="recipes list page">
 
-### Search
+<p>
+  From now you can see the new tabs on header. 
+  The <strong>Recipes</strong> tab is redirecting you to recipes list where you can manage the existed recipes or create new one.
+  There is also appeared <strong>Logout</strong> button which provides you possibility to leave current account and <strong>Manage</strong> select where you can find two options:
+</p>
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+<p>
+  1. <strong>Fetch Data</strong>: By pressing on this button the new recipes will be fetched from Firebase DB.
+  <br/>
+  2. <strong>Save Data</strong>: By pressing on this button your current recipe list rewrite the one which exists in Firebase DB.
+</p>
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+<p>
+  By clicking on one of the existed recipe you will be redirected to recipe details.
+  Besides there is a button <strong>New Recipe</strong> which gives you a possibility to create your own recipe.
+</p>
+
+<h2>
+  Recipe Details
+</h2>
+
+<img src="./img/recipes-details.png" alt="recipes details page">
+
+<p>
+  Here you can see all the information about the recipe such as image of it, name, description and ingredients.
+  Besides here you can manage the recipe. If you click on <strong>Manage Recipe</strong> select you will see 3 options:
+</p>
+
+<p>
+  1. <strong>To Shopping List</strong>: By pressing on this button the ingredients which this recipe has will be sent to shopping list.
+  <br/>
+  2. <strong>Edit Recipe</strong>: By pressing on this button you will be redirected to edit recipe component.
+  <br/>
+  2. <strong>Delete Recipe</strong>: By pressing on this button the recipe is going to be deleted.
+</p>
+
+<h2>
+  New Recipe
+</h2>
+
+<img src="./img/new-recipe.png" alt="new recipe page">
+
+<p>
+  This is the page where you can create new recipe by filling existed input fields.
+  For adding ingredients you need to press <strong>Add ingredient</strong> button which will create additional input fields for ingredient name and it's quantity.
+</p>
+
+<h2>
+  Edit Recipe
+</h2>
+
+<img src="./img/recipe-edit.png" alt="new recipe page">
+
+<p>
+  Here <strong>New Recipe</strong> component was reused. You can edit existed recipe info and save new one by clicking on <strong>Save</strong> button or cancel your changes by clicking on <strong>Cancel</strong> button.
+</p>
+
+<h2>
+  Shopping List
+</h2>
+
+<img src="./img/shopping-list-tab.png" alt="new recipe page">
+
+<p>
+  This is shopping list where you can find your current selected products.
+  Here will be some custom products by default which you can also delete by clicking on them and after on <strong>Delete</strong> button.
+  Besides it is possible to edit them in the same way but instead of clicking on <strong>Delete</strong> button you need to press <strong>Save</strong> button.
+  Here also a <strong>Clear</strong> button which resets the <strong>Name</strong> and <strong>Amount</strong> fields.
+  This list can be extended by new products which you can pass from recipe details page by clicking on <strong>To Shopping List</strong> button.
+</p>
+
+
+
+---
+
+Thank you for your attention🥰🥰🥰
