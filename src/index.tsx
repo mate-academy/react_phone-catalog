@@ -1,8 +1,8 @@
 import { createRoot } from 'react-dom/client';
+import './styles/main.scss';
 import './i18n';
 import { LanguageProvider } from './store/LanguageProvider';
 import { ThemeProvider } from './store/ThemeProvider';
-import './styles/main.scss';
 import { BreakPointsProvider } from './store/BreakPointsProvider';
 import { StateProvider } from './store/StateProvider';
 import { ProductsProvider } from './store/ProductsProvider';
