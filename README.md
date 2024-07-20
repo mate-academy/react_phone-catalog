@@ -10,7 +10,7 @@
 
 ---
 
-[![My Skills](https://skillicons.dev/icons?i=vscode)](https://skillicons.dev) <h2>Visual Studio Code</h2>
+[![My Skills](https://skillicons.dev/icons?i=vscode)](https://skillicons.dev) ###Visual Studio Code
 <p>
   I used it because it provides a customizable and efficient coding environment, and it's more pleasing to my eye
 </p>
