@@ -226,7 +226,12 @@ export const CardsSlider: React.FC<Props> = ({
                   </li>
                 ))
               : products.map(product => (
-                  <li key={product.itemId} className={classNames(style.cardsSlider__container, {[style.cardsSlider__darkTheme]: theme})}>
+                  <li
+                    key={product.itemId}
+                    className={classNames(style.cardsSlider__container, {
+                      [style.cardsSlider__darkTheme]: theme,
+                    })}
+                  >
                     <Card
                       product={product}
                       discount={discount}
