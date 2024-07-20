@@ -6,7 +6,7 @@
 
 ### Stack technologies were used:
 
-[![My Skills](https://skillicons.dev/icons?i=react,redux,ts&perline=3)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vscode,react,redux,sassts&perline=5)](https://skillicons.dev)
 
 ---
 
