@@ -1,22 +1,20 @@
 # React Product Catalog
 
-[DEMO](https://katsubodmytro.github.io/react_phone-catalog/)\n
-[MOCKUP LIGHT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)\n
+[DEMO](https://katsubodmytro.github.io/react_phone-catalog/)<br/>
+[MOCKUP LIGHT](https://www.figma.com/file/T5ttF21UnT6RRmCQQaZc6L/Phone-catalog-(V2)-Original)<br/>
 [MOCKUP DARK](https://www.figma.com/file/BUusqCIMAWALqfBahnyIiH/Phone-catalog-(V2)-Original-Dark)
 
 ### Stack technologies were used:
 
-[![My Skills](https://skillicons.dev/icons?i=vscode,react,redux,sass,ts&perline=5)](https://skillicons.dev)
+[![My Skills](https://skillicons.dev/icons?i=vscode,react,redux,sass,ts,figma&perline=6)](https://skillicons.dev)
 
 ---
 
 <h2>
-<img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original-wordmark.svg" align="center" alt="html5" width="40" height="40"/>
-  HTML
+[![My Skills](https://skillicons.dev/icons?i=vscode)](https://skillicons.dev) Visual Studio Code
 </h2>
-
 <p>
-  I used HTML to build semantically correct pages.
+  I used it because it provides a customizable and efficient coding environment, and it's more pleasing to my eye
 </p>
 
 <h2>
