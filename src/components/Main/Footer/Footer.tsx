@@ -31,6 +31,7 @@ export const Footer = () => {
       path: '#',
     },
   ];
+
   return (
     <footer
       className={classNames(style.footer, {
@@ -55,7 +56,10 @@ export const Footer = () => {
 
           <div className={style.footer__upNav}>
             {isScroll && (
-              <div onClick={() => window.scrollTo(0, 0)} className={style.footer__actionContainer}>
+              <div
+                onClick={() => window.scrollTo(0, 0)}
+                className={style.footer__actionContainer}
+              >
                 <div className={classNames(style.footer__upTo)}>
                   {t('backToTop')}
                 </div>

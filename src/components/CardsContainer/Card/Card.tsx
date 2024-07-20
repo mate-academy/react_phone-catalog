@@ -11,7 +11,6 @@ import Heart from '../../../image/Favorites/heart.svg';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import { handleCheckCarts } from '../../../utils/handleCheckCards';
 import { availableFav } from '../../../utils/availableFav';
-import { useScrollToTop } from '../../../utils/hooks/useScrollToTop';
 
 type Props = {
   product: Product;
@@ -29,7 +28,12 @@ export const Card: React.FC<Props> = ({
   const { favorites, handleAddToFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
   const { screen, capacity, ram } = product;
-  useScrollToTop();
+
+  const scrollToTop = () => {
+    document.body.style.overflowY = 'auto';
+    return window.scrollTo(0, 100);
+  };
+
   return (
     <div
       ref={widthRef}
@@ -38,25 +42,28 @@ export const Card: React.FC<Props> = ({
         [style.card__darkTheme]: theme,
       })}
     >
-      <Link
-        to={`../../${product.category}/${product.itemId}`}
-        className={style.card__cardLink}
-        draggable={false}
-      >
-        <img
-          src={product.image}
-          alt={product.name}
-          className={style.card__cardImg}
-          draggable={false}
-        />
-      </Link>
-      <div className={style.card__cardContent}>
-        <Link
-          to={`../../${product.category}/${product.itemId}`}
-          className={style.card__cardName}
-        >
-          {product.name}
-        </Link>
+      <div>
+        <div onClick={scrollToTop}>
+          <Link
+            to={`../../${product.category}/${product.itemId}`}
+            className={style.card__cardLink}
+            draggable={false}
+          >
+            <img
+              src={product.image}
+              alt={product.name}
+              className={style.card__cardImg}
+              draggable={false}
+            />
+          </Link>
+
+          <Link
+            to={`../../${product.category}/${product.itemId}`}
+            className={style.card__cardName}
+          >
+            {product.name}
+          </Link>
+        </div>
         <div className={style.card__price}>
           {discount ? (
             <p className={style.card__discountPrice}>&#36;{product.price}</p>

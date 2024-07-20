@@ -19,4 +19,3 @@ export function useStateRef<S>(
 
   return [state, setState, ref];
 }
-

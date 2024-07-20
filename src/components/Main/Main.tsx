@@ -11,6 +11,7 @@ import { Pathname } from '../../enums/Pathname';
 import { Skeleton } from '../Skeleton';
 import { ProductsContext } from '../../store/ProductsProvider';
 import { StateContext } from '../../store/StateProvider';
+
 export const Main = () => {
   const { t } = useContext(LanguageContext);
   const activeScroll = () => (document.body.style.overflowY = 'auto');
