@@ -6,6 +6,12 @@
   height: 96px;
   border-top: $bordeColor 1px solid;
 
+  &__actionContainer {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
   &__navContainer {
     display: flex;
     align-items: center;
@@ -61,12 +67,12 @@
     justify-content: space-around;
   }
 
-  &__upLink {
+  &__upTo {
     display: flex;
     color: $secondTextColor;
     line-height: 15px;
     font-weight: 700;
-
+    cursor: pointer;
     &:hover {
       @extend %transitionPage;
 
@@ -79,13 +85,14 @@
     width: 16px;
   }
 
-  &__arrowUpLink {
+  &__upToArrowLink {
     display: flex;
     justify-content: center;
     align-items: center;
     width: 32px;
     height: 32px;
     border: $bordeColor 1px solid;
+    cursor: pointer;
     &:hover {
       @extend %lightThemeHoverBorderButton;
     }
@@ -120,6 +127,11 @@
       align-items: start;
       padding: 32px 16px;
     }
+
+    // &__navContainer {
+    //   display: flex;
+    //   flex-direction: column;
+    // }
 
     &__navList {
       flex-direction: column;

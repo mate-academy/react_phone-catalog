@@ -4,7 +4,7 @@
 
 .cardsSlider {
   position: relative;
-  overflow: hidden;
+  overflow-x: hidden;
 
   @include space-between-sectionsDesktop;
 

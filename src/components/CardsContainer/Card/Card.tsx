@@ -11,6 +11,7 @@ import Heart from '../../../image/Favorites/heart.svg';
 import { ThemeContext } from '../../../store/ThemeProvider';
 import { handleCheckCarts } from '../../../utils/handleCheckCards';
 import { availableFav } from '../../../utils/availableFav';
+import { useScrollToTop } from '../../../utils/hooks/useScrollToTop';
 
 type Props = {
   product: Product;
@@ -28,7 +29,7 @@ export const Card: React.FC<Props> = ({
   const { favorites, handleAddToFavorites } = useContext(StateContext);
   const { theme } = useContext(ThemeContext);
   const { screen, capacity, ram } = product;
-
+  useScrollToTop();
   return (
     <div
       ref={widthRef}

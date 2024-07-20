@@ -31,7 +31,6 @@ export const Footer = () => {
       path: '#',
     },
   ];
-
   return (
     <footer
       className={classNames(style.footer, {
@@ -56,18 +55,14 @@ export const Footer = () => {
 
           <div className={style.footer__upNav}>
             {isScroll && (
-              <>
-                <HashLink
-                  smooth
-                  to="#"
-                  className={classNames(style.footer__upLink)}
-                >
+              <div onClick={() => window.scrollTo(0, 0)} className={style.footer__actionContainer}>
+                <div className={classNames(style.footer__upTo)}>
                   {t('backToTop')}
-                </HashLink>
-                <HashLink smooth to="#" className={style.footer__arrowUpLink}>
+                </div>
+                <div className={style.footer__upToArrowLink}>
                   <IconUp className={style.footer__arrowUpImg} />
-                </HashLink>
-              </>
+                </div>
+              </div>
             )}
           </div>
         </nav>
