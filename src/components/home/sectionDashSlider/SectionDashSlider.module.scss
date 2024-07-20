@@ -42,12 +42,16 @@
     background-repeat: no-repeat;
     background-size: 30%;
     width: 32px;
-    height: 250px;
+    height: 252px;
     border: 1px solid var(--icons);
     position: absolute;
-    top: 20px;
+    top: 0;
     left: 5px;
     border-radius: 10px;
+
+    @include for-tablet {
+      height: 300px;
+    }
 
     &:hover {
       box-shadow:
@@ -66,12 +70,16 @@
     background-repeat: no-repeat;
     background-size: 30%;
     width: 32px;
-    height: 250px;
+    height: 252px;
     border: 1px solid var(--icons);
     position: absolute;
-    top: 20px;
+    top: 0;
     right: 5px;
     border-radius: 10px;
+
+    @include for-tablet {
+      height: 300px;
+    }
 
     &:hover {
       box-shadow:
