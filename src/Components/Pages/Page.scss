@@ -1,0 +1,21 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+  overflow-y: scroll;
+
+  &__content{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    width: 1136px;
+    margin: 0 auto 80px;
+  }
+
+  &__loader {
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+  }
+}

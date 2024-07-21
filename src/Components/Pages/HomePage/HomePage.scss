@@ -1,0 +1,15 @@
+.home-page {
+  &__carousel {
+    margin-top: 40px;
+  }
+
+  &__hot-price {
+    margin: 80px 0;
+  }
+
+  &__categories {
+    margin-top: 24px;
+    margin-bottom: 80px;
+    overflow: hidden;
+  }
+}
