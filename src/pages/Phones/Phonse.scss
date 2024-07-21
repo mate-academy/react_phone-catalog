@@ -1,0 +1,107 @@
+.products {
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
+  @include pageMargins;
+  @include bottom-margin;
+
+  &__nav {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  &__home {
+    display: flex;
+  }
+
+  &__pathname {
+    display: flex;
+    @include smallText;
+    color: $color-secondary;
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__h1 {
+    @include h1;
+  }
+
+  &__subtitle {
+    @include bodyText;
+    color: $color-secondary;
+  }
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__sort-fields {
+    width: 600px;
+    display: flex;
+    gap: 16px;
+  }
+
+  &__sort-field {
+    position: relative;
+    width: 250px;
+
+    &-text {
+      color: $color-secondary;
+    }
+  }
+
+  &__catalog {
+    @include page-grid;
+    row-gap: 40px;
+  }
+
+  &__dropdown {
+    padding: 0 12px;
+    width: 100%;
+    height: 40px;
+    border: 1px solid $color-secondary;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+
+    &-text {
+      @include buttons;
+    }
+  }
+
+  &__dropdown-menu {
+    box-sizing: border-box;
+    position: absolute;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid $color-secondary;
+    background-color: $color-white;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+  }
+
+
+
+  &__page-buttons {
+    display: flex;
+    gap: 8px;
+  }
+}

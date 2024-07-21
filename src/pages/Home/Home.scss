@@ -1,0 +1,22 @@
+.home {
+  @include pageMargins;
+
+  &__components > * {
+    @include bottom-margin;
+  }
+  &__title {
+    @include h1;
+    margin-top: 24px;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-top: 24px;
+      margin-bottom: 24px;
+    }
+
+    @include on-decktop {
+      margin-top: 56px;
+      margin-bottom: 56px;
+    }
+  }
+}

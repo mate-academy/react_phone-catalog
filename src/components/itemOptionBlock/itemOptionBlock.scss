@@ -1,0 +1,282 @@
+.item-option-block {
+  margin-top: 24px;
+  &__nav {
+    display: flex;
+    gap: 8px;
+
+    &-part {
+      display: flex;
+      gap: 8px;
+    }
+
+    &-text-semi {
+      color: $color-secondary;
+    }
+  }
+
+  &__title {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__backbutton {
+    align-self: flex-start;
+    display: flex;
+    gap: 4px;
+    justify-content: center;
+    align-items: center;
+    height: 16px;
+    cursor: pointer;
+
+    &-text {
+      @include smallText;
+      color: $color-secondary;
+    }
+
+    &:hover &-text {
+      color: $color-primary;
+    }
+  }
+
+  &__container {
+    @include page-grid;
+    row-gap: 40px;
+  }
+
+  &__imagies {
+    grid-column: span 4;
+    @include on-tablet {
+      grid-column: span 6;
+    }
+
+    @include on-decktop {
+      grid-column: span 12;
+    }
+
+    display: flex;
+    gap: 16px;
+    flex-direction: column;
+    @include on-tablet {
+      flex-direction: row;
+    }
+  }
+
+  &__imagies-list {
+    order: 1;
+
+    display: flex;
+    gap: 8px;
+
+    @include on-tablet {
+      flex-direction: column;
+      order: 0;
+    }
+
+    @include on-decktop {
+      gap: 16px;
+    }
+
+  }
+
+  &__img {
+    border: solid 1px $color-elements;
+    cursor: pointer;
+    width: 100%;
+    height: 49px;
+
+    @include on-tablet {
+      height: 35px;
+    }
+
+    @include on-decktop {
+      height: 80px;
+    }
+    object-fit: contain;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__current-img-container {
+    height: 287px;
+    @include on-decktop {
+      height: 464px;
+    }
+    width: 100%;
+    display: flex;
+  }
+
+  &__imagies-current {
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+  }
+
+  &__right-bar {
+    grid-column: span 4;
+    @include on-tablet {
+      grid-column: span 4;
+    }
+
+    @include on-decktop {
+      grid-column: span 12;
+    }
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__options {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__option-container {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  &__option-title {
+    color: $color-secondary;
+    @include smallText;
+  }
+
+  &__option-list {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__color-container {
+    border: 1px solid $color-elements;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      border-color: $color-icons;
+    }
+  }
+
+  &__color {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    opacity: 50%;
+  }
+
+  &__capacity {
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    height: 32px;
+    border: 1px solid $color-icons;
+    padding: 0 8px;
+    @include bodyText;
+
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+
+  &__underline {
+    position: relative;
+
+    &::after {
+      position: absolute;
+      content: "";
+      background-color: $color-elements;
+      height: 1px;
+      width: 100%;
+      bottom: 0;
+    }
+  }
+
+  &__price-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    display: flex;
+    gap: 8px;
+
+    &-new {
+      @include h2;
+    }
+
+    &-old {
+      @include h2;
+      color: $color-secondary;
+      position: relative;
+
+      &::before {
+        position: absolute;
+        top: 17px;
+        left: 0;
+        content: "";
+        width: 100%;
+        height: 3px;
+        background-color: $color-secondary;
+      }
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__tocart {
+    height: 48px;
+    flex-grow: 1;
+  }
+
+  &__tofavorite {
+    width: 48px;
+    height: 48px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__short-info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-section {
+      display: flex;
+      justify-content: space-between;
+
+      &-title {
+        @include smallText;
+        color: $color-secondary;
+      }
+
+      &-value {
+        @include smallText;
+      }
+    }
+  }
+}
+
+.color-container-active {
+  border-color: $color-primary;
+}
+
+.capacity-container-active {
+  background-color: $color-primary;
+  color: $color-white;
+}
+
+.active-img {
+  border-color: $color-primary;
+}

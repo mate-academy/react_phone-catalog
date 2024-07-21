@@ -1,0 +1,84 @@
+.banner {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+
+  &__img-buttons {
+    height: 400px;
+    @include page-grid;
+  }
+
+  &__button {
+    display: none;
+    grid-column: span 1;
+    height: 100%;
+
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__carusel-container {
+    grid-column: span 4;
+
+    overflow: hidden;
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-decktop {
+      grid-column: span 22;
+    }
+  }
+
+  &__carusel {
+    height: 100%;
+    display: flex;
+  }
+
+  &__img-container {
+    width: 100%;
+    display: block;
+  }
+
+  &__img {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+    object-fit: cover;
+
+    @include on-tablet {
+      height: 100%;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    gap: 4px;
+  }
+
+  &__dot {
+    width: 24px;
+    height: 24px;
+    position: relative;
+    cursor: pointer;
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 14px;
+      height: 4px;
+      display: block;
+      background-color: $color-secondary;
+      top: 10px;
+      left: 5px;
+    }
+  }
+}
+
+.is-acitve-dot {
+  &::after {
+    background-color: $color-primary;
+  }
+}

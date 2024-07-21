@@ -1,0 +1,24 @@
+.Loader {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.Loader__content {
+  width: 2em;
+  height: 2em;
+  margin: 1em auto;
+  border-radius: 50%;
+  animation: load8 2s infinite linear;
+  background: conic-gradient(blue, yellow); /* Градиент по окружности */
+}
+
+@keyframes load8 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

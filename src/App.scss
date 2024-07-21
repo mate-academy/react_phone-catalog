@@ -1,1 +1,226 @@
-// not empty
+@import "/src/utils/mixins";
+@import "/src/utils/utils";
+@import "../src/components/navigation/navigation";
+@import "../src/components/menu/menu";
+@import "../src/components/footer/footer";
+@import "../src/components/shopByCategory/shopByCategory";
+@import "../src/pages/Home/Home";
+@import "../src/components/productCard/productCard";
+@import "../src/components/banner/banner";
+@import "../src/components/slider/slider";
+@import "../src/pages/Phones/Phonse";
+@import "../src/pages/item/item";
+@import "../src//components/itemOptionBlock/itemOptionBlock";
+@import "../src/components/itemDescription/itemDescription";
+@import "../src/components/catalog/catalog";
+@import "../src/pages/Favorites/favorites";
+@import "../src/pages/Cart/cart";
+@import "../src/pages/notFound/notFound";
+@import "../src//components/modal//modal";
+
+@font-face {
+  font-family: Mont;
+  font-weight: 500;
+  src: url("../public/fonts/Mont-Regular.otf");
+}
+
+
+@font-face {
+  font-family: Mont;
+  font-weight: 800;
+  src: url("../public/fonts/Mont-Bold.otf");
+}
+
+@font-face {
+  font-family: Mont;
+  font-weight: 700;
+  src: url("../public/fonts/Mont-SemiBold.otf");
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: 'Mont';
+  text-decoration: none;
+  list-style-type: none;
+  background-color: inherit;
+  border: none;
+  color: $color-primary;
+}
+
+.secondary-color {
+  color: $color-secondary;
+}
+
+.h1 {
+  @include h1;
+}
+
+.h2 {
+  @include h2;
+}
+
+.h3 {
+  @include h3;
+}
+
+.h4 {
+  @include h4;
+}
+
+.upper-case {
+  @include upperCase;
+}
+
+.buttons {
+  @include buttons;
+}
+
+.body-text {
+  @include bodyText;
+}
+
+.small-text {
+  @include smallText;
+}
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.button-size {
+  height: 32px;
+  width: 32px;
+}
+
+.button-common {
+  border: 1px solid $color-elements;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &__active {
+    border-color: $color-primary;
+    color: $color-white;
+    background-color: $color-primary;
+  }
+}
+
+.button-right-left {
+  border: 1px solid $color-icons;
+  cursor: pointer;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    border-color: $color-primary;
+  }
+
+  &__disabled {
+    border-color: $color-elements;
+
+    &:hover {
+      border-color: $color-elements;
+      cursor: default;
+    }
+  }
+}
+
+.button-rounded {
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    border-color: $color-icons;
+  }
+
+  &__selected {
+    background-color: $color-primary;
+  }
+}
+
+.button-add {
+  background-color: $color-primary;
+  color: $color-white;
+
+  @include buttons;
+
+  flex-grow: 1;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0px 3px 13px 0px $color-primary;
+  }
+
+  &-standart-size {
+    height: 40px;
+  }
+  &-plus-size {
+    height: 48px;
+  }
+
+  &__added {
+    flex-grow: 1;
+    border: 1px solid $color-elements;
+    color: $color-green;
+    box-sizing: border-box;
+
+    @include buttons;
+  }
+}
+
+.button-plus-size {
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  border: 1px solid $color-icons;
+  align-items: center;
+  &:hover {
+    border: 1px solid #313237;
+  }
+
+  &-standart-size {
+    width: 40px;
+    height: 40px;
+  }
+  &-plus-size {
+    width: 48px;
+    height: 48px;
+  }
+
+  &__selected {
+    border: 1px solid $color-elements;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    &:hover {
+      border-color: $color-primary;
+    }
+  }
+}
+
+.underline {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-color: $color-elements;
+    height: 1px;
+    width: 100%;
+    bottom: 0;
+  }
+}

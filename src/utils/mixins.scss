@@ -1,0 +1,133 @@
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-decktop {
+  @media (min-width: $decktop-min-width) {
+    @content;
+  }
+}
+
+@mixin bottom-margin {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-decktop {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin pageMargins {
+  margin-right: 16px;
+  margin-left: 16px;
+
+  @include on-tablet {
+    margin-right: 24px;
+    margin-left: 24px;
+  }
+
+  @include on-decktop {
+    max-width: 1136px;
+    margin-right: auto;
+    margin-left: auto;
+  }
+}
+
+@mixin page-grid {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(4, 1fr);
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-decktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin h1 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    letter-spacing: -0.01em;
+  }
+
+  @include on-decktop {
+    max-width: 1136px;
+  }
+}
+@mixin h2 {
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  letter-spacing: 0;
+
+  @include on-tablet() {
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h3 {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 25.56px;
+
+  @include on-tablet {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 30.8px;
+  }
+}
+
+@mixin h4 {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 20.45px;
+
+  @include on-tablet {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+  }
+}
+
+@mixin upperCase {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+}
+
+@mixin buttons {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin bodyText {
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+@mixin smallText {
+  font-size: 12px;
+  font-weight: 500;
+}

@@ -1,0 +1,67 @@
+.description {
+  display: flex;
+
+  flex-direction: column;
+  gap: 56px;
+  @include on-tablet {
+    @include page-grid;
+  }
+
+  &__container {
+    grid-column: span 12;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__h3 {
+    @include h3;
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-item {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &-title {
+      @include h4;
+    }
+
+    &-text {
+      @include bodyText;
+      color: $color-secondary;
+    }
+  }
+
+  &__tech-specs {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+
+    &-list {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    &-item {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-title {
+      @include bodyText;
+      color: $color-secondary;
+    }
+
+    &-value {
+      @include bodyText;
+    }
+  }
+}

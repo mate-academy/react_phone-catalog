@@ -1,0 +1,20 @@
+.item {
+  flex-direction: column;
+  @include pageMargins;
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+
+    @include on-tablet {
+      gap: 40px;
+    }
+  }
+}
+
+.item > * {
+  @include bottom-margin;
+}
+
+

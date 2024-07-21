@@ -1,0 +1,52 @@
+@import "/src/utils/mixins";
+@import "/src/utils/utils";
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+  opacity: 0;
+  transition: 1s;
+
+  &__visible {
+    opacity: 1;
+  }
+
+  &__nav-links {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+  }
+
+  &__nav-link {
+    @include upperCase;
+    height: 27px;
+    text-align: left;
+
+    display: flex;
+    align-items: center;
+    color: $color-secondary;
+    box-sizing: border-box;
+  }
+
+  &__is-active {
+    border-bottom: 2px solid $color-primary;
+    color: $color-primary;
+  }
+
+  &__icon-links {
+    border: 1px solid $color-elements;
+    display: flex;
+  }
+
+  &__icon-link {
+    height: 64px;
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: -1px 0px 0px 0px $color-elements;
+  }
+}
