@@ -30,12 +30,37 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
   ) => {
     // debugger;
     const start = Math.max(0, currentPage - 3);
-    // const end =  currentPage + 3;
+    const end = currentPage + 2;
     const readyLength = [];
 
     if (initialArray.length > 1) {
       if (start === 0) {
         readyLength.push(...initialArray.slice(start, lengthPages));
+      }
+
+      if (start > 0 && currentPage <= initialArray.length - 2) {
+        readyLength.push(...initialArray.slice(start, end));
+      }
+
+      if (
+        currentPage > initialArray.length - 2 &&
+        lengthPages < initialArray.length
+      ) {
+        readyLength.push(
+          ...initialArray.slice(
+            initialArray.length - lengthPages,
+            initialArray.length + 1,
+          ),
+        );
+      }
+
+      if (start > 0 && lengthPages === initialArray.length) {
+        readyLength.push(
+          ...initialArray.slice(
+            lengthPages - initialArray.length,
+            initialArray.length,
+          ),
+        );
       }
 
       return readyLength;
