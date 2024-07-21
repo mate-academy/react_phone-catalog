@@ -1,0 +1,55 @@
+@import "./../../styles/utils/vars";
+@import "./../../styles/utils/mixins";
+@import "./../../styles/utils/button";
+
+.slider {
+  &__hBlock {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    &--title {
+      @media (max-width: 350px) {
+        max-width: 136px;
+      }
+    }
+
+    &--buttons {
+      display: flex;
+      gap: 16px;
+    }
+
+    &--buttons-imgLeft {
+      rotate: 180deg;
+    }
+
+    &--button-unActive {
+      opacity: 50%;
+      cursor: auto;
+      pointer-events: none;
+    }
+  }
+
+  &__list {
+    list-style-type: none;
+    padding: 0;
+    margin-block: 0;
+    box-sizing: border-box;
+
+    display: flex;
+    gap: 16px;
+    overflow: hidden;
+    margin: 24px 0 0 16px;
+
+    transition-duration: $duration-time;
+
+    @include on-tablet {
+      margin-left: 24px;
+    }
+
+    @include on-desktop {
+      margin-inline: auto;
+      max-width: 1136px;
+    }
+  }
+}

@@ -1,0 +1,89 @@
+@import './../../../../styles/utils/vars';
+@import './../../../../styles/utils/mixins';
+
+
+.category {
+  &__block {
+    @include page-grid;
+
+    row-gap: 32px;
+    margin-top: 24px;
+
+    &--title {
+      text-decoration: none;
+    }
+
+    &--container {
+      width: 100%;
+      margin-bottom: 24px;
+      border-radius: 8px;
+      overflow: hidden;
+
+      &-phone {
+        background-color: $category-phone;
+      }
+
+      &-tablet {
+        background-color: $category-tablet;
+      }
+
+      &-accessory {
+        background-color: $category-accessory;
+      }
+    }
+
+    &--photo {
+      width: 100%;
+      transition-duration: $duration-time;
+      transform: translateY(17%);
+    }
+
+    &--phones,
+    &--tablets,
+    &--accessories {
+      grid-column: 1 / -1;
+      text-decoration: none;
+
+      &:hover .category__block--photo {
+        transform: translateY(3%);
+      }
+    }
+
+    @include on-tablet {
+      &--phones {
+        grid-column: 1 / 5;
+      }
+
+      &--tablets {
+        grid-column: 5 / 9;
+      }
+
+      &--accessories {
+        grid-column: 9 / 13;
+      }
+    }
+
+    @include on-desktop {
+      &--phones {
+        grid-column: 1 / 9;
+      }
+
+      &--tablets {
+        grid-column: 9 / 17;
+      }
+
+      &--accessories {
+        grid-column: 17 / 25;
+      }
+    }
+  }
+
+  &__itemsCounter {
+    font-family: MontRegular, sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    color: $nav-link-color;
+
+    margin-top: 4px;
+  }
+}

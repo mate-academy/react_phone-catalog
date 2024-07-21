@@ -1,0 +1,127 @@
+.icon {
+  background-repeat: no-repeat;
+  background-position: center;
+
+  &__logo {
+    height: 22px;
+    width: 64px;
+    margin: 13px 16px;
+    background-size: contain;
+    background-image: url(./../../images/imagesRoot/Logo.svg);
+  }
+
+  &__menu {
+    width: 16px;
+    height: 16px;
+    padding: 16px;
+    background-image: url(./../../images/imagesRoot/Menu.svg);
+    box-shadow: -1px 0 0 0 $shadow-color;
+
+    &--none {
+      display: none;
+    }
+  }
+
+  &__burger {
+    display: block;
+    background-image: url(./../../images/imagesRoot/Close.svg);
+  }
+
+  &__burger-none {
+    display: none;
+  }
+
+  &__counter {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 1px solid $white-bg-color;
+    background-color: $button-item-color;
+    box-sizing: border-box;
+
+    position: relative;
+    left: 8px;
+    bottom: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &--cart {
+      right: 10px;
+    }
+
+    &--text {
+      color: $white-bg-color;
+      font-family: MontRegular, sans-serif;
+      font-size: 9px;
+    }
+  }
+
+  &__favourites,
+  &__cart {
+    height: 16px;
+    width: 16px;
+  }
+
+  &__Imglink {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-block: 24px;
+    box-shadow: -1px 0 0 0 $shadow-color;
+    width: 50%;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 3px;
+      width: 100%;
+      background-color: $nav-activelink-underline;
+
+      transition: transform $duration-time;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &.icon__activeImgLink::after {
+      transform: scale(1);
+    }
+  }
+
+  &__favourites {
+    background-image: url(./../../images/imagesRoot/Favourites.svg);
+  }
+
+  &__cart {
+    background-image: url(./../../images/imagesRoot/ShoppingBag.svg);
+  }
+
+  @include on-tablet {
+    &__menu {
+      display: none;
+    }
+
+    &__Imglink {
+      padding: 16px;
+    }
+
+  }
+
+  @include on-desktop {
+    &__Imglink {
+      padding: 24px;
+    }
+
+    &__logo {
+      width: 80px;
+      height: 28px;
+      margin: 18px 24px;
+    }
+  }
+}
