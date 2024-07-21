@@ -15,49 +15,27 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
   const { gadgets } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
 
-  const page = searchParams.get(QueryParams.page) || '1';
+  const page = searchParams.get(QueryParams.page) || 1;
   const paginationQuantity = Math.ceil(
     gadgets.gadgets.length / Number(perPage),
   );
+
   const pages = Array.from({ length: paginationQuantity }, (_, i) => i + 1);
-  const allPages = pages.length !== 0 ? pages : ['1'];
+  const allPages = pages.length !== 0 ? pages : [1];
 
   const cutdownPage = (
     initialArray: number[] | string[],
     currentPage: number,
     lengthPages = 5,
   ) => {
+    // debugger;
     const start = Math.max(0, currentPage - 3);
-    const end = currentPage + 3;
+    // const end =  currentPage + 3;
     const readyLength = [];
 
     if (initialArray.length > 1) {
-      if (start <= 0 && end <= initialArray.length) {
+      if (start === 0) {
         readyLength.push(...initialArray.slice(start, lengthPages));
-      }
-
-      if (start > 0 && end <= initialArray.length) {
-        readyLength.push(...initialArray.slice(start, currentPage));
-      }
-
-      if (end <= initialArray.length && start > 0) {
-        readyLength.push(...initialArray.slice(currentPage, end - 1));
-      }
-
-      if (
-        end - 1 >= initialArray.length &&
-        initialArray.length - lengthPages > 0
-      ) {
-        readyLength.push(
-          ...initialArray.slice(initialArray.length - lengthPages),
-        );
-      }
-
-      if (
-        end - 1 >= initialArray.length &&
-        initialArray.length - lengthPages < 0
-      ) {
-        readyLength.push(...initialArray.slice(start));
       }
 
       return readyLength;
