@@ -1,0 +1,144 @@
+@keyframes slide-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0%);
+  }
+}
+
+.title {
+  font-family: $g-font;
+
+  font-size: 24px;
+
+  @include tablet {
+    font-size: 42px;
+  }
+
+  @include desktop {
+    font-size: 48px;
+  }
+
+  margin: 56px 0 24px;
+
+  @include mobile {
+    margin: 23px 0 20px;
+  }
+
+  animation: slide-in 1s forwards;
+
+  &-banner {
+    font-weight: 500;
+  }
+  &-custom {
+    color: #89939a;
+    font-weight: 500;
+  }
+
+  &-cards,
+  &-categories {
+    font-weight: 400;
+    font-size: 20px;
+
+    @include tablet {
+      font-size: 34px;
+    }
+
+    @include desktop {
+      font-size: 38px;
+    }
+  }
+}
+
+.cards {
+  &__container {
+    position: relative;
+  }
+
+  &__list {
+    display: flex;
+    gap: 13px;
+
+    padding-block: 20px;
+    overflow: hidden;
+  }
+
+  &__item {
+    transition: transform 0.5s ease-in-out;
+  }
+
+  &__link {
+    text-decoration: none;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 22px;
+    position: absolute;
+
+    top: -33px;
+    right: 0;
+
+    @include desktop {
+      top: -20px;
+      right: 0;
+    }
+
+    &__prev,
+    &__next {
+      width: 32px;
+      height: 32px;
+
+      background-color: transparent;
+      border: 1px solid #e2e6e9;
+      transition: border ease 0.5s, box-shadow 0.5s;
+
+      &:hover {
+        border: 1px solid #d4d4d4;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+    }
+  }
+}
+
+.categories {
+  &__container {
+    max-width: 1280px;
+    box-sizing: border-box;
+    width: 100%;
+  }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    column-gap: 16px;
+
+    width: 100%;
+
+    @include mobile {
+      display: flex;
+      flex-direction: column;
+
+      align-items: center;
+      gap: 30px;
+    }
+  }
+
+  &__item {
+    &-phones {
+      grid-column: 1 / 5;
+    }
+    &-tablets {
+      grid-column: 5 / 9;
+    }
+    &-accessories {
+      grid-column: 9 / 13;
+    }
+  }
+  &__link {
+    display: block;
+    text-decoration: none;
+  }
+}

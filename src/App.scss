@@ -1,1 +1,49 @@
-// not empty
+html, body {
+  height: 100%;
+}
+
+a {
+  text-decoration: none;
+  color: #000;
+}
+
+body {
+  margin: 0 auto;
+  padding: 0;
+}
+
+h1,h2, h3, h4 {
+  margin: 0;
+  padding: 0;
+}
+
+button {
+  margin: 0;
+  padding: 0;
+  cursor: pointer;;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+li {
+  margin: 0;
+  padding: 0;
+}
+
+img {
+  margin: 0;
+  padding: 0;
+}
+
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.main {
+  min-height: 100vh;
+}

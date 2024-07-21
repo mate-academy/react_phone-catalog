@@ -1,0 +1,64 @@
+.banner {
+  max-width: 1280px;
+  overflow: hidden;
+
+  position: relative;
+
+  &__list {
+    display: flex;
+  }
+
+  &__item {
+    max-width: 1280px;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__button {
+    background-color: transparent;
+    border: 1px solid transparent;
+    transition: border ease 0.5s, box-shadow 0.5s;
+
+    &:hover {
+      border: 1px solid #e2e6e9;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    &-prev,
+    &-next {
+      position: absolute;
+      width: 32px;
+      height: 100%;
+      top: 0;
+    }
+
+    &-prev {
+      left: 0;
+    }
+
+    &-next {
+      right: 0;
+    }
+  }
+
+  &__dotnav {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+
+    &__list {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    &__button {
+      background-color: transparent;
+      border: none;
+    }
+  }
+}
