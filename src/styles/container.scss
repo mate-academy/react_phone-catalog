@@ -1,0 +1,13 @@
+.container {
+  margin: 0 auto;
+  padding: 0 $paddingInlineMobile;
+
+  @include onTablet {
+    padding: 0 $paddingInlineTablet;
+  }
+
+  @include onDesktop {
+    max-width: 1200px;
+    padding: 0 32px;
+  }
+}
