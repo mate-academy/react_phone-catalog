@@ -2,6 +2,8 @@ import { useEffect, useMemo, useState } from 'react';
 import { Product } from '../../types/Product';
 import { calculateProductAmount } from '../../helpers/CalcProdAmount';
 import { getProduct } from '../../api/apiProducts';
+import { Banner } from '../../components/Banner';
+import { ProductList } from '../../components/ProductList';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
