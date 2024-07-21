@@ -1,0 +1,101 @@
+@import '../../../styles/vars';
+@import '../../../styles/mixins';
+@import '../../../styles/container';
+@import '../../../styles/heading';
+@import './ProductDetailsStyles/PhotoBlock';
+@import './ProductDetailsStyles/ParamsBlock';
+@import './ProductDetailsStyles/About';
+@import './ProductDetailsStyles/Tech';
+
+.product-details {
+  min-height: calc(100vh - $footer-height-mobile);
+  padding-block: calc(24px + $nav-height-mobile) 56px;
+
+  @include on-tablet {
+    min-height: calc(100vh - $footer-height-desktop);
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-block: calc(24px + $nav-height-desktop) 81px;
+  }
+
+  &__product {
+    margin-block: 32px 56px;
+
+    &--id {
+      display: none;
+      color: $nav-link-color;
+      text-align: right;
+    }
+
+    @include on-tablet {
+      @include page-grid;
+
+      margin-block: 40px 64px;
+
+      &--photoBlock {
+        grid-column: 1 / 8;
+      }
+
+      &--paramsBlock {
+        grid-column: 8 / -1;
+      }
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+
+      &--photoBlock {
+        grid-column: 1 / 13;
+      }
+
+      &--paramsBlock {
+        grid-column: 14 / 21;
+      }
+
+      &--id {
+        display: block;
+        grid-column: 21 / -1;
+      }
+    }
+  }
+
+  &__info {
+    &--tech {
+      margin-top: 56px;
+
+      @include on-tablet {
+        margin-top: 64px;
+      }
+
+      @include on-desktop {
+        margin: 0;
+      }
+    }
+
+    @include on-desktop {
+      @include page-grid;
+
+      &--about {
+        grid-column: 1 / 13;
+      }
+
+      &--tech {
+        grid-column: 14 / -1;
+      }
+    }
+  }
+
+  &__slider {
+    margin-block: 56px;
+
+    @include on-tablet {
+      margin-block: 64px;
+    }
+
+    @include on-desktop {
+      margin-block: 80px;
+    }
+  }
+}
