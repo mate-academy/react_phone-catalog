@@ -1,0 +1,67 @@
+@import '../../styles/main';
+
+.search {
+  @include on-mobile {
+    position: relative;
+  }
+
+  &__input {
+    @include on-mobile {
+      width: 210px;
+      height: 100%;
+      padding-inline: 8px;
+      background-color: $whiteColor;
+      border: none;
+      border-left: 1px solid $elementsColor;
+      font-family: Mont, serif;
+      font-size: 14px;
+    }
+
+    &::placeholder {
+      @include on-mobile {
+        font-family: Mont, serif;
+        font-size: 14px;
+      }
+    }
+
+    @include hover(border, $effectDuration);
+
+    &:hover {
+      background-color: $hoverBGColor;
+    }
+
+    &:focus {
+      outline: 0;
+      background-color: $hoverBGColor;
+    }
+  }
+
+  &__button {
+    @include on-mobile {
+      width: 16px;
+      height: 16px;
+      position: absolute;
+      top: calc(50% - 8px);
+      right: 10px;
+      cursor: pointer;
+      border: none;
+    }
+  }
+
+  &__button--loupe {
+    background-image: url('../../images/icons/search.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-color: transparent;
+  }
+
+  &__button--clear {
+    background-image: url('../../images/icons/close.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 16px;
+    background-color: transparent;
+  }
+}
+

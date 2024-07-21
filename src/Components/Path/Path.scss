@@ -1,0 +1,48 @@
+@import '../../styles/main';
+
+.path {
+  @include on-mobile{
+    grid-column: 1 / -1;
+    margin-block: 24px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+  }
+
+  @include on-tablet {
+    margin-block: 24px 40px;
+  }
+
+  &__icon-home {
+    width: 16px;
+    height: 16px;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../images/icons/home.png")
+  }
+
+  &__icon-arrow-right {
+    width: 16px;
+    height: 16px;
+    background-size: 14px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-image: url("../../images/icons/arrow-right.png")
+  }
+
+  &__return-text {
+    font-size: 12px;
+    color: $secondaryColor;
+    line-height: 12px;
+    margin-top: 2px;
+    text-decoration: none;
+    cursor: default;
+
+    &--black {
+      color: $primaryColor;
+      cursor: pointer;
+    }
+  }
+}
+
