@@ -1,0 +1,9 @@
+@import 'vars/global';
+@import 'null';
+@import 'themes/dark';
+@import 'themes/light';
+
+.app {
+  background: var(--bg-color);
+  min-height: 100vh;
+}
