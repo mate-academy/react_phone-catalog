@@ -1,0 +1,31 @@
+@mixin onTableDo {
+  @media (max-width: 639px) {
+    @content;
+  }
+}
+
+@mixin onTable {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin onDesktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 16px;
+
+  @include onTable() {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include onDesktop() {
+    grid-template-columns: repeat(24, 32px);
+  }
+}

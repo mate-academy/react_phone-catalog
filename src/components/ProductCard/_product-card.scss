@@ -1,0 +1,106 @@
+.product {
+  &__card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+  
+    border: 1px solid #E2E6E9;
+    border-radius: 8px;
+    padding: 32px;
+    transition: 0.3s all ease-in;
+    min-width: 212px;
+    max-width: 287px;
+
+    @include onTable {
+      min-width: 237px;
+      height: 506px;
+    }
+
+    @include onDesktop {
+      min-width: 272px;
+      max-width: 272px;
+    }
+
+    &:hover {
+      box-shadow: 0px 2px 16px 0px #0000001A;
+    }
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column;
+
+      &-price {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+
+        padding-top: 8px;
+      }
+    }
+
+    &-img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+      transition: 0.3s all ease-in;
+
+      aspect-ratio: 10 / 9;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+
+      @include onTable {
+        aspect-ratio: 10 / 9;
+      }
+    }
+
+    &-title {
+      font-family: "Mont", sans-serif;
+      font-size: 14px;
+      line-height: 21px;
+      font-weight: 600;
+      color: $elipse-color;
+
+      padding-top: 24px;
+    }
+
+    &-group {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      height: 40px;
+
+      padding-top: 8px;
+    }
+
+    &-fullPrice {
+      color: $secondary-color;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 31px;
+
+      text-decoration: line-through;
+    }
+
+    &-price {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 31px;
+      color: $elipse-color;
+    }
+
+    &-border {
+      height: 1px;
+      width: 100%;
+      background-color: $elements-color;
+    }
+
+    &-list {
+      padding-top: 8px;
+    }
+  }
+}
