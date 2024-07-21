@@ -36,7 +36,7 @@ export const App = () => {
       <h1 className="app__title">Product Catalog</h1>
 
       <Routes>
-        <Route path="home" element={<Navigate to="/" replace={true} />} />
+        <Route path="/home" element={<Navigate to="/" replace={true} />} />
 
         <Route path="/" element={<Home />} />
         <Route path="fav" element={<Favourites />} />
