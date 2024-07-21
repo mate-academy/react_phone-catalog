@@ -8,13 +8,16 @@
   "dependencies": {
     "@cypress/react18": "^2.0.0",
     "@fortawesome/fontawesome-free": "^6.2.0",
+    "@reduxjs/toolkit": "^2.2.3",
     "@types/react-transition-group": "^4.4.5",
     "bulma": "^0.9.4",
     "classnames": "^2.5.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-redux": "^9.1.0",
     "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
+    "react-slick": "^0.30.2",
     "react-transition-group": "^4.4.5"
   },
   "devDependencies": {
@@ -26,6 +29,7 @@
     "@types/node": "^16.18.80",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
+    "@types/react-slick": "^0.23.13",
     "cypress": "^12.17.4",
     "eslint": "^7.32.0",
     "eslint-plugin-cypress": "^2.11.2",
