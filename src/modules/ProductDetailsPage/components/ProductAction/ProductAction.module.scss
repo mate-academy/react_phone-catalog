@@ -1,0 +1,34 @@
+@use '../../../../shared/global/GlobalStyles/utils/vars' as *;
+
+.actionBlock {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  grid-column: span 4;
+}
+
+.priceWrap {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.price {
+  font-size: 32px;
+  line-height: 41px;
+  font-family: $font-family-bold;
+}
+
+.priceDisc {
+  font-size: 22px;
+  color: $secondary-text-color;
+  font-family: $font-family-regular;
+  text-decoration: line-through;
+}
+
+.actionBtns {
+  width: 100%;
+  height: 48px;
+  display: block;
+}

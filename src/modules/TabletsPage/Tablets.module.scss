@@ -1,0 +1,5 @@
+@use '../../shared/global/GlobalStyles/utils/mixins' as *;
+
+.content {
+  @include content-padding-inline;
+}
