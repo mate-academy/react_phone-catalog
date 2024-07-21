@@ -1,0 +1,57 @@
+@import '../../../scss/variables';
+
+.root {
+  flex: 1 1 auto;
+  .crumbs {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+    > p {
+      margin: 0;
+      height: 13px;
+      color: $gray;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+    &__arrow {
+      color: $gray;
+      margin: 0 8px;
+    }
+  }
+  .main {
+    > p {
+      color: $gray;
+      margin-bottom: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+    }
+    > h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+
+  .phonesList {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 270px);
+    gap: 16px;
+    margin-bottom: 80px;
+  }
+}
+
+.error {
+  height: 100%;
+  margin-top: 50px;
+  margin-bottom: 80px;
+}

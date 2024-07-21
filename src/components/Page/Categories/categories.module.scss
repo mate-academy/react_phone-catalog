@@ -1,0 +1,121 @@
+@import '../../../scss/variables';
+
+.root {
+  .crumbs {
+    display: flex;
+    margin-bottom: 40px;
+    align-items: center;
+    > p {
+      margin: 0;
+      height: 13px;
+      color: $gray;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+    &__arrow {
+      color: $gray;
+      margin: 0 8px;
+    }
+  }
+  .main {
+    > p {
+      color: $gray;
+      margin-bottom: 40px;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 15.34px;
+    }
+    > h2 {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+      margin-bottom: 8px;
+      &::first-letter {
+        text-transform: uppercase;
+      }
+    }
+  }
+  .sort {
+    display: flex;
+    margin-bottom: 24px;
+    :nth-child(1) select {
+      width: 176px;
+    }
+    :nth-child(2) select {
+      width: 128px;
+    }
+
+    &__By {
+      display: flex;
+      flex-direction: column;
+
+      margin-right: 16px;
+
+      > p {
+        margin-bottom: 4px;
+      }
+
+      select {
+        border-radius: 5px;
+        width: 100%;
+        height: 40px;
+        background-color: $button-color;
+        border: none;
+        color: $text-color;
+        padding: 10px 12px;
+      }
+    }
+  }
+  .phonesList {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(auto-fit, 270px);
+    gap: 16px;
+  }
+  .pagination {
+    margin-top: 40px;
+    margin-bottom: 80px;
+    display: flex;
+    justify-content: center;
+    button {
+      border-radius: 2px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $text-color;
+      border: none;
+      background-color: $button-color;
+      width: 32px;
+      height: 32px;
+      margin: 0 10px;
+      &:hover {
+        background-color: #4a4d58;
+      }
+    }
+    ul {
+      display: flex;
+      li {
+        border-radius: 2px;
+        background-color: $color-cart;
+        margin: 0 8px;
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 32px;
+        height: 32px;
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 21px;
+      }
+    }
+    .activePage {
+      background-color: $purple;
+    }
+  }
+}
