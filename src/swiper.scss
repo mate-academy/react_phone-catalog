@@ -1,4 +1,4 @@
-@import './variable.scss';
+@import './variable';
 
 .swiper {
   width: 100%;
@@ -25,7 +25,7 @@
 .swiper-pagination-bullet {
   width: 14px !important;
   height: 4px !important;
-  border-radius: 0px !important;
+  border-radius: 0 !important;
   background: $light-gray !important;
 }
 
