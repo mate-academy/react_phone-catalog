@@ -10,7 +10,7 @@
   border: 1px solid $grey-color;
   background-color: transparent;
 
-  @include hover(border-color, $main-text-color);
+  @include hover((border-color, $main-text-color));
 
   &::after {
     content: '';

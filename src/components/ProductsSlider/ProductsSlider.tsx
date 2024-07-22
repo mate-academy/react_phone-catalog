@@ -5,7 +5,6 @@ import styles from './ProductsSlider.module.scss';
 import { SliderButtons } from '../SliderButtons/SliderButtons';
 import { Product } from '../../types/Product';
 import { ProductCard } from '../ProductCard';
-// import { ArrowIcon } from '../Icons/ArrowIcon';
 
 type Props = {
   products: Product[];

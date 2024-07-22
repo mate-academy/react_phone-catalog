@@ -17,7 +17,7 @@
     width: 208px;
     height: 196px;
 
-    @include hover(transform, scale(1.1));
+    @include hover((transform, scale(1.1)));
   }
 
   &__priceWrapper {

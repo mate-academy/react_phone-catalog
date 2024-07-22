@@ -16,6 +16,6 @@
   }
 
   &__img {
-    @include hover(transform, scale(1.05));
+    @include hover((transform, scale(1.05)));
   }
 }

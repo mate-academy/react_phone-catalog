@@ -1,3 +1,46 @@
+@import '../../styles/index';
+
 .header {
-  font-style: normal;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 20;
+  max-height: 64px;
+  background-color: $white-color;
+  border-bottom: 1px solid $elements-color;
+
+  @include flex;
+
+  &__img {
+    padding-left: 24px;
+  }
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    gap: 64px;
+  }
+
+  &__navItem {
+    color: $secondary-text-color;
+    padding: 26px 0;
+
+    @include hover((color, $main-text-color));
+  }
+
+  &__isActive {
+    color: $main-text-color;
+    border-bottom: 3px solid $main-text-color;
+    padding-bottom: 23px;
+  }
+
+  &__icons {
+    @include flex;
+  }
+
+  &__btn {
+    cursor: pointer;
+    padding: 24px;
+    border-left: 1px solid $elements-color;
+  }
 }

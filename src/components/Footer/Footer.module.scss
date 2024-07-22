@@ -1,3 +1,49 @@
+@import '../../styles/index';
+
 .footer {
-  font-style: normal;
+  background-color: $white-color;
+  border-top: 1px solid $elements-color;
+
+  // height: 96px;
+
+  &__wrapper {
+    @include container;
+    @include flex;
+
+    align-items: center;
+    padding: 32px 0;
+  }
+
+  &__links {
+    @include flex;
+
+    gap: 100px;
+  }
+
+  &__linksItem {
+    color: $secondary-text-color;
+
+    @include hover(
+      (color, $main-text-color),
+      (border-bottom, 1px solid $main-text-color)
+    );
+  }
+
+  &__back {
+    @include flex;
+
+    align-items: center;
+    gap: 16px;
+    color: $secondary-text-color;
+  }
+
+  &__backBtn {
+    @include button;
+    @include slider-button;
+    @include hover((border-color, $main-text-color));
+
+    svg {
+      rotate: 90deg;
+    }
+  }
 }

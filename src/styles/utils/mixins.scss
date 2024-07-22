@@ -13,7 +13,7 @@
   background-color: $accent-color;
   color: $white-color;
 
-  @include hover(box-shadow, 0 3px 13px 0 #17203166);
+  @include hover((box-shadow, 0 3px 13px 0 #17203166));
 }
 
 @mixin button-selected {
@@ -25,15 +25,42 @@
   border: 1px solid $elements-color;
 }
 
-@mixin hover($property, $toValue) {
-  transition: #{$property} $transition-duration;
+@mixin slider-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  width: 32px;
+  border: 1px solid $grey-color;
+  background-color: transparent;
+}
+
+// @mixin hover($property, $toValue) {
+//   transition: #{$property} $transition-duration;
+
+//   &:hover {
+//     #{$property}: $toValue;
+//   }
+// }
+
+@mixin hover($properties...) {
+  @each $property, $toValue in $properties {
+    transition: all $transition-duration;
+  }
 
   &:hover {
-    #{$property}: $toValue;
+    @each $property, $toValue in $properties {
+      #{$property}: $toValue;
+    }
   }
 }
 
 @mixin flex {
   display: flex;
   justify-content: space-between;
+}
+
+@mixin container {
+  max-width: 1136px;
+  margin: 0 auto;
 }

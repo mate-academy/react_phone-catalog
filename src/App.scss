@@ -1,15 +1,15 @@
 @import './styles/index';
 @import './styles/index.utils';
 
-body {
-  font-family: Mont, sans-serif;
+html {
+  scroll-behavior: smooth;
 }
 
-.App {
+body {
+  font-family: Mont, sans-serif;
   background-color: $light-grey-color;
 }
 
 .container {
-  max-width: 1136px;
-  margin: 0 auto;
+  @include container;
 }
