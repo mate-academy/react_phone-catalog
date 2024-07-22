@@ -30,7 +30,7 @@ export const ProductDetailPurchase: React.FC<Props> = ({
   const { productId } = useParams();
   const navigate = useNavigate();
 
-  const { cart, addProduct } = useProductsCart();
+  const { cart, addProduct, deleteProduct } = useProductsCart();
   const { favorites, addToFavorites, removeProduct } = useFavorites();
 
   const normalizeRam = extractNumberAndSuffix(productDetail?.ram || '');
@@ -58,7 +58,11 @@ export const ProductDetailPurchase: React.FC<Props> = ({
   };
 
   const handleAddProduct = () => {
-    addProduct(product as Product);
+    if (!isHaveProduct) {
+      addProduct(product as Product);
+    } else {
+      deleteProduct(product?.id as number);
+    }
   };
 
   const handleToggleFavoriteStatus = () => {

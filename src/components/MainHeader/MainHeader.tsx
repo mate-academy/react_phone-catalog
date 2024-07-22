@@ -7,11 +7,19 @@ import { cartIcon, favoriteIcon, logo } from '../../assets/index';
 import { NavigationButton } from '../../ui/NavigationButton';
 import { HeaderNavigation } from '../HeaderNavigation';
 
+import { Link } from 'react-router-dom';
+import { useProductsCart } from '../../store/CartProvider';
+import { useFavorites } from '../../store/FavoritesProvider';
+import { getLengthItems } from '../../utils/getLengthItems';
 import { AsideMenu } from '../AsideMenu';
 import styles from './MainHeader.module.scss';
 
 export const MainHeader = () => {
   const [showMenu, setShowMenu] = useState(false);
+
+  const { favorites } = useFavorites();
+  const { cart } = useProductsCart();
+  const totalItems = getLengthItems(cart);
 
   const handleToogleMenu = () => {
     setShowMenu(!showMenu);
@@ -27,13 +35,18 @@ export const MainHeader = () => {
         <div className={styles.Container}>
           <div className={styles.HeaderContent}>
             <div className={styles.HeaderInner}>
-              <img className={styles.HeaderLogo} src={logo} alt="logo" />
+              <Link to="/">
+                <img className={styles.HeaderLogo} src={logo} alt="logo" />
+              </Link>
 
               <HeaderNavigation />
             </div>
 
             <div className={styles.HeaderList}>
               <NavigationButton href="/favorites">
+                {!!favorites.length && (
+                  <span className={styles.Counter}>{favorites.length}</span>
+                )}
                 <img
                   className={styles.HeaderIcon}
                   src={favoriteIcon}
@@ -41,6 +54,9 @@ export const MainHeader = () => {
                 />
               </NavigationButton>
               <NavigationButton href="/cart">
+                {!!cart.length && (
+                  <span className={styles.Counter}>{totalItems}</span>
+                )}
                 <img className={styles.HeaderIcon} src={cartIcon} alt="cart" />
               </NavigationButton>
 
@@ -52,7 +68,7 @@ export const MainHeader = () => {
         </div>
       </header>
 
-      {showMenu && <AsideMenu onCloseMenu={handleCloseMenu} />}
+      <AsideMenu active={showMenu} onCloseMenu={handleCloseMenu} />
     </>
   );
 };

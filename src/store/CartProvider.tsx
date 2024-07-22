@@ -8,14 +8,16 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const CartContext = React.createContext<{
+type CartContextType = {
   cart: Cart[];
   addProduct: (product: Product) => void;
   deleteProduct: (id: number) => void;
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
   clearProductsCart: () => void;
-}>({
+};
+
+export const CartContext = React.createContext<CartContextType>({
   cart: [],
   addProduct: () => {},
   deleteProduct: () => {},

@@ -6,10 +6,6 @@
   background: $surface-secondary-color;
   color: $white-color;
 
-  // @include md() {
-  //   width: 230px;
-  // }
-
   &:hover {
     outline: 1px solid $surface-main-color;
   }

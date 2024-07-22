@@ -10,15 +10,10 @@
   display: flex;
   gap: 15px;
 
-  @include rwd(540) {
+  @include onCustom(540) {
     display: flex;
     flex-direction: column;
   }
-
-  // @include onMobile() {
-  //   flex-direction: column;
-  //   gap: 32px;
-  // }
 }
 
 .CategoryCardsTitle {

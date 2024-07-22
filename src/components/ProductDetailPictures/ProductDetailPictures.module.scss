@@ -5,7 +5,7 @@
   display: flex;
   column-gap: 27px;
 
-  @include rwd(320) {
+  @include onCustom(320) {
     flex-direction: column-reverse;
     align-items: center;
     gap: 16px;
@@ -17,11 +17,11 @@
   flex-direction: column;
   gap: 16px;
 
-  @include rwd(670) {
+  @include onCustom(670) {
     gap: 10px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     flex-direction: row;
     gap: 8px;
   }
@@ -36,12 +36,12 @@
   border: 1px solid $elements-color;
   cursor: pointer;
 
-  @include rwd(670) {
+  @include onCustom(670) {
     width: 35px;
     height: 35px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     width: 50px;
     height: 50px;
   }
@@ -56,12 +56,12 @@
   height: 70px;
   object-fit: contain;
 
-  @include rwd(670) {
+  @include onCustom(670) {
     width: 30px;
     height: 30px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     width: 40px;
     height: 40px;
   }
@@ -72,15 +72,15 @@
   height: 464px;
   object-fit: contain;
 
-  @include rwd(1025) {
+  @include onCustom(1025) {
     width: 400px;
   }
 
-  @include rwd(930) {
+  @include onCustom(930) {
     width: 350px;
   }
 
-  @include md() {
+  @include onMedium() {
     width: 290px;
     height: 290px;
   }

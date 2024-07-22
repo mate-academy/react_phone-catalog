@@ -15,11 +15,11 @@
   transition: background $transition-duration;
   cursor: pointer;
 
-  @include sm() {
+  @include onSmall() {
     height: 190px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     display: none;
   }
 

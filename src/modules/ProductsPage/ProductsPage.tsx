@@ -30,10 +30,10 @@ export const ProductsPage = () => {
 
   const sortedPhones = getSortedProducts(products, sortQuery as SortsType);
 
-  const allItems = currentPage * perPage;
-  const prevPage = (currentPage - 1) * perPage;
+  const startIndex = (currentPage - 1) * perPage;
+  const endIndex = currentPage * perPage;
 
-  const totalProducts = sortedPhones.slice(prevPage, allItems);
+  const totalProducts = sortedPhones.slice(startIndex, endIndex);
 
   useEffect(() => {
     setLoading(true);

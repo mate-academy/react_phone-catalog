@@ -9,11 +9,16 @@ import styles from './AsideMenu.module.scss';
 
 type Props = {
   onCloseMenu: () => void;
+  active: boolean;
 };
 
-export const AsideMenu: React.FC<Props> = ({ onCloseMenu }) => {
+export const AsideMenu: React.FC<Props> = ({ onCloseMenu, active }) => {
   return (
-    <aside className={styles.AsideMenu}>
+    <aside
+      className={cn(styles.AsideMenu, {
+        [styles.Active]: active,
+      })}
+    >
       <div className={styles.AsideMenuContent}>
         <nav className={styles.AsideNavigation}>
           <ul className={styles.AsideList}>

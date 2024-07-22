@@ -6,7 +6,7 @@
   flex-direction: column;
   width: 560px;
 
-  @include sm() {
+  @include onSmall() {
     width: 100%;
   }
 }
@@ -18,7 +18,7 @@
   border-bottom: 1px solid $elements-color;
   padding-bottom: 16px;
 
-  @include rwd(320) {
+  @include onCustom(320) {
     font-weight: 500;
   }
 }

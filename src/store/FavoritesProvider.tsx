@@ -7,11 +7,13 @@ type Props = {
   children: React.ReactNode;
 };
 
-export const FavoritesContext = React.createContext<{
+type FavoritesContextType = {
   favorites: Product[];
   addToFavorites: (product: Product) => void;
   removeProduct: (id: number) => void;
-}>({
+};
+
+export const FavoritesContext = React.createContext<FavoritesContextType>({
   favorites: [],
   addToFavorites: () => {},
   removeProduct: () => {},
@@ -27,7 +29,7 @@ export const FavoritesProvider: React.FC<Props> = ({ children }) => {
   }, [favorites]);
 
   const addToFavorites = (product: Product) => {
-    setFavorites([...favorites, product]);
+    setFavorites(currentFavorites => [...currentFavorites, product]);
   };
 
   const removeProduct = (id: number) => {

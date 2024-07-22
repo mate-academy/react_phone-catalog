@@ -6,12 +6,12 @@
   font-size: 48px;
   margin-top: 56px;
 
-  @include sm() {
+  @include onSmall() {
     font-size: 40px;
     margin-top: 32px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     font-size: 32px;
     margin-top: 24px;
   }

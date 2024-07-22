@@ -13,19 +13,19 @@
   row-gap: 40px;
   margin-top: 24px;
 
-  @include xl() {
+  @include onExtraLarge() {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include md() {
+  @include onMedium() {
     grid-template-columns: repeat(3, 229px);
   }
 
-  @include sm() {
+  @include onSmall() {
     grid-template-columns: repeat(2, 288px);
   }
 
-  @include rwd(630) {
+  @include onCustom(630) {
     grid-template-columns: repeat(2, 1fr);
   }
 

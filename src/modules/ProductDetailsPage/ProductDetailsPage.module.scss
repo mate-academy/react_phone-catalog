@@ -5,19 +5,19 @@
   display: flex;
   column-gap: 64px;
 
-  @include rwd(900) {
+  @include onCustom(900) {
     column-gap: 40px;
   }
 
-  @include md() {
+  @include onMedium() {
     column-gap: 30px;
   }
 
-  @include sm() {
+  @include onSmall() {
     column-gap: 17px;
   }
 
-  @include rwd(615) {
+  @include onCustom(615) {
     flex-direction: column;
     gap: 40px;
   }
@@ -26,7 +26,7 @@
 .ProductWrapperPrimary {
   margin-top: 80px;
 
-  @include sm() {
+  @include onSmall() {
     display: flex;
     flex-direction: column;
   }

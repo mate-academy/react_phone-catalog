@@ -24,13 +24,18 @@ export const Breadcrumbs: React.FC<Props> = ({ category, productName }) => {
 
       <IconRight fill="#4A4D58 " />
 
-      <p
-        className={cn(styles.BreadcrumbsPath, {
-          [styles.BreadcrumbsPathActive]: category !== pathname.slice(1),
-        })}
-      >
-        {category && capatalize(category)}
-      </p>
+      {category !== pathname.slice(1) ? (
+        <Link
+          to={`/${category}`}
+          className={cn(styles.BreadcrumbsPath, styles.BreadcrumbsLink, {
+            [styles.BreadcrumbsPathActive]: category !== pathname.slice(1),
+          })}
+        >
+          {category && capatalize(category)}
+        </Link>
+      ) : (
+        <p className={cn(styles.BreadcrumbsPath)}>{capatalize(category)}</p>
+      )}
 
       {productName && <IconRight fill="#4A4D58 " />}
 

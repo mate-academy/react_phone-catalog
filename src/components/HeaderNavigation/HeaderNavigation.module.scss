@@ -7,19 +7,19 @@
   gap: 64px;
   list-style-type: none;
 
-  @include rwd(700) {
+  @include onCustom(700) {
     gap: 40px;
   }
 
-  @include sm() {
+  @include onSmall() {
     gap: 32px;
   }
 
-  @include rwd(580) {
+  @include onCustom(580) {
     gap: 20px;
   }
 
-  @include rwd(530) {
+  @include onCustom(530) {
     display: none;
   }
 }

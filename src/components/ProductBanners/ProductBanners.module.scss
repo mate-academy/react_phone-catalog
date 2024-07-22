@@ -6,12 +6,12 @@
   margin-bottom: 56px;
   margin-top: 56px;
 
-  @include sm() {
+  @include onSmall() {
     margin-top: 32px;
     margin-bottom: 32px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     margin-top: 24px;
     margin-bottom: 24px;
   }
@@ -22,11 +22,11 @@
   object-fit: cover;
   height: 400px;
 
-  @include sm() {
+  @include onSmall() {
     height: 190px;
   }
 
-  @include rwd(320) {
+  @include onCustom(320) {
     height: 320px;
   }
 }

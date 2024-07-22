@@ -21,7 +21,7 @@ type Props = {
 
 export const ProductCard: React.FC<Props> = props => {
   const { pathname } = useLocation();
-  const { addProduct, cart } = useProductsCart();
+  const { addProduct, cart, deleteProduct } = useProductsCart();
   const { favorites, addToFavorites, removeProduct } = useFavorites();
 
   const isHaveProduct = cart.some(item => item.id === props.product.id);
@@ -39,7 +39,11 @@ export const ProductCard: React.FC<Props> = props => {
   const activeProductCardText = `${styles.DescriptionsText} ${styles.DescriptionsTextActive}`;
 
   const handleAddProduct = () => {
-    addProduct(props.product);
+    if (!isHaveProduct) {
+      addProduct(props.product);
+    } else {
+      deleteProduct(props.product.id);
+    }
   };
 
   const handleToggleFavoriteStatus = () => {

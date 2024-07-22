@@ -37,7 +37,7 @@ body {
 main {
   padding-bottom: calc($height-footer + 80px);
 
-  @include sm() {
+  @include onSmall() {
     padding-bottom: calc($height-footer + 64px);
   }
 

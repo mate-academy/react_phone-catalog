@@ -2,47 +2,41 @@ $screen-xl-min: 1200px;
 $screen-lg-min: 992px;
 $screen-md-min: 768px;
 $screen-sm-min: 640px;
-
 $breakpoints: (
   mobile: 320px,
   large-mobile: 500px,
 );
 
-// Extra large devices
-@mixin xl {
+@mixin onExtraLarge {
   @media (max-width: #{$screen-xl-min}) {
     @content;
   }
 }
-// Large devices
-@mixin lg {
+
+@mixin onLarge {
   @media (max-width: #{$screen-lg-min}) {
     @content;
   }
 }
 
-// Medium devices
-@mixin md {
+@mixin onMedium {
   @media (max-width: #{$screen-md-min}) {
     @content;
   }
 }
 
-// Small devices
-@mixin sm {
+@mixin onSmall {
   @media (max-width: #{$screen-sm-min}) {
     @content;
   }
 }
 
-// Custom devices
-@mixin rwd($screen) {
-  @media (max-width: #{$screen+'px'}) {
+@mixin onCustom($screen) {
+  @media (max-width: #{$screen + 'px'}) {
     @content;
   }
 }
 
-// multi media
 @mixin media($keys...) {
   @each $key in $keys {
     @media (max-width: map-get($breakpoints, $key)) {
