@@ -66,6 +66,7 @@ export const Pagination: React.FC<Props> = ({
     }
 
     setPages(tempNumberOfPages);
+    // eslint-disable-next-line
   }, [currentPage, amountPages]);
 
   return (
@@ -78,6 +79,7 @@ export const Pagination: React.FC<Props> = ({
           <button
             key={page}
             onClick={() => handleChangePage(page)}
+            disabled={page === amountPages}
             className={cn(styles.Button, {
               [styles.Active]: currentPage === page,
             })}

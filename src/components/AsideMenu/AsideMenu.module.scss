@@ -2,6 +2,10 @@
 @import '../../utils';
 @import '../../mixin';
 
+body:has(.Active) {
+  overflow: hidden;
+}
+
 .AsideMenu {
   display: none;
   position: fixed;
