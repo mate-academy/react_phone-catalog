@@ -35,8 +35,9 @@ export const BANNER_IMAGES_MOBILE: Image[] = [
   { url: bannerTabletsMobile, alt: 'tablets banner', link: '/tablets' },
 ];
 
-// export const BASE_URL = 'https://YevhenProtasov.github.io/react_phone-catalog/';
-export const BASE_URL = '';
+export const BASE_URL = 'https://YevhenProtasov.github.io/react_phone-catalog/';
+// for local use
+// export const BASE_URL = '';
 
 export const CARD_GAP = 16;
 
