@@ -15,77 +15,48 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
   const { gadgets } = useContext(ProductsContext);
   const [searchParams] = useSearchParams();
 
-  const page = searchParams.get(QueryParams.page) || 1;
+  const currentPage = searchParams.get(QueryParams.page) || 1;
   const paginationQuantity = Math.ceil(
     gadgets.gadgets.length / Number(perPage),
   );
 
-  const pages = Array.from({ length: paginationQuantity }, (_, i) => i + 1);
-  const allPages = pages.length !== 0 ? pages : [1];
+  const totalPages = Array.from(
+    { length: paginationQuantity },
+    (_, i) => i + 1,
+  );
 
-  const cutdownPage = (
-    initialArray: number[] | string[],
-    currentPage: number,
-    lengthPages = 5,
-  ) => {
-    // debugger;
-    const start = Math.max(0, currentPage - 3);
-    const end = currentPage + 2;
-    const readyLength = [];
+  const pagination = (total: number[], current: number, length = 5) => {
+    const nextLength = Math.floor(length / 2);
+    const prevLength = Math.ceil(length / 2);
 
-    if (initialArray.length > 1) {
-      if (start === 0) {
-        readyLength.push(...initialArray.slice(start, lengthPages));
-      }
-
-      if (start > 0 && currentPage <= initialArray.length - 2) {
-        readyLength.push(...initialArray.slice(start, end));
-      }
-
-      if (
-        currentPage > initialArray.length - 2 &&
-        lengthPages < initialArray.length
-      ) {
-        readyLength.push(
-          ...initialArray.slice(
-            initialArray.length - lengthPages,
-            initialArray.length + 1,
-          ),
-        );
-      }
-
-      if (start > 0 && lengthPages === initialArray.length) {
-        readyLength.push(
-          ...initialArray.slice(
-            lengthPages - initialArray.length,
-            initialArray.length,
-          ),
-        );
-      }
-
-      return readyLength;
+    if (current <= prevLength) {
+      return total.slice(0, length);
     }
 
-    return initialArray;
+    if (current >= total.length - nextLength) {
+      return total.slice(-length);
+    }
+
+    return total.slice(current - prevLength, current + nextLength);
   };
 
   return (
     <div className={style.pagination}>
       <SearchLink
-        params={{ page: `${+page - 1}` }}
+        params={{ page: `${+currentPage - 1}` }}
         className={classNames(style.pagination__link, {
-          [style.pagination__disabled]: +page === 1,
+          [style.pagination__disabled]: +currentPage === 1,
         })}
       >
         <IconLeft />
       </SearchLink>
       <div className={style.pagination__numbers}>
-        {cutdownPage(allPages, +page).map((item, i) => (
+        {pagination(totalPages, +currentPage).map(item => (
           <SearchLink
             params={{ page: String(item) }}
-            key={i}
+            key={item}
             className={classNames(style.pagination__number, {
-              [style.pagination__active]: +item === +page || item === 'All',
+              [style.pagination__active]: +item === +currentPage,
             })}
           >
             {item}
@@ -94,9 +65,9 @@ export const Pagination: React.FC<Props> = ({ perPage }) => {
       </div>
 
       <SearchLink
-        params={{ page: `${+page + 1}` }}
+        params={{ page: `${+currentPage + 1}` }}
         className={classNames(style.pagination__link, {
-          [style.pagination__disabled]: +page === allPages.length,
+          [style.pagination__disabled]: +currentPage === totalPages.length,
         })}
       >
         <IconRight />
