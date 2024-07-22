@@ -16,12 +16,12 @@
   text-decoration: none;
   color: transparent;
 
-  @include onLarge() {
+  @include large {
     width: 48px;
     height: 48px;
   }
 
-  @include onCustom(640) {
+  @include custom(640) {
     display: none;
   }
 }

@@ -1,5 +1,5 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .ProductsHeader {
   display: flex;
@@ -8,7 +8,7 @@
   margin-bottom: 24px;
   margin-top: 80px;
 
-  @include onSmall() {
+  @include small {
     margin-top: 64px;
   }
 }
@@ -18,7 +18,7 @@
   font-weight: 800;
   font-size: 32px;
 
-  @include onCustom(320) {
+  @include custom(320) {
     width: 136px;
     font-size: 22px;
   }

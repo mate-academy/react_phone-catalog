@@ -1,12 +1,12 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .ProductDescription {
   display: flex;
   flex-direction: column;
   width: 320px;
 
-  @include onSmall() {
+  @include small {
     width: 100%;
   }
 }

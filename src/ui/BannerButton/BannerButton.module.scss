@@ -1,5 +1,5 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .BannerButton {
   display: flex;
@@ -15,11 +15,11 @@
   transition: background $transition-duration;
   cursor: pointer;
 
-  @include onSmall() {
+  @include small {
     height: 190px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     display: none;
   }
 

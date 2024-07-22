@@ -7,19 +7,19 @@
   gap: 64px;
   list-style-type: none;
 
-  @include onCustom(700) {
+  @include custom(700) {
     gap: 40px;
   }
 
-  @include onSmall() {
+  @include small {
     gap: 32px;
   }
 
-  @include onCustom(580) {
+  @include custom(580) {
     gap: 20px;
   }
 
-  @include onCustom(530) {
+  @include custom(530) {
     display: none;
   }
 }

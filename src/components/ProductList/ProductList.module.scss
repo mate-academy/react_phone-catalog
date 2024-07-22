@@ -1,5 +1,5 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .Products {
   display: flex;
@@ -9,23 +9,22 @@
 .Wrapper {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  column-gap: 16px;
-  row-gap: 40px;
+  gap: 40px 16px;
   margin-top: 24px;
 
-  @include onExtraLarge() {
+  @include extra-large {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  @include onMedium() {
+  @include media {
     grid-template-columns: repeat(3, 229px);
   }
 
-  @include onSmall() {
+  @include small {
     grid-template-columns: repeat(2, 288px);
   }
 
-  @include onCustom(630) {
+  @include custom(630) {
     grid-template-columns: repeat(2, 1fr);
   }
 

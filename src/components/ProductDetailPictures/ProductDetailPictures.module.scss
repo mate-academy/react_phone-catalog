@@ -1,11 +1,11 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .ProductDetailWrapper {
   display: flex;
   column-gap: 27px;
 
-  @include onCustom(320) {
+  @include custom(320) {
     flex-direction: column-reverse;
     align-items: center;
     gap: 16px;
@@ -17,11 +17,11 @@
   flex-direction: column;
   gap: 16px;
 
-  @include onCustom(670) {
+  @include custom(670) {
     gap: 10px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     flex-direction: row;
     gap: 8px;
   }
@@ -36,12 +36,12 @@
   border: 1px solid $elements-color;
   cursor: pointer;
 
-  @include onCustom(670) {
+  @include custom(670) {
     width: 35px;
     height: 35px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     width: 50px;
     height: 50px;
   }
@@ -56,12 +56,12 @@
   height: 70px;
   object-fit: contain;
 
-  @include onCustom(670) {
+  @include custom(670) {
     width: 30px;
     height: 30px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     width: 40px;
     height: 40px;
   }
@@ -72,15 +72,15 @@
   height: 464px;
   object-fit: contain;
 
-  @include onCustom(1025) {
+  @include custom(1025) {
     width: 400px;
   }
 
-  @include onCustom(930) {
+  @include custom(930) {
     width: 350px;
   }
 
-  @include onMedium() {
+  @include medium {
     width: 290px;
     height: 290px;
   }

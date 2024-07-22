@@ -1,5 +1,5 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .DropdownMenu {
   position: relative;
@@ -8,7 +8,7 @@
   display: flex;
   flex-direction: column;
 
-  @include onCustom(400) {
+  @include custom(400) {
     width: 136px;
   }
 }
@@ -16,7 +16,7 @@
 .Small {
   width: 128px;
 
-  @include onCustom(400) {
+  @include custom(400) {
     width: 136px;
   }
 }

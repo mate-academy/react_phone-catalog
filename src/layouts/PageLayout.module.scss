@@ -1,5 +1,5 @@
 @import '../variable';
-@import '../mixin.scss';
+@import '../mixin';
 
 .Container {
   width: 100%;
@@ -8,12 +8,12 @@
   padding-left: 20px;
   padding-right: 20px;
 
-  @include onMedium() {
+  @include medium {
     padding-left: 24px;
     padding-right: 24px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     padding-left: 16px;
     padding-right: 16px;
   }

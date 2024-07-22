@@ -7,7 +7,7 @@
   transform: translateY(22px);
   transition: all $transition-duration;
 
-  @include onMedium() {
+  @include medium {
     transform: translateY(15px);
   }
 }

@@ -1,5 +1,5 @@
-@import '../../variable.scss';
-@import '../../mixin.scss';
+@import '../../variable';
+@import '../../mixin';
 
 .CartItem {
   max-width: 100%;
@@ -7,15 +7,15 @@
   padding: 24px;
   background: $surface-secondary-color;
 
-  @include onCustom(1050) {
+  @include custom(1050) {
     width: 650px;
   }
 
-  @include onCustom(930) {
+  @include custom(930) {
     width: 100%;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     padding: 16px;
   }
 }
@@ -25,7 +25,7 @@
   align-items: center;
   justify-content: space-between;
 
-  @include onCustom(570) {
+  @include custom(570) {
     flex-direction: column;
     gap: 16px;
   }
@@ -36,11 +36,11 @@
   align-items: center;
   column-gap: 24px;
 
-  @include onCustom(570) {
+  @include custom(570) {
     align-self: flex-start;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     column-gap: 16px;
   }
 }
@@ -72,7 +72,7 @@
   align-items: center;
   column-gap: 53px;
 
-  @include onCustom(570) {
+  @include custom(570) {
     align-self: flex-start;
   }
 }
@@ -87,10 +87,9 @@
   width: 32px;
   height: 32px;
   background: transparent;
-  border: none;
+  border: 1px solid $elements-color;
   outline: none;
   color: $elements-color;
-  border: 1px solid $elements-color;
 
   &:hover {
     cursor: pointer;

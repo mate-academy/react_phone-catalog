@@ -26,7 +26,7 @@
   gap: 50px;
   align-items: center;
 
-  @include onSmall() {
+  @include small {
     gap: 32px;
   }
 }
@@ -49,12 +49,12 @@
   border: none;
   border-left: 1px solid #323542;
 
-  @include onSmall() {
+  @include small {
     width: 48px;
     height: 48px;
   }
 
-  @include onCustom(640) {
+  @include custom(640) {
     display: block;
   }
 

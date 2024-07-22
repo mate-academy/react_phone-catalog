@@ -7,31 +7,31 @@ $breakpoints: (
   large-mobile: 500px,
 );
 
-@mixin onExtraLarge {
+@mixin extra-large {
   @media (max-width: #{$screen-xl-min}) {
     @content;
   }
 }
 
-@mixin onLarge {
+@mixin large {
   @media (max-width: #{$screen-lg-min}) {
     @content;
   }
 }
 
-@mixin onMedium {
+@mixin medium {
   @media (max-width: #{$screen-md-min}) {
     @content;
   }
 }
 
-@mixin onSmall {
+@mixin small {
   @media (max-width: #{$screen-sm-min}) {
     @content;
   }
 }
 
-@mixin onCustom($screen) {
+@mixin custom($screen) {
   @media (max-width: #{$screen + 'px'}) {
     @content;
   }

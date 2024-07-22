@@ -1,5 +1,5 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .Title {
   font-weight: 700;
@@ -7,7 +7,7 @@
   color: $white-color;
   margin-top: 40px;
 
-  @include onCustom(320) {
+  @include custom(320) {
     font-size: 32px;
   }
 }

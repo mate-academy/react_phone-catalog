@@ -1,12 +1,12 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .About {
   display: flex;
   flex-direction: column;
   width: 560px;
 
-  @include onSmall() {
+  @include small {
     width: 100%;
   }
 }
@@ -18,7 +18,7 @@
   border-bottom: 1px solid $elements-color;
   padding-bottom: 16px;
 
-  @include onCustom(320) {
+  @include custom(320) {
     font-weight: 500;
   }
 }

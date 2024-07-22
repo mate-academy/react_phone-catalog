@@ -1,17 +1,17 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .Title {
   color: $white-color;
   font-size: 48px;
   margin-top: 56px;
 
-  @include onSmall() {
+  @include small {
     font-size: 40px;
     margin-top: 32px;
   }
 
-  @include onCustom(320) {
+  @include custom(320) {
     font-size: 32px;
     margin-top: 24px;
   }

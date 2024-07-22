@@ -1,23 +1,23 @@
 @import '../../variable';
-@import '../../mixin.scss';
+@import '../../mixin';
 
 .ProductWrapper {
   display: flex;
   column-gap: 64px;
 
-  @include onCustom(900) {
+  @include custom(900) {
     column-gap: 40px;
   }
 
-  @include onMedium() {
+  @include medium {
     column-gap: 30px;
   }
 
-  @include onSmall() {
+  @include small {
     column-gap: 17px;
   }
 
-  @include onCustom(615) {
+  @include custom(615) {
     flex-direction: column;
     gap: 40px;
   }
@@ -26,7 +26,7 @@
 .ProductWrapperPrimary {
   margin-top: 80px;
 
-  @include onSmall() {
+  @include small {
     display: flex;
     flex-direction: column;
   }
