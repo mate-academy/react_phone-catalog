@@ -21,7 +21,7 @@ export const Footer: React.FC = () => {
         >
           Github
         </a>
-        <a className={Styles['footer__links__item']} href="#con">
+        <a className={Styles['footer__links__item']} href="https://www.linkedin.com/in/patryk-buczkowski-7a1b8831a/">
           Contacts
         </a>
         <a className={Styles['footer__links__item']} href="#rights">
