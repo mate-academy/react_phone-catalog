@@ -1,10 +1,6 @@
 import bannerAcs from '../../img/HomeImgs/banner-accessories.png';
 import bannerPhones from '../../img/HomeImgs/banner-phones.png';
 import bannerTablets from '../../img/HomeImgs/banner-tablets.png';
-import arrowRight from '../../img/icons/arrowRight.svg';
-import arrowRightGray from '../../img/icons/arrowRight-gray.svg';
-import arrowLeft from '../../img/icons/arrowLeft.svg';
-import arrowLeftGray from '../../img/icons/arrowLeft-gray.svg';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
@@ -84,15 +80,10 @@ export const Banner: React.FC = () => {
         <button
           disabled={disableButtons}
           onClick={handlePrev}
-          className={classNames('banner__button button-right-left', {
-            'button-right-left__disabled': disableButtons,
+          className={classNames("banner__button button-slider b-left", {
+            "button-slider__disabled b-left-g": disableButtons,
           })}
         >
-          {disableButtons ? (
-            <img src={arrowLeftGray} alt="" />
-          ) : (
-            <img src={arrowLeft} alt="" />
-          )}
         </button>
         <div className="banner__carusel-container">
           <ul
@@ -111,15 +102,10 @@ export const Banner: React.FC = () => {
         <button
           disabled={disableButtons}
           onClick={handleNext}
-          className={classNames('banner__button button-right-left', {
-            'button-right-left__disabled': disableButtons,
+          className={classNames("banner__button button-slider b-right", {
+            "button-slider__disabled b-right-g": disableButtons,
           })}
         >
-          {disableButtons ? (
-            <img src={arrowRightGray} alt="" />
-          ) : (
-            <img src={arrowRight} alt="" />
-          )}
         </button>
       </div>
       <div className="button__dots">

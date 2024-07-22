@@ -1,7 +1,4 @@
 import { Link } from 'react-router-dom';
-
-import heart from '../../img/icons/heart.svg';
-import heartFilled from '../../img/icons/heart-filled.svg';
 import { Product } from '../../types/product';
 import React from 'react';
 import { useArrayContext } from '../../ArrayContext';
@@ -50,8 +47,7 @@ export const ProductCard: React.FC<Props> = ({
       </ul>
       <div className="product-card__buttons">
         <button
-          className={classNames('button-add-standart-size', {
-            'button-add': !cartProducts.map(a => a.id).includes(product.id),
+          className={classNames('button-add', {
             'button-add__added': cartProducts
               .map(a => a.id)
               .includes(product.id),
@@ -63,22 +59,13 @@ export const ProductCard: React.FC<Props> = ({
             : 'Add to cart'}
         </button>
         <button
-          className={classNames('button-plus-size-standart-size', {
-            'button-plus-size': !favoriteProducts
-              .map(a => a.id)
-              .includes(product.id),
-            'button-plus-size__selected': favoriteProducts
+          className={classNames('button-heart button-size-medium', {
+            'button-heart-filled': favoriteProducts
               .map(a => a.id)
               .includes(product.id),
           })}
           onClick={() => handleLike(product)}
-        >
-          {favoriteProducts.map(a => a.id).includes(product.id) ? (
-            <img className="heart" src={heartFilled} alt="" />
-          ) : (
-            <img className="heart" src={heart} alt="" />
-          )}
-        </button>
+        />
       </div>
     </div>
   );

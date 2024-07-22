@@ -29,6 +29,10 @@
     align-items: center;
     color: $color-secondary;
     box-sizing: border-box;
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 
   &__is-active {

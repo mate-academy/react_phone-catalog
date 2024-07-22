@@ -3,9 +3,6 @@ import home from '../../img/icons/home.svg';
 import { Product } from '../../types/product';
 import { useEffect, useState, useRef } from 'react';
 import arrowRight from '../../img/icons/arrowRight.svg';
-import arrowRightGray from '../../img/icons/arrowRight-gray.svg';
-import arrowLeft from '../../img/icons/arrowLeft.svg';
-import arrowLeftGray from '../../img/icons/arrowLeft-gray.svg';
 import arrowUp from '../../img/icons/arrowTop.svg';
 import arrowDown from '../../img/icons/arrowDown.svg';
 import { SearchLink } from '../../components/SearchLink';
@@ -197,8 +194,8 @@ export const Phones: React.FC<Props> = ({ products }) => {
         <div className="products__buttons">
           <button
             disabled={+currentPage === 1}
-            className={classNames('button-right-left button-size', {
-              'button-right-left__disabled': +currentPage === 1,
+            className={classNames('button-slider b-left button-size', {
+              'button-slider__disabled b-left-g': +currentPage === 1,
             })}
             onClick={() => {
               setSearchWith({
@@ -206,11 +203,6 @@ export const Phones: React.FC<Props> = ({ products }) => {
               });
             }}
           >
-            {+currentPage === 1 ? (
-              <img src={arrowLeftGray} alt="" />
-            ) : (
-              <img src={arrowLeft} alt="" />
-            )}
           </button>
           <div className="products__page-buttons">
             {pagesAmmount()
@@ -234,19 +226,14 @@ export const Phones: React.FC<Props> = ({ products }) => {
           </div>
           <button
             disabled={+currentPage === pagesAmmount().length}
-            className={classNames('button-right-left button-size', {
-              'button-right-left__disabled':
+            className={classNames('button-slider b-right button-size', {
+              'button-slider__disabled b-right-g':
                 +currentPage === pagesAmmount().length,
             })}
             onClick={() => {
               setSearchWith({ page: `${+currentPage + 1}` });
             }}
           >
-            {+currentPage === pagesAmmount().length ? (
-              <img src={arrowRightGray} alt="" />
-            ) : (
-              <img src={arrowRight} alt="" />
-            )}
           </button>
         </div>
       )}

@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import arrowTop from '../../img/icons/arrowTop.svg';
 import logo from '../../img/icons/logo.svg';
 
 export const Footer = () => {
@@ -31,9 +30,7 @@ export const Footer = () => {
           <p onClick={goTop} className="footer__button-text">
             Back to top
           </p>
-          <button onClick={goTop} className="button-right-left button-size">
-            <img src={arrowTop} alt="" />
-          </button>
+          <button onClick={goTop} className="button-slider button-size b-up" />
         </button>
       </footer>
     </div>

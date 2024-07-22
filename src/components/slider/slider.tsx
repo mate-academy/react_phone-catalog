@@ -1,11 +1,7 @@
 import { Product } from '../../types/product';
 import { ProductCard } from '../productCard/productCard';
-import arrowRight from '../../img/icons/arrowRight.svg';
-import arrowLeft from '../../img/icons/arrowLeft.svg';
 import { useEffect, useRef, useState } from 'react';
 import config from '../../utils/config';
-import arrowRightGray from '../../img/icons/arrowRight-gray.svg';
-import arrowLeftGray from '../../img/icons/arrowLeft-gray.svg';
 import classNames from 'classnames';
 
 type Props = {
@@ -82,29 +78,19 @@ export const Slider: React.FC<Props> = ({ products, title, showOldPrice }) => {
         <h2 className="slider__title">{title}</h2>
         <div className="slider__buttons">
           <button
-            className={classNames('button-right-left button-size', {
-              'button-right-left__disabled': currentTrans === 0,
+            className={classNames("button-slider b-left button-size", {
+              "button-slider__disabled b-left-g": currentTrans === 0,
             })}
             onClick={handlePrev}
           >
-            {currentTrans === 0 ? (
-              <img src={arrowLeftGray} alt="" />
-            ) : (
-              <img src={arrowLeft} alt="" />
-            )}
           </button>
           <button
-            className={classNames('button-right-left button-size', {
-              'button-right-left__disabled':
+            className={classNames("button-slider b-right button-size", {
+              "button-slider__disabled b-right-g":
                 currentTrans === products.length - cardsPerPage,
             })}
             onClick={handleNext}
           >
-            {currentTrans === products.length - cardsPerPage ? (
-              <img src={arrowRightGray} alt="" />
-            ) : (
-              <img src={arrowRight} alt="" />
-            )}
           </button>
         </div>
       </div>

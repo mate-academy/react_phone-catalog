@@ -1,6 +1,7 @@
 .shop-by-category {
   &__h2 {
     @include h2;
+
     margin-bottom: 24px;
   }
 
@@ -56,11 +57,13 @@
 
   &__h4 {
     color: $color-primary;
+
     @include h4;
   }
 
   &__text {
     color: $color-secondary;
+
     @include bodyText;
   }
 }
@@ -68,9 +71,11 @@
 .phones-container {
   background-color: #6d6474;
 }
+
 .tablets-container {
   background-color: #d53c51;
 }
+
 .acc-container {
   background-color: #973d5f;
 }

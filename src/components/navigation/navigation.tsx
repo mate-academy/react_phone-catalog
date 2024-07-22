@@ -119,7 +119,7 @@ export const Navigation: React.FC = () => {
       </div>
       {focusMenu && (
         <div className="navigation__menu">
-          <Menu />
+          <Menu setFocusMenu={setFocusMenu} />
         </div>
       )}
     </nav>

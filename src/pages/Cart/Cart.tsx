@@ -3,11 +3,10 @@ import { ArrayContext } from '../../ArrayContext';
 import { Link, useLocation } from 'react-router-dom';
 import home from '../../img/icons/home.svg';
 import arrowRight from '../../img/icons/arrowRight.svg';
-import plus from '../../img/icons/plus.svg';
-import minus from '../../img/icons/minus.svg';
 import closeButton from '../../img/icons/close-gray.svg';
 import { Modal } from '../../components/modal/modal';
 import { Product } from '../../types/product';
+import classNames from 'classnames';
 
 export const Cart: React.FC = () => {
   const { cartProducts, setCartProducts } = useContext(ArrayContext);
@@ -77,7 +76,11 @@ export const Cart: React.FC = () => {
                       cartProducts.filter(item => product.id === item.id)
                         .length === 1
                     }
-                    className="icon-container"
+                    className={classNames("button-size b-minus button-slider", {
+                      "button-slider__disabled b-minus-g": cartProducts.filter(item => product.id === item.id)
+                        .length === 1
+                    }
+                    )}
                     onClick={() => {
                       const index = cartProducts.findLastIndex(
                         item => item.id === product.id,
@@ -87,20 +90,16 @@ export const Cart: React.FC = () => {
                       newCartProducts.splice(index, 1);
                       setCartProducts(newCartProducts);
                     }}
-                  >
-                    <img src={minus} alt="" />
-                  </button>
+                  />
                   <p className="cart__amount body-text">
                     {cartProducts.filter(item => product.id === item.id).length}
                   </p>
                   <button
-                    className="icon-container"
+                    className="button-size b-plus button-slider"
                     onClick={() => {
                       setCartProducts([...cartProducts, product]);
                     }}
-                  >
-                    <img src={plus} alt="" />
-                  </button>
+                  />
                 </div>
                 <p className="h3 cart__price">
                   $

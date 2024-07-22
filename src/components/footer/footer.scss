@@ -58,6 +58,7 @@
 
   &__button-text {
     @include smallText;
+
     color: $color-secondary;
     background-color: transparent;
     border: none;

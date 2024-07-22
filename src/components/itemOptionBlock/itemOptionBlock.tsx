@@ -1,6 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone } from '../../types/phones';
-import heart from '../../img/icons/heart.svg';
 import home from '../../img/icons/home.svg';
 import arrowRight from '../../img/icons/arrowRight.svg';
 import arrowLeft from '../../img/icons/arrowLeft.svg';
@@ -11,7 +10,6 @@ import { useState, useEffect } from 'react';
 import { useArrayContext } from '../../ArrayContext';
 import productsFromApi from '../../api/products.json';
 import { Product } from '../../types/product';
-import heartFilled from '../../img/icons/heart-filled.svg';
 
 type Props = {
   item: Phone;
@@ -19,7 +17,7 @@ type Props = {
 
 export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
   const [activeColor, setActiveColor] = useState(item.color);
-  const [activeCApacity, setActiveCapacity] = useState(item.capacity);
+  const [activeCapacity, setActiveCapacity] = useState(item.capacity);
   const [activeImg, setActiveImg] = useState(item.images[0]);
   const location = useLocation();
   const navigate = useNavigate();
@@ -168,7 +166,7 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
                     }
                     className={classNames('item-option-block__capacity', {
                       'capacity-container-active':
-                        activeCApacity === a.capacity,
+                        activeCapacity === a.capacity,
                     })}
                   >
                     {a.capacity}
@@ -189,10 +187,8 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
             </div>
             <div className="item-option-block__buttons">
               <button
-                className={classNames('button-add-plus-size', {
-                  'button-add': !cartProducts
-                    .map(a => a.id)
-                    .includes(product.id),
+                className={classNames('button-add ', {
+
                   'button-add__added': cartProducts
                     .map(a => a.id)
                     .includes(product.id),
@@ -204,21 +200,13 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
                   : 'Add to cart'}
               </button>
               <button
-                className={classNames('button-plus-size-plus-size', {
-                  'button-plus-size': !favoriteProducts
-                    .map(a => a.id)
-                    .includes(product.id),
-                  'button-plus-size__selected': favoriteProducts
+                className={classNames('button-heart button-size-big', {
+                  'button-heart-filled': favoriteProducts
                     .map(a => a.id)
                     .includes(product.id),
                 })}
                 onClick={() => handleLike(product)}
               >
-                {favoriteProducts.includes(product) ? (
-                  <img src={heartFilled} alt="" />
-                ) : (
-                  <img src={heart} alt="" />
-                )}
               </button>
             </div>
           </div>

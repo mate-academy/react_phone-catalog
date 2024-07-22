@@ -24,7 +24,6 @@
   src: url("../public/fonts/Mont-Regular.otf");
 }
 
-
 @font-face {
   font-family: Mont;
   font-weight: 800;
@@ -40,7 +39,7 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: 'Mont';
+  font-family: "Mont";
   text-decoration: none;
   list-style-type: none;
   background-color: inherit;
@@ -95,6 +94,16 @@
   width: 32px;
 }
 
+.button-size-medium {
+  width: 40px;
+  height: 40px;
+}
+
+.button-size-big {
+  width: 48px;
+  height: 48px;
+}
+
 .button-common {
   border: 1px solid $color-elements;
   cursor: pointer;
@@ -114,13 +123,13 @@
   }
 }
 
-.button-right-left {
+.button-slider {
   border: 1px solid $color-icons;
   cursor: pointer;
   box-sizing: border-box;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
 
   &:hover {
     border-color: $color-primary;
@@ -128,10 +137,10 @@
 
   &__disabled {
     border-color: $color-elements;
+    cursor: default;
 
     &:hover {
       border-color: $color-elements;
-      cursor: default;
     }
   }
 }
@@ -160,55 +169,42 @@
 
   flex-grow: 1;
   cursor: pointer;
-  &:hover {
-    box-shadow: 0px 3px 13px 0px $color-primary;
-  }
 
-  &-standart-size {
-    height: 40px;
-  }
-  &-plus-size {
-    height: 48px;
+  &:hover {
+    box-shadow: 0 3px 13px 0 $color-primary;
   }
 
   &__added {
     flex-grow: 1;
     border: 1px solid $color-elements;
     color: $color-green;
+    background-color: $color-white;
     box-sizing: border-box;
+    cursor: default;
 
     @include buttons;
+
+    &:hover {
+      box-shadow: none;
+    }
   }
 }
 
-.button-plus-size {
+.button-heart {
+  background-size: auto;
+  background-position: center;
+  background-repeat: no-repeat;
   cursor: pointer;
-  display: flex;
-  justify-content: center;
   border: 1px solid $color-icons;
-  align-items: center;
+  background-image: url(../src/img/icons/heart.svg);
+
   &:hover {
     border: 1px solid #313237;
   }
 
-  &-standart-size {
-    width: 40px;
-    height: 40px;
-  }
-  &-plus-size {
-    width: 48px;
-    height: 48px;
-  }
-
-  &__selected {
-    border: 1px solid $color-elements;
-    cursor: pointer;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    &:hover {
-      border-color: $color-primary;
-    }
+  &-filled {
+    border-color: $color-elements;
+    background-image: url(../src/img/icons/heart-filled.svg);
   }
 }
 
@@ -223,4 +219,36 @@
     width: 100%;
     bottom: 0;
   }
+}
+
+.b-left {
+  background-image: url(../src/img/icons/arrowLeft.svg);
+}
+
+.b-up {
+  background-image: url(../src/img/icons/arrowTop.svg);
+}
+
+.b-left-g {
+  background-image: url(../src/img/icons/arrowLeft-gray.svg);
+}
+
+.b-right {
+  background-image: url(../src/img/icons/arrowRight.svg);
+}
+
+.b-right-g {
+  background-image: url(../src/img/icons/arrowRight-gray.svg);
+}
+
+.b-minus {
+  background-image: url(../src/img/icons/minus.svg);
+}
+
+.b-minus-g {
+  background-image: url(../src/img/icons/minusGray.svg);
+}
+
+.b-plus {
+  background-image: url(../src/img/icons/plus.svg);
 }
