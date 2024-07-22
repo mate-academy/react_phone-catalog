@@ -14,9 +14,9 @@ You may also implement color theme switching!
 
 Follow the [Work in a team guideline](https://github.com/mate-academy/react_task-guideline/blob/master/team-flow.md#how-to-work-in-a-team)
 
-## Code formatting
+## Project Setup from scratch
 
-Install Prettier Extension and use this [VSCode settings](https://mate-academy.github.io/fe-program/tools/vscode/settings.json) to enable format on save.
+Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blob/master/setup.md) to setup your project, add Eslint, Prettier, Husky and enable auto deploy.
 
 ## Data
 
@@ -81,7 +81,7 @@ Create `ProductDetailsPage` available at `/product/:productId`.
 1. `ProductCard` image and title should be links to the product details page.
 2. Use `Loader` when fetching the product details.
 3. Show the details on the page:
-   - Fix one `Available color` and one `Select capacity` value for now;
+   - Display the available colors from colorsAvailable and the capacities from capacityAvailable as radio inputs, allowing the selection of one value from the offered options;
    - `About` section should contain just a description (without any subheaders);
    - Choose `Tech specs` you want to show.
 4. Add the ability to choose a picture.
