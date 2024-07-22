@@ -17,6 +17,7 @@
 
   &__list {
     display: flex;
+    justify-content: center;
     gap: 16px;
     flex-flow: row wrap;
   }

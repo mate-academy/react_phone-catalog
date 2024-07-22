@@ -5,14 +5,15 @@
 .footer {
   background: #fff;
   border: 1px $gray-elements solid;
-  flex: 0 0 auto;
   margin-top: 64px;
 
   @include on-desktop{
     margin-top: 80px;
   }
 
-  margin-top: auto;
+  @include on-tablet {
+    margin-top: auto;
+  }
 
   &__content {
     display: flex;

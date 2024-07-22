@@ -8,6 +8,7 @@
 
   &__list {
     display: flex;
+    justify-content: center;
     flex-flow: column wrap;
 
     @include on-tablet {
@@ -29,6 +30,7 @@
     width: 100%;
 
     @include on-tablet {
+      min-width: 272px;
       width: 48%;
       max-width: 288px;
     }

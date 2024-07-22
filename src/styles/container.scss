@@ -2,15 +2,17 @@
 
 .container {
   width: 100%;
+  max-width: 1200px;
 
   box-sizing: border-box;
   padding-inline: 16px;
 
   @include on-tablet {
-    padding-inline: 32px;
+    padding-inline: 24px;
   }
 
   @include on-desktop{
-    padding-inline: 152px;
+    padding: 0;
+    margin-inline: auto;
   }
 }

@@ -21,6 +21,12 @@
       flex-direction: column;
       gap: 4px;
     }
+
+    transition: transform 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 
   &__img {
