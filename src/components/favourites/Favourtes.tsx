@@ -12,6 +12,8 @@ export const Favourites: React.FC = () => {
 
       <p className={Styles.fav__paragraph}>{`${fav.length} items`}</p>
 
+      {/* {!fav.length && <div className={Styles.fav__padding}></div>} */}
+
       <div className={Styles.fav__container}>
         {fav.map(product => {
           return (

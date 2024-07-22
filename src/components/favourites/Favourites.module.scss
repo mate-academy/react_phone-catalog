@@ -7,14 +7,21 @@
   flex-direction: column;
   align-items: center;
   overflow: auto;
-  min-height: calc(100vh - 49px);
+  min-height: 50vh;
 
   @include for-tablet {
     align-items: flex-start;
     padding: 24px;
-    min-height: 60vh;
+    min-height: 74vh;
   }
 
+  @include for-desktop {
+    min-height: 80vh;
+  }
+
+  &__padding {
+    padding: 25vh;
+  }
 
   &__title {
     font-size: 32px;

@@ -15,10 +15,6 @@ export const Pagination: React.FC<Props> = ({
 }) => {
   const pageNumber: number[] = [];
 
-  // for (let i = 0; i < pagesTotalNumber; i++) {
-  //   pageNumber.push(i + 1);
-  // }
-
   for (
     let i = Math.max(activePage - 3, 0);
     i < Math.min(activePage + 2, pagesTotalNumber);

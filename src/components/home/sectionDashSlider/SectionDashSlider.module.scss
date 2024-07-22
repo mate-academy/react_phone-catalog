@@ -22,6 +22,7 @@
 .slider {
   overflow: hidden;
   position: relative;
+  height: 250px;
   width: 300px;
   margin: 0 auto 56px;
   display: flex;
@@ -31,7 +32,8 @@
 
   @include for-tablet {
     width: 100%;
-    max-width: 900px;
+    height: 300px;
+    max-width: 1136px;
     margin-bottom: 56px;
     justify-content: space-between;
   }
@@ -42,16 +44,16 @@
     background-repeat: no-repeat;
     background-size: 30%;
     width: 32px;
-    height: 252px;
+    height: 99%;
     border: 1px solid var(--icons);
     position: absolute;
     top: 0;
     left: 5px;
     border-radius: 10px;
 
-    @include for-tablet {
-      height: 300px;
-    }
+    // @include for-tablet {
+    //   height: 300px;
+    // }
 
     &:hover {
       box-shadow:
@@ -70,16 +72,16 @@
     background-repeat: no-repeat;
     background-size: 30%;
     width: 32px;
-    height: 252px;
+    height: 99%;
     border: 1px solid var(--icons);
     position: absolute;
     top: 0;
     right: 5px;
     border-radius: 10px;
 
-    @include for-tablet {
-      height: 300px;
-    }
+    // @include for-tablet {
+    //   height: 300px;
+    // }
 
     &:hover {
       box-shadow:
@@ -101,9 +103,9 @@
     border-radius: 20px;
 
     @include for-tablet {
-      height: 300px;
+      height: 100%;
       margin-bottom: 10px;
-      width: 90%;
+      width: 85%;
     }
 
     @include for-desktop {

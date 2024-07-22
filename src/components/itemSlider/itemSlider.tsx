@@ -98,7 +98,7 @@ export const ItemSlider: React.FC<Props> = ({
         onTouchEnd={handlerTouchEnd}
         onTouchMove={handlerTouchMove}
         style={{
-          transform: `translateX(-${active * 272}px)`,
+          transform: `translateX(-${active * 267}px)`,
           transition: 'transform 0.5s ease-in-out',
         }}
         className={Styles['brand_new_models__slider']}

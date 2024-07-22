@@ -44,13 +44,16 @@
     &__paragraph {
       color: var(--primary-color);
       width: 288px;
-      height: 30vh;
       font-size: 32px;
       font-weight: 800;
       line-height: 41px;
       letter-spacing: -0.01em;
       text-align: left;
+      min-height: 48vh;
+    }
 
+    @include for-desktop {
+      min-height: 60vh;
     }
   }
 

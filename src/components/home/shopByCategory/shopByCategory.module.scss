@@ -33,6 +33,10 @@
     margin-bottom: 80px;
   }
 
+  @include for-desktop {
+    justify-content: center;
+  }
+
   &__section {
     align-self: center;
 

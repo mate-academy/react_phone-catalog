@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import Styles from './shopByCategory.module.scss';
 import { Link } from 'react-router-dom';
 import { ContextApp } from '../../../appContext/AppContext';
-// import { NavLink } from 'react-router-dom';
 
 export const ShopByCategory: React.FC = () => {
   const { phonesTotalNumber, tabletsTotalNumber, accessoriesTotalNumber } =
