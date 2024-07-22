@@ -1,12 +1,12 @@
-@use "../../mixins" as *;
-@use "../../extends" as *;
-@use "../../vars" as *;
+@use "../../styles/mixins" as *;
+@use "../../styles/extends" as *;
+@use "../../styles/vars" as *;
 
 .Link {
   display: block;
 
   @extend %uppercase;
-  
+
   text-decoration: none;
   color: var(--secondary-text-color);
 

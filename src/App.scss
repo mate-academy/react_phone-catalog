@@ -1,5 +1,5 @@
-@use "./modules/shared/reset";
-@use "./modules/shared/color-themes";
+@use "./modules/shared/styles/reset";
+@use "./modules/shared/styles/color-themes";
 
 html {
   background-color: var(--background-color);
