@@ -1,0 +1,19 @@
+@use "../../mixins" as *;
+
+.List {
+  display: flex;
+  gap: 32px;
+
+  height: 100%;
+  list-style: none;
+
+  @include for-desktop {
+    gap: 64px;
+  }
+}
+
+.Navigation {
+  @include for-mobile {
+    display: none;
+  }
+}

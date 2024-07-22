@@ -1,0 +1,5 @@
+@use "../shared/mixins" as *;
+
+.HiddenTitle {
+  @include visually-hidden;
+}

@@ -1,0 +1,40 @@
+@use "../../mixins" as *;
+@use "../../vars" as *;
+
+.Icon {
+  display: block;
+  margin: auto;
+  transition: transform $transition-duration;
+}
+
+.MenuLink {
+  box-sizing: border-box;
+  aspect-ratio: 1;
+  padding-top: $active-underline-width;
+  border-bottom: $active-underline-width solid transparent;
+  align-content: center;
+
+  &_active {
+    border-color: var(--active-color);
+  }
+
+  &_device {
+    &_mobile {
+      display: none;
+
+      @include for-mobile {
+        display: block;
+      }
+    }
+
+    &_notMobile {
+      @include for-mobile {
+        display: none;
+      }
+    }
+  }
+
+  &:hover > .Icon {
+    transform: $hover-transform-scale;
+  }
+}

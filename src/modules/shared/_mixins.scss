@@ -1,0 +1,41 @@
+@use "./vars" as *;
+
+@mixin hover($property, $toValue) {
+  transition: #{$property} $transition-duration;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}
+
+@mixin scale-on-hover {
+  @include hover(transform, $hover-transform-scale)
+}
+
+@mixin visually-hidden {
+  clip: rect(0 0 0 0);
+  clip-path: inset(50%);
+  height: 1px;
+  overflow: hidden;
+  position: absolute;
+  white-space: nowrap;
+  width: 1px;
+}
+
+@mixin for-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin for-tablet {
+  @media (min-width: 640px) and (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin for-mobile {
+  @media (max-width: 639px) {
+    @content;
+  }
+}

@@ -1,1 +1,6 @@
-// not empty
+@use "./modules/shared/reset";
+@use "./modules/shared/color-themes";
+
+html {
+  background-color: var(--background-color);
+}

@@ -1,0 +1,9 @@
+@use "../../mixins" as *;
+
+.Image {
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  @include scale-on-hover;
+}

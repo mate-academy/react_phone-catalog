@@ -1,0 +1,28 @@
+@use "../../mixins" as *;
+@use "../../extends" as *;
+@use "../../vars" as *;
+
+.Link {
+  display: block;
+
+  @extend %uppercase;
+  
+  text-decoration: none;
+  color: var(--secondary-text-color);
+
+  @include scale-on-hover;
+}
+
+.NavigationItem {
+  padding-top: $active-underline-width;
+  border-bottom: $active-underline-width solid transparent;
+  align-content: center;
+
+  &_active {
+    border-color: var(--active-color);
+  }
+
+  &_active > .Link{
+    color: var(--active-color);
+  }
+}

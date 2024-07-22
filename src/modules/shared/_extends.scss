@@ -1,0 +1,10 @@
+@use './fonts';
+
+%uppercase {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+}
