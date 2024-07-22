@@ -13,5 +13,9 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+
+    &:hover {
+      color: $gray-primary;
+    }
   }
 }

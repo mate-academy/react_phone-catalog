@@ -13,11 +13,11 @@
     padding: 0;
     margin: 0;
     list-style: none;
-    gap: 16px; // Adjust gap between items if necessary
+    gap: 16px;
   }
 
   &__item {
-    flex: 0 0 calc(25% - 12px); // Adjust width to ensure 4 items fit within 100% width
+    width: 272px;
     box-sizing: border-box;
     transition: transform 0.5s ease-in-out;
 
@@ -55,6 +55,10 @@
     &:disabled {
       cursor: auto;
       opacity: 0.5;
+    }
+
+    &:hover {
+      border: 1px solid $gray-primary;
     }
   }
 

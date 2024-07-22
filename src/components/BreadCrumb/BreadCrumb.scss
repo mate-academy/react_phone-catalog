@@ -4,7 +4,9 @@
   display: flex;
   flex-direction: column;
   align-items: start;
+  justify-self: center;
   gap: 40px;
+  text-transform: capitalize;
 
   &__list {
     display: flex;
@@ -23,6 +25,7 @@
 
     &:hover {
       cursor: pointer;
+      color: $gray-primary;
     }
   }
 }

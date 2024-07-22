@@ -8,6 +8,7 @@
 
   &__top {
     display: flex;
+    justify-content: start;
     flex-direction: column;
 
     @include on-tablet {
@@ -196,7 +197,7 @@
     }
 
     .colors__button {
-      border: 1px solid $gray-secondary;
+      border: 1px solid $gray-elements;
       border-radius: 50%;
       width: 32px;
       height: 32px;
@@ -206,6 +207,10 @@
       padding: 0;
       background-color: transparent;
       cursor: pointer;
+
+      &:hover {
+        border: 1px solid $gray-icons;
+      }
 
       &-inside {
         width: 24px;

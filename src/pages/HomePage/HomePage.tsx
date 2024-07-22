@@ -41,7 +41,7 @@ export const HomePage = () => {
 
   return (
     <div className="home-page">
-      <h1 className="title">Welcome to Nice Gadgets store!</h1>
+      <h1 className="title home-page__title">Welcome to Nice Gadgets store!</h1>
       <div className="home-page__slider">
         <Slider />
       </div>

@@ -39,8 +39,8 @@
 
   &__img {
     object-fit: cover;
-    width: 100%; // Изображения на всю ширину экрана
-    height: 100%; // Устанавливаем высоту на всю высоту контейнера
+    width: 100%;
+    height: 100%;
 
     @include carousel-image-size;
   }
@@ -48,10 +48,14 @@
   &__button {
     cursor: pointer;
     height: 189px;
-    display: none; // Скрываем кнопки по умолчанию
+    display: none;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
 
     @include on-tablet {
-      display: inline; // Показываем кнопки на планшетах
+      display: inline;
     }
 
     @include on-desktop {

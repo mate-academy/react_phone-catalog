@@ -9,5 +9,9 @@
   background-color: #fff;
   border: solid 1px $gray-elements;
 
+  &:hover {
+    border: 1px solid $gray-primary;
+  }
+
   @include button-text;
 }

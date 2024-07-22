@@ -8,3 +8,9 @@ html {
   font-style: normal;
   font-size: 12px;
 }
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

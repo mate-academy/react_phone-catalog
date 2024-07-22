@@ -2,6 +2,8 @@
 
 .favourites {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 
   &__list {
@@ -20,17 +22,20 @@
     flex-direction: column;
     gap: 8px;
     margin-bottom: 40px;
+    align-self: flex-start;
   }
 
   &__item {
     width: 100%;
 
     @include on-tablet {
-      width: 50%;
+      width: 48%;
+      max-width: 288px;
     }
 
     @include on-desktop {
       width: 23%;
+      max-width: 272px;
     }
   }
   &__bread-crumb {

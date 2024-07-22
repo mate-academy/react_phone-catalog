@@ -27,6 +27,10 @@
     border: 1px $gray-icons solid;
     width: 100%;
 
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+
     &__options {
       color: $gray-secondary;
 

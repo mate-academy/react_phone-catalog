@@ -81,9 +81,14 @@ export const CartPage = () => {
           </p>
           <hr className="cartPage__line" />
 
-          <button className="cartPage__button button" onClick={handleCheckout}>
-            Checkout
-          </button>
+          {cartProducts.length > 0 && (
+            <button
+              className="cartPage__button button"
+              onClick={handleCheckout}
+            >
+              Checkout
+            </button>
+          )}
 
           {isModal && (
             <div className="cartPage__modal">

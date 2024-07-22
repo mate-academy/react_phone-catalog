@@ -17,7 +17,7 @@ const getLinkClass = ({ isActive }: Options) =>
 
 const getLinkIconClass = ({ isActive }: Options) =>
   cn('header__button', 'button', {
-    'is-active': isActive,
+    'header__button--is-active': isActive,
   });
 
 const getNavLinkPath = (option: string) => {

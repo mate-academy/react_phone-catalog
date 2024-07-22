@@ -2,9 +2,8 @@
 
 .is-active {
   color: $gray-primary;
-  position: relative;
 
-  &::after {  // Исправлено на двойное двоеточие
+  &::after {
     content: "";
     position: absolute;
     left: 0;
