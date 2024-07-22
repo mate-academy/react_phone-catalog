@@ -5,10 +5,9 @@
   }
 
   &__links {
-    display: flex;
-    gap: 32px;
-    flex-direction: column;
     @include page-grid;
+
+    row-gap: 32px;
   }
 
   &__link {
