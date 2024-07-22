@@ -9,6 +9,10 @@ import {
 } from '../../store/FavouritesContext';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import styles from './ProductCard.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
+import gStyles from '../../styles/general.module.scss';
 
 type Props = {
   product: Product;
@@ -45,23 +49,23 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
   };
 
   return (
-    <article className="product-card">
+    <article className={styles.block}>
       <Link
         to={`/${category}/${itemId}`}
-        className="product-card__image-frame"
+        className={styles.imageFrame}
         title={t(TRANSLATIONS.productCard.link.title, { name })}
         aria-label={t(TRANSLATIONS.productCard.link.ariaLabel, { name })}
       >
-        <div className="product-card__see-details">
+        <div className={styles.seeDetails}>
           <p>{t(TRANSLATIONS.productCard.tooltip)}</p>
         </div>
-        <img src={image} alt={name} className="product-card__image" />
+        <img src={image} alt={name} className={styles.image} loading="lazy" />
       </Link>
 
-      <div className="product-card__title">
+      <div className={styles.title}>
         <Link
           to={`/${category}/${itemId}`}
-          className="product-card__title-text"
+          className={styles.title__text}
           title={t(TRANSLATIONS.productCard.title.title, { name })}
           aria-label={t(TRANSLATIONS.productCard.title.ariaLabel, {
             name,
@@ -71,48 +75,46 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </Link>
       </div>
 
-      <div className="price-block">
+      <div className={gStyles.price}>
         <h3>
-          <span className="visually-hidden">
+          <span className={gStyles.visuallyHidden}>
             {t(TRANSLATIONS.productCard.price.current)}
           </span>
           ${price}
         </h3>
-        <p className="price-block__full-price">
-          <span className="visually-hidden">
+        <p className={gStyles.price__full}>
+          <span className={gStyles.visuallyHidden}>
             {t(TRANSLATIONS.productCard.price.full)}
           </span>
           ${fullPrice}
         </p>
       </div>
 
-      <div className="divider"></div>
+      <div className={gStyles.divider}></div>
 
-      <ul className="specifications-list">
-        <li className="specifications-list__item--sm">
-          <p className="text-color-sec">{t(TRANSLATIONS.productCard.screen)}</p>
+      <ul className={gStyles.specsList}>
+        <li className={gStyles.specsList__itemSm}>
+          <p>{t(TRANSLATIONS.productCard.screen)}</p>
           <p>{screen}</p>
         </li>
 
-        <li className="specifications-list__item--sm">
-          <p className="text-color-sec">
-            {t(TRANSLATIONS.productCard.capacity)}
-          </p>
+        <li className={gStyles.specsList__itemSm}>
+          <p>{t(TRANSLATIONS.productCard.capacity)}</p>
           <p>{capacity}</p>
         </li>
 
-        <li className="specifications-list__item--sm">
-          <p className="text-color-sec">{t(TRANSLATIONS.productCard.ram)}</p>
+        <li className={gStyles.specsList__itemSm}>
+          <p>{t(TRANSLATIONS.productCard.ram)}</p>
           <p>{ram}</p>
         </li>
       </ul>
 
-      <div className="product-card__buttons">
+      <div className={styles.buttons}>
         <button
           type="button"
-          className={classNames('btn', {
-            'btn--selected': isItemInCart,
-            'btn--primary': !isItemInCart,
+          className={classNames(btnStyles.block, {
+            [btnStyles.selected]: isItemInCart,
+            [btnStyles.primary]: !isItemInCart,
           })}
           onClick={() => handleAddToCart(product)}
           aria-label={
@@ -129,8 +131,8 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
         </button>
         <button
           type="button"
-          className={classNames('btn btn--square-md', {
-            'btn--liked': isItemLiked,
+          className={classNames(`${btnStyles.block} ${btnStyles.squareMd}`, {
+            [btnStyles.liked]: isItemLiked,
           })}
           onClick={() =>
             dispatchFavourites({ type: 'toggle', payload: product })
@@ -142,9 +144,9 @@ export const ProductCard: React.FC<Props> = ({ product }) => {
           }
         >
           <span
-            className={classNames('icon', {
-              'icon--heart-stroke': !isItemLiked,
-              'icon--heart-filled': isItemLiked,
+            className={classNames(iconStyles.block, {
+              [iconStyles.heartStroke]: !isItemLiked,
+              [iconStyles.heartFilled]: isItemLiked,
             })}
           ></span>
         </button>

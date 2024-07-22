@@ -1,0 +1,30 @@
+@import '../../styles/utils/mixins';
+
+.block {
+  display: flex;
+
+  @include hover(scale, 1.1);
+}
+
+.header {
+  width: 96px;
+  padding-inline: 16px;
+  margin-right: 16px;
+
+  @include on-desktop {
+    width: 128px;
+    padding-inline: 24px;
+    margin-right: 24px;
+  }
+
+  &__img {
+    width: 100%;
+    object-fit: contain;
+  }
+}
+
+.footer {
+  &__img {
+    max-width: 89px;
+  }
+}

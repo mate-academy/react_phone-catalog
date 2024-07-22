@@ -12,6 +12,10 @@ import {
 import { DEVICE_COLORS } from '../../constants';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import styles from './ProductDetails.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
+import gStyles from '../../styles/general.module.scss';
 
 type Props = {
   productDetails: ProductSpecs;
@@ -75,10 +79,10 @@ export const ProductDetails: React.FC<Props> = ({
     : t(TRANSLATIONS.productCard.button.fav.ariaLabel.add, { name });
 
   return (
-    <section className="details">
-      <h2 className="details__title">{name}</h2>
-      <div className="details__content">
-        <ul className="details__images-list">
+    <section className={styles.block}>
+      <h2 className={styles.title}>{name}</h2>
+      <div className={styles.content}>
+        <ul className={styles.imagesList}>
           {images.map((img, index) => {
             return (
               <li
@@ -86,13 +90,13 @@ export const ProductDetails: React.FC<Props> = ({
                 style={{
                   backgroundImage: `url(${img})`,
                 }}
-                className={classNames('details__images-item', {
-                  'details__images-item--active': index === displayedImageIndex,
+                className={classNames(styles.imagesItem, {
+                  [styles.imagesItem_m_active]: index === displayedImageIndex,
                 })}
               >
                 <button
                   type="button"
-                  className="btn btn--image-preview"
+                  className={`${btnStyles.block} ${btnStyles.imagePreview}`}
                   onClick={() => setDisplayedImageIndex(index)}
                 ></button>
               </li>
@@ -100,7 +104,7 @@ export const ProductDetails: React.FC<Props> = ({
           })}
         </ul>
 
-        <div className="details__slider">
+        <div className={styles.slider}>
           <TouchSlider
             imageUrls={images}
             order={displayedImageIndex}
@@ -108,12 +112,12 @@ export const ProductDetails: React.FC<Props> = ({
           />
         </div>
 
-        <div className="details__controls">
-          <div className="details__selectors">
-            <p className="details__selectors-title">
+        <div className={styles.controls}>
+          <div className={styles.selectors}>
+            <p className={styles.selectors__title}>
               {t(TRANSLATIONS.productDetails.colors)}
             </p>
-            <div className="details__selectors-options">
+            <div className={styles.selectors__options}>
               {colorsAvailable.map(item => {
                 const bgColor = {
                   backgroundColor:
@@ -126,14 +130,14 @@ export const ProductDetails: React.FC<Props> = ({
                 return (
                   <div
                     key={item}
-                    className={classNames('details__color', {
-                      'details__color--active': item === color,
+                    className={classNames(styles.color, {
+                      [styles.color_m_active]: item === color,
                     })}
                   >
                     <Link
                       to={`../${id.replace(currentColorInTheLink, desiredColorInTheLink)}`}
                       replace
-                      className="btn btn--color"
+                      className={`${btnStyles.block} ${btnStyles.color}`}
                       style={bgColor}
                     ></Link>
                   </div>
@@ -142,21 +146,21 @@ export const ProductDetails: React.FC<Props> = ({
             </div>
           </div>
 
-          <div className="divider"></div>
+          <div className={gStyles.divider}></div>
 
-          <div className="details__selectors">
-            <p className="details__selectors-title">
+          <div className={styles.selectors}>
+            <p className={styles.selectors__title}>
               {t(TRANSLATIONS.productDetails.capacity)}
             </p>
-            <div className="details__selectors-options">
+            <div className={styles.selectors__options}>
               {capacityAvailable.map((item, index) => {
                 return (
                   <Link
                     key={index}
                     to={`../${id.replace(capacity.toLowerCase(), item.toLowerCase())}`}
                     replace
-                    className={classNames('btn--capacity', {
-                      'btn--capacity--active': capacity === item,
+                    className={classNames(btnStyles.capacity, {
+                      [btnStyles.capacity_m_active]: capacity === item,
                     })}
                   >
                     {item}
@@ -166,30 +170,30 @@ export const ProductDetails: React.FC<Props> = ({
             </div>
           </div>
 
-          <div className="divider"></div>
+          <div className={gStyles.divider}></div>
 
           <div>
-            <div className="price-block">
-              <h2 className="price-block__current">
-                <span className="visually-hidden">
+            <div className={gStyles.price}>
+              <h2 className={gStyles.price__current}>
+                <span className={gStyles.visuallyHidden}>
                   {t(TRANSLATIONS.productDetails.price.current)}
                 </span>
                 ${priceDiscount}
               </h2>
-              <p className="price-block__full-price">
-                <span className="visually-hidden">
+              <p className={gStyles.price__full}>
+                <span className={gStyles.visuallyHidden}>
                   {t(TRANSLATIONS.productDetails.price.full)}
                 </span>
                 ${priceRegular}
               </p>
             </div>
 
-            <div className="details__actions">
+            <div className={styles.actions}>
               <button
                 type="button"
-                className={classNames('btn', {
-                  'btn--selected': isItemInCart,
-                  'btn--primary': !isItemInCart,
+                className={classNames(btnStyles.block, {
+                  [btnStyles.selected]: isItemInCart,
+                  [btnStyles.primary]: !isItemInCart,
                 })}
                 onClick={() => handleAddToCart(product)}
                 aria-label={ariaLabelCartBtn}
@@ -200,127 +204,110 @@ export const ProductDetails: React.FC<Props> = ({
               </button>
               <button
                 type="button"
-                className={classNames('btn btn--square-lg', {
-                  'btn--liked': isItemLiked,
-                })}
+                className={classNames(
+                  `${btnStyles.block} ${btnStyles.squareLg}`,
+                  {
+                    [btnStyles.liked]: isItemLiked,
+                  },
+                )}
                 onClick={() =>
                   dispatchFavourites({ type: 'toggle', payload: product })
                 }
                 aria-label={ariaLabelFavBtn}
               >
                 <span
-                  className={classNames('icon', {
-                    'icon--heart-stroke': !isItemLiked,
-                    'icon--heart-filled': isItemLiked,
+                  className={classNames(iconStyles.block, {
+                    [iconStyles.heartStroke]: !isItemLiked,
+                    [iconStyles.heartFilled]: isItemLiked,
                   })}
                 ></span>
               </button>
             </div>
           </div>
 
-          <ul className="specifications-list">
-            <li className="specifications-list__item--sm">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.screen)}
-              </p>
+          <ul className={gStyles.specsList}>
+            <li className={gStyles.specsList__itemSm}>
+              <p>{t(TRANSLATIONS.productDetails.screen)}</p>
               <p>{screen}</p>
             </li>
 
-            <li className="specifications-list__item--sm">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.resolution)}
-              </p>
+            <li className={gStyles.specsList__itemSm}>
+              <p>{t(TRANSLATIONS.productDetails.resolution)}</p>
               <p>{resolution}</p>
             </li>
 
-            <li className="specifications-list__item--sm">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.processor)}
-              </p>
+            <li className={gStyles.specsList__itemSm}>
+              <p>{t(TRANSLATIONS.productDetails.processor)}</p>
               <p>{processor}</p>
             </li>
 
-            <li className="specifications-list__item--sm">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.ram)}
-              </p>
+            <li className={gStyles.specsList__itemSm}>
+              <p>{t(TRANSLATIONS.productDetails.ram)}</p>
               <p>{ram}</p>
             </li>
           </ul>
         </div>
 
-        <div className="details__about details__info-block">
+        <div className={`${styles.about} ${styles.info}`}>
           <h3>{t(TRANSLATIONS.productDetails.about)}</h3>
-          <div className="divider"></div>
-          <ul className="details__about-list">
+
+          <div className={gStyles.divider}></div>
+
+          <ul className={styles.about__list}>
             {description.map((item, index) => {
               return (
-                <li key={index} className="details__about-item">
+                <li key={index} className={styles.about__item}>
                   <h4>{item.title}</h4>
-                  <p className="text-color-sec">{item.text}</p>
+                  <p>{item.text}</p>
                 </li>
               );
             })}
           </ul>
         </div>
 
-        <div className="details__specs details__info-block">
+        <div className={`${styles.specs} ${styles.info}`}>
           <h3>{t(TRANSLATIONS.productDetails.specs)}</h3>
-          <div className="divider"></div>
-          <ul className="specifications-list">
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.screen)}
-              </p>
+
+          <div className={gStyles.divider}></div>
+
+          <ul className={gStyles.specsList}>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.screen)}</p>
               <p>{screen}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.resolution)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.resolution)}</p>
               <p>{resolution}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.processor)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.processor)}</p>
               <p>{processor}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.ram)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.ram)}</p>
               <p>{ram}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.memory)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.memory)}</p>
               <p>{capacity}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.camera)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.camera)}</p>
               <p>{camera}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.zoom)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.zoom)}</p>
               <p>{zoom}</p>
             </li>
 
-            <li className="specifications-list__item">
-              <p className="text-color-sec">
-                {t(TRANSLATIONS.productDetails.cell)}
-              </p>
+            <li className={gStyles.specsList__item}>
+              <p>{t(TRANSLATIONS.productDetails.cell)}</p>
               <p>{cell.join(', ')}</p>
             </li>
           </ul>

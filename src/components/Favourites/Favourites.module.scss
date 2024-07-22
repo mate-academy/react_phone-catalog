@@ -1,27 +1,28 @@
-.favourites {
-  &__title {
-    margin-bottom: 8px;
-  }
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
 
-  &__subtitle {
-    color: var(--c-secondary);
-  }
+.title {
+  margin-bottom: 8px;
+}
 
-  &__content {
-    padding-block: 40px 64px;
-  }
+.subtitle {
+  color: var(--c-secondary);
+}
 
-  &__list {
-    @include page-grid;
+.content {
+  padding-block: 40px 64px;
+}
 
-    row-gap: 40px;
-  }
+.list {
+  @include page-grid;
 
-  &__item {
-    grid-column: 1 / -1;
+  row-gap: 40px;
+}
 
-    @include on-tablet {
-      grid-column: 6 span;
-    }
+.item {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 6 span;
   }
 }

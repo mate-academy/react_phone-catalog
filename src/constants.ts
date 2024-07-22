@@ -1,11 +1,11 @@
-import bannerIPhone14Pro from './images/banner/banner-iPhone-14-pro.jpg';
-import bannerAccessories from './images/banner/banner-accessories-2.png';
-import bannerTablets from './images/banner/banner-tablets-2.png';
+import bannerIPhone14Pro from './images/banner/banner-iPhone-14-pro.webp';
+import bannerAccessories from './images/banner/banner-accessories-2.webp';
+import bannerTablets from './images/banner/banner-tablets-2.webp';
 // eslint-disable-next-line max-len
-import bannerIPhone14ProMobile from './images/banner/banner-iPhone-14-pro--mobile.jpg';
+import bannerIPhone14ProMobile from './images/banner/banner-iPhone-14-pro--mobile.webp';
 // eslint-disable-next-line max-len
-import bannerAccessoriesMobile from './images/banner/banner-accessories-2--mobile.jpg';
-import bannerTabletsMobile from './images/banner/banner-tablets-2--mobile.jpg';
+import bannerAccessoriesMobile from './images/banner/banner-accessories-2--mobile.webp';
+import bannerTabletsMobile from './images/banner/banner-tablets-2--mobile.webp';
 
 import { SortBy } from './types/SortBy';
 import { PerPage } from './types/PerPage';
@@ -39,13 +39,6 @@ export const BANNER_IMAGES_MOBILE: Image[] = [
 export const BASE_URL = '';
 
 export const CARD_GAP = 16;
-
-// export const ITEM_PER_PAGE = [
-//   PerPage.ALL,
-//   PerPage.FOUR,
-//   PerPage.EIGHT,
-//   PerPage.SIXTEEN,
-// ];
 
 export const DEFAULT_QUERY = '';
 export const DEFAULT_SORT = SortBy.NEWEST;

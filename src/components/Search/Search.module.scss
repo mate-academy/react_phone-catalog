@@ -1,4 +1,7 @@
-.search {
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.block {
   opacity: 1;
   position: relative;
   transition: all $duration-transition ease-in-out;
@@ -14,15 +17,20 @@
     background-color: var(--c-bg-icon);
   }
 
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
   @include on-tablet {
-    transition: opacity $duration-transition ease-in-out unset;
+    transition: none;
   }
 
   @include on-desktop {
     transition: all $duration-transition ease-in-out;
   }
 
-  &--active {
+  &__active {
     width: 170px;
     transition: all $duration-transition ease-in-out;
 
@@ -30,38 +38,34 @@
       width: 300px;
     }
   }
+}
 
-  &__input {
+.hide {
+  transition: opacity $duration-transition ease-in-out;
+  pointer-events: none;
+}
+
+.input {
+  transition: width $duration-transition ease-in-out;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: var(--c-text-primary);
+  width: 0;
+  outline: none;
+  pointer-events: none;
+
+  @include on-tablet {
+    transition-duration: unset;
+  }
+
+  @include on-desktop {
     transition: width $duration-transition ease-in-out;
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    color: var(--c-text-primary);
-    width: 0;
-    outline: none;
-    pointer-events: none;
-
-    @include on-tablet {
-      transition-duration: unset;
-    }
-
-    @include on-desktop {
-      transition: width $duration-transition ease-in-out;
-    }
-
-    &--active {
-      width: 100%;
-      pointer-events: all;
-      margin-inline: 10px 20px;
-    }
   }
 
-  &.search--hide {
-    opacity: 0;
-  }
-
-  &--hide {
-    transition: opacity $duration-transition ease-in-out;
-    pointer-events: none;
+  &_m_active {
+    width: 100%;
+    pointer-events: all;
+    margin-inline: 10px 20px;
   }
 }

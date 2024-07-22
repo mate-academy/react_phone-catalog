@@ -1,9 +1,11 @@
-.hot-prices {
+@import '../../styles/utils/mixins';
+
+.block {
   @include block-margin-bottom;
 
   position: relative;
+}
 
-  &__title {
-    margin-right: 96px;
-  }
+.title {
+  margin-right: 96px;
 }

@@ -9,6 +9,8 @@ import phonesCategory from '../../images/categories/categories-phones.jpg';
 import tabletsCategory from '../../images/categories/categories-tablets.jpg';
 // eslint-disable-next-line max-len
 import accessoriesCategory from '../../images/categories/categories-accessories.jpg';
+import styles from './Categories.module.scss';
+import gStyles from '../../styles/general.module.scss';
 
 type Props = {
   products: Product[];
@@ -58,9 +60,11 @@ export const Categories: React.FC<Props> = ({ products }) => {
   );
 
   return (
-    <section className="categories">
-      <h2 className="section-title">{t(TRANSLATIONS.categories.title)}</h2>
-      <div className="categories__content">
+    <section className={styles.block}>
+      <h2 className={gStyles.sectionTitle}>
+        {t(TRANSLATIONS.categories.title)}
+      </h2>
+      <div className={styles.block__content}>
         {Object.entries(CATEGORIES_LIST).map((category, index) => {
           const { title, link, ariaLabelLink, imageUrl, imageAlt, quantity } =
             category[1];

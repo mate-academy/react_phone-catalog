@@ -1,11 +1,11 @@
-.pagination {
-    display: flex;
-    justify-content: center;
-    gap: 16px;
-    max-height: 32px;
+.block {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  max-height: 32px;
+}
 
-    &__pages {
-      display: flex;
-      gap: 8px;
-    }
+.pages {
+  display: flex;
+  gap: 8px;
 }

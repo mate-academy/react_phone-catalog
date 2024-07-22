@@ -2,6 +2,8 @@ import { useTranslation } from 'react-i18next';
 import { useLocation } from 'react-router-dom';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
 import { Category } from '../../types/Category';
+import gStyles from '../../styles/general.module.scss';
+import styles from '../../styles/notFound.module.scss';
 
 export const ProductsListEmpty = () => {
   const location = useLocation();
@@ -16,13 +18,13 @@ export const ProductsListEmpty = () => {
 
   return (
     <>
-      <div className="not-found">
-        <h2 className="section-title not-found__title">
+      <div className={styles.block}>
+        <h2 className={`${gStyles.sectionTitle} ${styles.title}`}>
           {t(TRANSLATIONS.products.list.empty.title, {
             category: LOCALE_CATEGORY[category as Category],
           })}
         </h2>
-        <div className="not-found__bg not-found__bg--products-list"></div>
+        <div className={`${styles.bg} ${styles.bg_m_productsList}`}></div>
       </div>
     </>
   );

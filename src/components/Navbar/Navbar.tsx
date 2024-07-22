@@ -1,16 +1,20 @@
-import { Link, NavLink } from 'react-router-dom';
-import logo from '../../images/nuce-gadgets-logo.png';
-import logoDark from '../../images/nuce-gadgets-logo--dark.png';
 import classNames from 'classnames';
+import i18next from 'i18next';
+import { NavLink } from 'react-router-dom';
 import { useContext, useState } from 'react';
 import { CartContext } from '../../store/CartContext';
 import { LikedContext } from '../../store/FavouritesContext';
 import { Search } from '../Search';
-import i18next from 'i18next';
 import { Lang } from '../../types/Languages';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
 import { ThemeContext } from '../../store/ThemeContext';
+import { Nav } from '../Nav/Nav';
+import { Logo } from '../Logo';
+import styles from './Navbar.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
+import gStyles from '../../styles/general.module.scss';
 
 export const Navbar = () => {
   const cartState = useContext(CartContext);
@@ -30,92 +34,29 @@ export const Navbar = () => {
   };
 
   return (
-    <header className="header">
-      <div className="header__top">
-        <Link
-          to="/home"
-          className="header__logo"
-          onClick={() => setShowMenu(false)}
-          aria-label={t(TRANSLATIONS.logo.ariaLabel)}
-        >
-          <img
-            src={theme === 'dark-theme' ? logo : logoDark}
-            alt={t(TRANSLATIONS.logo.alt)}
-            className="header__logo-img"
-          />
-        </Link>
+    <header className={styles.block}>
+      <div className={styles.top}>
+        <Logo />
 
         <div
-          className={classNames('header__navigation', {
-            'visually-hidden': showMenu,
+          className={classNames(`${styles.navigation}`, {
+            [gStyles.visuallyHidden]: showMenu,
           })}
         >
-          <nav className="nav">
-            <ul className="nav__list">
-              <li className="nav__item">
-                <NavLink
-                  to="/"
-                  className={({ isActive }) =>
-                    classNames('nav__link', {
-                      'nav__link--active': isActive,
-                    })
-                  }
-                  aria-label={t(TRANSLATIONS.nav.home.ariaLabel)}
-                >
-                  {t(TRANSLATIONS.nav.home.text)}
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/phones"
-                  className={({ isActive }) =>
-                    classNames('nav__link', {
-                      'nav__link--active': isActive,
-                    })
-                  }
-                  aria-label={t(TRANSLATIONS.nav.phones.ariaLabel)}
-                >
-                  {t(TRANSLATIONS.nav.phones.text)}
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/tablets"
-                  className={({ isActive }) =>
-                    classNames('nav__link', {
-                      'nav__link--active': isActive,
-                    })
-                  }
-                  aria-label={t(TRANSLATIONS.nav.tablets.ariaLabel)}
-                >
-                  {t(TRANSLATIONS.nav.tablets.text)}
-                </NavLink>
-              </li>
-              <li className="nav__item">
-                <NavLink
-                  to="/accessories"
-                  className={({ isActive }) =>
-                    classNames('nav__link', {
-                      'nav__link--active': isActive,
-                    })
-                  }
-                  aria-label={t(TRANSLATIONS.nav.accessories.ariaLabel)}
-                >
-                  {t(TRANSLATIONS.nav.accessories.text)}
-                </NavLink>
-              </li>
-            </ul>
-          </nav>
+          <Nav />
         </div>
 
-        <div className="header__actions">
-          {!showMenu && <Search />}
+        <div className={styles.actions}>
+          <Search hide={showMenu} />
 
           <button
             onClick={toggleTheme}
-            className={classNames('header__theme btn btn--menu', {
-              'visually-hidden': showMenu,
-            })}
+            className={classNames(
+              `${styles.theme} ${btnStyles.block} ${btnStyles.menu}`,
+              {
+                [gStyles.visuallyHidden]: showMenu,
+              },
+            )}
             aria-label={
               theme === 'dark-theme'
                 ? t(TRANSLATIONS.header.actions.theme.light.ariaLabel)
@@ -123,17 +64,20 @@ export const Navbar = () => {
             }
           >
             {theme === 'dark-theme' ? (
-              <span className="icon icon--sun"></span>
+              <span className={`${iconStyles.block} ${iconStyles.sun}`}></span>
             ) : (
-              <span className="icon icon--moon"></span>
+              <span className={`${iconStyles.block} ${iconStyles.moon}`}></span>
             )}
           </button>
 
           <button
             onClick={changeLang}
-            className={classNames('header__lang btn btn--menu', {
-              'visually-hidden': showMenu,
-            })}
+            className={classNames(
+              `${styles.lang} ${btnStyles.block} ${btnStyles.menu}`,
+              {
+                [gStyles.visuallyHidden]: showMenu,
+              },
+            )}
             aria-label={t(TRANSLATIONS.header.actions.lang.ariaLabel)}
           >
             {t(TRANSLATIONS.header.actions.lang.text)}
@@ -141,36 +85,44 @@ export const Navbar = () => {
           <NavLink
             to="/favourites"
             className={({ isActive }) =>
-              classNames('header__favorites btn btn--menu', {
-                'nav__link--active': isActive,
-                'visually-hidden': showMenu,
-              })
+              classNames(
+                `${styles.favorites} ${btnStyles.block} ${btnStyles.menu}`,
+                {
+                  'nav__link--active': isActive,
+                  [gStyles.visuallyHidden]: showMenu,
+                },
+              )
             }
             aria-label={t(TRANSLATIONS.header.actions.favourites.ariaLabel)}
           >
-            <span className="icon icon--favorites"></span>
+            <span
+              className={`${iconStyles.block} ${iconStyles.favorites}`}
+            ></span>
             {!!favouritesState.length && (
-              <div className="counter">{favouritesState.length}</div>
+              <div className={gStyles.counter}>{favouritesState.length}</div>
             )}
           </NavLink>
           <NavLink
             to="/cart"
             className={({ isActive }) =>
-              classNames('header__cart btn btn--menu', {
-                'nav__link--active': isActive,
-                'visually-hidden': showMenu,
-              })
+              classNames(
+                `${styles.cart} ${btnStyles.block} ${btnStyles.menu}`,
+                {
+                  'nav__link--active': isActive,
+                  [gStyles.visuallyHidden]: showMenu,
+                },
+              )
             }
             aria-label={t(TRANSLATIONS.header.actions.cart.ariaLabel)}
           >
-            <span className="icon icon--cart"></span>
+            <span className={`${iconStyles.block} ${iconStyles.cart}`}></span>
             {!!cartState.length && (
-              <div className="counter">{cartState.length}</div>
+              <div className={gStyles.counter}>{cartState.length}</div>
             )}
           </NavLink>
           <button
             type="button"
-            className="header__menu btn btn--menu"
+            className={`${styles.menu} ${btnStyles.block} ${btnStyles.menu}`}
             onClick={() => setShowMenu(!showMenu)}
             aria-label={
               showMenu
@@ -179,9 +131,9 @@ export const Navbar = () => {
             }
           >
             <span
-              className={classNames('icon', {
-                'icon--menu': !showMenu,
-                'icon--close': showMenu,
+              className={classNames(iconStyles.block, {
+                [iconStyles.menu]: !showMenu,
+                [iconStyles.close]: showMenu,
               })}
             ></span>
           </button>
@@ -189,85 +141,19 @@ export const Navbar = () => {
       </div>
 
       <div
-        className={classNames('header__mobile-menu', {
-          'header__mobile-menu--active': showMenu,
-        })}
+        className={styles.mobileMenu}
         style={{
           translate: `0 ${mobileMenuPosition}`,
           height: `${mobileMenuHeight}px`,
           pointerEvents: mobileMenuEvent,
         }}
       >
-        <nav className="nav nav--mobile-menu">
-          <ul className="nav__list nav__list--mobile-menu">
-            <li className="nav__item nav__item--mobile-menu">
-              <NavLink
-                to="/"
-                className={({ isActive }) =>
-                  classNames('nav__link', {
-                    'nav__link--active': isActive,
-                  })
-                }
-                onClick={() => setShowMenu(false)}
-                aria-label={t(TRANSLATIONS.nav.home.ariaLabel)}
-              >
-                {t(TRANSLATIONS.nav.home.text)}
-              </NavLink>
-            </li>
+        <Nav mobile />
 
-            <li className="nav__item nav__item--mobile-menu">
-              <NavLink
-                to="/phones"
-                className={({ isActive }) =>
-                  classNames('nav__link', {
-                    'nav__link--active': isActive,
-                  })
-                }
-                onClick={() => setShowMenu(false)}
-                aria-label={t(TRANSLATIONS.nav.phones.ariaLabel)}
-              >
-                {t(TRANSLATIONS.nav.phones.text)}
-              </NavLink>
-            </li>
-
-            <li className="nav__item nav__item--mobile-menu">
-              <NavLink
-                to="/tablets"
-                className={({ isActive }) =>
-                  classNames('nav__link', {
-                    'nav__link--active': isActive,
-                  })
-                }
-                onClick={() => setShowMenu(false)}
-                aria-label={t(TRANSLATIONS.nav.tablets.ariaLabel)}
-              >
-                {t(TRANSLATIONS.nav.tablets.text)}
-              </NavLink>
-            </li>
-
-            <li className="nav__item nav__item--mobile-menu">
-              <NavLink
-                to="/accessories"
-                className={({ isActive }) =>
-                  classNames('nav__link', {
-                    'nav__link--active': isActive,
-                  })
-                }
-                onClick={() => setShowMenu(false)}
-                aria-label={t(TRANSLATIONS.nav.accessories.ariaLabel)}
-              >
-                {t(TRANSLATIONS.nav.accessories.text)}
-              </NavLink>
-            </li>
-          </ul>
-        </nav>
-
-        <div className="header__actions header__actions--mobile-menu">
+        <div className={`${styles.actions} ${styles.actions_m_mobileMenu}`}>
           <button
             onClick={toggleTheme}
-            className={classNames(
-              'header__theme header__theme--mobile-menu btn btn--menu',
-            )}
+            className={`${styles.theme} ${styles.theme_m_mobileMenu} ${btnStyles.block} ${btnStyles.menu}`}
             aria-label={
               theme === 'dark-theme'
                 ? t(TRANSLATIONS.header.actions.theme.light.ariaLabel)
@@ -275,15 +161,15 @@ export const Navbar = () => {
             }
           >
             {theme === 'dark-theme' ? (
-              <span className="icon icon--sun"></span>
+              <span className={`${iconStyles.block} ${iconStyles.sun}`}></span>
             ) : (
-              <span className="icon icon--moon"></span>
+              <span className={`${iconStyles.block} ${iconStyles.moon}`}></span>
             )}
           </button>
 
           <button
             onClick={changeLang}
-            className="header__lang header__lang--mobile-menu btn btn--menu"
+            className={`${styles.lang} ${styles.lang_m_mobileMenu} ${btnStyles.block} ${btnStyles.menu}`}
             aria-label={t(TRANSLATIONS.header.actions.lang.ariaLabel)}
           >
             {t(TRANSLATIONS.header.actions.lang.text)}
@@ -293,8 +179,7 @@ export const Navbar = () => {
             to="/favourites"
             className={({ isActive }) =>
               classNames(
-                // eslint-disable-next-line max-len
-                'header__favorites header__favorites--mobile-menu btn btn--menu',
+                `${styles.favorites} ${styles.favorites_m_mobileMenu} ${btnStyles.block} ${btnStyles.menu}`,
                 {
                   'nav__link--active': isActive,
                 },
@@ -303,9 +188,13 @@ export const Navbar = () => {
             onClick={() => setShowMenu(false)}
             aria-label={t(TRANSLATIONS.header.actions.favourites.ariaLabel)}
           >
-            <span className="icon icon--favorites"></span>
+            <span
+              className={`${iconStyles.block} ${iconStyles.favorites}`}
+            ></span>
             {!!favouritesState.length && (
-              <div className="counter counter--mobile-menu">
+              <div
+                className={`${gStyles.counter} ${gStyles.counter_m_mobileMenu}`}
+              >
                 {favouritesState.length}
               </div>
             )}
@@ -315,7 +204,7 @@ export const Navbar = () => {
             to="/cart"
             className={({ isActive }) =>
               classNames(
-                'header__cart header__cart--mobile-menu btn btn--menu',
+                `${styles.cart} ${styles.cart_m_mobileMenu} ${btnStyles.block} ${btnStyles.menu}`,
                 {
                   'nav__link--active': isActive,
                 },
@@ -324,9 +213,11 @@ export const Navbar = () => {
             onClick={() => setShowMenu(false)}
             aria-label={t(TRANSLATIONS.header.actions.cart.ariaLabel)}
           >
-            <span className="icon icon--cart"></span>
+            <span className={`${iconStyles.block} ${iconStyles.cart}`}></span>
             {!!cartState.length && (
-              <div className="counter counter--mobile-menu">
+              <div
+                className={`${gStyles.counter} ${gStyles.counter_m_mobileMenu}`}
+              >
                 {cartState.length}
               </div>
             )}

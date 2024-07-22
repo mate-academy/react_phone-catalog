@@ -1,4 +1,8 @@
-.breadcrumbs {
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/extends';
+
+.block {
   display: flex;
   gap: 8px;
   align-items: center;
@@ -7,22 +11,16 @@
   @include on-tablet {
     padding-block: 24px 40px;
   }
+}
 
-  &__text {
-    @extend %smalltext;
+.text {
+  @extend %smalltext;
 
-    color: var(--c-secondary);
+  color: var(--c-secondary);
 
-    &--link {
-      text-decoration: none;
+  &_m_link {
+    text-decoration: none;
 
-      @include hover(color, var(--c-text-primary));
-    }
-  }
-
-  &:has(.icon--home:hover) {
-    .icon--home {
-      @include hover(scale, 1.1);
-    }
+    @include hover(color, var(--c-text-primary));
   }
 }

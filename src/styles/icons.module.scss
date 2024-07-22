@@ -1,0 +1,85 @@
+@import './utils/vars';
+@import './utils/mixins';
+
+.block {
+  width: 16px;
+  height: 16px;
+  display: block;
+  background-size: cover;
+  background-color: var(--c-bg-icon);
+  transition: scale $duration-transition ease-in-out;
+}
+
+.colorBase {
+  background-color: var(--c-icons);
+}
+
+.sun {
+  mask: url('../images/icons/icon-sun.svg') no-repeat 50% 50%;
+  mask-size: 16px;
+}
+
+.moon {
+  mask: url('../images/icons/icon-moon.svg') no-repeat 50% 50%;
+}
+
+.favorites {
+  mask: url('../images/icons/icon-heart-stroke.svg') no-repeat 50% 50%;
+}
+
+.cart {
+  mask: url('../images/icons/icon-shopping-bag.svg') no-repeat 50% 50%;
+}
+
+.menu {
+  mask: url('../images/icons/icon-menu.svg') no-repeat 50% 50%;
+}
+
+.close {
+  mask: url('../images/icons/icon-close.svg') no-repeat 50% 50%;
+}
+
+.arrowLeft {
+  transform: rotate(180deg);
+  mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+
+  &_m_back {
+    &:hover {
+      background-color: var(--c-secondary);
+    }
+  }
+}
+
+.arrowRight {
+  mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+}
+
+.arrowUp {
+  transform: rotate(-90deg);
+  mask: url('../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+}
+
+.heartStroke {
+  mask: url('../images/icons/icon-heart-stroke.svg') no-repeat 50% 50%;
+}
+
+.heartFilled {
+  background-color: var(--c-red);
+  mask: url('../images/icons/icon-heart-filled.svg') no-repeat 50% 50%;
+}
+
+.home {
+  mask: url('../images/icons/icon-home.svg') no-repeat 50% 50%;
+
+  &:hover {
+    @include hover(scale, 1.1);
+  }
+}
+
+.minus {
+  mask: url('../images/icons/icon-minus.svg') no-repeat 50% 50%;
+}
+
+.plus {
+  mask: url('../images/icons/icon-plus.svg') no-repeat 50% 50%;
+}

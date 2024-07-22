@@ -1,65 +1,52 @@
-.cart {
-  &__btn-back {
-    padding-block: 40px 16px;
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.btnBack {
+  padding-block: 40px 16px;
+}
+
+.title {
+  margin-bottom: 32px;
+}
+
+.content {
+  @include page-grid;
+}
+
+.list {
+  margin-bottom: 32px;
+
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 16 span;
   }
+}
 
-  &__title {
-    margin-bottom: 32px;
+.item {
+  margin-bottom: 16px;
+}
+
+.total {
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 24px;
+  border: 1px solid var(--c-elements);
+  margin-bottom: 64px;
+
+  grid-column: 1 / -1;
+
+  @include on-desktop {
+    grid-column: 8 span;
   }
+}
 
-  &__content {
-    @include page-grid;
-  }
+.totalPrice {
+  text-align: center;
+}
 
-  &__list {
-    margin-bottom: 32px;
-
-    grid-column: 1 / -1;
-
-    @include on-desktop {
-      grid-column: 16 span;
-    }
-  }
-
-  &__item {
-    margin-bottom: 16px;
-  }
-
-  &__total {
-    height: fit-content;
-    display: flex;
-    flex-direction: column;
-    gap: 16px;
-    padding: 24px;
-    border: 1px solid var(--c-elements);
-    margin-bottom: 64px;
-
-    grid-column: 1 / -1;
-
-    @include on-desktop {
-      grid-column: 8 span;
-    }
-  }
-
-  &__total-price {
-    text-align: center;
-  }
-
-  &__total-subtitle {
-    color: var(--c-secondary);
-  }
-
-  &__no-product-message {
-    grid-column: 1 / -1;
-  }
-
-  &__no-product-image-frame {
-    margin: auto;
-    padding: 32px;
-    grid-column: 1 / -1;
-  }
-
-  &__no-product-image {
-    max-width: 200px;
-  }
+.totalSubtitle {
+  color: var(--c-secondary);
 }

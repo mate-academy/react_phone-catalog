@@ -1,9 +1,11 @@
-.recommendations {
+@import '../../styles/utils/mixins';
+
+.block {
   @include block-margin-bottom;
 
   position: relative;
+}
 
-  &__title {
-    margin-bottom: 24px;
-  }
+.title {
+  margin-bottom: 24px;
 }

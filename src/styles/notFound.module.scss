@@ -1,0 +1,37 @@
+@import './utils/mixins';
+
+.block {
+  @include page-grid;
+
+  padding-block: 32px;
+}
+
+.title {
+  grid-column: 1 / -1;
+  text-align: center;
+}
+
+.bg {
+  padding-top: 70%;
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+
+  grid-column: 1 / -1;
+
+  &_m_page {
+    background-image: url('../images/page-not-found.png');
+  }
+
+  &_m_productsList {
+    background-image: url('../images/product-not-found.png');
+  }
+
+  @include on-tablet {
+    padding-top: 35%;
+  }
+
+  @include on-desktop {
+    padding-top: 30%;
+  }
+}

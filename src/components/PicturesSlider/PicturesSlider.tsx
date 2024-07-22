@@ -5,9 +5,11 @@ import { BANNER_IMAGES, BANNER_IMAGES_MOBILE } from '../../constants';
 import { TouchSlider } from '../TouchSlider';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import styles from './PicturesSlider.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
 
 export const PicturesSlider = () => {
-  const [isSkeleton, setIsSkeleton] = useState<boolean>(true);
   const [orderIndex, setOrderIndex] = useState<number>(0);
   const [autoPlay, setAutoPlay] = useState<boolean>(true);
   const timerId = useRef(0);
@@ -36,19 +38,21 @@ export const PicturesSlider = () => {
   }, [autoPlay, handleNextImage]);
 
   return (
-    <section className="banner-slider" aria-label="banner slider">
-      <div className="banner-slider__main">
+    <section className={styles.block} aria-label="banner slider">
+      <div className={styles.main}>
         <button
           type="button"
-          className="btn btn--slider"
+          className={`${btnStyles.block} ${btnStyles.slider}`}
           onClick={handlePrevImage}
           aria-label={t(TRANSLATIONS.hero.slider.button.prev.ariaLabel)}
         >
-          <span className="icon icon--arrow-left"></span>
+          <span
+            className={`${iconStyles.block} ${iconStyles.arrowLeft}`}
+          ></span>
         </button>
 
         <div
-          className="banner-slider__image-holder"
+          className={styles.imageHolder}
           onMouseEnter={() => setAutoPlay(false)}
           onMouseLeave={() => setAutoPlay(true)}
         >
@@ -60,17 +64,14 @@ export const PicturesSlider = () => {
                 to={link}
                 style={{ translate: `${-100 * orderIndex}%` }}
                 key={`${img}-${index}`}
-                className={classNames('banner-slider__image-frame', {
-                  skeleton: isSkeleton,
-                })}
+                className={styles.imageFrame}
                 onFocus={() => setAutoPlay(false)}
                 onBlur={() => setAutoPlay(true)}
               >
                 <img
                   src={url}
                   alt={alt}
-                  className="banner-slider__image"
-                  onLoad={() => setIsSkeleton(false)}
+                  className={styles.image}
                   aria-hidden={index !== orderIndex}
                 />
               </Link>
@@ -80,15 +81,17 @@ export const PicturesSlider = () => {
 
         <button
           type="button"
-          className="btn btn--slider"
+          className={`${btnStyles.block} ${btnStyles.slider}`}
           onClick={handleNextImage}
           aria-label={t(TRANSLATIONS.hero.slider.button.next.ariaLabel)}
         >
-          <span className="icon icon--arrow-right"></span>
+          <span
+            className={`${iconStyles.block} ${iconStyles.arrowRight}`}
+          ></span>
         </button>
       </div>
 
-      <div className="banner-slider__mobile">
+      <div className={styles.mobile}>
         <TouchSlider
           images={BANNER_IMAGES_MOBILE}
           order={orderIndex}
@@ -96,7 +99,7 @@ export const PicturesSlider = () => {
         />
       </div>
 
-      <div className="banner-slider__dots">
+      <div className={styles.dots}>
         {BANNER_IMAGES.map((item, index) => {
           const { url } = item;
 
@@ -104,8 +107,8 @@ export const PicturesSlider = () => {
             <button
               key={`${url}-${index}`}
               type="button"
-              className={classNames('banner-slider__dot', {
-                'banner-slider__dot--active': index === orderIndex,
+              className={classNames(styles.dot, {
+                [styles.dot_m_active]: index === orderIndex,
               })}
               onClick={() => setOrderIndex(index)}
               disabled={index === orderIndex}

@@ -4,6 +4,8 @@ import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
 import { Category } from '../../types/Category';
 import { BreadcrumbsT } from '../../types/Breadcrumbs';
+import styles from './Breadcrumbs.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
 
 type Props = {
   name?: string;
@@ -27,13 +29,13 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
   };
 
   return (
-    <div className="breadcrumbs">
+    <div className={styles.block}>
       <Link
         to="/"
         title={t(TRANSLATIONS.breadcrumbs.home.title)}
         aria-label={t(TRANSLATIONS.breadcrumbs.home.ariaLabel)}
       >
-        <span className="icon icon--home"></span>
+        <span className={`${iconStyles.block} ${iconStyles.home}`}></span>
       </Link>
 
       {paths.map((path, index) => {
@@ -42,8 +44,10 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
         if (index === paths.length - 1) {
           return (
             <React.Fragment key={index}>
-              <span className="icon icon--arrow-right icon--c-base"></span>
-              <p className="breadcrumbs__text">
+              <span
+                className={`${iconStyles.block} ${iconStyles.arrowRight} ${iconStyles.colorBase}`}
+              ></span>
+              <p className={styles.text}>
                 {name || BREADCRUMBS[nameFromPath as BreadcrumbsT]}
               </p>
             </React.Fragment>
@@ -52,10 +56,12 @@ export const Breadcrumbs: React.FC<Props> = ({ name }) => {
 
         return (
           <React.Fragment key={index}>
-            <span className="icon icon--arrow-right icon--c-base"></span>
+            <span
+              className={`${iconStyles.block} ${iconStyles.arrowRight} ${iconStyles.colorBase}`}
+            ></span>
             <Link
               to={`/${path}`}
-              className="breadcrumbs__text breadcrumbs__text--link"
+              className={`${styles.text} ${styles.text_m_link}`}
               aria-label={t(TRANSLATIONS.breadcrumbs.link.ariaLabel, {
                 pageName: BREADCRUMBS[nameFromPath as Category],
               })}

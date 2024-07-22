@@ -1,7 +1,9 @@
-.products-list-error {
-  @include block-margin-bottom;
+@import '../../styles/utils/mixins';
 
-  &__reload {
-    max-width: 200px;
-  }
+.block {
+  @include block-margin-bottom;
+}
+
+.reload {
+  max-width: 200px;
 }

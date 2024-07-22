@@ -7,8 +7,14 @@ import { debounce } from '../../utils/debounce';
 import { Category } from '../../types/Category';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import btnStyles from '../../styles/buttons.module.scss';
+import styles from './Search.module.scss';
 
-export const Search = () => {
+type Props = {
+  hide?: boolean;
+};
+
+export const Search: React.FC<Props> = ({ hide }) => {
   const location = useLocation();
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const searchInput = useRef<HTMLInputElement>(null);
@@ -49,7 +55,7 @@ export const Search = () => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   const applySearch = useCallback(
     debounce(handleAppliedSearch, AUTOCOMPLETE_DELAY),
-    [],
+    [location.pathname],
   );
 
   const handleSearch = (value: string) => {
@@ -65,6 +71,11 @@ export const Search = () => {
     }
   };
 
+  useEffect(() => {
+    setSearchQuery('');
+    setIsSearchOpen(false);
+  }, [location.pathname]);
+
   const showSearch =
     location.pathname === `/${Category.PHONES}` ||
     location.pathname === `/${Category.TABLETS}` ||
@@ -78,17 +89,21 @@ export const Search = () => {
 
   return (
     <div
-      className={classNames('btn btn--menu search', {
-        'search--active': isSearchOpen,
-        'search--hide': !showSearch,
-      })}
+      className={classNames(
+        `${styles.block} ${btnStyles.block} ${btnStyles.menu} utilityClass__search`,
+        {
+          [styles.block__active]: isSearchOpen,
+          'utilityClass__search--active': isSearchOpen,
+          [styles.hide]: !showSearch || hide,
+        },
+      )}
       onClick={() => toggleSearch()}
     >
       <input
         ref={searchInput}
-        type="text"
-        className={classNames('search__input', {
-          'search__input--active': isSearchOpen,
+        type="search"
+        className={classNames(styles.input, {
+          [styles.input_m_active]: isSearchOpen,
         })}
         placeholder={t(TRANSLATIONS.header.actions.search.placeholder, {
           category: PLACEHOLDER_CATEGORY[category as Category],

@@ -1,80 +1,83 @@
-.banner-slider {
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.block {
   @include block-margin-bottom;
+}
 
-  &__main {
+.main {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    gap: 19px;
+  }
+
+  @include on-desktop {
+    gap: 16px;
+  }
+}
+
+.mobile {
+  width: 100vw;
+  margin-left: -$container-padding-inline-sm;
+
+  @include on-tablet {
     display: none;
+  }
+}
 
-    @include on-tablet {
-      display: flex;
-      gap: 19px;
-    }
+.imageHolder {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
 
-    @include on-desktop {
-      gap: 16px;
-    }
+.imageFrame {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  flex-grow: 0;
+  flex-shrink: 0;
+  aspect-ratio: 2.6 / 1;
+  transition: translate 0.5s ease-in-out;
+}
+
+.image {
+  object-fit: cover;
+  width: 100%;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 8px;
+}
+
+.dot {
+  all: unset;
+  cursor: pointer;
+  width: 14px;
+  height: 4px;
+  margin: 10px 5px;
+  background-color: var(--c-elements);
+  transition:
+    background-color,
+    scale 0.3s ease-in-out;
+
+  &_m_active {
+    cursor: default;
+    background-color: var(--c-text-primary);
   }
 
-  &__mobile {
-    width: 100vw;
-    margin-left: -$container-padding-inline-sm;
-
-    @include on-tablet {
-      display: none;
-    }
+  &:focus-visible {
+    outline: auto;
   }
 
-  &__image-holder {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-  }
-
-  &__image-frame {
-    display: flex;
-    width: 100%;
-    height: 100%;
-    flex-grow: 0;
-    flex-shrink: 0;
-    aspect-ratio: 2.6 / 1;
-    transition: translate 0.5s ease-in-out;
-  }
-
-  &__image {
-    object-fit: cover;
-    width: 100%;
-  }
-
-  &__dots {
-    display: flex;
-    justify-content: center;
-    gap: 4px;
-    margin-top: 8px;
-  }
-
-  &__dot {
-    all: unset;
-    cursor: pointer;
-    width: 14px;
-    height: 4px;
-    margin: 10px 5px;
-    background-color: var(--c-elements);
-    transition:
-      background-color,
-      scale 0.3s ease-in-out;
-
-    &--active {
-      cursor: default;
-      background-color: var(--c-text-primary);
-    }
-
-    &:focus-visible {
-      outline: auto;
-    }
-
-    &:focus-visible,
-    &:hover:enabled {
-      scale: 1.3;
-    }
+  &:focus-visible,
+  &:hover:enabled {
+    scale: 1.3;
   }
 }

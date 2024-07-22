@@ -3,6 +3,9 @@ import { useSearchParams } from 'react-router-dom';
 import { SearchParamsValue } from '../../types/SearchParamsValue';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import styles from './Pagination.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import iconStyles from '../../styles/icons.module.scss';
 
 type Props = {
   currentPage: number;
@@ -32,77 +35,90 @@ export const Pagination: React.FC<Props> = ({ currentPage, numberOfPages }) => {
   ) => {
     const pageNumbers = Array.from(Array(total).keys()).map(v => v + 1);
     const currentIndex = pageNumbers.indexOf(current);
+    const indexStart = Math.max(0, currentIndex - Math.floor(limit / 2));
 
-    if (total <= limit) {
-      return pageNumbers;
+    let res: (number | string)[] = [...pageNumbers.slice(indexStart)];
+
+    if (res.length > limit) {
+      res.length = limit;
+    } else {
+      res = [...pageNumbers.slice(-limit)];
     }
 
-    if (total <= currentIndex + 3) {
-      return pageNumbers.slice(-5);
+    if (res[0] !== 1) {
+      res[0] = 1;
+      res[1] = '...';
     }
 
-    if (currentIndex <= 2) {
-      return pageNumbers.slice(0, 5);
+    if (res[res.length - 1] !== pageNumbers[pageNumbers.length - 1]) {
+      res[res.length - 1] = pageNumbers[pageNumbers.length - 1];
+      res[res.length - 2] = '...';
     }
 
-    return pageNumbers.slice(currentIndex - 2, currentIndex + 3);
+    return res;
   };
 
   const visiblePageNumbers = getVisiblePageNumbers(
     currentPage,
     numberOfPages,
-    5,
+    7,
   );
 
   const isDisabledPrev = currentPage <= 1;
   const isDisabledNext = currentPage === numberOfPages;
 
   return (
-    <div className="pagination">
+    <div className={styles.block}>
       <button
         type="button"
-        className={classNames('btn btn--square-sm', {
-          'btn--disabled': isDisabledPrev,
+        className={classNames(`${btnStyles.block} ${btnStyles.squareSm}`, {
+          [btnStyles.disabled]: isDisabledPrev,
         })}
         onClick={() => handlePage(currentPage - 1)}
         disabled={isDisabledPrev}
         aria-label={t(TRANSLATIONS.pagination.button.prev.ariaLabel)}
       >
-        <span className="icon icon--arrow-left"></span>
+        <span className={`${iconStyles.block} ${iconStyles.arrowLeft}`}></span>
       </button>
 
-      <ul className="pagination__pages">
+      <ul className={styles.pages}>
         {visiblePageNumbers.map((page, index) => {
-          return (
-            <button
-              key={index}
-              type="button"
-              className={classNames('btn btn--square-sm', {
-                'btn--page': page !== currentPage,
-                'btn--page-selected': page === currentPage,
-              })}
-              onClick={() => handlePage(page)}
-              disabled={page === currentPage}
-              aria-label={t(TRANSLATIONS.pagination.button.numb.ariaLabel, {
-                page,
-              })}
-            >
-              {page}
-            </button>
+          return typeof page === 'number' ? (
+            <li key={index}>
+              <button
+                type="button"
+                className={classNames(
+                  `${btnStyles.block} ${btnStyles.squareSm}`,
+                  {
+                    [btnStyles.page]: page !== currentPage,
+                    [btnStyles.pageSelected]: page === currentPage,
+                  },
+                )}
+                onClick={() => handlePage(page)}
+                disabled={page === currentPage}
+                aria-label={t(TRANSLATIONS.pagination.button.numb.ariaLabel, {
+                  page,
+                })}
+              >
+                {page}
+              </button>
+            </li>
+          ) : (
+            <div key={index}>...</div>
           );
         })}
       </ul>
 
       <button
         type="button"
-        className={classNames('btn btn--square-sm', {
-          'btn--disabled': isDisabledNext,
+        className={classNames(`${btnStyles.block} ${btnStyles.squareSm}`, {
+          [btnStyles.disabled]: isDisabledNext,
         })}
         onClick={() => handlePage(currentPage + 1)}
         disabled={isDisabledNext}
         aria-label={t(TRANSLATIONS.pagination.button.next.ariaLabel)}
       >
-        <span className="icon icon--arrow-right"></span>
+        <span className={`${iconStyles.block} ${iconStyles.arrowRight}`}></span>
       </button>
     </div>
   );

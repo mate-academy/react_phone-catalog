@@ -6,6 +6,7 @@ import { SortBy } from '../../types/SortBy';
 import { PerPage } from '../../types/PerPage';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
 import { useTranslation } from 'react-i18next';
+import styles from './Dropdown.module.scss';
 
 type Props = {
   options: Partial<{ [key in SortBy | PerPage]: string }>;
@@ -52,11 +53,11 @@ export const Dropdown: React.FC<Props> = ({
   };
 
   return (
-    <div className="dropdown">
+    <div className={styles.block}>
       <button
         type="button"
-        className={classNames('dropdown__select', {
-          'dropdown__select--focus': showOptions,
+        className={classNames(styles.select, {
+          [styles.select_m_focus]: showOptions,
         })}
         onClick={() => setShowOptions(!showOptions)}
         onBlur={() => setShowOptions(false)}
@@ -70,14 +71,14 @@ export const Dropdown: React.FC<Props> = ({
       </button>
 
       {showOptions && (
-        <ul className="dropdown__options">
+        <ul className={styles.options}>
           {Object.entries(options).map((option, index) => {
             const [querySortBy, value] = option;
 
             return (
               <li
                 key={index}
-                className="dropdown__option"
+                className={styles.option}
                 onMouseDown={() =>
                   handleSelect(querySortBy as SortBy | PerPage)
                 }

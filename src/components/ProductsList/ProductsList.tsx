@@ -2,12 +2,7 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 import { SearchParamsValue } from '../../types/SearchParamsValue';
 import { Product } from '../../types/Product';
 import { PerPage } from '../../types/PerPage';
-import {
-  DEFAULT_PER_PAGE,
-  DEFAULT_SORT,
-  // ITEM_PER_PAGE,
-  // SORT_BY_OPTIONS,
-} from '../../constants';
+import { DEFAULT_PER_PAGE, DEFAULT_SORT } from '../../constants';
 import { Dropdown } from '../Dropdown';
 import { ProductCard } from '../ProductCard';
 import { Pagination } from '../Pagination';
@@ -16,6 +11,7 @@ import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
 import { Category } from '../../types/Category';
 import { SortBy } from '../../types/SortBy';
+import styles from './ProductsList.module.scss';
 
 type Props = {
   products: Product[];
@@ -67,9 +63,9 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
     perPage !== DEFAULT_PER_PAGE && +perPage < numberOfProducts;
 
   return (
-    <section className="products">
-      <h1 className="products__title">{PAGE_TITLE[category as Category]}</h1>
-      <p className="products__subtitle">
+    <section className={styles.block}>
+      <h1 className={styles.title}>{PAGE_TITLE[category as Category]}</h1>
+      <p className={styles.subtitle}>
         {t(TRANSLATIONS.category.card.quantity_interval, {
           postProcess: 'interval',
           count: products.length,
@@ -79,10 +75,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
       {products.length === 0 ? (
         <ProductsListEmpty />
       ) : (
-        <div className="products__content">
-          <div className="products__dropdowns">
-            <div className="products__sort-by">
-              <p className="dropdown__label">
+        <div className={styles.content}>
+          <div className={styles.dropdowns}>
+            <div className={styles.sortBy}>
+              <p className={styles.dropdowns__label}>
                 {t(TRANSLATIONS.dropdown.label.sortBy)}
               </p>
 
@@ -93,8 +89,8 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
               />
             </div>
 
-            <div className="dropdown products__per-page">
-              <p className="dropdown__label">
+            <div className={styles.perPage}>
+              <p className={styles.dropdowns__label}>
                 {t(TRANSLATIONS.dropdown.label.itemsOnPage)}
               </p>
 
@@ -106,10 +102,10 @@ export const ProductsList: React.FC<Props> = ({ products }) => {
             </div>
           </div>
 
-          <ul className="products__list">
+          <ul className={styles.list}>
             {productsPerPage.map(item => {
               return (
-                <li key={item.id} className="products__item">
+                <li key={item.id} className={styles.item}>
                   <ProductCard product={item} />
                 </li>
               );

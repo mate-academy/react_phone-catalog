@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Image } from '../../types/Image';
+import styles from './TouchSlider.module.scss';
 
 type Props = {
   images?: Image[];
@@ -53,48 +54,43 @@ export const TouchSlider: React.FC<Props> = ({
   };
 
   return (
-    <div className="touch-slider">
-      <div className="touch-slider__container">
-        <ul
-          className="touch-slider__list"
-          onDragStart={e => {
-            e.preventDefault();
-          }}
-          onTouchStart={e => handleActionStart(e)}
-          onTouchEnd={() => handleActionEnd()}
-          onTouchMove={e => handleActionMove(e)}
-          style={{ translate: `${-100 * order}%` }}
-        >
-          {images &&
-            images.map(img => {
-              return (
-                <li key={img.url} className="touch-slider__item">
-                  <Link to={img.link} className="touch-slider__link">
-                    <img
-                      src={img.url}
-                      alt={img.alt}
-                      className="touch-slider__image"
-                    />
-                  </Link>
-                </li>
-              );
-            })}
-
-          {!images &&
-            !!imageUrls &&
-            imageUrls.map(img => {
-              return (
-                <li key={img} className="touch-slider__item">
+    <div className={styles.block}>
+      <ul
+        className={styles.list}
+        onDragStart={e => {
+          e.preventDefault();
+        }}
+        onTouchStart={e => handleActionStart(e)}
+        onTouchEnd={() => handleActionEnd()}
+        onTouchMove={e => handleActionMove(e)}
+        style={{ translate: `${-100 * order}%` }}
+      >
+        {images &&
+          images.map(img => {
+            return (
+              <li key={img.url} className={styles.item}>
+                <Link to={img.link}>
                   <img
-                    src={img}
-                    alt="image name"
-                    className="touch-slider__image"
+                    src={img.url}
+                    alt={img.alt}
+                    className={styles.image}
+                    loading="lazy"
                   />
-                </li>
-              );
-            })}
-        </ul>
-      </div>
+                </Link>
+              </li>
+            );
+          })}
+
+        {!images &&
+          !!imageUrls &&
+          imageUrls.map(img => {
+            return (
+              <li key={img} className={styles.item}>
+                <img src={img} alt="image name" className={styles.image} />
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 };

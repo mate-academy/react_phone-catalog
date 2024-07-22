@@ -1,23 +1,23 @@
-.touch-slider {
-  &__container {
-    overflow: hidden;
-  }
+@import '../../styles/utils/vars';
 
-  &__list {
-    display: flex;
-    transition: translate $duration-transition ease-in-out;
-  }
+.block {
+  overflow: hidden;
+}
 
-  &__item {
-    display: flex;
-    width: 100%;
-    flex-shrink: 0;
-    user-select: none;
-  }
+.list {
+  display: flex;
+  transition: translate $duration-transition ease-in-out;
+}
 
-  &__image {
-    max-width: 100%;
-    object-fit: contain;
-    aspect-ratio: 1;
-  }
+.item {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.image {
+  max-width: 100%;
+  object-fit: contain;
+  aspect-ratio: 1;
 }

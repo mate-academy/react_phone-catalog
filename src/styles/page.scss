@@ -20,7 +20,7 @@
     flex-grow: 1;
   }
 
-  &:has(.header__mobile-menu--active, .modal) {
+  &:has(.utilityClass__mobile-menu--active, .utilityClass__modal) {
     overflow: hidden;
   }
 

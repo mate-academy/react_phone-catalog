@@ -1,0 +1,86 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/extends';
+
+.block {
+  height: 100%;
+
+  &_m_mobileMenu {
+    margin: 0 auto;
+    height: auto;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 32px;
+  height: 100%;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+
+  &_m_mobileMenu {
+    width: fit-content;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto;
+  }
+
+  &_m_footer {
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+}
+
+.item {
+  display: flex;
+  position: relative;
+
+  &_m_mobileMenu {
+    padding-block: 8px;
+    width: fit-content;
+  }
+}
+
+.link {
+  @extend %uppercase;
+
+  color: var(--c-secondary);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+
+  @include hover(color, var(--c-link-hover));
+
+  &_m_active {
+    color: var(--c-link-active);
+    cursor: default;
+    pointer-events: none;
+
+    &::after {
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: var(--c-link-pseudo-element);
+      bottom: 0;
+    }
+  }
+
+  &_m_footer {
+    color: var(--c-text-primary);
+
+    @include hover(color, var(--c-secondary));
+  }
+}

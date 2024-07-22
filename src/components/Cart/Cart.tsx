@@ -7,6 +7,9 @@ import { CartEmpty } from '../CartEmpty';
 import { CartModal } from '../CartModal';
 import { useTranslation } from 'react-i18next';
 import { TRANSLATIONS } from '../../utils/i18n/translations';
+import styles from './Cart.module.scss';
+import btnStyles from '../../styles/buttons.module.scss';
+import gStyles from '../../styles/general.module.scss';
 
 export const Cart = () => {
   const cartState = useContext(CartContext);
@@ -19,36 +22,36 @@ export const Cart = () => {
   const onModalAccept = () => dispatchCart({ type: 'clear' });
 
   return (
-    <section className="cart">
-      <h1 className="cart__title">{t(TRANSLATIONS.cart.title)}</h1>
+    <section>
+      <h1 className={styles.title}>{t(TRANSLATIONS.cart.title)}</h1>
 
-      <div className="cart__content">
+      <div className={styles.content}>
         {cartState.length ? (
           <>
-            <ul className="cart__list">
+            <ul className={styles.list}>
               {getUniqueProducts(cartState).map((item: Product) => {
                 return (
-                  <li key={item.id} className="cart__item">
+                  <li key={item.id} className={styles.item}>
                     <CartItem product={item} />
                   </li>
                 );
               })}
             </ul>
 
-            <div className="cart__total">
-              <div className="cart__total-price">
+            <div className={styles.total}>
+              <div className={styles.totalPrice}>
                 <h2>${totalPrice}</h2>
-                <p className="cart__total-subtitle">
+                <p className={styles.totalSubtitle}>
                   {t(TRANSLATIONS.cart.total_interval, {
                     postProcess: 'interval',
                     count: cartState.length,
                   })}
                 </p>
               </div>
-              <div className="divider"></div>
+              <div className={gStyles.divider}></div>
               <button
                 type="button"
-                className="btn btn--primary"
+                className={`${btnStyles.block} ${btnStyles.primary}`}
                 onClick={() => setIsCheckout(true)}
                 aria-label={t(TRANSLATIONS.cart.button.checkout.ariaLabel)}
               >
