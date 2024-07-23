@@ -1,27 +1,192 @@
+@import '../../main';
+
 .topbar {
-  height: 48px;
+  height: $topbar-height-mobile;
+  z-index: 100;
+
+  @include on-desktop {
+    height: $topbar-height-desktop;
+  }
+
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 0 0 #e2e6e9;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   gap: 16px;
   position: sticky;
   top: 0;
 
+  &__left {
+    display: flex;
+
+    @include on-tablet {
+      gap: 16px;
+    }
+
+    @include on-desktop {
+      gap: 24px;
+    }
+
+    align-items: center;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+  }
+
   &__logo {
     height: 22px;
     width: 64px;
+
+    @include on-desktop {
+      height: 28px;
+      width: 80px;
+    }
+
     margin: 13px 16px;
+
+    @include on-desktop {
+      margin: 18px 24px;
+    }
+
+    @include hover {
+      transform: scale(1.07);
+    }
+
+    &__link {
+      display: flex;
+    }
   }
 
-  &__burgerMenuContainer {
+  &__iconContainer {
+    position: relative;
     box-shadow: -1px 0 0 0 #e2e6e9;
+
+    cursor: pointer;
+
+    &:not(.topbar__iconContainer--active)::after {
+      content: '';
+      height: 2.5px;
+      background-color: #0f0f11;
+      width: 0;
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      transition: width 0.3s ease;
+    }
+
+    @include hover {
+      &:not(.topbar__burgerMenu)::after {
+        width: 100%;
+      }
+    }
+
+    &--active {
+      bottom: 1px; // how to make more correctly?
+      border-bottom: 3px solid #0f0f11;
+    }
+  }
+
+  &__icon {
+    display: flex;
+    height: $icons-size;
+    width: $icons-size;
+    margin: $icons-margin-mobile;
+
+    @include on-desktop {
+      margin: $icons-margin-desktop;
+    }
+
+    @include hover {
+      transform: scale(1.06);
+    }
+  }
+
+  &__iconLike,
+  &__iconCart {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
   }
 
   &__burgerMenu {
-    height: 16px;
-    width: 16px;
-    margin: 16px;
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    &__list {
+      display: flex;
+
+      @include on-tablet {
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+
+      align-items: center;
+    }
+
+    &__item {
+      display: flex;
+      height: $topbar-height-mobile;
+
+      @include on-desktop {
+        height: $topbar-height-desktop;
+      }
+
+      align-items: center;
+    }
+
+    &__link {
+      display: flex;
+      text-transform: uppercase;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+      color: #89939a;
+      align-items: center;
+      height: 100%;
+      position: relative;
+
+      &:not(.topbar__nav__link--active)::after {
+        content: '';
+        height: 3px;
+        background-color: #0f0f11;
+        position: absolute;
+        bottom: 0;
+        width: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        transition: width 0.3s ease;
+      }
+
+      @include hover {
+        transform: scale(1.06);
+        &::after {
+          width: 100%;
+        }
+      }
+
+      &--active {
+        color: #0f0f11;
+        border-bottom: 3px solid #0f0f11;
+      }
+    }
   }
 }

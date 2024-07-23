@@ -5,6 +5,15 @@
   font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 12px;
-  background-color: #fafbfc;
   color: #0f0f11;
+  scroll-behavior: smooth;
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
 }

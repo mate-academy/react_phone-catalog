@@ -1,10 +1,19 @@
+import { Outlet } from 'react-router-dom';
 import './App.scss';
-import { Header } from './components/Header';
-import { Main } from './components/Main';
+import { TopBar } from './components/TopBar';
+// import { Header } from './components/Header';
+// import { Footer } from './components/Footer';
+// import { Main } from './components/Main';
 
-export const App = () => (
-  <div className="App">
-    <Header />
-    <Main />
-  </div>
-);
+export const App = () => {
+  return (
+    <div className="App">
+      <TopBar />
+
+      <Outlet />
+      {/* <Header /> */}
+      {/* <Main />
+      <Footer /> */}
+    </div>
+  );
+};

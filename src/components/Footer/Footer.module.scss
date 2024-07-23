@@ -1,0 +1,51 @@
+.footer {
+  padding: 32px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  background-color: #fff;
+  box-shadow: 0 -1px 0 0 #e2e6e9;
+
+  &__logo {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__nav {
+    &__list {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    &__item {
+      color: #89939a;
+      text-transform: uppercase;
+      font-weight: 800;
+      line-height: 11px;
+      letter-spacing: 0.04em;
+    }
+  }
+
+  &__backToTop {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+
+    &__text {
+      color: #89939a;
+    }
+
+    &__button {
+      background-image: url(../../assets/img/icons/arrow-up.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      height: 32px;
+      width: 32px;
+      padding: 8px;
+      border: 1px solid #b4bdc3;
+      border-radius: 48px;
+    }
+  }
+}
