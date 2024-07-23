@@ -61,21 +61,21 @@ This project is a modern and fully responsive phone catalog built with React, fe
 ## 🔧 Installation and Setup
 
 1. Clone the repository to your local machine:
-   \`\`\`bash
+   ```bash
    git clone https://github.com/your-username/react_phone-catalog.git
-   \`\`\`
+   ```
 2. Navigate to the project directory:
-   \`\`\`bash
+   ```bash
    cd your-repository
-   \`\`\`
+   ```
 3. Install the dependencies:
-   \`\`\`bash
+   ```bash
    npm install
-   \`\`\`
+   ```
 4. Start the project:
-   \`\`\`bash
+   ```bash
    npm start
-   \`\`\`
+   ```
 5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the project.
 
 ## 📚 Documentation
