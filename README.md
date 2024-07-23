@@ -31,7 +31,7 @@ This project is a modern and fully responsive phone catalog built with React, fe
 
 ## 📂 Project Structure
 
-\`\`\`
+
 ├── public
 │   ├── index.html
 │   └── ...
@@ -54,7 +54,7 @@ This project is a modern and fully responsive phone catalog built with React, fe
 │   ├── index.js
 │   └── ...
 └── package.json
-\`\`\`
+
 
 ## 🔧 Installation and Setup
 
