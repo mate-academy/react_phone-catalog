@@ -12,22 +12,11 @@
 This project is a modern and fully responsive phone catalog built with React, featuring a shopping cart and a favorites page. The application allows users to browse through a catalog of phones, add items to their cart, and mark their favorite products for easy access. The UI is designed based on a Figma mockup, ensuring a sleek and user-friendly experience. The app leverages various React hooks and libraries to provide efficient and smooth functionality, including real-time search with debounce, custom infinite carousel, and seamless state management with context and local storage.
 
 ## 🛠️ Technologies Used
-
-- HTML5
-- SCSS
-- TypeScript
-- React
-- Figma
-
-## Technologies Used
-
-<p align="center">
-  <img src="https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg" width="80" alt="HTML5 Logo" />
-  <img src="https://raw.githubusercontent.com/stephencooke/scss-logo/master/src/scss-logo.png" width="80" alt="SCSS Logo" />
-  <img src="https://www.typescriptlang.org/logo/ts-logo-128.png" width="80" alt="TypeScript Logo" />
-  <img src="https://reactjs.org/logo-og.png" width="80" alt="React Logo" />
-  <img src="https://cdn.worldvectorlogo.com/logos/figma-1.svg" width="80" alt="Figma Logo" />
-</p>
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![SCSS](https://img.shields.io/badge/SCSS-hotpink.svg?style=for-the-badge&logo=SASS&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![Figma](https://img.shields.io/badge/figma-%23F24E1E.svg?style=for-the-badge&logo=figma&logoColor=white)
 
 
 ## ⚙️ Features
