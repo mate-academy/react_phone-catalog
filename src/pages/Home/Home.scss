@@ -1,10 +1,10 @@
 .home {
-  &__components > *:not(:first-child) {
-    @include page-margins;
-  }
-
   &__components > * {
     @include bottom-margin;
+  }
+
+  &__components > *:not(:first-child) {
+    @include page-margins;
   }
 
   &__title {

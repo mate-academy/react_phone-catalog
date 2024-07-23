@@ -69,13 +69,14 @@
     max-width: 1136px;
   }
 }
+
 @mixin h2 {
   font-size: 22px;
   font-weight: 800;
   line-height: 30.8px;
   letter-spacing: 0;
 
-  @include on-tablet() {
+  @include on-tablet {
     font-size: 32px;
     font-weight: 800;
     line-height: 41px;
@@ -107,7 +108,7 @@
   }
 }
 
-@mixin upperCase {
+@mixin upper-case {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: 700;
@@ -121,13 +122,13 @@
   line-height: 21px;
 }
 
-@mixin bodyText {
+@mixin body-text {
   font-size: 14px;
   font-weight: 500;
   line-height: 21px;
 }
 
-@mixin smallText {
+@mixin small-text {
   font-size: 12px;
   font-weight: 500;
 }

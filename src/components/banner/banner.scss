@@ -11,6 +11,7 @@
 
   &__img-buttons {
     height: 400px;
+
     @include page-grid;
   }
 
@@ -28,6 +29,7 @@
     grid-column: span 4;
 
     overflow: hidden;
+
     @include on-tablet {
       grid-column: span 10;
     }

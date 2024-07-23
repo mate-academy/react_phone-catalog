@@ -12,7 +12,7 @@
   background-color: $color-white;
 
   &__top-bar {
-    box-shadow: 0px 1px 0px 0px $color-secondary;
+    box-shadow: 0 1px 0 0 $color-secondary;
     height: 48px;
     display: flex;
     gap: 16px;
@@ -59,7 +59,7 @@
   }
 
   &__link {
-    @include upperCase;
+    @include upper-case;
 
     text-align: left;
 
@@ -88,9 +88,8 @@
     position: relative;
     width: 48px;
     height: 48px;
-    box-shadow: -1px 0px 0px 0px $color-secondary;
+    box-shadow: -1px 0 0 0 $color-secondary;
     z-index: 1;
-    position: relative;
 
     @include on-decktop {
       width: 64px;
@@ -111,6 +110,7 @@
     color: $color-white;
     top: 9px;
     right: 9px;
+
     @include on-decktop {
       top: 18px;
       right: 18px;
@@ -131,12 +131,13 @@
     width: 48px;
     height: 48px;
     border: none;
-    box-shadow: -1px 0px 0px 0px $color-secondary;
+    box-shadow: -1px 0 0 0 $color-secondary;
     cursor: pointer;
   }
 
   &__menu {
     flex-grow: 1;
+
     @include on-tablet {
       display: none;
     }

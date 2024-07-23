@@ -6,13 +6,13 @@ import { useLocation } from 'react-router-dom';
 import { useEffect } from 'react';
 
 export const Home = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
-  }, [location.pathname])
+  }, [location.pathname]);
 
   const hotPrices = productsFromApi
     .filter(product => product.category === 'phones')

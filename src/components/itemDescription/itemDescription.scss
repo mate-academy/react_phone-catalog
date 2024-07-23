@@ -34,7 +34,7 @@
     }
 
     &-text {
-      @include bodyText;
+      @include body-text;
       color: $color-secondary;
     }
   }
@@ -56,12 +56,12 @@
     }
 
     &-title {
-      @include bodyText;
+      @include body-text;
       color: $color-secondary;
     }
 
     &-value {
-      @include bodyText;
+      @include body-text;
     }
   }
 }

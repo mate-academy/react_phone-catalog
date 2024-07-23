@@ -38,7 +38,7 @@
   }
 
   &__link {
-    @include upperCase;
+    @include upper-case;
 
     color: $color-secondary;
 
@@ -60,7 +60,7 @@
   }
 
   &__button-text {
-    @include smallText;
+    @include small-text;
 
     color: $color-secondary;
     background-color: transparent;

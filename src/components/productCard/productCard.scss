@@ -25,7 +25,7 @@
   }
 
   &__name {
-    @include bodyText;
+    @include body-text;
     padding-top: 16px;
   }
 
@@ -73,7 +73,7 @@
     justify-content: space-between;
 
     &-option {
-      @include smallText;
+      @include small-text;
       color: $color-secondary;
     }
 

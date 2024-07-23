@@ -7,6 +7,7 @@
   @include on-tablet {
     gap: 40px;
   }
+
   @include page-margins;
   @include bottom-margin;
 
@@ -22,7 +23,9 @@
 
   &__pathname {
     display: flex;
-    @include smallText;
+
+    @include small-text;
+
     color: $color-secondary;
   }
 
@@ -37,7 +40,8 @@
   }
 
   &__subtitle {
-    @include bodyText;
+    @include body-text;
+
     color: $color-secondary;
   }
 
@@ -66,6 +70,7 @@
 
   &__catalog {
     @include page-grid;
+
     row-gap: 40px;
   }
 
@@ -101,7 +106,7 @@
     border: 1px solid $color-elements;
     background-color: $color-white;
     margin-top: 4px;
-    box-shadow: 0px 2px 15px 0px #0000000D;
+    box-shadow: 0 2px 15px 0 #0000000D;
     padding: 8px 0;
   }
 
@@ -111,7 +116,8 @@
     padding-left: 12px;
     color: $color-secondary;
     height: 32px;
-    @include bodyText;
+
+    @include body-text;
 
     &:hover {
       background-color: $color-hover-bg;

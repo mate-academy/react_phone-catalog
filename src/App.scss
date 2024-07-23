@@ -80,7 +80,7 @@
 }
 
 .upper-case {
-  @include upperCase;
+  @include upper-case;
 }
 
 .buttons {
@@ -88,11 +88,11 @@
 }
 
 .body-text {
-  @include bodyText;
+  @include body-text;
 }
 
 .small-text {
-  @include smallText;
+  @include small-text;
 }
 
 .button-size {

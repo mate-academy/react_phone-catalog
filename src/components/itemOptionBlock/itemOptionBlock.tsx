@@ -1,7 +1,7 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone } from '../../types/phones';
 import home from '../../img/icons/home.svg';
-import arrowRight from '../../img/icons/arrowRight.svg';
+// import arrowRight from '../../img/icons/arrowRight.svg';
 import arrowLeft from '../../img/icons/arrowLeft.svg';
 import phones from '../../api/phones.json';
 import { Colors } from '../../types/colors';
@@ -66,15 +66,16 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
         </Link>
         <Link
           to={location.pathname.split('/').slice(0, 2).join('/')}
-          className="item-option-block__nav-part"
+          className="item-option-block__nav-part small-text"
         >
-          <img src={arrowRight} alt="" />
-          <p className="item-option-block__nav-text">{item.category}</p>
+          {item.category}
         </Link>
-        <div className="item-option-block__nav-part">
-          <img src={arrowRight} alt="" />
-          <p className="item-option-block__nav-text-semi">{item.name}</p>
-        </div>
+        <Link
+          to={`${location.pathname}`}
+          className="item-option-block__nav-part small-text item-option-block__nav-text-semi"
+        >
+          {item.name}
+        </Link>
       </div>
       <div className="item-option-block__title">
         <button

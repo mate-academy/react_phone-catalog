@@ -34,7 +34,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
     window.scrollTo({
       top: 0,
     });
-  }, [location.pathname])
+  }, [location.pathname]);
 
   function setSearchWith(params: SearchParams) {
     const search = getSearchWith(searchParams, params);
@@ -134,8 +134,8 @@ export const Phones: React.FC<Props> = ({ products }) => {
           <div className="products__sort-field" ref={dropdownRefSort}>
             <p className="products__sort-field-text">Sort by</p>
             <button
-              className={classNames("products__dropdown", {
-                "products__dropdown-active": showSortDropdown,
+              className={classNames('products__dropdown', {
+                'products__dropdown-active': showSortDropdown,
               })}
               onClick={() => setShowSortDropdown(!showSortDropdown)}
             >
@@ -149,7 +149,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
               <ul className="products__dropdown-menu">
                 {sortType.map(option => (
                   <SearchLink
-                    className='products__option'
+                    className="products__option"
                     onClick={() => {
                       setShowSortDropdown(false);
                     }}
@@ -165,8 +165,8 @@ export const Phones: React.FC<Props> = ({ products }) => {
           <div className="products__sort-field" ref={dropdownRefPerPage}>
             <p className="products__sort-field-text">Items on page</p>
             <button
-              className={classNames("products__dropdown", {
-                "products__dropdown-active": showPerPageDropdown,
+              className={classNames('products__dropdown', {
+                'products__dropdown-active': showPerPageDropdown,
               })}
               onClick={() => setShowPerPageDropdown(!showPerPageDropdown)}
             >
@@ -178,7 +178,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
               <ul className="products__dropdown-menu">
                 {perPageOptions.map(option => (
                   <SearchLink
-                    className='products__option'
+                    className="products__option"
                     onClick={() => {
                       setShowPerPageDropdown(false);
                     }}

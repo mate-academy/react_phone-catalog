@@ -1,12 +1,26 @@
 .item-option-block {
   margin-top: 24px;
+
   &__nav {
     display: flex;
     gap: 8px;
 
     &-part {
       display: flex;
+      justify-content: center;
+      align-items: center;
       gap: 8px;
+
+      &::before {
+        display: inline-block;
+        content: "";
+        width: 16px;
+        height: 16px;
+        background-image: url(../../img/icons/arrowRight.svg);
+        background-size: auto;
+        background-position: center;
+        background-repeat: no-repeat;
+      }
     }
 
     &-text-semi {
@@ -30,7 +44,7 @@
     cursor: pointer;
 
     &-text {
-      @include smallText;
+      @include small-text;
 
       color: $color-secondary;
     }
@@ -80,7 +94,6 @@
     @include on-decktop {
       gap: 16px;
     }
-
   }
 
   &__img {
@@ -152,7 +165,7 @@
   &__option-title {
     color: $color-secondary;
 
-    @include smallText;
+    @include small-text;
   }
 
   &__option-list {
@@ -189,7 +202,7 @@
     border: 1px solid $color-icons;
     padding: 0 8px;
 
-    @include bodyText;
+    @include body-text;
 
     &:hover {
       border-color: $color-primary;
@@ -269,13 +282,13 @@
       justify-content: space-between;
 
       &-title {
-        @include smallText;
+        @include small-text;
 
         color: $color-secondary;
       }
 
       &-value {
-        @include smallText;
+        @include small-text;
       }
     }
   }

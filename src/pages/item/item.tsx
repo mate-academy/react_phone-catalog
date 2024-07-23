@@ -12,18 +12,28 @@ import { NotFound } from '../notFound/notFound';
 import { useEffect } from 'react';
 
 export const Item: React.FC = () => {
-  const location = useLocation()
+  const location = useLocation();
 
   useEffect(() => {
     window.scrollTo({
       top: 0,
     });
-  }, [location.pathname])
+  }, [location.pathname]);
 
-  const idsForYouLike = [72, 73, 70, 81, 2, 83, 24, 111];
+  function shuffle(array: number[]) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array.slice(0, 8);
+  }
+
+  const idsForYouLike = productsFromApi
+    .filter((product) => product.category === 'phones')
+    .map(product => product.id)
 
   const youLike: Product[] = productsFromApi.filter(product =>
-    idsForYouLike.includes(product.id),
+    shuffle(idsForYouLike).includes(product.id),
   );
   const { itemId } = useParams();
 

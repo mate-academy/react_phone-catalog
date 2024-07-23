@@ -1,5 +1,6 @@
 .item {
   flex-direction: column;
+
   @include page-margins;
 
   &__section {

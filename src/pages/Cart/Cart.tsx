@@ -45,7 +45,7 @@ export const Cart: React.FC = () => {
         <p className="products__subtitle">{cartProducts.length} models</p>
       </div>
       {cartProducts.length === 0 ? (
-        <p className='h3'>Your cart is empty</p>
+        <p className="h3">Your cart is empty</p>
       ) : (
         <div className="cart__container">
           <div className="cart__list">
@@ -79,11 +79,14 @@ export const Cart: React.FC = () => {
                         cartProducts.filter(item => product.id === item.id)
                           .length === 1
                       }
-                      className={classNames('button-size b-minus button-slider', {
-                        'button-slider__disabled b-minus-g':
-                          cartProducts.filter(item => product.id === item.id)
-                            .length === 1,
-                      })}
+                      className={classNames(
+                        'button-size b-minus button-slider',
+                        {
+                          'button-slider__disabled b-minus-g':
+                            cartProducts.filter(item => product.id === item.id)
+                              .length === 1,
+                        },
+                      )}
                       onClick={() => {
                         const index = cartProducts.findLastIndex(
                           item => item.id === product.id,
@@ -95,7 +98,10 @@ export const Cart: React.FC = () => {
                       }}
                     />
                     <p className="cart__amount body-text">
-                      {cartProducts.filter(item => product.id === item.id).length}
+                      {
+                        cartProducts.filter(item => product.id === item.id)
+                          .length
+                      }
                     </p>
                     <button
                       className="button-size b-plus button-slider"

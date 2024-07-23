@@ -21,7 +21,7 @@
   }
 
   &__nav-link {
-    @include upperCase;
+    @include upper-case;
 
     height: 27px;
     text-align: left;
