@@ -3,11 +3,13 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
+  width: 100%;
 
   @include on-tablet {
     gap: 40px;
   }
-  @include pageMargins;
+
+  @include page-margins;
   @include bottom-margin;
 
   &__container {
@@ -24,6 +26,7 @@
     display: flex;
     flex-direction: column;
     gap: 16px;
+
     @include on-decktop {
       grid-column: span 14;
     }
@@ -58,6 +61,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+
     @include on-tablet {
       justify-content: flex-start;
       gap: 24px;
@@ -107,13 +111,16 @@
     align-items: center;
     gap: 16px;
     border: 1px solid $color-icons;
+
     @include on-tablet {
       gap: 24px;
     }
+
     @include on-decktop {
       align-self: start;
       grid-column: span 10;
     }
+
     height: auto;
   }
 

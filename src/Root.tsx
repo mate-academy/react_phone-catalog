@@ -10,7 +10,7 @@ import { Favorites } from './pages/Favorites/favorites';
 import { Cart } from './pages/Cart/Cart';
 import { Phones } from './pages/Phones/Phones';
 import { Tablets } from './pages/Tablets/Tablets';
-import { Accecories } from './pages/Accessories/Accessories';
+import { Accessories } from './pages/Accessories/Accessories';
 import products from './api/products.json';
 import { Item } from './pages/item/item';
 import { ArrayProvider } from './ArrayContext';
@@ -37,7 +37,7 @@ export const Root = () => (
             <Route path=":itemId" element={<Item />} />
           </Route>
           <Route path="tablets" element={<Tablets />} />
-          <Route path="accessories" element={<Accecories />} />
+          <Route path="accessories" element={<Accessories />} />
           <Route path="favorites" element={<Favorites />} />
           <Route path="cart" element={<Cart />} />
           <Route path="*" element={<NotFound />} />

@@ -6,8 +6,8 @@ import bag from '../../img/icons/bag.svg';
 import { Dispatch, SetStateAction, useEffect, useState } from 'react';
 
 type Props = {
-  setFocusMenu: Dispatch<SetStateAction<boolean>>
-}
+  setFocusMenu: Dispatch<SetStateAction<boolean>>;
+};
 
 export const Menu: React.FC<Props> = ({ setFocusMenu }) => {
   const [visible, setVisible] = useState(false);
@@ -71,10 +71,10 @@ export const Menu: React.FC<Props> = ({ setFocusMenu }) => {
       <div className="menu__icon-links">
         <NavLink
           className={({ isActive }) =>
-          classNames('menu__icon-link', {
-            'menu__is-active': isActive,
-          })
-        }
+            classNames('menu__icon-link', {
+              'menu__is-active': isActive,
+            })
+          }
           onClick={() => setFocusMenu(false)}
           to={'/favorites'}
         >
@@ -82,10 +82,10 @@ export const Menu: React.FC<Props> = ({ setFocusMenu }) => {
         </NavLink>
         <NavLink
           className={({ isActive }) =>
-          classNames('menu__icon-link', {
-            'menu__is-active': isActive,
-          })
-        }
+            classNames('menu__icon-link', {
+              'menu__is-active': isActive,
+            })
+          }
           onClick={() => setFocusMenu(false)}
           to={'/cart'}
         >

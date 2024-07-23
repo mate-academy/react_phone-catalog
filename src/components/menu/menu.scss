@@ -22,6 +22,7 @@
 
   &__nav-link {
     @include upperCase;
+
     height: 27px;
     text-align: left;
 
@@ -51,6 +52,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    box-shadow: -1px 0px 0px 0px $color-elements;
+    box-shadow: -1px 0 0 0 $color-elements;
   }
 }

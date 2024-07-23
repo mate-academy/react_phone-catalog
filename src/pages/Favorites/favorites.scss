@@ -7,6 +7,6 @@
   @include on-tablet {
     gap: 40px;
   }
-  @include pageMargins;
+  @include page-margins;
   @include bottom-margin;
 }

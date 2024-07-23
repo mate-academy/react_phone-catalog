@@ -5,6 +5,10 @@
   justify-content: center;
   align-items: center;
 
+  @include on-tablet {
+    @include page-margins;
+  }
+
   &__img-buttons {
     height: 400px;
     @include page-grid;

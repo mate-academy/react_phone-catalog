@@ -188,7 +188,6 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
             <div className="item-option-block__buttons">
               <button
                 className={classNames('button-add ', {
-
                   'button-add__added': cartProducts
                     .map(a => a.id)
                     .includes(product.id),
@@ -206,8 +205,7 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
                     .includes(product.id),
                 })}
                 onClick={() => handleLike(product)}
-              >
-              </button>
+              ></button>
             </div>
           </div>
           <ul className="item-option-block__short-info">

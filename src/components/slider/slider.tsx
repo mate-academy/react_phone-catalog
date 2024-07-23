@@ -78,20 +78,18 @@ export const Slider: React.FC<Props> = ({ products, title, showOldPrice }) => {
         <h2 className="slider__title">{title}</h2>
         <div className="slider__buttons">
           <button
-            className={classNames("button-slider b-left button-size", {
-              "button-slider__disabled b-left-g": currentTrans === 0,
+            className={classNames('button-slider b-left button-size', {
+              'button-slider__disabled b-left-g': currentTrans === 0,
             })}
             onClick={handlePrev}
-          >
-          </button>
+          ></button>
           <button
-            className={classNames("button-slider b-right button-size", {
-              "button-slider__disabled b-right-g":
+            className={classNames('button-slider b-right button-size', {
+              'button-slider__disabled b-right-g':
                 currentTrans === products.length - cardsPerPage,
             })}
             onClick={handleNext}
-          >
-          </button>
+          ></button>
         </div>
       </div>
       <div className="slider__container">

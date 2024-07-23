@@ -16,7 +16,7 @@ export const Footer = () => {
           <img src={logo} alt="logo" />
         </Link>
         <div className="footer__links">
-          <Link className="footer__link" to={'/'}>
+          <Link className="footer__link" to={'https://kapesha.github.io/react_phone-catalog/#/'}>
             GitHUB
           </Link>
           <Link className="footer__link" to={'/'}>

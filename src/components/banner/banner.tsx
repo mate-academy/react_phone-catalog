@@ -80,11 +80,10 @@ export const Banner: React.FC = () => {
         <button
           disabled={disableButtons}
           onClick={handlePrev}
-          className={classNames("banner__button button-slider b-left", {
-            "button-slider__disabled b-left-g": disableButtons,
+          className={classNames('banner__button button-slider b-left', {
+            'button-slider__disabled b-left-g': disableButtons,
           })}
-        >
-        </button>
+        ></button>
         <div className="banner__carusel-container">
           <ul
             className="banner__carusel"
@@ -102,11 +101,10 @@ export const Banner: React.FC = () => {
         <button
           disabled={disableButtons}
           onClick={handleNext}
-          className={classNames("banner__button button-slider b-right", {
-            "button-slider__disabled b-right-g": disableButtons,
+          className={classNames('banner__button button-slider b-right', {
+            'button-slider__disabled b-right-g': disableButtons,
           })}
-        >
-        </button>
+        ></button>
       </div>
       <div className="button__dots">
         {baseImages.map((image, index) => (

@@ -2,16 +2,18 @@
 @import "/src/utils/utils";
 
 .footer {
-  box-shadow: 0px -1px 0px 0px #e2e6e9;
+  flex-shrink: 0;
+  box-shadow: 0 -1px 0 0 $color-elements;
 
   &__container {
     display: flex;
     flex-direction: column;
-    @include pageMargins;
+
+    @include page-margins;
+
     padding: 32px 0;
     justify-content: space-between;
     gap: 32px;
-    box-shadow: 0px -1px 0px 0px #e2e6e9;
 
     @include on-tablet {
       flex-direction: row;
@@ -37,6 +39,7 @@
 
   &__link {
     @include upperCase;
+
     color: $color-secondary;
 
     &:hover {

@@ -1,3 +1,7 @@
 export const Tablets = () => {
-  return <p>Tablets</p>;
+  return (
+    <div className="tablets">
+      <p className='h2'> This page is in Progress...</p>
+    </div>
+  );
 };

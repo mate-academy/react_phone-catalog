@@ -1,11 +1,16 @@
 .home {
-  @include pageMargins;
+  &__components > *:not(:first-child) {
+    @include page-margins;
+  }
 
   &__components > * {
     @include bottom-margin;
   }
+
   &__title {
     @include h1;
+    @include page-margins;
+
     margin-top: 24px;
     margin-bottom: 24px;
 

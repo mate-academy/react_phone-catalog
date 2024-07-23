@@ -17,6 +17,8 @@
 @import "../src/pages/Cart/cart";
 @import "../src/pages/notFound/notFound";
 @import "../src//components/modal//modal";
+@import "../src/pages/Accessories/accessories";
+@import "../src/pages/Tablets/tablets";
 
 @font-face {
   font-family: Mont;
@@ -39,12 +41,22 @@
 * {
   margin: 0;
   padding: 0;
-  font-family: "Mont";
+  font-family: Mont, sans-serif;
   text-decoration: none;
   list-style-type: none;
   background-color: inherit;
   border: none;
   color: $color-primary;
+}
+
+.App {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
 }
 
 .secondary-color {
@@ -81,12 +93,6 @@
 
 .small-text {
   @include smallText;
-}
-
-.header {
-  position: sticky;
-  top: 0;
-  z-index: 1000;
 }
 
 .button-size {

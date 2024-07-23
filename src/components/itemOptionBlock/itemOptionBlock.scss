@@ -31,6 +31,7 @@
 
     &-text {
       @include smallText;
+
       color: $color-secondary;
     }
 
@@ -41,11 +42,13 @@
 
   &__container {
     @include page-grid;
+
     row-gap: 40px;
   }
 
   &__imagies {
     grid-column: span 4;
+
     @include on-tablet {
       grid-column: span 6;
     }
@@ -57,6 +60,7 @@
     display: flex;
     gap: 16px;
     flex-direction: column;
+
     @include on-tablet {
       flex-direction: row;
     }
@@ -92,6 +96,7 @@
     @include on-decktop {
       height: 80px;
     }
+
     object-fit: contain;
 
     &:hover {
@@ -101,9 +106,11 @@
 
   &__current-img-container {
     height: 287px;
+
     @include on-decktop {
       height: 464px;
     }
+
     width: 100%;
     display: flex;
   }
@@ -116,6 +123,7 @@
 
   &__right-bar {
     grid-column: span 4;
+
     @include on-tablet {
       grid-column: span 4;
     }
@@ -123,6 +131,7 @@
     @include on-decktop {
       grid-column: span 12;
     }
+
     display: flex;
     flex-direction: column;
     gap: 32px;
@@ -142,6 +151,7 @@
 
   &__option-title {
     color: $color-secondary;
+
     @include smallText;
   }
 
@@ -178,6 +188,7 @@
     height: 32px;
     border: 1px solid $color-icons;
     padding: 0 8px;
+
     @include bodyText;
 
     &:hover {
@@ -214,6 +225,7 @@
 
     &-old {
       @include h2;
+
       color: $color-secondary;
       position: relative;
 
@@ -258,6 +270,7 @@
 
       &-title {
         @include smallText;
+
         color: $color-secondary;
       }
 

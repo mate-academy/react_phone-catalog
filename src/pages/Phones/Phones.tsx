@@ -30,6 +30,12 @@ export const Phones: React.FC<Props> = ({ products }) => {
   const sortBy = searchParams.get('sortBy') || '';
   const perPage = searchParams.get('perPage') || 'all';
 
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+    });
+  }, [location.pathname])
+
   function setSearchWith(params: SearchParams) {
     const search = getSearchWith(searchParams, params);
 
@@ -128,7 +134,9 @@ export const Phones: React.FC<Props> = ({ products }) => {
           <div className="products__sort-field" ref={dropdownRefSort}>
             <p className="products__sort-field-text">Sort by</p>
             <button
-              className="products__dropdown"
+              className={classNames("products__dropdown", {
+                "products__dropdown-active": showSortDropdown,
+              })}
               onClick={() => setShowSortDropdown(!showSortDropdown)}
             >
               <div className="products__dropdown-text">
@@ -141,6 +149,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
               <ul className="products__dropdown-menu">
                 {sortType.map(option => (
                   <SearchLink
+                    className='products__option'
                     onClick={() => {
                       setShowSortDropdown(false);
                     }}
@@ -156,7 +165,9 @@ export const Phones: React.FC<Props> = ({ products }) => {
           <div className="products__sort-field" ref={dropdownRefPerPage}>
             <p className="products__sort-field-text">Items on page</p>
             <button
-              className="products__dropdown"
+              className={classNames("products__dropdown", {
+                "products__dropdown-active": showPerPageDropdown,
+              })}
               onClick={() => setShowPerPageDropdown(!showPerPageDropdown)}
             >
               <div className="products__dropdown-text">{perPage || 'all'}</div>
@@ -167,6 +178,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
               <ul className="products__dropdown-menu">
                 {perPageOptions.map(option => (
                   <SearchLink
+                    className='products__option'
                     onClick={() => {
                       setShowPerPageDropdown(false);
                     }}
@@ -202,8 +214,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
                 page: currentPage === '2' ? null : `${+currentPage - 1}`,
               });
             }}
-          >
-          </button>
+          ></button>
           <div className="products__page-buttons">
             {pagesAmmount()
               .map(page => (
@@ -233,8 +244,7 @@ export const Phones: React.FC<Props> = ({ products }) => {
             onClick={() => {
               setSearchWith({ page: `${+currentPage + 1}` });
             }}
-          >
-          </button>
+          ></button>
         </div>
       )}
     </section>
