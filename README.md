@@ -1,21 +1,97 @@
-# React Product Catalog
+# 📱 React Product Catalog
 
-- [Rounded Blue](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
-
-- [DEMO](https://vbuldenko.github.io/react_phone-catalog/)
+- [Figma design of the app](https://www.figma.com/file/FRxncC4lfyhs6og1L6FGEU/Phone-catalog-(V2)-Rounded-Style-2?node-id=0%3A1)
 
 
+## 🚀 Demo
 
-## (*) Advanced tasks
+[Click here to view the demo]([link-to-your-demo](https://vbuldenko.github.io/react_phone-catalog/))
 
-- Implement color theme switching!
-- Use [skeletons](https://freefrontend.com/css-skeleton-loadings/) to make loading more natural.
-- Add the ability to change page language.
+## 📖 Description
 
-### Search
+This project is a modern and fully responsive phone catalog built with React, featuring a shopping cart and a favorites page. The application allows users to browse through a catalog of phones, add items to their cart, and mark their favorite products for easy access. The UI is designed based on a Figma mockup, ensuring a sleek and user-friendly experience. The app leverages various React hooks and libraries to provide efficient and smooth functionality, including real-time search with debounce, custom infinite carousel, and seamless state management with context and local storage.
 
-Show `input:search` in the header when a page contains a `ProductList` to search in.
+## 🛠️ Technologies Used
 
-1. Save the `Search` value in the URL as a `?query=value` to apply on page load.
-2. Show `There are no phones/tablets/accessories/products matching the query` instead of `ProductList` when needed.
-3. Add `debounce` to the search field.
+- HTML5
+- SCSS
+- TypeScript
+- React
+- Figma
+
+## ⚙️ Features
+
+- 📱 Responsive web design
+- ⚡️ Custom Infinity Carousel (Slider)
+- 📄 Product Pagination
+- 🗂️ Filtering Options
+- 🔍 Product Search with Debounce
+- ✅ Valid HTML5 & CSS3
+- 🌐 Semantic Markup
+
+## 📂 Project Structure
+
+\`\`\`
+├── public
+│   ├── index.html
+│   └── ...
+├── src
+│   ├── components
+│   │   ├── Carousel.js
+│   │   ├── ProductCard.js
+│   │   ├── ...
+│   ├── pages
+│   │   ├── Catalog.js
+│   │   ├── Cart.js
+│   │   └── ...
+│   ├── hooks
+│   │   ├── useDebounce.js
+│   │   └── ...
+│   ├── context
+│   │   ├── CartContext.js
+│   │   └── ...
+│   ├── App.js
+│   ├── index.js
+│   └── ...
+└── package.json
+\`\`\`
+
+## 🔧 Installation and Setup
+
+1. Clone the repository to your local machine:
+   \`\`\`bash
+   git clone https://github.com/your-username/react_phone-catalog.git
+   \`\`\`
+2. Navigate to the project directory:
+   \`\`\`bash
+   cd your-repository
+   \`\`\`
+3. Install the dependencies:
+   \`\`\`bash
+   npm install
+   \`\`\`
+4. Start the project:
+   \`\`\`bash
+   npm start
+   \`\`\`
+5. Open your browser and go to [http://localhost:3000](http://localhost:3000) to view the project.
+
+## 📚 Documentation
+
+### React Hooks Used
+
+- `useState`
+- `useContext`
+- `useEffect`
+- `useCallback`
+- `useMemo`
+- `useRef`
+- `useSearchParams`
+- `useParams`
+
+### Additional Libraries
+
+- React Router
+- Local Storage (for cart and favorites)
+- Debounce (for product search)
+"""
