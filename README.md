@@ -5,7 +5,7 @@
 
 ## 🚀 Demo
 
-[Click here to view the demo](https://vbuldenko.github.io/react_phone-catalog/)
+- [Click here to view the demo](https://vbuldenko.github.io/react_phone-catalog/)
 
 ## 📖 Description
 
