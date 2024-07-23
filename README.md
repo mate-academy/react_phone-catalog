@@ -19,6 +19,24 @@ This project is a modern and fully responsive phone catalog built with React, fe
 - React
 - Figma
 
+## Technologies Used
+
+- **HTML5**  
+  ![HTML5 Logo](https://upload.wikimedia.org/wikipedia/commons/6/61/HTML5_logo_and_wordmark.svg)
+
+- **SCSS**  
+  ![SCSS Logo](https://raw.githubusercontent.com/stephencooke/scss-logo/master/src/scss-logo.png)
+
+- **TypeScript**  
+  ![TypeScript Logo](https://www.typescriptlang.org/logo/ts-logo-128.png)
+
+- **React**  
+  ![React Logo](https://reactjs.org/logo-og.png)
+
+- **Figma**  
+  ![Figma Logo](https://cdn.worldvectorlogo.com/logos/figma-1.svg)
+
+
 ## ⚙️ Features
 
 - 📱 Responsive web design
