@@ -6,6 +6,9 @@
       margin: 40px 0;
       display: flex;
       gap: 16px;
+      @media (max-width: 1000px) {
+        flex-direction: column;
+      }
       .sum {
         display: flex;
         flex-direction: column;
@@ -51,18 +54,33 @@
       display: flex;
       flex-direction: column;
       gap: 16px;
+
       &__cart {
         display: flex;
         padding: 24px;
         background-color: $color-cart;
         gap: 24px;
+        justify-content: space-between;
         max-height: 152px;
-        max-width: 752px;
+        width: 752px;
         align-items: center;
 
         img {
           width: 66px;
         }
+
+        @media (max-width: 1000px) {
+          width: 100%;
+        }
+
+        @media (max-width: 600px) {
+          align-items: flex-start;
+          flex-direction: column;
+          width: 100%;
+          max-height: 100%;
+          justify-content: space-between;
+        }
+
         &__close {
           display: flex;
           cursor: pointer;
@@ -79,9 +97,6 @@
             width: 100%;
             height: 100%;
           }
-        }
-        &__name {
-          width: 336px;
         }
         &__buttons {
           display: flex;
@@ -117,6 +132,7 @@
           line-height: 30.8px;
           text-align: right;
           width: 80px;
+          margin-right: 16px;
           > strong {
             width: 80px;
           }
@@ -137,4 +153,12 @@
   height: 1px;
   background-color: #3b3e4a;
   margin: 25px 0;
+}
+.sections {
+  display: flex;
+}
+.topSections {
+  display: flex;
+  align-items: center;
+  gap: 24px;
 }

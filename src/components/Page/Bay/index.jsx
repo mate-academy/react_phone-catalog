@@ -45,36 +45,40 @@ export default function Bay() {
                 const bayItem = bay.find(item => item.id === product.id);
                 return (
                   <li className={styles.phonesList__cart} key={product.id}>
-                    <div
-                      className={styles.phonesList__cart__close}
-                      onClick={() => handleRemove(product.id)}
-                    >
+                    <div className={styles.topSections}>
+                      <div
+                        className={styles.phonesList__cart__close}
+                        onClick={() => handleRemove(product.id)}
+                      >
+                        <div>
+                          <IoMdClose
+                            className={styles.phonesList__cart__close__svg}
+                            size={20}
+                          />
+                        </div>
+                      </div>
                       <div>
-                        <IoMdClose
-                          className={styles.phonesList__cart__close__svg}
-                          size={20}
-                        />
+                        <img src={product.image} alt={product.image} />
+                      </div>
+                      <div className={styles.phonesList__cart__name}>
+                        <p>{product.name}</p>
                       </div>
                     </div>
-                    <div>
-                      <img src={product.image} alt={product.image} />
-                    </div>
-                    <div className={styles.phonesList__cart__name}>
-                      <p>{product.name}</p>
-                    </div>
-                    <div className={styles.phonesList__cart__buttons}>
-                      <button onClick={() => handleDecrement(product.id)}>
-                        {' '}
-                        -{' '}
-                      </button>
-                      <p>{bayItem.quantity}</p>
-                      <button onClick={() => handleIncrement(product.id)}>
-                        {' '}
-                        +{' '}
-                      </button>
-                    </div>
-                    <div className={styles.phonesList__cart__price}>
-                      <strong>${product.price * bayItem.quantity}</strong>
+                    <div className={styles.sections}>
+                      <div className={styles.phonesList__cart__buttons}>
+                        <button onClick={() => handleDecrement(product.id)}>
+                          {' '}
+                          -{' '}
+                        </button>
+                        <p>{bayItem.quantity}</p>
+                        <button onClick={() => handleIncrement(product.id)}>
+                          {' '}
+                          +{' '}
+                        </button>
+                      </div>
+                      <div className={styles.phonesList__cart__price}>
+                        <strong>${product.price * bayItem.quantity}</strong>
+                      </div>
                     </div>
                   </li>
                 );

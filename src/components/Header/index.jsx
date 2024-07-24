@@ -25,21 +25,24 @@ export default function Header() {
   const products = useSelector(state => state.products.products);
   const location = useLocation();
 
+  const toggleMenu = () => {
+    setMenuOpen(prevMenuOpen => {
+      const newMenuOpen = !prevMenuOpen;
+      document.body.classList.toggle('no-scroll', newMenuOpen);
+      return newMenuOpen;
+    });
+  };
+
   const onChangeCategory = useCallback(
     idx => {
       dispatch(setCategoryId(idx));
+      window.scrollTo(0, 0);
+      if (menuOpen) {
+        toggleMenu();
+      }
     },
-    [dispatch],
+    [dispatch, menuOpen, toggleMenu],
   );
-
-  const toggleMenu = () => {
-    setMenuOpen(!menuOpen);
-    if (!menuOpen) {
-      document.body.classList.add('no-scroll');
-    } else {
-      document.body.classList.remove('no-scroll');
-    }
-  };
 
   const favoriteProducts = products.filter(product =>
     favorites.includes(product.id),
@@ -53,7 +56,13 @@ export default function Header() {
   return (
     <header className={styles.root}>
       <div className={styles.topBar}>
-        <Link to="/" onClick={() => onChangeCategory(0)}>
+        <Link
+          to="/"
+          onClick={() => {
+            onChangeCategory(0);
+            window.scrollTo(0, 0);
+          }}
+        >
           <h5>
             Nice👌 <br /> Gadgets
           </h5>

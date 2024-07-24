@@ -16,7 +16,6 @@ export const Category = ({ title }) => {
 
   const onChangeCategory = useCallback(idx => {
     dispatch(setCategoryId(idx));
-    window.scrollTo(0, 0);
   }, []);
 
   return (
@@ -29,7 +28,7 @@ export const Category = ({ title }) => {
               <Link
                 to="/phones"
                 onClick={() => {
-                  dispatch(setCategoryId(1));
+                  dispatch(setCategoryId(1)), window.scrollTo(0, 0);
                 }}
               >
                 <div className={styles.image}>
@@ -43,7 +42,7 @@ export const Category = ({ title }) => {
               <Link
                 to="/tablets"
                 onClick={() => {
-                  dispatch(setCategoryId(2));
+                  dispatch(setCategoryId(2)), window.scrollTo(0, 0);
                 }}
               >
                 <div className={styles.image}>
@@ -57,7 +56,7 @@ export const Category = ({ title }) => {
               <Link
                 to="/accessories"
                 onClick={() => {
-                  dispatch(setCategoryId(3));
+                  dispatch(setCategoryId(3)), window.scrollTo(0, 0);
                 }}
               >
                 <div className={styles.image}>

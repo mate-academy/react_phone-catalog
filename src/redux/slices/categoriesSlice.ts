@@ -9,7 +9,10 @@ const initialState: CategoriesState = {
   categoryId: localStorage.getItem('categoryId')
     ? Number(localStorage.getItem('categoryId'))
     : 0,
-  categories: ['phones', 'tablets', 'accessories'],
+  categories: JSON.parse(
+    localStorage.getItem('categories') ||
+      '["phones", "tablets", "accessories"]',
+  ),
 };
 
 const categoriesSlice = createSlice({
@@ -22,6 +25,7 @@ const categoriesSlice = createSlice({
     },
     setCategories(state, action: PayloadAction<string[]>) {
       state.categories = action.payload;
+      localStorage.setItem('categories', JSON.stringify(action.payload));
     },
   },
 });

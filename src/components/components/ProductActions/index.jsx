@@ -10,12 +10,10 @@ export const ProductActions = ({ productId }) => {
 
   const handleToggleFavorite = () => {
     dispatch(toggleFavorite(productId));
-    console.log(productId);
   };
 
   const handleToggleBay = () => {
     dispatch(addToBay(productId));
-    console.log(productId);
   };
 
   const isFavorite = favorites.includes(productId);

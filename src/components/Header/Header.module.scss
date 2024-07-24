@@ -206,6 +206,10 @@
   font-size: 9px;
   font-weight: 700;
   text-align: center;
+  @media (max-width: 600px) {
+    right: 78px;
+    top: 17px;
+  }
 }
 
 .activeIcon {
