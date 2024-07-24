@@ -1,20 +1,26 @@
-// import { useState } from "react";
+import { useMemo } from 'react';
+import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
 import { FavouritesIcon } from '../Icons/FavouritesIcon';
+import { FavouritesSelectedIcon } from '../Icons/FavouritesSelectedIcon';
 
 import styles from './FavouritesButton.module.scss';
 
-export const FavouritesButton = () => {
-  // const [imgButton, setImgButton] = useState('');
+type Props = {
+  productId: number;
+};
 
-  // const handleButtonFavorite = () => {
-  //   setImgButton(
-  //     isLiked ? 'img/icons/favourite.svg' : 'img/icons/fillHeart.svg',
-  //   );
-  // };
+export const FavouritesButton: React.FC<Props> = ({ productId }) => {
+  const { favouriteProducts } = useFavouriteProducts();
+
+  const isLiked = useMemo(() => {
+    return favouriteProducts.find(
+      favouriteProduct => favouriteProduct.id === productId,
+    );
+  }, [favouriteProducts, productId]);
 
   return (
     <div className={styles.favouriteButton}>
-      <FavouritesIcon />
+      {isLiked ? <FavouritesSelectedIcon /> : <FavouritesIcon />}
     </div>
   );
 };

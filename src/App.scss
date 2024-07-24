@@ -12,4 +12,6 @@ body {
 
 .container {
   @include container;
+
+  margin-top: 88px;
 }
