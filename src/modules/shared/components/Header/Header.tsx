@@ -52,7 +52,7 @@ export const Header: React.FC<Props> = memo(
                   })
                 }
               >
-                <b>Home</b>
+                Home
               </NavLink>
               <NavLink
                 to="/phones"
@@ -62,7 +62,7 @@ export const Header: React.FC<Props> = memo(
                   })
                 }
               >
-                <b>Phones</b>
+                Phones
               </NavLink>
               <NavLink
                 to="/tablets"
@@ -72,7 +72,7 @@ export const Header: React.FC<Props> = memo(
                   })
                 }
               >
-                <b>Tablets</b>
+                Tablets
               </NavLink>
               <NavLink
                 to="/accessories"
@@ -82,7 +82,7 @@ export const Header: React.FC<Props> = memo(
                   })
                 }
               >
-                <b>Accessories</b>
+                Accessories
               </NavLink>
             </ul>
           </nav>

@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ProductCards } from '../shared/components/ProductCards';
 import { StateContext } from '../utils/GlobalStateProvider';
@@ -8,6 +8,10 @@ import { NoProducts } from '../shared/components/NoProducts';
 
 export const Favourites = () => {
   const { likedItems } = useContext(StateContext);
+
+  useEffect(() => {
+    document.title = 'Phone catalog favourites';
+  }, []);
 
   return (
     <>

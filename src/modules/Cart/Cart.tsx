@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Back } from '../shared/components/Back';
 import './Cart.scss';
 import { DispatchContext, StateContext } from '../utils/GlobalStateProvider';
@@ -42,6 +42,10 @@ export const Cart = () => {
       navigate('/');
     }
   };
+
+  useEffect(() => {
+    document.title = 'Phone catalog cart';
+  }, []);
 
   return (
     <main className="cart">

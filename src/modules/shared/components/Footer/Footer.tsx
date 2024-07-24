@@ -33,7 +33,7 @@ export const Footer = () => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <b>Github</b>
+                Github
               </a>
             </li>
             <li
@@ -41,18 +41,14 @@ export const Footer = () => {
                 'footer__item--dark': !isDarkThemeOn,
               })}
             >
-              <a href="">
-                <b>Contacts</b>
-              </a>
+              <Link to="contacts">Contacts</Link>
             </li>
             <li
               className={classNames('footer__item', {
                 'footer__item--dark': !isDarkThemeOn,
               })}
             >
-              <a href="">
-                <b>Rights</b>
-              </a>
+              <Link to="rights">Rights</Link>
             </li>
           </ul>
         </nav>

@@ -27,7 +27,11 @@ export const Category: React.FC<Props> = ({ category, isLoading }) => {
       </Link>
 
       <div className="category__info">
-        <h4 className="category__title">{title}</h4>
+        <Link to={`/${link}`} className="category__title">
+          {/* <h4 className="category__title">{title}</h4>
+          // {} */}
+          {title}
+        </Link>
         <p className="category__info">{ammount} models</p>
       </div>
     </article>

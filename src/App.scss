@@ -103,8 +103,10 @@ b {
 }
 
 button {
+  font-family: Mont, sans-serif;
   font-weight: 600;
 
+  cursor: pointer;
   background-color: $gray-surface2;
   transition: $transition-duration;
   border: 1px solid #323542;
@@ -132,6 +134,13 @@ small {
 
 a {
   display: flex;
+  transition: $transition-duration ease-in-out;
+  cursor: pointer;
+
+  &:hover {
+    color: $gray-secondary;
+  }
+
   & > img {
     transition-duration: $transition-duration;
     &:hover {
@@ -171,6 +180,8 @@ main {
   background-color: $black;
   transition: all $transition-duration ease-in-out;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 .discount {
@@ -190,7 +201,7 @@ main {
   flex: 1;
   height: 40px;
 
-  font-weight: 400;
+  font-weight: 500;
   line-height: 21px;
   text-align: center;
   background-color: $accent;
@@ -265,7 +276,7 @@ main {
   h1, h2, h3, h4 {
     color: $white-theme-text;
   }
-  
+
   button {
     background-color: transparent;
     border: 1px solid #E2E6E9;

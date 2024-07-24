@@ -43,11 +43,12 @@
 
   @include onTablet {
     height: 50vh;
-    width: 50%;
+    width: 50vw;
   }
 
   @include onDesktop {
     height: 60vh;
+    width: 25vw;
   }
 
   &__info {

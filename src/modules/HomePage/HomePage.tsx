@@ -26,6 +26,7 @@ export const Home: React.FC<Props> = memo(({ minLoadDelay }) => {
         }, minLoadDelay);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
+    document.title = 'Phone catalog';
   }, []);
 
   return (

@@ -14,6 +14,7 @@ import { ProductDetails } from './modules/ProductDetails/ProductDetails';
 import { Favourites } from './modules/Favourites';
 import { Cart } from './modules/Cart';
 import classNames from 'classnames';
+import { NoProducts } from './modules/shared/components/NoProducts';
 
 // eslint-disable-next-line react/display-name
 export const App = memo(() => {
@@ -62,6 +63,14 @@ export const App = memo(() => {
           </Route>
           <Route path="favourites" element={<Favourites />} />
           <Route path="cart" element={<Cart />} />
+          <Route
+            path="contacts"
+            element={<NoProducts title="Not emplemented yet!" />}
+          />
+          <Route
+            path="rights"
+            element={<NoProducts title="Not emplemented yet!" />}
+          />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

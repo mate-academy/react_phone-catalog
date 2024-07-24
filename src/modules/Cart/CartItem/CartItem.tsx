@@ -71,8 +71,11 @@ export const CartItem: React.FC<Props> = ({
             />
           </Link>
         </div>
-        <Link to={`/${item.category}/${item.itemId}`}>
-          <p className="cart-item__name">{item.name}</p>
+        <Link
+          to={`/${item.category}/${item.itemId}`}
+          className="cart-item__name"
+        >
+          {item.name}
         </Link>
       </div>
       <div className="cart-item__bottom">
@@ -91,7 +94,7 @@ export const CartItem: React.FC<Props> = ({
             +
           </button>
         </div>
-        <h3 className="cart-item__price">${item.price}</h3>
+        <h3 className="cart-item__price">${item.price * currentItem.count}</h3>
       </div>
 
       {isLoading && (

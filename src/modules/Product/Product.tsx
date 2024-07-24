@@ -135,6 +135,8 @@ export const Product: React.FC<Props> = memo(({ title, category }) => {
         }, minLoadDelay);
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
+
+    document.title = 'Phone catalog ' + category;
   }, [page, cardsOnPage, sortBy, category, query]);
 
   return (

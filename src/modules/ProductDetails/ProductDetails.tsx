@@ -138,6 +138,8 @@ export const ProductDetails = () => {
         );
 
         setProduct(tempProduct as unknown as ProductUniversal);
+
+        document.title = '' + tempProduct?.name;
       },
     );
     getProducts(`api/products.json`)
