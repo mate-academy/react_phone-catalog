@@ -13,10 +13,5 @@ module.exports = {
     sourceType: 'module',
   },
   plugins: ['react'],
-  rules: {},
-  extends: [
-    '@mate-academy/eslint-config-react-typescript',
-    'plugin:cypress/recommended',
-  ],
-  rules: {},
+  rules: { 'react/react-in-jsx-scope': 'off', 'react/prop-types': 'off' },
 };
