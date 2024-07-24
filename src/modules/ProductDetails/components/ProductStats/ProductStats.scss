@@ -1,0 +1,25 @@
+@import './../../../utils/resources';
+
+.product-stats {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &-dark {
+    & p {
+      color: $white-theme-text;
+    }
+  }
+
+  & div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    p {
+      font-size: 12px;
+      font-weight: 600;
+    }
+  }
+}

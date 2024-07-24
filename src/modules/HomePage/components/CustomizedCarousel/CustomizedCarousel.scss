@@ -1,0 +1,219 @@
+@import './../../../utils/resources';
+
+
+.carousel {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 18px;
+
+  &__card {
+    position: absolute;
+    top: 15%;
+    left: 5%;
+
+    opacity: 0.95;
+
+    z-index: 1;
+
+    height: 70%;
+    width: 50%;
+
+    padding: 42px 32px;
+
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+
+    border-radius: 5%;
+    background: rgb(28,32,40);
+    background: linear-gradient(36deg, rgba(28,32,40,1) 0%, rgba(65,68,82,1) 100%);
+
+    @include onDesktop {
+      display: flex;
+    }
+
+    &-link {
+      height: 100%;
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      font-weight: 600;
+      font-size: 18px;
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+
+      gap: 8px;
+
+      & > h4 {
+        color: $gray-secondary;
+      }
+
+    }
+
+    &-button {
+      height: 64px;
+      width: 50%;
+
+      border: 2px solid $gray-icons;
+      border-radius: 24px;
+
+      font-weight: 400;
+      letter-spacing: 0.02em;
+      text-transform: uppercase;
+      background-color: transparent;
+
+      &--dark {
+        &:hover {
+          background-color: $white;
+        }
+
+        & a:active {
+          border-radius: 24px;
+          color: $white !important;
+        }
+      }
+    }
+
+    &-title {
+      font-size: 4vh;
+      background: #8A1CFF;
+      background: linear-gradient(to right, #8d28fa 0%, #e04bca 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
+
+
+  &__img {
+    position: relative;
+    width: 100vw;
+    height: 100%;
+
+    background-size: cover;
+    background-position: center;
+    transition-duration: $transition-duration;
+
+    @include onTablet {
+      width: 100%;
+    }
+
+    @include onDesktop {
+      background-size: 100% 100%;
+      background-position: right;
+    }
+
+    &-wrapper {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+
+      opacity: 0;
+      transition-duration: $transition-duration;
+    }
+  }
+
+  &__main {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    @include onDesktop {
+      height: 60vh;
+    }
+  }
+
+  &__arrow {
+    height: 100%;
+    width: 32px;
+    display: none;
+    background-color: $gray-surface2;
+
+    @include onTablet {
+      display: flex;
+    }
+  }
+
+  &__slides {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1;
+    height: 100%;
+    display: flex;
+    overflow: hidden;
+
+    @include onTablet {
+      grid-column: 2 / -2;
+      height: 50vh;
+    }
+
+    @include onDesktop {
+      height: 100%;
+      width: 1040px;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    gap: 9px;
+
+    margin-block: 10px;
+  }
+
+  &__dot {
+    height: 4px;
+    width: 14px;
+    transition-duration: $transition-duration;
+    background-color: $gray-elements;
+
+    &-dark {
+      background-color: #B4BDC3;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: $gray-secondary;
+    }
+
+    &--active {
+      background-color: $white;
+
+      &-dark {
+        background-color: $gray-elements;
+      }
+
+      &:hover {
+        cursor: auto;
+        background-color: $white;
+      }
+    }
+  }
+}
+
+.active {
+  position: relative;
+
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.last {
+  transform: translateX(-100%);
+}
+
+.next {
+  transform: translateX(100%);
+}

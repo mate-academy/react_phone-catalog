@@ -1,0 +1,132 @@
+@import './../../utils/resources';
+
+.cart-item {
+  position: relative;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  background-color: $gray-surface1;
+
+  @include onTablet {
+    padding: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $gray-icons;
+    border: 1px solid $gray-elements;
+
+    &--active {
+      color: $white;
+      background-color: $gray-surface2;
+      border: none;
+      font-weight: 400;
+    }
+
+    &:hover {
+      color: $white;
+    }
+  }
+
+  &__cancel {
+    display: flex;
+
+    & img {
+      transform: rotate(45deg);
+      transition-duration: $transition-duration;
+
+      &:hover {
+        scale: 2;
+      }
+    }
+
+    &:hover {
+      background-color: transparent;
+    }
+  }
+
+  &__img {
+    &-wrapper {
+      height: 80px;
+      width: 80px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &-light {
+    border: 1px solid $white-theme-nav;
+
+    & .cart-item__btn {
+      color: $gray-secondary;
+      border: 1px solid $white-theme-nav;
+
+      &:hover {
+        color: $white-theme-text;
+      }
+    }
+
+    & .cart-item__btn--active {
+      border: 1px solid $white-theme-text;
+      color: $white-theme-text;
+    }
+
+    & p {
+      color: $white-theme-text;
+    }
+
+    background-color: transparent;
+
+    & .cart-item__cancel {
+      border: none;
+    }
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24PX;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $gray-surface2;
+    opacity: 0.9;
+  }
+}

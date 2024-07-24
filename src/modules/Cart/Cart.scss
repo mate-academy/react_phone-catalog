@@ -1,0 +1,130 @@
+@import './../utils/resources';
+
+.cart {
+  margin-inline: 16px;
+
+  @include onTablet {
+    gap: 64px;
+    margin-inline: 32px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+    gap: 80px;
+  }
+
+
+  &__back {
+    margin-block: 24px;
+
+    & div {
+      margin-bottom: 0;
+    }
+  }
+
+  &__head {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onDesktop {
+      flex-direction: row;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__products {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include onDesktop {
+      width: 100%;
+    }
+  }
+
+  &__content {
+    display: flex;
+
+    @include onDesktop {
+      width: 66%;
+    }
+  }
+
+  &__empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    & div {
+      margin: 0;
+    }
+  }
+
+  &__payment {
+    padding: 24px;
+
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    border: 1px solid $gray-elements;
+
+    @include onDesktop {
+      width: 33%;
+      height: 206px;
+    }
+
+    & button { /* stylelint-disable-line no-descending-specificity */
+      position: relative;
+      height: 48px;
+      background-color: $accent;
+      font-weight: 400;
+
+      &:hover {
+        background: #A378FF;
+      }
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: -16px;
+        left: 0;
+        height: 1px;
+        width: 100%;
+        background-color: $gray-elements;
+      }
+    }
+
+    &-dark button {     /* stylelint-disable-line no-descending-specificity */
+      background-color: $white-theme-text !important;
+
+      &:hover {
+        color: $white-theme-text;
+        background-color: transparent !important;
+      }
+    }
+
+    &-info {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      & h2 {
+        font-size: 32px;
+        line-height: 41px;
+      }
+
+      & p {
+        color: $gray-secondary;
+      }
+    }
+  }
+}
+

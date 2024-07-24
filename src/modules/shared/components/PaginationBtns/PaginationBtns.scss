@@ -1,0 +1,55 @@
+@import './../../../utils/resources';
+
+.pagination {
+  &-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 16px;
+
+    overflow: hidden;
+  }
+
+  &__btn {
+    height: 32px;
+    width: 32px;
+
+    &--active {
+      background-color: $accent;
+    }
+
+    &--disabled {
+      background-color: $gray-surface1;
+    }
+
+    &-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+  }
+  &-light {
+    & button {
+      color: $white-theme-text;
+      border: 1px solid $white-theme-nav;
+      background-color: transparent;
+
+      &:hover {
+        border: 1px solid $white-theme-text;
+      }
+    }
+
+    & .pagination__btn--active {
+      color: $white;
+      background-color: $white-theme-text;
+    }
+
+    & .arrow-btn--disabled {
+      border: 1px solid $white-theme-nav;
+      background-color: transparent;
+
+      &:active {
+        border: 1px solid $white-theme-nav;
+        background-color: transparent;
+      }
+    }
+  }
+}

@@ -1,0 +1,24 @@
+@import './../../../utils/resources';
+
+.back {
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition-duration: $transition-duration;
+
+  &-dark {
+    & a {
+      color: $white-theme-text;
+    }
+  }
+
+  &-btn {
+    transform: rotate(180deg);
+    scale: 1.1;
+  }
+
+  &-link {
+    cursor: pointer;
+  }
+}

@@ -1,0 +1,22 @@
+@import './../../../utils/resources';
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  animation: reveal 1.5s forwards;
+
+  &__text, & small{
+    color: $gray-secondary;
+  }
+}
+
+@keyframes reveal {
+  from {
+      clip-path: inset(0 100% 0 0);
+  }
+  to {
+      clip-path: inset(0 0 0 0);
+  }
+}

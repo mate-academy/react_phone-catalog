@@ -1,0 +1,35 @@
+@import './../../../utils/resources';
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-inline: 16px;
+  max-width: 1136px;
+
+  @include onTablet {
+    @include pageGrid;
+
+    margin-inline: 24px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
+
+  &__title {
+    @include onTablet {
+      grid-column: 1 / -1;
+    }
+  }
+
+  & article {
+    @include onTablet {
+      grid-column: span 4;
+    }
+
+    @include onDesktop {
+      grid-column: span 8;
+    }
+  }
+}

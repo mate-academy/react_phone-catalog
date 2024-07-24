@@ -1,0 +1,429 @@
+@import './../../modules/utils/resources';
+
+@mixin apply-properties($properties) {
+  @each $name, $value in $properties {
+    .#{$name}{
+      background-color: #{$value} !important;
+    }
+  }
+}
+
+$colors: (
+  'white': $white,
+  'purple': $accent,
+  'yellow': $yellow,
+  'blue': $blue,
+  'red': $red,
+  'green': $green,
+  'silver': $silver,
+  'gold': $gold,
+  'rosegold': $rosegold,
+  'space-gray': $space-gray,
+  'spacegray': $space-gray,
+  'midnight': $midnight,
+  'midnightgreen': $midnightgreen,
+  'starlight': $starlight,
+  'pink': $pink,
+  'sierrablue': $sierrablue,
+  'graphite': $graphite,
+  );
+
+
+.product-details {
+  display: flex;
+  flex-direction: column;
+  margin-inline: 16px;
+  gap: 56px;
+
+  @include onTablet {
+    gap: 64px;
+    margin-inline: 32px;
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+    max-width: 1136px;
+    gap: 80px;
+  }
+
+  &__breadcrumbs {
+    margin-block: 24px;
+
+    @include onTablet {
+      margin-block: 40px;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    &-wrapper {
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+
+      @include onTablet {
+        flex-direction: row;
+        justify-content: space-evenly;
+      }
+
+      @include onDesktop {
+        justify-content: flex-start;
+        gap: 64px;
+      }
+    }
+  }
+
+  &__sections-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+
+    @include onTablet {
+      gap: 64px;
+    }
+
+    @include onDesktop {
+      flex-direction: row;
+
+      & section {
+        // flex: 1 0 auto;
+        width: 50%;
+      }
+    }
+  }
+
+  &__slider {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    user-select: none;
+
+    @include onTablet {
+      flex-direction: row-reverse;
+    }
+
+    &-main {
+      position: relative;
+      aspect-ratio: 1;
+      height: 288px;
+      display: flex;
+      overflow: hidden;
+
+      @include onDesktop {
+        height: 464px;
+      }
+
+      &-wrapper {
+        flex: 1 0 auto;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        transition-duration: $transition-duration;
+
+      }
+
+      & img {
+        height: 100%;
+      }
+    }
+
+    &-btns {
+      display: flex;
+      gap: 8px;
+
+      @include onTablet {
+        flex-direction: column;
+      }
+    }
+
+    &-wrapper {
+      display: flex;
+      justify-content: center;
+      height: 52px;
+      width: 52px;
+      border: 1px solid $gray-surface2;
+
+      @include onDesktop {
+        height: 80px;
+        width: 80px;
+      }
+
+      &--active {
+        border: 1px solid $white;
+      }
+
+      & img {
+        height: 100%;
+      }
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+    @include onTablet {
+      width: 40% ;
+    }
+  }
+
+  &__colors {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    &-wrapper {
+      display: flex;
+      gap: 12px;
+    }
+  }
+
+  &__colors, &__capacities {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $gray-elements;
+  }
+
+  &__color {
+    height: 30px;
+    width: 30px;
+    border: 1px solid transparent;
+    border-radius: 50%;
+
+    &-wrapper {
+      display: flex;
+      position: relative;
+      border: none !important;
+      background-color: transparent;
+      user-select: none;
+
+      &:active {
+        background-color: transparent !important;
+      }
+
+
+      &::after {
+        content: '';
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        border: 1px solid $gray-elements;
+        border-radius: 50%;
+        scale: 1.2;
+      }
+
+      &--is-active {
+        &::after {
+          content: '';
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          border: 1px solid $white;
+          border-radius: 50%;
+          scale: 1.2;
+        }
+      }
+
+      &:hover {
+        background-color: transparent;
+        filter: brightness(150%);
+      }
+    }
+  }
+
+  &__capacities {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    &-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+  }
+
+  &__capacity {
+    height: 32px;
+    padding: 8px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 1px solid $white;
+    font-weight: 400;
+    color: $white;
+    background-color: transparent;
+    user-select: none;
+
+    &-dark {
+      color: $white-theme-text;
+      border: 1px solid $white-theme-nav !important;
+
+      &:hover {
+        border: 1px solid $white-theme-text !important;
+      }
+    }
+
+    &--active {
+      color: $black;
+      background-color: $white;
+
+      &-dark {
+        color: $white;
+        background-color: $white-theme-text !important;
+      }
+
+      &:hover {
+        background-color: $white;
+      }
+    }
+  }
+
+  &__controls {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__price {
+    font-size: 32px;
+    letter-spacing: -0.01em;
+
+    &-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__subtitle {
+    margin-bottom: 16px;
+
+    @include underLine;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    &-text {
+      text-align: justify;
+      word-wrap: break-word;
+      font-size: 14px;
+      line-height: 21px;
+      color: #89939A;
+    }
+  }
+
+  &__about {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  &__tech {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include onTablet {
+      gap: 25px;
+    }
+
+    & h3 {
+      margin-bottom: 16px;
+
+      @include underLine;
+    }
+  }
+
+  &--is-loading {
+    & h1,
+      button,
+      h2,
+      h3,
+      .product-details__slider-main-wrapper,
+      p,
+      small,
+      & nav small {
+      position: relative;
+
+      &::after {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+
+        height: 100%;
+        width: 100%;
+        background-color: #292b35;
+        color: transparent;
+        border-radius: 5px;
+        background-image:
+        linear-gradient(
+          90deg,
+          rgba(#fff, 0),
+          rgba(#fff, 0.5),
+          rgba(#fff, 0)
+        );
+        background-size: 40px 100%;
+        background-repeat: no-repeat;
+        background-position: left -40px top 0;
+        animation: shine 1s ease infinite;
+      }
+    }
+
+    & h1::after {
+      height: fit-content;
+      width: fit-content;
+    }
+
+    & button::after {
+      border-radius: 0;
+    }
+  }
+
+  &__error {
+    height: 50vh;
+
+    @include onTablet {
+      height: 60vh;
+    }
+
+    @include onDesktop {
+      height: 75vh;
+    }
+
+    width: 100%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@keyframes shine {
+	to {
+		background-position: right -40px top 0;
+	}
+}
+
+
+
+@include apply-properties($colors);
+

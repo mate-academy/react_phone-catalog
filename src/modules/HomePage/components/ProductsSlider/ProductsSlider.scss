@@ -1,0 +1,71 @@
+@import './../../../utils/resources';
+
+.product-slider {
+  @include pageGrid;
+
+  gap: 24px;
+
+  &__title {
+    width: 50%;
+
+    &-wrapper {
+      grid-column: 1 / -1;
+
+      margin-inline: 16px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      @include onTablet {
+        margin-inline: 24px;
+      }
+
+      @include onDesktop {
+        margin-inline: 0;
+      }
+    }
+  }
+
+  @include onDesktop {
+    margin: 0 auto;
+  }
+
+  &__btns {
+    display: flex;
+    gap: 16px;
+  }
+
+  & > div {
+    grid-column: 1 / -1;
+  }
+
+  &__cards {
+    grid-column: 1 / -1;
+    margin-left: 16px;
+    overflow: hidden;
+    display: flex;
+    gap: 16px;
+
+    @include onTablet {
+      margin-left: 24px;
+    }
+
+    @include onDesktop {
+      width: 1136px;
+      margin: 0;
+    }
+
+    & > div {
+      width: 212px;
+
+      @include onTablet {
+        height: 512px;
+        width: 237px;
+      }
+
+      @include onDesktop {
+        width: 272px;
+      }
+    }
+  }
+}

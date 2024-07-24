@@ -1,0 +1,123 @@
+@import './../../../utils/resources';
+
+.dropdown {
+  border: none;
+  user-select: none;
+
+  color: $white;
+  background-color: $gray-surface2;
+
+  &__item {
+    display: flex;
+    align-items: center;
+    height: 32px;
+    cursor: pointer;
+    transition-duration: $transition-duration;
+
+    &--active {
+      cursor: auto;
+      background-color: $gray-surface2;
+    }
+
+    &:hover {
+      background-color: $gray-surface2;
+    }
+
+    & p {
+      margin-left: 12px;
+    }
+  }
+
+  &-white {
+    border: 1px solid $white-theme-nav;
+    background-color: inherit;
+
+    & p {
+      color: $white-theme-text;
+    }
+
+    & div {
+      background-color: #fff;
+    }
+
+    & .dropdown__item {
+      &:hover {
+        background-color: $white-theme-text;
+      }
+
+      &:hover p {
+        color: $white;
+      }
+
+      & .dropdown__item--active {
+        background-color: $white-theme-text;
+
+        & p {
+          color: $white;
+
+          &:hover {
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  &__head {
+    padding-inline: 12px;
+
+    position: relative;
+    height: 40px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    z-index: 2;
+
+    cursor: pointer;
+    transition: all $transition-duration;
+
+    &:hover {
+      border: 1px solid $gray-icons;
+    }
+  }
+
+  &__arrow {
+    height: 16px;
+    transform: rotate(90deg);
+  }
+
+  &__img {
+    &-wrapper {
+      height: 16px;
+      width: 16px;
+      background-image: url('./../../../../../public/img/icons/arrow-dark.svg');
+      transition-duration: $transition-duration;
+      transform: rotate(90deg);
+
+      &--active {
+        transform: rotate(270deg);
+      }
+    }
+  }
+
+  &__content {
+    padding: 8px 0;
+    position: absolute;
+    top: 44px;
+    left: 0;
+
+    width: 100%;
+    opacity: 0;
+
+    transition-duration: $transition-duration;
+    border: 1px solid $gray-icons;
+    background-color: $black;
+
+    &--active {
+      opacity: 1;
+      z-index: 1;
+    }
+  }
+}

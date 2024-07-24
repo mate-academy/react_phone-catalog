@@ -1,0 +1,33 @@
+.category {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  &__img {
+    aspect-ratio: 1;
+    width: 100%;
+
+    &:hover {
+      scale: 1.05;
+    }
+  }
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 25.56px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    font-weight: 600;
+    color: #75767F;
+  }
+
+  &__info .is-loading {
+    gap: 20px;
+    width: 50%;
+  }
+}

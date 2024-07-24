@@ -1,0 +1,89 @@
+@import './../../../utils/resources';
+
+.no-products {
+  margin-top: 100px;
+  align-self: center;
+  height: 40vh;
+  width: 75%;
+  user-select: none;
+  padding: 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+  gap: 16px;
+  flex-direction: column;
+  box-shadow: 0 0 100px 5px $gray-surface1;
+  border-radius: 15px;
+  background-color: rgba(59, 62, 74, 0.4);
+  transition-duration: $transition-duration;
+
+  -webkit-animation: bummer 2s;
+  animation: bummer 1s;
+  -webkit-transform: scale(0,0);
+  transform: scale(0,0);
+  -webkit-animation-fill-mode: forwards;
+  animation-fill-mode: forwards;
+
+  &:hover {
+    background-color: rgba(59, 62, 74, 0.1);
+    scale: 1.01;
+    box-shadow: 0 40px 100px 20px $gray-surface1;
+  }
+
+  &:active {
+    box-shadow: 0 0 10px 1px $gray-surface2;
+  }
+
+  &-white {
+    background-color: $silver;
+    border: 1px solid $white-theme-nav;
+  }
+
+  @include onTablet {
+    height: 50vh;
+    width: 50%;
+  }
+
+  @include onDesktop {
+    height: 60vh;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    & h1 {
+      @include onTablet {
+        line-height: 40px;
+        font-size: 40px;
+      }
+    }
+  }
+
+  & img {
+    height: 64px;
+
+    @include onTablet {
+      height: 84px;
+    }
+
+    @include onDesktop {
+      height: 100px;
+    }
+  }
+}
+
+@keyframes bummer {
+  100% {
+      -webkit-transform: scale(1,1);
+  }
+}
+
+@keyframes bummer {
+  100% {
+      transform: scale(1,1);
+  }
+}
