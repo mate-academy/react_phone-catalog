@@ -1,0 +1,31 @@
+h2 {
+  @extend %h1;
+}
+
+h3 {
+  @extend %h2;
+}
+
+h4 {
+  @extend %h3;
+}
+
+h5 {
+  @extend %h4;
+}
+
+.button-text {
+  @extend %button-text;
+}
+
+.body-text {
+  @extend %body-text;
+}
+
+.uppercase-text {
+  @extend %uppercase-text;
+}
+
+.small-text {
+  @extend %small-text;
+}

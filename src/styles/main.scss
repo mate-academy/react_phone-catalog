@@ -1,0 +1,36 @@
+@import 'utils';
+@import 'fonts';
+@import 'typography';
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+  height: 100%;
+}
+
+body,
+html {
+  margin: 0;
+  height: 100%;
+}
+
+section {
+  margin-bottom: 56px;
+}
+
+.logo {
+  width: 64px;
+  height: 22px;
+}
+
+.visually-hidden {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+}

@@ -1,0 +1,54 @@
+@import '../../styles/main';
+
+.newModels {
+  &__topBar {
+    margin-bottom: 24px;
+
+    @include page-grid;
+
+    align-items: center;
+  }
+
+  &__title {
+    grid-column: 1/3;
+  }
+
+  &__sliderButtons {
+    grid-column: -1 / -2;
+
+    display: flex;
+    gap: 16px;
+  }
+
+  &__btn {
+    @include button-common;
+
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    color: $primary-gray;
+    border: 1px solid $icons-placeholders-gray;
+
+    &:hover {
+      border-color: $primary-gray;
+    }
+
+    &:not(.newModels__btn--disabled):active {
+      transform: scale(0.9);
+    }
+
+    &--disabled {
+      color: $icons-placeholders-gray;
+      border-color: $icons-placeholders-gray;
+      cursor: not-allowed;
+
+      &:hover {
+        border-color: $icons-placeholders-gray;
+      }
+    }
+  }
+
+  &__cards {
+    margin-top: 24px;
+  }
+}

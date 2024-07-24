@@ -1,0 +1,79 @@
+@import '../../styles/main';
+
+.card {
+  width: 212px;
+  height: 440px;
+  padding: 32px;
+  border: 1px solid $elements-gray;
+
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  gap: 8px;
+
+  &__img {
+    width: 148px;
+    height: 130px;
+  }
+
+  &__price {
+    border-bottom: 1px solid $elements-gray;
+  }
+
+  &__details {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: $secondary-gray;
+
+    p:last-child {
+      color: $primary-gray;
+      line-height: 16px;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__btn {
+    @include button-common;
+
+    height: 40px;
+
+    &--add {
+      width: 100px;
+      background-color: $primary-gray;
+      color: $white;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 $primary-gray;
+      }
+    }
+
+    &--favorite {
+      width: 40px;
+      border: 1px solid $icons-placeholders-gray;
+      cursor: pointer;
+
+      &:hover {
+        border-color: $primary-gray;
+      }
+    }
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.favoriteIcon {
+  color: $red;
+  font-size: 16px;
+
+  &.regular {
+    color: $elements-gray;
+  }
+}
