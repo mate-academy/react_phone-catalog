@@ -19,21 +19,21 @@ export const Categories: React.FC<Props> = ({ isLoading }) => {
   const categoriesData = [
     {
       id: 0,
-      img: '/img/phones-category.png',
+      img: 'img/phones-category.png',
       title: 'Mobile phones',
       ammount: phones.length,
       link: 'phones',
     },
     {
       id: 1,
-      img: '/img/tablets-category.png',
+      img: 'img/tablets-category.png',
       title: 'Tablets',
       ammount: tablets.length,
       link: 'tablets',
     },
     {
       id: 2,
-      img: '/img/accessories-category.png',
+      img: 'img/accessories-category.png',
       title: 'Accessories',
       ammount: accessories.length,
       link: 'accessories',

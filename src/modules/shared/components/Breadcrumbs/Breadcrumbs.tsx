@@ -20,15 +20,15 @@ export const Breadcrumbs: React.FC<Props> = ({ path }) => {
     <nav className="breadcrumbs">
       <Link to="/">
         {isDarkThemeOn ? (
-          <img src="/img/icons/home.svg" alt="icon home" />
+          <img src="img/icons/home.svg" alt="icon home" />
         ) : (
-          <img src="/img/icons/home-dark.svg" alt="icon home" />
+          <img src="img/icons/home-dark.svg" alt="icon home" />
         )}
       </Link>
 
       {pathnames.map(currentPath => (
         <React.Fragment key={currentPath}>
-          <img src="/img/icons/arrow-dark.svg" alt="" />
+          <img src="img/icons/arrow-dark.svg" alt="" />
           {currentPath !== path && pathnames.length > 1 ? (
             <Link to={`/${pathnames[0]}`} className="product__text">
               <small

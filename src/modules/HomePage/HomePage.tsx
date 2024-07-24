@@ -16,7 +16,7 @@ export const Home: React.FC<Props> = memo(({ minLoadDelay }) => {
   useEffect(() => {
     setIsLoading(true);
 
-    getProducts('/api/products.json')
+    getProducts('api/products.json')
       .then(products => {
         dispatch({ type: 'setProducts', payload: products });
       })

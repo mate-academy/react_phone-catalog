@@ -1,4 +1,4 @@
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const debounce = (fn: any, ms = 300) => {
   let timeoutId: ReturnType<typeof setTimeout>;
 

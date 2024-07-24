@@ -21,9 +21,9 @@ export const Back = () => {
     >
       <Link to=".." className="back-btn">
         {isDarkThemeOn ? (
-          <img src="/img/icons/arrow.svg" alt="" />
+          <img src="img/icons/arrow.svg" alt="" />
         ) : (
-          <img src="/img/icons/arrow-dark.svg" alt="" />
+          <img src="img/icons/arrow-dark.svg" alt="" />
         )}
       </Link>
       <a onClick={goBack} className="back-link">
