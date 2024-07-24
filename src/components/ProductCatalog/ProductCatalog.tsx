@@ -174,7 +174,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
         ))}
       </div>
 
-      {itemsPerPage > 0 && (
+      {totalPages > 1 && (
         <div className="catalog__pagination">
           <button
             type="button"

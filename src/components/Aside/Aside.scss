@@ -57,8 +57,37 @@
     left: 0;
     right: 0;
 
+    &__quantity-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      border-radius: 50%;
+      bottom: 10%;
+      left: 3%;
+      font-size: 9px;
+      width: 14px;
+      height: 14px;
+      background-color: $color-danger;
+      border: 1px solid #fff;
+      transition: all 0.3s;
+    }
+
     &__button {
       flex-grow: 1;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px 16px;
+
+      &--favourites {
+        background-image: url(../../../public/icons/Favourites.svg);
+      }
+
+      &--cart {
+        background-image: url(../../../public/icons/Cart.svg);
+      }
     }
   }
 }

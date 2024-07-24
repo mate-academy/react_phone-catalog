@@ -1,7 +1,14 @@
+@import '../../styles/utils/mixins.scss';
+
 .catalogPage {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 
   &__title {
     display: flex;

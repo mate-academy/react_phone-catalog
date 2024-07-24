@@ -3,11 +3,13 @@
 @import '../../styles/utils/mixins';
 
 .footer {
+  justify-self: flex-end;
+  // align-self: flex-end;
   background: #fff;
   border: 1px $gray-elements solid;
   margin-top: 64px;
 
-  @include on-desktop{
+  @include on-desktop {
     margin-top: 80px;
   }
 
@@ -19,7 +21,6 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-
     padding: 32px 0;
     gap: 32px;
 
@@ -43,12 +44,11 @@
 
     @include on-tablet {
       flex-direction: row;
-      gap: 13, 5px;
+      gap: 13.5px;
     }
 
-    @include on-desktop{
+    @include on-desktop {
       gap: 106px;
-      ;
     }
   }
 

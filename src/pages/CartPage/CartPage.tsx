@@ -74,35 +74,35 @@ export const CartPage = () => {
         ) : (
           <h1 className="title title--h2">Your cart is empty</h1>
         )}
-        <div className="cartPage__total-price-block">
-          <p className="cartPage__price">${totalPrice}</p>
-          <p className="paragraph cartPage__subtitle ">
-            Total for {totalQuantity} items
-          </p>
-          <hr className="cartPage__line" />
+        {cartProducts.length > 0 && (
+          <div className="cartPage__total-price-block">
+            <p className="cartPage__price">${totalPrice}</p>
+            <p className="paragraph cartPage__subtitle ">
+              Total for {totalQuantity} items
+            </p>
+            <hr className="cartPage__line" />
 
-          {cartProducts.length > 0 && (
             <button
               className="cartPage__button button"
               onClick={handleCheckout}
             >
               Checkout
             </button>
-          )}
 
-          {isModal && (
-            <div className="cartPage__modal">
-              <button
-                onClick={closeModal}
-                className="cartPage__modal__close-button"
-              />
-              <p className="paragraph">
-                Checkout is not implemented yet. <br />
-                Do you want to clear the Cart?
-              </p>
-            </div>
-          )}
-        </div>
+            {isModal && (
+              <div className="cartPage__modal">
+                <button
+                  onClick={closeModal}
+                  className="cartPage__modal__close-button"
+                />
+                <p className="paragraph">
+                  Checkout is not implemented yet. <br />
+                  Do you want to clear the Cart?
+                </p>
+              </div>
+            )}
+          </div>
+        )}
       </div>
     </div>
   );

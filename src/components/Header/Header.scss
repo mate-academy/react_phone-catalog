@@ -99,7 +99,7 @@
       font-size: 9px;
       width: 14px;
       height: 14px;
-      background-color: red;
+      background-color: $color-danger;
       border: 1px solid #fff;
       transition: all 0.3s;
     }
@@ -170,3 +170,4 @@
     }
   }
 }
+

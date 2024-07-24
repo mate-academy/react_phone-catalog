@@ -3,6 +3,7 @@ import './Aside.scss';
 import '../../styles/button.scss';
 import '../../styles/nav.scss';
 import cn from 'classnames';
+import { useAppSelector } from '../../app/hooks';
 
 interface Options {
   isActive: boolean;
@@ -10,6 +11,10 @@ interface Options {
 
 export const Aside = () => {
   const options = ['home', 'phones', 'tablets', 'accessories'];
+  const cartProducts = useAppSelector(state => state.cart.items.length);
+  const favouriteProducts = useAppSelector(
+    state => state.favourite.items.length,
+  );
 
   const getNavLinkPath = (option: string) => {
     return option === 'home' ? '/' : `/${option}`;
@@ -17,12 +22,12 @@ export const Aside = () => {
 
   const getLinkClass = ({ isActive }: Options) =>
     cn('nav__item', 'menu__nav__item', {
-      'is-active': isActive,
+      'nav__item--is-active': isActive,
     });
 
   const getLinkIconClass = ({ isActive }: Options) =>
     cn('menu__bottom__button', 'button', {
-      'is-active': isActive,
+      'nav__item--is-active': isActive,
     });
 
   return (
@@ -33,7 +38,7 @@ export const Aside = () => {
         </Link>
 
         <NavLink to="/" className="button menu__close">
-          <img src="icons/Menu.svg" alt="cart" />
+          <img src="icons/Menu.svg" alt="menu" />
         </NavLink>
       </div>
 
@@ -42,7 +47,7 @@ export const Aside = () => {
           <NavLink
             key={option}
             to={getNavLinkPath(option)}
-            className={getLinkClass}
+            className={({ isActive }) => getLinkClass({ isActive })}
           >
             {option}
           </NavLink>
@@ -50,12 +55,31 @@ export const Aside = () => {
       </div>
 
       <div className="menu__bottom">
-        <NavLink to="/favourites" className={getLinkIconClass}>
-          <img src="icons/Favourites.svg" alt="favourites" />
+        <NavLink
+          to="/favourites"
+          className={({ isActive }) =>
+            cn(
+              getLinkIconClass({ isActive }),
+              'menu__bottom__button--favourites',
+            )
+          }
+        >
+          {favouriteProducts > 0 && (
+            <div className="menu__bottom__quantity-icon">
+              {favouriteProducts}
+            </div>
+          )}
         </NavLink>
 
-        <NavLink to="/cart" className={getLinkIconClass}>
-          <img src="icons/Cart.svg" alt="cart" />
+        <NavLink
+          to="/cart"
+          className={({ isActive }) =>
+            cn(getLinkIconClass({ isActive }), 'menu__bottom__button--cart')
+          }
+        >
+          {cartProducts > 0 && (
+            <div className="menu__bottom__quantity-icon">{cartProducts}</div>
+          )}
         </NavLink>
       </div>
     </aside>
