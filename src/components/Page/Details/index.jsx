@@ -113,7 +113,7 @@ export default function Detail() {
             {filteredImages.map((image, i) => (
               <img
                 key={i}
-                src={`/${image}`}
+                src={image}
                 alt={detailProduct.name}
                 className={cn({
                   [styles.active]: selectedImageIndex === i,
@@ -132,7 +132,7 @@ export default function Detail() {
             }}
           >
             <img
-              src={`/${filteredImages[selectedImageIndex]}`}
+              src={filteredImages[selectedImageIndex]}
               alt={detailProduct.name}
               style={{
                 transformOrigin: `${cursorPosition.x}% ${cursorPosition.y}%`,
