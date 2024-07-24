@@ -1,14 +1,22 @@
-import { Link, NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import styles from './Header.module.scss';
 import { FavouritesIcon } from '../Icons/FavouritesIcon';
 import { CartIcon } from '../Icons/CartIcon';
 import classNames from 'classnames';
+import { useFavouriteProducts } from '../../store/FavouriteProductsContext';
 
 export const Header = () => {
   const getLinkClass = ({ isActive }: { isActive: boolean }) =>
-    classNames(`${styles.header__navItem} text-uppercase`, {
+    classNames(styles.header__navItem, 'text-uppercase', {
       [styles.header__isActive]: isActive,
     });
+
+  const getLinkClassIcon = ({ isActive }: { isActive: boolean }) =>
+    classNames(styles.header__icon, {
+      [styles.header__isActive]: isActive,
+    });
+
+  const { favouriteProducts } = useFavouriteProducts();
 
   return (
     <header className={styles.header}>
@@ -30,12 +38,15 @@ export const Header = () => {
         </NavLink>
       </nav>
       <div className={styles.header__icons}>
-        <Link to="favourites" className={styles.header__btn}>
+        <NavLink to="favourites" className={getLinkClassIcon}>
           <FavouritesIcon />
-        </Link>
-        <Link to="cart" className={styles.header__btn}>
+          <div className={styles.header__iconCounter}>
+            {favouriteProducts.length}
+          </div>
+        </NavLink>
+        <NavLink to="cart" className={getLinkClassIcon}>
           <CartIcon />
-        </Link>
+        </NavLink>
       </div>
     </header>
   );

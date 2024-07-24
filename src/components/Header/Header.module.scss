@@ -36,11 +36,31 @@
 
   &__icons {
     @include flex;
+
+    position: relative;
   }
 
-  &__btn {
+  &__icon {
     cursor: pointer;
     padding: 24px;
     border-left: 1px solid $elements-color;
+  }
+
+  &__iconCounter {
+    position: absolute;
+    top: 18px;
+    left: 32px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 14px;
+    height: 14px;
+    border: 1px solid white;
+    background-color: $accent-color;
+    color: $white-color;
+    border-radius: 50%;
+    font-size: 9px;
   }
 }
