@@ -2,8 +2,7 @@ import { useEffect } from 'react';
 import { FaAngleLeft, FaAngleRight } from 'react-icons/fa6';
 import { GoHome } from 'react-icons/go';
 import { useDispatch, useSelector } from 'react-redux';
-import { Cart } from '../../components/Cart';
-
+import { useSearchParams } from 'react-router-dom';
 import { setCategoryId } from '../../../redux/slices/categoriesSlice';
 import {
   setCurrentPage,
@@ -11,6 +10,7 @@ import {
   setSortOption,
   sortTypes,
 } from '../../../redux/slices/filterSlice';
+import { Cart } from '../../components/Cart';
 import styles from './categories.module.scss';
 
 const categories = ['home', 'phones', 'tablets', 'accessories'];
@@ -22,6 +22,8 @@ export default function Categories() {
   const { sortOption, itemsPerPage, currentPage } = useSelector(
     state => state.filter,
   );
+
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
     const savedCategoryId = localStorage.getItem('categoryId');
@@ -37,17 +39,34 @@ export default function Categories() {
     if (currentPage < 1 || currentPage > totalPages) {
       dispatch(setCurrentPage(1));
     }
-  }, [dispatch, categoryId, itemsPerPage, products, currentPage]);
+
+    const sortParam = searchParams.get('sort');
+    const itemsParam = searchParams.get('items');
+
+    if (sortParam) {
+      dispatch(setSortOption(sortParam));
+    }
+
+    if (itemsParam) {
+      dispatch(setItemsPerPage(Number(itemsParam)));
+    }
+  }, [dispatch, categoryId, itemsPerPage, products, currentPage, searchParams]);
 
   const countByCategory = category =>
     products.filter(product => product.category === category).length;
 
   const handleSortChange = e => {
-    dispatch(setSortOption(e.target.value));
+    const value = e.target.value;
+    dispatch(setSortOption(value));
+    searchParams.set('sort', value);
+    setSearchParams(searchParams);
   };
 
   const handleItemsPerPageChange = e => {
-    dispatch(setItemsPerPage(parseInt(e.target.value)));
+    const value = parseInt(e.target.value);
+    dispatch(setItemsPerPage(value));
+    searchParams.set('items', value);
+    setSearchParams(searchParams);
   };
 
   const sortPhones = (products, option) => {
@@ -89,6 +108,8 @@ export default function Categories() {
   const handlePageChange = newPage => {
     if (newPage > 0 && newPage <= totalPages) {
       dispatch(setCurrentPage(newPage));
+      searchParams.set('page', newPage);
+      setSearchParams(searchParams);
     }
   };
 

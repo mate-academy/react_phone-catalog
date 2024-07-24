@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa6';
 import { GoHome } from 'react-icons/go';
 import { useDispatch, useSelector } from 'react-redux';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import { setDetailProduct } from '../../../redux/slices/detailProductSlice';
 import { ProductActions } from '../../components/ProductActions';
 import { Section } from '../../components/Section';
@@ -12,6 +12,7 @@ import styles from './detail.module.scss';
 export default function Detail() {
   const { itemId } = useParams();
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const detailProduct = useSelector(state => state.detailProduct.detailProduct);
   const detailPhones = useSelector(state => state.detailProduct.detailPhones);
   const detailTablets = useSelector(state => state.detailProduct.detailTablets);
@@ -66,6 +67,7 @@ export default function Detail() {
       dispatch(
         setDetailProduct({ id: product.id, category: detailProduct.category }),
       );
+      navigate(`/product/${product.id}`);
     }
   };
 
@@ -76,6 +78,7 @@ export default function Detail() {
       dispatch(
         setDetailProduct({ id: product.id, category: detailProduct.category }),
       );
+      navigate(`/product/${product.id}`);
     }
   };
 
@@ -244,7 +247,6 @@ export default function Detail() {
             <li>
               <strong>Zoom</strong> <p>{detailProduct.camera}</p>
             </li>
-
             <li>
               <strong>Cell</strong> <p>{detailProduct.cell}</p>
             </li>
