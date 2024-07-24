@@ -8,7 +8,7 @@ import {
 import { Breadcrumbs } from '../shared/components/Breadcrumbs';
 import { ProductsSlider } from '../HomePage/components/ProductsSlider';
 import { selectingProducts } from '../utils/selectingProducts';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useEffect, useMemo, useState } from 'react';
 import { DispatchContext, StateContext } from '../utils/GlobalStateProvider';
 import { getProducts } from '../utils/getProduct';
 import { Product } from '../shared/components/types/Product';
@@ -19,6 +19,7 @@ import classNames from 'classnames';
 import { SwippingWrapper } from '../shared/components/SwippingWrapper';
 import { ProductStats } from './components/ProductStats/ProductStats';
 import { Back } from '../shared/components/Back';
+import { shuffle } from '../utils/shuffle';
 
 type FindBy = 'capacity' | 'color';
 
@@ -43,6 +44,11 @@ export const ProductDetails = () => {
   const isItemLiked = likedItems.some(item => item.itemId === product?.id);
 
   const tempColor = product?.color;
+  const productsForSlider = products.filter(elem => elem.category === category);
+  const memorizedProducts = useMemo(
+    () => selectingProducts(shuffle(productsForSlider), 'brand-new'),
+    [products],
+  );
 
   const handleChangeSlidePosition = (el: number) => {
     if (product && (el < 0 || el > product?.images.length - 1)) {
@@ -375,7 +381,7 @@ export const ProductDetails = () => {
               isLoading={isLoading}
               title="You may also like"
               name="models"
-              products={selectingProducts(products, 'brand-new')}
+              products={memorizedProducts}
               key="models"
             />
           </>

@@ -11,11 +11,15 @@
   justify-content: space-between;
   gap: 8px;
 
-  transition-duration: $transition-duration;
+  transition: $transition-duration ease-in-out;
+  border: 1px solid transparent;
 
-  border: none;
   color:  $white;
   background: $gray-surface1;
+
+  &:hover {
+    border: 1px solid $white-theme-text;
+  }
 
   &__title {
     margin-top: 16px;
@@ -76,6 +80,7 @@
     position: relative;
     width: fit-content;
     max-height: 140px;
+    max-width: 105px;
 
     &-wrapper {
       display: flex;

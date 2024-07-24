@@ -176,6 +176,7 @@ main {
 }
 
 .App {
+  min-width: 320px;
   position: relative;
   background-color: $black;
   transition: all $transition-duration ease-in-out;

@@ -83,7 +83,9 @@ export const ProductsSlider: React.FC<Props> = memo(
             ></button>
             <button
               className={classNames(arrowStyle, 'arrow-btn--right', {
-                [arrowStyleActive]: step === products.length - frameLimit,
+                [arrowStyleActive]:
+                  step ===
+                  products.length - frameLimit - (frameLimit === 4 ? 1 : 0),
               })}
               onClick={() => handleStepChange(step + 1)}
             ></button>
