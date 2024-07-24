@@ -1,14 +1,13 @@
-import { IoMdHeart, IoMdHeartEmpty } from 'react-icons/io';
-import { useDispatch, useSelector } from 'react-redux';
+// src/components/Cart/Cart.js
+
+import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { addToBay } from '../../../redux/slices/baySlice';
 import { setDetailProduct } from '../../../redux/slices/detailProductSlice';
-import { toggleFavorite } from '../../../redux/slices/favoritesSlice';
+import { ProductActions } from '../ProductActions';
 import styles from './cart.module.scss';
 
 export const Cart = ({ products }) => {
   const dispatch = useDispatch();
-  const favorites = useSelector(state => state.favorites.favorites);
 
   const handleClick = () => {
     dispatch(
@@ -16,14 +15,6 @@ export const Cart = ({ products }) => {
       window.scrollTo(0, 0),
     );
   };
-  const handleToggleFavorite = () => {
-    dispatch(toggleFavorite(products.id));
-  };
-  const handleToggleBay = () => {
-    dispatch(addToBay(products.id));
-  };
-
-  const isFavorite = favorites.includes(products.id);
 
   return (
     <div key={products.id} className={styles.root}>
@@ -47,34 +38,7 @@ export const Cart = ({ products }) => {
           </ul>
         </div>
       </Link>
-      <div className={styles.actions}>
-        <button
-          onClick={e => {
-            e.preventDefault();
-            handleToggleBay();
-          }}
-          className={styles.addToCart}
-        >
-          Add to cart
-        </button>
-        <div className={styles.icons}>
-          <i>
-            <a
-              href="#"
-              onClick={e => {
-                e.preventDefault();
-                handleToggleFavorite();
-              }}
-            >
-              {isFavorite ? (
-                <IoMdHeart color="#EB5757" size={18} />
-              ) : (
-                <IoMdHeartEmpty size={17} />
-              )}
-            </a>
-          </i>
-        </div>
-      </div>
+      <ProductActions productId={products.id} />
     </div>
   );
 };

@@ -7,8 +7,9 @@ import {
 } from '../../../redux/slices/baySlice';
 import styles from './bay.module.scss';
 
-export default function Bay({ products }) {
+export default function Bay() {
   const dispatch = useDispatch();
+  const products = useSelector(state => state.products.products);
   const bay = useSelector(state => state.bay.bayList);
   const bayProducts = products.filter(product =>
     bay.some(item => item.id === product.id),

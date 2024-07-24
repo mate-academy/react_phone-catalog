@@ -9,7 +9,7 @@ import { Section } from '../../components/Section';
 import slidesData from './img/slidesData.json';
 import styles from './Main.module.scss';
 
-export default function Main({ products }) {
+export default function Main() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const swiperRef = useRef(null);
 
@@ -75,7 +75,7 @@ export default function Main({ products }) {
       </section>
       <section className={styles.sectionContainer}>
         <Section sort="new" title="Brand new models" />
-        <Category title="Shop by category" products={products} />
+        <Category title="Shop by category" />
         <Section sort="bigPrice" title="Hot prices" />
       </section>
     </main>

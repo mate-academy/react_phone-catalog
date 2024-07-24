@@ -2,10 +2,10 @@ import cn from 'classnames';
 import { useEffect, useState } from 'react';
 import { FaAngleRight } from 'react-icons/fa6';
 import { GoHome } from 'react-icons/go';
-import { IoMdHeartEmpty } from 'react-icons/io';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setDetailProduct } from '../../../redux/slices/detailProductSlice';
+import { ProductActions } from '../../components/ProductActions';
 import { Section } from '../../components/Section';
 import styles from './detail.module.scss';
 
@@ -15,6 +15,8 @@ export default function Detail() {
   const detailProduct = useSelector(state => state.detailProduct.detailProduct);
   const detailPhones = useSelector(state => state.detailProduct.detailPhones);
   const detailTablets = useSelector(state => state.detailProduct.detailTablets);
+  const favorites = useSelector(state => state.favorites.favorites);
+  const products = useSelector(state => state.products.products);
   const detailAccessories = useSelector(
     state => state.detailProduct.detailAccessories,
   );
@@ -91,6 +93,9 @@ export default function Detail() {
     const y = ((e.clientY - top) / height) * 100;
     setCursorPosition({ x, y });
   };
+
+  const productId =
+    products.find(product => product.itemId === detailProduct.id)?.id || null;
 
   return (
     <div className={styles.root}>
@@ -174,19 +179,10 @@ export default function Detail() {
           <div className={styles.line}></div>
           <div className={styles.price}>
             <div className={styles.price__list}>
-              <h2>{detailProduct.priceDiscount}</h2>
+              <h2>${detailProduct.priceDiscount}</h2>
               <p>{detailProduct.priceRegular}</p>
             </div>
-            <div className={styles.actions}>
-              <button className={styles.addToCart}>Add to cart</button>
-              <div className={styles.icons}>
-                <i>
-                  <a href="#">
-                    <IoMdHeartEmpty size={16} />
-                  </a>
-                </i>
-              </div>
-            </div>
+            <ProductActions productId={productId} />
           </div>
           <div>
             <ul className={styles.about}>

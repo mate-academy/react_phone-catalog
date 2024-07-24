@@ -24,8 +24,9 @@
     "swiper": "^11.1.4"
   },
   "devDependencies": {
+    "@babel/eslint-parser": "^7.24.8",
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
-    "@mate-academy/eslint-config-react-typescript": "latest",
+    "@mate-academy/eslint-config-react-typescript": "^1.0.20",
     "@mate-academy/scripts": "^1.7.9",
     "@mate-academy/students-ts-config": "latest",
     "@mate-academy/stylelint-config": "latest",
@@ -36,7 +37,7 @@
     "@typescript-eslint/parser": "^7.16.1",
     "babel-eslint": "^10.1.0",
     "cypress": "^12.17.4",
-    "eslint": "^7.32.0",
+    "eslint": "^9.0.0",
     "eslint-import-resolver-typescript": "^3.6.1",
     "eslint-plugin-cypress": "^2.11.2",
     "eslint-plugin-import": "^2.29.1",

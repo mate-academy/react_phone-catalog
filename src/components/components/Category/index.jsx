@@ -7,10 +7,10 @@ import tabletsImage from '../../../api/img/category-tablets.webp';
 import { setCategoryId } from '../../../redux/slices/categoriesSlice';
 import styles from './category.module.scss';
 
-export const Category = ({ title, products }) => {
+export const Category = ({ title }) => {
   const dispatch = useDispatch();
   const categoryId = useSelector(state => state.category.categoryId);
-
+  const products = useSelector(state => state.products.products);
   const countByCategory = category =>
     products.filter(product => product.category === category).length;
 

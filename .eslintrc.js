@@ -4,7 +4,7 @@ module.exports = {
     es2021: true,
   },
   extends: 'plugin:react/recommended',
-  parser: '@typescript-eslint/parser',
+  parser: '@babel/eslint-parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
@@ -12,6 +12,11 @@ module.exports = {
     ecmaVersion: 12,
     sourceType: 'module',
   },
-  plugins: ['react', '@typescript-eslint'],
+  plugins: ['react'],
+  rules: {},
+  extends: [
+    '@mate-academy/eslint-config-react-typescript',
+    'plugin:cypress/recommended',
+  ],
   rules: {},
 };
