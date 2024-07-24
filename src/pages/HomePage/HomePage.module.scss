@@ -1,0 +1,39 @@
+
+@import '../../styles';
+
+.homepage {
+  margin-top: 24px;
+
+  @include onTablet {
+    margin-top: 32px;
+  }
+
+  @include onDesktop {
+    margin-top: 56px;
+  }
+
+  &__title {
+    @extend %h2;
+
+    margin-bottom: 24px;
+
+    @include onTablet {
+      margin-bottom: 32px;
+      font-size: 48px;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+    }
+
+    @include onDesktop {
+      margin-bottom: 56px;
+    }
+  }
+
+  &__banner {
+    margin-bottom: 64px;
+
+    @include onDesktop {
+      margin-bottom:  80px;
+    }
+  }
+}

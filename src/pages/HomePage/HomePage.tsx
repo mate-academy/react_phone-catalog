@@ -4,6 +4,8 @@ import { calculateProductAmount } from '../../helpers/CalcProdAmount';
 import { getProduct } from '../../api/apiProducts';
 import { Banner } from '../../components/Banner';
 import { ProductList } from '../../components/ProductList';
+import { Categories } from '../../components/Categories';
+import './HomePage.module.scss';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);

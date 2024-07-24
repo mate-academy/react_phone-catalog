@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Category } from "../../types/Category"
-import cn from "classnames";
-import { Swiper } from "../../helpers/Swiper";
-import { LOCAL_URL } from "../../api/apiProducts";
+import { Category } from '../../types/Category';
+import cn from 'classnames';
+import { Swiper } from '../../helpers/Swiper';
+import { LOCAL_URL } from '../../api/apiProducts';
+import './Banner.module.scss';
 
 export const Banner = () => {
   const categories = Object.values(Category);
@@ -12,8 +13,8 @@ export const Banner = () => {
 
   const handleSlideChange = (i: number) => {
     setIndex(i);
-    setTransform(100 * i)
-  }
+    setTransform(100 * i);
+  };
 
   const { handleTouchStart, handleTouchMove } = Swiper(
     handleSlideChange,
@@ -23,18 +24,18 @@ export const Banner = () => {
   useEffect(() => {
     const animate = () => {
       if (index < categories.length - 1) {
-        handleSlideChange(index + 1)
+        handleSlideChange(index + 1);
       } else {
-        handleSlideChange(0)
-      };
+        handleSlideChange(0);
+      }
     };
 
     const timerId = setTimeout(animate, 3000);
 
-    return (() => {
+    return () => {
       clearTimeout(timerId);
-    })
-  }, [categories.length, index, transform])
+    };
+  }, [categories.length, index, transform]);
 
   return (
     <div className="banner">
@@ -44,9 +45,10 @@ export const Banner = () => {
           onClick={() => handleSlideChange(index - 1)}
           disabled={index === 0}
         >
-          <i className={cn('icon icon--arrow-left', {
-            'icon--arrow-left--disabled': index === 0,
-          })}
+          <i
+            className={cn('icon icon--arrow-left', {
+              'icon--arrow-left--disabled': index === 0,
+            })}
           ></i>
         </button>
         <ul
@@ -56,28 +58,30 @@ export const Banner = () => {
         >
           {categories.map(category => (
             <li
-              className="banner__slider--item"
+              className="banner__slider-item"
               key={category}
-              style={{transform: `translateX(-${transform}%)`}}
+              style={{ transform: `translateX(-${transform}%)` }}
             >
               <Link
                 to={`./${category}`}
-                className="banner__slider--link"
+                className="banner__slider-link"
                 style={{
-                  backgroundImage: `url(${LOCAL_URL}/img/banner-${category}.png)`
+                  backgroundImage: `url(${LOCAL_URL}/img/banner-${category}.png)`,
                 }}
               />
             </li>
           ))}
         </ul>
+
         <button
           className="banner__button"
           onClick={() => handleSlideChange(index + 1)}
           disabled={index === categories.length - 1}
         >
-          <i className={cn('icon icon--arrow-right', {
-            'icon--arrow-right--disabled': index === categories.length - 1,
-          })}
+          <i
+            className={cn('icon icon--arrow-right', {
+              'icon--arrow-right--disabled': index === categories.length - 1,
+            })}
           ></i>
         </button>
         <div className="banner__items">
@@ -94,5 +98,5 @@ export const Banner = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

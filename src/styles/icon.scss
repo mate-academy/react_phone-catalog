@@ -1,0 +1,74 @@
+.icon {
+  display: block;
+  width: 16px;
+  height: 16px;
+
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  &--arrow-up {
+    background-image: url('../../public/icons/arrow-up.svg');
+  }
+
+  &--arrow-down {
+    background-image: url('../../public/icons/arrow-up.svg');
+    transform: rotate(180deg);
+  }
+
+  &--arrow-left {
+    background-image: url('../../public/icons/arrow-up.svg');
+    transform: rotate(270deg);
+  }
+
+  &--arrow-right {
+    background-image: url('../../public/icons/arrow-up.svg');
+    transform: rotate(90deg);
+  }
+
+  &--arrow-up--disabled {
+    background-image: url('../../public/icons/arrow-up-disabled.svg');
+  }
+
+  &--arrow-left--disabled {
+    background-image: url('../../public/icons/arrow-up-disabled.svg');
+    transform: rotate(270deg);
+  }
+
+  &--arrow-right--disabled {
+    background-image: url('../../public/icons/arrow-up-disabled.svg');
+    transform: rotate(90deg);
+  }
+
+  &--favourite {
+    background-image: url('../../public/icons/fav-icon.svg');
+  }
+
+  &--favourite--selected {
+    background-image: url('../../public/icons/fav-icon-selected.svg');
+  }
+
+  &--home {
+    background-image: url('../../public/icons/home-icon.svg');
+  }
+
+  &--close {
+    background-image: url('../../public/icons/close-icon.svg');
+  }
+
+  &--close--disabled {
+    background-image: url('../../public/icons/close-icon-disabled.svg');
+  }
+
+  &--plus {
+    background-image: url('../../public/icons/plus-icon.svg');
+  }
+
+  &--minus {
+    background-image: url('../../public/icons/minus-icon.svg');
+  }
+
+  &--minus--disabled {
+    background-image: url('../../public/icons/minus-icon-disabled.svg');
+  }
+}

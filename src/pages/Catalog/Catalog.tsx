@@ -1,3 +1,3 @@
 export const Catalog = () => {
-  return ()
-}
+  return 1;
+};

@@ -1,0 +1,37 @@
+@import './vars';
+
+@mixin onDesktop {
+  @media (min-width: 1200px){
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 640px){
+    @content;
+  }
+}
+
+@mixin transition($prop: all) {
+  transition: $prop $duration linear;
+}
+
+@mixin generateMixinClasses($prefix, $start, $column) {
+  @for $i from $start through $column {
+    @for $j from $i through $column {
+      &--#{$prefix}-#{$i}-#{$j} {
+        @include onTablet {
+          @if $prefix == 'tablet' {
+            grid-column: #{$i} / #{$j + 1};
+          }
+        }
+
+        @include onDesktop {
+          @if $prefix == 'desktop' {
+            grid-column: #{$i} / #{$j + 1};
+          }
+        }
+      }
+    }
+  }
+}
