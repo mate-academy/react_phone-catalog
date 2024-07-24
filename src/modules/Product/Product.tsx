@@ -18,10 +18,11 @@ import { Link, Outlet, useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../utils/getSearchWith';
 import { SortTypes } from '../shared/components/types/SortTypes';
 import { ItemsOnPage } from '../shared/components/types/ItemsOnPage';
-import debounce from 'lodash.debounce';
+// import { debounce } from 'lodash';
 import { createArray, isAllItems } from '../utils/createArrayIsAllItems';
 import { ProductCards } from '../shared/components/ProductCards';
 import classNames from 'classnames';
+import { debounce } from '../utils/debounce';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -135,13 +136,6 @@ export const Product: React.FC<Props> = memo(({ title, category }) => {
       });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, cardsOnPage, sortBy, category, query]);
-
-  useEffect(() => {
-    return () => {
-      debouncedResults.cancel();
-    };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [debouncedResults]);
 
   return (
     <>
