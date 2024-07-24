@@ -122,6 +122,7 @@ export default function Detail() {
               />
             ))}
           </div>
+
           <div
             className={styles.image__big}
             onMouseMove={handleMouseMove}
