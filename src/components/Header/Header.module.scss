@@ -14,6 +14,10 @@
   display: flex;
   justify-content: space-between;
 
+  @include on-lg-display {
+    margin-inline: auto;
+  }
+
   &__link {
     padding: 16px;
   }
@@ -30,8 +34,4 @@
       display: none;
     }
   }
-}
-
-.red {
-  color: red;
 }
