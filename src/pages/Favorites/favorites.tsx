@@ -12,7 +12,8 @@ export const Favorites: React.FC = () => {
     <section className="favorites">
       <div className="products__nav">
         <Link className="background-home" to={'/'} />
-        <Link to={pathname.split('/').slice(1, 2).join('/')}
+        <Link
+          to={pathname.split('/').slice(1, 2).join('/')}
           className="products__pathname nav-part small-text"
         >
           {pathname.charAt(0).toUpperCase() + pathname.slice(1)}

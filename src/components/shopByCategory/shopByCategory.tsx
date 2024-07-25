@@ -19,7 +19,11 @@ export const ShopByCategory: React.FC = () => {
           <div className="shop-by-category__info ">
             <h4 className="shop-by-category__h4">Mobile phones</h4>
             <p className="shop-by-category__text">
-              {productsFromApi.filter(product => product.category === 'phones').length} models
+              {
+                productsFromApi.filter(product => product.category === 'phones')
+                  .length
+              }{' '}
+              models
             </p>
           </div>
         </Link>

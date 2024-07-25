@@ -68,6 +68,10 @@
     justify-content: center;
     color: $color-secondary;
     box-sizing: border-box;
+
+    &:hover {
+      color: $color-primary;
+    }
   }
 
   &__icon--links {

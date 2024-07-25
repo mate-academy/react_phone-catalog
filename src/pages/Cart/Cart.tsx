@@ -31,7 +31,8 @@ export const Cart: React.FC = () => {
     <section className="cart">
       <div className="products__nav">
         <Link className="background-home" to={'/'} />
-        <Link to={pathname.split('/').slice(1, 2).join('/')}
+        <Link
+          to={pathname.split('/').slice(1, 2).join('/')}
           className="products__pathname nav-part small-text"
         >
           {pathname.charAt(0).toUpperCase() + pathname.slice(1)}
@@ -125,7 +126,7 @@ export const Cart: React.FC = () => {
                 Total for {cartProducts.length} items
               </p>
             </div>
-            <div className='underline'></div>
+            <div className="underline"></div>
             <button
               onClick={() => {
                 setModal(true);

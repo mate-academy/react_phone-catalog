@@ -18,14 +18,14 @@ export const Footer = () => {
         <div className="footer__links">
           <Link
             className="footer__link"
-            to={'https://kapesha.github.io/react_phone-catalog/#/'}
+            to={'https://github.com/kapesha'}
           >
             GitHUB
           </Link>
-          <Link className="footer__link" to={'/'}>
+          <Link className="footer__link" to={'https://github.com/kapesha'}>
             Contacts
           </Link>
-          <Link className="footer__link" to={'/'}>
+          <Link className="footer__link" to={'https://github.com/kapesha'}>
             Rights
           </Link>
         </div>
