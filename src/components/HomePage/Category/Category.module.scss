@@ -54,9 +54,12 @@
     padding-bottom: 20px;
     cursor: pointer;
     transition: border 0.3s;
+    margin: 5px;
 
     &:hover {
-      border: 1px solid rgb(66, 25, 208);;
+    border: 2px solid #E2E6E9;
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
     }
   }
 
