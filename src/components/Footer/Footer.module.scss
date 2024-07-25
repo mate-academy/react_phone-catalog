@@ -88,10 +88,10 @@ footer {
     font-size: 12px;
     font-weight: 800;
     text-transform: uppercase;
-    transition: 0.5s;
+    transition: 0.3s;
 
     &:hover {
-      transform: scale(1.5);
+      color: #75767f;
     }
 
     @media (max-width: 500px) {

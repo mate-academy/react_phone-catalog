@@ -32,7 +32,7 @@ export const ProductActions = ({ productId }) => {
           handleToggleBay();
         }}
         className={styles.addToCart}
-        style={{ backgroundColor: isInBay ? '#323542' : '#905BFF' }}
+        style={{ backgroundColor: isInBay ? '#323542' : '' }}
       >
         {isInBay ? 'In Cart' : 'Add to cart'}
       </button>

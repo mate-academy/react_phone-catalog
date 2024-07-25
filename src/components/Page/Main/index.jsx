@@ -45,10 +45,10 @@ export default function Main() {
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
-            autoplay={{ delay: 5000, disableOnInteraction: false }} // додаємо autoplay
+            autoplay={{ delay: 5000, disableOnInteraction: false }}
             onSlideChange={swiper => setCurrentIndex(swiper.realIndex)}
             className={styles.swiperContainer}
-            modules={[Autoplay, Navigation, Pagination]} // підключаємо модулі
+            modules={[Autoplay, Navigation, Pagination]}
           >
             {slidesData.map((slide, index) => (
               <SwiperSlide key={slide.id}>
