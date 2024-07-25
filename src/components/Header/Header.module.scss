@@ -1,37 +1,30 @@
 @import '../../styles/main';
 
 .header {
-  width: 100%;
-  max-width: 1440px;
-  height: 48px;
-  border-bottom: 1px solid $elements-gray;
-
   position: sticky;
   top: 0;
-  z-index: 1000;
+  z-index: 10;
   background-color: rgba($white, 0.9);
-
-  display: flex;
-  justify-content: space-between;
 
   @include on-lg-display {
     margin-inline: auto;
   }
 
-  &__link {
-    padding: 16px;
-  }
-
-  &__menu {
-    background-image: url('../../assets/img/icons/burger-menu.svg');
-    background-repeat: no-repeat;
-    background-size: 16px;
-    background-position: center;
-    border-left: 1px solid $elements-gray;
-    width: 48px;
+  &__list {
+    display: none;
 
     @include on-tablet {
-      display: none;
+      display: flex;
+      flex-flow: row;
+      gap: 32px;
+    }
+  }
+
+  &__nav-item {
+    &::after {
+      content: '';
+      bottom: -14px;
+      height: 3px;
     }
   }
 }

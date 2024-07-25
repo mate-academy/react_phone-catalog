@@ -1,0 +1,27 @@
+@import '../../styles/main';
+
+.menu {
+  background-color: $white;
+  height: 100vh;
+
+  &__content {
+    position: relative;
+  }
+
+  &__nav {
+    margin-top: 24px;
+  }
+
+  &__list {
+    flex-flow: column;
+    gap: 16px;
+  }
+
+  &__nav-item {
+    &::after {
+      content: '';
+      bottom: -8px;
+      height: 2px;
+    }
+  }
+}

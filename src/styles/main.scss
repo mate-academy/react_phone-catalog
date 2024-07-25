@@ -13,16 +13,20 @@ a {
   color: inherit;
 }
 
-html {
-  font-family: $main-font-family;
-  scroll-behavior: smooth;
-  height: 100%;
-}
-
 body,
 html {
   margin: 0;
   height: 100%;
+}
+
+html {
+  font-family: $main-font-family;
+  scroll-behavior: smooth;
+  height: 100%;
+
+  &:has(.App__menu:target) {
+    overflow: hidden; /* not to scroll the page */
+  }
 }
 
 section {
@@ -32,7 +36,104 @@ section {
 .logo {
   width: 64px;
   height: 22px;
+  display: flex;
 }
+
+//  #region Icon
+.icon {
+  background-repeat: no-repeat;
+  background-size: 16px;
+  background-position: center;
+
+  @include hover(transform, scale(1.1));
+
+  &:active {
+    scale: 0.9;
+  }
+
+  &--menu {
+    background-image: url('../assets/img/icons/burger-menu.svg');
+  }
+
+  &--close {
+    background-image: url('../assets/img/icons/close-menu.svg');
+  }
+}
+
+// #endregion
+
+// #region top-bar
+.top-bar {
+  width: 100%;
+  max-width: 1440px;
+  height: 48px;
+  border-bottom: 1px solid $elements-gray;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &__link {
+    padding: 16px;
+  }
+
+  &__menu-icon {
+    border-left: 1px solid $elements-gray;
+    width: 48px;
+    height: 48px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__close-icon {
+    border-left: 1px solid $elements-gray;
+    width: 48px;
+    height: 48px;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+}
+
+// #endregion
+
+// #region nav
+.nav {
+  &__list {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__item {
+    color: $secondary-gray;
+    display: block;
+    width: fit-content;
+
+    position: relative;
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+  }
+}
+
+// #endregion
 
 .visually-hidden {
   max-height: 0;
