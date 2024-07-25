@@ -1,10 +1,10 @@
-@mixin onTablet {
+@mixin on-tablet {
   @media (min-width: $tablet-min-width) {
     @content;
   }
 }
 
-@mixin onDesctop {
+@mixin on-desktop {
   @media (min-width: $desktop-min-width) {
     @content;
   }
@@ -15,12 +15,12 @@
   column-gap: 16px;
   grid-template-columns: repeat(4, 1fr);
 
-  @include onTablet {
+  @include on-tablet {
     grid-template-columns: repeat(12, 1fr);
   }
 
-  @include onDesctop {
-    grid-template-columns: repeat(24, 1fr);
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
   }
 }
 

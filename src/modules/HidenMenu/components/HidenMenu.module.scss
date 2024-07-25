@@ -1,0 +1,82 @@
+@import './../../shared/main.scss';
+
+.hidenMenu {
+  z-index: 10;
+  background-color: $white-color;
+  position: absolute;
+  height: calc(100vh - 48px);
+  width: 100%;
+  top: 48px;
+}
+
+.nav {
+  text-align: center;
+
+  &__list {
+    margin-top: 32px;
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    width: 100%;
+  }
+
+  &__item {
+    &:hover {
+      .navLink {
+        color: $dark-grey-color;
+      }
+
+      &::after {
+        content: '';
+        position: absolute;
+        display: block;
+        background-color: $dark-grey-color;
+        height: 2px;
+        width: 100%;
+        transform: translateY(8px);
+      }
+    }
+  }
+
+  &__link {
+    text-decoration: none;
+    font-family: 'Montserrat', sant-serif;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 800;
+    letter-spacing: 0.48px;
+    text-transform: uppercase;
+    color: $light-grey-color;
+  }
+}
+
+.footer {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  position: absolute;
+  bottom: 0;
+  border-top: solid $border-grey-color 2px;
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    width: 50%;
+  }
+
+  &__link {
+    text-align: center;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__icon {
+    margin-top: 24px;
+  }
+}
+
+.favourites {
+  border-right: solid $border-grey-color 2px;
+}

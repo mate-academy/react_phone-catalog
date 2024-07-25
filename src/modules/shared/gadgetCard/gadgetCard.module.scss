@@ -1,0 +1,132 @@
+@import './../main';
+
+.card {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  &__image {
+    max-height: 100px;
+    max-width: 100%;
+    display: block;
+    margin: 0 auto;
+    object-fit: contain;
+    margin-bottom: 24px;
+    cursor: pointer;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      max-height: 200px;
+    }
+  }
+
+  &__name {
+    color: $dark-grey-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+    cursor: pointer;
+
+    @include on-tablet {
+    }
+  }
+
+  &__price {
+    margin-bottom: 8px;
+    color: $dark-grey-color;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  &__divider {
+    width: 100%;
+    height: 1px;
+    background-color: $border-grey-color;
+    margin-bottom: 16px;
+  }
+
+  &__infoBlock {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+
+    &:last-child {
+      margin-bottom: 16px;
+    }
+  }
+
+  &__infoTitle {
+    color: $light-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  &__infoValue {
+    color: $dark-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+
+  &__buttonsSection {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__buttonAddToFavourite {
+    width: 40px;
+    height: 40px;
+    border: 1px solid $another-borders-grey-color;
+    background-color: #fff;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $dark-grey-color;
+    }
+  }
+
+  &__buttonAddToCatr {
+    height: 40px;
+    width: 100px;
+    color: $white-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    background-color: $dark-grey-color;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0px 3px 13px 0px $button-shadow-color;
+    }
+
+    @include on-tablet {
+      width: 125px;
+    }
+
+    @include on-desktop {
+      width: 160px;
+    }
+  }
+}

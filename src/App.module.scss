@@ -1,0 +1,232 @@
+@import './modules/shared/_main.scss';
+
+.app {
+  display: grid;
+}
+
+.header {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+  height: 48px;
+  text-align: center;
+  border-bottom: solid $border-grey-color 2px;
+
+  @include on-tablet {
+    margin-bottom: 32px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 55px;
+    height: 64px;
+  }
+
+  &__left {
+    display: flex;
+    align-items: center;
+  }
+
+  &__logo {
+    margin-inline: 16px;
+    padding-inline: 16px;
+
+    @include on-desktop {
+      margin-inline: 24px;
+      padding-inline: 24px;
+    }
+  }
+}
+
+.navBar {
+  height: 100%;
+  display: flex;
+}
+
+.navList {
+  list-style: none;
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    gap: 32px;
+  }
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.navItem {
+  position: relative;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    .navLink {
+      color: $dark-grey-color;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      display: block;
+      background-color: $dark-grey-color;
+      height: 6px;
+      width: 100%;
+      transform: translateY(21px);
+
+      @include on-desktop {
+        transform: translateY(29px);
+      }
+    }
+  }
+}
+
+.navLink {
+  color: $light-grey-color;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: capitalize;
+  line-height: 100%;
+}
+
+.icons {
+  display: flex;
+
+  &__container {
+    height: 48px;
+    width: 48px;
+    border-left: solid $border-grey-color 2px;
+
+    @include on-desktop {
+      height: 64px;
+      width: 64px;
+    }
+  }
+
+  &__containerFavourite {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__containerBasket {
+    display: none;
+
+    @include on-tablet {
+      display: flex;
+    }
+  }
+
+  &__containerMenu {
+    display: flex;
+
+    @include on-tablet {
+      display: none;
+    }
+  }
+
+  &__link {
+    width: 100%;
+  }
+
+  &__icon {
+    margin-top: 16px;
+
+    @include on-desktop {
+      margin-top: 24px;
+    }
+  }
+}
+
+.footer {
+  border-top: 1px solid $border-grey-color;
+
+  &__container {
+    margin-inline: auto;
+    padding: 32px 16px;
+    width: 100%;
+
+    @include on-tablet {
+      padding: 32px 32px;
+    }
+
+    @include on-desktop {
+      width: max-content;
+      @include page-grid;
+    }
+  }
+
+  &__gridWraper {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+    }
+  }
+
+  &__logoLink {
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      margin-bottom: 0;
+    }
+  }
+
+  &__contactsBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+      justify-content: space-between;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__goUpBlock {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+
+    @include on-tablet {
+      width: max-content;
+    }
+  }
+
+  &__goUpButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $another-borders-grey-color;
+    cursor: pointer;
+  }
+
+  &__goUpIco {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}

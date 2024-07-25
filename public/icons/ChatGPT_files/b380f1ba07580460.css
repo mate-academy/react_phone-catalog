@@ -1,0 +1,2 @@
+.dvd-player_wrapperX__nhvkp{animation:dvd-player_moveX__zrJVd var(--durationX) linear var(--delayX) infinite alternate}.dvd-player_wrapperY__LKifR{animation:dvd-player_moveY__LVKW_ var(--durationY) linear var(--delayY) infinite alternate}@keyframes dvd-player_moveX__zrJVd{0%{transform:translateX(0)}to{transform:translateX(var(--boundX))}}@keyframes dvd-player_moveY__LVKW_{0%{transform:translateY(0)}to{transform:translateY(var(--boundY))}}
+/*# sourceMappingURL=b380f1ba07580460.css.map*/

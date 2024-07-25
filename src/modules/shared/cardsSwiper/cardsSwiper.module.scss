@@ -1,0 +1,81 @@
+@import './../../shared/_main.scss';
+
+.cardsSwiper {
+  &__tittleContainer {
+    @include content-padding-inline;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    @include on-desktop {
+      padding-inline: 0;
+    }
+  }
+
+  &__tittle {
+    color: $dark-grey-color;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: left;
+
+    @include on-tablet {
+      font-size: 32px;
+    }
+  }
+
+  &__slideButtons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__slideButton {
+    width: 32px;
+    height: 32px;
+    border: 1px solid $another-borders-grey-color;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $dark-grey-color;
+    }
+  }
+
+  &__sliderArrow {
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  &__swiper {
+    padding-left: 16px;
+    width: 100vw;
+
+    @include on-tablet {
+      padding-left: 24px;
+    }
+
+    @include on-desktop {
+      padding-left: 0;
+    }
+  }
+
+  &__slide {
+    border: 1px solid rgb(226, 230, 233);
+    padding: 32px;
+    width: 212px;
+    height: 439px;
+
+    @include on-tablet {
+      width: 237px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
+  }
+}
