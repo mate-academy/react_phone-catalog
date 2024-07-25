@@ -1,0 +1,53 @@
+@import '../../styles/main';
+
+.category {
+  &__title {
+    margin-bottom: 24px;
+  }
+
+  &__wrapper {
+    display: flex;
+    flex-flow: column;
+    gap: 24px;
+    justify-content: space-between;
+  }
+
+  &__card {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    gap: 24px;
+  }
+
+  &__link {
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: $bg-category-phone;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: 50px 40px;
+    aspect-ratio: 1;
+
+    @include hover(scale, 1.01);
+
+    &--phones {
+      background-image: url('../../../public/img/category-phones.webp');
+    }
+
+    &--tablets {
+      background-image: url('../../../public/img/category-tablets.webp');
+    }
+
+    &--accessories {
+      background-image: url('../../../public/img/category-accessories.webp');
+    }
+  }
+
+  &__details {
+    & p:last-child {
+      color: $secondary-gray;
+    }
+  }
+}
