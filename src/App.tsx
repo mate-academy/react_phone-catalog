@@ -23,7 +23,7 @@ export const App = memo(() => {
   const defaultItems = [
     ...cartItems.map(el => el.id).map(id => ({ id, count: 1 })),
   ];
-        // eslint-disable-next-line react-hooks/exhaustive-deps
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const memorizedItems = useMemo(() => defaultItems, [cartItems]);
 
   const [countItems, setCountItems] =

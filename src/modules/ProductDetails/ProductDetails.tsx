@@ -20,6 +20,8 @@ import { SwippingWrapper } from '../shared/components/SwippingWrapper';
 import { ProductStats } from './components/ProductStats/ProductStats';
 import { Back } from '../shared/components/Back';
 import { shuffle } from '../utils/shuffle';
+import React from 'react';
+import { Loader } from '../shared/components/Loader';
 
 type FindBy = 'capacity' | 'color';
 
@@ -36,6 +38,10 @@ export const ProductDetails = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
+  const capacityStyle = isDarkThemeOn
+    ? 'product-details__capacity--active'
+    : 'product-details__capacity--active-dark';
+
   const sliderInterval = 5000;
   const isLoadingClass = isLoading ? 'product-details--is-loading' : '';
   const isProductInCart = cartItems.some(
@@ -47,6 +53,7 @@ export const ProductDetails = () => {
   const productsForSlider = products.filter(elem => elem.category === category);
   const memorizedProducts = useMemo(
     () => selectingProducts(shuffle(productsForSlider), 'brand-new'),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     [products],
   );
 
@@ -182,213 +189,229 @@ export const ProductDetails = () => {
   return (
     <>
       <main className="product-details">
-        {product ? (
-          <>
-            <div className="product-details__face" id="welcome">
-              <div className="product-details__breadcrumbs">
-                <div
-                  className={isLoadingClass}
-                  style={{ backgroundColor: 'transparent' }}
-                >
-                  <Breadcrumbs path={product.name} />
-                </div>
-              </div>
-              <Back />
-              <section className={`product-details__content ${isLoadingClass}`}>
-                <h1 className="product-details__title">{product.name}</h1>
-                <div className="product-details__content-wrapper">
-                  <div className="product-details__slider">
-                    <SwippingWrapper
-                      handleChangeSlidePosition={handleChangeSlidePosition}
-                      slidePosition={slidePosition}
-                    >
-                      <div className="product-details__slider-main">
-                        {product.images.map((img, i) => (
-                          <div
-                            key={`div-slider-${i}`}
-                            className={classNames(
-                              'product-details__slider-main-wrapper',
-                              'product-details--is-loading',
-                            )}
-                            style={{
-                              transform: `translateX(${slidePosition * -100}%)`,
-                            }}
-                          >
-                            <img
-                              src={img}
-                              alt={`image${i}`}
-                              key={`img-main-${i}`}
-                            />
-                          </div>
-                        ))}
-                      </div>
-                    </SwippingWrapper>
+        {isLoading ? (
+          <Loader heightVh={75} />
+        ) : (
+          <React.Fragment>
+            {product ? (
+              <>
+                <div className="product-details__face" id="welcome">
+                  <div className="product-details__breadcrumbs">
                     <div
-                      className={`product-details__slider-btns ${isLoadingClass}`}
+                      className={isLoadingClass}
+                      style={{ backgroundColor: 'transparent' }}
                     >
-                      {product.images.map((img, i) => (
-                        <button
-                          className={classNames(
-                            'product-details__slider-wrapper',
-                            {
-                              'product-details__slider-wrapper--active':
-                                i === slidePosition,
-                            },
-                          )}
-                          key={`slider-img-${i}`}
-                          onClick={() => handleChangeSlidePosition(i)}
-                        >
-                          <img src={img} alt={`image${i}`} />
-                        </button>
-                      ))}
+                      <Breadcrumbs path={product.name} />
                     </div>
                   </div>
-                  <div className="product-details__info">
-                    <div className="product-details__colors">
-                      <small>Available colors</small>
-                      <div
-                        className={`product-details__colors-wrapper ${isLoadingClass}`}
-                      >
-                        {product.colorsAvailable.map((color, i) => (
-                          <button
-                            className={classNames(
-                              'product-details__color-wrapper',
-                              {
-                                'product-details__color-wrapper--is-active':
-                                  color === product.color,
-                              },
-                            )}
-                            key={`color-wrapper-${i}`}
-                            onClick={() => handleChangeParam(color, 'color')}
-                          >
-                            <Link
-                              to={'..'}
-                              style={{ backgroundColor: color }}
+                  <Back />
+                  <section
+                    className={`product-details__content ${isLoadingClass}`}
+                  >
+                    <h1 className="product-details__title">{product.name}</h1>
+                    <div className="product-details__content-wrapper">
+                      <div className="product-details__slider">
+                        <SwippingWrapper
+                          handleChangeSlidePosition={handleChangeSlidePosition}
+                          slidePosition={slidePosition}
+                        >
+                          <div className="product-details__slider-main">
+                            {product.images.map((img, i) => (
+                              <div
+                                key={`div-slider-${i}`}
+                                className={classNames(
+                                  'product-details__slider-main-wrapper',
+                                  'product-details--is-loading',
+                                )}
+                                style={{
+                                  transform: `translateX(${slidePosition * -100}%)`,
+                                }}
+                              >
+                                <img
+                                  src={img}
+                                  alt={`image${i}`}
+                                  key={`img-main-${i}`}
+                                />
+                              </div>
+                            ))}
+                          </div>
+                        </SwippingWrapper>
+                        <div
+                          className={`product-details__slider-btns ${isLoadingClass}`}
+                        >
+                          {product.images.map((img, i) => (
+                            <button
                               className={classNames(
-                                `product-details__color`,
-                                `product-details__color--${color.split(' ').join('-')}`,
+                                'product-details__slider-wrapper',
                                 {
-                                  [color.split(' ').join('-')]: color,
+                                  'product-details__slider-wrapper--active':
+                                    i === slidePosition,
                                 },
                               )}
-                            />
-                          </button>
-                        ))}
+                              key={`slider-img-${i}`}
+                              onClick={() => handleChangeSlidePosition(i)}
+                            >
+                              <img src={img} alt={`image${i}`} />
+                            </button>
+                          ))}
+                        </div>
                       </div>
-                    </div>
-                    <div
-                      className={`product-details__capacities ${isLoadingClass}`}
-                    >
-                      <small>Select capacity</small>
-                      <div className="product-details__capacities-wrapper">
-                        {product.capacityAvailable.map(capacity => (
-                          <button
-                            className={classNames('product-details__capacity', {
-                              [isDarkThemeOn
-                                ? 'product-details__capacity--active'
-                                : 'product-details__capacity--active-dark']:
-                                capacity === product.capacity,
-                              'product-details__capacity-dark': !isDarkThemeOn,
-                            })}
-                            key={`capacity-btn-${capacity}`}
-                            onClick={() =>
-                              handleChangeParam(capacity, 'capacity')
-                            }
-                            disabled={capacity === product.capacity}
+                      <div className="product-details__info">
+                        <div className="product-details__colors">
+                          <small>Available colors</small>
+                          <div
+                            className={`product-details__colors-wrapper ${isLoadingClass}`}
                           >
-                            {capacity.split('GB').join(' GB')}
-                          </button>
-                        ))}
+                            {product.colorsAvailable.map((color, i) => (
+                              <button
+                                className={classNames(
+                                  'product-details__color-wrapper',
+                                  {
+                                    'product-details__color-wrapper--is-active':
+                                      color === product.color,
+                                  },
+                                )}
+                                key={`color-wrapper-${i}`}
+                                onClick={() =>
+                                  handleChangeParam(color, 'color')
+                                }
+                              >
+                                <Link
+                                  to={'..'}
+                                  style={{ backgroundColor: color }}
+                                  className={classNames(
+                                    `product-details__color`,
+                                    `product-details__color--${color.split(' ').join('-')}`,
+                                    {
+                                      [color.split(' ').join('-')]: color,
+                                    },
+                                  )}
+                                />
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                        <div
+                          className={`product-details__capacities ${isLoadingClass}`}
+                        >
+                          <small>Select capacity</small>
+                          <div className="product-details__capacities-wrapper">
+                            {product.capacityAvailable.map(capacity => (
+                              <button
+                                className={classNames(
+                                  'product-details__capacity',
+                                  {
+                                    [capacityStyle]:
+                                      capacity === product.capacity,
+                                    'product-details__capacity-dark':
+                                      !isDarkThemeOn,
+                                  },
+                                )}
+                                key={`capacity-btn-${capacity}`}
+                                onClick={() =>
+                                  handleChangeParam(capacity, 'capacity')
+                                }
+                                disabled={capacity === product.capacity}
+                              >
+                                {capacity.split('GB').join(' GB')}
+                              </button>
+                            ))}
+                          </div>
+                        </div>
+                        <div className="product-details__controls">
+                          <div className="product-details__price-wrapper">
+                            <h2 className="product-details__price">
+                              ${product.priceDiscount}
+                            </h2>
+                            <h3 className="discount">
+                              ${product.priceRegular}
+                            </h3>
+                          </div>
+                          <div className="product-details__btns">
+                            <button
+                              disabled={isProductInCart}
+                              onClick={handleAddingProduct}
+                              className={classNames(
+                                'product-details__btn',
+                                'btn-add',
+                                'btn-add--large',
+                                {
+                                  'btn-add--disabled': isProductInCart,
+                                  'btn-add--dark': !isDarkThemeOn,
+                                },
+                              )}
+                            >
+                              {isProductInCart ? 'Added' : 'Add to cart'}
+                            </button>
+                            <button
+                              className={classNames(
+                                'product-details__btn',
+                                'btn-like',
+                                'btn-like--large',
+                                {
+                                  'btn-like--dark': !isDarkThemeOn,
+                                },
+                              )}
+                              onClick={handleAddLikedProduct}
+                            >
+                              {isItemLiked ? (
+                                <img
+                                  src="./img/icons/like-filled.svg"
+                                  alt="like icon active"
+                                />
+                              ) : (
+                                <LikeIcon />
+                              )}
+                            </button>
+                          </div>
+                        </div>
+                        <div
+                          className={`product-details__stats ${isLoadingClass}`}
+                        >
+                          <ProductStats product={product} />
+                        </div>
                       </div>
                     </div>
-                    <div className="product-details__controls">
-                      <div className="product-details__price-wrapper">
-                        <h2 className="product-details__price">
-                          ${product.priceDiscount}
-                        </h2>
-                        <h3 className="discount">${product.priceRegular}</h3>
-                      </div>
-                      <div className="product-details__btns">
-                        <button
-                          disabled={isProductInCart}
-                          onClick={handleAddingProduct}
-                          className={classNames(
-                            'product-details__btn',
-                            'btn-add',
-                            'btn-add--large',
-                            {
-                              'btn-add--disabled': isProductInCart,
-                              'btn-add--dark': !isDarkThemeOn,
-                            },
-                          )}
-                        >
-                          {isProductInCart ? 'Added' : 'Add to cart'}
-                        </button>
-                        <button
-                          className={classNames(
-                            'product-details__btn',
-                            'btn-like',
-                            'btn-like--large',
-                            {
-                              'btn-like--dark': !isDarkThemeOn,
-                            },
-                          )}
-                          onClick={handleAddLikedProduct}
-                        >
-                          {isItemLiked ? (
-                            <img
-                              src="./img/icons/like-filled.svg"
-                              alt="like icon active"
-                            />
-                          ) : (
-                            <LikeIcon />
-                          )}
-                        </button>
-                      </div>
-                    </div>
+                  </section>
+                </div>
+                <div className="product-details__sections-wrapper">
+                  <section className="product-details__about">
+                    <h3 className="product-details__subtitle">About</h3>
+                    {product.description.map(elem => (
+                      <article
+                        className="product-details__description"
+                        key={`key-${elem.title}`}
+                      >
+                        <h4 className="product-details__description-title">
+                          {elem.title}
+                        </h4>
+                        <p className="product-details__description-text">
+                          {elem.text}
+                        </p>
+                      </article>
+                    ))}
+                  </section>
+                  <section className="product-details__tech">
+                    <h3>Tech specs</h3>
                     <div className={`product-details__stats ${isLoadingClass}`}>
-                      <ProductStats product={product} />
+                      <ProductStats product={product} isFullList={true} />
                     </div>
-                  </div>
+                  </section>
                 </div>
-              </section>
-            </div>
-            <div className="product-details__sections-wrapper">
-              <section className="product-details__about">
-                <h3 className="product-details__subtitle">About</h3>
-                {product.description.map(elem => (
-                  <article
-                    className="product-details__description"
-                    key={`key-${elem.title}`}
-                  >
-                    <h4 className="product-details__description-title">
-                      {elem.title}
-                    </h4>
-                    <p className="product-details__description-text">
-                      {elem.text}
-                    </p>
-                  </article>
-                ))}
-              </section>
-              <section className="product-details__tech">
-                <h3>Tech specs</h3>
-                <div className={`product-details__stats ${isLoadingClass}`}>
-                  <ProductStats product={product} isFullList={true} />
-                </div>
-              </section>
-            </div>
-            <ProductsSlider
-              isLoading={isLoading}
-              title="You may also like"
-              name="models"
-              products={memorizedProducts}
-              key="models"
-            />
-          </>
-        ) : (
-          <div className="product-details__error">
-            <h1>Product was not found!</h1>
-          </div>
+                <ProductsSlider
+                  isLoading={isLoading}
+                  title="You may also like"
+                  name="models"
+                  products={memorizedProducts}
+                  key="models"
+                />
+              </>
+            ) : (
+              <div className="product-details__error">
+                <h1>Product was not found!</h1>
+              </div>
+            )}
+          </React.Fragment>
         )}
       </main>
       <Outlet />

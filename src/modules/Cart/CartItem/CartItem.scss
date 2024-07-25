@@ -22,18 +22,24 @@
     display: flex;
     align-items: center;
     justify-content: center;
+
+    cursor: inherit;
     color: $gray-icons;
-    border: 1px solid $gray-elements;
 
     &--active {
-      color: $white;
-      background-color: $gray-surface2;
+      cursor: pointer;
       border: none;
       font-weight: 400;
+      color: $white;
+      background-color: $gray-surface2;
+
+      &:hover {
+        background-color: $gray-icons !important;
+      }
     }
 
     &:hover {
-      color: $white;
+      background-color: $gray-surface2;
     }
   }
 

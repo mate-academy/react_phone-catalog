@@ -23,6 +23,7 @@ import { createArray, isAllItems } from '../utils/createArrayIsAllItems';
 import { ProductCards } from '../shared/components/ProductCards';
 import classNames from 'classnames';
 import { debounce } from '../utils/debounce';
+import { Loader } from '../shared/components/Loader';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
@@ -135,8 +136,8 @@ export const Product: React.FC<Props> = memo(({ title, category }) => {
         }, minLoadDelay);
       });
 
-      document.title = 'Phone catalog ' + category;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
+    document.title = 'Phone catalog ' + category;
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [page, cardsOnPage, sortBy, category, query]);
 
   useEffect(() => {
@@ -211,17 +212,25 @@ export const Product: React.FC<Props> = memo(({ title, category }) => {
                 </div>
               </div>
             </div>
-            {productsOnPage.length > 0 ? (
-              <ProductCards
-                buttonsArray={buttonsArray}
-                isLoading={isLoading}
-                productsOnPage={productsOnPage}
-                paginationEnabled={true}
-              />
+            {isLoading ? (
+              <Loader heightVh={50} />
             ) : (
-              <div className="product__not-found">
-                <h1>There are no {category} matching the query &#128547;</h1>
-              </div>
+              <React.Fragment>
+                {productsOnPage.length > 0 ? (
+                  <ProductCards
+                    buttonsArray={buttonsArray}
+                    isLoading={isLoading}
+                    productsOnPage={productsOnPage}
+                    paginationEnabled={true}
+                  />
+                ) : (
+                  <div className="product__not-found">
+                    <h1>
+                      There are no {category} matching the query &#128547;
+                    </h1>
+                  </div>
+                )}
+              </React.Fragment>
             )}
           </React.Fragment>
         )}

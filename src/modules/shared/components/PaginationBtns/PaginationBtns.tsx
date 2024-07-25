@@ -54,6 +54,21 @@ export const PaginationBtns: React.FC<Props> = memo(({ buttonsArray }) => {
         onClick={() => handleChangePage(page - 1)}
       ></button>
       <div className="pagination__btn-wrapper">
+        {page > 5 && (
+          <>
+            <button
+              // disabled={page > 5}
+              onClick={() => handleChangePage(1)}
+              className={classNames('pagination__btn', {
+                // 'pagination__btn--active': btn === page,
+              })}
+            >
+              1
+            </button>
+            <p>...</p>
+          </>
+        )}
+
         {buttonsArray
           .slice(
             Math.floor((page - 1) / 5) * 5,
@@ -71,6 +86,20 @@ export const PaginationBtns: React.FC<Props> = memo(({ buttonsArray }) => {
               {btn}
             </button>
           ))}
+        {page !== buttonsArray.length && (
+          <>
+            <p>...</p>
+            <button
+              disabled={page > buttonsArray.length}
+              onClick={() => handleChangePage(buttonsArray.length)}
+              className={classNames('pagination__btn', {
+                // 'pagination__btn--active': btn === page,
+              })}
+            >
+              {buttonsArray.length}
+            </button>
+          </>
+        )}
       </div>
       <button
         disabled={page === buttonsArray.length}

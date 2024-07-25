@@ -81,7 +81,9 @@ export const CartItem: React.FC<Props> = ({
       <div className="cart-item__bottom">
         <div className="cart-item__btns">
           <button
-            className="cart-item__btn"
+            className={classNames('cart-item__btn', {
+              'cart-item__btn--active': currentItem.count > 1,
+            })}
             onClick={() => handleChangeCount(currentItem.count - 1)}
           >
             -
