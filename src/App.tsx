@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { useEffect, useContext, memo } from 'react';
+import { useEffect, useContext, memo, useState, useMemo } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './modules/shared/components/Header';
 import { Home } from './modules/HomePage';
@@ -20,11 +20,25 @@ import { NoProducts } from './modules/shared/components/NoProducts';
 export const App = memo(() => {
   const { isMenuOpened, minLoadDelay, isDarkThemeOn, cartItems, likedItems } =
     useContext(StateContext);
+  const defaultItems = [
+    ...cartItems.map(el => el.id).map(id => ({ id, count: 1 })),
+  ];
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+  const memorizedItems = useMemo(() => defaultItems, [cartItems]);
+
+  const [countItems, setCountItems] =
+    useState<{ id: number; count: number }[]>(memorizedItems);
+
   const bodyStyle = document.body.style;
 
   useEffect(() => {
     bodyStyle.overflow = isMenuOpened ? 'hidden' : 'auto';
   }, [isMenuOpened, bodyStyle]);
+
+  useEffect(() => {
+    setCountItems(memorizedItems);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [cartItems]);
 
   return (
     <div className={classNames('App', { 'white-theme': !isDarkThemeOn })}>
@@ -33,6 +47,7 @@ export const App = memo(() => {
         isMenuOpened={isMenuOpened}
         cartItems={cartItems}
         likedItems={likedItems}
+        countItems={countItems}
       />
       <Menu />
 
@@ -62,7 +77,12 @@ export const App = memo(() => {
             <Route path=":productId" element={<ProductDetails />} />
           </Route>
           <Route path="favourites" element={<Favourites />} />
-          <Route path="cart" element={<Cart />} />
+          <Route
+            path="cart"
+            element={
+              <Cart countItems={countItems} setCountItems={setCountItems} />
+            }
+          />
           <Route
             path="contacts"
             element={<NoProducts title="Not emplemented yet!" />}

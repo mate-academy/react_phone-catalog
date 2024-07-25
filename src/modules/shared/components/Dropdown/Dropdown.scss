@@ -1,11 +1,13 @@
 @import './../../../utils/resources';
 
 .dropdown {
+  position: relative;
   border: none;
   user-select: none;
 
   color: $white;
   background-color: $gray-surface2;
+  z-index: 10;
 
   &__item {
     display: flex;
@@ -72,6 +74,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border: 1px solid transparent;
 
     z-index: 2;
 
@@ -105,10 +108,10 @@
   &__content {
     padding: 8px 0;
     position: absolute;
-    top: 44px;
-    left: 0;
-
     width: 100%;
+    margin-top: 8px;
+    left: 0;
+    
     opacity: 0;
 
     transition-duration: $transition-duration;

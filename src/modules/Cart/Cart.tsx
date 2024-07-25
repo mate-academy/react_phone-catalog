@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from 'react';
+import { memo, useContext, useEffect } from 'react';
 import { Back } from '../shared/components/Back';
 import './Cart.scss';
 import { DispatchContext, StateContext } from '../utils/GlobalStateProvider';
@@ -7,13 +7,15 @@ import { NoProducts } from '../shared/components/NoProducts';
 import { useNavigate } from 'react-router-dom';
 import classNames from 'classnames';
 
-export const Cart = () => {
+type Props = {
+  countItems: { id: number; count: number }[];
+  setCountItems: (e: { id: number; count: number }[]) => void;
+};
+// eslint-disable-next-line react/display-name
+export const Cart: React.FC<Props> = memo(({ countItems, setCountItems }) => {
   const navigate = useNavigate();
   const { cartItems, isDarkThemeOn } = useContext(StateContext);
   const dispatch = useContext(DispatchContext);
-  const defaultItems = cartItems.map(el => el.id).map(id => ({ id, count: 1 }));
-  const [countItems, setCountItems] =
-    useState<{ id: number; count: number }[]>(defaultItems);
 
   const totalPrice = cartItems
     .map(el => {
@@ -89,4 +91,4 @@ export const Cart = () => {
       )}
     </main>
   );
-};
+});

@@ -66,6 +66,22 @@
   &-light {
     border: 1px solid $white-theme-nav;
 
+    & .cart-item__cancel {
+      border: none;
+    }
+
+    & .cart-item__cancel:hover {
+      border: none;
+    }
+
+    & .cart-item__name {
+      color: $white-theme-text;
+
+      &:hover {
+        color: $white-theme-nav;
+      }
+    }
+
     & .cart-item__btn {
       color: $gray-secondary;
       border: 1px solid $white-theme-nav;
@@ -85,10 +101,6 @@
     }
 
     background-color: transparent;
-
-    & .cart-item__cancel {
-      border: none;
-    }
   }
 
   &__top {

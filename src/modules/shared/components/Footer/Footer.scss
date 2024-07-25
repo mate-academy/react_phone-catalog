@@ -7,6 +7,7 @@
   height: 257px;
 
   width: 100%;
+  background-color: inherit;
   border-top: 1px solid #3B3E4A;
   margin-top: 64px;
 
@@ -28,8 +29,10 @@
     gap: 32px;
 
     @include onTablet {
-      padding: 32px;
+      height: 96px;
+      padding: 0 32px;
       flex-direction: row;
+      align-items: center;
       justify-content: space-between;
     }
 
@@ -47,6 +50,7 @@
     @include onTablet {
       display: flex;
       align-items: center;
+      height: 100%;
       justify-content: center;
     }
   }
@@ -60,6 +64,7 @@
     list-style: none;
 
     @include onTablet {
+      height: 100%;
       align-items: center;
       flex-direction: row;
     }
@@ -86,7 +91,10 @@
   }
 
   &__item {
+    height: 100%;
+
     display: flex;
+    align-items: center;
 
     text-transform: uppercase;
     font-weight: 800;
@@ -103,7 +111,11 @@
     }
 
     & a { /* stylelint-disable-line no-descending-specificity */
+      padding: 8px;
       transition: $transition-duration ease-in-out;
+      display: flex;
+      align-items: center;
+      height: 100%;
     }
 
     & a:hover {

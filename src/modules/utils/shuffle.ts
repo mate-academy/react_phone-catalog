@@ -8,5 +8,6 @@ export const shuffle = ([...arr]) => {
     // eslint-disable-next-line no-param-reassign
     [arr[m], arr[i]] = [arr[i], arr[m]];
   }
+
   return arr;
 };

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { DispatchContext } from '../../../utils/GlobalStateProvider';
-import { memo, useContext } from 'react';
+import { memo, useContext, useMemo } from 'react';
 import { Product } from '../types/Product';
 
 type Props = {
@@ -10,16 +10,22 @@ type Props = {
   cartItems: Product[];
   likedItems: Product[];
   isDarkThemeOn: boolean;
+  countItems: { id: number; count: number }[];
 };
 
 // eslint-disable-next-line react/display-name
 export const Header: React.FC<Props> = memo(
-  ({ isDarkThemeOn, isMenuOpened, cartItems, likedItems }) => {
+  ({ isDarkThemeOn, isMenuOpened, cartItems, likedItems, countItems }) => {
     const dispatch = useContext(DispatchContext);
 
     const toggleMenu = () => {
       dispatch({ type: 'setIsMenuOpened', payload: !isMenuOpened });
     };
+
+    const itemsInCart = useMemo(
+      () => countItems.map(e => e.count).reduce((e1, e2) => e1 + e2, 0),
+      [countItems],
+    );
 
     return (
       <header
@@ -143,7 +149,7 @@ export const Header: React.FC<Props> = memo(
               {cartItems.length > 0 && (
                 // eslint-disable-next-line max-len
                 <small className="header__cart-message header__cart-message-counter">
-                  {cartItems.length}
+                  {itemsInCart}
                 </small>
               )}
             </NavLink>
