@@ -164,11 +164,16 @@
       margin-top: 32px;
 
       &__element {
+        position: relative;
         text-transform: uppercase;
         letter-spacing: 2px;
         font-size: 12px;
         font-weight: 800;
         color: var(--header-element);
+
+        &:hover {
+          scale: 120%;
+        }
       }
     }
 

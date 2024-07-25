@@ -1,8 +1,9 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import Styles from './itemSlider.module.scss';
 import { Item } from '../../types/Item';
 import { getNumber } from '../../functions/getNumber';
 import { ProductCard } from '../productCard';
+import { ContextApp } from '../../appContext/AppContext';
 
 type Props = {
   list: Item[];
@@ -17,6 +18,8 @@ export const ItemSlider: React.FC<Props> = ({
   showRandom,
   list,
 }) => {
+  const {isTablet, isDesktop} = useContext(ContextApp);
+
   const [active, setActive] = useState(0);
   const [copyProducts, setCopyProducts] = useState<Item[]>([]);
   const [productsTotalNumber, setProductsTotalNumber] = useState(0);
@@ -55,7 +58,7 @@ export const ItemSlider: React.FC<Props> = ({
     const newProducts = list.slice(minNumber, maxNumber);
 
     setCopyProducts(newProducts);
-    setProductsTotalNumber(newProducts.length);
+    setProductsTotalNumber(newProducts.length - ((isTablet ? 1 : 0) | (isDesktop ? 3 : 0)));
   };
 
   useEffect(() => {
@@ -63,7 +66,7 @@ export const ItemSlider: React.FC<Props> = ({
       getSuggestedProducts(list.length);
     } else {
       setCopyProducts([...list]);
-      setProductsTotalNumber(list.length);
+      setProductsTotalNumber(list.length - ((isTablet ? 1 : 0) | (isDesktop ? 3 : 0)));
     }
   }, [showRandom, list]);
 
