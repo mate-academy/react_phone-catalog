@@ -22,10 +22,6 @@
   }
 
   &__pathname {
-    display: flex;
-
-    @include small-text;
-
     color: $color-secondary;
   }
 

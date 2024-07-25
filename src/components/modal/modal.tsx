@@ -19,13 +19,13 @@ export const Modal: React.FC<Props> = ({ setModal }) => {
         </div>
         <div className="modal__buttons">
           <button
-            className="button modal__button"
+            className="button modal__button-close"
             onClick={() => setModal(false)}
           >
             Close
           </button>
           <button
-            className="button modal__button"
+            className="button modal__button-clear"
             onClick={() => {
               setModal(false);
               setCartProducts([]);

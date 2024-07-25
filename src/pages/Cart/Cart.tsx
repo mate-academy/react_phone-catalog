@@ -1,8 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ArrayContext } from '../../ArrayContext';
 import { Link, useLocation } from 'react-router-dom';
-import home from '../../img/icons/home.svg';
-import arrowRight from '../../img/icons/arrowRight.svg';
 import closeButton from '../../img/icons/close-gray.svg';
 import { Modal } from '../../components/modal/modal';
 import { Product } from '../../types/product';
@@ -32,13 +30,12 @@ export const Cart: React.FC = () => {
   return (
     <section className="cart">
       <div className="products__nav">
-        <Link className="products__home" to={'/'}>
-          <img src={home} className="img" alt="" />
-        </Link>
-        <img src={arrowRight} alt="arrowRight" />
-        <p className="products__pathname">
+        <Link className="background-home" to={'/'} />
+        <Link to={pathname.split('/').slice(1, 2).join('/')}
+          className="products__pathname nav-part small-text"
+        >
           {pathname.charAt(0).toUpperCase() + pathname.slice(1)}
-        </p>
+        </Link>
       </div>
       <div className="products__title">
         <h1 className="products__h1">Cart</h1>
@@ -128,7 +125,7 @@ export const Cart: React.FC = () => {
                 Total for {cartProducts.length} items
               </p>
             </div>
-            <div>underline</div>
+            <div className='underline'></div>
             <button
               onClick={() => {
                 setModal(true);

@@ -30,7 +30,7 @@ export const ProductCard: React.FC<Props> = ({
           <h3 className="product-card__old-price">${product.fullPrice}</h3>
         )}
       </div>
-      <div className="product-card__underline"></div>
+      <div className="underline"></div>
       <ul className="product-card__description">
         <li className="product-card__li">
           <p className="product-card__li-option">Screen</p>

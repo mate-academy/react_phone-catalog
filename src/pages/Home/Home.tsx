@@ -17,11 +17,11 @@ export const Home = () => {
   const hotPrices = productsFromApi
     .filter(product => product.category === 'phones')
     .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
-    .slice(0, 8);
+    .slice(0, 12);
   const brandNew = productsFromApi
     .filter(product => product.category === 'phones')
     .sort((a, b) => b.fullPrice - a.fullPrice)
-    .slice(0, 8);
+    .slice(0, 12);
 
   return (
     <main className="home">

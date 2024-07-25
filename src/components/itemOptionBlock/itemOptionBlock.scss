@@ -3,25 +3,9 @@
 
   &__nav {
     display: flex;
+    height: 16px;
     gap: 8px;
-
-    &-part {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 8px;
-
-      &::before {
-        display: inline-block;
-        content: "";
-        width: 16px;
-        height: 16px;
-        background-image: url(../../img/icons/arrowRight.svg);
-        background-size: auto;
-        background-position: center;
-        background-repeat: no-repeat;
-      }
-    }
+    align-items: center;
 
     &-text-semi {
       color: $color-secondary;

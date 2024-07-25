@@ -1,7 +1,5 @@
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone } from '../../types/phones';
-import home from '../../img/icons/home.svg';
-// import arrowRight from '../../img/icons/arrowRight.svg';
 import arrowLeft from '../../img/icons/arrowLeft.svg';
 import phones from '../../api/phones.json';
 import { Colors } from '../../types/colors';
@@ -61,18 +59,17 @@ export const ItemOptionBlock: React.FC<Props> = ({ item }) => {
   return (
     <div className="item__section item-option-block">
       <div className="item-option-block__nav">
-        <Link to={'/'}>
-          <img src={home} alt="" />
-        </Link>
+        <Link className="background-home" to={'/'} />
         <Link
           to={location.pathname.split('/').slice(0, 2).join('/')}
-          className="item-option-block__nav-part small-text"
+          className="nav-part small-text"
         >
-          {item.category}
+          {item.category.charAt(0).toUpperCase() + item.category.slice(1)}
         </Link>
         <Link
           to={`${location.pathname}`}
-          className="item-option-block__nav-part small-text item-option-block__nav-text-semi"
+          // eslint-disable-next-line max-len
+          className="nav-part small-text item-option-block__nav-text-semi"
         >
           {item.name}
         </Link>

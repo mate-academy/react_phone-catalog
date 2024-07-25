@@ -21,16 +21,20 @@ export const Item: React.FC = () => {
   }, [location.pathname]);
 
   function shuffle(array: number[]) {
-    for (let i = array.length - 1; i > 0; i--) {
+    const newArray = [...array];
+
+    for (let i = newArray.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
+
+      [newArray[i], newArray[j]] = [newArray[j], newArray[i]];
     }
-    return array.slice(0, 8);
+
+    return newArray.slice(0, 12);
   }
 
   const idsForYouLike = productsFromApi
-    .filter((product) => product.category === 'phones')
-    .map(product => product.id)
+    .filter(product => product.category === 'phones')
+    .map(product => product.id);
 
   const youLike: Product[] = productsFromApi.filter(product =>
     shuffle(idsForYouLike).includes(product.id),

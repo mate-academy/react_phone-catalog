@@ -1,8 +1,7 @@
 import { Link, useLocation, useSearchParams } from 'react-router-dom';
-import home from '../../img/icons/home.svg';
 import { Product } from '../../types/product';
 import { useEffect, useState, useRef } from 'react';
-import arrowRight from '../../img/icons/arrowRight.svg';
+// import arrowRight from '../../img/icons/arrowRight.svg';
 import arrowUp from '../../img/icons/arrowTop.svg';
 import arrowDown from '../../img/icons/arrowDown.svg';
 import { SearchLink } from '../../components/SearchLink';
@@ -117,13 +116,13 @@ export const Phones: React.FC<Props> = ({ products }) => {
   return (
     <section className="products">
       <div className="products__nav">
-        <Link className="products__home" to={'/'}>
-          <img src={home} className="img" alt="" />
-        </Link>
-        <img src={arrowRight} alt="arrowRight" />
-        <p className="products__pathname">
+        <Link className="background-home" to={'/'} />
+        <Link
+          to={pathname.split('/').slice(1, 2).join('/')}
+          className="products__pathname nav-part small-text"
+        >
           {pathname.charAt(0).toUpperCase() + pathname.slice(1)}
-        </p>
+        </Link>
       </div>
       <div className="products__title">
         <h1 className="products__h1">Mobile phones</h1>

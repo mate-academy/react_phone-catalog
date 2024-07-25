@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import phones from '../../img/HomeImgs/category-phones.png';
 import tablets from '../../img/HomeImgs/category-tablets.png';
 import accesories from '../../img/HomeImgs/category-accessories.png';
+import productsFromApi from '../../api/products.json';
 
 export const ShopByCategory: React.FC = () => {
   return (
@@ -17,7 +18,9 @@ export const ShopByCategory: React.FC = () => {
           </div>
           <div className="shop-by-category__info ">
             <h4 className="shop-by-category__h4">Mobile phones</h4>
-            <p className="shop-by-category__text">95 models</p>
+            <p className="shop-by-category__text">
+              {productsFromApi.filter(product => product.category === 'phones').length} models
+            </p>
           </div>
         </Link>
         <Link className="shop-by-category__link" to="/tablets">
@@ -26,7 +29,7 @@ export const ShopByCategory: React.FC = () => {
           </div>
           <div className="shop-by-category__info">
             <h4 className="shop-by-category__h4">Tablets</h4>
-            <p className="shop-by-category__text">24 models</p>
+            <p className="shop-by-category__text">Will be added soon</p>
           </div>
         </Link>
         <Link className="shop-by-category__link" to="/accessories">
@@ -35,7 +38,7 @@ export const ShopByCategory: React.FC = () => {
           </div>
           <div className="shop-by-category__info">
             <h4 className="shop-by-category__h4">Accessories</h4>
-            <p className="shop-by-category__text">100 models</p>
+            <p className="shop-by-category__text">Will be added soon</p>
           </div>
         </Link>
       </div>

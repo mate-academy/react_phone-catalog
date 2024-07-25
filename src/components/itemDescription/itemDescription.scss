@@ -3,6 +3,7 @@
 
   flex-direction: column;
   gap: 56px;
+
   @include on-tablet {
     @include page-grid;
   }
@@ -35,6 +36,7 @@
 
     &-text {
       @include body-text;
+
       color: $color-secondary;
     }
   }
@@ -57,6 +59,7 @@
 
     &-title {
       @include body-text;
+
       color: $color-secondary;
     }
 
