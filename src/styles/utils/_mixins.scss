@@ -1,3 +1,5 @@
+@use 'sass:math';
+
 @mixin hover($_property, $_toValue) {
   transition: #{$_property} $transition-duration;
   &:hover {
@@ -71,4 +73,12 @@
   transition:
     transform $transition-duration,
     border-color $transition-duration;
+}
+
+@function rem($pixel) {
+  @if math.is-unitless($pixel) {
+    @return math.div($pixel, 16) + rem;
+  } @else {
+    @error 'Don\'t use units when using the rem() function; only numbers.';
+  }
 }

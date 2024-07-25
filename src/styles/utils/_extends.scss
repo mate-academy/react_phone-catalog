@@ -1,14 +1,16 @@
+@import './mixins';
+
 %h1 {
   /* Mobile headings/H1 */
-  font-size: 32px;
-  line-height: 41px;
+  font-size: rem(32);
+  line-height: rem(41);
   letter-spacing: -0.01em;
   font-weight: 700; // Bold
 
   @include on-tablet {
     /* Desktop / Tablet headings/H1 */
-    font-size: 48px;
-    line-height: 56px;
+    font-size: rem(48);
+    line-height: rem(56);
   }
 }
 
@@ -81,6 +83,7 @@
   line-height: 14px;
   letter-spacing: 0.04em;
   font-weight: 700; // Bold
+  text-transform: uppercase;
 }
 
 %small-text {

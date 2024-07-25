@@ -1,6 +1,6 @@
 @import '../../styles/main';
 
-.newModels {
+.hotPrice {
   &__topBar {
     margin-bottom: 24px;
 
@@ -48,10 +48,19 @@
     }
   }
 
-  &__cards {
+  &__cardsWrapper {
     margin-top: 24px;
-    display: flex;
-    gap: 16px;
     overflow: hidden;
+  }
+
+  &__cards {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    transition: transform $transition-duration ease-in-out;
+  }
+
+  &__card {
+    flex: 0 0 auto; // Each card takes up its own width
   }
 }

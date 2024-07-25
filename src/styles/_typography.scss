@@ -1,17 +1,27 @@
+@import './utils/vars';
+
 h2 {
   @extend %h1;
+
+  color: $primary-gray;
 }
 
 h3 {
   @extend %h2;
+
+  color: $primary-gray;
 }
 
 h4 {
   @extend %h3;
+
+  color: $primary-gray;
 }
 
 h5 {
   @extend %h4;
+
+  color: $primary-gray;
 }
 
 .button-text {

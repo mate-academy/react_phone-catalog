@@ -15,11 +15,13 @@ export const Card = () => {
 
   return (
     <div className={styles.card}>
-      <img
-        src="./img/phones/apple-iphone-14-pro/gold/00.webp"
-        alt="phone"
-        className={styles.card__img}
-      />
+      <a href="#" className="card__link">
+        <img
+          src="./img/phones/apple-iphone-14-pro/gold/00.webp"
+          alt="phone"
+          className={styles.card__img}
+        />
+      </a>
 
       <p className="body-text">Apple iPhone 14 Pro 128GB Gold (MQ023)</p>
 

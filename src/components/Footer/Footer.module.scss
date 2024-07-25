@@ -1,5 +1,59 @@
 @import '../../styles/main';
 
 .footer {
-  color: red;
+  margin-top: 64px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-evenly;
+  gap: 32px;
+
+  &__link {
+    display: block;
+    margin-top: 32px;
+  }
+
+  &__icon {
+    width: 89px;
+    height: 32px;
+  }
+
+  &__buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 32px;
+
+    & p:first-child {
+      color: $secondary-gray;
+    }
+  }
+  &__btn {
+    @include button-common;
+
+    width: 32px;
+    height: 32px;
+    background-color: $white;
+    color: $primary-gray;
+    border: 1px solid $icons-placeholders-gray;
+
+    @include hover(border-color, $primary-gray);
+
+    &:active {
+      transform: scale(0.9);
+    }
+  }
+}
+
+.nav {
+  &__list {
+    display: flex;
+    flex-flow: column;
+    justify-content: space-between;
+    gap: 16px;
+  }
+
+  &__item {
+    color: $secondary-gray;
+  }
 }

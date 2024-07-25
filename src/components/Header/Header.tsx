@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 export const Header = () => {
   return (
-    <div className={styles.header}>
+    <div className={styles.header} id="header">
       <a href="#" className={classNames(styles.header__link)}>
         <img
           src="./img/icons/logo.svg"

@@ -11,7 +11,7 @@ const imagesForSlide = [
 
 export const Welcome = () => {
   return (
-    <section className="welcome">
+    <section className="welcome" id="welcome">
       <h2 className={classNames(styles.welcome__title)}>
         Welcome to Nice Gadgets store!
       </h2>

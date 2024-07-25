@@ -9,7 +9,7 @@ import { Card } from '../Card';
 
 export const NewModels = () => {
   return (
-    <section className="newModels">
+    <section className="newModels" id="newModels">
       <div className={classNames(styles.newModels__topBar)}>
         <h3 className={classNames(styles.newModels__title)}>
           Brand new models
@@ -32,7 +32,10 @@ export const NewModels = () => {
         </div>
       </div>
 
-      <div className="newModels__cards">
+      <div className={styles.newModels__cards}>
+        <Card />
+        <Card />
+        <Card />
         <Card />
       </div>
     </section>

@@ -3,7 +3,7 @@ import styles from './Category.module.scss';
 
 export const Category = () => {
   return (
-    <section className="category">
+    <section className="category" id="category">
       <h3 className={styles.category__title}>Shop by category</h3>
 
       <div className={styles.category__wrapper}>
