@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import {
   decrementQuantity,
   incrementQuantity,
-  toggleBay,
+  removeFromBay,
 } from '../../../redux/slices/baySlice';
 import styles from './bay.module.scss';
 
@@ -16,7 +16,7 @@ export default function Bay() {
   );
 
   const handleRemove = id => {
-    dispatch(toggleBay(id));
+    dispatch(removeFromBay(id));
   };
 
   const handleIncrement = id => {
@@ -50,15 +50,13 @@ export default function Bay() {
                         className={styles.phonesList__cart__close}
                         onClick={() => handleRemove(product.id)}
                       >
-                        <div>
-                          <IoMdClose
-                            className={styles.phonesList__cart__close__svg}
-                            size={20}
-                          />
-                        </div>
+                        <IoMdClose
+                          className={styles.phonesList__cart__close__svg}
+                          size={20}
+                        />
                       </div>
                       <div>
-                        <img src={product.image} alt={product.image} />
+                        <img src={product.image} alt={product.name} />
                       </div>
                       <div className={styles.phonesList__cart__name}>
                         <p>{product.name}</p>
@@ -67,13 +65,11 @@ export default function Bay() {
                     <div className={styles.sections}>
                       <div className={styles.phonesList__cart__buttons}>
                         <button onClick={() => handleDecrement(product.id)}>
-                          {' '}
-                          -{' '}
+                          -
                         </button>
                         <p>{bayItem.quantity}</p>
                         <button onClick={() => handleIncrement(product.id)}>
-                          {' '}
-                          +{' '}
+                          +
                         </button>
                       </div>
                       <div className={styles.phonesList__cart__price}>
@@ -85,7 +81,7 @@ export default function Bay() {
               })}
             </ul>
             <div className={styles.sum}>
-              <h2>${totalSum}</h2>
+              <h2>${totalSum.toFixed(2)}</h2>
               <p>Total for {totalCount} items</p>
               <div className={styles.line}></div>
               <button>Checkout</button>

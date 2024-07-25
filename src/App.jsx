@@ -23,8 +23,8 @@ export const App = () => {
           <Route path="/favorites" element={<Favorites />} />
           <Route path="/bay" element={<Bay />} />
         </Routes>
-        <Footer />
       </div>
+      <Footer />
     </div>
   );
 };

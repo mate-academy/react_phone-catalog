@@ -1,6 +1,12 @@
 @import './variables';
 @import './libs/normalize';
-
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1 1 auto;
+}
 body {
   background-color: $background;
 }

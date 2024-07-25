@@ -21,13 +21,11 @@ const baySlice = createSlice({
         state.bayList.push({ id, quantity: 1 });
       }
     },
-    toggleBay(state, action: PayloadAction<string>) {
+    removeFromBay(state, action: PayloadAction<string>) {
       const id = action.payload;
       const index = state.bayList.findIndex(item => item.id === id);
       if (index !== -1) {
         state.bayList.splice(index, 1);
-      } else {
-        state.bayList.push({ id, quantity: 1 });
       }
     },
     incrementQuantity(state, action: PayloadAction<string>) {
@@ -51,6 +49,6 @@ const baySlice = createSlice({
   },
 });
 
-export const { toggleBay, incrementQuantity, decrementQuantity, addToBay } =
+export const { addToBay, removeFromBay, incrementQuantity, decrementQuantity } =
   baySlice.actions;
 export default baySlice.reducer;
