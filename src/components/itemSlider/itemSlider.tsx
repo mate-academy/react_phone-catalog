@@ -58,7 +58,7 @@ export const ItemSlider: React.FC<Props> = ({
     const newProducts = list.slice(minNumber, maxNumber);
 
     setCopyProducts(newProducts);
-    setProductsTotalNumber(newProducts.length - ((isTablet ? 1 : 0) | (isDesktop ? 3 : 0)));
+    setProductsTotalNumber(newProducts.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)));
   };
 
   useEffect(() => {
@@ -66,7 +66,7 @@ export const ItemSlider: React.FC<Props> = ({
       getSuggestedProducts(list.length);
     } else {
       setCopyProducts([...list]);
-      setProductsTotalNumber(list.length - ((isTablet ? 1 : 0) | (isDesktop ? 3 : 0)));
+      setProductsTotalNumber(list.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)));
     }
   }, [showRandom, list]);
 
