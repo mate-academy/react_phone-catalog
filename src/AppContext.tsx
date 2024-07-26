@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useEffect, useState } from 'react';
 import { PageSection } from './types/PageSection';
+import { useLocation } from 'react-router-dom';
 import { Products } from './types/Products';
 import productsFromServer from './api/products.json';
 import { getProduct } from './api';
@@ -29,7 +30,10 @@ const AppContext = createContext<AppContextInterface | undefined>(undefined);
 export const AppProvider: React.FC<React.PropsWithChildren<{}>> = ({
   children,
 }) => {
-  const [currentPage, setCurrentPage] = useState(PageSection.Home);
+  const location = useLocation();
+  const [currentPage, setCurrentPage] = useState(
+    (location.pathname.split('/')[1] as PageSection) || PageSection.Home,
+  );
   const [favourites, setFavourites] = useState<Products[]>([]);
   const [cart, setCart] = useState<Products[]>([]);
   const [itemCounts, setItemCounts] = useState<Record<number, number>>({});
