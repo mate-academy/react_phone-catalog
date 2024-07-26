@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import './Header.scss';
+import './../../styles/message-counter.scss';
 import { Link, NavLink } from 'react-router-dom';
 import { DispatchContext } from '../../../utils/GlobalStateProvider';
 import { memo, useContext, useMemo } from 'react';
@@ -124,7 +125,7 @@ export const Header: React.FC<Props> = memo(
             >
               {likedItems.length > 0 && (
                 // eslint-disable-next-line max-len
-                <small className="header__cart-message header__cart-message-counter">
+                <small className="message-counter">
                   {likedItems.length}
                 </small>
               )}
@@ -148,7 +149,7 @@ export const Header: React.FC<Props> = memo(
             >
               {cartItems.length > 0 && (
                 // eslint-disable-next-line max-len
-                <small className="header__cart-message header__cart-message-counter">
+                <small className="message-counter">
                   {itemsInCart}
                 </small>
               )}

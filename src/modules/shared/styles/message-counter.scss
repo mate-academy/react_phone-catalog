@@ -1,0 +1,32 @@
+@import './../../utils/resources';
+
+.message-counter {
+  position: absolute;
+  top: 40%;
+  left: 50%;
+  transform: translateY(-50%);
+
+  height: 15px;
+  width: 15px;
+
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  flex-direction: column;
+
+  border-radius: 50%;
+  border: 1px solid $black;
+  color: $white;
+  background-color: $red;
+
+  font-size: 9px;
+  font-weight: 600;
+
+  @include onDesktop {
+    top: 35%;
+    left: 55%;
+
+    height: 18px;
+    width: 18px;
+  }
+}

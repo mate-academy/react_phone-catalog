@@ -65,11 +65,15 @@
   }
 
   &__img {
+    max-height: 80px;
+    max-width: 80px;
+
     &-wrapper {
       height: 80px;
       width: 80px;
       display: flex;
       justify-content: center;
+
     }
   }
 

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import './Menu.scss';
+import './../../styles/message-counter.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import {
@@ -9,7 +10,8 @@ import {
 
 export const Menu = () => {
   const dispatch = useContext(DispatchContext);
-  const { isMenuOpened, isDarkThemeOn } = useContext(StateContext);
+  const { isMenuOpened, isDarkThemeOn, likedItems, cartItems } =
+    useContext(StateContext);
 
   const closeMenu = () => {
     dispatch({ type: 'setIsMenuOpened', payload: false });
@@ -74,7 +76,11 @@ export const Menu = () => {
                 : 'menu__btn-link'
             }
             onClick={closeMenu}
-          />
+          >
+            {likedItems.length > 0 && (
+              <small className="message-counter">{likedItems.length}</small>
+            )}
+          </NavLink>
         </button>
         <button
           className={classNames('menu__btn menu__btn--bag', {
@@ -89,7 +95,11 @@ export const Menu = () => {
                 : 'menu__btn-link'
             }
             onClick={closeMenu}
-          />
+          >
+            {cartItems.length > 0 && (
+              <small className="message-counter">{cartItems.length}</small>
+            )}
+          </NavLink>
         </button>
       </div>
     </nav>
