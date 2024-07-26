@@ -1,0 +1,22 @@
+@import '../../styles/main';
+
+.NotFoundPage {
+  
+  &__container {
+    margin: 40px auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+
+  &__img {
+    margin-top: 40px;
+    width: 300px
+  }
+
+  @include on-tablet {
+    width: auto
+  }
+};

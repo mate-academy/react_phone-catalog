@@ -1,0 +1,182 @@
+@import '../../../styles/main';
+
+.mainControls {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: 14 / -1;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / -5;
+  }
+
+  &__block {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    @extend %small-text;
+
+    color: $colorTextSecondary;
+
+    &-line {
+      width: 100%;
+      height: 1px;
+      background-color: $colorElements;
+    }
+
+    &-id {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+
+      &-number {
+        @include on-desktop {
+          display: none;
+        }
+      }
+    }
+  }
+
+  &__colors {
+    display: flex;
+    gap: 8px;
+
+    &-link {
+      width: 32px;
+      height: 32px;
+      border: 1px solid $colorIcons;
+      border-radius: 50%;
+      padding: 2px;
+
+      &-active {
+        border: 1px solid $colorWhite;
+      }
+    }
+
+    &-color {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      border: 0;
+      padding: 4px;
+      cursor: pointer;
+    }
+  }
+
+  &__capacity {
+    display: flex;
+    gap: 8px;
+
+    &-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding-top: 3px;
+      padding-inline: 4px;
+      text-decoration: none;
+      height: 32px;
+      border: 1px solid $colorIcons;
+      background-color: transparent;
+      color: $colorWhite;
+      cursor: pointer;
+
+      @extend %body-text;
+
+      &-active {
+        border: 1px solid $colorBlack;
+        background-color: $colorWhite;
+        color: $colorBlack;
+      }
+    }
+  }
+
+  &__price {
+    display: flex;
+    font-display: row;
+    gap: 8px;
+
+    &-seil {
+      @extend %h2-tablet;
+    }
+
+    &-full {
+      @extend %full-price;
+
+      color: $colorTextSecondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+
+    &-cart {
+      width: 90%;
+      height: 48px;
+      background-color: $colorAccent;
+      color: $colorWhite;
+      cursor: pointer;
+      transition: transform 0.5s;
+
+      @extend %buttons;
+
+      &:hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+        background-color: $colorPurpleHover;
+      }
+
+      &-isActive {
+        color: $colorWhite;
+        background-color: $colorBlack;
+        border: 1px solid $colorElements;
+      }
+    }
+
+    &-favourite {
+      width: 48px;
+      height: 48px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background-color: $colorBlack;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $colorSurface2;
+      }
+    }
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 0;
+
+    &-list {
+      display: flex;
+      justify-content: space-between;
+
+      &-name {
+        @extend %body-text;
+
+        color: $colorTextSecondary;
+      }
+
+      &-value {
+        @extend %body-text;
+
+        color: $colorWhite;
+      }
+    }
+  }
+}

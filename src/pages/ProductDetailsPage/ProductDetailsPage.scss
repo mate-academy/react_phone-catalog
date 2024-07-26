@@ -1,0 +1,109 @@
+@import '../../styles/main';
+
+.detailsPage {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding-top: 24px;
+
+  &__loader {
+    display: flex;
+    margin-top: 56px;
+  }
+
+  &__block {
+    @include section-grid;
+  }
+
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    grid-column: 1 / -1;
+    color: $colorTextSecondary;
+
+    @extend %body-text;
+
+    &-top {
+      @include on-desktop {
+        padding-bottom: 40px;
+      }
+    }
+
+    &-link {
+      text-decoration: none;
+    }
+
+    &-title {
+      padding-top: 3px;
+      color: $colorWhite;
+      white-space: nowrap;
+      overflow: hidden;
+      text-transform: capitalize;
+    }
+    &-product {
+      padding-top: 3px;
+    }
+  }
+
+  &__name {
+    @extend %h2-mobile;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      @include h2-tablet;
+    }
+  }
+
+  &__id {
+    display: none;
+
+    @extend %small-text;
+
+    color: $colorTextSecondary;
+
+    @include on-desktop {
+      display: block;
+      grid-column: 23 / -1;
+      justify-self: end;
+    }
+  }
+
+  &__description {
+    grid-column: 1 / -1;
+  
+    @include on-desktop {
+      grid-column: 1 / 13;
+    }
+  
+    &__block {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  
+      &-title {
+        @extend %h3-mobile;
+  
+        @include on-tablet {
+          @include h3-tablet;
+        }
+      }
+  
+      &-line {
+        width: 100%;
+        height: 1px;
+        background-color: $colorElements;
+      }
+  
+      &-text {
+        margin-top: 16px;
+  
+        @extend %body-text;
+  
+        color: $colorTextSecondary;
+      }
+    }
+  }
+}

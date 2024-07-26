@@ -1,0 +1,89 @@
+@import '../../styles/main';
+
+.menu {
+  position: fixed;
+  padding-top: 23px;
+  top: 49px;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  z-index: 1;
+  background-color: $colorBlack;
+  
+
+  &__nav {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__link {
+    @extend %uppercase-text;
+
+    padding: 8px 0;
+
+    position: relative;
+
+    &:hover {
+      color: $colorWhite;
+    }
+  }
+
+  &__active {
+    color: $colorWhite;
+    &::after {
+      position: absolute;
+      content: "";
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background-color: $colorWhite;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  
+    &__link {
+      display: flex;
+      flex: 1;
+      height: 64px;
+      align-items: center;
+      justify-content: center;
+      color: $colorTextSecondary;
+      box-shadow: 0 -1px 0 0 $colorElements, 1px 0 0 0 $colorElements;
+      position: relative;
+  
+      &:hover {
+        color: $colorWhite;
+      }
+    }
+  
+    &__active {
+      color: $colorWhite;
+      &::after {
+        position: absolute;
+        content: "";
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: 2px;
+        background-color: $colorWhite;
+      }
+    }
+  }
+
+  @include on-desktop {
+    display: none;
+  }
+
+  @include on-tablet {
+    display: none;
+  }
+}
+

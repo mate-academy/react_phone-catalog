@@ -1,0 +1,126 @@
+@import '../../styles/main';
+
+.footer {
+  @include section-grid;
+
+  background-color: $colorBlack;
+  justify-content: space-between;
+  border-top: 1px solid $colorElements;
+  padding: 32px 16px;
+  width: 100%;
+  margin-top: auto;
+
+  @include on-tablet {
+    padding: 32px;
+  }
+
+  &__logo {
+    margin-bottom: 24px;
+    grid-column: 1 / span 2;
+
+    @include on-tablet {
+      margin-left: 12px;
+      margin-bottom: 0;
+      grid-column: 1 / span 3;
+    }
+
+    &--pict {
+      width: 89px;
+    }
+  }
+
+  &__navbar {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 24px;
+
+    grid-column: 1 / span 4;
+
+    @include on-tablet {
+      grid-column: 9 / span 9;
+      flex-direction: row;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 0;
+    }
+
+    @include on-desktop {
+      grid-column: 9 / span 9;
+    }
+
+    &--link {
+      position: relative;
+      color: $colorTextSecondary;
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 800;
+      line-height: 0.92;
+      letter-spacing: 0.04em;
+      cursor: pointer;
+      text-decoration: none;
+
+      &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: 1px;
+        left: 0;
+        bottom: -6px;
+        transition: transform 0.3s;
+        transform: scale(0);
+        background-color: $colorWhite;
+      }
+
+      &:hover {
+        color: $colorWhite;
+      }
+
+      &:hover::after {
+        color: $colorWhite;
+        transform: scaleX(1);
+      }
+    }
+  }
+
+  &__back {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 16px;
+
+    grid-column: 1 / -1;
+
+    @include on-tablet {
+      grid-column: 20 / span 7;
+      justify-content: end;
+    }
+
+    @include on-desktop {
+      grid-column: 22 / span 3;
+      justify-content: end;
+    }
+
+    &--text {
+      color: $colorTextSecondary;
+      font-size: 12px;
+      font-weight: 400;
+      line-height: 1.28;
+    }
+
+    &--icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border: none;
+      width: 32px;
+      height: 32px;
+      background-color: $colorSurface2;
+
+      &:hover {
+        background-color: $colorElements;
+      }
+    }
+  }
+};

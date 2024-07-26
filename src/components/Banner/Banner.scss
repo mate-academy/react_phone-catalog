@@ -1,0 +1,190 @@
+@import '../../styles/main';
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  gap: 16px;
+
+  @include section-margin-bottom;
+
+  @include on-tablet {
+    @include section-grid;
+  }
+
+  &__button {
+    @include on-phone {
+      display: none;
+    }
+
+    height: 100%;
+    width: 32px;
+    background-color: $colorSurface2;
+    border: 1px solid $colorSurface2;
+    border-radius: 1px;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+      background-color: #4A4D58;
+    }
+  
+    @include on-tablet {
+      display: flex;
+      grid-column: span 1;
+
+      &-right {
+        justify-self: end;
+      }
+    }
+
+    &--img {
+      fill: $colorWhite;
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+
+    @include on-tablet {
+      grid-column: 2 / -2;
+    }
+
+    &-image {
+      min-width: 100%;
+      width: 100%;
+      object-fit: cover;
+      flex-shrink: 0;
+
+      transition: transform 0.5s ease;
+    }
+  }
+
+  &__dots {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    width: 80px;
+    height: 24px;
+
+    @include on-tablet {
+      grid-column: 12 / 14;
+    }
+
+    @include on-desktop {
+      grid-column: 12 / 14;
+    }
+
+    &-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 24px;
+      height: 24px;
+      cursor: pointer;
+    }
+
+    &-dot {
+      height: 4px;
+      width: 14px;
+      background-color: $colorElements;
+
+      &--active {
+        background-color: $colorWhite;
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    height: 100%;
+    width: 44%;
+    top: 0;
+    left: 0;
+    background-color: $colorSurface1;
+    opacity: 98%;
+
+    @include on-phone {
+      display: none;
+    }
+
+    &__header {
+      margin: 40px 12px 8px 18px;
+      font-family: Mont, sans-serif;
+      font-size: 24px;
+      line-height: 24px;
+      letter-spacing: 0.02em;
+      font-weight: bold;
+      background:linear-gradient(to right, $colorAccent, #e15cff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: transparent;
+
+      @include middle {
+        margin: 50px 20px 8px 30px;
+        font-size: 32px;
+        line-height: 38px;
+      }
+
+      @include on-desktop {
+        margin: 50px 50px 16px;
+        font-family: Mont, sans-serif;
+        font-size: 38px;
+        line-height: 41px;
+      }
+    }
+
+    &__text {
+      margin: 0 20px 8px;
+
+      @extend %body-text;
+
+      color: $colorTextSecondary;
+
+      @include middle {
+        margin: 0 40px 30px;
+      }
+
+      @include on-desktop {
+        margin: 0 50px 50px;
+      }
+    }
+
+    &__button {
+      font-size: 12px;
+      margin: 0 15px 30px;;
+      width: 140px;
+      height: 46px;
+      background-color: $colorSurface1;
+      border: 1px solid $colorSurface2 ;
+      color: $colorWhite;
+      cursor: pointer;
+      transition: border 0.6s ease-out;
+
+      @include middle {
+        margin: 0 30px 30px;
+      }
+
+      @include on-desktop {
+        font-size: 16px;
+        margin: 40px 50px;
+        width: 200px;
+        height: 60px;
+      }
+
+      &:hover {
+        border-color: transparent;
+        border-image: radial-gradient(circle, rgba(100, 5, 132, 0.88), $colorPurpleHover) 1;
+        border-image-slice: 1; 
+      }
+    }
+  }
+}

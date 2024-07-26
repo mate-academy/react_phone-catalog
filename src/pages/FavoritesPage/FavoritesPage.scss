@@ -1,0 +1,94 @@
+@import '../../styles/main';
+
+.FavoritesPage {
+  @include section-grid;
+
+  &__container {
+    display: flex;
+    flex-direction: column;
+    grid-column: 1 / -1;
+    gap: 24px;
+  
+    @include on-tablet {
+      gap: 40px;
+    }
+
+  @include section-margin-bottom;
+  
+  }
+
+ 
+  &__navigation {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 8px;
+    padding-top: 24px;
+
+    @include on-tablet {
+      padding-top: 40px;
+    }
+
+    &-title {
+      @extend %body-text;
+
+      color: $colorTextSecondary;
+      text-transform: capitalize;
+      padding-top: 3px;
+    }
+  }
+
+  &__descriprion {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding-bottom: 34px;
+
+    &-title {
+      @extend %h1-mobile;
+
+      @include on-tablet {
+        @include h1-tablet;
+      }
+    }
+
+    &-amount {
+      @extend %small-text;
+
+      color: $colorTextSecondary;
+    }
+  }
+
+  &__sort {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__items {
+    @include section-grid;
+
+    padding-inline: 0;
+
+    @include on-tablet {
+      padding-inline: 0;
+    }
+
+    &-wrap {
+      grid-column: span 4;
+
+      @include on-tablet {
+        grid-column: span 12;
+      }
+
+      @include middle {
+        grid-column: span 8;
+      }
+
+      @include on-desktop {
+        grid-column: span 6;
+      }
+    }
+  }
+
+}
