@@ -4,9 +4,8 @@
 .item {
   border: 1px solid #B4BDC3;
   border-radius: 8px;
-  transition: border 0.3s;
+  transition: border 0.3s, box-shadow .3s;
   cursor: pointer;
-  transition: transform .3s, box-shadow .3s;
 
   &:hover {
     border: 1px solid #E2E6E9;
