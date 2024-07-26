@@ -57,6 +57,11 @@
     @include on-tablet {
       justify-content: flex-end;
     }
+
+    &-hidden {
+      visibility: hidden;
+
+    }
   }
 
   &__button-text {

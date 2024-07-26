@@ -134,141 +134,145 @@ export const Phones: React.FC<Props> = ({ products }) => {
   const buttonsToShow = +currentPage - 3 > 0 ? +currentPage - 3 : 0;
 
   return (
-    <div className='container'>
+    <div className="container">
       {isLoading && <Loader />}
-      {!isLoading && (<section className="products">
-        <div className="products__nav">
-          <Link className="background-home" to={'/'} />
-          <Link
-            to={pathname.split('/').slice(1, 2).join('/')}
-            className="products__pathname nav-part small-text"
-          >
-            {pathname.charAt(0).toUpperCase() + pathname.slice(1)}
-          </Link>
-        </div>
-        <div className="products__title">
-          <h1 className="products__h1">Mobile phones</h1>
-          <p className="products__subtitle">{products.length} models</p>
-        </div>
-        <div className="products__container">
-          <div className="products__sort-fields">
-            <div className="products__sort-field" ref={dropdownRefSort}>
-              <p className="products__sort-field-text">Sort by</p>
-              <button
-                className={classNames('products__dropdown', {
-                  'products__dropdown-active': showSortDropdown,
-                })}
-                onClick={() => setShowSortDropdown(!showSortDropdown)}
-              >
-                <div className="products__dropdown-text">
-                  {sortBy || 'Choose sort'}
-                </div>
-                <img hidden={!showSortDropdown} src={arrowUp} alt="" />
-                <img hidden={showSortDropdown} src={arrowDown} alt="" />
-              </button>
-              {showSortDropdown && (
-                <ul className="products__dropdown-menu">
-                  {sortType.map(option => (
-                    <SearchLink
-                      className="products__option"
-                      onClick={() => {
-                        setShowSortDropdown(false);
-                      }}
-                      key={option}
-                      params={{ sortBy: `${option}` }}
-                    >
-                      {option}
-                    </SearchLink>
-                  ))}
-                </ul>
-              )}
-            </div>
-            <div className="products__sort-field" ref={dropdownRefPerPage}>
-              <p className="products__sort-field-text">Items on page</p>
-              <button
-                className={classNames('products__dropdown', {
-                  'products__dropdown-active': showPerPageDropdown,
-                })}
-                onClick={() => setShowPerPageDropdown(!showPerPageDropdown)}
-              >
-                <div className="products__dropdown-text">{perPage || 'all'}</div>
-                <img hidden={!showPerPageDropdown} src={arrowUp} alt="" />
-                <img hidden={showPerPageDropdown} src={arrowDown} alt="" />
-              </button>
-              {showPerPageDropdown && (
-                <ul className="products__dropdown-menu">
-                  {perPageOptions.map(option => (
-                    <SearchLink
-                      className="products__option"
-                      onClick={() => {
-                        setShowPerPageDropdown(false);
-                      }}
-                      key={option}
-                      params={{
-                        perPage: option !== 'all' ? `${option}` : null,
-                        page:
-                          option === 'all'
-                            ? null
-                            : currentPage === '1'
-                              ? null
-                              : currentPage,
-                      }}
-                    >
-                      {option}
-                    </SearchLink>
-                  ))}
-                </ul>
-              )}
-            </div>
+      {!isLoading && (
+        <section className="products">
+          <div className="products__nav">
+            <Link className="background-home" to={'/'} />
+            <Link
+              to={pathname.split('/').slice(1, 2).join('/')}
+              className="products__pathname nav-part small-text"
+            >
+              {pathname.charAt(0).toUpperCase() + pathname.slice(1)}
+            </Link>
           </div>
-          <Catalog products={productsToRender()} />
-        </div>
-        {perPage !== 'all' && (
-          <div className="products__buttons">
-            <button
-              disabled={+currentPage === 1}
-              className={classNames('button-slider b-left button-size', {
-                'button-slider__disabled b-left-g': +currentPage === 1,
-              })}
-              onClick={() => {
-                setSearchWith({
-                  page: currentPage === '2' ? null : `${+currentPage - 1}`,
-                });
-              }}
-            ></button>
-            <div className="products__page-buttons">
-              {pagesAmmount()
-                .map(page => (
-                  <SearchLink
-                    key={page}
-                    className={classNames('button-common button-size', {
-                      'button-common__active': +currentPage === page,
-                    })}
-                    params={{ page: page === 1 ? null : `${page}` }}
-                  >
-                    {page}
-                  </SearchLink>
-                ))
-                .splice(
-                  +currentPage === pagesAmmount().length
-                    ? buttonsToShow - 1
-                    : buttonsToShow,
-                  4,
+          <div className="products__title">
+            <h1 className="products__h1">Mobile phones</h1>
+            <p className="products__subtitle">{products.length} models</p>
+          </div>
+          <div className="products__container">
+            <div className="products__sort-fields">
+              <div className="products__sort-field" ref={dropdownRefSort}>
+                <p className="products__sort-field-text">Sort by</p>
+                <button
+                  className={classNames('products__dropdown', {
+                    'products__dropdown-active': showSortDropdown,
+                  })}
+                  onClick={() => setShowSortDropdown(!showSortDropdown)}
+                >
+                  <div className="products__dropdown-text">
+                    {sortBy || 'Choose sort'}
+                  </div>
+                  <img hidden={!showSortDropdown} src={arrowUp} alt="" />
+                  <img hidden={showSortDropdown} src={arrowDown} alt="" />
+                </button>
+                {showSortDropdown && (
+                  <ul className="products__dropdown-menu">
+                    {sortType.map(option => (
+                      <SearchLink
+                        className="products__option"
+                        onClick={() => {
+                          setShowSortDropdown(false);
+                        }}
+                        key={option}
+                        params={{ sortBy: `${option}` }}
+                      >
+                        {option}
+                      </SearchLink>
+                    ))}
+                  </ul>
                 )}
+              </div>
+              <div className="products__sort-field" ref={dropdownRefPerPage}>
+                <p className="products__sort-field-text">Items on page</p>
+                <button
+                  className={classNames('products__dropdown', {
+                    'products__dropdown-active': showPerPageDropdown,
+                  })}
+                  onClick={() => setShowPerPageDropdown(!showPerPageDropdown)}
+                >
+                  <div className="products__dropdown-text">
+                    {perPage || 'all'}
+                  </div>
+                  <img hidden={!showPerPageDropdown} src={arrowUp} alt="" />
+                  <img hidden={showPerPageDropdown} src={arrowDown} alt="" />
+                </button>
+                {showPerPageDropdown && (
+                  <ul className="products__dropdown-menu">
+                    {perPageOptions.map(option => (
+                      <SearchLink
+                        className="products__option"
+                        onClick={() => {
+                          setShowPerPageDropdown(false);
+                        }}
+                        key={option}
+                        params={{
+                          perPage: option !== 'all' ? `${option}` : null,
+                          page:
+                            option === 'all'
+                              ? null
+                              : currentPage === '1'
+                                ? null
+                                : currentPage,
+                        }}
+                      >
+                        {option}
+                      </SearchLink>
+                    ))}
+                  </ul>
+                )}
+              </div>
             </div>
-            <button
-              disabled={+currentPage === pagesAmmount().length}
-              className={classNames('button-slider b-right button-size', {
-                'button-slider__disabled b-right-g':
-                  +currentPage === pagesAmmount().length,
-              })}
-              onClick={() => {
-                setSearchWith({ page: `${+currentPage + 1}` });
-              }}
-            ></button>
+            <Catalog products={productsToRender()} />
           </div>
-        )}
-      </section>)}
+          {perPage !== 'all' && (
+            <div className="products__buttons">
+              <button
+                disabled={+currentPage === 1}
+                className={classNames('button-slider b-left button-size', {
+                  'button-slider__disabled b-left-g': +currentPage === 1,
+                })}
+                onClick={() => {
+                  setSearchWith({
+                    page: currentPage === '2' ? null : `${+currentPage - 1}`,
+                  });
+                }}
+              ></button>
+              <div className="products__page-buttons">
+                {pagesAmmount()
+                  .map(page => (
+                    <SearchLink
+                      key={page}
+                      className={classNames('button-common button-size', {
+                        'button-common__active': +currentPage === page,
+                      })}
+                      params={{ page: page === 1 ? null : `${page}` }}
+                    >
+                      {page}
+                    </SearchLink>
+                  ))
+                  .splice(
+                    +currentPage === pagesAmmount().length
+                      ? buttonsToShow - 1
+                      : buttonsToShow,
+                    4,
+                  )}
+              </div>
+              <button
+                disabled={+currentPage === pagesAmmount().length}
+                className={classNames('button-slider b-right button-size', {
+                  'button-slider__disabled b-right-g':
+                    +currentPage === pagesAmmount().length,
+                })}
+                onClick={() => {
+                  setSearchWith({ page: `${+currentPage + 1}` });
+                }}
+              ></button>
+            </div>
+          )}
+        </section>
+      )}
     </div>
   );
 };
