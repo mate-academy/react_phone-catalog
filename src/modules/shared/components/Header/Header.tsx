@@ -125,9 +125,7 @@ export const Header: React.FC<Props> = memo(
             >
               {likedItems.length > 0 && (
                 // eslint-disable-next-line max-len
-                <small className="message-counter">
-                  {likedItems.length}
-                </small>
+                <small className="message-counter">{likedItems.length}</small>
               )}
             </NavLink>
           </button>
@@ -149,9 +147,7 @@ export const Header: React.FC<Props> = memo(
             >
               {cartItems.length > 0 && (
                 // eslint-disable-next-line max-len
-                <small className="message-counter">
-                  {itemsInCart}
-                </small>
+                <small className="message-counter">{itemsInCart}</small>
               )}
             </NavLink>
           </button>

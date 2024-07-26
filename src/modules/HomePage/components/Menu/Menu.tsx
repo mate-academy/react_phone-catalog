@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import './Menu.scss';
-import './../../styles/message-counter.scss';
+import '../../../shared/styles/message-counter.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import {
