@@ -1,6 +1,6 @@
 import './App.scss';
 
-import { useEffect, useContext, memo, useState, useMemo } from 'react';
+import { useEffect, useContext, memo, useState, useMemo, useRef } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { Header } from './modules/shared/components/Header';
 import { Home } from './modules/HomePage';
@@ -20,6 +20,7 @@ import { NoProducts } from './modules/shared/components/NoProducts';
 export const App = memo(() => {
   const { isMenuOpened, minLoadDelay, isDarkThemeOn, cartItems, likedItems } =
     useContext(StateContext);
+  const appRef = useRef<HTMLDivElement>(null);
   const defaultItems = [
     ...cartItems.map(el => el.id).map(id => ({ id, count: 1 })),
   ];
@@ -41,7 +42,10 @@ export const App = memo(() => {
   }, [cartItems]);
 
   return (
-    <div className={classNames('App', { 'white-theme': !isDarkThemeOn })}>
+    <div
+      className={classNames('App', { 'white-theme': !isDarkThemeOn })}
+      ref={appRef}
+    >
       <Header
         isDarkThemeOn={isDarkThemeOn}
         isMenuOpened={isMenuOpened}
@@ -95,7 +99,7 @@ export const App = memo(() => {
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
-      <Footer />
+      <Footer appRef={appRef} />
     </div>
   );
 });

@@ -6,6 +6,8 @@
   flex: 0 0 auto;
   padding: 32px;
 
+  height: 272px;
+
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -27,6 +29,7 @@
     font-weight: 400;
     line-height: 21px;
     font-size: 14px;
+    width: 80%;
   }
 
   &__price {
@@ -80,13 +83,20 @@
     position: relative;
     width: fit-content;
     max-height: 140px;
-    max-width: 105px;
+
+    @include onTablet {
+      max-height: 185px;
+    }
 
     &-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
       user-select: none;
+
+      & a {
+        display: flex;
+      }
     }
   }
 

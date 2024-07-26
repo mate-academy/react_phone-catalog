@@ -85,7 +85,7 @@
     }
 
     &-title {
-      font-size: 4vh;
+      font-size: max(2.2em);
       background: #8A1CFF;
       background: linear-gradient(to right, #8d28fa 0%, #e04bca 100%);
       background-clip: text;
@@ -129,9 +129,10 @@
     display: flex;
     justify-content: center;
     gap: 16px;
+    overflow: hidden;
 
     @include onDesktop {
-      height: 60vh;
+      height: 432px;
     }
   }
 
@@ -160,8 +161,8 @@
     }
 
     @include onDesktop {
-      height: 100%;
       width: 1040px;
+      height: auto;
     }
   }
 

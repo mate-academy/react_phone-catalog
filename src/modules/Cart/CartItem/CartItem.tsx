@@ -50,7 +50,7 @@ export const CartItem: React.FC<Props> = ({
 
   return (
     <div
-      className={classNames('cart-item cart-item--loading', {
+      className={classNames('cart-item', {
         'cart-item-light': !isDarkThemeOn,
       })}
     >
@@ -88,6 +88,7 @@ export const CartItem: React.FC<Props> = ({
           >
             -
           </button>
+          {/* <button>{currentItem.count}</button> */}
           <p>{currentItem.count}</p>
           <button
             onClick={() => handleChangeCount(currentItem.count + 1)}

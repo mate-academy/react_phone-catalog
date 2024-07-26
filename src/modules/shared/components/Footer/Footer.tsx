@@ -2,11 +2,22 @@ import './Footer.scss';
 import './../../../shared/styles/Arrow-btn.scss';
 import { HashLink as Link } from 'react-router-hash-link';
 import classNames from 'classnames';
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { StateContext } from '../../../utils/GlobalStateProvider';
+import { useLocation } from 'react-router-dom';
 
-export const Footer = () => {
+type Props = {
+  appRef: React.MutableRefObject<HTMLDivElement | null>;
+};
+
+export const Footer: React.FC<Props> = ({ appRef }) => {
+  const location = useLocation();
   const { isDarkThemeOn } = useContext(StateContext);
+  const [appHeight, setAppHeight] = useState(0);
+
+  useEffect(() => {
+    setAppHeight(appRef.current?.children[2].clientHeight || 0);
+  }, [location, window.innerHeight]);
 
   return (
     <footer className="footer">
@@ -57,6 +68,9 @@ export const Footer = () => {
           className={classNames('footer__lift', {
             'footer__item--dark': !isDarkThemeOn,
           })}
+          style={{
+            opacity: appHeight > window.innerHeight ? 1 : 0,
+          }}
         >
           <Link className="footer__toTop" to="#welcome">
             Back to top

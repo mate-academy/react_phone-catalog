@@ -223,6 +223,8 @@ main {
 
   &--disabled {
     background-color: $gray-surface2;
+    cursor: inherit;
+    border: none;
 
     &:hover {
       background-color: $gray-surface2 !important;

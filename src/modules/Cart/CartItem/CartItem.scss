@@ -16,6 +16,10 @@
     gap: 24px;
   }
 
+  @include onDesktop {
+    width: 752px;
+  }
+
   &__btn {
     height: 32px;
     width: 32px;
@@ -69,6 +73,64 @@
     }
   }
 
+  &__name {
+    width: 50%;
+  }
+
+  &__top {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include onTablet {
+      gap: 24px;
+    }
+  }
+
+  &__btns {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    & p {
+      font-size: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 30px;
+      width: 30px;
+    }
+  }
+
+  &__price {
+    display: flex;
+    justify-content: center;
+    width: 120px;
+  }
+
+  &__loader {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: $gray-surface2;
+    opacity: 0.9;
+  }
+
   &-light {
     border: 1px solid $white-theme-nav;
 
@@ -107,44 +169,5 @@
     }
 
     background-color: transparent;
-  }
-
-  &__top {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-
-    @include onTablet {
-      gap: 24PX;
-    }
-  }
-
-  &__bottom {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-
-    @include onTablet {
-      gap: 24px;
-    }
-  }
-
-  &__btns {
-    display: flex;
-    align-items: center;
-    gap: 14px;
-  }
-
-  &__loader {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: $gray-surface2;
-    opacity: 0.9;
   }
 }

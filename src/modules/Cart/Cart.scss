@@ -28,6 +28,7 @@
     gap: 32px;
 
     @include onDesktop {
+      gap: 64px;
       flex-direction: row;
     }
   }
@@ -44,7 +45,7 @@
     gap: 16px;
 
     @include onDesktop {
-      width: 100%;
+      width: 752px;
     }
   }
 
@@ -52,7 +53,8 @@
     display: flex;
 
     @include onDesktop {
-      width: 66%;
+      // width: 66%;
+      width: 752px;
     }
   }
 
@@ -72,11 +74,14 @@
     display: flex;
     flex-direction: column;
     gap: 32px;
+    z-index: 1;
 
     border: 1px solid $gray-elements;
+    background-color: inherit;
+
 
     @include onDesktop {
-      width: 33%;
+      width: 368px;
       height: 206px;
     }
 
