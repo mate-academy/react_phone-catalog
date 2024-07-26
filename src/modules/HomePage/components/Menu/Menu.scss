@@ -1,19 +1,20 @@
 @import './../../../utils/resources';
 
 .menu {
-  margin-top: 49px;
   height: calc(100vh - 49px);
   width: 100%;
+  position: fixed;
+  top: 0;
+
   display: flex;
   opacity: 0;
-  position: fixed;
 
   flex-direction: column;
   justify-content: space-between;
 
-  transform: translateY(-100%);
+  transform: translateY(calc(-100% - 49px));
   transition: $transition-duration ease-in-out;
-  z-index: 10;
+  z-index: 1000;
   background-color: #0F1121;
 
   &__item a {
@@ -49,7 +50,7 @@
 
   &--active {
     opacity: 1;
-    transform: translateY(0%);
+    transform: translateY(calc(0% + 49px));
   }
 
   & ul {

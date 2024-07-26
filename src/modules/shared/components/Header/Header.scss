@@ -23,7 +23,7 @@
 
   justify-content: space-between;
   border-bottom: 1px solid $gray-elements;
-  background-color: inherit;
+  background-color: $black;
 
   &__wrapper {
     display: flex;
@@ -237,6 +237,8 @@
   }
 
   &-light {
+    background-color: #fff;
+
     & button:hover, .header__cart-theme:hover {
       border: 1px solid transparent !important;
       background-color: $white;

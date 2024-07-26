@@ -3,7 +3,7 @@ import classNames from 'classnames';
 
 import './CustomizedCarousel.scss';
 import './../../../shared/styles/Arrow-btn.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { SwippingWrapper } from '../../../shared/components/SwippingWrapper';
 import { StateContext } from '../../../utils/GlobalStateProvider';
 
@@ -36,6 +36,12 @@ export const CustomizedCarousel = memo(() => {
   const { isDarkThemeOn } = useContext(StateContext);
   const [slidePosition, setSlidePosition] = useState(0);
   const sliderInterval = 5000;
+
+  const navigate = useNavigate();
+
+  const handleRedirect = (link: string) => {
+    navigate(link);
+  }
 
   const carouselDotStyle = isDarkThemeOn
     ? 'carousel__dot--active'
@@ -95,6 +101,7 @@ export const CustomizedCarousel = memo(() => {
               return (
                 <div
                   key={id}
+                  onClick={() => handleRedirect(link)}
                   className={classNames('carousel__img-wrapper', `${position}`)}
                 >
                   <div className="carousel__card">
