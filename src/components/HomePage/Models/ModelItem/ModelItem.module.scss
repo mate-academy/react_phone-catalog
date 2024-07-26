@@ -2,14 +2,18 @@
 @import '/src/styles/mixins';
 
 .item {
-  border: 1px solid rgb(226, 230, 233);
+  border: 1px solid #B4BDC3;
   border-radius: 8px;
   transition: border 0.3s;
   cursor: pointer;
+  transition: transform .3s, box-shadow .3s;
 
   &:hover {
-    border: 1px solid rgb(66, 25, 208);
+    border: 1px solid #E2E6E9;
+    transform: translateY(0);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
+
 
   &__wrapper,
   &__content,
