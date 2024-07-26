@@ -1,7 +1,6 @@
 import './Menu.scss';
 import classNames from 'classnames';
 import { NavLink } from 'react-router-dom';
-import { bagImg, favouritesImg } from '../../utils/kit';
 
 const getStylelink = ({ isActive }: { isActive: boolean }) => {
   return classNames('menu__link', {
@@ -35,11 +34,11 @@ export const Menu: React.FC = () => {
 
       <div className="menu__actions">
         <NavLink to="favorites" className={getStylelinkActions}>
-          <img src={favouritesImg} alt="Favourites" />
+          <div className="icon icon--favorites"></div>
         </NavLink>
 
         <NavLink to="cart" className={getStylelinkActions}>
-          <img src={bagImg} alt="Bag" />
+          <div className="icon icon--cart"></div>
         </NavLink>
       </div>
     </div>

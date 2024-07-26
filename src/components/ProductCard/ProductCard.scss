@@ -1,0 +1,168 @@
+@import '../../styles/main';
+
+.itemForSlider {
+  position: relative;
+  width: 288px;
+  height: 100%;
+  border: 1px solid transparent;
+  background-color: $colorSurface1;
+  padding: 32px;
+  z-index: 1;
+  overflow: hidden;
+  transition: border 0.3s;
+
+  &::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60%;
+    border: 1px solid transparent;
+    box-sizing: border-box;
+    transition: height 0.4s ease-out, opacity 0.4s ease-out, border 0.6s;
+    opacity: 0%;
+    z-index: -1;
+  }
+
+  &:hover::before {
+    height: 100%;
+    background-color: $colorSurface1;
+    opacity: 100%;
+    border: 1px solid transparent;
+    border-image: radial-gradient(circle, rgba(192, 72, 252, 0.90), rgba(100, 5, 132, 0.89)) 1;
+  }
+
+  @include on-tablet {
+    width: 288px;
+    height: 506px;
+  }
+
+  @include middle {
+    width: 262px;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
+  }
+
+  &__link {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    cursor: pointer;
+
+    &-image {
+      width: 208px;
+      height: 208px;
+      object-fit: contain;
+      align-self: center;
+      transition: transform 0.5s;
+
+      &:hover {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  &__title {
+    height: 58px;
+    margin-top: 16px;
+
+    @extend %body-text;
+
+    color: $colorWhite;
+
+  }
+
+  &__price {
+    display: flex;
+    font-display: row;
+    gap: 8px;
+
+    &-seil {
+      @extend %h3-tablet;
+    }
+
+    &-full {
+      @extend %full-price;
+
+      color: $colorTextSecondary;
+      text-decoration: line-through;
+    }
+  }
+
+  &__line {
+    margin-top: 8px;
+    border: 1px solid $colorElements;
+  }
+
+  &__description {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    margin-top: 16px;
+
+    &-block {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &-name {
+      @extend %small-text;
+
+      color: $colorTextSecondary;
+    }
+
+    &-value {
+      @extend %small-text;
+
+      color: $colorWhite;
+      font-weight: 700;
+    }
+  }
+
+  &__buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 8px;
+
+    &-cart {
+      width: 100%;
+      height: 40px;
+      background-color: $colorAccent;
+      color: $colorWhite;
+      cursor: pointer;
+      transition: background-color 0.5s;
+
+      @extend %buttons;
+
+      &:hover {
+        background-color: #A378FF;
+      }
+
+      &-isActive {
+        background-color: $colorSurface1;
+        border: 1px solid $colorElements;
+      }
+    }
+
+    &-favourite {
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      display: flex;
+      background-color: $colorSurface1;
+      cursor: pointer;
+
+      &:hover {
+        background-color: $colorSurface2;
+      }
+    }
+  }
+}

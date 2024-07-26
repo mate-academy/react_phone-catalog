@@ -25,12 +25,16 @@
     grid-column: 1 / -1;
   }
 
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
   &__content {
     grid-column: 1 / -1;
     overflow: hidden;
     display: flex;
     gap: 16px;
-
 
     &-wrap {
       transition: transform 0.5s;

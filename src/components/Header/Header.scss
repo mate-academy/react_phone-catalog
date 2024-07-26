@@ -11,12 +11,46 @@
 
   position: sticky;
   top: 0;
-  z-index: 1;
+  z-index: 2;
   box-shadow: 0 1px 0 0 $colorElements;
 
   @include on-desktop {
     gap: 24px;
     height: 64px;
+  }
+
+  &__icon-count {
+    @include on-phone {
+      display: none;
+    }
+
+    position: absolute;
+    width: 14px;
+    height: 14px;
+    font-size: 10px;
+    top: 20%;
+    right: 20%;
+    border: none;
+    border-radius: 50%;
+    background-color: $colorRed;
+    font-weight: 600;
+    line-height: 1.28;
+    text-align: center;
+    color: $colorWhite;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 1px;
+
+    &--favor {
+      background-color: $colorAccent;
+    }
+  
+    @include on-desktop {
+      width: 16px;
+      height: 16px;
+      font-size: 10px;
+    }
   }
 
   &__logo {

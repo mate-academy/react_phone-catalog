@@ -1,35 +1,13 @@
 /* eslint-disable max-len */
 import logo from '../assets/icons/Logo.svg';
 import menu from '../assets/icons/Menu.svg';
-import Favourites from '../assets/icons/Favourites.svg';
-import FavouritesFiled from '../assets/icons/Favourites Filled.svg';
-import ShoppingBag from '../assets/icons/Shopping bag (Cart).svg';
 import close from '../assets/icons/Close.svg';
-import Home from '../assets/icons/Home.svg';
-import Minus from '../assets/icons/Minus.svg';
-import Plus from '../assets/icons/Plus.svg';
-import ArrowDownGray from '../assets/icons/Arrow Down.svg';
-import ArrowLeftGray from '../assets/icons/Arrow Left.svg';
-import ArrowRightGray from '../assets/icons/Arrow Right.svg';
-import ArrowupGray from '../assets/icons/Arrow Up.svg';
-import ArrowLeftWite from '../assets/icons/ArrowLeftWite.svg';
-import ArrowRightWite from '../assets/icons/ArrowRightWite.svg';
+import notFound from '../assets/product-not-found.png';
 
 export const logoImg = logo;
 export const menuImg = menu;
-export const favouritesImg = Favourites;
-export const favouritesFiledImg = FavouritesFiled;
-export const bagImg = ShoppingBag;
 export const closeImg = close;
-export const homeImg = Home;
-export const minusImg = Minus;
-export const plusImg = Plus;
-export const ArrowRightGrayImg = ArrowRightGray;
-export const ArrowLeftGrayImg = ArrowLeftGray;
-export const ArrowDownGrayImg = ArrowDownGray;
-export const ArrowupGrayImg = ArrowupGray;
-export const ArrowLeft = ArrowLeftWite;
-export const ArrowRight = ArrowRightWite;
+export const notFoundImg = notFound;
 
 import sliderDescktop1 from '../assets/slider/descktop_1.png';
 import sliderDescktop2 from '../assets/slider/descktop_2.png';
@@ -38,6 +16,10 @@ import sliderDescktop3 from '../assets/slider/descktop_3.png';
 import sliderPhone1 from '../assets/slider/phone_1.png';
 import sliderPhone2 from '../assets/slider/phone_2.png';
 import sliderPhone3 from '../assets/slider/phone_3.png';
+
+import phones from '../assets/categoryes/Phones.svg';
+import tablets from '../assets/categoryes/Tablets.svg';
+import accessories from '../assets/categoryes/Accessories.svg';
 
 const sliderDescktop = [
   {
@@ -73,3 +55,27 @@ export const sliders = {
   descktop: sliderDescktop,
   phone: sliderPhone,
 };
+
+export const categories = [
+  {
+    id: 1,
+    img: phones,
+    href: 'phones',
+    alt: 'phones',
+    title: 'Mobile phones',
+  },
+  {
+    id: 2,
+    img: tablets,
+    href: 'tablets',
+    alt: 'tablets',
+    title: 'Tablets',
+  },
+  {
+    id: 3,
+    img: accessories,
+    href: 'accessories',
+    alt: 'accessories',
+    title: 'Accessories',
+  },
+];

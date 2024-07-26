@@ -1,13 +1,13 @@
 import './Banner.scss';
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, sliders } from '../../utils/kit';
+import { sliders } from '../../utils/kit';
 // eslint-disable-next-line
 import { useSwipeable } from 'react-swipeable';
 import classNames from 'classnames';
 
 type BannerSlide = {
   id: number;
-  img: any;
+  img: string;
 };
 
 export const Banner: React.FC = () => {
@@ -64,7 +64,7 @@ export const Banner: React.FC = () => {
         aria-label="Previous"
         onClick={handleSlideBack}
       >
-        <img src={ArrowLeft} alt="" className="banner__button-img" />
+        <div className="icon icon--arrow-left" />
       </button>
 
       <div className="banner__container">
@@ -95,7 +95,7 @@ export const Banner: React.FC = () => {
         type="button"
         aria-label="Next"
       >
-        <img src={ArrowRight} alt="" />
+        <div className="icon icon--arrow-right" />
       </button>
 
       <div className="banner__dots">

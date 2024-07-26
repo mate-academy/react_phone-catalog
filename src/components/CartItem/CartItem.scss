@@ -1,0 +1,111 @@
+@import '../../styles/main';
+
+.item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  width: 100%;
+  border: 1px solid $colorElements;
+
+  @include on-tablet {
+    gap: 24px;
+    padding: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+
+  &-firstRow {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    gap: 16px;
+  }
+
+  &-secondRow {
+    display: flex;
+    height: 32px;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      flex: 1;
+      gap: 32px;
+    }
+  }
+
+  &-images {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 80px;
+    height: 80px;
+
+    &-img {
+      width: 66px;
+      height: 66px;
+      object-fit: contain;
+    }
+  }
+
+  &-title {
+    @extend %body-text;
+
+    color: $colorWhite;
+  }
+
+  &-price {
+    width: 80px;
+    text-align: end;
+
+    @extend %h3-tablet;
+  }
+
+  &-btnRemove {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+
+    &-quantity {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      width: 32px;
+      height: 32px;
+      background-color: $colorBlack;
+      border: 1px solid $colorIcons;
+
+      &:not(&-isDisabled):hover {
+        background-color: $colorIcons;;
+      }
+
+      &-isDisabled {
+        border: 1px solid $colorElements;
+      }
+    }
+
+    &-count {
+      width: 8px;
+      text-align: center;
+
+      @extend %body-text;
+
+      color: $colorWhite;
+      ;
+    }
+  }
+}

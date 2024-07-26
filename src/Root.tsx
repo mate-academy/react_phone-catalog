@@ -1,8 +1,14 @@
 import { App } from './App';
 import { Route, HashRouter as Router, Routes } from 'react-router-dom';
-import { HomePage } from './pages/HomePage/HomePage';
-import { FavoritesPage } from './pages/FavoritesPage/FavoritesPage';
-import { CardPage } from './pages/CardPage/CardPage';
+import { HomePage } from './Pages/HomePage/HomePage';
+import { FavoritesPage } from './Pages/FavoritesPage/FavoritesPage';
+import { CartPage } from './Pages/CartPage/CartPage';
+import { PhonesPage } from './Pages/PhonesPage/PhonesPage';
+import { TabletsPage } from './Pages/TabletsPage/TabletsPage';
+import { AccessoriesPage } from './Pages/Accessories/Accessories';
+// eslint-disable-next-line
+import { ProductDetailsPage } from './Pages/ProductDetailsPage/ProductDetailsPage';
+import { NotFoundPage } from './Pages/NotFoundPage/NotFoundPage';
 
 export const Root = () => (
   <Router>
@@ -10,24 +16,24 @@ export const Root = () => (
       <Route path="/" element={<App />}>
         <Route index element={<HomePage />} />
         <Route path="phones">
-          {/* <Route index element={<PhonesPage />} />
-          <Route path=":productId?" element={<DetailsPage />} /> */}
+          <Route index element={<PhonesPage />} />
+          <Route path=":productId?" element={<ProductDetailsPage />} />
         </Route>
 
         <Route path="tablets">
-          {/* <Route index element={<TabletsPage />} />
-          <Route path=":productId?" element={<DetailsPage />} /> */}
+          <Route index element={<TabletsPage />} />
+          <Route path=":productId?" element={<ProductDetailsPage />} />
         </Route>
 
         <Route path="accessories">
-          {/* <Route index element={<AccessoriesPage />} />
-          <Route path=":productId?" element={<DetailsPage />} /> */}
+          <Route index element={<AccessoriesPage />} />
+          <Route path=":productId?" element={<ProductDetailsPage />} />
         </Route>
 
-        <Route path="favourites" element={<FavoritesPage />} />
-        <Route path="cart" element={<CardPage />} />
+        <Route path="favorites" element={<FavoritesPage />} />
+        <Route path="cart" element={<CartPage />} />
 
-        <Route path="*" element={<p> not found </p>} />
+        <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
   </Router>

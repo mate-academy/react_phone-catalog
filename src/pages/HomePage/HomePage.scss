@@ -37,5 +37,9 @@
       padding-top: 56px;
       grid-column: 1 / -1;
     }
+    &--hidden {
+      font-size: 2px;
+      visibility: hidden;
+    }
   }
 }

@@ -1,14 +1,10 @@
 import classNames from 'classnames';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
-import {
-  logoImg,
-  menuImg,
-  favouritesImg,
-  bagImg,
-  closeImg,
-} from './../../utils/kit';
+import { closeImg, logoImg, menuImg } from './../../utils/kit';
 import { Menu } from '../Menu/Menu';
+import { useContext, useMemo } from 'react';
+import { ActionContext } from '../../shared/Context/ActionContext';
 
 const getStylelinkNav = ({ isActive }: { isActive: boolean }) => {
   return classNames('nav__link', {
@@ -28,9 +24,15 @@ interface Props {
 }
 
 export const Header: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
+  const { cartProducts, favouritesIds } = useContext(ActionContext);
+
   const toggleMenu = () => {
     setIsMenuOpen((prev: boolean) => !prev);
   };
+
+  const totalCount = useMemo(() => {
+    return cartProducts.reduce((count, product) => count + product.count, 0);
+  }, [cartProducts]);
 
   return (
     <header className="header">
@@ -56,11 +58,19 @@ export const Header: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
 
         <div className="actions">
           <NavLink to="favorites" className={getStylelinkActions}>
-            <img src={favouritesImg} alt="Favourites" />
+            <div className="icon icon--favorites" />
+            {!!favouritesIds.length && (
+              <span className="header__icon-count header__icon-count--favor">
+                {favouritesIds.length}
+              </span>
+            )}
           </NavLink>
 
           <NavLink to="cart" className={getStylelinkActions}>
-            <img src={bagImg} alt="Bag" />
+            <div className="icon icon--cart" />
+            {!!totalCount && (
+              <span className="header__icon-count">{totalCount}</span>
+            )}
           </NavLink>
         </div>
       </div>
@@ -71,7 +81,7 @@ export const Header: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
           className="BurgerMenu__button"
           onClick={toggleMenu}
         >
-          <img src={isMenuOpen ? closeImg : menuImg} alt="BurgerMenu" />
+          {isMenuOpen ? closeImg : menuImg}
         </button>
       </div>
       {isMenuOpen && <Menu />}

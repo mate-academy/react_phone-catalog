@@ -2,18 +2,15 @@ import { Banner } from '../../components/Banner/Banner';
 import { Categories } from '../../components/Categories/Categories';
 import { ProductSlider } from '../../components/ProductSlider/ProductSlider';
 import './HomePage.scss';
-// import products from '../../api/products.json';
-import { getBrandNewProducts, getHotPriceProducts } from '../../servises';
-import { useEffect, useState } from 'react';
-import { Product } from '../../types/Product';
-import { getProducts } from '../../utils/httpClient';
+import {
+  getBrandNewProducts,
+  getHotPriceProducts,
+} from '../../shared/servises';
+import { useContext } from 'react';
+import { ProductContext } from '../../shared/Context/ProductContext';
 
 export const HomePage: React.FC = () => {
-  const [products, setProducts] = useState<Product[] | []>([]);
-
-  useEffect(() => {
-    getProducts().then(data => setProducts(data));
-  }, []);
+  const { products } = useContext(ProductContext);
 
   const sortedByNew = getBrandNewProducts(products);
   const storedByPrice = getHotPriceProducts(products);
@@ -21,7 +18,10 @@ export const HomePage: React.FC = () => {
   return (
     <main className="homePage">
       <div className="homeTop">
-        <h1 className="homeTop__title">Welcome to Nice Gadgets store!</h1>
+        <h1 className="homeTop__title--hidden">Product Catalog</h1>
+        <header className="homeTop__title">
+          Welcome to Nice Gadgets store!
+        </header>
       </div>
       <Banner />
       <ProductSlider title="Brand new models" products={sortedByNew} />
