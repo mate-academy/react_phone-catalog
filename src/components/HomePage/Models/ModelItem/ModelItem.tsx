@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styles from './ModelItem.module.scss';
 import '../../../../styles/variables.scss';
 import { Products } from '../../../../types/Products';
@@ -16,6 +16,10 @@ export const ModelItem: React.FC<Props> = ({ model, modelsTitle }) => {
 
   const selected = favourites.some(fav => fav.id === model.id);
   const added = cart.some(item => item.id === model.id);
+
+  useEffect(() => {
+    window.scrollTo(0, 0); // Прокручуємо сторінку до верху при завантаженні
+  }, []);
 
   return (
     <div className={`models__item ${styles.item}`}>

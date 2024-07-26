@@ -2,7 +2,7 @@
 @import '/src/styles/variables';
 
 .details {
-  margin-top: 25px;
+  margin: 25px 0 40px;
 
   &__container,
   &__photos,
@@ -70,7 +70,7 @@
 
     @include on-tablet {
       flex-direction: row;
-      gap: 40px;
+      gap: 20px;
     }
   }
 
@@ -186,12 +186,13 @@
 
   &__wrapper {
     border: 1px solid rgb(226, 230, 233);
-    border-radius: 0;
+    border-radius: 50%;
     width: 32px;
     height: 32px;
 
+
     &--active {
-      border: 1px solid $main-black;
+      border: 2px solid $main-black;
     }
   }
 
@@ -200,7 +201,7 @@
     height: 100%;
     display: block;
     border-radius: 50%;
-    border: 2px solid rgb(255, 255, 255);
+    border: 1px solid rgb(255, 255, 255);
   }
 
   &__memory {

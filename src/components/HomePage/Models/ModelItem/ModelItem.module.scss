@@ -4,7 +4,7 @@
 .item {
   border: 1px solid #B4BDC3;
   border-radius: 8px;
-  transition: border 0.3s, box-shadow .3s;
+  transition: border 0.3s, box-shadow .3s, transform .3s;
   cursor: pointer;
 
   &:hover {
@@ -13,12 +13,12 @@
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
   }
 
-
   &__wrapper,
   &__content,
   &__info {
     display: flex;
     flex-direction: column;
+
   }
 
   &__wrapper {
@@ -27,6 +27,7 @@
     flex-direction: column;
     gap: 24px;
     justify-content: space-between;
+
 
     @include on-desktop {
       height: 511px;
@@ -54,7 +55,7 @@
   &__title {
     color: $main-black;
     font-size: 14px;
-    font-weight: 700;
+    font-weight: 600;
     line-height: 21px;
     transition: color 0.5s;
 

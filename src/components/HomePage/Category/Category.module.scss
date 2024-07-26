@@ -39,7 +39,7 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(1, 1fr);
-    align-items: center;
+    align-items: left;
     gap: 32px;
 
     @include on-tablet {
@@ -49,19 +49,18 @@
   }
 
   &__item {
-    border: 0 solid transparent;
+    border: 1px solid transparent;
     border-radius: 16px;
     padding-bottom: 20px;
     cursor: pointer;
     transition: border 0.3s;
     margin: 5px;
 
-    &:hover {
-    border: 1px solid #E2E6E9;
+   &:hover {
     transform: translateY(0);
-    box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+    transform: scale(1.05);
     }
-  }
+   }
 
   &__link {
     gap: 24px;
