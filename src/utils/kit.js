@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import logo from '../assets/icons/Logo.svg';
-import menu from '../assets/icons/Menu.svg';
+import menu from '../assets/icons/Icons/Menu.svg';
 import close from '../assets/icons/Close.svg';
 import notFound from '../assets/product-not-found.png';
 

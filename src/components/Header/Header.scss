@@ -165,6 +165,8 @@
   align-items: center;
   justify-content: center;
 
+  @include icons-header-size;
+
   &__button {
     display: flex;
     align-items: center;

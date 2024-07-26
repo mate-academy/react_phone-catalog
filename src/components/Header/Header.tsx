@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import './Header.scss';
 import { Link, NavLink } from 'react-router-dom';
-import { closeImg, logoImg, menuImg } from './../../utils/kit';
+import { logoImg } from './../../utils/kit';
 import { Menu } from '../Menu/Menu';
 import { useContext, useMemo } from 'react';
 import { ActionContext } from '../../shared/Context/ActionContext';
@@ -52,7 +52,7 @@ export const Header: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
             Tablets
           </NavLink>
           <NavLink to="accessories" className={getStylelinkNav}>
-            Acsessories
+            Accessories
           </NavLink>
         </nav>
 
@@ -81,7 +81,11 @@ export const Header: React.FC<Props> = ({ setIsMenuOpen, isMenuOpen }) => {
           className="BurgerMenu__button"
           onClick={toggleMenu}
         >
-          {isMenuOpen ? closeImg : menuImg}
+          {isMenuOpen ? (
+            <div className="icon icon--close"></div>
+          ) : (
+            <div className="icon icon--menu"></div>
+          )}
         </button>
       </div>
       {isMenuOpen && <Menu />}

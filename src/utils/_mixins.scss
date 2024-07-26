@@ -72,3 +72,24 @@
     height: $iconsHeaderSize-desktop;
   }
 }
+
+@mixin overflow-scroll-bar {
+  overflow: auto;
+  height: 100vh;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+    height: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background-color: #000;
+    border-radius: 10px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: #555;
+    border-radius: 10px; 
+    border: 3px solid #000;
+  }
+}

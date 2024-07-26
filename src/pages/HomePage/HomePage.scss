@@ -3,7 +3,7 @@
 .homePage {
   display: flex;
   flex-direction: column;
-}
+  }
 
 .homeTop {
   @include section-grid;
