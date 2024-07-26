@@ -3,6 +3,8 @@
 // not empty
 
 .App {
+  overflow-x: hidden;
+
   &__menu {
     position: fixed;
     z-index: 100;

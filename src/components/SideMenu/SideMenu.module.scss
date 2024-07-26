@@ -6,6 +6,7 @@
 
   &__content {
     position: relative;
+    height: 100%;
   }
 
   &__nav {
@@ -14,14 +15,40 @@
 
   &__list {
     flex-flow: column;
-    gap: 16px;
+    gap: 8px;
   }
 
   &__nav-item {
+    padding-block: 8px;
+
     &::after {
       content: '';
-      bottom: -8px;
+      bottom: 0;
       height: 2px;
     }
+  }
+
+  &__footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    display: flex;
+    height: 64px;
+    width: 100%;
+  }
+
+  &__link {
+    align-items: center;
+    border-top: 1px solid$elements-gray;
+    border-right: 1px solid $elements-gray;
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 50%;
+    border-bottom: 2px solid transparent;
+
+    @include hover(border-bottom-color, $primary-gray);
   }
 }

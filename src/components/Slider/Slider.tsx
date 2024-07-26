@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import styles from './Slider.module.scss';
 import React, { useEffect, useState } from 'react';
+import { Icon } from '../Icon';
 
 type SliderProps = {
   images: string[];
@@ -52,7 +53,7 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
             styles['slider__btn--prev'],
           )}
         >
-          &lt;
+          <Icon iconName="left" />
         </button>
 
         <a href="#">
@@ -70,7 +71,7 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
             styles['slider__btn--next'],
           )}
         >
-          &gt;
+          <Icon iconName="right" />
         </button>
 
         <div className={classNames(styles.slider__indicators)}>

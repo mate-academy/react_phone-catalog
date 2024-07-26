@@ -1,6 +1,7 @@
 import '../../styles/main.scss';
 import styles from './Header.module.scss';
 import classNames from 'classnames';
+import { Icon } from '../Icon';
 
 export const Header = () => {
   return (
@@ -41,10 +42,9 @@ export const Header = () => {
           </ul>
         </nav>
 
-        <a
-          href="#menu"
-          className={classNames('icon icon--menu top-bar__menu-icon')}
-        ></a>
+        <a href="#menu" className="top-bar__icon-control">
+          <Icon iconName="menu" />
+        </a>
       </div>
     </div>
   );

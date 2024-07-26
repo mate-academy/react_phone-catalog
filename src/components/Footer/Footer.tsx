@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import styles from './Footer.module.scss';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
+import { Icon } from '../Icon';
 
 export const Footer = () => {
   return (
@@ -37,7 +36,7 @@ export const Footer = () => {
       <div className={styles.footer__buttons}>
         <p className="small-text">Back to top</p>
         <a href="#" className={classNames(styles.footer__btn)}>
-          <FontAwesomeIcon icon={faChevronUp} />
+          <Icon iconName="up" />
         </a>
       </div>
     </section>

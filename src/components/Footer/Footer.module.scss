@@ -2,6 +2,9 @@
 
 .footer {
   margin-top: 64px;
+  margin-bottom: 0;
+  border-top: 1px solid $elements-gray;
+
   display: flex;
   flex-flow: column;
   justify-content: space-evenly;
@@ -50,6 +53,7 @@
     display: flex;
     flex-flow: column;
     justify-content: space-between;
+    align-items: flex-start;
     gap: 16px;
   }
 

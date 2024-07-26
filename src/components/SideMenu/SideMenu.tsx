@@ -1,8 +1,7 @@
 import '../../styles/main.scss';
+import { Icon } from '../Icon';
 import styles from './SideMenu.module.scss';
 import classNames from 'classnames';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as outlineHeart } from '@fortawesome/free-regular-svg-icons';
 
 export const SideMenu = () => {
   return (
@@ -13,7 +12,12 @@ export const SideMenu = () => {
             <img src="./img/icons/logo.svg" className="logo" alt="logo" />
           </a>
 
-          <a href="#" className="icon icon--close top-bar__close-icon"></a>
+          <a
+            href="#"
+            className="top-bar__icon-control top-bar__icon-control--close"
+          >
+            <Icon iconName="close" />
+          </a>
         </div>
 
         <nav className={classNames('nav', styles.menu__nav)}>
@@ -41,24 +45,12 @@ export const SideMenu = () => {
           </ul>
         </nav>
 
-        <div className="sideMenu__footer">
-          <a href="#" className="sideMenu__link sideMenu__link--favorites">
-            <FontAwesomeIcon
-              icon={outlineHeart}
-              // icon={isFavorite ? solidHeart : outlineHeart}
-              // className={classNames(styles.favoriteIcon, {
-              //   [styles.regular]: !isFavorite,
-              // })}
-            />
+        <div className={styles.menu__footer}>
+          <a href="#" className={styles.menu__link}>
+            <Icon iconName="favorites" />
           </a>
-          <a href="#" className="sideMenu__link sideMenu__link--cart">
-            <FontAwesomeIcon
-              icon={outlineHeart}
-              // icon={isFavorite ? solidHeart : outlineHeart}
-              // className={classNames(styles.favoriteIcon, {
-              //   [styles.regular]: !isFavorite,
-              // })}
-            />
+          <a href="#" className={styles.menu__link}>
+            <Icon iconName="cart" />
           </a>
         </div>
       </div>

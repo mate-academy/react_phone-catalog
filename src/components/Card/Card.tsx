@@ -1,10 +1,8 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHeart as solidHeart } from '@fortawesome/free-solid-svg-icons';
-import { faHeart as outlineHeart } from '@fortawesome/free-regular-svg-icons';
 import classNames from 'classnames';
 import styles from './Card.module.scss';
 import { useState } from 'react';
 import { CardDetail } from '../CardDetail/CardDetail';
+import { Icon } from '../Icon';
 
 export const Card = () => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -48,12 +46,11 @@ export const Card = () => {
           )}
           onClick={toggleFavorite}
         >
-          <FontAwesomeIcon
-            icon={isFavorite ? solidHeart : outlineHeart}
-            className={classNames(styles.favoriteIcon, {
-              [styles.regular]: !isFavorite,
-            })}
-          />
+          {isFavorite ? (
+            <Icon iconName="favorites-filled" />
+          ) : (
+            <Icon iconName="favorites" />
+          )}
         </button>
       </div>
     </div>
