@@ -1,0 +1,97 @@
+@import '../../main';
+
+.productSlider {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    gap: 16px;
+    padding-inline: $container-padding-mobile;
+
+    @include on-tablet {
+      padding-inline: $container-padding-tablet;
+    }
+
+    @include on-desktop {
+      padding-inline: $container-padding-desktop;
+    }
+
+    .title {
+      font-weight: 800;
+      font-size: 22px;
+      line-height: 30.8px;
+
+      @include on-tablet {
+        font-size: 32px;
+        font-weight: 800;
+        line-height: 41px;
+        letter-spacing: -0.01em;
+      }
+    }
+
+    .arrows {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+
+      &__left {
+        height: 32px;
+        width: 32px;
+        padding: 8px;
+        border: 1px solid #e2e6e9;
+        border-radius: 48px;
+        cursor: pointer;
+        background-image: url(../../assets/img/icons/arrow-right.svg);
+        transform: scaleX(-1);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--active {
+          background-image: url(../../assets/img/icons/arrow-right-active.svg);
+          transform: scaleX(-1);
+          background-repeat: no-repeat;
+          background-position: center;
+          border: 1px solid #b4bdc3;
+        }
+      }
+
+      &__right {
+        height: 32px;
+        width: 32px;
+        padding: 8px;
+        border: 1px solid #e2e6e9;
+        border-radius: 48px;
+        cursor: pointer;
+        background-image: url(../../assets/img/icons/arrow-right.svg);
+        background-repeat: no-repeat;
+        background-position: center;
+
+        &--active {
+          background-image: url(../../assets/img/icons/arrow-right-active.svg);
+          background-repeat: no-repeat;
+          background-position: center;
+          border: 1px solid #b4bdc3;
+        }
+      }
+    }
+  }
+
+  .productCard {
+    display: flex;
+    gap: 16px;
+    padding-left: $container-padding-mobile;
+    overflow-x: auto;
+
+    @include on-tablet {
+      padding-left: $container-padding-tablet;
+    }
+
+    @include on-desktop {
+      padding-left: $container-padding-desktop;
+    }
+  }
+}

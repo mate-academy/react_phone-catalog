@@ -5,8 +5,8 @@ import { useContext, useEffect } from 'react';
 import { AppContext } from '../../store';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
-  cn(style.menu__link, {
-    [style['menu__link--active']]: isActive,
+  cn(style.nav__link, {
+    [style['nav__link--active']]: isActive,
   });
 
 const getActiveIconLike = ({ isActive }: { isActive: boolean }) =>
@@ -49,10 +49,10 @@ export const Aside: React.FC = () => {
         [style['menu--active']]: isMenuActive,
       })}
     >
-      <nav className={style.menu__nav}>
-        <ul className={style.menu__list}>
+      <nav className={style.nav}>
+        <ul className={style.nav__list}>
           {navItems.map(({ path, name }) => (
-            <li key={name} className={style.menu__item}>
+            <li key={name} className={style.nav__item}>
               <NavLink
                 to={path}
                 className={getActiveLink}

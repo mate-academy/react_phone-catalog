@@ -1,36 +1,71 @@
+@import '../../main';
+
 .card {
   padding: 32px;
-  grid-column: 1 / 4;
   border: 1px solid #e2e6e9;
   border-radius: 8px;
   background-color: #fff;
   display: flex;
   flex-direction: column;
   gap: 8px;
+  min-width: 212px;
 
-  &__img {
+  @include on-tablet {
+    min-width: 237px;
+  }
+
+  @include on-desktop {
+    min-width: 272px;
+  }
+
+  .img {
     height: 148px;
     width: 129px;
     margin: auto;
+    display: flex;
+
+    @include on-tablet {
+      height: 202px;
+      width: 173px;
+    }
+
+    @include on-desktop {
+      height: 208px;
+      width: 196px;
+    }
   }
 
-  &__title {
+  .title {
     padding-top: 16px;
     font-size: 14px;
     line-height: 21px;
   }
 
-  &__price {
-    font-size: 22px;
-    font-weight: 800;
-    line-height: 30.8px;
+  .price {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &__actual {
+      font-size: 22px;
+      font-weight: 800;
+      line-height: 30.8px;
+    }
+
+    &__old {
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 28.12px;
+      color: #89939a;
+      text-decoration: line-through;
+    }
   }
 
-  &__divider {
+  .divider {
     border: 1px solid #e2e6e9;
   }
 
-  &__specs {
+  .specs {
     padding-block: 8px;
     display: flex;
     flex-direction: column;
@@ -53,22 +88,47 @@
     }
   }
 
-  &__bottom {
+  .buttons {
     display: flex;
     justify-content: space-between;
     gap: 8px;
-  }
 
-  &__button {
-    padding: 9.5px 22px;
-    color: #fff;
-    background-color: #4219d0;
-    border-radius: 48px;
-  }
+    &__add {
+      color: #fff;
+      background-color: #4219d0;
+      border-radius: 48px;
+      padding: 9.5px;
+      cursor: pointer;
 
-  &__like {
-    padding: 12px;
-    border: 1px solid #b4bdc3;
-    border-radius: 48px;
+      @include on-tablet {
+        padding: 9.5px 22px;
+      }
+
+      @include on-desktop {
+        padding: 9.5px 39.5px;
+      }
+
+      @include hover {
+        box-shadow: 0 3px 13px 0 #17203166;
+      }
+
+      &:focus {
+        border: 1px solid #e2e6e9;
+        color: #4219d0;
+        background-color: #fafbfc;
+      }
+    }
+
+    &__like {
+      border: 1px solid #b4bdc3;
+      border-radius: 48px;
+      cursor: pointer;
+      background-image: url(../../assets/img/icons/like.svg);
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px;
+      width: 40px;
+      height: 40px;
+    }
   }
 }

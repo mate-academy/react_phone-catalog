@@ -1,24 +1,61 @@
+@import '../../main';
+
 .footer {
-  padding: 32px 16px;
   display: flex;
   flex-direction: column;
   gap: 32px;
+  padding: 32px 16px;
   background-color: #fff;
   box-shadow: 0 -1px 0 0 #e2e6e9;
 
-  &__logo {
-    width: 89px;
-    height: 32px;
+  @include on-tablet {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 32px;
+    gap: 0;
   }
 
-  &__nav {
+  .logo {
+    width: 89px;
+    height: 32px;
+
+    @include hover {
+      transform: scale(1.05);
+    }
+
+    &__link {
+      display: flex;
+    }
+  }
+
+  .nav {
     &__list {
       display: flex;
       flex-direction: column;
       gap: 16px;
+
+      @include on-tablet {
+        flex-direction: row;
+        justify-content: space-between;
+        gap: 32px;
+      }
+
+      @include on-desktop {
+        gap: 108px;
+      }
     }
 
     &__item {
+      width: fit-content;
+
+      @include hover {
+        transform: scale(1.05);
+        transform-origin: center;
+      }
+    }
+
+    &__link {
       color: #89939a;
       text-transform: uppercase;
       font-weight: 800;
@@ -27,11 +64,16 @@
     }
   }
 
-  &__backToTop {
+  .backToTop {
     display: flex;
     gap: 16px;
     justify-content: center;
     align-items: center;
+    cursor: pointer;
+
+    @include hover {
+      transform: scale(1.03);
+    }
 
     &__text {
       color: #89939a;

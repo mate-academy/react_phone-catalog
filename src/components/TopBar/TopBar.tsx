@@ -10,8 +10,8 @@ import { useContext } from 'react';
 import { AppContext } from '../../store';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
-  cn(style.topbar__nav__link, {
-    [style['topbar__nav__link--active']]: isActive,
+  cn(style.nav__link, {
+    [style['nav__link--active']]: isActive,
   });
 
 const getActiveIconLike = ({ isActive }: { isActive: boolean }) =>
@@ -38,13 +38,13 @@ export const TopBar = () => {
     <>
       <div className={style.topbar}>
         <div className={style.topbar__left}>
-          <NavLink to={'home'} className={style.topbar__logo__link}>
-            <img src={logo} alt="logo" className={style.topbar__logo} />
+          <NavLink to={'home'} className={style.logo__link}>
+            <img src={logo} alt="logo" className={style.logo} />
           </NavLink>
-          <nav className={style.topbar__nav}>
-            <ul className={style.topbar__nav__list}>
+          <nav className={style.nav}>
+            <ul className={style.nav__list}>
               {navItems.map(({ path, name }) => (
-                <li key={name} className={style.topbar__nav__item}>
+                <li key={name} className={style.nav__item}>
                   <NavLink to={path} className={getActiveNavLink}>
                     {name}
                   </NavLink>

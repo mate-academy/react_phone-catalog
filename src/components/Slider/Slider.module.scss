@@ -1,9 +1,67 @@
-.slider {
-  &__img {
-    width: 100%;
+@import '../../main';
+
+.img {
+  width: 100vw;
+  height: 100vw;
+  object-position: center;
+  object-fit: cover;
+
+  @include on-tablet {
+    height: 221px;
+    object-fit: contain;
+    padding-inline: 75px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
-  &__slides {
-    text-align: center;
+  @include on-desktop {
+    height: 432px;
   }
+}
+
+.paginationContainer {
+  margin-top: 36px;
+}
+
+.swiperButtonNext,
+.swiperButtonPrev {
+  background-color: #fafbfc;
+  border: 1px solid #b4bdc3;
+  width: 32px;
+  height: 200px;
+  border-radius: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+
+  @include hover {
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+
+  @include on-desktop {
+    height: 432px;
+  }
+}
+
+.swiperButtonNext {
+  right: 24px;
+  background-image: url(../../assets/img/icons/arrow-right.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #0f0f11;
+}
+
+.swiperButtonPrev {
+  background-image: url(../../assets/img/icons/arrow-left.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  color: #0f0f11;
+  left: 24px;
 }

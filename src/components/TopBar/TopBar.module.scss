@@ -2,12 +2,12 @@
 
 .topbar {
   height: $topbar-height-mobile;
-  z-index: 100;
 
   @include on-desktop {
     height: $topbar-height-desktop;
   }
 
+  z-index: 100;
   width: 100%;
   background-color: #fff;
   box-shadow: 0 1px 0 0 #e2e6e9;
@@ -20,6 +20,7 @@
 
   &__left {
     display: flex;
+    align-items: center;
 
     @include on-tablet {
       gap: 16px;
@@ -29,36 +30,103 @@
       gap: 24px;
     }
 
-    align-items: center;
+    .logo {
+      height: 22px;
+      width: 64px;
+
+      @include on-desktop {
+        height: 28px;
+        width: 80px;
+      }
+
+      margin: 13px 16px;
+
+      @include on-desktop {
+        margin: 18px 24px;
+      }
+
+      @include hover {
+        transform: scale(1.07);
+      }
+
+      &__link {
+        display: flex;
+      }
+    }
+
+    .nav {
+      display: none;
+
+      @include on-tablet {
+        display: block;
+      }
+
+      &__list {
+        display: flex;
+
+        @include on-tablet {
+          gap: 32px;
+        }
+
+        @include on-desktop {
+          gap: 64px;
+        }
+
+        align-items: center;
+      }
+
+      &__item {
+        display: flex;
+        height: $topbar-height-mobile;
+
+        @include on-desktop {
+          height: $topbar-height-desktop;
+        }
+
+        align-items: center;
+      }
+
+      &__link {
+        display: flex;
+        text-transform: uppercase;
+        font-weight: 800;
+        line-height: 11px;
+        letter-spacing: 0.04em;
+        color: #89939a;
+        align-items: center;
+        height: 100%;
+        position: relative;
+
+        &:not(.nav__link--active)::after {
+          content: '';
+          height: 3px;
+          background-color: #0f0f11;
+          position: absolute;
+          bottom: 0;
+          width: 0;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: width 0.3s ease;
+        }
+
+        @include hover {
+          transform: scale(1.06);
+          &::after {
+            width: 100%;
+          }
+        }
+
+        &--active {
+          color: #0f0f11;
+          border-bottom: 3px solid #0f0f11;
+        }
+      }
+    }
   }
 
   &__right {
     display: flex;
     align-items: center;
-  }
-
-  &__logo {
-    height: 22px;
-    width: 64px;
-
-    @include on-desktop {
-      height: 28px;
-      width: 80px;
-    }
-
-    margin: 13px 16px;
-
-    @include on-desktop {
-      margin: 18px 24px;
-    }
-
-    @include hover {
-      transform: scale(1.07);
-    }
-
-    &__link {
-      display: flex;
-    }
   }
 
   &__iconContainer {
@@ -118,75 +186,6 @@
   &__burgerMenu {
     @include on-tablet {
       display: none;
-    }
-  }
-
-  &__nav {
-    display: none;
-
-    @include on-tablet {
-      display: block;
-    }
-
-    &__list {
-      display: flex;
-
-      @include on-tablet {
-        gap: 32px;
-      }
-
-      @include on-desktop {
-        gap: 64px;
-      }
-
-      align-items: center;
-    }
-
-    &__item {
-      display: flex;
-      height: $topbar-height-mobile;
-
-      @include on-desktop {
-        height: $topbar-height-desktop;
-      }
-
-      align-items: center;
-    }
-
-    &__link {
-      display: flex;
-      text-transform: uppercase;
-      font-weight: 800;
-      line-height: 11px;
-      letter-spacing: 0.04em;
-      color: #89939a;
-      align-items: center;
-      height: 100%;
-      position: relative;
-
-      &:not(.topbar__nav__link--active)::after {
-        content: '';
-        height: 3px;
-        background-color: #0f0f11;
-        position: absolute;
-        bottom: 0;
-        width: 0;
-        left: 50%;
-        transform: translateX(-50%);
-        transition: width 0.3s ease;
-      }
-
-      @include hover {
-        transform: scale(1.06);
-        &::after {
-          width: 100%;
-        }
-      }
-
-      &--active {
-        color: #0f0f11;
-        border-bottom: 3px solid #0f0f11;
-      }
     }
   }
 }

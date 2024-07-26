@@ -1,15 +1,70 @@
-import slider1 from '../../assets/img/slider/slider-1.png';
-import slideActive from '../../assets/img/slider/slide-active.png';
-import slideUnactive from '../../assets/img/slider/slide-unactive.png';
+import slider1_mobile from '../../assets/img/slider/slider-1-mobile.png';
+import slider1_tablet from '../../assets/img/slider/slider-1-tablet.png';
+import slider2 from '../../assets/img/slider/slider-2.png';
+import slider3 from '../../assets/img/slider/slider-3.png';
 import style from './Slider.module.scss';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// eslint-disable-next-line import/no-extraneous-dependencies
+import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import 'swiper/scss';
+import 'swiper/scss/pagination';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-export const Slider = () => (
-  <div className={style.slider}>
-    <img src={slider1} className={style.slider__img} />
-    <div className={style.slider__slides}>
-      <img src={slideActive} />
-      <img src={slideUnactive} />
-      <img src={slideUnactive} />
-    </div>
-  </div>
-);
+export const Slider = () => {
+  const [isActiveNavigation, setIsActiveNavigation] = useState(false);
+
+  useEffect(() => {
+    const updateSwiperSettings = () => {
+      if (window.innerWidth > 639) {
+        setIsActiveNavigation(true);
+      } else {
+        setIsActiveNavigation(false);
+      }
+    };
+
+    updateSwiperSettings();
+    window.addEventListener('resize', updateSwiperSettings);
+
+    return () => window.removeEventListener('resize', updateSwiperSettings);
+  }, []);
+
+  return (
+    <Swiper
+      modules={[Pagination, Autoplay, Navigation]}
+      pagination={{ clickable: true }}
+      autoplay={{ delay: 5000 }}
+      navigation={
+        isActiveNavigation && {
+          nextEl: `.${style.swiperButtonNext}`,
+          prevEl: `.${style.swiperButtonPrev}`,
+        }
+      }
+      loop={true}
+      centeredSlides={true}
+    >
+      <SwiperSlide>
+        <img
+          src={isActiveNavigation ? slider1_tablet : slider1_mobile}
+          className={style.img}
+        />
+      </SwiperSlide>
+      <SwiperSlide>
+        <div className={style.img__container}>
+          <img src={slider2} className={style.img} />
+        </div>
+      </SwiperSlide>
+      <SwiperSlide>
+        <img src={slider3} className={style.img} />
+      </SwiperSlide>
+      <div slot="container-end" className={style.paginationContainer} />
+
+      {isActiveNavigation && (
+        <>
+          <div className={`${style.swiperButtonNext} swiper-button-next`} />
+          <div className={`${style.swiperButtonPrev} swiper-button-prev`} />
+        </>
+      )}
+    </Swiper>
+  );
+};

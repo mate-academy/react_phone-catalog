@@ -1,42 +1,33 @@
 import style from './CategoryShop.module.scss';
-import mobiles from '../../assets/img/categoryShop/categoryShop_mobile.png';
-import tablet from '../../assets/img/categoryShop/categoryShop__tablet.png';
-// eslint-disable-next-line max-len
-import accessories from '../../assets/img/categoryShop/categoryShop__accessories.png';
+import mobiles from '../../assets/img/categoryShop/mobile.png';
+import tablet from '../../assets/img/categoryShop/tablet.png';
+import accessories from '../../assets/img/categoryShop/accessories.png';
+import { NavLink } from 'react-router-dom';
+
+const categories = [
+  { img: mobiles, name: 'Mobile phones', models: '95 models', href: 'phones' },
+  { img: tablet, name: 'Tablets', models: '24 models', href: 'tablets' },
+  {
+    img: accessories,
+    name: 'Accessories',
+    models: '100 models',
+    href: 'accessories',
+  },
+];
 
 export const CategoryShop = () => (
   <section className={style.categoryShop}>
-    <h2 className={style.categoryShop__title}>Shop by category</h2>
-    <div className={style.categoryShop__content}>
-      <article className={style.categoryShop__article}>
-        <img
-          src={mobiles}
-          alt="mobile category"
-          className={style.categoryShop__img}
-        />
-        <h4 className={style.categoryShop__name}>Mobile phones</h4>
-        <p className={style.categoryShop__countModels}>95 models</p>
-      </article>
-
-      <article className={style.categoryShop__article}>
-        <img
-          src={tablet}
-          alt="tablets category"
-          className={style.categoryShop__img}
-        />
-        <h4 className={style.categoryShop__name}>Tablets</h4>
-        <p className={style.categoryShop__countModels}>24 models</p>
-      </article>
-
-      <article className={style.categoryShop__article}>
-        <img
-          src={accessories}
-          alt="accessories category"
-          className={style.categoryShop__img}
-        />
-        <h4 className={style.categoryShop__name}>Accessories</h4>
-        <p className={style.categoryShop__countModels}>100 models</p>
-      </article>
+    <h2 className={style.title}>Shop by category</h2>
+    <div className={style.content}>
+      {categories.map(({ img, name, models, href }) => (
+        <article key={name} className={style.article}>
+          <NavLink to={href}>
+            <img src={img} alt={name} className={style.article__img} />
+            <h4 className={style.article__name}>{name}</h4>
+            <p className={style.article__countModels}>{models}</p>
+          </NavLink>
+        </article>
+      ))}
     </div>
   </section>
 );

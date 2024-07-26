@@ -1,1 +1,37 @@
-// not empty
+@import '../../main';
+
+.homePage {
+  display: flex;
+  flex-direction: column;
+  gap: 56px;
+
+  @include on-tablet {
+    gap: 64px;
+  }
+
+  @include on-desktop {
+    gap: 80px;
+  }
+}
+
+.title {
+  margin-block: 24px;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    margin-block: 32px;
+    font-size: 48px;
+    font-weight: 800;
+    line-height: 56px;
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    margin-block: 56px;
+    padding-inline: 32px;
+  }
+}
