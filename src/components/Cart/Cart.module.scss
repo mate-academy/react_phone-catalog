@@ -3,24 +3,27 @@
 
 .cart {
   margin-top: 40px;
-  flex: 1 1;
+  flex: 1;
 
   &__container {
     gap: 32px;
     max-width: 1160px;
-    margin: 0 auto;
+    margin: 0 auto 30px auto;
     padding: 0 17px;
     display: flex;
     flex-direction: column;
+    overflow-y: auto;
 
     @include on-desktop {
       padding: 0;
+
     }
   }
 
   &__content {
     display: grid;
     gap: 16px;
+    margin-bottom: 40px;
     grid-template-columns: repeat(12, 1fr);
   }
 
@@ -49,9 +52,14 @@
 
   &__title {
     color: $main-black;
-    font-size: 32px;
+    font-size: 22px;
     font-weight: 700;
     line-height: 41px;
+    margin: 0 auto;
+
+    @include on-desktop {
+      font-size: 32px;
+    }
   }
 
   &__items {

@@ -4,9 +4,10 @@
 .footer {
   padding: 32px 16px;
   box-shadow: 0 -1px 0 0 rgb(226, 230, 233);
-  margin-top: 64px;
+  margin: 40px auto ;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 32px;
 
   @include on-tablet {
@@ -33,8 +34,9 @@
   }
 
   &__list {
+    align-items: center;
     display: flex;
-    flex-direction: column;
+    justify-content: center;
     gap: 16px;
 
     @include on-tablet {

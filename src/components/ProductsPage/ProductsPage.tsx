@@ -113,8 +113,16 @@ export const ProductsPage: React.FC<Props> = ({ product }) => {
     };
   }, []);
 
+  useEffect(() => {
+    window.scrollTo(0, 0); // Прокручуємо сторінку до верху при завантаженні
+  }, []);
+
   if (loading) {
     return <Loader />; // Показуємо лоадер під час завантаження даних
+  }
+
+  if (!product) {
+    return <div>Product not found</div>;
   }
 
   return (

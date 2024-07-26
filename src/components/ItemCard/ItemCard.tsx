@@ -15,6 +15,7 @@ import {
   getDetailedPhones,
   getDetailedTablets,
 } from '../../api';
+// import { deepEqual } from 'assert';
 
 interface Props {
   swiperIndex: number;
@@ -43,12 +44,7 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
 
   const handleChangeColor = () => {
     const pathParts = location.pathname.split('/');
-    let secondPart = pathParts
-      .slice(2)
-      .join('-')
-      .split('-')
-      .slice(0, -1)
-      .join('-');
+    let secondPart = pathParts[2].split('-').slice(0, -1).join('-');
 
     if (
       secondPart.indexOf('gb') + 2 !== secondPart.length &&
@@ -62,22 +58,19 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
 
   const handleChangeMemory = () => {
     const pathParts = location.pathname.split('/');
-    let secondPart = pathParts
-      .slice(2)
-      .join('-')
-      .split('-')
-      .slice(0, -1)
-      .join('-');
+    let secondPart = pathParts[2];
 
-    if (
-      secondPart.indexOf('gb') + 2 !== secondPart.length &&
-      secondPart.indexOf('gb') !== -1
-    ) {
-      secondPart = secondPart.slice(0, secondPart.indexOf('gb') + 2);
-    }
+    secondPart = secondPart.split('-').slice(0, -2).join('-');
 
     return `/${pathParts[1]}/${secondPart}`;
   };
+
+  // const handleMemoryClick = () => {
+  //   const pathName = location.pathname.split('/');
+
+  //   setStartMemory(pathName[pathName.length - 2]);
+  //   // Можливо, також потрібно оновити URL
+  // };
 
   const handleFindId = (id: string) => {
     const findedId = productsFromServer.find(item => item.itemId === id);
@@ -146,8 +139,8 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
 
       setModel(fetchedModel);
       if (fetchedModel) {
-        setActiveColor(firstColor || fetchedModel.colorsAvailable[0]);
-        setStartMemory(fetchedModel.capacityAvailable[0]);
+        setActiveColor(fetchedModel.color || firstColor);
+        setStartMemory(fetchedModel.capacity);
       }
 
       setLoading(false);
@@ -256,13 +249,13 @@ export const ItemCard: React.FC<Props> = ({ swiperIndex }) => {
                     <div className={styles.details__items}>
                       {model.capacityAvailable.map(memory => (
                         <Link
-                          to={`${handleChangeMemory()}-${memory.toLowerCase()}-${activeColor}`}
+                          to={`${handleChangeMemory()}-${memory.toLowerCase()}-${activeColor?.split('-').slice(-1)}`}
                           key={memory}
                           className={classNames(styles.details__memory, {
                             [styles['details__memory--active']]:
                               startMemory === memory,
                           })}
-                          onClick={() => setStartMemory(memory)}
+                          // onClick={() => handleMemoryClick(memory)}
                         >
                           <p
                             className={classNames(styles.details__amount, {
