@@ -1,0 +1,63 @@
+.slider {
+  @include page-grid;
+
+  &__title-buttons {
+    grid-column: span 4;
+
+    @include on-tablet {
+      grid-column: span 12;
+    }
+    @include on-decktop {
+      grid-column: span 24;
+    }
+
+    @include page-grid;
+  }
+
+  &__title {
+    margin-bottom: 24px;
+    @include h2;
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 10;
+    }
+
+    @include on-decktop {
+      grid-column: span 12;
+    }
+  }
+
+  &__buttons {
+    grid-column: span 2;
+
+    @include on-tablet {
+      grid-column: span 2;
+    }
+
+    @include on-decktop {
+      grid-column: span 12;
+    }
+
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+  }
+
+  &__container {
+    overflow: hidden;
+    grid-column: span 4;
+    @include on-tablet {
+      grid-column: span 12;
+    }
+    @include on-decktop {
+      grid-column: span 24;
+    }
+    display: flex;
+  }
+
+  &__list {
+    display: flex;
+    gap: 16px;
+  }
+}
