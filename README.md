@@ -22,7 +22,7 @@ Follow the [Instruction](https://github.com/mate-academy/react_phone-catalog/blo
 
 Use the data from `/public/api` and images from `/public/img` folders. You can reorganize them the way you like.
 
-## App
+<!-- ## App
 
 1. Put components into the `src/components` folder.
    - Each component should be a folder with `index.ts`, `ComponentName.tsx`, `ComponentName.module.scss` files.
@@ -38,7 +38,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 5. Add `NotFoundPage` containing text `Page not found` for all the unknown URLs.
 6. All changes the hover effects should be smooth.
 7. Scale all image links by 10% on hover.
-8. Implement all form elements and icons according to the UI Kit.
+8. Implement all form elements and icons according to the UI Kit. -->
 
 ## Home page
 

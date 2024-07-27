@@ -38,15 +38,27 @@
     }
   }
 
-  &__price {
+  &__priceBlock {
+    display: flex;
+    gap: 8px;
     margin-bottom: 8px;
-    color: $primary-grey-color;
-    font-family: inherit;
-    font-size: 22px;
-    font-weight: 700;
-    line-height: 140%;
     letter-spacing: 0%;
     text-align: left;
+    font-size: 22px;
+    font-family: inherit;
+  }
+
+  &__newPrice {
+    color: $primary-grey-color;
+    font-weight: 700;
+    line-height: 140%;
+  }
+
+  &__oldPrice {
+    color: $secondary-grey-color;
+    font-weight: 500;
+    line-height: 28px;
+    text-decoration-line: line-through;
   }
 
   &__divider {

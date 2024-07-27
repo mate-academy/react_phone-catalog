@@ -105,6 +105,7 @@
   display: flex;
 
   &__container {
+    position: relative;
     height: 48px;
     width: 48px;
     border-left: solid $elements-grey-color 2px;
@@ -265,5 +266,26 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+  }
+}
+
+.redSpot {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border: 1px solid $white-color;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: $red-color;
+
+  &__number {
+    color: $white-color;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
   }
 }

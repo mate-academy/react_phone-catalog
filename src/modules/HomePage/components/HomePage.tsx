@@ -1,10 +1,11 @@
 import React from 'react';
 import styles from './Home.module.scss';
 import './Home.module.scss';
-import { WelcomeSwiper } from '../../shared/welcomeSwiper/WelcomeSwiper';
-import { CardsSwiper } from '../../shared/cardsSwiper/CardsSwiper';
+import { WelcomeSlider } from './../../shared/welcomeSlider/WelcomeSlider';
+import { ProductsSlider } from '../../shared/ProductsSlider//ProductsSlider';
 import { useAppSelector } from '../../../app/hooks';
 import { HidenMenu } from '../../HidenMenu/components';
+import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
   const newModelsTitle = 'Brand new models';
@@ -16,6 +17,18 @@ export const HomePage: React.FC = () => {
   const accessoriesFromServer = useAppSelector(
     state => state.accessories.objects,
   );
+
+  const brandNewModels = productsFromServer
+    .filter(prod => prod.fullPrice === prod.price)
+    .sort((prod1, prod2) => {
+      return prod2.price - prod1.price;
+    });
+
+  const hotPriceModels = productsFromServer
+    .filter(prod => prod.fullPrice !== prod.price)
+    .sort((prod1, prod2) => {
+      return prod2.price - prod1.price;
+    });
 
   return (
     <div id="homePage" className={styles.homePage}>
@@ -29,13 +42,13 @@ export const HomePage: React.FC = () => {
         </div>
 
         <div className={styles.welcome__swiper}>
-          <WelcomeSwiper />
+          <WelcomeSlider />
         </div>
       </section>
 
       <section className={styles.newModels}>
         <div className={styles.newModels__swiper}>
-          <CardsSwiper title={newModelsTitle} gadgets={productsFromServer} />
+          <ProductsSlider title={newModelsTitle} gadgets={brandNewModels} />
         </div>
       </section>
 
@@ -44,42 +57,51 @@ export const HomePage: React.FC = () => {
 
         <div className={styles.categories__wraper}>
           <div className={styles.category}>
-            <img
-              className={styles.category__image}
-              src="/img/phones-category.png"
-              alt="phones"
-            />
-            <a className={styles.category__title} href="">
+            <Link to="/phones">
+              <img
+                className={styles.category__image}
+                src="/img/phones-category.png"
+                alt="phones"
+              />
+            </Link>
+
+            <Link className={styles.category__title} to="/phones">
               Mobile phones
-            </a>
+            </Link>
             <p className={styles.category__quantity}>
               {`${phonesFromServer.length} models`}
             </p>
           </div>
 
           <div className={styles.category}>
-            <img
-              className={styles.category__image}
-              src="/img/tablets-category.png"
-              alt="tablets"
-            />
-            <a className={styles.category__title} href="">
+            <Link to="/tablets">
+              <img
+                className={styles.category__image}
+                src="/img/tablets-category.png"
+                alt="tablets"
+              />
+            </Link>
+
+            <Link className={styles.category__title} to="/tablets">
               Tablets
-            </a>
+            </Link>
             <p
               className={styles.category__quantity}
             >{`${tabletsFromServer.length} models`}</p>
           </div>
 
           <div className={styles.category}>
-            <img
-              className={styles.category__image}
-              src="/img/accessories-category.png"
-              alt="Accessories"
-            />
-            <a className={styles.category__title} href="">
+            <Link to="/accessories">
+              <img
+                className={styles.category__image}
+                src="/img/accessories-category.png"
+                alt="Accessories"
+              />
+            </Link>
+
+            <Link className={styles.category__title} to="accessories">
               Accesories
-            </a>
+            </Link>
             <p
               className={styles.category__quantity}
             >{`${accessoriesFromServer.length} models`}</p>
@@ -89,7 +111,7 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.hot}>
         <div className={styles.hot__swiper}>
-          <CardsSwiper title={hotTitle} gadgets={productsFromServer} />
+          <ProductsSlider title={hotTitle} gadgets={hotPriceModels} />
         </div>
       </section>
     </div>

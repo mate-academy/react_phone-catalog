@@ -1,11 +1,11 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation } from 'swiper/modules';
-import styles from './cardsSwiper.module.scss';
-import './cardsSwiper.module.scss';
+import styles from './ProductsSlider.module.scss';
+import './ProductsSlider.module.scss';
 import 'swiper/css';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/navigation';
-import { Product } from './../../../types/Product';
+import { Product } from '../../../types/Product';
 import { GadgetCard } from '../gadgetCard/GadgetCard';
 
 type Props = {
@@ -13,19 +13,19 @@ type Props = {
   gadgets: Product[];
 };
 
-export const CardsSwiper: React.FC<Props> = ({ title, gadgets }) => {
+export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
   return (
-    <div className={styles.cardsSwiper}>
-      <div className={styles.cardsSwiper__tittleContainer}>
-        <h2 className={styles.cardsSwiper__tittle}>{title}</h2>
+    <div className={styles.ProductsSlider}>
+      <div className={styles.ProductsSlider__tittleContainer}>
+        <h2 className={styles.ProductsSlider__tittle}>{title}</h2>
 
-        <div className={styles.cardsSwiper__slideButtons}>
+        <div className={styles.ProductsSlider__slideButtons}>
           <div
             id="card-slider-arrowLeft"
-            className={styles.cardsSwiper__slideButton}
+            className={styles.ProductsSlider__slideButton}
           >
             <img
-              className={styles.cardsSwiper__sliderArrow}
+              className={styles.ProductsSlider__sliderArrow}
               src="/icons/arrow-left-ico.svg"
               alt="arrowLeft"
             />
@@ -33,10 +33,10 @@ export const CardsSwiper: React.FC<Props> = ({ title, gadgets }) => {
 
           <div
             id="card-slider-arrowRight"
-            className={styles.cardsSwiper__slideButton}
+            className={styles.ProductsSlider__slideButton}
           >
             <img
-              className={styles.cardsSwiper__sliderArrow}
+              className={styles.ProductsSlider__sliderArrow}
               src="/icons/aroow-right-ico.svg"
               alt="arrowRight"
             />
@@ -52,10 +52,10 @@ export const CardsSwiper: React.FC<Props> = ({ title, gadgets }) => {
         freeMode={true}
         slidesPerView={'auto'}
         spaceBetween={16}
-        className={styles.cardsSwiper__swiper}
+        className={styles.ProductsSlider__swiper}
       >
         {gadgets.map(gadget => (
-          <SwiperSlide className={styles.cardsSwiper__slide} key={gadget.id}>
+          <SwiperSlide className={styles.ProductsSlider__slide} key={gadget.id}>
             <GadgetCard gadget={gadget} />
           </SwiperSlide>
         ))}

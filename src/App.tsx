@@ -5,7 +5,6 @@ import './App.module.scss';
 import './modules/shared/_main.scss';
 import { Link } from 'react-router-dom';
 import styles from './App.module.scss';
-// import stylesHidenMenu from './modules/HidenMenu/components/HidenMenu.module.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchPhonesAsync } from './features/fetchPhonesSlice';
 import { fetchTablesAsync } from './features/fetchTabletsSlice';
@@ -26,6 +25,8 @@ export const App: React.FC = () => {
 
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
+  const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
+  const cartArray = useAppSelector(state => state.chosenItems.cart);
 
   const handleMenuOrCloseButton = useCallback(() => {
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
@@ -92,6 +93,13 @@ export const App: React.FC = () => {
           <div
             className={`${styles.icons__containerFavourite} ${styles.icons__container}`}
           >
+            {favouritesArray.length > 0 && (
+              <div className={styles.redSpot}>
+                <p className={`${styles.redSpot__number}`}>
+                  {favouritesArray.length}
+                </p>
+              </div>
+            )}
             <Link className={styles.icons__link} to="/">
               <img
                 className={styles.icons__icon}
@@ -103,6 +111,13 @@ export const App: React.FC = () => {
           <div
             className={`${styles.icons__containerBasket} ${styles.icons__container}`}
           >
+            {cartArray.length > 0 && (
+              <div className={styles.redSpot}>
+                <p className={`${styles.redSpot__number}`}>
+                  {cartArray.length}
+                </p>
+              </div>
+            )}
             <Link className={styles.icons__link} to="/">
               <img
                 className={styles.icons__icon}
@@ -163,9 +178,7 @@ export const App: React.FC = () => {
                 onClick={handleDoUpButton}
                 className={styles.footer__goUpButtonArea}
               >
-                <Link className={styles.footer__goUpTextLink} to="/">
-                  Back to top
-                </Link>
+                <div className={styles.footer__goUpTextLink}>Back to top</div>
 
                 <div className={styles.footer__goUpButton}>
                   <img

@@ -6,7 +6,6 @@ import {
   setAddToFavourite,
   setDeleteFromFavourite,
 } from '../../../features/chosenItemsSlice';
-// import { setIsAddedToCart } from '../../../features/booleanSlice';
 import { useState } from 'react';
 
 type Props = {
@@ -21,7 +20,6 @@ export const GadgetCard: React.FC<Props> = ({ gadget }) => {
 
   const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
-  // const isAddedToCart = useAppSelector(state => state.boolean.isAddedToCart);
 
   const handleheartIco = () => {
     if (!favouritesArray.some(obj => obj.id === gadget.id)) {
@@ -55,7 +53,10 @@ export const GadgetCard: React.FC<Props> = ({ gadget }) => {
       </div>
 
       <div className={styles.card__bottomBlock}>
-        <p className={styles.card__price}>{`$${gadget.price}`}</p>
+        <div className={styles.card__priceBlock}>
+          <p className={styles.card__newPrice}>{`$${gadget.price}`}</p>
+          <p className={styles.card__oldPrice}>{`$${gadget.fullPrice}`}</p>
+        </div>
 
         <div className={styles.card__divider} />
 
@@ -76,10 +77,11 @@ export const GadgetCard: React.FC<Props> = ({ gadget }) => {
 
         <div className={styles.card__buttonsSection}>
           <button
+            disabled={isInCatr}
             onClick={handleAddToCart}
             className={`${styles.card__buttonAddToCatr} ${!isInCatr ? styles.add : styles.added}`}
           >
-            Add to cart
+            {isInCatr ? 'In the cart' : 'Add to cart'}
           </button>
           <button
             onClick={handleheartIco}

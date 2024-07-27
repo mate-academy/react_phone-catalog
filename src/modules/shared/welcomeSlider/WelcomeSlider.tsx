@@ -1,13 +1,13 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation, Pagination, Autoplay } from 'swiper/modules';
-import styles from './welcomeSwiper.module.scss';
-import './welcomeSwiper.module.scss';
+import styles from './WelcomeSlider.module.scss';
+import './WelcomeSlider.module.scss';
 import 'swiper/css';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/pagination';
 import 'swiper/scss/navigation';
 
-export const WelcomeSwiper = () => {
+export const WelcomeSlider = () => {
   return (
     <>
       <div className={styles.swiperWrapper}>
