@@ -13,11 +13,11 @@ const iconsChangerSlice = createSlice({
   name: 'iconsChanger',
   initialState,
   reducers: {
-    sethidenMenuIco: (state, action: PayloadAction<string>) => {
+    setHidenMenuIco: (state, action: PayloadAction<string>) => {
       state.hidenMenuIco = action.payload;
     },
   },
 });
 
 export default iconsChangerSlice.reducer;
-export const { sethidenMenuIco } = iconsChangerSlice.actions;
+export const { setHidenMenuIco } = iconsChangerSlice.actions;

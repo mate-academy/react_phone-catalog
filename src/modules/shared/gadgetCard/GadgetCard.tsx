@@ -6,34 +6,41 @@ import {
   setAddToFavourite,
   setDeleteFromFavourite,
 } from '../../../features/chosenItemsSlice';
+// import { setIsAddedToCart } from '../../../features/booleanSlice';
+import { useState } from 'react';
 
 type Props = {
   gadget: Product;
 };
 
 export const GadgetCard: React.FC<Props> = ({ gadget }) => {
+  const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
+  const [isInCatr, setIsinCart] = useState(false);
+
   const dispatch = useAppDispatch();
 
   const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
-  const cartMap = useAppSelector(state => state.chosenItems.cart);
+  const cartArray = useAppSelector(state => state.chosenItems.cart);
+  // const isAddedToCart = useAppSelector(state => state.boolean.isAddedToCart);
 
-  const favouriteIco = favouritesArray.some(obj => obj.id === gadget.id)
-    ? './icons/heart-red-ico.svg'
-    : './icons/heart-ico.svg';
-
-  function handleheartIco() {
+  const handleheartIco = () => {
     if (!favouritesArray.some(obj => obj.id === gadget.id)) {
       dispatch(setAddToFavourite(gadget));
+      setHeartIco('./icons/heart-red-ico.svg');
     } else {
       dispatch(setDeleteFromFavourite(gadget));
+      setHeartIco('./icons/heart-ico.svg');
     }
-  }
+  };
 
-  function handleAddToCart() {
-    if (!cartMap.some(obj => obj.id === gadget.id)) {
+  const handleAddToCart = () => {
+    if (!cartArray.some(obj => obj.id === gadget.id)) {
       dispatch(setAddToCart(gadget));
+      setIsinCart(true);
+    } else {
+      setIsinCart(false);
     }
-  }
+  };
 
   return (
     <div className={styles.card}>
@@ -69,18 +76,18 @@ export const GadgetCard: React.FC<Props> = ({ gadget }) => {
 
         <div className={styles.card__buttonsSection}>
           <button
-            onClick={() => handleAddToCart()}
-            className={styles.card__buttonAddToCatr}
+            onClick={handleAddToCart}
+            className={`${styles.card__buttonAddToCatr} ${!isInCatr ? styles.add : styles.added}`}
           >
             Add to cart
           </button>
           <button
-            onClick={() => handleheartIco()}
+            onClick={handleheartIco}
             className={styles.card__buttonAddToFavourite}
           >
             <img
               className={styles.card__buttonAddFavouriteIcon}
-              src={favouriteIco}
+              src={heartIco}
               alt="add to favourites"
             />
           </button>

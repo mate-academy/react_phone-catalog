@@ -1,20 +1,21 @@
-import React, { useEffect } from 'react';
+/* eslint-disable max-len */
+import React, { useCallback, useEffect } from 'react';
 import { Outlet } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
 import { Link } from 'react-router-dom';
 import styles from './App.module.scss';
+// import stylesHidenMenu from './modules/HidenMenu/components/HidenMenu.module.scss';
 import { useAppDispatch, useAppSelector } from './app/hooks';
 import { fetchPhonesAsync } from './features/fetchPhonesSlice';
 import { fetchTablesAsync } from './features/fetchTabletsSlice';
 import { fetchAccessoriesAsync } from './features/fetchAccessoriesSlice';
 import { fetchProductsAsync } from './features/fetchProductsSlice';
-import { sethidenMenuIco } from './features/iconsChangerSlice';
+import { setHidenMenuIco } from './features/iconsChangerSlice';
+import { setIsMenuShown } from './features/booleanSlice';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
-
-  const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
 
   useEffect(() => {
     dispatch(fetchPhonesAsync());
@@ -23,14 +24,26 @@ export const App: React.FC = () => {
     dispatch(fetchProductsAsync());
   }, []);
 
-  function handleMenuOrCloseButton() {
+  const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
+  const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
+
+  const handleMenuOrCloseButton = useCallback(() => {
+    dispatch(setIsMenuShown(!isMenuShown ? true : false));
+
     const newIco =
       hidenMenuIco === './icons/burger-menu-ico.svg'
         ? './icons/close-ico.svg'
         : './icons/burger-menu-ico.svg';
 
-    dispatch(sethidenMenuIco(newIco));
-  }
+    dispatch(setHidenMenuIco(newIco));
+  }, [hidenMenuIco, dispatch, isMenuShown]);
+
+  const handleDoUpButton = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
 
   return (
     <div className={styles.app}>
@@ -101,21 +114,17 @@ export const App: React.FC = () => {
           <div
             className={`${styles.icons__containerMenu} ${styles.icons__container}`}
           >
-            <Link
+            <div
+              onClick={handleMenuOrCloseButton}
+              id="hidenMenuIco"
               className={styles.icons__link}
-              to={
-                hidenMenuIco === './icons/burger-menu-ico.svg'
-                  ? './hidenMenu'
-                  : '/'
-              }
             >
               <img
-                onClick={handleMenuOrCloseButton}
                 className={styles.icons__icon}
                 src={hidenMenuIco}
                 alt="menu"
               />
-            </Link>
+            </div>
           </div>
         </div>
       </header>
@@ -134,7 +143,11 @@ export const App: React.FC = () => {
             </Link>
 
             <div className={styles.footer__contactsBlock}>
-              <Link className={styles.footer__contactsLink} to="/">
+              <Link
+                target="_blank"
+                className={styles.footer__contactsLink}
+                to="https://github.com/yurovych/react_phone-catalog/tree/develop"
+              >
                 github
               </Link>
               <Link className={styles.footer__contactsLink} to="/">
@@ -146,18 +159,21 @@ export const App: React.FC = () => {
             </div>
 
             <div className={styles.footer__goUpBlock}>
-              <Link className={styles.footer__goUpTextLink} to="/">
-                Back to top
-              </Link>
+              <div
+                onClick={handleDoUpButton}
+                className={styles.footer__goUpButtonArea}
+              >
+                <Link className={styles.footer__goUpTextLink} to="/">
+                  Back to top
+                </Link>
 
-              <div className={styles.footer__goUpButton}>
-                <a className={styles.footer__goUpIcoLink} href="#">
+                <div className={styles.footer__goUpButton}>
                   <img
                     className={styles.footer__goUpIco}
                     src="/icons/arrow-up-ico.svg"
                     alt="arrow-up"
                   />
-                </a>
+                </div>
               </div>
             </div>
           </div>

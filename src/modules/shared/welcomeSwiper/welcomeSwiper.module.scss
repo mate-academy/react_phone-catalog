@@ -45,13 +45,13 @@
   span.swiper-pagination-bullet {
     width: 14px !important;
     height: 4px !important;
-    background-color: $border-grey-color !important;
+    background-color: $elements-grey-color !important;
     border-radius: 0 !important;
     opacity: 1 !important;
   }
 
   span.swiper-pagination-bullet-active {
-    background-color: $dark-grey-color !important;
+    background-color: $primary-grey-color !important;
   }
 }
 
@@ -63,10 +63,10 @@
     width: 32px;
     height: 189px;
     display: block;
-    border: 1px solid $another-borders-grey-color;
+    border: 1px solid $icons-grey-color;
 
     &:hover {
-      border: 1px solid $dark-grey-color;
+      border: 1px solid $primary-grey-color;
     }
   }
 

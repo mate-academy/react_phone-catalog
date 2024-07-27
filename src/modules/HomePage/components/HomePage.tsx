@@ -4,15 +4,23 @@ import './Home.module.scss';
 import { WelcomeSwiper } from '../../shared/welcomeSwiper/WelcomeSwiper';
 import { CardsSwiper } from '../../shared/cardsSwiper/CardsSwiper';
 import { useAppSelector } from '../../../app/hooks';
+import { HidenMenu } from '../../HidenMenu/components';
 
 export const HomePage: React.FC = () => {
   const newModelsTitle = 'Brand new models';
   const hotTitle = 'Hot prices';
 
   const productsFromServer = useAppSelector(state => state.products.objects);
+  const phonesFromServer = useAppSelector(state => state.phones.objects);
+  const tabletsFromServer = useAppSelector(state => state.tablets.objects);
+  const accessoriesFromServer = useAppSelector(
+    state => state.accessories.objects,
+  );
 
   return (
-    <>
+    <div id="homePage" className={styles.homePage}>
+      <HidenMenu />
+
       <section className={styles.welcome}>
         <div className={styles.welcome__tittleWrapper}>
           <h1 className={styles.welcome__tittle}>
@@ -44,7 +52,9 @@ export const HomePage: React.FC = () => {
             <a className={styles.category__title} href="">
               Mobile phones
             </a>
-            <p className={styles.category__quantity}>quantity</p>
+            <p className={styles.category__quantity}>
+              {`${phonesFromServer.length} models`}
+            </p>
           </div>
 
           <div className={styles.category}>
@@ -56,7 +66,9 @@ export const HomePage: React.FC = () => {
             <a className={styles.category__title} href="">
               Tablets
             </a>
-            <p className={styles.category__quantity}>quantity</p>
+            <p
+              className={styles.category__quantity}
+            >{`${tabletsFromServer.length} models`}</p>
           </div>
 
           <div className={styles.category}>
@@ -68,7 +80,9 @@ export const HomePage: React.FC = () => {
             <a className={styles.category__title} href="">
               Accesories
             </a>
-            <p className={styles.category__quantity}>quantity</p>
+            <p
+              className={styles.category__quantity}
+            >{`${accessoriesFromServer.length} models`}</p>
           </div>
         </div>
       </section>
@@ -78,6 +92,6 @@ export const HomePage: React.FC = () => {
           <CardsSwiper title={hotTitle} gadgets={productsFromServer} />
         </div>
       </section>
-    </>
+    </div>
   );
 };

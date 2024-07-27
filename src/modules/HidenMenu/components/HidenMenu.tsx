@@ -1,19 +1,26 @@
 import { Link } from 'react-router-dom';
 import styles from './HidenMenu.module.scss';
-import { useAppDispatch } from './../../../app/hooks';
-import { sethidenMenuIco } from '../../../features/iconsChangerSlice';
+import { useAppDispatch, useAppSelector } from './../../../app/hooks';
+import { setHidenMenuIco } from '../../../features/iconsChangerSlice';
+import { setIsMenuShown } from '../../../features/booleanSlice';
 
 export const HidenMenu: React.FC = () => {
   const dispatch = useAppDispatch();
+  const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
+
   const handleCloseHidenMenu = () => {
-    dispatch(sethidenMenuIco('./icons/burger-menu-ico.svg'));
+    dispatch(setHidenMenuIco('./icons/burger-menu-ico.svg'));
+    dispatch(setIsMenuShown(!isMenuShown ? true : false));
   };
 
   return (
-    <div id="hidenMenu" className={styles.hidenMenu}>
+    <div
+      id="hidenMenu"
+      className={`${styles.hidenMenu} ${!isMenuShown ? styles.hideHidenMenu : styles.showHidenMenu}`}
+    >
       <nav className={styles.nav}>
         <ul className={styles.nav__list}>
-          <li className={styles.nav__item}>
+          <li id="hidenMenuHome" className={styles.nav__item}>
             <Link
               onClick={handleCloseHidenMenu}
               className={styles.nav__link}

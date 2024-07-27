@@ -5,13 +5,16 @@
 }
 
 .header {
+  z-index: 10;
   position: sticky;
+  top: 0;
+  background-color: $white-color;
   display: flex;
   justify-content: space-between;
   margin-bottom: 24px;
   height: 48px;
   text-align: center;
-  border-bottom: solid $border-grey-color 2px;
+  border-bottom: solid $elements-grey-color 2px;
 
   @include on-tablet {
     margin-bottom: 32px;
@@ -67,14 +70,14 @@
 
   &:hover {
     .navLink {
-      color: $dark-grey-color;
+      color: $primary-grey-color;
     }
 
     &::after {
       content: '';
       position: absolute;
       display: block;
-      background-color: $dark-grey-color;
+      background-color: $primary-grey-color;
       height: 6px;
       width: 100%;
       transform: translateY(21px);
@@ -87,7 +90,7 @@
 }
 
 .navLink {
-  color: $light-grey-color;
+  color: $secondary-grey-color;
   text-decoration: none;
   font-family: inherit;
   font-size: 12px;
@@ -104,7 +107,7 @@
   &__container {
     height: 48px;
     width: 48px;
-    border-left: solid $border-grey-color 2px;
+    border-left: solid $elements-grey-color 2px;
 
     @include on-desktop {
       height: 64px;
@@ -138,6 +141,7 @@
 
   &__link {
     width: 100%;
+    cursor: pointer;
   }
 
   &__icon {
@@ -150,7 +154,7 @@
 }
 
 .footer {
-  border-top: 1px solid $border-grey-color;
+  border-top: 1px solid $elements-grey-color;
 
   &__container {
     margin-inline: auto;
@@ -196,6 +200,7 @@
       flex-direction: row;
       gap: 13.5px;
       justify-content: space-between;
+      align-items: center;
       margin-bottom: 0;
     }
 
@@ -204,23 +209,55 @@
     }
   }
 
+  &__contactsLink {
+    text-decoration: none;
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 11px;
+    letter-spacing: 4%;
+    text-align: left;
+    text-transform: uppercase;
+  }
+
   &__goUpBlock {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__goUpButtonArea {
     display: flex;
     gap: 16px;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: max-content;
+    cursor: pointer;
 
     @include on-tablet {
       width: max-content;
     }
   }
 
+  &__goUpTextLink {
+    text-decoration: none;
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: right;
+  }
+
   &__goUpButton {
     width: 32px;
     height: 32px;
-    border: 1px solid $another-borders-grey-color;
-    cursor: pointer;
+    border: 1px solid $icons-grey-color;
+
+    &:hover {
+      border: 1px solid $primary-grey-color;
+    }
   }
 
   &__goUpIco {
