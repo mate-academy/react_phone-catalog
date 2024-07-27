@@ -13,7 +13,7 @@ export default function Footer() {
           Nice👌 <br /> Gadgets
         </h5>
         <div className={styles.links}>
-          <a href="#">GitHub</a>
+          <a href="https://github.com/Hy-tapa-kot">GitHub</a>
           <a href="#">Contacts</a>
           <a href="#">Rights</a>
         </div>

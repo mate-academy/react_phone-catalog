@@ -120,15 +120,15 @@
   }
 
   @media (max-width: 600px) {
-    display: none;
     flex-direction: column;
     align-items: center;
     position: fixed;
-    top: 75px;
     width: 100%;
     height: calc(100% - 75px);
     background-color: $background;
     z-index: 3;
+    transform: translateY(-100%);
+    transition: transform 0.5s ease;
 
     ul {
       position: relative;
@@ -186,6 +186,8 @@
 
     &.open {
       display: flex;
+      top: 75px;
+      transform: translateY(0);
     }
   }
 }

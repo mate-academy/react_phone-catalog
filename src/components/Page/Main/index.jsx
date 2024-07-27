@@ -1,16 +1,18 @@
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa6';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Autoplay, Navigation, Pagination } from 'swiper/modules'; // імпортуємо модулі
+import { Autoplay, Navigation, Pagination } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Category } from '../../components/Category';
 import { Section } from '../../components/Section';
 import slidesData from './img/slidesData.json';
+import slidesDataMobile from './img/slidesDataMobile.json';
 import styles from './Main.module.scss';
 
 export default function Main() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [slides, setSlides] = useState(slidesData);
   const swiperRef = useRef(null);
 
   const slidePrev = () => {
@@ -31,6 +33,23 @@ export default function Main() {
     }
   };
 
+  useEffect(() => {
+    const mediaQuery = window.matchMedia('(max-width: 500px)');
+
+    const handleMediaChange = e => {
+      if (e.matches) {
+        setSlides(slidesDataMobile);
+      } else {
+        setSlides(slidesData);
+      }
+    };
+    mediaQuery.addEventListener('change', handleMediaChange);
+    handleMediaChange(mediaQuery);
+    return () => {
+      mediaQuery.removeEventListener('change', handleMediaChange);
+    };
+  }, []);
+
   return (
     <main className={styles.root}>
       <h1>Welcome to Nice Gadgets store!</h1>
@@ -50,7 +69,7 @@ export default function Main() {
             className={styles.swiperContainer}
             modules={[Autoplay, Navigation, Pagination]}
           >
-            {slidesData.map((slide, index) => (
+            {slides.map((slide, index) => (
               <SwiperSlide key={slide.id}>
                 <div className={styles.slideContent}>
                   <img src={slide.images} alt={`Slide ${slide.id}`} />
@@ -64,7 +83,7 @@ export default function Main() {
           </div>
         </div>
         <div className={styles.dotsContainer}>
-          {slidesData.map((_, index) => (
+          {slides.map((_, index) => (
             <div
               key={index}
               className={`${styles.dot} ${index === currentIndex ? styles.active : ''}`}

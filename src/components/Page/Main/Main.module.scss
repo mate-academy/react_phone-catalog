@@ -4,7 +4,7 @@
   margin: 0 16px;
   height: clamp(13.813rem, 6.395rem + 32.97vw, 27rem);
 
-  @media (max-width: 600px) {
+  @media (max-width: 500px) {
     width: 100vw;
     margin: 0;
     height: 270px;
@@ -14,11 +14,17 @@
     width: 100%;
     height: clamp(13.813rem, 6.395rem + 32.97vw, 27rem);
 
-    @media (max-width: 600px) {
+    @media (max-width: 500px) {
+      object-fit: contain;
       margin: 0;
-      width: 100%;
-      height: 250px;
+      height: 100%;
     }
+  }
+}
+
+.slideContent {
+  @media (max-width: 600px) {
+    overflow: hidden;
   }
 }
 
@@ -39,9 +45,9 @@
   margin-bottom: 8px;
   position: relative;
 
-  @media (max-width: 600px) {
-    width: 100vw; /* Full viewport width */
-    left: 0; /* Align it to the left edge of the screen */
+  @media (max-width: 650px) {
+    width: 100vw;
+    left: 0;
   }
 
   .leftArrow,
@@ -61,13 +67,16 @@
       background-color: #4a4d58;
     }
 
-    @media (max-width: 600px) {
+    @media (max-width: 650px) {
       display: none;
     }
   }
 
   .swiperContainer {
     width: 100%;
+    @media (max-width: 500px) {
+      height: 350px;
+    }
 
     .swiper-wrapper {
       .swiper-slide {
@@ -78,7 +87,7 @@
         width: 100%;
         margin: 0 16px;
 
-        @media (max-width: 600px) {
+        @media (max-width: 650px) {
           margin: 0;
         }
 
@@ -90,7 +99,7 @@
           width: 100%;
           margin: 0 16px;
 
-          @media (max-width: 600px) {
+          @media (max-width: 650px) {
             margin: 0;
           }
 
@@ -130,7 +139,7 @@
 .mainBanner {
   margin-bottom: 2rem;
 
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     position: absolute;
     left: 0;
     width: 100vw;
@@ -140,7 +149,7 @@
 }
 
 .sectionContainer {
-  @media (max-width: 600px) {
+  @media (max-width: 650px) {
     margin-top: 28rem;
   }
 }
