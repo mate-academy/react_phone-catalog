@@ -10,6 +10,11 @@
     flex-flow: column;
     gap: 24px;
     justify-content: space-between;
+
+    @include on-tablet {
+      flex-flow: row;
+      gap: 16px;
+    }
   }
 
   &__card {
@@ -42,6 +47,11 @@
 
     &--accessories {
       background-image: url('../../../public/img/category-accessories.webp');
+    }
+
+    @include on-tablet {
+      width: 187px;
+      height: 187px;
     }
   }
 

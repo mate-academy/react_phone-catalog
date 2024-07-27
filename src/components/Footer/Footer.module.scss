@@ -1,18 +1,34 @@
 @import '../../styles/main';
 
 .footer {
-  margin-top: 64px;
-  margin-bottom: 0;
   border-top: 1px solid $elements-gray;
+  margin-top: 64px;
 
-  display: flex;
-  flex-flow: column;
-  justify-content: space-evenly;
-  gap: 32px;
+  &__content {
+    margin-bottom: 0;
+
+    display: flex;
+    flex-flow: column;
+    justify-content: space-evenly;
+    gap: 32px;
+
+    @include on-tablet {
+      @include page-grid;
+
+      align-items: center;
+      padding: 32px;
+    }
+  }
 
   &__link {
     display: block;
     margin-top: 32px;
+
+    @include on-tablet {
+      grid-column: 1 / 4;
+
+      margin-top: 0;
+    }
   }
 
   &__icon {
@@ -20,8 +36,32 @@
     height: 32px;
   }
 
+  &__nav {
+    @include on-tablet {
+      grid-column: 4 / 8;
+    }
+
+    &-list {
+      flex-flow: column;
+      align-items: flex-start;
+      gap: 16px;
+
+      @include on-tablet {
+        flex-flow: row;
+        align-items: center;
+      }
+    }
+
+    &-item {
+      color: $secondary-gray;
+
+      @include hover(color, $primary-gray);
+    }
+  }
+
   &__buttons {
     display: flex;
+    flex-flow: row;
     justify-content: center;
     align-items: center;
     gap: 16px;
@@ -30,7 +70,15 @@
     & p:first-child {
       color: $secondary-gray;
     }
+
+    @include on-tablet {
+      grid-column: 9 / -1;
+
+      margin-bottom: 0;
+      justify-content: flex-end;
+    }
   }
+
   &__btn {
     @include button-common;
 
@@ -45,19 +93,5 @@
     &:active {
       transform: scale(0.9);
     }
-  }
-}
-
-.nav {
-  &__list {
-    display: flex;
-    flex-flow: column;
-    justify-content: space-between;
-    align-items: flex-start;
-    gap: 16px;
-  }
-
-  &__item {
-    color: $secondary-gray;
   }
 }

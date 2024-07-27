@@ -33,6 +33,10 @@ section {
   margin-bottom: 56px;
 }
 
+section:last-child {
+  margin-bottom: 0;
+}
+
 .logo {
   width: 64px;
   height: 22px;

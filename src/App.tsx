@@ -20,7 +20,7 @@ export const App = () => (
       <NewModels />
       <Category />
       <HotPrice />
-      <Footer />
     </div>
+    <Footer />
   </div>
 );

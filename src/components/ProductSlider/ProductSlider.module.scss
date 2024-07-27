@@ -4,18 +4,20 @@
   &__topBar {
     margin-bottom: 24px;
 
-    @include page-grid;
-
+    display: flex;
+    justify-content: space-between;
     align-items: center;
   }
 
   &__title {
-    grid-column: 1/3;
+    width: 140px;
+
+    @include on-tablet {
+      width: 500px;
+    }
   }
 
   &__sliderButtons {
-    grid-column: -1 / -2;
-
     display: flex;
     gap: 16px;
   }

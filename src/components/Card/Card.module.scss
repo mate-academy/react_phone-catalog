@@ -11,9 +11,20 @@
   justify-content: space-between;
   gap: 8px;
 
+  @include on-tablet {
+    width: 238px;
+    height: 512px;
+
+  }
+
   &__img {
     width: 148px;
     height: 130px;
+
+    @include on-tablet {
+      width: 173px;
+      height: 202px;
+    }
   }
 
   &__price {
@@ -50,6 +61,10 @@
 
       &:hover {
         box-shadow: 0 3px 13px 0 $primary-gray;
+      }
+
+      @include on-tablet {
+        width: 125px;
       }
     }
 
