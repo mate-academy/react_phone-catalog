@@ -22,23 +22,47 @@ export const SideMenu = () => {
 
         <nav className={classNames('nav', styles.menu__nav)}>
           <ul className={classNames('nav__list', styles.menu__list)}>
-            <li className={classNames('nav__item', styles['menu__nav-item'])}>
-              <a href="#home" className="uppercase-text nav__link">
+            <li className={styles['menu__nav-item']}>
+              <a
+                href="#home"
+                className={classNames(
+                  'uppercase-text',
+                  styles['menu__nav-link'],
+                )}
+              >
                 Home
               </a>
             </li>
-            <li className={classNames('nav__item', styles['menu__nav-item'])}>
-              <a href="#phones" className="uppercase-text nav__link">
+            <li className={styles['menu__nav-item']}>
+              <a
+                href="#phones"
+                className={classNames(
+                  'uppercase-text',
+                  styles['menu__nav-link'],
+                )}
+              >
                 Phones
               </a>
             </li>
-            <li className={classNames('nav__item', styles['menu__nav-item'])}>
-              <a href="#tablets" className="uppercase-text nav__link">
+            <li className={styles['menu__nav-item']}>
+              <a
+                href="#tablets"
+                className={classNames(
+                  'uppercase-text',
+                  styles['menu__nav-link'],
+                )}
+              >
                 Tablets
               </a>
             </li>
-            <li className={classNames('nav__item', styles['menu__nav-item'])}>
-              <a href="#accessories" className="uppercase-text nav__link">
+            <li className={styles['menu__nav-item']}>
+              <a
+                href="#accessories"
+                className={classNames(
+                  'uppercase-text',
+                  styles['menu__nav-link'],
+                )}
+              >
                 Accessories
               </a>
             </li>

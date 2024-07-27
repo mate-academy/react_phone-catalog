@@ -10,9 +10,15 @@
     margin-inline: auto;
   }
 
-  &__list {
+  &__nav {
     display: none;
 
+    @include on-tablet {
+      display: block;
+    }
+  }
+
+  &__nav-list {
     @include on-tablet {
       display: flex;
       flex-flow: row;
@@ -20,11 +26,47 @@
     }
   }
 
-  &__nav-item {
+  &__link {
+    color: $secondary-gray;
+
+    position: relative;
+
+    &:hover {
+      color: $primary-gray;
+    }
+
     &::after {
       content: '';
+      position: absolute;
+      display: block;
       bottom: -14px;
       height: 3px;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
+    }
+
+    &--icon {
+      display: none;
+
+      &:last-child {
+        display: flex;
+      }
+
+      @include on-tablet {
+        display: flex;
+      }
+
+      &::after {
+        bottom: -2px;
+      }
     }
   }
 }

@@ -11,40 +11,86 @@ export const Header = () => {
           <img src="./img/icons/logo.svg" className="logo" alt="logo" />
         </a>
 
-        <nav className="nav header__nav">
-          <ul className={classNames('nav__list', styles.header__list)}>
+        <nav className={classNames('nav', styles.header__nav)}>
+          <ul className={classNames('nav__list', styles['header__nav-list'])}>
             <li className={classNames('nav__item', styles['header__nav-item'])}>
               <a
                 href="#home"
                 className={classNames(
                   'uppercase-text nav__link',
-                  styles['header__nav-link'],
+                  styles.header__link,
                 )}
               >
                 Home
               </a>
             </li>
             <li className={classNames('nav__item', styles['header__nav-item'])}>
-              <a href="#phones" className="uppercase-text nav__link">
+              <a
+                href="#phones"
+                className={classNames(
+                  'uppercase-text nav__link',
+                  styles.header__link,
+                )}
+              >
                 Phones
               </a>
             </li>
             <li className={classNames('nav__item', styles['header__nav-item'])}>
-              <a href="#tablets" className="uppercase-text nav__link">
+              <a
+                href="#tablets"
+                className={classNames(
+                  'uppercase-text nav__link',
+                  styles.header__link,
+                )}
+              >
                 Tablets
               </a>
             </li>
             <li className={classNames('nav__item', styles['header__nav-item'])}>
-              <a href="#accessories" className="uppercase-text nav__link">
+              <a
+                href="#accessories"
+                className={classNames(
+                  'uppercase-text nav__link',
+                  styles.header__link,
+                )}
+              >
                 Accessories
               </a>
             </li>
           </ul>
         </nav>
 
-        <a href="#menu" className="top-bar__icon-control">
-          <Icon iconName="menu" />
-        </a>
+        <div className="top-bar__buttons">
+          <a
+            href="#favorites"
+            className={classNames(
+              styles.header__link,
+              styles['header__link--icon'],
+              'top-bar__icon-control',
+            )}
+          >
+            <Icon iconName="favorites" />
+          </a>
+          <a
+            href="#cart"
+            className={classNames(
+              styles.header__link,
+              styles['header__link--icon'],
+              'top-bar__icon-control',
+            )}
+          >
+            <Icon iconName="cart" />
+          </a>
+          <a
+            href="#menu"
+            className={classNames(
+              styles['header__link--icon'],
+              'top-bar__icon-control',
+            )}
+          >
+            <Icon iconName="menu" />
+          </a>
+        </div>
       </div>
     </div>
   );

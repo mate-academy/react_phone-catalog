@@ -20,11 +20,33 @@
 
   &__nav-item {
     padding-block: 8px;
+  }
+
+  &__nav-link {
+    color: $secondary-gray;
+
+    position: relative;
+
+    &:hover {
+      color: $primary-gray;
+    }
 
     &::after {
       content: '';
-      bottom: 0;
+      position: absolute;
+      display: block;
+      bottom: -8px;
       height: 2px;
+      width: 100%;
+      background-color: $primary-gray;
+
+      transition: transform $transition-duration;
+      transform: scale(0);
+      transform-origin: left;
+    }
+
+    &:hover::after {
+      transform: scale(1);
     }
   }
 

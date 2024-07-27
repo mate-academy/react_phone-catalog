@@ -68,6 +68,10 @@ section {
     padding: 16px;
   }
 
+  &__buttons {
+    display: flex;
+  }
+
   &__icon-control {
     display: flex;
     justify-content: center;
@@ -97,34 +101,6 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }
-
-  &__item {
-    color: $secondary-gray;
-    display: block;
-    width: fit-content;
-
-    position: relative;
-
-    &:hover {
-      color: $primary-gray;
-    }
-
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      width: 100%;
-      background-color: $primary-gray;
-
-      transition: transform $transition-duration;
-      transform: scale(0);
-      transform-origin: left;
-    }
-
-    &:hover::after {
-      transform: scale(1);
-    }
   }
 }
 
