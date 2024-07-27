@@ -5,8 +5,7 @@
   display: flex;
   bottom: 0;
   flex-direction: column;
-  justify-content: flex-start;
-  align-content: self-start;
+  place-content: self-start;
   font-family: Montserrat, sans-serif;
   width: fit-content;
   padding: 0 15px 15px;
