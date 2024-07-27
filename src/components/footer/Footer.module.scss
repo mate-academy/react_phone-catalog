@@ -5,11 +5,11 @@
   display: flex;
   bottom: 0;
   flex-direction: column;
-  justify-content: center;
-  align-items: self-start;
+  justify-content: flex-start;
+  align-content: self-start;
   font-family: Montserrat, sans-serif;
-  width: 288px;
-  margin: 0 auto;
+  width: fit-content;
+  padding: 0 15px 15px;
 
   @include for-tablet {
     flex-direction: row;

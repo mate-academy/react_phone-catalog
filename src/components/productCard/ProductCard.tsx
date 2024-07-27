@@ -10,20 +10,24 @@ interface Props {
   type: string;
   product: Item;
   discount?: boolean;
+  style: {
+    transform: string;
+    transition: string;
+  };
 }
 
-export const ProductCard: React.FC<Props> = ({ product, discount, type }) => {
+export const ProductCard: React.FC<Props> = ({
+  style,
+  product,
+  discount,
+  type,
+}) => {
   const { capacity, priceDiscount, priceRegular, ram, screen, images, id } =
     product;
-  const {
-    fav,
-    handleAddFav,
-    cart,
-    handleAddCart,
-  } = useContext(ContextApp);
+  const { fav, handleAddFav, cart, handleAddCart } = useContext(ContextApp);
 
   return (
-    <div className={Styles['productCard']}>
+    <div style={style} className={Styles['productCard']}>
       <Link to={`/${type}/${id}`}>
         <img
           className={Styles['productCard__picture']}

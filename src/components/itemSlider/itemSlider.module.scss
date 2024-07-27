@@ -78,11 +78,19 @@
 
   &__slider {
     display: flex;
-    width: 440px;
-    margin-left: 24px;
+    align-content: center;
+    width: 530px;
+    overflow: hidden;
+    margin: 0 auto;
     margin-bottom: 56px;
 
     @include for-tablet {
+      width: 795px;
+      margin-bottom: 80px;
+    }
+
+    @include for-desktop {
+      width: 1060px;
       margin-bottom: 80px;
     }
   }

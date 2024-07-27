@@ -18,7 +18,7 @@ export const ItemSlider: React.FC<Props> = ({
   showRandom,
   list,
 }) => {
-  const {isTablet, isDesktop} = useContext(ContextApp);
+  const { isTablet, isDesktop } = useContext(ContextApp);
 
   const [active, setActive] = useState(0);
   const [copyProducts, setCopyProducts] = useState<Item[]>([]);
@@ -58,7 +58,9 @@ export const ItemSlider: React.FC<Props> = ({
     const newProducts = list.slice(minNumber, maxNumber);
 
     setCopyProducts(newProducts);
-    setProductsTotalNumber(newProducts.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)));
+    setProductsTotalNumber(
+      newProducts.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)),
+    );
   };
 
   useEffect(() => {
@@ -66,7 +68,9 @@ export const ItemSlider: React.FC<Props> = ({
       getSuggestedProducts(list.length);
     } else {
       setCopyProducts([...list]);
-      setProductsTotalNumber(list.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)));
+      setProductsTotalNumber(
+        list.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)),
+      );
     }
   }, [showRandom, list]);
 
@@ -100,16 +104,16 @@ export const ItemSlider: React.FC<Props> = ({
         onTouchStart={handlerTouchStart}
         onTouchEnd={handlerTouchEnd}
         onTouchMove={handlerTouchMove}
-        style={{
-          transform: `translateX(-${active * 267}px)`,
-          transition: 'transform 0.5s ease-in-out',
-        }}
         className={Styles['brand_new_models__slider']}
       >
         {copyProducts
           .sort((a, b) => b.priceRegular - a.priceRegular)
           .map((product: Item) => (
             <ProductCard
+              style={{
+                transform: `translateX(-${active * 267}px)`,
+                transition: 'transform 0.5s ease-in-out',
+              }}
               type={product.category}
               key={product.id}
               product={product}

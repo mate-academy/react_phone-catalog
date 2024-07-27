@@ -61,7 +61,7 @@ export const SectionDashSlider: React.FC = () => {
       <h1 className={Styles.title}>Welcome to Nice Gadgets store!</h1>
 
       <section className={Styles['slider']}>
-        
+
         {isTablet && (
           <div onClick={handleNext} className={Styles.slider__right}></div>
         )}
@@ -138,29 +138,6 @@ export const SectionDashSlider: React.FC = () => {
         {isTablet && (
           <div onClick={handlePrev} className={Styles.slider__left}></div>
         )}
-
-        {/* <div className={Styles.slider__picker}>
-          <div
-            onClick={() => handlerPicker(0)}
-            className={cn(Styles.slider__picker__dash, {
-              [Styles.slider__picker__dash__selected]: 0 === active,
-            })}
-          ></div>
-
-          <div
-            onClick={() => handlerPicker(1)}
-            className={cn(Styles.slider__picker__dash, {
-              [Styles.slider__picker__dash__selected]: 1 === active,
-            })}
-          ></div>
-
-          <div
-            onClick={() => handlerPicker(2)}
-            className={cn(Styles.slider__picker__dash, {
-              [Styles.slider__picker__dash__selected]: 2 === active,
-            })}
-          ></div>
-        </div> */}
       </section>
 
       <div className={Styles.slider__picker}>

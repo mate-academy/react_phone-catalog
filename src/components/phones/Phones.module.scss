@@ -9,7 +9,7 @@
 
   @include for-tablet {
     align-items: flex-start;
-    padding-left: 15px;
+    padding-left: 45px;
   }
 
   &__no_item {
@@ -103,7 +103,6 @@
     margin: 0 auto;
 
     @include for-tablet {
-      justify-content: center;
       flex-flow: row wrap;
       align-self: center;
       width: 100%;
