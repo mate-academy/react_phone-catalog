@@ -50,6 +50,8 @@
     height: 189px;
     display: none;
 
+    @include transition-duration;
+    
     &:hover {
       border: 1px solid $gray-primary;
     }

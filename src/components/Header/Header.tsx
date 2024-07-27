@@ -5,6 +5,7 @@ import './Header.scss';
 import '../../styles/nav.scss';
 import '../../styles/is-active.scss';
 import { useAppSelector } from '../../app/hooks';
+import { CartItem } from '../../types/CartItem';
 
 interface Options {
   isActive: boolean;
@@ -26,10 +27,14 @@ const getNavLinkPath = (option: string) => {
 
 export const Header = () => {
   const options = ['home', 'phones', 'tablets', 'accessories'];
-  const cartProducts: number = useAppSelector(state => state.cart.items).length;
+  const carts: CartItem[] = useAppSelector(state => state.cart.items);
   const favouriteProducts: number = useAppSelector(
     state => state.favourite.items,
   ).length;
+  const totalQuantity = carts.reduce(
+    (total, cartItem) => total + cartItem.quantity,
+    0,
+  );
 
   const location = useLocation();
   const currentPath = location.pathname + location.search;
@@ -82,8 +87,8 @@ export const Header = () => {
               'header__button header__button--cart',
             )}
           >
-            {cartProducts > 0 && (
-              <div className="header__button__icon">{cartProducts}</div>
+            {totalQuantity > 0 && (
+              <div className="header__button__icon">{totalQuantity}</div>
             )}
           </NavLink>
         </div>

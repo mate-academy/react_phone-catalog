@@ -68,9 +68,12 @@
   &__up-arrow {
     height: 32px;
     width: 32px;
+    
+    @include transition-duration;
 
     &:hover {
       border: solid 1px $gray-primary;
+      cursor: pointer;
     }
 
     &--disabled {

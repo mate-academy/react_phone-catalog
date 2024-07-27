@@ -129,6 +129,8 @@
       border: 1px solid $gray-icons;
       background-color: #FFF;
 
+      @include transition-duration;
+      
       &:hover {
         cursor: pointer;
       }

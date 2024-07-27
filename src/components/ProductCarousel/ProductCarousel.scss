@@ -57,6 +57,8 @@
       opacity: 0.5;
     }
 
+    @include transition-duration;
+
     &:hover {
       border: 1px solid $gray-primary;
     }

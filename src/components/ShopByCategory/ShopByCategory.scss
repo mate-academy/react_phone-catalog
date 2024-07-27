@@ -22,7 +22,7 @@
       gap: 4px;
     }
 
-    transition: transform 0.3s ease;
+    @include transition-duration;
 
     &:hover {
       transform: scale(1.05);

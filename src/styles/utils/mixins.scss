@@ -85,3 +85,7 @@
     grid-template-columns: repeat(var(--columns), 32px);
   }
 }
+
+@mixin transition-duration {
+  transition-duration: 0.3s;
+}

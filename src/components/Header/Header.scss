@@ -58,6 +58,8 @@
     &--cart {
       background-image: url(../../../public/icons/Cart.svg);
     }
+    
+    @include transition-duration;
 
     &:hover {
       position: relative;

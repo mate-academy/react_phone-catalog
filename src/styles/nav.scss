@@ -13,6 +13,8 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
+    
+    @include transition-duration;
 
     &:hover {
       color: $gray-primary;

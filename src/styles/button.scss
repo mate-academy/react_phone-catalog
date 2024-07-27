@@ -8,6 +8,8 @@
   align-items: center;
   background-color: #fff;
   border: solid 1px $gray-elements;
+  
+  @include transition-duration;
 
   &:hover {
     border: 1px solid $gray-primary;

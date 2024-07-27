@@ -207,6 +207,8 @@
       padding: 0;
       background-color: transparent;
       cursor: pointer;
+      
+      @include transition-duration;
 
       &:hover {
         border: 1px solid $gray-icons;

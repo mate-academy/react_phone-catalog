@@ -5,7 +5,11 @@ import '../../styles/button.scss';
 import '../../styles/container.scss';
 
 export const Footer = () => {
-  const options = ['github', 'contacts', 'rights'];
+  const options = [
+    { id: 'github', url: 'https://github.com/Svyatoslav-kolom' },
+    { id: 'contacts', url: 'https://contacts' },
+    { id: 'rights', url: 'https:///rights' },
+  ];
 
   const scrollToTop = () => {
     window.scrollTo({
@@ -22,8 +26,8 @@ export const Footer = () => {
 
           <nav className="nav footer__nav">
             {options.map(option => (
-              <Link key={option} to={`/${option}`} className="nav__item">
-                {option}
+              <Link key={option.url} to={option.url} className="nav__item">
+                {option.id}
               </Link>
             ))}
           </nav>

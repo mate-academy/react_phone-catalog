@@ -72,6 +72,8 @@
     color: #FFF;
     border: 0;
     height: 48px;
+    
+    @include transition-duration;
 
     &:hover {
       cursor: pointer;

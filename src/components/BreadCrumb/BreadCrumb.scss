@@ -1,4 +1,5 @@
 @import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
 
 .bread-crumb {
   display: flex;
@@ -22,6 +23,8 @@
     margin-right: 5px;
     display: flex;
     gap: 8px;
+    
+    @include transition-duration;
 
     &:hover {
       cursor: pointer;

@@ -17,7 +17,6 @@
 
   &__list {
     display: flex;
-    justify-content: center;
     gap: 16px;
     flex-flow: row wrap;
   }
@@ -27,6 +26,8 @@
     height: 40px;
     border: 1px $gray-icons solid;
     width: 100%;
+    
+    @include transition-duration;
 
     &:hover {
       border: 1px solid $gray-primary;
