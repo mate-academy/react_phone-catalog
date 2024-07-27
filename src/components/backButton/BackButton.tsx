@@ -5,22 +5,18 @@ import { useNavigate } from 'react-router-dom';
 export const BackButton: React.FC = () => {
   const navigate = useNavigate();
 
-  const handleClickBack = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.stopPropagation();
+  const handleClickBack = () => {
     navigate(-1);
   };
 
   return (
-    <div onClick={handleClickBack} className={Styles.back}>
-      <div className={Styles.back__button}>
-        <div className={Styles.back__button__arrow} />
-      </div>
-      <p
-        className={Styles.back__paragraph}
-        onClick={handleClickBack}
-      >
-        Back
-      </p>
-    </div>
+    <p className={Styles.back} onClick={handleClickBack}>
+      <img
+        src=".\img\svg\arrow_left.svg"
+        className={Styles.back__arrow}
+        alt="Back"
+      />
+      Back
+    </p>
   );
 };

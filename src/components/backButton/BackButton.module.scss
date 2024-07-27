@@ -5,11 +5,14 @@
   display: flex;
   height: 16px;
   width: 60px;
-  max-width: 60px;
-  align-self: flex-start;
   margin-bottom: 16px;
   border-radius: 20px;
   cursor: pointer;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 16px;
+  align-items: center;
+  color: var(--primary-color);
 
   &:hover {
     box-shadow: 0 3px 13px 0 #17203166;
@@ -20,33 +23,9 @@
     grid-row: 2 / 3;
   }
 
-  &__button {
-    color: var(--primary-color);
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16px;
-    text-align: center;
-    width: 16px;
-    display: flex;
-    align-items: center;
-
-    &__arrow {
-      height: 16px;
-      width: 16px;
-      background-image: url(../../../public/img/svg/arrow_left.svg);
-      background-position: center;
-      background-repeat: no-repeat;
-    }
-  }
-
-  &__paragraph {
-    box-sizing: border-box;
-    border-radius: 20px;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 16px;
-    height: 16px;
-    text-align: center;
-    color: var(--primary-color);
+  &__arrow {
+    height: 12px;
+    width: 12px;
+    margin-right: 5px;
   }
 }
