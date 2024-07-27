@@ -12,6 +12,7 @@ import { fetchAccessoriesAsync } from './features/fetchAccessoriesSlice';
 import { fetchProductsAsync } from './features/fetchProductsSlice';
 import { setHidenMenuIco } from './features/iconsChangerSlice';
 import { setIsMenuShown } from './features/booleanSlice';
+import { HidenMenu } from './modules/HidenMenu/components';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -31,6 +32,11 @@ export const App: React.FC = () => {
   const handleMenuOrCloseButton = useCallback(() => {
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
 
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+
     const newIco =
       hidenMenuIco === './icons/burger-menu-ico.svg'
         ? './icons/close-ico.svg'
@@ -48,6 +54,8 @@ export const App: React.FC = () => {
 
   return (
     <div className={styles.app}>
+      <HidenMenu />
+
       <header className={styles.header}>
         <div className={styles.header__left}>
           <div className={styles.header__logo}>
@@ -62,29 +70,21 @@ export const App: React.FC = () => {
 
           <nav className={styles.navBar}>
             <ul className={styles.navList}>
-              <li className={styles.navItem}>
-                <Link className={styles.navLink} to="/">
-                  HOME
-                </Link>
-              </li>
+              <Link className={styles.navItem} to="/">
+                HOME
+              </Link>
 
-              <li className={styles.navItem}>
-                <Link className={styles.navLink} to="/">
-                  PHONES
-                </Link>
-              </li>
+              <Link className={styles.navItem} to="/phones">
+                PHONES
+              </Link>
 
-              <li className={styles.navItem}>
-                <Link className={styles.navLink} to="/">
-                  TABLETS
-                </Link>
-              </li>
+              <Link className={styles.navItem} to="/tablets">
+                TABLETS
+              </Link>
 
-              <li className={styles.navItem}>
-                <Link className={styles.navLink} to="/">
-                  ACCESORIES
-                </Link>
-              </li>
+              <Link className={styles.navItem} to="/accessories">
+                ACCESORIES
+              </Link>
             </ul>
           </nav>
         </div>

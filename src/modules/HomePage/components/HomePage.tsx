@@ -4,7 +4,6 @@ import './Home.module.scss';
 import { WelcomeSlider } from './../../shared/welcomeSlider/WelcomeSlider';
 import { ProductsSlider } from '../../shared/ProductsSlider//ProductsSlider';
 import { useAppSelector } from '../../../app/hooks';
-import { HidenMenu } from '../../HidenMenu/components';
 import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
@@ -18,11 +17,11 @@ export const HomePage: React.FC = () => {
     state => state.accessories.objects,
   );
 
-  const brandNewModels = productsFromServer
-    .filter(prod => prod.fullPrice === prod.price)
+  const brandNewModels = Array.from(productsFromServer)
     .sort((prod1, prod2) => {
-      return prod2.price - prod1.price;
-    });
+      return prod2.year - prod1.year;
+    })
+    .slice(0, 12);
 
   const hotPriceModels = productsFromServer
     .filter(prod => prod.fullPrice !== prod.price)
@@ -32,8 +31,6 @@ export const HomePage: React.FC = () => {
 
   return (
     <div id="homePage" className={styles.homePage}>
-      <HidenMenu />
-
       <section className={styles.welcome}>
         <div className={styles.welcome__tittleWrapper}>
           <h1 className={styles.welcome__tittle}>

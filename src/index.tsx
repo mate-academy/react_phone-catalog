@@ -7,6 +7,7 @@ import { HomePage } from './modules/HomePage/components';
 import { NotFoundPage } from './modules/NotFoundPage/NotFoundPage';
 import { store } from './app/store';
 import { Provider } from 'react-redux';
+import { Catalog } from './modules/CatalogPage/components/Catalog';
 
 createRoot(document.getElementById('root') as HTMLElement).render(
   <Provider store={store}>
@@ -14,6 +15,9 @@ createRoot(document.getElementById('root') as HTMLElement).render(
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<HomePage />} />
+          <Route path="phones" element={<Catalog />} />
+          <Route path="tablets" element={<Catalog />} />
+          <Route path="accessories" element={<Catalog />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

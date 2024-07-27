@@ -67,6 +67,15 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  color: $secondary-grey-color;
+  text-decoration: none;
+  font-family: inherit;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  letter-spacing: 0.48px;
+  text-transform: capitalize;
+  line-height: 100%;
 
   &:hover {
     .navLink {
@@ -87,18 +96,6 @@
       }
     }
   }
-}
-
-.navLink {
-  color: $secondary-grey-color;
-  text-decoration: none;
-  font-family: inherit;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 800;
-  letter-spacing: 0.48px;
-  text-transform: capitalize;
-  line-height: 100%;
 }
 
 .icons {

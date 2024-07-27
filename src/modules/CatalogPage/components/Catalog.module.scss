@@ -1,0 +1,75 @@
+@import './../../shared/main';
+
+.catalog {
+  @include content-padding-inline;
+
+  &__path {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  &__pathCategory {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  &__title {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 41px;
+    letter-spacing: -1%;
+    text-align: left;
+    margin-bottom: 8px;
+  }
+
+  &__quantity {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+    margin-bottom: 32px;
+  }
+
+  &__filters {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 24px;
+
+    @include on-tablet {
+      justify-content: left;
+      gap: 16px;
+    }
+  }
+
+  &__filterBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__filterText {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 15px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+}

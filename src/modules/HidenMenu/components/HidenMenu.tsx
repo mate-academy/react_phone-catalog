@@ -34,7 +34,7 @@ export const HidenMenu: React.FC = () => {
             <Link
               onClick={handleCloseHidenMenu}
               className={styles.nav__link}
-              to="/"
+              to="/phones"
             >
               PHONES
             </Link>
@@ -44,7 +44,7 @@ export const HidenMenu: React.FC = () => {
             <Link
               onClick={handleCloseHidenMenu}
               className={styles.nav__link}
-              to="/"
+              to="/tablets"
             >
               TABLETS
             </Link>
@@ -54,7 +54,7 @@ export const HidenMenu: React.FC = () => {
             <Link
               onClick={handleCloseHidenMenu}
               className={styles.nav__link}
-              to="/"
+              to="/accessories"
             >
               ACCESORIES
             </Link>

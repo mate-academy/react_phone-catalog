@@ -40,7 +40,7 @@ Use the data from `/public/api` and images from `/public/img` folders. You can r
 7. Scale all image links by 10% on hover.
 8. Implement all form elements and icons according to the UI Kit. -->
 
-## Home page
+<!-- ## Home page
 
 Implement Home page at available at `/`.
 
@@ -54,7 +54,7 @@ Implement Home page at available at `/`.
    - The products with a discount starting from the biggest absolute value;
    - `<` and `>` buttons should scroll products.
 4. `Shop by category` block with links to `/phones`, `/tablets`, and `/accessories`.
-5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive.
+5. Add `Brand new` block using `ProductsSlider` with products without a discount starting from the most expensive. -->
 
 ## Product pages
 
