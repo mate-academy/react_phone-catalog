@@ -4,12 +4,28 @@
   position: relative;
   height: calc(100vw * 1.1);
 
+  @include on-tablet {
+    height: fit-content; // or smth else
+
+    @include page-grid;
+
+    grid-template-rows: auto auto;
+  }
+
   &__imageWrapper {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
+
+    @include on-tablet {
+      position: relative;
+      width: auto;
+
+      grid-column: 2 / 12;
+      grid-row: 1 / 2;
+    }
   }
 
   &__image {
@@ -17,35 +33,48 @@
     aspect-ratio: 1;
     display: block;
     transition: transform $transition-duration ease-in-out;
+
+    @include on-tablet {
+      width: 100%;
+      aspect-ratio: 2.58;
+      object-fit: cover;
+    }
   }
 
   &__btn {
     display: none;
 
     @include on-tablet {
-      display: block;
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: rgba(0, 0, 0, 0.5);
-      color: white;
-      font-size: 1.5rem;
-      border: none;
-      padding: 1rem;
-      cursor: pointer;
+      @include button-common;
+
+      width: 32px;
+      border: 1px solid $icons-placeholders-gray;
       z-index: 1;
-      transition: background-color 0.3s;
 
       &:hover {
-        background-color: rgba(0, 0, 0, 0.8);
+        border-color: $primary-gray;
+      }
+
+      &:active {
+        transform: scale(0.95);
       }
 
       &--prev {
         left: 0;
+
+        @include on-tablet {
+          grid-column: 1 / 2;
+          grid-row: 1 / 2;
+        }
       }
 
       &--next {
         right: 0;
+
+        @include on-tablet {
+          grid-column: 12 / 13;
+          grid-row: 1 / 2;
+        }
       }
     }
   }
@@ -55,6 +84,11 @@
     gap: 4px;
     justify-content: center;
     margin-top: 8px;
+
+    @include on-tablet {
+      grid-column: 1 / -1;
+      grid-row: 2 / 3;
+    }
   }
 
   &__indicator {

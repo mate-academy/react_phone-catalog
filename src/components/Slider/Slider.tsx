@@ -45,17 +45,14 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
 
   return (
     <div className={classNames(styles.slider)}>
-      <div className={classNames(styles.slider__imageWrapper)}>
-        <button
-          onClick={prevSlide}
-          className={classNames(
-            styles.slider__btn,
-            styles['slider__btn--prev'],
-          )}
-        >
-          <Icon iconName="left" />
-        </button>
+      <button
+        onClick={prevSlide}
+        className={classNames(styles.slider__btn, styles['slider__btn--prev'])}
+      >
+        <Icon iconName="left" />
+      </button>
 
+      <div className={classNames(styles.slider__imageWrapper)}>
         <a href="#">
           <img
             src={images[activeIndex]}
@@ -63,28 +60,25 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
             alt={`picture ${activeIndex}`}
           />
         </a>
+      </div>
 
-        <button
-          onClick={nextSlide}
-          className={classNames(
-            styles.slider__btn,
-            styles['slider__btn--next'],
-          )}
-        >
-          <Icon iconName="right" />
-        </button>
+      <button
+        onClick={nextSlide}
+        className={classNames(styles.slider__btn, styles['slider__btn--next'])}
+      >
+        <Icon iconName="right" />
+      </button>
 
-        <div className={classNames(styles.slider__indicators)}>
-          {images.map((_, index) => (
-            <button
-              key={index}
-              className={classNames(styles.slider__indicator, {
-                [styles['slider__indicator--active']]: index === activeIndex,
-              })}
-              onClick={() => handleGoToSlide(index)}
-            ></button>
-          ))}
-        </div>
+      <div className={classNames(styles.slider__indicators)}>
+        {images.map((_, index) => (
+          <button
+            key={index}
+            className={classNames(styles.slider__indicator, {
+              [styles['slider__indicator--active']]: index === activeIndex,
+            })}
+            onClick={() => handleGoToSlide(index)}
+          ></button>
+        ))}
       </div>
     </div>
   );

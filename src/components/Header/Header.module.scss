@@ -6,8 +6,9 @@
   z-index: 10;
   background-color: rgba($white, 0.9);
 
-  @include on-lg-display {
+  @include on-tablet {
     margin-inline: auto;
+    max-width: 1440px;
   }
 
   &__nav {
@@ -62,6 +63,10 @@
 
       @include on-tablet {
         display: flex;
+
+        &:last-child {
+          display: none;
+        }
       }
 
       &::after {

@@ -64,6 +64,28 @@ section {
   justify-content: space-between;
   align-items: center;
 
+  @include on-tablet {
+    justify-content: flex-start; // Align items to the left
+
+    &__link {
+      margin-right: 16px; // Ensure 16px space between logo and nav
+    }
+
+    &__nav {
+      flex-grow: 1; // Take up remaining space to push buttons to the right
+    }
+
+    &__buttons {
+      margin-left: auto; // Push buttons to the right edge
+    }
+  }
+
+  @include on-desktop {
+    &__link {
+      margin-right: 24px; // Ensure 24px space between logo and nav
+    }
+  }
+
   &__link {
     padding: 16px;
   }

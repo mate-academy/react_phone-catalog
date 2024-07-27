@@ -1,22 +1,21 @@
 import { Slider } from '../Slider';
 import styles from './Welcome.module.scss';
-import classNames from 'classnames';
 
 const imagesForSlide = [
   // from public/img... or creat json in api?
-  './img/welcome-slider-mobile-0.png',
-  './img/welcome-slider-mobile-1.png',
-  './img/welcome-slider-mobile-2.png',
+  './img/banner-phones.png',
+  './img/banner-tablets.png',
+  './img/banner-accessories.png',
 ];
 
 export const Welcome = () => {
   return (
-    <section className="welcome" id="welcome">
-      <h2 className={classNames(styles.welcome__title)}>
-        Welcome to Nice Gadgets store!
-      </h2>
+    <section className={styles.welcome} id="welcome">
+      <h2 className={styles.welcome__title}>Welcome to Nice Gadgets store!</h2>
 
-      <Slider images={imagesForSlide} infLoop={true} />
+      <div className={styles.welcome__slider}>
+        <Slider images={imagesForSlide} infLoop={false} />
+      </div>
     </section>
   );
 };
