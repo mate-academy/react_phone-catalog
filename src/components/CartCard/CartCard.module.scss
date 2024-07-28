@@ -1,0 +1,116 @@
+@import '../../main';
+
+.container {
+  display: flex;
+  min-width: 288px;
+  max-width: 752px;
+  height: 160px;
+  flex-direction: column;
+  gap: 16px;
+  overflow: hidden;
+  border: 1px solid $color-elements;
+  padding: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+}
+
+.firstBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+  align-items: center;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.close {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80px;
+  padding: 7px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+}
+
+.img {
+  height: 66px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $color-black;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+}
+
+.secondBlock {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  max-width: 210px;
+  width: 206px;
+
+  @include on-tablet {
+    gap: 24px;
+  }
+}
+
+.buttonBlock {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.minus {
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+}
+
+.quantity {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: center;
+  color: $color-black;
+  width: 32px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: $color-black;
+  max-width: 80px;
+  width: 75px;
+}

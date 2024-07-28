@@ -1,0 +1,175 @@
+@import '../../main';
+
+.header {
+  display: flex;
+  border-bottom: 1px solid $color-elements;
+  align-items: center;
+  justify-content: space-between;
+
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 11px;
+  letter-spacing: 0.04em;
+  text-align: left;
+  text-transform: uppercase;
+
+  @include on-desktop {
+    height: 76px;
+  }
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.logo {
+  display: block;
+  width: 64px;
+  height: 22px;
+  margin: 16px 13px;
+
+  @include on-desktop {
+    width: 80px;
+    height: 28px;
+    margin: 18px 24px;
+  }
+}
+
+.nav {
+  display: none;
+  height: 100%;
+
+  @include on-tablet {
+    display: flex;
+  }
+}
+
+.list {
+  display: flex;
+  list-style: none;
+  height: 100%;
+
+  @include on-desktop {
+    gap: 64px;
+  }
+}
+
+.pageLink {
+  transition: all 0.5s;
+  height: 100%;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
+
+.link {
+  color: $color-secondary;
+  text-decoration: none;
+  display: flex;
+  height: 100%;
+  display: flex;
+  align-items: center;
+
+  @include on-tablet {
+    margin: 0 18px;
+  }
+
+  @include on-desktop {
+    margin: 0;
+  }
+}
+
+.activeLink {
+  color: $color-black;
+  border-top: 3px solid $color-white;
+  border-bottom: 3px solid $color-black;
+}
+
+.icons {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+.iconMenu {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid $color-elements;
+  position: relative;
+  cursor: pointer;
+
+  @include on-desktop {
+    padding: 24px;
+  }
+}
+
+.counter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 10px;
+  position: absolute;
+  top: 15px;
+  left: 30px;
+
+  height: 16px;
+  width: 16px;
+  background-color: $color-red;
+  border-radius: 50%;
+
+  @include on-desktop {
+    left: 37px;
+    top: 22px;
+  }
+}
+
+.actionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  height: 28px;
+  width: 28px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.1));
+  }
+}
+
+.logoMenu {
+  display: flex;
+}
+
+.menuBlock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  border-left: 1px solid $color-elements;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.menuButton {
+  text-transform: none;
+  border: none;
+  background-color: $color-white;
+}
+
+.burger {
+  background-color: $color-white;
+}

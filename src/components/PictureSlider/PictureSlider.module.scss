@@ -1,0 +1,131 @@
+@import '../../main';
+
+$widthOfSliderButton: 32px;
+$paddingFromSliderToButton: 19px;
+$paddingFromSliderToButtonOnDesctop: 16px;
+
+.slider {
+  padding-bottom: 8px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding: 0 24px 8px;
+    display: flex;
+  }
+
+  @include on-desktop {
+    padding: 0 32px 8px 32px;
+    justify-content: center;
+  }
+}
+
+.container {
+  display: flex;
+  width: 100%;
+  height: auto;
+
+  @include on-tablet {
+    width: calc(100% - (2 * $widthOfSliderButton));
+    height: auto;
+  }
+}
+
+.sliderWrapper {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+
+  @include on-tablet {
+    height: calc(100vw * 189 / 640);
+    margin: 0 $paddingFromSliderToButton;
+  }
+
+  @include on-desktop {
+    height: calc(100vw * 400 / 1200);
+    margin: 0 $paddingFromSliderToButtonOnDesctop;
+  }
+}
+
+.sliderContent {
+  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 0.5s;
+  height: 100vw;
+
+  @include on-tablet {
+    height: calc(100vw * 189 / 640);
+  }
+
+  @include on-desktop {
+    height: calc(100vw * 400 / 1200);
+  }
+}
+
+.banner {
+  width: 100vw;
+  height: 100%;
+  object-fit: cover;
+
+  @include on-tablet {
+    width: calc(
+      100vw - (2 * $widthOfSliderButton) - (2 * $paddingFromSliderToButton) -
+        (2 * 24px)
+    );
+    height: auto;
+  }
+
+  @include on-desktop {
+    width: calc(
+      100vw - (2 * $widthOfSliderButton) -
+        (2 * $paddingFromSliderToButtonOnDesctop) - (2 * 32px)
+    );
+    height: auto;
+  }
+}
+
+.button {
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  display: none;
+
+  @include on-tablet {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.bottomButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.button_slider {
+  border: none;
+  background-color: $color-white;
+}
+
+.bottomButtonSecond {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    padding-bottom: 56px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}

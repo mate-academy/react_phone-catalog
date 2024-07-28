@@ -1,0 +1,236 @@
+@import '../../main';
+
+.container {
+  height: 437px;
+  border: 1px solid $color-elements;
+  padding: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @include on-tablet {
+    height: 494px;
+  }
+
+  @include on-desktop {
+    height: 504px;
+  }
+}
+
+.img {
+  // width: min-content;
+  height: 129px;
+  margin: 0 auto;
+  max-height: 196px;
+  object-fit: contain;
+  margin-bottom: 24px;
+  display: block;
+  justify-content: center;
+
+  @include hover(transform, scale(1.05));
+
+  @include on-tablet {
+    height: 181px;
+  }
+
+  @include on-desktop {
+    height: 196px;
+  }
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  margin-bottom: 8px;
+  color: $color-black;
+  height: 42px;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+}
+
+.allPrice {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.price {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30.8px;
+  text-align: left;
+  color: $color-black;
+}
+
+.secondPrice {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 28.12px;
+  text-align: left;
+  color: $color-secondary;
+  text-decoration: line-through;
+}
+
+.border {
+  border-bottom: 1px solid $color-elements;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.titleScreen {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.screen {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-black;
+}
+
+.titleCapacity {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.capacity {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-black;
+}
+
+.titleRam {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.ram {
+  display: flex;
+  justify-content: space-between;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-black;
+}
+
+.buttonConteiner {
+  display: flex;
+  gap: 8px;
+}
+
+.add {
+  width: 100%;
+  min-width: 100px;
+  height: 40px;
+  background-color: $color-black;
+  color: $color-white;
+  padding: 0;
+  border: 0;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+
+
+  @include on-tablet {
+    min-width: 125px;
+  }
+
+  @include on-desktop {
+    min-width: 160px;
+  }
+}
+
+.added {
+  width: 100%;
+  min-width: 100px;
+  height: 40px;
+  background-color: $color-white;
+  color: $color-green;
+  border: 1px solid $color-elements;
+
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: center;
+  cursor: pointer;
+  box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+
+  @include on-tablet {
+    min-width: 125px;
+  }
+
+  @include on-desktop {
+    min-width: 160px;
+  }
+}
+
+.heart {
+  min-width: 40px;
+  height: 40px;
+  background-color: $color-white;
+  border: 1px solid $color-icons;
+  cursor: pointer;
+
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  box-shadow: 0 3px 13px 0 #17203166;
+  transition: all 0.5s;
+
+  &:hover {
+    @include hover(transform, scale(1.05));
+  }
+}

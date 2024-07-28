@@ -1,0 +1,98 @@
+@import '../../main';
+
+.container {
+  width: 100vw;
+  height: auto;
+  padding: 24px 16px 0;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px;
+  }
+}
+
+.top {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+
+.topFirst {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $color-black;
+  margin-bottom: 8px;
+}
+
+.favoritsLength {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $color-secondary;
+  margin-bottom: 32px;
+}
+
+.list {
+  @include grid-page;
+
+  margin-bottom: 24px;
+}
+
+.listItem {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-big-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.empty {
+  font-family: Mont, sans-serif;
+  font-size: 24px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $color-black;
+  margin-bottom: 8px;
+}

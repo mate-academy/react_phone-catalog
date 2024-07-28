@@ -1,0 +1,34 @@
+@import '../../main';
+
+.homePage__container {
+  box-sizing: border-box;
+  margin: 0 auto;
+
+  padding-top: 24px;
+
+  @include on-tablet {
+    padding-top: 32px;
+  }
+
+  @include on-desktop {   
+      padding-top: 56px;
+  }
+}
+
+.title {
+  @include h1-smartphone-title;
+
+  padding: 0 16px 24px;
+  max-width: 1200px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    @include h1-tablet-title;
+
+    padding: 0 24px 32px;
+  }
+
+  @include on-desktop {   
+    padding: 0 32px 32px 32px;
+  }
+}

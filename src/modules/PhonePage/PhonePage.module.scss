@@ -1,0 +1,187 @@
+@import '../../main';
+
+.container {
+  width: 100vw;
+  max-width: 1200px;
+  margin: 0 auto;
+  height: auto;
+  padding: 24px 16px 0;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    padding: 24px 32px;
+  }
+}
+
+.top {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.iconHome {
+  width: 16px;
+  height: 16px;
+}
+
+.name {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.title {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  text-align: left;
+  color: $color-black;
+  margin-bottom: 8px;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+.subtitle {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  text-align: left;
+  color: $color-secondary;
+  margin-bottom: 32px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.selectContainer {
+  @include grid-page;
+
+  margin-bottom: 24px;
+}
+
+.field {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 4;
+  }
+}
+
+.fieldSecond {
+  height: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  grid-column: span 2;
+
+  @include on-tablet {
+    grid-column: span 3;
+  }
+}
+
+.label {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15.34px;
+  text-align: left;
+  color: $color-secondary;
+}
+
+.optionName {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+  text-align: left;
+  color: $color-black;
+}
+
+.list {
+  @include grid-page;
+
+  margin-bottom: 24px;
+}
+
+.listItem {
+  grid-column: span 4;
+
+  @include on-tablet {
+    grid-column: span 6;
+  }
+
+  @include on-big-tablet {
+    grid-column: span 4;
+  }
+
+  @include on-desktop {
+    grid-column: span 6;
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+}
+
+.sliderButton {
+  margin-bottom: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+}
+
+.button {
+  width: 32px;
+  height: 32px;
+  border: 1px solid $color-elements;
+  background-color: $color-white;
+  color: $color-black;
+  cursor: pointer;
+}
+
+.buttonActive {
+  width: 32px;
+  height: 32px;
+  background-color: #373131;
+  border: none;
+  color: $color-white;
+  cursor: pointer;
+}
+
+.buttonIsActive {
+  width: 32px;
+  height: 32px;
+  background-color: $color-white;
+  border: 1px solid $color-elements;
+  cursor: pointer;
+}
+
+.middleButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+}

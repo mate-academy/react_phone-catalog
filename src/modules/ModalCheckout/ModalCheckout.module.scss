@@ -1,0 +1,87 @@
+@import '../../main';
+
+.container {
+  position: fixed;
+  height: 100vh;
+  width: 100vw;
+  background-color: rgba(5, 5, 5, 0.1);
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.content {
+  background-color: $color-white;
+  max-width: 400px;
+  height: 210px;
+  padding: 18px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding: 30px;
+  }
+}
+
+body:has(.content) {
+  overflow-y: hidden;
+}
+
+.message {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 30.8px;
+  text-align: left;
+  color: $color-black;
+  margin-bottom: 16px;
+
+  @include on-tablet {
+    margin-bottom: 36px;
+  }
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  justify-content: center;
+  max-width: 250px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include on-tablet {
+    flex-direction: row;
+  }
+}
+
+.buttonYes {
+  height: 35px;
+  background-color: black;
+  color: $color-white;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+
+  @include on-tablet {
+    width: 100px;
+  }
+}
+
+.buttonNo {
+  height: 35px;
+  background-color: $color-white;
+  color: $color-black;
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+
+  @include on-tablet {
+    width: 100px;
+  }
+}
