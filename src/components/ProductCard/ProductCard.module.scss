@@ -18,11 +18,15 @@
     min-width: 272px;
   }
 
+  @include hover {
+    box-shadow: 0 2px 16px 0 #0000001a;
+  }
+
   .img {
     height: 148px;
     width: 129px;
     margin: auto;
-    display: flex;
+    cursor: pointer;
 
     @include on-tablet {
       height: 202px;
@@ -33,12 +37,21 @@
       height: 208px;
       width: 196px;
     }
+
+    @include hover {
+      transform: scale(1.03);
+    }
   }
 
   .title {
     padding-top: 16px;
     font-size: 14px;
     line-height: 21px;
+    cursor: pointer;
+
+    @include hover {
+      color: #78787a
+    }
   }
 
   .price {
@@ -78,13 +91,11 @@
 
     &__key {
       font-weight: 700;
-      line-height: 15.34px;
       color: #89939a;
     }
 
     &__value {
       font-weight: 700;
-      line-height: 15.34px;
     }
   }
 

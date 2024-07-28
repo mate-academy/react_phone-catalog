@@ -2,7 +2,7 @@ import cn from 'classnames';
 import style from './Aside.module.scss';
 import { NavLink } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
-import { AppContext } from '../../store';
+import { MenuContext } from '../../store/MenuProvider';
 
 const getActiveLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -27,7 +27,7 @@ const navItems = [
 ];
 
 export const Aside: React.FC = () => {
-  const { isMenuActive, setIsMenuActive } = useContext(AppContext);
+  const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
 
   useEffect(() => {
     const handleResize = () => {

@@ -5,8 +5,13 @@
   font-family: Mont, sans-serif;
   font-weight: 600;
   font-size: 12px;
+  line-height: 15.34px;
   color: #0f0f11;
   scroll-behavior: smooth;
+}
+
+body.no-scroll {
+  overflow: hidden;
 }
 
 html {

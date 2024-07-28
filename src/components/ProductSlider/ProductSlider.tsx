@@ -1,7 +1,9 @@
 import style from './ProductSlider.module.scss';
 import { ProductCard } from '../ProductCard';
-import { useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import cn from 'classnames';
+import { Product } from '../../types/Product';
+import { ProductContext } from '../../store/ProductProvider';
 
 type ScrollValues = 228 | 261 | 304;
 
@@ -10,11 +12,36 @@ type Props = {
   discount: boolean;
 };
 
+const getVisibleProducts = (products: Product[], discount: boolean) => {
+  if (!products.length) {
+    return;
+  }
+
+  if (!discount) {
+    let lastYearProduction = products[0].year;
+
+    for (const item of products) {
+      if (item.year > lastYearProduction) {
+        lastYearProduction = item.year;
+      }
+    }
+
+    return [...products]
+      .filter(item => item.year === lastYearProduction)
+      .sort((a, b) => b.fullPrice - a.fullPrice);
+  }
+
+  return products
+    .sort((a, b) => b.fullPrice - b.price - (a.fullPrice - a.price))
+    .filter(item => item.fullPrice - item.price >= 100);
+};
+
 export const ProductSlider: React.FC<Props> = ({ title, discount }) => {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [scrollValue, setScrollValue] = useState<ScrollValues>(228);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
+  const { products } = useContext(ProductContext);
 
   useEffect(() => {
     const getScrollValue = () => {
@@ -64,6 +91,8 @@ export const ProductSlider: React.FC<Props> = ({ title, discount }) => {
     }
   };
 
+  const visibleList = getVisibleProducts(products, discount);
+
   return (
     <section className={style.productSlider}>
       <div className={style.productSlider__header}>
@@ -84,12 +113,9 @@ export const ProductSlider: React.FC<Props> = ({ title, discount }) => {
         </div>
       </div>
       <div className={style.productCard} ref={scrollRef}>
-        <ProductCard discount={discount} />
-        <ProductCard discount={discount} />
-        <ProductCard discount={discount} />
-        <ProductCard discount={discount} />
-        <ProductCard discount={discount} />
-        <ProductCard discount={discount} />
+        {visibleList?.map(prod => (
+          <ProductCard key={prod.id} prod={prod} discount={discount} />
+        ))}
       </div>
     </section>
   );

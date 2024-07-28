@@ -4,10 +4,10 @@
   background-color: #fff;
   transform: translateY(-100%);
   transition: transform 0.5s ease;
-  position: absolute;
-  inset: $topbar-height-mobile 0 0 0;
+  position: fixed;
+  inset: 0;
   width: 100%;
-  height: 100vh - #{$topbar-height-mobile};
+  height: 100vh;
   z-index: 20;
 
   &--active {
@@ -19,7 +19,7 @@
     text-align: center;
 
     &__list {
-      padding-top: 24px;
+      padding-top: 24px + $topbar-height-mobile;
       display: flex;
       flex-direction: column;
       gap: 16px;

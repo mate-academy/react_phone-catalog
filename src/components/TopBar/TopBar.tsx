@@ -7,7 +7,7 @@ import { NavLink } from 'react-router-dom';
 import cn from 'classnames';
 import { Aside } from '../Aside';
 import { useContext } from 'react';
-import { AppContext } from '../../store';
+import { MenuContext } from '../../store/MenuProvider';
 
 const getActiveNavLink = ({ isActive }: { isActive: boolean }) =>
   cn(style.nav__link, {
@@ -32,7 +32,7 @@ const navItems = [
 ];
 
 export const TopBar = () => {
-  const { isMenuActive, setIsMenuActive } = useContext(AppContext);
+  const { isMenuActive, setIsMenuActive } = useContext(MenuContext);
 
   return (
     <>

@@ -1,1 +1,112 @@
-// not empty
+@import '../../main';
+
+.catalogPage {
+  @include page-grid;
+
+  padding-inline: $container-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $container-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $container-padding-desktop;
+  }
+
+  .path {
+    grid-column: 1 / -1;
+    margin-block: 24px;
+    width: fit-content;
+    display: flex;
+    align-items: flex-end;
+    gap: 8px;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+
+    &__link {
+      display: flex;
+
+      @include hover {
+        transform: scale(1.02);
+      }
+    }
+
+    &__direction {
+      color: #89939a;
+
+      @include hover {
+        transform: scale(1.02);
+      }
+    }
+  }
+
+  .title {
+    grid-column: 1 / -1;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    text-transform: capitalize;
+
+    @include on-tablet {
+      font-size: 48px;
+      font-weight: 800;
+      line-height: 56px;
+      letter-spacing: -0.01em;
+    }
+  }
+
+  .countModels {
+    grid-column: 1 / -1;
+    margin-top: 8px;
+    margin-bottom: 32px;
+    font-size: 14px;
+    line-height: 21px;
+    color: #89939a;
+
+    @include on-tablet {
+      margin-bottom: 40px;
+    }
+  }
+
+  .sortField {
+    grid-column: span 2;
+
+    &--1 {
+      @include on-tablet {
+        grid-column: span 4;
+      }
+    }
+
+    &--2 {
+      @include on-tablet {
+        grid-column: span 3;
+      }
+    }
+  }
+
+  .cards {
+    margin-top: 24px;
+    grid-column: 1 / -1;
+
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(212px, 272px));
+    justify-content: center;
+    column-gap: 16px;
+
+    .card {
+      margin-bottom: 40px;
+    }
+  }
+
+  .noData {
+    padding: 12px;
+    text-align: center;
+    font-weight: 800;
+    font-size: 24px;
+    line-height: 40px;
+    grid-column: 1 / -1;
+  }
+}
