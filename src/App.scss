@@ -1,1 +1,16 @@
-// not empty
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: 'Mont Regular', Arial, Helvetica, sans-serif;
+  font-style: normal;
+  font-size: 12px;
+}
+
+.App {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}

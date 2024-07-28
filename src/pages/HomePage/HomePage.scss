@@ -1,0 +1,13 @@
+@import '../../styles/utils/mixins';
+
+.home-page {
+  display: flex;
+  flex-direction: column;
+
+  &__slider {
+    display: flex;
+    justify-content: center
+  }
+
+  @include home-page-top-indentation;
+}

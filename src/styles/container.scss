@@ -1,0 +1,18 @@
+@import './utils/mixins';
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+
+  box-sizing: border-box;
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop{
+    padding: 0;
+    margin-inline: auto;
+  }
+}

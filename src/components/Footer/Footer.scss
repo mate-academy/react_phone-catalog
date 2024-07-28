@@ -1,0 +1,83 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/typography';
+@import '../../styles/utils/mixins';
+
+.footer {
+  justify-self: flex-end;
+  background: #fff;
+  border: 1px $gray-elements solid;
+  margin-top: 64px;
+
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
+  @include on-tablet {
+    margin-top: auto;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 32px 0;
+    gap: 32px;
+
+    @include on-tablet {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      height: 96px;
+    }
+  }
+
+  &__logo {
+    height: 32px;
+    width: 89px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include on-tablet {
+      flex-direction: row;
+      gap: 13.5px;
+    }
+
+    @include on-desktop {
+      gap: 106px;
+    }
+  }
+
+  &__back-to-top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 16px;
+
+    align-self: center;
+
+    &__text {
+      color: $gray-secondary;
+      width: 70px;
+    }
+  }
+
+  &__up-arrow {
+    height: 32px;
+    width: 32px;
+    
+    @include transition-duration;
+
+    &:hover {
+      border: solid 1px $gray-primary;
+      cursor: pointer;
+    }
+
+    &--disabled {
+      color: $gray-elements;
+    }
+  }
+}

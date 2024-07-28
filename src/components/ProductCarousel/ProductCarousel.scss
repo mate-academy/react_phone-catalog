@@ -1,0 +1,74 @@
+@import '../../styles/utils/mixins';
+
+.product-carousel {
+  overflow: hidden;
+
+  &__list-wrapper {
+    overflow: hidden;
+    width: 100%;
+  }
+
+  &__list {
+    display: flex;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    gap: 16px;
+  }
+
+  &__item {
+    width: 272px;
+    box-sizing: border-box;
+    transition: transform 0.5s ease-in-out;
+
+    min-width: 212px;
+
+    @include on-tablet {
+      min-width: 212px;
+    }
+
+    @include on-desktop {
+      min-width: 240px;
+    }
+  }
+
+  &__title-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 25px;
+  }
+
+  &__button-wrapper {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__button {
+    width: 40px;
+    height: 40px;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: pointer;
+
+    &:disabled {
+      cursor: auto;
+      opacity: 0.5;
+    }
+
+    @include transition-duration;
+
+    &:hover {
+      border: 1px solid $gray-primary;
+    }
+  }
+
+  &__button--left {
+    background-image: url('../../../public/icons/arrow-left.svg');
+  }
+
+  &__button--right {
+    background-image: url('../../../public/icons/arrow-right.svg');
+  }
+}

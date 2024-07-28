@@ -1,0 +1,102 @@
+@import './vars';
+
+
+
+@mixin on-tablet {
+  @media (min-width: $min-tablet-with) {
+    @content;
+  }
+}
+
+
+
+@mixin on-desktop {
+  @media (min-width: $min-desktop-with) {
+    @content;
+  }
+}
+
+
+
+@mixin carousel-image-size {
+  width: 100vw;
+
+  @include on-tablet {
+    width: 490px; // Ширина на планшетах
+  }
+
+  @include on-desktop {
+    width: 1040px; // Ширина на десктопах
+  }
+}
+
+@mixin categories-image-size {
+  width: 288px; // Ограничиваем ширину на 100% ширины контейнера
+  height: 288px; // Устанавливаем высоту в зависимости от ширины экрана
+
+  @include on-tablet {
+    width: 187px;
+    height: 187px;
+  }
+
+  @include on-desktop {
+    width: 368px;
+    height: 368px;
+  }
+
+  background-size: 200%; // или другие проценты в зависимости от нужного результата
+}
+
+
+
+@mixin home-page-top-indentation {
+  gap: 24px;
+  margin-top: 24px;
+  
+  @include footer-pading;
+
+  @include on-tablet {
+    gap: 32px;
+    margin-top: 32px;
+  }
+
+  @include on-desktop {
+    gap: 56px;
+    margin-top: 56px;
+  }
+}
+
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+
+    grid-template-columns: repeat(var(--columns), 32px);
+  }
+}
+
+@mixin transition-duration {
+  transition-duration: 0.3s;
+}
+
+@mixin footer-pading {
+  padding-bottom: 56px;
+
+  @include on-tablet {
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+}

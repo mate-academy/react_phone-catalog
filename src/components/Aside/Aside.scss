@@ -1,0 +1,93 @@
+@import "../../styles/utils/vars";
+
+.menu {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+
+  background: #fff;
+
+  transform: translateX(0);
+  pointer-events: all;
+
+  &__logo {
+    width: 64px;
+    height: 22px;
+    display: flex;
+    padding: 13px 16px;
+  }
+
+  &__top {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    box-shadow: 0 1px 0 0 $gray-elements;
+    box-sizing: border-box;
+  }
+
+  &__close {
+    margin-left: auto;
+    box-sizing: border-box;
+    height: 48px;
+    width: 48px;
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin-top: 24px;
+    gap: 16px;
+
+    &__item {
+      height: 27px;
+      display: flex;
+      justify-content: center;
+    }
+  }
+
+  &__bottom {
+    margin-top: auto;
+    display: flex;
+    height: 64px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+
+    &__quantity-icon {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      color: #fff;
+      border-radius: 50%;
+      bottom: 10%;
+      left: 3%;
+      font-size: 9px;
+      width: 14px;
+      height: 14px;
+      background-color: $color-danger;
+      border: 1px solid #fff;
+      transition: all 0.3s;
+    }
+
+    &__button {
+      flex-grow: 1;
+
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: 16px 16px;
+
+      &--favourites {
+        background-image: url(../../../public/icons/Favourites.svg);
+      }
+
+      &--cart {
+        background-image: url(../../../public/icons/Cart.svg);
+      }
+    }
+  }
+}

@@ -1,0 +1,34 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.bread-crumb {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-self: center;
+  gap: 40px;
+  text-transform: capitalize;
+
+  &__list {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  &__item {
+    color: $gray-secondary;
+    text-decoration: none;
+    margin-right: 5px;
+    display: flex;
+    gap: 8px;
+    
+    @include transition-duration;
+
+    &:hover {
+      cursor: pointer;
+      color: $gray-primary;
+    }
+  }
+}
