@@ -6,9 +6,11 @@
   align-items: center;
   flex-direction: column;
 
+  @include footer-pading;
+
   &__list {
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     flex-flow: column wrap;
 
     @include on-tablet {

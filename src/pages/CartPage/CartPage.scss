@@ -4,6 +4,8 @@
 .cartPage {
   width: 100%;
 
+  @include footer-pading;
+  
   &__main {
     display: flex;
     gap: 16px;
@@ -72,7 +74,7 @@
     color: #FFF;
     border: 0;
     height: 48px;
-    
+
     @include transition-duration;
 
     &:hover {

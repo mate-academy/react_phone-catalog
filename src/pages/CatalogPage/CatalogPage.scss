@@ -4,11 +4,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 64px;
 
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
+  @include footer-pading;
 
   &__title {
     display: flex;

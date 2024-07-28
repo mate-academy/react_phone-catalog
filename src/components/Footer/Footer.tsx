@@ -1,10 +1,13 @@
 /* eslint-disable react/button-has-type */
 import { Link } from 'react-router-dom';
+import { useState, useEffect } from 'react';
 import './Footer.scss';
 import '../../styles/button.scss';
 import '../../styles/container.scss';
 
 export const Footer = () => {
+  const [showButton, setShowButton] = useState(false);
+
   const options = [
     { id: 'github', url: 'https://github.com/Svyatoslav-kolom' },
     { id: 'contacts', url: 'https://contacts' },
@@ -17,6 +20,22 @@ export const Footer = () => {
       behavior: 'smooth',
     });
   };
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 200) {
+        setShowButton(true);
+      } else {
+        setShowButton(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, []);
 
   return (
     <footer className="footer">
@@ -32,17 +51,21 @@ export const Footer = () => {
             ))}
           </nav>
 
-          <div className="footer__back-to-top">
-            <p className="footer__back-to-top__text small-text">Back to top</p>
+          {showButton && (
+            <div className="footer__back-to-top">
+              <p className="footer__back-to-top__text small-text">
+                Back to top
+              </p>
 
-            <button onClick={scrollToTop} className="button">
-              <img
-                src="icons/Arrow-up.svg"
-                alt="top"
-                className="footer__up-arrow button"
-              />
-            </button>
-          </div>
+              <button onClick={scrollToTop} className="button">
+                <img
+                  src="icons/Arrow-up.svg"
+                  alt="top"
+                  className="footer__up-arrow button"
+                />
+              </button>
+            </div>
+          )}
         </div>
       </div>
     </footer>
