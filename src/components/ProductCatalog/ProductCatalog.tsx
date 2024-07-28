@@ -159,7 +159,7 @@ export const ProductCatalog: React.FC<Props> = ({ products }) => {
             <option className="catalog__dropdown__options" value={16}>
               16
             </option>
-            <option className="catalog__dropdown__options" value={1}>
+            <option className="catalog__dropdown__options" value={0}>
               All
             </option>
           </select>
