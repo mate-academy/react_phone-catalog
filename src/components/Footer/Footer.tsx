@@ -10,8 +10,8 @@ export const Footer = () => {
 
   const options = [
     { id: 'github', url: 'https://github.com/Svyatoslav-kolom' },
-    { id: 'contacts', url: 'https://contacts' },
-    { id: 'rights', url: 'https:///rights' },
+    { id: 'contacts', url: 'https://github.com/Svyatoslav-kolom' },
+    { id: 'rights', url: 'https://github.com/Svyatoslav-kolom' },
   ];
 
   const scrollToTop = () => {

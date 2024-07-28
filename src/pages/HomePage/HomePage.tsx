@@ -1,4 +1,3 @@
-// import { Slider } from '../../components/Slider';
 import { useEffect, useState } from 'react';
 import { ShopByCategory } from '../../components/ShopByCategory';
 import { Slider } from '../../components/Slider';
@@ -20,8 +19,8 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const [fetchedHotProducts] = await Promise.all([getHotPriceProducts()]);
-        const [fetchedBrandNewModels] = await Promise.all([
+        const [fetchedHotProducts, fetchedBrandNewModels] = await Promise.all([
+          getHotPriceProducts(),
           getBrandNewModels(),
         ]);
 

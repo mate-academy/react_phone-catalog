@@ -11,6 +11,17 @@ type ColorPalette = {
   red: string;
   spacegray: string;
   coral: string;
+  spaceblack: string;
+  sierrablue: string;
+  graphite: string;
+  blue: string;
+  pink: string;
+  midnight: string;
+  skyblue: string;
+  starlight: string;
+  spaceGray: string;
+  space_gray: string;
+  rose_gold: string;
 };
 
 export type Color = keyof ColorPalette;
@@ -28,4 +39,15 @@ export const Colors: ColorPalette = {
   red: '#cd283f',
   spacegray: '#4e4d4b',
   coral: '#fd6a56',
+  spaceblack: '#1b1b1d',
+  sierrablue: '#4a90e2',
+  graphite: '#5a5a5a',
+  blue: '#0073e6',
+  pink: '#ffc0cb',
+  midnight: '#121212',
+  skyblue: '#87ceeb',
+  starlight: '#f0ead6',
+  spaceGray: '#4b4a4a',
+  space_gray: '#4b4a4a',
+  rose_gold: '#f9d2cd',
 };

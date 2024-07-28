@@ -39,7 +39,7 @@ export const ShopByCategory = () => {
         </div>
 
         <div className="categories__component">
-          <NavLink to="/phones">
+          <NavLink to="/tablets">
             <div className="categories__img categories__img--tablet" />
           </NavLink>
 
@@ -50,7 +50,7 @@ export const ShopByCategory = () => {
         </div>
 
         <div className="categories__component">
-          <NavLink to="/phones">
+          <NavLink to="/accessories">
             <div className="categories__img categories__img--accessory" />
           </NavLink>
 

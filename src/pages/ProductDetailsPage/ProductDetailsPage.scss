@@ -2,6 +2,8 @@
 @import '../../styles/utils/mixins';
 
 .product-details-page {
+  @include footer-pading;
+
   &__title {
     margin-bottom: 40px;
   }
@@ -207,7 +209,7 @@
       padding: 0;
       background-color: transparent;
       cursor: pointer;
-      
+
       @include transition-duration;
 
       &:hover {

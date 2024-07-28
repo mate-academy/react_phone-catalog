@@ -66,7 +66,7 @@ export const ProductDetailsPage: React.FC = () => {
   const photosSecondary = product.images.slice(1);
 
   const handleColorChange = (color: string) => {
-    const newUrl = `/products/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
+    const newUrl = `/${product.category}/${product.namespaceId}-${product.capacity.toLowerCase()}-${color}`;
 
     navigate(newUrl);
   };
@@ -76,7 +76,7 @@ export const ProductDetailsPage: React.FC = () => {
   };
 
   const handleCapacityChange = (capacity: string) => {
-    const newUrl = `/products/${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
+    const newUrl = `/${product.category}/${product.namespaceId}-${capacity.toLowerCase()}-${product.color}`;
 
     navigate(newUrl);
   };
