@@ -1,0 +1,37 @@
+@import '../../main';
+
+.select {
+  position: relative;
+
+  width: 100%;
+  padding: 0.5rem;
+  height: 40px;
+  border: 1px solid $color-elements;
+  padding: 10px;
+  cursor: pointer;
+
+  select {
+    width: 100%;
+    appearance: none;
+    border: none;
+    font-size: 14px;
+    color: $color-black;
+    background-color: $color-white;
+    outline-color: $color-white;
+    outline:0px;
+  }
+}
+
+
+
+.select::after {
+  --size: 0.4rem;
+  position: absolute;
+  content: "";
+  right: 0.5rem;
+  pointer-events: none;
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 45%;
+}

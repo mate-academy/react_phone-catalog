@@ -4,6 +4,7 @@ import { StateContext } from '../../Store';
 import { Link, useSearchParams } from 'react-router-dom';
 import { ProductCard } from '../../components/ProductCard';
 import classNames from 'classnames';
+import { Select } from '../../components/Select';
 
 export const AccessoriesPage = () => {
   const state = useContext(StateContext);
@@ -116,45 +117,25 @@ export const AccessoriesPage = () => {
             <label htmlFor="sortByYear" className={styles.label}>
               Sort by
             </label>
-            <select
+            <Select
               name="sortByYear"
               id="sortByYear"
-              className={styles.select}
               value={query}
+              options={['Newest', 'Cheapest', 'Alphabetically']}
               onChange={handleSelectedSorting}
-            >
-              <option value="Newest" className={styles.optionName}>
-                Newest
-              </option>
-              <option value="Cheapest" className={styles.optionName}>
-                Cheapest
-              </option>
-              <option value="Alphabetically" className={styles.optionName}>
-                Alphabetically
-              </option>
-            </select>
+            />
           </div>
           <div className={styles.fieldSecond}>
             <label htmlFor="itemsOnPage" className={styles.label}>
               Items on page
             </label>
-            <select
+            <Select
               name="itemsOnPage"
               id="itemsOnPage"
-              className={styles.select}
               value={quantity}
               onChange={handleChangeQuatity}
-            >
-              <option value="4" className={styles.optionName}>
-                4
-              </option>
-              <option value="8" className={styles.optionName}>
-                8
-              </option>
-              <option value="16" className={styles.optionName}>
-                16
-              </option>
-            </select>
+              options={[4, 8, 16]}
+            />
           </div>
         </section>
         <ul className={styles.list}>
