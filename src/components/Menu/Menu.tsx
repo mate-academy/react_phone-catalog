@@ -103,19 +103,23 @@ export const Menu: React.FC<Props> = ({ isOpen, setIsOpen }) => {
 
       <div className={styles.menuBottomContent}>
         <NavLink to="/favorites" className={getLinkClass} onClick={click}>
-          <img src="img/HeartLike_Header_default.svg" alt="favotites" />
-          {favorites.length !== 0 && (
-            <span className={styles.counter}>{favorites.length}</span>
-          )}
+          <div className={styles.iconWrapper}>
+            <img src="img/HeartLike_Header_default.svg" alt="favotites" />
+            {favorites.length !== 0 && (
+              <span className={styles.counter}>{favorites.length}</span>
+            )}
+          </div>
         </NavLink>
 
         <div className={styles.borderRight}></div>
 
         <NavLink to="/card" className={getLinkClass} onClick={click}>
-          <img src="img/ShoppingBag_header.svg" alt="shop" />
-          {bascket.length !== 0 && (
-            <span className={styles.counter}>{totalQuantity}</span>
-          )}
+          <div className={styles.iconWrapper}>
+            <img src="img/ShoppingBag_header.svg" alt="shop" />
+            {bascket.length !== 0 && (
+              <span className={styles.counter}>{totalQuantity}</span>
+            )}
+          </div>
         </NavLink>
       </div>
     </div>

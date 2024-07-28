@@ -1,22 +1,18 @@
-import { useContext, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import styles from './BrandNewModels.module.scss';
 
 import { StateContext } from '../../Store';
 import { useWindowWidth } from '@react-hook/window-size';
 import { ProductCard } from '../ProductCard';
+import { useSwipeable } from 'react-swipeable';
+import { Product } from '../../types/Product';
 
 export const BrandNewModel = () => {
   const state = useContext(StateContext);
+  const [phones, setPhones] = useState<Product[]>([]);
   const { products } = state;
   const [curretIndex, setCurrentIndex] = useState(0);
   const screenWidth = useWindowWidth();
-
-  const isTablet = screenWidth >= 640 && screenWidth < 1200;
-  const isDesctop = screenWidth >= 1200;
-
-  const phones = products
-    .filter(product => product.category === 'phones')
-    .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
 
   const handleNextPhone = () => {
     setCurrentIndex(prevIndex =>
@@ -27,6 +23,22 @@ export const BrandNewModel = () => {
   const handlePrevPhone = () => {
     setCurrentIndex(prevIndex => (prevIndex === 0 ? prevIndex : prevIndex - 1));
   };
+
+  const handlers = useSwipeable({
+    onSwipedLeft: () => handleNextPhone(),
+    onSwipedRight: () => handlePrevPhone(),
+  });
+
+  useEffect(() => {
+    const res = products
+      .filter(product => product.category === 'phones')
+      .filter(phone => phone.year > 2021 && phone.capacity === '128GB');
+
+    setPhones(res);
+  }, [products]);
+
+  const isTablet = screenWidth >= 640 && screenWidth < 1200;
+  const isDesctop = screenWidth >= 1200;
 
   let imgWidth = 226;
 
@@ -71,6 +83,7 @@ export const BrandNewModel = () => {
       </div>
       <div className={styles.sliderWrapper}>
         <div
+          {...handlers}
           className={styles.sliderContent}
           style={{ left: `-${imgWidth * curretIndex}px` }}
         >

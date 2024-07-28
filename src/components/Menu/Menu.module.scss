@@ -2,6 +2,7 @@
 
 body:has(.content.isOpen) {
   overflow-y: hidden;
+  position: fixed;
 }
 
 .content {
@@ -80,6 +81,9 @@ body:has(.content.isOpen) {
   justify-content: center;
   height: 64px;
   width: 50%;
+}
+
+.iconWrapper {
   position: relative;
 }
 
@@ -133,8 +137,8 @@ body:has(.content.isOpen) {
   align-items: center;
   font-size: 10px;
   position: absolute;
-  top: 19px;
-  right: 66px;
+  top: -7px;
+  right: -7px;
 
   height: 13px;
   width: 13px;

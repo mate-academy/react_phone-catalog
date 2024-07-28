@@ -76,10 +76,18 @@
   background-color: $color-white;
   border: 1px solid $color-elements;
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   &Active {
     width: 32px;
     height: 32px;
     background-color: $color-white;
     border: 1px solid $color-icons;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
