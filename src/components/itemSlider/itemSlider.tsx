@@ -66,14 +66,7 @@ export const ItemSlider: React.FC<Props> = ({
     setProductsTotalNumber(
       newProducts.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)),
     );
-    console.log('minNumber', minNumber)
-    console.log('maxNumber', maxNumber)
-    console.log('newProducts', newProducts.length)
   };
-  console.log('list', list.length)
-  console.log('productsTotalNumber', productsTotalNumber)
-  console.log('active', active)
-
 
   useEffect(() => {
     if (showRandom) {
