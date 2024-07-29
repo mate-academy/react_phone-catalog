@@ -54,14 +54,26 @@ export const ItemSlider: React.FC<Props> = ({
 
   const getSuggestedProducts = (number: number) => {
     const minNumber = Math.max(1, Math.floor(Math.random() * number));
-    const maxNumber = Math.max(4, getNumber(minNumber, number));
+    let maxNumber = Math.max(4, getNumber(minNumber, number));
+
+    if (minNumber === maxNumber) {
+      console.log('in')
+      maxNumber = Math.max(4, getNumber(minNumber, number));
+    }
     const newProducts = list.slice(minNumber, maxNumber);
 
     setCopyProducts(newProducts);
     setProductsTotalNumber(
       newProducts.length - ((isTablet ? 2 : 0) | (isDesktop ? 3 : 0)),
     );
+    console.log('minNumber', minNumber)
+    console.log('maxNumber', maxNumber)
+    console.log('newProducts', newProducts.length)
   };
+  console.log('list', list.length)
+  console.log('productsTotalNumber', productsTotalNumber)
+  console.log('active', active)
+
 
   useEffect(() => {
     if (showRandom) {
