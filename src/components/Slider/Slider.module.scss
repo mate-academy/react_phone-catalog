@@ -4,37 +4,49 @@
   position: relative;
   height: calc(100vw * 1.1);
 
+  @include page-grid;
+
+  grid-template-rows: auto auto;
+
   @include on-tablet {
-    height: fit-content; // or smth else
-
-    @include page-grid;
-
-    grid-template-rows: auto auto;
+    height: fit-content;
   }
 
   &__imageWrapper {
+    position: relative;
+    grid-column: 1 / -1;
+    grid-row: 1 / 2;
+    height: 100vw;
+
+    @include on-tablet {
+      position: relative;
+      width: auto;
+      height: 100%;
+
+      grid-column: 2 / 12;
+      grid-row: 1 / 2;
+    }
+
+    @include on-desktop {
+      grid-column: 2 / 24;
+    }
+  }
+
+  &__image {
     position: absolute;
     top: 0;
     left: 50%;
     transform: translateX(-50%);
     width: 100vw;
+    object-fit: cover;
 
-    @include on-tablet {
-      position: relative;
-      width: auto;
-
-      grid-column: 2 / 12;
-      grid-row: 1 / 2;
-    }
-  }
-
-  &__image {
-    width: 100%;
     aspect-ratio: 1;
     display: block;
     transition: transform $transition-duration ease-in-out;
 
     @include on-tablet {
+      position: relative;
+
       width: 100%;
       aspect-ratio: 2.58;
       object-fit: cover;
@@ -74,12 +86,20 @@
         @include on-tablet {
           grid-column: 12 / 13;
           grid-row: 1 / 2;
+          justify-self: end;
+        }
+
+        @include on-desktop {
+          grid-column: -2 / -1;
         }
       }
     }
   }
 
   &__indicators {
+    grid-column: 1 / -1;
+    grid-row: 2 / 3;
+
     display: flex;
     gap: 4px;
     justify-content: center;

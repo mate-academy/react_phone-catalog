@@ -14,6 +14,12 @@
     @include on-tablet {
       flex-flow: row;
       gap: 16px;
+
+      justify-content: space-around;
+    }
+
+    @include on-desktop {
+      justify-content: space-between;
     }
   }
 
@@ -52,6 +58,11 @@
     @include on-tablet {
       width: 187px;
       height: 187px;
+    }
+
+    @include on-desktop {
+      width: 368px;
+      height: 368px;
     }
   }
 

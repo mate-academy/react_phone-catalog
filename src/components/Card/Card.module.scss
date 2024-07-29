@@ -14,7 +14,11 @@
   @include on-tablet {
     width: 238px;
     height: 512px;
+  }
 
+  @include on-desktop {
+    width: 272px;
+    height: 506px;
   }
 
   &__img {
@@ -24,6 +28,11 @@
     @include on-tablet {
       width: 173px;
       height: 202px;
+    }
+
+    @include on-desktop {
+      width: 208px;
+      height: 196px;
     }
   }
 
@@ -65,6 +74,10 @@
 
       @include on-tablet {
         width: 125px;
+      }
+
+      @include on-desktop {
+        width: 160px;
       }
     }
 

@@ -14,7 +14,7 @@ export const Welcome = () => {
       <h2 className={styles.welcome__title}>Welcome to Nice Gadgets store!</h2>
 
       <div className={styles.welcome__slider}>
-        <Slider images={imagesForSlide} infLoop={false} />
+        <Slider images={imagesForSlide} infLoop={true} />
       </div>
     </section>
   );

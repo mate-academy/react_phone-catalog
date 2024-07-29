@@ -12,12 +12,14 @@ export const SideMenu = () => {
             <img src="./img/icons/logo.svg" className="logo" alt="logo" />
           </a>
 
-          <a
-            href="#"
-            className="top-bar__icon-control top-bar__icon-control--close"
-          >
-            <Icon iconName="close" />
-          </a>
+          <div className="top-bar__buttons">
+            <a
+              href="#"
+              className="top-bar__icon-control top-bar__icon-control--close"
+            >
+              <Icon iconName="close" />
+            </a>
+          </div>
         </div>
 
         <nav className={classNames('nav', styles.menu__nav)}>

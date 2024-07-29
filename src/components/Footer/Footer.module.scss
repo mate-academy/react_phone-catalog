@@ -29,6 +29,10 @@
 
       margin-top: 0;
     }
+
+    @include on-desktop {
+      grid-column: 1 / 8;
+    }
   }
 
   &__icon {
@@ -41,6 +45,10 @@
       grid-column: 4 / 8;
     }
 
+    @include on-desktop {
+      grid-column: 8 / 12;
+    }
+
     &-list {
       flex-flow: column;
       align-items: flex-start;
@@ -49,6 +57,12 @@
       @include on-tablet {
         flex-flow: row;
         align-items: center;
+
+        gap: 13px;
+      }
+
+      @include on-desktop {
+        gap: 106px;
       }
     }
 
@@ -76,6 +90,10 @@
 
       margin-bottom: 0;
       justify-content: flex-end;
+    }
+
+    @include on-desktop {
+      grid-column: 12/ -1;
     }
   }
 

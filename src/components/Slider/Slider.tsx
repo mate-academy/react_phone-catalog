@@ -41,7 +41,7 @@ export const Slider: React.FC<SliderProps> = ({ images, infLoop = false }) => {
       clearInterval(autoPlayInterval);
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  }, [INTERVAL, nextSlide]);
 
   return (
     <div className={classNames(styles.slider)}>
