@@ -1,8 +1,8 @@
 import { useContext, useRef, useState } from 'react';
-import { PhoneContext } from '../../../../../App';
 import Carousel from 'react-multi-carousel';
 import 'react-multi-carousel/lib/styles.css';
 import { Card } from '../NewPhones/components';
+import { PhoneContext } from '../../../../../PageContext';
 
 export const HotPrices: React.FC = () => {
   const phones = useContext(PhoneContext);

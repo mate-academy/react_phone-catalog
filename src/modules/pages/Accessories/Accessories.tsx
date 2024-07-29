@@ -2,8 +2,8 @@ import React, { ChangeEvent, useContext, useState } from 'react';
 import './Accessories.scss';
 import { Card } from '../Home/components/NewPhones/components';
 import { Sort } from '../Phones/sortFunction';
-import { AccessoriesContext } from '../../../App';
 import { getVisiableAccess } from './sortFunction';
+import { AccessoriesContext } from '../../../PageContext';
 
 export const Accessories: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

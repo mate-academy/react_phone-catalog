@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import './BucketCard.scss';
+import { Access, Phone } from '../../../types/types';
 
-export const BucketCard = () => {
+type Props = {
+  item: Phone | Access;
+};
+
+export const BucketCard: React.FC<Props> = ({ item }) => {
   const [count, setCount] = useState(1);
 
   function handleMinusItem() {
@@ -29,7 +34,7 @@ export const BucketCard = () => {
         src="img/phones/apple-iphone-11/black/00.webp"
         className="card-img"
       ></img>
-      <p className="card-p">Apple iPhone 11 Pro Max 64GB Gold (iMT9G2FS/A)</p>
+      <p className="card-p">{item.name}</p>
       <div className="card-btns">
         <button className="card-btn" onClick={handleMinusItem}>
           <img src="../uploadedImg/Minus.png" className="card-btn-img"></img>
@@ -39,7 +44,7 @@ export const BucketCard = () => {
           <img src="../uploadedImg/Plus.png" className="card-btn-img"></img>
         </button>
       </div>
-      <p className="card-price">$799</p>
+      <p className="card-price">{item.priceDiscount}</p>
     </div>
   );
 };

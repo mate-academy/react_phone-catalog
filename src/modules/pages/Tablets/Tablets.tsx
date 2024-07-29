@@ -2,7 +2,7 @@ import React, { ChangeEvent, useContext, useState } from 'react';
 import './Tablets.scss';
 import { Card } from '../Home/components/NewPhones/components';
 import { Sort, getVisiablePhones } from '../Phones/sortFunction';
-import { TabletsContext } from '../../../App';
+import { TabletsContext } from '../../../PageContext';
 
 export const Tablets: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

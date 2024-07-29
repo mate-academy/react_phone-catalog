@@ -14,12 +14,14 @@ line-height: 41px;
 letter-spacing: -0.01em;
 text-align: left;
 color: #313237;
+text-transform: capitalize;
 }
 
 .productInfo-pictures-block {
   display: flex;
   flex-direction: row;
   gap: 16px;
+  margin-right: 64px;
 }
 
 .productInfo-smallPictures-block {

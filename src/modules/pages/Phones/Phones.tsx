@@ -1,8 +1,8 @@
 import React, { ChangeEvent, useContext, useState } from 'react';
 import './Phones.scss';
-import { PhoneContext } from '../../../App';
 import { Card } from '../Home/components/NewPhones/components';
 import { Sort, getVisiablePhones } from './sortFunction';
+import { PhoneContext } from '../../../PageContext';
 
 export const Phones: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(1);

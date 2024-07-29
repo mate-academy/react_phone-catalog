@@ -1,12 +1,18 @@
 import { useContext, useRef, useState } from 'react';
 import './ProductInfo.scss';
-import { PhoneContext } from '../../../App';
 import Carousel from 'react-multi-carousel';
 import { Card } from '../Home/components/NewPhones/components';
 import { Outlet, useParams } from 'react-router-dom';
+import {
+  AccessoriesContext,
+  PhoneContext,
+  TabletsContext,
+} from '../../../PageContext';
 
 export const ProductInfo = () => {
   const phones = useContext(PhoneContext);
+  const tablets = useContext(TabletsContext);
+  const accessories = useContext(AccessoriesContext);
   const sortedByYears = phones.sort((a, b) => b.priceRegular - a.priceRegular);
 
   const responsive = {
@@ -42,18 +48,22 @@ export const ProductInfo = () => {
   };
 
   // const products = useContext(ProductsContext);
-  const { phoneId } = useParams();
+  const { productId } = useParams();
 
   function getCurrectProduct(id: string) {
-    return phones.find(phone => phone.id === id);
+    return (
+      phones.find(phone => phone.id === id) ||
+      tablets.find(tablet => tablet.id === id) ||
+      accessories.find(acce => acce.id === id)
+    );
   }
 
   function getCurrentPhone() {
-    if (!phoneId) {
+    if (!productId) {
       return;
     }
 
-    return getCurrectProduct(phoneId);
+    return getCurrectProduct(productId);
   }
 
   const currentPhone = getCurrentPhone();
@@ -71,31 +81,31 @@ export const ProductInfo = () => {
             <button className="productInfo-smallPicture">
               <img
                 className="product-picture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[0]}
               ></img>
             </button>
             <button className="productInfo-smallPicture">
               <img
                 className="product-picture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[1]}
               ></img>
             </button>
             <button className="productInfo-smallPicture">
               <img
                 className="product-picture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[2]}
               ></img>
             </button>
             <button className="productInfo-smallPicture">
               <img
                 className="product-picture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[3]}
               ></img>
             </button>
             <button className="productInfo-smallPicture">
               <img
                 className="product-picture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[4]}
               ></img>
             </button>
           </div>
@@ -103,7 +113,7 @@ export const ProductInfo = () => {
             <button className="productInfo-bigPicture">
               <img
                 className="product-bigPicture"
-                src="img/phones/apple-iphone-11/black/00.webp"
+                src={currentPhone?.images[0]}
               ></img>
             </button>
           </div>
@@ -121,15 +131,21 @@ export const ProductInfo = () => {
           <div className="gb-container">
             <p className="product-colors-p">Select capacity</p>
             <div className="gb-btns-block">
-              <button className="gb-btns-hover">64 GB</button>
-              <button className="gb-btns">256 GB</button>
-              <button className="gb-btns">512 GB</button>
+              <button className="gb-btns-hover">
+                {currentPhone?.capacityAvailable[0]}
+              </button>
+              <button className="gb-btns">
+                {currentPhone?.capacityAvailable[1]}
+              </button>
+              <button className="gb-btns">
+                {currentPhone?.capacityAvailable[2]}
+              </button>
             </div>
           </div>
           <div className="add-to-card-block">
             <div className="p-block">
-              <p className="currentPrice">$799</p>
-              <p className="fullPrice">$567</p>
+              <p className="currentPrice">{`$${currentPhone?.priceDiscount}`}</p>
+              <p className="fullPrice">{`$${currentPhone?.priceRegular}`}</p>
             </div>
             <div className="buttons-block">
               <button className="Add-btn-black">Add to card</button>
@@ -141,19 +157,19 @@ export const ProductInfo = () => {
           <div className="desc-block">
             <div className="desc-line">
               <p className="leftText">Screen</p>
-              <p className="rightText">6.5” OLED</p>
+              <p className="rightText">{currentPhone?.screen}</p>
             </div>
             <div className="desc-line">
               <p className="leftText">Resolution</p>
-              <p className="rightText">2688x1242</p>
+              <p className="rightText">{currentPhone?.resolution}</p>
             </div>
             <div className="desc-line">
               <p className="leftText">Processor</p>
-              <p className="rightText">Apple A12 Bionic</p>
+              <p className="rightText">{currentPhone?.processor}</p>
             </div>
             <div className="desc-line">
               <p className="leftText">RAM</p>
-              <p className="rightText">3 GB</p>
+              <p className="rightText">{currentPhone?.ram}</p>
             </div>
           </div>
         </div>
@@ -165,7 +181,7 @@ export const ProductInfo = () => {
         <div className="productInfo-left-block">
           <h1 className="productInfo-left-block-h1">About</h1>
           <div className="productInfo-desc-block">
-            <h2 className="productInfo-desc-h2">And then there was Pro</h2>
+            <h2 className="productInfo-desc-h2">!!!desc.map!!!</h2>
             <p className="productInfo-desc-p">
               A transformative triple‑camera system that adds tons of capability
               without complexity. An unprecedented leap in battery life. And a

@@ -1,7 +1,7 @@
 import { useContext } from 'react';
 import './Favorites.scss';
-import { PhoneContext } from '../../../App';
 import { Card } from '../Home/components/NewPhones/components';
+import { PhoneContext } from '../../../PageContext';
 
 export const Favorites = () => {
   const phones = useContext(PhoneContext);
