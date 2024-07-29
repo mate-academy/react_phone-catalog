@@ -10,16 +10,12 @@ type ProductList = {
 
 export const ProductsList: React.FC<ProductList> = ({ gadgets }) => {
   return (
-    <>
-      <ul className={styles.list}>
-        {gadgets?.map(gadget => (
-          <li className={styles.element} key={gadget.id}>
-            <GadgetCard gadget={gadget} />
-          </li>
-        ))}
-      </ul>
-
-      <div className={styles.pages}></div>
-    </>
+    <ul className={styles.list}>
+      {gadgets?.map(gadget => (
+        <li className={styles.element} key={gadget.id}>
+          <GadgetCard gadget={gadget} />
+        </li>
+      ))}
+    </ul>
   );
 };

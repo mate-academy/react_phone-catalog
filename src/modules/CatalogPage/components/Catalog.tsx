@@ -49,10 +49,26 @@ export const Catalog: React.FC = () => {
   const [itemsOnPage, setItemsOnPage] = useState(4);
   const [sortBy, setSortBy] = useState('Newest');
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
-  const [models, setModels] = useState<number | null>(null);
+  const [models, setModels] = useState<number>(0);
+  const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
+  const [startShowFrom, setStartShowFrom] = useState(0);
   const location = useLocation();
 
   const productsFromServer = useAppSelector(state => state.products.objects);
+
+  useEffect(() => {
+    if (models !== null) {
+      const pages = Math.abs(Math.ceil(models / itemsOnPage));
+
+      const array = [];
+
+      for (let i = 1; i <= pages; i++) {
+        array.push(i);
+      }
+
+      setPagesWithProducts(array);
+    }
+  }, [models, itemsOnPage]);
 
   const prepereToShow = (categ: string) => {
     const filteredProduct = productsFromServer.filter(
@@ -64,24 +80,27 @@ export const Catalog: React.FC = () => {
     switch (sortBy) {
       case 'Alphabetically':
         return filteredProduct
+          .slice()
           .sort((el1, el2) => {
             return el1.name.localeCompare(el2.name);
           })
-          .slice(0, itemsOnPage);
+          .slice(startShowFrom, startShowFrom + itemsOnPage);
 
       case 'Cheapest':
         return filteredProduct
+          .slice()
           .sort((el1, el2) => {
             return el1.price - el2.price;
           })
-          .slice(0, itemsOnPage);
+          .slice(startShowFrom, startShowFrom + itemsOnPage);
 
       default:
         return filteredProduct
+          .slice()
           .sort((el1, el2) => {
             return el2.year - el1.year;
           })
-          .slice(0, itemsOnPage);
+          .slice(startShowFrom, startShowFrom + itemsOnPage);
     }
   };
 
@@ -96,7 +115,13 @@ export const Catalog: React.FC = () => {
       setTitle('Accessories');
       setDisplayedProducts(prepereToShow('accessories'));
     }
-  }, [location.pathname, productsFromServer, itemsOnPage, sortBy]);
+  }, [
+    location.pathname,
+    productsFromServer,
+    itemsOnPage,
+    sortBy,
+    startShowFrom,
+  ]);
 
   const handleSortBySelect = (option: SingleValue<OptionsSortByType>) => {
     if (option) {
@@ -113,10 +138,14 @@ export const Catalog: React.FC = () => {
       if (value.toUpperCase() === value.toLowerCase()) {
         setItemsOnPage(+value);
       } else {
-        setItemsOnPage(-1);
+        setItemsOnPage(models);
       }
     }
   };
+
+  function handlePageButton(page: number) {
+    setStartShowFrom(itemsOnPage * (page - 1));
+  }
 
   return (
     <div className={styles.catalog}>
@@ -269,7 +298,30 @@ export const Catalog: React.FC = () => {
           />
         </div>
       </div>
+
       <ProductsList gadgets={displayedProducts} />
+
+      <div className={styles.pages}>
+        <button className={styles.pages__arrowButton}>
+          <img src="/icons/arrow-left-ico.svg" alt="arrow-left" />
+        </button>
+
+        <div className={styles.pages__numbers}>
+          {pagesWithProducts?.map(page => (
+            <button
+              onClick={() => handlePageButton(page)}
+              key={page}
+              className={`${styles.pages__number} ${page - 1 === startShowFrom / itemsOnPage ? styles.numberOn : styles.numberOff}`}
+            >
+              {page}
+            </button>
+          ))}
+        </div>
+
+        <button className={styles.pages__arrowButton}>
+          <img src="/icons/aroow-right-ico.svg" alt="arrow-right" />
+        </button>
+      </div>
     </div>
   );
 };
