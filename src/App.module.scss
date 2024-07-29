@@ -76,24 +76,22 @@
   letter-spacing: 0.48px;
   text-transform: capitalize;
   line-height: 100%;
+}
 
-  &:hover {
-    .navLink {
-      color: $primary-grey-color;
-    }
+.active {
+  color: $primary-grey-color;
 
-    &::after {
-      content: '';
-      position: absolute;
-      display: block;
-      background-color: $primary-grey-color;
-      height: 6px;
-      width: 100%;
-      transform: translateY(21px);
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: $primary-grey-color;
+    height: 6px;
+    width: 100%;
+    transform: translateY(21px);
 
-      @include on-desktop {
-        transform: translateY(29px);
-      }
+    @include on-desktop {
+      transform: translateY(29px);
     }
   }
 }

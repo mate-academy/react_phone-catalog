@@ -1,6 +1,6 @@
 /* eslint-disable max-len */
 import React, { useCallback, useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import './App.module.scss';
 import './modules/shared/_main.scss';
 import { Link } from 'react-router-dom';
@@ -16,6 +16,7 @@ import { HidenMenu } from './modules/HidenMenu/components';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
+  const location = useLocation();
 
   useEffect(() => {
     dispatch(fetchPhonesAsync());
@@ -34,7 +35,6 @@ export const App: React.FC = () => {
 
     window.scrollTo({
       top: 0,
-      behavior: 'smooth',
     });
 
     const newIco =
@@ -70,19 +70,31 @@ export const App: React.FC = () => {
 
           <nav className={styles.navBar}>
             <ul className={styles.navList}>
-              <Link className={styles.navItem} to="/">
+              <Link
+                className={`${styles.navItem} ${location.pathname === '/' && styles.active}`}
+                to="/"
+              >
                 HOME
               </Link>
 
-              <Link className={styles.navItem} to="/phones">
+              <Link
+                className={`${styles.navItem} ${location.pathname.includes('phones') && styles.active}`}
+                to="/phones"
+              >
                 PHONES
               </Link>
 
-              <Link className={styles.navItem} to="/tablets">
+              <Link
+                className={`${styles.navItem} ${location.pathname.includes('tablets') && styles.active}`}
+                to="/tablets"
+              >
                 TABLETS
               </Link>
 
-              <Link className={styles.navItem} to="/accessories">
+              <Link
+                className={`${styles.navItem} ${location.pathname.includes('accessories') && styles.active}`}
+                to="/accessories"
+              >
                 ACCESORIES
               </Link>
             </ul>
@@ -108,6 +120,7 @@ export const App: React.FC = () => {
               />
             </Link>
           </div>
+
           <div
             className={`${styles.icons__containerBasket} ${styles.icons__container}`}
           >
@@ -126,6 +139,7 @@ export const App: React.FC = () => {
               />
             </Link>
           </div>
+
           <div
             className={`${styles.icons__containerMenu} ${styles.icons__container}`}
           >

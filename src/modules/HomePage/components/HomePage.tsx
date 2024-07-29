@@ -7,8 +7,8 @@ import { useAppSelector } from '../../../app/hooks';
 import { Link } from 'react-router-dom';
 
 export const HomePage: React.FC = () => {
-  const newModelsTitle = 'Brand new models';
-  const hotTitle = 'Hot prices';
+  const NEW_MODELS_TITLE = 'Brand new models';
+  const HOT_TITLE = 'Hot prices';
 
   const productsFromServer = useAppSelector(state => state.products.objects);
   const phonesFromServer = useAppSelector(state => state.phones.objects);
@@ -45,7 +45,7 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.newModels}>
         <div className={styles.newModels__swiper}>
-          <ProductsSlider title={newModelsTitle} gadgets={brandNewModels} />
+          <ProductsSlider title={NEW_MODELS_TITLE} gadgets={brandNewModels} />
         </div>
       </section>
 
@@ -108,7 +108,7 @@ export const HomePage: React.FC = () => {
 
       <section className={styles.hot}>
         <div className={styles.hot__swiper}>
-          <ProductsSlider title={hotTitle} gadgets={hotPriceModels} />
+          <ProductsSlider title={HOT_TITLE} gadgets={hotPriceModels} />
         </div>
       </section>
     </div>

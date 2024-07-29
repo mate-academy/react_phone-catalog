@@ -20,7 +20,7 @@ export const WelcomeSlider = () => {
         </div>
         <Swiper
           modules={[FreeMode, Pagination, Navigation, Autoplay]}
-          autoplay={{ delay: 500000 }}
+          autoplay={{ delay: 5000 }}
           pagination={{
             el: '#banner-container-of-bullets',
             type: 'bullets',

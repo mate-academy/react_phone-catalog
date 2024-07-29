@@ -1,3 +1,4 @@
+import React, { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { FreeMode, Navigation } from 'swiper/modules';
 import styles from './ProductsSlider.module.scss';
@@ -14,6 +15,45 @@ type Props = {
 };
 
 export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
+  const swiperRef = useRef<any>(null);
+  const prevButtonRef = useRef<HTMLDivElement | null>(null);
+  const nextButtonRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const swiper = swiperRef.current?.swiper;
+
+    if (!swiper) {
+      return;
+    }
+
+    const updateNavButtons = () => {
+      if (prevButtonRef.current && nextButtonRef.current) {
+        if (swiper.isBeginning) {
+          prevButtonRef.current.classList.add(styles['swiper-button-disabled']);
+        } else {
+          prevButtonRef.current.classList.remove(
+            styles['swiper-button-disabled'],
+          );
+        }
+
+        if (swiper.isEnd) {
+          nextButtonRef.current.classList.add(styles['swiper-button-disabled']);
+        } else {
+          nextButtonRef.current.classList.remove(
+            styles['swiper-button-disabled'],
+          );
+        }
+      }
+    };
+
+    swiper.on('slideChange', updateNavButtons);
+    updateNavButtons();
+
+    return () => {
+      swiper.off('slideChange', updateNavButtons);
+    };
+  }, [gadgets.length]);
+
   return (
     <div className={styles.ProductsSlider}>
       <div className={styles.ProductsSlider__tittleContainer}>
@@ -22,7 +62,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
         <div className={styles.ProductsSlider__slideButtons}>
           <div
             id="card-slider-arrowLeft"
-            className={styles.ProductsSlider__slideButton}
+            ref={prevButtonRef}
+            className={`${styles.ProductsSlider__slideButton}`}
           >
             <img
               className={styles.ProductsSlider__sliderArrow}
@@ -33,7 +74,8 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
 
           <div
             id="card-slider-arrowRight"
-            className={styles.ProductsSlider__slideButton}
+            ref={nextButtonRef}
+            className={`${styles.ProductsSlider__slideButton}`}
           >
             <img
               className={styles.ProductsSlider__sliderArrow}
@@ -44,6 +86,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
         </div>
       </div>
       <Swiper
+        ref={swiperRef}
         modules={[FreeMode, Navigation]}
         navigation={{
           prevEl: '#card-slider-arrowLeft',
@@ -51,7 +94,9 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
         }}
         freeMode={true}
         slidesPerView={'auto'}
+        // slidesPerGroup={1}
         spaceBetween={16}
+        // centerInsufficientSlides={true}
         className={styles.ProductsSlider__swiper}
       >
         {gadgets.map(gadget => (
