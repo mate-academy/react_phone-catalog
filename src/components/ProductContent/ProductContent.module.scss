@@ -4,8 +4,7 @@
   &__list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(288px, 212px));
-    row-gap: 40px;
-    column-gap: 16px;
+    gap: 40px 16px;
 
     justify-content: center;
 
