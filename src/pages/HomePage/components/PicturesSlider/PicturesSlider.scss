@@ -1,0 +1,157 @@
+@use '../../../../utils/variables' as *;
+@use '../../../../utils/mixins' as *;
+
+.banner-container img {
+  object-fit: contain;
+  object-position: center center;
+  height: 100vw;
+
+  @include for-tablet {
+    width: 100%;
+    height: 189px;
+    max-height: 400px;
+    object-position: center center;
+    object-fit: contain;
+  }
+
+  @include for-desktop {
+    height: 400px;
+  }
+}
+
+.banner-container {
+  position: relative;
+
+  height: 100vw;
+
+  @include for-tablet {
+    margin: 0 auto;
+
+    height: auto;
+    padding-bottom: 32px;
+    box-sizing: border-box;
+    margin-bottom: 64px;
+  }
+
+  @include for-desktop {
+    height: 432px;
+  }
+
+  &__image {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+
+    object-fit: contain;
+
+    object-position: center center;
+  }
+
+  .slick-slider {
+    height: 100vw;
+    width: 100vw;
+    position: static;
+
+    @include for-tablet {
+      height: 189px;
+      width: calc(100% - 102px);
+      margin: 0 auto;
+    }
+
+    @include for-desktop {
+      height: 432px;
+    }
+  }
+
+  .slick-dots {
+    height: 24px;
+
+    bottom: -21px;
+
+    @include for-tablet {
+      left: 0;
+      bottom: 4px;
+    }
+
+    @include for-desktop {
+      left: 0;
+      bottom: 6px;
+    }
+  }
+
+  .slick-dots li button::before {
+    display: none;
+  }
+
+  .slick-dots li button {
+    width: 14px;
+    height: 4px;
+    background-color: $color-elements;
+    margin: 10px 5px;
+    padding: 0;
+  }
+
+  .slick-dots li.slick-active button {
+    background-color: $color-primary;
+  }
+
+  .slick-arrow {
+    display: none !important;
+
+    @include for-tablet {
+      display: block !important;
+      height: calc(100% - 38px);
+      width: 32px;
+      box-sizing: border-box;
+      border: 1px solid $color-icons-placeholders;
+      top: 0;
+      transform: translate(0, 0);
+      background-repeat: no-repeat;
+      background-position: center;
+    }
+
+    @include for-desktop {
+      height: 400px;
+    }
+  }
+
+  .slick-prev::before,
+  .slick-next::before {
+    display: none;
+  }
+
+  .slick-track {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100%;
+  }
+
+  .slick-next {
+    @include for-tablet {
+      right: 0;
+      background-image: url('../../../../../public/icons/arrow-right-16.svg');
+
+      &:hover {
+        background-image: url('../../../../../public/icons/arrow-right-16.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+
+  .slick-prev {
+    @include for-tablet {
+      left: 0;
+      background-image: url('../../../../../public/icons/arrow-left.svg');
+
+      &:hover {
+        background-image: url('../../../../../public/icons/arrow-left.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+    }
+  }
+}

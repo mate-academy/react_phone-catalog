@@ -1,0 +1,65 @@
+@use '../../../utils/mixins' as *;
+@use '../../../utils/variables' as *;
+
+.tech-specs {
+  @include grid;
+
+  @include for-desktop {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  row-gap: 30px;
+
+  &__top {
+    grid-column: 1 / 5;
+
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__title {
+    color: $color-primary;
+  }
+
+  &__divider {
+    grid-column: 1 / 5;
+    width: 100%;
+    background-color: $color-elements;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+
+  &__info-pairs {
+    grid-column: 1 / 5;
+
+    @include for-tablet {
+      grid-column: 1 / 13;
+    }
+  }
+}
+
+.info-pairs {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &__pair {
+    display: flex;
+    justify-content: space-between;
+  }
+  &__label {
+    color: $color-secondary;
+  }
+  &__value {
+    color: $color-primary;
+    max-width: 150px;
+    text-align: right;
+  }
+}

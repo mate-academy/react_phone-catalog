@@ -1,0 +1,39 @@
+@use '../../../utils/variables' as *;
+
+.colors-list {
+  display: flex;
+  gap: 9px;
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+
+    border: 1px solid $color-elements;
+    padding: 2px;
+
+    transition: 0.2s all ease-in-out;
+
+    &:hover {
+      border-color: $color-icons-placeholders;
+      transition: 0.15s all ease-in-out;
+    }
+
+    &--active {
+      border-color: $color-primary;
+    }
+  }
+
+  &__color {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
