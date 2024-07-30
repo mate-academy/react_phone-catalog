@@ -13,7 +13,7 @@ export const Card = () => {
 
   return (
     <div className={styles.card}>
-      <a href="#" className="card__link">
+      <a href="#" className={styles.card__link}>
         <img
           src="./img/phones/apple-iphone-14-pro/gold/00.webp"
           alt="phone"

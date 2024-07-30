@@ -64,5 +64,18 @@
 
   &__card {
     flex: 0 0 auto; // Each card takes up its own width
+
+    width: 212px;
+    height: 440px;
+
+    @include on-tablet {
+      width: 238px;
+      height: 512px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+      height: 506px;
+    }
   }
 }
