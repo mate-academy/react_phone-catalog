@@ -76,8 +76,10 @@ export const Catalog: React.FC = () => {
     }
 
     if (pageParams) {
-      if (perPage !== 'all') {
-        setPage(+pageParams);
+      if (perPageParam !== 'all') {
+        const pageNumber = parseInt(pageParams);
+
+        setPage(pageNumber);
 
         setStartShowFrom(+perPage * (+pageParams - 1));
       } else {
@@ -85,7 +87,7 @@ export const Catalog: React.FC = () => {
         setStartShowFrom(0);
       }
     }
-  }, [location.search]);
+  }, [location.search, perPageParam]);
 
   useEffect(() => {
     setPage(1);
