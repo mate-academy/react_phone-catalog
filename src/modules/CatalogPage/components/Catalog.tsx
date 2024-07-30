@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Catalog.module.scss';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { useAppSelector } from '../../../app/hooks';
 import { ProductsList } from '../../shared/ProductsList/ProductsList';
 import { Product } from './../../../types/Product';
 import Select, { components, SingleValue } from 'react-select';
+import { PagesSwitcher } from './../pagesSwitcher/PagesSwitcher';
+import { updateURLParams } from './../services/updateUrl';
 
 interface OptionsSortByType {
   value: string;
@@ -22,10 +24,10 @@ const optionsSortBy: OptionsSortByType[] = [
   { value: 'Cheapest', label: 'Cheapest' },
 ];
 const optionsQuantity: OptionsQuantityType[] = [
+  { value: 'all', label: 'all' },
   { value: '4', label: '4' },
   { value: '8', label: '8' },
   { value: '16', label: '16' },
-  { value: 'all', label: 'all' },
 ];
 
 const DropdownIndicator = (props: any) => {
@@ -46,29 +48,67 @@ const DropdownIndicator = (props: any) => {
 
 export const Catalog: React.FC = () => {
   const [title, setTitle] = useState('');
-  const [itemsOnPage, setItemsOnPage] = useState(4);
+  const [perPage, setPerPage] = useState('all');
   const [sortBy, setSortBy] = useState('Newest');
+  const [page, setPage] = useState(1);
   const [displayedProducts, setDisplayedProducts] = useState<Product[]>([]);
   const [models, setModels] = useState<number>(0);
   const [pagesWithProducts, setPagesWithProducts] = useState<number[]>([]);
   const [startShowFrom, setStartShowFrom] = useState(0);
+
   const location = useLocation();
+  const navigate = useNavigate();
 
   const productsFromServer = useAppSelector(state => state.products.objects);
 
+  const queryParams = new URLSearchParams(location.search);
+  const sortByParam = queryParams.get('sortBy');
+  const perPageParam = queryParams.get('perPage');
+  const pageParams = queryParams.get('page');
+
+  useEffect(() => {
+    if (sortByParam) {
+      setSortBy(sortByParam);
+    }
+
+    if (perPageParam) {
+      setPerPage(perPageParam);
+    }
+
+    if (pageParams) {
+      if (perPage !== 'all') {
+        setPage(+pageParams);
+
+        setStartShowFrom(+perPage * (+pageParams - 1));
+      } else {
+        setPage(1);
+        setStartShowFrom(0);
+      }
+    }
+  }, [location.search]);
+
+  useEffect(() => {
+    setPage(1);
+    setStartShowFrom(0);
+  }, [location.pathname, perPageParam]);
+
   useEffect(() => {
     if (models !== null) {
-      const pages = Math.abs(Math.ceil(models / itemsOnPage));
+      if (perPage === 'all') {
+        setPagesWithProducts([1]);
+      } else {
+        const pages = Math.ceil(models / +perPage);
 
-      const array = [];
+        const array = [];
 
-      for (let i = 1; i <= pages; i++) {
-        array.push(i);
+        for (let i = 1; i <= pages; i++) {
+          array.push(i);
+        }
+
+        setPagesWithProducts(array);
       }
-
-      setPagesWithProducts(array);
     }
-  }, [models, itemsOnPage]);
+  }, [models, perPage]);
 
   const prepereToShow = (categ: string) => {
     const filteredProduct = productsFromServer.filter(
@@ -84,7 +124,7 @@ export const Catalog: React.FC = () => {
           .sort((el1, el2) => {
             return el1.name.localeCompare(el2.name);
           })
-          .slice(startShowFrom, startShowFrom + itemsOnPage);
+          .slice(startShowFrom, startShowFrom + +perPage || models);
 
       case 'Cheapest':
         return filteredProduct
@@ -92,7 +132,7 @@ export const Catalog: React.FC = () => {
           .sort((el1, el2) => {
             return el1.price - el2.price;
           })
-          .slice(startShowFrom, startShowFrom + itemsOnPage);
+          .slice(startShowFrom, startShowFrom + +perPage || models);
 
       default:
         return filteredProduct
@@ -100,7 +140,7 @@ export const Catalog: React.FC = () => {
           .sort((el1, el2) => {
             return el2.year - el1.year;
           })
-          .slice(startShowFrom, startShowFrom + itemsOnPage);
+          .slice(startShowFrom, startShowFrom + +perPage || models);
     }
   };
 
@@ -115,19 +155,14 @@ export const Catalog: React.FC = () => {
       setTitle('Accessories');
       setDisplayedProducts(prepereToShow('accessories'));
     }
-  }, [
-    location.pathname,
-    productsFromServer,
-    itemsOnPage,
-    sortBy,
-    startShowFrom,
-  ]);
+  }, [location.pathname, productsFromServer, perPage, sortBy, startShowFrom]);
 
   const handleSortBySelect = (option: SingleValue<OptionsSortByType>) => {
     if (option) {
       const value = option.value;
 
       setSortBy(value);
+      navigate(updateURLParams(value, perPage, page));
     }
   };
 
@@ -136,16 +171,14 @@ export const Catalog: React.FC = () => {
       const value = option.value;
 
       if (value.toUpperCase() === value.toLowerCase()) {
-        setItemsOnPage(+value);
+        setPerPage(value);
+        navigate(updateURLParams(sortBy, value, page));
       } else {
-        setItemsOnPage(models);
+        setPerPage(models.toString());
+        navigate(updateURLParams(sortBy, models.toString(), page));
       }
     }
   };
-
-  function handlePageButton(page: number) {
-    setStartShowFrom(itemsOnPage * (page - 1));
-  }
 
   return (
     <div className={styles.catalog}>
@@ -172,6 +205,7 @@ export const Catalog: React.FC = () => {
             onChange={handleSortBySelect}
             options={optionsSortBy}
             defaultValue={optionsSortBy[0]}
+            value={optionsSortBy.find(option => option.value === sortBy)}
             components={{ DropdownIndicator }}
             styles={{
               control: (baseStyles, state) => ({
@@ -240,6 +274,7 @@ export const Catalog: React.FC = () => {
             onChange={handleQuantitySelect}
             options={optionsQuantity}
             defaultValue={optionsQuantity[0]}
+            value={optionsQuantity.find(option => option.value === perPage)}
             styles={{
               control: (baseStyles, state) => ({
                 ...baseStyles,
@@ -301,27 +336,14 @@ export const Catalog: React.FC = () => {
 
       <ProductsList gadgets={displayedProducts} />
 
-      <div className={styles.pages}>
-        <button className={styles.pages__arrowButton}>
-          <img src="/icons/arrow-left-ico.svg" alt="arrow-left" />
-        </button>
-
-        <div className={styles.pages__numbers}>
-          {pagesWithProducts?.map(page => (
-            <button
-              onClick={() => handlePageButton(page)}
-              key={page}
-              className={`${styles.pages__number} ${page - 1 === startShowFrom / itemsOnPage ? styles.numberOn : styles.numberOff}`}
-            >
-              {page}
-            </button>
-          ))}
-        </div>
-
-        <button className={styles.pages__arrowButton}>
-          <img src="/icons/aroow-right-ico.svg" alt="arrow-right" />
-        </button>
-      </div>
+      <PagesSwitcher
+        sortBy={sortBy}
+        perPage={perPage}
+        models={models}
+        pagesWithProducts={pagesWithProducts}
+        showFrom={startShowFrom}
+        setShownFrom={setStartShowFrom}
+      />
     </div>
   );
 };

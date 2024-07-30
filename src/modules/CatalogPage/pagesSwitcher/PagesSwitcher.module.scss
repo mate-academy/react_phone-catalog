@@ -1,0 +1,74 @@
+@import './../../shared/main';
+
+.pages {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 64px;
+  margin-inline: auto;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+
+  &__arrowButton {
+    width: 32px;
+    height: 32px;
+    background-color: $white-color;
+  }
+
+  &__numbersWindow {
+    display: flex;
+    max-width: 152px;
+    overflow: hidden;
+  }
+
+  &__numbers {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    right: var(--page-starts-from);
+  }
+
+  &__number {
+    width: 32px;
+    height: 32px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: center;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary-grey-color;
+    }
+  }
+}
+
+.numberOff {
+  background-color: $white-color;
+  border: 1px solid $elements-grey-color;
+  color: $black-color;
+}
+
+.numberOn {
+  background-color: $primary-grey-color;
+  border: 1px solid $primary-grey-color;
+  color: $white-color;
+}
+
+.activeArrow {
+  border: 1px solid $icons-grey-color;
+  cursor: pointer;
+
+  &:hover {
+    border: 1px solid $primary-grey-color;
+  }
+}
+
+.disabledArrow {
+  border: 1px solid $elements-grey-color;
+  pointer-events: none;
+  cursor: not-allowed;
+}

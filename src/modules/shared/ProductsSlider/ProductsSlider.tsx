@@ -85,6 +85,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
           </div>
         </div>
       </div>
+
       <Swiper
         ref={swiperRef}
         modules={[FreeMode, Navigation]}
@@ -94,9 +95,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
         }}
         freeMode={true}
         slidesPerView={'auto'}
-        // slidesPerGroup={1}
         spaceBetween={16}
-        // centerInsufficientSlides={true}
         className={styles.ProductsSlider__swiper}
       >
         {gadgets.map(gadget => (
