@@ -3,7 +3,12 @@ import styles from './Header.module.scss';
 import classNames from 'classnames';
 import { Icon } from '../Icon';
 
-export const Header = () => {
+type HeaderProps = {
+  activePage: string;
+  goToPage: (page: string) => void;
+};
+
+export const Header: React.FC<HeaderProps> = ({ activePage, goToPage }) => {
   return (
     <div className={styles.header} id="header">
       <div className="top-bar">
@@ -19,7 +24,9 @@ export const Header = () => {
                 className={classNames(
                   'uppercase-text nav__link',
                   styles.header__link,
+                  { [styles['header__link--active']]: activePage === 'home' },
                 )}
+                onClick={() => goToPage('home')}
               >
                 Home
               </a>
@@ -30,7 +37,9 @@ export const Header = () => {
                 className={classNames(
                   'uppercase-text nav__link',
                   styles.header__link,
+                  { [styles['header__link--active']]: activePage === 'phones' },
                 )}
+                onClick={() => goToPage('phones')}
               >
                 Phones
               </a>
@@ -41,7 +50,11 @@ export const Header = () => {
                 className={classNames(
                   'uppercase-text nav__link',
                   styles.header__link,
+                  {
+                    [styles['header__link--active']]: activePage === 'tablets',
+                  },
                 )}
+                onClick={() => goToPage('tablets')}
               >
                 Tablets
               </a>
@@ -52,7 +65,12 @@ export const Header = () => {
                 className={classNames(
                   'uppercase-text nav__link',
                   styles.header__link,
+                  {
+                    [styles['header__link--active']]:
+                      activePage === 'accessories',
+                  },
                 )}
+                onClick={() => goToPage('accessories')}
               >
                 Accessories
               </a>
@@ -65,9 +83,11 @@ export const Header = () => {
             href="#favorites"
             className={classNames(
               styles.header__link,
+              { [styles['header__link--active']]: activePage === 'favorites' },
               styles['header__link--icon'],
               'top-bar__icon-control',
             )}
+            onClick={() => goToPage('favorites')}
           >
             <Icon iconName="favorites" />
           </a>
@@ -75,9 +95,11 @@ export const Header = () => {
             href="#cart"
             className={classNames(
               styles.header__link,
+              { [styles['header__link--active']]: activePage === 'cart' },
               styles['header__link--icon'],
               'top-bar__icon-control',
             )}
+            onClick={() => goToPage('cart')}
           >
             <Icon iconName="cart" />
           </a>

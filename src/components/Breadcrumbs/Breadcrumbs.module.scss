@@ -1,0 +1,25 @@
+@import '../../styles/main';
+
+.breadcrumbs {
+  &__nav-list {
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__nav-item {
+    display: flex;
+    gap: 8px;
+  }
+
+  &__nav-link {
+    color: $secondary-gray;
+    font-size: 14px;
+    line-height: 15px;
+    letter-spacing: 0;
+    font-weight: 600;
+  }
+
+  &__nav-link-separator {
+    stroke: $icons-placeholders-gray;
+  }
+}

@@ -1,26 +1,28 @@
 import './App.scss';
 import './styles/main.scss';
 import { Header } from './components/Header';
-import { Welcome } from './components/Welcome';
-import { NewModels } from './components/NewModels';
-import { Category } from './components/Category';
 import { Footer } from './components/Footer';
 import { SideMenu } from './components/SideMenu';
-import { HotPrice } from './components/HotPrice/HotPrice';
+import { HomePage } from './pages/HomePage';
+import { useState } from 'react';
+import { ProductPage } from './pages/ProductPage';
 
-export const App = () => (
-  <div className="App">
-    <h1 className="visually-hidden">Product Catalog</h1>
-    <Header />
+export const App = () => {
+  const [page, setPage] = useState('home');
 
-    <SideMenu />
+  return (
+    <div className="App">
+      <h1 className="visually-hidden">Product Catalog</h1>
+      <Header activePage={page} goToPage={setPage} />
 
-    <div className="container">
-      <Welcome />
-      <NewModels />
-      <Category />
-      <HotPrice />
+      <SideMenu />
+
+      <div className="container">
+        {page === 'home' && <HomePage />}
+        {page === 'phones' && <ProductPage />}
+      </div>
+
+      <Footer />
     </div>
-    <Footer />
-  </div>
-);
+  );
+};

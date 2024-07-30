@@ -46,7 +46,7 @@
     }
 
     @include on-desktop {
-      grid-column: 8 / 12;
+      grid-column: 8 / 17;
     }
 
     &-list {
@@ -93,7 +93,7 @@
     }
 
     @include on-desktop {
-      grid-column: 12/ -1;
+      grid-column: 18/ -1;
     }
   }
 
