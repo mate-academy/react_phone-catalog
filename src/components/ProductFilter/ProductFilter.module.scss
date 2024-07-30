@@ -11,7 +11,7 @@
 
   &__controls {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
   }
 
@@ -19,6 +19,10 @@
     display: flex;
     flex-flow: column;
 
+
+    &:last-child {
+      margin-left: 16px;
+    }
   }
 
   &__label {
