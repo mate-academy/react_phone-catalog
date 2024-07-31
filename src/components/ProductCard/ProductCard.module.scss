@@ -1,0 +1,174 @@
+@import '../../styles/vars';
+@import '../../styles/mixins';
+
+.productCard {
+  flex-shrink: 0;
+
+  box-sizing: border-box;
+  width: 212px;
+  height: $card-height-mob;
+  padding: 32px;
+  border: 1px solid $main-border-color;
+  background-color: $white-color;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  box-shadow: none;
+
+  @include on-hover(box-shadow, 0 2px 16px 0 #0000001a);
+
+  @include on-tablet {
+    width: 237px;
+    height: $card-height-tablet;
+  }
+
+  @include on-desktop {
+    width: 272px;
+    height: $card-height-desktop;
+  }
+}
+
+.imgWrapper {
+  position: relative;
+  flex-grow: 1;
+}
+
+.img {
+  position: absolute;
+
+  display: block;
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+  object-position: center;
+}
+
+.name {
+  margin: 0;
+  padding-top: 16px;
+}
+
+.priceWrapper {
+  display: flex;
+  gap: 8px;
+
+  font-size: 22px;
+  line-height: 30.8px;
+}
+
+.fullPrice {
+  margin: 0;
+  font-weight: 700;
+}
+
+.discountPrice {
+  margin: 0;
+  color: $secondary-color;
+  text-decoration: line-through;
+}
+
+.hr {
+  height: 1px;
+  background-color: $main-border-color;
+}
+
+.tbody {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding-block: 8px;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.cell1,
+.cell2 {
+  padding: 0;
+
+  font-weight: 600;
+  font-size: 12px;
+  line-height: 15.34px;
+}
+
+.cell1 {
+  color: $secondary-color;
+}
+
+.cell2 {
+  color: $primary-color;
+  text-align: right;
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btnAdd {
+  flex-grow: 1;
+  box-shadow: none;
+  border: none;
+  padding: 0;
+
+  box-sizing: border-box;
+  height: 40px;
+  background-color: $primary-color;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 1.1em;
+  color: $white-color;
+  text-align: center;
+
+  @include pointer-cursor;
+  @include on-hover(box-shadow, 0 3px 13px 0 #17203166);
+
+  &::after {
+    content: 'Add to cart';
+  }
+}
+
+.btnAddSelected {
+  border: 1px solid $main-border-color;
+  background-color: $white-color;
+  color: $green-color;
+  box-shadow: none !important;
+
+  @include on-hover(border-color, $primary-color);
+
+  &::after {
+    content: 'Added to cart';
+  }
+}
+
+.btnLike {
+  box-sizing: border-box;
+  width: 40px;
+  height: 40px;
+  background-color: $white-color;
+  border: 1px solid $secondary-border-color;
+  padding: 0;
+
+  background-image: url(../../../public/img/icons/icon-heart.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+
+  @include pointer-cursor;
+  @include on-hover(border-color, $primary-color);
+}
+
+.btnLikeSelected {
+  background-image: url(../../../public/img/icons/icon-heart-selected.svg);
+}

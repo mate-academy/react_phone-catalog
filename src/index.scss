@@ -1,0 +1,19 @@
+@import './styles/vars';
+@import './styles/mixins';
+@import './styles/fonts';
+
+html {
+  font-family: Mont, Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  font-weight: 500;
+  color: $primary-color;
+
+  background-color: $white-color;
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+}
