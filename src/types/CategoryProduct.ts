@@ -1,4 +1,4 @@
-export type SpecificProduct = {
+export type CategoryProduct = {
   id: string;
   category: string;
   namespaceId: string;

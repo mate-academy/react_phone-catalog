@@ -1,9 +1,8 @@
 @import '../../styles/index';
 
 .header {
-  position: fixed;
+  position: sticky;
   top: 0;
-  width: 100%;
   z-index: 20;
   max-height: 64px;
   background-color: $white-color;

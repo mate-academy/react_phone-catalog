@@ -14,7 +14,7 @@ export const HomePage = () => {
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const productsFromApi = await getProducts('/products.json');
+        const productsFromApi = await getProducts();
 
         setProducts(productsFromApi);
       } catch (error) {

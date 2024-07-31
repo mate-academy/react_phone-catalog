@@ -1,7 +1,13 @@
 import { Product } from '../types/Product';
-import { SpecificProduct } from '../types/SpecificProduct';
+import { CategoryProduct } from '../types/CategoryProduct';
 
 const BASE_URL = 'https://NastyaSid.github.io/react_phone-catalog/api';
+
+function wait(delay: number) {
+  return new Promise(resolve => {
+    setTimeout(resolve, delay);
+  });
+}
 
 const handleResponse = (response: Response) => {
   if (!response.ok) {
@@ -11,19 +17,21 @@ const handleResponse = (response: Response) => {
   return response.json();
 };
 
-export async function getProducts(url: string): Promise<Product[]> {
-  return fetch(BASE_URL + url).then(handleResponse);
+export async function getProducts(): Promise<Product[]> {
+  await wait(400);
+
+  return fetch(BASE_URL + '/products.json').then(handleResponse);
 }
 
-export async function getPhones(): Promise<SpecificProduct[]> {
+export async function getPhones(): Promise<CategoryProduct[]> {
   return fetch(BASE_URL + '/phones.json').then(handleResponse);
 }
 
-export async function getTablets(): Promise<SpecificProduct[]> {
+export async function getTablets(): Promise<CategoryProduct[]> {
   return fetch(BASE_URL + '/tablets.json').then(handleResponse);
 }
 
-export async function getAccessories(): Promise<SpecificProduct[]> {
+export async function getAccessories(): Promise<CategoryProduct[]> {
   return fetch(BASE_URL + '/accessories.json').then(handleResponse);
 }
 
@@ -38,7 +46,7 @@ export async function getProductsQuantityByCategory(): Promise<{
     getAccessories(),
   ]);
 
-  const countProducts = (result: PromiseSettledResult<SpecificProduct[]>) => {
+  const countProducts = (result: PromiseSettledResult<CategoryProduct[]>) => {
     return result.status === 'fulfilled' ? result.value.length : 0;
   };
 

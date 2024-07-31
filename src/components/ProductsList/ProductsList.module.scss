@@ -1,0 +1,26 @@
+@import '../../styles/index';
+
+.productsList {
+  &__title {
+    text-transform: capitalize;
+  }
+
+  &__quantity {
+    color: $secondary-text-color;
+    margin-top: 8px;
+  }
+
+  &__products {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin: 24px 0 40px;
+  }
+
+  &__dropdowns {
+    display: flex;
+    gap: 16px;
+
+    margin-top: 40px;
+  }
+}

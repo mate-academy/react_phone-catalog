@@ -4,8 +4,6 @@
   background-color: $white-color;
   border-top: 1px solid $elements-color;
 
-  // height: 96px;
-
   &__wrapper {
     @include container;
     @include flex;

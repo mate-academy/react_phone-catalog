@@ -4,11 +4,13 @@ import { Header } from './components/Header/Header';
 import { Footer } from './components/Footer/Footer';
 
 export const App = () => (
-  <div className="App">
+  <div className="app">
     <Header />
-    <div className="container">
-      <Outlet />
-    </div>
+    <main className="main">
+      <div className="container">
+        <Outlet />
+      </div>
+    </main>
     <Footer />
   </div>
 );

@@ -40,9 +40,11 @@ export const Header = () => {
       <div className={styles.header__icons}>
         <NavLink to="favourites" className={getLinkClassIcon}>
           <FavouritesIcon />
-          <div className={styles.header__iconCounter}>
-            {favouriteProducts.length}
-          </div>
+          {favouriteProducts.length > 0 && (
+            <div className={styles.header__iconCounter}>
+              {favouriteProducts.length}
+            </div>
+          )}
         </NavLink>
         <NavLink to="cart" className={getLinkClassIcon}>
           <CartIcon />
