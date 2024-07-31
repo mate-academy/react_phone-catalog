@@ -3,13 +3,13 @@
 .product-content {
   &__list {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(288px, 212px));
+    grid-template-columns: repeat(auto-fit, minmax(230px, auto));
     gap: 40px 16px;
 
     justify-content: center;
 
     @include on-tablet {
-      grid-template-columns: repeat(auto-fill, minmax(230px, 288px));
+      grid-template-columns: repeat(auto-fit, minmax(230px, auto));
     }
 
     @include on-desktop {
@@ -18,6 +18,10 @@
   }
 
   &__item {
-    color: inherit;
+    height: 440px;
+
+    @include on-tablet {
+      height: 506px;
+    }
   }
 }

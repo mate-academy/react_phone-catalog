@@ -22,7 +22,6 @@ html {
 html {
   font-family: $main-font-family;
   scroll-behavior: smooth;
-  height: 100%;
 
   &:has(.App__menu:target) {
     overflow: hidden; /* not to scroll the page */
@@ -159,6 +158,10 @@ section:last-child {
   flex-flow: column;
   justify-content: space-between;
   gap: 24px;
+
+  @include on-tablet {
+    gap: 40px;
+  }
 
   &:first-child {
     margin-top: 24px;

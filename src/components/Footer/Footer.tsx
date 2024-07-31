@@ -4,7 +4,7 @@ import { Icon } from '../Icon';
 
 export const Footer = () => {
   return (
-    <section className={styles.footer} id="footer">
+    <footer className={styles.footer} id="footer">
       <div className="container">
         <div className={styles.footer__content}>
           <a href="#" className={styles.footer__link}>
@@ -42,12 +42,12 @@ export const Footer = () => {
 
           <div className={styles.footer__buttons}>
             <p className="small-text">Back to top</p>
-            <a href="#" className={classNames(styles.footer__btn)}>
+            <a href="#header" className={classNames(styles.footer__btn)}>
               <Icon iconName="up" />
             </a>
           </div>
         </div>
       </div>
-    </section>
+    </footer>
   );
 };

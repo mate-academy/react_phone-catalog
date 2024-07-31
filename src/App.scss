@@ -4,6 +4,13 @@
 
 .App {
   overflow-x: hidden;
+  position: relative;
+  height: 100vh;
+
+  & > footer {
+    position: sticky;
+    top: 100vh;
+  }
 
   &__menu {
     position: fixed;

@@ -1,5 +1,9 @@
 import classNames from 'classnames';
 import styles from './ProductFilter.module.scss';
+import { CustomSelect } from '../CustomSelect';
+
+const listSortBy = ['Newest', 'Hot Price', 'Price'];
+const listOfPages = ['1', '2', '3', '4'];
 
 export const ProductFilter = () => {
   return (
@@ -18,46 +22,27 @@ export const ProductFilter = () => {
 
       <div className={styles['product-filter__controls']}>
         <div className={styles['product-filter__control']}>
-          <label
+          <p
             className={classNames(
               'small-text',
               styles['product-filter__label'],
             )}
-            htmlFor="sortBy"
           >
             Sort by
-          </label>
-          <select
-            className={styles['product-filter__select']}
-            name="sortBy"
-            id="sortBy"
-          >
-            <option value="newest">Newest</option>
-            <option value="price">Price</option>
-            <option value="hotPrice">Hot Price</option>
-          </select>
+          </p>
+          <CustomSelect options={listSortBy} />
         </div>
 
         <div className={styles['product-filter__control']}>
-          <label
+          <p
             className={classNames(
               'small-text',
               styles['product-filter__label'],
             )}
-            htmlFor="itemsPerPage"
           >
             Items on page
-          </label>
-          <select
-            className={styles['product-filter__select']}
-            name="itemsPerPage"
-            id="itemsPerPage"
-          >
-            <option value="5">5</option>
-            <option value="10">10</option>
-            <option value="16">16</option>
-            <option value="30">30</option>
-          </select>
+          </p>
+          <CustomSelect options={listOfPages} label="page" />
         </div>
       </div>
     </form>

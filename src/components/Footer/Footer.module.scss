@@ -4,6 +4,10 @@
   border-top: 1px solid $elements-gray;
   margin-top: 64px;
 
+  @include on-desktop {
+    margin-top: 80px;
+  }
+
   &__content {
     margin-bottom: 0;
 

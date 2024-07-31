@@ -1,0 +1,54 @@
+@import '../../styles/main';
+
+.customSelect {
+  position: relative;
+  width: 136px;
+  height: 40px;
+
+  &__selectedOption {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border: 1px solid $icons-placeholders-gray;
+    color: $primary-gray;
+    background-color: $white;
+    padding-left: 12px;
+    cursor: pointer;
+
+    @include hover(border-color, $primary-gray);
+  }
+
+  &__arrow-icon {
+    width: 40px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  &__optionsList {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background-color: white;
+    border: 1px solid $icons-placeholders-gray;
+    padding: 0;
+    margin-top: 4px;
+    max-height: 200px;
+    overflow-y: auto;
+    z-index: 10;
+  }
+
+  &__optionItem {
+    padding: 10px;
+    cursor: pointer;
+    color: $secondary-gray;
+
+    &:hover,
+    &:focus {
+      background-color: #f0f0f0;
+      color: $primary-gray;
+    }
+  }
+}
