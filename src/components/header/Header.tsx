@@ -8,6 +8,7 @@ import { ProductInfo } from '../../types/ProductInfo';
 import { AppContext } from '../../store/context';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import { ProductSearch } from '../productSearch';
+import { countSelectedProducts } from '../../utils/countSelectedProducts';
 
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -104,7 +105,7 @@ export const Header = () => {
               />
               {selectedProducts.length > 0 && (
                 <div className={styles.header__infolabel}>
-                  {selectedProducts[0].quantity}
+                  {countSelectedProducts(selectedProducts)}
                 </div>
               )}
             </NavLink>

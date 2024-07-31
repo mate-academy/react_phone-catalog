@@ -6,6 +6,7 @@ import { AppContext } from '../../store/context';
 import { ProductWithQuantity } from '../../types/ProductWithQuantity';
 import { BackButton } from '../../components/backButton';
 import { ModalWin } from './components/modalwin';
+import { countSelectedProducts } from '../../utils/countSelectedProducts';
 
 export const BasketPage = () => {
   const [showModal, setShowModal] = useState(false);
@@ -152,7 +153,7 @@ export const BasketPage = () => {
             <h3 className={styles.basketpage__price}>${allSumOfProducts()}</h3>
             <span className={styles.basketpage__divider}></span>
             <p className={styles.basketpage__info}>
-              Total for {selectedProducts[0].quantity} items
+              Total for {countSelectedProducts(selectedProducts)} items
             </p>
             <button
               className={styles.basketpage__button}

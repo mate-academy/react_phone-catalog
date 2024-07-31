@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import navbarStyles from './Navbar.module.scss';
 import classNames from 'classnames';
+import { useEffect } from 'react';
 
 type Props = {
   onClick?: () => void;
@@ -13,18 +14,27 @@ export const Navbar: React.FC<Props> = ({
   isOpen,
   withoutUnderline,
 }) => {
+  // prettier-ignore
   const navBarLinkItems = !withoutUnderline
     ? [
-        { name: 'home', url: '/' },
-        { name: 'phones', url: '/phones' },
-        { name: 'tablets', url: '/tablets' },
-        { name: 'accessories', url: '/accessories' },
-      ]
+      { name: 'home', url: '/' },
+      { name: 'phones', url: '/phones' },
+      { name: 'tablets', url: '/tablets' },
+      { name: 'accessories', url: '/accessories' },
+    ]
     : [
-        { name: 'github', url: 'https://github.com/ivan-baranovskyi' },
-        { name: 'contacts', url: '/contacts' },
-        { name: 'rights', url: '/rights' },
-      ];
+      {
+        name: 'github',
+        url: 'https://github.com/ivan-baranovskyi',
+        external: true,
+      },
+      { name: 'contacts', url: '/contacts' },
+      { name: 'rights', url: '/rights' },
+    ];
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [onClick]);
 
   return (
     <div
@@ -42,6 +52,7 @@ export const Navbar: React.FC<Props> = ({
             <NavLink
               to={item.url}
               onClick={onClick}
+              target={item.external ? '_blank' : ''}
               className={({ isActive }) =>
                 classNames(navbarStyles.navbar__itemlink, {
                   [navbarStyles.navbar__itemlink_active]:

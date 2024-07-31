@@ -10,7 +10,6 @@ type Props = {
 };
 
 export const AsideMenu: React.FC<Props> = ({ isMenuOpen, setIsMenuOpen }) => {
-
   useEffect(() => {
     if (isMenuOpen) {
       document.body.classList.add('no-scroll');
