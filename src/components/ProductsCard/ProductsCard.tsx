@@ -1,21 +1,19 @@
-import { Link } from "react-router-dom";
-import { Product } from "../../types/Product"
-import { LOCAL_URL } from "../../api/apiProducts";
-import { useContext } from "react";
-import { CartContext } from "../../contexts/CartContext";
-import { FavouritesContext } from "../../contexts/favouritesContext";
-import { Button } from "../Button";
-import cn from "classnames";
+import { Link } from 'react-router-dom';
+import { Product } from '../../types/Product';
+import { LOCAL_URL } from '../../api/apiProducts';
+import { useContext } from 'react';
+import { CartContext } from '../../contexts/CartContext';
+import { FavouritesContext } from '../../contexts/favouritesContext';
+import { Button } from '../Button';
+import cn from 'classnames';
+import './ProductsCard.scss';
 
 type Props = {
-  product: Product,
-  transform: number,
-}
+  product: Product;
+  transform: number;
+};
 
-export const ProductsCard: React.FC<Props> = ({
-  product,
-  transform,
- }) => {
+export const ProductsCard: React.FC<Props> = ({ product, transform }) => {
   const {
     id,
     image,
@@ -29,7 +27,7 @@ export const ProductsCard: React.FC<Props> = ({
     ram,
   } = product;
 
-  const {favourites, addToFavourites} = useContext(FavouritesContext);
+  const { favourites, addToFavourites } = useContext(FavouritesContext);
   const { cart, addToCart, deleteProduct } = useContext(CartContext);
 
   const isDiscount = price !== fullPrice;
@@ -42,22 +40,22 @@ export const ProductsCard: React.FC<Props> = ({
     } else {
       deleteProduct(id);
     }
-  }
+  };
 
   const handleAddToFavourite = () => {
     addToFavourites(product);
   };
 
   const transformStyle = {
-    transform: `translateX(${transform}px)`
-  }
+    transform: `translateX(${transform}px)`,
+  };
 
   return (
     <div className="product-card">
       <div className="product-card__container" style={transformStyle}>
         <Link
           to={`/${category}/${itemId}`}
-          className="product_card__image-container"
+          className="product-card__image-container"
         >
           <img
             src={`${LOCAL_URL}/${image}`}
@@ -65,22 +63,15 @@ export const ProductsCard: React.FC<Props> = ({
             className="product-card__image"
           />
         </Link>
-        <Link
-          to={`/${category}/${itemId}`}
-          className="product-card__title"
-        >
+        <Link to={`/${category}/${itemId}`} className="product-card__title">
           {name}
         </Link>
 
         <p className="product-card__price-container">
-          <span className="product-card__price">
-            ${price}
-          </span>
+          <span className="product-card__price">${price}</span>
 
           {isDiscount && (
-            <span className="product-card__fullprice">
-              ${fullPrice}
-            </span>
+            <span className="product-card__fullprice">${fullPrice}</span>
           )}
         </p>
 
@@ -115,5 +106,5 @@ export const ProductsCard: React.FC<Props> = ({
         </div>
       </div>
     </div>
-  )
-}
+  );
+};

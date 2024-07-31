@@ -1,15 +1,16 @@
-import cn from "classnames";
-import { Product } from "../../types/Product"
-import { ProductsCard } from "../ProductsCard";
+import cn from 'classnames';
+import { Product } from '../../types/Product';
+import { ProductsCard } from '../ProductsCard';
+import './Products.scss';
 
 type Props = {
-  products: Product[],
+  products: Product[];
   type?: 'slider' | '';
   cardTransform: number;
-  onTouchStart: (e: React.TouchEvent) => void,
-  onTouchEnd: (e: React.TouchEvent) => void,
-  catalog?: boolean,
-}
+  onTouchStart: (e: React.TouchEvent) => void;
+  onTouchEnd: (e: React.TouchEvent) => void;
+  catalog?: boolean;
+};
 
 export const Products: React.FC<Props> = ({
   products,
@@ -18,12 +19,12 @@ export const Products: React.FC<Props> = ({
   onTouchStart,
   onTouchEnd,
   catalog,
- }) => {
+}) => {
   return (
     <ul
       className={cn('products', {
         grid: catalog,
-        'products__slider': type === 'slider',
+        products__slider: type === 'slider',
       })}
       onTouchStart={onTouchStart}
       onTouchEnd={onTouchEnd}
@@ -38,5 +39,5 @@ export const Products: React.FC<Props> = ({
         </li>
       ))}
     </ul>
-  )
-}
+  );
+};

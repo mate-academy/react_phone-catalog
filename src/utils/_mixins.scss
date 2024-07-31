@@ -1,5 +1,6 @@
 @import './vars';
 
+/* eslint-disable kebab-case */
 @mixin onDesktop {
   @media (min-width: 1200px){
     @content;

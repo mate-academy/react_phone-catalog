@@ -5,7 +5,7 @@ import { getProduct } from '../../api/apiProducts';
 import { Banner } from '../../components/Banner';
 import { ProductList } from '../../components/ProductList';
 import { Categories } from '../../components/Categories';
-import './HomePage.module.scss';
+import './HomePage.scss';
 
 export const HomePage = () => {
   const [productList, setProductList] = useState<Product[]>([]);
@@ -70,7 +70,7 @@ export const HomePage = () => {
           <section className="homepage__newModels">
             <div className="container">
               <ProductList
-                title="Hot proces"
+                title="Hot prices"
                 products={getHotPricesProd.slice(0, 30)}
               />
             </div>

@@ -1,0 +1,43 @@
+@import "../../styles";
+
+.product-list {
+  margin-bottom: 56px;
+
+  @include onTablet {
+    margin-bottom: 64px;
+  }
+
+  @include onDesktop {
+    margin-bottom: 80px;
+  }
+
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    gap: 21px;
+    margin-bottom: 24px;
+  }
+
+  &__title {
+    @extend %h2;
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $colorIcons;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: $colorWhite;
+    }
+  }
+}

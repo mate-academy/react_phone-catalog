@@ -2,6 +2,7 @@ import React from 'react';
 import { Category } from '../../types/Category';
 import { Link } from 'react-router-dom';
 import { LOCAL_URL } from '../../api/apiProducts';
+import './Categories.scss';
 
 type Props = {
   amount: {
@@ -23,7 +24,7 @@ export const Categories: React.FC<Props> = ({ amount }) => {
               to={`/${value}`}
               className={`
               categories__image-container
-              categoies__image-container--${value}
+              categories__image-container--${value}
             `}
             >
               <img

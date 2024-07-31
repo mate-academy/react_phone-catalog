@@ -1,17 +1,18 @@
-import { useEffect, useRef, useState } from "react";
-import { Product } from "../../types/Product";
-import { Products } from "../Products/Products";
+import { useEffect, useRef, useState } from 'react';
+import { Product } from '../../types/Product';
+import { Products } from '../Products/Products';
+import './ProductList.scss';
 
 type Props = {
   title: string;
   products: Product[];
-}
+};
 
 export const ProductList: React.FC<Props> = ({ title, products }) => {
   const [transform, setTransform] = useState(0);
   const [touchStart, setTouchStart] = useState(0);
   const [minTransform, setMinTransform] = useState(0);
-  const blockRef = useRef<HTMLInputElement>(null);
+  const blockRef = useRef<HTMLDivElement>(null);
   const maxTransform = 0;
   let shift: number;
 
@@ -37,6 +38,7 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
     shift = cardWidth + gap;
 
     const size = Math.floor((screenWidth - gap) / shift);
+
     setMinTransform(-(itemLength - size) * shift);
   };
 
@@ -45,20 +47,22 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
       if (transform >= maxTransform) {
         return;
       }
-      setTransform(current => current + shift)
+
+      setTransform(current => current + shift);
     }
 
     if (direction === 'right') {
       if (transform <= minTransform) {
         return;
       }
-      setTransform(current => current - shift)
+
+      setTransform(current => current - shift);
     }
   };
 
   const handleTouchStart = (e: React.TouchEvent) => {
     setTouchStart(e.touches[0].clientX);
-  }
+  };
 
   const handleTouchEnd = (e: React.TouchEvent) => {
     const touchEnd = e.changedTouches[0].clientX;
@@ -76,6 +80,10 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
   };
 
   useEffect(() => {
+    updateTransform();
+  });
+
+  useEffect(() => {
     window.addEventListener('resize', updateTransform);
 
     return () => {
@@ -87,15 +95,19 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
     <div className="product-list" ref={blockRef}>
       <div className="product-list__top">
         <h2 className="product-list__title">{title}</h2>
-        
+
         <div className="product-list__buttons">
           <button
             className="product-list__button"
+            disabled={transform >= maxTransform}
+            onClick={() => handleArrowClick('left')}
           >
             <i className="icon icon--arrow-left"></i>
           </button>
           <button
             className="product-list__button"
+            disabled={transform <= minTransform}
+            onClick={() => handleArrowClick('right')}
           >
             <i className="icon icon--arrow-right"></i>
           </button>
@@ -109,6 +121,5 @@ export const ProductList: React.FC<Props> = ({ title, products }) => {
         onTouchEnd={handleTouchEnd}
       />
     </div>
-  )
-}
-
+  );
+};

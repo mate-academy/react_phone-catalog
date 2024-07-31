@@ -1,15 +1,15 @@
-import { useEffect, useState } from 'react';
+import classNames from 'classnames';
 import { Link } from 'react-router-dom';
-import { Category } from '../../types/Category';
-import cn from 'classnames';
-import { Swiper } from '../../helpers/Swiper';
 import { LOCAL_URL } from '../../api/apiProducts';
-import './Banner.module.scss';
+import { useEffect, useState } from 'react';
+import { Swiper } from '../../helpers/Swiper';
+import { Category } from '../../types/Category';
+import './Banner.scss';
 
 export const Banner = () => {
   const categories = Object.values(Category);
-  const [index, setIndex] = useState(0);
   const [transform, setTransform] = useState(0);
+  const [index, setIndex] = useState(0);
 
   const handleSlideChange = (i: number) => {
     setIndex(i);
@@ -46,11 +46,12 @@ export const Banner = () => {
           disabled={index === 0}
         >
           <i
-            className={cn('icon icon--arrow-left', {
+            className={classNames('icon icon--arrow-left', {
               'icon--arrow-left--disabled': index === 0,
             })}
           ></i>
         </button>
+
         <ul
           className="banner__slider"
           onTouchStart={handleTouchStart}
@@ -79,23 +80,24 @@ export const Banner = () => {
           disabled={index === categories.length - 1}
         >
           <i
-            className={cn('icon icon--arrow-right', {
+            className={classNames('icon icon--arrow-right', {
               'icon--arrow-right--disabled': index === categories.length - 1,
             })}
           ></i>
         </button>
-        <div className="banner__items">
-          {categories.map((category, i) => (
-            <button
-              type="button"
-              key={category}
-              className={cn('banner__item', {
-                'banner__item--active': i === index,
-              })}
-              onClick={() => handleSlideChange(i)}
-            />
-          ))}
-        </div>
+      </div>
+
+      <div className="banner__items">
+        {categories.map((category, i) => (
+          <button
+            type="button"
+            key={category}
+            className={classNames('banner__item', {
+              'banner__item--active': i === index,
+            })}
+            onClick={() => handleSlideChange(i)}
+          />
+        ))}
       </div>
     </div>
   );

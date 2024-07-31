@@ -1,0 +1,49 @@
+@import "../../styles";
+
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @extend %buttons;
+
+  &__primary {
+    width: 100%;
+
+    height: 40px;
+    color: $colorWhite;
+    background-color: $colorAccent;
+    border-radius: 48px;
+
+    &--selected {
+      color: $colorAccent;
+      background-color: $colorWhite;
+      border: 1px solid $colorElements;
+    }
+  }
+
+  &__disabled {
+    border-color: $colorElements;
+    opacity: 0.3;
+    cursor: default;
+    pointer-events: none;
+  }
+
+  &__favourite, &__item-count {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 11px;
+    border: 1px solid $colorElements;
+    border-radius: 50%;
+  }
+
+  &__item-count {
+    padding: 7px;
+    border-color: $colorIcons;
+
+    &:disabled {
+      border-color: $colorElements;
+    }
+  }
+}

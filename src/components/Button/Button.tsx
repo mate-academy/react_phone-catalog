@@ -1,13 +1,14 @@
-import cn from "classnames";
-import { ReactNode } from "react";
+import cn from 'classnames';
+import { ReactNode } from 'react';
+import './Button.scss';
 
-type Props= {
-  icon?: string,
-  selected?: boolean,
-  onClick: () => void,
-  children?: ReactNode,
-  disabled?: boolean,
-}
+type Props = {
+  icon?: string;
+  selected?: boolean;
+  onClick: () => void;
+  children?: ReactNode;
+  disabled?: boolean;
+};
 
 export const Button: React.FC<Props> = ({
   icon,
@@ -19,10 +20,10 @@ export const Button: React.FC<Props> = ({
   return (
     <button
       className={cn('button', {
-        'button__primary': icon,
-        'button__disabled': disabled,
+        button__primary: !icon,
+        button__disabled: disabled,
         'button__primary--selected': !icon && selected,
-        'button__favourite': icon === 'favourite',
+        button__favourite: icon === 'favourite',
         'button__item-count': icon === 'count',
       })}
       onClick={onClick}
@@ -30,5 +31,5 @@ export const Button: React.FC<Props> = ({
     >
       {children}
     </button>
-  )
-}
+  );
+};
