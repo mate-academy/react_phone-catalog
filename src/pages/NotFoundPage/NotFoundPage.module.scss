@@ -1,0 +1,30 @@
+@import '../../shared/global/utils/mixins';
+@import '../../shared/global/globalStyles/globalStyles.scss';
+@import '../../shared/global/utils/vars';
+@import '../../shared/global/utils/fonts';
+
+.notfoundpage {
+  @include page-grid;
+
+  &__content {
+    grid-column: 1 / -1;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 24px;
+
+    @include on-desktop {
+      grid-column: 7 / 19;
+    }
+  }
+
+  &__photo {
+    width: 80%;
+    height: 80%;
+  }
+
+  &__title {
+    @include header-2;
+  }
+}
