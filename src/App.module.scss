@@ -273,6 +273,7 @@
   width: 14px;
   height: 14px;
   background-color: $red-color;
+  pointer-events: none;
 
   &__number {
     color: $white-color;

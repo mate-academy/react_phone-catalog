@@ -2,6 +2,11 @@
 
 .homePage {
   display: grid;
+  margin-bottom: 64px;
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
 }
 
 .welcome {
@@ -169,17 +174,10 @@
 }
 
 .hot {
-  margin-bottom: 64px;
-
-  @include on-tablet {
-    margin-bottom: 64px;
-  }
-
   @include on-desktop {
     @include page-grid;
 
     margin-inline: auto;
-    margin-bottom: 80px;
     overflow: hidden;
   }
 

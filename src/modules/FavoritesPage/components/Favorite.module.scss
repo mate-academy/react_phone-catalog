@@ -1,14 +1,10 @@
 @import './../../shared/main';
 
-.catalog {
+.favorites {
   display: grid;
   margin-inline: auto;
-  margin-bottom: 64px;
-
+  margin-bottom: 40px;
   @include content-padding-inline;
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
 
   &__path {
     display: flex;

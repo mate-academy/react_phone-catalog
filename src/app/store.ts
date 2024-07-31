@@ -7,6 +7,7 @@ import fetchProductsReducer from './../features/fetchProductsSlice';
 import iconsChangerReducer from '../features/iconsChangerSlice';
 import chosenItemsReducer from '../features/chosenItemsSlice';
 import booleanReducer from './../features/booleanSlice';
+import pagesDetailsReducer from './../features/pagesDetailsSlice';
 
 export const store = configureStore({
   reducer: {
@@ -17,6 +18,7 @@ export const store = configureStore({
     iconsChanger: iconsChangerReducer,
     chosenItems: chosenItemsReducer,
     boolean: booleanReducer,
+    pagesDetails: pagesDetailsReducer,
   },
 });
 

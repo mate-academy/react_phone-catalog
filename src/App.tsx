@@ -112,7 +112,7 @@ export const App: React.FC = () => {
                 </p>
               </div>
             )}
-            <Link className={styles.icons__link} to="/">
+            <Link className={styles.icons__link} to="/favorites">
               <img
                 className={styles.icons__icon}
                 src="./icons/heart-ico.svg"

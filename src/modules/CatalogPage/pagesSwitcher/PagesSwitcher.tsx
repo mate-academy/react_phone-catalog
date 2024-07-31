@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import styles from './PagesSwitcher.module.scss';
 import { updateURLParams } from './../services/updateUrl';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAppSelector } from '../../../app/hooks';
 
 interface PagesSwitcherProps {
   sortBy: string;
   perPage: string;
-  models: number;
   pagesWithProducts: number[];
   showFrom: number;
   setShownFrom: React.Dispatch<React.SetStateAction<number>>;
@@ -15,16 +15,17 @@ interface PagesSwitcherProps {
 export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
   sortBy,
   perPage,
-  models,
   pagesWithProducts,
   showFrom,
   setShownFrom,
 }) => {
+  const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
+
   const root = document.documentElement;
   const navigate = useNavigate();
   const location = useLocation();
 
-  const [disablePagesArrow, setDisablePagesArrow] = useState('disableLeft');
+  const models = useAppSelector(state => state.pagesDetails.models);
 
   useEffect(() => {
     root.style.setProperty('--page-starts-from', '0');

@@ -3,12 +3,7 @@
 .pages {
   display: flex;
   gap: 16px;
-  margin-bottom: 64px;
   margin-inline: auto;
-
-  @include on-desktop {
-    margin-bottom: 80px;
-  }
 
   &__arrowButton {
     width: 32px;
