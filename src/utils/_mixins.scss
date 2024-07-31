@@ -1,0 +1,97 @@
+@mixin on-tablet {
+  @media (min-width: 640px) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: 1200px) {
+    @content;
+  }
+}
+
+@mixin top-menu {
+  display: inline-block;
+  position: relative;
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $grey-secondary;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: all .3s;
+
+  &:hover {
+    color: $grey-primary;
+    border-bottom: 1px solid $grey-secondary;
+  }
+
+  &:active {
+    color: $grey-primary;
+    border-bottom: 1px solid $grey-secondary;
+  }
+  @content;
+}
+
+@mixin header {
+  font-family: Mont, sans-serif;
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 40.9px;
+  letter-spacing: -1%;
+  color: $grey-primary;
+}
+
+@mixin header-phone {
+  font-family: Mont, sans-serif;
+  font-size: 22px;
+  font-weight: 800;
+  line-height: 30px;
+  color: $grey-primary;
+}
+
+@mixin category-paragraph {
+  font-family: Mont, sans-serif;
+  font-size: 20px;
+  line-height: 26px;
+  color: $grey-primary;
+}
+
+@mixin category-quantity {
+  font-family: Mont, sans-serif;
+  font-size: 14px;
+  line-height: 21px;
+  color: $grey-secondary;
+}
+
+@mixin footer {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  line-height: 11px;
+  letter-spacing: 4%;
+  color: $grey-secondary;
+  text-decoration: none;
+
+  &:hover {
+    color: $grey-primary;
+  }
+}
+
+@mixin burger {
+  position: absolute;
+  height: 16px;
+  width: 16px;
+  top: 0;
+  right: 0;
+  background-repeat: no-repeat;
+  background-position: right;
+  background-size: contain;
+  z-index: 1;
+}
+
+@mixin bread {
+  font-family: Mont, sans-serif;
+  font-size: 12px;
+  color: $grey-secondary;
+}

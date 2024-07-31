@@ -1,0 +1,18 @@
+@import '../../utils/main';
+
+.homePage {
+  display: flex;
+  justify-content: center;
+
+  @include on-tablet {
+    margin: 0 30px;
+  }
+
+  &__content {
+    margin: 0 20px;
+
+    @include on-tablet {
+      margin: 0 30px;
+    }
+  }
+}
