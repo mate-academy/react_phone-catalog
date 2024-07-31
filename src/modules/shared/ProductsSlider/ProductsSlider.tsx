@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/scss/free-mode';
 import 'swiper/scss/navigation';
 import { Product } from '../../../types/Product';
-import { GadgetCard } from '../gadgetCard/GadgetCard';
+import { ProductCard } from '../ProductCard/ProductCard';
 
 type Props = {
   title: string;
@@ -100,7 +100,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
       >
         {gadgets.map(gadget => (
           <SwiperSlide className={styles.ProductsSlider__slide} key={gadget.id}>
-            <GadgetCard gadget={gadget} />
+            <ProductCard gadget={gadget} />
           </SwiperSlide>
         ))}
       </Swiper>

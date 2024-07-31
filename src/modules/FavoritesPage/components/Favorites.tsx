@@ -36,9 +36,15 @@ export const Favorites: React.FC = () => {
 
       <h1 className={styles.favorites__title}>{title}</h1>
 
-      <p
-        className={styles.favorites__quantity}
-      >{`${models} ${models > 1 ? 'models' : 'model'}`}</p>
+      <p className={styles.favorites__quantity}>
+        {`${models} ${models === 1 ? 'model' : 'models'}`}
+      </p>
+
+      {favGadgets.length === 0 && (
+        <h3 className={styles.favorites__empty}>
+          You do not have any favorite product yet.
+        </h3>
+      )}
 
       <ProductsList gadgets={favGadgets} />
     </div>

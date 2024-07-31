@@ -1,4 +1,4 @@
-import styles from './gadgetCard.module.scss';
+import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
@@ -6,13 +6,13 @@ import {
   setAddToFavourite,
   setDeleteFromFavourite,
 } from '../../../features/chosenItemsSlice';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 type Props = {
   gadget: Product;
 };
 
-export const GadgetCard: React.FC<Props> = ({ gadget }) => {
+export const ProductCard: React.FC<Props> = ({ gadget }) => {
   const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
   const [isInCatr, setIsinCart] = useState(false);
 
@@ -20,6 +20,14 @@ export const GadgetCard: React.FC<Props> = ({ gadget }) => {
 
   const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
+
+  useEffect(() => {
+    if (!favouritesArray.some(obj => obj.id === gadget.id)) {
+      setHeartIco('./icons/heart-ico.svg');
+    } else {
+      setHeartIco('./icons/heart-red-ico.svg');
+    }
+  }, [favouritesArray, gadget]);
 
   const handleheartIco = () => {
     if (!favouritesArray.some(obj => obj.id === gadget.id)) {

@@ -48,4 +48,13 @@
     text-align: left;
     margin-bottom: 32px;
   }
+
+  &__empty {
+    color: $secondary-grey-color;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 500;
+    letter-spacing: 0%;
+    text-align: left;
+  }
 }

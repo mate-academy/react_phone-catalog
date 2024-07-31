@@ -112,7 +112,10 @@ export const App: React.FC = () => {
                 </p>
               </div>
             )}
-            <Link className={styles.icons__link} to="/favorites">
+            <Link
+              className={`${styles.icons__link} ${location.pathname.includes('favorite') && styles.activeIco}`}
+              to="/favorites"
+            >
               <img
                 className={styles.icons__icon}
                 src="./icons/heart-ico.svg"
@@ -131,7 +134,10 @@ export const App: React.FC = () => {
                 </p>
               </div>
             )}
-            <Link className={styles.icons__link} to="/">
+            <Link
+              className={`${styles.icons__link} ${location.pathname.includes('cart') && styles.activeIco}`}
+              to="/cart"
+            >
               <img
                 className={styles.icons__icon}
                 src="./icons/basket-ico.svg"

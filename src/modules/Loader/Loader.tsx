@@ -1,7 +1,7 @@
-import './Loader.module.scss';
+import styles from './Loader.module.scss';
 
 export const Loader = () => (
-  <div className="Loader" data-cy="Loader">
-    <div className="Loader__content" />
+  <div className={styles.Loader}>
+    <div className={styles.Loader__content} />
   </div>
 );

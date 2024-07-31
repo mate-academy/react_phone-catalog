@@ -1894,7 +1894,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var swiper_css__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! swiper/css */ "./node_modules/swiper/swiper.css");
 /* harmony import */ var swiper_scss_free_mode__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! swiper/scss/free-mode */ "./node_modules/swiper/modules/free-mode.scss");
 /* harmony import */ var swiper_scss_navigation__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! swiper/scss/navigation */ "./node_modules/swiper/modules/navigation.scss");
-/* harmony import */ var _gadgetCard_GadgetCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../gadgetCard/GadgetCard */ "./src/modules/shared/gadgetCard/GadgetCard.tsx");
+/* harmony import */ var _ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../ProductCard/ProductCard */ "./src/modules/shared/ProductCard/ProductCard.tsx");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
@@ -1980,7 +1980,7 @@ const ProductsSlider = ({
       className: _ProductsSlider_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ProductsSlider__swiper,
       children: gadgets.map(gadget => /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxDEV)(swiper_react__WEBPACK_IMPORTED_MODULE_0__.SwiperSlide, {
         className: _ProductsSlider_module_scss__WEBPACK_IMPORTED_MODULE_2__["default"].ProductsSlider__slide,
-        children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxDEV)(_gadgetCard_GadgetCard__WEBPACK_IMPORTED_MODULE_6__.GadgetCard, {
+        children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_7__.jsxDEV)(_ProductCard_ProductCard__WEBPACK_IMPORTED_MODULE_6__.ProductCard, {
           gadget: gadget
         }, void 0, false, {
           fileName: _jsxFileName,
@@ -2040,31 +2040,31 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 
 /***/ }),
 
-/***/ "./src/modules/shared/gadgetCard/GadgetCard.tsx":
+/***/ "./src/modules/shared/ProductCard/ProductCard.tsx":
 /*!******************************************************!*\
-  !*** ./src/modules/shared/gadgetCard/GadgetCard.tsx ***!
+  !*** ./src/modules/shared/ProductCard/ProductCard.tsx ***!
   \******************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   GadgetCard: () => (/* binding */ GadgetCard)
+/* harmony export */   ProductCard: () => (/* binding */ ProductCard)
 /* harmony export */ });
-/* harmony import */ var _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./gadgetCard.module.scss */ "./src/modules/shared/gadgetCard/gadgetCard.module.scss");
+/* harmony import */ var _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ProductCard.module.scss */ "./src/modules/shared/ProductCard/ProductCard.module.scss");
 /* harmony import */ var _app_hooks__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../app/hooks */ "./src/app/hooks.ts");
 /* harmony import */ var _features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../features/chosenItemsSlice */ "./src/features/chosenItemsSlice.ts");
 /* harmony import */ var react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-dev-runtime */ "./node_modules/react/jsx-dev-runtime.js");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
 __webpack_require__.$Refresh$.runtime = __webpack_require__(/*! ./node_modules/react-refresh/runtime.js */ "./node_modules/react-refresh/runtime.js");
 
-var _jsxFileName = "C:\\Users\\Bruger\\studing\\reactTypeScript\\react_phone-catalog\\src\\modules\\shared\\gadgetCard\\GadgetCard.tsx",
+var _jsxFileName = "C:\\Users\\Bruger\\studing\\reactTypeScript\\react_phone-catalog\\src\\modules\\shared\\ProductCard\\ProductCard.tsx",
   _s = __webpack_require__.$Refresh$.signature();
 
 
 
 
-const GadgetCard = ({
+const ProductCard = ({
   gadget
 }) => {
   _s();
@@ -2085,11 +2085,11 @@ const GadgetCard = ({
     }
   }
   return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-    className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card,
+    className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card,
     children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-      className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__topBlock,
+      className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__topBlock,
       children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("img", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__image,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__image,
         src: gadget.image,
         alt: "product picture"
       }, void 0, false, {
@@ -2097,7 +2097,7 @@ const GadgetCard = ({
         lineNumber: 41,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__name,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__name,
         children: gadget.name
       }, void 0, false, {
         fileName: _jsxFileName,
@@ -2109,31 +2109,31 @@ const GadgetCard = ({
       lineNumber: 40,
       columnNumber: 7
     }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-      className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__bottomBlock,
+      className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__bottomBlock,
       children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__price,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__price,
         children: `$${gadget.price}`
       }, void 0, false, {
         fileName: _jsxFileName,
         lineNumber: 51,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__divider
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__divider
       }, void 0, false, {
         fileName: _jsxFileName,
         lineNumber: 53,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
         children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
           children: "Screen"
         }, void 0, false, {
           fileName: _jsxFileName,
           lineNumber: 56,
           columnNumber: 11
         }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
           children: gadget.screen
         }, void 0, false, {
           fileName: _jsxFileName,
@@ -2145,16 +2145,16 @@ const GadgetCard = ({
         lineNumber: 55,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
         children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
           children: "Capacity"
         }, void 0, false, {
           fileName: _jsxFileName,
           lineNumber: 61,
           columnNumber: 11
         }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
           children: gadget.capacity
         }, void 0, false, {
           fileName: _jsxFileName,
@@ -2166,16 +2166,16 @@ const GadgetCard = ({
         lineNumber: 60,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoBlock,
         children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoTitle,
           children: "RAM"
         }, void 0, false, {
           fileName: _jsxFileName,
           lineNumber: 66,
           columnNumber: 11
         }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("p", {
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__infoValue,
           children: gadget.ram
         }, void 0, false, {
           fileName: _jsxFileName,
@@ -2187,10 +2187,10 @@ const GadgetCard = ({
         lineNumber: 65,
         columnNumber: 9
       }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {
-        className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonsSection,
+        className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonsSection,
         children: [/*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("button", {
           onClick: () => handleAddToCart(),
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddToCatr,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddToCatr,
           children: "Add to cart"
         }, void 0, false, {
           fileName: _jsxFileName,
@@ -2198,9 +2198,9 @@ const GadgetCard = ({
           columnNumber: 11
         }, undefined), /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("button", {
           onClick: () => handleheartIco(),
-          className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddToFavourite,
+          className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddToFavourite,
           children: /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("img", {
-            className: _gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddFavouriteIcon,
+            className: _ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_0__["default"].card__buttonAddFavouriteIcon,
             src: favouriteIco,
             alt: "add to favourites"
           }, void 0, false, {
@@ -2229,12 +2229,12 @@ const GadgetCard = ({
     columnNumber: 5
   }, undefined);
 };
-_s(GadgetCard, "Nz8FyERSNtuorX+qRRdJ72O+B7w=", false, function () {
+_s(ProductCard, "Nz8FyERSNtuorX+qRRdJ72O+B7w=", false, function () {
   return [_app_hooks__WEBPACK_IMPORTED_MODULE_1__.useAppDispatch, _app_hooks__WEBPACK_IMPORTED_MODULE_1__.useAppSelector, _app_hooks__WEBPACK_IMPORTED_MODULE_1__.useAppSelector];
 });
-_c = GadgetCard;
+_c = ProductCard;
 var _c;
-__webpack_require__.$Refresh$.register(_c, "GadgetCard");
+__webpack_require__.$Refresh$.register(_c, "ProductCard");
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
 const $ReactRefreshCurrentExports$ = __react_refresh_utils__.getModuleExports(
@@ -50513,9 +50513,9 @@ ___CSS_LOADER_EXPORT___.locals = {
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/gadgetCard/gadgetCard.module.scss":
+/***/ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/ProductCard/ProductCard.module.scss":
 /*!************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/gadgetCard/gadgetCard.module.scss ***!
+  !*** ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/ProductCard/ProductCard.module.scss ***!
   \************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -50541,13 +50541,13 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   font-family: "Montserrat", sant-serif;
 }
 
-.gadgetCard_card__5hLdZ {
+.ProductCard_card__5hLdZ {
   height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.gadgetCard_card__image__Kb\\+7b {
+.ProductCard_card__image__Kb\\+7b {
   max-height: 100px;
   max-width: 100%;
   display: block;
@@ -50556,15 +50556,15 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   margin-bottom: 24px;
   cursor: pointer;
 }
-.gadgetCard_card__image__Kb\\+7b:hover {
+.ProductCard_card__image__Kb\\+7b:hover {
   transform: scale(1.1);
 }
 @media (min-width: 640px) {
-  .gadgetCard_card__image__Kb\\+7b {
+  .ProductCard_card__image__Kb\\+7b {
     max-height: 200px;
   }
 }
-.gadgetCard_card__name__DxEKn {
+.ProductCard_card__name__DxEKn {
   color: #313237;
   font-family: inherit;
   font-size: 14px;
@@ -50574,7 +50574,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   text-align: left;
   cursor: pointer;
 }
-.gadgetCard_card__price__IO0bE {
+.ProductCard_card__price__IO0bE {
   margin-bottom: 8px;
   color: #313237;
   font-family: inherit;
@@ -50584,21 +50584,21 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   letter-spacing: 0%;
   text-align: left;
 }
-.gadgetCard_card__divider__32xmq {
+.ProductCard_card__divider__32xmq {
   width: 100%;
   height: 1px;
   background-color: #e2e6e9;
   margin-bottom: 16px;
 }
-.gadgetCard_card__infoBlock__FGMEY {
+.ProductCard_card__infoBlock__FGMEY {
   display: flex;
   justify-content: space-between;
   margin-bottom: 8px;
 }
-.gadgetCard_card__infoBlock__FGMEY:last-child {
+.ProductCard_card__infoBlock__FGMEY:last-child {
   margin-bottom: 16px;
 }
-.gadgetCard_card__infoTitle__URbMG {
+.ProductCard_card__infoTitle__URbMG {
   color: #89939a;
   font-family: inherit;
   font-size: 12px;
@@ -50607,7 +50607,7 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   letter-spacing: 0%;
   text-align: left;
 }
-.gadgetCard_card__infoValue__E8Tmx {
+.ProductCard_card__infoValue__E8Tmx {
   color: #313237;
   font-family: inherit;
   font-size: 12px;
@@ -50616,22 +50616,22 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   letter-spacing: 0%;
   text-align: right;
 }
-.gadgetCard_card__buttonsSection__IHGlq {
+.ProductCard_card__buttonsSection__IHGlq {
   display: flex;
   justify-content: space-between;
   gap: 8px;
 }
-.gadgetCard_card__buttonAddToFavourite__Pj2GR {
+.ProductCard_card__buttonAddToFavourite__Pj2GR {
   width: 40px;
   height: 40px;
   border: 1px solid #b4bdc4;
   background-color: #fff;
   cursor: pointer;
 }
-.gadgetCard_card__buttonAddToFavourite__Pj2GR:hover {
+.ProductCard_card__buttonAddToFavourite__Pj2GR:hover {
   border: 1px solid #313237;
 }
-.gadgetCard_card__buttonAddToCatr__vlPBx {
+.ProductCard_card__buttonAddToCatr__vlPBx {
   height: 40px;
   width: 100px;
   color: #ffffff;
@@ -50644,32 +50644,32 @@ ___CSS_LOADER_EXPORT___.push([module.id, `* {
   background-color: #313237;
   cursor: pointer;
 }
-.gadgetCard_card__buttonAddToCatr__vlPBx:hover {
+.ProductCard_card__buttonAddToCatr__vlPBx:hover {
   box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
 }
 @media (min-width: 640px) {
-  .gadgetCard_card__buttonAddToCatr__vlPBx {
+  .ProductCard_card__buttonAddToCatr__vlPBx {
     width: 125px;
   }
 }
 @media (min-width: 1200px) {
-  .gadgetCard_card__buttonAddToCatr__vlPBx {
+  .ProductCard_card__buttonAddToCatr__vlPBx {
     width: 160px;
   }
-}`, "",{"version":3,"sources":["webpack://./src/modules/shared/_globalStyles.scss","webpack://./src/modules/shared/gadgetCard/gadgetCard.module.scss","webpack://./src/modules/shared/_mixins.scss","webpack://./src/modules/shared/_vars.scss"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,SAAA;EACA,UAAA;EACA,yBAAA;EACA,qCAAA;ACCF;;AAJA;EACE,YAAA;EACA,aAAA;EACA,sBAAA;EACA,8BAAA;AAOF;AALE;EACE,iBAAA;EACA,eAAA;EACA,cAAA;EACA,cAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;AAOJ;AALI;EACE,qBAAA;AAON;ACxBE;EDOA;IAcI,iBAAA;EAOJ;AACF;AAJE;EACE,cEvBc;EFwBd,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;EACA,eAAA;AAMJ;AAAE;EACE,kBAAA;EACA,cEtCc;EFuCd,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;AAEJ;AACE;EACE,WAAA;EACA,WAAA;EACA,yBEjDgB;EFkDhB,mBAAA;AACJ;AAEE;EACE,aAAA;EACA,8BAAA;EACA,kBAAA;AAAJ;AAEI;EACE,mBAAA;AAAN;AAIE;EACE,cElEe;EFmEf,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;AAFJ;AAKE;EACE,cE3Ec;EF4Ed,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,iBAAA;AAHJ;AAME;EACE,aAAA;EACA,8BAAA;EACA,QAAA;AAJJ;AAOE;EACE,WAAA;EACA,YAAA;EACA,yBAAA;EACA,sBAAA;EACA,eAAA;AALJ;AAOI;EACE,yBAAA;AALN;AASE;EACE,YAAA;EACA,YAAA;EACA,cEtGU;EFuGV,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,kBAAA;EACA,yBEhHc;EFiHd,eAAA;AAPJ;AASI;EACE,kDAAA;AAPN;AChHE;EDyGA;IAkBI,YAAA;EAPJ;AACF;AC/GE;EDmGA;IAsBI,YAAA;EANJ;AACF","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all $effect-duration ease;\n  font-family: 'Montserrat', sant-serif;\n}\n","* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.3s ease;\n  font-family: \"Montserrat\", sant-serif;\n}\n\n.card {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.card__image {\n  max-height: 100px;\n  max-width: 100%;\n  display: block;\n  margin: 0 auto;\n  object-fit: contain;\n  margin-bottom: 24px;\n  cursor: pointer;\n}\n.card__image:hover {\n  transform: scale(1.1);\n}\n@media (min-width: 640px) {\n  .card__image {\n    max-height: 200px;\n  }\n}\n.card__name {\n  color: #313237;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 500;\n  line-height: 21px;\n  letter-spacing: 0%;\n  text-align: left;\n  cursor: pointer;\n}\n.card__price {\n  margin-bottom: 8px;\n  color: #313237;\n  font-family: inherit;\n  font-size: 22px;\n  font-weight: 700;\n  line-height: 140%;\n  letter-spacing: 0%;\n  text-align: left;\n}\n.card__divider {\n  width: 100%;\n  height: 1px;\n  background-color: #e2e6e9;\n  margin-bottom: 16px;\n}\n.card__infoBlock {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 8px;\n}\n.card__infoBlock:last-child {\n  margin-bottom: 16px;\n}\n.card__infoTitle {\n  color: #89939a;\n  font-family: inherit;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  letter-spacing: 0%;\n  text-align: left;\n}\n.card__infoValue {\n  color: #313237;\n  font-family: inherit;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  letter-spacing: 0%;\n  text-align: right;\n}\n.card__buttonsSection {\n  display: flex;\n  justify-content: space-between;\n  gap: 8px;\n}\n.card__buttonAddToFavourite {\n  width: 40px;\n  height: 40px;\n  border: 1px solid #b4bdc4;\n  background-color: #fff;\n  cursor: pointer;\n}\n.card__buttonAddToFavourite:hover {\n  border: 1px solid #313237;\n}\n.card__buttonAddToCatr {\n  height: 40px;\n  width: 100px;\n  color: #ffffff;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 21px;\n  letter-spacing: 0%;\n  text-align: center;\n  background-color: #313237;\n  cursor: pointer;\n}\n.card__buttonAddToCatr:hover {\n  box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);\n}\n@media (min-width: 640px) {\n  .card__buttonAddToCatr {\n    width: 125px;\n  }\n}\n@media (min-width: 1200px) {\n  .card__buttonAddToCatr {\n    width: 160px;\n  }\n}","@mixin on-tablet {\n  @media (min-width: $tablet-min-width) {\n    @content;\n  }\n}\n\n@mixin on-desktop {\n  @media (min-width: $desktop-min-width) {\n    @content;\n  }\n}\n\n@mixin page-grid {\n  display: grid;\n  column-gap: 16px;\n  grid-template-columns: repeat(4, 1fr);\n\n  @include on-tablet {\n    grid-template-columns: repeat(12, 1fr);\n  }\n\n  @include on-desktop {\n    grid-template-columns: repeat(24, 32px);\n  }\n}\n\n@mixin content-padding-inline {\n  padding-inline: 16px;\n\n  @include on-tablet {\n    padding-inline: 24px;\n  }\n\n  @include on-desktop {\n    padding-inline: 32px;\n  }\n}\n","$tablet-min-width: 640px;\n$desktop-min-width: 1200px;\n$effect-duration: 0.3s;\n$secondary-grey-color: #89939a;\n$primary-grey-color: #313237;\n$elements-grey-color: #e2e6e9;\n$icons-grey-color: #b4bdc4;\n$white-color: #ffffff;\n$button-shadow-color: #17203166;\n"],"sourceRoot":""}]);
+}`, "",{"version":3,"sources":["webpack://./src/modules/shared/_globalStyles.scss","webpack://./src/modules/shared/ProductCard/ProductCard.module.scss","webpack://./src/modules/shared/_mixins.scss","webpack://./src/modules/shared/_vars.scss"],"names":[],"mappings":"AAAA;EACE,sBAAA;EACA,SAAA;EACA,UAAA;EACA,yBAAA;EACA,qCAAA;ACCF;;AAJA;EACE,YAAA;EACA,aAAA;EACA,sBAAA;EACA,8BAAA;AAOF;AALE;EACE,iBAAA;EACA,eAAA;EACA,cAAA;EACA,cAAA;EACA,mBAAA;EACA,mBAAA;EACA,eAAA;AAOJ;AALI;EACE,qBAAA;AAON;ACxBE;EDOA;IAcI,iBAAA;EAOJ;AACF;AAJE;EACE,cEvBc;EFwBd,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;EACA,eAAA;AAMJ;AAAE;EACE,kBAAA;EACA,cEtCc;EFuCd,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;AAEJ;AACE;EACE,WAAA;EACA,WAAA;EACA,yBEjDgB;EFkDhB,mBAAA;AACJ;AAEE;EACE,aAAA;EACA,8BAAA;EACA,kBAAA;AAAJ;AAEI;EACE,mBAAA;AAAN;AAIE;EACE,cElEe;EFmEf,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,gBAAA;AAFJ;AAKE;EACE,cE3Ec;EF4Ed,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,iBAAA;AAHJ;AAME;EACE,aAAA;EACA,8BAAA;EACA,QAAA;AAJJ;AAOE;EACE,WAAA;EACA,YAAA;EACA,yBAAA;EACA,sBAAA;EACA,eAAA;AALJ;AAOI;EACE,yBAAA;AALN;AASE;EACE,YAAA;EACA,YAAA;EACA,cEtGU;EFuGV,oBAAA;EACA,eAAA;EACA,gBAAA;EACA,iBAAA;EACA,kBAAA;EACA,kBAAA;EACA,yBEhHc;EFiHd,eAAA;AAPJ;AASI;EACE,kDAAA;AAPN;AChHE;EDyGA;IAkBI,YAAA;EAPJ;AACF;AC/GE;EDmGA;IAsBI,YAAA;EANJ;AACF","sourcesContent":["* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all $effect-duration ease;\n  font-family: 'Montserrat', sant-serif;\n}\n","* {\n  box-sizing: border-box;\n  margin: 0;\n  padding: 0;\n  transition: all 0.3s ease;\n  font-family: \"Montserrat\", sant-serif;\n}\n\n.card {\n  height: 100%;\n  display: flex;\n  flex-direction: column;\n  justify-content: space-between;\n}\n.card__image {\n  max-height: 100px;\n  max-width: 100%;\n  display: block;\n  margin: 0 auto;\n  object-fit: contain;\n  margin-bottom: 24px;\n  cursor: pointer;\n}\n.card__image:hover {\n  transform: scale(1.1);\n}\n@media (min-width: 640px) {\n  .card__image {\n    max-height: 200px;\n  }\n}\n.card__name {\n  color: #313237;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 500;\n  line-height: 21px;\n  letter-spacing: 0%;\n  text-align: left;\n  cursor: pointer;\n}\n.card__price {\n  margin-bottom: 8px;\n  color: #313237;\n  font-family: inherit;\n  font-size: 22px;\n  font-weight: 700;\n  line-height: 140%;\n  letter-spacing: 0%;\n  text-align: left;\n}\n.card__divider {\n  width: 100%;\n  height: 1px;\n  background-color: #e2e6e9;\n  margin-bottom: 16px;\n}\n.card__infoBlock {\n  display: flex;\n  justify-content: space-between;\n  margin-bottom: 8px;\n}\n.card__infoBlock:last-child {\n  margin-bottom: 16px;\n}\n.card__infoTitle {\n  color: #89939a;\n  font-family: inherit;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  letter-spacing: 0%;\n  text-align: left;\n}\n.card__infoValue {\n  color: #313237;\n  font-family: inherit;\n  font-size: 12px;\n  font-weight: 700;\n  line-height: 15px;\n  letter-spacing: 0%;\n  text-align: right;\n}\n.card__buttonsSection {\n  display: flex;\n  justify-content: space-between;\n  gap: 8px;\n}\n.card__buttonAddToFavourite {\n  width: 40px;\n  height: 40px;\n  border: 1px solid #b4bdc4;\n  background-color: #fff;\n  cursor: pointer;\n}\n.card__buttonAddToFavourite:hover {\n  border: 1px solid #313237;\n}\n.card__buttonAddToCatr {\n  height: 40px;\n  width: 100px;\n  color: #ffffff;\n  font-family: inherit;\n  font-size: 14px;\n  font-weight: 700;\n  line-height: 21px;\n  letter-spacing: 0%;\n  text-align: center;\n  background-color: #313237;\n  cursor: pointer;\n}\n.card__buttonAddToCatr:hover {\n  box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);\n}\n@media (min-width: 640px) {\n  .card__buttonAddToCatr {\n    width: 125px;\n  }\n}\n@media (min-width: 1200px) {\n  .card__buttonAddToCatr {\n    width: 160px;\n  }\n}","@mixin on-tablet {\n  @media (min-width: $tablet-min-width) {\n    @content;\n  }\n}\n\n@mixin on-desktop {\n  @media (min-width: $desktop-min-width) {\n    @content;\n  }\n}\n\n@mixin page-grid {\n  display: grid;\n  column-gap: 16px;\n  grid-template-columns: repeat(4, 1fr);\n\n  @include on-tablet {\n    grid-template-columns: repeat(12, 1fr);\n  }\n\n  @include on-desktop {\n    grid-template-columns: repeat(24, 32px);\n  }\n}\n\n@mixin content-padding-inline {\n  padding-inline: 16px;\n\n  @include on-tablet {\n    padding-inline: 24px;\n  }\n\n  @include on-desktop {\n    padding-inline: 32px;\n  }\n}\n","$tablet-min-width: 640px;\n$desktop-min-width: 1200px;\n$effect-duration: 0.3s;\n$secondary-grey-color: #89939a;\n$primary-grey-color: #313237;\n$elements-grey-color: #e2e6e9;\n$icons-grey-color: #b4bdc4;\n$white-color: #ffffff;\n$button-shadow-color: #17203166;\n"],"sourceRoot":""}]);
 // Exports
 ___CSS_LOADER_EXPORT___.locals = {
-	"card": `gadgetCard_card__5hLdZ`,
-	"card__image": `gadgetCard_card__image__Kb+7b`,
-	"card__name": `gadgetCard_card__name__DxEKn`,
-	"card__price": `gadgetCard_card__price__IO0bE`,
-	"card__divider": `gadgetCard_card__divider__32xmq`,
-	"card__infoBlock": `gadgetCard_card__infoBlock__FGMEY`,
-	"card__infoTitle": `gadgetCard_card__infoTitle__URbMG`,
-	"card__infoValue": `gadgetCard_card__infoValue__E8Tmx`,
-	"card__buttonsSection": `gadgetCard_card__buttonsSection__IHGlq`,
-	"card__buttonAddToFavourite": `gadgetCard_card__buttonAddToFavourite__Pj2GR`,
-	"card__buttonAddToCatr": `gadgetCard_card__buttonAddToCatr__vlPBx`
+	"card": `ProductCard_card__5hLdZ`,
+	"card__image": `ProductCard_card__image__Kb+7b`,
+	"card__name": `ProductCard_card__name__DxEKn`,
+	"card__price": `ProductCard_card__price__IO0bE`,
+	"card__divider": `ProductCard_card__divider__32xmq`,
+	"card__infoBlock": `ProductCard_card__infoBlock__FGMEY`,
+	"card__infoTitle": `ProductCard_card__infoTitle__URbMG`,
+	"card__infoValue": `ProductCard_card__infoValue__E8Tmx`,
+	"card__buttonsSection": `ProductCard_card__buttonsSection__IHGlq`,
+	"card__buttonAddToFavourite": `ProductCard_card__buttonAddToFavourite__Pj2GR`,
+	"card__buttonAddToCatr": `ProductCard_card__buttonAddToCatr__vlPBx`
 };
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (___CSS_LOADER_EXPORT___);
 
@@ -52033,9 +52033,9 @@ if (true) {
 
 /***/ }),
 
-/***/ "./src/modules/shared/gadgetCard/gadgetCard.module.scss":
+/***/ "./src/modules/shared/ProductCard/ProductCard.module.scss":
 /*!**************************************************************!*\
-  !*** ./src/modules/shared/gadgetCard/gadgetCard.module.scss ***!
+  !*** ./src/modules/shared/ProductCard/ProductCard.module.scss ***!
   \**************************************************************/
 /***/ ((module, __webpack_exports__, __webpack_require__) => {
 
@@ -52056,7 +52056,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4__);
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! !../../../../node_modules/style-loader/dist/runtime/styleTagTransform.js */ "./node_modules/style-loader/dist/runtime/styleTagTransform.js");
 /* harmony import */ var _node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_dist_runtime_styleTagTransform_js__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./gadgetCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/gadgetCard/gadgetCard.module.scss");
+/* harmony import */ var _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./ProductCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/ProductCard/ProductCard.module.scss");
 
 
 
@@ -52078,11 +52078,11 @@ options.setAttributes = (_node_modules_style_loader_dist_runtime_setAttributesWi
 options.domAPI = (_node_modules_style_loader_dist_runtime_styleDomAPI_js__WEBPACK_IMPORTED_MODULE_1___default());
 options.insertStyleElement = (_node_modules_style_loader_dist_runtime_insertStyleElement_js__WEBPACK_IMPORTED_MODULE_4___default());
 
-var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
+var update = _node_modules_style_loader_dist_runtime_injectStylesIntoStyleTag_js__WEBPACK_IMPORTED_MODULE_0___default()(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"], options);
 
 
 if (true) {
-  if (!_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals || module.hot.invalidate) {
+  if (!_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals || module.hot.invalidate) {
     var isEqualLocals = function isEqualLocals(a, b, isNamedExport) {
   if (!a && b || a && !b) {
     return false;
@@ -52108,22 +52108,22 @@ if (true) {
   }
   return true;
 };
-    var isNamedExport = !_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
-    var oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
+    var isNamedExport = !_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
+    var oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
 
     module.hot.accept(
-      /*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./gadgetCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/gadgetCard/gadgetCard.module.scss",
-      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./gadgetCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/gadgetCard/gadgetCard.module.scss");
+      /*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./ProductCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/ProductCard/ProductCard.module.scss",
+      __WEBPACK_OUTDATED_DEPENDENCIES__ => { /* harmony import */ _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! !!../../../../node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!../../../../node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!../../../../node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!../../../../node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./ProductCard.module.scss */ "./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[2]!./node_modules/resolve-url-loader/index.js??ruleSet[1].rules[1].oneOf[8].use[3]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[1].oneOf[8].use[4]!./src/modules/shared/ProductCard/ProductCard.module.scss");
 (function () {
-        if (!isEqualLocals(oldLocals, isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals, isNamedExport)) {
+        if (!isEqualLocals(oldLocals, isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals, isNamedExport)) {
                 module.hot.invalidate();
 
                 return;
               }
 
-              oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
+              oldLocals = isNamedExport ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__ : _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals;
 
-              update(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]);
+              update(_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"]);
       })(__WEBPACK_OUTDATED_DEPENDENCIES__); }
     )
   }
@@ -52135,7 +52135,7 @@ if (true) {
 
 
 
-       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_gadgetCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
+       /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"] && _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals ? _node_modules_css_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_1_node_modules_postcss_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_2_node_modules_resolve_url_loader_index_js_ruleSet_1_rules_1_oneOf_8_use_3_node_modules_sass_loader_dist_cjs_js_ruleSet_1_rules_1_oneOf_8_use_4_ProductCard_module_scss__WEBPACK_IMPORTED_MODULE_6__["default"].locals : undefined);
 
 
 /***/ }),

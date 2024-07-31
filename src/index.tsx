@@ -1,3 +1,5 @@
+import 'bulma/css/bulma.min.css';
+
 export * from './App';
 
 import { createRoot } from 'react-dom/client';

@@ -7,6 +7,7 @@ import { Product } from './../../../types/Product';
 import { PagesSwitcher } from './../pagesSwitcher/PagesSwitcher';
 import { CatalogFilters } from '../catalogFilters/CatalogFilters';
 import { setModels, setTitle } from './../../../features/pagesDetailsSlice';
+import { Loader } from '../../Loader';
 
 export const Catalog: React.FC = () => {
   const [perPage, setPerPage] = useState('all');
@@ -20,6 +21,8 @@ export const Catalog: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const productsFromServer = useAppSelector(state => state.products.objects);
+  const loadingStatus = useAppSelector(state => state.products.loading);
+  const loadingError = useAppSelector(state => state.products.error);
   const title = useAppSelector(state => state.pagesDetails.title);
   const models = useAppSelector(state => state.pagesDetails.models);
 
@@ -154,7 +157,9 @@ export const Catalog: React.FC = () => {
 
       <h1 className={styles.catalog__title}>{title}</h1>
 
-      <p className={styles.catalog__quantity}>{`${models} models`}</p>
+      <p
+        className={styles.catalog__quantity}
+      >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
 
       <CatalogFilters
         page={page}
@@ -163,6 +168,11 @@ export const Catalog: React.FC = () => {
         setSort={setSortBy}
         setPer={setPerPage}
       />
+
+      {loadingStatus && <Loader />}
+      {loadingError !== '' && (
+        <p className={'has-text-danger'}>{loadingError}</p>
+      )}
 
       <ProductsList gadgets={displayedProducts} />
 
