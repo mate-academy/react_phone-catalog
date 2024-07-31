@@ -27,17 +27,17 @@ const CartSlice = createSlice({
       );
     },
 
-    removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
-      const currentState = state;
+    // removeLastProduct: (state, action: PayloadAction<TabAccessPhone>) => {
+    //   const currentState = state;
 
-      const findProd = currentState.cartProducts
-        .map(p => ({ ...p }))
-        .findIndex(item => item.id === action.payload.id);
+    //   const findProd = currentState.cartProducts
+    //     .map(p => ({ ...p }))
+    //     .findIndex(item => item.id === action.payload.id);
 
-      currentState.cartProducts = currentState.cartProducts.filter(
-        (_, index) => index !== findProd,
-      );
-    },
+    //   currentState.cartProducts = currentState.cartProducts.filter(
+    //     (_, index) => index !== findProd,
+    //   );
+    // },
   },
 });
 

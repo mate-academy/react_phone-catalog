@@ -20,11 +20,9 @@ const FavSlice = createSlice({
         prod => prod.id === action.payload.id,
       );
 
-      if (!findSame) {
-        currentState.favProducts.push(action.payload);
-      } else {
-        currentState.favProducts;
-      }
+      !findSame
+        ? currentState.favProducts.push(action.payload)
+        : currentState.favProducts;
     },
 
     removeProduct: (state, action: PayloadAction<TabAccessPhone>) => {
