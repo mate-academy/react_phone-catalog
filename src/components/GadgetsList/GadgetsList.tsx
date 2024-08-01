@@ -35,6 +35,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
   ];
   const sortBy = searchParams.get(QueryParams.sort) || SortBy.newest;
   const itemsOnPage = searchParams.get(QueryParams.perPage) || ItemsList.four;
+  const isPagination = resultFilteredDev.length !== 0 && itemsOnPage !== 'all';
 
   useEffect(() => {
     handleResize(element);
@@ -76,7 +77,7 @@ export const GadgetsList: React.FC<Props> = ({ title }) => {
           <div className={style.gadgets__cardsContainer} ref={element}>
             <CardsContainer gadgets={resultFilteredDev} />
           </div>
-          {resultFilteredDev.length !== 0 && (
+          {isPagination && (
             <Pagination perPage={itemsOnPage} />
           )}
         </>
