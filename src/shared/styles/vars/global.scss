@@ -1,0 +1,29 @@
+$maxWidthContainer: 1136;
+
+// pc
+$containerPadding: 32;
+$headerHight: 64;
+
+// tablet
+$containerPaddingTablet: 24;
+$headerHightTablet: 48;
+
+// mobile
+$containerPaddingMobile: 16;
+$containerWidth: $maxWidthContainer + $containerPadding * 2;
+
+// breakpoints
+$pc: em($containerWidth);
+$tablet: em(991.98);
+$mobile: em(639.98);
+$mobileSmall: em(479.98);
+
+// fonts
+$font-family: Mont, sans-serif;
+$second-family: Inter, sans-serif;
+$third-family: Manrope, sans-serif;
+$fontSize: 14px;
+
+// durations
+$duration: .3s;
+$sliderSwipeDuration: 5s;

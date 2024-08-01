@@ -1,9 +1,34 @@
-@import 'vars/global';
+@use "sass:math";
+@import 'fonts/fonts';
+@import 'fonts/icons';
+@import '../../shared/styles/common/mixins';
+@import '../../shared/styles/vars/global';
 @import 'null';
 @import 'themes/dark';
 @import 'themes/light';
+@import 'swiper';
 
-.app {
-  background: var(--bg-color);
-  min-height: 100vh;
+body {
+
+  .lock & {
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  // .loaded & {}
+}
+
+[class*="__container"] {
+  max-width: rem($maxWidthContainer);
+  box-sizing: content-box;
+  margin: 0 auto;
+  padding: 0 rem($containerPaddingMobile);
+
+  @media (min-width:$mobile) {
+    padding: 0 rem($containerPaddingTablet);
+  }
+
+  @media (min-width:$pc) {
+    padding: 0 rem($containerPadding);
+  }
 }

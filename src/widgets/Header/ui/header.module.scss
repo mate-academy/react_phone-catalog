@@ -1,0 +1,156 @@
+@use "sass:math";
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.header {
+  background: var(--main-bg);
+  box-shadow: 0 1px 0 0 var(--secondary-elements);
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  column-gap: rem(16);
+  height: rem($headerHightTablet);
+  overflow: auto;
+  z-index: 10;
+
+  @media (min-width:$tablet) {
+    height: rem($headerHight);
+    column-gap: rem(24);
+  }
+
+  .header__menu {
+    flex: 1 1 auto;
+  }
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  column-gap: rem(32);
+  height: 100%;
+
+  @media (min-width:$tablet) {
+    column-gap: rem(64);
+  }
+
+  .menu__body {
+    height: 100%;
+  }
+
+  .menu__list {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    column-gap: rem(32);
+  }
+
+  .menu__item {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+
+  .menu__link {
+    font-weight: 800;
+    font-size: rem(12);
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--secondary-color);
+    height: rem($headerHightTablet);
+    line-height: rem($headerHightTablet);
+    position: relative;
+    transition: color $duration ease 0s;
+
+    &::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      background-color: var(--primary-color);
+      height: rem(3);
+      width: 0;
+      transition: width $duration ease 0s;
+    }
+
+    &.active {
+      color: var(--primary-color);
+
+      &::after {
+        width: 100%;
+      }
+    }
+
+    @media (any-hover: hover) {
+      &:hover {
+        color: var(--primary-color);
+
+        &::after {
+          width: 100%;
+        }
+      }
+    }
+
+    @media (min-width:$tablet) {
+      height: rem($headerHight);
+      line-height: rem($headerHight);
+    }
+  }
+
+  // .menu__icon {}
+}
+
+
+.icon-menu {
+  display: none;
+
+  @media (max-width: $mobile) {
+    display: block;
+    position: relative;
+    width: 30px;
+    height: 18px;
+    cursor: pointer;
+    z-index: 5;
+
+    span,
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      transition: all 0.3s ease 0s;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background-color: #000;
+    }
+
+    &::before {
+      top: 0;
+    }
+
+    &::after {
+      bottom: 0;
+    }
+
+    span {
+      top: calc(50% - 1px);
+    }
+
+    .menu-open & {
+      span {
+        transform: scale(0);
+      }
+
+      &::before {
+        transform: rotate(-45deg);
+        top: calc(50% - 1px);
+      }
+
+      &::after {
+        transform: rotate(45deg);
+        bottom: calc(50% - 1px);
+      }
+    }
+  }
+}

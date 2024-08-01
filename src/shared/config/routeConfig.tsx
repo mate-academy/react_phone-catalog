@@ -1,23 +1,27 @@
-import { ProductPage } from '../../pages/CatalogPage';
+import { ProductsPage } from '../../pages/CatalogPage';
 import { HomePage } from '../../pages/HomePage';
-import { RouteProps } from 'react-router-dom';
 import { NotFoundPage } from '../../pages/NotFoundPage';
+import { RouteProps } from 'react-router-dom';
+import { ProductPage } from '../../pages/ProductPage';
+import { CartPage } from '../../pages/CartPage';
+import { FavoritesPage } from '../../pages/FavoritesPage';
 
 export enum AppRoutes {
   HOME = 'home',
-  PRODUCT = 'product',
-  // PRODUCT_DETAILS = 'product_details',
-  // CART = 'cart',
-  // FAVORITES = 'favotites',
-  // // last
+  PRODUCTS = 'products',
+  PRODUCT_DETAIL = 'product_detail',
+  FAVORITES = 'favorites',
+  CART = 'cart',
   NOT_FOUND = 'not_found',
 }
 
 export const RoutePaths: Record<AppRoutes, string> = {
   [AppRoutes.HOME]: '/',
-  [AppRoutes.PRODUCT]: '/product',
+  [AppRoutes.PRODUCTS]: '/products/',
+  [AppRoutes.PRODUCT_DETAIL]: '/products/:category/',
+  [AppRoutes.FAVORITES]: '/favorites',
+  [AppRoutes.CART]: '/cart',
   [AppRoutes.NOT_FOUND]: '*',
-  // [AppRoutes.PRODUCT_DETAILS]: 'product/',
 };
 
 export const routeConfig: Record<AppRoutes, RouteProps> = {
@@ -25,9 +29,21 @@ export const routeConfig: Record<AppRoutes, RouteProps> = {
     path: RoutePaths.home,
     element: <HomePage />,
   },
-  [AppRoutes.PRODUCT]: {
-    path: RoutePaths.product,
+  [AppRoutes.PRODUCTS]: {
+    path: `${RoutePaths.products}:category`,
+    element: <ProductsPage />,
+  },
+  [AppRoutes.PRODUCT_DETAIL]: {
+    path: `${RoutePaths.product_detail}:productId`,
     element: <ProductPage />,
+  },
+  [AppRoutes.FAVORITES]: {
+    path: RoutePaths.favorites,
+    element: <FavoritesPage />,
+  },
+  [AppRoutes.CART]: {
+    path: RoutePaths.cart,
+    element: <CartPage />,
   },
   [AppRoutes.NOT_FOUND]: {
     path: RoutePaths.not_found,

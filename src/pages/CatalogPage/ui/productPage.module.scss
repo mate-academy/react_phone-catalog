@@ -1,0 +1,33 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.productPageTop {
+  padding-top: rem(24);
+}
+
+
+.productPage__title {
+  margin-bottom: rem(8);
+}
+
+.productPage__label {
+  color: var(--secondary-color);
+  font-size: rem(14);
+  line-height: 150%;
+  font-weight: 600;
+  margin-bottom: rem(32);
+
+  @media (min-width:$mobile) {
+    margin-bottom: rem(40);
+  }
+}
+
+.productPage__cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(229px, 1fr));
+  row-gap: rem(40);
+
+  @media (min-width:$mobileSmall) {
+    column-gap: rem(16);
+  }
+}

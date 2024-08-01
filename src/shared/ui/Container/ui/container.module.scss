@@ -1,0 +1,17 @@
+@import '../../../../shared/styles/common/mixins';
+@import '../../../../shared/styles/vars/global';
+
+.container {
+  max-width: rem($maxWidthContainer);
+  box-sizing: content-box;
+  margin: 0 auto;
+  padding: 0 rem($containerPaddingMobile);
+
+  @media (min-width:$mobile) {
+    padding: 0 rem($containerPaddingTablet);
+  }
+
+  @media (min-width:$pc) {
+    padding: 0 rem($containerPadding);
+  }
+}

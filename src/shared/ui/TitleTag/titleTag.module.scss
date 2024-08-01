@@ -1,0 +1,35 @@
+@use "sass:math";
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.title {
+  color: var(--primary-color);
+  font-weight: 800;
+}
+
+.h1 {
+  line-height: math.div(56, 48);
+  letter-spacing: -0.01em;
+  font-size: rem(32);
+
+  @media (min-width:$mobile) {
+    font-size: rem(48);
+  }
+}
+
+.h2 {
+  font-size: rem(32);
+  line-height: math.div(41, 32);
+  letter-spacing: -0.01em;
+}
+
+.h3 {
+  font-size: rem(22);
+  line-height: math.div(31, 22);
+}
+
+.h4 {
+  font-size: rem(20);
+  line-height: math.div(26, 20);
+  font-weight: 700;
+}

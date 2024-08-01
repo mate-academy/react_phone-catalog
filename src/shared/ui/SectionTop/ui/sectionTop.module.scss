@@ -1,0 +1,9 @@
+@import '../../../../shared/styles/common/mixins';
+
+.sectionTop {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: rem(24);
+  column-gap: rem(20);
+}

@@ -1,0 +1,22 @@
+@import '../../../../shared/styles/common/mixins';
+@import '../../../../shared/styles/vars/global';
+
+.section {
+  padding-top: rem(56);
+
+  @media (min-width:$mobile) {
+    padding-top: rem(64);
+  }
+
+  @media (min-width:$tablet) {
+    padding-top: rem(80);
+  }
+}
+
+.padding-bottom {
+  padding-bottom: rem(64);
+
+  @media (min-width:$mobile) {
+    padding-bottom: rem(80);
+  }
+}

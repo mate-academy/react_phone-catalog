@@ -1,0 +1,11 @@
+.app {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+  >main {
+    flex: 1 1 auto;
+  }
+}

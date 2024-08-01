@@ -1,0 +1,12 @@
+@import '../../../styles/common/mixins';
+@import '../../../styles/vars/global';
+
+.page {
+  background-color: var(--main-bg);
+
+  padding-top: #{$headerHightTablet + px};
+
+  @media (min-width:$tablet) {
+    padding-top: #{$headerHight + px};
+  }
+}

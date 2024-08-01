@@ -1,25 +1,23 @@
 import { Suspense } from 'react';
-import { Link } from 'react-router-dom';
+import { Header } from '../widgets/Header';
 import AppRouter from './providers/router/ui/AppRouter';
-import { RoutePaths } from '../shared/config/routeConfig';
-import './styles/index.scss';
 import { useTheme } from './providers/ThemeProvider';
+import classNames from 'classnames';
+import cls from './app.module.scss';
+import { Footer } from '../widgets/Footer/ui/Footer';
+import { Page } from '../shared/ui/Page';
 
 function App() {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
-    <div className={`app ${theme}`}>
-      <Suspense fallback="">
-        <nav>
-          <Link to={RoutePaths.home}>HOME</Link>
-          <Link to={RoutePaths.product}>CATALOG</Link>
-          <button type="button" className="button" onClick={toggleTheme}>
-            Змінити тему
-          </button>
-        </nav>
-        <AppRouter />
-        <h1>Product Catalog</h1>
+    <div className={classNames(cls.app, theme)}>
+      <Suspense fallback="LOADING">
+        <Header />
+        <Page>
+          <AppRouter />
+        </Page>
+        <Footer />
       </Suspense>
     </div>
   );

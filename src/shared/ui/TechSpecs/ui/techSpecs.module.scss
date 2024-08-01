@@ -1,0 +1,35 @@
+@import '../../../../shared/styles/common/mixins';
+@import '../../../../shared/styles/vars/global';
+
+.techSpecs {
+  display: flex;
+  flex-direction: column;
+  row-gap: rem(8);
+  width: 100%;
+
+  .techSpecs__item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: rem(10);
+
+    line-height: 150%;
+    font-weight: 500;
+  }
+
+  .techSpecs__name {
+    color: var(--secondary-color);
+  }
+
+  .techSpecs__value {
+    color: var(--primary-color);
+  }
+
+  .size_s {
+    font-size: rem(12);
+  }
+
+  .size_m {
+    font-size: rem(14);
+  }
+}

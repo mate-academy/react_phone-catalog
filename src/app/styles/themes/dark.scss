@@ -1,5 +1,23 @@
 .app_dark_theme {
-  --primary-color: #313237;
+  --primary-color: #F1F2F9;
   --secondary-color: #75767F;
-  --bg-color: black;
+  --main-bg: #0f1121;
+  --secondary-elements: #3b3e4a;
+
+  // buttons
+  --button-primary-text: #f1f2f9;
+  --accent: #905bff;
+  --border-buttons-default: transparent;
+  --border-buttons-hover: transparent;
+  --bg-buttons-default: #323542;
+  --bg-buttons-hover: #4a4d58;
+  --button-text-color-disabled: #4a4d58;
+
+  // card
+  --border-card: transparent;
+  --bg-card: #161827;
+
+  // select
+  --select-border: transparent;
+  --select-icons: #75767f;
 }

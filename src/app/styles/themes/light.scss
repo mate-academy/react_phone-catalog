@@ -1,5 +1,24 @@
 :root {
   --primary-color: #313237;
   --secondary-color: #89939A;
-  --bg-color: grey;
+  --main-bg: #fff;
+  --secondary-elements: #e2e6e9;
+
+  // ui-buttons
+  --button-primary-text: #fff;
+  --accent: #313237;
+  --border-buttons-default: #b4bdc3;
+  --border-buttons-hover: #313237;
+  --bg-buttons-default: transparent;
+  --bg-buttons-hover: transparent;
+  --bg-buttons-disabled: transparent;
+  --button-text-color-disabled: #b4bdc3;
+
+  // card
+  --border-card: #e2e6e9;
+  --bg-card: transparent;
+
+  // ui
+  --select-border: #b4bdc3;
+  --select-icons: #b4bdc3;
 }

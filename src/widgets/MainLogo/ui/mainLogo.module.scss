@@ -1,0 +1,14 @@
+@import '../../../shared/styles/common/mixins';
+@import '../../../shared/styles/vars/global';
+
+.mainLogo {
+  height: 100%;
+  width: fit-content;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width:$tablet) {
+    width: rem(128);
+  }
+}
