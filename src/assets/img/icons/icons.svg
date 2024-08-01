@@ -55,4 +55,8 @@
     <circle cx="21" cy="7" r="6.5" fill="#EB5757" stroke="white"></circle>
     <path d="M17.3015 4.34833V5.23033H18.3635V10.3333H19.3175V4.34833H17.3015ZM22.3034 9.41533C24.0494 7.46233 24.3554 6.82333 24.3554 6.03133C24.3554 4.97833 23.5814 4.24033 22.4744 4.24033C21.3314 4.24033 20.5664 4.96933 20.5664 6.04033V6.18433H21.5384V6.04933C21.5384 5.51833 21.9164 5.15833 22.4744 5.15833C23.0144 5.15833 23.3744 5.50933 23.3744 6.04033C23.3744 6.72433 23.0594 7.21933 20.4404 10.0723V10.3333H24.5354V9.41533H22.3034Z" fill="white"></path>
   </symbol> -->
+  <symbol width="32" height="32" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg" id='icon-color'>
+    <rect x="2" y="2" width="28" height="28" rx="14" fill="#FCDBC1" stroke="white" stroke-width="2" id='icon-color-center'/>
+    <rect x="0.5" y="0.5" width="31" height="31" rx="15.5" stroke="#E2E6E9" id='icon-color-border'/>
+  </symbol>
 </svg>

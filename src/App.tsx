@@ -6,9 +6,10 @@ import { SideMenu } from './components/SideMenu';
 import { HomePage } from './pages/HomePage';
 import { useState } from 'react';
 import { ProductPage } from './pages/ProductPage';
+import { ProductDetailsPage } from './pages/ProductDetailsPage';
 
 export const App = () => {
-  const [page, setPage] = useState('home');
+  const [page, setPage] = useState('details');
 
   return (
     <div className="App">
@@ -20,6 +21,7 @@ export const App = () => {
       <div className="container">
         {page === 'home' && <HomePage />}
         {page === 'phones' && <ProductPage />}
+        {page === 'details' && <ProductDetailsPage />}
       </div>
 
       <Footer />
