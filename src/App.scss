@@ -1,4 +1,4 @@
-@import './utils/utils';
+@import './styles/index';
 
 @font-face {
   font-family: Mont;
@@ -34,6 +34,13 @@ body {
   font-family: Mont, sans-serif;
   font-weight: normal;
   color: $primary-color;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1136px;
+  padding: 0 20px;
+  height: auto;
 }
 
 a {
