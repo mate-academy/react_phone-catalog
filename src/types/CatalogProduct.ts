@@ -3,7 +3,7 @@ interface Description {
   text: string[];
 }
 
-export interface Product {
+export interface CatalogProduct {
   id: string;
   category: string;
   namespaceId: string;

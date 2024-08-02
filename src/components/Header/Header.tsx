@@ -1,5 +1,9 @@
+import { useContext } from 'react';
 import { NavLink, Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { AppContext } from '../../Root';
+import { StorageItem } from '../../types/StorageItem';
+import { countItems } from '../../utils/countItems';
 import { scrollToTop } from '../../utils/scrollToTop';
 import styles from './Header.module.scss';
 
@@ -20,8 +24,14 @@ const addIconCartLinkClass: AddClass = ({ isActive }) =>
     [styles.iconLinkActive]: isActive,
   });
 
+export const addIconCounterClass = (items: StorageItem[]): string =>
+  classNames(styles.iconCounter, {
+    [styles.hidden]: !items.length,
+  });
+
 export const Header = () => {
   const { pathname } = useLocation();
+  const { favouritesItems, cartItems } = useContext(AppContext);
 
   return (
     <div className={styles.header}>
@@ -67,7 +77,9 @@ export const Header = () => {
 
         <div className={classNames(styles.icon, styles.iconHeart)}>
           <NavLink className={addIconHeartLinkClass} to="/favourites">
-            <div className={classNames(styles.iconCounter)}>5</div>
+            <div className={addIconCounterClass(favouritesItems)}>
+              {countItems(favouritesItems)}
+            </div>
           </NavLink>
         </div>
 
@@ -75,8 +87,8 @@ export const Header = () => {
 
         <div className={classNames(styles.icon, styles.iconCart)}>
           <NavLink className={addIconCartLinkClass} to="/cart">
-            <div className={classNames(styles.iconCounter, styles.hidden)}>
-              5
+            <div className={addIconCounterClass(cartItems)}>
+              {countItems(cartItems)}
             </div>
           </NavLink>
         </div>

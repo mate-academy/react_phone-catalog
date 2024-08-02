@@ -1,5 +1,5 @@
-import { Product } from '../types/Product';
 import { SliderProduct } from '../types/SliderProduct';
+import { CatalogProduct } from '../types/CatalogProduct';
 
 const BASE_URL = '/api';
 
@@ -21,18 +21,18 @@ function getData<T>(url: string): Promise<T> {
     });
 }
 
-export function getSliderProducts() {
+export function getProducts() {
   return getData<SliderProduct[]>('/products.json');
 }
 
 export function getPhones() {
-  return getData<Product[]>('/phones.json');
+  return getData<CatalogProduct[]>('/phones.json');
 }
 
 export function getTablets() {
-  return getData<Product[]>('/tablets.json');
+  return getData<CatalogProduct[]>('/tablets.json');
 }
 
 export function getAccessories() {
-  return getData<Product[]>('/accessories.json');
+  return getData<CatalogProduct[]>('/accessories.json');
 }

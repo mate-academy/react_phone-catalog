@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import classNames from 'classnames';
-import { getAccessories, getPhones, getTablets } from '../../utils/fetchClient';
+import { getAccessories, getPhones, getTablets } from '../../api/fetchClient';
 import styles from './ShopByCategory.module.scss';
 
 export const ShopByCategory = () => {

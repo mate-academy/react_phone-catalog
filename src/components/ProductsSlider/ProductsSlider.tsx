@@ -9,10 +9,7 @@ import styles from './ProductsSlider.module.scss';
 interface Props {
   title: string;
   products: SliderProduct[];
-  loading: boolean;
-  errorMessage: string;
-  updateErrorMessage: (message: string) => void;
-  discountHidden?: boolean;
+  showFullPriceOnly?: boolean;
 }
 
 const CARD_WIDTH_MOBILE = 212;
@@ -26,16 +23,18 @@ const STEP_DESKTOP = 4;
 export const ProductsSlider: React.FC<Props> = ({
   title,
   products,
-  loading,
-  errorMessage,
-  updateErrorMessage,
-  discountHidden = false,
+  showFullPriceOnly = false,
 }) => {
   const [isPrevBtnDisabled, setIsPrevBtnDisabled] = useState<boolean>(true);
   const [isNextBtnDisabled, setIsNextBtnDisabled] = useState<boolean>(false);
-  const { setUpdatedAt } = useContext(AppContext);
+
+  const { productsLoading, productsError, setProductsError, setUpdatedAt } =
+    useContext(AppContext);
+
   const productsRef = useRef<HTMLDivElement | null>(null);
-  const isBtnDisabled = loading || !!errorMessage || products.length <= 1;
+
+  const isBtnDisabled =
+    productsLoading || !!productsError || products.length <= 1;
 
   const checkScrollExistence = useCallback(
     (slider: HTMLDivElement): boolean => {
@@ -68,8 +67,8 @@ export const ProductsSlider: React.FC<Props> = ({
 
   const reload = useCallback(() => {
     setUpdatedAt(new Date());
-    updateErrorMessage('');
-  }, [setUpdatedAt, updateErrorMessage]);
+    setProductsError('');
+  }, [setUpdatedAt, setProductsError]);
 
   const handleBtnPrevClick = useCallback(() => {
     if (!productsRef.current) {
@@ -164,7 +163,7 @@ export const ProductsSlider: React.FC<Props> = ({
       setIsPrevBtnDisabled(true);
       setIsNextBtnDisabled(true);
     }
-  }, [loading, checkScrollExistence]);
+  }, [productsLoading, checkScrollExistence]);
 
   return (
     <div>
@@ -188,7 +187,7 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       </div>
 
-      {loading && (
+      {productsLoading && (
         <div className={styles.products}>
           {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(n => (
             <SkeletonCard key={n} />
@@ -196,10 +195,10 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!loading && errorMessage && (
+      {!productsLoading && productsError && (
         <div className={styles.notificationBlock}>
           <div className={styles.notificationContent}>
-            <p className={styles.notificationMessage}>{errorMessage}</p>
+            <p className={styles.notificationMessage}>{productsError}</p>
             <button className={styles.reloadBtn} onClick={reload}>
               Reload
             </button>
@@ -207,7 +206,7 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!loading && !errorMessage && !products.length && (
+      {!productsLoading && !productsError && !products.length && (
         <div className={styles.notificationBlock}>
           <div className={styles.notificationContent}>
             <p className={styles.notificationMessage}>
@@ -217,13 +216,13 @@ export const ProductsSlider: React.FC<Props> = ({
         </div>
       )}
 
-      {!loading && !errorMessage && !!products.length && (
+      {!productsLoading && !productsError && !!products.length && (
         <div ref={productsRef} className={styles.products}>
           {products.map(product => (
             <ProductCard
               key={product.id}
               product={product}
-              discountHidden={discountHidden}
+              showFullPriceOnly={showFullPriceOnly}
             />
           ))}
         </div>

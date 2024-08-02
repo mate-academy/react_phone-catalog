@@ -1,11 +1,15 @@
-import { useCallback } from 'react';
+import { useCallback, useContext } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import classNames from 'classnames';
+import { AppContext } from '../../Root';
+import { countItems } from '../../utils/countItems';
+import { addIconCounterClass } from '../Header';
 import styles from './Menu.module.scss';
 
 export const Menu = () => {
   const { state } = useLocation();
   const { pathname }: { pathname: string } = state;
+  const { favouritesItems, cartItems } = useContext(AppContext);
 
   const addNavLinkClass = useCallback(
     (defaultPath: string): string =>
@@ -83,7 +87,9 @@ export const Menu = () => {
       <div className={styles.bottomBarIcons}>
         <div className={classNames(styles.icon, styles.iconHeart)}>
           <Link className={addIconLinkHeartClass()} to="/favourites">
-            <div className={classNames(styles.iconCounter)}>5</div>
+            <div className={addIconCounterClass(favouritesItems)}>
+              {countItems(favouritesItems)}
+            </div>
           </Link>
         </div>
 
@@ -91,8 +97,8 @@ export const Menu = () => {
 
         <div className={classNames(styles.icon, styles.iconCart)}>
           <Link className={addIconLinkCartClass()} to="/cart">
-            <div className={classNames(styles.iconCounter, styles.hidden)}>
-              5
+            <div className={addIconCounterClass(cartItems)}>
+              {countItems(cartItems)}
             </div>
           </Link>
         </div>
