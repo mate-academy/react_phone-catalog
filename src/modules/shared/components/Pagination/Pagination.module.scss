@@ -15,10 +15,10 @@
 
 .paginationList {
   display: flex;
+  flex-flow: wrap;
   flex-direction: row;
   gap: 8px;
   list-style: none;
-  flex-wrap: wrap;
 }
 
 .listItem {
