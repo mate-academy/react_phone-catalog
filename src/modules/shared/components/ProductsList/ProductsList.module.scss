@@ -4,5 +4,31 @@
 @import '../../animations';
 
 .productsList {
-  display: flex;
+  grid-column: 1 / -1;
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat($grid-columns, 32px);
+  padding-top: 24px;
+  row-gap: 40px;
 }
+
+.productCard {
+  grid-column: span 6;
+}
+
+@include on-tablet {
+  .productsList {
+    grid-template-columns: repeat($grid-columns-tablet, 32px);
+  }
+}
+
+@include on-mobile {
+  .productsList {
+    grid-template-columns: repeat($grid-columns-mobile, 60px);
+  }
+
+  .productCard {
+    grid-column: span 4;
+  }
+}
+

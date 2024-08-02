@@ -16,12 +16,12 @@
   }
 }
 
-.phonesPageContainer {
+.accessoriesPageContainer {
   align-self: center;
   min-height: 100vh;
 }
 
-.phonesPage {
+.accessoriesPage {
   align-self: center;
   display: grid;
   column-gap: 16px;
@@ -248,7 +248,7 @@ svg {
 }
 
 @include on-mobile {
-  .phonesPage {
+  .accessoriesPage {
     grid-template-columns: repeat($grid-columns-mobile, 60px);
   }
 

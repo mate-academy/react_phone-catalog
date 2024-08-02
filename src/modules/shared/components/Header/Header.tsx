@@ -31,7 +31,7 @@ export const Header = () => {
               phones
             </Link>
             <Link
-              to="#"
+              to="/tablets"
               className={classNames(styles.navBtn, {
                 [styles.isActiveMenu]: pathname === '/tablets',
               })}
@@ -39,7 +39,7 @@ export const Header = () => {
               tablets
             </Link>
             <Link
-              to="#"
+              to="/accessories"
               className={classNames(styles.navBtn, {
                 [styles.isActiveMenu]: pathname === '/accessories',
               })}

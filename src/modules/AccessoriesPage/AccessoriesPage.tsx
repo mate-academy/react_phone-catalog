@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Select, { StylesConfig } from 'react-select';
-import styles from './PhonesPage.module.scss';
+import styles from './AccessoriesPage.module.scss';
 import { ProductsList } from '../shared/components/ProductsList';
 import { Link } from 'react-router-dom';
 import { getProducts } from '../shared/api';
@@ -36,8 +36,8 @@ const customStyles: StylesConfig = {
   }),
 };
 
-export const PhonesPage = () => {
-  const [phones, setPhones] = useState<Product[]>([]);
+export const AccessoriesPage = () => {
+  const [accessories, setAccessories] = useState<Product[]>([]);
   const [preparedProducts, setPreparedProducts] = useState<Product[]>([]);
   const [errorMessage, setErrorMessage] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -89,9 +89,10 @@ export const PhonesPage = () => {
 
     getProducts()
       .then(responce => {
-        setPhones(
+        setAccessories(
           responce.filter(
-            (product: { category: string }) => product.category === 'phones',
+            (product: { category: string }) =>
+              product.category === 'accessories',
           ),
         );
       })
@@ -102,7 +103,7 @@ export const PhonesPage = () => {
   }, []);
 
   useEffect(() => {
-    let sortedPhones = [...phones];
+    let sortedPhones = [...accessories];
 
     if (sort === 'age') {
       sortedPhones = sortedPhones.sort((a, b) => b.year - a.year);
@@ -113,7 +114,7 @@ export const PhonesPage = () => {
     }
 
     setPreparedProducts(sortedPhones);
-  }, [phones, sort]);
+  }, [accessories, sort]);
 
   const lastProductsIndex = +currentPage * +perPage;
   const firstProductsIdex = lastProductsIndex - +perPage;
@@ -157,19 +158,19 @@ export const PhonesPage = () => {
       </button>
     </div>
   ) : (
-    <div className={styles.phonesPageContainer}>
-      <div className={styles.phonesPage}>
+    <div className={styles.accessoriesPageContainer}>
+      <div className={styles.accessoriesPage}>
         <div className={styles.path}>
           <Link to="/" className={styles.homeLink}>
             <div className={styles.pathHome}></div>
           </Link>
 
           <div className={styles.pathSeparator}></div>
-          <p className={styles.pathName}>Phones</p>
+          <p className={styles.pathName}>Accessories</p>
         </div>
 
-        <h1 className={styles.title}>Mobile phones</h1>
-        <p className={styles.counter}>{phones.length} models</p>
+        <h1 className={styles.title}>Accessories</h1>
+        <p className={styles.counter}>{accessories.length} models</p>
 
         <div className={styles.dropDowns}>
           <div className={styles.dropDownContainerSortBy}>
@@ -203,8 +204,10 @@ export const PhonesPage = () => {
               alt="loader animation"
             />
           </div>
-        ) : phones.length === 0 ? (
-          <h1 className={styles.noProductsMessage}>There are no phones yet</h1>
+        ) : accessories.length === 0 ? (
+          <h1 className={styles.noProductsMessage}>
+            There are no accessories yet
+          </h1>
         ) : (
           <>
             <ProductsList products={currentProduct} />
