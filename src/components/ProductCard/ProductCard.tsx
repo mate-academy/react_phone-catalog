@@ -7,11 +7,13 @@ import styles from './ProductCard.module.scss';
 
 interface Props {
   product: StorageProduct;
+  sliderCard?: boolean;
   showFullPriceOnly?: boolean;
 }
 
 export const ProductCard: React.FC<Props> = ({
   product,
+  sliderCard = false,
   showFullPriceOnly = false,
 }) => {
   const { itemId, name, fullPrice, price, screen, capacity, ram, image } =
@@ -19,7 +21,7 @@ export const ProductCard: React.FC<Props> = ({
 
   const noDiscount = fullPrice === price;
 
-  const { favouritesItems, setFavouritesItems, cartItems, setCartItems } =
+  const { favoritesItems, setFavoritesItems, cartItems, setCartItems } =
     useContext(AppContext);
 
   const isProductInCart = useMemo(
@@ -30,12 +32,12 @@ export const ProductCard: React.FC<Props> = ({
     [cartItems, itemId],
   );
 
-  const isProductInFavourites = useMemo(
+  const isProductInFavorites = useMemo(
     () =>
-      favouritesItems.some(
-        ({ product: favouritesProduct }) => favouritesProduct.itemId === itemId,
+      favoritesItems.some(
+        ({ product: favoritesProduct }) => favoritesProduct.itemId === itemId,
       ),
-    [favouritesItems, itemId],
+    [favoritesItems, itemId],
   );
 
   const handleAddToCartClick = useCallback(() => {
@@ -64,34 +66,38 @@ export const ProductCard: React.FC<Props> = ({
     setCartItems,
   ]);
 
-  const handleAddToFavourites = useCallback(() => {
-    if (!isProductInFavourites) {
+  const handleAddToFavorites = useCallback(() => {
+    if (!isProductInFavorites) {
       const newItem: StorageItem = {
         id: +new Date(),
         quantity: 1,
         product,
       };
 
-      setFavouritesItems([...favouritesItems, newItem]);
+      setFavoritesItems([...favoritesItems, newItem]);
 
       return;
     }
 
-    setFavouritesItems(
-      favouritesItems.filter(
-        ({ product: favouritesProduct }) => favouritesProduct.itemId !== itemId,
+    setFavoritesItems(
+      favoritesItems.filter(
+        ({ product: favoritesProduct }) => favoritesProduct.itemId !== itemId,
       ),
     );
   }, [
     product,
     itemId,
-    isProductInFavourites,
-    favouritesItems,
-    setFavouritesItems,
+    isProductInFavorites,
+    favoritesItems,
+    setFavoritesItems,
   ]);
 
   return (
-    <div className={styles.productCard}>
+    <div
+      className={classNames(styles.productCard, {
+        [styles.sliderCard]: sliderCard,
+      })}
+    >
       <div className={styles.imgWrapper}>
         <img className={styles.img} src={image} alt={itemId} />
       </div>
@@ -139,10 +145,10 @@ export const ProductCard: React.FC<Props> = ({
         />
         <button
           type="button"
-          className={classNames(styles.btnToFavourites, {
-            [styles.btnToFavouritesSelected]: isProductInFavourites,
+          className={classNames(styles.btnToFavorites, {
+            [styles.btnToFavoritesSelected]: isProductInFavorites,
           })}
-          onClick={handleAddToFavourites}
+          onClick={handleAddToFavorites}
         />
       </div>
     </div>

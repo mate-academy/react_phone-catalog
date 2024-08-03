@@ -108,17 +108,17 @@
 
 .notificationContent {
   box-sizing: border-box;
-  height: $card-height-mob;
+  height: $slider-height-mob;
   border: 1px solid $main-border-color;
   padding: 24px;
 
   @include on-tablet {
-    height: $card-height-tablet;
+    height: $slider-height-tablet;
     padding: 32px;
   }
 
   @include on-desktop {
-    height: $card-height-desktop;
+    height: $slider-height-desktop;
   }
 
   display: flex;

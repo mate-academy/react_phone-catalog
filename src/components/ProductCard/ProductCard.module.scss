@@ -5,28 +5,36 @@
   flex-shrink: 0;
 
   box-sizing: border-box;
-  width: 212px;
-  height: $card-height-mob;
+  width: 100%;
+  height: 440px;
   padding: 32px;
   border: 1px solid $main-border-color;
   background-color: $white-color;
+  box-shadow: none;
 
   display: flex;
   flex-direction: column;
   gap: 8px;
 
-  box-shadow: none;
-
   @include on-hover(box-shadow, 0 2px 16px 0 #0000001a);
 
   @include on-tablet {
+    height: 506px;
+  }
+}
+
+.sliderCard {
+  width: 212px;
+  height: $slider-height-mob;
+
+  @include on-tablet {
     width: 237px;
-    height: $card-height-tablet;
+    height: $slider-height-tablet;
   }
 
   @include on-desktop {
     width: 272px;
-    height: $card-height-desktop;
+    height: $slider-height-desktop;
   }
 }
 
@@ -159,7 +167,7 @@
   }
 }
 
-.btnToFavourites {
+.btnToFavorites {
   box-sizing: border-box;
   width: 40px;
   height: 40px;
@@ -175,6 +183,6 @@
   @include on-hover(border-color, $primary-color);
 }
 
-.btnToFavouritesSelected {
+.btnToFavoritesSelected {
   background-image: url(../../../public/img/icons/icon-heart-selected.svg);
 }

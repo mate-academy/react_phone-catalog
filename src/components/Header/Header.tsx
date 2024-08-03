@@ -1,37 +1,19 @@
 import { useContext } from 'react';
-import { NavLink, Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
 import { AppContext } from '../../Root';
-import { StorageItem } from '../../types/StorageItem';
-import { countItems } from '../../utils/countItems';
+import { AddActiveClass } from '../../types/AddActiveClass';
 import { scrollToTop } from '../../utils/scrollToTop';
+import { BarIcons } from '../BarIcons';
 import styles from './Header.module.scss';
 
-type AddClass = (param: { isActive: boolean }) => string;
-
-const addNavLinkClass: AddClass = ({ isActive }) =>
+const addNavLinkClass: AddActiveClass = ({ isActive }) =>
   classNames(styles.navLink, {
     [styles.navLinkActive]: isActive,
   });
 
-const addIconHeartLinkClass: AddClass = ({ isActive }) =>
-  classNames(styles.iconLink, styles.iconLinkHeart, {
-    [styles.iconLinkActive]: isActive,
-  });
-
-const addIconCartLinkClass: AddClass = ({ isActive }) =>
-  classNames(styles.iconLink, styles.iconLinkCart, {
-    [styles.iconLinkActive]: isActive,
-  });
-
-export const addIconCounterClass = (items: StorageItem[]): string =>
-  classNames(styles.iconCounter, {
-    [styles.hidden]: !items.length,
-  });
-
 export const Header = () => {
-  const { pathname } = useLocation();
-  const { favouritesItems, cartItems } = useContext(AppContext);
+  const { setIsMenuActive } = useContext(AppContext);
 
   return (
     <div className={styles.header}>
@@ -73,33 +55,17 @@ export const Header = () => {
       </div>
 
       <div className={styles.contentRight}>
-        <div className={styles.verticalLine1}></div>
+        <div className={styles.verticalLine}></div>
 
-        <div className={classNames(styles.icon, styles.iconHeart)}>
-          <NavLink className={addIconHeartLinkClass} to="/favourites">
-            <div className={addIconCounterClass(favouritesItems)}>
-              {countItems(favouritesItems)}
-            </div>
-          </NavLink>
+        <div className={styles.headerBarIcons}>
+          <BarIcons />
         </div>
 
-        <div className={styles.verticalLine2}></div>
-
-        <div className={classNames(styles.icon, styles.iconCart)}>
-          <NavLink className={addIconCartLinkClass} to="/cart">
-            <div className={addIconCounterClass(cartItems)}>
-              {countItems(cartItems)}
-            </div>
-          </NavLink>
-        </div>
-
-        <div className={classNames(styles.icon, styles.iconMenu)}>
-          <Link
-            className={classNames(styles.iconLink, styles.iconLinkMenu)}
-            to="/menu"
-            state={{ pathname }}
-          />
-        </div>
+        <button
+          type="button"
+          className={styles.btnMenu}
+          onClick={() => setIsMenuActive(true)}
+        />
       </div>
     </div>
   );

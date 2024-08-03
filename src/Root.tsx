@@ -6,9 +6,9 @@ import { SliderProduct } from './types/SliderProduct';
 import { StorageItem } from './types/StorageItem';
 import { App } from './App';
 import { HomePage } from './components/HomePage';
-import { Menu } from './components/Menu';
-import { NotFoundPage } from './components/NotFoundPage';
+import { Favorites } from './components/Favorites';
 import { ShoppingCart } from './components/ShoppingCart';
+import { NotFoundPage } from './components/NotFoundPage';
 
 interface Context {
   products: SliderProduct[];
@@ -19,10 +19,12 @@ interface Context {
   setProductsError: (v: string) => void;
   cartItems: StorageItem[];
   setCartItems: (v: StorageItem[]) => void;
-  favouritesItems: StorageItem[];
-  setFavouritesItems: (v: StorageItem[]) => void;
+  favoritesItems: StorageItem[];
+  setFavoritesItems: (v: StorageItem[]) => void;
   updatedAt: Date;
-  setUpdatedAt: (date: Date) => void;
+  setUpdatedAt: (v: Date) => void;
+  isMenuActive: boolean;
+  setIsMenuActive: (v: boolean) => void;
 }
 
 export const AppContext = createContext<Context>({
@@ -34,10 +36,12 @@ export const AppContext = createContext<Context>({
   setProductsError: () => {},
   cartItems: [],
   setCartItems: () => {},
-  favouritesItems: [],
-  setFavouritesItems: () => {},
+  favoritesItems: [],
+  setFavoritesItems: () => {},
   updatedAt: new Date(),
   setUpdatedAt: () => {},
+  isMenuActive: false,
+  setIsMenuActive: () => {},
 });
 
 export const Root = () => {
@@ -50,12 +54,13 @@ export const Root = () => {
     [],
   );
 
-  const [favouritesItems, setFavouritesItems] = useLocalStorage<StorageItem[]>(
-    'favouritesItems',
+  const [favoritesItems, setFavoritesItems] = useLocalStorage<StorageItem[]>(
+    'favoritesItems',
     [],
   );
 
   const [updatedAt, setUpdatedAt] = useState<Date>(new Date());
+  const [isMenuActive, setIsMenuActive] = useState<boolean>(false);
 
   const data = {
     products,
@@ -66,10 +71,12 @@ export const Root = () => {
     setProductsError,
     cartItems,
     setCartItems,
-    favouritesItems,
-    setFavouritesItems,
+    favoritesItems,
+    setFavoritesItems,
     updatedAt,
     setUpdatedAt,
+    isMenuActive,
+    setIsMenuActive,
   };
 
   useEffect(() => {
@@ -87,11 +94,10 @@ export const Root = () => {
         <Routes>
           <Route path="/" element={<App />}>
             <Route index element={<HomePage />} />
+            <Route path="/favorites" element={<Favorites />} />
             <Route path="/cart" element={<ShoppingCart />} />
             <Route path="*" element={<NotFoundPage />} />
           </Route>
-
-          <Route path="/menu" element={<Menu />} />
         </Routes>
       </HashRouter>
     </AppContext.Provider>

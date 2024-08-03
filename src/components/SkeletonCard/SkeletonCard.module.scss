@@ -6,7 +6,7 @@
 
   box-sizing: border-box;
   width: 212px;
-  height: $card-height-mob;
+  height: $slider-height-mob;
   padding: 32px;
   border: 1px solid $main-border-color;
   background-color: $white-color;
@@ -17,12 +17,12 @@
 
   @include on-tablet {
     width: 237px;
-    height: $card-height-tablet;
+    height: $slider-height-tablet;
   }
 
   @include on-desktop {
     width: 272px;
-    height: $card-height-desktop;
+    height: $slider-height-desktop;
   }
 }
 

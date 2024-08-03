@@ -1,7 +1,7 @@
 import { useCallback, useContext, useEffect, useRef, useState } from 'react';
 import classNames from 'classnames';
-import { SliderProduct } from '../../types/SliderProduct';
 import { AppContext } from '../../Root';
+import { SliderProduct } from '../../types/SliderProduct';
 import { ProductCard } from '../ProductCard';
 import { SkeletonCard } from '../SkeletonCard';
 import styles from './ProductsSlider.module.scss';
@@ -32,6 +32,7 @@ export const ProductsSlider: React.FC<Props> = ({
     useContext(AppContext);
 
   const productsRef = useRef<HTMLDivElement | null>(null);
+  const resizeTimeoutId = useRef<number>(0);
 
   const isBtnDisabled =
     productsLoading || !!productsError || products.length <= 1;
@@ -46,7 +47,7 @@ export const ProductsSlider: React.FC<Props> = ({
     [],
   );
 
-  window.addEventListener('resize', () => {
+  const resizeWindow = useCallback(() => {
     if (!productsRef.current) {
       return;
     }
@@ -63,6 +64,11 @@ export const ProductsSlider: React.FC<Props> = ({
     productsRef.current.scrollLeft = 0;
     setIsPrevBtnDisabled(true);
     setIsNextBtnDisabled(false);
+  }, [checkScrollExistence]);
+
+  window.addEventListener('resize', () => {
+    window.clearTimeout(resizeTimeoutId.current);
+    resizeTimeoutId.current = window.setTimeout(resizeWindow, 200);
   });
 
   const reload = useCallback(() => {
@@ -222,6 +228,7 @@ export const ProductsSlider: React.FC<Props> = ({
             <ProductCard
               key={product.id}
               product={product}
+              sliderCard={true}
               showFullPriceOnly={showFullPriceOnly}
             />
           ))}

@@ -1,6 +1,6 @@
+@import './styles/fonts';
 @import './styles/vars';
 @import './styles/mixins';
-@import './styles/fonts';
 
 html {
   font-family: Mont, Arial, Helvetica, sans-serif;
@@ -11,9 +11,19 @@ html {
 
   background-color: $white-color;
   scroll-behavior: smooth;
+
+  &:has(.menu-active) {
+    overflow: hidden;
+  }
 }
 
 body {
   margin: 0;
   min-width: 320px;
+}
+
+.menu-active {
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0);
 }

@@ -1,107 +1,92 @@
 import { useCallback, useContext } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import classNames from 'classnames';
+import { AddActiveClass } from '../../types/AddActiveClass';
 import { AppContext } from '../../Root';
-import { countItems } from '../../utils/countItems';
-import { addIconCounterClass } from '../Header';
+import { BarIcons } from '../BarIcons';
 import styles from './Menu.module.scss';
 
+const addNavLinkClass: AddActiveClass = ({ isActive }) =>
+  classNames(styles.navLink, {
+    [styles.navLinkActive]: isActive,
+  });
+
 export const Menu = () => {
-  const { state } = useLocation();
-  const { pathname }: { pathname: string } = state;
-  const { favouritesItems, cartItems } = useContext(AppContext);
+  const { isMenuActive, setIsMenuActive } = useContext(AppContext);
 
-  const addNavLinkClass = useCallback(
-    (defaultPath: string): string =>
-      classNames(styles.navLink, {
-        [styles.navLinkActive]: pathname === defaultPath,
-      }),
-    [pathname],
-  );
-
-  const addIconLinkHeartClass = useCallback(
-    (): string =>
-      classNames(styles.iconLink, styles.iconLinkHeart, {
-        [styles.iconLinkActive]: pathname === '/favourites',
-      }),
-    [pathname],
-  );
-
-  const addIconLinkCartClass = useCallback(
-    () =>
-      classNames(styles.iconLink, styles.iconLinkCart, {
-        [styles.iconLinkActive]: pathname === '/cart',
-      }),
-    [pathname],
+  const closeMenu = useCallback(
+    () => setIsMenuActive(false),
+    [setIsMenuActive],
   );
 
   return (
-    <div className={styles.menu}>
+    <div className={classNames(styles.menu, { 'menu-active': isMenuActive })}>
       <div>
         <div className={styles.topBar}>
           <div className={styles.logo}>
-            <Link className={styles.logoLink} to={pathname}>
+            <button
+              type="button"
+              className={styles.logoBtn}
+              onClick={closeMenu}
+            >
               <img
                 className={styles.logoImg}
                 src="img/icons/logo.svg"
                 alt="Logo"
               />
-            </Link>
+            </button>
           </div>
 
-          <div className={styles.iconClose}>
-            <div className={styles.topVerticalLine}></div>
-            <Link className={classNames(styles.iconCloseLink)} to={pathname} />
+          <div className={styles.closeIcon}>
+            <div className={styles.topVerticalLine} />
+            <button
+              type="button"
+              className={classNames(styles.btnClose)}
+              onClick={closeMenu}
+            />
           </div>
         </div>
 
         <nav className={styles.nav}>
           <ul className={styles.navList}>
             <li>
-              <Link className={addNavLinkClass('/')} to="/">
+              <NavLink to="/" className={addNavLinkClass} onClick={closeMenu}>
                 home
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className={addNavLinkClass('/phones')} to="/phones">
+              <NavLink
+                to="/phones"
+                className={addNavLinkClass}
+                onClick={closeMenu}
+              >
                 phones
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link className={addNavLinkClass('/tablets')} to="/tablets">
+              <NavLink
+                to="/tablets"
+                className={addNavLinkClass}
+                onClick={closeMenu}
+              >
                 tablets
-              </Link>
+              </NavLink>
             </li>
             <li>
-              <Link
-                className={addNavLinkClass('/accessories')}
+              <NavLink
                 to="/accessories"
+                className={addNavLinkClass}
+                onClick={closeMenu}
               >
                 accessories
-              </Link>
+              </NavLink>
             </li>
           </ul>
         </nav>
       </div>
 
       <div className={styles.bottomBarIcons}>
-        <div className={classNames(styles.icon, styles.iconHeart)}>
-          <Link className={addIconLinkHeartClass()} to="/favourites">
-            <div className={addIconCounterClass(favouritesItems)}>
-              {countItems(favouritesItems)}
-            </div>
-          </Link>
-        </div>
-
-        <div className={styles.bottomVerticalLine}></div>
-
-        <div className={classNames(styles.icon, styles.iconCart)}>
-          <Link className={addIconLinkCartClass()} to="/cart">
-            <div className={addIconCounterClass(cartItems)}>
-              {countItems(cartItems)}
-            </div>
-          </Link>
-        </div>
+        <BarIcons />
       </div>
     </div>
   );
