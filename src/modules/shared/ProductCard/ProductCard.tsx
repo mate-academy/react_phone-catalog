@@ -1,12 +1,14 @@
+/* eslint-disable max-len */
 import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
   setAddToCart,
-  setAddToFavourite,
-  setDeleteFromFavourite,
+  setAddTofavorite,
+  setDeleteFromfavorite,
 } from '../../../features/chosenItemsSlice';
 import { useEffect, useState } from 'react';
+import { initializeCartNumberOfItems } from '../../../features/pagesDetailsSlice';
 
 type Props = {
   gadget: Product;
@@ -18,30 +20,67 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
 
   const dispatch = useAppDispatch();
 
-  const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
+  const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
 
   useEffect(() => {
-    if (!favouritesArray.some(obj => obj.id === gadget.id)) {
+    if (!favoritesArray.some(obj => obj.id === gadget.id)) {
       setHeartIco('./icons/heart-ico.svg');
     } else {
       setHeartIco('./icons/heart-red-ico.svg');
     }
-  }, [favouritesArray, gadget]);
+
+    if (!cartArray.some(obj => obj.id === gadget.id)) {
+      setIsinCart(false);
+    } else {
+      setIsinCart(true);
+    }
+  }, [favoritesArray, gadget]);
 
   const handleheartIco = () => {
-    if (!favouritesArray.some(obj => obj.id === gadget.id)) {
-      dispatch(setAddToFavourite(gadget));
-      setHeartIco('./icons/heart-red-ico.svg');
+    if (!favoritesArray.some(obj => obj.id === gadget.id)) {
+      localStorage.setItem(
+        'favorite',
+        JSON.stringify(favoritesArray.concat(gadget)),
+      );
+
+      dispatch(setAddTofavorite(gadget));
     } else {
-      dispatch(setDeleteFromFavourite(gadget));
-      setHeartIco('./icons/heart-ico.svg');
+      const favString = localStorage.getItem('favorite');
+
+      if (favString) {
+        const favArray = JSON.parse(favString);
+
+        const newFavorite: Product[] = [];
+
+        for (const obj of favArray) {
+          if (obj.id !== gadget.id) {
+            newFavorite.push(obj);
+          }
+        }
+
+        localStorage.setItem('favorite', JSON.stringify(newFavorite));
+      }
+
+      dispatch(setDeleteFromfavorite(gadget));
     }
   };
 
+  const cartNumbOfItems = useAppSelector(
+    state => state.pagesDetails.cartNumberOfItems,
+  );
+
   const handleAddToCart = () => {
     if (!cartArray.some(obj => obj.id === gadget.id)) {
+      const newObj = { ...cartNumbOfItems };
+
+      newObj[gadget.id] = 1;
+
+      dispatch(initializeCartNumberOfItems(gadget.id));
       dispatch(setAddToCart(gadget));
+      localStorage.setItem('cart', JSON.stringify(cartArray.concat(gadget)));
+      localStorage.setItem('cartNumberOfItems', JSON.stringify(newObj));
+
       setIsinCart(true);
     } else {
       setIsinCart(false);
@@ -89,16 +128,17 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
             onClick={handleAddToCart}
             className={`${styles.card__buttonAddToCatr} ${!isInCatr ? styles.add : styles.added}`}
           >
-            {isInCatr ? 'In the cart' : 'Add to cart'}
+            {isInCatr ? 'In your cart' : 'Add to cart'}
           </button>
+
           <button
             onClick={handleheartIco}
-            className={styles.card__buttonAddToFavourite}
+            className={styles.card__buttonAddTofavorite}
           >
             <img
-              className={styles.card__buttonAddFavouriteIcon}
+              className={styles.card__buttonAddfavoriteIcon}
               src={heartIco}
-              alt="add to favourites"
+              alt="add to favorites"
             />
           </button>
         </div>

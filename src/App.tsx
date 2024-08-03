@@ -13,21 +13,69 @@ import { fetchProductsAsync } from './features/fetchProductsSlice';
 import { setHidenMenuIco } from './features/iconsChangerSlice';
 import { setIsMenuShown } from './features/booleanSlice';
 import { HidenMenu } from './modules/HidenMenu/components';
+import {
+  setAddToCart,
+  setAddTofavorite,
+  setCleanCart,
+  setCleanFavorite,
+} from './features/chosenItemsSlice';
+import { Product } from './types/Product';
+import { CartNumberOfItems } from './types/PageDetails';
+import {
+  cleanCartNumberOfItems,
+  setCartNumberOfItems,
+} from './features/pagesDetailsSlice';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
+  const isMenu = useAppSelector(state => state.boolean.isMenuShown);
+  const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
+  const CLOSE_ICO = './icons/close-ico.svg';
 
   useEffect(() => {
     dispatch(fetchPhonesAsync());
     dispatch(fetchTablesAsync());
     dispatch(fetchAccessoriesAsync());
     dispatch(fetchProductsAsync());
+
+    const favString = localStorage.getItem('favorite');
+
+    if (favString) {
+      dispatch(setCleanFavorite());
+      const favArray = JSON.parse(favString);
+
+      for (const obj of favArray) {
+        dispatch(setAddTofavorite(obj));
+      }
+    }
+
+    const cartString = localStorage.getItem('cart');
+
+    if (cartString) {
+      dispatch(setCleanCart());
+      const cartArray: Product[] = JSON.parse(cartString);
+
+      for (const obj of cartArray) {
+        dispatch(setAddToCart(obj));
+      }
+    }
+
+    const cartNumberOfItemsString = localStorage.getItem('cartNumberOfItems');
+
+    if (cartNumberOfItemsString) {
+      dispatch(cleanCartNumberOfItems());
+      const cartNumberOfItemsObject: CartNumberOfItems = JSON.parse(
+        cartNumberOfItemsString,
+      );
+
+      dispatch(setCartNumberOfItems(cartNumberOfItemsObject));
+    }
   }, []);
 
   const hidenMenuIco = useAppSelector(state => state.iconsChanger.hidenMenuIco);
   const isMenuShown = useAppSelector(state => state.boolean.isMenuShown);
-  const favouritesArray = useAppSelector(state => state.chosenItems.favourite);
+  const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
 
   const handleMenuOrCloseButton = useCallback(() => {
@@ -38,9 +86,7 @@ export const App: React.FC = () => {
     });
 
     const newIco =
-      hidenMenuIco === './icons/burger-menu-ico.svg'
-        ? './icons/close-ico.svg'
-        : './icons/burger-menu-ico.svg';
+      hidenMenuIco === BURGER_MENU_ICO ? CLOSE_ICO : BURGER_MENU_ICO;
 
     dispatch(setHidenMenuIco(newIco));
   }, [hidenMenuIco, dispatch, isMenuShown]);
@@ -52,21 +98,24 @@ export const App: React.FC = () => {
     });
   };
 
+  const handleLogoClick = () => {
+    dispatch(setIsMenuShown(false));
+    dispatch(setHidenMenuIco(BURGER_MENU_ICO));
+  };
+
   return (
-    <div className={styles.app}>
+    <div className={`${styles.app} ${isMenu && styles.noScrol}`}>
       <HidenMenu />
 
       <header className={styles.header}>
         <div className={styles.header__left}>
-          <div className={styles.header__logo}>
-            <Link className={styles.header__logoLink} to="/">
-              <img
-                className={styles.header__logoImg}
-                src="./icons/header-logo.png"
-                alt="logo"
-              />
-            </Link>
-          </div>
+          <Link
+            onClick={handleLogoClick}
+            className={styles.header__logo}
+            to="/"
+          >
+            <img src="./icons/header-logo.png" alt="logo" />
+          </Link>
 
           <nav className={styles.navBar}>
             <ul className={styles.navList}>
@@ -103,41 +152,33 @@ export const App: React.FC = () => {
 
         <div className={styles.icons}>
           <div
-            className={`${styles.icons__containerFavourite} ${styles.icons__container}`}
+            className={`${styles.icons__containerfavorite} ${styles.icons__container} ${location.pathname.includes('favorite') && styles.activeIco}`}
           >
-            {favouritesArray.length > 0 && (
+            {favoritesArray.length > 0 && (
               <div className={styles.redSpot}>
-                <p className={`${styles.redSpot__number}`}>
-                  {favouritesArray.length}
+                <p className={styles.redSpot__number}>
+                  {favoritesArray.length}
                 </p>
               </div>
             )}
-            <Link
-              className={`${styles.icons__link} ${location.pathname.includes('favorite') && styles.activeIco}`}
-              to="/favorites"
-            >
+            <Link className={styles.icons__link} to="/favorites">
               <img
                 className={styles.icons__icon}
                 src="./icons/heart-ico.svg"
-                alt="favourite"
+                alt="favorite"
               />
             </Link>
           </div>
 
           <div
-            className={`${styles.icons__containerBasket} ${styles.icons__container}`}
+            className={`${styles.icons__containerBasket} ${styles.icons__container} ${location.pathname.includes('cart') && styles.activeIco}`}
           >
             {cartArray.length > 0 && (
               <div className={styles.redSpot}>
-                <p className={`${styles.redSpot__number}`}>
-                  {cartArray.length}
-                </p>
+                <p className={styles.redSpot__number}>{cartArray.length}</p>
               </div>
             )}
-            <Link
-              className={`${styles.icons__link} ${location.pathname.includes('cart') && styles.activeIco}`}
-              to="/cart"
-            >
+            <Link className={styles.icons__link} to="/cart">
               <img
                 className={styles.icons__icon}
                 src="./icons/basket-ico.svg"

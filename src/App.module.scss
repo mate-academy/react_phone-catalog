@@ -86,12 +86,29 @@
     position: absolute;
     display: block;
     background-color: $primary-grey-color;
-    height: 6px;
+    height: 3px;
     width: 100%;
-    transform: translateY(21px);
+    transform: translateY(22.5px);
 
     @include on-desktop {
-      transform: translateY(29px);
+      transform: translateY(30.5px);
+    }
+  }
+}
+
+.activeIco {
+  color: $primary-grey-color;
+
+  &::after {
+    content: '';
+    position: absolute;
+    display: block;
+    background-color: $primary-grey-color;
+    height: 3px;
+    width: 100%;
+    transform: translateY(45px);
+    @include on-desktop {
+      transform: translateY(61px);
     }
   }
 }
@@ -111,7 +128,7 @@
     }
   }
 
-  &__containerFavourite {
+  &__containerfavorite {
     display: none;
 
     @include on-tablet {
@@ -261,27 +278,5 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-  }
-}
-
-.redSpot {
-  position: absolute;
-  bottom: 50%;
-  left: 50%;
-  border: 1px solid $white-color;
-  border-radius: 50%;
-  width: 14px;
-  height: 14px;
-  background-color: $red-color;
-  pointer-events: none;
-
-  &__number {
-    color: $white-color;
-    font-family: inherit;
-    font-size: 9px;
-    font-weight: 700;
-    line-height: 12px;
-    letter-spacing: 0%;
-    text-align: center;
   }
 }

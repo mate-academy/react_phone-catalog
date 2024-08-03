@@ -115,6 +115,10 @@
   }
 }
 
-.favourites {
+.favorites {
   border-right: solid $elements-grey-color 2px;
+}
+
+.hidenMenu:has(:target) {
+  overflow: hidden;
 }

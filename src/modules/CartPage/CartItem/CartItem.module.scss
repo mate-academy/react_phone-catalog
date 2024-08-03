@@ -1,0 +1,107 @@
+@import './../../shared/main';
+
+.item {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding: 16px;
+  border: 1px solid $elements-grey-color;
+  gap: 16px;
+
+  @include on-tablet {
+    padding: 24px;
+    flex-wrap: nowrap;
+  }
+
+  &__left {
+    width: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__right {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    @include on-tablet {
+      gap: 64px;
+      width: min-content;
+    }
+  }
+
+  &__deleteButton {
+    cursor: pointer;
+    margin-right: 16px;
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__image {
+    cursor: pointer;
+    width: 66px;
+    height: 66px;
+    padding: 7px;
+    margin-right: 16px;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+
+    @include on-tablet {
+      margin-right: 24px;
+    }
+  }
+
+  &__name {
+    cursor: pointer;
+    width: 100%;
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 21px;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+
+  &__price {
+    color: $primary-grey-color;
+    font-family: inherit;
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 140%;
+    letter-spacing: 0%;
+    text-align: left;
+  }
+}
+
+.quantity {
+  display: flex;
+  &__button {
+    cursor: pointer;
+    background-color: $white-color;
+    width: 32px;
+    height: 32px;
+    border: 1px solid $icons-grey-color;
+  }
+
+  &__number {
+    width: 32px;
+    text-align: center;
+    color: $black-color;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 32px;
+    letter-spacing: 0%;
+  }
+}
+
+.disabledButton {
+  opacity: 0.3;
+  pointer-events: none;
+}

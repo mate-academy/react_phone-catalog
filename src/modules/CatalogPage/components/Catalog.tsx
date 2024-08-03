@@ -142,47 +142,49 @@ export const Catalog: React.FC = () => {
   }, [location.pathname, productsFromServer, perPage, sortBy, startShowFrom]);
 
   return (
-    <div className={styles.catalog}>
-      <div className={styles.catalog__path}>
-        <Link to="/">
-          <img src="/icons/home-ico.svg" alt="home" />
-        </Link>
+    <div className={styles.gridContainer}>
+      <div className={styles.catalog}>
+        <div className={styles.catalog__path}>
+          <Link to="/">
+            <img src="/icons/home-ico.svg" alt="home" />
+          </Link>
 
-        <img src="/icons/arrow-right-light-ico.svg" alt="arrow-right" />
+          <img src="/icons/arrow-right-light-ico.svg" alt="arrow-right" />
 
-        <p className={styles.catalog__pathCategory}>
-          {location.pathname.slice(1)}
-        </p>
+          <p className={styles.catalog__pathCategory}>
+            {location.pathname.slice(1)}
+          </p>
+        </div>
+
+        <h1 className={styles.catalog__title}>{title}</h1>
+
+        <p
+          className={styles.catalog__quantity}
+        >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
+
+        <CatalogFilters
+          page={page}
+          perPage={perPage}
+          sortBy={sortBy}
+          setSort={setSortBy}
+          setPer={setPerPage}
+        />
+
+        {loadingStatus && <Loader />}
+        {loadingError !== '' && (
+          <p className={'has-text-danger'}>{loadingError}</p>
+        )}
+
+        <ProductsList gadgets={displayedProducts} />
+
+        <PagesSwitcher
+          sortBy={sortBy}
+          perPage={perPage}
+          pagesWithProducts={pagesWithProducts}
+          showFrom={startShowFrom}
+          setShownFrom={setStartShowFrom}
+        />
       </div>
-
-      <h1 className={styles.catalog__title}>{title}</h1>
-
-      <p
-        className={styles.catalog__quantity}
-      >{`${models} ${models === 1 ? 'model' : 'models'}`}</p>
-
-      <CatalogFilters
-        page={page}
-        perPage={perPage}
-        sortBy={sortBy}
-        setSort={setSortBy}
-        setPer={setPerPage}
-      />
-
-      {loadingStatus && <Loader />}
-      {loadingError !== '' && (
-        <p className={'has-text-danger'}>{loadingError}</p>
-      )}
-
-      <ProductsList gadgets={displayedProducts} />
-
-      <PagesSwitcher
-        sortBy={sortBy}
-        perPage={perPage}
-        pagesWithProducts={pagesWithProducts}
-        showFrom={startShowFrom}
-        setShownFrom={setStartShowFrom}
-      />
     </div>
   );
 };

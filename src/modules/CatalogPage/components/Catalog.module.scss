@@ -1,8 +1,7 @@
 @import './../../shared/main';
 
 .catalog {
-  display: grid;
-  margin-inline: auto;
+  grid-column: 1 / -1;
   margin-bottom: 64px;
 
   @include content-padding-inline;

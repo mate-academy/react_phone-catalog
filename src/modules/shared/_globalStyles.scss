@@ -9,3 +9,34 @@
 :root {
   --page-starts-from: 0;
 }
+
+.redSpot {
+  position: absolute;
+  bottom: 50%;
+  left: 50%;
+  border: 1px solid $white-color;
+  border-radius: 50%;
+  width: 14px;
+  height: 14px;
+  background-color: $red-color;
+  pointer-events: none;
+
+  &__number {
+    color: $white-color;
+    font-family: inherit;
+    font-size: 9px;
+    font-weight: 700;
+    line-height: 12px;
+    letter-spacing: 0%;
+    text-align: center;
+  }
+}
+
+.gridContainer {
+  @include page-grid;
+  @include content-padding-inline;
+
+  @include on-desktop {
+    margin-inline: auto;
+  }
+}
