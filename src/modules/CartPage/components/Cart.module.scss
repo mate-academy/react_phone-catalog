@@ -3,10 +3,12 @@
 .cart {
   grid-column: 1 / -1;
   margin-bottom: 56px;
+  margin-top: 24px;
 
   @include content-padding-inline;
   @include on-tablet {
     margin-bottom: 64px;
+    margin-top: 40px;
   }
   @include on-desktop {
     margin-bottom: 80px;
@@ -108,9 +110,10 @@
   }
 
   &__button {
-    border: none;
     height: 48px;
     width: 100%;
+    cursor: pointer;
+    border: none;
     background-color: $primary-grey-color;
     color: $white-color;
     font-family: inherit;

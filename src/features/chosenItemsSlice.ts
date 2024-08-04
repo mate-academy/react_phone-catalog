@@ -16,28 +16,28 @@ const chosenItemsSlice = createSlice({
   name: 'chosenItems',
   initialState,
   reducers: {
-    setAddTofavorite: (state, action: PayloadAction<Product>) => {
+    addTofavorite: (state, action: PayloadAction<Product>) => {
       state.favorite.push(action.payload);
     },
-    setDeleteFromfavorite: (state, action: PayloadAction<Product>) => {
+    deleteFromfavorite: (state, action: PayloadAction<Product>) => {
       const index = state.favorite.findIndex(
         obj => obj.id === action.payload.id,
       );
 
       state.favorite.splice(index, 1);
     },
-    setCleanFavorite: state => {
+    cleanFavorite: state => {
       state.favorite = [];
     },
-    setAddToCart: (state, action: PayloadAction<Product>) => {
+    addToCart: (state, action: PayloadAction<Product>) => {
       state.cart.push(action.payload);
     },
-    setDeleteFromCart: (state, action: PayloadAction<Product>) => {
+    deleteFromCart: (state, action: PayloadAction<Product>) => {
       const index = state.cart.findIndex(obj => obj.id === action.payload.id);
 
       state.cart.splice(index, 1);
     },
-    setCleanCart: state => {
+    cleanCart: state => {
       state.cart = [];
     },
   },
@@ -45,10 +45,10 @@ const chosenItemsSlice = createSlice({
 
 export default chosenItemsSlice.reducer;
 export const {
-  setAddTofavorite,
-  setDeleteFromfavorite,
-  setAddToCart,
-  setCleanFavorite,
-  setCleanCart,
-  setDeleteFromCart,
+  addTofavorite,
+  deleteFromfavorite,
+  addToCart,
+  cleanFavorite,
+  cleanCart,
+  deleteFromCart,
 } = chosenItemsSlice.actions;

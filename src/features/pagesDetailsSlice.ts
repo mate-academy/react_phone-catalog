@@ -1,12 +1,12 @@
 /* eslint-disable no-param-reassign */
 import { PayloadAction, createSlice } from '@reduxjs/toolkit';
 import { PagesDetails } from './../types/PageDetails';
-import { CartNumberOfItems } from './../types/PageDetails';
+import { ItemsQuantity } from './../types/PageDetails';
 
 const initialState: PagesDetails = {
   title: '',
   models: 0,
-  cartNumberOfItems: {},
+  itemsQuantity: {},
 };
 
 const pagesDetailsSlice = createSlice({
@@ -19,49 +19,39 @@ const pagesDetailsSlice = createSlice({
     setModels: (state, action: PayloadAction<number>) => {
       state.models = action.payload;
     },
-    setCartNumberOfItems: (state, action: PayloadAction<CartNumberOfItems>) => {
-      state.cartNumberOfItems = action.payload;
+    setItemsQuantity: (state, action: PayloadAction<ItemsQuantity>) => {
+      state.itemsQuantity = action.payload;
     },
-    cleanCartNumberOfItems: state => {
-      state.cartNumberOfItems = {};
+    cleanItemsQuantity: state => {
+      state.itemsQuantity = {};
     },
-    initializeCartNumberOfItems: (state, action: PayloadAction<number>) => {
+    addToItemsQuantity: (state, action: PayloadAction<number>) => {
       const key = action.payload;
 
-      state.cartNumberOfItems[key] = 1;
+      state.itemsQuantity[key] = 1;
     },
-    addToCartNumberOfItems: (state, action: PayloadAction<number>) => {
+    deleteFromItemsQuantity: (state, action: PayloadAction<number>) => {
       const key = action.payload;
 
-      if (state.cartNumberOfItems[key] !== undefined) {
-        state.cartNumberOfItems[key] = state.cartNumberOfItems[key] + 1;
+      delete state.itemsQuantity[key];
+    },
+    plusItemsQuantity: (state, action: PayloadAction<number>) => {
+      const key = action.payload;
+
+      if (state.itemsQuantity[key] !== undefined) {
+        state.itemsQuantity[key] = state.itemsQuantity[key] + 1;
       } else {
         return;
       }
-
-      localStorage.setItem(
-        'cartNumberOfItems',
-        JSON.stringify(state.cartNumberOfItems),
-      );
     },
-    minusFromCartNumberOfItems: (state, action: PayloadAction<number>) => {
+    minusItemsQuantity: (state, action: PayloadAction<number>) => {
       const key = action.payload;
 
-      if (state.cartNumberOfItems[key] !== undefined) {
-        state.cartNumberOfItems[key] = state.cartNumberOfItems[key] - 1;
+      if (state.itemsQuantity[key] !== undefined) {
+        state.itemsQuantity[key] = state.itemsQuantity[key] - 1;
       } else {
         return;
       }
-
-      localStorage.setItem(
-        'cartNumberOfItems',
-        JSON.stringify(state.cartNumberOfItems),
-      );
-    },
-    deleteFromCartNumberOfItems: (state, action: PayloadAction<number>) => {
-      const key = action.payload;
-
-      delete state.cartNumberOfItems[key];
     },
   },
 });
@@ -70,10 +60,10 @@ export default pagesDetailsSlice.reducer;
 export const {
   setTitle,
   setModels,
-  setCartNumberOfItems,
-  addToCartNumberOfItems,
-  minusFromCartNumberOfItems,
-  cleanCartNumberOfItems,
-  initializeCartNumberOfItems,
-  deleteFromCartNumberOfItems,
+  setItemsQuantity,
+  plusItemsQuantity,
+  minusItemsQuantity,
+  cleanItemsQuantity,
+  addToItemsQuantity,
+  deleteFromItemsQuantity,
 } = pagesDetailsSlice.actions;

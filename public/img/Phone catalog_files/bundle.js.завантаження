@@ -624,9 +624,9 @@ if (typeof Promise !== 'undefined' && $ReactRefreshCurrentExports$ instanceof Pr
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
-/* harmony export */   setAddToCart: () => (/* binding */ setAddToCart),
-/* harmony export */   setAddTofavorite: () => (/* binding */ setAddTofavorite),
-/* harmony export */   setDeleteFromfavorite: () => (/* binding */ setDeleteFromfavorite)
+/* harmony export */   addToCart: () => (/* binding */ addToCart),
+/* harmony export */   addTofavorite: () => (/* binding */ addTofavorite),
+/* harmony export */   deleteFromfavorite: () => (/* binding */ deleteFromfavorite)
 /* harmony export */ });
 /* harmony import */ var _reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @reduxjs/toolkit */ "./node_modules/@reduxjs/toolkit/dist/redux-toolkit.modern.mjs");
 /* provided dependency */ var __react_refresh_utils__ = __webpack_require__(/*! ./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js */ "./node_modules/@pmmmwh/react-refresh-webpack-plugin/lib/runtime/RefreshUtils.js");
@@ -642,23 +642,23 @@ const chosenItemsSlice = (0,_reduxjs_toolkit__WEBPACK_IMPORTED_MODULE_0__.create
   name: 'chosenItems',
   initialState,
   reducers: {
-    setAddTofavorite: (state, action) => {
+    addTofavorite: (state, action) => {
       state.favorite.push(action.payload);
     },
-    setDeleteFromfavorite: (state, action) => {
+    deleteFromfavorite: (state, action) => {
       const index = state.favorite.findIndex(obj => obj.id === action.payload.id);
       state.favorite.splice(index, 1);
     },
-    setAddToCart: (state, action) => {
+    addToCart: (state, action) => {
       state.cart.push(action.payload);
     }
   }
 });
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (chosenItemsSlice.reducer);
 const {
-  setAddTofavorite,
-  setDeleteFromfavorite,
-  setAddToCart
+  addTofavorite,
+  deleteFromfavorite,
+  addToCart
 } = chosenItemsSlice.actions;
 
 const $ReactRefreshModuleId$ = __webpack_require__.$Refresh$.moduleId;
@@ -2074,14 +2074,14 @@ const ProductCard = ({
   const favoriteIco = favoritesArray.some(obj => obj.id === gadget.id) ? './icons/heart-red-ico.svg' : './icons/heart-ico.svg';
   function handleheartIco() {
     if (!favoritesArray.some(obj => obj.id === gadget.id)) {
-      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.setAddTofavorite)(gadget));
+      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.addTofavorite)(gadget));
     } else {
-      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.setDeleteFromfavorite)(gadget));
+      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.deleteFromfavorite)(gadget));
     }
   }
   function handleAddToCart() {
     if (!cartMap.some(obj => obj.id === gadget.id)) {
-      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.setAddToCart)(gadget));
+      dispatch((0,_features_chosenItemsSlice__WEBPACK_IMPORTED_MODULE_2__.addToCart)(gadget));
     }
   }
   return /*#__PURE__*/(0,react_jsx_dev_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxDEV)("div", {

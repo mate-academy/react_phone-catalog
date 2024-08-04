@@ -3,9 +3,15 @@
 .homePage {
   display: grid;
   margin-bottom: 64px;
+  margin-top: 24px;
+
+  @include on-tablet {
+    margin-top: 32px;
+  }
 
   @include on-desktop {
-    margin-bottom: 80px;
+    margin-bottom: 80 px;
+    margin-top: 54px;
   }
 }
 

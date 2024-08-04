@@ -121,12 +121,6 @@
   &__buttonAddToCatr {
     height: 40px;
     width: 100px;
-    font-family: inherit;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 21px;
-    letter-spacing: 0%;
-    text-align: center;
 
     @include on-tablet {
       width: 125px;
@@ -135,16 +129,6 @@
     @include on-desktop {
       width: 160px;
     }
-  }
-}
-
-.add {
-  color: $white-color;
-  background-color: $primary-grey-color;
-  cursor: pointer;
-
-  &:hover {
-    box-shadow: 0px 3px 13px 0px rgba(23, 32, 49, 0.4);
   }
 }
 

@@ -2,11 +2,11 @@ import { useDispatch } from 'react-redux';
 import { Product } from '../../../types/Product';
 import styles from './CartItem.module.scss';
 import React, { useEffect, useState } from 'react';
-import { setDeleteFromCart } from '../../../features/chosenItemsSlice';
+import { deleteFromCart } from '../../../features/chosenItemsSlice';
 import {
-  addToCartNumberOfItems,
-  deleteFromCartNumberOfItems,
-  minusFromCartNumberOfItems,
+  plusItemsQuantity,
+  deleteFromItemsQuantity,
+  minusItemsQuantity,
 } from '../../../features/pagesDetailsSlice';
 import { useAppSelector } from '../../../app/hooks';
 
@@ -19,38 +19,31 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
 
   const [isMinusDisabled, setIsMinusDisabled] = useState(false);
 
-  const numberOfItems = useAppSelector(
-    state => state.pagesDetails.cartNumberOfItems[gadget.id],
+  const numberOfSameGadget = useAppSelector(
+    state => state.pagesDetails.itemsQuantity[gadget.id],
+  );
+  const itemsQuantity = useAppSelector(
+    state => state.pagesDetails.itemsQuantity,
   );
 
   useEffect(() => {
-    if (numberOfItems <= 1) {
+    if (numberOfSameGadget <= 1) {
       setIsMinusDisabled(true);
     } else {
       setIsMinusDisabled(false);
     }
-  }, [numberOfItems]);
-
-  const cartNumberOfItems = useAppSelector(
-    state => state.pagesDetails.cartNumberOfItems,
-  );
+  }, [numberOfSameGadget]);
 
   const handleDeleteButton = () => {
-    dispatch(setDeleteFromCart(gadget));
-    dispatch(deleteFromCartNumberOfItems(gadget.id));
-
-    const newObj = { ...cartNumberOfItems };
-
-    delete newObj[gadget.id];
-
-    localStorage.setItem('cartNumberOfItems', JSON.stringify(newObj));
+    dispatch(deleteFromCart(gadget));
+    dispatch(deleteFromItemsQuantity(gadget.id));
 
     const cartString = localStorage.getItem('cart');
 
     if (cartString) {
       const cartArr = JSON.parse(cartString);
 
-      const newCart: Product[] = [];
+      const newCart = [];
 
       for (const obj of cartArr) {
         if (obj.id !== gadget.id) {
@@ -60,14 +53,46 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
 
       localStorage.setItem('cart', JSON.stringify(newCart));
     }
+
+    const newObj = { ...itemsQuantity };
+
+    delete newObj[gadget.id];
+
+    localStorage.setItem('itemsQuantity', JSON.stringify(newObj));
   };
 
   const handleMinusItem = () => {
-    dispatch(minusFromCartNumberOfItems(gadget.id));
+    dispatch(minusItemsQuantity(gadget.id));
+
+    const itemsQuantityString = localStorage.getItem('itemsQuantity');
+
+    if (itemsQuantityString) {
+      const itemsQuantityObject = JSON.parse(itemsQuantityString);
+
+      itemsQuantityObject[gadget.id] = itemsQuantityObject[gadget.id] - 1;
+
+      localStorage.setItem(
+        'itemsQuantity',
+        JSON.stringify(itemsQuantityObject),
+      );
+    }
   };
 
   const handlePlusItem = () => {
-    dispatch(addToCartNumberOfItems(gadget.id));
+    dispatch(plusItemsQuantity(gadget.id));
+
+    const itemsQuantityString = localStorage.getItem('itemsQuantity');
+
+    if (itemsQuantityString) {
+      const itemsQuantityObject = JSON.parse(itemsQuantityString);
+
+      itemsQuantityObject[gadget.id] = itemsQuantityObject[gadget.id] + 1;
+
+      localStorage.setItem(
+        'itemsQuantity',
+        JSON.stringify(itemsQuantityObject),
+      );
+    }
   };
 
   return (
@@ -96,14 +121,16 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
             <img src="/icons/minus-ico.svg" alt="minus-ico" />
           </button>
 
-          <p className={styles.quantity__number}>{numberOfItems}</p>
+          <p className={styles.quantity__number}>{numberOfSameGadget}</p>
 
           <button onClick={handlePlusItem} className={styles.quantity__button}>
             <img src="/icons/plus-ico.svg" alt="plus-ico" />
           </button>
         </div>
 
-        <h3 className={styles.item__price}>$999</h3>
+        <h3
+          className={styles.item__price}
+        >{`$${gadget.price * numberOfSameGadget}`}</h3>
       </div>
     </div>
   );

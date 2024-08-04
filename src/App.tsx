@@ -14,16 +14,16 @@ import { setHidenMenuIco } from './features/iconsChangerSlice';
 import { setIsMenuShown } from './features/booleanSlice';
 import { HidenMenu } from './modules/HidenMenu/components';
 import {
-  setAddToCart,
-  setAddTofavorite,
-  setCleanCart,
-  setCleanFavorite,
+  addToCart,
+  addTofavorite,
+  cleanCart,
+  cleanFavorite,
 } from './features/chosenItemsSlice';
 import { Product } from './types/Product';
-import { CartNumberOfItems } from './types/PageDetails';
+import { ItemsQuantity } from './types/PageDetails';
 import {
-  cleanCartNumberOfItems,
-  setCartNumberOfItems,
+  cleanItemsQuantity,
+  setItemsQuantity,
 } from './features/pagesDetailsSlice';
 
 export const App: React.FC = () => {
@@ -33,6 +33,13 @@ export const App: React.FC = () => {
   const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
   const CLOSE_ICO = './icons/close-ico.svg';
 
+  const closeMenu = () => {
+    dispatch(setIsMenuShown(false));
+    dispatch(setHidenMenuIco(BURGER_MENU_ICO));
+  };
+
+  window.addEventListener('resize', closeMenu);
+
   useEffect(() => {
     dispatch(fetchPhonesAsync());
     dispatch(fetchTablesAsync());
@@ -40,36 +47,33 @@ export const App: React.FC = () => {
     dispatch(fetchProductsAsync());
 
     const favString = localStorage.getItem('favorite');
+    const cartString = localStorage.getItem('cart');
+    const itemsQuantityString = localStorage.getItem('itemsQuantity');
 
     if (favString) {
-      dispatch(setCleanFavorite());
+      dispatch(cleanFavorite());
       const favArray = JSON.parse(favString);
 
       for (const obj of favArray) {
-        dispatch(setAddTofavorite(obj));
+        dispatch(addTofavorite(obj));
       }
     }
 
-    const cartString = localStorage.getItem('cart');
-
     if (cartString) {
-      dispatch(setCleanCart());
+      dispatch(cleanCart());
       const cartArray: Product[] = JSON.parse(cartString);
 
       for (const obj of cartArray) {
-        dispatch(setAddToCart(obj));
+        dispatch(addToCart(obj));
       }
     }
 
-    const cartNumberOfItemsString = localStorage.getItem('cartNumberOfItems');
+    if (itemsQuantityString) {
+      dispatch(cleanItemsQuantity());
+      const itemsQuantityObject: ItemsQuantity =
+        JSON.parse(itemsQuantityString);
 
-    if (cartNumberOfItemsString) {
-      dispatch(cleanCartNumberOfItems());
-      const cartNumberOfItemsObject: CartNumberOfItems = JSON.parse(
-        cartNumberOfItemsString,
-      );
-
-      dispatch(setCartNumberOfItems(cartNumberOfItemsObject));
+      dispatch(setItemsQuantity(itemsQuantityObject));
     }
   }, []);
 
@@ -91,7 +95,7 @@ export const App: React.FC = () => {
     dispatch(setHidenMenuIco(newIco));
   }, [hidenMenuIco, dispatch, isMenuShown]);
 
-  const handleDoUpButton = () => {
+  const handleGoUpButton = () => {
     window.scrollTo({
       top: 0,
       behavior: 'smooth',
@@ -236,7 +240,7 @@ export const App: React.FC = () => {
 
             <div className={styles.footer__goUpBlock}>
               <div
-                onClick={handleDoUpButton}
+                onClick={handleGoUpButton}
                 className={styles.footer__goUpButtonArea}
               >
                 <div className={styles.footer__goUpTextLink}>Back to top</div>

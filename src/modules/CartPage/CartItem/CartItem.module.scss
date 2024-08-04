@@ -26,8 +26,7 @@
     justify-content: space-between;
 
     @include on-tablet {
-      gap: 64px;
-      width: min-content;
+      width: 300px;
     }
   }
 
@@ -87,6 +86,10 @@
     width: 32px;
     height: 32px;
     border: 1px solid $icons-grey-color;
+
+    &:hover {
+      border: 1px solid $primary-grey-color;
+    }
   }
 
   &__number {

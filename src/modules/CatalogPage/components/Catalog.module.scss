@@ -1,8 +1,11 @@
 @import './../../shared/main';
 
 .catalog {
+  display: flex;
+  flex-direction: column;
   grid-column: 1 / -1;
   margin-bottom: 64px;
+  margin-top: 24px;
 
   @include content-padding-inline;
   @include on-desktop {

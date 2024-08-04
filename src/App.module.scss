@@ -11,17 +11,11 @@
   background-color: $white-color;
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
   height: 48px;
   text-align: center;
   border-bottom: solid $elements-grey-color 2px;
 
-  @include on-tablet {
-    margin-bottom: 32px;
-  }
-
   @include on-desktop {
-    margin-bottom: 55px;
     height: 64px;
   }
 

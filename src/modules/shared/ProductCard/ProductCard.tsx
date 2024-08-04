@@ -3,25 +3,28 @@ import styles from './ProductCard.module.scss';
 import { Product } from '../../../types/Product';
 import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import {
-  setAddToCart,
-  setAddTofavorite,
-  setDeleteFromfavorite,
+  addToCart,
+  addTofavorite,
+  deleteFromfavorite,
 } from '../../../features/chosenItemsSlice';
 import { useEffect, useState } from 'react';
-import { initializeCartNumberOfItems } from '../../../features/pagesDetailsSlice';
+import { addToItemsQuantity } from '../../../features/pagesDetailsSlice';
 
 type Props = {
   gadget: Product;
 };
 
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
+  const dispatch = useAppDispatch();
+
   const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
   const [isInCatr, setIsinCart] = useState(false);
 
-  const dispatch = useAppDispatch();
-
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
   const cartArray = useAppSelector(state => state.chosenItems.cart);
+  const itemsQuantity = useAppSelector(
+    state => state.pagesDetails.itemsQuantity,
+  );
 
   useEffect(() => {
     if (!favoritesArray.some(obj => obj.id === gadget.id)) {
@@ -44,14 +47,14 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         JSON.stringify(favoritesArray.concat(gadget)),
       );
 
-      dispatch(setAddTofavorite(gadget));
+      dispatch(addTofavorite(gadget));
     } else {
       const favString = localStorage.getItem('favorite');
 
       if (favString) {
         const favArray = JSON.parse(favString);
 
-        const newFavorite: Product[] = [];
+        const newFavorite = [];
 
         for (const obj of favArray) {
           if (obj.id !== gadget.id) {
@@ -62,24 +65,20 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
         localStorage.setItem('favorite', JSON.stringify(newFavorite));
       }
 
-      dispatch(setDeleteFromfavorite(gadget));
+      dispatch(deleteFromfavorite(gadget));
     }
   };
 
-  const cartNumbOfItems = useAppSelector(
-    state => state.pagesDetails.cartNumberOfItems,
-  );
-
   const handleAddToCart = () => {
     if (!cartArray.some(obj => obj.id === gadget.id)) {
-      const newObj = { ...cartNumbOfItems };
+      const newObj = { ...itemsQuantity };
 
       newObj[gadget.id] = 1;
 
-      dispatch(initializeCartNumberOfItems(gadget.id));
-      dispatch(setAddToCart(gadget));
+      dispatch(addToItemsQuantity(gadget.id));
+      dispatch(addToCart(gadget));
       localStorage.setItem('cart', JSON.stringify(cartArray.concat(gadget)));
-      localStorage.setItem('cartNumberOfItems', JSON.stringify(newObj));
+      localStorage.setItem('itemsQuantity', JSON.stringify(newObj));
 
       setIsinCart(true);
     } else {
@@ -126,7 +125,7 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
           <button
             disabled={isInCatr}
             onClick={handleAddToCart}
-            className={`${styles.card__buttonAddToCatr} ${!isInCatr ? styles.add : styles.added}`}
+            className={`${styles.blackButtonBase} ${styles.card__buttonAddToCatr} ${isInCatr && styles.added}`}
           >
             {isInCatr ? 'In your cart' : 'Add to cart'}
           </button>

@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import styles from './Cart.module.scss';
-import { useAppSelector } from '../../../app/hooks';
+import { useAppDispatch, useAppSelector } from '../../../app/hooks';
 import { CartList } from '../CartList/CartList';
+import { cleanCart } from '../../../features/chosenItemsSlice';
 
 export const Cart: React.FC = () => {
+  const dispatch = useAppDispatch();
+
   const [isBackDisabled, setIsBackDisabled] = useState(false);
 
   const itemsInCart = useAppSelector(state => state.chosenItems.cart);
+  const cart = useAppSelector(state => state.chosenItems.cart);
+  const itemsQuantity = useAppSelector(
+    state => state.pagesDetails.itemsQuantity,
+  );
 
   useEffect(() => {
     if (window.history.length < 1) {
@@ -20,6 +27,27 @@ export const Cart: React.FC = () => {
     } else {
       return;
     }
+  };
+
+  const amount = () => {
+    let count = 0;
+
+    Object.entries(itemsQuantity).forEach(([key, value]) => {
+      for (const item of cart) {
+        if (item.id === +key) {
+          count = count + item.price * value;
+        }
+      }
+    });
+
+    return `$${count}`;
+  };
+
+  const handleCheckout = () => {
+    dispatch(cleanCart());
+
+    localStorage.removeItem('cart');
+    localStorage.removeItem('itemsQuantity');
   };
 
   return (
@@ -40,7 +68,7 @@ export const Cart: React.FC = () => {
             <CartList gadgets={itemsInCart} />
 
             <div className={styles.checkout}>
-              <div className={styles.checkout__sum}>$2657</div>
+              <div className={styles.checkout__sum}>{amount()}</div>
 
               <div className={styles.checkout__totalItems}>
                 Total for {itemsInCart.length} items
@@ -48,7 +76,12 @@ export const Cart: React.FC = () => {
 
               <div className={styles.checkout__horizontal}></div>
 
-              <button className={styles.checkout__button}>Checkout</button>
+              <button
+                onClick={handleCheckout}
+                className={`${styles.checkout__button} ${styles.blackButtonBase} `}
+              >
+                Checkout
+              </button>
             </div>
           </div>
         ) : (
