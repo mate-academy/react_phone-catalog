@@ -11,7 +11,7 @@ export const HidenMenu: React.FC = () => {
   const cartArray = useAppSelector(state => state.chosenItems.cart);
 
   const handleCloseHidenMenu = () => {
-    dispatch(setHidenMenuIco('./icons/burger-menu-ico.svg'));
+    dispatch(setHidenMenuIco('icons/burger-menu-ico.svg'));
     dispatch(setIsMenuShown(!isMenuShown ? true : false));
   };
 
@@ -79,7 +79,7 @@ export const HidenMenu: React.FC = () => {
           >
             <img
               className={styles.footer__icon}
-              src="./icons/heart-ico.svg"
+              src="icons/heart-ico.svg"
               alt="favorites"
             />
           </Link>
@@ -99,7 +99,7 @@ export const HidenMenu: React.FC = () => {
           >
             <img
               className={styles.footer__icon}
-              src="./icons/basket-ico.svg"
+              src="icons/basket-ico.svg"
               alt="cart"
             />
           </Link>

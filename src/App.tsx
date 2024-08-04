@@ -30,8 +30,8 @@ export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
   const isMenu = useAppSelector(state => state.boolean.isMenuShown);
-  const BURGER_MENU_ICO = './icons/burger-menu-ico.svg';
-  const CLOSE_ICO = './icons/close-ico.svg';
+  const BURGER_MENU_ICO = 'icons/burger-menu-ico.svg';
+  const CLOSE_ICO = 'icons/close-ico.svg';
 
   const closeMenu = () => {
     dispatch(setIsMenuShown(false));
@@ -118,7 +118,7 @@ export const App: React.FC = () => {
             className={styles.header__logo}
             to="/"
           >
-            <img src="./icons/header-logo.png" alt="logo" />
+            <img src="icons/header-logo.png" alt="logo" />
           </Link>
 
           <nav className={styles.navBar}>
@@ -168,7 +168,7 @@ export const App: React.FC = () => {
             <Link className={styles.icons__link} to="/favorites">
               <img
                 className={styles.icons__icon}
-                src="./icons/heart-ico.svg"
+                src="icons/heart-ico.svg"
                 alt="favorite"
               />
             </Link>
@@ -185,7 +185,7 @@ export const App: React.FC = () => {
             <Link className={styles.icons__link} to="/cart">
               <img
                 className={styles.icons__icon}
-                src="./icons/basket-ico.svg"
+                src="icons/basket-ico.svg"
                 alt="basket"
               />
             </Link>
@@ -217,7 +217,7 @@ export const App: React.FC = () => {
             <Link className={styles.footer__logoLink} to="/">
               <img
                 className={styles.Footer__logoImg}
-                src="./icons/header-logo.png"
+                src="icons/header-logo.png"
                 alt="logo"
               />
             </Link>
@@ -248,7 +248,7 @@ export const App: React.FC = () => {
                 <div className={styles.footer__goUpButton}>
                   <img
                     className={styles.footer__goUpIco}
-                    src="/icons/arrow-up-ico.svg"
+                    src="icons/arrow-up-ico.svg"
                     alt="arrow-up"
                   />
                 </div>
