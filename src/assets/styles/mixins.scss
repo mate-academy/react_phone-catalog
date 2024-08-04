@@ -31,3 +31,15 @@
     grid-template-columns: repeat(24, 1fr);
   }
 }
+
+@mixin page-container {
+  padding-inline: $container-padding-mobile;
+
+  @include on-tablet {
+    padding-inline: $container-padding-tablet;
+  }
+
+  @include on-desktop {
+    padding-inline: $container-padding-desktop;
+  }
+}

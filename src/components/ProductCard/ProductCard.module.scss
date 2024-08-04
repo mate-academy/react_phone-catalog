@@ -27,6 +27,11 @@
     width: 129px;
     margin: auto;
     cursor: pointer;
+    object-fit: contain;
+
+    &__link {
+      display: flex;
+    }
 
     @include on-tablet {
       height: 202px;
@@ -50,7 +55,7 @@
     cursor: pointer;
 
     @include hover {
-      color: #78787a
+      color: #78787a;
     }
   }
 

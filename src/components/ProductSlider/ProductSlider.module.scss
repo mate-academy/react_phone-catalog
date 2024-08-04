@@ -10,15 +10,8 @@
     display: flex;
     justify-content: space-between;
     gap: 16px;
-    padding-inline: $container-padding-mobile;
 
-    @include on-tablet {
-      padding-inline: $container-padding-tablet;
-    }
-
-    @include on-desktop {
-      padding-inline: $container-padding-desktop;
-    }
+    @include page-container;
 
     .title {
       font-weight: 800;

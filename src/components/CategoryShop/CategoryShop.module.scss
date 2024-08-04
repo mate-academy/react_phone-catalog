@@ -1,15 +1,7 @@
 @import '../../main';
 
 .categoryShop {
-  padding-inline: $container-padding-mobile;
-
-  @include on-tablet {
-    padding-inline: $container-padding-tablet;
-  }
-
-  @include on-desktop {
-    padding-inline: $container-padding-desktop;
-  }
+  @include page-container;
 
   .title {
     font-size: 22px;

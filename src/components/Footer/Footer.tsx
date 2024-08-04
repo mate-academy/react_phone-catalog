@@ -1,5 +1,6 @@
 import style from './Footer.module.scss';
 import logo from '../../assets/img/logos/mainlogo.svg';
+import { NavLink } from 'react-router-dom';
 
 const navigation = [
   {
@@ -7,11 +8,11 @@ const navigation = [
     name: 'Github',
   },
   {
-    href: '#',
+    href: '/contacts',
     name: 'Contacts',
   },
   {
-    href: '#',
+    href: '/rights',
     name: 'Rights',
   },
 ];
@@ -25,16 +26,19 @@ export const Footer = () => (
       <ul className={style.nav__list}>
         {navigation.map(({ href, name }) => (
           <li key={name} className={style.nav__item}>
-            <a href={href} className={style.nav__link}>
+            <NavLink to={href} className={style.nav__link}>
               {name}
-            </a>
+            </NavLink>
           </li>
         ))}
       </ul>
     </nav>
-    <a href="#" className={style.backToTop}>
+    <div
+      className={style.backToTop}
+      onClick={() => window.scrollTo({ top: 0 })}
+    >
       <p className={style.backToTop__text}>Back to top</p>
       <div className={style.backToTop__button} />
-    </a>
+    </div>
   </footer>
 );

@@ -2,7 +2,6 @@ import { ProductSlider } from '../../components/ProductSlider';
 import { CategoryShop } from '../../components/CategoryShop/CategoryShop';
 import { Slider } from '../../components/Slider';
 import style from './HomePage.module.scss';
-import { Footer } from '../../components/Footer';
 
 export const HomePage = () => {
   return (
@@ -22,10 +21,6 @@ export const HomePage = () => {
 
       <div className={style.hotPrices}>
         <ProductSlider title={'Hot prices'} discount={true} />
-      </div>
-
-      <div className={style.footer}>
-        <Footer />
       </div>
     </div>
   );

@@ -1,5 +1,6 @@
 import style from './ProductCard.module.scss';
 import { Product } from '../../types/Product';
+import { NavLink } from 'react-router-dom';
 
 type Props = { prod: Product; discount?: boolean };
 
@@ -12,7 +13,9 @@ export const ProductCard: React.FC<Props> = ({ prod, discount = true }) => {
 
   return (
     <article className={style.card}>
-      <img src={prod.image} className={style.img} />
+      <NavLink to={prod.itemId} className={style.img__link}>
+        <img src={prod.image} className={style.img} />
+      </NavLink>
       <div className={style.title}>{prod.name}</div>
       <div className={style.price}>
         <div className={style.price__actual}>

@@ -63,8 +63,13 @@
       font-size: 14px;
       line-height: 21px;
       color: #89939a;
+      text-transform: capitalize;
 
       @include hover {
+        color: #0f0f11;
+      }
+
+      &--active {
         color: #0f0f11;
       }
     }

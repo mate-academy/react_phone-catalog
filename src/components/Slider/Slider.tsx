@@ -5,7 +5,7 @@ import slider3 from '../../assets/img/slider/slider-3.png';
 import style from './Slider.module.scss';
 import { Swiper, SwiperSlide } from 'swiper/react';
 // eslint-disable-next-line import/no-extraneous-dependencies
-import { Pagination, Autoplay, Navigation } from 'swiper/modules';
+import { Pagination, Autoplay, Navigation, Thumbs } from 'swiper/modules';
 import 'swiper/scss';
 import 'swiper/scss/pagination';
 import { useEffect } from 'react';
@@ -31,7 +31,7 @@ export const Slider = () => {
 
   return (
     <Swiper
-      modules={[Pagination, Autoplay, Navigation]}
+      modules={[Pagination, Autoplay, Navigation, Thumbs]}
       pagination={{ clickable: true }}
       autoplay={{ delay: 5000 }}
       navigation={

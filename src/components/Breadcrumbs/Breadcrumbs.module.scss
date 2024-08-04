@@ -1,0 +1,40 @@
+@import '../../main';
+
+.path {
+  margin-block: 24px;
+  width: 100%;
+  display: flex;
+  align-items: flex-end;
+  gap: 8px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+
+  &__link {
+    display: flex;
+    gap: 8px;
+    align-items: flex-end;
+  }
+
+  &__direction {
+    color: #89939a;
+    text-transform: capitalize;
+
+    &--active {
+      color: black;
+    }
+
+    @include hover {
+      transform: scale(1.02);
+    }
+  }
+
+  &__product {
+    color: #89939a;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    cursor: default;
+  }
+}

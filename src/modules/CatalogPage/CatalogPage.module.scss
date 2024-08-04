@@ -2,44 +2,11 @@
 
 .catalogPage {
   @include page-grid;
+  @include page-container;
 
-  padding-inline: $container-padding-mobile;
-
-  @include on-tablet {
-    padding-inline: $container-padding-tablet;
-  }
-
-  @include on-desktop {
-    padding-inline: $container-padding-desktop;
-  }
-
-  .path {
+  .breadcrumbs {
     grid-column: 1 / -1;
-    margin-block: 24px;
-    width: fit-content;
-    display: flex;
-    align-items: flex-end;
-    gap: 8px;
-
-    @include on-tablet {
-      margin-bottom: 40px;
-    }
-
-    &__link {
-      display: flex;
-
-      @include hover {
-        transform: scale(1.02);
-      }
-    }
-
-    &__direction {
-      color: #89939a;
-
-      @include hover {
-        transform: scale(1.02);
-      }
-    }
+    padding-right: 0;
   }
 
   .title {

@@ -1,24 +1,22 @@
 import style from './CatalogPage.module.scss';
-import home from '../../assets/img/icons/home-icon.svg';
-import rightArrow from '../../assets/img/icons/arrow-right.svg';
 import { Dropdown } from '../../components/Dropdown';
 import { ProductCard } from '../../components/ProductCard';
-import { useContext, useState } from 'react';
-// import { getData } from '../../assets/services/httpClient';
+import { useContext, useEffect, useState } from 'react';
 import { Product } from '../../types/Product';
-import { SortType } from '../../types/SortType';
 import { ProductContext } from '../../store/ProductProvider';
+import { Breadcrumbs } from '../../components/Breadcrumbs';
+import { useSearchParams } from 'react-router-dom';
 
 type Props = {
   category: 'phones' | 'tablets' | 'accessories';
 };
 
-const getSortedList = (sortingArray: Product[], sortParams: SortType) => {
+const getSortedList = (sortingArray: Product[], sortParams: string | null) => {
   switch (sortParams) {
-    case SortType.ALPHABETICALLY:
+    case 'Alphabetically':
       return [...sortingArray].sort((a, b) => a.name.localeCompare(b.name));
 
-    case SortType.PRICE:
+    case 'Cheapest':
       return [...sortingArray].sort((a, b) => a.price - b.price);
 
     default:
@@ -27,33 +25,39 @@ const getSortedList = (sortingArray: Product[], sortParams: SortType) => {
 };
 
 export const CatalogPage: React.FC<Props> = ({ category }) => {
-  const [sortBy] = useState<SortType>(SortType.NEWEST);
+  const [searchParams] = useSearchParams();
   const { products } = useContext(ProductContext);
+  const sort = searchParams.get('sort' || '');
+  const perPage = searchParams.get('perPage' || '');
 
-  const visibleList = getSortedList(products, sortBy).filter(
-    item => item.category === category,
-  );
+  const [visibleList, setVisibleList] = useState<Product[]>([]);
+
+  useEffect(() => {
+    const sortedList = getSortedList(products, sort).filter(
+      item => item.category === category,
+    );
+
+    if (perPage) {
+      setVisibleList(sortedList.slice(0, +perPage));
+    } else {
+      setVisibleList(sortedList);
+    }
+  }, [category, perPage, sort, products]);
 
   return (
     <div className={style.catalogPage}>
-      <div className={style.path}>
-        <a href="/" className={style.path__link}>
-          <img src={home} className={style.path__home} />
-        </a>
-        <img src={rightArrow} className={style.path__arrow} />
-        <a href="#/phones" className={style.path__direction}>
-          Phones
-        </a>
+      <div className={style.breadcrumbs}>
+        <Breadcrumbs />
       </div>
       <h1 className={style.title}>
         {category === 'phones' ? 'mobile phones' : category}
       </h1>
       <p className={style.countModels}>{visibleList.length} models</p>
       <div className={`${style.sortField} ${style['sortField--1']}`}>
-        <Dropdown dropdownName={'sortBy'} />
+        <Dropdown dropdownName={'sort'} />
       </div>
       <div className={`${style.sortField} ${style['sortField--2']}`}>
-        <Dropdown dropdownName={'itemsOnPage'} />
+        <Dropdown dropdownName={'perPage'} />
       </div>
       {!visibleList.length && (
         <h1 className={style.noData}>
