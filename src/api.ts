@@ -12,7 +12,7 @@ export function getTablets(): Promise<Tablet[]> {
 }
 
 export function getAccessories(): Promise<Accessory[]> {
-  return fetch('api//accessories.json').then(responce => responce.json());
+  return fetch('api/accessories.json').then(responce => responce.json());
 }
 
 export function getProducts(): Promise<Product[]> {
