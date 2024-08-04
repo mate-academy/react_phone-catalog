@@ -33,8 +33,8 @@ const DropdownIndicator = (props: any) => {
       <img
         src={
           props.selectProps.menuIsOpen
-            ? '/icons/arrow-up-light-ico.svg'
-            : '/icons/arrow-down-light-ico.svg'
+            ? 'icons/arrow-up-light-ico.svg'
+            : 'icons/arrow-down-light-ico.svg'
         }
         alt="dropdown-indicator"
         style={{ width: '16px', height: '16px' }}
@@ -166,6 +166,7 @@ export const CatalogFilters: React.FC<CatalogFiltersProps> = ({
           options={optionsQuantity}
           defaultValue={optionsQuantity[0]}
           value={optionsQuantity.find(option => option.value === perPage)}
+          components={{ DropdownIndicator }}
           styles={{
             control: (baseStyles, state) => ({
               ...baseStyles,
