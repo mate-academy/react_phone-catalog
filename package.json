@@ -1,4 +1,16 @@
 {
+  "rules": {
+    "import/extensions": [
+      "error",
+      "ignorePackages",
+      {
+        "js": "never",
+        "jsx": "never",
+        "ts": "never",
+        "tsx": "never"
+      }
+    ]
+  },
   "name": "react_phone-catalog",
   "homepage": ".",
   "version": "0.1.0",
