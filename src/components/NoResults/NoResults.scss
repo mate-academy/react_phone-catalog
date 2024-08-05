@@ -1,0 +1,17 @@
+@import "../../utils/utils";
+
+.NoResults {
+  text-align: center;
+
+  &__title {
+    @extend %page-error-title;
+  }
+
+  &__paragpraph {
+    @extend %page-error-paragraph;
+  }
+
+  &__button {
+    @extend %error-button;
+  }
+}
