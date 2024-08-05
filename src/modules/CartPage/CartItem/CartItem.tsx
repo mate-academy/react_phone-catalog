@@ -101,7 +101,7 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
         <img
           onClick={handleDeleteButton}
           className={styles.item__deleteButton}
-          src="icons/close-light-ico.svg"
+          src="./icons/close-light-ico.svg"
           alt="delet-ico"
         />
         <img
@@ -118,13 +118,13 @@ export const CartItem: React.FC<CatrItemType> = ({ gadget }) => {
             onClick={handleMinusItem}
             className={`${styles.quantity__button} ${isMinusDisabled && styles.disabledButton}`}
           >
-            <img src="icons/minus-ico.svg" alt="minus-ico" />
+            <img src="./icons/minus-ico.svg" alt="minus-ico" />
           </button>
 
           <p className={styles.quantity__number}>{numberOfSameGadget}</p>
 
           <button onClick={handlePlusItem} className={styles.quantity__button}>
-            <img src="icons/plus-ico.svg" alt="plus-ico" />
+            <img src="./icons/plus-ico.svg" alt="plus-ico" />
           </button>
         </div>
 

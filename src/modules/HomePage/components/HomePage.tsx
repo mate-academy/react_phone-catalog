@@ -57,7 +57,7 @@ export const HomePage: React.FC = () => {
             <Link to="/phones">
               <img
                 className={styles.category__image}
-                src="img/phones-category.png"
+                src="./img/phones-category.png"
                 alt="phones"
               />
             </Link>
@@ -74,7 +74,7 @@ export const HomePage: React.FC = () => {
             <Link to="/tablets">
               <img
                 className={styles.category__image}
-                src="img/tablets-category.png"
+                src="./img/tablets-category.png"
                 alt="tablets"
               />
             </Link>
@@ -91,7 +91,7 @@ export const HomePage: React.FC = () => {
             <Link to="/accessories">
               <img
                 className={styles.category__image}
-                src="img/accessories-category.png"
+                src="./img/accessories-category.png"
                 alt="Accessories"
               />
             </Link>

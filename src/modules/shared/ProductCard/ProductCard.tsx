@@ -17,7 +17,7 @@ type Props = {
 export const ProductCard: React.FC<Props> = ({ gadget }) => {
   const dispatch = useAppDispatch();
 
-  const [heartIco, setHeartIco] = useState('icons/heart-ico.svg');
+  const [heartIco, setHeartIco] = useState('./icons/heart-ico.svg');
   const [isInCatr, setIsinCart] = useState(false);
 
   const favoritesArray = useAppSelector(state => state.chosenItems.favorite);
@@ -28,9 +28,9 @@ export const ProductCard: React.FC<Props> = ({ gadget }) => {
 
   useEffect(() => {
     if (!favoritesArray.some(obj => obj.id === gadget.id)) {
-      setHeartIco('icons/heart-ico.svg');
+      setHeartIco('./icons/heart-ico.svg');
     } else {
-      setHeartIco('icons/heart-red-ico.svg');
+      setHeartIco('./icons/heart-red-ico.svg');
     }
 
     if (!cartArray.some(obj => obj.id === gadget.id)) {

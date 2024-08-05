@@ -105,9 +105,9 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
               className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableLeft' ? styles.disabledArrow : styles.activeArrow}`}
             >
               {disablePagesArrow === 'disableLeft' ? (
-                <img src="icons/arrow-left-light-ico.svg" alt="arrow-left" />
+                <img src="./icons/arrow-left-light-ico.svg" alt="arrow-left" />
               ) : (
-                <img src="icons/arrow-left-ico.svg" alt="arrow-left" />
+                <img src="./icons/arrow-left-ico.svg" alt="arrow-left" />
               )}
             </button>
           )}
@@ -132,9 +132,12 @@ export const PagesSwitcher: React.FC<PagesSwitcherProps> = ({
               className={`${styles.pages__arrowButton} ${disablePagesArrow === 'disableRight' ? styles.disabledArrow : styles.activeArrow}`}
             >
               {disablePagesArrow === 'disableRight' ? (
-                <img src="icons/arrow-right-light-ico.svg" alt="arrow-right" />
+                <img
+                  src="./icons/arrow-right-light-ico.svg"
+                  alt="arrow-right"
+                />
               ) : (
-                <img src="icons/aroow-right-ico.svg" alt="arrow-right" />
+                <img src="./icons/aroow-right-ico.svg" alt="arrow-right" />
               )}
             </button>
           )}

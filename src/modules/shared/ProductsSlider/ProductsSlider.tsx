@@ -67,7 +67,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
           >
             <img
               className={styles.ProductsSlider__sliderArrow}
-              src="icons/arrow-left-ico.svg"
+              src="./icons/arrow-left-ico.svg"
               alt="arrowLeft"
             />
           </div>
@@ -79,7 +79,7 @@ export const ProductsSlider: React.FC<Props> = ({ title, gadgets }) => {
           >
             <img
               className={styles.ProductsSlider__sliderArrow}
-              src="icons/aroow-right-ico.svg"
+              src="./icons/aroow-right-ico.svg"
               alt="arrowRight"
             />
           </div>

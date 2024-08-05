@@ -14,7 +14,7 @@ export const WelcomeSlider = () => {
         <div id="welcome-slider-arrow-left" className={styles.moveSlide}>
           <img
             className={styles.moveSlide__slideArrow}
-            src="icons/arrow-left-ico.svg"
+            src="./icons/arrow-left-ico.svg"
             alt="arrowLeft"
           />
         </div>
@@ -39,21 +39,21 @@ export const WelcomeSlider = () => {
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="img/banner-accessories.png"
+              src="./img/banner-accessories.png"
               alt="slide1"
             />
           </SwiperSlide>
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="img/banner-phones.png"
+              src="./img/banner-phones.png"
               alt="slide2"
             />
           </SwiperSlide>
           <SwiperSlide className={styles.swiper__slide}>
             <img
               className={styles.swiper__img}
-              src="img/banner-tablets.png"
+              src="./img/banner-tablets.png"
               alt="slide3"
             />
           </SwiperSlide>
@@ -61,7 +61,7 @@ export const WelcomeSlider = () => {
         <div id="welcome-slider-arrow-right" className={styles.moveSlide}>
           <img
             className={styles.moveSlide__slideArrow}
-            src="icons/aroow-right-ico.svg"
+            src="./icons/aroow-right-ico.svg"
             alt="arrowLeft"
           />
         </div>

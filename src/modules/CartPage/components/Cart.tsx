@@ -57,7 +57,7 @@ export const Cart: React.FC = () => {
           onClick={handleGoBack}
           className={`${styles.cart__buttonBack} ${isBackDisabled && styles.buttonDisabled}`}
         >
-          <img src="icons/arrow-left-ico.svg" alt="arrow-back" />
+          <img src="./icons/arrow-left-ico.svg" alt="arrow-back" />
           <p className={styles.buttonBackText}>Back</p>
         </div>
 

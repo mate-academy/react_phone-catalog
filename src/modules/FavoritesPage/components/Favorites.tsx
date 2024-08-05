@@ -23,10 +23,10 @@ export const Favorites: React.FC = () => {
       <div className={styles.favorites}>
         <div className={styles.favorites__path}>
           <Link to="/">
-            <img src="icons/home-ico.svg" alt="home" />
+            <img src="./icons/home-ico.svg" alt="home" />
           </Link>
 
-          <img src="icons/arrow-right-light-ico.svg" alt="arrow-right" />
+          <img src="./icons/arrow-right-light-ico.svg" alt="arrow-right" />
 
           <p className={styles.favorites__pathCategory}>
             {location.pathname.slice(1)}
