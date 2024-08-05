@@ -1,1 +1,78 @@
-// not empty
+@import "/src/Global";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.header, footer {
+  width: 100%;
+}
+
+footer {
+  margin-top: auto;
+ }
+
+.main {
+  min-height: 40vh;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 152px;
+  padding-right: 152px;
+  margin-bottom: 80px;
+
+  @include desktop-style {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+
+  @include tablet-style {
+    padding-left: 24px;
+    padding-right: 24px;
+    margin-bottom: 64px;
+  }
+
+  @include phone-style {
+    margin-bottom: 56px;
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  &--with-burger {
+    margin-bottom: 0;
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+img {
+  transition: transform 0.3s ease;
+}
+
+img:hover {
+  transform: scale(1.1); 
+}
+
+button {
+  appearance: none; 
+  background-color: transparent;
+  border: none; 
+  padding: 0;
+  margin: 0; 
+  font-family: inherit; 
+  font-size: inherit; 
+  cursor: pointer;
+  outline: none; 
+}
+
+.with-menu {
+  overflow: hidden;
+}

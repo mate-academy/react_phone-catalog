@@ -1,0 +1,61 @@
+@import '../../Global';
+
+:root {
+  --width: 327px;
+
+}
+
+.search {
+  position: relative;
+  width: var(--width);
+  height: 64px;
+
+  @include phone-style {
+    display: none; 
+  }
+
+  @include tablet-style {
+    width: calc( var(--width) / 3);
+  }
+
+  &__icon {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    right: 24px;
+    top: 24px;
+
+    
+    @include tablet-style {
+      right: 5px;
+    }
+  }
+  
+  &__input {
+    width: var(--width);
+    height: 63px;
+    text-indent: 24px;
+    border: transparent;
+    box-sizing: border-box;
+    border-left: 1px solid  var(--elements-color);
+    background-color: var(--white);
+    color: var(--primary-color);
+
+    @include tablet-style {
+      width: calc(var(--width) / 3) ;
+    }
+  
+    &::placeholder {
+      font-family: MontSemiBold, sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 17.89px;
+
+      @include tablet-style {
+        opacity: 0;
+      }
+    }
+  }
+}
+
+

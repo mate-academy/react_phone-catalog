@@ -1,0 +1,74 @@
+@import '../../Global';
+
+.productPage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__items {
+   @include sizing-items;
+  }
+  
+  &__headings {
+    margin-bottom: 40px;
+  }
+  &__h1 {
+    @include h1-style;
+
+    margin-bottom: 8px;
+
+    @include phone-style {
+      font-size: 22px;
+      line-height: 31px;
+    }
+  }
+
+  &__text {
+    @include body-text14;
+
+    color: $secondary-color;
+  }
+
+  &__option {
+    font-family: Mont, sans-serif;
+    font-size: 14px;
+    line-height: 21px;
+    letter-spacing: 0;
+    background-color: var(--white);
+    color: var(--icon-color);
+  }
+
+  &__option:focus {
+    color: var(--primary-color);
+    background-color: black;
+  }
+  &__option:active {
+    color: var(--primary-color);
+    background-color: black;
+  }
+ 
+  &__selecting {
+    display: flex;
+    flex-direction: row;
+    gap: 16px;
+  }
+
+  &__select-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 24px
+
+  }
+
+  &__small-text {
+    @include smoll-text;
+  }
+
+  &__pagination {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    gap: 40px;
+  }
+}

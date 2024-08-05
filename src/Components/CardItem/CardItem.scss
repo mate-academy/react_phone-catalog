@@ -1,0 +1,114 @@
+@import '../../Global';
+
+$item-width: 752px;
+$tablet-width: calc($item-width / 1.3);
+$phone-width: calc($item-width / 2.6);
+
+.cardItem {
+  width: $item-width;
+  height: 128px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid var(--elements-color);
+  background-color: var(--card-color);
+
+    @include tablet-style {
+      width: $tablet-width;
+    }
+    
+    @include phone-style {
+      width: $phone-width;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+  &__first-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+  }
+
+  &__second-row {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+
+    @include phone-style {
+     gap: 109px;
+    }
+  }
+
+  &__photo-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80px;
+    height: 80px;
+  }
+
+  &__photo {
+    height: 90%;
+  }
+
+  &__button {
+    width: 16px;
+    height: 16px;
+    text-align:center;
+    background-color: white;
+    border: transparent;
+  }
+
+  &__button:hover {
+    border: 1px solid var(--hover-card);
+  }
+
+  &__name {
+    width: 336;
+
+    @include body-text14;
+
+    @include tablet-style {
+      width: 176px;
+    }
+
+    @include phone-style {
+      width: 84px;
+    }
+  }
+
+  &__quantity {
+    display: flex;
+    gap: 13px;
+  }
+
+  &__plusminus {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--icon-color);
+    background: var(--white);
+    color: var(--primary-color);
+  }
+
+  &__plusminus:hover {
+    border: 1px solid var(--primary-color);
+  }
+
+  &__plusminus:disabled {
+    border: solid 1px var(--elements-color);
+    color: var(--icon-color);
+  }
+
+  &__amount {
+   display: flex;
+   align-items: center;
+   
+   @include body-text14;
+  }
+
+  &__price {
+    @include h3-style;
+  }
+}

@@ -1,0 +1,44 @@
+@import '../../Global';
+
+.breadcrumbs {
+  &__url {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 40px;
+    font-family: MontSemiBold, sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 15.34px;
+    color: var(--secondary-color);
+  }
+  
+  &__vector {
+    display: flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    color: var(--icon-color);
+  }
+  
+  &__url-icon {
+    color: var(--primary-color);
+  }
+
+  &__url-icon:hover {
+    border: 1px solid var(--primary-color);
+  }
+  
+  &__segment {
+    color: $secondary-color;
+    text-decoration: none;
+  }
+
+  &__segment:hover {
+    color: var(--primary-color);
+  }
+  
+  &__phoneId {
+    color: var(--secondary-color);
+  }
+}
+

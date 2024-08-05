@@ -1,0 +1,71 @@
+@import '../../Global';
+
+.pagination {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  list-style: none;
+  gap: 16px;
+
+  &__item {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid var(--elements-color);
+    background-color: var(--white);
+
+    &.is-active {
+      background-color: var(--button-color);
+    }    
+
+    &--button {
+      background-color: var(--white);;
+      border: 1px solid var(--icon-color);
+    }
+
+    &--button:disabled {
+      border: 1px solid var(--elements-color);
+    }
+  }
+
+  &__item:hover {
+    box-shadow: 0 3px 13px 0 var(--hover-card);
+  }
+
+  &__pages {
+   display: flex;
+   flex-direction: row;
+   gap: 8px;
+  }
+
+  &__link {
+    text-decoration: none;
+    
+    @include body-text14;
+
+    &.is-active {
+      color: white;
+
+    }
+  }
+
+  &__arrey {
+    display: inline-block;
+    padding: 2.5px;
+    border: solid var(--primary-color);
+    border-width: 0 2px 2px 0;
+
+    &--prev {
+      transform: rotate(135deg);
+      -webkit-transform: rotate(135deg);
+    }
+  
+    &--next {
+      transform: rotate(-45deg);
+      -webkit-transform: rotate(-45deg);
+    }
+  }
+};
+

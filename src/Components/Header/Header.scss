@@ -1,0 +1,153 @@
+@import '/src/Global';
+@import '../Shared/blocks';
+
+.header {
+  width: 100%;
+  height: 64px;
+  margin-bottom: 56px;
+  border-bottom: 1px solid  var(--elements-color);
+  box-sizing: border-box;
+  padding-left: 24px;
+
+  @include phone-style {
+    display: flex;
+    height: 48px;
+    margin-bottom: 24px;
+  }
+
+  @include tablet-style {
+    padding-left: 16px;
+    margin-bottom: 32px;
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  &__items-right  {
+   display: flex;
+   border-bottom: 1px solid var(--elements-color);
+
+   @include phone-style {
+    display: none
+  }
+  }
+
+  &__items-left {
+    display:  flex;
+    gap: 48px;
+
+    @include tablet-style {
+      gap: 16px;
+    }
+  }
+
+  &__links {
+    display: inline-flex;
+    align-items: center;
+    gap: 64px;
+
+    @include tablet-style {
+      gap: 32px;
+    }
+
+    @include phone-style {
+      display: none
+    }
+  }
+ 
+  &__link {
+    @include uppercase-style;
+
+    position: relative;
+    text-decoration: none;
+
+    &.is-active {
+      color: var(--primary-color);
+    }
+
+    &.is-active::after {
+      content: '';
+      position: absolute;
+      bottom: -26px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      color: var(--primary-color);
+      background-color: var(--primary-color);
+    }
+  }
+
+  &__link:hover {
+    color: var(--primary-color);
+  }
+
+  &__logo {
+    display: flex;
+    align-items: center;
+
+    @include tablet-style {
+      height: 30px;
+    }
+  }
+
+  &__icon {
+    width: 80px;
+    height: 27px;
+
+    @include tablet-style {
+      width: 64px;
+      height: 21px;
+    }
+  }
+
+  &__cart {
+    width: 66px;
+    height: 63px;
+
+    @include phone-style {
+      display: none
+    }
+  }
+  
+
+  &__favor {
+    width: 66px;
+    height: 63px;
+    border-left: 1px solid var(--elements-color);
+    border-right: 1px solid var(--elements-color);
+
+    @include phone-style {
+      display: none
+    }
+  }
+
+  &__amount-box {
+    top: 18px;
+    left: 34px;
+  }
+
+  &__menu {
+    width: 48px;
+    height: 48px;
+    position: absolute;
+    right: 0;
+    top: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-left: 1px solid var(--elements-color);
+
+    visibility: hidden;
+
+    @include phone-style {
+      visibility: visible;
+    }
+  }
+}
+
+
+
