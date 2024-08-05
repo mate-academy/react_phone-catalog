@@ -119,15 +119,7 @@
 
   &__buttonAddToCatr {
     height: 40px;
-    width: 100px;
-
-    @include on-tablet {
-      width: 125px;
-    }
-
-    @include on-desktop {
-      width: 160px;
-    }
+    width: 100%;
   }
 }
 
