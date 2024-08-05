@@ -1,0 +1,47 @@
+@import './styles/all';
+
+* {
+  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+  position: relative;
+  min-width: 320px;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+  font-family: Mont-Regular, sans-serif;
+  font-size: 12px;
+  overflow-x: hidden;
+}
+
+.app {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+.container {
+  padding-top: 24px;
+  padding-bottom: 56px;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+
+  // overflow-y: auto;
+
+  flex-grow: 1;
+
+  @include on-tablet {
+    padding-top: 40px;
+    padding-bottom: 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    margin-inline: auto;
+    padding-bottom: 80px;
+  }
+}

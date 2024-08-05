@@ -1,0 +1,109 @@
+@import '../../styles/all';
+
+.imageGallery {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @include on-tablet {
+    flex-direction: row;
+    grid-column: 1 / 8;
+  }
+
+  @include on-desktop {
+    grid-column: 1 / 13;
+  }
+}
+
+.imageBigWrapperMobile {
+  display: flex;
+  justify-content: center;
+  height: 288px;
+
+  @include on-tablet {
+    display: none;
+  }
+}
+
+.imageBigWrapper {
+  display: none;
+
+  @include on-tablet {
+    display: flex;
+    justify-content: center;
+    height: 287px;
+    width: 287px;
+    grid-column: 2 / 9;
+  }
+
+  @include on-desktop {
+    height: 464px;
+    width: 464px;
+    grid-column: 3 / 13;
+  }
+}
+
+.imageBig {
+  object-fit: contain;
+}
+
+.imageSmallWrapper {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  height: 49px;
+
+  @include on-tablet {
+    flex-direction: column;
+    justify-content: start;
+    gap: 8px;
+    height: 35px;
+    width: 35px;
+    bottom: 0;
+  }
+
+  @include on-desktop {
+    height: 80px;
+    width: 80px;
+    gap: 16px;
+  }
+}
+
+.imageSmall {
+  object-fit: contain;
+  height: 40px;
+  cursor: pointer;
+
+  @include on-tablet {
+    height: 33px;
+  }
+
+  @include on-desktop {
+    height: 78px;
+  }
+}
+
+.imageBorder, .imageBorderActive {
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  width: 51px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include on-tablet {
+    width: 100%;
+    height: 35px;
+  }
+
+  @include on-desktop {
+    width: 100%;
+    height: 80px;
+  }
+}
+
+.imageBorderActive {
+  border-color: var(--color-text-primary);
+}
+

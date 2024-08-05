@@ -1,0 +1,145 @@
+@import './variables';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin tablet-bigger-screen {
+  @media (min-width: $tablet-bigger-screen) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin padding-inline {
+  padding-inline: 16px;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    padding-inline: 32px;
+  }
+}
+
+@mixin section-grid {
+  display: grid;
+  grid-gap: 16px;
+  row-gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+
+  @include padding-inline;
+
+  @include on-tablet {
+    grid-template-columns: repeat(12, 1fr);
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat(24, 32px);
+  }
+}
+
+@mixin action-buttons {
+  background-color: var(--color-favourite);
+  border: 1px solid var(--color-favourite-border);
+  height: 32px;
+  width: 32px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s;
+
+  &:hover {
+    border: 1px solid var(--color-text-primary);
+    transform: scale(1.10);
+    transition: transform 0.3s ease;
+  }
+
+  &:disabled {
+    background-color: transparent;
+    border: 1px solid var(--color-icons);
+    transform: none;
+  }
+}
+
+@mixin back-button {
+  margin-bottom: 16px;
+  grid-column: 1 / -1;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  gap: 8px;
+  height: 16px;
+  width: 66px;
+  border: none;
+  cursor: pointer;
+  background-color: transparent;
+}
+
+@mixin back-button-text {
+  display: block;
+  padding-top: 2px;
+
+  @extend %small-text;
+
+  color: var(--color-text-secondary);
+}
+
+@mixin divider {
+  height: 1px;
+  width: 100%;
+  background-color: var(--color-elements);
+}
+
+@mixin h1-title {
+  font-family: $font-bold;
+
+  @extend %h1-mobile;
+
+  @include on-tablet {
+    @include h1-desktop-tablet;
+  }
+
+  margin-bottom: 8px;
+}
+
+@mixin h2-title {
+  font-family: $font-bold;
+
+  @extend %h2-mobile;
+
+  @include on-tablet {
+    @include h2-desktop-tablet;
+  }
+}
+
+@mixin h3-title {
+  font-family: $font-bold;
+
+  @extend %h3-mobile;
+
+  @include on-tablet {
+    @include h3-desktop-tablet;
+  }
+}
+
+@mixin h4-title {
+  font-family: $font-semibold;
+
+  @extend %h4-mobile;
+
+  @include on-tablet {
+    @include h4-desktop-tablet;
+  }
+}
+

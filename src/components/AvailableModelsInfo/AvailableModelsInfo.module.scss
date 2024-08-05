@@ -1,0 +1,120 @@
+@import '../../styles/all';
+
+.availableModelsContainer {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  @include on-tablet {
+    grid-column: 8 / span 5;
+  }
+
+  @include on-desktop {
+    grid-column: 14 / span 7;
+  }
+}
+
+.optionsWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  @extend %small-text;
+
+  color: var(--color-text-secondary);
+}
+
+.divider {
+ @include divider;
+
+ margin-bottom: 16px;
+ margin-top: 16px;
+}
+
+.buttonWrapper {
+  height: 32px;
+  width: 32px;
+  border: 1px solid var(--color-elements);
+  padding: 2px;
+  border-radius: 50%;
+}
+
+.allColorButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.colorButton {
+  height: 100%;
+  width: 100%;
+  border-radius: 50%;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.colorButtonActive {
+  border-color: var(--color-text-primary);
+}
+
+.capacityButtons {
+  display: flex;
+  gap: 8px;
+}
+
+.capacityButton {
+  @extend %body-text;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-inline: 8px;
+  height: 32px;
+  border: 1px solid var(--color-icons);
+  background-color: transparent;
+  color: var(--color-text-primary);
+  cursor: pointer;
+}
+
+.capacityButtonActive {
+  background-color: var(--color-button);
+  color: var(--color-white);
+}
+
+.priceWrapper {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 8px;
+
+  @include h3-title;
+}
+
+.priceRegular {
+  color: var(--color-text-primary);
+  text-decoration: line-through;
+}
+
+.priceDiscount {
+  color: var(--color-text-secondary);
+}
+
+.techContainer {
+  margin-top: 32px;
+}
+
+.techWrapper {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  line-height: 15px;
+  padding-bottom: 8px;
+}
+
+.techChars {
+  color: var(--color-text-secondary);
+}
+
+.techCharInfo {
+  color: var(--color-text-primary);
+}

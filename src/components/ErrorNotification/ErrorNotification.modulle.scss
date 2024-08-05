@@ -1,0 +1,5 @@
+@import '../../styles/all';
+
+.errorNotification {
+  @include h3-title;
+}

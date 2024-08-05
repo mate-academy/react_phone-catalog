@@ -1,0 +1,28 @@
+@import '../../styles/all';
+
+.container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 24px;
+
+  @include on-tablet {
+    margin-bottom: 40px;
+  }
+}
+
+.categoryTitle {
+  color: var(--color-text-secondary);
+  text-decoration: none;
+}
+
+.active {
+  color: var(--color-text-primary);
+}
+
+.productTitle {
+  color: var(--color-text-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
