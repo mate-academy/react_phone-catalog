@@ -1,0 +1,29 @@
+@import './../../../styles/utils/vars';
+@import './../../../styles/utils/mixins';
+@import './../../../styles/utils/extends';
+
+.header__info {
+  position: fixed;
+  top: 49px;
+  left: -100%;
+  bottom: 0;
+  width: 100%;
+  background-color: $white;
+  padding-top: 20px;
+  overflow: auto;
+  transition: left 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  @include on-tablet {
+    position: static;
+    inset: unset;
+    padding-top: 0;
+    flex-direction: row;
+    align-items: center;
+  }
+  &.header_tools__info_open {
+    left: 0;
+  }
+}

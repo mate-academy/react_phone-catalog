@@ -1,0 +1,67 @@
+@import './../../../styles/utils/vars';
+
+.dropdown {
+  position: relative;
+  max-width: 130px;
+  width: 100%;
+  &__label {
+    font-size: 12px;
+    font-weight: 700;
+    line-height: 1.5;
+    color: $secondary;
+  }
+  &:first-child {
+    max-width: 176px;
+    width: 100%;
+  }
+  &__items {
+    position: absolute;
+    top: 70px;
+    width: 100%;
+    left: 0;
+    background-color: $white;
+    padding: 8px 10px;
+    border: 1px solid $elements;
+    box-shadow: 0 2px 15px 0 #0000000d;
+  }
+  &__item {
+    padding: 6px 0;
+    color: $secondary;
+    cursor: pointer;
+    width: 100%;
+    font-weight: 500;
+    transition: color 0.3s ease-in-out;
+    font-size: 14px;
+    &:hover {
+      background-color: $hover;
+      color: $primary;
+    }
+  }
+  &__button {
+    border: 1px solid $elements;
+    padding: 6px 10px;
+    cursor: pointer;
+    color: $primary;
+    font-weight: 700;
+    width: 100%;
+    font-size: 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    img {
+      transition: transform 0.3s ease-in-out;
+    }
+    &:focus {
+      border: 1px solid $primary;
+    }
+    &_up {
+      img {
+        transform: rotate(180deg);
+      }
+    }
+  }
+}
+
+.dropdownActive {
+  color: $primary;
+}

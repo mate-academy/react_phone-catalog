@@ -1,0 +1,46 @@
+@import './../../styles/utils/vars';
+
+.breadCrumbs {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+  &__title {
+    margin-bottom: 10px;
+  }
+  &_section {
+    margin-bottom: 15px;
+  }
+}
+
+.breadCrumb {
+  color: $secondary;
+  font-size: 12px;
+  font-weight: 600;
+  line-height: 1.2;
+  a {
+    color: $secondary;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  & + & {
+    margin-left: 32px;
+    position: relative;
+    &::before {
+      content: '';
+      position: absolute;
+      left: -16px;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      background-image: url('./../../images/icons/arrow_right.svg');
+      background-size: contain;
+      background-repeat: no-repeat;
+      width: 16px;
+      height: 16px;
+    }
+  }
+}
+
+.breadCrumbHome {
+  display: block;
+}

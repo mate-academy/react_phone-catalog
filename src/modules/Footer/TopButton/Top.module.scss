@@ -1,0 +1,20 @@
+@import './../../../styles/utils/vars';
+
+.footer {
+  &__top {
+    align-self: center;
+  }
+  &__btn {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    font-size: 12px;
+    font-weight: 700;
+    color: $secondary;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      color: $primary;
+    }
+  }
+}

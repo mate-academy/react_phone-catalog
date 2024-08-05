@@ -1,0 +1,41 @@
+@import './vars';
+
+%burger-styles {
+  width: 14px;
+  height: 2px;
+  border-radius: 15px;
+  visibility: visible;
+  background-color: $primary;
+}
+
+%default-button {
+  min-height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: $white;
+  background-color: $primary;
+  width: 100%;
+  transition: all 0.3s ease-in-out;
+  padding: 5px 3px;
+  font-size: 14px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 0 3px 13px 0 #17203166;
+  }
+}
+
+%like-button {
+  width: 40px;
+  height: 40px;
+  flex: 0 0 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid $elements;
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  &:hover {
+    border: 1px solid $primary;
+  }
+}

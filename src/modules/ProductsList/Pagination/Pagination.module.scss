@@ -1,0 +1,69 @@
+@import './../../../styles/utils/vars';
+@import './../../../styles/utils/mixins';
+
+.pagination {
+  padding-bottom: 64px;
+
+  @include on-desktop {
+    padding-bottom: 80px;
+  }
+  &__btn_current {
+    background-color: $primary;
+    color: $white;
+  }
+  &__list {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    justify-content: center;
+  }
+  &__item {
+    width: 25px;
+    height: 25px;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+  }
+  &__button {
+    border: 1px solid $elements;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    cursor: pointer;
+    width: 100%;
+    font-size: 14px;
+    transition: all 0.3s ease-in-out;
+    &:hover {
+      border: 1px solid $icons;
+    }
+  }
+  &__navigation {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    border: 1px solid $elements;
+    transition: all 0.3s ease-in-out;
+    width: 25px;
+    height: 25px;
+
+    @include on-tablet {
+      width: 32px;
+      height: 32px;
+    }
+    &:hover {
+      border: 1px solid $icons;
+    }
+    img {
+      display: block;
+    }
+    &[disabled] {
+      cursor: default;
+      background-color: $elements;
+      opacity: 0.3;
+    }
+  }
+}
