@@ -29,7 +29,6 @@ import {
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
   const location = useLocation();
-  const isMenu = useAppSelector(state => state.boolean.isMenuShown);
   const BURGER_MENU_ICO = 'icons/burger-menu-ico.svg';
   const CLOSE_ICO = 'icons/close-ico.svg';
 
@@ -108,7 +107,7 @@ export const App: React.FC = () => {
   };
 
   return (
-    <div className={`${styles.app} ${isMenu && styles.noScrol}`}>
+    <div className={styles.app}>
       <HidenMenu />
 
       <header className={styles.header}>

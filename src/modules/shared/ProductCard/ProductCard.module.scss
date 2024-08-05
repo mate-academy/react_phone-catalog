@@ -8,13 +8,15 @@
   border: 1px solid $elements-grey-color;
   padding: 32px;
 
+  &__topBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
   &__image {
     max-height: 100px;
-    max-width: 100%;
-    display: block;
-    margin: 0 auto;
     object-fit: contain;
-    margin-bottom: 24px;
     cursor: pointer;
 
     &:hover {
@@ -35,9 +37,6 @@
     letter-spacing: 0%;
     text-align: left;
     cursor: pointer;
-
-    @include on-tablet {
-    }
   }
 
   &__priceBlock {

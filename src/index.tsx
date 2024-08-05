@@ -1,4 +1,5 @@
 import 'bulma/css/bulma.min.css';
+import './modules/shared/_main.scss';
 
 export * from './App';
 

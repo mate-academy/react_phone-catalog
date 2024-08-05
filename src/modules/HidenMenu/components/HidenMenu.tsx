@@ -18,7 +18,7 @@ export const HidenMenu: React.FC = () => {
   return (
     <div
       id="hidenMenu"
-      className={`${styles.hidenMenu} ${!isMenuShown ? styles.hideHidenMenu : styles.showHidenMenu}`}
+      className={`${styles.hidenMenu} ${!isMenuShown ? styles.hideHidenMenu : styles.showHidenMenu} asd`}
     >
       <nav className={styles.nav}>
         <ul className={styles.nav__list}>
