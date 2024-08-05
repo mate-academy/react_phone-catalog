@@ -1,0 +1,106 @@
+@import './../../../../styles/services/mixin';
+
+.main-slider{
+  &__title{
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 41px;
+    letter-spacing: -0.01em;
+    margin-block: 24px;
+
+    @include on-tablet{
+      font-size: 48px;
+      line-height: 56px;
+      margin-block: 32px;
+    }
+
+    @include on-desktop{
+      margin-block: 56px;
+    }
+  }
+
+  &__slider{
+    margin: 0 auto;
+
+    @include page-grid;
+
+    @include on-tablet{
+      padding-inline: 24px;
+    }
+
+    @include on-desktop{
+      box-sizing: border-box;
+      padding-inline: 32px;
+      max-width: 1200px;
+    }
+  }
+
+  &__picture{
+    height: 320px;
+    width: auto;
+    display: flex;
+    justify-content: center;
+    grid-column: 1/-1;
+    overflow: hidden;
+
+
+    @include on-tablet{
+      height: 189px;
+      grid-column: span 10;
+    }
+
+    @include on-desktop{
+      height: 400px;
+      grid-column: span 22;
+    }
+  }
+
+  &__image{
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    object-position: top;
+    flex: 1 1 auto;
+
+    @include on-tablet{
+      object-position: center;
+    }
+
+    @include on-desktop{
+      max-height: 400px;
+    }
+  }
+
+  &__prev, &__next{
+    display: none;
+
+
+    @include on-tablet{
+      display: block;
+      border-radius: 0;
+      border: none;
+      background-color: #323542;
+      grid-column: span 1;
+    }
+  }
+
+  &__pagination{
+    display: flex;
+    column-gap: 14px;
+    justify-content: center;
+    grid-column: 1/-1;
+    padding-block: 10px;
+  }
+
+  &__dot{
+    width: 14px;
+    height: 4px;
+    background-color: #3B3E4A;
+    margin-top: 18px;
+
+  }
+}
+
+.active-dot{
+  background-color: #F1F2F9;
+}

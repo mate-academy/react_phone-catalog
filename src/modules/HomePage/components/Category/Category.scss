@@ -1,0 +1,92 @@
+@import './../../../../styles/services/mixin';
+
+.category{
+  &__items{
+    display: flex;
+    flex-direction: column;
+    row-gap: 32px;
+
+    @include on-tablet{
+      flex-direction: row;
+      column-gap: 15px;
+    }
+
+    @include on-desktop{
+      column-gap: 16px;
+    }
+  }
+
+  &__item{
+    margin: 0 auto;
+  }
+
+  &__picture{
+    height: 288px;
+    width: 288px;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 24px;
+    transition: transform 0.3s;
+
+  &:hover{
+    transform: scale(1.1);
+  }
+
+    &--phones{
+      background-color: #6D6474;
+    }
+
+    &--tablets{
+      background-color: #8D8D92;
+    }
+
+    &--accessories{
+      background-color: #D53C51;
+    }
+
+    @include on-tablet{
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop{
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__image{
+    position: absolute;
+    top: 20%;
+    left: 20%;
+    height: 288px;
+    width: 288px;
+    object-fit: cover;
+    object-position: top;
+
+    @include on-tablet{
+      height: 187px;
+      width: 187px;
+    }
+
+    @include on-desktop{
+      height: 368px;
+      width: 368px;
+    }
+  }
+
+  &__link{
+    display: inline-block;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 26px;
+    margin-bottom: 4px;
+  }
+
+  &__length{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #89939A;
+  }
+}

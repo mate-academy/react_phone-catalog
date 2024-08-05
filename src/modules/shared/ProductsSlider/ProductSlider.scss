@@ -1,0 +1,26 @@
+@import './../../../styles/services/mixin';
+
+.new-models{
+  &__slider{
+    box-sizing: border-box;
+    padding-left: 16px;
+    width: 100%;
+
+    @include on-desktop{
+      padding-inline: 32px;
+      margin: 0 auto;
+      max-width: 1200px;
+
+    }
+  }
+
+  &__content{
+    overflow: hidden;
+  }
+
+  &__wrapper{
+    display: flex;
+    column-gap: 16px;
+    transition: transform 0.3s;
+  }
+}

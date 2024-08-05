@@ -1,0 +1,29 @@
+.pagination{
+  display: flex;
+  justify-content: center;
+  column-gap: 16px;
+
+  &__buttons{
+    display: flex;
+    max-width: 400px;
+    gap: 8px;
+  }
+
+  &__button{
+    height: 32px;
+    width: 32px;
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 21px;
+    color: #F1F2F9;
+    background-color: #161827;
+
+    &:hover{
+      background-color: #3B3E4A;
+    }
+
+    &--active{
+      background-color: #905BFF;
+    }
+  }
+}
