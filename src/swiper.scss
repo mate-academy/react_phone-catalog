@@ -1,0 +1,34 @@
+@import './variable';
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.button-swiper {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.swiper-pagination {
+  display: flex;
+  column-gap: 10px !important;
+  top: unset !important;
+  left: unset !important;
+  bottom: unset !important;
+  width: auto !important;
+  right: unset !important;
+  position: unset !important;
+}
+
+.swiper-pagination-bullet {
+  width: 14px !important;
+  height: 4px !important;
+  border-radius: 0 !important;
+  background: $light-gray !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: $white-color !important;
+}

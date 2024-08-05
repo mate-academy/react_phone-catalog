@@ -1,0 +1,19 @@
+@import '../../variable';
+
+.LinkBack {
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+  margin-top: 41px;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.Text {
+  color: $white-color;
+  font-size: 12px;
+  margin-top: 2px;
+}

@@ -1,0 +1,24 @@
+@import '../../variable';
+@import '../../mixin';
+
+.Wrapper {
+  display: flex;
+  column-gap: 16px;
+  margin-top: 32px;
+
+  @include custom(930) {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+}
+
+.Title {
+  color: $white-color;
+  font-size: 48px;
+  margin-top: 16px;
+
+  @include custom(320) {
+    font-size: 32px;
+  }
+}

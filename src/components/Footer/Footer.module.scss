@@ -1,0 +1,91 @@
+@import '../../variable';
+@import '../../mixin';
+
+.Container {
+  width: 100%;
+  margin: 0 auto;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+.Footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  height: $height-footer;
+  border-top: 1px solid $elements-color;
+
+  @include media(mobile, large-mobile) {
+    height: 260px;
+  }
+}
+
+.Content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @include media(mobile, large-mobile) {
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}
+
+.Logo {
+  width: 89px;
+}
+
+.Socials {
+  display: flex;
+  column-gap: 105px;
+  list-style-type: none;
+
+  @include small {
+    column-gap: 14px;
+  }
+
+  @include media(mobile, large-mobile) {
+    margin-top: 20px;
+  }
+}
+
+.Link {
+  color: $white-color;
+  font-size: 12px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: color $transition-duration;
+
+  &:hover {
+    color: $secondary-color;
+  }
+}
+
+.Buttons {
+  display: flex;
+  column-gap: 16px;
+  align-items: center;
+
+  @include media(mobile, large-mobile) {
+    align-self: center;
+    margin-top: 32px;
+  }
+}
+
+.Text {
+  color: $secondary-color;
+  font-size: 12px;
+}
+
+.Button {
+  width: 32px;
+  height: 32px;
+  border: none;
+  outline: none;
+  background: $surface-main-color;
+  cursor: pointer;
+}

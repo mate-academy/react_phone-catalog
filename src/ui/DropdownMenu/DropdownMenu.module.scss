@@ -1,0 +1,56 @@
+@import '../../variable';
+@import '../../mixin';
+
+.DropdownMenu {
+  position: relative;
+  width: 176px;
+  height: 40px;
+  display: flex;
+  flex-direction: column;
+
+  @include custom(400) {
+    width: 136px;
+  }
+}
+
+.Small {
+  width: 128px;
+
+  @include custom(400) {
+    width: 136px;
+  }
+}
+
+.Header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px 9px;
+  background: $surface-main-color;
+  cursor: pointer;
+}
+
+.Text {
+  color: $white-color;
+}
+
+.Items {
+  width: 100%;
+  position: absolute;
+  margin-top: 4px;
+  background: $black-color;
+  border: 1px solid $icons-color;
+  transform: translateY(40px);
+  z-index: 11;
+}
+
+.Item {
+  padding: 6px 12px 5px;
+  font-size: 14px;
+  color: $secondary-color;
+  cursor: pointer;
+
+  &:hover {
+    background: $surface-main-color;
+  }
+}

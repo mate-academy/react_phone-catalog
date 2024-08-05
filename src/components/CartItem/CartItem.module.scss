@@ -1,0 +1,107 @@
+@import '../../variable';
+@import '../../mixin';
+
+.CartItem {
+  max-width: 100%;
+  width: 752px;
+  padding: 24px;
+  background: $surface-secondary-color;
+
+  @include custom(1050) {
+    width: 650px;
+  }
+
+  @include custom(930) {
+    width: 100%;
+  }
+
+  @include custom(320) {
+    padding: 16px;
+  }
+}
+
+.Wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  @include custom(570) {
+    flex-direction: column;
+    gap: 16px;
+  }
+}
+
+.Descriptions {
+  display: flex;
+  align-items: center;
+  column-gap: 24px;
+
+  @include custom(570) {
+    align-self: flex-start;
+  }
+
+  @include custom(320) {
+    column-gap: 16px;
+  }
+}
+
+.ButtonDelete {
+  background: transparent;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+
+.Picture {
+  width: 80px;
+}
+
+.ProductName {
+  font-size: 14px;
+  color: $white-color;
+}
+
+.ProductPrice {
+  font-weight: 800;
+  font-size: 22px;
+  color: $white-color;
+}
+
+.QuantitiesWrapper {
+  display: flex;
+  align-items: center;
+  column-gap: 53px;
+
+  @include custom(570) {
+    align-self: flex-start;
+  }
+}
+
+.Quantities {
+  display: flex;
+  align-items: center;
+  column-gap: 14px;
+}
+
+.ButtonQuantity {
+  width: 32px;
+  height: 32px;
+  background: transparent;
+  border: 1px solid $elements-color;
+  outline: none;
+  color: $elements-color;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.ButtonQuantityActive {
+  background: $surface-main-color;
+  color: $white-color;
+}
+
+.Quantity {
+  color: $white-color;
+  font-weight: 600;
+}
