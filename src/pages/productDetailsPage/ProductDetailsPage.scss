@@ -1,0 +1,395 @@
+@import '../../components/styles/mixins';
+@import '../../components/styles/variables';
+
+.page__container {
+  @include page-adaptive;
+}
+
+.details {
+  @include on-tablet {
+    display: grid;
+    grid-template-columns: repeat((12, 1fr));
+  }
+
+  @include on-desktop {
+    grid-template-columns: repeat((24, 1fr));
+  }
+
+  &__title {
+    @include h3;
+
+    font-weight: 800;
+
+    margin-bottom: 32px;
+
+    @include on-tablet {
+      @include h2;
+
+      grid-column: span 12;
+      margin-bottom: 40px;
+    }
+
+    @include on-desktop {
+      @include h2;
+
+      grid-column: span 24;
+      margin-bottom: 40px;
+    }
+  }
+
+  &__main-image {
+    position: relative;
+    margin: 0 16px 16px 0;
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+
+    @include on-tablet {
+      align-self: start;
+      grid-row: 2 / 3;
+      grid-column: 2 / 8;
+    }
+
+    @include on-desktop {
+      grid-column: 3 / 13;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__image {
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    background-color: $white;
+  }
+
+  &__images {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    column-gap: 8px;
+    margin-bottom: 40px;
+
+    @include on-tablet {
+      align-self: start;
+      grid-row: 2 / 3;
+      flex-direction: column;
+      row-gap: 8px;
+    }
+
+    @include on-desktop {
+      grid-column: 1 / 3;
+      margin-bottom: 80px;
+    }
+  }
+
+  &__image-wrapper {
+    position: relative;
+    width: 100%;
+    border: 1px solid $elements;
+    cursor: pointer;
+
+    &--active {
+      border: 1px solid $primary;
+    }
+
+    &::before {
+      content: "";
+      display: block;
+      padding-top: 100%;
+    }
+  }
+
+  &__description {
+    margin-bottom: 56px;
+
+    @include on-tablet {
+      margin-bottom: 64px;
+    }
+
+    @include on-desktop {
+      margin-bottom: 80px;
+    }
+
+    &--right {
+      @include on-tablet {
+        grid-row: 2 / 3;
+        grid-column: 8 / -1;
+      }
+
+      @include on-desktop {
+        grid-column: 14 / 21;
+      }
+    }
+
+    &--bottom {
+      @include on-tablet {
+        grid-row: span 1;
+        grid-column: span 12;
+      }
+
+      @include on-desktop {
+        grid-row: span 1;
+        grid-column: 1 / 13;
+      }
+    }
+
+    &--last {
+      @include on-tablet {
+        grid-row: span 1;
+        grid-column: span 12;
+      }
+
+      @include on-desktop {
+        grid-row: span 1;
+        grid-column: 14 / -1;
+      }
+    }
+  }
+
+  &__description-block {
+    height: 105px;
+    margin-bottom: 32px;
+  }
+
+  &__description-mini-block {
+    padding-bottom: 24px;
+    border-bottom: 1px solid $elements;
+    margin-bottom: 24px;
+
+    &--last {
+      margin-bottom: 32px;
+    }
+  }
+
+  &__description-top {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__description-title {
+    @include small-text;
+
+    font-weight: 600;
+    margin-bottom: 8px;
+  }
+
+  &__id {
+    @include small-text;
+
+    @include on-desktop {
+      right: 0;
+    }
+  }
+
+  &__description-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+    gap: 8px;
+  }
+
+  &__color-border {
+    box-sizing: border-box;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid $elements;
+    cursor: pointer;
+
+    &:hover{
+      border-color: $icons;
+    }
+
+    &--active {
+      border: 1px solid $primary;
+    }
+  }
+
+  &__color {
+    box-sizing: border-box;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 2px solid $white;
+  }
+
+  &__capacity {
+    @include body-text;
+
+    color: $primary;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    height: 32px;
+    width: auto;
+    padding: 8px;
+    border: 1px solid $icons;
+    cursor: pointer;
+
+    &:hover {
+      border: 1px solid $primary;
+    }
+
+    &--active {
+      color: $white;
+      background-color: $primary;
+    }
+  }
+
+  &__price-wrapper {
+    height: 41px;
+    display: flex;
+    justify-content: start;
+    margin-bottom: 16px;
+  }
+
+  &__price {
+    @include h2;
+
+    font-weight: 800;
+    display: flex;
+    align-items: center;
+    margin-right: 8px;
+
+    &--full {
+      @include h3;
+
+      font-weight: 500;
+      color: $secondary;
+      text-decoration-line: line-through;
+      text-decoration-thickness: 2px;
+    }
+  }
+
+  &__actions {
+    display: grid;
+    grid-template-columns: 1fr 48px;
+    gap: 8px;
+    height: 48px;
+  }
+
+  &__button {
+    @include body-text;
+    @include anime-btn;
+
+    cursor: pointer;
+
+    &--add {
+      color: $white;
+      background-color: $primary;
+      border: none;
+    }
+
+    &--added {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+
+      &:hover {
+        border: none;
+      }
+    }
+
+  &--favorite-white {
+      border: 1px solid $icons;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white;
+      background-image: url(../../../public/img/icons/heart.svg);
+
+      &:hover {
+        border: none;
+      }
+    }
+
+    &--favorite-red {
+      border: 1px solid $icons;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white;
+      background-image: url(../../../public/img/icons/heart-red.svg);
+
+      &:hover {
+        border: none;
+      }
+    }
+  }
+
+  &__description-bottom {
+    display: flex;
+    flex-direction: column;
+    row-gap: 8px;
+    margin-top: 16px;
+  }
+
+  &__description-group {
+    @include small-text;
+
+    font-weight: 600;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__description-value {
+    color: $primary;
+  }
+
+  &__small-title {
+    @include mobile-h3;
+
+    padding-bottom: 16px;
+    margin-bottom: 32px;
+    border-bottom: 1px solid $elements;
+
+    @include on-tablet {
+      @include  desktop-h3;
+    }
+  }
+
+  &__article {
+    margin-bottom: 32px;
+
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  &__article-title {
+    @include mobile-h4;
+
+    margin-bottom: 16px;
+
+    @include on-tablet {
+      @include desktop-h4;
+    }
+  }
+
+  &__article-text {
+    @include body-text;
+
+    font-weight: 600;
+  }
+
+  &__tech-group {
+    @include body-text;
+
+    font-weight: 500;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  &__tech-value {
+    color: $primary;
+  }
+}

@@ -1,0 +1,43 @@
+@import '../../components/styles/mixins';
+
+.rights {
+  @include page-adaptive;
+
+  gap: 32px;
+
+  &__section {
+    row-gap: 32px;
+  }
+
+  &__title{
+    @include h1;
+
+    background-color: $green;
+    color: $white;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: span 6;
+  }
+
+  &__h2{
+    @include h2;
+
+    margin-bottom: 16px;
+  }
+  &__h3{
+    @include h3;
+    
+    margin-bottom: 16px;
+
+  }
+
+  &__text {
+    @include body-text;
+
+    font-weight: 500;
+    color: $primary;
+    margin-bottom: 32px;
+  }
+}

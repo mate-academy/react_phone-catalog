@@ -1,0 +1,308 @@
+@import './variables';
+
+@mixin on-phone-min {
+  @media (min-width: $phone-width) {
+    @content;
+  }
+}
+
+@mixin on-phone {
+  @media (max-width: $phone-width) {
+    @content;
+  }
+}
+
+@mixin on-tablet {
+  @media (min-width: $tablet-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop-small {
+  @media (min-width: $desktop-width-small) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-width) {
+    @content;
+  }
+}
+
+@mixin footer-padding-inline {
+  padding-inline: 16px;
+  margin: 0 auto;
+
+  @include on-tablet {
+    padding-inline: 24px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+  }
+}
+
+@mixin h1 {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  margin: 0;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+@mixin h2 {
+  font-size: 32px;
+  line-height: 41px;
+  font-weight: 700;
+  margin: 0;
+
+  @include on-phone {
+    font-size: 22px;
+  }
+}
+
+@mixin desktop-h2 {
+  font-size: 32px;
+  font-weight: 800;
+  line-height: 41px;
+  letter-spacing: -0.01em;
+  color: $primary;
+}
+
+@mixin h3 {
+  font-size: 22px;
+  line-height: 31px;
+  margin: 0;
+}
+
+@mixin desktop-h3 {
+  font-size: 22px;
+  line-height: 31px;
+  font-weight: 800;
+  margin: 0;
+  color: $primary;
+}
+
+@mixin mobile-h3 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  margin: 0;
+  color: $primary;
+}
+
+@mixin mobile-h4 {
+  font-size: 16px;
+  line-height: 21px;
+  font-weight: 700;
+  color: $primary;
+}
+
+@mixin desktop-h4 {
+  font-size: 20px;
+  line-height: 26px;
+  font-weight: 700;
+  color: $primary;
+}
+
+@mixin small-text {
+  text-decoration: none;
+  color: $secondary;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 15px;
+}
+
+@mixin body-text {
+  color: $secondary;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 21px;
+}
+
+@mixin buttons {
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 21px;
+  color: $primary;
+}
+
+@mixin link {
+  font-size: 12px;
+  line-height: 11px;
+  text-decoration: none;
+  font-weight: 800;
+  transition: all ease-out 0.5s;
+  color: $secondary;
+}
+
+@mixin cart-count {
+  font-size: 9px;
+  font-weight: 600;
+  line-height: 11.5px;
+}
+
+@mixin logo {
+  background-repeat: no-repeat;
+  background-position: left;
+  background-size: contain;
+  transition: filter 0.5s;
+  background-image: url(../../../public/img/logo/logo.svg);
+
+  &:hover {
+    filter: drop-shadow(1px 1px 14px $green);
+  }
+}
+
+@mixin page-adaptive {
+  margin: 0 auto;
+  padding: 24px 16px 64px;
+  display: flex;
+  flex-direction: column;
+
+  @include on-tablet {
+    padding: 32px 24px 64px;
+  }
+
+  @include on-desktop {
+    max-width: 1200px;
+    padding: 32px 0 80px;
+  }
+}
+
+// @mixin button {
+//   border: 1px solid $elements;
+//   cursor: pointer;
+//   width: 32px;
+//   z-index: 2;
+//   font-family: Mont, sans-serif;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   transition: border ease-out 0.5s;
+//   background-color: inherit;
+
+//   &::before {
+//     content: '';
+//     width: 16px;
+//     height: 16px;
+//   }
+
+//   &:hover {
+//     border: 1px solid $primary;
+//   }
+
+//   &.left::before {
+//     background-image: url(../../../public/img/icons/arrow-left-fat.svg);
+//   }
+
+//   &.right::before {
+//     background-image: url(../../../public/img/icons/arrow-right-light.svg);
+//   }
+
+//   &.top::before {
+//     background-image: url(../../../public/img/icons/arrow-top-fat.svg);
+//   }
+// }
+
+
+@mixin anime-btn {
+  overflow: hidden;
+  filter: hue-rotate(0deg);
+  transition: all 0.4s linear;
+
+  &:hover {
+    span {
+      position: absolute;
+
+      &:nth-child(1) {
+        filter: hue-rotate(0deg);
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: linear-gradient(90deg, transparent, $animation-blue);
+        animation: animate1 2s linear infinite;
+      }
+      
+      @keyframes animate1 {
+        0% {
+          left: -100%;
+        }
+        50%,
+        100% {
+          left: 100%;
+        }
+      }
+
+      &:nth-child(2) {
+        filter: hue-rotate(60deg);
+        top: -100%;
+        right: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(180deg, transparent, $animation-blue);
+        animation: animate2 2s linear infinite;
+        animation-delay: 0.5s;
+      }
+
+      @keyframes animate2 {
+        0% {
+          top: -100%;
+        }
+        50%,
+        100% {
+          top: 100%;
+        }
+      }
+
+      &:nth-child(3) {
+        filter: hue-rotate(120deg);
+        bottom: 0;
+        right: 0;
+        width: 100%;
+        background: linear-gradient(270deg, transparent, $animation-blue);
+        animation: animate3 2s linear infinite;
+        animation-delay: 1s;
+      }
+
+      @keyframes animate3 {
+        0% {
+          right: -100%;
+          height: 3px;
+        }
+        50%,
+        100% {
+          height: 2px;
+          right: 100%;
+        }
+      }
+
+      &:nth-child(4) {
+        filter: hue-rotate(300deg);
+        bottom: -100%;
+        left: 0;
+        width: 3px;
+        height: 100%;
+        background: linear-gradient(360deg, transparent, $animation-blue);
+        animation: animate4 2s linear infinite;
+        animation-delay: 1.5s;
+      }
+
+      @keyframes animate4 {
+        0% {
+          bottom: -100%;
+        }
+        50%,
+        100% {
+          bottom: 100%;
+        }
+      }
+    }
+  }
+}

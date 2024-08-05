@@ -1,0 +1,166 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.card {
+  border: 1px solid $elements;
+  transition: border ease-out .5s;
+  height: 100%;
+  min-height: 506px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 32px;
+
+  @include on-tablet {
+    padding: 24px;
+  }
+
+  @include on-desktop {
+    padding: 24px;
+  }
+
+  &:hover {
+    border: 1px solid $primary;
+  }
+
+  &__image {
+    width: 208px;
+    height: 196px;
+    object-fit: contain;
+    transition: scale .5s;
+
+    &:hover {
+      scale: 110%;
+    }
+  }
+
+  &__image-container,
+  &__content {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  &__content {
+    flex-direction: column;
+  }
+
+  &__title-container {
+    display: flex;
+    align-content: flex-start;
+  }
+
+  &__title {
+    @include body-text;
+
+    color: $primary;
+    font-weight: 600;
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__price {
+    @include desktop-h3;
+  }
+
+  &__full-price {
+    @include h3;
+
+    font-weight: 500;
+    color: $secondary;
+    text-decoration-line: line-through;
+    text-decoration-thickness: 2px;
+  }
+
+  &__divider {
+    height: 1px;
+    width: 100%;
+    background-color: $elements;
+  }
+
+  &__spec {
+    display: flex;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  &__spec-name {
+    @include small-text;
+  }
+
+  &__spec-value {
+    @include small-text;
+
+    color: $primary;
+  }
+
+  &__actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+  }
+
+  &__button {
+    @include body-text;
+    @include anime-btn;
+
+    height: 40px;
+    cursor: pointer;
+    box-sizing: border-box;
+
+    &--add,
+    &--added {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    &--add {
+      color: $white;
+      background-color: $primary;
+      border: none;
+    }
+
+    &--added {
+      color: $green;
+      background-color: $white;
+      border: 1px solid $elements;
+
+      &:hover {
+        border: none;
+      }
+    }
+
+    &--favorite-white {
+      width: 40px;
+      border: 1px solid $icons;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white;
+      background-image: url(../../../public/img/icons/heart.svg);
+
+      &:hover {
+        border: none;
+      }
+    }
+
+    &--favorite-red {
+      width: 40px;
+      border: 1px solid $icons;
+      background-repeat: no-repeat;
+      background-position: center;
+      background-color: $white;
+      background-image: url(../../../public/img/icons/heart-red.svg);
+
+      &:hover {
+        border: none;
+      }
+    }
+  }
+}

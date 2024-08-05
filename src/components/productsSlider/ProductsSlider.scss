@@ -1,0 +1,50 @@
+@import '../buttons/ButtonStyles';
+@import '../styles/mixins';
+
+.products-slider {
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+    align-items: center;
+  }
+
+  &__title {
+    @include h2;
+  }
+
+  &__button-container {
+    display: flex;
+    gap: 16px;
+  }
+
+  &__button {
+    height: 32px;
+  }
+
+  .swiper-slide {
+    width: 287px;
+
+    @include on-tablet {
+      width: 237px;
+    }
+
+    @include on-desktop {
+      width: 272px;
+    }
+  }
+
+  &__swiper{
+    display: flex;
+    justify-content: center;
+    overflow-x: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
+    transition: transform 0.7s;
+
+
+    &__slide-wrapper {
+      scroll-snap-align: start;
+    }
+  }
+}

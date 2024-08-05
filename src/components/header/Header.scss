@@ -1,0 +1,286 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.nav {
+  display: flex;
+  height: 48px;
+  box-shadow: 0 1px 0 0 $elements;
+  background-color: $white;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  justify-content: space-between;
+
+  @include on-desktop {
+    height: 64px;
+  }
+
+  &__group {
+    display: flex;
+    align-items: center;
+
+    &--all-links {
+      @include on-tablet {
+        gap: 48px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &--links {
+      display: flex;
+      flex-direction: row;
+
+      @include on-tablet {
+        gap: 48px;
+      }
+
+      @include on-desktop {
+        gap: 64px;
+      }
+    }
+
+    &--icons {
+      &--border {
+        box-shadow: -1px 0 0 0 $elements;
+        display: none;
+        position: relative;
+
+        @include on-tablet {
+          padding: 16px;
+          display: block;
+        }
+
+        @include on-desktop {
+          padding: 24px;
+          display: block;
+        }
+      }
+    }
+  }
+
+  &__link {
+    @include link;
+
+    position: relative;
+    display: none;
+
+    @include on-tablet {
+      display: block;
+    }
+
+    @include on-desktop {
+      display: block;
+    }
+
+    &.active,
+    &:hover {
+      color: $primary;
+    }
+
+    &::after {
+      bottom: -26px;
+      content: "";
+      display: block;
+      height: 3px;
+      left: 50%;
+      position: absolute;
+      background: $primary;
+      transition: width 0.3s ease, left 0.3s ease;
+      width: 0;
+
+      @include on-tablet {
+        bottom: -19px;
+      }
+
+      @include on-desktop {
+        bottom: -27px;
+      }
+    }
+
+    &.active::after {
+      width: 100%;
+      left: 0;
+
+      @include on-tablet {
+        bottom: -19px;
+      }
+
+      @include on-desktop {
+        bottom: -27px;
+      }
+    }
+  }
+
+  &__logo {
+    @include logo;
+
+    height: 26px;
+    width: 80px;
+    margin-left: 16px;
+  }
+
+  &__icon {
+    width: 16px;
+    height: 16px;
+
+    &--heart {
+      background-image: url(../../../public/img/icons/heart.svg);
+    }
+
+    &--shopping-bag {
+      background-image: url(../../../public/img/icons/shopping_bag.svg);
+    }
+  }
+
+  &__count-heart,
+  &__count-bag {
+    position: absolute;
+    border: 1px solid $white;
+    width: 14px;
+    height: 14px;
+    background-color: $red;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    left: 22px;
+    top: 10px;
+
+    @include on-desktop {
+      left: 31px;
+      top: 18px;
+    }
+  }
+
+  &__count__text {
+    @include cart-count;
+
+    color: $white;
+  }
+
+  .nav__button {
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: $white;
+    cursor: pointer;
+    height: 100%;
+    width: 48px;
+    box-shadow: -1px 0 0 0 $elements;
+    border: none;
+    background-size: 16px;
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+
+    &--menu {
+      background-image: url(../../../public/img/icons/burger-menu.svg);
+    }
+  }
+
+  &__menu {
+    position: fixed;
+    top: 48px;
+    left: 0;
+    width: 100%;
+    height: 0;
+    background-color: $white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    transition: height 0.3s ease, opacity 0.3s ease;
+    justify-content: space-between;
+
+    &--links {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    @include on-tablet {
+      display: none;
+    }
+
+    @include on-desktop {
+      display: none;
+    }
+
+    &--open {
+      height: calc(100vh - 72px);
+      padding-top: 24px;
+      opacity: 1;
+      border-top: 1px solid $elements;
+    }
+
+    &-link {
+      @include link;
+
+      padding: 16px;
+      color: $secondary;
+      position: relative;
+
+      &:hover {
+        color: $primary;
+      }
+
+      &.active,
+      &:hover {
+        color: $primary;
+      }
+
+      &::after {
+        content: "";
+        position: relative;
+        bottom: -3px;
+        display: block;
+        height: 2px;
+        background: $primary;
+        width: 0;
+      }
+
+      &.active::after {
+        width: 100%;
+        left: 0;
+      }
+    }
+
+    &-icons {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      bottom: 0;
+      width: 100%;
+      border: 1px solid $elements;
+      height: 64px;
+    }
+
+    &-icon {
+      position: relative;
+    }
+
+    &--cart-wrap,
+    &--heart-wrap {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 50%;
+      height: 100%;
+      border-left: 1px solid $elements;
+
+      &--bag,
+      &--heart {
+        position: absolute;
+        top: -5px;
+        left: 7px;
+      }
+    }
+  }
+}

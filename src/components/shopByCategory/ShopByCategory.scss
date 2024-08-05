@@ -1,0 +1,77 @@
+@import '../styles/mixins';
+@import '../styles/variables';
+
+.shop_by_category {
+  margin: 50px 0;
+
+  &-title {
+    @include h2;
+
+    margin-bottom: 25px;
+  }
+
+  &-div {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+
+    @include on-tablet {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include on-desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+
+  &-bg-gold {
+    background-image: url(../../../public/img/bg-category/bg-phone-gold.svg);
+    background-color: $gold;
+  }
+
+  &-bg-grey {
+    background-image: url(../../../public/img/bg-category/bg-tablet-grey.svg);
+    background-color: $grey;
+  }
+
+  &-bg-red {
+    background-image: url(../../../public/img/bg-category/bg-phones-red.svg);
+    background-color: $deeppink;
+  }
+
+  .phones-red,
+  .tablet-grey,
+  .phone-gold {
+    width: 100%;
+    padding-top: 100%;
+    position: relative;
+    margin-bottom: 24px;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 0 30px;
+    transition: background-position 0.5s ease-out 0.1s;
+
+
+    &:hover{
+      background-position: 0;
+    }
+  }
+
+  &__subtitle {
+    @include mobile-h3;
+
+    margin: 0 0 4px;
+    font-weight: 600;
+  }
+
+  &__models-number {
+    @include body-text;
+
+    font-weight: 600;
+  }
+
+  &--link {
+    text-decoration: none;
+    color: inherit;
+  }
+}
