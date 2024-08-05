@@ -1,0 +1,23 @@
+@import '../../styles/utils/vars';
+
+.block {
+  overflow: hidden;
+}
+
+.list {
+  display: flex;
+  transition: translate $duration-transition ease-in-out;
+}
+
+.item {
+  display: flex;
+  width: 100%;
+  flex-shrink: 0;
+  user-select: none;
+}
+
+.image {
+  max-width: 100%;
+  object-fit: contain;
+  aspect-ratio: 1;
+}

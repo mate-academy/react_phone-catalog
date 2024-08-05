@@ -1,0 +1,46 @@
+h1,
+h2,
+h3,
+h4 {
+  font-family: $ff-main;
+  color: var(--c-text-primary);
+  letter-spacing: 0;
+}
+
+h1,
+.main-title {
+  @include h1-mobile;
+
+  letter-spacing: -0.01em;
+
+  @include on-tablet {
+    font-size: 48px;
+    line-height: 56px;
+  }
+}
+
+h2 {
+  @include h2-mobile;
+
+  @include on-tablet {
+    @include h1-mobile;
+
+    letter-spacing: -0.01em;
+  }
+}
+
+h3 {
+  @include h3-mobile;
+
+  @include on-tablet {
+    @include h2-mobile;
+  }
+}
+
+h4 {
+  @include h4-mobile;
+
+  @include on-tablet {
+    @include h3-mobile;
+  }
+}

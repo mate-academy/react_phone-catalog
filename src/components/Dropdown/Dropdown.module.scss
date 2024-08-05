@@ -1,0 +1,73 @@
+@import '../../styles/utils/vars';
+
+.block {
+  position: relative;
+}
+
+.select {
+  all: unset;
+  box-sizing: border-box;
+  cursor: pointer;
+
+  display: flex;
+  width: 100%;
+  padding: 9px 11px;
+  border: 1px solid var(--c-elements);
+  color: var(--c-text-primary);
+  background-color: var(--c-bg-dropdown);
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    top: 11px;
+    right: 11px;
+    background-color: var(--c-secondary);
+    mask: url('../../images/icons/icon-chevron-right.svg') no-repeat 50% 50%;
+    transform: rotate(90deg);
+  }
+
+  &:hover {
+    border: 1px solid var(--c-icons);
+  }
+
+  &:hover::before {
+    background-color: var(--c-icons);
+  }
+
+  &:focus {
+    background-color: var(--c-bg-dropdown-focus);
+    border: 1px solid var(--c-border-dropdown-focus);
+  }
+
+  &_m_focus::before {
+    transform: rotate(-90deg);
+  }
+}
+
+.options {
+  z-index: $zindex-dropdown;
+  padding-block: 8px;
+  background-color: var(--c-bg-primary);
+  border: 1px solid var(--c-elements);
+
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  transform: translateY(100%);
+}
+
+.option {
+  padding: 6px 12px;
+  color: var(--c-secondary);
+
+  &:hover {
+    color: var(--c-text-primary);
+    background-color: var(--c-elements);
+    cursor: pointer;
+  }
+}

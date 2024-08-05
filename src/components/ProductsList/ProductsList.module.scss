@@ -1,0 +1,59 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/extends';
+
+.block {
+  padding-bottom: 64px;
+}
+
+.title {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--c-secondary);
+}
+
+.content {
+  padding-block: 40px 64px;
+}
+
+.dropdowns {
+  @include page-grid;
+
+  margin-bottom: 24px;
+
+  &__label {
+    @extend %smalltext;
+
+    display: block;
+    color: var(--c-secondary);
+    margin-bottom: 4px;
+  }
+}
+
+.sortBy {
+  grid-column: 2 span;
+
+  @include on-tablet {
+    grid-column: 4 span;
+  }
+}
+
+.perPage {
+  grid-column: 2 span;
+
+  @include on-tablet {
+    grid-column: 3 span;
+  }
+}
+
+.list {
+  @include page-grid-auto(229px);
+
+  row-gap: 40px;
+}
+
+.item {
+  min-width: 229px;
+}

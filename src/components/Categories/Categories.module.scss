@@ -1,0 +1,9 @@
+@import '../../styles/utils/mixins';
+
+.block {
+  @include block-margin-bottom;
+
+  &__content {
+    @include page-grid;
+  }
+}

@@ -1,0 +1,78 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/extends';
+
+.seeDetails {
+  z-index: $zindex-popover;
+  position: absolute;
+  display: flex;
+  padding: 8px 16px;
+  background-color: var(--c-bg-tooltip);
+  color: var(--c-text-primary);
+  right: -33px;
+  top: 70%;
+  transform: translateX(100%);
+  transition: transform $duration-transition ease-in-out;
+  pointer-events: none;
+}
+
+.block {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border: 1px solid var(--c-border-product-card);
+  background-color: var(--c-bg-product-card);
+  padding: 31px;
+  overflow: hidden;
+
+  @include hover(border, 1px solid var(--c-border-product-card-hover));
+
+  &:has(.image:hover, .title:hover) {
+    .seeDetails {
+      transform: translateX(0%);
+    }
+  }
+}
+
+.imageFrame {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+.image {
+  max-width: 100%;
+  object-fit: contain;
+
+  @include hover(scale, 1.1);
+}
+
+.title {
+  height: 58px;
+  display: flex;
+  align-items: flex-end;
+
+  &__text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    text-decoration: none;
+
+    @extend %bodytext;
+
+    &:link,
+    &:visited {
+      color: var(--c-text-primary);
+    }
+
+    @include hover(color, var(--c-secondary));
+  }
+}
+
+.buttons {
+  display: flex;
+  gap: 8px;
+}

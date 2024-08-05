@@ -1,0 +1,72 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.imageGradient {
+  z-index: $zindex-popover;
+  pointer-events: none;
+  position: absolute;
+  display: flex;
+  flex-direction: column-reverse;
+  padding-bottom: 10px;
+  text-align: center;
+  inset: 0;
+  background-image: linear-gradient(
+    0deg,
+    var(--c-bg-img-gradient),
+    transparent 50%
+  );
+  opacity: 0;
+
+  @include hover(opacity, 0.6);
+}
+
+.block {
+  margin-bottom: 32px;
+  grid-column: 4 span;
+
+  @include on-desktop {
+    grid-column: 8 span;
+  }
+
+  &:has(.titleLink:hover, .image:hover) {
+    .imageGradient {
+      opacity: 0.6;
+    }
+  }
+}
+
+.imageFrame {
+  display: flex;
+  margin-bottom: 24px;
+  position: relative;
+  overflow: hidden;
+}
+
+.tooltip {
+  color: var(--c-white);
+}
+
+.image {
+  width: 100%;
+  object-fit: cover;
+  aspect-ratio: 1 / 1;
+  transition: scale $duration-transition ease-in-out;
+
+  &:hover {
+    scale: 1.1;
+  }
+}
+
+.titleLink {
+  display: inline-block;
+  text-decoration: none;
+  margin-bottom: 4px;
+}
+
+.title {
+  @include hover(color, var(--c-secondary));
+}
+
+.subtitle {
+  color: var(--c-secondary);
+}

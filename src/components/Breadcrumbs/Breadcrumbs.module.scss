@@ -1,0 +1,26 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+@import '../../styles/utils/extends';
+
+.block {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  padding-block: 24px;
+
+  @include on-tablet {
+    padding-block: 24px 40px;
+  }
+}
+
+.text {
+  @extend %smalltext;
+
+  color: var(--c-secondary);
+
+  &_m_link {
+    text-decoration: none;
+
+    @include hover(color, var(--c-text-primary));
+  }
+}

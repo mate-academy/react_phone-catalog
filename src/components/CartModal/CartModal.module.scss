@@ -1,0 +1,29 @@
+@import '../../styles/utils/vars';
+
+.block {
+  position: fixed;
+  z-index: $zindex-modal;
+  inset: 0;
+  background-color: rgba(#000, 0.9);
+  padding-inline: 20px;
+  display: grid;
+  place-items: center;
+}
+
+.card {
+  max-width: 400px;
+  background-color: var(--c-bg-modal-card);
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  &__title {
+    color: var(--c-secondary);
+  }
+
+  &__buttons {
+    display: flex;
+    gap: 16px;
+  }
+}

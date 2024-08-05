@@ -1,0 +1,42 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.buttons {
+  display: flex;
+  gap: 16px;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  @include on-tablet {
+    top: 5px;
+  }
+}
+
+.content {
+  @include page-grid;
+
+  @include on-desktop {
+    overflow: hidden;
+  }
+}
+
+.list {
+  display: flex;
+  gap: 16px;
+  transition: translate $duration-transition ease-in-out;
+
+  grid-column: 3 span;
+
+  @include on-tablet {
+    grid-column: 5 span;
+  }
+
+  @include on-desktop {
+    grid-column: 6 span;
+  }
+}
+
+.item {
+  min-width: 100%;
+}

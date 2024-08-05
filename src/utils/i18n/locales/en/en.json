@@ -1,0 +1,327 @@
+{
+  "logo": {
+    "title": "Home page",
+    "ariaLabel": "Go to the home page",
+    "alt": "Nice gadgets logo"
+  },
+  "header": {
+    "actions": {
+      "search": {
+        "placeholder": "Search in {{category}}...",
+        "phones": "phones",
+        "tablets": "tablets",
+        "accessories": "accessories",
+        "ariaLabel": "Search"
+      },
+      "theme": {
+        "dark": {
+          "ariaLabel": "Use a dark theme"
+        },
+        "light": {
+          "ariaLabel": "Use a light theme"
+        }
+      },
+      "lang": {
+        "text": "Укр",
+        "ariaLabel": "Змінити мову на українську"
+      },
+      "favourites": {
+        "ariaLabel": "Go to the page with favourites products"
+      },
+      "cart": {
+        "ariaLabel": "Go to the cart page"
+      },
+      "menu": {
+        "ariaLabel": {
+          "open": "Show the navigation menu",
+          "close": "Close the navigation menu"
+        }
+      }
+    }
+  },
+  "nav": {
+    "home": {
+      "text": "Home",
+      "ariaLabel": "Go to the home page"
+    },
+    "phones": {
+      "text": "Phones",
+      "ariaLabel": "Go to the phones page"
+    },
+    "tablets": {
+      "text": "Tablets",
+      "ariaLabel": "Go to the tablets page"
+    },
+    "accessories": {
+      "text": "Accessories",
+      "ariaLabel": "Go to the accessories page"
+    }
+  },
+  "hero": {
+    "title": "Welcome to Nice Gadgets store!",
+    "slider": {
+      "button": {
+        "prev": {
+          "ariaLabel": "View previous image"
+        },
+        "next": {
+          "ariaLabel": "View next image"
+        }
+      },
+      "dot": {
+        "ariaLabel": "View image {{imageNumber}}"
+      }
+    }
+  },
+  "newModels": {
+    "title": "Brand new models"
+  },
+  "products": {
+    "slider": {
+      "button": {
+        "prev": {
+          "ariaLabel": "View previous products"
+        },
+        "next": {
+          "ariaLabel": "View next products"
+        }
+      }
+    },
+    "list": {
+      "error": {
+        "title": "Something went wrong",
+        "button": {
+          "text": "Try again",
+          "ariaLabel": "Try to get the data again"
+        }
+      },
+      "empty": {
+        "title": "There is no {{category}} you are looking for",
+        "phones": "mobile phones",
+        "tablets": "tablets",
+        "accessories": "accessories"
+      }
+    }
+  },
+  "product": {
+    "card": {
+      "link": {
+        "title": "See details about {{name}}",
+        "ariaLabel": "Go to the {{name}} details page"
+      },
+      "tooltip": "See details",
+      "title": {
+        "title": "See details about {{name}}",
+        "ariaLabel": "Go to the {{name}} details page"
+      },
+      "price": {
+        "current": "Current price",
+        "full": "Full price"
+      },
+      "screen": "Screen",
+      "capacity": "Capacity",
+      "ram": "RAM",
+      "button": {
+        "cart": {
+          "ariaLabel": {
+            "add": "Add {{name}} to cart",
+            "remove": "Remove {{name}} from cart"
+          },
+          "text": {
+            "add": "Add to cart",
+            "added": "Added"
+          }
+        },
+        "favorites": {
+          "ariaLabel": {
+            "add": "Add {{name}} to favorites",
+            "remove": "Remove {{name}} from favorites"
+          }
+        }
+      }
+    },
+    "details": {
+      "colors": "Available colors",
+      "capacity": "Select capacity",
+      "price": {
+        "current": "Current price",
+        "full": "Full price"
+      },
+      "screen": "Screen",
+      "resolution": "Resolution",
+      "processor": "Processor",
+      "ram": "RAM",
+      "about": "About",
+      "specs": "Tech specs",
+      "memory": "Built in memory",
+      "camera": "Camera",
+      "zoom": "Zoom",
+      "cell": "Cell",
+      "error": {
+        "title": "There are no {{name}}",
+        "subtitle": "The product may have been out of stock or an incorrect link was used"
+      }
+    }
+  },
+  "categories": {
+    "title": "Shop by category"
+  },
+  "category": {
+    "card": {
+      "tooltip": "View category",
+      "phones": {
+        "title": {
+          "text": "Mobile phones",
+          "ariaLabel": "View mobile phones catalog"
+        }
+      },
+      "tablets": {
+        "title": {
+          "text": "Tablets",
+          "ariaLabel": "View tablets catalog"
+        }
+      },
+      "accessories": {
+        "title": {
+          "text": "Accessories",
+          "ariaLabel": "View accessories catalog"
+        }
+      },
+      "quantity_one": "{{count}} model",
+      "quantity_other": "{{count}} models",
+      "quantity_interval": "(2-4)[{{count}} models];"
+    }
+  },
+  "hotPrices": {
+    "title": "Hot prices"
+  },
+  "footer": {
+    "nav": {
+      "github": {
+        "text": "Github",
+        "ariaLabel": "Go to Github"
+      },
+      "contacts": {
+        "text": "Contacts",
+        "ariaLabel": "Go to the contacts page"
+      },
+      "rights": {
+        "text": "Rights",
+        "ariaLabel": "Go to the page to familiarize yourself with the rights"
+      }
+    },
+    "backToTop": {
+      "text": "Back to top",
+      "title": "Back to top",
+      "ariaLabel": "Back to top"
+    }
+  },
+  "breadcrumbs": {
+    "home": {
+      "title": "Go to the home page",
+      "ariaLabel": "Go to the home page"
+    },
+    "link": {
+      "ariaLabel": "Go to {{pageName}} page"
+    }
+  },
+  "dropdown": {
+    "label": {
+      "sortBy": "Sort by",
+      "itemsOnPage": "Items on page"
+    },
+    "open": {
+      "ariaLabel": "Open the dropdown menu with sort options"
+    },
+    "close": {
+      "ariaLabel": "Close the dropdown menu with sort options"
+    },
+    "sortBy": {
+      "newest": "Newest",
+      "alphabetically": "Alphabetically",
+      "cheapest": "Cheapest"
+    },
+    "itemsPerPage": "All"
+  },
+  "quantity": {
+    "favourites_one": "{{count}} item",
+    "favourites_other": "{{count}} items",
+    "favourites_interval": "(2-4)[{{count}} items];"
+  },
+  "favourites": {
+    "title": "Favourites"
+  },
+  "cart": {
+    "title": "Cart",
+    "button": {
+      "checkout": {
+        "text": "Checkout",
+        "ariaLabel": "Go to payment for goods"
+      }
+    },
+    "total_one": "Total for {{count}} item",
+    "total_other": "Total for {{count}} items",
+    "total_interval": "(2-4)[Total for {{count}} items];",
+    "item": {
+      "button": {
+        "remove": {
+          "ariaLabel": "Remove the {{name}} from the cart"
+        },
+        "reduce": {
+          "ariaLabel": "Reduce the number of products by 1"
+        },
+        "increase": {
+          "ariaLabel": "Increase the number of products by 1"
+        }
+      },
+      "image": {
+        "alt": "Image of {{name}}"
+      }
+    },
+    "empty": {
+      "image": {
+        "alt": "An empty package with a sleepy expression on its face with the number 0 in the upper right corner"
+      },
+      "title": "Your cart is empty"
+    },
+    "modal": {
+      "title": "Checkout is not implemented yet",
+      "subtitle": "Do you want to clear the Cart?",
+      "button": {
+        "clear": {
+          "text": "Clear",
+          "ariaLabel": "Clear the cart"
+        },
+        "cancel": {
+          "text": "Cancel",
+          "ariaLabel": "Close the modal window and return to the cart"
+        }
+      }
+    }
+  },
+  "back": {
+    "text": "Back",
+    "ariaLabel": "Return to the previous tab on the site"
+  },
+  "recommendations": {
+    "title": "You may also like"
+  },
+  "error": {
+    "notFound": {
+      "title": "Page not found"
+    }
+  },
+  "pagination": {
+    "button": {
+      "prev": {
+        "ariaLabel": "View previous products"
+      },
+      "numb": {
+        "ariaLabel": "Go to page {{page}}"
+      },
+      "next": {
+        "ariaLabel": "View next products"
+      }
+    }
+  }
+}

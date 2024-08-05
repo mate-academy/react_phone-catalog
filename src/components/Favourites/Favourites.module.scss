@@ -1,0 +1,28 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.title {
+  margin-bottom: 8px;
+}
+
+.subtitle {
+  color: var(--c-secondary);
+}
+
+.content {
+  padding-block: 40px 64px;
+}
+
+.list {
+  @include page-grid;
+
+  row-gap: 40px;
+}
+
+.item {
+  grid-column: 1 / -1;
+
+  @include on-tablet {
+    grid-column: 6 span;
+  }
+}

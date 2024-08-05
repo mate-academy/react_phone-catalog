@@ -1,0 +1,9 @@
+@import '../../styles/utils/mixins';
+
+.block {
+  @include block-margin-bottom;
+}
+
+.reload {
+  max-width: 200px;
+}

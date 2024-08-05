@@ -1,0 +1,42 @@
+.page {
+  @extend %bodytext;
+
+  scroll-behavior: smooth;
+
+  &__body {
+    color: var(--c-text-primary);
+    min-width: 320px;
+    background-color: var(--c-bg-primary);
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
+
+  &__main {
+    overflow: hidden;
+    flex-grow: 1;
+  }
+
+  &:has(.utilityClass__mobile-menu--active, .utilityClass__modal) {
+    overflow: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: var(--c-scrollbar-track);
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--c-scrollbar-thumb);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--c-scrollbar-hover);
+  }
+}

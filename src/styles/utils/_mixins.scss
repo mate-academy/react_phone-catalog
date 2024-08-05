@@ -1,0 +1,91 @@
+@import './vars';
+
+@mixin on-tablet {
+  @media (min-width: $tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: $desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin h1-mobile {
+  font-weight: $fw-bold;
+  font-size: 32px;
+  line-height: 41px;
+}
+
+@mixin h2-mobile {
+  font-weight: $fw-bold;
+  font-size: 22px;
+  line-height: 31px;
+}
+
+@mixin h3-mobile {
+  font-weight: $fw-semi-bold;
+  font-size: 20px;
+  line-height: 26px;
+}
+
+@mixin h4-mobile {
+  font-weight: $fw-semi-bold;
+  font-size: 16px;
+  line-height: 20px;
+}
+
+@mixin padding-inline-content() {
+  padding-inline: $container-padding-inline-sm;
+
+  @include on-tablet {
+    padding-inline: $container-padding-inline-md;
+  }
+
+  @include on-desktop {
+    padding-inline: $container-padding-inline-lg;
+  }
+}
+
+@mixin block-margin-bottom {
+  margin-bottom: 56px;
+
+  @include on-tablet {
+    margin-bottom: 64px;
+  }
+
+  @include on-desktop {
+    margin-bottom: 80px;
+  }
+}
+
+@mixin page-grid {
+  --columns: 4;
+
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(var(--columns), 1fr);
+
+  @include on-tablet {
+    --columns: 12;
+  }
+
+  @include on-desktop {
+    --columns: 24;
+  }
+}
+
+@mixin page-grid-auto($minWidth) {
+  display: grid;
+  column-gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax($minWidth, 1fr));
+}
+
+@mixin hover($property, $toValue) {
+  transition: $property $duration-transition ease-in-out;
+
+  &:hover {
+    #{$property}: $toValue;
+  }
+}

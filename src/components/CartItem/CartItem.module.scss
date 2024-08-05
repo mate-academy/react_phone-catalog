@@ -1,0 +1,63 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.block {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--c-border-cart-card);
+  background-color: var(--c-bg-cart-card);
+
+  @include on-tablet {
+    padding: 23px;
+    flex-flow: row nowrap;
+    justify-content: space-between;
+  }
+}
+
+.top,
+.bottom {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.imageFrame {
+  display: flex;
+  width: 80px;
+  height: 80px;
+  flex-shrink: 0;
+}
+
+.image {
+  width: 100%;
+  object-fit: contain;
+}
+
+.link {
+  color: var(--c-text-primary);
+  text-decoration: none;
+
+  @include hover(color, var(--c-secondary));
+}
+
+.counter {
+  display: flex;
+  align-items: center;
+
+  &__number {
+    text-align: center;
+    width: 32px;
+  }
+}
+
+.price {
+  width: 80px;
+  margin-left: auto;
+  text-align: right;
+
+  @include on-tablet {
+    margin: 0;
+  }
+}

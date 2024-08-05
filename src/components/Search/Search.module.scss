@@ -1,0 +1,71 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.block {
+  opacity: 1;
+  position: relative;
+  transition: all $duration-transition ease-in-out;
+
+  &::before {
+    content: '';
+    display: block;
+    width: 20px;
+    height: 20px;
+    mask-image: url('../../images/icons/icon-search.svg');
+    mask-repeat: no-repeat;
+    mask-size: contain;
+    background-color: var(--c-bg-icon);
+  }
+
+  &.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  @include on-tablet {
+    transition: none;
+  }
+
+  @include on-desktop {
+    transition: all $duration-transition ease-in-out;
+  }
+
+  &__active {
+    width: 170px;
+    transition: all $duration-transition ease-in-out;
+
+    @include on-tablet {
+      width: 300px;
+    }
+  }
+}
+
+.hide {
+  transition: opacity $duration-transition ease-in-out;
+  pointer-events: none;
+}
+
+.input {
+  transition: width $duration-transition ease-in-out;
+  background-color: transparent;
+  border: none;
+  padding: 0;
+  color: var(--c-text-primary);
+  width: 0;
+  outline: none;
+  pointer-events: none;
+
+  @include on-tablet {
+    transition-duration: unset;
+  }
+
+  @include on-desktop {
+    transition: width $duration-transition ease-in-out;
+  }
+
+  &_m_active {
+    width: 100%;
+    pointer-events: all;
+    margin-inline: 10px 20px;
+  }
+}

@@ -1,0 +1,36 @@
+@import '../../styles/utils/vars';
+@import '../../styles/utils/mixins';
+
+.block {
+  border-top: 1px solid var(--c-elements);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding-block: 32px;
+
+  @include on-tablet {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+.backToTop {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+
+  align-self: center;
+
+  @include on-tablet {
+    align-self: auto;
+  }
+
+  &_m_hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+}
